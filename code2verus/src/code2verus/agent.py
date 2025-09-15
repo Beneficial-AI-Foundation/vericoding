@@ -12,17 +12,15 @@ Key design decisions:
 """
 
 from pydantic_ai import Agent
+from pydantic_ai.exceptions import UnexpectedModelBehavior
 import logfire
 import yaml
 from dataclasses import dataclass
 from typing import Optional, Any
 
 from code2verus.config import (
-    system_prompt,
-    cfg,
-    full_cfg,
-    get_config_value,
     get_error_template,
+    load_translation_config,
 )
 from code2verus.tools import verus_tool, dafny_tool, lean_tool
 from code2verus.utils import extract_rust_code, concatenate_yaml_fields
@@ -83,11 +81,19 @@ def _update_conversation_history(result, current_history: list) -> list:
 
 def create_agent(source_language: str = "dafny", target_language: str = "verus"):
     """Create and return a configured PydanticAI agent with tools"""
+    # Load translation-specific configuration
+    translation_cfg = load_translation_config(
+        source_language.lower(), target_language.lower()
+    )
+
+    # Extract configuration values from translation-specific config
+    cfg_section = translation_cfg.get("config", {})
+    system_prompts = translation_cfg.get("system_prompts", {})
+    default_system = translation_cfg.get("system", "")
+
     # Load language-specific system prompt based on source language
     # The source language determines which translation rules to use
-    language_prompt = full_cfg.get("system_prompts", {}).get(
-        source_language.lower(), system_prompt
-    )
+    language_prompt = system_prompts.get(source_language.lower(), default_system)
 
     # Select appropriate verification tools based on target language
     tools = []
@@ -103,7 +109,7 @@ def create_agent(source_language: str = "dafny", target_language: str = "verus")
         tools = [verus_tool, dafny_tool, lean_tool]
 
     # Handle different model formats
-    model_config = cfg["model"]
+    model_config = cfg_section["model"]
     final_model_config: Any  # Union of str or tuple for different model types
 
     # Check if this is an OpenRouter model configuration
@@ -170,7 +176,14 @@ async def translate_code_to_verus(
     """
     # Use config value if max_iterations not provided
     if max_iterations is None:
-        max_iterations = get_config_value("max_translation_iterations")
+        # Load translation-specific config to get the correct max_iterations
+        translation_cfg = load_translation_config(
+            source_language.lower(), target_language.lower()
+        )
+        cfg_section = translation_cfg.get("config", {})
+        max_iterations = cfg_section.get(
+            "max_translation_iterations", 3
+        )  # Default to 3 if not found
 
     # Type assertion to help type checker
     assert isinstance(max_iterations, int)
@@ -204,9 +217,14 @@ async def translate_code_to_verus(
         "Starting new translation session", extra=debug_context.to_summary_dict()
     )
 
-    # Get language-specific prompts from config
+    # Load translation-specific configuration for this context
+    translation_cfg = load_translation_config(
+        source_language.lower(), target_language.lower()
+    )
+
+    # Get language-specific prompts from translation config
     if is_yaml:
-        yaml_instructions = full_cfg.get("yaml_instructions", {})
+        yaml_instructions = translation_cfg.get("yaml_instructions", {})
         logfire.info(
             f"Available yaml_instructions keys: {list(yaml_instructions.keys())}"
         )
@@ -219,7 +237,7 @@ async def translate_code_to_verus(
             f"First 200 chars of additional_prompt: {additional_prompt[:200]}..."
         )
     else:
-        additional_prompt = full_cfg.get("default_prompts", {}).get(
+        additional_prompt = translation_cfg.get("default_prompts", {}).get(
             source_language.lower(), ""
         )
         logfire.info(
@@ -262,6 +280,8 @@ Please translate the following {source_language} code to {target_language}:
             if latest_error:
                 current_prompt = get_error_template(
                     "verification_error",
+                    source_lang=source_language,
+                    target_lang=target_language,
                     verification_error=latest_error.error,
                     verification_output=latest_error.output or "",
                     source_language=source_language,
@@ -287,9 +307,34 @@ Please translate the following {source_language} code to {target_language}:
 
         # Run the agent with proper message history to maintain conversation context
         # This is the key improvement: message_history maintains true conversational context
-        result = await agent.run(
-            current_prompt, message_history=conversation_history, deps=deps_context
-        )
+        try:
+            result = await agent.run(
+                current_prompt, message_history=conversation_history, deps=deps_context
+            )
+        except UnexpectedModelBehavior as e:
+            logfire.error(f"OpenAI API returned unexpected response on iteration {iteration + 1}: {e}")
+            
+            # If we have more iterations, try again with the next iteration
+            if iteration < max_iterations - 1:
+                logfire.info(f"Retrying with next iteration ({iteration + 2}/{max_iterations})")
+                iteration += 1
+                continue
+            else:
+                # If this was the last iteration, return a failed result
+                logfire.error("All iterations exhausted due to API errors")
+                debug_context.add_verification_error(
+                    VerificationError(
+                        iteration=iteration + 1,
+                        error=f"OpenAI API error: {str(e)}",
+                        error_type="api_error",
+                    )
+                )
+                return TranslationResult(
+                    output_content="",
+                    num_iterations=iteration + 1,
+                    code_for_verification="",
+                    debug_context=debug_context,
+                )
 
         # Capture token usage from the result
         iteration_token_usage = TokenUsage.from_run_usage(result.usage())
@@ -298,7 +343,9 @@ Please translate the following {source_language} code to {target_language}:
         # Log the agent's response
         logfire.info(f"Received response from agent (iteration {iteration + 1}):")
         logfire.info(f"Response length: {len(result.output)} characters")
-        logfire.info(f"Token usage - Input: {iteration_token_usage.input_tokens}, Output: {iteration_token_usage.output_tokens}, Total: {iteration_token_usage.total_tokens}")
+        logfire.info(
+            f"Token usage - Input: {iteration_token_usage.input_tokens}, Output: {iteration_token_usage.output_tokens}, Total: {iteration_token_usage.total_tokens}"
+        )
         logfire.debug(f"Full response:\n{result.output}")
 
         # Update conversation history with this exchange
@@ -346,6 +393,8 @@ Please translate the following {source_language} code to {target_language}:
                     # If we have more iterations, prepare feedback to fix the YAML
                     yaml_error_feedback = get_error_template(
                         "yaml_syntax_error",
+                        source_lang=source_language,
+                        target_lang=target_language,
                         error=str(e),
                         source_language=source_language,
                         source_language_lower=source_language.lower(),
@@ -363,13 +412,24 @@ Please translate the following {source_language} code to {target_language}:
 
                     continue  # Skip verification and go to next iteration to fix YAML
 
-            # Also generate concatenated Rust code from YAML for verification
-            rust_content = concatenate_yaml_fields(yaml_content)
-            logfire.info(f"Concatenated Rust code length: {len(rust_content)}")
+            # Generate concatenated code from YAML for verification based on target language
+            if target_language.lower() == "lean":
+                from code2verus.utils import yaml_to_lean
+                target_content = yaml_to_lean(yaml_content)
+                logfire.info(f"Converted YAML to Lean code ({len(target_content)} characters)")
+            elif target_language.lower() == "dafny":
+                from code2verus.utils import yaml_to_dafny
+                target_content = yaml_to_dafny(yaml_content)
+                logfire.info(f"Converted YAML to Dafny code ({len(target_content)} characters)")
+            else:
+                # Default to Verus for backwards compatibility
+                target_content = concatenate_yaml_fields(yaml_content)
+                logfire.info(f"Converted YAML to Verus code ({len(target_content)} characters)")
 
-            # Return YAML content as main output, Rust content as secondary
-            output_content = yaml_content
-            code_for_verification = rust_content
+            # For YAML mode, save the extracted target language code as main output
+            # and also use it for verification
+            output_content = target_content
+            code_for_verification = target_content
         else:
             # For regular files, extract code from markdown blocks
             output_content = extract_rust_code(result.output)
@@ -420,6 +480,8 @@ Please translate the following {source_language} code to {target_language}:
                 # Prepare feedback for next iteration with specific error details
                 feedback_prompt = get_error_template(
                     "verification_error",
+                    source_lang=source_language,
+                    target_lang=target_language,
                     verification_error=verification_error,
                     verification_output=verification_output,
                     source_language=source_language,

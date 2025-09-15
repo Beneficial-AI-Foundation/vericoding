@@ -573,7 +573,7 @@ If you get "Lean is not installed or not in PATH" when using `--source-language 
 #### Unsupported Language Combinations
 If you get "Translation from X to Y is not yet supported":
 - Check the currently supported combinations in the help: `code2verus --help`
-- Currently supported: `dafny→verus`, `lean→verus`, `verus→dafny`
+- Currently supported: `dafny→verus`, `dafny→lean`, `lean→verus`, `verus→dafny`
 - Additional combinations can be added by extending the system prompts in `config.yml`
 
 #### File Pattern Mismatches

@@ -4,6 +4,7 @@ import asyncio
 import random
 from pathlib import Path
 from pydantic_ai import ModelHTTPError
+from pydantic_ai.exceptions import UnexpectedModelBehavior
 import logfire
 import yaml
 
@@ -91,17 +92,23 @@ async def process_item(
 
     # Determine file suffix based on target language
     if is_yaml:
-        yaml_suffix = ".yaml"
-        code_suffix = ".rs" if target_language == "verus" else ".dfy" if target_language == "dafny" else ".lean" if target_language == "lean" else ".txt"
-        suffix = yaml_suffix  # For main paths, use yaml suffix initially
+        code_suffix = (
+            ".rs"
+            if target_language == "verus"
+            else ".dfy"
+            if target_language == "dafny"
+            else ".lean"
+            if target_language == "lean"
+            else ".txt"
+        )
     elif target_language == "verus":
-        code_suffix = suffix = ".rs"
+        code_suffix = ".rs"
     elif target_language == "dafny":
-        code_suffix = suffix = ".dfy"
+        code_suffix = ".dfy"
     elif target_language == "lean":
-        code_suffix = suffix = ".lean"
+        code_suffix = ".lean"
     else:
-        code_suffix = suffix = ".txt"  # fallback
+        code_suffix = ".txt"  # fallback
 
     # Handle different dataset structures
     if "ground_truth" in item:
@@ -182,7 +189,9 @@ async def process_item(
             debug_context = translation_result.debug_context
 
             logfire.info(f"Translation took {num_iterations} iterations")
-            logfire.info(f"Token usage - Input: {token_usage.input_tokens}, Output: {token_usage.output_tokens}, Total: {token_usage.total_tokens}, Requests: {token_usage.requests}")
+            logfire.info(
+                f"Token usage - Input: {token_usage.input_tokens}, Output: {token_usage.output_tokens}, Total: {token_usage.total_tokens}, Requests: {token_usage.requests}"
+            )
 
             # Handle debug options
             if debug_context:
@@ -231,14 +240,14 @@ async def process_item(
             # Save the main output (YAML for YAML files, target language files for regular files) in appropriate subfolder
             status_artifact_path = artifact_path / compilation_status
             status_artifact_path.mkdir(parents=True, exist_ok=True)
-            
+
             # For YAML input files, save with .yaml extension in yaml folder, otherwise use target language extension
             if is_yaml:
                 yaml_output_filename = Path(output_filename).with_suffix(".yaml").name
                 output_file_path = status_artifact_path / yaml_output_filename
             else:
                 output_file_path = status_artifact_path / output_filename
-                
+
             with open(output_file_path, "w") as output_file:
                 output_file.write(translated_code)
             logfire.info(
@@ -261,9 +270,7 @@ async def process_item(
                 code_status_path = (
                     files_path / relative_path.parent / compilation_status
                 )
-                code_output_path = (
-                    code_status_path / output_filename
-                )
+                code_output_path = code_status_path / output_filename
                 code_output_path.parent.mkdir(parents=True, exist_ok=True)
 
                 with open(code_output_path, "w") as code_file:
@@ -308,7 +315,7 @@ async def process_item(
             )
 
             result = {
-                "path": output_file_path, 
+                "path": output_file_path,
                 "success": verification_success,
                 "token_usage": {
                     "input_tokens": token_usage.input_tokens,
@@ -316,7 +323,7 @@ async def process_item(
                     "total_tokens": token_usage.total_tokens,
                     "requests": token_usage.requests,
                     "tool_calls": token_usage.tool_calls,
-                }
+                },
             }
 
             # Include debug context in result if requested
@@ -325,7 +332,7 @@ async def process_item(
 
             return result
 
-        except ModelHTTPError as exc:
+        except (ModelHTTPError, UnexpectedModelBehavior) as exc:
             if attempt == max_retries:
                 logfire.info(
                     f"Failed to process item {idx + 1} after {max_retries} retries: {exc}"
@@ -334,11 +341,19 @@ async def process_item(
 
             # Calculate delay with exponential backoff and jitter
             delay = base_delay * (2**attempt) + random.uniform(0, 1)
-            logfire.info(
-                f"Rate limited on item {idx + 1}, file {source_filename}, attempt {attempt + 1}/{max_retries + 1}. Retrying in {delay:.2f}s..."
-            )
+            
+            # Handle different types of exceptions with appropriate messages
+            if isinstance(exc, ModelHTTPError):
+                logfire.info(
+                    f"Rate limited on item {idx + 1}, file {source_filename}, attempt {attempt + 1}/{max_retries + 1}. Retrying in {delay:.2f}s..."
+                )
+            elif isinstance(exc, UnexpectedModelBehavior):
+                logfire.info(
+                    f"API error on item {idx + 1}, file {source_filename}, attempt {attempt + 1}/{max_retries + 1}. Retrying in {delay:.2f}s... Error: {exc}"
+                )
+            
             await asyncio.sleep(delay)
-    
+
     # For failed processing, construct expected output file path in non_compiling folder
     status_artifact_path = artifact_path / "non_compiling"
     if is_yaml:
@@ -522,13 +537,23 @@ async def main_async(
     # Calculate statistics
     total_successful = sum(res["success"] for res in results)
     percentage_successful = total_successful / max(len(results), 1)
-    
+
     # Calculate token usage statistics
-    total_input_tokens = sum(res.get("token_usage", {}).get("input_tokens", 0) for res in results)
-    total_output_tokens = sum(res.get("token_usage", {}).get("output_tokens", 0) for res in results)
-    total_tokens = sum(res.get("token_usage", {}).get("total_tokens", 0) for res in results)
-    total_requests = sum(res.get("token_usage", {}).get("requests", 0) for res in results)
-    total_tool_calls = sum(res.get("token_usage", {}).get("tool_calls", 0) for res in results)
+    total_input_tokens = sum(
+        res.get("token_usage", {}).get("input_tokens", 0) for res in results
+    )
+    total_output_tokens = sum(
+        res.get("token_usage", {}).get("output_tokens", 0) for res in results
+    )
+    total_tokens = sum(
+        res.get("token_usage", {}).get("total_tokens", 0) for res in results
+    )
+    total_requests = sum(
+        res.get("token_usage", {}).get("requests", 0) for res in results
+    )
+    total_tool_calls = sum(
+        res.get("token_usage", {}).get("tool_calls", 0) for res in results
+    )
 
     print("Results:")
     print(f"  Successful files: {total_successful}")
@@ -589,12 +614,20 @@ async def main_async(
             )
             print(f"Total verification errors: {total_errors}")
             print(f"Total conversation exchanges: {total_exchanges}")
-            
+
             # Token usage from debug contexts
-            debug_total_input = sum(ctx.total_token_usage.input_tokens for ctx in debug_contexts)
-            debug_total_output = sum(ctx.total_token_usage.output_tokens for ctx in debug_contexts)
-            debug_total_tokens = sum(ctx.total_token_usage.total_tokens for ctx in debug_contexts)
-            print(f"Total tokens from debug contexts: {debug_total_tokens:,} (input: {debug_total_input:,}, output: {debug_total_output:,})")
+            debug_total_input = sum(
+                ctx.total_token_usage.input_tokens for ctx in debug_contexts
+            )
+            debug_total_output = sum(
+                ctx.total_token_usage.output_tokens for ctx in debug_contexts
+            )
+            debug_total_tokens = sum(
+                ctx.total_token_usage.total_tokens for ctx in debug_contexts
+            )
+            print(
+                f"Total tokens from debug contexts: {debug_total_tokens:,} (input: {debug_total_input:,}, output: {debug_total_output:,})"
+            )
 
             # Error pattern analysis
             if total_errors > 0:

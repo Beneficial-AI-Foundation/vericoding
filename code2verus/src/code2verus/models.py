@@ -16,6 +16,7 @@ class IterationStatus(str, Enum):
 
 class TokenUsage(BaseModel):
     """Token usage statistics for a single request or run"""
+
     input_tokens: int = 0
     output_tokens: int = 0
     total_tokens: int = 0
@@ -23,8 +24,8 @@ class TokenUsage(BaseModel):
     tool_calls: int = 0
     cache_read_tokens: int = 0
     cache_write_tokens: int = 0
-    
-    def __add__(self, other: 'TokenUsage') -> 'TokenUsage':
+
+    def __add__(self, other: "TokenUsage") -> "TokenUsage":
         """Add two TokenUsage instances together"""
         return TokenUsage(
             input_tokens=self.input_tokens + other.input_tokens,
@@ -35,9 +36,9 @@ class TokenUsage(BaseModel):
             cache_read_tokens=self.cache_read_tokens + other.cache_read_tokens,
             cache_write_tokens=self.cache_write_tokens + other.cache_write_tokens,
         )
-    
+
     @classmethod
-    def from_run_usage(cls, run_usage) -> 'TokenUsage':
+    def from_run_usage(cls, run_usage) -> "TokenUsage":
         """Create TokenUsage from pydantic-ai RunUsage object"""
         return cls(
             input_tokens=run_usage.input_tokens,
@@ -45,8 +46,8 @@ class TokenUsage(BaseModel):
             total_tokens=run_usage.total_tokens,
             requests=run_usage.requests,
             tool_calls=run_usage.tool_calls,
-            cache_read_tokens=getattr(run_usage, 'cache_read_tokens', 0),
-            cache_write_tokens=getattr(run_usage, 'cache_write_tokens', 0),
+            cache_read_tokens=getattr(run_usage, "cache_read_tokens", 0),
+            cache_write_tokens=getattr(run_usage, "cache_write_tokens", 0),
         )
 
 
@@ -102,7 +103,7 @@ class TranslationDebugContext(BaseModel):
 
     # Output file information
     output_file_path: Optional[str] = None
-    
+
     # Token usage tracking
     total_token_usage: TokenUsage = Field(default_factory=TokenUsage)
 
@@ -144,7 +145,7 @@ class TranslationDebugContext(BaseModel):
         """Set the output file path for the generated code"""
         self.output_file_path = file_path
         self.last_activity = datetime.now()
-    
+
     def add_token_usage(self, token_usage: TokenUsage) -> None:
         """Add token usage to the total"""
         self.total_token_usage = self.total_token_usage + token_usage
