@@ -33,6 +33,7 @@ from code2verus.models import (
     VerificationError,
     AttemptResult,
     IterationStatus,
+    TokenUsage,
 )
 
 
@@ -44,12 +45,14 @@ class TranslationResult:
         output_content: The main translated content (YAML or target language code)
         num_iterations: Number of iterations taken during translation
         code_for_verification: Code used for verification (may differ from output_content for YAML)
+        token_usage: Token usage statistics for the translation
         debug_context: Optional debug context containing detailed information about the translation process
     """
 
     output_content: str  # The main translated content (YAML or target language code)
     num_iterations: int  # Number of iterations taken
     code_for_verification: str  # Code used for verification
+    token_usage: TokenUsage  # Token usage statistics
     debug_context: Optional[TranslationDebugContext] = (
         None  # Optional debug information
     )
@@ -288,9 +291,14 @@ Please translate the following {source_language} code to {target_language}:
             current_prompt, message_history=conversation_history, deps=deps_context
         )
 
+        # Capture token usage from the result
+        iteration_token_usage = TokenUsage.from_run_usage(result.usage())
+        debug_context.add_token_usage(iteration_token_usage)
+
         # Log the agent's response
         logfire.info(f"Received response from agent (iteration {iteration + 1}):")
         logfire.info(f"Response length: {len(result.output)} characters")
+        logfire.info(f"Token usage - Input: {iteration_token_usage.input_tokens}, Output: {iteration_token_usage.output_tokens}, Total: {iteration_token_usage.total_tokens}")
         logfire.debug(f"Full response:\n{result.output}")
 
         # Update conversation history with this exchange
@@ -309,6 +317,7 @@ Please translate the following {source_language} code to {target_language}:
             message_history_length=len(conversation_history)
             if isinstance(conversation_history, list)
             else 0,
+            token_usage=iteration_token_usage,
         )
         debug_context.add_conversation_exchange(exchange)
 
@@ -485,5 +494,6 @@ Please translate the following {source_language} code to {target_language}:
         output_content=output_content,
         num_iterations=num_iterations,
         code_for_verification=code_for_verification,
+        token_usage=debug_context.total_token_usage,
         debug_context=debug_context,
     )

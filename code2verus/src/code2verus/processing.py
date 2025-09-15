@@ -178,9 +178,11 @@ async def process_item(
             translated_code = translation_result.output_content
             num_iterations = translation_result.num_iterations
             code_for_verification = translation_result.code_for_verification
+            token_usage = translation_result.token_usage
             debug_context = translation_result.debug_context
 
             logfire.info(f"Translation took {num_iterations} iterations")
+            logfire.info(f"Token usage - Input: {token_usage.input_tokens}, Output: {token_usage.output_tokens}, Total: {token_usage.total_tokens}, Requests: {token_usage.requests}")
 
             # Handle debug options
             if debug_context:
@@ -286,6 +288,13 @@ async def process_item(
                 "num_iterations": num_iterations,
                 "verification_output": verification_output,
                 "verification_error": verification_error,
+                "token_usage": {
+                    "input_tokens": token_usage.input_tokens,
+                    "output_tokens": token_usage.output_tokens,
+                    "total_tokens": token_usage.total_tokens,
+                    "requests": token_usage.requests,
+                    "tool_calls": token_usage.tool_calls,
+                },
             }
 
             # Save success info using the appropriate method (JSON for flat, YAML for hierarchical)
@@ -298,7 +307,17 @@ async def process_item(
                 benchmark_path,
             )
 
-            result = {"path": output_file_path, "success": verification_success}
+            result = {
+                "path": output_file_path, 
+                "success": verification_success,
+                "token_usage": {
+                    "input_tokens": token_usage.input_tokens,
+                    "output_tokens": token_usage.output_tokens,
+                    "total_tokens": token_usage.total_tokens,
+                    "requests": token_usage.requests,
+                    "tool_calls": token_usage.tool_calls,
+                }
+            }
 
             # Include debug context in result if requested
             if include_debug_in_result and debug_context:
@@ -503,11 +522,28 @@ async def main_async(
     # Calculate statistics
     total_successful = sum(res["success"] for res in results)
     percentage_successful = total_successful / max(len(results), 1)
+    
+    # Calculate token usage statistics
+    total_input_tokens = sum(res.get("token_usage", {}).get("input_tokens", 0) for res in results)
+    total_output_tokens = sum(res.get("token_usage", {}).get("output_tokens", 0) for res in results)
+    total_tokens = sum(res.get("token_usage", {}).get("total_tokens", 0) for res in results)
+    total_requests = sum(res.get("token_usage", {}).get("requests", 0) for res in results)
+    total_tool_calls = sum(res.get("token_usage", {}).get("tool_calls", 0) for res in results)
 
     print("Results:")
     print(f"  Successful files: {total_successful}")
     print(f"  Total files: {len(results)}")
     print(f"  Overall success rate: {100 * percentage_successful:.1f}%")
+    print()
+    print("Token Usage Statistics:")
+    print(f"  Total input tokens: {total_input_tokens:,}")
+    print(f"  Total output tokens: {total_output_tokens:,}")
+    print(f"  Total tokens: {total_tokens:,}")
+    print(f"  Total requests: {total_requests:,}")
+    print(f"  Total tool calls: {total_tool_calls:,}")
+    if len(results) > 0:
+        print(f"  Average tokens per file: {total_tokens / len(results):.1f}")
+        print(f"  Average requests per file: {total_requests / len(results):.1f}")
 
     # Debug: Show details about failures
     failed_count = len(results) - total_successful
@@ -553,6 +589,12 @@ async def main_async(
             )
             print(f"Total verification errors: {total_errors}")
             print(f"Total conversation exchanges: {total_exchanges}")
+            
+            # Token usage from debug contexts
+            debug_total_input = sum(ctx.total_token_usage.input_tokens for ctx in debug_contexts)
+            debug_total_output = sum(ctx.total_token_usage.output_tokens for ctx in debug_contexts)
+            debug_total_tokens = sum(ctx.total_token_usage.total_tokens for ctx in debug_contexts)
+            print(f"Total tokens from debug contexts: {debug_total_tokens:,} (input: {debug_total_input:,}, output: {debug_total_output:,})")
 
             # Error pattern analysis
             if total_errors > 0:
