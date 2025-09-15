@@ -44,16 +44,43 @@ def examine_detailed_results(tag, project="vericoding", entity=None):
             detailed_results = summary['detailed_results']
             print(f"detailed_results type: {type(detailed_results)}", file=sys.stderr)
             
-            if hasattr(detailed_results, 'data'):
-                print(f"Has .data attribute with {len(detailed_results.data)} rows", file=sys.stderr)
-                print(f"Columns: {detailed_results.columns if hasattr(detailed_results, 'columns') else 'No columns attr'}", file=sys.stderr)
+            # Examine the keys and structure
+            try:
+                keys = list(detailed_results.keys())
+                print(f"Keys: {keys}", file=sys.stderr)
+                print(f"Table dimensions: {detailed_results.get('nrows')} rows x {detailed_results.get('ncols')} cols", file=sys.stderr)
                 
-                if detailed_results.data:
-                    print(f"First 3 rows:", file=sys.stderr)
-                    for idx, row in enumerate(detailed_results.data[:3]):
-                        print(f"  Row {idx}: {row} (type: {type(row)})", file=sys.stderr)
-            else:
-                print(f"No .data attribute. Content: {str(detailed_results)[:200]}...", file=sys.stderr)
+                # Try to fetch the actual table data
+                try:
+                    # Get the table from W&B
+                    table_ref = api.artifact(detailed_results['artifact_path'])
+                    table_data = table_ref.get("detailed_results")
+                    
+                    print(f"Fetched table type: {type(table_data)}", file=sys.stderr)
+                    
+                    if hasattr(table_data, 'columns'):
+                        print(f"Columns: {table_data.columns}", file=sys.stderr)
+                    
+                    if hasattr(table_data, 'data'):
+                        print(f"Data rows: {len(table_data.data)}", file=sys.stderr)
+                        if table_data.data:
+                            print(f"First 3 data rows:", file=sys.stderr)
+                            for idx, row in enumerate(table_data.data[:3]):
+                                print(f"  Row {idx}: {row}", file=sys.stderr)
+                    
+                except Exception as table_e:
+                    print(f"Error fetching table data: {table_e}", file=sys.stderr)
+                    
+                    # Try alternative approach using artifact path
+                    try:
+                        artifact_path = detailed_results.get('path')
+                        if artifact_path:
+                            print(f"Trying artifact path: {artifact_path}", file=sys.stderr)
+                    except Exception as alt_e:
+                        print(f"Alternative approach failed: {alt_e}", file=sys.stderr)
+                    
+            except Exception as e:
+                print(f"Error examining keys: {e}", file=sys.stderr)
         else:
             print(f"No detailed_results in summary. Available keys: {list(summary.keys())}", file=sys.stderr)
         
