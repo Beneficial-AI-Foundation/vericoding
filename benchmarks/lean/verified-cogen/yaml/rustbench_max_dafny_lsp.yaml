@@ -1,0 +1,31 @@
+vc-description: |-
+
+vc-preamble: |-
+  @[reducible, simp]
+  def maxDafnyLsp_precond (a : Array Int) := a.size > 0
+
+vc-helpers: |-
+
+vc-signature: |-
+  def maxDafnyLsp (a : Array Int) (h_precond : maxDafnyLsp_precond (a)) : Nat :=
+
+vc-implementation: |-
+  -- <vc-implementation>
+    sorry
+  -- </vc-implementation>
+
+vc-condition: |-
+  @[reducible, simp]
+  def maxDafnyLsp_postcond (a : Array Int) (x: Nat) (h_precond : maxDafnyLsp_precond (a)) :=
+    0 ≤ x ∧ x < a.size ∧ (∀ k, 0 ≤ k ∧ k < a.size → a[k]! ≤ a[x]!)
+  
+  theorem maxDafnyLsp_spec_satisfied (a: Array Int) (h_precond : maxDafnyLsp_precond (a)) :
+      maxDafnyLsp_postcond (a) (maxDafnyLsp (a) h_precond) h_precond := by
+
+vc-proof: |-
+  -- <vc-proof>
+    sorry
+  -- </vc-proof>
+
+vc-postamble: |-
+  def main : IO Unit := pure ()

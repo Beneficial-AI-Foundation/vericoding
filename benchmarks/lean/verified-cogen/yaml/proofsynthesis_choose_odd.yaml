@@ -1,0 +1,33 @@
+vc-description: |-
+  /- Choose an odd element from a vector -/
+
+vc-preamble: |-
+  @[reducible, simp]
+  def chooseOdd_precond (v : Array Nat) : Prop :=
+    ∃ q : Nat, q < v.size ∧ v[q]! % 2 = 1
+
+vc-helpers: |-
+
+vc-signature: |-
+  def chooseOdd (v : Array Nat) (h_precond : chooseOdd_precond v) : Nat :=
+
+vc-implementation: |-
+  -- <vc-implementation>
+    sorry
+  -- </vc-implementation>
+
+vc-condition: |-
+  @[reducible, simp]
+  def chooseOdd_postcond (v : Array Nat) (oddIndex : Nat) (h_precond : chooseOdd_precond v) : Prop :=
+    oddIndex < v.size
+
+  theorem chooseOdd_spec_satisfied (v : Array Nat) (h_precond : chooseOdd_precond v) :
+      chooseOdd_postcond v (chooseOdd v h_precond) h_precond := by
+
+vc-proof: |-
+  -- <vc-proof>
+    sorry
+  -- </vc-proof>
+
+vc-postamble: |-
+  def main : IO Unit := pure ()

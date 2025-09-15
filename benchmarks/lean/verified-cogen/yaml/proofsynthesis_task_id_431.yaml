@@ -1,0 +1,30 @@
+vc-description: |-
+
+vc-preamble: |-
+  /- No precondition required for this function -/
+
+vc-helpers: |-
+
+vc-signature: |-
+  def hasCommonElement (list1 : Array Int) (list2 : Array Int) : Bool :=
+
+vc-implementation: |-
+  -- <vc-implementation>
+    sorry
+  -- </vc-implementation>
+
+vc-condition: |-
+  @[reducible, simp]
+  def hasCommonElement_postcond (list1 : Array Int) (list2 : Array Int) (result: Bool) :=
+    (∃ i j, i < list1.size ∧ j < list2.size ∧ list1[i]! = list2[j]!) ↔ result
+  
+  theorem hasCommonElement_spec_satisfied (list1: Array Int) (list2: Array Int) :
+      hasCommonElement_postcond (list1) (list2) (hasCommonElement (list1) (list2)) := by
+
+vc-proof: |-
+  -- <vc-proof>
+    sorry
+  -- </vc-proof>
+
+vc-postamble: |-
+  def main : IO Unit := return ()

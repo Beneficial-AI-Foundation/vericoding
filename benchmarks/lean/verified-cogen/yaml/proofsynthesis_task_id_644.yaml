@@ -1,0 +1,33 @@
+vc-description: |-
+
+vc-preamble: |-
+  @[reducible, simp]
+  def reverseToK_precond (list : Array Int) (n : Nat) : Prop :=
+    list.size > 0 ∧ 0 < n ∧ n < list.size
+
+vc-helpers: |-
+
+vc-signature: |-
+  def reverseToK (list : Array Int) (n : Nat) (h_precond : reverseToK_precond list n) : Array Int :=
+
+vc-implementation: |-
+  -- <vc-implementation>
+    sorry
+  -- </vc-implementation>
+
+vc-condition: |-
+  @[reducible, simp]
+  def reverseToK_postcond (list : Array Int) (n : Nat) (result : Array Int) (h_precond : reverseToK_precond list n) : Prop :=
+    result.toList = (list.toList.take n).reverse ++ (list.toList.drop n)
+  
+  theorem reverseToK_spec_satisfied (list : Array Int) (n : Nat) (h_precond : reverseToK_precond list n) :
+      reverseToK_postcond list n (reverseToK list n h_precond) h_precond := by
+
+vc-proof: |-
+  -- <vc-proof>
+    sorry
+  -- </vc-proof>
+
+vc-postamble: |-
+  def main : IO Unit := 
+    return ()

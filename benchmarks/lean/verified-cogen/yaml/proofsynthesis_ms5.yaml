@@ -1,0 +1,37 @@
+vc-description: |-
+  /- 
+  Function that processes two arrays: a mutable array 'a' and a mutable array 'sum'.
+  The function should ensure that sum[0] is bounded by 4 * N.
+  -/
+
+vc-preamble: |-
+  @[reducible, simp]
+  def myfun_precond (a : Array Int) (sum : Array Int) (N : Int) : Prop :=
+    a.size = N.natAbs ∧ sum.size = 1 ∧ N > 0 ∧ N < 1000
+
+vc-helpers: |-
+
+vc-signature: |-
+  def myfun (a : Array Int) (sum : Array Int) (N : Int) (h_precond : myfun_precond a sum N) : Array Int :=
+
+vc-implementation: |-
+  -- <vc-implementation>
+    sorry
+  -- </vc-implementation>
+
+vc-condition: |-
+  @[reducible, simp]
+  def myfun_postcond (a : Array Int) (sum : Array Int) (N : Int) (result: Array Int) (h_precond : myfun_precond a sum N) : Prop :=
+    result.size = 1 ∧ result[0]! ≤ 4 * N
+
+  theorem myfun_spec_satisfied (a: Array Int) (sum: Array Int) (N: Int) (h_precond : myfun_precond a sum N) :
+      myfun_postcond a sum N (myfun a sum N h_precond) h_precond := by
+
+vc-proof: |-
+  -- <vc-proof>
+    sorry
+  -- </vc-proof>
+
+vc-postamble: |-
+  def main : IO Unit := do
+    return ()

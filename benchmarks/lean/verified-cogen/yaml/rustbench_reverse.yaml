@@ -1,0 +1,31 @@
+vc-description: |-
+
+vc-preamble: |-
+  @[reducible, simp]
+  def reverse_precond (a : Array Int) : Prop := True
+
+vc-helpers: |-
+
+vc-signature: |-
+  def reverse (a : Array Int) (h_precond : reverse_precond a) : Array Int :=
+
+vc-implementation: |-
+  -- <vc-implementation>
+    sorry
+  -- </vc-implementation>
+
+vc-condition: |-
+  @[reducible, simp]
+  def reverse_postcond (a : Array Int) (result: Array Int) (h_precond : reverse_precond a) : Prop :=
+    result.size = a.size ∧ (∀ i, i < result.size → result[i]! = a[a.size - 1 - i]!)
+  
+  theorem reverse_spec_satisfied (a: Array Int) (h_precond : reverse_precond a) :
+      reverse_postcond a (reverse a h_precond) h_precond := by
+
+vc-proof: |-
+  -- <vc-proof>
+    sorry
+  -- </vc-proof>
+
+vc-postamble: |-
+  def main : IO Unit := return ()
