@@ -100,15 +100,18 @@ def get_wandb_results(tag, project="vericoding", entity=None, debug=False):
                 print(f"  spec_folder: '{spec_folder}'")
             continue
             
-        # Get success percentage
-        success_rate = summary.get('results/success_rate_percent', 0) / 100.0  # Convert from percentage to decimal
+        # Get success percentage - raise error if not found
+        if 'results/success_rate_percent' not in summary:
+            raise ValueError(f"Could not find success rate in W&B summary for run {run.name}. Available keys: {list(summary.keys())}")
+        
+        success_rate_percent = summary['results/success_rate_percent']
         
         # Map model name
         model_name = MODEL_MAPPING.get(llm_provider, llm_provider)
         
-        results[model_name][dataset] = success_rate * 100  # Convert to percentage
+        results[model_name][dataset] = success_rate_percent  # Already in percentage
         
-        print(f"Found: {model_name} + {dataset} = {success_rate * 100:.1f}%")
+        print(f"Found: {model_name} + {dataset} = {success_rate_percent:.1f}%")
     
     return results
 
@@ -130,9 +133,9 @@ def generate_latex_table(results):
             for col in COLUMN_ORDER:
                 if col in results[model]:
                     value = results[model][col]
-                    row_data.append(f"{value:.1f}" if value > 0 else "")
+                    row_data.append(f"{value:.1f}")  # Include 0.0% results
                 else:
-                    row_data.append("")
+                    row_data.append("")  # Only empty if no data exists
             
             # Add empty total column for now
             row_data.append("")
