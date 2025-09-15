@@ -43,17 +43,26 @@ no goals
 #### 3. `lean_term_goal`
 Get the expected type (term goal) at a specific location.
 
-#### 4. `lean_hover_info`
-Get hover information (documentation) for symbols at a specific location. Easy way to get types.
+- `lean_hover_info`: Retrieve hover information (documentation) for symbols, terms, and expressions in a Lean file (at a specific line & column).
 
-#### 5. `lean_completions`
-Code auto-completion for available identifiers or imports.
+Example output (hover info on a `sorry`):
+
+```text
+The `sorry` tactic is a temporary placeholder for an incomplete tactic proof,
+closing the main goal using `exact sorry`.
+
+This is intended for stubbing-out incomplete parts of a proof while still having a syntactically correct proof skeleton.
+Lean will give a warning whenever a proof uses sorry, so you aren't likely to miss it,
+but you can double check if a theorem depends on sorry by looking for sorryAx in the output
+of the #print axioms my_thm command, the axiom used by the implementation of sorry.
+```
+
+`lean_completions`: Code auto-completion: Find available identifiers or import suggestions at a specific position (line & column) in a Lean file. Use this to fill in program fragments.
 
 #### 6. `lean_multi_attempt`
 Try multiple Lean code snippets at a line and return goal state and diagnostics for each.
 
-#### 7. `lean_declaration_file`
-Get file contents where a symbol is declared.
+- `lean_declaration_file`: Get the file contents where a symbol or term is declared. Use this to find the definition of a symbol.
 
 #### 8. Search Tools:
 - `lean_leansearch`: Natural language and Lean term search (limit: 3req/30s)
@@ -247,7 +256,8 @@ someCtx : Nat := 2
 -/
 def a : Nat :=
   let someCtx := 2
-  ?probablyZero
+  let probablyZero := ?probablyZero
+  ?probablyZero -- uses the hole in 2 places
 
 /--
 declaration uses 'sorry'
@@ -268,3 +278,21 @@ def a'' : Nat :=
   _
 ```
 
+
+## Tips for working across iterations
+
+Use named holes as Schelling points for agents to coordinate across iterations. Good names help other agents fill in the holes.
+
+You can use guillemets with holes to create "natural language" holes.
+
+```lean
+/--
+don't know how to synthesize placeholder
+context:
+someCtx : Nat := ⋯
+⊢ Nat
+-/
+def a'' : Nat :=
+  let someCtx := 2
+  ?«a whole sentence»
+```
