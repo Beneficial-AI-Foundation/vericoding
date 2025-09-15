@@ -39,7 +39,7 @@ DATASET_MAPPING = {
 # Column order for the table
 COLUMN_ORDER = ['numpy', 'dbench', 'heval', 'verina', 'bignum', 'proofsynth', 'apps']
 
-def get_wandb_results(tag, project="vericoding", entity=None):
+def get_wandb_results(tag, project="vericoding", entity=None, debug=False):
     """Fetch results from W&B for a specific tag."""
     api = wandb.Api()
     
@@ -53,10 +53,19 @@ def get_wandb_results(tag, project="vericoding", entity=None):
     
     results = defaultdict(lambda: defaultdict(dict))
     
-    for run in runs:
+    for i, run in enumerate(runs):
         # Get model and dataset info
         config = run.config
         summary = run.summary
+        
+        # Debug: print first few run structures
+        if debug and i < 3:
+            print(f"\nDEBUG: Run {run.name}")
+            print(f"Config keys: {list(config.keys())}")
+            print(f"Summary keys: {list(summary.keys())}")
+            print(f"Config: {dict(config)}")
+            print(f"Summary: {dict(summary)}")
+            print("-" * 50)
         
         llm_provider = config.get('llm_provider', '')
         language = config.get('language', '')
@@ -65,22 +74,34 @@ def get_wandb_results(tag, project="vericoding", entity=None):
         if language != 'lean':
             continue
             
-        # Try to extract dataset from folder path
+        # Try multiple ways to extract dataset
         folder = config.get('folder', '')
+        files_dir = config.get('files_dir', '')
+        dataset_path = config.get('dataset_path', '')
+        spec_folder = config.get('spec_folder', '')
+        
+        # Combine all possible paths
+        all_paths = f"{folder} {files_dir} {dataset_path} {spec_folder}".strip()
+        
         dataset = None
         
-        # Extract dataset name from folder path
+        # Extract dataset name from any available path
         for ds_key, ds_name in DATASET_MAPPING.items():
-            if ds_key in folder:
+            if ds_key in all_paths:
                 dataset = ds_name
                 break
         
         if not dataset:
-            print(f"Warning: Could not determine dataset for run {run.name}, folder: {folder}")
+            if debug:
+                print(f"Warning: Could not determine dataset for run {run.name}")
+                print(f"  folder: '{folder}'")
+                print(f"  files_dir: '{files_dir}'")
+                print(f"  dataset_path: '{dataset_path}'")
+                print(f"  spec_folder: '{spec_folder}'")
             continue
             
         # Get success percentage
-        success_rate = summary.get('success_rate', 0)
+        success_rate = summary.get('results/success_rate_percent', 0) / 100.0  # Convert from percentage to decimal
         
         # Map model name
         model_name = MODEL_MAPPING.get(llm_provider, llm_provider)
@@ -137,6 +158,7 @@ def main():
     parser.add_argument("--tag", required=True, help="W&B tag to filter results")
     parser.add_argument("--project", default="vericoding", help="W&B project name")
     parser.add_argument("--entity", help="W&B entity/username")
+    parser.add_argument("--debug", action="store_true", help="Enable debug output")
     
     args = parser.parse_args()
     
@@ -146,7 +168,7 @@ def main():
         return
     
     print(f"Fetching results for tag: {args.tag}")
-    results = get_wandb_results(args.tag, args.project, args.entity)
+    results = get_wandb_results(args.tag, args.project, args.entity, args.debug)
     
     if not results:
         print("No results found for the specified tag")
