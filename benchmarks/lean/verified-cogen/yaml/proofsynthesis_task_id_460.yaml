@@ -8,26 +8,19 @@ vc-preamble: |-
 
 vc-helpers: |-
 
-vc-signature: |-
+vc-definitions: |-
   def getFirstElements (arr : Array (Array Int)) (h_precond : getFirstElements_precond arr) : Array Int :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   @[reducible, simp]
   def getFirstElements_postcond (arr : Array (Array Int)) (result : Array Int) (h_precond : getFirstElements_precond arr) :=
     arr.size = result.size ∧ (∀ i, i < arr.size → result[i]! = arr[i]![0]!)
   
   theorem getFirstElements_spec_satisfied (arr : Array (Array Int)) (h_precond : getFirstElements_precond arr) :
       getFirstElements_postcond arr (getFirstElements arr h_precond) h_precond := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
   def main : IO Unit := return ()
+

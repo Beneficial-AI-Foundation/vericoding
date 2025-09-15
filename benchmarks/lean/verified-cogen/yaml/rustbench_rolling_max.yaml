@@ -13,15 +13,11 @@ vc-preamble: |-
 
 vc-helpers: |-
 
-vc-signature: |-
+vc-definitions: |-
   def rollingMax (numbers : Array Int) (h_precond : rollingMax_precond numbers) : Array Int :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   @[reducible, simp]
   def rollingMax_postcond (numbers : Array Int) (result : Array Int) (h_precond : rollingMax_precond numbers) : Prop :=
     result.size = numbers.size ∧ 
@@ -29,11 +25,8 @@ vc-condition: |-
   
   theorem rollingMax_spec_satisfied (numbers : Array Int) (h_precond : rollingMax_precond numbers) :
       rollingMax_postcond numbers (rollingMax numbers h_precond) h_precond := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
   def main : IO Unit := pure ()
+

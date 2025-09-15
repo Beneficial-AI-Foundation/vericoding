@@ -18,15 +18,11 @@ vc-preamble: |-
 
 vc-helpers: |-
 
-vc-signature: |-
+vc-definitions: |-
   def replaceWithColon (str1 : Array Char) (h_precond : replaceWithColon_precond (str1)) : Array Char :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   @[reducible, simp]
   def replaceWithColon_postcond (str1 : Array Char) (result : Array Char) (h_precond : replaceWithColon_precond (str1)) : Prop :=
     str1.size = result.size ∧ 
@@ -34,12 +30,9 @@ vc-condition: |-
   
   theorem replaceWithColon_spec_satisfied (str1 : Array Char) (h_precond : replaceWithColon_precond (str1)) :
       replaceWithColon_postcond (str1) (replaceWithColon (str1) h_precond) h_precond := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
   /- Test cases and examples -/
   def main : IO Unit := return ()
+

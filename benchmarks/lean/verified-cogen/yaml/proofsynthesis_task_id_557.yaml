@@ -38,15 +38,11 @@ vc-preamble: |-
 
 vc-helpers: |-
 
-vc-signature: |-
+vc-definitions: |-
   def toToggleCase (str1 : Array Char) (h_precond : toToggleCase_precond (str1)) : Array Char :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   @[reducible, simp]
   def toToggleCase_postcond (str1 : Array Char) (toggleCase : Array Char) (h_precond : toToggleCase_precond (str1)) : Prop :=
     str1.size = toggleCase.size ∧
@@ -54,11 +50,8 @@ vc-condition: |-
   
   theorem toToggleCase_spec_satisfied (str1 : Array Char) (h_precond : toToggleCase_precond (str1)) :
       toToggleCase_postcond (str1) (toToggleCase (str1) h_precond) h_precond := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
   def main : IO Unit := return ()
+

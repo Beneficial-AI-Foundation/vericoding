@@ -24,15 +24,11 @@ vc-preamble: |-
 
 vc-helpers: |-
 
-vc-signature: |-
+vc-definitions: |-
   def toUppercase (str1 : Array Char) (h_precond : toUppercase_precond str1) : Array Char :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   @[reducible, simp]
   def toUppercase_postcond (str1 : Array Char) (result : Array Char) (h_precond : toUppercase_precond str1) : Prop :=
     str1.size = result.size ∧ 
@@ -40,12 +36,9 @@ vc-condition: |-
   
   theorem toUppercase_spec_satisfied (str1 : Array Char) (h_precond : toUppercase_precond str1) :
       toUppercase_postcond str1 (toUppercase str1 h_precond) h_precond := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
   def main : IO Unit := do
     return ()
+

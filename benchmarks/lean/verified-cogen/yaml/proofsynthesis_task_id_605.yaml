@@ -11,28 +11,21 @@ vc-preamble: |-
 
 vc-helpers: |-
 
-vc-signature: |-
+vc-definitions: |-
   def primeNum (n : Nat) (h_precond : primeNum_precond (n)) : Bool :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   @[reducible, simp]
   def primeNum_postcond (n : Nat) (result: Bool) (h_precond : primeNum_precond (n)) :=
     (∀ k : Int, 2 ≤ k → k < n → ¬isDivisible (n : Int) k) ↔ result
   
   theorem primeNum_spec_satisfied (n: Nat) (h_precond : primeNum_precond (n)) :
       primeNum_postcond (n) (primeNum (n) h_precond) h_precond := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
   /- Main function for testing -/
   def main : IO Unit := do
     pure ()
+

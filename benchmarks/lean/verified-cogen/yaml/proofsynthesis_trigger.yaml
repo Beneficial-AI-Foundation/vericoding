@@ -11,26 +11,19 @@ vc-preamble: |-
 
 vc-helpers: |-
 
-vc-signature: |-
+vc-definitions: |-
   def getElementCheckProperty (arr : Array Nat) (i : Nat) (h_precond : getElementCheckProperty_precond arr i) : Nat :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   @[reducible, simp]
   def getElementCheckProperty_postcond (arr : Array Nat) (i : Nat) (ret : Nat) (h_precond : getElementCheckProperty_precond arr i) : Prop :=
     ret = i + 2 ∧ ret = arr[i]!
   
   theorem getElementCheckProperty_spec_satisfied (arr : Array Nat) (i : Nat) (h_precond : getElementCheckProperty_precond arr i) :
       getElementCheckProperty_postcond arr i (getElementCheckProperty arr i h_precond) h_precond := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
   /- Example usage and test cases would go here -/
+

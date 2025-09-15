@@ -9,15 +9,11 @@ vc-preamble: |-
 
 vc-helpers: |-
 
-vc-signature: |-
+vc-definitions: |-
   def removeDuplicates (a : Array Int) (h_precond : removeDuplicates_precond a) : Array Int :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   @[reducible, simp]
   def removeDuplicates_postcond (a : Array Int) (result: Array Int) (h_precond : removeDuplicates_precond a) :=
     (∀ i, i < result.size → inArray a result[i]!) ∧ 
@@ -25,11 +21,8 @@ vc-condition: |-
   
   theorem removeDuplicates_spec_satisfied (a: Array Int) (h_precond : removeDuplicates_precond a) :
       removeDuplicates_postcond a (removeDuplicates a h_precond) h_precond := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
   /- Test cases can be added here -/
+

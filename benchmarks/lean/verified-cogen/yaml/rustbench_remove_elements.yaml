@@ -12,15 +12,11 @@ vc-preamble: |-
 
 vc-helpers: |-
 
-vc-signature: |-
+vc-definitions: |-
   def removeElements (a : Array Int) (b : Array Int) (h_precond : removeElements_precond a b) : Array Int :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   @[reducible, simp]
   def removeElements_postcond (a : Array Int) (b : Array Int) (c : Array Int) (h_precond : removeElements_precond a b) : Prop :=
     (∀ k, k < c.size → inArray a c[k]! ∧ ¬inArray b c[k]!) ∧
@@ -28,11 +24,8 @@ vc-condition: |-
   
   theorem removeElements_spec_satisfied (a : Array Int) (b : Array Int) (h_precond : removeElements_precond a b) :
       removeElements_postcond a b (removeElements a b h_precond) h_precond := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
   def main : IO Unit := return ()
+

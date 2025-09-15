@@ -8,26 +8,19 @@ vc-preamble: |-
 
 vc-helpers: |-
 
-vc-signature: |-
+vc-definitions: |-
   def replaceLastElement (first : Array Int) (second : Array Int) (h_precond : replaceLastElement_precond first second) : Array Int :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   @[reducible, simp]
   def replaceLastElement_postcond (first : Array Int) (second : Array Int) (replaced_list : Array Int) (h_precond : replaceLastElement_precond first second) : Prop :=
     replaced_list.toList = (first.toList.take (first.size - 1)) ++ second.toList
-
+  
   theorem replaceLastElement_spec_satisfied (first : Array Int) (second : Array Int) (h_precond : replaceLastElement_precond first second) :
       replaceLastElement_postcond first second (replaceLastElement first second h_precond) h_precond := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
   def main : IO Unit := return ()
+

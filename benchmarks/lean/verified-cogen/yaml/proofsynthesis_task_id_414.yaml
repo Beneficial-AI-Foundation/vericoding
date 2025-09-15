@@ -7,26 +7,19 @@ vc-preamble: |-
 
 vc-helpers: |-
 
-vc-signature: |-
+vc-definitions: |-
   def anyValueExists (arr1 : Array Int) (arr2 : Array Int) (h_precond : anyValueExists_precond arr1 arr2) : Bool :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   @[reducible, simp]
   def anyValueExists_postcond (arr1 : Array Int) (arr2 : Array Int) (result: Bool) (h_precond : anyValueExists_precond arr1 arr2) :=
     (∃ k, 0 ≤ k ∧ k < arr1.size ∧ arr2.toList.contains (arr1[k]!)) ↔ result
   
   theorem anyValueExists_spec_satisfied (arr1: Array Int) (arr2: Array Int) (h_precond : anyValueExists_precond arr1 arr2) :
       anyValueExists_postcond arr1 arr2 (anyValueExists arr1 arr2 h_precond) h_precond := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
   #check anyValueExists
+

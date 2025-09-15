@@ -20,25 +20,18 @@ vc-preamble: |-
 
 vc-helpers: |-
 
-vc-signature: |-
+vc-definitions: |-
   def sumMinMax (arr : Array Int) (h_precond : sumMinMax_precond arr) : Int :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   @[reducible, simp]
   def sumMinMax_postcond (arr : Array Int) (sum : Int) (h_precond : sumMinMax_precond arr) : Prop :=
     sum = maxRcur arr.toList + minRcur arr.toList
   
   theorem sumMinMax_spec_satisfied (arr : Array Int) (h_precond : sumMinMax_precond arr) :
       sumMinMax_postcond arr (sumMinMax arr h_precond) h_precond := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
+

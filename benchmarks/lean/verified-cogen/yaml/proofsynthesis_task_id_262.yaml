@@ -7,26 +7,19 @@ vc-preamble: |-
 
 vc-helpers: |-
 
-vc-signature: |-
+vc-definitions: |-
   def splitArray (list : Array Int) (l : Nat) (h_precond : splitArray_precond list l) : Array Int × Array Int :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   @[reducible, simp]
   def splitArray_postcond (list : Array Int) (l : Nat) (result: Array Int × Array Int) (h_precond : splitArray_precond list l) : Prop :=
     result.1.toList = list.toList.take l ∧ result.2.toList = list.toList.drop l
   
   theorem splitArray_spec_satisfied (list: Array Int) (l: Nat) (h_precond : splitArray_precond list l) :
       splitArray_postcond list l (splitArray list l h_precond) h_precond := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
   def main : IO Unit := pure ()
+

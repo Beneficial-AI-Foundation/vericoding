@@ -7,15 +7,11 @@ vc-preamble: |-
 
 vc-helpers: |-
 
-vc-signature: |-
+vc-definitions: |-
   def twoWaySort (a : Array Bool) (h_precond : twoWaySort_precond a) : Array Bool :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   @[reducible, simp]
   def twoWaySort_postcond (a_old : Array Bool) (result : Array Bool) (h_precond : twoWaySort_precond a_old) : Prop :=
     result.size = a_old.size ∧ 
@@ -25,11 +21,8 @@ vc-condition: |-
   
   theorem twoWaySort_spec_satisfied (a : Array Bool) (h_precond : twoWaySort_precond a) :
       twoWaySort_postcond a (twoWaySort a h_precond) h_precond := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
   def main : IO Unit := return ()
+

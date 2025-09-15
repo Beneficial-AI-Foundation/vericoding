@@ -8,26 +8,19 @@ vc-preamble: |-
 
 vc-helpers: |-
 
-vc-signature: |-
+vc-definitions: |-
   def myfun1 (x : Array Int) (h_precond : myfun1_precond x) : Nat :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   @[reducible, simp]
   def myfun1_postcond (x : Array Int) (max_index : Nat) (h_precond : myfun1_precond x) : Prop :=
     (∀ k, k < x.size → x[max_index]! ≥ x[k]!) ∧ max_index < x.size
-
+  
   theorem myfun1_spec_satisfied (x : Array Int) (h_precond : myfun1_precond x) :
       myfun1_postcond x (myfun1 x h_precond) h_precond := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
   def main : IO Unit := pure ()
+

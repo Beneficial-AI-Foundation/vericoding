@@ -17,26 +17,19 @@ vc-preamble: |-
 
 vc-helpers: |-
 
-vc-signature: |-
+vc-definitions: |-
   def countDigits (text : Array Char) (h_precond : countDigits_precond text) : Nat :=
-
-vc-implementation: |-
-  -- <vc-implementation>
     sorry
-  -- </vc-implementation>
 
-vc-condition: |-
+vc-theorems: |-
   @[reducible, simp]
   def countDigits_postcond (text : Array Char) (count : Nat) (h_precond : countDigits_precond text) : Prop :=
     count ≤ text.size ∧ countDigitsRecursively text.toList = count
   
   theorem countDigits_spec_satisfied (text : Array Char) (h_precond : countDigits_precond text) :
       countDigits_postcond text (countDigits text h_precond) h_precond := by
-
-vc-proof: |-
-  -- <vc-proof>
     sorry
-  -- </vc-proof>
 
 vc-postamble: |-
   def main : IO Unit := return ()
+
