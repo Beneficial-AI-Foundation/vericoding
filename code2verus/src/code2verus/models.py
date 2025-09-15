@@ -14,6 +14,42 @@ class IterationStatus(str, Enum):
     VERIFICATION_ERROR = "verification_error"
 
 
+class TokenUsage(BaseModel):
+    """Token usage statistics for a single request or run"""
+    input_tokens: int = 0
+    output_tokens: int = 0
+    total_tokens: int = 0
+    requests: int = 0
+    tool_calls: int = 0
+    cache_read_tokens: int = 0
+    cache_write_tokens: int = 0
+    
+    def __add__(self, other: 'TokenUsage') -> 'TokenUsage':
+        """Add two TokenUsage instances together"""
+        return TokenUsage(
+            input_tokens=self.input_tokens + other.input_tokens,
+            output_tokens=self.output_tokens + other.output_tokens,
+            total_tokens=self.total_tokens + other.total_tokens,
+            requests=self.requests + other.requests,
+            tool_calls=self.tool_calls + other.tool_calls,
+            cache_read_tokens=self.cache_read_tokens + other.cache_read_tokens,
+            cache_write_tokens=self.cache_write_tokens + other.cache_write_tokens,
+        )
+    
+    @classmethod
+    def from_run_usage(cls, run_usage) -> 'TokenUsage':
+        """Create TokenUsage from pydantic-ai RunUsage object"""
+        return cls(
+            input_tokens=run_usage.input_tokens,
+            output_tokens=run_usage.output_tokens,
+            total_tokens=run_usage.total_tokens,
+            requests=run_usage.requests,
+            tool_calls=run_usage.tool_calls,
+            cache_read_tokens=getattr(run_usage, 'cache_read_tokens', 0),
+            cache_write_tokens=getattr(run_usage, 'cache_write_tokens', 0),
+        )
+
+
 class ConversationExchange(BaseModel):
     iteration: int
     prompt: str
@@ -21,6 +57,7 @@ class ConversationExchange(BaseModel):
     prompt_length: int
     response_length: int
     message_history_length: int
+    token_usage: Optional[TokenUsage] = None
     timestamp: datetime = Field(default_factory=datetime.now)
 
 
@@ -65,6 +102,9 @@ class TranslationDebugContext(BaseModel):
 
     # Output file information
     output_file_path: Optional[str] = None
+    
+    # Token usage tracking
+    total_token_usage: TokenUsage = Field(default_factory=TokenUsage)
 
     # Helper methods for easier access and manipulation
     def add_attempt(self, attempt: AttemptResult) -> None:
@@ -104,6 +144,11 @@ class TranslationDebugContext(BaseModel):
         """Set the output file path for the generated code"""
         self.output_file_path = file_path
         self.last_activity = datetime.now()
+    
+    def add_token_usage(self, token_usage: TokenUsage) -> None:
+        """Add token usage to the total"""
+        self.total_token_usage = self.total_token_usage + token_usage
+        self.last_activity = datetime.now()
 
     def get_duration(self) -> float:
         """Get the duration of the session in seconds"""
@@ -141,6 +186,14 @@ class TranslationDebugContext(BaseModel):
             "final_status": self.get_final_status(),
             "source_code_length": len(self.original_source),
             "output_file_path": self.output_file_path,
+            # Token usage information
+            "token_usage": {
+                "input_tokens": self.total_token_usage.input_tokens,
+                "output_tokens": self.total_token_usage.output_tokens,
+                "total_tokens": self.total_token_usage.total_tokens,
+                "requests": self.total_token_usage.requests,
+                "tool_calls": self.total_token_usage.tool_calls,
+            },
             # Enhanced timing information
             "timestamps": self.get_formatted_timestamps(),
             "session_completed": self.end_time is not None,
