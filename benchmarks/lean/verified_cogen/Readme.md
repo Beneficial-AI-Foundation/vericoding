@@ -1,3 +1,3 @@
-yaml files generated with `$ code2verus --benchmark ../benchmarks/verus/verified-cogen/ --source-language verus --target-language lean --file-pattern "**/*.yaml" --max-concurrent 10 --save-debug --debug-report --debug-summary > out_lean_verus_verified_cogen_15_09_10_6.txt` where code2verus is from #181.
+yaml files generated with `$ code2verus --benchmark ../benchmarks/verus/verified_cogen/ --source-language verus --target-language lean --file-pattern "**/*.yaml" --max-concurrent 10 --save-debug --debug-report --debug-summary > out_lean_verus_verified_cogen_15_09_10_6.txt` where code2verus is from #181.
 
-The lean files were generated with `uv run src/convert_from_yaml.py --bench benchmarks/lean/verified-cogen --suffix lean`.
+The lean files were generated with `uv run src/convert_from_yaml.py --bench benchmarks/lean/verified_cogen --suffix lean`.
