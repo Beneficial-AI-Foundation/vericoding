@@ -68,6 +68,5 @@ lean_lib BenchmarksCheckedInCI where
     .submodules `numpy_simple.poor.unformatted,
     .submodules `numpy_triple.files,
     .submodules `verina.files,
-    .submodules `bignum.poor.bignum_ob,
   ]
   srcDir := "benchmarks/lean"
