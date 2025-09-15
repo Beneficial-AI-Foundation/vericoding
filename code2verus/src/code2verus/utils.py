@@ -92,6 +92,113 @@ def extract_rust_code(text: str) -> str:
     return text.strip()
 
 
+def yaml_to_lean(lean_yaml: str) -> str:
+    """Convert YAML format to Lean code by extracting and concatenating sections.
+    
+    This is specifically for Lean and follows the VeriCoding verina format which
+    does NOT include vc-description as a comment.
+    """
+    try:
+        # Parse the YAML content
+        parsed_yaml = yaml.safe_load(lean_yaml)
+
+        # Ensure the parsed YAML is a dictionary before processing
+        if not isinstance(parsed_yaml, dict):
+            logfire.error(
+                f"YAML did not parse to a dictionary, got {type(parsed_yaml)}: {parsed_yaml}"
+            )
+            raise ValueError(
+                f"Expected YAML to be a dictionary, got {type(parsed_yaml)}"
+            )
+
+        # Extract and concatenate YAML sections (skip vc-description for Lean)
+        parts = []
+
+        # Add sections in the expected order for Lean YAML structure with proper formatting
+        # For Lean, we need to wrap sections in comment blocks to match the expected format
+        
+        # Handle preamble
+        if "vc-preamble" in parsed_yaml and parsed_yaml["vc-preamble"]:
+            content = str(parsed_yaml["vc-preamble"]).strip()
+            if content:
+                parts.append("-- <vc-preamble>")
+                parts.append(content)
+                parts.append("-- </vc-preamble>")
+                parts.append("")
+        
+        # Handle helpers
+        if "vc-helpers" in parsed_yaml and parsed_yaml["vc-helpers"]:
+            content = str(parsed_yaml["vc-helpers"]).strip()
+            parts.append("-- <vc-helpers>")
+            if content:
+                parts.append(content)
+            parts.append("-- </vc-helpers>")
+            parts.append("")
+        else:
+            parts.append("-- <vc-helpers>")
+            parts.append("-- </vc-helpers>")
+            parts.append("")
+        
+        # Handle definitions (signature + implementation)
+        parts.append("-- <vc-definitions>")
+        if "vc-signature" in parsed_yaml and parsed_yaml["vc-signature"]:
+            signature = str(parsed_yaml["vc-signature"]).strip()
+            if signature:
+                parts.append(signature)
+        
+        if "vc-implementation" in parsed_yaml and parsed_yaml["vc-implementation"]:
+            implementation = str(parsed_yaml["vc-implementation"]).strip()
+            if implementation:
+                parts.append(implementation)
+        parts.append("-- </vc-definitions>")
+        parts.append("")
+        
+        # Handle theorems (condition + proof)
+        parts.append("-- <vc-theorems>")
+        if "vc-condition" in parsed_yaml and parsed_yaml["vc-condition"]:
+            condition = str(parsed_yaml["vc-condition"]).strip()
+            if condition:
+                parts.append(condition)
+        
+        if "vc-proof" in parsed_yaml and parsed_yaml["vc-proof"]:
+            proof = str(parsed_yaml["vc-proof"]).strip()
+            if proof:
+                parts.append(proof)
+        parts.append("-- </vc-theorems>")
+        
+        # Handle postamble
+        if "vc-postamble" in parsed_yaml and parsed_yaml["vc-postamble"]:
+            content = str(parsed_yaml["vc-postamble"]).strip()
+            if content:
+                parts.append("")
+                parts.append(content)
+
+        # Check if no valid content was found
+        if not parts:
+            logfire.warning(
+                "No valid Lean content found in YAML - all sections are empty"
+            )
+            raise ValueError(
+                "No valid Lean content found: all YAML sections (vc-preamble, vc-helpers, vc-signature, vc-implementation, vc-condition, vc-proof, vc-postamble) are empty or missing"
+            )
+
+        return "\n".join(parts)
+
+    except yaml.YAMLError as e:
+        logfire.error(f"YAML parsing failed: {e}")
+        logfire.info(
+            f"Failed YAML content (first 500 chars): {lean_yaml[: min(500, len(lean_yaml))]}..."
+        )
+        # Fall back to using the content as-is
+        logfire.info("Using YAML content as-is despite parsing error")
+        return lean_yaml
+
+    except Exception as e:
+        logfire.error(f"Unexpected error during YAML processing: {e}")
+        logfire.info(f"Failed to parse YAML, using as-is: {e}")
+        return lean_yaml
+
+
 def yaml_to_verus(verus_yaml: str, format_description_as_comment: bool = False) -> str:
     """Convert YAML format to Verus code by extracting and concatenating sections.
 
@@ -206,6 +313,93 @@ def yaml_to_verus(verus_yaml: str, format_description_as_comment: bool = False) 
         logfire.error(f"Unexpected error during YAML processing: {e}")
         logfire.info(f"Failed to parse YAML, using as-is: {e}")
         return verus_yaml
+
+
+def yaml_to_dafny(dafny_yaml: str) -> str:
+    """Convert YAML format to Dafny code by extracting and concatenating sections.
+    
+    This follows the Dafny format which uses comment blocks to mark sections.
+    """
+    try:
+        # Parse the YAML content
+        parsed_yaml = yaml.safe_load(dafny_yaml)
+
+        # Ensure the parsed YAML is a dictionary before processing
+        if not isinstance(parsed_yaml, dict):
+            logfire.error(
+                f"YAML did not parse to a dictionary, got {type(parsed_yaml)}: {parsed_yaml}"
+            )
+            raise ValueError(
+                f"Expected YAML to be a dictionary, got {type(parsed_yaml)}"
+            )
+
+        # Extract and concatenate YAML sections
+        parts = []
+
+        # Handle preamble
+        if "vc-preamble" in parsed_yaml and parsed_yaml["vc-preamble"]:
+            content = str(parsed_yaml["vc-preamble"]).strip()
+            if content:
+                parts.append("// <vc-preamble>")
+                parts.append(content)
+                parts.append("// </vc-preamble>")
+                parts.append("")
+        
+        # Handle helpers
+        if "vc-helpers" in parsed_yaml and parsed_yaml["vc-helpers"]:
+            content = str(parsed_yaml["vc-helpers"]).strip()
+            parts.append("// <vc-helpers>")
+            if content:
+                parts.append(content)
+            parts.append("// </vc-helpers>")
+            parts.append("")
+        else:
+            parts.append("// <vc-helpers>")
+            parts.append("// </vc-helpers>")
+            parts.append("")
+        
+        # Handle spec
+        if "vc-spec" in parsed_yaml and parsed_yaml["vc-spec"]:
+            content = str(parsed_yaml["vc-spec"]).strip()
+            if content:
+                parts.append("// <vc-spec>")
+                parts.append(content)
+                parts.append("// </vc-spec>")
+                parts.append("")
+        
+        # Handle code
+        if "vc-code" in parsed_yaml and parsed_yaml["vc-code"]:
+            content = str(parsed_yaml["vc-code"]).strip()
+            if content:
+                parts.append("// <vc-code>")
+                parts.append(content)
+                parts.append("// </vc-code>")
+        
+        # Handle postamble
+        if "vc-postamble" in parsed_yaml and parsed_yaml["vc-postamble"]:
+            content = str(parsed_yaml["vc-postamble"]).strip()
+            if content:
+                parts.append(content)
+
+        # Check if no valid content was found
+        if not parts:
+            logfire.warning(
+                "No valid Dafny content found in YAML - all sections are empty"
+            )
+            raise ValueError(
+                "No valid Dafny content found: all YAML sections are empty or missing"
+            )
+
+        return "\n".join(parts)
+
+    except yaml.YAMLError as e:
+        logfire.error(f"YAML parsing failed: {e}")
+        # Fall back to using the content as-is
+        return dafny_yaml
+
+    except Exception as e:
+        logfire.error(f"Unexpected error during YAML processing: {e}")
+        return dafny_yaml
 
 
 def concatenate_yaml_fields(yaml_content: str) -> str:

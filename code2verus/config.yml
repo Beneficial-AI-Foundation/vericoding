@@ -5,8 +5,8 @@ config:
   #model: "anthropic:claude-sonnet-4-20250514"
   model: "openrouter:anthropic/claude-sonnet-4"
   artifacts_dir: "artifacts"
-  max_translation_iterations: 5
-  max_retries: 16
+  max_translation_iterations: 16
+  max_retries: 2
   
   # OpenRouter models (alternative to direct provider APIs)
   # To use OpenRouter models, set OPENROUTER_API_KEY environment variable

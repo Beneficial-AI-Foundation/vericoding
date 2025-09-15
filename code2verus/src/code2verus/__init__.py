@@ -59,8 +59,10 @@ Examples:
   code2verus --source-language dafny --target-language verus   # Dafny to Verus (explicit)
   code2verus --source-language verus --target-language dafny   # Verus to Dafny (reverse)
   code2verus --source-language lean --target-language verus    # Lean to Verus
+  code2verus --source-language verus --target-language lean    # Verus to Lean
   code2verus --benchmark wendy-sun/DafnyBench --source-language dafny --target-language verus
   code2verus --benchmark sunblaze-ucb/verina --source-language lean --target-language verus
+  code2verus --benchmark sunblaze-ucb/verina --source-language verus --target-language lean
   code2verus --benchmark ./benches/verus_examples --source-language verus --target-language dafny
   code2verus --max-concurrent 5                        # Allow 5 concurrent translations
   code2verus --limit 10                                 # Process only the first 10 files
@@ -69,6 +71,7 @@ Supported Translation Combinations:
   - dafny -> verus
   - lean -> verus  
   - verus -> dafny
+  - verus -> lean
 
 Legacy Examples (deprecated --language flag):
   code2verus --language dafny                          # Same as --source-language dafny --target-language verus
@@ -166,7 +169,13 @@ Debug Examples:
         sys.exit(1)
 
     # For now, only support certain combinations
-    supported_combinations = [("dafny", "verus"), ("lean", "verus"), ("verus", "dafny")]
+    supported_combinations = [
+        ("dafny", "verus"),
+        ("dafny", "lean"),
+        ("lean", "verus"),
+        ("verus", "dafny"),
+        ("verus", "lean"),
+    ]
 
     if (args.source_language, args.target_language) not in supported_combinations:
         print(

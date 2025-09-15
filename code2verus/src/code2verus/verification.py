@@ -8,7 +8,7 @@ from typing import Tuple
 
 
 from code2verus.config import cfg
-from code2verus.utils import yaml_to_verus
+from code2verus.utils import yaml_to_verus, yaml_to_lean
 
 
 async def verify_code(
@@ -114,12 +114,12 @@ async def verify_lean_code(
     benchmark_path: str = "",
 ) -> Tuple[bool, str, str]:
     """Async function to verify Lean code"""
-    # For YAML, we'd need a yaml_to_lean function (not implemented yet)
-    src = lean_code  # For now, assume direct Lean code
+    # Convert YAML to Lean code if needed
+    src = yaml_to_lean(lean_code) if is_yaml else lean_code
     if is_yaml:
-        logfire.info("YAML to Lean conversion not yet implemented, using raw content")
+        logfire.info(f"Converted YAML to Lean code ({len(src)} characters)")
 
-    logfire.info(f"Verifying Lean code ({len(src)} characters)")
+    logfire.info(f"Verifying Lean code with Lake environment ({len(src)} characters)")
     logfire.info(f"Lean code preview:\n{src[: min(500, len(src))]}...\n")
 
     # Create a temporary file for verification
@@ -130,11 +130,12 @@ async def verify_lean_code(
         logfire.info(f"Created temporary Lean file: {verification_file}")
 
     try:
-        # Run lean verification
-        lean_path = cfg.get("lean_path", "lean")
+        # Run lean verification using lake env lean
+        lake_path = cfg.get("lake_path", "lake")
         process = await asyncio.create_subprocess_exec(
-            lean_path,
-            "--check",
+            lake_path,
+            "env",
+            "lean",
             verification_file,
             stdout=asyncio.subprocess.PIPE,
             stderr=asyncio.subprocess.PIPE,
@@ -147,7 +148,7 @@ async def verify_lean_code(
             verification_error = stderr.decode("utf-8") if stderr else ""
 
             if verification_success:
-                logfire.info("Lean verification successful")
+                logfire.info("Lean verification with Lake environment successful")
             else:
                 logfire.warning(f"Lean verification failed: {verification_error}")
 
