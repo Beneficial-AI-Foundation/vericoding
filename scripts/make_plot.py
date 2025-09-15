@@ -4,9 +4,12 @@ import argparse
 from pathlib import Path
 import json
 
+from math import ceil
+
 import matplotlib.pyplot as plt
 import numpy as np
-from matplotlib.ticker import MaxNLocator
+import matplotlib.ticker as mtick
+import matplotlib.colors as mcol
 
 from analyze_wandb_runs import ANALYSIS_FILE
 
@@ -14,6 +17,17 @@ PLOT_FILE = "plot.pdf"
 N_DIGITS = 2
 MAXY_COEF = 1.08
 
+PARAMS = {
+    "ratio": 1.0, #10**N_DIGITS, 
+    "inLen": 0, 
+    "outLen": 0
+}
+
+X_LABELS = {
+    "inLen": "Specification (characters)",
+    "outLen": "Solution (characters)",
+    "ratio": "Spec ratio",
+}
 
 def normalizeRatio(r):
     # We normalize the ratios by rounding to N decimals and multiplying by 10^N to get ints
@@ -21,6 +35,12 @@ def normalizeRatio(r):
 
 def floatRatio(r):
     return float(r) / (10**N_DIGITS)
+
+FORMATTING = {
+    "ratio": lambda x: f"{x:0.{N_DIGITS}f}",
+    "inLen": lambda x: f"{ceil(x)}",
+    "outLen": lambda x: f"{ceil(x)}"
+}
 
 def getBucketIdx(lst, elem):
     # Find the last element not greater than elem (first in reversed order), get its index
@@ -34,100 +54,119 @@ def main() -> None:
     p.add_argument("--out", default=None, help="Output directory (default: rundir)")
     p.set_defaults(_full=True)
     p.add_argument("--short-labels", dest="_full", action="store_false", help="Print short labels")
+    p.set_defaults(_show=False)
+    p.add_argument("--show", dest="_show", action="store_true", help="Show plot")
     p.add_argument("--buckets", default=10, type=int, help="Number of buckets (default: 10)")
 
     args = p.parse_args()
     rundir = Path(args.rundir)
+    runid = rundir.name
     plot = Path(args.out or rundir.joinpath(PLOT_FILE))
     analysis = rundir.joinpath(ANALYSIS_FILE)
 
-    minRatioNormalized = 10**N_DIGITS
+    # minRatioNormalized = 10**N_DIGITS
 
     try:
         asJson = []
         with open(analysis, "r") as f:
             asJson = json.loads(f.read())
 
-        maxRatio = minRatioNormalized
+        maxima = PARAMS.copy()
 
         for entry in asJson:
-            r = normalizeRatio(entry["ratio"])
-            entry.update({"ratio": r})
-            if(r > maxRatio):
-                maxRatio = r
+            # r = normalizeRatio(entry["ratio"])
+            # entry.update({"ratio": r})
 
-        width = (maxRatio - minRatioNormalized) // args.buckets
-        bucketCutoffs = [minRatioNormalized + x * width for x in range(args.buckets)]
+            for paramName in maxima:
+                v = entry[paramName]
+                if (v > maxima[paramName]):
+                    maxima[paramName] = v
 
-        results = [
-            {
-                "cutoff": c,
-                "elems": [],
-                "successes": 0,
-            }
-            for c in bucketCutoffs
-        ]
+        widths = {
+            k: float(maxima[k] - PARAMS[k]) / args.buckets
+            for k in maxima
+        }
 
+
+
+        cutoffs = {
+            p: [round(PARAMS[p] + x * widths[p], N_DIGITS) for x in range(args.buckets)]
+            for p in PARAMS
+        }
+
+        results = {
+            p : [
+                {
+                    "cutoff": c,
+                    "elems": [],
+                    "successes": 0
+                }
+                for c in cutoffs[p]
+            ]
+            for p in PARAMS
+        }
+    
+        nSuccess = 0
         for entry in asJson:
-            r = entry["ratio"]
             success = entry["success"]
             name = entry["name"]
+
+            successVal = 1 if success else 0
+            nSuccess += successVal
+
+            for p in PARAMS:
+                bucketIdx = getBucketIdx(cutoffs[p], entry[p])
+                results[p][bucketIdx]["elems"].append(name)
+                results[p][bucketIdx]["successes"] += successVal
             
-            bucketIdx = getBucketIdx(bucketCutoffs, r)
-            oldResults = results[bucketIdx]
+        globalSuccessRate = float(nSuccess)/float(len(asJson))
 
-            oldResults["elems"].append(name)
-            oldResults["successes"] += 1 if success else 0
+        rbounds = {
+            p: [ FORMATTING[p](c) for c in cutoffs[p][1:]] + ["\u221e"]
+            for p in PARAMS
+        }
 
-        rbounds = [ f"{floatRatio(c):0.2f}" for c in bucketCutoffs[1:]] + ["\u221e"]
+        shortLabels = {
+            p: [ f"{FORMATTING[p](c)}+" for c in cutoffs[p]]
+            for p in PARAMS
+        }
 
-        shortLabels = [
-            f"{floatRatio(bucketCutoffs[i]):0.2f}+" for i in range(args.buckets)
-        ]
-
-        longLabels = [
-            f"[{floatRatio(bucketCutoffs[i]):0.2f}, {rbounds[i]})" for i in range(args.buckets)
-        ]
+        longLabels = {
+            p: [f"[{FORMATTING[p](cutoffs[p][i])}, {rbounds[p][i]})" for i in range(args.buckets)]
+            for p in PARAMS
+        }
 
         labels = longLabels if (args._full) else shortLabels
 
-        successCounts = {
-            'Success': np.array([x["successes"] for x in results]),
-            'Failure': np.array([len(x["elems"]) - x["successes"] for x in results]),
+        successRatios = {
+            p: [
+                float(x["successes"]) / len(x["elems"]) if len(x["elems"]) > 0 else 0.0
+                for x in results[p]]
+            for p in PARAMS
         }
 
-        width = 0.6
-        bottom = np.zeros(len(labels))
+        fig, axs = plt.subplots(1, 3, sharey=True)
+        fig.suptitle(f"Vericoding success - {runid}")
+        axs[0].set(ylabel='Success rate', ylim=(0, 1.1))
+        axs[0].yaxis.set_major_formatter(mtick.FuncFormatter(lambda y, _: f"{y:.0%}"))
+        for i, p in enumerate(successRatios):
+            axs[i].xaxis.grid(True)
+            for bucketIdx in range(len(successRatios[p])):
+                axs[i].plot(labels[p], successRatios[p])
+                axs[i].set(xlabel=X_LABELS[p])
+                axs[i].set_facecolor(mcol.ColorConverter.to_rgba("#ADD8E6", 0.3))
+                axs[i].tick_params(labelrotation=45)
+                axs[i].axhline(globalSuccessRate, linestyle="--", label="Global success rate")
+        
+        _handles, _labels = axs[-1].get_legend_handles_labels()
 
-        fig, ax = plt.subplots()
-        for state, count in successCounts.items():
-            p = ax.bar(labels, count, width, label=state, bottom=bottom)
-            bottom += count
-
-            ax.bar_label(p, label_type='edge')
-
-        ax.set_title('Successes by spec ratio')
-        ax.legend()
-        ax.yaxis.set_major_locator(MaxNLocator(integer=True))
-
-        maxy = max([successCounts["Success"][i] + successCounts["Failure"][i] for i in range(len(results))])
-
-        ax.set(xlabel='Spec ratio', ylim=(0, maxy * MAXY_COEF))
-        plt.xticks(rotation=45)
+        plt.legend(_handles[-1:], _labels[-1:])
+        fig.align_xlabels()
         plt.tight_layout()
         plt.savefig(plot)
-
-        # heights = [
-        #     float(x["successes"]) / len(x["elems"]) if len(x["elems"]) > 0 else 0.0 for x in results
-        # ]
-
-        # fig, ax = plt.subplots()
-        # bar_container = ax.bar(labels, heights)
-        # ax.set(ylabel='Success ratio', title='Success ratio by spec ratio', ylim=(0, 1.1))
-        # ax.set(xlabel='Spec ratio') #, xlim=(1,floatRatio(maxRatio))
-        # ax.bar_label(bar_container)
-        # plt.xticks(rotation=60)
-        # plt.tight_layout()
+        print(f"Saved to {plot}")
+        if (args._show):
+            plt.show()
 
     except FileNotFoundError:
         print(f"{ANALYSIS_FILE} not found at {rundir}. Run analyze_wandb_runs.py first.")
