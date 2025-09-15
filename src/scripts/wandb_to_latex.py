@@ -148,7 +148,29 @@ def get_wandb_results(tag, project="vericoding", entity=None, debug=False):
         if 'detailed_results' not in summary:
             raise ValueError(f"Could not find detailed_results in W&B summary for run {run.name} ({model_name} + {dataset}). Available keys: {list(summary.keys())}")
         
-        detailed_table = summary['detailed_results']
+        detailed_table_ref = summary['detailed_results']
+        
+        # Download the actual table data
+        try:
+            table_path = detailed_table_ref.get('path')
+            if not table_path:
+                raise ValueError(f"No path found in detailed_results for run {run.name} ({model_name} + {dataset})")
+                
+            # Download the table file from the run
+            table_file = run.file(table_path)
+            downloaded_file = table_file.download(replace=True)
+            
+            # Read the JSON table data
+            import json
+            with open(downloaded_file.name, 'r') as f:
+                detailed_table = json.load(f)
+            
+            # Clean up downloaded file
+            import os
+            os.remove(downloaded_file.name)
+            
+        except Exception as e:
+            raise ValueError(f"Could not download detailed_results table for run {run.name} ({model_name} + {dataset}): {e}")
         
         # Store detailed results for this model+dataset
         detailed_results[dataset][model_name] = detailed_table
@@ -169,12 +191,13 @@ def calculate_model_union(detailed_results, dataset_file_counts):
             file_success = {}  # filename -> bool (True if any model succeeded)
             
             for model_name, table_data in detailed_results[dataset].items():
-                if table_data and hasattr(table_data, 'data'):
-                    # Parse the table data to get individual file results
-                    for row in table_data.data:
-                        if len(row) >= 2:  # Assuming columns: [filename, success, ...]
-                            filename = row[0]
-                            success = row[1] if len(row) > 1 else False
+                if table_data and 'data' in table_data:
+                    # Parse the JSON table data to get individual file results
+                    # Columns: ['file_name', 'subfolder', 'success', 'output_file', 'error_message', 'has_bypass', 'file_path', 'original_spec', 'final_output', 'debug_files', 'generate_prompt', 'fix_prompts']
+                    for row in table_data['data']:
+                        if len(row) >= 3:  # Need at least file_name, subfolder, success
+                            filename = row[0]  # file_name is first column
+                            success = row[2]   # success is third column (index 2)
                             
                             all_files.add(filename)
                             if filename not in file_success:
