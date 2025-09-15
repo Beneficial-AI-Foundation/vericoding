@@ -305,7 +305,7 @@ def generate_latex_table(results, dataset_file_counts, run_urls, detailed_result
     for col in COLUMN_ORDER:
         if col in union_results:
             success_rate = union_results[col]['success_rate']
-            union_row_data.append(f"{success_rate:.1f}")
+            union_row_data.append(f"{success_rate:.1f}\\%")
             union_total_successful += union_results[col]['successful_files']
             union_total_files += union_results[col]['total_files']
         else:
@@ -314,7 +314,7 @@ def generate_latex_table(results, dataset_file_counts, run_urls, detailed_result
     # Calculate overall union total
     if union_total_files > 0:
         union_total_rate = (union_total_successful / union_total_files) * 100
-        union_row_data.append(f"{union_total_rate:.1f}")
+        union_row_data.append(f"{union_total_rate:.1f}\\%")
     else:
         union_row_data.append("")
     
