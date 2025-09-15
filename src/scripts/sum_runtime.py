@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Sum the runtime from W&B runs for a specific tag.
+Sum the runtime and costs from W&B runs for a specific tag.
 """
 
 import argparse
@@ -27,6 +27,20 @@ MODEL_MAPPING = {
     'grok-code': 'grok-code'
 }
 
+# Pricing data from batch_experiments.py (USD per million tokens)
+MODEL_PRICING = {
+    'claude-opus': {'input': 15.0, 'output': 75.0},
+    'claude-sonnet': {'input': 3.0, 'output': 15.0},
+    'deepseek': {'input': 0.25, 'output': 1.0},
+    'gemini': {'input': 1.25, 'output': 10.0},
+    'gemini-flash': {'input': 0.30, 'output': 2.50},
+    'glm': {'input': 0.413, 'output': 1.65},
+    'gpt': {'input': 1.25, 'output': 10.0},
+    'gpt-mini': {'input': 0.25, 'output': 2.0},
+    'grok': {'input': 3.0, 'output': 15.0},
+    'grok-code': {'input': 0.20, 'output': 1.50},
+}
+
 # Dataset name mapping
 DATASET_MAPPING = {
     'dafnybench': 'dbench',
@@ -37,8 +51,19 @@ DATASET_MAPPING = {
     'verina': 'verina'
 }
 
+def calculate_cost(llm_provider, input_tokens, output_tokens):
+    """Calculate cost based on model pricing and token usage."""
+    if llm_provider not in MODEL_PRICING:
+        return 0.0
+    
+    pricing = MODEL_PRICING[llm_provider]
+    input_cost = (input_tokens / 1_000_000) * pricing['input']
+    output_cost = (output_tokens / 1_000_000) * pricing['output']
+    
+    return input_cost + output_cost
+
 def get_runtime_data(tag, project="vericoding", entity=None, debug=False):
-    """Fetch runtime data from W&B for a specific tag."""
+    """Fetch runtime and cost data from W&B for a specific tag."""
     api = wandb.Api()
     
     # Get project path
@@ -51,6 +76,9 @@ def get_runtime_data(tag, project="vericoding", entity=None, debug=False):
     
     runtime_data = defaultdict(lambda: defaultdict(dict))
     total_runtime = 0
+    total_cost = 0
+    total_input_tokens = 0
+    total_output_tokens = 0
     
     for i, run in enumerate(runs):
         # Get model and dataset info
@@ -63,6 +91,8 @@ def get_runtime_data(tag, project="vericoding", entity=None, debug=False):
             print(f"Config keys: {list(config.keys())}", file=sys.stderr)
             print(f"Summary keys: {list(summary.keys())}", file=sys.stderr)
             print(f"Run duration: {run.summary.get('_runtime', 'Not found')}", file=sys.stderr)
+            print(f"Input tokens: {run.summary.get('llm/total_input_tokens', 'Not found')}", file=sys.stderr)
+            print(f"Output tokens: {run.summary.get('llm/total_output_tokens', 'Not found')}", file=sys.stderr)
             print("-" * 50, file=sys.stderr)
         
         llm_provider = config.get('llm_provider', '')
@@ -99,6 +129,13 @@ def get_runtime_data(tag, project="vericoding", entity=None, debug=False):
         if runtime_seconds is None:
             runtime_seconds = 0
             
+        # Get token usage
+        input_tokens = run.summary.get('llm/total_input_tokens', 0) or 0
+        output_tokens = run.summary.get('llm/total_output_tokens', 0) or 0
+        
+        # Calculate cost
+        cost = calculate_cost(llm_provider, input_tokens, output_tokens)
+        
         # Map model name
         model_name = MODEL_MAPPING.get(llm_provider, llm_provider)
         
@@ -106,42 +143,60 @@ def get_runtime_data(tag, project="vericoding", entity=None, debug=False):
         runtime_data[model_name][dataset] = {
             'runtime_seconds': runtime_seconds,
             'runtime_minutes': runtime_seconds / 60.0,
-            'runtime_hours': runtime_seconds / 3600.0
+            'runtime_hours': runtime_seconds / 3600.0,
+            'input_tokens': input_tokens,
+            'output_tokens': output_tokens,
+            'cost_usd': cost
         }
         
         total_runtime += runtime_seconds
+        total_cost += cost
+        total_input_tokens += input_tokens
+        total_output_tokens += output_tokens
         
-        print(f"Found: {model_name} + {dataset} = {runtime_seconds:.0f}s ({runtime_seconds/60:.1f}m)", file=sys.stderr)
+        print(f"Found: {model_name} + {dataset} = {runtime_seconds:.0f}s ({runtime_seconds/60:.1f}m) | {input_tokens:,}+{output_tokens:,} tokens | ${cost:.2f}", file=sys.stderr)
     
-    return runtime_data, total_runtime
+    return runtime_data, total_runtime, total_cost, total_input_tokens, total_output_tokens
 
-def print_runtime_summary(runtime_data, total_runtime):
-    """Print a summary of runtime data."""
+def print_runtime_summary(runtime_data, total_runtime, total_cost, total_input_tokens, total_output_tokens):
+    """Print a summary of runtime and cost data."""
     
-    print(f"\n=== RUNTIME SUMMARY ===")
-    print(f"Total runtime across all runs: {total_runtime:.0f} seconds ({total_runtime/60:.1f} minutes, {total_runtime/3600:.1f} hours)")
+    print(f"\n=== OVERALL SUMMARY ===")
+    print(f"Total runtime: {total_runtime:.0f} seconds ({total_runtime/60:.1f} minutes, {total_runtime/3600:.1f} hours)")
+    print(f"Total cost: ${total_cost:.2f}")
+    print(f"Total tokens: {total_input_tokens:,} input + {total_output_tokens:,} output = {total_input_tokens + total_output_tokens:,} total")
     
     # Sum by model
     print(f"\n=== BY MODEL ===")
-    model_totals = defaultdict(float)
+    model_totals = defaultdict(lambda: {'runtime': 0, 'cost': 0, 'input_tokens': 0, 'output_tokens': 0})
     for model_name, datasets in runtime_data.items():
         for dataset, data in datasets.items():
-            model_totals[model_name] += data['runtime_seconds']
+            model_totals[model_name]['runtime'] += data['runtime_seconds']
+            model_totals[model_name]['cost'] += data['cost_usd']
+            model_totals[model_name]['input_tokens'] += data['input_tokens']
+            model_totals[model_name]['output_tokens'] += data['output_tokens']
     
     for model_name in sorted(model_totals.keys()):
-        total_seconds = model_totals[model_name]
-        print(f"{model_name}: {total_seconds:.0f}s ({total_seconds/60:.1f}m, {total_seconds/3600:.1f}h)")
+        totals = model_totals[model_name]
+        runtime_hours = totals['runtime'] / 3600
+        total_tokens = totals['input_tokens'] + totals['output_tokens']
+        print(f"{model_name}: {runtime_hours:.1f}h | ${totals['cost']:.2f} | {total_tokens:,} tokens")
     
     # Sum by dataset
     print(f"\n=== BY DATASET ===")
-    dataset_totals = defaultdict(float)
+    dataset_totals = defaultdict(lambda: {'runtime': 0, 'cost': 0, 'input_tokens': 0, 'output_tokens': 0})
     for model_name, datasets in runtime_data.items():
         for dataset, data in datasets.items():
-            dataset_totals[dataset] += data['runtime_seconds']
+            dataset_totals[dataset]['runtime'] += data['runtime_seconds']
+            dataset_totals[dataset]['cost'] += data['cost_usd']
+            dataset_totals[dataset]['input_tokens'] += data['input_tokens']
+            dataset_totals[dataset]['output_tokens'] += data['output_tokens']
     
     for dataset in sorted(dataset_totals.keys()):
-        total_seconds = dataset_totals[dataset]
-        print(f"{dataset}: {total_seconds:.0f}s ({total_seconds/60:.1f}m, {total_seconds/3600:.1f}h)")
+        totals = dataset_totals[dataset]
+        runtime_hours = totals['runtime'] / 3600
+        total_tokens = totals['input_tokens'] + totals['output_tokens']
+        print(f"{dataset}: {runtime_hours:.1f}h | ${totals['cost']:.2f} | {total_tokens:,} tokens")
     
     # Detailed breakdown
     print(f"\n=== DETAILED BREAKDOWN ===")
@@ -149,7 +204,8 @@ def print_runtime_summary(runtime_data, total_runtime):
         print(f"\n{model_name}:")
         for dataset in sorted(runtime_data[model_name].keys()):
             data = runtime_data[model_name][dataset]
-            print(f"  {dataset}: {data['runtime_seconds']:.0f}s ({data['runtime_minutes']:.1f}m)")
+            tokens = data['input_tokens'] + data['output_tokens']
+            print(f"  {dataset}: {data['runtime_minutes']:.1f}m | ${data['cost_usd']:.2f} | {tokens:,} tokens")
 
 def main():
     parser = argparse.ArgumentParser(description="Sum runtime from W&B results")
@@ -165,14 +221,14 @@ def main():
         print("Error: WANDB_API_KEY environment variable not set", file=sys.stderr)
         return
     
-    print(f"Fetching runtime data for tag: {args.tag}", file=sys.stderr)
-    runtime_data, total_runtime = get_runtime_data(args.tag, args.project, args.entity, args.debug)
+    print(f"Fetching runtime and cost data for tag: {args.tag}", file=sys.stderr)
+    runtime_data, total_runtime, total_cost, total_input_tokens, total_output_tokens = get_runtime_data(args.tag, args.project, args.entity, args.debug)
     
     if not runtime_data:
         print("No runtime data found for the specified tag", file=sys.stderr)
         return
     
-    print_runtime_summary(runtime_data, total_runtime)
+    print_runtime_summary(runtime_data, total_runtime, total_cost, total_input_tokens, total_output_tokens)
 
 if __name__ == "__main__":
     main()
