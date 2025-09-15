@@ -1,0 +1,57 @@
+vc-description: |-
+  Given three integers A, B, and K, where Takahashi has A cookies and Aoki has B cookies initially.
+  Takahashi performs exactly K actions, where each action follows this priority:
+  1. If Takahashi has cookies, he eats one of his own cookies
+  2. Otherwise, if Aoki has cookies, Takahashi eats one of Aoki's cookies  
+  3. Otherwise, do nothing
+  Determine how many cookies Takahashi and Aoki have after all K actions.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+  spec fn valid_input(a: int, b: int, k: int) -> bool {
+      a >= 0 && b >= 0 && k >= 0
+  }
+
+  spec fn expected_takahashi_cookies(a: int, b: int, k: int) -> int
+      recommends valid_input(a, b, k)
+  {
+      if a >= k { a - k }
+      else { 0 }
+  }
+
+  spec fn expected_aoki_cookies(a: int, b: int, k: int) -> int
+      recommends valid_input(a, b, k)
+  {
+      if a >= k { b }
+      else if k - a < b { b - (k - a) }
+      else { 0 }
+  }
+
+  spec fn correct_result(a: int, b: int, k: int, takahashi: int, aoki: int) -> bool
+      recommends valid_input(a, b, k)
+  {
+      takahashi == expected_takahashi_cookies(a, b, k) &&
+      aoki == expected_aoki_cookies(a, b, k) &&
+      takahashi >= 0 && aoki >= 0
+  }
+
+vc-helpers: |
+
+vc-spec: |-
+  fn solve(a: int, b: int, k: int) -> (result: (int, int))
+      requires valid_input(a, b, k)
+      ensures correct_result(a, b, k, result.0, result.1)
+
+vc-code: |-
+  {
+      assume(false);
+      unreached()
+  }
+
+vc-postamble: |2-
+
+  }
+
+  fn main() {}

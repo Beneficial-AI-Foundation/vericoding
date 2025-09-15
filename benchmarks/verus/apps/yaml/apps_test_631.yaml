@@ -1,0 +1,99 @@
+vc-description: |-
+  Given an array of n integers, determine if it's possible to reorder the elements 
+  to make the double sum equal a target value m. The double sum is defined as
+  sum over i from 1 to n of (sum over j from i to n of a_j/j).
+  No elements may be added or removed from the array.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+  spec fn valid_input_format(s: Seq<char>) -> bool {
+      s.len() >= 7 && 
+      exists|pos: int| 0 < pos < s.len() && s[pos] == '\n'
+  }
+
+  spec fn get_test_count(stdin_input: Seq<char>) -> int {
+      if valid_input_format(stdin_input) {
+          1
+      } else {
+          0
+      }
+  }
+
+  spec fn get_array_sum(stdin_input: Seq<char>, test_idx: int) -> int {
+      if valid_input_format(stdin_input) && 0 <= test_idx < get_test_count(stdin_input) {
+          0
+      } else {
+          0
+      }
+  }
+
+  spec fn get_target_m(stdin_input: Seq<char>, test_idx: int) -> int {
+      if valid_input_format(stdin_input) && 0 <= test_idx < get_test_count(stdin_input) {
+          0
+      } else {
+          0
+      }
+  }
+
+  spec fn expected_output_for_input(stdin_input: Seq<char>) -> Seq<char> {
+      if valid_input_format(stdin_input) {
+          compute_expected_output(stdin_input, 0, get_test_count(stdin_input))
+      } else {
+          Seq::new(0, |i: int| ' ')
+      }
+  }
+
+  spec fn behavioral_correctness(stdin_input: Seq<char>, result: Seq<char>) -> bool {
+      if valid_input_format(stdin_input) {
+          let T = get_test_count(stdin_input);
+          count_responses(result) == T &&
+          (forall|i: int| 0 <= i < T ==>
+              {
+                  let array_sum = get_array_sum(stdin_input, i);
+                  let target_m = get_target_m(stdin_input, i);
+                  let response = get_response_at_index(result, i);
+                  let yes_seq = Seq::new(4, |j: int| ['Y', 'E', 'S', '\n'][j]);
+                  let no_seq = Seq::new(3, |j: int| ['N', 'O', '\n'][j]);
+                  (array_sum == target_m <==> response == yes_seq) &&
+                  (array_sum != target_m <==> response == no_seq)
+              })
+      } else {
+          false
+      }
+  }
+  spec fn compute_expected_output(stdin_input: Seq<char>, start_idx: int, test_count: int) -> Seq<char> {
+      Seq::new(0, |i: int| ' ')
+  }
+
+  spec fn count_responses(result: Seq<char>) -> int {
+      0
+  }
+
+  spec fn get_response_at_index(result: Seq<char>, idx: int) -> Seq<char> {
+      Seq::new(0, |i: int| ' ')
+  }
+
+vc-helpers: |
+
+vc-spec: |-
+  fn solve(stdin_input: Seq<char>) -> (result: Seq<char>)
+      requires 
+          valid_input_format(stdin_input),
+          stdin_input.len() > 0,
+          exists|pos: int| 0 <= pos < stdin_input.len() && stdin_input[pos] == '\n'
+      ensures behavioral_correctness(stdin_input, result)
+
+vc-code: |-
+  {
+      assume(false);
+      unreached()
+  }
+
+vc-postamble: |2-
+
+  }
+
+  fn main() {}

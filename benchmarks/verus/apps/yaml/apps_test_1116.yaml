@@ -1,0 +1,56 @@
+vc-description: |-
+  Given three integers r, b, and k, determine if it's possible to paint planks on a fence
+  according to specific rules without creating k consecutive planks of the same color.
+  Paint plank i red if i is divisible by r, blue if divisible by b, either color if 
+  divisible by both, and don't paint otherwise. Return "OBEY" if possible to avoid
+  k consecutive same-color planks, "REBEL" if unavoidable.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+  spec fn gcd(a: int, b: int) -> int
+    recommends a > 0 && b >= 0
+    decreases b
+  {
+    if b == 0 { a } else { gcd(b, a % b) }
+  }
+
+  spec fn valid_input(r: int, b: int, k: int) -> bool
+  {
+    r > 0 && b > 0 && k > 0
+  }
+
+  spec fn max_consecutive_same_color(r: int, b: int) -> int
+    recommends r > 0 && b > 0
+  {
+    let a = if r <= b { r } else { b };
+    let b_val = if r <= b { b } else { r };
+    let n = gcd(a, b_val);
+    -((n - b_val) / a)
+  }
+
+  spec fn can_avoid_consecutive(r: int, b: int, k: int) -> bool
+    recommends valid_input(r, b, k)
+  {
+    max_consecutive_same_color(r, b) < k
+  }
+
+vc-helpers: |
+
+vc-spec: |-
+  fn solve(r: int, b: int, k: int) -> (result: &'static str)
+    requires valid_input(r, b, k)
+    ensures result == (if can_avoid_consecutive(r, b, k) { "OBEY" } else { "REBEL" })
+
+vc-code: |-
+  {
+    assume(false);
+    unreached()
+  }
+
+vc-postamble: |2-
+
+  }
+
+  fn main() {}

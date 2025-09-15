@@ -1,0 +1,32 @@
+vc-description: |-
+  Decrypt a string that was encrypted using the Right-Left cipher.
+  The Right-Left cipher encrypts by starting with the first character,
+  then alternating between appending to the right (even positions) and
+  prepending to the left (odd positions) for subsequent characters.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+  spec fn valid_input(t: Seq<char>) -> bool {
+      t.len() >= 1
+  }
+
+vc-helpers: |
+
+vc-spec: |-
+  fn solve(t: Seq<char>) -> (result: Seq<char>)
+      requires valid_input(t)
+      ensures result.len() == t.len()
+
+vc-code: |-
+  {
+      assume(false);
+      unreached()
+  }
+
+vc-postamble: |2-
+
+  }
+
+  fn main() {}

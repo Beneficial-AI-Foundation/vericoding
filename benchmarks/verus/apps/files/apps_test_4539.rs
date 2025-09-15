@@ -1,0 +1,41 @@
+// <vc-preamble>
+use vstd::prelude::*;
+
+verus! {
+spec fn sum_of_digits(n: int) -> int
+  decreases n
+{
+  if n <= 0 {
+    0
+  } else {
+    (n % 10) + sum_of_digits(n / 10)
+  }
+}
+
+spec fn valid_input(n: int) -> bool {
+  n >= 1
+}
+
+spec fn is_divisible_by_digit_sum(n: int) -> bool {
+  n >= 1 && sum_of_digits(n) > 0 && n % sum_of_digits(n) == 0
+}
+// </vc-preamble>
+
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
+fn solve(n: int) -> (result: &'static str)
+  requires valid_input(n)
+// </vc-spec>
+// <vc-code>
+{
+  assume(false);
+  unreached()
+}
+// </vc-code>
+
+
+}
+
+fn main() {}

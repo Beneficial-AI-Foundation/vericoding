@@ -1,0 +1,42 @@
+// <vc-preamble>
+use vstd::prelude::*;
+
+verus! {
+spec fn valid_input(n: int, a: int, b: int) -> bool {
+    1 <= n <= 20 && 1 <= a <= 50 && 1 <= b <= 50
+}
+
+spec fn train_cost(n: int, a: int) -> int {
+    n * a
+}
+
+spec fn minimum_cost(n: int, a: int, b: int) -> int {
+    let train_cost_val = train_cost(n, a);
+    if train_cost_val < b { train_cost_val } else { b }
+}
+
+spec fn correct_result(input: Seq<char>, result: Seq<char>) -> bool {
+    /* Implementation would require string parsing functions that are not available in this context */
+    true
+}
+// </vc-preamble>
+
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
+fn solve(input: Seq<char>) -> (result: Seq<char>)
+    requires input.len() > 0
+    ensures correct_result(input, result)
+// </vc-spec>
+// <vc-code>
+{
+    assume(false);
+    unreached()
+}
+// </vc-code>
+
+
+}
+
+fn main() {}

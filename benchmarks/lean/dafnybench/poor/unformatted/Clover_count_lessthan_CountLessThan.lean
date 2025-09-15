@@ -1,17 +1,20 @@
+import Std
 
+open Std.Do
 
 /-!
 {
-"name": "Clover_count_lessthan_CountLessThan",
-"category": "Dafny Translation",
-"description": "Automatically translated from Dafny specification: Clover_count_lessthan_CountLessThan",
-"source": "Dafny",
-"translation_date": "2024",
-"functions": ,
-"methods":
+  "name": "Clover_count_lessthan_CountLessThan",
+  "category": "Dafny Translation",
+  "description": "Automatically translated from Dafny specification: Clover_count_lessthan_CountLessThan",
+  "source": "Dafny",
+  "translation_date": "2024",
+  "functions": ,
+  "methods":
 }
 -/
 
+namespace DafnyBenchmarks
 
 /--
 Counts elements in a list that are less than a threshold value.
@@ -28,5 +31,7 @@ Specification for CountLessThan ensuring the returned count matches
 the size of the filtered list containing elements less than threshold.
 -/
 theorem CountLessThan_spec (numbers : List Int) (threshold : Int) :
-CountLessThan numbers threshold =
-(numbers.filter (fun i => i < threshold)).length := sorry
+  CountLessThan numbers threshold =
+    (numbers.filter (fun i => i < threshold)).length := sorry
+
+end DafnyBenchmarks

@@ -1,0 +1,96 @@
+// <vc-preamble>
+use vstd::prelude::*;
+
+verus! {
+spec fn split_lines(s: Seq<char>) -> Seq<Seq<char>>;
+
+spec fn parses_as_integers(line: Seq<char>, a: int, b: int) -> bool;
+
+spec fn contains_newline(s: Seq<char>) -> bool;
+
+spec fn is_numeric_output(s: Seq<char>) -> bool;
+
+spec fn int_to_string(n: nat) -> Seq<char>;
+
+spec fn max_int(a: int, b: int) -> int {
+    if a >= b { a } else { b }
+}
+
+spec fn min_int(a: int, b: int) -> int {
+    if a <= b { a } else { b }
+}
+
+spec fn valid_input_format(s: Seq<char>) -> bool {
+    let lines = split_lines(s);
+    lines.len() >= 1 &&
+    exists|n: nat, k: nat| 
+        parses_as_integers(lines[0], n as int, k as int) && n > 0 && k > 0 && lines.len() >= n + 1 &&
+        forall|i: int| 1 <= i <= n && i < lines.len() ==> 
+            exists|a: int, b: int| parses_as_integers(lines[i], a, b)
+}
+
+spec fn parsed_correctly(input: Seq<char>, n: nat, k: nat, segments: Seq<(int, int)>) -> bool {
+    let lines = split_lines(input);
+    lines.len() >= n + 1 && segments.len() == n &&
+    parses_as_integers(lines[0], n as int, k as int) &&
+    forall|i: int| 0 <= i < n && i + 1 < lines.len() ==> 
+        parses_as_integers(lines[i + 1], segments[i].0, segments[i].1)
+}
+
+spec fn is_valid_output(s: Seq<char>) -> bool {
+    s.len() > 0 &&
+    is_numeric_output(s)
+}
+
+spec fn segment_length(segment: (int, int)) -> nat {
+    let max_val = max_int(segment.0, segment.1);
+    let min_val = min_int(segment.0, segment.1);
+    if max_val >= min_val { (max_val - min_val + 1) as nat } else { 1 }
+}
+
+spec fn total_coverage(segments: Seq<(int, int)>) -> nat
+    decreases segments.len()
+{
+    if segments.len() == 0 { 
+        0 
+    } else { 
+        segment_length(segments[0]) + total_coverage(segments.subrange(1, segments.len() as int))
+    }
+}
+
+spec fn min_moves_to_divisible(segments: Seq<(int, int)>, k: nat) -> nat {
+    let total_coverage_val = total_coverage(segments);
+    let remainder = total_coverage_val % k;
+    if remainder == 0 { 0 } else { (k - remainder) as nat }
+}
+// </vc-preamble>
+
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
+fn solve(stdin_input: Seq<char>) -> (result: Seq<char>)
+    requires 
+        stdin_input.len() > 0,
+        contains_newline(stdin_input) || !contains_newline(stdin_input),
+    ensures 
+        result.len() == 0 || is_valid_output(result),
+        valid_input_format(stdin_input) ==> 
+            exists|n: nat, k: nat, segments: Seq<(int, int)>|
+                n > 0 && k > 0 && segments.len() == n &&
+                parsed_correctly(stdin_input, n, k, segments),
+        valid_input_format(stdin_input) ==> is_valid_output(result),
+        !valid_input_format(stdin_input) ==> 
+            (result.len() == 0 || result.len() > 0),
+// </vc-spec>
+// <vc-code>
+{
+    assume(false);
+    unreached()
+}
+// </vc-code>
+
+
+}
+
+fn main() {}

@@ -1,18 +1,21 @@
+import Std
 
 
+open Std.Do
 
 /-!
 {
-"name": "Clover_binary_search_BinarySearch",
-"category": "Dafny Translation",
-"description": "Automatically translated from Dafny specification: Clover_binary_search_BinarySearch",
-"source": "Dafny",
-"translation_date": "2024",
-"functions": ,
-"methods":
+  "name": "Clover_binary_search_BinarySearch",
+  "category": "Dafny Translation",
+  "description": "Automatically translated from Dafny specification: Clover_binary_search_BinarySearch",
+  "source": "Dafny",
+  "translation_date": "2024",
+  "functions": ,
+  "methods":
 }
 -/
 
+namespace DafnyBenchmarks
 
 /--
 Binary search implementation translated from Dafny.
@@ -37,8 +40,10 @@ Captures the key properties that:
 5. Elements from return onwards are greater or equal to key
 -/
 theorem BinarySearch_spec (a : Array Int) (key : Int) (n : Int) :
-(∀ i j, 0 ≤ i ∧ i < j ∧ j < a.size → a[i]! ≤ a[j]!) →
-(0 ≤ n ∧ n ≤ a.size) ∧
-(∀ i, 0 ≤ i ∧ i < n → a[i.toNat]! < key) ∧
-(n = a.size → ∀ i, 0 ≤ i ∧ i < a.size →  a[i]!  < key) ∧
-(∀ i, n ≤ i ∧ i < a.size → a[i.toNat]!  ≥ key) := sorry
+  (∀ i j, 0 ≤ i ∧ i < j ∧ j < a.size → a[i]! ≤ a[j]!) →
+  (0 ≤ n ∧ n ≤ a.size) ∧
+  (∀ i, 0 ≤ i ∧ i < n → a[i.toNat]! < key) ∧
+  (n = a.size → ∀ i, 0 ≤ i ∧ i < a.size →  a[i]!  < key) ∧
+  (∀ i, n ≤ i ∧ i < a.size → a[i.toNat]!  ≥ key) := sorry
+
+end DafnyBenchmarks

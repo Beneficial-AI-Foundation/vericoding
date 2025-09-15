@@ -1,18 +1,20 @@
-import Mathlib
+import Std
 
+open Std.Do
 
 /-!
 {
-"name": "Clover_is_palindrome_IsPalindrome",
-"category": "Dafny Translation",
-"description": "Automatically translated from Dafny specification: Clover_is_palindrome_IsPalindrome",
-"source": "Dafny",
-"translation_date": "2024",
-"functions": ,
-"methods":
+  "name": "Clover_is_palindrome_IsPalindrome",
+  "category": "Dafny Translation",
+  "description": "Automatically translated from Dafny specification: Clover_is_palindrome_IsPalindrome",
+  "source": "Dafny",
+  "translation_date": "2024",
+  "functions": ,
+  "methods":
 }
 -/
 
+namespace DafnyBenchmarks
 
 /--
 Checks if a sequence of characters is a palindrome.
@@ -29,5 +31,7 @@ States that the result is true if and only if each character matches its corresp
 character from the end of the sequence.
 -/
 theorem IsPalindrome_spec (x : Array Char) :
-IsPalindrome x = true ↔
-(∀ i, 0 ≤ i ∧ i < x.size → x[i]! = x[x.size - i - 1]!) := sorry
+  IsPalindrome x = true ↔
+  (∀ i, 0 ≤ i ∧ i < x.size → x[i]! = x[x.size - i - 1]!) := sorry
+
+end DafnyBenchmarks

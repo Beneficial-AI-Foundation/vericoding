@@ -1,0 +1,37 @@
+vc-description: |-
+  Given n books numbered 1 to n and a library with capacity k, over n consecutive days
+  a person requests book a_i on day i. The library starts empty and each book costs 1 CHF.
+  When at capacity, one existing book must be removed before adding a new one.
+  Find the minimum cost to satisfy all requests using optimal cache replacement strategy.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+  spec fn valid_input(n: int, k: int, requests: Seq<int>) -> bool {
+      n >= 1 && k >= 1 && requests.len() == n &&
+      forall|i: int| 0 <= i < requests.len() ==> 1 <= requests[i] <= n
+  }
+
+  spec fn valid_solution(n: int, k: int, requests: Seq<int>, cost: int) -> bool {
+      valid_input(n, k, requests) && cost >= 0 && cost <= n
+  }
+
+vc-helpers: |
+
+vc-spec: |-
+  fn solve(n: int, k: int, requests: Seq<int>) -> (cost: int)
+      requires valid_input(n, k, requests)
+      ensures valid_solution(n, k, requests, cost)
+
+vc-code: |-
+  {
+      assume(false);
+      unreached()
+  }
+
+vc-postamble: |2-
+
+  }
+
+  fn main() {}

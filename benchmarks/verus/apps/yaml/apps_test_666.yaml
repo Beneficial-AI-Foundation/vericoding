@@ -1,0 +1,45 @@
+vc-description: |-
+  Find the n-th element (1-indexed) in an infinite sequence constructed as blocks:
+  Block 1: [1], Block 2: [1,2], Block 3: [1,2,3], etc.
+  The complete sequence is: 1, 1, 2, 1, 2, 3, 1, 2, 3, 4, 1, 2, 3, 4, 5, ...
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+  spec fn triangular_number(m: int) -> int
+      recommends m >= 0
+  {
+      m * (m + 1) / 2
+  }
+  
+  spec fn valid_input(n: int) -> bool
+  {
+      n >= 1
+  }
+  
+  spec fn valid_result(n: int, result: int) -> bool
+      recommends valid_input(n)
+  {
+      result >= 1 && result <= n
+  }
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn solve(n: int) -> (result: int)
+      requires valid_input(n)
+      ensures valid_result(n, result)
+
+vc-code: |-
+  {
+      assume(false);
+      unreached()
+  }
+
+vc-postamble: |-
+
+  }
+
+  fn main() {}

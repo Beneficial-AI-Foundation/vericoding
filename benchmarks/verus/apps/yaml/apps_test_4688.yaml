@@ -1,0 +1,48 @@
+vc-description: |-
+  Given N balls in a row and K available colors, count the number of ways to paint 
+  the balls such that no two adjacent balls have the same color. The solution is
+  based on the combinatorial formula: first ball has K choices, each subsequent 
+  ball has (K-1) choices, giving K * (K-1)^(N-1) total ways.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+  spec fn power(base: int, exp: int) -> int
+    decreases exp
+  {
+    if exp == 0 { 1 } else { base * power(base, exp - 1) }
+  }
+
+  spec fn valid_input(n: int, k: int) -> bool
+  {
+    1 <= n <= 1000 && 2 <= k <= 1000
+  }
+
+  spec fn painting_ways(n: int, k: int) -> int
+  {
+    k * power(k - 1, n - 1)
+  }
+
+vc-helpers: |
+
+vc-spec: |-
+  fn solve(n: int, k: int) -> (result: int)
+    requires valid_input(n, k)
+    ensures 
+        result == painting_ways(n, k) &&
+        result > 0
+
+vc-code: |-
+  {
+    // impl-start
+    assume(false);
+    unreached()
+    // impl-end
+  }
+
+vc-postamble: |2-
+
+  }
+
+  fn main() {}

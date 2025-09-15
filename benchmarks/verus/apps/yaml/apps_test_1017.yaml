@@ -1,0 +1,41 @@
+vc-description: |-
+  Given n stones, find the maximum number of distributions such that no two
+  consecutive distributions contain the same number of stones. Each distribution
+  must contain at least 1 stone.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+  spec fn valid_input(n: int) -> bool {
+      n >= 1
+  }
+  
+  spec fn max_distributions(n: int) -> int
+      recommends valid_input(n)
+  {
+      if n % 3 == 0 { 2 * (n / 3) } else { 2 * (n / 3) + 1 }
+  }
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn solve(n: int) -> (result: int)
+      requires 
+          valid_input(n)
+      ensures 
+          result >= 1,
+          result == max_distributions(n)
+
+vc-code: |-
+  {
+      assume(false);
+      unreached()
+  }
+
+vc-postamble: |-
+
+  }
+
+  fn main() {}

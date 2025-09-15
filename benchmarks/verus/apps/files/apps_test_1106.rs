@@ -1,0 +1,54 @@
+// <vc-preamble>
+use vstd::prelude::*;
+
+verus! {
+
+spec fn valid_input(n: int, lights: Seq<int>) -> bool {
+    1 <= n <= 10 &&
+    lights.len() == power2(n+1) - 2 &&
+    forall|i: int| 0 <= i < lights.len() ==> 1 <= lights[i] <= 100
+}
+
+spec fn power2(n: int) -> int {
+    if n <= 0 { 1 }
+    else { 2 * power2(n - 1) }
+}
+
+spec fn dfs_result(i: int, n: int, a: Seq<int>) -> (int, int)
+    decreases power2(n+1) - i
+{
+    if i >= power2(n) { 
+        (0, 0) 
+    } else {
+        let left = dfs_result(i * 2, n, a);
+        let right = dfs_result(i * 2 + 1, n, a);
+        let x1 = left.0; let m1 = left.1;
+        let x2 = right.0; let m2 = right.1;
+        if m1 + a[i * 2] < m2 + a[i * 2 + 1] {
+            (x1 + x2 + m2 + a[i * 2 + 1] - m1 - a[i * 2], m2 + a[i * 2 + 1])
+        } else {
+            (x1 + x2 + m1 + a[i * 2] - m2 - a[i * 2 + 1], m1 + a[i * 2])
+        }
+    }
+}
+// </vc-preamble>
+
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
+fn solve(n: int, lights: Seq<int>) -> (result: int)
+    requires valid_input(n, lights)
+    ensures result >= 0
+// </vc-spec>
+// <vc-code>
+{
+    assume(false);
+    unreached()
+}
+// </vc-code>
+
+
+}
+
+fn main() {}

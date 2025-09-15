@@ -1,17 +1,20 @@
+import Std
 
+open Std.Do
 
 /-!
 {
-"name": "Clover_remove_front_remove_front",
-"category": "Dafny Translation",
-"description": "Automatically translated from Dafny specification: Clover_remove_front_remove_front",
-"source": "Dafny",
-"translation_date": "2024",
-"functions": ,
-"methods":
+  "name": "Clover_remove_front_remove_front",
+  "category": "Dafny Translation",
+  "description": "Automatically translated from Dafny specification: Clover_remove_front_remove_front",
+  "source": "Dafny",
+  "translation_date": "2024",
+  "functions": ,
+  "methods":
 }
 -/
 
+namespace DafnyBenchmarks
 
 /--
 Translates the Dafny method remove_front which removes the first element of an array.
@@ -28,6 +31,8 @@ Specification for remove_front method:
 - Ensures result contains all elements except first
 -/
 theorem remove_front_spec (a : Array Int) :
-a.size > 0 →
-∀ (c : Array Int), remove_front a = c →
-c.size = a.size - 1 := sorry
+  a.size > 0 →
+  ∀ (c : Array Int), remove_front a = c →
+  c.size = a.size - 1 := sorry
+
+end DafnyBenchmarks

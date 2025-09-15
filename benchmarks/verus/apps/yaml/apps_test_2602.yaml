@@ -1,0 +1,58 @@
+vc-description: |-
+  Given vanilla cookies (a), chocolate cookies (b), type-1 guests (n), and type-2 guests (m),
+  determine if there exists an ordering of all guests such that no guest gets angry.
+  Type-1 guests choose vanilla if v > c, else chocolate.
+  Type-2 guests choose chocolate if v > c, else vanilla.
+  A guest gets angry if their chosen cookie type has 0 cookies available.
+  
+  /* First check: must have enough total cookies */
+  
+  /* Second check: type-2 guests are the limiting factor */
+  
+  /* They will take from the minority cookie type, so we need */
+  
+  /* enough of the minority type to satisfy all type-2 guests */
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+  spec fn valid_test_case(a: nat, b: nat, n: nat, m: nat) -> bool
+  {
+      n + m > 0
+  }
+  
+  spec fn can_satisfy_all_guests(a: nat, b: nat, n: nat, m: nat) -> bool
+  {
+      a + b >= n + m &&
+      m <= min(a, b)
+  }
+  
+  spec fn min(x: nat, y: nat) -> nat
+  {
+      if x <= y { x } else { y }
+  }
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn solve_cookie_distribution(a: nat, b: nat, n: nat, m: nat) -> (result: bool)
+      requires
+          valid_test_case(a, b, n, m),
+      ensures
+          result == can_satisfy_all_guests(a, b, n, m),
+          result ==> (a + b >= n + m && m <= min(a, b)),
+          !result ==> (a + b < n + m || m > min(a, b)),
+
+vc-code: |-
+  {
+      assume(false);
+      unreached()
+  }
+
+vc-postamble: |-
+
+  }
+
+  fn main() {}

@@ -1,0 +1,51 @@
+vc-description: |-
+  Given a string S of digits (1-9), find the minimum absolute difference between 753 and any 3-digit number formed by taking three consecutive digits from S.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+  spec fn valid_input(s: Seq<char>) -> bool {
+      s.len() >= 3 && forall|i: int| 0 <= i < s.len() ==> '1' <= s[i] <= '9'
+  }
+
+  spec fn string_to_int(s: Seq<char>) -> int {
+      if s.len() == 3 && forall|i: int| 0 <= i < s.len() ==> '1' <= s[i] <= '9' {
+          100 * ((s[0] as int) - ('0' as int)) + 
+          10 * ((s[1] as int) - ('0' as int)) + 
+          ((s[2] as int) - ('0' as int))
+      } else {
+          0
+      }
+  }
+
+  spec fn abs_diff(x: int) -> int {
+      if x >= 0 { x } else { -x }
+  }
+
+  spec fn is_minimum_difference(s: Seq<char>, result: int) -> bool {
+      valid_input(s) ==> (
+          result >= 0 &&
+          (exists|i: int| 0 <= i <= s.len() - 3 && result == abs_diff(753 - string_to_int(s.subrange(i, i+3)))) &&
+          (forall|i: int| 0 <= i <= s.len() - 3 ==> result <= abs_diff(753 - string_to_int(s.subrange(i, i+3))))
+      )
+  }
+
+vc-helpers: |
+
+vc-spec: |-
+  fn solve(s: Seq<char>) -> (result: int)
+      requires valid_input(s)
+      ensures is_minimum_difference(s, result)
+
+vc-code: |-
+  {
+      assume(false);
+      unreached()
+  }
+
+vc-postamble: |2-
+
+  }
+
+  fn main() {}

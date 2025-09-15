@@ -1,0 +1,57 @@
+vc-description: |-
+  Given two integers A and B representing possible numbers of guests at a party,
+  find the minimum number of snack pieces that can be evenly distributed among
+  the guests in both scenarios (A guests or B guests). Each piece must go to
+  exactly one guest, and each guest must receive the same number of pieces
+  within each scenario. This is equivalent to finding the LCM of A and B.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+  spec fn valid_input(input: Seq<char>) -> bool {
+      input.len() > 0 &&
+      exists|space_index: int| 0 <= space_index < input.len() && input[space_index] == ' ' &&
+      forall|i: int| 0 <= i < input.len() ==> (input[i] == ' ' || ('0' <= input[i] <= '9'))
+  }
+  
+  spec fn parse_two_ints(s: Seq<char>) -> (int, int) {
+      /* Simplified parsing logic returning default values */
+      (1, 1)
+  }
+  
+  spec fn lcm(a: int, b: int) -> int
+      recommends a > 0 && b > 0
+  {
+      a * b
+  }
+  
+  spec fn valid_output(output: Seq<char>) -> bool {
+      output.len() > 0 &&
+      forall|i: int| 0 <= i < output.len() ==> ('0' <= output[i] <= '9')
+  }
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn solve(input: Seq<char>) -> (result: Seq<char>)
+      requires valid_input(input)
+      ensures ({
+          let nums = parse_two_ints(input);
+          let a = nums.0;
+          let b = nums.1;
+          result.len() > 0 && valid_output(result)
+      })
+
+vc-code: |-
+  {
+      assume(false);
+      unreached()
+  }
+
+vc-postamble: |-
+
+  }
+
+  fn main() {}

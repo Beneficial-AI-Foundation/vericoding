@@ -1,0 +1,67 @@
+vc-description: |-
+  Given 3 shells numbered 0, 1, 2, a ball starts under one shell. An operator makes n moves:
+  odd moves swap shells 0 and 1, even moves swap shells 1 and 2. Given the final position x
+  after n moves, determine the initial position of the ball.
+
+  /* odd move: swap 0 and 1 */
+
+  /* even move: swap 1 and 2 */
+
+  /* reverse odd move: swap 0 and 1 */
+
+  /* reverse even move: swap 1 and 2 */
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+  spec fn valid_position(pos: int) -> bool {
+      0 <= pos <= 2
+  }
+
+  spec fn swap_move(pos: int, move_num: int) -> int {
+      if move_num % 2 == 1 {
+          if pos == 0 { 1 }
+          else if pos == 1 { 0 }
+          else { 2 }
+      } else {
+          if pos == 1 { 2 }
+          else if pos == 2 { 1 }
+          else { 0 }
+      }
+  }
+
+  spec fn reverse_move(pos: int, move_num: int) -> int {
+      if move_num % 2 == 1 {
+          if pos == 0 { 1 }
+          else if pos == 1 { 0 }
+          else { 2 }
+      } else {
+          if pos == 1 { 2 }
+          else if pos == 2 { 1 }
+          else { 0 }
+      }
+  }
+
+vc-helpers: |
+
+vc-spec: |-
+  fn shell_game(n: int, x: int) -> (result: int)
+      requires 
+          n >= 1 && n <= 2000000000,
+          valid_position(x),
+      ensures valid_position(result),
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      unreached()
+      // impl-end
+  }
+
+vc-postamble: |2-
+
+  }
+
+  fn main() {}

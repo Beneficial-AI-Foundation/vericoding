@@ -1,0 +1,34 @@
+vc-description: |-
+  Given an integer N (1 ≤ N ≤ 1998), determine the first three characters of the N-th AtCoder Beginner Contest label.
+  Contest labeling system: Rounds 1-999 use "ABC", rounds 1000-1998 use "ABD".
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+  spec fn valid_input(n: int) -> bool {
+      1 <= n <= 1998
+  }
+
+  spec fn expected_result(n: int) -> Seq<char> {
+      if n < 1000 { seq!['A', 'B', 'C'] } else { seq!['A', 'B', 'D'] }
+  }
+
+vc-helpers: |
+
+vc-spec: |-
+  fn solve(n: i32) -> (result: Vec<char>)
+      requires valid_input(n as int)
+      ensures result@ == expected_result(n as int)
+
+vc-code: |-
+  {
+      assume(false);
+      unreached()
+  }
+
+vc-postamble: |2-
+
+  }
+
+  fn main() {}

@@ -1,0 +1,63 @@
+vc-description: |-
+  Given a functional directed graph where each vertex i has exactly one outgoing edge
+  to vertex f[i] with weight w[i], find for each starting vertex the sum and minimum
+  weight of all edges on a path of exactly k edges.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+  spec fn valid_graph(n: int, f: Seq<int>, w: Seq<int>) -> bool {
+    n > 0 && f.len() == n && w.len() == n &&
+    (forall|i: int| 0 <= i < n ==> 0 <= f[i] < n) &&
+    (forall|i: int| 0 <= i < n ==> w[i] >= 0)
+  }
+  
+  spec fn valid_result(n: int, sums: Seq<int>, mins: Seq<int>) -> bool {
+    sums.len() == n && mins.len() == n &&
+    forall|i: int| 0 <= i < n ==> sums[i] >= 0 && mins[i] >= 0
+  }
+  
+  spec fn path_sum(start: int, k: int, f: Seq<int>, w: Seq<int>) -> int
+    decreases k
+  {
+    if k == 0 {
+      0
+    } else {
+      w[start] + path_sum(f[start], k - 1, f, w)
+    }
+  }
+  
+  spec fn path_min(start: int, k: int, f: Seq<int>, w: Seq<int>) -> int
+    decreases k
+  {
+    if k == 1 {
+      w[start]
+    } else {
+      let next_min = path_min(f[start], k - 1, f, w);
+      if w[start] <= next_min { w[start] } else { next_min }
+    }
+  }
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn solve_graph(n: int, k: int, f: Seq<int>, w: Seq<int>) -> (result: (Seq<int>, Seq<int>))
+    requires 
+      valid_graph(n, f, w),
+      k > 0,
+    ensures 
+      valid_result(n, result.0, result.1),
+
+vc-code: |-
+  {
+    assume(false);
+    unreached()
+  }
+
+vc-postamble: |-
+
+  }
+
+  fn main() {}

@@ -1,0 +1,51 @@
+vc-description: |-
+  Given a rectangular sheet of paper with dimensions a × b millimeters (where a > b),
+  determine how many square pieces can be cut from it using the following process:
+  1. From the current rectangle, cut the largest possible square
+  2. Continue with the remaining rectangular strip (if any exists)  
+  3. Repeat until only a square remains
+  4. Count the total number of squares cut
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+  spec fn valid_input(a: int, b: int) -> bool {
+      a > 0 && b > 0
+  }
+
+  spec fn count_squares(a: int, b: int) -> int
+      decreases a + b
+  {
+      if a == 0 || b == 0 {
+          0
+      } else if a > b {
+          a / b + count_squares(a % b, b)
+      } else {
+          b / a + count_squares(a, b % a)
+      }
+  }
+
+vc-helpers: |
+
+vc-spec: |-
+  fn solve(a: int, b: int) -> (result: int)
+      requires 
+          valid_input(a, b),
+      ensures 
+          result >= 0,
+          (a == b) ==> (result == 1),
+          a > b ==> result >= 1,
+          result == count_squares(a, b),
+
+vc-code: |-
+  {
+      assume(false);
+      unreached()
+  }
+
+vc-postamble: |2-
+
+  }
+
+  fn main() {}

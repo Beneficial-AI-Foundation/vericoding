@@ -1,0 +1,56 @@
+vc-description: |-
+  Given N squares with heights, determine if it's possible to make heights non-decreasing
+  from left to right. For each square, you can decrease its height by 1 or leave unchanged.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+  spec fn max_height_up_to(heights: Seq<int>, index: int) -> int
+      decreases index + 1
+  {
+      if heights.len() > 0 && -1 <= index < heights.len() {
+          if index < 0 {
+              0
+          } else if index == 0 {
+              heights[0]
+          } else if heights[index] > max_height_up_to(heights, index - 1) {
+              heights[index]
+          } else {
+              max_height_up_to(heights, index - 1)
+          }
+      } else {
+          0
+      }
+  }
+
+  spec fn valid_input(n: int, heights: Seq<int>) -> bool {
+      n >= 1 && heights.len() == n && (forall|i: int| 0 <= i < heights.len() ==> heights[i] >= 1)
+  }
+
+  spec fn can_make_non_decreasing(heights: Seq<int>) -> bool {
+      if heights.len() > 0 {
+          forall|i: int| 0 <= i < heights.len() ==> heights[i] >= max_height_up_to(heights, i) - 1
+      } else {
+          true
+      }
+  }
+
+vc-helpers: |
+
+vc-spec: |-
+  fn solve(n: int, heights: Seq<int>) -> (result: String)
+      requires valid_input(n, heights)
+      ensures (result@ == seq!['Y', 'e', 's']) <==> can_make_non_decreasing(heights)
+
+vc-code: |-
+  {
+      assume(false);
+      unreached()
+  }
+
+vc-postamble: |2-
+
+  }
+
+  fn main() {}

@@ -1,0 +1,54 @@
+vc-description: |-
+  Given 5 cards with positive integers, find the minimum sum of remaining cards 
+  after optionally discarding exactly 2 or 3 cards that have the same number 
+  (at most one such discard operation allowed).
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+  spec fn valid_input(cards: Seq<int>) -> bool {
+      cards.len() == 5 && forall|i: int| 0 <= i < cards.len() ==> cards[i] > 0
+  }
+  
+  spec fn sum(cards: Seq<int>) -> int {
+      if cards.len() == 0 {
+          0
+      } else {
+          cards[0] + sum(cards.drop_first())
+      }
+  }
+  
+  spec fn min_possible_sum_up_to_index(cards: Seq<int>, index: int) -> int {
+      0
+  }
+  
+  spec fn min_possible_sum(cards: Seq<int>) -> int
+      recommends valid_input(cards)
+  {
+      min_possible_sum_up_to_index(cards, 5)
+  }
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn solve(cards: Seq<int>) -> (result: int)
+      requires 
+          valid_input(cards)
+      ensures 
+          result >= 0,
+          result <= sum(cards),
+          result == min_possible_sum(cards)
+
+vc-code: |-
+  {
+      assume(false);
+      unreached()
+  }
+
+vc-postamble: |-
+
+  }
+
+  fn main() {}

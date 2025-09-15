@@ -1,0 +1,41 @@
+vc-description: |-
+  Given a grid with n horizontal and m vertical sticks, two players take turns
+  removing intersection points. When an intersection is removed, all sticks 
+  passing through it are removed. The player who cannot make a move loses.
+  Akshat goes first. Determine the winner when both players play optimally.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+  spec fn valid_input(n: int, m: int) -> bool {
+      1 <= n <= 100 && 1 <= m <= 100
+  }
+
+  spec fn game_moves(n: int, m: int) -> int {
+      if n < m { n } else { m }
+  }
+
+  spec fn winner(n: int, m: int) -> bool {
+      let moves = game_moves(n, m);
+      moves % 2 == 1
+  }
+
+vc-helpers: |
+
+vc-spec: |-
+  fn solve(n: int, m: int) -> (result: bool)
+      requires valid_input(n, m)
+      ensures result == winner(n, m)
+
+vc-code: |-
+  {
+      assume(false);
+      false
+  }
+
+vc-postamble: |2-
+
+  }
+
+  fn main() {}

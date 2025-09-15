@@ -1,0 +1,58 @@
+vc-description: |-
+  Given an array of n integers and coefficients p, q, r, find the maximum value of 
+  p·a_i + q·a_j + r·a_k where indices i, j, k satisfy 1 ≤ i ≤ j ≤ k ≤ n.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+  spec fn max_prefix(s: Seq<int>, i: int) -> int
+      recommends 0 <= i < s.len()
+      decreases i
+  {
+      if i == 0 { s[0] }
+      else if s[i] > max_prefix(s, i-1) { s[i] }
+      else { max_prefix(s, i-1) }
+  }
+
+  spec fn max_seq(s: Seq<int>) -> int
+      recommends s.len() > 0
+      decreases s.len()
+  {
+      if s.len() == 1 { s[0] }
+      else if s[s.len()-1] > max_seq(s.subrange(0, s.len()-1)) { s[s.len()-1] }
+      else { max_seq(s.subrange(0, s.len()-1)) }
+  }
+
+  spec fn max_expression(n: int, p: int, q: int, r: int, a: Seq<int>) -> int
+      recommends n > 0 && a.len() == n
+  {
+      let s1 = Seq::new(n as nat, |i: int| a[i] * p);
+      let s2 = Seq::new(n as nat, |i: int| max_prefix(s1, i) + a[i] * q);
+      let s3 = Seq::new(n as nat, |i: int| max_prefix(s2, i) + a[i] * r);
+      max_seq(s3)
+  }
+
+  spec fn valid_input(n: int, a: Seq<int>) -> bool
+  {
+      n > 0 && a.len() == n
+  }
+
+vc-helpers: |
+
+vc-spec: |-
+  fn solve(n: int, p: int, q: int, r: int, a: Seq<int>) -> (result: int)
+      requires valid_input(n, a)
+      ensures result == max_expression(n, p, q, r, a)
+
+vc-code: |-
+  {
+      assume(false);
+      unreached()
+  }
+
+vc-postamble: |2-
+
+  }
+
+  fn main() {}

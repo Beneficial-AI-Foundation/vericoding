@@ -1,0 +1,56 @@
+vc-description: |-
+  Two athletes Willman and Bolt compete in a race with step lengths w and b meters respectively.
+  The race distance L is chosen uniformly at random from integers 1 to t (inclusive).
+  Each athlete can take at most floor(L/step_length) steps, traveling floor(L/step_length) * step_length distance.
+  They tie when they travel the same total distance: floor(L/w) * w = floor(L/b) * b.
+  Find the probability that they tie, expressed as an irreducible fraction.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+  spec fn valid_input(t: int, w: int, b: int) -> bool {
+      t > 0 && w > 0 && b > 0
+  }
+  
+  spec fn valid_fraction(numerator: int, denominator: int) -> bool {
+      numerator >= 0 && denominator > 0 && numerator <= denominator
+  }
+  
+  spec fn gcd(a: int, b: int) -> int {
+      if a == 0 {
+          b
+      } else if b == 0 {
+          a
+      } else if a <= b {
+          gcd(a, b - a)
+      } else {
+          gcd(a - b, b)
+      }
+  }
+  
+  spec fn is_irreducible_fraction(numerator: int, denominator: int) -> bool {
+      gcd(numerator, denominator) == 1
+  }
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn solve(t: int, w: int, b: int) -> (ret: (int, int))
+      requires valid_input(t, w, b)
+      ensures 
+          valid_fraction(ret.0, ret.1) &&
+          is_irreducible_fraction(ret.0, ret.1)
+
+vc-code: |-
+  {
+      assume(false);
+      unreached()
+  }
+
+vc-postamble: |-
+
+  }
+
+  fn main() {}

@@ -1,0 +1,64 @@
+vc-description: |-
+  Given an m×n grid of non-negative integers, find the minimum sum path from the top-left corner 
+  to the bottom-right corner. You can only move right or down.
+  
+  /* right */
+  
+  /* down */
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+  spec fn valid_path(path: Seq<(int, int)>, m: int, n: int) -> bool {
+      path.len() >= 1 &&
+      path[0] == (0int, 0int) &&
+      path[path.len() as int - 1] == (m-1, n-1) &&
+      (forall|i: int| 0 <= i < path.len() ==> 0 <= path[i].0 < m && 0 <= path[i].1 < n) &&
+      forall|i: int| 0 <= i < path.len() - 1 ==> 
+          (path[i+1].0 == path[i].0 && path[i+1].1 == path[i].1 + 1) ||
+          (path[i+1].0 == path[i].0 + 1 && path[i+1].1 == path[i].1)
+  }
+  
+  spec fn path_sum(path: Seq<(int, int)>, grid: Seq<Vec<i32>>) -> int
+      recommends forall|i: int| 0 <= i < path.len() ==> 0 <= path[i].0 < grid.len() && 0 <= path[i].1 < grid[path[i].0 as int].len()
+      decreases path.len()
+  {
+      if path.len() == 0 {
+          0int
+      } else {
+          grid[path[0].0 as int][path[0].1 as int] as int + path_sum(path.subrange(1, path.len() as int), grid)
+      }
+  }
+  
+  spec fn valid_input(grid: Seq<Vec<i32>>) -> bool {
+      grid.len() > 0 && 
+      (forall|i: int| 0 <= i < grid.len() ==> grid[i].len() > 0) &&
+      (exists|n: int| n > 0 && forall|i: int| 0 <= i < grid.len() ==> grid[i].len() == n) &&
+      forall|i: int, j: int| 0 <= i < grid.len() && 0 <= j < grid[i].len() ==> grid[i][j] >= 0
+  }
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn min_path_sum(grid: &Vec<Vec<i32>>) -> (result: i32)
+      requires 
+          valid_input(grid@),
+      ensures 
+          result >= 0,
+          grid.len() == 1 && grid[0].len() == 1 ==> result == grid[0][0],
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      0
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+
+  fn main() {}

@@ -1,0 +1,53 @@
+vc-description: |-
+  Find the maximum height of a pyramid that can be built with n cubes, where
+  level i requires exactly i*(i+1)/2 cubes. The pyramid is built from top to
+  bottom with levels 1, 2, 3, ..., h.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+  spec fn valid_input(n: int) -> bool {
+      n >= 1
+  }
+
+  spec fn cubes_for_level(level: int) -> int
+      recommends level >= 1
+  {
+      level * (level + 1) / 2
+  }
+
+  spec fn total_cubes_for_height(h: int) -> int
+      recommends h >= 1
+  {
+      h * (h + 1) * (h + 2) / 6
+  }
+
+  spec fn valid_pyramid_height(n: int, h: int) -> bool {
+      valid_input(n) && h >= 1 && 
+      total_cubes_for_height(h) <= n &&
+      total_cubes_for_height(h + 1) > n
+  }
+
+vc-helpers: |
+
+vc-spec: |-
+  fn solve(n: int) -> (result: int)
+      requires valid_input(n)
+      ensures 
+          result >= 1 &&
+          valid_pyramid_height(n, result)
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      unreached()
+      // impl-end
+  }
+
+vc-postamble: |2-
+
+  }
+
+  fn main() {}

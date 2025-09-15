@@ -1,0 +1,63 @@
+vc-description: |-
+  Given two integers A and B, compute f(A, B) which is the exclusive OR (XOR) of all integers 
+  in the range [A, B] inclusive. The XOR operation combines all bits where the result bit is 1 
+  if an odd number of input integers have 1 in that bit position, and 0 if an even number do.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+      spec fn valid_input(a: int, b: int) -> bool {
+          0 <= a <= b
+      }
+      
+      spec fn xor_int(x: int, y: int) -> int
+          decreases x + y
+      {
+          if x >= 0 && y >= 0 {
+              if x == 0 && y == 0 { 0 }
+              else if x == 0 { y }
+              else if y == 0 { x }
+              else {
+                  let bit_x = x % 2;
+                  let bit_y = y % 2;
+                  let xor_bit: int = if bit_x != bit_y { 1 } else { 0 };
+                  xor_bit + 2 * xor_int(x / 2, y / 2)
+              }
+          } else {
+              0
+          }
+      }
+      
+      spec fn xor_range(a: int, b: int) -> int
+          decreases b - a
+      {
+          if 0 <= a <= b {
+              if a == b { a }
+              else { xor_int(a, xor_range(a + 1, b)) }
+          } else {
+              0
+          }
+      }
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn solve(a: i32, b: i32) -> (result: i32)
+      requires 
+          a >= 0,
+          b >= 0,
+          a <= b
+      ensures 
+          result >= 0
+
+vc-code: |-
+  {
+      assume(false);
+      unreached()
+  }
+
+vc-postamble: |-
+  }
+
+  fn main() {}

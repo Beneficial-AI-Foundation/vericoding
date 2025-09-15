@@ -1,18 +1,21 @@
+import Std
 
 
+open Std.Do
 
 /-!
 {
-"name": "Clover_swap_arith_SwapArithmetic",
-"category": "Dafny Translation",
-"description": "Automatically translated from Dafny specification: Clover_swap_arith_SwapArithmetic",
-"source": "Dafny",
-"translation_date": "2024",
-"functions": ,
-"methods":
+  "name": "Clover_swap_arith_SwapArithmetic",
+  "category": "Dafny Translation",
+  "description": "Automatically translated from Dafny specification: Clover_swap_arith_SwapArithmetic",
+  "source": "Dafny",
+  "translation_date": "2024",
+  "functions": ,
+  "methods":
 }
 -/
 
+namespace DafnyBenchmarks
 
 /--
 Translates the Dafny SwapArithmetic method which swaps two integer values.
@@ -26,5 +29,7 @@ Specification for SwapArithmetic ensuring the values are swapped correctly:
 - Second return value equals input X
 -/
 theorem SwapArithmetic_spec (X Y : Int) :
-let (x, y) := SwapArithmetic X Y
-x = Y ∧ y = X := sorry
+  let (x, y) := SwapArithmetic X Y
+  x = Y ∧ y = X := sorry
+
+end DafnyBenchmarks

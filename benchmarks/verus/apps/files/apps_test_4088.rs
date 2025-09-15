@@ -1,0 +1,164 @@
+// <vc-preamble>
+use vstd::prelude::*;
+
+verus! {
+
+spec fn valid_input_format(input: Seq<char>) -> bool {
+    input.len() > 0 && 
+    exists|lines: Seq<Seq<char>>|
+        lines == split_lines(input) &&
+        lines.len() >= 1 &&
+        is_valid_integer(lines[0]) &&
+        ({
+            let t = string_to_int(lines[0]);
+            1 <= t <= 100 &&
+            lines.len() >= 1 + 3*t &&
+            forall|i: int| 0 <= i < t ==> {
+                let base_idx = 1 + 3*i;
+                base_idx + 2 < lines.len() &&
+                is_valid_string(lines[base_idx]) &&
+                is_valid_integer(lines[base_idx + 1]) &&
+                is_valid_integer_array(lines[base_idx + 2]) &&
+                ({
+                    let s = lines[base_idx];
+                    let m = string_to_int(lines[base_idx + 1]);
+                    let b_array = parse_integer_array(lines[base_idx + 2]);
+                    1 <= s.len() <= 50 &&
+                    (forall|j: int| 0 <= j < s.len() ==> 'a' <= s[j] <= 'z') &&
+                    1 <= m <= s.len() &&
+                    b_array.len() == m &&
+                    forall|k: int| 0 <= k < m ==> 0 <= b_array[k] <= 1225
+                })
+            }
+        })
+}
+
+spec fn valid_output_format(output: Seq<char>, input: Seq<char>) -> bool
+    recommends valid_input_format(input)
+{
+    let test_cases = get_test_cases(input);
+    test_cases.len() > 0 ==> 
+    exists|output_lines: Seq<Seq<char>>|
+        output_lines == split_lines(output) &&
+        output_lines.len() >= test_cases.len() &&
+        forall|i: int| 0 <= i < test_cases.len() ==> {
+            let (s, m, b) = test_cases[i];
+            i < output_lines.len() &&
+            output_lines[i].len() == m &&
+            forall|j: int| 0 <= j < output_lines[i].len() ==> 'a' <= output_lines[i][j] <= 'z'
+        }
+}
+
+spec fn output_satisfies_constraints(output: Seq<char>, input: Seq<char>) -> bool
+    recommends valid_input_format(input)
+{
+    let test_cases = get_test_cases(input);
+    let output_lines = split_lines(output);
+    test_cases.len() > 0 && output_lines.len() >= test_cases.len() ==>
+    forall|i: int| 0 <= i < test_cases.len() ==> {
+        let (s, m, b) = test_cases[i];
+        i < output_lines.len() &&
+        ({
+            let t = output_lines[i];
+            t.len() == m &&
+            (forall|j: int| 0 <= j < m ==> 
+                b[j] == sum_distances_to_greater_chars(t, j))
+        })
+    }
+}
+
+spec fn preserves_character_usage(output: Seq<char>, input: Seq<char>) -> bool
+    recommends valid_input_format(input)
+{
+    let test_cases = get_test_cases(input);
+    let output_lines = split_lines(output);
+    test_cases.len() > 0 && output_lines.len() >= test_cases.len() ==>
+    forall|i: int| 0 <= i < test_cases.len() ==> {
+        let (s, m, b) = test_cases[i];
+        i < output_lines.len() &&
+        ({
+            let t = output_lines[i];
+            forall|c: char| 'a' <= c <= 'z' ==> count_char(t, c) <= count_char(s, c)
+        })
+    }
+}
+
+spec fn contains_newline_terminated_results(output: Seq<char>) -> bool {
+    output.len() > 0 ==> output[output.len()-1] == '\n'
+}
+
+spec fn sum_distances_to_greater_chars(t: Seq<char>, j: int) -> int
+    recommends 0 <= j < t.len()
+{
+    sum_distances_to_greater_chars_helper(t, j, 0)
+}
+
+spec fn abs_diff(i: int, j: int) -> int {
+    if i >= j { i - j } else { j - i }
+}
+
+/* Helper function declarations */
+spec fn split_lines(input: Seq<char>) -> Seq<Seq<char>> {
+    seq![seq![]]
+}
+
+spec fn is_valid_integer(s: Seq<char>) -> bool {
+    true
+}
+
+spec fn string_to_int(s: Seq<char>) -> int {
+    0
+}
+
+spec fn is_valid_string(s: Seq<char>) -> bool {
+    true
+}
+
+spec fn is_valid_integer_array(s: Seq<char>) -> bool {
+    true
+}
+
+spec fn parse_integer_array(s: Seq<char>) -> Seq<int> {
+    seq![]
+}
+
+spec fn get_test_cases(input: Seq<char>) -> Seq<(Seq<char>, int, Seq<int>)> {
+    seq![]
+}
+
+spec fn count_char(s: Seq<char>, c: char) -> int {
+    0
+}
+
+spec fn sum_distances_to_greater_chars_helper(t: Seq<char>, j: int, acc: int) -> int {
+    0
+}
+// </vc-preamble>
+
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
+fn solve(stdin_input: &str) -> (result: String)
+    requires
+        stdin_input@.len() > 0,
+        valid_input_format(stdin_input@),
+    ensures
+        valid_output_format(result@, stdin_input@),
+        output_satisfies_constraints(result@, stdin_input@),
+        preserves_character_usage(result@, stdin_input@),
+        result@.len() > 0 ==> contains_newline_terminated_results(result@),
+// </vc-spec>
+// <vc-code>
+{
+    // impl-start
+    assume(false);
+    unreached()
+    // impl-end
+}
+// </vc-code>
+
+
+}
+
+fn main() {}

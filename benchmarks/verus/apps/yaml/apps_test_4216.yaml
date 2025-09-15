@@ -1,0 +1,53 @@
+vc-description: |-
+  Given a positive integer N, find the minimum value of F(A,B) over all pairs of positive integers (A,B) 
+  such that A × B = N, where F(A,B) is defined as the maximum of the number of digits in A and the number of digits in B.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+  spec fn num_digits(n: int) -> int
+    recommends n >= 1
+    decreases n
+  {
+    if n < 10 { 1 } else { 1 + num_digits(n / 10) }
+  }
+
+  spec fn valid_input(n: int) -> bool {
+    n >= 1
+  }
+
+  spec fn f(a: int, b: int) -> int
+    recommends a >= 1 && b >= 1
+  {
+    let digits_a = num_digits(a);
+    let digits_b = num_digits(b);
+    if digits_a > digits_b { digits_a } else { digits_b }
+  }
+
+  spec fn is_factor_pair(a: int, b: int, n: int) -> bool {
+    a >= 1 && b >= 1 && a * b == n
+  }
+
+vc-helpers: |
+
+vc-spec: |-
+  fn solve(n: int) -> (result: int)
+    requires 
+      valid_input(n)
+    ensures 
+      result >= 1,
+      exists|a: int, b: int| is_factor_pair(a, b, n) && result == f(a, b),
+      forall|a: int, b: int| is_factor_pair(a, b, n) ==> result <= f(a, b),
+
+vc-code: |-
+  {
+    assume(false);
+    unreached()
+  }
+
+vc-postamble: |2-
+
+  }
+
+  fn main() {}

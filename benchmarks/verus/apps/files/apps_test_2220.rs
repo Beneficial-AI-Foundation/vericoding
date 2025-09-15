@@ -1,0 +1,73 @@
+// <vc-preamble>
+use vstd::prelude::*;
+
+verus! {
+spec fn valid_input(n: int, m: int, k: int, emotes: Seq<int>) -> bool {
+    n >= 2 && k >= 1 && m >= 1 && emotes.len() == n &&
+    forall|i: int| 0 <= i < emotes.len() ==> emotes[i] >= 1
+}
+
+spec fn max_happiness(n: int, m: int, k: int, emotes: Seq<int>) -> int {
+    let k_plus_1 = k + 1;
+    let total = m / k_plus_1;
+    let remainder = m % k_plus_1;
+
+    let max_val = max_value(emotes);
+    let second_max_val = second_max_value(emotes);
+    remainder * max_val + max_val * (total * k) + second_max_val * total
+}
+
+spec fn max_value(s: Seq<int>) -> int
+    decreases s.len()
+{
+    if s.len() == 1 { 
+        s[0] 
+    } else if s[0] >= max_value(s.drop_first()) { 
+        s[0] 
+    } else { 
+        max_value(s.drop_first()) 
+    }
+}
+
+spec fn second_max_value(s: Seq<int>) -> int {
+    let max_val = max_value(s);
+    let filtered = filter_out(s, max_val, 1);
+    if filtered.len() > 0 { 
+        max_value(filtered) 
+    } else { 
+        1 
+    }
+}
+
+spec fn filter_out(s: Seq<int>, val: int, count: int) -> Seq<int>
+    decreases s.len(), count
+{
+    if s.len() == 0 || count == 0 { 
+        s 
+    } else if s[0] == val { 
+        filter_out(s.drop_first(), val, count - 1) 
+    } else { 
+        seq![s[0]].add(filter_out(s.drop_first(), val, count)) 
+    }
+}
+// </vc-preamble>
+
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
+fn solve(n: int, m: int, k: int, emotes: Seq<int>) -> (result: int)
+    requires valid_input(n, m, k, emotes)
+    ensures result >= 0
+// </vc-spec>
+// <vc-code>
+{
+    assume(false);
+    unreached()
+}
+// </vc-code>
+
+
+}
+
+fn main() {}

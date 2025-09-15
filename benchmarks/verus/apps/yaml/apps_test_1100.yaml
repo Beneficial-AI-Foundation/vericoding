@@ -1,0 +1,40 @@
+vc-description: |-
+  Given a regular convex polygon with n vertices, draw rays from each vertex to all others.
+  Rays stop when hitting vertices or intersecting previously drawn rays, creating regions.
+  A squirrel starts outside and jumps between adjacent regions to collect all walnuts.
+  Find the minimum number of jumps needed.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+  spec fn valid_input(n: int) -> bool {
+      n >= 3
+  }
+
+  spec fn min_jumps(n: int) -> int
+      recommends valid_input(n)
+  {
+      (n - 2) * (n - 2)
+  }
+
+vc-helpers: |
+
+vc-spec: |-
+  fn solve(n: int) -> (result: int)
+      requires valid_input(n)
+      ensures result == min_jumps(n)
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      unreached()
+      // impl-end
+  }
+
+vc-postamble: |2-
+
+  }
+
+  fn main() {}

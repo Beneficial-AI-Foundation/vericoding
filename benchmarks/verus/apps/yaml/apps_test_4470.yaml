@@ -1,0 +1,68 @@
+vc-description: |-
+  Given an integer n, find the minimum number of operations to transform it to 1, or return -1 if impossible.
+  Allowed operations: 1) n → n/2 if n divisible by 2, 2) n → 2n/3 if n divisible by 3, 3) n → 4n/5 if n divisible by 5.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+  spec fn valid_input(n: nat) -> bool {
+      n > 0
+  }
+
+  spec fn can_reach_one(n: nat) -> bool 
+      recommends n > 0
+  {
+      only_factors_235(n)
+  }
+
+  spec fn only_factors_235(n: nat) -> bool
+      recommends n > 0
+  {
+      reduce_by_factors_235(n) == 1
+  }
+
+  spec fn reduce_by_factors_235(n: nat) -> nat
+      recommends n > 0
+      decreases n
+  {
+      if n == 1 { 1 }
+      else if n % 2 == 0 { reduce_by_factors_235(n / 2) }
+      else if n % 3 == 0 { reduce_by_factors_235(n / 3) }
+      else if n % 5 == 0 { reduce_by_factors_235(n / 5) }
+      else { n }
+  }
+
+  spec fn min_moves_to_one(n: nat) -> nat
+      recommends n > 0 && can_reach_one(n)
+      decreases n
+  {
+      if n == 1 { 0 }
+      else if n % 2 == 0 { 1 + min_moves_to_one(n / 2) }
+      else if n % 3 == 0 { 2 + min_moves_to_one(n / 3) }
+      else if n % 5 == 0 { 3 + min_moves_to_one(n / 5) }
+      else { 0 }
+  }
+
+vc-helpers: |
+
+vc-spec: |-
+  fn solve(n: nat) -> (result: int)
+      requires 
+          valid_input(n)
+      ensures 
+          result >= -1,
+          result == -1 <==> !can_reach_one(n),
+          result >= 0 ==> can_reach_one(n) && result == min_moves_to_one(n)
+
+vc-code: |-
+  {
+      assume(false);
+      unreached()
+  }
+
+vc-postamble: |2-
+
+  }
+
+  fn main() {}

@@ -1,17 +1,20 @@
+import Std
 
+open Std.Do
 
 /-!
 {
-"name": "Clover_quotient_Quotient",
-"category": "Dafny Translation",
-"description": "Automatically translated from Dafny specification: Clover_quotient_Quotient",
-"source": "Dafny",
-"translation_date": "2024",
-"functions": ,
-"methods":
+  "name": "Clover_quotient_Quotient",
+  "category": "Dafny Translation",
+  "description": "Automatically translated from Dafny specification: Clover_quotient_Quotient",
+  "source": "Dafny",
+  "translation_date": "2024",
+  "functions": ,
+  "methods":
 }
 -/
 
+namespace DafnyBenchmarks
 
 /--
 Computes quotient and remainder of natural number division.
@@ -28,12 +31,14 @@ Specification:
 - Requires y ≠ 0
 - Ensures q * y + r = x ∧ 0 ≤ r < y ∧ 0 ≤ q
 -/
-def QuotientPrime (x : Nat) (y : Nat) : Int × Int := sorry
+def Quotient (x : Nat) (y : Nat) : Int × Int := sorry
 
 /--
-Specification theorem for QuotientPrime method
+Specification theorem for Quotient method
 -/
 theorem Quotient_spec (x : Nat) (y : Nat) :
-y ≠ 0 →
-let (r, q) := QuotientPrime x y
-q * y + r = x ∧ 0 ≤ r ∧ r < y ∧ 0 ≤ q := sorry
+  y ≠ 0 →
+  let (r, q) := Quotient x y
+  q * y + r = x ∧ 0 ≤ r ∧ r < y ∧ 0 ≤ q := sorry
+
+end DafnyBenchmarks

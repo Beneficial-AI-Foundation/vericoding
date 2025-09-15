@@ -1,18 +1,21 @@
+import Std
 
 
+open Std.Do
 
 /-!
 {
-"name": "Clover_linear_search1_LinearSearch",
-"category": "Dafny Translation",
-"description": "Automatically translated from Dafny specification: Clover_linear_search1_LinearSearch",
-"source": "Dafny",
-"translation_date": "2024",
-"functions": ,
-"methods":
+  "name": "Clover_linear_search1_LinearSearch",
+  "category": "Dafny Translation",
+  "description": "Automatically translated from Dafny specification: Clover_linear_search1_LinearSearch",
+  "source": "Dafny",
+  "translation_date": "2024",
+  "functions": ,
+  "methods":
 }
 -/
 
+namespace DafnyBenchmarks
 
 /--
 LinearSearch method that finds the first occurrence of element e in array a.
@@ -31,7 +34,9 @@ Specification for LinearSearch method ensuring:
 3. All elements before index n are not equal to e
 -/
 theorem LinearSearch_spec (a : Array Int) (e : Int) :
-let n := LinearSearch a e
-0 ≤ n ∧ n ≤ a.size ∧
-(n = a.size ∨ a[n.toNat]! = e) ∧
-(∀ i, 0 ≤ i ∧ i < n → e ≠ a[i.toNat]!) := sorry
+  let n := LinearSearch a e
+  0 ≤ n ∧ n ≤ a.size ∧
+  (n = a.size ∨ a[n.toNat]! = e) ∧
+  (∀ i, 0 ≤ i ∧ i < n → e ≠ a[i.toNat]!) := sorry
+
+end DafnyBenchmarks

@@ -1,0 +1,82 @@
+vc-description: |-
+  Given three positive integers k₁, k₂, k₃ (each ≤ 1500), determine if there exist 
+  starting times x₁, x₂, x₃ such that every integer t ≥ max(x₁, x₂, x₃) can be written 
+  as xᵢ + j·kᵢ for some i ∈ {1,2,3} and non-negative integer j. In other words, 
+  determine if the union of three arithmetic progressions can cover all sufficiently 
+  large positive integers.
+  
+  /* a == 2 */
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+  spec fn valid_input(nums: Seq<int>) -> bool {
+      nums.len() == 3 &&
+      forall|i: int| 0 <= i < nums.len() ==> nums[i] > 0 &&
+      forall|i: int| 0 <= i < nums.len() ==> nums[i] <= 1500
+  }
+  
+  spec fn sort_three(x: int, y: int, z: int) -> (int, int, int) {
+      if x <= y && x <= z {
+          if y <= z { (x, y, z) } else { (x, z, y) }
+      } else if y <= x && y <= z {
+          if x <= z { (y, x, z) } else { (y, z, x) }
+      } else {
+          if x <= y { (z, x, y) } else { (z, y, x) }
+      }
+  }
+  
+  spec fn compute_result(x: int, y: int, z: int) -> Seq<char> {
+      let sorted = sort_three(x, y, z);
+      let a = sorted.0;
+      let b = sorted.1;
+      let c = sorted.2;
+  
+      if a > 3 {
+          seq!['N', 'O']
+      } else if a == 3 {
+          if b > 3 {
+              seq!['N', 'O']
+          } else if b == 3 {
+              if c > 3 { seq!['N', 'O'] } else { seq!['Y', 'E', 'S'] }
+          } else {
+              seq!['N', 'O']
+          }
+      } else if a == 1 {
+          seq!['Y', 'E', 'S']
+      } else {
+          if b == 2 {
+              seq!['Y', 'E', 'S']
+          } else if b > 4 {
+              seq!['N', 'O']
+          } else if b == 4 {
+              if c == 4 { seq!['Y', 'E', 'S'] } else { seq!['N', 'O'] }
+          } else {
+              seq!['N', 'O']
+          }
+      }
+  }
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn solve(nums: Seq<int>) -> (result: Seq<char>)
+      requires
+          valid_input(nums),
+      ensures
+          result == seq!['Y', 'E', 'S'] || result == seq!['N', 'O'],
+          result == compute_result(nums[0], nums[1], nums[2]),
+
+vc-code: |-
+  {
+      assume(false);
+      unreached()
+  }
+
+vc-postamble: |-
+
+  }
+
+  fn main() {}

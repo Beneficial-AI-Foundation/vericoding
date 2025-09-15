@@ -1,0 +1,48 @@
+vc-description: |-
+  Given an N×M grid of cards (all initially face up), perform one operation for each card position (i,j): 
+  flip the card at position (i,j) and all cards in the 8 adjacent positions (sharing a side or corner), 
+  if those positions exist in the grid. Determine how many cards face down after all N×M operations are completed.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+  spec fn valid_input(n: int, m: int) -> bool {
+      n >= 1 && m >= 1
+  }
+
+  spec fn count_face_down_cards(n: int, m: int) -> int
+      recommends valid_input(n, m)
+  {
+      if n == 1 && m == 1 {
+          1
+      } else if n == 1 {
+          m - 2
+      } else if m == 1 {
+          n - 2
+      } else {
+          (n - 2) * (m - 2)
+      }
+  }
+
+vc-helpers: |
+
+vc-spec: |-
+  fn solve(n: int, m: int) -> (result: int)
+      requires 
+          valid_input(n, m),
+      ensures 
+          result == count_face_down_cards(n, m),
+          result >= 0,
+
+vc-code: |-
+  {
+      assume(false);
+      unreached()
+  }
+
+vc-postamble: |2-
+
+  }
+
+  fn main() {}

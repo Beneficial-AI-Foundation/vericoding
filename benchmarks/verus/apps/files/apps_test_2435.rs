@@ -1,0 +1,72 @@
+// <vc-preamble>
+use vstd::prelude::*;
+
+verus! {
+spec fn valid_input(test_cases: Seq<(int, int, Seq<(int, int)>)>) -> bool {
+    test_cases.len() >= 0 &&
+    forall|i: int| 0 <= i < test_cases.len() ==> {
+        let (n, x, operations) = test_cases[i];
+        n >= 1 && 1 <= x <= n && operations.len() >= 0 &&
+        (forall|j: int| 0 <= j < operations.len() ==> {
+            let (l, r) = operations[j];
+            1 <= l <= r <= n
+        })
+    }
+}
+
+spec fn compute_final_bounds(x: int, operations: Seq<(int, int)>) -> (int, int)
+    recommends forall|j: int| 0 <= j < operations.len() ==> {
+        let (l, r) = operations[j];
+        l <= r
+    }
+{
+    compute_final_bounds_helper(x, x, operations, 0)
+}
+
+spec fn compute_final_bounds_helper(min_pos: int, max_pos: int, operations: Seq<(int, int)>, index: int) -> (int, int)
+    decreases operations.len() - index
+{
+    if index >= operations.len() {
+        (min_pos, max_pos)
+    } else {
+        let (l, r) = operations[index];
+        let new_min = if l <= min_pos && min_pos <= r { l } else { min_pos };
+        let new_max = if l <= max_pos && max_pos <= r { r } else { max_pos };
+        compute_final_bounds_helper(new_min, new_max, operations, index + 1)
+    }
+}
+
+spec fn valid_results(test_cases: Seq<(int, int, Seq<(int, int)>)>, results: Seq<int>) -> bool
+    recommends valid_input(test_cases)
+{
+    results.len() == test_cases.len() &&
+    forall|i: int| 0 <= i < test_cases.len() ==> {
+        let (n, x, operations) = test_cases[i];
+        let final_bounds = compute_final_bounds(x, operations);
+        results[i] == final_bounds.1 - final_bounds.0 + 1 &&
+        final_bounds.0 <= x <= final_bounds.1 &&
+        results[i] >= 1 &&
+        1 <= final_bounds.0 <= final_bounds.1 <= n
+    }
+}
+// </vc-preamble>
+
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
+fn solve(test_cases: Seq<(int, int, Seq<(int, int)>)>) -> (results: Seq<int>)
+    requires valid_input(test_cases)
+    ensures valid_results(test_cases, results)
+// </vc-spec>
+// <vc-code>
+{
+    assume(false);
+    unreached()
+}
+// </vc-code>
+
+
+}
+
+fn main() {}

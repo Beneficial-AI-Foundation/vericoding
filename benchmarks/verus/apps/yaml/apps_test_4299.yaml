@@ -1,0 +1,54 @@
+vc-description: |-
+  Given a positive integer N (1 ≤ N ≤ 999), determine the pronunciation of the Japanese counter word "本" 
+  based on the ones digit of N. The pronunciation rules are: "hon" for ones digits 2,4,5,7,9; 
+  "pon" for ones digits 0,1,6,8; and "bon" for ones digit 3.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+  spec fn valid_input(n: int) -> bool {
+      1 <= n <= 999
+  }
+
+  spec fn is_hon_digit(digit: int) -> bool {
+      digit == 2 || digit == 4 || digit == 5 || digit == 7 || digit == 9
+  }
+
+  spec fn is_pon_digit(digit: int) -> bool {
+      digit == 0 || digit == 1 || digit == 6 || digit == 8
+  }
+
+  spec fn is_bon_digit(digit: int) -> bool {
+      digit == 3
+  }
+
+  spec fn correct_pronunciation(n: int) -> Seq<char> {
+      let ones_digit = n % 10;
+      if is_hon_digit(ones_digit) {
+          seq!['h', 'o', 'n', '\n']
+      } else if is_pon_digit(ones_digit) {
+          seq!['p', 'o', 'n', '\n']
+      } else {
+          seq!['b', 'o', 'n', '\n']
+      }
+  }
+
+vc-helpers: |
+
+vc-spec: |-
+  fn solve(n: int) -> (result: Seq<char>)
+      requires valid_input(n)
+      ensures result == correct_pronunciation(n)
+
+vc-code: |-
+  {
+      assume(false);
+      unreached()
+  }
+
+vc-postamble: |2-
+
+  }
+
+  fn main() {}

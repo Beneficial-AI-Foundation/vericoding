@@ -1,0 +1,52 @@
+vc-description: |-
+  Given n children numbered 1 to n, where child i needs at least a_i candies.
+  Children initially line up in order 1, 2, ..., n.
+  Distribution algorithm:
+  1. Give m candies to the first child in line
+  2. If the child has received enough candies (≥ a_i), they go home
+  3. Otherwise, the child goes to the end of the line
+  4. Repeat until all children go home
+  Find which child goes home last.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+  spec fn valid_input(n: int, m: int, a: Seq<int>) -> bool {
+      n > 0 && m > 0 && a.len() == n && forall|i: int| 0 <= i < a.len() ==> a[i] > 0
+  }
+
+  spec fn valid_result(result: int, n: int) -> bool {
+      1 <= result <= n
+  }
+
+  spec fn sum_candies_still_needed(queue: Seq<Seq<int>>) -> nat
+      decreases queue.len()
+  {
+      if queue.len() == 0 {
+          0nat
+      } else {
+          let child = queue[0];
+          let still_needed = if child.len() >= 2 && child[1] <= child[0] { 0nat } else if child.len() >= 2 { (child[1] - child[0]) as nat } else { 0nat };
+          still_needed + sum_candies_still_needed(queue.subrange(1, queue.len() as int))
+      }
+  }
+
+vc-helpers: |
+
+vc-spec: |-
+  fn solve(n: int, m: int, a: Seq<int>) -> (result: int)
+      requires valid_input(n, m, a)
+      ensures valid_result(result, n)
+
+vc-code: |-
+  {
+      assume(false);
+      unreached()
+  }
+
+vc-postamble: |2-
+
+  }
+
+  fn main() {}

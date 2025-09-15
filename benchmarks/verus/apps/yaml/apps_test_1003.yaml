@@ -1,0 +1,52 @@
+vc-description: |-
+  Vasya starts with n pairs of socks. Each day he uses one pair and discards it.
+  Every m-th day (days m, 2m, 3m, ...), his mother buys him one new pair in the evening.
+  Find the number of days Vasya can wear socks before running out.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+  spec fn valid_input(n: int, m: int) -> bool {
+      n >= 1 && m >= 2
+  }
+
+  spec fn socks_after_day(n: int, m: int, day: int) -> int {
+      if m > 0 {
+          n + day / m - day
+      } else {
+          0
+      }
+  }
+
+  spec fn can_wear_socks_on_day(n: int, m: int, day: int) -> bool {
+      if m > 0 {
+          day >= 1 ==> socks_after_day(n, m, day - 1) > 0
+      } else {
+          false
+      }
+  }
+
+vc-helpers: |
+
+vc-spec: |-
+  fn solve(n: int, m: int) -> (result: int)
+    requires 
+        valid_input(n, m)
+    ensures 
+        result >= n,
+        result > 0,
+        socks_after_day(n, m, result) <= 0,
+        forall|k: int| 1 <= k < result ==> socks_after_day(n, m, k) > 0
+
+vc-code: |-
+  {
+      assume(false);
+      n
+  }
+
+vc-postamble: |2-
+
+  }
+
+  fn main() {}

@@ -1,0 +1,43 @@
+vc-description: |-
+  Distribute N crackers to K users as evenly as possible and find the minimum 
+  possible absolute difference between the maximum and minimum number of crackers 
+  received by any user.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+  spec fn valid_input(n: int, k: int) -> bool {
+      n >= 1 && k >= 1 && n <= 100 && k <= 100
+  }
+
+  spec fn min_cracker_difference(n: int, k: int) -> int
+      recommends k > 0
+  {
+      if n % k == 0 { 0 } else { 1 }
+  }
+
+vc-helpers: |
+
+vc-spec: |-
+  fn solve(n: int, k: int) -> (result: int)
+      requires 
+          valid_input(n, k)
+      ensures 
+          result == min_cracker_difference(n, k),
+          result == 0 <==> n % k == 0,
+          result == 1 <==> n % k != 0
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      unreached()
+      // impl-end
+  }
+
+vc-postamble: |2-
+
+  }
+
+  fn main() {}

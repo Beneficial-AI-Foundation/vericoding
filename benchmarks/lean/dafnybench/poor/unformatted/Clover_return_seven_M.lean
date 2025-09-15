@@ -1,17 +1,20 @@
+import Std
 
+open Std.Do
 
 /-!
 {
-"name": "Clover_return_seven_M",
-"category": "Dafny Translation",
-"description": "Automatically translated from Dafny specification: Clover_return_seven_M",
-"source": "Dafny",
-"translation_date": "2024",
-"functions": ,
-"methods":
+  "name": "Clover_return_seven_M",
+  "category": "Dafny Translation",
+  "description": "Automatically translated from Dafny specification: Clover_return_seven_M",
+  "source": "Dafny",
+  "translation_date": "2024",
+  "functions": ,
+  "methods":
 }
 -/
 
+namespace DafnyBenchmarks
 
 /--
 Method M that takes an integer x and returns seven.
@@ -24,3 +27,5 @@ Specification for method M stating that it always returns 7
 regardless of input.
 -/
 theorem M_spec (x : Int) : M x = 7 := sorry
+
+end DafnyBenchmarks

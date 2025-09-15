@@ -1,0 +1,60 @@
+// <vc-preamble>
+use vstd::prelude::*;
+
+verus! {
+
+spec fn greedy_pack_from_end(a: Seq<int>, boxes: int, capacity: int) -> int
+    recommends boxes >= 1,
+             capacity >= 1,
+             forall|i: int| 0 <= i < a.len() ==> 1 <= a[i] <= capacity
+{
+    greedy_pack_from_end_helper(a, a.len() - 1, boxes, capacity, capacity)
+}
+
+spec fn greedy_pack_from_end_helper(a: Seq<int>, pos: int, boxes_left: int, capacity: int, current_box_space: int) -> int
+    recommends capacity >= 1,
+             forall|i: int| 0 <= i < a.len() ==> 1 <= a[i] <= capacity,
+             boxes_left >= 1,
+             0 <= current_box_space <= capacity
+    decreases pos + 1
+{
+    if pos < 0 {
+        0
+    } else if pos >= a.len() {
+        0
+    } else if a[pos] > capacity {
+        0
+    } else if a[pos] <= current_box_space {
+        1 + greedy_pack_from_end_helper(a, pos - 1, boxes_left, capacity, current_box_space - a[pos])
+    } else if boxes_left > 1 {
+        1 + greedy_pack_from_end_helper(a, pos - 1, boxes_left - 1, capacity, capacity - a[pos])
+    } else {
+        0
+    }
+}
+// </vc-preamble>
+
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
+fn solve(n: int, m: int, k: int, a: Seq<int>) -> (result: int)
+    requires n >= 0,
+             m >= 1,
+             k >= 1,
+             a.len() == n,
+             forall|i: int| 0 <= i < a.len() ==> 1 <= a[i] <= k
+    ensures 0 <= result <= n,
+            result == greedy_pack_from_end(a, m, k)
+// </vc-spec>
+// <vc-code>
+{
+    assume(false);
+    unreached()
+}
+// </vc-code>
+
+
+}
+
+fn main() {}

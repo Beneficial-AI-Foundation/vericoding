@@ -1,17 +1,20 @@
+import Std
 
+open Std.Do
 
 /-!
 {
-"name": "Clover_slope_search_SlopeSearch",
-"category": "Dafny Translation",
-"description": "Automatically translated from Dafny specification: Clover_slope_search_SlopeSearch",
-"source": "Dafny",
-"translation_date": "2024",
-"functions": ,
-"methods":
+  "name": "Clover_slope_search_SlopeSearch",
+  "category": "Dafny Translation",
+  "description": "Automatically translated from Dafny specification: Clover_slope_search_SlopeSearch",
+  "source": "Dafny",
+  "translation_date": "2024",
+  "functions": ,
+  "methods":
 }
 -/
 
+namespace DafnyBenchmarks
 
 /--
 SlopeSearch finds a key in a 2D array that is sorted both by rows and columns.
@@ -39,10 +42,12 @@ def SlopeSearch (a : Array (Array Int)) (key : Int) : Int × Int := sorry
 Specification for SlopeSearch method
 -/
 theorem SlopeSearch_spec (a : Array (Array Int)) (key : Int) :
-(∀ i j j', 0 ≤ i ∧ i < a.size ∧ 0 ≤ j ∧ j < j' ∧ j' < a[i]!.size →
-a[i]![j]! ≤ a[i]![j']!) →
-(∀ i i' j, 0 ≤ i ∧ i < i' ∧ i' < a.size ∧ 0 ≤ j ∧ j < a[i]!.size →
-a[i]![j]! ≤ a[i']![j]!) →
-(∃ i j, 0 ≤ i ∧ i < a.size ∧ 0 ≤ j ∧ j < a[i]!.size ∧ a[i]![j]! = key) →
-let (m, n) := SlopeSearch a key
-0 ≤ m ∧ m < a.size ∧ 0 ≤ n ∧ n < a[m.natAbs]!.size ∧ a[m.natAbs]![n.natAbs]! = key := sorry
+  (∀ i j j', 0 ≤ i ∧ i < a.size ∧ 0 ≤ j ∧ j < j' ∧ j' < a[i]!.size →
+    a[i]![j]! ≤ a[i]![j']!) →
+  (∀ i i' j, 0 ≤ i ∧ i < i' ∧ i' < a.size ∧ 0 ≤ j ∧ j < a[i]!.size →
+    a[i]![j]! ≤ a[i']![j]!) →
+  (∃ i j, 0 ≤ i ∧ i < a.size ∧ 0 ≤ j ∧ j < a[i]!.size ∧ a[i]![j]! = key) →
+  let (m, n) := SlopeSearch a key
+  0 ≤ m ∧ m < a.size ∧ 0 ≤ n ∧ n < a[m.natAbs]!.size ∧ a[m.natAbs]![n.natAbs]! = key := sorry
+
+end DafnyBenchmarks

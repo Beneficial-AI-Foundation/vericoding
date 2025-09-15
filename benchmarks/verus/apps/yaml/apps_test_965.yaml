@@ -1,0 +1,62 @@
+vc-description: |-
+  Given n players in a poker game with statuses "ALLIN" (A), "IN" (I), or "FOLDED" (F),
+  determine how many players can show their hands. A player can show if their status
+  is not "FOLDED" and all other players have status "ALLIN" or "FOLDED".
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+  spec fn valid_input(n: int, statuses: Seq<char>) -> bool {
+      n >= 2 && statuses.len() == n && 
+      forall|i: int| 0 <= i < statuses.len() ==> (statuses[i] == 'A' || statuses[i] == 'I' || statuses[i] == 'F')
+  }
+  
+  spec fn count_status(statuses: Seq<char>, status: char) -> int {
+      seq_count(statuses, status)
+  }
+  
+  spec fn seq_count(s: Seq<char>, target: char) -> int
+      decreases s.len()
+  {
+      if s.len() == 0 {
+          0
+      } else {
+          let rest_count = seq_count(s.drop_first(), target);
+          if s[0] == target {
+              rest_count + 1
+          } else {
+              rest_count
+          }
+      }
+  }
+  
+  spec fn expected_result(statuses: Seq<char>) -> int {
+      let cnt_i = count_status(statuses, 'I');
+      let cnt_a = count_status(statuses, 'A');
+      if cnt_i == 0 { cnt_a }
+      else if cnt_i == 1 { 1 }
+      else { 0 }
+  }
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn solve(n: int, statuses: Seq<char>) -> (result: int)
+      requires valid_input(n, statuses)
+      ensures result == expected_result(statuses)
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      unreached()
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+
+  fn main() {}

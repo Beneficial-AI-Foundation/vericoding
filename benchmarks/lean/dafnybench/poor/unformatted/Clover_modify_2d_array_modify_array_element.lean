@@ -1,18 +1,21 @@
+import Std
 
 
+open Std.Do
 
 /-!
 {
-"name": "Clover_modify_2d_array_modify_array_element",
-"category": "Dafny Translation",
-"description": "Automatically translated from Dafny specification: Clover_modify_2d_array_modify_array_element",
-"source": "Dafny",
-"translation_date": "2024",
-"functions": ,
-"methods":
+  "name": "Clover_modify_2d_array_modify_array_element",
+  "category": "Dafny Translation",
+  "description": "Automatically translated from Dafny specification: Clover_modify_2d_array_modify_array_element",
+  "source": "Dafny",
+  "translation_date": "2024",
+  "functions": ,
+  "methods":
 }
 -/
 
+namespace DafnyBenchmarks
 
 /--
 Modifies an element in a 2D array of natural numbers.
@@ -23,7 +26,7 @@ Modifies an element in a 2D array of natural numbers.
 @param val The new value to set
 -/
 def modify_array_element (arr : Array (Array Nat)) (index1 : Nat) (index2 : Nat) (val : Nat) : Array (Array Nat) :=
-sorry
+  sorry
 
 /--
 Specification for modify_array_element:
@@ -34,13 +37,15 @@ Specification for modify_array_element:
 - Ensures the element is set to the given value
 -/
 theorem modify_array_element_spec
-(arr : Array (Array Nat)) (index1 : Nat) (index2 : Nat) (val : Nat) :
-index1 < arr.size →
-index2 < (arr[index1]!).size →
-(∀ i j : Nat, i < arr.size ∧ j < arr.size ∧ i ≠ j → arr[i]! ≠ arr[j]!) →
-let result := modify_array_element arr index1 index2 val
-(∀ i : Nat, i < arr.size → result[i]! = arr[i]!) ∧
-(∀ i j : Nat, i < arr.size ∧ j < (arr[i]!).size ∧ (i ≠ index1 ∨ j ≠ index2) →
-(result[i]!)[j]! = (arr[i]!)[j]!) ∧
-(result[index1]!)[index2]! = val :=
-sorry
+  (arr : Array (Array Nat)) (index1 : Nat) (index2 : Nat) (val : Nat) :
+  index1 < arr.size →
+  index2 < (arr[index1]!).size →
+  (∀ i j : Nat, i < arr.size ∧ j < arr.size ∧ i ≠ j → arr[i]! ≠ arr[j]!) →
+  let result := modify_array_element arr index1 index2 val
+  (∀ i : Nat, i < arr.size → result[i]! = arr[i]!) ∧
+  (∀ i j : Nat, i < arr.size ∧ j < (arr[i]!).size ∧ (i ≠ index1 ∨ j ≠ index2) →
+    (result[i]!)[j]! = (arr[i]!)[j]!) ∧
+  (result[index1]!)[index2]! = val :=
+  sorry
+
+end DafnyBenchmarks

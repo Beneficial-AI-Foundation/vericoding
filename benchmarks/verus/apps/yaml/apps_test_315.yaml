@@ -1,0 +1,46 @@
+vc-description: |-
+  Given n consecutive days and a minimum requirement k, find the minimum additional walks needed
+  so that for any two consecutive days, the total walks is at least k. Can only increase walks.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+  spec fn sum(s: Seq<int>) -> int
+      decreases s.len()
+  {
+      if s.len() == 0 { 0 } else { s[0] + sum(s.subrange(1, s.len() as int)) }
+  }
+
+  spec fn valid_input(n: int, k: int, a: Seq<int>) -> bool
+  {
+      n >= 1 && a.len() == n && k >= 0 && forall|i: int| 0 <= i < n ==> a[i] >= 0
+  }
+
+  spec fn valid_output(a: Seq<int>, final_schedule: Seq<int>, additional_walks: int, k: int) -> bool
+  {
+      final_schedule.len() == a.len() &&
+      additional_walks >= 0 &&
+      (forall|i: int| 0 <= i < a.len() ==> final_schedule[i] >= a[i]) &&
+      (forall|i: int| 0 <= i < a.len() - 1 ==> final_schedule[i] + final_schedule[i + 1] >= k) &&
+      additional_walks == sum(final_schedule) - sum(a)
+  }
+
+vc-helpers: |
+
+vc-spec: |-
+  fn solve(n: int, k: int, a: Seq<int>) -> (result: (int, Seq<int>))
+      requires valid_input(n, k, a)
+      ensures valid_output(a, result.1, result.0, k)
+
+vc-code: |-
+  {
+      assume(false);
+      unreached()
+  }
+
+vc-postamble: |2-
+
+  }
+
+  fn main() {}

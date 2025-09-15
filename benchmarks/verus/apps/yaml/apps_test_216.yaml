@@ -1,0 +1,41 @@
+vc-description: |-
+  Given a sequence of integers, partition it into two subsequences such that
+  every element belongs to exactly one subsequence. Find the maximum possible
+  value of B - C, where B is the sum of elements in the first subsequence
+  and C is the sum of elements in the second subsequence.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+  spec fn sum_abs(arr: Seq<int>, i: int) -> int
+      recommends 0 <= i <= arr.len()
+      decreases arr.len() - i
+  {
+      if i == arr.len() { 0 }
+      else { (if arr[i] >= 0 { arr[i] } else { -arr[i] }) + sum_abs(arr, i + 1) }
+  }
+
+  spec fn valid_input(n: int, arr: Seq<int>) -> bool
+  {
+      0 <= n == arr.len()
+  }
+
+vc-helpers: |
+
+vc-spec: |-
+  fn solve(n: int, arr: Seq<int>) -> (result: int)
+      requires valid_input(n, arr)
+      ensures result == sum_abs(arr, 0)
+
+vc-code: |-
+  {
+      assume(false);
+      unreached()
+  }
+
+vc-postamble: |2-
+
+  }
+
+  fn main() {}

@@ -1,0 +1,40 @@
+// <vc-preamble>
+use vstd::prelude::*;
+
+verus! {
+spec fn count_cells_divisible_by_m(n: int, m: int) -> int
+{
+    if 1 <= n && 1 <= m {
+        0 /* placeholder for set cardinality */
+    } else {
+        0
+    }
+}
+
+spec fn valid_input(n: int, m: int) -> bool {
+    1 <= n && 1 <= m && m <= 1000
+}
+// </vc-preamble>
+
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
+fn solve(n: u32, m: u32) -> (result: u32)
+  requires 
+    valid_input(n as int, m as int),
+  ensures 
+    result >= 0,
+    result as int == count_cells_divisible_by_m(n as int, m as int),
+// </vc-spec>
+// <vc-code>
+{
+    assume(false);
+    0
+}
+// </vc-code>
+
+
+}
+
+fn main() {}

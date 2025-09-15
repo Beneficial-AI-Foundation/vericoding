@@ -1,0 +1,58 @@
+vc-description: |-
+  Given N total test cases and M passed test cases, determine if all test cases 
+  were passed. Input is a string with N and M separated by space. Output "Yes" 
+  if M = N (all passed), "No" otherwise. Constraints: 1 ≤ N ≤ 100, 0 ≤ M ≤ N.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+  use vstd::string::*;
+
+  verus! {
+  spec fn valid_input(input: Seq<char>) -> bool {
+      input.len() > 0 &&
+      exists|lines: Seq<Seq<char>>| lines.len() > 0 &&
+      exists|parts: Seq<Seq<char>>| parts.len() == 2 &&
+      exists|n: int, m: int| 1 <= n <= 100 && 0 <= m <= n
+  }
+
+  spec fn extract_n(input: Seq<char>) -> int
+      recommends valid_input(input)
+  {
+      42 /* placeholder for extracted n */
+  }
+
+  spec fn extract_m(input: Seq<char>) -> int
+      recommends valid_input(input)
+  {
+      42 /* placeholder for extracted m */
+  }
+
+  spec fn correct_output(input: Seq<char>, result: Seq<char>) -> bool
+      recommends valid_input(input)
+  {
+      let n = extract_n(input);
+      let m = extract_m(input);
+      (n == m ==> result == seq!['Y', 'e', 's']) && (n != m ==> result == seq!['N', 'o'])
+  }
+
+vc-helpers: |
+
+vc-spec: |-
+  fn solve(input: Seq<char>) -> (result: Seq<char>)
+      requires 
+          valid_input(input),
+      ensures 
+          correct_output(input, result),
+          result == seq!['Y', 'e', 's'] || result == seq!['N', 'o'],
+
+vc-code: |-
+  {
+      assume(false);
+      unreached()
+  }
+
+vc-postamble: |2-
+
+  }
+
+  fn main() {}

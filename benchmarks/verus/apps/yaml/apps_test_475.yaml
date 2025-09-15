@@ -1,0 +1,61 @@
+vc-description: |-
+  Count the number of ways to paint n bricks in a row using m colors such that exactly k bricks 
+  have a different color than the brick immediately to their left. The first brick is not counted 
+  in this comparison. Result should be modulo 998,244,353.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+  spec fn valid_input(n: nat, m: nat, k: nat) -> bool {
+      n >= 1 && m >= 1 && k >= 0 && k <= n - 1
+  }
+
+  spec fn factorial(n: nat) -> nat
+      decreases n
+  {
+      if n == 0 { 1 }
+      else { n * factorial((n - 1) as nat) }
+  }
+
+  spec fn binomial(n: nat, k: nat) -> nat
+      decreases n
+  {
+      if k > n { 0 }
+      else if factorial(k) == 0 || factorial((n - k) as nat) == 0 { 0 }
+      else { factorial(n) / (factorial(k) * factorial((n - k) as nat)) }
+  }
+
+  spec fn power(base: nat, exp: nat) -> nat
+      decreases exp
+  {
+      if exp == 0 { 1 }
+      else { base * power(base, (exp - 1) as nat) }
+  }
+
+  spec fn expected_result(n: nat, m: nat, k: nat) -> nat {
+      if valid_input(n, m, k) {
+          (m * power((m - 1) as nat, k) * binomial((n - 1) as nat, k)) % 998244353
+      } else {
+          0
+      }
+  }
+
+vc-helpers: |
+
+vc-spec: |-
+  fn solve(n: u64, m: u64, k: u64) -> (result: u64)
+      requires n >= 1 && m >= 1 && k >= 0 && k <= n - 1
+      ensures result < 998244353
+
+vc-code: |-
+  {
+      assume(false);
+      0
+  }
+
+vc-postamble: |2-
+
+  }
+
+  fn main() {}

@@ -1,0 +1,45 @@
+vc-description: |-
+  Given a two-digit integer N (10 ≤ N ≤ 99), determine whether the digit 9 appears 
+  in the decimal representation of N. Return "Yes" if 9 appears, "No" otherwise.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+  spec fn clean_input(s: Seq<char>) -> Seq<char>
+      decreases s.len()
+  {
+      if s.len() == 0 { 
+          s
+      } else if s[s.len() - 1] == '\n' || s[s.len() - 1] == '\r' || s[s.len() - 1] == ' ' { 
+          clean_input(s.subrange(0, s.len() - 1))
+      } else { 
+          s
+      }
+  }
+
+  spec fn contains_digit_nine(s: Seq<char>) -> bool {
+      exists|i: int| 0 <= i < s.len() && s[i] == '9'
+  }
+
+vc-helpers: |
+
+vc-spec: |-
+  fn solve(stdin_input: &str) -> (result: String)
+      requires stdin_input@.len() > 0
+      ensures 
+          result@ == seq!['Y', 'e', 's', '\n'] || result@ == seq!['N', 'o', '\n'],
+          result@ == seq!['Y', 'e', 's', '\n'] <==> contains_digit_nine(clean_input(stdin_input@)),
+          result@ == seq!['N', 'o', '\n'] <==> !contains_digit_nine(clean_input(stdin_input@))
+
+vc-code: |-
+  {
+      assume(false);
+      "No\n".to_string()
+  }
+
+vc-postamble: |2-
+
+  }
+
+  fn main() {}

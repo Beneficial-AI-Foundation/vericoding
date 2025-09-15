@@ -1,0 +1,116 @@
+// <vc-preamble>
+use vstd::prelude::*;
+
+verus! {
+
+spec fn valid_input(input: Seq<char>) -> bool {
+    let parts = split_string_func(input);
+    parts.len() >= 3 && 
+    (forall|i: int| 0 <= i < 3 ==> #[trigger] parts[i].len() > 0 && is_valid_integer(parts[i])) &&
+    {
+        let n = string_to_int_func(parts[0]);
+        let a = string_to_int_func(parts[1]);
+        let b = string_to_int_func(parts[2]);
+        1 <= n <= 20 && 1 <= a <= 100 && 1 <= b <= 2000
+    }
+}
+
+spec fn is_valid_integer(s: Seq<char>) -> bool {
+    s.len() > 0 && 
+    (s[0] == '-' || ('0' <= s[0] && s[0] <= '9')) &&
+    forall|i: int| 1 <= i < s.len() ==> ('0' <= s[i] && s[i] <= '9')
+}
+
+spec fn split_string_func(s: Seq<char>) -> Seq<Seq<char>> {
+    split_string_helper(s, 0, 0, seq![])
+}
+
+spec fn split_string_helper(s: Seq<char>, i: int, start: int, acc: Seq<Seq<char>>) -> Seq<Seq<char>>
+    decreases s.len() - i
+{
+    if i == s.len() {
+        if i > start { acc.push(s.subrange(start, i)) } else { acc }
+    } else if s[i] == ' ' || s[i] == '\n' || s[i] == '\r' {
+        let new_acc = if i > start { acc.push(s.subrange(start, i)) } else { acc };
+        split_string_helper(s, i + 1, i + 1, new_acc)
+    } else {
+        split_string_helper(s, i + 1, start, acc)
+    }
+}
+
+spec fn string_to_int_func(s: Seq<char>) -> int {
+    if s.len() > 0 && s[0] == '-' {
+        -string_to_int_helper(s, 1, 0)
+    } else {
+        string_to_int_helper(s, 0, 0)
+    }
+}
+
+spec fn string_to_int_helper(s: Seq<char>, i: int, acc: int) -> int
+    decreases s.len() - i
+{
+    if i == s.len() {
+        acc
+    } else if '0' <= s[i] && s[i] <= '9' {
+        string_to_int_helper(s, i + 1, acc * 10 + (s[i] as int - '0' as int))
+    } else {
+        string_to_int_helper(s, i + 1, acc)
+    }
+}
+
+spec fn int_to_string_func(n: int) -> Seq<char> {
+    if n == 0 {
+        seq!['0']
+    } else if n < 0 {
+        seq!['-'] + int_to_string_helper(-n, seq![])
+    } else {
+        int_to_string_helper(n, seq![])
+    }
+}
+
+spec fn int_to_string_helper(n: int, acc: Seq<char>) -> Seq<char>
+    decreases n
+{
+    if n == 0 {
+        acc
+    } else {
+        let digit = n % 10;
+        let digit_char = ('0' as u8 + digit as u8) as char;
+        int_to_string_helper(n / 10, seq![digit_char] + acc)
+    }
+}
+
+spec fn min_parking_cost(n: int, a: int, b: int) -> int {
+    let plan1_cost = n * a;
+    let plan2_cost = b;
+    if plan1_cost <= plan2_cost { plan1_cost } else { plan2_cost }
+}
+// </vc-preamble>
+
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
+fn solve(input: Seq<char>) -> (result: Seq<char>)
+    requires 
+        input.len() > 0,
+        valid_input(input),
+    ensures exists|n: int, a: int, b: int| {
+        let parts = split_string_func(input);
+        n == string_to_int_func(parts[0]) &&
+        a == string_to_int_func(parts[1]) && 
+        b == string_to_int_func(parts[2]) &&
+        result == int_to_string_func(min_parking_cost(n, a, b)) + seq!['\n']
+    }
+// </vc-spec>
+// <vc-code>
+{
+    assume(false);
+    unreached()
+}
+// </vc-code>
+
+
+}
+
+fn main() {}

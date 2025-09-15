@@ -1,0 +1,47 @@
+vc-description: |-
+  Given n types of pebbles with w_i pebbles of type i, and a person with 2 pockets 
+  that can each hold at most k pebbles, find the minimum number of days needed to 
+  collect all pebbles. Different pebble types cannot be mixed in the same pocket, 
+  both pockets can be used simultaneously on the same day, and each pebble type 
+  must be collected completely.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+  spec fn valid_input(n: int, k: int, w: Seq<int>) -> bool {
+      k > 0 && n >= 0 && w.len() == n && forall|i: int| 0 <= i < w.len() ==> w[i] >= 0
+  }
+  
+  spec fn sum_trips(w: Seq<int>, k: int) -> int
+      decreases w.len()
+  {
+      if w.len() == 0 {
+          0
+      } else {
+          (w[0] + k - 1) / k + sum_trips(w.drop_first(), k)
+      }
+  }
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn solve(n: int, k: int, w: Seq<int>) -> (result: int)
+      requires 
+          valid_input(n, k, w),
+      ensures 
+          result >= 0,
+          result == (sum_trips(w, k) + 1) / 2,
+
+vc-code: |-
+  {
+      assume(false);
+      unreached()
+  }
+
+vc-postamble: |-
+
+  }
+
+  fn main() {}

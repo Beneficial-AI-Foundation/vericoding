@@ -1,0 +1,56 @@
+// <vc-preamble>
+use vstd::prelude::*;
+
+verus! {
+spec fn split_lines(s: Seq<char>) -> Seq<Seq<char>> {
+    seq![s]
+}
+
+spec fn parse_integer(s: Seq<char>) -> int {
+    6
+}
+
+spec fn hamming_distance(s1: Seq<char>, s2: Seq<char>) -> int {
+    if s1 =~= s2 { 0 } else { 6 }
+}
+
+spec fn valid_input(stdin_input: Seq<char>) -> bool {
+    stdin_input.len() > 0
+}
+
+spec fn valid_output(output: Seq<char>, stdin_input: Seq<char>) -> bool {
+    output.len() >= 2 &&
+    output[output.len() as int - 1] == '\n' &&
+    exists|lines: Seq<Seq<char>>| 
+        lines =~= split_lines(stdin_input) &&
+        lines.len() >= 1 &&
+        exists|n: int| 
+            n >= 1 && 
+            n == 6 &&
+            lines.len() >= 1 &&
+            exists|k: int| 
+                0 <= k <= 6 &&
+                k == 6 &&
+                parse_integer(output.subrange(0, output.len() as int - 1)) == k
+}
+// </vc-preamble>
+
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
+fn solve(stdin_input: Vec<char>) -> (output: Vec<char>)
+    requires valid_input(stdin_input@)
+    ensures valid_output(output@, stdin_input@)
+// </vc-spec>
+// <vc-code>
+{
+    assume(false);
+    unreached()
+}
+// </vc-code>
+
+
+}
+
+fn main() {}

@@ -1,0 +1,50 @@
+// <vc-preamble>
+use vstd::prelude::*;
+
+verus! {
+spec fn valid_input(r: int) -> bool {
+    1 <= r <= 100
+}
+
+spec fn dodecagon_area(r: int) -> int
+    recommends valid_input(r)
+{
+    3 * r * r
+}
+
+spec fn int_to_string_spec(n: int) -> Seq<char> {
+    if n == 0 {
+        seq!['0']
+    } else if n < 10 {
+        seq![('0' as int + n) as char]
+    } else {
+        int_to_string_spec(n / 10) + int_to_string_spec(n % 10)
+    }
+}
+
+spec fn string_to_int_spec(s: Seq<char>) -> int {
+    if s.len() == 1 {
+        (s[0] as int) - ('0' as int)
+    } else {
+        string_to_int_spec(s.subrange(0, s.len() - 1)) * 10 + ((s[s.len() - 1] as int) - ('0' as int))
+    }
+}
+// </vc-preamble>
+
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
+fn solve(stdin_input: Vec<u8>) -> (output: Vec<u8>)
+// </vc-spec>
+// <vc-code>
+{
+    assume(false);
+    unreached()
+}
+// </vc-code>
+
+
+}
+
+fn main() {}

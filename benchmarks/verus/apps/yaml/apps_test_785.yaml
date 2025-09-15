@@ -1,0 +1,42 @@
+vc-description: |-
+  Given a rectangular room with dimensions a × b meters, accommodate exactly n students 
+  such that each student has at least 6 square meters of space. You can increase either 
+  or both dimensions by any positive integer amount. Find the minimum possible area and 
+  corresponding dimensions.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+  spec fn valid_input(n: int, a: int, b: int) -> bool {
+      n > 0 && a > 0 && b > 0
+  }
+
+  spec fn valid_output(result: Seq<int>, n: int, a: int, b: int) -> bool {
+      result.len() == 3 &&
+      result[0] >= 6 * n &&
+      result[1] > 0 && result[2] > 0 &&
+      result[0] == result[1] * result[2] &&
+      ((result[1] >= a && result[2] >= b) || (result[1] >= b && result[2] >= a))
+  }
+
+vc-helpers: |
+
+vc-spec: |-
+  fn solve(n: int, a: int, b: int) -> (result: Seq<int>)
+      requires valid_input(n, a, b)
+      ensures valid_output(result, n, a, b)
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      unreached()
+      // impl-end
+  }
+
+vc-postamble: |2-
+
+  }
+
+  fn main() {}

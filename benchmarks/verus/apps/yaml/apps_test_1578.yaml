@@ -1,0 +1,36 @@
+vc-description: |-
+  Given an integer N, find a permutation P₁, P₂, ..., Pₙ of numbers 1 to N
+  that maximizes the sum M₁ + M₂ + ... + Mₙ, where Mᵢ is the remainder when i is divided by Pᵢ.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+  spec fn valid_input(n: int) -> bool {
+      n >= 1
+  }
+
+  spec fn max_sum(n: int) -> int
+      recommends n >= 1
+  {
+      n * (n - 1) / 2
+  }
+
+vc-helpers: |
+
+vc-spec: |-
+  fn solve(n: int) -> (result: int)
+      requires valid_input(n)
+      ensures result == max_sum(n)
+
+vc-code: |-
+  {
+      assume(false);
+      unreached()
+  }
+
+vc-postamble: |2-
+
+  }
+
+  fn main() {}

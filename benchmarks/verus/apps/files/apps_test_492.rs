@@ -1,0 +1,117 @@
+// <vc-preamble>
+use vstd::prelude::*;
+
+verus! {
+spec fn char_to_pos_spec(c: Seq<char>) -> int {
+    if c =~= seq!['v'] { 0 }
+    else if c =~= seq!['>'] { 1 }
+    else if c =~= seq!['^'] { 2 }
+    else if c =~= seq!['<'] { 3 }
+    else { 0 }
+}
+
+spec fn split_lines_spec(s: Seq<char>) -> Seq<Seq<char>> 
+    decreases s.len()
+{
+    if s.len() == 0 { seq![] }
+    else {
+        let i = find_newline(s, 0);
+        if i == s.len() { seq![s] }
+        else { seq![s.subrange(0, i)] + split_lines_spec(s.subrange(i+1, s.len() as int)) }
+    }
+}
+
+spec fn find_newline(s: Seq<char>, start: int) -> int
+    decreases s.len() - start
+{
+    if start >= s.len() { s.len() as int }
+    else if s[start] == '\n' { start }
+    else { find_newline(s, start + 1) }
+}
+
+spec fn split_by_space_spec(s: Seq<char>) -> Seq<Seq<char>>
+    decreases s.len()
+{
+    if s.len() == 0 { seq![] }
+    else {
+        let i = find_space(s, 0);
+        if i == s.len() { seq![s] }
+        else { seq![s.subrange(0, i)] + split_by_space_spec(s.subrange(i+1, s.len() as int)) }
+    }
+}
+
+spec fn find_space(s: Seq<char>, start: int) -> int
+    decreases s.len() - start
+{
+    if start >= s.len() { s.len() as int }
+    else if s[start] == ' ' { start }
+    else { find_space(s, start + 1) }
+}
+
+spec fn string_to_int_spec(s: Seq<char>) -> int {
+    string_to_int_helper(s, 0, 0, false)
+}
+
+spec fn string_to_int_helper(s: Seq<char>, pos: int, acc: int, negative: bool) -> int
+    decreases s.len() - pos
+{
+    if pos >= s.len() { if negative { -acc } else { acc } }
+    else if pos == 0 && s[pos] == '-' { string_to_int_helper(s, pos + 1, acc, true) }
+    else if '0' <= s[pos] <= '9' { 
+        string_to_int_helper(s, pos + 1, acc * 10 + (s[pos] as int - '0' as int), negative)
+    }
+    else { string_to_int_helper(s, pos + 1, acc, negative) }
+}
+
+spec fn valid_input(input: Seq<char>) -> bool {
+    input.len() > 0
+}
+
+spec fn valid_output(result: Seq<char>) -> bool {
+    result =~= seq!['c', 'w'] || result =~= seq!['c', 'c', 'w'] || result =~= seq!['u', 'n', 'd', 'e', 'f', 'i', 'n', 'e', 'd']
+}
+// </vc-preamble>
+
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
+fn solve(input: Seq<char>) -> (result: Seq<char>)
+    requires
+        valid_input(input),
+    ensures
+        valid_output(result),
+        input.len() > 0 ==> {
+            &&& {
+                let lines = split_lines_spec(input);
+                lines.len() >= 2 ==> {
+                    let positions = split_by_space_spec(lines[0]);
+                    positions.len() >= 2 ==> {
+                        let start_char = positions[0];
+                        let end_char = positions[1];
+                        let n = string_to_int_spec(lines[1]);
+                        let start_pos = char_to_pos_spec(start_char);
+                        let end_pos = char_to_pos_spec(end_char);
+                        let ccw = (start_pos + n) % 4 == end_pos;
+                        let cw = (start_pos - n) % 4 == end_pos;
+                        &&& (cw && !ccw ==> result =~= seq!['c', 'w'])
+                        &&& (ccw && !cw ==> result =~= seq!['c', 'c', 'w'])
+                        &&& (!(cw && !ccw) && !(ccw && !cw) ==> result =~= seq!['u', 'n', 'd', 'e', 'f', 'i', 'n', 'e', 'd'])
+                    }
+                }
+            }
+        },
+// </vc-spec>
+// <vc-code>
+{
+    // impl-start
+    assume(false);
+    unreached()
+    // impl-end
+}
+// </vc-code>
+
+
+}
+
+fn main() {}

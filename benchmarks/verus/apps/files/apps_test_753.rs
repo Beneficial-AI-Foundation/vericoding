@@ -1,0 +1,37 @@
+// <vc-preamble>
+use vstd::prelude::*;
+
+verus! {
+spec fn valid_input(a: int, b: int, c: int, d: int) -> bool {
+    a > 0 && b > 0 && c > 0 && d > 0
+}
+
+spec fn gcd_spec(a: nat, b: nat) -> nat {
+    if b == 0 { a } else { gcd_spec(b, a % b) }
+}
+
+spec fn is_valid_fraction_string(s: Seq<char>, num: int, den: int) -> bool {
+    num >= 0 && den > 0 && 
+    gcd_spec(num as nat, den as nat) == 1
+    /* && s == int_to_string(num) + "/" + int_to_string(den) */
+}
+// </vc-preamble>
+
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
+fn solve(a: int, b: int, c: int, d: int) -> (result: String)
+    requires valid_input(a, b, c, d)
+// </vc-spec>
+// <vc-code>
+{
+    assume(false);
+    "0/1".to_string()
+}
+// </vc-code>
+
+
+}
+
+fn main() {}

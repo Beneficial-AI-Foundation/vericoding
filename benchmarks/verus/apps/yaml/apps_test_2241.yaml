@@ -1,0 +1,45 @@
+vc-description: |-
+  Given n notes where each note i has maximum playable volume a_i and required total volume b_i,
+  find piano volume x_i and guitar volume y_i such that 1 ≤ x_i ≤ a_i, 1 ≤ y_i ≤ a_i, and x_i + y_i = b_i.
+  For playable notes, add x_i × y_i to total joy. For unplayable notes, subtract 1.
+  Return the maximum possible total joy.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+  spec fn sum_contributions(a: Seq<int>, b: Seq<int>) -> int
+      recommends a.len() == b.len()
+      decreases a.len()
+  {
+      if a.len() == 0 { 
+          0
+      } else {
+          (if b[0] > 1 && 2 * a[0] >= b[0] {
+              let x = b[0] / 2;
+              let y = b[0] - x;
+              x * y
+           } else { 
+               -1 
+           }) + sum_contributions(a.subrange(1, a.len() as int), b.subrange(1, b.len() as int))
+      }
+  }
+
+vc-helpers: |
+
+vc-spec: |-
+  fn solve(a: Seq<int>, b: Seq<int>) -> (result: int)
+      requires a.len() == b.len()
+      ensures result == sum_contributions(a, b)
+
+vc-code: |-
+  {
+      assume(false);
+      unreached()
+  }
+
+vc-postamble: |2-
+
+  }
+
+  fn main() {}

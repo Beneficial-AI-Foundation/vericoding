@@ -1,0 +1,47 @@
+vc-description: |-
+  Given an 8×8 board where each cell is colored black (B) or white (W), determine if it's possible to transform it 
+  into a proper chessboard using only cyclic right shifts on individual rows. A proper chessboard has no adjacent 
+  cells (horizontally or vertically) with the same color and the upper-left cell is white.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+  spec fn valid_input(input: Seq<Seq<char>>) -> bool {
+      input.len() == 8 &&
+      (forall|i: int| 0 <= i < 8 ==> input[i].len() == 8) &&
+      (forall|i: int, j: int| 0 <= i < 8 && 0 <= j < 8 ==> input[i][j] == 'W' || input[i][j] == 'B')
+  }
+
+  spec fn has_alternating_row(row: Seq<char>) -> bool
+      recommends row.len() == 8,
+                  forall|j: int| 0 <= j < 8 ==> row[j] == 'W' || row[j] == 'B'
+  {
+      forall|k: int| 1 <= k < 8 ==> row[k] != row[k-1]
+  }
+
+  spec fn all_rows_have_alternating_pattern(input: Seq<Seq<char>>) -> bool
+      recommends valid_input(input)
+  {
+      forall|i: int| 0 <= i < 8 ==> has_alternating_row(input[i])
+  }
+
+vc-helpers: |
+
+vc-spec: |-
+  fn solve(input: Seq<Seq<char>>) -> (result: Seq<char>)
+      requires valid_input(input)
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      unreached()
+      // impl-end
+  }
+
+vc-postamble: |2-
+
+  }
+
+  fn main() {}

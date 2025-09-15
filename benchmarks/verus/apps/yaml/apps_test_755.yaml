@@ -1,0 +1,36 @@
+vc-description: |-
+  Find the minimum number of steps to move from position 0 to position x on a number line,
+  where each step can move forward by 1, 2, 3, 4, or 5 positions.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+  spec fn valid_input(x: int) -> bool {
+      x >= 1
+  }
+
+  spec fn is_minimal_steps(x: int, steps: int) -> bool {
+      x >= 1 ==> (steps >= 1 &&
+      steps * 5 >= x &&
+      (steps - 1) * 5 < x)
+  }
+
+vc-helpers: |
+
+vc-spec: |-
+  fn min_steps(x: int) -> (result: int)
+      requires valid_input(x)
+      ensures is_minimal_steps(x, result)
+
+vc-code: |-
+  {
+      assume(false);
+      unreached()
+  }
+
+vc-postamble: |2-
+
+  }
+
+  fn main() {}

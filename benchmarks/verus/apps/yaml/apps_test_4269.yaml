@@ -1,0 +1,36 @@
+vc-description: |-
+  Given a 4-digit security code, determine if it is "hard to enter". A code is hard to enter
+  if it contains any two consecutive digits that are the same. Output "Bad" if the code is 
+  hard to enter, "Good" otherwise.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+  spec fn is_hard_to_enter(s: Seq<char>) -> bool
+      recommends s.len() == 4
+  {
+      s[0] == s[1] || s[1] == s[2] || s[2] == s[3]
+  }
+
+vc-helpers: |
+
+vc-spec: |-
+  fn solve(s: Seq<char>) -> (result: Seq<char>)
+      requires s.len() == 4
+      ensures 
+          result.len() > 0,
+          (result == seq!['B', 'a', 'd'] <==> is_hard_to_enter(s)),
+          (result == seq!['G', 'o', 'o', 'd'] <==> !is_hard_to_enter(s))
+
+vc-code: |-
+  {
+      assume(false);
+      unreached()
+  }
+
+vc-postamble: |2-
+
+  }
+
+  fn main() {}
