@@ -6,6 +6,7 @@ Extract W&B results for a specific tag and generate LaTeX table for vericoding p
 import argparse
 import wandb
 import os
+import sys
 from collections import defaultdict
 from dotenv import load_dotenv
 
@@ -62,12 +63,12 @@ def get_wandb_results(tag, project="vericoding", entity=None, debug=False):
         
         # Debug: print first few run structures
         if debug and i < 3:
-            print(f"\nDEBUG: Run {run.name}")
-            print(f"Config keys: {list(config.keys())}")
-            print(f"Summary keys: {list(summary.keys())}")
-            print(f"Config: {dict(config)}")
-            print(f"Summary: {dict(summary)}")
-            print("-" * 50)
+            print(f"\nDEBUG: Run {run.name}", file=sys.stderr)
+            print(f"Config keys: {list(config.keys())}", file=sys.stderr)
+            print(f"Summary keys: {list(summary.keys())}", file=sys.stderr)
+            print(f"Config: {dict(config)}", file=sys.stderr)
+            print(f"Summary: {dict(summary)}", file=sys.stderr)
+            print("-" * 50, file=sys.stderr)
         
         llm_provider = config.get('llm_provider', '')
         language = config.get('language', '')
@@ -95,11 +96,11 @@ def get_wandb_results(tag, project="vericoding", entity=None, debug=False):
         
         if not dataset:
             if debug:
-                print(f"Warning: Could not determine dataset for run {run.name}")
-                print(f"  folder: '{folder}'")
-                print(f"  files_dir: '{files_dir}'")
-                print(f"  dataset_path: '{dataset_path}'")
-                print(f"  spec_folder: '{spec_folder}'")
+                print(f"Warning: Could not determine dataset for run {run.name}", file=sys.stderr)
+                print(f"  folder: '{folder}'", file=sys.stderr)
+                print(f"  files_dir: '{files_dir}'", file=sys.stderr)
+                print(f"  dataset_path: '{dataset_path}'", file=sys.stderr)
+                print(f"  spec_folder: '{spec_folder}'", file=sys.stderr)
             continue
             
         # Get success percentage - raise error if not found
@@ -142,7 +143,7 @@ def get_wandb_results(tag, project="vericoding", entity=None, debug=False):
         # Store W&B URL for this run
         run_urls[model_name][dataset] = run.url
         
-        print(f"Found: {model_name} + {dataset} = {success_rate_percent:.1f}% ({successful_files}/{total_files} files)")
+        print(f"Found: {model_name} + {dataset} = {success_rate_percent:.1f}% ({successful_files}/{total_files} files)", file=sys.stderr)
     
     return results, dataset_file_counts, run_urls
 
@@ -227,24 +228,22 @@ def main():
     
     # Check for W&B API key
     if not os.getenv("WANDB_API_KEY"):
-        print("Error: WANDB_API_KEY environment variable not set")
+        print("Error: WANDB_API_KEY environment variable not set", file=sys.stderr)
         return
     
-    print(f"Fetching results for tag: {args.tag}")
+    print(f"Fetching results for tag: {args.tag}", file=sys.stderr)
     results, dataset_file_counts, run_urls = get_wandb_results(args.tag, args.project, args.entity, args.debug)
     
     if not results:
-        print("No results found for the specified tag")
+        print("No results found for the specified tag", file=sys.stderr)
         return
     
-    print(f"\nFound results for {len(results)} models")
-    print(f"Dataset file counts: {dataset_file_counts}")
+    print(f"\nFound results for {len(results)} models", file=sys.stderr)
+    print(f"Dataset file counts: {dataset_file_counts}", file=sys.stderr)
     
     latex_table = generate_latex_table(results, dataset_file_counts, run_urls, args.tag)
     
-    print("\n" + "="*60)
-    print("LaTeX table (paste into A5-experiments.tex):")
-    print("="*60)
+    # Output only the LaTeX table to stdout
     print(latex_table)
 
 if __name__ == "__main__":
