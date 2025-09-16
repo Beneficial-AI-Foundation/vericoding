@@ -14,7 +14,7 @@ fn legmulx(c: Vec<f32>) -> (result: Vec<f32>)
         result.len() == c.len() + 1,
         result[0] == 0.0f32,
         result[1] == c[0],
-        forall|i: int| 0 <= i < result.len() ==> exists|coeff: f32| result[i] == coeff,
+        true, // Polynomial coefficients exist (simplified)
 // </vc-spec>
 // <vc-code>
 {

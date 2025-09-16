@@ -13,11 +13,11 @@ fn polyval2d(x: Vec<f32>, y: Vec<f32>, c: Vec<Vec<f32>>) -> (result: Vec<f32>)
         x.len() == y.len(),
         x.len() > 0,
         c.len() > 0,
-        forall|i: int| 0 <= i < c.len() ==> c[i].len() > 0,
-        forall|i: int| 0 <= i < c.len() ==> c[i].len() == c[0].len(),
+        forall|i: int| #![trigger c[i]] 0 <= i < c.len() ==> c[i].len() > 0,
+        forall|i: int| #![trigger c[i]] 0 <= i < c.len() ==> c[i].len() == c[0].len(),
     ensures
         result.len() == x.len(),
-        forall|k: int| 0 <= k < result.len() ==> exists|poly_val: f32| #[trigger] result[k] == poly_val,
+        true, // 2D polynomial evaluation results exist (simplified)
 
         (c.len() == 1 && c[0].len() == 1) ==> 
             (forall|k: int| 0 <= k < result.len() ==> result[k] == c[0][0]),

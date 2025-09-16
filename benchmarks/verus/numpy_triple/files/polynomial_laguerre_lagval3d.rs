@@ -22,10 +22,9 @@ fn lagval3d(x: Vec<f32>, y: Vec<f32>, z: Vec<f32>, c: Vec<Vec<Vec<f32>>>) -> (re
         result.len() == z.len(),
 
         (c.len() == 1 && c[0].len() == 1 && c[0][0].len() == 1) ==> 
-            forall|i: int| 0 <= i < result.len() ==> result[i] == c[0][0][0],
+            forall|i: int| #![trigger result[i]] 0 <= i < result.len() ==> result[i] == c[0][0][0],
 
-        forall|i: int| 0 <= i < result.len() ==> 
-            exists|val: f32| result[i] == val,
+        true, // 3D polynomial evaluation results exist (simplified)
 // </vc-spec>
 // <vc-code>
 {

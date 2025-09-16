@@ -14,7 +14,7 @@ fn expandtabs(a: Vec<String>, tabsize: Vec<usize>) -> (result: Vec<String>)
         forall|i: int| 0 <= i < tabsize.len() ==> tabsize[i] > 0,
     ensures
         result.len() == a.len(),
-        forall|i: int| 0 <= i < result.len() ==> {
+        forall|i: int| #![trigger result[i]] 0 <= i < result.len() ==> {
             let orig_str = &a[i];
             let result_str = &result[i];
             let tab_sz = tabsize[i];

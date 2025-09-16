@@ -30,7 +30,7 @@ fn join(sep: Vec<String>, seq: Vec<String>) -> (result: Vec<String>)
     requires sep.len() == seq.len(),
     ensures
         result.len() == sep.len(),
-        forall|i: int| 0 <= i < result.len() ==> {
+        forall|i: int| #![trigger result[i]] 0 <= i < result.len() ==> {
             let s = seq[i]@;
             let separator = sep[i]@;
 

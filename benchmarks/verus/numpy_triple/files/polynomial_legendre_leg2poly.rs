@@ -12,11 +12,11 @@ fn leg2poly(c: Vec<f32>) -> (result: Vec<f32>)
     ensures
         result.len() == c.len(),
 
-        c.len() < 3 ==> forall|i: int| 0 <= i < c.len() ==> result[i] == c[i],
+        c.len() < 3 ==> forall|i: int| #![trigger result[i]] 0 <= i < c.len() ==> result[i] == c[i],
 
-        forall|i: int| 0 <= i < result.len() ==> exists|val: f32| result[i] == val,
+        true, // Polynomial coefficients exist (simplified)
 
-        c.len() > 0 ==> exists|lead: f32| result[c.len() - 1] == lead,
+        true, // Leading coefficient exists (simplified)
 // </vc-spec>
 // <vc-code>
 {

@@ -16,13 +16,8 @@ fn fliplr(m: Vec<Vec<f32>>) -> (result: Vec<Vec<f32>>)
     ensures
         result.len() == m.len(),
         forall|i: int| 0 <= i < result.len() ==> result[i].len() == m[i].len(),
-        forall|i: int, j: int| 0 <= i < result.len() && 0 <= j < result[i].len() ==>
-            exists|k: int| 0 <= k < m[i].len() && 
-                           result[i][j] == m[i][k] && 
-                           j + k == (m[i].len() - 1) as int,
-        forall|i: int, x: f32| 0 <= i < result.len() ==>
-            ((exists|j: int| 0 <= j < m[i].len() && m[i][j] == x) <==> 
-             (exists|j: int| 0 <= j < result[i].len() && result[i][j] == x)),
+        forall|i: int, j: int| #![trigger result[i][j]] 0 <= i < result.len() && 0 <= j < result[i].len() ==>
+            result[i][j] == m[i][(m[i].len() - 1 - j as usize) as int],
 // </vc-spec>
 // <vc-code>
 {
