@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn str2int(s: Seq<char>) -> nat
   recommends valid_bit_string(s)
   decreases s.len()
@@ -28,6 +25,9 @@ fn sub(s1: Seq<char>, s2: Seq<char>) -> (res: Seq<char>)
   assume(false);
   unreached()
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn str2int(s: Seq<char>) -> nat
   decreases s.len()
 {
@@ -19,6 +16,9 @@ spec fn valid_bit_string(s: Seq<char>) -> bool
 {
   forall|i: int| 0 <= i < s.len() ==> (s[i] == '0' || s[i] == '1')
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

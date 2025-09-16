@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn str2int(s: Seq<char>) -> nat
   recommends valid_bit_string(s)
   decreases s.len()
@@ -37,6 +34,9 @@ fn compare_unequal(s1: Seq<char>, s2: Seq<char>) -> (res: i32)
   assume(false);
   unreached()
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

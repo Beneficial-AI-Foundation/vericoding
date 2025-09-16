@@ -6,8 +6,6 @@ vc-preamble: |-
   use vstd::prelude::*;
 
   verus! {
-
-vc-helpers: |-
   spec fn all_zero(s: Seq<char>) -> bool {
       s.len() == 0 || forall|i: int| 0 <= i < s.len() ==> s[i] == '0'
   }
@@ -26,6 +24,8 @@ vc-helpers: |-
       forall|i: int| 0 <= i < s.len() ==> s[i] == '0' || s[i] == '1'
   }
 
+vc-helpers: |
+
 vc-spec: |-
   fn zeros(n: usize) -> (s: Seq<char>)
       ensures 
@@ -40,7 +40,7 @@ vc-code: |-
       unreached()
   }
 
-vc-postamble: |-
+vc-postamble: |2-
 
   }
 

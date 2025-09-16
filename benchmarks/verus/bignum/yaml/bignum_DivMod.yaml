@@ -1,15 +1,13 @@
 vc-description: |-
   Bignum task: bignum_DivMod.
   Implement the method according to the Verus specification.
-  
+
   /* All characters must be '0' or '1'. */
 
 vc-preamble: |-
   use vstd::prelude::*;
 
   verus! {
-
-vc-helpers: |-
   spec fn str2int(s: Seq<char>) -> nat
     recommends valid_bit_string(s)
     decreases s.len()
@@ -25,6 +23,8 @@ vc-helpers: |-
   {
     forall|i: int| 0 <= i < s.len() ==> (s[i] == '0' || s[i] == '1')
   }
+
+vc-helpers: |
 
 vc-spec: |-
   fn div_mod(dividend: Seq<char>, divisor: Seq<char>) -> (result: (Seq<char>, Seq<char>))
@@ -44,7 +44,7 @@ vc-code: |-
     // impl-end
   }
 
-vc-postamble: |-
+vc-postamble: |2-
 
   }
 

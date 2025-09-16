@@ -1,19 +1,17 @@
 vc-description: |-
   Bignum task: bignum_ModExp.
   Implement the method according to the Verus specification.
-  
+
   /* All characters must be '0' or '1'. */
-  
+
   /* requires y < Exp_int(2,n+1) */
-  
+
   /* && n > 0 */
 
 vc-preamble: |-
   use vstd::prelude::*;
 
   verus! {
-
-vc-helpers: |-
   spec fn str2int(s: Seq<char>) -> nat
       decreases s.len()
   {
@@ -34,6 +32,8 @@ vc-helpers: |-
       forall|i: int| 0 <= i < s.len() ==> (s[i] == '0' || s[i] == '1')
   }
 
+vc-helpers: |
+
 vc-spec: |-
   fn mod_exp(sx: Seq<char>, sy: Seq<char>, sz: Seq<char>) -> (res: Seq<char>)
       requires 
@@ -50,7 +50,7 @@ vc-code: |-
       unreached()
   }
 
-vc-postamble: |-
+vc-postamble: |2-
 
   }
 

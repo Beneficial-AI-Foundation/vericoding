@@ -6,8 +6,6 @@ vc-preamble: |-
   use vstd::prelude::*;
 
   verus! {
-
-vc-helpers: |-
   spec fn str2int(s: Seq<char>) -> nat
     recommends valid_bit_string(s)
     decreases s.len()
@@ -23,6 +21,8 @@ vc-helpers: |-
   spec fn valid_bit_string(s: Seq<char>) -> bool {
     forall|i: int| 0 <= i < s.len() ==> (s[i] == '0' || s[i] == '1')
   }
+
+vc-helpers: |
 
 vc-spec: |-
   fn normalize_bit_string(s: Seq<char>) -> (t: Seq<char>)
@@ -40,7 +40,7 @@ vc-code: |-
     /* impl-end */
   }
 
-vc-postamble: |-
+vc-postamble: |2-
 
   }
 

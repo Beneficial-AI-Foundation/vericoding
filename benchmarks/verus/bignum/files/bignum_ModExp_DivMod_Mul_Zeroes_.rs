@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn str2int(s: Seq<char>) -> nat
   decreases s.len()
 {
@@ -62,6 +59,9 @@ fn zeros(n: nat) -> (s: Seq<char>)
   assume(false);
   unreached()
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

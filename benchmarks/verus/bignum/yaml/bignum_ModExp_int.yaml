@@ -1,20 +1,20 @@
 vc-description: |-
   Bignum task: bignum_ModExp_int.
   Implement the method according to the Verus specification.
-  
+
   /* && n > 0 */
 
 vc-preamble: |-
   use vstd::prelude::*;
 
   verus! {
-
-vc-helpers: |-
   spec fn exp_int(x: nat, y: nat) -> nat
       decreases y
   {
       if y == 0 { 1 } else { x * exp_int(x, (y - 1) as nat) }
   }
+
+vc-helpers: |
 
 vc-spec: |-
   fn mod_exp_int(x: u64, y: u64, n: u64, z: u64) -> (res: u64)
@@ -32,7 +32,7 @@ vc-code: |-
       // impl-end
   }
 
-vc-postamble: |-
+vc-postamble: |2-
 
   }
 

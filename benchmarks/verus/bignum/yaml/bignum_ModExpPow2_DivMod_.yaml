@@ -1,17 +1,15 @@
 vc-description: |-
   Bignum task: bignum_ModExpPow2[DivMod].
   Implement the method according to the Verus specification.
-  
+
   /* All characters must be '0' or '1'. */
-  
+
   /* sy is power of 2 or zero */
 
 vc-preamble: |-
   use vstd::prelude::*;
 
   verus! {
-
-vc-helpers: |-
   spec fn exp_int(x: nat, y: nat) -> nat
       decreases y
   {
@@ -48,6 +46,8 @@ vc-helpers: |-
       unreached()
   }
 
+vc-helpers: |
+
 vc-spec: |-
   fn mod_exp_pow2(sx: Seq<char>, sy: Seq<char>, n: nat, sz: Seq<char>) -> (res: Seq<char>)
       requires 
@@ -66,7 +66,7 @@ vc-code: |-
       unreached()
   }
 
-vc-postamble: |-
+vc-postamble: |2-
 
   }
 
