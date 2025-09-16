@@ -45,6 +45,7 @@ from vericoding.utils import (
 load_environment()
 
 
+
 def parse_arguments():
     """Parse command-line arguments."""
     # Get available languages for argument choices
@@ -140,6 +141,18 @@ Examples:
         help="Process only the first N files from the dataset (default: process all files)",
     )
 
+    parser.add_argument(
+        "--assume-unformatted-lean",
+        action="store_true",
+        help="For Lean files, wrap each 'sorry' with vc-theorems tags (only valid for Lean language)",
+    )
+
+    parser.add_argument(
+        "--tag",
+        type=str,
+        help="Tag to add to W&B run for experiment tracking",
+    )
+
     return parser.parse_args()
 
 
@@ -147,6 +160,11 @@ def setup_configuration(args) -> ProcessingConfig:
     """Set up processing configuration from command line arguments."""
     available_languages = ProcessingConfig.get_available_languages()
     language_config = available_languages[args.language]
+
+    # Validate assume-unformatted-lean argument
+    if args.assume_unformatted_lean and args.language != 'lean':
+        print(f"Error: --assume-unformatted-lean can only be used with Lean language, not '{args.language}'")
+        sys.exit(1)
 
     print(
         f"=== {language_config.name} Specification-to-Code Processing Configuration ===\n"
@@ -221,6 +239,7 @@ def setup_configuration(args) -> ProcessingConfig:
         api_rate_limit_delay=args.api_rate_limit_delay,
         llm=args.llm,
         max_directory_traversal_depth=args.max_directory_traversal_depth,
+        assume_unformatted_lean=args.assume_unformatted_lean,
     )
 
     print("\nConfiguration:")
@@ -376,6 +395,7 @@ def log_experiment_results_to_wandb(
     successful = [r for r in results if r.success]
     failed = [r for r in results if not r.success and not r.has_bypass]
     bypassed = [r for r in results if r.has_bypass]
+    original_compilation_failed = [r for r in results if getattr(r, 'original_compilation_failed', False)]
 
     # Get global token statistics for summary
     token_stats = get_global_token_stats()
@@ -387,6 +407,7 @@ def log_experiment_results_to_wandb(
         "results/successful_files": len(successful), 
         "results/failed_files": len(failed),
         "results/bypassed_files": len(bypassed),
+        "results/original_compilation_failed_files": len(original_compilation_failed),
         "results/success_rate_percent": success_percentage,
         
         # Timing information
@@ -608,11 +629,16 @@ def main():
             # Get comprehensive metadata
             experiment_metadata = get_experiment_metadata(config, args)
             
+            # Build tags list
+            tags = [config.language, config.llm, "spec-to-code"]
+            if args.tag:
+                tags.append(args.tag)
+            
             wandb_run = wandb.init(
                 project=os.getenv("WANDB_PROJECT", "vericoding"),
                 entity=os.getenv("WANDB_ENTITY"),
                 name=run_name,
-                tags=[config.language, config.llm, "spec-to-code"],
+                tags=tags,
                 mode=os.getenv("WANDB_MODE", "online")
             )
             # Update config with comprehensive metadata
