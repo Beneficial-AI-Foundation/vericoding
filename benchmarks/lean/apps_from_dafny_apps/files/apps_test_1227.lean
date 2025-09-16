@@ -1,8 +1,17 @@
 -- <vc-preamble>
-noncomputable def CountNonZeroDigits : Int → Int := sorry
-noncomputable def CountRange : Int → Int → Int → Int → Int := sorry
+partial def CountNonZeroDigits (n : Int) : Int :=
+  if n = 0 then 0
+  else if n % 10 = 0 then CountNonZeroDigits (n / 10)
+  else 1 + CountNonZeroDigits (n / 10)
 
-noncomputable def CountNumbersWithKNonZeroDigits (n k : Int) : Int :=
+partial def CountRange (n k start end_ : Int) : Int :=
+  if start > end_ then 0
+  else if CountNonZeroDigits start = k then 
+      1 + CountRange n k (start + 1) end_
+  else 
+      CountRange n k (start + 1) end_
+
+def CountNumbersWithKNonZeroDigits (n k : Int) : Int :=
   CountRange n k 1 n
 
 def ValidInput (n k : Int) : Prop :=
@@ -17,13 +26,13 @@ def solve_precond (N K : Int) : Prop :=
 -- </vc-helpers>
 
 -- <vc-definitions>
-noncomputable def solve (N K : Int) (h_precond : solve_precond N K) : Int :=
+def solve (N K : Int) (h_precond : solve_precond N K) : Int :=
   sorry
 -- </vc-definitions>
 
 -- <vc-theorems>
 @[reducible, simp]
-def solve_postcond (N K : Int) (count : Int) (h_precond : solve_precond N K) : Prop :=
+def solve_postcond (N K : Int) (count: Int) (h_precond : solve_precond N K) : Prop :=
   count = CountNumbersWithKNonZeroDigits N K ∧ count ≥ 0 ∧ count ≤ N
 
 theorem solve_spec_satisfied (N K : Int) (h_precond : solve_precond N K) :

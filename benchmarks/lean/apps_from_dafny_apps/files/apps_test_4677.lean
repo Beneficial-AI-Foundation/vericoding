@@ -1,21 +1,19 @@
 -- <vc-preamble>
 def ValidInput (s : String) : Prop :=
-  s.length ≥ 1 ∧ s.length ≤ 10 ∧ ∀ i, i < s.length → s.data.get! i ∈ ['0', '1', 'B']
+  s.length ≥ 1 ∧ s.length ≤ 10 ∧ ∀ i : Nat, i < s.length → s.data[i]! ∈ ['0', '1', 'B']
 
-def SimulateKeystrokes (keystrokes : String) : String :=
+partial def SimulateKeystrokes (keystrokes : String) : String :=
   if keystrokes.length = 0 then ""
   else 
     let prev := SimulateKeystrokes (keystrokes.take (keystrokes.length - 1))
-    let lastKey := keystrokes.data.get! (keystrokes.length - 1)
+    let lastKey := keystrokes.data[keystrokes.length - 1]!
     if lastKey = 'B' then
       if prev.length > 0 then prev.take (prev.length - 1) else prev
     else
       prev ++ String.mk [lastKey]
-termination_by keystrokes.length
-decreasing_by simp_wf; sorry
 
 def ValidOutput (result : String) : Prop :=
-  ∀ i, i < result.length → result.data.get! i ∈ ['0', '1']
+  ∀ i : Nat, i < result.length → result.data[i]! ∈ ['0', '1']
 
 @[reducible, simp]
 def solve_precond (s : String) : Prop :=
