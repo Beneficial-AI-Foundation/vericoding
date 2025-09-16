@@ -1,0 +1,59 @@
+-- <vc-preamble>
+-- <vc-preamble>
+
+def sum_seq (s : List Int) : Int :=
+  match s with
+  | [] => 0
+  | x :: xs => x + sum_seq xs
+
+def min_seq : (s : List Int) → s.length > 0 → Int
+  | [x], _ => x
+  | x :: xs, h => 
+    have h_xs : xs.length > 0 := by
+      have h_total : (x :: xs).length > 0 := h
+      simp at h_total
+      cases xs with
+      | nil => 
+        simp
+        sorry
+      | cons y ys => simp
+    let rest_min := min_seq xs h_xs
+    if x ≤ rest_min then x else rest_min
+
+@[reducible, simp]
+def solve_precond (a : List Int) : Prop :=
+  a.length ≥ 2
+-- </vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
+-- </vc-helpers>
+
+-- <vc-definitions>
+-- <vc-definitions>
+def solve (a : List Int) (h_precond : solve_precond a) : Int :=
+  sorry
+-- </vc-definitions>
+-- </vc-definitions>
+
+-- <vc-theorems>
+-- <vc-theorems>
+@[reducible, simp]
+def solve_postcond (a : List Int) (result : Int) (h_precond : solve_precond a) : Prop :=
+  let count_neg := (a.filter (fun x => x < 0)).length
+  let abs_list := a.map (fun x => if x < 0 then -x else x)
+  let sum_abs := sum_seq abs_list
+  let min_abs := min_seq abs_list (by
+    simp [abs_list]
+    have h_len : a.length ≥ 2 := h_precond
+    simp at h_len
+    exact Nat.zero_lt_of_ne_zero (Nat.not_eq_zero_of_lt h_len))
+  result = if count_neg % 2 = 0 then sum_abs else sum_abs - 2 * min_abs
+
+theorem solve_spec_satisfied (a : List Int) (h_precond : solve_precond a) :
+    solve_postcond a (solve a h_precond) h_precond := by
+  sorry
+-- </vc-theorems>
+-- </vc-theorems>

@@ -1,0 +1,78 @@
+vc-preamble: |-
+  -- <vc-preamble>
+
+  def FindNextNewline (input : String) (start : Nat) : Option Nat :=
+    if h : start ≥ input.length then Option.none
+    else if input.data[start]! = '\n' then Option.some start
+    else FindNextNewline input (start + 1)
+  termination_by input.length - start
+
+  def SplitByNewlineSimple (input : String) (pos : Nat) (acc : List String) : List String :=
+    if h : pos ≥ input.length then acc
+    else 
+        let nextNewline := FindNextNewline input pos
+        match nextNewline with
+        | Option.none => 
+            if pos < input.length then acc ++ [input.drop pos] else acc
+        | Option.some nl => 
+            have h1 : nl + 1 ≤ input.length := by sorry
+            have h2 : input.length - (nl + 1) < input.length - pos := by sorry
+            SplitByNewlineSimple input (nl + 1) (acc ++ [input.drop pos |>.take (nl - pos)])
+  termination_by input.length - pos
+
+  def ParseInputLines (input : String) : List String :=
+    SplitByNewlineSimple input 0 []
+
+  def CountBlackInSquare (lines : List String) (row : Nat) (col : Nat) : Nat :=
+    (if h1 : row < lines.length ∧ col < lines[row]!.length then 
+       if lines[row]!.data[col]! = '#' then 1 else 0 
+     else 0) +
+    (if h2 : row < lines.length ∧ col + 1 < lines[row]!.length then 
+       if lines[row]!.data[col + 1]! = '#' then 1 else 0 
+     else 0) +
+    (if h3 : row + 1 < lines.length ∧ col < lines[row + 1]!.length then 
+       if lines[row + 1]!.data[col]! = '#' then 1 else 0 
+     else 0) +
+    (if h4 : row + 1 < lines.length ∧ col + 1 < lines[row + 1]!.length then 
+       if lines[row + 1]!.data[col + 1]! = '#' then 1 else 0 
+     else 0)
+
+  def ValidGrid (lines : List String) : Prop :=
+    lines.length = 4 ∧ (∀ k, k < 4 → lines[k]!.length ≥ 4)
+
+  def CanMakeUniformSquare (lines : List String) : Prop :=
+    ∃ i j, i ≤ 2 ∧ j ≤ 2 ∧ 
+        i + 1 < lines.length ∧ j + 1 < lines[i]!.length ∧ j + 1 < lines[i + 1]!.length ∧
+        (let blackCount := CountBlackInSquare lines i j
+         blackCount ≥ 3 ∨ blackCount ≤ 1)
+
+  @[reducible, simp]
+  def solve_precond (input : String) : Prop :=
+    input.length > 0
+  -- </vc-preamble>
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  -- <vc-definitions>
+  def solve (input : String) (h_precond : solve_precond input) : String :=
+    sorry
+  -- </vc-definitions>
+
+vc-theorems: |-
+  -- <vc-theorems>
+  @[reducible, simp]
+  def solve_postcond (input : String) (result: String) (h_precond : solve_precond input) : Prop :=
+    (result = "YES" ∨ result = "NO") ∧
+    (result = "YES" ↔ 
+        (let lines := ParseInputLines input
+         ValidGrid lines ∧ CanMakeUniformSquare lines))
+
+  theorem solve_spec_satisfied (input : String) (h_precond : solve_precond input) :
+      solve_postcond input (solve input h_precond) h_precond := by
+    sorry
+  -- </vc-theorems>
+
+vc-postamble: |-

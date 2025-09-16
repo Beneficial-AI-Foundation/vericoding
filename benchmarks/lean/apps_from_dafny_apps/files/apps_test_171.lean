@@ -1,0 +1,53 @@
+-- <vc-preamble>
+-- <vc-preamble>
+def ContainsLowercase (s : String) : Prop :=
+  ∃ i, 0 ≤ i ∧ i < s.length ∧ 'a' ≤ s.data[i]! ∧ s.data[i]! ≤ 'z'
+
+def ContainsUppercase (s : String) : Prop :=
+  ∃ i, 0 ≤ i ∧ i < s.length ∧ 'A' ≤ s.data[i]! ∧ s.data[i]! ≤ 'Z'
+
+def ContainsDigit (s : String) : Prop :=
+  ∃ i, 0 ≤ i ∧ i < s.length ∧ '0' ≤ s.data[i]! ∧ s.data[i]! ≤ '9'
+
+def IsValidPassword (s : String) : Prop :=
+  s.length ≥ 5 ∧ ContainsLowercase s ∧ ContainsUppercase s ∧ ContainsDigit s
+
+def TrimNewline (s : String) : String :=
+  if h : s.length > 0 ∧ s.data[s.length - 1]! = '\n' then
+    s.take (s.length - 1)
+  else s
+
+def StripWhitespace (s : String) : String :=
+  sorry
+
+@[reducible, simp]
+def solve_precond (input : String) : Prop :=
+  input.length > 0
+-- </vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
+-- </vc-helpers>
+
+-- <vc-definitions>
+-- <vc-definitions>
+def solve (input : String) (h_precond : solve_precond input) : String :=
+  sorry
+-- </vc-definitions>
+-- </vc-definitions>
+
+-- <vc-theorems>
+-- <vc-theorems>
+@[reducible, simp]
+def solve_postcond (input : String) (output : String) (h_precond : solve_precond input) : Prop :=
+  let processedInput := TrimNewline input
+  let stripped := StripWhitespace processedInput
+  (IsValidPassword stripped → output = "Correct\n") ∧ (¬IsValidPassword stripped → output = "Too weak\n")
+
+theorem solve_spec_satisfied (input : String) (h_precond : solve_precond input) :
+    solve_postcond input (solve input h_precond) h_precond := by
+  sorry
+-- </vc-theorems>
+-- </vc-theorems>

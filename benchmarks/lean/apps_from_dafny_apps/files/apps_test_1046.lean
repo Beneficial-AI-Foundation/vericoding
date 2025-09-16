@@ -1,0 +1,71 @@
+-- <vc-preamble>
+-- <vc-preamble>
+def CountOccurrences (s : List Int) (x : Int) : Nat :=
+  match s with
+  | [] => 0
+  | y :: ys => (if y = x then 1 else 0) + CountOccurrences ys x
+
+def FilterPositive (s : List Int) : List Int :=
+  match s with
+  | [] => []
+  | x :: xs => if x > 0 then x :: FilterPositive xs else FilterPositive xs
+
+def RemoveAllOccurrences (s : List Int) (x : Int) : List Int :=
+  match s with
+  | [] => []
+  | y :: ys => if y = x then RemoveAllOccurrences ys x else y :: RemoveAllOccurrences ys x
+
+def CountPairsHelper (s : List Int) : Nat :=
+  match s with
+  | [] => 0
+  | [_] => 0
+  | x :: xs =>
+    let fullList := x :: xs
+    let count := CountOccurrences fullList x
+    let remaining := RemoveAllOccurrences fullList x
+    (if count = 2 then 1 else 0) + CountPairsHelper remaining
+termination_by s.length
+decreasing_by
+  simp_wf
+  have h1 : (RemoveAllOccurrences (x :: xs) x).length ≤ xs.length := by sorry
+  exact Nat.lt_succ_of_le h1
+
+def CountPairs (s : List Int) : Nat :=
+  let positive_sessions := FilterPositive s
+  CountPairsHelper positive_sessions
+
+def ExistsIndex (s : List Int) (x : Int) : Prop :=
+  ∃ i, 0 ≤ i ∧ i < s.length ∧ s[i]! = x
+
+@[reducible, simp]
+def solve_precond (n : Int) (sessions : List Int) : Prop :=
+  n ≥ 1 ∧ sessions.length = n.natAbs ∧ ∀ i, 0 ≤ i ∧ i < sessions.length → sessions[i]! ≥ 0
+-- </vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
+-- </vc-helpers>
+
+-- <vc-definitions>
+-- <vc-definitions>
+def solve (n : Int) (sessions : List Int) (h_precond : solve_precond n sessions) : Int :=
+  sorry
+-- </vc-definitions>
+-- </vc-definitions>
+
+-- <vc-theorems>
+-- <vc-theorems>
+@[reducible, simp]
+def solve_postcond (n : Int) (sessions : List Int) (result : Int) (h_precond : solve_precond n sessions) : Prop :=
+  (result = -1 ∨ result ≥ 0) ∧
+  (result = -1 → ∃ id, id > 0 ∧ CountOccurrences sessions id > 2) ∧
+  (result ≥ 0 → ∀ id, id > 0 → CountOccurrences sessions id ≤ 2) ∧
+  (result ≥ 0 → result.natAbs = CountPairs sessions)
+
+theorem solve_spec_satisfied (n : Int) (sessions : List Int) (h_precond : solve_precond n sessions) :
+    solve_postcond n sessions (solve n sessions h_precond) h_precond := by
+  sorry
+-- </vc-theorems>
+-- </vc-theorems>

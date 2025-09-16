@@ -1,0 +1,49 @@
+vc-preamble: |-
+  -- <vc-preamble>
+  @[reducible, simp]
+  def ValidInput (input : String) : Prop :=
+    input.length > 0
+
+  @[reducible, simp]
+  def ValidN (n : Int) : Prop :=
+    n ≥ 1 ∧ n ≤ 10000
+
+  -- Placeholder functions for undefined Dafny functions
+  def IntegerSquareRoot (n : Int) : Int := sorry
+  def CountFromPrimitives (n m start1 start2 : Int) : Int := sorry
+  def IntToString (n : Int) : String := sorry
+  def ExtractInteger (input : String) : Int := sorry
+
+  def CountPythagoreanTriplesViaPrimitives (n : Int) (h_valid : ValidN n) : Int :=
+    let m := IntegerSquareRoot n
+    CountFromPrimitives n m 1 1
+
+  @[reducible, simp]
+  def solve_precond (stdin_input : String) : Prop :=
+    ValidInput stdin_input
+  -- </vc-preamble>
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  -- <vc-definitions>
+  def solve (stdin_input : String) (h_precond : solve_precond stdin_input) : String :=
+    sorry
+  -- </vc-definitions>
+
+vc-theorems: |-
+  -- <vc-theorems>
+  @[reducible, simp]
+  def solve_postcond (stdin_input : String) (result : String) (h_precond : solve_precond stdin_input) : Prop :=
+    result.length > 0 ∧ 
+    (∃ h_valid : ValidN (ExtractInteger stdin_input), 
+      result = IntToString (CountPythagoreanTriplesViaPrimitives (ExtractInteger stdin_input) h_valid))
+
+  theorem solve_spec_satisfied (stdin_input : String) (h_precond : solve_precond stdin_input) :
+      solve_postcond stdin_input (solve stdin_input h_precond) h_precond := by
+    sorry
+  -- </vc-theorems>
+
+vc-postamble: |-

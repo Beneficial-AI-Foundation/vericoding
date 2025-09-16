@@ -1,0 +1,63 @@
+vc-preamble: |-
+  -- <vc-preamble>
+  def ValidInputStructure (input : String) : Prop :=
+    input.length ≥ 3
+
+  def ValidInput (input : String) : Prop :=
+    input.length > 0 ∧ 
+    (∃ i, 0 ≤ i ∧ i < input.length ∧ input.data[i]? = some '\n') ∧
+    ValidInputStructure input
+
+  def ValidOutput (output : String) : Prop :=
+    output = "YES\n" ∨ output = "NO\n"
+
+  def SplitLines (input : String) : List String := sorry
+
+  def SplitWhitespace (line : String) : List String := sorry
+
+  def StringToInt (s : String) : Int := sorry
+
+  def ParseInput (input : String) : Int × Int × String × List String × List String := sorry
+
+  axiom ParseInput_ensures : ∀ input, ValidInput input → 
+    let result := ParseInput input
+    let n := result.1
+    let m := result.2.1
+    let a := result.2.2.2
+    let b := result.2.2.2.2
+    n ≥ 1 ∧ m ≥ 1 ∧ a.1.length = Int.natAbs n ∧ b.length = Int.natAbs m
+
+  def SolveCircleSeparation (input : String) : String := sorry
+
+  axiom SolveCircleSeparation_ensures : ∀ input, ValidInput input →
+    ValidOutput (SolveCircleSeparation input)
+
+  @[reducible, simp]
+  def solve_precond (stdin_input : String) : Prop :=
+    ValidInput stdin_input
+  -- </vc-preamble>
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  -- <vc-definitions>
+  def solve (stdin_input : String) (h_precond : solve_precond stdin_input) : String :=
+    sorry
+  -- </vc-definitions>
+
+vc-theorems: |-
+  -- <vc-theorems>
+  @[reducible, simp]
+  def solve_postcond (stdin_input : String) (result : String) (h_precond : solve_precond stdin_input) : Prop :=
+    ValidOutput result ∧
+    result = SolveCircleSeparation stdin_input ∧
+    result.length > 0
+
+  theorem solve_spec_satisfied (stdin_input : String) (h_precond : solve_precond stdin_input) :
+      solve_postcond stdin_input (solve stdin_input h_precond) h_precond := by
+    sorry
+  -- </vc-theorems>
+
+vc-postamble: |-

@@ -1,0 +1,96 @@
+-- <vc-preamble>
+-- <vc-preamble>
+def splitLinesFunc (_ : String) : List String := [""]
+
+def parseIntFunc (_ : String) : Int := 0
+
+def parseIntArrayFunc (_ : String) : List Int := []
+
+def intToStringFunc (_ : Int) : String := "0"
+
+def xorOp : Int → Int → Int := sorry
+
+def andOp : Int → Int → Int := sorry
+
+def nimSum : List Int → Int := sorry
+
+def xorRange : List Int → Int → Int → Int := sorry
+
+def findMaxPowerHelper : Int → Int → Int := sorry
+
+def findMaxPower : Int → Int := sorry
+
+def constructA0Helper : Int → Int → Int → Int → Int := sorry
+
+def constructA0 : Int → Int → Int → Int := sorry
+
+def validInput (s : String) : Prop :=
+  let lines := splitLinesFunc s
+  lines.length ≥ 2 ∧ 
+  parseIntFunc lines[0]! ≥ 2 ∧
+  (parseIntArrayFunc lines[1]!).length = parseIntFunc lines[0]! ∧
+  ∀ i, 0 ≤ i ∧ i < (parseIntArrayFunc lines[1]!).length → (parseIntArrayFunc lines[1]!)[i]! ≥ 1
+
+def isValidOutput (s : String) : Prop :=
+  s = "-1" ∨ (parseIntFunc s ≥ 0)
+
+def correctSolution (input : String) (output : String) : Prop :=
+  let lines := splitLinesFunc input
+  lines.length ≥ 2 →
+  let n := parseIntFunc lines[0]!
+  let a := parseIntArrayFunc lines[1]!
+  if n = 2 then
+    (output = "-1" ↔ (a[0]! < a[1]! ∨ (a[0]! - a[1]!) % 2 ≠ 0)) ∧
+    (output ≠ "-1" → parseIntFunc output = (a[0]! - a[1]!) / 2)
+  else
+    let xor_rest := xorRange a 2 n
+    let and_val := a[0]! + a[1]! - xor_rest
+    let target_and := and_val / 2
+    if and_val % 2 ≠ 0 ∨ a[0]! < target_and ∨ andOp target_and xor_rest ≠ 0 then
+      output = "-1"
+    else
+      let a0 := constructA0 target_and xor_rest a[0]!
+      if a0 = 0 then
+        output = "-1"
+      else
+        output ≠ "-1" ∧ parseIntFunc output = a[0]! - a0
+
+def secondPlayerWins (original_piles : List Int) (stones_moved : Int) : Prop :=
+  original_piles.length ≥ 2 →
+  0 ≤ stones_moved ∧ stones_moved < original_piles[0]! →
+  (∀ i, 0 ≤ i ∧ i < original_piles.length → original_piles[i]! ≥ 0) →
+  let new_piles := original_piles.set 0 (original_piles[0]! - stones_moved) |>.set 1 (original_piles[1]! + stones_moved)
+  nimSum new_piles = 0
+
+@[reducible, simp]
+def solve_precond (stdin_input : String) : Prop :=
+  stdin_input.length > 0 ∧ validInput stdin_input
+-- </vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
+-- </vc-helpers>
+
+-- <vc-definitions>
+-- <vc-definitions>
+def solve (stdin_input : String) (h_precond : solve_precond stdin_input) : String :=
+  sorry
+-- </vc-definitions>
+-- </vc-definitions>
+
+-- <vc-theorems>
+-- <vc-theorems>
+@[reducible, simp]
+def solve_postcond (stdin_input : String) (result : String) (h_precond : solve_precond stdin_input) : Prop :=
+  result.length > 0 ∧
+  isValidOutput result ∧
+  (result = "-1" ∨ parseIntFunc result ≥ 0) ∧
+  correctSolution stdin_input result
+
+theorem solve_spec_satisfied (stdin_input : String) (h_precond : solve_precond stdin_input) :
+    solve_postcond stdin_input (solve stdin_input h_precond) h_precond := by
+  sorry
+-- </vc-theorems>
+-- </vc-theorems>

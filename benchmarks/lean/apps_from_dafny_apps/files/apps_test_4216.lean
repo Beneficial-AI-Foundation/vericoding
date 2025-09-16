@@ -1,0 +1,53 @@
+-- <vc-preamble>
+-- <vc-preamble>
+def numDigits (n : Int) : Int :=
+  if n < 10 then 1 else 1 + numDigits (n / 10)
+termination_by n.natAbs
+decreasing_by
+  simp_wf
+  have h : n ≥ 1 := by sorry
+  have h1 : n ≥ 10 := by sorry
+  have h2 : n / 10 < n := by sorry
+  exact Int.natAbs_lt_natAbs_of_nonneg_of_lt (by omega) h2
+
+def ValidInput (N : Int) : Prop := N ≥ 1
+
+def F (a b : Int) : Int :=
+  let digitsA := numDigits a
+  let digitsB := numDigits b
+  if digitsA > digitsB then digitsA else digitsB
+
+def IsFactorPair (a b N : Int) : Prop :=
+  a ≥ 1 ∧ b ≥ 1 ∧ a * b = N
+
+@[reducible, simp]
+def solve_precond (N : Int) : Prop :=
+  ValidInput N
+-- </vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
+-- </vc-helpers>
+
+-- <vc-definitions>
+-- <vc-definitions>
+def solve (N : Int) (h_precond : solve_precond N) : Int :=
+  sorry
+-- </vc-definitions>
+-- </vc-definitions>
+
+-- <vc-theorems>
+-- <vc-theorems>
+@[reducible, simp]
+def solve_postcond (N : Int) (result : Int) (h_precond : solve_precond N) : Prop :=
+  result ≥ 1 ∧ 
+  (∃ a b, IsFactorPair a b N ∧ result = F a b) ∧
+  (∀ a b, IsFactorPair a b N → result ≤ F a b)
+
+theorem solve_spec_satisfied (N : Int) (h_precond : solve_precond N) :
+    solve_postcond N (solve N h_precond) h_precond := by
+  sorry
+-- </vc-theorems>
+-- </vc-theorems>

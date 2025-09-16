@@ -1,0 +1,50 @@
+-- <vc-preamble>
+-- <vc-preamble>
+def ValidInput (input : String) : Prop :=
+  input.length > 0 ∧
+  ∃ i, 0 < i ∧ i < input.length - 1 ∧ input.data[i]! = ' ' ∧
+  (∀ j, 0 ≤ j ∧ j < i → '0' ≤ input.data[j]! ∧ input.data[j]! ≤ '9') ∧
+  (∀ j, i < j ∧ j < input.length → '0' ≤ input.data[j]! ∧ input.data[j]! ≤ '9')
+
+def ValidDimensions (w h : Int) : Prop :=
+  w ≥ 1 ∧ h ≥ 1 ∧ w ≤ 1000 ∧ h ≤ 1000
+
+def FindSpace (s : String) (start : Int) : Int := sorry
+
+def StringToInt (s : String) : Int := sorry
+
+def IntToString (n : Int) : String := sorry
+
+def ModPow (base exp mod : Int) : Int := sorry
+
+def ParseTwoInts (input : String) : Int × Int := sorry
+
+@[reducible, simp]
+def solve_precond (input : String) : Prop :=
+  ValidInput input
+-- </vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
+-- </vc-helpers>
+
+-- <vc-definitions>
+-- <vc-definitions>
+def solve (input : String) (h_precond : solve_precond input) : String :=
+  sorry
+-- </vc-definitions>
+-- </vc-definitions>
+
+-- <vc-theorems>
+-- <vc-theorems>
+@[reducible, simp]
+def solve_postcond (input : String) (result: String) (h_precond : solve_precond input) : Prop :=
+  True
+
+theorem solve_spec_satisfied (input : String) (h_precond : solve_precond input) :
+    solve_postcond input (solve input h_precond) h_precond := by
+  trivial
+-- </vc-theorems>
+-- </vc-theorems>

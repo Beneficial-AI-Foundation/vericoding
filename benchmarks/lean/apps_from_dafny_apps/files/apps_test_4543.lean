@@ -1,0 +1,45 @@
+-- <vc-preamble>
+-- <vc-preamble>
+def Sqrt (n : Int) : Int := sorry
+
+def IntToString (n : Int) : String := sorry
+
+def StringToInt (s : String) : Int := sorry
+
+def IsPerfectSquare (n : Int) : Prop :=
+  n ≥ 0 ∧ let sqrt_n := Sqrt n; sqrt_n * sqrt_n = n
+
+@[reducible, simp]
+def solve_precond (a b : Int) : Prop :=
+  a ≥ 1 ∧ a ≤ 100 ∧ b ≥ 1 ∧ b ≤ 100
+-- </vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
+-- </vc-helpers>
+
+-- <vc-definitions>
+-- <vc-definitions>
+def solve (a b : Int) (h_precond : solve_precond a b) : String :=
+  sorry
+-- </vc-definitions>
+-- </vc-definitions>
+
+-- <vc-theorems>
+-- <vc-theorems>
+@[reducible, simp]
+def solve_postcond (a b : Int) (result : String) (h_precond : solve_precond a b) : Prop :=
+  (result = "Yes" ∨ result = "No") ∧
+  let a_str := IntToString a
+  let b_str := IntToString b
+  let concat_str := a_str ++ b_str
+  let concat_num := StringToInt concat_str
+  (result = "Yes" ↔ IsPerfectSquare concat_num)
+
+theorem solve_spec_satisfied (a b : Int) (h_precond : solve_precond a b) :
+    solve_postcond a b (solve a b h_precond) h_precond := by
+  sorry
+-- </vc-theorems>
+-- </vc-theorems>

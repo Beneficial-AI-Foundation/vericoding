@@ -1,0 +1,44 @@
+-- <vc-preamble>
+-- <vc-preamble>
+def ValidInput (A : Array Int) : Prop :=
+  A.size ≥ 2 ∧ ∀ i, 0 ≤ i ∧ i < A.size → A[Int.natAbs i]! ≥ 1
+
+def abs (x : Int) : Int :=
+  if x ≥ 0 then x else -x
+
+def ValidPair (A : Array Int) (i j : Int) : Prop :=
+  0 ≤ i ∧ i < A.size ∧ 0 ≤ j ∧ j < A.size ∧ 
+  i ≠ j ∧ abs ((i+1) - (j+1)) = A[Int.natAbs i]! + A[Int.natAbs j]!
+
+def CountValidPairs (A : Array Int) : Int :=
+  sorry -- Cardinality of set comprehension - requires implementation
+
+@[reducible, simp]
+def solve_precond (A : Array Int) : Prop :=
+  ValidInput A
+-- </vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
+-- </vc-helpers>
+
+-- <vc-definitions>
+-- <vc-definitions>
+def solve (A : Array Int) (h_precond : solve_precond A) : Int :=
+  sorry
+-- </vc-definitions>
+-- </vc-definitions>
+
+-- <vc-theorems>
+-- <vc-theorems>
+@[reducible, simp]
+def solve_postcond (A : Array Int) (result : Int) (h_precond : solve_precond A) : Prop :=
+  result ≥ 0 ∧ result = CountValidPairs A
+
+theorem solve_spec_satisfied (A : Array Int) (h_precond : solve_precond A) :
+    solve_postcond A (solve A h_precond) h_precond := by
+  sorry
+-- </vc-theorems>
+-- </vc-theorems>

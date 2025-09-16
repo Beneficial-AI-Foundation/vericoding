@@ -1,0 +1,47 @@
+vc-preamble: |-
+  -- <vc-preamble>
+  def ValidInput (s : String) : Prop :=
+    s.length > 0
+
+  def FindFirstNewline (s : String) : Int :=
+    sorry
+
+  def ExtractFirstLine (s : String) : String :=
+    sorry
+
+  def ReverseString (s : String) : String :=
+    sorry
+
+  def ValidOutput (result : String) (input : String) : Prop :=
+    input.length > 0 →
+    result.length ≥ 1 ∧
+    (if result.length > 0 then result.data.get! (result.length - 1) = '\n' else False) ∧
+    ∃ n, n = ExtractFirstLine input ∧ result = n ++ ReverseString n ++ "\n"
+
+  @[reducible, simp]
+  def solve_precond (stdin_input : String) : Prop :=
+    ValidInput stdin_input
+  -- </vc-preamble>
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  -- <vc-definitions>
+  def solve (stdin_input : String) (h_precond : solve_precond stdin_input) : String :=
+    sorry
+  -- </vc-definitions>
+
+vc-theorems: |-
+  -- <vc-theorems>
+  @[reducible, simp]
+  def solve_postcond (stdin_input : String) (result : String) (h_precond : solve_precond stdin_input) : Prop :=
+    ValidOutput result stdin_input
+
+  theorem solve_spec_satisfied (stdin_input : String) (h_precond : solve_precond stdin_input) :
+      solve_postcond stdin_input (solve stdin_input h_precond) h_precond := by
+    sorry
+  -- </vc-theorems>
+
+vc-postamble: |-

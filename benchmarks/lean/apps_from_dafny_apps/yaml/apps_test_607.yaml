@@ -1,0 +1,64 @@
+vc-preamble: |-
+  -- <vc-preamble>
+  -- Assume these helper functions exist
+  noncomputable def SplitLinesFunc : String → List String := sorry
+  noncomputable def SplitSpacesFunc : String → List String := sorry
+  noncomputable def StringToInt : String → Int := sorry
+  noncomputable def IntToString : Int → String := sorry
+  noncomputable def SumUpToSize : Int → Int → Int → Int := sorry
+
+  noncomputable def ParseTwoInts (input : String) : (Int × Int) :=
+    if input.length > 0 then
+      let lines := SplitLinesFunc input
+      if lines.length = 0 then (0, 0)
+      else 
+        let parts := SplitSpacesFunc lines[0]!
+        if parts.length < 2 then (0, 0)
+        else (StringToInt parts[0]!, StringToInt parts[1]!)
+    else (0, 0)
+
+  def ValidInput (input : String) : Prop :=
+    input.length > 0 ∧ 
+    (let nm := ParseTwoInts input
+     let n := nm.1; let m := nm.2
+     n > 0 ∧ m > 0)
+
+  noncomputable def ComputeHappinessSum (n : Int) (m : Int) : Int :=
+    if n > 0 ∧ m > 0 then
+      SumUpToSize n m n
+    else 0
+
+  @[reducible, simp]
+  def solve_precond (input : String) : Prop :=
+    input.length > 0
+  -- </vc-preamble>
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  -- <vc-definitions>
+  noncomputable def solve (input : String) (h_precond : solve_precond input) : String :=
+    sorry
+  -- </vc-definitions>
+
+vc-theorems: |-
+  -- <vc-theorems>
+  @[reducible, simp]
+  def solve_postcond (input : String) (output : String) (h_precond : solve_precond input) : Prop :=
+    output.length ≥ 0 ∧
+    (ValidInput input → 
+        (let nm := ParseTwoInts input
+         let n := nm.1; let m := nm.2
+         output = IntToString (ComputeHappinessSum n m) ++ "\n")) ∧
+    (ValidInput input → output.length > 0 ∧ (if h : output.length > 0 then output.data[output.length - 1]! = '\n' else True)) ∧
+    (ValidInput input → ∀ c, c ∈ output.toList → (c = '\n' ∨ ('0' ≤ c ∧ c ≤ '9'))) ∧
+    (¬ValidInput input → output = "")
+
+  theorem solve_spec_satisfied (input : String) (h_precond : solve_precond input) :
+      solve_postcond input (solve input h_precond) h_precond := by
+    sorry
+  -- </vc-theorems>
+
+vc-postamble: |-

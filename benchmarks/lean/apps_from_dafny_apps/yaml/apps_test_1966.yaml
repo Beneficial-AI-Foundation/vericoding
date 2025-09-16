@@ -1,0 +1,111 @@
+vc-preamble: |-
+  -- <vc-preamble>
+  def split_by_newline (input: String) : List String := sorry
+
+  def string_to_int (s: String) : Int := sorry
+
+  def is_valid_integer_string (s: String) : Prop :=
+    s.length > 0 ∧ 
+    (s.data[0]! ≠ '0' ∨ s.length = 1) ∧
+    ∀ i : Nat, i < s.length → '0' ≤ s.data[i]! ∧ s.data[i]! ≤ '9'
+
+  instance : Decidable (is_valid_integer_string s) := by sorry
+
+  def input_has_correct_structure_for_n (input: String) (n: Int) : Prop :=
+    let lines := split_by_newline input
+    lines.length ≥ (4*n + 4).natAbs ∧
+    is_valid_integer_string (lines[0]!) ∧
+    string_to_int (lines[0]!) = n ∧
+    (lines.length > (n+1).natAbs → lines[(n+1).natAbs]! = "") ∧ 
+    (lines.length > (2*n+2).natAbs → lines[(2*n+2).natAbs]! = "") ∧ 
+    (lines.length > (3*n+3).natAbs → lines[(3*n+3).natAbs]! = "")
+
+  def input_contains_exactly_four_pieces_of_size_n (input: String) (n: Int) : Prop :=
+    let lines := split_by_newline input
+    lines.length ≥ (4*n + 4).natAbs ∧
+    (∀ i : Int, 1 ≤ i ∧ i ≤ n ∧ i.natAbs < lines.length → (lines[i.natAbs]!).length = n.natAbs) ∧
+    (∀ i : Int, n+2 ≤ i ∧ i ≤ 2*n+1 ∧ i.natAbs < lines.length → (lines[i.natAbs]!).length = n.natAbs) ∧
+    (∀ i : Int, 2*n+3 ≤ i ∧ i ≤ 3*n+2 ∧ i.natAbs < lines.length → (lines[i.natAbs]!).length = n.natAbs) ∧
+    (∀ i : Int, 3*n+4 ≤ i ∧ i ≤ 4*n+3 ∧ i.natAbs < lines.length → (lines[i.natAbs]!).length = n.natAbs)
+
+  def all_pieces_contain_only_binary_chars (input: String) (n: Int) : Prop :=
+    let lines := split_by_newline input
+    lines.length ≥ (4*n + 4).natAbs ∧
+    (∀ i : Int, 1 ≤ i ∧ i ≤ n ∧ i.natAbs < lines.length → 
+        ∀ j : Nat, j < (lines[i.natAbs]!).length → (lines[i.natAbs]!).data[j]! = '0' ∨ (lines[i.natAbs]!).data[j]! = '1') ∧
+    (∀ i : Int, n+2 ≤ i ∧ i ≤ 2*n+1 ∧ i.natAbs < lines.length → 
+        ∀ j : Nat, j < (lines[i.natAbs]!).length → (lines[i.natAbs]!).data[j]! = '0' ∨ (lines[i.natAbs]!).data[j]! = '1') ∧
+    (∀ i : Int, 2*n+3 ≤ i ∧ i ≤ 3*n+2 ∧ i.natAbs < lines.length → 
+        ∀ j : Nat, j < (lines[i.natAbs]!).length → (lines[i.natAbs]!).data[j]! = '0' ∨ (lines[i.natAbs]!).data[j]! = '1') ∧
+    (∀ i : Int, 3*n+4 ≤ i ∧ i ≤ 4*n+3 ∧ i.natAbs < lines.length → 
+        ∀ j : Nat, j < (lines[i.natAbs]!).length → (lines[i.natAbs]!).data[j]! = '0' ∨ (lines[i.natAbs]!).data[j]! = '1')
+
+  def contains_valid_input_format (input: String) : Prop :=
+    ∃ n: Int, 1 ≤ n ∧ n ≤ 100 ∧ n % 2 = 1 ∧ 
+        input_has_correct_structure_for_n input n ∧
+        input_contains_exactly_four_pieces_of_size_n input n ∧
+        all_pieces_contain_only_binary_chars input n
+
+  def extract_n_from_input (input: String) : Int :=
+    let lines := split_by_newline input
+    if lines.length > 0 ∧ is_valid_integer_string (lines[0]!) then
+        string_to_int (lines[0]!)
+    else
+        1
+
+  def extract_pieces_from_input (input: String) : List (List String) :=
+    let lines := split_by_newline input
+    let n := extract_n_from_input input
+    [
+        (lines.drop 1).take n.natAbs,
+        (lines.drop (n+2).natAbs).take n.natAbs, 
+        (lines.drop (2*n+3).natAbs).take n.natAbs,
+        (lines.drop (3*n+4).natAbs).take n.natAbs
+    ]
+
+  def minimum_recoloring_for_pieces (pieces: List (List String)) (n: Int) : Int := 0
+
+  def represents_minimum_recoloring_count (input: String) (output: String) : Prop :=
+    is_valid_integer_string output ∧
+    contains_valid_input_format input ∧
+    let n := extract_n_from_input input
+    let pieces := extract_pieces_from_input input
+    pieces.length = 4 ∧
+    (∀ piece ∈ pieces, 
+        piece.length = n.natAbs ∧ 
+        (∀ row ∈ piece, 
+            row.length = n.natAbs ∧
+            (∀ i : Nat, i < row.length → row.data[i]! = '0' ∨ row.data[i]! = '1'))) ∧
+    string_to_int output = minimum_recoloring_for_pieces pieces n
+
+  @[reducible, simp]
+  def solve_precond (stdin_input: String) : Prop :=
+    stdin_input.length > 0 ∧ contains_valid_input_format stdin_input
+  -- </vc-preamble>
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  -- <vc-definitions>
+  def solve (stdin_input: String) (h_precond : solve_precond stdin_input) : String :=
+    sorry
+  -- </vc-definitions>
+
+vc-theorems: |-
+  -- <vc-theorems>
+  @[reducible, simp]
+  def solve_postcond (stdin_input: String) (result: String) (h_precond : solve_precond stdin_input) : Prop :=
+    is_valid_integer_string result ∧
+    result ≠ "" ∧
+    represents_minimum_recoloring_count stdin_input result ∧
+    let n := extract_n_from_input stdin_input
+    string_to_int result ≥ 0 ∧ string_to_int result ≤ 2*n*n
+
+  theorem solve_spec_satisfied (stdin_input: String) (h_precond : solve_precond stdin_input) :
+      solve_postcond stdin_input (solve stdin_input h_precond) h_precond := by
+    sorry
+  -- </vc-theorems>
+
+vc-postamble: |-
