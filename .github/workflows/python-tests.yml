@@ -3,24 +3,8 @@ name: Python Tests
 on:
   push:
     branches: [ main, develop ]
-    paths:
-      - "vericoder.py"
-      - "vericoding/**/*.py"
-      - "config/**/*.yaml"
-      - "tests/**/*.py"
-      - "pyproject.toml"
-      - "pytest.ini"
-      - ".github/workflows/python-tests.yml"
   pull_request:
     branches: [ main, develop ]
-    paths:
-      - "vericoder.py"
-      - "vericoding/**/*.py"
-      - "config/**/*.yaml"
-      - "tests/**/*.py"
-      - "pyproject.toml"
-      - "pytest.ini"
-      - ".github/workflows/python-tests.yml"
   workflow_dispatch:
 
 #permissions:
@@ -47,7 +31,7 @@ jobs:
         uv pip install -e ".[test]"
 
     - name: Run tests with coverage
-      run: source .venv/bin/activate && pytest tests/ -v --cov=vericoding --cov-report=xml --cov-report=html --cov-report=term-missing
+      run: source .venv/bin/activate && pytest src/tests/ -v --cov=vericoding --cov-report=xml --cov-report=html --cov-report=term-missing
 
     - name: Upload coverage to Codecov
       uses: codecov/codecov-action@v4
