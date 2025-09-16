@@ -197,9 +197,6 @@ resource "aws_batch_compute_environment" "vericoding_compute_env" {
     
     bid_percentage = 100  # 100% of on-demand price
     
-    ec2_configuration {
-      image_type = "ECS_AL2_ARM64"  # ARM64 for Graviton3
-    }
     
     instance_role = aws_iam_instance_profile.batch_instance_profile.arn
     
