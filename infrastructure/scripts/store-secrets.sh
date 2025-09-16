@@ -32,16 +32,16 @@ store_parameter() {
 }
 
 # Store API keys
-store_parameter "openai-api-key" "OpenAI API Key"
 store_parameter "wandb-api-key" "Weights & Biases API Key"
-store_parameter "anthropic-api-key" "Anthropic API Key"
+store_parameter "openrouter-api-key" "OpenRouter API Key"
+store_parameter "fake-api-key" "Fake API Key for testing"
 
 echo
 echo "API keys stored successfully!"
 echo "Your Batch jobs will now have access to these keys as environment variables:"
-echo "  - OPENAI_API_KEY"
-echo "  - WANDB_API_KEY" 
-echo "  - ANTHROPIC_API_KEY"
+echo "  - WANDB_API_KEY"
+echo "  - OPENROUTER_API_KEY" 
+echo "  - FAKE_API_KEY"
 echo
 echo "To view stored parameters:"
 echo "  aws ssm get-parameters-by-path --path /vericoding --recursive --with-decryption"

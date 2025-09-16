@@ -253,12 +253,16 @@ resource "aws_batch_job_definition" "lean_verification" {
     
     secrets = [
       {
-        name      = "OPENAI_API_KEY"
-        valueFrom = "arn:aws:ssm:eu-west-2:${data.aws_caller_identity.current.account_id}:parameter/vericoding/openai-api-key"
+        name      = "WANDB_API_KEY"
+        valueFrom = "arn:aws:ssm:eu-west-2:${data.aws_caller_identity.current.account_id}:parameter/vericoding/wandb-api-key"
       },
       {
-        name      = "WANDB_API_KEY" 
-        valueFrom = "arn:aws:ssm:eu-west-2:${data.aws_caller_identity.current.account_id}:parameter/vericoding/wandb-api-key"
+        name      = "OPENROUTER_API_KEY" 
+        valueFrom = "arn:aws:ssm:eu-west-2:${data.aws_caller_identity.current.account_id}:parameter/vericoding/openrouter-api-key"
+      },
+      {
+        name      = "FAKE_API_KEY"
+        valueFrom = "arn:aws:ssm:eu-west-2:${data.aws_caller_identity.current.account_id}:parameter/vericoding/fake-api-key"
       }
     ]
     
