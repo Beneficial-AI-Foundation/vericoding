@@ -211,6 +211,43 @@
       }
     ]
   },
+  "NpBroadcast-spec.lean": {
+    "status": "ok",
+    "results": [
+      {
+        "type": "sig",
+        "string": "def Matrix (m n : Nat) (\u03b1 : Type) := Fin m \u2192 Fin n \u2192 \u03b1\n\n"
+      },
+      {
+        "type": "constr",
+        "string": "instance {m n : Nat} {\u03b1 : Type} [Inhabited \u03b1] : GetElem (Matrix m n \u03b1) (Nat \u00d7 Nat) \u03b1 (fun _ ij => ij.1 < m \u2227 ij.2 < n) where\n  getElem mat ij h := mat \u27e8ij.1, h.1\u27e9 \u27e8ij.2, h.2\u27e9\n"
+      },
+      {
+        "type": "empty",
+        "string": ""
+      },
+      {
+        "type": "sig",
+        "string": "def Matrix.size {m n : Nat} {\u03b1 : Type} (_ : Matrix m n \u03b1) : Nat := m * n\n\n"
+      },
+      {
+        "type": "sig",
+        "string": "def broadcast {n : Nat} (a : Vector Int n) (shape : Vector Nat 2) : Matrix (shape[0]!) (shape[1]!) Int :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
+      },
+      {
+        "type": "cond",
+        "string": "theorem broadcast_spec {n : Nat} (a : Vector Int n) (shape : Vector Nat 2)\n  (h : shape[0]! = n \u2228 shape[1]! = n) :\n  let ret := broadcast a shape\n  (ret.size = shape[0]! * shape[1]!) \u2227\n  (\u2200 i j : Nat, i < shape[0]! \u2192 j < shape[1]! \u2192\n    if shape[0]! = n then ret[(i,j)]! = a[i]! else ret[(i,j)]! = a[j]!) :="
+      },
+      {
+        "type": "proof",
+        "string": "sorry"
+      }
+    ]
+  },
   "NpCenter-spec.lean": {
     "status": "ok",
     "results": [
@@ -258,6 +295,43 @@
       {
         "type": "cond",
         "string": "theorem clip_spec {n : Nat} (a : Vector Float n) (min max : Float)\n  (h : min < max) :\n  let ret := clip a min max\n  (ret.toList.length = n) \u2227\n  (\u2200 i : Fin n, if a[i] < min then ret[i] = min\n               else if a[i] > max then ret[i] = max\n               else ret[i] = a[i]) := sorry\n\nend NpClip\n"
+      }
+    ]
+  },
+  "NpColumnStack-spec.lean": {
+    "status": "ok",
+    "results": [
+      {
+        "type": "sig",
+        "string": "def Matrix (m n : Nat) (\u03b1 : Type) := Fin m \u2192 Fin n \u2192 \u03b1\n\n"
+      },
+      {
+        "type": "constr",
+        "string": "instance {m n : Nat} {\u03b1 : Type} [Inhabited \u03b1] : GetElem (Matrix m n \u03b1) (Nat \u00d7 Nat) \u03b1 (fun _ ij => ij.1 < m \u2227 ij.2 < n) where\n  getElem mat ij h := mat \u27e8ij.1, h.1\u27e9 \u27e8ij.2, h.2\u27e9\n"
+      },
+      {
+        "type": "empty",
+        "string": ""
+      },
+      {
+        "type": "sig",
+        "string": "def Matrix.size {m n : Nat} {\u03b1 : Type} (_ : Matrix m n \u03b1) : Nat := m * n\n\n"
+      },
+      {
+        "type": "sig",
+        "string": "def column_stack {m n : Nat} (input : Vector (Vector Int m) n) : Matrix m n Int :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
+      },
+      {
+        "type": "cond",
+        "string": "theorem column_stack_spec {m n : Nat} (input : Vector (Vector Int m) n)\n  (h1 : n \u2260 0)\n  (h2 : \u2200 i : Fin n, input[i].size = m) :\n  let ret := column_stack input\n  (ret.size = m * n) \u2227\n  (\u2200 i : Nat, \u2200 j : Nat, i < n \u2192 j < m \u2192 ret[(j,i)]! = input[i]![j]!) :="
+      },
+      {
+        "type": "proof",
+        "string": "sorry"
       }
     ]
   },
@@ -394,6 +468,43 @@
       }
     ]
   },
+  "NpDiagonal-spec.lean": {
+    "status": "ok",
+    "results": [
+      {
+        "type": "sig",
+        "string": "def Matrix (m n : Nat) (\u03b1 : Type) := Fin m \u2192 Fin n \u2192 \u03b1\n\n"
+      },
+      {
+        "type": "constr",
+        "string": "instance {m n : Nat} {\u03b1 : Type} [Inhabited \u03b1] : GetElem (Matrix m n \u03b1) (Nat \u00d7 Nat) \u03b1 (fun _ ij => ij.1 < m \u2227 ij.2 < n) where\n  getElem mat ij h := mat \u27e8ij.1, h.1\u27e9 \u27e8ij.2, h.2\u27e9\n"
+      },
+      {
+        "type": "empty",
+        "string": ""
+      },
+      {
+        "type": "sig",
+        "string": "def Matrix.size {m n : Nat} {\u03b1 : Type} (_ : Matrix m n \u03b1) : Nat := m * n\n\n"
+      },
+      {
+        "type": "sig",
+        "string": "def diagonal {n : Nat} (arr : Matrix n n Int) (k : Int) : Vector Int (if k > 0 then n - k.natAbs else n + k.natAbs) :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
+      },
+      {
+        "type": "cond",
+        "string": "theorem diagonal_spec {n : Nat} (arr : Matrix n n Int) (k : Int)\n  (h1 : -n < k \u2227 k < n) :\n  let ret := diagonal arr k\n  (if k > 0 then ret.size = n - k.natAbs else ret.size = n + k.natAbs) \u2227\n  (\u2200 i : Nat, i < ret.size \u2192\n    if k \u2265 0 then ret[i]! = arr[(i, i + k.natAbs)]!\n    else ret[i]! = arr[(i + k.natAbs, i)]!) :="
+      },
+      {
+        "type": "proof",
+        "string": "sorry"
+      }
+    ]
+  },
   "NpEqual-spec.lean": {
     "status": "ok",
     "results": [
@@ -416,6 +527,43 @@
       {
         "type": "cond",
         "string": "theorem equal_spec {n : Nat} (a b : Vector Int n) :\n  (equal a b).toList.length = n \u2227\n  \u2200 i : Fin n, (equal a b)[i] = (a[i] = b[i]) := sorry\n\nend NpEqual "
+      }
+    ]
+  },
+  "NpFlatten-spec.lean": {
+    "status": "ok",
+    "results": [
+      {
+        "type": "sig",
+        "string": "def Matrix (m n : Nat) (\u03b1 : Type) := Fin m \u2192 Fin n \u2192 \u03b1\n\n"
+      },
+      {
+        "type": "constr",
+        "string": "instance {m n : Nat} {\u03b1 : Type} [Inhabited \u03b1] : GetElem (Matrix m n \u03b1) (Nat \u00d7 Nat) \u03b1 (fun _ ij => ij.1 < m \u2227 ij.2 < n) where\n  getElem mat ij h := mat \u27e8ij.1, h.1\u27e9 \u27e8ij.2, h.2\u27e9\n"
+      },
+      {
+        "type": "empty",
+        "string": ""
+      },
+      {
+        "type": "sig",
+        "string": "def Matrix.size {m n : Nat} {\u03b1 : Type} (_ : Matrix m n \u03b1) : Nat := m * n\n\n"
+      },
+      {
+        "type": "sig",
+        "string": "def flatten2 {m n : Nat} (mat : Matrix m n Int) : Vector Int (m * n) :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
+      },
+      {
+        "type": "cond",
+        "string": "theorem flatten2_spec {m n : Nat} (mat : Matrix m n Int)\n  (h1 : m > 0)\n  (h2 : n > 0) :\n  let ret := flatten2 mat\n  (ret.size = m * n) \u2227\n  (\u2200 i j : Nat, i < m \u2192 j < n \u2192 ret[i * n + j]! = mat[(i,j)]!) :="
+      },
+      {
+        "type": "proof",
+        "string": "sorry"
       }
     ]
   },
@@ -1042,6 +1190,43 @@
       }
     ]
   },
+  "NpRavel-spec.lean": {
+    "status": "ok",
+    "results": [
+      {
+        "type": "sig",
+        "string": "def Matrix (m n : Nat) (\u03b1 : Type) := Fin m \u2192 Fin n \u2192 \u03b1\n\n"
+      },
+      {
+        "type": "constr",
+        "string": "instance {m n : Nat} {\u03b1 : Type} [Inhabited \u03b1] : GetElem (Matrix m n \u03b1) (Nat \u00d7 Nat) \u03b1 (fun _ ij => ij.1 < m \u2227 ij.2 < n) where\n  getElem mat ij h := mat \u27e8ij.1, h.1\u27e9 \u27e8ij.2, h.2\u27e9\n"
+      },
+      {
+        "type": "empty",
+        "string": ""
+      },
+      {
+        "type": "sig",
+        "string": "def Matrix.size {m n : Nat} {\u03b1 : Type} (_ : Matrix m n \u03b1) : Nat := m * n\n\n"
+      },
+      {
+        "type": "sig",
+        "string": "def ravel {m n : Nat} (arr : Matrix m n Int) : Vector Int (m * n) :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
+      },
+      {
+        "type": "cond",
+        "string": "theorem ravel_spec {m n : Nat} (arr : Matrix m n Int) :\n  let ret := ravel arr\n  (ret.size = m * n) \u2227\n  (\u2200 i j : Nat, i < m \u2192 j < n \u2192 ret[i * n + j]! = arr[(i,j)]!) :="
+      },
+      {
+        "type": "proof",
+        "string": "sorry"
+      }
+    ]
+  },
   "NpRemainder-spec.lean": {
     "status": "ok",
     "results": [
@@ -1064,6 +1249,43 @@
       {
         "type": "cond",
         "string": "theorem remainder_spec {n : Nat} (a b : Vector Int n)\n  (h : \u2200 i : Fin n, b[i] \u2260 0) :\n  let ret := remainder a b\n  (ret.toList.length = n) \u2227\n  (\u2200 i : Fin n, ret[i] = a[i] % b[i]) := sorry\n\nend NpRemainder\n"
+      }
+    ]
+  },
+  "NpReshape-spec.lean": {
+    "status": "ok",
+    "results": [
+      {
+        "type": "sig",
+        "string": "def Matrix (m n : Nat) (\u03b1 : Type) := Fin m \u2192 Fin n \u2192 \u03b1\n\n"
+      },
+      {
+        "type": "constr",
+        "string": "instance {m n : Nat} {\u03b1 : Type} [Inhabited \u03b1] : GetElem (Matrix m n \u03b1) (Nat \u00d7 Nat) \u03b1 (fun _ ij => ij.1 < m \u2227 ij.2 < n) where\n  getElem mat ij h := mat \u27e8ij.1, h.1\u27e9 \u27e8ij.2, h.2\u27e9\n"
+      },
+      {
+        "type": "empty",
+        "string": ""
+      },
+      {
+        "type": "sig",
+        "string": "def Matrix.size {m n : Nat} {\u03b1 : Type} (_ : Matrix m n \u03b1) : Nat := m * n\n\n"
+      },
+      {
+        "type": "sig",
+        "string": "def reshape {n : Nat} (arr : Vector Int n) (shape : Vector Nat 2) : Matrix (if shape[0]! > 0 then shape[0]! else n / shape[1]!) (if shape[1]! > 0 then shape[1]! else n / shape[0]!) Int :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
+      },
+      {
+        "type": "cond",
+        "string": "theorem reshape_spec {n : Nat} (arr : Vector Int n) (shape : Vector Nat 2)\n  (h1 : \u2200 i : Fin 2, shape[i] > 0 \u2228 shape[i] = 0)\n  (h2 : \u00ac(shape[0]! = 0 \u2227 shape[1]! = 0))\n  (h3 : if shape[0]! > 0 \u2227 shape[1]! > 0 then shape[0]! * shape[1]! = n\n        else if shape[0]! = 0 then n % shape[1]! = 0\n        else n % shape[0]! = 0) :\n  let ret := reshape arr shape\n  (if shape[0]! > 0 then ret.size / (if shape[1]! > 0 then shape[1]! else n / shape[0]!) = shape[0]!\n   else ret.size / (if shape[1]! > 0 then shape[1]! else n / shape[0]!) = n / shape[1]!) \u2227\n  (\u2200 i : Nat, i < n \u2192 ret[(i / ret.size, i % ret.size)]! = arr[i]!) :="
+      },
+      {
+        "type": "proof",
+        "string": "sorry"
       }
     ]
   },
@@ -1122,6 +1344,67 @@
       {
         "type": "cond",
         "string": "theorem select_spec {m n : Nat} (condlist : Vector (Vector Bool n) m) (choicelist : Vector (Vector Float n) m)\n  (h1 : m > 0 \u2227 n > 0)\n  (h2 : \u2200 i : Fin m, condlist[i].toList.length = n \u2227 choicelist[i].toList.length = n) :\n  let ret := select condlist choicelist\n  (ret.toList.length = n) \u2227\n  (\u2200 i : Fin m, \u2200 j : Fin n, condlist[i][j] \u2192 ret[j] = choicelist[i][j]) := sorry\n\nend NpSelect\n"
+      }
+    ]
+  },
+  "NpShape-spec.lean": {
+    "status": "ok",
+    "results": [
+      {
+        "type": "sig",
+        "string": "def Matrix (m n : Nat) (\u03b1 : Type) := Fin m \u2192 Fin n \u2192 \u03b1\n\n"
+      },
+      {
+        "type": "constr",
+        "string": "instance {m n : Nat} {\u03b1 : Type} [Inhabited \u03b1] : GetElem (Matrix m n \u03b1) (Nat \u00d7 Nat) \u03b1 (fun _ ij => ij.1 < m \u2227 ij.2 < n) where\n  getElem mat ij h := mat \u27e8ij.1, h.1\u27e9 \u27e8ij.2, h.2\u27e9\n"
+      },
+      {
+        "type": "empty",
+        "string": ""
+      },
+      {
+        "type": "sig",
+        "string": "def Matrix.size {m n : Nat} {\u03b1 : Type} (_ : Matrix m n \u03b1) : Nat := m * n\n\n"
+      },
+      {
+        "type": "constr",
+        "string": "inductive arrays where\n  | arrayOne : Array Float \u2192 arrays\n  | arrayTwo : Array (Array Float) \u2192 arrays\n  | arrayThree : Array (Array (Array Float)) \u2192 arrays\n"
+      },
+      {
+        "type": "empty",
+        "string": ""
+      },
+      {
+        "type": "sig",
+        "string": "def shape'' (a : arrays) : Vector Nat (match a with | .arrayOne _ => 1 | .arrayTwo _ => 2 | .arrayThree _ => 3) :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
+      },
+      {
+        "type": "sig",
+        "string": "def shape {m n : Nat} (a : Matrix m n Float) : Vector Nat 2 :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
+      },
+      {
+        "type": "cond",
+        "string": "theorem shape''_spec (a : arrays) :\n  let ret := shape'' a\n  match a with\n  | .arrayOne arr => ret.toList.length = 1 \u2227 ret[0]! = arr.toList.length\n  | .arrayTwo arr => ret.toList.length = 2 \u2227 ret[0]! = arr.toList.length \u2227 ret[1]! = (if arr.toList.length > 0 then arr[0]!.toList.length else 0)\n  | .arrayThree arr => ret.toList.length = 3 \u2227 ret[0]! = arr.size \u2227 ret[1]! = (if arr.size > 0 then arr[0]!.size else 0) \u2227 ret[2]! = (if arr.size > 0 \u2227 arr[0]!.size > 0 then arr[0]![0]!.size else 0) :="
+      },
+      {
+        "type": "proof",
+        "string": "sorry"
+      },
+      {
+        "type": "cond",
+        "string": "theorem shape_spec {m n : Nat} (a : Matrix m n Float) :\n  let ret := shape a\n  (ret.toList.length = 2) \u2227\n  (ret[0]! = m \u2227 ret[1]! = n) :="
+      },
+      {
+        "type": "proof",
+        "string": "sorry"
       }
     ]
   },
@@ -1255,6 +1538,80 @@
       {
         "type": "cond",
         "string": "theorem sum_spec {n : Nat} (a : Vector Int n) :\n  sum a = sumArray a 0 n \u2227\n  \u2200 start finish : Nat, start \u2264 finish \u2192 finish \u2264 n \u2192 \n    sumArray a start finish = (List.range (finish - start)).foldl (fun acc i => acc + a[start + i]'sorry) 0 \u2227\n  \u2200 m n : Nat, \u2200 a : Vector Int m, \u2200 b : Vector Int n, sum (a ++ b) = sum a + sum b := sorry\n\nend NpSum "
+      }
+    ]
+  },
+  "NpTranspose-spec.lean": {
+    "status": "ok",
+    "results": [
+      {
+        "type": "sig",
+        "string": "def Matrix (m n : Nat) (\u03b1 : Type) := Fin m \u2192 Fin n \u2192 \u03b1\n\n"
+      },
+      {
+        "type": "constr",
+        "string": "instance {m n : Nat} {\u03b1 : Type} [Inhabited \u03b1] : GetElem (Matrix m n \u03b1) (Nat \u00d7 Nat) \u03b1 (fun _ ij => ij.1 < m \u2227 ij.2 < n) where\n  getElem mat ij h := mat \u27e8ij.1, h.1\u27e9 \u27e8ij.2, h.2\u27e9\n"
+      },
+      {
+        "type": "empty",
+        "string": ""
+      },
+      {
+        "type": "sig",
+        "string": "def Matrix.size {m n : Nat} {\u03b1 : Type} (_ : Matrix m n \u03b1) : Nat := m * n\n\n"
+      },
+      {
+        "type": "sig",
+        "string": "def transpose {m n : Nat} (arr : Matrix m n Int) : Matrix n m Int :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
+      },
+      {
+        "type": "cond",
+        "string": "theorem transpose_spec {m n : Nat} (arr : Matrix m n Int) :\n  let ret := transpose arr\n  (ret.size = n * m) \u2227\n  (\u2200 i j : Nat, i < m \u2192 j < n \u2192 ret[(j,i)]! = arr[(i,j)]!) :="
+      },
+      {
+        "type": "proof",
+        "string": "sorry"
+      }
+    ]
+  },
+  "NpTril-spec.lean": {
+    "status": "ok",
+    "results": [
+      {
+        "type": "sig",
+        "string": "def Matrix (m n : Nat) (\u03b1 : Type) := Fin m \u2192 Fin n \u2192 \u03b1\n\n"
+      },
+      {
+        "type": "constr",
+        "string": "instance {m n : Nat} {\u03b1 : Type} [Inhabited \u03b1] : GetElem (Matrix m n \u03b1) (Nat \u00d7 Nat) \u03b1 (fun _ ij => ij.1 < m \u2227 ij.2 < n) where\n  getElem mat ij h := mat \u27e8ij.1, h.1\u27e9 \u27e8ij.2, h.2\u27e9\n"
+      },
+      {
+        "type": "empty",
+        "string": ""
+      },
+      {
+        "type": "sig",
+        "string": "def Matrix.size {m n : Nat} {\u03b1 : Type} (_ : Matrix m n \u03b1) : Nat := m * n\n\n"
+      },
+      {
+        "type": "sig",
+        "string": "def tril {m n : Nat} (arr : Matrix m n Int) (k : Int) : Matrix m n Int :="
+      },
+      {
+        "type": "impl",
+        "string": "sorry"
+      },
+      {
+        "type": "cond",
+        "string": "theorem tril_spec {m n : Nat} (arr : Matrix m n Int) (k : Int)\n  (h : -m + 1 < k \u2227 k < n - 1) :\n  let ret := tril arr k\n  (ret.size = m * n) \u2227\n  (\u2200 i j : Nat, i < m \u2192 j < n \u2192\n    if j - i > k then ret[(i,j)]! = 0 else ret[(i,j)]! = arr[(i,j)]!) :="
+      },
+      {
+        "type": "proof",
+        "string": "sorry"
       }
     ]
   },

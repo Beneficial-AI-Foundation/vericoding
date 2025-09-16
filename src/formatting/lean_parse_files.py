@@ -406,6 +406,7 @@ def remove_strings_from_file(file_path: str, strings_to_remove: List[str], outpu
                     raise ValueError(f"String '{string_to_remove}' found but it is not the whole line")
                 else:
                     should_remove = True
+                    print(f"Found string '{string_to_remove}' in {file_path}")
                     break
 
         if not should_remove:
@@ -415,13 +416,15 @@ def remove_strings_from_file(file_path: str, strings_to_remove: List[str], outpu
     processed_content = '\n'.join(processed_lines)
     
     # Write to output file
-    target_path = output_path if output_path else file_path
-    try:
-        with open(target_path, 'w', encoding='utf-8') as f:
-            f.write(processed_content)
-    except Exception as e:
-        raise IOError(f"Error writing to file {target_path}: {str(e)}")
-    
+    if output_path:
+        target_path = output_path
+        print(f"Writing to {target_path}")
+        try:
+            with open(target_path, 'w', encoding='utf-8') as f:
+                f.write(processed_content)
+        except Exception as e:
+            raise IOError(f"Error writing to file {target_path}: {str(e)}")
+        
     return processed_content
 
 def main():
@@ -481,8 +484,8 @@ def main():
     count_parsing_error = 0
     for file_path in sorted(lean_files):
 
-        # print(f"Removing unnecessary lines...\n")
-        # remove_strings_from_file(file_path, strings_to_remove, file_path)
+        # print(f"Searching for unnecessary lines...\n")
+        remove_strings_from_file(file_path, strings_to_remove, None)
 
         status, parsing_results = parse_lean_file(file_path)
 
