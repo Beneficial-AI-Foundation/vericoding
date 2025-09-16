@@ -18,16 +18,6 @@ output "lean_job_definition_arn" {
   value       = aws_batch_job_definition.lean_verification.arn
 }
 
-output "dafny_job_definition_arn" {
-  description = "ARN of the Dafny verification job definition"
-  value       = aws_batch_job_definition.dafny_verification.arn
-}
-
-output "verus_job_definition_arn" {
-  description = "ARN of the Verus verification job definition"
-  value       = aws_batch_job_definition.verus_verification.arn
-}
-
 output "vpc_id" {
   description = "ID of the VPC"
   value       = aws_vpc.batch_vpc.id

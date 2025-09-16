@@ -190,7 +190,7 @@ resource "aws_batch_compute_environment" "vericoding_compute_env" {
     allocation_strategy = "SPOT_CAPACITY_OPTIMIZED"
     
     min_vcpus     = 0    # Scale to 0 when idle
-    max_vcpus     = 1000 # Adjust based on your needs
+    max_vcpus     = 80   # 10 machines * 8 vCPUs each
     desired_vcpus = 0    # Target 0 instances
     
     instance_types = ["c8g.2xlarge"]
@@ -274,113 +274,8 @@ resource "aws_batch_job_definition" "lean_verification" {
   retry_strategy {
     attempts = 2
   }
-  
-  timeout {
-    attempt_duration_seconds = 3600  # 1 hour timeout
-  }
 }
 
-# Job Definition for Dafny verification  
-resource "aws_batch_job_definition" "dafny_verification" {
-  name = "dafny-verification"
-  type = "container"
-  
-  platform_capabilities = ["EC2"]
-  
-  container_properties = jsonencode({
-    image = "ubuntu:22.04"
-    vcpus = 8
-    memory = 15360
-    
-    jobRoleArn = aws_iam_role.batch_job_role.arn
-    
-    environment = [
-      {
-        name  = "DEBIAN_FRONTEND"
-        value = "noninteractive"
-      },
-      {
-        name  = "WORKSPACE"
-        value = "/workspace"
-      }
-    ]
-    
-    secrets = [
-      {
-        name      = "OPENAI_API_KEY"
-        valueFrom = "arn:aws:ssm:${var.aws_region}:${data.aws_caller_identity.current.account_id}:parameter/vericoding/openai-api-key"
-      },
-      {
-        name      = "WANDB_API_KEY" 
-        valueFrom = "arn:aws:ssm:${var.aws_region}:${data.aws_caller_identity.current.account_id}:parameter/vericoding/wandb-api-key"
-      }
-    ]
-    
-    mountPoints = []
-    volumes     = []
-    
-    ulimits = []
-  })
-  
-  retry_strategy {
-    attempts = 2
-  }
-  
-  timeout {
-    attempt_duration_seconds = 3600
-  }
-}
-
-# Job Definition for Verus verification
-resource "aws_batch_job_definition" "verus_verification" {
-  name = "verus-verification"
-  type = "container"
-  
-  platform_capabilities = ["EC2"]
-  
-  container_properties = jsonencode({
-    image = "ubuntu:22.04"
-    vcpus = 8
-    memory = 15360
-    
-    jobRoleArn = aws_iam_role.batch_job_role.arn
-    
-    environment = [
-      {
-        name  = "DEBIAN_FRONTEND"
-        value = "noninteractive"
-      },
-      {
-        name  = "WORKSPACE"
-        value = "/workspace"
-      }
-    ]
-    
-    secrets = [
-      {
-        name      = "OPENAI_API_KEY"
-        valueFrom = "arn:aws:ssm:${var.aws_region}:${data.aws_caller_identity.current.account_id}:parameter/vericoding/openai-api-key"
-      },
-      {
-        name      = "WANDB_API_KEY" 
-        valueFrom = "arn:aws:ssm:${var.aws_region}:${data.aws_caller_identity.current.account_id}:parameter/vericoding/wandb-api-key"
-      }
-    ]
-    
-    mountPoints = []
-    volumes     = []
-    
-    ulimits = []
-  })
-  
-  retry_strategy {
-    attempts = 2
-  }
-  
-  timeout {
-    attempt_duration_seconds = 3600
-  }
-}
 
 # IAM Role for Job execution
 resource "aws_iam_role" "batch_job_role" {

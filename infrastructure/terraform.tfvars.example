@@ -3,10 +3,7 @@
 
 aws_region = "us-west-2"
 
-# Maximum vCPUs for the compute environment (adjust based on your needs)
-max_vcpus = 1000
-
-# Default job timeout in seconds (1 hour = 3600)
-job_timeout_seconds = 3600
+# Maximum vCPUs for the compute environment (10 machines * 8 vCPUs each)
+max_vcpus = 80
 
 project_name = "vericoding"

@@ -7,14 +7,9 @@ variable "aws_region" {
 variable "max_vcpus" {
   description = "Maximum vCPUs for the compute environment"
   type        = number
-  default     = 1000
+  default     = 80  # 10 machines * 8 vCPUs each
 }
 
-variable "job_timeout_seconds" {
-  description = "Default job timeout in seconds"
-  type        = number
-  default     = 3600  # 1 hour
-}
 
 variable "project_name" {
   description = "Name of the project"

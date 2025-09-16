@@ -7,14 +7,14 @@ This Terraform configuration sets up AWS Batch for running verification tasks wi
 - **Auto-scales to 0**: `minvCpus = 0`, `desiredvCpus = 0`
 - **Spot instances**: c8g.2xlarge (ARM Graviton3) at 100% on-demand bid
 - **Cost-optimized**: Only pay when jobs are running
-- **Multi-language support**: Lean 4, Dafny, and Verus job definitions
+- **Lean 4 optimized**: Job definition configured for Lean verification tasks
 
 ## Architecture
 
 - **Compute Environment**: Managed EC2 spot instances
 - **Instance Type**: c8g.2xlarge (8 vCPUs, 16GB RAM)
 - **Networking**: VPC with public subnets across 2 AZs
-- **Auto-scaling**: 0-1000 vCPUs based on job queue demand
+- **Auto-scaling**: 0-80 vCPUs (max 10 machines) based on job queue demand
 
 ## Usage
 
@@ -65,11 +65,9 @@ aws batch describe-jobs --jobs JOB_ID
 - **Idle cost**: $0 (scales to 0)
 - **Typical job**: 1-15 minutes = $0.001-0.04 per job
 
-## Job Definitions
+## Job Definition
 
-1. **lean-verification**: Lean 4 theorem proving
-2. **dafny-verification**: Dafny specification verification  
-3. **verus-verification**: Verus Rust verification
+**lean-verification**: Lean 4 theorem proving and verification tasks
 
 ## Cleanup
 
