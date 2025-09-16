@@ -21,36 +21,50 @@ else
 fi
 
 # Update system and install git
-sudo apt-get update
-sudo apt-get install -y git curl
+echo "Updating package lists..."
+apt-get update
+curl -d "✅ apt updated" ntfy.sh/theoTesting || echo "Notification failed"
+
+echo "Installing git and curl..."
+apt-get install -y git curl
+curl -d "✅ git/curl installed" ntfy.sh/theoTesting || echo "Notification failed"
 
 # Clone vericoding repository
+echo "Cloning vericoding repository..."
 git clone https://github.com/Beneficial-AI-Foundation/vericoding.git
+curl -d "✅ repo cloned" ntfy.sh/theoTesting || echo "Notification failed"
+
 cd vericoding
 
 # Switch to the specified branch
 echo "Checking out branch: $BRANCH"
 git checkout "$BRANCH"
+curl -d "✅ branch $BRANCH" ntfy.sh/theoTesting || echo "Notification failed"
 
 # Install uv (Python package manager)
 echo "Installing uv..."
 curl -LsSf https://astral.sh/uv/install.sh | sh
 export PATH="$HOME/.cargo/bin:$PATH"
+curl -d "✅ uv installed" ntfy.sh/theoTesting || echo "Notification failed"
 
 # Test uv installation
 uv --help
+curl -d "✅ uv works" ntfy.sh/theoTesting || echo "Notification failed"
 
 # Install elan (Lean version manager)
 echo "Installing elan..."
 curl https://elan.lean-lang.org/elan-init.sh -sSf | sh -s -- -y
 export PATH="$HOME/.elan/bin:$PATH"
+curl -d "✅ elan installed" ntfy.sh/theoTesting || echo "Notification failed"
 
 # Test elan installation
 elan --help
+curl -d "✅ elan works" ntfy.sh/theoTesting || echo "Notification failed"
 
 # Get Lean cache
 echo "Getting Lean cache..."
 lake exe cache get
+curl -d "✅ cache downloaded" ntfy.sh/theoTesting || echo "Notification failed"
 
 # Notify completion
 echo "Setup complete on $(hostname) for branch $BRANCH"
