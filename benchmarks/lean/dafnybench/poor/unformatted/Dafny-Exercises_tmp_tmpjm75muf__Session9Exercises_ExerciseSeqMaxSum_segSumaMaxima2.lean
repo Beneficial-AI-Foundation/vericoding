@@ -14,13 +14,13 @@
 
 
 /-- Sum function that computes sum of array elements from index i to j-1 -/
-partial def Sum (v : Array Int) (i j : Int) : Int :=
+partial def Sum_ (v : Array Int) (i j : Int) : Int :=
 if i = j then 0
-else Sum v i (j-1) + v[(j-1).toNat]!
+else Sum_ v i (j-1) + v[(j-1).toNat]!
 
 /-- Predicate indicating if s is maximum sum from any l to i+1 -/
 def SumMaxToRight (v : Array Int) (i s : Int) : Prop :=
-∀ l ss, 0 ≤ l ∧ l ≤ i ∧ ss = i + 1 → Sum v l ss ≤ s
+∀ l ss, 0 ≤ l ∧ l ≤ i ∧ ss = i + 1 → Sum_ v l ss ≤ s
 
 /-- Alternative sum function computing sum from i to j -/
 partial def Sum2 (v : Array Int) (i j : Int) : Int :=

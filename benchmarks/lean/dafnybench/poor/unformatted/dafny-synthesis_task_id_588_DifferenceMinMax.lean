@@ -14,32 +14,32 @@
 
 
 /-- Finds the minimum value in an array recursively -/
-partial def Min (a : Array Int) : Int :=
+partial def Min_ (a : Array Int) : Int :=
 if a.size = 1 then
 a[0]!
 else
-let minPrefix := Min (a.extract 0 (a.size - 1))
+let minPrefix := Min_ (a.extract 0 (a.size - 1))
 if a[a.size - 1]! ≤ minPrefix then
 a[a.size - 1]!
 else
-Min (a.extract 0 (a.size - 1))
+Min_ (a.extract 0 (a.size - 1))
 
 /-- Finds the maximum value in an array recursively -/
-partial def Max (a : Array Int) : Int :=
+partial def Max_ (a : Array Int) : Int :=
 if a.size = 1 then
 a[0]!
 else
-let maxPrefix := Max (a.extract 0 (a.size - 1))
+let maxPrefix := Max_ (a.extract 0 (a.size - 1))
 if a[a.size - 1]! ≥ maxPrefix then
 a[a.size - 1]!
 else
-Max (a.extract 0 (a.size - 1))
+Max_ (a.extract 0 (a.size - 1))
 
 /-- Computes the difference between maximum and minimum values in an array -/
 def DifferenceMinMax (a : Array Int) : Int :=
-Max a - Min a
+Max_ a - Min_ a
 
 /-- Specification for DifferenceMinMax -/
 theorem DifferenceMinMax_spec (a : Array Int) :
 a.size > 0 →
-DifferenceMinMax a = Max a - Min a := sorry
+DifferenceMinMax a = Max_ a - Min_ a := sorry
