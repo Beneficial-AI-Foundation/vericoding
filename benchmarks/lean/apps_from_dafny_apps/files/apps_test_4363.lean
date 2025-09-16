@@ -5,17 +5,30 @@ def ValidInput (k s : Int) : Prop :=
 def IsValidTriple (k s x y z : Int) : Prop :=
   0 ≤ x ∧ x ≤ k ∧ 0 ≤ y ∧ y ≤ k ∧ 0 ≤ z ∧ z ≤ k ∧ x + y + z = s
 
-def CountValidTriplesForZHelper (k s z y : Int) : Int :=
-  sorry
+partial def CountValidTriplesForZHelper (k s z y : Int) : Int :=
+  if k ≥ 0 ∧ z ≥ 0 ∧ y ≥ 0 then
+    if y > k then 0
+    else 
+      let x := s - y - z
+      let thisCount := if 0 ≤ x ∧ x ≤ k then 1 else 0
+      thisCount + CountValidTriplesForZHelper k s z (y + 1)
+  else 0
 
 def CountValidTriplesForZ (k s z : Int) : Int :=
-  CountValidTriplesForZHelper k s z 0
+  if k ≥ 0 ∧ z ≥ 0 then
+    CountValidTriplesForZHelper k s z 0
+  else 0
 
-def CountValidTriplesHelper (k s z : Int) : Int :=
-  sorry
+partial def CountValidTriplesHelper (k s z : Int) : Int :=
+  if k ≥ 0 ∧ z ≥ 0 then
+    if z > k then 0
+    else CountValidTriplesForZ k s z + CountValidTriplesHelper k s (z + 1)
+  else 0
 
 def CountValidTriples (k s : Int) : Int :=
-  CountValidTriplesHelper k s 0
+  if k ≥ 0 then
+    CountValidTriplesHelper k s 0
+  else 0
 
 @[reducible, simp]
 def solve_precond (k s : Int) : Prop :=

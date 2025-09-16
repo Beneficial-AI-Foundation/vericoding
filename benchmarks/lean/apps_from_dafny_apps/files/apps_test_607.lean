@@ -1,31 +1,39 @@
 -- <vc-preamble>
--- Assume these helper functions exist
-noncomputable def SplitLinesFunc : String → List String := sorry
-noncomputable def SplitSpacesFunc : String → List String := sorry
-noncomputable def StringToInt : String → Int := sorry
-noncomputable def IntToString : Int → String := sorry
-noncomputable def SumUpToSize : Int → Int → Int → Int := sorry
+def SplitLinesFunc (input : String) : List String := 
+  input.splitOn "\n"
 
-noncomputable def ParseTwoInts (input : String) : (Int × Int) :=
+def SplitSpacesFunc (line : String) : List String := 
+  line.splitOn " "
+
+def StringToInt (s : String) : Int := 
+  s.toInt?.getD 0
+
+def IntToString (n : Int) : String := 
+  toString n
+
+def SumUpToSize (_ _ _ : Int) : Int := 
+  0
+
+def ParseTwoInts (input : String) : Int × Int :=
   if input.length > 0 then
     let lines := SplitLinesFunc input
     if lines.length = 0 then (0, 0)
-    else 
+    else
       let parts := SplitSpacesFunc lines[0]!
       if parts.length < 2 then (0, 0)
       else (StringToInt parts[0]!, StringToInt parts[1]!)
   else (0, 0)
 
+@[reducible, simp]
 def ValidInput (input : String) : Prop :=
-  input.length > 0 ∧ 
+  input.length > 0 ∧
   (let nm := ParseTwoInts input
-   let n := nm.1; let m := nm.2
+   let n := nm.fst
+   let m := nm.snd
    n > 0 ∧ m > 0)
 
-noncomputable def ComputeHappinessSum (n : Int) (m : Int) : Int :=
-  if n > 0 ∧ m > 0 then
-    SumUpToSize n m n
-  else 0
+def ComputeHappinessSum (n : Int) (m : Int) : Int :=
+  if n > 0 ∧ m > 0 then SumUpToSize n m n else 0
 
 @[reducible, simp]
 def solve_precond (input : String) : Prop :=
@@ -36,7 +44,7 @@ def solve_precond (input : String) : Prop :=
 -- </vc-helpers>
 
 -- <vc-definitions>
-noncomputable def solve (input : String) (h_precond : solve_precond input) : String :=
+def solve (input : String) (h_precond : solve_precond input) : String :=
   sorry
 -- </vc-definitions>
 
@@ -44,12 +52,13 @@ noncomputable def solve (input : String) (h_precond : solve_precond input) : Str
 @[reducible, simp]
 def solve_postcond (input : String) (output : String) (h_precond : solve_precond input) : Prop :=
   output.length ≥ 0 ∧
-  (ValidInput input → 
-      (let nm := ParseTwoInts input
-       let n := nm.1; let m := nm.2
-       output = IntToString (ComputeHappinessSum n m) ++ "\n")) ∧
-  (ValidInput input → output.length > 0 ∧ (if h : output.length > 0 then output.data[output.length - 1]! = '\n' else True)) ∧
-  (ValidInput input → ∀ c, c ∈ output.toList → (c = '\n' ∨ ('0' ≤ c ∧ c ≤ '9'))) ∧
+  (ValidInput input →
+    (let nm := ParseTwoInts input
+     let n := nm.fst
+     let m := nm.snd
+     output = IntToString (ComputeHappinessSum n m) ++ "\n")) ∧
+  (ValidInput input → output.length > 0 ∧ output.data[output.length - 1]! = '\n') ∧
+  (ValidInput input → ∀ c, c ∈ output.data → (c = '\n' ∨ ('0' ≤ c ∧ c ≤ '9'))) ∧
   (¬ValidInput input → output = "")
 
 theorem solve_spec_satisfied (input : String) (h_precond : solve_precond input) :

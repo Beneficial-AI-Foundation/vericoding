@@ -4,20 +4,26 @@ vc-preamble: |-
     (∀ i, 0 ≤ i ∧ i < n → 1 ≤ p[i.natAbs]! ∧ p[i.natAbs]! ≤ n) ∧
     (∀ i j, 0 ≤ i ∧ i < j ∧ j < n → p[i.natAbs]! ≠ p[j.natAbs]!)
 
-  def countRecordsFromIndex (s : List Int) (idx : Int) (maxSoFar : Int) : Int :=
-    sorry
+  def countRecordsFromIndex (s : List Int) (index : Nat) (maxSoFar : Int) : Int :=
+    if index ≥ s.length then 0
+    else if s[index]! > maxSoFar then 
+      1 + countRecordsFromIndex s (index + 1) s[index]!
+    else countRecordsFromIndex s (index + 1) maxSoFar
+  termination_by s.length - index
 
   def countRecords (s : List Int) : Int :=
     if s.length = 0 then 0
-    else 1 + countRecordsFromIndex s 1 (s[0]!)
+    else 1 + countRecordsFromIndex s 1 s[0]!
 
-  def indexOf (p : List Int) (toRemove : Int) : Int :=
-    sorry
+  def indexOf (p : List Int) (elem : Int) : Nat :=
+    match p.findIdx? (· = elem) with
+    | some idx => idx
+    | none => 0
 
   def countRecordsAfterRemoval (p : List Int) (toRemove : Int) : Int :=
+    let removeIdx := indexOf p toRemove
     let filtered := (List.range (p.length - 1)).map (fun i =>
-      let iInt := Int.ofNat i
-      if indexOf p toRemove ≤ iInt then p[i + 1]! else p[i]!)
+      if removeIdx ≤ i then p[i + 1]! else p[i]!)
     countRecords filtered
 
   @[reducible, simp]

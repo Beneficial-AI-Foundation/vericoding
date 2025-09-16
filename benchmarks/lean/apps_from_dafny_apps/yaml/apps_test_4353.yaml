@@ -1,16 +1,22 @@
 vc-preamble: |-
-
+  
   def ValidInput (s : String) : Prop :=
     s.length = 19 ∧ 
-    s.length ≥ 2 ∧ s.data[5]! = ',' ∧ s.data[13]! = ',' ∧
-    ∀ i, 0 ≤ i ∧ i < s.length → (s.data[i]! = ',' ∨ ('a' ≤ s.data[i]! ∧ s.data[i]! ≤ 'z'))
+    s.length ≥ 2 ∧ 
+    (if h : 5 < s.length then s.data[5]! = ',' else True) ∧ 
+    (if h : 13 < s.length then s.data[13]! = ',' else True) ∧
+    ∀ i, 0 ≤ i ∧ i < s.length → 
+      (s.data[i]! = ',' ∨ ('a' ≤ s.data[i]! ∧ s.data[i]! ≤ 'z'))
 
   def CommasToSpaces (s : String) (h : ValidInput s) : String :=
-    sorry
+    String.mk ((List.range s.length).map (fun i => 
+      if i < s.length then
+        if s.data[i]! = ',' then ' ' else s.data[i]!
+      else ' '))
 
   def CorrectOutput (s : String) (result : String) (h : ValidInput s) : Prop :=
     result.length = s.length + 1 ∧
-    result.data[result.length - 1]! = '\n' ∧
+    (if result.length > 0 then result.data[result.length - 1]! = '\n' else True) ∧
     ∀ i, 0 ≤ i ∧ i < s.length → 
       (s.data[i]! = ',' → result.data[i]! = ' ') ∧
       (s.data[i]! ≠ ',' → result.data[i]! = s.data[i]!)

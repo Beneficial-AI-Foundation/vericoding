@@ -4,15 +4,23 @@ vc-preamble: |-
     ∀ i, 0 ≤ i ∧ i < emotes.length → emotes[i]! ≥ 1
 
   def MaxValue (s : List Int) : Int :=
-    sorry
-
-  def SecondMaxValue (s : List Int) : Int :=
-    sorry
+    s.foldl max 1
 
   def FilterOut (s : List Int) (val : Int) (count : Int) : List Int :=
-    sorry
+    let rec helper (lst : List Int) (remaining : Int) : List Int :=
+      match lst with
+      | [] => []
+      | x :: xs => 
+        if remaining > 0 ∧ x = val then helper xs (remaining - 1)
+        else x :: helper xs remaining
+    helper s count
 
-  def MaxHappiness (n m k : Int) (emotes : List Int) : Int :=
+  def SecondMaxValue (s : List Int) : Int :=
+    let max_val := MaxValue s
+    let filtered := FilterOut s max_val 1
+    if filtered.length > 0 then MaxValue filtered else 1
+
+  def MaxHappiness (m k : Int) (emotes : List Int) : Int :=
     let k_plus_1 := k + 1
     let total := m / k_plus_1
     let remainder := m % k_plus_1

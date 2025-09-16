@@ -8,8 +8,13 @@ vc-preamble: |-
         let (l, r) := operations[j]!
         1 ≤ l ∧ l ≤ r ∧ r ≤ n)
 
-  def computeFinalBoundsHelper (minBound maxBound : Int) (operations : List (Int × Int)) (index : Int) : Int × Int :=
-    sorry
+  def computeFinalBoundsHelper (left right : Int) (operations : List (Int × Int)) (index : Nat) : Int × Int :=
+    if index ≥ operations.length then (left, right)
+    else
+      let (l, r) := operations[index]!
+      let newLeft := min left l
+      let newRight := max right r
+      computeFinalBoundsHelper newLeft newRight operations (index + 1)
 
   def computeFinalBounds (x : Int) (operations : List (Int × Int)) : Int × Int :=
     computeFinalBoundsHelper x x operations 0

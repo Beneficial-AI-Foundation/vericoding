@@ -4,20 +4,39 @@ def ValidInput (n k : Nat) (s : String) (available : List Char) : Prop :=
   k = available.length ∧
   ∀ i j, 0 ≤ i ∧ i < j ∧ j < available.length → available[i]! ≠ available[j]!
 
-def CountValidSubstrings (s : String) (availableSet : List Char) : Nat :=
-  sorry
-
-def GetMaximalValidSegments (s : String) (availableSet : List Char) (startIdx : Nat) : List Nat :=
-  sorry
+def SumSegmentCounts : List Nat → Nat
+  | [] => 0
+  | h :: t => h * (h + 1) / 2 + SumSegmentCounts t
 
 def GetNextSegmentLength (s : String) (availableSet : List Char) (startIdx : Nat) : Nat :=
-  sorry
+  if startIdx ≥ s.length then 0
+  else if s.data[startIdx]! ∉ availableSet then 0
+  else 1 + GetNextSegmentLength s availableSet (startIdx + 1)
 
 def SkipInvalidChars (s : String) (availableSet : List Char) (startIdx : Nat) : Nat :=
-  sorry
+  if startIdx ≥ s.length then 0
+  else if s.data[startIdx]! ∈ availableSet then 0
+  else 1 + SkipInvalidChars s availableSet (startIdx + 1)
 
-def SumSegmentCounts (segments : List Nat) : Nat :=
-  sorry
+def GetMaximalValidSegments (s : String) (availableSet : List Char) (startIdx : Nat) : List Nat :=
+  if startIdx ≥ s.length then []
+  else
+    let segmentLength := GetNextSegmentLength s availableSet startIdx
+    if segmentLength = 0 then
+      GetMaximalValidSegments s availableSet (startIdx + 1)
+    else
+      let skipLength := SkipInvalidChars s availableSet (startIdx + segmentLength)
+      let nextIdx := startIdx + segmentLength + skipLength
+      if nextIdx ≤ s.length then
+        segmentLength :: GetMaximalValidSegments s availableSet nextIdx
+      else
+        [segmentLength]
+
+def CountValidSubstrings (s : String) (availableSet : List Char) : Nat :=
+  if s.length = 0 then 0
+  else
+    let segments := GetMaximalValidSegments s availableSet 0
+    SumSegmentCounts segments
 
 @[reducible, simp]
 def solve_precond (n k : Nat) (s : String) (available : List Char) : Prop :=

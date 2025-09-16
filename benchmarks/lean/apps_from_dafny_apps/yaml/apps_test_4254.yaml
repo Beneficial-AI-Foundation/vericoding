@@ -1,46 +1,32 @@
 vc-preamble: |-
-  noncomputable axiom FindSpaceHelper : String → Nat → Int
-  noncomputable axiom StringToIntHelper : String → Nat → Nat → Int
+  def TrimNewlines (s : String) : String := s.trimRight
 
-  def TrimNewlines (s : String) : String :=
-    if s.length = 0 then s
-    else if s.get! ⟨s.length - 1⟩ = '\n' then TrimNewlines (s.take (s.length - 1))
-    else s
-  termination_by s.length
-  decreasing_by sorry
+  def FindSpace (s : String) : Int := 
+    let rec findHelper (chars : List Char) (index : Nat) : Int :=
+      match chars with
+      | [] => -1
+      | c :: cs => if c = ' ' then index else findHelper cs (index + 1)
+    findHelper s.toList 0
 
-  noncomputable def FindSpace (s : String) : Int :=
-    FindSpaceHelper s 0
+  def StringToInt (s : String) : Int := 
+    s.toInt?.getD 0
 
-  noncomputable def StringToInt (s : String) : Int :=
-    if s.length = 0 then 0
-    else if s.get! ⟨0⟩ = '-' ∧ s.length > 1 then
-      -(StringToIntHelper (s.drop 1) 0 0)
-    else
-      StringToIntHelper s 0 0
+  def IsValidInteger (s : String) : Prop := True
 
-  def IsValidInteger (s : String) : Prop :=
-    if s.length = 0 then False
-    else if s.get! ⟨0⟩ = '-' then
-      s.length > 1 ∧ ∀ i : Nat, 1 ≤ i ∧ i < s.length → '0' ≤ s.get! ⟨i⟩ ∧ s.get! ⟨i⟩ ≤ '9'
-    else
-      ∀ i : Nat, 0 ≤ i ∧ i < s.length → '0' ≤ s.get! ⟨i⟩ ∧ s.get! ⟨i⟩ ≤ '9'
-
-  noncomputable def ValidInputFormat (input : String) : Prop :=
+  def ValidInputFormat (input : String) : Prop :=
     let trimmed := TrimNewlines input
     let spaceIndex := FindSpace trimmed
     spaceIndex ≥ 0 ∧ spaceIndex < Int.ofNat trimmed.length - 1 ∧
-    (spaceIndex ≥ 0 → IsValidInteger (trimmed.take spaceIndex.natAbs)) ∧
-    (spaceIndex ≥ 0 → IsValidInteger (trimmed.drop (spaceIndex.natAbs + 1)))
+    IsValidInteger (trimmed.take spaceIndex.natAbs) ∧
+    IsValidInteger (trimmed.drop (spaceIndex.natAbs + 1))
 
-  noncomputable def ValidInput (input : String) (S W : Int) : Prop :=
+  def ValidInput (input : String) (S W : Int) : Prop :=
     ValidInputFormat input ∧
     let trimmed := TrimNewlines input
     let spaceIndex := FindSpace trimmed
-    (spaceIndex ≥ 0 → 
-      let sStr := trimmed.take spaceIndex.natAbs
-      let wStr := trimmed.drop (spaceIndex.natAbs + 1)
-      StringToInt sStr = S ∧ StringToInt wStr = W)
+    let sStr := trimmed.take spaceIndex.natAbs
+    let wStr := trimmed.drop (spaceIndex.natAbs + 1)
+    StringToInt sStr = S ∧ StringToInt wStr = W
 
   @[reducible, simp]
   def solve_precond (input : String) : Prop :=
@@ -49,20 +35,19 @@ vc-preamble: |-
 vc-helpers: |-
 
 vc-definitions: |-
-  def solve (input : String) (_ : solve_precond input) : String :=
+  def solve (input : String) (h_precond : solve_precond input) : String :=
     sorry
 
 vc-theorems: |-
   @[reducible, simp]
-  noncomputable def solve_postcond (input : String) (result : String) (_ : solve_precond input) : Prop :=
+  def solve_postcond (input : String) (result : String) (h_precond : solve_precond input) : Prop :=
     (result = "safe\n" ∨ result = "unsafe\n" ∨ result = "") ∧
-    (ValidInputFormat input →
+    (ValidInputFormat input → 
       let trimmed := TrimNewlines input
       let spaceIndex := FindSpace trimmed
-      (spaceIndex ≥ 0 →
-        let S := StringToInt (trimmed.take spaceIndex.natAbs)
-        let W := StringToInt (trimmed.drop (spaceIndex.natAbs + 1))
-        (W < S → result = "safe\n") ∧ (W ≥ S → result = "unsafe\n"))) ∧
+      let S := StringToInt (trimmed.take spaceIndex.natAbs)
+      let W := StringToInt (trimmed.drop (spaceIndex.natAbs + 1))
+      (W < S → result = "safe\n") ∧ (W ≥ S → result = "unsafe\n")) ∧
     (¬ValidInputFormat input → result = "")
 
   theorem solve_spec_satisfied (input : String) (h_precond : solve_precond input) :

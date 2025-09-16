@@ -1,9 +1,16 @@
 vc-preamble: |-
   def string_to_digits (s : String) : List Int :=
-    sorry
+    let chars := s.toList
+    let indices := List.range chars.length
+    let digit_indices := indices.filter (fun i => 
+      let c := chars[i]!
+      '0' ≤ c ∧ c ≤ '9')
+    digit_indices.map (fun i => 
+      let c := chars[i]!
+      (c.toNat - '0'.toNat : Int))
 
   def ValidInput (input : String) : Prop :=
-    input.length > 0 ∧ '\n' ∈ input.data
+    input.length > 0 ∧ input.contains '\n'
 
   def HasUniqueMovementSequence (digits : List Int) : Prop :=
     (1 ∈ digits ∨ 4 ∈ digits ∨ 7 ∈ digits ∨ 0 ∈ digits) ∧
@@ -11,11 +18,12 @@ vc-preamble: |-
     (3 ∈ digits ∨ 6 ∈ digits ∨ 9 ∈ digits ∨ 0 ∈ digits) ∧
     (7 ∈ digits ∨ 0 ∈ digits ∨ 9 ∈ digits)
 
-  def split_lines (s : String) : List String :=
-    sorry
-
   def find_char (s : String) (c : Char) : Int :=
-    sorry
+    let idx := s.toList.findIdx (· = c)
+    if idx < s.length then idx else -1
+
+  def split_lines (s : String) : List String :=
+    s.splitOn "\n"
 
   @[reducible, simp]
   def solve_precond (input : String) : Prop :=

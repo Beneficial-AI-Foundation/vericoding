@@ -1,16 +1,14 @@
 vc-preamble: |-
-  def clean_input (s : String) : String :=
+  partial def clean_input (s : String) : String :=
     if s.length = 0 then s
-    else if s.back = '\n' ∨ s.back = '\r' ∨ s.back = ' ' then
-      clean_input (s.dropRight 1)
-    else s
-  termination_by s.length
-  decreasing_by 
-    simp_wf
-    sorry
+    else 
+      let lastChar := s.data[s.length - 1]?
+      if lastChar = some '\n' ∨ lastChar = some '\r' ∨ lastChar = some ' ' then
+        clean_input (String.mk (s.data.take (s.length - 1)))
+      else s
 
   def contains_digit_nine (s : String) : Prop :=
-    ∃ i : Nat, i < s.length ∧ s.data[i]! = '9'
+    ∃ i, i < s.length ∧ s.data[i]? = some '9'
 
   @[reducible, simp]
   def solve_precond (stdin_input : String) : Prop :=

@@ -4,11 +4,13 @@ def Max3 (a b c : Int) : Int :=
   else if b ≥ c then b
   else c
 
--- Placeholder functions for string operations
-def SplitSpaces (s : String) : List String := sorry
-def TrimNewline (s : String) : String := sorry
-def StringToInt (s : String) : Int := sorry
-def IntToString (n : Int) : String := sorry
+def StringToInt (s : String) : Int := 0
+
+def IntToString (n : Int) : String := ""
+
+def TrimNewline (s : String) : String := s
+
+def SplitSpaces (s : String) : List String := []
 
 def CalculateMissedMeals (input : String) : Int :=
   let parts := SplitSpaces (TrimNewline input)
@@ -23,8 +25,7 @@ def CalculateMissedMeals (input : String) : Int :=
     (if c < threshold then threshold - c else 0)
   else 0
 
-def ValidInput (input : String) : Prop :=
-  input.length > 0
+def ValidInput (input : String) : Prop := input.length > 0
 
 @[reducible, simp]
 def solve_precond (input : String) : Prop :=

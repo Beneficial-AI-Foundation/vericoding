@@ -2,10 +2,24 @@ vc-preamble: |-
   def ValidInput (a : List Int) : Prop :=
     a.length > 0
 
-  def isSorted (x : List Int) : Prop :=
-    ∀ i j, 0 ≤ i ∧ i < j ∧ j < x.length → x[i]! ≤ x[j]!
+  def isSorted (x : List Int) : Bool :=
+    if x.length ≤ 1 then true
+    else List.range (x.length - 1) |>.all fun i => x[i]! ≤ x[i + 1]!
 
-  def thanosSort (x : List Int) : Int := sorry
+  def thanosSort (x : List Int) : Int :=
+    if x.length = 0 then 1
+    else if x.length = 1 then 1
+    else
+      let len := x.length
+      if isSorted x then
+        len
+      else
+        let firstHalf := x.take (len / 2)
+        let secondHalf := x.drop (len / 2)
+        let leftResult := thanosSort firstHalf
+        let rightResult := thanosSort secondHalf
+        if leftResult > rightResult then leftResult else rightResult
+  termination_by x.length
 
   @[reducible, simp]
   def solve_precond (a : List Int) : Prop :=

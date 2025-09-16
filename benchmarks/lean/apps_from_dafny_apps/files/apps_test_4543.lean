@@ -1,12 +1,28 @@
 -- <vc-preamble>
-def Sqrt (n : Int) : Int := sorry
+def natSqrt (n : Nat) : Nat :=
+  if n = 0 then 0
+  else
+    let rec helper (i : Nat) (bound : Nat) : Nat :=
+      if bound = 0 then i
+      else if i * i ≤ n then
+        if (i + 1) * (i + 1) > n then i
+        else helper (i + 1) (bound - 1)
+      else i
+    helper 0 (n + 1)
 
-def IntToString (n : Int) : String := sorry
-
-def StringToInt (s : String) : Int := sorry
+def Sqrt (n : Int) : Int :=
+  if n < 0 then 0 else
+  let nat_n := Int.natAbs n
+  Int.ofNat (natSqrt nat_n)
 
 def IsPerfectSquare (n : Int) : Prop :=
-  n ≥ 0 ∧ let sqrt_n := Sqrt n; sqrt_n * sqrt_n = n
+  n ≥ 0 ∧ (Sqrt n) * (Sqrt n) = n
+
+def IntToString (n : Int) : String :=
+  toString n
+
+def StringToInt (s : String) : Int :=
+  s.toInt?.getD 0
 
 @[reducible, simp]
 def solve_precond (a b : Int) : Prop :=
@@ -17,19 +33,19 @@ def solve_precond (a b : Int) : Prop :=
 -- </vc-helpers>
 
 -- <vc-definitions>
-def solve (a b : Int) (h_precond : solve_precond a b) : String :=
+def solve (a b : Int) (_ : solve_precond a b) : String :=
   sorry
 -- </vc-definitions>
 
 -- <vc-theorems>
 @[reducible, simp]
-def solve_postcond (a b : Int) (result : String) (h_precond : solve_precond a b) : Prop :=
+def solve_postcond (a b : Int) (result : String) (_ : solve_precond a b) : Prop :=
   (result = "Yes" ∨ result = "No") ∧
-  let a_str := IntToString a
-  let b_str := IntToString b
-  let concat_str := a_str ++ b_str
-  let concat_num := StringToInt concat_str
-  (result = "Yes" ↔ IsPerfectSquare concat_num)
+  (let a_str := IntToString a
+   let b_str := IntToString b
+   let concat_str := a_str ++ b_str
+   let concat_num := StringToInt concat_str
+   (result = "Yes" ↔ IsPerfectSquare concat_num))
 
 theorem solve_spec_satisfied (a b : Int) (h_precond : solve_precond a b) :
     solve_postcond a b (solve a b h_precond) h_precond := by

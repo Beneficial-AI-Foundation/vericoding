@@ -1,11 +1,15 @@
 -- <vc-preamble>
 def ValidInput (n : Int) (a b : String) : Prop :=
-  n > 0 ∧ a.length = 2 * n ∧ b.length = 2 * n ∧
-  (∀ i, 0 ≤ i ∧ i < a.length → a.data[i]! = '0' ∨ a.data[i]! = '1') ∧
-  (∀ i, 0 ≤ i ∧ i < b.length → b.data[i]! = '0' ∨ b.data[i]! = '1')
+  n > 0 ∧ a.length = 2 * n.natAbs ∧ b.length = 2 * n.natAbs ∧
+  (∀ i : Nat, i < a.length → a.data[i]! = '0' ∨ a.data[i]! = '1') ∧
+  (∀ i : Nat, i < b.length → b.data[i]! = '0' ∨ b.data[i]! = '1')
 
 def CountPositions (a b : String) (ac bc : Char) (len : Int) : Int :=
-  sorry
+  if len ≤ 0 then 0
+  else (List.range len.natAbs).filter (fun i => 
+    i < a.length ∧ i < b.length ∧ 
+    a.data[i]! = ac ∧ b.data[i]! = bc
+  ) |>.length
 
 def ComputeGameOutcome (t00 t01 t10 t11 : Int) : Int :=
   t11 % 2 + (t10 - t01 + 1 - t11 % 2) / 2

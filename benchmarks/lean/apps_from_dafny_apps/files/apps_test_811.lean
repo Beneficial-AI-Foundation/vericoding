@@ -2,12 +2,10 @@
 def ValidInput (a b : Int) : Prop :=
   a ≥ 1 ∧ a ≤ 1000 ∧ b ≥ 2 ∧ b ≤ 1000
 
-def TotalBurningHours (a b : Int) : Int :=
+partial def TotalBurningHours (a b : Int) : Int :=
   if a = 0 then 0
   else if a < b then a
   else a + TotalBurningHours (a / b) b
-termination_by a
-decreasing_by simp_wf; sorry
 
 @[reducible, simp]
 def solve_precond (a b : Int) : Prop :=

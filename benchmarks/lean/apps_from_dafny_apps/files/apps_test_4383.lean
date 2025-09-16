@@ -5,8 +5,21 @@ def ValidInput (s : String) : Prop :=
 def IsCelebratedAge (age : Int) : Prop :=
   age = 3 ∨ age = 5 ∨ age = 7
 
+def ParseIntegerHelper (s : String) (pos : Nat) : Int :=
+  if pos < s.length then
+    let c := s.data[pos]!
+    if '0' ≤ c ∧ c ≤ '9' then
+      (c.toNat - '0'.toNat : Int)
+    else
+      0
+  else
+    0
+
 def ParseIntegerValue (s : String) : Int :=
-  sorry
+  if s.length > 0 then
+    ParseIntegerHelper s 0
+  else
+    0
 
 @[reducible, simp]
 def solve_precond (stdin_input : String) : Prop :=

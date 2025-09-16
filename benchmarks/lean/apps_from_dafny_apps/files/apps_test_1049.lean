@@ -1,40 +1,44 @@
 -- <vc-preamble>
-def SplitLines (input : String) : List String := sorry
-def SplitString (s : String) (delimiter : Char) : List String := sorry
-def IsValidInt (s : String) : Bool := sorry
-def StringToInt (s : String) : Int := sorry
-def IsValidBinaryString (s : String) (expectedLength : Int) : Bool := sorry
-def MaxConsecutiveWinsUpTo (lines : List String) (n d : Int) : Int := sorry
-def IntToString (i : Int) : String := sorry
+def SplitLines (input : String) : List String := 
+  input.split (· = '\n')
+
+def SplitString (s : String) (delimiter : Char) : List String := 
+  s.split (· = delimiter)
+
+def IsValidInt (s : String) : Bool :=
+  s.length > 0 && s.all (fun c => '0' ≤ c && c ≤ '9')
+
+def StringToInt (s : String) : Int := 
+  s.foldl (fun acc c => acc * 10 + (c.toNat - '0'.toNat)) 0
+
+def IsValidBinaryString (s : String) (expectedLength : Int) : Bool :=
+  s.length = expectedLength.natAbs && s.all (fun c => c = '0' || c = '1')
+
+def MaxConsecutiveWinsUpTo (lines : List String) (n d : Int) : Int := 
+  0
 
 def InputWellFormed (input : String) : Prop :=
   let lines := SplitLines input
   lines.length ≥ 1 ∧
-  (∃ h : 0 < lines.length, 
-    let firstLineParts := SplitString (lines.get ⟨0, h⟩) ' '
-    firstLineParts.length = 2 ∧
-    (∃ h0 : 0 < firstLineParts.length,
-      ∃ h1 : 1 < firstLineParts.length,
-      IsValidInt (firstLineParts.get ⟨0, h0⟩) ∧
-      IsValidInt (firstLineParts.get ⟨1, h1⟩) ∧
-      let n := StringToInt (firstLineParts.get ⟨0, h0⟩)
-      let d := StringToInt (firstLineParts.get ⟨1, h1⟩)
-      n ≥ 0 ∧ d ≥ 0 ∧
-      lines.length ≥ Int.natAbs d + 1 ∧
-      ∀ i : Int, 1 ≤ i ∧ i ≤ d → (∃ hi : Int.natAbs i < lines.length, IsValidBinaryString (lines.get ⟨Int.natAbs i, hi⟩) n)))
+  let firstLineParts := SplitString lines[0]! ' '
+  firstLineParts.length = 2 ∧
+  IsValidInt firstLineParts[0]! ∧
+  IsValidInt firstLineParts[1]! ∧
+  let n := StringToInt firstLineParts[0]!
+  let d := StringToInt firstLineParts[1]!
+  n ≥ 0 ∧ d ≥ 0 ∧
+  lines.length ≥ d.natAbs + 1 ∧
+  ∀ i, 1 ≤ i ∧ i ≤ d.natAbs → i < lines.length ∧ IsValidBinaryString lines[i]! n
 
 def ComputeMaxConsecutiveWins (input : String) : Int :=
   let lines := SplitLines input
-  if h : 0 < lines.length then
-    let firstLineParts := SplitString (lines.get ⟨0, h⟩) ' '
-    if h0 : 0 < firstLineParts.length then
-      if h1 : 1 < firstLineParts.length then
-        let n := StringToInt (firstLineParts.get ⟨0, h0⟩)
-        let d := StringToInt (firstLineParts.get ⟨1, h1⟩)
-        MaxConsecutiveWinsUpTo lines n d
-      else 0
-    else 0
-  else 0
+  let firstLineParts := SplitString lines[0]! ' '
+  let n := StringToInt firstLineParts[0]!
+  let d := StringToInt firstLineParts[1]!
+  MaxConsecutiveWinsUpTo lines n d
+
+def IntToString (n : Int) : String := 
+  toString n
 
 @[reducible, simp]
 def solve_precond (input : String) : Prop :=

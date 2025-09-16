@@ -2,28 +2,23 @@ vc-preamble: |-
   def ValidInput (n k : Int) (A : List Int) : Prop :=
     1 ≤ k ∧ k ≤ n ∧ n ≤ 100 ∧
     n % k = 0 ∧
-    A.length = Int.natAbs n ∧
+    A.length = n.natAbs ∧
     ∀ i, 0 ≤ i ∧ i < A.length → A[i]! = 1 ∨ A[i]! = 2
 
   def CountOnesInColumn (A : List Int) (n k col : Int) : Int :=
-    (List.range (Int.natAbs n)).filter (fun j => Int.ofNat j % k = col ∧ A[j]! = 1) |>.length
+    (List.range n.natAbs).filter (fun j => j % k.natAbs = col.natAbs ∧ j < A.length ∧ A[j]! = 1) |>.length
 
   def CountTwosInColumn (A : List Int) (n k col : Int) : Int :=
-    (List.range (Int.natAbs n)).filter (fun j => Int.ofNat j % k = col ∧ A[j]! = 2) |>.length
+    (List.range n.natAbs).filter (fun j => j % k.natAbs = col.natAbs ∧ j < A.length ∧ A[j]! = 2) |>.length
 
   def MinChangesForColumn (A : List Int) (n k col : Int) : Int :=
     let count1 := CountOnesInColumn A n k col
     let count2 := CountTwosInColumn A n k col
     if count1 < count2 then count1 else count2
 
-  def SumMinChangesHelper (A : List Int) (n k col : Int) : Int :=
-    if col = k then 0
+  partial def SumMinChangesHelper (A : List Int) (n k col : Int) : Int :=
+    if col = k then 0 
     else MinChangesForColumn A n k col + SumMinChangesHelper A n k (col + 1)
-  termination_by (Int.natAbs (k - col))
-  decreasing_by {
-    simp [Int.natAbs]
-    sorry
-  }
 
   def SumMinChangesForAllColumns (A : List Int) (n k : Int) : Int :=
     SumMinChangesHelper A n k 0

@@ -1,18 +1,19 @@
 vc-preamble: |-
   def ValidInput (n : Int) (a : List Int) : Prop :=
-    n ≥ 1 ∧ a.length = n ∧ ∀ i, 0 ≤ i ∧ i < n → a[i.natAbs]! ≥ 0
+    n ≥ 1 ∧ a.length = n.natAbs ∧ ∀ i, 0 ≤ i ∧ i < n → a[i.natAbs]? ≠ none ∧ a[i.natAbs]?.get! ≥ 0
 
   def CountSurvivorsFrom (n : Int) (a : List Int) (start : Int) (left : Int) : Int :=
-    if start ≥ n then 0
+    if h : start ≥ n then 0
     else
       let i := n - 1 - start
       let survives := if i < left then 1 else 0
-      let newLeft := if i - a[i.natAbs]! < left then i - a[i.natAbs]! else left
+      let aVal := if h : i.natAbs < a.length then a[i.natAbs] else 0
+      let newLeft := if i - aVal < left then i - aVal else left
       survives + CountSurvivorsFrom n a (start + 1) newLeft
   termination_by (n - start).natAbs
   decreasing_by
     simp_wf
-    sorry
+    omega
 
   def CountSurvivors (n : Int) (a : List Int) : Int :=
     CountSurvivorsFrom n a 0 n

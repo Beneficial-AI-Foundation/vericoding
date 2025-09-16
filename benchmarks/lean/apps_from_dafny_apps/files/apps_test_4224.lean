@@ -1,25 +1,26 @@
 -- <vc-preamble>
+
 def ValidInput (a : List Int) : Prop :=
-  ∀ i, 0 ≤ i ∧ i < a.length → a[i]! > 0
+  ∀ i, 0 ≤ i ∧ i < a.length → a.get! i > 0
 
 def CountFactorsOfTwo (n : Int) : Int :=
-  if h : n > 0 then
-    if n % 2 = 0 then 1 + CountFactorsOfTwo (n / 2)
-    else 0
+  if h : n > 0 ∧ n % 2 = 0 then 1 + CountFactorsOfTwo (n / 2)
+  else if n > 0 then 0
   else 0
-termination_by n
+termination_by n.natAbs
 decreasing_by
   simp_wf
-  sorry
+  have : n / 2 < n := by
+    have : n > 0 := h.1
+    have : n % 2 = 0 := h.2
+    omega
+  omega
 
 def SumFactors (a : List Int) (i : Nat) : Int :=
-  if h : i < a.length then 
-    CountFactorsOfTwo (a[i]!) + SumFactors a (i + 1)
+  if h : i < a.length then
+    CountFactorsOfTwo (a.get! i) + SumFactors a (i + 1)
   else 0
 termination_by a.length - i
-decreasing_by
-  simp_wf
-  omega
 
 def MaxOperations (a : List Int) : Int :=
   SumFactors a 0

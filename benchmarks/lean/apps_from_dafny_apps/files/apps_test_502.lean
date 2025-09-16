@@ -11,19 +11,41 @@ def ValidRotationExists (a b c : Int × Int) : Prop :=
   let dy2 := b.2 - a.2
   distABSqr = distBCSqr ∧ dx1 * dy2 ≠ dy1 * dx2
 
-def parseInputHelper (input : String) (i : Int) (result : List Int) (current : String) : List Int :=
-  sorry
+def charToDigit (c : Char) : Int :=
+  Int.ofNat (c.toNat - '0'.toNat)
+
+def isDigitString (s : String) : Bool :=
+  s.all (fun c => '0' ≤ c ∧ c ≤ '9')
+
+def stringToIntHelper (s : String) : Int :=
+  s.foldl (fun acc c => acc * 10 + charToDigit c) 0
+
+def stringToInt (s : String) : Int :=
+  if s.isEmpty then 0
+  else if s = "-" then 0
+  else if s.startsWith "-" ∧ s.length > 1 ∧ isDigitString (s.drop 1) then 
+    -(stringToIntHelper (s.drop 1))
+  else if isDigitString s then stringToIntHelper s
+  else 0
+
+def parseInputHelper (input : String) (i : Nat) (result : List Int) (current : String) : List Int :=
+  if i ≥ input.length then
+    if current.length > 0 then result ++ [stringToInt current]
+    else result
+  else
+    let ch := if h : i < input.length then input.data[i]! else ' '
+    if ch = ' ' ∨ ch = '\n' ∨ ch = '\t' then
+      if current.length > 0 then
+        parseInputHelper input (i + 1) (result ++ [stringToInt current]) ""
+      else
+        parseInputHelper input (i + 1) result ""
+    else if ('0' ≤ ch ∧ ch ≤ '9') ∨ ch = '-' then
+      parseInputHelper input (i + 1) result (current ++ ch.toString)
+    else
+      parseInputHelper input (i + 1) result current
 
 def parseInputFunc (input : String) : List Int :=
   parseInputHelper input 0 [] ""
-
-def stringToInt (s : String) : Int := sorry
-
-def isDigitString (s : String) : Bool := sorry
-
-def stringToIntHelper (s : String) : Int := sorry
-
-def charToDigit (c : Char) : Int := sorry
 
 @[reducible, simp]
 def solve_precond (input : String) : Prop :=
@@ -45,10 +67,10 @@ def solve_postcond (input : String) (result : String) (h_precond : solve_precond
   (let coords := parseInputFunc input
    coords.length ≠ 6 → result = "") ∧
   (let coords := parseInputFunc input
-   coords.length = 6 →
-     let a := (coords.get! 0, coords.get! 1)
-     let b := (coords.get! 2, coords.get! 3)
-     let c := (coords.get! 4, coords.get! 5)
+   coords.length = 6 → 
+     let a := (coords[0]!, coords[1]!)
+     let b := (coords[2]!, coords[3]!)
+     let c := (coords[4]!, coords[5]!)
      (ValidRotationExists a b c → result = "Yes") ∧
      (¬ValidRotationExists a b c → result = "No"))
 

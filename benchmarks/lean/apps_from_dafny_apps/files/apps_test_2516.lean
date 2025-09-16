@@ -7,12 +7,10 @@ def ValidInput (n p : Int) (s : String) : Prop :=
   p ≥ 2 ∧
   isPrime p ∧
   s.length = n.natAbs ∧
-  ∀ i, 0 ≤ i ∧ i < s.length → '0' ≤ s.get (String.Pos.mk i) ∧ s.get (String.Pos.mk i) ≤ '9'
+  ∀ i, 0 ≤ i ∧ i < s.length → '0' ≤ s.data[i]! ∧ s.data[i]! ≤ '9'
 
-def charToInt (c : Char) : Int :=
-  Int.ofNat c.val.toNat - Int.ofNat ('0').val.toNat
-
-def substringToInt (s : String) : Int := sorry
+def substringToInt (s : String) : Int :=
+  s.data.foldl (fun acc c => acc * 10 + (c.toNat - '0'.toNat)) 0
 
 def ValidResult (result n : Int) : Prop :=
   result ≥ 0 ∧ result ≤ n * (n + 1) / 2

@@ -1,25 +1,41 @@
 vc-preamble: |-
   def CharToPosSpec (c : String) : Int :=
-    if c = "v" then 0
-    else if c = ">" then 1
-    else if c = "^" then 2
-    else if c = "<" then 3
+    if c == "v" then 0
+    else if c == ">" then 1
+    else if c == "^" then 2
+    else if c == "<" then 3
     else 0
 
-  def FindNewline (s : String) (start : Int) : Int :=
-    sorry
+  partial def FindNewline (s : String) (start : Nat) : Nat :=
+    if start >= s.length then s.length
+    else if s.data[start]! == '\n' then start
+    else FindNewline s (start + 1)
 
-  def SplitLinesSpec (s : String) : List String :=
-    sorry
+  partial def SplitLinesSpec (s : String) : List String :=
+    if s.length == 0 then []
+    else
+      let i := FindNewline s 0
+      if i == s.length then [s]
+      else [s.take i] ++ SplitLinesSpec (s.drop (i+1))
 
-  def FindSpace (s : String) (start : Int) : Int :=
-    sorry
+  partial def FindSpace (s : String) (start : Nat) : Nat :=
+    if start >= s.length then s.length
+    else if s.data[start]! == ' ' then start
+    else FindSpace s (start + 1)
 
-  def SplitBySpaceSpec (s : String) : List String :=
-    sorry
+  partial def SplitBySpaceSpec (s : String) : List String :=
+    if s.length == 0 then []
+    else
+      let i := FindSpace s 0
+      if i == s.length then [s]
+      else [s.take i] ++ SplitBySpaceSpec (s.drop (i+1))
 
-  def StringToIntHelper (s : String) (pos : Int) (acc : Int) (negative : Bool) : Int :=
-    sorry
+  partial def StringToIntHelper (s : String) (pos : Nat) (acc : Int) (negative : Bool) : Int :=
+    if pos >= s.length then (if negative then -acc else acc)
+    else if pos == 0 && s.data[pos]! == '-' then StringToIntHelper s (pos + 1) acc true
+    else if '0' ≤ s.data[pos]! && s.data[pos]! ≤ '9' then 
+      StringToIntHelper s (pos + 1) (acc * 10 + (s.data[pos]!).toNat - '0'.toNat) negative
+    else StringToIntHelper s (pos + 1) acc negative
 
   def StringToIntSpec (s : String) : Int :=
     StringToIntHelper s 0 0 false
@@ -28,7 +44,7 @@ vc-preamble: |-
     input.length > 0
 
   def ValidOutput (result : String) : Prop :=
-    result = "cw" ∨ result = "ccw" ∨ result = "undefined"
+    result == "cw" ∨ result == "ccw" ∨ result == "undefined"
 
   @[reducible, simp]
   def solve_precond (input : String) : Prop :=

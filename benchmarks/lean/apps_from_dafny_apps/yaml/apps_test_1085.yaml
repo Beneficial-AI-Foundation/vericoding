@@ -3,11 +3,13 @@ vc-preamble: |-
     n > 0
 
   def reduce_by_divisor (n d : Nat) : Nat :=
-    if n % d = 0 ∧ n ≥ d then 
-      reduce_by_divisor (n / d) d
-    else n
-  termination_by n
-  decreasing_by simp_wf; sorry
+    if n = 0 ∨ d ≤ 1 then n
+    else if n % d = 0 ∧ n ≥ d then reduce_by_divisor (n / d) d else n
+  decreasing_by 
+    simp_wf
+    apply Nat.div_lt_self
+    · omega
+    · omega
 
   def count_divisors (n : Nat) : Nat :=
     (List.range (n + 1)).filter (fun d => 1 ≤ d ∧ d ≤ n ∧ n % d = 0) |>.length

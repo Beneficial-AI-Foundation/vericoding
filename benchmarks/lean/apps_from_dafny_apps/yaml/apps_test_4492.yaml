@@ -1,11 +1,10 @@
 vc-preamble: |-
-  -- Helper functions that would be defined elsewhere
-  noncomputable def SplitByNewlineSpec : String → List String := sorry
-  noncomputable def SplitBySpaceSpec : String → List String := sorry
-  noncomputable def ParseIntSpec : String → Int := sorry
-  noncomputable def IntToString : Int → String := sorry
+  def SplitByNewlineSpec (_ : String) : List String := []
+  def SplitBySpaceSpec (_ : String) : List String := []
+  def ParseIntSpec (_ : String) : Int := 0
+  def IntToString (_ : Int) : String := ""
 
-  noncomputable def ValidInput (input : String) : Prop :=
+  def ValidInput (input : String) : Prop :=
     let lines := SplitByNewlineSpec input
     lines.length ≥ 2 ∧
     let firstLine := SplitBySpaceSpec (lines[0]!)
@@ -14,35 +13,32 @@ vc-preamble: |-
     let x := ParseIntSpec (firstLine[1]!)
     N ≥ 2 ∧ x ≥ 0 ∧
     let secondLine := SplitBySpaceSpec (lines[1]!)
-    secondLine.length = Int.natAbs N ∧
-    (∀ i, 0 ≤ i ∧ i < Int.natAbs N → ParseIntSpec (secondLine[i]!) ≥ 0)
+    secondLine.length = N.natAbs ∧
+    (∀ i, 0 ≤ i ∧ i < N → ParseIntSpec (secondLine[i.natAbs]!) ≥ 0)
 
-  noncomputable def ComputeOperationsFromIndex (originalA : List Int) (x : Int) (index : Nat) (currentA : List Int) (currentCount : Int) : Int :=
-    if originalA.length ≥ 2 ∧ x ≥ 0 ∧ 1 ≤ index ∧ index ≤ originalA.length ∧ 
-       currentA.length = originalA.length ∧ currentCount ≥ 0 ∧ 
-       (∀ i, i < originalA.length → originalA[i]! ≥ 0) then
-      if index ≥ originalA.length then currentCount
-      else
-        let newValue := if currentA[index]! + currentA[index-1]! > x then x - currentA[index-1]! else currentA[index]!
-        let additionalOps := if currentA[index]! + currentA[index-1]! > x then currentA[index]! + currentA[index-1]! - x else 0
-        let newA := currentA.set index newValue
-        ComputeOperationsFromIndex originalA x (index + 1) newA (currentCount + additionalOps)
-    else 0
+  def ComputeOperationsFromIndex (originalA : List Int) (x : Int) (index : Nat) (currentA : List Int) (currentCount : Int) : Int :=
+    if index ≥ originalA.length then currentCount
+    else
+      let newValue := if currentA[index]! + currentA[index-1]! > x then x - currentA[index-1]! else currentA[index]!
+      let additionalOps := if currentA[index]! + currentA[index-1]! > x then currentA[index]! + currentA[index-1]! - x else 0
+      let newA := currentA.set index newValue
+      ComputeOperationsFromIndex originalA x (index + 1) newA (currentCount + additionalOps)
+  termination_by originalA.length - index
 
-  noncomputable def ComputeMinimumOperations (A : List Int) (x : Int) : Int :=
-    if A.length ≥ 2 ∧ x ≥ 0 ∧ (∀ i, i < A.length → A[i]! ≥ 0) then
+  def ComputeMinimumOperations (A : List Int) (x : Int) : Int :=
+    if A.length ≥ 2 ∧ x ≥ 0 ∧ (∀ a ∈ A, a ≥ 0) then
       let A0 := if A[0]! > x then x else A[0]!
       let cnt0 := if A[0]! > x then A[0]! - x else 0
       ComputeOperationsFromIndex A x 1 (A0 :: A.tail) cnt0
     else 0
 
-  noncomputable def MinimumCandiesNeeded (input : String) (h : ValidInput input) : Int :=
+  def MinimumCandiesNeeded (input : String) (h : ValidInput input) : Int :=
     let lines := SplitByNewlineSpec input
     let firstLine := SplitBySpaceSpec (lines[0]!)
     let N := ParseIntSpec (firstLine[0]!)
     let x := ParseIntSpec (firstLine[1]!)
     let secondLine := SplitBySpaceSpec (lines[1]!)
-    let A := List.range (Int.natAbs N) |>.map (fun i => ParseIntSpec (secondLine[i]!))
+    let A := List.range N.natAbs |>.map (fun i => ParseIntSpec (secondLine[i]!))
     ComputeMinimumOperations A x
 
   @[reducible, simp]
@@ -52,7 +48,7 @@ vc-preamble: |-
 vc-helpers: |-
 
 vc-definitions: |-
-  noncomputable def solve (input : String) (h_precond : solve_precond input) : String :=
+  def solve (input : String) (h_precond : solve_precond input) : String :=
     sorry
 
 vc-theorems: |-

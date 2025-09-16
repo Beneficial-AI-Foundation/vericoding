@@ -1,6 +1,10 @@
 -- <vc-preamble>
-def countMaxMovesHelper (s : String) (i : Nat) (stack : List Char) (moves : Nat) : Nat :=
-  sorry
+partial def countMaxMovesHelper (s : String) (i : Nat) (stack : List Char) (moves : Nat) : Nat :=
+  if i ≥ s.length then moves
+  else if stack.length > 0 ∧ s.data[i]! = stack.getLast! then
+    countMaxMovesHelper s (i + 1) (stack.dropLast) (moves + 1)
+  else
+    countMaxMovesHelper s (i + 1) (stack ++ [s.data[i]!]) moves
 
 def countMaxMoves (s : String) : Nat :=
   if s.length = 0 then 0
