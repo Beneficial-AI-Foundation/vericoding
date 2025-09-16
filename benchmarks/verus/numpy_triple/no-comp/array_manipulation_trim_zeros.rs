@@ -26,12 +26,12 @@ fn trim_zeros(arr: Vec<f64>, mode: TrimMode) -> (result: Vec<f64>)
             result.len() == (finish - start) &&
 
             (matches!(mode, TrimMode::Front | TrimMode::Both) ==> 
-                forall|i: int| 0 <= i < start ==> arr[i] == 0.0) &&
+                forall|i: int| #![trigger arr[i]] 0 <= i < start ==> arr[i] == 0.0) &&
 
             (matches!(mode, TrimMode::Back | TrimMode::Both) ==> 
-                forall|i: int| finish <= i < arr.len() ==> arr[i] == 0.0) &&
+                forall|i: int| #![trigger arr[i]] finish <= i < arr.len() ==> arr[i] == 0.0) &&
 
-            (forall|i: int| 0 <= i < result.len() ==> result[i] == arr[start + i]) &&
+            (forall|i: int| #![trigger result[i]] 0 <= i < result.len() ==> result[i] == arr[start + i]) &&
 
             (matches!(mode, TrimMode::Front | TrimMode::Both) ==> 
                 (start == arr.len() || arr[start] != 0.0)) &&

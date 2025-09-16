@@ -11,14 +11,14 @@ verus! {
 fn setdiff1d(ar1: Vec<i32>, ar2: Vec<i32>) -> (result: Vec<i32>)
     ensures
 
-        forall|i: int| 0 <= i < result.len() ==>
+        forall|i: int| #![trigger result[i]] 0 <= i < result.len() ==>
             exists|j: int| 0 <= j < ar1.len() && result[i] == ar1[j] &&
             forall|l: int| 0 <= l < ar2.len() ==> result[i] != ar2[l],
 
-        forall|i: int, j: int| 0 <= i < result.len() && 0 <= j < result.len() && i != j ==>
+        forall|i: int, j: int| #![trigger result[i], result[j]] 0 <= i < result.len() && 0 <= j < result.len() && i != j ==>
             result[i] != result[j],
 
-        forall|i: int, j: int| 0 <= i < result.len() && 0 <= j < result.len() && i < j ==>
+        forall|i: int, j: int| #![trigger result[i], result[j]] 0 <= i < result.len() && 0 <= j < result.len() && i < j ==>
             result[i] <= result[j],
 
         forall|val: i32| 

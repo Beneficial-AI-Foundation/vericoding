@@ -14,8 +14,8 @@ fn hsplit(arr: Vec<f32>, k: usize) -> (result: Vec<Vec<f32>>)
         arr.len() % k == 0,
     ensures
         result.len() == k,
-        forall|part_idx: int| 0 <= part_idx < k ==> result[part_idx].len() == arr.len() / k,
-        forall|part_idx: int, elem_idx: int| 
+        forall|part_idx: int| #![trigger result[part_idx]] 0 <= part_idx < k ==> result[part_idx].len() == arr.len() / k,
+        forall|part_idx: int, elem_idx: int| #![trigger result[part_idx][elem_idx]]
             0 <= part_idx < k && 0 <= elem_idx < arr.len() / k ==>
             result[part_idx][elem_idx] == arr[part_idx * (arr.len() / k) + elem_idx],
         forall|i: int| 0 <= i < arr.len() ==>
