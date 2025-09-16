@@ -133,15 +133,15 @@ def test_load_translation_config():
     dafny_config = load_translation_config("dafny", "verus")
     assert dafny_config is not None
     assert "config" in dafny_config
-    
+
     lean_config = load_translation_config("lean", "verus")
     assert lean_config is not None
     assert "config" in lean_config
-    
+
     verus_config = load_translation_config("verus", "dafny")
     assert verus_config is not None
     assert "config" in verus_config
-    
+
     # Test the new dafny-to-lean translation
     dafny_lean_config = load_translation_config("dafny", "lean")
     assert dafny_lean_config is not None
@@ -180,21 +180,21 @@ def test_translation_config_inheritance():
 def test_dafny_to_lean_translation_config():
     """Test that dafny-to-lean translation config contains Lean-specific prompts"""
     dafny_lean_config = load_translation_config("dafny", "lean")
-    
+
     # Should have system prompts
     assert "system_prompts" in dafny_lean_config
     assert "dafny" in dafny_lean_config["system_prompts"]
-    
+
     # Check that the prompt is Lean-specific
     prompt = dafny_lean_config["system_prompts"]["dafny"]
     assert "Lean 4" in prompt, "Should mention Lean 4"
     assert "Prop" in prompt, "Should include Prop type for predicates"
     assert "∀" in prompt, "Should include universal quantifier"
-    
+
     # Should have YAML instructions
     assert "yaml_instructions" in dafny_lean_config
     assert "dafny" in dafny_lean_config["yaml_instructions"]
-    
+
     # Should have default prompts
     assert "default_prompts" in dafny_lean_config
     assert "dafny" in dafny_lean_config["default_prompts"]

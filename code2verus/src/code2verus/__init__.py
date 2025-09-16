@@ -76,6 +76,7 @@ Supported Translation Combinations:
 Legacy Examples (deprecated --language flag):
   code2verus --language dafny                          # Same as --source-language dafny --target-language verus
 
+
 Debug Examples:
   code2verus --save-debug                               # Save debug contexts to JSON files
   code2verus --debug-report                             # Print debug report after each translation

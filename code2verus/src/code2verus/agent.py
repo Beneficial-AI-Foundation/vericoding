@@ -32,6 +32,7 @@ from code2verus.models import (
     AttemptResult,
     IterationStatus,
     TokenUsage,
+    PromptConfiguration,
 )
 
 
@@ -223,13 +224,20 @@ async def translate_code_to_verus(
     )
 
     # Get language-specific prompts from translation config
+    system_prompts = translation_cfg.get("system_prompts", {})
+    yaml_instructions = translation_cfg.get("yaml_instructions", {})
+    default_prompts = translation_cfg.get("default_prompts", {})
+
+    system_prompt = system_prompts.get(source_language.lower(), "")
+    yaml_instruction = yaml_instructions.get(source_language.lower(), "")
+    default_prompt = default_prompts.get(source_language.lower(), "")
+
     if is_yaml:
-        yaml_instructions = translation_cfg.get("yaml_instructions", {})
         logfire.info(
             f"Available yaml_instructions keys: {list(yaml_instructions.keys())}"
         )
 
-        additional_prompt = yaml_instructions.get(source_language.lower(), "")
+        additional_prompt = yaml_instruction
         logfire.info(
             f"YAML mode for {source_language}, additional_prompt length: {len(additional_prompt)}"
         )
@@ -237,12 +245,60 @@ async def translate_code_to_verus(
             f"First 200 chars of additional_prompt: {additional_prompt[:200]}..."
         )
     else:
-        additional_prompt = translation_cfg.get("default_prompts", {}).get(
-            source_language.lower(), ""
-        )
+        additional_prompt = default_prompt
         logfire.info(
             f"Non-YAML mode for {source_language}, additional_prompt length: {len(additional_prompt)}"
         )
+
+    # Capture prompt configuration for debugging
+    validation_rules = translation_cfg.get("config", {}).get(
+        "code_validation_rules", {}
+    )
+    lean_rules = (
+        validation_rules.get("lean", []) if target_language.lower() == "lean" else []
+    )
+
+    prompt_config = PromptConfiguration(
+        system_prompt=system_prompt,
+        yaml_instructions=yaml_instruction,
+        default_prompt=default_prompt,
+        additional_prompt=additional_prompt,
+        postcondition_mode=False,  # Always False since postcondition mode CLI was removed
+        validation_rules_count=len(lean_rules),
+    )
+
+    # Store prompt configuration in debug context
+    debug_context.set_prompt_configuration(prompt_config)
+
+    logfire.info(
+        f"Captured prompt configuration: system_prompt={len(system_prompt)} chars, "
+        f"yaml_instructions={len(yaml_instruction)} chars, "
+        f"default_prompt={len(default_prompt)} chars, "
+        f"validation_rules={len(lean_rules)}"
+    )
+
+    # Log enforcement checks for Dafny-to-Lean
+    if source_language.lower() == "dafny" and target_language.lower() == "lean":
+        has_enforcement = all(
+            [
+                "CRITICAL ENFORCEMENT" in system_prompt,
+                "CRITICAL YAML ENFORCEMENT" in yaml_instruction
+                if is_yaml
+                else "MANDATORY ENSURES MAPPING" in default_prompt,
+                len(lean_rules) > 0,
+            ]
+        )
+        logfire.info(f"Dafny-to-Lean enforcement active: {has_enforcement}")
+        if not has_enforcement:
+            logfire.warning("Missing enforcement rules in prompt configuration!")
+            if "CRITICAL ENFORCEMENT" not in system_prompt:
+                logfire.warning("System prompt missing CRITICAL ENFORCEMENT")
+            if is_yaml and "CRITICAL YAML ENFORCEMENT" not in yaml_instruction:
+                logfire.warning("YAML instructions missing CRITICAL YAML ENFORCEMENT")
+            if not is_yaml and "MANDATORY ENSURES MAPPING" not in default_prompt:
+                logfire.warning("Default prompt missing MANDATORY ENSURES MAPPING")
+            if len(lean_rules) == 0:
+                logfire.warning("No Lean validation rules configured")
 
     user_prompt = f"""
 Please translate the following {source_language} code to {target_language}:
@@ -312,11 +368,15 @@ Please translate the following {source_language} code to {target_language}:
                 current_prompt, message_history=conversation_history, deps=deps_context
             )
         except UnexpectedModelBehavior as e:
-            logfire.error(f"OpenAI API returned unexpected response on iteration {iteration + 1}: {e}")
-            
+            logfire.error(
+                f"OpenAI API returned unexpected response on iteration {iteration + 1}: {e}"
+            )
+
             # If we have more iterations, try again with the next iteration
             if iteration < max_iterations - 1:
-                logfire.info(f"Retrying with next iteration ({iteration + 2}/{max_iterations})")
+                logfire.info(
+                    f"Retrying with next iteration ({iteration + 2}/{max_iterations})"
+                )
                 iteration += 1
                 continue
             else:
@@ -415,21 +475,133 @@ Please translate the following {source_language} code to {target_language}:
             # Generate concatenated code from YAML for verification based on target language
             if target_language.lower() == "lean":
                 from code2verus.utils import yaml_to_lean
+
+                # CRITICAL ENFORCEMENT: Validate ensures -> solve_postcond mapping for Dafny-to-Lean
+                if source_language.lower() == "dafny" and "ensures" in source_code:
+                    # Check for postcondition definition
+                    has_solve_postcond = "solve_postcond" in yaml_content
+                    has_theorem = "theorem" in yaml_content
+
+                    # Check that vc-theorems section is not empty
+                    has_non_empty_theorems = False
+                    # Look for vc-theorems section (either in vc-spec or as separate vc-theorems field)
+                    theorems_section = ""
+                    if "vc-theorems:" in yaml_content:
+                        # New format: separate vc-theorems field
+                        theorems_section = (
+                            yaml_content.split("vc-theorems:")[1].split("\nvc-")[0]
+                            if "vc-theorems:" in yaml_content
+                            else ""
+                        )
+                    elif "vc-spec:" in yaml_content:
+                        # Old format: vc-theorems inside vc-spec
+                        spec_section = (
+                            yaml_content.split("vc-spec:")[1]
+                            if "vc-spec:" in yaml_content
+                            else ""
+                        )
+                        if (
+                            "-- <vc-theorems>" in spec_section
+                            and "-- </vc-theorems>" in spec_section
+                        ):
+                            theorems_section = spec_section.split("-- <vc-theorems>")[
+                                1
+                            ].split("-- </vc-theorems>")[0]
+
+                    # Check for actual theorem content in the theorems section
+                    if theorems_section and (
+                        "-- <vc-theorems>" in theorems_section
+                        and "-- </vc-theorems>" in theorems_section
+                    ):
+                        theorems_content = (
+                            theorems_section.split("-- <vc-theorems>")[1]
+                            .split("-- </vc-theorems>")[0]
+                            .strip()
+                        )
+                        has_non_empty_theorems = bool(
+                            theorems_content and theorems_content != ""
+                        )
+                    elif theorems_section:
+                        # Fallback: check if section has any meaningful content
+                        clean_content = (
+                            theorems_section.replace("|-", "")
+                            .replace("-- <vc-theorems>", "")
+                            .replace("-- </vc-theorems>", "")
+                            .strip()
+                        )
+                        has_non_empty_theorems = bool(
+                            clean_content and len(clean_content) > 0
+                        )
+
+                    if (
+                        not has_solve_postcond
+                        or not has_theorem
+                        or not has_non_empty_theorems
+                    ):
+                        error_msg = "CRITICAL ENFORCEMENT VIOLATION: Dafny 'ensures' clause detected but Lean output incomplete:\n"
+                        error_msg += f"- solve_postcond definition: {'✓' if has_solve_postcond else '✗'}\n"
+                        error_msg += (
+                            f"- theorem definition: {'✓' if has_theorem else '✗'}\n"
+                        )
+                        error_msg += f"- non-empty vc-theorems: {'✓' if has_non_empty_theorems else '✗'}\n"
+                        error_msg += "This violates the mandatory ensures-to-postcondition mapping requirement."
+
+                        logfire.error(error_msg)
+                        logfire.error(
+                            f"Source contains ensures: {'ensures' in source_code}"
+                        )
+                        logfire.error(f"YAML content preview:\n{yaml_content[:500]}...")
+
+                        # Provide specific feedback to the AI about what's missing
+                        feedback_parts = []
+                        if not has_solve_postcond:
+                            feedback_parts.append("missing 'solve_postcond' definition")
+                        if not has_theorem:
+                            feedback_parts.append(
+                                "missing 'theorem solve_spec_satisfied'"
+                            )
+                        if not has_non_empty_theorems:
+                            feedback_parts.append("empty '-- <vc-theorems>' section")
+
+                        ai_feedback = f"ENFORCEMENT ERROR: The Dafny method has 'ensures' clauses but your output is {', '.join(feedback_parts)}. You MUST include both a 'solve_postcond' definition and a 'theorem solve_spec_satisfied' in the '-- <vc-theorems>' section."
+
+                        # Create a verification error to force retry with specific feedback
+                        debug_context.add_verification_error(
+                            VerificationError(
+                                iteration=iteration,
+                                error=ai_feedback,
+                                output="",
+                                error_type="enforcement_violation",
+                            )
+                        )
+
+                        logfire.warning(
+                            f"Forcing retry due to enforcement violation: {ai_feedback}"
+                        )
+                        continue  # Skip verification and go to next iteration with enforcement feedback
+
                 target_content = yaml_to_lean(yaml_content)
-                logfire.info(f"Converted YAML to Lean code ({len(target_content)} characters)")
+                logfire.info(
+                    f"Converted YAML to Lean code ({len(target_content)} characters)"
+                )
             elif target_language.lower() == "dafny":
                 from code2verus.utils import yaml_to_dafny
+
                 target_content = yaml_to_dafny(yaml_content)
-                logfire.info(f"Converted YAML to Dafny code ({len(target_content)} characters)")
+                logfire.info(
+                    f"Converted YAML to Dafny code ({len(target_content)} characters)"
+                )
             else:
                 # Default to Verus for backwards compatibility
                 target_content = concatenate_yaml_fields(yaml_content)
-                logfire.info(f"Converted YAML to Verus code ({len(target_content)} characters)")
+                logfire.info(
+                    f"Converted YAML to Verus code ({len(target_content)} characters)"
+                )
 
-            # For YAML mode, save the extracted target language code as main output
-            # and also use it for verification
-            output_content = target_content
-            code_for_verification = target_content
+            # For YAML mode, preserve the original YAML as main output
+            # but use the converted target language code for verification
+            output_content = yaml_content  # Keep original YAML for .yaml files
+            code_for_verification = target_content  # Use converted code for .lean files
         else:
             # For regular files, extract code from markdown blocks
             output_content = extract_rust_code(result.output)

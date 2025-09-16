@@ -63,8 +63,11 @@ def load_translation_config(source_lang: str, target_lang: str = "verus") -> dic
     # Load base configuration
     base_config_path = config_dir / "base.yml"
     if not base_config_path.exists():
-        # Fallback to original config.yml if new structure doesn't exist
-        return load_config()
+        raise FileNotFoundError(
+            f"Base configuration not found: {base_config_path}. "
+            "The new configuration structure requires config/base.yml. "
+            "Please ensure the config directory structure is properly set up."
+        )
 
     base_config = load_config(base_config_path)
 
@@ -92,12 +95,85 @@ def load_translation_config(source_lang: str, target_lang: str = "verus") -> dic
     return base_config
 
 
-_cfg = load_config()
-cfg = _cfg.get("config", {})
-system_prompt = _cfg.get("system", "")
+# Load comprehensive configuration by merging all available translation configs
+# This ensures that all language combinations are available for tests and global access
+try:
+    project_root = Path(__file__).parent.parent.parent
+    config_dir = project_root / "config"
+    base_config_path = config_dir / "base.yml"
 
-# Make the full config available for accessing sections like yaml_instructions
-full_cfg = _cfg
+    if base_config_path.exists():
+        # Load base config
+        base_config = load_config(base_config_path)
+
+        # Merge all available translation configs for comprehensive access
+        all_system_prompts = {}
+        all_yaml_instructions = {}
+        all_default_prompts = {}
+
+        # List all available translation configs
+        translation_configs = [
+            ("dafny", "verus"),
+            ("dafny", "lean"),
+            ("verus", "dafny"),
+            ("verus", "lean"),
+            ("lean", "verus"),
+        ]
+
+        for src_lang, tgt_lang in translation_configs:
+            try:
+                trans_cfg = load_translation_config(src_lang, tgt_lang)
+
+                # Merge system prompts
+                if "system_prompts" in trans_cfg:
+                    all_system_prompts.update(trans_cfg["system_prompts"])
+
+                # Merge yaml instructions
+                if "yaml_instructions" in trans_cfg:
+                    all_yaml_instructions.update(trans_cfg["yaml_instructions"])
+
+                # Merge default prompts
+                if "default_prompts" in trans_cfg:
+                    all_default_prompts.update(trans_cfg["default_prompts"])
+
+            except FileNotFoundError:
+                # Skip missing translation configs
+                continue
+
+        # Create comprehensive config
+        _cfg = merge_configs(
+            base_config,
+            {
+                "system_prompts": all_system_prompts,
+                "yaml_instructions": all_yaml_instructions,
+                "default_prompts": all_default_prompts,
+                # Add a default system prompt for backward compatibility
+                "system": all_system_prompts.get("dafny", ""),
+            },
+        )
+
+        cfg = _cfg.get("config", {})
+        system_prompt = _cfg.get("system", "")
+        full_cfg = _cfg
+    else:
+        # Fallback to dafny-to-verus if base config missing
+        _cfg = load_translation_config("dafny", "verus")
+        cfg = _cfg.get("config", {})
+        system_prompt = _cfg.get("system", "")
+        full_cfg = _cfg
+
+except FileNotFoundError:
+    # If new config structure doesn't exist, create minimal fallback
+    _cfg = {
+        "config": {
+            "artifacts_dir": "artifacts",
+            "max_translation_iterations": 3,
+            "max_retries": 1,
+        }
+    }
+    cfg = _cfg["config"]
+    system_prompt = ""
+    full_cfg = _cfg
 
 ARTIFACTS = Path(cfg.get("artifacts_dir", "artifacts"))
 ARTIFACTS.mkdir(parents=True, exist_ok=True)

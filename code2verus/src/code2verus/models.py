@@ -70,6 +70,20 @@ class VerificationError(BaseModel):
     timestamp: datetime = Field(default_factory=datetime.now)
 
 
+class PromptConfiguration(BaseModel):
+    """Configuration prompts used for translation"""
+
+    system_prompt: str = ""
+    yaml_instructions: str = ""
+    default_prompt: str = ""
+    additional_prompt: str = ""  # The merged prompt sent to AI
+    postcondition_mode: bool = False
+
+    # Configuration metadata
+    config_file_used: Optional[str] = None
+    validation_rules_count: int = 0
+
+
 class AttemptResult(BaseModel):
     iteration: int
     output_content: str
@@ -107,6 +121,9 @@ class TranslationDebugContext(BaseModel):
     # Token usage tracking
     total_token_usage: TokenUsage = Field(default_factory=TokenUsage)
 
+    # Prompt configuration used for this session
+    prompt_configuration: Optional[PromptConfiguration] = None
+
     # Helper methods for easier access and manipulation
     def add_attempt(self, attempt: AttemptResult) -> None:
         """Add a new attempt result to the context"""
@@ -121,6 +138,11 @@ class TranslationDebugContext(BaseModel):
     def add_conversation_exchange(self, exchange: ConversationExchange) -> None:
         """Add a new conversation exchange to the context"""
         self.conversation_exchanges.append(exchange)
+        self.last_activity = datetime.now()
+
+    def set_prompt_configuration(self, prompt_config: PromptConfiguration) -> None:
+        """Set the prompt configuration used for this session"""
+        self.prompt_configuration = prompt_config
         self.last_activity = datetime.now()
 
     def get_latest_error(self) -> Optional[VerificationError]:

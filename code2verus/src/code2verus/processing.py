@@ -341,7 +341,7 @@ async def process_item(
 
             # Calculate delay with exponential backoff and jitter
             delay = base_delay * (2**attempt) + random.uniform(0, 1)
-            
+
             # Handle different types of exceptions with appropriate messages
             if isinstance(exc, ModelHTTPError):
                 logfire.info(
@@ -351,7 +351,7 @@ async def process_item(
                 logfire.info(
                     f"API error on item {idx + 1}, file {source_filename}, attempt {attempt + 1}/{max_retries + 1}. Retrying in {delay:.2f}s... Error: {exc}"
                 )
-            
+
             await asyncio.sleep(delay)
 
     # For failed processing, construct expected output file path in non_compiling folder

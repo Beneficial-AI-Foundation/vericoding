@@ -219,19 +219,44 @@ def generate_debug_report(debug_context: TranslationDebugContext) -> str:
     analysis = analyze_debug_context(debug_context)
     timestamps = debug_context.get_formatted_timestamps()
 
+    # Add prompt configuration section
+    prompt_section = ""
+    if debug_context.prompt_configuration:
+        pc = debug_context.prompt_configuration
+        prompt_section = f"""
+## Prompt Configuration
+- Postcondition Mode: {pc.postcondition_mode}
+- System Prompt: {len(pc.system_prompt):,} characters
+- YAML Instructions: {len(pc.yaml_instructions):,} characters  
+- Default Prompt: {len(pc.default_prompt):,} characters
+- Additional Prompt: {len(pc.additional_prompt):,} characters
+- Validation Rules: {pc.validation_rules_count} rules
+
+### Enforcement Status (Dafny→Lean)
+- System Enforcement: {"✅" if "CRITICAL ENFORCEMENT" in pc.system_prompt else "❌"} CRITICAL ENFORCEMENT
+- YAML Enforcement: {"✅" if "CRITICAL YAML ENFORCEMENT" in pc.yaml_instructions else "❌"} CRITICAL YAML ENFORCEMENT  
+- Default Enforcement: {"✅" if "MANDATORY ENSURES MAPPING" in pc.default_prompt else "❌"} MANDATORY ENSURES MAPPING
+- Validation Rules: {"✅" if pc.validation_rules_count > 0 else "❌"} {pc.validation_rules_count} rules configured
+
+### Prompt Snippets (First 100 chars)
+- System: `{pc.system_prompt[:100]}...`
+- Additional: `{pc.additional_prompt[:100]}...`
+"""
+
     report = f"""
 # Translation Debug Report
 
 ## Session Summary
 - Session ID: {debug_context.session_id}
 - Source Language: {debug_context.source_language}
+- Target Language: {debug_context.target_language}
 - YAML Mode: {debug_context.is_yaml}
 - Start Time: {timestamps["start_time"]}
 - End Time: {timestamps["end_time"]}
 - Duration: {timestamps["duration"]}
 - Iterations: {debug_context.current_iteration}/{debug_context.max_iterations}
 - Final Status: {debug_context.get_final_status()}
-
+{prompt_section}
 ## Performance Metrics
 - Average iteration time: {analysis["performance_metrics"]["avg_iteration_time"]:.2f} seconds
 - Success rate: {analysis["performance_metrics"]["success_rate"]:.2%}
