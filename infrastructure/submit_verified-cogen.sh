@@ -37,7 +37,7 @@ submit_job() {
             \"command\": [
                 \"/bin/bash\",
                 \"-c\",
-                \"apt-get update && apt-get install -y curl && curl -fsSL https://raw.githubusercontent.com/Beneficial-AI-Foundation/vericoding/batch_experiments/infrastructure/run.sh | bash -s batch_experiments --model ${model} --dataset verified_cogen --limit 1 --tag ${TAG}\"
+                \"apt-get update && apt-get install -y curl && curl -fsSL https://raw.githubusercontent.com/Beneficial-AI-Foundation/vericoding/batch_experiments/infrastructure/run.sh | bash -s batch_experiments benchmarks/lean/verified_cogen/files --model ${model} --limit 1 --tag ${TAG}\"
             ]
         }"
 }
