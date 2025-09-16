@@ -1,0 +1,59 @@
+vc-preamble: |-
+  -- <vc-preamble>
+  def IsValidInteger (s : String) : Bool :=
+    s.length > 0 ∧ ∀ i : Nat, i < s.length → '0' ≤ s.data[i]! ∧ s.data[i]! ≤ '9'
+
+  def StringToIntSpec (s : String) : Int := sorry
+
+  def SplitStringSpec (s : String) : List String := sorry
+
+  def IntToStringSpec (n : Int) : String := sorry
+
+  def ComputeDrinks (A B C : Int) : Int :=
+    if B / A < C then B / A else C
+
+  def ValidInput (input : String) : Prop :=
+    input.length > 0 ∧
+    ∃ i j : Nat, 0 ≤ i ∧ i < j ∧ j < input.length ∧ input.data[i]! = ' ' ∧ input.data[j]! = ' ' ∧
+    (let parts := SplitStringSpec input
+     parts.length ≥ 3 ∧ 
+     IsValidInteger (parts[0]!) ∧ IsValidInteger (parts[1]!) ∧ IsValidInteger (parts[2]!) ∧
+     let A := StringToIntSpec (parts[0]!)
+     let B := StringToIntSpec (parts[1]!)
+     let C := StringToIntSpec (parts[2]!)
+     1 ≤ A ∧ A ≤ 100 ∧ 1 ≤ B ∧ B ≤ 100 ∧ 1 ≤ C ∧ C ≤ 100)
+
+  @[reducible, simp]
+  def solve_precond (input : String) : Prop :=
+    ValidInput input
+  -- </vc-preamble>
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  -- <vc-definitions>
+  def solve (input : String) (h_precond : solve_precond input) : String :=
+    sorry
+  -- </vc-definitions>
+
+vc-theorems: |-
+  -- <vc-theorems>
+  @[reducible, simp]
+  def solve_postcond (input : String) (result : String) (h_precond : solve_precond input) : Prop :=
+    result.length > 0 ∧
+    result.data[result.length - 1]! = '\n' ∧
+    (let parts := SplitStringSpec input
+     let A := StringToIntSpec (parts[0]!)
+     let B := StringToIntSpec (parts[1]!)
+     let C := StringToIntSpec (parts[2]!)
+     let drinks := ComputeDrinks A B C
+     result = IntToStringSpec drinks ++ "\n")
+
+  theorem solve_spec_satisfied (input : String) (h_precond : solve_precond input) :
+      solve_postcond input (solve input h_precond) h_precond := by
+    sorry
+  -- </vc-theorems>
+
+vc-postamble: |-

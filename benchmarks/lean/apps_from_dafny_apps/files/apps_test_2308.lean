@@ -1,0 +1,84 @@
+-- <vc-preamble>
+-- <vc-preamble>
+-- Helper functions for string manipulation (assumed to exist)
+def SplitLines (s : String) : List String := sorry
+def StringToInt (s : String) : Int := sorry
+def Reverse (s : String) : String := sorry
+def IndexOf (s : String) (c : Char) : Int := sorry
+def IndexOfFrom (s : String) (c : Char) (start : Int) : Int := sorry
+
+def IsBinaryString (s : String) : Prop :=
+  s.length > 0 ∧ (∀ i : Nat, i < s.length → let pos : String.Pos := ⟨i⟩; (s.get? pos).isSome ∧ ((s.get? pos).get! = '0' ∨ (s.get? pos).get! = '1'))
+
+def ContainsOne (s : String) : Prop :=
+  ∃ i : Nat, i < s.length ∧ let pos : String.Pos := ⟨i⟩; (s.get? pos).isSome ∧ (s.get? pos).get! = '1'
+
+def IsValidNumber (s : String) : Prop :=
+  s.length > 0 ∧ (∀ i : Nat, i < s.length → let pos : String.Pos := ⟨i⟩; (s.get? pos).isSome ∧ '0' ≤ (s.get? pos).get! ∧ (s.get? pos).get! ≤ '9')
+
+def ValidInput (input : String) : Prop :=
+  let lines := SplitLines input
+  lines.length ≥ 1 ∧ 
+  IsValidNumber (lines[0]!) ∧
+  (let T := StringToInt (lines[0]!)
+   T ≥ 0 ∧ Int.natAbs lines.length ≥ Int.natAbs (2 * T + 1) ∧
+   (∀ i : Int, 1 ≤ i ∧ i < 2 * T + 1 → Int.natAbs i < lines.length ∧ IsBinaryString (lines[Int.natAbs i]!) ∧ ContainsOne (lines[Int.natAbs i]!)))
+
+def ValidOutput (output input : String) : Prop :=
+  let lines := SplitLines input
+  lines.length ≥ 1 →
+  let T := StringToInt (lines[0]!)
+  let outputLines := if output = "" then [] else SplitLines output
+  Int.natAbs outputLines.length = Int.natAbs T ∧
+  (∀ i : Int, 0 ≤ i ∧ i < T → IsValidNumber (outputLines[Int.natAbs i]!))
+
+def CorrectComputation (output input : String) : Prop :=
+  let lines := SplitLines input
+  lines.length ≥ 1 →
+  let T := StringToInt (lines[0]!)
+  let outputLines := if output = "" then [] else SplitLines output
+  Int.natAbs outputLines.length = Int.natAbs T ∧
+  (∀ i : Int, 0 ≤ i ∧ i < T ∧ 1 + 2*i < Int.ofNat lines.length ∧ 2 + 2*i < Int.ofNat lines.length → 
+      let x := lines[Int.natAbs (1 + 2*i)]!
+      let y := lines[Int.natAbs (2 + 2*i)]!
+      let revX := Reverse x
+      let revY := Reverse y
+      let start := IndexOf revY '1'
+      start ≥ 0 ∧
+      let offset := IndexOfFrom revX '1' start
+      StringToInt (outputLines[Int.natAbs i]!) = offset)
+
+@[reducible, simp]
+def solve_precond (input : String) : Prop :=
+  input.length > 0 ∧
+  let lastPos : String.Pos := ⟨input.length - 1⟩
+  (input.get? lastPos).isSome ∧ (input.get? lastPos).get! = '\n' ∧
+  ValidInput input
+-- </vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
+-- </vc-helpers>
+
+-- <vc-definitions>
+-- <vc-definitions>
+def solve (input : String) (h_precond : solve_precond input) : String :=
+  sorry
+-- </vc-definitions>
+-- </vc-definitions>
+
+-- <vc-theorems>
+-- <vc-theorems>
+@[reducible, simp]
+def solve_postcond (input : String) (result : String) (h_precond : solve_precond input) : Prop :=
+  ValidOutput result input ∧
+  (result.length > 0 → let lastPos : String.Pos := ⟨result.length - 1⟩; (result.get? lastPos).isSome ∧ (result.get? lastPos).get! ≠ '\n') ∧
+  CorrectComputation result input
+
+theorem solve_spec_satisfied (input : String) (h_precond : solve_precond input) :
+    solve_postcond input (solve input h_precond) h_precond := by
+  sorry
+-- </vc-theorems>
+-- </vc-theorems>

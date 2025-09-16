@@ -1,0 +1,71 @@
+-- <vc-preamble>
+-- <vc-preamble>
+@[reducible, simp]
+def ValidInput (input : String) : Prop :=
+  input.length > 0 ∧ input.get ⟨input.length - 1⟩ = '\n'
+
+@[reducible, simp]
+def ValidOutput (output : String) : Prop :=
+  output.length > 0 ∧ output.get ⟨output.length - 1⟩ = '\n'
+
+def FindNewline (s : String) (start : Int) : Int :=
+  sorry
+
+def SplitLines (s : String) : List String :=
+  sorry
+
+def ParseGrid (input : String) : (List (List Char) × Int × Int) :=
+  sorry
+
+@[reducible, simp]
+def IsValidGrid (grid : List (List Char)) (rows : Int) (cols : Int) : Prop :=
+  grid.length = rows ∧
+  rows ≥ 0 ∧ cols ≥ 0 ∧
+  (∀ i, 0 ≤ i ∧ i < rows → (grid.get! i.natAbs).length = cols) ∧
+  (∀ i j, 0 ≤ i ∧ i < rows ∧ 0 ≤ j ∧ j < cols → 
+    let cell := (grid.get! i.natAbs).get! j.natAbs
+    cell = '.' ∨ cell = '#')
+
+@[reducible, simp]
+def IsBoundaryCell (i j rows cols : Int) : Prop :=
+  rows > 0 ∧ cols > 0 ∧
+  (i = 0 ∨ i = rows - 1 ∨ j = 0 ∨ j = cols - 1)
+
+@[reducible, simp]
+def IsCornerCell (i j rows cols : Int) : Prop :=
+  rows > 0 ∧ cols > 0 ∧
+  ((i = 0 ∧ j = 0) ∨ (i = 0 ∧ j = cols - 1) ∨
+   (i = rows - 1 ∧ j = 0) ∨ (i = rows - 1 ∧ j = cols - 1))
+
+def CountValidPipes (grid : List (List Char)) (rows : Int) (cols : Int) : Int :=
+  0
+
+@[reducible, simp]
+def solve_precond (input : String) : Prop :=
+  ValidInput input
+-- </vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
+-- </vc-helpers>
+
+-- <vc-definitions>
+-- <vc-definitions>
+def solve (input : String) (h_precond : solve_precond input) : String :=
+  sorry
+-- </vc-definitions>
+-- </vc-definitions>
+
+-- <vc-theorems>
+-- <vc-theorems>
+@[reducible, simp]
+def solve_postcond (input : String) (result : String) (h_precond : solve_precond input) : Prop :=
+  ValidOutput result
+
+theorem solve_spec_satisfied (input : String) (h_precond : solve_precond input) :
+    solve_postcond input (solve input h_precond) h_precond := by
+  sorry
+-- </vc-theorems>
+-- </vc-theorems>

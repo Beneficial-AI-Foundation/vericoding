@@ -1,0 +1,49 @@
+-- <vc-preamble>
+-- <vc-preamble>
+def ValidInput (n : Nat) (s : String) : Prop :=
+  s.length = n
+
+def CanCopyAt (s : String) (n : Nat) (i : Nat) : Prop :=
+  s.length = n ∧ i < n / 2 ∧
+  let prefix_len := i + 1
+  let end_pos := i + 1 + prefix_len
+  end_pos ≤ n ∧ s.toSubstring.extract 0 ⟨prefix_len⟩ = s.toSubstring.extract ⟨i + 1⟩ ⟨end_pos⟩
+
+def MaxCopySavingsUpTo (s : String) (n : Nat) (limit : Nat) : Nat :=
+  sorry
+
+def MaxCopySavings (s : String) (n : Nat) : Nat :=
+  MaxCopySavingsUpTo s n (n / 2)
+
+@[reducible, simp]
+def solve_precond (n : Nat) (s : String) : Prop :=
+  ValidInput n s
+-- </vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
+-- </vc-helpers>
+
+-- <vc-definitions>
+-- <vc-definitions>
+def solve (n : Nat) (s : String) (h_precond : solve_precond n s) : Nat :=
+  sorry
+-- </vc-definitions>
+-- </vc-definitions>
+
+-- <vc-theorems>
+-- <vc-theorems>
+@[reducible, simp]
+def solve_postcond (n : Nat) (s : String) (result : Nat) (h_precond : solve_precond n s) : Prop :=
+  result ≤ n ∧
+  (n = 0 → result = 0) ∧
+  (n > 0 → result ≥ 1) ∧
+  result = n - MaxCopySavings s n
+
+theorem solve_spec_satisfied (n : Nat) (s : String) (h_precond : solve_precond n s) :
+    solve_postcond n s (solve n s h_precond) h_precond := by
+  sorry
+-- </vc-theorems>
+-- </vc-theorems>

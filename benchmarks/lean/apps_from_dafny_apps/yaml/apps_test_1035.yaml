@@ -1,0 +1,48 @@
+vc-preamble: |-
+  -- <vc-preamble>
+  def ValidInput (A B : Int) : Prop :=
+    A > 0 ∧ B > 0
+
+  -- Simplified versions that avoid termination issues
+  def gcd (a b : Int) : Int := sorry
+
+  def divideOutFactor (n factor : Int) : Int := sorry
+
+  def countDistinctPrimeFactorsHelper (n i : Int) : Int := sorry
+
+  def countDistinctPrimeFactors (n : Int) : Int :=
+    if n > 0 then
+      if n = 1 then 0
+      else countDistinctPrimeFactorsHelper n 2
+    else 0
+
+  def CorrectResult (A B result : Int) : Prop :=
+    A > 0 ∧ B > 0 ∧ result = countDistinctPrimeFactors (gcd A B) + 1
+
+  @[reducible, simp]
+  def solve_precond (A B : Int) : Prop :=
+    ValidInput A B
+  -- </vc-preamble>
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  -- <vc-definitions>
+  def solve (A B : Int) (h_precond : solve_precond A B) : Int :=
+    sorry
+  -- </vc-definitions>
+
+vc-theorems: |-
+  -- <vc-theorems>
+  @[reducible, simp]
+  def solve_postcond (A B : Int) (result : Int) (h_precond : solve_precond A B) : Prop :=
+    result > 0 ∧ CorrectResult A B result
+
+  theorem solve_spec_satisfied (A B : Int) (h_precond : solve_precond A B) :
+      solve_postcond A B (solve A B h_precond) h_precond := by
+    sorry
+  -- </vc-theorems>
+
+vc-postamble: |-

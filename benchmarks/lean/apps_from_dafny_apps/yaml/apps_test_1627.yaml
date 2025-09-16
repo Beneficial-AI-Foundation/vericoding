@@ -1,0 +1,62 @@
+vc-preamble: |-
+  -- <vc-preamble>
+  def ValidInput (n : Int) (arr : List Int) : Prop :=
+    n ≥ 1 ∧ arr.length = n ∧ ∀ i, 0 ≤ i ∧ i < arr.length → arr[i]! ≥ 1
+
+  def ValidOperations (operations : List (Int × Int)) (n : Int) : Prop :=
+    ∀ op ∈ operations, 1 ≤ op.1 ∧ op.1 ≤ n ∧ 1 ≤ op.2 ∧ op.2 ≤ n ∧ op.2 = op.1 + 1
+
+  def isSorted (arr : List Int) : Bool :=
+    if arr.length ≤ 1 then true
+    else (List.range (arr.length - 1)).all (fun i => arr[i]! ≤ arr[i + 1]!)
+
+  def swapAdjacent (arr : List Int) (i j : Int) : List Int :=
+    sorry
+
+  def applyOperations (arr : List Int) (operations : List (Int × Int)) : List Int :=
+    match operations with
+    | [] => arr
+    | op :: ops =>
+        if 1 ≤ op.1 ∧ op.1 ≤ arr.length ∧ 1 ≤ op.2 ∧ op.2 ≤ arr.length ∧ op.2 = op.1 + 1 then
+          let newArr := swapAdjacent arr (op.1 - 1) (op.2 - 1)
+          applyOperations newArr ops
+        else
+          applyOperations arr ops
+
+  def countInversions (arr : List Int) : Nat :=
+    sorry
+
+  def multisetEq (l1 l2 : List Int) : Prop :=
+    ∀ x, l1.count x = l2.count x
+
+  @[reducible, simp]
+  def solve_precond (n : Int) (arr : List Int) : Prop :=
+    ValidInput n arr
+  -- </vc-preamble>
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  -- <vc-definitions>
+  def solve (n : Int) (arr : List Int) (h_precond : solve_precond n arr) : List (Int × Int) :=
+    sorry
+  -- </vc-definitions>
+
+vc-theorems: |-
+  -- <vc-theorems>
+  @[reducible, simp]
+  def solve_postcond (n : Int) (arr : List Int) (operations : List (Int × Int)) (h_precond : solve_precond n arr) : Prop :=
+    ValidOperations operations n ∧
+    (let finalArr := applyOperations arr operations; isSorted finalArr ∨ operations.length = 20000) ∧
+    multisetEq arr (applyOperations arr operations) ∧
+    operations.length ≤ 20000 ∧
+    (isSorted arr → operations.length = 0)
+
+  theorem solve_spec_satisfied (n : Int) (arr : List Int) (h_precond : solve_precond n arr) :
+      solve_postcond n arr (solve n arr h_precond) h_precond := by
+    sorry
+  -- </vc-theorems>
+
+vc-postamble: |-

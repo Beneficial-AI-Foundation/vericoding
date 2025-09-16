@@ -1,0 +1,46 @@
+-- <vc-preamble>
+-- <vc-preamble>
+def clean_input (s : String) : String :=
+  if s.length = 0 then s
+  else if s.back = '\n' ∨ s.back = '\r' ∨ s.back = ' ' then
+    clean_input (s.dropRight 1)
+  else s
+termination_by s.length
+decreasing_by 
+  simp_wf
+  sorry
+
+def contains_digit_nine (s : String) : Prop :=
+  ∃ i : Nat, i < s.length ∧ s.data[i]! = '9'
+
+@[reducible, simp]
+def solve_precond (stdin_input : String) : Prop :=
+  stdin_input.length > 0
+-- </vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
+-- </vc-helpers>
+
+-- <vc-definitions>
+-- <vc-definitions>
+def solve (stdin_input : String) (h_precond : solve_precond stdin_input) : String :=
+  sorry
+-- </vc-definitions>
+-- </vc-definitions>
+
+-- <vc-theorems>
+-- <vc-theorems>
+@[reducible, simp]
+def solve_postcond (stdin_input : String) (result : String) (h_precond : solve_precond stdin_input) : Prop :=
+  (result = "Yes\n" ∨ result = "No\n") ∧
+  (result = "Yes\n" ↔ contains_digit_nine (clean_input stdin_input)) ∧
+  (result = "No\n" ↔ ¬contains_digit_nine (clean_input stdin_input))
+
+theorem solve_spec_satisfied (stdin_input : String) (h_precond : solve_precond stdin_input) :
+    solve_postcond stdin_input (solve stdin_input h_precond) h_precond := by
+  sorry
+-- </vc-theorems>
+-- </vc-theorems>

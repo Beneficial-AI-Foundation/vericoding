@@ -1,0 +1,64 @@
+vc-preamble: |-
+  -- <vc-preamble>
+  def validInput (n m k : Int) (H : List Int) : Prop :=
+    n ≥ 1 ∧ n = H.length ∧ m ≥ 0 ∧ k ≥ 0 ∧ 
+    (∀ i, 0 ≤ i ∧ i < H.length → H[i]! ≥ 0)
+
+  def simulateGame (pos blocks n k : Int) (H : List Int) : Bool :=
+    sorry
+
+  def canReachEnd (n m k : Int) (H : List Int) : Bool :=
+    simulateGame 0 m n k H
+
+  def validCompleteInputFormat (input : String) : Prop :=
+    input.length > 0 ∧ input.get ⟨input.length - 1⟩ = '\n'
+
+  def validOutputFormat (output input : String) : Prop :=
+    output.length ≥ 0 ∧ 
+    (output = "" ∨ output.get ⟨output.length - 1⟩ = '\n') ∧
+    (∀ i, 0 ≤ i ∧ i < output.length → 
+      output.get ⟨i⟩ = 'Y' ∨ output.get ⟨i⟩ = 'E' ∨ output.get ⟨i⟩ = 'S' ∨ 
+      output.get ⟨i⟩ = 'N' ∨ output.get ⟨i⟩ = 'O' ∨ output.get ⟨i⟩ = '\n')
+
+  def correctGameResults (output input : String) : Prop :=
+    True
+
+  def outputMatchesTestCaseCount (output input : String) : Prop :=
+    True
+
+  @[reducible, simp]
+  def solve_precond (stdin_input : String) : Prop :=
+    stdin_input.length > 0 ∧ 
+    stdin_input.get ⟨stdin_input.length - 1⟩ = '\n' ∧ 
+    validCompleteInputFormat stdin_input
+  -- </vc-preamble>
+
+vc-helpers: |-
+  -- <vc-helpers>
+  -- </vc-helpers>
+
+vc-definitions: |-
+  -- <vc-definitions>
+  def solve (stdin_input : String) (h_precond : solve_precond stdin_input) : String :=
+    sorry
+  -- </vc-definitions>
+
+vc-theorems: |-
+  -- <vc-theorems>
+  @[reducible, simp]
+  def solve_postcond (stdin_input : String) (result : String) (h_precond : solve_precond stdin_input) : Prop :=
+    result.length ≥ 0 ∧
+    (∀ i, 0 ≤ i ∧ i < result.length → 
+      result.get ⟨i⟩ = 'Y' ∨ result.get ⟨i⟩ = 'E' ∨ result.get ⟨i⟩ = 'S' ∨ 
+      result.get ⟨i⟩ = 'N' ∨ result.get ⟨i⟩ = 'O' ∨ result.get ⟨i⟩ = '\n') ∧
+    (result = "" ∨ result.get ⟨result.length - 1⟩ = '\n') ∧
+    validOutputFormat result stdin_input ∧
+    correctGameResults result stdin_input ∧
+    outputMatchesTestCaseCount result stdin_input
+
+  theorem solve_spec_satisfied (stdin_input : String) (h_precond : solve_precond stdin_input) :
+      solve_postcond stdin_input (solve stdin_input h_precond) h_precond := by
+    sorry
+  -- </vc-theorems>
+
+vc-postamble: |-

@@ -1,0 +1,68 @@
+-- <vc-preamble>
+-- <vc-preamble>
+def SplitLines (input : String) : List String := sorry
+def SplitString (s : String) (delimiter : Char) : List String := sorry
+def IsValidInt (s : String) : Bool := sorry
+def StringToInt (s : String) : Int := sorry
+def IsValidBinaryString (s : String) (expectedLength : Int) : Bool := sorry
+def MaxConsecutiveWinsUpTo (lines : List String) (n d : Int) : Int := sorry
+def IntToString (i : Int) : String := sorry
+
+def InputWellFormed (input : String) : Prop :=
+  let lines := SplitLines input
+  lines.length ≥ 1 ∧
+  (∃ h : 0 < lines.length, 
+    let firstLineParts := SplitString (lines.get ⟨0, h⟩) ' '
+    firstLineParts.length = 2 ∧
+    (∃ h0 : 0 < firstLineParts.length,
+      ∃ h1 : 1 < firstLineParts.length,
+      IsValidInt (firstLineParts.get ⟨0, h0⟩) ∧
+      IsValidInt (firstLineParts.get ⟨1, h1⟩) ∧
+      let n := StringToInt (firstLineParts.get ⟨0, h0⟩)
+      let d := StringToInt (firstLineParts.get ⟨1, h1⟩)
+      n ≥ 0 ∧ d ≥ 0 ∧
+      lines.length ≥ Int.natAbs d + 1 ∧
+      ∀ i : Int, 1 ≤ i ∧ i ≤ d → (∃ hi : Int.natAbs i < lines.length, IsValidBinaryString (lines.get ⟨Int.natAbs i, hi⟩) n)))
+
+def ComputeMaxConsecutiveWins (input : String) : Int :=
+  let lines := SplitLines input
+  if h : 0 < lines.length then
+    let firstLineParts := SplitString (lines.get ⟨0, h⟩) ' '
+    if h0 : 0 < firstLineParts.length then
+      if h1 : 1 < firstLineParts.length then
+        let n := StringToInt (firstLineParts.get ⟨0, h0⟩)
+        let d := StringToInt (firstLineParts.get ⟨1, h1⟩)
+        MaxConsecutiveWinsUpTo lines n d
+      else 0
+    else 0
+  else 0
+
+@[reducible, simp]
+def solve_precond (input : String) : Prop :=
+  input.length > 0 ∧ InputWellFormed input
+-- </vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
+-- </vc-helpers>
+
+-- <vc-definitions>
+-- <vc-definitions>
+def solve (input : String) (h_precond : solve_precond input) : String :=
+  sorry
+-- </vc-definitions>
+-- </vc-definitions>
+
+-- <vc-theorems>
+-- <vc-theorems>
+@[reducible, simp]
+def solve_postcond (input : String) (result : String) (h_precond : solve_precond input) : Prop :=
+  result = IntToString (ComputeMaxConsecutiveWins input) ++ "\n"
+
+theorem solve_spec_satisfied (input : String) (h_precond : solve_precond input) :
+    solve_postcond input (solve input h_precond) h_precond := by
+  sorry
+-- </vc-theorems>
+-- </vc-theorems>

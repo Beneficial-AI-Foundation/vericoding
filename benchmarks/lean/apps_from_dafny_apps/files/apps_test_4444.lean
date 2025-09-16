@@ -1,0 +1,52 @@
+-- <vc-preamble>
+-- <vc-preamble>
+def ValidInput (input : String) : Prop :=
+  input.length > 2 ∧
+  (∃ i, 0 < i ∧ i < input.length ∧ i < input.data.length ∧ input.data[i]! = ' ') ∧
+  (∀ i, 0 ≤ i ∧ i < input.length ∧ i < input.data.length → (input.data[i]! = ' ' ∨ input.data[i]! = '\n' ∨ ('a' ≤ input.data[i]! ∧ input.data[i]! ≤ 'z'))) ∧
+  (∃ i, 0 < i ∧ i < input.length ∧ i < input.data.length ∧ input.data[i]! = ' ' ∧
+   (∀ j, 0 ≤ j ∧ j < i ∧ j < input.data.length → input.data[j]! ≠ ' ' ∧ input.data[j]! ≠ '\n') ∧
+   (∀ j, i+1 ≤ j ∧ j < input.length ∧ j < input.data.length → input.data[j]! ≠ ' ' ∧ input.data[j]! ≠ '\n'))
+
+def ValidOutput (output : String) : Prop :=
+  output.length > 0 ∧
+  output.length-1 < output.data.length ∧
+  output.data[output.length-1]! = '\n' ∧
+  (∀ i, 0 ≤ i ∧ i < output.length-1 ∧ i < output.data.length → ('a' ≤ output.data[i]! ∧ output.data[i]! ≤ 'z'))
+
+def ExtractStrings (input : String) (h : ValidInput input) : String × String :=
+  sorry
+
+def CorrectConcatenation (input output : String) (h : ValidInput input) : Prop :=
+  let (s, t) := ExtractStrings input h
+  output = t ++ s ++ "\n"
+
+@[reducible, simp]
+def solve_precond (input : String) : Prop :=
+  ValidInput input
+-- </vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
+-- </vc-helpers>
+
+-- <vc-definitions>
+-- <vc-definitions>
+def solve (input : String) (h_precond : solve_precond input) : String :=
+  sorry
+-- </vc-definitions>
+-- </vc-definitions>
+
+-- <vc-theorems>
+-- <vc-theorems>
+@[reducible, simp]
+def solve_postcond (input : String) (result : String) (h_precond : solve_precond input) : Prop :=
+  ValidOutput result ∧ CorrectConcatenation input result h_precond
+
+theorem solve_spec_satisfied (input : String) (h_precond : solve_precond input) :
+    solve_postcond input (solve input h_precond) h_precond := by
+  sorry
+-- </vc-theorems>
+-- </vc-theorems>

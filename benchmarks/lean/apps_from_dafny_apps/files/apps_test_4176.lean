@@ -1,0 +1,57 @@
+-- <vc-preamble>
+-- <vc-preamble>
+def ValidInput (input : String) : Prop :=
+  input.length > 0 ∧
+  ∃ spaceIndex, 0 ≤ spaceIndex ∧ spaceIndex < input.length ∧ input.data[spaceIndex]! = ' ' ∧
+  ∀ i, 0 ≤ i ∧ i < input.length → (input.data[i]! = ' ' ∨ ('0' ≤ input.data[i]! ∧ input.data[i]! ≤ '9'))
+
+def FindSpace (s : String) (start : Nat) : Int := sorry
+
+def StringToInt (s : String) : Int := sorry
+
+def ParseTwoInts (s : String) (h : ValidInput s) : Int × Int := sorry
+
+def gcd (a b : Int) : Int := sorry
+
+def LCM (a b : Int) : Int :=
+  (a * b) / gcd a b
+
+def ValidOutput (output : String) : Prop :=
+  output.length > 0 ∧
+  ∀ i, 0 ≤ i ∧ i < output.length → ('0' ≤ output.data[i]! ∧ output.data[i]! ≤ '9')
+
+def IntToString (n : Int) : String := sorry
+
+@[reducible, simp]
+def solve_precond (input : String) : Prop :=
+  ValidInput input
+-- </vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
+-- </vc-helpers>
+
+-- <vc-definitions>
+-- <vc-definitions>
+def solve (input : String) (h_precond : solve_precond input) : String :=
+  sorry
+-- </vc-definitions>
+-- </vc-definitions>
+
+-- <vc-theorems>
+-- <vc-theorems>
+@[reducible, simp]
+def solve_postcond (input : String) (result : String) (h_precond : solve_precond input) : Prop :=
+  let nums := ParseTwoInts input h_precond
+  let a := nums.1
+  let b := nums.2
+  result = IntToString (LCM a b) ∧
+  ValidOutput result
+
+theorem solve_spec_satisfied (input : String) (h_precond : solve_precond input) :
+    solve_postcond input (solve input h_precond) h_precond := by
+  sorry
+-- </vc-theorems>
+-- </vc-theorems>

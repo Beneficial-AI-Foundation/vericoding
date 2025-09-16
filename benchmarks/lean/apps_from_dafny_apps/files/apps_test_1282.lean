@@ -1,0 +1,65 @@
+-- <vc-preamble>
+-- <vc-preamble>
+def ValidInput (input : String) : Prop :=
+  input.length ≥ 1 ∧ ∀ i, 0 ≤ i ∧ i < input.length → input.data[i]! = 'M' ∨ input.data[i]! = 'F'
+
+def reverse (s : String) : String := sorry
+
+def find_char (s : String) (c : Char) (start : Nat) : Int := sorry
+
+def rfind_char (s : String) (c : Char) : Int := sorry
+
+def calculate_balance (s : String) : Nat := sorry
+
+def count_char (s : String) (c : Char) : Nat := sorry
+
+def nat_to_string (n : Nat) : String := sorry
+
+def ComputeSwapTime (input : String) : Nat :=
+  let rev_input := reverse input
+  let first_f := find_char rev_input 'F' 0
+  if first_f = -1 then 0
+  else
+    let first_m_after_f := find_char rev_input 'M' (Int.natAbs (first_f + 1))
+    if first_m_after_f = -1 then 0
+    else
+      let last_m := rfind_char rev_input 'M'
+      if last_m < first_m_after_f then 0
+      else
+        let substring := String.drop (String.take rev_input (Int.natAbs (last_m + 1))) (Int.natAbs first_m_after_f)
+        let balance := calculate_balance substring
+        let f_count := count_char substring 'F'
+        balance + f_count + Int.natAbs first_m_after_f - Int.natAbs first_f - 1
+
+@[reducible, simp]
+def solve_precond (input : String) : Prop :=
+  ValidInput input
+-- </vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
+-- </vc-helpers>
+
+-- <vc-definitions>
+-- <vc-definitions>
+def solve (input : String) (h_precond : solve_precond input) : String :=
+  sorry
+-- </vc-definitions>
+-- </vc-definitions>
+
+-- <vc-theorems>
+-- <vc-theorems>
+@[reducible, simp]
+def solve_postcond (input : String) (result : String) (h_precond : solve_precond input) : Prop :=
+  result.length ≥ 1 ∧
+  result.data[result.length - 1]! = '\n' ∧
+  (∃ val, val ≥ 0 ∧ result = String.append (nat_to_string val) "\n") ∧
+  result = String.append (nat_to_string (ComputeSwapTime input)) "\n"
+
+theorem solve_spec_satisfied (input : String) (h_precond : solve_precond input) :
+    solve_postcond input (solve input h_precond) h_precond := by
+  sorry
+-- </vc-theorems>
+-- </vc-theorems>

@@ -1,0 +1,59 @@
+-- <vc-preamble>
+-- <vc-preamble>
+def power2 : Nat → Nat
+  | 0 => 1
+  | n + 1 => 2 * power2 n
+
+def ValidInput (n : Int) (lights : List Int) : Prop :=
+  1 ≤ n ∧ n ≤ 10 ∧
+  lights.length = power2 (Int.natAbs (n + 1)) - 2 ∧
+  ∀ i, 0 ≤ i ∧ i < lights.length → 1 ≤ lights[i]! ∧ lights[i]! ≤ 100
+
+def dfs_result (i n : Nat) (a : List Int) : Int × Int :=
+  if h : i ≥ power2 n then (0, 0)
+  else
+    have h1 : power2 (n + 1) - (i * 2) < power2 (n + 1) - i := by sorry
+    have h2 : power2 (n + 1) - (i * 2 + 1) < power2 (n + 1) - i := by sorry
+    let left := dfs_result (i * 2) n a
+    let right := dfs_result (i * 2 + 1) n a
+    let x1 := left.1; let m1 := left.2
+    let x2 := right.1; let m2 := right.2
+    let idx1 := i * 2
+    let idx2 := i * 2 + 1
+    if idx1 < a.length ∧ idx2 < a.length then
+      if m1 + a[idx1]! < m2 + a[idx2]! then
+        (x1 + x2 + m2 + a[idx2]! - m1 - a[idx1]!, m2 + a[idx2]!)
+      else
+        (x1 + x2 + m1 + a[idx1]! - m2 - a[idx2]!, m1 + a[idx1]!)
+    else (0, 0)
+termination_by power2 (n + 1) - i
+
+@[reducible, simp]
+def solve_precond (n : Int) (lights : List Int) : Prop :=
+  ValidInput n lights
+-- </vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
+-- </vc-helpers>
+
+-- <vc-definitions>
+-- <vc-definitions>
+def solve (n : Int) (lights : List Int) (h_precond : solve_precond n lights) : Int :=
+  sorry
+-- </vc-definitions>
+-- </vc-definitions>
+
+-- <vc-theorems>
+-- <vc-theorems>
+@[reducible, simp]
+def solve_postcond (n : Int) (lights : List Int) (result : Int) (h_precond : solve_precond n lights) : Prop :=
+  result ≥ 0 ∧ result = (dfs_result 1 (Int.natAbs n) ([0, 0] ++ lights)).1
+
+theorem solve_spec_satisfied (n : Int) (lights : List Int) (h_precond : solve_precond n lights) :
+    solve_postcond n lights (solve n lights h_precond) h_precond := by
+  sorry
+-- </vc-theorems>
+-- </vc-theorems>

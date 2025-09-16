@@ -1,0 +1,41 @@
+-- <vc-preamble>
+-- <vc-preamble>
+def ValidInput (n : Int) (a : Int) (x : List Int) : Prop :=
+  n > 0 ∧ 1 ≤ a ∧ a ≤ n ∧ x.length = n.natAbs ∧ 
+  ∀ i, 0 ≤ i ∧ i < n → (x[i.natAbs]! = 0 ∨ x[i.natAbs]! = 1)
+
+def SumCriminalsCaught (n : Int) (a_idx : Int) (x : List Int) (distance : Int) : Int :=
+  sorry
+
+def TotalCriminalsCaught (n : Int) (a : Int) (x : List Int) : Int :=
+  x[(a-1).natAbs]! + SumCriminalsCaught n (a-1) x 1
+
+@[reducible, simp]
+def solve_precond (n : Int) (a : Int) (x : List Int) : Prop :=
+  ValidInput n a x
+-- </vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
+-- </vc-helpers>
+
+-- <vc-definitions>
+-- <vc-definitions>
+def solve (n : Int) (a : Int) (x : List Int) (h_precond : solve_precond n a x) : Int :=
+  sorry
+-- </vc-definitions>
+-- </vc-definitions>
+
+-- <vc-theorems>
+-- <vc-theorems>
+@[reducible, simp]
+def solve_postcond (n : Int) (a : Int) (x : List Int) (result : Int) (h_precond : solve_precond n a x) : Prop :=
+  result ≥ 0 ∧ result = TotalCriminalsCaught n a x
+
+theorem solve_spec_satisfied (n : Int) (a : Int) (x : List Int) (h_precond : solve_precond n a x) :
+    solve_postcond n a x (solve n a x h_precond) h_precond := by
+  sorry
+-- </vc-theorems>
+-- </vc-theorems>

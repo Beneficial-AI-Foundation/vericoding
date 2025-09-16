@@ -1,0 +1,68 @@
+-- <vc-preamble>
+-- <vc-preamble>
+-- Define split function (placeholder)
+def split (s : String) (c : Char) : List String :=
+  sorry
+
+def ValidInput (input : String) : Prop :=
+  let lines := split input '\n'
+  lines.length ≥ 2 ∧
+  let O := lines[0]!
+  let E := lines[1]!
+  let a := O.length
+  let b := E.length
+  (a = b ∨ a = b + 1) ∧
+  (a > 0 ∨ b = 0)
+
+def GetO (input : String) (h : ValidInput input) : String :=
+  (split input '\n')[0]!
+
+def GetE (input : String) (h : ValidInput input) : String :=
+  (split input '\n')[1]!
+
+def InterleaveEqual (O E : String) (h : O.length = E.length) : String :=
+  sorry
+
+def InterleaveUnequal (O E : String) (h : O.length = E.length + 1) : String :=
+  sorry
+
+def CorrectResult (input : String) (h : ValidInput input) : String :=
+  let O := GetO input h
+  let E := GetE input h
+  let a := O.length
+  let b := E.length
+  if ha : a = b then
+    InterleaveEqual O E ha
+  else
+    have hab : a = b + 1 := sorry
+    InterleaveUnequal O E hab
+
+@[reducible, simp]
+def solve_precond (input : String) : Prop :=
+  ValidInput input
+-- </vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
+-- </vc-helpers>
+
+-- <vc-definitions>
+-- <vc-definitions>
+def solve (input : String) (h_precond : solve_precond input) : String :=
+  sorry
+-- </vc-definitions>
+-- </vc-definitions>
+
+-- <vc-theorems>
+-- <vc-theorems>
+@[reducible, simp]
+def solve_postcond (input : String) (result : String) (h_precond : solve_precond input) : Prop :=
+  result = CorrectResult input h_precond
+
+theorem solve_spec_satisfied (input : String) (h_precond : solve_precond input) :
+    solve_postcond input (solve input h_precond) h_precond := by
+  sorry
+-- </vc-theorems>
+-- </vc-theorems>

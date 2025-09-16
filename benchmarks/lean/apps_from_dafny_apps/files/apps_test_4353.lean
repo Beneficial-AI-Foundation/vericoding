@@ -1,0 +1,47 @@
+-- <vc-preamble>
+-- <vc-preamble>
+
+def ValidInput (s : String) : Prop :=
+  s.length = 19 ∧ 
+  s.length ≥ 2 ∧ s.data[5]! = ',' ∧ s.data[13]! = ',' ∧
+  ∀ i, 0 ≤ i ∧ i < s.length → (s.data[i]! = ',' ∨ ('a' ≤ s.data[i]! ∧ s.data[i]! ≤ 'z'))
+
+def CommasToSpaces (s : String) (h : ValidInput s) : String :=
+  sorry
+
+def CorrectOutput (s : String) (result : String) (h : ValidInput s) : Prop :=
+  result.length = s.length + 1 ∧
+  result.data[result.length - 1]! = '\n' ∧
+  ∀ i, 0 ≤ i ∧ i < s.length → 
+    (s.data[i]! = ',' → result.data[i]! = ' ') ∧
+    (s.data[i]! ≠ ',' → result.data[i]! = s.data[i]!)
+
+@[reducible, simp]
+def solve_precond (s : String) : Prop :=
+  ValidInput s
+-- </vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
+-- </vc-helpers>
+
+-- <vc-definitions>
+-- <vc-definitions>
+def solve (s : String) (h_precond : solve_precond s) : String :=
+  sorry
+-- </vc-definitions>
+-- </vc-definitions>
+
+-- <vc-theorems>
+-- <vc-theorems>
+@[reducible, simp]
+def solve_postcond (s : String) (result : String) (h_precond : solve_precond s) : Prop :=
+  CorrectOutput s result h_precond
+
+theorem solve_spec_satisfied (s : String) (h_precond : solve_precond s) :
+    solve_postcond s (solve s h_precond) h_precond := by
+  sorry
+-- </vc-theorems>
+-- </vc-theorems>

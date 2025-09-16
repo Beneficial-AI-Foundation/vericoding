@@ -1,0 +1,71 @@
+-- <vc-preamble>
+-- <vc-preamble>
+def Split (s : String) (c : Char) : List String := sorry
+
+def StringToInt (s : String) : Int := sorry
+
+def IntToString (n : Int) : String := sorry
+
+def CountLeftZeros (lines : List String) (start : Nat) (count : Nat) : Nat := sorry
+
+def CountRightZeros (lines : List String) (start : Nat) (count : Nat) : Nat := sorry
+
+def IsValidNumber (s : String) : Prop :=
+  s.length > 0 ∧ ∀ i, 0 ≤ i ∧ i < s.length → '0' ≤ s.data[i]! ∧ s.data[i]! ≤ '9'
+
+def IsValidDoorState (s : String) : Prop :=
+  s = "0" ∨ s = "1"
+
+def ValidInput (input : String) : Prop :=
+  let lines := Split input '\n'
+  lines.length ≥ 1 ∧
+  IsValidNumber lines[0]! ∧
+  let n := Int.natAbs (StringToInt lines[0]!)
+  n ≥ 0 ∧ n + 1 ≤ lines.length ∧
+  ∀ i, 1 ≤ i ∧ i ≤ n ∧ i < lines.length →
+    let parts := Split lines[i]! ' '
+    parts.length ≥ 2 ∧ IsValidDoorState parts[0]! ∧ IsValidDoorState parts[1]!
+
+def ValidOutput (output : String) : Prop :=
+  IsValidNumber output
+
+def CalculateMinOperations (input : String) : String :=
+  let lines := Split input '\n'
+  let n := Int.natAbs (StringToInt lines[0]!)
+  if n = 0 then "0"
+  else
+    let leftZeros := CountLeftZeros lines 1 n
+    let rightZeros := CountRightZeros lines 1 n
+    let leftOps := if leftZeros < n - leftZeros then leftZeros else n - leftZeros
+    let rightOps := if rightZeros < n - rightZeros then rightZeros else n - rightZeros
+    IntToString (Int.ofNat (leftOps + rightOps))
+
+@[reducible, simp]
+def solve_precond (input : String) : Prop :=
+  input.length > 0 ∧ ValidInput input
+-- </vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
+-- <vc-helpers>
+-- </vc-helpers>
+-- </vc-helpers>
+
+-- <vc-definitions>
+-- <vc-definitions>
+def solve (input : String) (h_precond : solve_precond input) : String :=
+  sorry
+-- </vc-definitions>
+-- </vc-definitions>
+
+-- <vc-theorems>
+-- <vc-theorems>
+@[reducible, simp]
+def solve_postcond (input : String) (result : String) (h_precond : solve_precond input) : Prop :=
+  result.length > 0 ∧ ValidOutput result ∧ result = CalculateMinOperations input
+
+theorem solve_spec_satisfied (input : String) (h_precond : solve_precond input) :
+    solve_postcond input (solve input h_precond) h_precond := by
+  sorry
+-- </vc-theorems>
+-- </vc-theorems>
