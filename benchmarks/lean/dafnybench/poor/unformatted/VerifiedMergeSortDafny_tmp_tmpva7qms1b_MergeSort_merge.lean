@@ -18,7 +18,7 @@ a.foldl (fun acc y => if y = x then acc + 1 else acc) 0
 
 
 /-- Predicate indicating if two sequences are merged into an array slice -/
-def merged (a1 : Array Int) (a2 : Array Int) (b : Array Int) (start : Int) (end_ : Int) : Bool :=
+def merged (a1 : Array Int) (a2 : Array Int) (b : Array Int) (start : Int) (end_ : Int) : Prop :=
 end_ - start == a1.size + a2.size ∧
 0 ≤ start ∧ start ≤ end_ ∧ end_ ≤ b.size ∧
 -- Multiset equality: same count for each element in the slice
