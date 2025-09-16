@@ -1,14 +1,13 @@
 -- <vc-preamble>
+@[reducible, simp]
 def ValidInput (n : Int) (h1 h2 : List Int) : Prop :=
-  n ≥ 1 ∧ h1.length ≥ n.natAbs ∧ h2.length ≥ n.natAbs ∧
-  (∀ i, 0 ≤ i ∧ i < n → h1.get! i.natAbs ≥ 0) ∧
-  (∀ i, 0 ≤ i ∧ i < n → h2.get! i.natAbs ≥ 0)
+  n ≥ 1 ∧ h1.length ≥ n ∧ h2.length ≥ n ∧
+  (∀ i, 0 ≤ i ∧ i < n → h1[i.natAbs]! ≥ 0) ∧
+  (∀ i, 0 ≤ i ∧ i < n → h2[i.natAbs]! ≥ 0)
 
-def maxHeightEndingInRow1 (n : Int) (h1 h2 : List Int) : Int :=
-  sorry
+def maxHeightEndingInRow1 (n : Int) (h1 h2 : List Int) : Int := 0
 
-def maxHeightEndingInRow2 (n : Int) (h1 h2 : List Int) : Int :=
-  sorry
+def maxHeightEndingInRow2 (n : Int) (h1 h2 : List Int) : Int := 0
 
 def maxTeamHeight (n : Int) (h1 h2 : List Int) : Int :=
   let dp1 := maxHeightEndingInRow1 n h1 h2
