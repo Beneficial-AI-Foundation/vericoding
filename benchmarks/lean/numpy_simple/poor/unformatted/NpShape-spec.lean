@@ -1,15 +1,18 @@
-import Benchmarks.MatrixDef
+def Matrix (m n : Nat) (α : Type) := Fin m → Fin n → α
 
-namespace NpShape
+instance {m n : Nat} {α : Type} [Inhabited α] : GetElem (Matrix m n α) (Nat × Nat) α (fun _ ij => ij.1 < m ∧ ij.2 < n) where
+  getElem mat ij h := mat ⟨ij.1, h.1⟩ ⟨ij.2, h.2⟩
+
+def Matrix.size {m n : Nat} {α : Type} (_ : Matrix m n α) : Nat := m * n
 
 inductive arrays where
-  | arrayOne : Vector Float n → arrays
-  | arrayTwo : Matrix m n Float → arrays
+  | arrayOne : Array Float → arrays
+  | arrayTwo : Array (Array Float) → arrays
   | arrayThree : Array (Array (Array Float)) → arrays
 
-def shape'' (a : arrays) : Vector Int (match a with | .arrayOne _ => 1 | .arrayTwo _ _ => 2 | .arrayThree _ => 3) := sorry
+def shape'' (a : arrays) : Vector Nat (match a with | .arrayOne _ => 1 | .arrayTwo _ => 2 | .arrayThree _ => 3) := sorry
 
-def shape {m n : Nat} (a : Matrix m n Float) : Vector Int 2 := sorry
+def shape {m n : Nat} (a : Matrix m n Float) : Vector Nat 2 := sorry
 
 theorem shape''_spec (a : arrays) :
   let ret := shape'' a
@@ -22,5 +25,3 @@ theorem shape_spec {m n : Nat} (a : Matrix m n Float) :
   let ret := shape a
   (ret.toList.length = 2) ∧
   (ret[0]! = m ∧ ret[1]! = n) := sorry
-
-end NpShape
