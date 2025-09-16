@@ -47,6 +47,8 @@ curl -LsSf https://astral.sh/uv/install.sh | sh
 export PATH="$HOME/.cargo/bin:$PATH"
 curl -d "✅ uv installed" ntfy.sh/theoTesting || echo "Notification failed"
 
+source $HOME/.local/bin/env
+
 # Test uv installation
 uv --help
 curl -d "✅ uv works" ntfy.sh/theoTesting || echo "Notification failed"
