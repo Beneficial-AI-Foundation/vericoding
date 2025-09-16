@@ -3,24 +3,8 @@ name: Python Tests
 on:
   push:
     branches: [ main, develop ]
-    paths:
-      - "vericoder.py"
-      - "vericoding/**/*.py"
-      - "config/**/*.yaml"
-      - "tests/**/*.py"
-      - "pyproject.toml"
-      - "pytest.ini"
-      - ".github/workflows/python-tests.yml"
   pull_request:
     branches: [ main, develop ]
-    paths:
-      - "vericoder.py"
-      - "vericoding/**/*.py"
-      - "config/**/*.yaml"
-      - "tests/**/*.py"
-      - "pyproject.toml"
-      - "pytest.ini"
-      - ".github/workflows/python-tests.yml"
   workflow_dispatch:
 
 #permissions:
