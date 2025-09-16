@@ -51,6 +51,6 @@ done
 
 echo "All experiments submitted with tag: ${TAG}"
 echo "To monitor jobs:"
-for status in SUBMITTED PENDING RUNNABLE STARTING RUNNING; do
-    echo "  $status: aws batch list-jobs --job-queue vericoding-job-queue --job-status $status"
-done
+echo "for status in SUBMITTED PENDING RUNNABLE STARTING RUNNING; do"
+echo    'aws batch list-jobs --job-queue vericoding-job-queue --job-status $status'
+echo done
