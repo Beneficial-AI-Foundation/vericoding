@@ -57,5 +57,5 @@ theorem checkRegulation_spec (tank tank' : Tank) :
 ((tank'.pipe.in_flowv3 > 5 ∨ tank'.pipe.in_flowv1 > 5) ∧ tank'.pipe.v2 = Valve.OFF ∧ tank'.pipe.v3 = tank.pipe.v3 ∧ tank'.pipe.v1 = tank.pipe.v1)
 := sorry
 
-/-- Implementation of checkRegulation (left as sorry) -/
+/-- Implementation of checkRegulation -/
 def checkRegulation (tank : Tank) : Tank := sorry

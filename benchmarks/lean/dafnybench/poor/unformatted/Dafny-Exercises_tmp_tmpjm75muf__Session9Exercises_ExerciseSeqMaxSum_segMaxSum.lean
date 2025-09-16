@@ -36,5 +36,5 @@ theorem segMaxSum_spec (v : Array Int) (i : Int) (s k : Int) :
 v.size > 0 ∧ 0 ≤ i ∧ i < v.size →
 0 ≤ k ∧ k ≤ i ∧ s = Sum_ v k (i+1) ∧ SumMaxToRight v i s := sorry
 
-/-- Implementation of segMaxSum (using sorry) -/
+/-- Implementation of segMaxSum -/
 def segMaxSum (v : Array Int) (i : Int) : (Int × Int) := sorry
