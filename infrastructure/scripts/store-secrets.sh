@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Script to store API keys in AWS Systems Manager Parameter Store
 set -euo pipefail
