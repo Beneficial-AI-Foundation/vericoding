@@ -4,7 +4,7 @@ set -e
 
 # Generate a timestamp tag for this batch of experiments
 TIMESTAMP=$(date +%Y%m%d-%H%M%S)
-TAG="batch-${TIMESTAMP}"
+TAG="verified-cogen-${TIMESTAMP}"
 
 echo "Submitting experiments with tag: ${TAG}"
 
@@ -13,7 +13,7 @@ MODELS=(
     "claude-opus"
     "claude-sonnet"
     "deepseek"
-    "gemini-pro"
+    "gemini"
     "gemini-flash"
     "glm"
     "gpt"
@@ -50,4 +50,7 @@ for model in "${MODELS[@]}"; do
 done
 
 echo "All experiments submitted with tag: ${TAG}"
-echo "To monitor jobs: aws batch list-jobs --job-queue vericoding-job-queue --job-status SUBMITTED,PENDING,RUNNABLE,STARTING,RUNNING"
+echo "To monitor jobs:"
+for status in SUBMITTED PENDING RUNNABLE STARTING RUNNING; do
+    echo "  $status: aws batch list-jobs --job-queue vericoding-job-queue --job-status $status"
+done
