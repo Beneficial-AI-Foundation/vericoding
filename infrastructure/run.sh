@@ -58,3 +58,7 @@ lake exe cache get
 echo "Setup complete on $(hostname) for branch $BRANCH"
 
 echo "Vericoding environment ready!"
+
+uv run src/vericoder.py lean "${@:2}"
+
+echo "Done with experiment"
