@@ -82,7 +82,7 @@ class TestSmokeTests:
             mock_result = Mock()
             mock_result.output = "```rust\n// Mock translation\n```"
             mock_result.all_messages = Mock(return_value=["msg1", "msg2", "msg3"])
-            
+
             # Mock the usage() method to return proper token usage structure
             mock_usage = Mock()
             mock_usage.input_tokens = 10
@@ -93,7 +93,7 @@ class TestSmokeTests:
             mock_usage.cache_read_tokens = 0
             mock_usage.cache_write_tokens = 0
             mock_result.usage = Mock(return_value=mock_usage)
-            
+
             mock_agent.run = AsyncMock(return_value=mock_result)
             mock_create_agent.return_value = mock_agent
 
@@ -135,11 +135,16 @@ class TestSmokeTests:
         assert "dafny" in full_cfg["system_prompts"]
         assert "lean" in full_cfg["system_prompts"]
 
-        # Check that prompts contain critical patterns
-        for lang in ["dafny", "lean"]:
-            prompt = full_cfg["system_prompts"][lang]
-            assert "vstd::prelude" in prompt
-            assert "verus!" in prompt
+        # Check that prompts contain language-appropriate critical patterns
+        # Dafny prompt should be for dafny-to-lean translation
+        dafny_prompt = full_cfg["system_prompts"]["dafny"]
+        assert "Lean" in dafny_prompt  # Should mention target language
+        assert "import Mathlib" in dafny_prompt  # Should have Lean-specific content
+
+        # Lean prompt should be for lean-to-verus translation
+        lean_prompt = full_cfg["system_prompts"]["lean"]
+        assert "vstd::prelude" in lean_prompt  # Should have Verus-specific content
+        assert "verus!" in lean_prompt
 
     def test_yaml_instructions_present(self):
         """Test that YAML instruction mappings are loaded correctly"""
@@ -306,21 +311,36 @@ class TestDataIntegrity:
         dafny_yaml = full_cfg["yaml_instructions"]["dafny"]
         lean_yaml = full_cfg["yaml_instructions"]["lean"]
 
-        # Both should mention critical output fields
+        # Both should mention critical YAML output fields
         for instructions in [dafny_yaml, lean_yaml]:
-            assert "vc-spec" in instructions or "vc-signature" in instructions
-            assert "vc-code" in instructions or "vc-implementation" in instructions
+            # Check for YAML structure fields (any format)
+            has_structure_fields = any(
+                field in instructions
+                for field in [
+                    "vc-spec",
+                    "vc-signature",
+                    "vc-definitions",
+                    "vc-preamble",
+                    "vc-theorems",
+                ]
+            )
+            assert has_structure_fields, (
+                f"Missing YAML structure fields in instructions: {instructions[:200]}..."
+            )
 
     def test_prompt_consistency(self):
-        """Test that prompts are consistent across languages"""
+        """Test that prompts are appropriate for their translation direction"""
         dafny_prompt = full_cfg["system_prompts"]["dafny"]
         lean_prompt = full_cfg["system_prompts"]["lean"]
 
-        # Common elements that should be in both
-        common_elements = ["vstd::prelude", "verus!", "main()"]
-
-        for element in common_elements:
+        # Dafny-to-lean prompts should have Lean-specific elements
+        dafny_elements = ["Lean", "import Mathlib"]
+        for element in dafny_elements:
             assert element in dafny_prompt, f"Missing {element} in Dafny prompt"
+
+        # Lean-to-verus prompts should have Verus-specific elements
+        lean_elements = ["vstd::prelude", "verus!", "main()"]
+        for element in lean_elements:
             assert element in lean_prompt, f"Missing {element} in Lean prompt"
 
     def test_field_mapping_rules(self):

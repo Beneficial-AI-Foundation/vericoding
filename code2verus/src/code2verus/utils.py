@@ -94,7 +94,7 @@ def extract_rust_code(text: str) -> str:
 
 def yaml_to_lean(lean_yaml: str) -> str:
     """Convert YAML format to Lean code by extracting and concatenating sections.
-    
+
     This is specifically for Lean and follows the VeriCoding verina format which
     does NOT include vc-description as a comment.
     """
@@ -116,7 +116,7 @@ def yaml_to_lean(lean_yaml: str) -> str:
 
         # Add sections in the expected order for Lean YAML structure with proper formatting
         # For Lean, we need to wrap sections in comment blocks to match the expected format
-        
+
         # Handle preamble
         if "vc-preamble" in parsed_yaml and parsed_yaml["vc-preamble"]:
             content = str(parsed_yaml["vc-preamble"]).strip()
@@ -125,7 +125,7 @@ def yaml_to_lean(lean_yaml: str) -> str:
                 parts.append(content)
                 parts.append("-- </vc-preamble>")
                 parts.append("")
-        
+
         # Handle helpers
         if "vc-helpers" in parsed_yaml and parsed_yaml["vc-helpers"]:
             content = str(parsed_yaml["vc-helpers"]).strip()
@@ -138,34 +138,57 @@ def yaml_to_lean(lean_yaml: str) -> str:
             parts.append("-- <vc-helpers>")
             parts.append("-- </vc-helpers>")
             parts.append("")
-        
-        # Handle definitions (signature + implementation)
-        parts.append("-- <vc-definitions>")
-        if "vc-signature" in parsed_yaml and parsed_yaml["vc-signature"]:
-            signature = str(parsed_yaml["vc-signature"]).strip()
-            if signature:
-                parts.append(signature)
-        
-        if "vc-implementation" in parsed_yaml and parsed_yaml["vc-implementation"]:
-            implementation = str(parsed_yaml["vc-implementation"]).strip()
-            if implementation:
-                parts.append(implementation)
-        parts.append("-- </vc-definitions>")
-        parts.append("")
-        
-        # Handle theorems (condition + proof)
-        parts.append("-- <vc-theorems>")
-        if "vc-condition" in parsed_yaml and parsed_yaml["vc-condition"]:
-            condition = str(parsed_yaml["vc-condition"]).strip()
-            if condition:
-                parts.append(condition)
-        
-        if "vc-proof" in parsed_yaml and parsed_yaml["vc-proof"]:
-            proof = str(parsed_yaml["vc-proof"]).strip()
-            if proof:
-                parts.append(proof)
-        parts.append("-- </vc-theorems>")
-        
+
+        # Handle spec section which contains both definitions and theorems (legacy format)
+        if "vc-spec" in parsed_yaml and parsed_yaml["vc-spec"]:
+            spec_content = str(parsed_yaml["vc-spec"]).strip()
+            if spec_content:
+                # The vc-spec content already contains the -- <vc-definitions> and -- <vc-theorems> sections
+                parts.append(spec_content)
+                parts.append("")
+        # Handle separate vc-definitions and vc-theorems sections (standard format)
+        elif "vc-definitions" in parsed_yaml or "vc-theorems" in parsed_yaml:
+            # Handle definitions section
+            if "vc-definitions" in parsed_yaml and parsed_yaml["vc-definitions"]:
+                definitions_content = str(parsed_yaml["vc-definitions"]).strip()
+                if definitions_content:
+                    parts.append(definitions_content)
+                    parts.append("")
+
+            # Handle theorems section
+            if "vc-theorems" in parsed_yaml and parsed_yaml["vc-theorems"]:
+                theorems_content = str(parsed_yaml["vc-theorems"]).strip()
+                if theorems_content:
+                    parts.append(theorems_content)
+                    parts.append("")
+        else:
+            # Fallback: Handle definitions (signature + implementation) and theorems separately
+            parts.append("-- <vc-definitions>")
+            if "vc-signature" in parsed_yaml and parsed_yaml["vc-signature"]:
+                signature = str(parsed_yaml["vc-signature"]).strip()
+                if signature:
+                    parts.append(signature)
+
+            if "vc-implementation" in parsed_yaml and parsed_yaml["vc-implementation"]:
+                implementation = str(parsed_yaml["vc-implementation"]).strip()
+                if implementation:
+                    parts.append(implementation)
+            parts.append("-- </vc-definitions>")
+            parts.append("")
+
+            # Handle theorems (condition + proof)
+            parts.append("-- <vc-theorems>")
+            if "vc-condition" in parsed_yaml and parsed_yaml["vc-condition"]:
+                condition = str(parsed_yaml["vc-condition"]).strip()
+                if condition:
+                    parts.append(condition)
+
+            if "vc-proof" in parsed_yaml and parsed_yaml["vc-proof"]:
+                proof = str(parsed_yaml["vc-proof"]).strip()
+                if proof:
+                    parts.append(proof)
+            parts.append("-- </vc-theorems>")
+
         # Handle postamble
         if "vc-postamble" in parsed_yaml and parsed_yaml["vc-postamble"]:
             content = str(parsed_yaml["vc-postamble"]).strip()
@@ -317,7 +340,7 @@ def yaml_to_verus(verus_yaml: str, format_description_as_comment: bool = False) 
 
 def yaml_to_dafny(dafny_yaml: str) -> str:
     """Convert YAML format to Dafny code by extracting and concatenating sections.
-    
+
     This follows the Dafny format which uses comment blocks to mark sections.
     """
     try:
@@ -344,7 +367,7 @@ def yaml_to_dafny(dafny_yaml: str) -> str:
                 parts.append(content)
                 parts.append("// </vc-preamble>")
                 parts.append("")
-        
+
         # Handle helpers
         if "vc-helpers" in parsed_yaml and parsed_yaml["vc-helpers"]:
             content = str(parsed_yaml["vc-helpers"]).strip()
@@ -357,7 +380,7 @@ def yaml_to_dafny(dafny_yaml: str) -> str:
             parts.append("// <vc-helpers>")
             parts.append("// </vc-helpers>")
             parts.append("")
-        
+
         # Handle spec
         if "vc-spec" in parsed_yaml and parsed_yaml["vc-spec"]:
             content = str(parsed_yaml["vc-spec"]).strip()
@@ -366,7 +389,7 @@ def yaml_to_dafny(dafny_yaml: str) -> str:
                 parts.append(content)
                 parts.append("// </vc-spec>")
                 parts.append("")
-        
+
         # Handle code
         if "vc-code" in parsed_yaml and parsed_yaml["vc-code"]:
             content = str(parsed_yaml["vc-code"]).strip()
@@ -374,7 +397,7 @@ def yaml_to_dafny(dafny_yaml: str) -> str:
                 parts.append("// <vc-code>")
                 parts.append(content)
                 parts.append("// </vc-code>")
-        
+
         # Handle postamble
         if "vc-postamble" in parsed_yaml and parsed_yaml["vc-postamble"]:
             content = str(parsed_yaml["vc-postamble"]).strip()
