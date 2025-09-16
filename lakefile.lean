@@ -62,9 +62,9 @@ lean_lib Benchmarks where
 
 lean_lib BenchmarksCheckedInCI where
   globs := #[
-    .submodules `apps.files,
+    .submodules `fvapps.files,
     .submodules `dafnybench.poor.unformatted,
-    .submodules `humaneval.files,
+    .submodules `clever.files,
     .submodules `numpy_simple.poor.unformatted,
     .submodules `numpy_triple.files,
     .submodules `verina.files,
