@@ -1,0 +1,81 @@
+=== VERUS PROCESSING SUMMARY (AGGREGATED) ===
+Total files: 62
+Successful: 7 (11.3%)
+Failed: 55
+
+Per-LLM success rates:
+  - claude-opus: 2/62 (3.2%)
+  - claude-sonnet: 0/62 (0.0%)
+  - deepseek: 0/62 (0.0%)
+  - gemini: 1/62 (1.6%)
+  - gemini-flash: 0/62 (0.0%)
+  - glm: 0/62 (0.0%)
+  - gpt: 4/62 (6.5%)
+  - gpt-mini: 5/62 (8.1%)
+  - grok-code: 0/62 (0.0%)
+
+Successful files:
+✓ bignum_CompareUnequal.rs — by: claude-opus
+✓ bignum_ModExpPow2_Add_DivMod_Mul.rs — by: gpt, gpt-mini
+✓ bignum_ModExp_Add_DivMod_ModExpPow2_Zeroes.rs — by: gpt, gpt-mini
+✓ bignum_ModExp_Add_DivMod_Mul_Zeroes.rs — by: claude-opus
+✓ bignum_ModExp_Add_ModExpPow2_Mul.rs — by: gpt, gpt-mini
+✓ bignum_ModExp_Add_ModExpPow2_Mul_Zeroes.rs — by: gemini, gpt-mini
+✓ bignums_Sub_NormalizeBitstring.rs — by: gpt, gpt-mini
+
+Failed files:
+✗ bignum_Add.rs
+✗ bignum_Add_NormalizeBitString.rs
+✗ bignum_Compare.rs
+✗ bignum_Compare_CompareUnequal.rs
+✗ bignum_Compare_CompareUnequal_NormalizeBitString.rs
+✗ bignum_Compare_NormalizeBitString.rs
+✗ bignum_DivMod.rs
+✗ bignum_DivMod_Compare.rs
+✗ bignum_DivMod_Compare_Sub.rs
+✗ bignum_DivMod_Sub.rs
+✗ bignum_ModExp.rs
+✗ bignum_ModExpPow2.rs
+✗ bignum_ModExpPow2_Add.rs
+✗ bignum_ModExpPow2_Add_DivMod.rs
+✗ bignum_ModExpPow2_Add_Mul.rs
+✗ bignum_ModExpPow2_DivMod.rs
+✗ bignum_ModExpPow2_DivMod_Mul.rs
+✗ bignum_ModExpPow2_Mul.rs
+✗ bignum_ModExpPow2_int.rs
+✗ bignum_ModExp_Add.rs
+✗ bignum_ModExp_Add_DivMod.rs
+✗ bignum_ModExp_Add_DivMod_ModExpPow2.rs
+✗ bignum_ModExp_Add_DivMod_ModExpPow2_Mul.rs
+✗ bignum_ModExp_Add_DivMod_Mul.rs
+✗ bignum_ModExp_Add_DivMod_Zeroes.rs
+✗ bignum_ModExp_Add_ModExpPow2.rs
+✗ bignum_ModExp_Add_ModExpPow2_Zeroes.rs
+✗ bignum_ModExp_Add_Mul.rs
+✗ bignum_ModExp_Add_Mul_Zeroes.rs
+✗ bignum_ModExp_Add_Zeroes.rs
+✗ bignum_ModExp_DivMod.rs
+✗ bignum_ModExp_DivMod_ModExpPow2.rs
+✗ bignum_ModExp_DivMod_ModExpPow2_Mul.rs
+✗ bignum_ModExp_DivMod_ModExpPow2_Mul_Zeroes.rs
+✗ bignum_ModExp_DivMod_ModExpPow2_Zeroes.rs
+✗ bignum_ModExp_DivMod_Mul.rs
+✗ bignum_ModExp_DivMod_Mul_Zeroes.rs
+✗ bignum_ModExp_DivMod_Zeroes.rs
+✗ bignum_ModExp_ModExpPow2.rs
+✗ bignum_ModExp_ModExpPow2_Add_Zeroes_DivMod_Mul.rs
+✗ bignum_ModExp_ModExpPow2_Mul.rs
+✗ bignum_ModExp_ModExpPow2_Mul_Zeroes.rs
+✗ bignum_ModExp_ModExpPow2_Zeroes.rs
+✗ bignum_ModExp_Mul.rs
+✗ bignum_ModExp_Mul_Zeroes.rs
+✗ bignum_ModExp_Zeroes.rs
+✗ bignum_ModExp_int.rs
+✗ bignum_ModExp_int_ModExpPow2_int.rs
+✗ bignum_Mul.rs
+✗ bignum_Mul_Add.rs
+✗ bignum_Mul_Add_NormalizeBitString.rs
+✗ bignum_Mul_NormalizeBitString.rs
+✗ bignum_NormalizeBitString.rs
+✗ bignums_Sub.rs
+✗ bignums_Zeros.rs
