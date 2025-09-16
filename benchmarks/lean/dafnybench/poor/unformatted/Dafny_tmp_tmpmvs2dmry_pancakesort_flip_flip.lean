@@ -19,7 +19,7 @@ Flips (reverses) array elements in the range
 @param a The array to flip elements in
 @param num The upper bound index of elements to flip
 -/
-def flip (a : Array Int) (num : Int) : Array Int := sorry
+def flip_ (a : Array Int) (num : Int) : Array Int := sorry
 
 /--
 Specification for flip method:
@@ -32,6 +32,6 @@ theorem flip_spec (a : Array Int) (num : Int) :
 a.size > 0 →
 0 ≤ num →
 num < a.size →
-let a' := flip a num
+let a' := flip_ a num
 (∀ k, 0 ≤ k ∧ k ≤ num → a'[k.toNat]! = a[(num - k).toNat]!) ∧
 (∀ k, num < k ∧ k < a.size → a'[k.toNat]! = a[k.toNat]!) := sorry

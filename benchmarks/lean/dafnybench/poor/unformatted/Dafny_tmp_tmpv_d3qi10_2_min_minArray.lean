@@ -14,13 +14,13 @@
 
 
 /-- Translation of Dafny min function -/
-def min (a b : Int) : Int :=
+def min_ (a b : Int) : Int :=
 if a < b then a else b
 
 /-- Specification for min function -/
 theorem min_spec (a b : Int) :
-(min a b ≤ a ∧ min a b ≤ b) ∧
-(min a b = a ∨ min a b = b) := sorry
+(min_ a b ≤ a ∧ min_ a b ≤ b) ∧
+(min_ a b = a ∨ min_ a b = b) := sorry
 
 /-- Translation of Dafny minFunction (ghost function) -/
 def minFunction (a b : Int) : Int :=

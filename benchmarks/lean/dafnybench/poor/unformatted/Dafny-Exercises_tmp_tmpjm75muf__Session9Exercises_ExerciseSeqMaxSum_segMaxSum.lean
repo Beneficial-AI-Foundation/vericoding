@@ -14,13 +14,13 @@
 
 
 /-- Sum function that computes sum of array elements from index i to j-1 -/
-partial def Sum (v : Array Int) (i j : Int) : Int :=
+partial def Sum_ (v : Array Int) (i j : Int) : Int :=
 if i = j then 0
-else Sum v i (j-1) + v[(j-1).toNat]!
+else Sum_ v i (j-1) + v[(j-1).toNat]!
 
 /-- Predicate indicating if s is maximum sum from any index l up to i -/
 def SumMaxToRight (v : Array Int) (i s : Int) : Prop :=
-∀ l ss, 0 ≤ l ∧ l ≤ i ∧ ss = i + 1 → Sum v l ss ≤ s
+∀ l ss, 0 ≤ l ∧ l ≤ i ∧ ss = i + 1 → Sum_ v l ss ≤ s
 
 /-- Alternative sum function computing from left to right -/
 partial def Sum2 (v : Array Int) (i j : Int) : Int :=
@@ -34,7 +34,7 @@ def SumMaxToRight2 (v : Array Int) (j i s : Int) : Prop :=
 /-- Main segMaxSum method specification -/
 theorem segMaxSum_spec (v : Array Int) (i : Int) (s k : Int) :
 v.size > 0 ∧ 0 ≤ i ∧ i < v.size →
-0 ≤ k ∧ k ≤ i ∧ s = Sum v k (i+1) ∧ SumMaxToRight v i s := sorry
+0 ≤ k ∧ k ≤ i ∧ s = Sum_ v k (i+1) ∧ SumMaxToRight v i s := sorry
 
 /-- Implementation of segMaxSum (using sorry) -/
 def segMaxSum (v : Array Int) (i : Int) : (Int × Int) := sorry

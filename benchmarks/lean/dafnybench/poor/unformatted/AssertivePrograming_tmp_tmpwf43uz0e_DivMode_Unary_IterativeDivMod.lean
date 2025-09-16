@@ -42,20 +42,20 @@ def LessAlt : Unary → Unary → Prop
 | Unary.Suc x, Unary.Suc y => Less x y
 
 /-- Addition of Unary numbers -/
-def Add : Unary → Unary → Unary
+def Add_ : Unary → Unary → Unary
 | x, Unary.Zero => x
-| x, Unary.Suc y => Unary.Suc (Add x y)
+| x, Unary.Suc y => Unary.Suc (Add_ x y)
 
 /-- Subtraction of Unary numbers -/
-def Sub : Unary → Unary → Unary
+def Sub_ : Unary → Unary → Unary
 | x, Unary.Zero => x
-| Unary.Suc x, Unary.Suc y => Sub x y
+| Unary.Suc x, Unary.Suc y => Sub_ x y
 | Unary.Zero, Unary.Suc _ => Unary.Zero /- This case shouldn't happen given precondition -/
 
 /-- Multiplication of Unary numbers -/
-def Mul : Unary → Unary → Unary
+def Mul_ : Unary → Unary → Unary
 | Unary.Zero, _ => Unary.Zero
-| Unary.Suc x, y => Add (Mul x y) y
+| Unary.Suc x, y => Add_ (Mul_ x y) y
 
 /-- Iterative division and modulus operation on Unary numbers -/
 def IterativeDivMod (x y : Unary) : Unary × Unary := sorry
@@ -64,4 +64,4 @@ def IterativeDivMod (x y : Unary) : Unary × Unary := sorry
 theorem IterativeDivMod_spec (x y : Unary) :
 y ≠ Unary.Zero →
 let (d, m) := IterativeDivMod x y
-Add (Mul d y) m = x ∧ Less m y := sorry
+Add_ (Mul_ d y) m = x ∧ Less m y := sorry

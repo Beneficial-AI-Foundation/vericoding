@@ -33,18 +33,20 @@ pipe: Pipe
 height: Int
 
 /-- Constructor for Pipe with initial values -/
-def Pipe.init : Pipe :=
-{ v1 := Valve.OFF
-v2 := Valve.ON
-v3 := Valve.OFF
-in_flowv1 := 0
-in_flowv2 := 0
-in_flowv3 := 0 }
+def Pipe.init : Pipe := { 
+    v1 := Valve.OFF
+    v2 := Valve.ON
+    v3 := Valve.OFF
+    in_flowv1 := 0
+    in_flowv2 := 0
+    in_flowv3 := 0 
+}
 
 /-- Constructor for Tank with initial values -/
-def Tank.init : Tank :=
-{ pipe := Pipe.init
-height := 0 }
+def Tank.init : Tank := { 
+    pipe := Pipe.init
+    height := 0 
+}
 
 /-- Main regulation check specification -/
 theorem checkRegulation_spec (tank tank' : Tank) :

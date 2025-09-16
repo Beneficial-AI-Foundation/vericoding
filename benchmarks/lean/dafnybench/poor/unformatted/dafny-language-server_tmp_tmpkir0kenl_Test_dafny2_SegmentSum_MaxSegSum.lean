@@ -17,14 +17,14 @@
 Computes the sum of elements in array `a` from index `s` to `t-1`.
 Requires that 0 ≤ s ≤ t ≤ a.size
 -/
-partial def Sum (a : Array Int) (s t : Int) : Int :=
-if s = t then 0 else Sum a s (t-1) + a[(t-1).toNat]!
+partial def Sum_ (a : Array Int) (s t : Int) : Int :=
+if s = t then 0 else Sum_ a s (t-1) + a[(t-1).toNat]!
 
 /--
 Specification for Sum function requiring valid indices
 -/
 theorem Sum_spec (a : Array Int) (s t : Int) :
-0 ≤ s ∧ s ≤ t ∧ t ≤ a.size → Sum a s t ≥ 0 := sorry
+0 ≤ s ∧ s ≤ t ∧ t ≤ a.size → Sum_ a s t ≥ 0 := sorry
 
 /--
 MaxSegSum finds indices k,m that maximize the sum of elements from k to m-1
@@ -40,4 +40,4 @@ Specification for MaxSegSum ensuring returned indices give maximum segment sum
 theorem MaxSegSum_spec (a : Array Int) :
 let (k, m) := MaxSegSum a
 0 ≤ k ∧ k ≤ m ∧ m ≤ a.size ∧
-(∀ p q, 0 ≤ p ∧ p ≤ q ∧ q ≤ a.size → Sum a p q ≤ Sum a k m) := sorry
+(∀ p q, 0 ≤ p ∧ p ≤ q ∧ q ≤ a.size → Sum_ a p q ≤ Sum_ a k m) := sorry

@@ -26,19 +26,19 @@ a.size + 1 = c.size ∧
 c[0]! = 0 ∧
 ∀ j, 1 ≤ j ∧ j ≤ a.size → c[j]! = sum a 0 j
 
-/-- List datatype definition -/
-inductive List (T : Type)
-| Nil : List T
-| Cons : T → List T → List T
+/-- List_ datatype definition -/
+inductive List_ (T : Type)
+| Nil : List_ T
+| Cons : T → List_ T → List_ T
 
-/-- Check if element exists in list -/
-def mem {T : Type} [BEq T] (x : T) (l : List T) : Bool :=
+/-- Check if element exists in List_ -/
+def mem {T : Type} [BEq T] (x : T) (l : List_ T) : Bool :=
 match l with
-| List.Nil => false
-| List.Cons y r => if x == y then true else mem x r
+| List_.Nil => false
+| List_.Cons y r => if x == y then true else mem x r
 
-/-- Convert array to list -/
-def from_array {T : Type} (a : Array T) : List T :=
+/-- Convert array to List_ -/
+def from_array {T : Type} (a : Array T) : List_ T :=
 sorry
 
 

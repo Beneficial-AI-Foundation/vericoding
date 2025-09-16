@@ -38,9 +38,9 @@ if number = 0 then #[]
 else #[number % 10] ++ NumberToSeq (number/10)
 
 /-- Sums elements in a sequence -/
-partial def Sum (digits : Array Int) : Int :=
+partial def Sum_ (digits : Array Int) : Int :=
 if digits.size = 0 then 0
-else digits[0]! + Sum (digits.extract 1 digits.size)
+else digits[0]! + Sum_ (digits.extract 1 digits.size)
 
 /-- Counts number of digits in a natural number -/
 def NumberOfDigits (n : Nat) : Nat :=

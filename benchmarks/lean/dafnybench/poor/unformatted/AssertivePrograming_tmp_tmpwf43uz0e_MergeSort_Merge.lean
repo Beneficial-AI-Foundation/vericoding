@@ -19,7 +19,7 @@ def Sorted (q : Array Int) : Prop :=
 ∀ i j, 0 ≤ i → i ≤ j → j < q.size → q[i]! ≤ q[j]!
 
 /-- Invariant for merge operation -/
-def Inv (a : Array Int) (a1 : Array Int) (a2 : Array Int) (i : Nat) (mid : Nat) : Prop :=
+def Inv_ (a : Array Int) (a1 : Array Int) (a2 : Array Int) (i : Nat) (mid : Nat) : Prop :=
 i ≤ a1.size ∧ i ≤ a2.size ∧ i + mid ≤ a.size ∧
 (a1.extract 0 i = a.extract 0 i) ∧
 (a2.extract 0 i = a.extract mid (i + mid))
