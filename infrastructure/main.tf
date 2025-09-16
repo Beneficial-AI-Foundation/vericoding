@@ -127,7 +127,7 @@ resource "aws_iam_role_policy_attachment" "batch_instance_role_policy" {
   policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonEC2ContainerServiceforEC2Role"
 }
 
-# Additional policy for accessing Parameter Store
+# Additional policy for accessing Parameter Store and CloudWatch Logs
 resource "aws_iam_role_policy" "batch_job_ssm_policy" {
   name = "vericoding-batch-job-ssm-policy"
   role = aws_iam_role.batch_job_role.id
@@ -144,6 +144,17 @@ resource "aws_iam_role_policy" "batch_job_ssm_policy" {
         ]
         Resource = [
           "arn:aws:ssm:eu-west-2:${data.aws_caller_identity.current.account_id}:parameter/vericoding/*"
+        ]
+      },
+      {
+        Effect = "Allow"
+        Action = [
+          "logs:CreateLogStream",
+          "logs:PutLogEvents",
+          "logs:CreateLogGroup"
+        ]
+        Resource = [
+          "arn:aws:logs:eu-west-2:${data.aws_caller_identity.current.account_id}:log-group:/aws/batch/job*"
         ]
       }
     ]
