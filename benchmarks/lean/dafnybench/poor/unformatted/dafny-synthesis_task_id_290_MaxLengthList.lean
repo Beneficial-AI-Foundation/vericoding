@@ -1,20 +1,17 @@
-import Std
 
-open Std.Do
 
 /-!
 {
-  "name": "dafny-synthesis_task_id_290_MaxLengthList",
-  "category": "Dafny Translation", 
-  "description": "Automatically translated from Dafny specification: dafny-synthesis_task_id_290_MaxLengthList",
-  "source": "Dafny",
-  "translation_date": "2024",
-  "functions": ,
-  "methods": 
+"name": "dafny-synthesis_task_id_290_MaxLengthList",
+"category": "Dafny Translation",
+"description": "Automatically translated from Dafny specification: dafny-synthesis_task_id_290_MaxLengthList",
+"source": "Dafny",
+"translation_date": "2024",
+"functions": ,
+"methods":
 }
 -/
 
-namespace DafnyBenchmarks
 
 /--
 Finds the list with maximum length from a sequence of integer lists.
@@ -31,8 +28,6 @@ Specification for MaxLengthList:
 - Ensures returned list is one of the input lists
 -/
 theorem MaxLengthList_spec (lists : Array (Array Int)) (maxList : Array Int) :
-  lists.size > 0 →
-  (∀ l, l ∈ lists → l.size ≤ maxList.size) ∧
-  maxList ∈ lists := sorry
-
-end DafnyBenchmarks
+lists.size > 0 →
+(∀ l, l ∈ lists → l.size ≤ maxList.size) ∧
+maxList ∈ lists := sorry

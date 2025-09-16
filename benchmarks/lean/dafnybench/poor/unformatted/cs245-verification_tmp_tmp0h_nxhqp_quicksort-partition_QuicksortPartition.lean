@@ -1,20 +1,17 @@
-import Std
 
-open Std.Do
 
 /-!
 {
-  "name": "cs245-verification_tmp_tmp0h_nxhqp_quicksort-partition_QuicksortPartition",
-  "category": "Dafny Translation",
-  "description": "Automatically translated from Dafny specification: cs245-verification_tmp_tmp0h_nxhqp_quicksort-partition_QuicksortPartition",
-  "source": "Dafny",
-  "translation_date": "2024",
-  "functions": ,
-  "methods":
+"name": "cs245-verification_tmp_tmp0h_nxhqp_quicksort-partition_QuicksortPartition",
+"category": "Dafny Translation",
+"description": "Automatically translated from Dafny specification: cs245-verification_tmp_tmp0h_nxhqp_quicksort-partition_QuicksortPartition",
+"source": "Dafny",
+"translation_date": "2024",
+"functions": ,
+"methods":
 }
 -/
 
-namespace DafnyBenchmarks
 
 /--
 QuicksortPartition method translated from Dafny.
@@ -34,11 +31,9 @@ Ensures:
 - Output array is a permutation of input array
 -/
 theorem QuicksortPartition_spec
-  (X : Array Int) (n : Int) (p : Int) :
-  X.size ≥ 1 ∧ n = X.size →
-  let (a, b) := QuicksortPartition X n p
-  b ≥ n ∧
-  (∀ x, 0 ≤ x ∧ x < a ∧ a < n → X[x.toNat]! ≤ p) ∧
-  (a = n ∨ (∀ x, 0 ≤ a ∧ a ≤ x ∧ x < n → X[(x.toNat)]! > p)) := sorry
-
-end DafnyBenchmarks
+(X : Array Int) (n : Int) (p : Int) :
+X.size ≥ 1 ∧ n = X.size →
+let (a, b) := QuicksortPartition X n p
+b ≥ n ∧
+(∀ x, 0 ≤ x ∧ x < a ∧ a < n → X[x.toNat]! ≤ p) ∧
+(a = n ∨ (∀ x, 0 ≤ a ∧ a ≤ x ∧ x < n → X[(x.toNat)]! > p)) := sorry

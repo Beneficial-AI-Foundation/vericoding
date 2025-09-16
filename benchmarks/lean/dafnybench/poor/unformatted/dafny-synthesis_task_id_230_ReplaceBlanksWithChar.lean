@@ -1,20 +1,17 @@
-import Std
 
-open Std.Do
 
 /-!
 {
-  "name": "dafny-synthesis_task_id_230_ReplaceBlanksWithChar",
-  "category": "Dafny Translation", 
-  "description": "Automatically translated from Dafny specification: dafny-synthesis_task_id_230_ReplaceBlanksWithChar",
-  "source": "Dafny",
-  "translation_date": "2024",
-  "functions": ,
-  "methods": 
+"name": "dafny-synthesis_task_id_230_ReplaceBlanksWithChar",
+"category": "Dafny Translation",
+"description": "Automatically translated from Dafny specification: dafny-synthesis_task_id_230_ReplaceBlanksWithChar",
+"source": "Dafny",
+"translation_date": "2024",
+"functions": ,
+"methods":
 }
 -/
 
-namespace DafnyBenchmarks
 
 /--
 Replaces all blank spaces in a string with a given character.
@@ -31,10 +28,8 @@ Specification for ReplaceBlanksWithChar:
 2. Each space character is replaced with ch, non-spaces remain unchanged
 -/
 theorem ReplaceBlanksWithChar_spec (s : String) (ch : Char) :
-  let v := ReplaceBlanksWithChar s ch
-  (v.length = s.length) ∧
-  (∀ i, 0 ≤ i ∧ i < s.length → 
-    ((s.get ⟨i⟩ = ' ' → v.get ⟨i⟩ = ch) ∧ 
-     (s.get ⟨i⟩ ≠ ' ' → v.get ⟨i⟩ = s.get ⟨i⟩))) := sorry
-
-end DafnyBenchmarks
+let v := ReplaceBlanksWithChar s ch
+(v.length = s.length) ∧
+(∀ i, 0 ≤ i ∧ i < s.length →
+((s.get ⟨i⟩ = ' ' → v.get ⟨i⟩ = ch) ∧
+(s.get ⟨i⟩ ≠ ' ' → v.get ⟨i⟩ = s.get ⟨i⟩))) := sorry

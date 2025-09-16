@@ -1,24 +1,21 @@
-import Std
 
-open Std.Do
 
 /-!
 {
-  "name": "dafny-synthesis_task_id_249_Intersection",
-  "category": "Dafny Translation",
-  "description": "Automatically translated from Dafny specification: dafny-synthesis_task_id_249_Intersection",
-  "source": "Dafny",
-  "translation_date": "2024",
-  "functions": ,
-  "methods":
+"name": "dafny-synthesis_task_id_249_Intersection",
+"category": "Dafny Translation",
+"description": "Automatically translated from Dafny specification: dafny-synthesis_task_id_249_Intersection",
+"source": "Dafny",
+"translation_date": "2024",
+"functions": ,
+"methods":
 }
 -/
 
-namespace DafnyBenchmarks
 
 /-- Predicate indicating if an element exists in an array -/
 def InArray (a : Array Int) (x : Int) : Prop :=
-  ∃ i, 0 ≤ i ∧ i < a.size ∧ a[i]! = x
+∃ i, 0 ≤ i ∧ i < a.size ∧ a[i]! = x
 
 /--
 Intersection function that returns common elements between two arrays.
@@ -30,8 +27,6 @@ def Intersection (a : Array Int) (b : Array Int) : Array Int := sorry
 
 /-- Specification for Intersection function -/
 theorem intersection_spec (a b : Array Int) (result : Array Int) :
-  (result = Intersection a b) →
-  (∀ x, x ∈ result.toList → (InArray a x ∧ InArray b x)) ∧
-  (∀ i j, 0 ≤ i ∧ i < j ∧ j < result.size → result[i]! ≠ result[j]!) := sorry
-
-end DafnyBenchmarks
+(result = Intersection a b) →
+(∀ x, x ∈ result.toList → (InArray a x ∧ InArray b x)) ∧
+(∀ i j, 0 ≤ i ∧ i < j ∧ j < result.size → result[i]! ≠ result[j]!) := sorry

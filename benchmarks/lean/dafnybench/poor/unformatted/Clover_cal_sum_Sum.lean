@@ -1,21 +1,18 @@
-import Std
 
 
-open Std.Do
 
 /-!
 {
-  "name": "Clover_cal_sum_Sum",
-  "category": "Dafny Translation",
-  "description": "Automatically translated from Dafny specification: Clover_cal_sum_Sum",
-  "source": "Dafny",
-  "translation_date": "2024",
-  "functions": ,
-  "methods":
+"name": "Clover_cal_sum_Sum",
+"category": "Dafny Translation",
+"description": "Automatically translated from Dafny specification: Clover_cal_sum_Sum",
+"source": "Dafny",
+"translation_date": "2024",
+"functions": ,
+"methods":
 }
 -/
 
-namespace DafnyBenchmarks
 
 /--
 Computes the sum of first N natural numbers.
@@ -32,6 +29,4 @@ Specification for Sum method:
 - Ensures result equals N * (N + 1) / 2
 -/
 theorem Sum_spec (N : Int) :
-  N ≥ 0 → Sum N = N * (N + 1) / 2 := sorry
-
-end DafnyBenchmarks
+N ≥ 0 → Sum N = N * (N + 1) / 2 := sorry

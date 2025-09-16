@@ -1,20 +1,17 @@
-import Std
 
-open Std.Do
 
 /-!
 {
-  "name": "dafny-synthesis_task_id_616_ElementWiseModulo",
-  "category": "Dafny Translation",
-  "description": "Automatically translated from Dafny specification: dafny-synthesis_task_id_616_ElementWiseModulo",
-  "source": "Dafny",
-  "translation_date": "2024",
-  "functions": ,
-  "methods":
+"name": "dafny-synthesis_task_id_616_ElementWiseModulo",
+"category": "Dafny Translation",
+"description": "Automatically translated from Dafny specification: dafny-synthesis_task_id_616_ElementWiseModulo",
+"source": "Dafny",
+"translation_date": "2024",
+"functions": ,
+"methods":
 }
 -/
 
-namespace DafnyBenchmarks
 
 /--
 ElementWiseModulo takes two arrays of integers and returns a new array containing
@@ -35,10 +32,8 @@ Specification for ElementWiseModulo:
 - Ensures each element is modulo of corresponding elements
 -/
 theorem ElementWiseModulo_spec (a b : Array Int) :
-  (a.size = b.size) ∧
-  (∀ i, 0 ≤ i ∧ i < b.size → b[i]! ≠ 0) →
-  let result := ElementWiseModulo a b
-  (result.size = a.size) ∧
-  (∀ i, 0 ≤ i ∧ i < result.size → result[i]! = a[i]! % b[i]!) := sorry
-
-end DafnyBenchmarks
+(a.size = b.size) ∧
+(∀ i, 0 ≤ i ∧ i < b.size → b[i]! ≠ 0) →
+let result := ElementWiseModulo a b
+(result.size = a.size) ∧
+(∀ i, 0 ≤ i ∧ i < result.size → result[i]! = a[i]! % b[i]!) := sorry

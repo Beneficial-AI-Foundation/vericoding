@@ -1,20 +1,17 @@
-import Std
 
-open Std.Do
 
 /-!
 {
-  "name": "dafny-synthesis_task_id_759_IsDecimalWithTwoPrecision",
-  "category": "Dafny Translation", 
-  "description": "Automatically translated from Dafny specification: dafny-synthesis_task_id_759_IsDecimalWithTwoPrecision",
-  "source": "Dafny",
-  "translation_date": "2024",
-  "functions": ,
-  "methods": 
+"name": "dafny-synthesis_task_id_759_IsDecimalWithTwoPrecision",
+"category": "Dafny Translation",
+"description": "Automatically translated from Dafny specification: dafny-synthesis_task_id_759_IsDecimalWithTwoPrecision",
+"source": "Dafny",
+"translation_date": "2024",
+"functions": ,
+"methods":
 }
 -/
 
-namespace DafnyBenchmarks
 
 /--
 Checks if a string has exactly two decimal places after a decimal point.
@@ -28,8 +25,6 @@ Specification for IsDecimalWithTwoPrecision:
 - If result is false, no such index exists
 -/
 theorem IsDecimalWithTwoPrecision_spec (s : String) :
-  let result := IsDecimalWithTwoPrecision s
-  (result → ∃ i, 0 ≤ i ∧ i < s.length ∧ s.get ⟨i⟩ = '.' ∧ s.length - i - 1 = 2) ∧
-  (!result → ¬(∃ i, 0 ≤ i ∧ i < s.length ∧ s.get ⟨i⟩ = '.' ∧ s.length - i - 1 = 2)) := sorry
-
-end DafnyBenchmarks
+let result := IsDecimalWithTwoPrecision s
+(result → ∃ i, 0 ≤ i ∧ i < s.length ∧ s.get ⟨i⟩ = '.' ∧ s.length - i - 1 = 2) ∧
+(!result → ¬(∃ i, 0 ≤ i ∧ i < s.length ∧ s.get ⟨i⟩ = '.' ∧ s.length - i - 1 = 2)) := sorry

@@ -1,20 +1,17 @@
-import Std
 
-open Std.Do
 
 /-!
 {
-  "name": "Dafny-experiences_tmp_tmp150sm9qy_dafny_started_tutorial_dafny_tutorial_array_FindMax",
-  "category": "Dafny Translation",
-  "description": "Automatically translated from Dafny specification: Dafny-experiences_tmp_tmp150sm9qy_dafny_started_tutorial_dafny_tutorial_array_FindMax",
-  "source": "Dafny",
-  "translation_date": "2024",
-  "functions": ,
-  "methods":
+"name": "Dafny-experiences_tmp_tmp150sm9qy_dafny_started_tutorial_dafny_tutorial_array_FindMax",
+"category": "Dafny Translation",
+"description": "Automatically translated from Dafny specification: Dafny-experiences_tmp_tmp150sm9qy_dafny_started_tutorial_dafny_tutorial_array_FindMax",
+"source": "Dafny",
+"translation_date": "2024",
+"functions": ,
+"methods":
 }
 -/
 
-namespace DafnyBenchmarks
 
 /--
 Finds the index of the maximum element in an array.
@@ -35,9 +32,7 @@ def FindMax (a : Array Int) : Int := sorry
 Specification for FindMax method
 -/
 theorem FindMax_spec (a : Array Int) :
-  a.size > 0 →
-  let i := FindMax a
-  0 ≤ i ∧ i < a.size ∧
-  ∀ k, 0 ≤ k ∧ k < a.size → a[k]! ≤ a[i.toNat]! := sorry
-
-end DafnyBenchmarks
+a.size > 0 →
+let i := FindMax a
+0 ≤ i ∧ i < a.size ∧
+∀ k, 0 ≤ k ∧ k < a.size → a[k]! ≤ a[i.toNat]! := sorry

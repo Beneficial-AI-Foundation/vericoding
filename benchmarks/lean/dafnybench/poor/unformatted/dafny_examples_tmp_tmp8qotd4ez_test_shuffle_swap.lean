@@ -1,20 +1,17 @@
-import Std
 
-open Std.Do
 
 /-!
 {
-  "name": "dafny_examples_tmp_tmp8qotd4ez_test_shuffle_swap",
-  "category": "Dafny Translation",
-  "description": "Automatically translated from Dafny specification: dafny_examples_tmp_tmp8qotd4ez_test_shuffle_swap",
-  "source": "Dafny",
-  "translation_date": "2024",
-  "functions": ,
-  "methods":
+"name": "dafny_examples_tmp_tmp8qotd4ez_test_shuffle_swap",
+"category": "Dafny Translation",
+"description": "Automatically translated from Dafny specification: dafny_examples_tmp_tmp8qotd4ez_test_shuffle_swap",
+"source": "Dafny",
+"translation_date": "2024",
+"functions": ,
+"methods":
 }
 -/
 
-namespace DafnyBenchmarks
 
 /--
 Converts a sequence to a set
@@ -43,10 +40,8 @@ def swap {T : Type} [Inhabited T] (a : Array T) (i j : Int) : Array T := sorry
 Specification for swap operation
 -/
 theorem swap_spec {T : Type} [Inhabited T] (a : Array T) (i j : Int) :
-  0 ≤ i ∧ i < a.size ∧ 0 ≤ j ∧ j < a.size →
-  let result := swap a i j
-  result[i.toNat]! = a[j.toNat]! ∧
-  result[j.toNat]! = a[i.toNat]! ∧
-  (∀ m : Nat, m < a.size ∧ m ≠ i.toNat ∧ m ≠ j.toNat → result[m]! = a[m]!) := sorry
-
-end DafnyBenchmarks
+0 ≤ i ∧ i < a.size ∧ 0 ≤ j ∧ j < a.size →
+let result := swap a i j
+result[i.toNat]! = a[j.toNat]! ∧
+result[j.toNat]! = a[i.toNat]! ∧
+(∀ m : Nat, m < a.size ∧ m ≠ i.toNat ∧ m ≠ j.toNat → result[m]! = a[m]!) := sorry

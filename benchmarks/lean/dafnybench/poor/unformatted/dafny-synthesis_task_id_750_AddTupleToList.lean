@@ -1,20 +1,17 @@
-import Std
 
-open Std.Do
 
 /-!
 {
-  "name": "dafny-synthesis_task_id_750_AddTupleToList",
-  "category": "Dafny Translation",
-  "description": "Automatically translated from Dafny specification: dafny-synthesis_task_id_750_AddTupleToList",
-  "source": "Dafny",
-  "translation_date": "2024",
-  "functions": ,
-  "methods":
+"name": "dafny-synthesis_task_id_750_AddTupleToList",
+"category": "Dafny Translation",
+"description": "Automatically translated from Dafny specification: dafny-synthesis_task_id_750_AddTupleToList",
+"source": "Dafny",
+"translation_date": "2024",
+"functions": ,
+"methods":
 }
 -/
 
-namespace DafnyBenchmarks
 
 /--
 Adds a tuple to the end of a list of tuples.
@@ -32,9 +29,7 @@ Specification for AddTupleToList ensuring:
 3. All original elements are preserved in their positions
 -/
 theorem AddTupleToList_spec (l : Array (Int × Int)) (t : Int × Int) :
-  let r := AddTupleToList l t
-  r.size = l.size + 1 ∧
-  r[r.size - 1]! = t ∧
-  ∀ i, 0 ≤ i ∧ i < l.size → r[i]! = l[i]! := sorry
-
-end DafnyBenchmarks
+let r := AddTupleToList l t
+r.size = l.size + 1 ∧
+r[r.size - 1]! = t ∧
+∀ i, 0 ≤ i ∧ i < l.size → r[i]! = l[i]! := sorry

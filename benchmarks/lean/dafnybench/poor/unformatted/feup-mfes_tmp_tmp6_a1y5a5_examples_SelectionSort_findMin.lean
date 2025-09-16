@@ -1,40 +1,35 @@
-import Std
 
-open Std.Do
 
 /-!
 {
-  "name": "feup-mfes_tmp_tmp6_a1y5a5_examples_SelectionSort_findMin",
-  "category": "Dafny Translation",
-  "description": "Automatically translated from Dafny specification: feup-mfes_tmp_tmp6_a1y5a5_examples_SelectionSort_findMin",
-  "source": "Dafny",
-  "translation_date": "2024",
-  "functions": ,
-  "methods":
+"name": "feup-mfes_tmp_tmp6_a1y5a5_examples_SelectionSort_findMin",
+"category": "Dafny Translation",
+"description": "Automatically translated from Dafny specification: feup-mfes_tmp_tmp6_a1y5a5_examples_SelectionSort_findMin",
+"source": "Dafny",
+"translation_date": "2024",
+"functions": ,
+"methods":
 }
 -/
 
-namespace DafnyBenchmarks
 
 /--
 Predicate checking if array is sorted between positions 'from' (inclusive) and 'to' (exclusive)
 -/
 def isSorted (a : Array Float) (_from : Nat) (to : Nat) : Prop :=
-  ∀ i j, _from ≤ i → i < j → j < to → a[i]! ≤ a[j]!
+∀ i j, _from ≤ i → i < j → j < to → a[i]! ≤ a[j]!
 
 /--
 Finds minimum value position in non-empty subarray between positions 'from' (inclusive) and 'to' (exclusive)
 -/
 def findMin (a : Array Float) (_from : Nat) (to : Nat) : Nat :=
-  sorry
+sorry
 
 /--
 Specification for findMin method
 -/
 theorem findMin_spec (a : Array Float) (_from : Nat) (to : Nat) :
-  (0 ≤ _from ∧ _from < to ∧ to ≤ a.size) →
-  let index := findMin a _from to
-  (_from ≤ index ∧ index < to) ∧
-  (∀ k, _from ≤ k ∧ k < to → a[k]! ≥ a[index]!) := sorry
-
-end DafnyBenchmarks
+(0 ≤ _from ∧ _from < to ∧ to ≤ a.size) →
+let index := findMin a _from to
+(_from ≤ index ∧ index < to) ∧
+(∀ k, _from ≤ k ∧ k < to → a[k]! ≥ a[index]!) := sorry

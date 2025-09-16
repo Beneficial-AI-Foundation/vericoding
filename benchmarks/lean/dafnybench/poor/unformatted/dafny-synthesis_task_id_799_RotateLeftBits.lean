@@ -1,20 +1,17 @@
-import Std
 
-open Std.Do
 
 /-!
 {
-  "name": "dafny-synthesis_task_id_799_RotateLeftBits",
-  "category": "Dafny Translation",
-  "description": "Automatically translated from Dafny specification: dafny-synthesis_task_id_799_RotateLeftBits",
-  "source": "Dafny",
-  "translation_date": "2024",
-  "functions": ,
-  "methods":
+"name": "dafny-synthesis_task_id_799_RotateLeftBits",
+"category": "Dafny Translation",
+"description": "Automatically translated from Dafny specification: dafny-synthesis_task_id_799_RotateLeftBits",
+"source": "Dafny",
+"translation_date": "2024",
+"functions": ,
+"methods":
 }
 -/
 
-namespace DafnyBenchmarks
 
 /--
 Rotates bits in a 32-bit value left by specified number of positions.
@@ -31,7 +28,5 @@ Specification for RotateLeftBits:
 - Ensures result is n rotated left by d bits
 -/
 theorem RotateLeftBits_spec (n : UInt32) (d : Int) :
-  0 ≤ d ∧ d < 32 →
-  RotateLeftBits n d = ((UInt32.shiftLeft n (UInt32.ofNat d.toNat)) ||| (UInt32.shiftRight n (UInt32.ofNat (32 - d).toNat))) := sorry
-
-end DafnyBenchmarks
+0 ≤ d ∧ d < 32 →
+RotateLeftBits n d = ((UInt32.shiftLeft n (UInt32.ofNat d.toNat)) ||| (UInt32.shiftRight n (UInt32.ofNat (32 - d).toNat))) := sorry

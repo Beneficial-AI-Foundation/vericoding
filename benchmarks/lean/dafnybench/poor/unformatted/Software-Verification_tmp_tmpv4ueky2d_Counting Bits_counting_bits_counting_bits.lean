@@ -1,20 +1,17 @@
-import Std
 
-open Std.Do
 
 /-!
 {
-  "name": "Software-Verification_tmp_tmpv4ueky2d_Counting Bits_counting_bits_counting_bits",
-  "category": "Dafny Translation",
-  "description": "Automatically translated from Dafny specification: Software-Verification_tmp_tmpv4ueky2d_Counting Bits_counting_bits_counting_bits",
-  "source": "Dafny",
-  "translation_date": "2024",
-  "functions": ,
-  "methods":
+"name": "Software-Verification_tmp_tmpv4ueky2d_Counting Bits_counting_bits_counting_bits",
+"category": "Dafny Translation",
+"description": "Automatically translated from Dafny specification: Software-Verification_tmp_tmpv4ueky2d_Counting Bits_counting_bits_counting_bits",
+"source": "Dafny",
+"translation_date": "2024",
+"functions": ,
+"methods":
 }
 -/
 
-namespace DafnyBenchmarks
 
 /--
 Translates the Dafny counting_bits method which computes an array where each element
@@ -32,9 +29,7 @@ Specification for counting_bits method:
 - Ensures each element i contains count of 1 bits in binary representation of i
 -/
 theorem counting_bits_spec (n : Int) :
-  0 ≤ n ∧ n ≤ 100000 →
-  let result := counting_bits n
-  result.size = n + 1 ∧
-  ∀ i, 1 ≤ i ∧ i < n + 1 → result[i.toNat]! = result[(i / 2).toNat]! + i % 2 := sorry
-
-end DafnyBenchmarks
+0 ≤ n ∧ n ≤ 100000 →
+let result := counting_bits n
+result.size = n + 1 ∧
+∀ i, 1 ≤ i ∧ i < n + 1 → result[i.toNat]! = result[(i / 2).toNat]! + i % 2 := sorry

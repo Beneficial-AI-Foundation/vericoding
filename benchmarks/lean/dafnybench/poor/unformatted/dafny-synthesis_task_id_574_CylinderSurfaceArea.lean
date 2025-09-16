@@ -1,20 +1,17 @@
-import Std
 
-open Std.Do
 
 /-!
 {
-  "name": "dafny-synthesis_task_id_574_CylinderSurfaceArea",
-  "category": "Dafny Translation",
-  "description": "Automatically translated from Dafny specification: dafny-synthesis_task_id_574_CylinderSurfaceArea",
-  "source": "Dafny",
-  "translation_date": "2024",
-  "functions": ,
-  "methods":
+"name": "dafny-synthesis_task_id_574_CylinderSurfaceArea",
+"category": "Dafny Translation",
+"description": "Automatically translated from Dafny specification: dafny-synthesis_task_id_574_CylinderSurfaceArea",
+"source": "Dafny",
+"translation_date": "2024",
+"functions": ,
+"methods":
 }
 -/
 
-namespace DafnyBenchmarks
 
 /--
 Calculates the surface area of a cylinder given radius and height.
@@ -29,7 +26,5 @@ Specification for CylinderSurfaceArea:
 - Ensures the result is 2πr(r + h)
 -/
 theorem CylinderSurfaceArea_spec (radius height : Float) :
-  radius > 0 ∧ height > 0 →
-  CylinderSurfaceArea radius height = 2 * 3.14159265358979323846 * radius * (radius + height) := sorry
-
-end DafnyBenchmarks
+radius > 0 ∧ height > 0 →
+CylinderSurfaceArea radius height = 2 * 3.14159265358979323846 * radius * (radius + height) := sorry

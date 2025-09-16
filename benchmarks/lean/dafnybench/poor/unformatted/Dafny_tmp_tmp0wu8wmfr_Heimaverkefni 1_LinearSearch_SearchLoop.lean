@@ -1,20 +1,17 @@
-import Std
 
-open Std.Do
 
 /-!
 {
-  "name": "Dafny_tmp_tmp0wu8wmfr_Heimaverkefni 1_LinearSearch_SearchLoop",
-  "category": "Dafny Translation",
-  "description": "Automatically translated from Dafny specification: Dafny_tmp_tmp0wu8wmfr_Heimaverkefni 1_LinearSearch_SearchLoop",
-  "source": "Dafny",
-  "translation_date": "2024",
-  "functions": ,
-  "methods":
+"name": "Dafny_tmp_tmp0wu8wmfr_Heimaverkefni 1_LinearSearch_SearchLoop",
+"category": "Dafny Translation",
+"description": "Automatically translated from Dafny specification: Dafny_tmp_tmp0wu8wmfr_Heimaverkefni 1_LinearSearch_SearchLoop",
+"source": "Dafny",
+"translation_date": "2024",
+"functions": ,
+"methods":
 }
 -/
 
-namespace DafnyBenchmarks
 
 /--
 SearchLoop method translated from Dafny.
@@ -32,11 +29,9 @@ def SearchLoop (a : Array Int) (i j x : Int) : Int := sorry
 
 /-- Specification for SearchLoop -/
 theorem SearchLoop_spec (a : Array Int) (i j x : Int) :
-  (0 ≤ i ∧ i ≤ j ∧ j ≤ a.size) →
-  let k := SearchLoop a i j x
-  (i ≤ k ∧ k < j ∨ k = -1) ∧
-  (k ≠ -1 → a[k.toNat]! = x) ∧
-  (k ≠ -1 → ∀ r, k < r ∧ r < j → a[r.toNat]! ≠ x) ∧
-  (k = -1 → ∀ r, i ≤ r ∧ r < j → a[r.toNat]! ≠ x) := sorry
-
-end DafnyBenchmarks
+(0 ≤ i ∧ i ≤ j ∧ j ≤ a.size) →
+let k := SearchLoop a i j x
+(i ≤ k ∧ k < j ∨ k = -1) ∧
+(k ≠ -1 → a[k.toNat]! = x) ∧
+(k ≠ -1 → ∀ r, k < r ∧ r < j → a[r.toNat]! ≠ x) ∧
+(k = -1 → ∀ r, i ≤ r ∧ r < j → a[r.toNat]! ≠ x) := sorry

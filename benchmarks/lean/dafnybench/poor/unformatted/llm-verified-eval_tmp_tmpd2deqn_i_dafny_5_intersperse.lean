@@ -1,20 +1,17 @@
-import Std
 
-open Std.Do
 
 /-!
 {
-  "name": "llm-verified-eval_tmp_tmpd2deqn_i_dafny_5_intersperse",
-  "category": "Dafny Translation",
-  "description": "Automatically translated from Dafny specification: llm-verified-eval_tmp_tmpd2deqn_i_dafny_5_intersperse",
-  "source": "Dafny",
-  "translation_date": "2024",
-  "functions": ,
-  "methods":
+"name": "llm-verified-eval_tmp_tmpd2deqn_i_dafny_5_intersperse",
+"category": "Dafny Translation",
+"description": "Automatically translated from Dafny specification: llm-verified-eval_tmp_tmpd2deqn_i_dafny_5_intersperse",
+"source": "Dafny",
+"translation_date": "2024",
+"functions": ,
+"methods":
 }
 -/
 
-namespace DafnyBenchmarks
 
 /--
 Inserts a delimiter between elements of an array of integers.
@@ -32,9 +29,7 @@ Specification for intersperse function:
 3. Odd indices contain the delimiter
 -/
 theorem intersperse_spec (numbers : Array Int) (delimiter : Int) :
-  let result := intersperse numbers delimiter
-  (result.size = if numbers.size > 0 then 2 * numbers.size - 1 else 0) ∧
-  (∀ i, 0 ≤ i ∧ i < result.size → i % 2 = 0 → result[i]! = numbers[i / 2]!) ∧
-  (∀ i, 0 ≤ i ∧ i < result.size → i % 2 = 1 → result[i]! = delimiter) := sorry
-
-end DafnyBenchmarks
+let result := intersperse numbers delimiter
+(result.size = if numbers.size > 0 then 2 * numbers.size - 1 else 0) ∧
+(∀ i, 0 ≤ i ∧ i < result.size → i % 2 = 0 → result[i]! = numbers[i / 2]!) ∧
+(∀ i, 0 ≤ i ∧ i < result.size → i % 2 = 1 → result[i]! = delimiter) := sorry

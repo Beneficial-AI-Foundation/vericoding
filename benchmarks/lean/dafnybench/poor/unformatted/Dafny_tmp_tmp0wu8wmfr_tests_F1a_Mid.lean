@@ -1,20 +1,17 @@
-import Std
 
-open Std.Do
 
 /-!
 {
-  "name": "Dafny_tmp_tmp0wu8wmfr_tests_F1a_Mid",
-  "category": "Dafny Translation",
-  "description": "Automatically translated from Dafny specification: Dafny_tmp_tmp0wu8wmfr_tests_F1a_Mid",
-  "source": "Dafny",
-  "translation_date": "2024",
-  "functions": ,
-  "methods": 
+"name": "Dafny_tmp_tmp0wu8wmfr_tests_F1a_Mid",
+"category": "Dafny Translation",
+"description": "Automatically translated from Dafny specification: Dafny_tmp_tmp0wu8wmfr_tests_F1a_Mid",
+"source": "Dafny",
+"translation_date": "2024",
+"functions": ,
+"methods":
 }
 -/
 
-namespace DafnyBenchmarks
 
 /--
 Translates the Dafny Mid method which finds a middle point between two integers.
@@ -34,10 +31,8 @@ Specification for the Mid method ensuring:
 3. The difference between these distances is at most 1
 -/
 theorem Mid_spec (p q : Int) :
-  p ≤ q →
-  let m := Mid p q
-  (p ≤ m ∧ m ≤ q) ∧
-  (m - p ≤ q - m) ∧
-  (0 ≤ (q - m) - (m - p) ∧ (q - m) - (m - p) ≤ 1) := sorry
-
-end DafnyBenchmarks
+p ≤ q →
+let m := Mid p q
+(p ≤ m ∧ m ≤ q) ∧
+(m - p ≤ q - m) ∧
+(0 ≤ (q - m) - (m - p) ∧ (q - m) - (m - p) ≤ 1) := sorry

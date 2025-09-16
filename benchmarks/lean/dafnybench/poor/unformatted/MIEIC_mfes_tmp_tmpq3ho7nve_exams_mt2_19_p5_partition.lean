@@ -1,20 +1,17 @@
-import Std
 
-open Std.Do
 
 /-!
 {
-  "name": "MIEIC_mfes_tmp_tmpq3ho7nve_exams_mt2_19_p5_partition",
-  "category": "Dafny Translation",
-  "description": "Automatically translated from Dafny specification: MIEIC_mfes_tmp_tmpq3ho7nve_exams_mt2_19_p5_partition",
-  "source": "Dafny",
-  "translation_date": "2024",
-  "functions": ,
-  "methods":
+"name": "MIEIC_mfes_tmp_tmpq3ho7nve_exams_mt2_19_p5_partition",
+"category": "Dafny Translation",
+"description": "Automatically translated from Dafny specification: MIEIC_mfes_tmp_tmpq3ho7nve_exams_mt2_19_p5_partition",
+"source": "Dafny",
+"translation_date": "2024",
+"functions": ,
+"methods":
 }
 -/
 
-namespace DafnyBenchmarks
 
 /--
 Partitions a nonempty array 'a', by reordering the elements in the array,
@@ -33,10 +30,8 @@ Specification for partition method:
 - Ensures multiset of elements is preserved
 -/
 theorem partition_spec (a : Array Int) :
-  a.size > 0 →
-  let pivotPos := partition a
-  0 ≤ pivotPos ∧ pivotPos < a.size ∧
-  (∀ i:Nat, 0 ≤ i ∧ i < pivotPos → a[i]! < a[pivotPos.toNat]!) ∧
-  (∀ i:Nat, pivotPos < i ∧ i < a.size → a[i]! ≥ a[pivotPos.toNat]!) := sorry
-
-end DafnyBenchmarks
+a.size > 0 →
+let pivotPos := partition a
+0 ≤ pivotPos ∧ pivotPos < a.size ∧
+(∀ i:Nat, 0 ≤ i ∧ i < pivotPos → a[i]! < a[pivotPos.toNat]!) ∧
+(∀ i:Nat, pivotPos < i ∧ i < a.size → a[i]! ≥ a[pivotPos.toNat]!) := sorry

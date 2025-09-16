@@ -1,20 +1,17 @@
-import Std
 
-open Std.Do
 
 /-!
 {
-  "name": "dafny-synthesis_task_id_637_IsBreakEven",
-  "category": "Dafny Translation", 
-  "description": "Automatically translated from Dafny specification: dafny-synthesis_task_id_637_IsBreakEven",
-  "source": "Dafny",
-  "translation_date": "2024",
-  "functions": ,
-  "methods": 
+"name": "dafny-synthesis_task_id_637_IsBreakEven",
+"category": "Dafny Translation",
+"description": "Automatically translated from Dafny specification: dafny-synthesis_task_id_637_IsBreakEven",
+"source": "Dafny",
+"translation_date": "2024",
+"functions": ,
+"methods":
 }
 -/
 
-namespace DafnyBenchmarks
 
 /--
 Determines if cost price equals selling price.
@@ -31,7 +28,5 @@ Specification for IsBreakEven:
 - Ensures result is true iff costPrice equals sellingPrice
 -/
 theorem IsBreakEven_spec (costPrice sellingPrice : Int) :
-  costPrice ≥ 0 ∧ sellingPrice ≥ 0 →
-  IsBreakEven costPrice sellingPrice = (costPrice = sellingPrice) := sorry
-
-end DafnyBenchmarks
+costPrice ≥ 0 ∧ sellingPrice ≥ 0 →
+IsBreakEven costPrice sellingPrice = (costPrice = sellingPrice) := sorry

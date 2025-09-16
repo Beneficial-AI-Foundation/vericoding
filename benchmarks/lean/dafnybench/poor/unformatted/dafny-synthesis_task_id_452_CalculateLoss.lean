@@ -1,20 +1,17 @@
-import Std
 
-open Std.Do
 
 /-!
 {
-  "name": "dafny-synthesis_task_id_452_CalculateLoss",
-  "category": "Dafny Translation", 
-  "description": "Automatically translated from Dafny specification: dafny-synthesis_task_id_452_CalculateLoss",
-  "source": "Dafny",
-  "translation_date": "2024",
-  "functions": ,
-  "methods": 
+"name": "dafny-synthesis_task_id_452_CalculateLoss",
+"category": "Dafny Translation",
+"description": "Automatically translated from Dafny specification: dafny-synthesis_task_id_452_CalculateLoss",
+"source": "Dafny",
+"translation_date": "2024",
+"functions": ,
+"methods":
 }
 -/
 
-namespace DafnyBenchmarks
 
 /--
 Calculates the loss amount given cost price and selling price.
@@ -34,8 +31,6 @@ Specification for CalculateLoss:
 - Ensures loss is 0 when cost price is not higher than selling price
 -/
 theorem CalculateLoss_spec (costPrice : Int) (sellingPrice : Int) :
-  costPrice ≥ 0 ∧ sellingPrice ≥ 0 →
-  ((costPrice > sellingPrice → CalculateLoss costPrice sellingPrice = costPrice - sellingPrice) ∧
-   (costPrice ≤ sellingPrice → CalculateLoss costPrice sellingPrice = 0)) := sorry
-
-end DafnyBenchmarks
+costPrice ≥ 0 ∧ sellingPrice ≥ 0 →
+((costPrice > sellingPrice → CalculateLoss costPrice sellingPrice = costPrice - sellingPrice) ∧
+(costPrice ≤ sellingPrice → CalculateLoss costPrice sellingPrice = 0)) := sorry

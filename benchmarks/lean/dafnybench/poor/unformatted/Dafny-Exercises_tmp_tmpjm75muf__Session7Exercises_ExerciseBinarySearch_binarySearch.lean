@@ -1,26 +1,23 @@
-import Std
 
-open Std.Do
 
 /-!
 {
-  "name": "Dafny-Exercises_tmp_tmpjm75muf__Session7Exercises_ExerciseBinarySearch_binarySearch",
-  "category": "Dafny Translation",
-  "description": "Automatically translated from Dafny specification: Dafny-Exercises_tmp_tmpjm75muf__Session7Exercises_ExerciseBinarySearch_binarySearch",
-  "source": "Dafny",
-  "translation_date": "2024",
-  "functions": ,
-  "methods":
+"name": "Dafny-Exercises_tmp_tmpjm75muf__Session7Exercises_ExerciseBinarySearch_binarySearch",
+"category": "Dafny Translation",
+"description": "Automatically translated from Dafny specification: Dafny-Exercises_tmp_tmpjm75muf__Session7Exercises_ExerciseBinarySearch_binarySearch",
+"source": "Dafny",
+"translation_date": "2024",
+"functions": ,
+"methods":
 }
 -/
 
-namespace DafnyBenchmarks
 
 /--
 Predicate indicating if an array is sorted in ascending order.
 -/
 def sorted (s : Array Int) : Prop :=
-  ∀ u w : Nat, u < w → w < s.size → s[u]! ≤ s[w]!
+∀ u w : Nat, u < w → w < s.size → s[u]! ≤ s[w]!
 
 /--
 Binary search implementation that finds the position of an element in a sorted array.
@@ -34,7 +31,7 @@ Returns:
 - Position p such that all elements up to p are ≤ elem and all elements after p are > elem
 -/
 def binarySearch (v : Array Int) (elem : Int) : Int :=
-  sorry
+sorry
 
 /--
 Specification for binary search:
@@ -45,9 +42,7 @@ Specification for binary search:
 
 
 theorem binarySearch_spec (v : Array Int) (elem : Int) :
-  sorted v →
-  0 ≤ binarySearch v elem →
-  (∀ u : Nat, u ≤ Int.toNat (binarySearch v elem) ∧ u < v.size → v[u]! ≤ elem) ∧
-  (∀ w : Nat, Int.toNat (binarySearch v elem) < w ∧ w < v.size → v[w]! > elem) := sorry
-
-end DafnyBenchmarks
+sorted v →
+0 ≤ binarySearch v elem →
+(∀ u : Nat, u ≤ Int.toNat (binarySearch v elem) ∧ u < v.size → v[u]! ≤ elem) ∧
+(∀ w : Nat, Int.toNat (binarySearch v elem) < w ∧ w < v.size → v[w]! > elem) := sorry

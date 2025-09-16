@@ -1,20 +1,17 @@
-import Std
 
-open Std.Do
 
 /-!
 {
-  "name": "dafny-synthesis_task_id_809_IsSmaller",
-  "category": "Dafny Translation",
-  "description": "Automatically translated from Dafny specification: dafny-synthesis_task_id_809_IsSmaller",
-  "source": "Dafny",
-  "translation_date": "2024",
-  "functions": ,
-  "methods":
+"name": "dafny-synthesis_task_id_809_IsSmaller",
+"category": "Dafny Translation",
+"description": "Automatically translated from Dafny specification: dafny-synthesis_task_id_809_IsSmaller",
+"source": "Dafny",
+"translation_date": "2024",
+"functions": ,
+"methods":
 }
 -/
 
-namespace DafnyBenchmarks
 
 /--
 Checks if all elements in array `a` are strictly greater than corresponding elements in array `b`.
@@ -34,8 +31,6 @@ def IsSmaller (a b : Array Int) : Bool := sorry
 
 /-- Specification for IsSmaller -/
 theorem IsSmaller_spec (a b : Array Int) :
-  a.size = b.size →
-  (IsSmaller a b ↔ (∀ i, 0 ≤ i ∧ i < a.size → a[i]! > b[i]!)) ∧
-  (!IsSmaller a b ↔ (∃ i, 0 ≤ i ∧ i < a.size ∧ a[i]! ≤ b[i]!)) := sorry
-
-end DafnyBenchmarks
+a.size = b.size →
+(IsSmaller a b ↔ (∀ i, 0 ≤ i ∧ i < a.size → a[i]! > b[i]!)) ∧
+(!IsSmaller a b ↔ (∃ i, 0 ≤ i ∧ i < a.size ∧ a[i]! ≤ b[i]!)) := sorry
