@@ -1,0 +1,50 @@
+// <vc-preamble>
+// ======= TASK =======
+// Find the greatest common divisor (GCD) of two integers.
+// The GCD is the largest positive integer that divides both numbers without remainder.
+// Special cases: GCD(0, 0) = 0, GCD(0, n) = |n| for n != 0.
+
+// ======= SPEC REQUIREMENTS =======
+function abs(x: int): nat
+{
+    if x >= 0 then x else -x
+}
+
+predicate divides(d: int, n: int)
+{
+    if d == 0 then n == 0 else n % d == 0
+}
+// </vc-preamble>
+
+// <vc-helpers>
+// ======= HELPERS =======
+// </vc-helpers>
+
+// <vc-spec>
+// ======= MAIN METHOD =======
+method greatest_common_divisor(a: int, b: int) returns (result: nat)
+    ensures result > 0 <==> (a != 0 || b != 0)
+    ensures result == 0 <==> (a == 0 && b == 0)
+    ensures divides(result, a) && divides(result, b)
+    ensures forall d: int :: d > 0 && divides(d, a) && divides(d, b) ==> d <= result
+// </vc-spec>
+// <vc-code>
+{
+    var x := abs(a);
+    var y := abs(b);
+
+    while y != 0
+        decreases y
+        invariant y >= 0
+        invariant forall d: int :: divides(d, x) && divides(d, y) <==> divides(d, abs(a)) && divides(d, abs(b))
+        invariant forall d: int :: divides(d, abs(a)) <==> divides(d, a)
+        invariant forall d: int :: divides(d, abs(b)) <==> divides(d, b)
+    {
+        var temp := y;
+        y := x % y;
+        x := temp;
+    }
+
+    result := x;
+}
+// </vc-code>

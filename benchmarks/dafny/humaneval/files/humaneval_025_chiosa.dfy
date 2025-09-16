@@ -1,0 +1,118 @@
+// <vc-preamble>
+predicate isPrime(n: int)
+{
+    n >= 2 && forall k :: 2 <= k < n ==> n % k != 0
+}
+
+function product(factors: seq<int>): int
+{
+    if |factors| == 0 then 1
+    else factors[0] * product(factors[1..])
+}
+
+predicate isNonDecreasing(factors: seq<int>)
+{
+    forall i, j :: 0 <= i < j < |factors| ==> factors[i] <= factors[j]
+}
+// </vc-preamble>
+
+// <vc-helpers>
+lemma ProductAppend(factors: seq<int>, x: int)
+    ensures product(factors + [x]) == product(factors) * x
+{
+    if |factors| == 0 {
+        assert factors + [x] == [x];
+        assert product([x]) == x * product([]) == x * 1 == x;
+        assert product(factors) * x == 1 * x == x;
+    } else {
+        assert (factors + [x])[0] == factors[0];
+        assert (factors + [x])[1..] == factors[1..] + [x];
+        ProductAppend(factors[1..], x);
+        assert product(factors[1..] + [x]) == product(factors[1..]) * x;
+        assert product(factors + [x]) == factors[0] * product(factors[1..] + [x]);
+        assert product(factors + [x]) == factors[0] * product(factors[1..]) * x;
+        assert product(factors + [x]) == product(factors) * x;
+    }
+}
+// </vc-helpers>
+
+// <vc-spec>
+method factorize(n: int) returns (factors: seq<int>)
+    ensures n <= 1 ==> |factors| == 0
+    ensures n > 1 ==> product(factors) == n
+    ensures forall i :: 0 <= i < |factors| ==> isPrime(factors[i])
+    ensures isNonDecreasing(factors)
+    ensures forall i :: 0 <= i < |factors| ==> factors[i] >= 2
+// </vc-spec>
+// <vc-code>
+{
+    factors := [];
+
+    if n <= 1 {
+        return;
+    }
+
+    var current := n;
+
+    // Handle factor 2
+    while current % 2 == 0
+        decreases current
+        invariant current >= 1
+        invariant product(factors) * current == n
+        invariant forall i :: 0 <= i < |factors| ==> isPrime(factors[i])
+        invariant forall i :: 0 <= i < |factors| ==> factors[i] == 2
+        invariant isNonDecreasing(factors)
+        invariant forall i :: 0 <= i < |factors| ==> factors[i] >= 2
+    {
+        ProductAppend(factors, 2);
+        factors := factors + [2];
+        current := current / 2;
+    }
+
+    // Handle odd factors starting from 3
+    var factor := 3;
+    while factor * factor <= current
+        invariant factor >= 3
+        invariant factor % 2 == 1
+        invariant current >= 1
+        invariant product(factors) * current == n
+        invariant forall k :: 2 <= k < factor ==> current % k != 0
+        invariant forall i :: 0 <= i < |factors| ==> isPrime(factors[i])
+        invariant isNonDecreasing(factors)
+        invariant forall i :: 0 <= i < |factors| ==> factors[i] >= 2
+        invariant forall i :: 0 <= i < |factors| ==> factors[i] <= factor
+    {
+        if current % factor == 0 {
+            // Check if factor is prime
+            assert forall k :: 2 <= k < factor ==> factor % k != 0;
+            assert isPrime(factor);
+        }
+
+        while current % factor == 0
+            decreases current
+            invariant current >= 1
+            invariant factor >= 3
+            invariant forall k :: 2 <= k < factor ==> current % k != 0
+            invariant isPrime(factor)
+            invariant product(factors) * current == n
+            invariant forall i :: 0 <= i < |factors| ==> isPrime(factors[i])
+            invariant isNonDecreasing(factors)
+            invariant forall i :: 0 <= i < |factors| ==> factors[i] >= 2
+            invariant forall i :: 0 <= i < |factors| ==> factors[i] <= factor
+        {
+            ProductAppend(factors, factor);
+            factors := factors + [factor];
+            current := current / factor;
+        }
+        factor := factor + 2;
+    }
+
+    // If current > 1, it's a prime factor
+    if current > 1 {
+        assert forall k :: 2 <= k < current ==> current % k != 0;
+        assert isPrime(current);
+        ProductAppend(factors, current);
+        factors := factors + [current];
+    }
+}
+// </vc-code>
