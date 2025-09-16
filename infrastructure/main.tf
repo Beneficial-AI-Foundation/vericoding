@@ -269,6 +269,15 @@ resource "aws_batch_job_definition" "lean_verification" {
     mountPoints = []
     volumes     = []
     
+    logConfiguration = {
+      logDriver = "awslogs"
+      options = {
+        awslogs-group         = "/aws/batch/job"
+        awslogs-region        = "eu-west-2"
+        awslogs-stream-prefix = "lean-verification"
+      }
+    }
+    
     ulimits = []
   })
   
