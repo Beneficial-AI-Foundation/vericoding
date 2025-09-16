@@ -189,9 +189,9 @@ resource "aws_batch_compute_environment" "vericoding_compute_env" {
     type                = "SPOT"
     allocation_strategy = "SPOT_CAPACITY_OPTIMIZED"
     
-    min_vcpus     = 0    # Scale to 0 when idle
-    max_vcpus     = 80   # 10 machines * 8 vCPUs each
-    desired_vcpus = 0    # Target 0 instances
+    min_vcpus     = 8    # Keep 1 instance always running
+    max_vcpus     = 80   # 10 machines * 8 vCPUs each  
+    desired_vcpus = 8    # Target 1 instance always running
     
     instance_type = ["c8g.2xlarge"]
     
