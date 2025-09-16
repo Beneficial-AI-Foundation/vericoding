@@ -1,0 +1,33 @@
+vc-description: |-
+  /- 
+  {
+  "name": "dafny-synthesis_task_id_641_NthNonagonalNumber",
+  "category": "Dafny Translation",
+  "description": "Automatically translated from Dafny specification: dafny-synthesis_task_id_641_NthNonagonalNumber",
+  "source": "Dafny",
+  "translation_date": "2024",
+  "functions": ,
+  "methods":
+  }
+  -/
+  
+  /- 
+  Calculates the nth nonagonal number.
+  Translated from Dafny method that requires n ≥ 0 and ensures result equals n*(7n-5)/2
+  -/
+
+vc-preamble: |-
+
+vc-helpers: |-
+
+vc-definitions: |-
+  def NthNonagonalNumber (n : Int) : Int :=
+  sorry
+
+vc-theorems: |-
+  theorem NthNonagonalNumber_spec (n : Int) :
+  n ≥ 0 → NthNonagonalNumber n = n * (7 * n - 5) / 2 :=
+  sorry
+
+vc-postamble: |-
+

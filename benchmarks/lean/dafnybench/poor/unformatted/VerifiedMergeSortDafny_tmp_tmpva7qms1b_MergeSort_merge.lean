@@ -12,13 +12,17 @@
 }
 -/
 
+/-- Count occurrences of element x in array a -/
+def count (a : Array Int) (x : Int) : Nat :=
+a.foldl (fun acc y => if y = x then acc + 1 else acc) 0
+
 
 /-- Predicate indicating if two sequences are merged into an array slice -/
 def merged (a1 : Array Int) (a2 : Array Int) (b : Array Int) (start : Int) (end_ : Int) : Bool :=
 end_ - start == a1.size + a2.size ∧
 0 ≤ start ∧ start ≤ end_ ∧ end_ ≤ b.size ∧
--- Note: Multiset equality translated to basic size check for simplicity
-a1.size + a2.size == end_ - start
+-- Multiset equality: same count for each element in the slice
+(∀ x : Int, count a1 x + count a2 x = count (b.extract start.toNat end_.toNat) x)
 
 /-- Predicate indicating if an array slice is sorted -/
 def sorted_slice (a : Array Int) (start : Int) (end_ : Int) : Prop :=

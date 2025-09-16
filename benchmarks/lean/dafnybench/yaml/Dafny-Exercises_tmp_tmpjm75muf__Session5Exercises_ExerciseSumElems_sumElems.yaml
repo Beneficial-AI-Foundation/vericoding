@@ -1,0 +1,55 @@
+vc-description: |-
+  /- 
+  {
+  "name": "Dafny-Exercises_tmp_tmpjm75muf__Session5Exercises_ExerciseSumElems_sumElems",
+  "category": "Dafny Translation",
+  "description": "Automatically translated from Dafny specification: Dafny-Exercises_tmp_tmpjm75muf__Session5Exercises_ExerciseSumElems_sumElems",
+  "source": "Dafny",
+  "translation_date": "2024",
+  "functions": ,
+  "methods":
+  }
+  -/
+  
+  /-  Recursive sum function that sums elements from right to left -/
+  
+  /-  Recursive sum function that sums elements from left to right -/
+  
+  /-  Helper function to sum array elements in range [c,f) -/
+  
+  /-  Specification for SumV requiring valid array bounds -/
+  
+  /-  Main method to sum all elements in an array -/
+  
+  /-  Specification ensuring sumElems returns the sum of all elements -/
+
+vc-preamble: |-
+  partial def SumR (s : Array Int) : Int :=
+  if s.size = 0 then 0
+  else SumR (s.extract 0 (s.size - 1)) + s[s.size - 1]!
+  
+  partial def SumL (s : Array Int) : Int :=
+  if s.size = 0 then 0
+  else s[0]! + SumL (s.extract 1 s.size)
+  
+  def SumV (v : Array Int) (c : Nat) (f : Nat) : Int :=
+  SumR (v.extract c f)
+
+vc-helpers: |-
+
+vc-definitions: |-
+  def sumElems (v : Array Int) : Int :=
+  sorry
+
+vc-theorems: |-
+  theorem SumV_spec (v : Array Int) (c f : Nat) :
+  0 ≤ c ∧ c ≤ f ∧ f ≤ v.size →
+  SumV v c f = SumR (v.extract c f) :=
+  sorry
+  
+  theorem sumElems_spec (v : Array Int) :
+  sumElems v = SumR v :=
+  sorry
+
+vc-postamble: |-
+

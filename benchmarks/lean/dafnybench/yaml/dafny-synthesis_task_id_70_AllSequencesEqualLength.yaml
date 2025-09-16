@@ -1,0 +1,37 @@
+vc-description: |-
+  /- 
+  {
+  "name": "dafny-synthesis_task_id_70_AllSequencesEqualLength",
+  "category": "Dafny Translation",
+  "description": "Automatically translated from Dafny specification: dafny-synthesis_task_id_70_AllSequencesEqualLength",
+  "source": "Dafny",
+  "translation_date": "2024",
+  "functions": ,
+  "methods":
+  }
+  -/
+  
+  /- 
+  Checks if all sequences in the input array have equal length.
+  
+  @param sequences Array of integer arrays to check
+  @return True if all sequences have the same length, false otherwise
+  -/
+
+vc-preamble: |-
+
+vc-helpers: |-
+
+vc-definitions: |-
+  def AllSequencesEqualLength (sequences : Array (Array Int)) : Bool :=
+  sorry
+
+vc-theorems: |-
+  theorem AllSequencesEqualLength_spec (sequences : Array (Array Int)) :
+  AllSequencesEqualLength sequences ↔
+  (∀ i j, 0 ≤ i ∧ i < sequences.size ∧ 0 ≤ j ∧ j < sequences.size →
+  (sequences[i]!).size = (sequences[j]!).size) :=
+  sorry
+
+vc-postamble: |-
+

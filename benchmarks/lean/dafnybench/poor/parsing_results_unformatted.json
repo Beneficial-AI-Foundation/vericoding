@@ -1374,11 +1374,15 @@
       },
       {
         "type": "doc",
-        "string": "/-- Recursive sum function over array slice -/\n\npartial def sum (a : Array Int) (i j : Int) : Int :=\n\nif i == j then\n\n0\n\nelse\n\na[(j-1).toNat]! + sum a i (j-1)\n"
+        "string": "/-- Recursive sum function over array slice -/\n"
       },
       {
-        "type": "empty",
-        "string": ""
+        "type": "sig",
+        "string": "partial def sum (a : Array Int) (i j : Int) : Int :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "if i == j then\n0\nelse\na[(j-1).toNat]! + sum a i (j-1)\n\n"
       },
       {
         "type": "doc",
@@ -1475,11 +1479,15 @@
       },
       {
         "type": "doc",
-        "string": "/-- Recursive sum function over array slice -/\n\npartial def sum (a : Array Int) (i j : Int) : Int :=\n\nif i = j then\n\n0\n\nelse\n\na[(j-1).toNat]! + sum a i (j-1)\n"
+        "string": "/-- Recursive sum function over array slice -/\n"
       },
       {
-        "type": "empty",
-        "string": ""
+        "type": "sig",
+        "string": "partial def sum (a : Array Int) (i j : Int) : Int :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "if i = j then\n0\nelse\na[(j-1).toNat]! + sum a i (j-1)\n\n"
       },
       {
         "type": "doc",
@@ -1564,11 +1572,15 @@
       },
       {
         "type": "doc",
-        "string": "/-- Recursive sum function over array slice from index i to j -/\n\npartial def sum (a : Array Int) (i j : Int) : Int :=\n\nif i = j then 0\n\nelse a[i.toNat]! + sum a (i+1) j\n"
+        "string": "/-- Recursive sum function over array slice from index i to j -/\n"
       },
       {
-        "type": "empty",
-        "string": ""
+        "type": "sig",
+        "string": "partial def sum (a : Array Int) (i j : Int) : Int :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "if i = j then 0\nelse a[i.toNat]! + sum a (i+1) j\n\n"
       },
       {
         "type": "doc",
@@ -1617,11 +1629,15 @@
       },
       {
         "type": "doc",
-        "string": "/-- Recursive sum function over array slice from index i to j -/\n\npartial def sum (a : Array Int) (i j : Int) : Int :=\n\nif i = j then 0\n\nelse a[i.toNat]! + sum a (i+1) j\n"
+        "string": "/-- Recursive sum function over array slice from index i to j -/\n"
       },
       {
-        "type": "empty",
-        "string": ""
+        "type": "sig",
+        "string": "partial def sum (a : Array Int) (i j : Int) : Int :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "if i = j then 0\nelse a[i.toNat]! + sum a (i+1) j\n\n"
       },
       {
         "type": "doc",
@@ -3887,11 +3903,27 @@
       },
       {
         "type": "doc",
-        "string": "/-- Recursive sum function that sums elements from right to left -/\n\npartial def SumR (s : Array Int) : Int :=\n\nif s.size = 0 then 0\n\nelse SumR (s.extract 0 (s.size - 1)) + s[s.size - 1]!\n\n\n/-- Recursive sum function that sums elements from left to right -/\n\npartial def SumL (s : Array Int) : Int :=\n\nif s.size = 0 then 0\n\nelse s[0]! + SumL (s.extract 1 s.size)\n"
+        "string": "/-- Recursive sum function that sums elements from right to left -/\n"
       },
       {
-        "type": "empty",
-        "string": ""
+        "type": "sig",
+        "string": "partial def SumR (s : Array Int) : Int :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "if s.size = 0 then 0\nelse SumR (s.extract 0 (s.size - 1)) + s[s.size - 1]!\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- Recursive sum function that sums elements from left to right -/\n"
+      },
+      {
+        "type": "sig",
+        "string": "partial def SumL (s : Array Int) : Int :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "if s.size = 0 then 0\nelse s[0]! + SumL (s.extract 1 s.size)\n\n"
       },
       {
         "type": "doc",
@@ -3952,11 +3984,27 @@
       },
       {
         "type": "doc",
-        "string": "/-- Recursive sum of array elements from right to left -/\n\npartial def SumR (s : Array Int) : Int :=\n\nif s.size = 0 then 0\n\nelse SumR (s.extract 0 (s.size - 1)) + s[s.size - 1]!\n\ndecreasing_by sorry\n\n\n/-- Recursive sum of array elements from left to right -/\n\npartial def SumL (s : Array Int) : Int :=\n\nif s.size = 0 then 0\n\nelse s[0]! + SumL (s.extract 1 s.size)\n\ndecreasing_by sorry\n"
+        "string": "/-- Recursive sum of array elements from right to left -/\n"
       },
       {
-        "type": "empty",
-        "string": ""
+        "type": "sig",
+        "string": "partial def SumR (s : Array Int) : Int :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "if s.size = 0 then 0\nelse SumR (s.extract 0 (s.size - 1)) + s[s.size - 1]!\ndecreasing_by all_goals simp_wf; omega\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- Recursive sum of array elements from left to right -/\n"
+      },
+      {
+        "type": "sig",
+        "string": "partial def SumL (s : Array Int) : Int :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "if s.size = 0 then 0\nelse s[0]! + SumL (s.extract 1 s.size)\ndecreasing_by all_goals simp_wf; omega\n\n"
       },
       {
         "type": "doc",
@@ -4029,11 +4077,15 @@
       },
       {
         "type": "doc",
-        "string": "/-- Function that counts even numbers in an array -/\n\npartial def CountEven (s : Array Int) : Int :=\n\nif s.size = 0 then 0\n\nelse\n\nlet last := s[s.size - 1]!\n\nlet rest := s.extract 0 (s.size - 1)\n\n(if last % 2 = 0 then 1 else 0) + CountEven rest\n"
+        "string": "/-- Function that counts even numbers in an array -/\n"
       },
       {
-        "type": "empty",
-        "string": ""
+        "type": "sig",
+        "string": "partial def CountEven (s : Array Int) : Int :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "if s.size = 0 then 0\nelse\nlet last := s[s.size - 1]!\nlet rest := s.extract 0 (s.size - 1)\n(if last % 2 = 0 then 1 else 0) + CountEven rest\n\n"
       },
       {
         "type": "doc",
@@ -4070,11 +4122,15 @@
       },
       {
         "type": "doc",
-        "string": "/-- Finds minimum value in array up to index i -/\n\npartial def min (v : Array Int) (i : Nat) : Int :=\n\nif i = 1 then v[0]!\n\nelse if v[i-1]! \u2264 min v (i-1) then v[i-1]!\n\nelse min v (i-1)\n"
+        "string": "/-- Finds minimum value in array up to index i -/\n"
       },
       {
-        "type": "empty",
-        "string": ""
+        "type": "sig",
+        "string": "partial def min (v : Array Int) (i : Nat) : Int :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "if i = 1 then v[0]!\nelse if v[i-1]! \u2264 min v (i-1) then v[i-1]!\nelse min v (i-1)\n\n"
       },
       {
         "type": "doc",
@@ -4090,11 +4146,15 @@
       },
       {
         "type": "doc",
-        "string": "/-- Counts occurrences of x in array up to index i -/\n\npartial def countMin (v : Array Int) (x : Int) (i : Nat) : Int :=\n\nif i = 0 then 0\n\nelse if v[i-1]! = x then 1 + countMin v x (i-1)\n\nelse countMin v x (i-1)\n"
+        "string": "/-- Counts occurrences of x in array up to index i -/\n"
       },
       {
-        "type": "empty",
-        "string": ""
+        "type": "sig",
+        "string": "partial def countMin (v : Array Int) (x : Int) (i : Nat) : Int :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "if i = 0 then 0\nelse if v[i-1]! = x then 1 + countMin v x (i-1)\nelse countMin v x (i-1)\n\n"
       },
       {
         "type": "doc",
@@ -4155,11 +4215,15 @@
       },
       {
         "type": "doc",
-        "string": "/-- Function that computes sum of all peak elements up to index i -/\n\npartial def peekSum (v : Array Int) (i : Nat) : Int :=\n\nif i = 0 then 0\n\nelse if isPeek v (i-1) then v[i-1]! + peekSum v (i-1)\n\nelse peekSum v (i-1)\n"
+        "string": "/-- Function that computes sum of all peak elements up to index i -/\n"
       },
       {
-        "type": "empty",
-        "string": ""
+        "type": "sig",
+        "string": "partial def peekSum (v : Array Int) (i : Nat) : Int :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "if i = 0 then 0\nelse if isPeek v (i-1) then v[i-1]! + peekSum v (i-1)\nelse peekSum v (i-1)\n\n"
       },
       {
         "type": "doc",
@@ -4706,11 +4770,15 @@
       },
       {
         "type": "doc",
-        "string": "/-- Sum function that computes sum of array elements from index i to j-1 -/\n\npartial def Sum_ (v : Array Int) (i j : Int) : Int :=\n\nif i = j then 0\n\nelse Sum_ v i (j-1) + v[(j-1).toNat]!\n"
+        "string": "/-- Sum function that computes sum of array elements from index i to j-1 -/\n"
       },
       {
-        "type": "empty",
-        "string": ""
+        "type": "sig",
+        "string": "partial def Sum_ (v : Array Int) (i j : Int) : Int :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "if i = j then 0\nelse Sum_ v i (j-1) + v[(j-1).toNat]!\n\n"
       },
       {
         "type": "doc",
@@ -4726,11 +4794,15 @@
       },
       {
         "type": "doc",
-        "string": "/-- Alternative sum function computing from left to right -/\n\npartial def Sum2 (v : Array Int) (i j : Int) : Int :=\n\nif i = j then 0\n\nelse v[i.toNat]! + Sum2 v (i+1) j\n"
+        "string": "/-- Alternative sum function computing from left to right -/\n"
       },
       {
-        "type": "empty",
-        "string": ""
+        "type": "sig",
+        "string": "partial def Sum2 (v : Array Int) (i j : Int) : Int :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "if i = j then 0\nelse v[i.toNat]! + Sum2 v (i+1) j\n\n"
       },
       {
         "type": "doc",
@@ -4758,7 +4830,7 @@
       },
       {
         "type": "doc",
-        "string": "/-- Implementation of segMaxSum (using sorry) -/\n"
+        "string": "/-- Implementation of segMaxSum -/\n"
       },
       {
         "type": "sig",
@@ -4779,11 +4851,15 @@
       },
       {
         "type": "doc",
-        "string": "/-- Sum function that computes sum of array elements from index i to j-1 -/\n\npartial def Sum_ (v : Array Int) (i j : Int) : Int :=\n\nif i = j then 0\n\nelse Sum_ v i (j-1) + v[(j-1).toNat]!\n"
+        "string": "/-- Sum function that computes sum of array elements from index i to j-1 -/\n"
       },
       {
-        "type": "empty",
-        "string": ""
+        "type": "sig",
+        "string": "partial def Sum_ (v : Array Int) (i j : Int) : Int :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "if i = j then 0\nelse Sum_ v i (j-1) + v[(j-1).toNat]!\n\n"
       },
       {
         "type": "doc",
@@ -4799,11 +4875,15 @@
       },
       {
         "type": "doc",
-        "string": "/-- Alternative sum function computing sum from i to j -/\n\npartial def Sum2 (v : Array Int) (i j : Int) : Int :=\n\nif i = j then 0\n\nelse v[i.toNat]! + Sum2 v (i+1) j\n"
+        "string": "/-- Alternative sum function computing sum from i to j -/\n"
       },
       {
-        "type": "empty",
-        "string": ""
+        "type": "sig",
+        "string": "partial def Sum2 (v : Array Int) (i j : Int) : Int :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "if i = j then 0\nelse v[i.toNat]! + Sum2 v (i+1) j\n\n"
       },
       {
         "type": "doc",
@@ -5013,7 +5093,7 @@
       }
     ]
   },
-  "Dafny-Practice_tmp_tmphnmt4ovh_Pattern Matching_FindAllOccurrences.lean": {
+  "Dafny-Practice_tmp_tmphnmt4ovh_Pattern_Matching_FindAllOccurrences.lean": {
     "status": "ok",
     "results": [
       {
@@ -5153,7 +5233,7 @@
       }
     ]
   },
-  "Dafny-programs_tmp_tmpnso9eu7u_Algorithms + sorting_bubble-sort_BubbleSort.lean": {
+  "Dafny-programs_tmp_tmpnso9eu7u_Algorithms_+_sorting_bubble-sort_BubbleSort.lean": {
     "status": "ok",
     "results": [
       {
@@ -5410,11 +5490,15 @@
       },
       {
         "type": "doc",
-        "string": "/--\nRecursive function to calculate combinations C(n,k) using Pascal's identity.\nRequires 0 \u2264 k \u2264 n\n-/\n\npartial def comb (n : Nat) (k : Nat) : Nat :=\n\nif k == 0 \u2228 k == n then 1\n\nelse comb (n-1) k + comb (n-1) (k-1)\n"
+        "string": "/--\nRecursive function to calculate combinations C(n,k) using Pascal's identity.\nRequires 0 \u2264 k \u2264 n\n-/\n"
       },
       {
-        "type": "empty",
-        "string": ""
+        "type": "sig",
+        "string": "partial def comb (n : Nat) (k : Nat) : Nat :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "if k == 0 \u2228 k == n then 1\nelse comb (n-1) k + comb (n-1) (k-1)\n\n"
       },
       {
         "type": "doc",
@@ -5565,7 +5649,7 @@
       }
     ]
   },
-  "Dafny_Learning_Experience_tmp_tmpuxvcet_u_week1_7_A2_Q1_trimmed copy - \u526f\u672c_ComputeCount.lean": {
+  "Dafny_Learning_Experience_tmp_tmpuxvcet_u_week1_7_A2_Q1_trimmed_copy_-_\u526f\u672c_ComputeCount.lean": {
     "status": "ok",
     "results": [
       {
@@ -5610,7 +5694,7 @@
       }
     ]
   },
-  "Dafny_Learning_Experience_tmp_tmpuxvcet_u_week1_7_A2_Q1_trimmed copy - \u526f\u672c_FooCount.lean": {
+  "Dafny_Learning_Experience_tmp_tmpuxvcet_u_week1_7_A2_Q1_trimmed_copy_-_\u526f\u672c_FooCount.lean": {
     "status": "ok",
     "results": [
       {
@@ -5655,7 +5739,7 @@
       }
     ]
   },
-  "Dafny_Learning_Experience_tmp_tmpuxvcet_u_week1_7_A2_Q1_trimmed copy - \u526f\u672c_PreCompute.lean": {
+  "Dafny_Learning_Experience_tmp_tmpuxvcet_u_week1_7_A2_Q1_trimmed_copy_-_\u526f\u672c_PreCompute.lean": {
     "status": "ok",
     "results": [
       {
@@ -6096,11 +6180,15 @@
       },
       {
         "type": "doc",
-        "string": "/--\nRecursively counts occurrences of value v in array a up to index n.\nTranslated from Dafny function has_count.\n-/\n\npartial def has_count (v : Int) (a : Array Int) (n : Int) : Int :=\n\nif n == 0 then 0\n\nelse if a[(n-1).toNat]! == v\n\nthen has_count v a (n-1) + 1\n\nelse has_count v a (n-1)\n"
+        "string": "/--\nRecursively counts occurrences of value v in array a up to index n.\nTranslated from Dafny function has_count.\n-/\n"
       },
       {
-        "type": "empty",
-        "string": ""
+        "type": "sig",
+        "string": "partial def has_count (v : Int) (a : Array Int) (n : Int) : Int :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "if n == 0 then 0\nelse if a[(n-1).toNat]! == v\nthen has_count v a (n-1) + 1\nelse has_count v a (n-1)\n\n"
       },
       {
         "type": "doc",
@@ -6190,7 +6278,7 @@
       }
     ]
   },
-  "Dafny_tmp_tmp0wu8wmfr_Heimaverkefni 1_LinearSearch_SearchLoop.lean": {
+  "Dafny_tmp_tmp0wu8wmfr_Heimaverkefni_1_LinearSearch_SearchLoop.lean": {
     "status": "ok",
     "results": [
       {
@@ -6223,7 +6311,7 @@
       }
     ]
   },
-  "Dafny_tmp_tmp0wu8wmfr_Heimaverkefni 1_LinearSearch_SearchRecursive.lean": {
+  "Dafny_tmp_tmp0wu8wmfr_Heimaverkefni_1_LinearSearch_SearchRecursive.lean": {
     "status": "ok",
     "results": [
       {
@@ -6256,7 +6344,7 @@
       }
     ]
   },
-  "Dafny_tmp_tmp0wu8wmfr_Heimaverkefni 2_BinarySearchDec_SearchRecursive.lean": {
+  "Dafny_tmp_tmp0wu8wmfr_Heimaverkefni_2_BinarySearchDec_SearchRecursive.lean": {
     "status": "ok",
     "results": [
       {
@@ -6289,7 +6377,7 @@
       }
     ]
   },
-  "Dafny_tmp_tmp0wu8wmfr_Heimaverkefni 3_InsertionSortMultiset_Search.lean": {
+  "Dafny_tmp_tmp0wu8wmfr_Heimaverkefni_3_InsertionSortMultiset_Search.lean": {
     "status": "ok",
     "results": [
       {
@@ -6322,7 +6410,7 @@
       }
     ]
   },
-  "Dafny_tmp_tmp0wu8wmfr_Heimaverkefni 3_InsertionSortMultiset_Sort.lean": {
+  "Dafny_tmp_tmp0wu8wmfr_Heimaverkefni_3_InsertionSortMultiset_Sort.lean": {
     "status": "ok",
     "results": [
       {
@@ -6379,7 +6467,7 @@
       }
     ]
   },
-  "Dafny_tmp_tmp0wu8wmfr_Heimaverkefni 3_SelectionSortMultiset_Sort.lean": {
+  "Dafny_tmp_tmp0wu8wmfr_Heimaverkefni_3_SelectionSortMultiset_Sort.lean": {
     "status": "ok",
     "results": [
       {
@@ -6436,7 +6524,7 @@
       }
     ]
   },
-  "Dafny_tmp_tmp0wu8wmfr_Heimaverkefni 8_H8_Partition.lean": {
+  "Dafny_tmp_tmp0wu8wmfr_Heimaverkefni_8_H8_Partition.lean": {
     "status": "ok",
     "results": [
       {
@@ -6552,11 +6640,15 @@
       },
       {
         "type": "doc",
-        "string": "/--\nIs2Pow(n) is true iff n==2^k for some k>=0.\nTranslated from Dafny predicate.\n-/\n\npartial def Is2Pow (n : Int) : Bool :=\n\nif n < 1 then\n\nfalse\n\nelse if n == 1 then\n\ntrue\n\nelse\n\nn % 2 == 0 \u2227 Is2Pow (n/2)\n"
+        "string": "/--\nIs2Pow(n) is true iff n==2^k for some k>=0.\nTranslated from Dafny predicate.\n-/\n"
       },
       {
-        "type": "empty",
-        "string": ""
+        "type": "sig",
+        "string": "partial def Is2Pow (n : Int) : Bool :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "if n < 1 then\nfalse\nelse if n == 1 then\ntrue\nelse\nn % 2 == 0 \u2227 Is2Pow (n/2)\n\n"
       },
       {
         "type": "doc",
@@ -6593,11 +6685,15 @@
       },
       {
         "type": "doc",
-        "string": "/--\nIs2Pow(n) is true iff n==2^k for some k>=0.\nTranslated from Dafny predicate.\n-/\n\npartial def Is2Pow (n : Int) : Bool :=\n\nif n < 1 then\n\nfalse\n\nelse if n == 1 then\n\ntrue\n\nelse\n\nn % 2 == 0 \u2227 Is2Pow (n/2)\n"
+        "string": "/--\nIs2Pow(n) is true iff n==2^k for some k>=0.\nTranslated from Dafny predicate.\n-/\n"
       },
       {
-        "type": "empty",
-        "string": ""
+        "type": "sig",
+        "string": "partial def Is2Pow (n : Int) : Bool :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "if n < 1 then\nfalse\nelse if n == 1 then\ntrue\nelse\nn % 2 == 0 \u2227 Is2Pow (n/2)\n\n"
       },
       {
         "type": "doc",
@@ -6634,11 +6730,15 @@
       },
       {
         "type": "doc",
-        "string": "/-- Is2Pow(n) is true iff n==2^k for some k>=0 -/\n\npartial def Is2Pow (n : Int) : Bool :=\n\nif n < 1 then\n\nfalse\n\nelse if n == 1 then\n\ntrue\n\nelse\n\nn % 2 == 0 \u2227 Is2Pow (n/2)\n"
+        "string": "/-- Is2Pow(n) is true iff n==2^k for some k>=0 -/\n"
       },
       {
-        "type": "empty",
-        "string": ""
+        "type": "sig",
+        "string": "partial def Is2Pow (n : Int) : Bool :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "if n < 1 then\nfalse\nelse if n == 1 then\ntrue\nelse\nn % 2 == 0 \u2227 Is2Pow (n/2)\n\n"
       },
       {
         "type": "doc",
@@ -6675,11 +6775,15 @@
       },
       {
         "type": "doc",
-        "string": "/--\nRecursive function that computes sum of integers from 1 to n.\nTranslated from Dafny's sumInts function.\n-/\n\npartial def sumInts (n : Int) : Int :=\n\nif n == 0 then 0\n\nelse sumInts (n-1) + n\n"
+        "string": "/--\nRecursive function that computes sum of integers from 1 to n.\nTranslated from Dafny's sumInts function.\n-/\n"
       },
       {
-        "type": "empty",
-        "string": ""
+        "type": "sig",
+        "string": "partial def sumInts (n : Int) : Int :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "if n == 0 then 0\nelse sumInts (n-1) + n\n\n"
       },
       {
         "type": "doc",
@@ -6794,11 +6898,15 @@
       },
       {
         "type": "doc",
-        "string": "/-- Translation of Dafny gcd function with requirements m > 0 and n > 0 -/\n\npartial def gcd (m n : Nat) : Nat :=\n\nif m = n then n\n\nelse if m > n then gcd (m - n) n\n\nelse gcd m (n - m)\n"
+        "string": "/-- Translation of Dafny gcd function with requirements m > 0 and n > 0 -/\n"
       },
       {
-        "type": "empty",
-        "string": ""
+        "type": "sig",
+        "string": "partial def gcd (m n : Nat) : Nat :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "if m = n then n\nelse if m > n then gcd (m - n) n\nelse gcd m (n - m)\n\n"
       },
       {
         "type": "doc",
@@ -6859,11 +6967,15 @@
       },
       {
         "type": "doc",
-        "string": "/-- Translation of Dafny gcd function -/\n\npartial def gcd (m n : Nat) : Nat :=\n\nif m = n then n\n\nelse if m > n then gcd (m - n) n\n\nelse gcd m (n - m)\n"
+        "string": "/-- Translation of Dafny gcd function -/\n"
       },
       {
-        "type": "empty",
-        "string": ""
+        "type": "sig",
+        "string": "partial def gcd (m n : Nat) : Nat :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "if m = n then n\nelse if m > n then gcd (m - n) n\nelse gcd m (n - m)\n\n"
       },
       {
         "type": "doc",
@@ -6924,11 +7036,15 @@
       },
       {
         "type": "doc",
-        "string": "/--\nRecursive GCD function translated from Dafny.\nRequires both inputs to be positive natural numbers.\n-/\n\npartial def gcd (m n : Nat) : Nat :=\n\nif m = n then n\n\nelse if m > n then gcd (m - n) n\n\nelse gcd m (n - m)\n"
+        "string": "/--\nRecursive GCD function translated from Dafny.\nRequires both inputs to be positive natural numbers.\n-/\n"
       },
       {
-        "type": "empty",
-        "string": ""
+        "type": "sig",
+        "string": "partial def gcd (m n : Nat) : Nat :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "if m = n then n\nelse if m > n then gcd (m - n) n\nelse gcd m (n - m)\n\n"
       },
       {
         "type": "doc",
@@ -7148,11 +7264,15 @@
       },
       {
         "type": "doc",
-        "string": "/--\nRecursively computes sum of array elements up to index i.\nTranslated from Dafny function sum.\n-/\n\npartial def sum (a : Array Int) (i : Nat) : Int :=\n\nif i == 0 then\n\na[0]!\n\nelse\n\na[i]! + sum a (i - 1)\n"
+        "string": "/--\nRecursively computes sum of array elements up to index i.\nTranslated from Dafny function sum.\n-/\n"
       },
       {
-        "type": "empty",
-        "string": ""
+        "type": "sig",
+        "string": "partial def sum (a : Array Int) (i : Nat) : Int :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "if i == 0 then\na[0]!\nelse\na[i]! + sum a (i - 1)\n\n"
       },
       {
         "type": "doc",
@@ -8556,7 +8676,7 @@
       }
     ]
   },
-  "Formal-methods-of-software-development_tmp_tmppryvbyty_Bloque 2_Lab6_vector_Sum.lean": {
+  "Formal-methods-of-software-development_tmp_tmppryvbyty_Bloque_2_Lab6_vector_Sum.lean": {
     "status": "ok",
     "results": [
       {
@@ -8565,11 +8685,27 @@
       },
       {
         "type": "doc",
-        "string": "/-- Sum of a sequence of integers -/\n\npartial def sum (v : Array Int) : Int :=\n\nif v.size = 0 then 0\n\nelse if v.size = 1 then v[0]!\n\nelse v[0]! + sum (v.extract 1 v.size)\n\n\n/-- Scalar product of two integer vectors -/\n\npartial def scalar_product (v1 v2 : Array Int) : Int :=\n\nif v1.size = 0 then 0\n\nelse v1[0]! * v2[0]! + scalar_product (v1.extract 1 v1.size) (v2.extract 1 v2.size)\n"
+        "string": "/-- Sum of a sequence of integers -/\n"
       },
       {
-        "type": "empty",
-        "string": ""
+        "type": "sig",
+        "string": "partial def sum (v : Array Int) : Int :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "if v.size = 0 then 0\nelse if v.size = 1 then v[0]!\nelse v[0]! + sum (v.extract 1 v.size)\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- Scalar product of two integer vectors -/\n"
+      },
+      {
+        "type": "sig",
+        "string": "partial def scalar_product (v1 v2 : Array Int) : Int :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "if v1.size = 0 then 0\nelse v1[0]! * v2[0]! + scalar_product (v1.extract 1 v1.size) (v2.extract 1 v2.size)\n\n"
       },
       {
         "type": "cond",
@@ -8618,7 +8754,7 @@
       },
       {
         "type": "impl",
-        "string": "if n = 0 then\n1\nelse\n(4 * n - 2) * C (n-1) / (n + 1)\ndecreasing_by sorry\n\n"
+        "string": "if n = 0 then\n1\nelse\n(4 * n - 2) * C (n-1) / (n + 1)\ndecreasing_by all_goals simp_wf; omega\n\n"
       },
       {
         "type": "doc",
@@ -8949,7 +9085,7 @@
       }
     ]
   },
-  "Program-Verification-Dataset_tmp_tmpgbdrlnu__Dafny_advanced examples_InsertionSort_InsertionSort.lean": {
+  "Program-Verification-Dataset_tmp_tmpgbdrlnu__Dafny_advanced_examples_InsertionSort_InsertionSort.lean": {
     "status": "ok",
     "results": [
       {
@@ -8994,7 +9130,7 @@
       }
     ]
   },
-  "Program-Verification-Dataset_tmp_tmpgbdrlnu__Dafny_advanced examples_MatrixMultiplication_multiply.lean": {
+  "Program-Verification-Dataset_tmp_tmpgbdrlnu__Dafny_advanced_examples_MatrixMultiplication_multiply.lean": {
     "status": "ok",
     "results": [
       {
@@ -9003,11 +9139,15 @@
       },
       {
         "type": "doc",
-        "string": "/--\nHelper function that computes partial dot product starting from index k.\n-/\n\npartial def RowColumnProductFrom (m1 : Array (Array Int)) (m2 : Array (Array Int)) (row : Nat) (column : Nat) (k : Nat) : Int :=\n\nif k == m1.size then\n\n0\n\nelse\n\nm1[row]![k]! * m2[k]![column]! + RowColumnProductFrom m1 m2 row column (k + 1)\n"
+        "string": "/--\nHelper function that computes partial dot product starting from index k.\n-/\n"
       },
       {
-        "type": "empty",
-        "string": ""
+        "type": "sig",
+        "string": "partial def RowColumnProductFrom (m1 : Array (Array Int)) (m2 : Array (Array Int)) (row : Nat) (column : Nat) (k : Nat) : Int :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "if k == m1.size then\n0\nelse\nm1[row]![k]! * m2[k]![column]! + RowColumnProductFrom m1 m2 row column (k + 1)\n\n"
       },
       {
         "type": "doc",
@@ -9047,7 +9187,7 @@
       }
     ]
   },
-  "Program-Verification-Dataset_tmp_tmpgbdrlnu__Dafny_advanced examples_Percentile_Percentile.lean": {
+  "Program-Verification-Dataset_tmp_tmpgbdrlnu__Dafny_advanced_examples_Percentile_Percentile.lean": {
     "status": "ok",
     "results": [
       {
@@ -9056,11 +9196,15 @@
       },
       {
         "type": "doc",
-        "string": "/-- Sum_ of elements of array A from indices 0 to end (inclusive) -/\n\npartial def SumUpto (A : Array Float) (end_ : Int) : Float :=\n\nif end_ == -1 then\n\n0.0\n\nelse\n\nA[end_.toNat]! + SumUpto A (end_ - 1)\n"
+        "string": "/-- Sum_ of elements of array A from indices 0 to end (inclusive) -/\n"
       },
       {
-        "type": "empty",
-        "string": ""
+        "type": "sig",
+        "string": "partial def SumUpto (A : Array Float) (end_ : Int) : Float :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "if end_ == -1 then\n0.0\nelse\nA[end_.toNat]! + SumUpto A (end_ - 1)\n\n"
       },
       {
         "type": "doc",
@@ -9100,7 +9244,7 @@
       }
     ]
   },
-  "Program-Verification-Dataset_tmp_tmpgbdrlnu__Dafny_advanced examples_Percentile_PercentileNonUniqueAnswer.lean": {
+  "Program-Verification-Dataset_tmp_tmpgbdrlnu__Dafny_advanced_examples_Percentile_PercentileNonUniqueAnswer.lean": {
     "status": "ok",
     "results": [
       {
@@ -9109,11 +9253,15 @@
       },
       {
         "type": "doc",
-        "string": "/-- Sum_ of elements of array A from indices 0 to end (inclusive) -/\n\npartial def SumUpto (A : Array Float) (end_ : Int) : Float :=\n\nif end_ == -1 then\n\n0.0\n\nelse\n\nA[end_.toNat]! + SumUpto A (end_ - 1)\n"
+        "string": "/-- Sum_ of elements of array A from indices 0 to end (inclusive) -/\n"
       },
       {
-        "type": "empty",
-        "string": ""
+        "type": "sig",
+        "string": "partial def SumUpto (A : Array Float) (end_ : Int) : Float :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "if end_ == -1 then\n0.0\nelse\nA[end_.toNat]! + SumUpto A (end_ - 1)\n\n"
       },
       {
         "type": "doc",
@@ -9153,7 +9301,7 @@
       }
     ]
   },
-  "Program-Verification-Dataset_tmp_tmpgbdrlnu__Dafny_advanced examples_ReverseString_yarra.lean": {
+  "Program-Verification-Dataset_tmp_tmpgbdrlnu__Dafny_advanced_examples_ReverseString_yarra.lean": {
     "status": "ok",
     "results": [
       {
@@ -9198,7 +9346,7 @@
       }
     ]
   },
-  "Program-Verification-Dataset_tmp_tmpgbdrlnu__Dafny_advanced examples_demo_Partition.lean": {
+  "Program-Verification-Dataset_tmp_tmpgbdrlnu__Dafny_advanced_examples_demo_Partition.lean": {
     "status": "ok",
     "results": [
       {
@@ -9227,7 +9375,7 @@
       }
     ]
   },
-  "Program-Verification-Dataset_tmp_tmpgbdrlnu__Dafny_algorithms and leetcode_ProgramProofs_ch15_Partition.lean": {
+  "Program-Verification-Dataset_tmp_tmpgbdrlnu__Dafny_algorithms_and_leetcode_ProgramProofs_ch15_Partition.lean": {
     "status": "ok",
     "results": [
       {
@@ -9292,7 +9440,7 @@
       }
     ]
   },
-  "Program-Verification-Dataset_tmp_tmpgbdrlnu__Dafny_algorithms and leetcode_ProgramProofs_ch15_QuickSort.lean": {
+  "Program-Verification-Dataset_tmp_tmpgbdrlnu__Dafny_algorithms_and_leetcode_ProgramProofs_ch15_QuickSort.lean": {
     "status": "ok",
     "results": [
       {
@@ -9373,7 +9521,7 @@
       }
     ]
   },
-  "Program-Verification-Dataset_tmp_tmpgbdrlnu__Dafny_algorithms and leetcode_ProgramProofs_ch15_QuickSortAux.lean": {
+  "Program-Verification-Dataset_tmp_tmpgbdrlnu__Dafny_algorithms_and_leetcode_ProgramProofs_ch15_QuickSortAux.lean": {
     "status": "ok",
     "results": [
       {
@@ -9454,7 +9602,7 @@
       }
     ]
   },
-  "Program-Verification-Dataset_tmp_tmpgbdrlnu__Dafny_algorithms and leetcode_ProgramProofs_ch15_SelectionSort.lean": {
+  "Program-Verification-Dataset_tmp_tmpgbdrlnu__Dafny_algorithms_and_leetcode_ProgramProofs_ch15_SelectionSort.lean": {
     "status": "ok",
     "results": [
       {
@@ -9519,7 +9667,7 @@
       }
     ]
   },
-  "Program-Verification-Dataset_tmp_tmpgbdrlnu__Dafny_algorithms and leetcode_examples_bubblesort_BubbleSort.lean": {
+  "Program-Verification-Dataset_tmp_tmpgbdrlnu__Dafny_algorithms_and_leetcode_examples_bubblesort_BubbleSort.lean": {
     "status": "ok",
     "results": [
       {
@@ -9564,7 +9712,7 @@
       }
     ]
   },
-  "Program-Verification-Dataset_tmp_tmpgbdrlnu__Dafny_algorithms and leetcode_examples_relativeOrder_FindEvenNumbers.lean": {
+  "Program-Verification-Dataset_tmp_tmpgbdrlnu__Dafny_algorithms_and_leetcode_examples_relativeOrder_FindEvenNumbers.lean": {
     "status": "ok",
     "results": [
       {
@@ -9609,7 +9757,7 @@
       }
     ]
   },
-  "Program-Verification-Dataset_tmp_tmpgbdrlnu__Dafny_algorithms and leetcode_leetcode_FindPivotIndex_FindPivotIndex.lean": {
+  "Program-Verification-Dataset_tmp_tmpgbdrlnu__Dafny_algorithms_and_leetcode_leetcode_FindPivotIndex_FindPivotIndex.lean": {
     "status": "ok",
     "results": [
       {
@@ -9618,15 +9766,15 @@
       },
       {
         "type": "doc",
-        "string": "/-- Sum of elements in an array from start to end -/\n\npartial def sum (nums : Array Int) : Int :=\n\nif nums.size = 0 then 0\n\nelse sum (nums.extract 0 (nums.size - 1)) + nums[nums.size - 1]!\n"
+        "string": "/-- Sum of elements in an array from start to end -/\n"
       },
       {
-        "type": "empty",
-        "string": ""
+        "type": "sig",
+        "string": "partial def sum (nums : Array Int) : Int :=\n"
       },
       {
-        "type": "empty",
-        "string": ""
+        "type": "impl",
+        "string": "if nums.size = 0 then 0\nelse sum (nums.extract 0 (nums.size - 1)) + nums[nums.size - 1]!\n\n\n"
       },
       {
         "type": "doc",
@@ -9654,7 +9802,7 @@
       }
     ]
   },
-  "Program-Verification-Dataset_tmp_tmpgbdrlnu__Dafny_algorithms and leetcode_leetcode_lc-remove-element_removeElement.lean": {
+  "Program-Verification-Dataset_tmp_tmpgbdrlnu__Dafny_algorithms_and_leetcode_leetcode_lc-remove-element_removeElement.lean": {
     "status": "ok",
     "results": [
       {
@@ -9687,7 +9835,7 @@
       }
     ]
   },
-  "Program-Verification-Dataset_tmp_tmpgbdrlnu__Dafny_algorithms and leetcode_leetcode_validAnagram_isAnagram.lean": {
+  "Program-Verification-Dataset_tmp_tmpgbdrlnu__Dafny_algorithms_and_leetcode_leetcode_validAnagram_isAnagram.lean": {
     "status": "ok",
     "results": [
       {
@@ -9768,7 +9916,7 @@
       }
     ]
   },
-  "Program-Verification-Dataset_tmp_tmpgbdrlnu__Dafny_basic examples_BubbleSort_bubbleSort.lean": {
+  "Program-Verification-Dataset_tmp_tmpgbdrlnu__Dafny_basic_examples_BubbleSort_bubbleSort.lean": {
     "status": "ok",
     "results": [
       {
@@ -9821,7 +9969,7 @@
       }
     ]
   },
-  "Program-Verification-Dataset_tmp_tmpgbdrlnu__Dafny_basic examples_BubbleSort_sol_bubbleSort.lean": {
+  "Program-Verification-Dataset_tmp_tmpgbdrlnu__Dafny_basic_examples_BubbleSort_sol_bubbleSort.lean": {
     "status": "ok",
     "results": [
       {
@@ -9874,7 +10022,7 @@
       }
     ]
   },
-  "Program-Verification-Dataset_tmp_tmpgbdrlnu__Dafny_from dafny main repo_dafny2_COST-verif-comp-2011-3-TwoDuplicates_Search.lean": {
+  "Program-Verification-Dataset_tmp_tmpgbdrlnu__Dafny_from_dafny_main_repo_dafny2_COST-verif-comp-2011-3-TwoDuplicates_Search.lean": {
     "status": "ok",
     "results": [
       {
@@ -9931,7 +10079,7 @@
       }
     ]
   },
-  "Program-Verification-Dataset_tmp_tmpgbdrlnu__Dafny_from dafny main repo_dafny2_Classics_FIND.lean": {
+  "Program-Verification-Dataset_tmp_tmpgbdrlnu__Dafny_from_dafny_main_repo_dafny2_Classics_FIND.lean": {
     "status": "ok",
     "results": [
       {
@@ -9964,7 +10112,7 @@
       }
     ]
   },
-  "Program-Verification-Dataset_tmp_tmpgbdrlnu__Dafny_mathematical objects verification_examples_fast_exp_FastExp.lean": {
+  "Program-Verification-Dataset_tmp_tmpgbdrlnu__Dafny_mathematical_objects_verification_examples_fast_exp_FastExp.lean": {
     "status": "ok",
     "results": [
       {
@@ -9973,11 +10121,51 @@
       },
       {
         "type": "doc",
-        "string": "/-- Sum of elements in an array up to index i -/\n\npartial def sum (s : Array Int) (i : Nat) : Int :=\n\nif i == 0 then 0\n\nelse sum s (i-1) + s[i-1]!\n\n\n/-- Exponentiation function -/\n\npartial def exp (b : Nat) (n : Nat) : Nat :=\n\nif n == 0 then 1\n\nelse b * exp b (n-1)\n\n\n/-- Convert number to binary representation as boolean array -/\n\npartial def bits (n : Nat) : Array Bool :=\n\nif n == 0 then #[]\n\nelse #[n % 2 == 0] ++ bits (n/2)\n\n\n/-- Convert boolean array binary representation back to number -/\n\npartial def from_bits (s : Array Bool) : Nat :=\n\nif s.size == 0 then 0\n\nelse (if s[0]! then 1 else 0) + 2 * from_bits (s.extract 1 s.size)\n"
+        "string": "/-- Sum of elements in an array up to index i -/\n"
       },
       {
-        "type": "empty",
-        "string": ""
+        "type": "sig",
+        "string": "partial def sum (s : Array Int) (i : Nat) : Int :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "if i == 0 then 0\nelse sum s (i-1) + s[i-1]!\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- Exponentiation function -/\n"
+      },
+      {
+        "type": "sig",
+        "string": "partial def exp (b : Nat) (n : Nat) : Nat :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "if n == 0 then 1\nelse b * exp b (n-1)\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- Convert number to binary representation as boolean array -/\n"
+      },
+      {
+        "type": "sig",
+        "string": "partial def bits (n : Nat) : Array Bool :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "if n == 0 then #[]\nelse #[n % 2 == 0] ++ bits (n/2)\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- Convert boolean array binary representation back to number -/\n"
+      },
+      {
+        "type": "sig",
+        "string": "partial def from_bits (s : Array Bool) : Nat :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "if s.size == 0 then 0\nelse (if s[0]! then 1 else 0) + 2 * from_bits (s.extract 1 s.size)\n\n"
       },
       {
         "type": "doc",
@@ -10005,12 +10193,24 @@
       }
     ]
   },
-  "Program-Verification-Dataset_tmp_tmpgbdrlnu__Dafny_verified algorithms_lol_sort_lol_sort.lean": {
+  "Program-Verification-Dataset_tmp_tmpgbdrlnu__Dafny_verified_algorithms_lol_sort_lol_sort.lean": {
     "status": "ok",
     "results": [
       {
         "type": "desc",
         "string": "/-!\n{\n\"name\": \"Program-Verification-Dataset_tmp_tmpgbdrlnu__Dafny_verified algorithms_lol_sort_lol_sort\",\n\"category\": \"Dafny Translation\",\n\"description\": \"Automatically translated from Dafny specification: Program-Verification-Dataset_tmp_tmpgbdrlnu__Dafny_verified algorithms_lol_sort_lol_sort\",\n\"source\": \"Dafny\",\n\"translation_date\": \"2024\",\n\"functions\": ,\n\"methods\":\n}\n-/\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- Count the number of occurrences of an element in an array -/\n"
+      },
+      {
+        "type": "sig",
+        "string": "def count (a : Array Int) (x : Int) : Nat :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "a.foldl (fun acc y => if y = x then acc + 1 else acc) 0\n\n"
       },
       {
         "type": "doc",
@@ -10022,7 +10222,7 @@
       },
       {
         "type": "impl",
-        "string": "a.size = b.size \u2227 sorry -- Multiset equality not directly translatable\n\n"
+        "string": "a.size = b.size \u2227 \u2200 x : Int, count a x = count b x\n\n"
       },
       {
         "type": "doc",
@@ -10086,7 +10286,7 @@
       }
     ]
   },
-  "Program-Verification-Dataset_tmp_tmpgbdrlnu__Dafny_verified algorithms_lol_sort_swap.lean": {
+  "Program-Verification-Dataset_tmp_tmpgbdrlnu__Dafny_verified_algorithms_lol_sort_swap.lean": {
     "status": "ok",
     "results": [
       {
@@ -10193,11 +10393,27 @@
       },
       {
         "type": "doc",
-        "string": "/-- Factorial function translated from Dafny -/\n\npartial def fact (n : Nat) : Nat :=\n\nif n == 0 then 1 else n * fact (n-1)\n\n\n/-- Greatest common divisor function translated from Dafny -/\n\npartial def gcd (m n : Nat) : Nat :=\n\nif m == n then m\n\nelse if m > n then gcd (m - n) n\n\nelse gcd m (n - m)\n"
+        "string": "/-- Factorial function translated from Dafny -/\n"
       },
       {
-        "type": "empty",
-        "string": ""
+        "type": "sig",
+        "string": "partial def fact (n : Nat) : Nat :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "if n == 0 then 1 else n * fact (n-1)\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- Greatest common divisor function translated from Dafny -/\n"
+      },
+      {
+        "type": "sig",
+        "string": "partial def gcd (m n : Nat) : Nat :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "if m == n then m\nelse if m > n then gcd (m - n) n\nelse gcd m (n - m)\n\n"
       },
       {
         "type": "doc",
@@ -10246,11 +10462,15 @@
       },
       {
         "type": "doc",
-        "string": "/-- Translation of Dafny ghost function gcd -/\n\npartial def gcd (x y : Int) : Int :=\n\nif x = y then x\n\nelse if x > y then gcd (x - y) y\n\nelse gcd x (y - x)\n"
+        "string": "/-- Translation of Dafny ghost function gcd -/\n"
       },
       {
-        "type": "empty",
-        "string": ""
+        "type": "sig",
+        "string": "partial def gcd (x y : Int) : Int :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "if x = y then x\nelse if x > y then gcd (x - y) y\nelse gcd x (y - x)\n\n"
       },
       {
         "type": "doc",
@@ -10266,11 +10486,15 @@
       },
       {
         "type": "doc",
-        "string": "/-- Translation of Dafny ghost function gcd' -/\n\npartial def gcd' (x y : Int) : Int :=\n\nif x = y then x\n\nelse if x > y then gcd' (x - y) y\n\nelse gcd y x\n"
+        "string": "/-- Translation of Dafny ghost function gcd' -/\n"
       },
       {
-        "type": "empty",
-        "string": ""
+        "type": "sig",
+        "string": "partial def gcd' (x y : Int) : Int :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "if x = y then x\nelse if x > y then gcd' (x - y) y\nelse gcd y x\n\n"
       },
       {
         "type": "doc",
@@ -10768,11 +10992,15 @@
       },
       {
         "type": "doc",
-        "string": "/--\nRecursively sums array elements from index 0 to i-1.\nTranslated from Dafny function sumcheck.\n-/\n\npartial def sumcheck (s : Array Int) (i : Int) : Int :=\n\nif i == 0 then 0\n\nelse s[(i - 1).toNat]! + sumcheck s (i - 1)\n"
+        "string": "/--\nRecursively sums array elements from index 0 to i-1.\nTranslated from Dafny function sumcheck.\n-/\n"
       },
       {
-        "type": "empty",
-        "string": ""
+        "type": "sig",
+        "string": "partial def sumcheck (s : Array Int) (i : Int) : Int :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "if i == 0 then 0\nelse s[(i - 1).toNat]! + sumcheck s (i - 1)\n\n"
       },
       {
         "type": "doc",
@@ -10873,7 +11101,7 @@
       },
       {
         "type": "doc",
-        "string": "/-- Implementation of checkRegulation (left as sorry) -/\n"
+        "string": "/-- Implementation of checkRegulation -/\n"
       },
       {
         "type": "sig",
@@ -10885,7 +11113,7 @@
       }
     ]
   },
-  "Software-Verification_tmp_tmpv4ueky2d_Best Time to Buy and Sell Stock_best_time_to_buy_and_sell_stock_best_time_to_buy_and_sell_stock.lean": {
+  "Software-Verification_tmp_tmpv4ueky2d_Best_Time_to_Buy_and_Sell_Stock_best_time_to_buy_and_sell_stock_best_time_to_buy_and_sell_stock.lean": {
     "status": "ok",
     "results": [
       {
@@ -10918,7 +11146,7 @@
       }
     ]
   },
-  "Software-Verification_tmp_tmpv4ueky2d_Contains Duplicate_contains_duplicate_contains_duplicate.lean": {
+  "Software-Verification_tmp_tmpv4ueky2d_Contains_Duplicate_contains_duplicate_contains_duplicate.lean": {
     "status": "ok",
     "results": [
       {
@@ -10963,7 +11191,7 @@
       }
     ]
   },
-  "Software-Verification_tmp_tmpv4ueky2d_Counting Bits_counting_bits_counting_bits.lean": {
+  "Software-Verification_tmp_tmpv4ueky2d_Counting_Bits_counting_bits_counting_bits.lean": {
     "status": "ok",
     "results": [
       {
@@ -10996,7 +11224,7 @@
       }
     ]
   },
-  "Software-Verification_tmp_tmpv4ueky2d_Longest Increasing Subsequence_longest_increasing_subsequence_longest_increasing_subsequence.lean": {
+  "Software-Verification_tmp_tmpv4ueky2d_Longest_Increasing_Subsequence_longest_increasing_subsequence_longest_increasing_subsequence.lean": {
     "status": "ok",
     "results": [
       {
@@ -11041,7 +11269,7 @@
       }
     ]
   },
-  "Software-Verification_tmp_tmpv4ueky2d_Non-overlapping Intervals_non_overlapping_intervals_bubble_sort.lean": {
+  "Software-Verification_tmp_tmpv4ueky2d_Non-overlapping_Intervals_non_overlapping_intervals_bubble_sort.lean": {
     "status": "ok",
     "results": [
       {
@@ -11110,7 +11338,7 @@
       }
     ]
   },
-  "Software-Verification_tmp_tmpv4ueky2d_Non-overlapping Intervals_non_overlapping_intervals_non_overlapping_intervals.lean": {
+  "Software-Verification_tmp_tmpv4ueky2d_Non-overlapping_Intervals_non_overlapping_intervals_non_overlapping_intervals.lean": {
     "status": "ok",
     "results": [
       {
@@ -11191,7 +11419,7 @@
       }
     ]
   },
-  "Software-Verification_tmp_tmpv4ueky2d_Remove Duplicates from Sorted Array_remove_duplicates_from_sorted_array_remove_duplicates_from_sorted_array.lean": {
+  "Software-Verification_tmp_tmpv4ueky2d_Remove_Duplicates_from_Sorted_Array_remove_duplicates_from_sorted_array_remove_duplicates_from_sorted_array.lean": {
     "status": "ok",
     "results": [
       {
@@ -11248,7 +11476,7 @@
       }
     ]
   },
-  "Software-Verification_tmp_tmpv4ueky2d_Remove Element_remove_element_remove_element.lean": {
+  "Software-Verification_tmp_tmpv4ueky2d_Remove_Element_remove_element_remove_element.lean": {
     "status": "ok",
     "results": [
       {
@@ -11281,7 +11509,7 @@
       }
     ]
   },
-  "Software-Verification_tmp_tmpv4ueky2d_Valid Palindrome_valid_panlindrome_isPalindrome.lean": {
+  "Software-Verification_tmp_tmpv4ueky2d_Valid_Palindrome_valid_panlindrome_isPalindrome.lean": {
     "status": "ok",
     "results": [
       {
@@ -11356,11 +11584,15 @@
       },
       {
         "type": "doc",
-        "string": "/-- Sum function translated from Dafny -/\n\npartial def sum (n : Nat) : Nat :=\n\nif n == 0 then 0\n\nelse n + sum (n-1)\n"
+        "string": "/-- Sum function translated from Dafny -/\n"
       },
       {
-        "type": "empty",
-        "string": ""
+        "type": "sig",
+        "string": "partial def sum (n : Nat) : Nat :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "if n == 0 then 0\nelse n + sum (n-1)\n\n"
       },
       {
         "type": "doc",
@@ -11397,11 +11629,15 @@
       },
       {
         "type": "doc",
-        "string": "/-- Computes sum of array elements from index i to j (exclusive) -/\n\npartial def sum (a : Array Int) (i j : Int) : Int :=\n\nif i = j then 0\n\nelse a[(j-1).toNat]! + sum a i (j-1)\n"
+        "string": "/-- Computes sum of array elements from index i to j (exclusive) -/\n"
       },
       {
-        "type": "empty",
-        "string": ""
+        "type": "sig",
+        "string": "partial def sum (a : Array Int) (i j : Int) : Int :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "if i = j then 0\nelse a[(j-1).toNat]! + sum a i (j-1)\n\n"
       },
       {
         "type": "doc",
@@ -11811,11 +12047,27 @@
       },
       {
         "type": "doc",
-        "string": "/-- Recursively computes product of positive numbers in sequence -/\n\npartial def RecursivePositiveProduct (q : Array Int) : Int :=\n\nif q.size = 0 then 1\n\nelse if q[0]! \u2264 0 then RecursivePositiveProduct (q.extract 1 q.size)\n\nelse q[0]! * RecursivePositiveProduct (q.extract 1 q.size)\n\n\n/-- Recursively counts occurrences of key in sequence -/\n\npartial def RecursiveCount (key : Int) (q : Array Int) : Int :=\n\nif q.size = 0 then 0\n\nelse if q[q.size - 1]! = key then\n\n1 + RecursiveCount key (q.extract 0 (q.size - 1))\n\nelse RecursiveCount key (q.extract 0 (q.size - 1))\n"
+        "string": "/-- Recursively computes product of positive numbers in sequence -/\n"
       },
       {
-        "type": "empty",
-        "string": ""
+        "type": "sig",
+        "string": "partial def RecursivePositiveProduct (q : Array Int) : Int :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "if q.size = 0 then 1\nelse if q[0]! \u2264 0 then RecursivePositiveProduct (q.extract 1 q.size)\nelse q[0]! * RecursivePositiveProduct (q.extract 1 q.size)\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- Recursively counts occurrences of key in sequence -/\n"
+      },
+      {
+        "type": "sig",
+        "string": "partial def RecursiveCount (key : Int) (q : Array Int) : Int :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "if q.size = 0 then 0\nelse if q[q.size - 1]! = key then\n1 + RecursiveCount key (q.extract 0 (q.size - 1))\nelse RecursiveCount key (q.extract 0 (q.size - 1))\n\n"
       },
       {
         "type": "doc",
@@ -12377,11 +12629,15 @@
       },
       {
         "type": "doc",
-        "string": "/--\nPower function that computes a^n.\nTranslated from Dafny's recursive power function.\n-/\n\npartial def power (a : Int) (n : Int) : Int :=\n\nif n == 0 then 1 else a * power a (n - 1)\n"
+        "string": "/--\nPower function that computes a^n.\nTranslated from Dafny's recursive power function.\n-/\n"
       },
       {
-        "type": "empty",
-        "string": ""
+        "type": "sig",
+        "string": "partial def power (a : Int) (n : Int) : Int :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "if n == 0 then 1 else a * power a (n - 1)\n\n"
       },
       {
         "type": "doc",
@@ -12451,11 +12707,15 @@
       },
       {
         "type": "doc",
-        "string": "/--\nPower function that computes a^n.\nRequires a \u2265 0 and n \u2265 0.\n-/\n\npartial def power (a n : Int) : Int :=\n\nif n = 0 then 1 else a * power a (n - 1)\n"
+        "string": "/--\nPower function that computes a^n.\nRequires a \u2265 0 and n \u2265 0.\n-/\n"
       },
       {
-        "type": "empty",
-        "string": ""
+        "type": "sig",
+        "string": "partial def power (a n : Int) : Int :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "if n = 0 then 1 else a * power a (n - 1)\n\n"
       },
       {
         "type": "doc",
@@ -12774,11 +13034,15 @@
       },
       {
         "type": "doc",
-        "string": "/--\nPredicate indicating whether a substring s is palindromic\n-/\n\npartial def palindromic (s : String) (i j : Int) : Prop :=\n\n(0 \u2264 i) \u2227 (i \u2264 j) \u2227 (j \u2264 s.length) \u2227\n\n((j - i < 2) \u2228 (s.get \u27e8i.toNat\u27e9 = s.get \u27e8(j-1).toNat\u27e9 \u2227 palindromic s (i+1) (j-1)))\n"
+        "string": "/--\nPredicate indicating whether a substring s is palindromic\n-/\n"
       },
       {
-        "type": "empty",
-        "string": ""
+        "type": "sig",
+        "string": "partial def palindromic (s : String) (i j : Int) : Prop :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "(0 \u2264 i) \u2227 (i \u2264 j) \u2227 (j \u2264 s.length) \u2227\n((j - i < 2) \u2228 (s.get \u27e8i.toNat\u27e9 = s.get \u27e8(j-1).toNat\u27e9 \u2227 palindromic s (i+1) (j-1)))\n\n"
       },
       {
         "type": "doc",
@@ -12863,11 +13127,15 @@
       },
       {
         "type": "doc",
-        "string": "/-- Whether a substring s is palindromic -/\n\npartial def palindromic (s : String) (i j : Int) : Prop :=\n\n(0 \u2264 i) \u2227 (i \u2264 j) \u2227 (j \u2264 s.length) \u2227\n\n(j - i < 2 \u2228 (s.get \u27e8i.toNat\u27e9 = s.get \u27e8 (j-1).toNat\u27e9  \u2227 palindromic s (i+1) (j-1)))\n"
+        "string": "/-- Whether a substring s is palindromic -/\n"
       },
       {
-        "type": "empty",
-        "string": ""
+        "type": "sig",
+        "string": "partial def palindromic (s : String) (i j : Int) : Prop :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "(0 \u2264 i) \u2227 (i \u2264 j) \u2227 (j \u2264 s.length) \u2227\n(j - i < 2 \u2228 (s.get \u27e8i.toNat\u27e9 = s.get \u27e8 (j-1).toNat\u27e9  \u2227 palindromic s (i+1) (j-1)))\n\n"
       },
       {
         "type": "doc",
@@ -13053,11 +13321,15 @@
       },
       {
         "type": "doc",
-        "string": "/--\nRecursively computes the sum of elements in an array.\nGiven an array of integers, returns their sum.\nExample:  -> 9\n-/\n\npartial def Sum_ (xs : Array Int) : Int :=\n\nif xs.size = 0 then\n\n0\n\nelse\n\nSum_ (xs.extract 0 (xs.size - 1)) + xs[xs.size - 1]!\n"
+        "string": "/--\nRecursively computes the sum of elements in an array.\nGiven an array of integers, returns their sum.\nExample:  -> 9\n-/\n"
       },
       {
-        "type": "empty",
-        "string": ""
+        "type": "sig",
+        "string": "partial def Sum_ (xs : Array Int) : Int :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "if xs.size = 0 then\n0\nelse\nSum_ (xs.extract 0 (xs.size - 1)) + xs[xs.size - 1]!\n\n"
       },
       {
         "type": "doc",
@@ -13131,11 +13403,19 @@
       },
       {
         "type": "sig",
-        "string": "def vowels : List Char := ['a', 'e', 'i', 'o', 'u']\n\n\n/--\nFilters vowels from a sequence of characters.\nReturns a new sequence containing only the vowels from the input.\n-/\n\npartial def FilterVowels (xs : Array Char) : Array Char :=\n\nif xs.size = 0 then\n\n#[]\n\nelse if vowels.contains (xs[xs.size - 1]!) then\n\nFilterVowels (xs.extract 0 (xs.size - 1)) |>.push (xs[xs.size - 1]!)\n\nelse\n\nFilterVowels (xs.extract 0 (xs.size - 1))\n"
+        "string": "def vowels : List Char := ['a', 'e', 'i', 'o', 'u']\n\n"
       },
       {
-        "type": "empty",
-        "string": ""
+        "type": "doc",
+        "string": "/--\nFilters vowels from a sequence of characters.\nReturns a new sequence containing only the vowels from the input.\n-/\n"
+      },
+      {
+        "type": "sig",
+        "string": "partial def FilterVowels (xs : Array Char) : Array Char :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "if xs.size = 0 then\n#[]\nelse if vowels.contains (xs[xs.size - 1]!) then\nFilterVowels (xs.extract 0 (xs.size - 1)) |>.push (xs[xs.size - 1]!)\nelse\nFilterVowels (xs.extract 0 (xs.size - 1))\n\n"
       },
       {
         "type": "doc",
@@ -13238,11 +13518,15 @@
       },
       {
         "type": "doc",
-        "string": "/--\nRecursively counts negative numbers in array up to given index.\nTranslated from Dafny function verifyNeg.\n-/\n\npartial def verifyNeg (a : Array Int) (idx : Int) : Nat :=\n\nif idx == 0 then 0\n\nelse verifyNeg a (idx - 1) + (if a[(idx - 1).toNat]! < 0 then 1 else 0)\n"
+        "string": "/--\nRecursively counts negative numbers in array up to given index.\nTranslated from Dafny function verifyNeg.\n-/\n"
       },
       {
-        "type": "empty",
-        "string": ""
+        "type": "sig",
+        "string": "partial def verifyNeg (a : Array Int) (idx : Int) : Nat :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "if idx == 0 then 0\nelse verifyNeg a (idx - 1) + (if a[(idx - 1).toNat]! < 0 then 1 else 0)\n\n"
       },
       {
         "type": "doc",
@@ -13632,11 +13916,15 @@
       },
       {
         "type": "doc",
-        "string": "/--\nComputes the sum of elements in array `a` from index `s` to `t-1`.\nRequires that 0 \u2264 s \u2264 t \u2264 a.size\n-/\n\npartial def Sum_ (a : Array Int) (s t : Int) : Int :=\n\nif s = t then 0 else Sum_ a s (t-1) + a[(t-1).toNat]!\n"
+        "string": "/--\nComputes the sum of elements in array `a` from index `s` to `t-1`.\nRequires that 0 \u2264 s \u2264 t \u2264 a.size\n-/\n"
       },
       {
-        "type": "empty",
-        "string": ""
+        "type": "sig",
+        "string": "partial def Sum_ (a : Array Int) (s t : Int) : Int :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "if s = t then 0 else Sum_ a s (t-1) + a[(t-1).toNat]!\n\n"
       },
       {
         "type": "doc",
@@ -13685,11 +13973,15 @@
       },
       {
         "type": "doc",
-        "string": "/--\nRecursive factorial function translated from Dafny.\nTakes a natural number n and returns n!\n-/\n\npartial def Factorial (n : Nat) : Nat :=\n\nif n == 0 then 1 else n * Factorial (n-1)\n"
+        "string": "/--\nRecursive factorial function translated from Dafny.\nTakes a natural number n and returns n!\n-/\n"
       },
       {
-        "type": "empty",
-        "string": ""
+        "type": "sig",
+        "string": "partial def Factorial (n : Nat) : Nat :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "if n == 0 then 1 else n * Factorial (n-1)\n\n"
       },
       {
         "type": "doc",
@@ -13873,11 +14165,15 @@
       },
       {
         "type": "doc",
-        "string": "/--\nGhost function that computes b raised to the power n recursively.\nRequires n to be non-negative.\n-/\n\npartial def Expt (b : Int) (n : Nat) : Int :=\n\nif n == 0 then 1 else b * Expt b (n - 1)\n"
+        "string": "/--\nGhost function that computes b raised to the power n recursively.\nRequires n to be non-negative.\n-/\n"
       },
       {
-        "type": "empty",
-        "string": ""
+        "type": "sig",
+        "string": "partial def Expt (b : Int) (n : Nat) : Int :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "if n == 0 then 1 else b * Expt b (n - 1)\n\n"
       },
       {
         "type": "doc",
@@ -13914,11 +14210,15 @@
       },
       {
         "type": "doc",
-        "string": "/--\nRecursive factorial function translated from Dafny.\nEnsures the result is always >= 1.\n-/\n\npartial def fact (n : Nat) : Nat :=\n\nif n == 0 then 1 else n * fact (n - 1)\n"
+        "string": "/--\nRecursive factorial function translated from Dafny.\nEnsures the result is always >= 1.\n-/\n"
       },
       {
-        "type": "empty",
-        "string": ""
+        "type": "sig",
+        "string": "partial def fact (n : Nat) : Nat :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "if n == 0 then 1 else n * fact (n - 1)\n\n"
       },
       {
         "type": "doc",
@@ -14390,11 +14690,15 @@
       },
       {
         "type": "doc",
-        "string": "/--\nRecursively sums elements in array from start index up to but not including end index.\nTranslated from Dafny function sumTo.\n-/\n\npartial def sumTo (a : Array Int) (start : Nat) (end_ : Nat) : Int :=\n\nif start == end_ then\n\n0\n\nelse\n\nsumTo a start (end_ - 1) + a[end_ - 1]!\n"
+        "string": "/--\nRecursively sums elements in array from start index up to but not including end index.\nTranslated from Dafny function sumTo.\n-/\n"
       },
       {
-        "type": "empty",
-        "string": ""
+        "type": "sig",
+        "string": "partial def sumTo (a : Array Int) (start : Nat) (end_ : Nat) : Int :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "if start == end_ then\n0\nelse\nsumTo a start (end_ - 1) + a[end_ - 1]!\n\n"
       },
       {
         "type": "doc",
@@ -15827,11 +16131,15 @@
       },
       {
         "type": "doc",
-        "string": "/-- Finds the minimum value in an array recursively -/\n\npartial def Min_ (a : Array Int) : Int :=\n\nif a.size = 1 then\n\na[0]!\n\nelse\n\nlet minPrefix := Min_ (a.extract 0 (a.size - 1))\n\nif a[a.size - 1]! \u2264 minPrefix then\n\na[a.size - 1]!\n\nelse\n\nMin_ (a.extract 0 (a.size - 1))\n"
+        "string": "/-- Finds the minimum value in an array recursively -/\n"
       },
       {
-        "type": "empty",
-        "string": ""
+        "type": "sig",
+        "string": "partial def Min_ (a : Array Int) : Int :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "if a.size = 1 then\na[0]!\nelse\nlet minPrefix := Min_ (a.extract 0 (a.size - 1))\nif a[a.size - 1]! \u2264 minPrefix then\na[a.size - 1]!\nelse\nMin_ (a.extract 0 (a.size - 1))\n\n"
       },
       {
         "type": "doc",
@@ -15847,11 +16155,15 @@
       },
       {
         "type": "doc",
-        "string": "/-- Finds the maximum value in an array recursively -/\n\npartial def Max_ (a : Array Int) : Int :=\n\nif a.size = 1 then\n\na[0]!\n\nelse\n\nlet maxPrefix := Max_ (a.extract 0 (a.size - 1))\n\nif a[a.size - 1]! \u2265 maxPrefix then\n\na[a.size - 1]!\n\nelse\n\nMax_ (a.extract 0 (a.size - 1))\n"
+        "string": "/-- Finds the maximum value in an array recursively -/\n"
       },
       {
-        "type": "empty",
-        "string": ""
+        "type": "sig",
+        "string": "partial def Max_ (a : Array Int) : Int :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "if a.size = 1 then\na[0]!\nelse\nlet maxPrefix := Max_ (a.extract 0 (a.size - 1))\nif a[a.size - 1]! \u2265 maxPrefix then\na[a.size - 1]!\nelse\nMax_ (a.extract 0 (a.size - 1))\n\n"
       },
       {
         "type": "doc",
@@ -16185,11 +16497,15 @@
       },
       {
         "type": "doc",
-        "string": "/-- Recursive function that returns sequence of intermediate values when dividing by 10 -/\n\npartial def IntValues (n : Int) : Array Int :=\n\nif n = 0 then #[]\n\nelse #[n] ++ IntValues (n/10)\n"
+        "string": "/-- Recursive function that returns sequence of intermediate values when dividing by 10 -/\n"
       },
       {
-        "type": "empty",
-        "string": ""
+        "type": "sig",
+        "string": "partial def IntValues (n : Int) : Array Int :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "if n = 0 then #[]\nelse #[n] ++ IntValues (n/10)\n\n"
       },
       {
         "type": "cond",
@@ -16221,11 +16537,27 @@
       },
       {
         "type": "doc",
-        "string": "/-- Converts a number to sequence of its digits -/\n\npartial def NumberToSeq (number : Int) : Array Int :=\n\nif number = 0 then #[]\n\nelse #[number % 10] ++ NumberToSeq (number/10)\n\n\n/-- Sums elements in a sequence -/\n\npartial def Sum_ (digits : Array Int) : Int :=\n\nif digits.size = 0 then 0\n\nelse digits[0]! + Sum_ (digits.extract 1 digits.size)\n"
+        "string": "/-- Converts a number to sequence of its digits -/\n"
       },
       {
-        "type": "empty",
-        "string": ""
+        "type": "sig",
+        "string": "partial def NumberToSeq (number : Int) : Array Int :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "if number = 0 then #[]\nelse #[number % 10] ++ NumberToSeq (number/10)\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- Sums elements in a sequence -/\n"
+      },
+      {
+        "type": "sig",
+        "string": "partial def Sum_ (digits : Array Int) : Int :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "if digits.size = 0 then 0\nelse digits[0]! + Sum_ (digits.extract 1 digits.size)\n\n"
       },
       {
         "type": "doc",
@@ -16479,11 +16811,15 @@
       },
       {
         "type": "doc",
-        "string": "/--\nComputes the factorial of a non-negative integer.\nTranslated from Dafny's Factorial function.\n-/\n\npartial def Factorial (n : Int) : Int :=\n\nif n == 0 then 1\n\nelse n * Factorial (n-1)\n"
+        "string": "/--\nComputes the factorial of a non-negative integer.\nTranslated from Dafny's Factorial function.\n-/\n"
       },
       {
-        "type": "empty",
-        "string": ""
+        "type": "sig",
+        "string": "partial def Factorial (n : Int) : Int :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "if n == 0 then 1\nelse n * Factorial (n-1)\n\n"
       },
       {
         "type": "doc",
@@ -16705,11 +17041,27 @@
       },
       {
         "type": "doc",
-        "string": "/-- Finds the minimum value in an array recursively -/\n\npartial def Min_ (a : Array Int) : Int :=\n\nif a.size = 1 then\n\na[0]!\n\nelse\n\nlet minPrefix := Min_ (a.extract 0 (a.size - 1))\n\nif a[a.size - 1]! \u2264 minPrefix then\n\na[a.size - 1]!\n\nelse\n\nMin_ (a.extract 0 (a.size - 1))\n\n\n/-- Finds the maximum value in an array recursively -/\n\npartial def Max_ (a : Array Int) : Int :=\n\nif a.size = 1 then\n\na[0]!\n\nelse\n\nlet maxPrefix := Max_ (a.extract 0 (a.size - 1))\n\nif a[a.size - 1]! \u2265 maxPrefix then\n\na[a.size - 1]!\n\nelse\n\nMax_ (a.extract 0 (a.size - 1))\n"
+        "string": "/-- Finds the minimum value in an array recursively -/\n"
       },
       {
-        "type": "empty",
-        "string": ""
+        "type": "sig",
+        "string": "partial def Min_ (a : Array Int) : Int :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "if a.size = 1 then\na[0]!\nelse\nlet minPrefix := Min_ (a.extract 0 (a.size - 1))\nif a[a.size - 1]! \u2264 minPrefix then\na[a.size - 1]!\nelse\nMin_ (a.extract 0 (a.size - 1))\n\n"
+      },
+      {
+        "type": "doc",
+        "string": "/-- Finds the maximum value in an array recursively -/\n"
+      },
+      {
+        "type": "sig",
+        "string": "partial def Max_ (a : Array Int) : Int :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "if a.size = 1 then\na[0]!\nelse\nlet maxPrefix := Max_ (a.extract 0 (a.size - 1))\nif a[a.size - 1]! \u2265 maxPrefix then\na[a.size - 1]!\nelse\nMax_ (a.extract 0 (a.size - 1))\n\n"
       },
       {
         "type": "doc",
@@ -17199,11 +17551,15 @@
       },
       {
         "type": "doc",
-        "string": "/--\nComputes base raised to the given non-negative exponent.\nTranslated from Dafny's Power function.\n-/\n\npartial def Power (base : Int) (exponent : Int) : Int :=\n\nif exponent == 0 then 1\n\nelse base * Power base (exponent - 1)\n"
+        "string": "/--\nComputes base raised to the given non-negative exponent.\nTranslated from Dafny's Power function.\n-/\n"
       },
       {
-        "type": "empty",
-        "string": ""
+        "type": "sig",
+        "string": "partial def Power (base : Int) (exponent : Int) : Int :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "if exponent == 0 then 1\nelse base * Power base (exponent - 1)\n\n"
       },
       {
         "type": "doc",
@@ -17542,11 +17898,15 @@
       },
       {
         "type": "doc",
-        "string": "/--\nCounts occurrences of a value in an array.\n-/\n\npartial def count (arr : Array Int) (value : Int) : Nat :=\n\nif arr.size = 0 then\n\n0\n\nelse\n\n(if arr[0]! = value then 1 else 0) + count (arr.extract 1 arr.size) value\n"
+        "string": "/--\nCounts occurrences of a value in an array.\n-/\n"
       },
       {
-        "type": "empty",
-        "string": ""
+        "type": "sig",
+        "string": "partial def count (arr : Array Int) (value : Int) : Nat :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "if arr.size = 0 then\n0\nelse\n(if arr[0]! = value then 1 else 0) + count (arr.extract 1 arr.size) value\n\n"
       },
       {
         "type": "doc",
@@ -19386,11 +19746,15 @@
       },
       {
         "type": "doc",
-        "string": "/-- Count function for boolean sequences -/\n\npartial def count (a : Array Bool) : Nat :=\n\nif a.size = 0 then 0\n\nelse (if a[0]! then 1 else 0) + count (a.extract 1 a.size)\n"
+        "string": "/-- Count function for boolean sequences -/\n"
       },
       {
-        "type": "empty",
-        "string": ""
+        "type": "sig",
+        "string": "partial def count (a : Array Bool) : Nat :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "if a.size = 0 then 0\nelse (if a[0]! then 1 else 0) + count (a.extract 1 a.size)\n\n"
       },
       {
         "type": "doc",
@@ -19519,11 +19883,15 @@
       },
       {
         "type": "doc",
-        "string": "/-- Count function for boolean sequences -/\n\npartial def count (a : Array Bool) : Nat :=\n\nif a.size = 0 then 0\n\nelse (if a[0]! then 1 else 0) + count (a.extract 1 a.size)\n"
+        "string": "/-- Count function for boolean sequences -/\n"
       },
       {
-        "type": "empty",
-        "string": ""
+        "type": "sig",
+        "string": "partial def count (a : Array Bool) : Nat :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "if a.size = 0 then 0\nelse (if a[0]! then 1 else 0) + count (a.extract 1 a.size)\n\n"
       },
       {
         "type": "doc",
@@ -19986,11 +20354,15 @@
       },
       {
         "type": "doc",
-        "string": "/--\nRecursive function to calculate sum of squares from 0 to n\n-/\n\npartial def SqrSumRec (n : Int) : Int :=\n\nif n == 0 then 0 else n*n + SqrSumRec (n-1)\n"
+        "string": "/--\nRecursive function to calculate sum of squares from 0 to n\n-/\n"
       },
       {
-        "type": "empty",
-        "string": ""
+        "type": "sig",
+        "string": "partial def SqrSumRec (n : Int) : Int :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "if n == 0 then 0 else n*n + SqrSumRec (n-1)\n\n"
       },
       {
         "type": "doc",
@@ -20039,11 +20411,15 @@
       },
       {
         "type": "doc",
-        "string": "/-- Recursive function to calculate sum of squares up to n -/\n\npartial def SqrSumRec (n : Int) : Int :=\n\nif n == 0 then 0\n\nelse n * n + SqrSumRec (n - 1)\n"
+        "string": "/-- Recursive function to calculate sum of squares up to n -/\n"
       },
       {
-        "type": "empty",
-        "string": ""
+        "type": "sig",
+        "string": "partial def SqrSumRec (n : Int) : Int :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "if n == 0 then 0\nelse n * n + SqrSumRec (n - 1)\n\n"
       },
       {
         "type": "doc",
@@ -20092,11 +20468,15 @@
       },
       {
         "type": "doc",
-        "string": "/--\nRecursive function to calculate sum of squares from 0 to n.\nTranslated from Dafny's SqrSumRec function.\n-/\n\npartial def SqrSumRec (n : Int) : Int :=\n\nif n == 0 then 0\n\nelse n * n + SqrSumRec (n - 1)\n"
+        "string": "/--\nRecursive function to calculate sum of squares from 0 to n.\nTranslated from Dafny's SqrSumRec function.\n-/\n"
       },
       {
-        "type": "empty",
-        "string": ""
+        "type": "sig",
+        "string": "partial def SqrSumRec (n : Int) : Int :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "if n == 0 then 0\nelse n * n + SqrSumRec (n - 1)\n\n"
       },
       {
         "type": "doc",
@@ -20751,11 +21131,15 @@
       },
       {
         "type": "doc",
-        "string": "/-- Recursive function counting matching elements at same positions -/\n\npartial def reccbull (s : Array Nat) (u : Array Nat) (i : Nat) : Nat :=\n\nif i == s.size then 0\n\nelse if s[i]! == u[i]! then reccbull s u (i + 1) + 1\n\nelse reccbull s u (i + 1)\n"
+        "string": "/-- Recursive function counting matching elements at same positions -/\n"
       },
       {
-        "type": "empty",
-        "string": ""
+        "type": "sig",
+        "string": "partial def reccbull (s : Array Nat) (u : Array Nat) (i : Nat) : Nat :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "if i == s.size then 0\nelse if s[i]! == u[i]! then reccbull s u (i + 1) + 1\nelse reccbull s u (i + 1)\n\n"
       },
       {
         "type": "doc",
@@ -20771,11 +21155,15 @@
       },
       {
         "type": "doc",
-        "string": "/-- Recursive function counting matching elements at different positions -/\n\npartial def recccow (s : Array Nat) (u : Array Nat) (i : Nat) : Nat :=\n\nif i == s.size then 0\n\nelse if s[i]! \u2260 u[i]! \u2227 u[i]! \u2208 s.toList then recccow s u (i + 1) + 1\n\nelse recccow s u (i + 1)\n"
+        "string": "/-- Recursive function counting matching elements at different positions -/\n"
       },
       {
-        "type": "empty",
-        "string": ""
+        "type": "sig",
+        "string": "partial def recccow (s : Array Nat) (u : Array Nat) (i : Nat) : Nat :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "if i == s.size then 0\nelse if s[i]! \u2260 u[i]! \u2227 u[i]! \u2208 s.toList then recccow s u (i + 1) + 1\nelse recccow s u (i + 1)\n\n"
       },
       {
         "type": "doc",
@@ -21695,11 +22083,15 @@
       },
       {
         "type": "doc",
-        "string": "/--\nRecursive auxiliary function that computes the sum of array elements from index n to the end.\nInput:\n- V: Array of integers\n- n: Starting index\nReturns: Sum of elements V + V + ... + V\n-/\n\npartial def suma_aux (V : Array Int) (n : Nat) : Int :=\n\nif n == V.size then\n\n0\n\nelse\n\nV[n]! + suma_aux V (n + 1)\n"
+        "string": "/--\nRecursive auxiliary function that computes the sum of array elements from index n to the end.\nInput:\n- V: Array of integers\n- n: Starting index\nReturns: Sum of elements V + V + ... + V\n-/\n"
       },
       {
-        "type": "empty",
-        "string": ""
+        "type": "sig",
+        "string": "partial def suma_aux (V : Array Int) (n : Nat) : Int :=\n"
+      },
+      {
+        "type": "impl",
+        "string": "if n == V.size then\n0\nelse\nV[n]! + suma_aux V (n + 1)\n\n"
       },
       {
         "type": "doc",

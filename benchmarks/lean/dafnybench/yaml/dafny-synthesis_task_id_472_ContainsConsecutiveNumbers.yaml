@@ -1,0 +1,38 @@
+vc-description: |-
+  /- 
+  {
+  "name": "dafny-synthesis_task_id_472_ContainsConsecutiveNumbers",
+  "category": "Dafny Translation",
+  "description": "Automatically translated from Dafny specification: dafny-synthesis_task_id_472_ContainsConsecutiveNumbers",
+  "source": "Dafny",
+  "translation_date": "2024",
+  "functions": ,
+  "methods":
+  }
+  -/
+  
+  /- 
+  Checks if an array contains consecutive numbers.
+  Translated from Dafny method ContainsConsecutiveNumbers.
+  
+  @param a The input array to check
+  @return True if array contains consecutive numbers, false otherwise
+  -/
+
+vc-preamble: |-
+
+vc-helpers: |-
+
+vc-definitions: |-
+  def ContainsConsecutiveNumbers (a : Array Int) : Bool :=
+  sorry
+
+vc-theorems: |-
+  theorem ContainsConsecutiveNumbers_spec (a : Array Int) :
+  a.size > 0 →
+  ContainsConsecutiveNumbers a = true ↔
+  (∃ i, 0 ≤ i ∧ i < a.size - 1 ∧ a[i]! + 1 = a[i + 1]!) :=
+  sorry
+
+vc-postamble: |-
+

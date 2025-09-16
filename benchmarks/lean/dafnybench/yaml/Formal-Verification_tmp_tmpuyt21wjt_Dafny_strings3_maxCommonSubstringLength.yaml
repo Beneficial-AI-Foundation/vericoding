@@ -1,0 +1,82 @@
+vc-description: |-
+  /- 
+  {
+  "name": "Formal-Verification_tmp_tmpuyt21wjt_Dafny_strings3_maxCommonSubstringLength",
+  "category": "Dafny Translation",
+  "description": "Automatically translated from Dafny specification: Formal-Verification_tmp_tmpuyt21wjt_Dafny_strings3_maxCommonSubstringLength",
+  "source": "Dafny",
+  "translation_date": "2024",
+  "functions": ,
+  "methods":
+  }
+  -/
+  
+  /-  Predicate checking if sub is a substring of str -/
+  
+  /-  Predicate checking if pre is a prefix of str -/
+  
+  /-  Predicate checking if pre is not a prefix of str -/
+  
+  /-  Predicate checking if sub is a substring of str using prefix predicate -/
+  
+  /-  Predicate checking if sub is not a substring of str using prefix predicate -/
+  
+  /-  Predicate checking if strings have a common substring of length k -/
+  
+  /-  Predicate checking if strings do not have a common substring of length k -/
+  
+  /-  Function checking if strings have a common substring of length k -/
+  
+  /-  Specification for haveCommonKSubstring -/
+  
+  /-  Function finding the maximum length of common substring -/
+  
+  /-  Specification for maxCommonSubstringLength -/
+
+vc-preamble: |-
+  def isSubstring (sub str : String) : Prop :=
+  ∃ i, 0 ≤ i ∧ i ≤ str.length - sub.length ∧ str.extract ⟨i⟩ ⟨i + sub.length⟩ = sub
+  
+  def isPrefixPred (pre str : String) : Prop :=
+  pre.length ≤ str.length ∧ pre = str.take pre.length
+  
+  def isNotPrefixPred (pre str : String) : Prop :=
+  pre.length > str.length ∨ pre ≠ str.take pre.length
+  
+  def isSubstringPred (sub str : String) : Prop :=
+  ∃ i, 0 ≤ i ∧ i ≤ str.length ∧ isPrefixPred sub (str.drop i)
+  
+  def isNotSubstringPred (sub str : String) : Prop :=
+  ∀ i, 0 ≤ i ∧ i ≤ str.length → isNotPrefixPred sub (str.drop i)
+  
+  def haveCommonKSubstringPred (k : Nat) (str1 str2 : String) : Prop :=
+  ∃ i1 j1, 0 ≤ i1 ∧ i1 ≤ str1.length - k ∧ j1 = i1 + k ∧
+  isSubstringPred (str1.extract ⟨i1⟩ ⟨j1⟩) str2
+  
+  def haveNotCommonKSubstringPred (k : Nat) (str1 str2 : String) : Prop :=
+  ∀ i1 j1, 0 ≤ i1 ∧ i1 ≤ str1.length - k ∧ j1 = i1 + k →
+  isNotSubstringPred (str1.extract ⟨i1⟩ ⟨j1⟩) str2
+
+vc-helpers: |-
+
+vc-definitions: |-
+  def haveCommonKSubstring (k : Nat) (str1 str2 : String) : Bool :=
+  sorry
+  
+  def maxCommonSubstringLength (str1 str2 : String) : Nat :=
+  sorry
+
+vc-theorems: |-
+  theorem haveCommonKSubstring_spec (k : Nat) (str1 str2 : String) :
+  haveCommonKSubstring k str1 str2 = true ↔ haveCommonKSubstringPred k str1 str2 :=
+  sorry
+  
+  theorem maxCommonSubstringLength_spec (str1 str2 : String) :
+  str1.length ≤ str2.length →
+  (∀ k, maxCommonSubstringLength str1 str2 < k ∧ k ≤ str1.length →
+  ¬haveCommonKSubstringPred k str1 str2) ∧
+  haveCommonKSubstringPred (maxCommonSubstringLength str1 str2) str1 str2 :=
+  sorry
+
+vc-postamble: |-
+
