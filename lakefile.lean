@@ -41,7 +41,7 @@ lean_lib Generated where
 -- Original benchmark files + all vericoder generated files
 lean_lib Benchmarks where
   globs := #[
-    .submodules `apps.files,
+    .submodules `fvapps.files,
     .submodules `dafnybench.poor.unformatted,
     .submodules `clever.files,
     .submodules `numpy_simple.poor.unformatted,
