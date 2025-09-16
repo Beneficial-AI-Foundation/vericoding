@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Terraform Docker wrapper script for VeriCoding infrastructure
 # Usage: ./tf [terraform-command] [args...]
