@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 
 def sum_seq (s : List Int) : Int :=
   match s with
@@ -24,21 +23,15 @@ def min_seq : (s : List Int) → s.length > 0 → Int
 def solve_precond (a : List Int) : Prop :=
   a.length ≥ 2
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (a : List Int) (h_precond : solve_precond a) : Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (a : List Int) (result : Int) (h_precond : solve_precond a) : Prop :=
@@ -55,5 +48,4 @@ def solve_postcond (a : List Int) (result : Int) (h_precond : solve_precond a) :
 theorem solve_spec_satisfied (a : List Int) (h_precond : solve_precond a) :
     solve_postcond a (solve a h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

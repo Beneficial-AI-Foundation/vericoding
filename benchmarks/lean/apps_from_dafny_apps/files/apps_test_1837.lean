@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def ValidInput (n: Nat) (A: List Int) : Prop :=
   n ≥ 1 ∧
   A.length = n ∧
@@ -25,21 +24,15 @@ def MaxPossibleFixedPoints (A: List Int) : Nat :=
 def solve_precond (n : Nat) (A : List Int) : Prop :=
   ValidInput n A
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (n : Nat) (A : List Int) (h_precond : solve_precond n A) : Nat :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (n : Nat) (A : List Int) (result: Nat) (h_precond : solve_precond n A) : Prop :=
@@ -48,5 +41,4 @@ def solve_postcond (n : Nat) (A : List Int) (result: Nat) (h_precond : solve_pre
 theorem solve_spec_satisfied (n : Nat) (A : List Int) (h_precond : solve_precond n A) :
     solve_postcond n A (solve n A h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

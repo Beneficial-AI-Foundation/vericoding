@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def ValidInput (pizzas : List Int) : Prop :=
   ∀ i, 0 ≤ i ∧ i < pizzas.length → pizzas[i]! ≥ 0
 
@@ -20,21 +19,15 @@ def CanFulfillRequirements (pizzas : List Int) : Prop :=
 def solve_precond (pizzas : List Int) : Prop :=
   ValidInput pizzas
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (pizzas : List Int) (_ : solve_precond pizzas) : String :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (pizzas : List Int) (result : String) (_ : solve_precond pizzas) : Prop :=
@@ -43,5 +36,4 @@ def solve_postcond (pizzas : List Int) (result : String) (_ : solve_precond pizz
 theorem solve_spec_satisfied (pizzas : List Int) (h_precond : solve_precond pizzas) :
     solve_postcond pizzas (solve pizzas h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

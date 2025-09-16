@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def CurrentValueAtIndex (S : String) (index : Nat) : Int :=
   if index = 0 then 0
   else CurrentValueAtIndex S (index - 1) + (if S.get! ⟨index - 1⟩ = 'I' then 1 else -1)
@@ -20,21 +19,15 @@ def MaxValue (S : String) : Int :=
 def solve_precond (N : Int) (S : String) : Prop :=
   1 ≤ N ∧ N ≤ 100 ∧ N = S.length ∧ ∀ i : Nat, i < S.length → S.get! ⟨i⟩ = 'I' ∨ S.get! ⟨i⟩ = 'D'
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (N : Int) (S : String) (h_precond : solve_precond N S) : Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (N : Int) (S : String) (result : Int) (h_precond : solve_precond N S) : Prop :=
@@ -43,5 +36,4 @@ def solve_postcond (N : Int) (S : String) (result : Int) (h_precond : solve_prec
 theorem solve_spec_satisfied (N : Int) (S : String) (h_precond : solve_precond N S) :
     solve_postcond N S (solve N S h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

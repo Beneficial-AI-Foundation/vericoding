@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def validInput (n m k : Int) (H : List Int) : Prop :=
   n ≥ 1 ∧ n = H.length ∧ m ≥ 0 ∧ k ≥ 0 ∧ 
   (∀ i, 0 ≤ i ∧ i < H.length → H[i]! ≥ 0)
@@ -32,21 +31,15 @@ def solve_precond (stdin_input : String) : Prop :=
   stdin_input.get ⟨stdin_input.length - 1⟩ = '\n' ∧ 
   validCompleteInputFormat stdin_input
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (stdin_input : String) (h_precond : solve_precond stdin_input) : String :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (stdin_input : String) (result : String) (h_precond : solve_precond stdin_input) : Prop :=
@@ -62,5 +55,4 @@ def solve_postcond (stdin_input : String) (result : String) (h_precond : solve_p
 theorem solve_spec_satisfied (stdin_input : String) (h_precond : solve_precond stdin_input) :
     solve_postcond stdin_input (solve stdin_input h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

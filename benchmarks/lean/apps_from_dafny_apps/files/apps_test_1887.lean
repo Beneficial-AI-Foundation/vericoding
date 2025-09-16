@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def ValidInput (n : Int) (h1 h2 : List Int) : Prop :=
   n ≥ 1 ∧ h1.length ≥ n.natAbs ∧ h2.length ≥ n.natAbs ∧
   (∀ i, 0 ≤ i ∧ i < n → h1.get! i.natAbs ≥ 0) ∧
@@ -20,21 +19,15 @@ def maxTeamHeight (n : Int) (h1 h2 : List Int) : Int :=
 def solve_precond (n : Int) (h1 h2 : List Int) : Prop :=
   ValidInput n h1 h2
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (n : Int) (h1 h2 : List Int) (h_precond : solve_precond n h1 h2) : Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (n : Int) (h1 h2 : List Int) (result : Int) (h_precond : solve_precond n h1 h2) : Prop :=
@@ -43,5 +36,4 @@ def solve_postcond (n : Int) (h1 h2 : List Int) (result : Int) (h_precond : solv
 theorem solve_spec_satisfied (n : Int) (h1 h2 : List Int) (h_precond : solve_precond n h1 h2) :
     solve_postcond n h1 h2 (solve n h1 h2 h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def ValidInput (N : Int) (A B C : List Int) : Prop :=
   N ≥ 1 ∧
   A.length = N.natAbs ∧
@@ -25,21 +24,15 @@ def SumSatisfaction (A B C : List Int) (N : Int) : Int :=
 def solve_precond (N : Int) (A B C : List Int) : Prop :=
   ValidInput N A B C
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (N : Int) (A B C : List Int) (h_precond : solve_precond N A B C) : Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (N : Int) (A B C : List Int) (result : Int) (h_precond : solve_precond N A B C) : Prop :=
@@ -48,5 +41,4 @@ def solve_postcond (N : Int) (A B C : List Int) (result : Int) (h_precond : solv
 theorem solve_spec_satisfied (N : Int) (A B C : List Int) (h_precond : solve_precond N A B C) :
     solve_postcond N A B C (solve N A B C h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

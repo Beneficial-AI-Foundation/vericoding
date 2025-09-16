@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def ValidInput (n m p : Int) (f g : List Int) : Prop :=
   n ≥ 1 ∧ m ≥ 1 ∧
   p ≥ 2 ∧
@@ -22,21 +21,15 @@ def ValidResult (result n m p : Int) (f g : List Int) : Prop :=
 def solve_precond (n m p : Int) (f g : List Int) : Prop :=
   ValidInput n m p f g ∧ p ≠ 0
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (n m p : Int) (f g : List Int) (h_precond : solve_precond n m p f g) : Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (n m p : Int) (f g : List Int) (result : Int) (h_precond : solve_precond n m p f g) : Prop :=
@@ -45,5 +38,4 @@ def solve_postcond (n m p : Int) (f g : List Int) (result : Int) (h_precond : so
 theorem solve_spec_satisfied (n m p : Int) (f g : List Int) (h_precond : solve_precond n m p f g) :
     solve_postcond n m p f g (solve n m p f g h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def ValidInput (n : Int) (a b : String) : Prop :=
   n > 0 ∧ a.length = 2 * n ∧ b.length = 2 * n ∧
   (∀ i, 0 ≤ i ∧ i < a.length → a.data[i]! = '0' ∨ a.data[i]! = '1') ∧
@@ -20,21 +19,15 @@ def CorrectOutcome (result : String) (d : Int) : Prop :=
 def solve_precond (n : Int) (a b : String) : Prop :=
   ValidInput n a b
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (n : Int) (a b : String) (h_precond : solve_precond n a b) : String :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (n : Int) (a b : String) (result : String) (h_precond : solve_precond n a b) : Prop :=
@@ -51,5 +44,4 @@ def solve_postcond (n : Int) (a b : String) (result : String) (h_precond : solve
 theorem solve_spec_satisfied (n : Int) (a b : String) (h_precond : solve_precond n a b) :
     solve_postcond n a b (solve n a b h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

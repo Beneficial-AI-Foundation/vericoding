@@ -1,7 +1,6 @@
 Based on the error messages, I need to fix the list access syntax and use proper Int to Nat conversion. Let me provide the corrected YAML:
 
 vc-preamble: |-
-  -- <vc-preamble>
   def ValidInput (n d : Int) (transactions : List Int) : Prop :=
     n ≥ 1 ∧ d ≥ 1 ∧
     transactions.length = Int.natAbs n ∧
@@ -41,20 +40,14 @@ vc-preamble: |-
   @[reducible, simp]
   def solve_precond (n d : Int) (transactions : List Int) : Prop :=
     ValidInput n d transactions
-  -- </vc-preamble>
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
-  -- <vc-definitions>
   def solve (n d : Int) (transactions : List Int) (h_precond : solve_precond n d transactions) : Int :=
     sorry
-  -- </vc-definitions>
 
 vc-theorems: |-
-  -- <vc-theorems>
   @[reducible, simp]
   def solve_postcond (n d : Int) (transactions : List Int) (result : Int) (h_precond : solve_precond n d transactions) : Prop :=
     result = -1 ∨ result ≥ 0
@@ -62,6 +55,5 @@ vc-theorems: |-
   theorem solve_spec_satisfied (n d : Int) (transactions : List Int) (h_precond : solve_precond n d transactions) :
       solve_postcond n d transactions (solve n d transactions h_precond) h_precond := by
     sorry
-  -- </vc-theorems>
 
 vc-postamble: |-

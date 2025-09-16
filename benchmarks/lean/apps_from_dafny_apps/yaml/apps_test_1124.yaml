@@ -1,5 +1,4 @@
 vc-preamble: |-
-  -- <vc-preamble>
   def ValidInput (values : List Int) : Prop :=
     values.length ≥ 1 ∧ ∀ i, 0 ≤ i ∧ i < values.length → values[i]! > 0
 
@@ -13,20 +12,14 @@ vc-preamble: |-
   @[reducible, simp]
   def solve_precond (values : List Int) : Prop :=
     ValidInput values
-  -- </vc-preamble>
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
-  -- <vc-definitions>
   def solve (values : List Int) (h_precond : solve_precond values) : Int :=
     sorry
-  -- </vc-definitions>
 
 vc-theorems: |-
-  -- <vc-theorems>
   @[reducible, simp]
   def solve_postcond (values : List Int) (result : Int) (h_precond : solve_precond values) : Prop :=
     result > 0 ∧ 
@@ -36,6 +29,5 @@ vc-theorems: |-
   theorem solve_spec_satisfied (values : List Int) (h_precond : solve_precond values) :
       solve_postcond values (solve values h_precond) h_precond := by
     sorry
-  -- </vc-theorems>
 
 vc-postamble: |-

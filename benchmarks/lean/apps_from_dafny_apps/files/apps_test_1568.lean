@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def ValidInput (n a b c t : Int) (arrivals : List Int) : Prop :=
   1 ≤ n ∧ n ≤ 1000 ∧
   1 ≤ a ∧ a ≤ 1000 ∧
@@ -22,21 +21,15 @@ def MaxMoney (n a b c t : Int) (arrivals : List Int) (h : ValidInput n a b c t a
 def solve_precond (n a b c t : Int) (arrivals : List Int) : Prop :=
   ValidInput n a b c t arrivals
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (n a b c t : Int) (arrivals : List Int) (h_precond : solve_precond n a b c t arrivals) : Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (n a b c t : Int) (arrivals : List Int) (result : Int) (h_precond : solve_precond n a b c t arrivals) : Prop :=
@@ -45,5 +38,4 @@ def solve_postcond (n a b c t : Int) (arrivals : List Int) (result : Int) (h_pre
 theorem solve_spec_satisfied (n a b c t : Int) (arrivals : List Int) (h_precond : solve_precond n a b c t arrivals) :
     solve_postcond n a b c t arrivals (solve n a b c t arrivals h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

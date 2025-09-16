@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def ValidInputStructure (input : String) : Prop :=
   input.length ≥ 3
 
@@ -36,21 +35,15 @@ axiom SolveCircleSeparation_ensures : ∀ input, ValidInput input →
 def solve_precond (stdin_input : String) : Prop :=
   ValidInput stdin_input
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (stdin_input : String) (h_precond : solve_precond stdin_input) : String :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (stdin_input : String) (result : String) (h_precond : solve_precond stdin_input) : Prop :=
@@ -61,5 +54,4 @@ def solve_postcond (stdin_input : String) (result : String) (h_precond : solve_p
 theorem solve_spec_satisfied (stdin_input : String) (h_precond : solve_precond stdin_input) :
     solve_postcond stdin_input (solve stdin_input h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

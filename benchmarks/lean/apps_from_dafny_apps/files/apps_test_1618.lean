@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def mymax (a b : Int) : Int :=
   if a ≥ b then a else b
 
@@ -31,21 +30,15 @@ def solve_precond (stairs_amount : Int) (stair_heights : List Int) (boxes_amount
   ValidStairs stair_heights ∧
   ValidBoxes boxes stairs_amount
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (stairs_amount : Int) (stair_heights : List Int) (boxes_amount : Int) (boxes : List (Int × Int)) (h_precond : solve_precond stairs_amount stair_heights boxes_amount boxes) : List Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (stairs_amount : Int) (stair_heights : List Int) (boxes_amount : Int) (boxes : List (Int × Int)) (result : List Int) (h_precond : solve_precond stairs_amount stair_heights boxes_amount boxes) : Prop :=
@@ -54,5 +47,4 @@ def solve_postcond (stairs_amount : Int) (stair_heights : List Int) (boxes_amoun
 theorem solve_spec_satisfied (stairs_amount : Int) (stair_heights : List Int) (boxes_amount : Int) (boxes : List (Int × Int)) (h_precond : solve_precond stairs_amount stair_heights boxes_amount boxes) :
     solve_postcond stairs_amount stair_heights boxes_amount boxes (solve stairs_amount stair_heights boxes_amount boxes h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

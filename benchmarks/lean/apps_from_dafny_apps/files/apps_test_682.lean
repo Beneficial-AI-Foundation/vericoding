@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def ValidPosition (r c : Int) : Prop :=
   1 ≤ r ∧ r ≤ 8 ∧ 1 ≤ c ∧ c ≤ 8
 
@@ -32,21 +31,15 @@ def ValidResult (result : List Int) (r1 c1 r2 c2 : Int) : Prop :=
 def solve_precond (r1 c1 r2 c2 : Int) : Prop :=
   ValidPosition r1 c1 ∧ ValidPosition r2 c2
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (r1 c1 r2 c2 : Int) (h_precond : solve_precond r1 c1 r2 c2) : List Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (r1 c1 r2 c2 : Int) (result: List Int) (h_precond : solve_precond r1 c1 r2 c2) : Prop :=
@@ -55,5 +48,4 @@ def solve_postcond (r1 c1 r2 c2 : Int) (result: List Int) (h_precond : solve_pre
 theorem solve_spec_satisfied (r1 c1 r2 c2 : Int) (h_precond : solve_precond r1 c1 r2 c2) :
     solve_postcond r1 c1 r2 c2 (solve r1 c1 r2 c2 h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

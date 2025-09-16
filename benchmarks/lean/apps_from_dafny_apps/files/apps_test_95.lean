@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def ValidInput (n : Nat) (arr : List Int) : Prop :=
   n > 0 ∧ arr.length = n ∧ ∀ i, 0 ≤ i ∧ i < arr.length → arr[i]! ≥ 1
 
@@ -34,21 +33,15 @@ def IsUnimodal (arr : List Int) : Prop :=
 def solve_precond (n : Nat) (arr : List Int) : Prop :=
   ValidInput n arr
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (n : Nat) (arr : List Int) (h_precond : solve_precond n arr) : String :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (n : Nat) (arr : List Int) (result : String) (h_precond : solve_precond n arr) : Prop :=
@@ -57,5 +50,4 @@ def solve_postcond (n : Nat) (arr : List Int) (result : String) (h_precond : sol
 theorem solve_spec_satisfied (n : Nat) (arr : List Int) (h_precond : solve_precond n arr) :
     solve_postcond n arr (solve n arr h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

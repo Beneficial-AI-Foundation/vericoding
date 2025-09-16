@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def IsLetter (c : Char) : Bool :=
   ('a' ≤ c ∧ c ≤ 'z') || ('A' ≤ c ∧ c ≤ 'Z')
 
@@ -86,21 +85,15 @@ def solve_precond (input : String) : Prop :=
      ('0' ≤ input.data[i]! ∧ input.data[i]! ≤ '9'))) ∧
   ValidParentheses input
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (input : String) (h_precond : solve_precond input) : Nat × Nat :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (input : String) (result : Nat × Nat) (h_precond : solve_precond input) : Prop :=
@@ -111,5 +104,4 @@ def solve_postcond (input : String) (result : Nat × Nat) (h_precond : solve_pre
 theorem solve_spec_satisfied (input : String) (h_precond : solve_precond input) :
     solve_postcond input (solve input h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

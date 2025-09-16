@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def ValidInput (n : Int) (packets : List Int) : Prop :=
   n ≥ 1 ∧ packets.length = n ∧ ∀ i, 0 ≤ i ∧ i < packets.length → packets[i]! ≥ 1
 
@@ -22,21 +21,15 @@ def ValidSolution (n : Int) (packets : List Int) (result : List Int) : Prop :=
 def solve_precond (n : Int) (packets : List Int) : Prop :=
   ValidInput n packets
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (n : Int) (packets : List Int) (h_precond : solve_precond n packets) : List Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (n : Int) (packets : List Int) (result : List Int) (h_precond : solve_precond n packets) : Prop :=
@@ -45,5 +38,4 @@ def solve_postcond (n : Int) (packets : List Int) (result : List Int) (h_precond
 theorem solve_spec_satisfied (n : Int) (packets : List Int) (h_precond : solve_precond n packets) :
     solve_postcond n packets (solve n packets h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

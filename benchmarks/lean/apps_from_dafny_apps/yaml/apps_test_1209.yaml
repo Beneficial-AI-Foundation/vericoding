@@ -1,5 +1,4 @@
 vc-preamble: |-
-  -- <vc-preamble>
   def contains_newline (s : String) : Prop :=
     ∃ i, 0 ≤ i ∧ i < s.length ∧ s.data.get! i = '\n'
 
@@ -61,20 +60,14 @@ vc-preamble: |-
     stdin_input.length > 0 ∧
     valid_input_format stdin_input ∧
     input_sum_is_zero stdin_input
-  -- </vc-preamble>
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
-  -- <vc-definitions>
   def solve (stdin_input : String) (h_precond : solve_precond stdin_input) : String :=
     sorry
-  -- </vc-definitions>
 
 vc-theorems: |-
-  -- <vc-theorems>
   @[reducible, simp]
   def solve_postcond (stdin_input : String) (output : String) (h_precond : solve_precond stdin_input) : Prop :=
     valid_output_format output ∧
@@ -86,6 +79,5 @@ vc-theorems: |-
   theorem solve_spec_satisfied (stdin_input : String) (h_precond : solve_precond stdin_input) :
       solve_postcond stdin_input (solve stdin_input h_precond) h_precond := by
     sorry
-  -- </vc-theorems>
 
 vc-postamble: |-

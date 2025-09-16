@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def ValidInput (m d : Int) : Prop :=
   1 ≤ m ∧ m ≤ 12 ∧ 1 ≤ d ∧ d ≤ 7
 
@@ -24,21 +23,15 @@ def ColumnsNeeded (m d : Int) : Int :=
 def solve_precond (m d : Int) : Prop :=
   ValidInput m d
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (m d : Int) (h_precond : solve_precond m d) : Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (m d : Int) (result : Int) (h_precond : solve_precond m d) : Prop :=
@@ -47,5 +40,4 @@ def solve_postcond (m d : Int) (result : Int) (h_precond : solve_precond m d) : 
 theorem solve_spec_satisfied (m d : Int) (h_precond : solve_precond m d) :
     solve_postcond m d (solve m d h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

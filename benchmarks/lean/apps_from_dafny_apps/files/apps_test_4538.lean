@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def ValidInput (N D : Int) (points : List (Int × Int)) : Prop :=
   N ≥ 0 ∧ D ≥ 0 ∧ points.length ≥ N.natAbs
 
@@ -15,21 +14,15 @@ def CountPointsWithinDistance (N D : Int) (points : List (Int × Int)) : Int :=
 def solve_precond (N D : Int) (points : List (Int × Int)) : Prop :=
   ValidInput N D points
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (N D : Int) (points : List (Int × Int)) (h_precond : solve_precond N D points) : Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (N D : Int) (points : List (Int × Int)) (result : Int) (h_precond : solve_precond N D points) : Prop :=
@@ -38,5 +31,4 @@ def solve_postcond (N D : Int) (points : List (Int × Int)) (result : Int) (h_pr
 theorem solve_spec_satisfied (N D : Int) (points : List (Int × Int)) (h_precond : solve_precond N D points) :
     solve_postcond N D points (solve N D points h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

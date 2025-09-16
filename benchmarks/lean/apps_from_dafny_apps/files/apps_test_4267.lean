@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def ValidTemperature (temp : Int) : Prop :=
   -40 ≤ temp ∧ temp ≤ 40
 
@@ -13,21 +12,15 @@ def CorrectOutput (temp : Int) (output : String) : Prop :=
 def solve_precond (X : Int) : Prop :=
   ValidTemperature X
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (X : Int) (h_precond : solve_precond X) : String :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (X : Int) (result : String) (h_precond : solve_precond X) : Prop :=
@@ -36,5 +29,4 @@ def solve_postcond (X : Int) (result : String) (h_precond : solve_precond X) : P
 theorem solve_spec_satisfied (X : Int) (h_precond : solve_precond X) :
     solve_postcond X (solve X h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

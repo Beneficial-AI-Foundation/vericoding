@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def sum (cards: List Int): Int :=
   cards.foldr (· + ·) 0
 
@@ -13,21 +12,15 @@ def ValidInput (cards: List Int) (x: Int): Prop :=
 def solve_precond (cards: List Int) (x: Int) : Prop :=
   ValidInput cards x
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (cards: List Int) (x: Int) (h_precond : solve_precond cards x) : Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (cards: List Int) (x: Int) (result: Int) (h_precond : solve_precond cards x) : Prop :=
@@ -36,5 +29,4 @@ def solve_postcond (cards: List Int) (x: Int) (result: Int) (h_precond : solve_p
 theorem solve_spec_satisfied (cards: List Int) (x: Int) (h_precond : solve_precond cards x) :
     solve_postcond cards x (solve cards x h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

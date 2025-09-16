@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def StringToNat (s : String) : Nat :=
   sorry
 
@@ -15,21 +14,15 @@ def ValidOutput (result : String) : Prop :=
 def solve_precond (n : String) : Prop :=
   ValidInput n
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (n : String) (h_precond : solve_precond n) : String :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (n : String) (result : String) (h_precond : solve_precond n) : Prop :=
@@ -40,5 +33,4 @@ def solve_postcond (n : String) (result : String) (h_precond : solve_precond n) 
 theorem solve_spec_satisfied (n : String) (h_precond : solve_precond n) :
     solve_postcond n (solve n h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def XorRange (arr: List (BitVec 32)) (i j : Int) : BitVec 32 :=
   sorry
 
@@ -16,21 +15,15 @@ def IsMaxXorSubarray (arr: List (BitVec 32)) (result: BitVec 32) : Prop :=
 def solve_precond (arr : List (BitVec 32)) : Prop :=
   ValidInput arr
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (arr : List (BitVec 32)) (h_precond : solve_precond arr) : BitVec 32 :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (arr : List (BitVec 32)) (result: BitVec 32) (h_precond : solve_precond arr) : Prop :=
@@ -39,5 +32,4 @@ def solve_postcond (arr : List (BitVec 32)) (result: BitVec 32) (h_precond : sol
 theorem solve_spec_satisfied (arr : List (BitVec 32)) (h_precond : solve_precond arr) :
     solve_postcond arr (solve arr h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

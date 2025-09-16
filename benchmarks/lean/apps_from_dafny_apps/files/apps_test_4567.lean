@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def ValidInput (scores : List Int) : Prop :=
   scores.length > 0 ∧ scores.length ≤ 100 ∧
   ∀ i, 0 ≤ i ∧ i < scores.length → 1 ≤ scores[i]! ∧ scores[i]! ≤ 100
@@ -30,21 +29,15 @@ def CorrectResult (scores : List Int) (result : Int) : Prop :=
 def solve_precond (scores : List Int) : Prop :=
   ValidInput scores
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (scores : List Int) (h_precond : solve_precond scores) : Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (scores : List Int) (result : Int) (h_precond : solve_precond scores) : Prop :=
@@ -53,5 +46,4 @@ def solve_postcond (scores : List Int) (result : Int) (h_precond : solve_precond
 theorem solve_spec_satisfied (scores : List Int) (h_precond : solve_precond scores) :
     solve_postcond scores (solve scores h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

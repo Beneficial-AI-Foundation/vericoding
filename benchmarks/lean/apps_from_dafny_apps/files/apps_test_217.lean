@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def ValidInput (a b f k : Int) : Prop :=
   a > 0 ∧ b > 0 ∧ f > 0 ∧ k > 0 ∧ f < a
 
@@ -30,21 +29,15 @@ def MultiJourneyFeasibility (a b f k result : Int) : Prop :=
 def solve_precond (a b f k : Int) : Prop :=
   ValidInput a b f k
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (a b f k : Int) (h_precond : solve_precond a b f k) : Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (a b f k : Int) (result : Int) (h_precond : solve_precond a b f k) : Prop :=
@@ -58,5 +51,4 @@ def solve_postcond (a b f k : Int) (result : Int) (h_precond : solve_precond a b
 theorem solve_spec_satisfied (a b f k : Int) (h_precond : solve_precond a b f k) :
     solve_postcond a b f k (solve a b f k h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

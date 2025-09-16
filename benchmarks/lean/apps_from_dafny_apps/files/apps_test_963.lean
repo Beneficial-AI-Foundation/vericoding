@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 @[reducible, simp]
 def ValidInput (N K : Int) (segments : List (Int × Int)) : Prop :=
   N ≥ 2 ∧
@@ -18,21 +17,15 @@ def computeWaysDP (N K : Int) (segments : List (Int × Int)) : Int := sorry
 def solve_precond (N K : Int) (segments : List (Int × Int)) : Prop :=
   ValidInput N K segments
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (N K : Int) (segments : List (Int × Int)) (h_precond : solve_precond N K segments) : Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (N K : Int) (segments : List (Int × Int)) (result : Int) (h_precond : solve_precond N K segments) : Prop :=
@@ -41,5 +34,4 @@ def solve_postcond (N K : Int) (segments : List (Int × Int)) (result : Int) (h_
 theorem solve_spec_satisfied (N K : Int) (segments : List (Int × Int)) (h_precond : solve_precond N K segments) :
     solve_postcond N K segments (solve N K segments h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

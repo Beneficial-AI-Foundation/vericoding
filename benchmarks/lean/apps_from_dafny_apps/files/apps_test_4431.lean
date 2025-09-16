@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def ValidInput (n k : Nat) (s : String) (available : List Char) : Prop :=
   n = s.length ∧
   k = available.length ∧
@@ -24,21 +23,15 @@ def SumSegmentCounts (segments : List Nat) : Nat :=
 def solve_precond (n k : Nat) (s : String) (available : List Char) : Prop :=
   ValidInput n k s available
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (n k : Nat) (s : String) (available : List Char) (h_precond : solve_precond n k s available) : Nat :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (n k : Nat) (s : String) (available : List Char) (result : Nat) (h_precond : solve_precond n k s available) : Prop :=
@@ -48,5 +41,4 @@ def solve_postcond (n k : Nat) (s : String) (available : List Char) (result : Na
 theorem solve_spec_satisfied (n k : Nat) (s : String) (available : List Char) (h_precond : solve_precond n k s available) :
     solve_postcond n k s available (solve n k s available h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def ValidInput (n : Nat) (a b : List Int) : Prop :=
   a.length = n ∧ b.length = n ∧ n ≥ 1 ∧
   (∀ i : Nat, i < n - 1 → a[i]! ≤ a[i + 1]!) ∧
@@ -20,21 +19,15 @@ def IsRotation (original rotated : List Int) : Prop :=
 def solve_precond (n : Nat) (a b : List Int) : Prop :=
   ValidInput n a b
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (n : Nat) (a b : List Int) (h_precond : solve_precond n a b) : Bool × List Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (n : Nat) (a b : List Int) (result : Bool × List Int) (h_precond : solve_precond n a b) : Prop :=
@@ -47,5 +40,4 @@ def solve_postcond (n : Nat) (a b : List Int) (result : Bool × List Int) (h_pre
 theorem solve_spec_satisfied (n : Nat) (a b : List Int) (h_precond : solve_precond n a b) :
     solve_postcond n a b (solve n a b h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

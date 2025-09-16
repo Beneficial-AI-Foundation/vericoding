@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def concat_seqs (seqs : List (List Char)) : List Char :=
   match seqs with
   | [] => []
@@ -15,21 +14,15 @@ def ValidSplit (result : List (List Char)) (k : Int) (q : List Char) : Prop :=
 def solve_precond (k : Int) (q : List Char) : Prop :=
   k ≥ 0 ∧ q.length ≥ 0
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (k : Int) (q : List Char) (h_precond : solve_precond k q) : List (List Char) :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (k : Int) (q : List Char) (result : List (List Char)) (h_precond : solve_precond k q) : Prop :=
@@ -39,5 +32,4 @@ def solve_postcond (k : Int) (q : List Char) (result : List (List Char)) (h_prec
 theorem solve_spec_satisfied (k : Int) (q : List Char) (h_precond : solve_precond k q) :
     solve_postcond k q (solve k q h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

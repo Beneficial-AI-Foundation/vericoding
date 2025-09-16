@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def ValidInput (s : List Char) : Prop :=
   s.length > 0 ∧ ∀ i, 0 ≤ i ∧ i < s.length → s[i]! = 'a' ∨ s[i]! = 'b'
 
@@ -29,21 +28,15 @@ def ValidOutput (s : List Char) (evenCount oddCount : Int) : Prop :=
 def solve_precond (s : List Char) : Prop :=
   ValidInput s
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (s : List Char) (h_precond : solve_precond s) : Int × Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (s : List Char) (result : Int × Int) (h_precond : solve_precond s) : Prop :=
@@ -52,5 +45,4 @@ def solve_postcond (s : List Char) (result : Int × Int) (h_precond : solve_prec
 theorem solve_spec_satisfied (s : List Char) (h_precond : solve_precond s) :
     solve_postcond s (solve s h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

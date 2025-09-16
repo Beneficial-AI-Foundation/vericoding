@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 partial def CountValidMinutes (a b : Int) : Int :=
   if a ≤ 0 ∨ b ≤ 0 then 0
   else if a = 1 ∧ b = 1 then 0
@@ -10,21 +9,15 @@ partial def CountValidMinutes (a b : Int) : Int :=
 def solve_precond (a1 a2 : Int) : Prop :=
   a1 ≥ 1 ∧ a2 ≥ 1
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (a1 a2 : Int) (_ : solve_precond a1 a2) : Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (a1 a2 : Int) (result: Int) (h_precond : solve_precond a1 a2) : Prop :=
@@ -33,5 +26,4 @@ def solve_postcond (a1 a2 : Int) (result: Int) (h_precond : solve_precond a1 a2)
 theorem solve_spec_satisfied (a1 a2 : Int) (h_precond : solve_precond a1 a2) :
     solve_postcond a1 a2 (solve a1 a2 h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def ValidInput (word : String) : Prop :=
   1 ≤ word.length ∧ word.length ≤ 10 ∧ ∀ i : Nat, i < word.length → 'A' ≤ word.data[i]! ∧ word.data[i]! ≤ 'Z'
 
@@ -20,21 +19,15 @@ def AllInSameGroup (word : String) : Prop :=
 def solve_precond (word : String) : Prop :=
   ValidInput word
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (word : String) (h_precond : solve_precond word) : String :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (word : String) (result : String) (h_precond : solve_precond word) : Prop :=
@@ -43,5 +36,4 @@ def solve_postcond (word : String) (result : String) (h_precond : solve_precond 
 theorem solve_spec_satisfied (word : String) (h_precond : solve_precond word) :
     solve_postcond word (solve word h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

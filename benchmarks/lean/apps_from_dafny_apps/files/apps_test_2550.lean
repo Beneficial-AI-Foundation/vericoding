@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def ValidInput (n m : Int) (scores : List Int) : Prop :=
   n ≥ 1 ∧ m ≥ 1 ∧ scores.length = n.natAbs ∧
   ∀ i, 0 ≤ i ∧ i < scores.length → 0 ≤ scores[i]! ∧ scores[i]! ≤ m
@@ -22,21 +21,15 @@ def MaxPossibleFirstScore (n m : Int) (scores : List Int) : Int :=
 def solve_precond (n m : Int) (scores : List Int) : Prop :=
   ValidInput n m scores
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (n m : Int) (scores : List Int) (h_precond : solve_precond n m scores) : Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (n m : Int) (scores : List Int) (result : Int) (h_precond : solve_precond n m scores) : Prop :=
@@ -47,5 +40,4 @@ def solve_postcond (n m : Int) (scores : List Int) (result : Int) (h_precond : s
 theorem solve_spec_satisfied (n m : Int) (scores : List Int) (h_precond : solve_precond n m scores) :
     solve_postcond n m scores (solve n m scores h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

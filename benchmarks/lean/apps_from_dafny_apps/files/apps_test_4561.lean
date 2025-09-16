@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def ValidOutcome (outcome : String) : Prop :=
   outcome = "delicious" ∨ outcome = "safe" ∨ outcome = "dangerous"
 
@@ -16,21 +15,15 @@ def ExpectedOutcome (X A B : Int) : String :=
 def solve_precond (X A B : Int) : Prop :=
   X ≥ 0
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (X A B : Int) (h_precond : solve_precond X A B) : String :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (X A B : Int) (outcome : String) (h_precond : solve_precond X A B) : Prop :=
@@ -39,5 +32,4 @@ def solve_postcond (X A B : Int) (outcome : String) (h_precond : solve_precond X
 theorem solve_spec_satisfied (X A B : Int) (h_precond : solve_precond X A B) :
     solve_postcond X A B (solve X A B h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

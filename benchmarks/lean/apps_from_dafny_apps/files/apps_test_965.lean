@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 
 def ValidInput (n: Int) (statuses: String) : Prop :=
   n ≥ 2 ∧ statuses.length = n ∧ 
@@ -19,21 +18,15 @@ def ExpectedResult (statuses: String) : Int :=
 def solve_precond (n : Int) (statuses : String) : Prop :=
   ValidInput n statuses
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (n : Int) (statuses : String) (h_precond : solve_precond n statuses) : Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (n : Int) (statuses : String) (result: Int) (h_precond : solve_precond n statuses) : Prop :=
@@ -42,5 +35,4 @@ def solve_postcond (n : Int) (statuses : String) (result: Int) (h_precond : solv
 theorem solve_spec_satisfied (n : Int) (statuses : String) (h_precond : solve_precond n statuses) :
     solve_postcond n statuses (solve n statuses h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

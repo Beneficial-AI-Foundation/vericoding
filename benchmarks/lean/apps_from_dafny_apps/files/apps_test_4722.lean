@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def ValidInput (A B : Int) : Prop :=
   1 ≤ A ∧ A ≤ 100 ∧ 1 ≤ B ∧ B ≤ 100
 
@@ -10,21 +9,15 @@ def DistributionPossible (A B : Int) : Prop :=
 def solve_precond (A B : Int) : Prop :=
   ValidInput A B
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (A B : Int) (h_precond : solve_precond A B) : String :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (A B : Int) (result : String) (h_precond : solve_precond A B) : Prop :=
@@ -33,5 +26,4 @@ def solve_postcond (A B : Int) (result : String) (h_precond : solve_precond A B)
 theorem solve_spec_satisfied (A B : Int) (h_precond : solve_precond A B) :
     solve_postcond A B (solve A B h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

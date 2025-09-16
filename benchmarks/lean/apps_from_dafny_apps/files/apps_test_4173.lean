@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def ValidQuery (query: Int × Int × Int) : Prop :=
   query.1 > 0 ∧ query.2.1 > 0 ∧ query.2.2 > 0
 
@@ -15,21 +14,15 @@ def MinCostForQuery (n a b : Int) : Int :=
 def solve_precond (queries : List (Int × Int × Int)) : Prop :=
   ∀ i, i < queries.length → ValidQuery (queries.get! i)
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (queries : List (Int × Int × Int)) (h_precond : solve_precond queries) : List Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (queries : List (Int × Int × Int)) (results : List Int) (h_precond : solve_precond queries) : Prop :=
@@ -46,5 +39,4 @@ def solve_postcond (queries : List (Int × Int × Int)) (results : List Int) (h_
 theorem solve_spec_satisfied (queries : List (Int × Int × Int)) (h_precond : solve_precond queries) :
     solve_postcond queries (solve queries h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

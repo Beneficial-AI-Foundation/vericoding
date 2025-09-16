@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def ValidInput (N H : Int) (A B : List Int) : Prop :=
   A.length = N ∧ B.length = N ∧ N > 0 ∧ H > 0 ∧
   (∀ i : Nat, i < N.natAbs → A[i]! > 0 ∧ B[i]! > 0) ∧
@@ -17,21 +16,15 @@ def MaxWieldExists (A : List Int) (maxA : Int) : Prop :=
 def solve_precond (N H : Int) (A B : List Int) : Prop :=
   ValidInput N H A B
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (N H : Int) (A B : List Int) (h_precond : solve_precond N H A B) : Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (N H : Int) (A B : List Int) (result : Int) (h_precond : solve_precond N H A B) : Prop :=
@@ -40,5 +33,4 @@ def solve_postcond (N H : Int) (A B : List Int) (result : Int) (h_precond : solv
 theorem solve_spec_satisfied (N H : Int) (A B : List Int) (h_precond : solve_precond N H A B) :
     solve_postcond N H A B (solve N H A B h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

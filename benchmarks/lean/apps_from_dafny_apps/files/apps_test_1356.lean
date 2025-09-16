@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def count_a (s : List Char) : Int :=
   match s with
   | [] => 0
@@ -18,21 +17,15 @@ def IsGoodString (s : List Char) : Prop :=
 def solve_precond (s : List Char) : Prop :=
   ValidInput s
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (s : List Char) (h_precond : solve_precond s) : Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (s : List Char) (result : Int) (h_precond : solve_precond s) : Prop :=
@@ -41,5 +34,4 @@ def solve_postcond (s : List Char) (result : Int) (h_precond : solve_precond s) 
 theorem solve_spec_satisfied (s : List Char) (h_precond : solve_precond s) :
     solve_postcond s (solve s h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

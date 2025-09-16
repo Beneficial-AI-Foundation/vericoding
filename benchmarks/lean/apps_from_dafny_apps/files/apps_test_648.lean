@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def ValidInput (m b : Int) : Prop :=
   1 ≤ m ∧ m ≤ 1000 ∧ 1 ≤ b ∧ b ≤ 10000
 
@@ -16,21 +15,15 @@ def RectangleValue (k m b : Int) : Int :=
 def solve_precond (m b : Int) : Prop :=
   ValidInput m b
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (m b : Int) (h_precond : solve_precond m b) : Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (m b : Int) (result : Int) (h_precond : solve_precond m b) : Prop :=
@@ -41,5 +34,4 @@ def solve_postcond (m b : Int) (result : Int) (h_precond : solve_precond m b) : 
 theorem solve_spec_satisfied (m b : Int) (h_precond : solve_precond m b) :
     solve_postcond m b (solve m b h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def ValidInput (n : Int) (a : Int) (b : Int) (mobs : List Int) : Prop :=
   n ≥ 0 ∧ a > 0 ∧ b > 0 ∧ mobs.length = n ∧
   ∀ i, 0 ≤ i ∧ i < n → i.natAbs < mobs.length ∧ mobs[i.natAbs]! ≥ 0
@@ -24,21 +23,15 @@ def CorrectResult (result : List String) (n : Int) (a : Int) (b : Int) (mobs : L
 def solve_precond (n : Int) (a : Int) (b : Int) (mobs : List Int) : Prop :=
   ValidInput n a b mobs
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (n : Int) (a : Int) (b : Int) (mobs : List Int) (h_precond : solve_precond n a b mobs) : List String :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (n : Int) (a : Int) (b : Int) (mobs : List Int) (result : List String) (h_precond : solve_precond n a b mobs) : Prop :=
@@ -47,5 +40,4 @@ def solve_postcond (n : Int) (a : Int) (b : Int) (mobs : List Int) (result : Lis
 theorem solve_spec_satisfied (n : Int) (a : Int) (b : Int) (mobs : List Int) (h_precond : solve_precond n a b mobs) :
     solve_postcond n a b mobs (solve n a b mobs h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

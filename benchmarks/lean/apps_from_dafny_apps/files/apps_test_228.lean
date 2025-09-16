@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def minimum (s : List Int) : Int :=
   sorry
 
@@ -13,21 +12,15 @@ def ValidInput (n : Int) (piles : List Int) : Prop :=
 def solve_precond (n : Int) (piles : List Int) : Prop :=
   ValidInput n piles
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (n : Int) (piles : List Int) (h_precond : solve_precond n piles) : String :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (n : Int) (piles : List Int) (result : String) (h_precond : solve_precond n piles) : Prop :=
@@ -41,5 +34,4 @@ def solve_postcond (n : Int) (piles : List Int) (result : String) (h_precond : s
 theorem solve_spec_satisfied (n : Int) (piles : List Int) (h_precond : solve_precond n piles) :
     solve_postcond n piles (solve n piles h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def ValidInput (n p : Int) (buyers : List String) : Prop :=
   1 ≤ n ∧ n ≤ 40 ∧
   2 ≤ p ∧ p ≤ 1000 ∧
@@ -42,21 +41,15 @@ def computeTotalPayment (buyers : List String) (p : Int) : Int :=
 def solve_precond (n p : Int) (buyers : List String) : Prop :=
   ValidInput n p buyers
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (n p : Int) (buyers : List String) (h_precond : solve_precond n p buyers) : Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (n p : Int) (buyers : List String) (result : Int) (h_precond : solve_precond n p buyers) : Prop :=
@@ -65,5 +58,4 @@ def solve_postcond (n p : Int) (buyers : List String) (result : Int) (h_precond 
 theorem solve_spec_satisfied (n p : Int) (buyers : List String) (h_precond : solve_precond n p buyers) :
     solve_postcond n p buyers (solve n p buyers h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

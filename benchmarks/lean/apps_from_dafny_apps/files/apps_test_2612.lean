@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def is_valid_beautiful_arrangement (arrangement: List Int) (sizes: List Int) : Prop :=
   (∀ i : Nat, i < arrangement.length → 1 ≤ arrangement[i]! ∧ arrangement[i]! ≤ sizes.length) →
   (arrangement.length ≥ 1 ∧
@@ -15,21 +14,15 @@ def ValidInput (n: Int) (sizes: List Int) : Prop :=
 def solve_precond (n : Int) (sizes : List Int) : Prop :=
   ValidInput n sizes
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (n : Int) (sizes : List Int) (h_precond : solve_precond n sizes) : Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (n : Int) (sizes : List Int) (result: Int) (h_precond : solve_precond n sizes) : Prop :=
@@ -40,5 +33,4 @@ def solve_postcond (n : Int) (sizes : List Int) (result: Int) (h_precond : solve
 theorem solve_spec_satisfied (n : Int) (sizes : List Int) (h_precond : solve_precond n sizes) :
     solve_postcond n sizes (solve n sizes h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def ValidInput (n a b p q : Int) : Prop :=
   n > 0 ∧ a > 0 ∧ b > 0 ∧ p > 0 ∧ q > 0
 
@@ -9,21 +8,15 @@ axiom gcd : Int → Int → Int
 def solve_precond (n a b p q : Int) : Prop :=
   ValidInput n a b p q
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (n a b p q : Int) (h_precond : solve_precond n a b p q) : Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (n a b p q : Int) (result: Int) (h_precond : solve_precond n a b p q) : Prop :=
@@ -32,5 +25,4 @@ def solve_postcond (n a b p q : Int) (result: Int) (h_precond : solve_precond n 
 theorem solve_spec_satisfied (n a b p q : Int) (h_precond : solve_precond n a b p q) :
     solve_postcond n a b p q (solve n a b p q h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

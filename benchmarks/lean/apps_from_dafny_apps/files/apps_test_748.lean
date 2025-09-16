@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def ValidInput (n : Int) (numbers : List Int) : Prop :=
   n ≥ 3 ∧ n % 3 = 0 ∧
   numbers.length = n ∧
@@ -31,21 +30,15 @@ def NoPartitionExists (result : List (List Int)) : Prop :=
 def solve_precond (n : Int) (numbers : List Int) : Prop :=
   ValidInput n numbers
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (n : Int) (numbers : List Int) (h_precond : solve_precond n numbers) : List (List Int) :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (n : Int) (numbers : List Int) (result : List (List Int)) (h_precond : solve_precond n numbers) : Prop :=
@@ -54,5 +47,4 @@ def solve_postcond (n : Int) (numbers : List Int) (result : List (List Int)) (h_
 theorem solve_spec_satisfied (n : Int) (numbers : List Int) (h_precond : solve_precond n numbers) :
     solve_postcond n numbers (solve n numbers h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

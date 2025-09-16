@@ -1,5 +1,4 @@
 vc-preamble: |-
-  -- <vc-preamble>
   def ValidInput (magnets : List String) : Prop :=
     ∀ i, 0 ≤ i ∧ i < magnets.length → magnets[i]! = "01" ∨ magnets[i]! = "10"
 
@@ -10,20 +9,14 @@ vc-preamble: |-
   @[reducible, simp]
   def solve_precond (magnets : List String) : Prop :=
     ValidInput magnets
-  -- </vc-preamble>
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
-  -- <vc-definitions>
   def solve (magnets : List String) (h_precond : solve_precond magnets) : Nat :=
     sorry
-  -- </vc-definitions>
 
 vc-theorems: |-
-  -- <vc-theorems>
   @[reducible, simp]
   def solve_postcond (magnets : List String) (result : Nat) (h_precond : solve_precond magnets) : Prop :=
     result ≥ 0 ∧
@@ -35,6 +28,5 @@ vc-theorems: |-
   theorem solve_spec_satisfied (magnets : List String) (h_precond : solve_precond magnets) :
       solve_postcond magnets (solve magnets h_precond) h_precond := by
     sorry
-  -- </vc-theorems>
 
 vc-postamble: |-

@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def ValidInput (lines : List String) : Prop :=
   lines.length = 3 ∧ ∀ i, 0 ≤ i ∧ i < 3 → (lines[i]!).length = 3
 
@@ -10,21 +9,15 @@ def ExtractDiagonal (lines : List String) : String :=
 def solve_precond (lines : List String) : Prop :=
   ValidInput lines
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (lines : List String) (h_precond : solve_precond lines) : String :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (lines : List String) (result : String) (h_precond : solve_precond lines) : Prop :=
@@ -38,5 +31,4 @@ def solve_postcond (lines : List String) (result : String) (h_precond : solve_pr
 theorem solve_spec_satisfied (lines : List String) (h_precond : solve_precond lines) :
     solve_postcond lines (solve lines h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

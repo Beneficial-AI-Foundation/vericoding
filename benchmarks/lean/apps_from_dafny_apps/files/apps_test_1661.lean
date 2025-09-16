@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def countBuyableGames : List Int → List Int → Int
   | [], _ => 0
   | _, [] => 0
@@ -17,21 +16,15 @@ def ValidInput (n m : Int) (games bills : List Int) : Prop :=
 def solve_precond (n m : Int) (games bills : List Int) : Prop :=
   ValidInput n m games bills
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (n m : Int) (games bills : List Int) (h_precond : solve_precond n m games bills) : Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (n m : Int) (games bills : List Int) (result : Int) (h_precond : solve_precond n m games bills) : Prop :=
@@ -40,5 +33,4 @@ def solve_postcond (n m : Int) (games bills : List Int) (result : Int) (h_precon
 theorem solve_spec_satisfied (n m : Int) (games bills : List Int) (h_precond : solve_precond n m games bills) :
     solve_postcond n m games bills (solve n m games bills h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

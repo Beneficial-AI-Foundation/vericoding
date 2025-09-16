@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def CanReachNodeOne (target : Int) (edges : List (Int × Int)) (maxDepth : Nat) : Prop :=
   if maxDepth = 0 then False
   else if target = 1 then True
@@ -35,21 +34,15 @@ def ValidTreeInput (n : Int) (edges : List (Int × Int)) : Prop :=
 def solve_precond (n : Int) (edges : List (Int × Int)) : Prop :=
   ValidTreeInput n edges
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (n : Int) (edges : List (Int × Int)) (_ : solve_precond n edges) : Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (n : Int) (edges : List (Int × Int)) (result : Int) (h_precond : solve_precond n edges) : Prop :=
@@ -63,5 +56,4 @@ def solve_postcond (n : Int) (edges : List (Int × Int)) (result : Int) (h_preco
 theorem solve_spec_satisfied (n : Int) (edges : List (Int × Int)) (h_precond : solve_precond n edges) :
     solve_postcond n edges (solve n edges h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

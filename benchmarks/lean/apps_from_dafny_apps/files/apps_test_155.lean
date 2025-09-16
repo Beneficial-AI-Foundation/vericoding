@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 @[reducible, simp]
 def ValidInput (n m k : Int) : Prop :=
   n ≥ 2 ∧ m ≥ 2 ∧ n % 2 = 0 ∧ k ≥ 0 ∧ k < n * m
@@ -24,21 +23,15 @@ def CorrectPosition (result : List Int) (n m k : Int) : Prop :=
 def solve_precond (n m k : Int) : Prop :=
   ValidInput n m k
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (n m k : Int) (h_precond : solve_precond n m k) : List Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (n m k : Int) (result : List Int) (h_precond : solve_precond n m k) : Prop :=
@@ -47,5 +40,4 @@ def solve_postcond (n m k : Int) (result : List Int) (h_precond : solve_precond 
 theorem solve_spec_satisfied (n m k : Int) (h_precond : solve_precond n m k) :
     solve_postcond n m k (solve n m k h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 -- Helper functions for string processing (assumed to exist)
 axiom SplitLines : String → List String
 axiom SplitSpaces : String → List String
@@ -31,21 +30,15 @@ def CorrectAssignment (input : String) (result : List Char) : Prop :=
 def solve_precond (input : String) : Prop :=
   input.length > 0
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (input : String) (h_precond : solve_precond input) : List Char :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (input : String) (result : List Char) (h_precond : solve_precond input) : Prop :=
@@ -56,5 +49,4 @@ def solve_postcond (input : String) (result : List Char) (h_precond : solve_prec
 theorem solve_spec_satisfied (input : String) (h_precond : solve_precond input) :
     solve_postcond input (solve input h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

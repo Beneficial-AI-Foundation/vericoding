@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def ValidInput (n k : Int) : Prop :=
   n ≥ 1 ∧ k ≥ 1
 
@@ -13,21 +12,15 @@ def HasNonDistinctRemainder (n k : Int) (h_valid : ValidInput n k) : Prop :=
 def solve_precond (n k : Int) : Prop :=
   ValidInput n k
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (n k : Int) (h_precond : solve_precond n k) : String :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (n k : Int) (result : String) (h_precond : solve_precond n k) : Prop :=
@@ -37,5 +30,4 @@ def solve_postcond (n k : Int) (result : String) (h_precond : solve_precond n k)
 theorem solve_spec_satisfied (n k : Int) (h_precond : solve_precond n k) :
     solve_postcond n k (solve n k h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

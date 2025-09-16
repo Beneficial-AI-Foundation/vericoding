@@ -1,5 +1,4 @@
 vc-preamble: |-
-  -- <vc-preamble>
   def sum_playlist_duration (songs : List (Int × Int)) (n : Int) : Int :=
     if n ≤ 0 then 0
     else if n.toNat > songs.length then 0
@@ -39,20 +38,14 @@ vc-preamble: |-
     (∀ i, 0 ≤ i ∧ i < m - 1 → queries[i.toNat]! < queries[(i+1).toNat]!) ∧
     (∀ i, 0 ≤ i ∧ i < m → queries[i.toNat]! ≥ 1) ∧
     (m = 0 ∨ queries[(m-1).toNat]! ≤ sum_playlist_duration songs n)
-  -- </vc-preamble>
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
-  -- <vc-definitions>
   def solve (n m : Int) (songs : List (Int × Int)) (queries : List Int) (h_precond : solve_precond n m songs queries) : List Int :=
     sorry
-  -- </vc-definitions>
 
 vc-theorems: |-
-  -- <vc-theorems>
   @[reducible, simp]
   def solve_postcond (n m : Int) (songs : List (Int × Int)) (queries : List Int) (result : List Int) (h_precond : solve_precond n m songs queries) : Prop :=
     result.length = m.toNat ∧
@@ -63,6 +56,5 @@ vc-theorems: |-
   theorem solve_spec_satisfied (n m : Int) (songs : List (Int × Int)) (queries : List Int) (h_precond : solve_precond n m songs queries) :
       solve_postcond n m songs queries (solve n m songs queries h_precond) h_precond := by
     sorry
-  -- </vc-theorems>
 
 vc-postamble: |-

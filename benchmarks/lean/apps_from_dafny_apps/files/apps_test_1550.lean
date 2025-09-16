@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def ValidInput (n : Int) (digits : String) : Prop :=
   n > 0 ∧ digits.length = n.natAbs ∧ ∀ i, 0 ≤ i ∧ i < digits.length → '0' ≤ digits.data[i]! ∧ digits.data[i]! ≤ '9'
 
@@ -31,21 +30,15 @@ instance validInputDecidable (n : Int) (digits : String) : Decidable (ValidInput
 def solve_precond (stdin_input : String) : Prop :=
   stdin_input.length > 0 ∧ ∃ i, 0 ≤ i ∧ i < stdin_input.length ∧ stdin_input.data[i]! = '\n'
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (stdin_input : String) (h_precond : solve_precond stdin_input) : String :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (stdin_input : String) (result : String) (h_precond : solve_precond stdin_input) : Prop :=
@@ -69,5 +62,4 @@ def solve_postcond (stdin_input : String) (result : String) (h_precond : solve_p
 theorem solve_spec_satisfied (stdin_input : String) (h_precond : solve_precond stdin_input) :
     solve_postcond stdin_input (solve stdin_input h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

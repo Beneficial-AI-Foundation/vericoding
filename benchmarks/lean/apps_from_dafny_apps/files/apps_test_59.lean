@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def ValidInput (n : Int) (a : List Int) (p : String) : Prop :=
   n ≥ 2 ∧
   a.length = n ∧
@@ -23,21 +22,15 @@ def CanSort (n : Int) (a : List Int) (p : String) : Prop :=
 def solve_precond (n : Int) (a : List Int) (p : String) : Prop :=
   ValidInput n a p
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (n : Int) (a : List Int) (p : String) (h_precond : solve_precond n a p) : String :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (n : Int) (a : List Int) (p : String) (result : String) (h_precond : solve_precond n a p) : Prop :=
@@ -47,5 +40,4 @@ def solve_postcond (n : Int) (a : List Int) (p : String) (result : String) (h_pr
 theorem solve_spec_satisfied (n : Int) (a : List Int) (p : String) (h_precond : solve_precond n a p) :
     solve_postcond n a p (solve n a p h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

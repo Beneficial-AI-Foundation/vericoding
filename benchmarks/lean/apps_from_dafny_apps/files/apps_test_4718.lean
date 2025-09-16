@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def ValidInput (dateStr : String) : Prop :=
   dateStr.length = 10 ∧ dateStr.take 4 = "2017"
 
@@ -14,21 +13,15 @@ def ValidOutput (input output : String) : Prop :=
 def solve_precond (dateStr : String) : Prop :=
   ValidInput dateStr
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (dateStr : String) (h_precond : solve_precond dateStr) : String :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (dateStr : String) (result : String) (h_precond : solve_precond dateStr) : Prop :=
@@ -37,5 +30,4 @@ def solve_postcond (dateStr : String) (result : String) (h_precond : solve_preco
 theorem solve_spec_satisfied (dateStr : String) (h_precond : solve_precond dateStr) :
     solve_postcond dateStr (solve dateStr h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

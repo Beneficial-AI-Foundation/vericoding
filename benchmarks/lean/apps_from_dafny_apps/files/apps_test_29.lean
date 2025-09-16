@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def charToInt (c : Char) : Int := c.toNat - '0'.toNat
 
 def isLucky (digits : List Int) : Bool :=
@@ -32,21 +31,15 @@ def canMakeLuckyWith2Changes (digits : List Int) : Prop :=
 def solve_precond (ticket : String) : Prop :=
   ValidTicket ticket
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (ticket : String) (h_precond : solve_precond ticket) : Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (ticket : String) (result : Int) (h_precond : solve_precond ticket) : Prop :=
@@ -60,5 +53,4 @@ def solve_postcond (ticket : String) (result : Int) (h_precond : solve_precond t
 theorem solve_spec_satisfied (ticket : String) (h_precond : solve_precond ticket) :
     solve_postcond ticket (solve ticket h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

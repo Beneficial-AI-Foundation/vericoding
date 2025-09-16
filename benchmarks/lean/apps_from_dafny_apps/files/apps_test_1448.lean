@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 -- String processing functions (axiomatized for now)
 axiom SplitLines : String → List String
 axiom SplitSpaces : String → List String
@@ -67,21 +66,15 @@ def IsInsideCornfield (grasshopper : Int × Int) (n : Int) (d : Int) : Bool :=
 def solve_precond (input : String) : Prop :=
   input.length > 0 ∧ ValidInput input
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 noncomputable def solve (input : String) (h_precond : solve_precond input) : List String :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 noncomputable def solve_postcond (input : String) (result : List String) (h_precond : solve_precond input) : Prop :=
@@ -95,5 +88,4 @@ noncomputable def solve_postcond (input : String) (result : List String) (h_prec
 theorem solve_spec_satisfied (input : String) (h_precond : solve_precond input) :
     solve_postcond input (solve input h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

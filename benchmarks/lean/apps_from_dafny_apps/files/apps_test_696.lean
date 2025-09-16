@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def ValidInput (p : Int) : Prop :=
   2 ≤ p ∧ p < 2000
 
@@ -25,21 +24,15 @@ def CountPrimitiveRoots (p : Int) (h : ValidInput p) : Int :=
 def solve_precond (p : Int) : Prop :=
   ValidInput p
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (p : Int) (h_precond : solve_precond p) : Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (p : Int) (result: Int) (h_precond : solve_precond p) : Prop :=
@@ -48,5 +41,4 @@ def solve_postcond (p : Int) (result: Int) (h_precond : solve_precond p) : Prop 
 theorem solve_spec_satisfied (p : Int) (h_precond : solve_precond p) :
     solve_postcond p (solve p h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

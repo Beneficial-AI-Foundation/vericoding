@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def ValidInput (n_A n_B k m : Int) (A B : List Int) : Prop :=
   n_A ≥ 1 ∧ n_B ≥ 1 ∧
   k ≥ 1 ∧ k ≤ n_A ∧
@@ -21,21 +20,15 @@ def solve_precond (n_A n_B k m : Int) (A B : List Int) : Prop :=
   IsSorted A ∧
   IsSorted B
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (n_A n_B k m : Int) (A B : List Int) (h_precond : solve_precond n_A n_B k m A B) : String :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (n_A n_B k m : Int) (A B : List Int) (result : String) (h_precond : solve_precond n_A n_B k m A B) : Prop :=
@@ -45,5 +38,4 @@ def solve_postcond (n_A n_B k m : Int) (A B : List Int) (result : String) (h_pre
 theorem solve_spec_satisfied (n_A n_B k m : Int) (A B : List Int) (h_precond : solve_precond n_A n_B k m A B) :
     solve_postcond n_A n_B k m A B (solve n_A n_B k m A B h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

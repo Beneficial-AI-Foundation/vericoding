@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def ValidBuildingParams (n h a b : Int) : Prop :=
   n ≥ 1 ∧ h ≥ 1 ∧ 1 ≤ a ∧ a ≤ b ∧ b ≤ h
 
@@ -35,21 +34,15 @@ def CorrectResults (queries : List (Int × Int × Int × Int)) (results : List I
 def solve_precond (n h a b : Int) (queries : List (Int × Int × Int × Int)) : Prop :=
   ValidBuildingParams n h a b ∧ ValidQueries queries n h
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (n h a b : Int) (queries : List (Int × Int × Int × Int)) (h_precond : solve_precond n h a b queries) : List Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (n h a b : Int) (queries : List (Int × Int × Int × Int)) (results : List Int) (h_precond : solve_precond n h a b queries) : Prop :=
@@ -58,5 +51,4 @@ def solve_postcond (n h a b : Int) (queries : List (Int × Int × Int × Int)) (
 theorem solve_spec_satisfied (n h a b : Int) (queries : List (Int × Int × Int × Int)) (h_precond : solve_precond n h a b queries) :
     solve_postcond n h a b queries (solve n h a b queries h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

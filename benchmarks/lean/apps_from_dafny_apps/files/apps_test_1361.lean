@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def ValidInput (holds : List Int) : Prop :=
   holds.length ≥ 3 ∧ ∀ i, 0 ≤ i ∧ i < holds.length - 1 → holds[i]! < holds[i + 1]!
 
@@ -21,21 +20,15 @@ def maxDiff (s : List Int) : Int :=
 def solve_precond (holds : List Int) : Prop :=
   ValidInput holds
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (holds : List Int) (h_precond : solve_precond holds) : Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (holds : List Int) (result : Int) (h_precond : solve_precond holds) : Prop :=
@@ -46,5 +39,4 @@ def solve_postcond (holds : List Int) (result : Int) (h_precond : solve_precond 
 theorem solve_spec_satisfied (holds : List Int) (h_precond : solve_precond holds) :
     solve_postcond holds (solve holds h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def my_min (x y : Nat) : Nat :=
   if x ≤ y then x else y
 
@@ -13,21 +12,15 @@ def CanSatisfyAllGuests (a b n m : Nat) : Prop :=
 def solve_precond (a b n m : Nat) : Prop :=
   ValidTestCase a b n m
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (a b n m : Nat) (h_precond : solve_precond a b n m) : Bool :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (a b n m : Nat) (result : Bool) (h_precond : solve_precond a b n m) : Prop :=
@@ -38,5 +31,4 @@ def solve_postcond (a b n m : Nat) (result : Bool) (h_precond : solve_precond a 
 theorem solve_spec_satisfied (a b n m : Nat) (h_precond : solve_precond a b n m) :
     solve_postcond a b n m (solve a b n m h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

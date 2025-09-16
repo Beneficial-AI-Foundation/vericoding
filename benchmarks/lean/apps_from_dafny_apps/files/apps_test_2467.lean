@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def sum (s : List Int) : Int :=
   match s with
   | [] => 0
@@ -32,21 +31,15 @@ def isValidExtension (temp : List Int) (combo : List Int) (k : Int) (n : Int) (s
 def solve_precond (k : Int) (n : Int) : Prop :=
   k > 0 ∧ n > 0 ∧ k ≤ 9
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (k : Int) (n : Int) (h_precond : solve_precond k n) : List (List Int) :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (k : Int) (n : Int) (result : List (List Int)) (h_precond : solve_precond k n) : Prop :=
@@ -62,5 +55,4 @@ def solve_postcond (k : Int) (n : Int) (result : List (List Int)) (h_precond : s
 theorem solve_spec_satisfied (k : Int) (n : Int) (h_precond : solve_precond k n) :
     solve_postcond k n (solve k n h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

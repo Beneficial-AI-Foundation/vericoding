@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def sum (l : List Int) : Int :=
   l.foldl (· + ·) 0
 
@@ -49,21 +48,15 @@ def calculateRadewooshScore (n : Int) (c : Int) (P : List Int) (T : List Int) : 
 def solve_precond (n : Int) (c : Int) (P : List Int) (T : List Int) : Prop :=
   ValidInput n c P T
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (n : Int) (c : Int) (P : List Int) (T : List Int) (h_precond : solve_precond n c P T) : String :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (n : Int) (c : Int) (P : List Int) (T : List Int) (result : String) (h_precond : solve_precond n c P T) : Prop :=
@@ -77,5 +70,4 @@ def solve_postcond (n : Int) (c : Int) (P : List Int) (T : List Int) (result : S
 theorem solve_spec_satisfied (n : Int) (c : Int) (P : List Int) (T : List Int) (h_precond : solve_precond n c P T) :
     solve_postcond n c P T (solve n c P T h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

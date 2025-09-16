@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 -- Helper functions (assumed to exist)
 noncomputable axiom SplitLines : String → List String
 noncomputable axiom SplitString : String → String → List String
@@ -35,21 +34,15 @@ noncomputable def ComputeGrid (lines : List String) (n m k : Int) (h1 : n > 0) (
 def solve_precond (input : String) : Prop :=
   input.length > 0
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 noncomputable def solve (input : String) (h_precond : solve_precond input) : String :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 noncomputable def solve_postcond (input : String) (result : String) (h_precond : solve_precond input) : Prop :=
@@ -64,5 +57,4 @@ noncomputable def solve_postcond (input : String) (result : String) (h_precond :
 theorem solve_spec_satisfied (input : String) (h_precond : solve_precond input) :
     solve_postcond input (solve input h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

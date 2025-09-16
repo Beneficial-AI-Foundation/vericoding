@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def ValidQuery (k n a b : Int) : Prop :=
   k > 0 ∧ n > 0 ∧ a > 0 ∧ b > 0 ∧ b < a
 
@@ -20,21 +19,15 @@ def solve_precond (queries : List (Int × Int × Int × Int)) : Prop :=
     let (k, n, a, b) := queries[i]!
     ValidQuery k n a b
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (queries : List (Int × Int × Int × Int)) (h_precond : solve_precond queries) : List Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (queries : List (Int × Int × Int × Int)) (results : List Int) (h_precond : solve_precond queries) : Prop :=
@@ -51,5 +44,4 @@ def solve_postcond (queries : List (Int × Int × Int × Int)) (results : List I
 theorem solve_spec_satisfied (queries : List (Int × Int × Int × Int)) (h_precond : solve_precond queries) :
     solve_postcond queries (solve queries h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

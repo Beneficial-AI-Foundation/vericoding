@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def mymin (x y : Int) : Int :=
   if x ≤ y then x else y
 
@@ -20,21 +19,15 @@ def IsMinimalSolution (result k a b v : Int) : Prop :=
 def solve_precond (k a b v : Int) : Prop :=
   ValidInput k a b v
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (k a b v : Int) (h_precond : solve_precond k a b v) : Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (k a b v : Int) (result: Int) (h_precond : solve_precond k a b v) : Prop :=
@@ -47,5 +40,4 @@ def solve_postcond (k a b v : Int) (result: Int) (h_precond : solve_precond k a 
 theorem solve_spec_satisfied (k a b v : Int) (h_precond : solve_precond k a b v) :
     solve_postcond k a b v (solve k a b v h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def sumRange (s : List Int) (start : Nat) (end_ : Nat) : Int :=
   if start >= end_ then 
     0
@@ -15,21 +14,15 @@ def ValidInput (n : Int) (years : List Int) : Prop :=
 def solve_precond (n : Int) (years : List Int) : Prop :=
   ValidInput n years
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (n : Int) (years : List Int) (h_precond : solve_precond n years) : Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (n : Int) (years : List Int) (result : Int) (h_precond : solve_precond n years) : Prop :=
@@ -38,5 +31,4 @@ def solve_postcond (n : Int) (years : List Int) (result : Int) (h_precond : solv
 theorem solve_spec_satisfied (n : Int) (years : List Int) (h_precond : solve_precond n years) :
     solve_postcond n years (solve n years h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

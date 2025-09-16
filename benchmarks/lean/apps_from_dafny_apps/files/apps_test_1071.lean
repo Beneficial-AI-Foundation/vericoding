@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def ValidInput (a b : List Int) (n : Int) : Prop :=
   a.length ≥ 0 ∧ b.length ≥ 0 ∧
   (∀ i, 0 ≤ i ∧ i < a.length → a[i]! ≥ 0) ∧
@@ -23,21 +22,15 @@ def CanPlaceAll (a b : List Int) (n : Int) : Bool :=
 def solve_precond (a b : List Int) (n : Int) : Prop :=
   ValidInput a b n
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (a b : List Int) (n : Int) (h_precond : solve_precond a b n) : String :=
   if CanPlaceAll a b n then "YES" else "NO"
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (a b : List Int) (n : Int) (result: String) (h_precond : solve_precond a b n) : Prop :=
@@ -46,5 +39,4 @@ def solve_postcond (a b : List Int) (n : Int) (result: String) (h_precond : solv
 theorem solve_spec_satisfied (a b : List Int) (n : Int) (h_precond : solve_precond a b n) :
     solve_postcond a b n (solve a b n h_precond) h_precond := by
   simp [solve, solve_postcond]
--- </vc-theorems>
 -- </vc-theorems>

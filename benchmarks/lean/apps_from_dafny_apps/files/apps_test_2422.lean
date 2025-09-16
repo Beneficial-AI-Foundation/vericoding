@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def ValidSolution (n a b c : Int) : Prop :=
   a ≥ 0 ∧ b ≥ 0 ∧ c ≥ 0 ∧ 3 * a + 5 * b + 7 * c = n
 
@@ -12,21 +11,15 @@ def ValidResult (n : Int) (result : List Int) : Prop :=
 def solve_precond (n : Int) : Prop :=
   n ≥ 1
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (n : Int) (h_precond : solve_precond n) : List Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (n : Int) (result : List Int) (h_precond : solve_precond n) : Prop :=
@@ -40,5 +33,4 @@ def solve_postcond (n : Int) (result : List Int) (h_precond : solve_precond n) :
 theorem solve_spec_satisfied (n : Int) (h_precond : solve_precond n) :
     solve_postcond n (solve n h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 
 def ValidInput (n m k : Int) (grid : List String) : Prop :=
   n > 0 ∧ m > 0 ∧ k ≥ 0 ∧
@@ -38,21 +37,15 @@ def ValidDirections (path : String) : Prop :=
 def solve_precond (n m k : Int) (grid : List String) : Prop :=
   ValidInput n m k grid
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (n m k : Int) (grid : List String) (h_precond : solve_precond n m k grid) : String :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (n m k : Int) (grid : List String) (result : String) (h_precond : solve_precond n m k grid) : Prop :=
@@ -71,5 +64,4 @@ def solve_postcond (n m k : Int) (grid : List String) (result : String) (h_preco
 theorem solve_spec_satisfied (n m k : Int) (grid : List String) (h_precond : solve_precond n m k grid) :
     solve_postcond n m k grid (solve n m k grid h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

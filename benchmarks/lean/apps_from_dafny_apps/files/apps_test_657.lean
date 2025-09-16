@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def mymax (a b : Int) : Int :=
   if a ≥ b then a else b
 
@@ -19,21 +18,15 @@ def MinAdditionalCrystals (a b x y z : Int) : Int :=
 def solve_precond (a b x y z : Int) : Prop :=
   ValidInput a b x y z
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (a b x y z : Int) (h_precond : solve_precond a b x y z) : Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (a b x y z : Int) (result: Int) (h_precond : solve_precond a b x y z) : Prop :=
@@ -42,5 +35,4 @@ def solve_postcond (a b x y z : Int) (result: Int) (h_precond : solve_precond a 
 theorem solve_spec_satisfied (a b x y z : Int) (h_precond : solve_precond a b x y z) :
     solve_postcond a b x y z (solve a b x y z h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

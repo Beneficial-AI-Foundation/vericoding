@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def ValidInput (n: Int) (directions: String) (positions: List Int) : Prop :=
   n ≥ 1 ∧
   directions.length = n.natAbs ∧
@@ -29,21 +28,15 @@ def IsMinimalCollisionTime (result: Int) (directions: String) (positions: List I
 def solve_precond (n: Int) (directions: String) (positions: List Int) : Prop :=
   ValidInput n directions positions
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (n: Int) (directions: String) (positions: List Int) (h_precond: solve_precond n directions positions) : Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (n: Int) (directions: String) (positions: List Int) (result: Int) (h_precond: solve_precond n directions positions) : Prop :=
@@ -55,5 +48,4 @@ def solve_postcond (n: Int) (directions: String) (positions: List Int) (result: 
 theorem solve_spec_satisfied (n: Int) (directions: String) (positions: List Int) (h_precond: solve_precond n directions positions) :
     solve_postcond n directions positions (solve n directions positions h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

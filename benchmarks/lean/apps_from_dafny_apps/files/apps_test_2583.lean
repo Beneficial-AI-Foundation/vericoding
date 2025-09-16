@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 partial def isPowerOfTwo (n : Nat) : Bool :=
   if n == 0 then false
   else n == 1 || (n % 2 == 0 && isPowerOfTwo (n / 2))
@@ -30,21 +29,15 @@ def solve_precond (input : List Nat) : Prop :=
   input.length = input[0]! + 1 ∧
   ∀ i, 1 ≤ i ∧ i < input.length → input[i]! ≥ 1
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (input : List Nat) (h_precond : solve_precond input) : List String :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (input : List Nat) (result : List String) (h_precond : solve_precond input) : Prop :=
@@ -55,5 +48,4 @@ def solve_postcond (input : List Nat) (result : List String) (h_precond : solve_
 theorem solve_spec_satisfied (input : List Nat) (h_precond : solve_precond input) :
     solve_postcond input (solve input h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

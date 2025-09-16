@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def ValidInput (n : Nat) (s : String) : Prop :=
   s.length = n
 
@@ -19,21 +18,15 @@ def MaxCopySavings (s : String) (n : Nat) : Nat :=
 def solve_precond (n : Nat) (s : String) : Prop :=
   ValidInput n s
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (n : Nat) (s : String) (h_precond : solve_precond n s) : Nat :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (n : Nat) (s : String) (result : Nat) (h_precond : solve_precond n s) : Prop :=
@@ -45,5 +38,4 @@ def solve_postcond (n : Nat) (s : String) (result : Nat) (h_precond : solve_prec
 theorem solve_spec_satisfied (n : Nat) (s : String) (h_precond : solve_precond n s) :
     solve_postcond n s (solve n s h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def ValidInput (n m a b : Int) : Prop :=
   n ≥ 1 ∧ n ≤ 1000 ∧
   m ≥ 1 ∧ m ≤ 1000 ∧
@@ -13,21 +12,15 @@ def OptimalCost (n m a b : Int) (h : ValidInput n m a b) : Int :=
 def solve_precond (n m a b : Int) : Prop :=
   ValidInput n m a b
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (n m a b : Int) (h_precond : solve_precond n m a b) : Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (n m a b : Int) (result : Int) (h_precond : solve_precond n m a b) : Prop :=
@@ -36,5 +29,4 @@ def solve_postcond (n m a b : Int) (result : Int) (h_precond : solve_precond n m
 theorem solve_spec_satisfied (n m a b : Int) (h_precond : solve_precond n m a b) :
     solve_postcond n m a b (solve n m a b h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

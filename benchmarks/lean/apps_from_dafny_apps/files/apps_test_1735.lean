@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def countMaxMovesHelper (s : String) (i : Nat) (stack : List Char) (moves : Nat) : Nat :=
   sorry
 
@@ -11,21 +10,15 @@ def countMaxMoves (s : String) : Nat :=
 def solve_precond (s : String) : Prop :=
   s.length ≥ 1
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (s : String) (h_precond : solve_precond s) : String :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (s : String) (result : String) (h_precond : solve_precond s) : Prop :=
@@ -36,5 +29,4 @@ def solve_postcond (s : String) (result : String) (h_precond : solve_precond s) 
 theorem solve_spec_satisfied (s : String) (h_precond : solve_precond s) :
     solve_postcond s (solve s h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

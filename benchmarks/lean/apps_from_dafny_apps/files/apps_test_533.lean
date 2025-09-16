@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def ValidInput (a1 a2 k1 k2 n : Int) : Prop :=
   a1 ≥ 1 ∧ a2 ≥ 1 ∧ k1 ≥ 1 ∧ k2 ≥ 1 ∧ n ≥ 1
 
@@ -30,21 +29,15 @@ def ValidResult (a1 a2 k1 k2 n minimum maximum : Int) (h : ValidInput a1 a2 k1 k
 def solve_precond (a1 a2 k1 k2 n : Int) : Prop :=
   ValidInput a1 a2 k1 k2 n
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (a1 a2 k1 k2 n : Int) (h_precond : solve_precond a1 a2 k1 k2 n) : Int × Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (a1 a2 k1 k2 n : Int) (result: Int × Int) (h_precond : solve_precond a1 a2 k1 k2 n) : Prop :=
@@ -53,5 +46,4 @@ def solve_postcond (a1 a2 k1 k2 n : Int) (result: Int × Int) (h_precond : solve
 theorem solve_spec_satisfied (a1 a2 k1 k2 n : Int) (h_precond : solve_precond a1 a2 k1 k2 n) :
     solve_postcond a1 a2 k1 k2 n (solve a1 a2 k1 k2 n h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

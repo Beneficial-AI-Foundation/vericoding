@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def ValidWeather (weather : String) : Bool :=
   weather == "Sunny" || weather == "Cloudy" || weather == "Rainy"
 
@@ -18,21 +17,15 @@ def NextWeather (weather : String) : String :=
 def solve_precond (input : String) : Prop :=
   True
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (input : String) (_ : solve_precond input) : String :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (input : String) (result : String) (_ : solve_precond input) : Prop :=
@@ -45,5 +38,4 @@ def solve_postcond (input : String) (result : String) (_ : solve_precond input) 
 theorem solve_spec_satisfied (input : String) (h_precond : solve_precond input) :
     solve_postcond input (solve input h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

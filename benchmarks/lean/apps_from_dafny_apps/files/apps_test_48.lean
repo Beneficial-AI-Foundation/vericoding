@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 partial def countLessValue (n m target : Int) : Int :=
   if n = 0 then 0
   else 
@@ -20,21 +19,15 @@ def ValidInput (n m k : Int) : Prop :=
 def solve_precond (n m k : Int) : Prop :=
   ValidInput n m k
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (n m k : Int) (h_precond : solve_precond n m k) : Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (n m k : Int) (result : Int) (h_precond : solve_precond n m k) : Prop :=
@@ -45,5 +38,4 @@ def solve_postcond (n m k : Int) (result : Int) (h_precond : solve_precond n m k
 theorem solve_spec_satisfied (n m k : Int) (h_precond : solve_precond n m k) :
     solve_postcond n m k (solve n m k h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

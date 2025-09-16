@@ -1,5 +1,4 @@
 vc-preamble: |-
-  -- <vc-preamble>
   def lengthSqr (p1 p2 : Int × Int) : Int :=
     (p1.1 - p2.1) * (p1.1 - p2.1) + (p1.2 - p2.2) * (p1.2 - p2.2)
 
@@ -29,20 +28,14 @@ vc-preamble: |-
   @[reducible, simp]
   def solve_precond (input : String) : Prop :=
     input.length > 0
-  -- </vc-preamble>
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
-  -- <vc-definitions>
   def solve (input : String) (h_precond : solve_precond input) : String :=
     sorry
-  -- </vc-definitions>
 
 vc-theorems: |-
-  -- <vc-theorems>
   @[reducible, simp]
   def solve_postcond (input : String) (result : String) (h_precond : solve_precond input) : Prop :=
     (result = "Yes" ∨ result = "No" ∨ result = "") ∧
@@ -59,6 +52,5 @@ vc-theorems: |-
   theorem solve_spec_satisfied (input : String) (h_precond : solve_precond input) :
       solve_postcond input (solve input h_precond) h_precond := by
     sorry
-  -- </vc-theorems>
 
 vc-postamble: |-

@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def ValidInput (n : Int) (colors : List Char) : Prop :=
   1 ≤ n ∧ n ≤ 100 ∧
   colors.length = n ∧
@@ -16,21 +15,15 @@ def SolutionString (distinctCount : Int) : String :=
 def solve_precond (n : Int) (colors : List Char) : Prop :=
   ValidInput n colors
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (n : Int) (colors : List Char) (h_precond : solve_precond n colors) : String :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (n : Int) (colors : List Char) (result : String) (h_precond : solve_precond n colors) : Prop :=
@@ -43,5 +36,4 @@ def solve_postcond (n : Int) (colors : List Char) (result : String) (h_precond :
 theorem solve_spec_satisfied (n : Int) (colors : List Char) (h_precond : solve_precond n colors) :
     solve_postcond n colors (solve n colors h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def ValidInput (n : Int) (aa : List Int) : Prop :=
   n ≥ 2 ∧
   aa.length = (n - 1).natAbs ∧
@@ -17,21 +16,15 @@ def ValidOutput (n : Int) (aa : List Int) (result : List Int) : Prop :=
 def solve_precond (n : Int) (aa : List Int) : Prop :=
   ValidInput n aa
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (n : Int) (aa : List Int) (h_precond : solve_precond n aa) : List Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (n : Int) (aa : List Int) (result : List Int) (h_precond : solve_precond n aa) : Prop :=
@@ -40,5 +33,4 @@ def solve_postcond (n : Int) (aa : List Int) (result : List Int) (h_precond : so
 theorem solve_spec_satisfied (n : Int) (aa : List Int) (h_precond : solve_precond n aa) :
     solve_postcond n aa (solve n aa h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

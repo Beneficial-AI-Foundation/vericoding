@@ -1,5 +1,4 @@
 vc-preamble: |-
-  -- <vc-preamble>
   -- Placeholder for string processing functions
   def split_lines_func (s : String) : List String := sorry
   def split_spaces_func (s : String) : List String := sorry
@@ -62,20 +61,14 @@ vc-preamble: |-
   @[reducible, simp]
   def solve_precond (stdin_input : String) : Prop :=
     stdin_input.length > 0 ∧ valid_input_format stdin_input
-  -- </vc-preamble>
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
-  -- <vc-definitions>
   def solve (stdin_input : String) (h_precond : solve_precond stdin_input) : String :=
     sorry
-  -- </vc-definitions>
 
 vc-theorems: |-
-  -- <vc-theorems>
   @[reducible, simp]
   def solve_postcond (stdin_input : String) (output : String) (h_precond : solve_precond stdin_input) : Prop :=
     output.length > 0 ∧
@@ -86,6 +79,5 @@ vc-theorems: |-
   theorem solve_spec_satisfied (stdin_input : String) (h_precond : solve_precond stdin_input) :
       solve_postcond stdin_input (solve stdin_input h_precond) h_precond := by
     sorry
-  -- </vc-theorems>
 
 vc-postamble: |-

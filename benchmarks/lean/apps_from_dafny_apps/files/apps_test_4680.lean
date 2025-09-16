@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def ValidInput (A B C : Int) : Prop :=
   1 ≤ A ∧ A ≤ 10 ∧ 1 ≤ B ∧ B ≤ 10 ∧ 1 ≤ C ∧ C ≤ 10
 
@@ -15,21 +14,15 @@ def ValidOutput (result : String) : Prop :=
 def solve_precond (A B C : Int) : Prop :=
   ValidInput A B C
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (A B C : Int) (h_precond : solve_precond A B C) : String :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (A B C : Int) (result : String) (h_precond : solve_precond A B C) : Prop :=
@@ -38,5 +31,4 @@ def solve_postcond (A B C : Int) (result : String) (h_precond : solve_precond A 
 theorem solve_spec_satisfied (A B C : Int) (h_precond : solve_precond A B C) :
     solve_postcond A B C (solve A B C h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

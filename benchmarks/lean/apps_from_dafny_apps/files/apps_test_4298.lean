@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def ValidInput (N D : Int) : Prop :=
   N ≥ 1 ∧ N ≤ 20 ∧ D ≥ 1 ∧ D ≤ 20
 
@@ -13,21 +12,14 @@ def TreesCovered (N D inspectors : Int) : Prop :=
 def solve_precond (N D : Int) : Prop :=
   ValidInput N D
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (N D : Int) (h_precond : solve_precond N D) : Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
 -- <vc-theorems>
--- <vc-theorems>
--- </vc-theorems>
 -- </vc-theorems>

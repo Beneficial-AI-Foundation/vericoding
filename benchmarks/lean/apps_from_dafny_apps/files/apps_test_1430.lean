@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def ValidInput (N K : Int) (S : String) : Prop :=
   N > 0 ∧ K ≥ 0 ∧ S.length = N.natAbs ∧ 
   ∀ i, 0 ≤ i ∧ i < S.length → (S.data.get? i = some '0' ∨ S.data.get? i = some '1')
@@ -14,21 +13,15 @@ def ValidResult (result N : Int) : Prop :=
 def solve_precond (N K : Int) (S : String) : Prop :=
   ValidInput N K S
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (N K : Int) (S : String) (h_precond : solve_precond N K S) : Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (N K : Int) (S : String) (result : Int) (h_precond : solve_precond N K S) : Prop :=
@@ -37,5 +30,4 @@ def solve_postcond (N K : Int) (S : String) (result : Int) (h_precond : solve_pr
 theorem solve_spec_satisfied (N K : Int) (S : String) (h_precond : solve_precond N K S) :
     solve_postcond N K S (solve N K S h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def ValidInput (input : List String) : Prop :=
   input.length = 8 ∧
   (∀ i, 0 ≤ i ∧ i < 8 → (input.get! i).length = 8) ∧
@@ -18,21 +17,15 @@ def AllRowsHaveAlternatingPattern (input : List String) : Prop :=
 def solve_precond (input : List String) : Prop :=
   ValidInput input
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (input : List String) (h_precond : solve_precond input) : String :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (input : List String) (result : String) (h_precond : solve_precond input) : Prop :=
@@ -41,5 +34,4 @@ def solve_postcond (input : List String) (result : String) (h_precond : solve_pr
 theorem solve_spec_satisfied (input : List String) (h_precond : solve_precond input) :
     solve_postcond input (solve input h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

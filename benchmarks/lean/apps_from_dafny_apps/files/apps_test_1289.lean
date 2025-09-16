@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def isSorted (s: List Int) : Prop :=
   ∀ i j, 0 ≤ i ∧ i < j ∧ j < s.length → s[i]! ≤ s[j]!
 
@@ -71,21 +70,15 @@ def solve_precond (n: Int) (positions: List Int) (m: Int) (visits: List Int) : P
   (∀ i, 0 ≤ i ∧ i < positions.length → positions[i]! ≥ 1) ∧
   isSorted visits
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (n: Int) (positions: List Int) (m: Int) (visits: List Int) (h_precond : solve_precond n positions m visits) : Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (n: Int) (positions: List Int) (m: Int) (visits: List Int) (result: Int) (h_precond : solve_precond n positions m visits) : Prop :=
@@ -97,5 +90,4 @@ def solve_postcond (n: Int) (positions: List Int) (m: Int) (visits: List Int) (r
 theorem solve_spec_satisfied (n: Int) (positions: List Int) (m: Int) (visits: List Int) (h_precond : solve_precond n positions m visits) :
     solve_postcond n positions m visits (solve n positions m visits h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

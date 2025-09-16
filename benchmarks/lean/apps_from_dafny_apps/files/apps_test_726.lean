@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def ValidInput (n d : Int) (hotels : List Int) : Prop :=
   n > 0 ∧ d > 0 ∧ hotels.length = n ∧
   (∀ i, 0 ≤ i ∧ i < n - 1 → 
@@ -24,21 +23,15 @@ def CorrectResult (n d : Int) (hotels : List Int) (result : Int) : Prop :=
 def solve_precond (n d : Int) (hotels : List Int) : Prop :=
   ValidInput n d hotels
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (n d : Int) (hotels : List Int) (h_precond : solve_precond n d hotels) : Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (n d : Int) (hotels : List Int) (result : Int) (h_precond : solve_precond n d hotels) : Prop :=
@@ -47,5 +40,4 @@ def solve_postcond (n d : Int) (hotels : List Int) (result : Int) (h_precond : s
 theorem solve_spec_satisfied (n d : Int) (hotels : List Int) (h_precond : solve_precond n d hotels) :
     solve_postcond n d hotels (solve n d hotels h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def ValidInput (n k : Int) (A : List Int) : Prop :=
   k > 0 ∧ A.length = k ∧ (∀ i, 0 ≤ i ∧ i < k → A[Int.natAbs i]! > 0) ∧ n ≥ 0
 
@@ -17,21 +16,15 @@ def OptimalSolution (n : Int) (A : List Int) (box_type num_boxes : Int) : Prop :
 def solve_precond (n k : Int) (A : List Int) : Prop :=
   ValidInput n k A
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (n k : Int) (A : List Int) (h_precond : solve_precond n k A) : Int × Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (n k : Int) (A : List Int) (result : Int × Int) (h_precond : solve_precond n k A) : Prop :=
@@ -42,5 +35,4 @@ def solve_postcond (n k : Int) (A : List Int) (result : Int × Int) (h_precond :
 theorem solve_spec_satisfied (n k : Int) (A : List Int) (h_precond : solve_precond n k A) :
     solve_postcond n k A (solve n k A h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

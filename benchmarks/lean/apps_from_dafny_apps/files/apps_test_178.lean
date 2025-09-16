@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def ValidInput (n : Int) (s : String) : Prop :=
   n ≥ 13 ∧ n % 2 = 1 ∧ s.length = n
 
@@ -24,21 +23,15 @@ def VasyaWins (n : Int) (s : String) : Bool :=
 def solve_precond (n : Int) (s : String) : Prop :=
   ValidInput n s
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (n : Int) (s : String) (h_precond : solve_precond n s) : String :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (n : Int) (s : String) (result : String) (h_precond : solve_precond n s) : Prop :=
@@ -48,5 +41,4 @@ def solve_postcond (n : Int) (s : String) (result : String) (h_precond : solve_p
 theorem solve_spec_satisfied (n : Int) (s : String) (h_precond : solve_precond n s) :
     solve_postcond n s (solve n s h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

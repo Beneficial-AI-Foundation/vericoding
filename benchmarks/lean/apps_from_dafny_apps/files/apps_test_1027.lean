@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def canParseToBoard (input : String) : Prop :=
   input.length > 0
 
@@ -25,21 +24,15 @@ def intToString (n : Int) : String := toString n
 def solve_precond (stdin_input : String) : Prop :=
   stdin_input.length > 0 ∧ canParseToBoard stdin_input
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (stdin_input : String) (h_precond : solve_precond stdin_input) : String :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (stdin_input : String) (result : String) (_ : solve_precond stdin_input) : Prop :=
@@ -48,5 +41,4 @@ def solve_postcond (stdin_input : String) (result : String) (_ : solve_precond s
 theorem solve_spec_satisfied (stdin_input : String) (h_precond : solve_precond stdin_input) :
     solve_postcond stdin_input (solve stdin_input h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

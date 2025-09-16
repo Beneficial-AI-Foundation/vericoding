@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def ValidInput (s v1 v2 t1 t2 : Int) : Prop :=
   1 ≤ s ∧ s ≤ 1000 ∧ 1 ≤ v1 ∧ v1 ≤ 1000 ∧ 1 ≤ v2 ∧ v2 ≤ 1000 ∧ 1 ≤ t1 ∧ t1 ≤ 1000 ∧ 1 ≤ t2 ∧ t2 ≤ 1000
 
@@ -20,21 +19,15 @@ def ValidResult (result : String) : Prop :=
 def solve_precond (s v1 v2 t1 t2 : Int) : Prop :=
   ValidInput s v1 v2 t1 t2
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (s v1 v2 t1 t2 : Int) (h_precond : solve_precond s v1 v2 t1 t2) : String :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (s v1 v2 t1 t2 : Int) (result : String) (h_precond : solve_precond s v1 v2 t1 t2) : Prop :=
@@ -43,5 +36,4 @@ def solve_postcond (s v1 v2 t1 t2 : Int) (result : String) (h_precond : solve_pr
 theorem solve_spec_satisfied (s v1 v2 t1 t2 : Int) (h_precond : solve_precond s v1 v2 t1 t2) :
     solve_postcond s v1 v2 t1 t2 (solve s v1 v2 t1 t2 h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

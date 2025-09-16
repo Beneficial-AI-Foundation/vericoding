@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def ValidInput (n : Int) (arr : List Int) : Prop :=
   n ≥ 1 ∧ arr.length = n ∧ ∀ i, 0 ≤ i ∧ i < n → arr[i.toNat]! ≥ 1
 
@@ -40,21 +39,15 @@ def count_balanced_removals (arr : List Int) : Int :=
 def solve_precond (n : Int) (arr : List Int) : Prop :=
   ValidInput n arr
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (n : Int) (arr : List Int) (h_precond : solve_precond n arr) : Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (n : Int) (arr : List Int) (result : Int) (h_precond : solve_precond n arr) : Prop :=
@@ -63,5 +56,4 @@ def solve_postcond (n : Int) (arr : List Int) (result : Int) (h_precond : solve_
 theorem solve_spec_satisfied (n : Int) (arr : List Int) (h_precond : solve_precond n arr) :
     solve_postcond n arr (solve n arr h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

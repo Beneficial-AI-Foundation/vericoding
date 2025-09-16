@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def ValidInput (t a b : Int) : Prop :=
   t > 0 ∧ a > 0 ∧ b > 0
 
@@ -25,21 +24,15 @@ def OneSolutionCase (t a b : Int) : Prop :=
 def solve_precond (t a b : Int) : Prop :=
   ValidInput t a b ∧ (t ≠ a ∨ a = t)
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (t a b : Int) (h_precond : solve_precond t a b) : String :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (t a b : Int) (result : String) (h_precond : solve_precond t a b) : Prop :=
@@ -52,5 +45,4 @@ def solve_postcond (t a b : Int) (result : String) (h_precond : solve_precond t 
 theorem solve_spec_satisfied (t a b : Int) (h_precond : solve_precond t a b) :
     solve_postcond t a b (solve t a b h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def ValidInput (ab bc ca : Int) : Prop :=
   1 ≤ ab ∧ ab ≤ 100 ∧ 1 ≤ bc ∧ bc ≤ 100 ∧ 1 ≤ ca ∧ ca ≤ 100
 
@@ -13,21 +12,15 @@ def ValidArea (ab bc area : Int) : Prop :=
 def solve_precond (ab bc ca : Int) : Prop :=
   ValidInput ab bc ca
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (ab bc ca : Int) (h_precond : solve_precond ab bc ca) : String :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (ab bc ca : Int) (result : String) (h_precond : solve_precond ab bc ca) : Prop :=
@@ -36,5 +29,4 @@ def solve_postcond (ab bc ca : Int) (result : String) (h_precond : solve_precond
 theorem solve_spec_satisfied (ab bc ca : Int) (h_precond : solve_precond ab bc ca) :
     solve_postcond ab bc ca (solve ab bc ca h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def validInput (a b c d : Int) : Prop :=
   0 ≤ a ∧ a < b ∧ b ≤ 100 ∧ 0 ≤ c ∧ c < d ∧ d ≤ 100
 
@@ -16,21 +15,15 @@ def intervalOverlapLength (a b c d : Int) : Int :=
 def solve_precond (a b c d : Int) : Prop :=
   validInput a b c d
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (a b c d : Int) (h_precond : solve_precond a b c d) : Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (a b c d : Int) (result: Int) (h_precond : solve_precond a b c d) : Prop :=
@@ -39,5 +32,4 @@ def solve_postcond (a b c d : Int) (result: Int) (h_precond : solve_precond a b 
 theorem solve_spec_satisfied (a b c d : Int) (h_precond : solve_precond a b c d) :
     solve_postcond a b c d (solve a b c d h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

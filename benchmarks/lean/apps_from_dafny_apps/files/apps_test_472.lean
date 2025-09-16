@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def digitSum (n : Nat) : Nat :=
   if n = 0 then 0
   else (n % 10) + digitSum (n / 10)
@@ -8,21 +7,15 @@ def digitSum (n : Nat) : Nat :=
 def solve_precond (n : Int) : Prop :=
   n ≥ 1
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (n : Int) (h_precond : solve_precond n) : Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (n : Int) (result: Int) (h_precond : solve_precond n) : Prop :=
@@ -35,5 +28,4 @@ def solve_postcond (n : Int) (result: Int) (h_precond : solve_precond n) : Prop 
 theorem solve_spec_satisfied (n : Int) (h_precond : solve_precond n) :
     solve_postcond n (solve n h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

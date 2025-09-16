@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def ValidInput (n : Nat) (r : List Int) (b : List Int) : Prop :=
   n > 0 ∧ r.length = n ∧ b.length = n ∧
   (∀ i, i < n → r.get! i = 0 ∨ r.get! i = 1) ∧
@@ -21,21 +20,15 @@ def MinMaxPointValue (n : Nat) (r : List Int) (b : List Int) : Int :=
 def solve_precond (n : Nat) (r : List Int) (b : List Int) : Prop :=
   ValidInput n r b
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (n : Nat) (r : List Int) (b : List Int) (h_precond : solve_precond n r b) : Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (n : Nat) (r : List Int) (b : List Int) (result : Int) (h_precond : solve_precond n r b) : Prop :=
@@ -44,5 +37,4 @@ def solve_postcond (n : Nat) (r : List Int) (b : List Int) (result : Int) (h_pre
 theorem solve_spec_satisfied (n : Nat) (r : List Int) (b : List Int) (h_precond : solve_precond n r b) :
     solve_postcond n r b (solve n r b h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

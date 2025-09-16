@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def ValidInput (n k : Int) (A : List Int) : Prop :=
   1 ≤ k ∧ k ≤ n ∧ n ≤ 100 ∧
   n % k = 0 ∧
@@ -33,21 +32,15 @@ def SumMinChangesForAllColumns (A : List Int) (n k : Int) : Int :=
 def solve_precond (n k : Int) (A : List Int) : Prop :=
   ValidInput n k A
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (n k : Int) (A : List Int) (h_precond : solve_precond n k A) : Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (n k : Int) (A : List Int) (result : Int) (h_precond : solve_precond n k A) : Prop :=
@@ -56,5 +49,4 @@ def solve_postcond (n k : Int) (A : List Int) (result : Int) (h_precond : solve_
 theorem solve_spec_satisfied (n k : Int) (A : List Int) (h_precond : solve_precond n k A) :
     solve_postcond n k A (solve n k A h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def pow (base exp : Nat) : Nat :=
   if exp = 0 then 1 else base * pow base (exp - 1)
 
@@ -20,20 +19,14 @@ def ValidOutput (n result : Nat) : Prop :=
 @[reducible, simp]
 def solve_precond (n : Nat) : Prop := ValidInput n
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (n : Nat) (h_precond : solve_precond n) : Nat := sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (n result : Nat) (h_precond : solve_precond n) : Prop :=
@@ -42,5 +35,4 @@ def solve_postcond (n result : Nat) (h_precond : solve_precond n) : Prop :=
 theorem solve_spec_satisfied (n : Nat) (h_precond : solve_precond n) :
     solve_postcond n (solve n h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

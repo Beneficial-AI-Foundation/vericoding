@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def sum (s : List Int) : Int :=
   match s with
   | [] => 0
@@ -39,21 +38,15 @@ def ValidInput (k : Int) (n : Int) (a : List Int) (b : List Int) : Prop :=
 def solve_precond (k n : Int) (a b : List Int) : Prop :=
   ValidInput k n a b
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (k n : Int) (a b : List Int) (h_precond : solve_precond k n a b) : Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (k n : Int) (a b : List Int) (result : Int) (h_precond : solve_precond k n a b) : Prop :=
@@ -62,5 +55,4 @@ def solve_postcond (k n : Int) (a b : List Int) (result : Int) (h_precond : solv
 theorem solve_spec_satisfied (k n : Int) (a b : List Int) (h_precond : solve_precond k n a b) :
     solve_postcond k n a b (solve k n a b h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

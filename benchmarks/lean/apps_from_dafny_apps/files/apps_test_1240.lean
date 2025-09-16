@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def ValidInput (columns : List (Int × Int)) : Prop :=
   ∀ i, 0 ≤ i ∧ i < columns.length → (columns[i]?.getD (0, 0)).1 > 0 ∧ (columns[i]?.getD (0, 0)).2 > 0
 
@@ -18,21 +17,15 @@ def sum_right : List (Int × Int) → Int
 def solve_precond (columns : List (Int × Int)) : Prop :=
   ValidInput columns
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (columns : List (Int × Int)) (h_precond : solve_precond columns) : Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (columns : List (Int × Int)) (result : Int) (h_precond : solve_precond columns) : Prop :=
@@ -60,5 +53,4 @@ def solve_postcond (columns : List (Int × Int)) (result : Int) (h_precond : sol
 theorem solve_spec_satisfied (columns : List (Int × Int)) (h_precond : solve_precond columns) :
     solve_postcond columns (solve columns h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

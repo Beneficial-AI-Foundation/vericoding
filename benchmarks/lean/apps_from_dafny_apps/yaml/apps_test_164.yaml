@@ -1,5 +1,4 @@
 vc-preamble: |-
-  -- <vc-preamble>
   def ValidInput (y1 y2 y_w x_b y_b r : Int) : Prop :=
     y1 < y2 ∧ y2 < y_w ∧
     y_b + r < y_w ∧
@@ -37,20 +36,14 @@ vc-preamble: |-
   @[reducible, simp]
   def solve_precond (y1 y2 y_w x_b y_b r : Int) : Prop :=
     ValidInput y1 y2 y_w x_b y_b r
-  -- </vc-preamble>
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
-  -- <vc-definitions>
   def solve (y1 y2 y_w x_b y_b r : Int) (h_precond : solve_precond y1 y2 y_w x_b y_b r) : Float :=
     sorry
-  -- </vc-definitions>
 
 vc-theorems: |-
-  -- <vc-theorems>
   @[reducible, simp]
   def solve_postcond (y1 y2 y_w x_b y_b r : Int) (result : Float) (h_precond : solve_precond y1 y2 y_w x_b y_b r) : Prop :=
     (IsImpossible y1 y2 y_w x_b y_b r → result = -1.0) ∧
@@ -59,6 +52,5 @@ vc-theorems: |-
   theorem solve_spec_satisfied (y1 y2 y_w x_b y_b r : Int) (h_precond : solve_precond y1 y2 y_w x_b y_b r) :
       solve_postcond y1 y2 y_w x_b y_b r (solve y1 y2 y_w x_b y_b r h_precond) h_precond := by
     sorry
-  -- </vc-theorems>
 
 vc-postamble: |-

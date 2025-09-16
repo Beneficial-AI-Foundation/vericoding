@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def UnnecessaryCardsCountHelper (sorted : List Int) (k : Int) (temp : Int) (ans : Int) (i : Nat) : Int :=
   if i ≥ sorted.length then ans
   else
@@ -18,21 +17,15 @@ def UnnecessaryCardsCount (sorted : List Int) (k : Int) : Int :=
 def solve_precond (n k : Int) (a : List Int) : Prop :=
   n ≥ 1 ∧ k ≥ 1 ∧ a.length = n ∧ (∀ i, 0 ≤ i ∧ i < a.length → a[i]! ≥ 1)
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (n k : Int) (a : List Int) (h_precond : solve_precond n k a) : Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (n k : Int) (a : List Int) (result : Int) (h_precond : solve_precond n k a) : Prop :=
@@ -46,5 +39,4 @@ def solve_postcond (n k : Int) (a : List Int) (result : Int) (h_precond : solve_
 theorem solve_spec_satisfied (n k : Int) (a : List Int) (h_precond : solve_precond n k a) :
     solve_postcond n k a (solve n k a h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

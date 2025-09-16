@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def IsValidWorkSelection (N K C : Nat) (S : String) (selection : List Nat) : Prop :=
   S.length = N ∧
   selection.length = K ∧
@@ -17,21 +16,15 @@ def solve_precond (N K C : Nat) (S : String) : Prop :=
   ((List.range S.length).filter (fun i => S.data[i]! = 'o')).length ≥ K ∧
   ∃ validSelection, IsValidWorkSelection N K C S validSelection
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (N K C : Nat) (S : String) (h_precond : solve_precond N K C S) : List Nat :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (N K C : Nat) (S : String) (result : List Nat) (h_precond : solve_precond N K C S) : Prop :=
@@ -43,5 +36,4 @@ def solve_postcond (N K C : Nat) (S : String) (result : List Nat) (h_precond : s
 theorem solve_spec_satisfied (N K C : Nat) (S : String) (h_precond : solve_precond N K C S) :
     solve_postcond N K C S (solve N K C S h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

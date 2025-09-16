@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 
 def ValidInput (n m x y : Int) (xx yy : List Int) : Prop :=
   xx.length = n ∧ yy.length = m ∧ n ≥ 1 ∧ m ≥ 1 ∧ x < y
@@ -17,21 +16,15 @@ def AgreementPossible (n m x y : Int) (xx yy : List Int) (h_valid : ValidInput n
 def solve_precond (n m x y : Int) (xx yy : List Int) : Prop :=
   ValidInput n m x y xx yy
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (n m x y : Int) (xx yy : List Int) (h_precond : solve_precond n m x y xx yy) : String :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (n m x y : Int) (xx yy : List Int) (result: String) (h_precond : solve_precond n m x y xx yy) : Prop :=
@@ -41,5 +34,4 @@ def solve_postcond (n m x y : Int) (xx yy : List Int) (result: String) (h_precon
 theorem solve_spec_satisfied (n m x y : Int) (xx yy : List Int) (h_precond : solve_precond n m x y xx yy) :
     solve_postcond n m x y xx yy (solve n m x y xx yy h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def ValidInput (a b x : Int) : Prop :=
   1 ≤ a ∧ a ≤ 100 ∧ 1 ≤ b ∧ b ≤ 100 ∧ 1 ≤ x ∧ x ≤ 200
 
@@ -10,21 +9,15 @@ def CanHaveExactlyCats (a b x : Int) : Prop :=
 def solve_precond (a b x : Int) : Prop :=
   ValidInput a b x
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (a b x : Int) (h_precond : solve_precond a b x) : String :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (a b x : Int) (result : String) (h_precond : solve_precond a b x) : Prop :=
@@ -33,5 +26,4 @@ def solve_postcond (a b x : Int) (result : String) (h_precond : solve_precond a 
 theorem solve_spec_satisfied (a b x : Int) (h_precond : solve_precond a b x) :
     solve_postcond a b x (solve a b x h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

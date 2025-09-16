@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def ValidInput (n k a m : Int) (shots : List Int) : Prop :=
   n > 0 ∧ k > 0 ∧ a > 0 ∧ m > 0 ∧ shots.length = Int.natAbs m ∧
   (∀ i, 0 ≤ i ∧ i < shots.length → 1 ≤ shots[i]! ∧ shots[i]! ≤ n)
@@ -31,21 +30,15 @@ def intToStringSpec (_ : Int) : String := "1"
 def solve_precond (stdin_input : String) : Prop :=
   stdin_input.length > 0 ∧ stdin_input.data[stdin_input.length - 1]! = '\n'
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (stdin_input : String) (_ : solve_precond stdin_input) : String :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (stdin_input : String) (result : String) (_ : solve_precond stdin_input) : Prop :=
@@ -56,5 +49,4 @@ def solve_postcond (stdin_input : String) (result : String) (_ : solve_precond s
 theorem solve_spec_satisfied (stdin_input : String) (h_precond : solve_precond stdin_input) :
     solve_postcond stdin_input (solve stdin_input h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

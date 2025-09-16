@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def ValidInput (n : Int) (s : List Char) : Prop :=
   n ≥ 0 ∧ s.length = n.natAbs ∧ ∀ i, i < s.length → s[i]! = 'U' ∨ s[i]! = 'R'
 
@@ -25,21 +24,15 @@ def CountKingdomTransitions (s : List Char) : Int :=
 def solve_precond (n : Int) (s : List Char) : Prop :=
   ValidInput n s
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (n : Int) (s : List Char) (h_precond : solve_precond n s) : Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (n : Int) (s : List Char) (result : Int) (h_precond : solve_precond n s) : Prop :=
@@ -48,5 +41,4 @@ def solve_postcond (n : Int) (s : List Char) (result : Int) (h_precond : solve_p
 theorem solve_spec_satisfied (n : Int) (s : List Char) (h_precond : solve_precond n s) :
     solve_postcond n s (solve n s h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

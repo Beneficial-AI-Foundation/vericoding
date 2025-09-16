@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def ValidInput (N M : Int) : Prop :=
   N ≥ 1 ∧ M ≥ 1
 
@@ -13,21 +12,15 @@ def CountFaceDownCards (N M : Int) : Int :=
 def solve_precond (N M : Int) : Prop :=
   ValidInput N M
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (N M : Int) (h_precond : solve_precond N M) : Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (N M : Int) (result : Int) (h_precond : solve_precond N M) : Prop :=
@@ -36,5 +29,4 @@ def solve_postcond (N M : Int) (result : Int) (h_precond : solve_precond N M) : 
 theorem solve_spec_satisfied (N M : Int) (h_precond : solve_precond N M) :
     solve_postcond N M (solve N M h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

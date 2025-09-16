@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def maxHeightUpTo (heights: List Int) (index: Nat) : Int :=
   if index = 0 then heights[0]!
   else if heights[index]! > maxHeightUpTo heights (index - 1) 
@@ -17,21 +16,15 @@ def CanMakeNonDecreasing (heights: List Int) : Prop :=
 def solve_precond (n: Int) (heights: List Int) : Prop :=
   ValidInput n heights
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (n: Int) (heights: List Int) (h_precond : solve_precond n heights) : String :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (n: Int) (heights: List Int) (result: String) (h_precond : solve_precond n heights) : Prop :=
@@ -40,5 +33,4 @@ def solve_postcond (n: Int) (heights: List Int) (result: String) (h_precond : so
 theorem solve_spec_satisfied (n: Int) (heights: List Int) (h_precond : solve_precond n heights) :
     solve_postcond n heights (solve n heights h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

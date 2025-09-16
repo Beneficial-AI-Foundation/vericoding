@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def isPalindrome (s : String) : Bool :=
   if h : s.length / 2 ≤ s.length then
     (List.range (s.length / 2)).all (fun i => s.data[i]! = s.data[s.length - 1 - i]!)
@@ -10,21 +9,15 @@ def isPalindrome (s : String) : Bool :=
 def solve_precond (s : String) (k : Int) : Prop :=
   k > 0
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (s : String) (k : Int) (h_precond : solve_precond s k) : String :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (s : String) (k : Int) (result : String) (h_precond : solve_precond s k) : Prop :=
@@ -38,5 +31,4 @@ def solve_postcond (s : String) (k : Int) (result : String) (h_precond : solve_p
 theorem solve_spec_satisfied (s : String) (k : Int) (h_precond : solve_precond s k) :
     solve_postcond s k (solve s k h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def CountNewlines (s : String) (start : Nat) : Nat := sorry
 
 def ContainsFourLines (s : String) : Prop :=
@@ -47,21 +46,15 @@ def solve_precond (s : String) : Prop :=
   (∀ i : Nat, i < s.length → s.data[i]!.toNat ≥ 0 ∧ s.data[i]!.toNat ≤ 127) ∧
   ValidInputString s
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (s : String) (h_precond : solve_precond s) : String :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (s : String) (result : String) (h_precond : solve_precond s) : Prop :=
@@ -74,5 +67,4 @@ def solve_postcond (s : String) (result : String) (h_precond : solve_precond s) 
 theorem solve_spec_satisfied (s : String) (h_precond : solve_precond s) :
     solve_postcond s (solve s h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

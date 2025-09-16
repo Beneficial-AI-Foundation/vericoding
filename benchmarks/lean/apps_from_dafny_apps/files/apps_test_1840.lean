@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def ValidInput (s b : Nat) (attacking_powers : List Nat) (bases : List (Nat × Nat)) : Prop :=
   attacking_powers.length = s ∧ bases.length = b
 
@@ -21,21 +20,15 @@ def ValidOutput (s : Nat) (attacking_powers : List Nat) (bases : List (Nat × Na
 def solve_precond (s b : Nat) (attacking_powers : List Nat) (bases : List (Nat × Nat)) : Prop :=
   ValidInput s b attacking_powers bases
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (s b : Nat) (attacking_powers : List Nat) (bases : List (Nat × Nat)) (h_precond : solve_precond s b attacking_powers bases) : List Nat :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (s b : Nat) (attacking_powers : List Nat) (bases : List (Nat × Nat)) (result : List Nat) (h_precond : solve_precond s b attacking_powers bases) : Prop :=
@@ -44,5 +37,4 @@ def solve_postcond (s b : Nat) (attacking_powers : List Nat) (bases : List (Nat 
 theorem solve_spec_satisfied (s b : Nat) (attacking_powers : List Nat) (bases : List (Nat × Nat)) (h_precond : solve_precond s b attacking_powers bases) :
     solve_postcond s b attacking_powers bases (solve s b attacking_powers bases h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

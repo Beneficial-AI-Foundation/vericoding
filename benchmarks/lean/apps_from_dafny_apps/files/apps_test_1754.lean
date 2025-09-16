@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def IsStrongestInSchool (student_idx: Nat) (powers: List Int) (schools: List Int) : Prop :=
   student_idx < powers.length ∧ powers.length = schools.length ∧
   ∀ j, j < powers.length ∧ schools[j]! = schools[student_idx]! → powers[j]! ≤ powers[student_idx]!
@@ -18,21 +17,15 @@ def solve_precond (n m k : Int) (powers schools chosen : List Int) : Prop :=
   (∀ s, 1 ≤ s ∧ s ≤ m → ∃ i, i < n.natAbs ∧ schools[i]! = s) ∧
   (∀ i, i < n.natAbs → 1 ≤ powers[i]! ∧ powers[i]! ≤ n)
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (n m k : Int) (powers schools chosen : List Int) (h_precond : solve_precond n m k powers schools chosen) : Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (n m k : Int) (powers schools chosen : List Int) (result: Int) (h_precond : solve_precond n m k powers schools chosen) : Prop :=
@@ -42,5 +35,4 @@ def solve_postcond (n m k : Int) (powers schools chosen : List Int) (result: Int
 theorem solve_spec_satisfied (n m k : Int) (powers schools chosen : List Int) (h_precond : solve_precond n m k powers schools chosen) :
     solve_postcond n m k powers schools chosen (solve n m k powers schools chosen h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

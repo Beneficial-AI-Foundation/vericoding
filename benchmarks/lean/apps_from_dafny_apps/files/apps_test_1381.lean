@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 
 def ValidInput (k n s p : Int) : Prop :=
   k ≥ 1 ∧ n ≥ 1 ∧ s ≥ 1 ∧ p ≥ 1 ∧
@@ -23,21 +22,15 @@ def CorrectResult (result k n s p : Int) : Prop :=
 def solve_precond (k n s p : Int) : Prop :=
   ValidInput k n s p
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (k n s p : Int) (h_precond : solve_precond k n s p) : Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (k n s p : Int) (result: Int) (h_precond : solve_precond k n s p) : Prop :=
@@ -46,5 +39,4 @@ def solve_postcond (k n s p : Int) (result: Int) (h_precond : solve_precond k n 
 theorem solve_spec_satisfied (k n s p : Int) (h_precond : solve_precond k n s p) :
     solve_postcond k n s p (solve k n s p h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

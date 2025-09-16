@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def ValidInput (angles : List Int) : Prop :=
   ∀ i, 0 ≤ i ∧ i < angles.length → 1 ≤ angles[i]! ∧ angles[i]! < 180
 
@@ -18,21 +17,15 @@ def CorrectOutput (angles : List Int) (result : List Int) : Prop :=
 def solve_precond (angles : List Int) : Prop :=
   ValidInput angles
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (angles : List Int) (h_precond : solve_precond angles) : List Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (angles : List Int) (result : List Int) (h_precond : solve_precond angles) : Prop :=
@@ -41,5 +34,4 @@ def solve_postcond (angles : List Int) (result : List Int) (h_precond : solve_pr
 theorem solve_spec_satisfied (angles : List Int) (h_precond : solve_precond angles) :
     solve_postcond angles (solve angles h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

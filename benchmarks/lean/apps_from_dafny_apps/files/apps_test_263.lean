@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def ValidInput (n : Nat) (m : Nat) (benches : List Nat) : Prop :=
   n > 0 ∧ m > 0 ∧ benches.length = n ∧ ∀ i, 0 ≤ i ∧ i < n → benches[i]! > 0
 
@@ -14,21 +13,15 @@ def sum_seq (s : List Nat) : Nat :=
 def solve_precond (n : Nat) (m : Nat) (benches : List Nat) : Prop :=
   ValidInput n m benches
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (n : Nat) (m : Nat) (benches : List Nat) (h_precond : solve_precond n m benches) : Nat × Nat :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (n : Nat) (m : Nat) (benches : List Nat) (result: Nat × Nat) (h_precond : solve_precond n m benches) : Prop :=
@@ -43,5 +36,4 @@ def solve_postcond (n : Nat) (m : Nat) (benches : List Nat) (result: Nat × Nat)
 theorem solve_spec_satisfied (n : Nat) (m : Nat) (benches : List Nat) (h_precond : solve_precond n m benches) :
     solve_postcond n m benches (solve n m benches h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

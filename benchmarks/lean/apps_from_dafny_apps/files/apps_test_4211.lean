@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def ValidInput (n : Int) (b : List Int) : Prop :=
   n ≥ 2 ∧ b.length = n - 1 ∧ ∀ i, 0 ≤ i ∧ i < b.length → b[i]! ≥ 0
 
@@ -15,21 +14,15 @@ def CorrectResult (n : Int) (b : List Int) (result : Int) : Prop :=
 def solve_precond (n : Int) (b : List Int) : Prop :=
   ValidInput n b
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (n : Int) (b : List Int) (_ : solve_precond n b) : Int :=
   0
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (n : Int) (b : List Int) (result : Int) (_ : solve_precond n b) : Prop :=
@@ -38,5 +31,4 @@ def solve_postcond (n : Int) (b : List Int) (result : Int) (_ : solve_precond n 
 theorem solve_spec_satisfied (n : Int) (b : List Int) (h_precond : solve_precond n b) :
     solve_postcond n b (solve n b h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

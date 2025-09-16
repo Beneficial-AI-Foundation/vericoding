@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def ValidInput (sides : List Int) : Prop :=
   sides.length ≥ 3 ∧ ∀ i, 0 ≤ i ∧ i < sides.length → sides[i]! > 0
 
@@ -23,21 +22,15 @@ def canFormPolygon (sides : List Int) : Bool :=
 def solve_precond (sides : List Int) : Prop :=
   ValidInput sides
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (sides : List Int) (h_precond : solve_precond sides) : String :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (sides : List Int) (result : String) (h_precond : solve_precond sides) : Prop :=
@@ -46,5 +39,4 @@ def solve_postcond (sides : List Int) (result : String) (h_precond : solve_preco
 theorem solve_spec_satisfied (sides : List Int) (h_precond : solve_precond sides) :
     solve_postcond sides (solve sides h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

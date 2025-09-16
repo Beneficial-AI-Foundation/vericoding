@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 
 def ChestTotal (reps : List Int) : Int :=
   (List.range reps.length).map (fun i => if i % 3 = 0 then reps[i]! else 0) |>.sum
@@ -27,21 +26,15 @@ def IsWinner (muscle : String) (reps : List Int) (h_valid : ValidInput reps) : P
 def solve_precond (reps : List Int) : Prop :=
   ValidInput reps
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (reps : List Int) (h_precond : solve_precond reps) : String :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (reps : List Int) (result : String) (h_precond : solve_precond reps) : Prop :=
@@ -51,5 +44,4 @@ def solve_postcond (reps : List Int) (result : String) (h_precond : solve_precon
 theorem solve_spec_satisfied (reps : List Int) (h_precond : solve_precond reps) :
     solve_postcond reps (solve reps h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def ValidInput (n m : Int) (horizontal vertical : List Char) : Prop :=
   n ≥ 2 ∧ n ≤ 20 ∧ m ≥ 2 ∧ m ≤ 20 ∧
   horizontal.length = n ∧ vertical.length = m ∧
@@ -22,21 +21,15 @@ axiom parse_int (s : List Char) : Int
 def solve_precond (n m : Int) (horizontal vertical : List Char) : Prop :=
   ValidInput n m horizontal vertical
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (n m : Int) (horizontal vertical : List Char) (h_precond : solve_precond n m horizontal vertical) : List Char :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (n m : Int) (horizontal vertical : List Char) (result : List Char) (h_precond : solve_precond n m horizontal vertical) : Prop :=
@@ -46,5 +39,4 @@ def solve_postcond (n m : Int) (horizontal vertical : List Char) (result : List 
 theorem solve_spec_satisfied (n m : Int) (horizontal vertical : List Char) (h_precond : solve_precond n m horizontal vertical) :
     solve_postcond n m horizontal vertical (solve n m horizontal vertical h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

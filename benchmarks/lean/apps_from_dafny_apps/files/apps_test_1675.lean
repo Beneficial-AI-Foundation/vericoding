@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def ValidInput (n : Int) (teams : List (Int × Int)) : Prop :=
   n ≥ 2 ∧ teams.length = Int.natAbs n ∧
   (∀ i, 0 ≤ i ∧ i < n → 
@@ -38,21 +37,15 @@ def ValidOutput (n : Int) (teams : List (Int × Int)) (result : List (Int × Int
 def solve_precond (n : Int) (teams : List (Int × Int)) : Prop :=
   ValidInput n teams
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (n : Int) (teams : List (Int × Int)) (h_precond : solve_precond n teams) : List (Int × Int) :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (n : Int) (teams : List (Int × Int)) (result : List (Int × Int)) (h_precond : solve_precond n teams) : Prop :=
@@ -61,5 +54,4 @@ def solve_postcond (n : Int) (teams : List (Int × Int)) (result : List (Int × 
 theorem solve_spec_satisfied (n : Int) (teams : List (Int × Int)) (h_precond : solve_precond n teams) :
     solve_postcond n teams (solve n teams h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

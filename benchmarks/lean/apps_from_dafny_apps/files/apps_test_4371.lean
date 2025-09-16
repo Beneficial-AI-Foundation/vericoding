@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def ValidInput (S : String) : Prop :=
   S.length ≥ 3 ∧ ∀ i, 0 ≤ i ∧ i < S.length → '1' ≤ S.data[i]! ∧ S.data[i]! ≤ '9'
 
@@ -26,21 +25,15 @@ def IsMinimumDifference (S : String) (result : Int) : Prop :=
 def solve_precond (S : String) : Prop :=
   ValidInput S
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (S : String) (h_precond : solve_precond S) : Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (S : String) (result : Int) (h_precond : solve_precond S) : Prop :=
@@ -49,5 +42,4 @@ def solve_postcond (S : String) (result : Int) (h_precond : solve_precond S) : P
 theorem solve_spec_satisfied (S : String) (h_precond : solve_precond S) :
     solve_postcond S (solve S h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>
