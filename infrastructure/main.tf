@@ -186,17 +186,16 @@ resource "aws_batch_compute_environment" "vericoding_compute_env" {
   service_role            = aws_iam_role.batch_service_role.arn
   
   compute_resources {
-    type                = "EC2"
+    type                = "SPOT"
     allocation_strategy = "SPOT_CAPACITY_OPTIMIZED"
     
     min_vcpus     = 0    # Scale to 0 when idle
     max_vcpus     = 80   # 10 machines * 8 vCPUs each
     desired_vcpus = 0    # Target 0 instances
     
-    instance_type = "c8g.2xlarge"
+    instance_type = ["c8g.2xlarge"]
     
-    spot_fleet_request_role = aws_iam_role.batch_spot_fleet_role.arn
-    bid_percentage             = 100  # 100% of on-demand price
+    bid_percentage = 100  # 100% of on-demand price
     
     ec2_configuration {
       image_type = "ECS_AL2_ARM64"  # ARM64 for Graviton3
@@ -242,6 +241,7 @@ resource "aws_batch_job_definition" "lean_verification" {
     memory = 15360  # 15GB (leave 1GB for system)
     
     jobRoleArn = aws_iam_role.batch_job_role.arn
+    executionRoleArn = aws_iam_role.batch_job_role.arn
     
     environment = [
       {
