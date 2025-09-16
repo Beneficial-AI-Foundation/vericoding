@@ -2,7 +2,7 @@
 def count (a : Array Int) (x : Int) : Nat :=
 a.foldl (fun acc y => if y = x then acc + 1 else acc) 0
 
-def merged (a1 : Array Int) (a2 : Array Int) (b : Array Int) (start : Int) (end_ : Int) : Bool :=
+def merged (a1 : Array Int) (a2 : Array Int) (b : Array Int) (start : Int) (end_ : Int) : Prop :=
 end_ - start == a1.size + a2.size ∧
 0 ≤ start ∧ start ≤ end_ ∧ end_ ≤ b.size ∧
 (∀ x : Int, count a1 x + count a2 x = count (b.extract start.toNat end_.toNat) x)
