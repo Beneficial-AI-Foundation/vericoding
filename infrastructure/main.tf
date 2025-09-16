@@ -193,9 +193,9 @@ resource "aws_batch_compute_environment" "vericoding_compute_env" {
     max_vcpus     = 80   # 10 machines * 8 vCPUs each
     desired_vcpus = 0    # Target 0 instances
     
-    instance_types = ["c8g.2xlarge"]
+    instance_type = "c8g.2xlarge"
     
-    spot_iam_fleet_request_role = aws_iam_role.batch_spot_fleet_role.arn
+    spot_fleet_request_role = aws_iam_role.batch_spot_fleet_role.arn
     bid_percentage             = 100  # 100% of on-demand price
     
     ec2_configuration {
