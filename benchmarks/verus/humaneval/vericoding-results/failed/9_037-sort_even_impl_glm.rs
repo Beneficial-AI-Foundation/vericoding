@@ -33,62 +33,53 @@ spec fn inner_expr_lemma_update_effect_on_count<T>(s: Seq<T>, i: int, v: T, x: T
 // </vc-preamble>
 
 // <vc-helpers>
-/* helper modified by LLM (iteration 3): fixed Seq::new call to include length argument */
-spec fn extract_even<T>(s: Seq<T>) -> Seq<T> {
-    if s.len() == 0 {
-        Seq::empty()
+proof fn lemma_count_update<T>(s: Seq<T>, i: int, v: T, x: T)
+    requires 0 <= i < s.len(),
+    ensures count(s.update(i, v), x) == if v == x && s[i] != x {
+        count(s, x) + 1
+    } else if v != x && s[i] == x {
+        count(s, x) - 1
     } else {
-        let first = s[0];
-        let rest = s.skip(1);
-        Seq::new(1, first) + extract_odd(rest)
-    }
-}
-
-spec fn extract_odd<T>(s: Seq<T>) -> Seq<T> {
-    if s.len() == 0 {
-        Seq::empty()
-    } else {
-        let rest = s.skip(1);
-        extract_even(rest)
-    }
-}
-
-proof fn lemma_count_decomposition<T>(s: Seq<T>, x: T)
-    ensures
-        count(s, x) == count(extract_even(s), x) + count(extract_odd(s), x)
+        count(s, x)
+    },
 {
     if s.len() == 0 {
+        assert(s.update(i, v).len() == 0);
     } else {
-        let first = s[0];
-        let rest = s.skip(1);
-        lemma_count_decomposition(rest, x);
+        if i == 0 {
+            lemma_count_update(s.skip(1), i - 1, v, x);
+        } else {
+            lemma_count_update(s.skip(1), i - 1, v, x);
+        }
     }
 }
 
-proof fn lemma_extract_odd_equal<T>(s1: Seq<T>, s2: Seq<T>)
-    requires
-        s1.len() == s2.len(),
-        forall|i: int| 0 <= i < s1.len() && i % 2 == 1 ==> s1[i] == s2[i],
-    ensures
-        extract_odd(s1) == extract_odd(s2)
+proof fn lemma_permutes_reflexive<T>(s: Seq<T>)
+    ensures permutes(s, s),
 {
-    if s1.len() == 0 {
-    } else {
-        let s1_rest = s1.skip(1);
-        let s2_rest = s2.skip(1);
-        lemma_extract_odd_equal(s1_rest, s2_rest);
-    }
+    assert(forall|x: T| count(s, x) == count(s, x));
 }
 
-proof fn lemma_permutation_by_even_odd<T>(s1: Seq<T>, s2: Seq<T>)
-    requires
-        s1.len() == s2.len(),
-        forall|i: int| 0 <= i < s1.len() && i % 2 == 1 ==> s1[i] == s2[i],
-        permutes(extract_even(s1), extract_even(s2)),
-    ensures
-        permutes(s1, s2)
+proof fn lemma_permutes_symmetric<T>(s1: Seq<T>, s2: Seq<T>)
+    requires permutes(s1, s2),
+    ensures permutes(s2, s1),
 {
-    lemma_extract_odd_equal(s1, s2);
+    assert(forall|x: T| count(s2, x) == count(s1, x));
+}
+
+proof fn lemma_permutes_transitive<T>(s1: Seq<T>, s2: Seq<T>, s3: Seq<T>)
+    requires permutes(s1, s2),
+    requires permutes(s2, s3),
+    ensures permutes(s1, s3),
+{
+    assert(forall|x: T| count(s1, x) == count(s3, x));
+}
+
+proof fn lemma_permutes_update<T>(s: Seq<T>, i: int, v: T)
+    requires 0 <= i < s.len(),
+    ensures permutes(s.update(i, v), s.update(i, v)),
+{
+    lemma_permutes_reflexive(s.update(i, v));
 }
 // </vc-helpers>
 
@@ -106,43 +97,47 @@ fn sort_even(l: Vec<i32>) -> (result: Vec<i32>)
 // </vc-spec>
 // <vc-code>
 {
-    let mut result = l.clone();
-    let mut even_elems: Vec<i32> = Vec::new();
+    let mut result = l;
+    let n = result.len();
     let mut i = 0;
-    while i < l.len()
+    
+    while i < n
         invariant
-            0 <= i <= l.len(),
-            even_elems.len() == (i + 1) / 2,
+            0 <= i <= n,
+            result.len() == n,
+            permutes(result@, l@),
+            forall|k: int| 0 <= k < n && k % 2 == 1 ==> result[k] == l[k],
+            forall|k: int, j: int|
+                0 <= k < j < i && k % 2 == 0 && j % 2 == 0 ==> result[k] <= result[j],
+        decreases n - i,
     {
         if i % 2 == 0 {
-            even_elems.push(l[i]);
+            let mut j = i;
+            let mut min_idx = i;
+            
+            while j < n
+                invariant
+                    i <= j <= n,
+                    i <= min_idx < n,
+                    min_idx % 2 == 0,
+                    forall|k: int| i <= k < j && k % 2 == 0 ==> result[min_idx] <= result[k],
+                decreases n - j,
+            {
+                if j % 2 == 0 && result[j] < result[min_idx] {
+                    min_idx = j;
+                }
+                j = j + 1;
+            }
+            
+            if min_idx != i {
+                let temp = result[i];
+                result[i] = result[min_idx];
+                result[min_idx] = temp;
+            }
         }
-        i += 1;
+        i = i + 1;
     }
-
-    even_elems.sort();
-
-    let mut idx = 0;
-    let mut j = 0;
-    while j < result.len()
-        invariant
-            0 <= j <= result.len(),
-            0 <= idx <= even_elems.len(),
-            idx == (j + 1) / 2,
-    {
-        if j % 2 == 0 {
-            result[j] = even_elems[idx];
-            idx += 1;
-        }
-        j += 1;
-    }
-
-    proof {
-        assert(extract_even(result@) == even_elems@);
-        assert(permutes(even_elems@, extract_even(l@)));
-        lemma_permutation_by_even_odd(l@, result@);
-    }
-
+    
     result
 }
 // </vc-code>

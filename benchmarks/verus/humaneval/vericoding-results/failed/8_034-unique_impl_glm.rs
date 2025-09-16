@@ -8,54 +8,46 @@ verus! {
 // </vc-preamble>
 
 // <vc-helpers>
-spec fn is_sorted(v: Vec<i32>) -> bool {
-    forall|i: int, j: int| 0 <= i < j < v.len() ==> v[i] < v[j]
+fn contains_unique(seq: Seq<i32>, value: i32) -> bool {
+    seq.contains(value) && seq.count_of(value) == 1
 }
 
-/* helper modified by LLM (iteration 3): added decreases clause to loop */
-fn insert_sorted(mut v: Vec<i32>, x: i32) -> (result: Vec<i32>)
+proof fn lemma_contains_after_insert(mut seq: Seq<i32>, i: int, value: i32)
     requires
-        is_sorted(v),
-        !v@.contains(x),
+        0 <= i <= seq.len(),
+        !seq.contains(value),
     ensures
-        is_sorted(result),
-        result.len() == v.len() + 1,
-        result@.contains(x),
-        forall|i: int| 0 <= i < v.len() ==> result@.contains(v[i]),
+        contains_unique(seq.insert(i, value), value),
 {
-    let mut i = 0;
-    while i < v.len() && v[i] < x
-        invariant
-            0 <= i <= v.len(),
-            forall|j: int, k: int| 0 <= j < k < i ==> v[j] < v[k],
-            forall|j: int| i <= j < v.len() ==> x < v[j],
-        decreases v.len() - i,
-    {
-        i += 1;
-    }
-    
-    v.insert(i, x);
-    v
+    assert(seq.insert(i, value).contains(value));
+    assert(seq.insert(i, value).count_of(value) == 1);
 }
 
-/* helper modified by LLM (iteration 4): added decreases clause to loop in exec_contains */
-fn exec_contains(v: &Vec<i32>, x: i32) -> (result: bool)
-    ensures result <==> v@.contains(x)
+proof fn lemma_unique_elements_preserved(seq: Seq<i32>)
+    ensures
+        forall|i: int, j: int| 0 <= i < j < seq.len() ==> seq[i] != seq[j],
 {
-    let mut i = 0;
-    while i < v.len()
+    let mut i: int = 0;
+    while i < seq.len()
         invariant
-            0 <= i <= v.len(),
-            forall|j: int| 0 <= j < i ==> v[j] != x,
-            v@.contains(x) <==> (exists|j: int| i <= j < v.len() && v[j] == x),
-        decreases v.len() - i,
+            0 <= i <= seq.len(),
+            forall|a: int, b: int| 0 <= a < b < i ==> seq[a] != seq[b],
+        decreases seq.len() - i
     {
-        if v[i] == x {
-            return true;
+        let mut j: int = 0;
+        while j < i
+            invariant
+                0 <= j <= i,
+                0 <= i < seq.len(),
+                forall|a: int, b: int| 0 <= a < b < i ==> (a != j && b != j ==> seq[a] != seq[b]),
+                forall|k: int| 0 <= k < j ==> seq[k] != seq[j],
+            decreases i - j
+        {
+            assert(seq[j] != seq[i]);
+            j += 1;
         }
         i += 1;
     }
-    false
 }
 // </vc-helpers>
 
@@ -69,21 +61,46 @@ fn unique(s: Vec<i32>) -> (result: Vec<i32>)
 // </vc-spec>
 // <vc-code>
 {
-    /* code modified by LLM (iteration 5): added trigger annotation in invariant */
-    let mut result = Vec::new();
+    /* code modified by LLM (iteration 2): added missing braces for function body */
+    let mut result: Vec<i32> = Vec::new();
+    let mut seen: Set<i32> = Set::empty();
+    let mut i: usize = 0;
     
-    for i in 0..s.len()
+    while i < s.len()
         invariant
             0 <= i <= s.len(),
-            is_sorted(result),
-            forall|j: int| 0 <= j < i ==> result@.contains(s[j]),
-            forall|j: int| 0 <= j < result.len() ==> exists|k: int| 0 <= k < i && s[k] == #[trigger] result[j],
+            forall|a: int, b: int| 0 <= a < b < result.len() ==> result[a] < result[b],
+            forall|j: int| 0 <= j < result.len() ==> seen.contains(result[j]),
+            forall|j: int| 0 <= j < i ==> s@[j] == result@[j],
+            forall|j: int| 0 <= j < result.len() ==> s@.contains(result[j]),
+        decreases s.len() - i
     {
-        if !exec_contains(&result, s[i]) {
-            result = insert_sorted(result, s[i]);
+        if i == 0 {
+            result.push(s[i]);
+            seen.insert(s[i]);
+        } else {
+            if !seen.contains(s[i]) {
+                let mut insert_pos: usize = 0;
+                while insert_pos < result.len()
+                    invariant
+                        0 <= insert_pos <= result.len(),
+                        forall|a: int, b: int| 0 <= a < b < insert_pos ==> result[a] < result[b],
+                        forall|a: int, b: int| insert_pos <= a < b < result.len() ==> result[a] < result[b],
+                        forall|k: int| 0 <= k < insert_pos ==> result[k] < s[i],
+                        forall|k: int| insert_pos <= k < result.len() ==> s[i] < result[k],
+                    decreases result.len() - insert_pos
+                {
+                    if s[i] < result[insert_pos] {
+                        break;
+                    }
+                    insert_pos += 1;
+                }
+                result.insert(insert_pos, s[i]);
+                seen.insert(s[i]);
+            }
         }
+        i += 1;
     }
-    
     result
 }
 // </vc-code>

@@ -16,8 +16,8 @@ fn add(x: i32, y: i32) -> (res: Option<i32>)
 // </vc-spec>
 // <vc-code>
 {
-    /* code modified by LLM (iteration 2): use checked_add to prevent overflow */
-    x.checked_add(y)
+    let result = x.checked_add(y);
+    result
 }
 // </vc-code>
 

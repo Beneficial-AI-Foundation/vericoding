@@ -23,10 +23,22 @@ spec fn inner_expr_vowels_count(s: &str, ret: u32) -> (result:bool) {
 // </vc-preamble>
 
 // <vc-helpers>
-/* helper modified by LLM (iteration 2): added specification for is_vowel_exec */
-fn is_vowel_exec(c: char) -> bool {
-    c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u' || c == 'A' || c == 'E' || c == 'I'
-        || c == 'O' || c == 'U'
+/* helper modified by LLM (iteration 4): define executable vowel check function */
+fn exec_is_vowel(c: char) -> bool {
+    c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u' || c == 'A' || c == 'E' || c == 'I' || c == 'O' || c == 'U'
+}
+
+/* helper modified by LLM (iteration 4): fixed helper to use executable vowel check */
+fn get_vowel_info(s: &str) -> (u32, Option<char>) {
+    let mut count = 0;
+    let mut last = None;
+    for c in s.chars() {
+        if exec_is_vowel(c) {
+            count += 1;
+        }
+        last = Some(c);
+    }
+    (count, last)
 }
 // </vc-helpers>
 
@@ -40,23 +52,16 @@ fn vowels_count(s: &str) -> (ret: u32)
         inner_expr_vowels_count(s, ret),
 // </vc-spec>
 // <vc-code>
-/* code modified by LLM (iteration 5): removed unsupported is_empty check */
+/* code modified by LLM (iteration 4): using corrected helper with executable vowel check */
 {
-    let mut count: u32 = 0;
-    let mut last_char: char = ' ';
-    
-    for c in s.chars() {
-        if is_vowel_exec(c) {
-            count += 1;
+    let (vowel_count, last_char) = get_vowel_info(s);
+    let mut result = vowel_count;
+    if let Some(c) = last_char {
+        if c == 'y' || c == 'Y' {
+            result += 1;
         }
-        last_char = c;
     }
-    
-    if last_char == 'y' || last_char == 'Y' {
-        count += 1;
-    }
-    
-    count
+    result
 }
 // </vc-code>
 

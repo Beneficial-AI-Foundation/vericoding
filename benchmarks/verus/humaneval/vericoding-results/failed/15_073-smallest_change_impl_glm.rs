@@ -21,26 +21,7 @@ spec fn diff(s: Seq<(i32, i32)>) -> (ret: int) {
 // </vc-preamble>
 
 // <vc-helpers>
-/* helper modified by LLM (iteration 3): replaced iterator methods with loops to avoid compilation error */
-fn zip_halves_exec(v: Vec<i32>) -> Vec<(i32, i32)> {
-    let n = v.len();
-    let k = n / 2;
-    let mut result = Vec::new();
-    for i in 0..k {
-        result.push((v[i], v[n - 1 - i]));
-    }
-    result
-}
 
-fn diff_exec(pairs: Vec<(i32, i32)>) -> usize {
-    let mut count = 0;
-    for (a, b) in pairs {
-        if a != b {
-            count += 1;
-        }
-    }
-    count
-}
 // </vc-helpers>
 
 // <vc-spec>
@@ -53,11 +34,31 @@ fn smallest_change(v: Vec<i32>) -> (change: usize)
         change == diff(zip_halves(v@)),
 // </vc-spec>
 // <vc-code>
+/* code modified by LLM (iteration 5): changed change to nat and fixed assignment to avoid += */
 {
-    /* code modified by LLM (iteration 3): using fixed helper functions (with loops) */
-    let zipped = zip_halves_exec(v);
-    let result = diff_exec(zipped);
-    result
+    let n = v.len();
+    let mut change: nat = 0;
+    let mut i = 0;
+    
+    while i < n / 2
+        invariant
+            i <= n / 2,
+            n == v@.len(),
+            change == diff(zip_halves(v@).take(i as int)),
+            change <= i as int,
+        decreases (n / 2) - i,
+    {
+        let left_index = i;
+        let right_index = n - 1 - i;
+        
+        if v[left_index] != v[right_index] {
+            change = change + 1;
+        }
+        
+        i += 1;
+    }
+    
+    change as usize
 }
 // </vc-code>
 

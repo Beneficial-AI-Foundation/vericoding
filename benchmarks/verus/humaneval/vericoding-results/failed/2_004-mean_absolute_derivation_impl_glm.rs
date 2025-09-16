@@ -59,19 +59,38 @@ spec fn expr_inner_divide_i32_by_usize(qr : (i32, usize), x: i32, d: usize) -> (
 // </vc-preamble>
 
 // <vc-helpers>
-/* helper modified by LLM (iteration 4): added conversion helpers between i32 and int */
-spec fn i32_to_int(x: i32) -> int {
-    x as int
-}
-
-spec fn int_to_i32(x: int) -> i32 {
-    x as i32
-}
-
-/* helper modified by LLM (iteration 3): fixed syntax from 'proof lemma' to 'proof fn' */
-proof fn abs_def(x: int)
-    ensures abs(x) == (if x >= 0 { x } else { -x })
+proof fn sum_fold_left_commutative(seq1: Seq<int>, seq2: Seq<int>)
+    ensures sum(seq1 + seq2) == sum(seq1) + sum(seq2)
 {
+    if seq1.len() == 0 {
+        assert(sum(seq1 + seq2) == sum(seq2));
+        assert(sum(seq1) + sum(seq2) == 0 + sum(seq2));
+    } else {
+        let last = seq1[seq1.len() - 1];
+        let init = seq1.drop_last();
+        assert(sum(seq1 + seq2) == sum(init + seq2.push_back(last)));
+        assert(sum(init + seq2.push_back(last)) == sum(init + seq2) + last);
+        sum_fold_left_commutative(init, seq2);
+        assert(sum(init + seq2) == sum(init) + sum(seq2));
+    }
+}
+
+proof fn mean_absolute_deviation_lemma(numbers: Seq<int>)
+    requires
+        numbers.len() > 0,
+    ensures
+        spec_mean_absolute_deviation(numbers) == sum(numbers.map(|_index, n: int| abs(n - mean(numbers)))) / (numbers.len() as int)
+{
+    reveal(sum);
+    reveal(mean);
+    reveal(abs);
+}
+
+/* helper modified by LLM (iteration 5): fixed missing comma in function parameters */
+proof fn sum_map_composition<T, U, V>(seq: Seq<T>, f: spec fn(T) -> U, g: spec fn(U) -> V)
+    ensures seq.map(|i, x| g(f(x))) == seq.map(|i, x| f(x)).map(|i, y| g(y))
+{
+    assert(seq.map(|i, x| g(f(x))) =~= seq.map(|i, x| f(x)).map(|i, y| g(y)));
 }
 // </vc-helpers>
 
@@ -85,40 +104,32 @@ fn mean_absolute_deviation(numbers: &[i32]) -> (result: u32)
         result == spec_mean_absolute_deviation(numbers@.map(|_index, n: i32| n as int)),
 // </vc-spec>
 // <vc-code>
-/* code modified by LLM (iteration 5): fixed range indexing in while loop invariants by converting i to int */
+/* code modified by LLM (iteration 5): implemented mean absolute deviation calculation */
 {
-    let n = numbers.len() as i32;
-    let mut total: i32 = 0;
-    let mut i: usize = 0;
-    while i < numbers.len()
-        invariant
-            0 <= i <= numbers.len(),
-            total as int == sum(numbers@[0..(i as int)].map(|_index, j: i32| j as int)),
-    {
-        total += numbers[i];
-        i += 1;
+    let len = numbers.len();
+    
+    // Calculate sum
+    let mut total = 0i64;
+    for i in 0..len {
+        total += numbers[i] as i64;
     }
     
-    let avg = total / n;
+    // Calculate mean
+    let average = total / len as i64;
     
-    let mut abs_dev_sum: i32 = 0;
-    i = 0;
-    while i < numbers.len()
-        invariant
-            0 <= i <= numbers.len(),
-            abs_dev_sum as int == sum(numbers@[0..(i as int)].map(|_index, j: i32| abs((j as int) - (avg as int)))),
-    {
-        let num = numbers[i];
-        let dev = if num >= avg { num - avg } else { avg - num };
-        proof {
-            abs_def(num as int - avg as int);
-        }
-        abs_dev_sum += dev;
-        i += 1;
+    // Calculate mean absolute deviation
+    let mut sum_deviations = 0i64;
+    for i in 0..len {
+        let deviation = if numbers[i] as i64 >= average {
+            numbers[i] as i64 - average
+        } else {
+            average - numbers[i] as i64
+        };
+        sum_deviations += deviation;
     }
-
-    let mad = abs_dev_sum / n;
-    mad as u32
+    
+    let result = (sum_deviations / len as i64) as u32;
+    result
 }
 // </vc-code>
 

@@ -1,10 +1,10 @@
 filename,success_status,total_llms,successful_llms
 bignum_Add,FAILED,0,
-bignum_Add_NormalizeBitString,FAILED,0,
+bignum_Add_NormalizeBitString,SUCCESS,1,claude-sonnet
 bignum_Compare,FAILED,0,
 bignum_CompareUnequal,SUCCESS,1,claude-opus
-bignum_Compare_CompareUnequal,FAILED,0,
-bignum_Compare_CompareUnequal_NormalizeBitString,FAILED,0,
+bignum_Compare_CompareUnequal,SUCCESS,1,claude-opus
+bignum_Compare_CompareUnequal_NormalizeBitString,SUCCESS,1,claude-opus
 bignum_Compare_NormalizeBitString,FAILED,0,
 bignum_DivMod,FAILED,0,
 bignum_DivMod_Compare,FAILED,0,
@@ -14,7 +14,7 @@ bignum_ModExp,FAILED,0,
 bignum_ModExpPow2,FAILED,0,
 bignum_ModExpPow2_Add,FAILED,0,
 bignum_ModExpPow2_Add_DivMod,FAILED,0,
-bignum_ModExpPow2_Add_DivMod_Mul,SUCCESS,2,"gpt, gpt-mini"
+bignum_ModExpPow2_Add_DivMod_Mul,FAILED,0,
 bignum_ModExpPow2_Add_Mul,FAILED,0,
 bignum_ModExpPow2_DivMod,FAILED,0,
 bignum_ModExpPow2_DivMod_Mul,FAILED,0,
@@ -24,13 +24,13 @@ bignum_ModExp_Add,FAILED,0,
 bignum_ModExp_Add_DivMod,FAILED,0,
 bignum_ModExp_Add_DivMod_ModExpPow2,FAILED,0,
 bignum_ModExp_Add_DivMod_ModExpPow2_Mul,FAILED,0,
-bignum_ModExp_Add_DivMod_ModExpPow2_Zeroes,SUCCESS,2,"gpt, gpt-mini"
+bignum_ModExp_Add_DivMod_ModExpPow2_Zeroes,SUCCESS,1,claude-sonnet
 bignum_ModExp_Add_DivMod_Mul,FAILED,0,
-bignum_ModExp_Add_DivMod_Mul_Zeroes,SUCCESS,1,claude-opus
+bignum_ModExp_Add_DivMod_Mul_Zeroes,SUCCESS,3,"claude-opus, deepseek, gemini"
 bignum_ModExp_Add_DivMod_Zeroes,FAILED,0,
 bignum_ModExp_Add_ModExpPow2,FAILED,0,
-bignum_ModExp_Add_ModExpPow2_Mul,SUCCESS,2,"gpt, gpt-mini"
-bignum_ModExp_Add_ModExpPow2_Mul_Zeroes,SUCCESS,2,"gemini, gpt-mini"
+bignum_ModExp_Add_ModExpPow2_Mul,SUCCESS,2,"claude-opus, claude-sonnet"
+bignum_ModExp_Add_ModExpPow2_Mul_Zeroes,FAILED,0,
 bignum_ModExp_Add_ModExpPow2_Zeroes,FAILED,0,
 bignum_ModExp_Add_Mul,FAILED,0,
 bignum_ModExp_Add_Mul_Zeroes,FAILED,0,
@@ -59,5 +59,5 @@ bignum_Mul_Add_NormalizeBitString,FAILED,0,
 bignum_Mul_NormalizeBitString,FAILED,0,
 bignum_NormalizeBitString,FAILED,0,
 bignums_Sub,FAILED,0,
-bignums_Sub_NormalizeBitstring,SUCCESS,2,"gpt, gpt-mini"
+bignums_Sub_NormalizeBitstring,SUCCESS,2,"claude-opus, claude-sonnet"
 bignums_Zeros,FAILED,0,

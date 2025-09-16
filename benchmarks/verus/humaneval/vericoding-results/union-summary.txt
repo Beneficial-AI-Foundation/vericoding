@@ -1,7 +1,19 @@
 === VERUS PROCESSING SUMMARY (AGGREGATED) ===
+Selection method: best runs
 Total files: 50
 Successful: 32 (64.0%)
 Failed: 18
+
+Selected best runs:
+  - claude-opus: vericoder_claude-opus_15-09_18h49 (success rate: 38.0%)
+  - claude-sonnet: vericoder_claude-sonnet_15-09_18h49 (success rate: 34.0%)
+  - deepseek: vericoder_deepseek_15-09_18h50 (success rate: 8.0%)
+  - gemini: vericoder_gemini_15-09_18h49 (success rate: 38.0%)
+  - gemini-flash: vericoder_gemini-flash_15-09_18h50 (success rate: 12.0%)
+  - glm: vericoder_glm_15-09_09h11 (success rate: 20.0%)
+  - gpt: vericoder_gpt_15-09_18h50 (success rate: 34.0%)
+  - gpt-mini: vericoder_gpt-mini_15-09_09h11 (success rate: 20.0%)
+  - grok-code: vericoder_grok-code_15-09_18h50 (success rate: 18.0%)
 
 Per-LLM success rates:
   - claude-opus: 19/50 (38.0%)
@@ -9,9 +21,9 @@ Per-LLM success rates:
   - deepseek: 4/50 (8.0%)
   - gemini: 19/50 (38.0%)
   - gemini-flash: 6/50 (12.0%)
-  - glm: 5/50 (10.0%)
+  - glm: 10/50 (20.0%)
   - gpt: 17/50 (34.0%)
-  - gpt-mini: 7/50 (14.0%)
+  - gpt-mini: 10/50 (20.0%)
   - grok-code: 9/50 (18.0%)
 
 Successful files:
@@ -24,26 +36,26 @@ Successful files:
 ✓ 014-all_prefixes.rs — by: claude-opus, claude-sonnet, gemini
 ✓ 015-string_sequence.rs — by: gpt
 ✓ 023-strlen.rs — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
-✓ 027-flip_case.rs — by: claude-opus, claude-sonnet, gemini, gpt
-✓ 035-max-element.rs — by: claude-opus, claude-sonnet, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ 027-flip_case.rs — by: claude-opus, claude-sonnet, gemini, glm, gpt, gpt-mini
+✓ 035-max-element.rs — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, grok-code
 ✓ 042-incr-list.rs — by: gemini
-✓ 043-pairs-sum-to-zero.rs — by: claude-opus, claude-sonnet, gemini, glm, gpt-mini
+✓ 043-pairs-sum-to-zero.rs — by: claude-opus, claude-sonnet, gemini, glm
 ✓ 045-triangle_area.rs — by: gemini, gemini-flash, grok-code
-✓ 049-modp.rs — by: claude-opus, gemini, gemini-flash, gpt, grok-code
-✓ 050-encode_shift.rs — by: claude-opus, claude-sonnet, deepseek
+✓ 049-modp.rs — by: claude-opus, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ 050-encode_shift.rs — by: claude-opus, claude-sonnet, deepseek, gpt-mini
 ✓ 052-below-threshold.rs — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini, grok-code
-✓ 053-add.rs — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, grok-code
-✓ 054-same-chars.rs — by: deepseek
+✓ 053-add.rs — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ 054-same-chars.rs — by: deepseek, glm
 ✓ 055-fib.rs — by: gemini, gpt
 ✓ 057-monotonic.rs — by: claude-opus
-✓ 059-largest-prime-factor.rs — by: gpt, gpt-mini
-✓ 060-sum_to_n.rs — by: gemini, glm, gpt, grok-code
-✓ 062-derivative.rs — by: claude-sonnet
-✓ 063-fibfib.rs — by: claude-sonnet, gemini, gpt
+✓ 059-largest-prime-factor.rs — by: gpt
+✓ 060-sum_to_n.rs — by: gemini, gpt, grok-code
+✓ 062-derivative.rs — by: claude-sonnet, gpt-mini
+✓ 063-fibfib.rs — by: claude-sonnet, gemini, gpt, gpt-mini
 ✓ 066-digitSum.rs — by: claude-opus, claude-sonnet
-✓ 068-pluck.rs — by: claude-opus, claude-sonnet, gemini, gpt
+✓ 068-pluck.rs — by: claude-opus, claude-sonnet, gemini, glm, gpt
 ✓ 070-strange_sort_list.rs — by: claude-sonnet, gpt, gpt-mini, grok-code
-✓ 080-is_happy.rs — by: claude-opus, claude-sonnet
+✓ 080-is_happy.rs — by: claude-opus, claude-sonnet, glm
 ✓ 082-prime_length.rs — by: claude-opus, claude-sonnet, gemini, gpt
 ✓ 136-largest_smallest_integers.rs — by: claude-opus, claude-sonnet, glm, gpt, gpt-mini, grok-code
 ✓ 146-specialFilter.rs — by: claude-opus

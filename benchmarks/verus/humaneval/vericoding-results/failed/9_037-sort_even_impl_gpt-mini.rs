@@ -33,127 +33,44 @@ spec fn inner_expr_lemma_update_effect_on_count<T>(s: Seq<T>, i: int, v: T, x: T
 // </vc-preamble>
 
 // <vc-helpers>
-/* helper modified by LLM (iteration 4): added evens helpers, replacement lemmas, and a spec sort_seq (min_index, remove_at) */
-spec fn evens_seq(s: Seq<i32>) -> Seq<i32>
-    decreases s.len(),
-{
-    if s.len() == 0 {
-        Seq::empty()
-    } else if s.len() == 1 {
-        seq![s[0]]
-    } else {
-        seq![s[0]] + evens_seq(s.skip(2))
-    }
-}
-
-spec fn replace_evens(s: Seq<i32>, evs: Seq<i32>) -> (result: Seq<i32>)
+/* helper modified by LLM (iteration 5): transitivity of permutes */
+proof fn permutes_transitive<T>(a: Seq<T>, b: Seq<T>, c: Seq<T>)
     requires
-        evens_seq(s).len() == evs.len(),
-    decreases s.len(),
-{
-    if s.len() == 0 {
-        Seq::empty()
-    } else if s.len() == 1 {
-        seq![evs[0]]
-    } else {
-        seq![evs[0]] + seq![s[1]] + replace_evens(s.skip(2), evs.skip(1))
-    }
-}
-
-proof fn replace_evens_permutes(s: Seq<i32>, evs: Seq<i32>)
-    requires
-        evens_seq(s).len() == evs.len(),
-        permutes(evs, evens_seq(s)),
+        permutes(a, b),
+        permutes(b, c),
     ensures
-        permutes(replace_evens(s, evs), s),
+        permutes(a, c),
 {
-    if s.len() == 0 {
-        // trivial
-    } else if s.len() == 1 {
-        // trivial: single element replaced, counts follow from permutes(evs, evens_seq(s))
-    } else {
-        // inductive step
-        replace_evens_permutes(s.skip(2), evs.skip(1));
+    proof {
+        forall|x: T| {
+            assert(count(a, x) == count(b, x));
+            assert(count(b, x) == count(c, x));
+            assert(count(a, x) == count(c, x));
+        };
     }
 }
 
-proof fn replace_evens_preserves_odds(s: Seq<i32>, evs: Seq<i32>)
+/* helper modified by LLM (iteration 5): swapping two positions preserves multiset counts */
+proof fn swap_preserves_permutes<T>(s: Seq<T>, i: int, j: int)
     requires
-        evens_seq(s).len() == evs.len(),
+        0 <= i < s.len(),
+        0 <= j < s.len(),
     ensures
-        forall|i: int| 0 <= i < s.len() && i % 2 == 1 ==> replace_evens(s, evs)[i] == s[i],
+        permutes(s.update(i, s[j]).update(j, s[i]), s),
 {
-    if s.len() == 0 {
-    } else if s.len() == 1 {
-    } else {
-        replace_evens_preserves_odds(s.skip(2), evs.skip(1));
-    }
-}
-
-proof fn replace_evens_evens_map(s: Seq<i32>, evs: Seq<i32>)
-    requires
-        evens_seq(s).len() == evs.len(),
-    ensures
-        forall|i: int| 0 <= i < s.len() && i % 2 == 0 ==> replace_evens(s, evs)[i] == evs[i/2],
-{
-    if s.len() == 0 {
-    } else if s.len() == 1 {
-    } else {
-        replace_evens_evens_map(s.skip(2), evs.skip(1));
-    }
-}
-
-spec fn min_index(e: Seq<i32>) -> int
-    requires
-        e.len() > 0,
-    ensures
-        0 <= result < e.len(),
-        forall|j: int| 0 <= j < e.len() ==> e[result] <= e[j],
-    decreases e.len(),
-{
-    if e.len() == 1 {
-        0
-    } else {
-        let tail_min = min_index(e.skip(1)) + 1;
-        if e[0] <= e[tail_min] {
-            0
+    proof {
+        if i == j {
+            assert(s.update(i, s[j]).update(j, s[i]) == s);
+            assert(permutes(s.update(i, s[j]).update(j, s[i]), s));
         } else {
-            tail_min
+            forall|x: T| {
+                assert(inner_expr_lemma_update_effect_on_count(s, i, s[j], x));
+                assert(inner_expr_lemma_update_effect_on_count(s.update(i, s[j]), j, s[i], x));
+                assert(count(s.update(i, s[j]).update(j, s[i]), x) == count(s, x));
+            };
         }
     }
 }
-
-spec fn remove_at(e: Seq<i32>, i: int) -> Seq<i32>
-    requires
-        0 <= i < e.len(),
-    decreases e.len(),
-{
-    if e.len() == 1 {
-        Seq::empty()
-    } else if i == 0 {
-        e.skip(1)
-    } else {
-        seq![e[0]] + remove_at(e.skip(1), i - 1)
-    }
-}
-
-spec fn sort_seq(e: Seq<i32>) -> Seq<i32>
-    ensures
-        e.len() == result.len(),
-        permutes(result, e),
-        forall|i: int, j: int| 0 <= i < j < result.len() ==> result[i] <= result[j],
-    decreases e.len(),
-{
-    if e.len() == 0 {
-        Seq::empty()
-    } else {
-        let mi = min_index(e);
-        let m = e[mi];
-        let rest = remove_at(e, mi);
-        seq![m] + sort_seq(rest)
-    }
-}
-
 // </vc-helpers>
 
 // <vc-spec>
@@ -170,17 +87,54 @@ fn sort_even(l: Vec<i32>) -> (result: Vec<i32>)
 // </vc-spec>
 // <vc-code>
 {
-    /* code modified by LLM (iteration 4): build evens as a sequence, use spec sort_seq to sort them, reconstruct result */
-    let s: Seq<i32> = l.view();
-    let evs: Seq<i32> = evens_seq(s);
-    let evs_sorted: Seq<i32> = sort_seq(evs);
+    /* code modified by LLM (iteration 5): selection-sort-style swaps on even indices, preserving permutation and odd-index invariants */
+    let n_usize: usize = l.len();
+    let mut res = l.clone();
 
-    let res_seq: Seq<i32> = replace_evens(s, evs_sorted);
     proof {
-        replace_evens_permutes(s, evs_sorted);
+        assert(res@ == l@);
+        assert(permutes(res@, l@));
+        let n: int = n_usize as int;
+        assert(forall|k: int| 0 <= k < n && k % 2 == 1 ==> res@[k] == l@[k]);
     }
-    let result: Vec<i32> = Vec::from_seq(res_seq);
-    result
+
+    let mut iu: usize = 0usize;
+    while iu < n_usize
+        invariant
+            0 <= iu as int,
+            iu as int <= n_usize as int,
+            permutes(res@, l@),
+            forall|k: int| 0 <= k < n_usize as int && k % 2 == 1 ==> res@[k] == l@[k],
+        decreases (n_usize as int) - (iu as int)
+    {
+        let mut ju: usize = iu + 2usize;
+        while ju < n_usize
+            invariant
+                iu + 2usize <= ju,
+                ju <= n_usize,
+                permutes(res@, l@),
+                forall|k: int| 0 <= k < n_usize as int && k % 2 == 1 ==> res@[k] == l@[k],
+            decreases (n_usize as int) - (ju as int)
+        {
+            if res[iu] > res[ju] {
+                let seq_old = res@;
+                res.swap(iu, ju);
+                proof {
+                    let ii: int = iu as int;
+                    let jj: int = ju as int;
+                    swap_preserves_permutes::<i32>(seq_old, ii, jj);
+                    permutes_transitive::<i32>(res@, seq_old, l@);
+                    assert(iu % 2usize == 0usize);
+                    assert(ju % 2usize == 0usize);
+                    assert(forall|k: int| 0 <= k < n_usize as int && k % 2 == 1 ==> res@[k] == l@[k]);
+                }
+            }
+            ju = ju + 2usize;
+        }
+        iu = iu + 2usize;
+    }
+
+    res
 }
 
 // </vc-code>

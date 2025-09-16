@@ -5,9 +5,9 @@ verus! {
 // </vc-preamble>
 
 // <vc-helpers>
-/* helper modified by LLM (iteration 5): predicates for negative and positive integers */
-spec fn is_neg(x: i32) -> bool { x < 0 }
-spec fn is_pos(x: i32) -> bool { x > 0 }
+/* helper modified by LLM (iteration 4): simple predicates for negative and positive integers */
+spec fn is_negative(x: i32) -> bool { x < 0 }
+spec fn is_positive(x: i32) -> bool { x > 0 }
 // </vc-helpers>
 
 // <vc-spec>
@@ -29,47 +29,71 @@ fn largest_smallest_integers(arr: &Vec<i32>) -> (res: (Option<i32>, Option<i32>)
 // </vc-spec>
 // <vc-code>
 {
-    /* code modified by LLM (iteration 5): use usize index and correct invariants to avoid spec types in runtime */
-    let mut i: usize = 0;
-    let mut neg: Option<i32> = Option::None;
-    let mut pos: Option<i32> = Option::None;
+    /* code modified by LLM (iteration 4): iterate array preserving invariants and assert bounds before accesses */
+    let n: usize = arr.len();
+    let mut ui: usize = 0;
+    let mut max_neg: Option<i32> = None;
+    let mut min_pos: Option<i32> = None;
 
-    while i < arr.len()
+    while ui < n
         invariant
-            0 <= i as int,
-            i as int <= arr@.len() as int,
-            neg.is_none() ==> forall|k: int| 0 <= k < i as int ==> arr@[k] >= 0,
-            neg.is_some() ==> arr@.contains(neg.unwrap()) && neg.unwrap() < 0,
-            neg.is_some() ==> forall|k: int| 0 <= k < i as int && arr@[k] < 0 ==> arr@[k] <= neg.unwrap(),
-            pos.is_none() ==> forall|k: int| 0 <= k < i as int ==> arr@[k] <= 0,
-            pos.is_some() ==> arr@.contains(pos.unwrap()) && pos.unwrap() > 0,
-            pos.is_some() ==> forall|k: int| 0 <= k < i as int && arr@[k] > 0 ==> arr@[k] >= pos.unwrap(),
-        decreases arr@.len() - (i as nat)
+            0 <= (ui as int) && (ui as int) <= arr@.len(),
+            (n as int) == arr@.len(),
+            max_neg.is_none() ==> forall|k: int| 0 <= k < (ui as int) ==> arr@[k] >= 0,
+            max_neg.is_some() ==> arr@.contains(max_neg.unwrap()) && max_neg.unwrap() < 0,
+            max_neg.is_some() ==> forall|k: int| 0 <= k < (ui as int) && arr@[k] < 0 ==> arr@[k] <= max_neg.unwrap(),
+            min_pos.is_none() ==> forall|k: int| 0 <= k < (ui as int) ==> arr@[k] <= 0,
+            min_pos.is_some() ==> arr@.contains(min_pos.unwrap()) && min_pos.unwrap() > 0,
+            min_pos.is_some() ==> forall|k: int| 0 <= k < (ui as int) && arr@[k] > 0 ==> arr@[k] >= min_pos.unwrap(),
+        decreases
+            n - ui
     {
-        let v: i32 = arr[i];
-        if v < 0 {
-            match neg {
-                Option::None => { neg = Option::Some(v); }
-                Option::Some(curr) => {
-                    if curr < v {
-                        neg = Option::Some(v);
+        let x: i32 = arr[ui];
+
+        if x < 0 {
+            match max_neg {
+                None => {
+                    max_neg = Some(x);
+                    proof {
+                        assert((ui as int) < arr@.len());
+                        assert(arr@[(ui as int)] == x);
+                    }
+                }
+                Some(m) => {
+                    if x > m {
+                        max_neg = Some(x);
+                        proof {
+                            assert((ui as int) < arr@.len());
+                            assert(arr@[(ui as int)] == x);
+                        }
                     }
                 }
             }
-        } else if v > 0 {
-            match pos {
-                Option::None => { pos = Option::Some(v); }
-                Option::Some(curr) => {
-                    if v < curr {
-                        pos = Option::Some(v);
+        } else if x > 0 {
+            match min_pos {
+                None => {
+                    min_pos = Some(x);
+                    proof {
+                        assert((ui as int) < arr@.len());
+                        assert(arr@[(ui as int)] == x);
+                    }
+                }
+                Some(m) => {
+                    if x < m {
+                        min_pos = Some(x);
+                        proof {
+                            assert((ui as int) < arr@.len());
+                            assert(arr@[(ui as int)] == x);
+                        }
                     }
                 }
             }
         }
-        i = i + 1;
+
+        ui = ui + 1;
     }
 
-    (neg, pos)
+    (max_neg, min_pos)
 }
 // </vc-code>
 

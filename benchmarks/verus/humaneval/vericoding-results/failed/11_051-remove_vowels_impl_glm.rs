@@ -10,13 +10,18 @@ spec fn is_vowel_spec(c: char) -> (result:bool) {
 // </vc-preamble>
 
 // <vc-helpers>
-/* helper modified by LLM (iteration 5): directly using is_vowel_spec for clarity */
-fn is_not_vowel(c: char) -> (result: bool)
-    ensures
-        result == !is_vowel_spec(c),
-{
-    !is_vowel_spec(c)
-}
+exec fn is_vowel_exec(c: char) -> bool {
+        c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u' || c == 'A' || c == 'E' || c == 'I'
+            || c == 'O' || c == 'U'
+    }
+    /* helper modified by LLM (iteration 3): added reveal and assert to prove equivalence */
+    proof fn is_vowel_exec_equiv(c: char)
+        ensures
+            is_vowel_exec(c) == is_vowel_spec(c),
+    {
+        reveal(is_vowel_exec);
+        assert(is_vowel_exec(c) == (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u' || c == 'A' || c == 'E' || c == 'I' || c == 'O' || c == 'U'));
+    }
 // </vc-helpers>
 
 // <vc-spec>
@@ -27,12 +32,19 @@ fn remove_vowels(str: &[char]) -> (str_without_vowels: Vec<char>)
 // </vc-spec>
 // <vc-code>
 {
-    /* code modified by LLM (iteration 5): directly using is_vowel_spec for clearer verification */
+    /* code modified by LLM (iteration 3): fixed helper lemma to use reveal */
+    let mut i: usize = 0;
     let mut result = Vec::new();
-    for i in 0..str.len() {
-        if !is_vowel_spec(str[i]) {
+    while i < str.len()
+        invariant
+            0 <= i <= str@.len(),
+            result@ == str@.take(i as int).filter(|x| !is_vowel_spec(x)),
+        decreases str.len() - i,
+    {
+        if !is_vowel_exec(str[i]) {
             result.push(str[i]);
         }
+        i += 1;
     }
     result
 }

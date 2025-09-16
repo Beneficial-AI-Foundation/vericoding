@@ -28,34 +28,26 @@ spec fn is_prime_factorization(n: nat, factorization: Seq<nat>) -> (result:bool)
 // </vc-preamble>
 
 // <vc-helpers>
-/* helper modified by LLM (iteration 4): minimal divisor is prime proof */
-proof fn minimal_divisor_is_prime(d: nat, r: nat)
+/* helper modified by LLM (iteration 5): prove smallest divisor >1 of r is prime */
+proof fn smallest_divisor_is_prime(r: nat, d: nat)
     requires
-        2 <= d <= r,
+        1 < d <= r,
         r % d == 0,
-        forall|i: nat| 1 < i < d ==> r % i != 0,
+        forall|k: nat| 1 < k < d ==> r % k != 0,
     ensures
         is_prime(d),
 {
     proof {
-        // Show: forall i, 1 < i < d ==> d % i != 0
-        fix i: nat;
-        if 1 < i && i < d {
+        forall|i: nat| 1 < i < d ==> {
             if d % i == 0 {
-                let t: nat = d / i;
-                assert(i * t == d);
-                let s: nat = r / d;
-                assert(d * s == r);
-                assert(i * (t * s) == r);
+                let t = d / i;
+                let s = r / d;
+                assert(r == i * (t * s));
                 assert(r % i == 0);
-                // This contradicts the requirement that r % i != 0 for 1 < i < d
-                assert(false);
+                assert(r % i != 0);
             } else {
                 assert(d % i != 0);
             }
-        } else {
-            // Vacuously true when not (1 < i < d)
-            assert(!(1 < i && i < d) ==> d % i != 0);
         }
     }
 }
@@ -73,33 +65,42 @@ fn factorize(n: u8) -> (factorization: Vec<u8>)
 // </vc-spec>
 // <vc-code>
 {
-    /* code modified by LLM (iteration 4): factorization loop with helper proof */
-    let mut res: Vec<u8> = Vec::new();
+    /* code modified by LLM (iteration 5): factorize using u8 runtime vars and cast to nat only in ghost contexts */
+    let mut factorization: Vec<u8> = Vec::new();
     let mut r: u8 = n;
-    let mut prod: u8 = 1;
-    let mut d: u8 = 2;
 
-    while d <= r
+    while r > 1u8
         invariant
-            1 <= r as nat && r as nat <= n as nat,
-            (prod as nat) * (r as nat) == n as nat,
-            forall|i: nat| 1 < i < d as nat ==> (r as nat) % i != 0,
-        decreases r as nat
+            factorization@.map(|_idx, j: u8| j as nat).fold_right(|x: nat, acc: nat| (acc * x), 1nat) * (r as nat) == (n as nat),
+        decreases
+            r as nat,
     {
-        if r % d == 0 {
-            res.push(d);
-            proof {
-                minimal_divisor_is_prime(d as nat, r as nat);
+        let mut i: u8 = 2u8;
+        let mut d: u8 = 0u8;
+        while d == 0u8
+            invariant
+                forall|k: nat| 2 <= k < i as nat ==> (r as nat) % k != 0,
+            decreases
+                (r as nat + 1 - i as nat),
+        {
+            if r % i == 0u8 {
+                d = i;
+            } else {
+                i = i + 1u8;
             }
-            prod = prod * d;
-            r = r / d;
-        } else {
-            d = d + 1;
         }
+
+        proof {
+            smallest_divisor_is_prime(r as nat, d as nat);
+        }
+
+        factorization.push(d);
+        r = r / d;
     }
 
-    res
+    factorization
 }
+
 // </vc-code>
 
 }

@@ -24,8 +24,26 @@ spec fn inner_expr_how_many_times_impl(opt_k: Option<u32>, string: Vec<char>, su
 // </vc-preamble>
 
 // <vc-helpers>
-/* helper modified by LLM (iteration 5): nonempty predicate */
-spec fn is_nonempty(s: Seq<char>) -> bool { s.len() >= 1 }
+/* helper modified by LLM (iteration 5): characterize prefix equivalence between Vec and Seq indices */
+proof fn seq_prefix_chars_equiv(string: Vec<char>, substring: Vec<char>, i: int)
+    requires
+        i >= 0,
+        (i as nat) + substring.len() <= string.len(),
+    ensures
+        (forall |j: int| j >= 0 && (j as nat) < substring.len() ==> string@[i + j] == substring@[j]) ==> substring@.is_prefix_of(string@.skip(i)),
+        substring@.is_prefix_of(string@.skip(i)) ==> (forall |j: int| j >= 0 && (j as nat) < substring.len() ==> string@[i + j] == substring@[j]),
+{
+}
+
+/* helper modified by LLM (iteration 5): how_many_times yields 0 when remaining string shorter than substring */
+proof fn how_many_times_short_strings(s: Seq<char>, sub: Seq<char>)
+    requires
+        s.len() < sub.len(),
+    ensures
+        how_many_times(s, sub) == 0,
+{
+}
+
 // </vc-helpers>
 
 // <vc-spec>
@@ -38,43 +56,57 @@ fn how_many_times_impl(string: Vec<char>, substring: Vec<char>) -> (opt_k: Optio
         inner_expr_how_many_times_impl(opt_k, string, substring),
 // </vc-spec>
 // <vc-code>
+/* code modified by LLM (iteration 5): implement scanning with int casts for spec calls and maintain spec invariant */
 {
-    /* code modified by LLM (iteration 5): replace ints with usize and fix invariants and indexing */
-    let s = string@;
-    let sub = substring@;
+    let n = string.len();
     let m = substring.len();
     let mut i: usize = 0;
-    let mut cnt: usize = 0;
-    while i < string.len()
+    let mut count: u64 = 0;
+    while i + m <= n
         invariant
-            (cnt as nat) + how_many_times(s.skip(i as nat), sub) == how_many_times(s, sub),
-        decreases s.len() - (i as nat)
+            i <= n,
+            (count as nat) + how_many_times(string@.skip(i as int), substring@) == how_many_times(string@, substring@),
+        decreases n - i
     {
-        let mut matches: bool = true;
         let mut j: usize = 0;
-        if i + substring.len() <= string.len() {
-            while j < substring.len()
-                invariant
-                    (j as nat) <= (m as nat),
-                    forall |t: nat| t < (j as nat) ==> s[(i as nat) + t] == sub[t],
-                decreases (m as nat) - (j as nat)
-            {
-                if string[i + j] != substring[j] {
-                    matches = false;
-                    break;
+        let mut is_pref: bool = true;
+        while j < m
+            invariant
+                j <= m,
+                (is_pref ==> (forall |k: int| k >= 0 && k < (j as int) ==> string@[i as int + k] == substring@[k])),
+            decreases m - j
+        {
+            if is_pref {
+                if string[i + j] == substring[j] {
+                    j = j + 1;
+                } else {
+                    is_pref = false;
+                    j = j + 1;
                 }
-                j += 1;
-            }
-            if matches && j == substring.len() {
-                cnt += 1;
+            } else {
+                j = j + 1;
             }
         }
-        i += 1;
+        if is_pref {
+            proof {
+                assert(substring@.is_prefix_of(string@.skip(i as int)));
+            }
+            count = count + 1;
+        }
+        i = i + 1;
     }
-    if cnt > (u32::MAX as usize) {
-        None
+    proof {
+        assert(i + m > n);
+        assert((n - i) < m);
+        assert(string@.skip(i as int).len() == (n - i) as nat);
+        assert((n - i) as nat < substring@.len());
+        how_many_times_short_strings(string@.skip(i as int), substring@);
+        assert(how_many_times(string@.skip(i as int), substring@) == 0);
+    }
+    if count <= u64::from(u32::MAX) {
+        Some(count as u32)
     } else {
-        Some(cnt as u32)
+        None
     }
 }
 

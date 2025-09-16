@@ -21,8 +21,8 @@ spec fn diff(s: Seq<(i32, i32)>) -> (ret: int) {
 // </vc-preamble>
 
 // <vc-helpers>
-/* helper modified by LLM (iteration 5): compute half length of sequence */
-spec fn half_len<T>(v: Seq<T>) -> nat { v.len() / 2 }
+/* helper modified by LLM (iteration 5): non-negativity of diff */
+spec fn diff_nonneg(s: Seq<(i32, i32)>) -> bool { diff(s) >= 0 }
 // </vc-helpers>
 
 // <vc-spec>
@@ -36,28 +36,26 @@ fn smallest_change(v: Vec<i32>) -> (change: usize)
 // </vc-spec>
 // <vc-code>
 {
-    /* code modified by LLM (iteration 5): count mismatches between symmetric elements with proper invariants and proofs */
+    /* code modified by LLM (iteration 5): iterate over Vec and count mismatches between halves, with proof linking to spec */
     let n = v.len();
+    let offset = (n + 1) / 2;
+    let m = n / 2;
     let mut i: usize = 0;
     let mut cnt: usize = 0;
-    while i < n / 2
+    while i < m
         invariant
-            i <= n / 2,
-            cnt <= n / 2,
+            i <= m,
             (cnt as int) == diff(zip_halves(v@).take(i as int)),
-            (n == 0) || (i < n),
-        decreases n / 2 - i
+        decreases m - i
     {
-        proof {
-            if n != 0 {
-                assert(i < n);
-                assert(n - 1 - i < n);
-            }
-        }
-        if v[i] != v[n - 1 - i] {
+        if v[i] != v[i + offset] {
             cnt = cnt + 1;
         }
         i = i + 1;
+    }
+    proof {
+        assert(zip_halves(v@).take(m as int) == zip_halves(v@));
+        assert((cnt as int) == diff(zip_halves(v@)));
     }
     cnt
 }

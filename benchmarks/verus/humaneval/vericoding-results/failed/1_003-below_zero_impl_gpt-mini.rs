@@ -25,8 +25,23 @@ spec fn sum_other_way(s: Seq<int>) -> (result:int)
 // </vc-preamble>
 
 // <vc-helpers>
-/* helper modified by LLM (iteration 5): cast i32 to int */
-spec fn to_int(x: i32) -> int { x as int }
+/* helper modified by LLM (iteration 5): lemma relating sum of take(k+1) to sum(take(k)) + ops@[k] */
+proof fn sum_take_succ(ops: Vec<i32>, k: int)
+    requires
+        0 <= k && k < ops@.len(),
+    ensures
+        sum(ops@.take(k+1).map(|_idx, j: i32| j as int)) == sum(ops@.take(k).map(|_idx, j: i32| j as int)) + (ops@[k] as int),
+    decreases
+        k
+{
+    if k == 0 {
+        assert(sum(ops@.take(0).map(|_idx, j: i32| j as int)) == 0);
+        assert(sum(ops@.take(1).map(|_idx, j: i32| j as int)) == (ops@[0] as int) + sum(ops@.take(0).map(|_idx, j: i32| j as int)));
+    } else {
+        sum_take_succ(ops, k - 1);
+        assert(sum(ops@.take(k+1).map(|_idx, j: i32| j as int)) == sum(ops@.take(k).map(|_idx, j: i32| j as int)) + (ops@[k] as int));
+    }
+}
 // </vc-helpers>
 
 // <vc-spec>
@@ -44,39 +59,42 @@ fn below_zero(operations: Vec<i32>) -> (result: bool)
 // </vc-spec>
 // <vc-code>
 {
-    /* code modified by LLM (iteration 5): use a tracked ghost sum to relate runtime accumulator and spec sum */
-    let mut i: usize = 0;
-    let mut acc: i128 = 0;
-    let mut found: bool = false;
-    let tracked mut s_sum: int = 0;
-    while i < operations.len()
+    /* code modified by LLM (iteration 5): iterate runtime Vec and maintain invariant linking acc_rt and prefix sums, using helper lemma */
+    let mut idx: usize = 0;
+    let mut acc_rt: i32 = 0;
+    while idx < operations.len()
         invariant
-            0 <= i as int <= operations@.len(),
-            s_sum == sum(operations@.take(i as int).map(|_idx, j: i32| j as int)),
-            acc as int == s_sum,
-            found == (exists|k: int| 0 <= k <= i as int && sum(operations@.take(k).map(|_idx, j: i32| j as int)) < 0),
+            0 <= (idx as int),
+            (idx as int) <= operations@.len(),
+            (acc_rt as int) == sum(operations@.take(idx as int).map(|_idx, j: i32| j as int)),
+            forall|j: int| 0 <= j <= (idx as int) ==> sum(operations@.take(j).map(|_idx, j: i32| j as int)) >= 0,
         decreases
-            operations.len() - i
+            operations@.len() - (idx as nat)
     {
-        let elt: i32 = operations[i];
-        acc = acc + (elt as i128);
-        if acc < 0 {
-            found = true;
+        let x: i32 = operations[idx];
+        acc_rt = acc_rt + x;
+        if acc_rt < 0 {
+            proof {
+                let witness: int = (idx as int) + 1;
+                sum_take_succ(operations, idx as int);
+                assert(sum(operations@.take(witness).map(|_idx, j: i32| j as int)) == (acc_rt as int));
+                assert((acc_rt as int) < 0);
+                assert(exists|i: int| 0 <= i <= operations@.len() && sum(operations@.take(i).map(|_idx, j: i32| j as int)) < 0);
+            }
+            return true;
         }
         proof {
-            let elt_spec: i32 = operations@[i as int];
-            // acc has been updated; use the loop invariant from before the update to relate acc and s_sum
-            assert(acc as int == s_sum + (elt_spec as int));
-            s_sum = s_sum + (elt_spec as int);
-            assert(acc as int == s_sum);
-            assert(s_sum == sum(operations@.take((i as int) + 1).map(|_idx, j: i32| j as int)));
-            if acc < 0 {
-                assert(s_sum < 0);
-            }
+            sum_take_succ(operations, idx as int);
+            assert((acc_rt as int) == sum(operations@.take((idx as int) + 1).map(|_idx, j: i32| j as int)));
+            assert((acc_rt as int) >= 0);
+            assert(forall|j: int| 0 <= j <= (idx as int) + 1 ==> sum(operations@.take(j).map(|_idx, j: i32| j as int)) >= 0);
         }
-        i += 1;
+        idx = idx + 1;
     }
-    found
+    proof {
+        assert(!exists|i: int| 0 <= i <= operations@.len() && sum(operations@.take(i).map(|_idx, j: i32| j as int)) < 0);
+    }
+    return false;
 }
 // </vc-code>
 

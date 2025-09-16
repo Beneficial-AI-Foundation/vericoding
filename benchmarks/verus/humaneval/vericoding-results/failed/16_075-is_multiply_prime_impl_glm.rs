@@ -10,21 +10,50 @@ spec fn spec_prime(p: int) -> (ret:bool) {
 // </vc-preamble>
 
 // <vc-helpers>
-spec fn find_factor(n: int) -> (ret: Option<int>)
+/* helper modified by LLM (iteration 5): removed type casts to int in executable code */
+
+spec fn is_prime(p: u32) -> (ret: bool)
     requires
-        n > 1,
+        p > 1,
     ensures
-        match ret {
-            Some(f) => 1 < f < n && n % f == 0,
-            None => forall|k: int| 1 < k < n ==> n % k != 0,
-        },
+        ret <==> spec_prime(p as int),
 {
-    assume(false);
-    None
+    &&& p > 1
+    &&& (forall|i: int|
+        1 < i < p as int ==> #[trigger] (p as int) % i != 0)
 }
 
-spec fn is_prime(n: int) -> bool {
-    n > 1 && forall|k: int| 1 < k < n ==> n % k != 0
+fn smallest_prime_factor(x: u32) -> (p: u32)
+    requires
+        x > 1,
+    ensures
+        p > 1,
+        p <= x,
+        x % p == 0,
+        (forall|i: int| 2 <= i < p as int ==> #[trigger] (x as int) % i != 0),
+        spec_prime(p as int),
+{
+    let mut i: u32 = 2;
+    while i < x && x % i != 0
+        invariant
+            2 <= i <= x,
+            (forall|j: int| 2 <= j < i as int ==> #[trigger] (x as int) % j != 0),
+        decreases x - i,
+    {
+        i += 1u32;
+    }
+    i
+}
+
+proof fn prime_factor_exists(x: u32)
+    requires
+        x > 1,
+        !is_prime(x),
+    ensures
+        exists|p: u32| 1 < p < x && x % p == 0,
+{
+    let p = smallest_prime_factor(x);
+    assert(p > 1 && p < x && x % p == 0);
 }
 // </vc-helpers>
 
@@ -40,32 +69,25 @@ fn is_multiply_prime(x: u32) -> (ans: bool)
 // </vc-spec>
 // <vc-code>
 {
-    let mut n = x as int;
-    let mut factors: Seq<int> = Seq::empty();
-    
-    while n > 1
-        invariant
-            x > 1,
-            n > 0,
-            forall|i: int| 0 <= i < factors.len() ==> is_prime(factors[i]),
-            forall|i: int| 0 <= i < factors.len() ==> factors[i] > 1,
-            n * (factors.len() > 0 ? factors.iter().product() : 1) == x,
-        decreases n,
-    {
-        let found = find_factor(n);
-        match found {
-            Some(f) => {
-                factors = factors.push(f);
-                n = n / f;
-            }
-            None => {
-                factors = factors.push(n);
-                n = 1;
-            }
-        }
+    /* code modified by LLM (iteration 5): removed type casts to int in executable code */
+    if x < 8 {
+        return false;
     }
-    
-    factors.len() == 3
+
+    let a = smallest_prime_factor(x);
+    let mut remaining = x / a;
+    if remaining < 4 {
+        return false;
+    }
+
+    let b = smallest_prime_factor(remaining);
+    remaining = remaining / b;
+    if remaining < 2 {
+        return false;
+    }
+
+    let c = remaining;
+    return smallest_prime_factor(a) == a && smallest_prime_factor(b) == b && smallest_prime_factor(c) == c;
 }
 // </vc-code>
 

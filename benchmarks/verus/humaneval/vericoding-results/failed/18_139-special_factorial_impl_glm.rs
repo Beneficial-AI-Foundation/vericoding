@@ -26,7 +26,7 @@ spec fn brazilian_factorial(n: nat) -> (ret:nat)
 // </vc-preamble>
 
 // <vc-helpers>
-/* helper modified by LLM (iteration 3): fixed overflow handling and invariant maintenance */
+/* helper modified by LLM (iteration 5): changed to while loop to fix overflow and invariant issues */
 fn factorial_impl(n: u64) -> (ret: Option<u64>)
     ensures
         match ret {
@@ -34,30 +34,20 @@ fn factorial_impl(n: u64) -> (ret: Option<u64>)
             Some(f) => f == factorial(n as nat),
         }
 {
-    if n == 0 {
+    if n == 0 || n == 1 {
         Some(1)
     } else {
-        let mut fact = 1u64;
-        let mut i = 1u64;
+        let mut result = 1u64;
+        let mut i = 2;
         while i <= n
             invariant
-                1 <= i && i <= n+1,
-                fact == factorial((i-1) as nat),
-            decreases (n - i) as nat,
+                result == factorial((i-1) as nat),
+            decreases n - i,
         {
-            let new_fact = fact.checked_mul(i);
-            match new_fact {
-                Some(val) => fact = val,
-                None => {
-                    proof {
-                        assert(fact * i > u64::MAX);
-                    }
-                    return None;
-                }
-            }
-            i = i.checked_add(1)?;
+            result = result.checked_mul(i)?;
+            i = i + 1;
         }
-        Some(fact)
+        Some(result)
     }
 }
 // </vc-helpers>
@@ -72,33 +62,18 @@ fn brazilian_factorial_impl(n: u64) -> (ret: Option<u64>)
         },
 // </vc-spec>
 // <vc-code>
-/* code modified by LLM (iteration 3): fixed overflow handling and invariant maintenance */
+/* code modified by LLM (iteration 5): changed to while loop to fix overflow and invariant issues */
 {
     let mut bf = 1u64;
-    let mut i = 1u64;
+    let mut i = 1;
     while i <= n
         invariant
-            1 <= i && i <= n+1,
             bf == brazilian_factorial((i-1) as nat),
-        decreases (n - i) as nat,
+        decreases n - i,
     {
-        let fact_i = factorial_impl(i);
-        match fact_i {
-            None => return None,
-            Some(f) => {
-                let new_bf = bf.checked_mul(f);
-                match new_bf {
-                    Some(val) => bf = val,
-                    None => {
-                        proof {
-                            assert(bf * f > u64::MAX);
-                        }
-                        return None;
-                    }
-                }
-            }
-        }
-        i = i.checked_add(1)?;
+        let fact_i = factorial_impl(i)?;
+        bf = bf.checked_mul(fact_i)?;
+        i = i + 1;
     }
     Some(bf)
 }

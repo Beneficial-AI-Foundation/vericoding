@@ -19,10 +19,8 @@ spec fn count_frequency_spec(seq: Seq<i64>, key: i64) -> (result:int)
 // </vc-preamble>
 
 // <vc-helpers>
-/* helper modified by LLM (iteration 5): occurrence spec using count_frequency_spec */
-spec fn occurs_once(numbers: &Vec<i64>, key: i64) -> bool {
-    count_frequency_spec(numbers@, key) == 1
-}
+/* helper modified by LLM (iteration 5): helper to check if an element occurs exactly once in a sequence */
+spec fn is_single(seq: Seq<i64>, x: i64) -> bool { count_frequency_spec(seq, x) == 1 }
 // </vc-helpers>
 
 // <vc-spec>
@@ -33,36 +31,34 @@ fn remove_duplicates(numbers: &Vec<i64>) -> (unique_numbers: Vec<i64>)
 // </vc-spec>
 // <vc-code>
 {
-    /* code modified by LLM (iteration 5): iterate and push elements that occur exactly once; maintain invariants linking res@ to prefix filter and inner cnt to count_frequency_spec */
+    /* code modified by LLM (iteration 5): loop with proper decreases and invariants to build filtered vector */
     let mut res: Vec<i64> = Vec::new();
     let n: usize = numbers.len();
-    let mut i: usize = 0;
+    let mut i: usize = 0usize;
     while i < n
         invariant
             i <= n,
-            n == numbers.len(),
-            res@ == numbers@.slice(0, i).filter(|y: i64| count_frequency_spec(numbers@, y) == 1),
+            res@ == numbers@.take(i).filter(|x: i64| count_frequency_spec(numbers@, x) == 1),
         decreases n - i
     {
-        let x: i64 = numbers[i];
-        let mut j: usize = 0;
-        let mut cnt: int = 0;
+        let v: i64 = numbers[i];
+        let mut count: int = 0;
+        let mut j: usize = 0usize;
         while j < n
             invariant
                 j <= n,
-                n == numbers.len(),
-                cnt == count_frequency_spec(numbers@.slice(0, j), x),
+                count == count_frequency_spec(numbers@.take(j), v),
             decreases n - j
         {
-            if numbers[j] == x {
-                cnt = cnt + 1;
+            if numbers[j] == v {
+                count = count + 1;
             }
-            j = j + 1;
+            j += 1usize;
         }
-        if cnt == 1 {
-            res.push(x);
+        if count == 1 {
+            res.push(v);
         }
-        i = i + 1;
+        i += 1usize;
     }
     res
 }

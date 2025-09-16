@@ -22,23 +22,37 @@ spec fn ValidBitString(s: Seq<char>) -> bool
 }
 
 // <vc-helpers>
-/* helper modified by LLM (iteration 10): Convert max function to nat type for verification */
-spec fn max(a: nat, b: nat) -> nat {
-    if a > b { a } else { b }
+/* helper modified by LLM (iteration 5): Fixed termination and proof assertions */
+spec fn pow2(exp: nat) -> nat
+    decreases exp
+{
+    if exp == 0 {
+        1
+    } else {
+        2 * pow2((exp - 1) as nat)
+    }
 }
 
-/* helper modified by LLM (iteration 10): Remove int parameter and use nat type for lemma */
-proof fn helper_add_lemma(s1: Seq<char>, s2: Seq<char>, i: nat)
-    requires
-        ValidBitString(s1),
-        ValidBitString(s2),
-        i <= s1.len() && i <= s2.len()
-    ensures
-        Str2Int(s1.subrange(0, i as int).add(s2.subrange(0, i as int))) == Str2Int(s1.subrange(0, i as int)) + Str2Int(s2.subrange(0, i as int))
-    decreases i
+proof fn lemma_str2int_app(s1: Seq<char>, s2: Seq<char>)
+    requires ValidBitString(s1), ValidBitString(s2)
+    ensures Str2Int(s1 + s2) == Str2Int(s1) * pow2(s2.len() as nat) + Str2Int(s2)
+    decreases s2.len()
 {
-    if i > 0 {
-        helper_add_lemma(s1, s2, i - 1);
+    if s2.len() == 0 {
+        assert(s1 + s2 =~= s1);
+        assert(pow2(0) == 1);
+    } else {
+        let s2_prefix = s2.subrange(0, s2.len() as int - 1);
+        let last_char = s2.index(s2.len() as int - 1);
+        assert(s2 =~= s2_prefix + Seq::new(1, |i| last_char));
+        lemma_str2int_app(s1, s2_prefix);
+        assert((s1 + s2_prefix) + Seq::new(1, |i| last_char) =~= s1 + s2);
+        if last_char == '1' {
+            assert(Str2Int(s1 + s2) == 2 * Str2Int(s1 + s2_prefix) + 1);
+        } else {
+            assert(Str2Int(s1 + s2) == 2 * Str2Int(s1 + s2_prefix) + 0);
+        }
+        assert(Str2Int(s1) * pow2(s2.len() as nat) + Str2Int(s2) == Str2Int(s1) * (2 * pow2((s2.len() - 1) as nat)) + Str2Int(s2));
     }
 }
 // </vc-helpers>
@@ -51,57 +65,45 @@ exec fn Add(s1: &[char], s2: &[char]) -> (res: Vec<char>)
     Str2Int(res@) == Str2Int(s1@) + Str2Int(s2@)
 // </vc-spec>
 // <vc-code>
-/* code modified by LLM (iteration 10): Remove explicit lemma call and fix nat type conversion */
+/* code modified by LLM (iteration 5): Fixed termination, invariant, and postcondition */
 {
-    let len1 = s1.len();
-    let len2 = s2.len();
-    let max_len = if len1 > len2 { len1 } else { len2 };
+    let mut i: usize = s1.len();
+    let mut j: usize = s2.len();
+    let mut carry = 0;
+    let mut res = Vec::new();
     
-    let mut carry = false;
-    let mut result = Vec::<char>::with_capacity(max_len + 1);
-    
-    let mut i: usize = 0;
-    while i < max_len
+    while i > 0 || j > 0 || carry > 0
         invariant
-            0 <= i && i <= max_len,
-            ValidBitString(result@),
-            Str2Int(result@) == Str2Int(s1@.subrange(0, i as int)) + Str2Int(s2@.subrange(0, i as int)) + (if carry { 1nat } else { 0nat }),
-            i >= len1 ==> s1@.subrange(0, i as int).len() as usize == len1,
-            i >= len2 ==> s2@.subrange(0, i as int).len() as usize == len2
-        decreases max_len - i
+            i <= s1.len(),
+            j <= s2.len(),
+            carry == 0 || carry == 1,
+            ValidBitString(res@),
+            Str2Int(res@) + carry * pow2(res.len() as nat) == Str2Int(s1@.subrange(i as int, s1.len() as int)) + Str2Int(s2@.subrange(j as int, s2.len() as int)),
+        decreases i + j + carry
     {
-        let bit1 = if i < len1 { s1[i] == '1' } else { false };
-        let bit2 = if i < len2 { s2[i] == '1' } else { false };
-        
-        let sum = if bit1 { 1 } else { 0 } + if bit2 { 1 } else { 0 } + if carry { 1 } else { 0 };
-        
-        match sum {
-            0 => {
-                result.push('0');
-                carry = false;
-            },
-            1 => {
-                result.push('1');
-                carry = false;
-            },
-            2 => {
-                result.push('0');
-                carry = true;
-            },
-            _ => {
-                result.push('1');
-                carry = true;
-            }
+        let mut sum = carry;
+        if i > 0 {
+            sum += if s1[i - 1] == '1' { 1 } else { 0 };
+            i -= 1;
+        }
+        if j > 0 {
+            sum += if s2[j - 1] == '1' { 1 } else { 0 };
+            j -= 1;
         }
         
-        i = i + 1;
+        proof {
+            lemma_str2int_app(res@, Seq::new(1, |i| if sum % 2 == 1 { '1' } else { '0' }));
+        }
+        
+        res.insert(0, if sum % 2 == 1 { '1' } else { '0' });
+        carry = sum / 2;
     }
     
-    if carry {
-        result.push('1');
+    proof {
+        lemma_str2int_app(Seq::empty(), res@);
     }
     
-    result
+    res
 }
 // </vc-code>
 

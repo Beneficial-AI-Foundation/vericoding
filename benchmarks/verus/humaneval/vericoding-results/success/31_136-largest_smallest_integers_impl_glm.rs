@@ -5,12 +5,31 @@ verus! {
 // </vc-preamble>
 
 // <vc-helpers>
-spec fn is_negative(x: i32) -> bool {
-    x < 0
+spec fn contains_negative(arr: &Vec<i32>) -> bool {
+    exists|i: int| 0 <= i < arr@.len() && arr@[i] < 0
 }
 
-spec fn is_positive(x: i32) -> bool {
-    x > 0
+spec fn contains_positive(arr: &Vec<i32>) -> bool {
+    exists|i: int| 0 <= i < arr@.len() && arr@[i] > 0
+}
+
+/* helper modified by LLM (iteration 3): fixed helper definitions to work with partial arrays */
+spec fn is_largest_negative_partial(arr: &Vec<i32>, x: i32, end: int) -> bool {
+    x < 0 && exists|i: int| 0 <= i < end && arr@[i] == x &&
+    forall|j: int| 0 <= j < end && arr@[j] < 0 ==> arr@[j] <= x
+}
+
+spec fn is_smallest_positive_partial(arr: &Vec<i32>, x: i32, end: int) -> bool {
+    x > 0 && exists|i: int| 0 <= i < end && arr@[i] == x &&
+    forall|j: int| 0 <= j < end && arr@[j] > 0 ==> arr@[j] >= x
+}
+
+spec fn is_largest_negative(arr: &Vec<i32>, x: i32) -> bool {
+    is_largest_negative_partial(arr, x, arr@.len() as int)
+}
+
+spec fn is_smallest_positive(arr: &Vec<i32>, x: i32) -> bool {
+    is_smallest_positive_partial(arr, x, arr@.len() as int)
 }
 // </vc-helpers>
 
@@ -33,6 +52,7 @@ fn largest_smallest_integers(arr: &Vec<i32>) -> (res: (Option<i32>, Option<i32>)
 // </vc-spec>
 // <vc-code>
 {
+    /* code modified by LLM (iteration 4): fixed type mismatch in loop invariant */
     let mut largest_negative: Option<i32> = None;
     let mut smallest_positive: Option<i32> = None;
     
@@ -41,36 +61,19 @@ fn largest_smallest_integers(arr: &Vec<i32>) -> (res: (Option<i32>, Option<i32>)
         invariant
             0 <= i <= arr.len(),
             largest_negative.is_none() ==> forall|j: int| 0 <= j < i ==> arr@[j] >= 0,
-            largest_negative.is_some() ==> {
-                &&& arr@.contains(largest_negative.unwrap())
-                &&& largest_negative.unwrap() < 0
-                &&& forall|j: int| 0 <= j < i && arr@[j] < 0 ==> arr@[j] <= largest_negative.unwrap()
-            },
+            largest_negative.is_some() ==> is_largest_negative_partial(arr, largest_negative.unwrap(), i as int),
             smallest_positive.is_none() ==> forall|j: int| 0 <= j < i ==> arr@[j] <= 0,
-            smallest_positive.is_some() ==> {
-                &&& arr@.contains(smallest_positive.unwrap())
-                &&& smallest_positive.unwrap() > 0
-                &&& forall|j: int| 0 <= j < i && arr@[j] > 0 ==> arr@[j] >= smallest_positive.unwrap()
-            },
-        decreases arr.len() - i
+            smallest_positive.is_some() ==> is_smallest_positive_partial(arr, smallest_positive.unwrap(), i as int),
+        decreases (arr.len() - i)
     {
-        if arr[i] < 0 {
-            match largest_negative {
-                None => largest_negative = Some(arr[i]),
-                Some(current) => {
-                    if arr[i] > current {
-                        largest_negative = Some(arr[i]);
-                    }
-                }
+        let value = arr[i];
+        if value < 0 {
+            if largest_negative.is_none() || value > largest_negative.unwrap() {
+                largest_negative = Some(value);
             }
-        } else if arr[i] > 0 {
-            match smallest_positive {
-                None => smallest_positive = Some(arr[i]),
-                Some(current) => {
-                    if arr[i] < current {
-                        smallest_positive = Some(arr[i]);
-                    }
-                }
+        } else if value > 0 {
+            if smallest_positive.is_none() || value < smallest_positive.unwrap() {
+                smallest_positive = Some(value);
             }
         }
         i += 1;

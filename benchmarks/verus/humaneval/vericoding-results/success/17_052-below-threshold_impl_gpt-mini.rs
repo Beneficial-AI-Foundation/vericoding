@@ -5,8 +5,10 @@ verus! {
 // </vc-preamble>
 
 // <vc-helpers>
-/* helper modified by LLM (iteration 4): predicate for element below threshold */
-spec fn is_below(x: i32, t: i32) -> bool { x < t }
+/* helper modified by LLM (iteration 5): predicate for all elements in the first k positions being less than t */
+spec fn all_prefix_lt(l: &[i32], k: int, t: i32) -> bool {
+    0 <= k && k <= l.len() as int && forall|i: int| 0 <= i < k ==> l[i] < t
+}
 // </vc-helpers>
 
 // <vc-spec>
@@ -17,20 +19,21 @@ fn below_threshold(l: &[i32], t: i32) -> (result: bool)
 // </vc-spec>
 // <vc-code>
 {
-    /* code modified by LLM (iteration 4): iterate over slice using runtime indexing and maintain spec invariant */
+    /* code modified by LLM (iteration 5): use usize index with invariant linking res and prefix property */
     let mut i: usize = 0;
+    let mut res: bool = true;
     while i < l.len()
         invariant
-            i <= l.len(),
-            forall|j: int| 0 <= j < i as int ==> l@[j] < t,
+            0 <= i as int,
+            i as int <= l.len() as int,
+            res == forall|j: int| 0 <= j < i as int ==> l[j] < t,
         decreases l.len() - i
     {
-        if !(l[i] < t) {
-            return false;
-        }
-        i += 1;
+        let curr: i32 = l[i];
+        res = res && (curr < t);
+        i = i + 1;
     }
-    true
+    res
 }
 // </vc-code>
 

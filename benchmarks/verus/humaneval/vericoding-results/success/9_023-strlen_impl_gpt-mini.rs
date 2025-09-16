@@ -5,7 +5,7 @@ verus! {
 // </vc-preamble>
 
 // <vc-helpers>
-spec fn vec_len(v: &Vec<char>) -> usize { v.len() }
+proof fn strlen_trivial(s: &Vec<char>) ensures s.len() == s.len() { }
 // </vc-helpers>
 
 // <vc-spec>

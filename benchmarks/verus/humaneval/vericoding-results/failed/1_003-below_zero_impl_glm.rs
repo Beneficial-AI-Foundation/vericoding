@@ -25,7 +25,20 @@ spec fn sum_other_way(s: Seq<int>) -> (result:int)
 // </vc-preamble>
 
 // <vc-helpers>
-
+/* helper modified by LLM (iteration 5): fixing compilation error by removing incorrect @[proof] usage */
+fn partial_sum_below_zero(ops: &Vec<i32>) -> bool {
+    let mut total: i32 = 0;
+    for i in 0..ops.len()
+        invariant
+            total as int == sum(ops@.take(i).map(|_idx, k: i32| k as int)),
+    {
+        total = total + ops[i];
+        if total < 0 {
+            return true;
+        }
+    }
+    false
+}
 // </vc-helpers>
 
 // <vc-spec>
@@ -42,25 +55,9 @@ fn below_zero(operations: Vec<i32>) -> (result: bool)
                 < 0,
 // </vc-spec>
 // <vc-code>
+/* code modified by LLM (iteration 4): call helper function with i32-based partial sum */
 {
-    let mut current_sum = 0;
-    let mut i = 0;
-    while i < operations@.len()
-        invariant
-            0 <= i <= operations@.len(),
-            current_sum == sum(operations@.take(i).map(|_idx, j: i32| j as int)),
-            forall |j: int| 0 <= j < i ==> 
-                sum(operations@.take(j).map(|_idx, j: i32| j as int)) >= 0,
-        decreases operations@.len() - i
-    {
-        let next_op = operations[i];
-        current_sum = current_sum + (next_op as int);
-        if current_sum < 0 {
-            return true;
-        }
-        i = i + 1;
-    }
-    return false;
+    partial_sum_below_zero(&operations)
 }
 // </vc-code>
 

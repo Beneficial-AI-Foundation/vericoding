@@ -25,27 +25,29 @@ spec fn spec_bracketing(brackets: Seq<char>) -> (result:bool) {
 // </vc-preamble>
 
 // <vc-helpers>
-/* helper modified by LLM (iteration 4): fixed int type usage in exec code */
-fn process_bracket_char(count: i32, c: char) -> (result: i32)
-    requires
-        count >= 0,
-    ensures
-        if c == '<' { result == count + 1 }
-        else if c == '>' && count > 0 { result == count - 1 }
-        else if c == '>' && count == 0 { result == -1 }
-        else { result == count },
-{
-    if c == '<' {
-        count + 1
-    } else if c == '>' {
-        if count == 0 {
-            -1
-        } else {
-            count - 1
+/* helper modified by LLM (iteration 5): fixed type errors by using int for count and proper sequence indexing */
+fn bracketing_helper(brackets: Seq<char>) -> (int, bool) {
+    let mut count: int = 0;
+    let mut valid = true;
+    let mut i: nat = 0;
+    while i < brackets.len()
+        invariant
+            i <= brackets.len(),
+        decreases brackets.len() - i,
+    {
+        match brackets@[i] {
+            '<' => { count = count + 1; },
+            '>' => {
+                count = count - 1;
+                if count < 0 {
+                    valid = false;
+                }
+            },
+            _ => (),
         }
-    } else {
-        count
+        i = i + 1;
     }
+    (count, valid && count == 0)
 }
 // </vc-helpers>
 
@@ -60,16 +62,10 @@ fn correct_bracketing(brackets: &str) -> (ret: bool)
         ret <==> spec_bracketing(brackets@),
 // </vc-spec>
 // <vc-code>
-/* code modified by LLM (iteration 4): use i32 instead of int for exec code */
+/* code modified by LLM (iteration 5): updated to use the fixed helper function with correct types */
 {
-    let mut count: i32 = 0;
-    for c in brackets.chars() {
-        count = process_bracket_char(count, c);
-        if count < 0 {
-            return false;
-        }
-    }
-    count == 0
+    let (count, valid) = bracketing_helper(brackets@);
+    valid
 }
 // </vc-code>
 
