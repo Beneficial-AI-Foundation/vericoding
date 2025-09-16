@@ -1,0 +1,66 @@
+// <vc-preamble>
+// ======= TASK =======
+// Given a string, calculate the sum of ASCII values of all uppercase letters in the string.
+// Empty string returns 0. Only characters from 'A' to 'Z' are considered uppercase.
+
+// ======= SPEC REQUIREMENTS =======
+function sumOfUppercaseASCII(s: string): int
+    ensures sumOfUppercaseASCII(s) >= 0
+{
+    if |s| == 0 then 0
+    else 
+        var c := s[0];
+        var rest := sumOfUppercaseASCII(s[1..]);
+        if 'A' <= c && c <= 'Z' then (c as int) + rest
+        else rest
+}
+// </vc-preamble>
+
+// <vc-helpers>
+// ======= HELPERS =======
+lemma sumOfUppercaseASCII_lemma(s: string, c: char)
+    ensures sumOfUppercaseASCII(s + [c]) == 
+            if 'A' <= c && c <= 'Z' then sumOfUppercaseASCII(s) + (c as int)
+            else sumOfUppercaseASCII(s)
+{
+    if |s| == 0 {
+        assert s + [c] == [c];
+        assert sumOfUppercaseASCII([c]) == (if 'A' <= c && c <= 'Z' then (c as int) else 0);
+        assert sumOfUppercaseASCII(s) == 0;
+    } else {
+        assert (s + [c])[0] == s[0];
+        assert (s + [c])[1..] == s[1..] + [c];
+        sumOfUppercaseASCII_lemma(s[1..], c);
+    }
+}
+// </vc-helpers>
+
+// <vc-spec>
+// ======= MAIN METHOD =======
+method digitSum(s: string) returns (result: int)
+    ensures result >= 0
+    ensures result == sumOfUppercaseASCII(s)
+// </vc-spec>
+// <vc-code>
+{
+    result := 0;
+    var i := 0;
+    while i < |s|
+        invariant 0 <= i <= |s|
+        invariant result == sumOfUppercaseASCII(s[..i])
+        invariant result >= 0
+    {
+        var c := s[i];
+        if 'A' <= c && c <= 'Z' {
+            result := result + (c as int);
+        }
+        i := i + 1;
+
+        // Help the verifier by asserting the relationship
+        assert s[..i] == s[..i-1] + [s[i-1]];
+        sumOfUppercaseASCII_lemma(s[..i-1], s[i-1]);
+    }
+    assert i == |s|;
+    assert s[..i] == s;
+}
+// </vc-code>

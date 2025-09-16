@@ -1,0 +1,142 @@
+// <vc-preamble>
+// ======= TASK =======
+// Given an integer a where a < 100, determine if a is the product of exactly 3 prime numbers (counting repetitions).
+
+// ======= SPEC REQUIREMENTS =======
+predicate is_prime_number(n: int)
+{
+  n >= 2 && forall k: int :: 2 <= k < n ==> n % k != 0
+}
+
+// ======= HELPERS =======
+function seq_product(factors: seq<int>): int
+  decreases |factors|
+{
+  if |factors| == 0 then 1
+  else factors[0] * seq_product(factors[1..])
+}
+
+function power(base: int, exp: nat): int
+  decreases exp
+{
+  if exp == 0 then 1
+  else base * power(base, exp - 1)
+}
+
+lemma seq_product_append_lemma(s: seq<int>, x: int)
+  ensures seq_product(s + [x]) == seq_product(s) * x
+{
+  if |s| == 0 {
+    assert s + [x] == [x];
+    assert seq_product([x]) == x;
+    assert seq_product(s) == 1;
+  } else {
+    assert s == [s[0]] + s[1..];
+    assert s + [x] == [s[0]] + (s[1..] + [x]);
+    seq_product_append_lemma(s[1..], x);
+    assert seq_product(s[1..] + [x]) == seq_product(s[1..]) * x;
+    assert seq_product(s + [x]) == s[0] * seq_product(s[1..] + [x]);
+    assert seq_product(s + [x]) == s[0] * (seq_product(s[1..]) * x);
+    assert seq_product(s + [x]) == (s[0] * seq_product(s[1..])) * x;
+    assert seq_product(s + [x]) == seq_product(s) * x;
+  }
+}
+// </vc-preamble>
+
+// <vc-helpers>
+// <vc-helpers>
+// </vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
+// ======= MAIN METHOD =======
+method is_multiply_prime(a: int) returns (result: bool)
+  requires a >= 0 && a < 100
+  ensures a < 8 ==> result == false
+  ensures result == true <==> (exists p1: int, p2: int, p3: int :: 
+    p1 >= 2 && p2 >= 2 && p3 >= 2 && 
+    is_prime_number(p1) && is_prime_number(p2) && is_prime_number(p3) &&
+    a == p1 * p2 * p3)
+// </vc-spec>
+// <vc-code>
+{
+  if a < 8 {
+    result := false;
+    return;
+  }
+
+  var prime_factors: seq<int> := [];
+  var temp := a;
+  var original_temp := temp;
+
+  // Count factors of 2
+  while temp % 2 == 0
+    invariant temp >= 1
+    invariant original_temp == a
+    invariant temp * seq_product(prime_factors) == original_temp
+    invariant forall x :: x in prime_factors ==> is_prime_number(x)
+    invariant forall x :: x in prime_factors ==> x == 2
+    decreases temp
+  {
+    seq_product_append_lemma(prime_factors, 2);
+    prime_factors := prime_factors + [2];
+    temp := temp / 2;
+  }
+
+  // Check odd factors
+  var i := 3;
+  while i * i <= temp
+    invariant i >= 3 && i % 2 == 1
+    invariant temp >= 1
+    invariant original_temp == a
+    invariant temp * seq_product(prime_factors) == original_temp
+    invariant forall x :: x in prime_factors ==> is_prime_number(x)
+    invariant forall k :: 3 <= k < i && k % 2 == 1 ==> temp % k != 0
+    invariant temp % 2 != 0 || temp == 1
+    decreases temp - i * i + 1
+  {
+    if temp % i == 0 && is_prime_number(i) {
+      while temp % i == 0
+        invariant temp >= 1
+        invariant original_temp == a
+        invariant temp * seq_product(prime_factors) == original_temp
+        invariant forall x :: x in prime_factors ==> is_prime_number(x)
+        invariant is_prime_number(i)
+        decreases temp
+      {
+        seq_product_append_lemma(prime_factors, i);
+        prime_factors := prime_factors + [i];
+        temp := temp / i;
+      }
+    }
+    i := i + 2;
+  }
+
+  // If temp > 1, it's a prime factor
+  if temp > 1 {
+    // temp must be prime since it has no factors from 2 to sqrt(temp)
+    assert temp >= 2;
+    assert forall k :: 2 <= k < temp && k * k <= temp ==> temp % k != 0;
+    assert forall k :: 2 <= k * k <= temp ==> temp % k != 0;
+    // For any k in [2, temp), either k*k > temp (so k > sqrt(temp)) or temp % k != 0
+    assert forall k :: 2 <= k < temp ==> (k * k > temp || temp % k != 0);
+    // If k*k > temp, then k > sqrt(temp), and if temp % k == 0, then temp/k < k, 
+    // but temp/k >= 2 would be a factor smaller than sqrt(temp), contradicting our loop
+    assert is_prime_number(temp);
+    seq_product_append_lemma(prime_factors, temp);
+    prime_factors := prime_factors + [temp];
+    temp := 1;
+  }
+
+  result := |prime_factors| == 3;
+
+  if result {
+    assert |prime_factors| == 3;
+    assert forall x :: x in prime_factors ==> is_prime_number(x);
+    assert seq_product(prime_factors) == a;
+    assert prime_factors[0] >= 2 && prime_factors[1] >= 2 && prime_factors[2] >= 2;
+    assert is_prime_number(prime_factors[0]) && is_prime_number(prime_factors[1]) && is_prime_number(prime_factors[2]);
+    assert a == prime_factors[0] * prime_factors[1] * prime_factors[2];
+  }
+}
+// </vc-code>
