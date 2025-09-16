@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def ValidInput (A1 A2 A3 : Int) : Prop :=
   1 ≤ A1 ∧ A1 ≤ 100 ∧ 1 ≤ A2 ∧ A2 ≤ 100 ∧ 1 ≤ A3 ∧ A3 ≤ 100
 
@@ -16,21 +15,15 @@ def MinimumCost (A1 A2 A3 : Int) : Int :=
 def solve_precond (A1 A2 A3 : Int) : Prop :=
   ValidInput A1 A2 A3
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (A1 A2 A3 : Int) (h_precond : solve_precond A1 A2 A3) : Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (A1 A2 A3 : Int) (result: Int) (h_precond : solve_precond A1 A2 A3) : Prop :=
@@ -39,5 +32,4 @@ def solve_postcond (A1 A2 A3 : Int) (result: Int) (h_precond : solve_precond A1 
 theorem solve_spec_satisfied (A1 A2 A3 : Int) (h_precond : solve_precond A1 A2 A3) :
     solve_postcond A1 A2 A3 (solve A1 A2 A3 h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def ValidInput (A B K : Int) : Prop :=
   A ≥ 0 ∧ B ≥ 0 ∧ K ≥ 0
 
@@ -20,21 +19,15 @@ def CorrectResult (A B K takahashi aoki : Int) (h : ValidInput A B K) : Prop :=
 def solve_precond (A B K : Int) : Prop :=
   ValidInput A B K
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (A B K : Int) (h_precond : solve_precond A B K) : Int × Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (A B K : Int) (result : Int × Int) (h_precond : solve_precond A B K) : Prop :=
@@ -43,5 +36,4 @@ def solve_postcond (A B K : Int) (result : Int × Int) (h_precond : solve_precon
 theorem solve_spec_satisfied (A B K : Int) (h_precond : solve_precond A B K) :
     solve_postcond A B K (solve A B K h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

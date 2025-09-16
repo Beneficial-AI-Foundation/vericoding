@@ -1,5 +1,4 @@
 vc-preamble: |-
-  -- <vc-preamble>
   def ValidInput (n : Int) (sticks : List Int) : Prop :=
     1 ≤ n ∧ n ≤ 1000 ∧
     sticks.length = n ∧
@@ -25,20 +24,14 @@ vc-preamble: |-
   @[reducible, simp]
   def solve_precond (n : Int) (sticks : List Int) : Prop :=
     ValidInput n sticks
-  -- </vc-preamble>
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
-  -- <vc-definitions>
   def solve (n : Int) (sticks : List Int) (h_precond : solve_precond n sticks) : Int × Int :=
     sorry
-  -- </vc-definitions>
 
 vc-theorems: |-
-  -- <vc-theorems>
   @[reducible, simp]
   def solve_postcond (n : Int) (sticks : List Int) (result : Int × Int) (h_precond : solve_precond n sticks) : Prop :=
     let t := result.1
@@ -51,6 +44,5 @@ vc-theorems: |-
   theorem solve_spec_satisfied (n : Int) (sticks : List Int) (h_precond : solve_precond n sticks) :
       solve_postcond n sticks (solve n sticks h_precond) h_precond := by
     sorry
-  -- </vc-theorems>
 
 vc-postamble: |-

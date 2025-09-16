@@ -1,5 +1,4 @@
 vc-preamble: |-
-  -- <vc-preamble>
   def SumList (s : List Int) : Int :=
     match s with
     | [] => 0
@@ -31,20 +30,14 @@ vc-preamble: |-
   @[reducible, simp]
   def solve_precond (digits : List Int) : Prop :=
     ValidInput digits
-  -- </vc-preamble>
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
-  -- <vc-definitions>
   def solve (digits : List Int) (h_precond : solve_precond digits) : Int :=
     sorry
-  -- </vc-definitions>
 
 vc-theorems: |-
-  -- <vc-theorems>
   @[reducible, simp]
   def solve_postcond (digits : List Int) (count : Int) (h_precond : solve_precond digits) : Prop :=
     count ≥ 0 ∧ count = CountGoodSubarrays digits
@@ -52,6 +45,5 @@ vc-theorems: |-
   theorem solve_spec_satisfied (digits : List Int) (h_precond : solve_precond digits) :
       solve_postcond digits (solve digits h_precond) h_precond := by
     sorry
-  -- </vc-theorems>
 
 vc-postamble: |-

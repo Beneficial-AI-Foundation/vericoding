@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def DistinctStrings (strings : List String) : Nat :=
   (strings.eraseDups).length
 
@@ -10,21 +9,15 @@ def ValidInput (strings : List String) : Prop :=
 def solve_precond (strings : List String) : Prop :=
   ValidInput strings
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (strings : List String) (h_precond : solve_precond strings) : Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (strings : List String) (count : Int) (h_precond : solve_precond strings) : Prop :=
@@ -33,5 +26,4 @@ def solve_postcond (strings : List String) (count : Int) (h_precond : solve_prec
 theorem solve_spec_satisfied (strings : List String) (h_precond : solve_precond strings) :
     solve_postcond strings (solve strings h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

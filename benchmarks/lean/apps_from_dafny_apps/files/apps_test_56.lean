@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def ValidInput (n t : Int) : Prop :=
   1 ≤ n ∧ n ≤ 10 ∧ 0 ≤ t ∧ t ≤ 10000
 
@@ -19,21 +18,15 @@ def CorrectForEdgeCases (result n t : Int) : Prop :=
 def solve_precond (n t : Int) : Prop :=
   ValidInput n t
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (n t : Int) (h_precond : solve_precond n t) : Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (n t : Int) (result : Int) (h_precond : solve_precond n t) : Prop :=
@@ -42,5 +35,4 @@ def solve_postcond (n t : Int) (result : Int) (h_precond : solve_precond n t) : 
 theorem solve_spec_satisfied (n t : Int) (h_precond : solve_precond n t) :
     solve_postcond n t (solve n t h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

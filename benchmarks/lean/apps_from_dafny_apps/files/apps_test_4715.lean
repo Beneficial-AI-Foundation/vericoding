@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def ValidInput (a b c : Int) : Prop :=
   1 ≤ a ∧ a ≤ 100 ∧ 1 ≤ b ∧ b ≤ 100 ∧ 1 ≤ c ∧ c ≤ 100
 
@@ -21,21 +20,15 @@ def AllDifferent (a b c : Int) : Prop :=
 def solve_precond (a b c : Int) : Prop :=
   ValidInput a b c
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (a b c : Int) (h_precond : solve_precond a b c) : Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (a b c : Int) (result : Int) (h_precond : solve_precond a b c) : Prop :=
@@ -48,5 +41,4 @@ def solve_postcond (a b c : Int) (result : Int) (h_precond : solve_precond a b c
 theorem solve_spec_satisfied (a b c : Int) (h_precond : solve_precond a b c) :
     solve_postcond a b c (solve a b c h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

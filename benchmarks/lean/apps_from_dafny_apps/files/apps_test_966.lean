@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def NumberToDigitsHelper (n : Nat) (acc : List Int) : List Int :=
   if n = 0 then acc
   else NumberToDigitsHelper (n / 10) ((n % 10 : Int) :: acc)
@@ -24,21 +23,15 @@ def ValidInput (y : Int) : Prop :=
 def solve_precond (y : Int) : Prop :=
   ValidInput y
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (y : Int) (h_precond : solve_precond y) : Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (y : Int) (result : Int) (h_precond : solve_precond y) : Prop :=
@@ -47,5 +40,4 @@ def solve_postcond (y : Int) (result : Int) (h_precond : solve_precond y) : Prop
 theorem solve_spec_satisfied (y : Int) (h_precond : solve_precond y) :
     solve_postcond y (solve y h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

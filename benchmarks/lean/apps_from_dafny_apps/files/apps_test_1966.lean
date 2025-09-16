@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def split_by_newline (input: String) : List String := sorry
 
 def string_to_int (s: String) : Int := sorry
@@ -82,21 +81,15 @@ def represents_minimum_recoloring_count (input: String) (output: String) : Prop 
 def solve_precond (stdin_input: String) : Prop :=
   stdin_input.length > 0 ∧ contains_valid_input_format stdin_input
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (stdin_input: String) (h_precond : solve_precond stdin_input) : String :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (stdin_input: String) (result: String) (h_precond : solve_precond stdin_input) : Prop :=
@@ -109,5 +102,4 @@ def solve_postcond (stdin_input: String) (result: String) (h_precond : solve_pre
 theorem solve_spec_satisfied (stdin_input: String) (h_precond : solve_precond stdin_input) :
     solve_postcond stdin_input (solve stdin_input h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

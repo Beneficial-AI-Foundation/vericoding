@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 noncomputable def CountNonZeroDigits : Int → Int := sorry
 noncomputable def CountRange : Int → Int → Int → Int → Int := sorry
 
@@ -13,21 +12,15 @@ def ValidInput (n k : Int) : Prop :=
 def solve_precond (N K : Int) : Prop :=
   ValidInput N K
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 noncomputable def solve (N K : Int) (h_precond : solve_precond N K) : Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (N K : Int) (count : Int) (h_precond : solve_precond N K) : Prop :=
@@ -36,5 +29,4 @@ def solve_postcond (N K : Int) (count : Int) (h_precond : solve_precond N K) : P
 theorem solve_spec_satisfied (N K : Int) (h_precond : solve_precond N K) :
     solve_postcond N K (solve N K h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 instance : DecidablePred (fun n => n ≥ 1) := by infer_instance
 instance : DecidablePred (fun n => n ≥ 0) := by infer_instance
 instance (n k : Nat) : Decidable (k ≤ n - 1) := by infer_instance
@@ -34,21 +33,15 @@ def ExpectedResult (n m k : Nat) : Nat :=
 def solve_precond (n m k : Nat) : Prop :=
   ValidInput n m k
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (n m k : Nat) (h_precond : solve_precond n m k) : Nat :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (n m k : Nat) (result: Nat) (h_precond : solve_precond n m k) : Prop :=
@@ -57,5 +50,4 @@ def solve_postcond (n m k : Nat) (result: Nat) (h_precond : solve_precond n m k)
 theorem solve_spec_satisfied (n m k : Nat) (h_precond : solve_precond n m k) :
     solve_postcond n m k (solve n m k h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

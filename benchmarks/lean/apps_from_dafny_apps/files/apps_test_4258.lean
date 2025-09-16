@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def ValidInput (A B T : Int) : Prop :=
   1 ≤ A ∧ A ≤ 20 ∧ 1 ≤ B ∧ B ≤ 20 ∧ 1 ≤ T ∧ T ≤ 20
 
@@ -13,21 +12,15 @@ def TotalBiscuits (A B T : Int) : Int :=
 def solve_precond (A B T : Int) : Prop :=
   ValidInput A B T
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (A B T : Int) (h_precond : solve_precond A B T) : Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (A B T : Int) (result : Int) (h_precond : solve_precond A B T) : Prop :=
@@ -36,5 +29,4 @@ def solve_postcond (A B T : Int) (result : Int) (h_precond : solve_precond A B T
 theorem solve_spec_satisfied (A B T : Int) (h_precond : solve_precond A B T) :
     solve_postcond A B T (solve A B T h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

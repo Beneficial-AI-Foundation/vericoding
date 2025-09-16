@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def H (x y : Int) : Int :=
   x * x + 2 * x * y + x + 1
 
@@ -19,21 +18,15 @@ def HasSolution (r : Int) : Prop :=
 def solve_precond (r : Int) : Prop :=
   ValidInput r
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (r : Int) (h_precond : solve_precond r) : List Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (r : Int) (result : List Int) (h_precond : solve_precond r) : Prop :=
@@ -48,5 +41,4 @@ def solve_postcond (r : Int) (result : List Int) (h_precond : solve_precond r) :
 theorem solve_spec_satisfied (r : Int) (h_precond : solve_precond r) :
     solve_postcond r (solve r h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

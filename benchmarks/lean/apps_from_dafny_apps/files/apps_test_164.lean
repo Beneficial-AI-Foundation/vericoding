@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def ValidInput (y1 y2 y_w x_b y_b r : Int) : Prop :=
   y1 < y2 ∧ y2 < y_w ∧
   y_b + r < y_w ∧
@@ -38,21 +37,15 @@ def ComputeSolution (y1 y2 y_w x_b y_b r : Int) : Float :=
 def solve_precond (y1 y2 y_w x_b y_b r : Int) : Prop :=
   ValidInput y1 y2 y_w x_b y_b r
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (y1 y2 y_w x_b y_b r : Int) (h_precond : solve_precond y1 y2 y_w x_b y_b r) : Float :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (y1 y2 y_w x_b y_b r : Int) (result : Float) (h_precond : solve_precond y1 y2 y_w x_b y_b r) : Prop :=
@@ -62,5 +55,4 @@ def solve_postcond (y1 y2 y_w x_b y_b r : Int) (result : Float) (h_precond : sol
 theorem solve_spec_satisfied (y1 y2 y_w x_b y_b r : Int) (h_precond : solve_precond y1 y2 y_w x_b y_b r) :
     solve_postcond y1 y2 y_w x_b y_b r (solve y1 y2 y_w x_b y_b r h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

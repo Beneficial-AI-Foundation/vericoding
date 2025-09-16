@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def ValidInput (l r : Int) : Prop :=
   l < r ∧ (r - l) % 2 = 1
 
@@ -28,21 +27,15 @@ def ValidSolution (result : List String) (l r : Int) : Prop :=
 def solve_precond (l r : Int) : Prop :=
   ValidInput l r
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (l r : Int) (h_precond : solve_precond l r) : List String :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (l r : Int) (result : List String) (h_precond : solve_precond l r) : Prop :=
@@ -57,5 +50,4 @@ def solve_postcond (l r : Int) (result : List String) (h_precond : solve_precond
 theorem solve_spec_satisfied (l r : Int) (h_precond : solve_precond l r) :
     solve_postcond l r (solve l r h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

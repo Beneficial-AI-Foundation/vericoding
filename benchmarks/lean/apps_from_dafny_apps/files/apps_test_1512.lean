@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def ValidPermutation (p : List Int) (n : Int) : Prop :=
   p.length = n.natAbs ∧ n ≥ 1 ∧
   (∀ i, 0 ≤ i ∧ i < n → 1 ≤ p[i.natAbs]! ∧ p[i.natAbs]! ≤ n) ∧
@@ -25,21 +24,15 @@ def countRecordsAfterRemoval (p : List Int) (toRemove : Int) : Int :=
 def solve_precond (n : Int) (p : List Int) : Prop :=
   ValidPermutation p n
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (n : Int) (p : List Int) (h_precond : solve_precond n p) : Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (n : Int) (p : List Int) (result : Int) (h_precond : solve_precond n p) : Prop :=
@@ -51,5 +44,4 @@ def solve_postcond (n : Int) (p : List Int) (result : Int) (h_precond : solve_pr
 theorem solve_spec_satisfied (n : Int) (p : List Int) (h_precond : solve_precond n p) :
     solve_postcond n p (solve n p h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

@@ -1,5 +1,4 @@
 vc-preamble: |-
-  -- <vc-preamble>
   -- String processing functions (axiomatized for now)
   axiom SplitLines : String → List String
   axiom SplitSpaces : String → List String
@@ -66,20 +65,14 @@ vc-preamble: |-
   @[reducible, simp]
   def solve_precond (input : String) : Prop :=
     input.length > 0 ∧ ValidInput input
-  -- </vc-preamble>
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
-  -- <vc-definitions>
   noncomputable def solve (input : String) (h_precond : solve_precond input) : List String :=
     sorry
-  -- </vc-definitions>
 
 vc-theorems: |-
-  -- <vc-theorems>
   @[reducible, simp]
   noncomputable def solve_postcond (input : String) (result : List String) (h_precond : solve_precond input) : Prop :=
     let h_valid : ValidInput input := h_precond.2
@@ -92,6 +85,5 @@ vc-theorems: |-
   theorem solve_spec_satisfied (input : String) (h_precond : solve_precond input) :
       solve_postcond input (solve input h_precond) h_precond := by
     sorry
-  -- </vc-theorems>
 
 vc-postamble: |-

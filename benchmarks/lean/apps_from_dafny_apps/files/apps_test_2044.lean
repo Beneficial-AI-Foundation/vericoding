@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def ValidInput (n m : Int) (a : List Int) : Prop :=
   n ≥ 1 ∧ m ≥ 1 ∧ a.length = n ∧ 
   (∀ i, 0 ≤ i ∧ i < a.length → a[i]! ≥ 1)
@@ -32,21 +31,15 @@ def CorrectPageTurns (result a : List Int) (m : Int) : Prop :=
 def solve_precond (n m : Int) (a : List Int) : Prop :=
   ValidInput n m a
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (n m : Int) (a : List Int) (h_precond : solve_precond n m a) : List Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (n m : Int) (a : List Int) (result : List Int) (h_precond : solve_precond n m a) : Prop :=
@@ -55,5 +48,4 @@ def solve_postcond (n m : Int) (a : List Int) (result : List Int) (h_precond : s
 theorem solve_spec_satisfied (n m : Int) (a : List Int) (h_precond : solve_precond n m a) :
     solve_postcond n m a (solve n m a h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

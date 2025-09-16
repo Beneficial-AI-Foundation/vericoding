@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def winner (a b : Char) : Char :=
   if (a, b) = ('R', 'P') ∨ (a, b) = ('P', 'S') ∨ (a, b) = ('S', 'R') then b else a
 
@@ -16,21 +15,15 @@ def ValidInput (n k : Int) (s : String) : Prop :=
 def solve_precond (n k : Int) (s : String) : Prop :=
   ValidInput n k s
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (n k : Int) (s : String) (h_precond : solve_precond n k s) : Char :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (n k : Int) (s : String) (result : Char) (h_precond : solve_precond n k s) : Prop :=
@@ -39,5 +32,4 @@ def solve_postcond (n k : Int) (s : String) (result : Char) (h_precond : solve_p
 theorem solve_spec_satisfied (n k : Int) (s : String) (h_precond : solve_precond n k s) :
     solve_postcond n k s (solve n k s h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

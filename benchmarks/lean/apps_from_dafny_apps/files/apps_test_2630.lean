@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def ValidGrid (grid : List (List Int)) : Prop :=
   grid.length > 0 ∧ grid[0]!.length > 0 ∧
   (∀ i, 0 ≤ i ∧ i < grid.length → grid[i]!.length = grid[0]!.length) ∧
@@ -32,21 +31,15 @@ def DPPathCount (grid : List (List Int)) : Int :=
 def solve_precond (obstacleGrid : List (List Int)) : Prop :=
   ValidGrid obstacleGrid
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (obstacleGrid : List (List Int)) (h_precond : solve_precond obstacleGrid) : Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (obstacleGrid : List (List Int)) (result : Int) (h_precond : solve_precond obstacleGrid) : Prop :=
@@ -66,5 +59,4 @@ def solve_postcond (obstacleGrid : List (List Int)) (result : Int) (h_precond : 
 theorem solve_spec_satisfied (obstacleGrid : List (List Int)) (h_precond : solve_precond obstacleGrid) :
     solve_postcond obstacleGrid (solve obstacleGrid h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

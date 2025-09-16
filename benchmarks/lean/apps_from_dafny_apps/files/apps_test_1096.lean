@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def getChar (s : String) (i : Nat) : Char :=
   if h : i < s.length then s.get (String.Pos.mk i) else default
 
@@ -47,21 +46,15 @@ def ValidMoves (position : String) : Int :=
 def solve_precond (position : String) : Prop :=
   ValidInput position
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (position : String) (_ : solve_precond position) : Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (position : String) (moves : Int) (h_precond : solve_precond position) : Prop :=
@@ -74,5 +67,4 @@ def solve_postcond (position : String) (moves : Int) (h_precond : solve_precond 
 theorem solve_spec_satisfied (position : String) (h_precond : solve_precond position) :
     solve_postcond position (solve position h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

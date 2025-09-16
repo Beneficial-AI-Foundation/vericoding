@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def pow26 : Nat → Nat
   | 0 => 1
   | n + 1 => 26 * pow26 n
@@ -27,21 +26,15 @@ def solve_precond (k : Int) (s : String) (t : String) : Prop :=
   (∀ i, 0 ≤ i ∧ i < k.natAbs → ('a') ≤ (t.get! ⟨i⟩) ∧ (t.get! ⟨i⟩) ≤ ('z')) ∧
   s < t
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (k : Int) (s : String) (t : String) (h_precond : solve_precond k s t) : String :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (k : Int) (s : String) (t : String) (result : String) : Prop :=
@@ -53,5 +46,4 @@ def solve_postcond (k : Int) (s : String) (t : String) (result : String) : Prop 
 theorem solve_spec_satisfied (k : Int) (s : String) (t : String) (h_precond : solve_precond k s t) :
     solve_postcond k s t (solve k s t h_precond) := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def ValidPath (path : List (Nat × Nat)) (m n : Nat) : Prop :=
   path.length ≥ 1 ∧
   path.head? = some (0, 0) ∧
@@ -22,21 +21,15 @@ def ValidInput (grid : Array (Array Int)) : Prop :=
 def solve_precond (grid : Array (Array Int)) : Prop :=
   ValidInput grid
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (grid : Array (Array Int)) (h_precond : solve_precond grid) : Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (grid : Array (Array Int)) (result : Int) (h_precond : solve_precond grid) : Prop :=
@@ -45,5 +38,4 @@ def solve_postcond (grid : Array (Array Int)) (result : Int) (h_precond : solve_
 theorem solve_spec_satisfied (grid : Array (Array Int)) (h_precond : solve_precond grid) :
     solve_postcond grid (solve grid h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

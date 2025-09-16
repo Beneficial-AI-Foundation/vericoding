@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def ContainsLowercase (s : String) : Prop :=
   ∃ i, 0 ≤ i ∧ i < s.length ∧ 'a' ≤ s.data[i]! ∧ s.data[i]! ≤ 'z'
 
@@ -24,21 +23,15 @@ def StripWhitespace (s : String) : String :=
 def solve_precond (input : String) : Prop :=
   input.length > 0
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (input : String) (h_precond : solve_precond input) : String :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (input : String) (output : String) (h_precond : solve_precond input) : Prop :=
@@ -49,5 +42,4 @@ def solve_postcond (input : String) (output : String) (h_precond : solve_precond
 theorem solve_spec_satisfied (input : String) (h_precond : solve_precond input) :
     solve_postcond input (solve input h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

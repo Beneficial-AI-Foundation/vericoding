@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def IsVowel (c : Char) : Bool :=
   c = 'a' || c = 'e' || c = 'i' || c = 'o' || c = 'u' || c = 'y'
 
@@ -16,21 +15,15 @@ def ValidOutput (input output : List Char) : Prop :=
 def solve_precond (s : List Char) : Prop :=
   True
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (s : List Char) (h_precond : solve_precond s) : List Char :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (s : List Char) (result : List Char) (h_precond : solve_precond s) : Prop :=
@@ -39,5 +32,4 @@ def solve_postcond (s : List Char) (result : List Char) (h_precond : solve_preco
 theorem solve_spec_satisfied (s : List Char) (h_precond : solve_precond s) :
     solve_postcond s (solve s h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

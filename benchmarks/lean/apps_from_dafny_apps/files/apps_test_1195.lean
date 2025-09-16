@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def ValidInput (lst : List Int) : Prop :=
   5 ≤ lst.length ∧ lst.length ≤ 10 ∧
   ∀ i, 0 ≤ i ∧ i < lst.length → 1 ≤ lst[i]! ∧ lst[i]! ≤ 32
@@ -14,21 +13,15 @@ def min_of_sequence (s : List Int) : Int :=
 def solve_precond (lst : List Int) : Prop :=
   ValidInput lst
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (lst : List Int) (h_precond : solve_precond lst) : Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (lst : List Int) (result : Int) (h_precond : solve_precond lst) : Prop :=
@@ -37,5 +30,4 @@ def solve_postcond (lst : List Int) (result : Int) (h_precond : solve_precond ls
 theorem solve_spec_satisfied (lst : List Int) (h_precond : solve_precond lst) :
     solve_postcond lst (solve lst h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

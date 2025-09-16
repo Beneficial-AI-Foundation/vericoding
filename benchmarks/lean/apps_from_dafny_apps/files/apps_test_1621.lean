@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def stringValue (s : String) (w : List Int) : Int := sorry
 
 def appendValue (startPos count : Int) (maxVal : Int) : Int := sorry
@@ -18,21 +17,15 @@ def ValidInput (s : String) (k : Int) (w : List Int) : Prop :=
 def solve_precond (s : String) (k : Int) (w : List Int) : Prop :=
   ValidInput s k w
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (s : String) (k : Int) (w : List Int) (h_precond : solve_precond s k w) : Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (s : String) (k : Int) (w : List Int) (result: Int) (h_precond : solve_precond s k w) : Prop :=
@@ -41,5 +34,4 @@ def solve_postcond (s : String) (k : Int) (w : List Int) (result: Int) (h_precon
 theorem solve_spec_satisfied (s : String) (k : Int) (w : List Int) (h_precond : solve_precond s k w) :
     solve_postcond s k w (solve s k w h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

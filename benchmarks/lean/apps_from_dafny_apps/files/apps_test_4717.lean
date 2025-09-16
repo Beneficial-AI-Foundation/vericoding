@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def Distance (s t : Int) : Nat :=
   if s ≥ t then Int.natAbs (s - t) else Int.natAbs (t - s)
 
@@ -18,21 +17,15 @@ def CorrectResult (x a b : Int) (result : String) : Prop :=
 def solve_precond (x a b : Int) : Prop :=
   ValidInput x a b
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (x a b : Int) (h_precond : solve_precond x a b) : String :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (x a b : Int) (result : String) (h_precond : solve_precond x a b) : Prop :=
@@ -41,5 +34,4 @@ def solve_postcond (x a b : Int) (result : String) (h_precond : solve_precond x 
 theorem solve_spec_satisfied (x a b : Int) (h_precond : solve_precond x a b) :
     solve_postcond x a b (solve x a b h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

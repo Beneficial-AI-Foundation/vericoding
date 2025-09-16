@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def ValidInput (n m d : Int) (matrix : List (List Int)) : Prop :=
   n > 0 ∧ m > 0 ∧ d > 0 ∧
   matrix.length = n ∧
@@ -39,21 +38,15 @@ def minimumOperationsToMakeEqual (simplified : List Int) : Int :=
 def solve_precond (n m d : Int) (matrix : List (List Int)) : Prop :=
   ValidInput n m d matrix
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (n m d : Int) (matrix : List (List Int)) (h_precond : solve_precond n m d matrix) : Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (n m d : Int) (matrix : List (List Int)) (result : Int) (h_precond : solve_precond n m d matrix) : Prop :=
@@ -64,5 +57,4 @@ def solve_postcond (n m d : Int) (matrix : List (List Int)) (result : Int) (h_pr
 theorem solve_spec_satisfied (n m d : Int) (matrix : List (List Int)) (h_precond : solve_precond n m d matrix) :
     solve_postcond n m d matrix (solve n m d matrix h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

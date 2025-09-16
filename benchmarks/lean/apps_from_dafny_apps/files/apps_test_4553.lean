@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def ValidPostalCode (A B : Int) (S : String) : Prop :=
   A ≥ 1 ∧ B ≥ 1 ∧ A ≤ 5 ∧ B ≤ 5 ∧
   S.length = A.natAbs + B.natAbs + 1 ∧
@@ -13,21 +12,15 @@ def solve_precond (A B : Int) (S : String) : Prop :=
   S.length = A.natAbs + B.natAbs + 1 ∧
   (∀ i : Nat, i < S.length → (S.data[i]! = '-' ∨ ('0' ≤ S.data[i]! ∧ S.data[i]! ≤ '9')))
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (A B : Int) (S : String) (h_precond : solve_precond A B S) : String :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (A B : Int) (S : String) (result : String) (h_precond : solve_precond A B S) : Prop :=
@@ -37,5 +30,4 @@ def solve_postcond (A B : Int) (S : String) (result : String) (h_precond : solve
 theorem solve_spec_satisfied (A B : Int) (S : String) (h_precond : solve_precond A B S) :
     solve_postcond A B S (solve A B S h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

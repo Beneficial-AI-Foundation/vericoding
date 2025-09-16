@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def factorial (n : Nat) : Nat :=
   if n = 0 then 1 else n * factorial (n - 1)
 
@@ -16,21 +15,15 @@ def AllDistinctLists (result : List (List Int)) : Prop :=
 def solve_precond (nums : List Int) : Prop :=
   AllDistinct nums
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (nums : List Int) (h_precond : solve_precond nums) : List (List Int) :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (nums : List Int) (result : List (List Int)) (h_precond : solve_precond nums) : Prop :=
@@ -42,5 +35,4 @@ def solve_postcond (nums : List Int) (result : List (List Int)) (h_precond : sol
 theorem solve_spec_satisfied (nums : List Int) (h_precond : solve_precond nums) :
     solve_postcond nums (solve nums h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

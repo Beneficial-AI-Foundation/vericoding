@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def ValidInput (x y z : Int) : Prop :=
   x ≥ 1 ∧ y ≥ 1 ∧ z ≥ 1 ∧ y + 2 * z ≤ x
 
@@ -15,21 +14,15 @@ def ValidSolution (x y z : Int) (result : Int) (h : ValidInput x y z) : Prop :=
 def solve_precond (x y z : Int) : Prop :=
   ValidInput x y z
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (x y z : Int) (h_precond : solve_precond x y z) : Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (x y z : Int) (result : Int) (h_precond : solve_precond x y z) : Prop :=
@@ -38,5 +31,4 @@ def solve_postcond (x y z : Int) (result : Int) (h_precond : solve_precond x y z
 theorem solve_spec_satisfied (x y z : Int) (h_precond : solve_precond x y z) :
     solve_postcond x y z (solve x y z h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def ValidInput (n m : Nat) (buttons : List (List Nat)) : Prop :=
   buttons.length = n ∧
   n ≥ 1 ∧ m ≥ 1 ∧
@@ -15,21 +14,15 @@ def CanTurnOnAllBulbs (m : Nat) (buttons : List (List Nat)) : Prop :=
 def solve_precond (n m : Nat) (buttons : List (List Nat)) : Prop :=
   ValidInput n m buttons
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (n m : Nat) (buttons : List (List Nat)) (h_precond : solve_precond n m buttons) : String :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (n m : Nat) (buttons : List (List Nat)) (result : String) (h_precond : solve_precond n m buttons) : Prop :=
@@ -39,5 +32,4 @@ def solve_postcond (n m : Nat) (buttons : List (List Nat)) (result : String) (h_
 theorem solve_spec_satisfied (n m : Nat) (buttons : List (List Nat)) (h_precond : solve_precond n m buttons) :
     solve_postcond n m buttons (solve n m buttons h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

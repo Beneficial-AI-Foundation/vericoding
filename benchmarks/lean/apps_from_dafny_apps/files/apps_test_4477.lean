@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def IsBoringApartment (x : Int) : Prop :=
   (x ≥ 1 ∧ x ≤ 9) ∨
   (x ≥ 11 ∧ x ≤ 99 ∧ x % 11 = 0 ∧ x / 11 ≥ 1 ∧ x / 11 ≤ 9) ∨
@@ -32,21 +31,15 @@ def TotalDigitsPressed (x : Int) : Int :=
 def solve_precond (x : Int) : Prop :=
   IsBoringApartment x ∧ 1 ≤ x ∧ x ≤ 9999
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (x : Int) (h_precond : solve_precond x) : Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (x : Int) (result : Int) (h_precond : solve_precond x) : Prop :=
@@ -60,5 +53,4 @@ def solve_postcond (x : Int) (result : Int) (h_precond : solve_precond x) : Prop
 theorem solve_spec_satisfied (x : Int) (h_precond : solve_precond x) :
     solve_postcond x (solve x h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

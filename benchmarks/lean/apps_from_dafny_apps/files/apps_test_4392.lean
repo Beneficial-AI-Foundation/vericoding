@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def ValidInput (a : Array Int) (allowedPos : Array Bool) : Prop :=
   a.size > 1 ∧ allowedPos.size = a.size
 
@@ -42,21 +41,15 @@ def SortSequence (s : List Int) : List Int :=
 def solve_precond (a : Array Int) (allowedPos : Array Bool) : Prop :=
   ValidInput a allowedPos
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (a : Array Int) (allowedPos : Array Bool) (h_precond : solve_precond a allowedPos) : Bool :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (a : Array Int) (allowedPos : Array Bool) (result : Bool) (h_precond : solve_precond a allowedPos) (old_a : Array Int) : Prop :=
@@ -65,5 +58,4 @@ def solve_postcond (a : Array Int) (allowedPos : Array Bool) (result : Bool) (h_
 theorem solve_spec_satisfied (a : Array Int) (allowedPos : Array Bool) (h_precond : solve_precond a allowedPos) (old_a : Array Int) :
     solve_postcond a allowedPos (solve a allowedPos h_precond) h_precond old_a := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

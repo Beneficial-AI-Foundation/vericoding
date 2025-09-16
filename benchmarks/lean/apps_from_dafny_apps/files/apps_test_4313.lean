@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def SumOfPositiveProfits (values : List Int) (costs : List Int) (n : Nat) : Int :=
   if n = 0 then 0
   else 
@@ -13,21 +12,15 @@ def ValidInput (n : Int) (values : List Int) (costs : List Int) : Prop :=
 def solve_precond (n : Int) (values : List Int) (costs : List Int) : Prop :=
   ValidInput n values costs
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (n : Int) (values : List Int) (costs : List Int) (h_precond : solve_precond n values costs) : Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (n : Int) (values : List Int) (costs : List Int) (result : Int) (h_precond : solve_precond n values costs) : Prop :=
@@ -36,5 +29,4 @@ def solve_postcond (n : Int) (values : List Int) (costs : List Int) (result : In
 theorem solve_spec_satisfied (n : Int) (values : List Int) (costs : List Int) (h_precond : solve_precond n values costs) :
     solve_postcond n values costs (solve n values costs h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

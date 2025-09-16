@@ -1,7 +1,6 @@
 Let me try again with the corrected max usage for Int:
 
 vc-preamble: |-
-  -- <vc-preamble>
   def sum (l : List Int) : Int :=
     l.foldl (· + ·) 0
 
@@ -50,20 +49,14 @@ vc-preamble: |-
   @[reducible, simp]
   def solve_precond (n : Int) (c : Int) (P : List Int) (T : List Int) : Prop :=
     ValidInput n c P T
-  -- </vc-preamble>
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
-  -- <vc-definitions>
   def solve (n : Int) (c : Int) (P : List Int) (T : List Int) (h_precond : solve_precond n c P T) : String :=
     sorry
-  -- </vc-definitions>
 
 vc-theorems: |-
-  -- <vc-theorems>
   @[reducible, simp]
   def solve_postcond (n : Int) (c : Int) (P : List Int) (T : List Int) (result : String) (h_precond : solve_precond n c P T) : Prop :=
     (result = "Limak" ∨ result = "Radewoosh" ∨ result = "Tie") ∧
@@ -76,6 +69,5 @@ vc-theorems: |-
   theorem solve_spec_satisfied (n : Int) (c : Int) (P : List Int) (T : List Int) (h_precond : solve_precond n c P T) :
       solve_postcond n c P T (solve n c P T h_precond) h_precond := by
     sorry
-  -- </vc-theorems>
 
 vc-postamble: |-

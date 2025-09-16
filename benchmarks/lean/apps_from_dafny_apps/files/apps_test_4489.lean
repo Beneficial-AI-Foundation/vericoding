@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def count_occurrences (cards : List String) (target : String) : Int :=
   match cards with
   | [] => 0
@@ -36,21 +35,15 @@ def max_net_earnings (blue_cards : List String) (red_cards : List String) : Int 
 def solve_precond (blue_cards red_cards : List String) : Prop :=
   True
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (blue_cards red_cards : List String) (h_precond : solve_precond blue_cards red_cards) : Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (blue_cards red_cards : List String) (result : Int) (h_precond : solve_precond blue_cards red_cards) : Prop :=
@@ -59,5 +52,4 @@ def solve_postcond (blue_cards red_cards : List String) (result : Int) (h_precon
 theorem solve_spec_satisfied (blue_cards red_cards : List String) (h_precond : solve_precond blue_cards red_cards) :
     solve_postcond blue_cards red_cards (solve blue_cards red_cards h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

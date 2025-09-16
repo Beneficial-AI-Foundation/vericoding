@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def ValidGrid (grid : List (List Int)) : Prop :=
   grid.length > 0 ∧ ∀ i, 0 ≤ i ∧ i < grid.length → (grid[i]!).length > 0
 
@@ -17,21 +16,15 @@ def seq_max : List Int → Int
 def solve_precond (grid : List (List Int)) : Prop :=
   ValidGrid grid
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (grid : List (List Int)) (h_precond : solve_precond grid) : Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (grid : List (List Int)) (result : Int) (h_precond : solve_precond grid) : Prop :=
@@ -41,5 +34,4 @@ def solve_postcond (grid : List (List Int)) (result : Int) (h_precond : solve_pr
 theorem solve_spec_satisfied (grid : List (List Int)) (h_precond : solve_precond grid) :
     solve_postcond grid (solve grid h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

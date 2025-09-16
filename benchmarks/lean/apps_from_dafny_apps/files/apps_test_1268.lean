@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def ValidInput (a b : List Int) : Prop :=
   a.length = b.length ∧ a.length ≥ 2 ∧ ∀ i, 0 ≤ i ∧ i < a.length → 0 ≤ a[i]! ∧ a[i]! ≤ b[i]!
 
@@ -19,21 +18,15 @@ def findTwoLargestSum (s : List Int) : Int :=
 def solve_precond (a b : List Int) : Prop :=
   ValidInput a b
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (a b : List Int) (h_precond : solve_precond a b) : String :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (a b : List Int) (result : String) (h_precond : solve_precond a b) : Prop :=
@@ -42,5 +35,4 @@ def solve_postcond (a b : List Int) (result : String) (h_precond : solve_precond
 theorem solve_spec_satisfied (a b : List Int) (h_precond : solve_precond a b) :
     solve_postcond a b (solve a b h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

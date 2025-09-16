@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 
 def ValidInput (n d : Int) (currentPoints awards : List Int) : Prop :=
   n ≥ 1 ∧ n ≤ 200000 ∧
@@ -29,21 +28,15 @@ def CountOvertaken (currentPoints awards : List Int) (d : Int) : Int :=
 def solve_precond (n d : Int) (currentPoints awards : List Int) : Prop :=
   ValidInput n d currentPoints awards
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (n d : Int) (currentPoints awards : List Int) (h_precond : solve_precond n d currentPoints awards) : Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (n d : Int) (currentPoints awards : List Int) (result : Int) (h_precond : solve_precond n d currentPoints awards) : Prop :=
@@ -52,5 +45,4 @@ def solve_postcond (n d : Int) (currentPoints awards : List Int) (result : Int) 
 theorem solve_spec_satisfied (n d : Int) (currentPoints awards : List Int) (h_precond : solve_precond n d currentPoints awards) :
     solve_postcond n d currentPoints awards (solve n d currentPoints awards h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

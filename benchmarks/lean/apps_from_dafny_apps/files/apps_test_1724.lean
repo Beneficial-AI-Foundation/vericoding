@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def isBinaryString (s : String) : Prop :=
   ∀ i : Nat, i < s.length → s.data[i]! = '0' ∨ s.data[i]! = '1'
 
@@ -29,21 +28,15 @@ def solve_precond (n : Int) (a : List Int) (k : String) : Prop :=
   (∀ i : Nat, i < n.natAbs → a[i]! ≥ 0) ∧
   isBinaryString k
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (n : Int) (a : List Int) (k : String) (h_precond : solve_precond n a k) : Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (n : Int) (a : List Int) (k : String) (result: Int) (h_precond : solve_precond n a k) : Prop :=
@@ -54,5 +47,4 @@ def solve_postcond (n : Int) (a : List Int) (k : String) (result: Int) (h_precon
 theorem solve_spec_satisfied (n : Int) (a : List Int) (k : String) (h_precond : solve_precond n a k) :
     solve_postcond n a k (solve n a k h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

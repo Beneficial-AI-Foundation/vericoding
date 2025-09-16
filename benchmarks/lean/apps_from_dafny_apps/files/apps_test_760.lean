@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def is_tandem_repeat (s : List Char) : Bool :=
   if s.length % 2 ≠ 0 then false
   else
@@ -13,21 +12,15 @@ def is_tandem_repeat (s : List Char) : Bool :=
 def solve_precond (s : String) (k : Int) : Prop :=
   k ≥ 1 ∧ s.length ≥ 1
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (s : String) (k : Int) (h_precond : solve_precond s k) : Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (s : String) (k : Int) (result : Int) (h_precond : solve_precond s k) : Prop :=
@@ -44,5 +37,4 @@ def solve_postcond (s : String) (k : Int) (result : Int) (h_precond : solve_prec
 theorem solve_spec_satisfied (s : String) (k : Int) (h_precond : solve_precond s k) :
     solve_postcond s k (solve s k h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

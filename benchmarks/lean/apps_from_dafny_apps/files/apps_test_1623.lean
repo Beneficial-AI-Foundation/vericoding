@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def Power (base : Int) (exp : Int) : Int := sorry
 
 def SumWithDecreasingPowers (n : Int) (start_power : Int) : Int := sorry
@@ -21,21 +20,15 @@ def MaxSumCalculation (n : Int) (r : Int) : Int :=
 def solve_precond (n l r : Int) : Prop :=
   ValidInput n l r
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (n l r : Int) (h_precond : solve_precond n l r) : Int × Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (n l r : Int) (result : Int × Int) (h_precond : solve_precond n l r) : Prop :=
@@ -50,5 +43,4 @@ def solve_postcond (n l r : Int) (result : Int × Int) (h_precond : solve_precon
 theorem solve_spec_satisfied (n l r : Int) (h_precond : solve_precond n l r) :
     solve_postcond n l r (solve n l r h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

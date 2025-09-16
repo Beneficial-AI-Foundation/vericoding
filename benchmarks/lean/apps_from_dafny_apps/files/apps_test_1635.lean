@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def LastOccurrenceHelper (cafes : List Int) (cafe : Int) (index : Int) : Int :=
   sorry
 
@@ -10,21 +9,15 @@ def LastOccurrencePosition (cafes : List Int) (cafe : Int) (h : cafe ∈ cafes) 
 def solve_precond (cafes : List Int) : Prop :=
   cafes.length > 0
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (cafes : List Int) (h_precond : solve_precond cafes) : Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (cafes : List Int) (mini : Int) (h_precond : solve_precond cafes) : Prop :=
@@ -35,5 +28,4 @@ def solve_postcond (cafes : List Int) (mini : Int) (h_precond : solve_precond ca
 theorem solve_spec_satisfied (cafes : List Int) (h_precond : solve_precond cafes) :
     solve_postcond cafes (solve cafes h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

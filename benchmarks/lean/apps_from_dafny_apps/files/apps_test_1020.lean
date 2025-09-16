@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def ValidInput (w h k : Int) : Prop :=
   w ≥ 3 ∧ h ≥ 3 ∧ w ≤ 100 ∧ h ≤ 100 ∧ 
   k ≥ 1 ∧ k ≤ ((if w ≤ h then w else h) + 1) / 4 ∧
@@ -16,21 +15,15 @@ def computeSum (w h : Int) : Nat → Int
 def solve_precond (w h k : Int) : Prop :=
   ValidInput w h k
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (w h k : Int) (h_precond : solve_precond w h k) : Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (w h k : Int) (result : Int) (h_precond : solve_precond w h k) : Prop :=
@@ -39,5 +32,4 @@ def solve_postcond (w h k : Int) (result : Int) (h_precond : solve_precond w h k
 theorem solve_spec_satisfied (w h k : Int) (h_precond : solve_precond w h k) :
     solve_postcond w h k (solve w h k h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

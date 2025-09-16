@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def ValidInput (C Hr Hb Wr Wb : Int) : Prop :=
   C ≥ 0 ∧ Hr > 0 ∧ Hb > 0 ∧ Wr > 0 ∧ Wb > 0
 
@@ -13,21 +12,15 @@ def Joy (redCount blueCount Hr Hb : Int) : Int :=
 def solve_precond (C Hr Hb Wr Wb : Int) : Prop :=
   ValidInput C Hr Hb Wr Wb
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (C Hr Hb Wr Wb : Int) (h_precond : solve_precond C Hr Hb Wr Wb) : Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (C Hr Hb Wr Wb : Int) (result : Int) (h_precond : solve_precond C Hr Hb Wr Wb) : Prop :=
@@ -40,5 +33,4 @@ def solve_postcond (C Hr Hb Wr Wb : Int) (result : Int) (h_precond : solve_preco
 theorem solve_spec_satisfied (C Hr Hb Wr Wb : Int) (h_precond : solve_precond C Hr Hb Wr Wb) :
     solve_postcond C Hr Hb Wr Wb (solve C Hr Hb Wr Wb h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

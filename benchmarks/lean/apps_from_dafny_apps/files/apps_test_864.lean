@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def countPackages (foodTypes : List Int) (targetType : Int) : Int :=
   match foodTypes with
   | [] => 0
@@ -28,21 +27,15 @@ def solve_precond (n m : Int) (foodTypes : List Int) : Prop :=
   foodTypes.length = Int.natAbs m ∧
   ∀ i, 0 ≤ i ∧ i < foodTypes.length → 1 ≤ foodTypes[i]! ∧ foodTypes[i]! ≤ 100
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (n m : Int) (foodTypes : List Int) (h_precond : solve_precond n m foodTypes) : Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (n m : Int) (foodTypes : List Int) (result : Int) (h_precond : solve_precond n m foodTypes) : Prop :=
@@ -55,5 +48,4 @@ def solve_postcond (n m : Int) (foodTypes : List Int) (result : Int) (h_precond 
 theorem solve_spec_satisfied (n m : Int) (foodTypes : List Int) (h_precond : solve_precond n m foodTypes) :
     solve_postcond n m foodTypes (solve n m foodTypes h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

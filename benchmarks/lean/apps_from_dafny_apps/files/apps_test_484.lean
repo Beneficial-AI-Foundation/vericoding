@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 
 def myMax (x y : Int) : Int :=
   if x ≥ y then x else y
@@ -36,21 +35,15 @@ def checkPairFunc (seal1 seal2 : Int × Int) (a b : Int) : Int :=
 def solve_precond (n a b : Int) (seals : List (Int × Int)) : Prop :=
   n ≥ 0 ∧ a ≥ 1 ∧ b ≥ 1 ∧ seals.length = n.natAbs ∧ ∀ i, 0 ≤ i ∧ i < n → (seals[i.natAbs]!).1 ≥ 1 ∧ (seals[i.natAbs]!).2 ≥ 1
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (n a b : Int) (seals : List (Int × Int)) (h_precond : solve_precond n a b seals) : Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (n a b : Int) (seals : List (Int × Int)) (result : Int) (h_precond : solve_precond n a b seals) : Prop :=
@@ -62,5 +55,4 @@ def solve_postcond (n a b : Int) (seals : List (Int × Int)) (result : Int) (h_p
 theorem solve_spec_satisfied (n a b : Int) (seals : List (Int × Int)) (h_precond : solve_precond n a b seals) :
     solve_postcond n a b seals (solve n a b seals h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

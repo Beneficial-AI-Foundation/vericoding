@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def ValidInput (n : Int) (a : List Int) (s f : Int) : Prop :=
   n ≥ 2 ∧ a.length = n ∧ s ≥ 1 ∧ f > s ∧ f ≤ n ∧
   ∀ i, 0 ≤ i ∧ i < n → a[i.natAbs]! ≥ 1
@@ -23,21 +22,15 @@ def participantCount (a : List Int) (s f n start : Int) : Int :=
 def solve_precond (n : Int) (a : List Int) (s f : Int) : Prop :=
   ValidInput n a s f
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (n : Int) (a : List Int) (s f : Int) (h_precond : solve_precond n a s f) : Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (n : Int) (a : List Int) (s f : Int) (result : Int) (_ : solve_precond n a s f) : Prop :=
@@ -51,5 +44,4 @@ def solve_postcond (n : Int) (a : List Int) (s f : Int) (result : Int) (_ : solv
 theorem solve_spec_satisfied (n : Int) (a : List Int) (s f : Int) (h_precond : solve_precond n a s f) :
     solve_postcond n a s f (solve n a s f h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

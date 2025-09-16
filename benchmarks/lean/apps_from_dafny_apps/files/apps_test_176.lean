@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def ValidInput (k a b : Int) : Prop :=
   k > 0 ∧ a ≤ b
 
@@ -14,21 +13,15 @@ def CountDivisiblesInRange (k a b : Int) : Int :=
 def solve_precond (k a b : Int) : Prop :=
   ValidInput k a b
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (k a b : Int) (h_precond : solve_precond k a b) : Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (k a b : Int) (result : Int) (h_precond : solve_precond k a b) : Prop :=
@@ -37,5 +30,4 @@ def solve_postcond (k a b : Int) (result : Int) (h_precond : solve_precond k a b
 theorem solve_spec_satisfied (k a b : Int) (h_precond : solve_precond k a b) :
     solve_postcond k a b (solve k a b h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

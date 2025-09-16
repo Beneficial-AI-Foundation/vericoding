@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def ValidInput (n : Int) (segments : List (Int × Int)) : Prop :=
   n ≥ 1 ∧ segments.length = n ∧ 
   ∀ i, 0 ≤ i ∧ i < n → (segments[Int.natAbs i]!).1 ≤ (segments[Int.natAbs i]!).2
@@ -24,21 +23,15 @@ def MaxRight (segments : List (Int × Int)) : Int :=
 def solve_precond (n : Int) (segments : List (Int × Int)) : Prop :=
   ValidInput n segments
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (n : Int) (segments : List (Int × Int)) (h_precond : solve_precond n segments) : Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (n : Int) (segments : List (Int × Int)) (result : Int) (h_precond : solve_precond n segments) : Prop :=
@@ -53,5 +46,4 @@ def solve_postcond (n : Int) (segments : List (Int × Int)) (result : Int) (h_pr
 theorem solve_spec_satisfied (n : Int) (segments : List (Int × Int)) (h_precond : solve_precond n segments) :
     solve_postcond n segments (solve n segments h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

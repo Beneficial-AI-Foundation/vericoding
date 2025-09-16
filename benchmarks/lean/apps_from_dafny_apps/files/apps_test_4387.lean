@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def ValidRating (R : Int) : Prop :=
   0 ≤ R ∧ R ≤ 4208
 
@@ -12,21 +11,15 @@ def ContestForRating (R : Int) : String :=
 def solve_precond (R : Int) : Prop :=
   ValidRating R
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (R : Int) (h_precond : solve_precond R) : String :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (R : Int) (result : String) (h_precond : solve_precond R) : Prop :=
@@ -38,5 +31,4 @@ def solve_postcond (R : Int) (result : String) (h_precond : solve_precond R) : P
 theorem solve_spec_satisfied (R : Int) (h_precond : solve_precond R) :
     solve_postcond R (solve R h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

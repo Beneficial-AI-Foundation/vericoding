@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def SplitBySpacesHelper (s : String) (i : Nat) (current : String) (parts : List String) : List String :=
   if i ≥ s.length then
     if current.length > 0 then parts ++ [current] else parts
@@ -47,21 +46,15 @@ def ValidThreeIntegers (input : String) (a b c : Int) : Prop :=
 def solve_precond (input : String) : Prop :=
   input.length > 0
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (input : String) (h_precond : solve_precond input) : String :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (input : String) (result : String) (h_precond : solve_precond input) : Prop :=
@@ -79,5 +72,4 @@ def solve_postcond (input : String) (result : String) (h_precond : solve_precond
 theorem solve_spec_satisfied (input : String) (h_precond : solve_precond input) :
     solve_postcond input (solve input h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

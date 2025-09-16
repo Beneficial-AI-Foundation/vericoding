@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 -- Helper function for integer to string conversion (placeholder)
 def IntToString (n : Int) : String := sorry
 
@@ -31,21 +30,15 @@ def ValidCheckerboardPlacement (result : List String) (n : Int) : Prop :=
 def solve_precond (n : Int) : Prop :=
   ValidInput n
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (n : Int) (h_precond : solve_precond n) : List String :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (n : Int) (result : List String) (h_precond : solve_precond n) : Prop :=
@@ -54,5 +47,4 @@ def solve_postcond (n : Int) (result : List String) (h_precond : solve_precond n
 theorem solve_spec_satisfied (n : Int) (h_precond : solve_precond n) :
     solve_postcond n (solve n h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

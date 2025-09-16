@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def IsValidString (s : String) : Prop :=
   s.length > 0
 
@@ -55,21 +54,15 @@ def solve_precond (lines : List String) : Prop :=
      IsValidIntegerString lines[1 + 2*i.natAbs]! ∧
      IsValidProblemString lines[2 + 2*i.natAbs]!)
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (lines : List String) (h_precond : solve_precond lines) : List Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (lines : List String) (results : List Int) (h_precond : solve_precond lines) : Prop :=
@@ -82,5 +75,4 @@ def solve_postcond (lines : List String) (results : List Int) (h_precond : solve
 theorem solve_spec_satisfied (lines : List String) (h_precond : solve_precond lines) :
     solve_postcond lines (solve lines h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

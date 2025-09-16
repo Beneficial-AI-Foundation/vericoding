@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def ValidInput (n x a b : Int) : Prop :=
   2 ≤ n ∧ n ≤ 100 ∧ 0 ≤ x ∧ x ≤ 100 ∧ 1 ≤ a ∧ a ≤ n ∧ 1 ≤ b ∧ b ≤ n ∧ a ≠ b
 
@@ -16,21 +15,15 @@ def ValidResult (n x a b result : Int) (h : ValidInput n x a b) : Prop :=
 def solve_precond (n x a b : Int) : Prop :=
   ValidInput n x a b
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (n x a b : Int) (h_precond : solve_precond n x a b) : Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (n x a b : Int) (result : Int) (h_precond : solve_precond n x a b) : Prop :=
@@ -39,5 +32,4 @@ def solve_postcond (n x a b : Int) (result : Int) (h_precond : solve_precond n x
 theorem solve_spec_satisfied (n x a b : Int) (h_precond : solve_precond n x a b) :
     solve_postcond n x a b (solve n x a b h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

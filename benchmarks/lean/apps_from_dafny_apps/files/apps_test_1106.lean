@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def power2 : Nat → Nat
   | 0 => 1
   | n + 1 => 2 * power2 n
@@ -32,21 +31,15 @@ termination_by power2 (n + 1) - i
 def solve_precond (n : Int) (lights : List Int) : Prop :=
   ValidInput n lights
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (n : Int) (lights : List Int) (h_precond : solve_precond n lights) : Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (n : Int) (lights : List Int) (result : Int) (h_precond : solve_precond n lights) : Prop :=
@@ -55,5 +48,4 @@ def solve_postcond (n : Int) (lights : List Int) (result : Int) (h_precond : sol
 theorem solve_spec_satisfied (n : Int) (lights : List Int) (h_precond : solve_precond n lights) :
     solve_postcond n lights (solve n lights h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

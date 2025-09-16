@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 
 def ValidInput (n k : Int) (L : List Int) : Prop :=
   n ≥ 1 ∧ k ≥ 1 ∧ n ≤ 2*k ∧
@@ -22,21 +21,15 @@ def max (s : List Int) : Int :=
 def solve_precond (n k : Int) (L : List Int) : Prop :=
   ValidInput n k L
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (n k : Int) (L : List Int) (h_precond : solve_precond n k L) : Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (n k : Int) (L : List Int) (result : Int) (h_precond : solve_precond n k L) : Prop :=
@@ -45,5 +38,4 @@ def solve_postcond (n k : Int) (L : List Int) (result : Int) (h_precond : solve_
 theorem solve_spec_satisfied (n k : Int) (L : List Int) (h_precond : solve_precond n k L) :
     solve_postcond n k L (solve n k L h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

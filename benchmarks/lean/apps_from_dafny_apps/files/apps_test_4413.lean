@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def ValidInput (skills : List Int) : Prop :=
   skills.length ≥ 0
 
@@ -10,21 +9,15 @@ def HasAdjacentSkills (skills : List Int) : Prop :=
 def solve_precond (skills : List Int) : Prop :=
   ValidInput skills
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (skills : List Int) (h_precond : solve_precond skills) : Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (skills : List Int) (teams : Int) (h_precond : solve_precond skills) : Prop :=
@@ -35,5 +28,4 @@ def solve_postcond (skills : List Int) (teams : Int) (h_precond : solve_precond 
 theorem solve_spec_satisfied (skills : List Int) (h_precond : solve_precond skills) :
     solve_postcond skills (solve skills h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

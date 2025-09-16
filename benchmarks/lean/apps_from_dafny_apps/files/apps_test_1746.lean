@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def hasChildren (node : Nat) (parents : List Int) (n : Nat) : Bool :=
   (List.range (n - 1)).any (fun i => parents[i]! - 1 = Int.ofNat node)
 
@@ -19,21 +18,15 @@ def IsSpruce (n : Nat) (parents : List Int) : Prop :=
 def solve_precond (n : Nat) (parents : List Int) : Prop :=
   ValidInput n parents
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (n : Nat) (parents : List Int) (h_precond : solve_precond n parents) : String :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (n : Nat) (parents : List Int) (result : String) (h_precond : solve_precond n parents) : Prop :=
@@ -43,5 +36,4 @@ def solve_postcond (n : Nat) (parents : List Int) (result : String) (h_precond :
 theorem solve_spec_satisfied (n : Nat) (parents : List Int) (h_precond : solve_precond n parents) :
     solve_postcond n parents (solve n parents h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

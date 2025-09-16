@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def ValidInput (n k : Int) (s : String) : Prop :=
   n ≥ 2 ∧
   1 ≤ k ∧ k < n ∧
@@ -30,21 +29,15 @@ def CanReachTarget (s : String) (k : Int) : Prop :=
 def solve_precond (n k : Int) (s : String) : Prop :=
   ValidInput n k s
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (n k : Int) (s : String) (h_precond : solve_precond n k s) : String :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (n k : Int) (s : String) (result : String) (h_precond : solve_precond n k s) : Prop :=
@@ -54,5 +47,4 @@ def solve_postcond (n k : Int) (s : String) (result : String) (h_precond : solve
 theorem solve_spec_satisfied (n k : Int) (s : String) (h_precond : solve_precond n k s) :
     solve_postcond n k s (solve n k s h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def ValidInput (a b c d : Int) : Prop :=
   a ≥ 0 ∧ b ≥ 0 ∧ c ≥ 0 ∧ d ≥ 0
 
@@ -21,21 +20,15 @@ def CalculateWakeTime (a b c d : Int) : Int :=
 def solve_precond (a b c d : Int) : Prop :=
   ValidInput a b c d
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (a b c d : Int) (h_precond : solve_precond a b c d) : Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (a b c d : Int) (result : Int) (h_precond : solve_precond a b c d) : Prop :=
@@ -46,5 +39,4 @@ def solve_postcond (a b c d : Int) (result : Int) (h_precond : solve_precond a b
 theorem solve_spec_satisfied (a b c d : Int) (h_precond : solve_precond a b c d) :
     solve_postcond a b c d (solve a b c d h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

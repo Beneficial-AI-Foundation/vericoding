@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def countVVPairsBefore (s : String) (pos : Nat) : Nat :=
   if pos ≤ 1 then 0
   else
@@ -31,21 +30,15 @@ def wowFactor (s : String) : Nat :=
 def solve_precond (s : String) : Prop :=
   s.length > 0 ∧ ∀ i, i < s.length → s.data[i]! == 'v' ∨ s.data[i]! == 'o'
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (s : String) (h_precond : solve_precond s) : Int :=
   Int.ofNat (wowFactor s)
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (s : String) (result : Int) (h_precond : solve_precond s) : Prop :=
@@ -54,5 +47,4 @@ def solve_postcond (s : String) (result : Int) (h_precond : solve_precond s) : P
 theorem solve_spec_satisfied (s : String) (h_precond : solve_precond s) :
     solve_postcond s (solve s h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

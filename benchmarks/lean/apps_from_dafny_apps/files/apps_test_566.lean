@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def ValidInput (r g b : Int) : Prop :=
   r ≥ 0 ∧ g ≥ 0 ∧ b ≥ 0
 
@@ -13,21 +12,15 @@ def MaxTables (r g b : Int) : Int :=
 def solve_precond (r g b : Int) : Prop :=
   ValidInput r g b
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (r g b : Int) (h_precond : solve_precond r g b) : Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (r g b : Int) (result : Int) (h_precond : solve_precond r g b) : Prop :=
@@ -36,5 +29,4 @@ def solve_postcond (r g b : Int) (result : Int) (h_precond : solve_precond r g b
 theorem solve_spec_satisfied (r g b : Int) (h_precond : solve_precond r g b) :
     solve_postcond r g b (solve r g b h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

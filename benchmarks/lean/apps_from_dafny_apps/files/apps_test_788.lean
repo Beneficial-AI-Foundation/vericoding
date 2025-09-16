@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def ValidInput (s : String) : Prop :=
   s.length = 7 ∧ s.data[0]! = 'A' ∧ ∀ i : Nat, 1 ≤ i ∧ i < 7 → '0' ≤ s.data[i]! ∧ s.data[i]! ≤ '9'
 
@@ -17,21 +16,15 @@ def ZeroCount (s : String) (start : Nat) (end_ : Nat) : Nat :=
 def solve_precond (s : String) : Prop :=
   ValidInput s
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (s : String) (h_precond : solve_precond s) : Nat :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (s : String) (result : Nat) (h_precond : solve_precond s) : Prop :=
@@ -40,5 +33,4 @@ def solve_postcond (s : String) (result : Nat) (h_precond : solve_precond s) : P
 theorem solve_spec_satisfied (s : String) (h_precond : solve_precond s) :
     solve_postcond s (solve s h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

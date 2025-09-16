@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 inductive Result where
   | Impossible : Result
   | Possible : Int → List (Int × Int) → Result
@@ -52,21 +51,15 @@ def solve_precond (t : Int) (cases : List (Int × Int × List Int)) : Prop :=
     | some (n, m, weights) => n ≥ 0 ∧ m ≥ 0 ∧ weights.length = n.natAbs
     | none => False
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (t : Int) (cases : List (Int × Int × List Int)) (h_precond : solve_precond t cases) : List Result :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (t : Int) (cases : List (Int × Int × List Int)) (results : List Result) (h_precond : solve_precond t cases) : Prop :=
@@ -125,5 +118,4 @@ def solve_postcond (t : Int) (cases : List (Int × Int × List Int)) (results : 
 theorem solve_spec_satisfied (t : Int) (cases : List (Int × Int × List Int)) (h_precond : solve_precond t cases) :
     solve_postcond t cases (solve t cases h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

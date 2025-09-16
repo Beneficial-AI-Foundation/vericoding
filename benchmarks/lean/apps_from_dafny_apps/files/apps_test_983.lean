@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def max_prefix (s : List Int) (i : Nat) : Int :=
   if h : i < s.length then
     if i = 0 then s[0]!
@@ -31,21 +30,15 @@ def ValidInput (n : Int) (a : List Int) : Prop :=
 def solve_precond (n : Int) (p : Int) (q : Int) (r : Int) (a : List Int) : Prop :=
   ValidInput n a
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (n : Int) (p : Int) (q : Int) (r : Int) (a : List Int) (h_precond : solve_precond n p q r a) : Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (n : Int) (p : Int) (q : Int) (r : Int) (a : List Int) (result : Int) (h_precond : solve_precond n p q r a) : Prop :=
@@ -54,5 +47,4 @@ def solve_postcond (n : Int) (p : Int) (q : Int) (r : Int) (a : List Int) (resul
 theorem solve_spec_satisfied (n : Int) (p : Int) (q : Int) (r : Int) (a : List Int) (h_precond : solve_precond n p q r a) :
     solve_postcond n p q r a (solve n p q r a h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

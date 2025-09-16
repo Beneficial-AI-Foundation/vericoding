@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def ValidInput (x : Int) : Prop :=
   x ≥ 1
 
@@ -10,21 +9,14 @@ def IsMinimalSteps (x : Int) (steps : Int) : Prop :=
 def solve_precond (x : Int) : Prop :=
   ValidInput x
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (x : Int) (h_precond : solve_precond x) : Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
 -- <vc-theorems>
--- <vc-theorems>
--- </vc-theorems>
 -- </vc-theorems>

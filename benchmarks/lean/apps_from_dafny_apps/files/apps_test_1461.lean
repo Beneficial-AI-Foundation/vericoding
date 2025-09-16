@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def ValidGraph (n : Int) (f : List Int) (w : List Int) : Prop :=
   n > 0 ∧ f.length = n ∧ w.length = n ∧
   (∀ i, 0 ≤ i ∧ i < n → 0 ≤ f[i.toNat]! ∧ f[i.toNat]! < n) ∧
@@ -25,21 +24,15 @@ termination_by k.natAbs
 def solve_precond (n : Int) (k : Int) (f : List Int) (w : List Int) : Prop :=
   ValidGraph n f w ∧ k > 0
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (n : Int) (k : Int) (f : List Int) (w : List Int) (h_precond : solve_precond n k f w) : List Int × List Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (n : Int) (k : Int) (f : List Int) (w : List Int) (result : List Int × List Int) (h_precond : solve_precond n k f w) : Prop :=
@@ -48,5 +41,4 @@ def solve_postcond (n : Int) (k : Int) (f : List Int) (w : List Int) (result : L
 theorem solve_spec_satisfied (n : Int) (k : Int) (f : List Int) (w : List Int) (h_precond : solve_precond n k f w) :
     solve_postcond n k f w (solve n k f w h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

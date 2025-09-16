@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 
 def ValidInput (N A B C D E : Int) : Prop :=
   N ≥ 1 ∧ A ≥ 1 ∧ B ≥ 1 ∧ C ≥ 1 ∧ D ≥ 1 ∧ E ≥ 1
@@ -22,21 +21,15 @@ def CorrectResult (N A B C D E result : Int) : Prop :=
 def solve_precond (N A B C D E : Int) : Prop :=
   ValidInput N A B C D E
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (N A B C D E : Int) (h_precond : solve_precond N A B C D E) : Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (N A B C D E : Int) (result : Int) (h_precond : solve_precond N A B C D E) : Prop :=
@@ -45,5 +38,4 @@ def solve_postcond (N A B C D E : Int) (result : Int) (h_precond : solve_precond
 theorem solve_spec_satisfied (N A B C D E : Int) (h_precond : solve_precond N A B C D E) :
     solve_postcond N A B C D E (solve N A B C D E h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

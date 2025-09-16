@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def SumOfDigits (n : Nat) : Nat :=
   if n < 10 then n
   else (n % 10) + SumOfDigits (n / 10)
@@ -25,21 +24,15 @@ def ValidOutput (result : List Int) (k : Int) : Prop :=
 def solve_precond (k : Int) : Prop :=
   k ≥ 1
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (k : Int) (h_precond : solve_precond k) : List Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (k : Int) (result : List Int) (h_precond : solve_precond k) : Prop :=
@@ -48,5 +41,4 @@ def solve_postcond (k : Int) (result : List Int) (h_precond : solve_precond k) :
 theorem solve_spec_satisfied (k : Int) (h_precond : solve_precond k) :
     solve_postcond k (solve k h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

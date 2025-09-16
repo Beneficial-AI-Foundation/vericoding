@@ -1,5 +1,4 @@
 vc-preamble: |-
-  -- <vc-preamble>
   def ValidInput (m d : Int) : Prop :=
     1 ≤ m ∧ m ≤ 12 ∧ 1 ≤ d ∧ d ≤ 7
 
@@ -23,20 +22,14 @@ vc-preamble: |-
   @[reducible, simp]
   def solve_precond (m d : Int) : Prop :=
     ValidInput m d
-  -- </vc-preamble>
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
-  -- <vc-definitions>
   def solve (m d : Int) (h_precond : solve_precond m d) : Int :=
     sorry
-  -- </vc-definitions>
 
 vc-theorems: |-
-  -- <vc-theorems>
   @[reducible, simp]
   def solve_postcond (m d : Int) (result : Int) (h_precond : solve_precond m d) : Prop :=
     result = ColumnsNeeded m d ∧ 4 ≤ result ∧ result ≤ 6
@@ -44,6 +37,5 @@ vc-theorems: |-
   theorem solve_spec_satisfied (m d : Int) (h_precond : solve_precond m d) :
       solve_postcond m d (solve m d h_precond) h_precond := by
     sorry
-  -- </vc-theorems>
 
 vc-postamble: |-

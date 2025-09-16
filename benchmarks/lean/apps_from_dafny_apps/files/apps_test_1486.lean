@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def ValidInput (cities : List Int) : Prop :=
   cities.length ≥ 2 ∧
   ∀ i j, 0 ≤ i ∧ i < j ∧ j < cities.length → cities[i]! < cities[j]!
@@ -38,21 +37,15 @@ def ValidOutput (cities : List Int) (min_distances : List Int) (max_distances : 
 def solve_precond (cities : List Int) : Prop :=
   ValidInput cities
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (cities : List Int) (h_precond : solve_precond cities) : List Int × List Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (cities : List Int) (result: List Int × List Int) (h_precond : solve_precond cities) : Prop :=
@@ -61,5 +54,4 @@ def solve_postcond (cities : List Int) (result: List Int × List Int) (h_precond
 theorem solve_spec_satisfied (cities : List Int) (h_precond : solve_precond cities) :
     solve_postcond cities (solve cities h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

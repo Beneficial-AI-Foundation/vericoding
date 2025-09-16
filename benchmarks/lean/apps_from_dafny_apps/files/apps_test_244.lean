@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 @[reducible, simp]
 def ValidPosition (pos : Int) : Prop :=
   0 ≤ pos ∧ pos ≤ 2
@@ -28,21 +27,15 @@ def ReverseMove (pos : Int) (moveNum : Int) (h_valid : ValidPosition pos) (h_mov
 def solve_precond (n x : Int) : Prop :=
   n ≥ 1 ∧ n ≤ 2000000000 ∧ ValidPosition x
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (n x : Int) (h_precond : solve_precond n x) : Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (n x : Int) (result : Int) (h_precond : solve_precond n x) : Prop :=
@@ -51,5 +44,4 @@ def solve_postcond (n x : Int) (result : Int) (h_precond : solve_precond n x) : 
 theorem solve_spec_satisfied (n x : Int) (h_precond : solve_precond n x) :
     solve_postcond n x (solve n x h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

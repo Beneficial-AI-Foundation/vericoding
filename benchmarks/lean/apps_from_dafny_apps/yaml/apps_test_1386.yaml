@@ -1,5 +1,4 @@
 vc-preamble: |-
-  -- <vc-preamble>
   def ValidInput (input : String) : Prop :=
     input.length > 0 ∧
     ∃ i, 0 < i ∧ i < input.length - 1 ∧ input.data[i]! = ' ' ∧
@@ -22,20 +21,14 @@ vc-preamble: |-
   @[reducible, simp]
   def solve_precond (input : String) : Prop :=
     ValidInput input
-  -- </vc-preamble>
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
-  -- <vc-definitions>
   def solve (input : String) (h_precond : solve_precond input) : String :=
     sorry
-  -- </vc-definitions>
 
 vc-theorems: |-
-  -- <vc-theorems>
   @[reducible, simp]
   def solve_postcond (input : String) (result: String) (h_precond : solve_precond input) : Prop :=
     True
@@ -43,6 +36,5 @@ vc-theorems: |-
   theorem solve_spec_satisfied (input : String) (h_precond : solve_precond input) :
       solve_postcond input (solve input h_precond) h_precond := by
     trivial
-  -- </vc-theorems>
 
 vc-postamble: |-

@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 
 def count_occurrences (s : List Int) (value : Int) : Int :=
   match s with
@@ -21,21 +20,15 @@ def CorrectResult (n : Int) (squares : List Int) (result : Int) : Prop :=
 def solve_precond (n : Int) (m : Int) (squares : List Int) : Prop :=
   ValidInput n m squares
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (n : Int) (m : Int) (squares : List Int) (h_precond : solve_precond n m squares) : Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (n : Int) (m : Int) (squares : List Int) (result : Int) (h_precond : solve_precond n m squares) : Prop :=
@@ -44,5 +37,4 @@ def solve_postcond (n : Int) (m : Int) (squares : List Int) (result : Int) (h_pr
 theorem solve_spec_satisfied (n : Int) (m : Int) (squares : List Int) (h_precond : solve_precond n m squares) :
     solve_postcond n m squares (solve n m squares h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

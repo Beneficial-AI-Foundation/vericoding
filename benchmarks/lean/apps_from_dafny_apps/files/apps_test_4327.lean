@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def ValidInput (A P : Int) : Prop :=
   0 ≤ A ∧ A ≤ 100 ∧ 0 ≤ P ∧ P ≤ 100
 
@@ -13,21 +12,15 @@ def MaxPies (A P : Int) : Int :=
 def solve_precond (A P : Int) : Prop :=
   ValidInput A P
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (A P : Int) (h_precond : solve_precond A P) : Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (A P : Int) (pies : Int) (h_precond : solve_precond A P) : Prop :=
@@ -36,5 +29,4 @@ def solve_postcond (A P : Int) (pies : Int) (h_precond : solve_precond A P) : Pr
 theorem solve_spec_satisfied (A P : Int) (h_precond : solve_precond A P) :
     solve_postcond A P (solve A P h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

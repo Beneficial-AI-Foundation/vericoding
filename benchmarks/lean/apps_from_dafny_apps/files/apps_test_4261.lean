@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def ValidInput (a b c : Int) : Prop :=
   1 ≤ b ∧ b ≤ a ∧ a ≤ 20 ∧ 1 ≤ c ∧ c ≤ 20
 
@@ -37,21 +36,15 @@ def solve_precond (input : String) : Prop :=
    parts.length = 3 →
    ValidInput (StringToInt (parts[0]!)) (StringToInt (parts[1]!)) (StringToInt (parts[2]!)))
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (input : String) (_ : solve_precond input) : String :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (input : String) (result : String) (_ : solve_precond input) : Prop :=
@@ -67,5 +60,4 @@ def solve_postcond (input : String) (result : String) (_ : solve_precond input) 
 theorem solve_spec_satisfied (input : String) (h_precond : solve_precond input) :
     solve_postcond input (solve input h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def ValidInput (n : Int) (queries : List (Int × Int)) : Prop :=
   n > 0 ∧ 
   ∀ i, i < queries.length → 1 ≤ queries[i]!.1 ∧ queries[i]!.1 ≤ n ∧ 1 ≤ queries[i]!.2 ∧ queries[i]!.2 ≤ n
@@ -26,21 +25,15 @@ def ValidResult (n : Int) (queries : List (Int × Int)) (results : List Int) : P
 def solve_precond (n : Int) (queries : List (Int × Int)) : Prop :=
   ValidInput n queries
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (n : Int) (queries : List (Int × Int)) (h_precond : solve_precond n queries) : List Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (n : Int) (queries : List (Int × Int)) (results : List Int) (h_precond : solve_precond n queries) : Prop :=
@@ -49,5 +42,4 @@ def solve_postcond (n : Int) (queries : List (Int × Int)) (results : List Int) 
 theorem solve_spec_satisfied (n : Int) (queries : List (Int × Int)) (h_precond : solve_precond n queries) :
     solve_postcond n queries (solve n queries h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def ValidInput (n : Int) (a : Int) (b : Int) (groups : List Int) : Prop :=
   n ≥ 1 ∧ a ≥ 1 ∧ b ≥ 1 ∧ groups.length = n ∧
   ∀ i, 0 ≤ i ∧ i < groups.length → groups[i]! = 1 ∨ groups[i]! = 2
@@ -25,21 +24,15 @@ def countDeniedPeople (groups : List Int) (a : Int) (b : Int) : Int :=
 def solve_precond (n : Int) (a : Int) (b : Int) (groups : List Int) : Prop :=
   ValidInput n a b groups
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (n : Int) (a : Int) (b : Int) (groups : List Int) (h_precond : solve_precond n a b groups) : Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (n : Int) (a : Int) (b : Int) (groups : List Int) (denied : Int) (h_precond : solve_precond n a b groups) : Prop :=
@@ -48,5 +41,4 @@ def solve_postcond (n : Int) (a : Int) (b : Int) (groups : List Int) (denied : I
 theorem solve_spec_satisfied (n : Int) (a : Int) (b : Int) (groups : List Int) (h_precond : solve_precond n a b groups) :
     solve_postcond n a b groups (solve n a b groups h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

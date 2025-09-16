@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def GenerateSquares : List Int := sorry
 
 axiom GenerateSquares_positive : ∀ i, i < GenerateSquares.length → GenerateSquares[i]! > 0
@@ -16,21 +15,15 @@ def solve_precond (s : String) : Prop :=
   (∀ i, i < s.length → '0' ≤ s.data[i]! ∧ s.data[i]! ≤ '9') ∧
   (s.length > 0 → s.data[0]! ≠ '0' ∨ s.length = 1)
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (s : String) (h_precond : solve_precond s) : Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (s : String) (result : Int) (h_precond : solve_precond s) : Prop :=
@@ -42,5 +35,4 @@ def solve_postcond (s : String) (result : Int) (h_precond : solve_precond s) : P
 theorem solve_spec_satisfied (s : String) (h_precond : solve_precond s) :
     solve_postcond s (solve s h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

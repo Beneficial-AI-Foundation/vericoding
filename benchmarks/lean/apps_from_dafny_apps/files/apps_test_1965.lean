@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def CountOccurrences : List Int → Int → Int
   | [], _ => 0
   | x :: xs, target => if x = target then 1 + CountOccurrences xs target else CountOccurrences xs target
@@ -25,21 +24,15 @@ def RequiresTwoContests (k : Int) (ratings : List Int) : Prop :=
 def solve_precond (n : Int) (k : Int) (ratings : List Int) : Prop :=
   ValidInput n ratings
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (n : Int) (k : Int) (ratings : List Int) (h_precond : solve_precond n k ratings) : Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (n : Int) (k : Int) (ratings : List Int) (result : Int) (h_precond : solve_precond n k ratings) : Prop :=
@@ -51,5 +44,4 @@ def solve_postcond (n : Int) (k : Int) (ratings : List Int) (result : Int) (h_pr
 theorem solve_spec_satisfied (n : Int) (k : Int) (ratings : List Int) (h_precond : solve_precond n k ratings) :
     solve_postcond n k ratings (solve n k ratings h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

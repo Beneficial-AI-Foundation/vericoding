@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def CountOccurrences (s : List Int) (x : Int) : Nat :=
   match s with
   | [] => 0
@@ -41,21 +40,15 @@ def ExistsIndex (s : List Int) (x : Int) : Prop :=
 def solve_precond (n : Int) (sessions : List Int) : Prop :=
   n ≥ 1 ∧ sessions.length = n.natAbs ∧ ∀ i, 0 ≤ i ∧ i < sessions.length → sessions[i]! ≥ 0
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (n : Int) (sessions : List Int) (h_precond : solve_precond n sessions) : Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (n : Int) (sessions : List Int) (result : Int) (h_precond : solve_precond n sessions) : Prop :=
@@ -67,5 +60,4 @@ def solve_postcond (n : Int) (sessions : List Int) (result : Int) (h_precond : s
 theorem solve_spec_satisfied (n : Int) (sessions : List Int) (h_precond : solve_precond n sessions) :
     solve_postcond n sessions (solve n sessions h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

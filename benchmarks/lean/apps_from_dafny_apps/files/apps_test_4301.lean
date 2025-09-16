@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def max_of_seq (s : List Int) : Int :=
   match s with
   | [] => 0
@@ -14,21 +13,15 @@ def max_excluding (s : List Int) (exclude_idx : Int) : Int :=
 def solve_precond (input : List Int) : Prop :=
   input.length ≥ 2
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (input : List Int) (h_precond : solve_precond input) : List Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (input : List Int) (result : List Int) (h_precond : solve_precond input) : Prop :=
@@ -39,5 +32,4 @@ def solve_postcond (input : List Int) (result : List Int) (h_precond : solve_pre
 theorem solve_spec_satisfied (input : List Int) (h_precond : solve_precond input) :
     solve_postcond input (solve input h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

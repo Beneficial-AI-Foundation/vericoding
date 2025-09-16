@@ -1,7 +1,6 @@
 Let me fix the Lean syntax issues by using proper string indexing and bounds checking:
 
 vc-preamble: |-
-  -- <vc-preamble>
   def ValidInput (input : String) : Prop :=
     input.length > 2 ∧
     (∃ i, 0 < i ∧ i < input.length ∧ i < input.data.length ∧ input.data[i]! = ' ') ∧
@@ -26,20 +25,14 @@ vc-preamble: |-
   @[reducible, simp]
   def solve_precond (input : String) : Prop :=
     ValidInput input
-  -- </vc-preamble>
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
-  -- <vc-definitions>
   def solve (input : String) (h_precond : solve_precond input) : String :=
     sorry
-  -- </vc-definitions>
 
 vc-theorems: |-
-  -- <vc-theorems>
   @[reducible, simp]
   def solve_postcond (input : String) (result : String) (h_precond : solve_precond input) : Prop :=
     ValidOutput result ∧ CorrectConcatenation input result h_precond
@@ -47,6 +40,5 @@ vc-theorems: |-
   theorem solve_spec_satisfied (input : String) (h_precond : solve_precond input) :
       solve_postcond input (solve input h_precond) h_precond := by
     sorry
-  -- </vc-theorems>
 
 vc-postamble: |-

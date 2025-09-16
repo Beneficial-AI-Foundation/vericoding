@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def ValidDungeon (dungeon : List (List Int)) : Prop :=
   dungeon.length > 0 ∧
   (∀ i, 0 ≤ i ∧ i < Int.ofNat dungeon.length → dungeon[i.toNat]!.length > 0) ∧
@@ -35,21 +34,15 @@ def canSurvivePath (dungeon : List (List Int)) (path : List (Int × Int)) (initi
 def solve_precond (dungeon : List (List Int)) : Prop :=
   ValidDungeon dungeon
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (dungeon : List (List Int)) (h_precond : solve_precond dungeon) : Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (dungeon : List (List Int)) (result: Int) (h_precond : solve_precond dungeon) : Prop :=
@@ -58,5 +51,4 @@ def solve_postcond (dungeon : List (List Int)) (result: Int) (h_precond : solve_
 theorem solve_spec_satisfied (dungeon : List (List Int)) (h_precond : solve_precond dungeon) :
     solve_postcond dungeon (solve dungeon h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def count_char (s : String) (c : Char) : Int :=
   s.toList.count c
 
@@ -13,21 +12,15 @@ def ValidCommands (commands : String) : Prop :=
 def solve_precond (n : Int) (commands : String) : Prop :=
   n ≥ 0 ∧ commands.length = n ∧ ValidCommands commands
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (n : Int) (commands : String) (h_precond : solve_precond n commands) : Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (n : Int) (commands : String) (result : Int) (h_precond : solve_precond n commands) : Prop :=
@@ -40,5 +33,4 @@ def solve_postcond (n : Int) (commands : String) (result : Int) (h_precond : sol
 theorem solve_spec_satisfied (n : Int) (commands : String) (h_precond : solve_precond n commands) :
     solve_postcond n commands (solve n commands h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

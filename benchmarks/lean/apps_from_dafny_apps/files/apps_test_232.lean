@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def count_occurrences (s : List Nat) (value : Nat) : Nat :=
   match s with
   | [] => 0
@@ -25,21 +24,15 @@ def ValidInput (n m : Nat) (colors desired : List Nat) : Prop :=
 def solve_precond (n m : Nat) (colors desired : List Nat) : Prop :=
   ValidInput n m colors desired
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (n m : Nat) (colors desired : List Nat) (h_precond : solve_precond n m colors desired) : String :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (n m : Nat) (colors desired : List Nat) (result : String) (h_precond : solve_precond n m colors desired) : Prop :=
@@ -49,5 +42,4 @@ def solve_postcond (n m : Nat) (colors desired : List Nat) (result : String) (h_
 theorem solve_spec_satisfied (n m : Nat) (colors desired : List Nat) (h_precond : solve_precond n m colors desired) :
     solve_postcond n m colors desired (solve n m colors desired h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

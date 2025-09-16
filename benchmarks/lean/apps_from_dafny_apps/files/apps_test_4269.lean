@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def IsHardToEnter (s : String) : Prop :=
   s.length = 4 → (s.data.get! 0 = s.data.get! 1 ∨ s.data.get! 1 = s.data.get! 2 ∨ s.data.get! 2 = s.data.get! 3)
 
@@ -7,21 +6,15 @@ def IsHardToEnter (s : String) : Prop :=
 def solve_precond (s : String) : Prop :=
   s.length = 4
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (s : String) (h_precond : solve_precond s) : String :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (s : String) (result : String) (h_precond : solve_precond s) : Prop :=
@@ -30,5 +23,4 @@ def solve_postcond (s : String) (result : String) (h_precond : solve_precond s) 
 theorem solve_spec_satisfied (s : String) (h_precond : solve_precond s) :
     solve_postcond s (solve s h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

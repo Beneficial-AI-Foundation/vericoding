@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 structure Wave where
   start_time : Nat
   end_time : Nat
@@ -46,21 +45,15 @@ def CalculateMinimumBullets (waves : List Wave) (k : Nat) : Nat :=
 def solve_precond (waves : List Wave) (k : Nat) : Prop :=
   ValidWaves waves ∧ k > 0
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (waves : List Wave) (k : Nat) (h_precond : solve_precond waves k) : Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (waves : List Wave) (k : Nat) (result : Int) (h_precond : solve_precond waves k) : Prop :=
@@ -71,5 +64,4 @@ def solve_postcond (waves : List Wave) (k : Nat) (result : Int) (h_precond : sol
 theorem solve_spec_satisfied (waves : List Wave) (k : Nat) (h_precond : solve_precond waves k) :
     solve_postcond waves k (solve waves k h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

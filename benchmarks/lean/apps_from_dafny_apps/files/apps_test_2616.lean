@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def ValidInput (testCases : List (List Int)) : Prop :=
   ∀ i, 0 ≤ i ∧ i < testCases.length → 
     testCases[i]!.length ≥ 1 ∧ 
@@ -30,21 +29,15 @@ def CorrectGameResult (piles : List Int) (result : String) : Prop :=
 def solve_precond (testCases : List (List Int)) : Prop :=
   ValidInput testCases
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (testCases : List (List Int)) (h_precond : solve_precond testCases) : List String :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (testCases : List (List Int)) (results : List String) (h_precond : solve_precond testCases) : Prop :=
@@ -55,5 +48,4 @@ def solve_postcond (testCases : List (List Int)) (results : List String) (h_prec
 theorem solve_spec_satisfied (testCases : List (List Int)) (h_precond : solve_precond testCases) :
     solve_postcond testCases (solve testCases h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def isPrime (p : Int) : Prop :=
   p ≥ 2 ∧ ∀ k, 2 ≤ k ∧ k < p → p % k ≠ 0
 
@@ -22,21 +21,15 @@ def ValidResult (result n : Int) : Prop :=
 def solve_precond (n p : Int) (s : String) : Prop :=
   ValidInput n p s
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (n p : Int) (s : String) (h_precond : solve_precond n p s) : Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (n p : Int) (s : String) (result : Int) (h_precond : solve_precond n p s) : Prop :=
@@ -45,5 +38,4 @@ def solve_postcond (n p : Int) (s : String) (result : Int) (h_precond : solve_pr
 theorem solve_spec_satisfied (n p : Int) (s : String) (h_precond : solve_precond n p s) :
     solve_postcond n p s (solve n p s h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

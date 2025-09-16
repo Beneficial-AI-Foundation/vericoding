@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def ValidInput (n : Int) (edges : List (Int × Int)) : Prop :=
   n ≥ 2 ∧
   ∀ i, 0 ≤ i ∧ i < edges.length → 1 ≤ edges[i]!.1 ∧ edges[i]!.1 ≤ n ∧ 1 ≤ edges[i]!.2 ∧ edges[i]!.2 ≤ n ∧ edges[i]!.1 ≠ edges[i]!.2
@@ -11,21 +10,15 @@ def ValidOutput (result : Int) (n : Int) (edges : List (Int × Int)) : Prop :=
 def solve_precond (n : Int) (edges : List (Int × Int)) : Prop :=
   ValidInput n edges
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (n : Int) (edges : List (Int × Int)) (h_precond : solve_precond n edges) : Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (n : Int) (edges : List (Int × Int)) (result : Int) (h_precond : solve_precond n edges) : Prop :=
@@ -34,5 +27,4 @@ def solve_postcond (n : Int) (edges : List (Int × Int)) (result : Int) (h_preco
 theorem solve_spec_satisfied (n : Int) (edges : List (Int × Int)) (h_precond : solve_precond n edges) :
     solve_postcond n edges (solve n edges h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

@@ -1,5 +1,4 @@
 vc-preamble: |-
-  -- <vc-preamble>
   def ValidInput (A B K : Int) : Prop :=
     A ≥ 0 ∧ B ≥ 0 ∧ K ≥ 0
 
@@ -19,20 +18,14 @@ vc-preamble: |-
   @[reducible, simp]
   def solve_precond (A B K : Int) : Prop :=
     ValidInput A B K
-  -- </vc-preamble>
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
-  -- <vc-definitions>
   def solve (A B K : Int) (h_precond : solve_precond A B K) : Int × Int :=
     sorry
-  -- </vc-definitions>
 
 vc-theorems: |-
-  -- <vc-theorems>
   @[reducible, simp]
   def solve_postcond (A B K : Int) (result : Int × Int) (h_precond : solve_precond A B K) : Prop :=
     CorrectResult A B K result.1 result.2 h_precond
@@ -40,6 +33,5 @@ vc-theorems: |-
   theorem solve_spec_satisfied (A B K : Int) (h_precond : solve_precond A B K) :
       solve_postcond A B K (solve A B K h_precond) h_precond := by
     sorry
-  -- </vc-theorems>
 
 vc-postamble: |-

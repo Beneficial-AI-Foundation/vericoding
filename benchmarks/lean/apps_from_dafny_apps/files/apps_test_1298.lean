@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def is_binary_string (s : String) : Prop :=
   ∀ i, i < s.length → s.data[i]! = '0' ∨ s.data[i]! = '1'
 
@@ -54,21 +53,15 @@ def solve_precond (stdin_input : String) : Prop :=
    is_valid_integer (string_slice stdin_input 0 newline_pos) ∧
    is_binary_string (string_slice stdin_input (newline_pos + 1) binary_end))
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (stdin_input : String) (h_precond : solve_precond stdin_input) : String :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (stdin_input : String) (result : String) (h_precond : solve_precond stdin_input) : Prop :=
@@ -85,5 +78,4 @@ def solve_postcond (stdin_input : String) (result : String) (h_precond : solve_p
 theorem solve_spec_satisfied (stdin_input : String) (h_precond : solve_precond stdin_input) :
     solve_postcond stdin_input (solve stdin_input h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

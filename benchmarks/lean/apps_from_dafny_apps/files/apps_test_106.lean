@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def ValidInput (n m k a b : Int) : Prop :=
   n > 0 ∧ m > 0 ∧ k > 0 ∧ 1 ≤ a ∧ a ≤ n * m * k ∧ 1 ≤ b ∧ b ≤ n * m * k ∧ a ≠ b
 
@@ -23,21 +22,15 @@ def MinEntranceDistance (entrance_a entrance_b n : Int) : Int :=
 def solve_precond (n m k a b : Int) : Prop :=
   ValidInput n m k a b
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (n m k a b : Int) (h_precond : solve_precond n m k a b) : Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (n m k a b : Int) (result: Int) (h_precond : solve_precond n m k a b) : Prop :=
@@ -54,5 +47,4 @@ def solve_postcond (n m k a b : Int) (result: Int) (h_precond : solve_precond n 
 theorem solve_spec_satisfied (n m k a b : Int) (h_precond : solve_precond n m k a b) :
     solve_postcond n m k a b (solve n m k a b h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

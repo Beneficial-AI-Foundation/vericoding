@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def ValidGrid (grid: List (List Int)) (n: Int) (m: Int) : Prop :=
   grid.length = n.natAbs ∧ n > 0 ∧ m > 0 ∧
   (∀ i, 0 ≤ i ∧ i < n → 
@@ -53,21 +52,15 @@ def ComputeScore (grid: List (List Int)) : Int :=
 def solve_precond (n m q : Int) (grid : List (List Int)) (queries : List (Int × Int)) : Prop :=
   ValidGrid grid n m ∧ ValidQueries queries q n m
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (n m q : Int) (grid : List (List Int)) (queries : List (Int × Int)) (h_precond : solve_precond n m q grid queries) : List Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (n m q : Int) (grid : List (List Int)) (queries : List (Int × Int)) (results : List Int) (h_precond : solve_precond n m q grid queries) : Prop :=
@@ -76,5 +69,4 @@ def solve_postcond (n m q : Int) (grid : List (List Int)) (queries : List (Int �
 theorem solve_spec_satisfied (n m q : Int) (grid : List (List Int)) (queries : List (Int × Int)) (h_precond : solve_precond n m q grid queries) :
     solve_postcond n m q grid queries (solve n m q grid queries h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

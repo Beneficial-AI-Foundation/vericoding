@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def ValidInput (t w b : Int) : Prop :=
   t > 0 ∧ w > 0 ∧ b > 0
 
@@ -13,21 +12,15 @@ def IsIrreducibleFraction (numerator denominator : Int) (h_valid : ValidFraction
 def solve_precond (t w b : Int) : Prop :=
   ValidInput t w b
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (t w b : Int) (h_precond : solve_precond t w b) : Int × Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (t w b : Int) (result : Int × Int) (h_precond : solve_precond t w b) : Prop :=
@@ -36,5 +29,4 @@ def solve_postcond (t w b : Int) (result : Int × Int) (h_precond : solve_precon
 theorem solve_spec_satisfied (t w b : Int) (h_precond : solve_precond t w b) :
     solve_postcond t w b (solve t w b h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

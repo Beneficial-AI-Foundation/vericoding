@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 -- Helper functions (assumed to exist)
 def SplitLines (input : String) : List String := sorry
 def SplitSpaces (line : String) : List String := sorry
@@ -36,21 +35,15 @@ def ValidOutput (input : String) (output : List Int) : Prop :=
 def solve_precond (input : String) : Prop :=
   ValidInput input
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (input : String) (h_precond : solve_precond input) : List Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (input : String) (result : List Int) (h_precond : solve_precond input) : Prop :=
@@ -59,5 +52,4 @@ def solve_postcond (input : String) (result : List Int) (h_precond : solve_preco
 theorem solve_spec_satisfied (input : String) (h_precond : solve_precond input) :
     solve_postcond input (solve input h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

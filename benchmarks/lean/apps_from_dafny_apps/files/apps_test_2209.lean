@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def StringToInt (s : String) : Nat :=
   s.foldl (fun acc c => acc * 10 + (c.toNat - '0'.toNat)) 0
 
@@ -43,21 +42,15 @@ def ValidInput (input : List String) : Prop :=
 def solve_precond (input : List String) : Prop :=
   ValidInput input
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (input : List String) (h_precond : solve_precond input) : Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (input : List String) (result: Int) (h_precond : solve_precond input) : Prop :=
@@ -66,5 +59,4 @@ def solve_postcond (input : List String) (result: Int) (h_precond : solve_precon
 theorem solve_spec_satisfied (input : List String) (h_precond : solve_precond input) :
     solve_postcond input (solve input h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

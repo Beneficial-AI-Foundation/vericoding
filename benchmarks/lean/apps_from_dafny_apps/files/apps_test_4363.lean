@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def ValidInput (k s : Int) : Prop :=
   k ≥ 0 ∧ s ≥ 0 ∧ s ≤ 3 * k
 
@@ -22,21 +21,15 @@ def CountValidTriples (k s : Int) : Int :=
 def solve_precond (k s : Int) : Prop :=
   ValidInput k s
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (k s : Int) (h_precond : solve_precond k s) : Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (k s : Int) (count : Int) (h_precond : solve_precond k s) : Prop :=
@@ -45,5 +38,4 @@ def solve_postcond (k s : Int) (count : Int) (h_precond : solve_precond k s) : P
 theorem solve_spec_satisfied (k s : Int) (h_precond : solve_precond k s) :
     solve_postcond k s (solve k s h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def Abs (x : Int) : Int :=
   if x ≥ 0 then x else -x
 
@@ -16,21 +15,15 @@ def ValidInput (X Y : Int) : Prop :=
 def solve_precond (X Y : Int) : Prop :=
   ValidInput X Y
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (X Y : Int) (h_precond : solve_precond X Y) : String :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (X Y : Int) (winner : String) (h_precond : solve_precond X Y) : Prop :=
@@ -41,5 +34,4 @@ def solve_postcond (X Y : Int) (winner : String) (h_precond : solve_precond X Y)
 theorem solve_spec_satisfied (X Y : Int) (h_precond : solve_precond X Y) :
     solve_postcond X Y (solve X Y h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def f (n x : Int) : Int :=
   let y := n / x
   y + x * y * (y - 1) / 2
@@ -17,21 +16,15 @@ def NoDuplicates (s : List Int) : Prop :=
 def solve_precond (n : Int) : Prop :=
   n ≥ 2
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (n : Int) (h_precond : solve_precond n) : List Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (n : Int) (result : List Int) (h_precond : solve_precond n) : Prop :=
@@ -43,5 +36,4 @@ def solve_postcond (n : Int) (result : List Int) (h_precond : solve_precond n) :
 theorem solve_spec_satisfied (n : Int) (h_precond : solve_precond n) :
     solve_postcond n (solve n h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

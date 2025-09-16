@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def ValidInput (coins : List Int) : Prop :=
   coins.length = 5 ∧ ∀ i, 0 ≤ i ∧ i < coins.length → 0 ≤ coins[i]! ∧ coins[i]! ≤ 100
 
@@ -19,21 +18,15 @@ def ComputeResult (coins : List Int) : Int :=
 def solve_precond (coins : List Int) : Prop :=
   ValidInput coins
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (coins : List Int) (h_precond : solve_precond coins) : Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (coins : List Int) (result : Int) (h_precond : solve_precond coins) : Prop :=
@@ -44,5 +37,4 @@ def solve_postcond (coins : List Int) (result : Int) (h_precond : solve_precond 
 theorem solve_spec_satisfied (coins : List Int) (h_precond : solve_precond coins) :
     solve_postcond coins (solve coins h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 -- Placeholder for external functions that would need to be defined
 def splitFunc (input : String) (delimiter : Char) : List String := sorry
 def parseIntFunc (s : String) : Int := sorry
@@ -25,21 +24,15 @@ def formatOutput (results : List Int) : String :=
 def solve_precond (input : String) : Prop :=
   input.length > 0 ∧ validInput input
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (input : String) (h_precond : solve_precond input) : String :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (input : String) (result : String) (h_precond : solve_precond input) : Prop :=
@@ -49,5 +42,4 @@ def solve_postcond (input : String) (result : String) (h_precond : solve_precond
 theorem solve_spec_satisfied (input : String) (h_precond : solve_precond input) :
     solve_postcond input (solve input h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

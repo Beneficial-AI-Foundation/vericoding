@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def gcd (a b : Nat) : Nat :=
   if b = 0 then a else gcd b (a % b)
 termination_by b
@@ -25,21 +24,15 @@ def CorrectResult (periods : List Nat) (result : Nat) : Prop :=
 def solve_precond (periods : List Nat) : Prop :=
   ValidInput periods
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (periods : List Nat) (h_precond : solve_precond periods) : Nat :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (periods : List Nat) (result : Nat) (h_precond : solve_precond periods) : Prop :=
@@ -48,5 +41,4 @@ def solve_postcond (periods : List Nat) (result : Nat) (h_precond : solve_precon
 theorem solve_spec_satisfied (periods : List Nat) (h_precond : solve_precond periods) :
     solve_postcond periods (solve periods h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

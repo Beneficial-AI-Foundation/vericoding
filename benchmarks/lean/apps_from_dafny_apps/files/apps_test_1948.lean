@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def ValidInput (n : Int) (x : Int) (edges : List (Int × Int)) : Prop :=
   n > 0 ∧ 1 ≤ x ∧ x ≤ n ∧ edges.length = n - 1 ∧
   ∀ e ∈ edges, 0 ≤ e.1 ∧ e.1 < n ∧ 0 ≤ e.2 ∧ e.2 < n
@@ -32,21 +31,15 @@ def solve_precond (n : Int) (x : Int) (edges : List (Int × Int)) (leaves : List
   ValidLeaves leaves edges n ∧
   (∀ i, 0 ≤ i ∧ i < leaves.length → 0 ≤ leaves[Int.natAbs i]! ∧ leaves[Int.natAbs i]! < wayA.length ∧ 0 ≤ leaves[Int.natAbs i]! ∧ leaves[Int.natAbs i]! < wayB.length)
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (n : Int) (x : Int) (edges : List (Int × Int)) (leaves : List Int) (wayA : List Int) (wayB : List Int) (h_precond : solve_precond n x edges leaves wayA wayB) : Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (n : Int) (x : Int) (edges : List (Int × Int)) (leaves : List Int) (wayA : List Int) (wayB : List Int) (result : Int) (h_precond : solve_precond n x edges leaves wayA wayB) : Prop :=
@@ -58,5 +51,4 @@ def solve_postcond (n : Int) (x : Int) (edges : List (Int × Int)) (leaves : Lis
 theorem solve_spec_satisfied (n : Int) (x : Int) (edges : List (Int × Int)) (leaves : List Int) (wayA : List Int) (wayB : List Int) (h_precond : solve_precond n x edges leaves wayA wayB) :
     solve_postcond n x edges leaves wayA wayB (solve n x edges leaves wayA wayB h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

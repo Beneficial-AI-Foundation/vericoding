@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def ValidInput (n pos l r : Int) : Prop :=
   1 ≤ n ∧ n ≤ 100 ∧ 1 ≤ pos ∧ pos ≤ n ∧ 1 ≤ l ∧ l ≤ r ∧ r ≤ n
 
@@ -19,21 +18,15 @@ def CloseBothSides (l r n : Int) : Prop :=
 def solve_precond (n pos l r : Int) : Prop :=
   ValidInput n pos l r
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (n pos l r : Int) (h_precond : solve_precond n pos l r) : Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (n pos l r : Int) (result : Int) (h_precond : solve_precond n pos l r) : Prop :=
@@ -50,5 +43,4 @@ def solve_postcond (n pos l r : Int) (result : Int) (h_precond : solve_precond n
 theorem solve_spec_satisfied (n pos l r : Int) (h_precond : solve_precond n pos l r) :
     solve_postcond n pos l r (solve n pos l r h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def sum_window (heights : List Int) (start : Int) (k : Int) : Int :=
   if k = 1 then heights[start.toNat]!
   else heights[start.toNat]! + sum_window heights (start + 1) (k - 1)
@@ -22,21 +21,15 @@ def ValidResult (result : Int) (n : Int) (k : Int) (heights : List Int) : Prop :
 def solve_precond (n : Int) (k : Int) (heights : List Int) : Prop :=
   ValidInput n k heights
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (n : Int) (k : Int) (heights : List Int) (h_precond : solve_precond n k heights) : Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (n : Int) (k : Int) (heights : List Int) (result : Int) (h_precond : solve_precond n k heights) : Prop :=
@@ -45,5 +38,4 @@ def solve_postcond (n : Int) (k : Int) (heights : List Int) (result : Int) (h_pr
 theorem solve_spec_satisfied (n : Int) (k : Int) (heights : List Int) (h_precond : solve_precond n k heights) :
     solve_postcond n k heights (solve n k heights h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

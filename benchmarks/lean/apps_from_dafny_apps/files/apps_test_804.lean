@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def ValidInput (s : String) (k : Int) : Prop :=
   1 ≤ k ∧ k ≤ 26 ∧ 1 ≤ s.length ∧ s.length ≤ 1000 ∧ 
   ∀ i, 0 ≤ i ∧ i < s.length → 'a' ≤ s.data[i]! ∧ s.data[i]! ≤ 'z'
@@ -20,21 +19,15 @@ def IntToString (n : Int) : String := toString n
 def solve_precond (s : String) (k : Int) : Prop :=
   ValidInput s k
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (s : String) (k : Int) (h_precond : solve_precond s k) : String :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (s : String) (k : Int) (result: String) (h_precond : solve_precond s k) : Prop :=
@@ -44,5 +37,4 @@ def solve_postcond (s : String) (k : Int) (result: String) (h_precond : solve_pr
 theorem solve_spec_satisfied (s : String) (k : Int) (h_precond : solve_precond s k) :
     solve_postcond s k (solve s k h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

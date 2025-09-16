@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def ValidInput (A B C D : Int) : Prop :=
   1 ≤ A ∧ A ≤ 100 ∧ 1 ≤ B ∧ B ≤ 100 ∧ 1 ≤ C ∧ C ≤ 100 ∧ 1 ≤ D ∧ D ≤ 100
 
@@ -15,21 +14,15 @@ def TakahashiWins (A B C D : Int) : Bool :=
 def solve_precond (A B C D : Int) : Prop :=
   ValidInput A B C D
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (A B C D : Int) (h_precond : solve_precond A B C D) : String :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (A B C D : Int) (result : String) (h_precond : solve_precond A B C D) : Prop :=
@@ -38,5 +31,4 @@ def solve_postcond (A B C D : Int) (result : String) (h_precond : solve_precond 
 theorem solve_spec_satisfied (A B C D : Int) (h_precond : solve_precond A B C D) :
     solve_postcond A B C D (solve A B C D h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

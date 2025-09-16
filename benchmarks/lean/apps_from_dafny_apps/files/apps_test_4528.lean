@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def ValidInput (testCases : List (Int × Int)) : Prop :=
   ∀ i, 0 ≤ i ∧ i < testCases.length → 
     0 ≤ testCases[i]!.1 ∧ testCases[i]!.1 < 24 ∧ 
@@ -16,21 +15,15 @@ def ValidOutput (results : List Int) : Prop :=
 def solve_precond (testCases : List (Int × Int)) : Prop :=
   ValidInput testCases
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (testCases : List (Int × Int)) (h_precond : solve_precond testCases) : List Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (testCases : List (Int × Int)) (results : List Int) (h_precond : solve_precond testCases) : Prop :=
@@ -41,5 +34,4 @@ def solve_postcond (testCases : List (Int × Int)) (results : List Int) (h_preco
 theorem solve_spec_satisfied (testCases : List (Int × Int)) (h_precond : solve_precond testCases) :
     solve_postcond testCases (solve testCases h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

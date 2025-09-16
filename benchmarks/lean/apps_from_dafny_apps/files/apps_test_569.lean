@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def ValidInput (n : Int) (s : String) : Prop :=
   n = s.length ∧ n ≥ 1
 
@@ -10,21 +9,15 @@ def CountDistinctChars (s : String) : Nat :=
 def solve_precond (n : Int) (s : String) : Prop :=
   ValidInput n s
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (n : Int) (s : String) (h_precond : solve_precond n s) : Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (n : Int) (s : String) (result : Int) (h_precond : solve_precond n s) : Prop :=
@@ -35,5 +28,4 @@ def solve_postcond (n : Int) (s : String) (result : Int) (h_precond : solve_prec
 theorem solve_spec_satisfied (n : Int) (s : String) (h_precond : solve_precond n s) :
     solve_postcond n s (solve n s h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

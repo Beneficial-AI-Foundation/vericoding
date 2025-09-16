@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def ValidCosts (c : Array Int) : Prop :=
   c.size = 4 ∧
   c[0]! ≥ 1 ∧ c[1]! ≥ 1 ∧ c[2]! ≥ 1 ∧ c[3]! ≥ 1 ∧
@@ -37,21 +36,15 @@ def CorrectResult (c : Array Int) (a : Array Int) (b : Array Int) (result : Int)
 def solve_precond (c : Array Int) (a : Array Int) (b : Array Int) : Prop :=
   ValidCosts c ∧ ValidRides a ∧ ValidRides b
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (c : Array Int) (a : Array Int) (b : Array Int) (h_precond : solve_precond c a b) : Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (c : Array Int) (a : Array Int) (b : Array Int) (result : Int) (h_precond : solve_precond c a b) : Prop :=
@@ -66,5 +59,4 @@ def solve_postcond (c : Array Int) (a : Array Int) (b : Array Int) (result : Int
 theorem solve_spec_satisfied (c : Array Int) (a : Array Int) (b : Array Int) (h_precond : solve_precond c a b) :
     solve_postcond c a b (solve c a b h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

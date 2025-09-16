@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def ValidInput (x y : Int) : Prop :=
   -100 ≤ x ∧ x ≤ 100 ∧ -100 ≤ y ∧ y ≤ 100
 
@@ -26,21 +25,15 @@ def ComputeTurns (x y : Int) : Int :=
 def solve_precond (x y : Int) : Prop :=
   ValidInput x y
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (x y : Int) (h_precond : solve_precond x y) : Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (x y : Int) (result : Int) (h_precond : solve_precond x y) : Prop :=
@@ -55,5 +48,4 @@ def solve_postcond (x y : Int) (result : Int) (h_precond : solve_precond x y) : 
 theorem solve_spec_satisfied (x y : Int) (h_precond : solve_precond x y) :
     solve_postcond x y (solve x y h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

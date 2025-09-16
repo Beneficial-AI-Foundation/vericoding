@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 
 def ValidInput (n k : Int) (numbers : List Int) : Prop :=
   n ≥ 1 ∧ k ≥ 0 ∧ numbers.length = n ∧ ∀ i, 0 ≤ i ∧ i < numbers.length → numbers[i]! > 0
@@ -27,21 +26,15 @@ def countValidNumbers (numbers : List Int) (k : Int) (upTo : Nat) : Int :=
 def solve_precond (n k : Int) (numbers : List Int) : Prop :=
   ValidInput n k numbers
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (n k : Int) (numbers : List Int) (h_precond : solve_precond n k numbers) : Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (n k : Int) (numbers : List Int) (result : Int) (h_precond : solve_precond n k numbers) : Prop :=
@@ -50,5 +43,4 @@ def solve_postcond (n k : Int) (numbers : List Int) (result : Int) (h_precond : 
 theorem solve_spec_satisfied (n k : Int) (numbers : List Int) (h_precond : solve_precond n k numbers) :
     solve_postcond n k numbers (solve n k numbers h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

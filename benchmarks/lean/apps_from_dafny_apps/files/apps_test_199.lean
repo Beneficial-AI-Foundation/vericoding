@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def ValidInput (n : Int) (s : Int) (v : List Int) : Prop :=
   n > 0 ∧ v.length = n ∧ s ≥ 0 ∧ ∀ i, 0 ≤ i ∧ i < v.length → v[i]! ≥ 0
 
@@ -18,21 +17,15 @@ def myMin (a : Int) (b : Int) : Int :=
 def solve_precond (n : Int) (s : Int) (v : List Int) : Prop :=
   ValidInput n s v
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (n : Int) (s : Int) (v : List Int) (h_precond : solve_precond n s v) : Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (n : Int) (s : Int) (v : List Int) (result : Int) (h_precond : solve_precond n s v) : Prop :=
@@ -43,5 +36,4 @@ def solve_postcond (n : Int) (s : Int) (v : List Int) (result : Int) (h_precond 
 theorem solve_spec_satisfied (n : Int) (s : Int) (v : List Int) (h_precond : solve_precond n s v) :
     solve_postcond n s v (solve n s v h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def ListMin (l : List Int) : Int := 
   match l with
   | [] => 0
@@ -24,21 +23,15 @@ def CorrectSolution (v : Int) (sellers : List (List Int)) (indices : List Int) :
 def solve_precond (n : Int) (v : Int) (sellers : List (List Int)) : Prop :=
   ValidInput n v sellers
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (n : Int) (v : Int) (sellers : List (List Int)) (h_precond : solve_precond n v sellers) : Int × List Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (n : Int) (v : Int) (sellers : List (List Int)) (result : Int × List Int) (h_precond : solve_precond n v sellers) : Prop :=
@@ -47,5 +40,4 @@ def solve_postcond (n : Int) (v : Int) (sellers : List (List Int)) (result : Int
 theorem solve_spec_satisfied (n : Int) (v : Int) (sellers : List (List Int)) (h_precond : solve_precond n v sellers) :
     solve_postcond n v sellers (solve n v sellers h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

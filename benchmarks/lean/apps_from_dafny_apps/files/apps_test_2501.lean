@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def ValidInput (A : Array Int) : Prop :=
   A.size ≥ 2 ∧ ∀ i, 0 ≤ i ∧ i < A.size → A[Int.natAbs i]! ≥ 1
 
@@ -17,21 +16,15 @@ def CountValidPairs (A : Array Int) : Int :=
 def solve_precond (A : Array Int) : Prop :=
   ValidInput A
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (A : Array Int) (h_precond : solve_precond A) : Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (A : Array Int) (result : Int) (h_precond : solve_precond A) : Prop :=
@@ -40,5 +33,4 @@ def solve_postcond (A : Array Int) (result : Int) (h_precond : solve_precond A) 
 theorem solve_spec_satisfied (A : Array Int) (h_precond : solve_precond A) :
     solve_postcond A (solve A h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

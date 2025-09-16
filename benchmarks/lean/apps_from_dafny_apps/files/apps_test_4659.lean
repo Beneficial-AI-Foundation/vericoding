@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 @[reducible, simp]
 def ValidPascalTriangle (triangle : List (List Int)) (numRows : Int) : Prop :=
   triangle.length = numRows ∧
@@ -20,21 +19,15 @@ def ValidPascalTriangle (triangle : List (List Int)) (numRows : Int) : Prop :=
 def solve_precond (numRows : Int) : Prop :=
   numRows ≥ 0
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (numRows : Int) (h_precond : solve_precond numRows) : List (List Int) :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (numRows : Int) (result : List (List Int)) (h_precond : solve_precond numRows) : Prop :=
@@ -43,5 +36,4 @@ def solve_postcond (numRows : Int) (result : List (List Int)) (h_precond : solve
 theorem solve_spec_satisfied (numRows : Int) (h_precond : solve_precond numRows) :
     solve_postcond numRows (solve numRows h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

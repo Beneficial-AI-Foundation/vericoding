@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def ValidInput (n : Nat) : Prop :=
   n > 0
 
@@ -25,21 +24,15 @@ def count_valid_k_values (n : Nat) : Int :=
 def solve_precond (n : Nat) : Prop :=
   ValidInput n
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (n : Nat) (h_precond : solve_precond n) : Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (n : Nat) (result : Int) (h_precond : solve_precond n) : Prop :=
@@ -51,5 +44,4 @@ def solve_postcond (n : Nat) (result : Int) (h_precond : solve_precond n) : Prop
 theorem solve_spec_satisfied (n : Nat) (h_precond : solve_precond n) :
     solve_postcond n (solve n h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

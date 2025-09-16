@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def ValidInput (n m k : Int) : Prop :=
   1 ≤ n ∧ n ≤ 10000 ∧ 1 ≤ m ∧ m ≤ 10000 ∧ 1 ≤ k ∧ k ≤ 2 * n * m
 
@@ -15,21 +14,15 @@ def CorrectSolution (n m k lane desk : Int) (side : String) : Prop :=
 def solve_precond (n m k : Int) : Prop :=
   ValidInput n m k
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (n m k : Int) (h_precond : solve_precond n m k) : Int × Int × String :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (n m k : Int) (result : Int × Int × String) (h_precond : solve_precond n m k) : Prop :=
@@ -39,5 +32,4 @@ def solve_postcond (n m k : Int) (result : Int × Int × String) (h_precond : so
 theorem solve_spec_satisfied (n m k : Int) (h_precond : solve_precond n m k) :
     solve_postcond n m k (solve n m k h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def seq_min (s : List Int) : Int :=
   if h : s.length > 0 then
     if s.length = 1 then s[0]!
@@ -15,21 +14,15 @@ def ValidInput (arr : List Int) : Prop :=
 def solve_precond (arr : List Int) : Prop :=
   ValidInput arr
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (arr : List Int) (h_precond : solve_precond arr) : Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (arr : List Int) (result: Int) (h_precond : solve_precond arr) : Prop :=
@@ -41,5 +34,4 @@ def solve_postcond (arr : List Int) (result: Int) (h_precond : solve_precond arr
 theorem solve_spec_satisfied (arr : List Int) (h_precond : solve_precond arr) :
     solve_postcond arr (solve arr h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

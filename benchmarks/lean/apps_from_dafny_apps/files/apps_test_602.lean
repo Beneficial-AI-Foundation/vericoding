@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def ValidInput (a : Int) : Prop :=
   1 ≤ a ∧ a ≤ 40
 
@@ -15,21 +14,15 @@ def Presidents : List String :=
 def solve_precond (a : Int) : Prop :=
   ValidInput a
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (a : Int) (h_precond : solve_precond a) : String :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (a : Int) (result : String) (h_precond : solve_precond a) : Prop :=
@@ -38,5 +31,4 @@ def solve_postcond (a : Int) (result : String) (h_precond : solve_precond a) : P
 theorem solve_spec_satisfied (a : Int) (h_precond : solve_precond a) :
     solve_postcond a (solve a h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

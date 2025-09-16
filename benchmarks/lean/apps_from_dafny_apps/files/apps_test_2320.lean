@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def CountCharacter (s : List Char) (c : Char) : Nat :=
   match s with
   | [] => 0
@@ -42,21 +41,15 @@ def MaxLongestSubsequence (s t : List Char) : Nat :=
 def solve_precond (s t : List Char) : Prop :=
   s.length = t.length ∧ s.length ≥ 0
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (s t : List Char) (h_precond : solve_precond s t) : Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (s t : List Char) (result : Int) (h_precond : solve_precond s t) : Prop :=
@@ -70,5 +63,4 @@ def solve_postcond (s t : List Char) (result : Int) (h_precond : solve_precond s
 theorem solve_spec_satisfied (s t : List Char) (h_precond : solve_precond s t) :
     solve_postcond s t (solve s t h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

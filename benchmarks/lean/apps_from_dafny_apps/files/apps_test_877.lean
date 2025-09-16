@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 
 def ValidInput (n m : Int) (pairs : List (Int × Int)) : Prop :=
   n ≥ 2 ∧ 
@@ -40,21 +39,15 @@ def ValidResult (n : Int) (pairs : List (Int × Int)) (result : Int) : Prop :=
 def solve_precond (n m : Int) (pairs : List (Int × Int)) : Prop :=
   ValidInput n m pairs
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (n m : Int) (pairs : List (Int × Int)) (h_precond : solve_precond n m pairs) : Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (n m : Int) (pairs : List (Int × Int)) (result : Int) (h_precond : solve_precond n m pairs) : Prop :=
@@ -63,5 +56,4 @@ def solve_postcond (n m : Int) (pairs : List (Int × Int)) (result : Int) (h_pre
 theorem solve_spec_satisfied (n m : Int) (pairs : List (Int × Int)) (h_precond : solve_precond n m pairs) :
     solve_postcond n m pairs (solve n m pairs h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

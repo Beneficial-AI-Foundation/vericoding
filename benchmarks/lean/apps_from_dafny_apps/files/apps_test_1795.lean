@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def ValidInput (n : Int) (f : List Int) : Prop :=
   n ≥ 2 ∧ n ≤ 5000 ∧
   f.length = n.natAbs ∧
@@ -23,21 +22,15 @@ def HasLoveTriangle (n : Int) (f : List Int) (h : ValidInput n f) : Prop :=
 def solve_precond (n : Int) (f : List Int) : Prop :=
   ValidInput n f
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (n : Int) (f : List Int) (h_precond : solve_precond n f) : String :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (n : Int) (f : List Int) (result : String) (h_precond : solve_precond n f) : Prop :=
@@ -47,5 +40,4 @@ def solve_postcond (n : Int) (f : List Int) (result : String) (h_precond : solve
 theorem solve_spec_satisfied (n : Int) (f : List Int) (h_precond : solve_precond n f) :
     solve_postcond n f (solve n f h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

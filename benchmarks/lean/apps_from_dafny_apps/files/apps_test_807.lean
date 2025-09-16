@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 
 def ValidInput (n c : Int) (prices : List Int) : Prop :=
   n ≥ 2 ∧ prices.length = n ∧ c ≥ 0 ∧
@@ -31,21 +30,15 @@ def CorrectResult (n c : Int) (prices : List Int) (result : Int) : Prop :=
 def solve_precond (n c : Int) (prices : List Int) : Prop :=
   ValidInput n c prices
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (n c : Int) (prices : List Int) (h_precond : solve_precond n c prices) : Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (n c : Int) (prices : List Int) (result : Int) (h_precond : solve_precond n c prices) : Prop :=
@@ -54,5 +47,4 @@ def solve_postcond (n c : Int) (prices : List Int) (result : Int) (h_precond : s
 theorem solve_spec_satisfied (n c : Int) (prices : List Int) (h_precond : solve_precond n c prices) :
     solve_postcond n c prices (solve n c prices h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

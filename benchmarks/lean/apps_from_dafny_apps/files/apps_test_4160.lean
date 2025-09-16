@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def calculateDeposit (initial : Int) (years : Nat) : Int :=
   if years = 0 then initial
   else 
@@ -10,21 +9,15 @@ def calculateDeposit (initial : Int) (years : Nat) : Int :=
 def solve_precond (X : Int) : Prop :=
   X ≥ 101
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (X : Int) (h_precond : solve_precond X) : Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (X : Int) (years : Int) (h_precond : solve_precond X) : Prop :=
@@ -35,5 +28,4 @@ def solve_postcond (X : Int) (years : Int) (h_precond : solve_precond X) : Prop 
 theorem solve_spec_satisfied (X : Int) (h_precond : solve_precond X) :
     solve_postcond X (solve X h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

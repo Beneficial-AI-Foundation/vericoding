@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def ValidInput (n : Int) (friends : List Int) : Prop :=
   n ≥ 1 ∧ friends.length = n ∧ ∀ i, 0 ≤ i ∧ i < friends.length → 1 ≤ friends[i]! ∧ friends[i]! ≤ 5
 
@@ -30,21 +29,15 @@ def CountValidChoices (n : Int) (friends : List Int) : Int :=
 def solve_precond (n : Int) (friends : List Int) : Prop :=
   ValidInput n friends
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (n : Int) (friends : List Int) (h_precond : solve_precond n friends) : Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (n : Int) (friends : List Int) (result : Int) (h_precond : solve_precond n friends) : Prop :=
@@ -53,5 +46,4 @@ def solve_postcond (n : Int) (friends : List Int) (result : Int) (h_precond : so
 theorem solve_spec_satisfied (n : Int) (friends : List Int) (h_precond : solve_precond n friends) :
     solve_postcond n friends (solve n friends h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

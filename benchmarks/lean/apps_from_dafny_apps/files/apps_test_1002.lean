@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def SumSeq (s : List Int) : Int :=
   match s with
   | [] => 0
@@ -25,21 +24,15 @@ def ValidResult (n : Int) (d : Int) (t : List Int) (result : Int) : Prop :=
 def solve_precond (n : Int) (d : Int) (t : List Int) : Prop :=
   ValidInput n d t
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (n : Int) (d : Int) (t : List Int) (h_precond : solve_precond n d t) : Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (n : Int) (d : Int) (t : List Int) (result : Int) (h_precond : solve_precond n d t) : Prop :=
@@ -48,5 +41,4 @@ def solve_postcond (n : Int) (d : Int) (t : List Int) (result : Int) (h_precond 
 theorem solve_spec_satisfied (n : Int) (d : Int) (t : List Int) (h_precond : solve_precond n d t) :
     solve_postcond n d t (solve n d t h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

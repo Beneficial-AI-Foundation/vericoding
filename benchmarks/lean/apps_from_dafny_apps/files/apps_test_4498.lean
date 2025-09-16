@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def ValidInput (a b c d : Int) : Prop :=
   1 ≤ a ∧ a ≤ 100 ∧ 1 ≤ b ∧ b ≤ 100 ∧ 1 ≤ c ∧ c ≤ 100 ∧ 1 ≤ d ∧ d ≤ 100
 
@@ -10,21 +9,15 @@ def CanCommunicate (a b c d : Int) : Prop :=
 def solve_precond (a b c d : Int) : Prop :=
   ValidInput a b c d
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (a b c d : Int) (h_precond : solve_precond a b c d) : String :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (a b c d : Int) (result : String) (h_precond : solve_precond a b c d) : Prop :=
@@ -33,5 +26,4 @@ def solve_postcond (a b c d : Int) (result : String) (h_precond : solve_precond 
 theorem solve_spec_satisfied (a b c d : Int) (h_precond : solve_precond a b c d) :
     solve_postcond a b c d (solve a b c d h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

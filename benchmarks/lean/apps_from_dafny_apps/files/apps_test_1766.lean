@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 def ValidInput (cards : List Int) : Prop :=
   cards.length ≥ 1 ∧
   (∀ i, 0 ≤ i ∧ i < cards.length → cards[i]! > 0) ∧
@@ -30,21 +29,15 @@ def ValidOutput (scores : List Int) (cards : List Int) : Prop :=
 def solve_precond (cards : List Int) : Prop :=
   ValidInput cards
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (cards : List Int) (h_precond : solve_precond cards) : List Int :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (cards : List Int) (scores : List Int) (h_precond : solve_precond cards) : Prop :=
@@ -53,5 +46,4 @@ def solve_postcond (cards : List Int) (scores : List Int) (h_precond : solve_pre
 theorem solve_spec_satisfied (cards : List Int) (h_precond : solve_precond cards) :
     solve_postcond cards (solve cards h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>

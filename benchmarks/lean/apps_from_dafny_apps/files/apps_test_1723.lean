@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 partial def IntToString (n : Int) : String :=
   if n < 0 then "-" ++ IntToString (-n)
   else if n < 10 then String.singleton (Char.ofNat (n.natAbs + 48))
@@ -21,21 +20,15 @@ def ValidOutput (n : Int) (result : List String) : Prop :=
 def solve_precond (n : Int) : Prop :=
   n ≥ 2
 -- </vc-preamble>
--- </vc-preamble>
 
 -- <vc-helpers>
--- <vc-helpers>
--- </vc-helpers>
 -- </vc-helpers>
 
--- <vc-definitions>
 -- <vc-definitions>
 def solve (n : Int) (h_precond : solve_precond n) : List String :=
   sorry
 -- </vc-definitions>
--- </vc-definitions>
 
--- <vc-theorems>
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (n : Int) (result : List String) (h_precond : solve_precond n) : Prop :=
@@ -44,5 +37,4 @@ def solve_postcond (n : Int) (result : List String) (h_precond : solve_precond n
 theorem solve_spec_satisfied (n : Int) (h_precond : solve_precond n) :
     solve_postcond n (solve n h_precond) h_precond := by
   sorry
--- </vc-theorems>
 -- </vc-theorems>
