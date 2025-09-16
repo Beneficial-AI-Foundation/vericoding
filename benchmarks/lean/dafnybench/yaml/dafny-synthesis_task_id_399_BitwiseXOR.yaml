@@ -1,0 +1,41 @@
+vc-description: |-
+  /- 
+  {
+  "name": "dafny-synthesis_task_id_399_BitwiseXOR",
+  "category": "Dafny Translation",
+  "description": "Automatically translated from Dafny specification: dafny-synthesis_task_id_399_BitwiseXOR",
+  "source": "Dafny",
+  "translation_date": "2024",
+  "functions": ,
+  "methods":
+  }
+  -/
+  
+  /- 
+  BitwiseXOR takes two arrays of 32-bit bitvectors and returns their bitwise XOR.
+  The arrays must be of equal length.
+  
+  @param a First input array of 32-bit bitvectors
+  @param b Second input array of 32-bit bitvectors
+  @return Array containing bitwise XOR of corresponding elements
+  -/
+
+vc-preamble: |-
+
+vc-helpers: |-
+
+vc-definitions: |-
+  def BitwiseXOR (a b : Array UInt32) : Array UInt32 :=
+  sorry
+
+vc-theorems: |-
+  theorem BitwiseXOR_spec (a b : Array UInt32) :
+  a.size = b.size →
+  let result := BitwiseXOR a b
+  result.size = a.size ∧
+  ∀ i, 0 ≤ i ∧ i < result.size →
+  result[i]! = (a[i]!).xor (b[i]!) :=
+  sorry
+
+vc-postamble: |-
+

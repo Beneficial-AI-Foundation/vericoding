@@ -44,6 +44,7 @@ lean_lib Benchmarks where
     .submodules `fvapps.files,
     .submodules `dafnybench.poor.unformatted,
     .submodules `clever.files,
+    .submodules `dafnybench.files,
     .submodules `numpy_simple.poor.unformatted,
     .submodules `numpy_triple.files,
     .submodules `verina.files,

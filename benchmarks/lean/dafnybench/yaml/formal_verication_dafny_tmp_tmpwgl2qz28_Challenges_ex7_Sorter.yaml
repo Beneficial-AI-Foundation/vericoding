@@ -1,0 +1,56 @@
+vc-description: |-
+  /- 
+  {
+  "name": "formal_verication_dafny_tmp_tmpwgl2qz28_Challenges_ex7_Sorter",
+  "category": "Dafny Translation",
+  "description": "Automatically translated from Dafny specification: formal_verication_dafny_tmp_tmpwgl2qz28_Challenges_ex7_Sorter",
+  "source": "Dafny",
+  "translation_date": "2024",
+  "functions": ,
+  "methods":
+  }
+  -/
+  
+  /-  Represents DNA bases -/
+  
+  /-  Defines ordering between bases -/
+  
+  /-  Checks if sequence is in base order -/
+  
+  /-  Sorts a sequence of bases -/
+  
+  /-  Specification for Sorter method -/
+
+vc-preamble: |-
+  inductive Bases
+  | A
+  | C
+  | G
+  | T
+  
+  def below (first second : Bases) : Prop :=
+  first = second ∨
+  first = Bases.A ∨
+  (first = Bases.C ∧ (second = Bases.G ∨ second = Bases.T)) ∨
+  (first = Bases.G ∧ second = Bases.T) ∨
+  second = Bases.T
+
+vc-helpers: |-
+
+vc-definitions: |-
+  def bordered (s : Array Bases) : Bool :=
+  sorry
+  
+  def Sorter (bases : Array Bases) : Array Bases :=
+  sorry
+
+vc-theorems: |-
+  theorem sorter_spec (bases : Array Bases) :
+  0 < bases.size →
+  let sobases := Sorter bases
+  (sobases.size = bases.size) ∧
+  bordered sobases :=
+  sorry
+
+vc-postamble: |-
+

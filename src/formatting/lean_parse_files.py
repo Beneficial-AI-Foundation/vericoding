@@ -191,7 +191,7 @@ def parse_lean_file(file_path: str) -> Tuple[str, List[Dict[str, str]]]:
                         "string": constr_text
                     })
                 
-            elif startswith(line, ["def"]):
+            elif startswith(line, ["def", "partial def"]):
                 results = consolidate_partial_results(partial_results, results)
                 partial_results = []
 
@@ -370,6 +370,60 @@ def parse_lean_file(file_path: str) -> Tuple[str, List[Dict[str, str]]]:
 
     return "ok", results
 
+
+def remove_strings_from_file(file_path: str, strings_to_remove: List[str], output_path: str = None) -> str:
+    """
+    Process a file line by line, strip whitespace, and remove occurrences of specified strings.
+    
+    Args:
+        file_path: Path to the input file
+        strings_to_remove: List of strings to remove from each line
+        output_path: Optional path for output file. If None, overwrites the input file.
+        
+    Returns:
+        The processed content as a string
+        
+    Raises:
+        FileNotFoundError: If the input file doesn't exist
+        IOError: If there's an error reading or writing the file
+    """
+    try:
+        with open(file_path, 'r', encoding='utf-8') as f:
+            lines = f.readlines()
+    except Exception as e:
+        raise IOError(f"Error reading file {file_path}: {str(e)}")
+    
+    processed_lines = []
+    for line in lines:
+        # Strip whitespace from the line
+        stripped_line = line.strip()
+        
+        # Remove each string from the stripped line
+        should_remove = False
+        for string_to_remove in strings_to_remove:
+            if string_to_remove in stripped_line:
+                if stripped_line != string_to_remove:
+                    raise ValueError(f"String '{string_to_remove}' found but it is not the whole line")
+                else:
+                    should_remove = True
+                    break
+
+        if not should_remove:
+            processed_lines.append(stripped_line)
+    
+    # Join the processed lines
+    processed_content = '\n'.join(processed_lines)
+    
+    # Write to output file
+    target_path = output_path if output_path else file_path
+    try:
+        with open(target_path, 'w', encoding='utf-8') as f:
+            f.write(processed_content)
+    except Exception as e:
+        raise IOError(f"Error writing to file {target_path}: {str(e)}")
+    
+    return processed_content
+
 def main():
     """Main function to check all .lean files in the specified directory."""
     parser = argparse.ArgumentParser(
@@ -414,10 +468,21 @@ def main():
     
     print(f"Checking {len(lean_files)} .lean files in '{folder_path}' for proper formatting...\n")
     
+    # lines to remove from every file before parsing
+    strings_to_remove = [
+        "namespace DafnyBenchmarks",
+        "end DafnyBenchmarks",
+        "import Std",
+        "open Std.Do"
+    ]
+
     wrong_format_files = []
     parsing_results_obj = {}
     count_parsing_error = 0
     for file_path in sorted(lean_files):
+
+        # print(f"Removing unnecessary lines...\n")
+        # remove_strings_from_file(file_path, strings_to_remove, file_path)
 
         status, parsing_results = parse_lean_file(file_path)
 

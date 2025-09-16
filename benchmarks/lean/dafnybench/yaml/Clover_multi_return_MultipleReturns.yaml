@@ -1,0 +1,34 @@
+vc-description: |-
+  /- 
+  {
+  "name": "Clover_multi_return_MultipleReturns",
+  "category": "Dafny Translation",
+  "description": "Automatically translated from Dafny specification: Clover_multi_return_MultipleReturns",
+  "source": "Dafny",
+  "translation_date": "2024",
+  "functions": ,
+  "methods":
+  }
+  -/
+  
+  /- 
+  Translates the Dafny method MultipleReturns which returns two values:
+  more = x + y and less = x - y
+  -/
+
+vc-preamble: |-
+
+vc-helpers: |-
+
+vc-definitions: |-
+  def MultipleReturns (x y : Int) : Int × Int :=
+  sorry
+
+vc-theorems: |-
+  theorem MultipleReturns_spec (x y : Int) :
+  let (more, less) := MultipleReturns x y
+  more = x + y ∧ less = x - y :=
+  sorry
+
+vc-postamble: |-
+

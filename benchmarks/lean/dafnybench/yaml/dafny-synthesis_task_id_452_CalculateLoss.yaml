@@ -1,0 +1,40 @@
+vc-description: |-
+  /- 
+  {
+  "name": "dafny-synthesis_task_id_452_CalculateLoss",
+  "category": "Dafny Translation",
+  "description": "Automatically translated from Dafny specification: dafny-synthesis_task_id_452_CalculateLoss",
+  "source": "Dafny",
+  "translation_date": "2024",
+  "functions": ,
+  "methods":
+  }
+  -/
+  
+  /- 
+  Calculates the loss amount given cost price and selling price.
+  If cost price is greater than selling price, returns the difference.
+  Otherwise returns 0.
+  
+  @param costPrice The cost price (must be non-negative)
+  @param sellingPrice The selling price (must be non-negative)
+  @return The calculated loss amount
+  -/
+
+vc-preamble: |-
+
+vc-helpers: |-
+
+vc-definitions: |-
+  def CalculateLoss (costPrice : Int) (sellingPrice : Int) : Int :=
+  sorry
+
+vc-theorems: |-
+  theorem CalculateLoss_spec (costPrice : Int) (sellingPrice : Int) :
+  costPrice ≥ 0 ∧ sellingPrice ≥ 0 →
+  ((costPrice > sellingPrice → CalculateLoss costPrice sellingPrice = costPrice - sellingPrice) ∧
+  (costPrice ≤ sellingPrice → CalculateLoss costPrice sellingPrice = 0)) :=
+  sorry
+
+vc-postamble: |-
+

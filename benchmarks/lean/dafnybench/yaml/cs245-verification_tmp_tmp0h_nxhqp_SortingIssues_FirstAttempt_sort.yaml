@@ -1,0 +1,47 @@
+vc-description: |-
+  /- 
+  {
+  "name": "cs245-verification_tmp_tmp0h_nxhqp_SortingIssues_FirstAttempt_sort",
+  "category": "Dafny Translation",
+  "description": "Automatically translated from Dafny specification: cs245-verification_tmp_tmp0h_nxhqp_SortingIssues_FirstAttempt_sort",
+  "source": "Dafny",
+  "translation_date": "2024",
+  "functions": ,
+  "methods":
+  }
+  -/
+  
+  /- 
+  Translation of Dafny sort method specification.
+  Original investigates specification issues for sorting arrays.
+  
+  Parameters:
+  - A: Array of integers to be sorted
+  - n: Length of array A
+  
+  Requirements:
+  - n must equal A.size
+  - n must be non-negative
+  
+  Ensures:
+  - Array A is sorted in ascending order
+  -/
+
+vc-preamble: |-
+
+vc-helpers: |-
+
+vc-definitions: |-
+  def sort (A : Array Int) (n : Int) : Array Int :=
+  sorry
+
+vc-theorems: |-
+  theorem sort_spec (A : Array Int) (n : Int) :
+  n = A.size ∧
+  n ≥ 0 →
+  ∀ i j, 0 ≤ i ∧ i ≤ j ∧ j < n →
+  (sort A n)[i.toNat]! ≤ (sort A n)[j.toNat]! :=
+  sorry
+
+vc-postamble: |-
+
