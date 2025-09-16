@@ -282,7 +282,7 @@ resource "aws_batch_job_definition" "lean_verification" {
   })
   
   retry_strategy {
-    attempts = 2
+    attempts = 1
   }
 }
 
