@@ -1,14 +1,23 @@
 -- <vc-preamble>
+@[reducible, simp]
 def ValidInput (n : Int) (a : List Int) : Prop :=
-  n ≥ 2 ∧ a.length = n.natAbs
+  n ≥ 2 ∧ a.length = Int.natAbs n
 
-def CountViolationsForK (a : List Int) (n : Int) (k : Int) : Nat :=
-  sorry
+def CountViolationsForK (a : List Int) (n : Int) (k : Int) : Int :=
+  if n ≥ 2 ∧ a.length = Int.natAbs n ∧ 1 ≤ k ∧ k ≤ n - 1 then
+    (List.range (Int.natAbs n + 1)).filter (fun i => 
+      i ≥ 2 ∧ i ≤ Int.natAbs n ∧
+      let parent_idx := (i + Int.natAbs k - 2) / Int.natAbs k
+      parent_idx ≥ 1 ∧ i - 1 < a.length ∧ parent_idx - 1 < a.length ∧ 
+      a.get! (i - 1) < a.get! (parent_idx - 1)) |>.length
+  else 0
 
+@[reducible, simp]
 def ValidOutput (result : List Int) (n : Int) (a : List Int) : Prop :=
-  result.length = (n - 1).natAbs ∧
-  (∀ k, 1 ≤ k ∧ k ≤ n - 1 → ∃ v, result.get? (k.natAbs - 1) = some v ∧ v ≥ 0) ∧
-  (∀ k, 1 ≤ k ∧ k ≤ n - 1 → ∃ v, result.get? (k.natAbs - 1) = some v ∧ v = CountViolationsForK a n k)
+  n ≥ 2 ∧ a.length = Int.natAbs n →
+  result.length = Int.natAbs n - 1 ∧
+  (∀ k, 1 ≤ k ∧ k ≤ n - 1 → k - 1 < result.length ∧ result.get! (Int.natAbs k - 1) ≥ 0) ∧
+  (∀ k, 1 ≤ k ∧ k ≤ n - 1 → k - 1 < result.length ∧ result.get! (Int.natAbs k - 1) = CountViolationsForK a n k)
 
 @[reducible, simp]
 def solve_precond (n : Int) (a : List Int) : Prop :=

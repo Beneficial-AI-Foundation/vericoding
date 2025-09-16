@@ -1,8 +1,8 @@
 -- <vc-preamble>
 def ValidInput (input : String) : Prop :=
   input.length > 0 ∧
-  (∃ i, 0 ≤ i ∧ i < input.length ∧ input.data[i]! = ' ') ∧
-  (∀ j, 0 ≤ j ∧ j < input.length → 
+  (∃ i, i < input.length ∧ input.data[i]? = some ' ') ∧
+  (∀ j, j < input.length → 
     let c := input.data[j]!
     ('0' ≤ c ∧ c ≤ '9') ∨ c = ' ' ∨ c = '\n')
 
@@ -13,20 +13,16 @@ def gcd (a b : Nat) : Nat :=
   else gcd a (b - a)
 termination_by a + b
 
-def f_mathematical (x y : Nat) : Nat :=
+partial def f_mathematical (x y : Nat) : Nat :=
   if y = 0 then 0
   else 
     let g := gcd x y
     if g ≥ y then 1
     else 1 + f_mathematical x (y - g)
-termination_by y
-decreasing_by
-  simp_wf
-  sorry
 
 def ValidOutput (result : String) : Prop :=
   result.length > 0 ∧
-  (∀ i, 0 ≤ i ∧ i < result.length → 
+  (∀ i, i < result.length → 
     let c := result.data[i]!
     ('0' ≤ c ∧ c ≤ '9') ∨ c = '\n') ∧
   (result.length > 0 → result.data[result.length - 1]! = '\n')

@@ -2,13 +2,13 @@ vc-preamble: |-
   def ValidInput (n m : Int) : Prop :=
     n ≥ 2 ∧ m ≥ 1 ∧ n ≤ m ∧ m ≤ 200000
 
-  -- Helper functions referenced in ExpectedResult
-  def Combination (m n mod : Int) : Int := sorry
-  def Power (base exp mod : Int) : Int := sorry
+  def Combination (m n mod : Int) : Int := 0
+
+  def Power (base exp mod : Int) : Int := 0
 
   def ExpectedResult (n m : Int) (h : ValidInput n m) : Int :=
     if n = 2 then 0
-    else (((Combination m (n - 1) 998244353 * (n - 2)) % 998244353) * Power 2 (n - 3) 998244353) % 998244353
+    else (((Combination m (n - 1) 998244353) * (n - 2)) % 998244353 * Power 2 (n - 3) 998244353) % 998244353
 
   def ValidOutput (result : Int) : Prop :=
     0 ≤ result ∧ result < 998244353

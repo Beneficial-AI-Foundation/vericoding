@@ -5,12 +5,12 @@ def ValidInput (sides : List Int) : Prop :=
 def filter (s : List Int) (pred : Int → Bool) : List Int :=
   s.filter pred
 
-def quicksort (s : List Int) : List Int :=
-  sorry
-
 def sumExceptLast (s : List Int) : Int :=
   if s.length ≤ 1 then 0
-  else s.take (s.length - 1) |>.sum
+  else s.dropLast.sum
+
+def quicksort (s : List Int) : List Int :=
+  s.mergeSort (· ≤ ·)
 
 def canFormPolygon (sides : List Int) : Bool :=
   let sortedSides := quicksort sides

@@ -1,7 +1,10 @@
 -- <vc-preamble>
-def digit_sum (n : Int) : Int := sorry
-def int_to_string (n : Int) : String := sorry
+def digit_sum : Nat → Nat
+  | n => if n < 10 then n else (n % 10) + digit_sum (n / 10)
 
+def int_to_string (n : Int) : String := toString n
+
+@[reducible, simp]
 def ValidInput (stdin_input : String) : Prop :=
   stdin_input.length > 0 ∧
   ∃ k : Int, k ≥ 1 ∧ k ≤ 10000 ∧ stdin_input = int_to_string k ++ "\n"

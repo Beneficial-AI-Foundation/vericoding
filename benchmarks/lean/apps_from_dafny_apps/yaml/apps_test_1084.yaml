@@ -1,21 +1,18 @@
 vc-preamble: |-
-  def ValidInput (input : String) : Bool :=
-    input.length > 0 && input.contains '\n'
+  def ValidInput (input : String) : Prop :=
+    input.length > 0 ∧ '\n' ∈ input.toList
 
-  def SplitLinesHelper (input : String) (start : Nat) (acc : List String) : List String :=
-    sorry
+  def SplitLinesHelper (_ : String) (_ : Nat) (_ : List String) : List String :=
+    []
 
   def SplitLines (input : String) : List String :=
-    if input.length > 0 then
-      SplitLinesHelper input 0 []
-    else
-      []
+    if input.length > 0 then SplitLinesHelper input 0 [] else []
 
-  def SplitOnSpace (line : String) : List String :=
-    sorry
+  def SplitOnSpace (_ : String) : List String :=
+    []
 
-  def StringToInt (s : String) : Int :=
-    sorry
+  def StringToInt (_ : String) : Int :=
+    0
 
   def ParseDimensions (line : String) : (Int × Int) :=
     let parts := SplitOnSpace line
@@ -27,44 +24,39 @@ vc-preamble: |-
   def ValidGrid (gridLines : List String) (m : Int) : Bool :=
     (gridLines.all (fun row => row.length = m.natAbs)) &&
     (gridLines.all (fun row => 
-      row.data.all (fun c => c = '.' || c = '#')))
+        row.toList.all (fun c => c = '.' || c = '#')))
 
-  def GetRowPattern (row : String) (m : Int) : List Int :=
-    if row.length = m.natAbs then
-      List.range m.natAbs |>.filter (fun j => if h : j < row.length then row.data[j] = '#' else false) |>.map Int.ofNat
-    else
-      []
+  def GetRowPattern (row : String) (m : Int) : List Nat :=
+    List.range m.natAbs |>.filter (fun j => j < row.length && row.data[j]! = '#')
 
   def CanBeConstructedByOperations (input : String) : Bool :=
-    if ValidInput input then
-      let lines := SplitLines input
-      if lines.length < 2 then false
-      else
-        let firstLine := lines[0]!
-        let gridLines := lines.drop 1
-        let dimensions := ParseDimensions firstLine
-        let n := dimensions.1
-        let m := dimensions.2
-        if n ≤ 0 || m ≤ 0 || gridLines.length ≠ n.natAbs then false
-        else if !ValidGrid gridLines m then false
-        else
-          List.range m.natAbs |>.all (fun col =>
-            let rowsWithThisCol := List.range n.natAbs |>.filter (fun i => 
-              col < gridLines[i]!.length && (if h : col < gridLines[i]!.length then gridLines[i]!.data[col] = '#' else false))
-            rowsWithThisCol.length ≤ 1 ||
-            (rowsWithThisCol.all (fun i => rowsWithThisCol.all (fun j =>
-              GetRowPattern gridLines[i]! m = GetRowPattern gridLines[j]! m))))
+    let lines := SplitLines input
+    if lines.length < 2 then false
     else
-      false
+      let firstLine := lines[0]!
+      let gridLines := lines.drop 1
+      let dimensions := ParseDimensions firstLine
+      let n := dimensions.1
+      let m := dimensions.2
+      if n ≤ 0 || m ≤ 0 || gridLines.length ≠ n.natAbs then false
+      else if !ValidGrid gridLines m then false
+      else
+        List.range m.natAbs |>.all (fun col =>
+            let rowsWithThisCol := List.range n.natAbs |>.filter (fun i => 
+              col < gridLines[i]!.length && gridLines[i]!.data[col]! = '#')
+            rowsWithThisCol.length ≤ 1 ||
+            rowsWithThisCol.all (fun i => 
+              rowsWithThisCol.all (fun j =>
+                GetRowPattern gridLines[i]! m = GetRowPattern gridLines[j]! m)))
 
   @[reducible, simp]
   def solve_precond (stdin_input : String) : Prop :=
-    ValidInput stdin_input = true
+    ValidInput stdin_input
 
 vc-helpers: |-
 
 vc-definitions: |-
-  def solve (stdin_input : String) (_ : solve_precond stdin_input) : String :=
+  def solve (stdin_input : String) (h_precond : solve_precond stdin_input) : String :=
     sorry
 
 vc-theorems: |-

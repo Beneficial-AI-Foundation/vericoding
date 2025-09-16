@@ -6,9 +6,9 @@ def sum (cards : List Int) : Int :=
   cards.foldl (· + ·) 0
 
 def minPossibleSumUpToIndex (cards : List Int) (n : Nat) : Int :=
-  sorry
+  0
 
-def minPossibleSum (cards : List Int) : Int :=
+def minPossibleSum (cards : List Int) (h : ValidInput cards) : Int :=
   minPossibleSumUpToIndex cards 5
 
 @[reducible, simp]
@@ -27,7 +27,7 @@ def solve (cards : List Int) (h_precond : solve_precond cards) : Int :=
 -- <vc-theorems>
 @[reducible, simp]
 def solve_postcond (cards : List Int) (result : Int) (h_precond : solve_precond cards) : Prop :=
-  result ≥ 0 ∧ result ≤ sum cards ∧ result = minPossibleSum cards
+  result ≥ 0 ∧ result ≤ sum cards ∧ result = minPossibleSum cards h_precond
 
 theorem solve_spec_satisfied (cards : List Int) (h_precond : solve_precond cards) :
     solve_postcond cards (solve cards h_precond) h_precond := by

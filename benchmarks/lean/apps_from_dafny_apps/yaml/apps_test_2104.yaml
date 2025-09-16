@@ -3,14 +3,12 @@ vc-preamble: |-
     l < r ∧ (r - l) % 2 = 1
 
   def gcd (a b : Int) : Int :=
-    if a = 0 then 
-      if b ≥ 0 then b else -b
-    else 
-      gcd (b % a) a
-  termination_by Int.natAbs a
-  decreasing_by simp_wf; sorry
+    if a = 0 then if b ≥ 0 then b else -b
+    else if a > 0 then Int.gcd a.natAbs b.natAbs
+    else Int.gcd a.natAbs b.natAbs
 
-  def int_to_string (n : Int) : String := toString n
+  def int_to_string (n : Int) : String :=
+    toString n
 
   def PairHasGcdOne (pair : String) (l r : Int) : Prop :=
     ∃ i j, l ≤ i ∧ i ≤ r ∧ l ≤ j ∧ j ≤ r ∧ i ≠ j ∧

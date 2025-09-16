@@ -1,35 +1,29 @@
 -- <vc-preamble>
-def CountOccurrences (s : List Int) (x : Int) : Nat :=
+def CountOccurrences (s : List Int) (x : Int) : Int :=
   match s with
   | [] => 0
-  | y :: ys => (if y = x then 1 else 0) + CountOccurrences ys x
+  | h :: t => (if h = x then 1 else 0) + CountOccurrences t x
 
 def FilterPositive (s : List Int) : List Int :=
   match s with
   | [] => []
-  | x :: xs => if x > 0 then x :: FilterPositive xs else FilterPositive xs
+  | h :: t => if h > 0 then h :: FilterPositive t else FilterPositive t
 
 def RemoveAllOccurrences (s : List Int) (x : Int) : List Int :=
   match s with
   | [] => []
-  | y :: ys => if y = x then RemoveAllOccurrences ys x else y :: RemoveAllOccurrences ys x
+  | h :: t => if h = x then RemoveAllOccurrences t x else h :: RemoveAllOccurrences t x
 
-def CountPairsHelper (s : List Int) : Nat :=
-  match s with
+def CountPairsHelper : List Int → Int
   | [] => 0
   | [_] => 0
-  | x :: xs =>
-    let fullList := x :: xs
-    let count := CountOccurrences fullList x
-    let remaining := RemoveAllOccurrences fullList x
+  | h :: t =>
+    let count := CountOccurrences (h :: t) h
+    let remaining := RemoveAllOccurrences (h :: t) h
     (if count = 2 then 1 else 0) + CountPairsHelper remaining
-termination_by s.length
-decreasing_by
-  simp_wf
-  have h1 : (RemoveAllOccurrences (x :: xs) x).length ≤ xs.length := by sorry
-  exact Nat.lt_succ_of_le h1
+  decreasing_by simp_wf; sorry
 
-def CountPairs (s : List Int) : Nat :=
+def CountPairs (s : List Int) : Int :=
   let positive_sessions := FilterPositive s
   CountPairsHelper positive_sessions
 
@@ -38,7 +32,7 @@ def ExistsIndex (s : List Int) (x : Int) : Prop :=
 
 @[reducible, simp]
 def solve_precond (n : Int) (sessions : List Int) : Prop :=
-  n ≥ 1 ∧ sessions.length = n.natAbs ∧ ∀ i, 0 ≤ i ∧ i < sessions.length → sessions[i]! ≥ 0
+  n ≥ 1 ∧ sessions.length = n ∧ ∀ i, 0 ≤ i ∧ i < sessions.length → sessions[i]! ≥ 0
 -- </vc-preamble>
 
 -- <vc-helpers>
@@ -55,7 +49,7 @@ def solve_postcond (n : Int) (sessions : List Int) (result : Int) (h_precond : s
   (result = -1 ∨ result ≥ 0) ∧
   (result = -1 → ∃ id, id > 0 ∧ CountOccurrences sessions id > 2) ∧
   (result ≥ 0 → ∀ id, id > 0 → CountOccurrences sessions id ≤ 2) ∧
-  (result ≥ 0 → result.natAbs = CountPairs sessions)
+  (result ≥ 0 → result = CountPairs sessions)
 
 theorem solve_spec_satisfied (n : Int) (sessions : List Int) (h_precond : solve_precond n sessions) :
     solve_postcond n sessions (solve n sessions h_precond) h_precond := by

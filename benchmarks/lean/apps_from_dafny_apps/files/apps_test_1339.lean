@@ -1,6 +1,6 @@
 -- <vc-preamble>
 def ValidInput (n : Int) (segments : List (Int × Int)) : Prop :=
-  n ≥ 1 ∧ segments.length = n ∧ 
+  n ≥ 1 ∧ segments.length = Int.natAbs n ∧ 
   ∀ i, 0 ≤ i ∧ i < n → (segments[Int.natAbs i]!).1 ≤ (segments[Int.natAbs i]!).2
 
 def CoversAll (segments : List (Int × Int)) (idx : Int) : Prop :=
@@ -14,10 +14,14 @@ def HasMinLeftAndMaxRight (segments : List (Int × Int)) (idx : Int) : Prop :=
   (∀ j, 0 ≤ j ∧ j < segments.length → (segments[Int.natAbs idx]!).2 ≥ (segments[Int.natAbs j]!).2)
 
 def MinLeft (segments : List (Int × Int)) : Int :=
-  sorry
+  if segments.length > 0 then
+    segments.foldl (fun acc seg => min acc seg.1) (segments[0]!).1
+  else 0
 
 def MaxRight (segments : List (Int × Int)) : Int :=
-  sorry
+  if segments.length > 0 then
+    segments.foldl (fun acc seg => max acc seg.2) (segments[0]!).2
+  else 0
 
 @[reducible, simp]
 def solve_precond (n : Int) (segments : List (Int × Int)) : Prop :=

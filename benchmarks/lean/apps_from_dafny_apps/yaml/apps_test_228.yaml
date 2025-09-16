@@ -1,9 +1,16 @@
 vc-preamble: |-
   def minimum (s : List Int) : Int :=
-    sorry
+    match s with
+    | [] => 0  -- dummy value, should not be called on empty list
+    | [x] => x
+    | x :: xs => 
+      let min_rest := minimum xs
+      if x ≤ min_rest then x else min_rest
 
   def countOccurrences (s : List Int) (val : Int) : Int :=
-    sorry
+    match s with
+    | [] => 0
+    | x :: xs => (if x = val then 1 else 0) + countOccurrences xs val
 
   def ValidInput (n : Int) (piles : List Int) : Prop :=
     n ≥ 2 ∧ n % 2 = 0 ∧ piles.length = n ∧ ∀ i, 0 ≤ i ∧ i < piles.length → piles[i]! ≥ 1

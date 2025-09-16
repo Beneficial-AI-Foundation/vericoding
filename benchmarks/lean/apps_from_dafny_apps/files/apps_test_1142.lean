@@ -3,7 +3,7 @@ structure Wave where
   start_time : Nat
   end_time : Nat
   monsters : Nat
-deriving Inhabited
+deriving Inhabited, DecidableEq
 
 def ValidWaves (waves : List Wave) : Prop :=
   ∀ i, i < waves.length → 
@@ -11,32 +11,41 @@ def ValidWaves (waves : List Wave) : Prop :=
     waves[i]!.monsters > 0 ∧
     (i > 0 → waves[i-1]!.end_time ≤ waves[i]!.start_time)
 
-def CalculateReloadsNeeded (monsters k : Nat) : Nat :=
-  if monsters ≤ k then 0
-  else (monsters - 1) / k
+def CalculateReloadsNeeded (monsters : Nat) (k : Nat) : Nat :=
+  if k > 0 then
+    if monsters ≤ k then 0
+    else (monsters - 1) / k
+  else 0
 
-def CanReachWaveInTime (waves : List Wave) (waveIndex k : Nat) : Prop :=
-  waveIndex > 0 ∧ waveIndex < waves.length ∧ k > 0 →
-  let prevWave := waves[waveIndex - 1]!
-  let currWave := waves[waveIndex]!
-  let timeGap := currWave.start_time - prevWave.end_time
-  let reloadsNeeded := CalculateReloadsNeeded prevWave.monsters k
-  reloadsNeeded ≤ timeGap
+def CanReachWaveInTime (waves : List Wave) (waveIndex : Nat) (k : Nat) : Prop :=
+  if waveIndex > 0 ∧ waveIndex < waves.length ∧ k > 0 then
+    let prevWave := waves[waveIndex - 1]!
+    let currWave := waves[waveIndex]!
+    let timeGap := currWave.start_time - prevWave.end_time
+    let reloadsNeeded := CalculateReloadsNeeded prevWave.monsters k
+    reloadsNeeded ≤ timeGap
+  else True
 
-def CanSolveWave (waves : List Wave) (waveIndex k : Nat) : Prop :=
-  waveIndex < waves.length ∧ k > 0 →
-  let wave := waves[waveIndex]!
-  let timeAvailable := wave.end_time - wave.start_time + 1
-  let maxPossibleShots := timeAvailable * k
-  wave.monsters ≤ maxPossibleShots ∧
-  (waveIndex = 0 ∨ CanReachWaveInTime waves waveIndex k)
+def CanSolveWave (waves : List Wave) (waveIndex : Nat) (k : Nat) : Prop :=
+  if waveIndex < waves.length ∧ k > 0 then
+    let wave := waves[waveIndex]!
+    let timeAvailable := wave.end_time - wave.start_time + 1
+    let maxPossibleShots := timeAvailable * k
+    wave.monsters ≤ maxPossibleShots ∧
+    (waveIndex = 0 ∨ CanReachWaveInTime waves waveIndex k)
+  else False
 
 def CanSolveAllWaves (waves : List Wave) (k : Nat) : Prop :=
   k > 0 ∧ 
   ∀ i, i < waves.length → CanSolveWave waves i k
 
-def CalculateMinimumBulletsHelper (waves : List Wave) (k bulletCount remainingBullets : Nat) : Nat :=
-  sorry
+def CalculateMinimumBulletsHelper (waves : List Wave) (k : Nat) (index : Nat) (currentAmmo : Nat) : Nat :=
+  if index < waves.length then
+    let wave := waves[index]!
+    let bulletsNeeded := wave.monsters
+    let totalBullets := if currentAmmo ≥ bulletsNeeded then 0 else bulletsNeeded
+    totalBullets + CalculateMinimumBulletsHelper waves k (index + 1) k
+  else 0
 
 def CalculateMinimumBullets (waves : List Wave) (k : Nat) : Nat :=
   CalculateMinimumBulletsHelper waves k 0 k

@@ -5,14 +5,14 @@ def ValidInput (a b c d : Int) : Prop :=
   0 ≤ c ∧ c ≤ 180 ∧
   0 ≤ d ∧ d ≤ 180
 
-def CalculateScore (points time : Int) (h : points ≥ 0 ∧ time ≥ 0) : Float :=
+def CalculateScore (points time : Int) : Float :=
   let min_score := 3.0 * (Float.ofInt points) / 10.0
   let time_adjusted := (Float.ofInt points) - (Float.ofInt points) * (Float.ofInt time) / 250.0
   if min_score ≥ time_adjusted then min_score else time_adjusted
 
 def CorrectResult (a b c d : Int) (result : String) (h : ValidInput a b c d) : Prop :=
-  let misha_score := CalculateScore a c ⟨by sorry, by sorry⟩
-  let vasya_score := CalculateScore b d ⟨by sorry, by sorry⟩
+  let misha_score := CalculateScore a c
+  let vasya_score := CalculateScore b d
   (result = "Misha" ↔ misha_score > vasya_score) ∧
   (result = "Vasya" ↔ vasya_score > misha_score) ∧
   (result = "Tie" ↔ misha_score = vasya_score)

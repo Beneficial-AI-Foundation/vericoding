@@ -1,12 +1,12 @@
 vc-preamble: |-
   def Split (s : String) (delimiter : Char) : List String :=
-    sorry
+    s.split (· = delimiter)
 
   def ParseInt (s : String) : Int :=
-    sorry
+    s.toInt?.getD 0
 
   def IntToString (n : Int) : String :=
-    sorry
+    toString n
 
   def ValidInput (input : String) : Prop :=
     let lines := Split input '\n'
@@ -17,11 +17,15 @@ vc-preamble: |-
     secondLineParts.length ≥ 2 ∧
     ParseInt (secondLineParts[0]!) ≥ 1 ∧
     ParseInt (secondLineParts[1]!) ≥ 0 ∧
-    lines.length ≥ Int.natAbs (2 + n) ∧
-    (∀ i, 0 ≤ i ∧ i < n → ParseInt (lines[Int.natAbs (2 + i)]!) ≥ 1)
+    lines.length ≥ (2 + n.natAbs) ∧
+    ∀ i, 0 ≤ i ∧ i < n → ParseInt (lines[(2 + i.natAbs)]!) ≥ 1
 
-  def SumEatenForParticipants (lines : List String) (d : Int) (count : Int) : Int :=
-    sorry
+  def SumEatenForParticipants (lines : List String) (d : Int) (count : Nat) : Int :=
+    if count = 0 then 0
+    else
+      let a := ParseInt (lines[2 + count - 1]!)
+      let eaten := if a > 0 then (d + a - 1) / a else 0
+      eaten + SumEatenForParticipants lines d (count - 1)
 
   def ComputeExpectedResult (input : String) : String :=
     let lines := Split input '\n'
@@ -29,7 +33,7 @@ vc-preamble: |-
     let secondLineParts := Split (lines[1]!) ' '
     let d := ParseInt (secondLineParts[0]!)
     let x := ParseInt (secondLineParts[1]!)
-    let totalEaten := SumEatenForParticipants lines d n
+    let totalEaten := SumEatenForParticipants lines d n.natAbs
     IntToString (x + totalEaten)
 
   @[reducible, simp]

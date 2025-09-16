@@ -6,7 +6,15 @@ def ValidInput (positions : List (Int × Int)) : Prop :=
   (∀ i j, 0 ≤ i ∧ i < j ∧ j < positions.length → positions[i]! ≠ positions[j]!)
 
 def CountAttackingPairs (positions : List (Int × Int)) (h : ValidInput positions) : Int :=
-  sorry
+  let pairs := (List.range positions.length).foldl (fun acc i =>
+    acc ++ (List.range positions.length).map (fun j => (i, j))) []
+  Int.ofNat (List.length (List.filter (fun pair =>
+    let i := pair.1
+    let j := pair.2
+    0 ≤ i ∧ i < j ∧ j < positions.length ∧
+    (positions[i]!.1 + positions[i]!.2 = positions[j]!.1 + positions[j]!.2 ∨
+     positions[i]!.1 - positions[i]!.2 = positions[j]!.1 - positions[j]!.2))
+    pairs))
 
 def ValidOutput (positions : List (Int × Int)) (result : Int) (h : ValidInput positions) : Prop :=
   result = CountAttackingPairs positions h ∧ result ≥ 0
@@ -26,7 +34,7 @@ def solve (positions : List (Int × Int)) (h_precond : solve_precond positions) 
 
 -- <vc-theorems>
 @[reducible, simp]
-def solve_postcond (positions : List (Int × Int)) (result: Int) (h_precond : solve_precond positions) : Prop :=
+def solve_postcond (positions : List (Int × Int)) (result : Int) (h_precond : solve_precond positions) : Prop :=
   ValidOutput positions result h_precond ∧ result ≥ 0
 
 theorem solve_spec_satisfied (positions : List (Int × Int)) (h_precond : solve_precond positions) :

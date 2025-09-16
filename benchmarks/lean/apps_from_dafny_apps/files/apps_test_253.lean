@@ -1,11 +1,18 @@
 -- <vc-preamble>
+
+@[reducible, simp]
 def ValidInput (nums : List Int) : Prop :=
   nums.length = 3 ∧
   (∀ i, 0 ≤ i ∧ i < nums.length → nums[i]! > 0) ∧
   (∀ i, 0 ≤ i ∧ i < nums.length → nums[i]! ≤ 1500)
 
 def sortThree (x y z : Int) : Int × Int × Int :=
-  sorry
+  if x ≤ y ∧ x ≤ z then
+    if y ≤ z then (x, y, z) else (x, z, y)
+  else if y ≤ x ∧ y ≤ z then
+    if x ≤ z then (y, x, z) else (y, z, x)
+  else
+    if x ≤ y then (z, x, y) else (z, y, x)
 
 def computeResult (x y z : Int) : String :=
   if x > 0 ∧ y > 0 ∧ z > 0 ∧ x ≤ 1500 ∧ y ≤ 1500 ∧ z ≤ 1500 then

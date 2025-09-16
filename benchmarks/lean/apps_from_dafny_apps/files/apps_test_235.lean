@@ -1,5 +1,4 @@
 -- <vc-preamble>
-@[reducible, simp]
 def ValidInput (n : Int) : Prop :=
   n ≥ 1
 
@@ -15,7 +14,6 @@ decreasing_by
   simp_wf
   sorry
 
-@[reducible, simp]
 def IsMinimalSolution (n : Int) (k : Int) : Prop :=
   vasya_eats_with_strategy n k * 2 ≥ n ∧
   (k = 1 ∨ vasya_eats_with_strategy n (k - 1) * 2 < n)

@@ -2,21 +2,26 @@
 def ValidInput (A B : Int) : Prop :=
   A > 0 ∧ B > 0
 
--- Simplified versions that avoid termination issues
-def gcd (a b : Int) : Int := sorry
+partial def gcd (a b : Int) : Int :=
+  if b = 0 then a else gcd b (a % b)
 
-def divideOutFactor (n factor : Int) : Int := sorry
+partial def divideOutFactor (n factor : Int) : Int :=
+  let next := n / factor
+  if next % factor = 0 then divideOutFactor next factor else next
 
-def countDistinctPrimeFactorsHelper (n i : Int) : Int := sorry
+partial def countDistinctPrimeFactorsHelper (n i : Int) : Int :=
+  if i * i > n then
+    if n > 1 then 1 else 0
+  else if n % i = 0 then
+    1 + countDistinctPrimeFactorsHelper (divideOutFactor n i) (i + 1)
+  else
+    countDistinctPrimeFactorsHelper n (i + 1)
 
 def countDistinctPrimeFactors (n : Int) : Int :=
-  if n > 0 then
-    if n = 1 then 0
-    else countDistinctPrimeFactorsHelper n 2
-  else 0
+  if n = 1 then 0 else countDistinctPrimeFactorsHelper n 2
 
 def CorrectResult (A B result : Int) : Prop :=
-  A > 0 ∧ B > 0 ∧ result = countDistinctPrimeFactors (gcd A B) + 1
+  result = countDistinctPrimeFactors (gcd A B) + 1
 
 @[reducible, simp]
 def solve_precond (A B : Int) : Prop :=

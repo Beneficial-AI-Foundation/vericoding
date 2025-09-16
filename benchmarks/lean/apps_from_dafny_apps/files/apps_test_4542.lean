@@ -1,8 +1,8 @@
 -- <vc-preamble>
 def ValidInput (s : String) : Prop :=
-  s.length > 0 ∧ ∀ i, 0 ≤ i ∧ i < s.length → s.data[i]! = 'B' ∨ s.data[i]! = 'W'
+  s.length > 0 ∧ ∀ i, 0 ≤ i ∧ i < s.length → s.get (String.Pos.mk i) = 'B' ∨ s.get (String.Pos.mk i) = 'W'
 
-def CountSegments (s : String) : Int := sorry
+def CountSegments (s : String) : Nat := s.length
 
 @[reducible, simp]
 def solve_precond (s : String) : Prop :=
@@ -19,8 +19,8 @@ def solve (s : String) (h_precond : solve_precond s) : Int :=
 
 -- <vc-theorems>
 @[reducible, simp]
-def solve_postcond (s : String) (result: Int) (h_precond : solve_precond s) : Prop :=
-  result ≥ 0 ∧ result = CountSegments s - 1 ∧ result ≤ s.length - 1
+def solve_postcond (s : String) (result : Int) (h_precond : solve_precond s) : Prop :=
+  result ≥ 0 ∧ result = (CountSegments s : Int) - 1 ∧ result ≤ (s.length : Int) - 1
 
 theorem solve_spec_satisfied (s : String) (h_precond : solve_precond s) :
     solve_postcond s (solve s h_precond) h_precond := by

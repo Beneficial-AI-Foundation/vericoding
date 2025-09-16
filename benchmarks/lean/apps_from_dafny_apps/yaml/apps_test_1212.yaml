@@ -1,21 +1,20 @@
 vc-preamble: |-
-  def sum_window (heights : List Int) (start : Int) (k : Int) : Int :=
-    if k = 1 then heights[start.toNat]!
-    else heights[start.toNat]! + sum_window heights (start + 1) (k - 1)
+  def sum_window (heights : List Int) (start : Nat) (k : Nat) : Int :=
+    match k with
+    | 0 => 0
+    | 1 => heights[start]!
+    | k + 1 => heights[start]! + sum_window heights (start + 1) k
   termination_by k
-  decreasing_by
-    simp_wf
-    sorry
-
+  
   def ValidInput (n : Int) (k : Int) (heights : List Int) : Prop :=
     1 ≤ k ∧ k ≤ n ∧ heights.length = n.toNat ∧ ∀ i, 0 ≤ i ∧ i < n → 1 ≤ heights[i.toNat]! ∧ heights[i.toNat]! ≤ 100
-
+  
   def ValidResult (result : Int) (n : Int) (k : Int) (heights : List Int) : Prop :=
     1 ≤ result ∧ result ≤ n - k + 1 ∧
     (∀ start, 0 ≤ start ∧ start ≤ n - k → 
-      sum_window heights (result - 1) k ≤ sum_window heights start k) ∧
+      sum_window heights (result - 1).toNat k.toNat ≤ sum_window heights start.toNat k.toNat) ∧
     (∀ start, 0 ≤ start ∧ start < result - 1 →
-      sum_window heights start k > sum_window heights (result - 1) k)
+      sum_window heights start.toNat k.toNat > sum_window heights (result - 1).toNat k.toNat)
 
   @[reducible, simp]
   def solve_precond (n : Int) (k : Int) (heights : List Int) : Prop :=

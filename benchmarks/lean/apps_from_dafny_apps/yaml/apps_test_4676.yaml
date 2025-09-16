@@ -1,7 +1,6 @@
 vc-preamble: |-
-  -- Define split function (placeholder)
   def split (s : String) (c : Char) : List String :=
-    sorry
+    s.split (· = c)
 
   def ValidInput (input : String) : Prop :=
     let lines := split input '\n'
@@ -13,28 +12,29 @@ vc-preamble: |-
     (a = b ∨ a = b + 1) ∧
     (a > 0 ∨ b = 0)
 
-  def GetO (input : String) (h : ValidInput input) : String :=
+  def GetO (input : String) : String :=
     (split input '\n')[0]!
 
-  def GetE (input : String) (h : ValidInput input) : String :=
+  def GetE (input : String) : String :=
     (split input '\n')[1]!
 
-  def InterleaveEqual (O E : String) (h : O.length = E.length) : String :=
-    sorry
+  partial def InterleaveEqual (O E : String) : String :=
+    if O.length = 0 then ""
+    else String.mk [O.get 0, E.get 0] ++ InterleaveEqual (O.drop 1) (E.drop 1)
 
-  def InterleaveUnequal (O E : String) (h : O.length = E.length + 1) : String :=
-    sorry
+  partial def InterleaveUnequal (O E : String) : String :=
+    if E.length = 0 then O
+    else String.mk [O.get 0, E.get 0] ++ InterleaveUnequal (O.drop 1) (E.drop 1)
 
-  def CorrectResult (input : String) (h : ValidInput input) : String :=
-    let O := GetO input h
-    let E := GetE input h
+  def CorrectResult (input : String) : String :=
+    let O := GetO input
+    let E := GetE input
     let a := O.length
     let b := E.length
-    if ha : a = b then
-      InterleaveEqual O E ha
+    if a = b then
+      InterleaveEqual O E
     else
-      have hab : a = b + 1 := sorry
-      InterleaveUnequal O E hab
+      InterleaveUnequal O E
 
   @[reducible, simp]
   def solve_precond (input : String) : Prop :=
@@ -49,7 +49,7 @@ vc-definitions: |-
 vc-theorems: |-
   @[reducible, simp]
   def solve_postcond (input : String) (result : String) (h_precond : solve_precond input) : Prop :=
-    result = CorrectResult input h_precond
+    result = CorrectResult input
 
   theorem solve_spec_satisfied (input : String) (h_precond : solve_precond input) :
       solve_postcond input (solve input h_precond) h_precond := by

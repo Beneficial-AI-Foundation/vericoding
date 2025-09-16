@@ -1,29 +1,32 @@
 vc-preamble: |-
+  def ValidInput (input : String) : Prop :=
+    input.length > 0 ∧ ∃ newlinePos, 0 ≤ newlinePos ∧ newlinePos < input.length ∧ input.data[newlinePos]! = '\n'
+
   def IsValidInteger (s : String) : Prop :=
-    s.length > 0 ∧ ∀ i, 0 ≤ i ∧ i < s.length → s.get! ⟨i⟩ ≥ '0' ∧ s.get! ⟨i⟩ ≤ '9'
+    s.length > 0 ∧ ∀ i, 0 ≤ i ∧ i < s.length → s.data[i]! ≥ '0' ∧ s.data[i]! ≤ '9'
 
   def IsValidGameString (s : String) : Prop :=
-    ∀ i, 0 ≤ i ∧ i < s.length → s.get! ⟨i⟩ = 'A' ∨ s.get! ⟨i⟩ = 'D'
+    ∀ i, 0 ≤ i ∧ i < s.length → s.data[i]! = 'A' ∨ s.data[i]! = 'D'
 
-  def StringToInt (s : String) : Int := sorry
+  def StringToInt (s : String) : Int := 
+    s.foldl (fun acc c => acc * 10 + (c.toNat - '0'.toNat)) 0
 
-  def ValidInput (input : String) : Prop :=
-    input.length > 0 ∧ ∃ newlinePos, 0 ≤ newlinePos ∧ newlinePos < input.length ∧ input.get! ⟨newlinePos⟩ = '\n'
+  def SplitLines (input : String) : List String := 
+    input.splitOn "\n"
 
   def ValidParsedInput (lines : List String) : Prop :=
-    lines.length ≥ 2 ∧ IsValidInteger lines[0]! ∧ IsValidGameString lines[1]! ∧
-    let n := StringToInt lines[0]!
+    lines.length ≥ 2 ∧ IsValidInteger (lines[0]!) ∧ IsValidGameString (lines[1]!) ∧
+    let n := StringToInt (lines[0]!)
     let s := lines[1]!
     s.length = n ∧ n ≥ 1
 
-  def CountChar (s : String) (c : Char) : Int := sorry
+  def CountChar (s : String) (c : Char) : Int :=
+    s.foldl (fun acc ch => if ch = c then acc + 1 else acc) 0
 
   def DetermineWinner (countA countD : Int) : String :=
     if countA > countD then "Anton"
     else if countD > countA then "Danik"
     else "Friendship"
-
-  def SplitLines (input : String) : List String := sorry
 
   @[reducible, simp]
   def solve_precond (input : String) : Prop :=

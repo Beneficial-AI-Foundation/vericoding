@@ -1,6 +1,10 @@
 vc-preamble: |-
   def CountOnesInBinary (n : Int) : Int :=
-    sorry
+    if n ≤ 0 then 0
+    else if n = 1 then 1
+    else if n % 2 = 1 then 1 + CountOnesInBinary (n / 2)
+    else CountOnesInBinary (n / 2)
+  termination_by n.natAbs
 
   def ValidInput (x : Int) : Prop :=
     x ≥ 1

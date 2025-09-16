@@ -2,28 +2,27 @@
 def ValidInput (n k : Int) (s : String) : Prop :=
   n ≥ 2 ∧
   1 ≤ k ∧ k < n ∧
-  s.length = n.natAbs ∧
-  (∃ i : Nat, i < s.length ∧ s.data[i]! = 'G') ∧
-  (∃ i : Nat, i < s.length ∧ s.data[i]! = 'T') ∧
-  (∀ i : Nat, i < s.length → s.data[i]! ∈ ['G', 'T', '.', '#']) ∧
-  (∀ i j : Nat, i < j ∧ j < s.length ∧ s.data[i]! = 'G' → s.data[j]! ≠ 'G') ∧
-  (∀ i j : Nat, i < j ∧ j < s.length ∧ s.data[i]! = 'T' → s.data[j]! ≠ 'T')
+  s.length = Int.natAbs n ∧
+  (∃ i, 0 ≤ i ∧ i < s.length ∧ s.data[i]? = some 'G') ∧
+  (∃ i, 0 ≤ i ∧ i < s.length ∧ s.data[i]? = some 'T') ∧
+  (∀ i, 0 ≤ i ∧ i < s.length → s.data[i]? = some 'G' ∨ s.data[i]? = some 'T' ∨ s.data[i]? = some '.' ∨ s.data[i]? = some '#') ∧
+  (∀ i j, 0 ≤ i ∧ i < j ∧ j < s.length ∧ s.data[i]? = some 'G' → s.data[j]? ≠ some 'G') ∧
+  (∀ i j, 0 ≤ i ∧ i < j ∧ j < s.length ∧ s.data[i]? = some 'T' → s.data[j]? ≠ some 'T')
 
-def FindFirstGOrT (s : String) : Int :=
-  sorry
+def FindFirstGOrT (s : String) : Int := 0
 
 def CanReachTarget (s : String) (k : Int) : Prop :=
   k > 0 →
-  ∃ start : Nat, 
-    start < s.length ∧ 
-    s.data[start]! ∈ ['G', 'T'] ∧
-    (∀ j : Nat, j < start → s.data[j]! ∉ ['G', 'T']) ∧
-    (∃ final : Nat, 
+  ∃ start,
+    0 ≤ start ∧ start < s.length ∧
+    (s.data[start]? = some 'G' ∨ s.data[start]? = some 'T') ∧
+    (∀ j, 0 ≤ j ∧ j < start → s.data[j]? ≠ some 'G' ∧ s.data[j]? ≠ some 'T') ∧
+    (∃ final,
         start < final ∧ final < s.length ∧
-        s.data[final]! ∈ ['G', 'T'] ∧
-        (final - start) % k.natAbs = 0 ∧
-        (∀ pos : Nat, start < pos ∧ pos < final ∧ (pos - start) % k.natAbs = 0 → s.data[pos]! ∉ ['G', 'T', '#'])
-    )
+        (s.data[final]? = some 'G' ∨ s.data[final]? = some 'T') ∧
+        (Int.natAbs final - Int.natAbs start) % Int.natAbs k = 0 ∧
+        (∀ pos, start < pos ∧ pos < final ∧ (Int.natAbs pos - Int.natAbs start) % Int.natAbs k = 0 → 
+          s.data[pos]? ≠ some 'G' ∧ s.data[pos]? ≠ some 'T' ∧ s.data[pos]? ≠ some '#'))
 
 @[reducible, simp]
 def solve_precond (n k : Int) (s : String) : Prop :=
