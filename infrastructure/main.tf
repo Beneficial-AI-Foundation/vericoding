@@ -9,7 +9,7 @@ terraform {
 }
 
 provider "aws" {
-  region = var.aws_region
+  region = "eu-west-2"
 }
 
 # VPC and networking
@@ -143,7 +143,7 @@ resource "aws_iam_role_policy" "batch_job_ssm_policy" {
           "ssm:GetParametersByPath"
         ]
         Resource = [
-          "arn:aws:ssm:${var.aws_region}:${data.aws_caller_identity.current.account_id}:parameter/vericoding/*"
+          "arn:aws:ssm:eu-west-2:${data.aws_caller_identity.current.account_id}:parameter/vericoding/*"
         ]
       }
     ]
@@ -257,11 +257,11 @@ resource "aws_batch_job_definition" "lean_verification" {
     secrets = [
       {
         name      = "OPENAI_API_KEY"
-        valueFrom = "arn:aws:ssm:${var.aws_region}:${data.aws_caller_identity.current.account_id}:parameter/vericoding/openai-api-key"
+        valueFrom = "arn:aws:ssm:eu-west-2:${data.aws_caller_identity.current.account_id}:parameter/vericoding/openai-api-key"
       },
       {
         name      = "WANDB_API_KEY" 
-        valueFrom = "arn:aws:ssm:${var.aws_region}:${data.aws_caller_identity.current.account_id}:parameter/vericoding/wandb-api-key"
+        valueFrom = "arn:aws:ssm:eu-west-2:${data.aws_caller_identity.current.account_id}:parameter/vericoding/wandb-api-key"
       }
     ]
     
