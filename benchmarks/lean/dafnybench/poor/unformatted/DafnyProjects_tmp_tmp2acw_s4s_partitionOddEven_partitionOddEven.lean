@@ -1,20 +1,17 @@
-import Std
 
-open Std.Do
 
 /-!
 {
-  "name": "DafnyProjects_tmp_tmp2acw_s4s_partitionOddEven_partitionOddEven",
-  "category": "Dafny Translation",
-  "description": "Automatically translated from Dafny specification: DafnyProjects_tmp_tmp2acw_s4s_partitionOddEven_partitionOddEven",
-  "source": "Dafny",
-  "translation_date": "2024",
-  "functions": ,
-  "methods":
+"name": "DafnyProjects_tmp_tmp2acw_s4s_partitionOddEven_partitionOddEven",
+"category": "Dafny Translation",
+"description": "Automatically translated from Dafny specification: DafnyProjects_tmp_tmp2acw_s4s_partitionOddEven_partitionOddEven",
+"source": "Dafny",
+"translation_date": "2024",
+"functions": ,
+"methods":
 }
 -/
 
-namespace DafnyBenchmarks
 
 /-- Predicate indicating if a natural number is odd -/
 def odd (n : Nat) : Bool := n % 2 = 1
@@ -35,10 +32,8 @@ Specification for partitionOddEven:
 2. No even number appears before an odd number in the output array
 -/
 theorem partitionOddEven_spec (a : Array Nat) :
-  let result := partitionOddEven a;
-  -- Output has same elements as input (using multiset equality)
-   result.size = a.size
-  -- No even number before odd number
-  ∧ ¬(∃ i j, 0 ≤ i ∧ i < j ∧ j < result.size ∧ even (result[i]!) ∧ odd (result[j]!)) := sorry
-
-end DafnyBenchmarks
+let result := partitionOddEven a;
+-- Output has same elements as input (using multiset equality)
+result.size = a.size
+-- No even number before odd number
+∧ ¬(∃ i j, 0 ≤ i ∧ i < j ∧ j < result.size ∧ even (result[i]!) ∧ odd (result[j]!)) := sorry

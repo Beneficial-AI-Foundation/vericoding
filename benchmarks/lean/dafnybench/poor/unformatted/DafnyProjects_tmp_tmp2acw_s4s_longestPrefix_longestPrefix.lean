@@ -1,20 +1,17 @@
-import Std
 
-open Std.Do
 
 /-!
 {
-  "name": "DafnyProjects_tmp_tmp2acw_s4s_longestPrefix_longestPrefix",
-  "category": "Dafny Translation",
-  "description": "Automatically translated from Dafny specification: DafnyProjects_tmp_tmp2acw_s4s_longestPrefix_longestPrefix",
-  "source": "Dafny",
-  "translation_date": "2024",
-  "functions": ,
-  "methods":
+"name": "DafnyProjects_tmp_tmp2acw_s4s_longestPrefix_longestPrefix",
+"category": "Dafny Translation",
+"description": "Automatically translated from Dafny specification: DafnyProjects_tmp_tmp2acw_s4s_longestPrefix_longestPrefix",
+"source": "Dafny",
+"translation_date": "2024",
+"functions": ,
+"methods":
 }
 -/
 
-namespace DafnyBenchmarks
 
 /--
 Computes the length of the longest common prefix of two arrays.
@@ -32,8 +29,6 @@ Specification for longestPrefix method:
 - Arrays differ at index i (if within bounds)
 -/
 theorem longestPrefix_spec (a b : Array Int) (i : Nat) :
-  let i := longestPrefix a b
-  i ≤ a.size ∧ i ≤ b.size ∧
-  (i < a.size ∧ i < b.size → a[i]! ≠ b[i]!) := sorry
-
-end DafnyBenchmarks
+let i := longestPrefix a b
+i ≤ a.size ∧ i ≤ b.size ∧
+(i < a.size ∧ i < b.size → a[i]! ≠ b[i]!) := sorry

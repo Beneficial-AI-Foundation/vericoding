@@ -1,27 +1,24 @@
-import Std
 
-open Std.Do
 
 /-!
 {
-  "name": "Dafny_Programs_tmp_tmp99966ew4_binary_search_BinarySearch",
-  "category": "Dafny Translation",
-  "description": "Automatically translated from Dafny specification: Dafny_Programs_tmp_tmp99966ew4_binary_search_BinarySearch",
-  "source": "Dafny",
-  "translation_date": "2024",
-  "functions": ,
-  "methods":
+"name": "Dafny_Programs_tmp_tmp99966ew4_binary_search_BinarySearch",
+"category": "Dafny Translation",
+"description": "Automatically translated from Dafny specification: Dafny_Programs_tmp_tmp99966ew4_binary_search_BinarySearch",
+"source": "Dafny",
+"translation_date": "2024",
+"functions": ,
+"methods":
 }
 -/
 
-namespace DafnyBenchmarks
 
 /--
 Predicate indicating whether an array is sorted in ascending order.
 Translated from Dafny's sorted predicate.
 -/
 def sorted (a : Array Int) : Prop :=
-  ∀ j k, 0 ≤ j → j < k → k < a.size → a[j]! ≤ a[k]!
+∀ j k, 0 ≤ j → j < k → k < a.size → a[j]! ≤ a[k]!
 
 /--
 Binary search implementation specification.
@@ -40,9 +37,7 @@ Captures the key properties:
 2. If index < 0, then value is not present in the array
 -/
 theorem BinarySearch_spec (a : Array Int) (value : Int) :
-  sorted a →
-  let index := BinarySearch a value
-  (0 ≤ index → index < a.size ∧ a[index.toNat]! = value) ∧
-  (index < 0 → ∀ k, 0 ≤ k → k < a.size → a[k]! ≠ value) := sorry
-
-end DafnyBenchmarks
+sorted a →
+let index := BinarySearch a value
+(0 ≤ index → index < a.size ∧ a[index.toNat]! = value) ∧
+(index < 0 → ∀ k, 0 ≤ k → k < a.size → a[k]! ≠ value) := sorry

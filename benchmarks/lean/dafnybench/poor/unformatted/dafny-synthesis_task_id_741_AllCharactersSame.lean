@@ -1,20 +1,17 @@
-import Std
 
-open Std.Do
 
 /-!
 {
-  "name": "dafny-synthesis_task_id_741_AllCharactersSame",
-  "category": "Dafny Translation", 
-  "description": "Automatically translated from Dafny specification: dafny-synthesis_task_id_741_AllCharactersSame",
-  "source": "Dafny",
-  "translation_date": "2024",
-  "functions": ,
-  "methods": 
+"name": "dafny-synthesis_task_id_741_AllCharactersSame",
+"category": "Dafny Translation",
+"description": "Automatically translated from Dafny specification: dafny-synthesis_task_id_741_AllCharactersSame",
+"source": "Dafny",
+"translation_date": "2024",
+"functions": ,
+"methods":
 }
 -/
 
-namespace DafnyBenchmarks
 
 /--
 Checks if all characters in a string are the same.
@@ -31,8 +28,6 @@ Specification for AllCharactersSame:
 - If result is false, then string length > 1 and there exist two different characters
 -/
 theorem AllCharactersSame_spec (s : String) :
-  let result := AllCharactersSame s
-  (result → ∀ i j, 0 ≤ i ∧ i < s.length ∧ 0 ≤ j ∧ j < s.length → s.get ⟨i⟩ = s.get ⟨j⟩) ∧
-  (!result → s.length > 1 ∧ ∃ i j, 0 ≤ i ∧ i < s.length ∧ 0 ≤ j ∧ j < s.length ∧ i ≠ j ∧ s.get ⟨i⟩ ≠ s.get ⟨j⟩) := sorry
-
-end DafnyBenchmarks
+let result := AllCharactersSame s
+(result → ∀ i j, 0 ≤ i ∧ i < s.length ∧ 0 ≤ j ∧ j < s.length → s.get ⟨i⟩ = s.get ⟨j⟩) ∧
+(!result → s.length > 1 ∧ ∃ i j, 0 ≤ i ∧ i < s.length ∧ 0 ≤ j ∧ j < s.length ∧ i ≠ j ∧ s.get ⟨i⟩ ≠ s.get ⟨j⟩) := sorry

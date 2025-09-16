@@ -1,20 +1,17 @@
-import Std
 
-open Std.Do
 
 /-!
 {
-  "name": "dafny-synthesis_task_id_801_CountEqualNumbers",
-  "category": "Dafny Translation", 
-  "description": "Automatically translated from Dafny specification: dafny-synthesis_task_id_801_CountEqualNumbers",
-  "source": "Dafny",
-  "translation_date": "2024",
-  "functions": ,
-  "methods": 
+"name": "dafny-synthesis_task_id_801_CountEqualNumbers",
+"category": "Dafny Translation",
+"description": "Automatically translated from Dafny specification: dafny-synthesis_task_id_801_CountEqualNumbers",
+"source": "Dafny",
+"translation_date": "2024",
+"functions": ,
+"methods":
 }
 -/
 
-namespace DafnyBenchmarks
 
 /--
 Counts how many numbers are equal among three input integers.
@@ -27,10 +24,8 @@ def CountEqualNumbers (a b c : Int) : Int := sorry
 
 /-- Specification for CountEqualNumbers -/
 theorem CountEqualNumbers_spec (a b c : Int) :
-  let count := CountEqualNumbers a b c
-  count ≥ 0 ∧ count ≤ 3 ∧
-  (count = 3 ↔ (a = b ∧ b = c)) ∧
-  (count = 2 ↔ ((a = b ∧ b ≠ c) ∨ (a ≠ b ∧ b = c) ∨ (a = c ∧ b ≠ c))) ∧
-  (count = 1 ↔ (a ≠ b ∧ b ≠ c ∧ a ≠ c)) := sorry
-
-end DafnyBenchmarks
+let count := CountEqualNumbers a b c
+count ≥ 0 ∧ count ≤ 3 ∧
+(count = 3 ↔ (a = b ∧ b = c)) ∧
+(count = 2 ↔ ((a = b ∧ b ≠ c) ∨ (a ≠ b ∧ b = c) ∨ (a = c ∧ b ≠ c))) ∧
+(count = 1 ↔ (a ≠ b ∧ b ≠ c ∧ a ≠ c)) := sorry

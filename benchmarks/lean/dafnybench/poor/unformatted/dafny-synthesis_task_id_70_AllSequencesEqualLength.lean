@@ -1,20 +1,17 @@
-import Std
 
-open Std.Do
 
 /-!
 {
-  "name": "dafny-synthesis_task_id_70_AllSequencesEqualLength",
-  "category": "Dafny Translation",
-  "description": "Automatically translated from Dafny specification: dafny-synthesis_task_id_70_AllSequencesEqualLength",
-  "source": "Dafny",
-  "translation_date": "2024",
-  "functions": ,
-  "methods":
+"name": "dafny-synthesis_task_id_70_AllSequencesEqualLength",
+"category": "Dafny Translation",
+"description": "Automatically translated from Dafny specification: dafny-synthesis_task_id_70_AllSequencesEqualLength",
+"source": "Dafny",
+"translation_date": "2024",
+"functions": ,
+"methods":
 }
 -/
 
-namespace DafnyBenchmarks
 
 /--
 Checks if all sequences in the input array have equal length.
@@ -29,8 +26,6 @@ Specification for AllSequencesEqualLength:
 All sequences in the input array must have equal length
 -/
 theorem AllSequencesEqualLength_spec (sequences : Array (Array Int)) :
-  AllSequencesEqualLength sequences ↔
-  (∀ i j, 0 ≤ i ∧ i < sequences.size ∧ 0 ≤ j ∧ j < sequences.size →
-    (sequences[i]!).size = (sequences[j]!).size) := sorry
-
-end DafnyBenchmarks
+AllSequencesEqualLength sequences ↔
+(∀ i j, 0 ≤ i ∧ i < sequences.size ∧ 0 ≤ j ∧ j < sequences.size →
+(sequences[i]!).size = (sequences[j]!).size) := sorry

@@ -1,20 +1,17 @@
-import Std
 
-open Std.Do
 
 /-!
 {
-  "name": "cmsc433_tmp_tmpe3ob3a0o_dafny_project1_p1-assignment-2_Euclid",
-  "category": "Dafny Translation",
-  "description": "Automatically translated from Dafny specification: cmsc433_tmp_tmpe3ob3a0o_dafny_project1_p1-assignment-2_Euclid",
-  "source": "Dafny",
-  "translation_date": "2024",
-  "functions": ,
-  "methods":
+"name": "cmsc433_tmp_tmpe3ob3a0o_dafny_project1_p1-assignment-2_Euclid",
+"category": "Dafny Translation",
+"description": "Automatically translated from Dafny specification: cmsc433_tmp_tmpe3ob3a0o_dafny_project1_p1-assignment-2_Euclid",
+"source": "Dafny",
+"translation_date": "2024",
+"functions": ,
+"methods":
 }
 -/
 
-namespace DafnyBenchmarks
 
 /--
 Euclid's algorithm for computing the greatest common divisor of two positive integers.
@@ -35,8 +32,6 @@ Ensures that:
 4. The first input is greater than or equal to the second
 -/
 theorem Euclid_spec (m n : Int) :
-  m > 1 ∧ n > 1 ∧ m ≥ n →
-  let gcd := Euclid m n
-  gcd > 0 ∧ gcd ≤ n ∧ gcd ≤ m ∧ m % gcd = 0 ∧ n % gcd = 0 := sorry
-
-end DafnyBenchmarks
+m > 1 ∧ n > 1 ∧ m ≥ n →
+let gcd := Euclid m n
+gcd > 0 ∧ gcd ≤ n ∧ gcd ≤ m ∧ m % gcd = 0 ∧ n % gcd = 0 := sorry

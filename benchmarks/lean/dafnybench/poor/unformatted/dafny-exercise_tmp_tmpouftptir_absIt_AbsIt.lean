@@ -1,20 +1,17 @@
-import Std
 
-open Std.Do
 
 /-!
 {
-  "name": "dafny-exercise_tmp_tmpouftptir_absIt_AbsIt",
-  "category": "Dafny Translation",
-  "description": "Automatically translated from Dafny specification: dafny-exercise_tmp_tmpouftptir_absIt_AbsIt",
-  "source": "Dafny",
-  "translation_date": "2024",
-  "functions": ,
-  "methods":
+"name": "dafny-exercise_tmp_tmpouftptir_absIt_AbsIt",
+"category": "Dafny Translation",
+"description": "Automatically translated from Dafny specification: dafny-exercise_tmp_tmpouftptir_absIt_AbsIt",
+"source": "Dafny",
+"translation_date": "2024",
+"functions": ,
+"methods":
 }
 -/
 
-namespace DafnyBenchmarks
 
 /--
 AbsIt takes an array of integers and modifies it in place to contain absolute values.
@@ -30,9 +27,7 @@ Specification for AbsIt method ensuring:
 2. Array size is preserved
 -/
 theorem AbsIt_spec (s : Array Int) :
-  let s' := AbsIt s
-  (∀ i, 0 ≤ i ∧ i < s.size →
-    (if s[i]! < 0 then s'[i]! = -(s[i]!) else s'[i]! = s[i]!)) ∧
-  s'.size = s.size := sorry
-
-end DafnyBenchmarks
+let s' := AbsIt s
+(∀ i, 0 ≤ i ∧ i < s.size →
+(if s[i]! < 0 then s'[i]! = -(s[i]!) else s'[i]! = s[i]!)) ∧
+s'.size = s.size := sorry

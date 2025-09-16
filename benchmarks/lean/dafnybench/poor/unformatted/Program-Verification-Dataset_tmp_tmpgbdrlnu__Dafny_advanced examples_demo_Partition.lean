@@ -1,20 +1,17 @@
-import Std
 
-open Std.Do
 
 /-!
 {
-  "name": "Program-Verification-Dataset_tmp_tmpgbdrlnu__Dafny_advanced examples_demo_Partition",
-  "category": "Dafny Translation",
-  "description": "Automatically translated from Dafny specification: Program-Verification-Dataset_tmp_tmpgbdrlnu__Dafny_advanced examples_demo_Partition",
-  "source": "Dafny",
-  "translation_date": "2024",
-  "functions": ,
-  "methods":
+"name": "Program-Verification-Dataset_tmp_tmpgbdrlnu__Dafny_advanced examples_demo_Partition",
+"category": "Dafny Translation",
+"description": "Automatically translated from Dafny specification: Program-Verification-Dataset_tmp_tmpgbdrlnu__Dafny_advanced examples_demo_Partition",
+"source": "Dafny",
+"translation_date": "2024",
+"functions": ,
+"methods":
 }
 -/
 
-namespace DafnyBenchmarks
 
 /--
 Partitions an array into three sections:
@@ -33,14 +30,12 @@ Specification for Partition method ensuring:
 4. Elements after hi are positive
 -/
 theorem partition_spec (a : Array Int) (lo hi : Nat) :
-  let result := Partition a
-  -- Bounds check
-  0 ≤ result.1 ∧ result.1 ≤ result.2 ∧ result.2 ≤ a.size ∧
-  -- Elements before lo are negative
-  (∀ x, 0 ≤ x ∧ x < result.1 → (a[x]!) < 0) ∧
-  -- Elements between lo and hi are zero
-  (∀ x, result.1 ≤ x ∧ x < result.2 → (a[x]!) = 0) ∧
-  -- Elements after hi are positive
-  (∀ x, result.2 ≤ x ∧ x < a.size → (a[x]!) > 0) := sorry
-
-end DafnyBenchmarks
+let result := Partition a
+-- Bounds check
+0 ≤ result.1 ∧ result.1 ≤ result.2 ∧ result.2 ≤ a.size ∧
+-- Elements before lo are negative
+(∀ x, 0 ≤ x ∧ x < result.1 → (a[x]!) < 0) ∧
+-- Elements between lo and hi are zero
+(∀ x, result.1 ≤ x ∧ x < result.2 → (a[x]!) = 0) ∧
+-- Elements after hi are positive
+(∀ x, result.2 ≤ x ∧ x < a.size → (a[x]!) > 0) := sorry

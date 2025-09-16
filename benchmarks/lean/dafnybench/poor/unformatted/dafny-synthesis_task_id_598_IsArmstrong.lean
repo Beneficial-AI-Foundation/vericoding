@@ -1,20 +1,17 @@
-import Std
 
-open Std.Do
 
 /-!
 {
-  "name": "dafny-synthesis_task_id_598_IsArmstrong",
-  "category": "Dafny Translation", 
-  "description": "Automatically translated from Dafny specification: dafny-synthesis_task_id_598_IsArmstrong",
-  "source": "Dafny",
-  "translation_date": "2024",
-  "functions": ,
-  "methods": 
+"name": "dafny-synthesis_task_id_598_IsArmstrong",
+"category": "Dafny Translation",
+"description": "Automatically translated from Dafny specification: dafny-synthesis_task_id_598_IsArmstrong",
+"source": "Dafny",
+"translation_date": "2024",
+"functions": ,
+"methods":
 }
 -/
 
-namespace DafnyBenchmarks
 
 /--
 Checks if a number is an Armstrong number.
@@ -32,9 +29,7 @@ Specification for IsArmstrong:
 - Ensures result is true if and only if n equals the sum of its digits cubed
 -/
 theorem IsArmstrong_spec (n : Int) :
-  100 ≤ n ∧ n < 1000 →
-  IsArmstrong n = (n = ((n / 100) * (n / 100) * (n / 100) + 
-                       ((n / 10) % 10) * ((n / 10) % 10) * ((n / 10) % 10) + 
-                       (n % 10) * (n % 10) * (n % 10))) := sorry
-
-end DafnyBenchmarks
+100 ≤ n ∧ n < 1000 →
+IsArmstrong n = (n = ((n / 100) * (n / 100) * (n / 100) +
+((n / 10) % 10) * ((n / 10) % 10) * ((n / 10) % 10) +
+(n % 10) * (n % 10) * (n % 10))) := sorry

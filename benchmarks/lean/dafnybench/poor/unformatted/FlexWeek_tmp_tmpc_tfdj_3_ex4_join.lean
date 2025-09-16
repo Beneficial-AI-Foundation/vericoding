@@ -1,20 +1,17 @@
-import Std
 
-open Std.Do
 
 /-!
 {
-  "name": "FlexWeek_tmp_tmpc_tfdj_3_ex4_join",
-  "category": "Dafny Translation",
-  "description": "Automatically translated from Dafny specification: FlexWeek_tmp_tmpc_tfdj_3_ex4_join",
-  "source": "Dafny",
-  "translation_date": "2024",
-  "functions": ,
-  "methods":
+"name": "FlexWeek_tmp_tmpc_tfdj_3_ex4_join",
+"category": "Dafny Translation",
+"description": "Automatically translated from Dafny specification: FlexWeek_tmp_tmpc_tfdj_3_ex4_join",
+"source": "Dafny",
+"translation_date": "2024",
+"functions": ,
+"methods":
 }
 -/
 
-namespace DafnyBenchmarks
 
 /--
 Joins two arrays into a single array.
@@ -31,11 +28,9 @@ Specification for join method ensuring:
 5. Elements from second array appear in same order after first array
 -/
 theorem join_spec (a b : Array Int) :
-  let c := join a b
-  c.size = a.size + b.size ∧
-  (∀ i, 0 ≤ i ∧ i < a.size → c[i]! = a[i]!) ∧
-  (∀ i j, a.size ≤ i ∧ i < c.size ∧
-          0 ≤ j ∧ j < b.size ∧
-          i - j = a.size → c[i]! = b[j]!) := sorry
-
-end DafnyBenchmarks
+let c := join a b
+c.size = a.size + b.size ∧
+(∀ i, 0 ≤ i ∧ i < a.size → c[i]! = a[i]!) ∧
+(∀ i j, a.size ≤ i ∧ i < c.size ∧
+0 ≤ j ∧ j < b.size ∧
+i - j = a.size → c[i]! = b[j]!) := sorry

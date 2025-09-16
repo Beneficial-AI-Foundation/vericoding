@@ -1,20 +1,17 @@
-import Std
 
-open Std.Do
 
 /-!
 {
-  "name": "dafl_tmp_tmp_r3_8w3y_dafny_examples_uiowa_find_Find",
-  "category": "Dafny Translation",
-  "description": "Automatically translated from Dafny specification: dafl_tmp_tmp_r3_8w3y_dafny_examples_uiowa_find_Find",
-  "source": "Dafny",
-  "translation_date": "2024",
-  "functions": ,
-  "methods":
+"name": "dafl_tmp_tmp_r3_8w3y_dafny_examples_uiowa_find_Find",
+"category": "Dafny Translation",
+"description": "Automatically translated from Dafny specification: dafl_tmp_tmp_r3_8w3y_dafny_examples_uiowa_find_Find",
+"source": "Dafny",
+"translation_date": "2024",
+"functions": ,
+"methods":
 }
 -/
 
-namespace DafnyBenchmarks
 
 /--
 Find method that searches for a key in an array.
@@ -29,19 +26,17 @@ def Find (a : Array Int) (key : Int) : Int := sorry
 /--
 Specification for the Find method:
 - If result i is non-negative:
-  1. i must be less than array length
-  2. key must be at position i
-  3. i must be smallest position containing key
+1. i must be less than array length
+2. key must be at position i
+3. i must be smallest position containing key
 - If result i is negative:
-  - key must not appear anywhere in array
+- key must not appear anywhere in array
 -/
 theorem Find_spec (a : Array Int) (key : Int) (i : Int) :
-  i = Find a key →
-  (0 ≤ i →
-    (i < a.size ∧
-     a[i.toNat]! = key ∧
-     (∀ k, 0 ≤ k ∧ k < i → a[k.toNat]! ≠ key))) ∧
-  (i < 0 →
-    (∀ k, 0 ≤ k ∧ k < a.size → a[k]! ≠ key)) := sorry
-
-end DafnyBenchmarks
+i = Find a key →
+(0 ≤ i →
+(i < a.size ∧
+a[i.toNat]! = key ∧
+(∀ k, 0 ≤ k ∧ k < i → a[k.toNat]! ≠ key))) ∧
+(i < 0 →
+(∀ k, 0 ≤ k ∧ k < a.size → a[k]! ≠ key)) := sorry

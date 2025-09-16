@@ -1,26 +1,23 @@
-import Std
 
-open Std.Do
 
 /-!
 {
-  "name": "Software-Verification_tmp_tmpv4ueky2d_Contains Duplicate_contains_duplicate_contains_duplicate",
-  "category": "Dafny Translation",
-  "description": "Automatically translated from Dafny specification: Software-Verification_tmp_tmpv4ueky2d_Contains Duplicate_contains_duplicate_contains_duplicate",
-  "source": "Dafny",
-  "translation_date": "2024",
-  "functions": ,
-  "methods":
+"name": "Software-Verification_tmp_tmpv4ueky2d_Contains Duplicate_contains_duplicate_contains_duplicate",
+"category": "Dafny Translation",
+"description": "Automatically translated from Dafny specification: Software-Verification_tmp_tmpv4ueky2d_Contains Duplicate_contains_duplicate_contains_duplicate",
+"source": "Dafny",
+"translation_date": "2024",
+"functions": ,
+"methods":
 }
 -/
 
-namespace DafnyBenchmarks
 
 /--
 Predicate that checks if all elements in an array are distinct.
 -/
 def distinct (nums : Array Int) : Prop :=
-  ∀ i j, 0 ≤ i → i < j → j < nums.size → nums[i]! ≠ nums[j]!
+∀ i j, 0 ≤ i → i < j → j < nums.size → nums[i]! ≠ nums[j]!
 
 /--
 Method that checks if an array contains any duplicate elements.
@@ -36,8 +33,6 @@ def contains_duplicate (nums : Array Int) : Bool := sorry
 Specification for contains_duplicate method
 -/
 theorem contains_duplicate_spec (nums : Array Int) :
-  (1 ≤ nums.size ∧ nums.size ≤ 100000) →
-  (∀ i, 0 ≤ i → i < nums.size → -1000000000 ≤ nums[i]! ∧ nums[i]! ≤ 1000000000) →
-  contains_duplicate nums = distinct nums := sorry
-
-end DafnyBenchmarks
+(1 ≤ nums.size ∧ nums.size ≤ 100000) →
+(∀ i, 0 ≤ i → i < nums.size → -1000000000 ≤ nums[i]! ∧ nums[i]! ≤ 1000000000) →
+contains_duplicate nums = distinct nums := sorry

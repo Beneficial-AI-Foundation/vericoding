@@ -1,20 +1,17 @@
-import Std
 
-open Std.Do
 
 /-!
 {
-  "name": "dafny-synthesis_task_id_455_MonthHas31Days",
-  "category": "Dafny Translation", 
-  "description": "Automatically translated from Dafny specification: dafny-synthesis_task_id_455_MonthHas31Days",
-  "source": "Dafny",
-  "translation_date": "2024",
-  "functions": ,
-  "methods": 
+"name": "dafny-synthesis_task_id_455_MonthHas31Days",
+"category": "Dafny Translation",
+"description": "Automatically translated from Dafny specification: dafny-synthesis_task_id_455_MonthHas31Days",
+"source": "Dafny",
+"translation_date": "2024",
+"functions": ,
+"methods":
 }
 -/
 
-namespace DafnyBenchmarks
 
 /--
 Determines if a given month has 31 days.
@@ -30,9 +27,7 @@ Specification for MonthHas31Days:
 - Ensures result is true iff month is one of {1,3,5,7,8,10,12}
 -/
 theorem MonthHas31Days_spec (month : Int) :
-  1 ≤ month ∧ month ≤ 12 →
-  MonthHas31Days month = true ↔ 
-    (month = 1 ∨ month = 3 ∨ month = 5 ∨ month = 7 ∨ 
-     month = 8 ∨ month = 10 ∨ month = 12) := sorry
-
-end DafnyBenchmarks
+1 ≤ month ∧ month ≤ 12 →
+MonthHas31Days month = true ↔
+(month = 1 ∨ month = 3 ∨ month = 5 ∨ month = 7 ∨
+month = 8 ∨ month = 10 ∨ month = 12) := sorry

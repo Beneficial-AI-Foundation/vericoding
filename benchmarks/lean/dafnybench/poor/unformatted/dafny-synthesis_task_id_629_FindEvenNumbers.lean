@@ -1,26 +1,23 @@
-import Std
 
-open Std.Do
 
 /-!
 {
-  "name": "dafny-synthesis_task_id_629_FindEvenNumbers",
-  "category": "Dafny Translation",
-  "description": "Automatically translated from Dafny specification: dafny-synthesis_task_id_629_FindEvenNumbers",
-  "source": "Dafny",
-  "translation_date": "2024",
-  "functions": ,
-  "methods":
+"name": "dafny-synthesis_task_id_629_FindEvenNumbers",
+"category": "Dafny Translation",
+"description": "Automatically translated from Dafny specification: dafny-synthesis_task_id_629_FindEvenNumbers",
+"source": "Dafny",
+"translation_date": "2024",
+"functions": ,
+"methods":
 }
 -/
 
-namespace DafnyBenchmarks
 
 /--
 Predicate that checks if a number is even
 -/
 def IsEven (n : Int) : Bool :=
-  n % 2 = 0
+n % 2 = 0
 
 /--
 Function that finds all even numbers in an array.
@@ -38,8 +35,6 @@ Specification for FindEvenNumbers:
 2. All even numbers from input exist in output
 -/
 theorem FindEvenNumbers_spec (arr : Array Int) :
-  let result := FindEvenNumbers arr
-  (∀ i, 0 ≤ i ∧ i < result.size → IsEven (result[i]!) ∧ (result[i]!) ∈ arr.toList) ∧
-  (∀ i, 0 ≤ i ∧ i < arr.size ∧ IsEven (arr[i]!) → (arr[i]!) ∈ result.toList) := sorry
-
-end DafnyBenchmarks
+let result := FindEvenNumbers arr
+(∀ i, 0 ≤ i ∧ i < result.size → IsEven (result[i]!) ∧ (result[i]!) ∈ arr.toList) ∧
+(∀ i, 0 ≤ i ∧ i < arr.size ∧ IsEven (arr[i]!) → (arr[i]!) ∈ result.toList) := sorry

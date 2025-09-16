@@ -1,20 +1,17 @@
-import Std
 
-open Std.Do
 
 /-!
 {
-  "name": "Software-Verification_tmp_tmpv4ueky2d_Remove Element_remove_element_remove_element",
-  "category": "Dafny Translation",
-  "description": "Automatically translated from Dafny specification: Software-Verification_tmp_tmpv4ueky2d_Remove Element_remove_element_remove_element",
-  "source": "Dafny",
-  "translation_date": "2024",
-  "functions": ,
-  "methods":
+"name": "Software-Verification_tmp_tmpv4ueky2d_Remove Element_remove_element_remove_element",
+"category": "Dafny Translation",
+"description": "Automatically translated from Dafny specification: Software-Verification_tmp_tmpv4ueky2d_Remove Element_remove_element_remove_element",
+"source": "Dafny",
+"translation_date": "2024",
+"functions": ,
+"methods":
 }
 -/
 
-namespace DafnyBenchmarks
 
 /--
 Translates the Dafny remove_element method which removes elements equal to val from an array.
@@ -37,10 +34,8 @@ def remove_element (nums : Array Int) (val : Int) : Int := sorry
 Specification for remove_element method
 -/
 theorem remove_element_spec (nums : Array Int) (val : Int) :
-  (0 ≤ nums.size ∧ nums.size ≤ 100) →
-  (∀ i, 0 ≤ i ∧ i < nums.size → 0 ≤ nums[i]! ∧ nums[i]! ≤ 50) →
-  (0 ≤ val ∧ val ≤ 100) →
-  let i := remove_element nums val
-  ∀ j:Nat, 0 < j ∧ j < i ∧ i < nums.size → nums[j]! ≠ val := sorry
-
-end DafnyBenchmarks
+(0 ≤ nums.size ∧ nums.size ≤ 100) →
+(∀ i, 0 ≤ i ∧ i < nums.size → 0 ≤ nums[i]! ∧ nums[i]! ≤ 50) →
+(0 ≤ val ∧ val ≤ 100) →
+let i := remove_element nums val
+∀ j:Nat, 0 < j ∧ j < i ∧ i < nums.size → nums[j]! ≠ val := sorry

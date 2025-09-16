@@ -1,20 +1,17 @@
-import Std
 
-open Std.Do
 
 /-!
 {
-  "name": "dafny-synthesis_task_id_424_ExtractRearChars",
-  "category": "Dafny Translation",
-  "description": "Automatically translated from Dafny specification: dafny-synthesis_task_id_424_ExtractRearChars",
-  "source": "Dafny",
-  "translation_date": "2024",
-  "functions": ,
-  "methods":
+"name": "dafny-synthesis_task_id_424_ExtractRearChars",
+"category": "Dafny Translation",
+"description": "Automatically translated from Dafny specification: dafny-synthesis_task_id_424_ExtractRearChars",
+"source": "Dafny",
+"translation_date": "2024",
+"functions": ,
+"methods":
 }
 -/
 
-namespace DafnyBenchmarks
 
 /--
 Extracts the last character from each string in an array of strings.
@@ -31,10 +28,8 @@ Specification for ExtractRearChars:
 - Ensures each character in output is the last character of corresponding input string
 -/
 theorem ExtractRearChars_spec (l : Array String) :
-  (∀ i:Nat , 0 ≤ i ∧ i < l.size → (l[i]! |>.length) > 0) →
-  let r := ExtractRearChars l
-  (r.size = l.size) ∧
-  (∀ i:Nat , 0 ≤ i ∧ i < l.size →
-    r[i]! = (l[i]! |>.get ⟨((l[i]! |>.length) - 1)⟩)) := sorry
-
-end DafnyBenchmarks
+(∀ i:Nat , 0 ≤ i ∧ i < l.size → (l[i]! |>.length) > 0) →
+let r := ExtractRearChars l
+(r.size = l.size) ∧
+(∀ i:Nat , 0 ≤ i ∧ i < l.size →
+r[i]! = (l[i]! |>.get ⟨((l[i]! |>.length) - 1)⟩)) := sorry

@@ -1,20 +1,17 @@
-import Std
 
-open Std.Do
 
 /-!
 {
-  "name": "dafny-synthesis_task_id_435_LastDigit",
-  "category": "Dafny Translation", 
-  "description": "Automatically translated from Dafny specification: dafny-synthesis_task_id_435_LastDigit",
-  "source": "Dafny",
-  "translation_date": "2024",
-  "functions": ,
-  "methods": 
+"name": "dafny-synthesis_task_id_435_LastDigit",
+"category": "Dafny Translation",
+"description": "Automatically translated from Dafny specification: dafny-synthesis_task_id_435_LastDigit",
+"source": "Dafny",
+"translation_date": "2024",
+"functions": ,
+"methods":
 }
 -/
 
-namespace DafnyBenchmarks
 
 /--
 LastDigit takes a non-negative integer n and returns its last digit d.
@@ -29,8 +26,6 @@ Specification for LastDigit:
 - Ensures d equals n mod 10
 -/
 theorem LastDigit_spec (n : Int) :
-  n ≥ 0 → 
-  let d := LastDigit n
-  0 ≤ d ∧ d < 10 ∧ n % 10 = d := sorry
-
-end DafnyBenchmarks
+n ≥ 0 →
+let d := LastDigit n
+0 ≤ d ∧ d < 10 ∧ n % 10 = d := sorry

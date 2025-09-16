@@ -1,20 +1,17 @@
-import Std
 
-open Std.Do
 
 /-!
 {
-  "name": "Final-Project-Dafny_tmp_tmpmcywuqox_Attempts_Insertion_Sort_Normal_lookForMin",
-  "category": "Dafny Translation",
-  "description": "Automatically translated from Dafny specification: Final-Project-Dafny_tmp_tmpmcywuqox_Attempts_Insertion_Sort_Normal_lookForMin",
-  "source": "Dafny",
-  "translation_date": "2024",
-  "functions": ,
-  "methods":
+"name": "Final-Project-Dafny_tmp_tmpmcywuqox_Attempts_Insertion_Sort_Normal_lookForMin",
+"category": "Dafny Translation",
+"description": "Automatically translated from Dafny specification: Final-Project-Dafny_tmp_tmpmcywuqox_Attempts_Insertion_Sort_Normal_lookForMin",
+"source": "Dafny",
+"translation_date": "2024",
+"functions": ,
+"methods":
 }
 -/
 
-namespace DafnyBenchmarks
 
 
 
@@ -27,13 +24,11 @@ Ensures:
 - a is minimum element in range [i..a.size)
 -/
 def lookForMin (a : Array Int) (i : Nat) : Nat :=
-  sorry
+sorry
 
 /-- Specification for lookForMin -/
 theorem lookForMin_spec (a : Array Int) (i : Nat) :
-  0 ≤ i ∧ i < a.size →
-  let m := lookForMin a i
-  i ≤ m ∧ m < a.size ∧
-  (∀ k, i ≤ k ∧ k < a.size → a[k]! ≥ a[m]!) := sorry
-
-end DafnyBenchmarks
+0 ≤ i ∧ i < a.size →
+let m := lookForMin a i
+i ≤ m ∧ m < a.size ∧
+(∀ k, i ≤ k ∧ k < a.size → a[k]! ≥ a[m]!) := sorry

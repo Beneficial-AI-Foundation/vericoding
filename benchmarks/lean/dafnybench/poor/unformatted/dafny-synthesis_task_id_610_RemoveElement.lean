@@ -1,20 +1,17 @@
-import Std
 
-open Std.Do
 
 /-!
 {
-  "name": "dafny-synthesis_task_id_610_RemoveElement",
-  "category": "Dafny Translation",
-  "description": "Automatically translated from Dafny specification: dafny-synthesis_task_id_610_RemoveElement",
-  "source": "Dafny",
-  "translation_date": "2024",
-  "functions": ,
-  "methods":
+"name": "dafny-synthesis_task_id_610_RemoveElement",
+"category": "Dafny Translation",
+"description": "Automatically translated from Dafny specification: dafny-synthesis_task_id_610_RemoveElement",
+"source": "Dafny",
+"translation_date": "2024",
+"functions": ,
+"methods":
 }
 -/
 
-namespace DafnyBenchmarks
 
 /--
 RemoveElement removes an element at index k from array s and returns the resulting array.
@@ -37,10 +34,8 @@ def RemoveElement (s : Array Int) (k : Int) : Array Int := sorry
 Specification for RemoveElement method
 -/
 theorem RemoveElement_spec (s : Array Int) (k : Nat) :
-  0 ≤ k ∧ k < s.size →
-  let v := RemoveElement s k
-  v.size = s.size - 1 ∧
-  (∀ i, 0 ≤ i ∧ i < k → v[i]! = s[i]!) ∧
-  (∀ i, k ≤ i ∧ i < v.size → v[i]! = s[i + 1]!) := sorry
-
-end DafnyBenchmarks
+0 ≤ k ∧ k < s.size →
+let v := RemoveElement s k
+v.size = s.size - 1 ∧
+(∀ i, 0 ≤ i ∧ i < k → v[i]! = s[i]!) ∧
+(∀ i, k ≤ i ∧ i < v.size → v[i]! = s[i + 1]!) := sorry

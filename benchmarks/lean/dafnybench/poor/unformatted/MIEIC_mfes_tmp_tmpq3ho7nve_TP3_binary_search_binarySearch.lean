@@ -1,26 +1,23 @@
-import Std
 
-open Std.Do
 
 /-!
 {
-  "name": "MIEIC_mfes_tmp_tmpq3ho7nve_TP3_binary_search_binarySearch",
-  "category": "Dafny Translation",
-  "description": "Automatically translated from Dafny specification: MIEIC_mfes_tmp_tmpq3ho7nve_TP3_binary_search_binarySearch",
-  "source": "Dafny",
-  "translation_date": "2024",
-  "functions": ,
-  "methods":
+"name": "MIEIC_mfes_tmp_tmpq3ho7nve_TP3_binary_search_binarySearch",
+"category": "Dafny Translation",
+"description": "Automatically translated from Dafny specification: MIEIC_mfes_tmp_tmpq3ho7nve_TP3_binary_search_binarySearch",
+"source": "Dafny",
+"translation_date": "2024",
+"functions": ,
+"methods":
 }
 -/
 
-namespace DafnyBenchmarks
 
 /--
 Predicate checking if an array is sorted in ascending order.
 -/
 def isSorted (a : Array Int) : Prop :=
-  ∀ i j, 0 ≤ i → i < j → j < a.size → a[i]! ≤ a[j]!
+∀ i j, 0 ≤ i → i < j → j < a.size → a[i]! ≤ a[j]!
 
 /--
 Binary search implementation that finds a value in a sorted array.
@@ -40,10 +37,8 @@ Specification for binary search:
 - Ensures if not found (-1), value is not in array
 -/
 theorem binarySearch_spec (a : Array Int) (x : Int) :
-  isSorted a →
-  let index := binarySearch a x
-  (-1 ≤ index ∧ index < a.size ∧
-  (index ≠ -1 → a[index.toNat]! = x) ∧
-  (index = -1 → ∀ i:Nat, 0 ≤ i → i < a.size → a[i]! ≠ x)) := sorry
-
-end DafnyBenchmarks
+isSorted a →
+let index := binarySearch a x
+(-1 ≤ index ∧ index < a.size ∧
+(index ≠ -1 → a[index.toNat]! = x) ∧
+(index = -1 → ∀ i:Nat, 0 ≤ i → i < a.size → a[i]! ≠ x)) := sorry

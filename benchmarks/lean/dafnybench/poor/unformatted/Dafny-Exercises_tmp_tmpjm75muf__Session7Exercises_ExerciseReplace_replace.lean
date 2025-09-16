@@ -1,20 +1,17 @@
-import Std
 
-open Std.Do
 
 /-!
 {
-  "name": "Dafny-Exercises_tmp_tmpjm75muf__Session7Exercises_ExerciseReplace_replace",
-  "category": "Dafny Translation",
-  "description": "Automatically translated from Dafny specification: Dafny-Exercises_tmp_tmpjm75muf__Session7Exercises_ExerciseReplace_replace",
-  "source": "Dafny",
-  "translation_date": "2024",
-  "functions": ,
-  "methods":
+"name": "Dafny-Exercises_tmp_tmpjm75muf__Session7Exercises_ExerciseReplace_replace",
+"category": "Dafny Translation",
+"description": "Automatically translated from Dafny specification: Dafny-Exercises_tmp_tmpjm75muf__Session7Exercises_ExerciseReplace_replace",
+"source": "Dafny",
+"translation_date": "2024",
+"functions": ,
+"methods":
 }
 -/
 
-namespace DafnyBenchmarks
 
 /--
 Replaces all occurrences of value x with value y in array v.
@@ -31,9 +28,7 @@ Specification for replace method:
 2. All other elements remain unchanged
 -/
 theorem replace_spec (v : Array Int) (x y : Int) :
-  let v' := replace v x y
-  ∀ k, 0 ≤ k ∧ k < v.size →
-    ((v[k]! = x → v'[k]! = y) ∧
-     (v[k]! ≠ x → v'[k]! = v[k]!)) := sorry
-
-end DafnyBenchmarks
+let v' := replace v x y
+∀ k, 0 ≤ k ∧ k < v.size →
+((v[k]! = x → v'[k]! = y) ∧
+(v[k]! ≠ x → v'[k]! = v[k]!)) := sorry

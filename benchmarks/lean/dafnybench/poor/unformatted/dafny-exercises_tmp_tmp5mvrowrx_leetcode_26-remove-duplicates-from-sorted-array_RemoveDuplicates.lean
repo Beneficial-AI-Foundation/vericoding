@@ -1,20 +1,17 @@
-import Std
 
-open Std.Do
 
 /-!
 {
-  "name": "dafny-exercises_tmp_tmp5mvrowrx_leetcode_26-remove-duplicates-from-sorted-array_RemoveDuplicates",
-  "category": "Dafny Translation",
-  "description": "Automatically translated from Dafny specification: dafny-exercises_tmp_tmp5mvrowrx_leetcode_26-remove-duplicates-from-sorted-array_RemoveDuplicates",
-  "source": "Dafny",
-  "translation_date": "2024",
-  "functions": ,
-  "methods":
+"name": "dafny-exercises_tmp_tmp5mvrowrx_leetcode_26-remove-duplicates-from-sorted-array_RemoveDuplicates",
+"category": "Dafny Translation",
+"description": "Automatically translated from Dafny specification: dafny-exercises_tmp_tmp5mvrowrx_leetcode_26-remove-duplicates-from-sorted-array_RemoveDuplicates",
+"source": "Dafny",
+"translation_date": "2024",
+"functions": ,
+"methods":
 }
 -/
 
-namespace DafnyBenchmarks
 
 /--
 RemoveDuplicates removes duplicates from a sorted array.
@@ -36,9 +33,7 @@ def RemoveDuplicates (nums : Array Int) : Int := sorry
 
 /-- Specification for RemoveDuplicates -/
 theorem RemoveDuplicates_spec (nums : Array Int) (num_length : Int) :
-  (∀ i j, 0 ≤ i ∧ i < j ∧ j < nums.size → nums[i]! ≤ nums[j]!) →
-  (num_length = RemoveDuplicates nums) →
-  (0 ≤ num_length ∧ num_length ≤ nums.size) ∧
-  (∀ i j:Nat, 0 ≤ i ∧ i < j ∧ j < num_length → nums[i]! ≠ nums[j]!) := sorry
-
-end DafnyBenchmarks
+(∀ i j, 0 ≤ i ∧ i < j ∧ j < nums.size → nums[i]! ≤ nums[j]!) →
+(num_length = RemoveDuplicates nums) →
+(0 ≤ num_length ∧ num_length ≤ nums.size) ∧
+(∀ i j:Nat, 0 ≤ i ∧ i < j ∧ j < num_length → nums[i]! ≠ nums[j]!) := sorry

@@ -1,20 +1,17 @@
-import Std
 
-open Std.Do
 
 /-!
 {
-  "name": "Correctness_tmp_tmpwqvg5q_4_Sorting_Tangent_BinarySearch",
-  "category": "Dafny Translation",
-  "description": "Automatically translated from Dafny specification: Correctness_tmp_tmpwqvg5q_4_Sorting_Tangent_BinarySearch",
-  "source": "Dafny",
-  "translation_date": "2024",
-  "functions": ,
-  "methods":
+"name": "Correctness_tmp_tmpwqvg5q_4_Sorting_Tangent_BinarySearch",
+"category": "Dafny Translation",
+"description": "Automatically translated from Dafny specification: Correctness_tmp_tmpwqvg5q_4_Sorting_Tangent_BinarySearch",
+"source": "Dafny",
+"translation_date": "2024",
+"functions": ,
+"methods":
 }
 -/
 
-namespace DafnyBenchmarks
 
 /--
 Binary search implementation translated from Dafny.
@@ -31,11 +28,9 @@ Main specification for BinarySearch:
 - All elements from result onward are greater than or equal to circle
 -/
 theorem BinarySearch_spec (a : Array Int) (circle : Int) :
-  (∀ i, 1 ≤ i ∧ i < a.size → a[(i-1)]! < a[i]!) →
-  (∀ i j, 0 ≤ i ∧ i < j ∧ j < a.size → a[i]! < a[j]!) →
-  let n := BinarySearch a circle
-  (0 ≤ n ∧ n ≤ a.size) ∧
-  (∀ i, 0 ≤ i ∧ i < n → a[i.toNat]! < circle) ∧
-  (∀ i, n ≤ i ∧ i < a.size → circle ≤ a[i.toNat]!) := sorry
-
-end DafnyBenchmarks
+(∀ i, 1 ≤ i ∧ i < a.size → a[(i-1)]! < a[i]!) →
+(∀ i j, 0 ≤ i ∧ i < j ∧ j < a.size → a[i]! < a[j]!) →
+let n := BinarySearch a circle
+(0 ≤ n ∧ n ≤ a.size) ∧
+(∀ i, 0 ≤ i ∧ i < n → a[i.toNat]! < circle) ∧
+(∀ i, n ≤ i ∧ i < a.size → circle ≤ a[i.toNat]!) := sorry

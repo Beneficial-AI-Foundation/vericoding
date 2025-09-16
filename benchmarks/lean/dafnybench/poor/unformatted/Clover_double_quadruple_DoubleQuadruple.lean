@@ -1,20 +1,17 @@
-import Std
 
-open Std.Do
 
 /-!
 {
-  "name": "Clover_double_quadruple_DoubleQuadruple",
-  "category": "Dafny Translation",
-  "description": "Automatically translated from Dafny specification: Clover_double_quadruple_DoubleQuadruple",
-  "source": "Dafny",
-  "translation_date": "2024",
-  "functions": ,
-  "methods":
+"name": "Clover_double_quadruple_DoubleQuadruple",
+"category": "Dafny Translation",
+"description": "Automatically translated from Dafny specification: Clover_double_quadruple_DoubleQuadruple",
+"source": "Dafny",
+"translation_date": "2024",
+"functions": ,
+"methods":
 }
 -/
 
-namespace DafnyBenchmarks
 
 /--
 Translates the Dafny method DoubleQuadruple which returns two values:
@@ -33,7 +30,5 @@ Specification for DoubleQuadruple method ensuring:
 2. Second return value is quadruple the input
 -/
 theorem DoubleQuadruple_spec (x : Int) :
-  let (a, b) := DoubleQuadruple x
-  a = 2 * x ∧ b = 4 * x := sorry
-
-end DafnyBenchmarks
+let (a, b) := DoubleQuadruple x
+a = 2 * x ∧ b = 4 * x := sorry

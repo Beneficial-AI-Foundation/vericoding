@@ -1,20 +1,17 @@
-import Std
 
-open Std.Do
 
 /-!
 {
-  "name": "dafny-language-server_tmp_tmpkir0kenl_Test_comp_Arrays_LinearSearch",
-  "category": "Dafny Translation",
-  "description": "Automatically translated from Dafny specification: dafny-language-server_tmp_tmpkir0kenl_Test_comp_Arrays_LinearSearch",
-  "source": "Dafny",
-  "translation_date": "2024",
-  "functions": ,
-  "methods":
+"name": "dafny-language-server_tmp_tmpkir0kenl_Test_comp_Arrays_LinearSearch",
+"category": "Dafny Translation",
+"description": "Automatically translated from Dafny specification: dafny-language-server_tmp_tmpkir0kenl_Test_comp_Arrays_LinearSearch",
+"source": "Dafny",
+"translation_date": "2024",
+"functions": ,
+"methods":
 }
 -/
 
-namespace DafnyBenchmarks
 
 /--
 Prints an array. Implementation omitted.
@@ -30,7 +27,7 @@ def lowercase := Char
 Creates a diagonal matrix with given dimensions and values.
 -/
 def DiagMatrix (rows : Int) (cols : Int) (zero : α) (one : α) : Array (Array α) :=
-  sorry
+sorry
 
 /--
 Prints a 2D matrix. Implementation omitted.
@@ -48,7 +45,5 @@ Specification for LinearSearch:
 - If index returned, element at that index equals key
 -/
 theorem LinearSearch_spec (a : Array Int) (key : Int) :
-  let n := LinearSearch a key
-  n ≤ a.size ∧ (n = a.size ∨ (a[n]!) = key) := sorry
-
-end DafnyBenchmarks
+let n := LinearSearch a key
+n ≤ a.size ∧ (n = a.size ∨ (a[n]!) = key) := sorry

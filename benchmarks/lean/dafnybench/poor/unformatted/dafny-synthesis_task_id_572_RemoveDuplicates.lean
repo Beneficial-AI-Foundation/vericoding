@@ -1,20 +1,17 @@
-import Std
 
-open Std.Do
 
 /-!
 {
-  "name": "dafny-synthesis_task_id_572_RemoveDuplicates",
-  "category": "Dafny Translation",
-  "description": "Automatically translated from Dafny specification: dafny-synthesis_task_id_572_RemoveDuplicates",
-  "source": "Dafny",
-  "translation_date": "2024",
-  "functions": ,
-  "methods":
+"name": "dafny-synthesis_task_id_572_RemoveDuplicates",
+"category": "Dafny Translation",
+"description": "Automatically translated from Dafny specification: dafny-synthesis_task_id_572_RemoveDuplicates",
+"source": "Dafny",
+"translation_date": "2024",
+"functions": ,
+"methods":
 }
 -/
 
-namespace DafnyBenchmarks
 
 /--
 RemoveDuplicates takes an array of integers and returns a sequence with duplicates removed.
@@ -30,8 +27,6 @@ Specification for RemoveDuplicates:
 3. No duplicates in the result array
 -/
 theorem RemoveDuplicates_spec (a : Array Int) :
-  let result := RemoveDuplicates a
-  (∀ x, (result.contains x ↔ ∃ i, 0 ≤ i ∧ i < a.size ∧ a[i]! = x)) ∧
-  (∀ i j, 0 ≤ i ∧ i < j ∧ j < result.size → result[i]! ≠ result[j]!) := sorry
-
-end DafnyBenchmarks
+let result := RemoveDuplicates a
+(∀ x, (result.contains x ↔ ∃ i, 0 ≤ i ∧ i < a.size ∧ a[i]! = x)) ∧
+(∀ i j, 0 ≤ i ∧ i < j ∧ j < result.size → result[i]! ≠ result[j]!) := sorry

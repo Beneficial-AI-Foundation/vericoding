@@ -1,20 +1,17 @@
-import Std
 
-open Std.Do
 
 /-!
 {
-  "name": "dafny-synthesis_task_id_273_SubtractSequences",
-  "category": "Dafny Translation",
-  "description": "Automatically translated from Dafny specification: dafny-synthesis_task_id_273_SubtractSequences",
-  "source": "Dafny",
-  "translation_date": "2024",
-  "functions": ,
-  "methods":
+"name": "dafny-synthesis_task_id_273_SubtractSequences",
+"category": "Dafny Translation",
+"description": "Automatically translated from Dafny specification: dafny-synthesis_task_id_273_SubtractSequences",
+"source": "Dafny",
+"translation_date": "2024",
+"functions": ,
+"methods":
 }
 -/
 
-namespace DafnyBenchmarks
 
 /--
 SubtractSequences takes two arrays of integers and returns a new array where each element
@@ -33,9 +30,7 @@ Specification for SubtractSequences:
 - Each element is difference of corresponding input elements
 -/
 theorem SubtractSequences_spec (a b : Array Int) :
-  a.size = b.size →
-  let result := SubtractSequences a b
-  result.size = a.size ∧
-  ∀ i, 0 ≤ i ∧ i < result.size → result[i]! = a[i]! - b[i]! := sorry
-
-end DafnyBenchmarks
+a.size = b.size →
+let result := SubtractSequences a b
+result.size = a.size ∧
+∀ i, 0 ≤ i ∧ i < result.size → result[i]! = a[i]! - b[i]! := sorry

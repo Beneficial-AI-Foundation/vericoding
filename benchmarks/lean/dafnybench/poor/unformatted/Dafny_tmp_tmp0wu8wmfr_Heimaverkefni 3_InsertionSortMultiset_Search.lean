@@ -1,20 +1,17 @@
-import Std
 
-open Std.Do
 
 /-!
 {
-  "name": "Dafny_tmp_tmp0wu8wmfr_Heimaverkefni 3_InsertionSortMultiset_Search",
-  "category": "Dafny Translation",
-  "description": "Automatically translated from Dafny specification: Dafny_tmp_tmp0wu8wmfr_Heimaverkefni 3_InsertionSortMultiset_Search",
-  "source": "Dafny",
-  "translation_date": "2024",
-  "functions": ,
-  "methods":
+"name": "Dafny_tmp_tmp0wu8wmfr_Heimaverkefni 3_InsertionSortMultiset_Search",
+"category": "Dafny Translation",
+"description": "Automatically translated from Dafny specification: Dafny_tmp_tmp0wu8wmfr_Heimaverkefni 3_InsertionSortMultiset_Search",
+"source": "Dafny",
+"translation_date": "2024",
+"functions": ,
+"methods":
 }
 -/
 
-namespace DafnyBenchmarks
 
 /--
 Search method that finds insertion point for value x in sorted array s.
@@ -25,7 +22,7 @@ Translated from Dafny specification.
 @return k The insertion point index
 -/
 def Search (s : Array Int) (x : Int) : Int :=
-  sorry
+sorry
 
 /--
 Specification for Search method ensuring:
@@ -36,11 +33,9 @@ Specification for Search method ensuring:
 5. Array remains unchanged
 -/
 theorem Search_spec (s : Array Int) (x : Int) (k : Int) :
-  (∀ p q, 0 ≤ p → p < q → q < s.size → s[p]! ≤ s[q]!) →
-  (k = Search s x) →
-  (0 ≤ k ∧ k ≤ s.size) ∧
-  (∀ i, 0 ≤ i → i < k → s[i.toNat]! ≤ x) ∧
-  (∀ i, k ≤ i → i < s.size → s[i.toNat]! ≥ x) :=
-  sorry
-
-end DafnyBenchmarks
+(∀ p q, 0 ≤ p → p < q → q < s.size → s[p]! ≤ s[q]!) →
+(k = Search s x) →
+(0 ≤ k ∧ k ≤ s.size) ∧
+(∀ i, 0 ≤ i → i < k → s[i.toNat]! ≤ x) ∧
+(∀ i, k ≤ i → i < s.size → s[i.toNat]! ≥ x) :=
+sorry

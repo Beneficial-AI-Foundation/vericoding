@@ -1,20 +1,17 @@
-import Std
 
-open Std.Do
 
 /-!
 {
-  "name": "Dafny-Exercises_tmp_tmpjm75muf__Session3Exercises_ExerciseMaximum_mlastMaximum",
-  "category": "Dafny Translation",
-  "description": "Automatically translated from Dafny specification: Dafny-Exercises_tmp_tmpjm75muf__Session3Exercises_ExerciseMaximum_mlastMaximum",
-  "source": "Dafny",
-  "translation_date": "2024",
-  "functions": ,
-  "methods":
+"name": "Dafny-Exercises_tmp_tmpjm75muf__Session3Exercises_ExerciseMaximum_mlastMaximum",
+"category": "Dafny Translation",
+"description": "Automatically translated from Dafny specification: Dafny-Exercises_tmp_tmpjm75muf__Session3Exercises_ExerciseMaximum_mlastMaximum",
+"source": "Dafny",
+"translation_date": "2024",
+"functions": ,
+"methods":
 }
 -/
 
-namespace DafnyBenchmarks
 
 /--
 Finds the last maximum element in an array.
@@ -33,10 +30,8 @@ Ensures:
 3. All elements after the returned index are strictly less than it
 -/
 theorem mlastMaximum_spec (v : Array Int) :
-  v.size > 0 →
-  let i := mlastMaximum v
-  (0 ≤ i ∧ i < v.size) ∧
-  (∀ k, 0 ≤ k ∧ k < v.size → v[i.toNat]! ≥ v[k]!) ∧
-  (∀ l, i < l ∧ l < v.size → v[i.toNat]! > v[l.toNat]!) := sorry
-
-end DafnyBenchmarks
+v.size > 0 →
+let i := mlastMaximum v
+(0 ≤ i ∧ i < v.size) ∧
+(∀ k, 0 ≤ k ∧ k < v.size → v[i.toNat]! ≥ v[k]!) ∧
+(∀ l, i < l ∧ l < v.size → v[i.toNat]! > v[l.toNat]!) := sorry

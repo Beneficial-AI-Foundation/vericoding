@@ -1,20 +1,17 @@
-import Std
 
-open Std.Do
 
 /-!
 {
-  "name": "Dafny-Exercises_tmp_tmpjm75muf__Session4Exercises_ExercisefirstZero_mfirstCero",
-  "category": "Dafny Translation",
-  "description": "Automatically translated from Dafny specification: Dafny-Exercises_tmp_tmpjm75muf__Session4Exercises_ExercisefirstZero_mfirstCero",
-  "source": "Dafny",
-  "translation_date": "2024",
-  "functions": ,
-  "methods":
+"name": "Dafny-Exercises_tmp_tmpjm75muf__Session4Exercises_ExercisefirstZero_mfirstCero",
+"category": "Dafny Translation",
+"description": "Automatically translated from Dafny specification: Dafny-Exercises_tmp_tmpjm75muf__Session4Exercises_ExercisefirstZero_mfirstCero",
+"source": "Dafny",
+"translation_date": "2024",
+"functions": ,
+"methods":
 }
 -/
 
-namespace DafnyBenchmarks
 
 /--
 Finds the first occurrence of zero in an array.
@@ -32,9 +29,7 @@ Specification for mfirstCero:
 3. If i is not the array length, then v is zero
 -/
 theorem mfirstCero_spec (v : Array Int) :
-  let i := mfirstCero v
-  0 ≤ i ∧ i ≤ v.size ∧
-  (∀ j, 0 ≤ j ∧ j < i → v[j.toNat]! ≠ 0) ∧
-  (i ≠ v.size → v[i.toNat]! = 0) := sorry
-
-end DafnyBenchmarks
+let i := mfirstCero v
+0 ≤ i ∧ i ≤ v.size ∧
+(∀ j, 0 ≤ j ∧ j < i → v[j.toNat]! ≠ 0) ∧
+(i ≠ v.size → v[i.toNat]! = 0) := sorry

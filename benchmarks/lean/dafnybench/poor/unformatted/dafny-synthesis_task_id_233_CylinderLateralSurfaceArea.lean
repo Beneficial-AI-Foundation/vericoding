@@ -1,20 +1,17 @@
-import Std
 
-open Std.Do
 
 /-!
 {
-  "name": "dafny-synthesis_task_id_233_CylinderLateralSurfaceArea",
-  "category": "Dafny Translation",
-  "description": "Automatically translated from Dafny specification: dafny-synthesis_task_id_233_CylinderLateralSurfaceArea",
-  "source": "Dafny",
-  "translation_date": "2024",
-  "functions": ,
-  "methods":
+"name": "dafny-synthesis_task_id_233_CylinderLateralSurfaceArea",
+"category": "Dafny Translation",
+"description": "Automatically translated from Dafny specification: dafny-synthesis_task_id_233_CylinderLateralSurfaceArea",
+"source": "Dafny",
+"translation_date": "2024",
+"functions": ,
+"methods":
 }
 -/
 
-namespace DafnyBenchmarks
 
 /--
 Calculates the lateral surface area of a cylinder given its radius and height.
@@ -29,7 +26,5 @@ Specification for CylinderLateralSurfaceArea:
 - Ensures the returned area equals 2π * radius * height
 -/
 theorem CylinderLateralSurfaceArea_spec (radius height : Float) :
-  radius > 0 ∧ height > 0 →
-  CylinderLateralSurfaceArea radius height = 2 * (radius * height) * 3.14 := sorry
-
-end DafnyBenchmarks
+radius > 0 ∧ height > 0 →
+CylinderLateralSurfaceArea radius height = 2 * (radius * height) * 3.14 := sorry

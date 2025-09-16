@@ -1,27 +1,24 @@
-import Std
 
-open Std.Do
 
 /-!
 {
-  "name": "Dafny-Exercises_tmp_tmpjm75muf__Session2Exercises_ExerciseFibonacci_fibonacci1",
-  "category": "Dafny Translation",
-  "description": "Automatically translated from Dafny specification: Dafny-Exercises_tmp_tmpjm75muf__Session2Exercises_ExerciseFibonacci_fibonacci1",
-  "source": "Dafny",
-  "translation_date": "2024",
-  "functions": ,
-  "methods":
+"name": "Dafny-Exercises_tmp_tmpjm75muf__Session2Exercises_ExerciseFibonacci_fibonacci1",
+"category": "Dafny Translation",
+"description": "Automatically translated from Dafny specification: Dafny-Exercises_tmp_tmpjm75muf__Session2Exercises_ExerciseFibonacci_fibonacci1",
+"source": "Dafny",
+"translation_date": "2024",
+"functions": ,
+"methods":
 }
 -/
 
-namespace DafnyBenchmarks
 
 /--
 Recursive function to compute the nth Fibonacci number.
 Translated from Dafny's fib function.
 -/
 def fib (n : Nat) : Nat :=
-  sorry
+sorry
 
 /--
 Method to compute the nth Fibonacci number.
@@ -35,6 +32,4 @@ Specification for fibonacci1 method ensuring it computes
 the correct Fibonacci number.
 -/
 theorem fibonacci1_spec (n : Nat) :
-  fibonacci1 n = fib n := sorry
-
-end DafnyBenchmarks
+fibonacci1 n = fib n := sorry

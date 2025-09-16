@@ -1,20 +1,17 @@
-import Std
 
-open Std.Do
 
 /-!
 {
-  "name": "Clover_rotate_rotate",
-  "category": "Dafny Translation",
-  "description": "Automatically translated from Dafny specification: Clover_rotate_rotate",
-  "source": "Dafny",
-  "translation_date": "2024",
-  "functions": ,
-  "methods":
+"name": "Clover_rotate_rotate",
+"category": "Dafny Translation",
+"description": "Automatically translated from Dafny specification: Clover_rotate_rotate",
+"source": "Dafny",
+"translation_date": "2024",
+"functions": ,
+"methods":
 }
 -/
 
-namespace DafnyBenchmarks
 
 /--
 Rotates an array by a given offset.
@@ -33,9 +30,7 @@ Ensures:
 2. Each element is correctly rotated by the offset
 -/
 theorem rotate_spec (a : Array Int) (offset : Int) :
-  offset ≥ 0 →
-  let b := rotate a offset
-  (b.size = a.size) ∧
-  (∀ i, 0 ≤ i ∧ i < a.size → b[i]! = a[((i + offset) % a.size).toNat]!) := sorry
-
-end DafnyBenchmarks
+offset ≥ 0 →
+let b := rotate a offset
+(b.size = a.size) ∧
+(∀ i, 0 ≤ i ∧ i < a.size → b[i]! = a[((i + offset) % a.size).toNat]!) := sorry

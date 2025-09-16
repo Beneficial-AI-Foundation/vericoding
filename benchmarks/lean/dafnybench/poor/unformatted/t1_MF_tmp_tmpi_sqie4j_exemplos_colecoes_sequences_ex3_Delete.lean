@@ -1,20 +1,17 @@
-import Std
 
-open Std.Do
 
 /-!
 {
-  "name": "t1_MF_tmp_tmpi_sqie4j_exemplos_colecoes_sequences_ex3_Delete",
-  "category": "Dafny Translation",
-  "description": "Automatically translated from Dafny specification: t1_MF_tmp_tmpi_sqie4j_exemplos_colecoes_sequences_ex3_Delete",
-  "source": "Dafny",
-  "translation_date": "2024",
-  "functions": ,
-  "methods":
+"name": "t1_MF_tmp_tmpi_sqie4j_exemplos_colecoes_sequences_ex3_Delete",
+"category": "Dafny Translation",
+"description": "Automatically translated from Dafny specification: t1_MF_tmp_tmpi_sqie4j_exemplos_colecoes_sequences_ex3_Delete",
+"source": "Dafny",
+"translation_date": "2024",
+"functions": ,
+"methods":
 }
 -/
 
-namespace DafnyBenchmarks
 
 /--
 Delete removes p characters from position at in an array of characters.
@@ -39,11 +36,9 @@ def Delete (line : Array Char) (l _at p : Nat) : Array Char := sorry
 Specification for Delete operation
 -/
 theorem Delete_spec (line : Array Char) (l _at p : Nat) :
-  l ≤ line.size →
-  _at + p ≤ l →
-  let result := Delete line l _at p
-  -- Note: Complex array slicing operations simplified to basic size properties
-  result.size = line.size ∧
-  ∀ i, i < _at → result[i]! = line[i]! := sorry
-
-end DafnyBenchmarks
+l ≤ line.size →
+_at + p ≤ l →
+let result := Delete line l _at p
+-- Note: Complex array slicing operations simplified to basic size properties
+result.size = line.size ∧
+∀ i, i < _at → result[i]! = line[i]! := sorry

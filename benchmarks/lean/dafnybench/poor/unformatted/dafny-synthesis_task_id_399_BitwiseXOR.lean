@@ -1,20 +1,17 @@
-import Std
 
-open Std.Do
 
 /-!
 {
-  "name": "dafny-synthesis_task_id_399_BitwiseXOR",
-  "category": "Dafny Translation",
-  "description": "Automatically translated from Dafny specification: dafny-synthesis_task_id_399_BitwiseXOR",
-  "source": "Dafny",
-  "translation_date": "2024",
-  "functions": ,
-  "methods":
+"name": "dafny-synthesis_task_id_399_BitwiseXOR",
+"category": "Dafny Translation",
+"description": "Automatically translated from Dafny specification: dafny-synthesis_task_id_399_BitwiseXOR",
+"source": "Dafny",
+"translation_date": "2024",
+"functions": ,
+"methods":
 }
 -/
 
-namespace DafnyBenchmarks
 
 /--
 BitwiseXOR takes two arrays of 32-bit bitvectors and returns their bitwise XOR.
@@ -33,10 +30,8 @@ Specification for BitwiseXOR:
 - Each element is bitwise XOR of corresponding input elements
 -/
 theorem BitwiseXOR_spec (a b : Array UInt32) :
-  a.size = b.size →
-  let result := BitwiseXOR a b
-  result.size = a.size ∧
-  ∀ i, 0 ≤ i ∧ i < result.size →
-    result[i]! = (a[i]!).xor (b[i]!) := sorry
-
-end DafnyBenchmarks
+a.size = b.size →
+let result := BitwiseXOR a b
+result.size = a.size ∧
+∀ i, 0 ≤ i ∧ i < result.size →
+result[i]! = (a[i]!).xor (b[i]!) := sorry

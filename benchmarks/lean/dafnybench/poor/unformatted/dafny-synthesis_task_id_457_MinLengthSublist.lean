@@ -1,20 +1,17 @@
-import Std
 
-open Std.Do
 
 /-!
 {
-  "name": "dafny-synthesis_task_id_457_MinLengthSublist",
-  "category": "Dafny Translation",
-  "description": "Automatically translated from Dafny specification: dafny-synthesis_task_id_457_MinLengthSublist",
-  "source": "Dafny",
-  "translation_date": "2024",
-  "functions": ,
-  "methods":
+"name": "dafny-synthesis_task_id_457_MinLengthSublist",
+"category": "Dafny Translation",
+"description": "Automatically translated from Dafny specification: dafny-synthesis_task_id_457_MinLengthSublist",
+"source": "Dafny",
+"translation_date": "2024",
+"functions": ,
+"methods":
 }
 -/
 
-namespace DafnyBenchmarks
 
 /--
 Finds the shortest sublist in a sequence of integer sequences.
@@ -31,9 +28,7 @@ Specification for MinLengthSublist:
 - Ensures result is the shortest sublist in the input array
 -/
 theorem MinLengthSublist_spec (s : Array (Array Int)) :
-  s.size > 0 →
-  (∃ i, i < s.size ∧ MinLengthSublist s = s[i]!) ∧
-  (∀ sublist, (∃ i, i < s.size ∧ sublist = s[i]!) →
-    (MinLengthSublist s).size ≤ sublist.size) := sorry
-
-end DafnyBenchmarks
+s.size > 0 →
+(∃ i, i < s.size ∧ MinLengthSublist s = s[i]!) ∧
+(∀ sublist, (∃ i, i < s.size ∧ sublist = s[i]!) →
+(MinLengthSublist s).size ≤ sublist.size) := sorry

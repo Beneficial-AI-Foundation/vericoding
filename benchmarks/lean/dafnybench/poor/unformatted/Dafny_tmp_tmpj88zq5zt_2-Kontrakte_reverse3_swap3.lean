@@ -1,20 +1,17 @@
-import Std
 
-open Std.Do
 
 /-!
 {
-  "name": "Dafny_tmp_tmpj88zq5zt_2-Kontrakte_reverse3_swap3",
-  "category": "Dafny Translation",
-  "description": "Automatically translated from Dafny specification: Dafny_tmp_tmpj88zq5zt_2-Kontrakte_reverse3_swap3",
-  "source": "Dafny",
-  "translation_date": "2024",
-  "functions": ,
-  "methods":
+"name": "Dafny_tmp_tmpj88zq5zt_2-Kontrakte_reverse3_swap3",
+"category": "Dafny Translation",
+"description": "Automatically translated from Dafny specification: Dafny_tmp_tmpj88zq5zt_2-Kontrakte_reverse3_swap3",
+"source": "Dafny",
+"translation_date": "2024",
+"functions": ,
+"methods":
 }
 -/
 
-namespace DafnyBenchmarks
 
 /--
 Swaps three elements in an array at positions h, i, and j.
@@ -35,14 +32,12 @@ Specification for swap3 method:
 - Ensures other elements remain unchanged
 -/
 theorem swap3_spec (a : Array Int) (h i j : Nat) :
-  0 ≤ h ∧ h < a.size ∧
-  0 ≤ i ∧ i < a.size ∧
-  0 ≤ j ∧ j < a.size ∧
-  i ≠ j ∧ j ≠ h ∧ h ≠ i →
-  let a' := swap3 a h i j
-  (a'[h]! = a[i]!) ∧
-  (a'[j]! = a[h]!) ∧
-  (a'[i]! = a[j]!) ∧
-  (∀ k, 0 ≤ k ∧ k < a.size ∧ k ≠ h ∧ k ≠ i ∧ k ≠ j → a'[k]! = a[k]!) := sorry
-
-end DafnyBenchmarks
+0 ≤ h ∧ h < a.size ∧
+0 ≤ i ∧ i < a.size ∧
+0 ≤ j ∧ j < a.size ∧
+i ≠ j ∧ j ≠ h ∧ h ≠ i →
+let a' := swap3 a h i j
+(a'[h]! = a[i]!) ∧
+(a'[j]! = a[h]!) ∧
+(a'[i]! = a[j]!) ∧
+(∀ k, 0 ≤ k ∧ k < a.size ∧ k ≠ h ∧ k ≠ i ∧ k ≠ j → a'[k]! = a[k]!) := sorry

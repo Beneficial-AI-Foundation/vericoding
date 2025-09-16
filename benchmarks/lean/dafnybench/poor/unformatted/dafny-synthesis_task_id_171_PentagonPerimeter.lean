@@ -1,20 +1,17 @@
-import Std
 
-open Std.Do
 
 /-!
 {
-  "name": "dafny-synthesis_task_id_171_PentagonPerimeter",
-  "category": "Dafny Translation", 
-  "description": "Automatically translated from Dafny specification: dafny-synthesis_task_id_171_PentagonPerimeter",
-  "source": "Dafny",
-  "translation_date": "2024",
-  "functions": ,
-  "methods": 
+"name": "dafny-synthesis_task_id_171_PentagonPerimeter",
+"category": "Dafny Translation",
+"description": "Automatically translated from Dafny specification: dafny-synthesis_task_id_171_PentagonPerimeter",
+"source": "Dafny",
+"translation_date": "2024",
+"functions": ,
+"methods":
 }
 -/
 
-namespace DafnyBenchmarks
 
 /--
 Calculates the perimeter of a pentagon given the side length.
@@ -25,7 +22,7 @@ Calculates the perimeter of a pentagon given the side length.
 Requires:
 - side > 0
 
-Ensures: 
+Ensures:
 - Result equals 5 * side
 -/
 def PentagonPerimeter (side : Int) : Int := sorry
@@ -34,6 +31,4 @@ def PentagonPerimeter (side : Int) : Int := sorry
 Specification for PentagonPerimeter function
 -/
 theorem PentagonPerimeter_spec (side : Int) :
-  side > 0 → PentagonPerimeter side = 5 * side := sorry
-
-end DafnyBenchmarks
+side > 0 → PentagonPerimeter side = 5 * side := sorry
