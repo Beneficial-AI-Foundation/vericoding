@@ -13,9 +13,13 @@
 -/
 
 
+/-- Count the number of occurrences of an element in an array -/
+def count (a : Array Int) (x : Int) : Nat :=
+a.foldl (fun acc y => if y = x then acc + 1 else acc) 0
+
 /-- Predicate defining if two arrays are valid permutations of each other -/
 def valid_permut (a b : Array Int) : Prop :=
-a.size = b.size ∧ sorry -- Multiset equality not directly translatable
+a.size = b.size ∧ ∀ x : Int, count a x = count b x
 
 /-- Swaps two elements in an array -/
 def swap (a : Array Int) (i j : Int) : Array Int :=

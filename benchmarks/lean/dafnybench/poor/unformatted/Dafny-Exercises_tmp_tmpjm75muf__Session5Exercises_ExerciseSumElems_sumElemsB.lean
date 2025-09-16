@@ -17,13 +17,13 @@
 partial def SumR (s : Array Int) : Int :=
 if s.size = 0 then 0
 else SumR (s.extract 0 (s.size - 1)) + s[s.size - 1]!
-decreasing_by sorry
+decreasing_by all_goals simp_wf; omega
 
 /-- Recursive sum of array elements from left to right -/
 partial def SumL (s : Array Int) : Int :=
 if s.size = 0 then 0
 else s[0]! + SumL (s.extract 1 s.size)
-decreasing_by sorry
+decreasing_by all_goals simp_wf; omega
 
 /-- Sum of array elements in range [c,f) -/
 def SumV (v : Array Int) (c : Nat) (f : Nat) : Int :=
