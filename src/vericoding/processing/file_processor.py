@@ -8,6 +8,7 @@ import traceback
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from dataclasses import dataclass, replace
 from pathlib import Path
+from typing import TYPE_CHECKING
 
 import wandb
 
@@ -22,6 +23,9 @@ from .cheat_checker import has_final_failure_cheats, check_for_cheats
 
 # Import for Lean preprocessing
 from ..preprocessing import preprocess_lean_file, ensure_mathlib_import
+
+if TYPE_CHECKING:
+    from ..mcp.lean import LeanMCPManager
 
 
 def count_placeholders(original_code: str, language: str) -> int:
@@ -101,7 +105,10 @@ class ProcessingResult:
 
 
 def process_spec_file(
-    config: ProcessingConfig, prompt_loader: PromptLoader, file_path: str
+    config: ProcessingConfig,
+    prompt_loader: PromptLoader,
+    file_path: str,
+    lean_mcp_manager: "LeanMCPManager | None" = None,
 ) -> ProcessingResult:
     """Process a single specification file."""
     # Initialize tracking tables and response collection
@@ -169,7 +176,13 @@ def process_spec_file(
 
         # Create LLM provider for this request
         llm_provider, _ = create_llm_provider(config.llm)
-        generated_response = call_llm(llm_provider, config, generate_prompt, wandb)
+        generated_response = call_llm(
+            llm_provider,
+            config,
+            generate_prompt,
+            wandb,
+            lean_mcp_manager=lean_mcp_manager,
+        )
         
         # IMMEDIATELY save raw response to debug folder before any parsing
         if config.debug_mode:
@@ -202,7 +215,13 @@ def process_spec_file(
         if json_error and "JSON parsing failed" in json_error:
             logger.info(f"  ⚠️  JSON parsing failed, attempting retry...")
             try:
-                retry_response = call_llm(llm_provider, config, generate_prompt, wandb)
+                retry_response = call_llm(
+                    llm_provider,
+                    config,
+                    generate_prompt,
+                    wandb,
+                    lean_mcp_manager=lean_mcp_manager,
+                )
                 generated_code, json_error = apply_json_replacements(config, original_code, retry_response)
                 
                 if not json_error:
@@ -411,7 +430,13 @@ def process_spec_file(
                 try:
                     # Create LLM provider for fix request  
                     llm_provider, _ = create_llm_provider(config.llm)
-                    fix_response = call_llm(llm_provider, config, fix_prompt, wandb)
+                    fix_response = call_llm(
+                        llm_provider,
+                        config,
+                        fix_prompt,
+                        wandb,
+                        lean_mcp_manager=lean_mcp_manager,
+                    )
                     
                     # IMMEDIATELY save raw response to debug folder before any parsing
                     if config.debug_mode:
@@ -600,7 +625,11 @@ def process_spec_file(
 
 
 def process_files_parallel(
-    config: ProcessingConfig, prompt_loader: PromptLoader, spec_files: list[str]
+    config: ProcessingConfig,
+    prompt_loader: PromptLoader,
+    spec_files: list[str],
+    *,
+    lean_mcp_manager: "LeanMCPManager | None" = None,
 ) -> list[ProcessingResult]:
     """Process files in parallel using ThreadPoolExecutor."""
     results = []
@@ -616,7 +645,11 @@ def process_files_parallel(
         # Submit all tasks
         future_to_file = {
             executor.submit(
-                process_spec_file, config, prompt_loader, file_path
+                process_spec_file,
+                config,
+                prompt_loader,
+                file_path,
+                lean_mcp_manager,
             ): file_path
             for file_path in spec_files
         }

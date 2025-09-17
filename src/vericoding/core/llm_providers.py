@@ -1,15 +1,20 @@
 """LLM provider abstractions and implementations."""
 
+import json
 import os
 import threading
 from abc import ABC, abstractmethod
-from time import time, sleep
 from dataclasses import dataclass
-from typing import Optional
+from time import sleep, time
+from typing import Any, Dict, List, Optional, Tuple, TYPE_CHECKING
+
 from .config import ProcessingConfig
 
 import anthropic
 import openai
+
+if TYPE_CHECKING:
+    from vericoding.mcp.lean import LeanMCPManager
 
 
 @dataclass
@@ -412,30 +417,161 @@ def reset_global_token_stats():
         _global_token_stats["output_tokens"] = 0
         _global_token_stats["total_calls"] = 0
 
-def call_llm(provider: LLMProvider, config: ProcessingConfig, prompt: str, wandb=None) -> str:
-    """Call LLM with rate limiting and optional wandb logging."""
-    # Rate limit
+def call_llm(
+    provider: LLMProvider,
+    config: ProcessingConfig,
+    prompt: str,
+    wandb=None,
+    *,
+    lean_mcp_manager: "LeanMCPManager | None" = None,
+) -> str:
+    """Call LLM with optional Lean MCP tool support and wandb logging."""
+
     sleep(config.api_rate_limit_delay)
     start = time()
-    llm_response = provider.call_api(prompt)
-    latency_ms = (time() - start) * 1000
-    
-    # Update global token statistics (thread-safe)
-    with _token_stats_lock:
-        _global_token_stats["input_tokens"] += llm_response.input_tokens
-        _global_token_stats["output_tokens"] += llm_response.output_tokens
-        _global_token_stats["total_calls"] += 1
-    
-    if wandb and hasattr(wandb, "log") and hasattr(wandb, "run") and wandb.run:
-        # Use multiple fallbacks to ensure we always have a model name
-        model_name = getattr(provider, 'model', None) or config.llm
-        try:
-            wandb.log({
-                "llm/calls": 1,
-                "llm/latency_ms": latency_ms,
-                "llm/model": model_name,
-            })
-        except Exception as e:
-            print(f"There was a W&B error {e} in llm_providers.py")
 
-    return llm_response.text
+    if (
+        config.language == "lean"
+        and getattr(config, "use_lean_mcp", False)
+        and lean_mcp_manager is not None
+    ):
+        try:
+            text, input_tokens, output_tokens, call_count = _call_llm_with_mcp(
+                provider, config, prompt, lean_mcp_manager
+            )
+        except Exception as mcp_error:  # pylint: disable=broad-except
+            print(f"⚠️  Lean MCP tool execution failed: {mcp_error}")
+            response = provider.call_api(prompt)
+            text = response.text
+            input_tokens = response.input_tokens
+            output_tokens = response.output_tokens
+            call_count = 1
+    else:
+        response = provider.call_api(prompt)
+        text = response.text
+        input_tokens = response.input_tokens
+        output_tokens = response.output_tokens
+        call_count = 1
+
+    latency_ms = (time() - start) * 1000
+
+    with _token_stats_lock:
+        _global_token_stats["input_tokens"] += input_tokens
+        _global_token_stats["output_tokens"] += output_tokens
+        _global_token_stats["total_calls"] += call_count
+
+    if wandb and hasattr(wandb, "log") and hasattr(wandb, "run") and wandb.run:
+        model_name = getattr(provider, "model", None) or config.llm
+        try:
+            wandb.log(
+                {
+                    "llm/calls": call_count,
+                    "llm/latency_ms": latency_ms,
+                    "llm/model": model_name,
+                }
+            )
+        except Exception as wandb_error:  # pylint: disable=broad-except
+            print(f"There was a W&B error {wandb_error} in llm_providers.py")
+
+    return text
+
+
+def _call_llm_with_mcp(
+    provider: LLMProvider,
+    config: ProcessingConfig,
+    prompt: str,
+    lean_mcp_manager: "LeanMCPManager",
+) -> Tuple[str, int, int, int]:
+    """Call an OpenAI-compatible model with Lean MCP tool support."""
+
+    if not hasattr(provider, "client"):
+        response = provider.call_api(prompt)
+        return response.text, response.input_tokens, response.output_tokens, 1
+
+    system_prompt = (
+        lean_mcp_manager.instructions
+        or "You have access to Lean LSP tooling via MCP. Use the tools when they help you understand or verify Lean code."
+    )
+
+    messages: List[Dict[str, Any]] = []
+    if system_prompt:
+        messages.append({"role": "system", "content": system_prompt})
+    messages.append({"role": "user", "content": prompt})
+
+    tools = lean_mcp_manager.openai_tools()
+    total_input_tokens = 0
+    total_output_tokens = 0
+    api_calls = 0
+    max_iterations = 8
+
+    while api_calls < max_iterations:
+        api_calls += 1
+
+        request_kwargs: Dict[str, Any] = {
+            "model": provider.model,
+            "messages": messages,
+            "max_tokens": provider.max_tokens,
+            "timeout": provider.timeout,
+        }
+        if tools:
+            request_kwargs["tools"] = tools
+            request_kwargs["tool_choice"] = "auto"
+
+        response = provider.client.chat.completions.create(**request_kwargs)
+
+        usage = getattr(response, "usage", None)
+        if usage is not None:
+            total_input_tokens += getattr(usage, "prompt_tokens", 0) or 0
+            total_output_tokens += getattr(usage, "completion_tokens", 0) or 0
+
+        if not response.choices:
+            break
+
+        choice = response.choices[0]
+        message = choice.message
+
+        assistant_payload: Dict[str, Any] = {
+            "role": "assistant",
+            "content": message.content,
+        }
+        tool_calls = getattr(message, "tool_calls", None)
+        if tool_calls:
+            assistant_payload["tool_calls"] = tool_calls
+        messages.append(assistant_payload)
+
+        if choice.finish_reason == "tool_calls" and tool_calls:
+            for tool_call in tool_calls:
+                tool_name = getattr(tool_call.function, "name", "")
+                raw_arguments = getattr(tool_call.function, "arguments", "") or "{}"
+                try:
+                    arguments = json.loads(raw_arguments)
+                except json.JSONDecodeError:
+                    arguments = {"raw": raw_arguments}
+
+                try:
+                    tool_output = lean_mcp_manager.call_tool(tool_name, arguments)
+                except Exception as tool_error:  # pylint: disable=broad-except
+                    tool_output = f"Tool `{tool_name}` raised an error: {tool_error}"
+
+                messages.append(
+                    {
+                        "role": "tool",
+                        "tool_call_id": getattr(tool_call, "id", ""),
+                        "name": tool_name,
+                        "content": tool_output or "(no output)",
+                    }
+                )
+
+            continue
+
+        final_content = message.content or ""
+        return final_content, total_input_tokens, total_output_tokens, api_calls
+
+    # If we exit the loop without a definitive content, fall back to last assistant text
+    fallback_content = ""
+    for msg in reversed(messages):
+        if msg.get("role") == "assistant" and msg.get("content"):
+            fallback_content = msg["content"]
+            break
+
+    return fallback_content, total_input_tokens, total_output_tokens, api_calls

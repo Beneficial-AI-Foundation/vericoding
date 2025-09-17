@@ -22,6 +22,7 @@ dependencies = [
     "tqdm>=4.67.1",
     "ruamel-yaml>=0.18.15",
     "openai>=1.104.2",
+    "modelcontextprotocol>=0.1.0",
     "datasets>=4.0.0",
     "pytest>=8.4.1",
 ]

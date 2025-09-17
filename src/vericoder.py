@@ -27,6 +27,7 @@ from vericoding.core import (
     PromptLoader,
     create_llm_provider,
 )
+from vericoding.mcp import LeanMCPManager
 from vericoding.core.language_tools import (
     get_tool_path,
     check_tool_availability,
@@ -153,6 +154,12 @@ Examples:
         help="Tag to add to W&B run for experiment tracking",
     )
 
+    parser.add_argument(
+        "--disable-lean-mcp",
+        action="store_true",
+        help="Disable Lean MCP integration (enabled by default for Lean workflows)",
+    )
+
     return parser.parse_args()
 
 
@@ -227,6 +234,8 @@ def setup_configuration(args) -> ProcessingConfig:
     print(f"Created output directory: {output_dir}")
 
     # Create configuration object
+    use_lean_mcp = args.language == "lean" and not args.disable_lean_mcp
+
     config = ProcessingConfig(
         language=args.language,
         language_config=language_config,
@@ -240,6 +249,7 @@ def setup_configuration(args) -> ProcessingConfig:
         llm=args.llm,
         max_directory_traversal_depth=args.max_directory_traversal_depth,
         assume_unformatted_lean=args.assume_unformatted_lean,
+        use_lean_mcp=use_lean_mcp,
     )
 
     print("\nConfiguration:")
@@ -252,6 +262,7 @@ def setup_configuration(args) -> ProcessingConfig:
     print(f"- LLM: {config.llm}")
     print(f"- Debug mode: {'Enabled' if config.debug_mode else 'Disabled'}")
     print(f"- API rate limit delay: {config.api_rate_limit_delay}s")
+    print(f"- Lean MCP: {'Enabled' if config.use_lean_mcp else 'Disabled'}")
     print("\nProceeding with configuration...")
 
     return config
@@ -337,6 +348,7 @@ def get_experiment_metadata(config: ProcessingConfig, args, prompt_loader: Promp
         # Run configuration
         "api_rate_limit_delay": config.api_rate_limit_delay,
         "debug_mode": config.debug_mode,
+        "use_lean_mcp": getattr(config, "use_lean_mcp", False),
         "timestamp": datetime.now().isoformat(),
         
         # Command line arguments (for reproducibility)
@@ -613,250 +625,249 @@ def log_experiment_results_to_wandb(
 
 def main():
     """Main entry point for the specification-to-code processing."""
-    # Parse command-line arguments first
     args = parse_arguments()
-
-    # Set up configuration
     config = setup_configuration(args)
-    
-    # Initialize wandb for experiment tracking (unless disabled)
-    wandb_run = None
-    if not args.no_wandb and os.getenv("WANDB_API_KEY"):
-        try:
-            # Initialize wandb run
-            run_name = f"vericoding_{config.language}_{datetime.now().strftime('%Y%m%d_%H%M%S')}"
-            
-            # Get comprehensive metadata
-            experiment_metadata = get_experiment_metadata(config, args)
-            
-            # Build tags list
-            tags = [config.language, config.llm, "spec-to-code"]
-            if args.tag:
-                tags.append(args.tag)
-            
-            wandb_run = wandb.init(
-                project=os.getenv("WANDB_PROJECT", "vericoding"),
-                entity=os.getenv("WANDB_ENTITY"),
-                name=run_name,
-                tags=tags,
-                mode=os.getenv("WANDB_MODE", "online")
-            )
-            # Update config with comprehensive metadata
-            wandb.config.update(experiment_metadata, allow_val_change=True)
-            print(f"✅ Weights & Biases tracking enabled: {run_name}")
-            if wandb_run:
-                print(f"   View at: {wandb_run.url}")
-        except Exception as e:
-            print(f"⚠️  Failed to initialize wandb: {e}")
-            wandb_run = None
-            # Ensure wandb.run is cleared when initialization fails
+
+    lean_mcp_manager: LeanMCPManager | None = None
+
+    try:
+        if config.language == "lean" and config.use_lean_mcp:
             try:
-                wandb.finish()
-            except:
-                pass
-    else:
-        if args.no_wandb:
-            print("⚠️  Weights & Biases tracking disabled (--no-wandb flag)")
-        else:
-            print("⚠️  Weights & Biases tracking disabled (WANDB_API_KEY not set)")
+                lean_mcp_manager = LeanMCPManager()
+                lean_mcp_manager.start()
+                print("✓ Lean MCP integration enabled (lean-lsp-mcp)")
+            except Exception as mcp_error:  # pylint: disable=broad-except
+                print(f"⚠️  Failed to start Lean MCP: {mcp_error}")
+                print("    Continuing without MCP tool support.")
+                config.use_lean_mcp = False
+                lean_mcp_manager = None
 
-    # Initialize prompt loader for the selected language
-    try:
-        prompt_loader = PromptLoader(
-            config.language, prompts_file=config.language_config.prompts_file
-        )
-        # Validate prompts on startup
-        validation = prompt_loader.validate_prompts()
-        if not validation.valid:
-            print(f"Warning: Missing required prompts: {', '.join(validation.missing)}")
-            print(f"Available prompts: {', '.join(validation.available)}")
-            sys.exit(1)
-    except FileNotFoundError as e:
-        print(f"Error: {e}")
-        print(
-            f"Please ensure the {config.language_config.prompts_file} file exists in the {config.language} directory."
-        )
-        print("Expected locations:")
-        script_dir = Path(__file__).parent
-        print(
-            f"  - {script_dir / config.language / config.language_config.prompts_file}"
-        )
-        print(f"  - {config.language_config.prompts_file} (current directory)")
-        sys.exit(1)
+        # Initialize wandb if requested and credentials available
+        wandb_run = None
+        if not args.no_wandb and os.getenv("WANDB_API_KEY"):
+            try:
+                run_name = f"vericoding_{config.language}_{datetime.now().strftime('%Y%m%d_%H%M%S')}"
+                experiment_metadata = get_experiment_metadata(config, args)
 
-    # Log system prompts to wandb if enabled
-    if wandb_run:
-        try:
-            # Get updated metadata with prompts
-            experiment_metadata_with_prompts = get_experiment_metadata(config, args, prompt_loader)
-            
-            # Log system prompts specifically
-            if "system_prompts" in experiment_metadata_with_prompts:
-                wandb.config.update({"system_prompts": experiment_metadata_with_prompts["system_prompts"]}, allow_val_change=True)
-                print(f"✅ System prompts logged to wandb")
-                
-                # Also log prompts as a text artifact for easier viewing
-                prompts_artifact = wandb.Artifact(
-                    name=f"system_prompts_{config.language}_{datetime.now().strftime('%Y%m%d_%H%M%S')}",
-                    type="prompts",
-                    description=f"System prompts for {config.language} code generation",
-                    metadata={
-                        "language": config.language,
-                        "prompts_file": config.language_config.prompts_file,
-                        "num_prompts": len(experiment_metadata_with_prompts["system_prompts"]),
-                    }
+                tags = [config.language, config.llm, "spec-to-code"]
+                if args.tag:
+                    tags.append(args.tag)
+
+                wandb_run = wandb.init(
+                    project=os.getenv("WANDB_PROJECT", "vericoding"),
+                    entity=os.getenv("WANDB_ENTITY"),
+                    name=run_name,
+                    tags=tags,
+                    mode=os.getenv("WANDB_MODE", "online"),
                 )
-                
-                # Create a formatted text file with the prompts
-                with tempfile.NamedTemporaryFile(mode='w', suffix='.txt', delete=False) as tmp_file:
-                    tmp_file.write(f"System Prompts for {config.language}\n")
-                    tmp_file.write("=" * 80 + "\n\n")
-                    
-                    for prompt_name, prompt_content in experiment_metadata_with_prompts["system_prompts"].items():
-                        tmp_file.write(f"Prompt: {prompt_name}\n")
-                        tmp_file.write("-" * 40 + "\n")
-                        tmp_file.write(prompt_content)
-                        tmp_file.write("\n\n" + "=" * 80 + "\n\n")
-                    
-                    tmp_path = tmp_file.name
-                
-                # Add the file to the artifact
-                prompts_artifact.add_file(tmp_path, name="system_prompts.txt")
-                wandb.log_artifact(prompts_artifact)
-                
-                # Clean up temp file
-                os.unlink(tmp_path)
-                
-                print(f"✅ System prompts artifact uploaded to wandb")
-        except Exception as e:
-            print(f"⚠️  Failed to log system prompts to wandb: {e}")
+                wandb.config.update(experiment_metadata, allow_val_change=True)
+                print(f"✅ Weights & Biases tracking enabled: {run_name}")
+                if wandb_run:
+                    print(f"   View at: {wandb_run.url}")
+            except Exception as wandb_error:  # pylint: disable=broad-except
+                print(f"⚠️  Failed to initialize wandb: {wandb_error}")
+                wandb_run = None
+                try:
+                    wandb.finish()
+                except Exception:
+                    pass
+        else:
+            if args.no_wandb:
+                print("⚠️  Weights & Biases tracking disabled (--no-wandb flag)")
+            else:
+                print("⚠️  Weights & Biases tracking disabled (WANDB_API_KEY not set)")
 
-    print(
-        f"Starting specification-to-code processing of {config.language_config.name} files (PARALLEL VERSION)..."
-    )
-    print(f"Directory: {config.files_dir}")
-    print(f"Output directory: {config.output_dir}")
-    print(f"Tool path: {get_tool_path(config)}")
-    print(f"Max iterations: {config.max_iterations}")
-    print(f"Parallel workers: {config.max_workers}")
-    print(f"Debug mode: {'Enabled' if config.debug_mode else 'Disabled'}")
-    print("Processing each file by generating code from specifications.")
-    if config.debug_mode:
-        print(
-            "DEBUG MODE: Saves code after each iteration to debug/ subdirectory for analysis."
-        )
-    else:
-        print("NORMAL MODE: Saves only final implementation files.")
-    print("")
-
-    # Check if the required API key is available for the selected LLM provider
-    try:
-        # This will raise an error if the API key is not available
-        llm_provider, resolved_model = create_llm_provider(config.llm)
-        # Note: The create_llm_provider function already prints the success message
-    except Exception as e:
-        print(f"Error: {str(e)}")
-        print("")
-        print(
-            "Note: .env files are automatically loaded if they exist in the current or parent directory."
-        )
-        sys.exit(1)
-
-    print("")
-    print(f"Checking {config.language_config.name} availability...")
-    tool_availability = check_tool_availability(config)
-    if not tool_availability.available:
-        print(f"Error: {tool_availability.message}")
-        print(
-            f"Please ensure {config.language_config.name} is installed and the {config.language_config.tool_path_env} environment variable is set correctly."
-        )
-        print(
-            f"Current {config.language_config.tool_path_env}: {get_tool_path(config)}"
-        )
-        print(
-            f"You can set it with: export {config.language_config.tool_path_env}=/path/to/{config.language}"
-        )
-        sys.exit(1)
-
-    print(f"✓ {tool_availability.message}")
-    print("")
-
-    # Find all specification files
-    spec_files = find_spec_files(config)
-
-    # Apply limit if specified
-    total_files = len(spec_files)
-    if args.limit and args.limit > 0:
-        spec_files = spec_files[:args.limit]
-        print(f"Found {total_files} {config.language_config.name} specification files, processing first {len(spec_files)} (limited by --limit {args.limit})")
-    else:
-        print(f"Found {len(spec_files)} {config.language_config.name} specification files to process")
-    if config.language == "lean":
-        print("(Only Lean files containing 'sorry' are selected)")
-    print("")
-
-    if not spec_files:
-        print(f"No {config.language_config.name} files found. Exiting.")
-        return
-
-    # Process files in parallel
-    start_time = time.time()
-    results = process_files_parallel(config, prompt_loader, spec_files)
-    end_time = time.time()
-    processing_time = end_time - start_time
-
-    # Generate summary
-    print("")
-    print("Generating summary...")
-    summary = generate_summary(config, results)
-
-    print("")
-    print("=== SUMMARY ===")
-    print(summary)
-    print("")
-    print(f"Summary saved to: {config.summary_file}")
-    print(f"All generated files saved to: {config.output_dir}")
-    print(f"Total processing time: {processing_time:.2f} seconds")
-    print(f"Average time per file: {processing_time / len(results):.2f} seconds")
-    if config.debug_mode:
-        print(
-            "DEBUG: Debug files saved in debug/ subdirectory (original, generated, current per iteration), final implementation in main output directory"
-        )
-    else:
-        print("NORMAL: Only final implementation files saved")
-
-    # Generate CSV results
-    generate_csv_results(config, results)
-
-    # Subfolder analysis removed
-
-    # Print final statistics
-    successful = [r for r in results if r.success]
-    failed = [r for r in results if not r.success and not r.has_bypass]
-    bypassed = [r for r in results if r.has_bypass]
-    success_percentage = len(successful) / len(results) * 100 if results else 0
-    
-    print(
-        f"\n🎉 Processing completed: {len(successful)}/{len(results)} files successful ({success_percentage:.1f}%)"
-    )
-    print(
-        f"⚡ Parallel processing with {config.max_workers} workers completed in {processing_time:.2f}s"
-    )
-
-    # Print token usage summary
-    token_stats = get_global_token_stats()
-    print(f"📊 Token Usage: {token_stats['input_tokens']:,} input + {token_stats['output_tokens']:,} output = {token_stats['input_tokens'] + token_stats['output_tokens']:,} total tokens ({token_stats['total_calls']} calls)")
-
-    
-    # Log comprehensive experiment summary to wandb (if enabled)
-    if wandb_run:
+        # Load prompts for the selected language
         try:
-            log_experiment_results_to_wandb(
-                config, results, processing_time, success_percentage, args
+            prompt_loader = PromptLoader(
+                config.language, prompts_file=config.language_config.prompts_file
             )
-            print(f"\n✅ Wandb run completed: {wandb_run.url}")
-        except Exception as e:
-            print(f"⚠️  Error logging to wandb: {e}")
+            validation = prompt_loader.validate_prompts()
+            if not validation.valid:
+                print(f"Warning: Missing required prompts: {', '.join(validation.missing)}")
+                print(f"Available prompts: {', '.join(validation.available)}")
+                sys.exit(1)
+        except FileNotFoundError as prompts_error:
+            print(f"Error: {prompts_error}")
+            print(
+                f"Please ensure the {config.language_config.prompts_file} file exists in the {config.language} directory."
+            )
+            script_dir = Path(__file__).parent
+            print(f"Expected locations:\n  - {script_dir / config.language / config.language_config.prompts_file}\n  - {config.language_config.prompts_file} (current directory)")
+            sys.exit(1)
+
+        if wandb_run:
+            try:
+                enriched_metadata = get_experiment_metadata(
+                    config, args, prompt_loader
+                )
+                if "system_prompts" in enriched_metadata:
+                    wandb.config.update(
+                        {"system_prompts": enriched_metadata["system_prompts"]},
+                        allow_val_change=True,
+                    )
+                    print("✅ System prompts logged to wandb")
+
+                    prompts_artifact = wandb.Artifact(
+                        name=f"system_prompts_{config.language}_{datetime.now().strftime('%Y%m%d_%H%M%S')}",
+                        type="prompts",
+                        description=f"System prompts for {config.language} code generation",
+                        metadata={
+                            "language": config.language,
+                            "prompts_file": config.language_config.prompts_file,
+                            "num_prompts": len(enriched_metadata["system_prompts"]),
+                        },
+                    )
+
+                    with tempfile.NamedTemporaryFile(
+                        mode="w", suffix=".txt", delete=False
+                    ) as tmp_file:
+                        tmp_file.write(f"System Prompts for {config.language}\n")
+                        tmp_file.write("=" * 80 + "\n\n")
+                        for prompt_name, prompt_content in enriched_metadata[
+                            "system_prompts"
+                        ].items():
+                            tmp_file.write(f"Prompt: {prompt_name}\n")
+                            tmp_file.write("-" * 40 + "\n")
+                            tmp_file.write(prompt_content)
+                            tmp_file.write("\n\n" + "=" * 80 + "\n\n")
+                        tmp_path = tmp_file.name
+
+                    prompts_artifact.add_file(tmp_path, name="system_prompts.txt")
+                    wandb.log_artifact(prompts_artifact)
+                    os.unlink(tmp_path)
+                    print("✅ System prompts artifact uploaded to wandb")
+            except Exception as prompt_log_error:  # pylint: disable=broad-except
+                print(f"⚠️  Failed to log system prompts to wandb: {prompt_log_error}")
+
+        print(
+            f"Starting specification-to-code processing of {config.language_config.name} files (PARALLEL VERSION)..."
+        )
+        print(f"Directory: {config.files_dir}")
+        print(f"Output directory: {config.output_dir}")
+        print(f"Tool path: {get_tool_path(config)}")
+        print(f"Max iterations: {config.max_iterations}")
+        print(f"Parallel workers: {config.max_workers}")
+        print(f"Debug mode: {'Enabled' if config.debug_mode else 'Disabled'}")
+        print("Processing each file by generating code from specifications.")
+        if config.debug_mode:
+            print(
+                "DEBUG MODE: Saves code after each iteration to debug/ subdirectory for analysis."
+            )
+        else:
+            print("NORMAL MODE: Saves only final implementation files.")
+        print("")
+
+        try:
+            llm_provider, _resolved_model = create_llm_provider(config.llm)
+        except Exception as provider_error:
+            print(f"Error: {provider_error}")
+            print("")
+            print(
+                "Note: .env files are automatically loaded if they exist in the current or parent directory."
+            )
+            sys.exit(1)
+
+        print("")
+        print(f"Checking {config.language_config.name} availability...")
+        tool_availability = check_tool_availability(config)
+        if not tool_availability.available:
+            print(f"Error: {tool_availability.message}")
+            print(
+                f"Please ensure {config.language_config.name} is installed and the {config.language_config.tool_path_env} environment variable is set correctly."
+            )
+            print(
+                f"Current {config.language_config.tool_path_env}: {get_tool_path(config)}"
+            )
+            print(
+                f"You can set it with: export {config.language_config.tool_path_env}=/path/to/{config.language}"
+            )
+            sys.exit(1)
+
+        print(f"✓ {tool_availability.message}")
+        print("")
+
+        spec_files = find_spec_files(config)
+        total_files = len(spec_files)
+        if args.limit and args.limit > 0:
+            spec_files = spec_files[: args.limit]
+            print(
+                f"Found {total_files} {config.language_config.name} specification files, processing first {len(spec_files)} (limited by --limit {args.limit})"
+            )
+        else:
+            print(
+                f"Found {len(spec_files)} {config.language_config.name} specification files to process"
+            )
+        if config.language == "lean":
+            print("(Only Lean files containing 'sorry' are selected)")
+        print("")
+
+        if not spec_files:
+            print(f"No {config.language_config.name} files found. Exiting.")
+            return
+
+        start_time = time.time()
+        results = process_files_parallel(
+            config,
+            prompt_loader,
+            spec_files,
+            lean_mcp_manager=lean_mcp_manager,
+        )
+        end_time = time.time()
+        processing_time = end_time - start_time
+
+        print("")
+        print("Generating summary...")
+        summary = generate_summary(config, results)
+
+        print("")
+        print("=== SUMMARY ===")
+        print(summary)
+        print("")
+        print(f"Summary saved to: {config.summary_file}")
+        print(f"All generated files saved to: {config.output_dir}")
+        print(f"Total processing time: {processing_time:.2f} seconds")
+        print(f"Average time per file: {processing_time / len(results):.2f} seconds")
+        if config.debug_mode:
+            print(
+                "DEBUG: Debug files saved in debug/ subdirectory (original, generated, current per iteration), final implementation in main output directory"
+            )
+        else:
+            print("NORMAL: Only final implementation files saved")
+
+        generate_csv_results(config, results)
+
+        successful = [r for r in results if r.success]
+        failed = [r for r in results if not r.success and not r.has_bypass]
+        bypassed = [r for r in results if r.has_bypass]
+        success_percentage = len(successful) / len(results) * 100 if results else 0
+
+        print(
+            f"\n🎉 Processing completed: {len(successful)}/{len(results)} files successful ({success_percentage:.1f}%)"
+        )
+        print(
+            f"⚡ Parallel processing with {config.max_workers} workers completed in {processing_time:.2f}s"
+        )
+
+        token_stats = get_global_token_stats()
+        print(
+            f"📊 Token Usage: {token_stats['input_tokens']:,} input + {token_stats['output_tokens']:,} output = {token_stats['input_tokens'] + token_stats['output_tokens']:,} total tokens ({token_stats['total_calls']} calls)"
+        )
+
+        if wandb_run:
+            try:
+                log_experiment_results_to_wandb(
+                    config, results, processing_time, success_percentage, args
+                )
+                print(f"\n✅ Wandb run completed: {wandb_run.url}")
+            except Exception as wandb_log_error:  # pylint: disable=broad-except
+                print(f"⚠️  Error logging to wandb: {wandb_log_error}")
+    finally:
+        if lean_mcp_manager is not None:
+            try:
+                lean_mcp_manager.close()
+            except Exception as close_error:  # pylint: disable=broad-except
+                print(f"⚠️  Failed to close Lean MCP manager cleanly: {close_error}")
 
 
 if __name__ == "__main__":
