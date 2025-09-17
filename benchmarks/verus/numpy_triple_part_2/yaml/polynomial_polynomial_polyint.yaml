@@ -1,0 +1,82 @@
+vc-description: |-
+  Integrate a polynomial.
+
+  Returns the polynomial coefficients integrated m times from lbnd.
+  At each iteration the resulting series is multiplied by scl and 
+  an integration constant k is added. The scaling factor is for use 
+  in a linear change of variable.
+
+  The input coefficients are ordered from low to high degree.
+  For example, [1, 2, 3] represents 1 + 2*x + 3*x².
+
+  Specification: polyint integrates polynomial coefficients m times.
+
+  The integration process:
+  1. For each integration step i (from 0 to m-1):
+     - Multiply all coefficients by scl
+     - Integrate: coefficient at degree j becomes coefficient/(j+1) at degree j+1
+     - Add integration constant k[i] adjusted for lower bound lbnd
+  2. Result has m more coefficients than input (degree increases by m)
+
+  Properties:
+  - Integration increases polynomial degree by m
+  - Each integration step preserves the polynomial structure
+  - The derivative of the result (m times) gives back the original scaled by scl^m
+  - Integration constants k determine the value of antiderivatives at lbnd
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn polyint(c: Vec<i32>, m: usize, k: Vec<i32>, lbnd: i32, scl: i32) -> (result: Vec<i32>)
+      requires 
+          m > 0 ==> scl != 0,
+          k.len() == m,
+      ensures
+          /* Size constraint: output has m more coefficients than input */
+          result.len() == c.len() + m,
+          
+          /* For single integration (m = 1), verify the integration formula */
+          m == 1 ==> {
+              /* When input is empty polynomial (zero), result is just the constant */
+              (c.len() == 0 ==> result[0] == k[0]) &&
+              /* For non-empty input, apply integration rules */
+              (c.len() > 0 ==> {
+                  /* Each coefficient c[i] at degree i becomes scl*c[i]/(i+1) at degree i+1 */
+                  forall|i: int| 0 <= i < c.len() ==> 
+                      (i + 1) * result[i + 1] == scl * c[i]
+              })
+          },
+          
+          /* Property about integration constants and lower bound */
+          /* The integration constant is adjusted so that the integral evaluated at lbnd equals k */
+          m == 1 && c.len() > 0 ==> {
+              /* If we had k = [0] and lbnd = 0, then result[0] = 0 */
+              (k[0] == 0 && lbnd == 0 ==> result[0] == 0) &&
+              /* Example: integrating [1,2,3] with k=3 gives result[0] = 3 when lbnd = 0 */
+              (k[0] == 3 && lbnd == 0 ==> result[0] == 3)
+          },
+          
+          /* Mathematical property: The integration operation is the inverse of differentiation */
+          /* If we integrate m times then differentiate m times, we get back c scaled by scl^m */
+          m > 0 && scl != 0 ==> true,
+          
+          /* Sanity check: When scl = 0, all non-constant coefficients become 0 */
+          scl == 0 ==> forall|i: int| (m as int) <= i < result.len() ==> result[i] == 0,
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      unreached()
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {}

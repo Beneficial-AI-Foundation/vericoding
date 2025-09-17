@@ -1,0 +1,29 @@
+vc-description: |-
+  Compute the absolute values element-wise for floating-point numbers
+  
+  Specification: fabs computes the absolute value of each element
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn fabs(x: Vec<f32>) -> (result: Vec<f32>)
+      ensures
+          result.len() == x.len()
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      unreached()
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {}

@@ -1,0 +1,48 @@
+vc-description: |-
+  Compute the median along the specified axis.
+  
+  Compute the median of a vector.
+  For odd-length vectors, returns the middle value of the sorted array.
+  For even-length vectors, returns the average of the two middle values.
+  
+  Specification: median returns the middle value(s) of a sorted vector.
+  - For odd length (n+1), the median is the middle element when sorted
+  - For even length (n+1), the median is the average of the two middle elements when sorted
+  - The median divides the data such that approximately half the values are ≤ it,
+    and approximately half are ≥ it
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  spec fn is_sorted(a: Seq<i32>) -> bool {
+      forall|i: int, j: int| 0 <= i < j < a.len() ==> a[i] <= a[j]
+  }
+
+  fn median(a: Vec<i32>) -> (result: i32)
+      requires a.len() > 0,
+      ensures 
+          exists|sorted: Seq<i32>| #[trigger] sorted.len() == a.len() &&
+              is_sorted(sorted) &&
+              (if a.len() % 2 == 1 {
+                  result == sorted[((a.len() - 1) / 2) as int]
+              } else {
+                  result == (sorted[(a.len() / 2 - 1) as int] + sorted[(a.len() / 2) as int]) / 2
+              })
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      0
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {}
