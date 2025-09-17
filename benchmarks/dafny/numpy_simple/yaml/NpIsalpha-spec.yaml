@@ -1,0 +1,29 @@
+vc-description: |-
+  Checks if all strings in a vector contain only alphabetic characters (A-Z, a-z).
+
+vc-preamble: |-
+  predicate IsAlphaChar(c: char)
+  {
+      ('A' <= c <= 'Z') || ('a' <= c <= 'z')
+  }
+
+  predicate StringIsAlpha(s: seq<char>)
+  {
+      |s| > 0 && forall i :: 0 <= i < |s| ==> IsAlphaChar(s[i])
+  }
+
+vc-helpers: |-
+
+vc-spec: |-
+  method IsAlpha(input: array<string>) returns (ret: array<bool>)
+      ensures
+          ret.Length == input.Length &&
+          forall i :: 0 <= i < input.Length ==> 
+              ret[i] == StringIsAlpha(input[i])
+
+vc-code: |-
+  {
+      assume {:axiom} false;
+  }
+
+vc-postamble: |-
