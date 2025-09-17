@@ -9,7 +9,7 @@ terraform {
 }
 
 provider "aws" {
-  region = "eu-west-2"
+  region = "eu-west-1"
 }
 
 # VPC and networking
@@ -143,7 +143,7 @@ resource "aws_iam_role_policy" "batch_job_ssm_policy" {
           "ssm:GetParametersByPath"
         ]
         Resource = [
-          "arn:aws:ssm:eu-west-2:${data.aws_caller_identity.current.account_id}:parameter/vericoding/*"
+          "arn:aws:ssm:eu-west-1:${data.aws_caller_identity.current.account_id}:parameter/vericoding/*"
         ]
       },
       {
@@ -154,7 +154,7 @@ resource "aws_iam_role_policy" "batch_job_ssm_policy" {
           "logs:CreateLogGroup"
         ]
         Resource = [
-          "arn:aws:logs:eu-west-2:${data.aws_caller_identity.current.account_id}:log-group:/aws/batch/job*"
+          "arn:aws:logs:eu-west-1:${data.aws_caller_identity.current.account_id}:log-group:/aws/batch/job*"
         ]
       }
     ]
@@ -197,16 +197,13 @@ resource "aws_batch_compute_environment" "vericoding_compute_env" {
   service_role            = aws_iam_role.batch_service_role.arn
   
   compute_resources {
-    type                = "SPOT"
-    allocation_strategy = "SPOT_CAPACITY_OPTIMIZED"
+    type                = "EC2"
     
     min_vcpus     = 0    # Scale to 0 when idle
-    max_vcpus     = 160   # 20 machines * 8 vCPUs each  
+    max_vcpus     = 80    # 20 machines * 4 vCPUs each  
     desired_vcpus = 0    # Target 0 instances when idle
     
-    instance_type = ["c8g.2xlarge"]
-    
-    bid_percentage = 100  # 100% of on-demand price
+    instance_type = ["m8g.xlarge"]
     
     
     instance_role = aws_iam_instance_profile.batch_instance_profile.arn
@@ -245,8 +242,8 @@ resource "aws_batch_job_definition" "lean_verification" {
   
   container_properties = jsonencode({
     image = "ubuntu:22.04"
-    vcpus = 8
-    memory = 15360  # 15GB (leave 1GB for system)
+    vcpus = 4
+    memory = 7680   # 7.5GB (leave 0.5GB for system)
     
     jobRoleArn = aws_iam_role.batch_job_role.arn
     executionRoleArn = aws_iam_role.batch_job_role.arn
@@ -265,15 +262,15 @@ resource "aws_batch_job_definition" "lean_verification" {
     secrets = [
       {
         name      = "WANDB_API_KEY"
-        valueFrom = "arn:aws:ssm:eu-west-2:${data.aws_caller_identity.current.account_id}:parameter/vericoding/wandb-api-key"
+        valueFrom = "arn:aws:ssm:eu-west-1:${data.aws_caller_identity.current.account_id}:parameter/vericoding/wandb-api-key"
       },
       {
         name      = "OPENROUTER_API_KEY" 
-        valueFrom = "arn:aws:ssm:eu-west-2:${data.aws_caller_identity.current.account_id}:parameter/vericoding/openrouter-api-key"
+        valueFrom = "arn:aws:ssm:eu-west-1:${data.aws_caller_identity.current.account_id}:parameter/vericoding/openrouter-api-key"
       },
       {
         name      = "FAKE_API_KEY"
-        valueFrom = "arn:aws:ssm:eu-west-2:${data.aws_caller_identity.current.account_id}:parameter/vericoding/fake-api-key"
+        valueFrom = "arn:aws:ssm:eu-west-1:${data.aws_caller_identity.current.account_id}:parameter/vericoding/fake-api-key"
       }
     ]
     
@@ -284,7 +281,7 @@ resource "aws_batch_job_definition" "lean_verification" {
       logDriver = "awslogs"
       options = {
         awslogs-group         = "/aws/batch/job"
-        awslogs-region        = "eu-west-2"
+        awslogs-region        = "eu-west-1"
         awslogs-stream-prefix = "lean-verification"
       }
     }
