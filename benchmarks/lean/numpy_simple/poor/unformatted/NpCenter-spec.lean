@@ -1,4 +1,3 @@
-namespace NpCenter
 
 def center {n : Nat} (input : Vector String n) (width : Nat) : Vector String n := sorry
 
@@ -11,5 +10,3 @@ theorem center_spec {n : Nat} (input : Vector String n) (width : Nat)
     let startPos := (width - input[i].length + 1) / 2
     let endPos := startPos + input[i].length - 1
     res[i].toList.drop startPos |>.take input[i].length = input[i].toList else True) := sorry
-
-end NpCenter

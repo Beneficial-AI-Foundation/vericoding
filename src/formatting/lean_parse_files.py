@@ -396,18 +396,40 @@ def remove_strings_from_file(file_path: str, strings_to_remove: List[str], outpu
     processed_lines = []
     for line in lines:
         # Strip whitespace from the line
-        stripped_line = line.strip()
+        stripped_line = line.rstrip()
         
         # Remove each string from the stripped line
         should_remove = False
-        for string_to_remove in strings_to_remove:
-            if string_to_remove in stripped_line:
-                if stripped_line != string_to_remove:
-                    raise ValueError(f"String '{string_to_remove}' found but it is not the whole line")
-                else:
-                    should_remove = True
-                    print(f"Found string '{string_to_remove}' in {file_path}")
-                    break
+        for relation, string, action in strings_to_remove:
+            if relation == "startswith":
+                if stripped_line.startswith(string):
+                    if action == "delete":
+                        should_remove = True
+                        break
+                    elif action == "error":
+                        raise ValueError(f"Line {relation} '{string}' ({action}) in {file_path}")
+                    else:
+                        raise ValueError(f"Invalid action '{action}' for {relation} in {file_path}")
+            elif relation == "contains":
+                if string in stripped_line:
+                    if action == "delete":
+                        should_remove = True
+                        break
+                    elif action == "error":
+                        raise ValueError(f"Line {relation} '{string}' ({action}) in {file_path}")
+                    else:
+                        raise ValueError(f"Invalid action '{action}' for {relation} in {file_path}")
+            elif relation == "equals":
+                if stripped_line == string:
+                    if action == "delete":
+                        should_remove = True
+                        break
+                    elif action == "error":
+                        raise ValueError(f"Line {relation} '{string}' ({action}) in {file_path}")
+                    else:
+                        raise ValueError(f"Invalid action '{action}' for {relation} in {file_path}")
+            else:
+                raise ValueError(f"Invalid relation '{relation}' for {string} in {file_path}")
 
         if not should_remove:
             processed_lines.append(stripped_line)
@@ -473,10 +495,11 @@ def main():
     
     # lines to remove from every file before parsing
     strings_to_remove = [
-        "namespace DafnyBenchmarks",
-        "end DafnyBenchmarks",
-        "import Std",
-        "open Std.Do"
+        ("startswith", "namespace", "delete"),
+        ("startswith", "end", "delete"),
+        ("equals", "import Std", "delete"),
+        ("equals", "open Std.Do", "delete"),
+        ("contains", "namespace", "error"),
     ]
 
     wrong_format_files = []
@@ -485,7 +508,7 @@ def main():
     for file_path in sorted(lean_files):
 
         # print(f"Searching for unnecessary lines...\n")
-        remove_strings_from_file(file_path, strings_to_remove, None)
+        remove_strings_from_file(file_path, strings_to_remove, file_path)
 
         status, parsing_results = parse_lean_file(file_path)
 

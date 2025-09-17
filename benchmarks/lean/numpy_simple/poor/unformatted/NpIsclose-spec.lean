@@ -1,4 +1,3 @@
-namespace NpIsclose
 
 def np_isclose {n : Nat} (a b : Vector Int n) (tol : Int) : Vector Bool n := sorry
 
@@ -8,5 +7,3 @@ theorem np_isclose_spec {n : Nat} (a b : Vector Int n) (tol : Int)
   let ret := np_isclose a b tol
   (ret.toList.length = n) ∧
   (∀ i : Fin n, if -tol < a[i] - b[i] ∧ a[i] - b[i] < tol then ret[i] = true else ret[i] = false) := sorry
-
-end NpIsclose
