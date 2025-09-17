@@ -52,7 +52,13 @@ elan --help
 
 # Get Lean cache
 echo "Getting Lean cache..."
-lake exe cache get
+if lake exe cache get; then
+    echo "Cache downloaded successfully!"
+else
+    echo "Cache download failed, falling back to clean build..."
+    lake clean
+    lake build benchmarks/lean/clever/files/clever_0.lean
+fi
 
 # Notify completion
 echo "Setup complete on $(hostname) for branch $BRANCH"
