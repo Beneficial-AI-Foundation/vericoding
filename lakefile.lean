@@ -42,10 +42,9 @@ lean_lib Generated where
 lean_lib Benchmarks where
   globs := #[
     .submodules `fvapps.files,
-    .submodules `dafnybench.poor.unformatted,
-    .submodules `clever.files,
     .submodules `dafnybench.files,
-    .submodules `numpy_simple.poor.unformatted,
+    .submodules `clever.files,
+    .submodules `numpy_simple.files,
     .submodules `numpy_triple.files,
     .submodules `verina.files,
     -- Include all subdirectories (including vericoder_* dirs)
@@ -64,9 +63,9 @@ lean_lib Benchmarks where
 lean_lib BenchmarksCheckedInCI where
   globs := #[
     .submodules `fvapps.files,
-    .submodules `dafnybench.poor.unformatted,
+    .submodules `dafnybench.files,
     .submodules `clever.files,
-    .submodules `numpy_simple.poor.unformatted,
+    .submodules `numpy_simple.files,
     .submodules `numpy_triple.files,
     .submodules `verina.files,
   ]
