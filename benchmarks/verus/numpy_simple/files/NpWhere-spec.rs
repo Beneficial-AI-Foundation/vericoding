@@ -1,0 +1,42 @@
+// <vc-preamble>
+use vstd::prelude::*;
+
+verus! {
+// </vc-preamble>
+
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
+fn where_fn(condition: Vec<bool>, x: Vec<i32>, y: Vec<i32>) -> (result: Vec<i32>)
+    requires 
+        condition.len() == x.len(),
+        x.len() == y.len(),
+    ensures 
+        result.len() == condition.len(),
+        forall|i: int| 0 <= i < result.len() ==> 
+            result[i] == if condition[i] { x[i] } else { y[i] }
+{
+    // impl-start
+    assume(false);
+    unreached()
+    // impl-end
+}
+
+fn where_with_transform(arr: Vec<i32>) -> (result: Vec<i32>)
+    requires arr.len() >= 0,
+    ensures 
+        result.len() == arr.len()
+{
+    // impl-start
+    assume(false);
+    unreached()
+    // impl-end
+}
+// </vc-spec>
+// <vc-code>
+// </vc-code>
+
+
+}
+fn main() {}

@@ -1,0 +1,35 @@
+vc-description: |-
+  Element-wise floor division of two vectors where the divisor vector has no zero elements.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  spec fn is_non_zero_vector(v: Seq<i32>) -> bool {
+      forall|i: int| 0 <= i < v.len() ==> v[i] != 0
+  }
+
+  fn floor_divide(a: Vec<i32>, b: Vec<i32>) -> (result: Vec<i32>)
+      requires 
+          a.len() == b.len(),
+          is_non_zero_vector(b@),
+      ensures
+          result.len() == a.len(),
+          forall|i: int| 0 <= i < result.len() ==> result[i] == a[i] / b[i],
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      unreached()
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {}

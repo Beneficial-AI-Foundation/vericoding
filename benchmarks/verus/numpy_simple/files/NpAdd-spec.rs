@@ -1,0 +1,28 @@
+// <vc-preamble>
+use vstd::prelude::*;
+
+verus! {
+// </vc-preamble>
+
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
+fn add(a: Vec<i32>, b: Vec<i32>) -> (result: Vec<i32>)
+    requires a.len() == b.len(),
+    ensures 
+        result.len() == a.len(),
+        forall|i: int| 0 <= i < result.len() ==> result[i] == a[i] + b[i]
+// </vc-spec>
+// <vc-code>
+{
+    // impl-start
+    assume(false);
+    unreached()
+    // impl-end
+}
+// </vc-code>
+
+
+}
+fn main() {}

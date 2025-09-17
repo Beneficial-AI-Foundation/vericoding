@@ -1,0 +1,26 @@
+vc-description: |-
+  Computes the polynomial derivative of order m for a given polynomial represented as a vector of coefficients.
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+vc-helpers: |-
+
+vc-spec: |-
+  fn polyder(poly: Vec<f32>, m: i32) -> (result: Vec<f32>)
+      requires 
+          m > 0,
+          m <= poly.len() as i32,
+      ensures 
+          result.len() == poly.len() - (m as usize),
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      unreached()
+      // impl-end
+  }
+vc-postamble: |-
+
+  }
+  fn main() {}
