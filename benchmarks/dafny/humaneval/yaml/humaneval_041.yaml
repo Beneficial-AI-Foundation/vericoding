@@ -1,0 +1,33 @@
+vc-description: |-
+  Given n cars moving left-to-right and n cars moving right-to-left on a straight infinite road, all at the same speed, calculate the total number of collisions. Cars pass through each other when they collide and continue moving. Each left-moving car will collide with each right-moving car exactly once, resulting in n * n total collisions.
+
+vc-preamble: |-
+  predicate ValidInput(n: int)
+  {
+      n >= 0
+  }
+  
+  function CollisionCount(n: int): int
+      requires ValidInput(n)
+  {
+      n * n
+  }
+  
+  predicate ValidResult(n: int, result: int)
+      requires ValidInput(n)
+  {
+      result == CollisionCount(n) && result >= 0
+  }
+
+vc-helpers: |-
+
+vc-spec: |-
+  method car_race_collision(n: int) returns (result: int)
+      requires ValidInput(n)
+      ensures ValidResult(n, result)
+
+vc-code: |-
+  {
+      assume {:axiom} false;
+    }
+vc-postamble: |-
