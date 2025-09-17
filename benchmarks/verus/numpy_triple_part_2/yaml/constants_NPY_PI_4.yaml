@@ -1,0 +1,45 @@
+vc-description: |-
+  NPY_PI_4: Mathematical constant representing π/4.
+
+  This constant provides the value of pi divided by 4, which is commonly used in
+  trigonometric calculations, particularly for 45-degree angle computations.
+
+  Value: π/4 ≈ 0.785398163397448309615660845819875721
+
+  Specification: NPY_PI_4 returns the mathematical constant π/4.
+
+  Precondition: True (no preconditions for accessing a constant)
+  Postcondition: The result equals π/4, which is approximately 0.7853981633974483
+
+  Mathematical properties:
+  - NPY_PI_4 = π/4
+  - NPY_PI_4 = arctan(1)  
+  - sin(NPY_PI_4) = cos(NPY_PI_4) = √2/2
+  - tan(NPY_PI_4) = 1
+  - 4 * NPY_PI_4 = π
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  const NPY_PI_4_EXACT: f64 = 0.785398163397448309615660845819875721;
+
+  fn npy_pi_4() -> (result: f64)
+      ensures result == NPY_PI_4_EXACT
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      unreached()
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {}

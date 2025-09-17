@@ -1,0 +1,47 @@
+vc-description: |-
+  numpy.strings.rindex - String information
+  Like rfind, but raises ValueError when the substring is not found
+  
+  For each element, return the highest index in the string where substring is found.
+  Unlike rfind, this function requires that the substring be found in each string,
+  ensuring all results are non-negative indices.
+  
+  Specification: rindex returns the highest index where substring is found within range.
+  The key difference from rfind is that rindex has a stronger precondition:
+  the substring must exist in each string within the specified range.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn rindex(a: Vec<String>, sub: Vec<String>, start: Vec<usize>, end_pos: Vec<usize>) -> (result: Vec<usize>)
+      requires 
+          a.len() == sub.len() && sub.len() == start.len() && start.len() == end_pos.len(),
+          forall|i: int| 0 <= i < a.len() ==> {
+              start[i] <= end_pos[i] &&
+              end_pos[i] <= 1000 &&
+              start[i] <= end_pos[i]
+          },
+      ensures
+          result.len() == a.len(),
+          forall|i: int| 0 <= i < result.len() ==> {
+              start[i] <= result[i] && 
+              result[i] <= end_pos[i]
+          }
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      unreached()
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {}

@@ -1,0 +1,63 @@
+vc-description: |-
+  Element-wise maximum of array elements.
+
+  Compare two arrays and returns a new array containing the element-wise maxima. If one of the elements being compared is a NaN, then the non-nan element is returned.
+
+  Element-wise maximum of two vectors, with special NaN handling.
+  If one element is NaN, returns the non-NaN element.
+
+  Specification: fmax returns element-wise maximum with NaN handling.
+  For each position i:
+  - If both elements are non-NaN, returns the maximum
+  - If x[i] is NaN and y[i] is not, returns y[i]  
+  - If y[i] is NaN and x[i] is not, returns x[i]
+  - If both are NaN, returns NaN
+  Additional mathematical properties:
+  - Commutative when both values are non-NaN
+  - Associative when all values are non-NaN
+  - Idempotent when values are non-NaN
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+  spec fn is_nan(f: f32) -> bool;
+
+  spec fn float_max(x: f32, y: f32) -> f32;
+
+vc-helpers: |
+
+vc-spec: |-
+  fn fmax(x: Vec<f32>, y: Vec<f32>) -> (result: Vec<f32>)
+      requires x.len() == y.len(),
+      ensures 
+          result.len() == x.len(),
+          forall|i: int| 0 <= i < result.len() ==> {
+              /* Core NaN handling behavior */
+              (!is_nan(x[i]) && !is_nan(y[i])) ==> 
+                  (result[i] == float_max(x[i], y[i])) &&
+              (is_nan(x[i]) && !is_nan(y[i])) ==> 
+                  (result[i] == y[i]) &&
+              (!is_nan(x[i]) && is_nan(y[i])) ==> 
+                  (result[i] == x[i]) &&
+              (is_nan(x[i]) && is_nan(y[i])) ==> 
+                  is_nan(result[i]) &&
+              /* Mathematical properties for non-NaN cases */
+              (!is_nan(x[i]) && !is_nan(y[i])) ==> 
+                  (result[i] == x[i] || result[i] == y[i]) &&
+              /* NaN preservation: result is NaN iff both inputs are NaN */
+              is_nan(result[i]) <==> (is_nan(x[i]) && is_nan(y[i]))
+          }
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      unreached()
+      // impl-end
+  }
+
+vc-postamble: |2-
+
+  }
+  fn main() {}

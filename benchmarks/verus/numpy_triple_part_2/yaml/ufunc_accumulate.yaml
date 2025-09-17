@@ -1,0 +1,34 @@
+vc-description: |-
+  Universal function accumulate method: Accumulate the result of applying a binary operator
+  to all elements in a vector.
+  
+  For a binary operation `op` and input vector [a₁, a₂, a₃, ..., aₙ], returns:
+  [a₁, op(a₁, a₂), op(op(a₁, a₂), a₃), ..., op(op(...op(a₁, a₂), a₃), ..., aₙ)]
+  
+  This generalizes cumulative operations:
+  - When op = (+), this becomes cumsum: [a₁, a₁+a₂, a₁+a₂+a₃, ...]
+  - When op = (*), this becomes cumprod: [a₁, a₁*a₂, a₁*a₂*a₃, ...]
+  
+  The result has the same shape as the input array.
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+vc-helpers: |-
+
+vc-spec: |-
+  fn accumulate(a: Vec<f64>) -> (result: Vec<f64>)
+      ensures
+          result.len() == a.len(),
+          a.len() > 0 ==> result[0] == a[0],
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      unreached()
+      // impl-end
+  }
+vc-postamble: |-
+
+  }
+  fn main() {}
