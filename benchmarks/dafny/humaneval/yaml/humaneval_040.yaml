@@ -1,0 +1,21 @@
+vc-description: |-
+  This verification task involves implementing a method to determine if there exist three distinct elements at different positions in a list of integers that sum to zero. The implementation should exhaustively check all possible combinations of three indices and return true if any triple sums to zero.
+
+vc-preamble: |-
+  
+  predicate HasTripleSumToZero(l: seq<int>)
+  {
+      exists i, j, k :: 0 <= i < j < k < |l| && l[i] + l[j] + l[k] == 0
+  }
+
+vc-helpers: |-
+
+vc-spec: |-
+  method triples_sum_to_zero(l: seq<int>) returns (result: bool)
+      ensures result == HasTripleSumToZero(l)
+
+vc-code: |-
+  {
+      assume {:axiom} false;
+    }
+vc-postamble: |-

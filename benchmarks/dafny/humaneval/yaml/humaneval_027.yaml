@@ -1,0 +1,35 @@
+vc-description: |-
+  This verification task involves implementing a string case-flipping function that converts all lowercase letters to uppercase and all uppercase letters to lowercase, while leaving non-alphabetic characters unchanged. The implementation should process each character in the input string and return a new string with the appropriate case transformations.
+
+vc-preamble: |-
+  
+  predicate IsLowercase(c: char) {
+      'a' <= c <= 'z'
+  }
+  
+  predicate IsUppercase(c: char) {
+      'A' <= c <= 'Z'
+  }
+  
+  function FlipChar(c: char): char {
+      if IsLowercase(c) then c - 'a' + 'A'
+      else if IsUppercase(c) then c - 'A' + 'a'
+      else c
+  }
+  
+  predicate ValidFlipCase(s: string, result: string) {
+      |result| == |s| &&
+      forall i :: 0 <= i < |s| ==> result[i] == FlipChar(s[i])
+  }
+
+vc-helpers: |-
+
+vc-spec: |-
+  method flip_case(s: string) returns (result: string)
+      ensures ValidFlipCase(s, result)
+
+vc-code: |-
+  {
+      assume {:axiom} false;
+    }
+vc-postamble: |-

@@ -1,0 +1,31 @@
+vc-description: |-
+  This task involves determining if a string is "happy". A string is considered happy if it has a length of at least 3 characters and in every substring of 3 consecutive characters, all characters are distinct (no duplicates). The implementation should efficiently check this condition and return the appropriate boolean result.
+
+vc-preamble: |-
+  
+  predicate ValidLength(s: string)
+  {
+      |s| >= 3
+  }
+  
+  predicate AllWindowsDistinct(s: string)
+  {
+      forall i {:trigger s[i]} :: 0 <= i <= |s| - 3 ==> s[i] != s[i+1] && s[i] != s[i+2] && s[i+1] != s[i+2]
+  }
+  
+  predicate IsHappy(s: string)
+  {
+      ValidLength(s) && AllWindowsDistinct(s)
+  }
+
+vc-helpers: |-
+
+vc-spec: |-
+  method is_happy(s: string) returns (result: bool)
+      ensures result == IsHappy(s)
+
+vc-code: |-
+  {
+      assume {:axiom} false;
+    }
+vc-postamble: |-
