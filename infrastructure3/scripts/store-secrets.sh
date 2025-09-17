@@ -3,7 +3,7 @@
 # Script to store API keys in AWS Systems Manager Parameter Store
 set -euo pipefail
 
-AWS_REGION="${AWS_REGION:-eu-west-1}"
+AWS_REGION="${AWS_REGION:-us-east-1}"
 
 echo "Storing API keys in AWS Systems Manager Parameter Store..."
 echo "Region: $AWS_REGION"
