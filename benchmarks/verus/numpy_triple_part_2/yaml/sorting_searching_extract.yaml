@@ -1,0 +1,38 @@
+vc-description: |-
+  Return the elements of an array that satisfy some condition.
+  The result size is the number of True entries in the condition array.
+  
+  Specification: extract returns elements from arr where condition is True.
+  The result contains exactly those elements from arr at positions where condition is True,
+  preserving their original order. The result size m equals the number of True values in condition.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn extract(condition: &Vec<bool>, arr: &Vec<i32>) -> (result: Vec<i32>)
+      requires condition.len() == arr.len(),
+      ensures
+          /* Each element in result comes from arr at a position where condition is true */
+          forall|k: int| 0 <= k < result.len() ==>
+              exists|i: int| 0 <= i < arr.len() && condition[i] == true && #[trigger] result[k] == arr[i],
+          /* Every True position in condition contributes exactly one element to the result */
+          forall|i: int| 0 <= i < condition.len() && condition[i] == true ==>
+              exists|k: int| 0 <= k < result.len() && #[trigger] result[k] == arr[i],
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      unreached()
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {}
