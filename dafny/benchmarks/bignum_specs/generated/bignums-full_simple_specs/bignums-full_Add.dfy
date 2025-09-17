@@ -13,7 +13,7 @@
 //
 // All methods come with specifications ensuring they do what they claim, and we prove correctness using Dafny's function specifications (`ensures`) by comparing the result against the reference functions `Str2Int` and `Int2Str`.
 
-// Theo note: To check that Add/Sub/Mul only use Int2Str and Str2Int for verification:
+// note: To check that Add/Sub/Mul only use Int2Str and Str2Int for verification:
 // 1. Change Int2Str, OStr2Int, and Str2Int to `ghost function`
 // 2. Delete Main (because it uses Int2Str/Str2Int in executable code, so now won't verify)
 // 3. The rest of the code will still verify

@@ -43,12 +43,8 @@ fn argmax(a: &Vec<i32>, start: usize) -> (res: (usize, i32))
         forall|i: int| start <= i < a.len() ==> a[i] <= res.1,
     decreases a.len() - start
 {
-    if start == a.len() - 1 {
-        (start, a[start])
-    } else {
-        let (i, v) = argmax(a, start + 1);
-        if a[start] >= v { (start, a[start]) } else { (i, v) }
-    }
+    assume(false);
+    unreached()
 }
 
 spec fn inbound_radius(s_prime: Seq<char>, c: int, r: int) -> bool

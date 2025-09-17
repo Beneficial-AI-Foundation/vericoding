@@ -43,17 +43,26 @@ no goals
 #### 3. `lean_term_goal`
 Get the expected type (term goal) at a specific location.
 
-#### 4. `lean_hover_info`
-Get hover information (documentation) for symbols at a specific location. Easy way to get types.
+- `lean_hover_info`: Retrieve hover information (documentation) for symbols, terms, and expressions in a Lean file (at a specific line & column).
 
-#### 5. `lean_completions`
-Code auto-completion for available identifiers or imports.
+Example output (hover info on a `sorry`):
+
+```text
+The `sorry` tactic is a temporary placeholder for an incomplete tactic proof,
+closing the main goal using `exact sorry`.
+
+This is intended for stubbing-out incomplete parts of a proof while still having a syntactically correct proof skeleton.
+Lean will give a warning whenever a proof uses sorry, so you aren't likely to miss it,
+but you can double check if a theorem depends on sorry by looking for sorryAx in the output
+of the #print axioms my_thm command, the axiom used by the implementation of sorry.
+```
+
+`lean_completions`: Code auto-completion: Find available identifiers or import suggestions at a specific position (line & column) in a Lean file. Use this to fill in program fragments.
 
 #### 6. `lean_multi_attempt`
 Try multiple Lean code snippets at a line and return goal state and diagnostics for each.
 
-#### 7. `lean_declaration_file`
-Get file contents where a symbol is declared.
+- `lean_declaration_file`: Get the file contents where a symbol or term is declared. Use this to find the definition of a symbol.
 
 #### 8. Search Tools:
 - `lean_leansearch`: Natural language and Lean term search (limit: 3req/30s)
@@ -114,19 +123,23 @@ Uses Weights & Biases (wandb) for tracking verification experiments, failure ana
 
 ## Additional Guidelines
 
-- Use `rg` and `fd` instead of grep/find
-- Make atomic commits and use branches liberally
+- Use `rg` and `fd` instead of grep/find. Search in `.lake` for the source code, it's a reliable way to find source of truth.
+
 
 ## Development Strategies
 
 ### Lean 4 Development Approach
 
 - Read the reference manual assiduously. Ultrathink.
-- Figure out the parser by interactively building up toy components.
 - Spam `lake build` to verify the pieces work and build up FUNCTORIALLY.
-- Use compiler tooling like extensible error messages, `simproc` (pattern guided reductions), and metaprogramming for pit of success
-- If you solve a hard problem, write a tactic or simproc to pave the way
+- Use compiler tooling like extensible error messages, `grind`, `simproc` (pattern guided reductions), and metaprogramming to build a pit of success.
+- If you solve a hard problem, write down what you did somehow.
 - Try harder to index without `!` or `?` - name `match`/`if` branches for better inference
+
+```lean
+example := if h : 2 = 2 then 3 else 4 -- names `h` as `Prop` that `2 = 2`
+```
+
 - Raw string syntax: `r#".."#`, multiline strings use `\` continuation
 - Use `lakefile.lean` over `lakefile.toml` for better AI introspection and metaprogramming
 - Incorporate positive surprises into memories - stay curious!
@@ -138,61 +151,15 @@ Uses Weights & Biases (wandb) for tracking verification experiments, failure ana
 - Category theory wiring diagram style for complex systems
 - Apply the scientific method for debugging
 
-
 ## Important Lean Documentation Resources
 
 When working with Lean 4, consult these authoritative sources:
 
-- **Lean 4 Official Documentation**: <https://lean-lang.org/lean4/doc> - The formal Lean documentation covering language features, tactics, and standard library
-- **Mathlib Manual**: <https://leanprover-community.github.io/mathlib-manual/html-multi/Guides/> - Comprehensive guide to mathlib conventions, tactics, and best practices
 - **Lean Language Reference**: <https://lean-lang.org/doc/reference/latest/> - The definitive Lean language reference for syntax and semantics
 
+- **Mathlib Manual**: <https://leanprover-community.github.io/mathlib-manual/html-multi/Guides/> - Comprehensive guide to mathlib conventions, tactics, and best practices.
 
 
-## Development Tools and Workflow
-
-
-### Version Control
-
-**Jujutsu (jj) Setup for GitHub-friendly Development:**
-
-- Use `jj git init --colocate` for existing git repos (recommended for this project)
-- Colocated repos automatically sync jj and git on every command
-- Enables mixing `jj` and `git` commands seamlessly
-- Tools expecting `.git` directory continue to work
-
-**Essential jj configuration:**
-
-```bash
-jj config edit --user
-```
-
-Add these settings:
-
-```toml
-[git]
-auto-local-bookmark = true  # Import all remote bookmarks automatically
-
-[snapshot]  
-auto-update-stale = true    # Auto-update stale working copies when switching contexts
-```
-
-
-
-**Key workflow improvements over git:**
-
-- Anonymous branches - no need to name every small change
-- Better conflict resolution and interactive rebase
-- `jj absorb` automatically squashes changes into relevant ancestor commits
-- `jj undo` and `jj op restore` for powerful history manipulation
-- Empty commit on top by default (enables easier experimentation)
-
-**GitHub integration commands:**
-
-- `jj git fetch` + `jj rebase -d main` (replaces `git pull`)
-- `jj bookmark create <name>` for named branches
-- SSH keys recommended for GitHub (as of Oct 2023)
-- Support for both "add commits" and "rewrite commits" review workflows
 
 ## Common Lean Pitfalls
 
@@ -247,7 +214,8 @@ someCtx : Nat := 2
 -/
 def a : Nat :=
   let someCtx := 2
-  ?probablyZero
+  let probablyZero := ?probablyZero
+  ?probablyZero -- uses the hole in 2 places
 
 /--
 declaration uses 'sorry'
@@ -267,3 +235,30 @@ def a'' : Nat :=
   let someCtx := 2
   _
 ```
+
+
+## Tips for working across iterations
+
+Use named holes as Schelling points for agents to coordinate across iterations. Good names help other agents fill in the holes.
+
+You can use guillemets with holes to create "natural language" holes.
+
+```lean
+/--
+don't know how to synthesize placeholder
+context:
+someCtx : Nat := ⋯
+⊢ Nat
+-/
+def a'' : Nat :=
+  let someCtx := 2
+  ?«a whole sentence»
+```
+
+## Tactic coding
+
+### `grind`
+
+`grind` is Lean's new equivalent of a hammer. See <https://lean-lang.org/doc/reference/latest/The--grind--tactic> for how to configure it. It takes some steps, but it's worth it. `unfold` + `grind` should be a good starting point for proofs.
+
+`grind` is on par with `simp`.
