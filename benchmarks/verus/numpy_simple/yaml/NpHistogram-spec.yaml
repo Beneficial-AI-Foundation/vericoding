@@ -1,0 +1,38 @@
+vc-description: |-
+  Computes a histogram of floating-point data given bin boundaries.
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+vc-helpers: |-
+
+vc-spec: |-
+  fn histogram(data: Vec<f32>, bins: Vec<f32>) -> (result: Vec<i32>)
+      requires 
+          bins.len() >= 2,
+      ensures
+          result.len() == bins.len() - 1,
+  {
+      // impl-start
+      assume(false);
+      unreached()
+      // impl-end
+  }
+
+  fn histogram_helper(data: Vec<f32>, bins: Vec<f32>, hist: Vec<i32>, index: i32) -> (result: Vec<i32>)
+      requires 
+          bins.len() >= 2,
+          hist.len() == bins.len() - 1,
+      ensures
+          result.len() == bins.len() - 1,
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      unreached()
+      // impl-end
+  }
+vc-postamble: |-
+
+  }
+  fn main() {}

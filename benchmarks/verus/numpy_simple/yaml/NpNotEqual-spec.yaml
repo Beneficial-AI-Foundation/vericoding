@@ -1,0 +1,28 @@
+vc-description: |-
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn not_equal(a: Vec<i32>, b: Vec<i32>) -> (result: Vec<bool>)
+      requires a.len() == b.len(),
+      ensures 
+          result.len() == a.len(),
+          forall|i: int| 0 <= i < a.len() ==> result[i] == (a[i] != b[i])
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      unreached()
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {}
