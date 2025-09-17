@@ -31,12 +31,8 @@ fn argmax(a: Vec<i32>, start: usize) -> (result: (usize, i32))
     })
     decreases a.len() - start
 {
-    if start == a.len() - 1 {
-        (start, a[start])
-    } else {
-        let (i, v) = argmax(a.clone(), start + 1);
-        if a[start] >= v { (start, a[start]) } else { (i, v) }
-    }
+    assume(false);
+    unreached()
 }
 
 spec fn inbound_radius(s_prime: Seq<char>, c: int, r: int) -> bool {
