@@ -1,0 +1,42 @@
+vc-description: |-
+  This verification task involves implementing efficient modular exponentiation
+  to compute 2^n mod p. The method should use binary exponentiation (repeated squaring)
+  for optimal O(log n) time complexity, maintaining appropriate loop invariants to
+  prove correctness.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+  spec fn power(base: int, exp: nat) -> int
+      decreases exp
+  {
+      if exp == 0 {
+          1
+      } else {
+          base * power(base, (exp - 1) as nat)
+      }
+  }
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn modp(n: int, p: int) -> (result: int)
+      requires 
+          n >= 0 && p > 0,
+      ensures 
+          result >= 0 && result < p,
+          result == power(2, n as nat) % p,
+
+vc-code: |-
+  {
+      assume(false);
+      unreached()
+  }
+
+vc-postamble: |-
+
+  }
+
+  fn main() {}

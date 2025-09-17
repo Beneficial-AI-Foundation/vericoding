@@ -1,0 +1,32 @@
+vc-description: |-
+  function_signature: fn unique_sorted(s: Seq<int>) -> (result: Seq<int>)
+
+  Sort elements. Requires: the condition holds for all values. Ensures: the condition holds for all values; the condition holds for all values; the condition holds for all values.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn unique_sorted(s: Seq<int>) -> (result: Seq<int>)
+      requires 
+          forall|i: int, j: int| 0 <= i < j < s.len() ==> s[i] <= s[j],
+      ensures 
+          forall|i: int, j: int| 0 <= i < j < result.len() ==> result[i] < result[j],
+          forall|x: int| result.contains(x) ==> s.contains(x),
+          forall|x: int| s.contains(x) ==> result.contains(x),
+
+vc-code: |-
+  {
+      assume(false);
+      unreached()
+  }
+
+vc-postamble: |-
+
+  }
+
+  fn main() {}

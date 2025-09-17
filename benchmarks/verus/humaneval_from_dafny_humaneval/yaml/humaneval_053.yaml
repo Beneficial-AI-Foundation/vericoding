@@ -1,0 +1,39 @@
+vc-description: |-
+  This verification task implements a simple addition function that
+  takes two integers as input and returns their sum. The implementation should correctly
+  add the two input integers and satisfy the postcondition that the result equals
+  the mathematical sum of the inputs.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+  spec fn valid_input(x: int, y: int) -> bool
+  {
+      true
+  }
+
+  spec fn correct_sum(x: int, y: int) -> int
+  {
+      x + y
+  }
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn add(x: int, y: int) -> (result: int)
+      requires valid_input(x, y)
+      ensures result == correct_sum(x, y)
+
+vc-code: |-
+  {
+      assume(false);
+      unreached()
+  }
+
+vc-postamble: |-
+
+  }
+
+  fn main() {}

@@ -1,0 +1,60 @@
+vc-description: |-
+  Given a class name (string) and a list of extension names (strings),
+  find the "strongest" extension and return the result in the format "ClassName.StrongestExtensionName".
+  The strength of an extension is calculated as: (number of uppercase letters) - (number
+  of lowercase letters). Choose the extension with the highest strength value. If
+  multiple extensions have the same highest strength, choose the first one that appears
+  in the list.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+  spec fn count_upper(s: Seq<char>) -> int
+      decreases s.len()
+  {
+      if s.len() == 0 {
+          0int
+      } else {
+          (if 'A' <= s[0] && s[0] <= 'Z' { 1int } else { 0int }) + count_upper(s.skip(1))
+      }
+  }
+
+  spec fn count_lower(s: Seq<char>) -> int
+      decreases s.len()
+  {
+      if s.len() == 0 {
+          0int
+      } else {
+          (if 'a' <= s[0] && s[0] <= 'z' { 1int } else { 0int }) + count_lower(s.skip(1))
+      }
+  }
+
+  spec fn strength(s: Seq<char>) -> int {
+      count_upper(s) - count_lower(s)
+  }
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn strongest_extension(class_name: Seq<char>, extensions: Seq<Seq<char>>) -> (result: Seq<char>)
+      requires extensions.len() > 0
+      ensures exists|i: int| 0 <= i < extensions.len() && 
+              result == class_name + seq!['.'] + extensions[i] &&
+              (forall|j: int| 0 <= j < extensions.len() ==> 
+                  strength(extensions[i]) >= strength(extensions[j])) &&
+              (forall|j: int| 0 <= j < i ==> 
+                  strength(extensions[j]) < strength(extensions[i]))
+
+vc-code: |-
+  {
+      assume(false);
+      unreached()
+  }
+
+vc-postamble: |-
+
+  }
+
+  fn main() {}

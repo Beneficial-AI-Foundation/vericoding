@@ -1,0 +1,40 @@
+vc-description: |-
+  This verification task implements a method to create a pile of stones
+  with n levels. The first level contains n stones, and each subsequent level contains
+  the next number with the same parity (odd/even) as n. This creates an arithmetic
+  sequence where each level has 2 more stones than the previous level.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+  spec fn valid_input(n: int) -> bool {
+      n > 0
+  }
+
+  spec fn valid_pile(pile: Seq<int>, n: int) -> bool {
+      &&& pile.len() == n
+      &&& (n > 0 ==> pile.len() > 0 && pile[0] == n)
+      &&& (forall|i: int| 0 <= i < pile.len() ==> pile[i] == n + 2 * i)
+      &&& (forall|i: int| 0 <= i < pile.len() - 1 ==> #[trigger] pile.index(i + 1) == pile.index(i) + 2)
+  }
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn make_a_pile(n: int) -> (pile: Vec<int>)
+      requires valid_input(n)
+      ensures valid_pile(pile@, n)
+
+vc-code: |-
+  {
+      assume(false);
+      Vec::new()
+  }
+
+vc-postamble: |-
+
+  }
+
+  fn main() {}

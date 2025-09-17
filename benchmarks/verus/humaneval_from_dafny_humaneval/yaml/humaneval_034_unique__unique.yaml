@@ -1,0 +1,31 @@
+vc-description: |-
+  function_signature: fn unique(s: Seq<int>) -> (result: Seq<int>)
+
+  Process input. Ensures: the condition holds for all values; the condition holds
+  for all values; the condition holds for all values.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn unique(s: Seq<int>) -> (result: Seq<int>)
+      ensures
+          forall|i: int, j: int| 0 <= i < j < result.len() ==> result[i] < result[j] &&
+          forall|x: int| result.contains(x) ==> s.contains(x) &&
+          forall|x: int| s.contains(x) ==> result.contains(x)
+
+vc-code: |-
+  {
+      assume(false);
+      unreached()
+  }
+
+vc-postamble: |-
+
+  }
+
+  fn main() {}
