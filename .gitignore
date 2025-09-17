@@ -59,4 +59,12 @@ lean/Generated
 # Verus
 verus-x86-linux/
 
+# Terraform
+infrastructure*/.terraform/
+infrastructure*/.terraform.lock.hcl
+infrastructure*/terraform.tfstate
+infrastructure*/terraform.tfstate.backup
+infrastructure*/*.tfplan
+infrastructure*/*.tfvars
+
 ssh_config_servers
