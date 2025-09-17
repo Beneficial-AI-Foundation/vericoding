@@ -24,13 +24,10 @@ axiom DivMod_spec (dividend divisor : String) (h1 : ValidBitString dividend) (h2
   ValidBitString quotient ∧ ValidBitString remainder ∧
   Str2Int quotient = Str2Int dividend / Str2Int divisor ∧
   Str2Int remainder = Str2Int dividend % Str2Int divisor
-
-
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
-
 
 -- <vc-definitions>
 def ModExpPow2 (sx sy : String) (n : Nat) (sz : String) : String :=
@@ -48,3 +45,4 @@ theorem ModExpPow2_spec (sx sy : String) (n : Nat) (sz : String)
   sorry
 -- </vc-theorems>
 
+end BignumLean

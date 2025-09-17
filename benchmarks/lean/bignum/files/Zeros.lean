@@ -1,5 +1,4 @@
 -- <vc-preamble>
-
 namespace BignumLean
 
 def AllZero (s : String) : Prop :=
@@ -14,7 +13,6 @@ def Str2Int (s : String) : Nat :=
 
 -- <vc-helpers>
 -- </vc-helpers>
-
 
 -- <vc-definitions>
 def Zeros (n : Nat) : String :=

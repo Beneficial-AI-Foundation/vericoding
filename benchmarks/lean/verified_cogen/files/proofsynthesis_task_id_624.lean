@@ -5,7 +5,7 @@
 def isLowerCase (c : Char) : Bool :=
   c >= 'a' && c <= 'z'
 
-@[reducible, simp]
+@[reducible, simp]  
 def shiftMinus32Spec (c : Char) : Char :=
   Char.ofNat (c.toNat - 32)
 
@@ -32,10 +32,13 @@ def toUppercase (str1 : Array Char) (h_precond : toUppercase_precond str1) : Arr
 -- <vc-theorems>
 @[reducible, simp]
 def toUppercase_postcond (str1 : Array Char) (result : Array Char) (h_precond : toUppercase_precond str1) : Prop :=
-  str1.size = result.size ∧
+  str1.size = result.size ∧ 
   (∀ i : Nat, i < str1.size → result[i]! = innerExprToUppercase str1 i)
 
 theorem toUppercase_spec_satisfied (str1 : Array Char) (h_precond : toUppercase_precond str1) :
     toUppercase_postcond str1 (toUppercase str1 h_precond) h_precond := by
   sorry
 -- </vc-theorems>
+
+def main : IO Unit := do
+  return ()

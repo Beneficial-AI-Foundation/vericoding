@@ -1,7 +1,7 @@
 -- <vc-preamble>
 @[reducible, simp]
 def binarySearchRecursive_precond (v : Array Int) (elem : Int) (c : Nat) (f : Nat) :=
-  v.size ≤ 100000 ∧
+  v.size ≤ 100000 ∧ 
   (∀ i j, i < j ∧ j < v.size → v[i]! ≤ v[j]!) ∧
   c ≤ f + 1 ∧ f + 1 ≤ v.size ∧
   (∀ k, k < c → v[k]! ≤ elem) ∧
@@ -27,3 +27,5 @@ theorem binarySearchRecursive_spec_satisfied (v : Array Int) (elem : Int) (c : N
     binarySearchRecursive_postcond v elem c f (binarySearchRecursive v elem c f h_precond) h_precond := by
   sorry
 -- </vc-theorems>
+
+def main : IO Unit := pure ()

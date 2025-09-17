@@ -9,7 +9,7 @@ def count_identical (s1 : List Int) (s2 : List Int) (s3 : List Int) : Int :=
   | [], _, _ => 0
   | _, [], _ => 0
   | _, _, [] => 0
-  | h1::t1, h2::t2, h3::t3 =>
+  | h1::t1, h2::t2, h3::t3 => 
       count_identical t1 t2 t3 + (if h1 = h2 ∧ h2 = h3 then 1 else 0)
 -- </vc-preamble>
 
@@ -30,3 +30,5 @@ theorem count_identical_position_spec_satisfied (arr1: Array Int) (arr2: Array I
     count_identical_position_postcond arr1 arr2 arr3 (count_identical_position arr1 arr2 arr3 h_precond) h_precond := by
   sorry
 -- </vc-theorems>
+
+def main : IO Unit := IO.println "Hello World!"

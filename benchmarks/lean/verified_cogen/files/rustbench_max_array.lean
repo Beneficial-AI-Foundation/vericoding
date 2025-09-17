@@ -1,6 +1,6 @@
 -- <vc-preamble>
 @[reducible, simp]
-def maxArray_precond (nums : Array Int) :=
+def maxArray_precond (nums : Array Int) := 
   nums.size ≥ 1
 -- </vc-preamble>
 
@@ -21,3 +21,6 @@ theorem maxArray_spec_satisfied (nums : Array Int) (h_precond : maxArray_precond
     maxArray_postcond nums (maxArray nums h_precond) h_precond := by
   sorry
 -- </vc-theorems>
+
+def main : IO Unit := do
+  return ()

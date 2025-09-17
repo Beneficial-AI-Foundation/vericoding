@@ -9,13 +9,10 @@ def ModExpPow2_int (x y n z : Nat) : Nat :=
 
 axiom ModExpPow2_int_spec (x y n z : Nat) (hy : y = Exp_int 2 n) (hz : z > 0) :
   ModExpPow2_int x y n z = Exp_int x y % z
-
-
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
-
 
 -- <vc-definitions>
 def ModExp_int (x y n z : Nat) : Nat :=
@@ -28,3 +25,4 @@ theorem ModExp_int_spec (x y n z : Nat) (hy : y < Exp_int 2 (n + 1)) (hz : z > 1
   sorry
 -- </vc-theorems>
 
+end BignumLean

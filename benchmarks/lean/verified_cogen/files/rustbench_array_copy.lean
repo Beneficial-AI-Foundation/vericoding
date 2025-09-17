@@ -20,3 +20,5 @@ theorem arrayCopy_spec_satisfied (a: Array Int) (h_precond : arrayCopy_precond (
     arrayCopy_postcond (a) (arrayCopy (a) h_precond) h_precond := by
   sorry
 -- </vc-theorems>
+
+def main : IO Unit := return ()

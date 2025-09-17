@@ -25,3 +25,5 @@ theorem isInteger_spec_satisfied (text: Array Char) (h_precond : isInteger_preco
     isInteger_postcond text (isInteger text h_precond) h_precond := by
   sorry
 -- </vc-theorems>
+
+def main : IO Unit := return ()

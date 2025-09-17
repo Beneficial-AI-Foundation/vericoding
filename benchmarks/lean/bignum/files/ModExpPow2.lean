@@ -9,13 +9,10 @@ def Str2Int (s : String) : Nat :=
 
 def Exp_int (x y : Nat) : Nat :=
   if y = 0 then 1 else x * Exp_int x (y - 1)
-
-
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
-
 
 -- <vc-definitions>
 def ModExpPow2 (sx sy : String) (n : Nat) (sz : String) : String :=
@@ -33,3 +30,4 @@ theorem ModExpPow2_spec (sx sy : String) (n : Nat) (sz : String)
   sorry
 -- </vc-theorems>
 
+end BignumLean

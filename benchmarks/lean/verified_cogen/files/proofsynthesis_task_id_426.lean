@@ -20,3 +20,5 @@ theorem filterOddNumbers_spec_satisfied (arr: Array UInt32) (h_precond : filterO
     filterOddNumbers_postcond (arr) (filterOddNumbers (arr) h_precond) h_precond := by
   sorry
 -- </vc-theorems>
+
+def main : IO Unit := pure ()

@@ -12,13 +12,10 @@ def Sub (s1 s2 : String) : String :=
 
 axiom Sub_spec (s1 s2 : String) (h1 : ValidBitString s1) (h2 : ValidBitString s2) (h_ge : Str2Int s1 ≥ Str2Int s2) :
   ValidBitString (Sub s1 s2) ∧ Str2Int (Sub s1 s2) = Str2Int s1 - Str2Int s2
-
-
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
-
 
 -- <vc-definitions>
 def DivMod (dividend divisor : String) : (String × String) :=
@@ -34,3 +31,4 @@ theorem DivMod_spec (dividend divisor : String) (h1 : ValidBitString dividend) (
   sorry
 -- </vc-theorems>
 
+end BignumLean

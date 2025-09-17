@@ -35,13 +35,10 @@ axiom ModExpPow2_spec (sx sy : String) (n : Nat) (sz : String)
   (hsz_gt1 : Str2Int sz > 1) :
   ValidBitString (ModExpPow2 sx sy n sz) ∧
   Str2Int (ModExpPow2 sx sy n sz) = Exp_int (Str2Int sx) (Str2Int sy) % Str2Int sz
-
-
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
-
 
 -- <vc-definitions>
 def ModExp (sx sy sz : String) : String :=
@@ -56,3 +53,4 @@ theorem ModExp_spec (sx sy sz : String) (hx : ValidBitString sx) (hy : ValidBitS
   sorry
 -- </vc-theorems>
 
+end BignumLean

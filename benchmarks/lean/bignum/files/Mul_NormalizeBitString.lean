@@ -15,13 +15,10 @@ axiom NormalizeBitString_spec (s : String) :
   (NormalizeBitString s).length > 0 ∧
   ((NormalizeBitString s).length > 1 → (NormalizeBitString s).get? 0 = some '1') ∧
   (ValidBitString s → Str2Int s = Str2Int (NormalizeBitString s))
-
-
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
-
 
 -- <vc-definitions>
 def Mul (s1 s2 : String) : String :=
@@ -34,3 +31,4 @@ theorem Mul_spec (s1 s2 : String) (h1 : ValidBitString s1) (h2 : ValidBitString 
   sorry
 -- </vc-theorems>
 
+end BignumLean

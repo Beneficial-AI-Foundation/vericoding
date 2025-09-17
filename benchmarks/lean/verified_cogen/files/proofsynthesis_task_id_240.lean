@@ -21,3 +21,5 @@ theorem replaceLastElement_spec_satisfied (first : Array Int) (second : Array In
     replaceLastElement_postcond first second (replaceLastElement first second h_precond) h_precond := by
   sorry
 -- </vc-theorems>
+
+def main : IO Unit := return ()

@@ -1,5 +1,4 @@
 -- <vc-preamble>
-
 namespace BignumLean
 
 def ValidBitString (s : String) : Prop :=
@@ -23,12 +22,10 @@ axiom NormalizeBitString_spec (s : String) (h : ValidBitString s) :
 -- <vc-helpers>
 -- </vc-helpers>
 
-
 -- <vc-definitions>
 def Compare (s1 s2 : String) : Int :=
   sorry
 -- </vc-definitions>
-
 
 -- <vc-theorems>
 theorem Compare_spec (s1 s2 : String) :

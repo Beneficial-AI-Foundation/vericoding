@@ -23,3 +23,5 @@ theorem arrayConcat_spec_satisfied (a: Array Int) (b: Array Int) (h_precond : ar
     arrayConcat_postcond (a) (b) (arrayConcat (a) (b) h_precond) h_precond := by
   sorry
 -- </vc-theorems>
+
+def main : IO Unit := pure ()
