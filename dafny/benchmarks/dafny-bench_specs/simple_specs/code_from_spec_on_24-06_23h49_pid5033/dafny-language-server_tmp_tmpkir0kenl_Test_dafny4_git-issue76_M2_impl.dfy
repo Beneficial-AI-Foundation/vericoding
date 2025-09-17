@@ -1,4 +1,0 @@
-//IMPL 
-method M2()
-{
-}

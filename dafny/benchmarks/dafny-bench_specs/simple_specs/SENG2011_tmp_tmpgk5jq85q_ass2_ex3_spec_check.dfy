@@ -1,5 +1,0 @@
-// SPEC
-
-// SPEC
-method check() {
-}
