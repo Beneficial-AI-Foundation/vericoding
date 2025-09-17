@@ -21,5 +21,3 @@ theorem removeChars_spec_satisfied (str1 : Array Char) (str2 : Array Char) (h_pr
     removeChars_postcond str1 str2 (removeChars str1 str2 h_precond) h_precond := by
   sorry
 -- </vc-theorems>
-
-def main : IO Unit := pure ()

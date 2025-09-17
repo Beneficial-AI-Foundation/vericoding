@@ -29,4 +29,3 @@ theorem countTrue_spec_satisfied (arr : Array Bool) (h_precond : countTrue_preco
 -- </vc-theorems>
 
 /- Main function -/
-def main : IO Unit := return ()

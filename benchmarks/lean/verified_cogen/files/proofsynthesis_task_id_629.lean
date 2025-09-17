@@ -21,6 +21,3 @@ theorem findEvenNumbers_spec_satisfied (arr: Array Nat) (h_precond : findEvenNum
     findEvenNumbers_postcond (arr) (findEvenNumbers (arr) h_precond) h_precond := by
   sorry
 -- </vc-theorems>
-
-def main : IO Unit := do
-  pure ()

@@ -20,5 +20,3 @@ theorem reverse_spec_satisfied (a: Array Int) (h_precond : reverse_precond a) :
     reverse_postcond a (reverse a h_precond) h_precond := by
   sorry
 -- </vc-theorems>
-
-def main : IO Unit := return ()

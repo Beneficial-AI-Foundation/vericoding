@@ -22,5 +22,3 @@ theorem getFirstElements_spec_satisfied (arr : Array (Array Int)) (h_precond : g
     getFirstElements_postcond arr (getFirstElements arr h_precond) h_precond := by
   sorry
 -- </vc-theorems>
-
-def main : IO Unit := return ()

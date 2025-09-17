@@ -20,5 +20,3 @@ theorem removeOdds_spec_satisfied (arr: Array UInt32) (h_precond : removeOdds_pr
     removeOdds_postcond (arr) (removeOdds (arr) h_precond) h_precond := by
   sorry
 -- </vc-theorems>
-
-def main : IO Unit := return ()
