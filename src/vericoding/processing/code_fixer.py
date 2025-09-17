@@ -43,10 +43,10 @@ def extract_code(config: ProcessingConfig, output: str) -> str:
             or line.strip().startswith("The issue is in")
             or line.strip().startswith("This function will be")
             or line.strip().startswith("Below is a")
-            or line.strip().startswith("Theo note:")
+            or line.strip().startswith("note:")
             or line.strip().startswith("// This function will be")
             or line.strip().startswith("// Below is a")
-            or line.strip().startswith("// Theo note:")
+            or line.strip().startswith("// note:")
             or line.strip().startswith("```")
             or re.match(r"^\d+\.", line.strip())
         ):
