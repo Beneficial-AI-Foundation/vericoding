@@ -47,7 +47,8 @@ DATASET_MAPPING = {
     'apps': 'apps', 
     'bignum': 'bignum',
     'humaneval': 'heval',
-    'numpy_simple': 'numpy', 
+    'numpy_simple': 'numpy_simple',
+    'numpy_triple': 'numpy_triple',
     'verina': 'verina'
 }
 
