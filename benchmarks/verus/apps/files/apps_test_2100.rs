@@ -2,8 +2,9 @@
 use vstd::prelude::*;
 
 verus! {
+
 spec fn valid_input(input: Seq<char>) -> bool {
-    let lines = split(input, '\n');
+    let lines = split_lines(input);
     lines.len() >= 1 &&
     is_valid_number(lines[0]) &&
     {
@@ -11,7 +12,7 @@ spec fn valid_input(input: Seq<char>) -> bool {
         n >= 0 && n + 1 <= lines.len() &&
         forall|i: int| 1 <= i <= n && i < lines.len() ==>
             {
-                let parts = split(lines[i], ' ');
+                let parts = split_spaces(#[trigger] lines[i as int]);
                 parts.len() >= 2 && is_valid_door_state(parts[0]) && is_valid_door_state(parts[1])
             }
     }
@@ -22,7 +23,7 @@ spec fn valid_output(output: Seq<char>) -> bool {
 }
 
 spec fn is_valid_number(s: Seq<char>) -> bool {
-    s.len() > 0 && forall|i: int| 0 <= i < s.len() ==> '0' <= s[i] && s[i] <= '9'
+    s.len() > 0 && forall|i: int| 0 <= i < s.len() ==> (#[trigger] s[i] >= '0' && #[trigger] s[i] <= '9')
 }
 
 spec fn is_valid_door_state(s: Seq<char>) -> bool {
@@ -30,7 +31,7 @@ spec fn is_valid_door_state(s: Seq<char>) -> bool {
 }
 
 spec fn calculate_min_operations(input: Seq<char>) -> Seq<char> {
-    let lines = split(input, '\n');
+    let lines = split_lines(input);
     let n = string_to_int(lines[0]);
     if n == 0 {
         seq!['0']
@@ -43,12 +44,21 @@ spec fn calculate_min_operations(input: Seq<char>) -> Seq<char> {
     }
 }
 
-spec fn split(s: Seq<char>, delimiter: char) -> Seq<Seq<char>> {
-    seq![seq!['0']]
+/* Helper functions for string operations */
+spec fn split_lines(s: Seq<char>) -> Seq<Seq<char>> {
+    seq![seq![]]
+}
+
+spec fn split_spaces(s: Seq<char>) -> Seq<Seq<char>> {
+    seq![seq![]]
 }
 
 spec fn string_to_int(s: Seq<char>) -> int {
     0
+}
+
+spec fn int_to_string(n: int) -> Seq<char> {
+    seq!['0']
 }
 
 spec fn count_left_zeros(lines: Seq<Seq<char>>, start: int, n: int) -> int {
@@ -58,24 +68,20 @@ spec fn count_left_zeros(lines: Seq<Seq<char>>, start: int, n: int) -> int {
 spec fn count_right_zeros(lines: Seq<Seq<char>>, start: int, n: int) -> int {
     0
 }
-
-spec fn int_to_string(n: int) -> Seq<char> {
-    seq!['0']
-}
 // </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(input: Seq<char>) -> (result: Seq<char>)
+fn solve(input: &str) -> (result: String)
     requires 
-        input.len() > 0,
-        valid_input(input),
+        input@.len() > 0,
+        valid_input(input@),
     ensures 
-        result.len() > 0,
-        valid_output(result),
-        result == calculate_min_operations(input),
+        result@.len() > 0,
+        valid_output(result@),
+        result@ == calculate_min_operations(input@),
 // </vc-spec>
 // <vc-code>
 {

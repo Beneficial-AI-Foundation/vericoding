@@ -10,7 +10,7 @@ spec fn valid_grid(grid: Seq<Seq<int>>, n: int, m: int) -> bool {
 
 spec fn valid_queries(queries: Seq<(int, int)>, q: int, n: int, m: int) -> bool {
     queries.len() == q && q >= 0 &&
-    (forall|k: int| 0 <= k < q ==> 1 <= queries[k].0 <= n && 1 <= queries[k].1 <= m)
+    (forall|k: int| 0 <= k < q ==> #[trigger] queries[k].0 >= 1 && queries[k].0 <= n && queries[k].1 >= 1 && queries[k].1 <= m)
 }
 
 spec fn cons_helper(l: Seq<int>, index: int, current: int, max_so_far: int) -> int
@@ -34,7 +34,9 @@ spec fn cons(l: Seq<int>) -> int {
 spec fn max_in_seq(s: Seq<int>) -> int
     decreases s.len()
 {
-    if s.len() == 1 {
+    if s.len() == 0 {
+        0
+    } else if s.len() == 1 {
         s[0]
     } else {
         let rest = max_in_seq(s.subrange(1, s.len() as int));
@@ -43,8 +45,12 @@ spec fn max_in_seq(s: Seq<int>) -> int
 }
 
 spec fn compute_score(grid: Seq<Seq<int>>) -> int {
-    let row_scores = Seq::new(grid.len(), |i: int| cons(grid[i]));
-    max_in_seq(row_scores)
+    if grid.len() == 0 {
+        0
+    } else {
+        let row_scores = Seq::new(grid.len(), |i: int| cons(grid[i]));
+        max_in_seq(row_scores)
+    }
 }
 // </vc-preamble>
 
@@ -55,13 +61,16 @@ spec fn compute_score(grid: Seq<Seq<int>>) -> int {
 fn solve(n: int, m: int, q: int, grid: Seq<Seq<int>>, queries: Seq<(int, int)>) -> (results: Vec<int>)
     requires 
         valid_grid(grid, n, m),
-        valid_queries(queries, q, n, m)
-    ensures results.len() == q
+        valid_queries(queries, q, n, m),
+    ensures 
+        results.len() == q,
 // </vc-spec>
 // <vc-code>
 {
+    // impl-start
     assume(false);
     Vec::new()
+    // impl-end
 }
 // </vc-code>
 

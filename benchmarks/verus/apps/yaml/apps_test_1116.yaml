@@ -10,38 +10,32 @@ vc-preamble: |-
 
   verus! {
   spec fn gcd(a: int, b: int) -> int
-    recommends a > 0 && b >= 0
-    decreases b
+    decreases b when a > 0 && b >= 0
   {
     if b == 0 { a } else { gcd(b, a % b) }
   }
 
-  spec fn valid_input(r: int, b: int, k: int) -> bool
-  {
+  spec fn valid_input(r: int, b: int, k: int) -> bool {
     r > 0 && b > 0 && k > 0
   }
 
-  spec fn max_consecutive_same_color(r: int, b: int) -> int
-    recommends r > 0 && b > 0
-  {
+  spec fn max_consecutive_same_color(r: int, b: int) -> int {
     let a = if r <= b { r } else { b };
     let b_val = if r <= b { b } else { r };
     let n = gcd(a, b_val);
     -((n - b_val) / a)
   }
 
-  spec fn can_avoid_consecutive(r: int, b: int, k: int) -> bool
-    recommends valid_input(r, b, k)
-  {
-    max_consecutive_same_color(r, b) < k
+  spec fn can_avoid_consecutive(r: int, b: int, k: int) -> bool {
+    valid_input(r, b, k) && max_consecutive_same_color(r, b) < k
   }
 
 vc-helpers: |
 
 vc-spec: |-
-  fn solve(r: int, b: int, k: int) -> (result: &'static str)
+  fn solve(r: int, b: int, k: int) -> (result: String)
     requires valid_input(r, b, k)
-    ensures result == (if can_avoid_consecutive(r, b, k) { "OBEY" } else { "REBEL" })
+    ensures result@ == (if can_avoid_consecutive(r, b, k) { "OBEY"@ } else { "REBEL"@ })
 
 vc-code: |-
   {

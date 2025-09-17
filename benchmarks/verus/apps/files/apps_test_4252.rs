@@ -17,16 +17,18 @@ spec fn count_excessive_positions_helper(s: Seq<char>, pos: int, consecutive_x: 
     if pos >= s.len() {
         0
     } else {
-        let new_consecutive_x: int = if s[pos] == 'x' { consecutive_x + 1 } else { 0 };
+        let new_consecutive_x = if s[pos] == 'x' { consecutive_x + 1 } else { 0 };
         let current_contribution: int = if new_consecutive_x > 2 { 1 } else { 0 };
         current_contribution + count_excessive_positions_helper(s, pos + 1, new_consecutive_x)
     }
 }
 
-spec fn consecutive_x_count(s: Seq<char>, pos: int) -> int {
+spec fn consecutive_x_count(s: Seq<char>, pos: int) -> int
+    decreases pos
+{
     if pos == 0 {
         0
-    } else if s[pos - 1] == 'x' {
+    } else if pos > 0 && pos <= s.len() && s[pos - 1] == 'x' {
         1 + consecutive_x_count(s, pos - 1)
     } else {
         0
@@ -43,7 +45,7 @@ fn solve(s: Seq<char>) -> (result: int)
     ensures 
         result >= 0,
         result <= s.len(),
-        result == count_excessive_positions(s),
+        result == count_excessive_positions(s)
 // </vc-spec>
 // <vc-code>
 {

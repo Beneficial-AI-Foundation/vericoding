@@ -4,16 +4,16 @@ use vstd::prelude::*;
 verus! {
 spec fn valid_input(n: int, m: int, scores: Seq<int>) -> bool {
     n >= 1 && m >= 1 && scores.len() == n &&
-    forall|i: int| 0 <= i < scores.len() ==> 0 <= scores[i] <= m
+    forall|i: int| 0 <= i < scores.len() ==> #[trigger] scores[i] >= 0 && #[trigger] scores[i] <= m
 }
 
-spec fn sum(nums: Seq<int>) -> int 
+spec fn sum(nums: Seq<int>) -> int
     decreases nums.len()
 {
     if nums.len() == 0 { 
         0 
     } else { 
-        nums[0] + sum(nums.subrange(1, nums.len() as int))
+        nums[0] + sum(nums.subrange(1, nums.len() as int)) 
     }
 }
 
@@ -24,7 +24,7 @@ spec fn min(a: int, b: int) -> int {
 spec fn valid_redistribution(original: Seq<int>, redistributed: Seq<int>, m: int) -> bool {
     redistributed.len() == original.len() &&
     sum(redistributed) == sum(original) &&
-    forall|i: int| 0 <= i < redistributed.len() ==> 0 <= redistributed[i] <= m
+    forall|i: int| 0 <= i < redistributed.len() ==> #[trigger] redistributed[i] >= 0 && #[trigger] redistributed[i] <= m
 }
 
 spec fn max_possible_first_score(n: int, m: int, scores: Seq<int>) -> int {
@@ -42,8 +42,8 @@ fn solve(n: int, m: int, scores: Seq<int>) -> (result: int)
     ensures 
         result == max_possible_first_score(n, m, scores),
         result == min(sum(scores), m),
-        exists|redistributed: Seq<int>| valid_redistribution(scores, redistributed, m) && 
-            redistributed[0] == result,
+        exists|redistributed: Seq<int>| (valid_redistribution(scores, redistributed, m) && 
+            redistributed[0] == result),
 // </vc-spec>
 // <vc-code>
 {

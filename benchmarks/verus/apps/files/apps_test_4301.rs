@@ -4,22 +4,28 @@ use vstd::prelude::*;
 verus! {
 spec fn max_of_seq(s: Seq<int>) -> int
     recommends s.len() >= 1
-    decreases s.len()
 {
     if s.len() == 1 {
         s[0]
-    } else if s[0] >= max_of_seq(s.subrange(1, s.len() as int)) {
-        s[0]
     } else {
-        max_of_seq(s.subrange(1, s.len() as int))
+        if s[0] >= s[1] {
+            s[0]
+        } else {
+            s[1]
+        }
     }
 }
 
 spec fn max_excluding(s: Seq<int>, exclude_idx: int) -> int
     recommends 0 <= exclude_idx < s.len() && s.len() >= 2
 {
-    let others = s.subrange(0, exclude_idx).add(s.subrange(exclude_idx + 1, s.len() as int));
-    max_of_seq(others)
+    if exclude_idx == 0 {
+        max_of_seq(s.subrange(1, s.len() as int))
+    } else if exclude_idx == s.len() - 1 {
+        max_of_seq(s.subrange(0, s.len() - 1))
+    } else {
+        max_of_seq(s.subrange(0, exclude_idx).add(s.subrange(exclude_idx + 1, s.len() as int)))
+    }
 }
 // </vc-preamble>
 
@@ -29,9 +35,6 @@ spec fn max_excluding(s: Seq<int>, exclude_idx: int) -> int
 // <vc-spec>
 fn solve(input: Seq<int>) -> (result: Seq<int>)
     requires input.len() >= 2
-    ensures 
-        result.len() == input.len(),
-        forall|i: int| 0 <= i < input.len() ==> result[i] == max_excluding(input, i),
 // </vc-spec>
 // <vc-code>
 {

@@ -10,12 +10,12 @@ spec fn valid_input(n: int, k: int) -> bool
 
 spec fn is_strictly_increasing(s: Seq<int>) -> bool
 {
-    forall|i: int| 0 <= i < s.len() - 1 ==> s[i] < s[i+1]
+    forall|i: int| 0 <= i < s.len() - 1 ==> #[trigger] s[i] < s[i+1]
 }
 
 spec fn all_positive(s: Seq<int>) -> bool
 {
-    forall|i: int| 0 <= i < s.len() ==> s[i] > 0
+    forall|i: int| 0 <= i < s.len() ==> #[trigger] s[i] > 0
 }
 
 spec fn sum_seq(s: Seq<int>) -> int
@@ -43,16 +43,16 @@ fn solve(n: int, k: int) -> (result: Vec<int>)
     requires 
         valid_input(n, k)
     ensures 
-        (result.len() == 1 && result[0] == -1) || 
-        (valid_sequence(result@, n, k)),
-        (result.len() == 1 && result[0] == -1) <==> !is_possible(n, k)
+        ((result.len() == 1 && result[0] == -1) || 
+         (valid_sequence(result@, n, k))) &&
+        ((result.len() == 1 && result[0] == -1) <==> !is_possible(n, k))
 // </vc-spec>
 // <vc-code>
 {
-    /* impl-start */
+    // impl-start
     assume(false);
-    Vec::new()
-    /* impl-end */
+    unreached()
+    // impl-end
 }
 // </vc-code>
 

@@ -9,13 +9,14 @@ spec fn valid_input(n: int, a: Seq<int>) -> bool {
 
 spec fn simulate_operations(a: Seq<int>) -> Seq<int>
     recommends a.len() >= 1
-    decreases a.len()
+    decreases a.len() when a.len() > 0
 {
     if a.len() == 1 {
         seq![a[0]]
     } else {
-        let prev = simulate_operations(a.subrange(0, a.len() - 1));
-        reverse_seq(prev.push(a[a.len() - 1]))
+        let shorter = a.subrange(0, (a.len() - 1) as int);
+        let prev = simulate_operations(shorter);
+        reverse_seq(prev.push(a[(a.len() - 1) as int]))
     }
 }
 
@@ -32,11 +33,14 @@ spec fn compute_result(a: Seq<int>) -> Seq<int>
     }
 }
 
-spec fn reverse_seq(s: Seq<int>) -> Seq<int> {
+spec fn reverse_seq(s: Seq<int>) -> Seq<int>
+    decreases s.len() when s.len() > 0
+{
     if s.len() == 0 {
         seq![]
     } else {
-        reverse_seq(s.subrange(1, s.len() as int)).push(s[0])
+        let rest = s.subrange(1, s.len() as int);
+        reverse_seq(rest).push(s[0])
     }
 }
 // </vc-preamble>
@@ -47,10 +51,10 @@ spec fn reverse_seq(s: Seq<int>) -> Seq<int> {
 // <vc-spec>
 fn solve(n: int, a: Seq<int>) -> (result: Seq<int>)
     requires 
-        valid_input(n, a)
+        valid_input(n, a),
     ensures 
         result.len() == n,
-        result == compute_result(a)
+        result == compute_result(a),
 // </vc-spec>
 // <vc-code>
 {

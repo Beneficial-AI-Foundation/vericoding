@@ -5,7 +5,7 @@ verus! {
 spec fn valid_input(n: int, numbers: Seq<int>) -> bool {
     n >= 3 && n % 3 == 0 &&
     numbers.len() == n &&
-    forall|i: int| 0 <= i < numbers.len() ==> 1 <= numbers[i] <= 7
+    forall|i: int| 0 <= i < numbers.len() ==> 1 <= #[trigger] numbers[i] && #[trigger] numbers[i] <= 7
 }
 
 spec fn valid_triplet(triplet: Seq<int>) -> bool {
@@ -18,7 +18,7 @@ spec fn valid_triplet(triplet: Seq<int>) -> bool {
 spec fn flatten_partition(result: Seq<Seq<int>>) -> Seq<int>
     decreases result.len()
 {
-    if result.len() == 0 {
+    if result.len() == 0 { 
         seq![]
     } else {
         result[0].add(flatten_partition(result.subrange(1, result.len() as int)))
@@ -27,7 +27,7 @@ spec fn flatten_partition(result: Seq<Seq<int>>) -> Seq<int>
 
 spec fn valid_partition(result: Seq<Seq<int>>, numbers: Seq<int>) -> bool {
     result.len() == numbers.len() / 3 &&
-    (forall|i: int| 0 <= i < result.len() ==> valid_triplet(result[i])) &&
+    (forall|i: int| 0 <= i < result.len() ==> valid_triplet(#[trigger] result[i])) &&
     numbers.to_multiset() == flatten_partition(result).to_multiset()
 }
 

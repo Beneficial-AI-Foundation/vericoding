@@ -2,14 +2,13 @@
 use vstd::prelude::*;
 
 verus! {
-
 spec fn valid_input(n: int, a: Seq<int>, b: Seq<int>, c: Seq<int>) -> bool {
     n >= 1 &&
     a.len() == n &&
     b.len() == n &&
     c.len() == n - 1 &&
-    (forall|i: int| 0 <= i < n ==> 1 <= a[i] <= n) &&
-    (forall|i: int, j: int| 0 <= i < j < n ==> a[i] != a[j])
+    (forall|i: int| 0 <= i < n ==> 1 <= #[trigger] a[i] <= n) &&
+    (forall|i: int, j: int| 0 <= i < j < n ==> #[trigger] a[i] != #[trigger] a[j])
 }
 
 spec fn sum_satisfaction(a: Seq<int>, b: Seq<int>, c: Seq<int>, n: int) -> int
@@ -18,7 +17,7 @@ spec fn sum_satisfaction(a: Seq<int>, b: Seq<int>, c: Seq<int>, n: int) -> int
         a.len() == n,
         b.len() == n,
         c.len() == n - 1,
-        forall|i: int| 0 <= i < n ==> 1 <= a[i] <= n
+        forall|i: int| 0 <= i < n ==> 1 <= #[trigger] a[i] <= n
 {
     sum_satisfaction_up_to(a, b, c, n)
 }
@@ -28,10 +27,10 @@ spec fn sum_satisfaction_up_to(a: Seq<int>, b: Seq<int>, c: Seq<int>, k: int) ->
         0 <= k <= a.len(),
         b.len() == a.len(),
         c.len() == a.len() - 1,
-        forall|i: int| 0 <= i < a.len() ==> 1 <= a[i] <= a.len()
+        forall|i: int| 0 <= i < a.len() ==> 1 <= #[trigger] a[i] <= a.len()
     decreases k
 {
-    if k == 0 {
+    if k <= 0 {
         0
     } else {
         let prev_sum = sum_satisfaction_up_to(a, b, c, k - 1);

@@ -4,10 +4,9 @@ use vstd::prelude::*;
 verus! {
 
 spec fn power(base: int, exp: int) -> int
-    recommends exp >= 0
     decreases exp
 {
-    if exp == 0 { 1 }
+    if exp <= 0 { 1 }
     else { base * power(base, exp - 1) }
 }
 // </vc-preamble>
@@ -18,12 +17,12 @@ spec fn power(base: int, exp: int) -> int
 // <vc-spec>
 fn solve(n: int, k: int) -> (result: int)
     requires 
-        n > 0 && k >= 0
+        n > 0 && k >= 0,
     ensures 
         result > 0,
         result % n == 0,
         result % power(10, k) == 0,
-        forall|m: int| m > 0 && m % n == 0 && m % power(10, k) == 0 ==> result <= m
+        forall|m: int| #[trigger] (m % n) == 0 && #[trigger] (m % power(10, k)) == 0 && m > 0 ==> result <= m,
 // </vc-spec>
 // <vc-code>
 {

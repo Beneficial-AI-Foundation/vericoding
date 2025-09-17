@@ -11,7 +11,9 @@ spec fn is_valid_number(s: Seq<char>) -> bool {
     true
 }
 
-spec fn parse_int(s: Seq<char>) -> int {
+spec fn parse_int(s: Seq<char>) -> int
+    recommends is_valid_number(s)
+{
     0
 }
 
@@ -20,54 +22,57 @@ spec fn is_binary_string(s: Seq<char>) -> bool {
 }
 
 spec fn ends_with_newline(s: Seq<char>) -> bool {
-    s.len() > 0 && s[s.len() as int - 1] == '\n'
+    s.len() > 0 && s[s.len() - 1] == '\n'
 }
 
 spec fn valid_input(input: Seq<char>) -> bool {
     input.len() > 0 &&
-    input[input.len() as int - 1] == '\n' &&
-    exists|lines: Seq<Seq<char>>| 
-        lines == split_lines(input) &&
+    input[input.len() - 1] == '\n' &&
+    {
+        let lines = split_lines(input);
         lines.len() >= 2 &&
-        is_valid_number(lines[0]) && {
+        is_valid_number(lines[0]) &&
+        {
             let t = parse_int(lines[0]);
             t >= 1 && t <= 100 &&
             lines.len() == t + 1 &&
             forall|i: int| 1 <= i < lines.len() ==> 
                 is_binary_string(lines[i]) && lines[i].len() >= 1 && lines[i].len() <= 1000
         }
+    }
 }
 
 spec fn valid_output(result: Seq<char>) -> bool {
     result.len() > 0 &&
     (ends_with_newline(result) || result.len() == 0) &&
-    exists|output_lines: Seq<Seq<char>>| 
-        output_lines == split_lines(result) &&
+    {
+        let output_lines = split_lines(result);
         output_lines.len() >= 1 &&
         (forall|i: int| 0 <= i < output_lines.len() - 1 ==> is_valid_number(output_lines[i])) &&
         (forall|i: int| 0 <= i < output_lines.len() - 1 ==> parse_int(output_lines[i]) >= 0)
+    }
 }
 
-spec fn correct_result(input: Seq<char>, result: Seq<char>) -> bool {
-    valid_input(input) ==> exists|input_lines: Seq<Seq<char>>, t: int| 
-        input_lines == split_lines(input) &&
-        t == parse_int(input_lines[0]) && {
-            let output_lines = split_lines(result);
-            output_lines.len() == t + 1 &&
-            forall|test_case: int| 0 <= test_case < t ==> {
-                let s = input_lines[test_case + 1];
-                let min_ops = parse_int(output_lines[test_case]);
-                min_ops == min_operations_to_make_good(s)
-            }
-        }
+spec fn correct_result(input: Seq<char>, result: Seq<char>) -> bool
+    recommends valid_input(input)
+{
+    {
+        let input_lines = split_lines(input);
+        let t = parse_int(input_lines[0]);
+        let output_lines = split_lines(result);
+        output_lines.len() == t + 1 &&
+        forall|test_case: int| 0 <= test_case < t ==> #[trigger] parse_int(output_lines[test_case]) == min_operations_to_make_good(input_lines[test_case + 1])
+    }
+}
+
+spec fn min_operations_to_make_good(s: Seq<char>) -> int
+    recommends is_binary_string(s)
+{
+    if s.len() == 0 { 0 } else { min_ops_helper(s, 0, s.len() as int) }
 }
 
 spec fn min_ops_helper(s: Seq<char>, start: int, end: int) -> int {
     0
-}
-
-spec fn min_operations_to_make_good(s: Seq<char>) -> int {
-    if s.len() == 0 { 0 } else { min_ops_helper(s, 0, s.len() as int) }
 }
 // </vc-preamble>
 
@@ -75,17 +80,19 @@ spec fn min_operations_to_make_good(s: Seq<char>) -> int {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(input: Vec<char>) -> (result: Vec<char>)
-    requires 
-        valid_input(input@),
-    ensures 
-        valid_output(result@),
-        correct_result(input@, result@),
+fn solve(input: Seq<char>) -> (result: Seq<char>)
+    requires
+        valid_input(input),
+    ensures
+        valid_output(result),
+        correct_result(input, result),
 // </vc-spec>
 // <vc-code>
 {
+    // impl-start
     assume(false);
-    Vec::new()
+    unreached()
+    // impl-end
 }
 // </vc-code>
 

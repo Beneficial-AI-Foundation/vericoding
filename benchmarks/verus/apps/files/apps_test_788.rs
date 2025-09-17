@@ -3,11 +3,11 @@ use vstd::prelude::*;
 
 verus! {
 spec fn valid_input(s: Seq<char>) -> bool {
-    s.len() == 7 && s[0] == 'A' && forall|i: int| 1 <= i < 7 ==> '0' <= s[i] <= '9'
+    s.len() == 7 && s[0] == 'A' && forall|i: int| 1 <= i < 7 ==> #[trigger] s[i] >= '0' && #[trigger] s[i] <= '9'
 }
 
 spec fn digit_sum(s: Seq<char>, start: int, end: int) -> int
-    decreases end - start
+    decreases end - start when 0 <= start <= end <= s.len()
 {
     if start >= end {
         0
@@ -17,12 +17,12 @@ spec fn digit_sum(s: Seq<char>, start: int, end: int) -> int
 }
 
 spec fn zero_count(s: Seq<char>, start: int, end: int) -> int
-    decreases end - start
+    decreases end - start when 0 <= start <= end <= s.len()
 {
     if start >= end {
         0
     } else {
-        (if s[start] == '0' { 1int } else { 0int }) + zero_count(s, start + 1, end)
+        (if s[start] == '0' { 1nat } else { 0nat }) as int + zero_count(s, start + 1, end)
     }
 }
 // </vc-preamble>

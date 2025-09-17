@@ -5,7 +5,7 @@ verus! {
 spec fn valid_input(n: int, aa: Seq<int>) -> bool {
     n >= 2 &&
     aa.len() == n - 1 &&
-    forall|i: int| 0 <= i < aa.len() ==> 1 <= aa[i] < i + 2
+    forall|i: int| 0 <= i < aa.len() ==> #[trigger] aa[i] >= 1 && #[trigger] aa[i] < i + 2
 }
 
 spec fn subordinate_count(aa: Seq<int>, boss_id: int) -> int {
@@ -14,8 +14,8 @@ spec fn subordinate_count(aa: Seq<int>, boss_id: int) -> int {
 
 spec fn valid_output(n: int, aa: Seq<int>, result: Seq<int>) -> bool {
     result.len() == n &&
-    forall|i: int| 0 <= i < n ==> result[i] >= 0 &&
-    forall|i: int| 0 <= i < n ==> result[i] == subordinate_count(aa, i + 1)
+    forall|i: int| 0 <= i < n ==> #[trigger] result[i] >= 0 &&
+    forall|i: int| 0 <= i < n ==> #[trigger] result[i] == subordinate_count(aa, i + 1)
 }
 // </vc-preamble>
 
@@ -29,8 +29,10 @@ fn solve(n: int, aa: Seq<int>) -> (result: Seq<int>)
 // </vc-spec>
 // <vc-code>
 {
+    // impl-start
     assume(false);
     unreached()
+    // impl-end
 }
 // </vc-code>
 

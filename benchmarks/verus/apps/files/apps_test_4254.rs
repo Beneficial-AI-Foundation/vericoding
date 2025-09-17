@@ -13,22 +13,22 @@ spec fn valid_input_format(input: Seq<char>) -> bool {
 
 spec fn valid_input(input: Seq<char>, s: int, w: int) -> bool {
     valid_input_format(input) &&
-    ({
+    {
         let trimmed = trim_newlines(input);
         let space_index = find_space(trimmed);
         let s_str = trimmed.subrange(0, space_index);
         let w_str = trimmed.subrange(space_index + 1, trimmed.len() as int);
         string_to_int(s_str) == s && string_to_int(w_str) == w
-    })
+    }
 }
 
 spec fn is_valid_integer(s: Seq<char>) -> bool {
     if s.len() == 0 {
         false
     } else if s[0] == '-' {
-        s.len() > 1 && forall|i: int| 1 <= i < s.len() ==> '0' <= s[i] <= '9'
+        s.len() > 1 && forall|i: int| 1 <= i < s.len() ==> #[trigger] s[i] >= '0' && #[trigger] s[i] <= '9'
     } else {
-        forall|i: int| 0 <= i < s.len() ==> '0' <= s[i] <= '9'
+        forall|i: int| 0 <= i < s.len() ==> #[trigger] s[i] >= '0' && #[trigger] s[i] <= '9'
     }
 }
 
@@ -86,8 +86,8 @@ spec fn string_to_int_helper(s: Seq<char>, index: int, acc: int) -> int
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(input: &str) -> (result: String)
-    requires input@.len() > 0
+fn solve(input: Seq<char>) -> (result: Seq<char>)
+    requires input.len() > 0
 // </vc-spec>
 // <vc-code>
 {

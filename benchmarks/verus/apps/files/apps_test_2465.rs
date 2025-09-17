@@ -3,14 +3,10 @@ use vstd::prelude::*;
 
 verus! {
 spec fn valid_input(angles: Seq<int>) -> bool {
-    forall|i: int| 0 <= i < angles.len() ==> 1 <= angles[i] < 180
+    forall|i: int| 0 <= i < angles.len() ==> #[trigger] angles[i] >= 1 && #[trigger] angles[i] < 180
 }
 
-spec fn gcd(a: int, b: int) -> int
-    decreases if b == 0 { 0 } else { b }
-{
-    if b == 0 { a } else { gcd(b, a % b) }
-}
+spec fn gcd(a: int, b: int) -> int;
 
 spec fn compute_answer(angle: int) -> int {
     let g = gcd(angle, 180int);
@@ -22,7 +18,7 @@ spec fn compute_answer(angle: int) -> int {
 spec fn correct_output(angles: Seq<int>, result: Seq<int>) -> bool {
     valid_input(angles) ==> (
         result.len() == angles.len() &&
-        forall|i: int| 0 <= i < angles.len() ==> (1 <= angles[i] < 180 ==> result[i] == compute_answer(angles[i]))
+        forall|i: int| 0 <= i < angles.len() ==> #[trigger] result[i] == compute_answer(#[trigger] angles[i])
     )
 }
 // </vc-preamble>
@@ -37,10 +33,8 @@ fn solve(angles: Seq<int>) -> (result: Seq<int>)
 // </vc-spec>
 // <vc-code>
 {
-    // impl-start
     assume(false);
     unreached()
-    // impl-end
 }
 // </vc-code>
 

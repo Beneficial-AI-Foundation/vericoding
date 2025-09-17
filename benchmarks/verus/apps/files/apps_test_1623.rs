@@ -13,12 +13,20 @@ spec fn power(base: int, exp: int) -> int
     if exp <= 0 { 1 } else { base * power(base, exp - 1) }
 }
 
-spec fn sum_with_decreasing_powers(n: int, start_power: int) -> int {
-    if n <= 0 { 0 } else if start_power <= 1 { n } else { start_power + sum_with_decreasing_powers(n - 1, start_power / 2) }
+spec fn sum_with_decreasing_powers(n: int, start_power: int) -> int
+    decreases n
+{
+    if n <= 0 { 0 } 
+    else if start_power <= 1 { n }
+    else { start_power + sum_with_decreasing_powers(n - 1, start_power / 2) }
 }
 
-spec fn sum_with_increasing_powers(n: int, max_power: int) -> int {
-    if n <= 0 { 0 } else if max_power <= 1 { n } else { max_power + sum_with_increasing_powers(n - 1, max_power * 2) }
+spec fn sum_with_increasing_powers(n: int, max_power: int) -> int
+    decreases n
+{
+    if n <= 0 { 0 }
+    else if n == 1 { max_power }
+    else { max_power + sum_with_increasing_powers(n - 1, max_power * 2) }
 }
 
 spec fn min_sum_calculation(n: int, l: int) -> int {
@@ -44,21 +52,21 @@ spec fn max_sum_calculation(n: int, r: int) -> int {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: int, l: int, r: int) -> (result: (int, int))
-    requires valid_input(n, l, r)
+fn solve(n: i64, l: i64, r: i64) -> (result: (i64, i64))
+    requires valid_input(n as int, l as int, r as int)
     ensures ({
         let (min_sum, max_sum) = result;
         min_sum > 0 &&
         max_sum > 0 &&
         min_sum <= max_sum &&
-        min_sum == min_sum_calculation(n, l) &&
-        max_sum == max_sum_calculation(n, r)
+        min_sum == min_sum_calculation(n as int, l as int) &&
+        max_sum == max_sum_calculation(n as int, r as int)
     })
 // </vc-spec>
 // <vc-code>
 {
     assume(false);
-    unreached()
+    (0, 0)
 }
 // </vc-code>
 

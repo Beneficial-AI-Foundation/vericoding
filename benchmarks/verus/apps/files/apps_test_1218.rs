@@ -12,6 +12,14 @@ spec fn impossibility_condition(n: int, k: int) -> bool
     2 * (n - 1) - k * (k - 1) > 0
 }
 
+spec fn quadratic_condition(x: int, n: int, k: int) -> bool {
+    x * x - x + (2 * (n - 1) - k * (k - 1)) <= 0
+}
+
+spec fn next_quadratic_condition(x: int, n: int, k: int) -> bool {
+    (x + 1) * (x + 1) - (x + 1) + (2 * (n - 1) - k * (k - 1)) > 0
+}
+
 spec fn valid_solution(n: int, k: int, result: int) -> bool
     recommends valid_input(n, k)
 {
@@ -19,10 +27,10 @@ spec fn valid_solution(n: int, k: int, result: int) -> bool
         result == -1
     } else {
         result >= 0 && result <= k &&
-        exists|x: int| 
+        exists|x: int| #[trigger] quadratic_condition(x, n, k) &&
             x >= 0 && 
-            x * x - x + (2 * (n - 1) - k * (k - 1)) <= 0 && 
-            (x == 0 || (x + 1) * (x + 1) - (x + 1) + (2 * (n - 1) - k * (k - 1)) > 0) &&
+            quadratic_condition(x, n, k) && 
+            (x == 0 || next_quadratic_condition(x, n, k)) &&
             result == k - x
     }
 }

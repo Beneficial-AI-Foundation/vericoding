@@ -2,11 +2,12 @@
 use vstd::prelude::*;
 
 verus! {
+
 spec fn valid_input(a: int, b: int, c: int, d: int, e: int, f: int) -> bool {
     1 <= a < b <= 30 &&
     1 <= c < d <= 30 &&
     1 <= e <= 100 &&
-    100int * a <= f <= 3000int
+    100 * a <= f <= 3000
 }
 
 spec fn valid_solution(a: int, b: int, c: int, d: int, e: int, f: int, total_mass: int, sugar_mass: int) -> bool {
@@ -18,7 +19,7 @@ spec fn valid_solution(a: int, b: int, c: int, d: int, e: int, f: int, total_mas
 spec fn density(total_mass: int, sugar_mass: int) -> int
     recommends total_mass >= 0 && sugar_mass >= 0
 {
-    if total_mass > 0 { (100int * sugar_mass) / total_mass } else { 0int }
+    if total_mass > 0 { (100 * sugar_mass) / total_mass } else { 0 }
 }
 // </vc-preamble>
 
@@ -26,30 +27,30 @@ spec fn density(total_mass: int, sugar_mass: int) -> int
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(a: i32, b: i32, c: i32, d: i32, e: i32, f: i32) -> (result: (i32, i32))
-    requires valid_input(a as int, b as int, c as int, d as int, e as int, f as int)
+fn solve(a: int, b: int, c: int, d: int, e: int, f: int) -> (result: (int, int))
+    requires valid_input(a, b, c, d, e, f)
     ensures ({
         let (total_mass, sugar_mass) = result;
-        valid_solution(a as int, b as int, c as int, d as int, e as int, f as int, total_mass as int, sugar_mass as int) &&
+        valid_solution(a, b, c, d, e, f, total_mass, sugar_mass) &&
         total_mass >= 0 && sugar_mass >= 0 &&
         total_mass <= f &&
         sugar_mass <= total_mass &&
-        (exists|water_units: int| water_units > 0 && total_mass as int == water_units * 100int + sugar_mass as int) &&
-        (exists|water_units: int| water_units > 0 && sugar_mass as int <= water_units * e as int) &&
+        (exists|water_units: int| water_units > 0 && total_mass == #[trigger] (water_units * 100) + sugar_mass) &&
+        (exists|water_units: int| water_units > 0 && sugar_mass <= #[trigger] (water_units * e)) &&
         (exists|i1: int, j1: int, i2: int, j2: int| 
             i1 >= 0 && j1 >= 0 && i2 >= 0 && j2 >= 0 &&
-            i1 <= 30int / a as int && j1 <= 30int / b as int &&
-            i2 <= 3000int / c as int && j2 <= 3000int / d as int &&
-            total_mass as int == (a as int * i1 + b as int * j1) * 100int + (c as int * i2 + d as int * j2) &&
-            sugar_mass as int == c as int * i2 + d as int * j2 &&
-            a as int * i1 + b as int * j1 > 0) &&
+            i1 <= 30int / a && j1 <= 30int / b &&
+            i2 <= 3000int / c && j2 <= 3000int / d &&
+            total_mass == #[trigger] ((a * i1 + b * j1) * 100 + (c * i2 + d * j2)) &&
+            sugar_mass == #[trigger] (c * i2 + d * j2) &&
+            a * i1 + b * j1 > 0) &&
         total_mass > 0
     })
 // </vc-spec>
 // <vc-code>
 {
     assume(false);
-    (0, 0)
+    unreached()
 }
 // </vc-code>
 

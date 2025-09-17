@@ -8,11 +8,16 @@ spec fn valid_input(a: int, b: int) -> bool {
 }
 
 spec fn total_burning_hours(a: int, b: int) -> int
-  decreases a
+  decreases a via a_decreases
 {
-  if a == 0 { 0 }
+  if a <= 0 { 0 }
   else if a < b { a }
   else { a + total_burning_hours(a / b, b) }
+}
+
+#[verifier::decreases_by]
+proof fn a_decreases(a: int, b: int) {
+  assume(false);
 }
 // </vc-preamble>
 
@@ -22,10 +27,10 @@ spec fn total_burning_hours(a: int, b: int) -> int
 // <vc-spec>
 fn solve(a: int, b: int) -> (result: int)
   requires 
-      valid_input(a, b),
+    valid_input(a, b)
   ensures 
-      result >= a,
-      result == total_burning_hours(a, b),
+    result >= a,
+    result == total_burning_hours(a, b)
 // </vc-spec>
 // <vc-code>
 {

@@ -7,8 +7,9 @@ spec fn alternating_sum(n: int) -> int
     recommends n > 0
     decreases n
 {
-    if n == 1 { -1 }
-    else { alternating_sum(n-1) + (if n % 2 == 0 { n } else { -n }) }
+    if n <= 0 { 0 }
+    else if n == 1 { -1 }
+    else { alternating_sum(n - 1) + (if n % 2 == 0 { n } else { -n }) }
 }
 
 spec fn valid_input(n: int) -> bool {

@@ -2,10 +2,11 @@
 use vstd::prelude::*;
 
 verus! {
+
 spec fn valid_input(n: int, a: Seq<int>) -> bool {
     n >= 1 &&
     a.len() == n &&
-    (forall|i: int| 0 <= i < n ==> 1 <= a[i] <= n) &&
+    (forall|i: int| 0 <= i < n ==> 1 <= #[trigger] a[i] <= n) &&
     (forall|i: int, j: int| 0 <= i < j < n ==> a[i] != a[j])
 }
 
@@ -20,10 +21,12 @@ spec fn reversed_array(a: Seq<int>) -> Seq<int>
 }
 
 spec fn has_increasing_pair(ar: Seq<int>) -> bool {
-    exists|i: int| 1 <= i < ar.len() && ar[i] > ar[i-1]
+    exists|i: int| 1 <= i < ar.len() && #[trigger] ar[i] > ar[i-1]
 }
 
-spec fn min_index(ar: Seq<int>, n: int) -> int;
+spec fn min_index(ar: Seq<int>, n: int) -> int {
+    0
+}
 
 spec fn correct_result(n: int, a: Seq<int>) -> int
     recommends valid_input(n, a)
@@ -46,7 +49,7 @@ fn solve(n: int, a: Seq<int>) -> (result: int)
     requires 
         valid_input(n, a)
     ensures 
-        valid_output(n, result),
+        valid_output(n, result) &&
         result == correct_result(n, a)
 // </vc-spec>
 // <vc-code>

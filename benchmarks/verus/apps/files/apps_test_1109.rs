@@ -25,9 +25,9 @@ spec fn min_changes_for_column(a: Seq<int>, n: int, k: int, col: int) -> int {
 }
 
 spec fn sum_min_changes_helper(a: Seq<int>, n: int, k: int, col: int) -> int
-    decreases k - col
+    decreases k - col when col <= k
 {
-    if col == k {
+    if col >= k {
         0
     } else {
         min_changes_for_column(a, n, k, col) + sum_min_changes_helper(a, n, k, col + 1)
@@ -44,11 +44,11 @@ spec fn sum_min_changes_for_all_columns(a: Seq<int>, n: int, k: int) -> int {
 
 // <vc-spec>
 fn solve(n: int, k: int, a: Seq<int>) -> (result: int)
-    requires
-        valid_input(n, k, a),
-    ensures
+    requires 
+        valid_input(n, k, a)
+    ensures 
         0 <= result <= n,
-        result == sum_min_changes_for_all_columns(a, n, k),
+        result == sum_min_changes_for_all_columns(a, n, k)
 // </vc-spec>
 // <vc-code>
 {

@@ -17,16 +17,16 @@ vc-preamble: |-
   
   spec fn valid_rides(rides: &[int]) -> bool {
     rides.len() >= 1 && rides.len() <= 1000 &&
-    forall|i: int| 0 <= i < rides.len() ==> 0 <= rides[i] <= 1000
+    forall|i: int| #![trigger rides[i]] 0 <= i < rides.len() ==> 0 <= rides[i] <= 1000
   }
   
   spec fn sum_array(arr: Seq<int>) -> int
-    decreases arr.len()
+    decreases arr.len(),
   {
-    if arr.len() == 0 {
-      0
-    } else {
-      arr[0] + sum_array(arr.subrange(1, arr.len() as int))
+    if arr.len() == 0 { 
+      0 
+    } else { 
+      arr[0] + sum_array(arr.drop_first()) 
     }
   }
   
@@ -36,10 +36,10 @@ vc-preamble: |-
   }
   
   spec fn min_with_unlimited(rides: Seq<int>, current_cost: int, individual_cost: int, unlimited_cost: int, index: int) -> int
-    decreases rides.len() - index
+    decreases rides.len() - index,
   {
-    if index >= rides.len() {
-      current_cost
+    if index >= rides.len() { 
+      current_cost 
     } else {
       let new_cost = current_cost - rides[index] * individual_cost + unlimited_cost;
       let updated_cost = if new_cost < current_cost && new_cost >= 0 { new_cost } else { current_cost };
@@ -55,13 +55,11 @@ vc-preamble: |-
   }
   
   spec fn correct_result(c: &[int], a: &[int], b: &[int], result: int) -> bool {
-    result == min5(
-      optimized_cost(a@, c[0], c[1]) + optimized_cost(b@, c[0], c[1]),
-      optimized_cost(a@, c[0], c[1]) + c[2],
-      optimized_cost(b@, c[0], c[1]) + c[2],
-      c[2] + c[2],
-      c[3]
-    )
+    result == min5(optimized_cost(a@, c[0], c[1]) + optimized_cost(b@, c[0], c[1]),
+                   optimized_cost(a@, c[0], c[1]) + c[2],
+                   optimized_cost(b@, c[0], c[1]) + c[2],
+                   c[2] + c[2],
+                   c[3])
   }
 
 vc-helpers: |-
@@ -69,17 +67,17 @@ vc-helpers: |-
 vc-spec: |-
   fn solve(c: &[int], a: &[int], b: &[int]) -> (result: int)
     requires 
-      valid_costs(c) &&
-      valid_rides(a) &&
-      valid_rides(b)
+      valid_costs(c),
+      valid_rides(a),
+      valid_rides(b),
     ensures 
-      result >= 0 &&
-      correct_result(c, a, b, result) &&
+      result >= 0,
+      correct_result(c, a, b, result),
       result <= min5(sum_array(a@) * c[0] + sum_array(b@) * c[0], 
                     sum_array(a@) * c[0] + c[2],
                     sum_array(b@) * c[0] + c[2],
                     c[2] + c[2],
-                    c[3])
+                    c[3]),
 
 vc-code: |-
   {

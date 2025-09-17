@@ -4,7 +4,7 @@ use vstd::prelude::*;
 verus! {
 spec fn valid_input(scores: Seq<int>) -> bool {
     scores.len() > 0 && scores.len() <= 100 &&
-    forall|i: int| 0 <= i < scores.len() ==> 1 <= scores[i] <= 100
+    forall|i: int| 0 <= i < scores.len() ==> #[trigger] scores[i] >= 1 && #[trigger] scores[i] <= 100
 }
 
 spec fn sum_seq(scores: Seq<int>) -> int
@@ -18,13 +18,13 @@ spec fn sum_seq(scores: Seq<int>) -> int
 }
 
 spec fn all_multiples_of_10(scores: Seq<int>) -> bool {
-    forall|i: int| 0 <= i < scores.len() ==> scores[i] % 10 == 0
+    forall|i: int| 0 <= i < scores.len() ==> #[trigger] scores[i] % 10 == 0
 }
 
 spec fn is_smallest_non_multiple(scores: Seq<int>, value: int) -> bool {
     scores.contains(value) && 
     value % 10 != 0 &&
-    forall|x: int| scores.contains(x) && x % 10 != 0 ==> value <= x
+    forall|x: int| #[trigger] scores.contains(x) && x % 10 != 0 ==> value <= x
 }
 
 spec fn correct_result(scores: Seq<int>, result: int) -> bool {

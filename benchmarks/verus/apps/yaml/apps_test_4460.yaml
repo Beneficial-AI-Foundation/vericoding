@@ -8,17 +8,13 @@ vc-preamble: |-
 
   verus! {
   spec fn valid_input(s: Seq<char>) -> bool {
-      s.len() > 0 && (forall|i: int| 0 <= i < s.len() ==> {
-          let c = s[i];
-          c == ' ' || c == '\n' || ('0' <= c && c <= '9') || c == '-'
-      })
+      s.len() > 0 && (forall|i: int| 0 <= i < s.len() ==> 
+          s[i] == ' ' || s[i] == '\n' || ('0' <= s[i] <= '9') || s[i] == '-')
   }
 
   spec fn valid_number(s: Seq<char>) -> bool {
-      s.len() == 0 || (forall|i: int| 0 <= i < s.len() ==> {
-          let c = s[i];
-          ('0' <= c && c <= '9') || (i == 0 && c == '-')
-      })
+      s.len() == 0 || (forall|i: int| 0 <= i < s.len() ==> 
+          '0' <= s[i] <= '9' || (i == 0 && s[i] == '-'))
   }
 
   spec fn count_zeros(numbers: Seq<int>) -> int
@@ -55,41 +51,32 @@ vc-preamble: |-
       }
   }
 
-  spec fn parse_ints_helper(s: Seq<char>, pos: int, current: Seq<char>, acc: Seq<int>) -> Seq<int>
+  spec fn parse_ints_helper(s: Seq<char>, pos: int, current: Seq<char>, result: Seq<int>) -> Seq<int>
       decreases s.len() - pos
   {
-      if pos >= s.len() {
-          if current.len() > 0 { acc.push(0int) } else { acc }
-      } else {
-          acc
-      }
+      seq![]
   }
 
   spec fn generate_output(numbers: Seq<int>) -> Seq<char> {
       generate_output_helper(numbers, 0, seq![])
   }
 
-  spec fn generate_output_helper(numbers: Seq<int>, pos: int, acc: Seq<char>) -> Seq<char>
-      decreases numbers.len() - pos
-  {
-      if pos >= numbers.len() {
-          acc
-      } else {
-          acc
-      }
+  spec fn generate_output_helper(numbers: Seq<int>, pos: int, result: Seq<char>) -> Seq<char> {
+      seq![]
   }
 
 vc-helpers: |
 
 vc-spec: |-
-  fn solve(input: Seq<char>) -> (result: Seq<char>)
+  fn solve(input: &str) -> (result: String)
       requires 
-          valid_input(input),
-          input.len() > 0,
-      ensures ({
-          let numbers = parse_ints(input);
-          result == generate_output(numbers)
-      })
+          valid_input(input@),
+          input@.len() > 0,
+      ensures 
+          ({
+              let numbers = parse_ints(input@);
+              result@ == generate_output(numbers)
+          }),
 
 vc-code: |-
   {

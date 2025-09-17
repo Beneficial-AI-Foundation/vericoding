@@ -2,10 +2,13 @@
 use vstd::prelude::*;
 
 verus! {
+
 spec fn valid_input(test_cases: Seq<(int, int)>) -> bool {
     forall|i: int| 0 <= i < test_cases.len() ==> 
-        0 <= test_cases[i].0 < 24 && 
-        0 <= test_cases[i].1 < 60 && 
+        #[trigger] test_cases[i].0 >= 0 && 
+        test_cases[i].0 < 24 && 
+        test_cases[i].1 >= 0 && 
+        test_cases[i].1 < 60 && 
         !(test_cases[i].0 == 0 && test_cases[i].1 == 0)
 }
 
@@ -14,7 +17,8 @@ spec fn minutes_until_midnight(h: int, m: int) -> int {
 }
 
 spec fn valid_output(results: Seq<int>) -> bool {
-    forall|i: int| 0 <= i < results.len() ==> 1 <= results[i] <= 1439
+    forall|i: int| 0 <= i < results.len() ==> 
+        1 <= #[trigger] results[i] && results[i] <= 1439
 }
 // </vc-preamble>
 
@@ -26,8 +30,9 @@ fn solve(test_cases: Seq<(int, int)>) -> (results: Seq<int>)
     requires 
         valid_input(test_cases)
     ensures 
-        results.len() == test_cases.len() &&
-        (forall|i: int| 0 <= i < results.len() ==> results[i] == minutes_until_midnight(test_cases[i].0, test_cases[i].1)) &&
+        results.len() == test_cases.len(),
+        forall|i: int| 0 <= i < results.len() ==> 
+            #[trigger] results[i] == minutes_until_midnight(test_cases[i].0, test_cases[i].1),
         valid_output(results)
 // </vc-spec>
 // <vc-code>

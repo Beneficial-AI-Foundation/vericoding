@@ -6,7 +6,7 @@ spec fn valid_input(n: nat) -> bool {
     n > 0
 }
 
-spec fn can_reach_one(n: nat) -> bool 
+spec fn can_reach_one(n: nat) -> bool
     recommends n > 0
 {
     only_factors_235(n)
@@ -21,23 +21,37 @@ spec fn only_factors_235(n: nat) -> bool
 spec fn reduce_by_factors_235(n: nat) -> nat
     recommends n > 0
     decreases n
+    when n > 0
 {
-    if n == 1 { 1 }
-    else if n % 2 == 0 { reduce_by_factors_235(n / 2) }
-    else if n % 3 == 0 { reduce_by_factors_235(n / 3) }
-    else if n % 5 == 0 { reduce_by_factors_235(n / 5) }
-    else { n }
+    if n == 1 {
+        1
+    } else if n % 2 == 0 {
+        reduce_by_factors_235(n / 2)
+    } else if n % 3 == 0 {
+        reduce_by_factors_235(n / 3)
+    } else if n % 5 == 0 {
+        reduce_by_factors_235(n / 5)
+    } else {
+        n
+    }
 }
 
 spec fn min_moves_to_one(n: nat) -> nat
     recommends n > 0 && can_reach_one(n)
     decreases n
+    when n > 0
 {
-    if n == 1 { 0 }
-    else if n % 2 == 0 { 1 + min_moves_to_one(n / 2) }
-    else if n % 3 == 0 { 2 + min_moves_to_one(n / 3) }
-    else if n % 5 == 0 { 3 + min_moves_to_one(n / 5) }
-    else { 0 }
+    if n == 1 {
+        0
+    } else if n % 2 == 0 {
+        1 + min_moves_to_one(n / 2)
+    } else if n % 3 == 0 {
+        2 + min_moves_to_one(n / 3)
+    } else if n % 5 == 0 {
+        3 + min_moves_to_one(n / 5)
+    } else {
+        0
+    }
 }
 // </vc-preamble>
 
@@ -46,12 +60,12 @@ spec fn min_moves_to_one(n: nat) -> nat
 
 // <vc-spec>
 fn solve(n: nat) -> (result: int)
-    requires 
-        valid_input(n)
-    ensures 
+    requires
+        valid_input(n),
+    ensures
         result >= -1,
         result == -1 <==> !can_reach_one(n),
-        result >= 0 ==> can_reach_one(n) && result == min_moves_to_one(n)
+        result >= 0 ==> can_reach_one(n) && result == min_moves_to_one(n),
 // </vc-spec>
 // <vc-code>
 {

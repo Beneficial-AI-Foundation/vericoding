@@ -11,7 +11,7 @@ spec fn parse_integer(s: Seq<char>) -> int {
 }
 
 spec fn hamming_distance(s1: Seq<char>, s2: Seq<char>) -> int {
-    if s1 =~= s2 { 0 } else { 6 }
+    if s1 == s2 { 0 } else { 6 }
 }
 
 spec fn valid_input(stdin_input: Seq<char>) -> bool {
@@ -20,18 +20,23 @@ spec fn valid_input(stdin_input: Seq<char>) -> bool {
 
 spec fn valid_output(output: Seq<char>, stdin_input: Seq<char>) -> bool {
     output.len() >= 2 &&
-    output[output.len() as int - 1] == '\n' &&
-    exists|lines: Seq<Seq<char>>| 
-        lines =~= split_lines(stdin_input) &&
+    output[output.len() - 1] == '\n' &&
+    ({
+        let lines = split_lines(stdin_input);
         lines.len() >= 1 &&
-        exists|n: int| 
+        ({
+            let n: int = 6;
             n >= 1 && 
             n == 6 &&
             lines.len() >= 1 &&
-            exists|k: int| 
+            ({
+                let k: int = 6;
                 0 <= k <= 6 &&
                 k == 6 &&
-                parse_integer(output.subrange(0, output.len() as int - 1)) == k
+                parse_integer(output.subrange(0, output.len() - 1)) == k
+            })
+        })
+    })
 }
 // </vc-preamble>
 
@@ -39,9 +44,9 @@ spec fn valid_output(output: Seq<char>, stdin_input: Seq<char>) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(stdin_input: Vec<char>) -> (output: Vec<char>)
-    requires valid_input(stdin_input@)
-    ensures valid_output(output@, stdin_input@)
+fn solve(stdin_input: Seq<char>) -> (output: Seq<char>)
+    requires valid_input(stdin_input)
+    ensures valid_output(output, stdin_input)
 // </vc-spec>
 // <vc-code>
 {

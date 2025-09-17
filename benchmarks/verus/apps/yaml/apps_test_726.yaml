@@ -7,30 +7,40 @@ vc-preamble: |-
   use vstd::prelude::*;
 
   verus! {
-  spec fn valid_input(n: int, d: int, hotels: Seq<int>) -> bool {
-      n > 0 && d > 0 && hotels.len() == n &&
-      (forall|i: int| 0 <= i < n - 1 ==> hotels[i] < hotels[i + 1])
-  }
-
-  spec fn sum_contributions(hotels: Seq<int>, d: int, i: int) -> int
-      decreases i
+  spec fn is_sorted(hotels: Seq<int>, n: int) -> bool
+      decreases n
   {
-      if 0 <= i <= hotels.len() - 1 && d > 0 &&
-         (forall|j: int| 0 <= j < hotels.len() - 1 ==> hotels[j] < hotels[j + 1]) {
-          if i == 0 { 0 }
-          else {
-              let gap = hotels[i] - hotels[i-1];
-              let contribution: int = if gap == 2*d { 1 } else if gap > 2*d { 2 } else { 0 };
-              contribution + sum_contributions(hotels, d, i-1)
-          }
+      if n <= 1 {
+          true
       } else {
-          0
+          hotels[n-2] < hotels[n-1] && is_sorted(hotels, n-1)
       }
   }
 
-  spec fn correct_result(n: int, d: int, hotels: Seq<int>, result: int) -> bool {
-      valid_input(n, d, hotels) ==> 
-      (result == 2 + sum_contributions(hotels, d, n-1) && result >= 2)
+  spec fn valid_input(n: int, d: int, hotels: Seq<int>) -> bool {
+      n > 0 && d > 0 && hotels.len() == n && is_sorted(hotels, n)
+  }
+
+  spec fn sum_contributions(hotels: Seq<int>, d: int, i: int) -> int
+      recommends 0 <= i && i <= hotels.len() - 1,
+                  d > 0,
+                  is_sorted(hotels, hotels.len() as int)
+      decreases i
+      when i >= 0
+  {
+      if i == 0 { 
+          0 
+      } else {
+          let gap = hotels[i as int] - hotels[(i-1) as int];
+          let contribution: int = if gap == 2*d { 1 } else if gap > 2*d { 2 } else { 0 };
+          contribution + sum_contributions(hotels, d, i-1)
+      }
+  }
+
+  spec fn correct_result(n: int, d: int, hotels: Seq<int>, result: int) -> bool
+      recommends valid_input(n, d, hotels)
+  {
+      result == 2 + sum_contributions(hotels, d, n-1) && result >= 2
   }
 
 vc-helpers: |

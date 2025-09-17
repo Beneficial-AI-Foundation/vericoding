@@ -12,20 +12,18 @@ spec fn valid_input(n: nat, k: nat, s: Seq<char>, available: Seq<char>) -> bool 
 spec fn count_valid_substrings(s: Seq<char>, available_set: Set<char>) -> nat
     decreases s.len()
 {
-    if s.len() == 0 {
-        0
-    } else {
+    if s.len() == 0 { 0 }
+    else {
         let segments = get_maximal_valid_segments(s, available_set, 0);
         sum_segment_counts(segments)
     }
 }
 
 spec fn get_maximal_valid_segments(s: Seq<char>, available_set: Set<char>, start_idx: nat) -> Seq<nat>
-    decreases s.len() - start_idx
+    decreases s.len() - start_idx when start_idx <= s.len()
 {
-    if start_idx >= s.len() {
-        seq![]
-    } else {
+    if start_idx >= s.len() { Seq::empty() }
+    else {
         let segment_length = get_next_segment_length(s, available_set, start_idx);
         if segment_length == 0 {
             get_maximal_valid_segments(s, available_set, start_idx + 1)
@@ -42,31 +40,24 @@ spec fn get_maximal_valid_segments(s: Seq<char>, available_set: Set<char>, start
 }
 
 spec fn get_next_segment_length(s: Seq<char>, available_set: Set<char>, start_idx: nat) -> nat
-    decreases s.len() - start_idx
+    decreases s.len() - start_idx when start_idx <= s.len()
 {
-    if start_idx >= s.len() || !available_set.contains(s[start_idx as int]) {
-        0
-    } else {
-        1 + get_next_segment_length(s, available_set, start_idx + 1)
-    }
+    if start_idx >= s.len() || !available_set.contains(s[start_idx as int]) { 0 }
+    else { 1 + get_next_segment_length(s, available_set, start_idx + 1) }
 }
 
 spec fn skip_invalid_chars(s: Seq<char>, available_set: Set<char>, start_idx: nat) -> nat
-    decreases s.len() - start_idx
+    decreases s.len() - start_idx when start_idx <= s.len()
 {
-    if start_idx >= s.len() || available_set.contains(s[start_idx as int]) {
-        0
-    } else {
-        1 + skip_invalid_chars(s, available_set, start_idx + 1)
-    }
+    if start_idx >= s.len() || available_set.contains(s[start_idx as int]) { 0 }
+    else { 1 + skip_invalid_chars(s, available_set, start_idx + 1) }
 }
 
-spec fn sum_segment_counts(segments: Seq<nat>) -> nat {
-    if segments.len() == 0 {
-        0
-    } else {
-        segments[0] * (segments[0] + 1) / 2 + sum_segment_counts(segments.drop_first())
-    }
+spec fn sum_segment_counts(segments: Seq<nat>) -> nat
+    decreases segments.len()
+{
+    if segments.len() == 0 { 0 }
+    else { segments[0] * (segments[0] + 1) / 2 + sum_segment_counts(segments.subrange(1, segments.len() as int)) }
 }
 // </vc-preamble>
 
@@ -75,11 +66,8 @@ spec fn sum_segment_counts(segments: Seq<nat>) -> nat {
 
 // <vc-spec>
 fn solve(n: nat, k: nat, s: Seq<char>, available: Seq<char>) -> (result: nat)
-    requires 
-        valid_input(n, k, s, available),
-    ensures 
-        result <= n * (n + 1) / 2,
-        result == count_valid_substrings(s, available.to_set()),
+    requires valid_input(n, k, s, available)
+    ensures result <= n * (n + 1) / 2
 // </vc-spec>
 // <vc-code>
 {

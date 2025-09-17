@@ -7,11 +7,10 @@ spec fn valid_input(n: int, k: int, numbers: Seq<int>) -> bool {
 }
 
 spec fn count_lucky_digits(num: int) -> int
-    decreases num
+    decreases num when num >= 0
 {
-    if num == 0 {
-        0
-    } else {
+    if num <= 0 { 0 }
+    else {
         let digit = num % 10;
         let rest = num / 10;
         let digit_count: int = if digit == 4 || digit == 7 { 1 } else { 0 };
@@ -20,17 +19,12 @@ spec fn count_lucky_digits(num: int) -> int
 }
 
 spec fn count_valid_numbers(numbers: Seq<int>, k: int, up_to: int) -> int
-    decreases up_to
+    decreases up_to when up_to >= 0
 {
-    if up_to == 0 {
-        0
-    } else {
+    if up_to <= 0 { 0 }
+    else {
         let prev_count = count_valid_numbers(numbers, k, up_to - 1);
-        if count_lucky_digits(numbers[up_to - 1]) <= k {
-            prev_count + 1
-        } else {
-            prev_count
-        }
+        if count_lucky_digits(numbers[up_to - 1]) <= k { prev_count + 1 } else { prev_count }
     }
 }
 // </vc-preamble>
@@ -45,8 +39,10 @@ fn solve(n: int, k: int, numbers: Seq<int>) -> (result: int)
 // </vc-spec>
 // <vc-code>
 {
+    // impl-start
     assume(false);
     unreached()
+    // impl-end
 }
 // </vc-code>
 

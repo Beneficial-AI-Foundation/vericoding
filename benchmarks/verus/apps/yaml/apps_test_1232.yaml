@@ -7,7 +7,6 @@ vc-preamble: |-
   use vstd::prelude::*;
 
   verus! {
-  
   spec fn valid_input(n_a: int, n_b: int, k: int, m: int, a: Seq<int>, b: Seq<int>) -> bool {
       n_a >= 1 && n_b >= 1 &&
       k >= 1 && k <= n_a &&
@@ -15,18 +14,18 @@ vc-preamble: |-
       a.len() == n_a &&
       b.len() == n_b
   }
-  
+
   spec fn is_sorted(s: Seq<int>) -> bool {
-      forall|i: int| 0 <= i < s.len() - 1 ==> s[i] <= s[i + 1]
-  }
-  
-  spec fn valid_selection(a: Seq<int>, b: Seq<int>, k: int, m: int) -> bool {
-      &&& k >= 1 && k <= a.len()
-      &&& m >= 1 && m <= b.len()
-      &&& a[k - 1] < b[b.len() - m]
+      forall|i: int, j: int| 0 <= i <= j < s.len() ==> #[trigger] s.index(i) <= #[trigger] s.index(j)
   }
 
-vc-helpers: |-
+  spec fn valid_selection(a: Seq<int>, b: Seq<int>, k: int, m: int) -> bool
+      recommends k >= 1 && k <= a.len() && m >= 1 && m <= b.len()
+  {
+      a[k - 1] < b[b.len() - m]
+  }
+
+vc-helpers: |
 
 vc-spec: |-
   fn solve(n_a: int, n_b: int, k: int, m: int, a: Seq<int>, b: Seq<int>) -> (result: &'static str)
@@ -44,7 +43,7 @@ vc-code: |-
       unreached()
   }
 
-vc-postamble: |-
+vc-postamble: |2-
 
   }
 

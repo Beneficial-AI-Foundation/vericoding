@@ -7,7 +7,7 @@ spec fn is_vowel(c: char) -> bool {
 }
 
 spec fn no_consecutive_vowels(s: Seq<char>) -> bool {
-    forall|i: int| 0 <= i < s.len() - 1 ==> !(is_vowel(s[i]) && is_vowel(s[i+1]))
+    forall|i: int| 0 <= i < s.len() - 1 ==> !(is_vowel(#[trigger] s[i]) && is_vowel(s[i+1]))
 }
 
 spec fn valid_output(input: Seq<char>, output: Seq<char>) -> bool {

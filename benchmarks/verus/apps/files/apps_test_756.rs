@@ -5,12 +5,13 @@ verus! {
 spec fn valid_input(n: int, a: Seq<int>) -> bool {
     n >= 1 && n <= 90 &&
     a.len() == n &&
-    (forall|i: int| 0 <= i < n ==> 1 <= a[i] <= 90) &&
-    (forall|i: int| 0 <= i < n - 1 ==> a[i] < a[i + 1])
+    (forall|i: int| 0 <= i < n ==> 1 <= #[trigger] a[i] <= 90) &&
+    (forall|i: int, j: int| i + 1 == j && 0 <= i < n - 1 ==> #[trigger] a[i] < #[trigger] a[j])
 }
 
 spec fn find_cutoff(a: Seq<int>, index: int, cutoff: int) -> int
     decreases a.len() - index
+    when 0 <= index <= a.len()
 {
     if index >= a.len() {
         cutoff
@@ -42,8 +43,10 @@ fn solve(n: int, a: Seq<int>) -> (result: int)
 // </vc-spec>
 // <vc-code>
 {
+    // impl-start
     assume(false);
     unreached()
+    // impl-end
 }
 // </vc-code>
 

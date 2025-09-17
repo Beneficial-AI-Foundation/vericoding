@@ -6,7 +6,7 @@ verus! {
 spec fn valid_input(n: int, m: int, d: int, matrix: Seq<Seq<int>>) -> bool {
     n > 0 && m > 0 && d > 0 &&
     matrix.len() == n &&
-    (forall|i: int| 0 <= i < n ==> matrix[i].len() == m) &&
+    (forall|i: int| #![auto] 0 <= i < n ==> matrix[i].len() == m) &&
     (forall|i: int, j: int| 0 <= i < n && 0 <= j < m ==> matrix[i][j] > 0)
 }
 
@@ -25,7 +25,7 @@ spec fn flatten(matrix: Seq<Seq<int>>) -> Seq<int>
     if matrix.len() == 0 {
         seq![]
     } else {
-        matrix[0] + flatten(matrix.skip(1))
+        matrix[0].add(flatten(matrix.subrange(1, matrix.len() as int)))
     }
 }
 
@@ -36,7 +36,7 @@ spec fn divide_sequence_by_d(s: Seq<int>, d: int) -> Seq<int>
     if s.len() == 0 {
         seq![]
     } else {
-        seq![s[0] / d] + divide_sequence_by_d(s.skip(1), d)
+        seq![s[0] / d].add(divide_sequence_by_d(s.subrange(1, s.len() as int), d))
     }
 }
 
@@ -47,7 +47,7 @@ spec fn sum_abs_differences_from_target(s: Seq<int>, target: int) -> int
         0
     } else {
         (if s[0] >= target { s[0] - target } else { target - s[0] }) + 
-        sum_abs_differences_from_target(s.skip(1), target)
+        sum_abs_differences_from_target(s.subrange(1, s.len() as int), target)
     }
 }
 
@@ -57,8 +57,10 @@ spec fn seq_min(s: Seq<int>) -> int
 {
     if s.len() == 1 {
         s[0]
+    } else if s.len() == 0 {
+        0
     } else {
-        let rest_min = seq_min(s.skip(1));
+        let rest_min = seq_min(s.subrange(1, s.len() as int));
         if s[0] <= rest_min { s[0] } else { rest_min }
     }
 }
@@ -69,8 +71,10 @@ spec fn seq_max(s: Seq<int>) -> int
 {
     if s.len() == 1 {
         s[0]
+    } else if s.len() == 0 {
+        0
     } else {
-        let rest_max = seq_max(s.skip(1));
+        let rest_max = seq_max(s.subrange(1, s.len() as int));
         if s[0] >= rest_max { s[0] } else { rest_max }
     }
 }
@@ -83,12 +87,15 @@ spec fn min_ops_in_range(simplified: Seq<int>, min_val: int, max_val: int) -> in
         sum_abs_differences_from_target(simplified, min_val)
     } else {
         let mid = (min_val + max_val) / 2;
-        let ops_at_mid = sum_abs_differences_from_target(simplified, mid);
-        let ops_at_mid_plus_1 = sum_abs_differences_from_target(simplified, mid + 1);
-        if ops_at_mid <= ops_at_mid_plus_1 {
-            min_ops_in_range(simplified, min_val, mid)
+        let mid_ops = sum_abs_differences_from_target(simplified, mid);
+        let left_ops = if mid > min_val { min_ops_in_range(simplified, min_val, mid - 1) } else { mid_ops };
+        let right_ops = if mid < max_val { min_ops_in_range(simplified, mid + 1, max_val) } else { mid_ops };
+        if mid_ops <= left_ops && mid_ops <= right_ops {
+            mid_ops
+        } else if left_ops <= right_ops {
+            left_ops
         } else {
-            min_ops_in_range(simplified, mid + 1, max_val)
+            right_ops
         }
     }
 }
@@ -107,16 +114,15 @@ spec fn minimum_operations_to_make_equal(simplified: Seq<int>) -> int
 
 // <vc-spec>
 fn solve(n: int, m: int, d: int, matrix: Seq<Seq<int>>) -> (result: int)
-    requires
-        valid_input(n, m, d, matrix)
-    ensures
-        result == -1 <==> !all_same_remainder(matrix, d) &&
-        (result >= 0 ==> all_same_remainder(matrix, d)) &&
-        (result >= 0 ==> {
+    requires valid_input(n, m, d, matrix)
+    ensures 
+        result == -1 <==> !all_same_remainder(matrix, d),
+        result >= 0 ==> all_same_remainder(matrix, d),
+        result >= 0 ==> {
             let flat = flatten(matrix);
             let simplified = divide_sequence_by_d(flat, d);
             result == minimum_operations_to_make_equal(simplified)
-        })
+        }
 // </vc-spec>
 // <vc-code>
 {

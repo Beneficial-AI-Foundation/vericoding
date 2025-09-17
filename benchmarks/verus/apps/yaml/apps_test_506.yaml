@@ -15,14 +15,21 @@ vc-preamble: |-
   }
 
   spec fn count_squares(a: int, b: int) -> int
-      decreases a + b
+      recommends a >= 0 && b >= 0
+      decreases a + b when a > 0 && b > 0
   {
       if a == 0 || b == 0 {
           0
       } else if a > b {
-          a / b + count_squares(a % b, b)
+          if b == 0 { 0 } else {
+              a / b + count_squares(a % b, b)
+          }
+      } else if b > a {
+          if a == 0 { 0 } else {
+              b / a + count_squares(a, b % a)
+          }
       } else {
-          b / a + count_squares(a, b % a)
+          1
       }
   }
 
@@ -30,13 +37,12 @@ vc-helpers: |
 
 vc-spec: |-
   fn solve(a: int, b: int) -> (result: int)
-      requires 
-          valid_input(a, b),
+      requires valid_input(a, b)
       ensures 
           result >= 0,
-          (a == b) ==> (result == 1),
+          a == b ==> result == 1,
           a > b ==> result >= 1,
-          result == count_squares(a, b),
+          result == count_squares(a, b)
 
 vc-code: |-
   {
