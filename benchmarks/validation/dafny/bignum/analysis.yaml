@@ -13,7 +13,7 @@ files-sampled:
   issues-with-implementation: 'None'
 - file: 21_bignum_ModExp[ModExpPow2]_impl_gpt-mini.dfy
   llm: gpt-mini
-  issues-with-spec: 'ModExpPow2 still contains |assume false|'
+  issues-with-spec: 'None, unmodified'
   issues-with-implementation: 'None'
 - file: 15_bignum_ModExp[Add,Mul,Zeroes]_impl_gpt-mini.dfy
   llm: gpt-mini
