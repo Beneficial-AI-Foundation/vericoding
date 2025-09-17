@@ -197,16 +197,13 @@ resource "aws_batch_compute_environment" "vericoding_compute_env" {
   service_role            = aws_iam_role.batch_service_role.arn
   
   compute_resources {
-    type                = "SPOT"
-    allocation_strategy = "SPOT_CAPACITY_OPTIMIZED"
+    type                = "EC2"
     
     min_vcpus     = 0    # Scale to 0 when idle
-    max_vcpus     = 160   # 20 machines * 8 vCPUs each  
+    max_vcpus     = 160    # 40 machines * 4 vCPUs each, except I think I'm limited to 64 vcpus, so 16 machines
     desired_vcpus = 0    # Target 0 instances when idle
     
-    instance_type = ["c8g.2xlarge"]
-    
-    bid_percentage = 100  # 100% of on-demand price
+    instance_type = ["m8g.xlarge"]
     
     
     instance_role = aws_iam_instance_profile.batch_instance_profile.arn
@@ -245,8 +242,8 @@ resource "aws_batch_job_definition" "lean_verification" {
   
   container_properties = jsonencode({
     image = "ubuntu:22.04"
-    vcpus = 8
-    memory = 15360  # 15GB (leave 1GB for system)
+    vcpus = 4
+    memory = 15360  # 15GB
     
     jobRoleArn = aws_iam_role.batch_job_role.arn
     executionRoleArn = aws_iam_role.batch_job_role.arn
