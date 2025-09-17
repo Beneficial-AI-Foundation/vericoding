@@ -1,4 +1,0 @@
-// SPEC
-
-method EqualityOfStrings0() {
-}

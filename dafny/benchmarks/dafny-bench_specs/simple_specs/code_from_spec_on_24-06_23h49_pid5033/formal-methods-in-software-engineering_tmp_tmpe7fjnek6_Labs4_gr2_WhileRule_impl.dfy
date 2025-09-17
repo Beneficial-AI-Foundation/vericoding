@@ -1,4 +1,0 @@
-//IMPL WhileRule
-method WhileRule()
-{
-}
