@@ -6,6 +6,7 @@ verus! {
 spec fn count_ones_in_binary(n: int) -> int
     recommends n >= 1
     decreases n
+    when n >= 1
 {
     if n == 1 {
         1
@@ -35,10 +36,8 @@ fn min_bacteria(x: int) -> (result: int)
 // </vc-spec>
 // <vc-code>
 {
-    // impl-start
     assume(false);
     unreached()
-    // impl-end
 }
 // </vc-code>
 

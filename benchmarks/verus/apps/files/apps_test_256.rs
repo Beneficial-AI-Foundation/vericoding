@@ -1,41 +1,74 @@
 // <vc-preamble>
 use vstd::prelude::*;
-use vstd::string::*;
 
 verus! {
-spec fn split_lines(input: Seq<char>) -> Seq<Seq<char>> {
+
+#[verifier::external_body]
+spec fn split_lines(input: &str) -> Seq<&str> {
     Seq::empty()
 }
 
-spec fn split_by_char(line: Seq<char>, c: char) -> Seq<Seq<char>> {
+#[verifier::external_body]
+spec fn split_by_char(line: &str, c: char) -> Seq<&str> {
     Seq::empty()
 }
 
-spec fn parse_line(line: Seq<char>) -> Seq<int> {
-    Seq::empty()
+#[verifier::external_body]
+spec fn char_at(s: &str, i: int) -> char {
+    ' '
 }
 
-spec fn valid_input(input: Seq<char>) -> bool {
-    let lines = split_lines(input);
-    lines.len() >= 4 &&
-    (forall|i: int| 0 <= i < 4 ==> valid_player_line(lines[i]))
+#[verifier::external_body]
+spec fn str_len(s: &str) -> int {
+    0
 }
 
-spec fn valid_player_line(line: Seq<char>) -> bool {
+#[verifier::external_body]
+spec fn empty_string() -> String {
+    String::new()
+}
+
+#[verifier::external_body]
+spec fn team1_string() -> String {
+    "Team 1\n".to_string()
+}
+
+#[verifier::external_body]
+spec fn team2_string() -> String {
+    "Team 2\n".to_string()
+}
+
+#[verifier::external_body]
+spec fn draw_string() -> String {
+    "Draw\n".to_string()
+}
+
+spec fn is_valid_integer(s: &str) -> bool {
+    str_len(s) > 0 && forall|i: int| 0 <= i < str_len(s) ==> ('0' <= char_at(s, i) && char_at(s, i) <= '9')
+}
+
+spec fn valid_player_line(line: &str) -> bool {
     let parts = split_by_char(line, ' ');
     parts.len() == 2 &&
     is_valid_integer(parts[0]) &&
     is_valid_integer(parts[1])
 }
 
-spec fn is_valid_integer(s: Seq<char>) -> bool {
-    s.len() > 0 && (forall|i: int| 0 <= i < s.len() ==> '0' <= s[i] <= '9')
+spec fn valid_input(input: &str) -> bool {
+    let lines = split_lines(input);
+    lines.len() >= 4 &&
+    forall|i: int| 0 <= i < 4 ==> valid_player_line(lines[i])
 }
 
-spec fn compute_result(input: Seq<char>) -> Seq<char> {
+#[verifier::external_body]
+spec fn parse_line(line: &str) -> Seq<int> {
+    Seq::empty()
+}
+
+spec fn compute_result(input: &str) -> String {
     let lines = split_lines(input);
     if lines.len() < 4 {
-        Seq::empty()
+        empty_string()
     } else {
         let player1 = parse_line(lines[0]);
         let player2 = parse_line(lines[1]);
@@ -43,7 +76,7 @@ spec fn compute_result(input: Seq<char>) -> Seq<char> {
         let player4 = parse_line(lines[3]);
 
         if player1.len() != 2 || player2.len() != 2 || player3.len() != 2 || player4.len() != 2 {
-            Seq::empty()
+            empty_string()
         } else {
             let a = player1[0];
             let b = player1[1];
@@ -58,11 +91,11 @@ spec fn compute_result(input: Seq<char>) -> Seq<char> {
             let team2 = ((x > b && w > c) || (z > b && y > c)) && ((x > d && w > a) || (z > d && y > a));
 
             if team1 {
-                seq!['T', 'e', 'a', 'm', ' ', '1', '\n']
+                team1_string()
             } else if team2 {
-                seq!['T', 'e', 'a', 'm', ' ', '2', '\n']
+                team2_string()
             } else {
-                seq!['D', 'r', 'a', 'w', '\n']
+                draw_string()
             }
         }
     }
@@ -74,15 +107,16 @@ spec fn compute_result(input: Seq<char>) -> Seq<char> {
 
 // <vc-spec>
 fn solve(input: &str) -> (result: String)
-    requires
-        valid_input(input@)
-    ensures
-        result@ == compute_result(input@)
+    requires 
+        valid_input(input)
+    ensures 
+        result == compute_result(input),
+        (result@ == "Team 1\n"@) || (result@ == "Team 2\n"@) || (result@ == "Draw\n"@)
 // </vc-spec>
 // <vc-code>
 {
     assume(false);
-    unreached()
+    "Draw\n".to_string()
 }
 // </vc-code>
 

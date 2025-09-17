@@ -3,15 +3,16 @@ use vstd::prelude::*;
 
 verus! {
 spec fn sum_abs(arr: Seq<int>, i: int) -> int
-    recommends 0 <= i <= arr.len()
-    decreases arr.len() - i
+    decreases arr.len() - i when 0 <= i <= arr.len()
 {
-    if i == arr.len() { 0 }
-    else { (if arr[i] >= 0 { arr[i] } else { -arr[i] }) + sum_abs(arr, i + 1) }
+    if i == arr.len() {
+        0
+    } else {
+        (if arr[i] >= 0 { arr[i] } else { -arr[i] }) + sum_abs(arr, i + 1)
+    }
 }
 
-spec fn valid_input(n: int, arr: Seq<int>) -> bool
-{
+spec fn valid_input(n: int, arr: Seq<int>) -> bool {
     0 <= n == arr.len()
 }
 // </vc-preamble>

@@ -11,13 +11,13 @@ vc-preamble: |-
   verus! {
   spec fn valid_input(n: int, m: Seq<int>) -> bool {
       n > 0 && m.len() == n && 
-      forall|i: int| 0 <= i < n ==> 0 <= m[i] < i + 1
+      forall|i: int| 0 <= i < n ==> 0 <= #[trigger] m[i] < i + 1
   }
 
   spec fn valid_solution(n: int, m: Seq<int>, dm: Seq<int>) -> bool {
       dm.len() == n && m.len() == n &&
-      (forall|i: int| 0 <= i < n ==> dm[i] >= m[i] + 1) &&
-      (forall|i: int| 0 <= i < n - 1 ==> dm[i] <= dm[i + 1])
+      (forall|i: int| 0 <= i < n ==> #[trigger] dm[i] >= #[trigger] m[i] + 1) &&
+      (forall|i: int| 0 <= i < n - 1 ==> #[trigger] dm[i] <= dm[i + 1])
   }
 
   spec fn sum_below(m: Seq<int>, dm: Seq<int>) -> int

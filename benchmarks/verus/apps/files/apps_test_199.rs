@@ -9,22 +9,25 @@ spec fn valid_input(n: int, s: int, v: Seq<int>) -> bool {
 spec fn sum(v: Seq<int>) -> int
     decreases v.len()
 {
-    if v.len() == 0 { 
-        0 
-    } else { 
-        v[0] + sum(v.drop_first()) 
+    if v.len() == 0 {
+        0
+    } else {
+        v[0] + sum(v.subrange(1, v.len() as int))
     }
 }
 
 spec fn min_seq(v: Seq<int>) -> int
+    recommends v.len() > 0
     decreases v.len()
 {
-    if v.len() == 1 { 
-        v[0] 
-    } else if v[0] <= min_seq(v.drop_first()) { 
-        v[0] 
-    } else { 
-        min_seq(v.drop_first()) 
+    if v.len() == 1 {
+        v[0]
+    } else if v.len() > 1 && v[0] <= min_seq(v.subrange(1, v.len() as int)) {
+        v[0]
+    } else if v.len() > 1 {
+        min_seq(v.subrange(1, v.len() as int))
+    } else {
+        0
     }
 }
 
@@ -47,8 +50,10 @@ fn solve(n: int, s: int, v: Seq<int>) -> (result: int)
 // </vc-spec>
 // <vc-code>
 {
+    // impl-start
     assume(false);
     unreached()
+    // impl-end
 }
 // </vc-code>
 

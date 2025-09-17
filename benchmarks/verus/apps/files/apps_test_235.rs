@@ -7,11 +7,10 @@ spec fn valid_input(n: int) -> bool {
 }
 
 spec fn vasya_eats_with_strategy(n: int, k: int) -> int
-    recommends n >= 0 && k >= 1
     decreases n
 {
-    if n <= 0 {
-        0
+    if n <= 0 || k < 1 { 
+        0 
     } else {
         let cur = if n < k { n } else { k };
         let remaining_after_vasya = n - cur;
@@ -20,9 +19,8 @@ spec fn vasya_eats_with_strategy(n: int, k: int) -> int
     }
 }
 
-spec fn is_minimal_solution(n: int, k: int) -> bool
-    recommends valid_input(n) && k >= 1
-{
+spec fn is_minimal_solution(n: int, k: int) -> bool {
+    valid_input(n) && k >= 1 && 
     vasya_eats_with_strategy(n, k) * 2 >= n &&
     (k == 1 || vasya_eats_with_strategy(n, k - 1) * 2 < n)
 }
@@ -34,14 +32,16 @@ spec fn is_minimal_solution(n: int, k: int) -> bool
 // <vc-spec>
 fn solve(n: int) -> (result: int)
     requires valid_input(n)
-    ensures 
+    ensures
         1 <= result <= n,
         is_minimal_solution(n, result)
 // </vc-spec>
 // <vc-code>
 {
+    // impl-start
     assume(false);
     unreached()
+    // impl-end
 }
 // </vc-code>
 

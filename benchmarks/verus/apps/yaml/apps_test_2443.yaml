@@ -9,28 +9,28 @@ vc-preamble: |-
   use vstd::prelude::*;
 
   verus! {
-  spec fn prefix_product(s: Seq<nat>, i: nat, mod_val: nat) -> nat
-      recommends mod_val > 0, i <= s.len()
-      decreases i
+  spec fn prefix_product(s: Seq<nat>, i: nat, modulus: nat) -> nat
+    recommends modulus > 0, i <= s.len()
+    decreases i
   {
       if i == 0 { 1 }
-      else { (s[i as int - 1] * prefix_product(s, (i - 1) as nat, mod_val)) % mod_val }
+      else { (s[i as int - 1] * prefix_product(s, (i - 1) as nat, modulus)) % modulus }
   }
 
-  spec fn prefix_products(s: Seq<nat>, mod_val: nat) -> Seq<nat>
-      recommends mod_val > 0
+  spec fn prefix_products(s: Seq<nat>, modulus: nat) -> Seq<nat>
+    recommends modulus > 0
   {
-      Seq::new(s.len(), |i: int| prefix_product(s, (i + 1) as nat, mod_val))
+      Seq::new(s.len(), |i: int| prefix_product(s, (i + 1) as nat, modulus))
   }
 
   spec fn all_distinct<T>(s: Seq<T>) -> bool {
       forall|i: int, j: int| 0 <= i < j < s.len() ==> s[i] != s[j]
   }
 
-  spec fn no_forbidden_products(s: Seq<nat>, forbidden: Seq<nat>, mod_val: nat) -> bool
-      recommends mod_val > 0
+  spec fn no_forbidden_products(s: Seq<nat>, forbidden: Seq<nat>, modulus: nat) -> bool
+    recommends modulus > 0
   {
-      let products = prefix_products(s, mod_val);
+      let products = prefix_products(s, modulus);
       forall|i: int| 0 <= i < products.len() ==> !forbidden.contains(products[i])
   }
 
@@ -38,36 +38,36 @@ vc-preamble: |-
       m >= 1 &&
       n >= 0 &&
       forbidden.len() == n &&
-      (forall|i: int| 0 <= i < forbidden.len() ==> 0 <= forbidden[i] < m) &&
-      (forall|i: int, j: int| 0 <= i < j < forbidden.len() ==> forbidden[i] != forbidden[j])
+      (forall|i: int| 0 <= i < forbidden.len() ==> #[trigger] forbidden[i] >= 0 && forbidden[i] < m) &&
+      (forall|i: int, j: int| 0 <= i < j < forbidden.len() ==> #[trigger] forbidden[i] != #[trigger] forbidden[j])
   }
 
   spec fn valid_sequence(sequence: Seq<nat>, m: nat, forbidden: Seq<nat>) -> bool
-      recommends m > 0
+    recommends m > 0
   {
-      (forall|i: int| 0 <= i < sequence.len() ==> 0 <= sequence[i] < m) &&
-      all_distinct(seq![1].add(prefix_products(sequence, m))) &&
+      (forall|i: int| 0 <= i < sequence.len() ==> #[trigger] sequence[i] >= 0 && sequence[i] < m) &&
+      all_distinct(Seq::new(1, |x: int| 1).add(prefix_products(sequence, m))) &&
       no_forbidden_products(sequence, forbidden, m)
   }
 
 vc-helpers: |
 
 vc-spec: |-
-  proof fn solve(n: nat, m: nat, forbidden: Seq<nat>) -> (result: (nat, Seq<nat>))
-      requires valid_input(n, m, forbidden)
-      ensures ({
-          let (length, sequence) = result;
-          length == sequence.len() &&
-          length >= 0 &&
-          (m == 1 ==> length == 0 && sequence == Seq::<nat>::empty()) &&
-          (m > 1 ==> valid_sequence(sequence, m, forbidden)) &&
-          (n == 0 && m > 1 ==> length > 0)
-      })
+  fn solve(n: usize, m: usize, forbidden: Vec<usize>) -> (result: (usize, Vec<usize>))
+    requires valid_input(n as nat, m as nat, forbidden@.map(|i, x: usize| x as nat))
+    ensures ({
+        let (length, sequence) = result;
+        length == sequence.len() &&
+        length >= 0 &&
+        (m == 1 ==> length == 0 && sequence@ == Seq::<usize>::empty()) &&
+        (m > 1 ==> valid_sequence(sequence@.map(|i, x: usize| x as nat), m as nat, forbidden@.map(|i, x: usize| x as nat))) &&
+        (n == 0 && m > 1 ==> length > 0)
+    })
 
 vc-code: |-
   {
       assume(false);
-      (0, Seq::<nat>::empty())
+      (0, Vec::new())
   }
 
 vc-postamble: |2-

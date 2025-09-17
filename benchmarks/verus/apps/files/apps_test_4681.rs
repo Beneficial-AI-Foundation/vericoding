@@ -2,12 +2,18 @@
 use vstd::prelude::*;
 
 verus! {
+
 spec fn lucas(n: int) -> int
     recommends n >= 0
+    decreases n
 {
-    if n == 0 { 2 }
-    else if n == 1 { 1 }
-    else { lucas(n-1) + lucas(n-2) }
+    if n <= 0 {
+        2
+    } else if n == 1 {
+        1
+    } else {
+        lucas(n - 1) + lucas(n - 2)
+    }
 }
 
 spec fn valid_input(n: int) -> bool {

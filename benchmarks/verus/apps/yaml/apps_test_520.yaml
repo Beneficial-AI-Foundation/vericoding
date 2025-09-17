@@ -1,6 +1,6 @@
 vc-description: |-
   Given a list of university entrance years for groups that student Igor joined,
-  determine Igor's university entrance year. Igor joins his own group and all groups
+  determine Igor's entrance year. Igor joins his own group and all groups
   where the entrance year differs by at most x years from his entrance year.
   The solution computes Igor's entrance year as the average of all group years.
 
@@ -9,8 +9,7 @@ vc-preamble: |-
 
   verus! {
   spec fn sum_range(s: Seq<int>, start: int, end: int) -> int
-      recommends 0 <= start <= end <= s.len()
-      decreases end - start
+      decreases end - start when 0 <= start <= end <= s.len()
   {
       if start == end {
           0
@@ -27,14 +26,14 @@ vc-preamble: |-
 vc-helpers: |
 
 vc-spec: |-
-  fn solve(n: int, years: Seq<int>) -> (result: int)
+  proof fn solve(n: int, years: Seq<int>) -> (result: int)
       requires valid_input(n, years)
       ensures result == sum_range(years, 0, years.len() as int) / n
 
 vc-code: |-
   {
       assume(false);
-      unreached()
+      0
   }
 
 vc-postamble: |2-

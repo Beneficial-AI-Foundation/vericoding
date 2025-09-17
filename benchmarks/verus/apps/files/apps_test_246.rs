@@ -3,17 +3,13 @@ use vstd::prelude::*;
 
 verus! {
 spec fn sum_of_digits(x: int) -> int
-  recommends x >= 0
-  decreases x
+  decreases x when x >= 0
 {
-  if x == 0 { 0 }
-  else { (x % 10) + sum_of_digits(x / 10) }
+  if x <= 0 { 0 } else { (x % 10) + sum_of_digits(x / 10) }
 }
 
-spec fn check(x: int, s: int) -> bool
-  recommends x >= 0
-{
-  x - sum_of_digits(x) >= s
+spec fn check(x: int, s: int) -> bool {
+  x >= 0 && x - sum_of_digits(x) >= s
 }
 // </vc-preamble>
 
@@ -22,11 +18,8 @@ spec fn check(x: int, s: int) -> bool
 
 // <vc-spec>
 fn solve(n: int, s: int) -> (result: int)
-  requires 
-    n >= 1 && s >= 1
-  ensures 
-    result >= 0 &&
-    result <= n
+requires n >= 1 && s >= 1
+ensures result >= 0 && result <= n
 // </vc-spec>
 // <vc-code>
 {

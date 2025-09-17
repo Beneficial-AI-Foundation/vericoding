@@ -6,43 +6,36 @@ verus! {
 spec fn string_value(s: Seq<char>, w: Seq<int>) -> int
   decreases s.len()
 {
-  if s.len() == 0 {
-    0
-  } else {
-    let char_index = (s[s.len() - 1] as int) - ('a' as int);
-    string_value(s.subrange(0, s.len() - 1), w) + s.len() * w[char_index]
+  if s.len() == 0 { 0 }
+  else {
+    let char_index = (s.last() as int) - ('a' as int);
+    string_value(s.drop_last(), w) + s.len() * w[char_index]
   }
 }
 
 spec fn append_value(start_pos: int, count: int, max_val: int) -> int
   decreases count
 {
-  if count == 0 {
-    0
-  } else {
-    (start_pos + count) * max_val + append_value(start_pos, count - 1, max_val)
-  }
+  if count <= 0 { 0 }
+  else { (start_pos + count) * max_val + append_value(start_pos, count - 1, max_val) }
 }
 
 spec fn max_value(w: Seq<int>) -> int
   decreases w.len()
 {
-  if w.len() == 1 {
-    w[0]
-  } else if w[0] >= max_value(w.subrange(1, w.len() as int)) {
-    w[0]
-  } else {
-    max_value(w.subrange(1, w.len() as int))
-  }
+  if w.len() <= 1 { w[0] }
+  else if w[0] >= max_value(w.subrange(1, w.len() as int)) { w[0] }
+  else { max_value(w.subrange(1, w.len() as int)) }
 }
 
-spec fn valid_input(s: Seq<char>, k: int, w: Seq<int>) -> bool {
+spec fn valid_input(s: Seq<char>, k: int, w: Seq<int>) -> bool
+{
   w.len() == 26 && 
   k >= 0 && 
   s.len() <= 1000 && 
   k <= 1000 && 
-  (forall|i: int| 0 <= i < w.len() ==> 0 <= w[i] <= 1000) &&
-  (forall|i: int| 0 <= i < s.len() ==> 'a' <= s[i] <= 'z')
+  (forall|i: int| 0 <= i < w.len() ==> #[trigger] w[i] >= 0 && #[trigger] w[i] <= 1000) &&
+  (forall|i: int| 0 <= i < s.len() ==> 'a' <= #[trigger] s[i] && #[trigger] s[i] <= 'z')
 }
 // </vc-preamble>
 
@@ -50,19 +43,14 @@ spec fn valid_input(s: Seq<char>, k: int, w: Seq<int>) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(s: Seq<char>, k: int, w: Seq<int>) -> (result: i32)
-  requires 
-    valid_input(s, k, w),
-    w.len() == 26,
-    forall|i: int| 0 <= i < s.len() ==> 'a' <= s[i] <= 'z',
-    w.len() > 0
+fn solve(s: Seq<char>, k: int, w: Seq<int>) -> (result: int)
+  requires valid_input(s, k, w)
+  ensures result == string_value(s, w) + append_value(s.len() as int, k, max_value(w))
 // </vc-spec>
 // <vc-code>
 {
-  // impl-start
   assume(false);
-  0
-  // impl-end
+  unreached()
 }
 // </vc-code>
 

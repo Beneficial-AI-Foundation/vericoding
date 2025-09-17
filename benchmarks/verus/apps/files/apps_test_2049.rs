@@ -3,10 +3,9 @@ use vstd::prelude::*;
 
 verus! {
 
-spec fn is_ladder(arr: Seq<int>, l: int, r: int) -> bool
-  recommends 0 <= l <= r < arr.len()
-{
-  if l == r {
+spec fn is_ladder(arr: Seq<int>, l: int, r: int) -> bool {
+  &&& 0 <= l <= r < arr.len()
+  &&& if l == r {
     true
   } else {
     exists|k: int| l <= k <= r && 
@@ -15,16 +14,14 @@ spec fn is_ladder(arr: Seq<int>, l: int, r: int) -> bool
   }
 }
 
-spec fn is_non_decreasing(arr: Seq<int>, start: int, end: int) -> bool
-  recommends 0 <= start <= end < arr.len()
-{
-  forall|i: int| start <= i < end ==> arr[i] <= arr[i+1]
+spec fn is_non_decreasing(arr: Seq<int>, start: int, end: int) -> bool {
+  &&& 0 <= start <= end < arr.len()
+  &&& forall|i: int| start <= i < end ==> #[trigger] arr[i] <= arr[i+1]
 }
 
-spec fn is_non_increasing(arr: Seq<int>, start: int, end: int) -> bool
-  recommends 0 <= start <= end < arr.len()
-{
-  forall|i: int| start <= i < end ==> arr[i] >= arr[i+1]
+spec fn is_non_increasing(arr: Seq<int>, start: int, end: int) -> bool {
+  &&& 0 <= start <= end < arr.len()
+  &&& forall|i: int| start <= i < end ==> #[trigger] arr[i] >= arr[i+1]
 }
 // </vc-preamble>
 
@@ -37,12 +34,12 @@ fn solve(n: int, m: int, arr: Seq<int>, queries: Seq<(int, int)>) -> (results: S
     n >= 1 && m >= 1,
     arr.len() == n,
     queries.len() == m,
-    forall|i: int| 0 <= i < m ==> 1 <= queries[i].0 <= queries[i].1 <= n
+    forall|i: int| 0 <= i < m ==> 1 <= #[trigger] queries[i].0 <= queries[i].1 <= n,
   ensures 
     results.len() == m,
-    forall|i: int| 0 <= i < m ==> results[i] == "Yes"@ || results[i] == "No"@,
+    forall|i: int| 0 <= i < m ==> #[trigger] results[i] == seq!['Y', 'e', 's'] || results[i] == seq!['N', 'o'],
     forall|i: int| 0 <= i < m ==> 
-      (results[i] == "Yes"@ <==> is_ladder(arr, queries[i].0 - 1, queries[i].1 - 1))
+      (#[trigger] results[i] == seq!['Y', 'e', 's'] <==> is_ladder(arr, queries[i].0 - 1, queries[i].1 - 1)),
 // </vc-spec>
 // <vc-code>
 {

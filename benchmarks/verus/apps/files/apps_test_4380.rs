@@ -11,7 +11,7 @@ spec fn is_odd(n: int) -> bool {
 }
 
 spec fn exists_odd_product(a: int, b: int) -> bool {
-    valid_input(a, b) ==> exists|c: int| 1 <= c <= 3 && is_odd(a * b * c)
+    valid_input(a, b) ==> exists|c: int| 1 <= c <= 3 && #[trigger] is_odd(a * b * c)
 }
 
 spec fn should_answer_yes(a: int, b: int) -> bool {
@@ -23,9 +23,9 @@ spec fn should_answer_yes(a: int, b: int) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(a: int, b: int) -> (result: String)
+fn solve(a: int, b: int) -> (result: Seq<char>)
   requires valid_input(a, b)
-  ensures result@ == (if should_answer_yes(a, b) { "Yes"@ } else { "No"@ })
+  ensures result == (if should_answer_yes(a, b) { "Yes"@ } else { "No"@ })
 // </vc-spec>
 // <vc-code>
 {

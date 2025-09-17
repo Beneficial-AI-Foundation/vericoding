@@ -23,7 +23,7 @@ vc-spec: |-
       ensures 
           result > 0,
           satisfies_constraint(result, n, k),
-          forall|x: int| x > 0 && (x / k) * (x % k) == n ==> result <= x
+          forall|x: int| #[trigger] satisfies_constraint(x, n, k) ==> result <= x
 
 vc-code: |-
   {

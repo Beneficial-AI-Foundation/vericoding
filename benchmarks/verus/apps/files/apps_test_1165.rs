@@ -4,15 +4,17 @@ use vstd::prelude::*;
 verus! {
 spec fn valid_input(n: int, m: int, a: Seq<int>, queries: Seq<(int, int, int)>) -> bool {
     n > 0 && m >= 0 && a.len() == n && queries.len() == m &&
-    forall|q: (int, int, int)| queries.contains(q) ==> 1 <= q.0 <= q.1 <= n
+    forall|q| queries.contains(q) ==> 1 <= q.0 <= q.1 <= n
 }
 
 spec fn valid_result(a: Seq<int>, queries: Seq<(int, int, int)>, result: Seq<int>) -> bool {
     result.len() == queries.len() &&
     forall|i: int| 0 <= i < queries.len() ==> {
-        let (l, r, x) = queries[i];
-        (result[i] == -1 ==> (forall|j: int| l <= j <= r ==> 0 <= j-1 < a.len() && a[j-1] == x)) &&
-        (result[i] != -1 ==> l <= result[i] <= r && 0 <= result[i]-1 < a.len() && a[result[i]-1] != x)
+        let l = queries[i].0;
+        let r = queries[i].1;
+        let x = queries[i].2;
+        (result[i] == -1 ==> (forall|j: int| l <= j <= r ==> 0 <= j-1 < a.len() && #[trigger] a[j-1] == x)) &&
+        (result[i] != -1 ==> l <= result[i] <= r && 0 <= result[i]-1 < a.len() && #[trigger] a[result[i]-1] != x)
     }
 }
 // </vc-preamble>

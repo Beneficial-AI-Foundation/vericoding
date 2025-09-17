@@ -7,40 +7,38 @@ vc-preamble: |-
   use vstd::prelude::*;
 
   verus! {
-
   spec fn digit_sum(n: int) -> int
-    recommends n >= 0
-    decreases n
+    decreases n when n >= 0
   {
-    if n == 0 {
-      0
-    } else {
-      (n % 10) + digit_sum(n / 10)
+    if n <= 0 { 
+      0 
+    } else { 
+      (n % 10) + digit_sum(n / 10) 
     }
   }
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-spec: |-
-  fn solve(n: i32) -> (result: i32)
+  fn solve(n: int) -> (result: int)
     requires 
-      n >= 1
+      n >= 1,
     ensures 
       n == 1 ==> result == -1,
-      n > 1 && result > 0 ==> result * result + digit_sum(result as int) * result == n,
-      n > 1 && result > 0 ==> forall|y: i32| y > 0 && y < result ==> y * y + digit_sum(y as int) * y != n,
-      n > 1 && result == -1 ==> forall|x: i32| x > 0 ==> x * x + digit_sum(x as int) * x != n,
-      result == -1 || result > 0
+      n > 1 && result > 0 ==> result * result + digit_sum(result) * result == n,
+      n > 1 && result > 0 ==> forall|y: int| y > 0 && y < result ==> y * y + digit_sum(y) * y != n,
+      n > 1 && result == -1 ==> forall|x: int| x > 0 ==> x * x + digit_sum(x) * x != n,
+      result == -1 || result > 0,
 
 vc-code: |-
   {
     // impl-start
     assume(false);
-    -1
+    unreached()
     // impl-end
   }
 
-vc-postamble: |-
+vc-postamble: |2-
 
   }
 

@@ -2,26 +2,33 @@
 use vstd::prelude::*;
 
 verus! {
-spec fn int_to_string(i: int) -> Seq<char> {
+
+spec fn int_to_string(i: int) -> Seq<char>
+    recommends i >= 0
+{
     seq!['1']
 }
 
-spec fn parse_int_from_string(s: Seq<char>) -> int {
+spec fn parse_int_from_string(s: Seq<char>) -> int
+    recommends s.len() > 0
+{
     1
 }
 
-spec fn valid_input(stdin_input: Seq<char>) -> bool {
+spec fn valid_input(stdin_input: Seq<char>) -> bool
+{
     stdin_input.len() > 0
 }
 
 spec fn sum_of_non_fizzbuzz_numbers(n: int) -> int
-    decreases n
+    recommends n >= 0
+    decreases n when n >= 0
 {
-    if n == 0 { 
-        0 
+    if n <= 0 {
+        0
     } else {
         let num = n;
-        if num % 3 > 0 && num % 5 > 0 {
+        if num % 3 != 0 && num % 5 != 0 {
             sum_of_non_fizzbuzz_numbers(n - 1) + num
         } else {
             sum_of_non_fizzbuzz_numbers(n - 1)

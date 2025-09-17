@@ -14,16 +14,15 @@ vc-preamble: |-
       n >= 2 && 
       m >= 0 && 
       pairs.len() == m &&
-      (forall|i: int| 0 <= i < pairs.len() ==> 1 <= pairs[i].0 <= n && 1 <= pairs[i].1 <= n) &&
-      (forall|i: int| 0 <= i < pairs.len() ==> pairs[i].0 != pairs[i].1)
+      (forall|i: int| 0 <= i < pairs.len() ==> #[trigger] pairs[i].0 >= 1 && #[trigger] pairs[i].0 <= n && #[trigger] pairs[i].1 >= 1 && #[trigger] pairs[i].1 <= n) &&
+      (forall|i: int| 0 <= i < pairs.len() ==> #[trigger] pairs[i].0 != #[trigger] pairs[i].1)
   }
 
   spec fn compute_final_l(pairs: Seq<(int, int)>) -> int
       decreases pairs.len()
   {
-      if pairs.len() == 0 {
-          1
-      } else {
+      if pairs.len() == 0 { 1 }
+      else {
           let x = pairs[pairs.len() - 1].0;
           let y = pairs[pairs.len() - 1].1;
           let min_val = if x < y { x } else { y };
@@ -35,9 +34,8 @@ vc-preamble: |-
   spec fn compute_final_r(n: int, pairs: Seq<(int, int)>) -> int
       decreases pairs.len()
   {
-      if pairs.len() == 0 {
-          n
-      } else {
+      if pairs.len() == 0 { n }
+      else {
           let x = pairs[pairs.len() - 1].0;
           let y = pairs[pairs.len() - 1].1;
           let max_val = if x > y { x } else { y };

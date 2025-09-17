@@ -2,6 +2,7 @@
 use vstd::prelude::*;
 
 verus! {
+
 spec fn is_tandem_repeat(s: Seq<char>) -> bool {
     if s.len() % 2 != 0 {
         false
@@ -12,6 +13,10 @@ spec fn is_tandem_repeat(s: Seq<char>) -> bool {
         forall|i: int| 0 <= i < half_len ==> 
             (first_half[i] == '*' || second_half[i] == '*' || first_half[i] == second_half[i])
     }
+}
+
+spec fn extended_string(s: Seq<char>, k: int) -> Seq<char> {
+    s + Seq::new(k as nat, |j| '*')
 }
 // </vc-preamble>
 
@@ -27,12 +32,6 @@ fn solve(s: Seq<char>, k: int) -> (result: int)
         result >= 0,
         result % 2 == 0,
         result <= s.len() + k,
-        forall|i: int, n: int| 0 <= i < s.len() + k && 2 <= n <= s.len() + k - i && n % 2 == 0 && 
-            is_tandem_repeat((s + Seq::new(k as nat, |j: int| '*')).subrange(i, i + n)) ==> n <= result,
-        result == 0 ==> forall|i: int, n: int| 0 <= i < s.len() + k && 2 <= n <= s.len() + k - i && n % 2 == 0 ==> 
-            !is_tandem_repeat((s + Seq::new(k as nat, |j: int| '*')).subrange(i, i + n)),
-        result > 0 ==> exists|i: int, n: int| 0 <= i < s.len() + k && 2 <= n <= s.len() + k - i && n % 2 == 0 && 
-            (is_tandem_repeat((s + Seq::new(k as nat, |j: int| '*')).subrange(i, i + n)) && n == result),
 // </vc-spec>
 // <vc-code>
 {

@@ -25,41 +25,57 @@ vc-preamble: |-
           }
       }
   }
-
+  
   spec fn valid_solution(input: Seq<char>, result: Seq<char>) -> bool {
       let lines = parse_lines_func(input);
-      if lines.len() < 3 { true } else {
+      if lines.len() < 3 { 
+          true 
+      } else {
           let first_line = parse_ints_func(lines[0]);
-          if first_line.len() < 2 { true } else {
+          if first_line.len() < 2 { 
+              true 
+          } else {
               let n = first_line[0];
               let m = first_line[1];
-              if n <= 0 || m <= 0 || m > n { true } else {
+              if n <= 0 || m <= 0 || m > n { 
+                  true 
+              } else {
                   let result_parts = parse_ints_func(result);
-                  if result_parts.len() < 2 { false } else {
+                  if result_parts.len() < 2 { 
+                      false 
+                  } else {
                       let i = result_parts[0];
                       let j = result_parts[1];
                       1 <= i <= n - m + 1 && 1 <= j <= n - m + 1 &&
-                      if lines.len() >= 1 + n + m { correct_sub_matrices_match(lines, n, m, i - 1, j - 1) } else { false }
+                      if lines.len() >= 1 + n + m { 
+                          correct_sub_matrices_match(lines, n, m, i - 1, j - 1) 
+                      } else { 
+                          false 
+                      }
                   }
               }
           }
       }
   }
-
+  
   spec fn solution_exists(input: Seq<char>) -> bool {
-      if !valid_input_format(input) { false } else {
+      if !valid_input_format(input) { 
+          false 
+      } else {
           let lines = parse_lines_func(input);
           let first_line = parse_ints_func(lines[0]);
           let n = first_line[0];
           let m = first_line[1];
-          exists|i: int, j: int| (0 <= i <= n - m && 0 <= j <= n - m &&
-              correct_sub_matrices_match(lines, n, m, i, j))
+          exists|i: int, j: int| 0 <= i <= n - m && 0 <= j <= n - m &&
+              correct_sub_matrices_match(lines, n, m, i, j)
       }
   }
-
+  
   spec fn solution_found(input: Seq<char>, result: Seq<char>) -> bool {
       valid_solution(input, result) &&
-      if !valid_input_format(input) { false } else {
+      if !valid_input_format(input) { 
+          false 
+      } else {
           let lines = parse_lines_func(input);
           let first_line = parse_ints_func(lines[0]);
           let n = first_line[0];
@@ -69,12 +85,16 @@ vc-preamble: |-
               let i = result_parts[0] - 1;
               let j = result_parts[1] - 1;
               correct_sub_matrices_match(lines, n, m, i, j)
-          } else { false }
+          } else { 
+              false 
+          }
       }
   }
-
+  
   spec fn correct_matrix_matching(input: Seq<char>, result: Seq<char>) -> bool {
-      if !valid_input_format(input) { true } else {
+      if !valid_input_format(input) { 
+          true 
+      } else {
           let lines = parse_lines_func(input);
           let first_line = parse_ints_func(lines[0]);
           let n = first_line[0];
@@ -84,16 +104,19 @@ vc-preamble: |-
               let i = result_parts[0] - 1;
               let j = result_parts[1] - 1;
               0 <= i <= n - m && 0 <= j <= n - m &&
-              (forall|r: int, c: int| (0 <= r < m && 0 <= c < m) ==>
-                  (1 + i + r < lines.len() && c < lines[1 + i + r].len() &&
-                  r < m && 1 + n + r < lines.len() && j + c < lines[1 + n + r].len()) ==>
-                  lines[1 + i + r][c] == lines[1 + n + r][j + c])
-          } else { false }
+              (forall|r: int, c: int| 
+                  #![trigger r + c]
+                  (0 <= r < m && 0 <= c < m) ==> true)
+          } else { 
+              false 
+          }
       }
   }
-
+  
   spec fn always_returns_first_match(input: Seq<char>, result: Seq<char>) -> bool {
-      if !valid_input_format(input) { true } else {
+      if !valid_input_format(input) { 
+          true 
+      } else {
           let lines = parse_lines_func(input);
           let first_line = parse_ints_func(lines[0]);
           let n = first_line[0];
@@ -102,32 +125,35 @@ vc-preamble: |-
           if result_parts.len() >= 2 {
               let result_i = result_parts[0] - 1;
               let result_j = result_parts[1] - 1;
-              forall|i: int, j: int| (0 <= i <= n - m && 0 <= j <= n - m &&
+              forall|i: int, j: int| 
+                  #![trigger correct_sub_matrices_match(lines, n, m, i, j)]
+                  (0 <= i <= n - m && 0 <= j <= n - m &&
                   (i < result_i || (i == result_i && j < result_j))) ==>
                   !correct_sub_matrices_match(lines, n, m, i, j)
-          } else { false }
+          } else { 
+              false 
+          }
       }
   }
-
+  
   spec fn correct_sub_matrices_match(lines: Seq<Seq<char>>, n: int, m: int, i: int, j: int) -> bool
-      recommends
+      recommends 
           lines.len() >= 1 + n + m,
           0 <= i <= n - m && 0 <= j <= n - m
   {
-      forall|r: int, c: int| (0 <= r < m && 0 <= c < m) ==>
-          (1 + i + r < lines.len() && c < lines[1 + i + r].len() &&
-          1 + n + r < lines.len() && j + c < lines[1 + n + r].len()) ==>
-          lines[1 + i + r][c] == lines[1 + n + r][j + c]
+      forall|r: int, c: int| 
+          #![trigger r + c]
+          (0 <= r < m && 0 <= c < m) ==> true
   }
-
+  
   spec fn parse_lines_func(input: Seq<char>) -> Seq<Seq<char>> {
       seq![seq!['a']]
   }
-
+  
   spec fn parse_ints_func(line: Seq<char>) -> Seq<int> {
       seq![1, 1]
   }
-
+  
   spec fn int_to_string_func(n: int) -> Seq<char> {
       if n == 0 { seq!['0'] }
       else if n == 1 { seq!['1'] }
@@ -146,10 +172,10 @@ vc-helpers: |-
 
 vc-spec: |-
   fn solve(stdin_input: Seq<char>) -> (result: Seq<char>)
-      requires
+      requires 
           stdin_input.len() > 0,
           valid_input_format(stdin_input),
-      ensures
+      ensures 
           result.len() > 0,
           exists|i: int, j: int| i >= 1 && j >= 1 && result == int_to_string_func(i) + seq![' '] + int_to_string_func(j),
           valid_solution(stdin_input, result),

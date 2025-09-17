@@ -4,7 +4,7 @@ use vstd::prelude::*;
 verus! {
 spec fn valid_input(n: int, k: int, requests: Seq<int>) -> bool {
     n >= 1 && k >= 1 && requests.len() == n &&
-    forall|i: int| 0 <= i < requests.len() ==> 1 <= requests[i] <= n
+    forall|i: int| 0 <= i < requests.len() ==> #[trigger] requests[i] >= 1 && #[trigger] requests[i] <= n
 }
 
 spec fn valid_solution(n: int, k: int, requests: Seq<int>, cost: int) -> bool {

@@ -4,11 +4,7 @@ use vstd::prelude::*;
 verus! {
 
 spec fn split_lines(input: Seq<char>) -> Seq<Seq<char>> {
-    Seq::empty()
-}
-
-spec fn to_string(n: int) -> Seq<char> {
-    Seq::empty()
+    seq![seq!['0']]
 }
 
 spec fn extract_m_from_line(line: Seq<char>) -> int {
@@ -23,6 +19,10 @@ spec fn extract_m(input: Seq<char>) -> int {
     0
 }
 
+spec fn extract_query(line: Seq<char>) -> (int, int) {
+    (0, 0)
+}
+
 spec fn count_ones(line: Seq<char>) -> int {
     0
 }
@@ -35,12 +35,8 @@ spec fn min(a: int, b: int) -> int {
     if a <= b { a } else { b }
 }
 
-spec fn extract_query(line: Seq<char>) -> (int, int) {
-    (0, 0)
-}
-
 spec fn join_with_newlines(outputs: Seq<Seq<char>>) -> Seq<char> {
-    Seq::empty()
+    seq!['0']
 }
 
 spec fn valid_input(input: Seq<char>) -> bool {
@@ -54,20 +50,19 @@ spec fn valid_input(input: Seq<char>) -> bool {
 }
 
 spec fn contains_valid_first_line(line: Seq<char>) -> bool {
-    exists|n: int, m: int| n >= 0 && m >= 0 && line.len() > 0
+    true
 }
 
 spec fn contains_valid_second_line(line: Seq<char>) -> bool {
-    line.len() >= 0
+    line.len() >= 0 &&
+    forall|i: int| 0 <= i < line.len() ==> line[i] == '1' || line[i] == '-'
 }
 
 spec fn contains_valid_query(line: Seq<char>) -> bool {
-    exists|l: int, r: int| l >= 0 && r >= l && line.len() > 0
+    true
 }
 
-spec fn compute_correct_result(input: Seq<char>) -> Seq<char>
-    decreases input.len()
-{
+spec fn compute_correct_result(input: Seq<char>) -> Seq<char> {
     let lines = split_lines(input);
     let first_line = lines[0];
     let n = extract_n(first_line);
@@ -76,11 +71,24 @@ spec fn compute_correct_result(input: Seq<char>) -> Seq<char>
     let positives = count_ones(array_line);
     let negatives = count_dashes(array_line);
     let max_balanceable = 2 * min(positives, negatives);
-    Seq::empty()
+
+    let outputs: Seq<Seq<char>> = Seq::new(m as nat, |i: int| {
+        let query = extract_query(lines[i + 2]);
+        let l = query.0;
+        let r = query.1;
+        let range_length = r - l + 1;
+        if range_length % 2 == 0 && range_length <= max_balanceable {
+            seq!['1']
+        } else {
+            seq!['0']
+        }
+    });
+
+    join_with_newlines(outputs)
 }
 
 spec fn ends_with_newline_if_non_empty(s: Seq<char>) -> bool {
-    s.len() == 0 || (s.len() > 0 && s[s.len()-1] == '\n')
+    s.len() == 0 || (s.len() > 0 && s[s.len() - 1] == '\n')
 }
 // </vc-preamble>
 
@@ -88,19 +96,23 @@ spec fn ends_with_newline_if_non_empty(s: Seq<char>) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(stdin_input: &str) -> (result: String)
+fn solve(stdin_input: Seq<char>) -> (result: Seq<char>)
     requires
-        stdin_input@.len() > 0,
-        valid_input(stdin_input@),
+        stdin_input.len() > 0,
+        valid_input(stdin_input),
     ensures
-        result@.len() >= 0,
-        result@ == compute_correct_result(stdin_input@),
-        ends_with_newline_if_non_empty(result@),
+        result.len() >= 0,
+        result == compute_correct_result(stdin_input),
+        forall|line: Seq<char>| split_lines(result).contains(line) ==> line == seq!['0'] || line == seq!['1'],
+        split_lines(result).len() == extract_m(stdin_input),
+        ends_with_newline_if_non_empty(result),
 // </vc-spec>
 // <vc-code>
 {
+    // impl-start
     assume(false);
     unreached()
+    // impl-end
 }
 // </vc-code>
 

@@ -32,10 +32,10 @@ spec fn valid_input(n: int) -> bool {
     n >= 1
 }
 
-spec fn valid_spiral_matrix(matrix: Seq<Seq<int>>, n: int) -> bool {
-    matrix.len() == n && 
-    (forall|i: int| 0 <= i < n ==> matrix[i].len() == n) &&
-    (forall|i: int, j: int| 0 <= i < n && 0 <= j < n ==> matrix[i][j] == spiral_order(i, j, n) + 1)
+spec fn valid_spiral_matrix(matrix: &Vec<Vec<int>>, n: int) -> bool {
+    matrix.len() == n &&
+    (forall|i: int| 0 <= i < n ==> (#[trigger] matrix[i]).len() == n) &&
+    (forall|i: int, j: int| 0 <= i < n && 0 <= j < n ==> #[trigger] matrix[i][j] == spiral_order(i, j, n) + 1)
 }
 // </vc-preamble>
 
@@ -44,12 +44,12 @@ spec fn valid_spiral_matrix(matrix: Seq<Seq<int>>, n: int) -> bool {
 
 // <vc-spec>
 fn generate_matrix(n: int) -> (matrix: Vec<Vec<int>>)
-    requires valid_input(n)
+    requires 
+        valid_input(n)
     ensures 
-        matrix.len() == n &&
-        (forall|i: int| 0 <= i < n ==> #[trigger] matrix[i].len() == n) &&
-        (forall|i: int, j: int| 0 <= i < n && 0 <= j < n ==> 1 <= matrix[i][j] <= n * n) &&
-        (forall|v: int| 1 <= v <= n * n ==> exists|i: int, j: int| 0 <= i < n && 0 <= j < n && matrix[i][j] == v)
+        valid_spiral_matrix(&matrix, n) &&
+        matrix.len() == n && (forall|i: int| 0 <= i < n ==> (#[trigger] matrix[i]).len() == n) &&
+        (forall|i: int, j: int| 0 <= i < n && 0 <= j < n ==> 1 <= #[trigger] matrix[i][j] <= n * n)
 // </vc-spec>
 // <vc-code>
 {

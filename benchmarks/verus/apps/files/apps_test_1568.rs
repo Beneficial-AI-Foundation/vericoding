@@ -9,7 +9,7 @@ spec fn valid_input(n: int, a: int, b: int, c: int, t: int, arrivals: Seq<int>) 
     1 <= c <= 1000 &&
     1 <= t <= 1000 &&
     arrivals.len() == n &&
-    forall|i: int| 0 <= i < arrivals.len() ==> 1 <= arrivals[i] <= t
+    forall|i: int| 0 <= i < arrivals.len() ==> #[trigger] arrivals[i] >= 1 && #[trigger] arrivals[i] <= t
 }
 
 spec fn sum_seq(s: Seq<int>) -> int

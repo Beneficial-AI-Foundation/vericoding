@@ -18,7 +18,7 @@ vc-preamble: |-
 
   spec fn valid_input(n: int, a: Seq<int>) -> bool {
       n >= 1 && n <= 100 && a.len() == n && 
-      forall|i: int| 0 <= i < a.len() ==> -100 <= a[i] <= 100
+      forall|i: int| 0 <= i < a.len() ==> #[trigger] a[i] >= -100 && #[trigger] a[i] <= 100
   }
 
   spec fn is_optimal_cost(result: int, a: Seq<int>) -> bool {

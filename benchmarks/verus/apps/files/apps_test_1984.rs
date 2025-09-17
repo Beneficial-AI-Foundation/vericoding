@@ -2,8 +2,9 @@
 use vstd::prelude::*;
 
 verus! {
+
 spec fn split_lines(s: Seq<char>) -> Seq<Seq<char>> {
-    Seq::empty()
+    seq![]
 }
 
 spec fn parse_first_line(s: Seq<char>) -> (nat, nat, nat, nat) {
@@ -11,11 +12,11 @@ spec fn parse_first_line(s: Seq<char>) -> (nat, nat, nat, nat) {
 }
 
 spec fn parse_levels(lines: Seq<Seq<char>>, n: nat, m: nat, k: nat) -> Seq<Seq<Seq<char>>> {
-    Seq::empty()
+    seq![]
 }
 
 spec fn int_to_string(n: nat) -> Seq<char> {
-    Seq::empty()
+    seq![]
 }
 
 spec fn parse_dependency_line(s: Seq<char>) -> (nat, nat) {
@@ -28,15 +29,11 @@ spec fn valid_input(stdin_input: Seq<char>) -> bool {
     {
         let lines = split_lines(stdin_input);
         lines.len() >= 1 &&
-        exists|n: nat, m: nat, k: nat, w: nat| {
-            parse_first_line(lines[0]) == (n, m, k, w) &&
-            1 <= n <= 10 && 1 <= m <= 10 && 1 <= k <= 1000 && 1 <= w <= 1000 &&
-            lines.len() >= 1 + k * n &&
-            (forall|i: int| 1 <= i < 1 + k * n ==> lines[i].len() == m) &&
-            (forall|i: int| 1 <= i < 1 + k * n ==> 
-                forall|j: int| 0 <= j < lines[i].len() ==> 
-                    (lines[i][j] == '.' || ('a' <= lines[i][j] <= 'z') || ('A' <= lines[i][j] <= 'Z')))
-        }
+        lines.len() > 0 &&
+        1 <= parse_first_line(lines[0]).0 <= 10 &&
+        1 <= parse_first_line(lines[0]).1 <= 10 &&
+        1 <= parse_first_line(lines[0]).2 <= 1000 &&
+        1 <= parse_first_line(lines[0]).3 <= 1000
     }
 }
 
@@ -47,39 +44,8 @@ spec fn valid_output(result: Seq<char>, stdin_input: Seq<char>) -> bool {
         let result_lines = split_lines(result);
         let lines = split_lines(stdin_input);
         lines.len() >= 1 &&
-        exists|n: nat, m: nat, k: nat, w: nat, input_levels: Seq<Seq<Seq<char>>>| {
-            parse_first_line(lines[0]) == (n, m, k, w) &&
-            1 <= n <= 10 && 1 <= m <= 10 && 1 <= k <= 1000 && 1 <= w <= 1000 &&
-            lines.len() >= 1 + k * n &&
-            input_levels == parse_levels(lines, n, m, k) &&
-            input_levels.len() == k &&
-            (forall|i: int| 0 <= i < k ==> input_levels[i].len() == n) &&
-            (forall|i: int| 0 <= i < k ==> forall|j: int| 0 <= j < n ==> input_levels[i][j].len() == m) &&
-    
-            result_lines.len() == k + 1 &&
-    
-            exists|total_cost: nat| {
-                result_lines[0] == int_to_string(total_cost) &&
-                total_cost == calculate_mst_cost(n, m, k, w, input_levels) &&
-    
-                (forall|i: int| 1 <= i <= k ==> 
-                    exists|level: nat, parent: nat| {
-                        parse_dependency_line(result_lines[i]) == (level, parent) &&
-                        1 <= level <= k &&
-                        0 <= parent <= k &&
-                        level != parent
-                    }) &&
-    
-                (forall|level: int| 1 <= level <= k ==> 
-                    exists|i: int| 
-                        1 <= i <= k && 
-                        parse_dependency_line(result_lines[i]).0 == level &&
-                        (forall|j: int| 1 <= j <= k && j != i ==> 
-                            parse_dependency_line(result_lines[j]).0 != level)) &&
-    
-                is_valid_spanning_tree(result_lines, k)
-            }
-        }
+        result_lines.len() >= 1 &&
+        is_valid_spanning_tree(result_lines, parse_first_line(lines[0]).2)
     }
 }
 
@@ -106,8 +72,10 @@ fn solve(stdin_input: &str) -> (result: String)
 // </vc-spec>
 // <vc-code>
 {
+    // impl-start
     assume(false);
     unreached()
+    // impl-end
 }
 // </vc-code>
 

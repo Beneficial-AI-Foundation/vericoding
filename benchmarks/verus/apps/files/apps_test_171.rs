@@ -3,15 +3,15 @@ use vstd::prelude::*;
 
 verus! {
 spec fn contains_lowercase(s: Seq<char>) -> bool {
-    exists|i: int| 0 <= i < s.len() && 'a' <= s[i] <= 'z'
+    exists|i: int| 0 <= i < s.len() && 'a' <= s[i] && s[i] <= 'z'
 }
 
 spec fn contains_uppercase(s: Seq<char>) -> bool {
-    exists|i: int| 0 <= i < s.len() && 'A' <= s[i] <= 'Z'
+    exists|i: int| 0 <= i < s.len() && 'A' <= s[i] && s[i] <= 'Z'
 }
 
 spec fn contains_digit(s: Seq<char>) -> bool {
-    exists|i: int| 0 <= i < s.len() && '0' <= s[i] <= '9'
+    exists|i: int| 0 <= i < s.len() && '0' <= s[i] && s[i] <= '9'
 }
 
 spec fn is_valid_password(s: Seq<char>) -> bool {

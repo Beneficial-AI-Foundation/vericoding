@@ -3,12 +3,6 @@ use vstd::prelude::*;
 
 verus! {
 
-spec fn split_by_newlines(s: Seq<char>) -> Seq<Seq<char>> { seq![] }
-spec fn string_to_int(s: Seq<char>) -> int { 0 }
-spec fn parse_int_array(s: Seq<char>) -> Seq<int> { seq![] }
-spec fn sum(seq: Seq<int>) -> int { 0 }
-spec fn min(a: int, b: int) -> int { if a < b { a } else { b } }
-
 spec fn valid_input(s: Seq<char>) -> bool {
     let lines = split_by_newlines(s);
     lines.len() >= 3 &&
@@ -30,35 +24,65 @@ spec fn valid_output(result: Seq<char>) -> bool {
 }
 
 spec fn correct_solution(input: Seq<char>, output: Seq<char>) -> bool {
-    valid_input(input) && valid_output(output) ==> {
-        let lines = split_by_newlines(input);
-        let n = string_to_int(lines[0]);
-        let k = string_to_int(lines[1]);
-        let x = parse_int_array(lines[2]);
-        x.len() == n &&
-        (forall|i: int| 0 <= i < n ==> 0 < x[i] < k) &&
+    valid_input(input) && valid_output(output) ==>
         {
-            let expected_sum = compute_min_distance(x, k);
-            string_to_int(output.subrange(0, output.len() - 1)) == expected_sum
+            let lines = split_by_newlines(input);
+            let n = string_to_int(lines[0]);
+            let k = string_to_int(lines[1]);
+            let x = parse_int_array(lines[2]);
+            x.len() == n &&
+            (forall|i: int| #[trigger] x[i] == x[i] && 0 <= i < n ==> 0 < x[i] < k) &&
+            {
+                let expected_sum = compute_min_distance(x, k);
+                string_to_int(output.subrange(0, output.len() - 1)) == expected_sum
+            }
         }
-    }
 }
 
 spec fn is_positive_integer(s: Seq<char>) -> bool {
-    is_non_negative_integer(s) && s.len() > 0 && (s.len() > 1 || s[0] != '0') && string_to_int(s) > 0
+    is_non_negative_integer(s) && s.len() > 0 && 
+    (s.len() > 1 || s[0] != '0') && 
+    string_to_int(s) > 0
 }
 
 spec fn is_non_negative_integer(s: Seq<char>) -> bool {
-    s.len() > 0 && forall|i: int| 0 <= i < s.len() ==> '0' <= s[i] <= '9'
+    s.len() > 0 && 
+    forall|i: int| #[trigger] s[i] == s[i] && 0 <= i < s.len() ==> {
+        let c = s[i];
+        '0' <= c && c <= '9'
+    }
 }
 
 spec fn is_valid_x_array(s: Seq<char>, n: int, k: int) -> bool {
     let x = parse_int_array(s);
-    x.len() == n && forall|i: int| 0 <= i < n ==> 0 < x[i] < k
+    x.len() == n && 
+    forall|i: int| #[trigger] x[i] == x[i] && 0 <= i < n ==> 0 < x[i] < k
 }
 
 spec fn compute_min_distance(x: Seq<int>, k: int) -> int {
-    sum(Seq::new(x.len(), |i: int| 2 * min(k - x[i], x[i])))
+    /* requires forall|i: int| 0 <= i < x.len() ==> 0 < x[i] < k */
+    /* ensures compute_min_distance(x, k) >= 0 */
+    sum_seq(Seq::new(x.len(), |i: int| 2 * min(k - x[i], x[i])))
+}
+
+spec fn split_by_newlines(s: Seq<char>) -> Seq<Seq<char>> { 
+    seq![]
+}
+
+spec fn string_to_int(s: Seq<char>) -> int { 
+    0
+}
+
+spec fn parse_int_array(s: Seq<char>) -> Seq<int> { 
+    seq![]
+}
+
+spec fn sum_seq(seq: Seq<int>) -> int { 
+    0
+}
+
+spec fn min(a: int, b: int) -> int { 
+    if a <= b { a } else { b } 
 }
 // </vc-preamble>
 
@@ -66,20 +90,20 @@ spec fn compute_min_distance(x: Seq<int>, k: int) -> int {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(s: Vec<char>) -> (result: Vec<char>)
-    requires 
-        s@.len() > 0,
-        valid_input(s@)
-    ensures 
-        result@.len() > 0,
-        result@[result@.len() - 1] == '\n',
-        valid_output(result@),
-        correct_solution(s@, result@)
+fn solve(s: &str) -> (result: String)
+requires
+    s@.len() > 0,
+    valid_input(s@),
+ensures
+    result@.len() > 0,
+    result@[result@.len() - 1] == '\n',
+    valid_output(result@),
+    correct_solution(s@, result@),
 // </vc-spec>
 // <vc-code>
 {
     assume(false);
-    vec![]
+    unreached()
 }
 // </vc-code>
 

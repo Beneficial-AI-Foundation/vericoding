@@ -5,6 +5,7 @@ verus! {
 
 spec fn product_of_digits(x: int) -> int
   recommends x >= 0
+  decreases x
 {
   if x == 0 { 1 }
   else if x < 10 { x }
@@ -13,6 +14,8 @@ spec fn product_of_digits(x: int) -> int
 
 spec fn max_product_of_digits_in_range(n: int) -> int
   recommends n >= 1
+  decreases n
+  when n >= 1
 {
   if n == 1 { 1 }
   else {
@@ -38,10 +41,8 @@ fn solve(n: int) -> (result: int)
 // </vc-spec>
 // <vc-code>
 {
-  // impl-start
   assume(false);
   unreached()
-  // impl-end
 }
 // </vc-code>
 

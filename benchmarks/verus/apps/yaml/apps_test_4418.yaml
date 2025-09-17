@@ -10,51 +10,73 @@ vc-preamble: |-
   verus! {
 
   spec fn valid_input(n: int, a: Seq<int>) -> bool {
-      n >= 0 && a.len() == n && forall|i: int| 0 <= i < a.len() ==> a[i] == 4 || a[i] == 8 || a[i] == 15 || a[i] == 16 || a[i] == 23 || a[i] == 42
+      n >= 0 && a.len() == n && forall|i: int| 0 <= i < a.len() ==> 
+          #[trigger] a[i] == 4int || #[trigger] a[i] == 8int || #[trigger] a[i] == 15int || 
+          #[trigger] a[i] == 16int || #[trigger] a[i] == 23int || #[trigger] a[i] == 42int
   }
   
   spec fn number_of_complete_subsequences(n: int, a: Seq<int>) -> int {
-      let k = seq![4, 8, 15, 16, 23, 42];
-      let s = seq![n, 0, 0, 0, 0, 0, 0];
-      let final_s = process_array(s, a, k, 0);
-      final_s[6]
+      let k = seq![4int, 8int, 15int, 16int, 23int, 42int];
+      let s = seq![n, 0int, 0int, 0int, 0int, 0int, 0int];
+      let final_s = process_array(s, a, k, 0int);
+      final_s[6int]
   }
   
   spec fn process_array(s: Seq<int>, a: Seq<int>, k: Seq<int>, index: int) -> Seq<int>
-    decreases a.len() - index
+      decreases a.len() - index
   {
-      if index == a.len() {
-          s
+      if s.len() == 7 && k.len() == 6 && 0 <= index <= a.len() &&
+         (forall|i: int| 0 <= i < a.len() ==> 
+              #[trigger] a[i] == 4int || #[trigger] a[i] == 8int || #[trigger] a[i] == 15int || 
+              #[trigger] a[i] == 16int || #[trigger] a[i] == 23int || #[trigger] a[i] == 42int) &&
+         k == seq![4int, 8int, 15int, 16int, 23int, 42int] &&
+         (forall|i: int| 0 <= i < 7 ==> s[i] >= 0) {
+          if index == a.len() {
+              s
+          } else {
+              let ai = a[index];
+              let new_s = update_state(s, ai, k);
+              process_array(new_s, a, k, index + 1)
+          }
       } else {
-          let ai = a[index];
-          let new_s = update_state(s, ai, k);
-          process_array(new_s, a, k, index + 1)
+          seq![0int, 0int, 0int, 0int, 0int, 0int, 0int]
       }
   }
   
   spec fn update_state(s: Seq<int>, ai: int, k: Seq<int>) -> Seq<int> {
-      if ai == k[5] && s[5] > 0 {
-          s.update(6, s[6] + 1).update(5, s[5] - 1)
-      } else if ai == k[4] && s[4] > 0 {
-          s.update(5, s[5] + 1).update(4, s[4] - 1)
-      } else if ai == k[3] && s[3] > 0 {
-          s.update(4, s[4] + 1).update(3, s[3] - 1)
-      } else if ai == k[2] && s[2] > 0 {
-          s.update(3, s[3] + 1).update(2, s[2] - 1)
-      } else if ai == k[1] && s[1] > 0 {
-          s.update(2, s[2] + 1).update(1, s[1] - 1)
-      } else if ai == k[0] && s[0] > 0 {
-          s.update(1, s[1] + 1).update(0, s[0] - 1)
+      if s.len() == 7 && k.len() == 6 &&
+         (ai == 4int || ai == 8int || ai == 15int || ai == 16int || ai == 23int || ai == 42int) &&
+         k == seq![4int, 8int, 15int, 16int, 23int, 42int] &&
+         (forall|i: int| 0 <= i < 7 ==> s[i] >= 0) {
+          if ai == k[5int] && s[5int] > 0 {
+              s.update(6int, s[6int] + 1).update(5int, s[5int] - 1)
+          } else if ai == k[4int] && s[4int] > 0 {
+              s.update(5int, s[5int] + 1).update(4int, s[4int] - 1)
+          } else if ai == k[3int] && s[3int] > 0 {
+              s.update(4int, s[4int] + 1).update(3int, s[3int] - 1)
+          } else if ai == k[2int] && s[2int] > 0 {
+              s.update(3int, s[3int] + 1).update(2int, s[2int] - 1)
+          } else if ai == k[1int] && s[1int] > 0 {
+              s.update(2int, s[2int] + 1).update(1int, s[1int] - 1)
+          } else if ai == k[0int] && s[0int] > 0 {
+              s.update(1int, s[1int] + 1).update(0int, s[0int] - 1)
+          } else {
+              s
+          }
       } else {
-          s
+          seq![0int, 0int, 0int, 0int, 0int, 0int, 0int]
       }
   }
   
   spec fn number_of_complete_subsequences_partial(n: int, a: Seq<int>, k: Seq<int>, index: int) -> int {
-      let s = seq![n, 0, 0, 0, 0, 0, 0];
-      let partial_a = if index == 0 { seq![] } else { a.subrange(0, index) };
-      let final_s = process_array(s, partial_a, k, 0);
-      final_s[6]
+      if valid_input(n, a) && k.len() == 6 && k == seq![4int, 8int, 15int, 16int, 23int, 42int] && 0 <= index <= a.len() {
+          let s = seq![n, 0int, 0int, 0int, 0int, 0int, 0int];
+          let partial_a = if index == 0 { seq![] } else { a.subrange(0int, index) };
+          let final_s = process_array(s, partial_a, k, 0int);
+          final_s[6int]
+      } else {
+          0int
+      }
   }
 
 vc-helpers: |-
@@ -62,17 +84,15 @@ vc-helpers: |-
 vc-spec: |-
   fn solve(n: int, a: Seq<int>) -> (result: int)
     requires
-        valid_input(n, a),
+      valid_input(n, a),
     ensures
-        0 <= result <= n,
-        result == n - 6 * number_of_complete_subsequences(n, a),
+      0 <= result <= n,
+      result == n - 6 * number_of_complete_subsequences(n, a),
 
 vc-code: |-
   {
-      // impl-start
       assume(false);
       unreached()
-      // impl-end
   }
 
 vc-postamble: |-

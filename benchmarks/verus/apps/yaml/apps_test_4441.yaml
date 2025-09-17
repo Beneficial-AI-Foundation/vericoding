@@ -19,7 +19,7 @@ vc-preamble: |-
           } else if n != 1 && lines.len() >= 3 {
               let a = string_to_int(lines[1]);
               let b = string_to_int(lines[2]);
-              int_to_string(a + b).add(seq!['\n'])
+              int_to_string(a + b) + seq!['\n']
           } else {
               seq![]
           }
@@ -33,15 +33,10 @@ vc-preamble: |-
   }
 
   spec fn split_lines_func_helper(s: Seq<char>, i: int, current: Seq<char>, acc: Seq<Seq<char>>) -> Seq<Seq<char>>
-      recommends 0 <= i <= s.len()
-      decreases s.len() - i
+      decreases s.len() - i when 0 <= i <= s.len()
   {
       if i >= s.len() {
-          if current.len() == 0 {
-              acc
-          } else {
-              acc.push(current)
-          }
+          if current.len() == 0 { acc } else { acc.push(current) }
       } else if s[i] == '\n' {
           split_lines_func_helper(s, i + 1, seq![], acc.push(current))
       } else {
@@ -59,7 +54,9 @@ vc-preamble: |-
       }
   }
 
-  spec fn string_to_int_helper(s: Seq<char>) -> int {
+  spec fn string_to_int_helper(s: Seq<char>) -> int
+      decreases s.len()
+  {
       if s.len() == 0 {
           0
       } else {
@@ -71,19 +68,19 @@ vc-preamble: |-
       if n == 0 {
           seq!['0']
       } else if n < 0 {
-          seq!['-'].add(int_to_string_helper(-n))
+          seq!['-'] + int_to_string_helper(-n)
       } else {
           int_to_string_helper(n)
       }
   }
 
   spec fn int_to_string_helper(n: int) -> Seq<char>
-      recommends n >= 0
+      decreases n when n >= 0
   {
-      if n == 0 {
+      if n <= 0 {
           seq![]
       } else {
-          int_to_string_helper(n / 10).push((n % 10 + '0' as int) as char)
+          int_to_string_helper(n / 10) + seq![(n % 10 + '0' as int) as char]
       }
   }
 

@@ -9,34 +9,38 @@ vc-preamble: |-
   verus! {
 
   spec fn valid_input(digits: Seq<int>) -> bool {
-      digits.len() >= 1 && forall|i: int| 0 <= i < digits.len() ==> 0 <= digits[i] <= 9
+      digits.len() >= 1 && forall|i: int| 0 <= i < digits.len() ==> #[trigger] digits[i] >= 0 && #[trigger] digits[i] <= 9
   }
   
-  spec fn is_good_subarray(digits: Seq<int>, start: int, end: int) -> bool {
-      &&& 0 <= start <= end < digits.len()
-      &&& {
-          let subarray_sum = sum_seq(digits.subrange(start, end + 1));
-          let subarray_length = end - start + 1;
-          subarray_sum == subarray_length
-      }
+  spec fn is_good_subarray(digits: Seq<int>, start: int, end: int) -> bool
+      recommends 0 <= start <= end < digits.len()
+  {
+      let subarray_sum = sum(digits.subrange(start, end + 1));
+      let subarray_length = end - start + 1;
+      subarray_sum == subarray_length
   }
   
-  spec fn sum_seq(s: Seq<int>) -> int
+  spec fn sum(s: Seq<int>) -> int
       decreases s.len()
   {
-      if s.len() == 0 { 0 } else { s[0] + sum_seq(s.drop_first()) }
+      if s.len() == 0 { 0 } else { s[0] + sum(s.drop_first()) }
   }
   
-  spec fn count_good_subarrays(digits: Seq<int>) -> int {
-      if valid_input(digits) {
-          count_good_subarrays_helper(digits, 0, map![0 => 1], 0, 0)
-      } else {
-          0
-      }
+  spec fn count_good_subarrays(digits: Seq<int>) -> int
+      recommends valid_input(digits)
+  {
+      count_good_subarrays_helper(digits, 0, map![0 => 1], 0, 0)
   }
   
   spec fn count_good_subarrays_helper(digits: Seq<int>, pos: int, freq_map: Map<int, int>, 
                                     current_sum: int, current_count: int) -> int
+      recommends 
+          0 <= pos <= digits.len() &&
+          valid_input(digits) &&
+          current_count == pos &&
+          current_sum >= 0 &&
+          (forall|k: int| freq_map.dom().contains(k) ==> #[trigger] freq_map[k] >= 0) &&
+          (freq_map.dom().contains(0) ==> freq_map[0] >= 1)
       decreases digits.len() - pos
   {
       if pos >= digits.len() { 0 }
@@ -55,10 +59,10 @@ vc-helpers: |-
 vc-spec: |-
   fn count_good_subarrays_in_array(digits: Seq<int>) -> (count: int)
       requires 
-          valid_input(digits)
+          valid_input(digits),
       ensures 
           count >= 0,
-          count == count_good_subarrays(digits)
+          count == count_good_subarrays(digits),
 
 vc-code: |-
   {

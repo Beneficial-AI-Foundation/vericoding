@@ -3,8 +3,8 @@ use vstd::prelude::*;
 
 verus! {
 spec fn valid_input(input: Seq<char>) -> bool {
-    input.len() == 5 &&
-    (forall|i: int| 0 <= i < 4 ==> ('0' as int) <= (input[i] as int) <= ('9' as int)) &&
+    input.len() == 5 && input.subrange(0, 4).len() == 4 &&
+    (forall|i: int| 0 <= i < 4 ==> ('0' <= #[trigger] input[i] <= '9')) &&
     input[4] == '\n'
 }
 
@@ -37,13 +37,10 @@ spec fn solution_exists(input: Seq<char>) -> bool {
 spec fn valid_output(result: Seq<char>, input: Seq<char>) -> bool {
     &&& valid_input(input)
     &&& result.len() == 10 
-    &&& result[7] == '='
-    &&& result[8] == '7'
+    &&& result.subrange(7, 9) =~= seq!['=', '7']
     &&& result[9] == '\n'
-    &&& result[0] == input[0]
-    &&& result[2] == input[1]
-    &&& result[4] == input[2]
-    &&& result[6] == input[3]
+    &&& result[0] == input[0] && result[2] == input[1] 
+    &&& result[4] == input[2] && result[6] == input[3]
     &&& (result[1] == '+' || result[1] == '-')
     &&& (result[3] == '+' || result[3] == '-')
     &&& (result[5] == '+' || result[5] == '-')
@@ -65,8 +62,7 @@ fn solve(input: Seq<char>) -> (result: Seq<char>)
     requires 
         valid_input(input),
         solution_exists(input),
-    ensures 
-        valid_output(result, input),
+    ensures valid_output(result, input)
 // </vc-spec>
 // <vc-code>
 {

@@ -7,25 +7,23 @@ spec fn valid_input(n: int, arr: Seq<int>) -> bool {
 }
 
 spec fn sum_even_indices(arr: Seq<int>, start: int) -> int
-    recommends 0 <= start <= arr.len()
-    decreases arr.len() - start
+    decreases arr.len() - start when 0 <= start <= arr.len()
 {
     if start == arr.len() {
         0
     } else {
-        let contribution: int = if start % 2 == 0 { arr[start] } else { 0 };
+        let contribution = if start % 2 == 0 { arr[start] } else { 0 };
         contribution + sum_even_indices(arr, start + 1)
     }
 }
 
 spec fn sum_odd_indices(arr: Seq<int>, start: int) -> int
-    recommends 0 <= start <= arr.len()
-    decreases arr.len() - start
+    decreases arr.len() - start when 0 <= start <= arr.len()
 {
     if start == arr.len() {
         0
     } else {
-        let contribution: int = if start % 2 == 1 { arr[start] } else { 0 };
+        let contribution = if start % 2 == 1 { arr[start] } else { 0 };
         contribution + sum_odd_indices(arr, start + 1)
     }
 }
@@ -40,8 +38,7 @@ spec fn count_balanced_removals(arr: Seq<int>) -> int {
 }
 
 spec fn count_helper(arr: Seq<int>, i: int, count1: int, count2: int, temp1: int, temp2: int) -> int
-    recommends 0 <= i <= arr.len()
-    decreases arr.len() - i
+    decreases arr.len() - i when 0 <= i <= arr.len()
 {
     if i == arr.len() {
         0
@@ -67,11 +64,12 @@ spec fn count_helper(arr: Seq<int>, i: int, count1: int, count2: int, temp1: int
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: usize, arr: Vec<i32>) -> (result: usize)
+fn solve(n: int, arr: Seq<int>) -> (result: int)
     requires 
-        n >= 1 && arr.len() == n && forall|i: int| 0 <= i < arr.len() ==> arr[i] >= 1
+        valid_input(n, arr),
     ensures 
-        result <= n
+        0 <= result <= n,
+        result == count_balanced_removals(arr),
 // </vc-spec>
 // <vc-code>
 {

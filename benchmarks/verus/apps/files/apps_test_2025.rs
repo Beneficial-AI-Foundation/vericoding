@@ -3,7 +3,7 @@ use vstd::prelude::*;
 
 verus! {
 spec fn is_composite(x: int) -> bool {
-    x >= 4 && exists|k: int| 2 <= k < x && x % k == 0
+    x >= 4 && exists|k: int| 2 <= k < x && #[trigger] (x % k) == 0
 }
 
 spec fn valid_input(queries: Seq<int>) -> bool {

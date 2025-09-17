@@ -2,27 +2,29 @@
 use vstd::prelude::*;
 
 verus! {
+
 spec fn valid_input(d: int) -> bool {
     22 <= d <= 25
 }
 
-spec fn expected_output(d: int) -> Seq<char>
-    recommends valid_input(d)
-{
-    let eve_count = 25 - d;
-    let base_string = seq!['C', 'h', 'r', 'i', 's', 't', 'm', 'a', 's'];
-    if eve_count == 0 {
-        base_string
+spec fn expected_output(d: int) -> Seq<char> {
+    if valid_input(d) {
+        let eve_count = 25 - d;
+        let base_string = seq!['C', 'h', 'r', 'i', 's', 't', 'm', 'a', 's'];
+        if eve_count == 0 {
+            base_string
+        } else {
+            base_string + repeat_eve(eve_count)
+        }
     } else {
-        base_string + repeat_eve(eve_count)
+        seq![]
     }
 }
 
 spec fn repeat_eve(count: int) -> Seq<char>
-    recommends count >= 0
     decreases count
 {
-    if count == 0 {
+    if count <= 0 {
         seq![]
     } else {
         seq![' ', 'E', 'v', 'e'] + repeat_eve(count - 1)
@@ -40,10 +42,8 @@ fn solve(d: int) -> (result: String)
 // </vc-spec>
 // <vc-code>
 {
-    // impl-start
     assume(false);
     unreached()
-    // impl-end
 }
 // </vc-code>
 

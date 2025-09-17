@@ -1,19 +1,27 @@
 // <vc-preamble>
 use vstd::prelude::*;
+use vstd::string::*;
 
 verus! {
 spec fn valid_input(n: nat, m: nat, buttons: Seq<Seq<nat>>) -> bool {
     buttons.len() == n &&
     n >= 1 && m >= 1 &&
-    forall|i: int| 0 <= i < n ==> forall|j: int| 0 <= j < buttons[i].len() ==> 1 <= buttons[i][j] <= m
+    forall|i: int| 0 <= i < n ==> 
+        #[trigger] buttons[i].len() >= 0 &&
+        forall|j: int| 0 <= j < buttons[i].len() ==> 1 <= #[trigger] buttons[i][j] <= m
 }
 
 spec fn union_of_all_bulbs(buttons: Seq<Seq<nat>>) -> Set<nat> {
-    Set::new(|x: nat| exists|i: int, j: int| 0 <= i < buttons.len() && 0 <= j < buttons[i].len() && buttons[i][j] == x)
+    Set::new(|bulb: nat| 
+        exists|i: int, j: int| 
+            0 <= i < buttons.len() && 
+            0 <= j < buttons[i].len() && 
+            #[trigger] buttons[i][j] == bulb
+    )
 }
 
 spec fn can_turn_on_all_bulbs(m: nat, buttons: Seq<Seq<nat>>) -> bool {
-    union_of_all_bulbs(buttons).len() == m
+    union_of_all_bulbs(buttons).finite() && union_of_all_bulbs(buttons).len() == m
 }
 // </vc-preamble>
 
@@ -21,12 +29,12 @@ spec fn can_turn_on_all_bulbs(m: nat, buttons: Seq<Seq<nat>>) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: nat, m: nat, buttons: Seq<Seq<nat>>) -> (result: Seq<char>)
+fn solve(n: nat, m: nat, buttons: Seq<Seq<nat>>) -> (result: String)
     requires
-        valid_input(n, m, buttons),
+        valid_input(n, m, buttons)
     ensures
-        result == seq!['Y', 'E', 'S'] || result == seq!['N', 'O'],
-        (result == seq!['Y', 'E', 'S']) <==> can_turn_on_all_bulbs(m, buttons)
+        result@ == seq!['Y', 'E', 'S'] || result@ == seq!['N', 'O'],
+        (result@ == seq!['Y', 'E', 'S']) <==> can_turn_on_all_bulbs(m, buttons)
 // </vc-spec>
 // <vc-code>
 {
