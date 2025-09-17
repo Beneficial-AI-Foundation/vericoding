@@ -15,7 +15,7 @@ def insertBeforeEach (arr : Array Int) (elem : Int) (h_precond : insertBeforeEac
 -- <vc-theorems>
 @[reducible, simp]
 def insertBeforeEach_postcond (arr : Array Int) (elem : Int) (result : Array Int) (h_precond : insertBeforeEach_precond (arr) (elem)) : Prop :=
-  result.size = (2 * arr.size) ∧ 
+  result.size = (2 * arr.size) ∧
   (∀ k, k < arr.size → result[2 * k]! = elem) ∧
   (∀ k, k < arr.size → result[2 * k + 1]! = arr[k]!)
 
@@ -23,5 +23,3 @@ theorem insertBeforeEach_spec_satisfied (arr : Array Int) (elem : Int) (h_precon
     insertBeforeEach_postcond (arr) (elem) (insertBeforeEach (arr) (elem) h_precond) h_precond := by
   sorry
 -- </vc-theorems>
-
-def main : IO Unit := pure ()

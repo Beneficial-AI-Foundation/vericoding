@@ -23,5 +23,3 @@ theorem findFirstOccurrence_spec_satisfied (arr : Array Int) (target : Int) (h_p
     findFirstOccurrence_postcond arr target (findFirstOccurrence arr target h_precond) h_precond := by
   sorry
 -- </vc-theorems>
-
-def main : IO Unit := return ()

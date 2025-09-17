@@ -21,5 +21,3 @@ theorem chooseOdd_spec_satisfied (v : Array Nat) (h_precond : chooseOdd_precond 
     chooseOdd_postcond v (chooseOdd v h_precond) h_precond := by
   sorry
 -- </vc-theorems>
-
-def main : IO Unit := pure ()

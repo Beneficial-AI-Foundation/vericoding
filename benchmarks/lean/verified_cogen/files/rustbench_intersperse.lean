@@ -14,7 +14,7 @@ def intersperse (numbers : Array Int) (delim : Int) (h_precond : intersperse_pre
 -- <vc-theorems>
 @[reducible, simp]
 def intersperse_postcond (numbers : Array Int) (delim : Int) (res: Array Int) (h_precond : intersperse_precond numbers delim) : Prop :=
-  (numbers.size = 0 → res.size = 0) ∧ 
+  (numbers.size = 0 → res.size = 0) ∧
   (numbers.size ≠ 0 → res.size = 2 * numbers.size - 1) ∧
   (∀ i, 0 ≤ i ∧ i < res.size ∧ i % 2 = 0 → res[i]! = numbers[i / 2]!) ∧
   (∀ i, 0 ≤ i ∧ i < res.size ∧ i % 2 = 1 → res[i]! = delim)
@@ -23,5 +23,3 @@ theorem intersperse_spec_satisfied (numbers: Array Int) (delim: Int) (h_precond 
     intersperse_postcond numbers delim (intersperse numbers delim h_precond) h_precond := by
   sorry
 -- </vc-theorems>
-
-def main : IO Unit := return ()

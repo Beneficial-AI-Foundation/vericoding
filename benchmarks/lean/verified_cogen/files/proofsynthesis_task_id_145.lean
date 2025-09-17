@@ -26,5 +26,3 @@ theorem maxDifference_spec_satisfied (arr: Array Int) (h_precond : maxDifference
     maxDifference_postcond arr (maxDifference arr h_precond) h_precond := by
   sorry
 -- </vc-theorems>
-
-def main : IO Unit := return ()

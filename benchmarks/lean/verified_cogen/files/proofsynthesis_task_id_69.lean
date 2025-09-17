@@ -15,13 +15,10 @@ def isSubList (main : Array Int) (sub : Array Int) (h_precond : isSubList_precon
 -- <vc-theorems>
 @[reducible, simp]
 def isSubList_postcond (main : Array Int) (sub : Array Int) (result : Bool) (h_precond : isSubList_precond main sub) : Prop :=
-  result = (∃ k l : Nat, 0 ≤ k ∧ k ≤ (main.size - sub.size) ∧ l = k + sub.size ∧ 
+  result = (∃ k l : Nat, 0 ≤ k ∧ k ≤ (main.size - sub.size) ∧ l = k + sub.size ∧
     (∀ i, i < sub.size → main[k + i]! = sub[i]!))
 
 theorem isSubList_spec_satisfied (main : Array Int) (sub : Array Int) (h_precond : isSubList_precond main sub) :
     isSubList_postcond main sub (isSubList main sub h_precond) h_precond := by
   sorry
 -- </vc-theorems>
-
-def main : IO Unit := do
-  return ()

@@ -20,5 +20,3 @@ theorem maxDafnyLsp_spec_satisfied (a: Array Int) (h_precond : maxDafnyLsp_preco
     maxDafnyLsp_postcond (a) (maxDafnyLsp (a) h_precond) h_precond := by
   sorry
 -- </vc-theorems>
-
-def main : IO Unit := pure ()

@@ -21,5 +21,3 @@ theorem extractRearChars_spec_satisfied (s: Array (Array Char)) (h_precond : ext
     extractRearChars_postcond (s) (extractRearChars (s) h_precond) h_precond := by
   sorry
 -- </vc-theorems>
-
-def main : IO Unit := return ()

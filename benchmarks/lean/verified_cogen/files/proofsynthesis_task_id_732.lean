@@ -26,7 +26,7 @@ def replaceWithColon (str1 : Array Char) (h_precond : replaceWithColon_precond (
 -- <vc-theorems>
 @[reducible, simp]
 def replaceWithColon_postcond (str1 : Array Char) (result : Array Char) (h_precond : replaceWithColon_precond (str1)) : Prop :=
-  str1.size = result.size ∧ 
+  str1.size = result.size ∧
   (∀ k : Nat, k < result.size → result[k]! = innerExprReplaceWithColon str1 k)
 
 theorem replaceWithColon_spec_satisfied (str1 : Array Char) (h_precond : replaceWithColon_precond (str1)) :
@@ -35,4 +35,3 @@ theorem replaceWithColon_spec_satisfied (str1 : Array Char) (h_precond : replace
 -- </vc-theorems>
 
 /- Test cases and examples -/
-def main : IO Unit := return ()
