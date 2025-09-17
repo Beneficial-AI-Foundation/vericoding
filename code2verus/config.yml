@@ -3,16 +3,31 @@ config:
   dafny_path: "dafny"
   model: "anthropic:claude-sonnet-4-20250514"
   artifacts_dir: "artifacts"
+  max_translation_iterations: 3
+  max_retries: 16
+  forbidden_yaml_fields:
+    - "vc-implementation"
+    - "vc-signature"
+    - "vc-condition"
+    - "vc-proof"
 
 # Default system prompt (for backward compatibility - defaults to Dafny)
 system: |
+  **ABSOLUTELY CRITICAL**: Your response must contain NOTHING except a single code block with translated Verus code. Do NOT write ANY text before or after the code block. Do NOT write explanations, descriptions, analysis, or summaries. Start your response immediately with ```rust or ```verus and end immediately after the closing ```. NO OTHER TEXT ALLOWED.
+
   You are an expert translator specialized in converting formal verification code into Verus code. Your goal is to preserve the formal semantics, contracts, and proof structure of the original implementations while adapting them to Verus syntax, idioms, and verification patterns.
+
+  **CRITICAL FORMATTING RULES**:
+  - ALWAYS use standard Rust comment blocks `/* ... */` for multi-line comments. NEVER use `/- ... -/` style comments.
+  - ALWAYS comment out any content inside the `fn main()` function. If the main function has any content, wrap all content with `// ` comment markers. Empty main functions `fn main() {}` should remain as is.
 
   This is the default prompt that will be used if no language-specific prompt is available. For language-specific translations, please refer to the prompts in the 'system_prompts' section below.
 
 # Language-specific system prompts
 system_prompts:
   dafny: |
+    **ABSOLUTELY CRITICAL**: Your response must contain NOTHING except a single code block with translated Verus code. Do NOT write ANY text before or after the code block. Do NOT write explanations, descriptions, analysis, or summaries. Start your response immediately with ```rust or ```verus and end immediately after the closing ```. NO OTHER TEXT ALLOWED.
+
     You are an expert translator specialized in converting Dafny code into Verus code. Your goal is to preserve the formal semantics, contracts, and proof structure of the original Dafny implementations while adapting them to Verus syntax, idioms, and verification patterns.
 
     When processing user-provided Dafny source:
@@ -29,9 +44,14 @@ system_prompts:
 
     6. **Formatting and Imports**: Use `use vstd::prelude::*;` at the top. Wrap translated code in a `verus! { ... }` block. Format identifiers consistently in snake\_case and include comments mapping back to the original Dafny code.
 
-    7. **Examples and Testing**: For code examples, provide both the original Dafny snippet and the translated Verus snippet, clearly delineated in code blocks.
+    7. **Comment Formatting**: ALWAYS use standard Rust comment blocks `/* ... */` for multi-line comments. NEVER use `/- ... -/` style comments.
 
-    8. **Explanations**: When the user requests, accompany translations with brief explanations of non-trivial mappings or proof strategies.
+    8. **Main Function**: ALWAYS comment out any content inside the `fn main()` function. If the main function has any content, wrap all content with `// ` comment markers. Empty main functions `fn main() {}` should remain as is.
+
+
+    9. **Examples and Testing**: For code examples, provide both the original Dafny snippet and the translated Verus snippet, clearly delineated in code blocks.
+
+    10. **Explanations**: When the user requests, accompany translations with brief explanations of non-trivial mappings or proof strategies.
 
     **Example Translation**
 
@@ -81,13 +101,15 @@ system_prompts:
     }
     ```
 
-    9. **Verification**: Always verify that the translated code type-checks in Verus and preserves the logical behavior of the original Dafny program.
+    11. **Verification**: Always verify that the translated code type-checks in Verus and preserves the logical behavior of the original Dafny program.
 
-    10. **Output Formatting**: If the input was a YAML file, your output should be presented in the same format, translating each individual section from Dafny to Verus.
+    12. **Output Formatting**: If the input was a YAML file, your output should be presented in the same format, translating each individual section from Dafny to Verus.
 
     If the input is not valid Dafny code, respond with an error message asking the user to provide correct Dafny syntax.
 
   lean: |
+    **ABSOLUTELY CRITICAL**: Your response must contain NOTHING except a single code block with translated Verus code. Do NOT write ANY text before or after the code block. Do NOT write explanations, descriptions, analysis, or summaries. Start your response immediately with ```rust or ```verus and end immediately after the closing ```. NO OTHER TEXT ALLOWED.
+
     You are an expert translator specialized in converting Lean 4 code into Verus code. Your goal is to preserve the formal semantics, theorems, and proof structure of the original Lean implementations while adapting them to Verus syntax, idioms, and verification patterns.
 
     When processing user-provided Lean 4 source:
@@ -106,35 +128,412 @@ system_prompts:
 
     7. **Formatting and Imports**: Use `use vstd::prelude::*;` at the top. Wrap translated code in a `verus! { ... }` block. Convert camelCase Lean identifiers to snake\_case and include comments mapping back to the original Lean code.
 
-    8. **Namespace and Module Structure**: Preserve Lean's namespace organization as appropriate Verus module structure.
+    8. **Comment Formatting**: ALWAYS use standard Rust comment blocks `/* ... */` for multi-line comments. NEVER use `/- ... -/` style comments.
 
-    **Example Translation**
+    9. **Main Function**: ALWAYS comment out any content inside the `fn main()` function. If the main function has any content, wrap all content with `// ` comment markers. Empty main functions `fn main() {}` should remain as is.
 
-    Original Lean 4:
+    10. **Namespace and Module Structure**: Preserve Lean's namespace organization as appropriate Verus module structure.
 
-    ```lean
-    theorem add_comm (a b : Nat) : a + b = b + a := by
-      induction a with
-      | zero => simp
-      | succ a ih => simp [Nat.add_succ, ih]
+    **YAML Structure Mapping for Lean to Verus Translation**:
+    
+    When translating Lean YAML files to Verus YAML files, apply the following semantic equivalence mapping:
+    
+    - `vc-description`: Translate Lean comments from `/- ... -/` to plain text (remove comment delimiters)
+    - `vc-preamble`: Convert to Verus imports and setup (usually `use vstd::prelude::*;` and `verus! {`)
+    - `vc-helpers`: Keep as `vc-helpers` (translate any Lean helper functions to Verus)
+    - `vc-signature` + `vc-implementation` → `vc-spec`: Combine Lean function signature with requires/ensures contracts
+    - `vc-condition` + `vc-proof` → `vc-code`: Convert Lean postconditions to Verus function body with placeholder
+    - `vc-postamble`: Convert to Verus postamble (usually closing `}` and `fn main() {}`)
+    
+    **Semantic Equivalence Rules**:
+    
+    1. **Function Contracts**: Lean `vc-condition` containing postconditions should be converted to Verus `ensures` clauses in `vc-spec`
+    2. **Preconditions**: Lean precondition functions should be converted to Verus `requires` clauses
+    3. **Implementation Placeholders**: Always use placeholder implementations in `vc-code` with appropriate default return values
+    4. **Proof Placeholders**: Use `assume(false);` for proof sections
+    
+    **CRITICAL YAML MAPPING RULES**:
+    
+    For Lean YAML with structure:
+    ```yaml
+    vc-signature: "function_signature_here"
+    vc-implementation: "implementation_placeholder" 
+    vc-condition: "postcondition_specs_and_theorem_statement"
+    vc-proof: "proof_placeholder"
+    ```
+    
+    Transform to Verus YAML:
+    ```yaml
+    vc-spec: "function_signature_with_requires_ensures_contracts"
+    vc-code: "placeholder_implementation_with_default_return"
     ```
 
-    Translated Verus:
+    **Example YAML Translation**:
 
+    Lean YAML:
+    ```yaml
+    vc-signature: |-
+      def mean {n : Nat} (a : Vector Int (n + 1)) : Id Int :=
+    vc-implementation: |-
+      -- <vc-implementation>
+        sorry
+      -- </vc-implementation>
+    vc-condition: |-
+      theorem mean_spec {n : Nat} (a : Vector Int (n + 1)) :
+          ⦃⌜True⌝⦄
+          mean a
+          ⦃⇓result => ⌜(result as int) * (n + 1) = (List.range (n + 1)).foldl (fun acc i => acc + a.get ⟨i, by sorry⟩) 0⌝⦄ := by
+    ```
+
+    Verus YAML:
+    ```yaml
+    vc-spec: |-
+      spec fn vec_sum(a: Seq<i32>) -> int 
+          decreases a.len()
+      {
+          if a.len() == 0 {
+              0
+          } else {
+              a[0] + vec_sum(a.skip(1))
+          }
+      }
+
+      fn mean(a: Vec<i32>) -> (result: i32)
+          requires a.len() > 0,
+          ensures (result as int) * (a.len() as int) == vec_sum(a@)
+    vc-code: |-
+      {
+          // impl-start
+          assume(false);
+          0
+          // impl-end
+      }
+    ```
+
+    11. **Verification**: Always verify that the translated code type-checks in Verus and preserves the logical behavior of the original Lean code.
+
+    12. **Output Formatting**: If the input was a YAML file, your output should be presented in the same format, translating each individual section from Lean to Verus following the YAML structure mapping above.
+    
+    **CRITICAL IMPLEMENTATION RULE**: For `<vc-implementation>` sections and `vc-code` sections, DO NOT implement the actual function logic. Instead, always return a placeholder implementation with the pattern:
     ```rust
-    use vstd::prelude::*;
-
-    verus! {
-        proof fn add_comm(a: nat, b: nat)
-            ensures a + b == b + a
-        {
-            // Proof by induction on a
-            assert(a + b == b + a) by {
-                // Base case and inductive step would be expanded here
-                // using Verus proof constructs
-            }
-        }
+    {
+        // impl-start
+        assume(false);
+        [appropriate_default_return_value]
+        // impl-end
     }
     ```
+    For boolean return types, use `false`. For Vec/arrays, use `Vec::new()`. For integers, use `0`. 
+    
+    **CRITICAL PROOF RULE**: For `<vc-proof>` sections, always use:
+    ```rust
+    assume(false); // TODO: Remove this line and implement the proof
+    ```
+    
+    Do not attempt to derive or implement the actual function logic or proof - these sections are meant to be placeholders for human implementation.
 
-    If the input is not valid Lean 4 code, respond with an error message asking the user to provide correct Lean syntax.
+# YAML-specific instruction templates
+yaml_instructions:
+  dafny: |
+    The YAML file contains Dafny code split into segments. Your job is to translate each of them to its corresponding Verus code while maintaining the YAML structure.
+
+    Make sure the preamble starts with `use vstd::prelude::*;`, immediately followed by a `verus!` block, which starts in the preamble, and closes in the postamble, containing `fn main()`.
+
+    **CRITICAL FORMATTING RULES**:
+    - ALWAYS use standard Rust comment blocks `/* ... */` for multi-line comments. NEVER use `/- ... -/` style comments.
+    - ALWAYS comment out any content inside the `fn main()` function. If the main function has any content, wrap all content with `// ` comment markers. Empty main functions `fn main() {}` should remain as is.
+
+    **CRITICAL IMPLEMENTATION RULE**: For `<vc-implementation>` sections, DO NOT implement the actual function logic. Instead, always return a placeholder implementation with the pattern:
+    ```rust
+    {
+        return true; // TODO: Remove this line and implement the function body
+    }
+    ```
+    For boolean return types, use `true`. For other types, use appropriate default values (0 for integers, false for booleans, etc.).
+
+    **CRITICAL PROOF RULE**: For `<vc-proof>` sections, always use:
+    ```rust
+    assume(false); // TODO: Remove this line and implement the proof
+    ```
+
+    **CRITICAL OUTPUT RULE**: Your response must ONLY contain raw YAML content. Do NOT wrap it in code blocks. Output the YAML directly starting with one of: vc-description: |-, vc-preamble: |-, vc-helpers: |-, vc-spec: |-, vc-code: |-, or vc-postamble: |-
+
+    IMPORTANT: In your response, include ONLY the raw YAML content. Do not include explanations or summaries - only the YAML structure with Verus code.
+
+  lean: |    
+    **YAML STRUCTURE REQUIREMENT**: The input is a YAML file with specific fields, and your output MUST also be a YAML file with DIFFERENT field structure. You are NOT translating to raw Verus code - you are translating YAML to YAML where the field structure changes from Lean to Verus format.
+
+    **CRITICAL: INPUT AND OUTPUT YAML FIELDS ARE DIFFERENT**
+
+    INPUT Lean YAML has these fields:
+    - `vc-description`: Description text 
+    - `vc-preamble`: Preamble code 
+    - `vc-helpers`: Helper functions 
+    - `vc-signature`: Function signature 
+    - `vc-implementation`: Implementation code 
+    - `vc-condition`: Postconditions and theorem statements
+    - `vc-proof`: Proof code 
+    - `vc-postamble`: Closing code 
+
+    OUTPUT Verus YAML must have these fields (DIFFERENT STRUCTURE):
+    - `vc-description`: Plain text description (remove /- ... -/ delimiters)
+    - `vc-preamble`: Verus imports and opening verus! block
+    - `vc-helpers`: Empty or translated helper functions
+    - `vc-spec`: Function signature with requires/ensures clauses FROM vc-condition
+    - `vc-code`: Placeholder implementation body
+    - `vc-postamble`: Closing verus block and main function
+
+    **ABSOLUTELY CRITICAL FIELD MAPPING**:
+    - INPUT `vc-signature` + INPUT `vc-condition` → OUTPUT `vc-spec` (extract all specifications from vc-condition)
+    - INPUT `vc-implementation` + INPUT `vc-proof` → OUTPUT `vc-code` (placeholder implementation only)
+    - INPUT `vc-condition` MUST NOT appear in output - all specifications go to `vc-spec`
+
+    **SPECIFICATION EXTRACTION RULES FROM vc-condition**:
+    
+    The INPUT `vc-condition` section contains theorem statements with complex mathematical properties in `⌜...⌝` sections. You MUST extract these and convert them to Verus `ensures` clauses in the OUTPUT `vc-spec`.
+    
+    **Convert Lean mathematical notation to Verus**: 
+    - Lean `∃ var : Type, property` → Verus `exists|var: Type| property`
+    - Lean `∀ var : Type, property` → Verus `forall|var: Type| property`  
+    - Lean `∧` → Verus `&&`
+    - Lean function calls like `a.get ⟨i, proof⟩` → Verus `a[i]`
+    - Lean `Vector.get` → Verus array/vector indexing
+    - Lean `List.foldl` → appropriate Verus summation or specification
+    
+    **EXAMPLE SPECIFICATION EXTRACTIONS**:
+    
+    **Example 1: Array manipulation (removeElement)**
+    If INPUT Lean vc-condition contains array manipulation specifications, extract them to Verus ensures clauses:
+    ```rust
+    fn remove_element(s: &Vec<i32>, k: usize) -> (result: Vec<i32>)
+        requires k < s.len(),
+        ensures
+            result.len() == s.len() - 1,
+            forall|i: int| 0 <= i < k ==> result[i] == s[i],
+            forall|i: int| k <= i < result.len() ==> result[i] == s[i + 1],
+    ```
+    
+    **Example 2: Mathematical computation (mean)**
+    If INPUT Lean vc-condition contains complex mathematical properties in `⌜...⌝` sections, extract the core mathematical relationship and express it as Verus specifications:
+    ```rust
+    spec fn vec_sum(a: Seq<i32>) -> int 
+        decreases a.len()
+    {
+        if a.len() == 0 {
+            0
+        } else {
+            a[0] + vec_sum(a.skip(1))
+        }
+    }
+
+    fn mean(a: Vec<i32>) -> (result: i32)
+        requires a.len() > 0,
+        ensures (result as int) * (a.len() as int) == vec_sum(a@)
+    ```
+    
+    This captures the mathematical property that mean × count = sum, which is the core relationship for arithmetic mean.
+
+    Make sure the preamble starts with `use vstd::prelude::*;`, immediately followed by a `verus!` block, which starts in the preamble, and closes in the postamble, containing `fn main()`.
+
+    **CRITICAL FORMATTING RULES**:
+    - ALWAYS use standard Rust comment blocks `/* ... */` for multi-line comments. NEVER use `/- ... -/` style comments.
+    - ALWAYS comment out any content inside the `fn main()` function. If the main function has any content, wrap all content with `// ` comment markers. Empty main functions `fn main() {}` should remain as is.
+
+    **YAML STRUCTURE MAPPING FOR LEAN TO VERUS**:
+    When translating from Lean YAML to Verus YAML, apply these semantic equivalence rules:
+    
+    **Fields that map directly (translate content but keep same field name)**:
+    - `vc-description`: Keep as `vc-description` (translate Lean `/- ... -/` comments to plain text, remove comment delimiters)
+    - `vc-preamble`: Keep as `vc-preamble` (convert to Verus imports: `use vstd::prelude::*;` and opening `verus! {`)
+    - `vc-helpers`: Keep as `vc-helpers` (translate any Lean helper functions to Verus equivalents, usually empty)
+    - `vc-postamble`: Keep as `vc-postamble` (convert to Verus closing: `}` and optionally `fn main() {}`)
+    
+    **Fields that combine and transform**:
+    - `vc-signature` + `vc-implementation` → `vc-spec`: Combine Lean function signature with contracts (requires/ensures clauses extracted from vc-condition)
+    - `vc-condition` + `vc-proof` → `vc-code`: Convert to Verus function body with placeholder implementation
+    
+    **CRITICAL**: All fields (vc-description, vc-preamble, vc-helpers, vc-spec, vc-code, vc-postamble) MUST be present in the output YAML, even if some are empty.
+    
+    **EXAMPLES FROM REFERENCE TRANSLATIONS**:
+    
+    **Example 1: Array Manipulation (removeElement)**
+    Lean YAML structure:
+    ```yaml
+    vc-signature: |-
+      def removeElement (s : Array Int) (k : Nat) (h_precond : removeElement_precond (s) (k)) : Array Int :=
+    vc-implementation: |-
+      -- <vc-implementation>
+        sorry
+      -- </vc-implementation>
+    vc-condition: |-
+      @[reducible, simp]
+      def removeElement_postcond (s : Array Int) (k : Nat) (result: Array Int) (h_precond : removeElement_precond (s) (k)) :=
+        result.size = s.size - 1 ∧ (∀ i, i < k → result[i]! = s[i]!) ∧ (∀ i, i < result.size → i ≥ k → result[i]! = s[i + 1]!)
+    ```
+    
+    Becomes Verus YAML:
+    ```yaml
+    vc-spec: |-
+      fn remove_element(s: &Vec<i32>, k: usize) -> (result: Vec<i32>)
+          requires k < s.len(),
+          ensures
+              result.len() == s.len() - 1,
+              forall|i: int| 0 <= i < k ==> result[i] == s[i],
+              forall|i: int| k <= i < result.len() ==> result[i] == s[i + 1],
+    vc-code: |-
+      {
+          // impl-start
+          assume(false);
+          Vec::new()
+          // impl-end
+      }
+    ```
+
+    **Example 2: Mathematical Computation (mean)**
+    Lean YAML structure:
+    ```yaml
+    vc-signature: |-
+      def mean {n : Nat} (a : Vector Int (n + 1)) : Id Int :=
+    vc-implementation: |-
+      -- <vc-implementation>
+        sorry
+      -- </vc-implementation>
+    vc-condition: |-
+      theorem mean_spec {n : Nat} (a : Vector Int (n + 1)) :
+          ⦃⌜True⌝⦄
+          mean a
+          ⦃⇓result => ⌜(result as int) * (n + 1) = (List.range (n + 1)).foldl (fun acc i => acc + a.get ⟨i, by sorry⟩) 0⌝⦄ := by
+    vc-proof: |-
+      -- <vc-proof>
+        sorry
+      -- </vc-proof>
+    ```
+    
+    Becomes Verus YAML structure:
+    ```yaml
+    vc-description: |-
+      Computes the arithmetic mean of all elements in a non-empty vector.
+    vc-preamble: |-
+      use vstd::prelude::*;
+
+      verus! {
+    vc-helpers: |-
+
+    vc-spec: |-
+      spec fn vec_sum(a: Seq<i32>) -> int 
+          decreases a.len()
+      {
+          if a.len() == 0 {
+              0
+          } else {
+              a[0] + vec_sum(a.skip(1))
+          }
+      }
+
+      fn mean(a: Vec<i32>) -> (result: i32)
+          requires a.len() > 0,
+          ensures (result as int) * (a.len() as int) == vec_sum(a@)
+    vc-code: |-
+      {
+          // impl-start
+          assume(false);
+          0
+          // impl-end
+      }
+    vc-postamble: |-
+
+      }
+      fn main() {}
+    ```
+
+    **CRITICAL IMPLEMENTATION RULE**: For `vc-code` sections, DO NOT implement the actual function logic. Instead, always return a placeholder implementation with the pattern:
+    ```rust
+    {
+        // impl-start
+        assume(false);
+        [appropriate_default_return_value]
+        // impl-end
+    }
+    ```
+    For boolean return types, use `false`. For Vec/Array types, use `Vec::new()`. For integers, use `0`.
+
+    **CRITICAL PROOF RULE**: For `<vc-proof>` sections, always use:
+    ```rust
+    assume(false); // TODO: Remove this line and implement the proof
+    ```
+
+    **CRITICAL OUTPUT RULE**: Your response must ONLY contain raw YAML content. Do NOT wrap it in code blocks. Output the YAML directly starting with one of: vc-description: |-, vc-preamble: |-, vc-helpers: |-, vc-spec: |-, vc-code: |-, or vc-postamble: |-
+
+    **FORBIDDEN**: DO NOT create vc-condition, vc-signature, vc-implementation, or vc-proof fields in your output. These are INPUT fields only. All specifications from vc-condition must be extracted and placed in vc-spec.
+
+    **MANDATORY YAML STRUCTURE**: Your output must follow this exact format:
+    vc-description: |-
+      [description text here]
+    vc-preamble: |-
+      [verus imports and opening here]  
+    vc-helpers: |-
+      [helper functions here, usually empty]
+    vc-spec: |-
+      [function signature with contracts extracted from INPUT vc-condition here]
+    vc-code: |-
+      [placeholder implementation here]
+    vc-postamble: |-
+      [closing verus block and main here]
+
+    IMPORTANT: In your response, include ONLY the raw YAML content. Do not include explanations or summaries - only the YAML structure with Verus code.
+
+# Error feedback templates
+error_templates:
+  yaml_syntax_error: |
+    The generated YAML has syntax errors: {error}
+
+    Please fix the YAML syntax issues and generate valid YAML. Common issues:
+    - Make sure field names end with colons (:)
+    - Check indentation (use spaces, not tabs)
+    - Ensure all string values containing special characters are properly quoted
+    - Use the |- syntax for multi-line strings
+
+    Here's the original {source_language} code again:
+
+    ```{source_language_lower}
+    {source_code}
+    ```
+
+    {additional_prompt}
+  
+  verification_error: |
+    The previous translation failed verification. Here are the specific errors:
+
+    Verification Error: {verification_error}
+
+    Verification Output: {verification_output}
+
+    Please fix the Verus code to address these verification errors. Pay special attention to:
+    - Syntax errors (missing semicolons, incorrect brackets, etc.)
+    - Type mismatches
+    - Incorrect function signatures
+    - Missing imports or module declarations
+
+    Here's the original {source_language} code again:
+
+    ```{source_language_lower}
+    {source_code}
+    ```
+
+    {additional_prompt}
+
+# Default user prompt templates
+default_prompts:
+  dafny: |
+    Use the `verus` tool to make sure your output compiles. 
+
+    **CRITICAL FORMATTING RULES**:
+    - ALWAYS use standard Rust comment blocks `/* ... */` for multi-line comments. NEVER use `/- ... -/` style comments.
+    - ALWAYS comment out any content inside the `fn main()` function. If the main function has any content, wrap all content with `// ` comment markers. Empty main functions `fn main() {}` should remain as is.
+
+  lean: |
+    Use the `verus` tool to make sure your output compiles. 
+
+    **CRITICAL FORMATTING RULES**:
+    - ALWAYS use standard Rust comment blocks `/* ... */` for multi-line comments. NEVER use `/- ... -/` style comments.
+    - ALWAYS comment out any content inside the `fn main()` function. If the main function has any content, wrap all content with `// ` comment markers. Empty main functions `fn main() {}` should remain as is.
