@@ -9,7 +9,7 @@ terraform {
 }
 
 provider "aws" {
-  region = "eu-west-1"
+  region = "us-east-1"
 }
 
 # VPC and networking
@@ -19,7 +19,7 @@ resource "aws_vpc" "batch_vpc" {
   enable_dns_support   = true
   
   tags = {
-    Name = "vericoding2-batch-vpc"
+    Name = "vericoding3-batch-vpc"
   }
 }
 
@@ -27,7 +27,7 @@ resource "aws_internet_gateway" "batch_igw" {
   vpc_id = aws_vpc.batch_vpc.id
   
   tags = {
-    Name = "vericoding2-batch-igw"
+    Name = "vericoding3-batch-igw"
   }
 }
 
@@ -40,7 +40,7 @@ resource "aws_subnet" "batch_subnet" {
   map_public_ip_on_launch = true
   
   tags = {
-    Name = "vericoding2-batch-subnet-${count.index + 1}"
+    Name = "vericoding3-batch-subnet-${count.index + 1}"
   }
 }
 
@@ -53,7 +53,7 @@ resource "aws_route_table" "batch_rt" {
   }
   
   tags = {
-    Name = "vericoding2-batch-rt"
+    Name = "vericoding3-batch-rt"
   }
 }
 
@@ -66,7 +66,7 @@ resource "aws_route_table_association" "batch_rta" {
 
 # Security Group
 resource "aws_security_group" "batch_sg" {
-  name_prefix = "vericoding2-batch-"
+  name_prefix = "vericoding3-batch-"
   vpc_id      = aws_vpc.batch_vpc.id
   
   egress {
@@ -77,13 +77,13 @@ resource "aws_security_group" "batch_sg" {
   }
   
   tags = {
-    Name = "vericoding2-batch-sg"
+    Name = "vericoding3-batch-sg"
   }
 }
 
 # IAM Role for Batch Service
 resource "aws_iam_role" "batch_service_role" {
-  name = "vericoding2-batch-service-role"
+  name = "vericoding3-batch-service-role"
   
   assume_role_policy = jsonencode({
     Version = "2012-10-17"
@@ -106,7 +106,7 @@ resource "aws_iam_role_policy_attachment" "batch_service_role_policy" {
 
 # IAM Role for EC2 instances
 resource "aws_iam_role" "batch_instance_role" {
-  name = "vericoding2-batch-instance-role"
+  name = "vericoding3-batch-instance-role"
   
   assume_role_policy = jsonencode({
     Version = "2012-10-17"
@@ -129,7 +129,7 @@ resource "aws_iam_role_policy_attachment" "batch_instance_role_policy" {
 
 # Additional policy for accessing Parameter Store and CloudWatch Logs
 resource "aws_iam_role_policy" "batch_job_ssm_policy" {
-  name = "vericoding2-batch-job-ssm-policy"
+  name = "vericoding3-batch-job-ssm-policy"
   role = aws_iam_role.batch_job_role.id
   
   policy = jsonencode({
@@ -143,7 +143,7 @@ resource "aws_iam_role_policy" "batch_job_ssm_policy" {
           "ssm:GetParametersByPath"
         ]
         Resource = [
-          "arn:aws:ssm:eu-west-1:${data.aws_caller_identity.current.account_id}:parameter/vericoding/*"
+          "arn:aws:ssm:us-east-1:${data.aws_caller_identity.current.account_id}:parameter/vericoding/*"
         ]
       },
       {
@@ -154,7 +154,7 @@ resource "aws_iam_role_policy" "batch_job_ssm_policy" {
           "logs:CreateLogGroup"
         ]
         Resource = [
-          "arn:aws:logs:eu-west-1:${data.aws_caller_identity.current.account_id}:log-group:/aws/batch/job*"
+          "arn:aws:logs:us-east-1:${data.aws_caller_identity.current.account_id}:log-group:/aws/batch/job*"
         ]
       }
     ]
@@ -162,13 +162,13 @@ resource "aws_iam_role_policy" "batch_job_ssm_policy" {
 }
 
 resource "aws_iam_instance_profile" "batch_instance_profile" {
-  name = "vericoding2-batch-instance-profile"
+  name = "vericoding3-batch-instance-profile"
   role = aws_iam_role.batch_instance_role.name
 }
 
 # IAM Role for Spot Fleet
 resource "aws_iam_role" "batch_spot_fleet_role" {
-  name = "vericoding2-batch-spot-fleet-role"
+  name = "vericoding3-batch-spot-fleet-role"
   
   assume_role_policy = jsonencode({
     Version = "2012-10-17"
@@ -191,7 +191,7 @@ resource "aws_iam_role_policy_attachment" "batch_spot_fleet_policy" {
 
 # Compute Environment
 resource "aws_batch_compute_environment" "vericoding_compute_env" {
-  compute_environment_name = "vericoding2-compute-env"
+  compute_environment_name = "vericoding3-compute-env"
   type                    = "MANAGED"
   state                   = "ENABLED"
   service_role            = aws_iam_role.batch_service_role.arn
@@ -212,7 +212,7 @@ resource "aws_batch_compute_environment" "vericoding_compute_env" {
     security_group_ids = [aws_security_group.batch_sg.id]
     
     tags = {
-      Name        = "vericoding2-batch-instance"
+      Name        = "vericoding3-batch-instance"
       Environment = "development"
       Project     = "vericoding"
     }
@@ -225,7 +225,7 @@ resource "aws_batch_compute_environment" "vericoding_compute_env" {
 
 # Job Queue
 resource "aws_batch_job_queue" "vericoding_job_queue" {
-  name                 = "vericoding2-job-queue"
+  name                 = "vericoding3-job-queue"
   state                = "ENABLED"
   priority             = 1
   compute_environments = [aws_batch_compute_environment.vericoding_compute_env.arn]
@@ -235,7 +235,7 @@ resource "aws_batch_job_queue" "vericoding_job_queue" {
 
 # Job Definition for Lean verification
 resource "aws_batch_job_definition" "lean_verification" {
-  name = "lean-verification2"
+  name = "lean-verification3"
   type = "container"
   
   platform_capabilities = ["EC2"]
@@ -262,15 +262,15 @@ resource "aws_batch_job_definition" "lean_verification" {
     secrets = [
       {
         name      = "WANDB_API_KEY"
-        valueFrom = "arn:aws:ssm:eu-west-1:${data.aws_caller_identity.current.account_id}:parameter/vericoding/wandb-api-key"
+        valueFrom = "arn:aws:ssm:us-east-1:${data.aws_caller_identity.current.account_id}:parameter/vericoding/wandb-api-key"
       },
       {
         name      = "OPENROUTER_API_KEY" 
-        valueFrom = "arn:aws:ssm:eu-west-1:${data.aws_caller_identity.current.account_id}:parameter/vericoding/openrouter-api-key"
+        valueFrom = "arn:aws:ssm:us-east-1:${data.aws_caller_identity.current.account_id}:parameter/vericoding/openrouter-api-key"
       },
       {
         name      = "FAKE_API_KEY"
-        valueFrom = "arn:aws:ssm:eu-west-1:${data.aws_caller_identity.current.account_id}:parameter/vericoding/fake-api-key"
+        valueFrom = "arn:aws:ssm:us-east-1:${data.aws_caller_identity.current.account_id}:parameter/vericoding/fake-api-key"
       }
     ]
     
@@ -281,7 +281,7 @@ resource "aws_batch_job_definition" "lean_verification" {
       logDriver = "awslogs"
       options = {
         awslogs-group         = "/aws/batch/job"
-        awslogs-region        = "eu-west-1"
+        awslogs-region        = "us-east-1"
         awslogs-stream-prefix = "lean-verification"
       }
     }
@@ -297,7 +297,7 @@ resource "aws_batch_job_definition" "lean_verification" {
 
 # IAM Role for Job execution
 resource "aws_iam_role" "batch_job_role" {
-  name = "vericoding2-batch-job-role"
+  name = "vericoding3-batch-job-role"
   
   assume_role_policy = jsonencode({
     Version = "2012-10-17"
