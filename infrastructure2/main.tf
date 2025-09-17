@@ -243,7 +243,7 @@ resource "aws_batch_job_definition" "lean_verification" {
   container_properties = jsonencode({
     image = "ubuntu:22.04"
     vcpus = 4
-    memory = 7680   # 7.5GB (leave 0.5GB for system)
+    memory = 15360  # 15GB
     
     jobRoleArn = aws_iam_role.batch_job_role.arn
     executionRoleArn = aws_iam_role.batch_job_role.arn
