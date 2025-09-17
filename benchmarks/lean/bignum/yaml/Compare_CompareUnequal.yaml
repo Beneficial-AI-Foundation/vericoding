@@ -1,3 +1,7 @@
+vc-description: |-
+  Bignum task: Compare_CompareUnequal.
+  Implement the function according to the Lean specification.
+
 vc-preamble: |-
   namespace BignumLean
   
@@ -6,10 +10,10 @@ vc-preamble: |-
   
   def Str2Int (s : String) : Nat :=
     s.data.foldl (fun acc ch => 2 * acc + (if ch = '1' then 1 else 0)) 0
-
+  
   def CompareUnequal (s1 s2 : String) : Int :=
   sorry
-
+  
   axiom CompareUnequal_spec
     (s1 s2 : String)
     (h1 : ValidBitString s1)
@@ -24,21 +28,13 @@ vc-preamble: |-
     (Str2Int s1 = Str2Int s2 → CompareUnequal s1 s2 = 0) ∧
     (Str2Int s1 > Str2Int s2 → CompareUnequal s1 s2 = 1)
 
-
 vc-helpers: |-
-  
 
-vc-description: |-
-  Bignum task: Compare_CompareUnequal.
-  Implement the function according to the Lean specification.
-
-vc-spec: |-
+vc-definitions: |-
   def CompareUnequal (s1 s2 : String) : Int :=
+    sorry
 
-vc-code: |-
-  sorry
-
-vc-theorem: |-
+vc-theorems: |-
   theorem CompareUnequal_spec
       (s1 s2 : String)
       (h1 : ValidBitString s1)
@@ -52,9 +48,8 @@ vc-theorem: |-
       (Str2Int s1 < Str2Int s2 → CompareUnequal s1 s2 = (-1 : Int)) ∧
       (Str2Int s1 = Str2Int s2 → CompareUnequal s1 s2 = 0) ∧
       (Str2Int s1 > Str2Int s2 → CompareUnequal s1 s2 = 1) := by
-
-vc-proof: |-
-  sorry
+    sorry
 
 vc-postamble: |-
   end BignumLean
+

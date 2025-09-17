@@ -1,3 +1,7 @@
+vc-description: |-
+  Bignum task: ModExp_Add_ModExpPow2_Zeroes.
+  Implement the function according to the Lean specification.
+
 vc-preamble: |-
   namespace BignumLean
   
@@ -38,26 +42,18 @@ vc-preamble: |-
     s.length = n ∧ ValidBitString s ∧ Str2Int s = 0 ∧ AllZero s
 
 vc-helpers: |-
-  
 
-vc-description: |-
-  Bignum task: ModExp_Add_ModExpPow2_Zeroes.
-  Implement the function according to the Lean specification.
-
-vc-spec: |-
+vc-definitions: |-
   def ModExp (sx sy sz : String) : String :=
+    sorry
 
-vc-code: |-
-  sorry
-
-vc-theorem: |-
+vc-theorems: |-
   theorem ModExp_spec (sx sy sz : String) (hx : ValidBitString sx) (hy : ValidBitString sy) (hz : ValidBitString sz)
     (hsy_pos : sy.length > 0) (hsz_gt1 : Str2Int sz > 1) :
     ValidBitString (ModExp sx sy sz) ∧
     Str2Int (ModExp sx sy sz) = Exp_int (Str2Int sx) (Str2Int sy) % Str2Int sz := by
-
-vc-proof: |-
-  sorry
+    sorry
 
 vc-postamble: |-
   end BignumLean
+

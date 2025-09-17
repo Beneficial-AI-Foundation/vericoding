@@ -1,3 +1,7 @@
+vc-description: |-
+  Bignum task: Mul_Add_NormalizeBitString.
+  Implement the function according to the Lean specification.
+
 vc-preamble: |-
   namespace BignumLean
   
@@ -23,24 +27,16 @@ vc-preamble: |-
     (ValidBitString s → Str2Int s = Str2Int (NormalizeBitString s))
 
 vc-helpers: |-
-  
 
-vc-description: |-
-  Bignum task: Mul_Add_NormalizeBitString.
-  Implement the function according to the Lean specification.
-
-vc-spec: |-
+vc-definitions: |-
   def Mul (s1 s2 : String) : String :=
+    sorry
 
-vc-code: |-
-  sorry
-
-vc-theorem: |-
+vc-theorems: |-
   theorem Mul_spec (s1 s2 : String) (h1 : ValidBitString s1) (h2 : ValidBitString s2) :
     ValidBitString (Mul s1 s2) ∧ Str2Int (Mul s1 s2) = Str2Int s1 * Str2Int s2 := by
-
-vc-proof: |-
-  sorry
+    sorry
 
 vc-postamble: |-
   end BignumLean
+

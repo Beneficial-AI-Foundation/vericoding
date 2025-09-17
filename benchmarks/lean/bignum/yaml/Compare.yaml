@@ -1,3 +1,7 @@
+vc-description: |-
+  Bignum task: Compare.
+  Implement the function according to the Lean specification.
+
 vc-preamble: |-
   namespace BignumLean
   
@@ -8,26 +12,18 @@ vc-preamble: |-
     s.data.foldl (fun acc ch => 2 * acc + (if ch = '1' then 1 else 0)) 0
 
 vc-helpers: |-
-  
 
-vc-description: |-
-  Bignum task: Compare.
-  Implement the function according to the Lean specification.
-
-vc-spec: |-
+vc-definitions: |-
   def Compare (s1 s2 : String) : Int :=
+    sorry
 
-vc-code: |-
-  sorry
-
-vc-theorem: |-
+vc-theorems: |-
   theorem Compare_spec (s1 s2 : String) (h1 : ValidBitString s1) (h2 : ValidBitString s2) :
     (Str2Int s1 < Str2Int s2 → Compare s1 s2 = (-1 : Int)) ∧
     (Str2Int s1 = Str2Int s2 → Compare s1 s2 = 0) ∧
     (Str2Int s1 > Str2Int s2 → Compare s1 s2 = 1) := by
-
-vc-proof: |-
-  sorry
+    sorry
 
 vc-postamble: |-
   end BignumLean
+

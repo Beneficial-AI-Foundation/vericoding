@@ -1,3 +1,7 @@
+vc-description: |-
+  Bignum task: DivMod_Compare_Sub.
+  Implement the function according to the Lean specification.
+
 vc-preamble: |-
   namespace BignumLean
   
@@ -22,26 +26,18 @@ vc-preamble: |-
     ValidBitString (Sub s1 s2) ∧ Str2Int (Sub s1 s2) + Str2Int s2 = Str2Int s1
 
 vc-helpers: |-
-  
 
-vc-description: |-
-  Bignum task: DivMod_Compare_Sub.
-  Implement the function according to the Lean specification.
-
-vc-spec: |-
+vc-definitions: |-
   def DivMod (s1 s2 : String) : (String × String) :=
+    sorry
 
-vc-code: |-
-  sorry
-
-vc-theorem: |-
+vc-theorems: |-
   theorem DivMod_spec (s1 s2 : String) (h1 : ValidBitString s1) (h2 : ValidBitString s2)
     (h2nz : Str2Int s2 ≠ 0) :
     let (q, r) := DivMod s1 s2
     ValidBitString q ∧ ValidBitString r ∧ Str2Int s1 = Str2Int q * Str2Int s2 + Str2Int r := by
-
-vc-proof: |-
-  sorry
+    sorry
 
 vc-postamble: |-
   end BignumLean
+

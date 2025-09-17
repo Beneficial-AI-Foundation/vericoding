@@ -1,3 +1,7 @@
+vc-description: |-
+  Bignum task: ModExp_int.
+  Implement the function according to the Lean specification.
+
 vc-preamble: |-
   namespace BignumLean
   
@@ -5,24 +9,16 @@ vc-preamble: |-
     if y = 0 then 1 else x * Exp_int x (y - 1)
 
 vc-helpers: |-
-  
 
-vc-description: |-
-  Bignum task: ModExp_int.
-  Implement the function according to the Lean specification.
-
-vc-spec: |-
+vc-definitions: |-
   def ModExp_int (x y n z : Nat) : Nat :=
+    sorry
 
-vc-code: |-
-  sorry
-
-vc-theorem: |-
+vc-theorems: |-
   theorem ModExp_int_spec (x y n z : Nat) (hy : y < Exp_int 2 (n + 1)) (hz : z > 1) :
     ModExp_int x y n z = Exp_int x y % z := by
-
-vc-proof: |-
-  sorry
+    sorry
 
 vc-postamble: |-
   end BignumLean
+
