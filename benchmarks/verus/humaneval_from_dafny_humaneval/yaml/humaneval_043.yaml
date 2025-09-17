@@ -1,0 +1,31 @@
+vc-description: |-
+  Given a list of integers, determine if there exist two distinct elements
+  at different positions that sum to zero. This task requires implementing an efficient
+  algorithm to check for the existence of such a pair.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+  spec fn has_pair_sum_to_zero(l: Seq<int>) -> bool {
+      exists|i: int, j: int| 0 <= i < j < l.len() && l[i] + l[j] == 0
+  }
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn pairs_sum_to_zero(l: Seq<int>) -> (result: bool)
+      ensures result == has_pair_sum_to_zero(l)
+
+vc-code: |-
+  {
+      assume(false);
+      false
+  }
+
+vc-postamble: |-
+
+  }
+
+  fn main() {}

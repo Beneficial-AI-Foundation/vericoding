@@ -1,0 +1,43 @@
+vc-description: |-
+  This verification task implements a string to MD5 hash conversion
+  function. The method takes a string input and returns an Option type containing
+  either None (for empty input) or Some with a valid 32-character lowercase hexadecimal
+  MD5 hash string.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+  spec fn is_valid_md5_hash(s: Seq<char>) -> bool {
+      s.len() == 32 && forall|i: int| 0 <= i < s.len() ==> #[trigger] s.index(i) == s.index(i) && {
+          let c = s.index(i);
+          ('0' <= c && c <= '9') || ('a' <= c && c <= 'f')
+      }
+  }
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn string_to_md5(text: Seq<char>) -> (result: Option<Seq<char>>)
+      ensures ({
+          (text.len() == 0 ==> matches!(result, Option::None)) &&
+          (text.len() != 0 ==> match result {
+              Option::Some(value) => is_valid_md5_hash(value),
+              Option::None => false,
+          })
+      })
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      Option::None
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+
+  fn main() {}

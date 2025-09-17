@@ -1,0 +1,45 @@
+vc-description: |-
+  Count the number of distinct characters in a string, ignoring case
+  differences. The implementation should return an integer representing the count
+  of unique characters, treating 'A' and 'a' as the same character through case-insensitive
+  comparison.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+  spec fn to_lower_char(c: char) -> char {
+      if 'A' <= c && c <= 'Z' {
+          ((c as u8 - 'A' as u8 + 'a' as u8) as char)
+      } else {
+          c
+      }
+  }
+
+  spec fn char_set_from_string(s: Seq<char>) -> Set<char> {
+      Set::new(|c: char| exists|i: int| 0 <= i < s.len() && to_lower_char(s[i]) == c)
+  }
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn count_distinct_characters(s: &str) -> (count: usize)
+      ensures 
+          count >= 0,
+          count <= s@.len(),
+          count == char_set_from_string(s@).len(),
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      0
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+
+  fn main() {}

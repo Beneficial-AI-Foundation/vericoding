@@ -1,0 +1,63 @@
+vc-description: |-
+  Given a list containing values of various types, return a new list
+  containing only the integer values. In Python, booleans are considered integers
+  (True=1, False=0), so they should be included in the result. The task requires implementing
+  a function that filters a sequence of mixed-type values to extract only integers
+  and boolean values (converted to 0/1).
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+  pub enum Value {
+      IntVal(int),
+      BoolVal(bool),
+      StringVal(Seq<char>),
+      RealVal(int), /* using int for real approximation */
+      OtherVal,
+  }
+
+  spec fn valid_input(values: Seq<Value>) -> bool {
+      true  /* All sequences of Value are valid input */
+  }
+
+  spec fn integer_values(values: Seq<Value>) -> Seq<int> 
+      decreases values.len()
+  {
+      if values.len() == 0 {
+          Seq::<int>::empty()
+      } else {
+          match values.index(0) {
+              Value::IntVal(i) => seq![i].add(integer_values(values.subrange(1, values.len() as int))),
+              Value::BoolVal(b) => seq![if b { 1int } else { 0int }].add(integer_values(values.subrange(1, values.len() as int))),
+              _ => integer_values(values.subrange(1, values.len() as int))
+          }
+      }
+  }
+
+  spec fn valid_output(input: Seq<Value>, output: Seq<int>) -> bool {
+      output == integer_values(input)
+  }
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn filter_integers(values: Seq<Value>) -> (result: Seq<int>)
+      requires
+          valid_input(values),
+      ensures
+          valid_output(values, result),
+          result.len() <= values.len()
+
+vc-code: |-
+  {
+      assume(false);
+      unreached()
+  }
+
+vc-postamble: |-
+
+  }
+
+  fn main() {}

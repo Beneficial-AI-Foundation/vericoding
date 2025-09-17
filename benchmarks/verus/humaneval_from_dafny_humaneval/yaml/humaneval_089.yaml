@@ -1,0 +1,26 @@
+vc-description: |-
+  This verification task implements a string encryption algorithm that shifts each alphabetic character forward by 4 positions in the alphabet with wraparound. The implementation should preserve the case of letters and leave non-alphabetic characters unchanged.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn encrypt(s: Seq<char>) -> (result: Seq<char>)
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      unreached()
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+
+  fn main() {}

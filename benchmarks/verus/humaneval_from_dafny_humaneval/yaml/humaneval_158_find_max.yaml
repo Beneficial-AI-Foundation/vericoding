@@ -1,0 +1,35 @@
+vc-description: |-
+  function_signature: fn find_max(words: Vec<String>) -> String
+  
+  Write a function that accepts a list of strings. The list contains different words.
+  Return the word with maximum number of unique characters. If multiple strings have
+  maximum number of unique characters, return the one which comes first in lexicographical
+  order.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn find_max(strings: Seq<Seq<char>>) -> (s: Seq<char>)
+      requires 
+          strings.len() > 0,
+      ensures 
+          strings.contains(s),
+          forall|i: int| 0 <= i < strings.len() ==> 
+              s.to_set().len() >= strings.index(i).to_set().len(),
+
+vc-code: |-
+  {
+      assume(false);
+      unreached()
+  }
+
+vc-postamble: |-
+
+  }
+
+  fn main() {}

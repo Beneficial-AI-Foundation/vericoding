@@ -1,0 +1,38 @@
+vc-description: |-
+  This verification task implements the computation of the sum of all
+  integers from 1 to n inclusive, where n is a positive integer. The expected implementation
+  should use the well-known mathematical formula n*(n+1)/2 for efficiency.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+  spec fn valid_input(n: int) -> bool {
+      n >= 1
+  }
+
+  spec fn sum_from_one_to_n(n: int) -> int
+      recommends n >= 1
+  {
+      n * (n + 1) / 2
+  }
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn sum_to_n(n: int) -> (result: int)
+      requires valid_input(n)
+      ensures result == sum_from_one_to_n(n)
+
+vc-code: |-
+  {
+      assume(false);
+      unreached()
+  }
+
+vc-postamble: |-
+
+  }
+
+  fn main() {}

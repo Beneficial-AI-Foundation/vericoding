@@ -1,0 +1,44 @@
+// <vc-preamble>
+use vstd::prelude::*;
+
+verus! {
+
+spec fn total_chars(lst: Seq<Seq<char>>) -> nat
+    decreases lst.len()
+{
+    if lst.len() == 0 {
+        0
+    } else {
+        lst[0].len() + total_chars(lst.subrange(1, lst.len() as int))
+    }
+}
+// </vc-preamble>
+
+// <vc-helpers>
+proof fn total_chars_prefix(lst: Seq<Seq<char>>, i: nat)
+    requires 0 <= i < lst.len()
+    ensures total_chars(lst.subrange(0, i as int + 1)) == total_chars(lst.subrange(0, i as int)) + lst[i as int].len()
+    decreases i
+{
+    assume(false); /* TODO: Remove this line and implement the proof */
+}
+// </vc-helpers>
+
+// <vc-spec>
+fn total_match(lst1: Seq<Seq<char>>, lst2: Seq<Seq<char>>) -> (result: Seq<Seq<char>>)
+    ensures 
+        result == lst1 || result == lst2,
+        total_chars(lst1) <= total_chars(lst2) ==> result == lst1,
+        total_chars(lst1) > total_chars(lst2) ==> result == lst2
+// </vc-spec>
+// <vc-code>
+{
+    assume(false);
+    unreached()
+}
+// </vc-code>
+
+
+}
+
+fn main() {}

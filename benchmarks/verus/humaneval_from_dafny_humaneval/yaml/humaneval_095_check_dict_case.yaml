@@ -1,0 +1,43 @@
+vc-description: |-
+  function_signature: def check_dict_case(s : dict[str, str]) -> bool
+
+  Given a dictionary, return True if all keys are strings in lower case or all keys
+  are strings in upper case, else return False. The function should return False is
+  the given dictionary is empty. Note(George): Modified the problem to use strings
+  only for both keys and values.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+  spec fn is_lower_case(s: Seq<char>) -> bool {
+      forall|i: int| 0 <= i < s.len() ==> ('a' <= #[trigger] s[i] <= 'z')
+  }
+
+  spec fn is_upper_case(s: Seq<char>) -> bool {
+      forall|i: int| 0 <= i < s.len() ==> ('A' <= #[trigger] s[i] <= 'Z')
+  }
+
+  type DictCase = Map<Seq<char>, Seq<char>>;
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn check_dict_case(dict: DictCase) -> (result: bool)
+      ensures
+          (dict.len() == 0) ==> !result,
+          result ==> ((forall|k: Seq<char>| #[trigger] dict.contains_key(k) ==> is_lower_case(k)) || (forall|k: Seq<char>| #[trigger] dict.contains_key(k) ==> is_upper_case(k))),
+          !result ==> ((dict.len() == 0) || ((exists|k: Seq<char>| #[trigger] dict.contains_key(k) && !is_lower_case(k)) && (exists|k: Seq<char>| #[trigger] dict.contains_key(k) && !is_upper_case(k))))
+
+vc-code: |-
+  {
+      assume(false);
+      false
+  }
+
+vc-postamble: |-
+
+  }
+
+  fn main() {}

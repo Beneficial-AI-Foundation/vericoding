@@ -1,0 +1,27 @@
+vc-description: |-
+  function_signature: fn strange_sort_list(s: Seq<int>) -> (strange: Seq<int>)
+
+  Sort elements. Ensures: returns the correct size/count.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn strange_sort_list(s: Seq<int>) -> (strange: Seq<int>)
+      ensures s.len() == strange.len()
+
+vc-code: |-
+  {
+      assume(false);
+      unreached()
+  }
+
+vc-postamble: |-
+
+  }
+
+  fn main() {}

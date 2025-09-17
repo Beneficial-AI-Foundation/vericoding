@@ -1,0 +1,37 @@
+vc-description: |-
+  This task involves implementing string concatenation. Given a sequence of strings, return a single string that is the concatenation of all strings in the list in order. The implementation should match the behavior of a recursive specification function.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+  spec fn concat_strings(strings: Seq<Seq<char>>, index: nat) -> Seq<char>
+      decreases strings.len() - index
+  {
+      if index >= strings.len() {
+          Seq::<char>::empty()
+      } else {
+          strings[index as int] + concat_strings(strings, index + 1)
+      }
+  }
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn concatenate(strings: Seq<Seq<char>>) -> (result: Seq<char>)
+      ensures 
+          result == concat_strings(strings, 0) &&
+          (strings.len() == 0 ==> result == Seq::<char>::empty())
+
+vc-code: |-
+  {
+      assume(false);
+      unreached()
+  }
+
+vc-postamble: |-
+
+  }
+
+  fn main() {}

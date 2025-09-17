@@ -1,0 +1,35 @@
+vc-description: |-
+  This verification task implements a function to determine if a list of numbers is monotonic. A list is monotonic if it is either entirely non-decreasing (monotonically increasing) or entirely non-increasing (monotonically decreasing). Empty lists and single-element lists are considered monotonic, and lists with equal consecutive elements are allowed.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+  spec fn monotonic(l: Seq<int>) -> bool {
+      if l.len() <= 1 {
+          true
+      } else {
+          let increasing = forall|i: nat| #![trigger l[i as int]] i < l.len() - 1 ==> l[i as int] <= l[(i + 1) as int];
+          let decreasing = forall|i: nat| #![trigger l[i as int]] i < l.len() - 1 ==> l[i as int] >= l[(i + 1) as int];
+          increasing || decreasing
+      }
+  }
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn is_monotonic(l: Seq<int>) -> (result: bool)
+      ensures result == monotonic(l)
+
+vc-code: |-
+  {
+      assume(false);
+      false
+  }
+
+vc-postamble: |-
+
+  }
+
+  fn main() {}
