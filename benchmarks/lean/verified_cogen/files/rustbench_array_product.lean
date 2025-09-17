@@ -21,3 +21,6 @@ theorem arrayProduct_spec_satisfied (a: Array Int) (b: Array Int) (h_precond : a
     arrayProduct_postcond (a) (b) (arrayProduct (a) (b) h_precond) h_precond := by
   sorry
 -- </vc-theorems>
+
+def main : IO Unit := do
+  return ()

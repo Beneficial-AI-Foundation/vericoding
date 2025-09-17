@@ -32,13 +32,10 @@ def Mul (s1 s2 : String) : String :=
 
 axiom Mul_spec (s1 s2 : String) (h1 : ValidBitString s1) (h2 : ValidBitString s2) :
   ValidBitString (Mul s1 s2) ∧ Str2Int (Mul s1 s2) = Str2Int s1 * Str2Int s2
-
-
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
-
 
 -- <vc-definitions>
 def ModExp (sx sy sz : String) : String :=
@@ -53,3 +50,4 @@ theorem ModExp_spec (sx sy sz : String) (hx : ValidBitString sx) (hy : ValidBitS
   sorry
 -- </vc-theorems>
 
+end BignumLean

@@ -21,3 +21,5 @@ theorem myfun_spec_satisfied (a: Array Int) (N: Nat) (h_precond : myfun_precond 
     myfun_postcond a N (myfun a N h_precond) h_precond := by
   sorry
 -- </vc-theorems>
+
+def main : IO Unit := return ()

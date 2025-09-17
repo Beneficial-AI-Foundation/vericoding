@@ -1,5 +1,4 @@
 -- <vc-preamble>
-
 namespace BignumLean
 
 def ValidBitString (s : String) : Prop :=
@@ -17,12 +16,10 @@ axiom NormalizeBitString_spec (s : String) (h : ValidBitString s) :
   t.length > 0 ∧
   (t.length > 1 → t.get? 0 = some '1') ∧
   Str2Int s = Str2Int t
-
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
-
 
 -- <vc-definitions>
 def Add (s1 s2 : String) : String :=

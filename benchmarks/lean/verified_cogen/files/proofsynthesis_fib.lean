@@ -5,7 +5,7 @@ def fibo : Nat → Nat
 | 1 => 1
 | n + 2 => fibo n + fibo (n + 1)
 
--- Helper function to check if fibonacci value fits in i32
+-- Helper function to check if fibonacci value fits in i32  
 def fibo_fits_i32 (n : Nat) : Bool :=
   fibo n < 0x8000_0000
 
@@ -32,3 +32,5 @@ theorem fibonacci_spec_satisfied (n: Nat) (h_precond : fibonacci_precond n) :
     fibonacci_postcond n (fibonacci n h_precond) h_precond := by
   sorry
 -- </vc-theorems>
+
+def main : IO Unit := pure ()

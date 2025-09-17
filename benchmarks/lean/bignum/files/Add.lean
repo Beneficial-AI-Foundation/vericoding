@@ -1,5 +1,4 @@
 -- <vc-preamble>
-
 namespace BignumLean
 
 def ValidBitString (s : String) : Prop :=
@@ -7,18 +6,15 @@ def ValidBitString (s : String) : Prop :=
 
 def Str2Int (s : String) : Nat :=
   s.data.foldl (fun acc ch => 2 * acc + (if ch = '1' then 1 else 0)) 0
-
--- <vc-preamble>
+-- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
-
 
 -- <vc-definitions>
 def Add (s1 s2 : String) : String :=
   sorry
 -- </vc-definitions>
-
 
 -- <vc-theorems>
 theorem Add_spec (s1 s2 : String) (h1 : ValidBitString s1) (h2 : ValidBitString s2) :

@@ -42,3 +42,5 @@ theorem differenceMaxMin_spec_satisfied (arr : Array Int) (h_precond : differenc
     differenceMaxMin_postcond arr (differenceMaxMin arr h_precond) h_precond := by
   sorry
 -- </vc-theorems>
+
+def main : IO Unit := pure ()

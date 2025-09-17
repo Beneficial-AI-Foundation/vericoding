@@ -21,3 +21,6 @@ theorem containsZ_spec_satisfied (text: Array Char) (h_precond : containsZ_preco
     containsZ_postcond (text) (containsZ (text) h_precond) h_precond := by
   sorry
 -- </vc-theorems>
+
+def main : IO Unit := do
+  return ()

@@ -30,3 +30,6 @@ theorem conditionalAverage_spec_satisfied (vals_1 : Array UInt64) (vals_2 : Arra
     conditionalAverage_postcond vals_1 vals_2 conds_1 conds_2 avgs (conditionalAverage vals_1 vals_2 conds_1 conds_2 avgs h_precond) h_precond := by
   sorry
 -- </vc-theorems>
+
+def main : IO Unit := do
+  return ()

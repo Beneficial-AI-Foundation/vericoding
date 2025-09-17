@@ -1,5 +1,4 @@
 -- <vc-preamble>
-
 namespace BignumLean
 
 def ValidBitString (s : String) : Prop :=
@@ -50,7 +49,6 @@ axiom Zeros_spec (n : Nat) :
 
 -- <vc-helpers>
 -- </vc-helpers>
-
 
 -- <vc-definitions>
 def ModExp (sx sy sz : String) : String :=

@@ -1,5 +1,4 @@
 -- <vc-preamble>
-
 namespace BignumLean
 
 def ValidBitString (s : String) : Prop :=
@@ -11,7 +10,6 @@ def Str2Int (s : String) : Nat :=
 
 -- <vc-helpers>
 -- </vc-helpers>
-
 
 -- <vc-definitions>
 def CompareUnequal (s1 s2 : String) : Int :=

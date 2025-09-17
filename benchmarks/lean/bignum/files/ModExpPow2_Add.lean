@@ -15,13 +15,10 @@ def Add (s1 s2 : String) : String :=
 
 axiom Add_spec (s1 s2 : String) (h1 : ValidBitString s1) (h2 : ValidBitString s2) :
   ValidBitString (Add s1 s2) ∧ Str2Int (Add s1 s2) = Str2Int s1 + Str2Int s2
-
-
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
-
 
 -- <vc-definitions>
 def ModExpPow2 (sx sy : String) (n : Nat) (sz : String) : String :=
@@ -39,3 +36,4 @@ theorem ModExpPow2_spec (sx sy : String) (n : Nat) (sz : String)
   sorry
 -- </vc-theorems>
 
+end BignumLean

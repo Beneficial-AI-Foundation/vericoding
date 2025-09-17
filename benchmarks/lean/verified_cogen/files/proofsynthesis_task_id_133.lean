@@ -27,3 +27,5 @@ theorem sumNegatives_spec_satisfied (arr: Array Int) (h_precond : sumNegatives_p
     sumNegatives_postcond (arr) (sumNegatives (arr) h_precond) h_precond := by
   sorry
 -- </vc-theorems>
+
+def main : IO Unit := return ()

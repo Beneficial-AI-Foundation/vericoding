@@ -32,3 +32,5 @@ theorem countUppercase_spec_satisfied (text : Array Char) (h_precond : countUppe
     countUppercase_postcond text (countUppercase text h_precond) h_precond := by
   sorry
 -- </vc-theorems>
+
+def main : IO Unit := pure ()

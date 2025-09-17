@@ -21,3 +21,6 @@ theorem unique_spec_satisfied (a : Array Int) (h_precond : unique_precond a) :
     unique_postcond a (unique a h_precond) h_precond := by
   sorry
 -- </vc-theorems>
+
+def main : IO Unit := do
+  return ()

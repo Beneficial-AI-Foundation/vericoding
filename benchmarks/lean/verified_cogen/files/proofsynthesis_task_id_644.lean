@@ -21,3 +21,6 @@ theorem reverseToK_spec_satisfied (list : Array Int) (n : Nat) (h_precond : reve
     reverseToK_postcond list n (reverseToK list n h_precond) h_precond := by
   sorry
 -- </vc-theorems>
+
+def main : IO Unit := 
+  return ()

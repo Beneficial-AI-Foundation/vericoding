@@ -39,13 +39,10 @@ def Zeros (n : Nat) : String :=
 axiom Zeros_spec (n : Nat) :
   let s := Zeros n
   s.length = n ∧ ValidBitString s ∧ Str2Int s = 0 ∧ AllZero s
-
-
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
-
 
 -- <vc-definitions>
 def ModExp (sx sy sz : String) : String :=
@@ -60,3 +57,4 @@ theorem ModExp_spec (sx sy sz : String) (hx : ValidBitString sx) (hy : ValidBitS
   sorry
 -- </vc-theorems>
 
+end BignumLean

@@ -20,3 +20,5 @@ theorem isOddAtOddIndex_spec_satisfied (arr: Array Nat) (h_precond : isOddAtOddI
     isOddAtOddIndex_postcond arr (isOddAtOddIndex arr h_precond) h_precond := by
   sorry
 -- </vc-theorems>
+
+def main : IO Unit := IO.println "Test completed"

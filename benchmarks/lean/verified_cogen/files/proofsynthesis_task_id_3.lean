@@ -26,3 +26,6 @@ theorem isNonPrime_spec_satisfied (n : Nat) (h_precond : isNonPrime_precond n) :
     isNonPrime_postcond n (isNonPrime n h_precond) h_precond := by
   sorry
 -- </vc-theorems>
+
+def main : IO Unit := do
+  pure ()

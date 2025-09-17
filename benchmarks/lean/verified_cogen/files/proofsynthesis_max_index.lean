@@ -21,3 +21,5 @@ theorem myfun1_spec_satisfied (x : Array Int) (h_precond : myfun1_precond x) :
     myfun1_postcond x (myfun1 x h_precond) h_precond := by
   sorry
 -- </vc-theorems>
+
+def main : IO Unit := pure ()

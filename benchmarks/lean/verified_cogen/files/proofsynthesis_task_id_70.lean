@@ -21,3 +21,6 @@ theorem allSequenceEqualLength_spec_satisfied (seq: Array (Array Int)) (h_precon
     allSequenceEqualLength_postcond seq (allSequenceEqualLength seq h_precond) h_precond := by
   sorry
 -- </vc-theorems>
+
+def main : IO Unit := do
+  return ()

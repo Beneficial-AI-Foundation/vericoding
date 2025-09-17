@@ -22,3 +22,5 @@ theorem removeAllGreater_spec_satisfied (v: Array Int) (e: Int) (h_precond : rem
     removeAllGreater_postcond v e (removeAllGreater v e h_precond) h_precond := by
   sorry
 -- </vc-theorems>
+
+def main : IO Unit := return ()
