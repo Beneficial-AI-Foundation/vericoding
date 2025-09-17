@@ -1,0 +1,25 @@
+benchmark: verified-cogen
+language: dafny
+is-transpiled: false
+checking-successes: true
+files-sampled:
+- file: 65_proofsynthesis_task_id_261_impl_gemini.dfy
+  llm: gemini
+  issues-with-spec: 'None, unmodified'
+  issues-with-implementation: 'None'
+- file: 12_proofsynthesis_condm_impl_gpt.dfy
+  llm: gpt
+  issues-with-spec: 'None, unmodified'
+  issues-with-implementation: 'None, but defines pointless helper'
+- file: 113_proofsynthesis_task_id_741_impl_gemini.dfy
+  llm: gemini
+  issues-with-spec: 'None, unmodified'
+  issues-with-implementation: 'None'
+- file: 70_proofsynthesis_task_id_3_impl_gpt.dfy
+  llm: gpt
+  issues-with-spec: 'None, unmodified'
+  issues-with-implementation: 'None, but solution is trivial. Defines pointless helpers.'
+- file: 128_proofsynthesis_task_id_95_impl_claude-sonnet.dfy
+  llm: claude-sonnet
+  issues-with-spec: 'None, unmodified'
+  issues-with-implementation: 'None'
