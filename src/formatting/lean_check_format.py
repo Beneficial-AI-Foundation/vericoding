@@ -200,54 +200,6 @@ def check_file_format(file_path, parsing_results):
         spec["vc-theorems"]    = '\n'.join(theorems)
         return ("ok", spec)
 
-
-
-
-    # if parsing_type == "desc0-doc0-empty0-doc0-cond0-proof1-doc0-sig0-impl1-doc0-cond0-proof1":
-    #     spec["vc-description"] = process_comments([
-    #         parsing_results[0]["string"].rstrip(), 
-    #         parsing_results[1]["string"].rstrip(), 
-    #         parsing_results[2]["string"].rstrip(),  
-    #         parsing_results[3]["string"].rstrip(),  
-    #     ])
-    #     spec["vc-definitions"] = parsing_results[6]["string"].rstrip() + "\n  " + \
-    #                              parsing_results[7]["string"].rstrip()
-    #     spec["vc-theorems"]    = parsing_results[8]["string"].rstrip() + "\n  " + \
-    #                              parsing_results[9]["string"].rstrip()
-    #     return ("ok", spec)
-
-    # return ("Wrong component order", {})
-
-    
-    # if two_sorry_types(actual_types, parsing_results):
-    #     imports_start = 0
-    #     if parsing_results[0]["type"] == "desc":
-    #         description = parsing_results[0]["string"].rstrip()
-    #         imports_start = 1
-    #     else:
-    #         description = ""
-
-    #     if parsing_results[imports_start]["type"] == "imports":
-    #         imports = parsing_results[imports_start]["string"].rstrip() + "\n\n"
-    #         imports_start += 1
-    #     else:
-    #         imports = ""
-
-    #     for i in range(imports_start, len(parsing_results)-6):
-    #         imports += parsing_results[i]["string"].rstrip() + "\n"
-
-    #     file_components = {
-    #         "description": description,
-    #         "imports": imports.rstrip(),  # imports
-    #         "def_text": parsing_results[-6]["string"].rstrip(),  # first doc
-    #         "def_sig": parsing_results[-5]["string"].rstrip(),  # sig
-    #         "def_impl": parsing_results[-4]["string"].rstrip(),  # impl
-    #         "theorem_text": parsing_results[-3]["string"].rstrip(),  # second doc
-    #         "theorem_cond": parsing_results[-2]["string"].rstrip(),  # cond
-    #         "theorem_proof": parsing_results[-1]["string"].rstrip()  # proof
-    #     }
-    #     return ("ok", file_components, parsing_results)
-
 def remove_empty_lines(text):
     """Remove empty lines from the text."""
     return "\n".join([line for line in text.split('\n') if line.rstrip() != ''])
@@ -318,10 +270,9 @@ def split_sorries(parsing_results):
 def main():
     """Main function to check all .lean files in the current directory."""
     lean_dir = Path("benchmarks/lean")
-    work_dir = lean_dir / "dafnybench"
+    work_dir = lean_dir / "numpy_simple"
     source_dir = work_dir / "poor/unformatted"
     yaml_dir = work_dir / "yaml"
-    bad_dir = work_dir / "poor/bad"
     parsing_results_file = work_dir / "poor/parsing_results_unformatted.json"
 
     lean_files = list(source_dir.glob('*.lean')) 

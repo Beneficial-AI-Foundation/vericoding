@@ -1,4 +1,3 @@
-namespace NpSelect
 
 def select {m n : Nat} (condlist : Vector (Vector Bool n) m) (choicelist : Vector (Vector Float n) m) : Vector Float n := sorry
 
@@ -8,5 +7,3 @@ theorem select_spec {m n : Nat} (condlist : Vector (Vector Bool n) m) (choicelis
   let ret := select condlist choicelist
   (ret.toList.length = n) ∧
   (∀ i : Fin m, ∀ j : Fin n, condlist[i][j] → ret[j] = choicelist[i][j]) := sorry
-
-end NpSelect

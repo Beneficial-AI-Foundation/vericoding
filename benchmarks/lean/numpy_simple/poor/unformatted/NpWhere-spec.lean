@@ -1,4 +1,3 @@
-namespace NpWhere
 
 def «where» {n : Nat} (condition : Vector Bool n) (x : Vector Int n) (y : Vector Int n) : Vector Int n := sorry
 
@@ -11,5 +10,3 @@ theorem where_spec {n : Nat} (condition : Vector Bool n) (x : Vector Int n) (y :
     (whereWithTransform arr condition change).toList.length = n ∧
     ∀ i : Fin n, (whereWithTransform arr condition change)[i] =
       if condition (arr[i]) then change (arr[i]) else arr[i] := sorry
-
-end NpWhere

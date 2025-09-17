@@ -1,5 +1,4 @@
 
-namespace NpArange
 
 def arangeLength (start stop step : Float) : Nat := sorry
 
@@ -21,4 +20,3 @@ theorem arange_spec
   arr[0]'(by sorry) = start
   ∧
   ∀ i : Fin n, i.val + 1 < n → arr[i.val + 1]'(by sorry) - arr[i.val] = step := sorry
-end NpArange

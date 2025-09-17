@@ -1,4 +1,3 @@
-namespace NpRemainder
 
 def remainder {n : Nat} (a b : Vector Int n) : Vector Int n := sorry
 
@@ -7,5 +6,3 @@ theorem remainder_spec {n : Nat} (a b : Vector Int n)
   let ret := remainder a b
   (ret.toList.length = n) ∧
   (∀ i : Fin n, ret[i] = a[i] % b[i]) := sorry
-
-end NpRemainder
