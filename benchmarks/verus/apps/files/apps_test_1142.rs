@@ -4,10 +4,10 @@ use vstd::prelude::*;
 verus! {
 
 #[derive(PartialEq, Eq)]
-pub struct Wave {
-    pub start_time: nat,
-    pub end_time: nat,
-    pub monsters: nat,
+struct Wave {
+    start_time: nat,
+    end_time: nat,
+    monsters: nat,
 }
 
 spec fn valid_waves(waves: Seq<Wave>) -> bool {
@@ -36,8 +36,7 @@ spec fn can_solve_wave(waves: Seq<Wave>, wave_index: nat, k: nat) -> bool {
 }
 
 spec fn can_reach_wave_in_time(waves: Seq<Wave>, wave_index: nat, k: nat) -> bool {
-    &&& wave_index > 0 
-    &&& wave_index < waves.len() 
+    &&& wave_index > 0 && wave_index < waves.len()
     &&& k > 0
     &&& {
         let prev_wave = waves[wave_index as int - 1];
@@ -51,35 +50,32 @@ spec fn can_reach_wave_in_time(waves: Seq<Wave>, wave_index: nat, k: nat) -> boo
 spec fn calculate_reloads_needed(monsters: nat, k: nat) -> nat {
     if k > 0 {
         if monsters <= k { 
-            0 
+            0nat 
         } else { 
-            (monsters as int - 1) / (k as int)
+            if monsters > k && monsters >= 1 && k >= 1 { 
+                ((monsters - 1) as int / k as int) as nat 
+            } else { 
+                0nat 
+            }
         }
-    } else {
-        0
-    }
+    } else { 0nat }
 }
 
 spec fn calculate_minimum_bullets(waves: Seq<Wave>, k: nat) -> nat {
     if k > 0 && valid_waves(waves) && can_solve_all_waves(waves, k) {
         calculate_minimum_bullets_helper(waves, k, 0, k)
-    } else {
-        0
-    }
+    } else { 0nat }
 }
 
-spec fn calculate_minimum_bullets_helper(waves: Seq<Wave>, k: nat, wave_index: nat, bullets_remaining: nat) -> nat {
-    if wave_index >= waves.len() {
-        0
+spec fn calculate_minimum_bullets_helper(waves: Seq<Wave>, k: nat, current_wave: nat, bullets: nat) -> nat
+    decreases waves.len() - current_wave
+{
+    if current_wave >= waves.len() {
+        0nat
     } else {
-        let wave = waves[wave_index as int];
-        let bullets_needed = if bullets_remaining >= wave.monsters {
-            wave.monsters
-        } else {
-            let reloads = (wave.monsters as int - bullets_remaining as int + k as int - 1) / (k as int);
-            (reloads * (k as int) + wave.monsters as int) as nat
-        };
-        bullets_needed + calculate_minimum_bullets_helper(waves, k, wave_index + 1, k)
+        let wave = waves[current_wave as int];
+        let bullets_used = wave.monsters;
+        bullets_used + calculate_minimum_bullets_helper(waves, k, current_wave + 1, k)
     }
 }
 // </vc-preamble>
@@ -90,12 +86,12 @@ spec fn calculate_minimum_bullets_helper(waves: Seq<Wave>, k: nat, wave_index: n
 // <vc-spec>
 fn solve_monster_waves(waves: Seq<Wave>, k: nat) -> (result: i32)
     requires 
-        valid_waves(waves),
-        k > 0,
+        valid_waves(waves) &&
+        k > 0
     ensures 
-        result == -1 <==> !can_solve_all_waves(waves, k),
-        result >= 0 <==> can_solve_all_waves(waves, k),
-        can_solve_all_waves(waves, k) ==> result == calculate_minimum_bullets(waves, k),
+        ((result == -1) <==> !can_solve_all_waves(waves, k)) &&
+        ((result >= 0) <==> can_solve_all_waves(waves, k)) &&
+        (can_solve_all_waves(waves, k) ==> result == calculate_minimum_bullets(waves, k))
 // </vc-spec>
 // <vc-code>
 {

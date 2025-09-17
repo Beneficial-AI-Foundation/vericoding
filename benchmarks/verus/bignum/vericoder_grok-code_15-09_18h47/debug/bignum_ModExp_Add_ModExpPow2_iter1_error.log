@@ -1,0 +1,108 @@
+=== Verification Error - Iteration 1 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExp_Add_ModExpPow2.rs
+Time: 2025-09-15 20:38:16
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: error[E0069]: `return;` in a function whose return type is not `()`
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_ModExp_Add_ModExpPow2_impl.rs:24:90
+   |
+24 | exec fn mod_mul_u64(a: u64, b: u64, m: u64) -> u64 requires m > 1, a < m, b < m ensures (return as nat) == (a as nat) * (b as nat) % (m as nat) { let prod = ((a as u128) * (b as u128)) % (m as u128); (prod as u64) }
+   |                                                ---                                       ^^^^^^ return type is not `()`
+   |                                                |
+   |                                                expected `u64` because of this return type
+   |
+help: give the `return` a value of the expected type
+   |
+24 | exec fn mod_mul_u64(a: u64, b: u64, m: u64) -> u64 requires m > 1, a < m, b < m ensures (return 42 as nat) == (a as nat) * (b as nat) % (m as nat) { let prod = ((a as u128) * (b as u128)) % (m as u128); (prod as u64) }
+   |                                                                                                 ++
+
+warning: unreachable call
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_ModExp_Add_ModExpPow2_impl.rs:24:90
+   |
+24 | exec fn mod_mul_u64(a: u64, b: u64, m: u64) -> u64 requires m > 1, a < m, b < m ensures (return as nat) == (a as nat) * (b as nat) % (m as nat) { let prod = ((a as u128) * (b as u128)) % (m as u128); (prod as u64) }
+   |                                                                                          ------^^^^^^^
+   |                                                                                          |
+   |                                                                                          unreachable call
+   |                                                                                          any code following this expression is unreachable
+   |
+   = note: `#[warn(unreachable_code)]` on by default
+
+error[E0069]: `return;` in a function whose return type is not `()`
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_ModExp_Add_ModExpPow2_impl.rs:25:87
+   |
+25 | exec fn pow_mod(base: u64, exp: u64, m: u64) -> u64 requires m > 1, base < m ensures (return as nat) == Exp_int(base as nat, exp as nat) % (m as nat) decreases exp { if exp == 0 { return 1; } else if exp % 2 == 0 { let half = pow_mod(...
+   |                                                 ---                                   ^^^^^^ return type is not `()`
+   |                                                 |
+   |                                                 expected `u64` because of this return type
+   |
+help: give the `return` a value of the expected type
+   |
+25 | exec fn pow_mod(base: u64, exp: u64, m: u64) -> u64 requires m > 1, base < m ensures (return 42 as nat) == Exp_int(base as nat, exp as nat) % (m as nat) decreases exp { if exp == 0 { return 1; } else if exp % 2 == 0 { let half = pow_mod(base, exp / 2, m); mod_mul_u64(half, half, m) } else { let half = pow_mod(base, exp / 2, m); mod_mul_u64(mod_mul_u64(half, half, m), base, m) } }
+   |                                                                                              ++
+
+warning: unreachable call
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_ModExp_Add_ModExpPow2_impl.rs:25:87
+   |
+25 | exec fn pow_mod(base: u64, exp: u64, m: u64) -> u64 requires m > 1, base < m ensures (return as nat) == Exp_int(base as nat, exp as nat) % (m as nat) decreases exp { if exp == 0 { return 1; } else if exp % 2 == 0 { let half = pow_mod(...
+   |                                                                                       ------^^^^^^^
+   |                                                                                       |
+   |                                                                                       unreachable call
+   |                                                                                       any code following this expression is unreachable
+
+error: aborting due to 2 previous errors; 2 warnings emitted
+
+For more information about this error, try `rustc --explain E0069`.
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+error[E0069]: `return;` in a function whose return type is not `()`
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_ModExp_Add_ModExpPow2_impl.rs:24:90
+   |
+24 | exec fn mod_mul_u64(a: u64, b: u64, m: u64) -> u64 requires m > 1, a < m, b < m ensures (return as nat) == (a as nat) * (b as nat) % (m as nat) { let prod = ((a as u128) * (b as u128)) % (m as u128); (prod as u64) }
+   |                                                ---                                       ^^^^^^ return type is not `()`
+   |                                                |
+   |                                                expected `u64` because of this return type
+   |
+help: give the `return` a value of the expected type
+   |
+24 | exec fn mod_mul_u64(a: u64, b: u64, m: u64) -> u64 requires m > 1, a < m, b < m ensures (return 42 as nat) == (a as nat) * (b as nat) % (m as nat) { let prod = ((a as u128) * (b as u128)) % (m as u128); (prod as u64) }
+   |                                                                                                 ++
+
+warning: unreachable call
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_ModExp_Add_ModExpPow2_impl.rs:24:90
+   |
+24 | exec fn mod_mul_u64(a: u64, b: u64, m: u64) -> u64 requires m > 1, a < m, b < m ensures (return as nat) == (a as nat) * (b as nat) % (m as nat) { let prod = ((a as u128) * (b as u128)) % (m as u128); (prod as u64) }
+   |                                                                                          ------^^^^^^^
+   |                                                                                          |
+   |                                                                                          unreachable call
+   |                                                                                          any code following this expression is unreachable
+   |
+   = note: `#[warn(unreachable_code)]` on by default
+
+error[E0069]: `return;` in a function whose return type is not `()`
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_ModExp_Add_ModExpPow2_impl.rs:25:87
+   |
+25 | exec fn pow_mod(base: u64, exp: u64, m: u64) -> u64 requires m > 1, base < m ensures (return as nat) == Exp_int(base as nat, exp as nat) % (m as nat) decreases exp { if exp == 0 { return 1; } else if exp % 2 == 0 { let half = pow_mod(...
+   |                                                 ---                                   ^^^^^^ return type is not `()`
+   |                                                 |
+   |                                                 expected `u64` because of this return type
+   |
+help: give the `return` a value of the expected type
+   |
+25 | exec fn pow_mod(base: u64, exp: u64, m: u64) -> u64 requires m > 1, base < m ensures (return 42 as nat) == Exp_int(base as nat, exp as nat) % (m as nat) decreases exp { if exp == 0 { return 1; } else if exp % 2 == 0 { let half = pow_mod(base, exp / 2, m); mod_mul_u64(half, half, m) } else { let half = pow_mod(base, exp / 2, m); mod_mul_u64(mod_mul_u64(half, half, m), base, m) } }
+   |                                                                                              ++
+
+warning: unreachable call
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_ModExp_Add_ModExpPow2_impl.rs:25:87
+   |
+25 | exec fn pow_mod(base: u64, exp: u64, m: u64) -> u64 requires m > 1, base < m ensures (return as nat) == Exp_int(base as nat, exp as nat) % (m as nat) decreases exp { if exp == 0 { return 1; } else if exp % 2 == 0 { let half = pow_mod(...
+   |                                                                                       ------^^^^^^^
+   |                                                                                       |
+   |                                                                                       unreachable call
+   |                                                                                       any code following this expression is unreachable
+
+error: aborting due to 2 previous errors; 2 warnings emitted
+
+For more information about this error, try `rustc --explain E0069`.

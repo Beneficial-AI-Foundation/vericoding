@@ -8,15 +8,15 @@ spec fn valid_input(input: Seq<char>) -> bool {
 }
 
 spec fn split_lines_func(input: Seq<char>) -> Seq<Seq<char>> {
-    if input.len() == 0 {
+    if input.len() == 0 { 
         seq![]
-    } else {
+    } else { 
         split_lines_helper(input, 0, seq![], seq![])
     }
 }
 
 spec fn split_lines_helper(input: Seq<char>, i: int, current: Seq<char>, acc: Seq<Seq<char>>) -> Seq<Seq<char>>
-    decreases input.len() - i when 0 <= i <= input.len()
+    decreases input.len() - i
 {
     if i == input.len() {
         if current.len() > 0 { acc.push(current) } else { acc }
@@ -28,30 +28,30 @@ spec fn split_lines_helper(input: Seq<char>, i: int, current: Seq<char>, acc: Se
 }
 
 spec fn parse_int_func(s: Seq<char>) -> int {
-    if s.len() == 0 {
-        0
-    } else {
+    if s.len() == 0 { 
+        0 
+    } else { 
         parse_int_helper(s, 0, 0)
     }
 }
 
 spec fn parse_int_helper(s: Seq<char>, i: int, acc: int) -> int
-    decreases s.len() - i when 0 <= i <= s.len()
+    decreases s.len() - i
 {
-    if i == s.len() || !('0' <= s[i] <= '9') {
-        acc
-    } else {
+    if i == s.len() || !('0' <= s[i] <= '9') { 
+        acc 
+    } else { 
         parse_int_helper(s, i + 1, acc * 10 + (s[i] as int - '0' as int))
     }
 }
 
 spec fn build_output_func(lines: Seq<Seq<char>>, n: int) -> Seq<char> {
-    if n == 0 {
+    if n == 0 { 
         seq![]
-    } else if n == 1 {
+    } else if n == 1 { 
         classify_sentence_func(lines[1])
-    } else {
-        build_output_func(lines, n - 1) + seq!['\n'] + classify_sentence_func(lines[n])
+    } else { 
+        build_output_func(lines, n-1) + seq!['\n'] + classify_sentence_func(lines[n])
     }
 }
 
@@ -73,7 +73,7 @@ spec fn ends_with_func(s: Seq<char>, suffix: Seq<char>) -> bool {
     suffix.len() <= s.len() && (forall|i: int| 0 <= i < suffix.len() ==> s[s.len() - suffix.len() + i] == suffix[i])
 }
 
-spec fn min_spec(a: int, b: int) -> int {
+spec fn min(a: int, b: int) -> int {
     if a <= b { a } else { b }
 }
 // </vc-preamble>
@@ -82,7 +82,7 @@ spec fn min_spec(a: int, b: int) -> int {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(input: &str) -> (result: String)
+fn solve(input: Vec<char>) -> (result: Vec<char>)
     requires valid_input(input@)
     ensures result@.len() >= 0
 // </vc-spec>
@@ -90,7 +90,7 @@ fn solve(input: &str) -> (result: String)
 {
     // impl-start
     assume(false);
-    String::new()
+    Vec::new()
     // impl-end
 }
 // </vc-code>

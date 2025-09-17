@@ -7,18 +7,16 @@ vc-preamble: |-
   use vstd::prelude::*;
 
   verus! {
-
-vc-helpers: |-
   spec fn valid_input(x: int, y: int, z: int) -> bool {
       x >= 1 && y >= 1 && z >= 1 && y + 2 * z <= x
   }
-  
+
   spec fn max_people(x: int, y: int, z: int) -> int
       recommends valid_input(x, y, z)
   {
       (x - z) / (y + z)
   }
-  
+
   spec fn valid_solution(x: int, y: int, z: int, result: int) -> bool
       recommends valid_input(x, y, z)
   {
@@ -26,6 +24,8 @@ vc-helpers: |-
       result >= 0 &&
       result * (y + z) <= x - z < (result + 1) * (y + z)
   }
+
+vc-helpers: |
 
 vc-spec: |-
   fn solve(x: int, y: int, z: int) -> (result: int)
@@ -38,7 +38,7 @@ vc-code: |-
       unreached()
   }
 
-vc-postamble: |-
+vc-postamble: |2-
 
   }
 

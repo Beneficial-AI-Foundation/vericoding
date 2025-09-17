@@ -9,7 +9,7 @@ spec fn valid_input(n: int, k: int, heights: Seq<int>) -> bool {
 }
 
 spec fn count_eligible(heights: Seq<int>, k: int) -> int {
-    heights.filter(|h: int| h >= k).len() as int
+    heights.filter(|height: int| height >= k).len() as int
 }
 // </vc-preamble>
 
@@ -18,14 +18,16 @@ spec fn count_eligible(heights: Seq<int>, k: int) -> int {
 
 // <vc-spec>
 fn solve(n: int, k: int, heights: Seq<int>) -> (count: int)
+    requires 
+        valid_input(n, k, heights)
+    ensures 
+        0 <= count <= heights.len(),
+        count == count_eligible(heights, k)
 // </vc-spec>
 // <vc-code>
-requires valid_input(n, k, heights)
-ensures 0 <= count <= heights.len()
-ensures count == count_eligible(heights, k)
 {
     assume(false);
-    0
+    unreached()
 }
 // </vc-code>
 

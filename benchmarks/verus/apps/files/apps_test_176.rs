@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(k: int, a: int, b: int) -> bool {
   k > 0 && a <= b
 }
@@ -17,6 +14,9 @@ spec fn floor_div(a: int, b: int) -> int {
 spec fn count_divisibles_in_range(k: int, a: int, b: int) -> int {
   floor_div(b, k) - floor_div(a - 1, k)
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

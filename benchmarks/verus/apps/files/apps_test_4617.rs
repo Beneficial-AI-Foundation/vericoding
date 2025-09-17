@@ -11,7 +11,7 @@ spec fn is_symmetric(first_row: Seq<char>, second_row: Seq<char>) -> bool {
     reverse_seq(first_row) == second_row
 }
 
-spec fn split_lines(s: Seq<char>) -> Seq<Seq<char>>
+spec fn split_lines(s: Seq<char>) -> Seq<Seq<char>> 
     decreases s.len()
 {
     if s.len() == 0 {
@@ -44,8 +44,8 @@ spec fn reverse_seq(s: Seq<char>) -> Seq<char>
 
 // <vc-spec>
 fn solve(stdin_input: &str) -> (result: String)
-    requires stdin_input.len() > 0
-    ensures result@ == seq!['Y', 'E', 'S', '\n'] || result@ == seq!['N', 'O', '\n']
+    requires stdin_input@.len() > 0
+    ensures result@ == "YES\n"@ || result@ == "NO\n"@
 // </vc-spec>
 // <vc-code>
 {

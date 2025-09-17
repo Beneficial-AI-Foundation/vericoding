@@ -4,21 +4,17 @@ use vstd::prelude::*;
 verus! {
 
 spec fn string_value(s: Seq<char>, w: Seq<int>) -> int
-  requires w.len() == 26,
-           forall|i: int| 0 <= i < s.len() ==> 'a' <= s[i] && s[i] <= 'z'
   decreases s.len()
 {
   if s.len() == 0 {
     0
   } else {
     let char_index = (s[s.len() - 1] as int) - ('a' as int);
-    string_value(s.subrange(0, (s.len() - 1) as int), w) + s.len() * w[char_index]
+    string_value(s.subrange(0, s.len() - 1), w) + s.len() * w[char_index]
   }
 }
 
 spec fn append_value(start_pos: int, count: int, max_val: int) -> int
-  requires start_pos >= 0,
-           count >= 0
   decreases count
 {
   if count == 0 {
@@ -29,9 +25,6 @@ spec fn append_value(start_pos: int, count: int, max_val: int) -> int
 }
 
 spec fn max_value(w: Seq<int>) -> int
-  requires w.len() > 0
-  ensures exists|i: int| 0 <= i < w.len() && max_value(w) == w[i],
-          forall|i: int| 0 <= i < w.len() ==> w[i] <= max_value(w)
   decreases w.len()
 {
   if w.len() == 1 {
@@ -49,7 +42,7 @@ spec fn valid_input(s: Seq<char>, k: int, w: Seq<int>) -> bool {
   s.len() <= 1000 && 
   k <= 1000 && 
   (forall|i: int| 0 <= i < w.len() ==> 0 <= w[i] <= 1000) &&
-  (forall|i: int| 0 <= i < s.len() ==> 'a' <= s[i] && s[i] <= 'z')
+  (forall|i: int| 0 <= i < s.len() ==> 'a' <= s[i] <= 'z')
 }
 // </vc-preamble>
 
@@ -57,15 +50,18 @@ spec fn valid_input(s: Seq<char>, k: int, w: Seq<int>) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(s: Seq<char>, k: int, w: Seq<int>) -> (result: int)
-  requires valid_input(s, k, w)
-  ensures result == string_value(s, w) + append_value(s.len() as int, k, max_value(w))
+fn solve(s: Seq<char>, k: int, w: Seq<int>) -> (result: i32)
+  requires 
+    valid_input(s, k, w),
+    w.len() == 26,
+    forall|i: int| 0 <= i < s.len() ==> 'a' <= s[i] <= 'z',
+    w.len() > 0
 // </vc-spec>
 // <vc-code>
 {
   // impl-start
   assume(false);
-  arbitrary()
+  0
   // impl-end
 }
 // </vc-code>

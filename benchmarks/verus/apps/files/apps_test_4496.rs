@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(d: int) -> bool {
     22 <= d <= 25
 }
@@ -31,6 +28,9 @@ spec fn repeat_eve(count: int) -> Seq<char>
         seq![' ', 'E', 'v', 'e'] + repeat_eve(count - 1)
     }
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

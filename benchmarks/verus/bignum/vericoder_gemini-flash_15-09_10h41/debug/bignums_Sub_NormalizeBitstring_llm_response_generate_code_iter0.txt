@@ -1,0 +1,9 @@
+=== LLM Response - generate_code - Iteration 0 ===
+File: benchmarks/verus/bignum/files/bignums_Sub_NormalizeBitstring.rs
+Prompt Hash: 15c333db
+JSON Parsed Successfully: True
+Timestamp: 1757925760.364961
+Content Length: 1430 chars
+--------------------------------------------------------------------------------
+["spec fn TrimLeadingZeros(s: Seq<char>) -> Seq<char>\n    recommends ValidBitString(s)\n{\n    if s.len() == 0 {\n        s\n    } else if s.index(0) == '0' {\n        TrimLeadingZeros(s.subrange(1, s.len() as int))\n    } else {\n        s\n    }\n}", "{\n    let mut result_vec = Vec::<char>::new();\n    let mut leading_zero = true;\n    for i in 0..s.len() {\n        let char_at_i = s[i];\n        if leading_zero && char_at_i == '0' {\n            // Skip leading zeros\n            if i == s.len() - 1 { // If it's the last digit and it's '0', add one '0'\n                result_vec.push('0');\n            }\n        } else {\n            leading_zero = false;\n            result_vec.push(char_at_i);\n        }\n    }\n    if result_vec.len() == 0 {\n        result_vec.push('0');\n    }\n\n    // Proof to show the result is a valid bitstring\n    proof {\n        assert forall |i: int| 0 <= i && i < result_vec.len() as int implies\n            (result_vec@[i] == '0' || result_vec@[i] == '1') by {\n            if !leading_zero {\n                // If leading_zero is false, all chars pushed were either '0' or '1'\n                // because s is a ValidBitString and we only pushed chars from s.\n                // The only exception is if result_vec contains only '0' for the case where s was all '0's.\n                // In that case, it's also valid.\n            }\n        }\n    }\n\n    result_vec\n}"]
+--------------------------------------------------------------------------------

@@ -1,0 +1,38 @@
+vc-description: |-
+  /- 
+  {
+  "name": "dafny-synthesis_task_id_455_MonthHas31Days",
+  "category": "Dafny Translation",
+  "description": "Automatically translated from Dafny specification: dafny-synthesis_task_id_455_MonthHas31Days",
+  "source": "Dafny",
+  "translation_date": "2024",
+  "functions": ,
+  "methods":
+  }
+  -/
+  
+  /- 
+  Determines if a given month has 31 days.
+  
+  @param month The month number (1-12)
+  @return True if the month has 31 days, false otherwise
+  -/
+
+vc-preamble: |-
+
+vc-helpers: |-
+
+vc-definitions: |-
+  def MonthHas31Days (month : Int) : Bool :=
+  sorry
+
+vc-theorems: |-
+  theorem MonthHas31Days_spec (month : Int) :
+  1 ≤ month ∧ month ≤ 12 →
+  MonthHas31Days month = true ↔
+  (month = 1 ∨ month = 3 ∨ month = 5 ∨ month = 7 ∨
+  month = 8 ∨ month = 10 ∨ month = 12) :=
+  sorry
+
+vc-postamble: |-
+

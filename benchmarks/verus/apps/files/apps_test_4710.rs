@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(x: int) -> bool {
     1 <= x <= 3000
 }
@@ -13,6 +10,9 @@ spec fn correct_output(x: int, result: Seq<char>) -> bool {
     (x < 1200 ==> result == seq!['A', 'B', 'C', '\n']) &&
     (x >= 1200 ==> result == seq!['A', 'R', 'C', '\n'])
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

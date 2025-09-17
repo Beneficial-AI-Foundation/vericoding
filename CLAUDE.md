@@ -1,22 +1,12 @@
 # VeriCoding Project Overview
 
-**Project Context**: This is a verification-focused coding project with Lean 4 experiments.
+**Project Context**: This is a verification-focused coding project across Lean 4, Dafny, and Verus.
 
-## Key Features
+Remember that you are run across multiple cycles, so focus on iterating and making incremental progress on a solution rather than getting desperate to one-shot it.
 
-1. **Lean 4 Development Environment**: Ready for formal verification experiments
-2. **MCP Integration**: Full lean-lsp-mcp tooling configured for interactive development
-3. **Real-time Feedback**: Diagnostic tools, proof state inspection, and search capabilities. You'll need search since your training date cutoff is very out of date for Lean 4.
+## MCP
 
-## Lean-LSP-MCP Integration
-
-The project is configured with Model Context Protocol (MCP) tools for enhanced Lean development. The `.mcp.json` file configures:
-
-### MCP Servers Available
-
-1. **lean-lsp-mcp**: Provides Lean language server protocol integration
-   - Command: `uvx lean-lsp-mcp`
-   - Offers real-time feedback on Lean code through various diagnostic tools
+- Lean MCP: `uvx lean-lsp-mcp`. You'll need its search capabilities since your training date cutoff is very out of date for Lean 4.
 
 ### Lean LSP-MCP Tool Usage
 
@@ -100,10 +90,10 @@ Uses Weights & Biases (wandb) for tracking verification experiments, failure ana
 
 ## Lean 4 Development Guidelines
 
-- Use named holes (`?foo`) for incremental development
+
 - Wrap reserved names in «guillemets» when needed
 - Implement "notation typeclasses" like `GetElem`, `Add`, etc where appropriate.
-- Practice "sorry-friendly programming": Instead of a comment you put down a spec, but it is only "proved" with `sorry`. This is strictly better than a comment, because the typechecker will use it for program generation.
+- Practice "sorry-friendly programming": Instead of a comment you put down a spec, but it is only "proved" with `sorry`. If it should compile, use a named hole instead. This is strictly better than a comment, because the typechecker will use it for program generation.
 - Decompose proofs until tools like `canonical`, `grind`, and `simp` dissolve the pieces. Use them to do the "how", the AI should do the "what".
 - Don't use `i` and `j` as variable names when you could use `r`(ow) and `c`(olumn) instead. Ditto for `m` and `n` as matrix dimensions. Use `R` and `C`.
 ### Import and Module Structure
@@ -143,7 +133,7 @@ Uses Weights & Biases (wandb) for tracking verification experiments, failure ana
 
 ### Debugging and Development Process
 
-- Use named holes like `?holeName` for well-typed fragment programs
+- Use named holes like `?holeName` for well-typed fragment programs. Use meaningful names for the holes.
 - Make mermaid diagrams with labeled edges describing data flow
 - Category theory wiring diagram style for complex systems
 - Apply the scientific method for debugging
@@ -242,3 +232,38 @@ auto-update-stale = true    # Auto-update stale working copies when switching co
 - A good default tactic is `try?`
 - For Numpy-like functions, use `Vector a n` as the base type, it's in prelude.
 - `mathlib` is full of noncomputable code. Avoid using its data structures, only its theorems.
+
+## sorry vs named holes
+
+Named holes are better than `sorry` because they dump the *local context*.
+
+```lean
+/--
+don't know how to synthesize placeholder
+context:
+case probablyZero
+someCtx : Nat := 2
+⊢ Nat
+-/
+def a : Nat :=
+  let someCtx := 2
+  ?probablyZero
+
+/--
+declaration uses 'sorry'
+-/
+def a' : Nat :=
+  let someCtx := 2
+  sorry
+
+-- Underscores aren't as good as named holes because they elide actual values
+/--
+don't know how to synthesize placeholder
+context:
+someCtx : Nat := ⋯
+⊢ Nat
+-/
+def a'' : Nat :=
+  let someCtx := 2
+  _
+```

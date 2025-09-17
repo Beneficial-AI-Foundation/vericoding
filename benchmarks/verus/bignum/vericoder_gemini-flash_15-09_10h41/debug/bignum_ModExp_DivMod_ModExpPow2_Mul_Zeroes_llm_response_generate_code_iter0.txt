@@ -1,0 +1,9 @@
+=== LLM Response - generate_code - Iteration 0 ===
+File: benchmarks/verus/bignum/files/bignum_ModExp_DivMod_ModExpPow2_Mul_Zeroes.rs
+Prompt Hash: 89706bcd
+JSON Parsed Successfully: True
+Timestamp: 1757925980.633783
+Content Length: 1321 chars
+--------------------------------------------------------------------------------
+["spec fn remainder_pow2(b: nat, e: nat, m: nat) -> nat { Exp_int(b, e) % m }", "{\n    let x_int = Str2Int(sx@);\n    let y_int = Str2Int(sy@);\n    let z_int = Str2Int(sz@);\n\n    if y_int == 0 {\n        assert (Exp_int(x_int, 0) % z_int == 1 % z_int) by (nonlinear_arith);\n        return integer_to_bitstring(1 % z_int);\n    } else if y_int == 1 {\n        assert (Exp_int(x_int, 1) % z_int == x_int % z_int) by (nonlinear_arith);\n        return integer_to_bitstring(x_int % z_int);\n    }\n\n    let mut x_power = x_int;\n    let mut result_int = 1matched_label;\n\n    let mut i = 0;\n    while i < sy@.len() as int\n        invariant\n            0 <= i && i <= sy@.len() as int,\n            result_int == Exp_int(x_int, Str2Int(sy@.subrange(0, i))) % z_int,\n            x_power == Exp_int(x_int, Exp_int(2, i as nat)) % z_int,\n            z_int > 1,\n            ValidBitString(sy@),\n            Exp_int(x_int, Str2Int(sy@.subrange(0, i))) <= Exp_int(x_int,y_int),\n        decreases sy@.len() - i\n    {\n        if sy@.index(i) == '1' {\n            result_int = (result_int * x_power) % z_int;\n        }\n        x_power = (x_power * x_power) % z_int;\n        i = i + 1;\n    }\n\n    assert(Exp_int(x_int, y_int) % z_int == result_int) by(nonlinear_arith);\n    integer_to_bitstring(result_int)\n}"]
+--------------------------------------------------------------------------------

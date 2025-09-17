@@ -1,0 +1,128 @@
+vc-description: |-
+  This verification task implements a function to convert an integer from base 10 to a specified base (where base < 10) and return its string representation. The implementation should correctly handle the conversion process by repeatedly dividing by the target base to extract digits, then reversing the resulting digit sequence to produce the final string representation.
+
+vc-preamble: |-
+  // ======= TASK =======
+  // Convert an integer from base 10 to a specified base and return the string representation.
+  // Input: x (integer in base 10), base (target base where base < 10)
+  // Output: String representation of x in the specified base
+  
+  // ======= SPEC REQUIREMENTS =======
+  function power_of_base(base: int, exp: int): int
+    requires base >= 2
+    requires exp >= 0
+    ensures power_of_base(base, exp) > 0
+  {
+    if exp == 0 then 1 else base * power_of_base(base, exp - 1)
+  }
+  
+  function digits_to_int(digits: seq<char>, base: int): int
+    requires base >= 2
+    requires forall i :: 0 <= i < |digits| ==> '0' <= digits[i] <= '9' && (digits[i] as int) - ('0' as int) < base
+  {
+    if |digits| == 0 then 0
+    else (digits[0] as int) - ('0' as int) + base * digits_to_int(digits[1..], base)
+  }
+  
+  function string_to_int_in_base(s: string, base: int): int
+    requires base >= 2
+    requires |s| > 0
+    requires forall i :: 0 <= i < |s| ==> '0' <= s[i] <= '9' && (s[i] as int) - ('0' as int) < base
+    ensures string_to_int_in_base(s, base) >= 0
+  {
+    if |s| == 1 then
+      (s[0] as int) - ('0' as int)
+    else
+      string_to_int_in_base(s[..|s|-1], base) * base + ((s[|s|-1] as int) - ('0' as int))
+  }
+
+vc-helpers: |-
+  // ======= HELPERS =======
+  lemma digits_reversal_lemma(digits: seq<char>, reversed: seq<char>, base: int)
+    requires base >= 2
+    requires |digits| == |reversed| > 0
+    requires forall i :: 0 <= i < |digits| ==> '0' <= digits[i] <= '9' && (digits[i] as int) - ('0' as int) < base
+    requires forall i :: 0 <= i < |reversed| ==> reversed[i] == digits[|digits| - 1 - i]
+    ensures string_to_int_in_base(reversed, base) == digits_to_int(digits, base)
+  {
+    if |digits| == 1 {
+      assert reversed[0] == digits[0];
+    } else {
+      var tail_digits := digits[1..];
+      var head_reversed := reversed[..|reversed|-1];
+  
+      assert |tail_digits| == |head_reversed|;
+      assert forall i :: 0 <= i < |tail_digits| ==> head_reversed[i] == tail_digits[|tail_digits| - 1 - i];
+  
+      digits_reversal_lemma(tail_digits, head_reversed, base);
+  
+      assert string_to_int_in_base(reversed, base) == 
+             string_to_int_in_base(head_reversed, base) * base + ((reversed[|reversed|-1] as int) - ('0' as int));
+      assert digits_to_int(digits, base) == 
+             ((digits[0] as int) - ('0' as int)) + base * digits_to_int(tail_digits, base);
+      assert string_to_int_in_base(head_reversed, base) == digits_to_int(tail_digits, base);
+      assert reversed[|reversed|-1] == digits[0];
+    }
+  }
+
+vc-spec: |-
+  // ======= MAIN METHOD =======
+  method change_base(x: int, base: int) returns (result: string)
+    requires base >= 2 && base < 10
+    requires x >= 0
+    ensures x == 0 ==> result == "0"
+    ensures x > 0 ==> |result| > 0 && result[0] != '0'
+    ensures forall i :: 0 <= i < |result| ==> '0' <= result[i] <= '9' && (result[i] as int) - ('0' as int) < base
+    ensures x > 0 ==> string_to_int_in_base(result, base) == x
+
+vc-code: |-
+  {
+    if x == 0 {
+      return "0";
+    }
+  
+    var digits: seq<char> := [];
+    var temp := x;
+  
+    while temp > 0
+      invariant temp >= 0
+      invariant forall i :: 0 <= i < |digits| ==> '0' <= digits[i] <= '9' && (digits[i] as int) - ('0' as int) < base
+      invariant x == temp * power_of_base(base, |digits|) + digits_to_int(digits, base)
+      decreases temp
+    {
+      var digit := temp % base;
+      var digit_char := ('0' as int + digit) as char;
+      digits := digits + [digit_char];
+      temp := temp / base;
+    }
+  
+    assert temp == 0;
+    assert x == digits_to_int(digits, base);
+    assert |digits| > 0;
+    assert digits[|digits|-1] != '0';
+  
+    var reversed_digits: seq<char> := [];
+    var i := |digits| - 1;
+    while i >= 0
+      invariant -1 <= i < |digits|
+      invariant |reversed_digits| == |digits| - 1 - i
+      invariant forall j :: 0 <= j < |reversed_digits| ==> reversed_digits[j] == digits[|digits| - 1 - j]
+      invariant forall j :: 0 <= j < |reversed_digits| ==> '0' <= reversed_digits[j] <= '9' && (reversed_digits[j] as int) - ('0' as int) < base
+      decreases i + 1
+    {
+      reversed_digits := reversed_digits + [digits[i]];
+      i := i - 1;
+    }
+  
+    assert |reversed_digits| == |digits|;
+    assert |reversed_digits| > 0;
+    assert reversed_digits[0] == digits[|digits|-1];
+    assert reversed_digits[0] != '0';
+  
+    digits_reversal_lemma(digits, reversed_digits, base);
+    assert string_to_int_in_base(reversed_digits, base) == x;
+  
+    result := reversed_digits;
+  }
+
+vc-postamble: |-

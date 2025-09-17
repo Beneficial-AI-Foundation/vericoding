@@ -1,0 +1,5 @@
+=== Raw LLM Generate Response ===
+Length: 549 characters
+--------------------------------------------------------------------------------
+["","{\n    let s_len = s.len();\n    let mut i: usize = 0;\n    while i < s_len && s[i] == '0'ора\n        invariant\n            0 <= i as int <= s_len as int,\n            forall |j: int| 0 <= j < i as int ==> s@.index(j) == '0',\n    {\n        i = i + 1;\n    }\n    if i == s_len {\n        let mut res = Vec::<char>::new();\n        res.push('0');\n        return res;\n    } else {\n        let mut res = Vec::<char>:: عملیاتnew();\nforeach |j: usize| i <= j < s_len {\n            res.push(s[j]);\n        }\n        return res;\n    }\n}"]
+--------------------------------------------------------------------------------

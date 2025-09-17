@@ -2,7 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-
 spec fn count_buyable_games(games: Seq<int>, bills: Seq<int>) -> int
     decreases games.len()
 {
@@ -17,8 +16,7 @@ spec fn count_buyable_games(games: Seq<int>, bills: Seq<int>) -> int
     }
 }
 
-spec fn valid_input(n: int, m: int, games: Seq<int>, bills: Seq<int>) -> bool
-{
+spec fn valid_input(n: int, m: int, games: Seq<int>, bills: Seq<int>) -> bool {
     n >= 1 && m >= 1 &&
     games.len() == n && bills.len() == m &&
     (forall|i: int| 0 <= i < games.len() ==> 1 <= games[i] <= 1000) &&
@@ -31,17 +29,17 @@ spec fn valid_input(n: int, m: int, games: Seq<int>, bills: Seq<int>) -> bool
 
 // <vc-spec>
 fn solve(n: int, m: int, games: Seq<int>, bills: Seq<int>) -> (result: int)
-    requires 
-        valid_input(n, m, games, bills)
-    ensures 
+    requires
+        valid_input(n, m, games, bills),
+    ensures
         0 <= result <= n,
         result <= m,
-        result == count_buyable_games(games, bills)
+        result == count_buyable_games(games, bills),
 // </vc-spec>
 // <vc-code>
 {
     assume(false);
-    0int
+    unreached()
 }
 // </vc-code>
 

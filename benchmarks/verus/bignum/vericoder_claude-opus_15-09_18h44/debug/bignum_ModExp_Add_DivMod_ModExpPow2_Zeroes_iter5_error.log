@@ -1,0 +1,190 @@
+=== Verification Error - Iteration 5 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExp_Add_DivMod_ModExpPow2_Zeroes.rs
+Time: 2025-09-15 19:15:47
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Verification failed: verification results:: 4 verified, 3 errors
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_Add_DivMod_ModExpPow2_Zeroes_impl.rs:37:7
+   |
+37 | proof fn lemma_str2int_int2str(n: nat)
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_Add_DivMod_ModExpPow2_Zeroes_impl.rs:39:11
+   |
+39 |             Str2Int(Int2Str(n)) == n
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+42 | /   if n == 0 {
+43 | |     assert(Int2Str(0) == seq!['0']);
+44 | |     assert(ValidBitString(seq!['0']));
+45 | |     assert(Str2Int(seq!['0']) == 0);
+...  |
+57 | |     assert(ValidBitString(Int2Str(n)));
+58 | |   }
+   | |___- at the end of the function body
+
+error: assertion failed
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_Add_DivMod_ModExpPow2_Zeroes_impl.rs:45:12
+   |
+45 |     assert(Str2Int(seq!['0']) == 0);
+   |            ^^^^^^^^^^^^^^^^^^^^^^^ assertion failed
+
+error: assertion failed
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_Add_DivMod_ModExpPow2_Zeroes_impl.rs:49:12
+   |
+49 |     assert(Str2Int(seq!['1']) == 1);
+   |            ^^^^^^^^^^^^^^^^^^^^^^^ assertion failed
+
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_Add_DivMod_ModExpPow2_Zeroes_impl.rs:76:3
+   |
+76 |   while i < max_len || carry > 0
+   |   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: invariant not satisfied at end of loop body
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_Add_DivMod_ModExpPow2_Zeroes_impl.rs:80:7
+   |
+80 |       i <= max_len + 1
+   |       ^^^^^^^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_Add_DivMod_ModExpPow2_Zeroes_impl.rs:106:9
+    |
+106 |     i = i + 1;
+    |         ^^^^^
+
+error: invariant not satisfied at end of loop body
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_Add_DivMod_ModExpPow2_Zeroes_impl.rs:114:7
+    |
+114 |       ValidBitString(reversed@),
+    |       ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+note: automatically chose triggers for this expression:
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_Add_DivMod_ModExpPow2_Zeroes_impl.rs:55:12
+   |
+55 |     assert(forall |i: int| 0 <= i && i < s.len() ==> Int2Str(n)[i] == s[i]);
+   |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+note:   trigger 1 of 1:
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_Add_DivMod_ModExpPow2_Zeroes_impl.rs:55:71
+   |
+55 |     assert(forall |i: int| 0 <= i && i < s.len() ==> Int2Str(n)[i] == s[i]);
+   |                                                                       ^^^^
+
+note: Verus printed one or more automatically chosen quantifier triggers
+      because it had low confidence in the chosen triggers.
+      To suppress these messages, do one of the following:
+        (1) manually annotate a single desired trigger using #[trigger]
+            (example: forall|i: int, j: int| f(i) && #[trigger] g(i) && #[trigger] h(j)),
+        (2) manually annotate multiple desired triggers using #![trigger ...]
+            (example: forall|i: int| #![trigger f(i)] #![trigger g(i)] f(i) && g(i)),
+        (3) accept the automatically chosen trigger using #![auto]
+            (example: forall|i: int, j: int| #![auto] f(i) && g(i) && h(j))
+        (4) use the --triggers-mode silent command-line option to suppress all printing of triggers.
+      (Note: triggers are used by the underlying SMT theorem prover to instantiate quantifiers;
+      the theorem prover instantiates a quantifier whenever some expression matches the
+      pattern specified by one of the quantifier's triggers.)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_Add_DivMod_ModExpPow2_Zeroes_impl.rs:55:12
+   |
+55 |     assert(forall |i: int| 0 <= i && i < s.len() ==> Int2Str(n)[i] == s[i]);
+   |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: aborting due to 6 previous errors
+
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+verification results:: 4 verified, 3 errors
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_Add_DivMod_ModExpPow2_Zeroes_impl.rs:37:7
+   |
+37 | proof fn lemma_str2int_int2str(n: nat)
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_Add_DivMod_ModExpPow2_Zeroes_impl.rs:39:11
+   |
+39 |             Str2Int(Int2Str(n)) == n
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+42 | /   if n == 0 {
+43 | |     assert(Int2Str(0) == seq!['0']);
+44 | |     assert(ValidBitString(seq!['0']));
+45 | |     assert(Str2Int(seq!['0']) == 0);
+...  |
+57 | |     assert(ValidBitString(Int2Str(n)));
+58 | |   }
+   | |___- at the end of the function body
+
+error: assertion failed
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_Add_DivMod_ModExpPow2_Zeroes_impl.rs:45:12
+   |
+45 |     assert(Str2Int(seq!['0']) == 0);
+   |            ^^^^^^^^^^^^^^^^^^^^^^^ assertion failed
+
+error: assertion failed
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_Add_DivMod_ModExpPow2_Zeroes_impl.rs:49:12
+   |
+49 |     assert(Str2Int(seq!['1']) == 1);
+   |            ^^^^^^^^^^^^^^^^^^^^^^^ assertion failed
+
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_Add_DivMod_ModExpPow2_Zeroes_impl.rs:76:3
+   |
+76 |   while i < max_len || carry > 0
+   |   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: invariant not satisfied at end of loop body
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_Add_DivMod_ModExpPow2_Zeroes_impl.rs:80:7
+   |
+80 |       i <= max_len + 1
+   |       ^^^^^^^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_Add_DivMod_ModExpPow2_Zeroes_impl.rs:106:9
+    |
+106 |     i = i + 1;
+    |         ^^^^^
+
+error: invariant not satisfied at end of loop body
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_Add_DivMod_ModExpPow2_Zeroes_impl.rs:114:7
+    |
+114 |       ValidBitString(reversed@),
+    |       ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+note: automatically chose triggers for this expression:
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_Add_DivMod_ModExpPow2_Zeroes_impl.rs:55:12
+   |
+55 |     assert(forall |i: int| 0 <= i && i < s.len() ==> Int2Str(n)[i] == s[i]);
+   |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+note:   trigger 1 of 1:
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_Add_DivMod_ModExpPow2_Zeroes_impl.rs:55:71
+   |
+55 |     assert(forall |i: int| 0 <= i && i < s.len() ==> Int2Str(n)[i] == s[i]);
+   |                                                                       ^^^^
+
+note: Verus printed one or more automatically chosen quantifier triggers
+      because it had low confidence in the chosen triggers.
+      To suppress these messages, do one of the following:
+        (1) manually annotate a single desired trigger using #[trigger]
+            (example: forall|i: int, j: int| f(i) && #[trigger] g(i) && #[trigger] h(j)),
+        (2) manually annotate multiple desired triggers using #![trigger ...]
+            (example: forall|i: int| #![trigger f(i)] #![trigger g(i)] f(i) && g(i)),
+        (3) accept the automatically chosen trigger using #![auto]
+            (example: forall|i: int, j: int| #![auto] f(i) && g(i) && h(j))
+        (4) use the --triggers-mode silent command-line option to suppress all printing of triggers.
+      (Note: triggers are used by the underlying SMT theorem prover to instantiate quantifiers;
+      the theorem prover instantiates a quantifier whenever some expression matches the
+      pattern specified by one of the quantifier's triggers.)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_Add_DivMod_ModExpPow2_Zeroes_impl.rs:55:12
+   |
+55 |     assert(forall |i: int| 0 <= i && i < s.len() ==> Int2Str(n)[i] == s[i]);
+   |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: aborting due to 6 previous errors
+

@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(n: int, d: int, current_points: Seq<int>, awards: Seq<int>) -> bool {
     n >= 1 && n <= 200000 &&
     d >= 1 && d <= n &&
@@ -47,6 +44,9 @@ spec fn count_overtaken_helper(current_points: Seq<int>, awards: Seq<int>, d: in
         }
     }
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

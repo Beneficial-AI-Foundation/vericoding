@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(n: int) -> bool {
   1 <= n <= 100
 }
@@ -18,6 +15,9 @@ spec fn count_divisors_with_75_factors(n: int) -> int
 spec fn valid_output(result: int) -> bool {
   result >= 0
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

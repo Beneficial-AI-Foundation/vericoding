@@ -3,9 +3,6 @@ use vstd::prelude::*;
 use vstd::set_lib::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(n: int, a: Seq<int>) -> bool {
   n >= 2 && a.len() == n
 }
@@ -30,6 +27,9 @@ spec fn valid_output(result: Seq<int>, n: int, a: Seq<int>) -> bool {
     false
   }
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

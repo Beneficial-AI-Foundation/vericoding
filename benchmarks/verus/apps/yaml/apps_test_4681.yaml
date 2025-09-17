@@ -6,8 +6,6 @@ vc-preamble: |-
   use vstd::prelude::*;
 
   verus! {
-
-vc-helpers: |-
   spec fn lucas(n: int) -> int
       recommends n >= 0
   {
@@ -15,10 +13,12 @@ vc-helpers: |-
       else if n == 1 { 1 }
       else { lucas(n-1) + lucas(n-2) }
   }
-  
+
   spec fn valid_input(n: int) -> bool {
       1 <= n <= 86
   }
+
+vc-helpers: |
 
 vc-spec: |-
   fn solve(n: int) -> (result: int)
@@ -31,7 +31,7 @@ vc-code: |-
       unreached()
   }
 
-vc-postamble: |-
+vc-postamble: |2-
 
   }
 

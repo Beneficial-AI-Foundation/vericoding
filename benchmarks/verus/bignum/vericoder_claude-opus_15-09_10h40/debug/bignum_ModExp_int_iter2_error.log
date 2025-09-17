@@ -1,0 +1,62 @@
+=== Verification Error - Iteration 2 ===
+File: benchmarks/verus/bignum/files/bignum_ModExp_int.rs
+Time: 2025-09-15 11:03:38
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: error: aborting due to 1 previous error
+
+
+error[E0382]: use of moved value: `result`
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_int_impl.rs:144:5
+    |
+114 |     let mut result = Vec::<char>::new();
+    |         ---------- move occurs because `result` has type `std::vec::Vec<char>`, which does not implement the `Copy` trait
+...
+117 |     while n > 0
+    |     ----------- inside of this loop
+...
+127 |         let old_result = result;
+    |                          ------ value moved here, in previous iteration of loop
+...
+144 |     result
+    |     ^^^^^^ value used here after move
+    |
+help: consider cloning the value if the performance cost is acceptable
+    |
+127 |         let old_result = result.clone();
+    |                                ++++++++
+
+error: aborting due to 1 previous error
+
+For more information about this error, try `rustc --explain E0382`.
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+error: aborting due to 1 previous error
+
+
+error[E0382]: use of moved value: `result`
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_int_impl.rs:144:5
+    |
+114 |     let mut result = Vec::<char>::new();
+    |         ---------- move occurs because `result` has type `std::vec::Vec<char>`, which does not implement the `Copy` trait
+...
+117 |     while n > 0
+    |     ----------- inside of this loop
+...
+127 |         let old_result = result;
+    |                          ------ value moved here, in previous iteration of loop
+...
+144 |     result
+    |     ^^^^^^ value used here after move
+    |
+help: consider cloning the value if the performance cost is acceptable
+    |
+127 |         let old_result = result.clone();
+    |                                ++++++++
+
+error: aborting due to 1 previous error
+
+For more information about this error, try `rustc --explain E0382`.

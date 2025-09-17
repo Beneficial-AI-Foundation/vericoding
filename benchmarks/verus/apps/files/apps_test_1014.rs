@@ -3,9 +3,6 @@ use vstd::prelude::*;
 use vstd::string::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(n: int) -> bool {
     n >= 2
 }
@@ -33,6 +30,9 @@ spec fn valid_result(n: int, result: String) -> bool
         result@ == "white\n1 2\n"@
     }
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

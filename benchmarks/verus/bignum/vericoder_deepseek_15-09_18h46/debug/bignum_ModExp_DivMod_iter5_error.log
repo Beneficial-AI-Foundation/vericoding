@@ -1,0 +1,52 @@
+=== Verification Error - Iteration 5 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExp_DivMod.rs
+Time: 2025-09-15 19:00:35
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: error[E0425]: cannot find function `str2int_nonnegative` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_ModExp_DivMod_impl.rs:69:9
+   |
+69 |         str2int_nonnegative(sy@);
+   |         ^^^^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `exp_int_nonnegative` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_ModExp_DivMod_impl.rs:70:9
+   |
+70 |         exp_int_nonnegative(Str2Int(sx@), y_int);
+   |         ^^^^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `mod_exp_lemmas` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_ModExp_DivMod_impl.rs:86:17
+   |
+86 |         proof { mod_exp_lemmas(); }
+   |                 ^^^^^^^^^^^^^^ not found in this scope
+
+error: aborting due to 3 previous errors
+
+For more information about this error, try `rustc --explain E0425`.
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+error[E0425]: cannot find function `str2int_nonnegative` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_ModExp_DivMod_impl.rs:69:9
+   |
+69 |         str2int_nonnegative(sy@);
+   |         ^^^^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `exp_int_nonnegative` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_ModExp_DivMod_impl.rs:70:9
+   |
+70 |         exp_int_nonnegative(Str2Int(sx@), y_int);
+   |         ^^^^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `mod_exp_lemmas` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_ModExp_DivMod_impl.rs:86:17
+   |
+86 |         proof { mod_exp_lemmas(); }
+   |                 ^^^^^^^^^^^^^^ not found in this scope
+
+error: aborting due to 3 previous errors
+
+For more information about this error, try `rustc --explain E0425`.

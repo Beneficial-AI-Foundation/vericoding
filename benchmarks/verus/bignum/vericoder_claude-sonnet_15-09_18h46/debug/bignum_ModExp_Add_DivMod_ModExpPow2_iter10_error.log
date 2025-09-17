@@ -1,0 +1,26 @@
+=== Verification Error - Iteration 10 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExp_Add_DivMod_ModExpPow2.rs
+Time: 2025-09-15 19:02:02
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: error: expression has mode spec, expected mode exec
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_ModExp_Add_DivMod_ModExpPow2_impl.rs:134:48
+    |
+134 |     let squared = ModExpPow2(&half_result, sy, ghost_n, sz);
+    |                                                ^^^^^^^
+
+error: aborting due to 1 previous error
+
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+error: expression has mode spec, expected mode exec
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_ModExp_Add_DivMod_ModExpPow2_impl.rs:134:48
+    |
+134 |     let squared = ModExpPow2(&half_result, sy, ghost_n, sz);
+    |                                                ^^^^^^^
+
+error: aborting due to 1 previous error
+

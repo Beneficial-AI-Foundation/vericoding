@@ -1,0 +1,288 @@
+=== Verification Error - Iteration 7 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExpPow2_DivMod.rs
+Time: 2025-09-15 19:21:46
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExpPow2_DivMod_impl.rs:43:18
+   |
+43 |     if q_temp == 0 {
+   |        ------    ^ expected `nat`, found integer
+   |        |
+   |        expected because this is `verus_builtin::nat`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExpPow2_DivMod_impl.rs:47:24
+   |
+47 |         while q_temp > 0 {
+   |               ------   ^ expected `nat`, found integer
+   |               |
+   |               expected because this is `verus_builtin::nat`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExpPow2_DivMod_impl.rs:48:25
+   |
+48 |             if q_temp % 2 == 0 {
+   |                ------   ^ expected `nat`, found integer
+   |                |
+   |                expected because this is `verus_builtin::nat`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExpPow2_DivMod_impl.rs:48:30
+   |
+48 |             if q_temp % 2 == 0 {
+   |                ----------    ^ expected `nat`, found integer
+   |                |
+   |                expected because this is `verus_builtin::nat`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExpPow2_DivMod_impl.rs:53:31
+   |
+53 |             q_temp = q_temp / 2;
+   |                      ------   ^ expected `nat`, found integer
+   |                      |
+   |                      expected because this is `verus_builtin::nat`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExpPow2_DivMod_impl.rs:65:18
+   |
+65 |     if r_temp == 0 {
+   |        ------    ^ expected `nat`, found integer
+   |        |
+   |        expected because this is `verus_builtin::nat`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExpPow2_DivMod_impl.rs:69:24
+   |
+69 |         while r_temp > 0 {
+   |               ------   ^ expected `nat`, found integer
+   |               |
+   |               expected because this is `verus_builtin::nat`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExpPow2_DivMod_impl.rs:70:25
+   |
+70 |             if r_temp % 2 == 0 {
+   |                ------   ^ expected `nat`, found integer
+   |                |
+   |                expected because this is `verus_builtin::nat`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExpPow2_DivMod_impl.rs:70:30
+   |
+70 |             if r_temp % 2 == 0 {
+   |                ----------    ^ expected `nat`, found integer
+   |                |
+   |                expected because this is `verus_builtin::nat`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExpPow2_DivMod_impl.rs:75:31
+   |
+75 |             r_temp = r_temp / 2;
+   |                      ------   ^ expected `nat`, found integer
+   |                      |
+   |                      expected because this is `verus_builtin::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExpPow2_DivMod_impl.rs:102:13
+    |
+102 |     if n == 0 {
+    |        -    ^ expected `int`, found integer
+    |        |
+    |        expected because this is `verus_builtin::int`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExpPow2_DivMod_impl.rs:127:55
+    |
+127 |         let half_result = ModExpPow2(sx, &y_half, n - 1, sz);
+    |                                                   -   ^ expected `int`, found integer
+    |                                                   |
+    |                                                   expected because this is `verus_builtin::int`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExpPow2_DivMod_impl.rs:136:20
+    |
+136 |         if temp == 0 {
+    |            ----    ^ expected `nat`, found integer
+    |            |
+    |            expected because this is `verus_builtin::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExpPow2_DivMod_impl.rs:140:26
+    |
+140 |             while temp > 0 {
+    |                   ----   ^ expected `nat`, found integer
+    |                   |
+    |                   expected because this is `verus_builtin::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExpPow2_DivMod_impl.rs:141:27
+    |
+141 |                 if temp % 2 == 0 {
+    |                    ----   ^ expected `nat`, found integer
+    |                    |
+    |                    expected because this is `verus_builtin::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExpPow2_DivMod_impl.rs:141:32
+    |
+141 |                 if temp % 2 == 0 {
+    |                    --------    ^ expected `nat`, found integer
+    |                    |
+    |                    expected because this is `verus_builtin::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExpPow2_DivMod_impl.rs:146:31
+    |
+146 |                 temp = temp / 2;
+    |                        ----   ^ expected `nat`, found integer
+    |                        |
+    |                        expected because this is `verus_builtin::nat`
+
+error: aborting due to 17 previous errors
+
+For more information about this error, try `rustc --explain E0308`.
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExpPow2_DivMod_impl.rs:43:18
+   |
+43 |     if q_temp == 0 {
+   |        ------    ^ expected `nat`, found integer
+   |        |
+   |        expected because this is `verus_builtin::nat`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExpPow2_DivMod_impl.rs:47:24
+   |
+47 |         while q_temp > 0 {
+   |               ------   ^ expected `nat`, found integer
+   |               |
+   |               expected because this is `verus_builtin::nat`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExpPow2_DivMod_impl.rs:48:25
+   |
+48 |             if q_temp % 2 == 0 {
+   |                ------   ^ expected `nat`, found integer
+   |                |
+   |                expected because this is `verus_builtin::nat`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExpPow2_DivMod_impl.rs:48:30
+   |
+48 |             if q_temp % 2 == 0 {
+   |                ----------    ^ expected `nat`, found integer
+   |                |
+   |                expected because this is `verus_builtin::nat`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExpPow2_DivMod_impl.rs:53:31
+   |
+53 |             q_temp = q_temp / 2;
+   |                      ------   ^ expected `nat`, found integer
+   |                      |
+   |                      expected because this is `verus_builtin::nat`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExpPow2_DivMod_impl.rs:65:18
+   |
+65 |     if r_temp == 0 {
+   |        ------    ^ expected `nat`, found integer
+   |        |
+   |        expected because this is `verus_builtin::nat`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExpPow2_DivMod_impl.rs:69:24
+   |
+69 |         while r_temp > 0 {
+   |               ------   ^ expected `nat`, found integer
+   |               |
+   |               expected because this is `verus_builtin::nat`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExpPow2_DivMod_impl.rs:70:25
+   |
+70 |             if r_temp % 2 == 0 {
+   |                ------   ^ expected `nat`, found integer
+   |                |
+   |                expected because this is `verus_builtin::nat`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExpPow2_DivMod_impl.rs:70:30
+   |
+70 |             if r_temp % 2 == 0 {
+   |                ----------    ^ expected `nat`, found integer
+   |                |
+   |                expected because this is `verus_builtin::nat`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExpPow2_DivMod_impl.rs:75:31
+   |
+75 |             r_temp = r_temp / 2;
+   |                      ------   ^ expected `nat`, found integer
+   |                      |
+   |                      expected because this is `verus_builtin::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExpPow2_DivMod_impl.rs:102:13
+    |
+102 |     if n == 0 {
+    |        -    ^ expected `int`, found integer
+    |        |
+    |        expected because this is `verus_builtin::int`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExpPow2_DivMod_impl.rs:127:55
+    |
+127 |         let half_result = ModExpPow2(sx, &y_half, n - 1, sz);
+    |                                                   -   ^ expected `int`, found integer
+    |                                                   |
+    |                                                   expected because this is `verus_builtin::int`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExpPow2_DivMod_impl.rs:136:20
+    |
+136 |         if temp == 0 {
+    |            ----    ^ expected `nat`, found integer
+    |            |
+    |            expected because this is `verus_builtin::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExpPow2_DivMod_impl.rs:140:26
+    |
+140 |             while temp > 0 {
+    |                   ----   ^ expected `nat`, found integer
+    |                   |
+    |                   expected because this is `verus_builtin::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExpPow2_DivMod_impl.rs:141:27
+    |
+141 |                 if temp % 2 == 0 {
+    |                    ----   ^ expected `nat`, found integer
+    |                    |
+    |                    expected because this is `verus_builtin::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExpPow2_DivMod_impl.rs:141:32
+    |
+141 |                 if temp % 2 == 0 {
+    |                    --------    ^ expected `nat`, found integer
+    |                    |
+    |                    expected because this is `verus_builtin::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExpPow2_DivMod_impl.rs:146:31
+    |
+146 |                 temp = temp / 2;
+    |                        ----   ^ expected `nat`, found integer
+    |                        |
+    |                        expected because this is `verus_builtin::nat`
+
+error: aborting due to 17 previous errors
+
+For more information about this error, try `rustc --explain E0308`.

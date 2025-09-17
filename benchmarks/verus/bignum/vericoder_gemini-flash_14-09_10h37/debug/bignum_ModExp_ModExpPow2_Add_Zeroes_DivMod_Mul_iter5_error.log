@@ -1,0 +1,38 @@
+=== Verification Error - Iteration 5 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExp_ModExpPow2_Add_Zeroes_DivMod_Mul.rs
+Time: 2025-09-14 10:41:31
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExp_ModExpPow2_Add_Zeroes_DivMod_Mul_impl.rs:72:16
+   |
+72 |         while (i as nat) < result_seq.len()
+   |                ^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExp_ModExpPow2_Add_Zeroes_DivMod_Mul_impl.rs:78:43
+   |
+78 |             res_vec.push(result_seq.index(i as nat));
+   |                                           ^^^^^^^^
+
+error: aborting due to 2 previous errors
+
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExp_ModExpPow2_Add_Zeroes_DivMod_Mul_impl.rs:72:16
+   |
+72 |         while (i as nat) < result_seq.len()
+   |                ^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExp_ModExpPow2_Add_Zeroes_DivMod_Mul_impl.rs:78:43
+   |
+78 |             res_vec.push(result_seq.index(i as nat));
+   |                                           ^^^^^^^^
+
+error: aborting due to 2 previous errors
+

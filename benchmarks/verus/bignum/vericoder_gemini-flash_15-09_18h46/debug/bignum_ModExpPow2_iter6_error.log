@@ -1,0 +1,202 @@
+=== Verification Error - Iteration 6 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExpPow2.rs
+Time: 2025-09-15 18:49:26
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExpPow2_impl.rs:52:13
+   |
+52 |     if n == 0 {
+   |        -    ^ expected `int`, found integer
+   |        |
+   |        expected because this is `vstd::prelude::int`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExpPow2_impl.rs:54:29
+   |
+54 |         if x_int % z_int == 1 {
+   |            -------------    ^ expected `nat`, found integer
+   |            |
+   |            expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExpPow2_impl.rs:79:73
+   |
+79 |         let res_prime_vec = ModExpPow2(sx, sy_prime_vec.as_slice(), n - 1, sz);
+   |                                                                     -   ^ expected `int`, found integer
+   |                                                                     |
+   |                                                                     expected because this is `vstd::prelude::int`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExpPow2_impl.rs:91:24
+   |
+91 |         if temp_val == 0 && n == 0 {
+   |            --------    ^ expected `nat`, found integer
+   |            |
+   |            expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExpPow2_impl.rs:91:34
+   |
+91 |         if temp_val == 0 && n == 0 {
+   |                             -    ^ expected `int`, found integer
+   |                             |
+   |                             expected because this is `vstd::prelude::int`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExpPow2_impl.rs:93:31
+   |
+93 |         } else if temp_val == 0 {
+   |                   --------    ^ expected `nat`, found integer
+   |                   |
+   |                   expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExpPow2_impl.rs:96:30
+   |
+96 |             while temp_val > 0
+   |                   --------   ^ expected `nat`, found integer
+   |                   |
+   |                   expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExpPow2_impl.rs:101:31
+    |
+101 |                 if temp_val % 2 == 1 {
+    |                    --------   ^ expected `nat`, found integer
+    |                    |
+    |                    expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExpPow2_impl.rs:101:36
+    |
+101 |                 if temp_val % 2 == 1 {
+    |                    ------------    ^ expected `nat`, found integer
+    |                    |
+    |                    expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExpPow2_impl.rs:106:39
+    |
+106 |                 temp_val = temp_val / 2;
+    |                            --------   ^ expected `nat`, found integer
+    |                            |
+    |                            expected because this is `vstd::prelude::nat`
+
+error[E0605]: non-primitive cast: `vstd::prelude::int` as `usize`
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExpPow2_impl.rs:61:30
+   |
+61 |         let current_bit = sy[n as usize];
+   |                              ^^^^^^^^^^ an `as` expression can only be used to convert between primitive types or to coerce to a specific trait object
+
+error[E0605]: non-primitive cast: `vstd::prelude::int` as `usize`
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExpPow2_impl.rs:66:19
+   |
+66 |         while i < n as usize
+   |                   ^^^^^^^^^^ an `as` expression can only be used to convert between primitive types or to coerce to a specific trait object
+
+error: aborting due to 12 previous errors
+
+Some errors have detailed explanations: E0308, E0605.
+For more information about an error, try `rustc --explain E0308`.
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExpPow2_impl.rs:52:13
+   |
+52 |     if n == 0 {
+   |        -    ^ expected `int`, found integer
+   |        |
+   |        expected because this is `vstd::prelude::int`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExpPow2_impl.rs:54:29
+   |
+54 |         if x_int % z_int == 1 {
+   |            -------------    ^ expected `nat`, found integer
+   |            |
+   |            expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExpPow2_impl.rs:79:73
+   |
+79 |         let res_prime_vec = ModExpPow2(sx, sy_prime_vec.as_slice(), n - 1, sz);
+   |                                                                     -   ^ expected `int`, found integer
+   |                                                                     |
+   |                                                                     expected because this is `vstd::prelude::int`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExpPow2_impl.rs:91:24
+   |
+91 |         if temp_val == 0 && n == 0 {
+   |            --------    ^ expected `nat`, found integer
+   |            |
+   |            expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExpPow2_impl.rs:91:34
+   |
+91 |         if temp_val == 0 && n == 0 {
+   |                             -    ^ expected `int`, found integer
+   |                             |
+   |                             expected because this is `vstd::prelude::int`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExpPow2_impl.rs:93:31
+   |
+93 |         } else if temp_val == 0 {
+   |                   --------    ^ expected `nat`, found integer
+   |                   |
+   |                   expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExpPow2_impl.rs:96:30
+   |
+96 |             while temp_val > 0
+   |                   --------   ^ expected `nat`, found integer
+   |                   |
+   |                   expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExpPow2_impl.rs:101:31
+    |
+101 |                 if temp_val % 2 == 1 {
+    |                    --------   ^ expected `nat`, found integer
+    |                    |
+    |                    expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExpPow2_impl.rs:101:36
+    |
+101 |                 if temp_val % 2 == 1 {
+    |                    ------------    ^ expected `nat`, found integer
+    |                    |
+    |                    expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExpPow2_impl.rs:106:39
+    |
+106 |                 temp_val = temp_val / 2;
+    |                            --------   ^ expected `nat`, found integer
+    |                            |
+    |                            expected because this is `vstd::prelude::nat`
+
+error[E0605]: non-primitive cast: `vstd::prelude::int` as `usize`
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExpPow2_impl.rs:61:30
+   |
+61 |         let current_bit = sy[n as usize];
+   |                              ^^^^^^^^^^ an `as` expression can only be used to convert between primitive types or to coerce to a specific trait object
+
+error[E0605]: non-primitive cast: `vstd::prelude::int` as `usize`
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExpPow2_impl.rs:66:19
+   |
+66 |         while i < n as usize
+   |                   ^^^^^^^^^^ an `as` expression can only be used to convert between primitive types or to coerce to a specific trait object
+
+error: aborting due to 12 previous errors
+
+Some errors have detailed explanations: E0308, E0605.
+For more information about an error, try `rustc --explain E0308`.

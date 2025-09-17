@@ -1,0 +1,184 @@
+=== Verification Error - Iteration 2 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_NormalizeBitString.rs
+Time: 2025-09-15 18:45:15
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Verification failed: verification results:: 4 verified, 2 errors
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_NormalizeBitString_impl.rs:61:5
+   |
+61 | /     for i in 0..s.len()
+62 | |         invariant
+63 | |             0 <= i <= s.len(),
+64 | |             ValidBitString(result@),
+...  |
+98 | |     }
+   | |_____^
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_NormalizeBitString_impl.rs:52:6
+   |
+52 | exec fn NormalizeBitString(s: &[char]) -> (t: Vec<char>)
+   |      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_NormalizeBitString_impl.rs:53:45
+    |
+53  |   ensures ValidBitString(t@), t@.len() > 0, (t@.len() > 1 ==> t@[0] != '0'), ValidBitString(s@) ==> Str2Int(s@) == Str2Int(t@)
+    |                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+104 |     result
+    |     ------ at the end of the function body
+
+error: postcondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_NormalizeBitString_impl.rs:53:78
+    |
+53  |   ensures ValidBitString(t@), t@.len() > 0, (t@.len() > 1 ==> t@[0] != '0'), ValidBitString(s@) ==> Str2Int(s@) == Str2Int(t@)
+    |                                                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+104 |     result
+    |     ------ at the end of the function body
+
+error: invariant not satisfied at end of loop body
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_NormalizeBitString_impl.rs:64:13
+   |
+64 |             ValidBitString(result@),
+   |             ^^^^^^^^^^^^^^^^^^^^^^^
+
+error: invariant not satisfied at end of loop body
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_NormalizeBitString_impl.rs:67:13
+   |
+67 | /             ValidBitString(s@) ==> (
+68 | |                 if !found_nonzero {
+69 | |                     Str2Int(result@) == 0
+70 | |                 } else {
+...  |
+74 | |             ),
+   | |_____________^
+
+note: automatically chose triggers for this expression:
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_NormalizeBitString_impl.rs:71:21
+   |
+71 | /                     exists |k: int| 0 <= k && k < i && s@[k] != '0' &&
+72 | |                     Str2Int(s@.subrange(k, i as int)) == Str2Int(result@)
+   | |_________________________________________________________________________^
+
+note:   trigger 1 of 1:
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_NormalizeBitString_impl.rs:71:56
+   |
+71 |                     exists |k: int| 0 <= k && k < i && s@[k] != '0' &&
+   |                                                        ^^^^^
+
+note: Verus printed one or more automatically chosen quantifier triggers
+      because it had low confidence in the chosen triggers.
+      To suppress these messages, do one of the following:
+        (1) manually annotate a single desired trigger using #[trigger]
+            (example: forall|i: int, j: int| f(i) && #[trigger] g(i) && #[trigger] h(j)),
+        (2) manually annotate multiple desired triggers using #![trigger ...]
+            (example: forall|i: int| #![trigger f(i)] #![trigger g(i)] f(i) && g(i)),
+        (3) accept the automatically chosen trigger using #![auto]
+            (example: forall|i: int, j: int| #![auto] f(i) && g(i) && h(j))
+        (4) use the --triggers-mode silent command-line option to suppress all printing of triggers.
+      (Note: triggers are used by the underlying SMT theorem prover to instantiate quantifiers;
+      the theorem prover instantiates a quantifier whenever some expression matches the
+      pattern specified by one of the quantifier's triggers.)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_NormalizeBitString_impl.rs:71:21
+   |
+71 | /                     exists |k: int| 0 <= k && k < i && s@[k] != '0' &&
+72 | |                     Str2Int(s@.subrange(k, i as int)) == Str2Int(result@)
+   | |_________________________________________________________________________^
+
+error: aborting due to 4 previous errors
+
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+verification results:: 4 verified, 2 errors
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_NormalizeBitString_impl.rs:61:5
+   |
+61 | /     for i in 0..s.len()
+62 | |         invariant
+63 | |             0 <= i <= s.len(),
+64 | |             ValidBitString(result@),
+...  |
+98 | |     }
+   | |_____^
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_NormalizeBitString_impl.rs:52:6
+   |
+52 | exec fn NormalizeBitString(s: &[char]) -> (t: Vec<char>)
+   |      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_NormalizeBitString_impl.rs:53:45
+    |
+53  |   ensures ValidBitString(t@), t@.len() > 0, (t@.len() > 1 ==> t@[0] != '0'), ValidBitString(s@) ==> Str2Int(s@) == Str2Int(t@)
+    |                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+104 |     result
+    |     ------ at the end of the function body
+
+error: postcondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_NormalizeBitString_impl.rs:53:78
+    |
+53  |   ensures ValidBitString(t@), t@.len() > 0, (t@.len() > 1 ==> t@[0] != '0'), ValidBitString(s@) ==> Str2Int(s@) == Str2Int(t@)
+    |                                                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+104 |     result
+    |     ------ at the end of the function body
+
+error: invariant not satisfied at end of loop body
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_NormalizeBitString_impl.rs:64:13
+   |
+64 |             ValidBitString(result@),
+   |             ^^^^^^^^^^^^^^^^^^^^^^^
+
+error: invariant not satisfied at end of loop body
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_NormalizeBitString_impl.rs:67:13
+   |
+67 | /             ValidBitString(s@) ==> (
+68 | |                 if !found_nonzero {
+69 | |                     Str2Int(result@) == 0
+70 | |                 } else {
+...  |
+74 | |             ),
+   | |_____________^
+
+note: automatically chose triggers for this expression:
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_NormalizeBitString_impl.rs:71:21
+   |
+71 | /                     exists |k: int| 0 <= k && k < i && s@[k] != '0' &&
+72 | |                     Str2Int(s@.subrange(k, i as int)) == Str2Int(result@)
+   | |_________________________________________________________________________^
+
+note:   trigger 1 of 1:
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_NormalizeBitString_impl.rs:71:56
+   |
+71 |                     exists |k: int| 0 <= k && k < i && s@[k] != '0' &&
+   |                                                        ^^^^^
+
+note: Verus printed one or more automatically chosen quantifier triggers
+      because it had low confidence in the chosen triggers.
+      To suppress these messages, do one of the following:
+        (1) manually annotate a single desired trigger using #[trigger]
+            (example: forall|i: int, j: int| f(i) && #[trigger] g(i) && #[trigger] h(j)),
+        (2) manually annotate multiple desired triggers using #![trigger ...]
+            (example: forall|i: int| #![trigger f(i)] #![trigger g(i)] f(i) && g(i)),
+        (3) accept the automatically chosen trigger using #![auto]
+            (example: forall|i: int, j: int| #![auto] f(i) && g(i) && h(j))
+        (4) use the --triggers-mode silent command-line option to suppress all printing of triggers.
+      (Note: triggers are used by the underlying SMT theorem prover to instantiate quantifiers;
+      the theorem prover instantiates a quantifier whenever some expression matches the
+      pattern specified by one of the quantifier's triggers.)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_NormalizeBitString_impl.rs:71:21
+   |
+71 | /                     exists |k: int| 0 <= k && k < i && s@[k] != '0' &&
+72 | |                     Str2Int(s@.subrange(k, i as int)) == Str2Int(result@)
+   | |_________________________________________________________________________^
+
+error: aborting due to 4 previous errors
+

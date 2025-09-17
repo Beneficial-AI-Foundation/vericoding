@@ -1,0 +1,30 @@
+=== Verification Error - Iteration 3 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_DivMod_Sub.rs
+Time: 2025-09-15 20:56:33
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Verification failed: error: loop must have a decreases clause
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_DivMod_Sub_impl.rs:32:5
+   |
+32 |     while x > 0u128 {
+   |     ^^^^^^^^^^^^^^^
+   |
+   = help: to disable this check, use #[verifier::exec_allows_no_decreases_clause] on the function
+
+error: aborting due to 1 previous error
+
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+error: loop must have a decreases clause
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_DivMod_Sub_impl.rs:32:5
+   |
+32 |     while x > 0u128 {
+   |     ^^^^^^^^^^^^^^^
+   |
+   = help: to disable this check, use #[verifier::exec_allows_no_decreases_clause] on the function
+
+error: aborting due to 1 previous error
+

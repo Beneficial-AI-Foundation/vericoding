@@ -1,0 +1,38 @@
+=== Verification Error - Iteration 5 ===
+File: benchmarks/verus/bignum/files/bignum_ModExp_Mul_Zeroes.rs
+Time: 2025-09-15 10:45:24
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_ModExp_Mul_Zeroes_impl.rs:55:33
+   |
+55 |     let half_sy_len_int: int = (sy_len as int) / 2;
+   |                                 ^^^^^^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_ModExp_Mul_Zeroes_impl.rs:57:58
+   |
+57 |     let sy_half_2_seq = sy_seq.subrange(half_sy_len_int, sy_len as int);
+   |                                                          ^^^^^^^^^^^^^
+
+error: aborting due to 2 previous errors
+
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_ModExp_Mul_Zeroes_impl.rs:55:33
+   |
+55 |     let half_sy_len_int: int = (sy_len as int) / 2;
+   |                                 ^^^^^^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_ModExp_Mul_Zeroes_impl.rs:57:58
+   |
+57 |     let sy_half_2_seq = sy_seq.subrange(half_sy_len_int, sy_len as int);
+   |                                                          ^^^^^^^^^^^^^
+
+error: aborting due to 2 previous errors
+

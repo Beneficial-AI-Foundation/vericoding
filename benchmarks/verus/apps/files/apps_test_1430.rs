@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(n: int, k: int, s: Seq<char>) -> bool {
     n > 0 && k >= 0 && s.len() == n && 
     forall|i: int| 0 <= i < s.len() ==> (#[trigger] s[i]) == '0' || s[i] == '1'
@@ -19,6 +16,9 @@ spec fn string_to_bits(s: Seq<char>) -> Seq<int>
 spec fn valid_result(result: int, n: int) -> bool {
     0 <= result <= n
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

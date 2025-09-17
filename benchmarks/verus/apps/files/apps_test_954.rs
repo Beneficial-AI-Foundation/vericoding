@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn cyclic_shift_forward(s: Seq<char>) -> Seq<char>
 {
     if s.len() > 0 { s.subrange(1, s.len() as int).add(seq![s[0]]) } else { s }
@@ -27,6 +24,9 @@ spec fn all_distinct_cyclic_shifts(s: Seq<char>) -> nat
 {
     if s.len() > 0 { s.len() } else { 0 }
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

@@ -1,0 +1,166 @@
+=== Verification Error - Iteration 9 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExp_Add_Mul.rs
+Time: 2025-09-15 20:14:32
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Verification failed: verification results:: 4 verified, 6 errors
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_Add_Mul_impl.rs:35:5
+   |
+35 |     while i < s1.len() || i < s2.len() || carry > 0
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_Add_Mul_impl.rs:26:33
+   |
+26 |   ensures ValidBitString(res@), Str2Int(res@) == Str2Int(s1@) + Str2Int(s2@)
+   |                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+68 |     result
+   |     ------ at the end of the function body
+
+error: decreases not satisfied at end of loop
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_Add_Mul_impl.rs:35:5
+   |
+35 |     while i < s1.len() || i < s2.len() || carry > 0
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_Add_Mul_impl.rs:65:13
+   |
+65 |         i = i + 1;
+   |             ^^^^^
+
+error: postcondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_Add_Mul_impl.rs:75:33
+    |
+75  |   ensures ValidBitString(res@), Str2Int(res@) == Str2Int(s1@) * Str2Int(s2@)
+    |                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+104 |     result
+    |     ------ at the end of the function body
+
+error: precondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_Add_Mul_impl.rs:98:13
+   |
+25 |   requires ValidBitString(s1@), ValidBitString(s2@)
+   |                                 ------------------- failed precondition
+...
+98 |             result = Add(&temp, s1);
+   |             ^^^^^^^^^^^^^^^^^^^^^^^
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_Add_Mul_impl.rs:109:6
+    |
+109 | exec fn ModExp(sx: &[char], sy: &[char], sz: &[char]) -> (res: Vec<char>)
+    |      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_Add_Mul_impl.rs:113:5
+    |
+113 |     Str2Int(res@) == Exp_int(Str2Int(sx@), Str2Int(sy@)) % Str2Int(sz@)
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+123 |         return result;
+    |         ------------- at this exit
+
+error: postcondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_Add_Mul_impl.rs:113:5
+    |
+113 |     Str2Int(res@) == Exp_int(Str2Int(sx@), Str2Int(sy@)) % Str2Int(sz@)
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+171 |     result
+    |     ------ at the end of the function body
+
+error: invariant not satisfied at end of loop body
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_Add_Mul_impl.rs:138:13
+    |
+138 |             ValidBitString(base@),
+    |             ^^^^^^^^^^^^^^^^^^^^^
+
+error: aborting due to 8 previous errors
+
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+verification results:: 4 verified, 6 errors
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_Add_Mul_impl.rs:35:5
+   |
+35 |     while i < s1.len() || i < s2.len() || carry > 0
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_Add_Mul_impl.rs:26:33
+   |
+26 |   ensures ValidBitString(res@), Str2Int(res@) == Str2Int(s1@) + Str2Int(s2@)
+   |                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+68 |     result
+   |     ------ at the end of the function body
+
+error: decreases not satisfied at end of loop
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_Add_Mul_impl.rs:35:5
+   |
+35 |     while i < s1.len() || i < s2.len() || carry > 0
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_Add_Mul_impl.rs:65:13
+   |
+65 |         i = i + 1;
+   |             ^^^^^
+
+error: postcondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_Add_Mul_impl.rs:75:33
+    |
+75  |   ensures ValidBitString(res@), Str2Int(res@) == Str2Int(s1@) * Str2Int(s2@)
+    |                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+104 |     result
+    |     ------ at the end of the function body
+
+error: precondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_Add_Mul_impl.rs:98:13
+   |
+25 |   requires ValidBitString(s1@), ValidBitString(s2@)
+   |                                 ------------------- failed precondition
+...
+98 |             result = Add(&temp, s1);
+   |             ^^^^^^^^^^^^^^^^^^^^^^^
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_Add_Mul_impl.rs:109:6
+    |
+109 | exec fn ModExp(sx: &[char], sy: &[char], sz: &[char]) -> (res: Vec<char>)
+    |      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_Add_Mul_impl.rs:113:5
+    |
+113 |     Str2Int(res@) == Exp_int(Str2Int(sx@), Str2Int(sy@)) % Str2Int(sz@)
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+123 |         return result;
+    |         ------------- at this exit
+
+error: postcondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_Add_Mul_impl.rs:113:5
+    |
+113 |     Str2Int(res@) == Exp_int(Str2Int(sx@), Str2Int(sy@)) % Str2Int(sz@)
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+171 |     result
+    |     ------ at the end of the function body
+
+error: invariant not satisfied at end of loop body
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_Add_Mul_impl.rs:138:13
+    |
+138 |             ValidBitString(base@),
+    |             ^^^^^^^^^^^^^^^^^^^^^
+
+error: aborting due to 8 previous errors
+

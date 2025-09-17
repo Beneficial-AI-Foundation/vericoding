@@ -1,0 +1,50 @@
+=== Verification Error - Iteration 1 ===
+File: benchmarks/verus/bignum/files/bignum_ModExp_Add_Zeroes.rs
+Time: 2025-09-15 10:41:25
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_Add_Zeroes_impl.rs:98:37
+   |
+98 |     let sy_prefix = sy@.subrange(0, sy@.len() as int - 1);
+   |                                     ^^^^^^^^^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_Add_Zeroes_impl.rs:101:31
+    |
+101 |         sy_vec.push(sy_prefix[i as int]);
+    |                               ^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_Add_Zeroes_impl.rs:109:25
+    |
+109 |     let result = if sy@[sy@.len() as int - 1] == '1' {
+    |                         ^^^^^^^^^^^^^^^^
+
+error: aborting due to 3 previous errors
+
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_Add_Zeroes_impl.rs:98:37
+   |
+98 |     let sy_prefix = sy@.subrange(0, sy@.len() as int - 1);
+   |                                     ^^^^^^^^^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_Add_Zeroes_impl.rs:101:31
+    |
+101 |         sy_vec.push(sy_prefix[i as int]);
+    |                               ^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_Add_Zeroes_impl.rs:109:25
+    |
+109 |     let result = if sy@[sy@.len() as int - 1] == '1' {
+    |                         ^^^^^^^^^^^^^^^^
+
+error: aborting due to 3 previous errors
+

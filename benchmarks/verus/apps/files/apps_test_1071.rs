@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(a: Seq<int>, b: Seq<int>, n: int) -> bool {
     a.len() >= 0 && b.len() >= 0 &&
     (forall|i: int| 0 <= i < a.len() ==> a[i] >= 0) &&
@@ -34,6 +31,9 @@ spec fn can_place_all(a: Seq<int>, b: Seq<int>, n: int) -> bool
     let shelves_for_medals = shelves_needed(total_medals, 10);
     shelves_for_cups + shelves_for_medals <= n
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

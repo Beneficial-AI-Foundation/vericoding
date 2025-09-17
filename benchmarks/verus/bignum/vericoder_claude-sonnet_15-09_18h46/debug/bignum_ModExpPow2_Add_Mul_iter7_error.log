@@ -1,0 +1,62 @@
+=== Verification Error - Iteration 7 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExpPow2_Add_Mul.rs
+Time: 2025-09-15 18:57:33
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: error: invalid suffix `int` for number literal
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_ModExpPow2_Add_Mul_impl.rs:125:13
+    |
+125 |     if n == 0int {
+    |             ^^^^ invalid suffix `int`
+    |
+    = help: the suffix must be one of the numeric types (`u32`, `isize`, `f32`, etc.)
+
+error: invalid suffix `nat` for number literal
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_ModExpPow2_Add_Mul_impl.rs:137:24
+    |
+137 |     if Str2Int(sy@) == 0nat {
+    |                        ^^^^ invalid suffix `nat`
+    |
+    = help: the suffix must be one of the numeric types (`u32`, `isize`, `f32`, etc.)
+
+error: invalid suffix `int` for number literal
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_ModExpPow2_Add_Mul_impl.rs:148:51
+    |
+148 |     let half_result = ModExpPow2(sx, &half_y, n - 1int, sz);
+    |                                                   ^^^^ invalid suffix `int`
+    |
+    = help: the suffix must be one of the numeric types (`u32`, `isize`, `f32`, etc.)
+
+error: aborting due to 3 previous errors
+
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+error: invalid suffix `int` for number literal
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_ModExpPow2_Add_Mul_impl.rs:125:13
+    |
+125 |     if n == 0int {
+    |             ^^^^ invalid suffix `int`
+    |
+    = help: the suffix must be one of the numeric types (`u32`, `isize`, `f32`, etc.)
+
+error: invalid suffix `nat` for number literal
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_ModExpPow2_Add_Mul_impl.rs:137:24
+    |
+137 |     if Str2Int(sy@) == 0nat {
+    |                        ^^^^ invalid suffix `nat`
+    |
+    = help: the suffix must be one of the numeric types (`u32`, `isize`, `f32`, etc.)
+
+error: invalid suffix `int` for number literal
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_ModExpPow2_Add_Mul_impl.rs:148:51
+    |
+148 |     let half_result = ModExpPow2(sx, &half_y, n - 1int, sz);
+    |                                                   ^^^^ invalid suffix `int`
+    |
+    = help: the suffix must be one of the numeric types (`u32`, `isize`, `f32`, etc.)
+
+error: aborting due to 3 previous errors
+

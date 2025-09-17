@@ -1,0 +1,9 @@
+=== LLM Response - generate_code - Iteration 0 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExpPow2_int.rs
+Prompt Hash: c060a569
+JSON Parsed Successfully: True
+Timestamp: 1757956618.1784801
+Content Length: 1086 chars
+--------------------------------------------------------------------------------
+["spec fn mod_exp(base: nat, exp: nat, modulus: nat) -> nat\n    decreases exp\n{\n    if modulus == 0 { 0 }\n    else if exp == 0 { 1 % modulus }\n    else if exp % 2 == 0 {\n        let half_exp = mod_exp(base, exp / 2, modulus);\n        (half_exp * half_exp) % modulus\n    } else {\n        (base * mod_exp(base, exp - 1, modulus)) % modulus\n    }\n}\n\nproof fn exp_pow2_lemma(x: nat, n: nat)\n    ensures Exp_int(x, Exp_int(2, n)) == if n == 0 { x } else { Exp_int(Exp_int(x, Exp_int(2, n - 1)), 2) }\n{\n    if n == 0 {\n        assert(Exp_int(2, 0) == 1);\n        assert(Exp_int(x, 1) == x);\n    } else {\n        assert(Exp_int(2, n) == 2 * Exp_int(2, n - 1));\n    }\n}", "{\n    if n == 0u64 {\n        assert(y == 1u64);\n        if x == 0u64 {\n            return 0u64;\n        } else {\n            return (x % z);\n        }\n    } else {\n        let half_y = Exp_int(2, (n - 1) as nat) as u64;\n        let half_res = ModExpPow2_int(x, half_y, n - 1, z);\n        let result = ((half_res as u128 * half_res as u128) % z as u128) as u64;\n        result\n    }\n}"]
+--------------------------------------------------------------------------------

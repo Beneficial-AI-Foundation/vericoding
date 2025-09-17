@@ -1,0 +1,199 @@
+=== Verification Error - Iteration 4 ===
+File: benchmarks/verus/bignum/files/bignum_DivMod_Compare_Sub.rs
+Time: 2025-09-15 11:05:39
+
+Full Error Output:
+--------------------------------------------------------------------------------
+VERIFICATION BYPASSES DETECTED: uses 'assume' to bypass verification. Code contains verification bypasses and cannot be considered successfully verified.
+
+Original verification output:
+Verification failed: verification results:: 6 verified, 5 errors
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_DivMod_Compare_Sub_impl.rs:38:5
+   |
+38 |     while i < a.len() || borrow > 0
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: decreases not satisfied at end of loop
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_DivMod_Compare_Sub_impl.rs:38:5
+   |
+38 |     while i < a.len() || borrow > 0
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: invariant not satisfied at end of loop body
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_DivMod_Compare_Sub_impl.rs:43:13
+   |
+43 |             result@.len() == i,
+   |             ^^^^^^^^^^^^^^^^^^
+
+error: invariant not satisfied before loop
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_DivMod_Compare_Sub_impl.rs:70:13
+   |
+70 |             result.len() >= 1,
+   |             ^^^^^^^^^^^^^^^^^
+
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_DivMod_Compare_Sub_impl.rs:174:9
+    |
+174 |         while j < quotient.len() || carry > 0
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_DivMod_Compare_Sub_impl.rs:159:5
+    |
+159 |     while compare_binary(&remainder, divisor)
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: invariant not satisfied at end of loop body
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_DivMod_Compare_Sub_impl.rs:146:13
+    |
+146 |             ValidBitString(remainder@),
+    |             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: precondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_DivMod_Compare_Sub_impl.rs:159:11
+    |
+88  |         ValidBitString(b@)
+    |         ------------------ failed precondition
+...
+159 |     while compare_binary(&remainder, divisor)
+    |           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+note: recommendation not met
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_DivMod_Compare_Sub_impl.rs:164:36
+    |
+6   |   recommends ValidBitString(s)
+    |              ----------------- recommendation not met
+...
+164 |             Str2Int(remainder@) <= Str2Int(dividend@)
+    |                                    ^^^^^^^^^^^^^^^^^^
+
+note: recommendation not met
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_DivMod_Compare_Sub_impl.rs:165:45
+    |
+6   |   recommends ValidBitString(s)
+    |              ----------------- recommendation not met
+...
+165 |         decreases if Str2Int(remainder@) >= Str2Int(divisor@) { Str2Int(remainder@) - Str2Int(divisor@) } else { 0 }
+    |                                             ^^^^^^^^^^^^^^^^^
+
+error: precondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_DivMod_Compare_Sub_impl.rs:167:9
+    |
+28  |         ValidBitString(b@),
+    |         ------------------ failed precondition
+...
+167 |         remainder = subtract_binary(&remainder, divisor);
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: invariant not satisfied at end of loop body
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_DivMod_Compare_Sub_impl.rs:179:17
+    |
+179 |                 new_quotient@.len() == j,
+    |                 ^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_DivMod_Compare_Sub_impl.rs:188:20
+    |
+188 |             if j < quotient.len() + 1 {
+    |                    ^^^^^^^^^^^^^^^^^^
+
+error: aborting due to 8 previous errors
+
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+verification results:: 6 verified, 5 errors
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_DivMod_Compare_Sub_impl.rs:38:5
+   |
+38 |     while i < a.len() || borrow > 0
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: decreases not satisfied at end of loop
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_DivMod_Compare_Sub_impl.rs:38:5
+   |
+38 |     while i < a.len() || borrow > 0
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: invariant not satisfied at end of loop body
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_DivMod_Compare_Sub_impl.rs:43:13
+   |
+43 |             result@.len() == i,
+   |             ^^^^^^^^^^^^^^^^^^
+
+error: invariant not satisfied before loop
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_DivMod_Compare_Sub_impl.rs:70:13
+   |
+70 |             result.len() >= 1,
+   |             ^^^^^^^^^^^^^^^^^
+
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_DivMod_Compare_Sub_impl.rs:174:9
+    |
+174 |         while j < quotient.len() || carry > 0
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_DivMod_Compare_Sub_impl.rs:159:5
+    |
+159 |     while compare_binary(&remainder, divisor)
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: invariant not satisfied at end of loop body
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_DivMod_Compare_Sub_impl.rs:146:13
+    |
+146 |             ValidBitString(remainder@),
+    |             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: precondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_DivMod_Compare_Sub_impl.rs:159:11
+    |
+88  |         ValidBitString(b@)
+    |         ------------------ failed precondition
+...
+159 |     while compare_binary(&remainder, divisor)
+    |           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+note: recommendation not met
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_DivMod_Compare_Sub_impl.rs:164:36
+    |
+6   |   recommends ValidBitString(s)
+    |              ----------------- recommendation not met
+...
+164 |             Str2Int(remainder@) <= Str2Int(dividend@)
+    |                                    ^^^^^^^^^^^^^^^^^^
+
+note: recommendation not met
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_DivMod_Compare_Sub_impl.rs:165:45
+    |
+6   |   recommends ValidBitString(s)
+    |              ----------------- recommendation not met
+...
+165 |         decreases if Str2Int(remainder@) >= Str2Int(divisor@) { Str2Int(remainder@) - Str2Int(divisor@) } else { 0 }
+    |                                             ^^^^^^^^^^^^^^^^^
+
+error: precondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_DivMod_Compare_Sub_impl.rs:167:9
+    |
+28  |         ValidBitString(b@),
+    |         ------------------ failed precondition
+...
+167 |         remainder = subtract_binary(&remainder, divisor);
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: invariant not satisfied at end of loop body
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_DivMod_Compare_Sub_impl.rs:179:17
+    |
+179 |                 new_quotient@.len() == j,
+    |                 ^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_DivMod_Compare_Sub_impl.rs:188:20
+    |
+188 |             if j < quotient.len() + 1 {
+    |                    ^^^^^^^^^^^^^^^^^^
+
+error: aborting due to 8 previous errors
+

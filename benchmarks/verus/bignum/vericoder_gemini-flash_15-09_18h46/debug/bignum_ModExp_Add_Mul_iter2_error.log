@@ -1,0 +1,574 @@
+=== Verification Error - Iteration 2 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExp_Add_Mul.rs
+Time: 2025-09-15 18:56:59
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_Add_Mul_impl.rs:32:24
+   |
+32 |   let mut carry: nat = 0;
+   |                  ---   ^ expected `nat`, found integer
+   |                  |
+   |                  expected due to this
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_Add_Mul_impl.rs:33:20
+   |
+33 |   let mut i: int = 0;
+   |              ---   ^ expected `int`, found integer
+   |              |
+   |              expected due to this
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_Add_Mul_impl.rs:43:13
+   |
+43 |   while i < max_len || carry == 1
+   |         -   ^^^^^^^ expected `int`, found `usize`
+   |         |
+   |         expected because this is `vstd::prelude::int`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_Add_Mul_impl.rs:43:33
+   |
+43 |   while i < max_len || carry == 1
+   |                        -----    ^ expected `nat`, found integer
+   |                        |
+   |                        expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_Add_Mul_impl.rs:59:27
+   |
+59 |     let mut digit1: nat = 0;
+   |                     ---   ^ expected `nat`, found integer
+   |                     |
+   |                     expected due to this
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_Add_Mul_impl.rs:60:12
+   |
+60 |     if i < s1_vec.len() {
+   |        -   ^^^^^^^^^^^^ expected `int`, found `usize`
+   |        |
+   |        expected because this is `vstd::prelude::int`
+
+error[E0608]: cannot index into a value of type `vstd::seq::Seq<char>`
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_Add_Mul_impl.rs:61:26
+   |
+61 |       digit1 = if s1_vec@[i] == '1' { 1 } else { 0 };
+   |                          ^^^
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_Add_Mul_impl.rs:61:39
+   |
+61 |       digit1 = if s1_vec@[i] == '1' { 1 } else { 0 };
+   |                                       ^ expected `nat`, found integer
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_Add_Mul_impl.rs:61:50
+   |
+61 |       digit1 = if s1_vec@[i] == '1' { 1 } else { 0 };
+   |                                                  ^ expected `nat`, found integer
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_Add_Mul_impl.rs:64:27
+   |
+64 |     let mut digit2: nat = 0;
+   |                     ---   ^ expected `nat`, found integer
+   |                     |
+   |                     expected due to this
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_Add_Mul_impl.rs:65:12
+   |
+65 |     if i < s2_vec.len() {
+   |        -   ^^^^^^^^^^^^ expected `int`, found `usize`
+   |        |
+   |        expected because this is `vstd::prelude::int`
+
+error[E0608]: cannot index into a value of type `vstd::seq::Seq<char>`
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_Add_Mul_impl.rs:66:26
+   |
+66 |       digit2 = if s2_vec@[i] == '1' { 1 } else { 0 };
+   |                          ^^^
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_Add_Mul_impl.rs:66:39
+   |
+66 |       digit2 = if s2_vec@[i] == '1' { 1 } else { 0 };
+   |                                       ^ expected `nat`, found integer
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_Add_Mul_impl.rs:66:50
+   |
+66 |       digit2 = if s2_vec@[i] == '1' { 1 } else { 0 };
+   |                                                  ^ expected `nat`, found integer
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_Add_Mul_impl.rs:70:31
+   |
+70 |     let current_digit = sum % 2;
+   |                         ---   ^ expected `nat`, found integer
+   |                         |
+   |                         expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_Add_Mul_impl.rs:71:19
+   |
+71 |     carry = sum / 2;
+   |             ---   ^ expected `nat`, found integer
+   |             |
+   |             expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_Add_Mul_impl.rs:73:37
+   |
+73 |     result.push(if current_digit == 1 { '1' } else { '0' });
+   |                    -------------    ^ expected `nat`, found integer
+   |                    |
+   |                    expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_Add_Mul_impl.rs:74:13
+   |
+74 |     i = i + 1;
+   |         -   ^ expected `int`, found integer
+   |         |
+   |         expected because this is `vstd::prelude::int`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_Add_Mul_impl.rs:100:21
+    |
+100 |   if product_nat == 0 {
+    |      -----------    ^ expected `nat`, found integer
+    |      |
+    |      expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_Add_Mul_impl.rs:106:24
+    |
+106 |   while temp_product > 0
+    |         ------------   ^ expected `nat`, found integer
+    |         |
+    |         expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_Add_Mul_impl.rs:112:32
+    |
+112 |     let digit = temp_product % 2;
+    |                 ------------   ^ expected `nat`, found integer
+    |                 |
+    |                 expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_Add_Mul_impl.rs:113:17
+    |
+113 |     if digit == 1 {
+    |        -----    ^ expected `nat`, found integer
+    |        |
+    |        expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_Add_Mul_impl.rs:118:35
+    |
+118 |     temp_product = temp_product / 2;
+    |                    ------------   ^ expected `nat`, found integer
+    |                    |
+    |                    expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_Add_Mul_impl.rs:143:15
+    |
+143 |   if y_nat == 0 {
+    |      -----    ^ expected `nat`, found integer
+    |      |
+    |      expected because this is `vstd::prelude::nat`
+
+error[E0277]: cannot calculate the remainder of `{integer}` divided by `vstd::prelude::nat`
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_Add_Mul_impl.rs:144:20
+    |
+144 |     result_nat = 1 % z_nat;
+    |                    ^ no implementation for `{integer} % vstd::prelude::nat`
+    |
+    = help: the trait `std::ops::Rem<vstd::prelude::nat>` is not implemented for `{integer}`
+    = help: the following other types implement trait `std::ops::Rem<Rhs>`:
+              `&f128` implements `std::ops::Rem<f128>`
+              `&f128` implements `std::ops::Rem`
+              `&f16` implements `std::ops::Rem<f16>`
+              `&f16` implements `std::ops::Rem`
+              `&f32` implements `std::ops::Rem<f32>`
+              `&f32` implements `std::ops::Rem`
+              `&f64` implements `std::ops::Rem<f64>`
+              `&f64` implements `std::ops::Rem`
+            and 62 others
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_Add_Mul_impl.rs:148:28
+    |
+148 |     let mut res_acc: nat = 1;
+    |                      ---   ^ expected `nat`, found integer
+    |                      |
+    |                      expected due to this
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_Add_Mul_impl.rs:150:17
+    |
+150 |     while exp > 0
+    |           ---   ^ expected `nat`, found integer
+    |           |
+    |           expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_Add_Mul_impl.rs:158:16
+    |
+158 |       if exp % 2 == 1 {
+    |          ---   ^ expected `nat`, found integer
+    |          |
+    |          expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_Add_Mul_impl.rs:158:21
+    |
+158 |       if exp % 2 == 1 {
+    |          -------    ^ expected `nat`, found integer
+    |          |
+    |          expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_Add_Mul_impl.rs:162:19
+    |
+162 |       exp = exp / 2;
+    |             ---   ^ expected `nat`, found integer
+    |             |
+    |             expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_Add_Mul_impl.rs:168:20
+    |
+168 |   if result_nat == 0 {
+    |      ----------    ^ expected `nat`, found integer
+    |      |
+    |      expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_Add_Mul_impl.rs:172:18
+    |
+172 |     while temp > 0
+    |           ----   ^ expected `nat`, found integer
+    |           |
+    |           expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_Add_Mul_impl.rs:178:26
+    |
+178 |       let digit = temp % 2;
+    |                   ----   ^ expected `nat`, found integer
+    |                   |
+    |                   expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_Add_Mul_impl.rs:179:19
+    |
+179 |       if digit == 1 {
+    |          -----    ^ expected `nat`, found integer
+    |          |
+    |          expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_Add_Mul_impl.rs:184:21
+    |
+184 |       temp = temp / 2;
+    |              ----   ^ expected `nat`, found integer
+    |              |
+    |              expected because this is `vstd::prelude::nat`
+
+error: aborting due to 35 previous errors
+
+Some errors have detailed explanations: E0277, E0308, E0608.
+For more information about an error, try `rustc --explain E0277`.
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_Add_Mul_impl.rs:32:24
+   |
+32 |   let mut carry: nat = 0;
+   |                  ---   ^ expected `nat`, found integer
+   |                  |
+   |                  expected due to this
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_Add_Mul_impl.rs:33:20
+   |
+33 |   let mut i: int = 0;
+   |              ---   ^ expected `int`, found integer
+   |              |
+   |              expected due to this
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_Add_Mul_impl.rs:43:13
+   |
+43 |   while i < max_len || carry == 1
+   |         -   ^^^^^^^ expected `int`, found `usize`
+   |         |
+   |         expected because this is `vstd::prelude::int`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_Add_Mul_impl.rs:43:33
+   |
+43 |   while i < max_len || carry == 1
+   |                        -----    ^ expected `nat`, found integer
+   |                        |
+   |                        expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_Add_Mul_impl.rs:59:27
+   |
+59 |     let mut digit1: nat = 0;
+   |                     ---   ^ expected `nat`, found integer
+   |                     |
+   |                     expected due to this
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_Add_Mul_impl.rs:60:12
+   |
+60 |     if i < s1_vec.len() {
+   |        -   ^^^^^^^^^^^^ expected `int`, found `usize`
+   |        |
+   |        expected because this is `vstd::prelude::int`
+
+error[E0608]: cannot index into a value of type `vstd::seq::Seq<char>`
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_Add_Mul_impl.rs:61:26
+   |
+61 |       digit1 = if s1_vec@[i] == '1' { 1 } else { 0 };
+   |                          ^^^
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_Add_Mul_impl.rs:61:39
+   |
+61 |       digit1 = if s1_vec@[i] == '1' { 1 } else { 0 };
+   |                                       ^ expected `nat`, found integer
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_Add_Mul_impl.rs:61:50
+   |
+61 |       digit1 = if s1_vec@[i] == '1' { 1 } else { 0 };
+   |                                                  ^ expected `nat`, found integer
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_Add_Mul_impl.rs:64:27
+   |
+64 |     let mut digit2: nat = 0;
+   |                     ---   ^ expected `nat`, found integer
+   |                     |
+   |                     expected due to this
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_Add_Mul_impl.rs:65:12
+   |
+65 |     if i < s2_vec.len() {
+   |        -   ^^^^^^^^^^^^ expected `int`, found `usize`
+   |        |
+   |        expected because this is `vstd::prelude::int`
+
+error[E0608]: cannot index into a value of type `vstd::seq::Seq<char>`
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_Add_Mul_impl.rs:66:26
+   |
+66 |       digit2 = if s2_vec@[i] == '1' { 1 } else { 0 };
+   |                          ^^^
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_Add_Mul_impl.rs:66:39
+   |
+66 |       digit2 = if s2_vec@[i] == '1' { 1 } else { 0 };
+   |                                       ^ expected `nat`, found integer
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_Add_Mul_impl.rs:66:50
+   |
+66 |       digit2 = if s2_vec@[i] == '1' { 1 } else { 0 };
+   |                                                  ^ expected `nat`, found integer
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_Add_Mul_impl.rs:70:31
+   |
+70 |     let current_digit = sum % 2;
+   |                         ---   ^ expected `nat`, found integer
+   |                         |
+   |                         expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_Add_Mul_impl.rs:71:19
+   |
+71 |     carry = sum / 2;
+   |             ---   ^ expected `nat`, found integer
+   |             |
+   |             expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_Add_Mul_impl.rs:73:37
+   |
+73 |     result.push(if current_digit == 1 { '1' } else { '0' });
+   |                    -------------    ^ expected `nat`, found integer
+   |                    |
+   |                    expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_Add_Mul_impl.rs:74:13
+   |
+74 |     i = i + 1;
+   |         -   ^ expected `int`, found integer
+   |         |
+   |         expected because this is `vstd::prelude::int`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_Add_Mul_impl.rs:100:21
+    |
+100 |   if product_nat == 0 {
+    |      -----------    ^ expected `nat`, found integer
+    |      |
+    |      expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_Add_Mul_impl.rs:106:24
+    |
+106 |   while temp_product > 0
+    |         ------------   ^ expected `nat`, found integer
+    |         |
+    |         expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_Add_Mul_impl.rs:112:32
+    |
+112 |     let digit = temp_product % 2;
+    |                 ------------   ^ expected `nat`, found integer
+    |                 |
+    |                 expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_Add_Mul_impl.rs:113:17
+    |
+113 |     if digit == 1 {
+    |        -----    ^ expected `nat`, found integer
+    |        |
+    |        expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_Add_Mul_impl.rs:118:35
+    |
+118 |     temp_product = temp_product / 2;
+    |                    ------------   ^ expected `nat`, found integer
+    |                    |
+    |                    expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_Add_Mul_impl.rs:143:15
+    |
+143 |   if y_nat == 0 {
+    |      -----    ^ expected `nat`, found integer
+    |      |
+    |      expected because this is `vstd::prelude::nat`
+
+error[E0277]: cannot calculate the remainder of `{integer}` divided by `vstd::prelude::nat`
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_Add_Mul_impl.rs:144:20
+    |
+144 |     result_nat = 1 % z_nat;
+    |                    ^ no implementation for `{integer} % vstd::prelude::nat`
+    |
+    = help: the trait `std::ops::Rem<vstd::prelude::nat>` is not implemented for `{integer}`
+    = help: the following other types implement trait `std::ops::Rem<Rhs>`:
+              `&f128` implements `std::ops::Rem<f128>`
+              `&f128` implements `std::ops::Rem`
+              `&f16` implements `std::ops::Rem<f16>`
+              `&f16` implements `std::ops::Rem`
+              `&f32` implements `std::ops::Rem<f32>`
+              `&f32` implements `std::ops::Rem`
+              `&f64` implements `std::ops::Rem<f64>`
+              `&f64` implements `std::ops::Rem`
+            and 62 others
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_Add_Mul_impl.rs:148:28
+    |
+148 |     let mut res_acc: nat = 1;
+    |                      ---   ^ expected `nat`, found integer
+    |                      |
+    |                      expected due to this
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_Add_Mul_impl.rs:150:17
+    |
+150 |     while exp > 0
+    |           ---   ^ expected `nat`, found integer
+    |           |
+    |           expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_Add_Mul_impl.rs:158:16
+    |
+158 |       if exp % 2 == 1 {
+    |          ---   ^ expected `nat`, found integer
+    |          |
+    |          expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_Add_Mul_impl.rs:158:21
+    |
+158 |       if exp % 2 == 1 {
+    |          -------    ^ expected `nat`, found integer
+    |          |
+    |          expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_Add_Mul_impl.rs:162:19
+    |
+162 |       exp = exp / 2;
+    |             ---   ^ expected `nat`, found integer
+    |             |
+    |             expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_Add_Mul_impl.rs:168:20
+    |
+168 |   if result_nat == 0 {
+    |      ----------    ^ expected `nat`, found integer
+    |      |
+    |      expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_Add_Mul_impl.rs:172:18
+    |
+172 |     while temp > 0
+    |           ----   ^ expected `nat`, found integer
+    |           |
+    |           expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_Add_Mul_impl.rs:178:26
+    |
+178 |       let digit = temp % 2;
+    |                   ----   ^ expected `nat`, found integer
+    |                   |
+    |                   expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_Add_Mul_impl.rs:179:19
+    |
+179 |       if digit == 1 {
+    |          -----    ^ expected `nat`, found integer
+    |          |
+    |          expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_Add_Mul_impl.rs:184:21
+    |
+184 |       temp = temp / 2;
+    |              ----   ^ expected `nat`, found integer
+    |              |
+    |              expected because this is `vstd::prelude::nat`
+
+error: aborting due to 35 previous errors
+
+Some errors have detailed explanations: E0277, E0308, E0608.
+For more information about an error, try `rustc --explain E0277`.

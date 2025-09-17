@@ -1,0 +1,85 @@
+=== Verification Error - Iteration 7 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExp_ModExpPow2_Mul.rs
+Time: 2025-09-15 18:59:44
+
+Full Error Output:
+--------------------------------------------------------------------------------
+VERIFICATION BYPASSES DETECTED: uses 'assume' to bypass verification. Code contains verification bypasses and cannot be considered successfully verified.
+
+Original verification output:
+Verification failed: verification results:: 3 verified, 2 errors
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_ModExpPow2_Mul_impl.rs:25:7
+   |
+25 | proof fn pow_properties_generic(x: nat, y: nat, modVal: nat)
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_ModExpPow2_Mul_impl.rs:29:9
+   |
+25 | proof fn pow_properties_generic(x: nat, y: nat, modVal: nat)
+   |       ------------------------------------------------------ at the end of the function body
+...
+29 |         (x * y) % modVal == ( (x % modVal) * (y % modVal) ) % modVal,
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_ModExpPow2_Mul_impl.rs:30:9
+   |
+25 | proof fn pow_properties_generic(x: nat, y: nat, modVal: nat)
+   |       ------------------------------------------------------ at the end of the function body
+...
+30 |         (x + y) % modVal == ( (x % modVal) + (y % modVal) ) % modVal
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_ModExpPow2_Mul_impl.rs:38:33
+   |
+38 |   ensures ValidBitString(res@), Str2Int(res@) == Exp_int(Str2Int(sx@), Str2Int(sy@)) % Str2Int(sz@)
+   |                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+44 |     return Vec::<char>::new();
+   |     ------------------------- at this exit
+
+error: aborting due to 3 previous errors
+
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+verification results:: 3 verified, 2 errors
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_ModExpPow2_Mul_impl.rs:25:7
+   |
+25 | proof fn pow_properties_generic(x: nat, y: nat, modVal: nat)
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_ModExpPow2_Mul_impl.rs:29:9
+   |
+25 | proof fn pow_properties_generic(x: nat, y: nat, modVal: nat)
+   |       ------------------------------------------------------ at the end of the function body
+...
+29 |         (x * y) % modVal == ( (x % modVal) * (y % modVal) ) % modVal,
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_ModExpPow2_Mul_impl.rs:30:9
+   |
+25 | proof fn pow_properties_generic(x: nat, y: nat, modVal: nat)
+   |       ------------------------------------------------------ at the end of the function body
+...
+30 |         (x + y) % modVal == ( (x % modVal) + (y % modVal) ) % modVal
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_ModExpPow2_Mul_impl.rs:38:33
+   |
+38 |   ensures ValidBitString(res@), Str2Int(res@) == Exp_int(Str2Int(sx@), Str2Int(sy@)) % Str2Int(sz@)
+   |                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+44 |     return Vec::<char>::new();
+   |     ------------------------- at this exit
+
+error: aborting due to 3 previous errors
+

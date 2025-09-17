@@ -7,16 +7,14 @@ vc-preamble: |-
   use vstd::prelude::*;
 
   verus! {
-
-vc-helpers: |-
   spec fn is_composite(x: int) -> bool {
       x >= 4 && exists|k: int| 2 <= k < x && x % k == 0
   }
-  
+
   spec fn valid_input(queries: Seq<int>) -> bool {
       forall|i: int| 0 <= i < queries.len() ==> queries[i] >= 1
   }
-  
+
   spec fn max_composite_summands(n: int) -> int {
       if n % 4 == 0 {
           n / 4
@@ -30,12 +28,14 @@ vc-helpers: |-
           -1
       }
   }
-  
+
   spec fn valid_result(queries: Seq<int>, results: Seq<int>) -> bool {
       results.len() == queries.len() &&
       forall|i: int| 0 <= i < queries.len() ==> results[i] == max_composite_summands(queries[i]) &&
       forall|i: int| 0 <= i < queries.len() ==> results[i] >= -1
   }
+
+vc-helpers: |
 
 vc-spec: |-
   fn solve(queries: Seq<int>) -> (results: Seq<int>)
@@ -48,7 +48,7 @@ vc-code: |-
       unreached()
   }
 
-vc-postamble: |-
+vc-postamble: |2-
 
   }
 

@@ -1,0 +1,250 @@
+=== Verification Error - Iteration 10 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExp_ModExpPow2_Mul_Zeroes.rs
+Time: 2025-09-15 19:11:44
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Verification failed: verification results:: 7 verified, 5 errors
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_ModExpPow2_Mul_Zeroes_impl.rs:28:9
+   |
+25 | proof fn exp_mod_properties()
+   |       ----------------------- at the end of the function body
+...
+28 |         forall |x: nat, y: nat, n: nat| n > 0 && y > 0 ==> #[trigger] (Exp_int(x, y) % n) == ((x % n) * (Exp_int(x, (y - 1) as nat) % n)) % n,
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_ModExpPow2_Mul_Zeroes_impl.rs:37:6
+   |
+37 | exec fn compute_mod_exp(x_val: u64, y_val: u64, z_val: u64) -> (res: u64)
+   |      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_ModExpPow2_Mul_Zeroes_impl.rs:41:9
+   |
+41 |           res == Exp_int(x_val as nat, y_val as nat) % (z_val as nat),
+   |           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+44 | /     if y_val == 0 {
+45 | |         proof { exp_mod_properties(); }
+46 | |         1 % z_val
+47 | |     } else {
+...  |
+51 | |         (x_mod * sub_res) % z_val
+52 | |     }
+   | |_____- at the end of the function body
+
+error: possible arithmetic underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_ModExpPow2_Mul_Zeroes_impl.rs:51:9
+   |
+51 |         (x_mod * sub_res) % z_val
+   |         ^^^^^^^^^^^^^^^^^
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_ModExpPow2_Mul_Zeroes_impl.rs:55:6
+   |
+55 | exec fn str_to_u64(s: &[char]) -> (res: u64)
+   |      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: precondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_ModExpPow2_Mul_Zeroes_impl.rs:80:26
+   |
+58 |         Str2Int(s@) < u64::MAX,
+   |         ---------------------- failed precondition
+...
+80 |         let prefix_val = str_to_u64(prefix_slice);
+   |                          ^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_ModExpPow2_Mul_Zeroes_impl.rs:81:9
+   |
+81 |         2 * prefix_val + if last == '1' { 1 } else { 0 }
+   |         ^^^^^^^^^^^^^^
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_ModExpPow2_Mul_Zeroes_impl.rs:85:6
+   |
+85 | exec fn u64_to_str(mut n: u64) -> (res: Vec<char>)
+   |      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_ModExpPow2_Mul_Zeroes_impl.rs:88:9
+    |
+88  |           Str2Int(res@) == n as nat,
+    |           ^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+89  |       decreases n,
+90  | / {
+91  | |     let mut result = Vec::<char>::new();
+92  | |     if n == 0 {
+93  | |         result.push('0');
+...   |
+121 | |     result
+122 | | }
+    | |_- at the end of the function body
+
+error: invariant not satisfied before loop
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_ModExpPow2_Mul_Zeroes_impl.rs:99:17
+   |
+99 |                 n < u64::MAX,
+   |                 ^^^^^^^^^^^^
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_ModExpPow2_Mul_Zeroes_impl.rs:126:6
+    |
+126 | exec fn ModExp_ModExpPow2_Mul_Zeroes(sx: &[char], sy: &[char], sz: &[char]) -> (res: Vec<char>)
+    |      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: precondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_ModExpPow2_Mul_Zeroes_impl.rs:134:17
+    |
+58  |         Str2Int(s@) < u64::MAX,
+    |         ---------------------- failed precondition
+...
+134 |     let x_val = str_to_u64(sx);
+    |                 ^^^^^^^^^^^^^^
+
+error: precondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_ModExpPow2_Mul_Zeroes_impl.rs:135:17
+    |
+58  |         Str2Int(s@) < u64::MAX,
+    |         ---------------------- failed precondition
+...
+135 |     let y_val = str_to_u64(sy);
+    |                 ^^^^^^^^^^^^^^
+
+error: precondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_ModExpPow2_Mul_Zeroes_impl.rs:136:17
+    |
+58  |         Str2Int(s@) < u64::MAX,
+    |         ---------------------- failed precondition
+...
+136 |     let z_val = str_to_u64(sz);
+    |                 ^^^^^^^^^^^^^^
+
+error: aborting due to 10 previous errors
+
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+verification results:: 7 verified, 5 errors
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_ModExpPow2_Mul_Zeroes_impl.rs:28:9
+   |
+25 | proof fn exp_mod_properties()
+   |       ----------------------- at the end of the function body
+...
+28 |         forall |x: nat, y: nat, n: nat| n > 0 && y > 0 ==> #[trigger] (Exp_int(x, y) % n) == ((x % n) * (Exp_int(x, (y - 1) as nat) % n)) % n,
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_ModExpPow2_Mul_Zeroes_impl.rs:37:6
+   |
+37 | exec fn compute_mod_exp(x_val: u64, y_val: u64, z_val: u64) -> (res: u64)
+   |      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_ModExpPow2_Mul_Zeroes_impl.rs:41:9
+   |
+41 |           res == Exp_int(x_val as nat, y_val as nat) % (z_val as nat),
+   |           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+44 | /     if y_val == 0 {
+45 | |         proof { exp_mod_properties(); }
+46 | |         1 % z_val
+47 | |     } else {
+...  |
+51 | |         (x_mod * sub_res) % z_val
+52 | |     }
+   | |_____- at the end of the function body
+
+error: possible arithmetic underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_ModExpPow2_Mul_Zeroes_impl.rs:51:9
+   |
+51 |         (x_mod * sub_res) % z_val
+   |         ^^^^^^^^^^^^^^^^^
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_ModExpPow2_Mul_Zeroes_impl.rs:55:6
+   |
+55 | exec fn str_to_u64(s: &[char]) -> (res: u64)
+   |      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: precondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_ModExpPow2_Mul_Zeroes_impl.rs:80:26
+   |
+58 |         Str2Int(s@) < u64::MAX,
+   |         ---------------------- failed precondition
+...
+80 |         let prefix_val = str_to_u64(prefix_slice);
+   |                          ^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_ModExpPow2_Mul_Zeroes_impl.rs:81:9
+   |
+81 |         2 * prefix_val + if last == '1' { 1 } else { 0 }
+   |         ^^^^^^^^^^^^^^
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_ModExpPow2_Mul_Zeroes_impl.rs:85:6
+   |
+85 | exec fn u64_to_str(mut n: u64) -> (res: Vec<char>)
+   |      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_ModExpPow2_Mul_Zeroes_impl.rs:88:9
+    |
+88  |           Str2Int(res@) == n as nat,
+    |           ^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+89  |       decreases n,
+90  | / {
+91  | |     let mut result = Vec::<char>::new();
+92  | |     if n == 0 {
+93  | |         result.push('0');
+...   |
+121 | |     result
+122 | | }
+    | |_- at the end of the function body
+
+error: invariant not satisfied before loop
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_ModExpPow2_Mul_Zeroes_impl.rs:99:17
+   |
+99 |                 n < u64::MAX,
+   |                 ^^^^^^^^^^^^
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_ModExpPow2_Mul_Zeroes_impl.rs:126:6
+    |
+126 | exec fn ModExp_ModExpPow2_Mul_Zeroes(sx: &[char], sy: &[char], sz: &[char]) -> (res: Vec<char>)
+    |      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: precondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_ModExpPow2_Mul_Zeroes_impl.rs:134:17
+    |
+58  |         Str2Int(s@) < u64::MAX,
+    |         ---------------------- failed precondition
+...
+134 |     let x_val = str_to_u64(sx);
+    |                 ^^^^^^^^^^^^^^
+
+error: precondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_ModExpPow2_Mul_Zeroes_impl.rs:135:17
+    |
+58  |         Str2Int(s@) < u64::MAX,
+    |         ---------------------- failed precondition
+...
+135 |     let y_val = str_to_u64(sy);
+    |                 ^^^^^^^^^^^^^^
+
+error: precondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_ModExpPow2_Mul_Zeroes_impl.rs:136:17
+    |
+58  |         Str2Int(s@) < u64::MAX,
+    |         ---------------------- failed precondition
+...
+136 |     let z_val = str_to_u64(sz);
+    |                 ^^^^^^^^^^^^^^
+
+error: aborting due to 10 previous errors
+

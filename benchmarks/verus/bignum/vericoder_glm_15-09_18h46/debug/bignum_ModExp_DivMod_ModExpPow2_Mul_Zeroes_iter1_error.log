@@ -1,0 +1,168 @@
+=== Verification Error - Iteration 1 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExp_DivMod_ModExpPow2_Mul_Zeroes.rs
+Time: 2025-09-15 20:14:28
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignum_ModExp_DivMod_ModExpPow2_Mul_Zeroes_impl.rs:30:9
+   |
+24 | exec fn str2int_exec(s: &[char]) -> (res: nat)
+   |                                           --- expected `vstd::prelude::nat` because of return type
+...
+30 |         0
+   |         ^ expected `nat`, found integer
+
+error[E0277]: cannot multiply `{integer}` by `vstd::prelude::nat`
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignum_ModExp_DivMod_ModExpPow2_Mul_Zeroes_impl.rs:36:11
+   |
+36 |         2 * head_val + last_val
+   |           ^ no implementation for `{integer} * vstd::prelude::nat`
+   |
+   = help: the trait `std::ops::Mul<vstd::prelude::nat>` is not implemented for `{integer}`
+   = help: the following other types implement trait `std::ops::Mul<Rhs>`:
+             `&f128` implements `std::ops::Mul<f128>`
+             `&f128` implements `std::ops::Mul`
+             `&f16` implements `std::ops::Mul<f16>`
+             `&f16` implements `std::ops::Mul`
+             `&f32` implements `std::ops::Mul<f32>`
+             `&f32` implements `std::ops::Mul`
+             `&f64` implements `std::ops::Mul<f64>`
+             `&f64` implements `std::ops::Mul`
+           and 57 others
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignum_ModExp_DivMod_ModExpPow2_Mul_Zeroes_impl.rs:44:13
+   |
+44 |     if n == 0 {
+   |        -    ^ expected `nat`, found integer
+   |        |
+   |        expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignum_ModExp_DivMod_ModExpPow2_Mul_Zeroes_impl.rs:47:31
+   |
+47 |         let last_bit = if n % 2 == 1 { '1' } else { '0' };
+   |                           -   ^ expected `nat`, found integer
+   |                           |
+   |                           expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignum_ModExp_DivMod_ModExpPow2_Mul_Zeroes_impl.rs:47:36
+   |
+47 |         let last_bit = if n % 2 == 1 { '1' } else { '0' };
+   |                           -----    ^ expected `nat`, found integer
+   |                           |
+   |                           expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignum_ModExp_DivMod_ModExpPow2_Mul_Zeroes_impl.rs:48:37
+   |
+48 |         let head = int2str_exec(n / 2);
+   |                                 -   ^ expected `nat`, found integer
+   |                                 |
+   |                                 expected because this is `vstd::prelude::nat`
+
+error[E0308]: `if` and `else` have incompatible types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignum_ModExp_DivMod_ModExpPow2_Mul_Zeroes_impl.rs:77:55
+   |
+77 |         let result_nat = if exp_nat == 0 { 1 } else { x_nat } % z_nat;
+   |                                            -          ^^^^^ expected integer, found `nat`
+   |                                            |
+   |                                            expected because of this
+
+error[E0308]: `if` and `else` have incompatible types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignum_ModExp_DivMod_ModExpPow2_Mul_Zeroes_impl.rs:87:66
+   |
+87 |         let factor = if last_bit == '1' { x_nat % z_nat } else { 1 };
+   |                                           -------------          ^ expected `nat`, found integer
+   |                                           |
+   |                                           expected because of this
+
+error: aborting due to 8 previous errors
+
+Some errors have detailed explanations: E0277, E0308.
+For more information about an error, try `rustc --explain E0277`.
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignum_ModExp_DivMod_ModExpPow2_Mul_Zeroes_impl.rs:30:9
+   |
+24 | exec fn str2int_exec(s: &[char]) -> (res: nat)
+   |                                           --- expected `vstd::prelude::nat` because of return type
+...
+30 |         0
+   |         ^ expected `nat`, found integer
+
+error[E0277]: cannot multiply `{integer}` by `vstd::prelude::nat`
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignum_ModExp_DivMod_ModExpPow2_Mul_Zeroes_impl.rs:36:11
+   |
+36 |         2 * head_val + last_val
+   |           ^ no implementation for `{integer} * vstd::prelude::nat`
+   |
+   = help: the trait `std::ops::Mul<vstd::prelude::nat>` is not implemented for `{integer}`
+   = help: the following other types implement trait `std::ops::Mul<Rhs>`:
+             `&f128` implements `std::ops::Mul<f128>`
+             `&f128` implements `std::ops::Mul`
+             `&f16` implements `std::ops::Mul<f16>`
+             `&f16` implements `std::ops::Mul`
+             `&f32` implements `std::ops::Mul<f32>`
+             `&f32` implements `std::ops::Mul`
+             `&f64` implements `std::ops::Mul<f64>`
+             `&f64` implements `std::ops::Mul`
+           and 57 others
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignum_ModExp_DivMod_ModExpPow2_Mul_Zeroes_impl.rs:44:13
+   |
+44 |     if n == 0 {
+   |        -    ^ expected `nat`, found integer
+   |        |
+   |        expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignum_ModExp_DivMod_ModExpPow2_Mul_Zeroes_impl.rs:47:31
+   |
+47 |         let last_bit = if n % 2 == 1 { '1' } else { '0' };
+   |                           -   ^ expected `nat`, found integer
+   |                           |
+   |                           expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignum_ModExp_DivMod_ModExpPow2_Mul_Zeroes_impl.rs:47:36
+   |
+47 |         let last_bit = if n % 2 == 1 { '1' } else { '0' };
+   |                           -----    ^ expected `nat`, found integer
+   |                           |
+   |                           expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignum_ModExp_DivMod_ModExpPow2_Mul_Zeroes_impl.rs:48:37
+   |
+48 |         let head = int2str_exec(n / 2);
+   |                                 -   ^ expected `nat`, found integer
+   |                                 |
+   |                                 expected because this is `vstd::prelude::nat`
+
+error[E0308]: `if` and `else` have incompatible types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignum_ModExp_DivMod_ModExpPow2_Mul_Zeroes_impl.rs:77:55
+   |
+77 |         let result_nat = if exp_nat == 0 { 1 } else { x_nat } % z_nat;
+   |                                            -          ^^^^^ expected integer, found `nat`
+   |                                            |
+   |                                            expected because of this
+
+error[E0308]: `if` and `else` have incompatible types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignum_ModExp_DivMod_ModExpPow2_Mul_Zeroes_impl.rs:87:66
+   |
+87 |         let factor = if last_bit == '1' { x_nat % z_nat } else { 1 };
+   |                                           -------------          ^ expected `nat`, found integer
+   |                                           |
+   |                                           expected because of this
+
+error: aborting due to 8 previous errors
+
+Some errors have detailed explanations: E0277, E0308.
+For more information about an error, try `rustc --explain E0277`.

@@ -1,0 +1,25 @@
+=== Raw LLM Generate Response ===
+Length: 452 characters
+--------------------------------------------------------------------------------
+["proof fn lemma_scalar_multiplication_zero_is_zero(x: nat)
+    ensures 0 * x == 0
+{
+    assert(0 * x == 0) by (arith);
+}", "{
+    let mut s = Vec::<char>::new();
+    let mut i: int = 0;
+    while i < n
+        invariant
+            0 <= i <= n,
+            s@.len() == i as nat,
+            ValidBitString(s@),
+            AllZero(s@),
+            Str2Int(s@) == 0,
+        decreases n - i
+    {
+        s.push('0');
+        i = i + 1;
+    }
+    s
+}"]
+--------------------------------------------------------------------------------

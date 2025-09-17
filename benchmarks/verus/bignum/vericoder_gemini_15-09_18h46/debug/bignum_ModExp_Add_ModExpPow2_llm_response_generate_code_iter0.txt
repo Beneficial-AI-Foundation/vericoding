@@ -1,0 +1,68 @@
+=== LLM Response - generate_code - Iteration 0 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExp_Add_ModExpPow2.rs
+Prompt Hash: a05656d3
+JSON Parsed Successfully: False
+Timestamp: 1757961191.043395
+Content Length: 1644 chars
+--------------------------------------------------------------------------------
+```json
+["proof fn lemma_exp_add(b: nat, e1: nat, e2: nat)
+    ensures Exp_int(b, e1 + e2) == Exp_int(b, e1) * Exp_int(b, e2)
+    decreases e2
+{
+    if e2 > 0 {
+        lemma_exp_add(b, e1, (e2 - 1) as nat);
+    }
+}
+
+exec fn str_to_int(s: &[char]) -> (res: nat)
+    requires ValidBitString(s@)
+    ensures res == Str2Int(s@)
+    decreases s.len()
+{
+    if s.len() == 0 {
+        return 0;
+    }
+    let prefix = slice_subrange(s, 0, s.len() - 1);
+    let last_char = s[s.len() - 1];
+    let prefix_val = str_to_int(prefix);
+    let last_val = if last_char == '1' { 1 } else { 0 };
+    proof {
+        assert(s@.subrange(0, s@.len() - 1) == prefix@);
+        assert(s@[s@.len() - 1] == last_char);
+    }
+    2 * prefix_val + last_val
+}
+
+exec fn mod_exp(base: nat, exp: nat, modulus: nat) -> (res: nat)
+    requires modulus > 1
+    ensures res == Exp_int(base, exp) % modulus
+    decreases exp
+{
+    if exp == 0 {
+        return 1 % modulus;
+    }
+    let half_exp = exp / 2;
+    let rec = mod_exp(base, half_exp, modulus);
+    let rec_sq = (rec * rec) % modulus;
+
+    proof {
+        vstd::arithmetic::div_mod::lemma_div_mod_auto(exp as int, 2);
+        lemma_exp_add(base, half_exp, half_exp);
+        vstd::arithmetic::modular::lemma_mod_mul_auto(Exp_int(base, half_exp) as int, Exp_int(base, half_exp) as int, modulus as int);
+    }
+
+    if exp % 2 == 0 {
+        rec_sq
+    } else {
+        let res = (base * rec_sq) % modulus;
+        proof {
+            vstd::arithmetic::modular::lemma_mod_mul_auto(base as int, Exp_int(base, exp - 1) as int, modulus as int);
+        }
+        res
+    }
+}
+
+exec fn int_to_str(n: nat) -> (res: Vec<char>)
+
+--------------------------------------------------------------------------------

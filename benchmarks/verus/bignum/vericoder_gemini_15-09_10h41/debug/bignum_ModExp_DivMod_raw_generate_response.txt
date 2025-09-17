@@ -1,0 +1,6 @@
+=== Raw LLM Generate Response ===
+Length: 834 characters
+--------------------------------------------------------------------------------
+```json
+["spec fn ModMul(a: nat, b: nat, m: nat) -> nat {\n    (a * b) % m\n}\n\nspec fn ModSquare(a: nat, m: nat) -> nat {\n    (a * a) % m\n}\n\nproof fn mod_mul_ensures(sx: Seq<char>, sy_prefix: Seq<char>, sz: Seq<char>,\n    temp: Seq<char>, temp_squared: Seq<char>,\n) \n    requires \n        ValidBitString(sx), ValidBitString(sy_prefix), ValidBitString(sz),\n        Str2Int(sz) > 1,\n        ValidBitString(temp),\n        Str2Int(temp) == Exp_int(Str2Int(sx), Str2Int(sy_prefix)) % Str2Int(sz),\n        ValidBitString(temp_squared),\n        Str2Int(temp_squared) == ModMul(Str2Int(temp), Str2Int(temp), Str2Int(sz)),\n    ensures \n        Str2Int(temp_squared) == (Exp_int(Str2Int(sx), Str2Int(sy_prefix)) * Exp_int(Str2Int(sx), Str2Int(sy_prefix))) % Str2Int(sz),\n{}\n\nproof fn lemma_mod_exp_even(x: nat, y_prefix: nat
+--------------------------------------------------------------------------------

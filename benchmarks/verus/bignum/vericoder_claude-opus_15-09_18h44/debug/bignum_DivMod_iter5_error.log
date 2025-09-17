@@ -1,0 +1,142 @@
+=== Verification Error - Iteration 5 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_DivMod.rs
+Time: 2025-09-15 18:46:14
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Verification failed: verification results:: 6 verified, 3 errors
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_DivMod_impl.rs:72:5
+   |
+72 |     while i < s.len()
+   |     ^^^^^^^^^^^^^^^^^
+
+error: invariant not satisfied at end of loop body
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_DivMod_impl.rs:76:13
+   |
+76 |             result as nat == Str2Int(s@.subrange(0, i as int)),
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_DivMod_impl.rs:85:18
+   |
+85 |         result = result * 2;
+   |                  ^^^^^^^^^^
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_DivMod_impl.rs:95:6
+   |
+95 | exec fn int_to_binary(n: u64) -> (res: Vec<char>)
+   |      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_DivMod_impl.rs:98:9
+    |
+98  |         Str2Int(res@) == n as nat,
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+140 |     result
+    |     ------ at the end of the function body
+
+error: assertion failed
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_DivMod_impl.rs:105:16
+    |
+105 |         assert(Str2Int(v@) == 0);
+    |                ^^^^^^^^^^^^^^^^ assertion failed
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_DivMod_impl.rs:41:6
+   |
+41 | exec fn DivMod(dividend: &[char], divisor: &[char]) -> (res: (Vec<char>, Vec<char>))
+   |      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: precondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_DivMod_impl.rs:50:24
+   |
+50 |     let dividend_val = compute_str2int(dividend);
+   |                        ^^^^^^^^^^^^^^^^^^^^^^^^^
+...
+65 |         Str2Int(s@) < 0x10000000000000000,
+   |         --------------------------------- failed precondition
+
+error: precondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_DivMod_impl.rs:51:23
+   |
+51 |     let divisor_val = compute_str2int(divisor);
+   |                       ^^^^^^^^^^^^^^^^^^^^^^^^
+...
+65 |         Str2Int(s@) < 0x10000000000000000,
+   |         --------------------------------- failed precondition
+
+error: aborting due to 6 previous errors
+
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+verification results:: 6 verified, 3 errors
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_DivMod_impl.rs:72:5
+   |
+72 |     while i < s.len()
+   |     ^^^^^^^^^^^^^^^^^
+
+error: invariant not satisfied at end of loop body
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_DivMod_impl.rs:76:13
+   |
+76 |             result as nat == Str2Int(s@.subrange(0, i as int)),
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_DivMod_impl.rs:85:18
+   |
+85 |         result = result * 2;
+   |                  ^^^^^^^^^^
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_DivMod_impl.rs:95:6
+   |
+95 | exec fn int_to_binary(n: u64) -> (res: Vec<char>)
+   |      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_DivMod_impl.rs:98:9
+    |
+98  |         Str2Int(res@) == n as nat,
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+140 |     result
+    |     ------ at the end of the function body
+
+error: assertion failed
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_DivMod_impl.rs:105:16
+    |
+105 |         assert(Str2Int(v@) == 0);
+    |                ^^^^^^^^^^^^^^^^ assertion failed
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_DivMod_impl.rs:41:6
+   |
+41 | exec fn DivMod(dividend: &[char], divisor: &[char]) -> (res: (Vec<char>, Vec<char>))
+   |      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: precondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_DivMod_impl.rs:50:24
+   |
+50 |     let dividend_val = compute_str2int(dividend);
+   |                        ^^^^^^^^^^^^^^^^^^^^^^^^^
+...
+65 |         Str2Int(s@) < 0x10000000000000000,
+   |         --------------------------------- failed precondition
+
+error: precondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_DivMod_impl.rs:51:23
+   |
+51 |     let divisor_val = compute_str2int(divisor);
+   |                       ^^^^^^^^^^^^^^^^^^^^^^^^
+...
+65 |         Str2Int(s@) < 0x10000000000000000,
+   |         --------------------------------- failed precondition
+
+error: aborting due to 6 previous errors
+

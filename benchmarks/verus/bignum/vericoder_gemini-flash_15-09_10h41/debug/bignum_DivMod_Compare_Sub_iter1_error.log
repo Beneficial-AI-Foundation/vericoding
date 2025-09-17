@@ -1,0 +1,208 @@
+=== Verification Error - Iteration 1 ===
+File: benchmarks/verus/bignum/files/bignum_DivMod_Compare_Sub.rs
+Time: 2025-09-15 10:45:31
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: error[E0425]: cannot find value `result` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_DivMod_Compare_Sub_impl.rs:60:48
+   |
+60 |         (Str2Int(s1) - Str2Int(s2)) == Str2Int(result),
+   |                                                ^^^^^^ not found in this scope
+
+error[E0425]: cannot find value `result` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_DivMod_Compare_Sub_impl.rs:61:24
+   |
+61 |         ValidBitString(result),
+   |                        ^^^^^^ not found in this scope
+
+error[E0425]: cannot find value `result` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_DivMod_Compare_Sub_impl.rs:62:9
+   |
+62 |         result.len() == s1.len(),
+   |         ^^^^^^ not found in this scope
+
+error[E0425]: cannot find value `result` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_DivMod_Compare_Sub_impl.rs:98:24
+   |
+98 |         ValidBitString(result),
+   |                        ^^^^^^ not found in this scope
+
+error[E0425]: cannot find value `result` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_DivMod_Compare_Sub_impl.rs:99:17
+   |
+99 |         Str2Int(result) == Str2Int(s),
+   |                 ^^^^^^ not found in this scope
+
+error[E0425]: cannot find value `result` in this scope
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_DivMod_Compare_Sub_impl.rs:100:9
+    |
+100 |         result.len() == 1 ==> result[0] == '0' || result[0] == '1',
+    |         ^^^^^^ not found in this scope
+
+error[E0425]: cannot find value `result` in this scope
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_DivMod_Compare_Sub_impl.rs:100:31
+    |
+100 |         result.len() == 1 ==> result[0] == '0' || result[0] == '1',
+    |                               ^^^^^^ not found in this scope
+
+error[E0425]: cannot find value `result` in this scope
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_DivMod_Compare_Sub_impl.rs:100:51
+    |
+100 |         result.len() == 1 ==> result[0] == '0' || result[0] == '1',
+    |                                                   ^^^^^^ not found in this scope
+
+error[E0425]: cannot find value `result` in this scope
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_DivMod_Compare_Sub_impl.rs:101:9
+    |
+101 |         result.len() > 1 ==> result[0] == '1' || Str2Int(s) == 0,
+    |         ^^^^^^ not found in this scope
+
+error[E0425]: cannot find value `result` in this scope
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_DivMod_Compare_Sub_impl.rs:101:30
+    |
+101 |         result.len() > 1 ==> result[0] == '1' || Str2Int(s) == 0,
+    |                              ^^^^^^ not found in this scope
+
+error[E0425]: cannot find value `result` in this scope
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_DivMod_Compare_Sub_impl.rs:102:32
+    |
+102 |         (Str2Int(s) == 0) ==> (result == seq!['0']),
+    |                                ^^^^^^ not found in this scope
+
+error[E0425]: cannot find value `result` in this scope
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_DivMod_Compare_Sub_impl.rs:130:24
+    |
+130 |         ValidBitString(result),
+    |                        ^^^^^^ not found in this scope
+
+error[E0425]: cannot find value `result` in this scope
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_DivMod_Compare_Sub_impl.rs:131:9
+    |
+131 |         result.len() == target_len,
+    |         ^^^^^^ not found in this scope
+
+error[E0425]: cannot find value `result` in this scope
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_DivMod_Compare_Sub_impl.rs:132:17
+    |
+132 |         Str2Int(result) == Str2Int(s),
+    |                 ^^^^^^ not found in this scope
+
+error[E0425]: cannot find value `result` in this scope
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_DivMod_Compare_Sub_impl.rs:160:17
+    |
+160 |         Str2Int(result) == Str2Int(s1) + Str2Int(s2),
+    |                 ^^^^^^ not found in this scope
+
+error[E0425]: cannot find value `result` in this scope
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_DivMod_Compare_Sub_impl.rs:161:24
+    |
+161 |         ValidBitString(result),
+    |                        ^^^^^^ not found in this scope
+
+error: aborting due to 16 previous errors
+
+For more information about this error, try `rustc --explain E0425`.
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+error[E0425]: cannot find value `result` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_DivMod_Compare_Sub_impl.rs:60:48
+   |
+60 |         (Str2Int(s1) - Str2Int(s2)) == Str2Int(result),
+   |                                                ^^^^^^ not found in this scope
+
+error[E0425]: cannot find value `result` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_DivMod_Compare_Sub_impl.rs:61:24
+   |
+61 |         ValidBitString(result),
+   |                        ^^^^^^ not found in this scope
+
+error[E0425]: cannot find value `result` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_DivMod_Compare_Sub_impl.rs:62:9
+   |
+62 |         result.len() == s1.len(),
+   |         ^^^^^^ not found in this scope
+
+error[E0425]: cannot find value `result` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_DivMod_Compare_Sub_impl.rs:98:24
+   |
+98 |         ValidBitString(result),
+   |                        ^^^^^^ not found in this scope
+
+error[E0425]: cannot find value `result` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_DivMod_Compare_Sub_impl.rs:99:17
+   |
+99 |         Str2Int(result) == Str2Int(s),
+   |                 ^^^^^^ not found in this scope
+
+error[E0425]: cannot find value `result` in this scope
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_DivMod_Compare_Sub_impl.rs:100:9
+    |
+100 |         result.len() == 1 ==> result[0] == '0' || result[0] == '1',
+    |         ^^^^^^ not found in this scope
+
+error[E0425]: cannot find value `result` in this scope
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_DivMod_Compare_Sub_impl.rs:100:31
+    |
+100 |         result.len() == 1 ==> result[0] == '0' || result[0] == '1',
+    |                               ^^^^^^ not found in this scope
+
+error[E0425]: cannot find value `result` in this scope
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_DivMod_Compare_Sub_impl.rs:100:51
+    |
+100 |         result.len() == 1 ==> result[0] == '0' || result[0] == '1',
+    |                                                   ^^^^^^ not found in this scope
+
+error[E0425]: cannot find value `result` in this scope
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_DivMod_Compare_Sub_impl.rs:101:9
+    |
+101 |         result.len() > 1 ==> result[0] == '1' || Str2Int(s) == 0,
+    |         ^^^^^^ not found in this scope
+
+error[E0425]: cannot find value `result` in this scope
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_DivMod_Compare_Sub_impl.rs:101:30
+    |
+101 |         result.len() > 1 ==> result[0] == '1' || Str2Int(s) == 0,
+    |                              ^^^^^^ not found in this scope
+
+error[E0425]: cannot find value `result` in this scope
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_DivMod_Compare_Sub_impl.rs:102:32
+    |
+102 |         (Str2Int(s) == 0) ==> (result == seq!['0']),
+    |                                ^^^^^^ not found in this scope
+
+error[E0425]: cannot find value `result` in this scope
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_DivMod_Compare_Sub_impl.rs:130:24
+    |
+130 |         ValidBitString(result),
+    |                        ^^^^^^ not found in this scope
+
+error[E0425]: cannot find value `result` in this scope
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_DivMod_Compare_Sub_impl.rs:131:9
+    |
+131 |         result.len() == target_len,
+    |         ^^^^^^ not found in this scope
+
+error[E0425]: cannot find value `result` in this scope
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_DivMod_Compare_Sub_impl.rs:132:17
+    |
+132 |         Str2Int(result) == Str2Int(s),
+    |                 ^^^^^^ not found in this scope
+
+error[E0425]: cannot find value `result` in this scope
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_DivMod_Compare_Sub_impl.rs:160:17
+    |
+160 |         Str2Int(result) == Str2Int(s1) + Str2Int(s2),
+    |                 ^^^^^^ not found in this scope
+
+error[E0425]: cannot find value `result` in this scope
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_DivMod_Compare_Sub_impl.rs:161:24
+    |
+161 |         ValidBitString(result),
+    |                        ^^^^^^ not found in this scope
+
+error: aborting due to 16 previous errors
+
+For more information about this error, try `rustc --explain E0425`.

@@ -1,0 +1,26 @@
+=== Verification Error - Iteration 4 ===
+File: benchmarks/verus/bignum/files/bignum_ModExp_Add_DivMod_ModExpPow2.rs
+Time: 2025-09-15 10:55:40
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_10h41/bignum_ModExp_Add_DivMod_ModExpPow2_impl.rs:110:48
+    |
+110 |         let pow2_result = ModExpPow2(sx, &div, n as int, sz);
+    |                                                ^^^^^^^^
+
+error: aborting due to 1 previous error
+
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_10h41/bignum_ModExp_Add_DivMod_ModExpPow2_impl.rs:110:48
+    |
+110 |         let pow2_result = ModExpPow2(sx, &div, n as int, sz);
+    |                                                ^^^^^^^^
+
+error: aborting due to 1 previous error
+

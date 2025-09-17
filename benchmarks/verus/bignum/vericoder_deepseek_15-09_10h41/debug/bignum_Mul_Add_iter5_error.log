@@ -1,0 +1,148 @@
+=== Verification Error - Iteration 5 ===
+File: benchmarks/verus/bignum/files/bignum_Mul_Add.rs
+Time: 2025-09-15 11:03:38
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Verification failed: verification results:: 5 verified, 5 errors
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_10h41/bignum_Mul_Add_impl.rs:31:5
+   |
+31 |     while i < len
+   |     ^^^^^^^^^^^^^
+
+error: invariant not satisfied at end of loop body
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_10h41/bignum_Mul_Add_impl.rs:34:13
+   |
+34 |             res@ == s@.subrange(len - i as int, len as int).reverse(),
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+note: recommendation not met
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_10h41/bignum_Mul_Add_impl.rs:34:21
+    |
+34  |             res@ == s@.subrange(len - i as int, len as int).reverse(),
+    |                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+   ::: /Users/sergiu.bursuc/verus/vstd/seq.rs:116:37
+    |
+116 |             0 <= start_inclusive <= end_exclusive <= self.len(),
+    |                                     ------------- recommendation not met
+
+error: precondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_10h41/bignum_Mul_Add_impl.rs:38:18
+   |
+38 |         res.push(s[len - 1 - i]);
+   |                  ^^^^^^^^^^^^^^
+   |
+  ::: /Users/sergiu.bursuc/verus/vstd/std_specs/vec.rs:48:9
+   |
+48 |         i < vec.view().len(),
+   |         -------------------- failed precondition
+
+error: postcondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_10h41/bignum_Mul_Add_impl.rs:56:33
+    |
+56  |   ensures ValidBitString(res@), Str2Int(res@) == Str2Int(s1@) * Str2Int(s2@)
+    |                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+107 |     reverse_string(&result)
+    |     ----------------------- at the end of the function body
+
+error: precondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_10h41/bignum_Mul_Add_impl.rs:66:20
+   |
+66 |         let bit2 = s2[s2_len - 1 - i];
+   |                    ^^^^^^^^^^^^^^^^^^
+   |
+  ::: /Users/sergiu.bursuc/verus/vstd/slice.rs:62:14
+   |
+62 |         0 <= i < slice.view().len(),
+   |              - failed precondition
+
+error: possible arithmetic underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_10h41/bignum_Mul_Add_impl.rs:78:23
+   |
+78 |             let sum = product + carry;
+   |                       ^^^^^^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_10h41/bignum_Mul_Add_impl.rs:94:23
+   |
+94 |             let sum = a + b + carry;
+   |                       ^^^^^^^^^^^^^
+
+error: aborting due to 6 previous errors
+
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+verification results:: 5 verified, 5 errors
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_10h41/bignum_Mul_Add_impl.rs:31:5
+   |
+31 |     while i < len
+   |     ^^^^^^^^^^^^^
+
+error: invariant not satisfied at end of loop body
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_10h41/bignum_Mul_Add_impl.rs:34:13
+   |
+34 |             res@ == s@.subrange(len - i as int, len as int).reverse(),
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+note: recommendation not met
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_10h41/bignum_Mul_Add_impl.rs:34:21
+    |
+34  |             res@ == s@.subrange(len - i as int, len as int).reverse(),
+    |                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+   ::: /Users/sergiu.bursuc/verus/vstd/seq.rs:116:37
+    |
+116 |             0 <= start_inclusive <= end_exclusive <= self.len(),
+    |                                     ------------- recommendation not met
+
+error: precondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_10h41/bignum_Mul_Add_impl.rs:38:18
+   |
+38 |         res.push(s[len - 1 - i]);
+   |                  ^^^^^^^^^^^^^^
+   |
+  ::: /Users/sergiu.bursuc/verus/vstd/std_specs/vec.rs:48:9
+   |
+48 |         i < vec.view().len(),
+   |         -------------------- failed precondition
+
+error: postcondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_10h41/bignum_Mul_Add_impl.rs:56:33
+    |
+56  |   ensures ValidBitString(res@), Str2Int(res@) == Str2Int(s1@) * Str2Int(s2@)
+    |                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+107 |     reverse_string(&result)
+    |     ----------------------- at the end of the function body
+
+error: precondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_10h41/bignum_Mul_Add_impl.rs:66:20
+   |
+66 |         let bit2 = s2[s2_len - 1 - i];
+   |                    ^^^^^^^^^^^^^^^^^^
+   |
+  ::: /Users/sergiu.bursuc/verus/vstd/slice.rs:62:14
+   |
+62 |         0 <= i < slice.view().len(),
+   |              - failed precondition
+
+error: possible arithmetic underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_10h41/bignum_Mul_Add_impl.rs:78:23
+   |
+78 |             let sum = product + carry;
+   |                       ^^^^^^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_10h41/bignum_Mul_Add_impl.rs:94:23
+   |
+94 |             let sum = a + b + carry;
+   |                       ^^^^^^^^^^^^^
+
+error: aborting due to 6 previous errors
+

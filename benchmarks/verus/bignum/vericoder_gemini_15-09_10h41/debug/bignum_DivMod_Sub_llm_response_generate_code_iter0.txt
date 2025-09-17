@@ -1,0 +1,10 @@
+=== LLM Response - generate_code - Iteration 0 ===
+File: benchmarks/verus/bignum/files/bignum_DivMod_Sub.rs
+Prompt Hash: d271796f
+JSON Parsed Successfully: False
+Timestamp: 1757927214.946762
+Content Length: 913 chars
+--------------------------------------------------------------------------------
+```json
+["exec fn Str2Int_exec(s: &[char]) -> (res: nat)\n    requires ValidBitString(s@)\n    ensures res == Str2Int(s@)\n{\n    let mut i: usize = 0;\n    let mut res: nat = 0;\n    while i < s.len()\n        invariant\n            ValidBitString(s@),\n            i <= s.len(),\n            res == Str2Int(s@.subrange(0, i as int)),\n        decreases s.len() - i\n    {\n        proof {\n            let prefix = s@.subrange(0, i as int);\n            let next_prefix = s@.subrange(0, (i + 1) as int);\n            let next_char = s@[i as int];\n            assert(next_prefix.len() > 0);\n            assert(next_prefix.subrange(0, next_prefix.len() - 1) == prefix);\n            assert(next_prefix.index(next_prefix.len() - 1) == next_char);\n            assert(Str2Int(next_prefix) == 2 * Str2Int(prefix) + (if next_char == '1' { 1 } else { 0 }));\n        }\n\n        res = res * 2;\n        if s[i] == '
+--------------------------------------------------------------------------------

@@ -1,0 +1,196 @@
+=== Verification Error - Iteration 1 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExpPow2_DivMod.rs
+Time: 2025-09-15 19:05:47
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: error[E0425]: cannot find value `sy` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_ModExpPow2_DivMod_impl.rs:32:8
+   |
+32 |     if sy@.len() == 0 || Str2Int(sy@) == 0 {
+   |        ^^ not found in this scope
+
+error[E0425]: cannot find value `sy` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_ModExpPow2_DivMod_impl.rs:32:34
+   |
+32 |     if sy@.len() == 0 || Str2Int(sy@) == 0 {
+   |                                  ^^ not found in this scope
+
+error[E0425]: cannot find value `sx` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_ModExpPow2_DivMod_impl.rs:37:20
+   |
+37 |     let mut base = sx.to_vec();
+   |                    ^^ not found in this scope
+
+error[E0425]: cannot find value `sy` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_ModExpPow2_DivMod_impl.rs:38:19
+   |
+38 |     let mut exp = sy.to_vec();
+   |                   ^^ not found in this scope
+
+error[E0425]: cannot find value `sz` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_ModExpPow2_DivMod_impl.rs:45:81
+   |
+45 |             Str2Int(result@) * Exp_int(Str2Int(base@), Str2Int(exp@)) % Str2Int(sz@) == Exp_int(Str2Int(sx@), Str2Int(sy@)) % Str2Int(sz@)
+   |                                                                                 ^^ not found in this scope
+
+error[E0425]: cannot find value `sx` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_ModExpPow2_DivMod_impl.rs:45:105
+   |
+45 |             Str2Int(result@) * Exp_int(Str2Int(base@), Str2Int(exp@)) % Str2Int(sz@) == Exp_int(Str2Int(sx@), Str2Int(sy@)) % Str2Int(sz@)
+   |                                                                                                         ^^ not found in this scope
+
+error[E0425]: cannot find value `sy` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_ModExpPow2_DivMod_impl.rs:45:119
+   |
+45 |             Str2Int(result@) * Exp_int(Str2Int(base@), Str2Int(exp@)) % Str2Int(sz@) == Exp_int(Str2Int(sx@), Str2Int(sy@)) % Str2Int(sz@)
+   |                                                                                                                       ^^ not found in this scope
+
+error[E0425]: cannot find value `sz` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_ModExpPow2_DivMod_impl.rs:45:135
+   |
+45 |             Str2Int(result@) * Exp_int(Str2Int(base@), Str2Int(exp@)) % Str2Int(sz@) == Exp_int(Str2Int(sx@), Str2Int(sy@)) % Str2Int(sz@)
+   |                                                                                                                                       ^^ not found in this scope
+
+error[E0425]: cannot find value `sz` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_ModExpPow2_DivMod_impl.rs:48:53
+   |
+48 |             let temp = multiply_mod(&result, &base, sz);
+   |                                                     ^^ not found in this scope
+
+error[E0425]: cannot find value `sz` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_ModExpPow2_DivMod_impl.rs:52:52
+   |
+52 |         let temp_base = multiply_mod(&base, &base, sz);
+   |                                                    ^^ not found in this scope
+
+error[E0425]: cannot find function `multiply_mod` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_ModExpPow2_DivMod_impl.rs:48:24
+   |
+48 |             let temp = multiply_mod(&result, &base, sz);
+   |                        ^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `multiply_mod` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_ModExpPow2_DivMod_impl.rs:52:25
+   |
+52 |         let temp_base = multiply_mod(&base, &base, sz);
+   |                         ^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `divide_by_two` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_ModExpPow2_DivMod_impl.rs:55:15
+   |
+55 |         exp = divide_by_two(&exp);
+   |               ^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `multiply_mod` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_ModExpPow2_DivMod_impl.rs:89:19
+   |
+89 |     let squared = multiply_mod(&half_result, &half_result, sz);
+   |                   ^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `multiply_mod` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_ModExpPow2_DivMod_impl.rs:95:9
+   |
+95 |         multiply_mod(&squared, &extra_result, sz)
+   |         ^^^^^^^^^^^^ not found in this scope
+
+error: aborting due to 15 previous errors
+
+For more information about this error, try `rustc --explain E0425`.
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+error[E0425]: cannot find value `sy` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_ModExpPow2_DivMod_impl.rs:32:8
+   |
+32 |     if sy@.len() == 0 || Str2Int(sy@) == 0 {
+   |        ^^ not found in this scope
+
+error[E0425]: cannot find value `sy` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_ModExpPow2_DivMod_impl.rs:32:34
+   |
+32 |     if sy@.len() == 0 || Str2Int(sy@) == 0 {
+   |                                  ^^ not found in this scope
+
+error[E0425]: cannot find value `sx` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_ModExpPow2_DivMod_impl.rs:37:20
+   |
+37 |     let mut base = sx.to_vec();
+   |                    ^^ not found in this scope
+
+error[E0425]: cannot find value `sy` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_ModExpPow2_DivMod_impl.rs:38:19
+   |
+38 |     let mut exp = sy.to_vec();
+   |                   ^^ not found in this scope
+
+error[E0425]: cannot find value `sz` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_ModExpPow2_DivMod_impl.rs:45:81
+   |
+45 |             Str2Int(result@) * Exp_int(Str2Int(base@), Str2Int(exp@)) % Str2Int(sz@) == Exp_int(Str2Int(sx@), Str2Int(sy@)) % Str2Int(sz@)
+   |                                                                                 ^^ not found in this scope
+
+error[E0425]: cannot find value `sx` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_ModExpPow2_DivMod_impl.rs:45:105
+   |
+45 |             Str2Int(result@) * Exp_int(Str2Int(base@), Str2Int(exp@)) % Str2Int(sz@) == Exp_int(Str2Int(sx@), Str2Int(sy@)) % Str2Int(sz@)
+   |                                                                                                         ^^ not found in this scope
+
+error[E0425]: cannot find value `sy` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_ModExpPow2_DivMod_impl.rs:45:119
+   |
+45 |             Str2Int(result@) * Exp_int(Str2Int(base@), Str2Int(exp@)) % Str2Int(sz@) == Exp_int(Str2Int(sx@), Str2Int(sy@)) % Str2Int(sz@)
+   |                                                                                                                       ^^ not found in this scope
+
+error[E0425]: cannot find value `sz` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_ModExpPow2_DivMod_impl.rs:45:135
+   |
+45 |             Str2Int(result@) * Exp_int(Str2Int(base@), Str2Int(exp@)) % Str2Int(sz@) == Exp_int(Str2Int(sx@), Str2Int(sy@)) % Str2Int(sz@)
+   |                                                                                                                                       ^^ not found in this scope
+
+error[E0425]: cannot find value `sz` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_ModExpPow2_DivMod_impl.rs:48:53
+   |
+48 |             let temp = multiply_mod(&result, &base, sz);
+   |                                                     ^^ not found in this scope
+
+error[E0425]: cannot find value `sz` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_ModExpPow2_DivMod_impl.rs:52:52
+   |
+52 |         let temp_base = multiply_mod(&base, &base, sz);
+   |                                                    ^^ not found in this scope
+
+error[E0425]: cannot find function `multiply_mod` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_ModExpPow2_DivMod_impl.rs:48:24
+   |
+48 |             let temp = multiply_mod(&result, &base, sz);
+   |                        ^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `multiply_mod` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_ModExpPow2_DivMod_impl.rs:52:25
+   |
+52 |         let temp_base = multiply_mod(&base, &base, sz);
+   |                         ^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `divide_by_two` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_ModExpPow2_DivMod_impl.rs:55:15
+   |
+55 |         exp = divide_by_two(&exp);
+   |               ^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `multiply_mod` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_ModExpPow2_DivMod_impl.rs:89:19
+   |
+89 |     let squared = multiply_mod(&half_result, &half_result, sz);
+   |                   ^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `multiply_mod` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_ModExpPow2_DivMod_impl.rs:95:9
+   |
+95 |         multiply_mod(&squared, &extra_result, sz)
+   |         ^^^^^^^^^^^^ not found in this scope
+
+error: aborting due to 15 previous errors
+
+For more information about this error, try `rustc --explain E0425`.

@@ -1,0 +1,281 @@
+=== Verification Error - Iteration 2 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExp_Add_Mul_Zeroes.rs
+Time: 2025-09-15 20:52:10
+
+Full Error Output:
+--------------------------------------------------------------------------------
+VERIFICATION BYPASSES DETECTED: uses 'assume' to bypass verification. Code contains verification bypasses and cannot be considered successfully verified.
+
+Original verification output:
+Verification failed: verification results:: 5 verified, 7 errors
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_Mul_Zeroes_impl.rs:42:5
+   |
+42 |     while i < sx.len()
+   |     ^^^^^^^^^^^^^^^^^^
+
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_Mul_Zeroes_impl.rs:55:5
+   |
+55 |     while j < sy.len()
+   |     ^^^^^^^^^^^^^^^^^^
+
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_Mul_Zeroes_impl.rs:68:5
+   |
+68 |     while k < sz.len()
+   |     ^^^^^^^^^^^^^^^^^^
+
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_Mul_Zeroes_impl.rs:86:5
+   |
+86 |     while exp > 0u128
+   |     ^^^^^^^^^^^^^^^^^
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_Mul_Zeroes_impl.rs:30:6
+   |
+30 | exec fn ModExp_Add_Mul_Zeroes(sx: &[char], sy: &[char], sz: &[char]) -> (res: Vec<char>)
+   |      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+note: recommendation not met
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_Mul_Zeroes_impl.rs:32:33
+   |
+12 | recommends ValidBitString(s)
+   |            ----------------- recommendation not met
+...
+32 |   ensures ValidBitString(res@), Str2Int(res@) == Exp_int(Str2Int(sx@), Str2Int(sy@)) % Str2Int(sz@)
+   |                                 ^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_Mul_Zeroes_impl.rs:32:33
+    |
+32  |   ensures ValidBitString(res@), Str2Int(res@) == Exp_int(Str2Int(sx@), Str2Int(sy@)) % Str2Int(sz@)
+    |                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+101 |         return resv;
+    |         ----------- at this exit
+
+error: possible arithmetic underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_Mul_Zeroes_impl.rs:48:17
+   |
+48 |         x_val = x_val * 2u128 + b;
+   |                 ^^^^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_Mul_Zeroes_impl.rs:48:17
+   |
+48 |         x_val = x_val * 2u128 + b;
+   |                 ^^^^^^^^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_Mul_Zeroes_impl.rs:61:17
+   |
+61 |         y_val = y_val * 2u128 + b;
+   |                 ^^^^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_Mul_Zeroes_impl.rs:61:17
+   |
+61 |         y_val = y_val * 2u128 + b;
+   |                 ^^^^^^^^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_Mul_Zeroes_impl.rs:74:17
+   |
+74 |         m_val = m_val * 2u128 + b;
+   |                 ^^^^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_Mul_Zeroes_impl.rs:74:17
+   |
+74 |         m_val = m_val * 2u128 + b;
+   |                 ^^^^^^^^^^^^^^^^^
+
+error: decreases not satisfied at end of loop
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_Mul_Zeroes_impl.rs:86:5
+   |
+86 |     while exp > 0u128
+   |     ^^^^^^^^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_Mul_Zeroes_impl.rs:92:22
+   |
+92 |             result = (result * base) % m_val;
+   |                      ^^^^^^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_Mul_Zeroes_impl.rs:94:16
+   |
+94 |         base = (base * base) % m_val;
+   |                ^^^^^^^^^^^^^
+
+error: decreases not satisfied at end of loop
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_Mul_Zeroes_impl.rs:106:5
+    |
+106 |     while r > 0u128
+    |     ^^^^^^^^^^^^^^^
+
+note: recommendation not met: value may be out of range of the target type (use `#[verifier::truncate]` on the cast to silence this warning)
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_Mul_Zeroes_impl.rs:116:26
+    |
+116 |     let mut idx: isize = rev.len() as isize - 1isize;
+    |                          ^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_Mul_Zeroes_impl.rs:116:26
+    |
+116 |     let mut idx: isize = rev.len() as isize - 1isize;
+    |                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: precondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_Mul_Zeroes_impl.rs:122:19
+    |
+122 |         resv.push(rev[idx as usize]);
+    |                   ^^^^^^^^^^^^^^^^^
+    |
+   ::: /Users/sergiu.bursuc/verus/vstd/std_specs/vec.rs:48:9
+    |
+48  |         i < vec.view().len(),
+    |         -------------------- failed precondition
+
+error: aborting due to 13 previous errors
+
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+verification results:: 5 verified, 7 errors
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_Mul_Zeroes_impl.rs:42:5
+   |
+42 |     while i < sx.len()
+   |     ^^^^^^^^^^^^^^^^^^
+
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_Mul_Zeroes_impl.rs:55:5
+   |
+55 |     while j < sy.len()
+   |     ^^^^^^^^^^^^^^^^^^
+
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_Mul_Zeroes_impl.rs:68:5
+   |
+68 |     while k < sz.len()
+   |     ^^^^^^^^^^^^^^^^^^
+
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_Mul_Zeroes_impl.rs:86:5
+   |
+86 |     while exp > 0u128
+   |     ^^^^^^^^^^^^^^^^^
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_Mul_Zeroes_impl.rs:30:6
+   |
+30 | exec fn ModExp_Add_Mul_Zeroes(sx: &[char], sy: &[char], sz: &[char]) -> (res: Vec<char>)
+   |      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+note: recommendation not met
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_Mul_Zeroes_impl.rs:32:33
+   |
+12 | recommends ValidBitString(s)
+   |            ----------------- recommendation not met
+...
+32 |   ensures ValidBitString(res@), Str2Int(res@) == Exp_int(Str2Int(sx@), Str2Int(sy@)) % Str2Int(sz@)
+   |                                 ^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_Mul_Zeroes_impl.rs:32:33
+    |
+32  |   ensures ValidBitString(res@), Str2Int(res@) == Exp_int(Str2Int(sx@), Str2Int(sy@)) % Str2Int(sz@)
+    |                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+101 |         return resv;
+    |         ----------- at this exit
+
+error: possible arithmetic underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_Mul_Zeroes_impl.rs:48:17
+   |
+48 |         x_val = x_val * 2u128 + b;
+   |                 ^^^^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_Mul_Zeroes_impl.rs:48:17
+   |
+48 |         x_val = x_val * 2u128 + b;
+   |                 ^^^^^^^^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_Mul_Zeroes_impl.rs:61:17
+   |
+61 |         y_val = y_val * 2u128 + b;
+   |                 ^^^^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_Mul_Zeroes_impl.rs:61:17
+   |
+61 |         y_val = y_val * 2u128 + b;
+   |                 ^^^^^^^^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_Mul_Zeroes_impl.rs:74:17
+   |
+74 |         m_val = m_val * 2u128 + b;
+   |                 ^^^^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_Mul_Zeroes_impl.rs:74:17
+   |
+74 |         m_val = m_val * 2u128 + b;
+   |                 ^^^^^^^^^^^^^^^^^
+
+error: decreases not satisfied at end of loop
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_Mul_Zeroes_impl.rs:86:5
+   |
+86 |     while exp > 0u128
+   |     ^^^^^^^^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_Mul_Zeroes_impl.rs:92:22
+   |
+92 |             result = (result * base) % m_val;
+   |                      ^^^^^^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_Mul_Zeroes_impl.rs:94:16
+   |
+94 |         base = (base * base) % m_val;
+   |                ^^^^^^^^^^^^^
+
+error: decreases not satisfied at end of loop
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_Mul_Zeroes_impl.rs:106:5
+    |
+106 |     while r > 0u128
+    |     ^^^^^^^^^^^^^^^
+
+note: recommendation not met: value may be out of range of the target type (use `#[verifier::truncate]` on the cast to silence this warning)
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_Mul_Zeroes_impl.rs:116:26
+    |
+116 |     let mut idx: isize = rev.len() as isize - 1isize;
+    |                          ^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_Mul_Zeroes_impl.rs:116:26
+    |
+116 |     let mut idx: isize = rev.len() as isize - 1isize;
+    |                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: precondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_Mul_Zeroes_impl.rs:122:19
+    |
+122 |         resv.push(rev[idx as usize]);
+    |                   ^^^^^^^^^^^^^^^^^
+    |
+   ::: /Users/sergiu.bursuc/verus/vstd/std_specs/vec.rs:48:9
+    |
+48  |         i < vec.view().len(),
+    |         -------------------- failed precondition
+
+error: aborting due to 13 previous errors
+

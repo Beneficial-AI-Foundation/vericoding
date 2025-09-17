@@ -41,10 +41,31 @@ lean_lib Generated where
 -- Original benchmark files + all vericoder generated files
 lean_lib Benchmarks where
   globs := #[
-    .submodules `apps.files,
-    .submodules `dafnybench.poor.unformatted,
-    .submodules `humaneval.files,
-    .submodules `numpy_simple.poor.unformatted,
+    .submodules `fvapps.files,
+    .submodules `dafnybench.files,
+    .submodules `clever.files,
+    .submodules `numpy_simple.files,
+    .submodules `numpy_triple.files,
+    .submodules `verina.files,
+    -- Include all subdirectories (including vericoder_* dirs)
+    .andSubmodules `apps,
+    .andSubmodules `bignum,
+    .andSubmodules `dafnybench,
+    .andSubmodules `humaneval,
+    .andSubmodules `humaneval_clever,
+    .andSubmodules `numpy_simple,
+    .andSubmodules `numpy_triple,
+    .andSubmodules `verina,
+  ]
+  srcDir := "benchmarks/lean"
+
+
+lean_lib BenchmarksCheckedInCI where
+  globs := #[
+    .submodules `fvapps.files,
+    .submodules `dafnybench.files,
+    .submodules `clever.files,
+    .submodules `numpy_simple.files,
     .submodules `numpy_triple.files,
     .submodules `verina.files,
     -- Include all subdirectories (including vericoder_* dirs)

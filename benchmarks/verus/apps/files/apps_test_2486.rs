@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn unnecessary_cards_count(sorted: Seq<int>, k: int) -> int
   recommends
     forall|i: int, j: int| 0 <= i < j < sorted.len() ==> sorted[i] >= sorted[j],
@@ -39,6 +36,9 @@ spec fn unnecessary_cards_count_helper(sorted: Seq<int>, k: int, temp: int, ans:
     }
   }
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

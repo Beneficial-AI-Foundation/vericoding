@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(input: Seq<char>) -> bool {
     input.len() > 0 &&
     input[input.len() - 1] == '\n' &&
@@ -22,6 +19,9 @@ spec fn max_divisible_by_3_segments(s: Seq<char>) -> int {
         s.len() as int
     }
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

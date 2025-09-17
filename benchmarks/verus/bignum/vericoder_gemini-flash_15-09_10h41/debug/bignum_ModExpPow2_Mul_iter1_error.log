@@ -1,0 +1,98 @@
+=== Verification Error - Iteration 1 ===
+File: benchmarks/verus/bignum/files/bignum_ModExpPow2_Mul.rs
+Time: 2025-09-15 10:44:55
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_ModExpPow2_Mul_impl.rs:57:15
+   |
+57 |   let mut i = product_vec_rev.len() as int - 1;
+   |               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_ModExpPow2_Mul_impl.rs:65:46
+   |
+65 |       res_vec.push(product_vec_rev.track_get(i as nat).get());
+   |                                              ^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_ModExpPow2_Mul_impl.rs:102:34
+    |
+102 |       let two_pow_n = Exp_int(2, n as nat);
+    |                                  ^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_ModExpPow2_Mul_impl.rs:103:42
+    |
+103 |       let two_pow_n_minus_1 = Exp_int(2, (n - 1) as nat);
+    |                                          ^^^^^^^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_ModExpPow2_Mul_impl.rs:119:13
+    |
+119 |       if sy[n as nat] == '1' {
+    |             ^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_ModExpPow2_Mul_impl.rs:145:19
+    |
+145 |       let mut i = res_vec_rev.len() as int - 1;
+    |                   ^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_ModExpPow2_Mul_impl.rs:153:52
+    |
+153 |           final_res_vec.push(res_vec_rev.track_get(i as nat).get());
+    |                                                    ^^^^^^^^
+
+error: aborting due to 7 previous errors
+
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_ModExpPow2_Mul_impl.rs:57:15
+   |
+57 |   let mut i = product_vec_rev.len() as int - 1;
+   |               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_ModExpPow2_Mul_impl.rs:65:46
+   |
+65 |       res_vec.push(product_vec_rev.track_get(i as nat).get());
+   |                                              ^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_ModExpPow2_Mul_impl.rs:102:34
+    |
+102 |       let two_pow_n = Exp_int(2, n as nat);
+    |                                  ^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_ModExpPow2_Mul_impl.rs:103:42
+    |
+103 |       let two_pow_n_minus_1 = Exp_int(2, (n - 1) as nat);
+    |                                          ^^^^^^^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_ModExpPow2_Mul_impl.rs:119:13
+    |
+119 |       if sy[n as nat] == '1' {
+    |             ^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_ModExpPow2_Mul_impl.rs:145:19
+    |
+145 |       let mut i = res_vec_rev.len() as int - 1;
+    |                   ^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_ModExpPow2_Mul_impl.rs:153:52
+    |
+153 |           final_res_vec.push(res_vec_rev.track_get(i as nat).get());
+    |                                                    ^^^^^^^^
+
+error: aborting due to 7 previous errors
+

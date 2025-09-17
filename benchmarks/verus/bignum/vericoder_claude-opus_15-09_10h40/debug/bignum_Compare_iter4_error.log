@@ -1,0 +1,274 @@
+=== Verification Error - Iteration 4 ===
+File: benchmarks/verus/bignum/files/bignum_Compare.rs
+Time: 2025-09-15 11:16:34
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Verification failed: verification results:: 8 verified, 4 errors
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_Compare_impl.rs:80:9
+   |
+80 |         while i < s2.len() - s1.len()
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_Compare_impl.rs:107:9
+    |
+107 |         while i < s1.len() - s2.len()
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_Compare_impl.rs:134:9
+    |
+134 |         while i < s1.len()
+    |         ^^^^^^^^^^^^^^^^^^
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_Compare_impl.rs:58:6
+   |
+58 | exec fn Compare(s1: &[char], s2: &[char]) -> (res: i32)
+   |      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+note: recommendation not met
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_Compare_impl.rs:61:11
+   |
+6  |   recommends ValidBitString(s)
+   |              ----------------- recommendation not met
+...
+61 |   ensures Str2Int(s1@) < Str2Int(s2@) ==> res == -1,
+   |           ^^^^^^^^^^^^
+
+error: postcondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_Compare_impl.rs:61:11
+    |
+61  |   ensures Str2Int(s1@) < Str2Int(s2@) ==> res == -1,
+    |           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+114 |                 return 1;
+    |                 -------- at this exit
+
+note: recommendation not met
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_Compare_impl.rs:61:26
+   |
+6  |   recommends ValidBitString(s)
+   |              ----------------- recommendation not met
+...
+61 |   ensures Str2Int(s1@) < Str2Int(s2@) ==> res == -1,
+   |                          ^^^^^^^^^^^^
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_Compare_impl.rs:62:5
+   |
+62 |     Str2Int(s1@) == Str2Int(s2@) ==> res == 0,
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+87 |                 return -1;
+   |                 --------- at this exit
+
+error: postcondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_Compare_impl.rs:62:5
+    |
+62  |     Str2Int(s1@) == Str2Int(s2@) ==> res == 0,
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+114 |                 return 1;
+    |                 -------- at this exit
+
+error: postcondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_Compare_impl.rs:62:5
+    |
+62  |     Str2Int(s1@) == Str2Int(s2@) ==> res == 0,
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+142 |                 return -1;
+    |                 --------- at this exit
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_Compare_impl.rs:62:5
+   |
+62 |     Str2Int(s1@) == Str2Int(s2@) ==> res == 0,
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+77 |         return 1;
+   |         -------- at this exit
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_Compare_impl.rs:62:5
+   |
+62 |     Str2Int(s1@) == Str2Int(s2@) ==> res == 0,
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+74 |         return -1;
+   |         --------- at this exit
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_Compare_impl.rs:63:5
+   |
+63 |     Str2Int(s1@) > Str2Int(s2@) ==> res == 1,
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+87 |                 return -1;
+   |                 --------- at this exit
+
+error: postcondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_Compare_impl.rs:63:5
+    |
+63  |     Str2Int(s1@) > Str2Int(s2@) ==> res == 1,
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+142 |                 return -1;
+    |                 --------- at this exit
+
+error: postcondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_Compare_impl.rs:63:5
+    |
+63  |     Str2Int(s1@) > Str2Int(s2@) ==> res == 1,
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+104 |         return Compare(s1, &s2_suffix);
+    |         ------------------------------ at this exit
+
+error: could not prove termination
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_Compare_impl.rs:104:16
+    |
+104 |         return Compare(s1, &s2_suffix);
+    |                ^^^^^^^^^^^^^^^^^^^^^^^
+
+error: aborting due to 10 previous errors
+
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+verification results:: 8 verified, 4 errors
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_Compare_impl.rs:80:9
+   |
+80 |         while i < s2.len() - s1.len()
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_Compare_impl.rs:107:9
+    |
+107 |         while i < s1.len() - s2.len()
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_Compare_impl.rs:134:9
+    |
+134 |         while i < s1.len()
+    |         ^^^^^^^^^^^^^^^^^^
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_Compare_impl.rs:58:6
+   |
+58 | exec fn Compare(s1: &[char], s2: &[char]) -> (res: i32)
+   |      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+note: recommendation not met
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_Compare_impl.rs:61:11
+   |
+6  |   recommends ValidBitString(s)
+   |              ----------------- recommendation not met
+...
+61 |   ensures Str2Int(s1@) < Str2Int(s2@) ==> res == -1,
+   |           ^^^^^^^^^^^^
+
+error: postcondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_Compare_impl.rs:61:11
+    |
+61  |   ensures Str2Int(s1@) < Str2Int(s2@) ==> res == -1,
+    |           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+114 |                 return 1;
+    |                 -------- at this exit
+
+note: recommendation not met
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_Compare_impl.rs:61:26
+   |
+6  |   recommends ValidBitString(s)
+   |              ----------------- recommendation not met
+...
+61 |   ensures Str2Int(s1@) < Str2Int(s2@) ==> res == -1,
+   |                          ^^^^^^^^^^^^
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_Compare_impl.rs:62:5
+   |
+62 |     Str2Int(s1@) == Str2Int(s2@) ==> res == 0,
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+87 |                 return -1;
+   |                 --------- at this exit
+
+error: postcondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_Compare_impl.rs:62:5
+    |
+62  |     Str2Int(s1@) == Str2Int(s2@) ==> res == 0,
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+114 |                 return 1;
+    |                 -------- at this exit
+
+error: postcondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_Compare_impl.rs:62:5
+    |
+62  |     Str2Int(s1@) == Str2Int(s2@) ==> res == 0,
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+142 |                 return -1;
+    |                 --------- at this exit
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_Compare_impl.rs:62:5
+   |
+62 |     Str2Int(s1@) == Str2Int(s2@) ==> res == 0,
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+77 |         return 1;
+   |         -------- at this exit
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_Compare_impl.rs:62:5
+   |
+62 |     Str2Int(s1@) == Str2Int(s2@) ==> res == 0,
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+74 |         return -1;
+   |         --------- at this exit
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_Compare_impl.rs:63:5
+   |
+63 |     Str2Int(s1@) > Str2Int(s2@) ==> res == 1,
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+87 |                 return -1;
+   |                 --------- at this exit
+
+error: postcondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_Compare_impl.rs:63:5
+    |
+63  |     Str2Int(s1@) > Str2Int(s2@) ==> res == 1,
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+142 |                 return -1;
+    |                 --------- at this exit
+
+error: postcondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_Compare_impl.rs:63:5
+    |
+63  |     Str2Int(s1@) > Str2Int(s2@) ==> res == 1,
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+104 |         return Compare(s1, &s2_suffix);
+    |         ------------------------------ at this exit
+
+error: could not prove termination
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_Compare_impl.rs:104:16
+    |
+104 |         return Compare(s1, &s2_suffix);
+    |                ^^^^^^^^^^^^^^^^^^^^^^^
+
+error: aborting due to 10 previous errors
+

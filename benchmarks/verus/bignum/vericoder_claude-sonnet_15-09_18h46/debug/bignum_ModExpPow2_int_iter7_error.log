@@ -1,0 +1,140 @@
+=== Verification Error - Iteration 7 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExpPow2_int.rs
+Time: 2025-09-15 19:17:54
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Verification failed: verification results:: 3 verified, 2 errors
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_ModExpPow2_int_impl.rs:25:7
+   |
+25 | proof fn exp_pow2_lemma(x: nat, n: nat)
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_ModExpPow2_int_impl.rs:26:13
+   |
+26 |       ensures Exp_int(x, Exp_int(2, n)) == if n == 0 { x } else { Exp_int(Exp_int(x, Exp_int(2, (n - 1) as nat)), 2) }
+   |               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+27 |   {
+28 | /     if n == 0 {
+29 | |         assert(Exp_int(2, 0) == 1);
+30 | |         assert(Exp_int(x, 1) == x);
+31 | |     } else {
+32 | |         assert(Exp_int(2, n) == 2 * Exp_int(2, (n - 1) as nat));
+33 | |     }
+   | |_____- at the end of the function body
+
+error: assertion failed
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_ModExpPow2_int_impl.rs:30:16
+   |
+30 |         assert(Exp_int(x, 1) == x);
+   |                ^^^^^^^^^^^^^^^^^^ assertion failed
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_ModExpPow2_int_impl.rs:38:6
+   |
+38 | exec fn ModExpPow2_int(x: u64, y: u64, n: u64, z: u64) -> (res: u64)
+   |      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_ModExpPow2_int_impl.rs:41:11
+   |
+41 |     ensures (res as nat) == Exp_int(x as nat, y as nat) % (z as nat)
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+47 | /     if n == 0u64 {
+48 | |         assert(y == 1u64);
+49 | |         if x == 0u64 {
+50 | |             return 0u64;
+...  |
+58 | |         result
+59 | |     }
+   | |_____- at the end of the function body
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_ModExpPow2_int_impl.rs:41:11
+   |
+41 |   ensures (res as nat) == Exp_int(x as nat, y as nat) % (z as nat)
+   |           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+50 |             return 0u64;
+   |             ----------- at this exit
+
+error: possible arithmetic underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_ModExpPow2_int_impl.rs:57:23
+   |
+57 |         let result = ((half_res as u128 * half_res as u128) % z as u128) as u64;
+   |                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: aborting due to 5 previous errors
+
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+verification results:: 3 verified, 2 errors
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_ModExpPow2_int_impl.rs:25:7
+   |
+25 | proof fn exp_pow2_lemma(x: nat, n: nat)
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_ModExpPow2_int_impl.rs:26:13
+   |
+26 |       ensures Exp_int(x, Exp_int(2, n)) == if n == 0 { x } else { Exp_int(Exp_int(x, Exp_int(2, (n - 1) as nat)), 2) }
+   |               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+27 |   {
+28 | /     if n == 0 {
+29 | |         assert(Exp_int(2, 0) == 1);
+30 | |         assert(Exp_int(x, 1) == x);
+31 | |     } else {
+32 | |         assert(Exp_int(2, n) == 2 * Exp_int(2, (n - 1) as nat));
+33 | |     }
+   | |_____- at the end of the function body
+
+error: assertion failed
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_ModExpPow2_int_impl.rs:30:16
+   |
+30 |         assert(Exp_int(x, 1) == x);
+   |                ^^^^^^^^^^^^^^^^^^ assertion failed
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_ModExpPow2_int_impl.rs:38:6
+   |
+38 | exec fn ModExpPow2_int(x: u64, y: u64, n: u64, z: u64) -> (res: u64)
+   |      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_ModExpPow2_int_impl.rs:41:11
+   |
+41 |     ensures (res as nat) == Exp_int(x as nat, y as nat) % (z as nat)
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+47 | /     if n == 0u64 {
+48 | |         assert(y == 1u64);
+49 | |         if x == 0u64 {
+50 | |             return 0u64;
+...  |
+58 | |         result
+59 | |     }
+   | |_____- at the end of the function body
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_ModExpPow2_int_impl.rs:41:11
+   |
+41 |   ensures (res as nat) == Exp_int(x as nat, y as nat) % (z as nat)
+   |           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+50 |             return 0u64;
+   |             ----------- at this exit
+
+error: possible arithmetic underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_ModExpPow2_int_impl.rs:57:23
+   |
+57 |         let result = ((half_res as u128 * half_res as u128) % z as u128) as u64;
+   |                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: aborting due to 5 previous errors
+

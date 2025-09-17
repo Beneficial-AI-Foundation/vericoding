@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(n: nat) -> bool {
     n > 0
 }
@@ -42,6 +39,9 @@ spec fn min_moves_to_one(n: nat) -> nat
     else if n % 5 == 0 { 3 + min_moves_to_one(n / 5) }
     else { 0 }
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

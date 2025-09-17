@@ -10,10 +10,10 @@ spec fn valid_input(n: int, k: int, w: Seq<int>) -> bool {
 spec fn sum_trips(w: Seq<int>, k: int) -> int
     decreases w.len()
 {
-    if w.len() == 0 { 
-        0 
-    } else { 
-        (w[0] + k - 1) / k + sum_trips(w.subrange(1, w.len() as int), k)
+    if w.len() == 0 {
+        0
+    } else {
+        (w[0] + k - 1) / k + sum_trips(w.drop_first(), k)
     }
 }
 // </vc-preamble>
@@ -23,14 +23,16 @@ spec fn sum_trips(w: Seq<int>, k: int) -> int
 
 // <vc-spec>
 fn solve(n: int, k: int, w: Seq<int>) -> (result: int)
-    requires valid_input(n, k, w),
-    ensures result >= 0,
-    ensures result == (sum_trips(w, k) + 1) / 2,
+    requires 
+        valid_input(n, k, w),
+    ensures 
+        result >= 0,
+        result == (sum_trips(w, k) + 1) / 2,
 // </vc-spec>
 // <vc-code>
 {
     assume(false);
-    0
+    unreached()
 }
 // </vc-code>
 

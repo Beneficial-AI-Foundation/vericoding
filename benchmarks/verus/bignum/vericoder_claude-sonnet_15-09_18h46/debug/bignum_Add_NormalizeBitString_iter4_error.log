@@ -1,0 +1,124 @@
+=== Verification Error - Iteration 4 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_Add_NormalizeBitString.rs
+Time: 2025-09-15 19:20:37
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Verification failed: verification results:: 5 verified, 5 errors
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_Add_NormalizeBitString_impl.rs:25:6
+   |
+25 | exec fn NormalizeBitString(s: &[char]) -> (t: Vec<char>)
+   |      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_Add_NormalizeBitString_impl.rs:28:4
+   |
+28 |    t@.len() > 1 ==> t@[0] != '0',
+   |    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+69 |     result
+   |     ------ at the end of the function body
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_Add_NormalizeBitString_impl.rs:29:4
+   |
+29 |    ValidBitString(s@) ==> Str2Int(s@) == Str2Int(t@)
+   |    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+52 |         return result;
+   |         ------------- at this exit
+
+error: invariant not satisfied at end of loop body
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_Add_NormalizeBitString_impl.rs:61:13
+   |
+61 |             ValidBitString(result@),
+   |             ^^^^^^^^^^^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_Add_NormalizeBitString_impl.rs:88:9
+   |
+85 | proof fn str2int_append_lemma(s: Seq<char>, c: char)
+   |       ---------------------------------------------- at the end of the function body
+...
+88 |         Str2Int(s.push(c)) == 2 * Str2Int(s) + (if c == '1' { 1nat } else { 0nat })
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+
+error: postcondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_Add_NormalizeBitString_impl.rs:98:5
+    |
+98  |     Str2Int(res@) == Str2Int(s1@) + Str2Int(s2@)
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+160 |     final_result
+    |     ------------ at the end of the function body
+
+error: invariant not satisfied at end of loop body
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_Add_NormalizeBitString_impl.rs:148:13
+    |
+148 |             ValidBitString(final_result@),
+    |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: aborting due to 6 previous errors
+
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+verification results:: 5 verified, 5 errors
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_Add_NormalizeBitString_impl.rs:25:6
+   |
+25 | exec fn NormalizeBitString(s: &[char]) -> (t: Vec<char>)
+   |      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_Add_NormalizeBitString_impl.rs:28:4
+   |
+28 |    t@.len() > 1 ==> t@[0] != '0',
+   |    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+69 |     result
+   |     ------ at the end of the function body
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_Add_NormalizeBitString_impl.rs:29:4
+   |
+29 |    ValidBitString(s@) ==> Str2Int(s@) == Str2Int(t@)
+   |    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+52 |         return result;
+   |         ------------- at this exit
+
+error: invariant not satisfied at end of loop body
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_Add_NormalizeBitString_impl.rs:61:13
+   |
+61 |             ValidBitString(result@),
+   |             ^^^^^^^^^^^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_Add_NormalizeBitString_impl.rs:88:9
+   |
+85 | proof fn str2int_append_lemma(s: Seq<char>, c: char)
+   |       ---------------------------------------------- at the end of the function body
+...
+88 |         Str2Int(s.push(c)) == 2 * Str2Int(s) + (if c == '1' { 1nat } else { 0nat })
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+
+error: postcondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_Add_NormalizeBitString_impl.rs:98:5
+    |
+98  |     Str2Int(res@) == Str2Int(s1@) + Str2Int(s2@)
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+160 |     final_result
+    |     ------------ at the end of the function body
+
+error: invariant not satisfied at end of loop body
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_Add_NormalizeBitString_impl.rs:148:13
+    |
+148 |             ValidBitString(final_result@),
+    |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: aborting due to 6 previous errors
+

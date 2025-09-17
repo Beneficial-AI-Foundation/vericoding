@@ -15,18 +15,18 @@
 
 
 /--
-Computes the Sum of first N natural numbers.
-Translated from Dafny method Sum.
+Computes the Sum_ of first N natural numbers.
+Translated from Dafny method Sum_.
 
 @param N The upper bound for summation
-@return The Sum of numbers from 1 to N
+@return The Sum_ of numbers from 1 to N
 -/
-def SumPrime (N : Int) : Int := sorry
+def Sum_ (N : Int) : Int := sorry
 
 /--
-Specification for SumPrime method:
+Specification for Sum_ method:
 - Requires N to be non-negative
 - Ensures result equals N * (N + 1) / 2
 -/
 theorem Sum_spec (N : Int) :
-N ≥ 0 → SumPrime N = N * (N + 1) / 2 := sorry
+N ≥ 0 → Sum_ N = N * (N + 1) / 2 := sorry

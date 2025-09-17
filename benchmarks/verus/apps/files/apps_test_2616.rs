@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(test_cases: Seq<Seq<int>>) -> bool {
     forall|i: int| 0 <= i < test_cases.len() ==> 
         test_cases[i].len() >= 1 && 
@@ -13,7 +10,7 @@ spec fn valid_input(test_cases: Seq<Seq<int>>) -> bool {
 
 spec fn valid_results(results: Seq<Seq<char>>) -> bool {
     forall|i: int| 0 <= i < results.len() ==> 
-        results[i] == seq!['F','i','r','s','t'] || results[i] == seq!['S','e','c','o','n','d']
+        results[i] == seq!['F', 'i', 'r', 's', 't'] || results[i] == seq!['S', 'e', 'c', 'o', 'n', 'd']
 }
 
 spec fn count_leading_ones(piles: Seq<int>) -> nat
@@ -28,16 +25,36 @@ spec fn count_leading_ones(piles: Seq<int>) -> nat
     }
 }
 
+spec fn count_ones_in_seq(piles: Seq<int>) -> nat {
+    piles.filter(|x: int| x == 1).len()
+}
+
 spec fn correct_game_result(piles: Seq<int>, result: Seq<char>) -> bool {
-    let ones_count = piles.filter(|x: int| x == 1).len();
-    let all_ones = (ones_count == piles.len());
-    let leading_ones = count_leading_ones(piles);
-    if all_ones {
-        if ones_count % 2 == 1 { result == seq!['F','i','r','s','t'] } else { result == seq!['S','e','c','o','n','d'] }
-    } else {
-        if leading_ones % 2 == 1 { result == seq!['S','e','c','o','n','d'] } else { result == seq!['F','i','r','s','t'] }
+    &&& piles.len() >= 1
+    &&& (forall|j: int| 0 <= j < piles.len() ==> piles[j] >= 1)
+    &&& (result == seq!['F', 'i', 'r', 's', 't'] || result == seq!['S', 'e', 'c', 'o', 'n', 'd'])
+    &&& {
+        let ones_count = count_ones_in_seq(piles);
+        let all_ones = (ones_count == piles.len());
+        let leading_ones = count_leading_ones(piles);
+        if all_ones {
+            if ones_count % 2 == 1 {
+                result == seq!['F', 'i', 'r', 's', 't']
+            } else {
+                result == seq!['S', 'e', 'c', 'o', 'n', 'd']
+            }
+        } else {
+            if leading_ones % 2 == 1 {
+                result == seq!['S', 'e', 'c', 'o', 'n', 'd']
+            } else {
+                result == seq!['F', 'i', 'r', 's', 't']
+            }
+        }
     }
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>
@@ -45,14 +62,14 @@ fn solve(test_cases: Seq<Seq<int>>) -> (results: Seq<Seq<char>>)
     requires 
         valid_input(test_cases)
     ensures 
-        results.len() == test_cases.len() &&
-        valid_results(results) &&
+        results.len() == test_cases.len(),
+        valid_results(results),
         forall|i: int| 0 <= i < test_cases.len() ==> correct_game_result(test_cases[i], results[i])
 // </vc-spec>
 // <vc-code>
 {
     assume(false);
-    Seq::empty()
+    unreached()
 }
 // </vc-code>
 

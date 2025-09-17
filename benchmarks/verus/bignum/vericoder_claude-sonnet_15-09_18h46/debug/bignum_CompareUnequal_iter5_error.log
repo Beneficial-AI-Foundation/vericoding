@@ -1,0 +1,106 @@
+=== Verification Error - Iteration 5 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_CompareUnequal.rs
+Time: 2025-09-15 19:19:37
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Verification failed: verification results:: 5 verified, 3 errors
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_CompareUnequal_impl.rs:44:7
+   |
+44 | proof fn lemma_str2int_bounds(s: Seq<char>)
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: assertion failed
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_CompareUnequal_impl.rs:53:16
+   |
+53 |         assert(Str2Int(s) <= 1nat);
+   |                ^^^^^^^^^^^^^^^^^^ assertion failed
+
+error: assertion failed
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_CompareUnequal_impl.rs:54:16
+   |
+54 |         assert(pow(2, 1nat) == 2nat);
+   |                ^^^^^^^^^^^^^^^^^^^^ assertion failed
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_CompareUnequal_impl.rs:67:7
+   |
+67 | proof fn lemma_str2int_lower_bound(s: Seq<char>)
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: assertion failed
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_CompareUnequal_impl.rs:78:16
+   |
+78 |         assert(Str2Int(s) >= 2nat);
+   |                ^^^^^^^^^^^^^^^^^^ assertion failed
+
+error: assertion failed
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_CompareUnequal_impl.rs:84:16
+   |
+84 |         assert(Str2Int(s) >= 2 * pow(2, (suffix.len() - 1) as nat));
+   |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ assertion failed
+
+error: postcondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_CompareUnequal_impl.rs:117:5
+    |
+117 |     (Str2Int(s1@) == Str2Int(s2@) ==> res == 0),
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+130 |     return 1;
+    |     -------- at this exit
+
+error: aborting due to 5 previous errors
+
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+verification results:: 5 verified, 3 errors
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_CompareUnequal_impl.rs:44:7
+   |
+44 | proof fn lemma_str2int_bounds(s: Seq<char>)
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: assertion failed
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_CompareUnequal_impl.rs:53:16
+   |
+53 |         assert(Str2Int(s) <= 1nat);
+   |                ^^^^^^^^^^^^^^^^^^ assertion failed
+
+error: assertion failed
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_CompareUnequal_impl.rs:54:16
+   |
+54 |         assert(pow(2, 1nat) == 2nat);
+   |                ^^^^^^^^^^^^^^^^^^^^ assertion failed
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_CompareUnequal_impl.rs:67:7
+   |
+67 | proof fn lemma_str2int_lower_bound(s: Seq<char>)
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: assertion failed
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_CompareUnequal_impl.rs:78:16
+   |
+78 |         assert(Str2Int(s) >= 2nat);
+   |                ^^^^^^^^^^^^^^^^^^ assertion failed
+
+error: assertion failed
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_CompareUnequal_impl.rs:84:16
+   |
+84 |         assert(Str2Int(s) >= 2 * pow(2, (suffix.len() - 1) as nat));
+   |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ assertion failed
+
+error: postcondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_CompareUnequal_impl.rs:117:5
+    |
+117 |     (Str2Int(s1@) == Str2Int(s2@) ==> res == 0),
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+130 |     return 1;
+    |     -------- at this exit
+
+error: aborting due to 5 previous errors
+

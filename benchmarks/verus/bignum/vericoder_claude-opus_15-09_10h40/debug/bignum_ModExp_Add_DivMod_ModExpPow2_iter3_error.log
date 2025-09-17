@@ -1,0 +1,52 @@
+=== Verification Error - Iteration 3 ===
+File: benchmarks/verus/bignum/files/bignum_ModExp_Add_DivMod_ModExpPow2.rs
+Time: 2025-09-15 11:00:36
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: error[E0425]: cannot find function `find_highest_power_of_2` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_Add_DivMod_ModExpPow2_impl.rs:73:19
+   |
+73 |     let ghost n = find_highest_power_of_2(sy);
+   |                   ^^^^^^^^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `create_power_of_2` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_Add_DivMod_ModExpPow2_impl.rs:74:22
+   |
+74 |     let power_of_2 = create_power_of_2(n);
+   |                      ^^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `subtract_bit_strings` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_Add_DivMod_ModExpPow2_impl.rs:75:21
+   |
+75 |     let remainder = subtract_bit_strings(sy, &power_of_2);
+   |                     ^^^^^^^^^^^^^^^^^^^^ not found in this scope
+
+error: aborting due to 3 previous errors
+
+For more information about this error, try `rustc --explain E0425`.
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+error[E0425]: cannot find function `find_highest_power_of_2` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_Add_DivMod_ModExpPow2_impl.rs:73:19
+   |
+73 |     let ghost n = find_highest_power_of_2(sy);
+   |                   ^^^^^^^^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `create_power_of_2` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_Add_DivMod_ModExpPow2_impl.rs:74:22
+   |
+74 |     let power_of_2 = create_power_of_2(n);
+   |                      ^^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `subtract_bit_strings` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_Add_DivMod_ModExpPow2_impl.rs:75:21
+   |
+75 |     let remainder = subtract_bit_strings(sy, &power_of_2);
+   |                     ^^^^^^^^^^^^^^^^^^^^ not found in this scope
+
+error: aborting due to 3 previous errors
+
+For more information about this error, try `rustc --explain E0425`.

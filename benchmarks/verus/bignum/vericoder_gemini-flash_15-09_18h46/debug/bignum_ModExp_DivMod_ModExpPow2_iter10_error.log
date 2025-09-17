@@ -1,0 +1,72 @@
+=== Verification Error - Iteration 10 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExp_DivMod_ModExpPow2.rs
+Time: 2025-09-15 18:50:19
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_DivMod_ModExpPow2_impl.rs:49:20
+   |
+49 |         temp_val = (temp_val / 2) as nat;
+   |                    ^^^^^^^^^^^^^^^^^^^^^
+
+error[E0433]: failed to resolve: could not find `builtin` in `vstd`
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_DivMod_ModExpPow2_impl.rs:41:38
+   |
+41 |             Str2Int(result@) * vstd::builtin::pow2(result.len() as nat) + temp_val == initial_n // This invariant needs to be carefully checked.
+   |                                      ^^^^^^^ could not find `builtin` in `vstd`
+
+error[E0423]: expected function, found macro `panic`
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_DivMod_ModExpPow2_impl.rs:64:5
+   |
+64 |     panic("Not yet implemented due to helper errors");
+   |     ^^^^^ not a function
+   |
+help: use `!` to invoke the macro
+   |
+64 |     panic!("Not yet implemented due to helper errors");
+   |          +
+help: consider importing this function instead
+   |
+1  + use core::panicking::panic;
+   |
+
+error: aborting due to 3 previous errors
+
+Some errors have detailed explanations: E0423, E0433.
+For more information about an error, try `rustc --explain E0423`.
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_DivMod_ModExpPow2_impl.rs:49:20
+   |
+49 |         temp_val = (temp_val / 2) as nat;
+   |                    ^^^^^^^^^^^^^^^^^^^^^
+
+error[E0433]: failed to resolve: could not find `builtin` in `vstd`
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_DivMod_ModExpPow2_impl.rs:41:38
+   |
+41 |             Str2Int(result@) * vstd::builtin::pow2(result.len() as nat) + temp_val == initial_n // This invariant needs to be carefully checked.
+   |                                      ^^^^^^^ could not find `builtin` in `vstd`
+
+error[E0423]: expected function, found macro `panic`
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_DivMod_ModExpPow2_impl.rs:64:5
+   |
+64 |     panic("Not yet implemented due to helper errors");
+   |     ^^^^^ not a function
+   |
+help: use `!` to invoke the macro
+   |
+64 |     panic!("Not yet implemented due to helper errors");
+   |          +
+help: consider importing this function instead
+   |
+1  + use core::panicking::panic;
+   |
+
+error: aborting due to 3 previous errors
+
+Some errors have detailed explanations: E0423, E0433.
+For more information about an error, try `rustc --explain E0423`.

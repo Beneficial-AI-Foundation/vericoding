@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn f(n: int, x: int) -> int {
   let y = n / x;
   y + x * y * (y - 1) / 2
@@ -21,6 +18,9 @@ spec fn is_sorted(s: Seq<int>) -> bool {
 spec fn no_duplicates(s: Seq<int>) -> bool {
   forall|i: int, j: int| 0 <= i < j < s.len() ==> s[i] != s[j]
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

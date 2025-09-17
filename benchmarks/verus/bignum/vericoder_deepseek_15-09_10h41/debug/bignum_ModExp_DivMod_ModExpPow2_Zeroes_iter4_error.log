@@ -1,0 +1,64 @@
+=== Verification Error - Iteration 4 ===
+File: benchmarks/verus/bignum/files/bignum_ModExp_DivMod_ModExpPow2_Zeroes.rs
+Time: 2025-09-15 10:49:46
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_10h41/bignum_ModExp_DivMod_ModExpPow2_Zeroes_impl.rs:58:19
+   |
+58 |     let mut val = result_val as nat;
+   |                   ^^^^^^^^^^^^^^^^^
+
+error: cannot find macro `ghost` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_10h41/bignum_ModExp_DivMod_ModExpPow2_Zeroes_impl.rs:54:5
+   |
+54 |     ghost! {
+   |     ^^^^^
+
+error[E0425]: cannot find function, tuple struct or tuple variant `Exp_int_mod` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_10h41/bignum_ModExp_DivMod_ModExpPow2_Zeroes_impl.rs:27:34
+   |
+27 |     ensures Exp_int(x, y) % m == Exp_int_mod(x, y, m)
+   |                                  ^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function, tuple struct or tuple variant `Exp_int_mod` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_10h41/bignum_ModExp_DivMod_ModExpPow2_Zeroes_impl.rs:53:22
+   |
+53 |     let result_val = Exp_int_mod(x_val, y_val, z_val);
+   |                      ^^^^^^^^^^^ not found in this scope
+
+error: aborting due to 4 previous errors
+
+For more information about this error, try `rustc --explain E0425`.
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_10h41/bignum_ModExp_DivMod_ModExpPow2_Zeroes_impl.rs:58:19
+   |
+58 |     let mut val = result_val as nat;
+   |                   ^^^^^^^^^^^^^^^^^
+
+error: cannot find macro `ghost` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_10h41/bignum_ModExp_DivMod_ModExpPow2_Zeroes_impl.rs:54:5
+   |
+54 |     ghost! {
+   |     ^^^^^
+
+error[E0425]: cannot find function, tuple struct or tuple variant `Exp_int_mod` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_10h41/bignum_ModExp_DivMod_ModExpPow2_Zeroes_impl.rs:27:34
+   |
+27 |     ensures Exp_int(x, y) % m == Exp_int_mod(x, y, m)
+   |                                  ^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function, tuple struct or tuple variant `Exp_int_mod` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_10h41/bignum_ModExp_DivMod_ModExpPow2_Zeroes_impl.rs:53:22
+   |
+53 |     let result_val = Exp_int_mod(x_val, y_val, z_val);
+   |                      ^^^^^^^^^^^ not found in this scope
+
+error: aborting due to 4 previous errors
+
+For more information about this error, try `rustc --explain E0425`.

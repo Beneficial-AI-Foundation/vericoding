@@ -1,0 +1,38 @@
+=== Verification Error - Iteration 2 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExp_ModExpPow2.rs
+Time: 2025-09-15 18:56:38
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_ModExpPow2_impl.rs:79:15
+   |
+79 |   let mut i = bit_string_chars.len() as int - 1;
+   |               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_ModExpPow2_impl.rs:88:61
+   |
+88 |       reversed_bit_string_chars.push(bit_string_chars.index(i as nat)@);
+   |                                                             ^^^^^^^^
+
+error: aborting due to 2 previous errors
+
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_ModExpPow2_impl.rs:79:15
+   |
+79 |   let mut i = bit_string_chars.len() as int - 1;
+   |               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_ModExpPow2_impl.rs:88:61
+   |
+88 |       reversed_bit_string_chars.push(bit_string_chars.index(i as nat)@);
+   |                                                             ^^^^^^^^
+
+error: aborting due to 2 previous errors
+

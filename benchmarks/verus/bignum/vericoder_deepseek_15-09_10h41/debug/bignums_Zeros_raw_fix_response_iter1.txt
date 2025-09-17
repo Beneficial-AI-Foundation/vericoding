@@ -1,0 +1,5 @@
+=== Raw LLM Fix Response - Iteration 1 ===
+Length: 454 characters
+--------------------------------------------------------------------------------
+["fn Zeros_proof(n: nat) -> (s: Vec<char>)\n    ensures\n        s@.len() == n,\n        ValidBitString(s@),\n        Str2Int(s@) == 0,\n        AllZero(s@)\n    decreases n\n{\n    if n == 0 {\n        Vec::new()\n    } else {\n        let mut v = Zeros_proof((n - 1) as nat);\n        v.push('0');\n        v\n    }\n}", "/* code modified by LLM (iteration 2): Fixed type conversion and removed invalid proof block */\n{\n    Zeros_proof(n as nat)\n}"]
+--------------------------------------------------------------------------------

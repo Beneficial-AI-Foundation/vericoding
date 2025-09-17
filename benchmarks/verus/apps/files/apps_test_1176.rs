@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn sum_seq(s: Seq<int>) -> int
     decreases s.len()
 {
@@ -23,6 +20,9 @@ spec fn min_seq(s: Seq<int>) -> int
         if s[0] <= rest_min { s[0] } else { rest_min }
     }
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

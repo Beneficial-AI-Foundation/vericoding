@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_triple(a: int, b: int, c: int, n: int, k: int) -> bool
     recommends k >= 1
 {
@@ -20,7 +17,7 @@ spec fn count_valid_triples(n: int, k: int) -> int
         cnt1 * cnt1 * cnt1
     } else {
         let cnt1 = n / k;
-        let cnt2 = n / k + (if n % k >= k / 2 { 1 } else { 0 });
+        let cnt2 = n / k + (if n % k >= k / 2 { 1int } else { 0int });
         cnt1 * cnt1 * cnt1 + cnt2 * cnt2 * cnt2
     }
 }
@@ -32,14 +29,17 @@ spec fn valid_input(n: int, k: int) -> bool {
 spec fn count_divisible_by_k(n: int, k: int) -> int
     recommends k >= 1
 {
-    if n <= 0 { 0 } else { n / k }
+    if n <= 0 { 0int } else { n / k }
 }
 
 spec fn count_with_remainder_half_k(n: int, k: int) -> int
     recommends k >= 1
 {
-    if n <= 0 { 0 } else { n / k + (if n % k >= k / 2 { 1 } else { 0 }) }
+    if n <= 0 { 0int } else { n / k + (if n % k >= k / 2 { 1int } else { 0int }) }
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>
@@ -52,10 +52,8 @@ fn solve(n: int, k: int) -> (result: int)
 // </vc-spec>
 // <vc-code>
 {
-    // impl-start
     assume(false);
-    0
-    // impl-end
+    unreached()
 }
 // </vc-code>
 

@@ -1,0 +1,10 @@
+=== LLM Response - generate_code - Iteration 0 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExp_DivMod_ModExpPow2_Mul_Zeroes.rs
+Prompt Hash: 66fb6206
+JSON Parsed Successfully: False
+Timestamp: 1757957862.679457
+Content Length: 1697 chars
+--------------------------------------------------------------------------------
+```json
+["exec fn Str2IntExec(s: &[char]) -> (n: nat)\n    requires ValidBitString(s@)\n    ensures n == Str2Int(s@)\n{\n    let mut n: nat = 0;\n    let mut i: nat = 0;\n    while i < s.len()\n        invariant\n            ValidBitString(s@),\n            i <= s.len(),\n            n == Str2Int(s@.subrange(0, i as int)),\n    {\n        proof {\n            let i_int = i as int;\n            if i < s.len() {\n                let next_s = s@.subrange(0, i_int + 1);\n                let prefix = s@.subrange(0, i_int);\n                assert(next_s.len() > 0);\n                assert(prefix == next_s.subrange(0, next_s.len() - 1));\n                assert(s@[i_int] == next_s.last());\n                assert(Str2Int(next_s) == 2 * Str2Int(prefix) + (if s@[i_int] == '1' { 1 } else { 0 }));\n            }\n        }\n        let bit = if s[i as usize] == '1' { 1 } else { 0 };\n        n = n * 2 + bit;\n        i = i + 1;\n    }\n    n\n}\n\nexec fn Int2StrExec(n: nat) -> (s: Vec<char>)\n    ensures\n        ValidBitString(s@),\n        (n > 0 ==> s@[0] == '1' && s@.len() > 0),\n        (n > 0 ==> Str2Int(s@) == n),\n        n == 0 ==> s@ =~= seq!['0'],\n    decreases n\n{\n    if n == 0 {\n        return vec!['0'];\n    }\n    if n == 1 {\n        return vec!['1'];\n    }\n\n    let prev_n = n / 2;\n    let mut res = Int2StrExec(prev_n);\n    let bit_char = if n % 2 == 1 { '1' } else { '0' };\n    res.push(bit_char);\n\n    proof {\n        let res_seq = res@;\n        let prev_res_seq = res_seq.subrange(0, res_seq.len() - 1);\n        assert(Str2Int(prev_res_seq) == prev_n) by {\n            // by ensures of recursive call\n        };\n        let bit_val = if n % 2 == 1
+--------------------------------------------------------------------------------

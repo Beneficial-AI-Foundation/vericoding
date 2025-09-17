@@ -1,0 +1,70 @@
+=== Verification Error - Iteration 8 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_NormalizeBitString.rs
+Time: 2025-09-15 18:48:17
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Verification failed: verification results:: 6 verified, 2 errors
+error: assertion failed
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_NormalizeBitString_impl.rs:65:16
+   |
+65 |         assert(s.subrange(0, s.len() as int - 1) == Seq::<char>::empty().add(tail.subrange(0, tail.len() as int - 1)));
+   |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ assertion failed
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_NormalizeBitString_impl.rs:75:6
+   |
+75 | exec fn NormalizeBitString(s: &[char]) -> (t: Vec<char>)
+   |      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_NormalizeBitString_impl.rs:76:78
+    |
+76  |   ensures ValidBitString(t@), t@.len() > 0, (t@.len() > 1 ==> t@[0] != '0'), ValidBitString(s@) ==> Str2Int(s@) == Str2Int(t@)
+    |                                                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+100 |         return result;
+    |         ------------- at this exit
+
+error: assertion failed
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_NormalizeBitString_impl.rs:130:20
+    |
+130 |             assert(Str2Int(s@) == Str2Int(s@.subrange(start_idx as int, s@.len() as int)));
+    |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ assertion failed
+
+error: aborting due to 3 previous errors
+
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+verification results:: 6 verified, 2 errors
+error: assertion failed
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_NormalizeBitString_impl.rs:65:16
+   |
+65 |         assert(s.subrange(0, s.len() as int - 1) == Seq::<char>::empty().add(tail.subrange(0, tail.len() as int - 1)));
+   |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ assertion failed
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_NormalizeBitString_impl.rs:75:6
+   |
+75 | exec fn NormalizeBitString(s: &[char]) -> (t: Vec<char>)
+   |      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_NormalizeBitString_impl.rs:76:78
+    |
+76  |   ensures ValidBitString(t@), t@.len() > 0, (t@.len() > 1 ==> t@[0] != '0'), ValidBitString(s@) ==> Str2Int(s@) == Str2Int(t@)
+    |                                                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+100 |         return result;
+    |         ------------- at this exit
+
+error: assertion failed
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_NormalizeBitString_impl.rs:130:20
+    |
+130 |             assert(Str2Int(s@) == Str2Int(s@.subrange(start_idx as int, s@.len() as int)));
+    |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ assertion failed
+
+error: aborting due to 3 previous errors
+

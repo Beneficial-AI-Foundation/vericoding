@@ -1,0 +1,366 @@
+=== Verification Error - Iteration 4 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExp.rs
+Time: 2025-09-15 20:36:05
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_ModExp_impl.rs:46:26
+   |
+46 |         let temp = if s@[i as int] == '1' { BigNat::one() } else { BigNat::zero() };
+   |                          ^^^^^^^^
+
+error[E0412]: cannot find type `BigNat` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_ModExp_impl.rs:33:44
+   |
+33 | exec fn str_to_nat(s: &[char]) -> (result: BigNat)
+   |                                            ^^^^^^ not found in this scope
+
+error[E0412]: cannot find type `BigNat` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_ModExp_impl.rs:53:20
+   |
+53 | exec fn mod_exp(x: BigNat, y: BigNat, m: BigNat) -> (result: BigNat)
+   |                    ^^^^^^ not found in this scope
+
+error[E0412]: cannot find type `BigNat` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_ModExp_impl.rs:53:31
+   |
+53 | exec fn mod_exp(x: BigNat, y: BigNat, m: BigNat) -> (result: BigNat)
+   |                               ^^^^^^ not found in this scope
+
+error[E0412]: cannot find type `BigNat` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_ModExp_impl.rs:53:42
+   |
+53 | exec fn mod_exp(x: BigNat, y: BigNat, m: BigNat) -> (result: BigNat)
+   |                                          ^^^^^^ not found in this scope
+
+error[E0412]: cannot find type `BigNat` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_ModExp_impl.rs:53:62
+   |
+53 | exec fn mod_exp(x: BigNat, y: BigNat, m: BigNat) -> (result: BigNat)
+   |                                                              ^^^^^^ not found in this scope
+
+error[E0412]: cannot find type `BigNat` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_ModExp_impl.rs:74:23
+   |
+74 | exec fn nat_to_str(n: BigNat) -> (result: Vec<char>)
+   |                       ^^^^^^ not found in this scope
+
+error[E0433]: failed to resolve: use of undeclared type `BigNat`
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_ModExp_impl.rs:35:13
+   |
+35 |     ensures BigNat::spec_eq(result@, Str2Int(s@))
+   |             ^^^^^^ use of undeclared type `BigNat`
+
+error[E0433]: failed to resolve: use of undeclared type `BigNat`
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_ModExp_impl.rs:37:22
+   |
+37 |     let mut result = BigNat::zero();
+   |                      ^^^^^^ use of undeclared type `BigNat`
+
+error[E0433]: failed to resolve: use of undeclared type `BigNat`
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_ModExp_impl.rs:43:13
+   |
+43 |             BigNat::spec_eq(result@, Str2Int(s@.subrange(0, s@.len().min(i as int)))),
+   |             ^^^^^^ use of undeclared type `BigNat`
+
+error[E0433]: failed to resolve: use of undeclared type `BigNat`
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_ModExp_impl.rs:46:45
+   |
+46 |         let temp = if s@[i as int] == '1' { BigNat::one() } else { BigNat::zero() };
+   |                                             ^^^^^^ use of undeclared type `BigNat`
+
+error[E0433]: failed to resolve: use of undeclared type `BigNat`
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_ModExp_impl.rs:46:68
+   |
+46 |         let temp = if s@[i as int] == '1' { BigNat::one() } else { BigNat::zero() };
+   |                                                                    ^^^^^^ use of undeclared type `BigNat`
+
+error[E0433]: failed to resolve: use of undeclared type `BigNat`
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_ModExp_impl.rs:47:28
+   |
+47 |         result = result * (BigNat::one() + BigNat::one()) + temp;
+   |                            ^^^^^^ use of undeclared type `BigNat`
+
+error[E0433]: failed to resolve: use of undeclared type `BigNat`
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_ModExp_impl.rs:47:44
+   |
+47 |         result = result * (BigNat::one() + BigNat::one()) + temp;
+   |                                            ^^^^^^ use of undeclared type `BigNat`
+
+error[E0433]: failed to resolve: use of undeclared type `BigNat`
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_ModExp_impl.rs:54:19
+   |
+54 |     requires m != BigNat::zero()
+   |                   ^^^^^^ use of undeclared type `BigNat`
+
+error[E0433]: failed to resolve: use of undeclared type `BigNat`
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_ModExp_impl.rs:55:13
+   |
+55 |     ensures BigNat::spec_eq(result@, Exp_int(x@, y@) % m@)
+   |             ^^^^^^ use of undeclared type `BigNat`
+
+error[E0433]: failed to resolve: use of undeclared type `BigNat`
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_ModExp_impl.rs:57:22
+   |
+57 |     let mut result = BigNat::one();
+   |                      ^^^^^^ use of undeclared type `BigNat`
+
+error[E0433]: failed to resolve: use of undeclared type `BigNat`
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_ModExp_impl.rs:62:18
+   |
+62 |             m != BigNat::zero(),
+   |                  ^^^^^^ use of undeclared type `BigNat`
+
+error[E0433]: failed to resolve: use of undeclared type `BigNat`
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_ModExp_impl.rs:63:33
+   |
+63 |         decreases if exp@ > 0 { BigNat::spec_len(exp@) } else { 0 }
+   |                                 ^^^^^^ use of undeclared type `BigNat`
+
+error[E0433]: failed to resolve: use of undeclared type `BigNat`
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_ModExp_impl.rs:65:27
+   |
+65 |         if exp.clone() % (BigNat::one() + BigNat::one()) == BigNat::one() {
+   |                           ^^^^^^ use of undeclared type `BigNat`
+
+error[E0433]: failed to resolve: use of undeclared type `BigNat`
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_ModExp_impl.rs:65:43
+   |
+65 |         if exp.clone() % (BigNat::one() + BigNat::one()) == BigNat::one() {
+   |                                           ^^^^^^ use of undeclared type `BigNat`
+
+error[E0433]: failed to resolve: use of undeclared type `BigNat`
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_ModExp_impl.rs:65:61
+   |
+65 |         if exp.clone() % (BigNat::one() + BigNat::one()) == BigNat::one() {
+   |                                                             ^^^^^^ use of undeclared type `BigNat`
+
+error[E0433]: failed to resolve: use of undeclared type `BigNat`
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_ModExp_impl.rs:69:21
+   |
+69 |         exp = exp / BigNat::from(2);
+   |                     ^^^^^^ use of undeclared type `BigNat`
+
+error[E0433]: failed to resolve: use of undeclared type `BigNat`
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_ModExp_impl.rs:77:9
+   |
+77 |         BigNat::spec_eq(n@, Str2Int(result@))
+   |         ^^^^^^ use of undeclared type `BigNat`
+
+error[E0433]: failed to resolve: use of undeclared type `BigNat`
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_ModExp_impl.rs:79:13
+   |
+79 |     if n == BigNat::zero() {
+   |             ^^^^^^ use of undeclared type `BigNat`
+
+error[E0433]: failed to resolve: use of undeclared type `BigNat`
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_ModExp_impl.rs:88:35
+   |
+88 |             if current.clone() % (BigNat::one() + BigNat::one()) == BigNat::one() {
+   |                                   ^^^^^^ use of undeclared type `BigNat`
+
+error[E0433]: failed to resolve: use of undeclared type `BigNat`
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_ModExp_impl.rs:88:51
+   |
+88 |             if current.clone() % (BigNat::one() + BigNat::one()) == BigNat::one() {
+   |                                                   ^^^^^^ use of undeclared type `BigNat`
+
+error[E0433]: failed to resolve: use of undeclared type `BigNat`
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_ModExp_impl.rs:88:69
+   |
+88 |             if current.clone() % (BigNat::one() + BigNat::one()) == BigNat::one() {
+   |                                                                     ^^^^^^ use of undeclared type `BigNat`
+
+error[E0433]: failed to resolve: use of undeclared type `BigNat`
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_ModExp_impl.rs:93:33
+   |
+93 |             current = current / BigNat::from(2);
+   |                                 ^^^^^^ use of undeclared type `BigNat`
+
+error: aborting due to 29 previous errors
+
+Some errors have detailed explanations: E0412, E0433.
+For more information about an error, try `rustc --explain E0412`.
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_ModExp_impl.rs:46:26
+   |
+46 |         let temp = if s@[i as int] == '1' { BigNat::one() } else { BigNat::zero() };
+   |                          ^^^^^^^^
+
+error[E0412]: cannot find type `BigNat` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_ModExp_impl.rs:33:44
+   |
+33 | exec fn str_to_nat(s: &[char]) -> (result: BigNat)
+   |                                            ^^^^^^ not found in this scope
+
+error[E0412]: cannot find type `BigNat` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_ModExp_impl.rs:53:20
+   |
+53 | exec fn mod_exp(x: BigNat, y: BigNat, m: BigNat) -> (result: BigNat)
+   |                    ^^^^^^ not found in this scope
+
+error[E0412]: cannot find type `BigNat` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_ModExp_impl.rs:53:31
+   |
+53 | exec fn mod_exp(x: BigNat, y: BigNat, m: BigNat) -> (result: BigNat)
+   |                               ^^^^^^ not found in this scope
+
+error[E0412]: cannot find type `BigNat` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_ModExp_impl.rs:53:42
+   |
+53 | exec fn mod_exp(x: BigNat, y: BigNat, m: BigNat) -> (result: BigNat)
+   |                                          ^^^^^^ not found in this scope
+
+error[E0412]: cannot find type `BigNat` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_ModExp_impl.rs:53:62
+   |
+53 | exec fn mod_exp(x: BigNat, y: BigNat, m: BigNat) -> (result: BigNat)
+   |                                                              ^^^^^^ not found in this scope
+
+error[E0412]: cannot find type `BigNat` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_ModExp_impl.rs:74:23
+   |
+74 | exec fn nat_to_str(n: BigNat) -> (result: Vec<char>)
+   |                       ^^^^^^ not found in this scope
+
+error[E0433]: failed to resolve: use of undeclared type `BigNat`
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_ModExp_impl.rs:35:13
+   |
+35 |     ensures BigNat::spec_eq(result@, Str2Int(s@))
+   |             ^^^^^^ use of undeclared type `BigNat`
+
+error[E0433]: failed to resolve: use of undeclared type `BigNat`
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_ModExp_impl.rs:37:22
+   |
+37 |     let mut result = BigNat::zero();
+   |                      ^^^^^^ use of undeclared type `BigNat`
+
+error[E0433]: failed to resolve: use of undeclared type `BigNat`
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_ModExp_impl.rs:43:13
+   |
+43 |             BigNat::spec_eq(result@, Str2Int(s@.subrange(0, s@.len().min(i as int)))),
+   |             ^^^^^^ use of undeclared type `BigNat`
+
+error[E0433]: failed to resolve: use of undeclared type `BigNat`
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_ModExp_impl.rs:46:45
+   |
+46 |         let temp = if s@[i as int] == '1' { BigNat::one() } else { BigNat::zero() };
+   |                                             ^^^^^^ use of undeclared type `BigNat`
+
+error[E0433]: failed to resolve: use of undeclared type `BigNat`
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_ModExp_impl.rs:46:68
+   |
+46 |         let temp = if s@[i as int] == '1' { BigNat::one() } else { BigNat::zero() };
+   |                                                                    ^^^^^^ use of undeclared type `BigNat`
+
+error[E0433]: failed to resolve: use of undeclared type `BigNat`
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_ModExp_impl.rs:47:28
+   |
+47 |         result = result * (BigNat::one() + BigNat::one()) + temp;
+   |                            ^^^^^^ use of undeclared type `BigNat`
+
+error[E0433]: failed to resolve: use of undeclared type `BigNat`
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_ModExp_impl.rs:47:44
+   |
+47 |         result = result * (BigNat::one() + BigNat::one()) + temp;
+   |                                            ^^^^^^ use of undeclared type `BigNat`
+
+error[E0433]: failed to resolve: use of undeclared type `BigNat`
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_ModExp_impl.rs:54:19
+   |
+54 |     requires m != BigNat::zero()
+   |                   ^^^^^^ use of undeclared type `BigNat`
+
+error[E0433]: failed to resolve: use of undeclared type `BigNat`
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_ModExp_impl.rs:55:13
+   |
+55 |     ensures BigNat::spec_eq(result@, Exp_int(x@, y@) % m@)
+   |             ^^^^^^ use of undeclared type `BigNat`
+
+error[E0433]: failed to resolve: use of undeclared type `BigNat`
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_ModExp_impl.rs:57:22
+   |
+57 |     let mut result = BigNat::one();
+   |                      ^^^^^^ use of undeclared type `BigNat`
+
+error[E0433]: failed to resolve: use of undeclared type `BigNat`
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_ModExp_impl.rs:62:18
+   |
+62 |             m != BigNat::zero(),
+   |                  ^^^^^^ use of undeclared type `BigNat`
+
+error[E0433]: failed to resolve: use of undeclared type `BigNat`
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_ModExp_impl.rs:63:33
+   |
+63 |         decreases if exp@ > 0 { BigNat::spec_len(exp@) } else { 0 }
+   |                                 ^^^^^^ use of undeclared type `BigNat`
+
+error[E0433]: failed to resolve: use of undeclared type `BigNat`
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_ModExp_impl.rs:65:27
+   |
+65 |         if exp.clone() % (BigNat::one() + BigNat::one()) == BigNat::one() {
+   |                           ^^^^^^ use of undeclared type `BigNat`
+
+error[E0433]: failed to resolve: use of undeclared type `BigNat`
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_ModExp_impl.rs:65:43
+   |
+65 |         if exp.clone() % (BigNat::one() + BigNat::one()) == BigNat::one() {
+   |                                           ^^^^^^ use of undeclared type `BigNat`
+
+error[E0433]: failed to resolve: use of undeclared type `BigNat`
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_ModExp_impl.rs:65:61
+   |
+65 |         if exp.clone() % (BigNat::one() + BigNat::one()) == BigNat::one() {
+   |                                                             ^^^^^^ use of undeclared type `BigNat`
+
+error[E0433]: failed to resolve: use of undeclared type `BigNat`
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_ModExp_impl.rs:69:21
+   |
+69 |         exp = exp / BigNat::from(2);
+   |                     ^^^^^^ use of undeclared type `BigNat`
+
+error[E0433]: failed to resolve: use of undeclared type `BigNat`
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_ModExp_impl.rs:77:9
+   |
+77 |         BigNat::spec_eq(n@, Str2Int(result@))
+   |         ^^^^^^ use of undeclared type `BigNat`
+
+error[E0433]: failed to resolve: use of undeclared type `BigNat`
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_ModExp_impl.rs:79:13
+   |
+79 |     if n == BigNat::zero() {
+   |             ^^^^^^ use of undeclared type `BigNat`
+
+error[E0433]: failed to resolve: use of undeclared type `BigNat`
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_ModExp_impl.rs:88:35
+   |
+88 |             if current.clone() % (BigNat::one() + BigNat::one()) == BigNat::one() {
+   |                                   ^^^^^^ use of undeclared type `BigNat`
+
+error[E0433]: failed to resolve: use of undeclared type `BigNat`
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_ModExp_impl.rs:88:51
+   |
+88 |             if current.clone() % (BigNat::one() + BigNat::one()) == BigNat::one() {
+   |                                                   ^^^^^^ use of undeclared type `BigNat`
+
+error[E0433]: failed to resolve: use of undeclared type `BigNat`
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_ModExp_impl.rs:88:69
+   |
+88 |             if current.clone() % (BigNat::one() + BigNat::one()) == BigNat::one() {
+   |                                                                     ^^^^^^ use of undeclared type `BigNat`
+
+error[E0433]: failed to resolve: use of undeclared type `BigNat`
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_ModExp_impl.rs:93:33
+   |
+93 |             current = current / BigNat::from(2);
+   |                                 ^^^^^^ use of undeclared type `BigNat`
+
+error: aborting due to 29 previous errors
+
+Some errors have detailed explanations: E0412, E0433.
+For more information about an error, try `rustc --explain E0412`.

@@ -1,0 +1,8 @@
+=== Raw LLM Generate Response ===
+Length: 1541 characters
+--------------------------------------------------------------------------------
+```json
+[
+"spec fn pow2(n: nat) -> nat\n    decreases n\n{\n    if n == 0 { 1 } else { 2 * pow2(n - 1) }\n}\n\nproof fn lemma_pow2_shl(n: nat)\n    requires n > 0\n    ensures pow2(n) == 2 * pow2(n - 1)\n{\n}\n\nspec fn get_bit(c: char) -> nat\n    recommends c == '0' || c == '1'\n{\n    if c == '1' { 1 } else { 0 }\n}\n\nproof fn lemma_str2int_prepend(c: char, s: Seq<char>)\n    requires\n        c == '0' || c == '1',\n        ValidBitString(s),\n    ensures\n        Str2Int(Seq([c]).add(s)) == get_bit(c) * pow2(s.len() as nat) + Str2Int(s),\n    decreases s.len()\n{\n    let combined = Seq([c]).add(s);\n    if s.len() > 0 {\n        let s_prefix = s.subrange(0, s.len() as int - 1);\n        lemma_str2int_prepend(c, s_prefix);\n        lemma_pow2_shl(s.len() as nat);\n    }\n}",
+"{\n    let s1_len = s1.len() as int;\n    let s2_len = s2.len() as int;\n    let max_len = if s1_len > s2_len { s1_len } else { s2_len };\n\n    let mut res = Vec::<char>::new();\n    let mut carry: u8 = 0;\n    let mut k: int = 0;\n    \n    let s1_seq = s1@;\n    let s2_seq = s2@;\n\n    while k < max_len\n        invariant\n            0 <= k <= max_len,\n            s1@.ext_equal(s1_seq),\n            s2@.ext_equal(s2_seq),\n            ValidBitString(res@),\n            res@.len() == k as nat,\n            carry == 0u8 || carry == 1u8,\n            Str2Int(s1_seq.subseq(s1_len - k, s1_len)) + Str2Int(s2_seq.subseq(s2_len - k, s2_len)) ==\n                (carry as nat) * pow2(k as nat) + Str2Int(res@),\n        decreases max_len - k\n
+--------------------------------------------------------------------------------

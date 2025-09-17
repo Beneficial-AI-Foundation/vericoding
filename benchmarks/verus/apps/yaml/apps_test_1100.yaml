@@ -8,17 +8,17 @@ vc-preamble: |-
   use vstd::prelude::*;
 
   verus! {
-
-vc-helpers: |-
   spec fn valid_input(n: int) -> bool {
       n >= 3
   }
-  
+
   spec fn min_jumps(n: int) -> int
       recommends valid_input(n)
   {
       (n - 2) * (n - 2)
   }
+
+vc-helpers: |
 
 vc-spec: |-
   fn solve(n: int) -> (result: int)
@@ -33,7 +33,7 @@ vc-code: |-
       // impl-end
   }
 
-vc-postamble: |-
+vc-postamble: |2-
 
   }
 

@@ -1,0 +1,82 @@
+=== Verification Error - Iteration 3 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_DivMod_Sub.rs
+Time: 2025-09-15 21:59:32
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Verification failed: verification results:: 5 verified, 1 errors
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt_15-09_18h47/bignum_DivMod_Sub_impl.rs:41:6
+   |
+41 | exec fn DivMod_Sub(dividend: &[char], divisor: &[char]) -> (res: (Vec<char>, Vec<char>))
+   |      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt_15-09_18h47/bignum_DivMod_Sub_impl.rs:44:5
+   |
+44 |     Str2Int(res.0@) == Str2Int(dividend@) / Str2Int(divisor@),
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+81 |         return (q, r);
+   |         ------------- at this exit
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt_15-09_18h47/bignum_DivMod_Sub_impl.rs:44:5
+   |
+44 |     Str2Int(res.0@) == Str2Int(dividend@) / Str2Int(divisor@),
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+67 |         return (q, r);
+   |         ------------- at this exit
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt_15-09_18h47/bignum_DivMod_Sub_impl.rs:45:5
+   |
+45 |     Str2Int(res.1@) == Str2Int(dividend@) % Str2Int(divisor@)
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+81 |         return (q, r);
+   |         ------------- at this exit
+
+error: aborting due to 3 previous errors
+
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+verification results:: 5 verified, 1 errors
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt_15-09_18h47/bignum_DivMod_Sub_impl.rs:41:6
+   |
+41 | exec fn DivMod_Sub(dividend: &[char], divisor: &[char]) -> (res: (Vec<char>, Vec<char>))
+   |      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt_15-09_18h47/bignum_DivMod_Sub_impl.rs:44:5
+   |
+44 |     Str2Int(res.0@) == Str2Int(dividend@) / Str2Int(divisor@),
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+81 |         return (q, r);
+   |         ------------- at this exit
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt_15-09_18h47/bignum_DivMod_Sub_impl.rs:44:5
+   |
+44 |     Str2Int(res.0@) == Str2Int(dividend@) / Str2Int(divisor@),
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+67 |         return (q, r);
+   |         ------------- at this exit
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt_15-09_18h47/bignum_DivMod_Sub_impl.rs:45:5
+   |
+45 |     Str2Int(res.1@) == Str2Int(dividend@) % Str2Int(divisor@)
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+81 |         return (q, r);
+   |         ------------- at this exit
+
+error: aborting due to 3 previous errors
+

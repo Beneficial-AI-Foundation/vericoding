@@ -1,0 +1,10 @@
+=== LLM Response - fix_verification - Iteration 8 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExpPow2_int.rs
+Prompt Hash: 5fa4a9d5
+JSON Parsed Successfully: False
+Timestamp: 1757962063.731296
+Content Length: 1673 chars
+--------------------------------------------------------------------------------
+```json
+["/* helper modified by LLM (iteration 9): [Fixed proof of lemma_exp_plus by explicitly using associativity lemma] */\nproof fn lemma_exp_plus(x: nat, y1: nat, y2: nat)\n    ensures\n        Exp_int(x, y1 + y2) == Exp_int(x, y1) * Exp_int(x, y2)\n    decreases y1\n{\n    if y1 > 0 {\n        lemma_exp_plus(x, (y1 - 1) as nat, y2);\n        vstd::arithmetic::mul::lemma_mul_is_associative(\n            x as int,\n            Exp_int(x, (y1 - 1) as nat) as int,\n            Exp_int(x, y2) as int\n        );\n    }\n}\n\n/* helper modified by LLM (iteration 6): [Reviewed, no logic change needed] */\nproof fn power_of_2_div_lemma(n: nat)\n    requires\n        n > 0\n    ensures\n        Exp_int(2, n) / 2 == Exp_int(2, (n - 1) as nat)\n{\n    let e = Exp_int(2, (n - 1) as nat);\n    assert(Exp_int(2, n) == 2 * e);\n    assert((2 * e) / 2 == e) by(nonlinear_arith);\n}\n\n/* helper modified by LLM (iteration 6): [Reviewed, no logic change needed] */\nproof fn lemma_exp_square(x: nat, y: nat)\n    ensures\n        Exp_int(x, 2*y) == Exp_int(x, y) * Exp_int(x, y)\n{\n    lemma_exp_plus(x, y, y);\n    assert(y+y == 2*y);\n}", "/* code modified by LLM (iteration 9): [Fixed overflow and proof logic] */\n{\n    if n == 0 {\n        proof {\n            assert((y as nat) == Exp_int(2, 0) && Exp_int(2, 0) == 1);\n            assert(Exp_int(x as nat, y as nat) == Exp_int(x as nat, 1));\n            assert(Exp_int(x as nat, 0) == 1);\n            assert(Exp_int(x as nat, 1) == (x as nat) * Exp_int(x as nat, 0));\n        }\n        return x % z;\n    } else {\n        let y_rec = y / 2;\n        let n_rec = n - 1;\n        \n        proof {\n            
+--------------------------------------------------------------------------------

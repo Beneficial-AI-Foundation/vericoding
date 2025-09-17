@@ -1,0 +1,44 @@
+vc-description: |-
+  /- 
+  {
+  "name": "dafny-exercise_tmp_tmpouftptir_reverse_Reverse",
+  "category": "Dafny Translation",
+  "description": "Automatically translated from Dafny specification: dafny-exercise_tmp_tmpouftptir_reverse_Reverse",
+  "source": "Dafny",
+  "translation_date": "2024",
+  "functions": ,
+  "methods":
+  }
+  -/
+  
+  /- 
+  Reverses an array of characters.
+  
+  @param a The input array to reverse
+  @return b The reversed array
+  
+  Specification:
+  - Requires input array length > 0
+  - Ensures input array is unchanged
+  - Ensures output array has same length as input
+  - Ensures output array contains reversed elements of input
+  -/
+
+vc-preamble: |-
+
+vc-helpers: |-
+
+vc-definitions: |-
+  def Reverse (a : Array Char) : Array Char :=
+  sorry
+
+vc-theorems: |-
+  theorem reverse_spec (a : Array Char) (b : Array Char) :
+  a.size > 0 →
+  b = Reverse a →
+  (b.size = a.size ∧
+  ∀ i, 0 ≤ i ∧ i < a.size → b[i]! = a[a.size - i - 1]!) :=
+  sorry
+
+vc-postamble: |-
+

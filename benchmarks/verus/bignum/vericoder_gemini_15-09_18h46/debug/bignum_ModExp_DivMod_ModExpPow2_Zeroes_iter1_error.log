@@ -1,0 +1,84 @@
+=== Verification Error - Iteration 1 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExp_DivMod_ModExpPow2_Zeroes.rs
+Time: 2025-09-15 19:07:04
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: error[E0425]: cannot find function `div_mod_proof` in `vstd::arithmetic::internals`
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini_15-09_18h46/bignum_ModExp_DivMod_ModExpPow2_Zeroes_impl.rs:81:38
+   |
+81 |         vstd::arithmetic::internals::div_mod_proof(n, 2);
+   |                                      ^^^^^^^^^^^^^ not found in `vstd::arithmetic::internals`
+
+error[E0425]: cannot find function `lemma_exp_add` in module `vstd::arithmetic::power`
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini_15-09_18h46/bignum_ModExp_DivMod_ModExpPow2_Zeroes_impl.rs:140:34
+    |
+140 |         vstd::arithmetic::power::lemma_exp_add(x, y_prefix, y_prefix);
+    |                                  ^^^^^^^^^^^^^ help: a function with a similar name exists: `lemma_mod_adds`
+   --> /Users/runner/work/verus/verus/source/vstd/arithmetic/div_mod.rs:1194:1
+    |
+    = note: similarly named function `lemma_mod_adds` defined here
+
+error[E0425]: cannot find function `lemma_exp_add` in module `vstd::arithmetic::power`
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini_15-09_18h46/bignum_ModExp_DivMod_ModExpPow2_Zeroes_impl.rs:142:38
+    |
+142 |             vstd::arithmetic::power::lemma_exp_add(x, 2 * y_prefix, 1);
+    |                                      ^^^^^^^^^^^^^ help: a function with a similar name exists: `lemma_mod_adds`
+   --> /Users/runner/work/verus/verus/source/vstd/arithmetic/div_mod.rs:1194:1
+    |
+    = note: similarly named function `lemma_mod_adds` defined here
+
+error[E0603]: module `internals` is private
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini_15-09_18h46/bignum_ModExp_DivMod_ModExpPow2_Zeroes_impl.rs:81:27
+   |
+81 |         vstd::arithmetic::internals::div_mod_proof(n, 2);
+   |                           ^^^^^^^^^ private module
+   |
+note: the module `internals` is defined here
+  --> /Users/runner/work/verus/verus/source/vstd/arithmetic/mod.rs:1:1
+
+error: aborting due to 4 previous errors
+
+Some errors have detailed explanations: E0425, E0603.
+For more information about an error, try `rustc --explain E0425`.
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+error[E0425]: cannot find function `div_mod_proof` in `vstd::arithmetic::internals`
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini_15-09_18h46/bignum_ModExp_DivMod_ModExpPow2_Zeroes_impl.rs:81:38
+   |
+81 |         vstd::arithmetic::internals::div_mod_proof(n, 2);
+   |                                      ^^^^^^^^^^^^^ not found in `vstd::arithmetic::internals`
+
+error[E0425]: cannot find function `lemma_exp_add` in module `vstd::arithmetic::power`
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini_15-09_18h46/bignum_ModExp_DivMod_ModExpPow2_Zeroes_impl.rs:140:34
+    |
+140 |         vstd::arithmetic::power::lemma_exp_add(x, y_prefix, y_prefix);
+    |                                  ^^^^^^^^^^^^^ help: a function with a similar name exists: `lemma_mod_adds`
+   --> /Users/runner/work/verus/verus/source/vstd/arithmetic/div_mod.rs:1194:1
+    |
+    = note: similarly named function `lemma_mod_adds` defined here
+
+error[E0425]: cannot find function `lemma_exp_add` in module `vstd::arithmetic::power`
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini_15-09_18h46/bignum_ModExp_DivMod_ModExpPow2_Zeroes_impl.rs:142:38
+    |
+142 |             vstd::arithmetic::power::lemma_exp_add(x, 2 * y_prefix, 1);
+    |                                      ^^^^^^^^^^^^^ help: a function with a similar name exists: `lemma_mod_adds`
+   --> /Users/runner/work/verus/verus/source/vstd/arithmetic/div_mod.rs:1194:1
+    |
+    = note: similarly named function `lemma_mod_adds` defined here
+
+error[E0603]: module `internals` is private
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini_15-09_18h46/bignum_ModExp_DivMod_ModExpPow2_Zeroes_impl.rs:81:27
+   |
+81 |         vstd::arithmetic::internals::div_mod_proof(n, 2);
+   |                           ^^^^^^^^^ private module
+   |
+note: the module `internals` is defined here
+  --> /Users/runner/work/verus/verus/source/vstd/arithmetic/mod.rs:1:1
+
+error: aborting due to 4 previous errors
+
+Some errors have detailed explanations: E0425, E0603.
+For more information about an error, try `rustc --explain E0425`.

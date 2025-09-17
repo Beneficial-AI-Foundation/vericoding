@@ -1,0 +1,184 @@
+=== Verification Error - Iteration 4 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_DivMod_Compare.rs
+Time: 2025-09-15 21:59:52
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Verification failed: verification results:: 8 verified, 4 errors
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_DivMod_Compare_impl.rs:52:5
+   |
+52 |     while i < la
+   |     ^^^^^^^^^^^^
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_DivMod_Compare_impl.rs:41:1
+   |
+41 | fn compare_ge(a: &Vec<char>, b: &Vec<char>) -> bool {
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_DivMod_Compare_impl.rs:44:49
+   |
+44 |     let la = if ia == a.len() { 0usize } else { a.len() - ia };
+   |                                                 ^^^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_DivMod_Compare_impl.rs:45:49
+   |
+45 |     let lb = if ib == b.len() { 0usize } else { b.len() - ib };
+   |                                                 ^^^^^^^^^^^^
+
+error: invariant not satisfied at end of loop body
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_DivMod_Compare_impl.rs:55:13
+   |
+55 |             la == 0 || ia + i < a.len(),
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: invariant not satisfied at end of loop body
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_DivMod_Compare_impl.rs:56:13
+   |
+56 |             la == 0 || ib + i < b.len(),
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_DivMod_Compare_impl.rs:86:29
+   |
+86 |         let mut diff: i32 = abit - bbit - borrow;
+   |                             ^^^^^^^^^^^^^^^^^^^^
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_DivMod_Compare_impl.rs:112:6
+    |
+112 | exec fn DivMod_Compare(dividend: &[char], divisor: &[char]) -> (res: (Vec<char>, Vec<char>))
+    |      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_DivMod_Compare_impl.rs:114:11
+    |
+114 |   ensures ValidBitString(res.0@) && ValidBitString(res.1@),
+    |           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+155 |     (q, r)
+    |     ------ at the end of the function body
+
+note: recommendation not met
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_DivMod_Compare_impl.rs:115:5
+    |
+6   |   recommends ValidBitString(s)
+    |              ----------------- recommendation not met
+...
+115 |     Str2Int(res.0@) == Str2Int(dividend@) / Str2Int(divisor@),
+    |     ^^^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_DivMod_Compare_impl.rs:115:5
+    |
+115 |     Str2Int(res.0@) == Str2Int(dividend@) / Str2Int(divisor@),
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+155 |     (q, r)
+    |     ------ at the end of the function body
+
+note: recommendation not met
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_DivMod_Compare_impl.rs:116:5
+    |
+6   |   recommends ValidBitString(s)
+    |              ----------------- recommendation not met
+...
+116 |     Str2Int(res.1@) == Str2Int(dividend@) % Str2Int(divisor@)
+    |     ^^^^^^^^^^^^^^^
+
+error: aborting due to 7 previous errors
+
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+verification results:: 8 verified, 4 errors
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_DivMod_Compare_impl.rs:52:5
+   |
+52 |     while i < la
+   |     ^^^^^^^^^^^^
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_DivMod_Compare_impl.rs:41:1
+   |
+41 | fn compare_ge(a: &Vec<char>, b: &Vec<char>) -> bool {
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_DivMod_Compare_impl.rs:44:49
+   |
+44 |     let la = if ia == a.len() { 0usize } else { a.len() - ia };
+   |                                                 ^^^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_DivMod_Compare_impl.rs:45:49
+   |
+45 |     let lb = if ib == b.len() { 0usize } else { b.len() - ib };
+   |                                                 ^^^^^^^^^^^^
+
+error: invariant not satisfied at end of loop body
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_DivMod_Compare_impl.rs:55:13
+   |
+55 |             la == 0 || ia + i < a.len(),
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: invariant not satisfied at end of loop body
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_DivMod_Compare_impl.rs:56:13
+   |
+56 |             la == 0 || ib + i < b.len(),
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_DivMod_Compare_impl.rs:86:29
+   |
+86 |         let mut diff: i32 = abit - bbit - borrow;
+   |                             ^^^^^^^^^^^^^^^^^^^^
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_DivMod_Compare_impl.rs:112:6
+    |
+112 | exec fn DivMod_Compare(dividend: &[char], divisor: &[char]) -> (res: (Vec<char>, Vec<char>))
+    |      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_DivMod_Compare_impl.rs:114:11
+    |
+114 |   ensures ValidBitString(res.0@) && ValidBitString(res.1@),
+    |           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+155 |     (q, r)
+    |     ------ at the end of the function body
+
+note: recommendation not met
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_DivMod_Compare_impl.rs:115:5
+    |
+6   |   recommends ValidBitString(s)
+    |              ----------------- recommendation not met
+...
+115 |     Str2Int(res.0@) == Str2Int(dividend@) / Str2Int(divisor@),
+    |     ^^^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_DivMod_Compare_impl.rs:115:5
+    |
+115 |     Str2Int(res.0@) == Str2Int(dividend@) / Str2Int(divisor@),
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+155 |     (q, r)
+    |     ------ at the end of the function body
+
+note: recommendation not met
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_DivMod_Compare_impl.rs:116:5
+    |
+6   |   recommends ValidBitString(s)
+    |              ----------------- recommendation not met
+...
+116 |     Str2Int(res.1@) == Str2Int(dividend@) % Str2Int(divisor@)
+    |     ^^^^^^^^^^^^^^^
+
+error: aborting due to 7 previous errors
+

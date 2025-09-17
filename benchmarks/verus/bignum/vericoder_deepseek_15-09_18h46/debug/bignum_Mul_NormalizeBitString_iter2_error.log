@@ -1,0 +1,116 @@
+=== Verification Error - Iteration 2 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_Mul_NormalizeBitString.rs
+Time: 2025-09-15 19:08:08
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: error[E0425]: cannot find function `pad_with_zeros` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_Mul_NormalizeBitString_impl.rs:43:25
+   |
+43 |     let mut s1_padded = pad_with_zeros(s1.to_vec(), max_len);
+   |                         ^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `pad_with_zeros` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_Mul_NormalizeBitString_impl.rs:44:25
+   |
+44 |     let mut s2_padded = pad_with_zeros(s2.to_vec(), max_len);
+   |                         ^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `lemma_str2int_zero` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_Mul_NormalizeBitString_impl.rs:63:9
+   |
+24 |   proof fn lemma_str2int_rec(s: Seq<char>) 
+   |  _______-
+25 | |   requires ValidBitString(s), s.len() > 0
+26 | |   ensures Str2Int(s) == 2 * Str2Int(s.subrange(0, s.len() as int - 1)) + (if s.index(s.len() as int - 1) == '1' { 1nat } else { 0nat })
+27 | | {
+28 | | }
+   | |_- similarly named function `lemma_str2int_rec` defined here
+...
+63 |           lemma_str2int_zero();
+   |           ^^^^^^^^^^^^^^^^^^ help: a function with a similar name exists: `lemma_str2int_rec`
+
+error[E0425]: cannot find function `lemma_str2int_nonnegative` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_Mul_NormalizeBitString_impl.rs:66:9
+   |
+66 |         lemma_str2int_nonnegative(s1@);
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `lemma_str2int_nonnegative` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_Mul_NormalizeBitString_impl.rs:67:9
+   |
+67 |         lemma_str2int_nonnegative(s2@);
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `lemma_str2int_monotonic` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_Mul_NormalizeBitString_impl.rs:68:9
+   |
+68 |         lemma_str2int_monotonic(s1@, s1_padded@);
+   |         ^^^^^^^^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `lemma_str2int_monotonic` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_Mul_NormalizeBitString_impl.rs:69:9
+   |
+69 |         lemma_str2int_monotonic(s2@, s2_padded@);
+   |         ^^^^^^^^^^^^^^^^^^^^^^^ not found in this scope
+
+error: aborting due to 7 previous errors
+
+For more information about this error, try `rustc --explain E0425`.
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+error[E0425]: cannot find function `pad_with_zeros` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_Mul_NormalizeBitString_impl.rs:43:25
+   |
+43 |     let mut s1_padded = pad_with_zeros(s1.to_vec(), max_len);
+   |                         ^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `pad_with_zeros` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_Mul_NormalizeBitString_impl.rs:44:25
+   |
+44 |     let mut s2_padded = pad_with_zeros(s2.to_vec(), max_len);
+   |                         ^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `lemma_str2int_zero` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_Mul_NormalizeBitString_impl.rs:63:9
+   |
+24 |   proof fn lemma_str2int_rec(s: Seq<char>) 
+   |  _______-
+25 | |   requires ValidBitString(s), s.len() > 0
+26 | |   ensures Str2Int(s) == 2 * Str2Int(s.subrange(0, s.len() as int - 1)) + (if s.index(s.len() as int - 1) == '1' { 1nat } else { 0nat })
+27 | | {
+28 | | }
+   | |_- similarly named function `lemma_str2int_rec` defined here
+...
+63 |           lemma_str2int_zero();
+   |           ^^^^^^^^^^^^^^^^^^ help: a function with a similar name exists: `lemma_str2int_rec`
+
+error[E0425]: cannot find function `lemma_str2int_nonnegative` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_Mul_NormalizeBitString_impl.rs:66:9
+   |
+66 |         lemma_str2int_nonnegative(s1@);
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `lemma_str2int_nonnegative` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_Mul_NormalizeBitString_impl.rs:67:9
+   |
+67 |         lemma_str2int_nonnegative(s2@);
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `lemma_str2int_monotonic` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_Mul_NormalizeBitString_impl.rs:68:9
+   |
+68 |         lemma_str2int_monotonic(s1@, s1_padded@);
+   |         ^^^^^^^^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `lemma_str2int_monotonic` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_Mul_NormalizeBitString_impl.rs:69:9
+   |
+69 |         lemma_str2int_monotonic(s2@, s2_padded@);
+   |         ^^^^^^^^^^^^^^^^^^^^^^^ not found in this scope
+
+error: aborting due to 7 previous errors
+
+For more information about this error, try `rustc --explain E0425`.

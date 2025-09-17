@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(n: int, d: int, transactions: Seq<int>) -> bool {
     n >= 1 && d >= 1 &&
     transactions.len() == n &&
@@ -58,6 +55,9 @@ spec fn filter_positive(deposits: Seq<int>) -> Seq<int> {
         filter_positive(deposits.subrange(1, deposits.len() as int))
     }
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

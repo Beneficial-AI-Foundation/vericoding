@@ -1,0 +1,134 @@
+=== Verification Error - Iteration 1 ===
+File: benchmarks/verus/bignum/files/bignum_Mul_Add_NormalizeBitString.rs
+Time: 2025-09-15 10:48:04
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_Mul_Add_NormalizeBitString_impl.rs:46:14
+   |
+46 |     let n1 = s1_seq.len() as int;
+   |              ^^^^^^^^^^^^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_Mul_Add_NormalizeBitString_impl.rs:47:14
+   |
+47 |     let n2 = s2_seq.len() as int;
+   |              ^^^^^^^^^^^^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_Mul_Add_NormalizeBitString_impl.rs:102:36
+    |
+102 |         max_len = products.view_at(products.len() as int - 1)@.len()
+    |                                    ^^^^^^^^^^^^^^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_Mul_Add_NormalizeBitString_impl.rs:103:16
+    |
+103 |             + (products.len() as int - 1) + 1; // Worst case length
+    |                ^^^^^^^^^^^^^^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_Mul_Add_NormalizeBitString_impl.rs:141:17
+    |
+141 |     let mut l = sum_result.len() as int - 1;
+    |                 ^^^^^^^^^^^^^^^^^^^^^^^
+
+error[E0425]: cannot find value `current_carry` in this scope
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_Mul_Add_NormalizeBitString_impl.rs:111:13
+    |
+111 |             current_carry < 2,
+    |             ^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find value `current_carry` in this scope
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_Mul_Add_NormalizeBitString_impl.rs:116:42
+    |
+116 |         let mut current_sum_digit: nat = current_carry;
+    |                                          ^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find value `current_carry` in this scope
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_Mul_Add_NormalizeBitString_impl.rs:122:38
+    |
+122 |                 current_sum_digit >= current_carry,
+    |                                      ^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find value `current_carry` in this scope
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_Mul_Add_NormalizeBitString_impl.rs:134:9
+    |
+134 |         current_carry = current_sum_digit / 2;
+    |         ^^^^^^^^^^^^^
+    |
+help: you might have meant to introduce a new binding
+    |
+134 |         let current_carry = current_sum_digit / 2;
+    |         +++
+
+error: aborting due to 9 previous errors
+
+For more information about this error, try `rustc --explain E0425`.
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_Mul_Add_NormalizeBitString_impl.rs:46:14
+   |
+46 |     let n1 = s1_seq.len() as int;
+   |              ^^^^^^^^^^^^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_Mul_Add_NormalizeBitString_impl.rs:47:14
+   |
+47 |     let n2 = s2_seq.len() as int;
+   |              ^^^^^^^^^^^^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_Mul_Add_NormalizeBitString_impl.rs:102:36
+    |
+102 |         max_len = products.view_at(products.len() as int - 1)@.len()
+    |                                    ^^^^^^^^^^^^^^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_Mul_Add_NormalizeBitString_impl.rs:103:16
+    |
+103 |             + (products.len() as int - 1) + 1; // Worst case length
+    |                ^^^^^^^^^^^^^^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_Mul_Add_NormalizeBitString_impl.rs:141:17
+    |
+141 |     let mut l = sum_result.len() as int - 1;
+    |                 ^^^^^^^^^^^^^^^^^^^^^^^
+
+error[E0425]: cannot find value `current_carry` in this scope
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_Mul_Add_NormalizeBitString_impl.rs:111:13
+    |
+111 |             current_carry < 2,
+    |             ^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find value `current_carry` in this scope
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_Mul_Add_NormalizeBitString_impl.rs:116:42
+    |
+116 |         let mut current_sum_digit: nat = current_carry;
+    |                                          ^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find value `current_carry` in this scope
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_Mul_Add_NormalizeBitString_impl.rs:122:38
+    |
+122 |                 current_sum_digit >= current_carry,
+    |                                      ^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find value `current_carry` in this scope
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_Mul_Add_NormalizeBitString_impl.rs:134:9
+    |
+134 |         current_carry = current_sum_digit / 2;
+    |         ^^^^^^^^^^^^^
+    |
+help: you might have meant to introduce a new binding
+    |
+134 |         let current_carry = current_sum_digit / 2;
+    |         +++
+
+error: aborting due to 9 previous errors
+
+For more information about this error, try `rustc --explain E0425`.

@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn sum_window(heights: Seq<int>, start: int, k: int) -> int
   recommends 
     0 <= start,
@@ -33,6 +30,9 @@ spec fn valid_result(result: int, n: int, k: int, heights: Seq<int>) -> bool
   forall|start: int| 0 <= start < result-1 ==>
     sum_window(heights, start, k) > sum_window(heights, result-1, k)
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

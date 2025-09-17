@@ -1,0 +1,13 @@
+=== Verification Error - Iteration 1 ===
+File: benchmarks/verus/bignum/files/bignum_ModExp_Add_DivMod.rs
+Time: 2025-09-15 10:45:00
+
+Full Error Output:
+--------------------------------------------------------------------------------
+VERIFICATION BYPASSES DETECTED: uses 'assume' to bypass verification. Code contains verification bypasses and cannot be considered successfully verified.
+
+Note: Verification succeeded but verification bypasses prevent final success.
+--------------------------------------------------------------------------------
+
+Additional Output:
+verification results:: 6 verified, 0 errors

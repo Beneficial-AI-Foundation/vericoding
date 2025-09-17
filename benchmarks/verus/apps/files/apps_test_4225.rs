@@ -8,7 +8,7 @@ spec fn valid_input(a: int, b: int, c: int, k: int) -> bool {
 }
 
 spec fn max_sum(a: int, b: int, c: int, k: int) -> int
-    requires valid_input(a, b, c, k)
+    recommends valid_input(a, b, c, k)
 {
     if k <= a + b {
         if k <= a { k } else { a }
@@ -28,80 +28,59 @@ spec fn parsed_values(input: Seq<char>, a: int, b: int, c: int, k: int) -> bool 
 }
 
 spec fn int_to_string_pure(n: int) -> Seq<char>
-    requires n >= -2000000000 && n <= 2000000000
-    ensures int_to_string_pure(n).len() > 0
+    recommends n >= -2000000000 && n <= 2000000000
 {
-    if n == 0 {
-        seq!['0']
-    } else if n < 0 {
-        seq!['-'] + int_to_string_pure_helper(-n)
-    } else {
-        int_to_string_pure_helper(n)
-    }
+    if n == 0 { seq!['0'] }
+    else if n < 0 { seq!['-'] + int_to_string_pure_helper(-n) }
+    else { int_to_string_pure_helper(n) }
 }
 
 spec fn int_to_string_pure_helper(n: int) -> Seq<char>
-    requires n > 0
-    ensures int_to_string_pure_helper(n).len() > 0
+    recommends n > 0
     decreases n
 {
-    if n < 10 {
-        seq![('0' as u8 + n as u8) as char]
-    } else {
-        int_to_string_pure_helper(n / 10) + seq![('0' as u8 + (n % 10) as u8) as char]
-    }
+    if n < 10 { seq![('0' as u8 + n as u8) as char] }
+    else { int_to_string_pure_helper(n / 10) + seq![('0' as u8 + (n % 10) as u8) as char] }
 }
 
 spec fn split_string_pure(s: Seq<char>) -> Seq<Seq<char>> {
-    if s.len() == 0 {
-        seq![]
-    } else {
-        split_string_helper(s, 0, seq![], seq![])
-    }
+    if s.len() == 0 { seq![] }
+    else { split_string_helper(s, 0, seq![], seq![]) }
 }
 
 spec fn split_string_helper(s: Seq<char>, i: int, current: Seq<char>, parts: Seq<Seq<char>>) -> Seq<Seq<char>>
-    requires 0 <= i <= s.len()
+    recommends 0 <= i <= s.len()
     decreases s.len() - i
 {
     if i >= s.len() {
-        if current.len() > 0 { parts.push(current) } else { parts }
+        if current.len() > 0 { parts + seq![current] } else { parts }
     } else if s[i] == ' ' || s[i] == '\n' {
-        if current.len() > 0 {
-            split_string_helper(s, i+1, seq![], parts.push(current))
-        } else {
+        if current.len() > 0 { 
+            split_string_helper(s, i+1, seq![], parts + seq![current])
+        } else { 
             split_string_helper(s, i+1, seq![], parts)
         }
     } else {
-        split_string_helper(s, i+1, current.push(s[i]), parts)
+        split_string_helper(s, i+1, current + seq![s[i]], parts)
     }
 }
 
 spec fn string_to_int_pure(s: Seq<char>) -> int {
-    if s.len() == 0 {
-        0
-    } else if s[0] == '-' {
-        -string_to_int_helper(s, 1)
-    } else {
-        string_to_int_helper(s, 0)
-    }
+    if s.len() == 0 { 0 }
+    else if s[0] == '-' { -string_to_int_helper(s, 1) }
+    else { string_to_int_helper(s, 0) }
 }
 
 spec fn string_to_int_helper(s: Seq<char>, start: int) -> int
-    requires 0 <= start <= s.len()
+    recommends 0 <= start <= s.len()
     decreases s.len() - start
 {
-    if start >= s.len() {
-        0
-    } else if '0' <= s[start] && s[start] <= '9' {
+    if start >= s.len() { 0 }
+    else if '0' <= s[start] <= '9' {
         (s[start] as u8 - '0' as u8) as int + 10 * string_to_int_helper(s, start + 1)
     } else {
         string_to_int_helper(s, start + 1)
     }
-}
-
-spec fn str_to_char_seq(s: &str) -> Seq<char> {
-    s@.map(|b: u8| b as char)
 }
 // </vc-preamble>
 
@@ -109,22 +88,19 @@ spec fn str_to_char_seq(s: &str) -> Seq<char> {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(input: &str) -> (result: String)
-    requires input@.len() > 0
-    ensures result@.len() > 0
-    ensures {
-        result@[result@.len() - 1] == '\n' as u8
-    }
-    ensures {
-        (exists|a: int, b: int, c: int, k: int| 
-            parsed_values(str_to_char_seq(input), a, b, c, k) &&
+fn solve(input: Seq<char>) -> (result: Seq<char>)
+    requires input.len() > 0
+    ensures 
+        result.len() > 0 &&
+        result[result.len() as int - 1] == '\n' &&
+        ((exists|a: int, b: int, c: int, k: int| 
+            parsed_values(input, a, b, c, k) &&
             ({
                 let max_sum_val = max_sum(a, b, c, k);
                 max_sum_val >= -2000000000 && max_sum_val <= 2000000000 &&
-                str_to_char_seq(&result) == int_to_string_pure(max_sum_val) + seq!['\n']
+                result == int_to_string_pure(max_sum_val) + seq!['\n']
             })) ||
-        (forall|a: int, b: int, c: int, k: int| !parsed_values(str_to_char_seq(input), a, b, c, k) ==> result@ == seq!['0', '\n'].map(|c: char| c as u8))
-    }
+        (forall|a: int, b: int, c: int, k: int| !parsed_values(input, a, b, c, k) ==> result == seq!['0', '\n']))
 // </vc-spec>
 // <vc-code>
 {

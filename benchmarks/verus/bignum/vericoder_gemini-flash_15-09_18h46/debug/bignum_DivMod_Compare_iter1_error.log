@@ -1,0 +1,60 @@
+=== Verification Error - Iteration 1 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_DivMod_Compare.rs
+Time: 2025-09-15 18:56:05
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: error[E0428]: the name `Str2Int` is defined multiple times
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_DivMod_Compare_impl.rs:24:6
+   |
+5  |   spec fn Str2Int(s: Seq<char>) -> nat
+   |  ______-
+6  | |   recommends ValidBitString(s)
+7  | |   decreases s.len()
+...  |
+15 | | }
+   | |_- previous definition of the value `Str2Int` here
+...
+24 |   spec fn Str2Int(s: Seq<char>) -> nat recommends ValidDigitString(s) { if s.len() == 0 { 0 } else { 2 * Str2Int(s.drop_last()) + (if s.last() == option_helper_char_1() { 1nat } else { 0nat }) } } proof fn option_helper_char_1() -> ch...
+   |        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ `Str2Int` redefined here
+   |
+   = note: `Str2Int` must be defined only once in the value namespace of this module
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_DivMod_Compare_impl.rs:55:63
+   |
+55 |         remainder_seq = remainder_seq.push(dividend_seq.index(k as int));
+   |                                                               ^^^^^^^^
+
+error: aborting due to 2 previous errors
+
+For more information about this error, try `rustc --explain E0428`.
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+error[E0428]: the name `Str2Int` is defined multiple times
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_DivMod_Compare_impl.rs:24:6
+   |
+5  |   spec fn Str2Int(s: Seq<char>) -> nat
+   |  ______-
+6  | |   recommends ValidBitString(s)
+7  | |   decreases s.len()
+...  |
+15 | | }
+   | |_- previous definition of the value `Str2Int` here
+...
+24 |   spec fn Str2Int(s: Seq<char>) -> nat recommends ValidDigitString(s) { if s.len() == 0 { 0 } else { 2 * Str2Int(s.drop_last()) + (if s.last() == option_helper_char_1() { 1nat } else { 0nat }) } } proof fn option_helper_char_1() -> ch...
+   |        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ `Str2Int` redefined here
+   |
+   = note: `Str2Int` must be defined only once in the value namespace of this module
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_DivMod_Compare_impl.rs:55:63
+   |
+55 |         remainder_seq = remainder_seq.push(dividend_seq.index(k as int));
+   |                                                               ^^^^^^^^
+
+error: aborting due to 2 previous errors
+
+For more information about this error, try `rustc --explain E0428`.

@@ -1,0 +1,27 @@
+=== Raw LLM Generate Response ===
+Length: 778 characters
+--------------------------------------------------------------------------------
+```json
+["proof fn lemma_str2int_leading_zeros(s: Seq<char>, n: nat)
+    requires ValidBitString(s),
+    ensures Str2Int(Seq::new(n, |_| '0').add(s)) == Str2Int(s),
+    decreases n
+{
+    if n > 0 {
+        lemma_str2int_leading_zeros(s, (n - 1) as nat);
+    }
+}
+
+proof fn lemma_str2int_comparison(a: Seq<char>, b: Seq<char>)
+    requires
+        ValidBitString(a),
+        ValidBitString(b),
+        a.len() == b.len(),
+    ensures (a >= b) <==> (Str2Int(a) >= Str2Int(b)),
+    decreases a.len()
+{
+    if a.len() > 0 {
+        lemma_str2int_comparison(a.subrange(0, a.len() - 1), b.subrange(0, b.len() - 1));
+        assert(2 * Str2Int(a.subrange(0, a.len() - 1)) == 2 * Str2Int(b.subrange(0, b.len() - 1))) by {
+             if Str2Int(a.subrange(0, a.len() - 1)) != Str2Int(b.
+--------------------------------------------------------------------------------

@@ -1,0 +1,50 @@
+=== Verification Error - Iteration 7 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExp_DivMod.rs
+Time: 2025-09-15 19:04:12
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: error[E0382]: use of moved value: `result`
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_DivMod_impl.rs:133:30
+    |
+113 |     let mut result = Vec::new();
+    |         ---------- move occurs because `result` has type `std::vec::Vec<char>`, which does not implement the `Copy` trait
+...
+126 |         while remaining > 0
+    |         ------------------- inside of this loop
+...
+133 |             let old_result = result;
+    |                              ^^^^^^ value moved here, in previous iteration of loop
+    |
+help: consider cloning the value if the performance cost is acceptable
+    |
+133 |             let old_result = result.clone();
+    |                                    ++++++++
+
+error: aborting due to 1 previous error
+
+For more information about this error, try `rustc --explain E0382`.
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+error[E0382]: use of moved value: `result`
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_DivMod_impl.rs:133:30
+    |
+113 |     let mut result = Vec::new();
+    |         ---------- move occurs because `result` has type `std::vec::Vec<char>`, which does not implement the `Copy` trait
+...
+126 |         while remaining > 0
+    |         ------------------- inside of this loop
+...
+133 |             let old_result = result;
+    |                              ^^^^^^ value moved here, in previous iteration of loop
+    |
+help: consider cloning the value if the performance cost is acceptable
+    |
+133 |             let old_result = result.clone();
+    |                                    ++++++++
+
+error: aborting due to 1 previous error
+
+For more information about this error, try `rustc --explain E0382`.

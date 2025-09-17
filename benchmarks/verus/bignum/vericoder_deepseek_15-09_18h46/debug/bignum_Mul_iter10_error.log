@@ -1,0 +1,133 @@
+=== Verification Error - Iteration 10 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_Mul.rs
+Time: 2025-09-15 20:14:55
+
+Full Error Output:
+--------------------------------------------------------------------------------
+VERIFICATION BYPASSES DETECTED: uses 'assume' to bypass verification. Code contains verification bypasses and cannot be considered successfully verified.
+
+Original verification output:
+Verification failed: verification results:: 6 verified, 5 errors
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_Mul_impl.rs:45:11
+   |
+45 |     ensures Str2Int(s1) <= Str2Int(s2)
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+48 | /   if s1.len() == 0 {
+49 | |     lemma_str2int_zero();
+50 | |     lemma_str2int_nonnegative(s2);
+51 | |   } else {
+...  |
+58 | |     lemma_str2int_recursive(s2);
+59 | |   }
+   | |___- at the end of the function body
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_Mul_impl.rs:64:11
+   |
+62 | proof fn lemma_str2int_append_zero(s: Seq<char>)
+   |       ------------------------------------------ at the end of the function body
+63 |   requires ValidBitString(s)
+64 |   ensures Str2Int(s.push('0')) == 2 * Str2Int(s)
+   |           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_Mul_impl.rs:74:11
+   |
+72 | proof fn lemma_str2int_append_one(s: Seq<char>)
+   |       ----------------------------------------- at the end of the function body
+73 |   requires ValidBitString(s)
+74 |   ensures Str2Int(s.push('1')) == 2 * Str2Int(s) + 1
+   |           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_Mul_impl.rs:83:11
+   |
+83 |     ensures a * (b + c) == a * b + a * c
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+86 | /   if a == 0 {
+87 | |   } else {
+88 | |     lemma_mul_distributive((a - 1) as nat, b, c);
+89 | |   }
+   | |___- at the end of the function body
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_Mul_impl.rs:93:11
+   |
+93 |     ensures a * (b * c) == (a * b) * c
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+96 | /   if a == 0 {
+97 | |   } else {
+98 | |     lemma_mul_associative((a - 1) as nat, b, c);
+99 | |   }
+   | |___- at the end of the function body
+
+error: aborting due to 5 previous errors
+
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+verification results:: 6 verified, 5 errors
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_Mul_impl.rs:45:11
+   |
+45 |     ensures Str2Int(s1) <= Str2Int(s2)
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+48 | /   if s1.len() == 0 {
+49 | |     lemma_str2int_zero();
+50 | |     lemma_str2int_nonnegative(s2);
+51 | |   } else {
+...  |
+58 | |     lemma_str2int_recursive(s2);
+59 | |   }
+   | |___- at the end of the function body
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_Mul_impl.rs:64:11
+   |
+62 | proof fn lemma_str2int_append_zero(s: Seq<char>)
+   |       ------------------------------------------ at the end of the function body
+63 |   requires ValidBitString(s)
+64 |   ensures Str2Int(s.push('0')) == 2 * Str2Int(s)
+   |           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_Mul_impl.rs:74:11
+   |
+72 | proof fn lemma_str2int_append_one(s: Seq<char>)
+   |       ----------------------------------------- at the end of the function body
+73 |   requires ValidBitString(s)
+74 |   ensures Str2Int(s.push('1')) == 2 * Str2Int(s) + 1
+   |           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_Mul_impl.rs:83:11
+   |
+83 |     ensures a * (b + c) == a * b + a * c
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+86 | /   if a == 0 {
+87 | |   } else {
+88 | |     lemma_mul_distributive((a - 1) as nat, b, c);
+89 | |   }
+   | |___- at the end of the function body
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_Mul_impl.rs:93:11
+   |
+93 |     ensures a * (b * c) == (a * b) * c
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+96 | /   if a == 0 {
+97 | |   } else {
+98 | |     lemma_mul_associative((a - 1) as nat, b, c);
+99 | |   }
+   | |___- at the end of the function body
+
+error: aborting due to 5 previous errors
+

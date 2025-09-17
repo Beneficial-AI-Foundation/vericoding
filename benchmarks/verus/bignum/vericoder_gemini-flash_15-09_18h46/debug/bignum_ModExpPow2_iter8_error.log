@@ -1,0 +1,258 @@
+=== Verification Error - Iteration 8 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExpPow2.rs
+Time: 2025-09-15 18:49:34
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: error: invalid suffix `nat` for number literal
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExpPow2_impl.rs:53:29
+   |
+53 |         if x_int % z_int == 1nat {
+   |                             ^^^^ invalid suffix `nat`
+   |
+   = help: the suffix must be one of the numeric types (`u32`, `isize`, `f32`, etc.)
+
+error: invalid suffix `nat` for number literal
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExpPow2_impl.rs:90:24
+   |
+90 |         if temp_val == 0nat && n == 0 {
+   |                        ^^^^ invalid suffix `nat`
+   |
+   = help: the suffix must be one of the numeric types (`u32`, `isize`, `f32`, etc.)
+
+error: invalid suffix `nat` for number literal
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExpPow2_impl.rs:92:31
+   |
+92 |         } else if temp_val == 0nat {
+   |                               ^^^^ invalid suffix `nat`
+   |
+   = help: the suffix must be one of the numeric types (`u32`, `isize`, `f32`, etc.)
+
+error: invalid suffix `nat` for number literal
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExpPow2_impl.rs:95:30
+   |
+95 |             while temp_val > 0nat
+   |                              ^^^^ invalid suffix `nat`
+   |
+   = help: the suffix must be one of the numeric types (`u32`, `isize`, `f32`, etc.)
+
+error: invalid suffix `nat` for number literal
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExpPow2_impl.rs:101:31
+    |
+101 |                 if temp_val % 2nat == 1nat {
+    |                               ^^^^ invalid suffix `nat`
+    |
+    = help: the suffix must be one of the numeric types (`u32`, `isize`, `f32`, etc.)
+
+error: invalid suffix `nat` for number literal
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExpPow2_impl.rs:101:39
+    |
+101 |                 if temp_val % 2nat == 1nat {
+    |                                       ^^^^ invalid suffix `nat`
+    |
+    = help: the suffix must be one of the numeric types (`u32`, `isize`, `f32`, etc.)
+
+error: invalid suffix `nat` for number literal
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExpPow2_impl.rs:106:39
+    |
+106 |                 temp_val = temp_val / 2nat;
+    |                                       ^^^^ invalid suffix `nat`
+    |
+    = help: the suffix must be one of the numeric types (`u32`, `isize`, `f32`, etc.)
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExpPow2_impl.rs:51:13
+   |
+51 |     if n == 0 {
+   |        -    ^ expected `int`, found integer
+   |        |
+   |        expected because this is `vstd::prelude::int`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExpPow2_impl.rs:64:26
+   |
+64 |         let mut i: int = 0;
+   |                    ---   ^ expected `int`, found integer
+   |                    |
+   |                    expected due to this
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExpPow2_impl.rs:70:73
+   |
+70 |             forall |j: int| 0 <= j && j < i ==> sy_prime_vec@[j] == sy@[j as usize],
+   |                                                                     ----^^^^^^^^^^-
+   |                                                                     |   |
+   |                                                                     |   expected `int`, found `usize`
+   |                                                                     arguments to this method are incorrect
+   |
+note: method defined here
+  --> /Users/runner/work/verus/verus/source/vstd/seq.rs:60:22
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExpPow2_impl.rs:74:21
+   |
+74 |             i = i + 1;
+   |                 -   ^ expected `int`, found integer
+   |                 |
+   |                 expected because this is `vstd::prelude::int`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExpPow2_impl.rs:78:73
+   |
+78 |         let res_prime_vec = ModExpPow2(sx, sy_prime_vec.as_slice(), n - 1, sz);
+   |                                                                     -   ^ expected `int`, found integer
+   |                                                                     |
+   |                                                                     expected because this is `vstd::prelude::int`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExpPow2_impl.rs:90:37
+   |
+90 |         if temp_val == 0nat && n == 0 {
+   |                                -    ^ expected `int`, found integer
+   |                                |
+   |                                expected because this is `vstd::prelude::int`
+
+error[E0605]: non-primitive cast: `vstd::prelude::int` as `usize`
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExpPow2_impl.rs:60:30
+   |
+60 |         let current_bit = sy[n as usize];
+   |                              ^^^^^^^^^^ an `as` expression can only be used to convert between primitive types or to coerce to a specific trait object
+
+error[E0605]: non-primitive cast: `vstd::prelude::int` as `usize`
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExpPow2_impl.rs:73:34
+   |
+73 |             sy_prime_vec.push(sy[i as usize]);
+   |                                  ^^^^^^^^^^ an `as` expression can only be used to convert between primitive types or to coerce to a specific trait object
+
+error: aborting due to 15 previous errors
+
+Some errors have detailed explanations: E0308, E0605.
+For more information about an error, try `rustc --explain E0308`.
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+error: invalid suffix `nat` for number literal
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExpPow2_impl.rs:53:29
+   |
+53 |         if x_int % z_int == 1nat {
+   |                             ^^^^ invalid suffix `nat`
+   |
+   = help: the suffix must be one of the numeric types (`u32`, `isize`, `f32`, etc.)
+
+error: invalid suffix `nat` for number literal
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExpPow2_impl.rs:90:24
+   |
+90 |         if temp_val == 0nat && n == 0 {
+   |                        ^^^^ invalid suffix `nat`
+   |
+   = help: the suffix must be one of the numeric types (`u32`, `isize`, `f32`, etc.)
+
+error: invalid suffix `nat` for number literal
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExpPow2_impl.rs:92:31
+   |
+92 |         } else if temp_val == 0nat {
+   |                               ^^^^ invalid suffix `nat`
+   |
+   = help: the suffix must be one of the numeric types (`u32`, `isize`, `f32`, etc.)
+
+error: invalid suffix `nat` for number literal
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExpPow2_impl.rs:95:30
+   |
+95 |             while temp_val > 0nat
+   |                              ^^^^ invalid suffix `nat`
+   |
+   = help: the suffix must be one of the numeric types (`u32`, `isize`, `f32`, etc.)
+
+error: invalid suffix `nat` for number literal
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExpPow2_impl.rs:101:31
+    |
+101 |                 if temp_val % 2nat == 1nat {
+    |                               ^^^^ invalid suffix `nat`
+    |
+    = help: the suffix must be one of the numeric types (`u32`, `isize`, `f32`, etc.)
+
+error: invalid suffix `nat` for number literal
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExpPow2_impl.rs:101:39
+    |
+101 |                 if temp_val % 2nat == 1nat {
+    |                                       ^^^^ invalid suffix `nat`
+    |
+    = help: the suffix must be one of the numeric types (`u32`, `isize`, `f32`, etc.)
+
+error: invalid suffix `nat` for number literal
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExpPow2_impl.rs:106:39
+    |
+106 |                 temp_val = temp_val / 2nat;
+    |                                       ^^^^ invalid suffix `nat`
+    |
+    = help: the suffix must be one of the numeric types (`u32`, `isize`, `f32`, etc.)
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExpPow2_impl.rs:51:13
+   |
+51 |     if n == 0 {
+   |        -    ^ expected `int`, found integer
+   |        |
+   |        expected because this is `vstd::prelude::int`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExpPow2_impl.rs:64:26
+   |
+64 |         let mut i: int = 0;
+   |                    ---   ^ expected `int`, found integer
+   |                    |
+   |                    expected due to this
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExpPow2_impl.rs:70:73
+   |
+70 |             forall |j: int| 0 <= j && j < i ==> sy_prime_vec@[j] == sy@[j as usize],
+   |                                                                     ----^^^^^^^^^^-
+   |                                                                     |   |
+   |                                                                     |   expected `int`, found `usize`
+   |                                                                     arguments to this method are incorrect
+   |
+note: method defined here
+  --> /Users/runner/work/verus/verus/source/vstd/seq.rs:60:22
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExpPow2_impl.rs:74:21
+   |
+74 |             i = i + 1;
+   |                 -   ^ expected `int`, found integer
+   |                 |
+   |                 expected because this is `vstd::prelude::int`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExpPow2_impl.rs:78:73
+   |
+78 |         let res_prime_vec = ModExpPow2(sx, sy_prime_vec.as_slice(), n - 1, sz);
+   |                                                                     -   ^ expected `int`, found integer
+   |                                                                     |
+   |                                                                     expected because this is `vstd::prelude::int`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExpPow2_impl.rs:90:37
+   |
+90 |         if temp_val == 0nat && n == 0 {
+   |                                -    ^ expected `int`, found integer
+   |                                |
+   |                                expected because this is `vstd::prelude::int`
+
+error[E0605]: non-primitive cast: `vstd::prelude::int` as `usize`
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExpPow2_impl.rs:60:30
+   |
+60 |         let current_bit = sy[n as usize];
+   |                              ^^^^^^^^^^ an `as` expression can only be used to convert between primitive types or to coerce to a specific trait object
+
+error[E0605]: non-primitive cast: `vstd::prelude::int` as `usize`
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExpPow2_impl.rs:73:34
+   |
+73 |             sy_prime_vec.push(sy[i as usize]);
+   |                                  ^^^^^^^^^^ an `as` expression can only be used to convert between primitive types or to coerce to a specific trait object
+
+error: aborting due to 15 previous errors
+
+Some errors have detailed explanations: E0308, E0605.
+For more information about an error, try `rustc --explain E0308`.

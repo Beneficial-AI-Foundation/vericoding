@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(input: Seq<char>) -> bool {
     input.len() > 2 &&
     (exists|i: int| 0 < i < input.len() && input[i] == ' ') &&
@@ -41,6 +38,9 @@ spec fn correct_concatenation(input: Seq<char>, output: Seq<char>) -> bool
     let (s, t) = extract_strings(input);
     output == t.add(s).push('\n')
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

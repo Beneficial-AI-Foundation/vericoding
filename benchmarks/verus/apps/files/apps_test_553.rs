@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn split_lines(s: Seq<char>) -> Seq<Seq<char>> {
     seq![s]
 }
@@ -36,6 +33,9 @@ spec fn valid_output(output: Seq<char>, stdin_input: Seq<char>) -> bool {
                 k == 6 &&
                 parse_integer(output.subrange(0, output.len() as int - 1)) == k
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

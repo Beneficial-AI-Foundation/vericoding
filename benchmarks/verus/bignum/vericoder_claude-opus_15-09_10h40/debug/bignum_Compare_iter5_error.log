@@ -1,0 +1,446 @@
+=== Verification Error - Iteration 5 ===
+File: benchmarks/verus/bignum/files/bignum_Compare.rs
+Time: 2025-09-15 11:18:12
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Verification failed: verification results:: 5 verified, 7 errors
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_Compare_impl.rs:31:7
+   |
+31 | proof fn lemma_str2int_leading_zeros(s1: Seq<char>, s2: Seq<char>, n: int)
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: assertion failed
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_Compare_impl.rs:44:16
+   |
+44 |         assert(s1 == s2);
+   |                ^^^^^^^^ assertion failed
+
+error: assertion failed
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_Compare_impl.rs:50:16
+   |
+50 |         assert(s1.index(s1.len() as int - 1) == s2.index(s2.len() as int - 1));
+   |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ assertion failed
+
+note: recommendation not met
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_Compare_impl.rs:52:20
+    |
+52  |             assert(s1_tail.subrange(n, s1_tail.len() as int) == s2_tail.subrange(n, s2_tail.len() as int));
+    |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+   ::: /Users/sergiu.bursuc/verus/vstd/seq.rs:116:37
+    |
+116 |             0 <= start_inclusive <= end_exclusive <= self.len(),
+    |                                     ------------- recommendation not met
+
+error: assertion failed
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_Compare_impl.rs:52:20
+   |
+52 |             assert(s1_tail.subrange(n, s1_tail.len() as int) == s2_tail.subrange(n, s2_tail.len() as int));
+   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ assertion failed
+
+note: recommendation not met
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_Compare_impl.rs:52:65
+    |
+52  |             assert(s1_tail.subrange(n, s1_tail.len() as int) == s2_tail.subrange(n, s2_tail.len() as int));
+    |                                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+   ::: /Users/sergiu.bursuc/verus/vstd/seq.rs:116:37
+    |
+116 |             0 <= start_inclusive <= end_exclusive <= self.len(),
+    |                                     ------------- recommendation not met
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_Compare_impl.rs:58:7
+   |
+58 | proof fn lemma_str2int_compare_equal_length(s1: Seq<char>, s2: Seq<char>, i: int)
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_Compare_impl.rs:67:9
+   |
+67 |           (s1.index(i) == '0' && s2.index(i) == '1') ==> Str2Int(s1) < Str2Int(s2),
+   |           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+71 | /     if s1.len() == 1 {
+72 | |         assert(i == 0);
+73 | |     } else {
+74 | |         let s1_tail = s1.subrange(0, s1.len() as int - 1);
+...  |
+82 | |     }
+   | |_____- at the end of the function body
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_Compare_impl.rs:68:9
+   |
+68 |           (s1.index(i) == '1' && s2.index(i) == '0') ==> Str2Int(s1) > Str2Int(s2),
+   |           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+71 | /     if s1.len() == 1 {
+72 | |         assert(i == 0);
+73 | |     } else {
+74 | |         let s1_tail = s1.subrange(0, s1.len() as int - 1);
+...  |
+82 | |     }
+   | |_____- at the end of the function body
+
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_Compare_impl.rs:123:9
+    |
+123 |         while i < s2.len() - s1.len()
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_Compare_impl.rs:157:9
+    |
+157 |         while i < s1.len() - s2.len()
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_Compare_impl.rs:101:6
+    |
+101 | exec fn Compare(s1: &[char], s2: &[char]) -> (res: i32)
+    |      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+note: recommendation not met
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_Compare_impl.rs:104:11
+    |
+6   |   recommends ValidBitString(s)
+    |              ----------------- recommendation not met
+...
+104 |   ensures Str2Int(s1@) < Str2Int(s2@) ==> res == -1,
+    |           ^^^^^^^^^^^^
+
+error: postcondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_Compare_impl.rs:104:11
+    |
+104 |   ensures Str2Int(s1@) < Str2Int(s2@) ==> res == -1,
+    |           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+165 |                 return 1;
+    |                 -------- at this exit
+
+note: recommendation not met
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_Compare_impl.rs:104:26
+    |
+6   |   recommends ValidBitString(s)
+    |              ----------------- recommendation not met
+...
+104 |   ensures Str2Int(s1@) < Str2Int(s2@) ==> res == -1,
+    |                          ^^^^^^^^^^^^
+
+note: recommendation not met
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_Compare_impl.rs:105:5
+    |
+6   |   recommends ValidBitString(s)
+    |              ----------------- recommendation not met
+...
+105 |     Str2Int(s1@) == Str2Int(s2@) ==> res == 0,
+    |     ^^^^^^^^^^^^
+
+error: postcondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_Compare_impl.rs:105:5
+    |
+105 |     Str2Int(s1@) == Str2Int(s2@) ==> res == 0,
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+131 |                 return -1;
+    |                 --------- at this exit
+
+error: postcondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_Compare_impl.rs:105:5
+    |
+105 |     Str2Int(s1@) == Str2Int(s2@) ==> res == 0,
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+165 |                 return 1;
+    |                 -------- at this exit
+
+error: postcondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_Compare_impl.rs:105:5
+    |
+105 |     Str2Int(s1@) == Str2Int(s2@) ==> res == 0,
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+120 |         return 1;
+    |         -------- at this exit
+
+error: postcondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_Compare_impl.rs:105:5
+    |
+105 |     Str2Int(s1@) == Str2Int(s2@) ==> res == 0,
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+117 |         return -1;
+    |         --------- at this exit
+
+note: recommendation not met
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_Compare_impl.rs:105:21
+    |
+6   |   recommends ValidBitString(s)
+    |              ----------------- recommendation not met
+...
+105 |     Str2Int(s1@) == Str2Int(s2@) ==> res == 0,
+    |                     ^^^^^^^^^^^^
+
+error: postcondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_Compare_impl.rs:106:5
+    |
+106 |     Str2Int(s1@) > Str2Int(s2@) ==> res == 1,
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+131 |                 return -1;
+    |                 --------- at this exit
+
+error: invariant not satisfied at end of loop body
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_Compare_impl.rs:143:17
+    |
+143 |                 ValidBitString(s2_suffix@),
+    |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: precondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_Compare_impl.rs:152:13
+    |
+91  |         s1.subrange(start, s1.len() as int) == s2.subrange(start, s2.len() as int),
+    |         -------------------------------------------------------------------------- failed precondition
+...
+152 |             lemma_str2int_suffix_equal(s2@, s2@.subrange(0, start_idx as int) + s2_suffix@, start_idx as int);
+    |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: could not prove termination
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_Compare_impl.rs:154:16
+    |
+154 |         return Compare(s1, &s2_suffix);
+    |                ^^^^^^^^^^^^^^^^^^^^^^^
+
+error: invariant not satisfied at end of loop body
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_Compare_impl.rs:177:17
+    |
+177 |                 ValidBitString(s1_suffix@),
+    |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: aborting due to 15 previous errors
+
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+verification results:: 5 verified, 7 errors
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_Compare_impl.rs:31:7
+   |
+31 | proof fn lemma_str2int_leading_zeros(s1: Seq<char>, s2: Seq<char>, n: int)
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: assertion failed
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_Compare_impl.rs:44:16
+   |
+44 |         assert(s1 == s2);
+   |                ^^^^^^^^ assertion failed
+
+error: assertion failed
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_Compare_impl.rs:50:16
+   |
+50 |         assert(s1.index(s1.len() as int - 1) == s2.index(s2.len() as int - 1));
+   |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ assertion failed
+
+note: recommendation not met
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_Compare_impl.rs:52:20
+    |
+52  |             assert(s1_tail.subrange(n, s1_tail.len() as int) == s2_tail.subrange(n, s2_tail.len() as int));
+    |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+   ::: /Users/sergiu.bursuc/verus/vstd/seq.rs:116:37
+    |
+116 |             0 <= start_inclusive <= end_exclusive <= self.len(),
+    |                                     ------------- recommendation not met
+
+error: assertion failed
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_Compare_impl.rs:52:20
+   |
+52 |             assert(s1_tail.subrange(n, s1_tail.len() as int) == s2_tail.subrange(n, s2_tail.len() as int));
+   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ assertion failed
+
+note: recommendation not met
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_Compare_impl.rs:52:65
+    |
+52  |             assert(s1_tail.subrange(n, s1_tail.len() as int) == s2_tail.subrange(n, s2_tail.len() as int));
+    |                                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+   ::: /Users/sergiu.bursuc/verus/vstd/seq.rs:116:37
+    |
+116 |             0 <= start_inclusive <= end_exclusive <= self.len(),
+    |                                     ------------- recommendation not met
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_Compare_impl.rs:58:7
+   |
+58 | proof fn lemma_str2int_compare_equal_length(s1: Seq<char>, s2: Seq<char>, i: int)
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_Compare_impl.rs:67:9
+   |
+67 |           (s1.index(i) == '0' && s2.index(i) == '1') ==> Str2Int(s1) < Str2Int(s2),
+   |           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+71 | /     if s1.len() == 1 {
+72 | |         assert(i == 0);
+73 | |     } else {
+74 | |         let s1_tail = s1.subrange(0, s1.len() as int - 1);
+...  |
+82 | |     }
+   | |_____- at the end of the function body
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_Compare_impl.rs:68:9
+   |
+68 |           (s1.index(i) == '1' && s2.index(i) == '0') ==> Str2Int(s1) > Str2Int(s2),
+   |           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+71 | /     if s1.len() == 1 {
+72 | |         assert(i == 0);
+73 | |     } else {
+74 | |         let s1_tail = s1.subrange(0, s1.len() as int - 1);
+...  |
+82 | |     }
+   | |_____- at the end of the function body
+
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_Compare_impl.rs:123:9
+    |
+123 |         while i < s2.len() - s1.len()
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_Compare_impl.rs:157:9
+    |
+157 |         while i < s1.len() - s2.len()
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_Compare_impl.rs:101:6
+    |
+101 | exec fn Compare(s1: &[char], s2: &[char]) -> (res: i32)
+    |      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+note: recommendation not met
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_Compare_impl.rs:104:11
+    |
+6   |   recommends ValidBitString(s)
+    |              ----------------- recommendation not met
+...
+104 |   ensures Str2Int(s1@) < Str2Int(s2@) ==> res == -1,
+    |           ^^^^^^^^^^^^
+
+error: postcondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_Compare_impl.rs:104:11
+    |
+104 |   ensures Str2Int(s1@) < Str2Int(s2@) ==> res == -1,
+    |           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+165 |                 return 1;
+    |                 -------- at this exit
+
+note: recommendation not met
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_Compare_impl.rs:104:26
+    |
+6   |   recommends ValidBitString(s)
+    |              ----------------- recommendation not met
+...
+104 |   ensures Str2Int(s1@) < Str2Int(s2@) ==> res == -1,
+    |                          ^^^^^^^^^^^^
+
+note: recommendation not met
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_Compare_impl.rs:105:5
+    |
+6   |   recommends ValidBitString(s)
+    |              ----------------- recommendation not met
+...
+105 |     Str2Int(s1@) == Str2Int(s2@) ==> res == 0,
+    |     ^^^^^^^^^^^^
+
+error: postcondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_Compare_impl.rs:105:5
+    |
+105 |     Str2Int(s1@) == Str2Int(s2@) ==> res == 0,
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+131 |                 return -1;
+    |                 --------- at this exit
+
+error: postcondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_Compare_impl.rs:105:5
+    |
+105 |     Str2Int(s1@) == Str2Int(s2@) ==> res == 0,
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+165 |                 return 1;
+    |                 -------- at this exit
+
+error: postcondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_Compare_impl.rs:105:5
+    |
+105 |     Str2Int(s1@) == Str2Int(s2@) ==> res == 0,
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+120 |         return 1;
+    |         -------- at this exit
+
+error: postcondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_Compare_impl.rs:105:5
+    |
+105 |     Str2Int(s1@) == Str2Int(s2@) ==> res == 0,
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+117 |         return -1;
+    |         --------- at this exit
+
+note: recommendation not met
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_Compare_impl.rs:105:21
+    |
+6   |   recommends ValidBitString(s)
+    |              ----------------- recommendation not met
+...
+105 |     Str2Int(s1@) == Str2Int(s2@) ==> res == 0,
+    |                     ^^^^^^^^^^^^
+
+error: postcondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_Compare_impl.rs:106:5
+    |
+106 |     Str2Int(s1@) > Str2Int(s2@) ==> res == 1,
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+131 |                 return -1;
+    |                 --------- at this exit
+
+error: invariant not satisfied at end of loop body
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_Compare_impl.rs:143:17
+    |
+143 |                 ValidBitString(s2_suffix@),
+    |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: precondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_Compare_impl.rs:152:13
+    |
+91  |         s1.subrange(start, s1.len() as int) == s2.subrange(start, s2.len() as int),
+    |         -------------------------------------------------------------------------- failed precondition
+...
+152 |             lemma_str2int_suffix_equal(s2@, s2@.subrange(0, start_idx as int) + s2_suffix@, start_idx as int);
+    |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: could not prove termination
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_Compare_impl.rs:154:16
+    |
+154 |         return Compare(s1, &s2_suffix);
+    |                ^^^^^^^^^^^^^^^^^^^^^^^
+
+error: invariant not satisfied at end of loop body
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_Compare_impl.rs:177:17
+    |
+177 |                 ValidBitString(s1_suffix@),
+    |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: aborting due to 15 previous errors
+

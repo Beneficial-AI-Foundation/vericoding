@@ -1,0 +1,90 @@
+=== Verification Error - Iteration 7 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExp_Add_DivMod_Mul_Zeroes.rs
+Time: 2025-09-15 19:30:45
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Verification failed: verification results:: 5 verified, 2 errors
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_ModExp_Add_DivMod_Mul_Zeroes_impl.rs:42:13
+   |
+40 | proof fn str2int_monotonic(s: Seq<char>, i: int)
+   |       ------------------------------------------ at the end of the function body
+41 |     requires ValidBitString(s), 0 <= i && i < s.len() as int
+42 |     ensures Str2Int(s.subrange(0, i)) <= Str2Int(s)
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_ModExp_Add_DivMod_Mul_Zeroes_impl.rs:82:5
+   |
+82 |     while i < max_len
+   |     ^^^^^^^^^^^^^^^^^
+
+error: precondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_ModExp_Add_DivMod_Mul_Zeroes_impl.rs:90:36
+   |
+90 |         let bit_a = if i < len_a { a[i] } else { '0' };
+   |                                    ^^^^
+   |
+  ::: /Users/sergiu.bursuc/verus/vstd/slice.rs:62:9
+   |
+62 |         0 <= i < slice.view().len(),
+   |         --------------------------- failed precondition
+
+error: precondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_ModExp_Add_DivMod_Mul_Zeroes_impl.rs:91:36
+   |
+91 |         let bit_b = if i < len_b { b[i] } else { '0' };
+   |                                    ^^^^
+   |
+  ::: /Users/sergiu.bursuc/verus/vstd/slice.rs:62:9
+   |
+62 |         0 <= i < slice.view().len(),
+   |         --------------------------- failed precondition
+
+error: aborting due to 3 previous errors
+
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+verification results:: 5 verified, 2 errors
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_ModExp_Add_DivMod_Mul_Zeroes_impl.rs:42:13
+   |
+40 | proof fn str2int_monotonic(s: Seq<char>, i: int)
+   |       ------------------------------------------ at the end of the function body
+41 |     requires ValidBitString(s), 0 <= i && i < s.len() as int
+42 |     ensures Str2Int(s.subrange(0, i)) <= Str2Int(s)
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_ModExp_Add_DivMod_Mul_Zeroes_impl.rs:82:5
+   |
+82 |     while i < max_len
+   |     ^^^^^^^^^^^^^^^^^
+
+error: precondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_ModExp_Add_DivMod_Mul_Zeroes_impl.rs:90:36
+   |
+90 |         let bit_a = if i < len_a { a[i] } else { '0' };
+   |                                    ^^^^
+   |
+  ::: /Users/sergiu.bursuc/verus/vstd/slice.rs:62:9
+   |
+62 |         0 <= i < slice.view().len(),
+   |         --------------------------- failed precondition
+
+error: precondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_ModExp_Add_DivMod_Mul_Zeroes_impl.rs:91:36
+   |
+91 |         let bit_b = if i < len_b { b[i] } else { '0' };
+   |                                    ^^^^
+   |
+  ::: /Users/sergiu.bursuc/verus/vstd/slice.rs:62:9
+   |
+62 |         0 <= i < slice.view().len(),
+   |         --------------------------- failed precondition
+
+error: aborting due to 3 previous errors
+

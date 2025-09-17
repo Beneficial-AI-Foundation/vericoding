@@ -5,28 +5,28 @@ vc-description: |-
   - p^24 × q^2 (where p, q are distinct primes)  
   - p^14 × q^4 (where p, q are distinct primes)
   - p^4 × q^4 × r^2 (where p, q, r are distinct primes)
-  
+
   /* Abstract specification - represents the count of divisors of N! that have exactly 75 divisors */
 
 vc-preamble: |-
   use vstd::prelude::*;
 
   verus! {
-
-vc-helpers: |-
   spec fn valid_input(n: int) -> bool {
     1 <= n <= 100
   }
-  
+
   spec fn count_divisors_with_75_factors(n: int) -> int 
     recommends valid_input(n)
   {
     0
   }
-  
+
   spec fn valid_output(result: int) -> bool {
     result >= 0
   }
+
+vc-helpers: |
 
 vc-spec: |-
   fn solve(n: int) -> (result: int)
@@ -39,7 +39,7 @@ vc-code: |-
     unreached()
   }
 
-vc-postamble: |-
+vc-postamble: |2-
 
   }
 

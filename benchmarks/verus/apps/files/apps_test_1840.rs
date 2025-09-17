@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(s: nat, b: nat, attacking_powers: Seq<nat>, bases: Seq<(nat, nat)>) -> bool {
     attacking_powers.len() == s && bases.len() == b
 }
@@ -27,6 +24,9 @@ spec fn valid_output(s: nat, attacking_powers: Seq<nat>, bases: Seq<(nat, nat)>,
     (forall|i: int| 0 <= i < s && i < attacking_powers.len() ==> 
         result[i] == sum_gold_for_spaceship(attacking_powers[i], bases))
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

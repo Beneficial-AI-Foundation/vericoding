@@ -1,0 +1,516 @@
+=== Verification Error - Iteration 4 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_DivMod_Compare.rs
+Time: 2025-09-14 10:42:34
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: error[E0308]: arguments to this method are incorrect
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_DivMod_Compare_impl.rs:45:42
+   |
+45 |     let mut remainder_seq = dividend_seq.subrange(0, initial_remainder_len as usize);
+   |                                          ^^^^^^^^ -  ------------------------------ expected `int`, found `usize`
+   |                                                   |
+   |                                                   expected `int`, found integer
+   |
+note: method defined here
+  --> /Users/runner/work/verus/verus/source/vstd/seq.rs:114:26
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_DivMod_Compare_impl.rs:46:17
+   |
+46 |     for i in 0..initial_remainder_len {
+   |                 ^^^^^^^^^^^^^^^^^^^^^ expected integer, found `nat`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_DivMod_Compare_impl.rs:47:47
+   |
+47 |         remainder_vec.push(dividend_seq.index(i as usize));
+   |                                         ----- ^^^^^^^^^^ expected `int`, found `usize`
+   |                                         |
+   |                                         arguments to this method are incorrect
+   |
+note: method defined here
+  --> /Users/runner/work/verus/verus/source/vstd/seq.rs:53:26
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_DivMod_Compare_impl.rs:50:24
+   |
+50 |     let mut i: usize = initial_remainder_len;
+   |                -----   ^^^^^^^^^^^^^^^^^^^^^ expected `usize`, found `nat`
+   |                |
+   |                expected due to this
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_DivMod_Compare_impl.rs:52:15
+   |
+52 |     while i < dividend_seq.len()
+   |           -   ^^^^^^^^^^^^^^^^^^ expected `usize`, found `nat`
+   |           |
+   |           expected because this is `usize`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_DivMod_Compare_impl.rs:61:34
+   |
+61 |         if remainder_seq.len() > 0 {
+   |            -------------------   ^ expected `nat`, found integer
+   |            |
+   |            expected because this is `verus_builtin::nat`
+
+error[E0308]: arguments to this method are incorrect
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_DivMod_Compare_impl.rs:62:43
+   |
+62 |             remainder_seq = remainder_seq.subrange(1, remainder_seq.len() as usize);
+   |                                           ^^^^^^^^ -  ---------------------------- expected `int`, found `usize`
+   |                                                    |
+   |                                                    expected `int`, found integer
+   |
+note: method defined here
+  --> /Users/runner/work/verus/verus/source/vstd/seq.rs:114:26
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_DivMod_Compare_impl.rs:66:48
+   |
+66 |         let next_bit_char = dividend_seq.index(i as usize);
+   |                                          ----- ^^^^^^^^^^ expected `int`, found `usize`
+   |                                          |
+   |                                          arguments to this method are incorrect
+   |
+note: method defined here
+  --> /Users/runner/work/verus/verus/source/vstd/seq.rs:53:26
+
+error[E0599]: no method named `checked_sub` found for struct `verus_builtin::nat` in the current scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_DivMod_Compare_impl.rs:90:41
+   |
+90 |     while k < final_remainder_seq.len().checked_sub(1).unwrap_or(0) && final_remainder_seq.index(k as usize) == '0' {
+   |                                         ^^^^^^^^^^^ method not found in `nat`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_DivMod_Compare_impl.rs:90:98
+   |
+90 |     while k < final_remainder_seq.len().checked_sub(1).unwrap_or(0) && final_remainder_seq.index(k as usize) == '0' {
+   |                                                                                            ----- ^^^^^^^^^^ expected `int`, found `usize`
+   |                                                                                            |
+   |                                                                                            arguments to this method are incorrect
+   |
+note: method defined here
+  --> /Users/runner/work/verus/verus/source/vstd/seq.rs:53:26
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_DivMod_Compare_impl.rs:93:36
+   |
+93 |     if final_remainder_seq.len() > 0 {
+   |        -------------------------   ^ expected `nat`, found integer
+   |        |
+   |        expected because this is `verus_builtin::nat`
+
+error[E0308]: arguments to this method are incorrect
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_DivMod_Compare_impl.rs:94:51
+   |
+94 |         final_remainder_seq = final_remainder_seq.subrange(k as usize, final_remainder_seq.len() as usize);
+   |                                                   ^^^^^^^^ ----------  ---------------------------------- expected `int`, found `usize`
+   |                                                            |
+   |                                                            expected `int`, found `usize`
+   |
+note: method defined here
+  --> /Users/runner/work/verus/verus/source/vstd/seq.rs:114:26
+
+error[E0599]: no function or associated item named `singleton` found for struct `vstd::seq::Seq` in the current scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_DivMod_Compare_impl.rs:96:36
+   |
+96 |         final_remainder_seq = Seq::singleton('0');
+   |                                    ^^^^^^^^^ function or associated item not found in `Seq<_>`
+   |
+note: if you're trying to build a new `vstd::seq::Seq<_>` consider using one of the following associated functions:
+      vstd::seq::Seq::<A>::empty
+      vstd::seq::Seq::<A>::new
+      vstd::seq::Seq::<A>::tracked_empty
+  --> /Users/runner/work/verus/verus/source/vstd/seq.rs:38:5
+
+error[E0599]: no method named `checked_sub` found for struct `verus_builtin::nat` in the current scope
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_DivMod_Compare_impl.rs:101:41
+    |
+101 |     while qk < final_quotient_seq.len().checked_sub(1).unwrap_or(0) && final_quotient_seq.index(qk as usize) == '0' {
+    |                                         ^^^^^^^^^^^ method not found in `nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_DivMod_Compare_impl.rs:101:97
+    |
+101 |     while qk < final_quotient_seq.len().checked_sub(1).unwrap_or(0) && final_quotient_seq.index(qk as usize) == '0' {
+    |                                                                                           ----- ^^^^^^^^^^^ expected `int`, found `usize`
+    |                                                                                           |
+    |                                                                                           arguments to this method are incorrect
+    |
+note: method defined here
+   --> /Users/runner/work/verus/verus/source/vstd/seq.rs:53:26
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_DivMod_Compare_impl.rs:104:35
+    |
+104 |     if final_quotient_seq.len() > 0 && !(final_quotient_seq.len() == 1 && final_quotient_seq.index(0 as usize) == '0') {
+    |        ------------------------   ^ expected `nat`, found integer
+    |        |
+    |        expected because this is `verus_builtin::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_DivMod_Compare_impl.rs:104:70
+    |
+104 |     if final_quotient_seq.len() > 0 && !(final_quotient_seq.len() == 1 && final_quotient_seq.index(0 as usize) == '0') {
+    |                                          ------------------------    ^ expected `nat`, found integer
+    |                                          |
+    |                                          expected because this is `verus_builtin::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_DivMod_Compare_impl.rs:104:100
+    |
+104 |     if final_quotient_seq.len() > 0 && !(final_quotient_seq.len() == 1 && final_quotient_seq.index(0 as usize) == '0') {
+    |                                                                                              ----- ^^^^^^^^^^ expected `int`, found `usize`
+    |                                                                                              |
+    |                                                                                              arguments to this method are incorrect
+    |
+note: method defined here
+   --> /Users/runner/work/verus/verus/source/vstd/seq.rs:53:26
+
+error[E0308]: arguments to this method are incorrect
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_DivMod_Compare_impl.rs:105:49
+    |
+105 |         final_quotient_seq = final_quotient_seq.subrange(qk as usize, final_quotient_seq.len() as usize);
+    |                                                 ^^^^^^^^ -----------  --------------------------------- expected `int`, found `usize`
+    |                                                          |
+    |                                                          expected `int`, found `usize`
+    |
+note: method defined here
+   --> /Users/runner/work/verus/verus/source/vstd/seq.rs:114:26
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_DivMod_Compare_impl.rs:106:43
+    |
+106 |     } else if final_quotient_seq.len() == 0 {
+    |               ------------------------    ^ expected `nat`, found integer
+    |               |
+    |               expected because this is `verus_builtin::nat`
+
+error[E0599]: no function or associated item named `singleton` found for struct `vstd::seq::Seq` in the current scope
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_DivMod_Compare_impl.rs:107:35
+    |
+107 |         final_quotient_seq = Seq::singleton('0');
+    |                                   ^^^^^^^^^ function or associated item not found in `Seq<_>`
+    |
+note: if you're trying to build a new `vstd::seq::Seq<_>` consider using one of the following associated functions:
+      vstd::seq::Seq::<A>::empty
+      vstd::seq::Seq::<A>::new
+      vstd::seq::Seq::<A>::tracked_empty
+   --> /Users/runner/work/verus/verus/source/vstd/seq.rs:38:5
+
+error[E0599]: no function or associated item named `new_from_seq` found for struct `std::vec::Vec<_, _>` in the current scope
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_DivMod_Compare_impl.rs:110:35
+    |
+110 |     let final_quotient_vec = Vec::new_from_seq(&final_quotient_seq);
+    |                                   ^^^^^^^^^^^^ function or associated item not found in `Vec<_, _>`
+    |
+note: if you're trying to build a new `std::vec::Vec<_, _>` consider using one of the following associated functions:
+      std::vec::Vec::<T>::new
+      std::vec::Vec::<T>::with_capacity
+      std::vec::Vec::<T>::try_with_capacity
+      std::vec::Vec::<T>::from_raw_parts
+      and 6 others
+   --> /rustc/6b00bc3880198600130e1cf62b8f8a93494488cc/library/alloc/src/vec/mod.rs:434:5
+
+error[E0599]: no function or associated item named `new_from_seq` found for struct `std::vec::Vec<_, _>` in the current scope
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_DivMod_Compare_impl.rs:111:36
+    |
+111 |     let final_remainder_vec = Vec::new_from_seq(&final_remainder_seq);
+    |                                    ^^^^^^^^^^^^ function or associated item not found in `Vec<_, _>`
+    |
+note: if you're trying to build a new `std::vec::Vec<_, _>` consider using one of the following associated functions:
+      std::vec::Vec::<T>::new
+      std::vec::Vec::<T>::with_capacity
+      std::vec::Vec::<T>::try_with_capacity
+      std::vec::Vec::<T>::from_raw_parts
+      and 6 others
+   --> /rustc/6b00bc3880198600130e1cf62b8f8a93494488cc/library/alloc/src/vec/mod.rs:434:5
+
+error[E0605]: non-primitive cast: `verus_builtin::nat` as `usize`
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_DivMod_Compare_impl.rs:45:54
+   |
+45 |     let mut remainder_seq = dividend_seq.subrange(0, initial_remainder_len as usize);
+   |                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ an `as` expression can only be used to convert between primitive types or to coerce to a specific trait object
+
+error[E0605]: non-primitive cast: `verus_builtin::nat` as `usize`
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_DivMod_Compare_impl.rs:62:55
+   |
+62 |             remainder_seq = remainder_seq.subrange(1, remainder_seq.len() as usize);
+   |                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^ an `as` expression can only be used to convert between primitive types or to coerce to a specific trait object
+
+error[E0605]: non-primitive cast: `verus_builtin::nat` as `usize`
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_DivMod_Compare_impl.rs:94:72
+   |
+94 |         final_remainder_seq = final_remainder_seq.subrange(k as usize, final_remainder_seq.len() as usize);
+   |                                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ an `as` expression can only be used to convert between primitive types or to coerce to a specific trait object
+
+error[E0605]: non-primitive cast: `verus_builtin::nat` as `usize`
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_DivMod_Compare_impl.rs:105:71
+    |
+105 |         final_quotient_seq = final_quotient_seq.subrange(qk as usize, final_quotient_seq.len() as usize);
+    |                                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ an `as` expression can only be used to convert between primitive types or to coerce to a specific trait object
+
+error: aborting due to 27 previous errors
+
+Some errors have detailed explanations: E0308, E0599, E0605.
+For more information about an error, try `rustc --explain E0308`.
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+error[E0308]: arguments to this method are incorrect
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_DivMod_Compare_impl.rs:45:42
+   |
+45 |     let mut remainder_seq = dividend_seq.subrange(0, initial_remainder_len as usize);
+   |                                          ^^^^^^^^ -  ------------------------------ expected `int`, found `usize`
+   |                                                   |
+   |                                                   expected `int`, found integer
+   |
+note: method defined here
+  --> /Users/runner/work/verus/verus/source/vstd/seq.rs:114:26
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_DivMod_Compare_impl.rs:46:17
+   |
+46 |     for i in 0..initial_remainder_len {
+   |                 ^^^^^^^^^^^^^^^^^^^^^ expected integer, found `nat`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_DivMod_Compare_impl.rs:47:47
+   |
+47 |         remainder_vec.push(dividend_seq.index(i as usize));
+   |                                         ----- ^^^^^^^^^^ expected `int`, found `usize`
+   |                                         |
+   |                                         arguments to this method are incorrect
+   |
+note: method defined here
+  --> /Users/runner/work/verus/verus/source/vstd/seq.rs:53:26
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_DivMod_Compare_impl.rs:50:24
+   |
+50 |     let mut i: usize = initial_remainder_len;
+   |                -----   ^^^^^^^^^^^^^^^^^^^^^ expected `usize`, found `nat`
+   |                |
+   |                expected due to this
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_DivMod_Compare_impl.rs:52:15
+   |
+52 |     while i < dividend_seq.len()
+   |           -   ^^^^^^^^^^^^^^^^^^ expected `usize`, found `nat`
+   |           |
+   |           expected because this is `usize`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_DivMod_Compare_impl.rs:61:34
+   |
+61 |         if remainder_seq.len() > 0 {
+   |            -------------------   ^ expected `nat`, found integer
+   |            |
+   |            expected because this is `verus_builtin::nat`
+
+error[E0308]: arguments to this method are incorrect
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_DivMod_Compare_impl.rs:62:43
+   |
+62 |             remainder_seq = remainder_seq.subrange(1, remainder_seq.len() as usize);
+   |                                           ^^^^^^^^ -  ---------------------------- expected `int`, found `usize`
+   |                                                    |
+   |                                                    expected `int`, found integer
+   |
+note: method defined here
+  --> /Users/runner/work/verus/verus/source/vstd/seq.rs:114:26
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_DivMod_Compare_impl.rs:66:48
+   |
+66 |         let next_bit_char = dividend_seq.index(i as usize);
+   |                                          ----- ^^^^^^^^^^ expected `int`, found `usize`
+   |                                          |
+   |                                          arguments to this method are incorrect
+   |
+note: method defined here
+  --> /Users/runner/work/verus/verus/source/vstd/seq.rs:53:26
+
+error[E0599]: no method named `checked_sub` found for struct `verus_builtin::nat` in the current scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_DivMod_Compare_impl.rs:90:41
+   |
+90 |     while k < final_remainder_seq.len().checked_sub(1).unwrap_or(0) && final_remainder_seq.index(k as usize) == '0' {
+   |                                         ^^^^^^^^^^^ method not found in `nat`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_DivMod_Compare_impl.rs:90:98
+   |
+90 |     while k < final_remainder_seq.len().checked_sub(1).unwrap_or(0) && final_remainder_seq.index(k as usize) == '0' {
+   |                                                                                            ----- ^^^^^^^^^^ expected `int`, found `usize`
+   |                                                                                            |
+   |                                                                                            arguments to this method are incorrect
+   |
+note: method defined here
+  --> /Users/runner/work/verus/verus/source/vstd/seq.rs:53:26
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_DivMod_Compare_impl.rs:93:36
+   |
+93 |     if final_remainder_seq.len() > 0 {
+   |        -------------------------   ^ expected `nat`, found integer
+   |        |
+   |        expected because this is `verus_builtin::nat`
+
+error[E0308]: arguments to this method are incorrect
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_DivMod_Compare_impl.rs:94:51
+   |
+94 |         final_remainder_seq = final_remainder_seq.subrange(k as usize, final_remainder_seq.len() as usize);
+   |                                                   ^^^^^^^^ ----------  ---------------------------------- expected `int`, found `usize`
+   |                                                            |
+   |                                                            expected `int`, found `usize`
+   |
+note: method defined here
+  --> /Users/runner/work/verus/verus/source/vstd/seq.rs:114:26
+
+error[E0599]: no function or associated item named `singleton` found for struct `vstd::seq::Seq` in the current scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_DivMod_Compare_impl.rs:96:36
+   |
+96 |         final_remainder_seq = Seq::singleton('0');
+   |                                    ^^^^^^^^^ function or associated item not found in `Seq<_>`
+   |
+note: if you're trying to build a new `vstd::seq::Seq<_>` consider using one of the following associated functions:
+      vstd::seq::Seq::<A>::empty
+      vstd::seq::Seq::<A>::new
+      vstd::seq::Seq::<A>::tracked_empty
+  --> /Users/runner/work/verus/verus/source/vstd/seq.rs:38:5
+
+error[E0599]: no method named `checked_sub` found for struct `verus_builtin::nat` in the current scope
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_DivMod_Compare_impl.rs:101:41
+    |
+101 |     while qk < final_quotient_seq.len().checked_sub(1).unwrap_or(0) && final_quotient_seq.index(qk as usize) == '0' {
+    |                                         ^^^^^^^^^^^ method not found in `nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_DivMod_Compare_impl.rs:101:97
+    |
+101 |     while qk < final_quotient_seq.len().checked_sub(1).unwrap_or(0) && final_quotient_seq.index(qk as usize) == '0' {
+    |                                                                                           ----- ^^^^^^^^^^^ expected `int`, found `usize`
+    |                                                                                           |
+    |                                                                                           arguments to this method are incorrect
+    |
+note: method defined here
+   --> /Users/runner/work/verus/verus/source/vstd/seq.rs:53:26
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_DivMod_Compare_impl.rs:104:35
+    |
+104 |     if final_quotient_seq.len() > 0 && !(final_quotient_seq.len() == 1 && final_quotient_seq.index(0 as usize) == '0') {
+    |        ------------------------   ^ expected `nat`, found integer
+    |        |
+    |        expected because this is `verus_builtin::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_DivMod_Compare_impl.rs:104:70
+    |
+104 |     if final_quotient_seq.len() > 0 && !(final_quotient_seq.len() == 1 && final_quotient_seq.index(0 as usize) == '0') {
+    |                                          ------------------------    ^ expected `nat`, found integer
+    |                                          |
+    |                                          expected because this is `verus_builtin::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_DivMod_Compare_impl.rs:104:100
+    |
+104 |     if final_quotient_seq.len() > 0 && !(final_quotient_seq.len() == 1 && final_quotient_seq.index(0 as usize) == '0') {
+    |                                                                                              ----- ^^^^^^^^^^ expected `int`, found `usize`
+    |                                                                                              |
+    |                                                                                              arguments to this method are incorrect
+    |
+note: method defined here
+   --> /Users/runner/work/verus/verus/source/vstd/seq.rs:53:26
+
+error[E0308]: arguments to this method are incorrect
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_DivMod_Compare_impl.rs:105:49
+    |
+105 |         final_quotient_seq = final_quotient_seq.subrange(qk as usize, final_quotient_seq.len() as usize);
+    |                                                 ^^^^^^^^ -----------  --------------------------------- expected `int`, found `usize`
+    |                                                          |
+    |                                                          expected `int`, found `usize`
+    |
+note: method defined here
+   --> /Users/runner/work/verus/verus/source/vstd/seq.rs:114:26
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_DivMod_Compare_impl.rs:106:43
+    |
+106 |     } else if final_quotient_seq.len() == 0 {
+    |               ------------------------    ^ expected `nat`, found integer
+    |               |
+    |               expected because this is `verus_builtin::nat`
+
+error[E0599]: no function or associated item named `singleton` found for struct `vstd::seq::Seq` in the current scope
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_DivMod_Compare_impl.rs:107:35
+    |
+107 |         final_quotient_seq = Seq::singleton('0');
+    |                                   ^^^^^^^^^ function or associated item not found in `Seq<_>`
+    |
+note: if you're trying to build a new `vstd::seq::Seq<_>` consider using one of the following associated functions:
+      vstd::seq::Seq::<A>::empty
+      vstd::seq::Seq::<A>::new
+      vstd::seq::Seq::<A>::tracked_empty
+   --> /Users/runner/work/verus/verus/source/vstd/seq.rs:38:5
+
+error[E0599]: no function or associated item named `new_from_seq` found for struct `std::vec::Vec<_, _>` in the current scope
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_DivMod_Compare_impl.rs:110:35
+    |
+110 |     let final_quotient_vec = Vec::new_from_seq(&final_quotient_seq);
+    |                                   ^^^^^^^^^^^^ function or associated item not found in `Vec<_, _>`
+    |
+note: if you're trying to build a new `std::vec::Vec<_, _>` consider using one of the following associated functions:
+      std::vec::Vec::<T>::new
+      std::vec::Vec::<T>::with_capacity
+      std::vec::Vec::<T>::try_with_capacity
+      std::vec::Vec::<T>::from_raw_parts
+      and 6 others
+   --> /rustc/6b00bc3880198600130e1cf62b8f8a93494488cc/library/alloc/src/vec/mod.rs:434:5
+
+error[E0599]: no function or associated item named `new_from_seq` found for struct `std::vec::Vec<_, _>` in the current scope
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_DivMod_Compare_impl.rs:111:36
+    |
+111 |     let final_remainder_vec = Vec::new_from_seq(&final_remainder_seq);
+    |                                    ^^^^^^^^^^^^ function or associated item not found in `Vec<_, _>`
+    |
+note: if you're trying to build a new `std::vec::Vec<_, _>` consider using one of the following associated functions:
+      std::vec::Vec::<T>::new
+      std::vec::Vec::<T>::with_capacity
+      std::vec::Vec::<T>::try_with_capacity
+      std::vec::Vec::<T>::from_raw_parts
+      and 6 others
+   --> /rustc/6b00bc3880198600130e1cf62b8f8a93494488cc/library/alloc/src/vec/mod.rs:434:5
+
+error[E0605]: non-primitive cast: `verus_builtin::nat` as `usize`
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_DivMod_Compare_impl.rs:45:54
+   |
+45 |     let mut remainder_seq = dividend_seq.subrange(0, initial_remainder_len as usize);
+   |                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ an `as` expression can only be used to convert between primitive types or to coerce to a specific trait object
+
+error[E0605]: non-primitive cast: `verus_builtin::nat` as `usize`
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_DivMod_Compare_impl.rs:62:55
+   |
+62 |             remainder_seq = remainder_seq.subrange(1, remainder_seq.len() as usize);
+   |                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^ an `as` expression can only be used to convert between primitive types or to coerce to a specific trait object
+
+error[E0605]: non-primitive cast: `verus_builtin::nat` as `usize`
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_DivMod_Compare_impl.rs:94:72
+   |
+94 |         final_remainder_seq = final_remainder_seq.subrange(k as usize, final_remainder_seq.len() as usize);
+   |                                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ an `as` expression can only be used to convert between primitive types or to coerce to a specific trait object
+
+error[E0605]: non-primitive cast: `verus_builtin::nat` as `usize`
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_DivMod_Compare_impl.rs:105:71
+    |
+105 |         final_quotient_seq = final_quotient_seq.subrange(qk as usize, final_quotient_seq.len() as usize);
+    |                                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ an `as` expression can only be used to convert between primitive types or to coerce to a specific trait object
+
+error: aborting due to 27 previous errors
+
+Some errors have detailed explanations: E0308, E0599, E0605.
+For more information about an error, try `rustc --explain E0308`.

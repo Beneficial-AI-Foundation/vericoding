@@ -1,0 +1,273 @@
+=== Verification Error - Iteration 1 ===
+File: benchmarks/verus/bignum/files/bignum_ModExp_int_ModExpPow2_int.rs
+Time: 2025-09-15 10:45:50
+
+Full Error Output:
+--------------------------------------------------------------------------------
+VERIFICATION BYPASSES DETECTED: uses 'assume' to bypass verification. Code contains verification bypasses and cannot be considered successfully verified.
+
+Original verification output:
+Compilation failed: error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_ModExp_int_ModExpPow2_int_impl.rs:30:55
+   |
+30 |     ModExpPow2_int(s_a.subrange(1, s_b.len() as int), 2 * Str2Int(s_a) % Str2Int(s_n), s_n)
+   |     --------------                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ expected `Seq<char>`, found `nat`
+   |     |
+   |     arguments to this function are incorrect
+   |
+   = note: expected struct `vstd::seq::Seq<char>`
+              found struct `vstd::prelude::nat`
+note: function defined here
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_ModExp_int_ModExpPow2_int_impl.rs:24:9
+   |
+24 | spec fn ModExpPow2_int(s_a: Seq<char>, s_b: Seq<char>, s_n: Seq<char>) -> nat
+   |         ^^^^^^^^^^^^^^                 --------------
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_ModExp_int_ModExpPow2_int_impl.rs:32:75
+   |
+32 |     (Str2Int(s_a) * ModExpPow2_int(s_a.subrange(1, s_b.len() as int - 1), 2 * Str2Int(s_a) % Str2Int(s_n), s_n)) % Str2Int(s_n)
+   |                     --------------                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ expected `Seq<char>`, found `nat`
+   |                     |
+   |                     arguments to this function are incorrect
+   |
+   = note: expected struct `vstd::seq::Seq<char>`
+              found struct `vstd::prelude::nat`
+note: function defined here
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_ModExp_int_ModExpPow2_int_impl.rs:24:9
+   |
+24 | spec fn ModExpPow2_int(s_a: Seq<char>, s_b: Seq<char>, s_n: Seq<char>) -> nat
+   |         ^^^^^^^^^^^^^^                 --------------
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_ModExp_int_ModExpPow2_int_impl.rs:49:31
+   |
+49 |     let mut result_int: nat = 1;
+   |                         ---   ^ expected `nat`, found integer
+   |                         |
+   |                         expected due to this
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_ModExp_int_ModExpPow2_int_impl.rs:53:22
+   |
+53 |     while exponent > 0
+   |           --------   ^ expected `nat`, found integer
+   |           |
+   |           expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_ModExp_int_ModExpPow2_int_impl.rs:59:23
+   |
+59 |         if exponent % 2 == 1 {
+   |            --------   ^ expected `nat`, found integer
+   |            |
+   |            expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_ModExp_int_ModExpPow2_int_impl.rs:59:28
+   |
+59 |         if exponent % 2 == 1 {
+   |            ------------    ^ expected `nat`, found integer
+   |            |
+   |            expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_ModExp_int_ModExpPow2_int_impl.rs:63:31
+   |
+63 |         exponent = exponent / 2;
+   |                    --------   ^ expected `nat`, found integer
+   |                    |
+   |                    expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_ModExp_int_ModExpPow2_int_impl.rs:74:16
+   |
+74 |     if temp == 0 && z_int > 0 { // Special case for 0 (and z_int > 0 to ensure valid modulus) 
+   |        ----    ^ expected `nat`, found integer
+   |        |
+   |        expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_ModExp_int_ModExpPow2_int_impl.rs:74:29
+   |
+74 |     if temp == 0 && z_int > 0 { // Special case for 0 (and z_int > 0 to ensure valid modulus) 
+   |                     -----   ^ expected `nat`, found integer
+   |                     |
+   |                     expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_ModExp_int_ModExpPow2_int_impl.rs:77:20
+   |
+77 |       while temp > 0
+   |             ----   ^ expected `nat`, found integer
+   |             |
+   |             expected because this is `vstd::prelude::nat`
+
+error[E0599]: no method named `log_2` found for struct `vstd::prelude::nat` in the current scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_ModExp_int_ModExpPow2_int_impl.rs:80:34
+   |
+80 |           char_vec.len() < z_int.log_2() + 1 + 1 // Upper bound for binary rep length
+   |                                  ^^^^^ method not found in `nat`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_ModExp_int_ModExpPow2_int_impl.rs:83:21
+   |
+83 |           if temp % 2 == 1 {
+   |              ----   ^ expected `nat`, found integer
+   |              |
+   |              expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_ModExp_int_ModExpPow2_int_impl.rs:83:26
+   |
+83 |           if temp % 2 == 1 {
+   |              --------    ^ expected `nat`, found integer
+   |              |
+   |              expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_ModExp_int_ModExpPow2_int_impl.rs:88:25
+   |
+88 |           temp = temp / 2;
+   |                  ----   ^ expected `nat`, found integer
+   |                  |
+   |                  expected because this is `vstd::prelude::nat`
+
+error: aborting due to 14 previous errors
+
+Some errors have detailed explanations: E0308, E0599.
+For more information about an error, try `rustc --explain E0308`.
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_ModExp_int_ModExpPow2_int_impl.rs:30:55
+   |
+30 |     ModExpPow2_int(s_a.subrange(1, s_b.len() as int), 2 * Str2Int(s_a) % Str2Int(s_n), s_n)
+   |     --------------                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ expected `Seq<char>`, found `nat`
+   |     |
+   |     arguments to this function are incorrect
+   |
+   = note: expected struct `vstd::seq::Seq<char>`
+              found struct `vstd::prelude::nat`
+note: function defined here
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_ModExp_int_ModExpPow2_int_impl.rs:24:9
+   |
+24 | spec fn ModExpPow2_int(s_a: Seq<char>, s_b: Seq<char>, s_n: Seq<char>) -> nat
+   |         ^^^^^^^^^^^^^^                 --------------
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_ModExp_int_ModExpPow2_int_impl.rs:32:75
+   |
+32 |     (Str2Int(s_a) * ModExpPow2_int(s_a.subrange(1, s_b.len() as int - 1), 2 * Str2Int(s_a) % Str2Int(s_n), s_n)) % Str2Int(s_n)
+   |                     --------------                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ expected `Seq<char>`, found `nat`
+   |                     |
+   |                     arguments to this function are incorrect
+   |
+   = note: expected struct `vstd::seq::Seq<char>`
+              found struct `vstd::prelude::nat`
+note: function defined here
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_ModExp_int_ModExpPow2_int_impl.rs:24:9
+   |
+24 | spec fn ModExpPow2_int(s_a: Seq<char>, s_b: Seq<char>, s_n: Seq<char>) -> nat
+   |         ^^^^^^^^^^^^^^                 --------------
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_ModExp_int_ModExpPow2_int_impl.rs:49:31
+   |
+49 |     let mut result_int: nat = 1;
+   |                         ---   ^ expected `nat`, found integer
+   |                         |
+   |                         expected due to this
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_ModExp_int_ModExpPow2_int_impl.rs:53:22
+   |
+53 |     while exponent > 0
+   |           --------   ^ expected `nat`, found integer
+   |           |
+   |           expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_ModExp_int_ModExpPow2_int_impl.rs:59:23
+   |
+59 |         if exponent % 2 == 1 {
+   |            --------   ^ expected `nat`, found integer
+   |            |
+   |            expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_ModExp_int_ModExpPow2_int_impl.rs:59:28
+   |
+59 |         if exponent % 2 == 1 {
+   |            ------------    ^ expected `nat`, found integer
+   |            |
+   |            expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_ModExp_int_ModExpPow2_int_impl.rs:63:31
+   |
+63 |         exponent = exponent / 2;
+   |                    --------   ^ expected `nat`, found integer
+   |                    |
+   |                    expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_ModExp_int_ModExpPow2_int_impl.rs:74:16
+   |
+74 |     if temp == 0 && z_int > 0 { // Special case for 0 (and z_int > 0 to ensure valid modulus) 
+   |        ----    ^ expected `nat`, found integer
+   |        |
+   |        expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_ModExp_int_ModExpPow2_int_impl.rs:74:29
+   |
+74 |     if temp == 0 && z_int > 0 { // Special case for 0 (and z_int > 0 to ensure valid modulus) 
+   |                     -----   ^ expected `nat`, found integer
+   |                     |
+   |                     expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_ModExp_int_ModExpPow2_int_impl.rs:77:20
+   |
+77 |       while temp > 0
+   |             ----   ^ expected `nat`, found integer
+   |             |
+   |             expected because this is `vstd::prelude::nat`
+
+error[E0599]: no method named `log_2` found for struct `vstd::prelude::nat` in the current scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_ModExp_int_ModExpPow2_int_impl.rs:80:34
+   |
+80 |           char_vec.len() < z_int.log_2() + 1 + 1 // Upper bound for binary rep length
+   |                                  ^^^^^ method not found in `nat`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_ModExp_int_ModExpPow2_int_impl.rs:83:21
+   |
+83 |           if temp % 2 == 1 {
+   |              ----   ^ expected `nat`, found integer
+   |              |
+   |              expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_ModExp_int_ModExpPow2_int_impl.rs:83:26
+   |
+83 |           if temp % 2 == 1 {
+   |              --------    ^ expected `nat`, found integer
+   |              |
+   |              expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_ModExp_int_ModExpPow2_int_impl.rs:88:25
+   |
+88 |           temp = temp / 2;
+   |                  ----   ^ expected `nat`, found integer
+   |                  |
+   |                  expected because this is `vstd::prelude::nat`
+
+error: aborting due to 14 previous errors
+
+Some errors have detailed explanations: E0308, E0599.
+For more information about an error, try `rustc --explain E0308`.

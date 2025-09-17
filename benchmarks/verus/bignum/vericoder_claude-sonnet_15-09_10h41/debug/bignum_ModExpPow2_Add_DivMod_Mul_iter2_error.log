@@ -1,0 +1,26 @@
+=== Verification Error - Iteration 2 ===
+File: benchmarks/verus/bignum/files/bignum_ModExpPow2_Add_DivMod_Mul.rs
+Time: 2025-09-15 10:51:58
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Verification failed: error: recursive function must have a decreases clause
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_ModExpPow2_Add_DivMod_Mul_impl.rs:26:6
+   |
+26 | spec fn pow2(n: nat) -> nat
+   |      ^^^^^^^^^^^^^^^^^^^^^^
+
+error: aborting due to 1 previous error
+
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+error: recursive function must have a decreases clause
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_ModExpPow2_Add_DivMod_Mul_impl.rs:26:6
+   |
+26 | spec fn pow2(n: nat) -> nat
+   |      ^^^^^^^^^^^^^^^^^^^^^^
+
+error: aborting due to 1 previous error
+

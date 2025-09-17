@@ -2,41 +2,53 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
 
-// <vc-helpers>
-spec fn valid_input(input: &str) -> bool {
+spec fn valid_input(input: Seq<char>) -> bool {
     input.len() > 0
 }
 
-spec fn valid_parsed_input(parts: Seq<&str>) -> bool {
+spec fn valid_parsed_input(parts: Seq<Seq<char>>) -> bool {
     parts.len() == 3 && parts[0].len() > 0 && parts[1].len() > 0 && parts[2].len() > 0
 }
 
-spec fn is_word_chain(a: &str, b: &str, c: &str) -> bool
-    recommends a.len() > 0 && b.len() > 0 && c.len() > 0
-{
-    a.as_bytes()[a.len() - 1] == b.as_bytes()[0] && b.as_bytes()[b.len() - 1] == c.as_bytes()[0]
+spec fn is_word_chain(a: Seq<char>, b: Seq<char>, c: Seq<char>) -> bool {
+    a.len() > 0 && b.len() > 0 && c.len() > 0 &&
+    a[a.len() - 1] == b[0] && b[b.len() - 1] == c[0]
 }
 
-spec fn expected_result(input: &str) -> String
-    recommends valid_input(input)
-{
-    /* Simplified for translation - would need SplitOnSpaces implementation */
-    "YES\n".to_string()
+spec fn split_on_spaces(s: Seq<char>) -> Seq<Seq<char>>;
+
+spec fn expected_result(input: Seq<char>) -> Seq<char> {
+    let stripped = if input.len() > 0 && input[input.len() - 1] == '\n' {
+        input.subrange(0, input.len() - 1)
+    } else {
+        input
+    };
+    let parts = split_on_spaces(stripped);
+    if valid_parsed_input(parts) {
+        if is_word_chain(parts[0], parts[1], parts[2]) {
+            seq!['Y', 'E', 'S', '\n']
+        } else {
+            seq!['N', 'O', '\n']
+        }
+    } else {
+        seq![]
+    }
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(input: &str) -> (result: String)
-    requires valid_input(input),
-    ensures result == expected_result(input),
-    ensures result == "YES\n" || result == "NO\n" || result == "",
+fn solve(input: Seq<char>) -> (result: Seq<char>)
+    requires valid_input(input)
+    ensures result == expected_result(input)
 // </vc-spec>
 // <vc-code>
 {
     assume(false);
-    String::new()
+    unreached()
 }
 // </vc-code>
 

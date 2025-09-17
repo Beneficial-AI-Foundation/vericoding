@@ -1,0 +1,76 @@
+=== Verification Error - Iteration 2 ===
+File: benchmarks/verus/bignum/files/bignum_DivMod_Sub.rs
+Time: 2025-09-15 11:02:16
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_10h41/bignum_DivMod_Sub_impl.rs:63:26
+   |
+63 |     let bit_value = pow2((length - i - 1) as nat);
+   |                          ^^^^^^^^^^^^^^^^^^^^^^^
+
+error[E0425]: cannot find value `result` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_10h41/bignum_DivMod_Sub_impl.rs:57:26
+   |
+57 |   ensures ValidBitString(result@), result.is_some() ==> (result.unwrap()@.len() == length && Str2Int(result.unwrap()@) == n)
+   |                          ^^^^^^ not found in this scope
+
+error[E0425]: cannot find value `result` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_10h41/bignum_DivMod_Sub_impl.rs:57:36
+   |
+57 |   ensures ValidBitString(result@), result.is_some() ==> (result.unwrap()@.len() == length && Str2Int(result.unwrap()@) == n)
+   |                                    ^^^^^^ not found in this scope
+
+error[E0425]: cannot find value `result` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_10h41/bignum_DivMod_Sub_impl.rs:57:58
+   |
+57 |   ensures ValidBitString(result@), result.is_some() ==> (result.unwrap()@.len() == length && Str2Int(result.unwrap()@) == n)
+   |                                                          ^^^^^^ not found in this scope
+
+error[E0425]: cannot find value `result` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_10h41/bignum_DivMod_Sub_impl.rs:57:102
+   |
+57 |   ensures ValidBitString(result@), result.is_some() ==> (result.unwrap()@.len() == length && Str2Int(result.unwrap()@) == n)
+   |                                                                                                      ^^^^^^ not found in this scope
+
+error: aborting due to 5 previous errors
+
+For more information about this error, try `rustc --explain E0425`.
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_10h41/bignum_DivMod_Sub_impl.rs:63:26
+   |
+63 |     let bit_value = pow2((length - i - 1) as nat);
+   |                          ^^^^^^^^^^^^^^^^^^^^^^^
+
+error[E0425]: cannot find value `result` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_10h41/bignum_DivMod_Sub_impl.rs:57:26
+   |
+57 |   ensures ValidBitString(result@), result.is_some() ==> (result.unwrap()@.len() == length && Str2Int(result.unwrap()@) == n)
+   |                          ^^^^^^ not found in this scope
+
+error[E0425]: cannot find value `result` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_10h41/bignum_DivMod_Sub_impl.rs:57:36
+   |
+57 |   ensures ValidBitString(result@), result.is_some() ==> (result.unwrap()@.len() == length && Str2Int(result.unwrap()@) == n)
+   |                                    ^^^^^^ not found in this scope
+
+error[E0425]: cannot find value `result` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_10h41/bignum_DivMod_Sub_impl.rs:57:58
+   |
+57 |   ensures ValidBitString(result@), result.is_some() ==> (result.unwrap()@.len() == length && Str2Int(result.unwrap()@) == n)
+   |                                                          ^^^^^^ not found in this scope
+
+error[E0425]: cannot find value `result` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_10h41/bignum_DivMod_Sub_impl.rs:57:102
+   |
+57 |   ensures ValidBitString(result@), result.is_some() ==> (result.unwrap()@.len() == length && Str2Int(result.unwrap()@) == n)
+   |                                                                                                      ^^^^^^ not found in this scope
+
+error: aborting due to 5 previous errors
+
+For more information about this error, try `rustc --explain E0425`.

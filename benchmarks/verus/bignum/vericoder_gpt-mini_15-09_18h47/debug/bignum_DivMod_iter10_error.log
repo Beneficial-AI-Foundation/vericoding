@@ -1,0 +1,56 @@
+=== Verification Error - Iteration 10 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_DivMod.rs
+Time: 2025-09-15 18:58:14
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: [rust_verify/src/rust_to_vir_expr.rs:3158:17] stmt = Stmt {
+    hir_id: HirId(DefId(0:9 ~ bignum_DivMod_impl[297c]::DivMod).319),
+    kind: Item(
+        ItemId {
+            owner_id: DefId(0:11 ~ bignum_DivMod_impl[297c]::DivMod::seq_ge),
+        },
+    ),
+    span: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_DivMod_impl.rs:75:7: 95:8 (#0),
+}
+error: The verifier does not yet support the following Rust feature: internal item statements
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_DivMod_impl.rs:75:7
+   |
+75 | /       fn seq_ge(a: &Vec<char>, b_slice: &[char]) -> bool {
+76 | |           let mut a_start: usize = 0;
+77 | |           while a_start < a.len() && a[a_start] == '0' {
+78 | |               a_start += 1;
+...  |
+94 | |           true
+95 | |       }
+   | |_______^
+
+error: aborting due to 1 previous error
+
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+[rust_verify/src/rust_to_vir_expr.rs:3158:17] stmt = Stmt {
+    hir_id: HirId(DefId(0:9 ~ bignum_DivMod_impl[297c]::DivMod).319),
+    kind: Item(
+        ItemId {
+            owner_id: DefId(0:11 ~ bignum_DivMod_impl[297c]::DivMod::seq_ge),
+        },
+    ),
+    span: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_DivMod_impl.rs:75:7: 95:8 (#0),
+}
+error: The verifier does not yet support the following Rust feature: internal item statements
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_DivMod_impl.rs:75:7
+   |
+75 | /       fn seq_ge(a: &Vec<char>, b_slice: &[char]) -> bool {
+76 | |           let mut a_start: usize = 0;
+77 | |           while a_start < a.len() && a[a_start] == '0' {
+78 | |               a_start += 1;
+...  |
+94 | |           true
+95 | |       }
+   | |_______^
+
+error: aborting due to 1 previous error
+

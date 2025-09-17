@@ -1,0 +1,142 @@
+=== Verification Error - Iteration 8 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_Mul.rs
+Time: 2025-09-15 20:16:16
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Verification failed: verification results:: 5 verified, 3 errors
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_Mul_impl.rs:39:5
+   |
+39 |     while i < max_len || carry > 0
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_Mul_impl.rs:31:9
+   |
+31 |         Str2Int(result@) == Str2Int(s1@) + Str2Int(s2@),
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+97 |     reversed
+   |     -------- at the end of the function body
+
+error: invariant not satisfied at end of loop body
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_Mul_impl.rs:42:13
+   |
+42 |             i <= max_len + 1,
+   |             ^^^^^^^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_Mul_impl.rs:71:13
+   |
+71 |         i = i + 1;
+   |             ^^^^^
+
+error: loop invariant not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_Mul_impl.rs:74:13
+   |
+42 |             i <= max_len + 1,
+   |             ----------------
+   |             |
+   |             failed this invariant
+   |             (hint: if this is not supposed to be true at the break, use 'invariant_except_break' for it instead of 'invariant', and use 'ensures' for what is true at the break)
+...
+74 |             break;
+   |             ^^^^^ at this loop exit
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_Mul_impl.rs:102:6
+    |
+102 | exec fn Mul(s1: &[char], s2: &[char]) -> (res: Vec<char>)
+    |      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_Mul_impl.rs:104:33
+    |
+104 |   ensures ValidBitString(res@), Str2Int(res@) == Str2Int(s1@) * Str2Int(s2@)
+    |                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+112 |         return result;
+    |         ------------- at this exit
+
+error: postcondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_Mul_impl.rs:104:33
+    |
+104 |   ensures ValidBitString(res@), Str2Int(res@) == Str2Int(s1@) * Str2Int(s2@)
+    |                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+118 |         return result;
+    |         ------------- at this exit
+
+error: aborting due to 6 previous errors
+
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+verification results:: 5 verified, 3 errors
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_Mul_impl.rs:39:5
+   |
+39 |     while i < max_len || carry > 0
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_Mul_impl.rs:31:9
+   |
+31 |         Str2Int(result@) == Str2Int(s1@) + Str2Int(s2@),
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+97 |     reversed
+   |     -------- at the end of the function body
+
+error: invariant not satisfied at end of loop body
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_Mul_impl.rs:42:13
+   |
+42 |             i <= max_len + 1,
+   |             ^^^^^^^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_Mul_impl.rs:71:13
+   |
+71 |         i = i + 1;
+   |             ^^^^^
+
+error: loop invariant not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_Mul_impl.rs:74:13
+   |
+42 |             i <= max_len + 1,
+   |             ----------------
+   |             |
+   |             failed this invariant
+   |             (hint: if this is not supposed to be true at the break, use 'invariant_except_break' for it instead of 'invariant', and use 'ensures' for what is true at the break)
+...
+74 |             break;
+   |             ^^^^^ at this loop exit
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_Mul_impl.rs:102:6
+    |
+102 | exec fn Mul(s1: &[char], s2: &[char]) -> (res: Vec<char>)
+    |      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_Mul_impl.rs:104:33
+    |
+104 |   ensures ValidBitString(res@), Str2Int(res@) == Str2Int(s1@) * Str2Int(s2@)
+    |                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+112 |         return result;
+    |         ------------- at this exit
+
+error: postcondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_Mul_impl.rs:104:33
+    |
+104 |   ensures ValidBitString(res@), Str2Int(res@) == Str2Int(s1@) * Str2Int(s2@)
+    |                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+118 |         return result;
+    |         ------------- at this exit
+
+error: aborting due to 6 previous errors
+

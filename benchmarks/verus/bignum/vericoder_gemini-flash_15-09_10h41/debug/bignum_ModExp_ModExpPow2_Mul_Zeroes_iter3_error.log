@@ -1,0 +1,112 @@
+=== Verification Error - Iteration 3 ===
+File: benchmarks/verus/bignum/files/bignum_ModExp_ModExpPow2_Mul_Zeroes.rs
+Time: 2025-09-15 10:44:33
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: error[E0599]: no function or associated item named `seq` found for struct `vstd::seq::Seq` in the current scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_ModExp_ModExpPow2_Mul_Zeroes_impl.rs:47:22
+   |
+47 |     if n == 0 { Seq::seq(&['0']) }
+   |                      ^^^ function or associated item not found in `Seq<_>`
+   |
+note: if you're trying to build a new `vstd::seq::Seq<_>` consider using one of the following associated functions:
+      vstd::seq::Seq::<A>::empty
+      vstd::seq::Seq::<A>::new
+      vstd::seq::Seq::<A>::tracked_empty
+  --> /Users/runner/work/verus/verus/source/vstd/seq.rs:38:5
+
+error[E0599]: no function or associated item named `seq` found for struct `vstd::seq::Seq` in the current scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_ModExp_ModExpPow2_Mul_Zeroes_impl.rs:51:28
+   |
+51 |         if div == 0 { Seq::seq(&[if rem == 1 { '1' } else { '0' }]) }
+   |                            ^^^ function or associated item not found in `Seq<_>`
+   |
+note: if you're trying to build a new `vstd::seq::Seq<_>` consider using one of the following associated functions:
+      vstd::seq::Seq::<A>::empty
+      vstd::seq::Seq::<A>::new
+      vstd::seq::Seq::<A>::tracked_empty
+  --> /Users/runner/work/verus/verus/source/vstd/seq.rs:38:5
+
+error[E0599]: no function or associated item named `seq` found for struct `vstd::seq::Seq` in the current scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_ModExp_ModExpPow2_Mul_Zeroes_impl.rs:52:21
+   |
+52 |         else { Seq::seq(&[if rem == 1 { '1' } else { '0' }]).add(NatToBitString(div)) }
+   |                     ^^^ function or associated item not found in `Seq<_>`
+   |
+note: if you're trying to build a new `vstd::seq::Seq<_>` consider using one of the following associated functions:
+      vstd::seq::Seq::<A>::empty
+      vstd::seq::Seq::<A>::new
+      vstd::seq::Seq::<A>::tracked_empty
+  --> /Users/runner/work/verus/verus/source/vstd/seq.rs:38:5
+
+error[E0599]: no method named `to_vec` found for struct `vstd::seq::Seq` in the current scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_ModExp_ModExpPow2_Mul_Zeroes_impl.rs:71:20
+   |
+71 |     bit_string_seq.to_vec()
+   |                    ^^^^^^
+   |
+help: there is a method `to_set` with a similar name
+   |
+71 -     bit_string_seq.to_vec()
+71 +     bit_string_seq.to_set()
+   |
+
+error: aborting due to 4 previous errors
+
+For more information about this error, try `rustc --explain E0599`.
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+error[E0599]: no function or associated item named `seq` found for struct `vstd::seq::Seq` in the current scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_ModExp_ModExpPow2_Mul_Zeroes_impl.rs:47:22
+   |
+47 |     if n == 0 { Seq::seq(&['0']) }
+   |                      ^^^ function or associated item not found in `Seq<_>`
+   |
+note: if you're trying to build a new `vstd::seq::Seq<_>` consider using one of the following associated functions:
+      vstd::seq::Seq::<A>::empty
+      vstd::seq::Seq::<A>::new
+      vstd::seq::Seq::<A>::tracked_empty
+  --> /Users/runner/work/verus/verus/source/vstd/seq.rs:38:5
+
+error[E0599]: no function or associated item named `seq` found for struct `vstd::seq::Seq` in the current scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_ModExp_ModExpPow2_Mul_Zeroes_impl.rs:51:28
+   |
+51 |         if div == 0 { Seq::seq(&[if rem == 1 { '1' } else { '0' }]) }
+   |                            ^^^ function or associated item not found in `Seq<_>`
+   |
+note: if you're trying to build a new `vstd::seq::Seq<_>` consider using one of the following associated functions:
+      vstd::seq::Seq::<A>::empty
+      vstd::seq::Seq::<A>::new
+      vstd::seq::Seq::<A>::tracked_empty
+  --> /Users/runner/work/verus/verus/source/vstd/seq.rs:38:5
+
+error[E0599]: no function or associated item named `seq` found for struct `vstd::seq::Seq` in the current scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_ModExp_ModExpPow2_Mul_Zeroes_impl.rs:52:21
+   |
+52 |         else { Seq::seq(&[if rem == 1 { '1' } else { '0' }]).add(NatToBitString(div)) }
+   |                     ^^^ function or associated item not found in `Seq<_>`
+   |
+note: if you're trying to build a new `vstd::seq::Seq<_>` consider using one of the following associated functions:
+      vstd::seq::Seq::<A>::empty
+      vstd::seq::Seq::<A>::new
+      vstd::seq::Seq::<A>::tracked_empty
+  --> /Users/runner/work/verus/verus/source/vstd/seq.rs:38:5
+
+error[E0599]: no method named `to_vec` found for struct `vstd::seq::Seq` in the current scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_ModExp_ModExpPow2_Mul_Zeroes_impl.rs:71:20
+   |
+71 |     bit_string_seq.to_vec()
+   |                    ^^^^^^
+   |
+help: there is a method `to_set` with a similar name
+   |
+71 -     bit_string_seq.to_vec()
+71 +     bit_string_seq.to_set()
+   |
+
+error: aborting due to 4 previous errors
+
+For more information about this error, try `rustc --explain E0599`.

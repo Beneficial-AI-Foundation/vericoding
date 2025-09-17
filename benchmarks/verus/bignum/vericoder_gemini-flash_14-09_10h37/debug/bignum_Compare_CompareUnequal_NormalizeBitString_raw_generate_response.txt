@@ -1,0 +1,5 @@
+=== Raw LLM Generate Response ===
+Length: 926 characters
+--------------------------------------------------------------------------------
+["{ let mut t_vec = Vec::new(); let mut seen_one = false; for i in 0..s.len() { let c = s[i]; if c == '1' { seen_one = true; } if seen_one || c == '1' { t_vec.push(c); } } if t_vec.is_empty() { t_vec.push('0'); } t_vec }", "{ if s1.len() > s2.len() { 1 } else if s1.len() < s2.len() { -1 } else { // Lengths are equal, compare character by character between s1 and s2 for i in 0..s1.len() { if s1[i] > s2[i] { return 1; } else if s1[i] < s2[i] { return -1; } } 0 // They are equal } }", "proof fn lemma_leading_zeros_not_affect_Str2Int(s: Seq<char>) requires ValidBitString(s) { if s.len() > 0 { if s.index(0) == '0' { let s_prime = s.subrange(1, s.len() as int); if s_prime.len() > 0 { proof { assert(Str2Int(s) == Str2Int(s_prime)); } } else { // s is "0" assert(Str2Int(s) == 0); assert(Str2Int(Seq::empty()) == 0); } } } }", "{ let n1 = NormalizeBitString(s1); let n2 = NormalizeBitString(s2); CompareUnequal(&n1, &n2) }"]
+--------------------------------------------------------------------------------

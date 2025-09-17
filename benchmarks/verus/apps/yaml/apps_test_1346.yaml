@@ -8,8 +8,6 @@ vc-preamble: |-
   use vstd::prelude::*;
 
   verus! {
-
-vc-helpers: |-
   spec fn valid_input(n: int, m: int, p: int, f: Seq<int>, g: Seq<int>) -> bool {
       n >= 1 && m >= 1 &&
       p >= 2 &&
@@ -19,7 +17,7 @@ vc-helpers: |-
       (exists|k: int| 0 <= k < f.len() && f[k] % p != 0) &&
       (exists|k: int| 0 <= k < g.len() && g[k] % p != 0)
   }
-  
+
   spec fn valid_result(result: int, n: int, m: int, p: int, f: Seq<int>, g: Seq<int>) -> bool 
       recommends p != 0
   {
@@ -32,6 +30,8 @@ vc-helpers: |-
               0 <= result < f.len() + g.len()
   }
 
+vc-helpers: |
+
 vc-spec: |-
   fn solve(n: int, m: int, p: int, f: Seq<int>, g: Seq<int>) -> (result: int)
       requires 
@@ -42,10 +42,10 @@ vc-spec: |-
 vc-code: |-
   {
       assume(false);
-      0int
+      unreached()
   }
 
-vc-postamble: |-
+vc-postamble: |2-
 
   }
 

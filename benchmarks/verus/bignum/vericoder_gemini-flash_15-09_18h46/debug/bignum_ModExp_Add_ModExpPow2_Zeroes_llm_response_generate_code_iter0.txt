@@ -1,0 +1,9 @@
+=== LLM Response - generate_code - Iteration 0 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExp_Add_ModExpPow2_Zeroes.rs
+Prompt Hash: b15707cd
+JSON Parsed Successfully: True
+Timestamp: 1757955508.9940212
+Content Length: 971 chars
+--------------------------------------------------------------------------------
+["spec fn mul_mod_spec(a: nat, b: nat, m: nat) -> nat { (a * b) % m }", "{\n    let x_int = Str2Int(sx@);\n    let y_int = Str2Int(sy@);\n    let z_int = Str2Int(sz@);\n\n    if y_int == 0 {\n        return int_to_bitstring(1, z_int);\n    } else {\n        let k = y_int / 2;\n        let r = y_int % 2;\n\n        let sx_copy: Vec<char> = sx.to_vec();\n        let sy_k_vec = int_to_bitstring(k, z_int); // Dummy length needed for new_function_here_ModExp_Add_ModExpPow2_Zeroes\n        let sz_copy: Vec<char> = sz.to_vec();\n\n        let res_k = new_function_here_ModExp_Add_ModExpPow2_Zeroes(&sx_copy, &sy_k_vec, &sz_copy);\n\n        let sq_res_k_int = mul_mod_spec(Str2Int(res_k@), Str2Int(res_k@), z_int);\n\n        if r == 1 {\n            let final_res_int = mul_mod_spec(sq_res_k_int, x_int, z_int);\n            return int_to_bitstring(final_res_int, z_int);\n        } else {\n            return int_to_bitstring(sq_res_k_int, z_int);\n        }\n    }\n}"]
+--------------------------------------------------------------------------------

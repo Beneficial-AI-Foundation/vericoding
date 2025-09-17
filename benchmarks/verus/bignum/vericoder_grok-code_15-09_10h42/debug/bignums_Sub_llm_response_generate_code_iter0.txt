@@ -1,0 +1,9 @@
+=== LLM Response - generate_code - Iteration 0 ===
+File: benchmarks/verus/bignum/files/bignums_Sub.rs
+Prompt Hash: 8ba914d3
+JSON Parsed Successfully: True
+Timestamp: 1757926408.786701
+Content Length: 765 chars
+--------------------------------------------------------------------------------
+["spec fn Int2Str(n: nat) -> Seq<char>\n    ensures\n        ValidBitString(result),\n        Str2Int(result) == n\n    decreases n\n{\n    if n == 0 {\n        Seq::empty()\n    } else {\n        let temp = n / 2;\n        Int2Str(temp as nat).push(if n % 2 == 0 { '0' } else { '1' })\n    }\n}", "{\n    let val1 = Str2Int(s1@);\n    let val2 = Str2Int(s2@);\n    let diff: nat = val1 - val2;\n    let result_seq = Int2Str(diff);\n    let len = result_seq.len();\n    let mut res: Vec<char> = Vec::with_capacity(len);\n    for i in 0..len\n        invariant\n            res.len() == i,\n            forall |j: int| 0 <= j < i ==> res@[j] == result_seq.index(j)\n        decreases len - i\n    {\n        res.push(result_seq.index(i as int));\n    }\n    res\n}"]
+--------------------------------------------------------------------------------

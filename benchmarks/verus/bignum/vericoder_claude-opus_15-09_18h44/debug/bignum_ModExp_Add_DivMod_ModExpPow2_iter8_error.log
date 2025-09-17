@@ -1,0 +1,38 @@
+=== Verification Error - Iteration 8 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExp_Add_DivMod_ModExpPow2.rs
+Time: 2025-09-15 19:11:57
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_Add_DivMod_ModExpPow2_impl.rs:86:41
+   |
+86 |         let n_minus_1: int = if n > 0 { (n - 1) as int } else { 0 };
+   |                                         ^^^^^^^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_Add_DivMod_ModExpPow2_impl.rs:91:26
+   |
+91 |         let n_int: int = n as int;
+   |                          ^^^^^^^^
+
+error: aborting due to 2 previous errors
+
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_Add_DivMod_ModExpPow2_impl.rs:86:41
+   |
+86 |         let n_minus_1: int = if n > 0 { (n - 1) as int } else { 0 };
+   |                                         ^^^^^^^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_Add_DivMod_ModExpPow2_impl.rs:91:26
+   |
+91 |         let n_int: int = n as int;
+   |                          ^^^^^^^^
+
+error: aborting due to 2 previous errors
+

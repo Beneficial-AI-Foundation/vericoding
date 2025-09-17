@@ -1,4 +1,3 @@
-namespace NpHistogram
 
 def histogram {n m : Nat} (data : Vector Float n) (bins : Vector Float m) : Vector Int (m - 1) := sorry
 
@@ -10,5 +9,3 @@ theorem histogram_spec {n m : Nat} (data : Vector Float n) (bins : Vector Float 
   let hist := histogram data bins
   (hist.toList.length = m - 1) ∧
   (n ≥ 0) := sorry
-
-end NpHistogram

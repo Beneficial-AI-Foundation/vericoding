@@ -1,0 +1,60 @@
+// <vc-preamble>
+// ======= TASK =======
+// Given a list of integers, determine if there exist three distinct elements 
+// (at different positions) in the list that sum to zero.
+
+// ======= SPEC REQUIREMENTS =======
+predicate HasTripleSumToZero(l: seq<int>)
+{
+    exists i, j, k :: 0 <= i < j < k < |l| && l[i] + l[j] + l[k] == 0
+}
+// </vc-preamble>
+
+// <vc-helpers>
+// ======= HELPERS =======
+// </vc-helpers>
+
+// <vc-spec>
+// ======= MAIN METHOD =======
+method triples_sum_to_zero(l: seq<int>) returns (result: bool)
+    ensures result == HasTripleSumToZero(l)
+// </vc-spec>
+// <vc-code>
+{
+    // Need at least 3 elements to form a triple
+    if |l| < 3 {
+        return false;
+    }
+
+    // Check all possible combinations of three distinct indices
+    var i := 0;
+    while i < |l|
+        invariant 0 <= i <= |l|
+        invariant forall ii, jj, kk :: 0 <= ii < jj < kk < |l| && ii < i ==> l[ii] + l[jj] + l[kk] != 0
+    {
+        var j := i + 1;
+        while j < |l|
+            invariant i + 1 <= j <= |l|
+            invariant forall ii, jj, kk :: 0 <= ii < jj < kk < |l| && ii < i ==> l[ii] + l[jj] + l[kk] != 0
+            invariant forall jj, kk :: i < jj < kk < |l| && jj < j ==> l[i] + l[jj] + l[kk] != 0
+        {
+            var k := j + 1;
+            while k < |l|
+                invariant j + 1 <= k <= |l|
+                invariant forall ii, jj, kk :: 0 <= ii < jj < kk < |l| && ii < i ==> l[ii] + l[jj] + l[kk] != 0
+                invariant forall jj, kk :: i < jj < kk < |l| && jj < j ==> l[i] + l[jj] + l[kk] != 0
+                invariant forall kk :: j < kk < |l| && kk < k ==> l[i] + l[j] + l[kk] != 0
+            {
+                if l[i] + l[j] + l[k] == 0 {
+                    return true;
+                }
+                k := k + 1;
+            }
+            j := j + 1;
+        }
+        i := i + 1;
+    }
+
+    return false;
+}
+// </vc-code>

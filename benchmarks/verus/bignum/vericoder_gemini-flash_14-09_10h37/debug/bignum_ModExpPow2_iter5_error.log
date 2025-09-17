@@ -1,0 +1,134 @@
+=== Verification Error - Iteration 5 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExpPow2.rs
+Time: 2025-09-14 10:39:20
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExpPow2_impl.rs:52:18
+   |
+52 |     if y_int == (0 as nat) {
+   |                  ^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExpPow2_impl.rs:62:27
+   |
+62 |     while exponent_val > (0 as nat)
+   |                           ^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExpPow2_impl.rs:70:28
+   |
+70 |         if exponent_val % (2 as nat) == (1 as nat) {
+   |                            ^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExpPow2_impl.rs:70:42
+   |
+70 |         if exponent_val % (2 as nat) == (1 as nat) {
+   |                                          ^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExpPow2_impl.rs:74:40
+   |
+74 |         exponent_val = exponent_val / (2 as nat);
+   |                                        ^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExpPow2_impl.rs:80:17
+   |
+80 |     if temp == (0 as nat) {
+   |                 ^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExpPow2_impl.rs:85:19
+   |
+85 |     while temp > (0 as nat)
+   |                   ^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExpPow2_impl.rs:90:20
+   |
+90 |         if temp % (2 as nat) == (1 as nat) {
+   |                    ^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExpPow2_impl.rs:90:34
+   |
+90 |         if temp % (2 as nat) == (1 as nat) {
+   |                                  ^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExpPow2_impl.rs:95:24
+   |
+95 |         temp = temp / (2 as nat);
+   |                        ^^^^^^^^
+
+error: aborting due to 10 previous errors
+
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExpPow2_impl.rs:52:18
+   |
+52 |     if y_int == (0 as nat) {
+   |                  ^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExpPow2_impl.rs:62:27
+   |
+62 |     while exponent_val > (0 as nat)
+   |                           ^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExpPow2_impl.rs:70:28
+   |
+70 |         if exponent_val % (2 as nat) == (1 as nat) {
+   |                            ^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExpPow2_impl.rs:70:42
+   |
+70 |         if exponent_val % (2 as nat) == (1 as nat) {
+   |                                          ^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExpPow2_impl.rs:74:40
+   |
+74 |         exponent_val = exponent_val / (2 as nat);
+   |                                        ^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExpPow2_impl.rs:80:17
+   |
+80 |     if temp == (0 as nat) {
+   |                 ^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExpPow2_impl.rs:85:19
+   |
+85 |     while temp > (0 as nat)
+   |                   ^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExpPow2_impl.rs:90:20
+   |
+90 |         if temp % (2 as nat) == (1 as nat) {
+   |                    ^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExpPow2_impl.rs:90:34
+   |
+90 |         if temp % (2 as nat) == (1 as nat) {
+   |                                  ^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExpPow2_impl.rs:95:24
+   |
+95 |         temp = temp / (2 as nat);
+   |                        ^^^^^^^^
+
+error: aborting due to 10 previous errors
+

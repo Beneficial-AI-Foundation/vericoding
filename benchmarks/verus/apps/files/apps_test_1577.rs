@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(input: Seq<char>) -> bool {
     input.len() > 0 && exists|newline_pos: int| 0 <= newline_pos < input.len() && input[newline_pos] == '\n'
 }
@@ -26,13 +23,13 @@ spec fn is_valid_game_string(s: Seq<char>) -> bool {
     forall|i: int| 0 <= i < s.len() ==> s[i] == 'A' || s[i] == 'D'
 }
 
-spec fn count_char(s: Seq<char>, c: char) -> int
+spec fn count_char(s: Seq<char>, c: char) -> int 
     decreases s.len()
 {
     if s.len() == 0 {
-        0
+        0int
     } else {
-        (if s[0] == c { 1 } else { 0 }) + count_char(s.subrange(1, s.len() as int), c)
+        (if s[0] == c { 1int } else { 0int }) + count_char(s.subrange(1, s.len() as int), c)
     }
 }
 
@@ -49,6 +46,9 @@ spec fn determine_winner(count_a: int, count_d: int) -> Seq<char> {
 spec fn split_lines(input: Seq<char>) -> Seq<Seq<char>>;
 
 spec fn string_to_int(s: Seq<char>) -> int;
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>
@@ -59,19 +59,19 @@ fn solve(input: Seq<char>) -> (result: Seq<char>)
     ensures 
         result == seq!['A', 'n', 't', 'o', 'n'] || 
         result == seq!['D', 'a', 'n', 'i', 'k'] || 
-        result == seq!['F', 'r', 'i', 'e', 'n', 'd', 's', 'h', 'i', 'p']
-    ensures ({
-        let lines = split_lines(input);
-        let s = lines[1];
-        let count_a = count_char(s, 'A');
-        let count_d = count_char(s, 'D');
-        result == determine_winner(count_a, count_d)
-    })
+        result == seq!['F', 'r', 'i', 'e', 'n', 'd', 's', 'h', 'i', 'p'] &&
+        result == {
+            let lines = split_lines(input);
+            let s = lines[1];
+            let count_a = count_char(s, 'A');
+            let count_d = count_char(s, 'D');
+            determine_winner(count_a, count_d)
+        }
 // </vc-spec>
 // <vc-code>
 {
     assume(false);
-    seq![]
+    unreached()
 }
 // </vc-code>
 

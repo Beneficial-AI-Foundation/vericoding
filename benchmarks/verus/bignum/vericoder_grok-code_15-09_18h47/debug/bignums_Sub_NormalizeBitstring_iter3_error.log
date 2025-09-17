@@ -1,0 +1,100 @@
+=== Verification Error - Iteration 3 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignums_Sub_NormalizeBitstring.rs
+Time: 2025-09-15 19:00:24
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Verification failed: verification results:: 2 verified, 3 errors
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignums_Sub_NormalizeBitstring_impl.rs:30:11
+   |
+30 |   ensures ValidBitString(res@)
+   |           ^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+60 |         return res;
+   |         ---------- at this exit
+
+error: precondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignums_Sub_NormalizeBitstring_impl.rs:37:24
+   |
+37 |     while i < s_len && s[i] == '0'
+   |                        ^^^^
+   |
+  ::: /Users/sergiu.bursuc/verus/vstd/slice.rs:62:9
+   |
+62 |         0 <= i < slice.view().len(),
+   |         --------------------------- failed precondition
+
+note: recommendation not met
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignums_Sub_NormalizeBitstring_impl.rs:40:51
+   |
+40 |             forall |j: int| 0 <= j < i as int ==> s@.index(j) == '0',
+   |                                                   ^^^^^^^^^^^
+   |
+  ::: /Users/sergiu.bursuc/verus/vstd/seq.rs:55:13
+   |
+55 |             0 <= i < self.len(),
+   |             ------------------- recommendation not met
+
+error: precondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignums_Sub_NormalizeBitstring_impl.rs:57:22
+   |
+57 |             res.push(s[j]);
+   |                      ^^^^
+   |
+  ::: /Users/sergiu.bursuc/verus/vstd/slice.rs:62:9
+   |
+62 |         0 <= i < slice.view().len(),
+   |         --------------------------- failed precondition
+
+error: aborting due to 3 previous errors
+
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+verification results:: 2 verified, 3 errors
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignums_Sub_NormalizeBitstring_impl.rs:30:11
+   |
+30 |   ensures ValidBitString(res@)
+   |           ^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+60 |         return res;
+   |         ---------- at this exit
+
+error: precondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignums_Sub_NormalizeBitstring_impl.rs:37:24
+   |
+37 |     while i < s_len && s[i] == '0'
+   |                        ^^^^
+   |
+  ::: /Users/sergiu.bursuc/verus/vstd/slice.rs:62:9
+   |
+62 |         0 <= i < slice.view().len(),
+   |         --------------------------- failed precondition
+
+note: recommendation not met
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignums_Sub_NormalizeBitstring_impl.rs:40:51
+   |
+40 |             forall |j: int| 0 <= j < i as int ==> s@.index(j) == '0',
+   |                                                   ^^^^^^^^^^^
+   |
+  ::: /Users/sergiu.bursuc/verus/vstd/seq.rs:55:13
+   |
+55 |             0 <= i < self.len(),
+   |             ------------------- recommendation not met
+
+error: precondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignums_Sub_NormalizeBitstring_impl.rs:57:22
+   |
+57 |             res.push(s[j]);
+   |                      ^^^^
+   |
+  ::: /Users/sergiu.bursuc/verus/vstd/slice.rs:62:9
+   |
+62 |         0 <= i < slice.view().len(),
+   |         --------------------------- failed precondition
+
+error: aborting due to 3 previous errors
+

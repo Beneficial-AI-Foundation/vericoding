@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(n: int) -> bool {
     n >= 3
 }
@@ -14,6 +11,9 @@ spec fn min_jumps(n: int) -> int
 {
     (n - 2) * (n - 2)
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

@@ -1,0 +1,5 @@
+=== Raw LLM Generate Response ===
+Length: 168 characters
+--------------------------------------------------------------------------------
+["fn min(a: int, b: int) -> int { if a < b { a } else { b } }", "{\n    let result = min(a, b);\n    result\n}", "proof fn helper_lemma(x: int) ensures x + 0 == x { }"]
+--------------------------------------------------------------------------------

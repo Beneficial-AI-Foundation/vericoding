@@ -1,0 +1,268 @@
+=== Verification Error - Iteration 5 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_Compare_NormalizeBitString.rs
+Time: 2025-09-15 20:29:08
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Verification failed: verification results:: 2 verified, 4 errors
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_Compare_NormalizeBitString_impl.rs:73:9
+   |
+73 |         while k < len1
+   |         ^^^^^^^^^^^^^^
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_Compare_NormalizeBitString_impl.rs:30:6
+   |
+30 | exec fn Compare(s1: &[char], s2: &[char]) -> (res: i32)
+   |      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+note: recommendation not met
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_Compare_NormalizeBitString_impl.rs:33:11
+   |
+6  |   recommends ValidBitString(s)
+   |              ----------------- recommendation not met
+...
+33 |   ensures Str2Int(s1@) < Str2Int(s2@) ==> res == -1,
+   |           ^^^^^^^^^^^^
+
+note: recommendation not met
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_Compare_NormalizeBitString_impl.rs:33:26
+   |
+6  |   recommends ValidBitString(s)
+   |              ----------------- recommendation not met
+...
+33 |   ensures Str2Int(s1@) < Str2Int(s2@) ==> res == -1,
+   |                          ^^^^^^^^^^^^
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_Compare_NormalizeBitString_impl.rs:34:5
+   |
+34 |     Str2Int(s1@) == Str2Int(s2@) ==> res == 0,
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+68 |         return -1;
+   |         --------- at this exit
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_Compare_NormalizeBitString_impl.rs:35:5
+   |
+35 |     Str2Int(s1@) > Str2Int(s2@) ==> res == 1,
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+68 |         return -1;
+   |         --------- at this exit
+
+error: precondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_Compare_NormalizeBitString_impl.rs:45:22
+   |
+45 |     while p1 < n1 && s1[p1] == '0'
+   |                      ^^^^^^
+   |
+  ::: /Users/sergiu.bursuc/verus/vstd/slice.rs:62:9
+   |
+62 |         0 <= i < slice.view().len(),
+   |         --------------------------- failed precondition
+
+note: recommendation not met
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_Compare_NormalizeBitString_impl.rs:48:57
+   |
+48 |             forall |i: int| 0 <= i && i < p1 as int ==> #[trigger] s1@[i] == '0',
+   |                                                         ^^^^^^^^^^^^^^^^^
+   |
+  ::: /Users/sergiu.bursuc/verus/vstd/seq.rs:62:13
+   |
+62 |             0 <= i < self.len(),
+   |             ------------------- recommendation not met
+
+error: precondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_Compare_NormalizeBitString_impl.rs:55:22
+   |
+55 |     while p2 < n2 && s2[p2] == '0'
+   |                      ^^^^^^
+   |
+  ::: /Users/sergiu.bursuc/verus/vstd/slice.rs:62:9
+   |
+62 |         0 <= i < slice.view().len(),
+   |         --------------------------- failed precondition
+
+note: recommendation not met
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_Compare_NormalizeBitString_impl.rs:58:57
+   |
+58 |             forall |i: int| 0 <= i && i < p2 as int ==> #[trigger] s2@[i] == '0',
+   |                                                         ^^^^^^^^^^^^^^^^^
+   |
+  ::: /Users/sergiu.bursuc/verus/vstd/seq.rs:62:13
+   |
+62 |             0 <= i < self.len(),
+   |             ------------------- recommendation not met
+
+note: recommendation not met
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_Compare_NormalizeBitString_impl.rs:76:60
+   |
+76 |                 forall |i: int| 0 <= i && i < k as int ==> #[trigger] s1@[(p1 as int + i)] == #[trigger] s2@[(p2 as int + i)],
+   |                                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+  ::: /Users/sergiu.bursuc/verus/vstd/seq.rs:62:13
+   |
+62 |             0 <= i < self.len(),
+   |             ------------------- recommendation not met
+
+error: precondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_Compare_NormalizeBitString_impl.rs:79:22
+   |
+79 |             let b1 = s1[p1 + k];
+   |                      ^^^^^^^^^^
+   |
+  ::: /Users/sergiu.bursuc/verus/vstd/slice.rs:62:9
+   |
+62 |         0 <= i < slice.view().len(),
+   |         --------------------------- failed precondition
+
+error: possible arithmetic underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_Compare_NormalizeBitString_impl.rs:79:25
+   |
+79 |             let b1 = s1[p1 + k];
+   |                         ^^^^^^
+
+error: possible arithmetic underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_Compare_NormalizeBitString_impl.rs:80:25
+   |
+80 |             let b2 = s2[p2 + k];
+   |                         ^^^^^^
+
+error: aborting due to 7 previous errors
+
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+verification results:: 2 verified, 4 errors
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_Compare_NormalizeBitString_impl.rs:73:9
+   |
+73 |         while k < len1
+   |         ^^^^^^^^^^^^^^
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_Compare_NormalizeBitString_impl.rs:30:6
+   |
+30 | exec fn Compare(s1: &[char], s2: &[char]) -> (res: i32)
+   |      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+note: recommendation not met
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_Compare_NormalizeBitString_impl.rs:33:11
+   |
+6  |   recommends ValidBitString(s)
+   |              ----------------- recommendation not met
+...
+33 |   ensures Str2Int(s1@) < Str2Int(s2@) ==> res == -1,
+   |           ^^^^^^^^^^^^
+
+note: recommendation not met
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_Compare_NormalizeBitString_impl.rs:33:26
+   |
+6  |   recommends ValidBitString(s)
+   |              ----------------- recommendation not met
+...
+33 |   ensures Str2Int(s1@) < Str2Int(s2@) ==> res == -1,
+   |                          ^^^^^^^^^^^^
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_Compare_NormalizeBitString_impl.rs:34:5
+   |
+34 |     Str2Int(s1@) == Str2Int(s2@) ==> res == 0,
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+68 |         return -1;
+   |         --------- at this exit
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_Compare_NormalizeBitString_impl.rs:35:5
+   |
+35 |     Str2Int(s1@) > Str2Int(s2@) ==> res == 1,
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+68 |         return -1;
+   |         --------- at this exit
+
+error: precondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_Compare_NormalizeBitString_impl.rs:45:22
+   |
+45 |     while p1 < n1 && s1[p1] == '0'
+   |                      ^^^^^^
+   |
+  ::: /Users/sergiu.bursuc/verus/vstd/slice.rs:62:9
+   |
+62 |         0 <= i < slice.view().len(),
+   |         --------------------------- failed precondition
+
+note: recommendation not met
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_Compare_NormalizeBitString_impl.rs:48:57
+   |
+48 |             forall |i: int| 0 <= i && i < p1 as int ==> #[trigger] s1@[i] == '0',
+   |                                                         ^^^^^^^^^^^^^^^^^
+   |
+  ::: /Users/sergiu.bursuc/verus/vstd/seq.rs:62:13
+   |
+62 |             0 <= i < self.len(),
+   |             ------------------- recommendation not met
+
+error: precondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_Compare_NormalizeBitString_impl.rs:55:22
+   |
+55 |     while p2 < n2 && s2[p2] == '0'
+   |                      ^^^^^^
+   |
+  ::: /Users/sergiu.bursuc/verus/vstd/slice.rs:62:9
+   |
+62 |         0 <= i < slice.view().len(),
+   |         --------------------------- failed precondition
+
+note: recommendation not met
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_Compare_NormalizeBitString_impl.rs:58:57
+   |
+58 |             forall |i: int| 0 <= i && i < p2 as int ==> #[trigger] s2@[i] == '0',
+   |                                                         ^^^^^^^^^^^^^^^^^
+   |
+  ::: /Users/sergiu.bursuc/verus/vstd/seq.rs:62:13
+   |
+62 |             0 <= i < self.len(),
+   |             ------------------- recommendation not met
+
+note: recommendation not met
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_Compare_NormalizeBitString_impl.rs:76:60
+   |
+76 |                 forall |i: int| 0 <= i && i < k as int ==> #[trigger] s1@[(p1 as int + i)] == #[trigger] s2@[(p2 as int + i)],
+   |                                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+  ::: /Users/sergiu.bursuc/verus/vstd/seq.rs:62:13
+   |
+62 |             0 <= i < self.len(),
+   |             ------------------- recommendation not met
+
+error: precondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_Compare_NormalizeBitString_impl.rs:79:22
+   |
+79 |             let b1 = s1[p1 + k];
+   |                      ^^^^^^^^^^
+   |
+  ::: /Users/sergiu.bursuc/verus/vstd/slice.rs:62:9
+   |
+62 |         0 <= i < slice.view().len(),
+   |         --------------------------- failed precondition
+
+error: possible arithmetic underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_Compare_NormalizeBitString_impl.rs:79:25
+   |
+79 |             let b1 = s1[p1 + k];
+   |                         ^^^^^^
+
+error: possible arithmetic underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_Compare_NormalizeBitString_impl.rs:80:25
+   |
+80 |             let b2 = s2[p2 + k];
+   |                         ^^^^^^
+
+error: aborting due to 7 previous errors
+

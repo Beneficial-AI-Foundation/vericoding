@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(x: int, a: int) -> bool {
     0 <= x <= 9 && 0 <= a <= 9
 }
@@ -12,6 +9,9 @@ spec fn valid_input(x: int, a: int) -> bool {
 spec fn correct_output(x: int, a: int, result: int) -> bool {
     result == (if x < a { 0nat as int } else { 10nat as int })
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

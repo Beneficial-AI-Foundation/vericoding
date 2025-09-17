@@ -7,12 +7,10 @@ vc-preamble: |-
   use vstd::prelude::*;
 
   verus! {
-
-vc-helpers: |-
   spec fn valid_day(day: &str) -> bool {
       day == "SUN" || day == "MON" || day == "TUE" || day == "WED" || day == "THU" || day == "FRI" || day == "SAT"
   }
-  
+
   spec fn days_until_sunday(day: &str) -> int {
       if day == "SUN" { 7 }
       else if day == "MON" { 6 }
@@ -22,6 +20,8 @@ vc-helpers: |-
       else if day == "FRI" { 2 }
       else { 1 }
   }
+
+vc-helpers: |
 
 vc-spec: |-
   fn days_to_next_sunday(day: &str) -> (result: int)
@@ -37,7 +37,7 @@ vc-code: |-
       unreached()
   }
 
-vc-postamble: |-
+vc-postamble: |2-
 
   }
 

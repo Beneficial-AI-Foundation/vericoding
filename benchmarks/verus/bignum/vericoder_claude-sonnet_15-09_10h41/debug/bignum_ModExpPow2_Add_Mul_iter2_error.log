@@ -1,0 +1,74 @@
+=== Verification Error - Iteration 2 ===
+File: benchmarks/verus/bignum/files/bignum_ModExpPow2_Add_Mul.rs
+Time: 2025-09-15 10:46:31
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_ModExpPow2_Add_Mul_impl.rs:133:123
+    |
+133 |         if sy@.len() > 0nat && sy@.index(0) == '1' && (sy@.len() == 1nat || (sy@.len() > 1nat && forall |k: int| 1 <= k < sy@.len() as int ==> sy@.index(k) == '0')) {
+    |                                                                                                                           ^^^^^^^^^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_ModExpPow2_Add_Mul_impl.rs:150:18
+    |
+150 |     if sy@.index((sy@.len() - 1nat) as int) == '0' {
+    |                  ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_ModExpPow2_Add_Mul_impl.rs:158:36
+    |
+158 |             sy_half.push(sy@.index(i as int));
+    |                                    ^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_ModExpPow2_Add_Mul_impl.rs:179:30
+    |
+179 |                 if sy@.index((sy@.len() - 1nat - i) as int) == '1' {
+    |                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_ModExpPow2_Add_Mul_impl.rs:186:50
+    |
+186 |                 sy_minus_one.insert(0, sy@.index((sy@.len() - 1nat - i) as int));
+    |                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: aborting due to 5 previous errors
+
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_ModExpPow2_Add_Mul_impl.rs:133:123
+    |
+133 |         if sy@.len() > 0nat && sy@.index(0) == '1' && (sy@.len() == 1nat || (sy@.len() > 1nat && forall |k: int| 1 <= k < sy@.len() as int ==> sy@.index(k) == '0')) {
+    |                                                                                                                           ^^^^^^^^^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_ModExpPow2_Add_Mul_impl.rs:150:18
+    |
+150 |     if sy@.index((sy@.len() - 1nat) as int) == '0' {
+    |                  ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_ModExpPow2_Add_Mul_impl.rs:158:36
+    |
+158 |             sy_half.push(sy@.index(i as int));
+    |                                    ^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_ModExpPow2_Add_Mul_impl.rs:179:30
+    |
+179 |                 if sy@.index((sy@.len() - 1nat - i) as int) == '1' {
+    |                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_ModExpPow2_Add_Mul_impl.rs:186:50
+    |
+186 |                 sy_minus_one.insert(0, sy@.index((sy@.len() - 1nat - i) as int));
+    |                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: aborting due to 5 previous errors
+

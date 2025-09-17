@@ -1,0 +1,126 @@
+=== Verification Error - Iteration 8 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExp_Add_DivMod_ModExpPow2_Zeroes.rs
+Time: 2025-09-15 19:33:26
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: error: invalid suffix `int` for number literal
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_ModExp_Add_DivMod_ModExpPow2_Zeroes_impl.rs:39:24
+   |
+39 |     let mut res: int = 0int;
+   |                        ^^^^ invalid suffix `int`
+   |
+   = help: the suffix must be one of the numeric types (`u32`, `isize`, `f32`, etc.)
+
+error: invalid suffix `int` for number literal
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_ModExp_Add_DivMod_ModExpPow2_Zeroes_impl.rs:40:24
+   |
+40 |     let mut pow: int = 1int;
+   |                        ^^^^ invalid suffix `int`
+   |
+   = help: the suffix must be one of the numeric types (`u32`, `isize`, `f32`, etc.)
+
+error: invalid suffix `int` for number literal
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_ModExp_Add_DivMod_ModExpPow2_Zeroes_impl.rs:55:15
+   |
+55 |         pow = 2int * pow;
+   |               ^^^^ invalid suffix `int`
+   |
+   = help: the suffix must be one of the numeric types (`u32`, `isize`, `f32`, etc.)
+
+error: invalid suffix `int` for number literal
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_ModExp_Add_DivMod_ModExpPow2_Zeroes_impl.rs:67:13
+   |
+67 |     if n == 0int {
+   |             ^^^^ invalid suffix `int`
+   |
+   = help: the suffix must be one of the numeric types (`u32`, `isize`, `f32`, etc.)
+
+error: invalid suffix `int` for number literal
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_ModExp_Add_DivMod_ModExpPow2_Zeroes_impl.rs:72:41
+   |
+72 |         let mut res = nat_to_binary(n / 2int);
+   |                                         ^^^^ invalid suffix `int`
+   |
+   = help: the suffix must be one of the numeric types (`u32`, `isize`, `f32`, etc.)
+
+error: invalid suffix `int` for number literal
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_ModExp_Add_DivMod_ModExpPow2_Zeroes_impl.rs:73:16
+   |
+73 |         if n % 2int == 0int {
+   |                ^^^^ invalid suffix `int`
+   |
+   = help: the suffix must be one of the numeric types (`u32`, `isize`, `f32`, etc.)
+
+error: invalid suffix `int` for number literal
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_ModExp_Add_DivMod_ModExpPow2_Zeroes_impl.rs:73:24
+   |
+73 |         if n % 2int == 0int {
+   |                        ^^^^ invalid suffix `int`
+   |
+   = help: the suffix must be one of the numeric types (`u32`, `isize`, `f32`, etc.)
+
+error: aborting due to 7 previous errors
+
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+error: invalid suffix `int` for number literal
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_ModExp_Add_DivMod_ModExpPow2_Zeroes_impl.rs:39:24
+   |
+39 |     let mut res: int = 0int;
+   |                        ^^^^ invalid suffix `int`
+   |
+   = help: the suffix must be one of the numeric types (`u32`, `isize`, `f32`, etc.)
+
+error: invalid suffix `int` for number literal
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_ModExp_Add_DivMod_ModExpPow2_Zeroes_impl.rs:40:24
+   |
+40 |     let mut pow: int = 1int;
+   |                        ^^^^ invalid suffix `int`
+   |
+   = help: the suffix must be one of the numeric types (`u32`, `isize`, `f32`, etc.)
+
+error: invalid suffix `int` for number literal
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_ModExp_Add_DivMod_ModExpPow2_Zeroes_impl.rs:55:15
+   |
+55 |         pow = 2int * pow;
+   |               ^^^^ invalid suffix `int`
+   |
+   = help: the suffix must be one of the numeric types (`u32`, `isize`, `f32`, etc.)
+
+error: invalid suffix `int` for number literal
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_ModExp_Add_DivMod_ModExpPow2_Zeroes_impl.rs:67:13
+   |
+67 |     if n == 0int {
+   |             ^^^^ invalid suffix `int`
+   |
+   = help: the suffix must be one of the numeric types (`u32`, `isize`, `f32`, etc.)
+
+error: invalid suffix `int` for number literal
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_ModExp_Add_DivMod_ModExpPow2_Zeroes_impl.rs:72:41
+   |
+72 |         let mut res = nat_to_binary(n / 2int);
+   |                                         ^^^^ invalid suffix `int`
+   |
+   = help: the suffix must be one of the numeric types (`u32`, `isize`, `f32`, etc.)
+
+error: invalid suffix `int` for number literal
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_ModExp_Add_DivMod_ModExpPow2_Zeroes_impl.rs:73:16
+   |
+73 |         if n % 2int == 0int {
+   |                ^^^^ invalid suffix `int`
+   |
+   = help: the suffix must be one of the numeric types (`u32`, `isize`, `f32`, etc.)
+
+error: invalid suffix `int` for number literal
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_ModExp_Add_DivMod_ModExpPow2_Zeroes_impl.rs:73:24
+   |
+73 |         if n % 2int == 0int {
+   |                        ^^^^ invalid suffix `int`
+   |
+   = help: the suffix must be one of the numeric types (`u32`, `isize`, `f32`, etc.)
+
+error: aborting due to 7 previous errors
+

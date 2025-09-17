@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(n: int) -> bool {
     100 <= n <= 999
 }
@@ -27,6 +24,9 @@ spec fn int_to_string(n: int) -> Seq<char>
         int_to_string(n / 10).add(seq![('0' as u8 + (n % 10) as u8) as char])
     }
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

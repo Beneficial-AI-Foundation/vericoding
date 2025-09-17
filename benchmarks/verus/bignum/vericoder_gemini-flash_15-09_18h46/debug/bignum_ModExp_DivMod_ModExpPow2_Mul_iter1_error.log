@@ -1,0 +1,64 @@
+=== Verification Error - Iteration 1 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExp_DivMod_ModExpPow2_Mul.rs
+Time: 2025-09-15 18:50:16
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_DivMod_ModExpPow2_Mul_impl.rs:51:33
+   |
+51 |             let y_minus_1_val = (y_val - 1) as nat;
+   |                                 ^^^^^^^^^^^^^^^^^^
+
+error[E0425]: cannot find value `result` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_DivMod_ModExpPow2_Mul_impl.rs:66:28
+   |
+66 |             ValidBitString(result@),
+   |                            ^^^^^^ not found in this scope
+
+error[E0425]: cannot find value `result` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_DivMod_ModExpPow2_Mul_impl.rs:67:23
+   |
+67 |             Str2Value(result.as_slice()) == n,
+   |                       ^^^^^^ not found in this scope
+
+error[E0425]: cannot find value `result` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_DivMod_ModExpPow2_Mul_impl.rs:68:13
+   |
+68 |             result@.len() >= 1 || n == 0
+   |             ^^^^^^ not found in this scope
+
+error: aborting due to 4 previous errors
+
+For more information about this error, try `rustc --explain E0425`.
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_DivMod_ModExpPow2_Mul_impl.rs:51:33
+   |
+51 |             let y_minus_1_val = (y_val - 1) as nat;
+   |                                 ^^^^^^^^^^^^^^^^^^
+
+error[E0425]: cannot find value `result` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_DivMod_ModExpPow2_Mul_impl.rs:66:28
+   |
+66 |             ValidBitString(result@),
+   |                            ^^^^^^ not found in this scope
+
+error[E0425]: cannot find value `result` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_DivMod_ModExpPow2_Mul_impl.rs:67:23
+   |
+67 |             Str2Value(result.as_slice()) == n,
+   |                       ^^^^^^ not found in this scope
+
+error[E0425]: cannot find value `result` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_DivMod_ModExpPow2_Mul_impl.rs:68:13
+   |
+68 |             result@.len() >= 1 || n == 0
+   |             ^^^^^^ not found in this scope
+
+error: aborting due to 4 previous errors
+
+For more information about this error, try `rustc --explain E0425`.

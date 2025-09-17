@@ -1,0 +1,5 @@
+=== Raw LLM Generate Response ===
+Length: 522 characters
+--------------------------------------------------------------------------------
+["", "{\n    let mut t = Vec::<char>::new();\n    if s.is_empty() {\n        t.push('0');\n    } else {\n        let mut has_non_zero = false;\n        for i in 0..s.len() {\n            let c = s[i];\n            if c == '0' {\n                if has_non_zero {\n                    t.push(c);\n                }\n            } else if c == '1' {\n                t.push(c);\n                has_non_zero = true;\n            }\n        }\n        if t.is_empty() {\n            t.push('0');\n        }\n    }\n    t\n}"]
+--------------------------------------------------------------------------------

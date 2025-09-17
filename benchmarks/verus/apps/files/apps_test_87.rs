@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(m: int, d: int) -> bool {
     1 <= m <= 12 && 1 <= d <= 7
 }
@@ -24,6 +21,9 @@ spec fn columns_needed(m: int, d: int) -> int {
         0
     }
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

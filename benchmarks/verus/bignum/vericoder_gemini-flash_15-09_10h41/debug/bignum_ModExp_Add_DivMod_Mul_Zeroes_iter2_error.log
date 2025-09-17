@@ -1,0 +1,124 @@
+=== Verification Error - Iteration 2 ===
+File: benchmarks/verus/bignum/files/bignum_ModExp_Add_DivMod_Mul_Zeroes.rs
+Time: 2025-09-15 10:46:53
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: error[E0599]: no function or associated item named `singleton` found for struct `vstd::seq::Seq` in the current scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_ModExp_Add_DivMod_Mul_Zeroes_impl.rs:58:10
+   |
+58 |     Seq::singleton('1')
+   |          ^^^^^^^^^ function or associated item not found in `Seq<_>`
+   |
+note: if you're trying to build a new `vstd::seq::Seq<_>` consider using one of the following associated functions:
+      vstd::seq::Seq::<A>::empty
+      vstd::seq::Seq::<A>::new
+      vstd::seq::Seq::<A>::tracked_empty
+  --> /Users/runner/work/verus/verus/source/vstd/seq.rs:38:5
+
+error[E0277]: can't compare `{integer}` with `vstd::prelude::nat`
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_ModExp_Add_DivMod_Mul_Zeroes_impl.rs:83:11
+   |
+83 |   while i < result_seq.len()
+   |           ^ no implementation for `{integer} < vstd::prelude::nat` and `{integer} > vstd::prelude::nat`
+   |
+   = help: the trait `std::cmp::PartialOrd<vstd::prelude::nat>` is not implemented for `{integer}`
+   = help: the following other types implement trait `std::cmp::PartialOrd<Rhs>`:
+             f128
+             f16
+             f32
+             f64
+             i128
+             i16
+             i32
+             i64
+           and 8 others
+
+error[E0599]: no method named `wf_seq_at` found for struct `std::vec::Vec<_>` in the current scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_ModExp_Add_DivMod_Mul_Zeroes_impl.rs:89:51
+   |
+89 |       forall |j: int| 0 <= j && j < i ==> res_vec.wf_seq_at(j) == result_seq.wf_seq_at(j),
+   |                                                   ^^^^^^^^^ method not found in `Vec<_>`
+
+error[E0599]: no method named `wf_seq_at` found for struct `vstd::seq::Seq` in the current scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_ModExp_Add_DivMod_Mul_Zeroes_impl.rs:89:78
+   |
+89 |       forall |j: int| 0 <= j && j < i ==> res_vec.wf_seq_at(j) == result_seq.wf_seq_at(j),
+   |                                                                              ^^^^^^^^^ method not found in `Seq<char>`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_ModExp_Add_DivMod_Mul_Zeroes_impl.rs:91:35
+   |
+91 |     res_vec.push(result_seq.index(i));
+   |                             ----- ^ expected `int`, found integer
+   |                             |
+   |                             arguments to this method are incorrect
+   |
+note: method defined here
+  --> /Users/runner/work/verus/verus/source/vstd/seq.rs:53:26
+
+error: aborting due to 5 previous errors
+
+Some errors have detailed explanations: E0277, E0308, E0599.
+For more information about an error, try `rustc --explain E0277`.
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+error[E0599]: no function or associated item named `singleton` found for struct `vstd::seq::Seq` in the current scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_ModExp_Add_DivMod_Mul_Zeroes_impl.rs:58:10
+   |
+58 |     Seq::singleton('1')
+   |          ^^^^^^^^^ function or associated item not found in `Seq<_>`
+   |
+note: if you're trying to build a new `vstd::seq::Seq<_>` consider using one of the following associated functions:
+      vstd::seq::Seq::<A>::empty
+      vstd::seq::Seq::<A>::new
+      vstd::seq::Seq::<A>::tracked_empty
+  --> /Users/runner/work/verus/verus/source/vstd/seq.rs:38:5
+
+error[E0277]: can't compare `{integer}` with `vstd::prelude::nat`
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_ModExp_Add_DivMod_Mul_Zeroes_impl.rs:83:11
+   |
+83 |   while i < result_seq.len()
+   |           ^ no implementation for `{integer} < vstd::prelude::nat` and `{integer} > vstd::prelude::nat`
+   |
+   = help: the trait `std::cmp::PartialOrd<vstd::prelude::nat>` is not implemented for `{integer}`
+   = help: the following other types implement trait `std::cmp::PartialOrd<Rhs>`:
+             f128
+             f16
+             f32
+             f64
+             i128
+             i16
+             i32
+             i64
+           and 8 others
+
+error[E0599]: no method named `wf_seq_at` found for struct `std::vec::Vec<_>` in the current scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_ModExp_Add_DivMod_Mul_Zeroes_impl.rs:89:51
+   |
+89 |       forall |j: int| 0 <= j && j < i ==> res_vec.wf_seq_at(j) == result_seq.wf_seq_at(j),
+   |                                                   ^^^^^^^^^ method not found in `Vec<_>`
+
+error[E0599]: no method named `wf_seq_at` found for struct `vstd::seq::Seq` in the current scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_ModExp_Add_DivMod_Mul_Zeroes_impl.rs:89:78
+   |
+89 |       forall |j: int| 0 <= j && j < i ==> res_vec.wf_seq_at(j) == result_seq.wf_seq_at(j),
+   |                                                                              ^^^^^^^^^ method not found in `Seq<char>`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_ModExp_Add_DivMod_Mul_Zeroes_impl.rs:91:35
+   |
+91 |     res_vec.push(result_seq.index(i));
+   |                             ----- ^ expected `int`, found integer
+   |                             |
+   |                             arguments to this method are incorrect
+   |
+note: method defined here
+  --> /Users/runner/work/verus/verus/source/vstd/seq.rs:53:26
+
+error: aborting due to 5 previous errors
+
+Some errors have detailed explanations: E0277, E0308, E0599.
+For more information about an error, try `rustc --explain E0277`.

@@ -10,23 +10,42 @@ spec fn valid_input(n: int, p: Seq<int>) -> bool {
 }
 
 spec fn count_true(visited: Seq<bool>) -> int {
-  if visited.len() == 0 { 
-    0 
+  if visited.len() == 0 {
+    0int
   } else {
-    (if visited[0] { 1 } else { 0 }) + count_true(visited.subrange(1, visited.len() as int))
+    (if visited[0] { 1int } else { 0int }) + count_true(visited.subrange(1, visited.len() as int))
   }
 }
 
 spec fn sum_of_squares(s: Seq<int>) -> int {
-  if s.len() == 0 { 
-    0 
+  if s.len() == 0 {
+    0int
   } else {
     s[0] * s[0] + sum_of_squares(s.subrange(1, s.len() as int))
   }
 }
 
+spec fn find_unvisited(visited: Seq<bool>) -> int {
+  if visited.len() == 0 {
+    -1int
+  } else if !visited[0] {
+    0int
+  } else {
+    let result = find_unvisited(visited.subrange(1, visited.len() as int));
+    if result == -1 { -1int } else { result + 1 }
+  }
+}
+
+spec fn get_cycle_length(p: Seq<int>, visited: Seq<bool>, start: int) -> int {
+  1int
+}
+
+spec fn mark_cycle_visited(p: Seq<int>, visited: Seq<bool>, start: int) -> Seq<bool> {
+  visited
+}
+
 spec fn get_cycle_lengths(n: int, p: Seq<int>) -> Seq<int> {
-  get_cycles_helper(n, p, Seq::new(n as nat, |i: int| false), Seq::empty())
+  get_cycles_helper(n, p, Seq::new(n as nat, |i: int| false), seq![])
 }
 
 spec fn get_cycles_helper(n: int, p: Seq<int>, visited: Seq<bool>, cycles: Seq<int>) -> Seq<int> {
@@ -52,24 +71,6 @@ spec fn get_cycles_helper(n: int, p: Seq<int>, visited: Seq<bool>, cycles: Seq<i
 // </vc-preamble>
 
 // <vc-helpers>
-spec fn find_unvisited(visited: Seq<bool>) -> int {
-  if visited.len() == 0 {
-    -1
-  } else if !visited[0] {
-    0
-  } else {
-    let rest_result = find_unvisited(visited.subrange(1, visited.len() as int));
-    if rest_result == -1 { -1 } else { rest_result + 1 }
-  }
-}
-
-spec fn get_cycle_length(p: Seq<int>, visited: Seq<bool>, start: int) -> int {
-  1
-}
-
-spec fn mark_cycle_visited(p: Seq<int>, visited: Seq<bool>, start: int) -> Seq<bool> {
-  visited
-}
 // </vc-helpers>
 
 // <vc-spec>
@@ -80,7 +81,7 @@ fn solve(n: int, p: Seq<int>) -> (result: int)
 // <vc-code>
 {
   assume(false);
-  1
+  unreached()
 }
 // </vc-code>
 

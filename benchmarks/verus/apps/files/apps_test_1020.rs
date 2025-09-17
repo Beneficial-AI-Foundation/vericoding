@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(w: int, h: int, k: int) -> bool {
     w >= 3 && h >= 3 && w <= 100 && h <= 100 && 
     k >= 1 && k <= ((if w <= h { w } else { h }) + 1) / 4 &&
@@ -23,6 +20,9 @@ spec fn compute_sum(w: int, h: int, k: int) -> int
         perimeter(w, h) + compute_sum(w - 4, h - 4, k - 1)
     }
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

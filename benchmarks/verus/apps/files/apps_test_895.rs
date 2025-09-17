@@ -19,6 +19,7 @@ spec fn max_students_in_window_up_to(times: Seq<int>, T: int, max_start: int) ->
     recommends T >= 1,
                forall|i: int| 0 <= i < times.len() ==> 1 <= times[i] <= 1000,
                max_start >= 0
+    decreases max_start
 {
     if max_start < 1 {
         0
@@ -48,7 +49,11 @@ spec fn count_students_in_window_helper(times: Seq<int>, start: int, T: int, ind
         0
     } else {
         let count_rest = count_students_in_window_helper(times, start, T, index + 1);
-        if start <= times[index] <= start + T - 1 { count_rest + 1 } else { count_rest }
+        if start <= times[index] <= start + T - 1 {
+            count_rest + 1
+        } else {
+            count_rest
+        }
     }
 }
 // </vc-preamble>
@@ -58,17 +63,16 @@ spec fn count_students_in_window_helper(times: Seq<int>, start: int, T: int, ind
 
 // <vc-spec>
 fn solve(n: int, times: Seq<int>, T: int) -> (result: int)
-    requires 
-        valid_input(n, times, T),
-    ensures 
-        result >= 0,
-        result <= n,
-        result == max_students_in_window(times, T),
+    requires valid_input(n, times, T)
+    ensures
+        result >= 0 &&
+        result <= n &&
+        result == max_students_in_window(times, T)
 // </vc-spec>
 // <vc-code>
 {
     assume(false);
-    0
+    unreached()
 }
 // </vc-code>
 

@@ -1,0 +1,172 @@
+=== Verification Error - Iteration 10 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExp_Add_ModExpPow2_Zeroes.rs
+Time: 2025-09-15 20:21:08
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Verification failed: verification results:: 6 verified, 5 errors
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_Add_ModExpPow2_Zeroes_impl.rs:25:7
+   |
+25 | proof fn pow_mod_properties(x: nat, y: nat, z: nat)
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: assertion failed
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_Add_ModExpPow2_Zeroes_impl.rs:40:20
+   |
+40 |             assert((x * prev) % z == ((x % z) * prev) % z);
+   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ assertion failed
+
+error: assertion failed
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_Add_ModExpPow2_Zeroes_impl.rs:41:20
+   |
+41 |             assert(((x % z) * prev) % z == ((x % z) * (prev % z)) % z);
+   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ assertion failed
+
+error: assertion failed
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_Add_ModExpPow2_Zeroes_impl.rs:73:12
+   |
+73 |     assert(result.len() > 0);
+   |            ^^^^^^^^^^^^^^^^ assertion failed
+
+error: invariant not satisfied at end of loop body
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_Add_ModExpPow2_Zeroes_impl.rs:110:13
+    |
+110 |             result <= u64::MAX / 2 || i == s.len(),
+    |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_Add_ModExpPow2_Zeroes_impl.rs:148:5
+    |
+148 |     while exp > 0
+    |     ^^^^^^^^^^^^^
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_Add_ModExpPow2_Zeroes_impl.rs:130:6
+    |
+130 | exec fn ModExp_Add_ModExpPow2_Zeroes(sx: &[char], sy: &[char], sz: &[char]) -> (res: Vec<char>)
+    |      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_Add_ModExpPow2_Zeroes_impl.rs:132:33
+    |
+132 |   ensures ValidBitString(res@), Str2Int(res@) == Exp_int(Str2Int(sx@), Str2Int(sy@)) % Str2Int(sz@)
+    |                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+177 |     int_to_bitstring(result)
+    |     ------------------------ at the end of the function body
+
+error: precondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_Add_ModExpPow2_Zeroes_impl.rs:138:17
+    |
+101 |     requires ValidBitString(s@), s@.len() > 0
+    |                                  ------------ failed precondition
+...
+138 |     let x_val = bitstring_to_int(sx);
+    |                 ^^^^^^^^^^^^^^^^^^^^
+
+error: assertion failed
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_Add_ModExpPow2_Zeroes_impl.rs:142:12
+    |
+142 |     assert(z_val > 1) by { assert(Str2Int(sz@) > 1); }
+    |            ^^^^^^^^^ assertion failed
+
+error: possible arithmetic underflow/overflow
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_Add_ModExpPow2_Zeroes_impl.rs:157:24
+    |
+157 |             let temp = result * base;
+    |                        ^^^^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_Add_ModExpPow2_Zeroes_impl.rs:164:23
+    |
+164 |         let base_sq = base * base;
+    |                       ^^^^^^^^^^^
+
+error: aborting due to 9 previous errors
+
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+verification results:: 6 verified, 5 errors
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_Add_ModExpPow2_Zeroes_impl.rs:25:7
+   |
+25 | proof fn pow_mod_properties(x: nat, y: nat, z: nat)
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: assertion failed
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_Add_ModExpPow2_Zeroes_impl.rs:40:20
+   |
+40 |             assert((x * prev) % z == ((x % z) * prev) % z);
+   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ assertion failed
+
+error: assertion failed
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_Add_ModExpPow2_Zeroes_impl.rs:41:20
+   |
+41 |             assert(((x % z) * prev) % z == ((x % z) * (prev % z)) % z);
+   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ assertion failed
+
+error: assertion failed
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_Add_ModExpPow2_Zeroes_impl.rs:73:12
+   |
+73 |     assert(result.len() > 0);
+   |            ^^^^^^^^^^^^^^^^ assertion failed
+
+error: invariant not satisfied at end of loop body
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_Add_ModExpPow2_Zeroes_impl.rs:110:13
+    |
+110 |             result <= u64::MAX / 2 || i == s.len(),
+    |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_Add_ModExpPow2_Zeroes_impl.rs:148:5
+    |
+148 |     while exp > 0
+    |     ^^^^^^^^^^^^^
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_Add_ModExpPow2_Zeroes_impl.rs:130:6
+    |
+130 | exec fn ModExp_Add_ModExpPow2_Zeroes(sx: &[char], sy: &[char], sz: &[char]) -> (res: Vec<char>)
+    |      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_Add_ModExpPow2_Zeroes_impl.rs:132:33
+    |
+132 |   ensures ValidBitString(res@), Str2Int(res@) == Exp_int(Str2Int(sx@), Str2Int(sy@)) % Str2Int(sz@)
+    |                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+177 |     int_to_bitstring(result)
+    |     ------------------------ at the end of the function body
+
+error: precondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_Add_ModExpPow2_Zeroes_impl.rs:138:17
+    |
+101 |     requires ValidBitString(s@), s@.len() > 0
+    |                                  ------------ failed precondition
+...
+138 |     let x_val = bitstring_to_int(sx);
+    |                 ^^^^^^^^^^^^^^^^^^^^
+
+error: assertion failed
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_Add_ModExpPow2_Zeroes_impl.rs:142:12
+    |
+142 |     assert(z_val > 1) by { assert(Str2Int(sz@) > 1); }
+    |            ^^^^^^^^^ assertion failed
+
+error: possible arithmetic underflow/overflow
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_Add_ModExpPow2_Zeroes_impl.rs:157:24
+    |
+157 |             let temp = result * base;
+    |                        ^^^^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_Add_ModExpPow2_Zeroes_impl.rs:164:23
+    |
+164 |         let base_sq = base * base;
+    |                       ^^^^^^^^^^^
+
+error: aborting due to 9 previous errors
+

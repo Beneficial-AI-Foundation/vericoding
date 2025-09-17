@@ -1,0 +1,64 @@
+=== Verification Error - Iteration 8 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignums_Sub_NormalizeBitstring.rs
+Time: 2025-09-15 18:51:59
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Verification failed: verification results:: 4 verified, 2 errors
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignums_Sub_NormalizeBitstring_impl.rs:60:5
+   |
+60 |     while i > 0
+   |     ^^^^^^^^^^^
+
+error: invariant not satisfied at end of loop body
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignums_Sub_NormalizeBitstring_impl.rs:65:13
+   |
+65 |             forall |j: int| first_one_pos < j && j < s.len() ==> s@.index(j) == '0',
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: invariant not satisfied at end of loop body
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignums_Sub_NormalizeBitstring_impl.rs:66:13
+   |
+66 |             forall |j: int| i <= j && j < first_one_pos ==> s@.index(j) == '0',
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: assertion failed
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignums_Sub_NormalizeBitstring_impl.rs:102:24
+    |
+102 |                 assert(s@.index(j as int) == '0' || s@.index(j as int) == '1');
+    |                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ assertion failed
+
+error: aborting due to 3 previous errors
+
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+verification results:: 4 verified, 2 errors
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignums_Sub_NormalizeBitstring_impl.rs:60:5
+   |
+60 |     while i > 0
+   |     ^^^^^^^^^^^
+
+error: invariant not satisfied at end of loop body
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignums_Sub_NormalizeBitstring_impl.rs:65:13
+   |
+65 |             forall |j: int| first_one_pos < j && j < s.len() ==> s@.index(j) == '0',
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: invariant not satisfied at end of loop body
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignums_Sub_NormalizeBitstring_impl.rs:66:13
+   |
+66 |             forall |j: int| i <= j && j < first_one_pos ==> s@.index(j) == '0',
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: assertion failed
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignums_Sub_NormalizeBitstring_impl.rs:102:24
+    |
+102 |                 assert(s@.index(j as int) == '0' || s@.index(j as int) == '1');
+    |                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ assertion failed
+
+error: aborting due to 3 previous errors
+

@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_query(k: int, n: int, a: int, b: int) -> bool {
     k > 0 && n > 0 && a > 0 && b > 0 && b < a
 }
@@ -21,6 +18,9 @@ spec fn max_action_a_turns(k: int, n: int, a: int, b: int) -> int {
 spec fn valid_result(result: int, k: int, n: int, a: int, b: int) -> bool {
     result == -1 || (0 <= result <= n)
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

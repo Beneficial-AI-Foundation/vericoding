@@ -1,0 +1,1022 @@
+=== Verification Error - Iteration 9 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExp_Add_DivMod_Mul.rs
+Time: 2025-09-15 20:21:41
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_Mul_impl.rs:31:22
+   |
+31 |     let mut a: nat = 0;
+   |                ---   ^ expected `nat`, found integer
+   |                |
+   |                expected due to this
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_Mul_impl.rs:40:17
+   |
+40 |         a = a * 2 + (if c == '1' { 1 } else { 0 });
+   |             -   ^ expected `nat`, found integer
+   |             |
+   |             expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_Mul_impl.rs:40:36
+   |
+40 |         a = a * 2 + (if c == '1' { 1 } else { 0 });
+   |                                    ^ expected `nat`, found integer
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_Mul_impl.rs:40:47
+   |
+40 |         a = a * 2 + (if c == '1' { 1 } else { 0 });
+   |                                               ^ expected `nat`, found integer
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_Mul_impl.rs:44:22
+   |
+44 |     let mut b: nat = 0;
+   |                ---   ^ expected `nat`, found integer
+   |                |
+   |                expected due to this
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_Mul_impl.rs:53:17
+   |
+53 |         b = b * 2 + (if c == '1' { 1 } else { 0 });
+   |             -   ^ expected `nat`, found integer
+   |             |
+   |             expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_Mul_impl.rs:53:36
+   |
+53 |         b = b * 2 + (if c == '1' { 1 } else { 0 });
+   |                                    ^ expected `nat`, found integer
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_Mul_impl.rs:53:47
+   |
+53 |         b = b * 2 + (if c == '1' { 1 } else { 0 });
+   |                                               ^ expected `nat`, found integer
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_Mul_impl.rs:61:15
+   |
+61 |     if rem != 0 {
+   |        ---    ^ expected `nat`, found integer
+   |        |
+   |        expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_Mul_impl.rs:62:21
+   |
+62 |         while rem > 0
+   |               ---   ^ expected `nat`, found integer
+   |               |
+   |               expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_Mul_impl.rs:67:31
+   |
+67 |             tmp.push(if rem % 2 == 1 { '1' } else { '0' });
+   |                         ---   ^ expected `nat`, found integer
+   |                         |
+   |                         expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_Mul_impl.rs:67:36
+   |
+67 |             tmp.push(if rem % 2 == 1 { '1' } else { '0' });
+   |                         -------    ^ expected `nat`, found integer
+   |                         |
+   |                         expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_Mul_impl.rs:68:25
+   |
+68 |             rem = rem / 2;
+   |                   ---   ^ expected `nat`, found integer
+   |                   |
+   |                   expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_Mul_impl.rs:98:23
+   |
+98 |     let mut dv: nat = 0;
+   |                 ---   ^ expected `nat`, found integer
+   |                 |
+   |                 expected due to this
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_Mul_impl.rs:107:19
+    |
+107 |         dv = dv * 2 + (if c == '1' { 1 } else { 0 });
+    |              --   ^ expected `nat`, found integer
+    |              |
+    |              expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_Mul_impl.rs:107:38
+    |
+107 |         dv = dv * 2 + (if c == '1' { 1 } else { 0 });
+    |                                      ^ expected `nat`, found integer
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_Mul_impl.rs:107:49
+    |
+107 |         dv = dv * 2 + (if c == '1' { 1 } else { 0 });
+    |                                                 ^ expected `nat`, found integer
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_Mul_impl.rs:111:23
+    |
+111 |     let mut ds: nat = 0;
+    |                 ---   ^ expected `nat`, found integer
+    |                 |
+    |                 expected due to this
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_Mul_impl.rs:120:19
+    |
+120 |         ds = ds * 2 + (if c == '1' { 1 } else { 0 });
+    |              --   ^ expected `nat`, found integer
+    |              |
+    |              expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_Mul_impl.rs:120:38
+    |
+120 |         ds = ds * 2 + (if c == '1' { 1 } else { 0 });
+    |                                      ^ expected `nat`, found integer
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_Mul_impl.rs:120:49
+    |
+120 |         ds = ds * 2 + (if c == '1' { 1 } else { 0 });
+    |                                                 ^ expected `nat`, found integer
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_Mul_impl.rs:131:16
+    |
+131 |     if qrem != 0 {
+    |        ----    ^ expected `nat`, found integer
+    |        |
+    |        expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_Mul_impl.rs:132:22
+    |
+132 |         while qrem > 0
+    |               ----   ^ expected `nat`, found integer
+    |               |
+    |               expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_Mul_impl.rs:137:33
+    |
+137 |             qtmp.push(if qrem % 2 == 1 { '1' } else { '0' });
+    |                          ----   ^ expected `nat`, found integer
+    |                          |
+    |                          expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_Mul_impl.rs:137:38
+    |
+137 |             qtmp.push(if qrem % 2 == 1 { '1' } else { '0' });
+    |                          --------    ^ expected `nat`, found integer
+    |                          |
+    |                          expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_Mul_impl.rs:138:27
+    |
+138 |             qrem = qrem / 2;
+    |                    ----   ^ expected `nat`, found integer
+    |                    |
+    |                    expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_Mul_impl.rs:155:16
+    |
+155 |     if rrem != 0 {
+    |        ----    ^ expected `nat`, found integer
+    |        |
+    |        expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_Mul_impl.rs:156:22
+    |
+156 |         while rrem > 0
+    |               ----   ^ expected `nat`, found integer
+    |               |
+    |               expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_Mul_impl.rs:161:33
+    |
+161 |             rtmp.push(if rrem % 2 == 1 { '1' } else { '0' });
+    |                          ----   ^ expected `nat`, found integer
+    |                          |
+    |                          expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_Mul_impl.rs:161:38
+    |
+161 |             rtmp.push(if rrem % 2 == 1 { '1' } else { '0' });
+    |                          --------    ^ expected `nat`, found integer
+    |                          |
+    |                          expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_Mul_impl.rs:162:27
+    |
+162 |             rrem = rrem / 2;
+    |                    ----   ^ expected `nat`, found integer
+    |                    |
+    |                    expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_Mul_impl.rs:189:22
+    |
+189 |     let mut a: nat = 0;
+    |                ---   ^ expected `nat`, found integer
+    |                |
+    |                expected due to this
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_Mul_impl.rs:198:17
+    |
+198 |         a = a * 2 + (if c == '1' { 1 } else { 0 });
+    |             -   ^ expected `nat`, found integer
+    |             |
+    |             expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_Mul_impl.rs:198:36
+    |
+198 |         a = a * 2 + (if c == '1' { 1 } else { 0 });
+    |                                    ^ expected `nat`, found integer
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_Mul_impl.rs:198:47
+    |
+198 |         a = a * 2 + (if c == '1' { 1 } else { 0 });
+    |                                               ^ expected `nat`, found integer
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_Mul_impl.rs:202:22
+    |
+202 |     let mut b: nat = 0;
+    |                ---   ^ expected `nat`, found integer
+    |                |
+    |                expected due to this
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_Mul_impl.rs:211:17
+    |
+211 |         b = b * 2 + (if c == '1' { 1 } else { 0 });
+    |             -   ^ expected `nat`, found integer
+    |             |
+    |             expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_Mul_impl.rs:211:36
+    |
+211 |         b = b * 2 + (if c == '1' { 1 } else { 0 });
+    |                                    ^ expected `nat`, found integer
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_Mul_impl.rs:211:47
+    |
+211 |         b = b * 2 + (if c == '1' { 1 } else { 0 });
+    |                                               ^ expected `nat`, found integer
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_Mul_impl.rs:219:15
+    |
+219 |     if rem != 0 {
+    |        ---    ^ expected `nat`, found integer
+    |        |
+    |        expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_Mul_impl.rs:220:21
+    |
+220 |         while rem > 0
+    |               ---   ^ expected `nat`, found integer
+    |               |
+    |               expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_Mul_impl.rs:225:31
+    |
+225 |             tmp.push(if rem % 2 == 1 { '1' } else { '0' });
+    |                         ---   ^ expected `nat`, found integer
+    |                         |
+    |                         expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_Mul_impl.rs:225:36
+    |
+225 |             tmp.push(if rem % 2 == 1 { '1' } else { '0' });
+    |                         -------    ^ expected `nat`, found integer
+    |                         |
+    |                         expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_Mul_impl.rs:226:25
+    |
+226 |             rem = rem / 2;
+    |                   ---   ^ expected `nat`, found integer
+    |                   |
+    |                   expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_Mul_impl.rs:256:22
+    |
+256 |     let mut x: nat = 0;
+    |                ---   ^ expected `nat`, found integer
+    |                |
+    |                expected due to this
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_Mul_impl.rs:265:17
+    |
+265 |         x = x * 2 + (if c == '1' { 1 } else { 0 });
+    |             -   ^ expected `nat`, found integer
+    |             |
+    |             expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_Mul_impl.rs:265:36
+    |
+265 |         x = x * 2 + (if c == '1' { 1 } else { 0 });
+    |                                    ^ expected `nat`, found integer
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_Mul_impl.rs:265:47
+    |
+265 |         x = x * 2 + (if c == '1' { 1 } else { 0 });
+    |                                               ^ expected `nat`, found integer
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_Mul_impl.rs:269:22
+    |
+269 |     let mut y: nat = 0;
+    |                ---   ^ expected `nat`, found integer
+    |                |
+    |                expected due to this
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_Mul_impl.rs:278:17
+    |
+278 |         y = y * 2 + (if c == '1' { 1 } else { 0 });
+    |             -   ^ expected `nat`, found integer
+    |             |
+    |             expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_Mul_impl.rs:278:36
+    |
+278 |         y = y * 2 + (if c == '1' { 1 } else { 0 });
+    |                                    ^ expected `nat`, found integer
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_Mul_impl.rs:278:47
+    |
+278 |         y = y * 2 + (if c == '1' { 1 } else { 0 });
+    |                                               ^ expected `nat`, found integer
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_Mul_impl.rs:282:22
+    |
+282 |     let mut m: nat = 0;
+    |                ---   ^ expected `nat`, found integer
+    |                |
+    |                expected due to this
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_Mul_impl.rs:291:17
+    |
+291 |         m = m * 2 + (if c == '1' { 1 } else { 0 });
+    |             -   ^ expected `nat`, found integer
+    |             |
+    |             expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_Mul_impl.rs:291:36
+    |
+291 |         m = m * 2 + (if c == '1' { 1 } else { 0 });
+    |                                    ^ expected `nat`, found integer
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_Mul_impl.rs:291:47
+    |
+291 |         m = m * 2 + (if c == '1' { 1 } else { 0 });
+    |                                               ^ expected `nat`, found integer
+
+error[E0277]: cannot calculate the remainder of `{integer}` divided by `vstd::prelude::nat`
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_Mul_impl.rs:296:29
+    |
+296 |     let mut result: nat = 1 % m;
+    |                             ^ no implementation for `{integer} % vstd::prelude::nat`
+    |
+    = help: the trait `std::ops::Rem<vstd::prelude::nat>` is not implemented for `{integer}`
+    = help: the following other types implement trait `std::ops::Rem<Rhs>`:
+              `&f128` implements `std::ops::Rem<f128>`
+              `&f128` implements `std::ops::Rem`
+              `&f16` implements `std::ops::Rem<f16>`
+              `&f16` implements `std::ops::Rem`
+              `&f32` implements `std::ops::Rem<f32>`
+              `&f32` implements `std::ops::Rem`
+              `&f64` implements `std::ops::Rem<f64>`
+              `&f64` implements `std::ops::Rem`
+            and 62 others
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_Mul_impl.rs:299:17
+    |
+299 |     while exp > 0
+    |           ---   ^ expected `nat`, found integer
+    |           |
+    |           expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_Mul_impl.rs:304:18
+    |
+304 |         if exp % 2 == 1 {
+    |            ---   ^ expected `nat`, found integer
+    |            |
+    |            expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_Mul_impl.rs:304:23
+    |
+304 |         if exp % 2 == 1 {
+    |            -------    ^ expected `nat`, found integer
+    |            |
+    |            expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_Mul_impl.rs:308:21
+    |
+308 |         exp = exp / 2;
+    |               ---   ^ expected `nat`, found integer
+    |               |
+    |               expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_Mul_impl.rs:313:15
+    |
+313 |     if rem != 0 {
+    |        ---    ^ expected `nat`, found integer
+    |        |
+    |        expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_Mul_impl.rs:314:21
+    |
+314 |         while rem > 0
+    |               ---   ^ expected `nat`, found integer
+    |               |
+    |               expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_Mul_impl.rs:319:31
+    |
+319 |             tmp.push(if rem % 2 == 1 { '1' } else { '0' });
+    |                         ---   ^ expected `nat`, found integer
+    |                         |
+    |                         expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_Mul_impl.rs:319:36
+    |
+319 |             tmp.push(if rem % 2 == 1 { '1' } else { '0' });
+    |                         -------    ^ expected `nat`, found integer
+    |                         |
+    |                         expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_Mul_impl.rs:320:25
+    |
+320 |             rem = rem / 2;
+    |                   ---   ^ expected `nat`, found integer
+    |                   |
+    |                   expected because this is `vstd::prelude::nat`
+
+error: aborting due to 66 previous errors
+
+Some errors have detailed explanations: E0277, E0308.
+For more information about an error, try `rustc --explain E0277`.
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_Mul_impl.rs:31:22
+   |
+31 |     let mut a: nat = 0;
+   |                ---   ^ expected `nat`, found integer
+   |                |
+   |                expected due to this
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_Mul_impl.rs:40:17
+   |
+40 |         a = a * 2 + (if c == '1' { 1 } else { 0 });
+   |             -   ^ expected `nat`, found integer
+   |             |
+   |             expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_Mul_impl.rs:40:36
+   |
+40 |         a = a * 2 + (if c == '1' { 1 } else { 0 });
+   |                                    ^ expected `nat`, found integer
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_Mul_impl.rs:40:47
+   |
+40 |         a = a * 2 + (if c == '1' { 1 } else { 0 });
+   |                                               ^ expected `nat`, found integer
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_Mul_impl.rs:44:22
+   |
+44 |     let mut b: nat = 0;
+   |                ---   ^ expected `nat`, found integer
+   |                |
+   |                expected due to this
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_Mul_impl.rs:53:17
+   |
+53 |         b = b * 2 + (if c == '1' { 1 } else { 0 });
+   |             -   ^ expected `nat`, found integer
+   |             |
+   |             expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_Mul_impl.rs:53:36
+   |
+53 |         b = b * 2 + (if c == '1' { 1 } else { 0 });
+   |                                    ^ expected `nat`, found integer
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_Mul_impl.rs:53:47
+   |
+53 |         b = b * 2 + (if c == '1' { 1 } else { 0 });
+   |                                               ^ expected `nat`, found integer
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_Mul_impl.rs:61:15
+   |
+61 |     if rem != 0 {
+   |        ---    ^ expected `nat`, found integer
+   |        |
+   |        expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_Mul_impl.rs:62:21
+   |
+62 |         while rem > 0
+   |               ---   ^ expected `nat`, found integer
+   |               |
+   |               expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_Mul_impl.rs:67:31
+   |
+67 |             tmp.push(if rem % 2 == 1 { '1' } else { '0' });
+   |                         ---   ^ expected `nat`, found integer
+   |                         |
+   |                         expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_Mul_impl.rs:67:36
+   |
+67 |             tmp.push(if rem % 2 == 1 { '1' } else { '0' });
+   |                         -------    ^ expected `nat`, found integer
+   |                         |
+   |                         expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_Mul_impl.rs:68:25
+   |
+68 |             rem = rem / 2;
+   |                   ---   ^ expected `nat`, found integer
+   |                   |
+   |                   expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_Mul_impl.rs:98:23
+   |
+98 |     let mut dv: nat = 0;
+   |                 ---   ^ expected `nat`, found integer
+   |                 |
+   |                 expected due to this
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_Mul_impl.rs:107:19
+    |
+107 |         dv = dv * 2 + (if c == '1' { 1 } else { 0 });
+    |              --   ^ expected `nat`, found integer
+    |              |
+    |              expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_Mul_impl.rs:107:38
+    |
+107 |         dv = dv * 2 + (if c == '1' { 1 } else { 0 });
+    |                                      ^ expected `nat`, found integer
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_Mul_impl.rs:107:49
+    |
+107 |         dv = dv * 2 + (if c == '1' { 1 } else { 0 });
+    |                                                 ^ expected `nat`, found integer
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_Mul_impl.rs:111:23
+    |
+111 |     let mut ds: nat = 0;
+    |                 ---   ^ expected `nat`, found integer
+    |                 |
+    |                 expected due to this
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_Mul_impl.rs:120:19
+    |
+120 |         ds = ds * 2 + (if c == '1' { 1 } else { 0 });
+    |              --   ^ expected `nat`, found integer
+    |              |
+    |              expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_Mul_impl.rs:120:38
+    |
+120 |         ds = ds * 2 + (if c == '1' { 1 } else { 0 });
+    |                                      ^ expected `nat`, found integer
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_Mul_impl.rs:120:49
+    |
+120 |         ds = ds * 2 + (if c == '1' { 1 } else { 0 });
+    |                                                 ^ expected `nat`, found integer
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_Mul_impl.rs:131:16
+    |
+131 |     if qrem != 0 {
+    |        ----    ^ expected `nat`, found integer
+    |        |
+    |        expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_Mul_impl.rs:132:22
+    |
+132 |         while qrem > 0
+    |               ----   ^ expected `nat`, found integer
+    |               |
+    |               expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_Mul_impl.rs:137:33
+    |
+137 |             qtmp.push(if qrem % 2 == 1 { '1' } else { '0' });
+    |                          ----   ^ expected `nat`, found integer
+    |                          |
+    |                          expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_Mul_impl.rs:137:38
+    |
+137 |             qtmp.push(if qrem % 2 == 1 { '1' } else { '0' });
+    |                          --------    ^ expected `nat`, found integer
+    |                          |
+    |                          expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_Mul_impl.rs:138:27
+    |
+138 |             qrem = qrem / 2;
+    |                    ----   ^ expected `nat`, found integer
+    |                    |
+    |                    expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_Mul_impl.rs:155:16
+    |
+155 |     if rrem != 0 {
+    |        ----    ^ expected `nat`, found integer
+    |        |
+    |        expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_Mul_impl.rs:156:22
+    |
+156 |         while rrem > 0
+    |               ----   ^ expected `nat`, found integer
+    |               |
+    |               expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_Mul_impl.rs:161:33
+    |
+161 |             rtmp.push(if rrem % 2 == 1 { '1' } else { '0' });
+    |                          ----   ^ expected `nat`, found integer
+    |                          |
+    |                          expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_Mul_impl.rs:161:38
+    |
+161 |             rtmp.push(if rrem % 2 == 1 { '1' } else { '0' });
+    |                          --------    ^ expected `nat`, found integer
+    |                          |
+    |                          expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_Mul_impl.rs:162:27
+    |
+162 |             rrem = rrem / 2;
+    |                    ----   ^ expected `nat`, found integer
+    |                    |
+    |                    expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_Mul_impl.rs:189:22
+    |
+189 |     let mut a: nat = 0;
+    |                ---   ^ expected `nat`, found integer
+    |                |
+    |                expected due to this
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_Mul_impl.rs:198:17
+    |
+198 |         a = a * 2 + (if c == '1' { 1 } else { 0 });
+    |             -   ^ expected `nat`, found integer
+    |             |
+    |             expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_Mul_impl.rs:198:36
+    |
+198 |         a = a * 2 + (if c == '1' { 1 } else { 0 });
+    |                                    ^ expected `nat`, found integer
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_Mul_impl.rs:198:47
+    |
+198 |         a = a * 2 + (if c == '1' { 1 } else { 0 });
+    |                                               ^ expected `nat`, found integer
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_Mul_impl.rs:202:22
+    |
+202 |     let mut b: nat = 0;
+    |                ---   ^ expected `nat`, found integer
+    |                |
+    |                expected due to this
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_Mul_impl.rs:211:17
+    |
+211 |         b = b * 2 + (if c == '1' { 1 } else { 0 });
+    |             -   ^ expected `nat`, found integer
+    |             |
+    |             expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_Mul_impl.rs:211:36
+    |
+211 |         b = b * 2 + (if c == '1' { 1 } else { 0 });
+    |                                    ^ expected `nat`, found integer
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_Mul_impl.rs:211:47
+    |
+211 |         b = b * 2 + (if c == '1' { 1 } else { 0 });
+    |                                               ^ expected `nat`, found integer
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_Mul_impl.rs:219:15
+    |
+219 |     if rem != 0 {
+    |        ---    ^ expected `nat`, found integer
+    |        |
+    |        expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_Mul_impl.rs:220:21
+    |
+220 |         while rem > 0
+    |               ---   ^ expected `nat`, found integer
+    |               |
+    |               expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_Mul_impl.rs:225:31
+    |
+225 |             tmp.push(if rem % 2 == 1 { '1' } else { '0' });
+    |                         ---   ^ expected `nat`, found integer
+    |                         |
+    |                         expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_Mul_impl.rs:225:36
+    |
+225 |             tmp.push(if rem % 2 == 1 { '1' } else { '0' });
+    |                         -------    ^ expected `nat`, found integer
+    |                         |
+    |                         expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_Mul_impl.rs:226:25
+    |
+226 |             rem = rem / 2;
+    |                   ---   ^ expected `nat`, found integer
+    |                   |
+    |                   expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_Mul_impl.rs:256:22
+    |
+256 |     let mut x: nat = 0;
+    |                ---   ^ expected `nat`, found integer
+    |                |
+    |                expected due to this
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_Mul_impl.rs:265:17
+    |
+265 |         x = x * 2 + (if c == '1' { 1 } else { 0 });
+    |             -   ^ expected `nat`, found integer
+    |             |
+    |             expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_Mul_impl.rs:265:36
+    |
+265 |         x = x * 2 + (if c == '1' { 1 } else { 0 });
+    |                                    ^ expected `nat`, found integer
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_Mul_impl.rs:265:47
+    |
+265 |         x = x * 2 + (if c == '1' { 1 } else { 0 });
+    |                                               ^ expected `nat`, found integer
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_Mul_impl.rs:269:22
+    |
+269 |     let mut y: nat = 0;
+    |                ---   ^ expected `nat`, found integer
+    |                |
+    |                expected due to this
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_Mul_impl.rs:278:17
+    |
+278 |         y = y * 2 + (if c == '1' { 1 } else { 0 });
+    |             -   ^ expected `nat`, found integer
+    |             |
+    |             expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_Mul_impl.rs:278:36
+    |
+278 |         y = y * 2 + (if c == '1' { 1 } else { 0 });
+    |                                    ^ expected `nat`, found integer
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_Mul_impl.rs:278:47
+    |
+278 |         y = y * 2 + (if c == '1' { 1 } else { 0 });
+    |                                               ^ expected `nat`, found integer
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_Mul_impl.rs:282:22
+    |
+282 |     let mut m: nat = 0;
+    |                ---   ^ expected `nat`, found integer
+    |                |
+    |                expected due to this
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_Mul_impl.rs:291:17
+    |
+291 |         m = m * 2 + (if c == '1' { 1 } else { 0 });
+    |             -   ^ expected `nat`, found integer
+    |             |
+    |             expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_Mul_impl.rs:291:36
+    |
+291 |         m = m * 2 + (if c == '1' { 1 } else { 0 });
+    |                                    ^ expected `nat`, found integer
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_Mul_impl.rs:291:47
+    |
+291 |         m = m * 2 + (if c == '1' { 1 } else { 0 });
+    |                                               ^ expected `nat`, found integer
+
+error[E0277]: cannot calculate the remainder of `{integer}` divided by `vstd::prelude::nat`
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_Mul_impl.rs:296:29
+    |
+296 |     let mut result: nat = 1 % m;
+    |                             ^ no implementation for `{integer} % vstd::prelude::nat`
+    |
+    = help: the trait `std::ops::Rem<vstd::prelude::nat>` is not implemented for `{integer}`
+    = help: the following other types implement trait `std::ops::Rem<Rhs>`:
+              `&f128` implements `std::ops::Rem<f128>`
+              `&f128` implements `std::ops::Rem`
+              `&f16` implements `std::ops::Rem<f16>`
+              `&f16` implements `std::ops::Rem`
+              `&f32` implements `std::ops::Rem<f32>`
+              `&f32` implements `std::ops::Rem`
+              `&f64` implements `std::ops::Rem<f64>`
+              `&f64` implements `std::ops::Rem`
+            and 62 others
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_Mul_impl.rs:299:17
+    |
+299 |     while exp > 0
+    |           ---   ^ expected `nat`, found integer
+    |           |
+    |           expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_Mul_impl.rs:304:18
+    |
+304 |         if exp % 2 == 1 {
+    |            ---   ^ expected `nat`, found integer
+    |            |
+    |            expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_Mul_impl.rs:304:23
+    |
+304 |         if exp % 2 == 1 {
+    |            -------    ^ expected `nat`, found integer
+    |            |
+    |            expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_Mul_impl.rs:308:21
+    |
+308 |         exp = exp / 2;
+    |               ---   ^ expected `nat`, found integer
+    |               |
+    |               expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_Mul_impl.rs:313:15
+    |
+313 |     if rem != 0 {
+    |        ---    ^ expected `nat`, found integer
+    |        |
+    |        expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_Mul_impl.rs:314:21
+    |
+314 |         while rem > 0
+    |               ---   ^ expected `nat`, found integer
+    |               |
+    |               expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_Mul_impl.rs:319:31
+    |
+319 |             tmp.push(if rem % 2 == 1 { '1' } else { '0' });
+    |                         ---   ^ expected `nat`, found integer
+    |                         |
+    |                         expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_Mul_impl.rs:319:36
+    |
+319 |             tmp.push(if rem % 2 == 1 { '1' } else { '0' });
+    |                         -------    ^ expected `nat`, found integer
+    |                         |
+    |                         expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_Mul_impl.rs:320:25
+    |
+320 |             rem = rem / 2;
+    |                   ---   ^ expected `nat`, found integer
+    |                   |
+    |                   expected because this is `vstd::prelude::nat`
+
+error: aborting due to 66 previous errors
+
+Some errors have detailed explanations: E0277, E0308.
+For more information about an error, try `rustc --explain E0277`.

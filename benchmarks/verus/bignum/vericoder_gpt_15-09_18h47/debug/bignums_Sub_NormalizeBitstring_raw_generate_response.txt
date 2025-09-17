@@ -1,0 +1,5 @@
+=== Raw LLM Generate Response ===
+Length: 435 characters
+--------------------------------------------------------------------------------
+["spec fn is_bit(c: char) -> bool { c == '0' || c == '1' }","{\n    let mut res: Vec<char> = Vec::new();\n    let mut i: usize = 0;\n    while i < s.len()\n        invariant\n            i <= s.len(),\n            res@.len() == i as int,\n            forall |k: int| 0 <= k && k < i as int ==> res@[k] == s@[k],\n        decreases s.len() - i\n    {\n        let c = s[i];\n        res.push(c);\n        i = i + 1;\n    }\n    res\n}"]
+--------------------------------------------------------------------------------

@@ -1,0 +1,5 @@
+=== Raw LLM Generate Response ===
+Length: 404 characters
+--------------------------------------------------------------------------------
+["spec fn Int2Str(n: nat) -> Seq<char>\n  decreases n\n{\n  if n == 0 { \n    seq!['0']\n  } else if n == 1 {\n    seq!['1']\n  } else {\n    let digit = if n % 2 == 0 { '0' } else { '1' };\n    Int2Str(n / 2).push_back(digit)\n  }\n}", "{\n  let a_nat = Str2Int(a@);\n  let b_nat = Str2Int(b@);\n\n  let result_nat = a_nat + b_nat; \n\n  let result_seq = Int2Str(result_nat);\n  result_seq.to_vec()\n}"]
+--------------------------------------------------------------------------------

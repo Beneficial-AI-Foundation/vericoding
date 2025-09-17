@@ -1,0 +1,11 @@
+=== LLM Response - generate_code - Iteration 0 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExp_int_ModExpPow2_int.rs
+Prompt Hash: beaefb67
+JSON Parsed Successfully: False
+Timestamp: 1757957683.458782
+Content Length: 1662 chars
+--------------------------------------------------------------------------------
+```json
+[
+    "use vstd::integer::{Integer, BigInt};\n\nproof fn lemma_str2int_unfold(s: Seq<char>)\n    requires s.len() > 0 && ValidBitString(s)\n    ensures Str2Int(s) == 2 * Str2Int(s.subrange(0, (s.len() - 1) as int)) + (if s[s.len() - 1] == '1' { 1 } else { 0 })\n    decreases s.len()\n{\n    if s.len() > 1 {\n        lemma_str2int_unfold(s.subrange(0, (s.len() - 1) as int));\n    }\n}\n\nproof fn lemma_str2int_append(s: Seq<char>, c: char)\n    requires ValidBitString(s) && (c == '0' || c == '1')\n    ensures Str2Int(s.push(c)) == Str2Int(s) * 2 + (if c == '1' { 1 } else { 0 })\n    decreases s.len()\n{\n    let new_s = s.push(c);\n    if s.len() > 0 {\n        lemma_str2int_append(s.subrange(0, (s.len()-1) as int), s[s.len()-1]);\n    }\n}\n\nexec fn Str2BigInt(s: &[char]) -> (res: BigInt)\n    requires ValidBitString(s@)\n    ensures res.is_nonnegative() && res.spec_abs() == Str2Int(s@)\n{\n    let mut res = BigInt::from(0);\n    let mut i: usize = 0;\n    while i < s.len()\n        invariant\n            ValidBitString(s@),\n            i <= s.len(),\n            res.is_nonnegative(),\n            res.spec_abs() == Str2Int(s@.subrange(0, i as int)),\n        decreases s.len() - i\n    {\n        proof {\n            if i < s.len() {\n                let next_prefix = s@.subrange(0, (i + 1) as int);\n                if next_prefix.len() > 0 {\n                    lemma_str2int_unfold(next_prefix);\n                }\n            }\n        }\n        res.mul_assign(2);\n        if s[i] == '1' {\n            res.add_assign(1);\n        }\n        i += 1;\n    }\n    res\n}\n\nexec fn BigInt2Str(n: &BigInt) -> (res: Vec<char>)\
+--------------------------------------------------------------------------------

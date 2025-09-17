@@ -1,0 +1,26 @@
+=== Verification Error - Iteration 1 ===
+File: benchmarks/verus/bignum/files/bignum_ModExp_Add.rs
+Time: 2025-09-15 10:44:43
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: error: `core::slice::impl&%0::reverse` is not supported (note: you may be able to add a Verus specification to this function with `assume_specification`) (note: the vstd library provides some specification for the Rust std library, but it is currently limited)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_ModExp_Add_impl.rs:58:5
+   |
+58 |     result.reverse();
+   |     ^^^^^^^^^^^^^^^^
+
+error: aborting due to 1 previous error
+
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+error: `core::slice::impl&%0::reverse` is not supported (note: you may be able to add a Verus specification to this function with `assume_specification`) (note: the vstd library provides some specification for the Rust std library, but it is currently limited)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_ModExp_Add_impl.rs:58:5
+   |
+58 |     result.reverse();
+   |     ^^^^^^^^^^^^^^^^
+
+error: aborting due to 1 previous error
+

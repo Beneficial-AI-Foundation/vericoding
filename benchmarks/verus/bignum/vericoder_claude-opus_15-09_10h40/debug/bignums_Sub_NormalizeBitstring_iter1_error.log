@@ -1,0 +1,62 @@
+=== Verification Error - Iteration 1 ===
+File: benchmarks/verus/bignum/files/bignums_Sub_NormalizeBitstring.rs
+Time: 2025-09-15 10:47:33
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Verification failed: verification results:: 3 verified, 1 errors
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignums_Sub_NormalizeBitstring_impl.rs:37:5
+   |
+37 | /     for i in 0..s.len()
+38 | |         invariant
+39 | |             ValidBitString(result@),
+40 | |             forall |j: int| 0 <= j && j < result.len() ==> result@[j] == '0' || result@[j] == '1',
+...  |
+48 | |     }
+   | |_____^
+
+error: invariant not satisfied at end of loop body
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignums_Sub_NormalizeBitstring_impl.rs:39:13
+   |
+39 |             ValidBitString(result@),
+   |             ^^^^^^^^^^^^^^^^^^^^^^^
+
+error: invariant not satisfied at end of loop body
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignums_Sub_NormalizeBitstring_impl.rs:40:13
+   |
+40 |             forall |j: int| 0 <= j && j < result.len() ==> result@[j] == '0' || result@[j] == '1',
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: aborting due to 2 previous errors
+
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+verification results:: 3 verified, 1 errors
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignums_Sub_NormalizeBitstring_impl.rs:37:5
+   |
+37 | /     for i in 0..s.len()
+38 | |         invariant
+39 | |             ValidBitString(result@),
+40 | |             forall |j: int| 0 <= j && j < result.len() ==> result@[j] == '0' || result@[j] == '1',
+...  |
+48 | |     }
+   | |_____^
+
+error: invariant not satisfied at end of loop body
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignums_Sub_NormalizeBitstring_impl.rs:39:13
+   |
+39 |             ValidBitString(result@),
+   |             ^^^^^^^^^^^^^^^^^^^^^^^
+
+error: invariant not satisfied at end of loop body
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignums_Sub_NormalizeBitstring_impl.rs:40:13
+   |
+40 |             forall |j: int| 0 <= j && j < result.len() ==> result@[j] == '0' || result@[j] == '1',
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: aborting due to 2 previous errors
+

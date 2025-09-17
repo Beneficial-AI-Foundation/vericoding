@@ -1,0 +1,107 @@
+=== Raw LLM Generate Response ===
+Length: 2226 characters
+--------------------------------------------------------------------------------
+[
+"proof fn lemma_exp_properties(x: nat, y: nat)
+    ensures
+        y > 0 ==> Exp_int(x, y) == x * Exp_int(x, (y - 1) as nat),
+        Exp_int(x, 0) == 1,
+{
+}
+
+exec fn int_to_bitstring(mut n: u64) -> (res: Vec<char>)
+    ensures
+        ValidBitString(res@),
+        Str2Int(res@) == n,
+{
+    let mut result = Vec::new();
+    if n == 0 {
+        result.push('0');
+        return result;
+    }
+    
+    while n > 0
+        invariant
+            n >= 0,
+    {
+        if n % 2 == 0 {
+            result.push('0');
+        } else {
+            result.push('1');
+        }
+        n = n / 2;
+    }
+    
+    let mut i = 0;
+    let mut j = result.len() - 1;
+    while i < j
+        invariant
+            0 <= i <= j < result.len(),
+    {
+        let temp = result[i];
+        result.set(i, result[j]);
+        result.set(j, temp);
+        i = i + 1;
+        j = j - 1;
+    }
+    
+    result
+}
+
+exec fn bitstring_to_int(s: &[char]) -> (res: u64)
+    requires
+        ValidBitString(s@),
+        s@.len() <= 64,
+    ensures
+        res == Str2Int(s@),
+{
+    let mut result: u64 = 0;
+    let mut i: usize = 0;
+    
+    while i < s.len()
+        invariant
+            0 <= i <= s.len(),
+            ValidBitString(s@),
+    {
+        result = result * 2;
+        if s[i] == '1' {
+            result = result + 1;
+        }
+        i = i + 1;
+    }
+    
+    result
+}
+
+exec fn mod_exp_helper(base: u64, exp: u64, modulus: u64) -> (res: u64)
+    requires
+        modulus > 1,
+    ensures
+        res == Exp_int(base as nat, exp as nat) % (modulus as nat),
+{
+    if exp == 0 {
+        return 1 % modulus;
+    }
+    
+    let mut result: u64 = 1;
+    let mut b = base % modulus;
+    let mut e = exp;
+    
+    while e > 0
+        invariant
+            modulus > 1,
+            b < modulus,
+            result < modulus,
+    {
+        if e % 2 == 1 {
+            result = (result * b) % modulus;
+        }
+        b = (b * b) % modulus;
+        e = e / 2;
+    }
+    
+    result
+}",
+"{\n    let x_val = bitstring_to_int(sx);\n    let y_val = bitstring_to_int(sy);\n    let z_val = bitstring_to_int(sz);\n    \n    let result_val = mod_exp_helper(x_val, y_val, z_val);\n    \n    let result = int_to_bitstring(result_val);\n    \n    result\n}"
+]
+--------------------------------------------------------------------------------

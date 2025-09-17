@@ -1,0 +1,36 @@
+=== Verification Error - Iteration 2 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExp_Mul.rs
+Time: 2025-09-14 10:43:36
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: error: This block would be parsed as the function/loop body, but it is followed immediately by another block (if you meant this block to be part of the specification, try parenthesizing it)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExp_Mul_impl.rs:51:19
+   |
+51 |           invariant {
+   |  ___________________^
+52 | |             0 <= i + 1 && i + 1 <= reversed_res.len() as int,
+53 | |             forall |j: int| i + 1 <= j && j < reversed_res.len() as int ==> res@.index(reversed_res.len() as int - 1 - j) == reversed_res@[j],
+54 | |             res@.len() as int == (reversed_res.len() as int - 1) - i
+55 | |         }
+   | |_________^
+
+error: aborting due to 1 previous error
+
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+error: This block would be parsed as the function/loop body, but it is followed immediately by another block (if you meant this block to be part of the specification, try parenthesizing it)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExp_Mul_impl.rs:51:19
+   |
+51 |           invariant {
+   |  ___________________^
+52 | |             0 <= i + 1 && i + 1 <= reversed_res.len() as int,
+53 | |             forall |j: int| i + 1 <= j && j < reversed_res.len() as int ==> res@.index(reversed_res.len() as int - 1 - j) == reversed_res@[j],
+54 | |             res@.len() as int == (reversed_res.len() as int - 1) - i
+55 | |         }
+   | |_________^
+
+error: aborting due to 1 previous error
+

@@ -3,21 +3,19 @@ vc-description: |-
   delete the last digit, delete the digit before the last digit, or do nothing.
   Find the maximum possible balance after performing the operation.
   Constraint: absolute value of n is at least 10.
-  
+
   /* delete last digit */
-  
+
   /* delete digit before last */
 
 vc-preamble: |-
   use vstd::prelude::*;
 
   verus! {
-
-vc-helpers: |-
   spec fn valid_input(n: int) -> bool {
       n >= 10 || n <= -10
   }
-  
+
   spec fn max_balance_after_operation(n: int) -> int
       recommends valid_input(n)
   {
@@ -34,6 +32,8 @@ vc-helpers: |-
       }
   }
 
+vc-helpers: |
+
 vc-spec: |-
   fn solve(n: int) -> (result: int)
       requires valid_input(n)
@@ -45,7 +45,7 @@ vc-code: |-
       unreached()
   }
 
-vc-postamble: |-
+vc-postamble: |2-
 
   }
 

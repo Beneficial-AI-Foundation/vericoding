@@ -1,0 +1,274 @@
+=== Verification Error - Iteration 7 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExp_Add_DivMod_ModExpPow2.rs
+Time: 2025-09-15 20:31:48
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Verification failed: verification results:: 7 verified, 6 errors
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_ModExpPow2_impl.rs:57:7
+   |
+57 | proof fn exp_add(x: nat, a: nat, b: nat)
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: assertion failed
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_ModExpPow2_impl.rs:69:16
+   |
+69 |         assert(Exp_int(x, a) * Exp_int(x, b) == Exp_int(x, a) * x * Exp_int(x, (b - 1) as nat));
+   |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ assertion failed
+
+error: assertion failed
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_ModExpPow2_impl.rs:70:16
+   |
+70 |         assert(Exp_int(x, a) * x * Exp_int(x, (b - 1) as nat) == x * (Exp_int(x, a) * Exp_int(x, (b - 1) as nat)));
+   |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ assertion failed
+
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_ModExpPow2_impl.rs:93:5
+   |
+93 |     while i < sx.len()
+   |     ^^^^^^^^^^^^^^^^^^
+
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_ModExpPow2_impl.rs:106:5
+    |
+106 |     while j < sz.len()
+    |     ^^^^^^^^^^^^^^^^^^
+
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_ModExpPow2_impl.rs:119:5
+    |
+119 |     while k < sy.len()
+    |     ^^^^^^^^^^^^^^^^^^
+
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_ModExpPow2_impl.rs:143:5
+    |
+143 |     while pow <= acc
+    |     ^^^^^^^^^^^^^^^^
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_ModExpPow2_impl.rs:80:6
+   |
+80 | exec fn ModExp(sx: &[char], sy: &[char], sz: &[char]) -> (res: Vec<char>)
+   |      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_ModExpPow2_impl.rs:83:11
+    |
+83  |   ensures ValidBitString(res@),
+    |           ^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+166 |     res
+    |     --- at the end of the function body
+
+note: recommendation not met
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_ModExpPow2_impl.rs:84:5
+   |
+12 |   recommends ValidBitString(s)
+   |              ----------------- recommendation not met
+...
+84 |     Str2Int(res@) == Exp_int(Str2Int(sx@), Str2Int(sy@)) % Str2Int(sz@)
+   |     ^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_ModExpPow2_impl.rs:84:5
+    |
+84  |     Str2Int(res@) == Exp_int(Str2Int(sx@), Str2Int(sy@)) % Str2Int(sz@)
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+138 |         return res;
+    |         ---------- at this exit
+
+error: possible arithmetic underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_ModExpPow2_impl.rs:99:16
+   |
+99 |         base = base * 2 + b;
+   |                ^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_ModExpPow2_impl.rs:99:16
+   |
+99 |         base = base * 2 + b;
+   |                ^^^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_ModExpPow2_impl.rs:112:13
+    |
+112 |         m = m * 2 + bb;
+    |             ^^^^^
+
+error: possible arithmetic underflow/overflow
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_ModExpPow2_impl.rs:112:13
+    |
+112 |         m = m * 2 + bb;
+    |             ^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_ModExpPow2_impl.rs:125:27
+    |
+125 |         if m != 0 { acc = (acc * acc) % m; }
+    |                           ^^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_ModExpPow2_impl.rs:128:31
+    |
+128 |             if m != 0 { acc = (acc * base) % m; }
+    |                               ^^^^^^^^^^^^
+
+error: decreases not satisfied at end of loop
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_ModExpPow2_impl.rs:143:5
+    |
+143 |     while pow <= acc
+    |     ^^^^^^^^^^^^^^^^
+
+error: invariant not satisfied at end of loop body
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_ModExpPow2_impl.rs:145:13
+    |
+145 |             pow >= 1,
+    |             ^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_ModExpPow2_impl.rs:148:15
+    |
+148 |         pow = pow * 2;
+    |               ^^^^^^^
+
+error: aborting due to 13 previous errors
+
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+verification results:: 7 verified, 6 errors
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_ModExpPow2_impl.rs:57:7
+   |
+57 | proof fn exp_add(x: nat, a: nat, b: nat)
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: assertion failed
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_ModExpPow2_impl.rs:69:16
+   |
+69 |         assert(Exp_int(x, a) * Exp_int(x, b) == Exp_int(x, a) * x * Exp_int(x, (b - 1) as nat));
+   |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ assertion failed
+
+error: assertion failed
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_ModExpPow2_impl.rs:70:16
+   |
+70 |         assert(Exp_int(x, a) * x * Exp_int(x, (b - 1) as nat) == x * (Exp_int(x, a) * Exp_int(x, (b - 1) as nat)));
+   |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ assertion failed
+
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_ModExpPow2_impl.rs:93:5
+   |
+93 |     while i < sx.len()
+   |     ^^^^^^^^^^^^^^^^^^
+
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_ModExpPow2_impl.rs:106:5
+    |
+106 |     while j < sz.len()
+    |     ^^^^^^^^^^^^^^^^^^
+
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_ModExpPow2_impl.rs:119:5
+    |
+119 |     while k < sy.len()
+    |     ^^^^^^^^^^^^^^^^^^
+
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_ModExpPow2_impl.rs:143:5
+    |
+143 |     while pow <= acc
+    |     ^^^^^^^^^^^^^^^^
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_ModExpPow2_impl.rs:80:6
+   |
+80 | exec fn ModExp(sx: &[char], sy: &[char], sz: &[char]) -> (res: Vec<char>)
+   |      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_ModExpPow2_impl.rs:83:11
+    |
+83  |   ensures ValidBitString(res@),
+    |           ^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+166 |     res
+    |     --- at the end of the function body
+
+note: recommendation not met
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_ModExpPow2_impl.rs:84:5
+   |
+12 |   recommends ValidBitString(s)
+   |              ----------------- recommendation not met
+...
+84 |     Str2Int(res@) == Exp_int(Str2Int(sx@), Str2Int(sy@)) % Str2Int(sz@)
+   |     ^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_ModExpPow2_impl.rs:84:5
+    |
+84  |     Str2Int(res@) == Exp_int(Str2Int(sx@), Str2Int(sy@)) % Str2Int(sz@)
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+138 |         return res;
+    |         ---------- at this exit
+
+error: possible arithmetic underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_ModExpPow2_impl.rs:99:16
+   |
+99 |         base = base * 2 + b;
+   |                ^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_ModExpPow2_impl.rs:99:16
+   |
+99 |         base = base * 2 + b;
+   |                ^^^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_ModExpPow2_impl.rs:112:13
+    |
+112 |         m = m * 2 + bb;
+    |             ^^^^^
+
+error: possible arithmetic underflow/overflow
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_ModExpPow2_impl.rs:112:13
+    |
+112 |         m = m * 2 + bb;
+    |             ^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_ModExpPow2_impl.rs:125:27
+    |
+125 |         if m != 0 { acc = (acc * acc) % m; }
+    |                           ^^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_ModExpPow2_impl.rs:128:31
+    |
+128 |             if m != 0 { acc = (acc * base) % m; }
+    |                               ^^^^^^^^^^^^
+
+error: decreases not satisfied at end of loop
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_ModExpPow2_impl.rs:143:5
+    |
+143 |     while pow <= acc
+    |     ^^^^^^^^^^^^^^^^
+
+error: invariant not satisfied at end of loop body
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_ModExpPow2_impl.rs:145:13
+    |
+145 |             pow >= 1,
+    |             ^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_ModExpPow2_impl.rs:148:15
+    |
+148 |         pow = pow * 2;
+    |               ^^^^^^^
+
+error: aborting due to 13 previous errors
+

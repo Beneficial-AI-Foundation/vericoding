@@ -1,0 +1,62 @@
+=== Verification Error - Iteration 1 ===
+File: benchmarks/verus/bignum/files/bignum_ModExp_DivMod_ModExpPow2_Zeroes.rs
+Time: 2025-09-15 10:50:39
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_DivMod_ModExpPow2_Zeroes_impl.rs:59:41
+   |
+59 |         let mut res = int_to_bit_string((n / 2) as nat);
+   |                                         ^^^^^^^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_DivMod_ModExpPow2_Zeroes_impl.rs:85:40
+   |
+85 |         let result = int_to_bit_string((1 % z) as nat);
+   |                                        ^^^^^^^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_DivMod_ModExpPow2_Zeroes_impl.rs:98:23
+   |
+98 |         let res_val = ((temp_val * temp_val) % z) as nat;
+   |                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_DivMod_ModExpPow2_Zeroes_impl.rs:138:34
+    |
+138 |         return int_to_bit_string(res_val as nat);
+    |                                  ^^^^^^^^^^^^^^
+
+error: aborting due to 4 previous errors
+
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_DivMod_ModExpPow2_Zeroes_impl.rs:59:41
+   |
+59 |         let mut res = int_to_bit_string((n / 2) as nat);
+   |                                         ^^^^^^^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_DivMod_ModExpPow2_Zeroes_impl.rs:85:40
+   |
+85 |         let result = int_to_bit_string((1 % z) as nat);
+   |                                        ^^^^^^^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_DivMod_ModExpPow2_Zeroes_impl.rs:98:23
+   |
+98 |         let res_val = ((temp_val * temp_val) % z) as nat;
+   |                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_DivMod_ModExpPow2_Zeroes_impl.rs:138:34
+    |
+138 |         return int_to_bit_string(res_val as nat);
+    |                                  ^^^^^^^^^^^^^^
+
+error: aborting due to 4 previous errors
+

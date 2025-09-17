@@ -1,0 +1,6 @@
+=== Raw LLM Generate Response ===
+Length: 152 characters
+--------------------------------------------------------------------------------
+[
+"spec fn Nat2Bits(n: nat) -> Seq<char>\n    decreases n\n{\n    if n == 0 {\n        Seq::<char>::empty()\n    } else {\n        let s = Nat2Bits(n / 
+--------------------------------------------------------------------------------

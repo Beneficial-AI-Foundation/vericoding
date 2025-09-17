@@ -1,0 +1,258 @@
+=== Verification Error - Iteration 4 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExp_Add_Mul_Zeroes.rs
+Time: 2025-09-15 19:37:46
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Verification failed: verification results:: 8 verified, 5 errors
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignum_ModExp_Add_Mul_Zeroes_impl.rs:29:6
+   |
+29 | exec fn mul_u128(a: u128, b: u128) -> U256 {
+   |      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+note: recommendation not met: value may be out of range of the target type (use `#[verifier::truncate]` on the cast to silence this warning)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignum_ModExp_Add_Mul_Zeroes_impl.rs:30:16
+   |
+30 |     let a_lo = a as u64;
+   |                ^
+
+note: recommendation not met: value may be out of range of the target type (use `#[verifier::truncate]` on the cast to silence this warning)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignum_ModExp_Add_Mul_Zeroes_impl.rs:31:16
+   |
+31 |     let a_hi = (a >> 64) as u64;
+   |                ^^^^^^^^^
+
+note: recommendation not met: value may be out of range of the target type (use `#[verifier::truncate]` on the cast to silence this warning)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignum_ModExp_Add_Mul_Zeroes_impl.rs:32:16
+   |
+32 |     let b_lo = b as u64;
+   |                ^
+
+error: possible arithmetic underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignum_ModExp_Add_Mul_Zeroes_impl.rs:35:14
+   |
+35 |     let p0 = (a_lo as u128) * (b_lo as u128);
+   |              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignum_ModExp_Add_Mul_Zeroes_impl.rs:36:14
+   |
+36 |     let p1 = (a_lo as u128) * (b_hi as u128);
+   |              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignum_ModExp_Add_Mul_Zeroes_impl.rs:37:14
+   |
+37 |     let p2 = (a_hi as u128) * (b_lo as u128);
+   |              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignum_ModExp_Add_Mul_Zeroes_impl.rs:51:5
+   |
+51 | /     for i in 0..128 {
+52 | |         if (a.hi >> i) & 1 != 0 {
+53 | |             result = (result + power) % modulus;
+...  |
+56 | |     }
+   | |_____^
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignum_ModExp_Add_Mul_Zeroes_impl.rs:48:6
+   |
+48 | exec fn mod_u256(a: U256, modulus: u128) -> u128 {
+   |      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignum_ModExp_Add_Mul_Zeroes_impl.rs:53:22
+   |
+53 |             result = (result + power) % modulus;
+   |                      ^^^^^^^^^^^^^^^^
+
+error: possible division by zero
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignum_ModExp_Add_Mul_Zeroes_impl.rs:53:22
+   |
+53 |             result = (result + power) % modulus;
+   |                      ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignum_ModExp_Add_Mul_Zeroes_impl.rs:57:14
+   |
+57 |     result = (result + a.lo) % modulus;
+   |              ^^^^^^^^^^^^^^^
+
+error: possible division by zero
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignum_ModExp_Add_Mul_Zeroes_impl.rs:57:14
+   |
+57 |     result = (result + a.lo) % modulus;
+   |              ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: possible division by zero
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignum_ModExp_Add_Mul_Zeroes_impl.rs:95:20
+   |
+95 |     let mut base = base % modulus;
+   |                    ^^^^^^^^^^^^^^
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignum_ModExp_Add_Mul_Zeroes_impl.rs:113:6
+    |
+113 | exec fn ModExp_Add_Mul_Zeroes(sx: &[char], sy: &[char], sz: &[char]) -> (res: Vec<char>)
+    |      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignum_ModExp_Add_Mul_Zeroes_impl.rs:115:11
+    |
+115 |   ensures ValidBitString(res@), Str2Int(res@) == Exp_int(Str2Int(sx@), Str2Int(sy@)) % Str2Int(sz@)
+    |           ^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+129 |     result_str
+    |     ---------- at the end of the function body
+
+note: recommendation not met
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignum_ModExp_Add_Mul_Zeroes_impl.rs:115:33
+    |
+12  | recommends ValidBitString(s)
+    |            ----------------- recommendation not met
+...
+115 |   ensures ValidBitString(res@), Str2Int(res@) == Exp_int(Str2Int(sx@), Str2Int(sy@)) % Str2Int(sz@)
+    |                                 ^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignum_ModExp_Add_Mul_Zeroes_impl.rs:115:33
+    |
+115 |   ensures ValidBitString(res@), Str2Int(res@) == Exp_int(Str2Int(sx@), Str2Int(sy@)) % Str2Int(sz@)
+    |                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+129 |     result_str
+    |     ---------- at the end of the function body
+
+error: aborting due to 10 previous errors
+
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+verification results:: 8 verified, 5 errors
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignum_ModExp_Add_Mul_Zeroes_impl.rs:29:6
+   |
+29 | exec fn mul_u128(a: u128, b: u128) -> U256 {
+   |      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+note: recommendation not met: value may be out of range of the target type (use `#[verifier::truncate]` on the cast to silence this warning)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignum_ModExp_Add_Mul_Zeroes_impl.rs:30:16
+   |
+30 |     let a_lo = a as u64;
+   |                ^
+
+note: recommendation not met: value may be out of range of the target type (use `#[verifier::truncate]` on the cast to silence this warning)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignum_ModExp_Add_Mul_Zeroes_impl.rs:31:16
+   |
+31 |     let a_hi = (a >> 64) as u64;
+   |                ^^^^^^^^^
+
+note: recommendation not met: value may be out of range of the target type (use `#[verifier::truncate]` on the cast to silence this warning)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignum_ModExp_Add_Mul_Zeroes_impl.rs:32:16
+   |
+32 |     let b_lo = b as u64;
+   |                ^
+
+error: possible arithmetic underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignum_ModExp_Add_Mul_Zeroes_impl.rs:35:14
+   |
+35 |     let p0 = (a_lo as u128) * (b_lo as u128);
+   |              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignum_ModExp_Add_Mul_Zeroes_impl.rs:36:14
+   |
+36 |     let p1 = (a_lo as u128) * (b_hi as u128);
+   |              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignum_ModExp_Add_Mul_Zeroes_impl.rs:37:14
+   |
+37 |     let p2 = (a_hi as u128) * (b_lo as u128);
+   |              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignum_ModExp_Add_Mul_Zeroes_impl.rs:51:5
+   |
+51 | /     for i in 0..128 {
+52 | |         if (a.hi >> i) & 1 != 0 {
+53 | |             result = (result + power) % modulus;
+...  |
+56 | |     }
+   | |_____^
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignum_ModExp_Add_Mul_Zeroes_impl.rs:48:6
+   |
+48 | exec fn mod_u256(a: U256, modulus: u128) -> u128 {
+   |      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignum_ModExp_Add_Mul_Zeroes_impl.rs:53:22
+   |
+53 |             result = (result + power) % modulus;
+   |                      ^^^^^^^^^^^^^^^^
+
+error: possible division by zero
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignum_ModExp_Add_Mul_Zeroes_impl.rs:53:22
+   |
+53 |             result = (result + power) % modulus;
+   |                      ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignum_ModExp_Add_Mul_Zeroes_impl.rs:57:14
+   |
+57 |     result = (result + a.lo) % modulus;
+   |              ^^^^^^^^^^^^^^^
+
+error: possible division by zero
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignum_ModExp_Add_Mul_Zeroes_impl.rs:57:14
+   |
+57 |     result = (result + a.lo) % modulus;
+   |              ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: possible division by zero
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignum_ModExp_Add_Mul_Zeroes_impl.rs:95:20
+   |
+95 |     let mut base = base % modulus;
+   |                    ^^^^^^^^^^^^^^
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignum_ModExp_Add_Mul_Zeroes_impl.rs:113:6
+    |
+113 | exec fn ModExp_Add_Mul_Zeroes(sx: &[char], sy: &[char], sz: &[char]) -> (res: Vec<char>)
+    |      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignum_ModExp_Add_Mul_Zeroes_impl.rs:115:11
+    |
+115 |   ensures ValidBitString(res@), Str2Int(res@) == Exp_int(Str2Int(sx@), Str2Int(sy@)) % Str2Int(sz@)
+    |           ^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+129 |     result_str
+    |     ---------- at the end of the function body
+
+note: recommendation not met
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignum_ModExp_Add_Mul_Zeroes_impl.rs:115:33
+    |
+12  | recommends ValidBitString(s)
+    |            ----------------- recommendation not met
+...
+115 |   ensures ValidBitString(res@), Str2Int(res@) == Exp_int(Str2Int(sx@), Str2Int(sy@)) % Str2Int(sz@)
+    |                                 ^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignum_ModExp_Add_Mul_Zeroes_impl.rs:115:33
+    |
+115 |   ensures ValidBitString(res@), Str2Int(res@) == Exp_int(Str2Int(sx@), Str2Int(sy@)) % Str2Int(sz@)
+    |                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+129 |     result_str
+    |     ---------- at the end of the function body
+
+error: aborting due to 10 previous errors
+

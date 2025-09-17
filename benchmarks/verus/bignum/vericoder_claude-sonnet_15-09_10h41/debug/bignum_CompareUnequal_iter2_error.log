@@ -1,0 +1,78 @@
+=== Verification Error - Iteration 2 ===
+File: benchmarks/verus/bignum/files/bignum_CompareUnequal.rs
+Time: 2025-09-15 10:57:36
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Verification failed: verification results:: 3 verified, 3 errors
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_CompareUnequal_impl.rs:45:13
+   |
+43 | proof fn lemma_power_comparison(len1: nat, len2: nat)
+   |       ----------------------------------------------- at the end of the function body
+44 |     requires len1 > len2, len2 > 0
+45 |     ensures nat_pow(2, (len1 - 1) as nat) >= nat_pow(2, len2) - 1
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_CompareUnequal_impl.rs:28:13
+   |
+28 |       ensures Str2Int(s1) >= Str2Int(s2)
+   |               ^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+29 |   {
+30 | /     if s1.len() == 1 {
+31 | |         if s2.len() == 1 {
+...  |
+39 | |         lemma_power_comparison(s1.len() as nat, s2.len() as nat);
+40 | |     }
+   | |_____- at the end of the function body
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_CompareUnequal_impl.rs:65:5
+   |
+65 |     (Str2Int(s1@) == Str2Int(s2@) ==> res == 0),
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+74 |     return 1;
+   |     -------- at this exit
+
+error: aborting due to 3 previous errors
+
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+verification results:: 3 verified, 3 errors
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_CompareUnequal_impl.rs:45:13
+   |
+43 | proof fn lemma_power_comparison(len1: nat, len2: nat)
+   |       ----------------------------------------------- at the end of the function body
+44 |     requires len1 > len2, len2 > 0
+45 |     ensures nat_pow(2, (len1 - 1) as nat) >= nat_pow(2, len2) - 1
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_CompareUnequal_impl.rs:28:13
+   |
+28 |       ensures Str2Int(s1) >= Str2Int(s2)
+   |               ^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+29 |   {
+30 | /     if s1.len() == 1 {
+31 | |         if s2.len() == 1 {
+...  |
+39 | |         lemma_power_comparison(s1.len() as nat, s2.len() as nat);
+40 | |     }
+   | |_____- at the end of the function body
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_CompareUnequal_impl.rs:65:5
+   |
+65 |     (Str2Int(s1@) == Str2Int(s2@) ==> res == 0),
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+74 |     return 1;
+   |     -------- at this exit
+
+error: aborting due to 3 previous errors
+

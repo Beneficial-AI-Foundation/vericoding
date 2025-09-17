@@ -1,0 +1,442 @@
+=== Verification Error - Iteration 2 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExpPow2_DivMod.rs
+Time: 2025-09-15 20:45:43
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Verification failed: verification results:: 6 verified, 11 errors
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt_15-09_18h47/bignum_ModExpPow2_DivMod_impl.rs:35:5
+   |
+35 |     while i < dividend.len()
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^
+
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt_15-09_18h47/bignum_ModExpPow2_DivMod_impl.rs:45:5
+   |
+45 |     while j < divisor.len()
+   |     ^^^^^^^^^^^^^^^^^^^^^^^
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt_15-09_18h47/bignum_ModExpPow2_DivMod_impl.rs:24:6
+   |
+24 | exec fn DivMod(dividend: &[char], divisor: &[char]) -> (res: (Vec<char>, Vec<char>))
+   |      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+note: recommendation not met
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt_15-09_18h47/bignum_ModExpPow2_DivMod_impl.rs:27:5
+   |
+12 |   recommends ValidBitString(s)
+   |              ----------------- recommendation not met
+...
+27 |     Str2Int(res.0@) == Str2Int(dividend@) / Str2Int(divisor@),
+   |     ^^^^^^^^^^^^^^^
+
+note: recommendation not met
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt_15-09_18h47/bignum_ModExpPow2_DivMod_impl.rs:28:5
+   |
+12 |   recommends ValidBitString(s)
+   |              ----------------- recommendation not met
+...
+28 |     Str2Int(res.1@) == Str2Int(dividend@) % Str2Int(divisor@)
+   |     ^^^^^^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt_15-09_18h47/bignum_ModExpPow2_DivMod_impl.rs:40:13
+   |
+40 |         a = a * 2 + if dividend[i] == '1' { 1 } else { 0 };
+   |             ^^^^^
+
+error: possible arithmetic underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt_15-09_18h47/bignum_ModExpPow2_DivMod_impl.rs:40:13
+   |
+40 |         a = a * 2 + if dividend[i] == '1' { 1 } else { 0 };
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt_15-09_18h47/bignum_ModExpPow2_DivMod_impl.rs:50:13
+   |
+50 |         b = b * 2 + if divisor[j] == '1' { 1 } else { 0 };
+   |             ^^^^^
+
+error: possible arithmetic underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt_15-09_18h47/bignum_ModExpPow2_DivMod_impl.rs:50:13
+   |
+50 |         b = b * 2 + if divisor[j] == '1' { 1 } else { 0 };
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: possible division by zero
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt_15-09_18h47/bignum_ModExpPow2_DivMod_impl.rs:53:13
+   |
+53 |     let q = a / b;
+   |             ^^^^^
+
+error: possible division by zero
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt_15-09_18h47/bignum_ModExpPow2_DivMod_impl.rs:54:13
+   |
+54 |     let r = a % b;
+   |             ^^^^^
+
+error: decreases not satisfied at end of loop
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt_15-09_18h47/bignum_ModExpPow2_DivMod_impl.rs:61:9
+   |
+61 |         while tmp > 0
+   |         ^^^^^^^^^^^^^
+
+note: recommendation not met: value may be out of range of the target type (use `#[verifier::truncate]` on the cast to silence this warning)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt_15-09_18h47/bignum_ModExpPow2_DivMod_impl.rs:64:23
+   |
+64 |             let bit = (tmp & 1) as u8;
+   |                       ^^^^^^^^^
+
+error: decreases not satisfied at end of loop
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt_15-09_18h47/bignum_ModExpPow2_DivMod_impl.rs:84:9
+   |
+84 |         while tmp > 0
+   |         ^^^^^^^^^^^^^
+
+note: recommendation not met: value may be out of range of the target type (use `#[verifier::truncate]` on the cast to silence this warning)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt_15-09_18h47/bignum_ModExpPow2_DivMod_impl.rs:87:23
+   |
+87 |             let bit = (tmp & 1) as u8;
+   |                       ^^^^^^^^^
+
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt_15-09_18h47/bignum_ModExpPow2_DivMod_impl.rs:121:5
+    |
+121 |     while i < sx.len()
+    |     ^^^^^^^^^^^^^^^^^^
+
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt_15-09_18h47/bignum_ModExpPow2_DivMod_impl.rs:131:5
+    |
+131 |     while j < sy.len()
+    |     ^^^^^^^^^^^^^^^^^^
+
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt_15-09_18h47/bignum_ModExpPow2_DivMod_impl.rs:141:5
+    |
+141 |     while k < sz.len()
+    |     ^^^^^^^^^^^^^^^^^^
+
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt_15-09_18h47/bignum_ModExpPow2_DivMod_impl.rs:156:9
+    |
+156 |         while exp > 0
+    |         ^^^^^^^^^^^^^
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt_15-09_18h47/bignum_ModExpPow2_DivMod_impl.rs:106:6
+    |
+106 | exec fn ModExpPow2(sx: &[char], sy: &[char], n: int, sz: &[char]) -> (res: Vec<char>)
+    |      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+note: recommendation not met
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt_15-09_18h47/bignum_ModExpPow2_DivMod_impl.rs:113:5
+    |
+12  |   recommends ValidBitString(s)
+    |              ----------------- recommendation not met
+...
+113 |     Str2Int(res@) == Exp_int(Str2Int(sx@), Str2Int(sy@)) % Str2Int(sz@)
+    |     ^^^^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt_15-09_18h47/bignum_ModExpPow2_DivMod_impl.rs:126:13
+    |
+126 |         x = x * 2 + if sx[i] == '1' { 1 } else { 0 };
+    |             ^^^^^
+
+error: possible arithmetic underflow/overflow
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt_15-09_18h47/bignum_ModExpPow2_DivMod_impl.rs:126:13
+    |
+126 |         x = x * 2 + if sx[i] == '1' { 1 } else { 0 };
+    |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt_15-09_18h47/bignum_ModExpPow2_DivMod_impl.rs:136:13
+    |
+136 |         y = y * 2 + if sy[j] == '1' { 1 } else { 0 };
+    |             ^^^^^
+
+error: possible arithmetic underflow/overflow
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt_15-09_18h47/bignum_ModExpPow2_DivMod_impl.rs:136:13
+    |
+136 |         y = y * 2 + if sy[j] == '1' { 1 } else { 0 };
+    |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt_15-09_18h47/bignum_ModExpPow2_DivMod_impl.rs:146:13
+    |
+146 |         z = z * 2 + if sz[k] == '1' { 1 } else { 0 };
+    |             ^^^^^
+
+error: possible arithmetic underflow/overflow
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt_15-09_18h47/bignum_ModExpPow2_DivMod_impl.rs:146:13
+    |
+146 |         z = z * 2 + if sz[k] == '1' { 1 } else { 0 };
+    |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: possible division by zero
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt_15-09_18h47/bignum_ModExpPow2_DivMod_impl.rs:149:29
+    |
+149 |     let mut res_val: u128 = 1 % z;
+    |                             ^^^^^
+
+error: possible division by zero
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt_15-09_18h47/bignum_ModExpPow2_DivMod_impl.rs:151:19
+    |
+151 |         res_val = 1 % z;
+    |                   ^^^^^
+
+error: possible arithmetic underflow/overflow
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt_15-09_18h47/bignum_ModExpPow2_DivMod_impl.rs:160:23
+    |
+160 |                 acc = (acc * base) % z;
+    |                       ^^^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt_15-09_18h47/bignum_ModExpPow2_DivMod_impl.rs:162:20
+    |
+162 |             base = (base * base) % z;
+    |                    ^^^^^^^^^^^^^
+
+error: possible division by zero
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt_15-09_18h47/bignum_ModExpPow2_DivMod_impl.rs:162:20
+    |
+162 |             base = (base * base) % z;
+    |                    ^^^^^^^^^^^^^^^^^
+
+error: decreases not satisfied at end of loop
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt_15-09_18h47/bignum_ModExpPow2_DivMod_impl.rs:173:9
+    |
+173 |         while tmp > 0
+    |         ^^^^^^^^^^^^^
+
+note: recommendation not met: value may be out of range of the target type (use `#[verifier::truncate]` on the cast to silence this warning)
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt_15-09_18h47/bignum_ModExpPow2_DivMod_impl.rs:176:23
+    |
+176 |             let bit = (tmp & 1) as u8;
+    |                       ^^^^^^^^^
+
+error: aborting due to 20 previous errors
+
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+verification results:: 6 verified, 11 errors
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt_15-09_18h47/bignum_ModExpPow2_DivMod_impl.rs:35:5
+   |
+35 |     while i < dividend.len()
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^
+
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt_15-09_18h47/bignum_ModExpPow2_DivMod_impl.rs:45:5
+   |
+45 |     while j < divisor.len()
+   |     ^^^^^^^^^^^^^^^^^^^^^^^
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt_15-09_18h47/bignum_ModExpPow2_DivMod_impl.rs:24:6
+   |
+24 | exec fn DivMod(dividend: &[char], divisor: &[char]) -> (res: (Vec<char>, Vec<char>))
+   |      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+note: recommendation not met
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt_15-09_18h47/bignum_ModExpPow2_DivMod_impl.rs:27:5
+   |
+12 |   recommends ValidBitString(s)
+   |              ----------------- recommendation not met
+...
+27 |     Str2Int(res.0@) == Str2Int(dividend@) / Str2Int(divisor@),
+   |     ^^^^^^^^^^^^^^^
+
+note: recommendation not met
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt_15-09_18h47/bignum_ModExpPow2_DivMod_impl.rs:28:5
+   |
+12 |   recommends ValidBitString(s)
+   |              ----------------- recommendation not met
+...
+28 |     Str2Int(res.1@) == Str2Int(dividend@) % Str2Int(divisor@)
+   |     ^^^^^^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt_15-09_18h47/bignum_ModExpPow2_DivMod_impl.rs:40:13
+   |
+40 |         a = a * 2 + if dividend[i] == '1' { 1 } else { 0 };
+   |             ^^^^^
+
+error: possible arithmetic underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt_15-09_18h47/bignum_ModExpPow2_DivMod_impl.rs:40:13
+   |
+40 |         a = a * 2 + if dividend[i] == '1' { 1 } else { 0 };
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt_15-09_18h47/bignum_ModExpPow2_DivMod_impl.rs:50:13
+   |
+50 |         b = b * 2 + if divisor[j] == '1' { 1 } else { 0 };
+   |             ^^^^^
+
+error: possible arithmetic underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt_15-09_18h47/bignum_ModExpPow2_DivMod_impl.rs:50:13
+   |
+50 |         b = b * 2 + if divisor[j] == '1' { 1 } else { 0 };
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: possible division by zero
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt_15-09_18h47/bignum_ModExpPow2_DivMod_impl.rs:53:13
+   |
+53 |     let q = a / b;
+   |             ^^^^^
+
+error: possible division by zero
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt_15-09_18h47/bignum_ModExpPow2_DivMod_impl.rs:54:13
+   |
+54 |     let r = a % b;
+   |             ^^^^^
+
+error: decreases not satisfied at end of loop
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt_15-09_18h47/bignum_ModExpPow2_DivMod_impl.rs:61:9
+   |
+61 |         while tmp > 0
+   |         ^^^^^^^^^^^^^
+
+note: recommendation not met: value may be out of range of the target type (use `#[verifier::truncate]` on the cast to silence this warning)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt_15-09_18h47/bignum_ModExpPow2_DivMod_impl.rs:64:23
+   |
+64 |             let bit = (tmp & 1) as u8;
+   |                       ^^^^^^^^^
+
+error: decreases not satisfied at end of loop
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt_15-09_18h47/bignum_ModExpPow2_DivMod_impl.rs:84:9
+   |
+84 |         while tmp > 0
+   |         ^^^^^^^^^^^^^
+
+note: recommendation not met: value may be out of range of the target type (use `#[verifier::truncate]` on the cast to silence this warning)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt_15-09_18h47/bignum_ModExpPow2_DivMod_impl.rs:87:23
+   |
+87 |             let bit = (tmp & 1) as u8;
+   |                       ^^^^^^^^^
+
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt_15-09_18h47/bignum_ModExpPow2_DivMod_impl.rs:121:5
+    |
+121 |     while i < sx.len()
+    |     ^^^^^^^^^^^^^^^^^^
+
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt_15-09_18h47/bignum_ModExpPow2_DivMod_impl.rs:131:5
+    |
+131 |     while j < sy.len()
+    |     ^^^^^^^^^^^^^^^^^^
+
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt_15-09_18h47/bignum_ModExpPow2_DivMod_impl.rs:141:5
+    |
+141 |     while k < sz.len()
+    |     ^^^^^^^^^^^^^^^^^^
+
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt_15-09_18h47/bignum_ModExpPow2_DivMod_impl.rs:156:9
+    |
+156 |         while exp > 0
+    |         ^^^^^^^^^^^^^
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt_15-09_18h47/bignum_ModExpPow2_DivMod_impl.rs:106:6
+    |
+106 | exec fn ModExpPow2(sx: &[char], sy: &[char], n: int, sz: &[char]) -> (res: Vec<char>)
+    |      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+note: recommendation not met
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt_15-09_18h47/bignum_ModExpPow2_DivMod_impl.rs:113:5
+    |
+12  |   recommends ValidBitString(s)
+    |              ----------------- recommendation not met
+...
+113 |     Str2Int(res@) == Exp_int(Str2Int(sx@), Str2Int(sy@)) % Str2Int(sz@)
+    |     ^^^^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt_15-09_18h47/bignum_ModExpPow2_DivMod_impl.rs:126:13
+    |
+126 |         x = x * 2 + if sx[i] == '1' { 1 } else { 0 };
+    |             ^^^^^
+
+error: possible arithmetic underflow/overflow
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt_15-09_18h47/bignum_ModExpPow2_DivMod_impl.rs:126:13
+    |
+126 |         x = x * 2 + if sx[i] == '1' { 1 } else { 0 };
+    |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt_15-09_18h47/bignum_ModExpPow2_DivMod_impl.rs:136:13
+    |
+136 |         y = y * 2 + if sy[j] == '1' { 1 } else { 0 };
+    |             ^^^^^
+
+error: possible arithmetic underflow/overflow
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt_15-09_18h47/bignum_ModExpPow2_DivMod_impl.rs:136:13
+    |
+136 |         y = y * 2 + if sy[j] == '1' { 1 } else { 0 };
+    |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt_15-09_18h47/bignum_ModExpPow2_DivMod_impl.rs:146:13
+    |
+146 |         z = z * 2 + if sz[k] == '1' { 1 } else { 0 };
+    |             ^^^^^
+
+error: possible arithmetic underflow/overflow
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt_15-09_18h47/bignum_ModExpPow2_DivMod_impl.rs:146:13
+    |
+146 |         z = z * 2 + if sz[k] == '1' { 1 } else { 0 };
+    |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: possible division by zero
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt_15-09_18h47/bignum_ModExpPow2_DivMod_impl.rs:149:29
+    |
+149 |     let mut res_val: u128 = 1 % z;
+    |                             ^^^^^
+
+error: possible division by zero
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt_15-09_18h47/bignum_ModExpPow2_DivMod_impl.rs:151:19
+    |
+151 |         res_val = 1 % z;
+    |                   ^^^^^
+
+error: possible arithmetic underflow/overflow
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt_15-09_18h47/bignum_ModExpPow2_DivMod_impl.rs:160:23
+    |
+160 |                 acc = (acc * base) % z;
+    |                       ^^^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt_15-09_18h47/bignum_ModExpPow2_DivMod_impl.rs:162:20
+    |
+162 |             base = (base * base) % z;
+    |                    ^^^^^^^^^^^^^
+
+error: possible division by zero
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt_15-09_18h47/bignum_ModExpPow2_DivMod_impl.rs:162:20
+    |
+162 |             base = (base * base) % z;
+    |                    ^^^^^^^^^^^^^^^^^
+
+error: decreases not satisfied at end of loop
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt_15-09_18h47/bignum_ModExpPow2_DivMod_impl.rs:173:9
+    |
+173 |         while tmp > 0
+    |         ^^^^^^^^^^^^^
+
+note: recommendation not met: value may be out of range of the target type (use `#[verifier::truncate]` on the cast to silence this warning)
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt_15-09_18h47/bignum_ModExpPow2_DivMod_impl.rs:176:23
+    |
+176 |             let bit = (tmp & 1) as u8;
+    |                       ^^^^^^^^^
+
+error: aborting due to 20 previous errors
+

@@ -1,0 +1,103 @@
+=== Verification Error - Iteration 3 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_DivMod_Sub.rs
+Time: 2025-09-15 18:55:05
+
+Full Error Output:
+--------------------------------------------------------------------------------
+VERIFICATION BYPASSES DETECTED: uses 'assume' to bypass verification. Code contains verification bypasses and cannot be considered successfully verified.
+
+Original verification output:
+Compilation failed: error[E0425]: cannot find value `res` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_DivMod_Sub_impl.rs:34:28
+   |
+34 |     ensures ValidBitString(res),
+   |                            ^^^ not found in this scope
+
+error[E0425]: cannot find value `res` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_DivMod_Sub_impl.rs:35:21
+   |
+35 |             Str2Int(res) == Str2Int(s1) - Str2Int(s2)
+   |                     ^^^ not found in this scope
+
+error[E0425]: cannot find value `res` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_DivMod_Sub_impl.rs:94:28
+   |
+94 |     ensures ValidBitString(res),
+   |                            ^^^ not found in this scope
+
+error[E0425]: cannot find value `res` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_DivMod_Sub_impl.rs:95:21
+   |
+95 |             Str2Int(res) == Str2Int(s),
+   |                     ^^^ not found in this scope
+
+error[E0425]: cannot find value `res` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_DivMod_Sub_impl.rs:96:13
+   |
+96 |             res.len() == 1 || res.len() == 0 || res.index(0) == '1'
+   |             ^^^ not found in this scope
+
+error[E0425]: cannot find value `res` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_DivMod_Sub_impl.rs:96:31
+   |
+96 |             res.len() == 1 || res.len() == 0 || res.index(0) == '1'
+   |                               ^^^ not found in this scope
+
+error[E0425]: cannot find value `res` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_DivMod_Sub_impl.rs:96:49
+   |
+96 |             res.len() == 1 || res.len() == 0 || res.index(0) == '1'
+   |                                                 ^^^ not found in this scope
+
+error: aborting due to 7 previous errors
+
+For more information about this error, try `rustc --explain E0425`.
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+error[E0425]: cannot find value `res` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_DivMod_Sub_impl.rs:34:28
+   |
+34 |     ensures ValidBitString(res),
+   |                            ^^^ not found in this scope
+
+error[E0425]: cannot find value `res` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_DivMod_Sub_impl.rs:35:21
+   |
+35 |             Str2Int(res) == Str2Int(s1) - Str2Int(s2)
+   |                     ^^^ not found in this scope
+
+error[E0425]: cannot find value `res` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_DivMod_Sub_impl.rs:94:28
+   |
+94 |     ensures ValidBitString(res),
+   |                            ^^^ not found in this scope
+
+error[E0425]: cannot find value `res` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_DivMod_Sub_impl.rs:95:21
+   |
+95 |             Str2Int(res) == Str2Int(s),
+   |                     ^^^ not found in this scope
+
+error[E0425]: cannot find value `res` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_DivMod_Sub_impl.rs:96:13
+   |
+96 |             res.len() == 1 || res.len() == 0 || res.index(0) == '1'
+   |             ^^^ not found in this scope
+
+error[E0425]: cannot find value `res` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_DivMod_Sub_impl.rs:96:31
+   |
+96 |             res.len() == 1 || res.len() == 0 || res.index(0) == '1'
+   |                               ^^^ not found in this scope
+
+error[E0425]: cannot find value `res` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_DivMod_Sub_impl.rs:96:49
+   |
+96 |             res.len() == 1 || res.len() == 0 || res.index(0) == '1'
+   |                                                 ^^^ not found in this scope
+
+error: aborting due to 7 previous errors
+
+For more information about this error, try `rustc --explain E0425`.

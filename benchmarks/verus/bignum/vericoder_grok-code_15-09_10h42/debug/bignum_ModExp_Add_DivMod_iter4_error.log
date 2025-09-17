@@ -1,0 +1,56 @@
+=== Verification Error - Iteration 4 ===
+File: benchmarks/verus/bignum/files/bignum_ModExp_Add_DivMod.rs
+Time: 2025-09-15 10:52:10
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: [rust_verify/src/rust_to_vir_expr.rs:2915:17] stmt = Stmt {
+    hir_id: HirId(DefId(0:8 ~ bignum_ModExp_Add_DivMod_impl[5871]::Add).79),
+    kind: Item(
+        ItemId {
+            owner_id: DefId(0:10 ~ bignum_ModExp_Add_DivMod_impl[5871]::Add::compute_str_to_nat),
+        },
+    ),
+    span: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_10h42/bignum_ModExp_Add_DivMod_impl.rs:30:5: 38:6 (#0),
+}
+error: The verifier does not yet support the following Rust feature: internal item statements
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_10h42/bignum_ModExp_Add_DivMod_impl.rs:30:5
+   |
+30 | /     fn compute_str_to_nat(s: &[char]) -> u128 {
+31 | |         let mut res: u128 = 0;
+32 | |         let mut pos = s.len();
+33 | |         while pos > 0 {
+...  |
+37 | |         res
+38 | |     }
+   | |_____^
+
+error: aborting due to 1 previous error
+
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+[rust_verify/src/rust_to_vir_expr.rs:2915:17] stmt = Stmt {
+    hir_id: HirId(DefId(0:8 ~ bignum_ModExp_Add_DivMod_impl[5871]::Add).79),
+    kind: Item(
+        ItemId {
+            owner_id: DefId(0:10 ~ bignum_ModExp_Add_DivMod_impl[5871]::Add::compute_str_to_nat),
+        },
+    ),
+    span: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_10h42/bignum_ModExp_Add_DivMod_impl.rs:30:5: 38:6 (#0),
+}
+error: The verifier does not yet support the following Rust feature: internal item statements
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_10h42/bignum_ModExp_Add_DivMod_impl.rs:30:5
+   |
+30 | /     fn compute_str_to_nat(s: &[char]) -> u128 {
+31 | |         let mut res: u128 = 0;
+32 | |         let mut pos = s.len();
+33 | |         while pos > 0 {
+...  |
+37 | |         res
+38 | |     }
+   | |_____^
+
+error: aborting due to 1 previous error
+

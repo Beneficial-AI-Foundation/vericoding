@@ -1,0 +1,116 @@
+=== Verification Error - Iteration 4 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_NormalizeBitString.rs
+Time: 2025-09-14 10:38:10
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Verification failed: verification results:: 4 verified, 2 errors
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_NormalizeBitString_impl.rs:25:57
+   |
+25 | proof fn lemma_validate_not_empty(s: Seq<char>) ensures (Str2Int(s) > 0) == (s.len() > 0) {}
+   |       -----------------------------------------         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+   |       |
+   |       at the end of the function body
+
+note: recommendation not met
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_NormalizeBitString_impl.rs:25:58
+   |
+6  |   recommends ValidBitString(s)
+   |              ----------------- recommendation not met
+...
+25 | proof fn lemma_validate_not_empty(s: Seq<char>) ensures (Str2Int(s) > 0) == (s.len() > 0) {}
+   |                                                          ^^^^^^^^^^
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_NormalizeBitString_impl.rs:29:6
+   |
+29 | exec fn NormalizeBitString(s: &[char]) -> (t: Vec<char>)
+   |      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_NormalizeBitString_impl.rs:30:11
+   |
+30 |   ensures ValidBitString(t@), t@.len() > 0, (t@.len() > 1 ==> t@[0] != '0'), ValidBitString(s@) ==> Str2Int(s@) == Str2Int(t@)
+   |           ^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+59 |     t_vec
+   |     ----- at the end of the function body
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_NormalizeBitString_impl.rs:30:78
+   |
+30 |   ensures ValidBitString(t@), t@.len() > 0, (t@.len() > 1 ==> t@[0] != '0'), ValidBitString(s@) ==> Str2Int(s@) == Str2Int(t@)
+   |                                                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+59 |     t_vec
+   |     ----- at the end of the function body
+
+note: recommendation not met
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_NormalizeBitString_impl.rs:30:116
+   |
+6  |   recommends ValidBitString(s)
+   |              ----------------- recommendation not met
+...
+30 |   ensures ValidBitString(t@), t@.len() > 0, (t@.len() > 1 ==> t@[0] != '0'), ValidBitString(s@) ==> Str2Int(s@) == Str2Int(t@)
+   |                                                                                                                    ^^^^^^^^^^^
+
+error: aborting due to 3 previous errors
+
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+verification results:: 4 verified, 2 errors
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_NormalizeBitString_impl.rs:25:57
+   |
+25 | proof fn lemma_validate_not_empty(s: Seq<char>) ensures (Str2Int(s) > 0) == (s.len() > 0) {}
+   |       -----------------------------------------         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+   |       |
+   |       at the end of the function body
+
+note: recommendation not met
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_NormalizeBitString_impl.rs:25:58
+   |
+6  |   recommends ValidBitString(s)
+   |              ----------------- recommendation not met
+...
+25 | proof fn lemma_validate_not_empty(s: Seq<char>) ensures (Str2Int(s) > 0) == (s.len() > 0) {}
+   |                                                          ^^^^^^^^^^
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_NormalizeBitString_impl.rs:29:6
+   |
+29 | exec fn NormalizeBitString(s: &[char]) -> (t: Vec<char>)
+   |      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_NormalizeBitString_impl.rs:30:11
+   |
+30 |   ensures ValidBitString(t@), t@.len() > 0, (t@.len() > 1 ==> t@[0] != '0'), ValidBitString(s@) ==> Str2Int(s@) == Str2Int(t@)
+   |           ^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+59 |     t_vec
+   |     ----- at the end of the function body
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_NormalizeBitString_impl.rs:30:78
+   |
+30 |   ensures ValidBitString(t@), t@.len() > 0, (t@.len() > 1 ==> t@[0] != '0'), ValidBitString(s@) ==> Str2Int(s@) == Str2Int(t@)
+   |                                                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+59 |     t_vec
+   |     ----- at the end of the function body
+
+note: recommendation not met
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_NormalizeBitString_impl.rs:30:116
+   |
+6  |   recommends ValidBitString(s)
+   |              ----------------- recommendation not met
+...
+30 |   ensures ValidBitString(t@), t@.len() > 0, (t@.len() > 1 ==> t@[0] != '0'), ValidBitString(s@) ==> Str2Int(s@) == Str2Int(t@)
+   |                                                                                                                    ^^^^^^^^^^^
+
+error: aborting due to 3 previous errors
+

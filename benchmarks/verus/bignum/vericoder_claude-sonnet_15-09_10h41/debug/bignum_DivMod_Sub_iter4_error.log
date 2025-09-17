@@ -1,0 +1,228 @@
+=== Verification Error - Iteration 4 ===
+File: benchmarks/verus/bignum/files/bignum_DivMod_Sub.rs
+Time: 2025-09-15 10:52:42
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_DivMod_Sub_impl.rs:87:40
+   |
+87 |                 Str2Int(a@.subrange(0, i)) == Str2Int(b@.subrange(0, i)),
+   |                            --------    ^ expected `int`, found `usize`
+   |                            |
+   |                            arguments to this method are incorrect
+   |
+note: method defined here
+  --> /Users/runner/work/verus/verus/source/vstd/seq.rs:114:26
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_DivMod_Sub_impl.rs:87:70
+   |
+87 |                 Str2Int(a@.subrange(0, i)) == Str2Int(b@.subrange(0, i)),
+   |                                                          --------    ^ expected `int`, found `usize`
+   |                                                          |
+   |                                                          arguments to this method are incorrect
+   |
+note: method defined here
+  --> /Users/runner/work/verus/verus/source/vstd/seq.rs:114:26
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_DivMod_Sub_impl.rs:92:45
+   |
+92 |                     str2int_distributes(a@, i);
+   |                     -------------------     ^ expected `int`, found `usize`
+   |                     |
+   |                     arguments to this function are incorrect
+   |
+note: function defined here
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_DivMod_Sub_impl.rs:25:10
+   |
+25 | proof fn str2int_distributes(s: Seq<char>, i: int)
+   |          ^^^^^^^^^^^^^^^^^^^               ------
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_DivMod_Sub_impl.rs:93:45
+   |
+93 |                     str2int_distributes(b@, i);
+   |                     -------------------     ^ expected `int`, found `usize`
+   |                     |
+   |                     arguments to this function are incorrect
+   |
+note: function defined here
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_DivMod_Sub_impl.rs:25:10
+   |
+25 | proof fn str2int_distributes(s: Seq<char>, i: int)
+   |          ^^^^^^^^^^^^^^^^^^^               ------
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_DivMod_Sub_impl.rs:98:45
+   |
+98 |                     str2int_distributes(a@, i);
+   |                     -------------------     ^ expected `int`, found `usize`
+   |                     |
+   |                     arguments to this function are incorrect
+   |
+note: function defined here
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_DivMod_Sub_impl.rs:25:10
+   |
+25 | proof fn str2int_distributes(s: Seq<char>, i: int)
+   |          ^^^^^^^^^^^^^^^^^^^               ------
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_DivMod_Sub_impl.rs:99:45
+   |
+99 |                     str2int_distributes(b@, i);
+   |                     -------------------     ^ expected `int`, found `usize`
+   |                     |
+   |                     arguments to this function are incorrect
+   |
+note: function defined here
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_DivMod_Sub_impl.rs:25:10
+   |
+25 | proof fn str2int_distributes(s: Seq<char>, i: int)
+   |          ^^^^^^^^^^^^^^^^^^^               ------
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_DivMod_Sub_impl.rs:104:41
+    |
+104 |                 str2int_distributes(a@, i);
+    |                 -------------------     ^ expected `int`, found `usize`
+    |                 |
+    |                 arguments to this function are incorrect
+    |
+note: function defined here
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_DivMod_Sub_impl.rs:25:10
+    |
+25  | proof fn str2int_distributes(s: Seq<char>, i: int)
+    |          ^^^^^^^^^^^^^^^^^^^               ------
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_DivMod_Sub_impl.rs:105:41
+    |
+105 |                 str2int_distributes(b@, i);
+    |                 -------------------     ^ expected `int`, found `usize`
+    |                 |
+    |                 arguments to this function are incorrect
+    |
+note: function defined here
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_DivMod_Sub_impl.rs:25:10
+    |
+25  | proof fn str2int_distributes(s: Seq<char>, i: int)
+    |          ^^^^^^^^^^^^^^^^^^^               ------
+
+error: aborting due to 8 previous errors
+
+For more information about this error, try `rustc --explain E0308`.
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_DivMod_Sub_impl.rs:87:40
+   |
+87 |                 Str2Int(a@.subrange(0, i)) == Str2Int(b@.subrange(0, i)),
+   |                            --------    ^ expected `int`, found `usize`
+   |                            |
+   |                            arguments to this method are incorrect
+   |
+note: method defined here
+  --> /Users/runner/work/verus/verus/source/vstd/seq.rs:114:26
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_DivMod_Sub_impl.rs:87:70
+   |
+87 |                 Str2Int(a@.subrange(0, i)) == Str2Int(b@.subrange(0, i)),
+   |                                                          --------    ^ expected `int`, found `usize`
+   |                                                          |
+   |                                                          arguments to this method are incorrect
+   |
+note: method defined here
+  --> /Users/runner/work/verus/verus/source/vstd/seq.rs:114:26
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_DivMod_Sub_impl.rs:92:45
+   |
+92 |                     str2int_distributes(a@, i);
+   |                     -------------------     ^ expected `int`, found `usize`
+   |                     |
+   |                     arguments to this function are incorrect
+   |
+note: function defined here
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_DivMod_Sub_impl.rs:25:10
+   |
+25 | proof fn str2int_distributes(s: Seq<char>, i: int)
+   |          ^^^^^^^^^^^^^^^^^^^               ------
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_DivMod_Sub_impl.rs:93:45
+   |
+93 |                     str2int_distributes(b@, i);
+   |                     -------------------     ^ expected `int`, found `usize`
+   |                     |
+   |                     arguments to this function are incorrect
+   |
+note: function defined here
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_DivMod_Sub_impl.rs:25:10
+   |
+25 | proof fn str2int_distributes(s: Seq<char>, i: int)
+   |          ^^^^^^^^^^^^^^^^^^^               ------
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_DivMod_Sub_impl.rs:98:45
+   |
+98 |                     str2int_distributes(a@, i);
+   |                     -------------------     ^ expected `int`, found `usize`
+   |                     |
+   |                     arguments to this function are incorrect
+   |
+note: function defined here
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_DivMod_Sub_impl.rs:25:10
+   |
+25 | proof fn str2int_distributes(s: Seq<char>, i: int)
+   |          ^^^^^^^^^^^^^^^^^^^               ------
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_DivMod_Sub_impl.rs:99:45
+   |
+99 |                     str2int_distributes(b@, i);
+   |                     -------------------     ^ expected `int`, found `usize`
+   |                     |
+   |                     arguments to this function are incorrect
+   |
+note: function defined here
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_DivMod_Sub_impl.rs:25:10
+   |
+25 | proof fn str2int_distributes(s: Seq<char>, i: int)
+   |          ^^^^^^^^^^^^^^^^^^^               ------
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_DivMod_Sub_impl.rs:104:41
+    |
+104 |                 str2int_distributes(a@, i);
+    |                 -------------------     ^ expected `int`, found `usize`
+    |                 |
+    |                 arguments to this function are incorrect
+    |
+note: function defined here
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_DivMod_Sub_impl.rs:25:10
+    |
+25  | proof fn str2int_distributes(s: Seq<char>, i: int)
+    |          ^^^^^^^^^^^^^^^^^^^               ------
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_DivMod_Sub_impl.rs:105:41
+    |
+105 |                 str2int_distributes(b@, i);
+    |                 -------------------     ^ expected `int`, found `usize`
+    |                 |
+    |                 arguments to this function are incorrect
+    |
+note: function defined here
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_DivMod_Sub_impl.rs:25:10
+    |
+25  | proof fn str2int_distributes(s: Seq<char>, i: int)
+    |          ^^^^^^^^^^^^^^^^^^^               ------
+
+error: aborting due to 8 previous errors
+
+For more information about this error, try `rustc --explain E0308`.

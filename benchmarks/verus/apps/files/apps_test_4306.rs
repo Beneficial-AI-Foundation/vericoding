@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(a: int, b: int, c: int, d: int) -> bool {
     0 <= a < b <= 100 && 0 <= c < d <= 100
 }
@@ -20,6 +17,9 @@ spec fn max(x: int, y: int) -> int {
 spec fn interval_overlap_length(a: int, b: int, c: int, d: int) -> int {
     if min(b, d) - max(a, c) > 0 { min(b, d) - max(a, c) } else { 0 }
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

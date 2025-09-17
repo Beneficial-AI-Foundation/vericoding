@@ -6,8 +6,6 @@ vc-preamble: |-
   use vstd::prelude::*;
 
   verus! {
-
-vc-helpers: |-
   spec fn valid_input(coins: Seq<int>) -> bool {
       coins.len() == 5 && forall|i: int| 0 <= i < coins.len() ==> 0 <= coins[i] <= 100
   }
@@ -32,6 +30,8 @@ vc-helpers: |-
       if total > 0 && total % 5 == 0 { total / 5 } else { -1 }
   }
 
+vc-helpers: |
+
 vc-spec: |-
   fn solve(coins: Seq<int>) -> (result: int)
     requires
@@ -49,7 +49,7 @@ vc-code: |-
       // impl-end
   }
 
-vc-postamble: |-
+vc-postamble: |2-
 
   }
 

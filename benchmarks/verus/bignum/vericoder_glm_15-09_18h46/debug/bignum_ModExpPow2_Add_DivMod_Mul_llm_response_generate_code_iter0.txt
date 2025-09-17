@@ -1,0 +1,9 @@
+=== LLM Response - generate_code - Iteration 0 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExpPow2_Add_DivMod_Mul.rs
+Prompt Hash: d7aba4fa
+JSON Parsed Successfully: True
+Timestamp: 1757957831.6270442
+Content Length: 1313 chars
+--------------------------------------------------------------------------------
+["exec fn Str2Int_exec(s: &Vec<char>) -> (n: nat)\n  requires ValidBitString(s@)\n  ensures n == Str2Int(s@)\n{\n  let mut n = 0;\n  for i in 0..s.len()\n      invariant n == Str2Int(s@.subrange(0, i as int))\n  {\n      let c = s[i];\n      if c == '1' {\n          n = n * 2 + 1;\n      } else {\n          n = n * 2;\n      }\n  }\n  n\n}\n\nexec fn Int2BitString(n: nat, L: nat) -> (s: Vec<char>)\n  ensures s@.len() == L,\n  ensures ValidBitString(s@),\n  ensures Str2Int(s@) == n % (2 as nat ^ L)\n{\n  let m = n % (2 as nat ^ L);\n  let mut n_remaining = m;\n  let mut bits_value = 0;\n  let mut bits = Vec::new();\n  for i in 0..L\n      invariant 0 <= i <= L,\n      invariant bits.len() == i,\n      invariant n_remaining * (2 as nat ^ i) + bits_value == m,\n      invariant forall |j: int| 0 <= j < i ==> (bits[j] == '0' || bits[j] == '1')\n  {\n      let bit = n_remaining % 2;\n      n_remaining = n_remaining / 2;\n      let power = 2 as nat ^ i;\n      if bit == 1 {\n          bits.push('1');\n          bits_value = bits_value + power;\n      } else {\n          bits.push('0');\n      }\n  }\n  bits.reverse();\n  bits\n}", "{\n  let n_a = Str2Int_exec(a);\n  let n_b = Str2Int_exec(b);\n  let sum = n_a + n_b;\n  let L = a.len().max(b.len()) + 1;\n  let res = Int2BitString(sum, L);\n  res\n}"]
+--------------------------------------------------------------------------------

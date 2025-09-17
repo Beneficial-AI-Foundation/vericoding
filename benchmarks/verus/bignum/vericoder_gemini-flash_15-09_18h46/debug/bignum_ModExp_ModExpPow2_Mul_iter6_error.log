@@ -1,0 +1,127 @@
+=== Verification Error - Iteration 6 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExp_ModExpPow2_Mul.rs
+Time: 2025-09-15 18:59:41
+
+Full Error Output:
+--------------------------------------------------------------------------------
+VERIFICATION BYPASSES DETECTED: uses 'assume' to bypass verification. Code contains verification bypasses and cannot be considered successfully verified.
+
+Original verification output:
+Compilation failed: error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_ModExpPow2_Mul_impl.rs:27:18
+   |
+25 | proof fn pow_properties_generic<F: vstd::prelude::SpecOrd + vstd::prelude::SpecMul + vstd::prelude::SpecEuclideanMod + vstd::prelude::SpecAdd>(x: F, y: F, modVal: F)
+   |                                 - expected this type parameter
+26 |     requires
+27 |         modVal > 1
+   |         ---------^
+   |         |        |
+   |         |        expected type parameter `F`, found `nat`
+   |         arguments to this method are incorrect
+   |
+   = note: expected type parameter `F`
+                      found struct `vstd::prelude::nat`
+note: method defined here
+  --> /Users/runner/work/verus/verus/source/builtin/src/lib.rs:1002:8
+
+error[E0599]: no method named `spec_euclidean_mod` found for associated type `<F as vstd::prelude::SpecMul>::Output` in the current scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_ModExpPow2_Mul_impl.rs:29:9
+   |
+29 |         (x * y) % modVal == ((x % modVal) * (y % modVal)) % modVal,
+   |         ^-^^^^^^^^^^^^^^
+   |         ||
+   |         |method `spec_euclidean_mod` is available on `F`
+   |         method not found in `<F as SpecMul>::Output`
+
+error[E0599]: no method named `spec_mul` found for associated type `<F as vstd::prelude::SpecEuclideanMod>::Output` in the current scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_ModExpPow2_Mul_impl.rs:29:30
+   |
+29 |         (x * y) % modVal == ((x % modVal) * (y % modVal)) % modVal,
+   |                              ^-^^^^^^^^^^^^^^^^^^^^^^^^^
+   |                              ||
+   |                              |method `spec_mul` is available on `F`
+   |                              method not found in `<F as SpecEuclideanMod>::Output`
+
+error[E0599]: no method named `spec_euclidean_mod` found for associated type `<F as vstd::prelude::SpecAdd>::Output` in the current scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_ModExpPow2_Mul_impl.rs:30:9
+   |
+30 |         (x + y) % modVal == ((x % modVal) + (y % modVal)) % modVal
+   |         ^-^^^^^^^^^^^^^^
+   |         ||
+   |         |method `spec_euclidean_mod` is available on `F`
+   |         method not found in `<F as SpecAdd>::Output`
+
+error[E0599]: no method named `spec_add` found for associated type `<F as vstd::prelude::SpecEuclideanMod>::Output` in the current scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_ModExpPow2_Mul_impl.rs:30:30
+   |
+30 |         (x + y) % modVal == ((x % modVal) + (y % modVal)) % modVal
+   |                              ^-^^^^^^^^^^^^^^^^^^^^^^^^^
+   |                              ||
+   |                              |method `spec_add` is available on `F`
+   |                              method not found in `<F as SpecEuclideanMod>::Output`
+
+error: aborting due to 5 previous errors
+
+Some errors have detailed explanations: E0308, E0599.
+For more information about an error, try `rustc --explain E0308`.
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_ModExpPow2_Mul_impl.rs:27:18
+   |
+25 | proof fn pow_properties_generic<F: vstd::prelude::SpecOrd + vstd::prelude::SpecMul + vstd::prelude::SpecEuclideanMod + vstd::prelude::SpecAdd>(x: F, y: F, modVal: F)
+   |                                 - expected this type parameter
+26 |     requires
+27 |         modVal > 1
+   |         ---------^
+   |         |        |
+   |         |        expected type parameter `F`, found `nat`
+   |         arguments to this method are incorrect
+   |
+   = note: expected type parameter `F`
+                      found struct `vstd::prelude::nat`
+note: method defined here
+  --> /Users/runner/work/verus/verus/source/builtin/src/lib.rs:1002:8
+
+error[E0599]: no method named `spec_euclidean_mod` found for associated type `<F as vstd::prelude::SpecMul>::Output` in the current scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_ModExpPow2_Mul_impl.rs:29:9
+   |
+29 |         (x * y) % modVal == ((x % modVal) * (y % modVal)) % modVal,
+   |         ^-^^^^^^^^^^^^^^
+   |         ||
+   |         |method `spec_euclidean_mod` is available on `F`
+   |         method not found in `<F as SpecMul>::Output`
+
+error[E0599]: no method named `spec_mul` found for associated type `<F as vstd::prelude::SpecEuclideanMod>::Output` in the current scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_ModExpPow2_Mul_impl.rs:29:30
+   |
+29 |         (x * y) % modVal == ((x % modVal) * (y % modVal)) % modVal,
+   |                              ^-^^^^^^^^^^^^^^^^^^^^^^^^^
+   |                              ||
+   |                              |method `spec_mul` is available on `F`
+   |                              method not found in `<F as SpecEuclideanMod>::Output`
+
+error[E0599]: no method named `spec_euclidean_mod` found for associated type `<F as vstd::prelude::SpecAdd>::Output` in the current scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_ModExpPow2_Mul_impl.rs:30:9
+   |
+30 |         (x + y) % modVal == ((x % modVal) + (y % modVal)) % modVal
+   |         ^-^^^^^^^^^^^^^^
+   |         ||
+   |         |method `spec_euclidean_mod` is available on `F`
+   |         method not found in `<F as SpecAdd>::Output`
+
+error[E0599]: no method named `spec_add` found for associated type `<F as vstd::prelude::SpecEuclideanMod>::Output` in the current scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_ModExpPow2_Mul_impl.rs:30:30
+   |
+30 |         (x + y) % modVal == ((x % modVal) + (y % modVal)) % modVal
+   |                              ^-^^^^^^^^^^^^^^^^^^^^^^^^^
+   |                              ||
+   |                              |method `spec_add` is available on `F`
+   |                              method not found in `<F as SpecEuclideanMod>::Output`
+
+error: aborting due to 5 previous errors
+
+Some errors have detailed explanations: E0308, E0599.
+For more information about an error, try `rustc --explain E0308`.

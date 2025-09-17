@@ -1,0 +1,80 @@
+=== Verification Error - Iteration 4 ===
+File: benchmarks/verus/bignum/files/bignum_ModExp_Add_ModExpPow2_Mul_Zeroes.rs
+Time: 2025-09-15 10:48:27
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: error[E0425]: cannot find function `pow` in module `vstd::math`
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_ModExp_Add_ModExpPow2_Mul_Zeroes_impl.rs:25:76
+   |
+25 | spec fn is_power_of_two(n: nat) -> bool { exists |k: nat| n == vstd::math::pow(2, k) }
+   |                                                                            ^^^ not found in `vstd::math`
+   |
+help: consider importing this function
+   |
+1  + use vstd::arithmetic::power::pow;
+   |
+help: if you import `pow`, refer to it directly
+   |
+25 - spec fn is_power_of_two(n: nat) -> bool { exists |k: nat| n == vstd::math::pow(2, k) }
+25 + spec fn is_power_of_two(n: nat) -> bool { exists |k: nat| n == pow(2, k) }
+   |
+
+error[E0425]: cannot find function `pow` in module `vstd::math`
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_ModExp_Add_ModExpPow2_Mul_Zeroes_impl.rs:56:48
+   |
+56 |             Str2Int(result_vec@) * vstd::math::pow(2, result_vec.len() as nat) + temp_sum == sum,
+   |                                                ^^^ not found in `vstd::math`
+   |
+help: consider importing this function
+   |
+1  + use vstd::arithmetic::power::pow;
+   |
+help: if you import `pow`, refer to it directly
+   |
+56 -             Str2Int(result_vec@) * vstd::math::pow(2, result_vec.len() as nat) + temp_sum == sum,
+56 +             Str2Int(result_vec@) * pow(2, result_vec.len() as nat) + temp_sum == sum,
+   |
+
+error: aborting due to 2 previous errors
+
+For more information about this error, try `rustc --explain E0425`.
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+error[E0425]: cannot find function `pow` in module `vstd::math`
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_ModExp_Add_ModExpPow2_Mul_Zeroes_impl.rs:25:76
+   |
+25 | spec fn is_power_of_two(n: nat) -> bool { exists |k: nat| n == vstd::math::pow(2, k) }
+   |                                                                            ^^^ not found in `vstd::math`
+   |
+help: consider importing this function
+   |
+1  + use vstd::arithmetic::power::pow;
+   |
+help: if you import `pow`, refer to it directly
+   |
+25 - spec fn is_power_of_two(n: nat) -> bool { exists |k: nat| n == vstd::math::pow(2, k) }
+25 + spec fn is_power_of_two(n: nat) -> bool { exists |k: nat| n == pow(2, k) }
+   |
+
+error[E0425]: cannot find function `pow` in module `vstd::math`
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_ModExp_Add_ModExpPow2_Mul_Zeroes_impl.rs:56:48
+   |
+56 |             Str2Int(result_vec@) * vstd::math::pow(2, result_vec.len() as nat) + temp_sum == sum,
+   |                                                ^^^ not found in `vstd::math`
+   |
+help: consider importing this function
+   |
+1  + use vstd::arithmetic::power::pow;
+   |
+help: if you import `pow`, refer to it directly
+   |
+56 -             Str2Int(result_vec@) * vstd::math::pow(2, result_vec.len() as nat) + temp_sum == sum,
+56 +             Str2Int(result_vec@) * pow(2, result_vec.len() as nat) + temp_sum == sum,
+   |
+
+error: aborting due to 2 previous errors
+
+For more information about this error, try `rustc --explain E0425`.

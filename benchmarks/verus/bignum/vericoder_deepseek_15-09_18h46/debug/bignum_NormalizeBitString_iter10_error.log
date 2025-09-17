@@ -1,0 +1,268 @@
+=== Verification Error - Iteration 10 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_NormalizeBitString.rs
+Time: 2025-09-15 18:51:09
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Verification failed: verification results:: 4 verified, 5 errors
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_NormalizeBitString_impl.rs:25:7
+   |
+25 | proof fn lemma_str2int_single_char(c: char)
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: assertion failed
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_NormalizeBitString_impl.rs:33:16
+   |
+33 |         assert(Str2Int(Seq::new(1, |i: int| c)) == 1nat);
+   |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ assertion failed
+
+error: assertion failed
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_NormalizeBitString_impl.rs:35:16
+   |
+35 |         assert(Str2Int(Seq::new(1, |i: int| c)) == 0nat);
+   |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ assertion failed
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_NormalizeBitString_impl.rs:39:7
+   |
+39 | proof fn lemma_str2int_cons_zero(s: Seq<char>)
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: assertion failed
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_NormalizeBitString_impl.rs:47:16
+   |
+47 |         assert(Str2Int(s.push('0')) == 0nat);
+   |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^ assertion failed
+
+error: assertion failed
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_NormalizeBitString_impl.rs:53:16
+   |
+53 |         assert(Str2Int(s.push('0')) == 2 * Str2Int(s) + (if '0' == '1' { 1nat } else { 0nat }));
+   |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ assertion failed
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_NormalizeBitString_impl.rs:57:7
+   |
+57 | proof fn lemma_str2int_cons_one(s: Seq<char>)
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: assertion failed
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_NormalizeBitString_impl.rs:65:16
+   |
+65 |         assert(Str2Int(s.push('1')) == 1nat);
+   |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^ assertion failed
+
+error: assertion failed
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_NormalizeBitString_impl.rs:71:16
+   |
+71 |         assert(Str2Int(s.push('1')) == 2 * Str2Int(s) + 1nat);
+   |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ assertion failed
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_NormalizeBitString_impl.rs:75:7
+   |
+75 | proof fn lemma_str2int_leading_zero(s: Seq<char>)
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_NormalizeBitString_impl.rs:81:9
+   |
+81 |           Str2Int(s) == Str2Int(s.drop_first())
+   |           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+84 | /     if s.len() == 2 {
+85 | |         let first = s[0];
+86 | |         let second = s[1];
+87 | |         assert(Str2Int(s) == 2 * Str2Int(Seq::new(1, |i: int| first)) + (if second == '1' { 1nat } else { 0nat }));
+...  |
+94 | |         assert(Str2Int(rest) == 2 * Str2Int(rest.subrange(0, rest.len() as int - 1)) + (if rest.index(rest.len() as int - 1) == '1' { 1nat } else { 0nat }));
+95 | |     }
+   | |_____- at the end of the function body
+
+error: assertion failed
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_NormalizeBitString_impl.rs:87:16
+   |
+87 |         assert(Str2Int(s) == 2 * Str2Int(Seq::new(1, |i: int| first)) + (if second == '1' { 1nat } else { 0nat }));
+   |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ assertion failed
+
+error: precondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_NormalizeBitString_impl.rs:92:9
+   |
+79 |         s[0] == '0'
+   |         ----------- failed precondition
+...
+92 |         lemma_str2int_leading_zero(rest);
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_NormalizeBitString_impl.rs:100:6
+    |
+100 | exec fn NormalizeBitString(s: &[char]) -> (t: Vec<char>)
+    |      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_NormalizeBitString_impl.rs:101:11
+    |
+101 |     ensures ValidBitString(t@), t@.len() > 0, (t@.len() > 1 ==> t@[0] != '0'), ValidBitString(s@) ==> Str2Int(s@) == Str2Int(t@)
+    |             ^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+121 | /     if i == s.len() {
+122 | |         let mut result = Vec::<char>::new();
+123 | |         result.push('0');
+124 | |         result
+...   |
+139 | |         result
+140 | |     }
+    | |_____- at the end of the function body
+
+error: postcondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_NormalizeBitString_impl.rs:101:78
+    |
+101 |     ensures ValidBitString(t@), t@.len() > 0, (t@.len() > 1 ==> t@[0] != '0'), ValidBitString(s@) ==> Str2Int(s@) == Str2Int(t@)
+    |                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+121 | /     if i == s.len() {
+122 | |         let mut result = Vec::<char>::new();
+123 | |         result.push('0');
+124 | |         result
+...   |
+139 | |         result
+140 | |     }
+    | |_____- at the end of the function body
+
+error: aborting due to 11 previous errors
+
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+verification results:: 4 verified, 5 errors
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_NormalizeBitString_impl.rs:25:7
+   |
+25 | proof fn lemma_str2int_single_char(c: char)
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: assertion failed
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_NormalizeBitString_impl.rs:33:16
+   |
+33 |         assert(Str2Int(Seq::new(1, |i: int| c)) == 1nat);
+   |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ assertion failed
+
+error: assertion failed
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_NormalizeBitString_impl.rs:35:16
+   |
+35 |         assert(Str2Int(Seq::new(1, |i: int| c)) == 0nat);
+   |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ assertion failed
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_NormalizeBitString_impl.rs:39:7
+   |
+39 | proof fn lemma_str2int_cons_zero(s: Seq<char>)
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: assertion failed
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_NormalizeBitString_impl.rs:47:16
+   |
+47 |         assert(Str2Int(s.push('0')) == 0nat);
+   |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^ assertion failed
+
+error: assertion failed
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_NormalizeBitString_impl.rs:53:16
+   |
+53 |         assert(Str2Int(s.push('0')) == 2 * Str2Int(s) + (if '0' == '1' { 1nat } else { 0nat }));
+   |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ assertion failed
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_NormalizeBitString_impl.rs:57:7
+   |
+57 | proof fn lemma_str2int_cons_one(s: Seq<char>)
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: assertion failed
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_NormalizeBitString_impl.rs:65:16
+   |
+65 |         assert(Str2Int(s.push('1')) == 1nat);
+   |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^ assertion failed
+
+error: assertion failed
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_NormalizeBitString_impl.rs:71:16
+   |
+71 |         assert(Str2Int(s.push('1')) == 2 * Str2Int(s) + 1nat);
+   |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ assertion failed
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_NormalizeBitString_impl.rs:75:7
+   |
+75 | proof fn lemma_str2int_leading_zero(s: Seq<char>)
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_NormalizeBitString_impl.rs:81:9
+   |
+81 |           Str2Int(s) == Str2Int(s.drop_first())
+   |           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+84 | /     if s.len() == 2 {
+85 | |         let first = s[0];
+86 | |         let second = s[1];
+87 | |         assert(Str2Int(s) == 2 * Str2Int(Seq::new(1, |i: int| first)) + (if second == '1' { 1nat } else { 0nat }));
+...  |
+94 | |         assert(Str2Int(rest) == 2 * Str2Int(rest.subrange(0, rest.len() as int - 1)) + (if rest.index(rest.len() as int - 1) == '1' { 1nat } else { 0nat }));
+95 | |     }
+   | |_____- at the end of the function body
+
+error: assertion failed
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_NormalizeBitString_impl.rs:87:16
+   |
+87 |         assert(Str2Int(s) == 2 * Str2Int(Seq::new(1, |i: int| first)) + (if second == '1' { 1nat } else { 0nat }));
+   |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ assertion failed
+
+error: precondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_NormalizeBitString_impl.rs:92:9
+   |
+79 |         s[0] == '0'
+   |         ----------- failed precondition
+...
+92 |         lemma_str2int_leading_zero(rest);
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_NormalizeBitString_impl.rs:100:6
+    |
+100 | exec fn NormalizeBitString(s: &[char]) -> (t: Vec<char>)
+    |      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_NormalizeBitString_impl.rs:101:11
+    |
+101 |     ensures ValidBitString(t@), t@.len() > 0, (t@.len() > 1 ==> t@[0] != '0'), ValidBitString(s@) ==> Str2Int(s@) == Str2Int(t@)
+    |             ^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+121 | /     if i == s.len() {
+122 | |         let mut result = Vec::<char>::new();
+123 | |         result.push('0');
+124 | |         result
+...   |
+139 | |         result
+140 | |     }
+    | |_____- at the end of the function body
+
+error: postcondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_NormalizeBitString_impl.rs:101:78
+    |
+101 |     ensures ValidBitString(t@), t@.len() > 0, (t@.len() > 1 ==> t@[0] != '0'), ValidBitString(s@) ==> Str2Int(s@) == Str2Int(t@)
+    |                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+121 | /     if i == s.len() {
+122 | |         let mut result = Vec::<char>::new();
+123 | |         result.push('0');
+124 | |         result
+...   |
+139 | |         result
+140 | |     }
+    | |_____- at the end of the function body
+
+error: aborting due to 11 previous errors
+

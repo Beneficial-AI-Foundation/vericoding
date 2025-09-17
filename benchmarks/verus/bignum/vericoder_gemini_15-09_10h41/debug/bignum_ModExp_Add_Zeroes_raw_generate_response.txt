@@ -1,0 +1,6 @@
+=== Raw LLM Generate Response ===
+Length: 765 characters
+--------------------------------------------------------------------------------
+```json
+["proof fn lemma_exp_is_add(x: nat, y1: nat, y2: nat) \n    ensures Exp_int(x, y1 + y2) == Exp_int(x, y1) * Exp_int(x, y2)\n    decreases y2\n{\n    if y2 > 0 {\n        lemma_exp_is_add(x, y1, (y2-1) as nat);\n    }\n}\n\nproof fn lemma_mod_mul(a: int, b: int, m: int)\n    requires m > 0\n    ensures (a * b) % m == ((a % m) * (b % m)) % m\n{}\n\nexec fn Str2Int_exec(s: &[char]) -> (res: nat)\n    requires ValidBitString(s@)\n    ensures res == Str2Int(s@)\n{\n    let mut i: usize = 0;\n    let mut res: nat = 0;\n    while i < s.len()\n        invariant \n            i <= s.len(),\n            res == Str2Int(s@.subrange(0, i as int)),\n    {\n        let digit = if s[i] == '1' { 1 } else { 0 };\n        let prev_res = res;\n        res = res * 2 +
+--------------------------------------------------------------------------------

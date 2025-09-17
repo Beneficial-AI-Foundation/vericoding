@@ -1,0 +1,164 @@
+=== Verification Error - Iteration 5 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_Mul_NormalizeBitString.rs
+Time: 2025-09-15 18:58:18
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Verification failed: verification results:: 7 verified, 6 errors
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_Mul_NormalizeBitString_impl.rs:36:13
+   |
+34 | proof fn lemma_str2int_append_zero(s: Seq<char>)
+   |       ------------------------------------------ at the end of the function body
+35 |     requires ValidBitString(s)
+36 |     ensures Str2Int(s.push('0')) == 2 * Str2Int(s)
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_Mul_NormalizeBitString_impl.rs:42:13
+   |
+40 | proof fn lemma_str2int_append_one(s: Seq<char>)
+   |       ----------------------------------------- at the end of the function body
+41 |     requires ValidBitString(s)
+42 |     ensures Str2Int(s.push('1')) == 2 * Str2Int(s) + 1
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_Mul_NormalizeBitString_impl.rs:53:13
+   |
+52 | proof fn lemma_str2int_zero()
+   |       ----------------------- at the end of the function body
+53 |     ensures Str2Int(seq!['0']) == 0
+   |             ^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_Mul_NormalizeBitString_impl.rs:115:13
+    |
+115 |             while k < max_len || carry > 0
+    |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_Mul_NormalizeBitString_impl.rs:65:6
+   |
+65 | exec fn Mul_NormalizeBitString(s1: &[char], s2: &[char]) -> (res: Vec<char>)
+   |      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_Mul_NormalizeBitString_impl.rs:67:33
+   |
+67 |   ensures ValidBitString(res@), Str2Int(res@) == Str2Int(s1@) * Str2Int(s2@)
+   |                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+73 |         return vec!['0'];
+   |         ---------------- at this exit
+
+error: postcondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_Mul_NormalizeBitString_impl.rs:67:33
+    |
+67  |   ensures ValidBitString(res@), Str2Int(res@) == Str2Int(s1@) * Str2Int(s2@)
+    |                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+135 |     result
+    |     ------ at the end of the function body
+
+error: invariant not satisfied at end of loop body
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_Mul_NormalizeBitString_impl.rs:103:21
+    |
+103 |                     ValidBitString(shifted_s1@),
+    |                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: decreases not satisfied at end of loop
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_Mul_NormalizeBitString_impl.rs:115:13
+    |
+115 |             while k < max_len || carry > 0
+    |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_Mul_NormalizeBitString_impl.rs:127:17
+    |
+127 |                 k += 1;
+    |                 ^^^^^^
+
+error: aborting due to 8 previous errors
+
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+verification results:: 7 verified, 6 errors
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_Mul_NormalizeBitString_impl.rs:36:13
+   |
+34 | proof fn lemma_str2int_append_zero(s: Seq<char>)
+   |       ------------------------------------------ at the end of the function body
+35 |     requires ValidBitString(s)
+36 |     ensures Str2Int(s.push('0')) == 2 * Str2Int(s)
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_Mul_NormalizeBitString_impl.rs:42:13
+   |
+40 | proof fn lemma_str2int_append_one(s: Seq<char>)
+   |       ----------------------------------------- at the end of the function body
+41 |     requires ValidBitString(s)
+42 |     ensures Str2Int(s.push('1')) == 2 * Str2Int(s) + 1
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_Mul_NormalizeBitString_impl.rs:53:13
+   |
+52 | proof fn lemma_str2int_zero()
+   |       ----------------------- at the end of the function body
+53 |     ensures Str2Int(seq!['0']) == 0
+   |             ^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_Mul_NormalizeBitString_impl.rs:115:13
+    |
+115 |             while k < max_len || carry > 0
+    |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_Mul_NormalizeBitString_impl.rs:65:6
+   |
+65 | exec fn Mul_NormalizeBitString(s1: &[char], s2: &[char]) -> (res: Vec<char>)
+   |      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_Mul_NormalizeBitString_impl.rs:67:33
+   |
+67 |   ensures ValidBitString(res@), Str2Int(res@) == Str2Int(s1@) * Str2Int(s2@)
+   |                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+73 |         return vec!['0'];
+   |         ---------------- at this exit
+
+error: postcondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_Mul_NormalizeBitString_impl.rs:67:33
+    |
+67  |   ensures ValidBitString(res@), Str2Int(res@) == Str2Int(s1@) * Str2Int(s2@)
+    |                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+135 |     result
+    |     ------ at the end of the function body
+
+error: invariant not satisfied at end of loop body
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_Mul_NormalizeBitString_impl.rs:103:21
+    |
+103 |                     ValidBitString(shifted_s1@),
+    |                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: decreases not satisfied at end of loop
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_Mul_NormalizeBitString_impl.rs:115:13
+    |
+115 |             while k < max_len || carry > 0
+    |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_Mul_NormalizeBitString_impl.rs:127:17
+    |
+127 |                 k += 1;
+    |                 ^^^^^^
+
+error: aborting due to 8 previous errors
+

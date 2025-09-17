@@ -34,12 +34,12 @@ vc-spec: |-
       ensures 
           result >= 0,
           result == min_operations_needed(a, b, c),
-          (result == 0) <==> is_triangle(a, b, c)
+          result == 0 <==> is_triangle(a, b, c)
 
 vc-code: |-
   {
       assume(false);
-      0
+      unreached()
   }
 
 vc-postamble: |-

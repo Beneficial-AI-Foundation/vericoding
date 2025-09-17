@@ -1,0 +1,258 @@
+=== Verification Error - Iteration 1 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_CompareUnequal.rs
+Time: 2025-09-15 20:18:12
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: error[E0425]: cannot find function `pow2` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_CompareUnequal_impl.rs:20:25
+   |
+20 |   ensures Str2Int(s) >= pow2(s.len() as nat - 1) 
+   |                         ^^^^ not found in this scope
+   |
+help: consider importing this function
+   |
+1  + use vstd::arithmetic::power2::pow2;
+   |
+
+error[E0425]: cannot find function `pow2` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_CompareUnequal_impl.rs:24:12
+   |
+24 |     assert(pow2(0) == 1nat);
+   |            ^^^^ not found in this scope
+   |
+help: consider importing this function
+   |
+1  + use vstd::arithmetic::power2::pow2;
+   |
+
+error[E0425]: cannot find function `pow2` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_CompareUnequal_impl.rs:30:28
+   |
+30 |     assert(Str2Int(sub) >= pow2(sub.len() as nat - 1));
+   |                            ^^^^ not found in this scope
+   |
+help: consider importing this function
+   |
+1  + use vstd::arithmetic::power2::pow2;
+   |
+
+error[E0425]: cannot find function `pow2` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_CompareUnequal_impl.rs:31:23
+   |
+31 |     assert(val >= 2 * pow2(sub.len() as nat - 1));
+   |                       ^^^^ not found in this scope
+   |
+help: consider importing this function
+   |
+1  + use vstd::arithmetic::power2::pow2;
+   |
+
+error[E0425]: cannot find function `pow2` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_CompareUnequal_impl.rs:32:19
+   |
+32 |     assert(val >= pow2(s.len() as nat - 1));
+   |                   ^^^^ not found in this scope
+   |
+help: consider importing this function
+   |
+1  + use vstd::arithmetic::power2::pow2;
+   |
+
+error[E0425]: cannot find function `pow2` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_CompareUnequal_impl.rs:38:11
+   |
+38 |   ensures pow2(a) < pow2(b)
+   |           ^^^^ not found in this scope
+   |
+help: consider importing this function
+   |
+1  + use vstd::arithmetic::power2::pow2;
+   |
+
+error[E0425]: cannot find function `pow2` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_CompareUnequal_impl.rs:38:21
+   |
+38 |   ensures pow2(a) < pow2(b)
+   |                     ^^^^ not found in this scope
+   |
+help: consider importing this function
+   |
+1  + use vstd::arithmetic::power2::pow2;
+   |
+
+error[E0425]: cannot find function `pow2` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_CompareUnequal_impl.rs:41:12
+   |
+41 |     assert(pow2(b) == 2 * pow2(a));
+   |            ^^^^ not found in this scope
+   |
+help: consider importing this function
+   |
+1  + use vstd::arithmetic::power2::pow2;
+   |
+
+error[E0425]: cannot find function `pow2` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_CompareUnequal_impl.rs:41:27
+   |
+41 |     assert(pow2(b) == 2 * pow2(a));
+   |                           ^^^^ not found in this scope
+   |
+help: consider importing this function
+   |
+1  + use vstd::arithmetic::power2::pow2;
+   |
+
+error[E0425]: cannot find function `pow2` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_CompareUnequal_impl.rs:66:28
+   |
+66 |     assert(Str2Int(s1@) >= pow2(s1@.len() as nat - 1));
+   |                            ^^^^ not found in this scope
+   |
+help: consider importing this function
+   |
+1  + use vstd::arithmetic::power2::pow2;
+   |
+
+error[E0425]: cannot find function `pow2` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_CompareUnequal_impl.rs:67:27
+   |
+67 |     assert(Str2Int(s2@) < pow2(s2@.len() as nat));
+   |                           ^^^^ not found in this scope
+   |
+help: consider importing this function
+   |
+1  + use vstd::arithmetic::power2::pow2;
+   |
+
+error: aborting due to 11 previous errors
+
+For more information about this error, try `rustc --explain E0425`.
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+error[E0425]: cannot find function `pow2` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_CompareUnequal_impl.rs:20:25
+   |
+20 |   ensures Str2Int(s) >= pow2(s.len() as nat - 1) 
+   |                         ^^^^ not found in this scope
+   |
+help: consider importing this function
+   |
+1  + use vstd::arithmetic::power2::pow2;
+   |
+
+error[E0425]: cannot find function `pow2` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_CompareUnequal_impl.rs:24:12
+   |
+24 |     assert(pow2(0) == 1nat);
+   |            ^^^^ not found in this scope
+   |
+help: consider importing this function
+   |
+1  + use vstd::arithmetic::power2::pow2;
+   |
+
+error[E0425]: cannot find function `pow2` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_CompareUnequal_impl.rs:30:28
+   |
+30 |     assert(Str2Int(sub) >= pow2(sub.len() as nat - 1));
+   |                            ^^^^ not found in this scope
+   |
+help: consider importing this function
+   |
+1  + use vstd::arithmetic::power2::pow2;
+   |
+
+error[E0425]: cannot find function `pow2` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_CompareUnequal_impl.rs:31:23
+   |
+31 |     assert(val >= 2 * pow2(sub.len() as nat - 1));
+   |                       ^^^^ not found in this scope
+   |
+help: consider importing this function
+   |
+1  + use vstd::arithmetic::power2::pow2;
+   |
+
+error[E0425]: cannot find function `pow2` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_CompareUnequal_impl.rs:32:19
+   |
+32 |     assert(val >= pow2(s.len() as nat - 1));
+   |                   ^^^^ not found in this scope
+   |
+help: consider importing this function
+   |
+1  + use vstd::arithmetic::power2::pow2;
+   |
+
+error[E0425]: cannot find function `pow2` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_CompareUnequal_impl.rs:38:11
+   |
+38 |   ensures pow2(a) < pow2(b)
+   |           ^^^^ not found in this scope
+   |
+help: consider importing this function
+   |
+1  + use vstd::arithmetic::power2::pow2;
+   |
+
+error[E0425]: cannot find function `pow2` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_CompareUnequal_impl.rs:38:21
+   |
+38 |   ensures pow2(a) < pow2(b)
+   |                     ^^^^ not found in this scope
+   |
+help: consider importing this function
+   |
+1  + use vstd::arithmetic::power2::pow2;
+   |
+
+error[E0425]: cannot find function `pow2` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_CompareUnequal_impl.rs:41:12
+   |
+41 |     assert(pow2(b) == 2 * pow2(a));
+   |            ^^^^ not found in this scope
+   |
+help: consider importing this function
+   |
+1  + use vstd::arithmetic::power2::pow2;
+   |
+
+error[E0425]: cannot find function `pow2` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_CompareUnequal_impl.rs:41:27
+   |
+41 |     assert(pow2(b) == 2 * pow2(a));
+   |                           ^^^^ not found in this scope
+   |
+help: consider importing this function
+   |
+1  + use vstd::arithmetic::power2::pow2;
+   |
+
+error[E0425]: cannot find function `pow2` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_CompareUnequal_impl.rs:66:28
+   |
+66 |     assert(Str2Int(s1@) >= pow2(s1@.len() as nat - 1));
+   |                            ^^^^ not found in this scope
+   |
+help: consider importing this function
+   |
+1  + use vstd::arithmetic::power2::pow2;
+   |
+
+error[E0425]: cannot find function `pow2` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_CompareUnequal_impl.rs:67:27
+   |
+67 |     assert(Str2Int(s2@) < pow2(s2@.len() as nat));
+   |                           ^^^^ not found in this scope
+   |
+help: consider importing this function
+   |
+1  + use vstd::arithmetic::power2::pow2;
+   |
+
+error: aborting due to 11 previous errors
+
+For more information about this error, try `rustc --explain E0425`.

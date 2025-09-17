@@ -1,4 +1,3 @@
-namespace NpPoly
 
 def poly_helper {n : Nat} (roots : Vector Float n) (val : Nat) : Vector Float n := sorry
 
@@ -16,5 +15,3 @@ theorem poly_helper_spec {n : Nat} (roots : Vector Float n) (val : Nat)
   let coeff := poly_helper roots val
   (coeff.toList.length = n) ∧
   (coeff[0]! = 1.0) := sorry
-
-end NpPoly

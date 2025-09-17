@@ -1,0 +1,103 @@
+=== Verification Error - Iteration 1 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_DivMod_Compare_Sub.rs
+Time: 2025-09-14 10:41:09
+
+Full Error Output:
+--------------------------------------------------------------------------------
+VERIFICATION BYPASSES DETECTED: uses 'assume' to bypass verification. Code contains verification bypasses and cannot be considered successfully verified.
+
+Original verification output:
+Compilation failed: error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_DivMod_Compare_Sub_impl.rs:46:46
+   |
+46 |     remainder_vec = dividend_seq.subrange(0, divisor_seq.len() as int).into();
+   |                                              ^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_DivMod_Compare_Sub_impl.rs:51:47
+   |
+51 |         remainder_vec.push(dividend_seq.index(divisor_seq.len() as int));
+   |                                               ^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_DivMod_Compare_Sub_impl.rs:54:17
+   |
+54 |     let mut i = remainder_vec.len() as int;
+   |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error[E0425]: cannot find function `int_to_binary_seq` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_DivMod_Compare_Sub_impl.rs:64:29
+   |
+64 |             remainder_vec = int_to_binary_seq(new_remainder_int);
+   |                             ^^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `shift_left_and_append` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_DivMod_Compare_Sub_impl.rs:71:29
+   |
+71 |             remainder_vec = shift_left_and_append(remainder_vec@, dividend_seq.index(i));
+   |                             ^^^^^^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `normalize_binary_seq` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_DivMod_Compare_Sub_impl.rs:77:26
+   |
+77 |     let final_quotient = normalize_binary_seq(quotient_vec@);
+   |                          ^^^^^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `normalize_binary_seq` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_DivMod_Compare_Sub_impl.rs:78:27
+   |
+78 |     let final_remainder = normalize_binary_seq(remainder_vec@);
+   |                           ^^^^^^^^^^^^^^^^^^^^ not found in this scope
+
+error: aborting due to 7 previous errors
+
+For more information about this error, try `rustc --explain E0425`.
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_DivMod_Compare_Sub_impl.rs:46:46
+   |
+46 |     remainder_vec = dividend_seq.subrange(0, divisor_seq.len() as int).into();
+   |                                              ^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_DivMod_Compare_Sub_impl.rs:51:47
+   |
+51 |         remainder_vec.push(dividend_seq.index(divisor_seq.len() as int));
+   |                                               ^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_DivMod_Compare_Sub_impl.rs:54:17
+   |
+54 |     let mut i = remainder_vec.len() as int;
+   |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error[E0425]: cannot find function `int_to_binary_seq` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_DivMod_Compare_Sub_impl.rs:64:29
+   |
+64 |             remainder_vec = int_to_binary_seq(new_remainder_int);
+   |                             ^^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `shift_left_and_append` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_DivMod_Compare_Sub_impl.rs:71:29
+   |
+71 |             remainder_vec = shift_left_and_append(remainder_vec@, dividend_seq.index(i));
+   |                             ^^^^^^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `normalize_binary_seq` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_DivMod_Compare_Sub_impl.rs:77:26
+   |
+77 |     let final_quotient = normalize_binary_seq(quotient_vec@);
+   |                          ^^^^^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `normalize_binary_seq` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_DivMod_Compare_Sub_impl.rs:78:27
+   |
+78 |     let final_remainder = normalize_binary_seq(remainder_vec@);
+   |                           ^^^^^^^^^^^^^^^^^^^^ not found in this scope
+
+error: aborting due to 7 previous errors
+
+For more information about this error, try `rustc --explain E0425`.

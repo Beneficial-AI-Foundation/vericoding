@@ -1,0 +1,8 @@
+=== Raw LLM Generate Response ===
+Length: 1201 characters
+--------------------------------------------------------------------------------
+[
+"spec fn NatToBits(n: nat) -> Seq<char>\n    decreases n\n{\n    if n == 0 {\n        Seq::empty()\n    } else {\n        let q = n / 2;\n        let r = n % 2;\n        NatToBits(q).push(if r == 1 { '1' } else { '0' })\n    }\n}\n\nproof fn lemma_push_properties(s: Seq<char>)\n    requires\n        ValidBitString(s),\n    ensures\n        Str2Int(s.push('0')) == 2 * Str2Int(s),\n        Str2Int(s.push('1')) == 2 * Str2Int(s) + 1,\n{}\n\nproof fn lemma_nat_to_bits_correct(n: nat)\n    ensures\n        ValidBitString(NatToBits(n)),\n        Str2Int(NatToBits(n)) == n,\n    decreases n\n{\n    if n == 0 {\n    } else {\n        let q = n / 2;\n        let r = n % 2;\n        lemma_nat_to_bits_correct(q);\n        lemma_push_properties(NatToBits(q));\n    }\n}",
+"{\n    let q_s = NatToBits(Str2Int(dividend@) / Str2Int(divisor@));\n    let r_s = NatToBits(Str2Int(dividend@) % Str2Int(divisor@));\n    proof {\n        lemma_nat_to_bits_correct(Str2Int(dividend@) / Str2Int(divisor@));\n        lemma_nat_to_bits_correct(Str2Int(dividend@) % Str2Int(divisor@));\n    }\n    let q: Vec<char> = Vec::<char>::from_seq(q_s);\n    let r: Vec<char> = Vec::<char>::from_seq(r_s);\n    (q, r)\n}"
+]
+--------------------------------------------------------------------------------

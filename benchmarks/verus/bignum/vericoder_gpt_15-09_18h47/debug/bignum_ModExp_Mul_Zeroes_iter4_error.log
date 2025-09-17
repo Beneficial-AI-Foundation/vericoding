@@ -1,0 +1,13 @@
+=== Verification Error - Iteration 4 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExp_Mul_Zeroes.rs
+Time: 2025-09-15 20:50:11
+
+Full Error Output:
+--------------------------------------------------------------------------------
+VERIFICATION BYPASSES DETECTED: uses 'assume' to bypass verification. Code contains verification bypasses and cannot be considered successfully verified.
+
+Note: Verification succeeded but verification bypasses prevent final success.
+--------------------------------------------------------------------------------
+
+Additional Output:
+verification results:: 5 verified, 0 errors

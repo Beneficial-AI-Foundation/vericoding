@@ -1,0 +1,64 @@
+use vstd::prelude::*;
+
+verus! {
+
+spec fn Str2Int(s: Seq<char>) -> nat
+  recommends ValidBitString(s)
+  decreases s.len()
+{
+  if s.len() == 0 {
+    0
+  } else {
+    2 * Str2Int(s.subrange(0, s.len() as int - 1))
+      + (if s.index(s.len() as int - 1) == '1' { 1nat } else { 0nat })
+  }
+}
+
+spec fn ValidBitString(s: Seq<char>) -> bool
+{
+  // All characters must be '0' or '1'.
+  forall |i: int| 0 <= i && i < s.len() as int ==>
+    (s.index(i) == '0' || s.index(i) == '1')
+}
+
+// <vc-spec>
+exec fn NormalizeBitString(s: &[char]) -> (t: Vec<char>)
+  ensures ValidBitString(t@),
+   t@.len() > 0,
+   t@.len() > 1 ==> t@[0] != '0',
+   ValidBitString(s@) ==> Str2Int(s@) == Str2Int(t@)
+// </vc-spec>
+// <vc-code>
+fn min(a: int, b: int) -> int { if a < b { a } else { b } }
+// </vc-code>
+
+// <vc-helpers>
+{
+    let mut t = s.to_vec();
+    while t.len() > 1 && t[0] == '0' {
+        t.remove(0);
+    }
+    t
+}
+// </vc-helpers>
+
+// <vc-spec>
+exec fn Add(s1: &[char], s2: &[char]) -> (res: Vec<char>)
+  requires ValidBitString(s1@),
+   ValidBitString(s2@),
+  ensures ValidBitString(res@), 
+    Str2Int(res@) == Str2Int(s1@) + Str2Int(s2@)
+// </vc-spec>
+// <vc-code>
+{
+    let n1 = Str2Int(s1@);
+    let n2 = Str2Int(s2@);
+    let sum = n1 + n2;
+    to_binary_string(sum)
+}
+// </vc-code>
+
+fn main() {}
+}
+
+

@@ -1,0 +1,13 @@
+=== LLM Response - generate_code - Iteration 0 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExp_DivMod_ModExpPow2_Zeroes.rs
+Prompt Hash: 4967ebac
+JSON Parsed Successfully: True
+Timestamp: 1757955986.906772
+Content Length: 1214 chars
+--------------------------------------------------------------------------------
+
+[
+  "exec fn str2int_exec(s: &[char]) -> (n: nat)\n  requires ValidBitString(s@)\n  ensures n == Str2Int(s@)\n{\n  let mut n: nat = 0;\n  for i in 0..s.len()\n    invariant n == Str2Int(s@[0..i])\n  {\n    n = n * 2;\n    if s[i] == '1' {\n      n = n + 1;\n    }\n  }\n  n\n}\n\nexec fn int_to_bit_string_exec(n: nat) -> (res: Vec<char>)\n  ensures ValidBitString(res@), Str2Int(res@) == n\n  decreases n\n{\n  if n == 0 {\n    vec!['0']\n  } else {\n    let mut bits = int_to_bit_string_exec(n / 2);\n    bits.push(if n % 2 == 1 { '1' } else { '0' });\n    bits\n  }\n}\n\nexec fn mod_exp(base: nat, exp: nat, modulus: nat) -> (result: nat)\n  requires modulus > 1\n  ensures result == Exp_int(base, exp) % modulus\n{\n  let mut base = base % modulus;\n  let mut exp = exp;\n  let mut result = 1;\n  while exp > 0 {\n    if exp % 2 == 1 {\n      result = (result * base) % modulus;\n    }\n    exp = exp / 2;\n    base = (base * base) % modulus;\n  }\n  result\n}",
+  "{\n  let base_n = str2int_exec(sx);\n  let exp_n = str2int_exec(sy);\n  let modulus_n = str2int_exec(sz);\n\n  let result_nat = mod_exp(base_n, exp_n, modulus_n);\n\n  let result_vec = int_to_bit_string_exec(result_nat);\n\n  result_vec\n}"
+]
+--------------------------------------------------------------------------------

@@ -1,0 +1,100 @@
+=== Verification Error - Iteration 4 ===
+File: benchmarks/verus/bignum/files/bignum_ModExp_DivMod_Mul.rs
+Time: 2025-09-15 10:43:54
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_ModExp_DivMod_Mul_impl.rs:86:33
+   |
+86 |     let sy_half_len_val: nat = (sy@.len() as nat) / 2;
+   |                                 ^^^^^^^^^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_ModExp_DivMod_Mul_impl.rs:91:15
+   |
+91 |     while i < sy_half_len_val as int
+   |               ^^^^^^^^^^^^^^^^^^^^^^
+
+error[E0425]: cannot find value `result` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_ModExp_DivMod_Mul_impl.rs:27:24
+   |
+27 |         ValidBitString(result),
+   |                        ^^^^^^ not found in this scope
+
+error[E0425]: cannot find value `result` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_ModExp_DivMod_Mul_impl.rs:28:17
+   |
+28 |         Str2Int(result) == n,
+   |                 ^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `modMultiply` in this scope
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_ModExp_DivMod_Mul_impl.rs:108:25
+    |
+108 |         let final_int = modMultiply(half_res_int, half_res_int, c_int);
+    |                         ^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `modMultiply` in this scope
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_ModExp_DivMod_Mul_impl.rs:117:24
+    |
+117 |         let temp_int = modMultiply(sx_int, half_res_int, c_int);
+    |                        ^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `modMultiply` in this scope
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_ModExp_DivMod_Mul_impl.rs:118:25
+    |
+118 |         let final_int = modMultiply(temp_int, half_res_int, c_int);
+    |                         ^^^^^^^^^^^ not found in this scope
+
+error: aborting due to 7 previous errors
+
+For more information about this error, try `rustc --explain E0425`.
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_ModExp_DivMod_Mul_impl.rs:86:33
+   |
+86 |     let sy_half_len_val: nat = (sy@.len() as nat) / 2;
+   |                                 ^^^^^^^^^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_ModExp_DivMod_Mul_impl.rs:91:15
+   |
+91 |     while i < sy_half_len_val as int
+   |               ^^^^^^^^^^^^^^^^^^^^^^
+
+error[E0425]: cannot find value `result` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_ModExp_DivMod_Mul_impl.rs:27:24
+   |
+27 |         ValidBitString(result),
+   |                        ^^^^^^ not found in this scope
+
+error[E0425]: cannot find value `result` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_ModExp_DivMod_Mul_impl.rs:28:17
+   |
+28 |         Str2Int(result) == n,
+   |                 ^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `modMultiply` in this scope
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_ModExp_DivMod_Mul_impl.rs:108:25
+    |
+108 |         let final_int = modMultiply(half_res_int, half_res_int, c_int);
+    |                         ^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `modMultiply` in this scope
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_ModExp_DivMod_Mul_impl.rs:117:24
+    |
+117 |         let temp_int = modMultiply(sx_int, half_res_int, c_int);
+    |                        ^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `modMultiply` in this scope
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_ModExp_DivMod_Mul_impl.rs:118:25
+    |
+118 |         let final_int = modMultiply(temp_int, half_res_int, c_int);
+    |                         ^^^^^^^^^^^ not found in this scope
+
+error: aborting due to 7 previous errors
+
+For more information about this error, try `rustc --explain E0425`.

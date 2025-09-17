@@ -1,0 +1,52 @@
+=== Verification Error - Iteration 1 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExp_Add_DivMod_ModExpPow2_Mul.rs
+Time: 2025-09-15 19:38:04
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: error[E0425]: cannot find function, tuple struct or tuple variant `Sub` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_Add_DivMod_ModExpPow2_Mul_impl.rs:74:26
+   |
+74 |         let sub_result = Sub(&remainder, divisor);
+   |                          ^^^ help: a function with a similar name exists (notice the capitalization): `sub`
+  --> /Users/runner/work/verus/verus/source/builtin/src/lib.rs:961:1
+   |
+   = note: similarly named function `sub` defined here
+
+error[E0425]: cannot find function, tuple struct or tuple variant `Sub` in this scope
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_Add_DivMod_ModExpPow2_Mul_impl.rs:100:23
+    |
+100 |     let y_minus_pow = Sub(sy, &vec!['1']);
+    |                       ^^^ help: a function with a similar name exists (notice the capitalization): `sub`
+   --> /Users/runner/work/verus/verus/source/builtin/src/lib.rs:961:1
+    |
+    = note: similarly named function `sub` defined here
+
+error: aborting due to 2 previous errors
+
+For more information about this error, try `rustc --explain E0425`.
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+error[E0425]: cannot find function, tuple struct or tuple variant `Sub` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_Add_DivMod_ModExpPow2_Mul_impl.rs:74:26
+   |
+74 |         let sub_result = Sub(&remainder, divisor);
+   |                          ^^^ help: a function with a similar name exists (notice the capitalization): `sub`
+  --> /Users/runner/work/verus/verus/source/builtin/src/lib.rs:961:1
+   |
+   = note: similarly named function `sub` defined here
+
+error[E0425]: cannot find function, tuple struct or tuple variant `Sub` in this scope
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_Add_DivMod_ModExpPow2_Mul_impl.rs:100:23
+    |
+100 |     let y_minus_pow = Sub(sy, &vec!['1']);
+    |                       ^^^ help: a function with a similar name exists (notice the capitalization): `sub`
+   --> /Users/runner/work/verus/verus/source/builtin/src/lib.rs:961:1
+    |
+    = note: similarly named function `sub` defined here
+
+error: aborting due to 2 previous errors
+
+For more information about this error, try `rustc --explain E0425`.

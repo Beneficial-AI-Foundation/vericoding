@@ -1,0 +1,52 @@
+=== Verification Error - Iteration 4 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_DivMod_Compare_Sub.rs
+Time: 2025-09-15 19:18:38
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: error[E0425]: cannot find function `compare_strings` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_DivMod_Compare_Sub_impl.rs:54:9
+   |
+54 |     if !compare_strings(dividend, divisor) {
+   |         ^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `compare_strings` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_DivMod_Compare_Sub_impl.rs:76:12
+   |
+76 |         if compare_strings(&current, divisor) {
+   |            ^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `subtract_strings` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_DivMod_Compare_Sub_impl.rs:78:30
+   |
+78 |             let subtracted = subtract_strings(&current, divisor);
+   |                              ^^^^^^^^^^^^^^^^ not found in this scope
+
+error: aborting due to 3 previous errors
+
+For more information about this error, try `rustc --explain E0425`.
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+error[E0425]: cannot find function `compare_strings` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_DivMod_Compare_Sub_impl.rs:54:9
+   |
+54 |     if !compare_strings(dividend, divisor) {
+   |         ^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `compare_strings` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_DivMod_Compare_Sub_impl.rs:76:12
+   |
+76 |         if compare_strings(&current, divisor) {
+   |            ^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `subtract_strings` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_DivMod_Compare_Sub_impl.rs:78:30
+   |
+78 |             let subtracted = subtract_strings(&current, divisor);
+   |                              ^^^^^^^^^^^^^^^^ not found in this scope
+
+error: aborting due to 3 previous errors
+
+For more information about this error, try `rustc --explain E0425`.

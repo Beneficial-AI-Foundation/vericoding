@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(a: int, b: int, f: int, k: int) -> bool {
   a > 0 && b > 0 && f > 0 && k > 0 && f < a
 }
@@ -35,6 +32,9 @@ spec fn multi_journey_feasibility(a: int, b: int, f: int, k: int, result: int) -
     b >= f && b >= a - f && b >= 2 * a - f    
   )
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

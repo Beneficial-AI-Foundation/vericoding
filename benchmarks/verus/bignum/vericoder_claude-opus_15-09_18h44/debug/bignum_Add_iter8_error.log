@@ -1,0 +1,138 @@
+=== Verification Error - Iteration 8 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_Add.rs
+Time: 2025-09-15 19:09:13
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Verification failed: verification results:: 5 verified, 3 errors
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_Add_impl.rs:62:7
+   |
+62 | proof fn str2int_relation(s: Seq<char>, i: nat)
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_Add_impl.rs:65:13
+   |
+65 |       ensures Str2Int(s.subrange(0, i as int)) * pow2((s.len() - i) as nat) + 
+   |  _____________^
+66 | |             Str2Int(s.subrange(i as int, s.len() as int)) == Str2Int(s),
+   | |_______________________________________________________________________^ failed this postcondition
+...
+69 | /     if i == s.len() {
+70 | |         assert(s.subrange(0, i as int) =~= s);
+71 | |         assert(s.subrange(i as int, s.len() as int) =~= Seq::<char>::empty());
+72 | |         assert(pow2(0) == 1);
+...  |
+75 | |     }
+   | |_____- at the end of the function body
+
+error: assertion failed
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_Add_impl.rs:72:16
+   |
+72 |         assert(pow2(0) == 1);
+   |                ^^^^^^^^^^^^ assertion failed
+
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_Add_impl.rs:101:5
+    |
+101 |     while i < max_len || carry > 0
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_Add_impl.rs:84:5
+    |
+84  |     Str2Int(res@) == Str2Int(s1@) + Str2Int(s2@)
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+150 |     result
+    |     ------ at the end of the function body
+
+error: invariant not satisfied at end of loop body
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_Add_impl.rs:109:13
+    |
+109 |             i <= s1@.len() + 1,
+    |             ^^^^^^^^^^^^^^^^^^
+
+error: invariant not satisfied at end of loop body
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_Add_impl.rs:110:13
+    |
+110 |             i <= s2@.len() + 1,
+    |             ^^^^^^^^^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_Add_impl.rs:141:13
+    |
+141 |         i = i + 1;
+    |             ^^^^^
+
+error: aborting due to 6 previous errors
+
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+verification results:: 5 verified, 3 errors
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_Add_impl.rs:62:7
+   |
+62 | proof fn str2int_relation(s: Seq<char>, i: nat)
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_Add_impl.rs:65:13
+   |
+65 |       ensures Str2Int(s.subrange(0, i as int)) * pow2((s.len() - i) as nat) + 
+   |  _____________^
+66 | |             Str2Int(s.subrange(i as int, s.len() as int)) == Str2Int(s),
+   | |_______________________________________________________________________^ failed this postcondition
+...
+69 | /     if i == s.len() {
+70 | |         assert(s.subrange(0, i as int) =~= s);
+71 | |         assert(s.subrange(i as int, s.len() as int) =~= Seq::<char>::empty());
+72 | |         assert(pow2(0) == 1);
+...  |
+75 | |     }
+   | |_____- at the end of the function body
+
+error: assertion failed
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_Add_impl.rs:72:16
+   |
+72 |         assert(pow2(0) == 1);
+   |                ^^^^^^^^^^^^ assertion failed
+
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_Add_impl.rs:101:5
+    |
+101 |     while i < max_len || carry > 0
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_Add_impl.rs:84:5
+    |
+84  |     Str2Int(res@) == Str2Int(s1@) + Str2Int(s2@)
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+150 |     result
+    |     ------ at the end of the function body
+
+error: invariant not satisfied at end of loop body
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_Add_impl.rs:109:13
+    |
+109 |             i <= s1@.len() + 1,
+    |             ^^^^^^^^^^^^^^^^^^
+
+error: invariant not satisfied at end of loop body
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_Add_impl.rs:110:13
+    |
+110 |             i <= s2@.len() + 1,
+    |             ^^^^^^^^^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_Add_impl.rs:141:13
+    |
+141 |         i = i + 1;
+    |             ^^^^^
+
+error: aborting due to 6 previous errors
+

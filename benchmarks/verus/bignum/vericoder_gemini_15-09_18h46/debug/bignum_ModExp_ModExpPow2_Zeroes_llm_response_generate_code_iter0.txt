@@ -1,0 +1,10 @@
+=== LLM Response - generate_code - Iteration 0 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExp_ModExpPow2_Zeroes.rs
+Prompt Hash: 9cfeac44
+JSON Parsed Successfully: False
+Timestamp: 1757955323.551069
+Content Length: 1590 chars
+--------------------------------------------------------------------------------
+```json
+["exec fn str_to_int(s: &[char]) -> (res: nat)\n    requires ValidBitString(s@)\n    ensures res == Str2Int(s@)\n{\n    let mut i: usize = 0;\n    let mut res: nat = 0;\n    while i < s.len()\n        invariant\n            ValidBitString(s@),\n            i <= s.len(),\n            res == Str2Int(s@.subrange(0, i as int)),\n        decreases s.len() - i\n    {\n        proof {\n            if i < s.len() {\n                reveal_with_fuel(Str2Int, 2);\n            }\n        }\n        res = res * 2 + (if s[i] == '1' { 1 } else { 0 });\n        i = i + 1;\n    }\n    res\n}\n\nspec fn Int2Str(n: nat) -> Seq<char>\n    decreases n\n{\n    if n == 0 { seq!['0'] }\n    else if n == 1 { seq!['1'] }\n    else { Int2Str(n / 2).push(if n % 2 == 1 { '1' } else { '0' }) }\n}\n\nproof fn lemma_int_str_is_valid(n: nat)\n    ensures ValidBitString(Int2Str(n))\n    decreases n\n{\n    if n > 1 { lemma_int_str_is_valid(n / 2); }\n}\n\nproof fn lemma_str_int_is_inverse(n: nat)\n    ensures Str2Int(Int2Str(n)) == n\n    decreases n\n{\n    reveal_with_fuel(Str2Int, 2);\n    if n > 1 {\n        lemma_str_int_is_inverse(n / 2);\n        assert(2 * (n / 2) + n % 2 == n) by(nonlinear_arith);\n    }\n}\n\nexec fn int_to_str_rec(n: nat) -> (res: Vec<char>)\n    requires n > 0\n    ensures res@ == Int2Str(n)\n    decreases n\n{\n    if n == 1 {\n        return vec!['1'];\n    }\n    let mut prefix = int_to_str_rec(n / 2);\n    prefix.push(if n % 2 == 1 { '1' } else { '0' });\n    prefix\n}\n\nexec fn int_to_str(n: nat) -> (res: Vec<char>)\n    ensures\n        res@ == Int2Str(
+--------------------------------------------------------------------------------

@@ -1,0 +1,9 @@
+=== LLM Response - generate_code - Iteration 0 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignums_Sub.rs
+Prompt Hash: 5c04eb2c
+JSON Parsed Successfully: True
+Timestamp: 1757839126.239298
+Content Length: 1533 chars
+--------------------------------------------------------------------------------
+["spec fn to_bit_seq(n: nat) -> Seq<char>\n  decreases n\n{\n  if n == 0 {\n    seq!['0']\n  } else if n == 1 {\n    seq!['1']\n  } else {\n    let remainder = n % 2;\n    let quotient = n / 2;\n    to_bit_seq(quotient).snoc(if remainder == 1 { '1' } else { '0' })\n  }\n}\n\nlemma fn lemma_Str2Int_to_bit_seq(n: nat)\n    ensures Str2Int(to_bit_seq(n)) == n\n    decreases n\n{\n    if n > 1 {\n        let remainder = n % 2;\n        let quotient = n / 2;\n        lemma_Str2Int_to_bit_seq(quotient);\n    }\n}\n\npure fn reverse_seq<T>(s: Seq<T>) -> Seq<T>\n    ensures reverse_seq(s).len() == s.len()\n    decreases s.len()\n{\n    if s.len() == 0 {\n        seq![]\n    } else {\n        reverse_seq(s.skip(1)).snoc(s.first())\n    }\n}\n\nlemma fn lemma_Str2Int_reverse_seq(s: Seq<char>) \n    requires ValidBitString(s)\n    ensures Str2Int(reverse_seq(s)) == StrReverseInt(s)\n    decreases s.len()\n{\n    if s.len() > 0 {\n        lemma_Str2Int_reverse_seq(s.skip(1));\n    }\n}\n\nspec fn StrReverseInt(s: Seq<char>) -> nat\n    recommends ValidBitString(s)\n    decreases s.len()\n{\n    if s.len() == 0 {\n        0\n    } else {\n        let last_char = s.last();\n        let current_val = if last_char == '1' { (1 nat) * (2 nat).pow((s.len() - 1) as nat) } else { 0 nat };\n        StrReverseInt(s.subrange(0, s.len() as int - 1)) + current_val\n    }\n}", "{\n  let n1 = Str2Int(s1@);\n  let n2 = Str2Int(s2@);\n  let diff = n1 - n2;\n  lemma_Str2Int_to_bit_seq(diff);\n  let r = to_bit_seq(diff);\n  r.to_vec()\n}"]
+--------------------------------------------------------------------------------

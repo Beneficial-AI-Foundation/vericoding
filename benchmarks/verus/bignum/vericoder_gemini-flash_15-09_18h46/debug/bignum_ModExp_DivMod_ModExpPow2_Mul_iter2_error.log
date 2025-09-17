@@ -1,0 +1,100 @@
+=== Verification Error - Iteration 2 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExp_DivMod_ModExpPow2_Mul.rs
+Time: 2025-09-15 18:50:20
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: error[E0425]: cannot find value `result` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_DivMod_ModExpPow2_Mul_impl.rs:27:24
+   |
+27 |         ValidBitString(result),
+   |                        ^^^^^^ not found in this scope
+
+error[E0425]: cannot find value `result` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_DivMod_ModExpPow2_Mul_impl.rs:28:17
+   |
+28 |         Str2Int(result) == n,
+   |                 ^^^^^^ not found in this scope
+
+error[E0425]: cannot find value `result` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_DivMod_ModExpPow2_Mul_impl.rs:29:9
+   |
+29 |         result.len() >= 1 || n == 0
+   |         ^^^^^^ not found in this scope
+
+error[E0425]: cannot find function, tuple struct or tuple variant `Str2Value` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_DivMod_ModExpPow2_Mul_impl.rs:66:17
+   |
+66 |     let x_val = Str2Value(sx);
+   |                 ^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function, tuple struct or tuple variant `Str2Value` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_DivMod_ModExpPow2_Mul_impl.rs:67:17
+   |
+67 |     let y_val = Str2Value(sy);
+   |                 ^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function, tuple struct or tuple variant `Str2Value` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_DivMod_ModExpPow2_Mul_impl.rs:68:17
+   |
+68 |     let z_val = Str2Value(sz);
+   |                 ^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function, tuple struct or tuple variant `Str2Value` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_DivMod_ModExpPow2_Mul_impl.rs:81:36
+   |
+81 |         let recursive_result_val = Str2Value(recursive_result_vec.as_slice());
+   |                                    ^^^^^^^^^ not found in this scope
+
+error: aborting due to 7 previous errors
+
+For more information about this error, try `rustc --explain E0425`.
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+error[E0425]: cannot find value `result` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_DivMod_ModExpPow2_Mul_impl.rs:27:24
+   |
+27 |         ValidBitString(result),
+   |                        ^^^^^^ not found in this scope
+
+error[E0425]: cannot find value `result` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_DivMod_ModExpPow2_Mul_impl.rs:28:17
+   |
+28 |         Str2Int(result) == n,
+   |                 ^^^^^^ not found in this scope
+
+error[E0425]: cannot find value `result` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_DivMod_ModExpPow2_Mul_impl.rs:29:9
+   |
+29 |         result.len() >= 1 || n == 0
+   |         ^^^^^^ not found in this scope
+
+error[E0425]: cannot find function, tuple struct or tuple variant `Str2Value` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_DivMod_ModExpPow2_Mul_impl.rs:66:17
+   |
+66 |     let x_val = Str2Value(sx);
+   |                 ^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function, tuple struct or tuple variant `Str2Value` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_DivMod_ModExpPow2_Mul_impl.rs:67:17
+   |
+67 |     let y_val = Str2Value(sy);
+   |                 ^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function, tuple struct or tuple variant `Str2Value` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_DivMod_ModExpPow2_Mul_impl.rs:68:17
+   |
+68 |     let z_val = Str2Value(sz);
+   |                 ^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function, tuple struct or tuple variant `Str2Value` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_DivMod_ModExpPow2_Mul_impl.rs:81:36
+   |
+81 |         let recursive_result_val = Str2Value(recursive_result_vec.as_slice());
+   |                                    ^^^^^^^^^ not found in this scope
+
+error: aborting due to 7 previous errors
+
+For more information about this error, try `rustc --explain E0425`.

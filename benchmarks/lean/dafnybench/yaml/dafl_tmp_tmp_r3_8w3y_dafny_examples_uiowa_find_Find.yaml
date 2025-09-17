@@ -1,0 +1,43 @@
+vc-description: |-
+  /- 
+  {
+  "name": "dafl_tmp_tmp_r3_8w3y_dafny_examples_uiowa_find_Find",
+  "category": "Dafny Translation",
+  "description": "Automatically translated from Dafny specification: dafl_tmp_tmp_r3_8w3y_dafny_examples_uiowa_find_Find",
+  "source": "Dafny",
+  "translation_date": "2024",
+  "functions": ,
+  "methods":
+  }
+  -/
+  
+  /- 
+  Find method that searches for a key in an array.
+  Returns the index of the first occurrence of key, or negative if not found.
+  
+  @param a The array to search in
+  @param key The value to search for
+  @return The index where key is found, or negative if not found
+  -/
+
+vc-preamble: |-
+
+vc-helpers: |-
+
+vc-definitions: |-
+  def Find (a : Array Int) (key : Int) : Int :=
+  sorry
+
+vc-theorems: |-
+  theorem Find_spec (a : Array Int) (key : Int) (i : Int) :
+  i = Find a key →
+  (0 ≤ i →
+  (i < a.size ∧
+  a[i.toNat]! = key ∧
+  (∀ k, 0 ≤ k ∧ k < i → a[k.toNat]! ≠ key))) ∧
+  (i < 0 →
+  (∀ k, 0 ≤ k ∧ k < a.size → a[k]! ≠ key)) :=
+  sorry
+
+vc-postamble: |-
+

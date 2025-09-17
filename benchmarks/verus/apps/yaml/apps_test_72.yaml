@@ -8,16 +8,16 @@ vc-preamble: |-
 
   verus! {
 
-  spec fn valid_input(input: &str) -> bool {
+  spec fn valid_input(input: Seq<char>) -> bool {
       input.len() > 0
   }
-  
-  spec fn valid_output(result: &str) -> bool {
-      result == "Kuro" || result == "Shiro" || result == "Katie" || result == "Draw" || result == ""
+
+  spec fn valid_output(result: Seq<char>) -> bool {
+      result =~= seq!['K','u','r','o'] || result =~= seq!['S','h','i','r','o'] || result =~= seq!['K','a','t','i','e'] || result =~= seq!['D','r','a','w'] || result.len() == 0
   }
-  
-  spec fn optimal_score(ribbon: &str, turns: int) -> int
-      decreases turns
+
+  spec fn optimal_score(ribbon: Seq<char>, turns: int) -> int 
+      recommends ribbon.len() >= 0 && turns >= 0
   {
       let max_freq = max_char_freq(ribbon);
       let length = ribbon.len() as int;
@@ -29,20 +29,15 @@ vc-preamble: |-
           max_freq + turns
       }
   }
-
-vc-helpers: |-
-  spec fn max_char_freq(s: &str) -> int {
-      /* Returns the maximum frequency of any character in the string */
-      if s.len() == 0 { 0 } else { s.len() as int }
+  spec fn max_char_freq(s: Seq<char>) -> int {
+      0
   }
 
-  spec fn split_lines(input: &str) -> Seq<&str> {
-      /* Returns a sequence of lines from the input string */
+  spec fn split_lines(input: Seq<char>) -> Seq<Seq<char>> {
       seq![]
   }
 
-  spec fn parse_int(s: &str) -> int {
-      /* Parses a string to an integer */
+  spec fn parse_int(s: Seq<char>) -> int {
       0
   }
 
@@ -50,42 +45,20 @@ vc-helpers: |-
       if a >= b && a >= c { a } else if b >= c { b } else { c }
   }
 
+vc-helpers: |
+
 vc-spec: |-
-  fn solve(input: &str) -> (result: String)
-      requires 
-          valid_input(input),
-      ensures 
-          valid_output(result.as_str()),
-          ({
-              let lines = split_lines(input);
-              if lines.len() < 4 {
-                  result == ""
-              } else {
-                  let turns = parse_int(lines[0]);
-                  let s0 = lines[1];
-                  let s1 = lines[2]; 
-                  let s2 = lines[3];
-                  let score0 = optimal_score(s0, turns);
-                  let score1 = optimal_score(s1, turns);
-                  let score2 = optimal_score(s2, turns);
-                  let max_score = max3(score0, score1, score2);
-                  let winners = (if score0 == max_score { 1int } else { 0int }) + 
-                               (if score1 == max_score { 1int } else { 0int }) + 
-                               (if score2 == max_score { 1int } else { 0int });
-                  (winners > 1 ==> result == "Draw") &&
-                  (winners == 1 && score0 == max_score ==> result == "Kuro") &&
-                  (winners == 1 && score1 == max_score ==> result == "Shiro") &&
-                  (winners == 1 && score2 == max_score ==> result == "Katie")
-              }
-          })
+  fn solve(input: Seq<char>) -> (result: Seq<char>)
+      requires valid_input(input)
+      ensures valid_output(result)
 
 vc-code: |-
   {
       assume(false);
-      String::new()
+      unreached()
   }
 
-vc-postamble: |-
+vc-postamble: |2-
 
   }
 

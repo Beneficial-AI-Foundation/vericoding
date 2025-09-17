@@ -1,0 +1,100 @@
+=== Verification Error - Iteration 3 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExp_Add_DivMod_ModExpPow2.rs
+Time: 2025-09-14 10:40:48
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExp_Add_DivMod_ModExpPow2_impl.rs:117:35
+    |
+117 |   let s_y_prime = s_y.subrange(0, k as int);
+    |                                   ^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExp_Add_DivMod_ModExpPow2_impl.rs:118:32
+    |
+118 |   let y_prime_char = s_y.index(k as int);
+    |                                ^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExp_Add_DivMod_ModExpPow2_impl.rs:131:39
+    |
+131 |     int_to_bit_string_padded(val_int, s_z.len() as nat).to_vec()
+    |                                       ^^^^^^^^^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExp_Add_DivMod_ModExpPow2_impl.rs:136:39
+    |
+136 |     int_to_bit_string_padded(val_int, s_z.len() as nat).to_vec()
+    |                                       ^^^^^^^^^^^^^^^^
+
+error[E0425]: cannot find value `result` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExp_Add_DivMod_ModExpPow2_impl.rs:58:26
+   |
+58 |   ensures ValidBitString(result), result.len() == pad_len, Str2Int(result) == val
+   |                          ^^^^^^ not found in this scope
+
+error[E0425]: cannot find value `result` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExp_Add_DivMod_ModExpPow2_impl.rs:58:35
+   |
+58 |   ensures ValidBitString(result), result.len() == pad_len, Str2Int(result) == val
+   |                                   ^^^^^^ not found in this scope
+
+error[E0425]: cannot find value `result` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExp_Add_DivMod_ModExpPow2_impl.rs:58:68
+   |
+58 |   ensures ValidBitString(result), result.len() == pad_len, Str2Int(result) == val
+   |                                                                    ^^^^^^ not found in this scope
+
+error: aborting due to 7 previous errors
+
+For more information about this error, try `rustc --explain E0425`.
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExp_Add_DivMod_ModExpPow2_impl.rs:117:35
+    |
+117 |   let s_y_prime = s_y.subrange(0, k as int);
+    |                                   ^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExp_Add_DivMod_ModExpPow2_impl.rs:118:32
+    |
+118 |   let y_prime_char = s_y.index(k as int);
+    |                                ^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExp_Add_DivMod_ModExpPow2_impl.rs:131:39
+    |
+131 |     int_to_bit_string_padded(val_int, s_z.len() as nat).to_vec()
+    |                                       ^^^^^^^^^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExp_Add_DivMod_ModExpPow2_impl.rs:136:39
+    |
+136 |     int_to_bit_string_padded(val_int, s_z.len() as nat).to_vec()
+    |                                       ^^^^^^^^^^^^^^^^
+
+error[E0425]: cannot find value `result` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExp_Add_DivMod_ModExpPow2_impl.rs:58:26
+   |
+58 |   ensures ValidBitString(result), result.len() == pad_len, Str2Int(result) == val
+   |                          ^^^^^^ not found in this scope
+
+error[E0425]: cannot find value `result` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExp_Add_DivMod_ModExpPow2_impl.rs:58:35
+   |
+58 |   ensures ValidBitString(result), result.len() == pad_len, Str2Int(result) == val
+   |                                   ^^^^^^ not found in this scope
+
+error[E0425]: cannot find value `result` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExp_Add_DivMod_ModExpPow2_impl.rs:58:68
+   |
+58 |   ensures ValidBitString(result), result.len() == pad_len, Str2Int(result) == val
+   |                                                                    ^^^^^^ not found in this scope
+
+error: aborting due to 7 previous errors
+
+For more information about this error, try `rustc --explain E0425`.

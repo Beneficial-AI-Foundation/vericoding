@@ -1,0 +1,6 @@
+=== Raw LLM Generate Response ===
+Length: 883 characters
+--------------------------------------------------------------------------------
+
+["exec fn is_valid_bitstring(s: &[char]) -> bool {\n    let mut i = 0;\n    while i < s.len()\n        invariant\n            0 <= i <= s.len(),\n            forall |j: int| 0 <= j && j < i as int ==> s[j as usize] == '0' || s[j as usize] == '1'\n        decreases s.len() - i\n    {\n        if s[i] != '0' && s[i] != '1' {\n            return false;\n        }\n        i += 1;\n    }\n    true\n}", "{\n    if s.is_empty() {\n        return vec!['0'];\n    }\n    if !is_valid_bitstring(s) {\n        return vec!['0'];\n    }\n    let mut start_index = 0;\n    while start_index < s.len() && s[start_index] == '0'\n        invariant\n            start_index <= s.len()\n        decreases s.len() - start_index\n    {\n        start_index += 1;\n    }\n    if start_index == s.len() {\n        return vec!['0'];\n    } else {\n        return s[start_index..].to_vec();\n    }\n}"]
+--------------------------------------------------------------------------------

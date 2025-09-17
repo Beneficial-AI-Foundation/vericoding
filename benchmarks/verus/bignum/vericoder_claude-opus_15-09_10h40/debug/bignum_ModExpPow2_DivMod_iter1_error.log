@@ -1,0 +1,48 @@
+=== Verification Error - Iteration 1 ===
+File: benchmarks/verus/bignum/files/bignum_ModExpPow2_DivMod.rs
+Time: 2025-09-15 11:06:31
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExpPow2_DivMod_impl.rs:110:13
+    |
+110 |     if n == 0 {
+    |        -    ^ expected `int`, found integer
+    |        |
+    |        expected because this is `verus_builtin::int`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExpPow2_DivMod_impl.rs:124:52
+    |
+124 |     let half_result = ModExpPow2(sx, &sy_half, n - 1, sz);
+    |                                                -   ^ expected `int`, found integer
+    |                                                |
+    |                                                expected because this is `verus_builtin::int`
+
+error: aborting due to 2 previous errors
+
+For more information about this error, try `rustc --explain E0308`.
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExpPow2_DivMod_impl.rs:110:13
+    |
+110 |     if n == 0 {
+    |        -    ^ expected `int`, found integer
+    |        |
+    |        expected because this is `verus_builtin::int`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExpPow2_DivMod_impl.rs:124:52
+    |
+124 |     let half_result = ModExpPow2(sx, &sy_half, n - 1, sz);
+    |                                                -   ^ expected `int`, found integer
+    |                                                |
+    |                                                expected because this is `verus_builtin::int`
+
+error: aborting due to 2 previous errors
+
+For more information about this error, try `rustc --explain E0308`.

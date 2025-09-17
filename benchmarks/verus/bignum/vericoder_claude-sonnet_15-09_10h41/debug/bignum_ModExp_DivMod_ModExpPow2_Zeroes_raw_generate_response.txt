@@ -1,0 +1,5 @@
+=== Raw LLM Generate Response ===
+Length: 731 characters
+--------------------------------------------------------------------------------
+["", "{\n    if sy.len() == 0 {\n        let mut result = Vec::new();\n        result.push('1');\n        return result;\n    }\n    \n    if Str2Int(sy@) == 0 {\n        let mut result = Vec::new();\n        result.push('1');\n        return result;\n    }\n    \n    if Str2Int(sy@) == 1 {\n        let base_mod = mod_operation(sx, sz);\n        return base_mod;\n    }\n    \n    let half_exp = divide_by_2(sy);\n    let half_result = ModExp_DivMod_ModExpPow2_Zeroes(sx, &half_exp, sz);\n    let squared = multiply_mod(&half_result, &half_result, sz);\n    \n    if sy[sy.len() - 1] == '1' {\n        let base_mod = mod_operation(sx, sz);\n        multiply_mod(&squared, &base_mod, sz)\n    } else {\n        squared\n    }\n}"]
+--------------------------------------------------------------------------------

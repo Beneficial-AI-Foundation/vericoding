@@ -1,0 +1,108 @@
+=== Verification Error - Iteration 1 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExpPow2_int.rs
+Time: 2025-09-15 20:35:01
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: error[E0425]: cannot find function `lemma_mul_is_associative` in module `vstd::math`
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini_15-09_18h46/bignum_ModExpPow2_int_impl.rs:28:21
+   |
+28 |         vstd::math::lemma_mul_is_associative(x, Exp_int(x, (y1 - 1) as nat), Exp_int(x, y2));
+   |                     ^^^^^^^^^^^^^^^^^^^^^^^^ not found in `vstd::math`
+   |
+help: consider importing this function
+   |
+1  + use vstd::arithmetic::mul::lemma_mul_is_associative;
+   |
+help: if you import `lemma_mul_is_associative`, refer to it directly
+   |
+28 -         vstd::math::lemma_mul_is_associative(x, Exp_int(x, (y1 - 1) as nat), Exp_int(x, y2));
+28 +         lemma_mul_is_associative(x, Exp_int(x, (y1 - 1) as nat), Exp_int(x, y2));
+   |
+
+error[E0425]: cannot find function `lemma_mul_division_auto` in module `vstd::math`
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini_15-09_18h46/bignum_ModExpPow2_int_impl.rs:83:29
+   |
+83 |                 vstd::math::lemma_mul_division_auto(y_nat, 2);
+   |                             ^^^^^^^^^^^^^^^^^^^^^^^ not found in `vstd::math`
+
+error[E0425]: cannot find function `lemma_mod_properties_auto` in module `vstd::math`
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini_15-09_18h46/bignum_ModExpPow2_int_impl.rs:86:25
+   |
+86 |             vstd::math::lemma_mod_properties_auto();
+   |                         ^^^^^^^^^^^^^^^^^^^^^^^^^ not found in `vstd::math`
+
+error[E0425]: cannot find function `unfold` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini_15-09_18h46/bignum_ModExpPow2_int_impl.rs:18:5
+   |
+18 |     unfold(Exp_int(2, n));
+   |     ^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `unfold` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini_15-09_18h46/bignum_ModExpPow2_int_impl.rs:29:70
+   |
+29 |         assert(Exp_int(x, y1) == x * Exp_int(x, (y1-1) as nat)) by { unfold(Exp_int(x,y1)); };
+   |                                                                      ^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `unfold` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini_15-09_18h46/bignum_ModExpPow2_int_impl.rs:30:67
+   |
+30 |         assert(Exp_int(x, y1+y2) == x * Exp_int(x, y1+y2-1)) by { unfold(Exp_int(x,y1+y2)); };
+   |                                                                   ^^^^^^ not found in this scope
+
+error: aborting due to 6 previous errors
+
+For more information about this error, try `rustc --explain E0425`.
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+error[E0425]: cannot find function `lemma_mul_is_associative` in module `vstd::math`
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini_15-09_18h46/bignum_ModExpPow2_int_impl.rs:28:21
+   |
+28 |         vstd::math::lemma_mul_is_associative(x, Exp_int(x, (y1 - 1) as nat), Exp_int(x, y2));
+   |                     ^^^^^^^^^^^^^^^^^^^^^^^^ not found in `vstd::math`
+   |
+help: consider importing this function
+   |
+1  + use vstd::arithmetic::mul::lemma_mul_is_associative;
+   |
+help: if you import `lemma_mul_is_associative`, refer to it directly
+   |
+28 -         vstd::math::lemma_mul_is_associative(x, Exp_int(x, (y1 - 1) as nat), Exp_int(x, y2));
+28 +         lemma_mul_is_associative(x, Exp_int(x, (y1 - 1) as nat), Exp_int(x, y2));
+   |
+
+error[E0425]: cannot find function `lemma_mul_division_auto` in module `vstd::math`
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini_15-09_18h46/bignum_ModExpPow2_int_impl.rs:83:29
+   |
+83 |                 vstd::math::lemma_mul_division_auto(y_nat, 2);
+   |                             ^^^^^^^^^^^^^^^^^^^^^^^ not found in `vstd::math`
+
+error[E0425]: cannot find function `lemma_mod_properties_auto` in module `vstd::math`
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini_15-09_18h46/bignum_ModExpPow2_int_impl.rs:86:25
+   |
+86 |             vstd::math::lemma_mod_properties_auto();
+   |                         ^^^^^^^^^^^^^^^^^^^^^^^^^ not found in `vstd::math`
+
+error[E0425]: cannot find function `unfold` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini_15-09_18h46/bignum_ModExpPow2_int_impl.rs:18:5
+   |
+18 |     unfold(Exp_int(2, n));
+   |     ^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `unfold` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini_15-09_18h46/bignum_ModExpPow2_int_impl.rs:29:70
+   |
+29 |         assert(Exp_int(x, y1) == x * Exp_int(x, (y1-1) as nat)) by { unfold(Exp_int(x,y1)); };
+   |                                                                      ^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `unfold` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini_15-09_18h46/bignum_ModExpPow2_int_impl.rs:30:67
+   |
+30 |         assert(Exp_int(x, y1+y2) == x * Exp_int(x, y1+y2-1)) by { unfold(Exp_int(x,y1+y2)); };
+   |                                                                   ^^^^^^ not found in this scope
+
+error: aborting due to 6 previous errors
+
+For more information about this error, try `rustc --explain E0425`.

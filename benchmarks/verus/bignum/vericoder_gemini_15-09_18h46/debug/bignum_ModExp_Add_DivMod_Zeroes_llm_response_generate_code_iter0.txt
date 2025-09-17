@@ -1,0 +1,10 @@
+=== LLM Response - generate_code - Iteration 0 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExp_Add_DivMod_Zeroes.rs
+Prompt Hash: 88499e1c
+JSON Parsed Successfully: False
+Timestamp: 1757955602.1984909
+Content Length: 1460 chars
+--------------------------------------------------------------------------------
+```json
+["proof fn lemma_mul_mod_congruence(a: nat, b: nat, m: nat)\n    requires m > 0\n    ensures (a * b) % m == ((a % m) * (b % m)) % m\n{\n    vstd::arithmetic::div_mod::lemma_div_mod_converse(a, m);\n    vstd::arithmetic::div_mod::lemma_div_mod_converse(b, m);\n    let prod = (a/m * m + a%m) * (b/m * m + b%m);\n    assert(a*b == prod) by(nonlinear_arith);\n    let expanded_prod = (a/m)*(b/m)*m*m + (a/m)*m*(b%m) + (a%m)*(b/m)*m + (a%m)*(b%m);\n    assert(prod == expanded_prod) by(nonlinear_arith);\n    assert( ( (a/m)*(b/m)*m*m ) % m == 0 ) by(nonlinear_arith);\n    assert( ( (a/m)*m*(b%m) ) % m == 0 ) by(nonlinear_arith);\n    assert( ( (a%m)*(b/m)*m ) % m == 0 ) by(nonlinear_arith);\n    vstd::arithmetic::div_mod::lemma_mod_add_multiples( (a%m)*(b%m), ( (a/m)*(b/m)*m + (a/m)*(b%m) + (a%m)*(b/m) ) * m, m);\n    assert( (expanded_prod) % m == ((a%m)*(b%m))%m ) by(nonlinear_arith);\n}\n\nproof fn lemma_exp_plus(x: nat, y: nat, z: nat)\n    ensures Exp_int(x, y + z) == Exp_int(x, y) * Exp_int(x, z)\n    decreases y\n{\n    if y > 0 {\n        calc! {\n            (==) \n            Exp_int(x, y + z);\n            (==) by(nonlinear_arith) { x * Exp_int(x, y - 1 + z); }\n            (==) via lemma_exp_plus(x, (y-1) as nat, z) { x * (Exp_int(x, (y - 1) as nat) * Exp_int(x, z)); }\n            (==) by(nonlinear_arith) { (x * Exp_int(x, (y-1) as nat)) * Exp_int(x, z); }\n            (==) { Exp_int(x, y) * Exp_int(x, z); }\n        }\n    
+--------------------------------------------------------------------------------

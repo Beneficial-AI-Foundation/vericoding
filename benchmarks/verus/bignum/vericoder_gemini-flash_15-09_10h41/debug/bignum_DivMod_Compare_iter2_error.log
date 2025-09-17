@@ -1,0 +1,384 @@
+=== Verification Error - Iteration 2 ===
+File: benchmarks/verus/bignum/files/bignum_DivMod_Compare.rs
+Time: 2025-09-15 10:46:57
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: error: no rules expected reserved identifier `_`
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_DivMod_Compare_impl.rs:44:87
+   |
+44 |       let A_prefix_prime = Subtract_BitString(A.subrange(0, A.len() as int - 1), seq![_ => '0'; A.len() as int - 1].update(A.len() as int - 2, '1'));
+   |                                                                                       ^ no rules expected this token in macro call
+   |
+   = note: while trying to match end of macro
+
+error: no rules expected reserved identifier `_`
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_DivMod_Compare_impl.rs:59:8
+   |
+59 |   seq![_ => '0';count] + s
+   |        ^ no rules expected this token in macro call
+   |
+   = note: while trying to match end of macro
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_DivMod_Compare_impl.rs:107:32
+    |
+107 |       let segment = remainder@[current_idx as int .. (current_idx + r_len) as int];
+    |                                ^^^^^^^^^^^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_DivMod_Compare_impl.rs:107:54
+    |
+107 |       let segment = remainder@[current_idx as int .. (current_idx + r_len) as int];
+    |                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_DivMod_Compare_impl.rs:111:50
+    |
+111 |         term_to_subtract = PadToLength(divisor@, r_len as nat);
+    |                                                  ^^^^^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_DivMod_Compare_impl.rs:114:48
+    |
+114 |         term_to_subtract = PadToLength(seq![], r_len as nat); // Effectively subtract 0
+    |                                                ^^^^^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_DivMod_Compare_impl.rs:119:46
+    |
+119 |       term_to_subtract = PadToLength(seq![], r_len as nat); // This won't actually be subtracted in the final iteration
+    |                                              ^^^^^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_DivMod_Compare_impl.rs:137:67
+    |
+137 |         let segment_to_subtract_from = new_remainder_seq.subrange(current_idx as int, (current_idx + r_len) as int);
+    |                                                                   ^^^^^^^^^^^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_DivMod_Compare_impl.rs:137:87
+    |
+137 |         let segment_to_subtract_from = new_remainder_seq.subrange(current_idx as int, (current_idx + r_len) as int);
+    |                                                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_DivMod_Compare_impl.rs:142:56
+    |
+142 |           new_remainder_seq = new_remainder_seq.update((current_idx + i) as int, sub_result.index(i as int));
+    |                                                        ^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_DivMod_Compare_impl.rs:142:99
+    |
+142 |           new_remainder_seq = new_remainder_seq.update((current_idx + i) as int, sub_result.index(i as int));
+    |                                                                                                   ^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_DivMod_Compare_impl.rs:155:96
+    |
+155 |   let final_quotient = if first_one_q == quotient.len() { vec!['0'] } else { quotient.subslice(first_one_q as int, quotient.len() as int).to_vec() };
+    |                                                                                                ^^^^^^^^^^^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_DivMod_Compare_impl.rs:155:116
+    |
+155 |   let final_quotient = if first_one_q == quotient.len() { vec!['0'] } else { quotient.subslice(first_one_q as int, quotient.len() as int).to_vec() };
+    |                                                                                                                    ^^^^^^^^^^^^^^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_DivMod_Compare_impl.rs:162:99
+    |
+162 |   let final_remainder = if first_one_r == remainder.len() { vec!['0'] } else { remainder.subslice(first_one_r as int, remainder.len() as int).to_vec() };
+    |                                                                                                   ^^^^^^^^^^^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_DivMod_Compare_impl.rs:162:119
+    |
+162 |   let final_remainder = if first_one_r == remainder.len() { vec!['0'] } else { remainder.subslice(first_one_r as int, remainder.len() as int).to_vec() };
+    |                                                                                                                       ^^^^^^^^^^^^^^^^^^^^^^
+
+error[E0425]: cannot find function `result` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_DivMod_Compare_impl.rs:28:35
+   |
+28 |     forall |i: int| 0 <= i && i < result().len() ==> (result().index(i) == '0' || result().index(i) == '1'),
+   |                                   ^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `result` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_DivMod_Compare_impl.rs:28:55
+   |
+28 |     forall |i: int| 0 <= i && i < result().len() ==> (result().index(i) == '0' || result().index(i) == '1'),
+   |                                                       ^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `result` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_DivMod_Compare_impl.rs:28:83
+   |
+28 |     forall |i: int| 0 <= i && i < result().len() ==> (result().index(i) == '0' || result().index(i) == '1'),
+   |                                                                                   ^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `result` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_DivMod_Compare_impl.rs:29:5
+   |
+29 |     result().len() == A.len(),
+   |     ^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `result` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_DivMod_Compare_impl.rs:30:13
+   |
+30 |     Str2Int(result()) == Str2Int(A) - Str2Int(B)
+   |             ^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `result` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_DivMod_Compare_impl.rs:54:35
+   |
+54 |     forall |i: int| 0 <= i && i < result().len() ==> (result().index(i) == '0' || result().index(i) == '1'),
+   |                                   ^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `result` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_DivMod_Compare_impl.rs:54:55
+   |
+54 |     forall |i: int| 0 <= i && i < result().len() ==> (result().index(i) == '0' || result().index(i) == '1'),
+   |                                                       ^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `result` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_DivMod_Compare_impl.rs:54:83
+   |
+54 |     forall |i: int| 0 <= i && i < result().len() ==> (result().index(i) == '0' || result().index(i) == '1'),
+   |                                                                                   ^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `result` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_DivMod_Compare_impl.rs:55:5
+   |
+55 |     result().len() == s.len() + count,
+   |     ^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `result` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_DivMod_Compare_impl.rs:56:13
+   |
+56 |     Str2Int(result()) == Str2Int(s)
+   |             ^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `result` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_DivMod_Compare_impl.rs:64:35
+   |
+64 |     forall |i: int| 0 <= i && i < result().len() ==> (result().index(i) == '0' || result().index(i) == '1'),
+   |                                   ^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `result` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_DivMod_Compare_impl.rs:64:55
+   |
+64 |     forall |i: int| 0 <= i && i < result().len() ==> (result().index(i) == '0' || result().index(i) == '1'),
+   |                                                       ^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `result` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_DivMod_Compare_impl.rs:64:83
+   |
+64 |     forall |i: int| 0 <= i && i < result().len() ==> (result().index(i) == '0' || result().index(i) == '1'),
+   |                                                                                   ^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `result` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_DivMod_Compare_impl.rs:65:5
+   |
+65 |     result().len() == len,
+   |     ^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `result` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_DivMod_Compare_impl.rs:66:13
+   |
+66 |     Str2Int(result()) == Str2Int(s)
+   |             ^^^^^^ not found in this scope
+
+error: aborting due to 30 previous errors
+
+For more information about this error, try `rustc --explain E0425`.
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+error: no rules expected reserved identifier `_`
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_DivMod_Compare_impl.rs:44:87
+   |
+44 |       let A_prefix_prime = Subtract_BitString(A.subrange(0, A.len() as int - 1), seq![_ => '0'; A.len() as int - 1].update(A.len() as int - 2, '1'));
+   |                                                                                       ^ no rules expected this token in macro call
+   |
+   = note: while trying to match end of macro
+
+error: no rules expected reserved identifier `_`
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_DivMod_Compare_impl.rs:59:8
+   |
+59 |   seq![_ => '0';count] + s
+   |        ^ no rules expected this token in macro call
+   |
+   = note: while trying to match end of macro
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_DivMod_Compare_impl.rs:107:32
+    |
+107 |       let segment = remainder@[current_idx as int .. (current_idx + r_len) as int];
+    |                                ^^^^^^^^^^^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_DivMod_Compare_impl.rs:107:54
+    |
+107 |       let segment = remainder@[current_idx as int .. (current_idx + r_len) as int];
+    |                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_DivMod_Compare_impl.rs:111:50
+    |
+111 |         term_to_subtract = PadToLength(divisor@, r_len as nat);
+    |                                                  ^^^^^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_DivMod_Compare_impl.rs:114:48
+    |
+114 |         term_to_subtract = PadToLength(seq![], r_len as nat); // Effectively subtract 0
+    |                                                ^^^^^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_DivMod_Compare_impl.rs:119:46
+    |
+119 |       term_to_subtract = PadToLength(seq![], r_len as nat); // This won't actually be subtracted in the final iteration
+    |                                              ^^^^^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_DivMod_Compare_impl.rs:137:67
+    |
+137 |         let segment_to_subtract_from = new_remainder_seq.subrange(current_idx as int, (current_idx + r_len) as int);
+    |                                                                   ^^^^^^^^^^^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_DivMod_Compare_impl.rs:137:87
+    |
+137 |         let segment_to_subtract_from = new_remainder_seq.subrange(current_idx as int, (current_idx + r_len) as int);
+    |                                                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_DivMod_Compare_impl.rs:142:56
+    |
+142 |           new_remainder_seq = new_remainder_seq.update((current_idx + i) as int, sub_result.index(i as int));
+    |                                                        ^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_DivMod_Compare_impl.rs:142:99
+    |
+142 |           new_remainder_seq = new_remainder_seq.update((current_idx + i) as int, sub_result.index(i as int));
+    |                                                                                                   ^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_DivMod_Compare_impl.rs:155:96
+    |
+155 |   let final_quotient = if first_one_q == quotient.len() { vec!['0'] } else { quotient.subslice(first_one_q as int, quotient.len() as int).to_vec() };
+    |                                                                                                ^^^^^^^^^^^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_DivMod_Compare_impl.rs:155:116
+    |
+155 |   let final_quotient = if first_one_q == quotient.len() { vec!['0'] } else { quotient.subslice(first_one_q as int, quotient.len() as int).to_vec() };
+    |                                                                                                                    ^^^^^^^^^^^^^^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_DivMod_Compare_impl.rs:162:99
+    |
+162 |   let final_remainder = if first_one_r == remainder.len() { vec!['0'] } else { remainder.subslice(first_one_r as int, remainder.len() as int).to_vec() };
+    |                                                                                                   ^^^^^^^^^^^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_DivMod_Compare_impl.rs:162:119
+    |
+162 |   let final_remainder = if first_one_r == remainder.len() { vec!['0'] } else { remainder.subslice(first_one_r as int, remainder.len() as int).to_vec() };
+    |                                                                                                                       ^^^^^^^^^^^^^^^^^^^^^^
+
+error[E0425]: cannot find function `result` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_DivMod_Compare_impl.rs:28:35
+   |
+28 |     forall |i: int| 0 <= i && i < result().len() ==> (result().index(i) == '0' || result().index(i) == '1'),
+   |                                   ^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `result` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_DivMod_Compare_impl.rs:28:55
+   |
+28 |     forall |i: int| 0 <= i && i < result().len() ==> (result().index(i) == '0' || result().index(i) == '1'),
+   |                                                       ^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `result` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_DivMod_Compare_impl.rs:28:83
+   |
+28 |     forall |i: int| 0 <= i && i < result().len() ==> (result().index(i) == '0' || result().index(i) == '1'),
+   |                                                                                   ^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `result` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_DivMod_Compare_impl.rs:29:5
+   |
+29 |     result().len() == A.len(),
+   |     ^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `result` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_DivMod_Compare_impl.rs:30:13
+   |
+30 |     Str2Int(result()) == Str2Int(A) - Str2Int(B)
+   |             ^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `result` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_DivMod_Compare_impl.rs:54:35
+   |
+54 |     forall |i: int| 0 <= i && i < result().len() ==> (result().index(i) == '0' || result().index(i) == '1'),
+   |                                   ^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `result` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_DivMod_Compare_impl.rs:54:55
+   |
+54 |     forall |i: int| 0 <= i && i < result().len() ==> (result().index(i) == '0' || result().index(i) == '1'),
+   |                                                       ^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `result` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_DivMod_Compare_impl.rs:54:83
+   |
+54 |     forall |i: int| 0 <= i && i < result().len() ==> (result().index(i) == '0' || result().index(i) == '1'),
+   |                                                                                   ^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `result` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_DivMod_Compare_impl.rs:55:5
+   |
+55 |     result().len() == s.len() + count,
+   |     ^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `result` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_DivMod_Compare_impl.rs:56:13
+   |
+56 |     Str2Int(result()) == Str2Int(s)
+   |             ^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `result` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_DivMod_Compare_impl.rs:64:35
+   |
+64 |     forall |i: int| 0 <= i && i < result().len() ==> (result().index(i) == '0' || result().index(i) == '1'),
+   |                                   ^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `result` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_DivMod_Compare_impl.rs:64:55
+   |
+64 |     forall |i: int| 0 <= i && i < result().len() ==> (result().index(i) == '0' || result().index(i) == '1'),
+   |                                                       ^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `result` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_DivMod_Compare_impl.rs:64:83
+   |
+64 |     forall |i: int| 0 <= i && i < result().len() ==> (result().index(i) == '0' || result().index(i) == '1'),
+   |                                                                                   ^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `result` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_DivMod_Compare_impl.rs:65:5
+   |
+65 |     result().len() == len,
+   |     ^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `result` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_DivMod_Compare_impl.rs:66:13
+   |
+66 |     Str2Int(result()) == Str2Int(s)
+   |             ^^^^^^ not found in this scope
+
+error: aborting due to 30 previous errors
+
+For more information about this error, try `rustc --explain E0425`.

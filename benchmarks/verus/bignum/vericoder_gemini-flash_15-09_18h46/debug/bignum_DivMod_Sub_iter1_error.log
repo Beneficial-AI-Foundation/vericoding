@@ -1,0 +1,103 @@
+=== Verification Error - Iteration 1 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_DivMod_Sub.rs
+Time: 2025-09-15 18:54:46
+
+Full Error Output:
+--------------------------------------------------------------------------------
+VERIFICATION BYPASSES DETECTED: uses 'assume' to bypass verification. Code contains verification bypasses and cannot be considered successfully verified.
+
+Original verification output:
+Compilation failed: error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_DivMod_Sub_impl.rs:49:13
+   |
+49 |   while i < s_dividend.len() as int
+   |             ^^^^^^^^^^^^^^^^^^^^^^^
+
+error: cannot find macro `f` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_DivMod_Sub_impl.rs:45:3
+   |
+45 |   f!(
+   |   ^
+
+error: cannot find macro `f` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_DivMod_Sub_impl.rs:71:5
+   |
+71 |     f!
+   |     ^
+
+error: cannot find macro `f` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_DivMod_Sub_impl.rs:80:5
+   |
+80 |     f!(
+   |     ^
+
+error: cannot find macro `f` in this scope
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_DivMod_Sub_impl.rs:102:5
+    |
+102 |     f!(
+    |     ^
+
+error[E0425]: cannot find function, tuple struct or tuple variant `SubStr` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_DivMod_Sub_impl.rs:90:21
+   |
+90 |       let sub_res = SubStr(remainder@, s_divisor);
+   |                     ^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `trim_leading_zeros` in this scope
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_DivMod_Sub_impl.rs:113:26
+    |
+113 |   let trimmed_quotient = trim_leading_zeros(quotient@);
+    |                          ^^^^^^^^^^^^^^^^^^ not found in this scope
+
+error: aborting due to 7 previous errors
+
+For more information about this error, try `rustc --explain E0425`.
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_DivMod_Sub_impl.rs:49:13
+   |
+49 |   while i < s_dividend.len() as int
+   |             ^^^^^^^^^^^^^^^^^^^^^^^
+
+error: cannot find macro `f` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_DivMod_Sub_impl.rs:45:3
+   |
+45 |   f!(
+   |   ^
+
+error: cannot find macro `f` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_DivMod_Sub_impl.rs:71:5
+   |
+71 |     f!
+   |     ^
+
+error: cannot find macro `f` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_DivMod_Sub_impl.rs:80:5
+   |
+80 |     f!(
+   |     ^
+
+error: cannot find macro `f` in this scope
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_DivMod_Sub_impl.rs:102:5
+    |
+102 |     f!(
+    |     ^
+
+error[E0425]: cannot find function, tuple struct or tuple variant `SubStr` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_DivMod_Sub_impl.rs:90:21
+   |
+90 |       let sub_res = SubStr(remainder@, s_divisor);
+   |                     ^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `trim_leading_zeros` in this scope
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_DivMod_Sub_impl.rs:113:26
+    |
+113 |   let trimmed_quotient = trim_leading_zeros(quotient@);
+    |                          ^^^^^^^^^^^^^^^^^^ not found in this scope
+
+error: aborting due to 7 previous errors
+
+For more information about this error, try `rustc --explain E0425`.

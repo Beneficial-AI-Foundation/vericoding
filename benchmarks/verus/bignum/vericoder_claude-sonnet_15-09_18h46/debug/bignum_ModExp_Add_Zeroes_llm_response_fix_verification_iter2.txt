@@ -1,0 +1,12 @@
+=== LLM Response - fix_verification - Iteration 2 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExp_Add_Zeroes.rs
+Prompt Hash: e105473f
+JSON Parsed Successfully: True
+Timestamp: 1757954794.074514
+Content Length: 1796 chars
+--------------------------------------------------------------------------------
+[
+"/* helper modified by LLM (iteration 3): fixed type annotations and parameter types */\nspec fn ModExp_Helper(base: nat, exp: nat, modulus: nat) -> nat\n    requires modulus > 1\n    decreases exp\n{\n    if exp == 0 { 1nat % modulus }\n    else if exp % 2 == 0 {\n        let half_exp = ModExp_Helper(base, exp / 2, modulus);\n        (half_exp * half_exp) % modulus\n    } else {\n        (base * ModExp_Helper(base, (exp - 1) as nat, modulus)) % modulus\n    }\n}\n\nproof fn lemma_mod_exp_correct(base: nat, exp: nat, modulus: nat)\n    requires modulus > 1\n    ensures ModExp_Helper(base, exp, modulus) == Exp_int(base, exp) % modulus\n    decreases exp\n{\n    if exp == 0 {\n    } else if exp % 2 == 0 {\n        lemma_mod_exp_correct(base, exp / 2, modulus);\n    } else {\n        lemma_mod_exp_correct(base, (exp - 1) as nat, modulus);\n    }\n}\n\nexec fn nat_pow(base: nat, exp: nat) -> nat\n    decreases exp\n{\n    if exp == 0 {\n        1nat\n    } else {\n        base * nat_pow(base, (exp - 1) as nat)\n    }\n}",
+"/* code modified by LLM (iteration 3): replaced .pow() with custom nat_pow function */\n{\n    let base_val = Str2Int(sx@);\n    let exp_val = Str2Int(sy@);\n    let mod_val = Str2Int(sz@);\n    \n    let result_val = nat_pow(base_val, exp_val) % mod_val;\n    \n    let mut result = Vec::new();\n    let mut temp = result_val;\n    \n    if temp == 0 {\n        result.push('0');\n    } else {\n        while temp > 0\n            invariant\n                ValidBitString(result@),\n                temp >= 0\n        {\n            if temp % 2 == 1 {\n                result.push('1');\n            } else {\n                result.push('0');\n            }\n            temp = temp / 2;\n        }\n        result.reverse();\n    }\n    \n    result\n}"
+]
+--------------------------------------------------------------------------------

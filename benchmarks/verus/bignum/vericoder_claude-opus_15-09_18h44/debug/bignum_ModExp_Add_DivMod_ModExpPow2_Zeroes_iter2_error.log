@@ -1,0 +1,52 @@
+=== Verification Error - Iteration 2 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExp_Add_DivMod_ModExpPow2_Zeroes.rs
+Time: 2025-09-15 19:14:45
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_Add_DivMod_ModExpPow2_Zeroes_impl.rs:54:25
+   |
+54 |     result.push(sum_str[i as int]);
+   |                         ^^^^^^^^
+
+error[E0425]: cannot find function `lemma_str2int_int2str` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_Add_DivMod_ModExpPow2_Zeroes_impl.rs:40:5
+   |
+40 |     lemma_str2int_int2str(sum);
+   |     ^^^^^^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function, tuple struct or tuple variant `Int2Str` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_Add_DivMod_ModExpPow2_Zeroes_impl.rs:44:23
+   |
+44 |   let ghost sum_str = Int2Str(sum);
+   |                       ^^^^^^^ not found in this scope
+
+error: aborting due to 3 previous errors
+
+For more information about this error, try `rustc --explain E0425`.
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_Add_DivMod_ModExpPow2_Zeroes_impl.rs:54:25
+   |
+54 |     result.push(sum_str[i as int]);
+   |                         ^^^^^^^^
+
+error[E0425]: cannot find function `lemma_str2int_int2str` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_Add_DivMod_ModExpPow2_Zeroes_impl.rs:40:5
+   |
+40 |     lemma_str2int_int2str(sum);
+   |     ^^^^^^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function, tuple struct or tuple variant `Int2Str` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_Add_DivMod_ModExpPow2_Zeroes_impl.rs:44:23
+   |
+44 |   let ghost sum_str = Int2Str(sum);
+   |                       ^^^^^^^ not found in this scope
+
+error: aborting due to 3 previous errors
+
+For more information about this error, try `rustc --explain E0425`.

@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn max_prefix(s: Seq<int>, i: int) -> int
     recommends 0 <= i < s.len()
     decreases i
@@ -36,6 +33,9 @@ spec fn valid_input(n: int, a: Seq<int>) -> bool
 {
     n > 0 && a.len() == n
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

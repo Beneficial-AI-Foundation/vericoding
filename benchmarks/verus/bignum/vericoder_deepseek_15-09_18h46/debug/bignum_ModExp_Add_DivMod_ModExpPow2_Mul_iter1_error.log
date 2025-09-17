@@ -1,0 +1,148 @@
+=== Verification Error - Iteration 1 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExp_Add_DivMod_ModExpPow2_Mul.rs
+Time: 2025-09-15 19:35:55
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_ModExp_Add_DivMod_ModExpPow2_Mul_impl.rs:32:19
+   |
+32 |     let max_len = max(s1.len(), s2.len()) as int;
+   |                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_ModExp_Add_DivMod_ModExpPow2_Mul_impl.rs:35:27
+   |
+35 |         let bit1 = if i < s1.len() as int && s1[i as usize] == '1' { 1 } else { 0 };
+   |                           ^^^^^^^^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_ModExp_Add_DivMod_ModExpPow2_Mul_impl.rs:36:27
+   |
+36 |         let bit2 = if i < s2.len() as int && s2[i as usize] == '1' { 1 } else { 0 };
+   |                           ^^^^^^^^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_ModExp_Add_DivMod_ModExpPow2_Mul_impl.rs:64:17
+   |
+64 |     for i in 0..dividend.len() as int {
+   |                 ^^^^^^^^^^^^^^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_ModExp_Add_DivMod_ModExpPow2_Mul_impl.rs:100:42
+    |
+100 |         let mut sy_half = sy.subrange(0, sy.len() as int - 1);
+    |                                          ^^^^^^^^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_ModExp_Add_DivMod_ModExpPow2_Mul_impl.rs:126:17
+    |
+126 |     for i in 0..s2.len() as int {
+    |                 ^^^^^^^^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_ModExp_Add_DivMod_ModExpPow2_Mul_impl.rs:152:40
+    |
+152 |     let mut sy_prefix = sy.subrange(0, sy.len() as int - 1).to_vec();
+    |                                        ^^^^^^^^^^^^^^^
+
+error[E0425]: cannot find function, tuple struct or tuple variant `Mod` in this scope
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_ModExp_Add_DivMod_ModExpPow2_Mul_impl.rs:106:13
+    |
+106 |             Mod(&product, sz)
+    |             ^^^ not found in this scope
+
+error[E0425]: cannot find function, tuple struct or tuple variant `Mod` in this scope
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_ModExp_Add_DivMod_ModExpPow2_Mul_impl.rs:108:13
+    |
+108 |             Mod(&square, sz)
+    |             ^^^ not found in this scope
+
+error[E0425]: cannot find function, tuple struct or tuple variant `Mod` in this scope
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_ModExp_Add_DivMod_ModExpPow2_Mul_impl.rs:156:23
+    |
+156 |     let mod_squared = Mod(&squared, sz);
+    |                       ^^^ not found in this scope
+
+error[E0425]: cannot find function, tuple struct or tuple variant `Mod` in this scope
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_ModExp_Add_DivMod_ModExpPow2_Mul_impl.rs:160:9
+    |
+160 |         Mod(&multiplied, sz)
+    |         ^^^ not found in this scope
+
+error: aborting due to 11 previous errors
+
+For more information about this error, try `rustc --explain E0425`.
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_ModExp_Add_DivMod_ModExpPow2_Mul_impl.rs:32:19
+   |
+32 |     let max_len = max(s1.len(), s2.len()) as int;
+   |                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_ModExp_Add_DivMod_ModExpPow2_Mul_impl.rs:35:27
+   |
+35 |         let bit1 = if i < s1.len() as int && s1[i as usize] == '1' { 1 } else { 0 };
+   |                           ^^^^^^^^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_ModExp_Add_DivMod_ModExpPow2_Mul_impl.rs:36:27
+   |
+36 |         let bit2 = if i < s2.len() as int && s2[i as usize] == '1' { 1 } else { 0 };
+   |                           ^^^^^^^^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_ModExp_Add_DivMod_ModExpPow2_Mul_impl.rs:64:17
+   |
+64 |     for i in 0..dividend.len() as int {
+   |                 ^^^^^^^^^^^^^^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_ModExp_Add_DivMod_ModExpPow2_Mul_impl.rs:100:42
+    |
+100 |         let mut sy_half = sy.subrange(0, sy.len() as int - 1);
+    |                                          ^^^^^^^^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_ModExp_Add_DivMod_ModExpPow2_Mul_impl.rs:126:17
+    |
+126 |     for i in 0..s2.len() as int {
+    |                 ^^^^^^^^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_ModExp_Add_DivMod_ModExpPow2_Mul_impl.rs:152:40
+    |
+152 |     let mut sy_prefix = sy.subrange(0, sy.len() as int - 1).to_vec();
+    |                                        ^^^^^^^^^^^^^^^
+
+error[E0425]: cannot find function, tuple struct or tuple variant `Mod` in this scope
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_ModExp_Add_DivMod_ModExpPow2_Mul_impl.rs:106:13
+    |
+106 |             Mod(&product, sz)
+    |             ^^^ not found in this scope
+
+error[E0425]: cannot find function, tuple struct or tuple variant `Mod` in this scope
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_ModExp_Add_DivMod_ModExpPow2_Mul_impl.rs:108:13
+    |
+108 |             Mod(&square, sz)
+    |             ^^^ not found in this scope
+
+error[E0425]: cannot find function, tuple struct or tuple variant `Mod` in this scope
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_ModExp_Add_DivMod_ModExpPow2_Mul_impl.rs:156:23
+    |
+156 |     let mod_squared = Mod(&squared, sz);
+    |                       ^^^ not found in this scope
+
+error[E0425]: cannot find function, tuple struct or tuple variant `Mod` in this scope
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_ModExp_Add_DivMod_ModExpPow2_Mul_impl.rs:160:9
+    |
+160 |         Mod(&multiplied, sz)
+    |         ^^^ not found in this scope
+
+error: aborting due to 11 previous errors
+
+For more information about this error, try `rustc --explain E0425`.

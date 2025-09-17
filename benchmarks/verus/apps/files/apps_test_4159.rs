@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(a: int, b: int, k: int) -> bool {
     a >= 0 && b >= 0 && k >= 0
 }
@@ -31,6 +28,9 @@ spec fn correct_result(a: int, b: int, k: int, takahashi: int, aoki: int) -> boo
     aoki == expected_aoki_cookies(a, b, k) &&
     takahashi >= 0 && aoki >= 0
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_lucky_number(n: Seq<char>) -> bool {
     n.len() > 0 && forall|i: int| 0 <= i < n.len() ==> n[i] == '4' || n[i] == '7'
 }
@@ -51,6 +48,9 @@ spec fn valid_result(n: Seq<char>, result: int) -> bool
 {
     result > 0 && result == 2 * (pow2(n.len() - 1) - 1) + binary_to_int(convert_to_binary(n)) + 1
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

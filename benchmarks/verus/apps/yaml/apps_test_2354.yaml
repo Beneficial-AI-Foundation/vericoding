@@ -8,13 +8,11 @@ vc-preamble: |-
   use vstd::prelude::*;
 
   verus! {
-
-vc-helpers: |-
   spec fn valid_input(n: int, queries: Seq<(int, int)>) -> bool {
       n > 0 && 
       forall|i: int| 0 <= i < queries.len() ==> 1 <= queries[i].0 <= n && 1 <= queries[i].1 <= n
   }
-  
+
   spec fn chessboard_value(n: int, x: int, y: int) -> int
       recommends n > 0, 0 <= x < n && 0 <= y < n
   {
@@ -24,7 +22,7 @@ vc-helpers: |-
           (n * n + 1) / 2 + 1 + (x / 2) * n + (x % 2) * (n / 2) + y / 2
       }
   }
-  
+
   spec fn valid_result(n: int, queries: Seq<(int, int)>, results: Seq<int>) -> bool
       recommends valid_input(n, queries)
   {
@@ -36,6 +34,8 @@ vc-helpers: |-
           results[i] == chessboard_value(n, x, y)
       }
   }
+
+vc-helpers: |
 
 vc-spec: |-
   fn solve(n: int, queries: Seq<(int, int)>) -> (results: Seq<int>)
@@ -50,7 +50,7 @@ vc-code: |-
       // impl-end
   }
 
-vc-postamble: |-
+vc-postamble: |2-
 
   }
 

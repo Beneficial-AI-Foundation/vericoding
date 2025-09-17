@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(n: int, a: Seq<int>) -> bool {
     n >= 1 && n <= 90 &&
     a.len() == n &&
@@ -33,6 +30,9 @@ spec fn valid_output(result: int, n: int, a: Seq<int>) -> bool {
     (1 <= result <= 90 &&
      result == min(90, find_cutoff(a, 0, 15)))
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

@@ -1,0 +1,464 @@
+=== Verification Error - Iteration 2 ===
+File: benchmarks/verus/bignum/files/bignum_ModExpPow2.rs
+Time: 2025-09-15 10:44:29
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: error[E0282]: type annotations needed
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_ModExpPow2_impl.rs:35:9
+   |
+35 |         1 % modulus
+   |         ^ cannot infer type of the type parameter `hint_please_add_suffix_on_literal_like_100u32_or_100int_or_100nat` declared on the function `spec_literal_integer`
+   |
+help: consider specifying the generic argument
+   |
+35 |         1::<hint_please_add_suffix_on_literal_like_100u32_or_100int_or_100nat> % modulus
+   |          +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_ModExpPow2_impl.rs:40:31
+   |
+40 |         (base * pow_mod(base, exp - 1, modulus)) % modulus
+   |                 -------       ^^^^^^^ expected `nat`, found `int`
+   |                 |
+   |                 arguments to this function are incorrect
+   |
+note: function defined here
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_ModExpPow2_impl.rs:32:9
+   |
+32 | spec fn pow_mod(base: nat, exp: nat, modulus: nat) -> nat
+   |         ^^^^^^^            --------
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_ModExpPow2_impl.rs:50:34
+   |
+50 |         nat_to_bit_string(n / 2, len - 1).push(bit)
+   |         -----------------        ^^^^^^^ expected `nat`, found `int`
+   |         |
+   |         arguments to this function are incorrect
+   |
+note: function defined here
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_ModExpPow2_impl.rs:44:9
+   |
+44 | spec fn nat_to_bit_string(n: nat, len: nat) -> Seq<char>
+   |         ^^^^^^^^^^^^^^^^^         --------
+
+error[E0277]: can't compare `{integer}` with `vstd::prelude::nat`
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_ModExpPow2_impl.rs:59:13
+   |
+59 |     while i < s.len()
+   |             ^ no implementation for `{integer} < vstd::prelude::nat` and `{integer} > vstd::prelude::nat`
+   |
+   = help: the trait `std::cmp::PartialOrd<vstd::prelude::nat>` is not implemented for `{integer}`
+   = help: the following other types implement trait `std::cmp::PartialOrd<Rhs>`:
+             f128
+             f16
+             f32
+             f64
+             i128
+             i16
+             i32
+             i64
+           and 8 others
+
+error[E0608]: cannot index into a value of type `vstd::seq::Seq<char>`
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_ModExpPow2_impl.rs:64:17
+   |
+64 |         v.push(s[i]);
+   |                 ^^^
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_ModExpPow2_impl.rs:85:13
+   |
+85 |     if n == 0 {
+   |        -    ^ expected `int`, found integer
+   |        |
+   |        expected because this is `vstd::prelude::int`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_ModExpPow2_impl.rs:86:24
+   |
+86 |         if sx@.len() > 0 && sx@[0] == '0' {
+   |            ---------   ^ expected `nat`, found integer
+   |            |
+   |            expected because this is `vstd::prelude::nat`
+
+error[E0608]: cannot index into a value of type `vstd::seq::Seq<char>`
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_ModExpPow2_impl.rs:86:32
+   |
+86 |         if sx@.len() > 0 && sx@[0] == '0' {
+   |                                ^^^
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_ModExpPow2_impl.rs:90:61
+   |
+90 |             return vec_from_seq(nat_to_bit_string(base_mod, 1));
+   |                                 -----------------           ^ expected `nat`, found integer
+   |                                 |
+   |                                 arguments to this function are incorrect
+   |
+note: function defined here
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_ModExpPow2_impl.rs:44:9
+   |
+44 | spec fn nat_to_bit_string(n: nat, len: nat) -> Seq<char>
+   |         ^^^^^^^^^^^^^^^^^         --------
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_ModExpPow2_impl.rs:95:18
+   |
+95 |     if sy_int == 0 {
+   |        ------    ^ expected `nat`, found integer
+   |        |
+   |        expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_ModExpPow2_impl.rs:102:17
+    |
+102 |     if sy_int % 2 == 0 {
+    |        ------   ^ expected `nat`, found integer
+    |        |
+    |        expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_ModExpPow2_impl.rs:102:22
+    |
+102 |     if sy_int % 2 == 0 {
+    |        ----------    ^ expected `nat`, found integer
+    |        |
+    |        expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_ModExpPow2_impl.rs:103:33
+    |
+103 |         let half_exp = sy_int / 2;
+    |                        ------   ^ expected `nat`, found integer
+    |                        |
+    |                        expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_ModExpPow2_impl.rs:104:51
+    |
+104 |         let sy_half = nat_to_bit_string(half_exp, n as usize);
+    |                       -----------------           ^^^^^^^^^^ expected `nat`, found `usize`
+    |                       |
+    |                       arguments to this function are incorrect
+    |
+note: function defined here
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_ModExpPow2_impl.rs:44:9
+    |
+44  | spec fn nat_to_bit_string(n: nat, len: nat) -> Seq<char>
+    |         ^^^^^^^^^^^^^^^^^         --------
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_ModExpPow2_impl.rs:105:70
+    |
+105 |         let temp_result = ModExpPow2(sx, &vec_from_seq(sy_half), n - 1, sz);
+    |                                                                  -   ^ expected `int`, found integer
+    |                                                                  |
+    |                                                                  expected because this is `vstd::prelude::int`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_ModExpPow2_impl.rs:108:59
+    |
+108 |         return vec_from_seq(nat_to_bit_string(result_int, 1));
+    |                             -----------------             ^ expected `nat`, found integer
+    |                             |
+    |                             arguments to this function are incorrect
+    |
+note: function defined here
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_ModExpPow2_impl.rs:44:9
+    |
+44  | spec fn nat_to_bit_string(n: nat, len: nat) -> Seq<char>
+    |         ^^^^^^^^^^^^^^^^^         --------
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_ModExpPow2_impl.rs:110:37
+    |
+110 |         let sy_minus_one = sy_int - 1;
+    |                            ------   ^ expected `nat`, found integer
+    |                            |
+    |                            expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_ModExpPow2_impl.rs:111:54
+    |
+111 |         let sy_new = nat_to_bit_string(sy_minus_one, n as usize);
+    |                      -----------------               ^^^^^^^^^^ expected `nat`, found `usize`
+    |                      |
+    |                      arguments to this function are incorrect
+    |
+note: function defined here
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_ModExpPow2_impl.rs:44:9
+    |
+44  | spec fn nat_to_bit_string(n: nat, len: nat) -> Seq<char>
+    |         ^^^^^^^^^^^^^^^^^         --------
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_ModExpPow2_impl.rs:112:69
+    |
+112 |         let temp_result = ModExpPow2(sx, &vec_from_seq(sy_new), n - 1, sz);
+    |                                                                 -   ^ expected `int`, found integer
+    |                                                                 |
+    |                                                                 expected because this is `vstd::prelude::int`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_ModExpPow2_impl.rs:115:59
+    |
+115 |         return vec_from_seq(nat_to_bit_string(result_int, 1));
+    |                             -----------------             ^ expected `nat`, found integer
+    |                             |
+    |                             arguments to this function are incorrect
+    |
+note: function defined here
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_ModExpPow2_impl.rs:44:9
+    |
+44  | spec fn nat_to_bit_string(n: nat, len: nat) -> Seq<char>
+    |         ^^^^^^^^^^^^^^^^^         --------
+
+error[E0605]: non-primitive cast: `vstd::prelude::int` as `usize`
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_ModExpPow2_impl.rs:104:51
+    |
+104 |         let sy_half = nat_to_bit_string(half_exp, n as usize);
+    |                                                   ^^^^^^^^^^ an `as` expression can only be used to convert between primitive types or to coerce to a specific trait object
+
+error[E0605]: non-primitive cast: `vstd::prelude::int` as `usize`
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_ModExpPow2_impl.rs:111:54
+    |
+111 |         let sy_new = nat_to_bit_string(sy_minus_one, n as usize);
+    |                                                      ^^^^^^^^^^ an `as` expression can only be used to convert between primitive types or to coerce to a specific trait object
+
+error: aborting due to 22 previous errors
+
+Some errors have detailed explanations: E0277, E0282, E0308, E0605, E0608.
+For more information about an error, try `rustc --explain E0277`.
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+error[E0282]: type annotations needed
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_ModExpPow2_impl.rs:35:9
+   |
+35 |         1 % modulus
+   |         ^ cannot infer type of the type parameter `hint_please_add_suffix_on_literal_like_100u32_or_100int_or_100nat` declared on the function `spec_literal_integer`
+   |
+help: consider specifying the generic argument
+   |
+35 |         1::<hint_please_add_suffix_on_literal_like_100u32_or_100int_or_100nat> % modulus
+   |          +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_ModExpPow2_impl.rs:40:31
+   |
+40 |         (base * pow_mod(base, exp - 1, modulus)) % modulus
+   |                 -------       ^^^^^^^ expected `nat`, found `int`
+   |                 |
+   |                 arguments to this function are incorrect
+   |
+note: function defined here
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_ModExpPow2_impl.rs:32:9
+   |
+32 | spec fn pow_mod(base: nat, exp: nat, modulus: nat) -> nat
+   |         ^^^^^^^            --------
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_ModExpPow2_impl.rs:50:34
+   |
+50 |         nat_to_bit_string(n / 2, len - 1).push(bit)
+   |         -----------------        ^^^^^^^ expected `nat`, found `int`
+   |         |
+   |         arguments to this function are incorrect
+   |
+note: function defined here
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_ModExpPow2_impl.rs:44:9
+   |
+44 | spec fn nat_to_bit_string(n: nat, len: nat) -> Seq<char>
+   |         ^^^^^^^^^^^^^^^^^         --------
+
+error[E0277]: can't compare `{integer}` with `vstd::prelude::nat`
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_ModExpPow2_impl.rs:59:13
+   |
+59 |     while i < s.len()
+   |             ^ no implementation for `{integer} < vstd::prelude::nat` and `{integer} > vstd::prelude::nat`
+   |
+   = help: the trait `std::cmp::PartialOrd<vstd::prelude::nat>` is not implemented for `{integer}`
+   = help: the following other types implement trait `std::cmp::PartialOrd<Rhs>`:
+             f128
+             f16
+             f32
+             f64
+             i128
+             i16
+             i32
+             i64
+           and 8 others
+
+error[E0608]: cannot index into a value of type `vstd::seq::Seq<char>`
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_ModExpPow2_impl.rs:64:17
+   |
+64 |         v.push(s[i]);
+   |                 ^^^
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_ModExpPow2_impl.rs:85:13
+   |
+85 |     if n == 0 {
+   |        -    ^ expected `int`, found integer
+   |        |
+   |        expected because this is `vstd::prelude::int`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_ModExpPow2_impl.rs:86:24
+   |
+86 |         if sx@.len() > 0 && sx@[0] == '0' {
+   |            ---------   ^ expected `nat`, found integer
+   |            |
+   |            expected because this is `vstd::prelude::nat`
+
+error[E0608]: cannot index into a value of type `vstd::seq::Seq<char>`
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_ModExpPow2_impl.rs:86:32
+   |
+86 |         if sx@.len() > 0 && sx@[0] == '0' {
+   |                                ^^^
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_ModExpPow2_impl.rs:90:61
+   |
+90 |             return vec_from_seq(nat_to_bit_string(base_mod, 1));
+   |                                 -----------------           ^ expected `nat`, found integer
+   |                                 |
+   |                                 arguments to this function are incorrect
+   |
+note: function defined here
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_ModExpPow2_impl.rs:44:9
+   |
+44 | spec fn nat_to_bit_string(n: nat, len: nat) -> Seq<char>
+   |         ^^^^^^^^^^^^^^^^^         --------
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_ModExpPow2_impl.rs:95:18
+   |
+95 |     if sy_int == 0 {
+   |        ------    ^ expected `nat`, found integer
+   |        |
+   |        expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_ModExpPow2_impl.rs:102:17
+    |
+102 |     if sy_int % 2 == 0 {
+    |        ------   ^ expected `nat`, found integer
+    |        |
+    |        expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_ModExpPow2_impl.rs:102:22
+    |
+102 |     if sy_int % 2 == 0 {
+    |        ----------    ^ expected `nat`, found integer
+    |        |
+    |        expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_ModExpPow2_impl.rs:103:33
+    |
+103 |         let half_exp = sy_int / 2;
+    |                        ------   ^ expected `nat`, found integer
+    |                        |
+    |                        expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_ModExpPow2_impl.rs:104:51
+    |
+104 |         let sy_half = nat_to_bit_string(half_exp, n as usize);
+    |                       -----------------           ^^^^^^^^^^ expected `nat`, found `usize`
+    |                       |
+    |                       arguments to this function are incorrect
+    |
+note: function defined here
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_ModExpPow2_impl.rs:44:9
+    |
+44  | spec fn nat_to_bit_string(n: nat, len: nat) -> Seq<char>
+    |         ^^^^^^^^^^^^^^^^^         --------
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_ModExpPow2_impl.rs:105:70
+    |
+105 |         let temp_result = ModExpPow2(sx, &vec_from_seq(sy_half), n - 1, sz);
+    |                                                                  -   ^ expected `int`, found integer
+    |                                                                  |
+    |                                                                  expected because this is `vstd::prelude::int`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_ModExpPow2_impl.rs:108:59
+    |
+108 |         return vec_from_seq(nat_to_bit_string(result_int, 1));
+    |                             -----------------             ^ expected `nat`, found integer
+    |                             |
+    |                             arguments to this function are incorrect
+    |
+note: function defined here
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_ModExpPow2_impl.rs:44:9
+    |
+44  | spec fn nat_to_bit_string(n: nat, len: nat) -> Seq<char>
+    |         ^^^^^^^^^^^^^^^^^         --------
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_ModExpPow2_impl.rs:110:37
+    |
+110 |         let sy_minus_one = sy_int - 1;
+    |                            ------   ^ expected `nat`, found integer
+    |                            |
+    |                            expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_ModExpPow2_impl.rs:111:54
+    |
+111 |         let sy_new = nat_to_bit_string(sy_minus_one, n as usize);
+    |                      -----------------               ^^^^^^^^^^ expected `nat`, found `usize`
+    |                      |
+    |                      arguments to this function are incorrect
+    |
+note: function defined here
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_ModExpPow2_impl.rs:44:9
+    |
+44  | spec fn nat_to_bit_string(n: nat, len: nat) -> Seq<char>
+    |         ^^^^^^^^^^^^^^^^^         --------
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_ModExpPow2_impl.rs:112:69
+    |
+112 |         let temp_result = ModExpPow2(sx, &vec_from_seq(sy_new), n - 1, sz);
+    |                                                                 -   ^ expected `int`, found integer
+    |                                                                 |
+    |                                                                 expected because this is `vstd::prelude::int`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_ModExpPow2_impl.rs:115:59
+    |
+115 |         return vec_from_seq(nat_to_bit_string(result_int, 1));
+    |                             -----------------             ^ expected `nat`, found integer
+    |                             |
+    |                             arguments to this function are incorrect
+    |
+note: function defined here
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_ModExpPow2_impl.rs:44:9
+    |
+44  | spec fn nat_to_bit_string(n: nat, len: nat) -> Seq<char>
+    |         ^^^^^^^^^^^^^^^^^         --------
+
+error[E0605]: non-primitive cast: `vstd::prelude::int` as `usize`
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_ModExpPow2_impl.rs:104:51
+    |
+104 |         let sy_half = nat_to_bit_string(half_exp, n as usize);
+    |                                                   ^^^^^^^^^^ an `as` expression can only be used to convert between primitive types or to coerce to a specific trait object
+
+error[E0605]: non-primitive cast: `vstd::prelude::int` as `usize`
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_ModExpPow2_impl.rs:111:54
+    |
+111 |         let sy_new = nat_to_bit_string(sy_minus_one, n as usize);
+    |                                                      ^^^^^^^^^^ an `as` expression can only be used to convert between primitive types or to coerce to a specific trait object
+
+error: aborting due to 22 previous errors
+
+Some errors have detailed explanations: E0277, E0282, E0308, E0605, E0608.
+For more information about an error, try `rustc --explain E0277`.

@@ -1,0 +1,9 @@
+=== LLM Response - fix_verification - Iteration 4 ===
+File: benchmarks/verus/bignum/files/bignum_ModExp_int_ModExpPow2_int.rs
+Prompt Hash: 8cf7aa36
+JSON Parsed Successfully: True
+Timestamp: 1757926850.170313
+Content Length: 1479 chars
+--------------------------------------------------------------------------------
+["proof fn helper_lemma_exp_base(x: nat, y: nat) ensures Exp_int(x, y) % x == 0 when y > 0 decreases y { if y > 0 { helper_lemma_exp_base(x, (y - 1) as nat); } }\nproof fn helper_lemma_exp_zero(y: nat) ensures Exp_int(0, y) == 0 when y > 0 decreases y { if y > 0 { helper_lemma_exp_zero((y - 1) as nat); } }\nproof fn helper_lemma_one_mod_z(z: nat) requires z > 1 ensures 1 % z == 1 {}\nproof fn helper_lemma_str2int_empty() ensures Str2Int(Seq::<char>::empty()) == 0 {}\nproof fn helper_lemma_exp_property(x: nat, y: nat, z: nat) requires z > 1 ensures Exp_int(x, y) % z == ((x % z) * (Exp_int(x, (y - 1) as nat) % z)) % z when y > 0 decreases y { if y > 0 { helper_lemma_exp_property(x, (y - 1) as nat, z); } }", "{\n    /* code modified by LLM (iteration 5): Fixed syntax error in proof lemma calls with proper braces */\n    let x_val = Str2Int(sx@);\n    let mut y_val = Str2Int(sy@);\n    let z_val = Str2Int(sz@);\n    let mut result = 1;\n    let mut base = x_val % z_val;\n    \n    while y_val > 0\n        invariant\n            result * Exp_int(base, y_val) % z_val == Exp_int(x_val, y_val) % z_val\n        decreases y_val\n    {\n        if y_val % 2 == 1 {\n            result = (result * base) % z_val;\n        }\n        base = (base * base) % z_val;\n        y_val = y_val / 2;\n    }\n    \n    proof { helper_lemma_one_mod_z(z_val); }\n    \n    let mut char_vec = Vec::new();\n    char_vec.push(if result == 1 { '1' } else { '0' });\n    \n    char_vec\n}"]
+--------------------------------------------------------------------------------

@@ -1,0 +1,256 @@
+=== Verification Error - Iteration 1 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExp_DivMod_Mul.rs
+Time: 2025-09-15 19:10:36
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignum_ModExp_DivMod_Mul_impl.rs:41:5
+   |
+24 | exec fn str_to_int(s: &[char]) -> (result: nat)
+   |                                            --- expected `vstd::prelude::nat` because of return type
+...
+41 |     res
+   |     ^^^ expected `nat`, found integer
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignum_ModExp_DivMod_Mul_impl.rs:47:13
+   |
+47 |     if n == 0 {
+   |        -    ^ expected `nat`, found integer
+   |        |
+   |        expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignum_ModExp_DivMod_Mul_impl.rs:53:17
+   |
+53 |     while num > 0
+   |           ---   ^ expected `nat`, found integer
+   |           |
+   |           expected because this is `vstd::prelude::nat`
+
+error[E0599]: no method named `pow` found for struct `vstd::prelude::nat` in the current scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignum_ModExp_DivMod_Mul_impl.rs:55:60
+   |
+55 |                 Str2Int(res@.reverse()) + num * (2 as nat).pow(res.len() as nat) == n
+   |                                                            ^^^ method not found in `nat`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignum_ModExp_DivMod_Mul_impl.rs:57:18
+   |
+57 |         if num % 2 == 0 {
+   |            ---   ^ expected `nat`, found integer
+   |            |
+   |            expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignum_ModExp_DivMod_Mul_impl.rs:57:23
+   |
+57 |         if num % 2 == 0 {
+   |            -------    ^ expected `nat`, found integer
+   |            |
+   |            expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignum_ModExp_DivMod_Mul_impl.rs:62:21
+   |
+62 |         num = num / 2;
+   |               ---   ^ expected `nat`, found integer
+   |               |
+   |               expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignum_ModExp_DivMod_Mul_impl.rs:87:27
+   |
+87 |     while remaining_exp > 0
+   |           -------------   ^ expected `nat`, found integer
+   |           |
+   |           expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignum_ModExp_DivMod_Mul_impl.rs:92:28
+   |
+92 |         if remaining_exp % 2 == 1 {
+   |            -------------   ^ expected `nat`, found integer
+   |            |
+   |            expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignum_ModExp_DivMod_Mul_impl.rs:92:33
+   |
+92 |         if remaining_exp % 2 == 1 {
+   |            -----------------    ^ expected `nat`, found integer
+   |            |
+   |            expected because this is `vstd::prelude::nat`
+
+error[E0277]: cannot multiply `{integer}` by `vstd::prelude::nat`
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignum_ModExp_DivMod_Mul_impl.rs:93:30
+   |
+93 |             result = (result * current_base) % z;
+   |                              ^ no implementation for `{integer} * vstd::prelude::nat`
+   |
+   = help: the trait `std::ops::Mul<vstd::prelude::nat>` is not implemented for `{integer}`
+   = help: the following other types implement trait `std::ops::Mul<Rhs>`:
+             `&f128` implements `std::ops::Mul<f128>`
+             `&f128` implements `std::ops::Mul`
+             `&f16` implements `std::ops::Mul<f16>`
+             `&f16` implements `std::ops::Mul`
+             `&f32` implements `std::ops::Mul<f32>`
+             `&f32` implements `std::ops::Mul`
+             `&f64` implements `std::ops::Mul<f64>`
+             `&f64` implements `std::ops::Mul`
+           and 57 others
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignum_ModExp_DivMod_Mul_impl.rs:96:41
+   |
+96 |         remaining_exp = remaining_exp / 2;
+   |                         -------------   ^ expected `nat`, found integer
+   |                         |
+   |                         expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignum_ModExp_DivMod_Mul_impl.rs:100:16
+    |
+100 |     int_to_str(result)
+    |     ---------- ^^^^^^ expected `nat`, found integer
+    |     |
+    |     arguments to this function are incorrect
+    |
+note: function defined here
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignum_ModExp_DivMod_Mul_impl.rs:44:9
+    |
+44  | exec fn int_to_str(n: nat) -> (result: Vec<char>)
+    |         ^^^^^^^^^^ ------
+
+error: aborting due to 13 previous errors
+
+Some errors have detailed explanations: E0277, E0308, E0599.
+For more information about an error, try `rustc --explain E0277`.
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignum_ModExp_DivMod_Mul_impl.rs:41:5
+   |
+24 | exec fn str_to_int(s: &[char]) -> (result: nat)
+   |                                            --- expected `vstd::prelude::nat` because of return type
+...
+41 |     res
+   |     ^^^ expected `nat`, found integer
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignum_ModExp_DivMod_Mul_impl.rs:47:13
+   |
+47 |     if n == 0 {
+   |        -    ^ expected `nat`, found integer
+   |        |
+   |        expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignum_ModExp_DivMod_Mul_impl.rs:53:17
+   |
+53 |     while num > 0
+   |           ---   ^ expected `nat`, found integer
+   |           |
+   |           expected because this is `vstd::prelude::nat`
+
+error[E0599]: no method named `pow` found for struct `vstd::prelude::nat` in the current scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignum_ModExp_DivMod_Mul_impl.rs:55:60
+   |
+55 |                 Str2Int(res@.reverse()) + num * (2 as nat).pow(res.len() as nat) == n
+   |                                                            ^^^ method not found in `nat`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignum_ModExp_DivMod_Mul_impl.rs:57:18
+   |
+57 |         if num % 2 == 0 {
+   |            ---   ^ expected `nat`, found integer
+   |            |
+   |            expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignum_ModExp_DivMod_Mul_impl.rs:57:23
+   |
+57 |         if num % 2 == 0 {
+   |            -------    ^ expected `nat`, found integer
+   |            |
+   |            expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignum_ModExp_DivMod_Mul_impl.rs:62:21
+   |
+62 |         num = num / 2;
+   |               ---   ^ expected `nat`, found integer
+   |               |
+   |               expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignum_ModExp_DivMod_Mul_impl.rs:87:27
+   |
+87 |     while remaining_exp > 0
+   |           -------------   ^ expected `nat`, found integer
+   |           |
+   |           expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignum_ModExp_DivMod_Mul_impl.rs:92:28
+   |
+92 |         if remaining_exp % 2 == 1 {
+   |            -------------   ^ expected `nat`, found integer
+   |            |
+   |            expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignum_ModExp_DivMod_Mul_impl.rs:92:33
+   |
+92 |         if remaining_exp % 2 == 1 {
+   |            -----------------    ^ expected `nat`, found integer
+   |            |
+   |            expected because this is `vstd::prelude::nat`
+
+error[E0277]: cannot multiply `{integer}` by `vstd::prelude::nat`
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignum_ModExp_DivMod_Mul_impl.rs:93:30
+   |
+93 |             result = (result * current_base) % z;
+   |                              ^ no implementation for `{integer} * vstd::prelude::nat`
+   |
+   = help: the trait `std::ops::Mul<vstd::prelude::nat>` is not implemented for `{integer}`
+   = help: the following other types implement trait `std::ops::Mul<Rhs>`:
+             `&f128` implements `std::ops::Mul<f128>`
+             `&f128` implements `std::ops::Mul`
+             `&f16` implements `std::ops::Mul<f16>`
+             `&f16` implements `std::ops::Mul`
+             `&f32` implements `std::ops::Mul<f32>`
+             `&f32` implements `std::ops::Mul`
+             `&f64` implements `std::ops::Mul<f64>`
+             `&f64` implements `std::ops::Mul`
+           and 57 others
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignum_ModExp_DivMod_Mul_impl.rs:96:41
+   |
+96 |         remaining_exp = remaining_exp / 2;
+   |                         -------------   ^ expected `nat`, found integer
+   |                         |
+   |                         expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignum_ModExp_DivMod_Mul_impl.rs:100:16
+    |
+100 |     int_to_str(result)
+    |     ---------- ^^^^^^ expected `nat`, found integer
+    |     |
+    |     arguments to this function are incorrect
+    |
+note: function defined here
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignum_ModExp_DivMod_Mul_impl.rs:44:9
+    |
+44  | exec fn int_to_str(n: nat) -> (result: Vec<char>)
+    |         ^^^^^^^^^^ ------
+
+error: aborting due to 13 previous errors
+
+Some errors have detailed explanations: E0277, E0308, E0599.
+For more information about an error, try `rustc --explain E0277`.

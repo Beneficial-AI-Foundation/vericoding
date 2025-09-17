@@ -1,0 +1,5 @@
+=== Raw LLM Generate Response ===
+Length: 205 characters
+--------------------------------------------------------------------------------
+["spec fn is_bit(c: char) -> bool { c == '0' || c == '1' }\n\nproof fn valid_empty()\n    ensures\n        ValidBitString(Seq::<char>::empty()),\n{\n}\n","{\n    let res = Vec::<char>::new();\n    res\n}"]
+--------------------------------------------------------------------------------

@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(n: int, k: int, m: int, d: int) -> bool {
     2 <= n && 2 <= k <= n && 1 <= m <= n && 1 <= d <= n && m * d * k >= n
 }
@@ -20,6 +17,9 @@ spec fn valid_distribution(x: int, d: int, n: int, k: int, m: int, d_max: int) -
 spec fn person1_candies(x: int, d: int) -> int {
     x * d
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

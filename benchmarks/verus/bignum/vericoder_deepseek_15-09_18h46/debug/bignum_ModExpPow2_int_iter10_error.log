@@ -1,0 +1,160 @@
+=== Verification Error - Iteration 10 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExpPow2_int.rs
+Time: 2025-09-15 20:20:16
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Verification failed: verification results:: 5 verified, 4 errors
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_ModExpPow2_int_impl.rs:13:7
+   |
+13 | proof fn lemma_pow2_exp(n: nat)
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: assertion failed
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_ModExpPow2_int_impl.rs:19:16
+   |
+19 |         assert((1u64 << 0) == 1u64);
+   |                ^^^^^^^^^^^^^^^^^^^ assertion failed
+
+error: assertion failed
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_ModExpPow2_int_impl.rs:25:16
+   |
+25 |         assert((1u64 << n) == (1u64 << sub_n) << 1);
+   |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ assertion failed
+
+error: assertion failed
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_ModExpPow2_int_impl.rs:26:16
+   |
+26 |         assert((1u64 << sub_n) << 1 == 2u64 * (1u64 << sub_n));
+   |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ assertion failed
+
+error: assertion failed
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_ModExpPow2_int_impl.rs:35:12
+   |
+35 |     assert((a * b) % m == (a % m) * (b % m) % m);
+   |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ assertion failed
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_ModExpPow2_int_impl.rs:49:7
+   |
+49 | proof fn lemma_bitshift_power_of_two(n: nat)
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: assertion failed
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_ModExpPow2_int_impl.rs:54:16
+   |
+54 |         assert((1u64 << n) == (1u64 << (n - 1)) << 1);
+   |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ assertion failed
+
+error: assertion failed
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_ModExpPow2_int_impl.rs:55:16
+   |
+55 |         assert((1u64 << (n - 1)) << 1 == 2u64 * (1u64 << (n - 1)));
+   |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ assertion failed
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_ModExpPow2_int_impl.rs:68:6
+   |
+68 | exec fn ModExpPow2_int(x: u64, y: u64, n: u64, z: u64) -> (res: u64)
+   |      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: assertion failed
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_ModExpPow2_int_impl.rs:82:20
+   |
+82 |             assert(Exp_int(x as nat, y as nat) == x as nat);
+   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ assertion failed
+
+error: possible bit shift underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_ModExpPow2_int_impl.rs:88:21
+   |
+88 |     let half_exp = ((1u64 << half_n) as u64);
+   |                     ^^^^^^^^^^^^^^^^
+
+error: assertion failed
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_ModExpPow2_int_impl.rs:96:16
+   |
+96 |         assert(Exp_int(2, (n_nat - 1) as nat) == (1u64 << half_n) as nat);
+   |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ assertion failed
+
+error: aborting due to 9 previous errors
+
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+verification results:: 5 verified, 4 errors
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_ModExpPow2_int_impl.rs:13:7
+   |
+13 | proof fn lemma_pow2_exp(n: nat)
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: assertion failed
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_ModExpPow2_int_impl.rs:19:16
+   |
+19 |         assert((1u64 << 0) == 1u64);
+   |                ^^^^^^^^^^^^^^^^^^^ assertion failed
+
+error: assertion failed
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_ModExpPow2_int_impl.rs:25:16
+   |
+25 |         assert((1u64 << n) == (1u64 << sub_n) << 1);
+   |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ assertion failed
+
+error: assertion failed
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_ModExpPow2_int_impl.rs:26:16
+   |
+26 |         assert((1u64 << sub_n) << 1 == 2u64 * (1u64 << sub_n));
+   |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ assertion failed
+
+error: assertion failed
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_ModExpPow2_int_impl.rs:35:12
+   |
+35 |     assert((a * b) % m == (a % m) * (b % m) % m);
+   |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ assertion failed
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_ModExpPow2_int_impl.rs:49:7
+   |
+49 | proof fn lemma_bitshift_power_of_two(n: nat)
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: assertion failed
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_ModExpPow2_int_impl.rs:54:16
+   |
+54 |         assert((1u64 << n) == (1u64 << (n - 1)) << 1);
+   |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ assertion failed
+
+error: assertion failed
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_ModExpPow2_int_impl.rs:55:16
+   |
+55 |         assert((1u64 << (n - 1)) << 1 == 2u64 * (1u64 << (n - 1)));
+   |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ assertion failed
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_ModExpPow2_int_impl.rs:68:6
+   |
+68 | exec fn ModExpPow2_int(x: u64, y: u64, n: u64, z: u64) -> (res: u64)
+   |      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: assertion failed
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_ModExpPow2_int_impl.rs:82:20
+   |
+82 |             assert(Exp_int(x as nat, y as nat) == x as nat);
+   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ assertion failed
+
+error: possible bit shift underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_ModExpPow2_int_impl.rs:88:21
+   |
+88 |     let half_exp = ((1u64 << half_n) as u64);
+   |                     ^^^^^^^^^^^^^^^^
+
+error: assertion failed
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_ModExpPow2_int_impl.rs:96:16
+   |
+96 |         assert(Exp_int(2, (n_nat - 1) as nat) == (1u64 << half_n) as nat);
+   |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ assertion failed
+
+error: aborting due to 9 previous errors
+

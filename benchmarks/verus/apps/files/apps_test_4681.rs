@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn lucas(n: int) -> int
     recommends n >= 0
 {
@@ -16,6 +13,9 @@ spec fn lucas(n: int) -> int
 spec fn valid_input(n: int) -> bool {
     1 <= n <= 86
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

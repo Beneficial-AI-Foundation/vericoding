@@ -1,0 +1,26 @@
+=== Verification Error - Iteration 1 ===
+File: benchmarks/verus/bignum/files/bignums_Sub.rs
+Time: 2025-09-15 10:42:11
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: error: expected -> (pattern: type)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignums_Sub_impl.rs:24:81
+   |
+24 | proof fn lemma_sub_digits_valid(c1: char, c2: char, borrow_in: nat) -> (ok: bool, diff_digit: char, borrow_out: nat)
+   |                                                                                 ^
+
+error: aborting due to 1 previous error
+
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+error: expected -> (pattern: type)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignums_Sub_impl.rs:24:81
+   |
+24 | proof fn lemma_sub_digits_valid(c1: char, c2: char, borrow_in: nat) -> (ok: bool, diff_digit: char, borrow_out: nat)
+   |                                                                                 ^
+
+error: aborting due to 1 previous error
+

@@ -1,0 +1,110 @@
+=== Verification Error - Iteration 10 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExp_Add_DivMod_Zeroes.rs
+Time: 2025-09-15 18:50:41
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Verification failed: verification results:: 6 verified, 4 errors
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_ModExp_Add_DivMod_Zeroes_impl.rs:66:5
+   |
+66 |     while i > 0
+   |     ^^^^^^^^^^^
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_ModExp_Add_DivMod_Zeroes_impl.rs:45:13
+   |
+45 |             result@.len() > 0
+   |             ^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+73 |     result
+   |     ------ at the end of the function body
+
+error: invariant not satisfied at end of loop body
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_ModExp_Add_DivMod_Zeroes_impl.rs:67:19
+   |
+67 |         invariant ValidBitString(result@)
+   |                   ^^^^^^^^^^^^^^^^^^^^^^^
+
+error: precondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_ModExp_Add_DivMod_Zeroes_impl.rs:71:21
+   |
+71 |         result.push(bits[i]);
+   |                     ^^^^^^^
+   |
+  ::: /Users/sergiu.bursuc/verus/vstd/std_specs/vec.rs:48:9
+   |
+48 |         i < vec.view().len(),
+   |         -------------------- failed precondition
+
+error: postcondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_ModExp_Add_DivMod_Zeroes_impl.rs:80:33
+    |
+80  |   ensures ValidBitString(res@), Str2Int(res@) == Exp_int(Str2Int(sx@), Str2Int(sy@)) % Str2Int(sz@)
+    |                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+102 |     int_to_bitstring(result_val)
+    |     ---------------------------- at the end of the function body
+
+error: possible arithmetic underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_ModExp_Add_DivMod_Zeroes_impl.rs:98:22
+   |
+98 |         result_val = (result_val * 2) % 1000000;
+   |                      ^^^^^^^^^^^^^^^^
+
+error: aborting due to 5 previous errors
+
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+verification results:: 6 verified, 4 errors
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_ModExp_Add_DivMod_Zeroes_impl.rs:66:5
+   |
+66 |     while i > 0
+   |     ^^^^^^^^^^^
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_ModExp_Add_DivMod_Zeroes_impl.rs:45:13
+   |
+45 |             result@.len() > 0
+   |             ^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+73 |     result
+   |     ------ at the end of the function body
+
+error: invariant not satisfied at end of loop body
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_ModExp_Add_DivMod_Zeroes_impl.rs:67:19
+   |
+67 |         invariant ValidBitString(result@)
+   |                   ^^^^^^^^^^^^^^^^^^^^^^^
+
+error: precondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_ModExp_Add_DivMod_Zeroes_impl.rs:71:21
+   |
+71 |         result.push(bits[i]);
+   |                     ^^^^^^^
+   |
+  ::: /Users/sergiu.bursuc/verus/vstd/std_specs/vec.rs:48:9
+   |
+48 |         i < vec.view().len(),
+   |         -------------------- failed precondition
+
+error: postcondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_ModExp_Add_DivMod_Zeroes_impl.rs:80:33
+    |
+80  |   ensures ValidBitString(res@), Str2Int(res@) == Exp_int(Str2Int(sx@), Str2Int(sy@)) % Str2Int(sz@)
+    |                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+102 |     int_to_bitstring(result_val)
+    |     ---------------------------- at the end of the function body
+
+error: possible arithmetic underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_ModExp_Add_DivMod_Zeroes_impl.rs:98:22
+   |
+98 |         result_val = (result_val * 2) % 1000000;
+   |                      ^^^^^^^^^^^^^^^^
+
+error: aborting due to 5 previous errors
+

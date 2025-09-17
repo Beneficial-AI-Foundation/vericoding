@@ -1,0 +1,64 @@
+=== Verification Error - Iteration 1 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExp_Add_DivMod_ModExpPow2.rs
+Time: 2025-09-15 19:20:38
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: error[E0425]: cannot find value `res` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_ModExp_Add_DivMod_ModExpPow2_impl.rs:58:26
+   |
+58 |   ensures ValidBitString(res@), Str2Int(res@) == Str2Int(s@) * Exp_int(2, n as nat)
+   |                          ^^^ not found in this scope
+
+error[E0425]: cannot find value `res` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_ModExp_Add_DivMod_ModExpPow2_impl.rs:58:41
+   |
+58 |   ensures ValidBitString(res@), Str2Int(res@) == Str2Int(s@) * Exp_int(2, n as nat)
+   |                                         ^^^ not found in this scope
+
+error[E0425]: cannot find value `res` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_ModExp_Add_DivMod_ModExpPow2_impl.rs:69:26
+   |
+69 |   ensures ValidBitString(res@), Str2Int(res@) == (Str2Int(a@) * Str2Int(b@)) % Str2Int(z@)
+   |                          ^^^ not found in this scope
+
+error[E0425]: cannot find value `res` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_ModExp_Add_DivMod_ModExpPow2_impl.rs:69:41
+   |
+69 |   ensures ValidBitString(res@), Str2Int(res@) == (Str2Int(a@) * Str2Int(b@)) % Str2Int(z@)
+   |                                         ^^^ not found in this scope
+
+error: aborting due to 4 previous errors
+
+For more information about this error, try `rustc --explain E0425`.
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+error[E0425]: cannot find value `res` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_ModExp_Add_DivMod_ModExpPow2_impl.rs:58:26
+   |
+58 |   ensures ValidBitString(res@), Str2Int(res@) == Str2Int(s@) * Exp_int(2, n as nat)
+   |                          ^^^ not found in this scope
+
+error[E0425]: cannot find value `res` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_ModExp_Add_DivMod_ModExpPow2_impl.rs:58:41
+   |
+58 |   ensures ValidBitString(res@), Str2Int(res@) == Str2Int(s@) * Exp_int(2, n as nat)
+   |                                         ^^^ not found in this scope
+
+error[E0425]: cannot find value `res` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_ModExp_Add_DivMod_ModExpPow2_impl.rs:69:26
+   |
+69 |   ensures ValidBitString(res@), Str2Int(res@) == (Str2Int(a@) * Str2Int(b@)) % Str2Int(z@)
+   |                          ^^^ not found in this scope
+
+error[E0425]: cannot find value `res` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_ModExp_Add_DivMod_ModExpPow2_impl.rs:69:41
+   |
+69 |   ensures ValidBitString(res@), Str2Int(res@) == (Str2Int(a@) * Str2Int(b@)) % Str2Int(z@)
+   |                                         ^^^ not found in this scope
+
+error: aborting due to 4 previous errors
+
+For more information about this error, try `rustc --explain E0425`.

@@ -1,0 +1,232 @@
+=== Verification Error - Iteration 8 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExp_Add_DivMod_ModExpPow2_Mul.rs
+Time: 2025-09-15 18:57:55
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_Add_DivMod_ModExpPow2_Mul_impl.rs:33:15
+   |
+33 |   let mut i = s1.len() as int - 1;
+   |               ^^^^^^^^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_Add_DivMod_ModExpPow2_Mul_impl.rs:34:15
+   |
+34 |   let mut j = s2.len() as int - 1;
+   |               ^^^^^^^^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_Add_DivMod_ModExpPow2_Mul_impl.rs:88:28
+   |
+88 |         let mut sum: int = carry as int;
+   |                            ^^^^^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_Add_DivMod_ModExpPow2_Mul_impl.rs:90:20
+   |
+90 |             sum += (s1[s1.len() - 1 - i] as u8 - b'0') as int;
+   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_Add_DivMod_ModExpPow2_Mul_impl.rs:93:20
+   |
+93 |             sum += (s2[s2.len() - 1 - j] as u8 - b'0') as int;
+   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_Add_DivMod_ModExpPow2_Mul_impl.rs:97:17
+   |
+97 |         carry = (sum / 2) as nat;
+   |                 ^^^^^^^^^^^^^^^^
+
+error[E0425]: cannot find value `s1` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_Add_DivMod_ModExpPow2_Mul_impl.rs:80:15
+   |
+80 |     while i < s1.len() || j < s2.len() || carry > 0
+   |               ^^ not found in this scope
+
+error[E0425]: cannot find value `s2` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_Add_DivMod_ModExpPow2_Mul_impl.rs:80:31
+   |
+80 |     while i < s1.len() || j < s2.len() || carry > 0
+   |                               ^^ not found in this scope
+
+error[E0425]: cannot find value `s1` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_Add_DivMod_ModExpPow2_Mul_impl.rs:84:18
+   |
+84 |             i <= s1.len(),
+   |                  ^^ not found in this scope
+
+error[E0425]: cannot find value `s2` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_Add_DivMod_ModExpPow2_Mul_impl.rs:85:18
+   |
+85 |             j <= s2.len(),
+   |                  ^^ not found in this scope
+
+error[E0425]: cannot find value `s1` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_Add_DivMod_ModExpPow2_Mul_impl.rs:86:20
+   |
+86 |         decreases (s1.len() - i) + (s2.len() - j)
+   |                    ^^ not found in this scope
+
+error[E0425]: cannot find value `s2` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_Add_DivMod_ModExpPow2_Mul_impl.rs:86:37
+   |
+86 |         decreases (s1.len() - i) + (s2.len() - j)
+   |                                     ^^ not found in this scope
+
+error[E0425]: cannot find value `s1` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_Add_DivMod_ModExpPow2_Mul_impl.rs:89:16
+   |
+89 |         if i < s1.len() {
+   |                ^^ not found in this scope
+
+error[E0425]: cannot find value `s2` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_Add_DivMod_ModExpPow2_Mul_impl.rs:92:16
+   |
+92 |         if j < s2.len() {
+   |                ^^ not found in this scope
+
+error[E0425]: cannot find value `s1` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_Add_DivMod_ModExpPow2_Mul_impl.rs:99:16
+   |
+99 |         if i < s1.len() {
+   |                ^^ not found in this scope
+
+error[E0425]: cannot find value `s2` in this scope
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_Add_DivMod_ModExpPow2_Mul_impl.rs:102:16
+    |
+102 |         if j < s2.len() {
+    |                ^^ not found in this scope
+
+error[E0425]: cannot find value `dividend` in this scope
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_Add_DivMod_ModExpPow2_Mul_impl.rs:128:32
+    |
+128 |     let dividend_val = Str2Int(dividend@);
+    |                                ^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find value `divisor` in this scope
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_Add_DivMod_ModExpPow2_Mul_impl.rs:129:31
+    |
+129 |     let divisor_val = Str2Int(divisor@);
+    |                               ^^^^^^^ not found in this scope
+
+error: aborting due to 18 previous errors
+
+For more information about this error, try `rustc --explain E0425`.
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_Add_DivMod_ModExpPow2_Mul_impl.rs:33:15
+   |
+33 |   let mut i = s1.len() as int - 1;
+   |               ^^^^^^^^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_Add_DivMod_ModExpPow2_Mul_impl.rs:34:15
+   |
+34 |   let mut j = s2.len() as int - 1;
+   |               ^^^^^^^^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_Add_DivMod_ModExpPow2_Mul_impl.rs:88:28
+   |
+88 |         let mut sum: int = carry as int;
+   |                            ^^^^^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_Add_DivMod_ModExpPow2_Mul_impl.rs:90:20
+   |
+90 |             sum += (s1[s1.len() - 1 - i] as u8 - b'0') as int;
+   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_Add_DivMod_ModExpPow2_Mul_impl.rs:93:20
+   |
+93 |             sum += (s2[s2.len() - 1 - j] as u8 - b'0') as int;
+   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_Add_DivMod_ModExpPow2_Mul_impl.rs:97:17
+   |
+97 |         carry = (sum / 2) as nat;
+   |                 ^^^^^^^^^^^^^^^^
+
+error[E0425]: cannot find value `s1` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_Add_DivMod_ModExpPow2_Mul_impl.rs:80:15
+   |
+80 |     while i < s1.len() || j < s2.len() || carry > 0
+   |               ^^ not found in this scope
+
+error[E0425]: cannot find value `s2` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_Add_DivMod_ModExpPow2_Mul_impl.rs:80:31
+   |
+80 |     while i < s1.len() || j < s2.len() || carry > 0
+   |                               ^^ not found in this scope
+
+error[E0425]: cannot find value `s1` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_Add_DivMod_ModExpPow2_Mul_impl.rs:84:18
+   |
+84 |             i <= s1.len(),
+   |                  ^^ not found in this scope
+
+error[E0425]: cannot find value `s2` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_Add_DivMod_ModExpPow2_Mul_impl.rs:85:18
+   |
+85 |             j <= s2.len(),
+   |                  ^^ not found in this scope
+
+error[E0425]: cannot find value `s1` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_Add_DivMod_ModExpPow2_Mul_impl.rs:86:20
+   |
+86 |         decreases (s1.len() - i) + (s2.len() - j)
+   |                    ^^ not found in this scope
+
+error[E0425]: cannot find value `s2` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_Add_DivMod_ModExpPow2_Mul_impl.rs:86:37
+   |
+86 |         decreases (s1.len() - i) + (s2.len() - j)
+   |                                     ^^ not found in this scope
+
+error[E0425]: cannot find value `s1` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_Add_DivMod_ModExpPow2_Mul_impl.rs:89:16
+   |
+89 |         if i < s1.len() {
+   |                ^^ not found in this scope
+
+error[E0425]: cannot find value `s2` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_Add_DivMod_ModExpPow2_Mul_impl.rs:92:16
+   |
+92 |         if j < s2.len() {
+   |                ^^ not found in this scope
+
+error[E0425]: cannot find value `s1` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_Add_DivMod_ModExpPow2_Mul_impl.rs:99:16
+   |
+99 |         if i < s1.len() {
+   |                ^^ not found in this scope
+
+error[E0425]: cannot find value `s2` in this scope
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_Add_DivMod_ModExpPow2_Mul_impl.rs:102:16
+    |
+102 |         if j < s2.len() {
+    |                ^^ not found in this scope
+
+error[E0425]: cannot find value `dividend` in this scope
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_Add_DivMod_ModExpPow2_Mul_impl.rs:128:32
+    |
+128 |     let dividend_val = Str2Int(dividend@);
+    |                                ^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find value `divisor` in this scope
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_Add_DivMod_ModExpPow2_Mul_impl.rs:129:31
+    |
+129 |     let divisor_val = Str2Int(divisor@);
+    |                               ^^^^^^^ not found in this scope
+
+error: aborting due to 18 previous errors
+
+For more information about this error, try `rustc --explain E0425`.

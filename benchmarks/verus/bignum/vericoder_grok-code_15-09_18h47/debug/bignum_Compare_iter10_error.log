@@ -1,0 +1,174 @@
+=== Verification Error - Iteration 10 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_Compare.rs
+Time: 2025-09-15 20:33:55
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Verification failed: verification results:: 2 verified, 2 errors
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_Compare_impl.rs:46:5
+   |
+46 |     while i < max_len
+   |     ^^^^^^^^^^^^^^^^^
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_Compare_impl.rs:29:6
+   |
+29 | exec fn Compare(s1: &[char], s2: &[char]) -> (res: i32)
+   |      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+note: recommendation not met
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_Compare_impl.rs:32:11
+   |
+6  |   recommends ValidBitString(s)
+   |              ----------------- recommendation not met
+...
+32 |   ensures Str2Int(s1@) < Str2Int(s2@) ==> res == -1,
+   |           ^^^^^^^^^^^^
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_Compare_impl.rs:32:11
+   |
+32 |   ensures Str2Int(s1@) < Str2Int(s2@) ==> res == -1,
+   |           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+70 |     return 0;
+   |     -------- at this exit
+
+note: recommendation not met
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_Compare_impl.rs:32:26
+   |
+6  |   recommends ValidBitString(s)
+   |              ----------------- recommendation not met
+...
+32 |   ensures Str2Int(s1@) < Str2Int(s2@) ==> res == -1,
+   |                          ^^^^^^^^^^^^
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_Compare_impl.rs:33:5
+   |
+33 |     Str2Int(s1@) == Str2Int(s2@) ==> res == 0,
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+65 |                 return -1;
+   |                 --------- at this exit
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_Compare_impl.rs:34:5
+   |
+34 |     Str2Int(s1@) > Str2Int(s2@) ==> res == 1,
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+70 |     return 0;
+   |     -------- at this exit
+
+error: precondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_Compare_impl.rs:52:13
+   |
+52 |             s1[i - diff1]
+   |             ^^^^^^^^^^^^^
+   |
+  ::: /Users/sergiu.bursuc/verus/vstd/slice.rs:62:9
+   |
+62 |         0 <= i < slice.view().len(),
+   |         --------------------------- failed precondition
+
+error: precondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_Compare_impl.rs:57:13
+   |
+57 |             s2[i - diff2]
+   |             ^^^^^^^^^^^^^
+   |
+  ::: /Users/sergiu.bursuc/verus/vstd/slice.rs:62:9
+   |
+62 |         0 <= i < slice.view().len(),
+   |         --------------------------- failed precondition
+
+error: aborting due to 5 previous errors
+
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+verification results:: 2 verified, 2 errors
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_Compare_impl.rs:46:5
+   |
+46 |     while i < max_len
+   |     ^^^^^^^^^^^^^^^^^
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_Compare_impl.rs:29:6
+   |
+29 | exec fn Compare(s1: &[char], s2: &[char]) -> (res: i32)
+   |      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+note: recommendation not met
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_Compare_impl.rs:32:11
+   |
+6  |   recommends ValidBitString(s)
+   |              ----------------- recommendation not met
+...
+32 |   ensures Str2Int(s1@) < Str2Int(s2@) ==> res == -1,
+   |           ^^^^^^^^^^^^
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_Compare_impl.rs:32:11
+   |
+32 |   ensures Str2Int(s1@) < Str2Int(s2@) ==> res == -1,
+   |           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+70 |     return 0;
+   |     -------- at this exit
+
+note: recommendation not met
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_Compare_impl.rs:32:26
+   |
+6  |   recommends ValidBitString(s)
+   |              ----------------- recommendation not met
+...
+32 |   ensures Str2Int(s1@) < Str2Int(s2@) ==> res == -1,
+   |                          ^^^^^^^^^^^^
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_Compare_impl.rs:33:5
+   |
+33 |     Str2Int(s1@) == Str2Int(s2@) ==> res == 0,
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+65 |                 return -1;
+   |                 --------- at this exit
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_Compare_impl.rs:34:5
+   |
+34 |     Str2Int(s1@) > Str2Int(s2@) ==> res == 1,
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+70 |     return 0;
+   |     -------- at this exit
+
+error: precondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_Compare_impl.rs:52:13
+   |
+52 |             s1[i - diff1]
+   |             ^^^^^^^^^^^^^
+   |
+  ::: /Users/sergiu.bursuc/verus/vstd/slice.rs:62:9
+   |
+62 |         0 <= i < slice.view().len(),
+   |         --------------------------- failed precondition
+
+error: precondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_Compare_impl.rs:57:13
+   |
+57 |             s2[i - diff2]
+   |             ^^^^^^^^^^^^^
+   |
+  ::: /Users/sergiu.bursuc/verus/vstd/slice.rs:62:9
+   |
+62 |         0 <= i < slice.view().len(),
+   |         --------------------------- failed precondition
+
+error: aborting due to 5 previous errors
+

@@ -1,0 +1,10 @@
+=== LLM Response - generate_code - Iteration 0 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExp_DivMod.rs
+Prompt Hash: ecfe719a
+JSON Parsed Successfully: True
+Timestamp: 1757955964.73387
+Content Length: 1163 chars
+--------------------------------------------------------------------------------
+["fn mul_mod(a: nat, b: nat, mod_: nat) -> nat\n    requires mod_ > 0\n    ensures res == (a * b) % mod_\n{\n    (a * b) % mod_\n}\n\nfn mod_exp(base: nat, exp: nat, mod_: nat) -> nat\n    requires mod_ > 0\n    ensures res == Exp_int(base, exp) % mod_\n    decreases exp\n{\n    if exp == 0 { 1 } else {\n        let half = mod_exp(base, exp / 2, mod_);\n        let square = mul_mod(half, half, mod_);\n        if exp % 2 == 1 {\n            mul_mod(square, base % mod_, mod_)\n        } else {\n            square\n        }\n    }\n}\n\nfn build_bits(n: nat) -> Vec<char>\n    decreases n\n    ensures\n        ValidBitString(result@),\n        Str2Int(result@) == n\n{\n    if n == 0 {\n        vec!['0']\n    } else {\n        let rest = build_bits(n / 2);\n        let digit = if n % 2 == 0 { '0' } else { '1' };\n        let mut result = rest;\n        result.push(digit);\n        result\n    }\n}",
+"{\n    let x: nat = Str2Int(sx@);\n    let y: nat = Str2Int(sy@);\n    let z: nat = Str2Int(sz@);\n    proof {\n        assert(z >= 2);\n    }\n    let res_int: nat = mod_exp(x, y, z);\n    let res_vec: Vec<char> = build_bits(res_int);\n    res_vec\n}"]
+--------------------------------------------------------------------------------

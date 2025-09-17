@@ -1,0 +1,30 @@
+=== Verification Error - Iteration 2 ===
+File: benchmarks/verus/bignum/files/bignum_Compare_CompareUnequal.rs
+Time: 2025-09-15 10:42:36
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Verification failed: error: loop must have a decreases clause
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_Compare_CompareUnequal_impl.rs:121:5
+    |
+121 |     while i < t1.len()
+    |     ^^^^^^^^^^^^^^^^^^
+    |
+    = help: to disable this check, use #[verifier::exec_allows_no_decreases_clause] on the function
+
+error: aborting due to 1 previous error
+
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+error: loop must have a decreases clause
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_Compare_CompareUnequal_impl.rs:121:5
+    |
+121 |     while i < t1.len()
+    |     ^^^^^^^^^^^^^^^^^^
+    |
+    = help: to disable this check, use #[verifier::exec_allows_no_decreases_clause] on the function
+
+error: aborting due to 1 previous error
+

@@ -1,0 +1,12 @@
+=== LLM Response - generate_code - Iteration 0 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExp_DivMod_Zeroes.rs
+Prompt Hash: d8929fb5
+JSON Parsed Successfully: True
+Timestamp: 1757966182.3616698
+Content Length: 1980 chars
+--------------------------------------------------------------------------------
+[
+"spec fn NatToSeq(n: nat) -> Seq<char>\n    decreases n\n{\n    if n == 0 {\n        Seq::empty()\n    } else {\n        let s = NatToSeq(n / 2);\n        // append least-significant bit\n        s + Seq::from_slice(&(if n % 2 == 1 { vec!['1'] } else { vec!['0'] }))\n    }\n}\n\nproof fn NatToSeq_correct(n: nat) ensures Str2Int(NatToSeq(n)) == n\n    decreases n\n{\n    if n == 0 {\n        // Str2Int(Seq::empty()) == 0 by definition\n    } else {\n        NatToSeq_correct(n / 2);\n        // from definition of NatToSeq and Str2Int, Str2Int(s + [b]) == 2 * Str2Int(s) + (b=='1')\n    }\n}",
+"{\n    // compute modulus\n    let m: nat = Str2Int(sz@);\n\n    // base and result as nats modulo m\n    let mut base: nat = Str2Int(sx@) % m;\n    let mut res_nat: nat = 1 % m;\n\n    // iterate exponent bits from least-significant (last) to most-significant (first)\n    let mut idx: int = sy@.len() as int - 1;\n    while idx >= 0\n        invariant\n            -1 <= idx,\n        decreases idx + 1\n    {\n        let b: char = sy@.index(idx);\n        if b == '1' {\n            res_nat = (res_nat * base) % m;\n        }\n        base = (base * base) % m;\n        idx -= 1;\n    }\n\n    // convert res_nat to bits (LSB first)\n    let mut digits = Vec::<char>::new();\n    if res_nat == 0 {\n        digits.push('0');\n    } else {\n        let mut x: nat = res_nat;\n        while x > 0\n            invariant\n                x >= 0,\n            decreases x\n        {\n            if x % 2 == 1 {\n                digits.push('1');\n            } else {\n                digits.push('0');\n            }\n            x = x / 2;\n        }\n    }\n\n    // reverse digits to get most-significant-first sequence\n    let mut out = Vec::<char>::new();\n    let mut j: usize = digits.len();\n    while j > 0\n        invariant\n            j <= digits.len(),\n        decreases j\n    {\n        j -= 1;\n        out.push(digits.get(j));\n    }\n\n    return out;\n}"
+]
+--------------------------------------------------------------------------------

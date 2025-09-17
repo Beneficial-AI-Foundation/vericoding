@@ -1,0 +1,38 @@
+
+
+/-!
+{
+"name": "dafny-synthesis_task_id_170_SumInRange",
+"category": "Dafny Translation",
+"description": "Automatically translated from Dafny specification: dafny-synthesis_task_id_170_SumInRange",
+"source": "Dafny",
+"translation_date": "2024",
+"functions": ,
+"methods":
+}
+-/
+
+
+/--
+Recursively sums elements in array from start index up to but not including end index.
+Translated from Dafny function sumTo.
+-/
+partial def sumTo (a : Array Int) (start : Nat) (end_ : Nat) : Int :=
+if start == end_ then
+0
+else
+sumTo a start (end_ - 1) + a[end_ - 1]!
+
+/--
+Main method that returns sum of array elements in given range.
+Translated from Dafny method SumInRange.
+-/
+def SumInRange (a : Array Int) (start : Nat) (end_ : Nat) : Int := sorry
+
+/--
+Specification for SumInRange method.
+Ensures the returned sum equals sumTo for the given range.
+-/
+theorem SumInRange_spec (a : Array Int) (start : Nat) (end_ : Nat) :
+start ≥ 0 ∧ start ≤ end_ ∧ end_ ≤ a.size →
+SumInRange a start end_ = sumTo a start end_ := sorry

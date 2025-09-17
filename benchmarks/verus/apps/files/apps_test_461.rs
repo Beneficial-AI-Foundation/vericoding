@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(n: int, a: int, b: int, c: int) -> bool {
     1 <= n <= 100 && 1 <= a <= 100 && 1 <= b <= 100 && 1 <= c <= 100
 }
@@ -22,6 +19,9 @@ spec fn min(x: int, y: int) -> int {
 spec fn max(x: int, y: int) -> int {
     if x >= y { x } else { y }
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

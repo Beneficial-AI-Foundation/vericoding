@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn sum(s: Seq<int>) -> int
     decreases s.len()
 {
@@ -41,6 +38,9 @@ spec fn is_valid_extension(temp: Seq<int>, combo: Seq<int>, k: int, n: int, star
     (forall|i: int| 0 <= i < temp.len() ==> temp[i] == combo[i]) &&
     (forall|i: int| temp.len() <= i < combo.len() ==> combo[i] >= start)
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

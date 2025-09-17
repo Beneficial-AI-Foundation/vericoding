@@ -1,0 +1,21 @@
+=== Raw LLM Generate Response ===
+Length: 281 characters
+--------------------------------------------------------------------------------
+["proof fn lemma_Str2Int_empty()
+    ensures
+        Str2Int(Seq::<char>::empty()) == 0,
+{
+}
+
+fn zero_vec() -> (res: Vec<char>)
+    ensures
+        ValidBitString(res@),
+        Str2Int(res@) == 0,
+{
+    let v = Vec::<char>::new();
+    v
+}","{
+    let res = zero_vec();
+    res
+}"]
+--------------------------------------------------------------------------------

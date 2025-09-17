@@ -1,0 +1,114 @@
+=== Verification Error - Iteration 2 ===
+File: benchmarks/verus/bignum/files/bignum_ModExp_Add_ModExpPow2_Mul.rs
+Time: 2025-09-15 11:06:01
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Verification failed: verification results:: 7 verified, 3 errors
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_Add_ModExpPow2_Mul_impl.rs:87:5
+   |
+87 |     while i < a_len || i < b_len || carry != 0
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_Add_ModExpPow2_Mul_impl.rs:79:9
+    |
+79  |         Str2Int(res@) == (Str2Int(a@) + Str2Int(b@)) % pow2(res@.len() as nat)
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+130 |     reversed
+    |     -------- at the end of the function body
+
+error: invariant not satisfied at end of loop body
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_Add_ModExpPow2_Mul_impl.rs:89:13
+   |
+89 |             i <= a_len,
+   |             ^^^^^^^^^^
+
+error: precondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_Add_ModExpPow2_Mul_impl.rs:98:16
+   |
+98 |             if a[a_len - 1 - i] == '1' {
+   |                ^^^^^^^^^^^^^^^^
+   |
+  ::: /Users/sergiu.bursuc/verus/vstd/slice.rs:62:14
+   |
+62 |         0 <= i < slice.view().len(),
+   |              - failed precondition
+
+error: precondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_Add_ModExpPow2_Mul_impl.rs:103:16
+    |
+103 |             if b[b_len - 1 - i] == '1' {
+    |                ^^^^^^^^^^^^^^^^
+    |
+   ::: /Users/sergiu.bursuc/verus/vstd/slice.rs:62:14
+    |
+62  |         0 <= i < slice.view().len(),
+    |              - failed precondition
+
+error: invariant not satisfied at end of loop body
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_Add_ModExpPow2_Mul_impl.rs:122:13
+    |
+122 |             ValidBitString(reversed@),
+    |             ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: aborting due to 5 previous errors
+
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+verification results:: 7 verified, 3 errors
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_Add_ModExpPow2_Mul_impl.rs:87:5
+   |
+87 |     while i < a_len || i < b_len || carry != 0
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_Add_ModExpPow2_Mul_impl.rs:79:9
+    |
+79  |         Str2Int(res@) == (Str2Int(a@) + Str2Int(b@)) % pow2(res@.len() as nat)
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+130 |     reversed
+    |     -------- at the end of the function body
+
+error: invariant not satisfied at end of loop body
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_Add_ModExpPow2_Mul_impl.rs:89:13
+   |
+89 |             i <= a_len,
+   |             ^^^^^^^^^^
+
+error: precondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_Add_ModExpPow2_Mul_impl.rs:98:16
+   |
+98 |             if a[a_len - 1 - i] == '1' {
+   |                ^^^^^^^^^^^^^^^^
+   |
+  ::: /Users/sergiu.bursuc/verus/vstd/slice.rs:62:14
+   |
+62 |         0 <= i < slice.view().len(),
+   |              - failed precondition
+
+error: precondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_Add_ModExpPow2_Mul_impl.rs:103:16
+    |
+103 |             if b[b_len - 1 - i] == '1' {
+    |                ^^^^^^^^^^^^^^^^
+    |
+   ::: /Users/sergiu.bursuc/verus/vstd/slice.rs:62:14
+    |
+62  |         0 <= i < slice.view().len(),
+    |              - failed precondition
+
+error: invariant not satisfied at end of loop body
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_Add_ModExpPow2_Mul_impl.rs:122:13
+    |
+122 |             ValidBitString(reversed@),
+    |             ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: aborting due to 5 previous errors
+

@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(n: int, m: int) -> bool {
   n >= m > 0
 }
@@ -38,6 +35,9 @@ spec fn optimal_distribution(result: Seq<int>, n: int, m: int) -> bool {
   &&& count(result, n / m) == m - (n % m)
   &&& count(result, n / m + 1) == n % m
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

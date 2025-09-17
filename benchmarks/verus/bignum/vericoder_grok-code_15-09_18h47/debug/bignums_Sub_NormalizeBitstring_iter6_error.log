@@ -1,0 +1,138 @@
+=== Verification Error - Iteration 6 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignums_Sub_NormalizeBitstring.rs
+Time: 2025-09-15 19:04:17
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Verification failed: verification results:: 2 verified, 3 errors
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignums_Sub_NormalizeBitstring_impl.rs:38:5
+   |
+38 |     while i < s_len && s[i] == '0'
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignums_Sub_NormalizeBitstring_impl.rs:51:9
+   |
+51 |         while j < s_len
+   |         ^^^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignums_Sub_NormalizeBitstring_impl.rs:30:11
+   |
+30 |   ensures ValidBitString(res@)
+   |           ^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+59 |         return res;
+   |         ---------- at this exit
+
+error: precondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignums_Sub_NormalizeBitstring_impl.rs:38:24
+   |
+38 |     while i < s_len && s[i] == '0'
+   |                        ^^^^
+   |
+  ::: /Users/sergiu.bursuc/verus/vstd/slice.rs:62:9
+   |
+62 |         0 <= i < slice.view().len(),
+   |         --------------------------- failed precondition
+
+error: invariant not satisfied at end of loop body
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignums_Sub_NormalizeBitstring_impl.rs:40:13
+   |
+40 |             0 <= i as int <= s@.len(),
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: decreases not satisfied at end of loop
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignums_Sub_NormalizeBitstring_impl.rs:51:9
+   |
+51 |         while j < s_len
+   |         ^^^^^^^^^^^^^^^
+
+error: invariant not satisfied at end of loop body
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignums_Sub_NormalizeBitstring_impl.rs:53:17
+   |
+53 |                 i as int <= j as int <= s@.len(),
+   |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: precondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignums_Sub_NormalizeBitstring_impl.rs:56:22
+   |
+56 |             res.push(s[j]);
+   |                      ^^^^
+   |
+  ::: /Users/sergiu.bursuc/verus/vstd/slice.rs:62:9
+   |
+62 |         0 <= i < slice.view().len(),
+   |         --------------------------- failed precondition
+
+error: aborting due to 6 previous errors
+
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+verification results:: 2 verified, 3 errors
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignums_Sub_NormalizeBitstring_impl.rs:38:5
+   |
+38 |     while i < s_len && s[i] == '0'
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignums_Sub_NormalizeBitstring_impl.rs:51:9
+   |
+51 |         while j < s_len
+   |         ^^^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignums_Sub_NormalizeBitstring_impl.rs:30:11
+   |
+30 |   ensures ValidBitString(res@)
+   |           ^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+59 |         return res;
+   |         ---------- at this exit
+
+error: precondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignums_Sub_NormalizeBitstring_impl.rs:38:24
+   |
+38 |     while i < s_len && s[i] == '0'
+   |                        ^^^^
+   |
+  ::: /Users/sergiu.bursuc/verus/vstd/slice.rs:62:9
+   |
+62 |         0 <= i < slice.view().len(),
+   |         --------------------------- failed precondition
+
+error: invariant not satisfied at end of loop body
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignums_Sub_NormalizeBitstring_impl.rs:40:13
+   |
+40 |             0 <= i as int <= s@.len(),
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: decreases not satisfied at end of loop
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignums_Sub_NormalizeBitstring_impl.rs:51:9
+   |
+51 |         while j < s_len
+   |         ^^^^^^^^^^^^^^^
+
+error: invariant not satisfied at end of loop body
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignums_Sub_NormalizeBitstring_impl.rs:53:17
+   |
+53 |                 i as int <= j as int <= s@.len(),
+   |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: precondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignums_Sub_NormalizeBitstring_impl.rs:56:22
+   |
+56 |             res.push(s[j]);
+   |                      ^^^^
+   |
+  ::: /Users/sergiu.bursuc/verus/vstd/slice.rs:62:9
+   |
+62 |         0 <= i < slice.view().len(),
+   |         --------------------------- failed precondition
+
+error: aborting due to 6 previous errors
+

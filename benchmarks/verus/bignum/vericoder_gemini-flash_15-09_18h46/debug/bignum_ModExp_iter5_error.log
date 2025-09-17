@@ -1,0 +1,52 @@
+=== Verification Error - Iteration 5 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExp.rs
+Time: 2025-09-15 18:57:08
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: error[E0425]: cannot find function, tuple struct or tuple variant `Exp_int_recursive_helper_spec` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_impl.rs:34:53
+   |
+34 |     ensures Exp_int(base_val, exp_val) % modulus == Exp_int_recursive_helper_spec(base_val % modulus, int_to_bit_seq(exp_val), modulus)
+   |                                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `int_to_bit_seq` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_impl.rs:34:103
+   |
+34 |     ensures Exp_int(base_val, exp_val) % modulus == Exp_int_recursive_helper_spec(base_val % modulus, int_to_bit_seq(exp_val), modulus)
+   |                                                                                                       ^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `int_to_bit_seq` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_impl.rs:39:20
+   |
+39 |     let exp_bits = int_to_bit_seq(exp_val);
+   |                    ^^^^^^^^^^^^^^ not found in this scope
+
+error: aborting due to 3 previous errors
+
+For more information about this error, try `rustc --explain E0425`.
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+error[E0425]: cannot find function, tuple struct or tuple variant `Exp_int_recursive_helper_spec` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_impl.rs:34:53
+   |
+34 |     ensures Exp_int(base_val, exp_val) % modulus == Exp_int_recursive_helper_spec(base_val % modulus, int_to_bit_seq(exp_val), modulus)
+   |                                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `int_to_bit_seq` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_impl.rs:34:103
+   |
+34 |     ensures Exp_int(base_val, exp_val) % modulus == Exp_int_recursive_helper_spec(base_val % modulus, int_to_bit_seq(exp_val), modulus)
+   |                                                                                                       ^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `int_to_bit_seq` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_impl.rs:39:20
+   |
+39 |     let exp_bits = int_to_bit_seq(exp_val);
+   |                    ^^^^^^^^^^^^^^ not found in this scope
+
+error: aborting due to 3 previous errors
+
+For more information about this error, try `rustc --explain E0425`.

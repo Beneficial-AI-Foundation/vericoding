@@ -1,0 +1,30 @@
+=== Verification Error - Iteration 5 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignums_Sub.rs
+Time: 2025-09-15 18:53:45
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Verification failed: error: loop must have a decreases clause
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignums_Sub_impl.rs:97:5
+   |
+97 |     while i < s1_len || i < s2_len || borrow
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = help: to disable this check, use #[verifier::exec_allows_no_decreases_clause] on the function
+
+error: aborting due to 1 previous error
+
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+error: loop must have a decreases clause
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignums_Sub_impl.rs:97:5
+   |
+97 |     while i < s1_len || i < s2_len || borrow
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = help: to disable this check, use #[verifier::exec_allows_no_decreases_clause] on the function
+
+error: aborting due to 1 previous error
+

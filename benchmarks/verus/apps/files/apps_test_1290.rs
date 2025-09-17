@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(n: int, m: int, squares: Seq<int>) -> bool {
     n >= 1 && n <= 1000 &&
     m >= 1 && m <= 1000 &&
@@ -27,6 +24,9 @@ spec fn correct_result(n: int, squares: Seq<int>, result: int) -> bool {
     (forall|col: int| 1 <= col <= n ==> result <= count_occurrences(squares, col)) &&
     (exists|col: int| 1 <= col <= n && result == count_occurrences(squares, col))
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(n: int, a: int, b: int, k: int, h: Seq<int>) -> bool {
     n > 0 && a > 0 && b > 0 && k >= 0 && h.len() == n && 
     forall|i: int| 0 <= i < h.len() ==> h[i] > 0
@@ -45,6 +42,9 @@ spec fn count_killable_helper(sorted_health: Seq<int>, a: int, remaining_k: int,
         }
     }
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

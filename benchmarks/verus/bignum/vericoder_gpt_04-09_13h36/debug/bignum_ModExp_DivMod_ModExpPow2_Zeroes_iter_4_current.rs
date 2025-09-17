@@ -1,0 +1,216 @@
+use vstd::prelude::*;
+
+verus! {
+
+spec fn Exp_int(x: nat, y: nat) -> nat
+decreases y
+{
+    if y == 0 { 1 } else { x * Exp_int(x, (y - 1) as nat) }
+}
+
+spec fn Str2Int(s: Seq<char>) -> nat
+recommends ValidBitString(s)
+decreases s.len()
+{
+    if s.len() == 0 { 0 } else { 2 * Str2Int(s.subrange(0, s.len() as int - 1)) + (if s.index(s.len() as int - 1) == '1' { 1nat } else { 0nat }) }
+}
+
+spec fn ValidBitString(s: Seq<char>) -> bool
+{
+    forall |i: int| 0 <= i && i < s.len() as int ==> (s.index(i) == '0' || s.index(i) == '1')
+}
+
+// <vc-helpers>
+proof fn lemma_validbit_push(s: Seq<char>, c: char)
+  requires
+    ValidBitString(s),
+    c == '0' || c == '1'
+  ensures
+    ValidBitString(s.push(c))
+{
+  assert forall |i: int| 0 <= i && i < s.push(c).len() as int
+    implies s.push(c).index(i) == '0' || s.push(c).index(i) == '1' by {
+    if i < s.len() as int {
+      assert(s.push(c).index(i) == s.index(i));
+      assert(ValidBitString(s));
+    } else {
+      assert(i == s.len() as int);
+      assert(s.push(c).index(i) == c);
+    }
+  }
+}
+
+proof fn lemma_exists_bitstring(n: nat)
+  ensures exists |s: Seq<char>| ValidBitString(s) && Str2Int(s) == n
+  decreases n
+{
+  if n == 0 {
+    let s = Seq::<char>::empty();
+    assert(ValidBitString(s));
+    assert(Str2Int(s) == 0);
+    assert(exists |t: Seq<char>| ValidBitString(t) && Str2Int(t) == n) by {
+      assert(ValidBitString(s) && Str2Int(s) == n);
+    }
+  } else {
+    let r: int = n % 2;
+    let q: int = n / 2;
+    assert(0 <= r && r < 2);
+    assert(0 <= q);
+    let m: nat = q as nat;
+    lemma_exists_bitstring(m);
+    let s0 = choose |s: Seq<char>| ValidBitString(s) && Str2Int(s) == m;
+
+    let b: char = if r == 1 { '1' } else { '0' };
+
+    lemma_validbit_push(s0, b);
+
+    let sp = s0.push(b);
+    let l: int = sp.len() as int;
+    assert(l == s0.len() as int + 1);
+    assert(l > 0);
+
+    assert(sp.subrange(0, l - 1).len() == s0.len());
+    assert forall |i: int|
+      0 <= i && i < s0.len() as int
+      implies sp.subrange(0, l - 1).index(i) == s0.index(i) by
+    {
+      assert(sp.subrange(0, l - 1).index(i) == sp.index(i));
+      assert(sp.index(i) == s0.index(i));
+    }
+    assert(sp.subrange(0, l - 1) =~= s0);
+
+    assert(sp.index(l - 1) == b);
+
+    let bit_val: nat = if b == '1' { 1nat } else { 0nat };
+
+    assert(sp.len() > 0);
+    assert(Str2Int(sp) == 2 * Str2Int(sp.subrange(0, l - 1)) + (if sp.index(l - 1) == '1' { 1nat } else { 0nat }));
+    assert(Str2Int(sp.subrange(0, l - 1)) == Str2Int(s0));
+    assert(Str2Int(sp) == 2 * Str2Int(s0) + bit_val);
+    assert(Str2Int(s0) == m);
+    assert(Str2Int(sp) == 2 * m + bit_val);
+
+    if r == 1 {
+      assert(b == '1');
+      assert(bit_val == 1nat);
+    } else {
+      assert(r == 0);
+      assert(b == '0');
+      assert(bit_val == 0nat);
+    }
+    assert(bit_val == r as nat);
+
+    assert(m as int == q);
+    assert(2 * m + r as nat == (2 * q + r) as nat);
+
+    assert(n as int == 2 * q + r);
+    assert(0 <= 2 * q + r);
+    assert((2 * q + r) as nat == n);
+
+    assert(Str2Int(sp) == n);
+
+    assert(exists |t: Seq<char>| ValidBitString(t) && Str2Int(t) == n) by {
+      assert(ValidBitString(sp) && Str2Int(sp)
+// </vc-helpers>
+
+// <vc-spec>
+exec fn ModExp_DivMod_ModExpPow2_Zeroes(sx: &[char], sy: &[char], sz: &[char]) -> (res: Vec<char>)
+  requires ValidBitString(sx@), ValidBitString(sy@), ValidBitString(sz@), sy@.len() > 0, Str2Int(sz@) > 1
+  ensures ValidBitString(res@), Str2Int(res@) == Exp_int(Str2Int(sx@), Str2Int(sy@)) % Str2Int(sz@)
+  decreases sy@.len()
+// </vc-spec>
+// <vc-code>
+proof fn lemma_validbit_push(s: Seq<char>, c: char)
+  requires
+    ValidBitString(s),
+    c == '0' || c == '1'
+  ensures
+    ValidBitString(s.push(c))
+{
+  assert forall |i: int| 0 <= i && i < s.push(c).len() as int
+    implies s.push(c).index(i) == '0' || s.push(c).index(i) == '1' by {
+    if i < s.len() as int {
+      assert(s.push(c).index(i) == s.index(i));
+      assert(ValidBitString(s));
+    } else {
+      assert(i == s.len() as int);
+      assert(s.push(c).index(i) == c);
+    }
+  }
+}
+
+proof fn lemma_exists_bitstring(n: nat)
+  ensures exists |s: Seq<char>| ValidBitString(s) && Str2Int(s) == n
+  decreases n
+{
+  if n == 0 {
+    let s = Seq::<char>::empty();
+    assert(ValidBitString(s));
+    assert(Str2Int(s) == 0);
+    assert(exists |t: Seq<char>| ValidBitString(t) && Str2Int(t) == n) by {
+      assert(ValidBitString(s) && Str2Int(s) == n);
+    }
+  } else {
+    let r: int = n % 2;
+    let q: int = n / 2;
+    assert(0 <= r && r < 2);
+    assert(0 <= q);
+    let m: nat = q as nat;
+    lemma_exists_bitstring(m);
+    let s0 = choose |s: Seq<char>| ValidBitString(s) && Str2Int(s) == m;
+
+    let b: char = if r == 1 { '1' } else { '0' };
+
+    lemma_validbit_push(s0, b);
+
+    let sp = s0.push(b);
+    let l: int = sp.len() as int;
+    assert(l == s0.len() as int + 1);
+    assert(l > 0);
+
+    assert(sp.subrange(0, l - 1).len() == s0.len());
+    assert forall |i: int|
+      0 <= i && i < s0.len() as int
+      implies sp.subrange(0, l - 1).index(i) == s0.index(i) by
+    {
+      assert(sp.subrange(0, l - 1).index(i) == sp.index(i));
+      assert(sp.index(i) == s0.index(i));
+    }
+    assert(sp.subrange(0, l - 1) =~= s0);
+
+    assert(sp.index(l - 1) == b);
+
+    let bit_val: nat = if b == '1' { 1nat } else { 0nat };
+
+    assert(sp.len() > 0);
+    assert(Str2Int(sp) == 2 * Str2Int(sp.subrange(0, l - 1)) + (if sp.index(l - 1) == '1' { 1nat } else { 0nat }));
+    assert(Str2Int(sp.subrange(0, l - 1)) == Str2Int(s0));
+    assert(Str2Int(sp) == 2 * Str2Int(s0) + bit_val);
+    assert(Str2Int(s0) == m);
+    assert(Str2Int(sp) == 2 * m + bit_val);
+
+    if r == 1 {
+      assert(b == '1');
+      assert(bit_val == 1nat);
+    } else {
+      assert(r == 0);
+      assert(b == '0');
+      assert(bit_val == 0nat);
+    }
+    assert(bit_val == r as nat);
+
+    assert(m as int == q);
+    assert(2 * m + r as nat == (2 * q + r) as nat);
+
+    assert(n as int == 2 * q + r);
+    assert(0 <= 2 * q + r);
+    assert((2 * q + r) as nat == n);
+
+    assert(Str2Int(sp) == n);
+
+    assert(exists |t: Seq<char>| ValidBitString(t) && Str2Int(t) == n) by {
+      assert(ValidBitString(sp) && Str2Int(sp)
+// </vc-code>
+
+fn main() {}
+}

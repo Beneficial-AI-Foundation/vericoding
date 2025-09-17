@@ -1,0 +1,130 @@
+=== Verification Error - Iteration 2 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_DivMod.rs
+Time: 2025-09-15 18:45:07
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Verification failed: verification results:: 5 verified, 3 errors
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_DivMod_impl.rs:57:5
+   |
+57 |     while i < s.len()
+   |     ^^^^^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_DivMod_impl.rs:52:13
+   |
+52 |     ensures res as nat == Str2Int(s@)
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+71 |     result
+   |     ------ at the end of the function body
+
+error: invariant not satisfied at end of loop body
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_DivMod_impl.rs:61:13
+   |
+61 |             result as nat == Str2Int(s@.subrange(0, i as int)),
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_DivMod_impl.rs:64:18
+   |
+64 |         result = result * 2;
+   |                  ^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_DivMod_impl.rs:66:22
+   |
+66 |             result = result + 1;
+   |                      ^^^^^^^^^^
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_DivMod_impl.rs:74:6
+   |
+74 | exec fn int_to_binary(n: u64) -> (res: Vec<char>)
+   |      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_DivMod_impl.rs:76:9
+    |
+76  |         Str2Int(res@) == n as nat
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+113 |     reversed
+    |     -------- at the end of the function body
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_DivMod_impl.rs:76:9
+   |
+76 |         Str2Int(res@) == n as nat
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+81 |         return v;
+   |         -------- at this exit
+
+error: aborting due to 6 previous errors
+
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+verification results:: 5 verified, 3 errors
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_DivMod_impl.rs:57:5
+   |
+57 |     while i < s.len()
+   |     ^^^^^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_DivMod_impl.rs:52:13
+   |
+52 |     ensures res as nat == Str2Int(s@)
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+71 |     result
+   |     ------ at the end of the function body
+
+error: invariant not satisfied at end of loop body
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_DivMod_impl.rs:61:13
+   |
+61 |             result as nat == Str2Int(s@.subrange(0, i as int)),
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_DivMod_impl.rs:64:18
+   |
+64 |         result = result * 2;
+   |                  ^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_DivMod_impl.rs:66:22
+   |
+66 |             result = result + 1;
+   |                      ^^^^^^^^^^
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_DivMod_impl.rs:74:6
+   |
+74 | exec fn int_to_binary(n: u64) -> (res: Vec<char>)
+   |      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_DivMod_impl.rs:76:9
+    |
+76  |         Str2Int(res@) == n as nat
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+113 |     reversed
+    |     -------- at the end of the function body
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_DivMod_impl.rs:76:9
+   |
+76 |         Str2Int(res@) == n as nat
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+81 |         return v;
+   |         -------- at this exit
+
+error: aborting due to 6 previous errors
+

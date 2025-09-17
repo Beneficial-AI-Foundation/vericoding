@@ -1,4 +1,4 @@
-name: Test verified-cogen syntax
+name: Test verified_cogen syntax
 
 on:
   push:
@@ -25,11 +25,11 @@ jobs:
       uses: dtolnay/rust-toolchain@1.88.0
     - name: Install Verus
       run: |
-        wget https://github.com/verus-lang/verus/releases/download/release%2F0.2025.08.01.33c6cec/verus-0.2025.08.01.33c6cec-x86-linux.zip
-        unzip verus-0.2025.08.01.33c6cec-x86-linux.zip
+        wget https://github.com/verus-lang/verus/releases/download/release%2F0.2025.08.25.63ab0cb/verus-0.2025.08.25.63ab0cb-x86-linux.zip
+        unzip verus-0.2025.08.25.63ab0cb-x86-linux.zip
         mkdir -p ~/.local/bin
         mv verus-x86-linux ~/.local/bin/
         echo "$HOME/.local/bin/verus-x86-linux" >> $GITHUB_PATH
     
     - name: Run Verus validation tests
-      run: uv run src/tests/test_verus_validation.py benchmarks/verus/verified-cogen/
+      run: uv run src/tests/test_verus_validation.py benchmarks/verus/verified_cogen/

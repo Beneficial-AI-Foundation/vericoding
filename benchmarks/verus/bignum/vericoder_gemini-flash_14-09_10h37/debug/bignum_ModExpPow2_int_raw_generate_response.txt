@@ -1,0 +1,5 @@
+=== Raw LLM Generate Response ===
+Length: 343 characters
+--------------------------------------------------------------------------------
+["spec fn Exp(x: nat, e: nat) -> nat decreases e { if e == 0 { 1 } else { x * Exp(x, (e - 1) as nat) } }", "{\n    if n == 0 {\n        x % z\n    } else {\n        let res_prev = ModExpPow2_int(x, Exp(2, (n - 1) as nat) as u64, n - 1, z);\n        let res = (res_prev as u128 * res_prev as u128) % (z as u128);\n        res as u64\n    }\n}"]
+--------------------------------------------------------------------------------

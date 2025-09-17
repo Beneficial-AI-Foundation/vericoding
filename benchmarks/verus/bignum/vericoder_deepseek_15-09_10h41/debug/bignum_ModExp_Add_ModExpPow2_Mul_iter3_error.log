@@ -1,0 +1,40 @@
+=== Verification Error - Iteration 3 ===
+File: benchmarks/verus/bignum/files/bignum_ModExp_Add_ModExpPow2_Mul.rs
+Time: 2025-09-15 10:58:39
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: error[E0425]: cannot find function `lemma_str2int_zero_append` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_10h41/bignum_ModExp_Add_ModExpPow2_Mul_impl.rs:30:9
+   |
+30 |         lemma_str2int_zero_append(s);
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `lemma_str2int_one_append` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_10h41/bignum_ModExp_Add_ModExpPow2_Mul_impl.rs:34:9
+   |
+34 |         lemma_str2int_one_append(s);
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^ not found in this scope
+
+error: aborting due to 2 previous errors
+
+For more information about this error, try `rustc --explain E0425`.
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+error[E0425]: cannot find function `lemma_str2int_zero_append` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_10h41/bignum_ModExp_Add_ModExpPow2_Mul_impl.rs:30:9
+   |
+30 |         lemma_str2int_zero_append(s);
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `lemma_str2int_one_append` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_10h41/bignum_ModExp_Add_ModExpPow2_Mul_impl.rs:34:9
+   |
+34 |         lemma_str2int_one_append(s);
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^ not found in this scope
+
+error: aborting due to 2 previous errors
+
+For more information about this error, try `rustc --explain E0425`.

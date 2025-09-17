@@ -1,0 +1,256 @@
+=== Verification Error - Iteration 7 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExp_ModExpPow2_Add_Zeroes_DivMod_Mul.rs
+Time: 2025-09-15 19:21:57
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Verification failed: verification results:: 4 verified, 7 errors
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_ModExpPow2_Add_Zeroes_DivMod_Mul_impl.rs:42:7
+   |
+42 | proof fn power_mod_correct(base: nat, exp: nat, modulus: nat)
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: assertion failed
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_ModExpPow2_Add_Zeroes_DivMod_Mul_impl.rs:53:20
+   |
+53 |             assert(Exp_int(base, exp) == Exp_int(base, half_exp) * Exp_int(base, half_exp)) by {
+   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ assertion failed
+
+error: assertion failed
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_ModExpPow2_Add_Zeroes_DivMod_Mul_impl.rs:62:20
+   |
+62 |             assert(Exp_int(base, exp) == Exp_int(base, half_exp) * Exp_int(base, half_exp) * base) by {
+   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ assertion failed
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_ModExpPow2_Add_Zeroes_DivMod_Mul_impl.rs:69:6
+   |
+69 | exec fn int_to_bit_string(n: u64) -> (res: Vec<char>)
+   |      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: assertion failed
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_ModExpPow2_Add_Zeroes_DivMod_Mul_impl.rs:81:20
+   |
+81 |             assert(Str2Int(result@) == 0);
+   |                    ^^^^^^^^^^^^^^^^^^^^^ assertion failed
+
+error: invariant not satisfied at end of loop body
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_ModExpPow2_Add_Zeroes_DivMod_Mul_impl.rs:89:13
+   |
+89 |             n as nat == Str2Int(result@) + (num as nat) * Exp_int(2, result.len() as nat),
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: invariant not satisfied before loop
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_ModExpPow2_Add_Zeroes_DivMod_Mul_impl.rs:89:13
+   |
+89 |             n as nat == Str2Int(result@) + (num as nat) * Exp_int(2, result.len() as nat),
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_ModExpPow2_Add_Zeroes_DivMod_Mul_impl.rs:111:6
+    |
+111 | exec fn compute_mod_exp(base: u64, exp: u64, modulus: u64) -> (res: u64)
+    |      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_ModExpPow2_Add_Zeroes_DivMod_Mul_impl.rs:126:25
+    |
+126 |     let half_squared = ((half as u128 * half as u128) % (modulus as u128)) as u64;
+    |                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_ModExpPow2_Add_Zeroes_DivMod_Mul_impl.rs:131:10
+    |
+131 |         ((half_squared as u128 * base as u128) % (modulus as u128)) as u64
+    |          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_ModExpPow2_Add_Zeroes_DivMod_Mul_impl.rs:144:5
+    |
+144 |     while i < s.len()
+    |     ^^^^^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_ModExpPow2_Add_Zeroes_DivMod_Mul_impl.rs:138:13
+    |
+138 |     ensures res as nat == Str2Int(s@)
+    |             ^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+168 |     result
+    |     ------ at the end of the function body
+
+error: invariant not satisfied at end of loop body
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_ModExpPow2_Add_Zeroes_DivMod_Mul_impl.rs:147:13
+    |
+147 |             ValidBitString(s@.subrange(0, i as int)),
+    |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: invariant not satisfied at end of loop body
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_ModExpPow2_Add_Zeroes_DivMod_Mul_impl.rs:148:13
+    |
+148 |             result as nat == Str2Int(s@.subrange(0, i as int)),
+    |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_ModExpPow2_Add_Zeroes_DivMod_Mul_impl.rs:173:6
+    |
+173 | exec fn ModExp_ModExpPow2_Add_Zeroes_DivMod_Mul(sx: &[char], sy: &[char], sz: &[char]) -> (res: Vec<char>)
+    |      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: precondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_ModExpPow2_Add_Zeroes_DivMod_Mul_impl.rs:181:17
+    |
+137 |              Str2Int(s@) <= u64::MAX,
+    |              ----------------------- failed precondition
+...
+181 |     let x_val = bit_string_to_int(sx);
+    |                 ^^^^^^^^^^^^^^^^^^^^^
+
+error: precondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_ModExpPow2_Add_Zeroes_DivMod_Mul_impl.rs:182:17
+    |
+137 |              Str2Int(s@) <= u64::MAX,
+    |              ----------------------- failed precondition
+...
+182 |     let y_val = bit_string_to_int(sy);
+    |                 ^^^^^^^^^^^^^^^^^^^^^
+
+error: precondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_ModExpPow2_Add_Zeroes_DivMod_Mul_impl.rs:183:17
+    |
+137 |              Str2Int(s@) <= u64::MAX,
+    |              ----------------------- failed precondition
+...
+183 |     let z_val = bit_string_to_int(sz);
+    |                 ^^^^^^^^^^^^^^^^^^^^^
+
+error: aborting due to 13 previous errors
+
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+verification results:: 4 verified, 7 errors
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_ModExpPow2_Add_Zeroes_DivMod_Mul_impl.rs:42:7
+   |
+42 | proof fn power_mod_correct(base: nat, exp: nat, modulus: nat)
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: assertion failed
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_ModExpPow2_Add_Zeroes_DivMod_Mul_impl.rs:53:20
+   |
+53 |             assert(Exp_int(base, exp) == Exp_int(base, half_exp) * Exp_int(base, half_exp)) by {
+   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ assertion failed
+
+error: assertion failed
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_ModExpPow2_Add_Zeroes_DivMod_Mul_impl.rs:62:20
+   |
+62 |             assert(Exp_int(base, exp) == Exp_int(base, half_exp) * Exp_int(base, half_exp) * base) by {
+   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ assertion failed
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_ModExpPow2_Add_Zeroes_DivMod_Mul_impl.rs:69:6
+   |
+69 | exec fn int_to_bit_string(n: u64) -> (res: Vec<char>)
+   |      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: assertion failed
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_ModExpPow2_Add_Zeroes_DivMod_Mul_impl.rs:81:20
+   |
+81 |             assert(Str2Int(result@) == 0);
+   |                    ^^^^^^^^^^^^^^^^^^^^^ assertion failed
+
+error: invariant not satisfied at end of loop body
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_ModExpPow2_Add_Zeroes_DivMod_Mul_impl.rs:89:13
+   |
+89 |             n as nat == Str2Int(result@) + (num as nat) * Exp_int(2, result.len() as nat),
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: invariant not satisfied before loop
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_ModExpPow2_Add_Zeroes_DivMod_Mul_impl.rs:89:13
+   |
+89 |             n as nat == Str2Int(result@) + (num as nat) * Exp_int(2, result.len() as nat),
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_ModExpPow2_Add_Zeroes_DivMod_Mul_impl.rs:111:6
+    |
+111 | exec fn compute_mod_exp(base: u64, exp: u64, modulus: u64) -> (res: u64)
+    |      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_ModExpPow2_Add_Zeroes_DivMod_Mul_impl.rs:126:25
+    |
+126 |     let half_squared = ((half as u128 * half as u128) % (modulus as u128)) as u64;
+    |                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_ModExpPow2_Add_Zeroes_DivMod_Mul_impl.rs:131:10
+    |
+131 |         ((half_squared as u128 * base as u128) % (modulus as u128)) as u64
+    |          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_ModExpPow2_Add_Zeroes_DivMod_Mul_impl.rs:144:5
+    |
+144 |     while i < s.len()
+    |     ^^^^^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_ModExpPow2_Add_Zeroes_DivMod_Mul_impl.rs:138:13
+    |
+138 |     ensures res as nat == Str2Int(s@)
+    |             ^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+168 |     result
+    |     ------ at the end of the function body
+
+error: invariant not satisfied at end of loop body
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_ModExpPow2_Add_Zeroes_DivMod_Mul_impl.rs:147:13
+    |
+147 |             ValidBitString(s@.subrange(0, i as int)),
+    |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: invariant not satisfied at end of loop body
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_ModExpPow2_Add_Zeroes_DivMod_Mul_impl.rs:148:13
+    |
+148 |             result as nat == Str2Int(s@.subrange(0, i as int)),
+    |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_ModExpPow2_Add_Zeroes_DivMod_Mul_impl.rs:173:6
+    |
+173 | exec fn ModExp_ModExpPow2_Add_Zeroes_DivMod_Mul(sx: &[char], sy: &[char], sz: &[char]) -> (res: Vec<char>)
+    |      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: precondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_ModExpPow2_Add_Zeroes_DivMod_Mul_impl.rs:181:17
+    |
+137 |              Str2Int(s@) <= u64::MAX,
+    |              ----------------------- failed precondition
+...
+181 |     let x_val = bit_string_to_int(sx);
+    |                 ^^^^^^^^^^^^^^^^^^^^^
+
+error: precondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_ModExpPow2_Add_Zeroes_DivMod_Mul_impl.rs:182:17
+    |
+137 |              Str2Int(s@) <= u64::MAX,
+    |              ----------------------- failed precondition
+...
+182 |     let y_val = bit_string_to_int(sy);
+    |                 ^^^^^^^^^^^^^^^^^^^^^
+
+error: precondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_ModExpPow2_Add_Zeroes_DivMod_Mul_impl.rs:183:17
+    |
+137 |              Str2Int(s@) <= u64::MAX,
+    |              ----------------------- failed precondition
+...
+183 |     let z_val = bit_string_to_int(sz);
+    |                 ^^^^^^^^^^^^^^^^^^^^^
+
+error: aborting due to 13 previous errors
+

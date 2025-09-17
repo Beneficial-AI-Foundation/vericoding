@@ -1,0 +1,64 @@
+=== Verification Error - Iteration 4 ===
+File: benchmarks/verus/bignum/files/bignum_ModExp_ModExpPow2_Add_Zeroes_DivMod_Mul.rs
+Time: 2025-09-15 10:59:43
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_10h41/bignum_ModExp_ModExpPow2_Add_Zeroes_DivMod_Mul_impl.rs:49:17
+   |
+49 |     let x_val = Str2Int(sx@) as int;
+   |                 ^^^^^^^^^^^^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_10h41/bignum_ModExp_ModExpPow2_Add_Zeroes_DivMod_Mul_impl.rs:50:17
+   |
+50 |     let y_val = Str2Int(sy@) as int;
+   |                 ^^^^^^^^^^^^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_10h41/bignum_ModExp_ModExpPow2_Add_Zeroes_DivMod_Mul_impl.rs:51:17
+   |
+51 |     let m_val = Str2Int(sz@) as int;
+   |                 ^^^^^^^^^^^^^^^^^^^
+
+error[E0425]: cannot find value `result` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_10h41/bignum_ModExp_ModExpPow2_Add_Zeroes_DivMod_Mul_impl.rs:27:13
+   |
+27 |     ensures result == Exp_int(x as nat, y as nat) % (m as nat)
+   |             ^^^^^^ not found in this scope
+
+error: aborting due to 4 previous errors
+
+For more information about this error, try `rustc --explain E0425`.
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_10h41/bignum_ModExp_ModExpPow2_Add_Zeroes_DivMod_Mul_impl.rs:49:17
+   |
+49 |     let x_val = Str2Int(sx@) as int;
+   |                 ^^^^^^^^^^^^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_10h41/bignum_ModExp_ModExpPow2_Add_Zeroes_DivMod_Mul_impl.rs:50:17
+   |
+50 |     let y_val = Str2Int(sy@) as int;
+   |                 ^^^^^^^^^^^^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_10h41/bignum_ModExp_ModExpPow2_Add_Zeroes_DivMod_Mul_impl.rs:51:17
+   |
+51 |     let m_val = Str2Int(sz@) as int;
+   |                 ^^^^^^^^^^^^^^^^^^^
+
+error[E0425]: cannot find value `result` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_10h41/bignum_ModExp_ModExpPow2_Add_Zeroes_DivMod_Mul_impl.rs:27:13
+   |
+27 |     ensures result == Exp_int(x as nat, y as nat) % (m as nat)
+   |             ^^^^^^ not found in this scope
+
+error: aborting due to 4 previous errors
+
+For more information about this error, try `rustc --explain E0425`.

@@ -36,14 +36,16 @@ spec fn is_max_of_all_expressions(result: int, a: int, b: int, c: int) -> bool
 
 // <vc-spec>
 fn solve(a: int, b: int, c: int) -> (result: int)
-    requires valid_input(a, b, c)
-    ensures is_max_of_all_expressions(result, a, b, c)
-    ensures result == max_expression(a, b, c)
+    requires 
+        valid_input(a, b, c),
+    ensures 
+        is_max_of_all_expressions(result, a, b, c),
+        result == max_expression(a, b, c),
 // </vc-spec>
 // <vc-code>
 {
     assume(false);
-    0
+    unreached()
 }
 // </vc-code>
 

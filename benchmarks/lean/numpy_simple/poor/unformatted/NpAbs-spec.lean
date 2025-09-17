@@ -1,5 +1,4 @@
 
-namespace NpAbs
 
 def absInt (x : Int) : Int := if x < 0 then -x else x
 
@@ -10,5 +9,3 @@ theorem abs_spec {n : Nat} (a : Vector Int n) :
   (∀ i : Fin n, (abs a)[i] = Int.natAbs (a[i])) ∧
   (∀ i : Fin n, (abs a)[i] ≥ 0) :=
 sorry
-
-end NpAbs

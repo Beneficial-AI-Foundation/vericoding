@@ -1,0 +1,86 @@
+=== Verification Error - Iteration 1 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_DivMod_Compare_Sub.rs
+Time: 2025-09-15 19:17:10
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_DivMod_Compare_Sub_impl.rs:83:18
+   |
+83 |     let mut i = (a.len() as int - 1) as usize;
+   |                  ^^^^^^^^^^^^^^
+
+error[E0425]: cannot find value `result` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_DivMod_Compare_Sub_impl.rs:51:13
+   |
+51 |     ensures result == (Str2Int(a@) >= Str2Int(b@))
+   |             ^^^^^^ not found in this scope
+
+error[E0425]: cannot find value `result` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_DivMod_Compare_Sub_impl.rs:79:28
+   |
+79 |     ensures ValidBitString(result@), Str2Int(result@) == Str2Int(a@) - Str2Int(b@)
+   |                            ^^^^^^ not found in this scope
+
+error[E0425]: cannot find value `result` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_DivMod_Compare_Sub_impl.rs:79:46
+   |
+79 |     ensures ValidBitString(result@), Str2Int(result@) == Str2Int(a@) - Str2Int(b@)
+   |                                              ^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `pow2` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_DivMod_Compare_Sub_impl.rs:89:63
+   |
+89 |             Str2Int(result@) + (if borrow { 1 } else { 0 }) * pow2(a.len() - i - 1) == 
+   |                                                               ^^^^ not found in this scope
+   |
+help: consider importing this function
+   |
+1  + use vstd::arithmetic::power2::pow2;
+   |
+
+error: aborting due to 5 previous errors
+
+For more information about this error, try `rustc --explain E0425`.
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_DivMod_Compare_Sub_impl.rs:83:18
+   |
+83 |     let mut i = (a.len() as int - 1) as usize;
+   |                  ^^^^^^^^^^^^^^
+
+error[E0425]: cannot find value `result` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_DivMod_Compare_Sub_impl.rs:51:13
+   |
+51 |     ensures result == (Str2Int(a@) >= Str2Int(b@))
+   |             ^^^^^^ not found in this scope
+
+error[E0425]: cannot find value `result` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_DivMod_Compare_Sub_impl.rs:79:28
+   |
+79 |     ensures ValidBitString(result@), Str2Int(result@) == Str2Int(a@) - Str2Int(b@)
+   |                            ^^^^^^ not found in this scope
+
+error[E0425]: cannot find value `result` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_DivMod_Compare_Sub_impl.rs:79:46
+   |
+79 |     ensures ValidBitString(result@), Str2Int(result@) == Str2Int(a@) - Str2Int(b@)
+   |                                              ^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `pow2` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_DivMod_Compare_Sub_impl.rs:89:63
+   |
+89 |             Str2Int(result@) + (if borrow { 1 } else { 0 }) * pow2(a.len() - i - 1) == 
+   |                                                               ^^^^ not found in this scope
+   |
+help: consider importing this function
+   |
+1  + use vstd::arithmetic::power2::pow2;
+   |
+
+error: aborting due to 5 previous errors
+
+For more information about this error, try `rustc --explain E0425`.

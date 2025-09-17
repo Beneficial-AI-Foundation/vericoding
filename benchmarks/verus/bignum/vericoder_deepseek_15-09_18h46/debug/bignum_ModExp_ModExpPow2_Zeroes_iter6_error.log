@@ -1,0 +1,184 @@
+=== Verification Error - Iteration 6 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExp_ModExpPow2_Zeroes.rs
+Time: 2025-09-15 18:50:44
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_ModExp_ModExpPow2_Zeroes_impl.rs:57:55
+   |
+57 |     let result_val = Exp_int(Str2Int(sx@), int_to_nat(exp_val)) % Str2Int(sz@);
+   |                                            ---------- ^^^^^^^ expected `int`, found integer
+   |                                            |
+   |                                            arguments to this function are incorrect
+   |
+note: function defined here
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_ModExp_ModExpPow2_Zeroes_impl.rs:37:9
+   |
+37 | spec fn int_to_nat(i: int) -> nat
+   |         ^^^^^^^^^^ ------
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_ModExp_ModExpPow2_Zeroes_impl.rs:59:41
+   |
+59 |     if result_val == Str2Int_nat_to_nat(1) {
+   |                      ------------------ ^ expected `nat`, found integer
+   |                      |
+   |                      arguments to this function are incorrect
+   |
+note: function defined here
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_ModExp_ModExpPow2_Zeroes_impl.rs:35:9
+   |
+35 | spec fn Str2Int_nat_to_nat(n: nat) -> nat { n }
+   |         ^^^^^^^^^^^^^^^^^^ ------
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_ModExp_ModExpPow2_Zeroes_impl.rs:75:47
+   |
+75 |         result_val = (result_val * int_to_nat(2) + int_to_nat(1)) % Str2Int(sz@);
+   |                                    ---------- ^ expected `int`, found integer
+   |                                    |
+   |                                    arguments to this function are incorrect
+   |
+note: function defined here
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_ModExp_ModExpPow2_Zeroes_impl.rs:37:9
+   |
+37 | spec fn int_to_nat(i: int) -> nat
+   |         ^^^^^^^^^^ ------
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_ModExp_ModExpPow2_Zeroes_impl.rs:75:63
+   |
+75 |         result_val = (result_val * int_to_nat(2) + int_to_nat(1)) % Str2Int(sz@);
+   |                                                    ---------- ^ expected `int`, found integer
+   |                                                    |
+   |                                                    arguments to this function are incorrect
+   |
+note: function defined here
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_ModExp_ModExpPow2_Zeroes_impl.rs:37:9
+   |
+37 | spec fn int_to_nat(i: int) -> nat
+   |         ^^^^^^^^^^ ------
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_ModExp_ModExpPow2_Zeroes_impl.rs:77:47
+   |
+77 |         result_val = (result_val * int_to_nat(2)) % Str2Int(sz@);
+   |                                    ---------- ^ expected `int`, found integer
+   |                                    |
+   |                                    arguments to this function are incorrect
+   |
+note: function defined here
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_ModExp_ModExpPow2_Zeroes_impl.rs:37:9
+   |
+37 | spec fn int_to_nat(i: int) -> nat
+   |         ^^^^^^^^^^ ------
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_ModExp_ModExpPow2_Zeroes_impl.rs:81:40
+   |
+81 |     if result_val > Str2Int_nat_to_nat(0) {
+   |                     ------------------ ^ expected `nat`, found integer
+   |                     |
+   |                     arguments to this function are incorrect
+   |
+note: function defined here
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_ModExp_ModExpPow2_Zeroes_impl.rs:35:9
+   |
+35 | spec fn Str2Int_nat_to_nat(n: nat) -> nat { n }
+   |         ^^^^^^^^^^^^^^^^^^ ------
+
+error: aborting due to 6 previous errors
+
+For more information about this error, try `rustc --explain E0308`.
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_ModExp_ModExpPow2_Zeroes_impl.rs:57:55
+   |
+57 |     let result_val = Exp_int(Str2Int(sx@), int_to_nat(exp_val)) % Str2Int(sz@);
+   |                                            ---------- ^^^^^^^ expected `int`, found integer
+   |                                            |
+   |                                            arguments to this function are incorrect
+   |
+note: function defined here
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_ModExp_ModExpPow2_Zeroes_impl.rs:37:9
+   |
+37 | spec fn int_to_nat(i: int) -> nat
+   |         ^^^^^^^^^^ ------
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_ModExp_ModExpPow2_Zeroes_impl.rs:59:41
+   |
+59 |     if result_val == Str2Int_nat_to_nat(1) {
+   |                      ------------------ ^ expected `nat`, found integer
+   |                      |
+   |                      arguments to this function are incorrect
+   |
+note: function defined here
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_ModExp_ModExpPow2_Zeroes_impl.rs:35:9
+   |
+35 | spec fn Str2Int_nat_to_nat(n: nat) -> nat { n }
+   |         ^^^^^^^^^^^^^^^^^^ ------
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_ModExp_ModExpPow2_Zeroes_impl.rs:75:47
+   |
+75 |         result_val = (result_val * int_to_nat(2) + int_to_nat(1)) % Str2Int(sz@);
+   |                                    ---------- ^ expected `int`, found integer
+   |                                    |
+   |                                    arguments to this function are incorrect
+   |
+note: function defined here
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_ModExp_ModExpPow2_Zeroes_impl.rs:37:9
+   |
+37 | spec fn int_to_nat(i: int) -> nat
+   |         ^^^^^^^^^^ ------
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_ModExp_ModExpPow2_Zeroes_impl.rs:75:63
+   |
+75 |         result_val = (result_val * int_to_nat(2) + int_to_nat(1)) % Str2Int(sz@);
+   |                                                    ---------- ^ expected `int`, found integer
+   |                                                    |
+   |                                                    arguments to this function are incorrect
+   |
+note: function defined here
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_ModExp_ModExpPow2_Zeroes_impl.rs:37:9
+   |
+37 | spec fn int_to_nat(i: int) -> nat
+   |         ^^^^^^^^^^ ------
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_ModExp_ModExpPow2_Zeroes_impl.rs:77:47
+   |
+77 |         result_val = (result_val * int_to_nat(2)) % Str2Int(sz@);
+   |                                    ---------- ^ expected `int`, found integer
+   |                                    |
+   |                                    arguments to this function are incorrect
+   |
+note: function defined here
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_ModExp_ModExpPow2_Zeroes_impl.rs:37:9
+   |
+37 | spec fn int_to_nat(i: int) -> nat
+   |         ^^^^^^^^^^ ------
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_ModExp_ModExpPow2_Zeroes_impl.rs:81:40
+   |
+81 |     if result_val > Str2Int_nat_to_nat(0) {
+   |                     ------------------ ^ expected `nat`, found integer
+   |                     |
+   |                     arguments to this function are incorrect
+   |
+note: function defined here
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_ModExp_ModExpPow2_Zeroes_impl.rs:35:9
+   |
+35 | spec fn Str2Int_nat_to_nat(n: nat) -> nat { n }
+   |         ^^^^^^^^^^^^^^^^^^ ------
+
+error: aborting due to 6 previous errors
+
+For more information about this error, try `rustc --explain E0308`.

@@ -1,0 +1,117 @@
+=== Raw LLM Generate Response ===
+Length: 2594 characters
+--------------------------------------------------------------------------------
+["{
+    let mut x: nat = 0;
+    for i in 0..s1.len() {
+        let bit = s1[i];
+        let val = if bit == '1' { 1 } else { 0 };
+        x = x * 2 + val;
+    }
+
+    let mut y: nat = 0;
+    for i in 0..s2.len() {
+        let bit = s2[i];
+        let val = if bit == '1' { 1 } else { 0 };
+        y = y * 2 + val;
+    }
+
+    let sum = x + y;
+
+    let mut result: Vec<char> = Vec::new();
+    if sum == 0 {
+        result.push('0');
+    } else {
+        let mut num = sum;
+        while num > 0 {
+            let bit = if num % 2 == 1 { '1' } else { '0' };
+            result.push(bit);
+            num /= 2;
+        }
+        result.reverse();
+    }
+    result
+}", "{
+    let mut x: nat = 0;
+    for i in 0..s1.len() {
+        let bit = s1[i];
+        let val = if bit == '1' { 1 } else { 0 };
+        x = x * 2 + val;
+    }
+
+    let mut y: nat = 0;
+    for i in 0..s2.len() {
+        let bit = s2[i];
+        let val = if bit == '1' { 1 } else { 0 };
+        y = y * 2 + val;
+    }
+
+    let product = x * y;
+
+    let mut result: Vec<char> = Vec::new();
+    if product == 0 {
+        result.push('0');
+    } else {
+        let mut num = product;
+        while num > 0 {
+            let bit = if num % 2 == 1 { '1' } else { '0' };
+            result.push(bit);
+            num /= 2;
+        }
+        result.reverse();
+    }
+    result
+}", "{
+    let mut sx_int: nat = 0;
+    for i in 0..sx.len() {
+        let bit = sx[i];
+        let val = if bit == '1' { 1 } else { 0 };
+        sx_int = sx_int * 2 + val;
+    }
+
+    let mut sz_int: nat = 0;
+    for i in 0..sz.len() {
+        let bit = sz[i];
+        let val = if bit == '1' { 1 } else { 0 };
+        sz_int = sz_int * 2 + val;
+    }
+
+    let mut sy_int: nat = 0;
+    for i in 0..sy.len() {
+        let bit = sy[i];
+        let val = if bit == '1' { 1 } else { 0 };
+        sy_int = sy_int * 2 + val;
+    }
+
+    let mut result: nat;
+    if sy_int == 0 {
+        result = 1 % sz_int;
+    } else {
+        result = sx_int % sz_int;
+        let mut i = 0;
+        while i < n
+            invariant
+                0 <= i <= n,
+                result == Exp_int(sx_int, 2^i as nat) % sz_int,
+            decreases n - i
+        {
+            result = (result * result) % sz_int;
+            i += 1;
+        }
+    }
+
+    let mut res_vec: Vec<char> = Vec::new();
+    if result == 0 {
+        res_vec.push('0');
+    } else {
+        let mut num = result;
+        while num > 0 {
+            let bit = if num % 2 == 1 { '1' } else { '0' };
+            res_vec.push(bit);
+            num /= 2;
+        }
+        res_vec.reverse();
+    }
+    res_vec
+}"]
+--------------------------------------------------------------------------------

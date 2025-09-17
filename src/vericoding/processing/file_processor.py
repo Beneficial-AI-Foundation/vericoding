@@ -20,6 +20,9 @@ from ..utils.io_utils import save_iteration_code
 from .code_fixer import extract_code, apply_json_replacements
 from .cheat_checker import has_final_failure_cheats, check_for_cheats
 
+# Import for Lean preprocessing
+from ..preprocessing import preprocess_lean_file, ensure_mathlib_import
+
 
 def count_placeholders(original_code: str, language: str) -> int:
     """Count placeholders in original code for JSON array sizing.
@@ -89,6 +92,7 @@ class ProcessingResult:
     output: str | None
     error: str | None
     has_bypass: bool
+    original_compilation_failed: bool = False
     generate_prompt: str | None = None
     fix_prompts: list[str] | None = None
     llm_responses: list[LLMResponse] | None = None
@@ -115,6 +119,14 @@ def process_spec_file(
         # Read the original file
         with Path(file_path).open() as f:
             original_code = f.read()
+        
+        # Apply mandatory Lean preprocessing (Mathlib import)
+        if config.language == "lean":
+            original_code = ensure_mathlib_import(original_code)
+        
+        # Apply optional Lean preprocessing (sorry wrapping) if assume-unformatted-lean is enabled
+        if (config.language == "lean" and config.assume_unformatted_lean):
+            original_code = preprocess_lean_file(original_code)
 
         # Calculate relative path from input directory to preserve hierarchy
         relative_path = Path(file_path).relative_to(Path(config.files_dir))
@@ -129,8 +141,9 @@ def process_spec_file(
         # Check if original file has compilation errors
         logger.info("  Checking original file for compilation errors...")
         original_verification = verify_file(config, file_path)
+        original_compilation_failed = not original_verification.success
 
-        if not original_verification.success:
+        if original_compilation_failed:
             logger.info(f"  ⚠️  Original file has issues: {original_verification.error}")
             logger.info("  Will attempt to fix during processing...")
 
@@ -243,6 +256,7 @@ def process_spec_file(
                 output=None,
                 error=json_error,
                 has_bypass=False,
+                original_compilation_failed=original_compilation_failed,
                 generate_prompt=generate_prompt,
                 fix_prompts=[],
                 llm_responses=llm_responses if wandb.run and llm_responses else None
@@ -482,6 +496,7 @@ def process_spec_file(
                 output=str(output_path),
                 error=None,
                 has_bypass=False,
+                original_compilation_failed=original_compilation_failed,
                 generate_prompt=generate_prompt,
                 fix_prompts=all_fix_prompts if all_fix_prompts else None,
                 llm_responses=llm_responses if wandb.run and llm_responses else None
@@ -523,6 +538,7 @@ def process_spec_file(
                 output=str(output_path),
                 error=error_msg,
                 has_bypass=False,
+                original_compilation_failed=original_compilation_failed,
                 generate_prompt=generate_prompt,
                 fix_prompts=all_fix_prompts if all_fix_prompts else None,
                 llm_responses=llm_responses if wandb.run and llm_responses else None
@@ -547,6 +563,7 @@ def process_spec_file(
             error=str(e),
             output=None,
             has_bypass=False,
+            original_compilation_failed="original_compilation_failed" in locals() and original_compilation_failed,
             generate_prompt=generate_prompt if "generate_prompt" in locals() else None,
             fix_prompts=all_fix_prompts if "all_fix_prompts" in locals() and all_fix_prompts else None,
             llm_responses=llm_responses if wandb.run and "llm_responses" in locals() and llm_responses else None
@@ -628,6 +645,7 @@ def process_files_parallel(
                     error=f"Unexpected error: {str(e)}",
                     output=None,
                     has_bypass=False,
+                    original_compilation_failed=False,  # Unknown since we didn't get that far
                     generate_prompt=None,
                     fix_prompts=None,
                 )

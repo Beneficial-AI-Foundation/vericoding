@@ -1,0 +1,9 @@
+=== LLM Response - generate_code - Iteration 0 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExp_Add_DivMod_ModExpPow2_Zeroes.rs
+Prompt Hash: 86c7c537
+JSON Parsed Successfully: True
+Timestamp: 1757956477.1522691
+Content Length: 1188 chars
+--------------------------------------------------------------------------------
+["spec fn Int2Str(n: nat) -> Seq<char>\n  decreases n\n{\n  if n == 0 {\n    seq!['0']\n  } else if n == 1 {\n    seq!['1']\n  } else {\n    Int2Str(n / 2).push(if n % 2 == 0 { '0' } else { '1' })\n  }\n}\n\nproof fn lemma_str2int_int2str(n: nat)\n  ensures ValidBitString(Int2Str(n)),\n          Str2Int(Int2Str(n)) == n\n  decreases n\n{\n  if n > 1 {\n    lemma_str2int_int2str(n / 2);\n  }\n}\n\nproof fn lemma_int2str_str2int(s: Seq<char>)\n  requires ValidBitString(s),\n           s.len() > 0\n  ensures Int2Str(Str2Int(s)) == s\n  decreases s.len()\n{\n  if s.len() > 1 {\n    lemma_int2str_str2int(s.subrange(0, s.len() as int - 1));\n  }\n}", "{\n  let a_val = Str2Int(a@);\n  let b_val = Str2Int(b@);\n  let sum = a_val + b_val;\n  \n  proof {\n    lemma_str2int_int2str(sum);\n  }\n  \n  let mut result = Vec::<char>::new();\n  let sum_str = Int2Str(sum);\n  \n  let mut i: usize = 0;\n  while i < sum_str.len()\n    invariant\n      i <= sum_str.len(),\n      result@.len() == i as int,\n      forall |j: int| 0 <= j && j < i as int ==> result@[j] == sum_str[j],\n      ValidBitString(result@)\n  {\n    result.push(sum_str[i as int]);\n    i = i + 1;\n  }\n  \n  result\n}"]
+--------------------------------------------------------------------------------

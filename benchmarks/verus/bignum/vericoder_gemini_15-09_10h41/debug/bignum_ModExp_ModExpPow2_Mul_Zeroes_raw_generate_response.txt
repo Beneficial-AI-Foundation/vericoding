@@ -1,0 +1,43 @@
+=== Raw LLM Generate Response ===
+Length: 774 characters
+--------------------------------------------------------------------------------
+```json
+["proof fn mod_exp_lemma(x: nat, y: nat, z: nat)
+    requires
+        z > 1,
+    ensures
+        y > 0 ==> Exp_int(x, y) % z == mod_exp_rec(x, y / 2, y % 2, z),
+    decreases y
+{
+    if y > 0 {
+        if y / 2 > 0 {
+            mod_exp_lemma(x, y / 2, z);
+        }
+    }
+}
+
+spec fn mod_exp_rec(x: nat, y_half: nat, y_rem: nat, z: nat) -> nat
+    requires
+        z > 1,
+    ensures
+        y_rem == 0 || y_rem == 1,
+{
+    let x_sq_mod = (x * x) % z;
+    if y_half == 0 {
+        if y_rem == 1 {
+            x % z
+        } else {
+            1
+        }
+    } else {
+        let rec = mod_exp_rec(x, y_half / 2, y_half % 2, z);
+        if y_rem == 1 {
+            (rec * x) % z
+        } else {
+            rec
+        }
+    }
+}
+
+proof fn lemma_str2int_div2(s: Seq
+--------------------------------------------------------------------------------

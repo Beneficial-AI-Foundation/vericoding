@@ -1,0 +1,260 @@
+=== Verification Error - Iteration 4 ===
+File: benchmarks/verus/bignum/files/bignum_ModExp_Zeroes.rs
+Time: 2025-09-15 10:57:30
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Verification failed: verification results:: 7 verified, 8 errors
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_Zeroes_impl.rs:29:9
+   |
+29 |           y > 0 ==> Exp_int(x, y) % z == ((x % z) * (Exp_int(x, (y - 1) as nat) % z)) % z
+   |           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+30 |   {
+31 | /     if y > 0 {
+32 | |         assert(Exp_int(x, y) == x * Exp_int(x, (y - 1) as nat));
+33 | |     }
+   | |_____- at the end of the function body
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_Zeroes_impl.rs:58:7
+   |
+58 | proof fn int2str_correct(n: nat)
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: assertion failed
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_Zeroes_impl.rs:67:16
+   |
+67 |         assert(Str2Int(seq!['0']) == 0);
+   |                ^^^^^^^^^^^^^^^^^^^^^^^ assertion failed
+
+error: assertion failed
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_Zeroes_impl.rs:70:16
+   |
+70 |         assert(Str2Int(seq!['1']) == 1);
+   |                ^^^^^^^^^^^^^^^^^^^^^^^ assertion failed
+
+error: assertion failed
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_Zeroes_impl.rs:76:16
+   |
+76 |         assert(Str2Int(s.push(c)) == 2 * Str2Int(s) + (if c == '1' { 1nat } else { 0nat }));
+   |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ assertion failed
+
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_Zeroes_impl.rs:90:5
+   |
+90 |     while i < s.len()
+   |     ^^^^^^^^^^^^^^^^^
+
+note: recommendation not met
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_Zeroes_impl.rs:93:30
+   |
+12 | recommends ValidBitString(s)
+   |            ----------------- recommendation not met
+...
+93 |             result as nat == Str2Int(s@.subrange(0, i as int))
+   |                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_Zeroes_impl.rs:96:18
+   |
+96 |         result = result * 2 + if s[i] == '1' { 1 } else { 0 };
+   |                  ^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_Zeroes_impl.rs:96:18
+   |
+96 |         result = result * 2 + if s[i] == '1' { 1 } else { 0 };
+   |                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_Zeroes_impl.rs:106:9
+    |
+106 |         Str2Int(res@) == n as nat
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+136 |     result
+    |     ------ at the end of the function body
+
+error: invariant not satisfied at end of loop body
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_Zeroes_impl.rs:129:17
+    |
+129 |                 ValidBitString(result@)
+    |                 ^^^^^^^^^^^^^^^^^^^^^^^
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_Zeroes_impl.rs:141:6
+    |
+141 | exec fn ModExp_Zeroes(sx: &[char], sy: &[char], sz: &[char]) -> (res: Vec<char>)
+    |      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: precondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_Zeroes_impl.rs:153:27
+    |
+84  |         s@.len() <= 64
+    |         -------------- failed precondition
+...
+153 |         let res_val = 1 % str_to_int(sz);
+    |                           ^^^^^^^^^^^^^^
+
+error: precondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_Zeroes_impl.rs:157:17
+    |
+84  |         s@.len() <= 64
+    |         -------------- failed precondition
+...
+157 |     let y_val = str_to_int(sy);
+    |                 ^^^^^^^^^^^^^^
+
+error: precondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_Zeroes_impl.rs:159:21
+    |
+84  |         s@.len() <= 64
+    |         -------------- failed precondition
+...
+159 |         let x_val = str_to_int(sx);
+    |                     ^^^^^^^^^^^^^^
+
+error: invariant not satisfied at end of loop body
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_Zeroes_impl.rs:171:13
+    |
+171 |             ValidBitString(sy_minus_one@)
+    |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: invariant not satisfied at end of loop body
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_Zeroes_impl.rs:192:13
+    |
+192 |             ValidBitString(sy_minus_one_rev@)
+    |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: aborting due to 13 previous errors
+
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+verification results:: 7 verified, 8 errors
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_Zeroes_impl.rs:29:9
+   |
+29 |           y > 0 ==> Exp_int(x, y) % z == ((x % z) * (Exp_int(x, (y - 1) as nat) % z)) % z
+   |           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+30 |   {
+31 | /     if y > 0 {
+32 | |         assert(Exp_int(x, y) == x * Exp_int(x, (y - 1) as nat));
+33 | |     }
+   | |_____- at the end of the function body
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_Zeroes_impl.rs:58:7
+   |
+58 | proof fn int2str_correct(n: nat)
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: assertion failed
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_Zeroes_impl.rs:67:16
+   |
+67 |         assert(Str2Int(seq!['0']) == 0);
+   |                ^^^^^^^^^^^^^^^^^^^^^^^ assertion failed
+
+error: assertion failed
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_Zeroes_impl.rs:70:16
+   |
+70 |         assert(Str2Int(seq!['1']) == 1);
+   |                ^^^^^^^^^^^^^^^^^^^^^^^ assertion failed
+
+error: assertion failed
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_Zeroes_impl.rs:76:16
+   |
+76 |         assert(Str2Int(s.push(c)) == 2 * Str2Int(s) + (if c == '1' { 1nat } else { 0nat }));
+   |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ assertion failed
+
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_Zeroes_impl.rs:90:5
+   |
+90 |     while i < s.len()
+   |     ^^^^^^^^^^^^^^^^^
+
+note: recommendation not met
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_Zeroes_impl.rs:93:30
+   |
+12 | recommends ValidBitString(s)
+   |            ----------------- recommendation not met
+...
+93 |             result as nat == Str2Int(s@.subrange(0, i as int))
+   |                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_Zeroes_impl.rs:96:18
+   |
+96 |         result = result * 2 + if s[i] == '1' { 1 } else { 0 };
+   |                  ^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_Zeroes_impl.rs:96:18
+   |
+96 |         result = result * 2 + if s[i] == '1' { 1 } else { 0 };
+   |                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_Zeroes_impl.rs:106:9
+    |
+106 |         Str2Int(res@) == n as nat
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+136 |     result
+    |     ------ at the end of the function body
+
+error: invariant not satisfied at end of loop body
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_Zeroes_impl.rs:129:17
+    |
+129 |                 ValidBitString(result@)
+    |                 ^^^^^^^^^^^^^^^^^^^^^^^
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_Zeroes_impl.rs:141:6
+    |
+141 | exec fn ModExp_Zeroes(sx: &[char], sy: &[char], sz: &[char]) -> (res: Vec<char>)
+    |      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: precondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_Zeroes_impl.rs:153:27
+    |
+84  |         s@.len() <= 64
+    |         -------------- failed precondition
+...
+153 |         let res_val = 1 % str_to_int(sz);
+    |                           ^^^^^^^^^^^^^^
+
+error: precondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_Zeroes_impl.rs:157:17
+    |
+84  |         s@.len() <= 64
+    |         -------------- failed precondition
+...
+157 |     let y_val = str_to_int(sy);
+    |                 ^^^^^^^^^^^^^^
+
+error: precondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_Zeroes_impl.rs:159:21
+    |
+84  |         s@.len() <= 64
+    |         -------------- failed precondition
+...
+159 |         let x_val = str_to_int(sx);
+    |                     ^^^^^^^^^^^^^^
+
+error: invariant not satisfied at end of loop body
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_Zeroes_impl.rs:171:13
+    |
+171 |             ValidBitString(sy_minus_one@)
+    |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: invariant not satisfied at end of loop body
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_Zeroes_impl.rs:192:13
+    |
+192 |             ValidBitString(sy_minus_one_rev@)
+    |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: aborting due to 13 previous errors
+

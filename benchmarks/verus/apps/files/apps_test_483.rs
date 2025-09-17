@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(n: int, directions: Seq<char>, positions: Seq<int>) -> bool {
     n >= 1 &&
     directions.len() == n &&
@@ -15,25 +12,31 @@ spec fn valid_input(n: int, directions: Seq<char>, positions: Seq<int>) -> bool 
 }
 
 spec fn has_collision(directions: Seq<char>, positions: Seq<int>) -> bool
-    recommends directions.len() == positions.len()
+    recommends
+        directions.len() == positions.len()
 {
     exists|i: int| 0 <= i < directions.len()-1 && directions[i] == 'R' && directions[i+1] == 'L'
 }
 
 spec fn collision_time(i: int, positions: Seq<int>) -> int
-    recommends 0 <= i < positions.len()-1
+    recommends
+        0 <= i < positions.len()-1
 {
     (positions[i+1] - positions[i]) / 2
 }
 
 spec fn is_minimal_collision_time(result: int, directions: Seq<char>, positions: Seq<int>) -> bool
-    recommends directions.len() == positions.len()
+    recommends
+        directions.len() == positions.len()
 {
     (forall|i: int| 0 <= i < directions.len()-1 && directions[i] == 'R' && directions[i+1] == 'L' ==> 
         collision_time(i, positions) >= result) &&
     (exists|i: int| 0 <= i < directions.len()-1 && directions[i] == 'R' && directions[i+1] == 'L' && 
         collision_time(i, positions) == result)
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>
@@ -49,7 +52,7 @@ fn solve(n: int, directions: Seq<char>, positions: Seq<int>) -> (result: int)
 // <vc-code>
 {
     assume(false);
-    (-1) as int
+    unreached()
 }
 // </vc-code>
 

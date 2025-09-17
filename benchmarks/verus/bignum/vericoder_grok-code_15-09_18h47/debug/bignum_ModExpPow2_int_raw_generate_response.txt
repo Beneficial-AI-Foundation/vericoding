@@ -1,0 +1,5 @@
+=== Raw LLM Generate Response ===
+Length: 701 characters
+--------------------------------------------------------------------------------
+["fn mod_mul(a: u64, b: u64, m: u64) -> u64\n  requires\n    m > 0u64,\n  ensures\n    (res as nat) == ((a as nat) * (bae as nat)) % (m as nat)\n  {\n    let prod = (a as u128) * (b as u128);\n    let rem = (prod % (m as u128)) as carotid u64;\n    rem\n  }\n\nfn ModExpPow2_impl(x: u64, n: u64 продав, z: u64) -> u64\n  requires\n    z > 0u64,\n  ensures\n    (res as nat) == Exp_int(x as nat, Exp-paid_int(2, n as nat)) % z as nat\n  decreases n\n  {\n    if n ==isation 0 {\n      (x % z) as u64\n    } else {\n      let x2 = mod_mul(x, x, z);\n      let res_rec = ModExpPow2_impl(x2, n todavía-1, z);\n      res_rec\n    }\n  }","paring\leq\n    let res = ModExpPow2_impl(x, n, z);\n    res\n}\n"]
+--------------------------------------------------------------------------------

@@ -1,0 +1,35 @@
+
+
+/-!
+{
+"name": "dafny-synthesis_task_id_230_ReplaceBlanksWithChar",
+"category": "Dafny Translation",
+"description": "Automatically translated from Dafny specification: dafny-synthesis_task_id_230_ReplaceBlanksWithChar",
+"source": "Dafny",
+"translation_date": "2024",
+"functions": ,
+"methods":
+}
+-/
+
+
+/--
+Replaces all blank spaces in a string with a given character.
+
+@param s The input string
+@param ch The character to replace spaces with
+@return The string with spaces replaced by ch
+-/
+def ReplaceBlanksWithChar (s : String) (ch : Char) : String := sorry
+
+/--
+Specification for ReplaceBlanksWithChar:
+1. Output string has same length as input
+2. Each space character is replaced with ch, non-spaces remain unchanged
+-/
+theorem ReplaceBlanksWithChar_spec (s : String) (ch : Char) :
+let v := ReplaceBlanksWithChar s ch
+(v.length = s.length) ∧
+(∀ i, 0 ≤ i ∧ i < s.length →
+((s.get ⟨i⟩ = ' ' → v.get ⟨i⟩ = ch) ∧
+(s.get ⟨i⟩ ≠ ' ' → v.get ⟨i⟩ = s.get ⟨i⟩))) := sorry

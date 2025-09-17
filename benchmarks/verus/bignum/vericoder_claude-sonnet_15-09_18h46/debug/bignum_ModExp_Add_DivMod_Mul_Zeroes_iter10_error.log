@@ -1,0 +1,76 @@
+=== Verification Error - Iteration 10 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExp_Add_DivMod_Mul_Zeroes.rs
+Time: 2025-09-15 19:11:49
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Verification failed: verification results:: 8 verified, 2 errors
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_ModExp_Add_DivMod_Mul_Zeroes_impl.rs:52:5
+   |
+52 |     while i < max_len || carry > 0
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: decreases not satisfied at end of loop
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_ModExp_Add_DivMod_Mul_Zeroes_impl.rs:52:5
+   |
+52 |     while i < max_len || carry > 0
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: invariant not satisfied at end of loop body
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_ModExp_Add_DivMod_Mul_Zeroes_impl.rs:56:13
+   |
+56 |             i <= max_len,
+   |             ^^^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_ModExp_Add_DivMod_Mul_Zeroes_impl.rs:79:13
+   |
+79 |         i = i + 1;
+   |             ^^^^^
+
+error: invariant not satisfied at end of loop body
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_ModExp_Add_DivMod_Mul_Zeroes_impl.rs:113:13
+    |
+113 |             ValidBitString(result@),
+    |             ^^^^^^^^^^^^^^^^^^^^^^^
+
+error: aborting due to 4 previous errors
+
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+verification results:: 8 verified, 2 errors
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_ModExp_Add_DivMod_Mul_Zeroes_impl.rs:52:5
+   |
+52 |     while i < max_len || carry > 0
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: decreases not satisfied at end of loop
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_ModExp_Add_DivMod_Mul_Zeroes_impl.rs:52:5
+   |
+52 |     while i < max_len || carry > 0
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: invariant not satisfied at end of loop body
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_ModExp_Add_DivMod_Mul_Zeroes_impl.rs:56:13
+   |
+56 |             i <= max_len,
+   |             ^^^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_ModExp_Add_DivMod_Mul_Zeroes_impl.rs:79:13
+   |
+79 |         i = i + 1;
+   |             ^^^^^
+
+error: invariant not satisfied at end of loop body
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_ModExp_Add_DivMod_Mul_Zeroes_impl.rs:113:13
+    |
+113 |             ValidBitString(result@),
+    |             ^^^^^^^^^^^^^^^^^^^^^^^
+
+error: aborting due to 4 previous errors
+

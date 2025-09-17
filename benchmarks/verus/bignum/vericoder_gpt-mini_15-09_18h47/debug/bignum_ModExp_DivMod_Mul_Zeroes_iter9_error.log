@@ -1,0 +1,378 @@
+=== Verification Error - Iteration 9 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExp_DivMod_Mul_Zeroes.rs
+Time: 2025-09-15 18:58:40
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Verification failed: verification results:: 18 verified, 8 errors
+error: decreases not satisfied at end of loop
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_DivMod_Mul_Zeroes_impl.rs:27:5
+   |
+27 |     while v.len() > 0 && v[0] == '0'
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_DivMod_Mul_Zeroes_impl.rs:43:5
+   |
+43 |     while i < a_t.len()
+   |     ^^^^^^^^^^^^^^^^^^^
+
+error: precondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_DivMod_Mul_Zeroes_impl.rs:48:21
+   |
+48 |         if a_t[i] > b_t[i] { return 1; }
+   |                     ^^^^^^
+   |
+  ::: /Users/sergiu.bursuc/verus/vstd/std_specs/vec.rs:48:9
+   |
+48 |         i < vec.view().len(),
+   |         -------------------- failed precondition
+
+error: precondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_DivMod_Mul_Zeroes_impl.rs:49:21
+   |
+49 |         if a_t[i] < b_t[i] { return -1; }
+   |                     ^^^^^^
+   |
+  ::: /Users/sergiu.bursuc/verus/vstd/std_specs/vec.rs:48:9
+   |
+48 |         i < vec.view().len(),
+   |         -------------------- failed precondition
+
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_DivMod_Mul_Zeroes_impl.rs:62:5
+   |
+62 |     while k < max_len
+   |     ^^^^^^^^^^^^^^^^^
+
+error: precondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_DivMod_Mul_Zeroes_impl.rs:67:39
+   |
+67 |         let abit: u8 = if k < na { if a[na - 1 - k] == '1' { 1 } else { 0 } } else { 0 };
+   |                                       ^^^^^^^^^^^^^
+   |
+  ::: /Users/sergiu.bursuc/verus/vstd/std_specs/vec.rs:48:9
+   |
+48 |         i < vec.view().len(),
+   |         -------------------- failed precondition
+
+error: precondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_DivMod_Mul_Zeroes_impl.rs:68:39
+   |
+68 |         let bbit: u8 = if k < nb { if b[nb - 1 - k] == '1' { 1 } else { 0 } } else { 0 };
+   |                                       ^^^^^^^^^^^^^
+   |
+  ::: /Users/sergiu.bursuc/verus/vstd/std_specs/vec.rs:48:9
+   |
+48 |         i < vec.view().len(),
+   |         -------------------- failed precondition
+
+error: possible arithmetic underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_DivMod_Mul_Zeroes_impl.rs:69:19
+   |
+69 |         let sum = abit + bbit + carry;
+   |                   ^^^^^^^^^^^^^^^^^^^
+
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_DivMod_Mul_Zeroes_impl.rs:97:5
+   |
+97 |     while k < max_len
+   |     ^^^^^^^^^^^^^^^^^
+
+error: precondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_DivMod_Mul_Zeroes_impl.rs:102:39
+    |
+102 |         let abit: i8 = if k < na { if a[na - 1 - k] == '1' { 1 } else { 0 } } else { 0 };
+    |                                       ^^^^^^^^^^^^^
+    |
+   ::: /Users/sergiu.bursuc/verus/vstd/std_specs/vec.rs:48:9
+    |
+48  |         i < vec.view().len(),
+    |         -------------------- failed precondition
+
+error: precondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_DivMod_Mul_Zeroes_impl.rs:103:39
+    |
+103 |         let bbit: i8 = if k < nb { if b[nb - 1 - k] == '1' { 1 } else { 0 } } else { 0 };
+    |                                       ^^^^^^^^^^^^^
+    |
+   ::: /Users/sergiu.bursuc/verus/vstd/std_specs/vec.rs:48:9
+    |
+48  |         i < vec.view().len(),
+    |         -------------------- failed precondition
+
+error: possible arithmetic underflow/overflow
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_DivMod_Mul_Zeroes_impl.rs:104:21
+    |
+104 |         let mut v = abit - bbit - borrow;
+    |                     ^^^^^^^^^^^^^^^^^^^^
+
+error: precondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_DivMod_Mul_Zeroes_impl.rs:153:12
+    |
+153 |         if b[nb - 1 - pos] == '1' {
+    |            ^^^^^^^^^^^^^^^
+    |
+   ::: /Users/sergiu.bursuc/verus/vstd/std_specs/vec.rs:48:9
+    |
+48  |         i < vec.view().len(),
+    |         -------------------- failed precondition
+
+error: decreases not satisfied at end of loop
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_DivMod_Mul_Zeroes_impl.rs:163:5
+    |
+163 |     while cmp_vec(&v, m) >= 0
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+note: recommendation not met
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_DivMod_Mul_Zeroes_impl.rs:165:13
+    |
+12  | recommends ValidBitString(s)
+    |            ----------------- recommendation not met
+...
+165 |             Str2Int(v@) >= 0,
+    |             ^^^^^^^^^^^
+
+note: recommendation not met
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_DivMod_Mul_Zeroes_impl.rs:166:19
+    |
+12  | recommends ValidBitString(s)
+    |            ----------------- recommendation not met
+...
+166 |         decreases Str2Int(v@)
+    |                   ^^^^^^^^^^^
+
+error: precondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_DivMod_Mul_Zeroes_impl.rs:191:12
+    |
+191 |         if exp[nb - 1 - pos] == '1' {
+    |            ^^^^^^^^^^^^^^^^^
+    |
+   ::: /Users/sergiu.bursuc/verus/vstd/std_specs/vec.rs:48:9
+    |
+48  |         i < vec.view().len(),
+    |         -------------------- failed precondition
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_DivMod_Mul_Zeroes_impl.rs:203:6
+    |
+203 | exec fn ModExp_DivMod_Mul_Zeroes(sx: &[char], sy: &[char], sz: &[char]) -> (res: Vec<char>)
+    |      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_DivMod_Mul_Zeroes_impl.rs:205:11
+    |
+205 |   ensures ValidBitString(res@), Str2Int(res@) == Exp_int(Str2Int(sx@), Str2Int(sy@)) % Str2Int(sz@)
+    |           ^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+243 |     res
+    |     --- at the end of the function body
+
+note: recommendation not met
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_DivMod_Mul_Zeroes_impl.rs:205:33
+    |
+12  | recommends ValidBitString(s)
+    |            ----------------- recommendation not met
+...
+205 |   ensures ValidBitString(res@), Str2Int(res@) == Exp_int(Str2Int(sx@), Str2Int(sy@)) % Str2Int(sz@)
+    |                                 ^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_DivMod_Mul_Zeroes_impl.rs:205:33
+    |
+205 |   ensures ValidBitString(res@), Str2Int(res@) == Exp_int(Str2Int(sx@), Str2Int(sy@)) % Str2Int(sz@)
+    |                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+243 |     res
+    |     --- at the end of the function body
+
+error: aborting due to 14 previous errors
+
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+verification results:: 18 verified, 8 errors
+error: decreases not satisfied at end of loop
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_DivMod_Mul_Zeroes_impl.rs:27:5
+   |
+27 |     while v.len() > 0 && v[0] == '0'
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_DivMod_Mul_Zeroes_impl.rs:43:5
+   |
+43 |     while i < a_t.len()
+   |     ^^^^^^^^^^^^^^^^^^^
+
+error: precondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_DivMod_Mul_Zeroes_impl.rs:48:21
+   |
+48 |         if a_t[i] > b_t[i] { return 1; }
+   |                     ^^^^^^
+   |
+  ::: /Users/sergiu.bursuc/verus/vstd/std_specs/vec.rs:48:9
+   |
+48 |         i < vec.view().len(),
+   |         -------------------- failed precondition
+
+error: precondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_DivMod_Mul_Zeroes_impl.rs:49:21
+   |
+49 |         if a_t[i] < b_t[i] { return -1; }
+   |                     ^^^^^^
+   |
+  ::: /Users/sergiu.bursuc/verus/vstd/std_specs/vec.rs:48:9
+   |
+48 |         i < vec.view().len(),
+   |         -------------------- failed precondition
+
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_DivMod_Mul_Zeroes_impl.rs:62:5
+   |
+62 |     while k < max_len
+   |     ^^^^^^^^^^^^^^^^^
+
+error: precondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_DivMod_Mul_Zeroes_impl.rs:67:39
+   |
+67 |         let abit: u8 = if k < na { if a[na - 1 - k] == '1' { 1 } else { 0 } } else { 0 };
+   |                                       ^^^^^^^^^^^^^
+   |
+  ::: /Users/sergiu.bursuc/verus/vstd/std_specs/vec.rs:48:9
+   |
+48 |         i < vec.view().len(),
+   |         -------------------- failed precondition
+
+error: precondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_DivMod_Mul_Zeroes_impl.rs:68:39
+   |
+68 |         let bbit: u8 = if k < nb { if b[nb - 1 - k] == '1' { 1 } else { 0 } } else { 0 };
+   |                                       ^^^^^^^^^^^^^
+   |
+  ::: /Users/sergiu.bursuc/verus/vstd/std_specs/vec.rs:48:9
+   |
+48 |         i < vec.view().len(),
+   |         -------------------- failed precondition
+
+error: possible arithmetic underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_DivMod_Mul_Zeroes_impl.rs:69:19
+   |
+69 |         let sum = abit + bbit + carry;
+   |                   ^^^^^^^^^^^^^^^^^^^
+
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_DivMod_Mul_Zeroes_impl.rs:97:5
+   |
+97 |     while k < max_len
+   |     ^^^^^^^^^^^^^^^^^
+
+error: precondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_DivMod_Mul_Zeroes_impl.rs:102:39
+    |
+102 |         let abit: i8 = if k < na { if a[na - 1 - k] == '1' { 1 } else { 0 } } else { 0 };
+    |                                       ^^^^^^^^^^^^^
+    |
+   ::: /Users/sergiu.bursuc/verus/vstd/std_specs/vec.rs:48:9
+    |
+48  |         i < vec.view().len(),
+    |         -------------------- failed precondition
+
+error: precondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_DivMod_Mul_Zeroes_impl.rs:103:39
+    |
+103 |         let bbit: i8 = if k < nb { if b[nb - 1 - k] == '1' { 1 } else { 0 } } else { 0 };
+    |                                       ^^^^^^^^^^^^^
+    |
+   ::: /Users/sergiu.bursuc/verus/vstd/std_specs/vec.rs:48:9
+    |
+48  |         i < vec.view().len(),
+    |         -------------------- failed precondition
+
+error: possible arithmetic underflow/overflow
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_DivMod_Mul_Zeroes_impl.rs:104:21
+    |
+104 |         let mut v = abit - bbit - borrow;
+    |                     ^^^^^^^^^^^^^^^^^^^^
+
+error: precondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_DivMod_Mul_Zeroes_impl.rs:153:12
+    |
+153 |         if b[nb - 1 - pos] == '1' {
+    |            ^^^^^^^^^^^^^^^
+    |
+   ::: /Users/sergiu.bursuc/verus/vstd/std_specs/vec.rs:48:9
+    |
+48  |         i < vec.view().len(),
+    |         -------------------- failed precondition
+
+error: decreases not satisfied at end of loop
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_DivMod_Mul_Zeroes_impl.rs:163:5
+    |
+163 |     while cmp_vec(&v, m) >= 0
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+note: recommendation not met
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_DivMod_Mul_Zeroes_impl.rs:165:13
+    |
+12  | recommends ValidBitString(s)
+    |            ----------------- recommendation not met
+...
+165 |             Str2Int(v@) >= 0,
+    |             ^^^^^^^^^^^
+
+note: recommendation not met
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_DivMod_Mul_Zeroes_impl.rs:166:19
+    |
+12  | recommends ValidBitString(s)
+    |            ----------------- recommendation not met
+...
+166 |         decreases Str2Int(v@)
+    |                   ^^^^^^^^^^^
+
+error: precondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_DivMod_Mul_Zeroes_impl.rs:191:12
+    |
+191 |         if exp[nb - 1 - pos] == '1' {
+    |            ^^^^^^^^^^^^^^^^^
+    |
+   ::: /Users/sergiu.bursuc/verus/vstd/std_specs/vec.rs:48:9
+    |
+48  |         i < vec.view().len(),
+    |         -------------------- failed precondition
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_DivMod_Mul_Zeroes_impl.rs:203:6
+    |
+203 | exec fn ModExp_DivMod_Mul_Zeroes(sx: &[char], sy: &[char], sz: &[char]) -> (res: Vec<char>)
+    |      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_DivMod_Mul_Zeroes_impl.rs:205:11
+    |
+205 |   ensures ValidBitString(res@), Str2Int(res@) == Exp_int(Str2Int(sx@), Str2Int(sy@)) % Str2Int(sz@)
+    |           ^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+243 |     res
+    |     --- at the end of the function body
+
+note: recommendation not met
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_DivMod_Mul_Zeroes_impl.rs:205:33
+    |
+12  | recommends ValidBitString(s)
+    |            ----------------- recommendation not met
+...
+205 |   ensures ValidBitString(res@), Str2Int(res@) == Exp_int(Str2Int(sx@), Str2Int(sy@)) % Str2Int(sz@)
+    |                                 ^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_DivMod_Mul_Zeroes_impl.rs:205:33
+    |
+205 |   ensures ValidBitString(res@), Str2Int(res@) == Exp_int(Str2Int(sx@), Str2Int(sy@)) % Str2Int(sz@)
+    |                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+243 |     res
+    |     --- at the end of the function body
+
+error: aborting due to 14 previous errors
+

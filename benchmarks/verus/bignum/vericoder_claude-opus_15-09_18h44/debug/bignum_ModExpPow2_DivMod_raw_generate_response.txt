@@ -1,0 +1,113 @@
+=== Raw LLM Generate Response ===
+Length: 3024 characters
+--------------------------------------------------------------------------------
+["{
+    let mut quotient = Vec::<char>::new();
+    let mut remainder = Vec::<char>::new();
+    
+    let dividend_int = Str2Int(dividend@);
+    let divisor_int = Str2Int(divisor@);
+    
+    let q = dividend_int / divisor_int;
+    let r = dividend_int % divisor_int;
+    
+    // Convert quotient to binary string
+    if q == 0 {
+        quotient.push('0');
+    } else {
+        let mut temp_q = q;
+        let mut temp_vec = Vec::<char>::new();
+        while temp_q > 0 {
+            if temp_q % 2 == 1 {
+                temp_vec.push('1');
+            } else {
+                temp_vec.push('0');
+            }
+            temp_q = temp_q / 2;
+        }
+        // Reverse the vector
+        let mut i = temp_vec.len() as int - 1;
+        while i >= 0 {
+            quotient.push(temp_vec[i as usize]);
+            i = i - 1;
+        }
+    }
+    
+    // Convert remainder to binary string
+    if r == 0 {
+        remainder.push('0');
+    } else {
+        let mut temp_r = r;
+        let mut temp_vec = Vec::<char>::new();
+        while temp_r > 0 {
+            if temp_r % 2 == 1 {
+                temp_vec.push('1');
+            } else {
+                temp_vec.push('0');
+            }
+            temp_r = temp_r / 2;
+        }
+        // Reverse the vector
+        let mut i = temp_vec.len() as int - 1;
+        while i >= 0 {
+            remainder.push(temp_vec[i as usize]);
+            i = i - 1;
+        }
+    }
+    
+    (quotient, remainder)
+}", "{
+    if n == 0 {
+        // sy = 1 (which is 2^0)
+        // result = x^1 % z = x % z
+        let (_, remainder) = DivMod(sx, sz);
+        return remainder;
+    } else if Str2Int(sy@) == 0 {
+        // x^0 = 1
+        let mut result = Vec::<char>::new();
+        result.push('1');
+        return result;
+    } else {
+        // sy = 2^n where n > 0
+        // Compute x^(2^(n-1)) % z recursively
+        let mut half_y = Vec::<char>::new();
+        half_y.push('1');
+        let mut i = 0;
+        while i < n - 1 {
+            half_y.push('0');
+            i = i + 1;
+        }
+        
+        let temp = ModExpPow2(sx, &half_y, n - 1, sz);
+        
+        // Square the result: (x^(2^(n-1)))^2 = x^(2^n)
+        // We need to compute (temp * temp) % z
+        let mut temp_squared = Vec::<char>::new();
+        let temp_int = Str2Int(temp@);
+        let squared = (temp_int * temp_int) % Str2Int(sz@);
+        
+        if squared == 0 {
+            temp_squared.push('0');
+        } else {
+            let mut s = squared;
+            let mut temp_vec = Vec::<char>::new();
+            while s > 0 {
+                if s % 2 == 1 {
+                    temp_vec.push('1');
+                } else {
+                    temp_vec.push('0');
+                }
+                s = s / 2;
+            }
+            // Reverse the vector
+            let mut j = temp_vec.len() as int - 1;
+            while j >= 0 {
+                temp_squared.push(temp_vec[j as usize]);
+                j = j - 1;
+            }
+        }
+        
+        return temp_squared;
+    }
+}"]
+--------------------------------------------------------------------------------

@@ -1,0 +1,28 @@
+=== Verification Error - Iteration 6 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExp_ModExpPow2_Mul.rs
+Time: 2025-09-15 20:49:55
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: error[E0599]: no method named `pow` found for struct `verus_builtin::nat` in the current scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignum_ModExp_ModExpPow2_Mul_impl.rs:54:77
+   |
+54 |     ensures ValidBitString(res@), Str2Int(res@) == Str2Int(a@) * (2 as nat).pow(shift as nat)
+   |                                                                             ^^^ method not found in `nat`
+
+error: aborting due to 1 previous error
+
+For more information about this error, try `rustc --explain E0599`.
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+error[E0599]: no method named `pow` found for struct `verus_builtin::nat` in the current scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignum_ModExp_ModExpPow2_Mul_impl.rs:54:77
+   |
+54 |     ensures ValidBitString(res@), Str2Int(res@) == Str2Int(a@) * (2 as nat).pow(shift as nat)
+   |                                                                             ^^^ method not found in `nat`
+
+error: aborting due to 1 previous error
+
+For more information about this error, try `rustc --explain E0599`.

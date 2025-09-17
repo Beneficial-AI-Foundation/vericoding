@@ -1,0 +1,46 @@
+=== Verification Error - Iteration 2 ===
+File: benchmarks/verus/bignum/files/bignum_ModExpPow2_DivMod.rs
+Time: 2025-09-15 11:07:06
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: error: invalid suffix `int` for number literal
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExpPow2_DivMod_impl.rs:111:13
+    |
+111 |     if n == 0int {
+    |             ^^^^ invalid suffix `int`
+    |
+    = help: the suffix must be one of the numeric types (`u32`, `isize`, `f32`, etc.)
+
+error: invalid suffix `int` for number literal
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExpPow2_DivMod_impl.rs:125:52
+    |
+125 |     let half_result = ModExpPow2(sx, &sy_half, n - 1int, sz);
+    |                                                    ^^^^ invalid suffix `int`
+    |
+    = help: the suffix must be one of the numeric types (`u32`, `isize`, `f32`, etc.)
+
+error: aborting due to 2 previous errors
+
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+error: invalid suffix `int` for number literal
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExpPow2_DivMod_impl.rs:111:13
+    |
+111 |     if n == 0int {
+    |             ^^^^ invalid suffix `int`
+    |
+    = help: the suffix must be one of the numeric types (`u32`, `isize`, `f32`, etc.)
+
+error: invalid suffix `int` for number literal
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExpPow2_DivMod_impl.rs:125:52
+    |
+125 |     let half_result = ModExpPow2(sx, &sy_half, n - 1int, sz);
+    |                                                    ^^^^ invalid suffix `int`
+    |
+    = help: the suffix must be one of the numeric types (`u32`, `isize`, `f32`, etc.)
+
+error: aborting due to 2 previous errors
+

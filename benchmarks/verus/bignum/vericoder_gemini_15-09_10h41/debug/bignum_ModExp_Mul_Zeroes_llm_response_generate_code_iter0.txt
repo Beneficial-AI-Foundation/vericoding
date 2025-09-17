@@ -1,0 +1,11 @@
+=== LLM Response - generate_code - Iteration 0 ===
+File: benchmarks/verus/bignum/files/bignum_ModExp_Mul_Zeroes.rs
+Prompt Hash: b3a0eec8
+JSON Parsed Successfully: False
+Timestamp: 1757926929.901134
+Content Length: 744 chars
+--------------------------------------------------------------------------------
+```json
+[
+"proof fn lemma_mod_exp(a: nat, e: nat, m: nat) -> (res: nat)\n    requires m > 0\n    ensures res == Exp_int(a,e) % m, res == Exp_int(a % m, e) % m\n    decreases e\n{\n    if e == 0 {\n        Exp_int(a, 0) % m\n    } else {\n        let rec = lemma_mod_exp(a, (e - 1) as nat, m);\n        let res = (a * rec) % m;\n        let res_mod = ((a % m) * rec) % m;\n        assert((a * rec) % m == (((a % m) * rec) % m)) by(nonlinear_arith);\n        res\n    }\n}\n\nproof fn lemma_str_prefix(s: Seq<char>)\n    requires s.len() > 0\n    ensures Str2Int(s) == 2 * Str2Int(s.subrange(0, s.len() as int - 1)) + (if s.last() == '1' { 1 } else { 0 })\n{\n    assert(s.subrange(0, s.len() as int - 1) == s.drop_last());\n}\n\nspec fn mod_mul(
+--------------------------------------------------------------------------------

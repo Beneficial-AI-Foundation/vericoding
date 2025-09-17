@@ -1,0 +1,26 @@
+vc-description: |-
+  /- Translation of Verus function choose_odd to Lean 4 -/
+
+vc-preamble: |-
+  @[reducible, simp]
+  def chooseOdd_precond : Prop :=
+    True
+
+vc-helpers: |-
+
+vc-definitions: |-
+  def chooseOdd (h_precond : chooseOdd_precond) : Int :=
+    sorry
+
+vc-theorems: |-
+  @[reducible, simp]
+  def chooseOdd_postcond (result: Int) (h_precond : chooseOdd_precond) : Prop :=
+    result % 2 = 1
+  
+  theorem chooseOdd_spec_satisfied (h_precond : chooseOdd_precond) :
+      chooseOdd_postcond (chooseOdd h_precond) h_precond := by
+    sorry
+
+vc-postamble: |-
+  def main : IO Unit := return ()
+

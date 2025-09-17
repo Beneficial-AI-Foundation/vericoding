@@ -1,0 +1,127 @@
+=== Verification Error - Iteration 3 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_DivMod.rs
+Time: 2025-09-14 10:38:25
+
+Full Error Output:
+--------------------------------------------------------------------------------
+VERIFICATION BYPASSES DETECTED: uses 'assume' to bypass verification. Code contains verification bypasses and cannot be considered successfully verified.
+
+Original verification output:
+Compilation failed: error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_DivMod_impl.rs:36:20
+   |
+36 |     v.push(s.index(i as int));
+   |                    ^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_DivMod_impl.rs:64:24
+   |
+64 |   let mut n_dividend = dividend_current.len() as int;
+   |                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_DivMod_impl.rs:65:19
+   |
+65 |   let n_divisor = d_seq.len() as int;
+   |                   ^^^^^^^^^^^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_DivMod_impl.rs:88:53
+   |
+88 |     let shifted_divisor = bitwise_left_shift(d_seq, i as nat);
+   |                                                     ^^^^^^^^
+
+error[E0425]: cannot find function `trim_leading_zeros` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_DivMod_impl.rs:57:19
+   |
+57 |   let d_trimmed = trim_leading_zeros(d_seq);
+   |                   ^^^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `bitwise_left_shift` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_DivMod_impl.rs:88:27
+   |
+88 |     let shifted_divisor = bitwise_left_shift(d_seq, i as nat);
+   |                           ^^^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `subtr` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_DivMod_impl.rs:91:26
+   |
+91 |       dividend_current = subtr(dividend_current, shifted_divisor);
+   |                          ^^^^^ not found in this scope
+
+error[E0425]: cannot find function `trim_leading_zeros` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_DivMod_impl.rs:97:28
+   |
+97 |   let mut final_quotient = trim_leading_zeros(quotient);
+   |                            ^^^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `trim_leading_zeros` in this scope
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_DivMod_impl.rs:102:29
+    |
+102 |   let mut final_remainder = trim_leading_zeros(dividend_current);
+    |                             ^^^^^^^^^^^^^^^^^^ not found in this scope
+
+error: aborting due to 9 previous errors
+
+For more information about this error, try `rustc --explain E0425`.
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_DivMod_impl.rs:36:20
+   |
+36 |     v.push(s.index(i as int));
+   |                    ^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_DivMod_impl.rs:64:24
+   |
+64 |   let mut n_dividend = dividend_current.len() as int;
+   |                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_DivMod_impl.rs:65:19
+   |
+65 |   let n_divisor = d_seq.len() as int;
+   |                   ^^^^^^^^^^^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_DivMod_impl.rs:88:53
+   |
+88 |     let shifted_divisor = bitwise_left_shift(d_seq, i as nat);
+   |                                                     ^^^^^^^^
+
+error[E0425]: cannot find function `trim_leading_zeros` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_DivMod_impl.rs:57:19
+   |
+57 |   let d_trimmed = trim_leading_zeros(d_seq);
+   |                   ^^^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `bitwise_left_shift` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_DivMod_impl.rs:88:27
+   |
+88 |     let shifted_divisor = bitwise_left_shift(d_seq, i as nat);
+   |                           ^^^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `subtr` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_DivMod_impl.rs:91:26
+   |
+91 |       dividend_current = subtr(dividend_current, shifted_divisor);
+   |                          ^^^^^ not found in this scope
+
+error[E0425]: cannot find function `trim_leading_zeros` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_DivMod_impl.rs:97:28
+   |
+97 |   let mut final_quotient = trim_leading_zeros(quotient);
+   |                            ^^^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `trim_leading_zeros` in this scope
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_DivMod_impl.rs:102:29
+    |
+102 |   let mut final_remainder = trim_leading_zeros(dividend_current);
+    |                             ^^^^^^^^^^^^^^^^^^ not found in this scope
+
+error: aborting due to 9 previous errors
+
+For more information about this error, try `rustc --explain E0425`.

@@ -1,0 +1,268 @@
+=== Verification Error - Iteration 5 ===
+File: benchmarks/verus/bignum/files/bignum_ModExp_int.rs
+Time: 2025-09-15 11:05:52
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Verification failed: verification results:: 7 verified, 5 errors
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_int_impl.rs:58:7
+   |
+58 | proof fn lemma_str2int_int2str_helper(n: nat)
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: assertion failed
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_int_impl.rs:66:16
+   |
+66 |         assert(Int2Str_helper(1) == seq!['1']);
+   |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ assertion failed
+
+error: assertion failed
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_int_impl.rs:67:16
+   |
+67 |         assert(Str2Int(seq!['1']) == 1);
+   |                ^^^^^^^^^^^^^^^^^^^^^^^ assertion failed
+
+note: recommendation not met
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_int_impl.rs:75:16
+   |
+12 | recommends ValidBitString(s)
+   |            ----------------- recommendation not met
+...
+75 |         assert(Str2Int(s_new) == 2 * Str2Int(s) + (if c == '1' { 1nat } else { 0nat }));
+   |                ^^^^^^^^^^^^^^
+
+note: recommendation not met
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_int_impl.rs:75:38
+   |
+12 | recommends ValidBitString(s)
+   |            ----------------- recommendation not met
+...
+75 |         assert(Str2Int(s_new) == 2 * Str2Int(s) + (if c == '1' { 1nat } else { 0nat }));
+   |                                      ^^^^^^^^^^
+
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_int_impl.rs:87:5
+   |
+87 |     while i < s.len()
+   |     ^^^^^^^^^^^^^^^^^
+
+note: recommendation not met
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_int_impl.rs:90:23
+   |
+12 | recommends ValidBitString(s)
+   |            ----------------- recommendation not met
+...
+90 |             result == Str2Int(s@.subrange(0, i as int)),
+   |                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_int_impl.rs:93:18
+   |
+93 |         result = result * 2 + if s[i] == '1' { 1 } else { 0 };
+   |                  ^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_int_impl.rs:93:18
+   |
+93 |         result = result * 2 + if s[i] == '1' { 1 } else { 0 };
+   |                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_int_impl.rs:118:5
+    |
+118 |     while n > 0
+    |     ^^^^^^^^^^^
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_int_impl.rs:100:6
+    |
+100 | exec fn int2str_exec(mut n: usize) -> (res: Vec<char>)
+    |      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: assertion failed
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_int_impl.rs:110:20
+    |
+110 |             assert(Str2Int(seq!['0']) == 0);
+    |                    ^^^^^^^^^^^^^^^^^^^^^^^ assertion failed
+
+error: invariant not satisfied at end of loop body
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_int_impl.rs:122:13
+    |
+122 |             n > 0 ==> Str2Int(Int2Str_helper(n as nat).add(result@)) == orig_n,
+    |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: invariant not satisfied before loop
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_int_impl.rs:122:13
+    |
+122 |             n > 0 ==> Str2Int(Int2Str_helper(n as nat).add(result@)) == orig_n,
+    |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+note: recommendation not met
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_int_impl.rs:122:23
+    |
+12  | recommends ValidBitString(s)
+    |            ----------------- recommendation not met
+...
+122 |             n > 0 ==> Str2Int(Int2Str_helper(n as nat).add(result@)) == orig_n,
+    |                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: invariant not satisfied at end of loop body
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_int_impl.rs:123:13
+    |
+123 |             n == 0 ==> Str2Int(result@) == orig_n,
+    |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_int_impl.rs:148:6
+    |
+148 | exec fn modexp_helper(base: usize, exp: usize, modulus: usize) -> (res: usize)
+    |      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_int_impl.rs:159:26
+    |
+159 |         let mut result = (half * half) % modulus;
+    |                          ^^^^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_int_impl.rs:161:22
+    |
+161 |             result = (result * base) % modulus;
+    |                      ^^^^^^^^^^^^^^^
+
+error: aborting due to 10 previous errors
+
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+verification results:: 7 verified, 5 errors
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_int_impl.rs:58:7
+   |
+58 | proof fn lemma_str2int_int2str_helper(n: nat)
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: assertion failed
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_int_impl.rs:66:16
+   |
+66 |         assert(Int2Str_helper(1) == seq!['1']);
+   |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ assertion failed
+
+error: assertion failed
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_int_impl.rs:67:16
+   |
+67 |         assert(Str2Int(seq!['1']) == 1);
+   |                ^^^^^^^^^^^^^^^^^^^^^^^ assertion failed
+
+note: recommendation not met
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_int_impl.rs:75:16
+   |
+12 | recommends ValidBitString(s)
+   |            ----------------- recommendation not met
+...
+75 |         assert(Str2Int(s_new) == 2 * Str2Int(s) + (if c == '1' { 1nat } else { 0nat }));
+   |                ^^^^^^^^^^^^^^
+
+note: recommendation not met
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_int_impl.rs:75:38
+   |
+12 | recommends ValidBitString(s)
+   |            ----------------- recommendation not met
+...
+75 |         assert(Str2Int(s_new) == 2 * Str2Int(s) + (if c == '1' { 1nat } else { 0nat }));
+   |                                      ^^^^^^^^^^
+
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_int_impl.rs:87:5
+   |
+87 |     while i < s.len()
+   |     ^^^^^^^^^^^^^^^^^
+
+note: recommendation not met
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_int_impl.rs:90:23
+   |
+12 | recommends ValidBitString(s)
+   |            ----------------- recommendation not met
+...
+90 |             result == Str2Int(s@.subrange(0, i as int)),
+   |                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_int_impl.rs:93:18
+   |
+93 |         result = result * 2 + if s[i] == '1' { 1 } else { 0 };
+   |                  ^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_int_impl.rs:93:18
+   |
+93 |         result = result * 2 + if s[i] == '1' { 1 } else { 0 };
+   |                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_int_impl.rs:118:5
+    |
+118 |     while n > 0
+    |     ^^^^^^^^^^^
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_int_impl.rs:100:6
+    |
+100 | exec fn int2str_exec(mut n: usize) -> (res: Vec<char>)
+    |      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: assertion failed
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_int_impl.rs:110:20
+    |
+110 |             assert(Str2Int(seq!['0']) == 0);
+    |                    ^^^^^^^^^^^^^^^^^^^^^^^ assertion failed
+
+error: invariant not satisfied at end of loop body
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_int_impl.rs:122:13
+    |
+122 |             n > 0 ==> Str2Int(Int2Str_helper(n as nat).add(result@)) == orig_n,
+    |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: invariant not satisfied before loop
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_int_impl.rs:122:13
+    |
+122 |             n > 0 ==> Str2Int(Int2Str_helper(n as nat).add(result@)) == orig_n,
+    |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+note: recommendation not met
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_int_impl.rs:122:23
+    |
+12  | recommends ValidBitString(s)
+    |            ----------------- recommendation not met
+...
+122 |             n > 0 ==> Str2Int(Int2Str_helper(n as nat).add(result@)) == orig_n,
+    |                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: invariant not satisfied at end of loop body
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_int_impl.rs:123:13
+    |
+123 |             n == 0 ==> Str2Int(result@) == orig_n,
+    |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_int_impl.rs:148:6
+    |
+148 | exec fn modexp_helper(base: usize, exp: usize, modulus: usize) -> (res: usize)
+    |      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_int_impl.rs:159:26
+    |
+159 |         let mut result = (half * half) % modulus;
+    |                          ^^^^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_int_impl.rs:161:22
+    |
+161 |             result = (result * base) % modulus;
+    |                      ^^^^^^^^^^^^^^^
+
+error: aborting due to 10 previous errors
+

@@ -1,0 +1,6 @@
+=== Raw LLM Generate Response ===
+Length: 772 characters
+--------------------------------------------------------------------------------
+```json
+["spec fn Int2Str(n: nat) -> Seq<char>\n    decreases n\n{\n    if n == 0 {\n        seq!['0']\n    } else if n == 1 {\n        seq!['1']\n    } else {\n        Int2Str(n / 2).push(if n % 2 == 1 { '1' } else { '0' })\n    }\n}\n\nproof fn lemma_int2str_valid(n: nat)\n    ensures ValidBitString(Int2Str(n))\n    decreases n\n{\n    if n <= 1 {\n    } else {\n        lemma_int2str_valid(n / 2);\n    }\n}\n\nproof fn lemma_str2int_append(s: Seq<char>, c: char)\n    requires\n        ValidBitString(s),\n        c == '0' || c == '1',\n    ensures Str2Int(s.push(c)) == Str2Int(s) * 2 + if c == '1' { 1 } else { 0 }\n{\n}\n\nexec fn str_to_int(s: &[char]) -> (res: nat)\n    requires ValidBitString(s@)\n    ensures res == Str2Int(s@)\n{\n    let mut res: nat = 0;\
+--------------------------------------------------------------------------------

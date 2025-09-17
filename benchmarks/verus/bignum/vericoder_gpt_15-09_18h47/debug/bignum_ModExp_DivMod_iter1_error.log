@@ -1,0 +1,214 @@
+=== Verification Error - Iteration 1 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExp_DivMod.rs
+Time: 2025-09-15 19:22:07
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Verification failed: verification results:: 6 verified, 6 errors
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt_15-09_18h47/bignum_ModExp_DivMod_impl.rs:29:5
+   |
+29 |     while i < s.len()
+   |     ^^^^^^^^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt_15-09_18h47/bignum_ModExp_DivMod_impl.rs:35:15
+   |
+35 |         val = val * 2 + b;
+   |               ^^^^^^^
+
+error: possible arithmetic underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt_15-09_18h47/bignum_ModExp_DivMod_impl.rs:35:15
+   |
+35 |         val = val * 2 + b;
+   |               ^^^^^^^^^^^
+
+error: decreases not satisfied at end of loop
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt_15-09_18h47/bignum_ModExp_DivMod_impl.rs:48:5
+   |
+48 |     while tmp > 0
+   |     ^^^^^^^^^^^^^
+
+note: recommendation not met: value may be out of range of the target type (use `#[verifier::truncate]` on the cast to silence this warning)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt_15-09_18h47/bignum_ModExp_DivMod_impl.rs:53:19
+   |
+53 |         let bit = (tmp & 1) as u8;
+   |                   ^^^^^^^^^
+
+error: decreases not satisfied at end of loop
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt_15-09_18h47/bignum_ModExp_DivMod_impl.rs:59:5
+   |
+59 |     while i < j
+   |     ^^^^^^^^^^^
+
+error: invariant not satisfied before loop
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt_15-09_18h47/bignum_ModExp_DivMod_impl.rs:61:13
+   |
+61 |             j + 1 <= v.len(),
+   |             ^^^^^^^^^^^^^^^^
+
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt_15-09_18h47/bignum_ModExp_DivMod_impl.rs:78:5
+   |
+78 |     while exp > 0
+   |     ^^^^^^^^^^^^^
+
+error: decreases not satisfied at end of loop
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt_15-09_18h47/bignum_ModExp_DivMod_impl.rs:78:5
+   |
+78 |     while exp > 0
+   |     ^^^^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt_15-09_18h47/bignum_ModExp_DivMod_impl.rs:84:45
+   |
+84 |             result = if m == 0 { 0 } else { (result * base) % m };
+   |                                             ^^^^^^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt_15-09_18h47/bignum_ModExp_DivMod_impl.rs:86:42
+   |
+86 |         base = if m == 0 { base } else { (base * base) % m };
+   |                                          ^^^^^^^^^^^^^
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt_15-09_18h47/bignum_ModExp_DivMod_impl.rs:94:6
+   |
+94 | exec fn ModExp_DivMod(sx: &[char], sy: &[char], sz: &[char]) -> (res: Vec<char>)
+   |      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt_15-09_18h47/bignum_ModExp_DivMod_impl.rs:96:11
+    |
+96  |   ensures ValidBitString(res@), Str2Int(res@) == Exp_int(Str2Int(sx@), Str2Int(sy@)) % Str2Int(sz@)
+    |           ^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+106 |     return res_vec;
+    |     -------------- at this exit
+
+note: recommendation not met
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt_15-09_18h47/bignum_ModExp_DivMod_impl.rs:96:33
+   |
+12 | recommends ValidBitString(s)
+   |            ----------------- recommendation not met
+...
+96 |   ensures ValidBitString(res@), Str2Int(res@) == Exp_int(Str2Int(sx@), Str2Int(sy@)) % Str2Int(sz@)
+   |                                 ^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt_15-09_18h47/bignum_ModExp_DivMod_impl.rs:96:33
+    |
+96  |   ensures ValidBitString(res@), Str2Int(res@) == Exp_int(Str2Int(sx@), Str2Int(sy@)) % Str2Int(sz@)
+    |                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+106 |     return res_vec;
+    |     -------------- at this exit
+
+error: aborting due to 10 previous errors
+
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+verification results:: 6 verified, 6 errors
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt_15-09_18h47/bignum_ModExp_DivMod_impl.rs:29:5
+   |
+29 |     while i < s.len()
+   |     ^^^^^^^^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt_15-09_18h47/bignum_ModExp_DivMod_impl.rs:35:15
+   |
+35 |         val = val * 2 + b;
+   |               ^^^^^^^
+
+error: possible arithmetic underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt_15-09_18h47/bignum_ModExp_DivMod_impl.rs:35:15
+   |
+35 |         val = val * 2 + b;
+   |               ^^^^^^^^^^^
+
+error: decreases not satisfied at end of loop
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt_15-09_18h47/bignum_ModExp_DivMod_impl.rs:48:5
+   |
+48 |     while tmp > 0
+   |     ^^^^^^^^^^^^^
+
+note: recommendation not met: value may be out of range of the target type (use `#[verifier::truncate]` on the cast to silence this warning)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt_15-09_18h47/bignum_ModExp_DivMod_impl.rs:53:19
+   |
+53 |         let bit = (tmp & 1) as u8;
+   |                   ^^^^^^^^^
+
+error: decreases not satisfied at end of loop
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt_15-09_18h47/bignum_ModExp_DivMod_impl.rs:59:5
+   |
+59 |     while i < j
+   |     ^^^^^^^^^^^
+
+error: invariant not satisfied before loop
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt_15-09_18h47/bignum_ModExp_DivMod_impl.rs:61:13
+   |
+61 |             j + 1 <= v.len(),
+   |             ^^^^^^^^^^^^^^^^
+
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt_15-09_18h47/bignum_ModExp_DivMod_impl.rs:78:5
+   |
+78 |     while exp > 0
+   |     ^^^^^^^^^^^^^
+
+error: decreases not satisfied at end of loop
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt_15-09_18h47/bignum_ModExp_DivMod_impl.rs:78:5
+   |
+78 |     while exp > 0
+   |     ^^^^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt_15-09_18h47/bignum_ModExp_DivMod_impl.rs:84:45
+   |
+84 |             result = if m == 0 { 0 } else { (result * base) % m };
+   |                                             ^^^^^^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt_15-09_18h47/bignum_ModExp_DivMod_impl.rs:86:42
+   |
+86 |         base = if m == 0 { base } else { (base * base) % m };
+   |                                          ^^^^^^^^^^^^^
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt_15-09_18h47/bignum_ModExp_DivMod_impl.rs:94:6
+   |
+94 | exec fn ModExp_DivMod(sx: &[char], sy: &[char], sz: &[char]) -> (res: Vec<char>)
+   |      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt_15-09_18h47/bignum_ModExp_DivMod_impl.rs:96:11
+    |
+96  |   ensures ValidBitString(res@), Str2Int(res@) == Exp_int(Str2Int(sx@), Str2Int(sy@)) % Str2Int(sz@)
+    |           ^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+106 |     return res_vec;
+    |     -------------- at this exit
+
+note: recommendation not met
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt_15-09_18h47/bignum_ModExp_DivMod_impl.rs:96:33
+   |
+12 | recommends ValidBitString(s)
+   |            ----------------- recommendation not met
+...
+96 |   ensures ValidBitString(res@), Str2Int(res@) == Exp_int(Str2Int(sx@), Str2Int(sy@)) % Str2Int(sz@)
+   |                                 ^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt_15-09_18h47/bignum_ModExp_DivMod_impl.rs:96:33
+    |
+96  |   ensures ValidBitString(res@), Str2Int(res@) == Exp_int(Str2Int(sx@), Str2Int(sy@)) % Str2Int(sz@)
+    |                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+106 |     return res_vec;
+    |     -------------- at this exit
+
+error: aborting due to 10 previous errors
+

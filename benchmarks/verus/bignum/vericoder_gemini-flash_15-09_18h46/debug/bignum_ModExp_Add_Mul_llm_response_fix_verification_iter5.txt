@@ -1,0 +1,140 @@
+=== LLM Response - fix_verification - Iteration 5 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExp_Add_Mul.rs
+Prompt Hash: f95045bb
+JSON Parsed Successfully: False
+Timestamp: 1757955449.9221408
+Content Length: 3141 chars
+--------------------------------------------------------------------------------
+[`{
+  let mut result: Vec<char> = Vec::new();
+  let mut carry: nat = 0;
+  let mut i: usize = 0;
+
+  let s1_vec = s1.to_vec();
+  let s2_vec = s2.to_vec();
+
+  let max_len = if s1_vec.len() > s2_vec.len() { s1_vec.len() } else { s2_vec.len() };
+
+  while i < max_len || carry == 1
+    invariant
+      result.len() == i,
+      carry == 0 || carry == 1,
+      // result@.len() <= i,
+      // ValidBitString(result@),
+      // forall |j: int| 0 <= j && j < result@.len() ==> (result@[j] == '0' || result@[j] == '1'),
+      i <= max_len + 1
+    // decreases ((max_len as int) - (i as int)) + (carry as int)
+    decreases max_len + 1 - i
+  {
+    let mut digit1: nat = 0;
+    if i < s1_vec.len() {
+      digit1 = if s1_vec[s1_vec.len() - 1 - i] == '1' { 1 } else { 0 };
+    }
+
+    let mut digit2: nat = 0;
+    if i < s2_vec.len() {
+      digit2 = if s2_vec[s2_vec.len() - 1 - i] == '1' { 1 } else { 0 };
+    }
+
+    let sum: nat = digit1 + digit2 + carry;
+    let current_digit: nat = (sum % 2) as nat;
+    carry = (sum / 2) as nat;
+
+    result.push(if current_digit == 1 { '1' } else { '0' });
+    i = i + 1;
+  }
+
+  result.reverse();
+  return result;
+}`, `{
+  let mut res_vec: Vec<char> = Vec::new();
+
+  if s1.len() == 0 || s2.len() == 0 {
+    res_vec.push('0');
+    return res_vec;
+  }
+
+  let s1_nat = Str2Int(s1@);
+  let s2_nat = Str2Int(s2@);
+  let product_nat = s1_nat * s2_nat;
+
+  if product_nat == 0 {
+    res_vec.push('0');
+    return res_vec;
+  }
+
+  let mut temp_product: nat = product_nat;
+  while temp_product > 0
+    invariant
+      ValidBitString(res_vec@),
+      temp_product * Exp_int(2, res_vec.len() as nat) + Str2Int(res_vec@) == product_nat
+    decreases temp_product
+  {
+    let digit: nat = (temp_product % 2) as nat;
+    if digit == 1 {
+      res_vec.push('1');
+    } else {
+      res_vec.push('0');
+    }
+    temp_product = (temp_product / 2) as nat;
+  }
+
+  res_vec.reverse();
+  return res_vec;
+}`, `{
+  let x_nat = Str2Int(sx@);
+  let y_nat = Str2Int(sy@);
+  let z_nat = Str2Int(sz@);
+
+  let mut result_nat: nat;
+
+  if y_nat == 0 {
+    result_nat = (1 % z_nat) as nat;
+  } else {
+    let mut base: nat = (x_nat % z_nat) as nat;
+    let mut exp: nat = y_nat;
+    let mut res_acc: nat = 1;
+
+    while exp > 0
+      invariant
+        exp >= 0,
+        res_acc > 0,
+        base >= 0,
+        z_nat > 1,
+        res_acc == Exp_int(x_nat, y_nat - exp) % z_nat
+      decreases exp
+    {
+      if (exp % 2) as nat == 1 {
+        res_acc = ((res_acc * base) % z_nat) as nat;
+      }
+      base = ((base * base) % z_nat) as nat;
+      exp = (exp / 2) as nat;
+    }
+    result_nat = res_acc;
+  }
+
+  let mut res_vec: Vec<char> = Vec::new();
+  if result_nat == 0 {
+    res_vec.push('0');
+  } else {
+    let mut temp: nat = result_nat;
+    while temp > 0
+      invariant
+        ValidBitString(res_vec@),
+        temp * Exp_int(2, res_vec.len() as nat) + Str2Int(res_vec@) == result_nat
+      decreases temp
+    {
+      let digit: nat = (temp % 2) as nat;
+      if digit == 1 {
+        res_vec.push('1');
+      } else {
+        res_vec.push('0');
+      }
+      temp = (temp / 2) as nat;
+    }
+    res_vec.reverse();
+  }
+
+  return res_vec;
+}`]
+--------------------------------------------------------------------------------

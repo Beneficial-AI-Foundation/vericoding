@@ -1,0 +1,192 @@
+=== Verification Error - Iteration 7 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_Compare.rs
+Time: 2025-09-15 19:30:16
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Verification failed: verification results:: 3 verified, 2 errors
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_Compare_impl.rs:56:5
+   |
+56 |     while i < len1 && i < len2
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_Compare_impl.rs:41:6
+   |
+41 | exec fn Compare(s1: &[char], s2: &[char]) -> (res: i32)
+   |      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_Compare_impl.rs:44:11
+   |
+44 |   ensures Str2Int(s1@) < Str2Int(s2@) ==> res == -1,
+   |           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+64 |             return 1;
+   |             -------- at this exit
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_Compare_impl.rs:44:11
+   |
+44 |     ensures Str2Int(s1@) < Str2Int(s2@) ==> res == -1,
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+71 | /     if len1 < len2 {
+72 | |         -1
+73 | |     } else if len1 > len2 {
+74 | |         1
+75 | |     } else {
+76 | |         0
+77 | |     }
+   | |_____- at the end of the function body
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_Compare_impl.rs:45:5
+   |
+45 |       Str2Int(s1@) == Str2Int(s2@) ==> res == 0,
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+71 | /     if len1 < len2 {
+72 | |         -1
+73 | |     } else if len1 > len2 {
+74 | |         1
+75 | |     } else {
+76 | |         0
+77 | |     }
+   | |_____- at the end of the function body
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_Compare_impl.rs:46:5
+   |
+46 |       Str2Int(s1@) > Str2Int(s2@) ==> res == 1,
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+71 | /     if len1 < len2 {
+72 | |         -1
+73 | |     } else if len1 > len2 {
+74 | |         1
+75 | |     } else {
+76 | |         0
+77 | |     }
+   | |_____- at the end of the function body
+
+error: precondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_Compare_impl.rs:63:12
+   |
+63 |         if s1[i] == '1' && s2[i] == '0' {
+   |            ^^^^^
+   |
+  ::: /Users/sergiu.bursuc/verus/vstd/slice.rs:62:9
+   |
+62 |         0 <= i < slice.view().len(),
+   |         --------------------------- failed precondition
+
+error: precondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_Compare_impl.rs:63:28
+   |
+63 |         if s1[i] == '1' && s2[i] == '0' {
+   |                            ^^^^^
+   |
+  ::: /Users/sergiu.bursuc/verus/vstd/slice.rs:62:9
+   |
+62 |         0 <= i < slice.view().len(),
+   |         --------------------------- failed precondition
+
+error: aborting due to 6 previous errors
+
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+verification results:: 3 verified, 2 errors
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_Compare_impl.rs:56:5
+   |
+56 |     while i < len1 && i < len2
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_Compare_impl.rs:41:6
+   |
+41 | exec fn Compare(s1: &[char], s2: &[char]) -> (res: i32)
+   |      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_Compare_impl.rs:44:11
+   |
+44 |   ensures Str2Int(s1@) < Str2Int(s2@) ==> res == -1,
+   |           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+64 |             return 1;
+   |             -------- at this exit
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_Compare_impl.rs:44:11
+   |
+44 |     ensures Str2Int(s1@) < Str2Int(s2@) ==> res == -1,
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+71 | /     if len1 < len2 {
+72 | |         -1
+73 | |     } else if len1 > len2 {
+74 | |         1
+75 | |     } else {
+76 | |         0
+77 | |     }
+   | |_____- at the end of the function body
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_Compare_impl.rs:45:5
+   |
+45 |       Str2Int(s1@) == Str2Int(s2@) ==> res == 0,
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+71 | /     if len1 < len2 {
+72 | |         -1
+73 | |     } else if len1 > len2 {
+74 | |         1
+75 | |     } else {
+76 | |         0
+77 | |     }
+   | |_____- at the end of the function body
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_Compare_impl.rs:46:5
+   |
+46 |       Str2Int(s1@) > Str2Int(s2@) ==> res == 1,
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+71 | /     if len1 < len2 {
+72 | |         -1
+73 | |     } else if len1 > len2 {
+74 | |         1
+75 | |     } else {
+76 | |         0
+77 | |     }
+   | |_____- at the end of the function body
+
+error: precondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_Compare_impl.rs:63:12
+   |
+63 |         if s1[i] == '1' && s2[i] == '0' {
+   |            ^^^^^
+   |
+  ::: /Users/sergiu.bursuc/verus/vstd/slice.rs:62:9
+   |
+62 |         0 <= i < slice.view().len(),
+   |         --------------------------- failed precondition
+
+error: precondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_Compare_impl.rs:63:28
+   |
+63 |         if s1[i] == '1' && s2[i] == '0' {
+   |                            ^^^^^
+   |
+  ::: /Users/sergiu.bursuc/verus/vstd/slice.rs:62:9
+   |
+62 |         0 <= i < slice.view().len(),
+   |         --------------------------- failed precondition
+
+error: aborting due to 6 previous errors
+

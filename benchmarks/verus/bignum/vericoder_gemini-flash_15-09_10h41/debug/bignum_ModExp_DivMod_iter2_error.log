@@ -1,0 +1,26 @@
+=== Verification Error - Iteration 2 ===
+File: benchmarks/verus/bignum/files/bignum_ModExp_DivMod.rs
+Time: 2025-09-15 10:43:21
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_ModExp_DivMod_impl.rs:73:36
+   |
+73 |         let y_minus_1_div_2: nat = (y_val - 1) as nat / 2;
+   |                                    ^^^^^^^^^^^^^^^^^^
+
+error: aborting due to 1 previous error
+
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_ModExp_DivMod_impl.rs:73:36
+   |
+73 |         let y_minus_1_div_2: nat = (y_val - 1) as nat / 2;
+   |                                    ^^^^^^^^^^^^^^^^^^
+
+error: aborting due to 1 previous error
+

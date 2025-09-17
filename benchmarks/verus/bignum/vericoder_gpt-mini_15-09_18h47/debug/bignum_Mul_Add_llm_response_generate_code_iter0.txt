@@ -1,0 +1,12 @@
+=== LLM Response - generate_code - Iteration 0 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_Mul_Add.rs
+Prompt Hash: 8b592c07
+JSON Parsed Successfully: True
+Timestamp: 1757962500.368392
+Content Length: 1397 chars
+--------------------------------------------------------------------------------
+[
+"spec fn pow2(k: nat) -> nat\n    decreases k\n{\n    if k == 0 { 1 } else { 2 * pow2(k - 1) }\n}\n\nspec fn char_to_nat(c: char) -> nat\n{\n    if c == '1' { 1 } else { 0 }\n}",
+"{\n    let n1 = s1.len() as int;\n    let mut i1: int = 0;\n    let mut v1: nat = 0;\n    while i1 < n1\n        invariant\n            0 <= i1 && i1 <= n1,\n            v1 == Str2Int(s1@.subrange(0, i1)),\n        decreases n1 - i1\n    {\n        let b = if s1@.index(i1) == '1' { 1 } else { 0 };\n        v1 = 2 * v1 + b;\n        i1 += 1;\n    }\n\n    let n2 = s2.len() as int;\n    let mut i2: int = 0;\n    let mut v2: nat = 0;\n    while i2 < n2\n        invariant\n            0 <= i2 && i2 <= n2,\n            v2 == Str2Int(s2@.subrange(0, i2)),\n        decreases n2 - i2\n    {\n        let b = if s2@.index(i2) == '1' { 1 } else { 0 };\n        v2 = 2 * v2 + b;\n        i2 += 1;\n    }\n\n    let mut p: nat = v1 * v2;\n    let p0 = p;\n    let mut res = Vec::<char>::new();\n    if p == 0 {\n        res.push('0');\n    } else {\n        let mut k: nat = 0;\n        while p > 0\n            invariant\n                Str2Int(res@) + pow2(k) * p == p0,\n            decreases p\n        {\n            if p % 2 == 1 {\n                res.push('1');\n            } else {\n                res.push('0');\n            }\n            p = p / 2;\n            k = k + 1;\n        }\n    }\n    res\n}"
+]
+--------------------------------------------------------------------------------

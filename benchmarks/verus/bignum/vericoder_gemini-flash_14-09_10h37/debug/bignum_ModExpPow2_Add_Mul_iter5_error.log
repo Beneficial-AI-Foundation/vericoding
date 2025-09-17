@@ -1,0 +1,476 @@
+=== Verification Error - Iteration 5 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExpPow2_Add_Mul.rs
+Time: 2025-09-14 10:40:23
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: error: invalid suffix `nat` for number literal
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExpPow2_Add_Mul_impl.rs:47:47
+   |
+47 |       if s1[s1.len() - 1 - i] == '1' { bit1 = 1nat; }
+   |                                               ^^^^ invalid suffix `nat`
+   |
+   = help: the suffix must be one of the numeric types (`u32`, `isize`, `f32`, etc.)
+
+error: invalid suffix `nat` for number literal
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExpPow2_Add_Mul_impl.rs:53:47
+   |
+53 |       if s2[s2.len() - 1 - j] == '1' { bit2 = 1nat; }
+   |                                               ^^^^ invalid suffix `nat`
+   |
+   = help: the suffix must be one of the numeric types (`u32`, `isize`, `f32`, etc.)
+
+error: invalid suffix `nat` for number literal
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExpPow2_Add_Mul_impl.rs:77:17
+   |
+77 |   if product == 0nat {
+   |                 ^^^^ invalid suffix `nat`
+   |
+   = help: the suffix must be one of the numeric types (`u32`, `isize`, `f32`, etc.)
+
+error: invalid suffix `nat` for number literal
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExpPow2_Add_Mul_impl.rs:82:19
+   |
+82 |   while product > 0nat
+   |                   ^^^^ invalid suffix `nat`
+   |
+   = help: the suffix must be one of the numeric types (`u32`, `isize`, `f32`, etc.)
+
+error: invalid suffix `nat` for number literal
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExpPow2_Add_Mul_impl.rs:86:23
+   |
+86 |     if product % 2 == 1nat {
+   |                       ^^^^ invalid suffix `nat`
+   |
+   = help: the suffix must be one of the numeric types (`u32`, `isize`, `f32`, etc.)
+
+error: invalid suffix `nat` for number literal
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExpPow2_Add_Mul_impl.rs:116:22
+    |
+116 |     if result_val == 0nat {
+    |                      ^^^^ invalid suffix `nat`
+    |
+    = help: the suffix must be one of the numeric types (`u32`, `isize`, `f32`, etc.)
+
+error: invalid suffix `nat` for number literal
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExpPow2_Add_Mul_impl.rs:122:25
+    |
+122 |     while temp_result > 0nat
+    |                         ^^^^ invalid suffix `nat`
+    |
+    = help: the suffix must be one of the numeric types (`u32`, `isize`, `f32`, etc.)
+
+error: invalid suffix `nat` for number literal
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExpPow2_Add_Mul_impl.rs:126:31
+    |
+126 |         if temp_result % 2 == 1nat {
+    |                               ^^^^ invalid suffix `nat`
+    |
+    = help: the suffix must be one of the numeric types (`u32`, `isize`, `f32`, etc.)
+
+error: invalid suffix `nat` for number literal
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExpPow2_Add_Mul_impl.rs:138:16
+    |
+138 |   if sy_val == 0nat {
+    |                ^^^^ invalid suffix `nat`
+    |
+    = help: the suffix must be one of the numeric types (`u32`, `isize`, `f32`, etc.)
+
+error: invalid suffix `nat` for number literal
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExpPow2_Add_Mul_impl.rs:159:20
+    |
+159 |   if result_val == 0nat {
+    |                    ^^^^ invalid suffix `nat`
+    |
+    = help: the suffix must be one of the numeric types (`u32`, `isize`, `f32`, etc.)
+
+error: invalid suffix `nat` for number literal
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExpPow2_Add_Mul_impl.rs:165:23
+    |
+165 |   while temp_result > 0nat
+    |                       ^^^^ invalid suffix `nat`
+    |
+    = help: the suffix must be one of the numeric types (`u32`, `isize`, `f32`, etc.)
+
+error: invalid suffix `nat` for number literal
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExpPow2_Add_Mul_impl.rs:169:27
+    |
+169 |     if temp_result % 2 == 1nat {
+    |                           ^^^^ invalid suffix `nat`
+    |
+    = help: the suffix must be one of the numeric types (`u32`, `isize`, `f32`, etc.)
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExpPow2_Add_Mul_impl.rs:32:24
+   |
+32 |   let mut carry: nat = 0;
+   |                  ---   ^ expected `nat`, found integer
+   |                  |
+   |                  expected due to this
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExpPow2_Add_Mul_impl.rs:36:49
+   |
+36 |   while i < s1.len() || j < s2.len() || carry > 0
+   |                                         -----   ^ expected `nat`, found integer
+   |                                         |
+   |                                         expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExpPow2_Add_Mul_impl.rs:45:25
+   |
+45 |     let mut bit1: nat = 0;
+   |                   ---   ^ expected `nat`, found integer
+   |                   |
+   |                   expected due to this
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExpPow2_Add_Mul_impl.rs:51:25
+   |
+51 |     let mut bit2: nat = 0;
+   |                   ---   ^ expected `nat`, found integer
+   |                   |
+   |                   expected due to this
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExpPow2_Add_Mul_impl.rs:58:31
+   |
+58 |     result.insert(0, if sum % 2 == 1 { '1' } else { '0' });
+   |                         ---   ^ expected `nat`, found integer
+   |                         |
+   |                         expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExpPow2_Add_Mul_impl.rs:58:36
+   |
+58 |     result.insert(0, if sum % 2 == 1 { '1' } else { '0' });
+   |                         -------    ^ expected `nat`, found integer
+   |                         |
+   |                         expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExpPow2_Add_Mul_impl.rs:59:19
+   |
+59 |     carry = sum / 2;
+   |             ---   ^ expected `nat`, found integer
+   |             |
+   |             expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExpPow2_Add_Mul_impl.rs:86:18
+   |
+86 |     if product % 2 == 1nat {
+   |        -------   ^ expected `nat`, found integer
+   |        |
+   |        expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExpPow2_Add_Mul_impl.rs:91:25
+   |
+91 |     product = product / 2;
+   |               -------   ^ expected `nat`, found integer
+   |               |
+   |               expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExpPow2_Add_Mul_impl.rs:111:11
+    |
+111 |   if n == 0 {
+    |      -    ^ expected `int`, found integer
+    |      |
+    |      expected because this is `vstd::prelude::int`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExpPow2_Add_Mul_impl.rs:126:26
+    |
+126 |         if temp_result % 2 == 1nat {
+    |            -----------   ^ expected `nat`, found integer
+    |            |
+    |            expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExpPow2_Add_Mul_impl.rs:131:37
+    |
+131 |         temp_result = temp_result / 2;
+    |                       -----------   ^ expected `nat`, found integer
+    |                       |
+    |                       expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExpPow2_Add_Mul_impl.rs:147:20
+    |
+147 |   let mut k: int = 0;
+    |              ---   ^ expected `int`, found integer
+    |              |
+    |              expected due to this
+
+error[E0368]: binary assignment operation `+=` cannot be applied to type `vstd::prelude::int`
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExpPow2_Add_Mul_impl.rs:156:5
+    |
+156 |     k += 1;
+    |     -^^^^^
+    |     |
+    |     cannot use `+=` on type `vstd::prelude::int`
+    |
+note: the foreign item type `vstd::prelude::int` doesn't implement `std::ops::AddAssign<{integer}>`
+   --> /Users/runner/work/verus/verus/source/builtin/src/lib.rs:573:1
+    |
+    = note: not implement `std::ops::AddAssign<{integer}>`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExpPow2_Add_Mul_impl.rs:169:22
+    |
+169 |     if temp_result % 2 == 1nat {
+    |        -----------   ^ expected `nat`, found integer
+    |        |
+    |        expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExpPow2_Add_Mul_impl.rs:174:33
+    |
+174 |     temp_result = temp_result / 2;
+    |                   -----------   ^ expected `nat`, found integer
+    |                   |
+    |                   expected because this is `vstd::prelude::nat`
+
+error: aborting due to 28 previous errors
+
+Some errors have detailed explanations: E0308, E0368.
+For more information about an error, try `rustc --explain E0308`.
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+error: invalid suffix `nat` for number literal
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExpPow2_Add_Mul_impl.rs:47:47
+   |
+47 |       if s1[s1.len() - 1 - i] == '1' { bit1 = 1nat; }
+   |                                               ^^^^ invalid suffix `nat`
+   |
+   = help: the suffix must be one of the numeric types (`u32`, `isize`, `f32`, etc.)
+
+error: invalid suffix `nat` for number literal
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExpPow2_Add_Mul_impl.rs:53:47
+   |
+53 |       if s2[s2.len() - 1 - j] == '1' { bit2 = 1nat; }
+   |                                               ^^^^ invalid suffix `nat`
+   |
+   = help: the suffix must be one of the numeric types (`u32`, `isize`, `f32`, etc.)
+
+error: invalid suffix `nat` for number literal
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExpPow2_Add_Mul_impl.rs:77:17
+   |
+77 |   if product == 0nat {
+   |                 ^^^^ invalid suffix `nat`
+   |
+   = help: the suffix must be one of the numeric types (`u32`, `isize`, `f32`, etc.)
+
+error: invalid suffix `nat` for number literal
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExpPow2_Add_Mul_impl.rs:82:19
+   |
+82 |   while product > 0nat
+   |                   ^^^^ invalid suffix `nat`
+   |
+   = help: the suffix must be one of the numeric types (`u32`, `isize`, `f32`, etc.)
+
+error: invalid suffix `nat` for number literal
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExpPow2_Add_Mul_impl.rs:86:23
+   |
+86 |     if product % 2 == 1nat {
+   |                       ^^^^ invalid suffix `nat`
+   |
+   = help: the suffix must be one of the numeric types (`u32`, `isize`, `f32`, etc.)
+
+error: invalid suffix `nat` for number literal
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExpPow2_Add_Mul_impl.rs:116:22
+    |
+116 |     if result_val == 0nat {
+    |                      ^^^^ invalid suffix `nat`
+    |
+    = help: the suffix must be one of the numeric types (`u32`, `isize`, `f32`, etc.)
+
+error: invalid suffix `nat` for number literal
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExpPow2_Add_Mul_impl.rs:122:25
+    |
+122 |     while temp_result > 0nat
+    |                         ^^^^ invalid suffix `nat`
+    |
+    = help: the suffix must be one of the numeric types (`u32`, `isize`, `f32`, etc.)
+
+error: invalid suffix `nat` for number literal
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExpPow2_Add_Mul_impl.rs:126:31
+    |
+126 |         if temp_result % 2 == 1nat {
+    |                               ^^^^ invalid suffix `nat`
+    |
+    = help: the suffix must be one of the numeric types (`u32`, `isize`, `f32`, etc.)
+
+error: invalid suffix `nat` for number literal
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExpPow2_Add_Mul_impl.rs:138:16
+    |
+138 |   if sy_val == 0nat {
+    |                ^^^^ invalid suffix `nat`
+    |
+    = help: the suffix must be one of the numeric types (`u32`, `isize`, `f32`, etc.)
+
+error: invalid suffix `nat` for number literal
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExpPow2_Add_Mul_impl.rs:159:20
+    |
+159 |   if result_val == 0nat {
+    |                    ^^^^ invalid suffix `nat`
+    |
+    = help: the suffix must be one of the numeric types (`u32`, `isize`, `f32`, etc.)
+
+error: invalid suffix `nat` for number literal
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExpPow2_Add_Mul_impl.rs:165:23
+    |
+165 |   while temp_result > 0nat
+    |                       ^^^^ invalid suffix `nat`
+    |
+    = help: the suffix must be one of the numeric types (`u32`, `isize`, `f32`, etc.)
+
+error: invalid suffix `nat` for number literal
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExpPow2_Add_Mul_impl.rs:169:27
+    |
+169 |     if temp_result % 2 == 1nat {
+    |                           ^^^^ invalid suffix `nat`
+    |
+    = help: the suffix must be one of the numeric types (`u32`, `isize`, `f32`, etc.)
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExpPow2_Add_Mul_impl.rs:32:24
+   |
+32 |   let mut carry: nat = 0;
+   |                  ---   ^ expected `nat`, found integer
+   |                  |
+   |                  expected due to this
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExpPow2_Add_Mul_impl.rs:36:49
+   |
+36 |   while i < s1.len() || j < s2.len() || carry > 0
+   |                                         -----   ^ expected `nat`, found integer
+   |                                         |
+   |                                         expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExpPow2_Add_Mul_impl.rs:45:25
+   |
+45 |     let mut bit1: nat = 0;
+   |                   ---   ^ expected `nat`, found integer
+   |                   |
+   |                   expected due to this
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExpPow2_Add_Mul_impl.rs:51:25
+   |
+51 |     let mut bit2: nat = 0;
+   |                   ---   ^ expected `nat`, found integer
+   |                   |
+   |                   expected due to this
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExpPow2_Add_Mul_impl.rs:58:31
+   |
+58 |     result.insert(0, if sum % 2 == 1 { '1' } else { '0' });
+   |                         ---   ^ expected `nat`, found integer
+   |                         |
+   |                         expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExpPow2_Add_Mul_impl.rs:58:36
+   |
+58 |     result.insert(0, if sum % 2 == 1 { '1' } else { '0' });
+   |                         -------    ^ expected `nat`, found integer
+   |                         |
+   |                         expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExpPow2_Add_Mul_impl.rs:59:19
+   |
+59 |     carry = sum / 2;
+   |             ---   ^ expected `nat`, found integer
+   |             |
+   |             expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExpPow2_Add_Mul_impl.rs:86:18
+   |
+86 |     if product % 2 == 1nat {
+   |        -------   ^ expected `nat`, found integer
+   |        |
+   |        expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExpPow2_Add_Mul_impl.rs:91:25
+   |
+91 |     product = product / 2;
+   |               -------   ^ expected `nat`, found integer
+   |               |
+   |               expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExpPow2_Add_Mul_impl.rs:111:11
+    |
+111 |   if n == 0 {
+    |      -    ^ expected `int`, found integer
+    |      |
+    |      expected because this is `vstd::prelude::int`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExpPow2_Add_Mul_impl.rs:126:26
+    |
+126 |         if temp_result % 2 == 1nat {
+    |            -----------   ^ expected `nat`, found integer
+    |            |
+    |            expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExpPow2_Add_Mul_impl.rs:131:37
+    |
+131 |         temp_result = temp_result / 2;
+    |                       -----------   ^ expected `nat`, found integer
+    |                       |
+    |                       expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExpPow2_Add_Mul_impl.rs:147:20
+    |
+147 |   let mut k: int = 0;
+    |              ---   ^ expected `int`, found integer
+    |              |
+    |              expected due to this
+
+error[E0368]: binary assignment operation `+=` cannot be applied to type `vstd::prelude::int`
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExpPow2_Add_Mul_impl.rs:156:5
+    |
+156 |     k += 1;
+    |     -^^^^^
+    |     |
+    |     cannot use `+=` on type `vstd::prelude::int`
+    |
+note: the foreign item type `vstd::prelude::int` doesn't implement `std::ops::AddAssign<{integer}>`
+   --> /Users/runner/work/verus/verus/source/builtin/src/lib.rs:573:1
+    |
+    = note: not implement `std::ops::AddAssign<{integer}>`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExpPow2_Add_Mul_impl.rs:169:22
+    |
+169 |     if temp_result % 2 == 1nat {
+    |        -----------   ^ expected `nat`, found integer
+    |        |
+    |        expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExpPow2_Add_Mul_impl.rs:174:33
+    |
+174 |     temp_result = temp_result / 2;
+    |                   -----------   ^ expected `nat`, found integer
+    |                   |
+    |                   expected because this is `vstd::prelude::nat`
+
+error: aborting due to 28 previous errors
+
+Some errors have detailed explanations: E0308, E0368.
+For more information about an error, try `rustc --explain E0308`.

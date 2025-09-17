@@ -1,0 +1,6 @@
+=== Raw LLM Generate Response ===
+Length: 830 characters
+--------------------------------------------------------------------------------
+```json
+["proof fn lemma_Str2Int_subrange(s: Seq<char>, i: int)\n    requires\n        0 <= i && i <= s.len(),\n        ValidBitString(s),\n    ensures\n        Str2Int(s) == Str2Int(s.subrange(0, i)) * pow2((s.len() - i) as nat) + Str2Int(s.subrange(i, s.len())),\n    decreases s.len() - i\n{\n    if i == s.len() {\n        assert(s.subrange(0, s.len()) == s);\n        assert(s.subrange(s.len(), s.len()).len() == 0);\n        assert(pow2(0) == 1);\n    } else {\n        lemma_Str2Int_subrange(s, i + 1);\n        let prefix = s.subrange(0, i);\n        let new_prefix = s.subrange(0, i+1);\n        assert(new_prefix.len() > 0);\n        assert(new_prefix.subrange(0, new_prefix.len() as int - 1) == prefix);\n        assert(new_prefix.index(new_prefix.len() as int - 1) == s.index(i));\n\n        let suffix = s.subrange(i+
+--------------------------------------------------------------------------------

@@ -1,0 +1,160 @@
+=== Verification Error - Iteration 6 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExp_Add_DivMod_ModExpPow2.rs
+Time: 2025-09-15 20:30:42
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_ModExpPow2_impl.rs:91:15
+   |
+91 |     while i < sx.len() as int
+   |               ^^^^^^^^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_ModExpPow2_impl.rs:104:15
+    |
+104 |     while j < sz.len() as int
+    |               ^^^^^^^^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_ModExpPow2_impl.rs:118:15
+    |
+118 |     while k < sy.len() as int
+    |               ^^^^^^^^^^^^^^^
+
+error[E0425]: cannot find function `tracked` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_ModExpPow2_impl.rs:89:22
+   |
+89 |     let mut i: int = tracked(0);
+   |                      ^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `tracked` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_ModExpPow2_impl.rs:90:25
+   |
+90 |     let mut base: nat = tracked(0);
+   |                         ^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `tracked` in this scope
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_ModExpPow2_impl.rs:102:22
+    |
+102 |     let mut j: int = tracked(0);
+    |                      ^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `tracked` in this scope
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_ModExpPow2_impl.rs:103:22
+    |
+103 |     let mut m: nat = tracked(0);
+    |                      ^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `tracked` in this scope
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_ModExpPow2_impl.rs:116:22
+    |
+116 |     let mut k: int = tracked(0);
+    |                      ^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `tracked` in this scope
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_ModExpPow2_impl.rs:117:24
+    |
+117 |     let mut acc: nat = tracked(1 % m);
+    |                        ^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `tracked` in this scope
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_ModExpPow2_impl.rs:150:24
+    |
+150 |     let mut pow: nat = tracked(1);
+    |                        ^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `tracked` in this scope
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_ModExpPow2_impl.rs:159:22
+    |
+159 |     let mut d: nat = tracked(pow);
+    |                      ^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `tracked` in this scope
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_ModExpPow2_impl.rs:160:24
+    |
+160 |     let mut rem: nat = tracked(acc);
+    |                        ^^^^^^^ not found in this scope
+
+error: aborting due to 12 previous errors
+
+For more information about this error, try `rustc --explain E0425`.
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_ModExpPow2_impl.rs:91:15
+   |
+91 |     while i < sx.len() as int
+   |               ^^^^^^^^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_ModExpPow2_impl.rs:104:15
+    |
+104 |     while j < sz.len() as int
+    |               ^^^^^^^^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_ModExpPow2_impl.rs:118:15
+    |
+118 |     while k < sy.len() as int
+    |               ^^^^^^^^^^^^^^^
+
+error[E0425]: cannot find function `tracked` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_ModExpPow2_impl.rs:89:22
+   |
+89 |     let mut i: int = tracked(0);
+   |                      ^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `tracked` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_ModExpPow2_impl.rs:90:25
+   |
+90 |     let mut base: nat = tracked(0);
+   |                         ^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `tracked` in this scope
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_ModExpPow2_impl.rs:102:22
+    |
+102 |     let mut j: int = tracked(0);
+    |                      ^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `tracked` in this scope
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_ModExpPow2_impl.rs:103:22
+    |
+103 |     let mut m: nat = tracked(0);
+    |                      ^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `tracked` in this scope
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_ModExpPow2_impl.rs:116:22
+    |
+116 |     let mut k: int = tracked(0);
+    |                      ^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `tracked` in this scope
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_ModExpPow2_impl.rs:117:24
+    |
+117 |     let mut acc: nat = tracked(1 % m);
+    |                        ^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `tracked` in this scope
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_ModExpPow2_impl.rs:150:24
+    |
+150 |     let mut pow: nat = tracked(1);
+    |                        ^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `tracked` in this scope
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_ModExpPow2_impl.rs:159:22
+    |
+159 |     let mut d: nat = tracked(pow);
+    |                      ^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `tracked` in this scope
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_ModExpPow2_impl.rs:160:24
+    |
+160 |     let mut rem: nat = tracked(acc);
+    |                        ^^^^^^^ not found in this scope
+
+error: aborting due to 12 previous errors
+
+For more information about this error, try `rustc --explain E0425`.

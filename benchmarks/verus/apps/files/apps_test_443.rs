@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(n: int, packets: Seq<int>) -> bool {
     n >= 1 && packets.len() == n && forall|i: int| 0 <= i < packets.len() ==> packets[i] >= 1
 }
@@ -34,6 +31,9 @@ spec fn valid_solution(n: int, packets: Seq<int>, result: Seq<int>) -> bool
         (forall|k: int| 0 <= k < min_index ==> packets[k] > packets[min_index])
     }
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

@@ -1,0 +1,221 @@
+=== Verification Error - Iteration 4 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_Mul_NormalizeBitString.rs
+Time: 2025-09-14 10:40:26
+
+Full Error Output:
+--------------------------------------------------------------------------------
+VERIFICATION BYPASSES DETECTED: uses 'assume' to bypass verification. Code contains verification bypasses and cannot be considered successfully verified.
+
+Original verification output:
+Verification failed: verification results:: 2 verified, 5 errors
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_Mul_NormalizeBitString_impl.rs:39:3
+   |
+39 | /   for i in 0..n_s1 {
+40 | |     if s1[i] == '1' {
+41 | |       val1 |= (1u128 << (n_s1 - 1 - i));
+42 | |     }
+43 | |   }
+   | |___^
+
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_Mul_NormalizeBitString_impl.rs:46:3
+   |
+46 | /   for i in 0..n_s2 {
+47 | |     if s2[i] == '1' {
+48 | |       val2 |= (1u128 << (n_s2 - 1 - i));
+49 | |     }
+50 | |   }
+   | |___^
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_Mul_NormalizeBitString_impl.rs:28:6
+   |
+28 | exec fn Mul_NormalizeBitString(s1: &[char], s2: &[char]) -> (res: Vec<char>)
+   |      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+note: recommendation not met
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_Mul_NormalizeBitString_impl.rs:30:33
+   |
+6  | recommends ValidBitString(s)
+   |            ----------------- recommendation not met
+...
+30 |   ensures ValidBitString(res@), Str2Int(res@) == Str2Int(s1@) * Str2Int(s2@)
+   |                                 ^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_Mul_NormalizeBitString_impl.rs:30:33
+   |
+30 |   ensures ValidBitString(res@), Str2Int(res@) == Str2Int(s1@) * Str2Int(s2@)
+   |                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+82 |   res_vec
+   |   ------- at the end of the function body
+
+error: precondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_Mul_NormalizeBitString_impl.rs:40:8
+   |
+40 |     if s1[i] == '1' {
+   |        ^^^^^
+   |
+  ::: /Users/sergiu.bursuc/verus/vstd/slice.rs:62:14
+   |
+62 |         0 <= i < slice.view().len(),
+   |              - failed precondition
+
+error: possible bit shift underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_Mul_NormalizeBitString_impl.rs:41:15
+   |
+41 |       val1 |= (1u128 << (n_s1 - 1 - i));
+   |               ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: precondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_Mul_NormalizeBitString_impl.rs:47:8
+   |
+47 |     if s2[i] == '1' {
+   |        ^^^^^
+   |
+  ::: /Users/sergiu.bursuc/verus/vstd/slice.rs:62:14
+   |
+62 |         0 <= i < slice.view().len(),
+   |              - failed precondition
+
+error: possible bit shift underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_Mul_NormalizeBitString_impl.rs:48:15
+   |
+48 |       val2 |= (1u128 << (n_s2 - 1 - i));
+   |               ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_Mul_NormalizeBitString_impl.rs:52:17
+   |
+52 |   let product = val1 * val2;
+   |                 ^^^^^^^^^^^
+
+error: decreases not satisfied at end of loop
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_Mul_NormalizeBitString_impl.rs:59:5
+   |
+59 |     while temp_product > 0
+   |     ^^^^^^^^^^^^^^^^^^^^^^
+
+error: precondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_Mul_NormalizeBitString_impl.rs:77:29
+   |
+77 |       reversed_res_vec.push(res_vec[k]);
+   |                             ^^^^^^^^^^
+   |
+  ::: /Users/sergiu.bursuc/verus/vstd/std_specs/vec.rs:48:9
+   |
+48 |         i < vec.view().len(),
+   |         -------------------- failed precondition
+
+error: aborting due to 8 previous errors
+
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+verification results:: 2 verified, 5 errors
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_Mul_NormalizeBitString_impl.rs:39:3
+   |
+39 | /   for i in 0..n_s1 {
+40 | |     if s1[i] == '1' {
+41 | |       val1 |= (1u128 << (n_s1 - 1 - i));
+42 | |     }
+43 | |   }
+   | |___^
+
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_Mul_NormalizeBitString_impl.rs:46:3
+   |
+46 | /   for i in 0..n_s2 {
+47 | |     if s2[i] == '1' {
+48 | |       val2 |= (1u128 << (n_s2 - 1 - i));
+49 | |     }
+50 | |   }
+   | |___^
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_Mul_NormalizeBitString_impl.rs:28:6
+   |
+28 | exec fn Mul_NormalizeBitString(s1: &[char], s2: &[char]) -> (res: Vec<char>)
+   |      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+note: recommendation not met
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_Mul_NormalizeBitString_impl.rs:30:33
+   |
+6  | recommends ValidBitString(s)
+   |            ----------------- recommendation not met
+...
+30 |   ensures ValidBitString(res@), Str2Int(res@) == Str2Int(s1@) * Str2Int(s2@)
+   |                                 ^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_Mul_NormalizeBitString_impl.rs:30:33
+   |
+30 |   ensures ValidBitString(res@), Str2Int(res@) == Str2Int(s1@) * Str2Int(s2@)
+   |                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+82 |   res_vec
+   |   ------- at the end of the function body
+
+error: precondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_Mul_NormalizeBitString_impl.rs:40:8
+   |
+40 |     if s1[i] == '1' {
+   |        ^^^^^
+   |
+  ::: /Users/sergiu.bursuc/verus/vstd/slice.rs:62:14
+   |
+62 |         0 <= i < slice.view().len(),
+   |              - failed precondition
+
+error: possible bit shift underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_Mul_NormalizeBitString_impl.rs:41:15
+   |
+41 |       val1 |= (1u128 << (n_s1 - 1 - i));
+   |               ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: precondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_Mul_NormalizeBitString_impl.rs:47:8
+   |
+47 |     if s2[i] == '1' {
+   |        ^^^^^
+   |
+  ::: /Users/sergiu.bursuc/verus/vstd/slice.rs:62:14
+   |
+62 |         0 <= i < slice.view().len(),
+   |              - failed precondition
+
+error: possible bit shift underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_Mul_NormalizeBitString_impl.rs:48:15
+   |
+48 |       val2 |= (1u128 << (n_s2 - 1 - i));
+   |               ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_Mul_NormalizeBitString_impl.rs:52:17
+   |
+52 |   let product = val1 * val2;
+   |                 ^^^^^^^^^^^
+
+error: decreases not satisfied at end of loop
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_Mul_NormalizeBitString_impl.rs:59:5
+   |
+59 |     while temp_product > 0
+   |     ^^^^^^^^^^^^^^^^^^^^^^
+
+error: precondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_Mul_NormalizeBitString_impl.rs:77:29
+   |
+77 |       reversed_res_vec.push(res_vec[k]);
+   |                             ^^^^^^^^^^
+   |
+  ::: /Users/sergiu.bursuc/verus/vstd/std_specs/vec.rs:48:9
+   |
+48 |         i < vec.view().len(),
+   |         -------------------- failed precondition
+
+error: aborting due to 8 previous errors
+

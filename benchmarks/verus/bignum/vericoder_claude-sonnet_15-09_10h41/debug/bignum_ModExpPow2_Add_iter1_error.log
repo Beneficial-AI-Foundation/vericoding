@@ -1,0 +1,124 @@
+=== Verification Error - Iteration 1 ===
+File: benchmarks/verus/bignum/files/bignum_ModExpPow2_Add.rs
+Time: 2025-09-15 10:42:33
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_ModExpPow2_Add_impl.rs:77:13
+   |
+77 |     if n == 0 {
+   |        -    ^ expected `int`, found integer
+   |        |
+   |        expected because this is `verus_builtin::int`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_ModExpPow2_Add_impl.rs:78:28
+   |
+78 |         if Str2Int(sy@) == 1 {
+   |            ------------    ^ expected `nat`, found integer
+   |            |
+   |            expected because this is `verus_builtin::nat`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_ModExpPow2_Add_impl.rs:89:24
+   |
+89 |     if Str2Int(sy@) == 0 {
+   |        ------------    ^ expected `nat`, found integer
+   |        |
+   |        expected because this is `verus_builtin::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_ModExpPow2_Add_impl.rs:100:50
+    |
+100 |     let sub_result = ModExpPow2(sx, &half_y, n - 1, sz);
+    |                                              -   ^ expected `int`, found integer
+    |                                              |
+    |                                              expected because this is `verus_builtin::int`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_ModExpPow2_Add_impl.rs:101:56
+    |
+101 |     let squared = ModExpPow2(&sub_result, &half_y, n - 1, sz);
+    |                                                    -   ^ expected `int`, found integer
+    |                                                    |
+    |                                                    expected because this is `verus_builtin::int`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_ModExpPow2_Add_impl.rs:104:45
+    |
+104 |         let temp = ModExpPow2(&squared, sx, 0, sz);
+    |                    ----------               ^ expected `int`, found integer
+    |                    |
+    |                    arguments to this function are incorrect
+    |
+note: function defined here
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_ModExpPow2_Add_impl.rs:65:9
+    |
+65  | exec fn ModExpPow2(sx: &[char], sy: &[char], n: int, sz: &[char]) -> (res: Vec<char>)
+    |         ^^^^^^^^^^                           ------
+
+error: aborting due to 6 previous errors
+
+For more information about this error, try `rustc --explain E0308`.
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_ModExpPow2_Add_impl.rs:77:13
+   |
+77 |     if n == 0 {
+   |        -    ^ expected `int`, found integer
+   |        |
+   |        expected because this is `verus_builtin::int`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_ModExpPow2_Add_impl.rs:78:28
+   |
+78 |         if Str2Int(sy@) == 1 {
+   |            ------------    ^ expected `nat`, found integer
+   |            |
+   |            expected because this is `verus_builtin::nat`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_ModExpPow2_Add_impl.rs:89:24
+   |
+89 |     if Str2Int(sy@) == 0 {
+   |        ------------    ^ expected `nat`, found integer
+   |        |
+   |        expected because this is `verus_builtin::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_ModExpPow2_Add_impl.rs:100:50
+    |
+100 |     let sub_result = ModExpPow2(sx, &half_y, n - 1, sz);
+    |                                              -   ^ expected `int`, found integer
+    |                                              |
+    |                                              expected because this is `verus_builtin::int`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_ModExpPow2_Add_impl.rs:101:56
+    |
+101 |     let squared = ModExpPow2(&sub_result, &half_y, n - 1, sz);
+    |                                                    -   ^ expected `int`, found integer
+    |                                                    |
+    |                                                    expected because this is `verus_builtin::int`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_ModExpPow2_Add_impl.rs:104:45
+    |
+104 |         let temp = ModExpPow2(&squared, sx, 0, sz);
+    |                    ----------               ^ expected `int`, found integer
+    |                    |
+    |                    arguments to this function are incorrect
+    |
+note: function defined here
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_ModExpPow2_Add_impl.rs:65:9
+    |
+65  | exec fn ModExpPow2(sx: &[char], sy: &[char], n: int, sz: &[char]) -> (res: Vec<char>)
+    |         ^^^^^^^^^^                           ------
+
+error: aborting due to 6 previous errors
+
+For more information about this error, try `rustc --explain E0308`.

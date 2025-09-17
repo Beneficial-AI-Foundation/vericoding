@@ -1,0 +1,52 @@
+=== Verification Error - Iteration 10 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExp_ModExpPow2_Mul.rs
+Time: 2025-09-15 20:27:12
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: error[E0605]: non-primitive cast: `vstd::prelude::nat` as `u64`
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_ModExpPow2_Mul_impl.rs:271:22
+    |
+271 |     let str2int_sx = proof { Str2Int(sx@) } as u64;
+    |                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ an `as` expression can only be used to convert between primitive types or to coerce to a specific trait object
+
+error[E0605]: non-primitive cast: `vstd::prelude::nat` as `u64`
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_ModExpPow2_Mul_impl.rs:272:22
+    |
+272 |     let str2int_sy = proof { Str2Int(sy@) } as u64;
+    |                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ an `as` expression can only be used to convert between primitive types or to coerce to a specific trait object
+
+error[E0605]: non-primitive cast: `vstd::prelude::nat` as `u64`
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_ModExpPow2_Mul_impl.rs:273:22
+    |
+273 |     let str2int_sz = proof { Str2Int(sz@) } as u64;
+    |                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ an `as` expression can only be used to convert between primitive types or to coerce to a specific trait object
+
+error: aborting due to 3 previous errors
+
+For more information about this error, try `rustc --explain E0605`.
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+error[E0605]: non-primitive cast: `vstd::prelude::nat` as `u64`
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_ModExpPow2_Mul_impl.rs:271:22
+    |
+271 |     let str2int_sx = proof { Str2Int(sx@) } as u64;
+    |                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ an `as` expression can only be used to convert between primitive types or to coerce to a specific trait object
+
+error[E0605]: non-primitive cast: `vstd::prelude::nat` as `u64`
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_ModExpPow2_Mul_impl.rs:272:22
+    |
+272 |     let str2int_sy = proof { Str2Int(sy@) } as u64;
+    |                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ an `as` expression can only be used to convert between primitive types or to coerce to a specific trait object
+
+error[E0605]: non-primitive cast: `vstd::prelude::nat` as `u64`
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_ModExpPow2_Mul_impl.rs:273:22
+    |
+273 |     let str2int_sz = proof { Str2Int(sz@) } as u64;
+    |                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ an `as` expression can only be used to convert between primitive types or to coerce to a specific trait object
+
+error: aborting due to 3 previous errors
+
+For more information about this error, try `rustc --explain E0605`.

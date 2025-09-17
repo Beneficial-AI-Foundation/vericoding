@@ -1,0 +1,15 @@
+=== Raw LLM Generate Response ===
+Length: 1311 characters
+--------------------------------------------------------------------------------
+["proof fn lemma_subrange_len_eq_len(s: Seq<char>, start: int, end: int)
+  requires 0 <= start <= end <= s.len()
+  ensures s.subrange(start, end).len() == end - start
+{
+  if start == end {
+    assert(s.subrange(start, end).len() == 0);
+  } else {
+    lemma_subrange_len_eq_len(s, start, end - 1);
+    assert(s.subrange(start, end).len() == end - start);
+  }
+}", "{  \n    let mut a_val = 0;  \n    let mut power = 1;  \n    for i in (0..a.len()).rev() {  \n        if a[i] == '1' {  \n            a_val = (a_val + power);  \n        }  \n        power = (power * 2);  \n    }  \n  \n    let mut b_val = 0;  \n    let mut power_b = 1;  \n    for i in (0..b.len()).rev() {  \n        if b[i] == '1' {  \n            b_val = (b_val + power_b);  \n        }  \n        power_b = (power_b * 2);  \n    }  \n  \n    let result_num = (a_val + b_val);  \n    let mut result_vec = Vec::<char>::new();  \n  \n    if result_num == 0 {  \n        result_vec.push('0');  \n        return result_vec;  \n    }  \n  \n    let mut temp_num = result_num;  \n    while temp_num > 0 {  \n        if (temp_num % 2) == 1 {  \n            result_vec.push('1');  \n        } else {  \n            result_vec.push('0');  \n        }  \n        temp_num = temp_num / 2;  \n    }  \n    result_vec.reverse();  \n  \n    result_vec  \n}"]
+--------------------------------------------------------------------------------

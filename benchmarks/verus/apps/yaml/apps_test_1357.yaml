@@ -8,13 +8,11 @@ vc-preamble: |-
   use vstd::prelude::*;
 
   verus! {
-
-vc-helpers: |-
   spec fn valid_input(n: int, m: int, tasks: Seq<int>) -> bool {
       n >= 2 && m >= 1 && tasks.len() == m && 
       forall|i: int| 0 <= i < tasks.len() ==> 1 <= tasks[i] <= n
   }
-  
+
   spec fn min_time_to_complete(n: int, tasks: Seq<int>, current_pos: int, task_index: int) -> int
       recommends
           n >= 2,
@@ -26,6 +24,8 @@ vc-helpers: |-
       if target >= current_pos { target - current_pos }
       else { (n - current_pos) + target }
   }
+
+vc-helpers: |
 
 vc-spec: |-
   fn solve(n: int, m: int, tasks: Seq<int>) -> (result: int)
@@ -41,7 +41,7 @@ vc-code: |-
       unreached()
   }
 
-vc-postamble: |-
+vc-postamble: |2-
 
   }
 

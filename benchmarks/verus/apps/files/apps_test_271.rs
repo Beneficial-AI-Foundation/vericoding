@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_result(n: int, result: int) -> bool
   recommends n >= 0
 {
@@ -17,6 +14,9 @@ spec fn valid_result(n: int, result: int) -> bool
   (remainder == 5 ==> (quotient % 2 == 0 ==> result == quotient * 10) && 
                       (quotient % 2 == 1 ==> result == (quotient + 1) * 10))
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

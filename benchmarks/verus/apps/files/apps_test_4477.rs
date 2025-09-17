@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn is_boring_apartment(x: int) -> bool {
     (x >= 1 && x <= 9) ||
     (x >= 11 && x <= 99 && x % 11 == 0 && x / 11 >= 1 && x / 11 <= 9) ||
@@ -27,10 +24,10 @@ spec fn boring_apartment_value(digit: int, length: int) -> int {
 }
 
 spec fn total_digits_pressed(x: int) -> int {
-    let digit = if x <= 9 { x }
-                else if x <= 99 { x / 11 }
-                else if x <= 999 { x / 111 }
-                else { x / 1111 };
+    let digit = if x <= 9 { x } 
+                 else if x <= 99 { x / 11 }
+                 else if x <= 999 { x / 111 }
+                 else { x / 1111 };
     let length = digit_count(x);
 
     let prev_digits = if digit == 1 { 0 } else { (digit - 1) * (1 + 2 + 3 + 4) };
@@ -39,17 +36,24 @@ spec fn total_digits_pressed(x: int) -> int {
 
     prev_digits + current_digits
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>
 fn solve(x: int) -> (result: int)
     requires is_boring_apartment(x) && 1 <= x <= 9999
-    ensures result >= 0 && result == total_digits_pressed(x)
+    ensures result >= 0 && result == total_digits_pressed(x) && 
+            (x == 1 ==> result == 1) &&
+            (x == 22 ==> result == 13) &&
+            (x == 777 ==> result == 66) &&
+            (x == 9999 ==> result == 90)
 // </vc-spec>
 // <vc-code>
 {
     assume(false);
-    0int
+    unreached()
 }
 // </vc-code>
 

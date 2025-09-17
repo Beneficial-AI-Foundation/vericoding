@@ -1,0 +1,76 @@
+=== Verification Error - Iteration 1 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExpPow2_Mul.rs
+Time: 2025-09-15 19:01:28
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_ModExpPow2_Mul_impl.rs:80:36
+   |
+80 |     let sy_half = &sy@.subrange(1, sy@.len() as int);
+   |                                    ^^^^^^^^^^^^^^^^
+
+error[E0425]: cannot find function, tuple struct or tuple variant `ModExp` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_ModExpPow2_Mul_impl.rs:73:27
+   |
+73 |             let x_mod_z = ModExp(sx, &vec!['1'], sz);
+   |                           ^^^^^^ not found in this scope
+
+error[E0425]: cannot find function, tuple struct or tuple variant `ModExp` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_ModExpPow2_Mul_impl.rs:85:23
+   |
+85 |     let squared_mod = ModExp(&squared, &vec!['1'], sz);
+   |                       ^^^^^^ not found in this scope
+
+error[E0425]: cannot find function, tuple struct or tuple variant `ModExp` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_ModExpPow2_Mul_impl.rs:88:21
+   |
+88 |         let x_mod = ModExp(sx, &vec!['1'], sz);
+   |                     ^^^^^^ not found in this scope
+
+error[E0425]: cannot find function, tuple struct or tuple variant `ModExp` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_ModExpPow2_Mul_impl.rs:90:9
+   |
+90 |         ModExp(&final_result, &vec!['1'], sz)
+   |         ^^^^^^ not found in this scope
+
+error: aborting due to 5 previous errors
+
+For more information about this error, try `rustc --explain E0425`.
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_ModExpPow2_Mul_impl.rs:80:36
+   |
+80 |     let sy_half = &sy@.subrange(1, sy@.len() as int);
+   |                                    ^^^^^^^^^^^^^^^^
+
+error[E0425]: cannot find function, tuple struct or tuple variant `ModExp` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_ModExpPow2_Mul_impl.rs:73:27
+   |
+73 |             let x_mod_z = ModExp(sx, &vec!['1'], sz);
+   |                           ^^^^^^ not found in this scope
+
+error[E0425]: cannot find function, tuple struct or tuple variant `ModExp` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_ModExpPow2_Mul_impl.rs:85:23
+   |
+85 |     let squared_mod = ModExp(&squared, &vec!['1'], sz);
+   |                       ^^^^^^ not found in this scope
+
+error[E0425]: cannot find function, tuple struct or tuple variant `ModExp` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_ModExpPow2_Mul_impl.rs:88:21
+   |
+88 |         let x_mod = ModExp(sx, &vec!['1'], sz);
+   |                     ^^^^^^ not found in this scope
+
+error[E0425]: cannot find function, tuple struct or tuple variant `ModExp` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_ModExpPow2_Mul_impl.rs:90:9
+   |
+90 |         ModExp(&final_result, &vec!['1'], sz)
+   |         ^^^^^^ not found in this scope
+
+error: aborting due to 5 previous errors
+
+For more information about this error, try `rustc --explain E0425`.

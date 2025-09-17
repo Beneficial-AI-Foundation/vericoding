@@ -8,16 +8,14 @@ vc-preamble: |-
   use vstd::prelude::*;
 
   verus! {
-
-vc-helpers: |-
   spec fn valid_input(h: int, n: int, platforms: Seq<int>) -> bool {
       h >= 1 && n >= 1 && platforms.len() >= n && n > 0 && platforms[0] == h
   }
-  
+
   spec fn valid_crystal_count(crystals: int, n: int) -> bool {
       crystals >= 0 && crystals <= n - 1
   }
-  
+
   spec fn count_crystals_needed(h: int, platforms: Seq<int>) -> int
     recommends
         platforms.len() >= 1,
@@ -30,7 +28,7 @@ vc-helpers: |-
           count_crystals_needed_up_to(h, platforms.push(0), platforms.len() - 1)
       }
   }
-  
+
   spec fn count_crystals_needed_up_to(h: int, arr: Seq<int>, up_to: int) -> int
     recommends
         arr.len() >= 1,
@@ -53,7 +51,7 @@ vc-helpers: |-
           }
       }
   }
-  
+
   spec fn simulate_position_up_to(h: int, arr: Seq<int>, up_to: int) -> int
     recommends
         arr.len() >= 1,
@@ -76,6 +74,8 @@ vc-helpers: |-
       }
   }
 
+vc-helpers: |
+
 vc-spec: |-
   fn solve(input: &str) -> (result: String)
     requires input@.len() > 0
@@ -87,7 +87,7 @@ vc-code: |-
       unreached()
   }
 
-vc-postamble: |-
+vc-postamble: |2-
 
   }
 

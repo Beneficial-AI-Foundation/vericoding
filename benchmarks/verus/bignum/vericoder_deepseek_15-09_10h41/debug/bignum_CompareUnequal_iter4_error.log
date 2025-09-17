@@ -1,0 +1,26 @@
+=== Verification Error - Iteration 4 ===
+File: benchmarks/verus/bignum/files/bignum_CompareUnequal.rs
+Time: 2025-09-15 11:11:45
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: error: cannot call function `bignum_CompareUnequal_impl::lemma_str2int_positive` with mode proof
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_10h41/bignum_CompareUnequal_impl.rs:66:5
+   |
+66 |     lemma_str2int_positive(s1@);
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: aborting due to 1 previous error
+
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+error: cannot call function `bignum_CompareUnequal_impl::lemma_str2int_positive` with mode proof
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_10h41/bignum_CompareUnequal_impl.rs:66:5
+   |
+66 |     lemma_str2int_positive(s1@);
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: aborting due to 1 previous error
+

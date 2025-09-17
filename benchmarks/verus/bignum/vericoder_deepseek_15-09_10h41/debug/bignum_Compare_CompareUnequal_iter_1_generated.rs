@@ -1,0 +1,136 @@
+use vstd::prelude::*;
+
+verus! {
+
+spec fn Str2Int(s: Seq<char>) -> nat
+  recommends ValidBitString(s)
+  decreases s.len()
+{
+  if s.len() == 0 {
+    0
+  } else {
+    2 * Str2Int(s.subrange(0, s.len() as int - 1))
+      + (if s.index(s.len() as int - 1) == '1' { 1nat } else { 0nat })
+  }
+}
+
+spec fn ValidBitString(s: Seq<char>) -> bool
+{
+  // All characters must be '0' or '1'.
+  forall |i: int| 0 <= i && i < s.len() as int ==>
+    (s.index(i) == '0' || s.index(i) == '1')
+}
+
+// <vc-spec>
+exec fn NormalizeBitString(s: &[char]) -> (t: Vec<char>)
+  ensures ValidBitString(t@),
+   t@.len() > 0,
+   t@.len() > 1 ==> t@[0] != '0',
+   ValidBitString(s@) ==> Str2Int(s@) == Str2Int(t@)
+// </vc-spec>
+// <vc-code>
+{
+    let mut t: Vec<char> = Vec::new();
+    let mut leading_zeros = 0;
+    while leading_zeros < s.len() && s[leading_zeros] == '0' {
+        leading_zeros += 1;
+    }
+    if leading_zeros == s.len() {
+        t.push('0');
+    } else {
+        for i in leading_zeros..s.len() {
+            t.push(s[i]);
+        }
+    }
+    t
+}
+// </vc-code>
+
+// <vc-spec>
+exec fn CompareUnequal(s1: &[char], s2: &[char]) -> (res: i32)
+  requires ValidBitString(s1@),
+   ValidBitString(s2@),
+   s1@.len() > 0,
+   (s1@.len() > 1 ==> s1@[0] != '0'),
+   s2@.len() > 0,
+   (s2@.len() > 1 ==> s2@[0] != '0'),
+   s1@.len() > s2@.len(),
+  ensures Str2Int(s1@) < Str2Int(s2@) ==> res == -1,
+    Str2Int(s1@) == Str2Int(s2@) ==> res == 0,
+    Str2Int(s1@) > Str2Int(s2@) ==> res == 1
+// </vc-spec>
+// <vc-code>
+{
+    let n1 = s1.len();
+    let n2 = s2.len();
+    
+    if n1 > n2 {
+        return 1;
+    } else if n1 < n2 {
+        return -1;
+    }
+    
+    for i in 0..n1 {
+        if s1[i] == '1' && s2[i] == '0' {
+            return 1;
+        } else if s1[i] == '0' && s2[i] == '1' {
+            return -1;
+        }
+    }
+    
+    0
+}
+// </vc-code>
+
+// <vc-helpers>
+spec fn str_len_gt_implies_value_gt(s1: Seq<char>, s2: Seq<char>)
+    requires ValidBitString(s1),
+        ValidBitString(s2),
+        s1.len() > 0,
+        (s1.len() > 1 ==> s1[0] != '0'),
+        s2.len() > 0,
+        (s2.len() > 1 ==> s2[0] != '0'),
+        s1.len() > s2.len()
+    ensures Str2Int(s1) > Str2Int(s2)
+{
+}
+
+proof fn empty_string_is_zero()
+    ensures Str2Int(Seq::<char>::empty()) == 0
+{
+}
+
+proof fn single_char_value(c: char)
+    requires c == '0' || c == '1'
+    ensures Str2Int(Seq::new(1, |i| c)) == (if c == '1' { 1 } else { 0 })
+{
+}
+
+proof fn leading_zero_lemma(s: Seq<char>)
+    requires ValidBitString(s)
+    ensures Str2Int(s) == Str2Int(s.drop_prefix(1)) * 2 + (if s[0] == '1' { 1 } else { 0 })
+{
+}
+// </vc-helpers>
+
+// <vc-spec>
+exec fn Compare(s1: &[char], s2: &[char]) -> (res: i32)
+  requires ValidBitString(s1@),
+   ValidBitString(s2@),
+  ensures Str2Int(s1@) < Str2Int(s2@) ==> res == -1,
+    Str2Int(s1@) == Str2Int(s2@) ==> res == 0,
+    Str2Int(s1@) > Str2Int(s2@) ==> res == 1,
+  decreases Str2Int(s1@) + Str2Int(s2@)
+// </vc-spec>
+// <vc-code>
+{
+    let t1 = NormalizeBitString(s1);
+    let t2 = NormalizeBitString(s2);
+    CompareUnequal(&t1, &t2)
+}
+// </vc-code>
+
+fn main() {}
+}
+
+

@@ -1,0 +1,26 @@
+=== Verification Error - Iteration 2 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_Compare_CompareUnequal_NormalizeBitString.rs
+Time: 2025-09-15 19:28:18
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Verification failed: error: recursive function must have a decreases clause
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_Compare_CompareUnequal_NormalizeBitString_impl.rs:113:7
+    |
+113 | proof fn lemma_str2int_monotonic(s1: Seq<char>, s2: Seq<char>)
+    |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: aborting due to 1 previous error
+
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+error: recursive function must have a decreases clause
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_Compare_CompareUnequal_NormalizeBitString_impl.rs:113:7
+    |
+113 | proof fn lemma_str2int_monotonic(s1: Seq<char>, s2: Seq<char>)
+    |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: aborting due to 1 previous error
+

@@ -1,0 +1,12 @@
+=== LLM Response - generate_code - Iteration 0 ===
+File: benchmarks/verus/bignum/files/bignum_ModExp_DivMod.rs
+Prompt Hash: 23a08cb1
+JSON Parsed Successfully: True
+Timestamp: 1757925916.340708
+Content Length: 1203 chars
+--------------------------------------------------------------------------------
+[
+"fn ModExp_DivMod_impl(x: nat, y: nat, z: nat) -> nat\n    requires z > 1\n    ensures ModExp_DivMod_impl(x, y, z) == Exp_int(x, y) % z\n    decreases y\n{\n    if y == 0 {\n        1 % z\n    } else {\n        let half_exp = ModExp_DivMod_impl(x, y / 2, z);\n        let squared = (half_exp * half_exp) % z;\n        if y % 2 == 0 {\n            squared\n        } else {\n            (x * squared) % z\n        }\n    }\n}\n\nfn nat_to_bit_string(n: nat) -> Vec<char>\n    ensures ValidBitString(nat_to_bit_string(n)@)\n{\n    if n == 0 {\n        vec!['0']\n    } else {\n        let mut result = Vec::new();\n        let mut temp = n;\n        while temp > 0\n            invariant ValidBitString(result@)\n        {\n            if temp % 2 == 0 {\n                result.push('0');\n            } else {\n                result.push('1');\n            }\n            temp = temp / 2;\n        }\n        result.reverse();\n        result\n    }\n}",
+"{\n    let x_val = Str2Int(sx@);\n    let y_val = Str2Int(sy@);\n    let z_val = Str2Int(sz@);\n    \n    let result_val = ModExp_DivMod_impl(x_val, y_val, z_val);\n    let result_vec = nat_to_bit_string(result_val);\n    \n    result_vec\n}"
+]
+--------------------------------------------------------------------------------

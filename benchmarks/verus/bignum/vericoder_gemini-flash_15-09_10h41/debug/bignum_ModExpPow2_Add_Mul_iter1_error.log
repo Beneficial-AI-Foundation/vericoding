@@ -1,0 +1,52 @@
+=== Verification Error - Iteration 1 ===
+File: benchmarks/verus/bignum/files/bignum_ModExpPow2_Add_Mul.rs
+Time: 2025-09-15 10:43:38
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: error[E0425]: cannot find function, tuple struct or tuple variant `Mul_helper_is_zero` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_ModExpPow2_Add_Mul_impl.rs:83:8
+   |
+83 |     if Mul_helper_is_zero(s1@) || Mul_helper_is_zero(s2@) {
+   |        ^^^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function, tuple struct or tuple variant `Mul_helper_is_zero` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_ModExpPow2_Add_Mul_impl.rs:83:35
+   |
+83 |     if Mul_helper_is_zero(s1@) || Mul_helper_is_zero(s2@) {
+   |                                   ^^^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function, tuple struct or tuple variant `Mul_helper_partial_sum` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_ModExpPow2_Add_Mul_impl.rs:95:36
+   |
+95 |                 Str2Int(acc_s@) == Mul_helper_partial_sum(s1@, s2@, i as nat)
+   |                                    ^^^^^^^^^^^^^^^^^^^^^^ not found in this scope
+
+error: aborting due to 3 previous errors
+
+For more information about this error, try `rustc --explain E0425`.
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+error[E0425]: cannot find function, tuple struct or tuple variant `Mul_helper_is_zero` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_ModExpPow2_Add_Mul_impl.rs:83:8
+   |
+83 |     if Mul_helper_is_zero(s1@) || Mul_helper_is_zero(s2@) {
+   |        ^^^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function, tuple struct or tuple variant `Mul_helper_is_zero` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_ModExpPow2_Add_Mul_impl.rs:83:35
+   |
+83 |     if Mul_helper_is_zero(s1@) || Mul_helper_is_zero(s2@) {
+   |                                   ^^^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function, tuple struct or tuple variant `Mul_helper_partial_sum` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_ModExpPow2_Add_Mul_impl.rs:95:36
+   |
+95 |                 Str2Int(acc_s@) == Mul_helper_partial_sum(s1@, s2@, i as nat)
+   |                                    ^^^^^^^^^^^^^^^^^^^^^^ not found in this scope
+
+error: aborting due to 3 previous errors
+
+For more information about this error, try `rustc --explain E0425`.

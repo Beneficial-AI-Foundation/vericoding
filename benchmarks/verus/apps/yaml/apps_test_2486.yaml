@@ -9,8 +9,6 @@ vc-preamble: |-
   use vstd::prelude::*;
 
   verus! {
-
-vc-helpers: |-
   spec fn unnecessary_cards_count(sorted: Seq<int>, k: int) -> int
     recommends
       forall|i: int, j: int| 0 <= i < j < sorted.len() ==> sorted[i] >= sorted[j],
@@ -23,7 +21,7 @@ vc-helpers: |-
       unnecessary_cards_count_helper(sorted, k, 0, 0, 0)
     }
   }
-  
+
   spec fn unnecessary_cards_count_helper(sorted: Seq<int>, k: int, temp: int, ans: int, i: int) -> int
     recommends
       forall|x: int, y: int| 0 <= x < y < sorted.len() ==> sorted[x] >= sorted[y],
@@ -45,6 +43,8 @@ vc-helpers: |-
       }
     }
   }
+
+vc-helpers: |
 
 vc-spec: |-
   fn solve(n: int, k: int, a: Seq<int>) -> (result: int)
@@ -69,7 +69,7 @@ vc-code: |-
     unreached()
   }
 
-vc-postamble: |-
+vc-postamble: |2-
 
   }
 

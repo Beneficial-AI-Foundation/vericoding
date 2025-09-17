@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn split_lines(s: Seq<char>) -> Seq<Seq<char>> {
     Seq::empty()
 }
@@ -97,6 +94,9 @@ spec fn is_valid_spanning_tree(result_lines: Seq<Seq<char>>, k: nat) -> bool {
 spec fn count_differences(level1: Seq<Seq<char>>, level2: Seq<Seq<char>>, n: nat, m: nat) -> nat {
     0
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

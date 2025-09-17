@@ -8,11 +8,11 @@ vc-preamble: |-
   use vstd::prelude::*;
 
   verus! {
-
-vc-helpers: |-
   spec fn valid_input(t: Seq<char>) -> bool {
       t.len() >= 1
   }
+
+vc-helpers: |
 
 vc-spec: |-
   fn solve(t: Seq<char>) -> (result: Seq<char>)
@@ -25,7 +25,7 @@ vc-code: |-
       unreached()
   }
 
-vc-postamble: |-
+vc-postamble: |2-
 
   }
 

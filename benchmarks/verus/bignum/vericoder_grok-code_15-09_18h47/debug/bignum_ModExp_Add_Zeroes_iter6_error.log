@@ -1,0 +1,52 @@
+=== Verification Error - Iteration 6 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExp_Add_Zeroes.rs
+Time: 2025-09-15 18:53:30
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: [rust_verify/src/rust_to_vir_expr.rs:3158:17] stmt = Stmt {
+    hir_id: HirId(DefId(0:8 ~ bignum_ModExp_Add_Zeroes_impl[386c]::str2nat).4),
+    kind: Item(
+        ItemId {
+            owner_id: DefId(0:9 ~ bignum_ModExp_Add_Zeroes_impl[386c]::str2nat::str2nat_impl),
+        },
+    ),
+    span: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_ModExp_Add_Zeroes_impl.rs:26:3: 30:4 (#0),
+}
+error: The verifier does not yet support the following Rust feature: internal item statements
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_ModExp_Add_Zeroes_impl.rs:26:3
+   |
+26 | /   fn str2nat_impl(s: &Vec<char>, i: usize) -> u64
+27 | |     decreases s.len() - i
+28 | |   {
+29 | |     if i == s.len() { 0 } else { 2u64 * str2nat_impl(s, i + 1) + if s[i] == '1' { 1 } else { 0 } }
+30 | |   }
+   | |___^
+
+error: aborting due to 1 previous error
+
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+[rust_verify/src/rust_to_vir_expr.rs:3158:17] stmt = Stmt {
+    hir_id: HirId(DefId(0:8 ~ bignum_ModExp_Add_Zeroes_impl[386c]::str2nat).4),
+    kind: Item(
+        ItemId {
+            owner_id: DefId(0:9 ~ bignum_ModExp_Add_Zeroes_impl[386c]::str2nat::str2nat_impl),
+        },
+    ),
+    span: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_ModExp_Add_Zeroes_impl.rs:26:3: 30:4 (#0),
+}
+error: The verifier does not yet support the following Rust feature: internal item statements
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_ModExp_Add_Zeroes_impl.rs:26:3
+   |
+26 | /   fn str2nat_impl(s: &Vec<char>, i: usize) -> u64
+27 | |     decreases s.len() - i
+28 | |   {
+29 | |     if i == s.len() { 0 } else { 2u64 * str2nat_impl(s, i + 1) + if s[i] == '1' { 1 } else { 0 } }
+30 | |   }
+   | |___^
+
+error: aborting due to 1 previous error
+

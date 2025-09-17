@@ -1,0 +1,38 @@
+=== Verification Error - Iteration 1 ===
+File: benchmarks/verus/bignum/files/bignum_ModExp_Add_DivMod_ModExpPow2_Mul.rs
+Time: 2025-09-15 10:54:44
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_ModExp_Add_DivMod_ModExpPow2_Mul_impl.rs:168:13
+    |
+168 |     let n = (sy.len() - 1) as int;
+    |             ^^^^^^^^^^^^^^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_ModExp_Add_DivMod_ModExpPow2_Mul_impl.rs:175:35
+    |
+175 |     if Str2Int(sy@) == Exp_int(2, n as nat) {
+    |                                   ^^^^^^^^
+
+error: aborting due to 2 previous errors
+
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_ModExp_Add_DivMod_ModExpPow2_Mul_impl.rs:168:13
+    |
+168 |     let n = (sy.len() - 1) as int;
+    |             ^^^^^^^^^^^^^^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_ModExp_Add_DivMod_ModExpPow2_Mul_impl.rs:175:35
+    |
+175 |     if Str2Int(sy@) == Exp_int(2, n as nat) {
+    |                                   ^^^^^^^^
+
+error: aborting due to 2 previous errors
+

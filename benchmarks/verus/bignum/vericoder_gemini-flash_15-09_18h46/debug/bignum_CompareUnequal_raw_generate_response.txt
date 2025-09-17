@@ -1,0 +1,5 @@
+=== Raw LLM Generate Response ===
+Length: 632 characters
+--------------------------------------------------------------------------------
+["spec fn Power(base: nat, exp: nat) -> nat {\n    if exp == 0 {\n        1\n    } else {\n        base * Power(base, exp - 1)\n    }\n}", "{\n    let len1 = s1.len();\n    let len2 = s2.len();\n\n    if len1 > len2 {\n        1\n    } else if len2 > len1 {\n        -1\n    } else {\n        let mut i = 0;\n        while i < len1\n            invariant\n                0 <= i && i <= len1,\n        {\n            if s1[i] == '0' && s2[i] == '1' {\n                return -1;\n            } else if s1[i] == '1' && s2[i] == '0' {\n                return 1;\n            }\n            i = i + 1;\n        }\n        0\n    }\n}"]
+--------------------------------------------------------------------------------

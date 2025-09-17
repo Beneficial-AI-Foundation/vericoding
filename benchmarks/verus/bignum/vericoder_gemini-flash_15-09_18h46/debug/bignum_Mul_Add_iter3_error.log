@@ -1,0 +1,88 @@
+=== Verification Error - Iteration 3 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_Mul_Add.rs
+Time: 2025-09-15 18:55:14
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: error[E0425]: cannot find value `carry_out` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_Mul_Add_impl.rs:31:10
+   |
+31 |         (carry_out == 0 || carry_out == 1),
+   |          ^^^^^^^^^ help: a local variable with a similar name exists: `carry_in`
+
+error[E0425]: cannot find value `carry_out` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_Mul_Add_impl.rs:31:28
+   |
+31 |         (carry_out == 0 || carry_out == 1),
+   |                            ^^^^^^^^^ help: a local variable with a similar name exists: `carry_in`
+
+error[E0425]: cannot find value `sum_bit` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_Mul_Add_impl.rs:32:10
+   |
+32 |         (sum_bit == 0 || sum_bit == 1),
+   |          ^^^^^^^ not found in this scope
+
+error[E0425]: cannot find value `sum_bit` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_Mul_Add_impl.rs:32:26
+   |
+32 |         (sum_bit == 0 || sum_bit == 1),
+   |                          ^^^^^^^ not found in this scope
+
+error[E0425]: cannot find value `carry_out` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_Mul_Add_impl.rs:33:47
+   |
+33 |         s1_bit_val + s2_bit_val + carry_in == carry_out * 2 + sum_bit,
+   |                                               ^^^^^^^^^ help: a local variable with a similar name exists: `carry_in`
+
+error[E0425]: cannot find value `sum_bit` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_Mul_Add_impl.rs:33:63
+   |
+33 |         s1_bit_val + s2_bit_val + carry_in == carry_out * 2 + sum_bit,
+   |                                                               ^^^^^^^ not found in this scope
+
+error: aborting due to 6 previous errors
+
+For more information about this error, try `rustc --explain E0425`.
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+error[E0425]: cannot find value `carry_out` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_Mul_Add_impl.rs:31:10
+   |
+31 |         (carry_out == 0 || carry_out == 1),
+   |          ^^^^^^^^^ help: a local variable with a similar name exists: `carry_in`
+
+error[E0425]: cannot find value `carry_out` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_Mul_Add_impl.rs:31:28
+   |
+31 |         (carry_out == 0 || carry_out == 1),
+   |                            ^^^^^^^^^ help: a local variable with a similar name exists: `carry_in`
+
+error[E0425]: cannot find value `sum_bit` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_Mul_Add_impl.rs:32:10
+   |
+32 |         (sum_bit == 0 || sum_bit == 1),
+   |          ^^^^^^^ not found in this scope
+
+error[E0425]: cannot find value `sum_bit` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_Mul_Add_impl.rs:32:26
+   |
+32 |         (sum_bit == 0 || sum_bit == 1),
+   |                          ^^^^^^^ not found in this scope
+
+error[E0425]: cannot find value `carry_out` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_Mul_Add_impl.rs:33:47
+   |
+33 |         s1_bit_val + s2_bit_val + carry_in == carry_out * 2 + sum_bit,
+   |                                               ^^^^^^^^^ help: a local variable with a similar name exists: `carry_in`
+
+error[E0425]: cannot find value `sum_bit` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_Mul_Add_impl.rs:33:63
+   |
+33 |         s1_bit_val + s2_bit_val + carry_in == carry_out * 2 + sum_bit,
+   |                                                               ^^^^^^^ not found in this scope
+
+error: aborting due to 6 previous errors
+
+For more information about this error, try `rustc --explain E0425`.

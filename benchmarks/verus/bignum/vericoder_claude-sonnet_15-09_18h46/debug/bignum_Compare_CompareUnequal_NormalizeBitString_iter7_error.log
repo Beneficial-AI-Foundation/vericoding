@@ -1,0 +1,381 @@
+=== Verification Error - Iteration 7 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_Compare_CompareUnequal_NormalizeBitString.rs
+Time: 2025-09-15 19:12:23
+
+Full Error Output:
+--------------------------------------------------------------------------------
+VERIFICATION BYPASSES DETECTED: uses 'assume' to bypass verification. Code contains verification bypasses and cannot be considered successfully verified.
+
+Original verification output:
+Verification failed: verification results:: 5 verified, 9 errors
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_Compare_CompareUnequal_NormalizeBitString_impl.rs:25:6
+   |
+25 | exec fn NormalizeBitString(s: &[char]) -> (t: Vec<char>)
+   |      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_Compare_CompareUnequal_NormalizeBitString_impl.rs:29:4
+   |
+29 |    ValidBitString(s@) ==> Str2Int(s@) == Str2Int(t@)
+   |    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+73 |     result
+   |     ------ at the end of the function body
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_Compare_CompareUnequal_NormalizeBitString_impl.rs:29:4
+   |
+29 |    ValidBitString(s@) ==> Str2Int(s@) == Str2Int(t@)
+   |    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+56 |         return result;
+   |         ------------- at this exit
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_Compare_CompareUnequal_NormalizeBitString_impl.rs:29:4
+   |
+29 |    ValidBitString(s@) ==> Str2Int(s@) == Str2Int(t@)
+   |    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+39 |         return result;
+   |         ------------- at this exit
+
+error: invariant not satisfied at end of loop body
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_Compare_CompareUnequal_NormalizeBitString_impl.rs:65:13
+   |
+65 |             forall |j: int| 0 <= j && j < result.len() ==> (result@[j] == '0' || result@[j] == '1'),
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_Compare_CompareUnequal_NormalizeBitString_impl.rs:78:6
+   |
+78 | exec fn CompareUnequal(s1: &[char], s2: &[char]) -> (res: i32)
+   |      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_Compare_CompareUnequal_NormalizeBitString_impl.rs:86:11
+   |
+86 |   ensures Str2Int(s1@) < Str2Int(s2@) ==> res == -1,
+   |           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+93 |     return 1;
+   |     -------- at this exit
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_Compare_CompareUnequal_NormalizeBitString_impl.rs:87:5
+   |
+87 |     Str2Int(s1@) == Str2Int(s2@) ==> res == 0,
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+93 |     return 1;
+   |     -------- at this exit
+
+error: postcondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_Compare_CompareUnequal_NormalizeBitString_impl.rs:104:13
+    |
+104 |       ensures Str2Int(s) == 0
+    |               ^^^^^^^^^^^^^^^ failed this postcondition
+...
+107 | /     if s.len() == 1 {
+108 | |         // Base case: single '0' has value 0
+109 | |     } else {
+110 | |         let prefix = s.subrange(0, s.len() as int - 1);
+...   |
+113 | |     }
+    | |_____- at the end of the function body
+
+error: postcondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_Compare_CompareUnequal_NormalizeBitString_impl.rs:140:13
+    |
+140 |       ensures Str2Int(s) == Str2Int(s.subrange(start, s.len() as int))
+    |               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+143 | /     if start == 0 {
+144 | |         // Base case
+145 | |     } else {
+146 | |         let s_prefix = s.subrange(1, s.len() as int);
+...   |
+150 | |     }
+    | |_____- at the end of the function body
+
+error: postcondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_Compare_CompareUnequal_NormalizeBitString_impl.rs:122:13
+    |
+122 |       ensures Str2Int(s) == Str2Int(s.subrange(start, s.len() as int))
+    |               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+125 | /     if start == 0 {
+126 | |         // s.subrange(0, s.len()) == s
+127 | |     } else {
+128 | |         let prefix = s.subrange(0, start);
+...   |
+131 | |         lemma_leading_zeros_removal(s, start);
+132 | |     }
+    | |_____- at the end of the function body
+
+error: postcondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_Compare_CompareUnequal_NormalizeBitString_impl.rs:162:13
+    |
+153 | proof fn lemma_longer_normalized_greater(s1: Seq<char>, s2: Seq<char>)
+    |       ---------------------------------------------------------------- at the end of the function body
+...
+162 |     ensures Str2Int(s1) > Str2Int(s2)
+    |             ^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_Compare_CompareUnequal_NormalizeBitString_impl.rs:167:7
+    |
+167 | proof fn lemma_equal_length_lexicographic(s1: Seq<char>, s2: Seq<char>, i: int)
+    |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_Compare_CompareUnequal_NormalizeBitString_impl.rs:177:9
+    |
+167 | proof fn lemma_equal_length_lexicographic(s1: Seq<char>, s2: Seq<char>, i: int)
+    |       ------------------------------------------------------------------------- at the end of the function body
+...
+177 |         s1[i] == '1' && s2[i] == '0' ==> Str2Int(s1) > Str2Int(s2),
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+
+error: postcondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_Compare_CompareUnequal_NormalizeBitString_impl.rs:178:9
+    |
+167 | proof fn lemma_equal_length_lexicographic(s1: Seq<char>, s2: Seq<char>, i: int)
+    |       ------------------------------------------------------------------------- at the end of the function body
+...
+178 |         s1[i] == '0' && s2[i] == '1' ==> Str2Int(s1) < Str2Int(s2),
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_Compare_CompareUnequal_NormalizeBitString_impl.rs:231:9
+    |
+231 |         while i < t1.len()
+    |         ^^^^^^^^^^^^^^^^^^
+
+note: recommendation not met
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_Compare_CompareUnequal_NormalizeBitString_impl.rs:207:11
+    |
+6   |   recommends ValidBitString(s)
+    |              ----------------- recommendation not met
+...
+207 |   ensures Str2Int(s1@) < Str2Int(s2@) ==> res == -1,
+    |           ^^^^^^^^^^^^
+
+note: recommendation not met
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_Compare_CompareUnequal_NormalizeBitString_impl.rs:207:26
+    |
+6   |   recommends ValidBitString(s)
+    |              ----------------- recommendation not met
+...
+207 |   ensures Str2Int(s1@) < Str2Int(s2@) ==> res == -1,
+    |                          ^^^^^^^^^^^^
+
+error: postcondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_Compare_CompareUnequal_NormalizeBitString_impl.rs:208:5
+    |
+208 |     Str2Int(s1@) == Str2Int(s2@) ==> res == 0,
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+248 |                 return -1;
+    |                 --------- at this exit
+
+error: postcondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_Compare_CompareUnequal_NormalizeBitString_impl.rs:209:5
+    |
+209 |     Str2Int(s1@) > Str2Int(s2@) ==> res == 1,
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+248 |                 return -1;
+    |                 --------- at this exit
+
+error: aborting due to 14 previous errors
+
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+verification results:: 5 verified, 9 errors
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_Compare_CompareUnequal_NormalizeBitString_impl.rs:25:6
+   |
+25 | exec fn NormalizeBitString(s: &[char]) -> (t: Vec<char>)
+   |      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_Compare_CompareUnequal_NormalizeBitString_impl.rs:29:4
+   |
+29 |    ValidBitString(s@) ==> Str2Int(s@) == Str2Int(t@)
+   |    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+73 |     result
+   |     ------ at the end of the function body
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_Compare_CompareUnequal_NormalizeBitString_impl.rs:29:4
+   |
+29 |    ValidBitString(s@) ==> Str2Int(s@) == Str2Int(t@)
+   |    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+56 |         return result;
+   |         ------------- at this exit
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_Compare_CompareUnequal_NormalizeBitString_impl.rs:29:4
+   |
+29 |    ValidBitString(s@) ==> Str2Int(s@) == Str2Int(t@)
+   |    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+39 |         return result;
+   |         ------------- at this exit
+
+error: invariant not satisfied at end of loop body
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_Compare_CompareUnequal_NormalizeBitString_impl.rs:65:13
+   |
+65 |             forall |j: int| 0 <= j && j < result.len() ==> (result@[j] == '0' || result@[j] == '1'),
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_Compare_CompareUnequal_NormalizeBitString_impl.rs:78:6
+   |
+78 | exec fn CompareUnequal(s1: &[char], s2: &[char]) -> (res: i32)
+   |      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_Compare_CompareUnequal_NormalizeBitString_impl.rs:86:11
+   |
+86 |   ensures Str2Int(s1@) < Str2Int(s2@) ==> res == -1,
+   |           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+93 |     return 1;
+   |     -------- at this exit
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_Compare_CompareUnequal_NormalizeBitString_impl.rs:87:5
+   |
+87 |     Str2Int(s1@) == Str2Int(s2@) ==> res == 0,
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+93 |     return 1;
+   |     -------- at this exit
+
+error: postcondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_Compare_CompareUnequal_NormalizeBitString_impl.rs:104:13
+    |
+104 |       ensures Str2Int(s) == 0
+    |               ^^^^^^^^^^^^^^^ failed this postcondition
+...
+107 | /     if s.len() == 1 {
+108 | |         // Base case: single '0' has value 0
+109 | |     } else {
+110 | |         let prefix = s.subrange(0, s.len() as int - 1);
+...   |
+113 | |     }
+    | |_____- at the end of the function body
+
+error: postcondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_Compare_CompareUnequal_NormalizeBitString_impl.rs:140:13
+    |
+140 |       ensures Str2Int(s) == Str2Int(s.subrange(start, s.len() as int))
+    |               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+143 | /     if start == 0 {
+144 | |         // Base case
+145 | |     } else {
+146 | |         let s_prefix = s.subrange(1, s.len() as int);
+...   |
+150 | |     }
+    | |_____- at the end of the function body
+
+error: postcondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_Compare_CompareUnequal_NormalizeBitString_impl.rs:122:13
+    |
+122 |       ensures Str2Int(s) == Str2Int(s.subrange(start, s.len() as int))
+    |               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+125 | /     if start == 0 {
+126 | |         // s.subrange(0, s.len()) == s
+127 | |     } else {
+128 | |         let prefix = s.subrange(0, start);
+...   |
+131 | |         lemma_leading_zeros_removal(s, start);
+132 | |     }
+    | |_____- at the end of the function body
+
+error: postcondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_Compare_CompareUnequal_NormalizeBitString_impl.rs:162:13
+    |
+153 | proof fn lemma_longer_normalized_greater(s1: Seq<char>, s2: Seq<char>)
+    |       ---------------------------------------------------------------- at the end of the function body
+...
+162 |     ensures Str2Int(s1) > Str2Int(s2)
+    |             ^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_Compare_CompareUnequal_NormalizeBitString_impl.rs:167:7
+    |
+167 | proof fn lemma_equal_length_lexicographic(s1: Seq<char>, s2: Seq<char>, i: int)
+    |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_Compare_CompareUnequal_NormalizeBitString_impl.rs:177:9
+    |
+167 | proof fn lemma_equal_length_lexicographic(s1: Seq<char>, s2: Seq<char>, i: int)
+    |       ------------------------------------------------------------------------- at the end of the function body
+...
+177 |         s1[i] == '1' && s2[i] == '0' ==> Str2Int(s1) > Str2Int(s2),
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+
+error: postcondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_Compare_CompareUnequal_NormalizeBitString_impl.rs:178:9
+    |
+167 | proof fn lemma_equal_length_lexicographic(s1: Seq<char>, s2: Seq<char>, i: int)
+    |       ------------------------------------------------------------------------- at the end of the function body
+...
+178 |         s1[i] == '0' && s2[i] == '1' ==> Str2Int(s1) < Str2Int(s2),
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_Compare_CompareUnequal_NormalizeBitString_impl.rs:231:9
+    |
+231 |         while i < t1.len()
+    |         ^^^^^^^^^^^^^^^^^^
+
+note: recommendation not met
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_Compare_CompareUnequal_NormalizeBitString_impl.rs:207:11
+    |
+6   |   recommends ValidBitString(s)
+    |              ----------------- recommendation not met
+...
+207 |   ensures Str2Int(s1@) < Str2Int(s2@) ==> res == -1,
+    |           ^^^^^^^^^^^^
+
+note: recommendation not met
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_Compare_CompareUnequal_NormalizeBitString_impl.rs:207:26
+    |
+6   |   recommends ValidBitString(s)
+    |              ----------------- recommendation not met
+...
+207 |   ensures Str2Int(s1@) < Str2Int(s2@) ==> res == -1,
+    |                          ^^^^^^^^^^^^
+
+error: postcondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_Compare_CompareUnequal_NormalizeBitString_impl.rs:208:5
+    |
+208 |     Str2Int(s1@) == Str2Int(s2@) ==> res == 0,
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+248 |                 return -1;
+    |                 --------- at this exit
+
+error: postcondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_Compare_CompareUnequal_NormalizeBitString_impl.rs:209:5
+    |
+209 |     Str2Int(s1@) > Str2Int(s2@) ==> res == 1,
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+248 |                 return -1;
+    |                 --------- at this exit
+
+error: aborting due to 14 previous errors
+

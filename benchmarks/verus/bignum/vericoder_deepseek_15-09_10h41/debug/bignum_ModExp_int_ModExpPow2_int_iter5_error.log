@@ -1,0 +1,26 @@
+=== Verification Error - Iteration 5 ===
+File: benchmarks/verus/bignum/files/bignum_ModExp_int_ModExpPow2_int.rs
+Time: 2025-09-15 11:00:50
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: error: expected curly braces
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_10h41/bignum_ModExp_int_ModExpPow2_int_impl.rs:24:79
+   |
+24 | proof fn helper_lemma_exp_base(x: nat, y: nat) ensures Exp_int(x, y) % x == 0 when y > 0 decreases y { if y > 0 { helper_lemma_exp_base(x, (y - 1) as nat); } }
+   |                                                                               ^^^^
+
+error: aborting due to 1 previous error
+
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+error: expected curly braces
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_10h41/bignum_ModExp_int_ModExpPow2_int_impl.rs:24:79
+   |
+24 | proof fn helper_lemma_exp_base(x: nat, y: nat) ensures Exp_int(x, y) % x == 0 when y > 0 decreases y { if y > 0 { helper_lemma_exp_base(x, (y - 1) as nat); } }
+   |                                                                               ^^^^
+
+error: aborting due to 1 previous error
+

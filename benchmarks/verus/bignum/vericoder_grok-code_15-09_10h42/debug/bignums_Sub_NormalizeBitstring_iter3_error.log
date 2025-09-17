@@ -1,0 +1,40 @@
+=== Verification Error - Iteration 3 ===
+File: benchmarks/verus/bignum/files/bignums_Sub_NormalizeBitstring.rs
+Time: 2025-09-15 10:59:33
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Verification failed: verification results:: 3 verified, 2 errors
+error: invariant not satisfied at end of loop body
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_10h42/bignums_Sub_NormalizeBitstring_impl.rs:40:13
+   |
+40 |             forall |k: int| 0 <= k < i ==> s@[k] == '0',
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: invariant not satisfied at end of loop body
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_10h42/bignums_Sub_NormalizeBitstring_impl.rs:54:17
+   |
+54 |                 ValidBitString(res@),
+   |                 ^^^^^^^^^^^^^^^^^^^^
+
+error: aborting due to 2 previous errors
+
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+verification results:: 3 verified, 2 errors
+error: invariant not satisfied at end of loop body
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_10h42/bignums_Sub_NormalizeBitstring_impl.rs:40:13
+   |
+40 |             forall |k: int| 0 <= k < i ==> s@[k] == '0',
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: invariant not satisfied at end of loop body
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_10h42/bignums_Sub_NormalizeBitstring_impl.rs:54:17
+   |
+54 |                 ValidBitString(res@),
+   |                 ^^^^^^^^^^^^^^^^^^^^
+
+error: aborting due to 2 previous errors
+

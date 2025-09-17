@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_query(query: (int, int)) -> bool {
     query.0 >= 1 && query.0 <= query.1
 }
@@ -36,6 +33,9 @@ spec fn correct_result(queries: Seq<(int, int)>, results: Seq<int>) -> bool
     results.len() == queries.len() &&
     forall|i: int| 0 <= i < queries.len() ==> results[i] == prefix_sum(queries[i].1) - prefix_sum(queries[i].0 - 1)
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

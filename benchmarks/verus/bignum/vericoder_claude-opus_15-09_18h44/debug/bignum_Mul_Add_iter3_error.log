@@ -1,0 +1,268 @@
+=== Verification Error - Iteration 3 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_Mul_Add.rs
+Time: 2025-09-15 19:27:23
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Verification failed: verification results:: 6 verified, 7 errors
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_Mul_Add_impl.rs:208:13
+    |
+208 |             loop
+    |             ^^^^
+
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_Mul_Add_impl.rs:235:13
+    |
+235 |             loop
+    |             ^^^^
+
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_Mul_Add_impl.rs:174:5
+    |
+174 |     loop
+    |     ^^^^
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_Mul_Add_impl.rs:73:6
+   |
+73 | exec fn Mul_Add(s1: &[char], s2: &[char]) -> (res: Vec<char>)
+   |      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: assertion failed
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_Mul_Add_impl.rs:107:20
+    |
+107 |             assert(Str2Int(s1@) == 0);
+    |                    ^^^^^^^^^^^^^^^^^ assertion failed
+
+error: assertion failed
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_Mul_Add_impl.rs:118:20
+    |
+118 |             assert(Str2Int(s2@) == 0);
+    |                    ^^^^^^^^^^^^^^^^^ assertion failed
+
+error: invariant not satisfied at end of loop body
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_Mul_Add_impl.rs:130:17
+    |
+130 |                 ValidBitString(result@),
+    |                 ^^^^^^^^^^^^^^^^^^^^^^^
+
+error: invariant not satisfied at end of loop body
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_Mul_Add_impl.rs:153:17
+    |
+153 |                 ValidBitString(result@),
+    |                 ^^^^^^^^^^^^^^^^^^^^^^^
+
+note: recommendation not met
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_Mul_Add_impl.rs:178:30
+    |
+6   | recommends ValidBitString(s)
+    |            ----------------- recommendation not met
+...
+178 |             Str2Int(acc@) == Str2Int(s2@.subrange(j as int, s2.len() as int)) * Str2Int(s1@),
+    |                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+note: recommendation not met
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_Mul_Add_impl.rs:178:81
+    |
+6   | recommends ValidBitString(s)
+    |            ----------------- recommendation not met
+...
+178 |             Str2Int(acc@) == Str2Int(s2@.subrange(j as int, s2.len() as int)) * Str2Int(s1@),
+    |                                                                                 ^^^^^^^^^^^^
+
+error: invariant not satisfied at end of loop body
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_Mul_Add_impl.rs:187:17
+    |
+187 |                 ValidBitString(shifted@),
+    |                 ^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_Mul_Add_impl.rs:205:25
+    |
+205 |             let mut p = (s1.len() - 1) as usize;
+    |                         ^^^^^^^^^^^^^^
+
+error: invariant not satisfied at end of loop body
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_Mul_Add_impl.rs:210:21
+    |
+210 |                     p < s1.len(),
+    |                     ^^^^^^^^^^^^
+
+error: invariant not satisfied before loop
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_Mul_Add_impl.rs:210:21
+    |
+210 |                     p < s1.len(),
+    |                     ^^^^^^^^^^^^
+
+error: invariant not satisfied at end of loop body
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_Mul_Add_impl.rs:211:21
+    |
+211 |                     q < shifted.len(),
+    |                     ^^^^^^^^^^^^^^^^^
+
+error: loop invariant not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_Mul_Add_impl.rs:229:21
+    |
+210 |                     p < s1.len(),
+    |                     ------------
+    |                     |
+    |                     failed this invariant
+    |                     (hint: if this is not supposed to be true at the break, use 'invariant_except_break' for it instead of 'invariant', and use 'ensures' for what is true at the break)
+...
+229 |                     break;
+    |                     ^^^^^ at this loop exit
+
+error: invariant not satisfied at end of loop body
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_Mul_Add_impl.rs:238:21
+    |
+238 |                     ValidBitString(acc@),
+    |                     ^^^^^^^^^^^^^^^^^^^^
+
+error: loop invariant not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_Mul_Add_impl.rs:242:29
+    |
+238 |                     ValidBitString(acc@),
+    |                     --------------------
+    |                     |
+    |                     failed this invariant
+    |                     (hint: if this is not supposed to be true at the break, use 'invariant_except_break' for it instead of 'invariant', and use 'ensures' for what is true at the break)
+...
+242 |                 if r == 0 { break; }
+    |                             ^^^^^ at this loop exit
+
+error: aborting due to 12 previous errors
+
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+verification results:: 6 verified, 7 errors
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_Mul_Add_impl.rs:208:13
+    |
+208 |             loop
+    |             ^^^^
+
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_Mul_Add_impl.rs:235:13
+    |
+235 |             loop
+    |             ^^^^
+
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_Mul_Add_impl.rs:174:5
+    |
+174 |     loop
+    |     ^^^^
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_Mul_Add_impl.rs:73:6
+   |
+73 | exec fn Mul_Add(s1: &[char], s2: &[char]) -> (res: Vec<char>)
+   |      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: assertion failed
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_Mul_Add_impl.rs:107:20
+    |
+107 |             assert(Str2Int(s1@) == 0);
+    |                    ^^^^^^^^^^^^^^^^^ assertion failed
+
+error: assertion failed
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_Mul_Add_impl.rs:118:20
+    |
+118 |             assert(Str2Int(s2@) == 0);
+    |                    ^^^^^^^^^^^^^^^^^ assertion failed
+
+error: invariant not satisfied at end of loop body
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_Mul_Add_impl.rs:130:17
+    |
+130 |                 ValidBitString(result@),
+    |                 ^^^^^^^^^^^^^^^^^^^^^^^
+
+error: invariant not satisfied at end of loop body
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_Mul_Add_impl.rs:153:17
+    |
+153 |                 ValidBitString(result@),
+    |                 ^^^^^^^^^^^^^^^^^^^^^^^
+
+note: recommendation not met
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_Mul_Add_impl.rs:178:30
+    |
+6   | recommends ValidBitString(s)
+    |            ----------------- recommendation not met
+...
+178 |             Str2Int(acc@) == Str2Int(s2@.subrange(j as int, s2.len() as int)) * Str2Int(s1@),
+    |                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+note: recommendation not met
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_Mul_Add_impl.rs:178:81
+    |
+6   | recommends ValidBitString(s)
+    |            ----------------- recommendation not met
+...
+178 |             Str2Int(acc@) == Str2Int(s2@.subrange(j as int, s2.len() as int)) * Str2Int(s1@),
+    |                                                                                 ^^^^^^^^^^^^
+
+error: invariant not satisfied at end of loop body
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_Mul_Add_impl.rs:187:17
+    |
+187 |                 ValidBitString(shifted@),
+    |                 ^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_Mul_Add_impl.rs:205:25
+    |
+205 |             let mut p = (s1.len() - 1) as usize;
+    |                         ^^^^^^^^^^^^^^
+
+error: invariant not satisfied at end of loop body
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_Mul_Add_impl.rs:210:21
+    |
+210 |                     p < s1.len(),
+    |                     ^^^^^^^^^^^^
+
+error: invariant not satisfied before loop
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_Mul_Add_impl.rs:210:21
+    |
+210 |                     p < s1.len(),
+    |                     ^^^^^^^^^^^^
+
+error: invariant not satisfied at end of loop body
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_Mul_Add_impl.rs:211:21
+    |
+211 |                     q < shifted.len(),
+    |                     ^^^^^^^^^^^^^^^^^
+
+error: loop invariant not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_Mul_Add_impl.rs:229:21
+    |
+210 |                     p < s1.len(),
+    |                     ------------
+    |                     |
+    |                     failed this invariant
+    |                     (hint: if this is not supposed to be true at the break, use 'invariant_except_break' for it instead of 'invariant', and use 'ensures' for what is true at the break)
+...
+229 |                     break;
+    |                     ^^^^^ at this loop exit
+
+error: invariant not satisfied at end of loop body
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_Mul_Add_impl.rs:238:21
+    |
+238 |                     ValidBitString(acc@),
+    |                     ^^^^^^^^^^^^^^^^^^^^
+
+error: loop invariant not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_Mul_Add_impl.rs:242:29
+    |
+238 |                     ValidBitString(acc@),
+    |                     --------------------
+    |                     |
+    |                     failed this invariant
+    |                     (hint: if this is not supposed to be true at the break, use 'invariant_except_break' for it instead of 'invariant', and use 'ensures' for what is true at the break)
+...
+242 |                 if r == 0 { break; }
+    |                             ^^^^^ at this loop exit
+
+error: aborting due to 12 previous errors
+

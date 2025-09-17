@@ -1,0 +1,108 @@
+=== Verification Error - Iteration 9 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignums_Sub_NormalizeBitstring.rs
+Time: 2025-09-15 18:49:17
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Verification failed: verification results:: 3 verified, 2 errors
+error: invariant not satisfied at end of loop body
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignums_Sub_NormalizeBitstring_impl.rs:51:13
+   |
+51 |             forall |j: int| 0 <= j && (j as usize) < i ==> s@.index(j) == '0',
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+note: recommendation not met: value may be out of range of the target type (use `#[verifier::truncate]` on the cast to silence this warning)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignums_Sub_NormalizeBitstring_impl.rs:51:40
+   |
+51 |             forall |j: int| 0 <= j && (j as usize) < i ==> s@.index(j) == '0',
+   |                                        ^
+
+note: recommendation not met
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignums_Sub_NormalizeBitstring_impl.rs:51:60
+   |
+51 |             forall |j: int| 0 <= j && (j as usize) < i ==> s@.index(j) == '0',
+   |                                                            ^^^^^^^^^^^
+   |
+  ::: /Users/sergiu.bursuc/verus/vstd/seq.rs:55:13
+   |
+55 |             0 <= i < self.len(),
+   |             ------------------- recommendation not met
+
+error: invariant not satisfied at end of loop body
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignums_Sub_NormalizeBitstring_impl.rs:70:13
+   |
+70 |             forall |idx: int| 0 <= idx && (idx as usize) < (k - i) ==> res@.index(idx) == s@.index((i + idx) as int)
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+note: recommendation not met: value may be out of range of the target type (use `#[verifier::truncate]` on the cast to silence this warning)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignums_Sub_NormalizeBitstring_impl.rs:70:44
+   |
+70 |             forall |idx: int| 0 <= idx && (idx as usize) < (k - i) ==> res@.index(idx) == s@.index((i + idx) as int)
+   |                                            ^^^
+
+note: recommendation not met
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignums_Sub_NormalizeBitstring_impl.rs:70:72
+   |
+70 |             forall |idx: int| 0 <= idx && (idx as usize) < (k - i) ==> res@.index(idx) == s@.index((i + idx) as int)
+   |                                                                        ^^^^^^^^^^^^^^^
+   |
+  ::: /Users/sergiu.bursuc/verus/vstd/seq.rs:55:13
+   |
+55 |             0 <= i < self.len(),
+   |             ------------------- recommendation not met
+
+error: aborting due to 2 previous errors
+
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+verification results:: 3 verified, 2 errors
+error: invariant not satisfied at end of loop body
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignums_Sub_NormalizeBitstring_impl.rs:51:13
+   |
+51 |             forall |j: int| 0 <= j && (j as usize) < i ==> s@.index(j) == '0',
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+note: recommendation not met: value may be out of range of the target type (use `#[verifier::truncate]` on the cast to silence this warning)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignums_Sub_NormalizeBitstring_impl.rs:51:40
+   |
+51 |             forall |j: int| 0 <= j && (j as usize) < i ==> s@.index(j) == '0',
+   |                                        ^
+
+note: recommendation not met
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignums_Sub_NormalizeBitstring_impl.rs:51:60
+   |
+51 |             forall |j: int| 0 <= j && (j as usize) < i ==> s@.index(j) == '0',
+   |                                                            ^^^^^^^^^^^
+   |
+  ::: /Users/sergiu.bursuc/verus/vstd/seq.rs:55:13
+   |
+55 |             0 <= i < self.len(),
+   |             ------------------- recommendation not met
+
+error: invariant not satisfied at end of loop body
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignums_Sub_NormalizeBitstring_impl.rs:70:13
+   |
+70 |             forall |idx: int| 0 <= idx && (idx as usize) < (k - i) ==> res@.index(idx) == s@.index((i + idx) as int)
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+note: recommendation not met: value may be out of range of the target type (use `#[verifier::truncate]` on the cast to silence this warning)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignums_Sub_NormalizeBitstring_impl.rs:70:44
+   |
+70 |             forall |idx: int| 0 <= idx && (idx as usize) < (k - i) ==> res@.index(idx) == s@.index((i + idx) as int)
+   |                                            ^^^
+
+note: recommendation not met
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignums_Sub_NormalizeBitstring_impl.rs:70:72
+   |
+70 |             forall |idx: int| 0 <= idx && (idx as usize) < (k - i) ==> res@.index(idx) == s@.index((i + idx) as int)
+   |                                                                        ^^^^^^^^^^^^^^^
+   |
+  ::: /Users/sergiu.bursuc/verus/vstd/seq.rs:55:13
+   |
+55 |             0 <= i < self.len(),
+   |             ------------------- recommendation not met
+
+error: aborting due to 2 previous errors
+

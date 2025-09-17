@@ -7,52 +7,42 @@ vc-preamble: |-
   use vstd::prelude::*;
 
   verus! {
-
-vc-helpers: |-
   spec fn valid_input(n: int, r: Seq<int>, b: Seq<int>) -> bool {
       n > 0 && r.len() == n && b.len() == n &&
       (forall|i: int| 0 <= i < n ==> (r[i] == 0 || r[i] == 1)) &&
       (forall|i: int| 0 <= i < n ==> (b[i] == 0 || b[i] == 1))
   }
-  
-  spec fn robot_advantage_count(n: int, r: Seq<int>, b: Seq<int>) -> int
-      requires valid_input(n, r, b)
-  {
-      (Set::new(|i: int| 0 <= i < n && r[i] == 1 && b[i] == 0)).len() as int
+
+  spec fn robot_advantage_count(n: int, r: Seq<int>, b: Seq<int>) -> int {
+      Set::new(|i: int| 0 <= i < n && r[i] == 1 && b[i] == 0).len() as int
   }
-  
-  spec fn opponent_advantage_count(n: int, r: Seq<int>, b: Seq<int>) -> int
-      requires valid_input(n, r, b)
-  {
-      (Set::new(|i: int| 0 <= i < n && r[i] == 0 && b[i] == 1)).len() as int
+
+  spec fn opponent_advantage_count(n: int, r: Seq<int>, b: Seq<int>) -> int {
+      Set::new(|i: int| 0 <= i < n && r[i] == 0 && b[i] == 1).len() as int
   }
-  
-  spec fn can_win(n: int, r: Seq<int>, b: Seq<int>) -> bool
-      requires valid_input(n, r, b)
-  {
+
+  spec fn can_win(n: int, r: Seq<int>, b: Seq<int>) -> bool {
       robot_advantage_count(n, r, b) > 0
   }
-  
-  spec fn min_max_point_value(n: int, r: Seq<int>, b: Seq<int>) -> int
-      requires valid_input(n, r, b) && can_win(n, r, b)
-  {
+
+  spec fn min_max_point_value(n: int, r: Seq<int>, b: Seq<int>) -> int {
       opponent_advantage_count(n, r, b) / robot_advantage_count(n, r, b) + 1
   }
+
+vc-helpers: |
 
 vc-spec: |-
   fn solve(n: int, r: Seq<int>, b: Seq<int>) -> (result: int)
       requires valid_input(n, r, b)
-      ensures (can_win(n, r, b) ==> result == min_max_point_value(n, r, b)) && (!can_win(n, r, b) ==> result == -1)
+      ensures if can_win(n, r, b) { result == min_max_point_value(n, r, b) } else { result == -1 }
 
 vc-code: |-
   {
-      // impl-start
       assume(false);
       unreached()
-      // impl-end
   }
 
-vc-postamble: |-
+vc-postamble: |2-
 
   }
 

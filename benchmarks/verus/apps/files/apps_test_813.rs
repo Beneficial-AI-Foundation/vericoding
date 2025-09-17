@@ -2,10 +2,7 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
-spec fn valid_input(input: &str) -> bool {
+spec fn valid_input(input: Seq<char>) -> bool {
     let lines = split_lines(input);
     lines.len() >= 3 && split_spaces(lines[0]).len() >= 3 &&
     {
@@ -14,7 +11,7 @@ spec fn valid_input(input: &str) -> bool {
     }
 }
 
-spec fn valid_output(input: &str, result: &Seq<char>) -> bool {
+spec fn valid_output(input: Seq<char>, result: Seq<char>) -> bool {
     let lines = split_lines(input);
     let n = parse_int(split_spaces(lines[0])[0]);
     result.len() == 2 * n - 1 &&
@@ -22,7 +19,7 @@ spec fn valid_output(input: &str, result: &Seq<char>) -> bool {
     (forall|i: int| 0 <= i < n-1 ==> result[2*i+1] == ' ')
 }
 
-spec fn correct_assignment(input: &str, result: &Seq<char>) -> bool {
+spec fn correct_assignment(input: Seq<char>, result: Seq<char>) -> bool {
     let lines = split_lines(input);
     let n = parse_int(split_spaces(lines[0])[0]);
     let arthur_apples = parse_int_seq(split_spaces(lines[1]));
@@ -32,24 +29,29 @@ spec fn correct_assignment(input: &str, result: &Seq<char>) -> bool {
         (!arthur_set.contains(i) ==> result[2*(i-1)] == '2')
 }
 
-/* Helper function specifications - these would need actual implementations */
-spec fn split_lines(input: &str) -> Seq<&str>;
-spec fn split_spaces(line: &str) -> Seq<&str>;
-spec fn parse_int(s: &str) -> int;
-spec fn parse_int_seq(parts: Seq<&str>) -> Seq<int>;
+/* Helper functions for string parsing */
+spec fn split_lines(input: Seq<char>) -> Seq<Seq<char>>;
+spec fn split_spaces(line: Seq<char>) -> Seq<Seq<char>>;
+spec fn parse_int(s: Seq<char>) -> int;
+spec fn parse_int_seq(parts: Seq<Seq<char>>) -> Seq<int>;
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(input: &str) -> (result: Seq<char>)
-    requires input.len() > 0
-    ensures !valid_input(input) ==> result.len() == 0
-    ensures valid_input(input) ==> valid_output(input, &result) && correct_assignment(input, &result)
-    ensures forall|i: int| 0 <= i < result.len() ==> result[i] == '1' || result[i] == '2' || result[i] == ' '
+fn solve(input: Vec<char>) -> (result: Vec<char>)
+    requires
+        input.len() > 0,
+    ensures
+        (!valid_input(input@) ==> result.len() == 0) &&
+        (valid_input(input@) ==> valid_output(input@, result@) && correct_assignment(input@, result@)) &&
+        (forall|i: int| 0 <= i < result.len() ==> result[i] == '1' || result[i] == '2' || result[i] == ' '),
 // </vc-spec>
 // <vc-code>
 {
     assume(false);
-    Seq::empty()
+    Vec::new()
 }
 // </vc-code>
 

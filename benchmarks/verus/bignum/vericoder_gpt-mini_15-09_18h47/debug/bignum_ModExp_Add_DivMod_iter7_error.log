@@ -1,0 +1,434 @@
+=== Verification Error - Iteration 7 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExp_Add_DivMod.rs
+Time: 2025-09-15 19:11:19
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Verification failed: verification results:: 30 verified, 9 errors
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_impl.rs:24:6
+   |
+24 | exec fn Add(s1: &[char], s2: &[char]) -> (res: Vec<char>)
+   |      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_impl.rs:26:11
+   |
+26 |     ensures ValidBitString(res@), Str2Int(res@) == Str2Int(s1@) + Str2Int(s2@)
+   |             ^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+77 | /     if first_one == res.len() {
+78 | |         Vec::<char>::new()
+79 | |     } else if first_one == 0 {
+80 | |         res
+...  |
+92 | |         out
+93 | |     }
+   | |_____- at the end of the function body
+
+note: recommendation not met
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_impl.rs:26:33
+   |
+12 |   recommends ValidBitString(s)
+   |              ----------------- recommendation not met
+...
+26 |   ensures ValidBitString(res@), Str2Int(res@) == Str2Int(s1@) + Str2Int(s2@)
+   |                                 ^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_impl.rs:26:33
+   |
+26 |     ensures ValidBitString(res@), Str2Int(res@) == Str2Int(s1@) + Str2Int(s2@)
+   |                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+77 | /     if first_one == res.len() {
+78 | |         Vec::<char>::new()
+79 | |     } else if first_one == 0 {
+80 | |         res
+...  |
+92 | |         out
+93 | |     }
+   | |_____- at the end of the function body
+
+error: possible arithmetic underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_impl.rs:44:23
+   |
+44 |         let sum: u8 = b1 + b2 + carry;
+   |                       ^^^^^^^^^^^^^^^
+
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_impl.rs:196:21
+    |
+196 |                     while k < rem_len
+    |                     ^^^^^^^^^^^^^^^^^
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_impl.rs:98:6
+   |
+98 | exec fn DivMod(dividend: &[char], divisor: &[char]) -> (res: (Vec<char>, Vec<char>))
+   |      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_impl.rs:100:11
+    |
+100 |   ensures ValidBitString(res.0@) && ValidBitString(res.1@),
+    |           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+340 |     (q_trim, r_trim)
+    |     ---------------- at the end of the function body
+
+note: recommendation not met
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_impl.rs:101:5
+    |
+12  |   recommends ValidBitString(s)
+    |              ----------------- recommendation not met
+...
+101 |     Str2Int(res.0@) == Str2Int(dividend@) / Str2Int(divisor@),
+    |     ^^^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_impl.rs:101:5
+    |
+101 |     Str2Int(res.0@) == Str2Int(dividend@) / Str2Int(divisor@),
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+340 |     (q_trim, r_trim)
+    |     ---------------- at the end of the function body
+
+note: recommendation not met
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_impl.rs:102:5
+    |
+12  |   recommends ValidBitString(s)
+    |              ----------------- recommendation not met
+...
+102 |     Str2Int(res.1@) == Str2Int(dividend@) % Str2Int(divisor@)
+    |     ^^^^^^^^^^^^^^^
+
+error: precondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_impl.rs:201:34
+    |
+201 |                         let ca = rem[rfirst + k];
+    |                                  ^^^^^^^^^^^^^^^
+    |
+   ::: /Users/sergiu.bursuc/verus/vstd/std_specs/vec.rs:48:9
+    |
+48  |         i < vec.view().len(),
+    |         -------------------- failed precondition
+
+error: possible arithmetic underflow/overflow
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_impl.rs:201:38
+    |
+201 |                         let ca = rem[rfirst + k];
+    |                                      ^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_impl.rs:245:41
+    |
+245 |                         let mut v: i8 = (ba as i8) - (bb as i8) - (borrow as i8);
+    |                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+note: recommendation not met: value may be out of range of the target type (use `#[verifier::truncate]` on the cast to silence this warning)
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_impl.rs:245:68
+    |
+245 |                         let mut v: i8 = (ba as i8) - (bb as i8) - (borrow as i8);
+    |                                                                    ^^^^^^
+
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_impl.rs:394:5
+    |
+394 |     while k < exp.len()
+    |     ^^^^^^^^^^^^^^^^^^^
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_impl.rs:345:6
+    |
+345 | exec fn ModExp(sx: &[char], sy: &[char], sz: &[char]) -> (res: Vec<char>)
+    |      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_impl.rs:348:11
+    |
+348 |     ensures ValidBitString(res@),
+    |             ^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+487 | /     if rf == result.len() {
+488 | |         Vec::<char>::new()
+489 | |     } else if rf == 0 {
+490 | |         result
+...   |
+502 | |         out
+503 | |     }
+    | |_____- at the end of the function body
+
+note: recommendation not met
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_impl.rs:349:5
+    |
+12  |   recommends ValidBitString(s)
+    |              ----------------- recommendation not met
+...
+349 |     Str2Int(res@) == Exp_int(Str2Int(sx@), Str2Int(sy@)) % Str2Int(sz@)
+    |     ^^^^^^^^^^^^^
+
+error: precondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_impl.rs:390:14
+    |
+99  |   requires ValidBitString(dividend@), ValidBitString(divisor@), Str2Int(divisor@) > 0
+    |                                       ------------------------ failed precondition
+...
+390 |     result = DivMod(result.as_slice(), modu.as_slice()).1;
+    |              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: precondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_impl.rs:431:21
+    |
+25  |   requires ValidBitString(s1@), ValidBitString(s2@)
+    |            ------------------- failed precondition
+...
+431 |                     prod = Add(prod.as_slice(), shifted.as_slice());
+    |                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: precondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_impl.rs:436:21
+    |
+99  |   requires ValidBitString(dividend@), ValidBitString(divisor@), Str2Int(divisor@) > 0
+    |            ------------------------- failed precondition
+...
+436 |             let r = DivMod(prod.as_slice(), modu.as_slice()).1;
+    |                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: precondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_impl.rs:469:17
+    |
+25  |   requires ValidBitString(s1@), ValidBitString(s2@)
+    |            ------------------- failed precondition
+...
+469 |                 b2prod = Add(b2prod.as_slice(), shifted2.as_slice());
+    |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: precondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_impl.rs:473:16
+    |
+99  |   requires ValidBitString(dividend@), ValidBitString(divisor@), Str2Int(divisor@) > 0
+    |            ------------------------- failed precondition
+...
+473 |         base = DivMod(b2prod.as_slice(), modu.as_slice()).1;
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: aborting due to 14 previous errors
+
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+verification results:: 30 verified, 9 errors
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_impl.rs:24:6
+   |
+24 | exec fn Add(s1: &[char], s2: &[char]) -> (res: Vec<char>)
+   |      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_impl.rs:26:11
+   |
+26 |     ensures ValidBitString(res@), Str2Int(res@) == Str2Int(s1@) + Str2Int(s2@)
+   |             ^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+77 | /     if first_one == res.len() {
+78 | |         Vec::<char>::new()
+79 | |     } else if first_one == 0 {
+80 | |         res
+...  |
+92 | |         out
+93 | |     }
+   | |_____- at the end of the function body
+
+note: recommendation not met
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_impl.rs:26:33
+   |
+12 |   recommends ValidBitString(s)
+   |              ----------------- recommendation not met
+...
+26 |   ensures ValidBitString(res@), Str2Int(res@) == Str2Int(s1@) + Str2Int(s2@)
+   |                                 ^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_impl.rs:26:33
+   |
+26 |     ensures ValidBitString(res@), Str2Int(res@) == Str2Int(s1@) + Str2Int(s2@)
+   |                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+77 | /     if first_one == res.len() {
+78 | |         Vec::<char>::new()
+79 | |     } else if first_one == 0 {
+80 | |         res
+...  |
+92 | |         out
+93 | |     }
+   | |_____- at the end of the function body
+
+error: possible arithmetic underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_impl.rs:44:23
+   |
+44 |         let sum: u8 = b1 + b2 + carry;
+   |                       ^^^^^^^^^^^^^^^
+
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_impl.rs:196:21
+    |
+196 |                     while k < rem_len
+    |                     ^^^^^^^^^^^^^^^^^
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_impl.rs:98:6
+   |
+98 | exec fn DivMod(dividend: &[char], divisor: &[char]) -> (res: (Vec<char>, Vec<char>))
+   |      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_impl.rs:100:11
+    |
+100 |   ensures ValidBitString(res.0@) && ValidBitString(res.1@),
+    |           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+340 |     (q_trim, r_trim)
+    |     ---------------- at the end of the function body
+
+note: recommendation not met
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_impl.rs:101:5
+    |
+12  |   recommends ValidBitString(s)
+    |              ----------------- recommendation not met
+...
+101 |     Str2Int(res.0@) == Str2Int(dividend@) / Str2Int(divisor@),
+    |     ^^^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_impl.rs:101:5
+    |
+101 |     Str2Int(res.0@) == Str2Int(dividend@) / Str2Int(divisor@),
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+340 |     (q_trim, r_trim)
+    |     ---------------- at the end of the function body
+
+note: recommendation not met
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_impl.rs:102:5
+    |
+12  |   recommends ValidBitString(s)
+    |              ----------------- recommendation not met
+...
+102 |     Str2Int(res.1@) == Str2Int(dividend@) % Str2Int(divisor@)
+    |     ^^^^^^^^^^^^^^^
+
+error: precondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_impl.rs:201:34
+    |
+201 |                         let ca = rem[rfirst + k];
+    |                                  ^^^^^^^^^^^^^^^
+    |
+   ::: /Users/sergiu.bursuc/verus/vstd/std_specs/vec.rs:48:9
+    |
+48  |         i < vec.view().len(),
+    |         -------------------- failed precondition
+
+error: possible arithmetic underflow/overflow
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_impl.rs:201:38
+    |
+201 |                         let ca = rem[rfirst + k];
+    |                                      ^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_impl.rs:245:41
+    |
+245 |                         let mut v: i8 = (ba as i8) - (bb as i8) - (borrow as i8);
+    |                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+note: recommendation not met: value may be out of range of the target type (use `#[verifier::truncate]` on the cast to silence this warning)
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_impl.rs:245:68
+    |
+245 |                         let mut v: i8 = (ba as i8) - (bb as i8) - (borrow as i8);
+    |                                                                    ^^^^^^
+
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_impl.rs:394:5
+    |
+394 |     while k < exp.len()
+    |     ^^^^^^^^^^^^^^^^^^^
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_impl.rs:345:6
+    |
+345 | exec fn ModExp(sx: &[char], sy: &[char], sz: &[char]) -> (res: Vec<char>)
+    |      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_impl.rs:348:11
+    |
+348 |     ensures ValidBitString(res@),
+    |             ^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+487 | /     if rf == result.len() {
+488 | |         Vec::<char>::new()
+489 | |     } else if rf == 0 {
+490 | |         result
+...   |
+502 | |         out
+503 | |     }
+    | |_____- at the end of the function body
+
+note: recommendation not met
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_impl.rs:349:5
+    |
+12  |   recommends ValidBitString(s)
+    |              ----------------- recommendation not met
+...
+349 |     Str2Int(res@) == Exp_int(Str2Int(sx@), Str2Int(sy@)) % Str2Int(sz@)
+    |     ^^^^^^^^^^^^^
+
+error: precondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_impl.rs:390:14
+    |
+99  |   requires ValidBitString(dividend@), ValidBitString(divisor@), Str2Int(divisor@) > 0
+    |                                       ------------------------ failed precondition
+...
+390 |     result = DivMod(result.as_slice(), modu.as_slice()).1;
+    |              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: precondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_impl.rs:431:21
+    |
+25  |   requires ValidBitString(s1@), ValidBitString(s2@)
+    |            ------------------- failed precondition
+...
+431 |                     prod = Add(prod.as_slice(), shifted.as_slice());
+    |                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: precondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_impl.rs:436:21
+    |
+99  |   requires ValidBitString(dividend@), ValidBitString(divisor@), Str2Int(divisor@) > 0
+    |            ------------------------- failed precondition
+...
+436 |             let r = DivMod(prod.as_slice(), modu.as_slice()).1;
+    |                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: precondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_impl.rs:469:17
+    |
+25  |   requires ValidBitString(s1@), ValidBitString(s2@)
+    |            ------------------- failed precondition
+...
+469 |                 b2prod = Add(b2prod.as_slice(), shifted2.as_slice());
+    |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: precondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_DivMod_impl.rs:473:16
+    |
+99  |   requires ValidBitString(dividend@), ValidBitString(divisor@), Str2Int(divisor@) > 0
+    |            ------------------------- failed precondition
+...
+473 |         base = DivMod(b2prod.as_slice(), modu.as_slice()).1;
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: aborting due to 14 previous errors
+

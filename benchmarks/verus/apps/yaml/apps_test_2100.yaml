@@ -7,8 +7,6 @@ vc-preamble: |-
   use vstd::prelude::*;
 
   verus! {
-
-vc-helpers: |-
   spec fn valid_input(input: Seq<char>) -> bool {
       let lines = split(input, '\n');
       lines.len() >= 1 &&
@@ -23,19 +21,19 @@ vc-helpers: |-
               }
       }
   }
-  
+
   spec fn valid_output(output: Seq<char>) -> bool {
       is_valid_number(output)
   }
-  
+
   spec fn is_valid_number(s: Seq<char>) -> bool {
       s.len() > 0 && forall|i: int| 0 <= i < s.len() ==> '0' <= s[i] && s[i] <= '9'
   }
-  
+
   spec fn is_valid_door_state(s: Seq<char>) -> bool {
       s == seq!['0'] || s == seq!['1']
   }
-  
+
   spec fn calculate_min_operations(input: Seq<char>) -> Seq<char> {
       let lines = split(input, '\n');
       let n = string_to_int(lines[0]);
@@ -70,6 +68,8 @@ vc-helpers: |-
       seq!['0']
   }
 
+vc-helpers: |
+
 vc-spec: |-
   fn solve(input: Seq<char>) -> (result: Seq<char>)
       requires 
@@ -86,7 +86,7 @@ vc-code: |-
       unreached()
   }
 
-vc-postamble: |-
+vc-postamble: |2-
 
   }
 

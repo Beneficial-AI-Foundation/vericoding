@@ -1,0 +1,76 @@
+=== Verification Error - Iteration 3 ===
+File: benchmarks/verus/bignum/files/bignum_ModExp_Add_Mul.rs
+Time: 2025-09-15 10:47:46
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: error[E0425]: cannot find function, tuple struct or tuple variant `ShiftLeft` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_ModExp_Add_Mul_impl.rs:96:26
+   |
+96 |             shifted_s1 = ShiftLeft(&shifted_s1);
+   |                          ^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `u2b_function` in this scope
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_ModExp_Add_Mul_impl.rs:120:20
+    |
+120 |             return u2b_function(1);
+    |                    ^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `u2b_function` in this scope
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_ModExp_Add_Mul_impl.rs:125:30
+    |
+125 |         let mut result_vec = u2b_function(1);
+    |                              ^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function, tuple struct or tuple variant `Modulo_function` in this scope
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_ModExp_Add_Mul_impl.rs:144:30
+    |
+144 |                 result_vec = Modulo_function(&result_vec, &sz);
+    |                              ^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function, tuple struct or tuple variant `Modulo_function` in this scope
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_ModExp_Add_Mul_impl.rs:147:24
+    |
+147 |             base_vec = Modulo_function(&base_vec, &sz);
+    |                        ^^^^^^^^^^^^^^^ not found in this scope
+
+error: aborting due to 5 previous errors
+
+For more information about this error, try `rustc --explain E0425`.
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+error[E0425]: cannot find function, tuple struct or tuple variant `ShiftLeft` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_ModExp_Add_Mul_impl.rs:96:26
+   |
+96 |             shifted_s1 = ShiftLeft(&shifted_s1);
+   |                          ^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `u2b_function` in this scope
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_ModExp_Add_Mul_impl.rs:120:20
+    |
+120 |             return u2b_function(1);
+    |                    ^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `u2b_function` in this scope
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_ModExp_Add_Mul_impl.rs:125:30
+    |
+125 |         let mut result_vec = u2b_function(1);
+    |                              ^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function, tuple struct or tuple variant `Modulo_function` in this scope
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_ModExp_Add_Mul_impl.rs:144:30
+    |
+144 |                 result_vec = Modulo_function(&result_vec, &sz);
+    |                              ^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function, tuple struct or tuple variant `Modulo_function` in this scope
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_ModExp_Add_Mul_impl.rs:147:24
+    |
+147 |             base_vec = Modulo_function(&base_vec, &sz);
+    |                        ^^^^^^^^^^^^^^^ not found in this scope
+
+error: aborting due to 5 previous errors
+
+For more information about this error, try `rustc --explain E0425`.

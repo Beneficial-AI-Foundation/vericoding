@@ -1,0 +1,43 @@
+=== VERUS SPECIFICATION-TO-CODE PROCESSING SUMMARY (PARALLEL VERSION) ===
+
+Language: Verus
+LLM: claude-sonnet
+Test directory: benchmarks/verus/bignum/files
+Output directory: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_04-09_13h36
+Max iterations: 10
+Parallel workers: 4
+Test date: 2025-09-04T09:02:09.000000
+
+Total original files: 62
+
+=== OVERALL STATISTICS ===
+Total successful: 4
+Total failed: 58
+Success rate: 6.5%
+
+Successful files:
+✓ bignum_Add_NormalizeBitString.rs
+✓ bignum_ModExp_Add_DivMod_ModExpPow2_Zeroes.rs
+✓ bignum_ModExp_Add_ModExpPow2_Mul.rs
+✓ bignums_Sub_NormalizeBitstring.rs
+
+Failed files:
+All remaining 58 files failed Verus verification
+
+=== NOTES ===
+- This run originally processed only 57/62 files from W&B run oxboxa45
+- Missing 5 files were copied from vericoder_claude-opus_04-09_13h36 as failed implementations
+- Actual success rate based on Verus verification results: 4/62 = 6.5%
+- 521 verification failures recorded in output.log
+
+=== PARALLEL PROCESSING FEATURES ===
+Parallel workers: 4
+API rate limiting: 1s between calls
+Debug mode: Enabled
+- Saves original specification as *_iter_0_original.rs
+- Saves initial generated code as *_iter_1_generated.rs
+- Saves current working version for each iteration as *_iter_N_current.rs
+- Saves final implementation as *_impl.rs
+- Full debugging: all intermediate files are saved
+
+Generated on: 2025-09-04T09:02:09.000000

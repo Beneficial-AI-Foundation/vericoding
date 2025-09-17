@@ -7,14 +7,16 @@ spec fn valid_input(n: int, r: int) -> bool {
     n >= 1 && r >= 1
 }
 
-spec fn expected_result(n: int, r: int) -> int
-    requires valid_input(n, r)
-{
-    let k = if r < n - 1 { r } else { n - 1 };
-    k * (k + 1) / 2 + (if r >= n { 1int } else { 0int })
+spec fn expected_result(n: int, r: int) -> int {
+    if valid_input(n, r) {
+        let k = if r < n - 1 { r } else { n - 1 };
+        k * (k + 1) / 2 + if r >= n { 1int } else { 0int }
+    } else {
+        0int
+    }
 }
 
-fn solve_calendar_shapes(n: int, r: int) -> (result: int)
+fn solve_shapes(n: int, r: int) -> (result: int)
     requires valid_input(n, r)
     ensures result == expected_result(n, r)
 // </vc-preamble>

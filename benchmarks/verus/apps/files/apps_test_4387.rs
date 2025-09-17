@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_rating(r: int) -> bool {
     0 <= r <= 4208
 }
@@ -18,6 +15,9 @@ spec fn contest_for_rating(r: int) -> Seq<char> {
         seq!['A', 'G', 'C', '\n']
     }
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

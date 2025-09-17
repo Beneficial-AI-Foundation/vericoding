@@ -1,0 +1,440 @@
+=== Verification Error - Iteration 5 ===
+File: benchmarks/verus/bignum/files/bignum_DivMod_Compare_Sub.rs
+Time: 2025-09-15 10:50:45
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Verification failed: verification results:: 2 verified, 9 errors
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_DivMod_Compare_Sub_impl.rs:39:5
+   |
+39 |     while i < a.len()
+   |     ^^^^^^^^^^^^^^^^^
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_DivMod_Compare_Sub_impl.rs:31:6
+   |
+31 | exec fn compare_binary(a: &[char], b: &[char]) -> (res: bool)
+   |      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_DivMod_Compare_Sub_impl.rs:33:13
+   |
+33 |     ensures res == (Str2Int(a@) >= Str2Int(b@))
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+43 |         if a[i] > b[i] { return true; }
+   |                          ----------- at this exit
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_DivMod_Compare_Sub_impl.rs:33:13
+   |
+33 |     ensures res == (Str2Int(a@) >= Str2Int(b@))
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+36 |     if a.len() < b.len() { return false; }
+   |                            ------------ at this exit
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_DivMod_Compare_Sub_impl.rs:33:13
+   |
+33 |     ensures res == (Str2Int(a@) >= Str2Int(b@))
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+47 |     true
+   |     ---- at the end of the function body
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_DivMod_Compare_Sub_impl.rs:33:13
+   |
+33 |     ensures res == (Str2Int(a@) >= Str2Int(b@))
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+34 | {
+35 |     if a.len() > b.len() { return true; }
+   |                            ----------- at this exit
+
+note: recommendation not met
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_DivMod_Compare_Sub_impl.rs:33:21
+   |
+6  |   recommends ValidBitString(s)
+   |              ----------------- recommendation not met
+...
+33 |     ensures res == (Str2Int(a@) >= Str2Int(b@))
+   |                     ^^^^^^^^^^^
+
+note: recommendation not met
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_DivMod_Compare_Sub_impl.rs:33:36
+   |
+6  |   recommends ValidBitString(s)
+   |              ----------------- recommendation not met
+...
+33 |     ensures res == (Str2Int(a@) >= Str2Int(b@))
+   |                                    ^^^^^^^^^^^
+
+error: precondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_DivMod_Compare_Sub_impl.rs:43:19
+   |
+43 |         if a[i] > b[i] { return true; }
+   |                   ^^^^
+   |
+  ::: /Users/sergiu.bursuc/verus/vstd/slice.rs:62:14
+   |
+62 |         0 <= i < slice.view().len(),
+   |              - failed precondition
+
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_DivMod_Compare_Sub_impl.rs:80:5
+   |
+80 |     while j > 0
+   |     ^^^^^^^^^^^
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_DivMod_Compare_Sub_impl.rs:52:35
+   |
+52 |     ensures ValidBitString(res@), Str2Int(res@) == Str2Int(a@) - Str2Int(b@)
+   |                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+89 |     reversed
+   |     -------- at the end of the function body
+
+error: possible arithmetic underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_DivMod_Compare_Sub_impl.rs:68:20
+   |
+68 |         let diff = digit_a - digit_b - borrow;
+   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: invariant not satisfied at end of loop body
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_DivMod_Compare_Sub_impl.rs:82:13
+   |
+82 |             ValidBitString(reversed@)
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: precondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_DivMod_Compare_Sub_impl.rs:86:23
+   |
+86 |         reversed.push(result[j]);
+   |                       ^^^^^^^^^
+   |
+  ::: /Users/sergiu.bursuc/verus/vstd/std_specs/vec.rs:48:9
+   |
+48 |         i < vec.view().len(),
+   |         -------------------- failed precondition
+
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_DivMod_Compare_Sub_impl.rs:130:13
+    |
+130 |             while j > 0 && carry > 0
+    |             ^^^^^^^^^^^^^^^^^^^^^^^^
+
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_DivMod_Compare_Sub_impl.rs:117:5
+    |
+117 |     while remainder.len() > 0 && compare_binary(&remainder, divisor)
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_DivMod_Compare_Sub_impl.rs:94:6
+   |
+94 | exec fn DivMod_Compare_Sub(dividend: &[char], divisor: &[char]) -> (res: (Vec<char>, Vec<char>))
+   |      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_DivMod_Compare_Sub_impl.rs:97:5
+    |
+97  |     Str2Int(res.0@) == Str2Int(dividend@) / Str2Int(divisor@),
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+157 |     (quotient, remainder)
+    |     --------------------- at the end of the function body
+
+error: invariant not satisfied at end of loop body
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_DivMod_Compare_Sub_impl.rs:109:13
+    |
+109 |             ValidBitString(remainder@),
+    |             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: precondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_DivMod_Compare_Sub_impl.rs:117:34
+    |
+32  |     requires ValidBitString(a@), ValidBitString(b@)
+    |                                  ------------------ failed precondition
+...
+117 |     while remainder.len() > 0 && compare_binary(&remainder, divisor)
+    |                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+note: recommendation not met
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_DivMod_Compare_Sub_impl.rs:121:13
+    |
+6   |   recommends ValidBitString(s)
+    |              ----------------- recommendation not met
+...
+121 |             Str2Int(dividend@) == Str2Int(quotient@) * Str2Int(divisor@) + Str2Int(remainder@)
+    |             ^^^^^^^^^^^^^^^^^^
+
+error: invariant not satisfied before loop
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_DivMod_Compare_Sub_impl.rs:121:13
+    |
+121 |             Str2Int(dividend@) == Str2Int(quotient@) * Str2Int(divisor@) + Str2Int(remainder@)
+    |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+note: recommendation not met
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_DivMod_Compare_Sub_impl.rs:121:56
+    |
+6   |   recommends ValidBitString(s)
+    |              ----------------- recommendation not met
+...
+121 |             Str2Int(dividend@) == Str2Int(quotient@) * Str2Int(divisor@) + Str2Int(remainder@)
+    |                                                        ^^^^^^^^^^^^^^^^^
+
+error: precondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_DivMod_Compare_Sub_impl.rs:124:9
+    |
+51  |     requires ValidBitString(a@), ValidBitString(b@), Str2Int(a@) >= Str2Int(b@)
+    |                                  ------------------ failed precondition
+...
+124 |         remainder = subtract_binary(&remainder, divisor);
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: precondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_DivMod_Compare_Sub_impl.rs:136:20
+    |
+136 |                 if quotient[j] == '0' {
+    |                    ^^^^^^^^^^^
+    |
+   ::: /Users/sergiu.bursuc/verus/vstd/std_specs/vec.rs:48:9
+    |
+48  |         i < vec.view().len(),
+    |         -------------------- failed precondition
+
+error: precondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_DivMod_Compare_Sub_impl.rs:137:21
+    |
+137 |                     quotient.set(j, '1');
+    |                     ^^^^^^^^^^^^^^^^^^^^
+    |
+   ::: /Users/sergiu.bursuc/verus/vstd/pervasive.rs:391:13
+    |
+391 |             i < old(self).len(),
+    |             ------------------- failed precondition
+
+error: aborting due to 16 previous errors
+
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+verification results:: 2 verified, 9 errors
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_DivMod_Compare_Sub_impl.rs:39:5
+   |
+39 |     while i < a.len()
+   |     ^^^^^^^^^^^^^^^^^
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_DivMod_Compare_Sub_impl.rs:31:6
+   |
+31 | exec fn compare_binary(a: &[char], b: &[char]) -> (res: bool)
+   |      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_DivMod_Compare_Sub_impl.rs:33:13
+   |
+33 |     ensures res == (Str2Int(a@) >= Str2Int(b@))
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+43 |         if a[i] > b[i] { return true; }
+   |                          ----------- at this exit
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_DivMod_Compare_Sub_impl.rs:33:13
+   |
+33 |     ensures res == (Str2Int(a@) >= Str2Int(b@))
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+36 |     if a.len() < b.len() { return false; }
+   |                            ------------ at this exit
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_DivMod_Compare_Sub_impl.rs:33:13
+   |
+33 |     ensures res == (Str2Int(a@) >= Str2Int(b@))
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+47 |     true
+   |     ---- at the end of the function body
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_DivMod_Compare_Sub_impl.rs:33:13
+   |
+33 |     ensures res == (Str2Int(a@) >= Str2Int(b@))
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+34 | {
+35 |     if a.len() > b.len() { return true; }
+   |                            ----------- at this exit
+
+note: recommendation not met
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_DivMod_Compare_Sub_impl.rs:33:21
+   |
+6  |   recommends ValidBitString(s)
+   |              ----------------- recommendation not met
+...
+33 |     ensures res == (Str2Int(a@) >= Str2Int(b@))
+   |                     ^^^^^^^^^^^
+
+note: recommendation not met
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_DivMod_Compare_Sub_impl.rs:33:36
+   |
+6  |   recommends ValidBitString(s)
+   |              ----------------- recommendation not met
+...
+33 |     ensures res == (Str2Int(a@) >= Str2Int(b@))
+   |                                    ^^^^^^^^^^^
+
+error: precondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_DivMod_Compare_Sub_impl.rs:43:19
+   |
+43 |         if a[i] > b[i] { return true; }
+   |                   ^^^^
+   |
+  ::: /Users/sergiu.bursuc/verus/vstd/slice.rs:62:14
+   |
+62 |         0 <= i < slice.view().len(),
+   |              - failed precondition
+
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_DivMod_Compare_Sub_impl.rs:80:5
+   |
+80 |     while j > 0
+   |     ^^^^^^^^^^^
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_DivMod_Compare_Sub_impl.rs:52:35
+   |
+52 |     ensures ValidBitString(res@), Str2Int(res@) == Str2Int(a@) - Str2Int(b@)
+   |                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+89 |     reversed
+   |     -------- at the end of the function body
+
+error: possible arithmetic underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_DivMod_Compare_Sub_impl.rs:68:20
+   |
+68 |         let diff = digit_a - digit_b - borrow;
+   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: invariant not satisfied at end of loop body
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_DivMod_Compare_Sub_impl.rs:82:13
+   |
+82 |             ValidBitString(reversed@)
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: precondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_DivMod_Compare_Sub_impl.rs:86:23
+   |
+86 |         reversed.push(result[j]);
+   |                       ^^^^^^^^^
+   |
+  ::: /Users/sergiu.bursuc/verus/vstd/std_specs/vec.rs:48:9
+   |
+48 |         i < vec.view().len(),
+   |         -------------------- failed precondition
+
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_DivMod_Compare_Sub_impl.rs:130:13
+    |
+130 |             while j > 0 && carry > 0
+    |             ^^^^^^^^^^^^^^^^^^^^^^^^
+
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_DivMod_Compare_Sub_impl.rs:117:5
+    |
+117 |     while remainder.len() > 0 && compare_binary(&remainder, divisor)
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_DivMod_Compare_Sub_impl.rs:94:6
+   |
+94 | exec fn DivMod_Compare_Sub(dividend: &[char], divisor: &[char]) -> (res: (Vec<char>, Vec<char>))
+   |      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_DivMod_Compare_Sub_impl.rs:97:5
+    |
+97  |     Str2Int(res.0@) == Str2Int(dividend@) / Str2Int(divisor@),
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+157 |     (quotient, remainder)
+    |     --------------------- at the end of the function body
+
+error: invariant not satisfied at end of loop body
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_DivMod_Compare_Sub_impl.rs:109:13
+    |
+109 |             ValidBitString(remainder@),
+    |             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: precondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_DivMod_Compare_Sub_impl.rs:117:34
+    |
+32  |     requires ValidBitString(a@), ValidBitString(b@)
+    |                                  ------------------ failed precondition
+...
+117 |     while remainder.len() > 0 && compare_binary(&remainder, divisor)
+    |                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+note: recommendation not met
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_DivMod_Compare_Sub_impl.rs:121:13
+    |
+6   |   recommends ValidBitString(s)
+    |              ----------------- recommendation not met
+...
+121 |             Str2Int(dividend@) == Str2Int(quotient@) * Str2Int(divisor@) + Str2Int(remainder@)
+    |             ^^^^^^^^^^^^^^^^^^
+
+error: invariant not satisfied before loop
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_DivMod_Compare_Sub_impl.rs:121:13
+    |
+121 |             Str2Int(dividend@) == Str2Int(quotient@) * Str2Int(divisor@) + Str2Int(remainder@)
+    |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+note: recommendation not met
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_DivMod_Compare_Sub_impl.rs:121:56
+    |
+6   |   recommends ValidBitString(s)
+    |              ----------------- recommendation not met
+...
+121 |             Str2Int(dividend@) == Str2Int(quotient@) * Str2Int(divisor@) + Str2Int(remainder@)
+    |                                                        ^^^^^^^^^^^^^^^^^
+
+error: precondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_DivMod_Compare_Sub_impl.rs:124:9
+    |
+51  |     requires ValidBitString(a@), ValidBitString(b@), Str2Int(a@) >= Str2Int(b@)
+    |                                  ------------------ failed precondition
+...
+124 |         remainder = subtract_binary(&remainder, divisor);
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: precondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_DivMod_Compare_Sub_impl.rs:136:20
+    |
+136 |                 if quotient[j] == '0' {
+    |                    ^^^^^^^^^^^
+    |
+   ::: /Users/sergiu.bursuc/verus/vstd/std_specs/vec.rs:48:9
+    |
+48  |         i < vec.view().len(),
+    |         -------------------- failed precondition
+
+error: precondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_DivMod_Compare_Sub_impl.rs:137:21
+    |
+137 |                     quotient.set(j, '1');
+    |                     ^^^^^^^^^^^^^^^^^^^^
+    |
+   ::: /Users/sergiu.bursuc/verus/vstd/pervasive.rs:391:13
+    |
+391 |             i < old(self).len(),
+    |             ------------------- failed precondition
+
+error: aborting due to 16 previous errors
+

@@ -1,0 +1,126 @@
+=== Verification Error - Iteration 1 ===
+File: benchmarks/verus/bignum/files/bignums_Sub_NormalizeBitstring.rs
+Time: 2025-09-15 10:46:47
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: error[E0425]: cannot find function `pow2` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_10h41/bignums_Sub_NormalizeBitstring_impl.rs:26:61
+   |
+26 |     ensures Str2Int(s1 + s2) == Str2Int(s1) + Str2Int(s2) * pow2(s1.len() as nat)
+   |                                                             ^^^^ not found in this scope
+   |
+help: consider importing this function
+   |
+1  + use vstd::arithmetic::power2::pow2;
+   |
+
+error[E0425]: cannot find function `pow2` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_10h41/bignums_Sub_NormalizeBitstring_impl.rs:32:16
+   |
+32 |         assert(pow2(0) == 1);
+   |                ^^^^ not found in this scope
+   |
+help: consider importing this function
+   |
+1  + use vstd::arithmetic::power2::pow2;
+   |
+
+error[E0425]: cannot find function `pow2` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_10h41/bignums_Sub_NormalizeBitstring_impl.rs:40:73
+   |
+40 |         assert(Str2Int(s1 + s2) == 2 * (Str2Int(prefix) + Str2Int(s2) * pow2(prefix.len() as nat)) + bit_value);
+   |                                                                         ^^^^ not found in this scope
+   |
+help: consider importing this function
+   |
+1  + use vstd::arithmetic::power2::pow2;
+   |
+
+error[E0425]: cannot find function `pow2` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_10h41/bignums_Sub_NormalizeBitstring_impl.rs:41:86
+   |
+41 |         assert(Str2Int(s1 + s2) == (2 * Str2Int(prefix) + bit_value) + Str2Int(s2) * pow2(prefix.len() as nat + 1));
+   |                                                                                      ^^^^ not found in this scope
+   |
+help: consider importing this function
+   |
+1  + use vstd::arithmetic::power2::pow2;
+   |
+
+error[E0425]: cannot find function `pow2` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_10h41/bignums_Sub_NormalizeBitstring_impl.rs:83:79
+   |
+83 |         assert(Str2Int(s_seq) == Str2Int(normalized_seq) + normalized_value * pow2(normalized_seq.len() as nat));
+   |                                                                               ^^^^ not found in this scope
+   |
+help: consider importing this function
+   |
+1  + use vstd::arithmetic::power2::pow2;
+   |
+
+error: aborting due to 5 previous errors
+
+For more information about this error, try `rustc --explain E0425`.
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+error[E0425]: cannot find function `pow2` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_10h41/bignums_Sub_NormalizeBitstring_impl.rs:26:61
+   |
+26 |     ensures Str2Int(s1 + s2) == Str2Int(s1) + Str2Int(s2) * pow2(s1.len() as nat)
+   |                                                             ^^^^ not found in this scope
+   |
+help: consider importing this function
+   |
+1  + use vstd::arithmetic::power2::pow2;
+   |
+
+error[E0425]: cannot find function `pow2` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_10h41/bignums_Sub_NormalizeBitstring_impl.rs:32:16
+   |
+32 |         assert(pow2(0) == 1);
+   |                ^^^^ not found in this scope
+   |
+help: consider importing this function
+   |
+1  + use vstd::arithmetic::power2::pow2;
+   |
+
+error[E0425]: cannot find function `pow2` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_10h41/bignums_Sub_NormalizeBitstring_impl.rs:40:73
+   |
+40 |         assert(Str2Int(s1 + s2) == 2 * (Str2Int(prefix) + Str2Int(s2) * pow2(prefix.len() as nat)) + bit_value);
+   |                                                                         ^^^^ not found in this scope
+   |
+help: consider importing this function
+   |
+1  + use vstd::arithmetic::power2::pow2;
+   |
+
+error[E0425]: cannot find function `pow2` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_10h41/bignums_Sub_NormalizeBitstring_impl.rs:41:86
+   |
+41 |         assert(Str2Int(s1 + s2) == (2 * Str2Int(prefix) + bit_value) + Str2Int(s2) * pow2(prefix.len() as nat + 1));
+   |                                                                                      ^^^^ not found in this scope
+   |
+help: consider importing this function
+   |
+1  + use vstd::arithmetic::power2::pow2;
+   |
+
+error[E0425]: cannot find function `pow2` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_10h41/bignums_Sub_NormalizeBitstring_impl.rs:83:79
+   |
+83 |         assert(Str2Int(s_seq) == Str2Int(normalized_seq) + normalized_value * pow2(normalized_seq.len() as nat));
+   |                                                                               ^^^^ not found in this scope
+   |
+help: consider importing this function
+   |
+1  + use vstd::arithmetic::power2::pow2;
+   |
+
+error: aborting due to 5 previous errors
+
+For more information about this error, try `rustc --explain E0425`.

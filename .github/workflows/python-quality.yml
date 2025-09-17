@@ -3,16 +3,8 @@ name: Python Code Quality
 on:
   push:
     branches: [ main, develop ]
-    paths:
-      - "vericoder.py"
-      - "vericoding/**/*.py"
-      - ".github/workflows/python-quality.yml"
   pull_request:
     branches: [ main, develop ]
-    paths:
-      - "vericoder.py"
-      - "vericoding/**/*.py"
-      - ".github/workflows/python-quality.yml"
   workflow_dispatch:
 
 jobs:
@@ -35,11 +27,9 @@ jobs:
     - name: Run Ruff linter
       uses: astral-sh/ruff-action@v3
       with:
-        src: "./vericoding ./vericoder.py"
         args: "check --output-format=github"
 
     - name: Check code formatting with Ruff
       uses: astral-sh/ruff-action@v3
       with:
-        src: "./vericoding ./vericoder.py"
         args: "format --check"

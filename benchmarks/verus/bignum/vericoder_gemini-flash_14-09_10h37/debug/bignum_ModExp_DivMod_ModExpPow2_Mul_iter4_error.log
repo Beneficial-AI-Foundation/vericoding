@@ -1,0 +1,40 @@
+=== Verification Error - Iteration 4 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExp_DivMod_ModExpPow2_Mul.rs
+Time: 2025-09-14 10:39:49
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: error[E0425]: cannot find function, tuple struct or tuple variant `ModExp_DivExp_Mul_helper` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExp_DivMod_ModExpPow2_Mul_impl.rs:30:19
+   |
+30 |         let res = ModExp_DivExp_Mul_helper(x, half_y, z);
+   |                   ^^^^^^^^^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function, tuple struct or tuple variant `ModExp_DivExp_Mul_helper` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExp_DivMod_ModExpPow2_Mul_impl.rs:34:19
+   |
+34 |         let res = ModExp_DivExp_Mul_helper(x, (y - 1) / 2, z);
+   |                   ^^^^^^^^^^^^^^^^^^^^^^^^ not found in this scope
+
+error: aborting due to 2 previous errors
+
+For more information about this error, try `rustc --explain E0425`.
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+error[E0425]: cannot find function, tuple struct or tuple variant `ModExp_DivExp_Mul_helper` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExp_DivMod_ModExpPow2_Mul_impl.rs:30:19
+   |
+30 |         let res = ModExp_DivExp_Mul_helper(x, half_y, z);
+   |                   ^^^^^^^^^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function, tuple struct or tuple variant `ModExp_DivExp_Mul_helper` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExp_DivMod_ModExpPow2_Mul_impl.rs:34:19
+   |
+34 |         let res = ModExp_DivExp_Mul_helper(x, (y - 1) / 2, z);
+   |                   ^^^^^^^^^^^^^^^^^^^^^^^^ not found in this scope
+
+error: aborting due to 2 previous errors
+
+For more information about this error, try `rustc --explain E0425`.

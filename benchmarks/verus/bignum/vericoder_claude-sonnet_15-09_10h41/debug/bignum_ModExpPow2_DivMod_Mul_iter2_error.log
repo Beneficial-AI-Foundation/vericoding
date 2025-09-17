@@ -1,0 +1,132 @@
+=== Verification Error - Iteration 2 ===
+File: benchmarks/verus/bignum/files/bignum_ModExpPow2_DivMod_Mul.rs
+Time: 2025-09-15 10:48:03
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: error: invalid suffix `int` for number literal
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_ModExpPow2_DivMod_Mul_impl.rs:170:13
+    |
+170 |     if n == 0int {
+    |             ^^^^ invalid suffix `int`
+    |
+    = help: the suffix must be one of the numeric types (`u32`, `isize`, `f32`, etc.)
+
+error: invalid suffix `nat` for number literal
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_ModExpPow2_DivMod_Mul_impl.rs:171:25
+    |
+171 |         if sy@.len() == 1nat && sy@.index(0int) == '1' {
+    |                         ^^^^ invalid suffix `nat`
+    |
+    = help: the suffix must be one of the numeric types (`u32`, `isize`, `f32`, etc.)
+
+error: invalid suffix `int` for number literal
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_ModExpPow2_DivMod_Mul_impl.rs:171:43
+    |
+171 |         if sy@.len() == 1nat && sy@.index(0int) == '1' {
+    |                                           ^^^^ invalid suffix `int`
+    |
+    = help: the suffix must be one of the numeric types (`u32`, `isize`, `f32`, etc.)
+
+error: invalid suffix `nat` for number literal
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_ModExpPow2_DivMod_Mul_impl.rs:182:24
+    |
+182 |     if Str2Int(sy@) == 0nat {
+    |                        ^^^^ invalid suffix `nat`
+    |
+    = help: the suffix must be one of the numeric types (`u32`, `isize`, `f32`, etc.)
+
+error: invalid suffix `int` for number literal
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_ModExpPow2_DivMod_Mul_impl.rs:199:51
+    |
+199 |     let temp_result = ModExpPow2(sx, &half_y, n - 1int, sz);
+    |                                                   ^^^^ invalid suffix `int`
+    |
+    = help: the suffix must be one of the numeric types (`u32`, `isize`, `f32`, etc.)
+
+error[E0277]: can't compare `{integer}` with `verus_builtin::int`
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_ModExpPow2_DivMod_Mul_impl.rs:190:13
+    |
+190 |     while i < n {
+    |             ^ no implementation for `{integer} < verus_builtin::int` and `{integer} > verus_builtin::int`
+    |
+    = help: the trait `std::cmp::PartialOrd<verus_builtin::int>` is not implemented for `{integer}`
+    = help: the following other types implement trait `std::cmp::PartialOrd<Rhs>`:
+              f128
+              f16
+              f32
+              f64
+              i128
+              i16
+              i32
+              i64
+            and 8 others
+
+error: aborting due to 6 previous errors
+
+For more information about this error, try `rustc --explain E0277`.
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+error: invalid suffix `int` for number literal
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_ModExpPow2_DivMod_Mul_impl.rs:170:13
+    |
+170 |     if n == 0int {
+    |             ^^^^ invalid suffix `int`
+    |
+    = help: the suffix must be one of the numeric types (`u32`, `isize`, `f32`, etc.)
+
+error: invalid suffix `nat` for number literal
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_ModExpPow2_DivMod_Mul_impl.rs:171:25
+    |
+171 |         if sy@.len() == 1nat && sy@.index(0int) == '1' {
+    |                         ^^^^ invalid suffix `nat`
+    |
+    = help: the suffix must be one of the numeric types (`u32`, `isize`, `f32`, etc.)
+
+error: invalid suffix `int` for number literal
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_ModExpPow2_DivMod_Mul_impl.rs:171:43
+    |
+171 |         if sy@.len() == 1nat && sy@.index(0int) == '1' {
+    |                                           ^^^^ invalid suffix `int`
+    |
+    = help: the suffix must be one of the numeric types (`u32`, `isize`, `f32`, etc.)
+
+error: invalid suffix `nat` for number literal
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_ModExpPow2_DivMod_Mul_impl.rs:182:24
+    |
+182 |     if Str2Int(sy@) == 0nat {
+    |                        ^^^^ invalid suffix `nat`
+    |
+    = help: the suffix must be one of the numeric types (`u32`, `isize`, `f32`, etc.)
+
+error: invalid suffix `int` for number literal
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_ModExpPow2_DivMod_Mul_impl.rs:199:51
+    |
+199 |     let temp_result = ModExpPow2(sx, &half_y, n - 1int, sz);
+    |                                                   ^^^^ invalid suffix `int`
+    |
+    = help: the suffix must be one of the numeric types (`u32`, `isize`, `f32`, etc.)
+
+error[E0277]: can't compare `{integer}` with `verus_builtin::int`
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_ModExpPow2_DivMod_Mul_impl.rs:190:13
+    |
+190 |     while i < n {
+    |             ^ no implementation for `{integer} < verus_builtin::int` and `{integer} > verus_builtin::int`
+    |
+    = help: the trait `std::cmp::PartialOrd<verus_builtin::int>` is not implemented for `{integer}`
+    = help: the following other types implement trait `std::cmp::PartialOrd<Rhs>`:
+              f128
+              f16
+              f32
+              f64
+              i128
+              i16
+              i32
+              i64
+            and 8 others
+
+error: aborting due to 6 previous errors
+
+For more information about this error, try `rustc --explain E0277`.

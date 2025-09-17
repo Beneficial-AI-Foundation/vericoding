@@ -1,0 +1,5 @@
+=== Raw LLM Fix Response - Iteration 2 ===
+Length: 772 characters
+--------------------------------------------------------------------------------
+["/* helper modified by LLM (iteration 3): changed ModExp to spec fn to avoid using nat in exec context */\nspec fn ModExp(x: nat, y: nat, m: nat) -> nat\n    ensures\n        ModExp(x, y, m) == Exp_int(x, y) % m,\n        m > 1\n    decreases y\n{\n    if y == 0 {\n        1\n    } else if y % 2 == 0 {\n        let half = ModExp(x, y / 2, m);\n        (half * half) % m\n    } else {\n        let rest = ModExp(x, (y - 1) as nat, m);\n        (x * rest) % m\n    }\n}", "/* code modified by LLM (iteration 3): use ghost variables for spec computations and convert nat to Vec */\n{\n    ghost let x = Str2Int(sx@);\n    ghost let y = Str2Int(sy@);\n    ghost let m = Str2Int(sz@);\n    ghost let result_nat = ModExp(x, y, m);\n    Vec::from_seq(Int2Str(result_nat))\n}"]
+--------------------------------------------------------------------------------

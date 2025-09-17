@@ -6,17 +6,17 @@ vc-preamble: |-
   use vstd::prelude::*;
 
   verus! {
-
-vc-helpers: |-
   spec fn valid_input(x: int) -> bool {
       x >= 1
   }
-  
+
   spec fn is_minimal_steps(x: int, steps: int) -> bool {
       x >= 1 ==> (steps >= 1 &&
       steps * 5 >= x &&
       (steps - 1) * 5 < x)
   }
+
+vc-helpers: |
 
 vc-spec: |-
   fn min_steps(x: int) -> (result: int)
@@ -29,7 +29,7 @@ vc-code: |-
       unreached()
   }
 
-vc-postamble: |-
+vc-postamble: |2-
 
   }
 

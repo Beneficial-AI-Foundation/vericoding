@@ -1,0 +1,28 @@
+=== Verification Error - Iteration 5 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExpPow2_int.rs
+Time: 2025-09-15 20:41:00
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: error[E0425]: cannot find function `lemma_mul_mod` in module `vstd::arithmetic::mul`
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini_15-09_18h46/bignum_ModExpPow2_int_impl.rs:95:36
+   |
+95 |             vstd::arithmetic::mul::lemma_mul_mod(A, A, z_nat);
+   |                                    ^^^^^^^^^^^^^ not found in `vstd::arithmetic::mul`
+
+error: aborting due to 1 previous error
+
+For more information about this error, try `rustc --explain E0425`.
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+error[E0425]: cannot find function `lemma_mul_mod` in module `vstd::arithmetic::mul`
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini_15-09_18h46/bignum_ModExpPow2_int_impl.rs:95:36
+   |
+95 |             vstd::arithmetic::mul::lemma_mul_mod(A, A, z_nat);
+   |                                    ^^^^^^^^^^^^^ not found in `vstd::arithmetic::mul`
+
+error: aborting due to 1 previous error
+
+For more information about this error, try `rustc --explain E0425`.

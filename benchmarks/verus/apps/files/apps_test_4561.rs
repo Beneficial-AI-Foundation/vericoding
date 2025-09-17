@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_outcome(outcome: &str) -> bool {
     outcome == "delicious" || outcome == "safe" || outcome == "dangerous"
 }
@@ -23,6 +20,9 @@ spec fn expected_outcome(x: int, a: int, b: int) -> &'static str {
         "dangerous"
     }
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

@@ -1,0 +1,66 @@
+=== Raw LLM Generate Response ===
+Length: 1748 characters
+--------------------------------------------------------------------------------
+[
+"spec fn bit_char(r: nat) -> char
+    recommends
+        r == 0 || r == 1
+{
+    if r == 1 { '1' } else { '0' }
+}
+
+spec fn NatToBits(n: nat) -> Seq<char>
+    decreases n
+{
+    if n == 0 {
+        Seq::<char>::empty()
+    } else {
+        let q = n / 2;
+        let r = n % 2;
+        NatToBits(q).push(if r == 1 { '1' } else { '0' })
+    }
+}
+
+proof fn lemma_mod2_props(n: nat)
+    ensures
+        n == 2 * (n / 2) + (n % 2),
+        n % 2 == 0 || n % 2 == 1,
+{
+}
+
+proof fn lemma_NatToBits_props(n: nat)
+    ensures
+        ValidBitString(NatToBits(n)),
+        Str2Int(NatToBits(n)) == n,
+    decreases n
+{
+    if n == 0 {
+        assert(ValidBitString(Seq::<char>::empty()));
+        assert(Str2Int(Seq::<char>::empty()) == 0);
+    } else {
+        let q = n / 2;
+        let r = n % 2;
+        lemma_mod2_props(n);
+        lemma_NatToBits_props(q);
+        let s = NatToBits(q);
+        let c = if r == 1 { '1' } else { '0' };
+        assert(ValidBitString(s));
+        assert(c == '0' || c == '1');
+        assert(ValidBitString(s.push(c)));
+        assert(Str2Int(s.push(c)) == 2 * Str2Int(s) + (if c == '1' { 1nat } else { 0nat }));
+        assert((if c == '1' { 1nat } else { 0nat }) == r) by {
+            if r == 1 {
+                assert(c == '1');
+            } else {
+                assert(r == 0);
+                assert(c == '0');
+            }
+        }
+        assert(Str2Int(s) == q);
+        assert(Str2Int(s.push(c)) == 2 * q + r);
+        assert(Str2Int(NatToBits(n)) == n);
+    }
+}",
+"{\n    proof {\n        lemma_NatToBits_props(Exp_int(Str2Int(sx@), Str2Int(sy@)) % Str2Int(sz@));\n    }\n    let res_vec: Vec<char> = Vec::<char>::from_seq(NatToBits(Exp_int(Str2Int(sx@), Str2Int(sy@)) % Str2Int(sz@)));\n    res_vec\n}"
+]
+--------------------------------------------------------------------------------

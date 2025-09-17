@@ -7,13 +7,11 @@ vc-preamble: |-
   use vstd::prelude::*;
 
   verus! {
-
-vc-helpers: |-
   spec fn valid_input(n: int, d: int, hotels: Seq<int>) -> bool {
       n > 0 && d > 0 && hotels.len() == n &&
       (forall|i: int| 0 <= i < n - 1 ==> hotels[i] < hotels[i + 1])
   }
-  
+
   spec fn sum_contributions(hotels: Seq<int>, d: int, i: int) -> int
       decreases i
   {
@@ -29,11 +27,13 @@ vc-helpers: |-
           0
       }
   }
-  
+
   spec fn correct_result(n: int, d: int, hotels: Seq<int>, result: int) -> bool {
       valid_input(n, d, hotels) ==> 
       (result == 2 + sum_contributions(hotels, d, n-1) && result >= 2)
   }
+
+vc-helpers: |
 
 vc-spec: |-
   fn solve(n: int, d: int, hotels: Seq<int>) -> (result: int)
@@ -46,7 +46,7 @@ vc-code: |-
       unreached()
   }
 
-vc-postamble: |-
+vc-postamble: |2-
 
   }
 

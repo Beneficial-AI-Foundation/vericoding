@@ -1,0 +1,37 @@
+=== Verification Error - Iteration 2 ===
+File: benchmarks/verus/bignum/files/bignum_ModExp_Add_ModExpPow2_Mul.rs
+Time: 2025-09-15 10:58:25
+
+Full Error Output:
+--------------------------------------------------------------------------------
+VERIFICATION BYPASSES DETECTED: uses 'assume' to bypass verification. Code contains verification bypasses and cannot be considered successfully verified.
+
+Original verification output:
+Verification failed: verification results:: 5 verified, 1 errors
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_10h41/bignum_ModExp_Add_ModExpPow2_Mul_impl.rs:40:13
+   |
+38 | proof fn lemma_str2int_double_and_add_half(s: Seq<char>)
+   |       -------------------------------------------------- at the end of the function body
+39 |     requires ValidBitString(s), s.len() > 0
+40 |     ensures 2 * Str2Int(s) == Str2Int(s + seq!['0']) || 2 * Str2Int(s) + 1 == Str2Int(s + seq!['1']),
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+
+error: aborting due to 1 previous error
+
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+verification results:: 5 verified, 1 errors
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_10h41/bignum_ModExp_Add_ModExpPow2_Mul_impl.rs:40:13
+   |
+38 | proof fn lemma_str2int_double_and_add_half(s: Seq<char>)
+   |       -------------------------------------------------- at the end of the function body
+39 |     requires ValidBitString(s), s.len() > 0
+40 |     ensures 2 * Str2Int(s) == Str2Int(s + seq!['0']) || 2 * Str2Int(s) + 1 == Str2Int(s + seq!['1']),
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+
+error: aborting due to 1 previous error
+

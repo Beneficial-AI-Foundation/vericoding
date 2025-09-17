@@ -1,0 +1,103 @@
+=== Verification Error - Iteration 7 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_Mul_NormalizeBitString.rs
+Time: 2025-09-15 19:11:04
+
+Full Error Output:
+--------------------------------------------------------------------------------
+VERIFICATION BYPASSES DETECTED: uses 'assume' to bypass verification. Code contains verification bypasses and cannot be considered successfully verified.
+
+Original verification output:
+Verification failed: verification results:: 12 verified, 3 errors
+error: postcondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_Mul_NormalizeBitString_impl.rs:108:9
+    |
+108 |           Str2Int(s + zeros) == pow2(zeros.len() as nat) * Str2Int(s),
+    |           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+111 | /     if zeros.len() == 0 {
+112 | |         assert(s + zeros == s);
+113 | |         assert(pow2(0) == 1);
+114 | |     } else {
+...   |
+121 | |         assert(pow2(zeros.len() as nat) == 2 * pow2((zeros.len() - 1) as nat));
+122 | |     }
+    | |_____- at the end of the function body
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_Mul_NormalizeBitString_impl.rs:125:7
+    |
+125 | proof fn lemma_mul_by_power_of_2(s: Seq<char>, k: nat)
+    |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_Mul_NormalizeBitString_impl.rs:130:9
+    |
+125 | proof fn lemma_mul_by_power_of_2(s: Seq<char>, k: nat)
+    |       ------------------------------------------------ at the end of the function body
+...
+130 |         Str2Int(s + seq_repeat_zero(k)) == pow2(k) * Str2Int(s),
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+
+error: assertion failed
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_Mul_NormalizeBitString_impl.rs:135:69
+    |
+135 |     assert forall |i: int| 0 <= i && i < zeros.len() as int implies zeros.index(i) == '0' by {
+    |                                                                     ^^^^^^^^^^^^^^^^^^^^^ assertion failed
+
+error: possible arithmetic underflow/overflow
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_Mul_NormalizeBitString_impl.rs:193:19
+    |
+193 |     let max_len = s1.len() + s2.len();
+    |                   ^^^^^^^^^^^^^^^^^^^
+
+error: aborting due to 4 previous errors
+
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+verification results:: 12 verified, 3 errors
+error: postcondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_Mul_NormalizeBitString_impl.rs:108:9
+    |
+108 |           Str2Int(s + zeros) == pow2(zeros.len() as nat) * Str2Int(s),
+    |           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+111 | /     if zeros.len() == 0 {
+112 | |         assert(s + zeros == s);
+113 | |         assert(pow2(0) == 1);
+114 | |     } else {
+...   |
+121 | |         assert(pow2(zeros.len() as nat) == 2 * pow2((zeros.len() - 1) as nat));
+122 | |     }
+    | |_____- at the end of the function body
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_Mul_NormalizeBitString_impl.rs:125:7
+    |
+125 | proof fn lemma_mul_by_power_of_2(s: Seq<char>, k: nat)
+    |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_Mul_NormalizeBitString_impl.rs:130:9
+    |
+125 | proof fn lemma_mul_by_power_of_2(s: Seq<char>, k: nat)
+    |       ------------------------------------------------ at the end of the function body
+...
+130 |         Str2Int(s + seq_repeat_zero(k)) == pow2(k) * Str2Int(s),
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+
+error: assertion failed
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_Mul_NormalizeBitString_impl.rs:135:69
+    |
+135 |     assert forall |i: int| 0 <= i && i < zeros.len() as int implies zeros.index(i) == '0' by {
+    |                                                                     ^^^^^^^^^^^^^^^^^^^^^ assertion failed
+
+error: possible arithmetic underflow/overflow
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_Mul_NormalizeBitString_impl.rs:193:19
+    |
+193 |     let max_len = s1.len() + s2.len();
+    |                   ^^^^^^^^^^^^^^^^^^^
+
+error: aborting due to 4 previous errors
+

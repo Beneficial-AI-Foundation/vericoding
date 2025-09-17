@@ -1,0 +1,146 @@
+=== Verification Error - Iteration 6 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_Add.rs
+Time: 2025-09-15 19:08:09
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Verification failed: verification results:: 4 verified, 3 errors
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_Add_impl.rs:38:9
+   |
+34 | proof fn str2int_append(s: Seq<char>, c: char)
+   |       ---------------------------------------- at the end of the function body
+...
+38 |         Str2Int(s.push(c)) == Str2Int(s) + (if c == '1' { pow2(s.len() as nat) } else { 0 }),
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_Add_impl.rs:81:5
+   |
+81 |     while i < max_len || carry > 0
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: invariant not satisfied at end of loop body
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_Add_impl.rs:90:13
+   |
+90 | /             Str2Int(result@) + (carry as nat) * pow2(i as nat) == 
+91 | |                 Str2Int(if i <= s1@.len() { s1@.subrange(0, i as int) } else { s1@ }) + 
+92 | |                 Str2Int(if i <= s2@.len() { s2@.subrange(0, i as int) } else { s2@ }),
+   | |_____________________________________________________________________________________^
+
+note: recommendation not met
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_Add_impl.rs:91:17
+   |
+6  |   recommends ValidBitString(s)
+   |              ----------------- recommendation not met
+...
+91 |                 Str2Int(if i <= s1@.len() { s1@.subrange(0, i as int) } else { s1@ }) + 
+   |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+note: recommendation not met
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_Add_impl.rs:92:17
+   |
+6  |   recommends ValidBitString(s)
+   |              ----------------- recommendation not met
+...
+92 |                 Str2Int(if i <= s2@.len() { s2@.subrange(0, i as int) } else { s2@ }),
+   |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: precondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_Add_impl.rs:97:17
+   |
+46 |     requires ValidBitString(s),
+   |              ----------------- failed precondition
+...
+97 |                 valid_bitstring_subrange(s1@, 0, (i + 1) as int);
+   |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: precondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_Add_impl.rs:100:17
+    |
+46  |     requires ValidBitString(s),
+    |              ----------------- failed precondition
+...
+100 |                 valid_bitstring_subrange(s2@, 0, (i + 1) as int);
+    |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: assertion failed
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_Add_impl.rs:134:16
+    |
+134 |         assert(Str2Int(result@) == Str2Int(s1@) + Str2Int(s2@));
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ assertion failed
+
+error: aborting due to 5 previous errors
+
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+verification results:: 4 verified, 3 errors
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_Add_impl.rs:38:9
+   |
+34 | proof fn str2int_append(s: Seq<char>, c: char)
+   |       ---------------------------------------- at the end of the function body
+...
+38 |         Str2Int(s.push(c)) == Str2Int(s) + (if c == '1' { pow2(s.len() as nat) } else { 0 }),
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_Add_impl.rs:81:5
+   |
+81 |     while i < max_len || carry > 0
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: invariant not satisfied at end of loop body
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_Add_impl.rs:90:13
+   |
+90 | /             Str2Int(result@) + (carry as nat) * pow2(i as nat) == 
+91 | |                 Str2Int(if i <= s1@.len() { s1@.subrange(0, i as int) } else { s1@ }) + 
+92 | |                 Str2Int(if i <= s2@.len() { s2@.subrange(0, i as int) } else { s2@ }),
+   | |_____________________________________________________________________________________^
+
+note: recommendation not met
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_Add_impl.rs:91:17
+   |
+6  |   recommends ValidBitString(s)
+   |              ----------------- recommendation not met
+...
+91 |                 Str2Int(if i <= s1@.len() { s1@.subrange(0, i as int) } else { s1@ }) + 
+   |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+note: recommendation not met
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_Add_impl.rs:92:17
+   |
+6  |   recommends ValidBitString(s)
+   |              ----------------- recommendation not met
+...
+92 |                 Str2Int(if i <= s2@.len() { s2@.subrange(0, i as int) } else { s2@ }),
+   |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: precondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_Add_impl.rs:97:17
+   |
+46 |     requires ValidBitString(s),
+   |              ----------------- failed precondition
+...
+97 |                 valid_bitstring_subrange(s1@, 0, (i + 1) as int);
+   |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: precondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_Add_impl.rs:100:17
+    |
+46  |     requires ValidBitString(s),
+    |              ----------------- failed precondition
+...
+100 |                 valid_bitstring_subrange(s2@, 0, (i + 1) as int);
+    |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: assertion failed
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_Add_impl.rs:134:16
+    |
+134 |         assert(Str2Int(result@) == Str2Int(s1@) + Str2Int(s2@));
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ assertion failed
+
+error: aborting due to 5 previous errors
+

@@ -1,0 +1,268 @@
+=== Verification Error - Iteration 7 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExp_Add_DivMod_ModExpPow2.rs
+Time: 2025-09-15 19:24:01
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Verification failed: verification results:: 8 verified, 6 errors
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_ModExp_Add_DivMod_ModExpPow2_impl.rs:64:5
+   |
+64 |     while i < len
+   |     ^^^^^^^^^^^^^
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_ModExp_Add_DivMod_ModExpPow2_impl.rs:56:6
+   |
+56 | exec fn shift_left(s: &[char], n: usize) -> (result: Vec<char>)
+   |      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_ModExp_Add_DivMod_ModExpPow2_impl.rs:58:13
+   |
+58 |     ensures ValidBitString(result@), Str2Int(result@) == Str2Int(s@) * Exp_int(2, n as nat)
+   |             ^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+78 |     res
+   |     --- at the end of the function body
+
+note: recommendation not met
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_ModExp_Add_DivMod_ModExpPow2_impl.rs:58:38
+   |
+12 |   recommends ValidBitString(s)
+   |              ----------------- recommendation not met
+...
+58 |     ensures ValidBitString(result@), Str2Int(result@) == Str2Int(s@) * Exp_int(2, n as nat)
+   |                                      ^^^^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_ModExp_Add_DivMod_ModExpPow2_impl.rs:58:38
+   |
+58 |     ensures ValidBitString(result@), Str2Int(result@) == Str2Int(s@) * Exp_int(2, n as nat)
+   |                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+78 |     res
+   |     --- at the end of the function body
+
+error: possible arithmetic underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_ModExp_Add_DivMod_ModExpPow2_impl.rs:62:46
+   |
+62 |     let mut res = Vec::<char>::with_capacity(len + n);
+   |                                              ^^^^^^^
+
+error: invariant not satisfied at end of loop body
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_ModExp_Add_DivMod_ModExpPow2_impl.rs:68:13
+   |
+68 |             ValidBitString(res@),
+   |             ^^^^^^^^^^^^^^^^^^^^
+
+error: precondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_ModExp_Add_DivMod_ModExpPow2_impl.rs:72:18
+   |
+72 |         res.push(s[i]);
+   |                  ^^^^
+   |
+  ::: /Users/sergiu.bursuc/verus/vstd/slice.rs:62:9
+   |
+62 |         0 <= i < slice.view().len(),
+   |         --------------------------- failed precondition
+
+error: postcondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_ModExp_Add_DivMod_ModExpPow2_impl.rs:83:38
+    |
+83  |     ensures ValidBitString(result@), Str2Int(result@) == (Str2Int(a@) * Str2Int(b@)) % Str2Int(z@)
+    |                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+103 |     divmod.1
+    |     -------- at the end of the function body
+
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_ModExp_Add_DivMod_ModExpPow2_impl.rs:123:5
+    |
+123 |     while i < len
+    |     ^^^^^^^^^^^^^
+
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_ModExp_Add_DivMod_ModExpPow2_impl.rs:136:5
+    |
+136 |     while j < sylen
+    |     ^^^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_ModExp_Add_DivMod_ModExpPow2_impl.rs:112:5
+    |
+112 |     Str2Int(res@) == Exp_int(Str2Int(sx@), Str2Int(sy@)) % Str2Int(sz@)
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+150 |     result
+    |     ------ at the end of the function body
+
+error: invariant not satisfied at end of loop body
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_ModExp_Add_DivMod_ModExpPow2_impl.rs:127:13
+    |
+127 |             ValidBitString(base@),
+    |             ^^^^^^^^^^^^^^^^^^^^^
+
+error: precondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_ModExp_Add_DivMod_ModExpPow2_impl.rs:131:17
+    |
+131 |       base.push(sx[i]);
+    |                 ^^^^^
+    |
+   ::: /Users/sergiu.bursuc/verus/vstd/slice.rs:62:9
+    |
+62  |         0 <= i < slice.view().len(),
+    |         --------------------------- failed precondition
+
+error: invariant not satisfied at end of loop body
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_ModExp_Add_DivMod_ModExpPow2_impl.rs:140:9
+    |
+140 |         j <= sy@.len(),
+    |         ^^^^^^^^^^^^^^
+
+error: precondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_ModExp_Add_DivMod_ModExpPow2_impl.rs:144:10
+    |
+144 |       if sy[j] == '1' {
+    |          ^^^^^
+    |
+   ::: /Users/sergiu.bursuc/verus/vstd/slice.rs:62:9
+    |
+62  |         0 <= i < slice.view().len(),
+    |         --------------------------- failed precondition
+
+error: aborting due to 11 previous errors
+
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+verification results:: 8 verified, 6 errors
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_ModExp_Add_DivMod_ModExpPow2_impl.rs:64:5
+   |
+64 |     while i < len
+   |     ^^^^^^^^^^^^^
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_ModExp_Add_DivMod_ModExpPow2_impl.rs:56:6
+   |
+56 | exec fn shift_left(s: &[char], n: usize) -> (result: Vec<char>)
+   |      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_ModExp_Add_DivMod_ModExpPow2_impl.rs:58:13
+   |
+58 |     ensures ValidBitString(result@), Str2Int(result@) == Str2Int(s@) * Exp_int(2, n as nat)
+   |             ^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+78 |     res
+   |     --- at the end of the function body
+
+note: recommendation not met
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_ModExp_Add_DivMod_ModExpPow2_impl.rs:58:38
+   |
+12 |   recommends ValidBitString(s)
+   |              ----------------- recommendation not met
+...
+58 |     ensures ValidBitString(result@), Str2Int(result@) == Str2Int(s@) * Exp_int(2, n as nat)
+   |                                      ^^^^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_ModExp_Add_DivMod_ModExpPow2_impl.rs:58:38
+   |
+58 |     ensures ValidBitString(result@), Str2Int(result@) == Str2Int(s@) * Exp_int(2, n as nat)
+   |                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+78 |     res
+   |     --- at the end of the function body
+
+error: possible arithmetic underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_ModExp_Add_DivMod_ModExpPow2_impl.rs:62:46
+   |
+62 |     let mut res = Vec::<char>::with_capacity(len + n);
+   |                                              ^^^^^^^
+
+error: invariant not satisfied at end of loop body
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_ModExp_Add_DivMod_ModExpPow2_impl.rs:68:13
+   |
+68 |             ValidBitString(res@),
+   |             ^^^^^^^^^^^^^^^^^^^^
+
+error: precondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_ModExp_Add_DivMod_ModExpPow2_impl.rs:72:18
+   |
+72 |         res.push(s[i]);
+   |                  ^^^^
+   |
+  ::: /Users/sergiu.bursuc/verus/vstd/slice.rs:62:9
+   |
+62 |         0 <= i < slice.view().len(),
+   |         --------------------------- failed precondition
+
+error: postcondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_ModExp_Add_DivMod_ModExpPow2_impl.rs:83:38
+    |
+83  |     ensures ValidBitString(result@), Str2Int(result@) == (Str2Int(a@) * Str2Int(b@)) % Str2Int(z@)
+    |                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+103 |     divmod.1
+    |     -------- at the end of the function body
+
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_ModExp_Add_DivMod_ModExpPow2_impl.rs:123:5
+    |
+123 |     while i < len
+    |     ^^^^^^^^^^^^^
+
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_ModExp_Add_DivMod_ModExpPow2_impl.rs:136:5
+    |
+136 |     while j < sylen
+    |     ^^^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_ModExp_Add_DivMod_ModExpPow2_impl.rs:112:5
+    |
+112 |     Str2Int(res@) == Exp_int(Str2Int(sx@), Str2Int(sy@)) % Str2Int(sz@)
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+150 |     result
+    |     ------ at the end of the function body
+
+error: invariant not satisfied at end of loop body
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_ModExp_Add_DivMod_ModExpPow2_impl.rs:127:13
+    |
+127 |             ValidBitString(base@),
+    |             ^^^^^^^^^^^^^^^^^^^^^
+
+error: precondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_ModExp_Add_DivMod_ModExpPow2_impl.rs:131:17
+    |
+131 |       base.push(sx[i]);
+    |                 ^^^^^
+    |
+   ::: /Users/sergiu.bursuc/verus/vstd/slice.rs:62:9
+    |
+62  |         0 <= i < slice.view().len(),
+    |         --------------------------- failed precondition
+
+error: invariant not satisfied at end of loop body
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_ModExp_Add_DivMod_ModExpPow2_impl.rs:140:9
+    |
+140 |         j <= sy@.len(),
+    |         ^^^^^^^^^^^^^^
+
+error: precondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_ModExp_Add_DivMod_ModExpPow2_impl.rs:144:10
+    |
+144 |       if sy[j] == '1' {
+    |          ^^^^^
+    |
+   ::: /Users/sergiu.bursuc/verus/vstd/slice.rs:62:9
+    |
+62  |         0 <= i < slice.view().len(),
+    |         --------------------------- failed precondition
+
+error: aborting due to 11 previous errors
+

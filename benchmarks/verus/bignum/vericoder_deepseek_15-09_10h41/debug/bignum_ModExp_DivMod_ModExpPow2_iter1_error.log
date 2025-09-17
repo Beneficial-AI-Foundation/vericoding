@@ -1,0 +1,124 @@
+=== Verification Error - Iteration 1 ===
+File: benchmarks/verus/bignum/files/bignum_ModExp_DivMod_ModExpPow2.rs
+Time: 2025-09-15 10:48:03
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: error: invalid suffix `nat` for number literal
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_10h41/bignum_ModExp_DivMod_ModExpPow2_impl.rs:59:22
+   |
+59 |     let mut result = 1nat;
+   |                      ^^^^ invalid suffix `nat`
+   |
+   = help: the suffix must be one of the numeric types (`u32`, `isize`, `f32`, etc.)
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_10h41/bignum_ModExp_DivMod_ModExpPow2_impl.rs:30:35
+   |
+30 |         lemma_pow_mod_property(x, y - 1, m);
+   |         ----------------------    ^^^^^ expected `nat`, found `int`
+   |         |
+   |         arguments to this function are incorrect
+   |
+note: function defined here
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_10h41/bignum_ModExp_DivMod_ModExpPow2_impl.rs:24:10
+   |
+24 | proof fn lemma_pow_mod_property(x: nat, y: nat, m: nat) 
+   |          ^^^^^^^^^^^^^^^^^^^^^^         ------
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_10h41/bignum_ModExp_DivMod_ModExpPow2_impl.rs:67:22
+   |
+67 |     while exponent > 0
+   |           --------   ^ expected `nat`, found integer
+   |           |
+   |           expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_10h41/bignum_ModExp_DivMod_ModExpPow2_impl.rs:72:23
+   |
+72 |         if exponent % 2 == 1 {
+   |            --------   ^ expected `nat`, found integer
+   |            |
+   |            expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_10h41/bignum_ModExp_DivMod_ModExpPow2_impl.rs:72:28
+   |
+72 |         if exponent % 2 == 1 {
+   |            ------------    ^ expected `nat`, found integer
+   |            |
+   |            expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_10h41/bignum_ModExp_DivMod_ModExpPow2_impl.rs:83:31
+   |
+83 |         exponent = exponent / 2;
+   |                    --------   ^ expected `nat`, found integer
+   |                    |
+   |                    expected because this is `vstd::prelude::nat`
+
+error: aborting due to 6 previous errors
+
+For more information about this error, try `rustc --explain E0308`.
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+error: invalid suffix `nat` for number literal
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_10h41/bignum_ModExp_DivMod_ModExpPow2_impl.rs:59:22
+   |
+59 |     let mut result = 1nat;
+   |                      ^^^^ invalid suffix `nat`
+   |
+   = help: the suffix must be one of the numeric types (`u32`, `isize`, `f32`, etc.)
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_10h41/bignum_ModExp_DivMod_ModExpPow2_impl.rs:30:35
+   |
+30 |         lemma_pow_mod_property(x, y - 1, m);
+   |         ----------------------    ^^^^^ expected `nat`, found `int`
+   |         |
+   |         arguments to this function are incorrect
+   |
+note: function defined here
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_10h41/bignum_ModExp_DivMod_ModExpPow2_impl.rs:24:10
+   |
+24 | proof fn lemma_pow_mod_property(x: nat, y: nat, m: nat) 
+   |          ^^^^^^^^^^^^^^^^^^^^^^         ------
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_10h41/bignum_ModExp_DivMod_ModExpPow2_impl.rs:67:22
+   |
+67 |     while exponent > 0
+   |           --------   ^ expected `nat`, found integer
+   |           |
+   |           expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_10h41/bignum_ModExp_DivMod_ModExpPow2_impl.rs:72:23
+   |
+72 |         if exponent % 2 == 1 {
+   |            --------   ^ expected `nat`, found integer
+   |            |
+   |            expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_10h41/bignum_ModExp_DivMod_ModExpPow2_impl.rs:72:28
+   |
+72 |         if exponent % 2 == 1 {
+   |            ------------    ^ expected `nat`, found integer
+   |            |
+   |            expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_10h41/bignum_ModExp_DivMod_ModExpPow2_impl.rs:83:31
+   |
+83 |         exponent = exponent / 2;
+   |                    --------   ^ expected `nat`, found integer
+   |                    |
+   |                    expected because this is `vstd::prelude::nat`
+
+error: aborting due to 6 previous errors
+
+For more information about this error, try `rustc --explain E0308`.

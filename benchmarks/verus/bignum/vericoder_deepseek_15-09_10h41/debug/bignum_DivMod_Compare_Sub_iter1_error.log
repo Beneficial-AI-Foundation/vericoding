@@ -1,0 +1,52 @@
+=== Verification Error - Iteration 1 ===
+File: benchmarks/verus/bignum/files/bignum_DivMod_Compare_Sub.rs
+Time: 2025-09-15 10:57:19
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: error[E0425]: cannot find value `result` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_10h41/bignum_DivMod_Compare_Sub_impl.rs:63:41
+   |
+63 |     ensures ValidBitString(remainder@), result ==> Str2Int(old(remainder)@) >= Str2Int(divisor@),
+   |                                         ^^^^^^ not found in this scope
+
+error[E0425]: cannot find value `result` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_10h41/bignum_DivMod_Compare_Sub_impl.rs:64:10
+   |
+64 |         !result ==> Str2Int(old(remainder)@) < Str2Int(divisor@),
+   |          ^^^^^^ not found in this scope
+
+error[E0425]: cannot find value `result` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_10h41/bignum_DivMod_Compare_Sub_impl.rs:65:12
+   |
+65 |         if result { Str2Int(remainder@) == Str2Int(old(remainder)@) - Str2Int(divisor@) } else { Str2Int(remainder@) == Str2Int(old(remainder)@) }
+   |            ^^^^^^ not found in this scope
+
+error: aborting due to 3 previous errors
+
+For more information about this error, try `rustc --explain E0425`.
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+error[E0425]: cannot find value `result` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_10h41/bignum_DivMod_Compare_Sub_impl.rs:63:41
+   |
+63 |     ensures ValidBitString(remainder@), result ==> Str2Int(old(remainder)@) >= Str2Int(divisor@),
+   |                                         ^^^^^^ not found in this scope
+
+error[E0425]: cannot find value `result` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_10h41/bignum_DivMod_Compare_Sub_impl.rs:64:10
+   |
+64 |         !result ==> Str2Int(old(remainder)@) < Str2Int(divisor@),
+   |          ^^^^^^ not found in this scope
+
+error[E0425]: cannot find value `result` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_10h41/bignum_DivMod_Compare_Sub_impl.rs:65:12
+   |
+65 |         if result { Str2Int(remainder@) == Str2Int(old(remainder)@) - Str2Int(divisor@) } else { Str2Int(remainder@) == Str2Int(old(remainder)@) }
+   |            ^^^^^^ not found in this scope
+
+error: aborting due to 3 previous errors
+
+For more information about this error, try `rustc --explain E0425`.

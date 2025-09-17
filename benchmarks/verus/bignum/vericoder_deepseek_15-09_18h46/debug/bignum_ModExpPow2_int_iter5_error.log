@@ -1,0 +1,86 @@
+=== Verification Error - Iteration 5 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExpPow2_int.rs
+Time: 2025-09-15 20:16:05
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_ModExpPow2_int_impl.rs:90:64
+   |
+90 |     let result = (half_result as u128 * half_result as u128) % (z as u128) as u64;
+   |                                                                ^^^^^^^^^^^^^^^^^^ expected `u128`, found `u64`
+
+error[E0277]: cannot calculate the remainder of `u128` divided by `u64`
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_ModExpPow2_int_impl.rs:90:62
+   |
+90 |     let result = (half_result as u128 * half_result as u128) % (z as u128) as u64;
+   |                                                              ^ no implementation for `u128 % u64`
+   |
+   = help: the trait `std::ops::Rem<u64>` is not implemented for `u128`
+   = help: the following other types implement trait `std::ops::Rem<Rhs>`:
+             `&u128` implements `std::ops::Rem<u128>`
+             `&u128` implements `std::ops::Rem`
+             `u128` implements `std::ops::Rem<&u128>`
+             `u128` implements `std::ops::Rem<std::num::NonZero<u128>>`
+             `u128` implements `std::ops::Rem`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_ModExpPow2_int_impl.rs:92:5
+   |
+58 | exec fn ModExpPow2_int(x: u64, y: u64, n: u64, z: u64) -> (res: u64)
+   |                                                                 --- expected `u64` because of return type
+...
+92 |     result
+   |     ^^^^^^ expected `u64`, found `u128`
+   |
+help: you can convert a `u128` to a `u64` and panic if the converted value doesn't fit
+   |
+92 |     result.try_into().unwrap()
+   |           ++++++++++++++++++++
+
+error: aborting due to 3 previous errors
+
+Some errors have detailed explanations: E0277, E0308.
+For more information about an error, try `rustc --explain E0277`.
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_ModExpPow2_int_impl.rs:90:64
+   |
+90 |     let result = (half_result as u128 * half_result as u128) % (z as u128) as u64;
+   |                                                                ^^^^^^^^^^^^^^^^^^ expected `u128`, found `u64`
+
+error[E0277]: cannot calculate the remainder of `u128` divided by `u64`
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_ModExpPow2_int_impl.rs:90:62
+   |
+90 |     let result = (half_result as u128 * half_result as u128) % (z as u128) as u64;
+   |                                                              ^ no implementation for `u128 % u64`
+   |
+   = help: the trait `std::ops::Rem<u64>` is not implemented for `u128`
+   = help: the following other types implement trait `std::ops::Rem<Rhs>`:
+             `&u128` implements `std::ops::Rem<u128>`
+             `&u128` implements `std::ops::Rem`
+             `u128` implements `std::ops::Rem<&u128>`
+             `u128` implements `std::ops::Rem<std::num::NonZero<u128>>`
+             `u128` implements `std::ops::Rem`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_ModExpPow2_int_impl.rs:92:5
+   |
+58 | exec fn ModExpPow2_int(x: u64, y: u64, n: u64, z: u64) -> (res: u64)
+   |                                                                 --- expected `u64` because of return type
+...
+92 |     result
+   |     ^^^^^^ expected `u64`, found `u128`
+   |
+help: you can convert a `u128` to a `u64` and panic if the converted value doesn't fit
+   |
+92 |     result.try_into().unwrap()
+   |           ++++++++++++++++++++
+
+error: aborting due to 3 previous errors
+
+Some errors have detailed explanations: E0277, E0308.
+For more information about an error, try `rustc --explain E0277`.

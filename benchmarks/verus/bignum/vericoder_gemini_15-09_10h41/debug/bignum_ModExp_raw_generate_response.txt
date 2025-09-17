@@ -1,0 +1,32 @@
+=== Raw LLM Generate Response ===
+Length: 773 characters
+--------------------------------------------------------------------------------
+```json
+[
+"proof fn lemma_additive_exp(x: nat, y: nat, z: nat)
+    ensures
+        Exp_int(x, y + z) == Exp_int(x, y) * Exp_int(x, z),
+    decreases y
+{
+    if y > 0 {
+        lemma_additive_exp(x, (y - 1) as nat, z);
+    }
+}
+
+proof fn lemma_int_to_str_rec_ensures(n: nat, res: Seq<char>)
+    ensures
+        ValidBitString(res) && (res.len() > 0 ==> Str2Int(res) == n),
+    requires
+        n > 0,
+        res == int_to_str_rec(n)@,
+    decreases n
+{
+    if n > 0 {
+        lemma_int_to_str_rec_ensures(n/2, int_to_str_rec(n/2)@);
+        let prefix = int_to_str_rec(n/2)@;
+        assert(Str2Int(prefix) == n/2);
+        let chr = if n % 2 == 1 { '1' } else { '0' };
+        let new_res = prefix.push(chr);
+        assert(res =~= new_res);
+        assert forall |i: int| 
+--------------------------------------------------------------------------------

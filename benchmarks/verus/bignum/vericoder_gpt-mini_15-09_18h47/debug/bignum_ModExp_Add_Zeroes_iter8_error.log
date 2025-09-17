@@ -1,0 +1,296 @@
+=== Verification Error - Iteration 8 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExp_Add_Zeroes.rs
+Time: 2025-09-15 18:56:35
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Verification failed: verification results:: 4 verified, 8 errors
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_Zeroes_impl.rs:35:5
+   |
+35 |     while i < s.len()
+   |     ^^^^^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_Zeroes_impl.rs:29:9
+   |
+29 |         (res as nat) == Str2Int(s@),
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+46 |     acc
+   |     --- at the end of the function body
+
+error: invariant not satisfied at end of loop body
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_Zeroes_impl.rs:38:13
+   |
+38 |             (acc as nat) == Str2Int(s@.subrange(0, i as int)),
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+note: recommendation not met
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_Zeroes_impl.rs:38:29
+   |
+12 | recommends ValidBitString(s)
+   |            ----------------- recommendation not met
+...
+38 |             (acc as nat) == Str2Int(s@.subrange(0, i as int)),
+   |                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_Zeroes_impl.rs:43:15
+   |
+43 |         acc = acc * 2 + bit;
+   |               ^^^^^^^
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_Zeroes_impl.rs:50:6
+   |
+50 | exec fn u128_to_bits(n0: u128) -> (v: Vec<char>)
+   |      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_Zeroes_impl.rs:52:9
+   |
+52 |         Str2Int(v@) == (n0 as nat),
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+97 |     vfinal
+   |     ------ at the end of the function body
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_Zeroes_impl.rs:52:9
+   |
+52 |         Str2Int(v@) == (n0 as nat),
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+62 |         return z;
+   |         -------- at this exit
+
+error: invariant not satisfied at end of loop body
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_Zeroes_impl.rs:79:13
+   |
+79 |             (forall |k: int| 0 <= k && k < vfinal@.len() as int ==> (vfinal@.index(k) == '0' || vfinal@.index(k) == '1')),
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: assertion failed
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_Zeroes_impl.rs:90:16
+   |
+90 |         assert(rev@.len() as nat == vfinal@.len() as nat);
+   |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ assertion failed
+
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_Zeroes_impl.rs:139:11
+    |
+139 |           while bit_idx < 128 && b != 0u128
+    |           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_Zeroes_impl.rs:162:11
+    |
+162 |           while bit_idx2 < 128 && b != 0u128
+    |           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_Zeroes_impl.rs:126:3
+    |
+126 |   while i < len
+    |   ^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_Zeroes_impl.rs:105:33
+    |
+105 |   ensures ValidBitString(res@), Str2Int(res@) == Exp_int(Str2Int(sx@), Str2Int(sy@)) % Str2Int(sz@)
+    |                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+181 |   res
+    |   --- at the end of the function body
+
+error: precondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_Zeroes_impl.rs:133:10
+    |
+133 |       if sy[idx] == '1' {
+    |          ^^^^^^^
+    |
+   ::: /Users/sergiu.bursuc/verus/vstd/slice.rs:62:9
+    |
+62  |         0 <= i < slice.view().len(),
+    |         --------------------------- failed precondition
+
+error: possible arithmetic underflow/overflow
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_Zeroes_impl.rs:147:26
+    |
+147 |                   prod = (prod + a) % m;
+    |                          ^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_Zeroes_impl.rs:149:19
+    |
+149 |               a = (a + a) % m;
+    |                   ^^^^^^^
+
+error: possible division by zero
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_Zeroes_impl.rs:153:21
+    |
+153 |           res_nat = prod % m;
+    |                     ^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_Zeroes_impl.rs:170:27
+    |
+170 |                   prod2 = (prod2 + a) % m;
+    |                           ^^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_Zeroes_impl.rs:172:19
+    |
+172 |               a = (a + a) % m;
+    |                   ^^^^^^^
+
+error: aborting due to 14 previous errors
+
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+verification results:: 4 verified, 8 errors
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_Zeroes_impl.rs:35:5
+   |
+35 |     while i < s.len()
+   |     ^^^^^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_Zeroes_impl.rs:29:9
+   |
+29 |         (res as nat) == Str2Int(s@),
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+46 |     acc
+   |     --- at the end of the function body
+
+error: invariant not satisfied at end of loop body
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_Zeroes_impl.rs:38:13
+   |
+38 |             (acc as nat) == Str2Int(s@.subrange(0, i as int)),
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+note: recommendation not met
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_Zeroes_impl.rs:38:29
+   |
+12 | recommends ValidBitString(s)
+   |            ----------------- recommendation not met
+...
+38 |             (acc as nat) == Str2Int(s@.subrange(0, i as int)),
+   |                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_Zeroes_impl.rs:43:15
+   |
+43 |         acc = acc * 2 + bit;
+   |               ^^^^^^^
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_Zeroes_impl.rs:50:6
+   |
+50 | exec fn u128_to_bits(n0: u128) -> (v: Vec<char>)
+   |      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_Zeroes_impl.rs:52:9
+   |
+52 |         Str2Int(v@) == (n0 as nat),
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+97 |     vfinal
+   |     ------ at the end of the function body
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_Zeroes_impl.rs:52:9
+   |
+52 |         Str2Int(v@) == (n0 as nat),
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+62 |         return z;
+   |         -------- at this exit
+
+error: invariant not satisfied at end of loop body
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_Zeroes_impl.rs:79:13
+   |
+79 |             (forall |k: int| 0 <= k && k < vfinal@.len() as int ==> (vfinal@.index(k) == '0' || vfinal@.index(k) == '1')),
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: assertion failed
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_Zeroes_impl.rs:90:16
+   |
+90 |         assert(rev@.len() as nat == vfinal@.len() as nat);
+   |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ assertion failed
+
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_Zeroes_impl.rs:139:11
+    |
+139 |           while bit_idx < 128 && b != 0u128
+    |           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_Zeroes_impl.rs:162:11
+    |
+162 |           while bit_idx2 < 128 && b != 0u128
+    |           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_Zeroes_impl.rs:126:3
+    |
+126 |   while i < len
+    |   ^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_Zeroes_impl.rs:105:33
+    |
+105 |   ensures ValidBitString(res@), Str2Int(res@) == Exp_int(Str2Int(sx@), Str2Int(sy@)) % Str2Int(sz@)
+    |                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+181 |   res
+    |   --- at the end of the function body
+
+error: precondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_Zeroes_impl.rs:133:10
+    |
+133 |       if sy[idx] == '1' {
+    |          ^^^^^^^
+    |
+   ::: /Users/sergiu.bursuc/verus/vstd/slice.rs:62:9
+    |
+62  |         0 <= i < slice.view().len(),
+    |         --------------------------- failed precondition
+
+error: possible arithmetic underflow/overflow
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_Zeroes_impl.rs:147:26
+    |
+147 |                   prod = (prod + a) % m;
+    |                          ^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_Zeroes_impl.rs:149:19
+    |
+149 |               a = (a + a) % m;
+    |                   ^^^^^^^
+
+error: possible division by zero
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_Zeroes_impl.rs:153:21
+    |
+153 |           res_nat = prod % m;
+    |                     ^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_Zeroes_impl.rs:170:27
+    |
+170 |                   prod2 = (prod2 + a) % m;
+    |                           ^^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_Add_Zeroes_impl.rs:172:19
+    |
+172 |               a = (a + a) % m;
+    |                   ^^^^^^^
+
+error: aborting due to 14 previous errors
+

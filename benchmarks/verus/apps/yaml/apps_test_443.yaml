@@ -9,24 +9,22 @@ vc-preamble: |-
   use vstd::prelude::*;
 
   verus! {
-
-vc-helpers: |-
   spec fn valid_input(n: int, packets: Seq<int>) -> bool {
       n >= 1 && packets.len() == n && forall|i: int| 0 <= i < packets.len() ==> packets[i] >= 1
   }
-  
+
   spec fn is_possible(n: int, packets: Seq<int>) -> bool
       recommends valid_input(n, packets)
   {
       n >= 2 && (n > 2 || packets[0] != packets[1])
   }
-  
+
   spec fn sum_packets(packets: Seq<int>) -> int
       decreases packets.len()
   {
       if packets.len() == 0 { 0 } else { packets[0] + sum_packets(packets.subrange(1, packets.len() as int)) }
   }
-  
+
   spec fn valid_solution(n: int, packets: Seq<int>, result: Seq<int>) -> bool
       recommends valid_input(n, packets)
   {
@@ -41,6 +39,8 @@ vc-helpers: |-
       }
   }
 
+vc-helpers: |
+
 vc-spec: |-
   fn solve(n: int, packets: Seq<int>) -> (result: Seq<int>)
       requires valid_input(n, packets)
@@ -52,7 +52,7 @@ vc-code: |-
       unreached()
   }
 
-vc-postamble: |-
+vc-postamble: |2-
 
   }
 

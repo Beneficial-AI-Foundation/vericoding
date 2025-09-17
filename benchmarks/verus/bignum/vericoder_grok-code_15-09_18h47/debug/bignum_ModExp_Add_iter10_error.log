@@ -1,0 +1,26 @@
+=== Verification Error - Iteration 10 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExp_Add.rs
+Time: 2025-09-15 19:11:44
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: error: `core::iter::adapters::cloned::impl&%1%default%collect` is not supported (note: you may be able to add a Verus specification to this function with `assume_specification`) (note: the vstd library provides some specification for the Rust std library, but it is currently limited)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_ModExp_Add_impl.rs:91:23
+   |
+91 |     let mut exp_vec = sy.iter().cloned().collect::<Vec<_>>();
+   |                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: aborting due to 1 previous error
+
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+error: `core::iter::adapters::cloned::impl&%1%default%collect` is not supported (note: you may be able to add a Verus specification to this function with `assume_specification`) (note: the vstd library provides some specification for the Rust std library, but it is currently limited)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_ModExp_Add_impl.rs:91:23
+   |
+91 |     let mut exp_vec = sy.iter().cloned().collect::<Vec<_>>();
+   |                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: aborting due to 1 previous error
+

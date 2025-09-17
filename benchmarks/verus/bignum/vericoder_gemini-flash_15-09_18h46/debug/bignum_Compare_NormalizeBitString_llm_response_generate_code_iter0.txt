@@ -1,0 +1,9 @@
+=== LLM Response - generate_code - Iteration 0 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_Compare_NormalizeBitString.rs
+Prompt Hash: c2be85f5
+JSON Parsed Successfully: True
+Timestamp: 1757955147.713692
+Content Length: 984 chars
+--------------------------------------------------------------------------------
+["spec fn is_prefix_of(a: Seq<char>, b: Seq<char>) -> bool {\n    exists |i: int| 0 <= i && a.len() + i <= b.len() && b.subrange(i, a.len() + i) == a\n}", "{\n    let s1_seq = s1@;\n    let s2_seq = s2@;\n\n    if s1_seq.len() < s2_seq.len() {\n        if Str2Int(s1_seq) == Str2Int(s2_seq.subrange(0, s1_seq.len() as int)) {\n            -1\n        } else if Str2Int(s1_seq) < Str2Int(s2_seq.subrange(0, s1_seq.len() as int)) {\n            -1\n        } else {\n            1\n        }\n    } else if s1_seq.len() > s2_seq.len() {\n        if Str2Int(s2_seq) == Str2Int(s1_seq.subrange(0, s2_seq.len() as int)) {\n            1\n        } else if Str2Int(s1_seq.subrange(0, s2_seq.len() as int)) < Str2Int(s2_seq) {\n            -1\n        } else {\n            1\n        }\n    } else {\n        if Str2Int(s1_seq) < Str2Int(s2_seq) {\n            -1\n        } else if Str2Int(s1_seq) == Str2Int(s2_seq) {\n            0\n        } else {\n            1\n        }\n    }\n}"]
+--------------------------------------------------------------------------------

@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(date_str: Seq<char>) -> bool {
     date_str.len() == 10 && date_str.subrange(0, 4) == seq!['2', '0', '1', '7']
 }
@@ -17,6 +14,9 @@ spec fn valid_output(input: Seq<char>, output: Seq<char>) -> bool
     output.subrange(0, 4) == seq!['2', '0', '1', '8'] &&
     output.subrange(4, output.len() as int) == input.subrange(4, input.len() as int)
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

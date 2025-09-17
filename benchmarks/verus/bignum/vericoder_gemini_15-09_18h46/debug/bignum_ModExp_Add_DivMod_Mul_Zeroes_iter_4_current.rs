@@ -1,0 +1,85 @@
+use vstd::prelude::*;
+
+verus! {
+
+spec fn Str2Int(s: Seq<char>) -> nat
+  recommends ValidBitString(s)
+  decreases s.len()
+{
+  if s.len() == 0 {
+    0
+  } else {
+    2 * Str2Int(s.subrange(0, s.len() as int - 1))
+      + (if s.index(s.len() as int - 1) == '1' { 1nat } else { 0nat })
+  }
+}
+
+spec fn ValidBitString(s: Seq<char>) -> bool
+{
+  forall |i: int| 0 <= i && i < s.len() as int ==>
+    (s.index(i) == '0' || s.index(i) == '1')
+}
+
+// <vc-helpers>
+/* helper modified by LLM (iteration 3): Replaced ghost type 'nat' with executable type 'u64' to fix compilation errors. */
+exec fn vec_to_nat(s: &[char]) -> (res: u64)
+    requires
+        ValidBitString(s@),
+    ensures
+        res as nat == Str2Int(s@),
+{
+    let mut i: usize = 0;
+    let mut res: u64 = 0;
+    while i < s.len()
+        invariant
+            ValidBitString(s@),
+            0 <= i <= s.len(),
+            res as nat == Str2Int(s@.subrange(0, i as int)),
+        decreases s.len() - i
+    {
+        let d = if s[i] == '1' { 1u64 } else { 0u64 };
+        res = res * 2 + d;
+        i = i + 1;
+    }
+    res
+}
+
+/* helper modified by LLM (iteration 3): Replaced ghost type 'nat' with executable type 'u64' to fix compilation errors. */
+exec fn nat_to_vec(n: u64) -> (res: Vec<char>)
+    ensures
+        ValidBitString(res@),
+        (n == 0 && res@ == seq!['0']) || (n > 0 && Str2Int(res@) == n as nat && res@.len() > 0 && res@[0] == '1'),
+    decreases n
+{
+    if n == 0 {
+        vec!['0']
+    } else if n == 1 {
+        vec!['1']
+    } else {
+        let mut prefix = nat_to_vec(n / 2);
+        let last_char = if n % 2 == 1 { '1' } else { '0' };
+        prefix.push(last_char);
+        prefix
+    }
+}
+// </vc-helpers>
+
+// <vc-spec>
+exec fn ModExp_Add_DivMod_Mul_Zeroes(a: &[char], b: &[char]) -> (res: Vec<char>)
+  requires ValidBitString(a@), ValidBitString(b@)
+  ensures ValidBitString(res@)
+// </vc-spec>
+// <vc-code>
+{
+    /* code modified by LLM (iteration 3): Logic remains the same, calling helpers now fixed to use u64 executable type. */
+    let a_val = vec_to_nat(a);
+    let b_val = vec_to_nat(b);
+    let sum = a_val + b_val;
+    let res = nat_to_vec(sum);
+    res
+}
+// </vc-code>
+
+fn main() {}
+}
+

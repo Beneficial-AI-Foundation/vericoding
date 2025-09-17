@@ -1,0 +1,70 @@
+=== Verification Error - Iteration 1 ===
+File: benchmarks/verus/bignum/files/bignum_ModExp_DivMod_ModExpPow2_Mul.rs
+Time: 2025-09-15 10:50:51
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_DivMod_ModExpPow2_Mul_impl.rs:53:83
+   |
+53 |             n as nat * Exp_int(2, result@.len() as nat) + Str2Int(result@) == old(n) as nat
+   |                                                                               --- ^ expected `&mut _`, found `u64`
+   |                                                                               |
+   |                                                                               arguments to this function are incorrect
+   |
+   = note: expected mutable reference `&mut _`
+                           found type `u64`
+note: function defined here
+  --> /Users/runner/work/verus/verus/source/builtin/src/lib.rs:277:8
+help: consider mutably borrowing here
+   |
+53 |             n as nat * Exp_int(2, result@.len() as nat) + Str2Int(result@) == old(&mut n) as nat
+   |                                                                                   ++++
+
+error[E0277]: the trait bound `&mut _: std::marker::Copy` is not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_DivMod_ModExpPow2_Mul_impl.rs:53:79
+   |
+53 |             n as nat * Exp_int(2, result@.len() as nat) + Str2Int(result@) == old(n) as nat
+   |                                                                               ^^^^^^^^^^^^^ the trait `std::marker::Copy` is not implemented for `&mut _`
+   |
+note: required by a bound in `vstd::prelude::spec_cast_integer`
+  --> /Users/runner/work/verus/verus/source/builtin/src/lib.rs:970:1
+
+error: aborting due to 2 previous errors
+
+Some errors have detailed explanations: E0277, E0308.
+For more information about an error, try `rustc --explain E0277`.
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_DivMod_ModExpPow2_Mul_impl.rs:53:83
+   |
+53 |             n as nat * Exp_int(2, result@.len() as nat) + Str2Int(result@) == old(n) as nat
+   |                                                                               --- ^ expected `&mut _`, found `u64`
+   |                                                                               |
+   |                                                                               arguments to this function are incorrect
+   |
+   = note: expected mutable reference `&mut _`
+                           found type `u64`
+note: function defined here
+  --> /Users/runner/work/verus/verus/source/builtin/src/lib.rs:277:8
+help: consider mutably borrowing here
+   |
+53 |             n as nat * Exp_int(2, result@.len() as nat) + Str2Int(result@) == old(&mut n) as nat
+   |                                                                                   ++++
+
+error[E0277]: the trait bound `&mut _: std::marker::Copy` is not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_DivMod_ModExpPow2_Mul_impl.rs:53:79
+   |
+53 |             n as nat * Exp_int(2, result@.len() as nat) + Str2Int(result@) == old(n) as nat
+   |                                                                               ^^^^^^^^^^^^^ the trait `std::marker::Copy` is not implemented for `&mut _`
+   |
+note: required by a bound in `vstd::prelude::spec_cast_integer`
+  --> /Users/runner/work/verus/verus/source/builtin/src/lib.rs:970:1
+
+error: aborting due to 2 previous errors
+
+Some errors have detailed explanations: E0277, E0308.
+For more information about an error, try `rustc --explain E0277`.

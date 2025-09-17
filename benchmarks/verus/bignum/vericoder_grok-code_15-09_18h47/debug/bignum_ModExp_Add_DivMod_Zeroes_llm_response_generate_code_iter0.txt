@@ -1,0 +1,9 @@
+=== LLM Response - generate_code - Iteration 0 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExp_Add_DivMod_Zeroes.rs
+Prompt Hash: 88499e1c
+JSON Parsed Successfully: True
+Timestamp: 1757955463.233881
+Content Length: 1247 chars
+--------------------------------------------------------------------------------
+["exec fn bin_to_nat(s: &[char]) -> nat\n  requires ValidBitString(s@)\n  ensures bin_to_nat(s) == Str2Int(s@)\n  decreases s@.len()\n{\n    if s.len() == 0 { 0 } else {\n        let high = &s[0..s.len()-1];\n        let sub = bin_to_nat(high);\n        let low = s[s.len()-1];\n        2 * sub + if low == '1' { 1 } else { 0 }\n    }\n}\n\nexec fn modpow(base: nat, exp: nat, mod: nat) -> nat\n  requires mod > 1, exp >= 0\n  ensures modpow(base, exp, mod) == Exp_int(base, exp) % mod\n  decreases exp\n{\n  if exp == 0 { 1 } else {\n    let b2 = base * base % mod;\n    let p = modpow(b2, exp / 2, mod);\n    if exp % 2 == 0 {\n      p % mod\n    } else {\n      p * base % mod % mod\n    }\n  }\n}\n\nexec fn nat_to_bin(n: nat) -> Vec<char>\n  ensures ValidBitString(res@), Str2Int(res@) == n\n{\n  if n == 0 { Vec::<char>::with_capacity(0) } else {\n    let mut bin = Vec::<char>::new();\n    let mut num = n;\n    while num > 0 {\n      bin.push(if num % 2 == 0 { '0' } else { '1' });\n      num = num / 2;\n    }\n    bin.reverse();\n    bin\n  }\n}\n", "{\n  let x_int = bin_to_nat(sx);\n  let y_int = bin_to_nat(sy);\n  let z_int = bin_to_nat(sz);\n  let res_int = modpow(x_int, y_int, z_int);\n  let res = nat_to_bin(res_int);\n  res\n}"]
+--------------------------------------------------------------------------------

@@ -1,0 +1,96 @@
+=== Verification Error - Iteration 3 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExpPow2_Add_DivMod_Mul.rs
+Time: 2025-09-14 10:41:51
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: error: invalid suffix `i` for number literal
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExpPow2_Add_DivMod_Mul_impl.rs:57:19
+   |
+57 |       if temp_n % 2i == 1i {
+   |                   ^^ invalid suffix `i`
+   |
+   = help: the suffix must be one of the numeric types (`u32`, `isize`, `f32`, etc.)
+
+error: invalid suffix `i` for number literal
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExpPow2_Add_DivMod_Mul_impl.rs:57:25
+   |
+57 |       if temp_n % 2i == 1i {
+   |                         ^^ invalid suffix `i`
+   |
+   = help: the suffix must be one of the numeric types (`u32`, `isize`, `f32`, etc.)
+
+error: invalid suffix `i` for number literal
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExpPow2_Add_DivMod_Mul_impl.rs:62:25
+   |
+62 |       temp_n = temp_n / 2i;
+   |                         ^^ invalid suffix `i`
+   |
+   = help: the suffix must be one of the numeric types (`u32`, `isize`, `f32`, etc.)
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExpPow2_Add_DivMod_Mul_impl.rs:49:16
+   |
+49 |   if temp_n == 0 {
+   |      ------    ^ expected `int`, found integer
+   |      |
+   |      expected because this is `vstd::prelude::int`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExpPow2_Add_DivMod_Mul_impl.rs:52:20
+   |
+52 |     while temp_n > 0
+   |           ------   ^ expected `int`, found integer
+   |           |
+   |           expected because this is `vstd::prelude::int`
+
+error: aborting due to 5 previous errors
+
+For more information about this error, try `rustc --explain E0308`.
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+error: invalid suffix `i` for number literal
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExpPow2_Add_DivMod_Mul_impl.rs:57:19
+   |
+57 |       if temp_n % 2i == 1i {
+   |                   ^^ invalid suffix `i`
+   |
+   = help: the suffix must be one of the numeric types (`u32`, `isize`, `f32`, etc.)
+
+error: invalid suffix `i` for number literal
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExpPow2_Add_DivMod_Mul_impl.rs:57:25
+   |
+57 |       if temp_n % 2i == 1i {
+   |                         ^^ invalid suffix `i`
+   |
+   = help: the suffix must be one of the numeric types (`u32`, `isize`, `f32`, etc.)
+
+error: invalid suffix `i` for number literal
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExpPow2_Add_DivMod_Mul_impl.rs:62:25
+   |
+62 |       temp_n = temp_n / 2i;
+   |                         ^^ invalid suffix `i`
+   |
+   = help: the suffix must be one of the numeric types (`u32`, `isize`, `f32`, etc.)
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExpPow2_Add_DivMod_Mul_impl.rs:49:16
+   |
+49 |   if temp_n == 0 {
+   |      ------    ^ expected `int`, found integer
+   |      |
+   |      expected because this is `vstd::prelude::int`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExpPow2_Add_DivMod_Mul_impl.rs:52:20
+   |
+52 |     while temp_n > 0
+   |           ------   ^ expected `int`, found integer
+   |           |
+   |           expected because this is `vstd::prelude::int`
+
+error: aborting due to 5 previous errors
+
+For more information about this error, try `rustc --explain E0308`.

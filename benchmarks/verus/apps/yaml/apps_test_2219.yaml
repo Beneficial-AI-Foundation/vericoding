@@ -8,100 +8,96 @@ vc-preamble: |-
   verus! {
 
   spec fn min_steps_to_zero(n: nat, k: nat) -> nat
+      recommends k >= 2
       decreases n
   {
-      if k < 2 {
-          0  /* placeholder for invalid k */
-      } else if n == 0 {
-          0
-      } else if n % k == 0 {
-          1 + min_steps_to_zero(n / k, k)
-      } else {
-          (n % k) + min_steps_to_zero((n - (n % k)) as nat, k)
-      }
+      if n == 0 { 0 }
+      else if n % k == 0 { 1 + min_steps_to_zero(n / k, k) }
+      else { (n % k) + min_steps_to_zero((n - (n % k)) as nat, k) }
   }
   
-  spec fn valid_input(input: &str) -> bool {
-      input.len() > 0 &&
-      {
+  spec fn valid_input(input: Seq<char>) -> bool {
+      input.len() > 0 && {
           let lines = split_lines_func(input);
           lines.len() >= 1 &&
-          is_valid_number(&lines[0int]) &&
-          {
-              let t = string_to_int_func(&lines[0int]);
+          is_valid_number(lines[0]) && {
+              let t = string_to_int_func(lines[0]);
               t >= 1 && t <= 100 &&
               lines.len() >= t + 1 &&
-              forall|i: int| 1 <= i <= t ==> valid_test_case(&lines[i])
+              forall|i: int| 1 <= i <= t ==> valid_test_case(lines[i])
           }
       }
   }
   
-  spec fn valid_test_case(line: &str) -> bool {
+  spec fn valid_test_case(line: Seq<char>) -> bool {
       let parts = split_spaces_func(line);
       parts.len() == 2 &&
-      is_valid_number(&parts[0int]) &&
-      is_valid_number(&parts[1int]) &&
-      {
-          let n = string_to_int_func(&parts[0int]);
-          let k = string_to_int_func(&parts[1int]);
+      is_valid_number(parts[0]) &&
+      is_valid_number(parts[1]) && {
+          let n = string_to_int_func(parts[0]);
+          let k = string_to_int_func(parts[1]);
           n >= 1 && k >= 2
       }
   }
   
-  spec fn is_valid_number(s: &str) -> bool {
+  spec fn is_valid_number(s: Seq<char>) -> bool {
       s.len() >= 1 &&
-      (s == "0" || (s.as_bytes()[0int] != b'0' && forall|i: int| 0 <= i < s.len() ==> b'0' <= s.as_bytes()[i] <= b'9')) &&
-      forall|i: int| 0 <= i < s.len() ==> b'0' <= s.as_bytes()[i] <= b'9'
+      (s == seq!['0'] || (s[0] != '0' && forall|i: int| 0 <= i < s.len() ==> '0' <= s[i] <= '9')) &&
+      forall|i: int| 0 <= i < s.len() ==> '0' <= s[i] <= '9'
   }
   
-  spec fn expected_output(input: &str) -> String {
+  spec fn expected_output(input: Seq<char>) -> Seq<char>
+      recommends valid_input(input)
+  {
       let lines = split_lines_func(input);
-      let t = string_to_int_func(&lines[0int]);
-      join_lines_seq(&Seq::<String>::new(t, |i: int| {
-          let parts = split_spaces_func(&lines[i+1]);
-          let n = string_to_int_func(&parts[0int]);
-          let k = string_to_int_func(&parts[1int]);
-          int_to_string_func(min_steps_to_zero(n, k))
-      }))
+      let t = string_to_int_func(lines[0]);
+      let results = Seq::new(t as nat, |i: int| {
+          let parts = split_spaces_func(lines[i+1]);
+          let n = string_to_int_func(parts[0]);
+          let k = string_to_int_func(parts[1]);
+          int_to_string_func(min_steps_to_zero(n as nat, k as nat) as int)
+      });
+      join_lines_seq(results)
   }
 
-  spec fn split_lines_func(input: &str) -> Seq<String> {
-      Seq::<String>::empty()  /* placeholder implementation */
+  /* Placeholder spec functions for string operations */
+  spec fn split_lines_func(input: Seq<char>) -> Seq<Seq<char>> {
+      seq![]
   }
-
-  spec fn split_spaces_func(line: &str) -> Seq<String> {
-      Seq::<String>::empty()  /* placeholder implementation */
+  
+  spec fn split_spaces_func(line: Seq<char>) -> Seq<Seq<char>> {
+      seq![]
   }
-
-  spec fn string_to_int_func(s: &str) -> nat {
-      0  /* placeholder implementation */
+  
+  spec fn string_to_int_func(s: Seq<char>) -> int {
+      0
   }
-
-  spec fn int_to_string_func(n: nat) -> String {
-      String::new()  /* placeholder implementation */
+  
+  spec fn int_to_string_func(n: int) -> Seq<char> {
+      seq![]
   }
-
-  spec fn join_lines_seq(results: &Seq<String>) -> String {
-      String::new()  /* placeholder implementation */
+  
+  spec fn join_lines_seq(lines: Seq<Seq<char>>) -> Seq<char> {
+      seq![]
   }
 
 vc-helpers: |-
 
 vc-spec: |-
   fn solve(input: &str) -> (result: String)
-      requires 
-          input.len() > 0,
-          valid_input(input),
-      ensures 
-          result.len() >= 0,
-          forall|i: int| 0 <= i < result.len() ==> result.as_bytes()[i] != 0u8,
-          result == expected_output(input),
+    requires
+        input@.len() > 0,
+        valid_input(input@),
+    ensures
+        result@.len() >= 0,
+        forall|i: int| 0 <= i < result@.len() ==> result@[i] != '\0',
+        result@ == expected_output(input@),
 
 vc-code: |-
   {
       // impl-start
       assume(false);
-      String::new()
+      unreached()
       // impl-end
   }
 

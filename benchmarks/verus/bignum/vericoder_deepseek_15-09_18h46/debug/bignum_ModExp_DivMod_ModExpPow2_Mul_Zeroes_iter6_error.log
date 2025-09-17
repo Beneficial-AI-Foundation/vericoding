@@ -1,0 +1,216 @@
+=== Verification Error - Iteration 6 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExp_DivMod_ModExpPow2_Mul_Zeroes.rs
+Time: 2025-09-15 19:26:20
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_ModExp_DivMod_ModExpPow2_Mul_Zeroes_impl.rs:83:31
+   |
+83 |     let mut result_val: nat = 1;
+   |                         ---   ^ expected `nat`, found integer
+   |                         |
+   |                         expected due to this
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_ModExp_DivMod_ModExpPow2_Mul_Zeroes_impl.rs:85:15
+   |
+85 |     while y > 0
+   |           -   ^ expected `nat`, found integer
+   |           |
+   |           expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_ModExp_DivMod_ModExpPow2_Mul_Zeroes_impl.rs:87:42
+   |
+87 |             result_val == Exp_int(x_val, y_val - y) % z_val,
+   |                           -------        ^^^^^^^^^ expected `nat`, found `int`
+   |                           |
+   |                           arguments to this function are incorrect
+   |
+note: function defined here
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_ModExp_DivMod_ModExpPow2_Mul_Zeroes_impl.rs:5:9
+   |
+5  | spec fn Exp_int(x: nat, y: nat) -> nat
+   |         ^^^^^^^         ------
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_ModExp_DivMod_ModExpPow2_Mul_Zeroes_impl.rs:88:41
+   |
+88 |             x == Exp_int(x_val % z_val, y_val - y + 1) % z_val,
+   |                  -------                ^^^^^^^^^^^^^ expected `nat`, found `int`
+   |                  |
+   |                  arguments to this function are incorrect
+   |
+note: function defined here
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_ModExp_DivMod_ModExpPow2_Mul_Zeroes_impl.rs:5:9
+   |
+5  | spec fn Exp_int(x: nat, y: nat) -> nat
+   |         ^^^^^^^         ------
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_ModExp_DivMod_ModExpPow2_Mul_Zeroes_impl.rs:92:16
+   |
+92 |         if y % 2 == 1 {
+   |            -   ^ expected `nat`, found integer
+   |            |
+   |            expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_ModExp_DivMod_ModExpPow2_Mul_Zeroes_impl.rs:92:21
+   |
+92 |         if y % 2 == 1 {
+   |            -----    ^ expected `nat`, found integer
+   |            |
+   |            expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_ModExp_DivMod_ModExpPow2_Mul_Zeroes_impl.rs:96:17
+   |
+96 |         y = y / 2;
+   |             -   ^ expected `nat`, found integer
+   |             |
+   |             expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_ModExp_DivMod_ModExpPow2_Mul_Zeroes_impl.rs:102:18
+    |
+102 |     while temp > 0
+    |           ----   ^ expected `nat`, found integer
+    |           |
+    |           expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_ModExp_DivMod_ModExpPow2_Mul_Zeroes_impl.rs:109:19
+    |
+109 |         if temp % 2 == 1 {
+    |            ----   ^ expected `nat`, found integer
+    |            |
+    |            expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_ModExp_DivMod_ModExpPow2_Mul_Zeroes_impl.rs:109:24
+    |
+109 |         if temp % 2 == 1 {
+    |            --------    ^ expected `nat`, found integer
+    |            |
+    |            expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_ModExp_DivMod_ModExpPow2_Mul_Zeroes_impl.rs:114:23
+    |
+114 |         temp = temp / 2;
+    |                ----   ^ expected `nat`, found integer
+    |                |
+    |                expected because this is `vstd::prelude::nat`
+
+error: aborting due to 11 previous errors
+
+For more information about this error, try `rustc --explain E0308`.
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_ModExp_DivMod_ModExpPow2_Mul_Zeroes_impl.rs:83:31
+   |
+83 |     let mut result_val: nat = 1;
+   |                         ---   ^ expected `nat`, found integer
+   |                         |
+   |                         expected due to this
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_ModExp_DivMod_ModExpPow2_Mul_Zeroes_impl.rs:85:15
+   |
+85 |     while y > 0
+   |           -   ^ expected `nat`, found integer
+   |           |
+   |           expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_ModExp_DivMod_ModExpPow2_Mul_Zeroes_impl.rs:87:42
+   |
+87 |             result_val == Exp_int(x_val, y_val - y) % z_val,
+   |                           -------        ^^^^^^^^^ expected `nat`, found `int`
+   |                           |
+   |                           arguments to this function are incorrect
+   |
+note: function defined here
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_ModExp_DivMod_ModExpPow2_Mul_Zeroes_impl.rs:5:9
+   |
+5  | spec fn Exp_int(x: nat, y: nat) -> nat
+   |         ^^^^^^^         ------
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_ModExp_DivMod_ModExpPow2_Mul_Zeroes_impl.rs:88:41
+   |
+88 |             x == Exp_int(x_val % z_val, y_val - y + 1) % z_val,
+   |                  -------                ^^^^^^^^^^^^^ expected `nat`, found `int`
+   |                  |
+   |                  arguments to this function are incorrect
+   |
+note: function defined here
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_ModExp_DivMod_ModExpPow2_Mul_Zeroes_impl.rs:5:9
+   |
+5  | spec fn Exp_int(x: nat, y: nat) -> nat
+   |         ^^^^^^^         ------
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_ModExp_DivMod_ModExpPow2_Mul_Zeroes_impl.rs:92:16
+   |
+92 |         if y % 2 == 1 {
+   |            -   ^ expected `nat`, found integer
+   |            |
+   |            expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_ModExp_DivMod_ModExpPow2_Mul_Zeroes_impl.rs:92:21
+   |
+92 |         if y % 2 == 1 {
+   |            -----    ^ expected `nat`, found integer
+   |            |
+   |            expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_ModExp_DivMod_ModExpPow2_Mul_Zeroes_impl.rs:96:17
+   |
+96 |         y = y / 2;
+   |             -   ^ expected `nat`, found integer
+   |             |
+   |             expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_ModExp_DivMod_ModExpPow2_Mul_Zeroes_impl.rs:102:18
+    |
+102 |     while temp > 0
+    |           ----   ^ expected `nat`, found integer
+    |           |
+    |           expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_ModExp_DivMod_ModExpPow2_Mul_Zeroes_impl.rs:109:19
+    |
+109 |         if temp % 2 == 1 {
+    |            ----   ^ expected `nat`, found integer
+    |            |
+    |            expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_ModExp_DivMod_ModExpPow2_Mul_Zeroes_impl.rs:109:24
+    |
+109 |         if temp % 2 == 1 {
+    |            --------    ^ expected `nat`, found integer
+    |            |
+    |            expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_ModExp_DivMod_ModExpPow2_Mul_Zeroes_impl.rs:114:23
+    |
+114 |         temp = temp / 2;
+    |                ----   ^ expected `nat`, found integer
+    |                |
+    |                expected because this is `vstd::prelude::nat`
+
+error: aborting due to 11 previous errors
+
+For more information about this error, try `rustc --explain E0308`.

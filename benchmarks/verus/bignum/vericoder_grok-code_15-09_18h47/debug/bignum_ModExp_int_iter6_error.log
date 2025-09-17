@@ -1,0 +1,26 @@
+=== Verification Error - Iteration 6 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExp_int.rs
+Time: 2025-09-15 19:27:16
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: error: cannot call function `bignum_ModExp_int_impl::get_int` with mode exec
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_ModExp_int_impl.rs:29:9
+   |
+29 |         get_int(s) == Str2Int(s@) as u64,
+   |         ^^^^^^^^^^
+
+error: aborting due to 1 previous error
+
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+error: cannot call function `bignum_ModExp_int_impl::get_int` with mode exec
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_ModExp_int_impl.rs:29:9
+   |
+29 |         get_int(s) == Str2Int(s@) as u64,
+   |         ^^^^^^^^^^
+
+error: aborting due to 1 previous error
+

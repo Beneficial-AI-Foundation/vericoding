@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(test_cases: Seq<Seq<int>>) -> bool {
     forall|i: int| 0 <= i < test_cases.len() ==> test_cases[i].len() >= 1
 }
@@ -25,6 +22,9 @@ spec fn correct_result(test_cases: Seq<Seq<int>>, results: Seq<int>) -> bool {
     forall|i: int| 0 <= i < test_cases.len() ==> results[i] == sum_differences(test_cases[i], 0) &&
     forall|i: int| 0 <= i < results.len() ==> results[i] >= 0
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

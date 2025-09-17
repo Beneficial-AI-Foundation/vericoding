@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(n: int, d: int, points: Seq<(int, int)>) -> bool {
     n >= 0 && d >= 0 && points.len() >= n
 }
@@ -18,6 +15,9 @@ spec fn count_points_within_distance(n: int, d: int, points: Seq<(int, int)>) ->
 {
     points.subrange(0, n).filter(|point: (int, int)| within_distance(point, d)).len() as int
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

@@ -19,8 +19,12 @@ spec fn valid_input(stdin_input: Seq<char>) -> bool {
     }) &&
     ({
         let newline_pos = find_newline(stdin_input, 0);
-        let rest = stdin_input.subrange(newline_pos as int + 1, stdin_input.len() as int);
-        let s = if rest.len() > 0 && rest[rest.len() - 1] == '\n' { rest.subrange(0, rest.len() - 1) } else { rest };
+        let rest = stdin_input.subrange((newline_pos + 1) as int, stdin_input.len() as int);
+        let s = if rest.len() > 0 && rest[rest.len() - 1] == '\n' { 
+                    rest.subrange(0, rest.len() - 1) 
+                } else { 
+                    rest 
+                };
         1 <= s.len() <= 100 && forall|i: int| 0 <= i < s.len() ==> 'a' <= s[i] <= 'z'
     })
 }
@@ -37,8 +41,12 @@ spec fn extract_s(stdin_input: Seq<char>) -> Seq<char>
     recommends valid_input(stdin_input)
 {
     let newline_pos = find_newline(stdin_input, 0);
-    let rest = stdin_input.subrange(newline_pos as int + 1, stdin_input.len() as int);
-    if rest.len() > 0 && rest[rest.len() - 1] == '\n' { rest.subrange(0, rest.len() - 1) } else { rest }
+    let rest = stdin_input.subrange((newline_pos + 1) as int, stdin_input.len() as int);
+    if rest.len() > 0 && rest[rest.len() - 1] == '\n' { 
+        rest.subrange(0, rest.len() - 1) 
+    } else { 
+        rest 
+    }
 }
 
 spec fn correct_output(stdin_input: Seq<char>, result: Seq<char>) -> bool
@@ -67,7 +75,9 @@ spec fn find_newline(s: Seq<char>, start: nat) -> nat
 }
 
 spec fn is_valid_positive_integer(s: Seq<char>) -> bool {
-    s.len() > 0 && forall|i: int| 0 <= i < s.len() ==> s[i] >= '0' && s[i] <= '9' && s != seq!['0']
+    s.len() > 0 && 
+    (forall|i: int| 0 <= i < s.len() ==> s[i] >= '0' && s[i] <= '9') && 
+    s != seq!['0']
 }
 
 spec fn string_to_int(s: Seq<char>) -> int
@@ -77,9 +87,14 @@ spec fn string_to_int(s: Seq<char>) -> int
 }
 
 spec fn string_to_int_helper(s: Seq<char>, pos: nat, acc: int) -> int
+    recommends 
+        pos <= s.len(),
+        acc >= 0,
+        forall|i: int| 0 <= i < pos ==> s[i] >= '0' && s[i] <= '9',
+        is_valid_positive_integer(s)
     decreases s.len() - pos
 {
-    if pos >= s.len() {
+    if pos >= s.len() { 
         if acc == 0 { 1 } else { acc }
     } else if s[pos as int] >= '0' && s[pos as int] <= '9' {
         string_to_int_helper(s, pos + 1, acc * 10 + (s[pos as int] as int - '0' as int))
@@ -99,10 +114,8 @@ fn solve(stdin_input: Seq<char>) -> (result: Seq<char>)
 // </vc-spec>
 // <vc-code>
 {
-    // impl-start
     assume(false);
-    seq![]
-    // impl-end
+    unreached()
 }
 // </vc-code>
 

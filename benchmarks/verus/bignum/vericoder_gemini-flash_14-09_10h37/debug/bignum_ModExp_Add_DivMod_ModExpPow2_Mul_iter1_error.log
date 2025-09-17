@@ -1,0 +1,124 @@
+=== Verification Error - Iteration 1 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExp_Add_DivMod_ModExpPow2_Mul.rs
+Time: 2025-09-14 10:42:57
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExp_Add_DivMod_ModExpPow2_Mul_impl.rs:152:20
+    |
+152 |       acc_res = ( (acc_res as nat) * (acc_res as nat) ) % sz_val;
+    |                    ^^^^^^^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExp_Add_DivMod_ModExpPow2_Mul_impl.rs:152:39
+    |
+152 |       acc_res = ( (acc_res as nat) * (acc_res as nat) ) % sz_val;
+    |                                       ^^^^^^^^^^^^^^
+
+error[E0425]: cannot find function `int_to_bit_string` in this scope
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExp_Add_DivMod_ModExpPow2_Mul_impl.rs:103:25
+    |
+103 |         remainder_vec = int_to_bit_string(new_remainder_val);
+    |                         ^^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `int_to_bit_string` in this scope
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExp_Add_DivMod_ModExpPow2_Mul_impl.rs:104:24
+    |
+104 |         quotient_vec = int_to_bit_string(new_quotient_val);
+    |                        ^^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `int_to_bit_string` in this scope
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExp_Add_DivMod_ModExpPow2_Mul_impl.rs:131:12
+    |
+131 |     return int_to_bit_string(res_val);
+    |            ^^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `int_to_bit_string` in this scope
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExp_Add_DivMod_ModExpPow2_Mul_impl.rs:157:3
+    |
+157 |   int_to_bit_string(acc_res)
+    |   ^^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `int_to_bit_string` in this scope
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExp_Add_DivMod_ModExpPow2_Mul_impl.rs:172:3
+    |
+172 |   int_to_bit_string(product)
+    |   ^^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `int_to_bit_string` in this scope
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExp_Add_DivMod_ModExpPow2_Mul_impl.rs:191:12
+    |
+191 |     return int_to_bit_string(1 % sz_val);
+    |            ^^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `int_to_bit_string` in this scope
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExp_Add_DivMod_ModExpPow2_Mul_impl.rs:211:3
+    |
+211 |   int_to_bit_string(res_val)
+    |   ^^^^^^^^^^^^^^^^^ not found in this scope
+
+error: aborting due to 9 previous errors
+
+For more information about this error, try `rustc --explain E0425`.
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExp_Add_DivMod_ModExpPow2_Mul_impl.rs:152:20
+    |
+152 |       acc_res = ( (acc_res as nat) * (acc_res as nat) ) % sz_val;
+    |                    ^^^^^^^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExp_Add_DivMod_ModExpPow2_Mul_impl.rs:152:39
+    |
+152 |       acc_res = ( (acc_res as nat) * (acc_res as nat) ) % sz_val;
+    |                                       ^^^^^^^^^^^^^^
+
+error[E0425]: cannot find function `int_to_bit_string` in this scope
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExp_Add_DivMod_ModExpPow2_Mul_impl.rs:103:25
+    |
+103 |         remainder_vec = int_to_bit_string(new_remainder_val);
+    |                         ^^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `int_to_bit_string` in this scope
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExp_Add_DivMod_ModExpPow2_Mul_impl.rs:104:24
+    |
+104 |         quotient_vec = int_to_bit_string(new_quotient_val);
+    |                        ^^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `int_to_bit_string` in this scope
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExp_Add_DivMod_ModExpPow2_Mul_impl.rs:131:12
+    |
+131 |     return int_to_bit_string(res_val);
+    |            ^^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `int_to_bit_string` in this scope
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExp_Add_DivMod_ModExpPow2_Mul_impl.rs:157:3
+    |
+157 |   int_to_bit_string(acc_res)
+    |   ^^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `int_to_bit_string` in this scope
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExp_Add_DivMod_ModExpPow2_Mul_impl.rs:172:3
+    |
+172 |   int_to_bit_string(product)
+    |   ^^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `int_to_bit_string` in this scope
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExp_Add_DivMod_ModExpPow2_Mul_impl.rs:191:12
+    |
+191 |     return int_to_bit_string(1 % sz_val);
+    |            ^^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `int_to_bit_string` in this scope
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExp_Add_DivMod_ModExpPow2_Mul_impl.rs:211:3
+    |
+211 |   int_to_bit_string(res_val)
+    |   ^^^^^^^^^^^^^^^^^ not found in this scope
+
+error: aborting due to 9 previous errors
+
+For more information about this error, try `rustc --explain E0425`.

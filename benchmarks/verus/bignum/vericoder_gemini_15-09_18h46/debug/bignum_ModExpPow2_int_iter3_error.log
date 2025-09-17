@@ -1,0 +1,46 @@
+=== Verification Error - Iteration 3 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExpPow2_int.rs
+Time: 2025-09-15 20:38:29
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: error[E0425]: cannot find function `lemma_mul_div_cancel_left` in module `vstd::arithmetic::mul`
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini_15-09_18h46/bignum_ModExpPow2_int_impl.rs:20:28
+   |
+20 |     vstd::arithmetic::mul::lemma_mul_div_cancel_left(Exp_int(2, (n-1) as nat), 2);
+   |                            ^^^^^^^^^^^^^^^^^^^^^^^^^ not found in `vstd::arithmetic::mul`
+
+error[E0425]: cannot find function `lemma_mul_mod` in module `vstd::arithmetic::div_mod`
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini_15-09_18h46/bignum_ModExpPow2_int_impl.rs:94:40
+   |
+94 |             vstd::arithmetic::div_mod::lemma_mul_mod(A, A, z_nat);
+   |                                        ^^^^^^^^^^^^^ help: a function with a similar name exists: `lemma_mod_mod`
+  --> /Users/runner/work/verus/verus/source/vstd/arithmetic/div_mod.rs:1524:1
+   |
+   = note: similarly named function `lemma_mod_mod` defined here
+
+error: aborting due to 2 previous errors
+
+For more information about this error, try `rustc --explain E0425`.
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+error[E0425]: cannot find function `lemma_mul_div_cancel_left` in module `vstd::arithmetic::mul`
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini_15-09_18h46/bignum_ModExpPow2_int_impl.rs:20:28
+   |
+20 |     vstd::arithmetic::mul::lemma_mul_div_cancel_left(Exp_int(2, (n-1) as nat), 2);
+   |                            ^^^^^^^^^^^^^^^^^^^^^^^^^ not found in `vstd::arithmetic::mul`
+
+error[E0425]: cannot find function `lemma_mul_mod` in module `vstd::arithmetic::div_mod`
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini_15-09_18h46/bignum_ModExpPow2_int_impl.rs:94:40
+   |
+94 |             vstd::arithmetic::div_mod::lemma_mul_mod(A, A, z_nat);
+   |                                        ^^^^^^^^^^^^^ help: a function with a similar name exists: `lemma_mod_mod`
+  --> /Users/runner/work/verus/verus/source/vstd/arithmetic/div_mod.rs:1524:1
+   |
+   = note: similarly named function `lemma_mod_mod` defined here
+
+error: aborting due to 2 previous errors
+
+For more information about this error, try `rustc --explain E0425`.

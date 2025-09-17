@@ -1,0 +1,42 @@
+vc-description: |-
+  /- 
+  {
+  "name": "dafny-synthesis_task_id_474_ReplaceChars",
+  "category": "Dafny Translation",
+  "description": "Automatically translated from Dafny specification: dafny-synthesis_task_id_474_ReplaceChars",
+  "source": "Dafny",
+  "translation_date": "2024",
+  "functions": ,
+  "methods":
+  }
+  -/
+  
+  /- 
+  Replaces all occurrences of oldChar with newChar in string s.
+  Returns a new string with the replacements.
+  
+  @param s The input string
+  @param oldChar The character to replace
+  @param newChar The replacement character
+  @return The string with characters replaced
+  -/
+
+vc-preamble: |-
+
+vc-helpers: |-
+
+vc-definitions: |-
+  def ReplaceChars (s : String) (oldChar : Char) (newChar : Char) : String :=
+  sorry
+
+vc-theorems: |-
+  theorem ReplaceChars_spec (s : String) (oldChar newChar : Char) :
+  let v := ReplaceChars s oldChar newChar
+  v.length = s.length ∧
+  ∀ i, 0 ≤ i ∧ i < s.length →
+  ((s.get ⟨i⟩ = oldChar → v.get ⟨i⟩ = newChar) ∧
+  (s.get ⟨i⟩ ≠ oldChar → v.get ⟨i⟩ = s.get ⟨i⟩)) :=
+  sorry
+
+vc-postamble: |-
+

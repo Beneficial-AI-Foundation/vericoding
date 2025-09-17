@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(a: int, b: int) -> bool {
     a > 1 && b >= 0
 }
@@ -44,6 +41,9 @@ spec fn correct_result(a: int, b: int, result: int) -> bool
     sockets_after_strips(result, a) >= b &&
     (result == 0 || sockets_after_strips(result - 1, a) < b)
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

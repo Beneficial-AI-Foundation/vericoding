@@ -1,0 +1,182 @@
+=== Verification Error - Iteration 5 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignums_Sub_NormalizeBitstring.rs
+Time: 2025-09-15 19:00:10
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Verification failed: verification results:: 3 verified, 3 errors
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignums_Sub_NormalizeBitstring_impl.rs:33:5
+   |
+33 |     while index < len
+   |     ^^^^^^^^^^^^^^^^^
+
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignums_Sub_NormalizeBitstring_impl.rs:49:9
+   |
+49 |         while i < len
+   |         ^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignums_Sub_NormalizeBitstring_impl.rs:29:9
+   |
+29 |           ValidBitString(res@),
+   |           ^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+46 | /     if index < len {
+47 | |         let mut result = Vec::new();
+48 | |         let mut i = index;
+49 | |         while i < len
+...  |
+61 | |         vec!['0']
+62 | |     }
+   | |_____- at the end of the function body
+
+error: invariant not satisfied at end of loop body
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignums_Sub_NormalizeBitstring_impl.rs:36:13
+   |
+36 |             forall |i: int| 0 <= i < index ==> s@[i] == '0',
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+note: recommendation not met
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignums_Sub_NormalizeBitstring_impl.rs:36:48
+   |
+36 |             forall |i: int| 0 <= i < index ==> s@[i] == '0',
+   |                                                ^^^^^
+   |
+  ::: /Users/sergiu.bursuc/verus/vstd/seq.rs:62:13
+   |
+62 |             0 <= i < self.len(),
+   |             ------------------- recommendation not met
+
+error: precondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignums_Sub_NormalizeBitstring_impl.rs:40:12
+   |
+40 |         if s[index] == '1' {
+   |            ^^^^^^^^
+   |
+  ::: /Users/sergiu.bursuc/verus/vstd/slice.rs:62:9
+   |
+62 |         0 <= i < slice.view().len(),
+   |         --------------------------- failed precondition
+
+error: invariant not satisfied at end of loop body
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignums_Sub_NormalizeBitstring_impl.rs:52:17
+   |
+52 |                 forall |j: int| 0 <= j < result@.len() as int ==> result@[j] == s@[index + j as int],
+   |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+note: recommendation not met
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignums_Sub_NormalizeBitstring_impl.rs:52:81
+   |
+52 |                 forall |j: int| 0 <= j < result@.len() as int ==> result@[j] == s@[index + j as int],
+   |                                                                                 ^^^^^^^^^^^^^^^^^^^^
+   |
+  ::: /Users/sergiu.bursuc/verus/vstd/seq.rs:62:13
+   |
+62 |             0 <= i < self.len(),
+   |             ------------------- recommendation not met
+
+error: precondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignums_Sub_NormalizeBitstring_impl.rs:56:25
+   |
+56 |             result.push(s[i]);
+   |                         ^^^^
+   |
+  ::: /Users/sergiu.bursuc/verus/vstd/slice.rs:62:9
+   |
+62 |         0 <= i < slice.view().len(),
+   |         --------------------------- failed precondition
+
+error: aborting due to 5 previous errors
+
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+verification results:: 3 verified, 3 errors
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignums_Sub_NormalizeBitstring_impl.rs:33:5
+   |
+33 |     while index < len
+   |     ^^^^^^^^^^^^^^^^^
+
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignums_Sub_NormalizeBitstring_impl.rs:49:9
+   |
+49 |         while i < len
+   |         ^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignums_Sub_NormalizeBitstring_impl.rs:29:9
+   |
+29 |           ValidBitString(res@),
+   |           ^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+46 | /     if index < len {
+47 | |         let mut result = Vec::new();
+48 | |         let mut i = index;
+49 | |         while i < len
+...  |
+61 | |         vec!['0']
+62 | |     }
+   | |_____- at the end of the function body
+
+error: invariant not satisfied at end of loop body
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignums_Sub_NormalizeBitstring_impl.rs:36:13
+   |
+36 |             forall |i: int| 0 <= i < index ==> s@[i] == '0',
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+note: recommendation not met
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignums_Sub_NormalizeBitstring_impl.rs:36:48
+   |
+36 |             forall |i: int| 0 <= i < index ==> s@[i] == '0',
+   |                                                ^^^^^
+   |
+  ::: /Users/sergiu.bursuc/verus/vstd/seq.rs:62:13
+   |
+62 |             0 <= i < self.len(),
+   |             ------------------- recommendation not met
+
+error: precondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignums_Sub_NormalizeBitstring_impl.rs:40:12
+   |
+40 |         if s[index] == '1' {
+   |            ^^^^^^^^
+   |
+  ::: /Users/sergiu.bursuc/verus/vstd/slice.rs:62:9
+   |
+62 |         0 <= i < slice.view().len(),
+   |         --------------------------- failed precondition
+
+error: invariant not satisfied at end of loop body
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignums_Sub_NormalizeBitstring_impl.rs:52:17
+   |
+52 |                 forall |j: int| 0 <= j < result@.len() as int ==> result@[j] == s@[index + j as int],
+   |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+note: recommendation not met
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignums_Sub_NormalizeBitstring_impl.rs:52:81
+   |
+52 |                 forall |j: int| 0 <= j < result@.len() as int ==> result@[j] == s@[index + j as int],
+   |                                                                                 ^^^^^^^^^^^^^^^^^^^^
+   |
+  ::: /Users/sergiu.bursuc/verus/vstd/seq.rs:62:13
+   |
+62 |             0 <= i < self.len(),
+   |             ------------------- recommendation not met
+
+error: precondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignums_Sub_NormalizeBitstring_impl.rs:56:25
+   |
+56 |             result.push(s[i]);
+   |                         ^^^^
+   |
+  ::: /Users/sergiu.bursuc/verus/vstd/slice.rs:62:9
+   |
+62 |         0 <= i < slice.view().len(),
+   |         --------------------------- failed precondition
+
+error: aborting due to 5 previous errors
+

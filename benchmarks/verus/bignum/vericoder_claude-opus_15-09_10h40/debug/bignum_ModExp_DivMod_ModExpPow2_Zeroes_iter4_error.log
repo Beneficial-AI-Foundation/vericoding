@@ -1,0 +1,60 @@
+=== Verification Error - Iteration 4 ===
+File: benchmarks/verus/bignum/files/bignum_ModExp_DivMod_ModExpPow2_Zeroes.rs
+Time: 2025-09-15 10:53:39
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: verification results:: 0 verified, 0 errors
+error[E0502]: cannot borrow `v` as immutable because it is also borrowed as mutable
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_DivMod_ModExpPow2_Zeroes_impl.rs:175:15
+    |
+175 |             v[v.len() - 1] = '0';
+    |             --^-----------
+    |             |||
+    |             ||immutable borrow occurs here
+    |             |mutable borrow later used here
+    |             mutable borrow occurs here
+    |
+help: try adding a local storing this...
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_DivMod_ModExpPow2_Zeroes_impl.rs:175:15
+    |
+175 |             v[v.len() - 1] = '0';
+    |               ^^^^^^^
+help: ...and then using that local here
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_DivMod_ModExpPow2_Zeroes_impl.rs:175:14
+    |
+175 |             v[v.len() - 1] = '0';
+    |              ^^^^^^^^^^^^^
+
+error: aborting due to 1 previous error
+
+For more information about this error, try `rustc --explain E0502`.
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+verification results:: 0 verified, 0 errors
+error[E0502]: cannot borrow `v` as immutable because it is also borrowed as mutable
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_DivMod_ModExpPow2_Zeroes_impl.rs:175:15
+    |
+175 |             v[v.len() - 1] = '0';
+    |             --^-----------
+    |             |||
+    |             ||immutable borrow occurs here
+    |             |mutable borrow later used here
+    |             mutable borrow occurs here
+    |
+help: try adding a local storing this...
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_DivMod_ModExpPow2_Zeroes_impl.rs:175:15
+    |
+175 |             v[v.len() - 1] = '0';
+    |               ^^^^^^^
+help: ...and then using that local here
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_DivMod_ModExpPow2_Zeroes_impl.rs:175:14
+    |
+175 |             v[v.len() - 1] = '0';
+    |              ^^^^^^^^^^^^^
+
+error: aborting due to 1 previous error
+
+For more information about this error, try `rustc --explain E0502`.

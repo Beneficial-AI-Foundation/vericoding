@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_binary_string(s: Seq<char>) -> bool {
     s.len() > 0 && 
     (forall|i: int| 0 <= i < s.len() ==> s[i] == '0' || s[i] == '1') &&
@@ -15,17 +12,24 @@ spec fn count_zeros(s: Seq<char>) -> int
     decreases s.len()
 {
     if s.len() == 0 { 
-        0int 
+        0int
     } else { 
         (if s[0] == '0' { 1int } else { 0int }) + count_zeros(s.subrange(1, s.len() as int))
     }
 }
 
+spec fn create_zero_seq(n: nat) -> Seq<char> {
+    Seq::new(n, |i: int| '0')
+}
+
 spec fn is_minimal_form(s: Seq<char>, result: Seq<char>) -> bool {
     (s == seq!['0'] ==> result == seq!['0'])
     &&
-    (s != seq!['0'] ==> result == seq!['1'].add(Seq::new(count_zeros(s) as nat, |_| '0')))
+    (s != seq!['0'] ==> result == seq!['1'] + create_zero_seq(count_zeros(s) as nat))
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>
@@ -40,8 +44,10 @@ fn solve(n: usize, s: Seq<char>) -> (result: Seq<char>)
 // </vc-spec>
 // <vc-code>
 {
+    // impl-start
     assume(false);
-    seq!['0']
+    unreached()
+    // impl-end
 }
 // </vc-code>
 

@@ -1,0 +1,110 @@
+=== Verification Error - Iteration 3 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExp_Add.rs
+Time: 2025-09-15 18:50:03
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_Add_impl.rs:40:10
+   |
+40 |   while (i as int) < s1_vec.len() as int || (i as int) < s2_vec.len() as int || carry == 1
+   |          ^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_Add_impl.rs:40:22
+   |
+40 |   while (i as int) < s1_vec.len() as int || (i as int) < s2_vec.len() as int || carry == 1
+   |                      ^^^^^^^^^^^^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_Add_impl.rs:40:46
+   |
+40 |   while (i as int) < s1_vec.len() as int || (i as int) < s2_vec.len() as int || carry == 1
+   |                                              ^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_Add_impl.rs:40:58
+   |
+40 |   while (i as int) < s1_vec.len() as int || (i as int) < s2_vec.len() as int || carry == 1
+   |                                                          ^^^^^^^^^^^^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_Add_impl.rs:47:22
+   |
+47 |     let digit1 = if (i as int) < s1_vec.len() as int { if s1_vec[i as usize] == '1' { 1nat } else { 0nat } } else { 0nat };
+   |                      ^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_Add_impl.rs:47:34
+   |
+47 |     let digit1 = if (i as int) < s1_vec.len() as int { if s1_vec[i as usize] == '1' { 1nat } else { 0nat } } else { 0nat };
+   |                                  ^^^^^^^^^^^^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_Add_impl.rs:48:22
+   |
+48 |     let digit2 = if (i as int) < s2_vec.len() as int { if s2_vec[i as usize] == '1' { 1nat } else { 0nat } } else { 0nat };
+   |                      ^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_Add_impl.rs:48:34
+   |
+48 |     let digit2 = if (i as int) < s2_vec.len() as int { if s2_vec[i as usize] == '1' { 1nat } else { 0nat } } else { 0nat };
+   |                                  ^^^^^^^^^^^^^^^^^^^
+
+error: aborting due to 8 previous errors
+
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_Add_impl.rs:40:10
+   |
+40 |   while (i as int) < s1_vec.len() as int || (i as int) < s2_vec.len() as int || carry == 1
+   |          ^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_Add_impl.rs:40:22
+   |
+40 |   while (i as int) < s1_vec.len() as int || (i as int) < s2_vec.len() as int || carry == 1
+   |                      ^^^^^^^^^^^^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_Add_impl.rs:40:46
+   |
+40 |   while (i as int) < s1_vec.len() as int || (i as int) < s2_vec.len() as int || carry == 1
+   |                                              ^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_Add_impl.rs:40:58
+   |
+40 |   while (i as int) < s1_vec.len() as int || (i as int) < s2_vec.len() as int || carry == 1
+   |                                                          ^^^^^^^^^^^^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_Add_impl.rs:47:22
+   |
+47 |     let digit1 = if (i as int) < s1_vec.len() as int { if s1_vec[i as usize] == '1' { 1nat } else { 0nat } } else { 0nat };
+   |                      ^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_Add_impl.rs:47:34
+   |
+47 |     let digit1 = if (i as int) < s1_vec.len() as int { if s1_vec[i as usize] == '1' { 1nat } else { 0nat } } else { 0nat };
+   |                                  ^^^^^^^^^^^^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_Add_impl.rs:48:22
+   |
+48 |     let digit2 = if (i as int) < s2_vec.len() as int { if s2_vec[i as usize] == '1' { 1nat } else { 0nat } } else { 0nat };
+   |                      ^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_Add_impl.rs:48:34
+   |
+48 |     let digit2 = if (i as int) < s2_vec.len() as int { if s2_vec[i as usize] == '1' { 1nat } else { 0nat } } else { 0nat };
+   |                                  ^^^^^^^^^^^^^^^^^^^
+
+error: aborting due to 8 previous errors
+

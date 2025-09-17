@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(angles: Seq<int>) -> bool {
     forall|i: int| 0 <= i < angles.len() ==> 1 <= angles[i] < 180
 }
@@ -28,6 +25,9 @@ spec fn correct_output(angles: Seq<int>, result: Seq<int>) -> bool {
         forall|i: int| 0 <= i < angles.len() ==> (1 <= angles[i] < 180 ==> result[i] == compute_answer(angles[i]))
     )
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

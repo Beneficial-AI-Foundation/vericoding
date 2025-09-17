@@ -2,17 +2,14 @@
 use vstd::prelude::*;
 
 verus! {
-
 spec fn valid_input(lines: Seq<Seq<char>>) -> bool {
     lines.len() == 3 && forall|i: int| 0 <= i < 3 ==> lines[i].len() == 3
 }
 
-spec fn extract_diagonal(lines: Seq<Seq<char>>) -> Seq<char> {
-    if valid_input(lines) {
-        seq![lines[0][0], lines[1][1], lines[2][2]]
-    } else {
-        Seq::empty()
-    }
+spec fn extract_diagonal(lines: Seq<Seq<char>>) -> Seq<char>
+    recommends valid_input(lines)
+{
+    seq![lines[0][0], lines[1][1], lines[2][2]]
 }
 // </vc-preamble>
 
@@ -32,8 +29,10 @@ fn solve(lines: Seq<Seq<char>>) -> (result: Seq<char>)
 // </vc-spec>
 // <vc-code>
 {
+    // impl-start
     assume(false);
-    Seq::empty()
+    unreached()
+    // impl-end
 }
 // </vc-code>
 

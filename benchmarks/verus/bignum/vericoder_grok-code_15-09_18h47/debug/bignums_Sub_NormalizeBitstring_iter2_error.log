@@ -1,0 +1,30 @@
+=== Verification Error - Iteration 2 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignums_Sub_NormalizeBitstring.rs
+Time: 2025-09-15 18:59:56
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Verification failed: error: loop must have a decreases clause
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignums_Sub_NormalizeBitstring_impl.rs:37:5
+   |
+37 |     while i < s_len && s[i] == '0'
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = help: to disable this check, use #[verifier::exec_allows_no_decreases_clause] on the function
+
+error: aborting due to 1 previous error
+
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+error: loop must have a decreases clause
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignums_Sub_NormalizeBitstring_impl.rs:37:5
+   |
+37 |     while i < s_len && s[i] == '0'
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = help: to disable this check, use #[verifier::exec_allows_no_decreases_clause] on the function
+
+error: aborting due to 1 previous error
+

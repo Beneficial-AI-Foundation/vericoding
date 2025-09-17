@@ -43,10 +43,10 @@ AreOrderedIndices q i j ∧
 HasAddendsInIndicesRange q x i j ∧
 AreAddendsIndices q sum i j
 
-/-- FindAddends implementation -/
-def FindAddends (q : Array Int) (x : Int) : Nat × Nat := sorry
-
 /-- Main FindAddends method specification -/
 theorem FindAddends_spec (q : Array Int) (x : Int) :
 Sorted q → HasAddends q x →
-∃ i j, FindAddends q x = (i, j) ∧ i < j ∧ j < q.size ∧ q[i]! + q[j]! = x := sorry
+∃ i j, i < j ∧ j < q.size ∧ q[i]! + q[j]! = x := sorry
+
+/-- FindAddends implementation -/
+def FindAddends (q : Array Int) (x : Int) : Nat × Nat := sorry

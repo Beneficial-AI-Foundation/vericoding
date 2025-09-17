@@ -5,12 +5,10 @@ vc-preamble: |-
   use vstd::prelude::*;
 
   verus! {
-
-vc-helpers: |-
   spec fn valid_input(a: int) -> bool {
       1 <= a <= 40
   }
-  
+
   spec fn presidents() -> Seq<&'static str> {
       seq![
           "Washington", "Adams", "Jefferson", "Madison", "Monroe", "Adams", "Jackson", 
@@ -21,6 +19,8 @@ vc-helpers: |-
           "Eisenhower", "Kennedy", "Johnson", "Nixon", "Ford", "Carter", "Reagan"
       ]
   }
+
+vc-helpers: |
 
 vc-spec: |-
   fn solve(a: int) -> (result: &'static str)
@@ -33,7 +33,7 @@ vc-code: |-
       unreached()
   }
 
-vc-postamble: |-
+vc-postamble: |2-
 
   }
 

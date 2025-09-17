@@ -8,19 +8,17 @@ vc-preamble: |-
   use vstd::prelude::*;
 
   verus! {
-
-vc-helpers: |-
   spec fn valid_input(lst: Seq<int>) -> bool {
     5 <= lst.len() <= 10 &&
     forall|i: int| 0 <= i < lst.len() ==> 1 <= lst[i] <= 32
   }
-  
+
   spec fn int_xor(a: int, b: int) -> int {
     let a_bv = a as u32;
     let b_bv = b as u32;
     (a_bv ^ b_bv) as int
   }
-  
+
   spec fn min_of_sequence(s: Seq<int>) -> int
     decreases s.len()
   {
@@ -33,6 +31,8 @@ vc-helpers: |-
     }
   }
 
+vc-helpers: |
+
 vc-spec: |-
   fn solve(lst: Seq<int>) -> (result: int)
     requires valid_input(lst)
@@ -44,7 +44,7 @@ vc-code: |-
     unreached()
   }
 
-vc-postamble: |-
+vc-postamble: |2-
 
   }
 

@@ -1,0 +1,138 @@
+=== Verification Error - Iteration 2 ===
+File: benchmarks/verus/bignum/files/bignum_ModExp_Add_Mul.rs
+Time: 2025-09-15 10:47:39
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: error[E0433]: failed to resolve: use of undeclared type `Proof`
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_ModExp_Add_Mul_impl.rs:37:9
+   |
+37 |         Proof::ghost_assert_mut(result_vec);
+   |         ^^^^^ use of undeclared type `Proof`
+
+error[E0433]: failed to resolve: use of undeclared type `Proof`
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_ModExp_Add_Mul_impl.rs:77:9
+   |
+77 |         Proof::ghost_assert_mut(product);
+   |         ^^^^^ use of undeclared type `Proof`
+
+error[E0433]: failed to resolve: use of undeclared type `Proof`
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_ModExp_Add_Mul_impl.rs:83:9
+   |
+83 |         Proof::ghost_assert_mut(shifted_s1);
+   |         ^^^^^ use of undeclared type `Proof`
+
+error[E0433]: failed to resolve: use of undeclared type `Proof`
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_ModExp_Add_Mul_impl.rs:127:9
+    |
+127 |         Proof::ghost_assert_mut(base_vec);
+    |         ^^^^^ use of undeclared type `Proof`
+
+error[E0433]: failed to resolve: use of undeclared type `Proof`
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_ModExp_Add_Mul_impl.rs:130:9
+    |
+130 |         Proof::ghost_assert_mut(result_vec);
+    |         ^^^^^ use of undeclared type `Proof`
+
+error[E0425]: cannot find function, tuple struct or tuple variant `ShiftLeft` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_ModExp_Add_Mul_impl.rs:99:26
+   |
+99 |             shifted_s1 = ShiftLeft(&shifted_s1);
+   |                          ^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `u2b_function` in this scope
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_ModExp_Add_Mul_impl.rs:123:20
+    |
+123 |             return u2b_function(1);
+    |                    ^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `u2b_function` in this scope
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_ModExp_Add_Mul_impl.rs:129:30
+    |
+129 |         let mut result_vec = u2b_function(1);
+    |                              ^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function, tuple struct or tuple variant `Modulo_function` in this scope
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_ModExp_Add_Mul_impl.rs:149:30
+    |
+149 |                 result_vec = Modulo_function(&result_vec, &sz);
+    |                              ^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function, tuple struct or tuple variant `Modulo_function` in this scope
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_ModExp_Add_Mul_impl.rs:152:24
+    |
+152 |             base_vec = Modulo_function(&base_vec, &sz);
+    |                        ^^^^^^^^^^^^^^^ not found in this scope
+
+error: aborting due to 10 previous errors
+
+Some errors have detailed explanations: E0425, E0433.
+For more information about an error, try `rustc --explain E0425`.
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+error[E0433]: failed to resolve: use of undeclared type `Proof`
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_ModExp_Add_Mul_impl.rs:37:9
+   |
+37 |         Proof::ghost_assert_mut(result_vec);
+   |         ^^^^^ use of undeclared type `Proof`
+
+error[E0433]: failed to resolve: use of undeclared type `Proof`
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_ModExp_Add_Mul_impl.rs:77:9
+   |
+77 |         Proof::ghost_assert_mut(product);
+   |         ^^^^^ use of undeclared type `Proof`
+
+error[E0433]: failed to resolve: use of undeclared type `Proof`
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_ModExp_Add_Mul_impl.rs:83:9
+   |
+83 |         Proof::ghost_assert_mut(shifted_s1);
+   |         ^^^^^ use of undeclared type `Proof`
+
+error[E0433]: failed to resolve: use of undeclared type `Proof`
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_ModExp_Add_Mul_impl.rs:127:9
+    |
+127 |         Proof::ghost_assert_mut(base_vec);
+    |         ^^^^^ use of undeclared type `Proof`
+
+error[E0433]: failed to resolve: use of undeclared type `Proof`
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_ModExp_Add_Mul_impl.rs:130:9
+    |
+130 |         Proof::ghost_assert_mut(result_vec);
+    |         ^^^^^ use of undeclared type `Proof`
+
+error[E0425]: cannot find function, tuple struct or tuple variant `ShiftLeft` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_ModExp_Add_Mul_impl.rs:99:26
+   |
+99 |             shifted_s1 = ShiftLeft(&shifted_s1);
+   |                          ^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `u2b_function` in this scope
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_ModExp_Add_Mul_impl.rs:123:20
+    |
+123 |             return u2b_function(1);
+    |                    ^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `u2b_function` in this scope
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_ModExp_Add_Mul_impl.rs:129:30
+    |
+129 |         let mut result_vec = u2b_function(1);
+    |                              ^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function, tuple struct or tuple variant `Modulo_function` in this scope
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_ModExp_Add_Mul_impl.rs:149:30
+    |
+149 |                 result_vec = Modulo_function(&result_vec, &sz);
+    |                              ^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function, tuple struct or tuple variant `Modulo_function` in this scope
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_ModExp_Add_Mul_impl.rs:152:24
+    |
+152 |             base_vec = Modulo_function(&base_vec, &sz);
+    |                        ^^^^^^^^^^^^^^^ not found in this scope
+
+error: aborting due to 10 previous errors
+
+Some errors have detailed explanations: E0425, E0433.
+For more information about an error, try `rustc --explain E0425`.

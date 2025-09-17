@@ -1,0 +1,106 @@
+=== Verification Error - Iteration 1 ===
+File: benchmarks/verus/bignum/files/bignum_ModExp_DivMod.rs
+Time: 2025-09-15 10:50:42
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: error[E0308]: arguments to this function are incorrect
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_DivMod_impl.rs:113:17
+    |
+113 |                 lemma_mod_mul(result, base, z_val);
+    |                 ^^^^^^^^^^^^^ ------  ----  ----- expected `nat`, found `u64`
+    |                               |       |
+    |                               |       expected `nat`, found `u64`
+    |                               expected `nat`, found `u64`
+    |
+note: function defined here
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_DivMod_impl.rs:33:10
+    |
+33  | proof fn lemma_mod_mul(a: nat, b: nat, m: nat)
+    |          ^^^^^^^^^^^^^ ------  ------  ------
+
+error[E0308]: arguments to this function are incorrect
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_DivMod_impl.rs:118:13
+    |
+118 |             lemma_mod_mul(base, base, z_val);
+    |             ^^^^^^^^^^^^^ ----  ----  ----- expected `nat`, found `u64`
+    |                           |     |
+    |                           |     expected `nat`, found `u64`
+    |                           expected `nat`, found `u64`
+    |
+note: function defined here
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_DivMod_impl.rs:33:10
+    |
+33  | proof fn lemma_mod_mul(a: nat, b: nat, m: nat)
+    |          ^^^^^^^^^^^^^ ------  ------  ------
+
+error[E0308]: arguments to this function are incorrect
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_DivMod_impl.rs:125:9
+    |
+125 |         lemma_exp_properties(x_val, y_val, z_val);
+    |         ^^^^^^^^^^^^^^^^^^^^ -----  -----  ----- expected `nat`, found `u64`
+    |                              |      |
+    |                              |      expected `nat`, found `u64`
+    |                              expected `nat`, found `u64`
+    |
+note: function defined here
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_DivMod_impl.rs:24:10
+    |
+24  | proof fn lemma_exp_properties(x: nat, y: nat, z: nat)
+    |          ^^^^^^^^^^^^^^^^^^^^ ------  ------  ------
+
+error: aborting due to 3 previous errors
+
+For more information about this error, try `rustc --explain E0308`.
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+error[E0308]: arguments to this function are incorrect
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_DivMod_impl.rs:113:17
+    |
+113 |                 lemma_mod_mul(result, base, z_val);
+    |                 ^^^^^^^^^^^^^ ------  ----  ----- expected `nat`, found `u64`
+    |                               |       |
+    |                               |       expected `nat`, found `u64`
+    |                               expected `nat`, found `u64`
+    |
+note: function defined here
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_DivMod_impl.rs:33:10
+    |
+33  | proof fn lemma_mod_mul(a: nat, b: nat, m: nat)
+    |          ^^^^^^^^^^^^^ ------  ------  ------
+
+error[E0308]: arguments to this function are incorrect
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_DivMod_impl.rs:118:13
+    |
+118 |             lemma_mod_mul(base, base, z_val);
+    |             ^^^^^^^^^^^^^ ----  ----  ----- expected `nat`, found `u64`
+    |                           |     |
+    |                           |     expected `nat`, found `u64`
+    |                           expected `nat`, found `u64`
+    |
+note: function defined here
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_DivMod_impl.rs:33:10
+    |
+33  | proof fn lemma_mod_mul(a: nat, b: nat, m: nat)
+    |          ^^^^^^^^^^^^^ ------  ------  ------
+
+error[E0308]: arguments to this function are incorrect
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_DivMod_impl.rs:125:9
+    |
+125 |         lemma_exp_properties(x_val, y_val, z_val);
+    |         ^^^^^^^^^^^^^^^^^^^^ -----  -----  ----- expected `nat`, found `u64`
+    |                              |      |
+    |                              |      expected `nat`, found `u64`
+    |                              expected `nat`, found `u64`
+    |
+note: function defined here
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_DivMod_impl.rs:24:10
+    |
+24  | proof fn lemma_exp_properties(x: nat, y: nat, z: nat)
+    |          ^^^^^^^^^^^^^^^^^^^^ ------  ------  ------
+
+error: aborting due to 3 previous errors
+
+For more information about this error, try `rustc --explain E0308`.

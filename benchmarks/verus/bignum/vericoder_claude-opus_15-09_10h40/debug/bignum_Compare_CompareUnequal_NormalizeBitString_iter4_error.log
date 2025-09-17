@@ -1,0 +1,26 @@
+=== Verification Error - Iteration 4 ===
+File: benchmarks/verus/bignum/files/bignum_Compare_CompareUnequal_NormalizeBitString.rs
+Time: 2025-09-15 11:22:29
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Verification failed: error: recursive function must have a decreases clause
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_Compare_CompareUnequal_NormalizeBitString_impl.rs:369:7
+    |
+369 | proof fn lemma_compare_recursive(s1: Seq<char>, s2: Seq<char>, pos: int)
+    |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: aborting due to 1 previous error
+
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+error: recursive function must have a decreases clause
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_Compare_CompareUnequal_NormalizeBitString_impl.rs:369:7
+    |
+369 | proof fn lemma_compare_recursive(s1: Seq<char>, s2: Seq<char>, pos: int)
+    |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: aborting due to 1 previous error
+

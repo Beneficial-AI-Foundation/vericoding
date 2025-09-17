@@ -18,14 +18,16 @@ verus! {
 
 // <vc-spec>
 fn solve(n: int) -> (result: int)
-    requires valid_input(n)
-    ensures result >= 0
-    ensures result == min_bills(n)
+    requires 
+        valid_input(n)
+    ensures 
+        result >= 0,
+        result == min_bills(n)
 // </vc-spec>
 // <vc-code>
 {
     assume(false);
-    0
+    unreached()
 }
 // </vc-code>
 

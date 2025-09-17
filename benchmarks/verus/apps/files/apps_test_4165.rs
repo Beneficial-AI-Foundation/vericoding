@@ -2,33 +2,32 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(sides: Seq<int>) -> bool {
     sides.len() >= 3 && forall|i: int| 0 <= i < sides.len() ==> sides[i] > 0
 }
 
-spec fn can_form_polygon(sides: Seq<int>) -> bool 
-    recommends valid_input(sides)
-{
-    let sorted_sides = quicksort(sides);
-    let longest = sorted_sides[sorted_sides.len() - 1];
-    let sum_of_others = sum_except_last(sorted_sides);
-    sum_of_others > longest
+spec fn can_form_polygon(sides: Seq<int>) -> bool {
+    if valid_input(sides) {
+        let sorted_sides = quicksort(sides);
+        let longest = sorted_sides[sorted_sides.len() - 1];
+        let sum_of_others = sum_except_last(sorted_sides);
+        sum_of_others > longest
+    } else {
+        false
+    }
 }
 
 spec fn quicksort(s: Seq<int>) -> Seq<int>
     decreases s.len()
 {
-    if s.len() <= 1 {
-        s
+    if s.len() <= 1 { 
+        s 
     } else {
         let pivot = s[0];
         let left = filter(s.subrange(1, s.len() as int), |x: int| x < pivot);
         let equal = filter(s, |x: int| x == pivot);
         let right = filter(s.subrange(1, s.len() as int), |x: int| x > pivot);
-        quicksort(left).add(equal).add(quicksort(right))
+        quicksort(left) + equal + quicksort(right)
     }
 }
 
@@ -36,19 +35,20 @@ spec fn filter(s: Seq<int>, pred: spec_fn(int) -> bool) -> Seq<int>
     decreases s.len()
 {
     if s.len() == 0 {
-        seq![]
+        Seq::empty()
     } else if pred(s[0]) {
-        seq![s[0]].add(filter(s.subrange(1, s.len() as int), pred))
+        let rest = filter(s.subrange(1, s.len() as int), pred);
+        seq![s[0]] + rest
     } else {
-        filter(s.subrange(1, s.len() as int), pred)
+        let rest = filter(s.subrange(1, s.len() as int), pred);
+        rest
     }
 }
 
 spec fn sum_except_last(s: Seq<int>) -> int
-    recommends s.len() >= 1
     decreases s.len()
 {
-    if s.len() == 1 {
+    if s.len() <= 1 {
         0
     } else {
         s[0] + sum_except_last(s.subrange(1, s.len() as int))
@@ -56,25 +56,27 @@ spec fn sum_except_last(s: Seq<int>) -> int
 }
 
 proof fn filter_preserves_inclusion(s: Seq<int>, pred: spec_fn(int) -> bool)
-    ensures forall|x: int| filter(s, pred).contains(x) ==> s.contains(x)
+    ensures filter(s, pred).to_multiset() <= s.to_multiset()
     decreases s.len()
 {
     assume(false); /* TODO: Remove this line and implement the proof */
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>
 fn solve(sides: Seq<int>) -> (result: String)
     requires valid_input(sides)
-    ensures result == "Yes" || result == "No"
-    ensures (result == "Yes") == can_form_polygon(sides)
+    ensures 
+        result.view() == seq!['Y', 'e', 's'] || result.view() == seq!['N', 'o'],
+        (result.view() == seq!['Y', 'e', 's']) <==> can_form_polygon(sides),
 // </vc-spec>
 // <vc-code>
 {
-    // impl-start
     assume(false);
     "No".to_string()
-    // impl-end
 }
 // </vc-code>
 

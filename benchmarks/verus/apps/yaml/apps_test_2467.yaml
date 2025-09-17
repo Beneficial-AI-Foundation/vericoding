@@ -6,8 +6,6 @@ vc-preamble: |-
   use vstd::prelude::*;
 
   verus! {
-
-vc-helpers: |-
   spec fn sum(s: Seq<int>) -> int
       decreases s.len()
   {
@@ -45,6 +43,8 @@ vc-helpers: |-
       (forall|i: int| temp.len() <= i < combo.len() ==> combo[i] >= start)
   }
 
+vc-helpers: |
+
 vc-spec: |-
   fn combination_sum3(k: int, n: int) -> (result: Vec<Vec<int>>)
       requires k > 0 && n > 0 && k <= 9
@@ -63,7 +63,7 @@ vc-code: |-
       Vec::new()
   }
 
-vc-postamble: |-
+vc-postamble: |2-
 
   }
 

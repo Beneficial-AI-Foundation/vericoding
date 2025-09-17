@@ -7,8 +7,6 @@ vc-preamble: |-
   use vstd::prelude::*;
 
   verus! {
-
-vc-helpers: |-
   spec fn is_tandem_repeat(s: Seq<char>) -> bool {
       if s.len() % 2 != 0 {
           false
@@ -20,6 +18,8 @@ vc-helpers: |-
               (first_half[i] == '*' || second_half[i] == '*' || first_half[i] == second_half[i])
       }
   }
+
+vc-helpers: |
 
 vc-spec: |-
   fn solve(s: Seq<char>, k: int) -> (result: int)
@@ -43,7 +43,7 @@ vc-code: |-
       unreached()
   }
 
-vc-postamble: |-
+vc-postamble: |2-
 
   }
 

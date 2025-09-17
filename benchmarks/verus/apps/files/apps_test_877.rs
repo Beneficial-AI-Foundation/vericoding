@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(n: int, m: int, pairs: Seq<(int, int)>) -> bool {
     n >= 2 && 
     m >= 0 && 
@@ -50,6 +47,9 @@ spec fn valid_result(n: int, pairs: Seq<(int, int)>, result: int) -> bool {
     result <= n - 1 &&
     result == max(compute_final_r(n, pairs) - compute_final_l(pairs), 0)
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

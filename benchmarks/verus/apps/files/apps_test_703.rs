@@ -36,9 +36,9 @@ spec fn is_minimal_solution(result: int, k: int, a: int, b: int, v: int) -> bool
 
 // <vc-spec>
 fn solve(k: int, a: int, b: int, v: int) -> (result: int)
-    requires 
+    requires
         valid_input(k, a, b, v)
-    ensures 
+    ensures
         result >= 1,
         result <= 1009,
         is_minimal_solution(result, k, a, b, v),
@@ -47,8 +47,10 @@ fn solve(k: int, a: int, b: int, v: int) -> (result: int)
 // </vc-spec>
 // <vc-code>
 {
+    // impl-start
     assume(false);
-    0 as int
+    unreached()
+    // impl-end
 }
 // </vc-code>
 

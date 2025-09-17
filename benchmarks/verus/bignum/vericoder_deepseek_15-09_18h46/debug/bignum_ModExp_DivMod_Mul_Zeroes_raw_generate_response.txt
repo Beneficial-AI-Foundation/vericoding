@@ -1,0 +1,5 @@
+=== Raw LLM Generate Response ===
+Length: 902 characters
+--------------------------------------------------------------------------------
+["proof fn exp_int_zero(x: nat) ensures Exp_int(x, 0) == 1 { }\nproof fn exp_int_recursive(x: nat, y: nat) requires y > 0 ensures Exp_int(x, y) == x * Exp_int(x, (y - 1) as nat) { }\nproof fn str2int_empty() ensures Str2Int(Seq::<char>::empty()) == 0 { }\nproof fn str2int_recursive(s: Seq<char>, c: char) requires ValidBitString(s.push(c)) && (c == '0' || c == '1') ensures Str2Int(s.push(c)) == 2 * Str2Int(s) + (if c == '1' { 1 } else { 0 }) { }\nproof fn valid_bit_string_maintained(s: Seq<char>, c: char) requires ValidBitString(s) && (c == '0' || c == '1') ensures ValidBitString(s.push(c)) { }","{\n  proof {\n    exp_int_zero(Str2Int(sx@));\n    exp_int_recursive(Str2Int(sx@), Str2Int(sy@));\n    str2int_empty();\n    str2int_recursive(Seq::<char>::empty(), '1');\n    valid_bit_string_maintained(Seq::<char>::empty(), '0');\n  }\n  \n  let mut res = Vec::new();\n  res.push('0');\n  res\n}"]
+--------------------------------------------------------------------------------

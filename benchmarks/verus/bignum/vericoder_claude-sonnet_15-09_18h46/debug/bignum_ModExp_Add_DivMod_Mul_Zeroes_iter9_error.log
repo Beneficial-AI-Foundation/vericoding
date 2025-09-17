@@ -1,0 +1,88 @@
+=== Verification Error - Iteration 9 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExp_Add_DivMod_Mul_Zeroes.rs
+Time: 2025-09-15 19:11:33
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Verification failed: verification results:: 7 verified, 3 errors
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_ModExp_Add_DivMod_Mul_Zeroes_impl.rs:52:5
+   |
+52 |     while i < max_len || carry > 0
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: precondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_ModExp_Add_DivMod_Mul_Zeroes_impl.rs:59:38
+   |
+26 |     requires c == '0' || c == '1'
+   |              -------------------- failed precondition
+...
+59 |         let a_bit = if i < a.len() { char_to_digit(a[a.len() - 1 - i]) } else { 0 };
+   |                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: precondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_ModExp_Add_DivMod_Mul_Zeroes_impl.rs:60:38
+   |
+26 |     requires c == '0' || c == '1'
+   |              -------------------- failed precondition
+...
+60 |         let b_bit = if i < b.len() { char_to_digit(b[b.len() - 1 - i]) } else { 0 };
+   |                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: invariant not satisfied at end of loop body
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_ModExp_Add_DivMod_Mul_Zeroes_impl.rs:71:13
+   |
+71 |             ValidBitString(res@),
+   |             ^^^^^^^^^^^^^^^^^^^^
+
+error: invariant not satisfied at end of loop body
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_ModExp_Add_DivMod_Mul_Zeroes_impl.rs:94:13
+   |
+94 |             ValidBitString(result@),
+   |             ^^^^^^^^^^^^^^^^^^^^^^^
+
+error: aborting due to 4 previous errors
+
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+verification results:: 7 verified, 3 errors
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_ModExp_Add_DivMod_Mul_Zeroes_impl.rs:52:5
+   |
+52 |     while i < max_len || carry > 0
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: precondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_ModExp_Add_DivMod_Mul_Zeroes_impl.rs:59:38
+   |
+26 |     requires c == '0' || c == '1'
+   |              -------------------- failed precondition
+...
+59 |         let a_bit = if i < a.len() { char_to_digit(a[a.len() - 1 - i]) } else { 0 };
+   |                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: precondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_ModExp_Add_DivMod_Mul_Zeroes_impl.rs:60:38
+   |
+26 |     requires c == '0' || c == '1'
+   |              -------------------- failed precondition
+...
+60 |         let b_bit = if i < b.len() { char_to_digit(b[b.len() - 1 - i]) } else { 0 };
+   |                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: invariant not satisfied at end of loop body
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_ModExp_Add_DivMod_Mul_Zeroes_impl.rs:71:13
+   |
+71 |             ValidBitString(res@),
+   |             ^^^^^^^^^^^^^^^^^^^^
+
+error: invariant not satisfied at end of loop body
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_ModExp_Add_DivMod_Mul_Zeroes_impl.rs:94:13
+   |
+94 |             ValidBitString(result@),
+   |             ^^^^^^^^^^^^^^^^^^^^^^^
+
+error: aborting due to 4 previous errors
+

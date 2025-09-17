@@ -1,0 +1,177 @@
+=== Raw LLM Generate Response ===
+Length: 4464 characters
+--------------------------------------------------------------------------------
+["{
+    let mut carry = 0u8;
+    let mut result = Vec::new();
+    let max_len = if s1.len() > s2.len() { s1.len() } else { s2.len() };
+    
+    let mut i = 0;
+    while i < max_len || carry > 0
+        invariant
+            i <= max_len,
+            carry <= 1,
+            ValidBitString(result@),
+            result.len() == i,
+    {
+        let mut sum = carry;
+        
+        if i < s1.len() {
+            sum = sum + if s1[i] == '1' { 1 } else { 0 };
+        }
+        
+        if i < s2.len() {
+            sum = sum + if s2[i] == '1' { 1 } else { 0 };
+        }
+        
+        result.push(if sum % 2 == 1 { '1' } else { '0' });
+        carry = sum / 2;
+        i = i + 1;
+    }
+    
+    // Reverse to get correct bit order
+    let mut j = 0;
+    let mut reversed = Vec::new();
+    while j < result.len()
+        invariant
+            j <= result.len(),
+            ValidBitString(reversed@),
+            reversed.len() == j,
+    {
+        reversed.push(result[result.len() - 1 - j]);
+        j = j + 1;
+    }
+    
+    reversed
+}", "{
+    let mut quotient = Vec::new();
+    let mut remainder = Vec::new();
+    
+    // Copy dividend to remainder
+    let mut i = 0;
+    while i < dividend.len()
+        invariant
+            i <= dividend.len(),
+            ValidBitString(remainder@),
+            remainder.len() == i,
+    {
+        remainder.push(dividend[i]);
+        i = i + 1;
+    }
+    
+    // Perform division
+    while remainder.len() > 0 && Str2Int(remainder@) >= Str2Int(divisor@)
+        invariant
+            ValidBitString(quotient@),
+            ValidBitString(remainder@),
+            Str2Int(divisor@) > 0,
+        decreases Str2Int(remainder@)
+    {
+        // Subtract divisor from remainder
+        let mut borrow = 0u8;
+        let mut j = 0;
+        let mut new_remainder = Vec::new();
+        
+        while j < remainder.len()
+            invariant
+                j <= remainder.len(),
+                ValidBitString(new_remainder@),
+                new_remainder.len() == j,
+        {
+            let mut diff = if remainder[j] == '1' { 1i32 } else { 0i32 };
+            diff = diff - borrow as i32;
+            
+            if j < divisor.len() {
+                diff = diff - if divisor[j] == '1' { 1i32 } else { 0i32 };
+            }
+            
+            if diff < 0 {
+                diff = diff + 2;
+                borrow = 1;
+            } else {
+                borrow = 0;
+            }
+            
+            new_remainder.push(if diff == 1 { '1' } else { '0' });
+            j = j + 1;
+        }
+        
+        remainder = new_remainder;
+        quotient.push('1');
+    }
+    
+    if quotient.len() == 0 {
+        quotient.push('0');
+    }
+    
+    if remainder.len() == 0 {
+        remainder.push('0');
+    }
+    
+    (quotient, remainder)
+}", "{
+    if sy.len() == 0 || (sy.len() == 1 && sy[0] == '0') {
+        let mut result = Vec::new();
+        result.push('1');
+        let (_, rem) = DivMod(&result, sz);
+        return rem;
+    }
+    
+    if sy.len() == 1 && sy[0] == '1' {
+        let (_, rem) = DivMod(sx, sz);
+        return rem;
+    }
+    
+    // Recursive case: compute x^(y/2)
+    let mut y_half = Vec::new();
+    let mut i = 0;
+    let mut carry = 0u8;
+    
+    while i < sy.len()
+        invariant
+            i <= sy.len(),
+            ValidBitString(y_half@),
+            y_half.len() == i,
+    {
+        let val = carry * 10 + if sy[i] == '1' { 1 } else { 0 };
+        y_half.push(if val / 2 == 1 { '1' } else { '0' });
+        carry = val % 2;
+        i = i + 1;
+    }
+    
+    let half_result = ModExp(sx, &y_half, sz);
+    
+    // Square the half result
+    let mut squared = Vec::new();
+    let mut j = 0;
+    while j < half_result.len()
+        invariant
+            j <= half_result.len(),
+            ValidBitString(squared@),
+    {
+        let mut k = 0;
+        while k < half_result.len()
+            invariant
+                k <= half_result.len(),
+                ValidBitString(squared@),
+        {
+            if half_result[j] == '1' && half_result[k] == '1' {
+                squared = Add(&squared, &squared);
+            }
+            k = k + 1;
+        }
+        j = j + 1;
+    }
+    
+    let (_, squared_mod) = DivMod(&squared, sz);
+    
+    // If y is odd, multiply by x once more
+    if sy[sy.len() - 1] == '1' {
+        let multiplied = Add(&squared_mod, sx);
+        let (_, result) = DivMod(&multiplied, sz);
+        result
+    } else {
+        squared_mod
+    }
+}"]
+--------------------------------------------------------------------------------

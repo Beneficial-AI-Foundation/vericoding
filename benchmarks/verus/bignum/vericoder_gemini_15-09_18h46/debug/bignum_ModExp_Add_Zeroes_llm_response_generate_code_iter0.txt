@@ -1,0 +1,11 @@
+=== LLM Response - generate_code - Iteration 0 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExp_Add_Zeroes.rs
+Prompt Hash: 342d0846
+JSON Parsed Successfully: False
+Timestamp: 1757955068.0835469
+Content Length: 1476 chars
+--------------------------------------------------------------------------------
+```json
+[
+    "spec fn Int2Str_spec(n: nat) -> Seq<char>\n    decreases n\n{\n    if n < 2 {\n        if n == 0 { seq!['0'] } else { seq!['1'] }\n    } else {\n        Int2Str_spec(n/2).push(if n % 2 == 1 { '1' } else { '0' })\n    }\n}\n\nproof fn lemma_Str2Int_Int2Str(n: nat)\n    ensures Str2Int(Int2Str_spec(n)) == n\n    decreases n\n{\n    if n >= 2 {\n        lemma_Str2Int_Int2Str(n/2);\n    }\n}\n\nproof fn lemma_ValidBitString_Int2Str(n: nat)\n    ensures ValidBitString(Int2Str_spec(n))\n    decreases n\n{\n    if n >= 2 {\n        lemma_ValidBitString_Int2Str(n/2);\n    }\n}\n\nexec fn str_to_int_exec(s: &[char]) -> (res: u128)\n    requires\n        ValidBitString(s@),\n        Str2Int(s@) < 0x80000000_00000000_00000000_00000000u128, // 2^127\n    ensures res as nat == Str2Int(s@)\n{\n    let mut res: u128 = 0;\n    let mut i: usize = 0;\n    while i < s.len()\n        invariant\n            ValidBitString(s@),\n            Str2Int(s@) < 0x80000000_00000000_00000000_00000000u128,\n            0 <= i <= s.len(),\n            res as nat == Str2Int(s@.subrange(0, i as int)),\n        decreases s.len() - i\n    {\n        res = res * 2;\n        if s[i] == '1' {\n            res = res + 1;\n        }\n        i = i + 1;\n    }\n    res\n}\n\nexec fn int_to_str_exec(n: u128) -> (res: Vec<char>)\n    decreases n\n    ensures\n        ValidBitString(res@),\n        Str2Int(res@) == n as nat,\n{\n    proof {\n        lemma_Str2Int_Int2Str(n as nat);\
+--------------------------------------------------------------------------------

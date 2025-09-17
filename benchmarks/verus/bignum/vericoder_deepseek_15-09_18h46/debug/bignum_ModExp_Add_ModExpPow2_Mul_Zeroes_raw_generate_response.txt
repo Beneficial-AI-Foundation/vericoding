@@ -1,0 +1,5 @@
+=== Raw LLM Generate Response ===
+Length: 958 characters
+--------------------------------------------------------------------------------
+["proof fn lemma_str2int_monotonic(s: Seq<char>, t: Seq<char>)\n    requires\n        ValidBitString(s),\n        ValidBitString(t),\n        s.len() <= t.len()\n    ensures\n        Str2Int(s) <= Str2Int(t)\n{}\n\nproof fn lemma_str2int_power2_add(n: nat)\n    ensures\n        Str2Int(Seq::new(n, |i: int| if i < n as int - 1 { '0' } else { '1' })) == 2.pow(n) - 1,\n{\n    if n > 0 {\n        lemma_str2int_power2_add(n - 1);\n    }\n}", "{\n    proof {\n        lemma_str2int_monotonic(a@, a@);\n        lemma_str2int_monotonic(b@, b@);\n        lemma_str2int_power2_add(a@.len() as nat);\n        lemma_str2int_power2_add(b@.len() as nat);\n    }\n    \n    let mut result: Vec<char> = Vec::new();\n    let zero_char: char = '0';\n    \n    while result.len() < a.len() + b.len()\n        invariant\n            ValidBitString(result@),\n            result.len() <= a.len() + b.len()\n    {\n        result.push(zero_char);\n    }\n    \n    result\n}"]
+--------------------------------------------------------------------------------

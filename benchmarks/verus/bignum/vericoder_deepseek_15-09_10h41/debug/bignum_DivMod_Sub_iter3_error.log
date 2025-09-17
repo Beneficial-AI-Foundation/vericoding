@@ -1,0 +1,100 @@
+=== Verification Error - Iteration 3 ===
+File: benchmarks/verus/bignum/files/bignum_DivMod_Sub.rs
+Time: 2025-09-15 11:03:00
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_10h41/bignum_DivMod_Sub_impl.rs:33:21
+   |
+33 |     let bit_value = pow2((length - i - 1) as nat) as int;
+   |                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_10h41/bignum_DivMod_Sub_impl.rs:99:24
+   |
+99 |     let dividend_int = Str2Int(dividend@) as int;
+   |                        ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_10h41/bignum_DivMod_Sub_impl.rs:100:23
+    |
+100 |     let divisor_int = Str2Int(divisor@) as int;
+    |                       ^^^^^^^^^^^^^^^^^^^^^^^^
+
+error[E0425]: cannot find value `result` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_10h41/bignum_DivMod_Sub_impl.rs:27:11
+   |
+27 |   ensures result.is_some() ==> (ValidBitString(result.unwrap()@) && result.unwrap()@.len() == length && Str2Int(result.unwrap()@) == n as nat)
+   |           ^^^^^^ not found in this scope
+
+error[E0425]: cannot find value `result` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_10h41/bignum_DivMod_Sub_impl.rs:27:48
+   |
+27 |   ensures result.is_some() ==> (ValidBitString(result.unwrap()@) && result.unwrap()@.len() == length && Str2Int(result.unwrap()@) == n as nat)
+   |                                                ^^^^^^ not found in this scope
+
+error[E0425]: cannot find value `result` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_10h41/bignum_DivMod_Sub_impl.rs:27:69
+   |
+27 |   ensures result.is_some() ==> (ValidBitString(result.unwrap()@) && result.unwrap()@.len() == length && Str2Int(result.unwrap()@) == n as nat)
+   |                                                                     ^^^^^^ not found in this scope
+
+error[E0425]: cannot find value `result` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_10h41/bignum_DivMod_Sub_impl.rs:27:113
+   |
+27 |   ensures result.is_some() ==> (ValidBitString(result.unwrap()@) && result.unwrap()@.len() == length && Str2Int(result.unwrap()@) == n as nat)
+   |                                                                                                                 ^^^^^^ not found in this scope
+
+error: aborting due to 7 previous errors
+
+For more information about this error, try `rustc --explain E0425`.
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_10h41/bignum_DivMod_Sub_impl.rs:33:21
+   |
+33 |     let bit_value = pow2((length - i - 1) as nat) as int;
+   |                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_10h41/bignum_DivMod_Sub_impl.rs:99:24
+   |
+99 |     let dividend_int = Str2Int(dividend@) as int;
+   |                        ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_10h41/bignum_DivMod_Sub_impl.rs:100:23
+    |
+100 |     let divisor_int = Str2Int(divisor@) as int;
+    |                       ^^^^^^^^^^^^^^^^^^^^^^^^
+
+error[E0425]: cannot find value `result` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_10h41/bignum_DivMod_Sub_impl.rs:27:11
+   |
+27 |   ensures result.is_some() ==> (ValidBitString(result.unwrap()@) && result.unwrap()@.len() == length && Str2Int(result.unwrap()@) == n as nat)
+   |           ^^^^^^ not found in this scope
+
+error[E0425]: cannot find value `result` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_10h41/bignum_DivMod_Sub_impl.rs:27:48
+   |
+27 |   ensures result.is_some() ==> (ValidBitString(result.unwrap()@) && result.unwrap()@.len() == length && Str2Int(result.unwrap()@) == n as nat)
+   |                                                ^^^^^^ not found in this scope
+
+error[E0425]: cannot find value `result` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_10h41/bignum_DivMod_Sub_impl.rs:27:69
+   |
+27 |   ensures result.is_some() ==> (ValidBitString(result.unwrap()@) && result.unwrap()@.len() == length && Str2Int(result.unwrap()@) == n as nat)
+   |                                                                     ^^^^^^ not found in this scope
+
+error[E0425]: cannot find value `result` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_10h41/bignum_DivMod_Sub_impl.rs:27:113
+   |
+27 |   ensures result.is_some() ==> (ValidBitString(result.unwrap()@) && result.unwrap()@.len() == length && Str2Int(result.unwrap()@) == n as nat)
+   |                                                                                                                 ^^^^^^ not found in this scope
+
+error: aborting due to 7 previous errors
+
+For more information about this error, try `rustc --explain E0425`.

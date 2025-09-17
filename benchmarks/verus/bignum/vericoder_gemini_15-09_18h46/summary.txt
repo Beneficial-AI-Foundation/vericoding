@@ -1,0 +1,97 @@
+=== VERUS SPECIFICATION-TO-CODE PROCESSING SUMMARY (PARALLEL VERSION) ===
+
+Language: Verus
+LLM: gemini
+Test directory: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files
+Output directory: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini_15-09_18h46
+Max iterations: 10
+Parallel workers: 4
+Test date: 2025-09-15T20:50:05.968140
+
+Total original files: 62
+
+=== OVERALL STATISTICS ===
+Total successful: 1
+Total failed: 61
+Success rate: 1.6%
+
+=== SUCCESSFUL FILES (VERIFIED) ===
+✓ bignum_ModExp_Add_ModExpPow2_Mul_Zeroes.rs -> bignum_ModExp_Add_ModExpPow2_Mul_Zeroes_impl.rs
+
+=== FAILED FILES (VERIFICATION) ===
+✗ bignum_ModExp_DivMod_Mul_Zeroes.rs
+✗ /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExp_Add_Zeroes.rs
+✗ /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_NormalizeBitString.rs
+✗ /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExp_ModExpPow2_Zeroes.rs
+✗ bignum_DivMod.rs
+✗ /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExpPow2_Add.rs
+✗ /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExp_Add_DivMod.rs
+✗ /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignums_Sub.rs
+✗ /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExp_Add_DivMod_Zeroes.rs
+✗ /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_Compare_CompareUnequal.rs
+✗ /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExpPow2_Add_DivMod.rs
+✗ /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExpPow2.rs
+✗ /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExp_DivMod_ModExpPow2.rs
+✗ /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExp_Add.rs
+✗ /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExp_DivMod.rs
+✗ bignum_ModExp_DivMod_ModExpPow2_Zeroes.rs
+✗ /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExp_DivMod_ModExpPow2_Mul.rs
+✗ /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExp_DivMod_Mul.rs
+✗ /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExpPow2_Add_Mul.rs
+✗ /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExp_Zeroes.rs
+✗ bignums_Zeros.rs
+✗ bignums_Sub_NormalizeBitstring.rs
+✗ bignum_Mul_NormalizeBitString.rs
+✗ bignum_ModExpPow2_DivMod_Mul.rs
+✗ /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExp_Add_DivMod_Mul.rs
+✗ /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_Add.rs
+✗ /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExp_ModExpPow2_Mul_Zeroes.rs
+✗ /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_Compare_NormalizeBitString.rs
+✗ /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExpPow2_Mul.rs
+✗ /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExp_Mul_Zeroes.rs
+✗ /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExp_int.rs
+✗ bignum_DivMod_Compare_Sub.rs
+✗ bignum_ModExp_Add_ModExpPow2_Mul.rs
+✗ bignum_ModExpPow2_DivMod.rs
+✗ bignum_ModExp_Add_DivMod_ModExpPow2_Zeroes.rs
+✗ /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExp_ModExpPow2_Add_Zeroes_DivMod_Mul.rs
+✗ bignum_ModExp_Add_DivMod_ModExpPow2.rs
+✗ /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExp_int_ModExpPow2_int.rs
+✗ /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExp_Add_Mul_Zeroes.rs
+✗ /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExp_DivMod_ModExpPow2_Mul_Zeroes.rs
+✗ /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_Mul_Add.rs
+✗ bignum_Compare_CompareUnequal_NormalizeBitString.rs
+✗ bignum_ModExpPow2_Add_DivMod_Mul.rs
+✗ /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_Compare.rs
+✗ bignum_DivMod_Sub.rs
+✗ /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExp_DivMod_Zeroes.rs
+✗ /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExp_ModExpPow2.rs
+✗ bignum_DivMod_Compare.rs
+✗ /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExp.rs
+✗ /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExp_Add_Mul.rs
+✗ /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExp_Add_DivMod_ModExpPow2_Mul.rs
+✗ /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_Mul.rs
+✗ /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExp_Add_ModExpPow2.rs
+✗ bignum_ModExp_Add_DivMod_Mul_Zeroes.rs
+✗ /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExp_Add_ModExpPow2_Zeroes.rs
+✗ bignum_Mul_Add_NormalizeBitString.rs
+✗ bignum_CompareUnequal.rs
+✗ /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExp_ModExpPow2_Mul.rs
+✗ /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_Add_NormalizeBitString.rs
+✗ bignum_ModExp_Mul.rs
+✗ bignum_ModExpPow2_int.rs
+
+=== PARALLEL PROCESSING FEATURES ===
+Parallel workers: 4
+API rate limiting: 1s between calls
+Debug mode: Enabled
+- Saves original specification as *_iter_0_original.rs
+- Saves initial generated code as *_iter_1_generated.rs
+- Saves current working version for each iteration as *_iter_N_current.rs
+- Saves final implementation as *_impl.rs
+- Full debugging: all intermediate files are saved
+
+- Debug mode control: Enabled
+- Configurable file output based on debug setting
+
+Generated on: 2025-09-15T20:50:05.968329

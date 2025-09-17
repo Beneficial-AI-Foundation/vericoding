@@ -1,0 +1,69 @@
+=== Raw LLM Fix Response - Iteration 9 ===
+Length: 2255 characters
+--------------------------------------------------------------------------------
+["/* helper modified by LLM (iteration 10): Replaced nat-suffixed literals with plain integers */
+/* helper modified by LLM (iteration 9): Cast integer literals to nat to fix type mismatches */
+exec fn str_to_nat(s: &[char]) -> nat
+    requires ValidBitString(s@)
+    ensures str_to_nat(s) == Str2Int(s@)
+    decreases s@.len()
+{
+    let mut result: nat = 0;
+    let mut i = 0;
+    while i < s.len()
+        invariant
+            i <= s.len(),
+            result == Str2Int(s@.subrange(0, i as int))
+    {
+        result = result * 2 + (if s[i] == '1' { 1 } else { 0 });
+        i += 1;
+    }
+    result
+}
+
+/* helper modified by LLM (iteration 10): Replaced nat-suffixed literals with plain integers */
+/* helper modified by LLM (iteration 9): Cast integer literals to nat to fix type mismatches */
+exec fn mod_exp(base: nat, exp: nat, modd: nat) -> nat
+    requires base >= 0, exp >= 0, modd > 1
+    ensures mod_exp(base, exp, modd) == Exp_int(base, exp) % modd
+    decreases exp
+{
+    if exp == 0 {
+        1
+    } else {
+        let res = mod_exp(base, exp / 2, modd);
+        let res2 = (res * res) % modd;
+        if exp % 2 == 0 {
+            res2
+        } else {
+            (res2 * base) % modd
+        }
+    }
+}
+
+/* helper modified by LLM (iteration 10): Replaced nat-suffixed literals with plain integers */
+/* helper modified by LLM (iteration 9): Cast integer literals to nat to fix type mismatches */
+exec fn nat_to_binary(n: nat) -> Vec<char>
+    requires n >= 0
+    ensures ValidBitString(nat_to_binary(n)@), Str2Int(nat_to_binary(n)@) == n
+    decreases n
+{
+    if n == 0 {
+        vec!['0']
+    } else {
+        let mut string = Vec::new();
+        let mut num: nat = n;
+        while num > 0
+            invariant
+                num >= 0,
+            decreases num
+        {
+            let bit = if num % 2 == 0 { '0' } else { '1' };
+            string.push(bit);
+            num = num / 2;
+        }
+        string.reverse();
+        string
+    }
+}", "/* code modified by LLM (iteration 10): Reused fixed helpers with plain integers */\n{\n    let base = str_to_nat(sx);\n    let expp = str_to_nat(sy);\n    let modd = str_to_nat(sz);\n    let res_int = mod_exp(base, expp, modd);\n    let res = nat_to_binary(res_int);\n    res\n}"]
+--------------------------------------------------------------------------------

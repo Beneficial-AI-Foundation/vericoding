@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(n: int, s: Seq<char>) -> bool {
     n >= 1 && n <= 2000 && s.len() == n && 
     forall|i: int| 0 <= i < s.len() ==> 'a' <= s[i] <= 'z'
@@ -18,6 +15,9 @@ spec fn valid_output(result: Seq<char>, n: int) -> bool {
 spec fn preserves_characters(s: Seq<char>, result: Seq<char>) -> bool {
     s.to_multiset() == result.to_multiset()
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

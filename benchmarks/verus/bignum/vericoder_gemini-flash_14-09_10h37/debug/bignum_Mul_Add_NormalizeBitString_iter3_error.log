@@ -1,0 +1,546 @@
+=== Verification Error - Iteration 3 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_Mul_Add_NormalizeBitString.rs
+Time: 2025-09-14 10:43:23
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_Mul_Add_NormalizeBitString_impl.rs:35:21
+   |
+35 |     let len1: nat = s1.len();
+   |               ---   ^^^^^^^^ expected `nat`, found `usize`
+   |               |
+   |               expected due to this
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_Mul_Add_NormalizeBitString_impl.rs:36:21
+   |
+36 |     let len2: nat = s2.len();
+   |               ---   ^^^^^^^^ expected `nat`, found `usize`
+   |               |
+   |               expected due to this
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_Mul_Add_NormalizeBitString_impl.rs:38:16
+   |
+38 |     if len1 == 0 || len2 == 0 {
+   |        ----    ^ expected `nat`, found integer
+   |        |
+   |        expected because this is `verus_builtin::nat`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_Mul_Add_NormalizeBitString_impl.rs:38:29
+   |
+38 |     if len1 == 0 || len2 == 0 {
+   |                     ----    ^ expected `nat`, found integer
+   |                     |
+   |                     expected because this is `verus_builtin::nat`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_Mul_Add_NormalizeBitString_impl.rs:45:31
+   |
+45 |     products.resize(max_len + 1, 0);
+   |                     -------   ^ expected `nat`, found integer
+   |                     |
+   |                     expected because this is `verus_builtin::nat`
+
+error[E0308]: arguments to this method are incorrect
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_Mul_Add_NormalizeBitString_impl.rs:45:14
+   |
+45 |     products.resize(max_len + 1, 0);
+   |              ^^^^^^ -----------  - expected `verus_builtin::nat`, found `{integer}`
+   |                     |
+   |                     expected `usize`, found `verus_builtin::nat`
+   |
+note: method defined here
+  --> /rustc/6b00bc3880198600130e1cf62b8f8a93494488cc/library/alloc/src/vec/mod.rs:3035:12
+help: swap these arguments
+   |
+45 -     products.resize(max_len + 1, 0);
+45 +     products.resize(0, max_len + 1);
+   |
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_Mul_Add_NormalizeBitString_impl.rs:47:17
+   |
+47 |     for i in 0..len1
+   |                 ^^^^ expected integer, found `nat`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_Mul_Add_NormalizeBitString_impl.rs:52:43
+   |
+52 |         let digit1 = CharToInt(s1@[len1 - 1 - i]);
+   |                                    ----   ^ expected `nat`, found integer
+   |                                    |
+   |                                    expected because this is `verus_builtin::nat`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_Mul_Add_NormalizeBitString_impl.rs:52:47
+   |
+52 |         let digit1 = CharToInt(s1@[len1 - 1 - i]);
+   |                                    --------   ^ expected `nat`, found integer
+   |                                    |
+   |                                    expected because this is `verus_builtin::nat`
+
+error[E0608]: cannot index into a value of type `vstd::seq::Seq<char>`
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_Mul_Add_NormalizeBitString_impl.rs:52:35
+   |
+52 |         let digit1 = CharToInt(s1@[len1 - 1 - i]);
+   |                                   ^^^^^^^^^^^^^^
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_Mul_Add_NormalizeBitString_impl.rs:53:21
+   |
+53 |         for j in 0..len2
+   |                     ^^^^ expected integer, found `nat`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_Mul_Add_NormalizeBitString_impl.rs:58:47
+   |
+58 |             let digit2 = CharToInt(s2@[len2 - 1 - j]);
+   |                                        ----   ^ expected `nat`, found integer
+   |                                        |
+   |                                        expected because this is `verus_builtin::nat`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_Mul_Add_NormalizeBitString_impl.rs:58:51
+   |
+58 |             let digit2 = CharToInt(s2@[len2 - 1 - j]);
+   |                                        --------   ^ expected `nat`, found integer
+   |                                        |
+   |                                        expected because this is `verus_builtin::nat`
+
+error[E0608]: cannot index into a value of type `vstd::seq::Seq<char>`
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_Mul_Add_NormalizeBitString_impl.rs:58:39
+   |
+58 |             let digit2 = CharToInt(s2@[len2 - 1 - j]);
+   |                                       ^^^^^^^^^^^^^^
+
+error[E0599]: no method named `index` found for struct `std::vec::Vec<verus_builtin::nat>` in the current scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_Mul_Add_NormalizeBitString_impl.rs:60:42
+   |
+60 |             products.set(i + j, products.index(i + j) + product);
+   |                                          ^^^^^
+  --> /rustc/6b00bc3880198600130e1cf62b8f8a93494488cc/library/core/src/ops/index.rs:72:8
+   |
+   = note: the method is available for `std::vec::Vec<verus_builtin::nat>` here
+   |
+   = help: items from traits can only be used if the trait is in scope
+help: trait `Index` which provides `index` is implemented but not in scope; perhaps you want to import it
+   |
+1  + use std::ops::Index;
+   |
+help: there is a method `index_mut` with a similar name
+   |
+60 |             products.set(i + j, products.index_mut(i + j) + product);
+   |                                               ++++
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_Mul_Add_NormalizeBitString_impl.rs:64:26
+   |
+64 |     let mut carry: nat = 0;
+   |                    ---   ^ expected `nat`, found integer
+   |                    |
+   |                    expected due to this
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_Mul_Add_NormalizeBitString_impl.rs:65:17
+   |
+65 |     for i in 0..max_len
+   |                 ^^^^^^^ expected integer, found `nat`
+
+error[E0599]: no method named `index` found for struct `std::vec::Vec<verus_builtin::nat>` in the current scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_Mul_Add_NormalizeBitString_impl.rs:71:28
+   |
+71 |         let sum = products.index(i) + carry;
+   |                            ^^^^^
+  --> /rustc/6b00bc3880198600130e1cf62b8f8a93494488cc/library/core/src/ops/index.rs:72:8
+   |
+   = note: the method is available for `std::vec::Vec<verus_builtin::nat>` here
+   |
+   = help: items from traits can only be used if the trait is in scope
+help: trait `Index` which provides `index` is implemented but not in scope; perhaps you want to import it
+   |
+1  + use std::ops::Index;
+   |
+help: there is a method `index_mut` with a similar name
+   |
+71 |         let sum = products.index_mut(i) + carry;
+   |                                 ++++
+
+error[E0599]: no method named `index` found for struct `std::vec::Vec<verus_builtin::nat>` in the current scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_Mul_Add_NormalizeBitString_impl.rs:75:36
+   |
+75 |     products.set(max_len, products.index(max_len) + carry);
+   |                                    ^^^^^
+  --> /rustc/6b00bc3880198600130e1cf62b8f8a93494488cc/library/core/src/ops/index.rs:72:8
+   |
+   = note: the method is available for `std::vec::Vec<verus_builtin::nat>` here
+   |
+   = help: items from traits can only be used if the trait is in scope
+help: trait `Index` which provides `index` is implemented but not in scope; perhaps you want to import it
+   |
+1  + use std::ops::Index;
+   |
+help: there is a method `index_mut` with a similar name
+   |
+75 |     products.set(max_len, products.index_mut(max_len) + carry);
+   |                                         ++++
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_Mul_Add_NormalizeBitString_impl.rs:75:18
+   |
+75 |     products.set(max_len, products.index(max_len) + carry);
+   |              --- ^^^^^^^ expected `usize`, found `nat`
+   |              |
+   |              arguments to this method are incorrect
+   |
+note: method defined here
+  --> /Users/runner/work/verus/verus/source/vstd/pervasive.rs:380:8
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_Mul_Add_NormalizeBitString_impl.rs:78:19
+   |
+78 |     for i in (0..=max_len).rev()
+   |               ----^^^^^^^
+   |               |   |
+   |               |   expected integer, found `nat`
+   |               arguments to this function are incorrect
+   |
+note: associated function defined here
+  --> /rustc/6b00bc3880198600130e1cf62b8f8a93494488cc/library/core/src/ops/range.rs:378:18
+
+error[E0277]: the trait bound `std::iter::Rev<std::ops::RangeInclusive<{integer}>>: vstd::pervasive::ForLoopGhostIteratorNew` is not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_Mul_Add_NormalizeBitString_impl.rs:78:5
+   |
+78 | /     for i in (0..=max_len).rev()
+79 | |         invariant
+80 | |             0 <= i + 1 && i + 1 <= max_len + 1,
+81 | |             ({
+...  |
+96 | |     }
+   | |_____^ the trait `vstd::pervasive::ForLoopGhostIteratorNew` is not implemented for `std::iter::Rev<std::ops::RangeInclusive<{integer}>>`
+   |
+   = help: the following other types implement trait `vstd::pervasive::ForLoopGhostIteratorNew`:
+             std::collections::hash_map::Iter<'a, Key, Value>
+             std::collections::hash_map::Keys<'a, Key, Value>
+             std::collections::hash_map::Values<'a, Key, Value>
+             std::collections::hash_set::Iter<'a, Key>
+             std::collections::vec_deque::Iter<'a, T>
+             std::ops::Range<A>
+             std::slice::Iter<'a, T>
+             std::str::Chars<'a>
+             std::vec::IntoIter<T, A>
+
+error[E0277]: the trait bound `std::iter::Rev<std::ops::RangeInclusive<{integer}>>: vstd::pervasive::ForLoopGhostIteratorNew` is not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_Mul_Add_NormalizeBitString_impl.rs:78:14
+   |
+78 |     for i in (0..=max_len).rev()
+   |              ^^^^^^^^^^^^^^^^^^^ the trait `vstd::pervasive::ForLoopGhostIteratorNew` is not implemented for `std::iter::Rev<std::ops::RangeInclusive<{integer}>>`
+   |
+   = help: the following other types implement trait `vstd::pervasive::ForLoopGhostIteratorNew`:
+             std::collections::hash_map::Iter<'a, Key, Value>
+             std::collections::hash_map::Keys<'a, Key, Value>
+             std::collections::hash_map::Values<'a, Key, Value>
+             std::collections::hash_set::Iter<'a, Key>
+             std::collections::vec_deque::Iter<'a, T>
+             std::ops::Range<A>
+             std::slice::Iter<'a, T>
+             std::str::Chars<'a>
+             std::vec::IntoIter<T, A>
+
+error[E0599]: no method named `index` found for struct `std::vec::Vec<verus_builtin::nat>` in the current scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_Mul_Add_NormalizeBitString_impl.rs:90:21
+   |
+90 |         if products.index(i) == 1 {
+   |                     ^^^^^
+  --> /rustc/6b00bc3880198600130e1cf62b8f8a93494488cc/library/core/src/ops/index.rs:72:8
+   |
+   = note: the method is available for `std::vec::Vec<verus_builtin::nat>` here
+   |
+   = help: items from traits can only be used if the trait is in scope
+help: trait `Index` which provides `index` is implemented but not in scope; perhaps you want to import it
+   |
+1  + use std::ops::Index;
+   |
+help: there is a method `index_mut` with a similar name
+   |
+90 |         if products.index_mut(i) == 1 {
+   |                          ++++
+
+error: aborting due to 24 previous errors
+
+Some errors have detailed explanations: E0277, E0308, E0599, E0608.
+For more information about an error, try `rustc --explain E0277`.
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_Mul_Add_NormalizeBitString_impl.rs:35:21
+   |
+35 |     let len1: nat = s1.len();
+   |               ---   ^^^^^^^^ expected `nat`, found `usize`
+   |               |
+   |               expected due to this
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_Mul_Add_NormalizeBitString_impl.rs:36:21
+   |
+36 |     let len2: nat = s2.len();
+   |               ---   ^^^^^^^^ expected `nat`, found `usize`
+   |               |
+   |               expected due to this
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_Mul_Add_NormalizeBitString_impl.rs:38:16
+   |
+38 |     if len1 == 0 || len2 == 0 {
+   |        ----    ^ expected `nat`, found integer
+   |        |
+   |        expected because this is `verus_builtin::nat`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_Mul_Add_NormalizeBitString_impl.rs:38:29
+   |
+38 |     if len1 == 0 || len2 == 0 {
+   |                     ----    ^ expected `nat`, found integer
+   |                     |
+   |                     expected because this is `verus_builtin::nat`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_Mul_Add_NormalizeBitString_impl.rs:45:31
+   |
+45 |     products.resize(max_len + 1, 0);
+   |                     -------   ^ expected `nat`, found integer
+   |                     |
+   |                     expected because this is `verus_builtin::nat`
+
+error[E0308]: arguments to this method are incorrect
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_Mul_Add_NormalizeBitString_impl.rs:45:14
+   |
+45 |     products.resize(max_len + 1, 0);
+   |              ^^^^^^ -----------  - expected `verus_builtin::nat`, found `{integer}`
+   |                     |
+   |                     expected `usize`, found `verus_builtin::nat`
+   |
+note: method defined here
+  --> /rustc/6b00bc3880198600130e1cf62b8f8a93494488cc/library/alloc/src/vec/mod.rs:3035:12
+help: swap these arguments
+   |
+45 -     products.resize(max_len + 1, 0);
+45 +     products.resize(0, max_len + 1);
+   |
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_Mul_Add_NormalizeBitString_impl.rs:47:17
+   |
+47 |     for i in 0..len1
+   |                 ^^^^ expected integer, found `nat`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_Mul_Add_NormalizeBitString_impl.rs:52:43
+   |
+52 |         let digit1 = CharToInt(s1@[len1 - 1 - i]);
+   |                                    ----   ^ expected `nat`, found integer
+   |                                    |
+   |                                    expected because this is `verus_builtin::nat`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_Mul_Add_NormalizeBitString_impl.rs:52:47
+   |
+52 |         let digit1 = CharToInt(s1@[len1 - 1 - i]);
+   |                                    --------   ^ expected `nat`, found integer
+   |                                    |
+   |                                    expected because this is `verus_builtin::nat`
+
+error[E0608]: cannot index into a value of type `vstd::seq::Seq<char>`
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_Mul_Add_NormalizeBitString_impl.rs:52:35
+   |
+52 |         let digit1 = CharToInt(s1@[len1 - 1 - i]);
+   |                                   ^^^^^^^^^^^^^^
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_Mul_Add_NormalizeBitString_impl.rs:53:21
+   |
+53 |         for j in 0..len2
+   |                     ^^^^ expected integer, found `nat`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_Mul_Add_NormalizeBitString_impl.rs:58:47
+   |
+58 |             let digit2 = CharToInt(s2@[len2 - 1 - j]);
+   |                                        ----   ^ expected `nat`, found integer
+   |                                        |
+   |                                        expected because this is `verus_builtin::nat`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_Mul_Add_NormalizeBitString_impl.rs:58:51
+   |
+58 |             let digit2 = CharToInt(s2@[len2 - 1 - j]);
+   |                                        --------   ^ expected `nat`, found integer
+   |                                        |
+   |                                        expected because this is `verus_builtin::nat`
+
+error[E0608]: cannot index into a value of type `vstd::seq::Seq<char>`
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_Mul_Add_NormalizeBitString_impl.rs:58:39
+   |
+58 |             let digit2 = CharToInt(s2@[len2 - 1 - j]);
+   |                                       ^^^^^^^^^^^^^^
+
+error[E0599]: no method named `index` found for struct `std::vec::Vec<verus_builtin::nat>` in the current scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_Mul_Add_NormalizeBitString_impl.rs:60:42
+   |
+60 |             products.set(i + j, products.index(i + j) + product);
+   |                                          ^^^^^
+  --> /rustc/6b00bc3880198600130e1cf62b8f8a93494488cc/library/core/src/ops/index.rs:72:8
+   |
+   = note: the method is available for `std::vec::Vec<verus_builtin::nat>` here
+   |
+   = help: items from traits can only be used if the trait is in scope
+help: trait `Index` which provides `index` is implemented but not in scope; perhaps you want to import it
+   |
+1  + use std::ops::Index;
+   |
+help: there is a method `index_mut` with a similar name
+   |
+60 |             products.set(i + j, products.index_mut(i + j) + product);
+   |                                               ++++
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_Mul_Add_NormalizeBitString_impl.rs:64:26
+   |
+64 |     let mut carry: nat = 0;
+   |                    ---   ^ expected `nat`, found integer
+   |                    |
+   |                    expected due to this
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_Mul_Add_NormalizeBitString_impl.rs:65:17
+   |
+65 |     for i in 0..max_len
+   |                 ^^^^^^^ expected integer, found `nat`
+
+error[E0599]: no method named `index` found for struct `std::vec::Vec<verus_builtin::nat>` in the current scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_Mul_Add_NormalizeBitString_impl.rs:71:28
+   |
+71 |         let sum = products.index(i) + carry;
+   |                            ^^^^^
+  --> /rustc/6b00bc3880198600130e1cf62b8f8a93494488cc/library/core/src/ops/index.rs:72:8
+   |
+   = note: the method is available for `std::vec::Vec<verus_builtin::nat>` here
+   |
+   = help: items from traits can only be used if the trait is in scope
+help: trait `Index` which provides `index` is implemented but not in scope; perhaps you want to import it
+   |
+1  + use std::ops::Index;
+   |
+help: there is a method `index_mut` with a similar name
+   |
+71 |         let sum = products.index_mut(i) + carry;
+   |                                 ++++
+
+error[E0599]: no method named `index` found for struct `std::vec::Vec<verus_builtin::nat>` in the current scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_Mul_Add_NormalizeBitString_impl.rs:75:36
+   |
+75 |     products.set(max_len, products.index(max_len) + carry);
+   |                                    ^^^^^
+  --> /rustc/6b00bc3880198600130e1cf62b8f8a93494488cc/library/core/src/ops/index.rs:72:8
+   |
+   = note: the method is available for `std::vec::Vec<verus_builtin::nat>` here
+   |
+   = help: items from traits can only be used if the trait is in scope
+help: trait `Index` which provides `index` is implemented but not in scope; perhaps you want to import it
+   |
+1  + use std::ops::Index;
+   |
+help: there is a method `index_mut` with a similar name
+   |
+75 |     products.set(max_len, products.index_mut(max_len) + carry);
+   |                                         ++++
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_Mul_Add_NormalizeBitString_impl.rs:75:18
+   |
+75 |     products.set(max_len, products.index(max_len) + carry);
+   |              --- ^^^^^^^ expected `usize`, found `nat`
+   |              |
+   |              arguments to this method are incorrect
+   |
+note: method defined here
+  --> /Users/runner/work/verus/verus/source/vstd/pervasive.rs:380:8
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_Mul_Add_NormalizeBitString_impl.rs:78:19
+   |
+78 |     for i in (0..=max_len).rev()
+   |               ----^^^^^^^
+   |               |   |
+   |               |   expected integer, found `nat`
+   |               arguments to this function are incorrect
+   |
+note: associated function defined here
+  --> /rustc/6b00bc3880198600130e1cf62b8f8a93494488cc/library/core/src/ops/range.rs:378:18
+
+error[E0277]: the trait bound `std::iter::Rev<std::ops::RangeInclusive<{integer}>>: vstd::pervasive::ForLoopGhostIteratorNew` is not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_Mul_Add_NormalizeBitString_impl.rs:78:5
+   |
+78 | /     for i in (0..=max_len).rev()
+79 | |         invariant
+80 | |             0 <= i + 1 && i + 1 <= max_len + 1,
+81 | |             ({
+...  |
+96 | |     }
+   | |_____^ the trait `vstd::pervasive::ForLoopGhostIteratorNew` is not implemented for `std::iter::Rev<std::ops::RangeInclusive<{integer}>>`
+   |
+   = help: the following other types implement trait `vstd::pervasive::ForLoopGhostIteratorNew`:
+             std::collections::hash_map::Iter<'a, Key, Value>
+             std::collections::hash_map::Keys<'a, Key, Value>
+             std::collections::hash_map::Values<'a, Key, Value>
+             std::collections::hash_set::Iter<'a, Key>
+             std::collections::vec_deque::Iter<'a, T>
+             std::ops::Range<A>
+             std::slice::Iter<'a, T>
+             std::str::Chars<'a>
+             std::vec::IntoIter<T, A>
+
+error[E0277]: the trait bound `std::iter::Rev<std::ops::RangeInclusive<{integer}>>: vstd::pervasive::ForLoopGhostIteratorNew` is not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_Mul_Add_NormalizeBitString_impl.rs:78:14
+   |
+78 |     for i in (0..=max_len).rev()
+   |              ^^^^^^^^^^^^^^^^^^^ the trait `vstd::pervasive::ForLoopGhostIteratorNew` is not implemented for `std::iter::Rev<std::ops::RangeInclusive<{integer}>>`
+   |
+   = help: the following other types implement trait `vstd::pervasive::ForLoopGhostIteratorNew`:
+             std::collections::hash_map::Iter<'a, Key, Value>
+             std::collections::hash_map::Keys<'a, Key, Value>
+             std::collections::hash_map::Values<'a, Key, Value>
+             std::collections::hash_set::Iter<'a, Key>
+             std::collections::vec_deque::Iter<'a, T>
+             std::ops::Range<A>
+             std::slice::Iter<'a, T>
+             std::str::Chars<'a>
+             std::vec::IntoIter<T, A>
+
+error[E0599]: no method named `index` found for struct `std::vec::Vec<verus_builtin::nat>` in the current scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_Mul_Add_NormalizeBitString_impl.rs:90:21
+   |
+90 |         if products.index(i) == 1 {
+   |                     ^^^^^
+  --> /rustc/6b00bc3880198600130e1cf62b8f8a93494488cc/library/core/src/ops/index.rs:72:8
+   |
+   = note: the method is available for `std::vec::Vec<verus_builtin::nat>` here
+   |
+   = help: items from traits can only be used if the trait is in scope
+help: trait `Index` which provides `index` is implemented but not in scope; perhaps you want to import it
+   |
+1  + use std::ops::Index;
+   |
+help: there is a method `index_mut` with a similar name
+   |
+90 |         if products.index_mut(i) == 1 {
+   |                          ++++
+
+error: aborting due to 24 previous errors
+
+Some errors have detailed explanations: E0277, E0308, E0599, E0608.
+For more information about an error, try `rustc --explain E0277`.

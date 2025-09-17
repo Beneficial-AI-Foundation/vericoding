@@ -1,0 +1,139 @@
+=== LLM Response - generate_code - Iteration 0 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExpPow2_Add.rs
+Prompt Hash: 0aba88a4
+JSON Parsed Successfully: False
+Timestamp: 1757954992.727755
+Content Length: 3483 chars
+--------------------------------------------------------------------------------
+["{
+    let mut carry = 0u8;
+    let mut result = Vec::new();
+    let max_len = if s1.len() > s2.len() { s1.len() } else { s2.len() };
+    
+    for i in 0..max_len {
+        let bit1 = if i < s1.len() {
+            if s1[s1.len() - 1 - i] == '1' { 1u8 } else { 0u8 }
+        } else {
+            0u8
+        };
+        
+        let bit2 = if i < s2.len() {
+            if s2[s2.len() - 1 - i] == '1' { 1u8 } else { 0u8 }
+        } else {
+            0u8
+        };
+        
+        let sum = bit1 + bit2 + carry;
+        result.push(if sum % 2 == 1 { '1' } else { '0' });
+        carry = sum / 2;
+    }
+    
+    if carry == 1 {
+        result.push('1');
+    }
+    
+    result.reverse();
+    
+    while result.len() > 1 && result[0] == '0' {
+        result.remove(0);
+    }
+    
+    if result.len() == 0 {
+        result.push('0');
+    }
+    
+    result
+}", "{
+    if n == 0 {
+        if sy.len() > 0 && sy[0] == '1' {
+            let mut res = Vec::new();
+            res.push('1');
+            return res;
+        } else {
+            let mut res = Vec::new();
+            res.push('0');
+            return res;
+        }
+    }
+    
+    let half_y = &sy[1..];
+    let mut x_squared = Vec::new();
+    
+    for i in 0..sx.len() {
+        for j in 0..sx.len() {
+            let bit1 = if sx[i] == '1' { 1u8 } else { 0u8 };
+            let bit2 = if sx[j] == '1' { 1u8 } else { 0u8 };
+            let prod = bit1 * bit2;
+            
+            let shift = sx.len() - 1 - i + sx.len() - 1 - j;
+            while x_squared.len() <= shift {
+                x_squared.push(0u8);
+            }
+            x_squared[shift] += prod;
+        }
+    }
+    
+    let mut carry = 0u8;
+    for i in 0..x_squared.len() {
+        let sum = x_squared[i] + carry;
+        x_squared[i] = sum % 2;
+        carry = sum / 2;
+    }
+    while carry > 0 {
+        x_squared.push(carry % 2);
+        carry = carry / 2;
+    }
+    
+    let mut x_squared_chars = Vec::new();
+    for i in (0..x_squared.len()).rev() {
+        x_squared_chars.push(if x_squared[i] == 1 { '1' } else { '0' });
+    }
+    
+    if x_squared_chars.len() == 0 {
+        x_squared_chars.push('0');
+    }
+    
+    let intermediate = ModExpPow2(&x_squared_chars, half_y, n - 1, sz);
+    
+    if sy[0] == '1' {
+        let mut prod_result = Vec::new();
+        for i in 0..sx.len() {
+            for j in 0..intermediate.len() {
+                let bit1 = if sx[i] == '1' { 1u8 } else { 0u8 };
+                let bit2 = if intermediate[j] == '1' { 1u8 } else { 0u8 };
+                let prod = bit1 * bit2;
+                
+                let shift = sx.len() - 1 - i + intermediate.len() - 1 - j;
+                while prod_result.len() <= shift {
+                    prod_result.push(0u8);
+                }
+                prod_result[shift] += prod;
+            }
+        }
+        
+        let mut carry = 0u8;
+        for i in 0..prod_result.len() {
+            let sum = prod_result[i] + carry;
+            prod_result[i] = sum % 2;
+            carry = sum / 2;
+        }
+        while carry > 0 {
+            prod_result.push(carry % 2);
+            carry = carry / 2;
+        }
+        
+        let mut final_result = Vec::new();
+        for i in (0..prod_result.len()).rev() {
+            final_result.push(if prod_result[i] == 1 { '1' } else { '0' });
+        }
+        
+        if final_result.len() == 0 {
+            final_result.push('0');
+        }
+        
+        final_result
+    } else {
+        intermediate
+    }
+}"]
+--------------------------------------------------------------------------------

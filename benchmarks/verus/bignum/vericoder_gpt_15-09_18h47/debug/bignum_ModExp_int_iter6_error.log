@@ -1,0 +1,38 @@
+=== Verification Error - Iteration 6 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExp_int.rs
+Time: 2025-09-15 20:33:24
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: error: ghost closures cannot have requires/ensures
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt_15-09_18h47/bignum_ModExp_int_impl.rs:51:26
+   |
+51 |           assert_forall_by(|i: int|
+   |  __________________________^
+52 | |             requires
+53 | |                 0 <= i,
+54 | |                 i < s.len() as int,
+...  |
+71 | |         });
+   | |_________^
+
+error: aborting due to 1 previous error
+
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+error: ghost closures cannot have requires/ensures
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt_15-09_18h47/bignum_ModExp_int_impl.rs:51:26
+   |
+51 |           assert_forall_by(|i: int|
+   |  __________________________^
+52 | |             requires
+53 | |                 0 <= i,
+54 | |                 i < s.len() as int,
+...  |
+71 | |         });
+   | |_________^
+
+error: aborting due to 1 previous error
+

@@ -1,0 +1,122 @@
+=== Verification Error - Iteration 7 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExp_int_ModExpPow2_int.rs
+Time: 2025-09-15 19:37:36
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: error[E0428]: the name `Exp_int` is defined multiple times
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_ModExp_int_ModExpPow2_int_impl.rs:25:6
+   |
+5  |   spec fn Exp_int(x: nat, y: nat) -> nat
+   |  ______-
+6  | | decreases y
+7  | | {
+8  | |     if y == 0 { 1 } else { x * Exp_int(x, (y - 1) as nat) }
+9  | | }
+   | |_- previous definition of the value `Exp_int` here
+...
+25 |   spec fn Exp_int(x: nat, y: nat) -> nat
+   |  ______^
+26 | | decreases y
+27 | | {
+28 | |     if y == 0 { 1 } else { x * Exp_int(x, (y - 1) as nat) }
+29 | | }
+   | |_^ `Exp_int` redefined here
+   |
+   = note: `Exp_int` must be defined only once in the value namespace of this module
+
+error[E0428]: the name `Str2Int` is defined multiple times
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_ModExp_int_ModExpPow2_int_impl.rs:31:6
+   |
+11 |   spec fn Str2Int(s: Seq<char>) -> nat
+   |  ______-
+12 | | recommends ValidBitString(s)
+13 | | decreases s.len()
+...  |
+16 | | }
+   | |_- previous definition of the value `Str2Int` here
+...
+31 |   spec fn Str2Int(s: Seq<char>) -> nat
+   |  ______^
+32 | | recommends ValidBitString(s)
+33 | | decreases s.len()
+...  |
+36 | | }
+   | |_^ `Str2Int` redefined here
+   |
+   = note: `Str2Int` must be defined only once in the value namespace of this module
+
+error[E0428]: the name `ValidBitString` is defined multiple times
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_ModExp_int_ModExpPow2_int_impl.rs:38:6
+   |
+18 | spec fn ValidBitString(s: Seq<char>) -> bool
+   |      --------------------------------------- previous definition of the value `ValidBitString` here
+...
+38 | spec fn ValidBitString(s: Seq<char>) -> bool
+   |      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ `ValidBitString` redefined here
+   |
+   = note: `ValidBitString` must be defined only once in the value namespace of this module
+
+error: aborting due to 3 previous errors
+
+For more information about this error, try `rustc --explain E0428`.
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+error[E0428]: the name `Exp_int` is defined multiple times
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_ModExp_int_ModExpPow2_int_impl.rs:25:6
+   |
+5  |   spec fn Exp_int(x: nat, y: nat) -> nat
+   |  ______-
+6  | | decreases y
+7  | | {
+8  | |     if y == 0 { 1 } else { x * Exp_int(x, (y - 1) as nat) }
+9  | | }
+   | |_- previous definition of the value `Exp_int` here
+...
+25 |   spec fn Exp_int(x: nat, y: nat) -> nat
+   |  ______^
+26 | | decreases y
+27 | | {
+28 | |     if y == 0 { 1 } else { x * Exp_int(x, (y - 1) as nat) }
+29 | | }
+   | |_^ `Exp_int` redefined here
+   |
+   = note: `Exp_int` must be defined only once in the value namespace of this module
+
+error[E0428]: the name `Str2Int` is defined multiple times
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_ModExp_int_ModExpPow2_int_impl.rs:31:6
+   |
+11 |   spec fn Str2Int(s: Seq<char>) -> nat
+   |  ______-
+12 | | recommends ValidBitString(s)
+13 | | decreases s.len()
+...  |
+16 | | }
+   | |_- previous definition of the value `Str2Int` here
+...
+31 |   spec fn Str2Int(s: Seq<char>) -> nat
+   |  ______^
+32 | | recommends ValidBitString(s)
+33 | | decreases s.len()
+...  |
+36 | | }
+   | |_^ `Str2Int` redefined here
+   |
+   = note: `Str2Int` must be defined only once in the value namespace of this module
+
+error[E0428]: the name `ValidBitString` is defined multiple times
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_18h47/bignum_ModExp_int_ModExpPow2_int_impl.rs:38:6
+   |
+18 | spec fn ValidBitString(s: Seq<char>) -> bool
+   |      --------------------------------------- previous definition of the value `ValidBitString` here
+...
+38 | spec fn ValidBitString(s: Seq<char>) -> bool
+   |      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ `ValidBitString` redefined here
+   |
+   = note: `ValidBitString` must be defined only once in the value namespace of this module
+
+error: aborting due to 3 previous errors
+
+For more information about this error, try `rustc --explain E0428`.

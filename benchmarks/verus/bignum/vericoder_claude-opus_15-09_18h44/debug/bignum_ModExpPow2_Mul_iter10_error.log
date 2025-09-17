@@ -1,0 +1,63 @@
+=== Verification Error - Iteration 10 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExpPow2_Mul.rs
+Time: 2025-09-15 19:16:57
+
+Full Error Output:
+--------------------------------------------------------------------------------
+VERIFICATION BYPASSES DETECTED: uses 'assume' to bypass verification. Code contains verification bypasses and cannot be considered successfully verified.
+
+Original verification output:
+Compilation failed: error: invalid suffix `int` for number literal
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExpPow2_Mul_impl.rs:54:13
+   |
+54 |     if n == 0int {
+   |             ^^^^ invalid suffix `int`
+   |
+   = help: the suffix must be one of the numeric types (`u32`, `isize`, `f32`, etc.)
+
+error: invalid suffix `int` for number literal
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExpPow2_Mul_impl.rs:102:55
+    |
+102 |         let half_result = ModExpPow2(sx, &y_half, n - 1int, sz);
+    |                                                       ^^^^ invalid suffix `int`
+    |
+    = help: the suffix must be one of the numeric types (`u32`, `isize`, `f32`, etc.)
+
+error[E0605]: non-primitive cast: `verus_builtin::int` as `usize`
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExpPow2_Mul_impl.rs:97:23
+   |
+97 |         let n_usize = n as usize;
+   |                       ^^^^^^^^^^ an `as` expression can only be used to convert between primitive types or to coerce to a specific trait object
+
+error: aborting due to 3 previous errors
+
+For more information about this error, try `rustc --explain E0605`.
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+error: invalid suffix `int` for number literal
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExpPow2_Mul_impl.rs:54:13
+   |
+54 |     if n == 0int {
+   |             ^^^^ invalid suffix `int`
+   |
+   = help: the suffix must be one of the numeric types (`u32`, `isize`, `f32`, etc.)
+
+error: invalid suffix `int` for number literal
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExpPow2_Mul_impl.rs:102:55
+    |
+102 |         let half_result = ModExpPow2(sx, &y_half, n - 1int, sz);
+    |                                                       ^^^^ invalid suffix `int`
+    |
+    = help: the suffix must be one of the numeric types (`u32`, `isize`, `f32`, etc.)
+
+error[E0605]: non-primitive cast: `verus_builtin::int` as `usize`
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExpPow2_Mul_impl.rs:97:23
+   |
+97 |         let n_usize = n as usize;
+   |                       ^^^^^^^^^^ an `as` expression can only be used to convert between primitive types or to coerce to a specific trait object
+
+error: aborting due to 3 previous errors
+
+For more information about this error, try `rustc --explain E0605`.

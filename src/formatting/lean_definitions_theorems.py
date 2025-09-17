@@ -142,7 +142,7 @@ def main():
     total_files_processed = 0
     
     # Loop through all immediate folders in the lean directory
-    for folder in lean_dir.iterdir():
+    for folder in [lean_dir/"verified_cogen"]:
         if folder.is_dir():
             yaml_subfolder = folder / 'yaml'
             

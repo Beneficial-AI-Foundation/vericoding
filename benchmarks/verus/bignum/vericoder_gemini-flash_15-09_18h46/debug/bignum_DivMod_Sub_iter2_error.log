@@ -1,0 +1,103 @@
+=== Verification Error - Iteration 2 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_DivMod_Sub.rs
+Time: 2025-09-15 18:54:57
+
+Full Error Output:
+--------------------------------------------------------------------------------
+VERIFICATION BYPASSES DETECTED: uses 'assume' to bypass verification. Code contains verification bypasses and cannot be considered successfully verified.
+
+Original verification output:
+Compilation failed: error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_DivMod_Sub_impl.rs:115:15
+    |
+115 |     while i < s_dividend_seq.len() as int
+    |               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_DivMod_Sub_impl.rs:140:39
+    |
+140 |         remainder.push(s_dividend_seq[i as int]);
+    |                                       ^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_DivMod_Sub_impl.rs:147:31
+    |
+147 |         if remainder.len() >= s_divisor_seq.len() as int && LeStr(remainder@, s_divisor_seq) {
+    |                               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error[E0425]: cannot find value `res` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_DivMod_Sub_impl.rs:35:28
+   |
+35 |     ensures ValidBitString(res),
+   |                            ^^^ not found in this scope
+
+error[E0425]: cannot find value `res` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_DivMod_Sub_impl.rs:36:21
+   |
+36 |             Str2Int(res) == Str2Int(s1) - Str2Int(s2)
+   |                     ^^^ not found in this scope
+
+error[E0425]: cannot find value `res` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_DivMod_Sub_impl.rs:81:28
+   |
+81 |     ensures ValidBitString(res),
+   |                            ^^^ not found in this scope
+
+error[E0425]: cannot find value `res` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_DivMod_Sub_impl.rs:82:21
+   |
+82 |             Str2Int(res) == Str2Int(s) // The value remains the same
+   |                     ^^^ not found in this scope
+
+error: aborting due to 7 previous errors
+
+For more information about this error, try `rustc --explain E0425`.
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_DivMod_Sub_impl.rs:115:15
+    |
+115 |     while i < s_dividend_seq.len() as int
+    |               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_DivMod_Sub_impl.rs:140:39
+    |
+140 |         remainder.push(s_dividend_seq[i as int]);
+    |                                       ^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_DivMod_Sub_impl.rs:147:31
+    |
+147 |         if remainder.len() >= s_divisor_seq.len() as int && LeStr(remainder@, s_divisor_seq) {
+    |                               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error[E0425]: cannot find value `res` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_DivMod_Sub_impl.rs:35:28
+   |
+35 |     ensures ValidBitString(res),
+   |                            ^^^ not found in this scope
+
+error[E0425]: cannot find value `res` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_DivMod_Sub_impl.rs:36:21
+   |
+36 |             Str2Int(res) == Str2Int(s1) - Str2Int(s2)
+   |                     ^^^ not found in this scope
+
+error[E0425]: cannot find value `res` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_DivMod_Sub_impl.rs:81:28
+   |
+81 |     ensures ValidBitString(res),
+   |                            ^^^ not found in this scope
+
+error[E0425]: cannot find value `res` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_DivMod_Sub_impl.rs:82:21
+   |
+82 |             Str2Int(res) == Str2Int(s) // The value remains the same
+   |                     ^^^ not found in this scope
+
+error: aborting due to 7 previous errors
+
+For more information about this error, try `rustc --explain E0425`.

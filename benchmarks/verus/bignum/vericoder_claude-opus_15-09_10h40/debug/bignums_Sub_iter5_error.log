@@ -1,0 +1,34 @@
+=== Verification Error - Iteration 5 ===
+File: benchmarks/verus/bignum/files/bignums_Sub.rs
+Time: 2025-09-15 10:47:38
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Verification failed: verification results:: 6 verified, 1 errors
+error: postcondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignums_Sub_impl.rs:45:9
+    |
+45  |         Str2Int(res@) == Str2Int(s1@) - Str2Int(s2@),
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+108 |     result
+    |     ------ at the end of the function body
+
+error: aborting due to 1 previous error
+
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+verification results:: 6 verified, 1 errors
+error: postcondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignums_Sub_impl.rs:45:9
+    |
+45  |         Str2Int(res@) == Str2Int(s1@) - Str2Int(s2@),
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+108 |     result
+    |     ------ at the end of the function body
+
+error: aborting due to 1 previous error
+

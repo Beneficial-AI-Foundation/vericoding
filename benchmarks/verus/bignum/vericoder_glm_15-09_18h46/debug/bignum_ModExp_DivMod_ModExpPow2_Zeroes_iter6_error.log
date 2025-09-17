@@ -1,0 +1,194 @@
+=== Verification Error - Iteration 6 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExp_DivMod_ModExpPow2_Zeroes.rs
+Time: 2025-09-15 19:13:05
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Verification failed: verification results:: 4 verified, 5 errors
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignum_ModExp_DivMod_ModExpPow2_Zeroes_impl.rs:30:3
+   |
+30 | /   for i in 0..s.len()
+31 | |     invariant n as nat == Str2Int(s@.subrange(0, i as int))
+32 | |   {
+33 | |     n = n * 2;
+...  |
+37 | |   }
+   | |___^
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignum_ModExp_DivMod_ModExpPow2_Zeroes_impl.rs:27:11
+   |
+27 |   ensures n as nat == Str2Int(s@)
+   |           ^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+38 |   n
+   |   - at the end of the function body
+
+note: recommendation not met
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignum_ModExp_DivMod_ModExpPow2_Zeroes_impl.rs:31:27
+   |
+12 | recommends ValidBitString(s)
+   |            ----------------- recommendation not met
+...
+31 |     invariant n as nat == Str2Int(s@.subrange(0, i as int))
+   |                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignum_ModExp_DivMod_ModExpPow2_Zeroes_impl.rs:33:9
+   |
+33 |     n = n * 2;
+   |         ^^^^^
+
+error: possible arithmetic underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignum_ModExp_DivMod_ModExpPow2_Zeroes_impl.rs:35:11
+   |
+35 |       n = n + 1;
+   |           ^^^^^
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignum_ModExp_DivMod_ModExpPow2_Zeroes_impl.rs:43:33
+   |
+43 |     ensures ValidBitString(res@), Str2Int(res@) == n as nat
+   |                                   ^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+46 | /   if n == 0 {
+47 | |     vec!['0']
+48 | |   } else {
+49 | |     let mut bits = int_to_bit_string_exec(n / 2);
+50 | |     bits.push(if n % 2 == 1 { '1' } else { '0' });
+51 | |     bits
+52 | |   }
+   | |___- at the end of the function body
+
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignum_ModExp_DivMod_ModExpPow2_Zeroes_impl.rs:63:3
+   |
+63 |   while exp > 0
+   |   ^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignum_ModExp_DivMod_ModExpPow2_Zeroes_impl.rs:58:11
+   |
+58 |   ensures result as nat == Exp_int(base as nat, exp as nat) % (modulus as nat)
+   |           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+72 |   result
+   |   ------ at the end of the function body
+
+error: possible arithmetic underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignum_ModExp_DivMod_ModExpPow2_Zeroes_impl.rs:67:16
+   |
+67 |       result = (result * base) % modulus;
+   |                ^^^^^^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignum_ModExp_DivMod_ModExpPow2_Zeroes_impl.rs:70:12
+   |
+70 |     base = (base * base) % modulus;
+   |            ^^^^^^^^^^^^^
+
+error: possible division by zero
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignum_ModExp_DivMod_ModExpPow2_Zeroes_impl.rs:70:12
+   |
+70 |     base = (base * base) % modulus;
+   |            ^^^^^^^^^^^^^^^^^^^^^^^
+
+error: aborting due to 8 previous errors
+
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+verification results:: 4 verified, 5 errors
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignum_ModExp_DivMod_ModExpPow2_Zeroes_impl.rs:30:3
+   |
+30 | /   for i in 0..s.len()
+31 | |     invariant n as nat == Str2Int(s@.subrange(0, i as int))
+32 | |   {
+33 | |     n = n * 2;
+...  |
+37 | |   }
+   | |___^
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignum_ModExp_DivMod_ModExpPow2_Zeroes_impl.rs:27:11
+   |
+27 |   ensures n as nat == Str2Int(s@)
+   |           ^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+38 |   n
+   |   - at the end of the function body
+
+note: recommendation not met
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignum_ModExp_DivMod_ModExpPow2_Zeroes_impl.rs:31:27
+   |
+12 | recommends ValidBitString(s)
+   |            ----------------- recommendation not met
+...
+31 |     invariant n as nat == Str2Int(s@.subrange(0, i as int))
+   |                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignum_ModExp_DivMod_ModExpPow2_Zeroes_impl.rs:33:9
+   |
+33 |     n = n * 2;
+   |         ^^^^^
+
+error: possible arithmetic underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignum_ModExp_DivMod_ModExpPow2_Zeroes_impl.rs:35:11
+   |
+35 |       n = n + 1;
+   |           ^^^^^
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignum_ModExp_DivMod_ModExpPow2_Zeroes_impl.rs:43:33
+   |
+43 |     ensures ValidBitString(res@), Str2Int(res@) == n as nat
+   |                                   ^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+46 | /   if n == 0 {
+47 | |     vec!['0']
+48 | |   } else {
+49 | |     let mut bits = int_to_bit_string_exec(n / 2);
+50 | |     bits.push(if n % 2 == 1 { '1' } else { '0' });
+51 | |     bits
+52 | |   }
+   | |___- at the end of the function body
+
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignum_ModExp_DivMod_ModExpPow2_Zeroes_impl.rs:63:3
+   |
+63 |   while exp > 0
+   |   ^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignum_ModExp_DivMod_ModExpPow2_Zeroes_impl.rs:58:11
+   |
+58 |   ensures result as nat == Exp_int(base as nat, exp as nat) % (modulus as nat)
+   |           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+72 |   result
+   |   ------ at the end of the function body
+
+error: possible arithmetic underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignum_ModExp_DivMod_ModExpPow2_Zeroes_impl.rs:67:16
+   |
+67 |       result = (result * base) % modulus;
+   |                ^^^^^^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignum_ModExp_DivMod_ModExpPow2_Zeroes_impl.rs:70:12
+   |
+70 |     base = (base * base) % modulus;
+   |            ^^^^^^^^^^^^^
+
+error: possible division by zero
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignum_ModExp_DivMod_ModExpPow2_Zeroes_impl.rs:70:12
+   |
+70 |     base = (base * base) % modulus;
+   |            ^^^^^^^^^^^^^^^^^^^^^^^
+
+error: aborting due to 8 previous errors
+

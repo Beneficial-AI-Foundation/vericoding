@@ -8,29 +8,30 @@ vc-preamble: |-
 
   verus! {
 
-vc-helpers: |-
-  spec fn valid_input(H: int, W: int, h: int, w: int) -> bool {
-      1 <= H <= 20 && 1 <= W <= 20 && 1 <= h <= H && 1 <= w <= W
+  spec fn valid_input(h: int, w: int, h_selected: int, w_selected: int) -> bool {
+      1 <= h <= 20 && 1 <= w <= 20 && 1 <= h_selected <= h && 1 <= w_selected <= w
   }
   
-  spec fn white_cells_remaining(H: int, W: int, h: int, w: int) -> int 
-      recommends valid_input(H, W, h, w)
+  spec fn white_cells_remaining(h: int, w: int, h_selected: int, w_selected: int) -> int
+      recommends valid_input(h, w, h_selected, w_selected)
   {
-      (H - h) * (W - w)
+      (h - h_selected) * (w - w_selected)
   }
 
+vc-helpers: |-
+
 vc-spec: |-
-  fn solve(H: int, W: int, h: int, w: int) -> (result: int)
+  fn solve(h: int, w: int, h_selected: int, w_selected: int) -> (result: int)
       requires 
-          valid_input(H, W, h, w)
+          valid_input(h, w, h_selected, w_selected),
       ensures 
-          result == white_cells_remaining(H, W, h, w),
-          result >= 0
+          result == white_cells_remaining(h, w, h_selected, w_selected),
+          result >= 0,
 
 vc-code: |-
   {
       assume(false);
-      0int
+      unreached()
   }
 
 vc-postamble: |-

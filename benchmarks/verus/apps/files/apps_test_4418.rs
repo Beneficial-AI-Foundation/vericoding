@@ -4,13 +4,10 @@ use vstd::prelude::*;
 verus! {
 
 spec fn valid_input(n: int, a: Seq<int>) -> bool {
-    n >= 0 && a.len() == n && forall|i: int| 0 <= i < a.len() ==> (#[trigger] a[i]) == 4 || a[i] == 8 || a[i] == 15 || a[i] == 16 || a[i] == 23 || a[i] == 42
+    n >= 0 && a.len() == n && forall|i: int| 0 <= i < a.len() ==> a[i] == 4 || a[i] == 8 || a[i] == 15 || a[i] == 16 || a[i] == 23 || a[i] == 42
 }
 
-spec fn number_of_complete_subsequences(n: int, a: Seq<int>) -> int
-    requires valid_input(n, a)
-    ensures 0 <= number_of_complete_subsequences(n, a) <= n
-{
+spec fn number_of_complete_subsequences(n: int, a: Seq<int>) -> int {
     let k = seq![4, 8, 15, 16, 23, 42];
     let s = seq![n, 0, 0, 0, 0, 0, 0];
     let final_s = process_array(s, a, k, 0);
@@ -18,7 +15,7 @@ spec fn number_of_complete_subsequences(n: int, a: Seq<int>) -> int
 }
 
 spec fn process_array(s: Seq<int>, a: Seq<int>, k: Seq<int>, index: int) -> Seq<int>
-    decreases a.len() - index
+  decreases a.len() - index
 {
     if index == a.len() {
         s
@@ -29,8 +26,7 @@ spec fn process_array(s: Seq<int>, a: Seq<int>, k: Seq<int>, index: int) -> Seq<
     }
 }
 
-spec fn update_state(s: Seq<int>, ai: int, k: Seq<int>) -> Seq<int>
-{
+spec fn update_state(s: Seq<int>, ai: int, k: Seq<int>) -> Seq<int> {
     if ai == k[5] && s[5] > 0 {
         s.update(6, s[6] + 1).update(5, s[5] - 1)
     } else if ai == k[4] && s[4] > 0 {
@@ -48,13 +44,7 @@ spec fn update_state(s: Seq<int>, ai: int, k: Seq<int>) -> Seq<int>
     }
 }
 
-spec fn number_of_complete_subsequences_partial(n: int, a: Seq<int>, k: Seq<int>, index: int) -> int
-    requires valid_input(n, a)
-    requires k.len() == 6
-    requires k == seq![4, 8, 15, 16, 23, 42]
-    requires 0 <= index <= a.len()
-    ensures 0 <= number_of_complete_subsequences_partial(n, a, k, index) <= n
-{
+spec fn number_of_complete_subsequences_partial(n: int, a: Seq<int>, k: Seq<int>, index: int) -> int {
     let s = seq![n, 0, 0, 0, 0, 0, 0];
     let partial_a = if index == 0 { seq![] } else { a.subrange(0, index) };
     let final_s = process_array(s, partial_a, k, 0);
@@ -67,15 +57,17 @@ spec fn number_of_complete_subsequences_partial(n: int, a: Seq<int>, k: Seq<int>
 
 // <vc-spec>
 fn solve(n: int, a: Seq<int>) -> (result: int)
-    requires valid_input(n, a)
-    ensures 0 <= result <= n
-    ensures result == n - 6 * number_of_complete_subsequences(n, a)
+  requires
+      valid_input(n, a),
+  ensures
+      0 <= result <= n,
+      result == n - 6 * number_of_complete_subsequences(n, a),
 // </vc-spec>
 // <vc-code>
 {
     // impl-start
     assume(false);
-    0int
+    unreached()
     // impl-end
 }
 // </vc-code>

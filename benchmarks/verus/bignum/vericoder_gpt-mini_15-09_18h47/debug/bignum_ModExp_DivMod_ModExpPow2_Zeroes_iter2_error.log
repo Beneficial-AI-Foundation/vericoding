@@ -1,0 +1,428 @@
+=== Verification Error - Iteration 2 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExp_DivMod_ModExpPow2_Zeroes.rs
+Time: 2025-09-15 19:26:26
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_DivMod_ModExpPow2_Zeroes_impl.rs:37:23
+   |
+37 |         pow2_positive(n - 1);
+   |         ------------- ^^^^^ expected `nat`, found `int`
+   |         |
+   |         arguments to this function are incorrect
+   |
+note: function defined here
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_DivMod_ModExpPow2_Zeroes_impl.rs:34:10
+   |
+34 | proof fn pow2_positive(n: nat) ensures Exp_int(2, n) > 0 decreases n {
+   |          ^^^^^^^^^^^^^ ------
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_DivMod_ModExpPow2_Zeroes_impl.rs:55:26
+   |
+55 |     let mut x_nat: nat = 0;
+   |                    ---   ^ expected `nat`, found integer
+   |                    |
+   |                    expected due to this
+
+error[E0277]: cannot multiply `{integer}` by `vstd::prelude::nat`
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_DivMod_ModExpPow2_Zeroes_impl.rs:64:23
+   |
+64 |             x_nat = 2 * x_nat + 1;
+   |                       ^ no implementation for `{integer} * vstd::prelude::nat`
+   |
+   = help: the trait `std::ops::Mul<vstd::prelude::nat>` is not implemented for `{integer}`
+   = help: the following other types implement trait `std::ops::Mul<Rhs>`:
+             `&f128` implements `std::ops::Mul<f128>`
+             `&f128` implements `std::ops::Mul`
+             `&f16` implements `std::ops::Mul<f16>`
+             `&f16` implements `std::ops::Mul`
+             `&f32` implements `std::ops::Mul<f32>`
+             `&f32` implements `std::ops::Mul`
+             `&f64` implements `std::ops::Mul<f64>`
+             `&f64` implements `std::ops::Mul`
+           and 57 others
+
+error[E0277]: cannot multiply `{integer}` by `vstd::prelude::nat`
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_DivMod_ModExpPow2_Zeroes_impl.rs:66:23
+   |
+66 |             x_nat = 2 * x_nat;
+   |                       ^ no implementation for `{integer} * vstd::prelude::nat`
+   |
+   = help: the trait `std::ops::Mul<vstd::prelude::nat>` is not implemented for `{integer}`
+   = help: the following other types implement trait `std::ops::Mul<Rhs>`:
+             `&f128` implements `std::ops::Mul<f128>`
+             `&f128` implements `std::ops::Mul`
+             `&f16` implements `std::ops::Mul<f16>`
+             `&f16` implements `std::ops::Mul`
+             `&f32` implements `std::ops::Mul<f32>`
+             `&f32` implements `std::ops::Mul`
+             `&f64` implements `std::ops::Mul<f64>`
+             `&f64` implements `std::ops::Mul`
+           and 57 others
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_DivMod_ModExpPow2_Zeroes_impl.rs:74:26
+   |
+74 |     let mut y_nat: nat = 0;
+   |                    ---   ^ expected `nat`, found integer
+   |                    |
+   |                    expected due to this
+
+error[E0277]: cannot multiply `{integer}` by `vstd::prelude::nat`
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_DivMod_ModExpPow2_Zeroes_impl.rs:83:23
+   |
+83 |             y_nat = 2 * y_nat + 1;
+   |                       ^ no implementation for `{integer} * vstd::prelude::nat`
+   |
+   = help: the trait `std::ops::Mul<vstd::prelude::nat>` is not implemented for `{integer}`
+   = help: the following other types implement trait `std::ops::Mul<Rhs>`:
+             `&f128` implements `std::ops::Mul<f128>`
+             `&f128` implements `std::ops::Mul`
+             `&f16` implements `std::ops::Mul<f16>`
+             `&f16` implements `std::ops::Mul`
+             `&f32` implements `std::ops::Mul<f32>`
+             `&f32` implements `std::ops::Mul`
+             `&f64` implements `std::ops::Mul<f64>`
+             `&f64` implements `std::ops::Mul`
+           and 57 others
+
+error[E0277]: cannot multiply `{integer}` by `vstd::prelude::nat`
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_DivMod_ModExpPow2_Zeroes_impl.rs:85:23
+   |
+85 |             y_nat = 2 * y_nat;
+   |                       ^ no implementation for `{integer} * vstd::prelude::nat`
+   |
+   = help: the trait `std::ops::Mul<vstd::prelude::nat>` is not implemented for `{integer}`
+   = help: the following other types implement trait `std::ops::Mul<Rhs>`:
+             `&f128` implements `std::ops::Mul<f128>`
+             `&f128` implements `std::ops::Mul`
+             `&f16` implements `std::ops::Mul<f16>`
+             `&f16` implements `std::ops::Mul`
+             `&f32` implements `std::ops::Mul<f32>`
+             `&f32` implements `std::ops::Mul`
+             `&f64` implements `std::ops::Mul<f64>`
+             `&f64` implements `std::ops::Mul`
+           and 57 others
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_DivMod_ModExpPow2_Zeroes_impl.rs:93:26
+   |
+93 |     let mut m_nat: nat = 0;
+   |                    ---   ^ expected `nat`, found integer
+   |                    |
+   |                    expected due to this
+
+error[E0277]: cannot multiply `{integer}` by `vstd::prelude::nat`
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_DivMod_ModExpPow2_Zeroes_impl.rs:102:23
+    |
+102 |             m_nat = 2 * m_nat + 1;
+    |                       ^ no implementation for `{integer} * vstd::prelude::nat`
+    |
+    = help: the trait `std::ops::Mul<vstd::prelude::nat>` is not implemented for `{integer}`
+    = help: the following other types implement trait `std::ops::Mul<Rhs>`:
+              `&f128` implements `std::ops::Mul<f128>`
+              `&f128` implements `std::ops::Mul`
+              `&f16` implements `std::ops::Mul<f16>`
+              `&f16` implements `std::ops::Mul`
+              `&f32` implements `std::ops::Mul<f32>`
+              `&f32` implements `std::ops::Mul`
+              `&f64` implements `std::ops::Mul<f64>`
+              `&f64` implements `std::ops::Mul`
+            and 57 others
+
+error[E0277]: cannot multiply `{integer}` by `vstd::prelude::nat`
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_DivMod_ModExpPow2_Zeroes_impl.rs:104:23
+    |
+104 |             m_nat = 2 * m_nat;
+    |                       ^ no implementation for `{integer} * vstd::prelude::nat`
+    |
+    = help: the trait `std::ops::Mul<vstd::prelude::nat>` is not implemented for `{integer}`
+    = help: the following other types implement trait `std::ops::Mul<Rhs>`:
+              `&f128` implements `std::ops::Mul<f128>`
+              `&f128` implements `std::ops::Mul`
+              `&f16` implements `std::ops::Mul<f16>`
+              `&f16` implements `std::ops::Mul`
+              `&f32` implements `std::ops::Mul<f32>`
+              `&f32` implements `std::ops::Mul`
+              `&f64` implements `std::ops::Mul<f64>`
+              `&f64` implements `std::ops::Mul`
+            and 57 others
+
+error[E0277]: cannot calculate the remainder of `{integer}` divided by `vstd::prelude::nat`
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_DivMod_ModExpPow2_Zeroes_impl.rs:110:30
+    |
+110 |     let mut res_nat: nat = 1 % m_nat;
+    |                              ^ no implementation for `{integer} % vstd::prelude::nat`
+    |
+    = help: the trait `std::ops::Rem<vstd::prelude::nat>` is not implemented for `{integer}`
+    = help: the following other types implement trait `std::ops::Rem<Rhs>`:
+              `&f128` implements `std::ops::Rem<f128>`
+              `&f128` implements `std::ops::Rem`
+              `&f16` implements `std::ops::Rem<f16>`
+              `&f16` implements `std::ops::Rem`
+              `&f32` implements `std::ops::Rem<f32>`
+              `&f32` implements `std::ops::Rem`
+              `&f64` implements `std::ops::Rem<f64>`
+              `&f64` implements `std::ops::Rem`
+            and 62 others
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_DivMod_ModExpPow2_Zeroes_impl.rs:131:24
+    |
+131 |     let mut pow: nat = 1;
+    |                  ---   ^ expected `nat`, found integer
+    |                  |
+    |                  expected due to this
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_DivMod_ModExpPow2_Zeroes_impl.rs:140:25
+    |
+140 |             pow = pow * 2;
+    |                   ---   ^ expected `nat`, found integer
+    |                   |
+    |                   expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_DivMod_ModExpPow2_Zeroes_impl.rs:160:18
+    |
+160 |         if pow > 0 {
+    |            ---   ^ expected `nat`, found integer
+    |            |
+    |            expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_DivMod_ModExpPow2_Zeroes_impl.rs:161:25
+    |
+161 |             pow = pow / 2;
+    |                   ---   ^ expected `nat`, found integer
+    |                   |
+    |                   expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_DivMod_ModExpPow2_Zeroes_impl.rs:163:19
+    |
+131 |     let mut pow: nat = 1;
+    |                  --- expected due to this type
+...
+163 |             pow = 0;
+    |                   ^ expected `nat`, found integer
+
+error: aborting due to 16 previous errors
+
+Some errors have detailed explanations: E0277, E0308.
+For more information about an error, try `rustc --explain E0277`.
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_DivMod_ModExpPow2_Zeroes_impl.rs:37:23
+   |
+37 |         pow2_positive(n - 1);
+   |         ------------- ^^^^^ expected `nat`, found `int`
+   |         |
+   |         arguments to this function are incorrect
+   |
+note: function defined here
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_DivMod_ModExpPow2_Zeroes_impl.rs:34:10
+   |
+34 | proof fn pow2_positive(n: nat) ensures Exp_int(2, n) > 0 decreases n {
+   |          ^^^^^^^^^^^^^ ------
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_DivMod_ModExpPow2_Zeroes_impl.rs:55:26
+   |
+55 |     let mut x_nat: nat = 0;
+   |                    ---   ^ expected `nat`, found integer
+   |                    |
+   |                    expected due to this
+
+error[E0277]: cannot multiply `{integer}` by `vstd::prelude::nat`
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_DivMod_ModExpPow2_Zeroes_impl.rs:64:23
+   |
+64 |             x_nat = 2 * x_nat + 1;
+   |                       ^ no implementation for `{integer} * vstd::prelude::nat`
+   |
+   = help: the trait `std::ops::Mul<vstd::prelude::nat>` is not implemented for `{integer}`
+   = help: the following other types implement trait `std::ops::Mul<Rhs>`:
+             `&f128` implements `std::ops::Mul<f128>`
+             `&f128` implements `std::ops::Mul`
+             `&f16` implements `std::ops::Mul<f16>`
+             `&f16` implements `std::ops::Mul`
+             `&f32` implements `std::ops::Mul<f32>`
+             `&f32` implements `std::ops::Mul`
+             `&f64` implements `std::ops::Mul<f64>`
+             `&f64` implements `std::ops::Mul`
+           and 57 others
+
+error[E0277]: cannot multiply `{integer}` by `vstd::prelude::nat`
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_DivMod_ModExpPow2_Zeroes_impl.rs:66:23
+   |
+66 |             x_nat = 2 * x_nat;
+   |                       ^ no implementation for `{integer} * vstd::prelude::nat`
+   |
+   = help: the trait `std::ops::Mul<vstd::prelude::nat>` is not implemented for `{integer}`
+   = help: the following other types implement trait `std::ops::Mul<Rhs>`:
+             `&f128` implements `std::ops::Mul<f128>`
+             `&f128` implements `std::ops::Mul`
+             `&f16` implements `std::ops::Mul<f16>`
+             `&f16` implements `std::ops::Mul`
+             `&f32` implements `std::ops::Mul<f32>`
+             `&f32` implements `std::ops::Mul`
+             `&f64` implements `std::ops::Mul<f64>`
+             `&f64` implements `std::ops::Mul`
+           and 57 others
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_DivMod_ModExpPow2_Zeroes_impl.rs:74:26
+   |
+74 |     let mut y_nat: nat = 0;
+   |                    ---   ^ expected `nat`, found integer
+   |                    |
+   |                    expected due to this
+
+error[E0277]: cannot multiply `{integer}` by `vstd::prelude::nat`
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_DivMod_ModExpPow2_Zeroes_impl.rs:83:23
+   |
+83 |             y_nat = 2 * y_nat + 1;
+   |                       ^ no implementation for `{integer} * vstd::prelude::nat`
+   |
+   = help: the trait `std::ops::Mul<vstd::prelude::nat>` is not implemented for `{integer}`
+   = help: the following other types implement trait `std::ops::Mul<Rhs>`:
+             `&f128` implements `std::ops::Mul<f128>`
+             `&f128` implements `std::ops::Mul`
+             `&f16` implements `std::ops::Mul<f16>`
+             `&f16` implements `std::ops::Mul`
+             `&f32` implements `std::ops::Mul<f32>`
+             `&f32` implements `std::ops::Mul`
+             `&f64` implements `std::ops::Mul<f64>`
+             `&f64` implements `std::ops::Mul`
+           and 57 others
+
+error[E0277]: cannot multiply `{integer}` by `vstd::prelude::nat`
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_DivMod_ModExpPow2_Zeroes_impl.rs:85:23
+   |
+85 |             y_nat = 2 * y_nat;
+   |                       ^ no implementation for `{integer} * vstd::prelude::nat`
+   |
+   = help: the trait `std::ops::Mul<vstd::prelude::nat>` is not implemented for `{integer}`
+   = help: the following other types implement trait `std::ops::Mul<Rhs>`:
+             `&f128` implements `std::ops::Mul<f128>`
+             `&f128` implements `std::ops::Mul`
+             `&f16` implements `std::ops::Mul<f16>`
+             `&f16` implements `std::ops::Mul`
+             `&f32` implements `std::ops::Mul<f32>`
+             `&f32` implements `std::ops::Mul`
+             `&f64` implements `std::ops::Mul<f64>`
+             `&f64` implements `std::ops::Mul`
+           and 57 others
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_DivMod_ModExpPow2_Zeroes_impl.rs:93:26
+   |
+93 |     let mut m_nat: nat = 0;
+   |                    ---   ^ expected `nat`, found integer
+   |                    |
+   |                    expected due to this
+
+error[E0277]: cannot multiply `{integer}` by `vstd::prelude::nat`
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_DivMod_ModExpPow2_Zeroes_impl.rs:102:23
+    |
+102 |             m_nat = 2 * m_nat + 1;
+    |                       ^ no implementation for `{integer} * vstd::prelude::nat`
+    |
+    = help: the trait `std::ops::Mul<vstd::prelude::nat>` is not implemented for `{integer}`
+    = help: the following other types implement trait `std::ops::Mul<Rhs>`:
+              `&f128` implements `std::ops::Mul<f128>`
+              `&f128` implements `std::ops::Mul`
+              `&f16` implements `std::ops::Mul<f16>`
+              `&f16` implements `std::ops::Mul`
+              `&f32` implements `std::ops::Mul<f32>`
+              `&f32` implements `std::ops::Mul`
+              `&f64` implements `std::ops::Mul<f64>`
+              `&f64` implements `std::ops::Mul`
+            and 57 others
+
+error[E0277]: cannot multiply `{integer}` by `vstd::prelude::nat`
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_DivMod_ModExpPow2_Zeroes_impl.rs:104:23
+    |
+104 |             m_nat = 2 * m_nat;
+    |                       ^ no implementation for `{integer} * vstd::prelude::nat`
+    |
+    = help: the trait `std::ops::Mul<vstd::prelude::nat>` is not implemented for `{integer}`
+    = help: the following other types implement trait `std::ops::Mul<Rhs>`:
+              `&f128` implements `std::ops::Mul<f128>`
+              `&f128` implements `std::ops::Mul`
+              `&f16` implements `std::ops::Mul<f16>`
+              `&f16` implements `std::ops::Mul`
+              `&f32` implements `std::ops::Mul<f32>`
+              `&f32` implements `std::ops::Mul`
+              `&f64` implements `std::ops::Mul<f64>`
+              `&f64` implements `std::ops::Mul`
+            and 57 others
+
+error[E0277]: cannot calculate the remainder of `{integer}` divided by `vstd::prelude::nat`
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_DivMod_ModExpPow2_Zeroes_impl.rs:110:30
+    |
+110 |     let mut res_nat: nat = 1 % m_nat;
+    |                              ^ no implementation for `{integer} % vstd::prelude::nat`
+    |
+    = help: the trait `std::ops::Rem<vstd::prelude::nat>` is not implemented for `{integer}`
+    = help: the following other types implement trait `std::ops::Rem<Rhs>`:
+              `&f128` implements `std::ops::Rem<f128>`
+              `&f128` implements `std::ops::Rem`
+              `&f16` implements `std::ops::Rem<f16>`
+              `&f16` implements `std::ops::Rem`
+              `&f32` implements `std::ops::Rem<f32>`
+              `&f32` implements `std::ops::Rem`
+              `&f64` implements `std::ops::Rem<f64>`
+              `&f64` implements `std::ops::Rem`
+            and 62 others
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_DivMod_ModExpPow2_Zeroes_impl.rs:131:24
+    |
+131 |     let mut pow: nat = 1;
+    |                  ---   ^ expected `nat`, found integer
+    |                  |
+    |                  expected due to this
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_DivMod_ModExpPow2_Zeroes_impl.rs:140:25
+    |
+140 |             pow = pow * 2;
+    |                   ---   ^ expected `nat`, found integer
+    |                   |
+    |                   expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_DivMod_ModExpPow2_Zeroes_impl.rs:160:18
+    |
+160 |         if pow > 0 {
+    |            ---   ^ expected `nat`, found integer
+    |            |
+    |            expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_DivMod_ModExpPow2_Zeroes_impl.rs:161:25
+    |
+161 |             pow = pow / 2;
+    |                   ---   ^ expected `nat`, found integer
+    |                   |
+    |                   expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExp_DivMod_ModExpPow2_Zeroes_impl.rs:163:19
+    |
+131 |     let mut pow: nat = 1;
+    |                  --- expected due to this type
+...
+163 |             pow = 0;
+    |                   ^ expected `nat`, found integer
+
+error: aborting due to 16 previous errors
+
+Some errors have detailed explanations: E0277, E0308.
+For more information about an error, try `rustc --explain E0277`.

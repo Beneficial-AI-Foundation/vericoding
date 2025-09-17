@@ -1,0 +1,100 @@
+=== Verification Error - Iteration 2 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExpPow2_DivMod_Mul.rs
+Time: 2025-09-14 10:40:29
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExpPow2_DivMod_Mul_impl.rs:80:27
+   |
+80 |         let sy_half_len = half_n as nat + 1;
+   |                           ^^^^^^^^^^^^^
+
+error[E0425]: cannot find function `int_to_bit_vec` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExpPow2_DivMod_Mul_impl.rs:37:24
+   |
+37 |     let quotient_vec = int_to_bit_vec(quotient_val);
+   |                        ^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `int_to_bit_vec` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExpPow2_DivMod_Mul_impl.rs:38:25
+   |
+38 |     let remainder_vec = int_to_bit_vec(remainder_val);
+   |                         ^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `int_to_bit_vec` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExpPow2_DivMod_Mul_impl.rs:54:5
+   |
+54 |     int_to_bit_vec(product_val)
+   |     ^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `int_to_bit_vec` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExpPow2_DivMod_Mul_impl.rs:74:13
+   |
+74 |             int_to_bit_vec(1)
+   |             ^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `int_to_bit_vec` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExpPow2_DivMod_Mul_impl.rs:76:13
+   |
+76 |             int_to_bit_vec(Str2Int(sx@) % Str2Int(sz@))
+   |             ^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `int_to_bit_vec` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExpPow2_DivMod_Mul_impl.rs:89:9
+   |
+89 |         int_to_bit_vec(combined_val)
+   |         ^^^^^^^^^^^^^^ not found in this scope
+
+error: aborting due to 7 previous errors
+
+For more information about this error, try `rustc --explain E0425`.
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExpPow2_DivMod_Mul_impl.rs:80:27
+   |
+80 |         let sy_half_len = half_n as nat + 1;
+   |                           ^^^^^^^^^^^^^
+
+error[E0425]: cannot find function `int_to_bit_vec` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExpPow2_DivMod_Mul_impl.rs:37:24
+   |
+37 |     let quotient_vec = int_to_bit_vec(quotient_val);
+   |                        ^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `int_to_bit_vec` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExpPow2_DivMod_Mul_impl.rs:38:25
+   |
+38 |     let remainder_vec = int_to_bit_vec(remainder_val);
+   |                         ^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `int_to_bit_vec` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExpPow2_DivMod_Mul_impl.rs:54:5
+   |
+54 |     int_to_bit_vec(product_val)
+   |     ^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `int_to_bit_vec` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExpPow2_DivMod_Mul_impl.rs:74:13
+   |
+74 |             int_to_bit_vec(1)
+   |             ^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `int_to_bit_vec` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExpPow2_DivMod_Mul_impl.rs:76:13
+   |
+76 |             int_to_bit_vec(Str2Int(sx@) % Str2Int(sz@))
+   |             ^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `int_to_bit_vec` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExpPow2_DivMod_Mul_impl.rs:89:9
+   |
+89 |         int_to_bit_vec(combined_val)
+   |         ^^^^^^^^^^^^^^ not found in this scope
+
+error: aborting due to 7 previous errors
+
+For more information about this error, try `rustc --explain E0425`.

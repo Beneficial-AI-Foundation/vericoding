@@ -1,0 +1,5 @@
+=== Raw LLM Generate Response ===
+Length: 881 characters
+--------------------------------------------------------------------------------
+["spec fn Int2Str(n: nat) -> Seq<char>\n    decreases n\n{\n    if n == 0 {\n        seq!['0']\n    } else if n % 2 == 1 {\n        Int2Str((n - 1) as nat / 2) + seq!['1']\n    } else {\n        Int2Str(n / 2) + seq!['0']\n    }\n}\n\nproof fn Int2StrLemma(n: nat)\n    ensures\n        ValidBitString(Int2Str(n)),\n        Str2Int(Int2Str(n)) == n\n    decreases n\n{\n}\n\nfn ModExp(x: nat, y: nat, m: nat) spec -> (res: nat)\n    requires m > 1\n    ensures res == Exp_int(x, y) % m\n    decreases y\n{\n    if y == 0 {\n        1\n    } else if y % 2 == 0 {\n        let half = ModExp(x, y / 2, m);\n        (half * half) % m\n    } else {\n        let rest = ModExp(x, (y - 1) as nat, m);\n        (x * rest) % m\n    }\n}", "{\n    let x = Str2Int(sx@);\n    let y = Str2Int(sy@);\n    let m = Str2Int(sz@);\n    let result_nat = ModExp(x, y, m);\n    Vec::<char>::new()\n}"]
+--------------------------------------------------------------------------------

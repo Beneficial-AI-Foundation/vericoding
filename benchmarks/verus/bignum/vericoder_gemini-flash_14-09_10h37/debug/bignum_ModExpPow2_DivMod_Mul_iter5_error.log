@@ -1,0 +1,55 @@
+=== Verification Error - Iteration 5 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExpPow2_DivMod_Mul.rs
+Time: 2025-09-14 10:40:38
+
+Full Error Output:
+--------------------------------------------------------------------------------
+VERIFICATION BYPASSES DETECTED: uses 'assume' to bypass verification. Code contains verification bypasses and cannot be considered successfully verified.
+
+Original verification output:
+Compilation failed: error[E0425]: cannot find function `int_to_bit_vec` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExpPow2_DivMod_Mul_impl.rs:37:24
+   |
+37 |     let quotient_vec = int_to_bit_vec(quotient_val);
+   |                        ^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `int_to_bit_vec` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExpPow2_DivMod_Mul_impl.rs:38:25
+   |
+38 |     let remainder_vec = int_to_bit_vec(remainder_val);
+   |                         ^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `int_to_bit_vec` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExpPow2_DivMod_Mul_impl.rs:54:5
+   |
+54 |     int_to_bit_vec(product_val)
+   |     ^^^^^^^^^^^^^^ not found in this scope
+
+error: aborting due to 3 previous errors
+
+For more information about this error, try `rustc --explain E0425`.
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+error[E0425]: cannot find function `int_to_bit_vec` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExpPow2_DivMod_Mul_impl.rs:37:24
+   |
+37 |     let quotient_vec = int_to_bit_vec(quotient_val);
+   |                        ^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `int_to_bit_vec` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExpPow2_DivMod_Mul_impl.rs:38:25
+   |
+38 |     let remainder_vec = int_to_bit_vec(remainder_val);
+   |                         ^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `int_to_bit_vec` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExpPow2_DivMod_Mul_impl.rs:54:5
+   |
+54 |     int_to_bit_vec(product_val)
+   |     ^^^^^^^^^^^^^^ not found in this scope
+
+error: aborting due to 3 previous errors
+
+For more information about this error, try `rustc --explain E0425`.

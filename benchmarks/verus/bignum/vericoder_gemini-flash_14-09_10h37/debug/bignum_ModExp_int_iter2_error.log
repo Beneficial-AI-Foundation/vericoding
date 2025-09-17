@@ -1,0 +1,324 @@
+=== Verification Error - Iteration 2 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExp_int.rs
+Time: 2025-09-14 10:40:50
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: error[E0599]: no function or associated item named `singleton` found for struct `vstd::seq::Seq` in the current scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExp_int_impl.rs:28:22
+   |
+28 |     if n == 0 { Seq::singleton('0') } else {
+   |                      ^^^^^^^^^ function or associated item not found in `Seq<_>`
+   |
+note: if you're trying to build a new `vstd::seq::Seq<_>` consider using one of the following associated functions:
+      vstd::seq::Seq::<A>::empty
+      vstd::seq::Seq::<A>::new
+      vstd::seq::Seq::<A>::tracked_empty
+  --> /Users/runner/work/verus/verus/source/vstd/seq.rs:38:5
+
+error[E0599]: no function or associated item named `singleton` found for struct `vstd::seq::Seq` in the current scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExp_int_impl.rs:33:38
+   |
+33 |             if remainder == 0 { Seq::singleton('0') } else { Seq::singleton('1') }
+   |                                      ^^^^^^^^^ function or associated item not found in `Seq<_>`
+   |
+note: if you're trying to build a new `vstd::seq::Seq<_>` consider using one of the following associated functions:
+      vstd::seq::Seq::<A>::empty
+      vstd::seq::Seq::<A>::new
+      vstd::seq::Seq::<A>::tracked_empty
+  --> /Users/runner/work/verus/verus/source/vstd/seq.rs:38:5
+
+error[E0599]: no function or associated item named `singleton` found for struct `vstd::seq::Seq` in the current scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExp_int_impl.rs:33:67
+   |
+33 |             if remainder == 0 { Seq::singleton('0') } else { Seq::singleton('1') }
+   |                                                                   ^^^^^^^^^ function or associated item not found in `Seq<_>`
+   |
+note: if you're trying to build a new `vstd::seq::Seq<_>` consider using one of the following associated functions:
+      vstd::seq::Seq::<A>::empty
+      vstd::seq::Seq::<A>::new
+      vstd::seq::Seq::<A>::tracked_empty
+  --> /Users/runner/work/verus/verus/source/vstd/seq.rs:38:5
+
+error[E0599]: no method named `snoc` found for struct `vstd::seq::Seq` in the current scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExp_int_impl.rs:35:41
+   |
+35 |             int_to_bit_string(quotient).snoc(if remainder == 0 { '0' } else { '1' })
+   |                                         ^^^^ method not found in `Seq<char>`
+
+error[E0599]: no function or associated item named `singleton` found for struct `vstd::seq::Seq` in the current scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExp_int_impl.rs:42:35
+   |
+42 |     if n == 0 { Option::Some(Seq::singleton('0')) } else if n == 1 { Option::Some(Seq::singleton('0')) } else {
+   |                                   ^^^^^^^^^ function or associated item not found in `Seq<_>`
+   |
+note: if you're trying to build a new `vstd::seq::Seq<_>` consider using one of the following associated functions:
+      vstd::seq::Seq::<A>::empty
+      vstd::seq::Seq::<A>::new
+      vstd::seq::Seq::<A>::tracked_empty
+  --> /Users/runner/work/verus/verus/source/vstd/seq.rs:38:5
+
+error[E0599]: no function or associated item named `singleton` found for struct `vstd::seq::Seq` in the current scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExp_int_impl.rs:42:88
+   |
+42 |     if n == 0 { Option::Some(Seq::singleton('0')) } else if n == 1 { Option::Some(Seq::singleton('0')) } else {
+   |                                                                                        ^^^^^^^^^ function or associated item not found in `Seq<_>`
+   |
+note: if you're trying to build a new `vstd::seq::Seq<_>` consider using one of the following associated functions:
+      vstd::seq::Seq::<A>::empty
+      vstd::seq::Seq::<A>::new
+      vstd::seq::Seq::<A>::tracked_empty
+  --> /Users/runner/work/verus/verus/source/vstd/seq.rs:38:5
+
+error[E0277]: can't compare `{integer}` with `vstd::prelude::nat`
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExp_int_impl.rs:53:13
+   |
+53 |     while i < s.len()
+   |             ^ no implementation for `{integer} < vstd::prelude::nat` and `{integer} > vstd::prelude::nat`
+   |
+   = help: the trait `std::cmp::PartialOrd<vstd::prelude::nat>` is not implemented for `{integer}`
+   = help: the following other types implement trait `std::cmp::PartialOrd<Rhs>`:
+             f128
+             f16
+             f32
+             f64
+             i128
+             i16
+             i32
+             i64
+           and 8 others
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExp_int_impl.rs:59:31
+   |
+59 |         vec_char.push(s.index(i));
+   |                         ----- ^ expected `int`, found integer
+   |                         |
+   |                         arguments to this method are incorrect
+   |
+note: method defined here
+  --> /Users/runner/work/verus/verus/source/vstd/seq.rs:53:26
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExp_int_impl.rs:81:17
+   |
+81 |     if y_int == 0 { // Base case: anything to the power of 0 is 1
+   |        -----    ^ expected `nat`, found integer
+   |        |
+   |        expected because this is `vstd::prelude::nat`
+
+error[E0277]: cannot calculate the remainder of `{integer}` divided by `vstd::prelude::nat`
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExp_int_impl.rs:82:25
+   |
+82 |         let res_int = 1 % z_int;
+   |                         ^ no implementation for `{integer} % vstd::prelude::nat`
+   |
+   = help: the trait `std::ops::Rem<vstd::prelude::nat>` is not implemented for `{integer}`
+   = help: the following other types implement trait `std::ops::Rem<Rhs>`:
+             `&f128` implements `std::ops::Rem<f128>`
+             `&f128` implements `std::ops::Rem`
+             `&f16` implements `std::ops::Rem<f16>`
+             `&f16` implements `std::ops::Rem`
+             `&f32` implements `std::ops::Rem<f32>`
+             `&f32` implements `std::ops::Rem`
+             `&f64` implements `std::ops::Rem<f64>`
+             `&f64` implements `std::ops::Rem`
+           and 62 others
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExp_int_impl.rs:86:24
+   |
+86 |     } else if y_int == 1 {
+   |               -----    ^ expected `nat`, found integer
+   |               |
+   |               expected because this is `vstd::prelude::nat`
+
+warning: use of deprecated method `vstd::prelude::OptionAdditionalFns::get_Some_0`: is_Variant is deprecated - use `->` or `matches` instead: https://verus-lang.github.io/verus/guide/datatypes_enum.html
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExp_int_impl.rs:92:52
+   |
+92 |         let y_half_seq = divide_by_2_string(y_int).get_Some_0();
+   |                                                    ^^^^^^^^^^
+   |
+   = note: `#[warn(deprecated)]` on by default
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExp_int_impl.rs:99:20
+   |
+99 |         if y_int % 2 == 0 { // y is even, x^y = (x^(y/2))^2
+   |            -----   ^ expected `nat`, found integer
+   |            |
+   |            expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExp_int_impl.rs:99:25
+   |
+99 |         if y_int % 2 == 0 { // y is even, x^y = (x^(y/2))^2
+   |            ---------    ^ expected `nat`, found integer
+   |            |
+   |            expected because this is `vstd::prelude::nat`
+
+error: aborting due to 13 previous errors; 1 warning emitted
+
+Some errors have detailed explanations: E0277, E0308, E0599.
+For more information about an error, try `rustc --explain E0277`.
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+error[E0599]: no function or associated item named `singleton` found for struct `vstd::seq::Seq` in the current scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExp_int_impl.rs:28:22
+   |
+28 |     if n == 0 { Seq::singleton('0') } else {
+   |                      ^^^^^^^^^ function or associated item not found in `Seq<_>`
+   |
+note: if you're trying to build a new `vstd::seq::Seq<_>` consider using one of the following associated functions:
+      vstd::seq::Seq::<A>::empty
+      vstd::seq::Seq::<A>::new
+      vstd::seq::Seq::<A>::tracked_empty
+  --> /Users/runner/work/verus/verus/source/vstd/seq.rs:38:5
+
+error[E0599]: no function or associated item named `singleton` found for struct `vstd::seq::Seq` in the current scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExp_int_impl.rs:33:38
+   |
+33 |             if remainder == 0 { Seq::singleton('0') } else { Seq::singleton('1') }
+   |                                      ^^^^^^^^^ function or associated item not found in `Seq<_>`
+   |
+note: if you're trying to build a new `vstd::seq::Seq<_>` consider using one of the following associated functions:
+      vstd::seq::Seq::<A>::empty
+      vstd::seq::Seq::<A>::new
+      vstd::seq::Seq::<A>::tracked_empty
+  --> /Users/runner/work/verus/verus/source/vstd/seq.rs:38:5
+
+error[E0599]: no function or associated item named `singleton` found for struct `vstd::seq::Seq` in the current scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExp_int_impl.rs:33:67
+   |
+33 |             if remainder == 0 { Seq::singleton('0') } else { Seq::singleton('1') }
+   |                                                                   ^^^^^^^^^ function or associated item not found in `Seq<_>`
+   |
+note: if you're trying to build a new `vstd::seq::Seq<_>` consider using one of the following associated functions:
+      vstd::seq::Seq::<A>::empty
+      vstd::seq::Seq::<A>::new
+      vstd::seq::Seq::<A>::tracked_empty
+  --> /Users/runner/work/verus/verus/source/vstd/seq.rs:38:5
+
+error[E0599]: no method named `snoc` found for struct `vstd::seq::Seq` in the current scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExp_int_impl.rs:35:41
+   |
+35 |             int_to_bit_string(quotient).snoc(if remainder == 0 { '0' } else { '1' })
+   |                                         ^^^^ method not found in `Seq<char>`
+
+error[E0599]: no function or associated item named `singleton` found for struct `vstd::seq::Seq` in the current scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExp_int_impl.rs:42:35
+   |
+42 |     if n == 0 { Option::Some(Seq::singleton('0')) } else if n == 1 { Option::Some(Seq::singleton('0')) } else {
+   |                                   ^^^^^^^^^ function or associated item not found in `Seq<_>`
+   |
+note: if you're trying to build a new `vstd::seq::Seq<_>` consider using one of the following associated functions:
+      vstd::seq::Seq::<A>::empty
+      vstd::seq::Seq::<A>::new
+      vstd::seq::Seq::<A>::tracked_empty
+  --> /Users/runner/work/verus/verus/source/vstd/seq.rs:38:5
+
+error[E0599]: no function or associated item named `singleton` found for struct `vstd::seq::Seq` in the current scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExp_int_impl.rs:42:88
+   |
+42 |     if n == 0 { Option::Some(Seq::singleton('0')) } else if n == 1 { Option::Some(Seq::singleton('0')) } else {
+   |                                                                                        ^^^^^^^^^ function or associated item not found in `Seq<_>`
+   |
+note: if you're trying to build a new `vstd::seq::Seq<_>` consider using one of the following associated functions:
+      vstd::seq::Seq::<A>::empty
+      vstd::seq::Seq::<A>::new
+      vstd::seq::Seq::<A>::tracked_empty
+  --> /Users/runner/work/verus/verus/source/vstd/seq.rs:38:5
+
+error[E0277]: can't compare `{integer}` with `vstd::prelude::nat`
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExp_int_impl.rs:53:13
+   |
+53 |     while i < s.len()
+   |             ^ no implementation for `{integer} < vstd::prelude::nat` and `{integer} > vstd::prelude::nat`
+   |
+   = help: the trait `std::cmp::PartialOrd<vstd::prelude::nat>` is not implemented for `{integer}`
+   = help: the following other types implement trait `std::cmp::PartialOrd<Rhs>`:
+             f128
+             f16
+             f32
+             f64
+             i128
+             i16
+             i32
+             i64
+           and 8 others
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExp_int_impl.rs:59:31
+   |
+59 |         vec_char.push(s.index(i));
+   |                         ----- ^ expected `int`, found integer
+   |                         |
+   |                         arguments to this method are incorrect
+   |
+note: method defined here
+  --> /Users/runner/work/verus/verus/source/vstd/seq.rs:53:26
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExp_int_impl.rs:81:17
+   |
+81 |     if y_int == 0 { // Base case: anything to the power of 0 is 1
+   |        -----    ^ expected `nat`, found integer
+   |        |
+   |        expected because this is `vstd::prelude::nat`
+
+error[E0277]: cannot calculate the remainder of `{integer}` divided by `vstd::prelude::nat`
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExp_int_impl.rs:82:25
+   |
+82 |         let res_int = 1 % z_int;
+   |                         ^ no implementation for `{integer} % vstd::prelude::nat`
+   |
+   = help: the trait `std::ops::Rem<vstd::prelude::nat>` is not implemented for `{integer}`
+   = help: the following other types implement trait `std::ops::Rem<Rhs>`:
+             `&f128` implements `std::ops::Rem<f128>`
+             `&f128` implements `std::ops::Rem`
+             `&f16` implements `std::ops::Rem<f16>`
+             `&f16` implements `std::ops::Rem`
+             `&f32` implements `std::ops::Rem<f32>`
+             `&f32` implements `std::ops::Rem`
+             `&f64` implements `std::ops::Rem<f64>`
+             `&f64` implements `std::ops::Rem`
+           and 62 others
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExp_int_impl.rs:86:24
+   |
+86 |     } else if y_int == 1 {
+   |               -----    ^ expected `nat`, found integer
+   |               |
+   |               expected because this is `vstd::prelude::nat`
+
+warning: use of deprecated method `vstd::prelude::OptionAdditionalFns::get_Some_0`: is_Variant is deprecated - use `->` or `matches` instead: https://verus-lang.github.io/verus/guide/datatypes_enum.html
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExp_int_impl.rs:92:52
+   |
+92 |         let y_half_seq = divide_by_2_string(y_int).get_Some_0();
+   |                                                    ^^^^^^^^^^
+   |
+   = note: `#[warn(deprecated)]` on by default
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExp_int_impl.rs:99:20
+   |
+99 |         if y_int % 2 == 0 { // y is even, x^y = (x^(y/2))^2
+   |            -----   ^ expected `nat`, found integer
+   |            |
+   |            expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExp_int_impl.rs:99:25
+   |
+99 |         if y_int % 2 == 0 { // y is even, x^y = (x^(y/2))^2
+   |            ---------    ^ expected `nat`, found integer
+   |            |
+   |            expected because this is `vstd::prelude::nat`
+
+error: aborting due to 13 previous errors; 1 warning emitted
+
+Some errors have detailed explanations: E0277, E0308, E0599.
+For more information about an error, try `rustc --explain E0277`.

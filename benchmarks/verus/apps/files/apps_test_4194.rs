@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(n: int, m: int, a: Seq<int>) -> bool {
     n >= 0 && m >= 0 && m == a.len()
 }
@@ -26,6 +23,9 @@ spec fn sum_seq(s: Seq<int>) -> int
         s[0] + sum_seq(s.subrange(1, s.len() as int))
     }
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

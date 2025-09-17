@@ -12,7 +12,7 @@ spec fn count_valid_minutes(a: int, b: int) -> int
     } else if a == 1 && b == 1 {
         0
     } else {
-        (if a > 1 || b > 1 { 1 } else { 0 }) + 
+        (if a > 1 || b > 1 { 1 as int } else { 0 as int }) + 
         count_valid_minutes(
             if a < b { a + 1 } else { a - 2 }, 
             if a < b { b - 2 } else { b + 1 }
@@ -36,7 +36,7 @@ fn solve(a1: int, a2: int) -> (result: int)
 // <vc-code>
 {
     assume(false);
-    arbitrary()
+    unreached()
 }
 // </vc-code>
 

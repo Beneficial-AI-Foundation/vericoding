@@ -1,0 +1,70 @@
+=== Verification Error - Iteration 4 ===
+File: benchmarks/verus/bignum/files/bignum_CompareUnequal.rs
+Time: 2025-09-15 10:58:04
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Verification failed: verification results:: 7 verified, 3 errors
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_CompareUnequal_impl.rs:47:13
+   |
+42 | proof fn lemma_min_value_multi_char(s: Seq<char>)
+   |       ------------------------------------------- at the end of the function body
+...
+47 |     ensures Str2Int(s) >= nat_pow(2, (s.len() - 1) as nat)
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_CompareUnequal_impl.rs:56:13
+   |
+52 | proof fn lemma_max_value_any_string(s: Seq<char>)
+   |       ------------------------------------------- at the end of the function body
+...
+56 |     ensures Str2Int(s) < nat_pow(2, s.len() as nat)
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_CompareUnequal_impl.rs:71:13
+   |
+69 | proof fn lemma_power_monotonic(a: nat, b: nat)
+   |       ---------------------------------------- at the end of the function body
+70 |     requires a >= b
+71 |     ensures nat_pow(2, a) >= nat_pow(2, b)
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+
+error: aborting due to 3 previous errors
+
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+verification results:: 7 verified, 3 errors
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_CompareUnequal_impl.rs:47:13
+   |
+42 | proof fn lemma_min_value_multi_char(s: Seq<char>)
+   |       ------------------------------------------- at the end of the function body
+...
+47 |     ensures Str2Int(s) >= nat_pow(2, (s.len() - 1) as nat)
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_CompareUnequal_impl.rs:56:13
+   |
+52 | proof fn lemma_max_value_any_string(s: Seq<char>)
+   |       ------------------------------------------- at the end of the function body
+...
+56 |     ensures Str2Int(s) < nat_pow(2, s.len() as nat)
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_CompareUnequal_impl.rs:71:13
+   |
+69 | proof fn lemma_power_monotonic(a: nat, b: nat)
+   |       ---------------------------------------- at the end of the function body
+70 |     requires a >= b
+71 |     ensures nat_pow(2, a) >= nat_pow(2, b)
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+
+error: aborting due to 3 previous errors
+

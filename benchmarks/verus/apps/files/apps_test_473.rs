@@ -16,8 +16,8 @@ spec fn find_first_newline(s: Seq<char>) -> int {
     choose|i: int| 0 <= i < s.len() && s[i] == '\n'
 }
 
-spec fn find_second_newline(s: Seq<char>, first_nl: int) -> int {
-    choose|i: int| first_nl < i < s.len() && s[i] == '\n'
+spec fn find_second_newline(s: Seq<char>, first: int) -> int {
+    choose|i: int| first < i < s.len() && s[i] == '\n'
 }
 
 spec fn valid_input(stdin_input: Seq<char>) -> bool {
@@ -42,8 +42,8 @@ spec fn parse_time(time_str: Seq<char>) -> (int, int) {
 spec fn calculate_bedtime(wake_hour: int, wake_min: int, sleep_hour: int, sleep_min: int) -> (int, int) {
     let wake_total_min = wake_hour * 60 + wake_min;
     let sleep_total_min = sleep_hour * 60 + sleep_min;
-    let bed_total_min_raw = wake_total_min - sleep_total_min + 24 * 60;
-    let bed_total_min = if bed_total_min_raw >= 0 { bed_total_min_raw % (24 * 60) } else { (bed_total_min_raw + 24 * 60) % (24 * 60) };
+    let diff = wake_total_min - sleep_total_min;
+    let bed_total_min = if diff >= 0 { diff } else { diff + 24 * 60 };
     (bed_total_min / 60, bed_total_min % 60)
 }
 
@@ -76,8 +76,11 @@ spec fn correct_bedtime(stdin_input: Seq<char>, result: Seq<char>) -> bool {
 
 // <vc-spec>
 fn solve(stdin_input: &str) -> (result: String)
-    requires valid_input(stdin_input@)
-    ensures valid_output(result@) && correct_bedtime(stdin_input@, result@)
+    requires 
+        valid_input(stdin_input@),
+    ensures 
+        valid_output(result@) &&
+        correct_bedtime(stdin_input@, result@)
 // </vc-spec>
 // <vc-code>
 {

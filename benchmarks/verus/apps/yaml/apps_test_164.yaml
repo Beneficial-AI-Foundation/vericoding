@@ -38,7 +38,7 @@ vc-preamble: |-
       (new_y1 * new_y1 + x_b * x_b) * r * r
   }
   
-  spec fn is_impossible(y1: int, y2: int, y_w: int, x_b: int, y_b: int, r: int) -> bool 
+  spec fn is_impossible(y1: int, y2: int, y_w: int, x_b: int, y_b: int, r: int) -> bool
       recommends valid_input(y1, y2, y_w, x_b, y_b, r)
   {
       let w = compute_w(y_w, r);
@@ -49,23 +49,25 @@ vc-preamble: |-
       left_side <= right_side
   }
   
-  spec fn compute_solution(y1: int, y2: int, y_w: int, x_b: int, y_b: int, r: int) -> real
+  spec fn compute_solution(y1: int, y2: int, y_w: int, x_b: int, y_b: int, r: int) -> int
       recommends 
-          valid_input(y1, y2, y_w, x_b, y_b, r),
+          valid_input(y1, y2, y_w, x_b, y_b, r) &&
           !is_impossible(y1, y2, y_w, x_b, y_b, r)
   {
       let w = compute_w(y_w, r);
       let new_y1 = compute_new_y1(y_w, r, y1, y_b);
-      (x_b as real) * ((new_y1 + y_b - w) as real) / (new_y1 as real)
+      x_b * (new_y1 + y_b - w) / new_y1
   }
 
 vc-helpers: |-
 
 vc-spec: |-
-  fn solve(y1: int, y2: int, y_w: int, x_b: int, y_b: int, r: int) -> (result: real)
-      requires valid_input(y1, y2, y_w, x_b, y_b, r)
-      ensures is_impossible(y1, y2, y_w, x_b, y_b, r) ==> result == -1.0
-      ensures !is_impossible(y1, y2, y_w, x_b, y_b, r) ==> result == compute_solution(y1, y2, y_w, x_b, y_b, r)
+  fn solve(y1: int, y2: int, y_w: int, x_b: int, y_b: int, r: int) -> (result: int)
+      requires 
+          valid_input(y1, y2, y_w, x_b, y_b, r)
+      ensures 
+          is_impossible(y1, y2, y_w, x_b, y_b, r) ==> result == -1,
+          !is_impossible(y1, y2, y_w, x_b, y_b, r) ==> result == compute_solution(y1, y2, y_w, x_b, y_b, r)
 
 vc-code: |-
   {

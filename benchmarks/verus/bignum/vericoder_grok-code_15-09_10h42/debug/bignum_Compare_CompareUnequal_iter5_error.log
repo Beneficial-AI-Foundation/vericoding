@@ -1,0 +1,412 @@
+=== Verification Error - Iteration 5 ===
+File: benchmarks/verus/bignum/files/bignum_Compare_CompareUnequal.rs
+Time: 2025-09-15 10:58:31
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Verification failed: verification results:: 3 verified, 8 errors
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_10h42/bignum_Compare_CompareUnequal_impl.rs:25:6
+   |
+25 | exec fn NormalizeBitString(s: &[char]) -> (t: Vec<char>)
+   |      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: invariant not satisfied at end of loop body
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_10h42/bignum_Compare_CompareUnequal_impl.rs:39:13
+   |
+39 |             forall |i: int| 0 <= i < start ==> s@[i as int] == '0',
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: invariant not satisfied at end of loop body
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_10h42/bignum_Compare_CompareUnequal_impl.rs:59:17
+   |
+59 |                 forall |k: int| 0 <= k < j ==> (result@[k - start as int] == s@[k as int])
+   |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: invariant not satisfied before loop
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_10h42/bignum_Compare_CompareUnequal_impl.rs:59:17
+   |
+59 |                 forall |k: int| 0 <= k < j ==> (result@[k - start as int] == s@[k as int])
+   |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+note: recommendation not met
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_10h42/bignum_Compare_CompareUnequal_impl.rs:59:49
+   |
+59 |                 forall |k: int| 0 <= k < j ==> (result@[k - start as int] == s@[k as int])
+   |                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+  ::: /Users/sergiu.bursuc/verus/vstd/seq.rs:62:18
+   |
+62 |             0 <= i < self.len(),
+   |                  - recommendation not met
+
+note: recommendation not met
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_10h42/bignum_Compare_CompareUnequal_impl.rs:69:20
+   |
+6  |   recommends ValidBitString(s)
+   |              ----------------- recommendation not met
+...
+69 |             assert(Str2Int(s@) == Str2Int(result@));
+   |                    ^^^^^^^^^^^
+
+error: assertion failed
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_10h42/bignum_Compare_CompareUnequal_impl.rs:69:20
+   |
+69 |             assert(Str2Int(s@) == Str2Int(result@));
+   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ assertion failed
+
+note: recommendation not met
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_10h42/bignum_Compare_CompareUnequal_impl.rs:69:35
+   |
+6  |   recommends ValidBitString(s)
+   |              ----------------- recommendation not met
+...
+69 |             assert(Str2Int(s@) == Str2Int(result@));
+   |                                   ^^^^^^^^^^^^^^^^
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_10h42/bignum_Compare_CompareUnequal_impl.rs:106:6
+    |
+106 | exec fn normalize(s: &[char]) -> (t: Vec<char>)
+    |      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: invariant not satisfied at end of loop body
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_10h42/bignum_Compare_CompareUnequal_impl.rs:120:13
+    |
+120 |             forall |i: int| 0 <= i < start ==> s@[i as int] == '0',
+    |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+note: recommendation not met
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_10h42/bignum_Compare_CompareUnequal_impl.rs:148:20
+    |
+6   |   recommends ValidBitString(s)
+    |              ----------------- recommendation not met
+...
+148 |             assert(Str2Int(s@) == Str2Int(result@));
+    |                    ^^^^^^^^^^^
+
+error: assertion failed
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_10h42/bignum_Compare_CompareUnequal_impl.rs:148:20
+    |
+148 |             assert(Str2Int(s@) == Str2Int(result@));
+    |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ assertion failed
+
+note: recommendation not met
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_10h42/bignum_Compare_CompareUnequal_impl.rs:148:35
+    |
+6   |   recommends ValidBitString(s)
+    |              ----------------- recommendation not met
+...
+148 |             assert(Str2Int(s@) == Str2Int(result@));
+    |                                   ^^^^^^^^^^^^^^^^
+
+error: assertion failed
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_10h42/bignum_Compare_CompareUnequal_impl.rs:150:16
+    |
+150 |         assert(ValidBitString(result@));
+    |                ^^^^^^^^^^^^^^^^^^^^^^^ assertion failed
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_10h42/bignum_Compare_CompareUnequal_impl.rs:78:6
+   |
+78 | exec fn CompareUnequal(s1: &[char], s2: &[char]) -> (res: i32)
+   |      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: assertion failed
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_10h42/bignum_Compare_CompareUnequal_impl.rs:97:16
+   |
+97 |         assert(s1_norm@.len() > s2_norm@.len());
+   |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ assertion failed
+
+error: assertion failed
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_10h42/bignum_Compare_CompareUnequal_impl.rs:98:16
+   |
+98 |         assert(Str2Int(s1@) > Str2Int(s2@));
+   |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^ assertion failed
+
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_10h42/bignum_Compare_CompareUnequal_impl.rs:182:9
+    |
+182 |         while i < s1_norm.len()
+    |         ^^^^^^^^^^^^^^^^^^^^^^^
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_10h42/bignum_Compare_CompareUnequal_impl.rs:157:6
+    |
+157 | exec fn Compare(s1: &[char], s2: &[char]) -> (res: i32)
+    |      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_10h42/bignum_Compare_CompareUnequal_impl.rs:160:11
+    |
+160 |     ensures Str2Int(s1@) < Str2Int(s2@) ==> res == -1,
+    |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+176 | /     if s1_norm.len() > s2_norm.len() {
+177 | |         1
+178 | |     } else if s2_norm.len() > s1_norm.len() {
+179 | |         -1
+...   |
+206 | |         0
+207 | |     }
+    | |_____- at the end of the function body
+
+note: recommendation not met
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_10h42/bignum_Compare_CompareUnequal_impl.rs:185:68
+    |
+185 |                 forall |j: int| 0 <= j && j < i ==> s1_norm@[j] == s2_norm@[j]
+    |                                                                    ^^^^^^^^^^^
+    |
+   ::: /Users/sergiu.bursuc/verus/vstd/seq.rs:62:18
+    |
+62  |             0 <= i < self.len(),
+    |                  - recommendation not met
+
+error: precondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_10h42/bignum_Compare_CompareUnequal_impl.rs:189:22
+    |
+189 |             let c2 = s2_norm[i];
+    |                      ^^^^^^^^^^
+    |
+   ::: /Users/sergiu.bursuc/verus/vstd/std_specs/vec.rs:48:9
+    |
+48  |         i < vec.view().len(),
+    |         -------------------- failed precondition
+
+note: recommendation not met
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_10h42/bignum_Compare_CompareUnequal_impl.rs:192:28
+    |
+6   |   recommends ValidBitString(s)
+    |              ----------------- recommendation not met
+...
+192 |                     assert(Str2Int(s1@) > Str2Int(s2@));
+    |                            ^^^^^^^^^^^^
+
+error: assertion failed
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_10h42/bignum_Compare_CompareUnequal_impl.rs:192:28
+    |
+192 |                     assert(Str2Int(s1@) > Str2Int(s2@));
+    |                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^ assertion failed
+
+note: recommendation not met
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_10h42/bignum_Compare_CompareUnequal_impl.rs:192:43
+    |
+6   |   recommends ValidBitString(s)
+    |              ----------------- recommendation not met
+...
+192 |                     assert(Str2Int(s1@) > Str2Int(s2@));
+    |                                           ^^^^^^^^^^^^
+
+error: assertion failed
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_10h42/bignum_Compare_CompareUnequal_impl.rs:204:20
+    |
+204 |             assert(Str2Int(s1@) == Str2Int(s2@));
+    |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^ assertion failed
+
+error: aborting due to 13 previous errors
+
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+verification results:: 3 verified, 8 errors
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_10h42/bignum_Compare_CompareUnequal_impl.rs:25:6
+   |
+25 | exec fn NormalizeBitString(s: &[char]) -> (t: Vec<char>)
+   |      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: invariant not satisfied at end of loop body
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_10h42/bignum_Compare_CompareUnequal_impl.rs:39:13
+   |
+39 |             forall |i: int| 0 <= i < start ==> s@[i as int] == '0',
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: invariant not satisfied at end of loop body
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_10h42/bignum_Compare_CompareUnequal_impl.rs:59:17
+   |
+59 |                 forall |k: int| 0 <= k < j ==> (result@[k - start as int] == s@[k as int])
+   |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: invariant not satisfied before loop
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_10h42/bignum_Compare_CompareUnequal_impl.rs:59:17
+   |
+59 |                 forall |k: int| 0 <= k < j ==> (result@[k - start as int] == s@[k as int])
+   |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+note: recommendation not met
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_10h42/bignum_Compare_CompareUnequal_impl.rs:59:49
+   |
+59 |                 forall |k: int| 0 <= k < j ==> (result@[k - start as int] == s@[k as int])
+   |                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+  ::: /Users/sergiu.bursuc/verus/vstd/seq.rs:62:18
+   |
+62 |             0 <= i < self.len(),
+   |                  - recommendation not met
+
+note: recommendation not met
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_10h42/bignum_Compare_CompareUnequal_impl.rs:69:20
+   |
+6  |   recommends ValidBitString(s)
+   |              ----------------- recommendation not met
+...
+69 |             assert(Str2Int(s@) == Str2Int(result@));
+   |                    ^^^^^^^^^^^
+
+error: assertion failed
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_10h42/bignum_Compare_CompareUnequal_impl.rs:69:20
+   |
+69 |             assert(Str2Int(s@) == Str2Int(result@));
+   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ assertion failed
+
+note: recommendation not met
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_10h42/bignum_Compare_CompareUnequal_impl.rs:69:35
+   |
+6  |   recommends ValidBitString(s)
+   |              ----------------- recommendation not met
+...
+69 |             assert(Str2Int(s@) == Str2Int(result@));
+   |                                   ^^^^^^^^^^^^^^^^
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_10h42/bignum_Compare_CompareUnequal_impl.rs:106:6
+    |
+106 | exec fn normalize(s: &[char]) -> (t: Vec<char>)
+    |      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: invariant not satisfied at end of loop body
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_10h42/bignum_Compare_CompareUnequal_impl.rs:120:13
+    |
+120 |             forall |i: int| 0 <= i < start ==> s@[i as int] == '0',
+    |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+note: recommendation not met
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_10h42/bignum_Compare_CompareUnequal_impl.rs:148:20
+    |
+6   |   recommends ValidBitString(s)
+    |              ----------------- recommendation not met
+...
+148 |             assert(Str2Int(s@) == Str2Int(result@));
+    |                    ^^^^^^^^^^^
+
+error: assertion failed
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_10h42/bignum_Compare_CompareUnequal_impl.rs:148:20
+    |
+148 |             assert(Str2Int(s@) == Str2Int(result@));
+    |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ assertion failed
+
+note: recommendation not met
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_10h42/bignum_Compare_CompareUnequal_impl.rs:148:35
+    |
+6   |   recommends ValidBitString(s)
+    |              ----------------- recommendation not met
+...
+148 |             assert(Str2Int(s@) == Str2Int(result@));
+    |                                   ^^^^^^^^^^^^^^^^
+
+error: assertion failed
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_10h42/bignum_Compare_CompareUnequal_impl.rs:150:16
+    |
+150 |         assert(ValidBitString(result@));
+    |                ^^^^^^^^^^^^^^^^^^^^^^^ assertion failed
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_10h42/bignum_Compare_CompareUnequal_impl.rs:78:6
+   |
+78 | exec fn CompareUnequal(s1: &[char], s2: &[char]) -> (res: i32)
+   |      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: assertion failed
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_10h42/bignum_Compare_CompareUnequal_impl.rs:97:16
+   |
+97 |         assert(s1_norm@.len() > s2_norm@.len());
+   |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ assertion failed
+
+error: assertion failed
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_10h42/bignum_Compare_CompareUnequal_impl.rs:98:16
+   |
+98 |         assert(Str2Int(s1@) > Str2Int(s2@));
+   |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^ assertion failed
+
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_10h42/bignum_Compare_CompareUnequal_impl.rs:182:9
+    |
+182 |         while i < s1_norm.len()
+    |         ^^^^^^^^^^^^^^^^^^^^^^^
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_10h42/bignum_Compare_CompareUnequal_impl.rs:157:6
+    |
+157 | exec fn Compare(s1: &[char], s2: &[char]) -> (res: i32)
+    |      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_10h42/bignum_Compare_CompareUnequal_impl.rs:160:11
+    |
+160 |     ensures Str2Int(s1@) < Str2Int(s2@) ==> res == -1,
+    |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+176 | /     if s1_norm.len() > s2_norm.len() {
+177 | |         1
+178 | |     } else if s2_norm.len() > s1_norm.len() {
+179 | |         -1
+...   |
+206 | |         0
+207 | |     }
+    | |_____- at the end of the function body
+
+note: recommendation not met
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_10h42/bignum_Compare_CompareUnequal_impl.rs:185:68
+    |
+185 |                 forall |j: int| 0 <= j && j < i ==> s1_norm@[j] == s2_norm@[j]
+    |                                                                    ^^^^^^^^^^^
+    |
+   ::: /Users/sergiu.bursuc/verus/vstd/seq.rs:62:18
+    |
+62  |             0 <= i < self.len(),
+    |                  - recommendation not met
+
+error: precondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_10h42/bignum_Compare_CompareUnequal_impl.rs:189:22
+    |
+189 |             let c2 = s2_norm[i];
+    |                      ^^^^^^^^^^
+    |
+   ::: /Users/sergiu.bursuc/verus/vstd/std_specs/vec.rs:48:9
+    |
+48  |         i < vec.view().len(),
+    |         -------------------- failed precondition
+
+note: recommendation not met
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_10h42/bignum_Compare_CompareUnequal_impl.rs:192:28
+    |
+6   |   recommends ValidBitString(s)
+    |              ----------------- recommendation not met
+...
+192 |                     assert(Str2Int(s1@) > Str2Int(s2@));
+    |                            ^^^^^^^^^^^^
+
+error: assertion failed
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_10h42/bignum_Compare_CompareUnequal_impl.rs:192:28
+    |
+192 |                     assert(Str2Int(s1@) > Str2Int(s2@));
+    |                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^ assertion failed
+
+note: recommendation not met
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_10h42/bignum_Compare_CompareUnequal_impl.rs:192:43
+    |
+6   |   recommends ValidBitString(s)
+    |              ----------------- recommendation not met
+...
+192 |                     assert(Str2Int(s1@) > Str2Int(s2@));
+    |                                           ^^^^^^^^^^^^
+
+error: assertion failed
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_10h42/bignum_Compare_CompareUnequal_impl.rs:204:20
+    |
+204 |             assert(Str2Int(s1@) == Str2Int(s2@));
+    |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^ assertion failed
+
+error: aborting due to 13 previous errors
+

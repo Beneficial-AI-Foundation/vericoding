@@ -1,0 +1,12 @@
+=== LLM Response - fix_verification - Iteration 8 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExpPow2_int.rs
+Prompt Hash: 0d797555
+JSON Parsed Successfully: True
+Timestamp: 1757956698.6169019
+Content Length: 1783 chars
+--------------------------------------------------------------------------------
+[
+"/* helper modified by LLM (iteration 9): add lemmas for exp properties and arithmetic */\nproof fn exp_double_lemma(x: nat, k: nat)\n    ensures Exp_int(x, 2 * k) == Exp_int(Exp_int(x, k), 2)\n{\n    if k == 0 {\n        assert(Exp_int(x, 0) == 1);\n        assert(Exp_int(1, 2) == 1);\n        assert(Exp_int(x, 2 * 0) == Exp_int(x, 0));\n    } else {\n        exp_double_lemma(x, k - 1);\n    }\n}\n\nproof fn exp_one_lemma(x: nat)\n    ensures Exp_int(x, 1) == x\n{\n    assert(Exp_int(x, 1) == x * Exp_int(x, 0));\n    assert(Exp_int(x, 0) == 1);\n}\n\nproof fn exp_pow2_lemma(x: nat, n: nat)\n    ensures Exp_int(x, Exp_int(2, n)) == if n == 0 { x } else { Exp_int(Exp_int(x, Exp_int(2, (n - 1) as nat)), 2) }\n{\n    if n == 0 {\n        assert(Exp_int(2, 0) == 1);\n        exp_one_lemma(x);\n    } else {\n        assert(Exp_int(2, n) == 2 * Exp_int(2, (n - 1) as nat));\n        let half_exp = Exp_int(2, (n - 1) as nat);\n        exp_double_lemma(x, half_exp);\n    }\n}",
+"{\n    /* code modified by LLM (iteration 9): add proof block with lemma calls and fix overflow check */\n    if n == 0u64 {\n        proof {\n            exp_pow2_lemma(x as nat, 0);\n            exp_one_lemma(x as nat);\n        }\n        return (x % z);\n    } else {\n        let half_y = y / 2u64;\n        let half_res = ModExpPow2_int(x, half_y, n - 1, z);\n        \n        proof {\n            exp_pow2_lemma(x as nat, n as nat);\n            exp_double_lemma(x as nat, half_y as nat);\n            assert(y > 0u64);\n        }\n        \n        if half_res <= 46340u64 {\n            let temp = half_res * half_res;\n            (temp % z)\n        } else {\n            let temp = (half_res as u128 * half_res as u128);\n            (temp % z as u128) as u64\n        }\n    }\n}"
+]
+--------------------------------------------------------------------------------

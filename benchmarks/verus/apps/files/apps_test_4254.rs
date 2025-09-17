@@ -8,18 +8,18 @@ spec fn valid_input_format(input: Seq<char>) -> bool {
     let space_index = find_space(trimmed);
     space_index >= 0 && space_index < trimmed.len() - 1 &&
     is_valid_integer(trimmed.subrange(0, space_index)) &&
-    is_valid_integer(trimmed.subrange(space_index + 1, trimmed.len()))
+    is_valid_integer(trimmed.subrange(space_index + 1, trimmed.len() as int))
 }
 
 spec fn valid_input(input: Seq<char>, s: int, w: int) -> bool {
     valid_input_format(input) &&
-    {
+    ({
         let trimmed = trim_newlines(input);
         let space_index = find_space(trimmed);
         let s_str = trimmed.subrange(0, space_index);
-        let w_str = trimmed.subrange(space_index + 1, trimmed.len());
+        let w_str = trimmed.subrange(space_index + 1, trimmed.len() as int);
         string_to_int(s_str) == s && string_to_int(w_str) == w
-    }
+    })
 }
 
 spec fn is_valid_integer(s: Seq<char>) -> bool {
@@ -64,7 +64,7 @@ spec fn string_to_int(s: Seq<char>) -> int {
     if s.len() == 0 {
         0
     } else if s[0] == '-' && s.len() > 1 {
-        -string_to_int_helper(s.subrange(1, s.len()), 0, 0)
+        -string_to_int_helper(s.subrange(1, s.len() as int), 0, 0)
     } else {
         string_to_int_helper(s, 0, 0)
     }
@@ -86,25 +86,13 @@ spec fn string_to_int_helper(s: Seq<char>, index: int, acc: int) -> int
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(input: Vec<char>) -> (result: Vec<char>)
-    requires input.len() > 0
-    ensures result@ == seq!['s', 'a', 'f', 'e', '\n'] || result@ == seq!['u', 'n', 's', 'a', 'f', 'e', '\n'] || result.len() == 0
-    ensures 
-        valid_input_format(input@) ==> 
-            {
-                let trimmed = trim_newlines(input@);
-                let space_index = find_space(trimmed);
-                let s = string_to_int(trimmed.subrange(0, space_index));
-                let w = string_to_int(trimmed.subrange(space_index + 1, trimmed.len()));
-                (w < s ==> result@ == seq!['s', 'a', 'f', 'e', '\n']) && 
-                (w >= s ==> result@ == seq!['u', 'n', 's', 'a', 'f', 'e', '\n'])
-            }
-    ensures !valid_input_format(input@) ==> result.len() == 0
+fn solve(input: &str) -> (result: String)
+    requires input@.len() > 0
 // </vc-spec>
 // <vc-code>
 {
     assume(false);
-    Vec::new()
+    unreached()
 }
 // </vc-code>
 

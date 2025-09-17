@@ -1,0 +1,450 @@
+=== Verification Error - Iteration 2 ===
+File: benchmarks/verus/bignum/files/bignum_Compare_CompareUnequal_NormalizeBitString.rs
+Time: 2025-09-15 10:46:44
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_Compare_CompareUnequal_NormalizeBitString_impl.rs:51:73
+   |
+51 |       forall|j: usize| 0 <= j < i && first_one_idx.is_none() ==> s_vec@[j] == '0'
+   |                                                                  -------^-
+   |                                                                  |      |
+   |                                                                  |      expected `int`, found `usize`
+   |                                                                  arguments to this method are incorrect
+   |
+note: method defined here
+  --> /Users/runner/work/verus/verus/source/vstd/seq.rs:60:22
+
+error[E0608]: cannot index into a value of type `vstd::seq::Seq<char>`
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_Compare_CompareUnequal_NormalizeBitString_impl.rs:54:14
+   |
+54 |     if s_vec@[i] == '1' {
+   |              ^^^
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_Compare_CompareUnequal_NormalizeBitString_impl.rs:78:58
+   |
+78 |       forall|k: usize| 0 <= k < result.len() ==> result@[k] == s_vec@[start_idx + k]
+   |                                                  --------^-
+   |                                                  |       |
+   |                                                  |       expected `int`, found `usize`
+   |                                                  arguments to this method are incorrect
+   |
+note: method defined here
+  --> /Users/runner/work/verus/verus/source/vstd/seq.rs:60:22
+
+error[E0608]: cannot index into a value of type `vstd::seq::Seq<char>`
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_Compare_CompareUnequal_NormalizeBitString_impl.rs:81:23
+   |
+81 |     result.push(s_vec@[j]);
+   |                       ^^^
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_Compare_CompareUnequal_NormalizeBitString_impl.rs:129:45
+    |
+129 |         forall|j: usize| 0 <= j < i ==> s1@[j] == s2@[j]
+    |                                         ----^-
+    |                                         |   |
+    |                                         |   expected `int`, found `usize`
+    |                                         arguments to this method are incorrect
+    |
+note: method defined here
+   --> /Users/runner/work/verus/verus/source/vstd/seq.rs:60:22
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_Compare_CompareUnequal_NormalizeBitString_impl.rs:129:55
+    |
+129 |         forall|j: usize| 0 <= j < i ==> s1@[j] == s2@[j]
+    |                                                   ----^-
+    |                                                   |   |
+    |                                                   |   expected `int`, found `usize`
+    |                                                   arguments to this method are incorrect
+    |
+note: method defined here
+   --> /Users/runner/work/verus/verus/source/vstd/seq.rs:60:22
+
+error[E0608]: cannot index into a value of type `vstd::seq::Seq<char>`
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_Compare_CompareUnequal_NormalizeBitString_impl.rs:132:13
+    |
+132 |       if s1@[i] == '1' && s2@[i] == '0' {
+    |             ^^^
+
+error[E0608]: cannot index into a value of type `vstd::seq::Seq<char>`
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_Compare_CompareUnequal_NormalizeBitString_impl.rs:132:30
+    |
+132 |       if s1@[i] == '1' && s2@[i] == '0' {
+    |                              ^^^
+
+error[E0608]: cannot index into a value of type `vstd::seq::Seq<char>`
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_Compare_CompareUnequal_NormalizeBitString_impl.rs:134:20
+    |
+134 |       } else if s1@[i] == '0' && s2@[i] == '1' {
+    |                    ^^^
+
+error[E0608]: cannot index into a value of type `vstd::seq::Seq<char>`
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_Compare_CompareUnequal_NormalizeBitString_impl.rs:134:37
+    |
+134 |       } else if s1@[i] == '0' && s2@[i] == '1' {
+    |                                     ^^^
+
+error[E0599]: no function or associated item named `singleton` found for struct `vstd::seq::Seq` in the current scope
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_Compare_CompareUnequal_NormalizeBitString_impl.rs:167:36
+    |
+167 |     ValidBitString(s_prefix + Seq::singleton(last_char))
+    |                                    ^^^^^^^^^ function or associated item not found in `Seq<_>`
+    |
+note: if you're trying to build a new `vstd::seq::Seq<_>` consider using one of the following associated functions:
+      vstd::seq::Seq::<A>::empty
+      vstd::seq::Seq::<A>::new
+      vstd::seq::Seq::<A>::tracked_empty
+   --> /Users/runner/work/verus/verus/source/vstd/seq.rs:38:5
+
+error[E0599]: no function or associated item named `singleton` found for struct `vstd::seq::Seq` in the current scope
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_Compare_CompareUnequal_NormalizeBitString_impl.rs:170:53
+    |
+170 |     assert forall|i: int| 0 <= i < (s_prefix + Seq::singleton(last_char)).len() implies
+    |                                                     ^^^^^^^^^ function or associated item not found in `Seq<_>`
+    |
+note: if you're trying to build a new `vstd::seq::Seq<_>` consider using one of the following associated functions:
+      vstd::seq::Seq::<A>::empty
+      vstd::seq::Seq::<A>::new
+      vstd::seq::Seq::<A>::tracked_empty
+   --> /Users/runner/work/verus/verus/source/vstd/seq.rs:38:5
+
+error[E0599]: no function or associated item named `singleton` found for struct `vstd::seq::Seq` in the current scope
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_Compare_CompareUnequal_NormalizeBitString_impl.rs:171:25
+    |
+171 |       ((s_prefix + Seq::singleton(last_char)).index(i) == '0' || (s_prefix + Seq::singleton(last_char)).index(i) == '1') by {
+    |                         ^^^^^^^^^ function or associated item not found in `Seq<_>`
+    |
+note: if you're trying to build a new `vstd::seq::Seq<_>` consider using one of the following associated functions:
+      vstd::seq::Seq::<A>::empty
+      vstd::seq::Seq::<A>::new
+      vstd::seq::Seq::<A>::tracked_empty
+   --> /Users/runner/work/verus/verus/source/vstd/seq.rs:38:5
+
+error[E0599]: no function or associated item named `singleton` found for struct `vstd::seq::Seq` in the current scope
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_Compare_CompareUnequal_NormalizeBitString_impl.rs:171:83
+    |
+171 |       ((s_prefix + Seq::singleton(last_char)).index(i) == '0' || (s_prefix + Seq::singleton(last_char)).index(i) == '1') by {
+    |                                                                                   ^^^^^^^^^ function or associated item not found in `Seq<_>`
+    |
+note: if you're trying to build a new `vstd::seq::Seq<_>` consider using one of the following associated functions:
+      vstd::seq::Seq::<A>::empty
+      vstd::seq::Seq::<A>::new
+      vstd::seq::Seq::<A>::tracked_empty
+   --> /Users/runner/work/verus/verus/source/vstd/seq.rs:38:5
+
+error[E0599]: no function or associated item named `singleton` found for struct `vstd::seq::Seq` in the current scope
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_Compare_CompareUnequal_NormalizeBitString_impl.rs:176:33
+    |
+176 |         assert((s_prefix + Seq::singleton(last_char)).index(i) == last_char);
+    |                                 ^^^^^^^^^ function or associated item not found in `Seq<_>`
+    |
+note: if you're trying to build a new `vstd::seq::Seq<_>` consider using one of the following associated functions:
+      vstd::seq::Seq::<A>::empty
+      vstd::seq::Seq::<A>::new
+      vstd::seq::Seq::<A>::tracked_empty
+   --> /Users/runner/work/verus/verus/source/vstd/seq.rs:38:5
+
+error[E0599]: no function or associated item named `singleton` found for struct `vstd::seq::Seq` in the current scope
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_Compare_CompareUnequal_NormalizeBitString_impl.rs:186:28
+    |
+186 |   ensures Str2Int(s + Seq::singleton(c)) == 2 * Str2Int(s) + (if c == '1' { 1nat } else { 0nat })
+    |                            ^^^^^^^^^ function or associated item not found in `Seq<_>`
+    |
+note: if you're trying to build a new `vstd::seq::Seq<_>` consider using one of the following associated functions:
+      vstd::seq::Seq::<A>::empty
+      vstd::seq::Seq::<A>::new
+      vstd::seq::Seq::<A>::tracked_empty
+   --> /Users/runner/work/verus/verus/source/vstd/seq.rs:38:5
+
+error[E0599]: no function or associated item named `singleton` found for struct `vstd::seq::Seq` in the current scope
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_Compare_CompareUnequal_NormalizeBitString_impl.rs:189:25
+    |
+189 |     assert(Str2Int(Seq::singleton(c)) == (if c == '1' { 1nat } else { 0nat }));
+    |                         ^^^^^^^^^ function or associated item not found in `Seq<_>`
+    |
+note: if you're trying to build a new `vstd::seq::Seq<_>` consider using one of the following associated functions:
+      vstd::seq::Seq::<A>::empty
+      vstd::seq::Seq::<A>::new
+      vstd::seq::Seq::<A>::tracked_empty
+   --> /Users/runner/work/verus/verus/source/vstd/seq.rs:38:5
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_Compare_CompareUnequal_NormalizeBitString_impl.rs:289:56
+    |
+289 |         forall|j: usize| 0 <= j < i ==> normalized_s1@[j] == normalized_s2@[j]
+    |                                         ---------------^-
+    |                                         |              |
+    |                                         |              expected `int`, found `usize`
+    |                                         arguments to this method are incorrect
+    |
+note: method defined here
+   --> /Users/runner/work/verus/verus/source/vstd/seq.rs:60:22
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_Compare_CompareUnequal_NormalizeBitString_impl.rs:289:77
+    |
+289 |         forall|j: usize| 0 <= j < i ==> normalized_s1@[j] == normalized_s2@[j]
+    |                                                              ---------------^-
+    |                                                              |              |
+    |                                                              |              expected `int`, found `usize`
+    |                                                              arguments to this method are incorrect
+    |
+note: method defined here
+   --> /Users/runner/work/verus/verus/source/vstd/seq.rs:60:22
+
+error[E0608]: cannot index into a value of type `vstd::seq::Seq<char>`
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_Compare_CompareUnequal_NormalizeBitString_impl.rs:292:24
+    |
+292 |       if normalized_s1@[i] == '1' && normalized_s2@[i] == '0' {
+    |                        ^^^
+
+error[E0608]: cannot index into a value of type `vstd::seq::Seq<char>`
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_Compare_CompareUnequal_NormalizeBitString_impl.rs:292:52
+    |
+292 |       if normalized_s1@[i] == '1' && normalized_s2@[i] == '0' {
+    |                                                    ^^^
+
+error[E0608]: cannot index into a value of type `vstd::seq::Seq<char>`
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_Compare_CompareUnequal_NormalizeBitString_impl.rs:297:31
+    |
+297 |       } else if normalized_s1@[i] == '0' && normalized_s2@[i] == '1' {
+    |                               ^^^
+
+error[E0608]: cannot index into a value of type `vstd::seq::Seq<char>`
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_Compare_CompareUnequal_NormalizeBitString_impl.rs:297:59
+    |
+297 |       } else if normalized_s1@[i] == '0' && normalized_s2@[i] == '1' {
+    |                                                           ^^^
+
+error: aborting due to 23 previous errors
+
+Some errors have detailed explanations: E0308, E0599, E0608.
+For more information about an error, try `rustc --explain E0308`.
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_Compare_CompareUnequal_NormalizeBitString_impl.rs:51:73
+   |
+51 |       forall|j: usize| 0 <= j < i && first_one_idx.is_none() ==> s_vec@[j] == '0'
+   |                                                                  -------^-
+   |                                                                  |      |
+   |                                                                  |      expected `int`, found `usize`
+   |                                                                  arguments to this method are incorrect
+   |
+note: method defined here
+  --> /Users/runner/work/verus/verus/source/vstd/seq.rs:60:22
+
+error[E0608]: cannot index into a value of type `vstd::seq::Seq<char>`
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_Compare_CompareUnequal_NormalizeBitString_impl.rs:54:14
+   |
+54 |     if s_vec@[i] == '1' {
+   |              ^^^
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_Compare_CompareUnequal_NormalizeBitString_impl.rs:78:58
+   |
+78 |       forall|k: usize| 0 <= k < result.len() ==> result@[k] == s_vec@[start_idx + k]
+   |                                                  --------^-
+   |                                                  |       |
+   |                                                  |       expected `int`, found `usize`
+   |                                                  arguments to this method are incorrect
+   |
+note: method defined here
+  --> /Users/runner/work/verus/verus/source/vstd/seq.rs:60:22
+
+error[E0608]: cannot index into a value of type `vstd::seq::Seq<char>`
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_Compare_CompareUnequal_NormalizeBitString_impl.rs:81:23
+   |
+81 |     result.push(s_vec@[j]);
+   |                       ^^^
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_Compare_CompareUnequal_NormalizeBitString_impl.rs:129:45
+    |
+129 |         forall|j: usize| 0 <= j < i ==> s1@[j] == s2@[j]
+    |                                         ----^-
+    |                                         |   |
+    |                                         |   expected `int`, found `usize`
+    |                                         arguments to this method are incorrect
+    |
+note: method defined here
+   --> /Users/runner/work/verus/verus/source/vstd/seq.rs:60:22
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_Compare_CompareUnequal_NormalizeBitString_impl.rs:129:55
+    |
+129 |         forall|j: usize| 0 <= j < i ==> s1@[j] == s2@[j]
+    |                                                   ----^-
+    |                                                   |   |
+    |                                                   |   expected `int`, found `usize`
+    |                                                   arguments to this method are incorrect
+    |
+note: method defined here
+   --> /Users/runner/work/verus/verus/source/vstd/seq.rs:60:22
+
+error[E0608]: cannot index into a value of type `vstd::seq::Seq<char>`
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_Compare_CompareUnequal_NormalizeBitString_impl.rs:132:13
+    |
+132 |       if s1@[i] == '1' && s2@[i] == '0' {
+    |             ^^^
+
+error[E0608]: cannot index into a value of type `vstd::seq::Seq<char>`
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_Compare_CompareUnequal_NormalizeBitString_impl.rs:132:30
+    |
+132 |       if s1@[i] == '1' && s2@[i] == '0' {
+    |                              ^^^
+
+error[E0608]: cannot index into a value of type `vstd::seq::Seq<char>`
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_Compare_CompareUnequal_NormalizeBitString_impl.rs:134:20
+    |
+134 |       } else if s1@[i] == '0' && s2@[i] == '1' {
+    |                    ^^^
+
+error[E0608]: cannot index into a value of type `vstd::seq::Seq<char>`
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_Compare_CompareUnequal_NormalizeBitString_impl.rs:134:37
+    |
+134 |       } else if s1@[i] == '0' && s2@[i] == '1' {
+    |                                     ^^^
+
+error[E0599]: no function or associated item named `singleton` found for struct `vstd::seq::Seq` in the current scope
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_Compare_CompareUnequal_NormalizeBitString_impl.rs:167:36
+    |
+167 |     ValidBitString(s_prefix + Seq::singleton(last_char))
+    |                                    ^^^^^^^^^ function or associated item not found in `Seq<_>`
+    |
+note: if you're trying to build a new `vstd::seq::Seq<_>` consider using one of the following associated functions:
+      vstd::seq::Seq::<A>::empty
+      vstd::seq::Seq::<A>::new
+      vstd::seq::Seq::<A>::tracked_empty
+   --> /Users/runner/work/verus/verus/source/vstd/seq.rs:38:5
+
+error[E0599]: no function or associated item named `singleton` found for struct `vstd::seq::Seq` in the current scope
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_Compare_CompareUnequal_NormalizeBitString_impl.rs:170:53
+    |
+170 |     assert forall|i: int| 0 <= i < (s_prefix + Seq::singleton(last_char)).len() implies
+    |                                                     ^^^^^^^^^ function or associated item not found in `Seq<_>`
+    |
+note: if you're trying to build a new `vstd::seq::Seq<_>` consider using one of the following associated functions:
+      vstd::seq::Seq::<A>::empty
+      vstd::seq::Seq::<A>::new
+      vstd::seq::Seq::<A>::tracked_empty
+   --> /Users/runner/work/verus/verus/source/vstd/seq.rs:38:5
+
+error[E0599]: no function or associated item named `singleton` found for struct `vstd::seq::Seq` in the current scope
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_Compare_CompareUnequal_NormalizeBitString_impl.rs:171:25
+    |
+171 |       ((s_prefix + Seq::singleton(last_char)).index(i) == '0' || (s_prefix + Seq::singleton(last_char)).index(i) == '1') by {
+    |                         ^^^^^^^^^ function or associated item not found in `Seq<_>`
+    |
+note: if you're trying to build a new `vstd::seq::Seq<_>` consider using one of the following associated functions:
+      vstd::seq::Seq::<A>::empty
+      vstd::seq::Seq::<A>::new
+      vstd::seq::Seq::<A>::tracked_empty
+   --> /Users/runner/work/verus/verus/source/vstd/seq.rs:38:5
+
+error[E0599]: no function or associated item named `singleton` found for struct `vstd::seq::Seq` in the current scope
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_Compare_CompareUnequal_NormalizeBitString_impl.rs:171:83
+    |
+171 |       ((s_prefix + Seq::singleton(last_char)).index(i) == '0' || (s_prefix + Seq::singleton(last_char)).index(i) == '1') by {
+    |                                                                                   ^^^^^^^^^ function or associated item not found in `Seq<_>`
+    |
+note: if you're trying to build a new `vstd::seq::Seq<_>` consider using one of the following associated functions:
+      vstd::seq::Seq::<A>::empty
+      vstd::seq::Seq::<A>::new
+      vstd::seq::Seq::<A>::tracked_empty
+   --> /Users/runner/work/verus/verus/source/vstd/seq.rs:38:5
+
+error[E0599]: no function or associated item named `singleton` found for struct `vstd::seq::Seq` in the current scope
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_Compare_CompareUnequal_NormalizeBitString_impl.rs:176:33
+    |
+176 |         assert((s_prefix + Seq::singleton(last_char)).index(i) == last_char);
+    |                                 ^^^^^^^^^ function or associated item not found in `Seq<_>`
+    |
+note: if you're trying to build a new `vstd::seq::Seq<_>` consider using one of the following associated functions:
+      vstd::seq::Seq::<A>::empty
+      vstd::seq::Seq::<A>::new
+      vstd::seq::Seq::<A>::tracked_empty
+   --> /Users/runner/work/verus/verus/source/vstd/seq.rs:38:5
+
+error[E0599]: no function or associated item named `singleton` found for struct `vstd::seq::Seq` in the current scope
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_Compare_CompareUnequal_NormalizeBitString_impl.rs:186:28
+    |
+186 |   ensures Str2Int(s + Seq::singleton(c)) == 2 * Str2Int(s) + (if c == '1' { 1nat } else { 0nat })
+    |                            ^^^^^^^^^ function or associated item not found in `Seq<_>`
+    |
+note: if you're trying to build a new `vstd::seq::Seq<_>` consider using one of the following associated functions:
+      vstd::seq::Seq::<A>::empty
+      vstd::seq::Seq::<A>::new
+      vstd::seq::Seq::<A>::tracked_empty
+   --> /Users/runner/work/verus/verus/source/vstd/seq.rs:38:5
+
+error[E0599]: no function or associated item named `singleton` found for struct `vstd::seq::Seq` in the current scope
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_Compare_CompareUnequal_NormalizeBitString_impl.rs:189:25
+    |
+189 |     assert(Str2Int(Seq::singleton(c)) == (if c == '1' { 1nat } else { 0nat }));
+    |                         ^^^^^^^^^ function or associated item not found in `Seq<_>`
+    |
+note: if you're trying to build a new `vstd::seq::Seq<_>` consider using one of the following associated functions:
+      vstd::seq::Seq::<A>::empty
+      vstd::seq::Seq::<A>::new
+      vstd::seq::Seq::<A>::tracked_empty
+   --> /Users/runner/work/verus/verus/source/vstd/seq.rs:38:5
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_Compare_CompareUnequal_NormalizeBitString_impl.rs:289:56
+    |
+289 |         forall|j: usize| 0 <= j < i ==> normalized_s1@[j] == normalized_s2@[j]
+    |                                         ---------------^-
+    |                                         |              |
+    |                                         |              expected `int`, found `usize`
+    |                                         arguments to this method are incorrect
+    |
+note: method defined here
+   --> /Users/runner/work/verus/verus/source/vstd/seq.rs:60:22
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_Compare_CompareUnequal_NormalizeBitString_impl.rs:289:77
+    |
+289 |         forall|j: usize| 0 <= j < i ==> normalized_s1@[j] == normalized_s2@[j]
+    |                                                              ---------------^-
+    |                                                              |              |
+    |                                                              |              expected `int`, found `usize`
+    |                                                              arguments to this method are incorrect
+    |
+note: method defined here
+   --> /Users/runner/work/verus/verus/source/vstd/seq.rs:60:22
+
+error[E0608]: cannot index into a value of type `vstd::seq::Seq<char>`
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_Compare_CompareUnequal_NormalizeBitString_impl.rs:292:24
+    |
+292 |       if normalized_s1@[i] == '1' && normalized_s2@[i] == '0' {
+    |                        ^^^
+
+error[E0608]: cannot index into a value of type `vstd::seq::Seq<char>`
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_Compare_CompareUnequal_NormalizeBitString_impl.rs:292:52
+    |
+292 |       if normalized_s1@[i] == '1' && normalized_s2@[i] == '0' {
+    |                                                    ^^^
+
+error[E0608]: cannot index into a value of type `vstd::seq::Seq<char>`
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_Compare_CompareUnequal_NormalizeBitString_impl.rs:297:31
+    |
+297 |       } else if normalized_s1@[i] == '0' && normalized_s2@[i] == '1' {
+    |                               ^^^
+
+error[E0608]: cannot index into a value of type `vstd::seq::Seq<char>`
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_Compare_CompareUnequal_NormalizeBitString_impl.rs:297:59
+    |
+297 |       } else if normalized_s1@[i] == '0' && normalized_s2@[i] == '1' {
+    |                                                           ^^^
+
+error: aborting due to 23 previous errors
+
+Some errors have detailed explanations: E0308, E0599, E0608.
+For more information about an error, try `rustc --explain E0308`.

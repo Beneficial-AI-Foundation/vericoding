@@ -1,0 +1,5 @@
+=== Raw LLM Generate Response ===
+Length: 861 characters
+--------------------------------------------------------------------------------
+["exec fn str2nat(s: &Vec<char>) -> nat\ndecreases s.len()\n{\n  if s.len() == 0 { 0 } else { 2 * str2nat(&s[..s.len() - 1]) + (if s[s.len() - 1] == '1' {1} else {0}) }\n}\n\nexec fn nat2bits(n: nat) -> Vec<char>\ndecreases n\n{\n  if n == 0 { Vec::new() } else {\n    let mut v = nat2bits(n / 2);\n    v.push(if n % 2 == 0 { '0' } else { '1' });\n    v\n  }\n}", "{\n  if sy@.len() == 0 {\n    return nat2bits(1);\n  }\n  let mut sy_short = sy.to_vec();\n  sy_short.remove(sy_short.len() - 1);\n  let sub_res = ModExp_Add_Zeroes(sx, &sy_short, sz);\n  let a = str2nat(&sub_res);\n  let m = str2nat(sz);\n  if sy[sy.len() - 1] == '0' {\n    let b = str2nat(&sub_res);\n    let sq_mod = (a * b) % m;\n    return nat2bits(sq_mod);\n  } else {\n    let x = str2nat(sx);\n    let sq = a * a;\n    let mul_mod = (sq * x) % m;\n    return nat2bits(mul_mod);\n  }\n}"]
+--------------------------------------------------------------------------------

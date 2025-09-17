@@ -1,0 +1,10 @@
+=== LLM Response - generate_code - Iteration 0 ===
+File: benchmarks/verus/bignum/files/bignum_ModExp_Add_ModExpPow2.rs
+Prompt Hash: c7459032
+JSON Parsed Successfully: False
+Timestamp: 1757927756.954138
+Content Length: 687 chars
+--------------------------------------------------------------------------------
+```json
+["proof fn lemma_exp_mult(x: nat, y1: nat, y2: nat)\n    ensures Exp_int(x, y1 + y2) == Exp_int(x, y1) * Exp_int(x, y2)\n    decreases y2\n{\n    if y2 > 0 {\n        lemma_exp_mult(x, y1, (y2 - 1) as nat);\n    }\n}\n\nproof fn lemma_exp_by_squaring(x: nat, y: nat)\n    ensures\n        y > 0 && y % 2 == 0 ==> Exp_int(x, y) == Exp_int(x, y/2) * Exp_int(x, y/2),\n        y > 0 && y % 2 == 1 ==> Exp_int(x, y) == Exp_int(x, y/2) * Exp_int(x, y/2) * x,\n{\n    if y > 0 {\n        lemma_exp_mult(x, y/2, y/2);\n        if y % 2 == 1 {\n            lemma_exp_mult(x, y/2 * 2, 1);\n        }\n    }\n}\n\nexec fn str_to_int(s: &[char]) -> (res: nat)\n    requires ValidBitString(s
+--------------------------------------------------------------------------------

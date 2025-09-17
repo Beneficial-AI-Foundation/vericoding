@@ -1,0 +1,153 @@
+=== Verification Error - Iteration 1 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExp_int_ModExpPow2_int.rs
+Time: 2025-09-15 18:54:19
+
+Full Error Output:
+--------------------------------------------------------------------------------
+VERIFICATION BYPASSES DETECTED: uses 'assume' to bypass verification. Code contains verification bypasses and cannot be considered successfully verified.
+
+Original verification output:
+Compilation failed: error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_int_ModExpPow2_int_impl.rs:34:29
+   |
+34 |     let res = ModExp_int(x, (y - 1) / 2, z);
+   |               ----------    ^^^^^^^^^^^ expected `nat`, found `int`
+   |               |
+   |               arguments to this function are incorrect
+   |
+note: function defined here
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_int_ModExpPow2_int_impl.rs:24:9
+   |
+24 | spec fn ModExp_int(x: nat, y: nat, z: nat) -> nat
+   |         ^^^^^^^^^^         ------
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_int_ModExpPow2_int_impl.rs:67:20
+   |
+67 |   if result_nat == 0 {
+   |      ----------    ^ expected `nat`, found integer
+   |      |
+   |      expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_int_ModExpPow2_int_impl.rs:71:24
+   |
+71 |       while temp_nat > 0
+   |             --------   ^ expected `nat`, found integer
+   |             |
+   |             expected because this is `vstd::prelude::nat`
+
+error[E0599]: no method named `tracked_byte_get` found for struct `std::vec::Vec<char>` in the current scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_int_ModExpPow2_int_impl.rs:74:78
+   |
+74 |               forall |i: int| 0 <= i && i < result_vec.len() ==> (result_vec.tracked_byte_get(i) == '0' as u8 || result_vec.tracked_byte_get(i) == '1' as u8),
+   |                                                                              ^^^^^^^^^^^^^^^^ method not found in `Vec<char>`
+
+error[E0599]: no method named `tracked_byte_get` found for struct `std::vec::Vec<char>` in the current scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_int_ModExpPow2_int_impl.rs:74:125
+   |
+74 |               forall |i: int| 0 <= i && i < result_vec.len() ==> (result_vec.tracked_byte_get(i) == '0' as u8 || result_vec.tracked_byte_get(i) == '1' as u8),
+   |                                                                                                                             ^^^^^^^^^^^^^^^^ method not found in `Vec<char>`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_int_ModExpPow2_int_impl.rs:77:25
+   |
+77 |           if temp_nat % 2 == 1 {
+   |              --------   ^ expected `nat`, found integer
+   |              |
+   |              expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_int_ModExpPow2_int_impl.rs:77:30
+   |
+77 |           if temp_nat % 2 == 1 {
+   |              ------------    ^ expected `nat`, found integer
+   |              |
+   |              expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_int_ModExpPow2_int_impl.rs:82:33
+   |
+82 |           temp_nat = temp_nat / 2;
+   |                      --------   ^ expected `nat`, found integer
+   |                      |
+   |                      expected because this is `vstd::prelude::nat`
+
+error: aborting due to 8 previous errors
+
+Some errors have detailed explanations: E0308, E0599.
+For more information about an error, try `rustc --explain E0308`.
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_int_ModExpPow2_int_impl.rs:34:29
+   |
+34 |     let res = ModExp_int(x, (y - 1) / 2, z);
+   |               ----------    ^^^^^^^^^^^ expected `nat`, found `int`
+   |               |
+   |               arguments to this function are incorrect
+   |
+note: function defined here
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_int_ModExpPow2_int_impl.rs:24:9
+   |
+24 | spec fn ModExp_int(x: nat, y: nat, z: nat) -> nat
+   |         ^^^^^^^^^^         ------
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_int_ModExpPow2_int_impl.rs:67:20
+   |
+67 |   if result_nat == 0 {
+   |      ----------    ^ expected `nat`, found integer
+   |      |
+   |      expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_int_ModExpPow2_int_impl.rs:71:24
+   |
+71 |       while temp_nat > 0
+   |             --------   ^ expected `nat`, found integer
+   |             |
+   |             expected because this is `vstd::prelude::nat`
+
+error[E0599]: no method named `tracked_byte_get` found for struct `std::vec::Vec<char>` in the current scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_int_ModExpPow2_int_impl.rs:74:78
+   |
+74 |               forall |i: int| 0 <= i && i < result_vec.len() ==> (result_vec.tracked_byte_get(i) == '0' as u8 || result_vec.tracked_byte_get(i) == '1' as u8),
+   |                                                                              ^^^^^^^^^^^^^^^^ method not found in `Vec<char>`
+
+error[E0599]: no method named `tracked_byte_get` found for struct `std::vec::Vec<char>` in the current scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_int_ModExpPow2_int_impl.rs:74:125
+   |
+74 |               forall |i: int| 0 <= i && i < result_vec.len() ==> (result_vec.tracked_byte_get(i) == '0' as u8 || result_vec.tracked_byte_get(i) == '1' as u8),
+   |                                                                                                                             ^^^^^^^^^^^^^^^^ method not found in `Vec<char>`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_int_ModExpPow2_int_impl.rs:77:25
+   |
+77 |           if temp_nat % 2 == 1 {
+   |              --------   ^ expected `nat`, found integer
+   |              |
+   |              expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_int_ModExpPow2_int_impl.rs:77:30
+   |
+77 |           if temp_nat % 2 == 1 {
+   |              ------------    ^ expected `nat`, found integer
+   |              |
+   |              expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExp_int_ModExpPow2_int_impl.rs:82:33
+   |
+82 |           temp_nat = temp_nat / 2;
+   |                      --------   ^ expected `nat`, found integer
+   |                      |
+   |                      expected because this is `vstd::prelude::nat`
+
+error: aborting due to 8 previous errors
+
+Some errors have detailed explanations: E0308, E0599.
+For more information about an error, try `rustc --explain E0308`.

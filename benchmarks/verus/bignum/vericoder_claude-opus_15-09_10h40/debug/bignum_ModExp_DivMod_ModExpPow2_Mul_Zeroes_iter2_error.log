@@ -1,0 +1,50 @@
+=== Verification Error - Iteration 2 ===
+File: benchmarks/verus/bignum/files/bignum_ModExp_DivMod_ModExpPow2_Mul_Zeroes.rs
+Time: 2025-09-15 11:11:04
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_DivMod_ModExpPow2_Mul_Zeroes_impl.rs:51:41
+   |
+51 |         let mut res = nat_to_bit_string((n / 2) as nat);
+   |                                         ^^^^^^^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_DivMod_ModExpPow2_Mul_Zeroes_impl.rs:69:41
+   |
+69 |         let half = mod_exp_helper(base, (exp / 2) as nat, modulus);
+   |                                         ^^^^^^^^^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_DivMod_ModExpPow2_Mul_Zeroes_impl.rs:72:40
+   |
+72 |         let rec = mod_exp_helper(base, (exp - 1) as nat, modulus);
+   |                                        ^^^^^^^^^^^^^^^^
+
+error: aborting due to 3 previous errors
+
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_DivMod_ModExpPow2_Mul_Zeroes_impl.rs:51:41
+   |
+51 |         let mut res = nat_to_bit_string((n / 2) as nat);
+   |                                         ^^^^^^^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_DivMod_ModExpPow2_Mul_Zeroes_impl.rs:69:41
+   |
+69 |         let half = mod_exp_helper(base, (exp / 2) as nat, modulus);
+   |                                         ^^^^^^^^^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_DivMod_ModExpPow2_Mul_Zeroes_impl.rs:72:40
+   |
+72 |         let rec = mod_exp_helper(base, (exp - 1) as nat, modulus);
+   |                                        ^^^^^^^^^^^^^^^^
+
+error: aborting due to 3 previous errors
+

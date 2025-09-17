@@ -1,0 +1,198 @@
+=== Verification Error - Iteration 5 ===
+File: benchmarks/verus/bignum/files/bignum_ModExp_Zeroes.rs
+Time: 2025-09-15 10:47:23
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Verification failed: verification results:: 6 verified, 6 errors
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_ModExp_Zeroes_impl.rs:40:13
+   |
+40 |       ensures power_mod(base, exp, modulus) == Exp_int(base, exp) % modulus
+   |               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+43 | /     if exp == 0 {
+44 | |     } else if exp % 2 == 0 {
+45 | |         power_mod_correct(base, exp / 2, modulus);
+46 | |     } else {
+47 | |         power_mod_correct(base, (exp - 1) as nat, modulus);
+48 | |     }
+   | |_____- at the end of the function body
+
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_ModExp_Zeroes_impl.rs:72:5
+   |
+72 |     while i > 0
+   |     ^^^^^^^^^^^
+
+error: invariant not satisfied at end of loop body
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_ModExp_Zeroes_impl.rs:73:19
+   |
+73 |         invariant ValidBitString(reversed@)
+   |                   ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: precondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_ModExp_Zeroes_impl.rs:77:23
+   |
+77 |         reversed.push(result[i]);
+   |                       ^^^^^^^^^
+   |
+  ::: /Users/sergiu.bursuc/verus/vstd/std_specs/vec.rs:48:9
+   |
+48 |         i < vec.view().len(),
+   |         -------------------- failed precondition
+
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_ModExp_Zeroes_impl.rs:88:5
+   |
+88 |     while i < s.len()
+   |     ^^^^^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_ModExp_Zeroes_impl.rs:84:13
+    |
+84  |     ensures res as nat == Str2Int(s@)
+    |             ^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+100 |     result
+    |     ------ at the end of the function body
+
+error: possible arithmetic underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_ModExp_Zeroes_impl.rs:94:18
+   |
+94 |         result = result * 2;
+   |                  ^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_ModExp_Zeroes_impl.rs:96:22
+   |
+96 |             result = result + 1;
+   |                      ^^^^^^^^^^
+
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_ModExp_Zeroes_impl.rs:121:5
+    |
+121 |     while exp_remaining > 0
+    |     ^^^^^^^^^^^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_ModExp_Zeroes_impl.rs:107:33
+    |
+107 |   ensures ValidBitString(res@), Str2Int(res@) == Exp_int(Str2Int(sx@), Str2Int(sy@)) % Str2Int(sz@)
+    |                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+138 |     int_to_bit_string(result)
+    |     ------------------------- at the end of the function body
+
+error: possible arithmetic underflow/overflow
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_ModExp_Zeroes_impl.rs:128:22
+    |
+128 |             result = (result * base_pow) % modulus;
+    |                      ^^^^^^^^^^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_ModExp_Zeroes_impl.rs:130:20
+    |
+130 |         base_pow = (base_pow * base_pow) % modulus;
+    |                    ^^^^^^^^^^^^^^^^^^^^^
+
+error: aborting due to 9 previous errors
+
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+verification results:: 6 verified, 6 errors
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_ModExp_Zeroes_impl.rs:40:13
+   |
+40 |       ensures power_mod(base, exp, modulus) == Exp_int(base, exp) % modulus
+   |               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+43 | /     if exp == 0 {
+44 | |     } else if exp % 2 == 0 {
+45 | |         power_mod_correct(base, exp / 2, modulus);
+46 | |     } else {
+47 | |         power_mod_correct(base, (exp - 1) as nat, modulus);
+48 | |     }
+   | |_____- at the end of the function body
+
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_ModExp_Zeroes_impl.rs:72:5
+   |
+72 |     while i > 0
+   |     ^^^^^^^^^^^
+
+error: invariant not satisfied at end of loop body
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_ModExp_Zeroes_impl.rs:73:19
+   |
+73 |         invariant ValidBitString(reversed@)
+   |                   ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: precondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_ModExp_Zeroes_impl.rs:77:23
+   |
+77 |         reversed.push(result[i]);
+   |                       ^^^^^^^^^
+   |
+  ::: /Users/sergiu.bursuc/verus/vstd/std_specs/vec.rs:48:9
+   |
+48 |         i < vec.view().len(),
+   |         -------------------- failed precondition
+
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_ModExp_Zeroes_impl.rs:88:5
+   |
+88 |     while i < s.len()
+   |     ^^^^^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_ModExp_Zeroes_impl.rs:84:13
+    |
+84  |     ensures res as nat == Str2Int(s@)
+    |             ^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+100 |     result
+    |     ------ at the end of the function body
+
+error: possible arithmetic underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_ModExp_Zeroes_impl.rs:94:18
+   |
+94 |         result = result * 2;
+   |                  ^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_ModExp_Zeroes_impl.rs:96:22
+   |
+96 |             result = result + 1;
+   |                      ^^^^^^^^^^
+
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_ModExp_Zeroes_impl.rs:121:5
+    |
+121 |     while exp_remaining > 0
+    |     ^^^^^^^^^^^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_ModExp_Zeroes_impl.rs:107:33
+    |
+107 |   ensures ValidBitString(res@), Str2Int(res@) == Exp_int(Str2Int(sx@), Str2Int(sy@)) % Str2Int(sz@)
+    |                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+138 |     int_to_bit_string(result)
+    |     ------------------------- at the end of the function body
+
+error: possible arithmetic underflow/overflow
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_ModExp_Zeroes_impl.rs:128:22
+    |
+128 |             result = (result * base_pow) % modulus;
+    |                      ^^^^^^^^^^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_ModExp_Zeroes_impl.rs:130:20
+    |
+130 |         base_pow = (base_pow * base_pow) % modulus;
+    |                    ^^^^^^^^^^^^^^^^^^^^^
+
+error: aborting due to 9 previous errors
+

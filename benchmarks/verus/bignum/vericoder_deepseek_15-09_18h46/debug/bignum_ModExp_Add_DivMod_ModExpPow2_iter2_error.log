@@ -1,0 +1,50 @@
+=== Verification Error - Iteration 2 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExp_Add_DivMod_ModExpPow2.rs
+Time: 2025-09-15 19:12:22
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_ModExp_Add_DivMod_ModExpPow2_impl.rs:75:14
+   |
+75 |     let n = (sy@.len() as nat) - 1;
+   |              ^^^^^^^^^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_ModExp_Add_DivMod_ModExpPow2_impl.rs:91:73
+   |
+91 |             let temp = ModExpPow2(base.as_slice(), exponent.as_slice(), n as int, sz.as_slice());
+   |                                                                         ^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_ModExp_Add_DivMod_ModExpPow2_impl.rs:96:65
+   |
+96 |         base = ModExpPow2(base.as_slice(), exponent.as_slice(), n as int, sz.as_slice());
+   |                                                                 ^^^^^^^^
+
+error: aborting due to 3 previous errors
+
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_ModExp_Add_DivMod_ModExpPow2_impl.rs:75:14
+   |
+75 |     let n = (sy@.len() as nat) - 1;
+   |              ^^^^^^^^^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_ModExp_Add_DivMod_ModExpPow2_impl.rs:91:73
+   |
+91 |             let temp = ModExpPow2(base.as_slice(), exponent.as_slice(), n as int, sz.as_slice());
+   |                                                                         ^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_18h46/bignum_ModExp_Add_DivMod_ModExpPow2_impl.rs:96:65
+   |
+96 |         base = ModExpPow2(base.as_slice(), exponent.as_slice(), n as int, sz.as_slice());
+   |                                                                 ^^^^^^^^
+
+error: aborting due to 3 previous errors
+

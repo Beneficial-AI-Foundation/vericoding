@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(m: int) -> bool {
     1 <= m <= 23
 }
@@ -20,6 +17,9 @@ spec fn valid_output(m: int, result: int) -> bool
 {
     result == hours_until_new_year(m) && 25 <= result <= 47
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

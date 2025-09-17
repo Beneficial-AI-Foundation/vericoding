@@ -2,9 +2,7 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
 
-// <vc-helpers>
 spec fn valid_input(a: Seq<int>) -> bool {
     a.len() > 0
 }
@@ -14,12 +12,7 @@ spec fn is_sorted(x: Seq<int>) -> bool {
 }
 
 spec fn thanos_sort(x: Seq<int>) -> int
-    requires 
-        x.len() > 0
-    ensures 
-        thanos_sort(x) >= 1,
-        thanos_sort(x) <= x.len(),
-        is_sorted(x) ==> thanos_sort(x) == x.len(),
+    recommends x.len() > 0
     decreases x.len()
 {
     let len = x.len() as int;
@@ -33,20 +26,23 @@ spec fn thanos_sort(x: Seq<int>) -> int
         if left_result > right_result { left_result } else { right_result }
     }
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(a: Seq<int>) -> (result: int)
+fn solve(a: Seq<int>) -> (result: usize)
     requires 
-        valid_input(a)
+        valid_input(a),
     ensures 
-        result == thanos_sort(a),
+        result as int == thanos_sort(a),
         1 <= result <= a.len(),
 // </vc-spec>
 // <vc-code>
 {
     assume(false);
-    0int
+    0
 }
 // </vc-code>
 

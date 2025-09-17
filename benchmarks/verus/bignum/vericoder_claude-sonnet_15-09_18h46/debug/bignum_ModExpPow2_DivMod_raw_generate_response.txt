@@ -1,0 +1,9 @@
+=== Raw LLM Generate Response ===
+Length: 1463 characters
+--------------------------------------------------------------------------------
+[
+"{\n    if sy@.len() == 0 || Str2Int(sy@) == 0 {\n        return vec!['1'];\n    }\n    \n    let mut result = vec!['1'];\n    let mut base = sx.to_vec();\n    let mut exp = sy.to_vec();\n    \n    while Str2Int(exp@) > 0\n        invariant\n            ValidBitString(result@),\n            ValidBitString(base@),\n            ValidBitString(exp@),\n            Str2Int(result@) * Exp_int(Str2Int(base@), Str2Int(exp@)) % Str2Int(sz@) == Exp_int(Str2Int(sx@), Str2Int(sy@)) % Str2Int(sz@)\n    {\n        if exp[exp.len() - 1] == '1' {\n            let temp = multiply_mod(&result, &base, sz);\n            result = temp;\n        }\n        \n        let temp_base = multiply_mod(&base, &base, sz);\n        base = temp_base;\n        \n        exp = divide_by_two(&exp);\n    }\n    \n    result\n}",
+
+"{\n    if n == 0 {\n        if sy@.len() == 1 && sy@[0] == '1' {\n            let (_, remainder) = DivMod(sx, sz);\n            return remainder;\n        } else {\n            return vec!['1'];\n        }\n    }\n    \n    let half_n = n / 2;\n    let mut half_exp = vec!['0'; half_n as usize + 1];\n    half_exp[half_n as usize] = '1';\n    \n    let half_result = ModExpPow2(sx, &half_exp, half_n, sz);\n    let squared = multiply_mod(&half_result, &half_result, sz);\n    \n    if n % 2 == 0 {\n        squared\n    } else {\n        let extra_result = ModExpPow2(sx, &vec!['1'], 0, sz);\n        multiply_mod(&squared, &extra_result, sz)\n    }\n}"
+]
+--------------------------------------------------------------------------------

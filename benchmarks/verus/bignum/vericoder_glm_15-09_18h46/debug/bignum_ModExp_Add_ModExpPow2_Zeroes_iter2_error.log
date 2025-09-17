@@ -1,0 +1,160 @@
+=== Verification Error - Iteration 2 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExp_Add_ModExpPow2_Zeroes.rs
+Time: 2025-09-15 20:41:44
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: error: invalid suffix `nat` for number literal
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignum_ModExp_Add_ModExpPow2_Zeroes_impl.rs:31:9
+   |
+31 |         0nat
+   |         ^^^^ invalid suffix `nat`
+   |
+   = help: the suffix must be one of the numeric types (`u32`, `isize`, `f32`, etc.)
+
+error: invalid suffix `nat` for number literal
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignum_ModExp_Add_ModExpPow2_Zeroes_impl.rs:36:9
+   |
+36 |         2nat * rest_val + (if last == '1' { 1nat } else { 0nat })
+   |         ^^^^ invalid suffix `nat`
+   |
+   = help: the suffix must be one of the numeric types (`u32`, `isize`, `f32`, etc.)
+
+error: invalid suffix `nat` for number literal
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignum_ModExp_Add_ModExpPow2_Zeroes_impl.rs:36:45
+   |
+36 |         2nat * rest_val + (if last == '1' { 1nat } else { 0nat })
+   |                                             ^^^^ invalid suffix `nat`
+   |
+   = help: the suffix must be one of the numeric types (`u32`, `isize`, `f32`, etc.)
+
+error: invalid suffix `nat` for number literal
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignum_ModExp_Add_ModExpPow2_Zeroes_impl.rs:36:59
+   |
+36 |         2nat * rest_val + (if last == '1' { 1nat } else { 0nat })
+   |                                                           ^^^^ invalid suffix `nat`
+   |
+   = help: the suffix must be one of the numeric types (`u32`, `isize`, `f32`, etc.)
+
+error: invalid suffix `nat` for number literal
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignum_ModExp_Add_ModExpPow2_Zeroes_impl.rs:44:13
+   |
+44 |     if n == 0nat {
+   |             ^^^^ invalid suffix `nat`
+   |
+   = help: the suffix must be one of the numeric types (`u32`, `isize`, `f32`, etc.)
+
+error: invalid suffix `nat` for number literal
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignum_ModExp_Add_ModExpPow2_Zeroes_impl.rs:47:36
+   |
+47 |         let last_bit = if n % 2 == 1nat { '1' } else { '0' };
+   |                                    ^^^^ invalid suffix `nat`
+   |
+   = help: the suffix must be one of the numeric types (`u32`, `isize`, `f32`, etc.)
+
+error: invalid suffix `nat` for number literal
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignum_ModExp_Add_ModExpPow2_Zeroes_impl.rs:48:40
+   |
+48 |         let rest = int_to_str_exec(n / 2nat);
+   |                                        ^^^^ invalid suffix `nat`
+   |
+   = help: the suffix must be one of the numeric types (`u32`, `isize`, `f32`, etc.)
+
+error: invalid suffix `nat` for number literal
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignum_ModExp_Add_ModExpPow2_Zeroes_impl.rs:62:9
+   |
+62 |         1nat
+   |         ^^^^ invalid suffix `nat`
+   |
+   = help: the suffix must be one of the numeric types (`u32`, `isize`, `f32`, etc.)
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignum_ModExp_Add_ModExpPow2_Zeroes_impl.rs:47:31
+   |
+47 |         let last_bit = if n % 2 == 1nat { '1' } else { '0' };
+   |                           -   ^ expected `nat`, found integer
+   |                           |
+   |                           expected because this is `vstd::prelude::nat`
+
+error: aborting due to 9 previous errors
+
+For more information about this error, try `rustc --explain E0308`.
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+error: invalid suffix `nat` for number literal
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignum_ModExp_Add_ModExpPow2_Zeroes_impl.rs:31:9
+   |
+31 |         0nat
+   |         ^^^^ invalid suffix `nat`
+   |
+   = help: the suffix must be one of the numeric types (`u32`, `isize`, `f32`, etc.)
+
+error: invalid suffix `nat` for number literal
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignum_ModExp_Add_ModExpPow2_Zeroes_impl.rs:36:9
+   |
+36 |         2nat * rest_val + (if last == '1' { 1nat } else { 0nat })
+   |         ^^^^ invalid suffix `nat`
+   |
+   = help: the suffix must be one of the numeric types (`u32`, `isize`, `f32`, etc.)
+
+error: invalid suffix `nat` for number literal
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignum_ModExp_Add_ModExpPow2_Zeroes_impl.rs:36:45
+   |
+36 |         2nat * rest_val + (if last == '1' { 1nat } else { 0nat })
+   |                                             ^^^^ invalid suffix `nat`
+   |
+   = help: the suffix must be one of the numeric types (`u32`, `isize`, `f32`, etc.)
+
+error: invalid suffix `nat` for number literal
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignum_ModExp_Add_ModExpPow2_Zeroes_impl.rs:36:59
+   |
+36 |         2nat * rest_val + (if last == '1' { 1nat } else { 0nat })
+   |                                                           ^^^^ invalid suffix `nat`
+   |
+   = help: the suffix must be one of the numeric types (`u32`, `isize`, `f32`, etc.)
+
+error: invalid suffix `nat` for number literal
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignum_ModExp_Add_ModExpPow2_Zeroes_impl.rs:44:13
+   |
+44 |     if n == 0nat {
+   |             ^^^^ invalid suffix `nat`
+   |
+   = help: the suffix must be one of the numeric types (`u32`, `isize`, `f32`, etc.)
+
+error: invalid suffix `nat` for number literal
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignum_ModExp_Add_ModExpPow2_Zeroes_impl.rs:47:36
+   |
+47 |         let last_bit = if n % 2 == 1nat { '1' } else { '0' };
+   |                                    ^^^^ invalid suffix `nat`
+   |
+   = help: the suffix must be one of the numeric types (`u32`, `isize`, `f32`, etc.)
+
+error: invalid suffix `nat` for number literal
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignum_ModExp_Add_ModExpPow2_Zeroes_impl.rs:48:40
+   |
+48 |         let rest = int_to_str_exec(n / 2nat);
+   |                                        ^^^^ invalid suffix `nat`
+   |
+   = help: the suffix must be one of the numeric types (`u32`, `isize`, `f32`, etc.)
+
+error: invalid suffix `nat` for number literal
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignum_ModExp_Add_ModExpPow2_Zeroes_impl.rs:62:9
+   |
+62 |         1nat
+   |         ^^^^ invalid suffix `nat`
+   |
+   = help: the suffix must be one of the numeric types (`u32`, `isize`, `f32`, etc.)
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignum_ModExp_Add_ModExpPow2_Zeroes_impl.rs:47:31
+   |
+47 |         let last_bit = if n % 2 == 1nat { '1' } else { '0' };
+   |                           -   ^ expected `nat`, found integer
+   |                           |
+   |                           expected because this is `vstd::prelude::nat`
+
+error: aborting due to 9 previous errors
+
+For more information about this error, try `rustc --explain E0308`.

@@ -1,0 +1,43 @@
+=== Verification Error - Iteration 1 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExp_Add_ModExpPow2_Mul.rs
+Time: 2025-09-14 10:41:12
+
+Full Error Output:
+--------------------------------------------------------------------------------
+VERIFICATION BYPASSES DETECTED: uses 'assume' to bypass verification. Code contains verification bypasses and cannot be considered successfully verified.
+
+Original verification output:
+Compilation failed: error[E0599]: no function or associated item named `singleton` found for struct `vstd::seq::Seq` in the current scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExp_Add_ModExpPow2_Mul_impl.rs:42:20
+   |
+42 |   if n == 0 { Seq::singleton('0') }
+   |                    ^^^^^^^^^ function or associated item not found in `Seq<_>`
+   |
+note: if you're trying to build a new `vstd::seq::Seq<_>` consider using one of the following associated functions:
+      vstd::seq::Seq::<A>::empty
+      vstd::seq::Seq::<A>::new
+      vstd::seq::Seq::<A>::tracked_empty
+  --> /Users/runner/work/verus/verus/source/vstd/seq.rs:38:5
+
+error: aborting due to 1 previous error
+
+For more information about this error, try `rustc --explain E0599`.
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+error[E0599]: no function or associated item named `singleton` found for struct `vstd::seq::Seq` in the current scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExp_Add_ModExpPow2_Mul_impl.rs:42:20
+   |
+42 |   if n == 0 { Seq::singleton('0') }
+   |                    ^^^^^^^^^ function or associated item not found in `Seq<_>`
+   |
+note: if you're trying to build a new `vstd::seq::Seq<_>` consider using one of the following associated functions:
+      vstd::seq::Seq::<A>::empty
+      vstd::seq::Seq::<A>::new
+      vstd::seq::Seq::<A>::tracked_empty
+  --> /Users/runner/work/verus/verus/source/vstd/seq.rs:38:5
+
+error: aborting due to 1 previous error
+
+For more information about this error, try `rustc --explain E0599`.

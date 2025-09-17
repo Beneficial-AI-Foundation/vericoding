@@ -1,0 +1,31 @@
+=== LLM Response - generate_code - Iteration 0 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExpPow2_int.rs
+Prompt Hash: c060a569
+JSON Parsed Successfully: False
+Timestamp: 1757955498.833926
+Content Length: 531 chars
+--------------------------------------------------------------------------------
+["proof fn pow2_is_power_of_2(n: u64) 
+  requires n > 0u64
+  ensures Exp_int(2, n as nat) % 2 == 0
+{
+  if n == 1 {
+    // Base case: Exp_int(2, 1) = 2, which is even.
+  } else {
+    // Inductive step: Exp_int(2, n) = 2 * Exp_int(2, n-1)
+    // If Exp_int(2, n-1) is even, then 2 * Exp_int(2, n-1) is also even.
+    pow2_is_power_of_2(n - 1);
+  }
+}", "{
+  if n == 0 {
+    1u64
+  } else {
+    let rec = ModExpPow2_int(x, y / 2, n - 1, z);
+    if y % 2 == 1 {
+      (rec * rec * x) % z
+    } else {
+      (rec * rec) % z
+    }
+  }
+}"]
+--------------------------------------------------------------------------------

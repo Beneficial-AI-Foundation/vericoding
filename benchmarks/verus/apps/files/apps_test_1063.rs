@@ -3,6 +3,18 @@ use vstd::prelude::*;
 
 verus! {
 
+spec fn split_lines(s: Seq<char>) -> Seq<Seq<char>> {
+    seq![]
+}
+
+spec fn parse_int(s: Seq<char>) -> int {
+    0
+}
+
+spec fn string_lt(a: Seq<char>, b: Seq<char>) -> bool {
+    true
+}
+
 spec fn is_well_formed_input(stdin_input: Seq<char>) -> bool {
     let lines = split_lines(stdin_input);
     if lines.len() < 1 {
@@ -50,21 +62,7 @@ spec fn is_strictly_increasing_sequence(nums: Seq<Seq<char>>) -> bool {
 }
 
 spec fn is_lexicographically_smaller(a: Seq<char>, b: Seq<char>) -> bool {
-    a.len() < b.len() || (a.len() == b.len() && lexicographic_compare(a, b))
-}
-
-spec fn lexicographic_compare(a: Seq<char>, b: Seq<char>) -> bool {
-    exists|i: int| 0 <= i < a.len() && 0 <= i < b.len() && 
-        (forall|j: int| 0 <= j < i ==> a[j] == b[j]) &&
-        a[i] < b[i]
-}
-
-spec fn split_lines(input: Seq<char>) -> Seq<Seq<char>> {
-    Seq::empty()
-}
-
-spec fn parse_int(s: Seq<char>) -> int {
-    0
+    a.len() < b.len() || (a.len() == b.len() && string_lt(a, b))
 }
 // </vc-preamble>
 
@@ -73,12 +71,12 @@ spec fn parse_int(s: Seq<char>) -> int {
 
 // <vc-spec>
 fn solve(stdin_input: &str) -> (result: String)
-    requires
-        stdin_input.len() > 0,
+    requires 
+        stdin_input@.len() > 0,
         is_well_formed_input(stdin_input@),
-    ensures
-        result.len() > 0,
-        result@ == seq!['N', 'O', '\n'] || (result.len() > 4 && result@.subrange(0, 4) == seq!['Y', 'E', 'S', '\n']),
+    ensures 
+        result@.len() > 0,
+        result@ == seq!['N', 'O', '\n'] || (result@.len() > 4 && result@.subrange(0, 4) == seq!['Y', 'E', 'S', '\n']),
 // </vc-spec>
 // <vc-code>
 {

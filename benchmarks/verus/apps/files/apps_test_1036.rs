@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn winner(a: char, b: char) -> char {
     if (a, b) == ('R', 'P') || (a, b) == ('P', 'S') || (a, b) == ('S', 'R') {
         b
@@ -24,6 +21,9 @@ spec fn valid_rps_string(s: Seq<char>) -> bool {
 spec fn valid_input(n: int, k: int, s: Seq<char>) -> bool {
     n > 0 && k >= 0 && s.len() == n && valid_rps_string(s)
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

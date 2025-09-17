@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(n: int, v: int) -> bool {
     2 <= n <= 100 && 1 <= v <= 100
 }
@@ -18,6 +15,9 @@ spec fn min_cost(n: int, v: int) -> int {
         v + remaining * (remaining + 3) / 2
     }
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

@@ -8,7 +8,11 @@ spec fn valid_input(cards: Seq<int>) -> bool {
 }
 
 spec fn sum(cards: Seq<int>) -> int {
-    if cards.len() == 0 { 0 } else { cards[0] + sum(cards.drop_first()) }
+    if cards.len() == 0 {
+        0
+    } else {
+        cards[0] + sum(cards.drop_first())
+    }
 }
 
 spec fn min_possible_sum_up_to_index(cards: Seq<int>, index: int) -> int {
@@ -37,7 +41,7 @@ fn solve(cards: Seq<int>) -> (result: int)
 // <vc-code>
 {
     assume(false);
-    0int
+    unreached()
 }
 // </vc-code>
 

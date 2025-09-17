@@ -1,0 +1,64 @@
+=== Verification Error - Iteration 5 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExp_Add_ModExpPow2_Zeroes.rs
+Time: 2025-09-15 20:45:04
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: error[E0277]: can't compare `&char` with `char`
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignum_ModExp_Add_ModExpPow2_Zeroes_impl.rs:35:36
+   |
+35 |         2u64 * rest_val + (if last == '1' { 1u64 } else { 0u64 })
+   |                                    ^^ no implementation for `&char == char`
+   |
+   = help: the trait `std::cmp::PartialEq<char>` is not implemented for `&char`
+help: consider dereferencing here
+   |
+35 |         2u64 * rest_val + (if *last == '1' { 1u64 } else { 0u64 })
+   |                               +
+
+error[E0277]: can't compare `&char` with `char`
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignum_ModExp_Add_ModExpPow2_Zeroes_impl.rs:66:21
+   |
+66 |         if last_bit == '1' {
+   |                     ^^ no implementation for `&char == char`
+   |
+   = help: the trait `std::cmp::PartialEq<char>` is not implemented for `&char`
+help: consider dereferencing here
+   |
+66 |         if *last_bit == '1' {
+   |            +
+
+error: aborting due to 2 previous errors
+
+For more information about this error, try `rustc --explain E0277`.
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+error[E0277]: can't compare `&char` with `char`
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignum_ModExp_Add_ModExpPow2_Zeroes_impl.rs:35:36
+   |
+35 |         2u64 * rest_val + (if last == '1' { 1u64 } else { 0u64 })
+   |                                    ^^ no implementation for `&char == char`
+   |
+   = help: the trait `std::cmp::PartialEq<char>` is not implemented for `&char`
+help: consider dereferencing here
+   |
+35 |         2u64 * rest_val + (if *last == '1' { 1u64 } else { 0u64 })
+   |                               +
+
+error[E0277]: can't compare `&char` with `char`
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignum_ModExp_Add_ModExpPow2_Zeroes_impl.rs:66:21
+   |
+66 |         if last_bit == '1' {
+   |                     ^^ no implementation for `&char == char`
+   |
+   = help: the trait `std::cmp::PartialEq<char>` is not implemented for `&char`
+help: consider dereferencing here
+   |
+66 |         if *last_bit == '1' {
+   |            +
+
+error: aborting due to 2 previous errors
+
+For more information about this error, try `rustc --explain E0277`.

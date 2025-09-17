@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn count_char(s: Seq<char>, c: char) -> int
     decreases s.len()
 {
@@ -22,6 +19,9 @@ spec fn min(a: int, b: int) -> int {
 spec fn valid_commands(commands: Seq<char>) -> bool {
     forall|i: int| 0 <= i < commands.len() ==> commands[i] == 'L' || commands[i] == 'R' || commands[i] == 'U' || commands[i] == 'D'
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

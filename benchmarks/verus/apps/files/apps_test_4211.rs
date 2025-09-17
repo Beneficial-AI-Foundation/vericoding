@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(n: int, b: Seq<int>) -> bool {
   n >= 2 && b.len() == n - 1 && forall|i: int| 0 <= i < b.len() ==> b[i] >= 0
 }
@@ -22,6 +19,9 @@ spec fn correct_result(n: int, b: Seq<int>, result: int) -> bool
     result == b[0] + b[n-2] + sum_mins(b, n-2)
   }
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

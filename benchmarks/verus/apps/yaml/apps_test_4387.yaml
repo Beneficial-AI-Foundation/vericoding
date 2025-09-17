@@ -7,12 +7,10 @@ vc-preamble: |-
   use vstd::prelude::*;
 
   verus! {
-
-vc-helpers: |-
   spec fn valid_rating(r: int) -> bool {
       0 <= r <= 4208
   }
-  
+
   spec fn contest_for_rating(r: int) -> Seq<char> {
       if r < 1200 {
           seq!['A', 'B', 'C', '\n']
@@ -22,6 +20,8 @@ vc-helpers: |-
           seq!['A', 'G', 'C', '\n']
       }
   }
+
+vc-helpers: |
 
 vc-spec: |-
   fn solve(r: int) -> (result: Seq<char>)
@@ -39,7 +39,7 @@ vc-code: |-
       unreached()
   }
 
-vc-postamble: |-
+vc-postamble: |2-
 
   }
 

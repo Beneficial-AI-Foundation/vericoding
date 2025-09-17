@@ -1,0 +1,35 @@
+=== LLM Response - generate_code - Iteration 0 ===
+File: benchmarks/verus/bignum/files/bignum_ModExp_ModExpPow2_Zeroes.rs
+Prompt Hash: d2850ac6
+JSON Parsed Successfully: False
+Timestamp: 1757925961.707545
+Content Length: 716 chars
+--------------------------------------------------------------------------------
+```json
+["proof fn lemma_div_mod_2(x: nat)
+    ensures 2 * (x / 2) + (x % 2) == x,
+{}
+
+proof fn lemma_exp_int_properties(x: nat, y: nat)
+    ensures
+        y % 2 == 0 ==> Exp_int(x, y) == Exp_int(x, y/2) * Exp_int(x, y/2),
+        y % 2 == 1 ==> Exp_int(x, y) == x * Exp_int(x, y-1),
+    decreases y
+{
+    if y > 0 {
+        lemma_exp_int_properties(x, (y-1) as nat);
+    }
+}
+
+proof fn lemma_str_to_nat_rec(s: Seq<char>)
+    requires ValidBitString(s)
+    ensures Str2Int(s) == if s.len() == 0 { 0 } else { 2 * Str2Int(s.drop_last()) + if s.last() == '1' { 1 } else { 0 } }
+    decreases s.len()
+{
+    if s.len() > 0 {
+        assert(s.subrange(0, s.len() as int - 1) == s.drop_last());
+    }
+}
+
+exec fn str_to_nat(
+--------------------------------------------------------------------------------

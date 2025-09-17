@@ -1,0 +1,112 @@
+=== Verification Error - Iteration 6 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExp_Add_DivMod_Mul_Zeroes.rs
+Time: 2025-09-15 20:23:33
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Verification failed: verification results:: 2 verified, 4 errors
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini_15-09_18h46/bignum_ModExp_Add_DivMod_Mul_Zeroes_impl.rs:33:5
+   |
+33 |     while i < s.len()
+   |     ^^^^^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini_15-09_18h46/bignum_ModExp_Add_DivMod_Mul_Zeroes_impl.rs:29:9
+   |
+29 |         res as nat == Str2Int(s@),
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+44 |     res
+   |     --- at the end of the function body
+
+error: invariant not satisfied at end of loop body
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini_15-09_18h46/bignum_ModExp_Add_DivMod_Mul_Zeroes_impl.rs:37:13
+   |
+37 |             res as nat == Str2Int(s@.subrange(0, i as int)),
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini_15-09_18h46/bignum_ModExp_Add_DivMod_Mul_Zeroes_impl.rs:41:15
+   |
+41 |         res = res * 2 + d;
+   |               ^^^^^^^
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini_15-09_18h46/bignum_ModExp_Add_DivMod_Mul_Zeroes_impl.rs:51:9
+   |
+51 |           (n == 0 && res@ == seq!['0']) || (n > 0 && Str2Int(res@) == n as nat && res@.len() > 0 && res@[0] == '1'),
+   |           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+54 | /     if n == 0 {
+55 | |         vec!['0']
+56 | |     } else if n == 1 {
+57 | |         vec!['1']
+...  |
+62 | |         prefix
+63 | |     }
+   | |_____- at the end of the function body
+
+error: possible arithmetic underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini_15-09_18h46/bignum_ModExp_Add_DivMod_Mul_Zeroes_impl.rs:77:15
+   |
+77 |     let sum = a_val + b_val;
+   |               ^^^^^^^^^^^^^
+
+error: aborting due to 5 previous errors
+
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+verification results:: 2 verified, 4 errors
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini_15-09_18h46/bignum_ModExp_Add_DivMod_Mul_Zeroes_impl.rs:33:5
+   |
+33 |     while i < s.len()
+   |     ^^^^^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini_15-09_18h46/bignum_ModExp_Add_DivMod_Mul_Zeroes_impl.rs:29:9
+   |
+29 |         res as nat == Str2Int(s@),
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+44 |     res
+   |     --- at the end of the function body
+
+error: invariant not satisfied at end of loop body
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini_15-09_18h46/bignum_ModExp_Add_DivMod_Mul_Zeroes_impl.rs:37:13
+   |
+37 |             res as nat == Str2Int(s@.subrange(0, i as int)),
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini_15-09_18h46/bignum_ModExp_Add_DivMod_Mul_Zeroes_impl.rs:41:15
+   |
+41 |         res = res * 2 + d;
+   |               ^^^^^^^
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini_15-09_18h46/bignum_ModExp_Add_DivMod_Mul_Zeroes_impl.rs:51:9
+   |
+51 |           (n == 0 && res@ == seq!['0']) || (n > 0 && Str2Int(res@) == n as nat && res@.len() > 0 && res@[0] == '1'),
+   |           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+54 | /     if n == 0 {
+55 | |         vec!['0']
+56 | |     } else if n == 1 {
+57 | |         vec!['1']
+...  |
+62 | |         prefix
+63 | |     }
+   | |_____- at the end of the function body
+
+error: possible arithmetic underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini_15-09_18h46/bignum_ModExp_Add_DivMod_Mul_Zeroes_impl.rs:77:15
+   |
+77 |     let sum = a_val + b_val;
+   |               ^^^^^^^^^^^^^
+
+error: aborting due to 5 previous errors
+

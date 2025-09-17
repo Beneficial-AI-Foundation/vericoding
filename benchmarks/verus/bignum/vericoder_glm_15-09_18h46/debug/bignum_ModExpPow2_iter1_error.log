@@ -1,0 +1,160 @@
+=== Verification Error - Iteration 1 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExpPow2.rs
+Time: 2025-09-15 19:00:52
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: error[E0428]: the name `Exp_int` is defined multiple times
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignum_ModExpPow2_impl.rs:31:6
+   |
+5  |   spec fn Exp_int(x: nat, y: nat) -> nat
+   |  ______-
+6  | |     decreases y 
+7  | |   {
+8  | |     if y == 0 { 1 } else { x * Exp_int(x, (y - 1) as nat) }
+9  | |   }
+   | |___- previous definition of the value `Exp_int` here
+...
+31 |   spec fn Exp_int(x: nat, y: nat) -> nat
+   |  ______^
+32 | |     decreases y 
+33 | |   {
+34 | |     if y == 0 { 1 } else { x * Exp_int(x, (y - 1) as nat) }
+35 | |   }
+   | |___^ `Exp_int` redefined here
+   |
+   = note: `Exp_int` must be defined only once in the value namespace of this module
+
+error[E0428]: the name `Str2Int` is defined multiple times
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignum_ModExpPow2_impl.rs:37:6
+   |
+11 |   spec fn Str2Int(s: Seq<char>) -> nat
+   |  ______-
+12 | |   recommends ValidBitString(s)
+13 | |   decreases s.len()
+...  |
+21 | | }
+   | |_- previous definition of the value `Str2Int` here
+...
+37 |   spec fn Str2Int(s: Seq<char>) -> nat
+   |  ______^
+38 | |   recommends ValidBitString(s)
+39 | |   decreases s.len()
+...  |
+47 | | }
+   | |_^ `Str2Int` redefined here
+   |
+   = note: `Str2Int` must be defined only once in the value namespace of this module
+
+error[E0428]: the name `ValidBitString` is defined multiple times
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignum_ModExpPow2_impl.rs:49:6
+   |
+23 | spec fn ValidBitString(s: Seq<char>) -> bool
+   |      --------------------------------------- previous definition of the value `ValidBitString` here
+...
+49 | spec fn ValidBitString(s: Seq<char>) -> bool
+   |      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ `ValidBitString` redefined here
+   |
+   = note: `ValidBitString` must be defined only once in the value namespace of this module
+
+error[E0425]: cannot find value `result` in this scope
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignum_ModExpPow2_impl.rs:104:28
+    |
+104 |     ensures ValidBitString(result@),
+    |                            ^^^^^^ not found in this scope
+
+error[E0425]: cannot find value `result` in this scope
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignum_ModExpPow2_impl.rs:105:17
+    |
+105 |         Str2Int(result@) == n
+    |                 ^^^^^^ not found in this scope
+
+error[E0425]: cannot find value `i` in this scope
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignum_ModExpPow2_impl.rs:118:111
+    |
+118 |             forall |i: int| 0 <= i && i < chars.len() as int ==> []["'"]["'0"], []["'"]["'1"].contains(chars@[i]),
+    |                                                                                                               ^ help: a local variable with a similar name exists: `n`
+
+error: aborting due to 6 previous errors
+
+Some errors have detailed explanations: E0425, E0428.
+For more information about an error, try `rustc --explain E0425`.
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+error[E0428]: the name `Exp_int` is defined multiple times
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignum_ModExpPow2_impl.rs:31:6
+   |
+5  |   spec fn Exp_int(x: nat, y: nat) -> nat
+   |  ______-
+6  | |     decreases y 
+7  | |   {
+8  | |     if y == 0 { 1 } else { x * Exp_int(x, (y - 1) as nat) }
+9  | |   }
+   | |___- previous definition of the value `Exp_int` here
+...
+31 |   spec fn Exp_int(x: nat, y: nat) -> nat
+   |  ______^
+32 | |     decreases y 
+33 | |   {
+34 | |     if y == 0 { 1 } else { x * Exp_int(x, (y - 1) as nat) }
+35 | |   }
+   | |___^ `Exp_int` redefined here
+   |
+   = note: `Exp_int` must be defined only once in the value namespace of this module
+
+error[E0428]: the name `Str2Int` is defined multiple times
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignum_ModExpPow2_impl.rs:37:6
+   |
+11 |   spec fn Str2Int(s: Seq<char>) -> nat
+   |  ______-
+12 | |   recommends ValidBitString(s)
+13 | |   decreases s.len()
+...  |
+21 | | }
+   | |_- previous definition of the value `Str2Int` here
+...
+37 |   spec fn Str2Int(s: Seq<char>) -> nat
+   |  ______^
+38 | |   recommends ValidBitString(s)
+39 | |   decreases s.len()
+...  |
+47 | | }
+   | |_^ `Str2Int` redefined here
+   |
+   = note: `Str2Int` must be defined only once in the value namespace of this module
+
+error[E0428]: the name `ValidBitString` is defined multiple times
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignum_ModExpPow2_impl.rs:49:6
+   |
+23 | spec fn ValidBitString(s: Seq<char>) -> bool
+   |      --------------------------------------- previous definition of the value `ValidBitString` here
+...
+49 | spec fn ValidBitString(s: Seq<char>) -> bool
+   |      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ `ValidBitString` redefined here
+   |
+   = note: `ValidBitString` must be defined only once in the value namespace of this module
+
+error[E0425]: cannot find value `result` in this scope
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignum_ModExpPow2_impl.rs:104:28
+    |
+104 |     ensures ValidBitString(result@),
+    |                            ^^^^^^ not found in this scope
+
+error[E0425]: cannot find value `result` in this scope
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignum_ModExpPow2_impl.rs:105:17
+    |
+105 |         Str2Int(result@) == n
+    |                 ^^^^^^ not found in this scope
+
+error[E0425]: cannot find value `i` in this scope
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignum_ModExpPow2_impl.rs:118:111
+    |
+118 |             forall |i: int| 0 <= i && i < chars.len() as int ==> []["'"]["'0"], []["'"]["'1"].contains(chars@[i]),
+    |                                                                                                               ^ help: a local variable with a similar name exists: `n`
+
+error: aborting due to 6 previous errors
+
+Some errors have detailed explanations: E0425, E0428.
+For more information about an error, try `rustc --explain E0425`.

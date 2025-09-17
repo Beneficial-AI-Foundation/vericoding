@@ -1,0 +1,64 @@
+=== Verification Error - Iteration 2 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExp_Add_DivMod.rs
+Time: 2025-09-14 10:38:37
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: error[E0425]: cannot find function `proof_for_str2int` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExp_Add_DivMod_impl.rs:52:5
+   |
+52 |     proof_for_str2int(sum_val, result@);
+   |     ^^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `proof_for_str2int` in this scope
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExp_Add_DivMod_impl.rs:111:5
+    |
+111 |     proof_for_str2int(quotient_val, quotient_vec@);
+    |     ^^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `proof_for_str2int` in this scope
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExp_Add_DivMod_impl.rs:112:5
+    |
+112 |     proof_for_str2int(remainder_val, remainder_vec@);
+    |     ^^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `proof_for_str2int` in this scope
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExp_Add_DivMod_impl.rs:181:5
+    |
+181 |     proof_for_str2int(res_val, result_vec@);
+    |     ^^^^^^^^^^^^^^^^^ not found in this scope
+
+error: aborting due to 4 previous errors
+
+For more information about this error, try `rustc --explain E0425`.
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+error[E0425]: cannot find function `proof_for_str2int` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExp_Add_DivMod_impl.rs:52:5
+   |
+52 |     proof_for_str2int(sum_val, result@);
+   |     ^^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `proof_for_str2int` in this scope
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExp_Add_DivMod_impl.rs:111:5
+    |
+111 |     proof_for_str2int(quotient_val, quotient_vec@);
+    |     ^^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `proof_for_str2int` in this scope
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExp_Add_DivMod_impl.rs:112:5
+    |
+112 |     proof_for_str2int(remainder_val, remainder_vec@);
+    |     ^^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `proof_for_str2int` in this scope
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_14-09_10h37/bignum_ModExp_Add_DivMod_impl.rs:181:5
+    |
+181 |     proof_for_str2int(res_val, result_vec@);
+    |     ^^^^^^^^^^^^^^^^^ not found in this scope
+
+error: aborting due to 4 previous errors
+
+For more information about this error, try `rustc --explain E0425`.

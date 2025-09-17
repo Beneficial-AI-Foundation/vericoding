@@ -2,26 +2,28 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(s: Seq<char>) -> bool {
     s.len() == 3 && forall|i: int| 0 <= i < s.len() ==> s[i] == 'S' || s[i] == 'R'
 }
 
-spec fn max_consecutive_rainy_days(s: Seq<char>) -> int
-    recommends valid_input(s)
-{
-    if s =~= seq!['R', 'R', 'R'] {
-        3
-    } else if s.subrange(0, 2) =~= seq!['R', 'R'] || s.subrange(1, 3) =~= seq!['R', 'R'] {
-        2
-    } else if s.contains('R') {
-        1
+spec fn max_consecutive_rainy_days(s: Seq<char>) -> int {
+    if valid_input(s) {
+        if s == seq!['R', 'R', 'R'] {
+            3
+        } else if s.subrange(0, 2) == seq!['R', 'R'] || s.subrange(1, 3) == seq!['R', 'R'] {
+            2
+        } else if s.contains('R') {
+            1
+        } else {
+            0
+        }
     } else {
         0
     }
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>
@@ -35,7 +37,7 @@ fn solve(input: Seq<char>) -> (result: int)
 // <vc-code>
 {
     assume(false);
-    0
+    unreached()
 }
 // </vc-code>
 

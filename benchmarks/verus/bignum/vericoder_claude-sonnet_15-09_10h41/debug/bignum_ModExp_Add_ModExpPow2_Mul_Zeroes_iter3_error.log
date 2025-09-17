@@ -1,0 +1,26 @@
+=== Verification Error - Iteration 3 ===
+File: benchmarks/verus/bignum/files/bignum_ModExp_Add_ModExpPow2_Mul_Zeroes.rs
+Time: 2025-09-15 10:57:33
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: error: cannot call function `alloc::string::impl&%34::to_string` with mode exec
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_ModExp_Add_ModExpPow2_Mul_Zeroes_impl.rs:32:5
+   |
+32 |     "".to_string()
+   |     ^^^^^^^^^^^^^^
+
+error: aborting due to 1 previous error
+
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+error: cannot call function `alloc::string::impl&%34::to_string` with mode exec
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignum_ModExp_Add_ModExpPow2_Mul_Zeroes_impl.rs:32:5
+   |
+32 |     "".to_string()
+   |     ^^^^^^^^^^^^^^
+
+error: aborting due to 1 previous error
+

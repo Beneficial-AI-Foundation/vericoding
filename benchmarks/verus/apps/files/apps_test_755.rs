@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(x: int) -> bool {
     x >= 1
 }
@@ -14,6 +11,9 @@ spec fn is_minimal_steps(x: int, steps: int) -> bool {
     steps * 5 >= x &&
     (steps - 1) * 5 < x)
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

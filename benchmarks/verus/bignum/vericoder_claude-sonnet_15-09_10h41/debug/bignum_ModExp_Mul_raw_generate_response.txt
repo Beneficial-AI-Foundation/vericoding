@@ -1,0 +1,8 @@
+=== Raw LLM Generate Response ===
+Length: 1508 characters
+--------------------------------------------------------------------------------
+[
+"{\n    if s1.len() == 0 || s2.len() == 0 {\n        return vec!['0'];\n    }\n    \n    let mut result = vec!['0'];\n    let mut i = 0;\n    \n    while i < s1.len()\n        invariant\n            ValidBitString(result@),\n            i <= s1.len(),\n            ValidBitString(s1@),\n            ValidBitString(s2@)\n    {\n        if s1[i] == '1' {\n            let shifted_s2 = Mul(&result, s2);\n            result = shifted_s2;\n        }\n        \n        if i + 1 < s1.len() {\n            let doubled = Mul(&result, &['1', '0']);\n            result = doubled;\n        }\n        \n        i += 1;\n    }\n    \n    result\n}",
+"{\n    if sy.len() == 0 {\n        return vec!['1'];\n    }\n    \n    if sy.len() == 1 && sy[0] == '0' {\n        return vec!['1'];\n    }\n    \n    let mut result = vec!['1'];\n    let mut exp_bits = sy.to_vec();\n    let mut base = sx.to_vec();\n    let mut i = 0;\n    \n    while i < exp_bits.len()\n        invariant\n            ValidBitString(result@),\n            ValidBitString(base@),\n            ValidBitString(exp_bits@),\n            ValidBitString(sz@),\n            i <= exp_bits.len(),\n            Str2Int(sz@) > 1\n    {\n        if exp_bits[exp_bits.len() - 1 - i] == '1' {\n            let temp = Mul(&result, &base);\n            result = temp;\n        }\n        \n        if i + 1 < exp_bits.len() {\n            let temp = Mul(&base, &base);\n            base = temp;\n        }\n        \n        i += 1;\n    }\n    \n    result\n}"
+]
+--------------------------------------------------------------------------------

@@ -1,0 +1,34 @@
+=== Verification Error - Iteration 4 ===
+File: benchmarks/verus/bignum/files/bignums_Sub_NormalizeBitstring.rs
+Time: 2025-09-15 10:44:20
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Verification failed: verification results:: 4 verified, 1 errors
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignums_Sub_NormalizeBitstring_impl.rs:31:9
+   |
+31 |         res@.len() <= s@.len() - start_idx,
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+63 |     result
+   |     ------ at the end of the function body
+
+error: aborting due to 1 previous error
+
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+verification results:: 4 verified, 1 errors
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_10h41/bignums_Sub_NormalizeBitstring_impl.rs:31:9
+   |
+31 |         res@.len() <= s@.len() - start_idx,
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+63 |     result
+   |     ------ at the end of the function body
+
+error: aborting due to 1 previous error
+

@@ -1,0 +1,9 @@
+=== LLM Response - generate_code - Iteration 0 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExp.rs
+Prompt Hash: 0447e2a5
+JSON Parsed Successfully: True
+Timestamp: 1757970904.5434802
+Content Length: 1288 chars
+--------------------------------------------------------------------------------
+["fn nat_mod(a: nat, m: nat) -> nat { a % m }\nspec fn is_valid_bitstring(s: Seq<char>) -> bool { ValidBitString(s) }","{\n    let m: nat = Str2Int(sz@);\n    let mut base: nat = Str2Int(sx@) % m;\n    let len = sy@.len() as int;\n    let mut res_int: nat = 1 % m;\n    let mut b: nat = base;\n    let mut i: int = 0;\n    while i < len\n        invariant\n            i >= 0,\n        decreases\n            len - i\n    {\n        let idx = (len - 1 - i) as int;\n        if sy@.index(idx) == '1' {\n            res_int = (res_int * b) % m;\n        }\n        b = (b * b) % m;\n        i = i + 1;\n    }\n    let mut v = Vec::<char>::new();\n    if res_int == 0 {\n        v.push('0');\n        return v;\n    }\n    let mut t: nat = res_int;\n    let mut bits = Vec::<char>::new();\n    while t > 0\n        invariant\n            t >= 0,\n        decreases\n            t\n    {\n        if t % 2 == 1 {\n            bits.push('1');\n        } else {\n            bits.push('0');\n        }\n        t = t / 2;\n    }\n    let mut res = Vec::<char>::new();\n    let mut j: int = bits.len() as int - 1;\n    while j >= 0\n        invariant\n            j >= -1,\n        decreases\n            j + 1\n    {\n        res.push(bits[j as usize]);\n        j = j - 1;\n    }\n    res\n}"]
+--------------------------------------------------------------------------------

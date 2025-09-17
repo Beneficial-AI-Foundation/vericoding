@@ -1,0 +1,114 @@
+=== Verification Error - Iteration 3 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_CompareUnequal.rs
+Time: 2025-09-15 19:19:00
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Verification failed: verification results:: 3 verified, 4 errors
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_CompareUnequal_impl.rs:46:9
+   |
+46 |           Str2Int(s) < pow(2, s.len() as nat)
+   |           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+49 | /     if s.len() == 1 {
+50 | |     } else {
+51 | |         lemma_str2int_bounds(s.subrange(0, s.len() as int - 1));
+52 | |     }
+   | |_____- at the end of the function body
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_CompareUnequal_impl.rs:61:9
+   |
+61 |           Str2Int(s) >= pow(2, (s.len() - 1) as nat)
+   |           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+64 | /     if s.len() == 2 {
+65 | |     } else {
+66 | |         if s[1] != '0' {
+67 | |             lemma_str2int_lower_bound(s.subrange(1, s.len() as int));
+68 | |         }
+69 | |     }
+   | |_____- at the end of the function body
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_CompareUnequal_impl.rs:29:9
+   |
+29 |           Str2Int(s1) >= Str2Int(s2)
+   |           ^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+30 |   {
+31 | /     if s1.len() == 1 {
+32 | |         if s2.len() == 1 {
+33 | |         } else {
+...  |
+37 | |         lemma_str2int_lower_bound(s1);
+38 | |     }
+   | |_____- at the end of the function body
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_CompareUnequal_impl.rs:88:5
+   |
+88 |     (Str2Int(s1@) == Str2Int(s2@) ==> res == 0),
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+97 |     return 1;
+   |     -------- at this exit
+
+error: aborting due to 4 previous errors
+
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+verification results:: 3 verified, 4 errors
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_CompareUnequal_impl.rs:46:9
+   |
+46 |           Str2Int(s) < pow(2, s.len() as nat)
+   |           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+49 | /     if s.len() == 1 {
+50 | |     } else {
+51 | |         lemma_str2int_bounds(s.subrange(0, s.len() as int - 1));
+52 | |     }
+   | |_____- at the end of the function body
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_CompareUnequal_impl.rs:61:9
+   |
+61 |           Str2Int(s) >= pow(2, (s.len() - 1) as nat)
+   |           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+64 | /     if s.len() == 2 {
+65 | |     } else {
+66 | |         if s[1] != '0' {
+67 | |             lemma_str2int_lower_bound(s.subrange(1, s.len() as int));
+68 | |         }
+69 | |     }
+   | |_____- at the end of the function body
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_CompareUnequal_impl.rs:29:9
+   |
+29 |           Str2Int(s1) >= Str2Int(s2)
+   |           ^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+30 |   {
+31 | /     if s1.len() == 1 {
+32 | |         if s2.len() == 1 {
+33 | |         } else {
+...  |
+37 | |         lemma_str2int_lower_bound(s1);
+38 | |     }
+   | |_____- at the end of the function body
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-sonnet_15-09_18h46/bignum_CompareUnequal_impl.rs:88:5
+   |
+88 |     (Str2Int(s1@) == Str2Int(s2@) ==> res == 0),
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+97 |     return 1;
+   |     -------- at this exit
+
+error: aborting due to 4 previous errors
+

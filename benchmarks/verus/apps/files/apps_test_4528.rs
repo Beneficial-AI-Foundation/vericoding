@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(test_cases: Seq<(int, int)>) -> bool {
     forall|i: int| 0 <= i < test_cases.len() ==> 
         0 <= test_cases[i].0 < 24 && 
@@ -19,6 +16,9 @@ spec fn minutes_until_midnight(h: int, m: int) -> int {
 spec fn valid_output(results: Seq<int>) -> bool {
     forall|i: int| 0 <= i < results.len() ==> 1 <= results[i] <= 1439
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

@@ -1,0 +1,26 @@
+=== Verification Error - Iteration 1 ===
+File: benchmarks/verus/bignum/files/bignums_Sub.rs
+Time: 2025-09-15 10:45:25
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: error: The verifier does not yet support the following Rust feature: let expressions
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_10h41/bignums_Sub_impl.rs:61:11
+   |
+61 |     while let (Some(&c1), Some(&c2)) = (s1_chars.next_back(), s2_chars.next_back()) {
+   |           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: aborting due to 1 previous error
+
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+error: The verifier does not yet support the following Rust feature: let expressions
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_10h41/bignums_Sub_impl.rs:61:11
+   |
+61 |     while let (Some(&c1), Some(&c2)) = (s1_chars.next_back(), s2_chars.next_back()) {
+   |           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: aborting due to 1 previous error
+

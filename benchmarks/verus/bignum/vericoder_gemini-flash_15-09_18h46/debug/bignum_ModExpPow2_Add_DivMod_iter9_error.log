@@ -1,0 +1,336 @@
+=== Verification Error - Iteration 9 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExpPow2_Add_DivMod.rs
+Time: 2025-09-15 18:49:55
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExpPow2_Add_DivMod_impl.rs:108:13
+    |
+108 |     if q == 0 {
+    |        -    ^ expected `nat`, found integer
+    |        |
+    |        expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExpPow2_Add_DivMod_impl.rs:111:19
+    |
+111 |         while q > 0
+    |               -   ^ expected `nat`, found integer
+    |               |
+    |               expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExpPow2_Add_DivMod_impl.rs:117:20
+    |
+117 |             if q % 2 == 1 {
+    |                -   ^ expected `nat`, found integer
+    |                |
+    |                expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExpPow2_Add_DivMod_impl.rs:117:25
+    |
+117 |             if q % 2 == 1 {
+    |                -----    ^ expected `nat`, found integer
+    |                |
+    |                expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExpPow2_Add_DivMod_impl.rs:122:21
+    |
+122 |             q = q / 2;
+    |                 -   ^ expected `nat`, found integer
+    |                 |
+    |                 expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExpPow2_Add_DivMod_impl.rs:129:13
+    |
+129 |     if r == 0 {
+    |        -    ^ expected `nat`, found integer
+    |        |
+    |        expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExpPow2_Add_DivMod_impl.rs:132:19
+    |
+132 |         while r > 0
+    |               -   ^ expected `nat`, found integer
+    |               |
+    |               expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExpPow2_Add_DivMod_impl.rs:138:20
+    |
+138 |             if r % 2 == 1 {
+    |                -   ^ expected `nat`, found integer
+    |                |
+    |                expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExpPow2_Add_DivMod_impl.rs:138:25
+    |
+138 |             if r % 2 == 1 {
+    |                -----    ^ expected `nat`, found integer
+    |                |
+    |                expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExpPow2_Add_DivMod_impl.rs:143:21
+    |
+143 |             r = r / 2;
+    |                 -   ^ expected `nat`, found integer
+    |                 |
+    |                 expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExpPow2_Add_DivMod_impl.rs:169:31
+    |
+169 |     let mut result_val: nat = 1;
+    |                         ---   ^ expected `nat`, found integer
+    |                         |
+    |                         expected due to this
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExpPow2_Add_DivMod_impl.rs:173:21
+    |
+173 |     while exp_val > 0
+    |           -------   ^ expected `nat`, found integer
+    |           |
+    |           expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExpPow2_Add_DivMod_impl.rs:186:22
+    |
+186 |         if exp_val % 2 == 1 {
+    |            -------   ^ expected `nat`, found integer
+    |            |
+    |            expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExpPow2_Add_DivMod_impl.rs:186:27
+    |
+186 |         if exp_val % 2 == 1 {
+    |            -----------    ^ expected `nat`, found integer
+    |            |
+    |            expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExpPow2_Add_DivMod_impl.rs:190:29
+    |
+190 |         exp_val = exp_val / 2;
+    |                   -------   ^ expected `nat`, found integer
+    |                   |
+    |                   expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExpPow2_Add_DivMod_impl.rs:197:16
+    |
+197 |     if temp == 0 {
+    |        ----    ^ expected `nat`, found integer
+    |        |
+    |        expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExpPow2_Add_DivMod_impl.rs:200:22
+    |
+200 |         while temp > 0
+    |               ----   ^ expected `nat`, found integer
+    |               |
+    |               expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExpPow2_Add_DivMod_impl.rs:211:23
+    |
+211 |             if temp % 2 == 1 {
+    |                ----   ^ expected `nat`, found integer
+    |                |
+    |                expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExpPow2_Add_DivMod_impl.rs:211:28
+    |
+211 |             if temp % 2 == 1 {
+    |                --------    ^ expected `nat`, found integer
+    |                |
+    |                expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExpPow2_Add_DivMod_impl.rs:216:27
+    |
+216 |             temp = temp / 2;
+    |                    ----   ^ expected `nat`, found integer
+    |                    |
+    |                    expected because this is `vstd::prelude::nat`
+
+error: aborting due to 20 previous errors
+
+For more information about this error, try `rustc --explain E0308`.
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExpPow2_Add_DivMod_impl.rs:108:13
+    |
+108 |     if q == 0 {
+    |        -    ^ expected `nat`, found integer
+    |        |
+    |        expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExpPow2_Add_DivMod_impl.rs:111:19
+    |
+111 |         while q > 0
+    |               -   ^ expected `nat`, found integer
+    |               |
+    |               expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExpPow2_Add_DivMod_impl.rs:117:20
+    |
+117 |             if q % 2 == 1 {
+    |                -   ^ expected `nat`, found integer
+    |                |
+    |                expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExpPow2_Add_DivMod_impl.rs:117:25
+    |
+117 |             if q % 2 == 1 {
+    |                -----    ^ expected `nat`, found integer
+    |                |
+    |                expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExpPow2_Add_DivMod_impl.rs:122:21
+    |
+122 |             q = q / 2;
+    |                 -   ^ expected `nat`, found integer
+    |                 |
+    |                 expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExpPow2_Add_DivMod_impl.rs:129:13
+    |
+129 |     if r == 0 {
+    |        -    ^ expected `nat`, found integer
+    |        |
+    |        expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExpPow2_Add_DivMod_impl.rs:132:19
+    |
+132 |         while r > 0
+    |               -   ^ expected `nat`, found integer
+    |               |
+    |               expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExpPow2_Add_DivMod_impl.rs:138:20
+    |
+138 |             if r % 2 == 1 {
+    |                -   ^ expected `nat`, found integer
+    |                |
+    |                expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExpPow2_Add_DivMod_impl.rs:138:25
+    |
+138 |             if r % 2 == 1 {
+    |                -----    ^ expected `nat`, found integer
+    |                |
+    |                expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExpPow2_Add_DivMod_impl.rs:143:21
+    |
+143 |             r = r / 2;
+    |                 -   ^ expected `nat`, found integer
+    |                 |
+    |                 expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExpPow2_Add_DivMod_impl.rs:169:31
+    |
+169 |     let mut result_val: nat = 1;
+    |                         ---   ^ expected `nat`, found integer
+    |                         |
+    |                         expected due to this
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExpPow2_Add_DivMod_impl.rs:173:21
+    |
+173 |     while exp_val > 0
+    |           -------   ^ expected `nat`, found integer
+    |           |
+    |           expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExpPow2_Add_DivMod_impl.rs:186:22
+    |
+186 |         if exp_val % 2 == 1 {
+    |            -------   ^ expected `nat`, found integer
+    |            |
+    |            expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExpPow2_Add_DivMod_impl.rs:186:27
+    |
+186 |         if exp_val % 2 == 1 {
+    |            -----------    ^ expected `nat`, found integer
+    |            |
+    |            expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExpPow2_Add_DivMod_impl.rs:190:29
+    |
+190 |         exp_val = exp_val / 2;
+    |                   -------   ^ expected `nat`, found integer
+    |                   |
+    |                   expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExpPow2_Add_DivMod_impl.rs:197:16
+    |
+197 |     if temp == 0 {
+    |        ----    ^ expected `nat`, found integer
+    |        |
+    |        expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExpPow2_Add_DivMod_impl.rs:200:22
+    |
+200 |         while temp > 0
+    |               ----   ^ expected `nat`, found integer
+    |               |
+    |               expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExpPow2_Add_DivMod_impl.rs:211:23
+    |
+211 |             if temp % 2 == 1 {
+    |                ----   ^ expected `nat`, found integer
+    |                |
+    |                expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExpPow2_Add_DivMod_impl.rs:211:28
+    |
+211 |             if temp % 2 == 1 {
+    |                --------    ^ expected `nat`, found integer
+    |                |
+    |                expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_18h46/bignum_ModExpPow2_Add_DivMod_impl.rs:216:27
+    |
+216 |             temp = temp / 2;
+    |                    ----   ^ expected `nat`, found integer
+    |                    |
+    |                    expected because this is `vstd::prelude::nat`
+
+error: aborting due to 20 previous errors
+
+For more information about this error, try `rustc --explain E0308`.

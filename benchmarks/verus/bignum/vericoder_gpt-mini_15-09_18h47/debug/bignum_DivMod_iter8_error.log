@@ -1,0 +1,180 @@
+=== Verification Error - Iteration 8 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_DivMod.rs
+Time: 2025-09-15 18:54:56
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Verification failed: verification results:: 4 verified, 3 errors
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_DivMod_impl.rs:40:3
+   |
+40 | /   for k in 0..divisor.len() {
+41 | |     d_val = d_val * 2u128 + (if divisor[k] == '1' { 1u128 } else { 0u128 });
+42 | |   }
+   | |___^
+
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_DivMod_impl.rs:44:3
+   |
+44 | /   for k in 0..dividend.len() {
+45 | |     dvd_val = dvd_val * 2u128 + (if dividend[k] == '1' { 1u128 } else { 0u128 });
+46 | |   }
+   | |___^
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_DivMod_impl.rs:30:6
+   |
+30 | exec fn DivMod(dividend: &[char], divisor: &[char]) -> (res: (Vec<char>, Vec<char>))
+   |      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_DivMod_impl.rs:32:11
+   |
+32 |   ensures ValidBitString(res.0@) && ValidBitString(res.1@),
+   |           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+80 |   return (q, rem);
+   |   --------------- at this exit
+
+note: recommendation not met
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_DivMod_impl.rs:33:5
+   |
+7  |   recommends ValidBitString(s)
+   |              ----------------- recommendation not met
+...
+33 |     Str2Int(res.0@) == Str2Int(dividend@) / Str2Int(divisor@),
+   |     ^^^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_DivMod_impl.rs:33:5
+   |
+33 |     Str2Int(res.0@) == Str2Int(dividend@) / Str2Int(divisor@),
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+80 |   return (q, rem);
+   |   --------------- at this exit
+
+note: recommendation not met
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_DivMod_impl.rs:34:5
+   |
+7  |   recommends ValidBitString(s)
+   |              ----------------- recommendation not met
+...
+34 |     Str2Int(res.1@) == Str2Int(dividend@) % Str2Int(divisor@)
+   |     ^^^^^^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_DivMod_impl.rs:41:13
+   |
+41 |     d_val = d_val * 2u128 + (if divisor[k] == '1' { 1u128 } else { 0u128 });
+   |             ^^^^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_DivMod_impl.rs:41:13
+   |
+41 |     d_val = d_val * 2u128 + (if divisor[k] == '1' { 1u128 } else { 0u128 });
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_DivMod_impl.rs:45:15
+   |
+45 |     dvd_val = dvd_val * 2u128 + (if dividend[k] == '1' { 1u128 } else { 0u128 });
+   |               ^^^^^^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_DivMod_impl.rs:45:15
+   |
+45 |     dvd_val = dvd_val * 2u128 + (if dividend[k] == '1' { 1u128 } else { 0u128 });
+   |               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: aborting due to 6 previous errors
+
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+verification results:: 4 verified, 3 errors
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_DivMod_impl.rs:40:3
+   |
+40 | /   for k in 0..divisor.len() {
+41 | |     d_val = d_val * 2u128 + (if divisor[k] == '1' { 1u128 } else { 0u128 });
+42 | |   }
+   | |___^
+
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_DivMod_impl.rs:44:3
+   |
+44 | /   for k in 0..dividend.len() {
+45 | |     dvd_val = dvd_val * 2u128 + (if dividend[k] == '1' { 1u128 } else { 0u128 });
+46 | |   }
+   | |___^
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_DivMod_impl.rs:30:6
+   |
+30 | exec fn DivMod(dividend: &[char], divisor: &[char]) -> (res: (Vec<char>, Vec<char>))
+   |      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_DivMod_impl.rs:32:11
+   |
+32 |   ensures ValidBitString(res.0@) && ValidBitString(res.1@),
+   |           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+80 |   return (q, rem);
+   |   --------------- at this exit
+
+note: recommendation not met
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_DivMod_impl.rs:33:5
+   |
+7  |   recommends ValidBitString(s)
+   |              ----------------- recommendation not met
+...
+33 |     Str2Int(res.0@) == Str2Int(dividend@) / Str2Int(divisor@),
+   |     ^^^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_DivMod_impl.rs:33:5
+   |
+33 |     Str2Int(res.0@) == Str2Int(dividend@) / Str2Int(divisor@),
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+80 |   return (q, rem);
+   |   --------------- at this exit
+
+note: recommendation not met
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_DivMod_impl.rs:34:5
+   |
+7  |   recommends ValidBitString(s)
+   |              ----------------- recommendation not met
+...
+34 |     Str2Int(res.1@) == Str2Int(dividend@) % Str2Int(divisor@)
+   |     ^^^^^^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_DivMod_impl.rs:41:13
+   |
+41 |     d_val = d_val * 2u128 + (if divisor[k] == '1' { 1u128 } else { 0u128 });
+   |             ^^^^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_DivMod_impl.rs:41:13
+   |
+41 |     d_val = d_val * 2u128 + (if divisor[k] == '1' { 1u128 } else { 0u128 });
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_DivMod_impl.rs:45:15
+   |
+45 |     dvd_val = dvd_val * 2u128 + (if dividend[k] == '1' { 1u128 } else { 0u128 });
+   |               ^^^^^^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_DivMod_impl.rs:45:15
+   |
+45 |     dvd_val = dvd_val * 2u128 + (if dividend[k] == '1' { 1u128 } else { 0u128 });
+   |               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: aborting due to 6 previous errors
+

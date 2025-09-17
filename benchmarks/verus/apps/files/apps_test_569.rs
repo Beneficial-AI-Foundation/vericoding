@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(n: int, s: Seq<char>) -> bool {
     n == s.len() && n >= 1
 }
@@ -12,6 +9,9 @@ spec fn valid_input(n: int, s: Seq<char>) -> bool {
 spec fn count_distinct_chars(s: Seq<char>) -> int {
     s.to_set().len() as int
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

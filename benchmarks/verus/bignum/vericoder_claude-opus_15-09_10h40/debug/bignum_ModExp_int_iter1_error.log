@@ -1,0 +1,472 @@
+=== Verification Error - Iteration 1 ===
+File: benchmarks/verus/bignum/files/bignum_ModExp_int.rs
+Time: 2025-09-15 11:02:44
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: error[E0284]: type annotations needed
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_int_impl.rs:74:66
+   |
+74 |         assert(Str2Int(s_new) == 2 * Str2Int(s) + (if c == '1' { 1 } else { 0 }));
+   |                                                                  ^ cannot infer type of the type parameter `hint_please_add_suffix_on_literal_like_100u32_or_100int_or_100nat` declared on the function `spec_literal_integer`
+   |
+   = note: cannot satisfy `<vstd::prelude::nat as vstd::prelude::SpecAdd<_>>::Output == _`
+help: consider specifying the generic argument
+   |
+74 |         assert(Str2Int(s_new) == 2 * Str2Int(s) + (if c == '1' { 1::<hint_please_add_suffix_on_literal_like_100u32_or_100int_or_100nat> } else { 0 }));
+   |                                                                   +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_int_impl.rs:120:46
+    |
+120 |             n > 0 ==> Str2Int(Int2Str_helper(n).add(result@)) == orig_n,
+    |                               -------------- ^ expected `nat`, found `usize`
+    |                               |
+    |                               arguments to this function are incorrect
+    |
+note: function defined here
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_int_impl.rs:34:9
+    |
+34  | spec fn Int2Str_helper(n: nat) -> Seq<char>
+    |         ^^^^^^^^^^^^^^ ------
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_int_impl.rs:132:42
+    |
+132 |             lemma_str2int_int2str_helper(old_n);
+    |             ---------------------------- ^^^^^ expected `nat`, found `usize`
+    |             |
+    |             arguments to this function are incorrect
+    |
+note: function defined here
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_int_impl.rs:57:10
+    |
+57  | proof fn lemma_str2int_int2str_helper(n: nat)
+    |          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^ ------
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_int_impl.rs:134:46
+    |
+134 |                 lemma_str2int_int2str_helper(n);
+    |                 ---------------------------- ^ expected `nat`, found `usize`
+    |                 |
+    |                 arguments to this function are incorrect
+    |
+note: function defined here
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_int_impl.rs:57:10
+    |
+57  | proof fn lemma_str2int_int2str_helper(n: nat)
+    |          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^ ------
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_int_impl.rs:141:31
+    |
+141 |         lemma_str2int_int2str(orig_n);
+    |         --------------------- ^^^^^^ expected `nat`, found `usize`
+    |         |
+    |         arguments to this function are incorrect
+    |
+note: function defined here
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_int_impl.rs:45:10
+    |
+45  | proof fn lemma_str2int_int2str(n: nat)
+    |          ^^^^^^^^^^^^^^^^^^^^^ ------
+
+error[E0308]: arguments to this function are incorrect
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_int_impl.rs:150:16
+    |
+150 |         res == Exp_int(base, exp) % modulus,
+    |                ^^^^^^^ ----  --- expected `nat`, found `usize`
+    |                        |
+    |                        expected `nat`, found `usize`
+    |
+note: function defined here
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_int_impl.rs:5:9
+    |
+5   | spec fn Exp_int(x: nat, y: nat) -> nat
+    |         ^^^^^^^ ------  ------
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_int_impl.rs:150:37
+    |
+150 |         res == Exp_int(base, exp) % modulus,
+    |                ---------------------^^^^^^^
+    |                |                    |
+    |                |                    expected `nat`, found `usize`
+    |                arguments to this method are incorrect
+    |
+help: the return type of this call is `usize` due to the type of the argument passed
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_int_impl.rs:150:16
+    |
+150 |         res == Exp_int(base, exp) % modulus,
+    |                ^^^^^^^^^^^^^^^^^^^^^-------
+    |                                     |
+    |                                     this argument influences the return type of `spec_euclidean_mod`
+note: method defined here
+   --> /Users/runner/work/verus/verus/source/builtin/src/lib.rs:1054:8
+
+error[E0308]: arguments to this function are incorrect
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_int_impl.rs:163:24
+    |
+163 |                 assert(Exp_int(base, exp) == Exp_int(base, exp / 2) * Exp_int(base, exp / 2));
+    |                        ^^^^^^^ ----  --- expected `nat`, found `usize`
+    |                                |
+    |                                expected `nat`, found `usize`
+    |
+note: function defined here
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_int_impl.rs:5:9
+    |
+5   | spec fn Exp_int(x: nat, y: nat) -> nat
+    |         ^^^^^^^ ------  ------
+
+error[E0308]: arguments to this function are incorrect
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_int_impl.rs:163:46
+    |
+163 |                 assert(Exp_int(base, exp) == Exp_int(base, exp / 2) * Exp_int(base, exp / 2));
+    |                                              ^^^^^^^ ----  ------- expected `nat`, found `usize`
+    |                                                      |
+    |                                                      expected `nat`, found `usize`
+    |
+note: function defined here
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_int_impl.rs:5:9
+    |
+5   | spec fn Exp_int(x: nat, y: nat) -> nat
+    |         ^^^^^^^ ------  ------
+
+error[E0308]: arguments to this function are incorrect
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_int_impl.rs:163:71
+    |
+163 |                 assert(Exp_int(base, exp) == Exp_int(base, exp / 2) * Exp_int(base, exp / 2));
+    |                                                                       ^^^^^^^ ----  ------- expected `nat`, found `usize`
+    |                                                                               |
+    |                                                                               expected `nat`, found `usize`
+    |
+note: function defined here
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_int_impl.rs:5:9
+    |
+5   | spec fn Exp_int(x: nat, y: nat) -> nat
+    |         ^^^^^^^ ------  ------
+
+error[E0308]: arguments to this function are incorrect
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_int_impl.rs:165:24
+    |
+165 |                 assert(Exp_int(base, exp) == base * Exp_int(base, exp - 1));
+    |                        ^^^^^^^ ----  --- expected `nat`, found `usize`
+    |                                |
+    |                                expected `nat`, found `usize`
+    |
+note: function defined here
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_int_impl.rs:5:9
+    |
+5   | spec fn Exp_int(x: nat, y: nat) -> nat
+    |         ^^^^^^^ ------  ------
+
+error[E0308]: arguments to this function are incorrect
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_int_impl.rs:165:53
+    |
+165 |                 assert(Exp_int(base, exp) == base * Exp_int(base, exp - 1));
+    |                                                     ^^^^^^^ ----  ------- expected `nat`, found `int`
+    |                                                             |
+    |                                                             expected `nat`, found `usize`
+    |
+note: function defined here
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_int_impl.rs:5:9
+    |
+5   | spec fn Exp_int(x: nat, y: nat) -> nat
+    |         ^^^^^^^ ------  ------
+
+error[E0308]: arguments to this function are incorrect
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_int_impl.rs:167:24
+    |
+167 |                 assert(Exp_int(base, exp - 1) == Exp_int(base, exp / 2) * Exp_int(base, exp / 2));
+    |                        ^^^^^^^ ----  ------- expected `nat`, found `int`
+    |                                |
+    |                                expected `nat`, found `usize`
+    |
+note: function defined here
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_int_impl.rs:5:9
+    |
+5   | spec fn Exp_int(x: nat, y: nat) -> nat
+    |         ^^^^^^^ ------  ------
+
+error[E0308]: arguments to this function are incorrect
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_int_impl.rs:167:50
+    |
+167 |                 assert(Exp_int(base, exp - 1) == Exp_int(base, exp / 2) * Exp_int(base, exp / 2));
+    |                                                  ^^^^^^^ ----  ------- expected `nat`, found `usize`
+    |                                                          |
+    |                                                          expected `nat`, found `usize`
+    |
+note: function defined here
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_int_impl.rs:5:9
+    |
+5   | spec fn Exp_int(x: nat, y: nat) -> nat
+    |         ^^^^^^^ ------  ------
+
+error[E0308]: arguments to this function are incorrect
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_int_impl.rs:167:75
+    |
+167 |                 assert(Exp_int(base, exp - 1) == Exp_int(base, exp / 2) * Exp_int(base, exp / 2));
+    |                                                                           ^^^^^^^ ----  ------- expected `nat`, found `usize`
+    |                                                                                   |
+    |                                                                                   expected `nat`, found `usize`
+    |
+note: function defined here
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_int_impl.rs:5:9
+    |
+5   | spec fn Exp_int(x: nat, y: nat) -> nat
+    |         ^^^^^^^ ------  ------
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_int_impl.rs:192:31
+    |
+192 |         lemma_str2int_int2str(result_val);
+    |         --------------------- ^^^^^^^^^^ expected `nat`, found `usize`
+    |         |
+    |         arguments to this function are incorrect
+    |
+note: function defined here
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_int_impl.rs:45:10
+    |
+45  | proof fn lemma_str2int_int2str(n: nat)
+    |          ^^^^^^^^^^^^^^^^^^^^^ ------
+
+error: aborting due to 16 previous errors
+
+Some errors have detailed explanations: E0284, E0308.
+For more information about an error, try `rustc --explain E0284`.
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+error[E0284]: type annotations needed
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_int_impl.rs:74:66
+   |
+74 |         assert(Str2Int(s_new) == 2 * Str2Int(s) + (if c == '1' { 1 } else { 0 }));
+   |                                                                  ^ cannot infer type of the type parameter `hint_please_add_suffix_on_literal_like_100u32_or_100int_or_100nat` declared on the function `spec_literal_integer`
+   |
+   = note: cannot satisfy `<vstd::prelude::nat as vstd::prelude::SpecAdd<_>>::Output == _`
+help: consider specifying the generic argument
+   |
+74 |         assert(Str2Int(s_new) == 2 * Str2Int(s) + (if c == '1' { 1::<hint_please_add_suffix_on_literal_like_100u32_or_100int_or_100nat> } else { 0 }));
+   |                                                                   +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_int_impl.rs:120:46
+    |
+120 |             n > 0 ==> Str2Int(Int2Str_helper(n).add(result@)) == orig_n,
+    |                               -------------- ^ expected `nat`, found `usize`
+    |                               |
+    |                               arguments to this function are incorrect
+    |
+note: function defined here
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_int_impl.rs:34:9
+    |
+34  | spec fn Int2Str_helper(n: nat) -> Seq<char>
+    |         ^^^^^^^^^^^^^^ ------
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_int_impl.rs:132:42
+    |
+132 |             lemma_str2int_int2str_helper(old_n);
+    |             ---------------------------- ^^^^^ expected `nat`, found `usize`
+    |             |
+    |             arguments to this function are incorrect
+    |
+note: function defined here
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_int_impl.rs:57:10
+    |
+57  | proof fn lemma_str2int_int2str_helper(n: nat)
+    |          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^ ------
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_int_impl.rs:134:46
+    |
+134 |                 lemma_str2int_int2str_helper(n);
+    |                 ---------------------------- ^ expected `nat`, found `usize`
+    |                 |
+    |                 arguments to this function are incorrect
+    |
+note: function defined here
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_int_impl.rs:57:10
+    |
+57  | proof fn lemma_str2int_int2str_helper(n: nat)
+    |          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^ ------
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_int_impl.rs:141:31
+    |
+141 |         lemma_str2int_int2str(orig_n);
+    |         --------------------- ^^^^^^ expected `nat`, found `usize`
+    |         |
+    |         arguments to this function are incorrect
+    |
+note: function defined here
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_int_impl.rs:45:10
+    |
+45  | proof fn lemma_str2int_int2str(n: nat)
+    |          ^^^^^^^^^^^^^^^^^^^^^ ------
+
+error[E0308]: arguments to this function are incorrect
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_int_impl.rs:150:16
+    |
+150 |         res == Exp_int(base, exp) % modulus,
+    |                ^^^^^^^ ----  --- expected `nat`, found `usize`
+    |                        |
+    |                        expected `nat`, found `usize`
+    |
+note: function defined here
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_int_impl.rs:5:9
+    |
+5   | spec fn Exp_int(x: nat, y: nat) -> nat
+    |         ^^^^^^^ ------  ------
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_int_impl.rs:150:37
+    |
+150 |         res == Exp_int(base, exp) % modulus,
+    |                ---------------------^^^^^^^
+    |                |                    |
+    |                |                    expected `nat`, found `usize`
+    |                arguments to this method are incorrect
+    |
+help: the return type of this call is `usize` due to the type of the argument passed
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_int_impl.rs:150:16
+    |
+150 |         res == Exp_int(base, exp) % modulus,
+    |                ^^^^^^^^^^^^^^^^^^^^^-------
+    |                                     |
+    |                                     this argument influences the return type of `spec_euclidean_mod`
+note: method defined here
+   --> /Users/runner/work/verus/verus/source/builtin/src/lib.rs:1054:8
+
+error[E0308]: arguments to this function are incorrect
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_int_impl.rs:163:24
+    |
+163 |                 assert(Exp_int(base, exp) == Exp_int(base, exp / 2) * Exp_int(base, exp / 2));
+    |                        ^^^^^^^ ----  --- expected `nat`, found `usize`
+    |                                |
+    |                                expected `nat`, found `usize`
+    |
+note: function defined here
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_int_impl.rs:5:9
+    |
+5   | spec fn Exp_int(x: nat, y: nat) -> nat
+    |         ^^^^^^^ ------  ------
+
+error[E0308]: arguments to this function are incorrect
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_int_impl.rs:163:46
+    |
+163 |                 assert(Exp_int(base, exp) == Exp_int(base, exp / 2) * Exp_int(base, exp / 2));
+    |                                              ^^^^^^^ ----  ------- expected `nat`, found `usize`
+    |                                                      |
+    |                                                      expected `nat`, found `usize`
+    |
+note: function defined here
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_int_impl.rs:5:9
+    |
+5   | spec fn Exp_int(x: nat, y: nat) -> nat
+    |         ^^^^^^^ ------  ------
+
+error[E0308]: arguments to this function are incorrect
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_int_impl.rs:163:71
+    |
+163 |                 assert(Exp_int(base, exp) == Exp_int(base, exp / 2) * Exp_int(base, exp / 2));
+    |                                                                       ^^^^^^^ ----  ------- expected `nat`, found `usize`
+    |                                                                               |
+    |                                                                               expected `nat`, found `usize`
+    |
+note: function defined here
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_int_impl.rs:5:9
+    |
+5   | spec fn Exp_int(x: nat, y: nat) -> nat
+    |         ^^^^^^^ ------  ------
+
+error[E0308]: arguments to this function are incorrect
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_int_impl.rs:165:24
+    |
+165 |                 assert(Exp_int(base, exp) == base * Exp_int(base, exp - 1));
+    |                        ^^^^^^^ ----  --- expected `nat`, found `usize`
+    |                                |
+    |                                expected `nat`, found `usize`
+    |
+note: function defined here
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_int_impl.rs:5:9
+    |
+5   | spec fn Exp_int(x: nat, y: nat) -> nat
+    |         ^^^^^^^ ------  ------
+
+error[E0308]: arguments to this function are incorrect
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_int_impl.rs:165:53
+    |
+165 |                 assert(Exp_int(base, exp) == base * Exp_int(base, exp - 1));
+    |                                                     ^^^^^^^ ----  ------- expected `nat`, found `int`
+    |                                                             |
+    |                                                             expected `nat`, found `usize`
+    |
+note: function defined here
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_int_impl.rs:5:9
+    |
+5   | spec fn Exp_int(x: nat, y: nat) -> nat
+    |         ^^^^^^^ ------  ------
+
+error[E0308]: arguments to this function are incorrect
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_int_impl.rs:167:24
+    |
+167 |                 assert(Exp_int(base, exp - 1) == Exp_int(base, exp / 2) * Exp_int(base, exp / 2));
+    |                        ^^^^^^^ ----  ------- expected `nat`, found `int`
+    |                                |
+    |                                expected `nat`, found `usize`
+    |
+note: function defined here
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_int_impl.rs:5:9
+    |
+5   | spec fn Exp_int(x: nat, y: nat) -> nat
+    |         ^^^^^^^ ------  ------
+
+error[E0308]: arguments to this function are incorrect
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_int_impl.rs:167:50
+    |
+167 |                 assert(Exp_int(base, exp - 1) == Exp_int(base, exp / 2) * Exp_int(base, exp / 2));
+    |                                                  ^^^^^^^ ----  ------- expected `nat`, found `usize`
+    |                                                          |
+    |                                                          expected `nat`, found `usize`
+    |
+note: function defined here
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_int_impl.rs:5:9
+    |
+5   | spec fn Exp_int(x: nat, y: nat) -> nat
+    |         ^^^^^^^ ------  ------
+
+error[E0308]: arguments to this function are incorrect
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_int_impl.rs:167:75
+    |
+167 |                 assert(Exp_int(base, exp - 1) == Exp_int(base, exp / 2) * Exp_int(base, exp / 2));
+    |                                                                           ^^^^^^^ ----  ------- expected `nat`, found `usize`
+    |                                                                                   |
+    |                                                                                   expected `nat`, found `usize`
+    |
+note: function defined here
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_int_impl.rs:5:9
+    |
+5   | spec fn Exp_int(x: nat, y: nat) -> nat
+    |         ^^^^^^^ ------  ------
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_int_impl.rs:192:31
+    |
+192 |         lemma_str2int_int2str(result_val);
+    |         --------------------- ^^^^^^^^^^ expected `nat`, found `usize`
+    |         |
+    |         arguments to this function are incorrect
+    |
+note: function defined here
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_int_impl.rs:45:10
+    |
+45  | proof fn lemma_str2int_int2str(n: nat)
+    |          ^^^^^^^^^^^^^^^^^^^^^ ------
+
+error: aborting due to 16 previous errors
+
+Some errors have detailed explanations: E0284, E0308.
+For more information about an error, try `rustc --explain E0284`.

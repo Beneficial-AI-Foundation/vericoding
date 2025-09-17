@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(s: Seq<char>) -> bool {
     let lines = split_lines_func(s);
     lines.len() >= 2 && 
@@ -152,6 +149,9 @@ spec fn parse_int_array_func(s: Seq<char>) -> Seq<int> {
 spec fn int_to_string_func(n: int) -> Seq<char> {
     seq!['0']
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

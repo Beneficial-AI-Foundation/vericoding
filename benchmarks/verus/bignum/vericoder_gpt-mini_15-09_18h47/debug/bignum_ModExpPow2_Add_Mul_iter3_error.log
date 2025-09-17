@@ -1,0 +1,640 @@
+=== Verification Error - Iteration 3 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExpPow2_Add_Mul.rs
+Time: 2025-09-15 19:36:40
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Verification failed: verification results:: 7 verified, 13 errors
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExpPow2_Add_Mul_impl.rs:36:5
+   |
+36 |     while i1 < n1
+   |     ^^^^^^^^^^^^^
+
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExpPow2_Add_Mul_impl.rs:47:5
+   |
+47 |     while i2 < n2
+   |     ^^^^^^^^^^^^^
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExpPow2_Add_Mul_impl.rs:24:6
+   |
+24 | exec fn Add(s1: &[char], s2: &[char]) -> (res: Vec<char>)
+   |      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+note: recommendation not met
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExpPow2_Add_Mul_impl.rs:26:33
+   |
+12 |   recommends ValidBitString(s)
+   |              ----------------- recommendation not met
+...
+26 |   ensures ValidBitString(res@), Str2Int(res@) == Str2Int(s1@) + Str2Int(s2@)
+   |                                 ^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExpPow2_Add_Mul_impl.rs:26:33
+   |
+26 |   ensures ValidBitString(res@), Str2Int(res@) == Str2Int(s1@) + Str2Int(s2@)
+   |                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+58 |         return Vec::<char>::new();
+   |         ------------------------- at this exit
+
+error: precondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExpPow2_Add_Mul_impl.rs:41:12
+   |
+41 |         if s1[i1] == '1' { v1 = v1 * 2 + 1; } else { v1 = v1 * 2; }
+   |            ^^^^^^
+   |
+  ::: /Users/sergiu.bursuc/verus/vstd/slice.rs:62:9
+   |
+62 |         0 <= i < slice.view().len(),
+   |         --------------------------- failed precondition
+
+error: possible arithmetic underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExpPow2_Add_Mul_impl.rs:41:33
+   |
+41 |         if s1[i1] == '1' { v1 = v1 * 2 + 1; } else { v1 = v1 * 2; }
+   |                                 ^^^^^^
+
+error: possible arithmetic underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExpPow2_Add_Mul_impl.rs:41:33
+   |
+41 |         if s1[i1] == '1' { v1 = v1 * 2 + 1; } else { v1 = v1 * 2; }
+   |                                 ^^^^^^^^^^
+
+error: precondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExpPow2_Add_Mul_impl.rs:52:12
+   |
+52 |         if s2[i2] == '1' { v2 = v2 * 2 + 1; } else { v2 = v2 * 2; }
+   |            ^^^^^^
+   |
+  ::: /Users/sergiu.bursuc/verus/vstd/slice.rs:62:9
+   |
+62 |         0 <= i < slice.view().len(),
+   |         --------------------------- failed precondition
+
+error: possible arithmetic underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExpPow2_Add_Mul_impl.rs:52:33
+   |
+52 |         if s2[i2] == '1' { v2 = v2 * 2 + 1; } else { v2 = v2 * 2; }
+   |                                 ^^^^^^
+
+error: possible arithmetic underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExpPow2_Add_Mul_impl.rs:52:33
+   |
+52 |         if s2[i2] == '1' { v2 = v2 * 2 + 1; } else { v2 = v2 * 2; }
+   |                                 ^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExpPow2_Add_Mul_impl.rs:56:21
+   |
+56 |     let sum: u128 = v1 + v2;
+   |                     ^^^^^^^
+
+error: precondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExpPow2_Add_Mul_impl.rs:84:18
+   |
+84 |         res.push(rev[rlen - 1 - k]);
+   |                  ^^^^^^^^^^^^^^^^^
+   |
+  ::: /Users/sergiu.bursuc/verus/vstd/std_specs/vec.rs:48:9
+   |
+48 |         i < vec.view().len(),
+   |         -------------------- failed precondition
+
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExpPow2_Add_Mul_impl.rs:105:5
+    |
+105 |     while i1 < n1
+    |     ^^^^^^^^^^^^^
+
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExpPow2_Add_Mul_impl.rs:116:5
+    |
+116 |     while i2 < n2
+    |     ^^^^^^^^^^^^^
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExpPow2_Add_Mul_impl.rs:93:6
+   |
+93 | exec fn Mul(s1: &[char], s2: &[char]) -> (res: Vec<char>)
+   |      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+note: recommendation not met
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExpPow2_Add_Mul_impl.rs:95:33
+   |
+12 |   recommends ValidBitString(s)
+   |              ----------------- recommendation not met
+...
+95 |   ensures ValidBitString(res@), Str2Int(res@) == Str2Int(s1@) * Str2Int(s2@)
+   |                                 ^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExpPow2_Add_Mul_impl.rs:95:33
+    |
+95  |   ensures ValidBitString(res@), Str2Int(res@) == Str2Int(s1@) * Str2Int(s2@)
+    |                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+127 |         return Vec::<char>::new();
+    |         ------------------------- at this exit
+
+error: precondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExpPow2_Add_Mul_impl.rs:110:12
+    |
+110 |         if s1[i1] == '1' { v1 = v1 * 2 + 1; } else { v1 = v1 * 2; }
+    |            ^^^^^^
+    |
+   ::: /Users/sergiu.bursuc/verus/vstd/slice.rs:62:9
+    |
+62  |         0 <= i < slice.view().len(),
+    |         --------------------------- failed precondition
+
+error: possible arithmetic underflow/overflow
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExpPow2_Add_Mul_impl.rs:110:33
+    |
+110 |         if s1[i1] == '1' { v1 = v1 * 2 + 1; } else { v1 = v1 * 2; }
+    |                                 ^^^^^^
+
+error: possible arithmetic underflow/overflow
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExpPow2_Add_Mul_impl.rs:110:33
+    |
+110 |         if s1[i1] == '1' { v1 = v1 * 2 + 1; } else { v1 = v1 * 2; }
+    |                                 ^^^^^^^^^^
+
+error: precondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExpPow2_Add_Mul_impl.rs:121:12
+    |
+121 |         if s2[i2] == '1' { v2 = v2 * 2 + 1; } else { v2 = v2 * 2; }
+    |            ^^^^^^
+    |
+   ::: /Users/sergiu.bursuc/verus/vstd/slice.rs:62:9
+    |
+62  |         0 <= i < slice.view().len(),
+    |         --------------------------- failed precondition
+
+error: possible arithmetic underflow/overflow
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExpPow2_Add_Mul_impl.rs:121:33
+    |
+121 |         if s2[i2] == '1' { v2 = v2 * 2 + 1; } else { v2 = v2 * 2; }
+    |                                 ^^^^^^
+
+error: possible arithmetic underflow/overflow
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExpPow2_Add_Mul_impl.rs:121:33
+    |
+121 |         if s2[i2] == '1' { v2 = v2 * 2 + 1; } else { v2 = v2 * 2; }
+    |                                 ^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExpPow2_Add_Mul_impl.rs:125:22
+    |
+125 |     let prod: u128 = v1 * v2;
+    |                      ^^^^^^^
+
+error: precondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExpPow2_Add_Mul_impl.rs:153:18
+    |
+153 |         res.push(rev[rlen - 1 - k]);
+    |                  ^^^^^^^^^^^^^^^^^
+    |
+   ::: /Users/sergiu.bursuc/verus/vstd/std_specs/vec.rs:48:9
+    |
+48  |         i < vec.view().len(),
+    |         -------------------- failed precondition
+
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExpPow2_Add_Mul_impl.rs:178:5
+    |
+178 |     while ix < n_x
+    |     ^^^^^^^^^^^^^^
+
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExpPow2_Add_Mul_impl.rs:190:5
+    |
+190 |     while iz < n_z
+    |     ^^^^^^^^^^^^^^
+
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExpPow2_Add_Mul_impl.rs:218:9
+    |
+218 |         while i < n_iter
+    |         ^^^^^^^^^^^^^^^^
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExpPow2_Add_Mul_impl.rs:162:6
+    |
+162 | exec fn ModExpPow2(sx: &[char], sy: &[char], n: int, sz: &[char]) -> (res: Vec<char>)
+    |      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+note: recommendation not met
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExpPow2_Add_Mul_impl.rs:169:5
+    |
+12  |   recommends ValidBitString(s)
+    |              ----------------- recommendation not met
+...
+169 |     Str2Int(res@) == Exp_int(Str2Int(sx@), Str2Int(sy@)) % Str2Int(sz@)
+    |     ^^^^^^^^^^^^^
+
+error: precondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExpPow2_Add_Mul_impl.rs:183:12
+    |
+183 |         if sx[ix] == '1' { base = base * 2 + 1; } else { base = base * 2; }
+    |            ^^^^^^
+    |
+   ::: /Users/sergiu.bursuc/verus/vstd/slice.rs:62:9
+    |
+62  |         0 <= i < slice.view().len(),
+    |         --------------------------- failed precondition
+
+error: possible arithmetic underflow/overflow
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExpPow2_Add_Mul_impl.rs:183:35
+    |
+183 |         if sx[ix] == '1' { base = base * 2 + 1; } else { base = base * 2; }
+    |                                   ^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExpPow2_Add_Mul_impl.rs:183:35
+    |
+183 |         if sx[ix] == '1' { base = base * 2 + 1; } else { base = base * 2; }
+    |                                   ^^^^^^^^^^^^
+
+error: precondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExpPow2_Add_Mul_impl.rs:195:12
+    |
+195 |         if sz[iz] == '1' { modulo = modulo * 2 + 1; } else { modulo = modulo * 2; }
+    |            ^^^^^^
+    |
+   ::: /Users/sergiu.bursuc/verus/vstd/slice.rs:62:9
+    |
+62  |         0 <= i < slice.view().len(),
+    |         --------------------------- failed precondition
+
+error: possible arithmetic underflow/overflow
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExpPow2_Add_Mul_impl.rs:195:37
+    |
+195 |         if sz[iz] == '1' { modulo = modulo * 2 + 1; } else { modulo = modulo * 2; }
+    |                                     ^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExpPow2_Add_Mul_impl.rs:195:37
+    |
+195 |         if sz[iz] == '1' { modulo = modulo * 2 + 1; } else { modulo = modulo * 2; }
+    |                                     ^^^^^^^^^^^^^^
+
+error: possible division by zero
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExpPow2_Add_Mul_impl.rs:213:22
+    |
+213 |         result_val = 1 % modulo;
+    |                      ^^^^^^^^^^
+
+error: possible division by zero
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExpPow2_Add_Mul_impl.rs:216:29
+    |
+216 |         let mut cur: u128 = base % modulo;
+    |                             ^^^^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExpPow2_Add_Mul_impl.rs:223:19
+    |
+223 |             cur = (cur * cur) % modulo;
+    |                   ^^^^^^^^^^^
+
+error: possible division by zero
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExpPow2_Add_Mul_impl.rs:223:19
+    |
+223 |             cur = (cur * cur) % modulo;
+    |                   ^^^^^^^^^^^^^^^^^^^^
+
+error: precondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExpPow2_Add_Mul_impl.rs:256:18
+    |
+256 |         res.push(rev[rlen - 1 - k]);
+    |                  ^^^^^^^^^^^^^^^^^
+    |
+   ::: /Users/sergiu.bursuc/verus/vstd/std_specs/vec.rs:48:9
+    |
+48  |         i < vec.view().len(),
+    |         -------------------- failed precondition
+
+error: aborting due to 29 previous errors
+
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+verification results:: 7 verified, 13 errors
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExpPow2_Add_Mul_impl.rs:36:5
+   |
+36 |     while i1 < n1
+   |     ^^^^^^^^^^^^^
+
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExpPow2_Add_Mul_impl.rs:47:5
+   |
+47 |     while i2 < n2
+   |     ^^^^^^^^^^^^^
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExpPow2_Add_Mul_impl.rs:24:6
+   |
+24 | exec fn Add(s1: &[char], s2: &[char]) -> (res: Vec<char>)
+   |      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+note: recommendation not met
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExpPow2_Add_Mul_impl.rs:26:33
+   |
+12 |   recommends ValidBitString(s)
+   |              ----------------- recommendation not met
+...
+26 |   ensures ValidBitString(res@), Str2Int(res@) == Str2Int(s1@) + Str2Int(s2@)
+   |                                 ^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExpPow2_Add_Mul_impl.rs:26:33
+   |
+26 |   ensures ValidBitString(res@), Str2Int(res@) == Str2Int(s1@) + Str2Int(s2@)
+   |                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+58 |         return Vec::<char>::new();
+   |         ------------------------- at this exit
+
+error: precondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExpPow2_Add_Mul_impl.rs:41:12
+   |
+41 |         if s1[i1] == '1' { v1 = v1 * 2 + 1; } else { v1 = v1 * 2; }
+   |            ^^^^^^
+   |
+  ::: /Users/sergiu.bursuc/verus/vstd/slice.rs:62:9
+   |
+62 |         0 <= i < slice.view().len(),
+   |         --------------------------- failed precondition
+
+error: possible arithmetic underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExpPow2_Add_Mul_impl.rs:41:33
+   |
+41 |         if s1[i1] == '1' { v1 = v1 * 2 + 1; } else { v1 = v1 * 2; }
+   |                                 ^^^^^^
+
+error: possible arithmetic underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExpPow2_Add_Mul_impl.rs:41:33
+   |
+41 |         if s1[i1] == '1' { v1 = v1 * 2 + 1; } else { v1 = v1 * 2; }
+   |                                 ^^^^^^^^^^
+
+error: precondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExpPow2_Add_Mul_impl.rs:52:12
+   |
+52 |         if s2[i2] == '1' { v2 = v2 * 2 + 1; } else { v2 = v2 * 2; }
+   |            ^^^^^^
+   |
+  ::: /Users/sergiu.bursuc/verus/vstd/slice.rs:62:9
+   |
+62 |         0 <= i < slice.view().len(),
+   |         --------------------------- failed precondition
+
+error: possible arithmetic underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExpPow2_Add_Mul_impl.rs:52:33
+   |
+52 |         if s2[i2] == '1' { v2 = v2 * 2 + 1; } else { v2 = v2 * 2; }
+   |                                 ^^^^^^
+
+error: possible arithmetic underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExpPow2_Add_Mul_impl.rs:52:33
+   |
+52 |         if s2[i2] == '1' { v2 = v2 * 2 + 1; } else { v2 = v2 * 2; }
+   |                                 ^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExpPow2_Add_Mul_impl.rs:56:21
+   |
+56 |     let sum: u128 = v1 + v2;
+   |                     ^^^^^^^
+
+error: precondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExpPow2_Add_Mul_impl.rs:84:18
+   |
+84 |         res.push(rev[rlen - 1 - k]);
+   |                  ^^^^^^^^^^^^^^^^^
+   |
+  ::: /Users/sergiu.bursuc/verus/vstd/std_specs/vec.rs:48:9
+   |
+48 |         i < vec.view().len(),
+   |         -------------------- failed precondition
+
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExpPow2_Add_Mul_impl.rs:105:5
+    |
+105 |     while i1 < n1
+    |     ^^^^^^^^^^^^^
+
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExpPow2_Add_Mul_impl.rs:116:5
+    |
+116 |     while i2 < n2
+    |     ^^^^^^^^^^^^^
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExpPow2_Add_Mul_impl.rs:93:6
+   |
+93 | exec fn Mul(s1: &[char], s2: &[char]) -> (res: Vec<char>)
+   |      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+note: recommendation not met
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExpPow2_Add_Mul_impl.rs:95:33
+   |
+12 |   recommends ValidBitString(s)
+   |              ----------------- recommendation not met
+...
+95 |   ensures ValidBitString(res@), Str2Int(res@) == Str2Int(s1@) * Str2Int(s2@)
+   |                                 ^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExpPow2_Add_Mul_impl.rs:95:33
+    |
+95  |   ensures ValidBitString(res@), Str2Int(res@) == Str2Int(s1@) * Str2Int(s2@)
+    |                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+127 |         return Vec::<char>::new();
+    |         ------------------------- at this exit
+
+error: precondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExpPow2_Add_Mul_impl.rs:110:12
+    |
+110 |         if s1[i1] == '1' { v1 = v1 * 2 + 1; } else { v1 = v1 * 2; }
+    |            ^^^^^^
+    |
+   ::: /Users/sergiu.bursuc/verus/vstd/slice.rs:62:9
+    |
+62  |         0 <= i < slice.view().len(),
+    |         --------------------------- failed precondition
+
+error: possible arithmetic underflow/overflow
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExpPow2_Add_Mul_impl.rs:110:33
+    |
+110 |         if s1[i1] == '1' { v1 = v1 * 2 + 1; } else { v1 = v1 * 2; }
+    |                                 ^^^^^^
+
+error: possible arithmetic underflow/overflow
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExpPow2_Add_Mul_impl.rs:110:33
+    |
+110 |         if s1[i1] == '1' { v1 = v1 * 2 + 1; } else { v1 = v1 * 2; }
+    |                                 ^^^^^^^^^^
+
+error: precondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExpPow2_Add_Mul_impl.rs:121:12
+    |
+121 |         if s2[i2] == '1' { v2 = v2 * 2 + 1; } else { v2 = v2 * 2; }
+    |            ^^^^^^
+    |
+   ::: /Users/sergiu.bursuc/verus/vstd/slice.rs:62:9
+    |
+62  |         0 <= i < slice.view().len(),
+    |         --------------------------- failed precondition
+
+error: possible arithmetic underflow/overflow
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExpPow2_Add_Mul_impl.rs:121:33
+    |
+121 |         if s2[i2] == '1' { v2 = v2 * 2 + 1; } else { v2 = v2 * 2; }
+    |                                 ^^^^^^
+
+error: possible arithmetic underflow/overflow
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExpPow2_Add_Mul_impl.rs:121:33
+    |
+121 |         if s2[i2] == '1' { v2 = v2 * 2 + 1; } else { v2 = v2 * 2; }
+    |                                 ^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExpPow2_Add_Mul_impl.rs:125:22
+    |
+125 |     let prod: u128 = v1 * v2;
+    |                      ^^^^^^^
+
+error: precondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExpPow2_Add_Mul_impl.rs:153:18
+    |
+153 |         res.push(rev[rlen - 1 - k]);
+    |                  ^^^^^^^^^^^^^^^^^
+    |
+   ::: /Users/sergiu.bursuc/verus/vstd/std_specs/vec.rs:48:9
+    |
+48  |         i < vec.view().len(),
+    |         -------------------- failed precondition
+
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExpPow2_Add_Mul_impl.rs:178:5
+    |
+178 |     while ix < n_x
+    |     ^^^^^^^^^^^^^^
+
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExpPow2_Add_Mul_impl.rs:190:5
+    |
+190 |     while iz < n_z
+    |     ^^^^^^^^^^^^^^
+
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExpPow2_Add_Mul_impl.rs:218:9
+    |
+218 |         while i < n_iter
+    |         ^^^^^^^^^^^^^^^^
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExpPow2_Add_Mul_impl.rs:162:6
+    |
+162 | exec fn ModExpPow2(sx: &[char], sy: &[char], n: int, sz: &[char]) -> (res: Vec<char>)
+    |      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+note: recommendation not met
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExpPow2_Add_Mul_impl.rs:169:5
+    |
+12  |   recommends ValidBitString(s)
+    |              ----------------- recommendation not met
+...
+169 |     Str2Int(res@) == Exp_int(Str2Int(sx@), Str2Int(sy@)) % Str2Int(sz@)
+    |     ^^^^^^^^^^^^^
+
+error: precondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExpPow2_Add_Mul_impl.rs:183:12
+    |
+183 |         if sx[ix] == '1' { base = base * 2 + 1; } else { base = base * 2; }
+    |            ^^^^^^
+    |
+   ::: /Users/sergiu.bursuc/verus/vstd/slice.rs:62:9
+    |
+62  |         0 <= i < slice.view().len(),
+    |         --------------------------- failed precondition
+
+error: possible arithmetic underflow/overflow
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExpPow2_Add_Mul_impl.rs:183:35
+    |
+183 |         if sx[ix] == '1' { base = base * 2 + 1; } else { base = base * 2; }
+    |                                   ^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExpPow2_Add_Mul_impl.rs:183:35
+    |
+183 |         if sx[ix] == '1' { base = base * 2 + 1; } else { base = base * 2; }
+    |                                   ^^^^^^^^^^^^
+
+error: precondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExpPow2_Add_Mul_impl.rs:195:12
+    |
+195 |         if sz[iz] == '1' { modulo = modulo * 2 + 1; } else { modulo = modulo * 2; }
+    |            ^^^^^^
+    |
+   ::: /Users/sergiu.bursuc/verus/vstd/slice.rs:62:9
+    |
+62  |         0 <= i < slice.view().len(),
+    |         --------------------------- failed precondition
+
+error: possible arithmetic underflow/overflow
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExpPow2_Add_Mul_impl.rs:195:37
+    |
+195 |         if sz[iz] == '1' { modulo = modulo * 2 + 1; } else { modulo = modulo * 2; }
+    |                                     ^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExpPow2_Add_Mul_impl.rs:195:37
+    |
+195 |         if sz[iz] == '1' { modulo = modulo * 2 + 1; } else { modulo = modulo * 2; }
+    |                                     ^^^^^^^^^^^^^^
+
+error: possible division by zero
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExpPow2_Add_Mul_impl.rs:213:22
+    |
+213 |         result_val = 1 % modulo;
+    |                      ^^^^^^^^^^
+
+error: possible division by zero
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExpPow2_Add_Mul_impl.rs:216:29
+    |
+216 |         let mut cur: u128 = base % modulo;
+    |                             ^^^^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExpPow2_Add_Mul_impl.rs:223:19
+    |
+223 |             cur = (cur * cur) % modulo;
+    |                   ^^^^^^^^^^^
+
+error: possible division by zero
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExpPow2_Add_Mul_impl.rs:223:19
+    |
+223 |             cur = (cur * cur) % modulo;
+    |                   ^^^^^^^^^^^^^^^^^^^^
+
+error: precondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gpt-mini_15-09_18h47/bignum_ModExpPow2_Add_Mul_impl.rs:256:18
+    |
+256 |         res.push(rev[rlen - 1 - k]);
+    |                  ^^^^^^^^^^^^^^^^^
+    |
+   ::: /Users/sergiu.bursuc/verus/vstd/std_specs/vec.rs:48:9
+    |
+48  |         i < vec.view().len(),
+    |         -------------------- failed precondition
+
+error: aborting due to 29 previous errors
+

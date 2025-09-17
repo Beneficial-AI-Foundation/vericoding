@@ -5,16 +5,16 @@ vc-preamble: |-
   use vstd::prelude::*;
 
   verus! {
-
-vc-helpers: |-
   spec fn transform_element(x: int) -> int {
       if x % 2 == 0 { x - 1 } else { x }
   }
-  
+
   spec fn valid_transformation(input: Seq<int>, output: Seq<int>) -> bool {
       output.len() == input.len() &&
       forall|i: int| 0 <= i < input.len() ==> output[i] == transform_element(input[i])
   }
+
+vc-helpers: |
 
 vc-spec: |-
   fn solve(a: Seq<int>) -> (result: Seq<int>)
@@ -26,7 +26,7 @@ vc-code: |-
       unreached()
   }
 
-vc-postamble: |-
+vc-postamble: |2-
 
   }
 

@@ -1,0 +1,32 @@
+=== Raw LLM Generate Response ===
+Length: 1538 characters
+--------------------------------------------------------------------------------
+```json
+["proof fn lemma_mod_mul(a: nat, b: nat, m: nat)
+    requires m > 1
+    ensures (a * b) % m == ((a % m) * (b % m)) % m
+{
+    vstd::arithmetic::logarithm::lemma_pow2_adds(a as int, b as int);
+}
+
+proof fn lemma_mod_exp_rec(x: nat, y_prefix: Seq<char>, last_bit: nat, z: nat)
+    requires
+        z > 1,
+        ValidBitString(y_prefix),
+        last_bit == 0 || last_bit == 1,
+    ensures
+        Exp_int(x, 2 * Str2Int(y_prefix) + last_bit) % z ==
+            ( (Exp_int(x, Str2Int(y_prefix)) % z)
+            * (Exp_int(x, Str2Int(y_prefix)) % z)
+            * (if last_bit == 1 { x } else { 1 })
+            ) % z,
+{
+    let y = 2 * Str2Int(y_prefix) + last_bit;
+    let y_p = Str2Int(y_prefix);
+    let term = Exp_int(x, y_p) % z;
+    lemma_mod_mul(Exp_int(x, y_p), Exp_int(x, y_p), z);
+    if last_bit == 1 {
+        lemma_mod_mul(Exp_int(x, y_p) * Exp_int(x, y_p), x, z);
+    }
+}", "{\n    if sy@.len() == 1 {\n        let x = Str2Int(sx@);\n        let z = Str2Int(sz@);\n        let res_val = if sy@[0] == '1' { x % z } else { 1 };\n\n        proof {\n            assert(ValidBitString(int_to_string(res_val)));\n            assert(Str2Int(int_to_string(res_val)) == res_val);\n        }\n        return int_to_string(res_val);\n    }\n\n    let sy_prefix = sy@.subrange(0, sy.len() as int - 1);\n    let last_bit_char = sy@[sy.len() - 1];\n\n    let h_vec = ModExp_ModExpPow2_Mul_Zeroes(sx, &sy[..sy.len()-1], sz);\n\n    let x = Str2Int(sx@);\n    let z = Str2Int(sz@);\n    let h = Str2Int(h_vec@);\n    let h_sq_mod = (h
+--------------------------------------------------------------------------------

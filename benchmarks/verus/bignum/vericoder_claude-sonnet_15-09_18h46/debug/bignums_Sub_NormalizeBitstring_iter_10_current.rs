@@ -1,0 +1,110 @@
+use vstd::prelude::*;
+
+verus! {
+
+spec fn Str2Int(s: Seq<char>) -> nat
+recommends ValidBitString(s)
+decreases s.len()
+{
+  if s.len() == 0 {
+    0
+  } else {
+    2 * Str2Int(s.subrange(0, s.len() as int - 1))
+      + (if s.index(s.len() as int - 1) == '1' { 1nat } else { 0nat })
+  }
+}
+
+spec fn ValidBitString(s: Seq<char>) -> bool
+{
+  forall |i: int| 0 <= i && i < s.len() as int ==>
+    (s.index(i) == '0' || s.index(i) == '1')
+}
+
+// <vc-helpers>
+/* helper modified by LLM (iteration 10): simplified helper for valid bit string preservation */
+proof fn preserve_valid_bitstring_lemma(s: &[char], end: usize)
+    requires
+        ValidBitString(s@),
+        end <= s.len(),
+    ensures
+        ValidBitString(s@.subrange(0, end as int)),
+{
+    let sub = s@.subrange(0, end as int);
+    assert forall |i: int| 0 <= i && i < sub.len() implies (sub.index(i) == '0' || sub.index(i) == '1') by {
+        if 0 <= i && i < sub.len() {
+            assert(sub.index(i) == s@.index(i));
+        }
+    }
+}
+// </vc-helpers>
+
+// <vc-spec>
+exec fn Bignums_Sub_NormalizeBitstring(s: &[char]) -> (res: Vec<char>)
+  requires ValidBitString(s@)
+  ensures ValidBitString(res@)
+// </vc-spec>
+// <vc-code>
+{
+    /* code modified by LLM (iteration 10): fixed invariant to properly track first_one_pos updates */
+    let mut result = Vec::new();
+    
+    // Find the first '1' from the right
+    let mut first_one_pos = s.len();
+    let mut i = s.len();
+    while i > 0
+        invariant
+            i <= s.len(),
+            first_one_pos <= s.len(),
+            ValidBitString(s@),
+            first_one_pos < s.len() ==> s@.index(first_one_pos as int) == '1',
+            forall |j: int| first_one_pos < j && j < s.len() ==> s@.index(j) == '0',
+            forall |j: int| i <= j && j < s.len() && j != first_one_pos ==> s@.index(j) == '0',
+        decreases i
+    {
+        i = i - 1;
+        if s[i] == '1' {
+            first_one_pos = i;
+        }
+    }
+    
+    if first_one_pos == s.len() {
+        // No '1' found, return "0"
+        result.push('0');
+        proof {
+            assert(result@.len() == 1);
+            assert(result@.index(0) == '0');
+            assert forall |k: int| 0 <= k && k < result@.len() implies (result@.index(k) == '0' || result@.index(k) == '1') by {
+                if 0 <= k && k < result@.len() {
+                    assert(k == 0);
+                }
+            }
+        }
+    } else {
+        // Copy from start to first_one_pos (inclusive)
+        let mut j = 0;
+        while j <= first_one_pos
+            invariant
+                j <= first_one_pos + 1,
+                first_one_pos < s.len(),
+                ValidBitString(s@),
+                ValidBitString(result@),
+                result@.len() == j,
+                forall |k: int| 0 <= k && k < j ==> result@.index(k) == s@.index(k),
+            decreases first_one_pos + 1 - j
+        {
+            proof {
+                assert(j < s.len());
+                assert(ValidBitString(s@));
+                assert(s@.index(j as int) == '0' || s@.index(j as int) == '1');
+            }
+            result.push(s[j]);
+            j = j + 1;
+        }
+    }
+    
+    result
+}
+// </vc-code>
+
+fn main() {}
+}

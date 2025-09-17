@@ -1,0 +1,154 @@
+=== Raw LLM Generate Response ===
+Length: 4585 characters
+--------------------------------------------------------------------------------
+["spec fn SeqToNat(s: Seq<char>) -> nat
+  recommends ValidBitString(s)
+  decreases s.len()
+{
+  if s.len() == 0 {
+    0
+  } else {
+    SeqToNat(s.drop_last()) * 2 + (if s.last() == '1' { 1nat } else { 0nat })
+  }
+}
+
+spec fn add_bit_strings(a: Seq<char>, b: Seq<char>) -> Seq<char>
+  recommends ValidBitString(a), ValidBitString(b)
+  ensures ValidBitString(add_bit_strings(a, b))
+{
+  let a_val = SeqToNat(a);
+  let b_val = SeqToNat(b);
+  let sum_val = a_val + b_val;
+  nat_to_bit_string(sum_val)
+}
+
+spec fn nat_to_bit_string(n: nat) -> Seq<char>
+  ensures ValidBitString(nat_to_bit_string(n))
+  decreases n
+{
+  if n == 0 {
+    seq!['0']
+  } else {
+    let remainder = n % 2;
+    let quotient = n / 2;
+    if quotient == 0 {
+      seq![if remainder == 1 { '1' } else { '0' }]
+    } else {
+      nat_to_bit_string(quotient) + seq![if remainder == 1 { '1' } else { '0' }]
+    }
+  }
+}
+
+spec fn remove_leading_zeroes(s: Seq<char>) -> Seq<char>
+  recommends ValidBitString(s)
+  ensures ValidBitString(remove_leading_zeroes(s))
+{
+  if s.len() <= 1 {
+    s
+  } else if s.index(0) == '0' {
+    remove_leading_zeroes(s.subrange(1, s.len() as int))
+  } else {
+    s
+  }
+}
+
+proof fn lemma_ValidBitString_concat(a: Seq<char>, b: Seq<char>)
+  requires ValidBitString(a), ValidBitString(b)
+  ensures ValidBitString(a + b)
+{
+  if a.len() == 0 {
+    assert(a + b == b);
+  } else if b.len() == 0 {
+    assert(a + b == a);
+  } else {
+    assert forall |i: int| 0 <= i && i < (a + b).len() as int implies
+      ((a + b).index(i) == '0' || (a + b).index(i) == '1') by {
+      if i < a.len() as int {
+        assert(a.index(i) == '0' || a.index(i) == '1');
+      } else {
+        assert(b.index(i - a.len() as int) == '0' || b.index(i - a.len() as int) == '1');
+      }
+    }
+  }
+}
+
+proof fn lemma_SeqToNat_nat_to_bit_string(n: nat)
+  ensures SeqToNat(nat_to_bit_string(n)) == n
+  decreases n
+{
+  if n > 0 {
+    let remainder = n % 2;
+    let quotient = n / 2;
+    if quotient == 0 {
+      assert(nat_to_bit_string(n) == seq![if remainder == 1 { '1' } else { '0' }]);
+    } else {
+      lemma_SeqToNat_nat_to_bit_string(quotient);
+      let bs_quotient = nat_to_bit_string(quotient);
+      let bs_n = nat_to_bit_string(n);
+      assert(bs_n == bs_quotient + seq![if remainder == 1 { '1' } else { '0' }]);
+      assert(SeqToNat(bs_n) == SeqToNat(bs_quotient) * 2 + (if remainder == 1 { 1nat } else { 0nat }));
+      assert(SeqToNat(bs_quotient) == quotient);
+      assert(SeqToNat(bs_n) == quotient * 2 + remainder);
+      assert(quotient * 2 + remainder == n);
+    }
+  } else {
+    assert(nat_to_bit_string(0) == seq!['0']);
+    assert(SeqToNat(seq!['0']) == 0);
+  }
+}
+
+proof fn lemma_remove_leading_zeroes_preserves_value(s: Seq<char>)
+  requires ValidBitString(s)
+  ensures SeqToNat(remove_leading_zeroes(s)) == SeqToNat(s)
+  decreases s.len()
+{
+  if s.len() > 1 && s.index(0) == '0' {
+    assert(SeqToNat(s) == 2 * SeqToNat(s.subrange(1, s.len() as int)));
+    assert(SeqToNat(s.subrange(1, s.len() as int)) == SeqToNat(remove_leading_zeroes(s.subrange(1, s.len() as int))));
+    assert(SeqToNat(remove_leading_zeroes(s)) == SeqToNat(remove_leading_zeroes(s.subrange(1, s.len() as int))));
+    lemma_remove_leading_zeroes_preserves_value(s.subrange(1, s.len() as int));
+    assert(SeqToNat(s) == SeqToNat(remove_leading_zeroes(s)));
+  } else {
+    assert(remove_leading_zeroes(s) == s);
+    assert(SeqToNat(remove_leading_zeroes(s)) == SeqToNat(s));
+  }
+}", "{
+  let a_seq = a@;
+  let b_seq = b@;
+
+  // Add the bit strings
+  let sum_val;
+  proof {
+    lemma_SeqToNat_nat_to_bit_string(SeqToNat(a_seq));
+    lemma_SeqToNat_nat_to_bit_string(SeqToNat(b_seq));
+    sum_val = SeqToNat(a_seq) + SeqToNat(b_seq);
+  }
+
+  let mut result_seq = nat_to_bit_string(sum_val);
+  proof {
+    assert(ValidBitString(result_seq));
+  }
+  
+  // Remove leading zeroes, unless the result is just '0'
+  let mut i = 0;
+  let mut final_result_seq = result_seq;
+
+  while i < final_result_seq.len() as int - 1 && final_result_seq.index(0) == '0'
+    invariant
+      final_result_seq.len() >= 1,
+      ValidBitString(final_result_seq),
+      i <= final_result_seq.len() as int - 1,
+      SeqToNat(result_seq) == SeqToNat(nat_to_bit_string(SeqToNat(final_result_seq)))
+    decreases final_result_seq.len() - (i + 1)
+  {
+    final_result_seq = final_result_seq.subrange(1, final_result_seq.len() as int);
+    proof {
+      lemma_remove_leading_zeroes_preserves_value(result_seq);
+      assert(ValidBitString(final_result_seq));
+      assert(SeqToNat(result_seq) == SeqToNat(final_result_seq));
+    }
+  }
+
+  final_result_seq.to_vec()
+}"]
+--------------------------------------------------------------------------------

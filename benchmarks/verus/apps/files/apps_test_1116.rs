@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn gcd(a: int, b: int) -> int
   recommends a > 0 && b >= 0
   decreases b
@@ -31,6 +28,9 @@ spec fn can_avoid_consecutive(r: int, b: int, k: int) -> bool
 {
   max_consecutive_same_color(r, b) < k
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

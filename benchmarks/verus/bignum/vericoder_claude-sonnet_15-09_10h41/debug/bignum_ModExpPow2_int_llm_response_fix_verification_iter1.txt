@@ -1,0 +1,13 @@
+=== LLM Response - fix_verification - Iteration 1 ===
+File: benchmarks/verus/bignum/files/bignum_ModExpPow2_int.rs
+Prompt Hash: 634de8d5
+JSON Parsed Successfully: True
+Timestamp: 1757926594.873492
+Content Length: 874 chars
+--------------------------------------------------------------------------------
+[
+"/* helper modified by LLM (iteration 2): fixed lemma syntax by removing 'lemma' keyword */\nspec fn pow_mod(base: nat, exp: nat, modulus: nat) -> nat\n    requires modulus > 0\n{\n    Exp_int(base, exp) % modulus\n}\n\nproof fn lemma_exp_double(x: nat, n: nat)\n    ensures Exp_int(x, 2 * n) == Exp_int(Exp_int(x, n), 2)\n{\n    if n == 0 {\n    } else {\n        lemma_exp_double(x, n - 1);\n    }\n}\n\nproof fn lemma_mod_mul(a: nat, b: nat, m: nat)\n    requires m > 0\n    ensures (a * b) % m == ((a % m) * (b % m)) % m\n{\n}",
+
+"/* code modified by LLM (iteration 2): fixed logic to properly handle power-of-2 exponentiation */\n{\n    if n == 0 {\n        return 1u64;\n    } else {\n        let half_exp = ModExpPow2_int(x, y / 2, n - 1, z);\n        let result = ((half_exp as u128) * (half_exp as u128)) % (z as u128);\n        return result as u64;\n    }\n}"
+]
+--------------------------------------------------------------------------------

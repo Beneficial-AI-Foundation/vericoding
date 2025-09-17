@@ -1,0 +1,104 @@
+=== Verification Error - Iteration 10 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExpPow2_int.rs
+Time: 2025-09-15 20:50:04
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Verification failed: verification results:: 5 verified, 3 errors
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini_15-09_18h46/bignum_ModExpPow2_int_impl.rs:27:9
+   |
+27 |           Exp_int(x, y1 + y2) == Exp_int(x, y1) * Exp_int(x, y2)
+   |           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+30 | /     if y1 > 0 {
+31 | |         lemma_exp_plus(x, (y1 - 1) as nat, y2);
+32 | |         vstd::arithmetic::mul::lemma_mul_is_associative(x as int, Exp_int(x, (y1 - 1) as nat) as int, Exp_int(x, y2) as int);
+33 | |         assert(Exp_int(x, y1) == x * Exp_int(x, (y1-1) as nat));
+34 | |         assert(Exp_int(x, y1+y2) == x * Exp_int(x, (y1+y2-1) as nat));
+35 | |     }
+   | |_____- at the end of the function body
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini_15-09_18h46/bignum_ModExpPow2_int_impl.rs:49:6
+   |
+49 | exec fn ModExpPow2_int(x: u64, y: u64, n: u64, z: u64) -> (res: u64)
+   |      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: assertion failed
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini_15-09_18h46/bignum_ModExpPow2_int_impl.rs:62:20
+   |
+62 |             assert(Exp_int(x as nat, 1) == x as nat);
+   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ assertion failed
+
+error: possible arithmetic underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini_15-09_18h46/bignum_ModExpPow2_int_impl.rs:78:23
+   |
+78 |         let res_128 = (t_128 * t_128) % z_128;
+   |                       ^^^^^^^^^^^^^^^
+
+error: assertion failed
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini_15-09_18h46/bignum_ModExpPow2_int_impl.rs:95:20
+   |
+95 |             assert((A * A) % z_nat == ((A % z_nat) * (A % z_nat)) % z_nat) by(nonlinear_arith);
+   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ assertion failed
+
+error: assertion failed
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini_15-09_18h46/bignum_ModExpPow2_int_impl.rs:99:20
+   |
+99 |             assert((res as nat) == ((t as nat) * (t as nat)) % z_nat);
+   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ assertion failed
+
+error: aborting due to 5 previous errors
+
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+verification results:: 5 verified, 3 errors
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini_15-09_18h46/bignum_ModExpPow2_int_impl.rs:27:9
+   |
+27 |           Exp_int(x, y1 + y2) == Exp_int(x, y1) * Exp_int(x, y2)
+   |           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+30 | /     if y1 > 0 {
+31 | |         lemma_exp_plus(x, (y1 - 1) as nat, y2);
+32 | |         vstd::arithmetic::mul::lemma_mul_is_associative(x as int, Exp_int(x, (y1 - 1) as nat) as int, Exp_int(x, y2) as int);
+33 | |         assert(Exp_int(x, y1) == x * Exp_int(x, (y1-1) as nat));
+34 | |         assert(Exp_int(x, y1+y2) == x * Exp_int(x, (y1+y2-1) as nat));
+35 | |     }
+   | |_____- at the end of the function body
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini_15-09_18h46/bignum_ModExpPow2_int_impl.rs:49:6
+   |
+49 | exec fn ModExpPow2_int(x: u64, y: u64, n: u64, z: u64) -> (res: u64)
+   |      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: assertion failed
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini_15-09_18h46/bignum_ModExpPow2_int_impl.rs:62:20
+   |
+62 |             assert(Exp_int(x as nat, 1) == x as nat);
+   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ assertion failed
+
+error: possible arithmetic underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini_15-09_18h46/bignum_ModExpPow2_int_impl.rs:78:23
+   |
+78 |         let res_128 = (t_128 * t_128) % z_128;
+   |                       ^^^^^^^^^^^^^^^
+
+error: assertion failed
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini_15-09_18h46/bignum_ModExpPow2_int_impl.rs:95:20
+   |
+95 |             assert((A * A) % z_nat == ((A % z_nat) * (A % z_nat)) % z_nat) by(nonlinear_arith);
+   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ assertion failed
+
+error: assertion failed
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini_15-09_18h46/bignum_ModExpPow2_int_impl.rs:99:20
+   |
+99 |             assert((res as nat) == ((t as nat) * (t as nat)) % z_nat);
+   |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ assertion failed
+
+error: aborting due to 5 previous errors
+

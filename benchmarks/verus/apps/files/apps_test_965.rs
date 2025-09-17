@@ -2,19 +2,29 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
 
-// <vc-helpers>
 spec fn valid_input(n: int, statuses: Seq<char>) -> bool {
     n >= 2 && statuses.len() == n && 
-    forall|i: int| 0 <= i < statuses.len() ==> {
-        let c = statuses[i];
-        c == 'A' || c == 'I' || c == 'F'
-    }
+    forall|i: int| 0 <= i < statuses.len() ==> (statuses[i] == 'A' || statuses[i] == 'I' || statuses[i] == 'F')
 }
 
 spec fn count_status(statuses: Seq<char>, status: char) -> int {
-    statuses.filter(|c: char| c == status).len() as int
+    seq_count(statuses, status)
+}
+
+spec fn seq_count(s: Seq<char>, target: char) -> int
+    decreases s.len()
+{
+    if s.len() == 0 {
+        0
+    } else {
+        let rest_count = seq_count(s.drop_first(), target);
+        if s[0] == target {
+            rest_count + 1
+        } else {
+            rest_count
+        }
+    }
 }
 
 spec fn expected_result(statuses: Seq<char>) -> int {
@@ -24,6 +34,9 @@ spec fn expected_result(statuses: Seq<char>) -> int {
     else if cnt_i == 1 { 1 }
     else { 0 }
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>
@@ -33,8 +46,10 @@ fn solve(n: int, statuses: Seq<char>) -> (result: int)
 // </vc-spec>
 // <vc-code>
 {
+    // impl-start
     assume(false);
-    0 as int
+    unreached()
+    // impl-end
 }
 // </vc-code>
 

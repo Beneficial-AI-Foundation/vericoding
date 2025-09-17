@@ -15,23 +15,14 @@ vc-preamble: |-
   }
   
   spec fn count_kingdom_transitions(s: Seq<char>) -> int {
-      requires(forall|i: int| 0 <= i < s.len() ==> s[i] == 'U' || s[i] == 'R');
-      ensures(|result: int| result >= 0);
-      ensures(|result: int| result <= s.len());
-      
-      if s.len() == 0 { 0int }
+      if s.len() == 0 { 0 }
       else { count_transitions_helper(s, 0, 0, 0, -1) }
   }
   
-  spec fn count_transitions_helper(s: Seq<char>, pos: int, x: int, y: int, pred: int) -> int {
-      requires(0 <= pos <= s.len());
-      requires(forall|i: int| 0 <= i < s.len() ==> s[i] == 'U' || s[i] == 'R');
-      requires(pred == -1 || pred == 0 || pred == 1);
-      ensures(|result: int| result >= 0);
-      ensures(|result: int| result <= s.len() - pos);
-      decreases(s.len() - pos);
-      
-      if pos == s.len() { 0int }
+  spec fn count_transitions_helper(s: Seq<char>, pos: int, x: int, y: int, pred: int) -> int
+      decreases s.len() - pos
+  {
+      if pos == s.len() { 0 }
       else {
           let new_x = if s[pos] == 'U' { x } else { x + 1 };
           let new_y = if s[pos] == 'U' { y + 1 } else { y };
@@ -39,8 +30,8 @@ vc-preamble: |-
           if new_x == new_y {
               count_transitions_helper(s, pos + 1, new_x, new_y, pred)
           } else {
-              let cur = if new_x > new_y { 0int } else { 1int };
-              let transition: int = if cur != pred && pred != -1 { 1int } else { 0int };
+              let cur = if new_x > new_y { 0 } else { 1 };
+              let transition: int = if cur != pred && pred != -1 { 1 } else { 0 };
               transition + count_transitions_helper(s, pos + 1, new_x, new_y, cur)
           }
       }
@@ -50,18 +41,20 @@ vc-helpers: |-
 
 vc-spec: |-
   fn solve(n: int, s: Seq<char>) -> (result: int)
-      requires
-          valid_input(n, s),
-      ensures
+      requires 
+          valid_input(n, s)
+      ensures 
           result >= 0,
           result <= n,
           n == 0 ==> result == 0,
-          result == count_kingdom_transitions(s),
+          result == count_kingdom_transitions(s)
 
 vc-code: |-
   {
+      // impl-start
       assume(false);
-      0int
+      unreached()
+      // impl-end
   }
 
 vc-postamble: |-

@@ -6,8 +6,6 @@ vc-preamble: |-
   use vstd::prelude::*;
 
   verus! {
-
-vc-helpers: |-
   spec fn max_prefix(s: Seq<int>, i: int) -> int
       recommends 0 <= i < s.len()
       decreases i
@@ -16,7 +14,7 @@ vc-helpers: |-
       else if s[i] > max_prefix(s, i-1) { s[i] }
       else { max_prefix(s, i-1) }
   }
-  
+
   spec fn max_seq(s: Seq<int>) -> int
       recommends s.len() > 0
       decreases s.len()
@@ -25,7 +23,7 @@ vc-helpers: |-
       else if s[s.len()-1] > max_seq(s.subrange(0, s.len()-1)) { s[s.len()-1] }
       else { max_seq(s.subrange(0, s.len()-1)) }
   }
-  
+
   spec fn max_expression(n: int, p: int, q: int, r: int, a: Seq<int>) -> int
       recommends n > 0 && a.len() == n
   {
@@ -34,11 +32,13 @@ vc-helpers: |-
       let s3 = Seq::new(n as nat, |i: int| max_prefix(s2, i) + a[i] * r);
       max_seq(s3)
   }
-  
+
   spec fn valid_input(n: int, a: Seq<int>) -> bool
   {
       n > 0 && a.len() == n
   }
+
+vc-helpers: |
 
 vc-spec: |-
   fn solve(n: int, p: int, q: int, r: int, a: Seq<int>) -> (result: int)
@@ -51,7 +51,7 @@ vc-code: |-
       unreached()
   }
 
-vc-postamble: |-
+vc-postamble: |2-
 
   }
 

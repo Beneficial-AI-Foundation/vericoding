@@ -1,0 +1,26 @@
+=== Verification Error - Iteration 2 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_Compare.rs
+Time: 2025-09-15 20:21:47
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Verification failed: error: recursive function must have a decreases clause
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignum_Compare_impl.rs:26:7
+   |
+26 | proof fn Str2Int_monotonic(s1: Seq<char>, s2: Seq<char>)
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: aborting due to 1 previous error
+
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+error: recursive function must have a decreases clause
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_glm_15-09_18h46/bignum_Compare_impl.rs:26:7
+   |
+26 | proof fn Str2Int_monotonic(s1: Seq<char>, s2: Seq<char>)
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: aborting due to 1 previous error
+

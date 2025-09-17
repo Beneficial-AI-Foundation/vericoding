@@ -1,0 +1,9 @@
+=== LLM Response - generate_code - Iteration 0 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExp_DivMod.rs
+Prompt Hash: 7242169e
+JSON Parsed Successfully: True
+Timestamp: 1757839174.237922
+Content Length: 1430 chars
+--------------------------------------------------------------------------------
+["spec fn ModExp_DivMod_spec(x: nat, y: nat, z: nat) -> nat {\n    Exp_int(x, y) % z\n}", "{\n    let x_int = Str2Int(sx@);\n    let y_int = Str2Int(sy@);\n    let z_int = Str2Int(sz@);\n\n    if sy@.len() == 1 && sy@[0] == '0' {\n        // y is 0, x^0 mod z = 1 mod z\n        if z_int > 1 {\n            return Util::int_to_str(1 % z_int);\n        } else {\n             // This case is excluded by the preconditions (z_int > 1)\n             panic(\"z_int must be greater than 1\");\n        }\n    }\n\n    let mut result_vec: Vec<char>;\n    if y_int == 0 {\n        result_vec = Util::int_to_str(1 % z_int);\n    } else if y_int == 1 {\n        result_vec = Util::int_to_str(x_int % z_int);\n    } else if y_int % 2 == 0 {\n        // y is even\n        let y_half = y_int / 2;\n        let half_exp_str = ModExp_DivMod(sx, Util::int_to_str(y_half).as_slice(), sz);\n        let half_exp_int = Str2Int(half_exp_str@);\n        let square_val = (half_exp_int * half_exp_int) % z_int;\n        result_vec = Util::int_to_str(square_val);\n    } else {\n        // y is odd\n        let y_minus_1 = y_int - 1;\n        let term1_str = ModExp_DivMod(sx, Util::int_to_str(y_minus_1).as_slice(), sz);\n        let term1_int = Str2Int(term1_str@);\n        let term2_int = x_int % z_int;\n        let product_val = (term1_int * term2_int) % z_int;\n        result_vec = Util::int_to_str(product_val);\n    }\n\n    result_vec\n}"]
+--------------------------------------------------------------------------------

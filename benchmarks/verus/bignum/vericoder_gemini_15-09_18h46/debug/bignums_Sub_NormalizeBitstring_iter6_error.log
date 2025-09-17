@@ -1,0 +1,64 @@
+=== Verification Error - Iteration 6 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignums_Sub_NormalizeBitstring.rs
+Time: 2025-09-15 19:10:18
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Verification failed: verification results:: 4 verified, 3 errors
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini_15-09_18h46/bignums_Sub_NormalizeBitstring_impl.rs:29:9
+   |
+25 | proof fn lemma_Str2Int_of_zero_prefixed(s: Seq<char>)
+   |       ----------------------------------------------- at the end of the function body
+...
+29 |         Str2Int(seq!['0'] + s) == Str2Int(s),
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini_15-09_18h46/bignums_Sub_NormalizeBitstring_impl.rs:41:9
+   |
+35 | proof fn lemma_remove_leading_zeros(s: Seq<char>, k: nat)
+   |       --------------------------------------------------- at the end of the function body
+...
+41 |         Str2Int(s) == Str2Int(s.subrange(k as int, s.len() as int)),
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+
+error: assertion failed
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini_15-09_18h46/bignums_Sub_NormalizeBitstring_impl.rs:72:16
+   |
+72 |         assert(Str2Int(res@) == Str2Int(s@));
+   |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^ assertion failed
+
+error: aborting due to 3 previous errors
+
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+verification results:: 4 verified, 3 errors
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini_15-09_18h46/bignums_Sub_NormalizeBitstring_impl.rs:29:9
+   |
+25 | proof fn lemma_Str2Int_of_zero_prefixed(s: Seq<char>)
+   |       ----------------------------------------------- at the end of the function body
+...
+29 |         Str2Int(seq!['0'] + s) == Str2Int(s),
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini_15-09_18h46/bignums_Sub_NormalizeBitstring_impl.rs:41:9
+   |
+35 | proof fn lemma_remove_leading_zeros(s: Seq<char>, k: nat)
+   |       --------------------------------------------------- at the end of the function body
+...
+41 |         Str2Int(s) == Str2Int(s.subrange(k as int, s.len() as int)),
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+
+error: assertion failed
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini_15-09_18h46/bignums_Sub_NormalizeBitstring_impl.rs:72:16
+   |
+72 |         assert(Str2Int(res@) == Str2Int(s@));
+   |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^ assertion failed
+
+error: aborting due to 3 previous errors
+

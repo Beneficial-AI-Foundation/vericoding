@@ -1,0 +1,102 @@
+=== Verification Error - Iteration 2 ===
+File: benchmarks/verus/bignum/files/bignum_ModExp_Add_DivMod_ModExpPow2_Zeroes.rs
+Time: 2025-09-15 10:57:09
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Verification failed: verification results:: 3 verified, 2 errors
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_10h41/bignum_ModExp_Add_DivMod_ModExpPow2_Zeroes_impl.rs:56:5
+   |
+56 | /     for i in 0..max_len {
+57 | |         let a_digit = if i < a_len { if a[i] == '1' { 1 } else { 0 } } else { 0 };
+58 | |         let b_digit = if i < b_len { if b[i] == '1' { 1 } else { 0 } } else { 0 };
+59 | |         let sum = a_digit + b_digit + carry;
+...  |
+67 | |         carry = sum / 2;
+68 | |     }
+   | |_____^
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_10h41/bignum_ModExp_Add_DivMod_ModExpPow2_Zeroes_impl.rs:39:11
+   |
+39 |   ensures ValidBitString(res@)
+   |           ^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+74 |     res
+   |     --- at the end of the function body
+
+error: precondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_10h41/bignum_ModExp_Add_DivMod_ModExpPow2_Zeroes_impl.rs:57:41
+   |
+57 |         let a_digit = if i < a_len { if a[i] == '1' { 1 } else { 0 } } else { 0 };
+   |                                         ^^^^
+   |
+  ::: /Users/sergiu.bursuc/verus/vstd/slice.rs:62:14
+   |
+62 |         0 <= i < slice.view().len(),
+   |              - failed precondition
+
+error: precondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_10h41/bignum_ModExp_Add_DivMod_ModExpPow2_Zeroes_impl.rs:58:41
+   |
+58 |         let b_digit = if i < b_len { if b[i] == '1' { 1 } else { 0 } } else { 0 };
+   |                                         ^^^^
+   |
+  ::: /Users/sergiu.bursuc/verus/vstd/slice.rs:62:14
+   |
+62 |         0 <= i < slice.view().len(),
+   |              - failed precondition
+
+error: aborting due to 3 previous errors
+
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+verification results:: 3 verified, 2 errors
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_10h41/bignum_ModExp_Add_DivMod_ModExpPow2_Zeroes_impl.rs:56:5
+   |
+56 | /     for i in 0..max_len {
+57 | |         let a_digit = if i < a_len { if a[i] == '1' { 1 } else { 0 } } else { 0 };
+58 | |         let b_digit = if i < b_len { if b[i] == '1' { 1 } else { 0 } } else { 0 };
+59 | |         let sum = a_digit + b_digit + carry;
+...  |
+67 | |         carry = sum / 2;
+68 | |     }
+   | |_____^
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_10h41/bignum_ModExp_Add_DivMod_ModExpPow2_Zeroes_impl.rs:39:11
+   |
+39 |   ensures ValidBitString(res@)
+   |           ^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+74 |     res
+   |     --- at the end of the function body
+
+error: precondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_10h41/bignum_ModExp_Add_DivMod_ModExpPow2_Zeroes_impl.rs:57:41
+   |
+57 |         let a_digit = if i < a_len { if a[i] == '1' { 1 } else { 0 } } else { 0 };
+   |                                         ^^^^
+   |
+  ::: /Users/sergiu.bursuc/verus/vstd/slice.rs:62:14
+   |
+62 |         0 <= i < slice.view().len(),
+   |              - failed precondition
+
+error: precondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_deepseek_15-09_10h41/bignum_ModExp_Add_DivMod_ModExpPow2_Zeroes_impl.rs:58:41
+   |
+58 |         let b_digit = if i < b_len { if b[i] == '1' { 1 } else { 0 } } else { 0 };
+   |                                         ^^^^
+   |
+  ::: /Users/sergiu.bursuc/verus/vstd/slice.rs:62:14
+   |
+62 |         0 <= i < slice.view().len(),
+   |              - failed precondition
+
+error: aborting due to 3 previous errors
+

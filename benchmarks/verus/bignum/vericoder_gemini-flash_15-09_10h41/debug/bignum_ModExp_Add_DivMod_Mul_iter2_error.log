@@ -1,0 +1,100 @@
+=== Verification Error - Iteration 2 ===
+File: benchmarks/verus/bignum/files/bignum_ModExp_Add_DivMod_Mul.rs
+Time: 2025-09-15 10:44:07
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_ModExp_Add_DivMod_Mul_impl.rs:40:22
+   |
+40 |   let max_len: int = max_len_usize as int;
+   |                      ^^^^^^^^^^^^^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_ModExp_Add_DivMod_Mul_impl.rs:50:25
+   |
+50 |     let digit1 = if i < s1_vec.len() as int && (s1_vec.index(i as usize) == '1') { 1 } else { 0 };
+   |                         ^^^^^^^^^^^^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_ModExp_Add_DivMod_Mul_impl.rs:51:25
+   |
+51 |     let digit2 = if i < s2_vec.len() as int && (s2_vec.index(i as usize) == '1') { 1 } else { 0 };
+   |                         ^^^^^^^^^^^^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_ModExp_Add_DivMod_Mul_impl.rs:55:13
+   |
+55 |     carry = (sum / 2) as nat;
+   |             ^^^^^^^^^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_ModExp_Add_DivMod_Mul_impl.rs:204:25
+    |
+204 |       current_exp_val = (current_exp_val / 2) as nat;
+    |                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error[E0425]: cannot find function, tuple struct or tuple variant `Str2BitString` in this scope
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_ModExp_Add_DivMod_Mul_impl.rs:117:15
+    |
+117 |   let q_str = Str2BitString(dividend_val / divisor_val);
+    |               ^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function, tuple struct or tuple variant `Str2BitString` in this scope
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_ModExp_Add_DivMod_Mul_impl.rs:118:15
+    |
+118 |   let r_str = Str2BitString(dividend_val % divisor_val);
+    |               ^^^^^^^^^^^^^ not found in this scope
+
+error: aborting due to 7 previous errors
+
+For more information about this error, try `rustc --explain E0425`.
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_ModExp_Add_DivMod_Mul_impl.rs:40:22
+   |
+40 |   let max_len: int = max_len_usize as int;
+   |                      ^^^^^^^^^^^^^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_ModExp_Add_DivMod_Mul_impl.rs:50:25
+   |
+50 |     let digit1 = if i < s1_vec.len() as int && (s1_vec.index(i as usize) == '1') { 1 } else { 0 };
+   |                         ^^^^^^^^^^^^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_ModExp_Add_DivMod_Mul_impl.rs:51:25
+   |
+51 |     let digit2 = if i < s2_vec.len() as int && (s2_vec.index(i as usize) == '1') { 1 } else { 0 };
+   |                         ^^^^^^^^^^^^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_ModExp_Add_DivMod_Mul_impl.rs:55:13
+   |
+55 |     carry = (sum / 2) as nat;
+   |             ^^^^^^^^^^^^^^^^
+
+error: The Verus types 'nat' and 'int' can only be used in ghost code (e.g., in a 'spec' or 'proof' function, inside a 'proof' block, or when assigning to a 'ghost' or 'tracked' variable)
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_ModExp_Add_DivMod_Mul_impl.rs:204:25
+    |
+204 |       current_exp_val = (current_exp_val / 2) as nat;
+    |                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error[E0425]: cannot find function, tuple struct or tuple variant `Str2BitString` in this scope
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_ModExp_Add_DivMod_Mul_impl.rs:117:15
+    |
+117 |   let q_str = Str2BitString(dividend_val / divisor_val);
+    |               ^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function, tuple struct or tuple variant `Str2BitString` in this scope
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_gemini-flash_15-09_10h41/bignum_ModExp_Add_DivMod_Mul_impl.rs:118:15
+    |
+118 |   let r_str = Str2BitString(dividend_val % divisor_val);
+    |               ^^^^^^^^^^^^^ not found in this scope
+
+error: aborting due to 7 previous errors
+
+For more information about this error, try `rustc --explain E0425`.

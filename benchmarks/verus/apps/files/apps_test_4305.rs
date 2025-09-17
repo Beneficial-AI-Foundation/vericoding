@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(h: int, a: int) -> bool {
     h >= 1 && a >= 1
 }
@@ -20,6 +17,9 @@ spec fn ceil_div(h: int, a: int) -> int
 {
     (h + a - 1) / a
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

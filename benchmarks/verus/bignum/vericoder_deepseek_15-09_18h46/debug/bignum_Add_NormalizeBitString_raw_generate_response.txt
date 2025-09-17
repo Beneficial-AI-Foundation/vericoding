@@ -1,0 +1,5 @@
+=== Raw LLM Generate Response ===
+Length: 291 characters
+--------------------------------------------------------------------------------
+["fn min(a: int, b: int) -> int { if a < b { a } else { b } }", "{\n    let mut t = s.to_vec();\n    while t.len() > 1 && t[0] == '0' {\n        t.remove(0);\n    }\n    t\n}", "{\n    let n1 = Str2Int(s1@);\n    let n2 = Str2Int(s2@);\n    let sum = n1 + n2;\n    to_binary_string(sum)\n}"]
+--------------------------------------------------------------------------------

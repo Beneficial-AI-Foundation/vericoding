@@ -1,0 +1,52 @@
+=== Verification Error - Iteration 1 ===
+File: benchmarks/verus/bignum/files/bignum_ModExp_Add_DivMod_Zeroes.rs
+Time: 2025-09-15 10:54:08
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: error[E0425]: cannot find value `result` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_10h42/bignum_ModExp_Add_DivMod_Zeroes_impl.rs:28:9
+   |
+28 |         result == Str2Int(s@) as int,
+   |         ^^^^^^ not found in this scope
+
+error[E0425]: cannot find value `result` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_10h42/bignum_ModExp_Add_DivMod_Zeroes_impl.rs:69:24
+   |
+69 |         ValidBitString(result@),
+   |                        ^^^^^^ not found in this scope
+
+error[E0425]: cannot find value `result` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_10h42/bignum_ModExp_Add_DivMod_Zeroes_impl.rs:70:17
+   |
+70 |         Str2Int(result@) == x as nat,
+   |                 ^^^^^^ not found in this scope
+
+error: aborting due to 3 previous errors
+
+For more information about this error, try `rustc --explain E0425`.
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+error[E0425]: cannot find value `result` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_10h42/bignum_ModExp_Add_DivMod_Zeroes_impl.rs:28:9
+   |
+28 |         result == Str2Int(s@) as int,
+   |         ^^^^^^ not found in this scope
+
+error[E0425]: cannot find value `result` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_10h42/bignum_ModExp_Add_DivMod_Zeroes_impl.rs:69:24
+   |
+69 |         ValidBitString(result@),
+   |                        ^^^^^^ not found in this scope
+
+error[E0425]: cannot find value `result` in this scope
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_grok-code_15-09_10h42/bignum_ModExp_Add_DivMod_Zeroes_impl.rs:70:17
+   |
+70 |         Str2Int(result@) == x as nat,
+   |                 ^^^^^^ not found in this scope
+
+error: aborting due to 3 previous errors
+
+For more information about this error, try `rustc --explain E0425`.

@@ -1,0 +1,286 @@
+=== Verification Error - Iteration 5 ===
+File: benchmarks/verus/bignum/files/bignum_ModExp_DivMod_ModExpPow2.rs
+Time: 2025-09-15 10:50:20
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Verification failed: verification results:: 6 verified, 7 errors
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_DivMod_ModExpPow2_impl.rs:42:13
+   |
+38 | proof fn lemma_modexp_recursive(x: nat, y: nat, z: nat)
+   |       ------------------------------------------------- at the end of the function body
+...
+42 |     ensures Exp_int(x, y) % z == ((x % z) * (Exp_int(x, (y - 1) as nat) % z)) % z
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_DivMod_ModExpPow2_impl.rs:55:5
+   |
+55 |     while i < s.len()
+   |     ^^^^^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_DivMod_ModExpPow2_impl.rs:50:13
+   |
+50 |     ensures res as nat == Str2Int(s@)
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+69 |     result
+   |     ------ at the end of the function body
+
+error: invariant not satisfied at end of loop body
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_DivMod_ModExpPow2_impl.rs:58:13
+   |
+58 |             result as nat == Str2Int(s@.subrange(0, i as int)),
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+note: recommendation not met
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_DivMod_ModExpPow2_impl.rs:58:30
+   |
+12 | recommends ValidBitString(s)
+   |            ----------------- recommendation not met
+...
+58 |             result as nat == Str2Int(s@.subrange(0, i as int)),
+   |                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_DivMod_ModExpPow2_impl.rs:62:18
+   |
+62 |         result = result * 2;
+   |                  ^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_DivMod_ModExpPow2_impl.rs:64:22
+   |
+64 |             result = result + 1;
+   |                      ^^^^^^^^^^
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_DivMod_ModExpPow2_impl.rs:72:6
+   |
+72 | exec fn int_to_str(n: u64) -> (res: Vec<char>)
+   |      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_DivMod_ModExpPow2_impl.rs:75:9
+    |
+75  |         Str2Int(res@) == n as nat
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+111 |     result
+    |     ------ at the end of the function body
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_DivMod_ModExpPow2_impl.rs:75:9
+   |
+75 |         Str2Int(res@) == n as nat
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+82 |         return result;
+   |         ------------- at this exit
+
+error: invariant not satisfied at end of loop body
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_DivMod_ModExpPow2_impl.rs:103:13
+    |
+103 |             ValidBitString(result@),
+    |             ^^^^^^^^^^^^^^^^^^^^^^^
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_DivMod_ModExpPow2_impl.rs:114:6
+    |
+114 | exec fn modexp_exec(base: u64, exp: u64, modulus: u64) -> (res: u64)
+    |      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_DivMod_ModExpPow2_impl.rs:118:13
+    |
+118 |     ensures res as nat == Exp_int(base as nat, exp as nat) % (modulus as nat)
+    |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+128 |         return (base_mod * rec_result) % modulus;
+    |         ---------------------------------------- at this exit
+
+error: possible arithmetic underflow/overflow
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_DivMod_ModExpPow2_impl.rs:128:16
+    |
+128 |         return (base_mod * rec_result) % modulus;
+    |                ^^^^^^^^^^^^^^^^^^^^^^^
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_DivMod_ModExpPow2_impl.rs:134:6
+    |
+134 | exec fn ModExp_DivMod_ModExpPow2(sx: &[char], sy: &[char], sz: &[char]) -> (res: Vec<char>)
+    |      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: precondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_DivMod_ModExpPow2_impl.rs:142:17
+    |
+49  |         Str2Int(s@) < 0x10000000000000000
+    |         --------------------------------- failed precondition
+...
+142 |     let x_val = str_to_int(sx);
+    |                 ^^^^^^^^^^^^^^
+
+error: precondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_DivMod_ModExpPow2_impl.rs:143:17
+    |
+49  |         Str2Int(s@) < 0x10000000000000000
+    |         --------------------------------- failed precondition
+...
+143 |     let y_val = str_to_int(sy);
+    |                 ^^^^^^^^^^^^^^
+
+error: precondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_DivMod_ModExpPow2_impl.rs:144:17
+    |
+49  |         Str2Int(s@) < 0x10000000000000000
+    |         --------------------------------- failed precondition
+...
+144 |     let z_val = str_to_int(sz);
+    |                 ^^^^^^^^^^^^^^
+
+error: aborting due to 13 previous errors
+
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+verification results:: 6 verified, 7 errors
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_DivMod_ModExpPow2_impl.rs:42:13
+   |
+38 | proof fn lemma_modexp_recursive(x: nat, y: nat, z: nat)
+   |       ------------------------------------------------- at the end of the function body
+...
+42 |     ensures Exp_int(x, y) % z == ((x % z) * (Exp_int(x, (y - 1) as nat) % z)) % z
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+
+note: while loop: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_DivMod_ModExpPow2_impl.rs:55:5
+   |
+55 |     while i < s.len()
+   |     ^^^^^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_DivMod_ModExpPow2_impl.rs:50:13
+   |
+50 |     ensures res as nat == Str2Int(s@)
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+69 |     result
+   |     ------ at the end of the function body
+
+error: invariant not satisfied at end of loop body
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_DivMod_ModExpPow2_impl.rs:58:13
+   |
+58 |             result as nat == Str2Int(s@.subrange(0, i as int)),
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+note: recommendation not met
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_DivMod_ModExpPow2_impl.rs:58:30
+   |
+12 | recommends ValidBitString(s)
+   |            ----------------- recommendation not met
+...
+58 |             result as nat == Str2Int(s@.subrange(0, i as int)),
+   |                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_DivMod_ModExpPow2_impl.rs:62:18
+   |
+62 |         result = result * 2;
+   |                  ^^^^^^^^^^
+
+error: possible arithmetic underflow/overflow
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_DivMod_ModExpPow2_impl.rs:64:22
+   |
+64 |             result = result + 1;
+   |                      ^^^^^^^^^^
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_DivMod_ModExpPow2_impl.rs:72:6
+   |
+72 | exec fn int_to_str(n: u64) -> (res: Vec<char>)
+   |      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_DivMod_ModExpPow2_impl.rs:75:9
+    |
+75  |         Str2Int(res@) == n as nat
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+111 |     result
+    |     ------ at the end of the function body
+
+error: postcondition not satisfied
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_DivMod_ModExpPow2_impl.rs:75:9
+   |
+75 |         Str2Int(res@) == n as nat
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+82 |         return result;
+   |         ------------- at this exit
+
+error: invariant not satisfied at end of loop body
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_DivMod_ModExpPow2_impl.rs:103:13
+    |
+103 |             ValidBitString(result@),
+    |             ^^^^^^^^^^^^^^^^^^^^^^^
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_DivMod_ModExpPow2_impl.rs:114:6
+    |
+114 | exec fn modexp_exec(base: u64, exp: u64, modulus: u64) -> (res: u64)
+    |      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: postcondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_DivMod_ModExpPow2_impl.rs:118:13
+    |
+118 |     ensures res as nat == Exp_int(base as nat, exp as nat) % (modulus as nat)
+    |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ failed this postcondition
+...
+128 |         return (base_mod * rec_result) % modulus;
+    |         ---------------------------------------- at this exit
+
+error: possible arithmetic underflow/overflow
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_DivMod_ModExpPow2_impl.rs:128:16
+    |
+128 |         return (base_mod * rec_result) % modulus;
+    |                ^^^^^^^^^^^^^^^^^^^^^^^
+
+note: function body check: not all errors may have been reported; rerun with a higher value for --multiple-errors to find other potential errors in this function
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_DivMod_ModExpPow2_impl.rs:134:6
+    |
+134 | exec fn ModExp_DivMod_ModExpPow2(sx: &[char], sy: &[char], sz: &[char]) -> (res: Vec<char>)
+    |      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: precondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_DivMod_ModExpPow2_impl.rs:142:17
+    |
+49  |         Str2Int(s@) < 0x10000000000000000
+    |         --------------------------------- failed precondition
+...
+142 |     let x_val = str_to_int(sx);
+    |                 ^^^^^^^^^^^^^^
+
+error: precondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_DivMod_ModExpPow2_impl.rs:143:17
+    |
+49  |         Str2Int(s@) < 0x10000000000000000
+    |         --------------------------------- failed precondition
+...
+143 |     let y_val = str_to_int(sy);
+    |                 ^^^^^^^^^^^^^^
+
+error: precondition not satisfied
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_10h40/bignum_ModExp_DivMod_ModExpPow2_impl.rs:144:17
+    |
+49  |         Str2Int(s@) < 0x10000000000000000
+    |         --------------------------------- failed precondition
+...
+144 |     let z_val = str_to_int(sz);
+    |                 ^^^^^^^^^^^^^^
+
+error: aborting due to 13 previous errors
+

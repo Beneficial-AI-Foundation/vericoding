@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn valid_input(n: int, friends: Seq<int>) -> bool {
     n >= 1 && friends.len() == n && forall|i: int| 0 <= i < friends.len() ==> 1 <= friends[i] <= 5
 }
@@ -36,6 +33,9 @@ spec fn count_valid_choices_helper(n: int, friends: Seq<int>, finger_count: int)
         count_valid_choices_helper(n, friends, finger_count + 1)
     }
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

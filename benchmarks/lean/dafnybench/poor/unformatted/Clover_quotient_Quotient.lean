@@ -28,12 +28,12 @@ Specification:
 - Requires y ≠ 0
 - Ensures q * y + r = x ∧ 0 ≤ r < y ∧ 0 ≤ q
 -/
-def QuotientPrime (x : Nat) (y : Nat) : Int × Int := sorry
+def Quotient_ (x : Nat) (y : Nat) : Int × Int := sorry
 
 /--
-Specification theorem for QuotientPrime method
+Specification theorem for Quotient method
 -/
 theorem Quotient_spec (x : Nat) (y : Nat) :
 y ≠ 0 →
-let (r, q) := QuotientPrime x y
+let (r, q) := Quotient_ x y
 q * y + r = x ∧ 0 ≤ r ∧ r < y ∧ 0 ≤ q := sorry

@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn h(x: int, y: int) -> int {
     x * x + 2 * x * y + x + 1
 }
@@ -24,6 +21,9 @@ spec fn valid_solution(result: Seq<int>, r: int) -> bool {
 spec fn has_solution(r: int) -> bool {
     r > 4 && r % 2 == 1
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

@@ -1,0 +1,190 @@
+=== Verification Error - Iteration 10 ===
+File: /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/files/bignum_ModExp_ModExpPow2_Zeroes.rs
+Time: 2025-09-15 18:52:11
+
+Full Error Output:
+--------------------------------------------------------------------------------
+Compilation failed: error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_ModExpPow2_Zeroes_impl.rs:89:21
+   |
+89 |     if sy@.len() == 0 {
+   |        ---------    ^ expected `nat`, found integer
+   |        |
+   |        expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_ModExpPow2_Zeroes_impl.rs:97:17
+   |
+97 |     if y_val == 0 {
+   |        -----    ^ expected `nat`, found integer
+   |        |
+   |        expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_ModExpPow2_Zeroes_impl.rs:105:22
+    |
+105 |     let mut i: nat = 0;
+    |                ---   ^ expected `nat`, found integer
+    |                |
+    |                expected due to this
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_ModExpPow2_Zeroes_impl.rs:112:29
+    |
+112 |         if i == sy@.len() - 1 && sy[i as usize] == '1' {
+    |                 ---------   ^ expected `nat`, found integer
+    |                 |
+    |                 expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_ModExpPow2_Zeroes_impl.rs:113:21
+    |
+113 |             i = i + 1;
+    |                 -   ^ expected `nat`, found integer
+    |                 |
+    |                 expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_ModExpPow2_Zeroes_impl.rs:115:21
+    |
+115 |             i = i + 1;
+    |                 -   ^ expected `nat`, found integer
+    |                 |
+    |                 expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_ModExpPow2_Zeroes_impl.rs:117:21
+    |
+117 |             i = i + 1;
+    |                 -   ^ expected `nat`, found integer
+    |                 |
+    |                 expected because this is `vstd::prelude::nat`
+
+error[E0605]: non-primitive cast: `vstd::prelude::nat` as `usize`
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_ModExpPow2_Zeroes_impl.rs:112:37
+    |
+112 |         if i == sy@.len() - 1 && sy[i as usize] == '1' {
+    |                                     ^^^^^^^^^^ an `as` expression can only be used to convert between primitive types or to coerce to a specific trait object
+
+error[E0605]: non-primitive cast: `vstd::prelude::nat` as `usize`
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_ModExpPow2_Zeroes_impl.rs:114:22
+    |
+114 |         } else if sy[i as usize] == '0' && carry {
+    |                      ^^^^^^^^^^ an `as` expression can only be used to convert between primitive types or to coerce to a specific trait object
+
+error[E0605]: non-primitive cast: `vstd::prelude::nat` as `u64`
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_ModExpPow2_Zeroes_impl.rs:129:31
+    |
+129 |     let result_val = mod_mult(((x_val % z_val) as u64), (rec_val as u64), (z_val as u64));
+    |                               ^^^^^^^^^^^^^^^^^^^^^^^^ an `as` expression can only be used to convert between primitive types or to coerce to a specific trait object
+
+error[E0605]: non-primitive cast: `vstd::prelude::nat` as `u64`
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_ModExpPow2_Zeroes_impl.rs:129:57
+    |
+129 |     let result_val = mod_mult(((x_val % z_val) as u64), (rec_val as u64), (z_val as u64));
+    |                                                         ^^^^^^^^^^^^^^^^ an `as` expression can only be used to convert between primitive types or to coerce to a specific trait object
+
+error[E0605]: non-primitive cast: `vstd::prelude::nat` as `u64`
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_ModExpPow2_Zeroes_impl.rs:129:75
+    |
+129 |     let result_val = mod_mult(((x_val % z_val) as u64), (rec_val as u64), (z_val as u64));
+    |                                                                           ^^^^^^^^^^^^^^ an `as` expression can only be used to convert between primitive types or to coerce to a specific trait object
+
+error: aborting due to 12 previous errors
+
+Some errors have detailed explanations: E0308, E0605.
+For more information about an error, try `rustc --explain E0308`.
+
+--------------------------------------------------------------------------------
+
+Additional Output:
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_ModExpPow2_Zeroes_impl.rs:89:21
+   |
+89 |     if sy@.len() == 0 {
+   |        ---------    ^ expected `nat`, found integer
+   |        |
+   |        expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+  --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_ModExpPow2_Zeroes_impl.rs:97:17
+   |
+97 |     if y_val == 0 {
+   |        -----    ^ expected `nat`, found integer
+   |        |
+   |        expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_ModExpPow2_Zeroes_impl.rs:105:22
+    |
+105 |     let mut i: nat = 0;
+    |                ---   ^ expected `nat`, found integer
+    |                |
+    |                expected due to this
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_ModExpPow2_Zeroes_impl.rs:112:29
+    |
+112 |         if i == sy@.len() - 1 && sy[i as usize] == '1' {
+    |                 ---------   ^ expected `nat`, found integer
+    |                 |
+    |                 expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_ModExpPow2_Zeroes_impl.rs:113:21
+    |
+113 |             i = i + 1;
+    |                 -   ^ expected `nat`, found integer
+    |                 |
+    |                 expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_ModExpPow2_Zeroes_impl.rs:115:21
+    |
+115 |             i = i + 1;
+    |                 -   ^ expected `nat`, found integer
+    |                 |
+    |                 expected because this is `vstd::prelude::nat`
+
+error[E0308]: mismatched types
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_ModExpPow2_Zeroes_impl.rs:117:21
+    |
+117 |             i = i + 1;
+    |                 -   ^ expected `nat`, found integer
+    |                 |
+    |                 expected because this is `vstd::prelude::nat`
+
+error[E0605]: non-primitive cast: `vstd::prelude::nat` as `usize`
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_ModExpPow2_Zeroes_impl.rs:112:37
+    |
+112 |         if i == sy@.len() - 1 && sy[i as usize] == '1' {
+    |                                     ^^^^^^^^^^ an `as` expression can only be used to convert between primitive types or to coerce to a specific trait object
+
+error[E0605]: non-primitive cast: `vstd::prelude::nat` as `usize`
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_ModExpPow2_Zeroes_impl.rs:114:22
+    |
+114 |         } else if sy[i as usize] == '0' && carry {
+    |                      ^^^^^^^^^^ an `as` expression can only be used to convert between primitive types or to coerce to a specific trait object
+
+error[E0605]: non-primitive cast: `vstd::prelude::nat` as `u64`
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_ModExpPow2_Zeroes_impl.rs:129:31
+    |
+129 |     let result_val = mod_mult(((x_val % z_val) as u64), (rec_val as u64), (z_val as u64));
+    |                               ^^^^^^^^^^^^^^^^^^^^^^^^ an `as` expression can only be used to convert between primitive types or to coerce to a specific trait object
+
+error[E0605]: non-primitive cast: `vstd::prelude::nat` as `u64`
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_ModExpPow2_Zeroes_impl.rs:129:57
+    |
+129 |     let result_val = mod_mult(((x_val % z_val) as u64), (rec_val as u64), (z_val as u64));
+    |                                                         ^^^^^^^^^^^^^^^^ an `as` expression can only be used to convert between primitive types or to coerce to a specific trait object
+
+error[E0605]: non-primitive cast: `vstd::prelude::nat` as `u64`
+   --> /Users/sergiu.bursuc/baif/vericoding/benchmarks/verus/bignum/vericoder_claude-opus_15-09_18h44/bignum_ModExp_ModExpPow2_Zeroes_impl.rs:129:75
+    |
+129 |     let result_val = mod_mult(((x_val % z_val) as u64), (rec_val as u64), (z_val as u64));
+    |                                                                           ^^^^^^^^^^^^^^ an `as` expression can only be used to convert between primitive types or to coerce to a specific trait object
+
+error: aborting due to 12 previous errors
+
+Some errors have detailed explanations: E0308, E0605.
+For more information about an error, try `rustc --explain E0308`.

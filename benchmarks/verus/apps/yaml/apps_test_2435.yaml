@@ -7,8 +7,6 @@ vc-preamble: |-
   use vstd::prelude::*;
 
   verus! {
-
-vc-helpers: |-
   spec fn valid_input(test_cases: Seq<(int, int, Seq<(int, int)>)>) -> bool {
       test_cases.len() >= 0 &&
       forall|i: int| 0 <= i < test_cases.len() ==> {
@@ -20,7 +18,7 @@ vc-helpers: |-
           })
       }
   }
-  
+
   spec fn compute_final_bounds(x: int, operations: Seq<(int, int)>) -> (int, int)
       recommends forall|j: int| 0 <= j < operations.len() ==> {
           let (l, r) = operations[j];
@@ -29,7 +27,7 @@ vc-helpers: |-
   {
       compute_final_bounds_helper(x, x, operations, 0)
   }
-  
+
   spec fn compute_final_bounds_helper(min_pos: int, max_pos: int, operations: Seq<(int, int)>, index: int) -> (int, int)
       decreases operations.len() - index
   {
@@ -42,7 +40,7 @@ vc-helpers: |-
           compute_final_bounds_helper(new_min, new_max, operations, index + 1)
       }
   }
-  
+
   spec fn valid_results(test_cases: Seq<(int, int, Seq<(int, int)>)>, results: Seq<int>) -> bool
       recommends valid_input(test_cases)
   {
@@ -57,6 +55,8 @@ vc-helpers: |-
       }
   }
 
+vc-helpers: |
+
 vc-spec: |-
   fn solve(test_cases: Seq<(int, int, Seq<(int, int)>)>) -> (results: Seq<int>)
       requires valid_input(test_cases)
@@ -68,7 +68,7 @@ vc-code: |-
       unreached()
   }
 
-vc-postamble: |-
+vc-postamble: |2-
 
   }
 
