@@ -200,10 +200,10 @@ resource "aws_batch_compute_environment" "vericoding_compute_env" {
     type                = "EC2"
     
     min_vcpus     = 0    # Scale to 0 when idle
-    max_vcpus     = 64    # 32 machines * 2 vCPUs each  
+    max_vcpus     = 64    # 8 machines * 8 vCPUs each  
     desired_vcpus = 0    # Target 0 instances when idle
     
-    instance_type = ["r8g.large"]
+    instance_type = ["c8g.2xlarge"]
     
     
     instance_role = aws_iam_instance_profile.batch_instance_profile.arn
@@ -242,7 +242,7 @@ resource "aws_batch_job_definition" "lean_verification" {
   
   container_properties = jsonencode({
     image = "ubuntu:22.04"
-    vcpus = 2
+    vcpus = 8
     memory = 15360  # 15GB (leave 1GB for OS)
     
     jobRoleArn = aws_iam_role.batch_job_role.arn
