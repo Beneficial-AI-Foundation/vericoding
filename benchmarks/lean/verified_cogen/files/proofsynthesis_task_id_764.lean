@@ -31,5 +31,3 @@ theorem countDigits_spec_satisfied (text : Array Char) (h_precond : countDigits_
     countDigits_postcond text (countDigits text h_precond) h_precond := by
   sorry
 -- </vc-theorems>
-
-def main : IO Unit := return ()

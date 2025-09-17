@@ -53,5 +53,3 @@ theorem toToggleCase_spec_satisfied (str1 : Array Char) (h_precond : toToggleCas
     toToggleCase_postcond (str1) (toToggleCase (str1) h_precond) h_precond := by
   sorry
 -- </vc-theorems>
-
-def main : IO Unit := return ()

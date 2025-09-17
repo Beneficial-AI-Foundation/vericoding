@@ -20,5 +20,3 @@ theorem arrayAppend_spec_satisfied (a: Array Int) (b: Int) (h_precond : arrayApp
     arrayAppend_postcond (a) (b) (arrayAppend (a) (b) h_precond) h_precond := by
   sorry
 -- </vc-theorems>
-
-def main : IO Unit := return ()

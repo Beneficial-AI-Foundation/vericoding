@@ -22,5 +22,3 @@ theorem cubeElement_spec_satisfied (nums: Array Int) (h_precond : cubeElement_pr
     cubeElement_postcond (nums) (cubeElement (nums) h_precond) h_precond := by
   sorry
 -- </vc-theorems>
-
-def main : IO Unit := pure ()

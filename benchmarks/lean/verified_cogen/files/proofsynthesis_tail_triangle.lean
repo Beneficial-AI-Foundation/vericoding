@@ -27,5 +27,3 @@ theorem tailTriangle_spec_satisfied (n : Nat) (idx : Nat) (sum : Nat) (h_precond
     tailTriangle_postcond n idx sum (tailTriangle n idx sum h_precond) h_precond := by
   sorry
 -- </vc-theorems>
-
-def main : IO Unit := pure ()

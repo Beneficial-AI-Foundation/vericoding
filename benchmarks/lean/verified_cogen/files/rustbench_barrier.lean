@@ -21,5 +21,3 @@ theorem barrier_spec_satisfied (arr : Array Int) (p : Nat) (h_precond : barrier_
     barrier_postcond arr p (barrier arr p h_precond) h_precond := by
   sorry
 -- </vc-theorems>
-
-def main : IO Unit := return ()

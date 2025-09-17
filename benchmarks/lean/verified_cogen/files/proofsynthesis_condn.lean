@@ -21,8 +21,3 @@ theorem myfun_spec_satisfied (a: Array Int) (N: Int) (m: Int) (h_precond : myfun
     myfun_postcond a N m (myfun a N m h_precond) h_precond := by
   sorry
 -- </vc-theorems>
-
-/- Example usage:
-def main : IO Unit := do
-  pure ()
--/

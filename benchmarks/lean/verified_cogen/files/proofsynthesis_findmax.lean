@@ -21,5 +21,3 @@ theorem findMax_spec_satisfied (nums : Array Int) (h_precond : findMax_precond n
     findMax_postcond nums (findMax nums h_precond) h_precond := by
   sorry
 -- </vc-theorems>
-
-def main : IO Unit := return ()

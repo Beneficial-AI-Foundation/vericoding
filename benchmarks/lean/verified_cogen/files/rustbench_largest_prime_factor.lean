@@ -27,6 +27,3 @@ theorem largestPrimeFactor_spec_satisfied (n : Nat) (h_precond : largestPrimeFac
     largestPrimeFactor_postcond n (largestPrimeFactor n h_precond) h_precond := by
   sorry
 -- </vc-theorems>
-
-def main : IO Unit := do
-  IO.println "Main function"
