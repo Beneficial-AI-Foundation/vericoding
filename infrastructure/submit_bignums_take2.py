@@ -12,7 +12,11 @@ LONGNAME = "benchmarks/lean/bignum/files/"
 timestamp = datetime.now().strftime("%Y%m%d-%H%M%S")
 tag = f"{SHORTNAME}-{timestamp}"
 
+# Configuration
+NUM_SHARDS = 3
+
 print(f"Submitting experiments with tag: {tag}")
+print(f"Using {NUM_SHARDS} shards per model")
 
 # Define models to test (from batch_experiments.py)
 models=[
@@ -35,13 +39,13 @@ regions = [
     {"region": "us-east-1", "job_queue": "vericoding3-job-queue", "job_definition": "lean-verification3"},
 ]
 
-def submit_job(model, region_config):
+def submit_job(model, region_config, shard):
     """Submit a single job"""
     # Create job name with sanitized model name
     sanitized_model = ''.join(c if c.isalnum() else '-' for c in model)
-    job_name = f"{tag}-exp-{sanitized_model}-{int(datetime.now().timestamp())}"
+    job_name = f"{tag}-exp-{sanitized_model}-shard{shard}-{int(datetime.now().timestamp())}"
     
-    print(f"Submitting job: {job_name} with model: {model} to region: {region_config['region']}")
+    print(f"Submitting job: {job_name} with model: {model} shard {shard} to region: {region_config['region']}")
     
     # Build the command
     command = [
@@ -54,7 +58,7 @@ def submit_job(model, region_config):
             "command": [
                 "/bin/bash",
                 "-c",
-                f"apt-get update && apt-get install -y curl && curl -fsSL https://raw.githubusercontent.com/Beneficial-AI-Foundation/vericoding/batch_experiments/infrastructure/run.sh | bash -s batch_experiments {LONGNAME} --llm {model} --tag {tag} "
+                f"apt-get update && apt-get install -y curl && curl -fsSL https://raw.githubusercontent.com/Beneficial-AI-Foundation/vericoding/batch_experiments/infrastructure/run.sh | bash -s batch_experiments {LONGNAME} --llm {model} --tag {tag} --shard {shard}/{NUM_SHARDS}"
             ]
         })
     ]
@@ -64,11 +68,14 @@ def submit_job(model, region_config):
     job_response = json.loads(result.stdout)
     return job_response["jobId"]
 
-# Submit jobs for each model, cycling through regions
-for i, model in enumerate(models):
-    region_config = regions[i % len(regions)]
-    job_id = submit_job(model, region_config)
-    print(job_id)
+# Submit jobs for each model with shards, cycling through regions
+job_index = 0
+for model in models:
+    for shard in range(1, NUM_SHARDS + 1):
+        region_config = regions[job_index % len(regions)]
+        job_id = submit_job(model, region_config, shard)
+        print(job_id)
+        job_index += 1
 
 print(f"All experiments submitted with tag: {tag}")
 print("To monitor jobs:")
