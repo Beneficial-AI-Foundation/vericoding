@@ -1,0 +1,91 @@
+vc-description: |-
+  /-
+  # Task
+   Given string `s`, which contains only letters from `a to z` in lowercase.
+
+   A set of alphabet is given by `abcdefghijklmnopqrstuvwxyz`.
+
+   2 sets of alphabets mean 2 or more alphabets.
+
+   Your task is to find the missing letter(s). You may need to output them by the order a-z. It is possible that there is more than one missing letter from more than one set of alphabet.
+
+   If the string contains all of the letters in the alphabet, return an empty string `""`
+
+  # Example
+
+   For `s='abcdefghijklmnopqrstuvwxy'`
+
+   The result should be `'z'`
+
+   For `s='aabbccddeeffgghhiijjkkllmmnnooppqqrrssttuuvvwwxxyy'`
+
+   The result should be `'zz'`
+
+   For `s='abbccddeeffgghhiijjkkllmmnnooppqqrrssttuuvvwwxxy'`
+
+   The result should be `'ayzz'`
+
+   For `s='codewars'`
+
+   The result should be `'bfghijklmnpqtuvxyz'`
+
+  # Input/Output
+
+   - `[input]` string `s`
+
+    Given string(s) contains one or more set of alphabets in lowercase.
+
+   - `[output]` a string
+
+    Find the letters contained in each alphabet but not in the string(s). Output them by the order `a-z`. If missing alphabet is repeated, please repeat them like `"bbccdd"`, not `"bcdbcd"`
+  -/
+
+vc-preamble: |
+
+vc-helpers: |
+
+vc-definitions: |-
+  def missing_alphabets (s : String) : String := sorry
+
+  def counts_for_char (s : String) (c : Char) : Nat :=
+    s.data.count c
+
+vc-theorems: |-
+  theorem missing_alphabets_result_lowercase (s : String) (h : s.length > 0) :
+    let result := missing_alphabets s
+    ∀ c, c ∈ result.data → c.isLower := sorry 
+
+  theorem missing_alphabets_equalizes_counts (s : String) (h : s.length > 0) :
+    let result := missing_alphabets s
+    let combined := s ++ result
+    ∃ max_count : Nat, ∀ c, c.isLower → 
+      counts_for_char combined c = max_count ∨ counts_for_char combined c = 0 := sorry
+
+  theorem missing_alphabets_only_non_max (s : String) (h : s.length > 0) :
+    let result := missing_alphabets s
+    ∃ max_input_count : Nat, 
+      (∀ c, c.isLower → counts_for_char s c ≤ max_input_count) ∧
+      (∀ c ∈ result.data, counts_for_char s c < max_input_count) := sorry
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded
+
+  /-
+  info: 'z'
+  -/
+  #guard_msgs in
+  #eval missing_alphabets "abcdefghijklmnopqrstuvwxy"
+
+  /-
+  info: 'zz'
+  -/
+  #guard_msgs in
+  #eval missing_alphabets "aabbccddeeffgghhiijjkkllmmnnooppqqrrssttuuvvwwxxyy"
+
+  /-
+  info: 'bfghijklmnpqtuvxyz'
+  -/
+  #guard_msgs in
+  #eval missing_alphabets "codewars"
+

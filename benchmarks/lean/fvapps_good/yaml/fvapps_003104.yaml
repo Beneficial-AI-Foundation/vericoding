@@ -1,0 +1,74 @@
+vc-description: |-
+  /-
+  See the following triangle:
+  ```
+  ____________________________________
+   1                                      
+   2   4   2                              
+   3   6   9   6   3                      
+   4   8   12  16  12  8   4             
+   5   10  15  20  25  20  15  10  5   
+   ___________________________________
+
+  ```
+  The total sum of the numbers in the triangle, up to the 5th line included, is ```225```, part of it, ```144```, corresponds to the total sum of the even terms and ```81``` to the total sum of the odd terms.
+
+  Create a function that may output an array with three results for each value of n.
+  ```python
+  triang_mult(n)  ----> [total_sum, total_even_sum, total_odd_sum]
+  ```
+  Our example will be:
+  ```python
+  triang_mult(5) ----> [225, 144, 81]
+  ```
+
+  Features of the random tests:
+  ```
+  number of tests = 100
+  49 < n < 5000
+  ```
+  Enjoy it!
+  This kata will be translated in another languages soon
+  -/
+
+vc-preamble: |
+
+vc-helpers: |
+
+vc-definitions: |-
+  def mult_triangle (n : Nat) : Array Nat :=
+    sorry
+
+vc-theorems: |-
+  theorem mult_triangle_symmetry (n : Nat) (h : n ≥ 1) :
+    let result := mult_triangle n
+    result[0]! = (n * (n + 1) / 2) ^ 2
+  := sorry
+
+  theorem mult_triangle_odd_formula (n : Nat) (h : n ≥ 1) (h₂ : n ≤ 10) :
+    let result := mult_triangle n
+    result[2]! = ((n + 1) / 2) ^ 4
+  := sorry
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded_and_plausible
+
+  /-
+  info: [1, 0, 1]
+  -/
+  #guard_msgs in
+  #eval mult_triangle 1
+
+  /-
+  info: [225, 144, 81]
+  -/
+  #guard_msgs in
+  #eval mult_triangle 5
+
+  /-
+  info: [3025, 2400, 625]
+  -/
+  #guard_msgs in
+  #eval mult_triangle 10
+

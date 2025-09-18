@@ -1,0 +1,69 @@
+vc-description: |-
+  /-
+  I need some help with my math homework. I have a number of problems I need to return the derivative for.
+
+  They will all be of the form:  
+  ax^b,  
+  A and B are both integers, but can be positive or negative.
+  Note: 
+    - if b is 1, then the equation will be ax.  
+    - if b is 0, then the equation will be 0.  
+
+  Examples:
+    3x^3   -> 9x^2  
+    3x^2   -> 6x  
+    3x     -> 3  
+    3      -> 0  
+    3x^-1  -> -3x^-2  
+    -3x^-2 -> 6x^-3  
+
+  If you don't remember how derivatives work, here's a link with some basic rules: https://www.mathsisfun.com/calculus/derivatives-rules.html
+  -/
+
+vc-preamble: |
+
+vc-helpers: |
+
+vc-definitions: |-
+  def get_derivative : String → String := sorry
+
+  theorem derivative_polynomial_form (expr : String) 
+    (h : ∃ a b : Int, a ≠ 0 ∧ (expr = s!"{a}x^{b}" ∨ expr = s!"{a}x")) :
+    ∃ result : String, get_derivative expr = result ∧ 
+    (result.any (· = 'x') ∨ result = "0") := sorry
+
+vc-theorems: |-
+  theorem simple_power_rule (n : Int) (h : n ≠ 0) :
+    get_derivative s!"1x^{n}" = 
+      if n - 1 = 1 
+      then s!"{n}x"
+      else s!"{n}x^{n-1}" := sorry
+
+  theorem constant_term (n : Int) (h : n ≠ 0) :
+    get_derivative (toString n) = "0" := sorry
+
+  theorem linear_term (n : Int) (h : n ≠ 0) :
+    get_derivative s!"{n}x" = toString n := sorry
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded
+
+  /-
+  info: '9x^2'
+  -/
+  #guard_msgs in
+  #eval get_derivative "3x^3"
+
+  /-
+  info: '-3x^-2'
+  -/
+  #guard_msgs in
+  #eval get_derivative "3x^-1"
+
+  /-
+  info: '-30x^9'
+  -/
+  #guard_msgs in
+  #eval get_derivative "-3x^10"
+

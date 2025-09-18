@@ -1,0 +1,150 @@
+vc-description: |-
+  /-
+  Bandwidth of a matrix A is defined as the smallest non-negative integer K such that A(i, j) = 0 for |i - j| > K.
+  For example, a matrix with all zeros will have its bandwith equal to zero. Similarly bandwith of diagonal matrix will also be zero.
+
+  For example, for the below given matrix, the bandwith of this matrix is 2.
+
+  1 0 0
+  0 1 1
+  1 1 0 
+
+  Bandwidth of the below matrix is 1. 
+
+  Bandwidth of the below matrix is 2. 
+
+  Bandwidth of the below matrix is also 2. 
+
+  You will be a given a binary matrix A of dimensions N × N. You are allowed to make following operation as many times as you wish (possibly zero or more). In a single operation, you can swap any two entries of the matrix. Your aim is to minimize the bandwidth of the matrix. Find the minimum bandwidth of the matrix A you can get after making as many operations of above type as you want.
+
+  -----Input-----
+  The first line of the input contains an integer T denoting the number of test cases. The description of T test cases follow.
+  First line of each test case contains an integer N denoting the height/width of the matrix.
+  Next N lines of each test case contain N space separated binary integers (either zero or one) corresponding to the entries of the matrix.
+
+  -----Output-----
+  For each test case, output a single integer corresponding to the minimum bandwidth that you can obtain.
+
+  -----Constraints-----
+  - 1 ≤ T ≤ 10
+  - 1 ≤ N ≤ 500
+  - 0 ≤ A(i, j) ≤ 1
+
+  -----Subtasks-----
+  - Subtask #1 (40 points) : 1 ≤ N ≤ 100
+  - Subtask #2 (60 points) : original constraints
+
+  -----Example-----
+  Input:
+  6
+  2
+  0 0
+  0 0
+  2
+  1 0
+  0 1
+  2
+  1 0
+  1 0
+  2
+  1 0
+  1 1
+  3
+  1 0 0
+  0 1 1
+  1 1 0
+  4
+  1 1 1 1
+  1 1 1 1
+  1 1 1 1
+  1 1 1 1
+
+  Output:
+  0
+  0
+  0
+  1
+  1
+  3
+
+  -----Explanation-----
+  Example case 1. The bandwidth of a matrix will all zero entries will be zero. This is the minimum bandwidth you can get, so there is no need of performing any swap operation.
+  Example case 2. The bandwidth of a diagonal matrix will also be zero.
+  Example case 3. You can make the given matrix a diagonal matrix by swapping A(2, 1) and A(2, 2), which will have zero bandwidth.
+  Example case 4. You can not make swaps in any way that can reduce the bandwidth of this matrix. Bandwidth of this matrix is equal to 1, which is the minimum bandwidth that you can get.
+  Example case 5. Bandwidth of the given matrix is 2. You can make it equal to be 1 by swapping A(3, 1) and A(3, 3), i.e. the matrix after the operation will look like
+
+  1 0 0
+  0 1 1
+  0 1 1
+
+  The bandwidth of this matrix is 1.
+
+  Example case 6. The swap operations won't have any effect on the matrix. Its bandwidth is equal to 3.
+  -/
+
+vc-preamble: |
+
+vc-helpers: |
+
+vc-definitions: |-
+  def min_bandwidth (n : Nat) (matrix : List (List Nat)) : Nat :=
+    sorry
+
+vc-theorems: |-
+  theorem bandwidth_bounds {n : Nat} {matrix : List (List Nat)} :
+    n > 0 → min_bandwidth n matrix ≥ 0 ∧ min_bandwidth n matrix < n :=
+    sorry
+
+  theorem zero_matrix_bandwidth {n : Nat} (matrix : List (List Nat)) :
+    n > 0 →
+    (∀ i j, i < n ∧ j < n → List.get! (List.get! matrix i) j = 0) →
+    min_bandwidth n matrix = 0 :=
+    sorry
+
+  theorem identity_matrix_bandwidth {n : Nat} (matrix : List (List Nat)) :
+    n > 0 →
+    (∀ i j, i < n ∧ j < n → List.get! (List.get! matrix i) j = if i = j then 1 else 0) →
+    min_bandwidth n matrix = 0 :=
+    sorry
+
+  theorem all_ones_matrix_bandwidth {n : Nat} (matrix : List (List Nat)) :
+    n > 0 →
+    (∀ i j, i < n ∧ j < n → List.get! (List.get! matrix i) j = 1) →
+    min_bandwidth n matrix = n - 1 :=
+    sorry
+
+  theorem bandwidth_monotonicity {n : Nat} {matrix₁ matrix₂ : List (List Nat)} :
+    n > 0 →
+    (∀ i j, i < n ∧ j < n → List.get! (List.get! matrix₁ i) j ≤ List.get! (List.get! matrix₂ i) j) →
+    min_bandwidth n matrix₁ ≤ min_bandwidth n matrix₂ :=
+    sorry
+
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: guarded
+
+  /-
+  info: 0
+  -/
+  #guard_msgs in
+  #eval min_bandwidth 2 [[0, 0], [0, 0]]
+
+  /-
+  info: 0
+  -/
+  #guard_msgs in
+  #eval min_bandwidth 2 [[1, 0], [0, 1]]
+
+  /-
+  info: 1
+  -/
+  #guard_msgs in
+  #eval min_bandwidth 3 [[1, 0, 0], [0, 1, 1], [1, 1, 0]]
+
+  /-
+  info: 3
+  -/
+  #guard_msgs in
+  #eval min_bandwidth 4 [[1, 1, 1, 1], [1, 1, 1, 1], [1, 1, 1, 1], [1, 1, 1, 1]]
+

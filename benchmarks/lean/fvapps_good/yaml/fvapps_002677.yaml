@@ -1,0 +1,64 @@
+vc-description: |-
+  /-
+  Triangular number is the amount of points that can fill equilateral triangle. 
+
+  Example: the number 6 is a triangular number because all sides of a triangle has the same amount of points.
+
+  ```
+  Hint!
+  T(n) = n * (n + 1) / 2,
+  n - is the size of one side.
+  T(n) - is the triangular number.
+  ```
+
+  Given a number 'T' from interval [1; 2147483646], find if it is triangular number or not.
+  -/
+
+vc-preamble: |
+
+vc-helpers: |
+
+vc-definitions: |-
+  def isTriangular (n : Nat) : Bool := sorry
+
+  theorem isTriangular_output_bool (n : Nat) : 
+    isTriangular n = true ∨ isTriangular n = false := sorry
+
+vc-theorems: |-
+  theorem isTriangular_formula (n : Nat) :
+    isTriangular n = true → ∃ x : Nat, n = x * (x + 1) / 2 := sorry
+
+  theorem isTriangular_known_values : 
+    isTriangular 0 = true ∧ 
+    isTriangular 1 = true ∧ 
+    isTriangular 3 = true ∧ 
+    isTriangular 6 = true ∧ 
+    isTriangular 10 = true ∧
+    isTriangular 15 = true ∧
+    isTriangular 21 = true ∧
+    isTriangular 28 = true ∧
+    isTriangular 36 = true ∧
+    isTriangular 45 = true := sorry
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded
+
+  /-
+  info: True
+  -/
+  #guard_msgs in
+  #eval is_triangular 1
+
+  /-
+  info: True
+  -/
+  #guard_msgs in
+  #eval is_triangular 6
+
+  /-
+  info: False
+  -/
+  #guard_msgs in
+  #eval is_triangular 7
+

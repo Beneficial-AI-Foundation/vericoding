@@ -1,0 +1,68 @@
+vc-description: |-
+  /-
+  Return the `n`th term of the Recamán's sequence.
+
+  ```
+  a(0) = 0;
+
+          a(n-1) - n, if this value is positive and not yet in the sequence
+        /
+  a(n) <
+        \
+          a(n-1) + n, otherwise
+  ```
+
+  ___
+
+  A video about Recamán's sequence by Numberphile: https://www.youtube.com/watch?v=FGC5TdIiT9U
+  -/
+
+vc-preamble: |
+
+vc-helpers: |
+
+vc-definitions: |-
+  def recaman (n : Nat) : Nat :=
+    sorry
+
+vc-theorems: |-
+  theorem recaman_nonnegative (n : Nat) :
+    recaman n ≥ 0 :=
+    sorry
+
+  theorem recaman_consecutive_diff (n : Nat) :
+    n > 0 → (if recaman n ≥ recaman (n-1) 
+             then recaman n - recaman (n-1)
+             else recaman (n-1) - recaman n) = n :=
+    sorry
+
+  theorem recaman_zero :
+    recaman 0 = 0 :=
+    sorry
+
+  theorem recaman_one :
+    recaman 1 = 1 :=
+    sorry
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded_and_plausible
+
+  /-
+  info: 3
+  -/
+  #guard_msgs in
+  #eval recaman 2
+
+  /-
+  info: 6
+  -/
+  #guard_msgs in
+  #eval recaman 3
+
+  /-
+  info: 2
+  -/
+  #guard_msgs in
+  #eval recaman 4
+

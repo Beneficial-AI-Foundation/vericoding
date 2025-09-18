@@ -1,0 +1,77 @@
+vc-description: |-
+  /-
+  Given a list of strings words representing an English Dictionary, find the longest word in words that can be built one character at a time by other words in words.  If there is more than one possible answer, return the longest word with the smallest lexicographical order.  If there is no answer, return the empty string.
+
+  Example 1:
+
+  Input: 
+  words = ["w","wo","wor","worl", "world"]
+  Output: "world"
+  Explanation: 
+  The word "world" can be built one character at a time by "w", "wo", "wor", and "worl".
+
+  Example 2:
+
+  Input: 
+  words = ["a", "banana", "app", "appl", "ap", "apply", "apple"]
+  Output: "apple"
+  Explanation: 
+  Both "apply" and "apple" can be built from other words in the dictionary. However, "apple" is lexicographically smaller than "apply".
+
+  Note:
+  All the strings in the input will only contain lowercase letters.
+  The length of words will be in the range [1, 1000].
+  The length of words[i] will be in the range [1, 30].
+  -/
+
+vc-preamble: |
+
+vc-helpers: |
+
+vc-definitions: |-
+  def lengthLex (s₁ s₂ : String) : Bool := sorry
+
+  def longest_word (words : List String) : String := sorry
+
+vc-theorems: |-
+  theorem longest_word_prefixes_exist (words : List String) 
+    (h : words ≠ []) : 
+    let result := longest_word words
+    ∀ i, 1 ≤ i → i < result.length → 
+    ∃ w ∈ words, result.take i = w :=
+  sorry
+
+  theorem longest_word_is_maximal (words : List String)
+    (h : words ≠ []) :
+    let result := longest_word words
+    ∀ word ∈ words,
+      (word.length > result.length → 
+        ∃ i, 1 ≤ i ∧ i < word.length ∧ 
+        (∀ w ∈ words, word.take i ≠ w)) ∧
+      (word.length = result.length ∧ lengthLex word result → 
+        ∃ i, 1 ≤ i ∧ i < word.length ∧
+        (∀ w ∈ words, word.take i ≠ w)) :=
+  sorry
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded
+
+  /-
+  info: 'world'
+  -/
+  #guard_msgs in
+  #eval longest_word ["w", "wo", "wor", "worl", "world"]
+
+  /-
+  info: 'apple'
+  -/
+  #guard_msgs in
+  #eval longest_word ["a", "banana", "app", "appl", "ap", "apply", "apple"]
+
+  /-
+  info: 'a'
+  -/
+  #guard_msgs in
+  #eval longest_word ["a", "b", "c"]
+

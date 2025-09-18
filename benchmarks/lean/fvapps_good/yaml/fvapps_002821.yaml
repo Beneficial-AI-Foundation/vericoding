@@ -1,0 +1,52 @@
+vc-description: |-
+  /-
+  We have 3 equations with 3 unknowns x, y, and z and we are to solve for these unknowns.
+  Equations 4x -3y +z = -10, 2x +y +3z = 0, and -x +2y -5z = 17 will be passed in as an array of [[4, -3, 1, -10], [2, 1, 3, 0], [-1, 2, -5, 17]] and the result should be returned as an array like [1, 4, -2] (i.e. [x, y, z]).
+
+  Note: In C++ do not use new or malloc to allocate memory for the returned variable as allocated memory will not be freed in the Test Cases. Setting the variable as static will do.
+  -/
+
+vc-preamble: |
+
+vc-helpers: |
+
+vc-definitions: |-
+  def solve_eq (eq: List (List Int)) : List Int := sorry
+
+  def matrixMultiply (A: List (List Int)) (x: List Int) : List Int := sorry
+
+vc-theorems: |-
+  theorem solve_eq_dimensions {eq: List (List Int)} (h1: eq.length = 3) 
+    (h2: ∀ row ∈ eq, row.length = 4) :
+    let solution := solve_eq eq
+    -- Solution has length 3
+    solution.length = 3 ∧ 
+    -- Solution contains only integers
+    (∀ x ∈ solution, ∃ n: Int, x = n) ∧
+    -- Solution satisfies original equations (Ax = b)
+    let A := eq.map (λ row => row.take 3)
+    let b := eq.map (λ row => row.get! 3)
+    matrixMultiply A solution = b := sorry
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded
+
+  /-
+  info: [1, 4, -2]
+  -/
+  #guard_msgs in
+  #eval solve_eq [[4, -3, 1, -10], [2, 1, 3, 0], [-1, 2, -5, 17]]
+
+  /-
+  info: [-1, 6, 2]
+  -/
+  #guard_msgs in
+  #eval solve_eq [[2, 1, 3, 10], [-3, -2, 7, 5], [3, 3, -4, 7]]
+
+  /-
+  info: [3, -1, 2]
+  -/
+  #guard_msgs in
+  #eval solve_eq [[3, 2, 0, 7], [-4, 0, 3, -6], [0, -2, -6, -10]]
+

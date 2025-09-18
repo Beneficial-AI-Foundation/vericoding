@@ -1,0 +1,104 @@
+vc-description: |-
+  /-
+  Given a string S and a string T, count the number of distinct subsequences of S which equals T.
+
+  A subsequence of a string is a new string which is formed from the original string by deleting some (can be none) of the characters without disturbing the relative positions of the remaining characters. (ie, "ACE" is a subsequence of "ABCDE" while "AEC" is not).
+
+  Example 1:
+
+  Input: S = "rabbbit", T = "rabbit"
+  Output: 3
+  Explanation:
+
+  As shown below, there are 3 ways you can generate "rabbit" from S.
+  (The caret symbol ^ means the chosen letters)
+
+  rabbbit
+  ^^^^ ^^
+  rabbbit
+  ^^ ^^^^
+  rabbbit
+  ^^^ ^^^
+
+  Example 2:
+
+  Input: S = "babgbag", T = "bag"
+  Output: 5
+  Explanation:
+
+  As shown below, there are 5 ways you can generate "bag" from S.
+  (The caret symbol ^ means the chosen letters)
+
+  babgbag
+  ^^ ^
+  babgbag
+  ^^    ^
+  babgbag
+  ^    ^^
+  babgbag
+    ^  ^^
+  babgbag
+      ^^^
+  -/
+
+vc-preamble: |
+
+vc-helpers: |
+
+vc-definitions: |-
+  def count_distinct_subsequences (s t : String) : Nat :=
+    sorry
+
+vc-theorems: |-
+  theorem count_distinct_subsequences_nonnegative (s t : String) :
+    count_distinct_subsequences s t ≥ 0 :=
+    sorry
+
+  theorem empty_pattern_count (s : String) :
+    count_distinct_subsequences s "" = 1 :=
+    sorry
+
+  theorem empty_string_count (t : String) (h : t ≠ "") :
+    count_distinct_subsequences "" t = 0 :=
+    sorry
+
+  theorem self_pattern_count (t : String) :
+    count_distinct_subsequences t t = 1 :=
+    sorry
+
+  theorem filtered_chars_count (s t : String) :
+    let filtered_s := s.toList.filter (fun c => t.toList.contains c)
+    count_distinct_subsequences s t = count_distinct_subsequences (String.mk filtered_s) t :=
+    sorry
+
+  theorem shorter_string_zero_count (s t : String) :
+    s.length < t.length → count_distinct_subsequences s t = 0 :=
+    sorry
+
+  theorem concatenation_self_count (s₁ s₂ : String) :
+    let t := s₁ ++ s₂
+    count_distinct_subsequences t t = 1 :=
+    sorry
+
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: guarded_and_plausible
+
+  /-
+  info: 3
+  -/
+  #guard_msgs in
+  #eval count_distinct_subsequences "rabbbit" "rabbit"
+
+  /-
+  info: 5
+  -/
+  #guard_msgs in
+  #eval count_distinct_subsequences "babgbag" "bag"
+
+  /-
+  info: 1
+  -/
+  #guard_msgs in
+  #eval count_distinct_subsequences "abc" "abc"
+

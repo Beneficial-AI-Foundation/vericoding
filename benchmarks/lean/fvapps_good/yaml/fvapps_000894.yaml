@@ -1,0 +1,99 @@
+vc-description: |-
+  /-
+  You are teaching a class of $N$ students. Today, during the morning prayer, all the students are standing in a line. You are given a string $s$ with length $N$; for each valid $i$, the $i$-th character of this string is 'b' if the $i$-th student in the line is a boy or 'g' if this student is a girl.
+  The awkwardness of this configuration of students is defined as the sum of pairwise distances between each boy and girl. The distance between the $i$-th and $j$-th student in the line is $|i - j|$. Formally, the awkwardness is ∑i=1N∑j=i+1sj≠siN(j−i).∑i=1N∑j=i+1sj≠siN(j−i).\sum\limits_{i=1}^N \, \sum\limits_{j=i+1\\ s_j \neq s_i}^N (j - i)\,.
+  As the teacher, it is your responsibility to reorder the students in such a way that the awkwardness of the resulting configuration is the smallest possible. You may reorder the students in the line in any way you want. Find the minimum awkwardness that can be achieved.
+
+  -----Input-----
+  - The first line of the input contains a single integer $T$ denoting the number of test cases. The description of $T$ test cases follows.
+  - The first and only line of each test case contains a single string $s$.
+
+  -----Output-----
+  For each test case, print a single line containing one integer - the minimum possible awkwardness.
+
+  -----Constraints-----
+  - $1 \le T \le 10^5$
+  - $1 \le |s| \le 10^5$
+  - each character of $s$ is either 'b' or 'g'
+  - the sum of $|s|$ over all test cases does not exceed $4 \cdot 10^6$
+
+  -----Example Input-----
+  3
+  gb
+  bgg
+  bbgg
+
+  -----Example Output-----
+  1
+  2
+  6
+
+  -----Explanation-----
+  Example case 1: The total awkwardness is $|1 - 0| = 1$, no matter how you arrange the students.
+  Example case 2: Initially, the awkwardness is $|1 - 0| + |2 - 0| = 1 + 2 = 3$. However, you can move the boy between the two girls, i.e. choose the configuration "gbg". Here, the awkwardness is $|1 - 0| + |2 - 1| = 1 + 1 = 2$.
+  -/
+
+vc-preamble: |
+
+vc-helpers: |
+
+vc-definitions: |-
+  def min_awkwardness (s : String) : Nat := sorry
+
+  -- Result should be non-negative
+
+vc-theorems: |-
+  theorem min_awkwardness_nonneg (s : String) : 
+    min_awkwardness s ≥ 0 := sorry
+
+  -- Single character strings should return 0 
+
+  theorem min_awkwardness_single_char (c : Char) : 
+    min_awkwardness (String.mk [c]) = 0 := sorry
+
+  -- All same character strings return 0
+
+  theorem min_awkwardness_same_chars {s : String} 
+    (h : ∀ (i j : String.Pos), s.get i = s.get j) :
+    min_awkwardness s = 0 := sorry
+
+  -- Result is symmetric when swapping b and g
+
+  theorem min_awkwardness_symmetric (s : String) : 
+    min_awkwardness (String.map (fun c => if c = 'b' then 'g' else if c = 'g' then 'b' else c) s) = min_awkwardness s := sorry
+
+  -- Length 2 different chars give result 1
+
+  theorem min_awkwardness_two_diff (s : String) 
+    (h1 : s.length = 2)
+    (h2 : ∃ (i j : String.Pos), s.get i = 'b' ∧ s.get j = 'g') :
+    min_awkwardness s = 1 := sorry
+
+  -- Only works with strings containing b and g
+
+  theorem min_awkwardness_valid_chars (s : String) :
+    (∀ (i : String.Pos), s.get i = 'b' ∨ s.get i = 'g') → 
+    min_awkwardness s ≥ 0 := sorry
+
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded
+
+  /-
+  info: 1
+  -/
+  #guard_msgs in
+  #eval min_awkwardness "gb"
+
+  /-
+  info: 2
+  -/
+  #guard_msgs in
+  #eval min_awkwardness "bgg"
+
+  /-
+  info: 6
+  -/
+  #guard_msgs in
+  #eval min_awkwardness "bbgg"
+

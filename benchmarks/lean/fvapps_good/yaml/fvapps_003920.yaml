@@ -1,0 +1,107 @@
+vc-description: |-
+  /-
+  # Task
+
+  John is a programmer. He treasures his time very much. He lives on the `n` floor of a building. Every morning he will go downstairs as quickly as possible to begin his great work today.
+
+  There are two ways he goes downstairs: walking or taking the elevator.
+
+  When John uses the elevator, he will go through the following steps:
+  ```
+  1. Waiting the elevator from m floor to n floor;
+  2. Waiting the elevator open the door and go in;
+  3. Waiting the elevator close the door;
+  4. Waiting the elevator down to 1 floor;
+  5. Waiting the elevator open the door and go out;
+  (the time of go in/go out the elevator will be ignored)
+  ```
+
+  Given the following arguments:
+  ```
+  n: An integer. The floor of John(1-based).
+  m: An integer. The floor of the elevator(1-based).
+  speeds: An array of integer. It contains four integer [a,b,c,d]
+          a: The seconds required when the elevator rises or falls 1 floor
+          b: The seconds required when the elevator open the door
+          c: The seconds required when the elevator close the door
+          d: The seconds required when John walks to n-1 floor
+  ```
+
+  Please help John to calculate the shortest time to go downstairs.
+
+  # Example
+
+  For `n = 5, m = 6 and speeds = [1,2,3,10]`, the output should be `12`.
+
+  John go downstairs by using the elevator:
+
+  `1 + 2 + 3 + 4 + 2 = 12`
+
+  For `n = 1, m = 6 and speeds = [1,2,3,10]`, the output should be `0`.
+
+  John is already at 1 floor, so the output is `0`.
+
+  For `n = 5, m = 4 and speeds = [2,3,4,5]`, the output should be `20`.
+
+  John go downstairs by walking:
+
+  `5 x 4 = 20`
+  -/
+
+vc-preamble: |
+
+vc-helpers: |
+
+vc-definitions: |-
+  def shortest_time (n m : Nat) (speeds : List Nat) : Nat :=
+    sorry
+
+vc-theorems: |-
+  theorem result_non_negative (n m : Nat) (speeds : List Nat) :
+    shortest_time n m speeds ≥ 0 :=
+    sorry
+
+  theorem floor_one_is_zero (m : Nat) (speeds : List Nat) :
+    shortest_time 1 m speeds = 0 :=
+    sorry
+
+  theorem elevator_not_worse_than_walking (n m : Nat) (speeds : List Nat) (h: speeds.length > 3) :
+    n > 1 →
+    shortest_time n m speeds ≤ (n-1) * (speeds.get! 3) :=
+    sorry
+
+  theorem same_floor_elevator_time (n : Nat) (speeds : List Nat) (h: speeds.length > 3) :
+    n > 1 →
+    shortest_time n n speeds = min 
+      (speeds.get! 1 + speeds.get! 2 + (n-1)*speeds.get! 0 + speeds.get! 1) 
+      ((n-1)*speeds.get! 3) :=
+    sorry
+
+  theorem extreme_walking_speeds (n m : Nat) (speeds : List Nat) (h: speeds.length > 3) :
+    shortest_time n m speeds = min 
+      (Nat.sub (max m n) (min m n)*speeds.get! 0 + speeds.get! 1 + speeds.get! 2 + (n-1)*speeds.get! 0 + speeds.get! 1) 
+      ((n-1)*speeds.get! 3) :=
+    sorry
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded_and_plausible
+
+  /-
+  info: 12
+  -/
+  #guard_msgs in
+  #eval shortest_time 5 6 [1, 2, 3, 10]
+
+  /-
+  info: 0
+  -/
+  #guard_msgs in
+  #eval shortest_time 1 6 [1, 2, 3, 10]
+
+  /-
+  info: 20
+  -/
+  #guard_msgs in
+  #eval shortest_time 5 4 [2, 3, 4, 5]
+

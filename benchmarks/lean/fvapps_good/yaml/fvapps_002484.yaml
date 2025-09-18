@@ -1,0 +1,30 @@
+vc-description: |-
+  /-
+  =====Problem Statement=====
+  You are given a string s consisting only of digits 0-9, commas ,, and dots .
+  
+  Your task is to complete the regex_pattern defined below, which will be used to re.split() all of the , and . symbols in s.
+  
+  It’s guaranteed that every comma and every dot in s is preceeded and followed by a digit.
+  -/
+
+vc-preamble: |-
+
+vc-helpers: |-
+
+vc-definitions: |-
+  def split_numbers (s : String) : List String := sorry
+  
+  theorem split_numbers_comma_separated (nums : List Nat) (h : nums.length > 0) : 
+    split_numbers (String.intercalate "," (nums.map toString)) = 
+    nums.map toString := sorry
+
+vc-theorems: |-
+  theorem split_numbers_dot_separated (nums : List Nat) (h : nums.length > 0) : 
+    split_numbers (String.intercalate "." (nums.map toString)) = 
+    nums.map toString := sorry
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded_and_plausible
+

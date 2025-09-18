@@ -1,0 +1,65 @@
+vc-description: |-
+  /-
+  Inspired by the development team at Vooza, write the function `howManyLightsabersDoYouOwn`/`how_many_light_sabers_do_you_own` that 
+
+  * accepts the name of a programmer, and
+  * returns the number of lightsabers owned by that person.
+
+  The only person who owns lightsabers is Zach, by the way. He owns 18, which is an awesome number of lightsabers. Anyone else owns 0.
+
+  ```if:coffeescript,javascript,php,python,ruby,typescript
+  **Note**: your function should have a default parameter.
+  ```
+
+  ```c#
+  Kata.HowManyLightsabersDoYouOwn("Adam") == 0
+  Kata.HowManyLightsabersDoYouOwn("Zach") == 18
+  ```
+  ```python
+  how_many_light_sabers_do_you_own('Zach') == 18
+  how_many_light_sabers_do_you_own('Adam') == 0
+  how_many_light_sabers_do_you_own()       == 0
+  ```
+  -/
+
+vc-preamble: |
+
+vc-helpers: |
+
+vc-definitions: |-
+  def how_many_light_sabers_do_you_own : Option String → Nat
+  | none => sorry
+  | some s => sorry
+
+vc-theorems: |-
+  theorem light_sabers_default_zero (name : String) :
+    name ≠ "Zach" → how_many_light_sabers_do_you_own (some name) = 0 := by sorry
+
+  theorem zach_has_18 :
+    how_many_light_sabers_do_you_own (some "Zach") = 18 := by sorry 
+
+  theorem empty_name_zero :
+    how_many_light_sabers_do_you_own none = 0 := by sorry
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded
+
+  /-
+  info: 18
+  -/
+  #guard_msgs in
+  #eval how_many_light_sabers_do_you_own "Zach"
+
+  /-
+  info: 0
+  -/
+  #guard_msgs in
+  #eval how_many_light_sabers_do_you_own 
+
+  /-
+  info: 0
+  -/
+  #guard_msgs in
+  #eval how_many_light_sabers_do_you_own "Adam"
+

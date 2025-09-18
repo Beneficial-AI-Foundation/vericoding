@@ -1,0 +1,135 @@
+vc-description: |-
+  /-
+  A palindrome is a word, phrase, number, or other sequence of characters which reads the same backward as forward. Examples of numerical palindromes are:
+
+  2332 
+  110011 
+  54322345
+
+  You'll be given 2 numbers as arguments: ```(num,s)```.  Write a function which returns an array of ```s``` number of numerical palindromes that come after ```num```. If ```num``` is a palindrome itself, it should be included in the count. 
+
+  Return "Not valid" instead if any one of the inputs is not an integer or is less than 0.
+
+  For this kata, single digit numbers will NOT be considered numerical palindromes. 
+
+  ```
+  palindrome(6,4) => [11,22,33,44]
+  palindrome(59,3) => [66,77,88]
+  palindrome(101,2) => [101,111]
+  palindrome("15651",5) => "Not valid" 
+  palindrome(1221,"8") => "Not valid" 
+  ```
+
+  ```Haskell
+
+  In Haskell, the return type is a Maybe which returns Nothing if either of the inputs is negative."
+  ```
+
+  Other Kata in this Series:
+  Numerical Palindrome #1
+  Numerical Palindrome #1.5 
+  Numerical Palindrome #2
+  Numerical Palindrome #3
+  Numerical Palindrome #3.5
+  Numerical Palindrome #4
+  Numerical Palindrome #5
+  -/
+
+vc-preamble: |
+
+vc-helpers: |
+
+vc-definitions: |-
+  def palindrome (start_num : Int) (size : Int) : List Int := sorry
+
+  def isPalindrome (n : Int) : Bool := sorry
+
+vc-theorems: |-
+  theorem palindrome_empty_size :
+    ∀ start_num : Int, palindrome start_num 0 = [] := sorry
+
+  theorem palindrome_valid_size :
+    ∀ start_num size : Int,
+    start_num ≥ 0 →
+    size > 0 →
+    List.length (palindrome start_num size) = size := sorry
+
+  theorem palindrome_elements_are_ints :
+    ∀ start_num size : Int,
+    start_num ≥ 0 →
+    size > 0 →
+    ∀ x, x ∈ palindrome start_num size → x ∈ palindrome start_num size := sorry
+
+  theorem palindrome_elements_are_palindromes :
+    ∀ start_num size : Int,
+    start_num ≥ 0 →
+    size > 0 →
+    ∀ x, x ∈ palindrome start_num size → isPalindrome x = true := sorry
+
+  theorem palindrome_elements_ordered :
+    ∀ start_num size : Int,
+    start_num ≥ 0 →
+    size > 0 →
+    ∀ i j, i < j → 
+    i < List.length (palindrome start_num size) → 
+    j < List.length (palindrome start_num size) →
+    (palindrome start_num size).get ⟨i, sorry⟩ ≤ (palindrome start_num size).get ⟨j, sorry⟩ := sorry
+
+  theorem palindrome_elements_minimum :
+    ∀ start_num size : Int,
+    start_num ≥ 0 →
+    size > 0 →
+    ∀ x, x ∈ palindrome start_num size → x ≥ max start_num 11 := sorry
+
+  theorem palindrome_invalid_negative_num :
+    ∀ start_num size : Int,
+    start_num < 0 →
+    size ≥ 0 →
+    palindrome start_num size = [] := sorry
+
+  theorem palindrome_invalid_negative_size :
+    ∀ start_num size : Int,
+    start_num ≥ 0 →
+    size < 0 →
+    palindrome start_num size = [] := sorry
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded
+
+  /-
+  info: [11, 22, 33, 44]
+  -/
+  #guard_msgs in
+  #eval palindrome 6 4
+
+  /-
+  info: [77]
+  -/
+  #guard_msgs in
+  #eval palindrome 75 1
+
+  /-
+  info: [101, 111]
+  -/
+  #guard_msgs in
+  #eval palindrome 101 2
+
+  /-
+  info: 'Not valid'
+  -/
+  #guard_msgs in
+  #eval palindrome "ACCDDCCA" 3
+
+  /-
+  info: 'Not valid'
+  -/
+  #guard_msgs in
+  #eval palindrome 773 "1551"
+
+  /-
+  info: 'Not valid'
+  -/
+  #guard_msgs in
+  #eval palindrome -4505 15
+
