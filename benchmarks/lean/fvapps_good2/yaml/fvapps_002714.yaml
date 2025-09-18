@@ -53,19 +53,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval find_longest ")()"
   
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval find_longest "((()"
   
-  /-
+  /--
   info: 4
   -/
   #guard_msgs in

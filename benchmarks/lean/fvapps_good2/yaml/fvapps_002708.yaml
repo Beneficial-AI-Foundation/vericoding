@@ -23,19 +23,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
   
-  /-
+  /--
   info: 30
   -/
   #guard_msgs in
   #eval modified_sum [1, 2, 3] 3
   
-  /-
+  /--
   info: 30
   -/
   #guard_msgs in
   #eval modified_sum [1, 2] 5
   
-  /-
+  /--
   info: 68
   -/
   #guard_msgs in

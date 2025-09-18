@@ -38,19 +38,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 'Wood Snake'
   -/
   #guard_msgs in
   #eval chinese_zodiac 1965
   
-  /-
+  /--
   info: 'Earth Tiger'
   -/
   #guard_msgs in
   #eval chinese_zodiac 1998
   
-  /-
+  /--
   info: 'Fire Monkey'
   -/
   #guard_msgs in

@@ -60,19 +60,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in
   #eval count_safe_buildings "010"
   
-  /-
+  /--
   info: 1
   -/
   #guard_msgs in
   #eval count_safe_buildings "10001"
   
-  /-
+  /--
   info: 7
   -/
   #guard_msgs in

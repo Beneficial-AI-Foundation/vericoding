@@ -43,19 +43,19 @@ vc-theorems: |-
   sorry
 
 vc-postamble: |-
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval palindrome_rearranging "aabb"
   
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval palindrome_rearranging "abbcabb"
   
-  /-
+  /--
   info: False
   -/
   #guard_msgs in

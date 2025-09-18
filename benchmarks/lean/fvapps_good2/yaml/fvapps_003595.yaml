@@ -40,67 +40,67 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval p_num 0
   
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval p_num 1
   
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval p_num 5
   
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval p_num 100
   
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval g_p_num 0
   
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval g_p_num 1
   
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval g_p_num 2
   
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval g_p_num 5
   
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval s_p_num 1
   
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval s_p_num 9801
   
-  /-
+  /--
   info: False
   -/
   #guard_msgs in

@@ -51,19 +51,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 'WEDNESDAY'
   -/
   #guard_msgs in
   #eval get_weekday_name 8 5 2015
   
-  /-
+  /--
   info: 'SUNDAY'
   -/
   #guard_msgs in
   #eval get_weekday_name 1 1 2023
   
-  /-
+  /--
   info: 'MONDAY'
   -/
   #guard_msgs in

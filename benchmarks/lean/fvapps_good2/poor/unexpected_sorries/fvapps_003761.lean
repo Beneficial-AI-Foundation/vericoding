@@ -33,19 +33,19 @@ sorry
 -- Apps difficulty: introductory
 -- Assurance level: unguarded
 
-/-
+/--
 info: True
 -/
 #guard_msgs in
 #eval amicable_numbers 220 284
 
-/-
+/--
 info: False
 -/
 #guard_msgs in
 #eval amicable_numbers 220 280
 
-/-
+/--
 info: True
 -/
 #guard_msgs in

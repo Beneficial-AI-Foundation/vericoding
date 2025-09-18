@@ -40,13 +40,13 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: '1323'
   -/
   #guard_msgs in
   #eval find_max_digit_frequency ["345", "1323", "165", "98", "456"] "3"
   
-  /-
+  /--
   info: '335'
   -/
   #guard_msgs in

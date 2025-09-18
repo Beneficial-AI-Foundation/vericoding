@@ -49,19 +49,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded
   
-  /-
+  /--
   info: 7
   -/
   #guard_msgs in
   #eval count_consonants "sillystring"
   
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in
   #eval count_consonants "aeiou"
   
-  /-
+  /--
   info: 21
   -/
   #guard_msgs in

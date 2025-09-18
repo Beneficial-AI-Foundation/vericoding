@@ -51,19 +51,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded
   
-  /-
+  /--
   info: 4
   -/
   #guard_msgs in
   #eval longest_valid_prefix "<<>>"
   
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in
   #eval longest_valid_prefix "><"
   
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in

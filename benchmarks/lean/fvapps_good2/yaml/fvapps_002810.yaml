@@ -41,19 +41,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: [7, 9]
   -/
   #guard_msgs in
   #eval dropzone [6, 8] [[3, 2], [6, 1], [7, 9]]
   
-  /-
+  /--
   info: [5, 5]
   -/
   #guard_msgs in
   #eval dropzone [9, 2] [[1, 4], [9, 9], [5, 5]]
   
-  /-
+  /--
   info: [0, 1]
   -/
   #guard_msgs in

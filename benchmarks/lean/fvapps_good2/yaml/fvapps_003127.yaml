@@ -52,19 +52,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: [3, 9]
   -/
   #guard_msgs in
   #eval motif_locator "TTCCGGAACC" "CC"
   
-  /-
+  /--
   info: [1, 9]
   -/
   #guard_msgs in
   #eval motif_locator "ACGTTACAACGTTAG" "ACGT"
   
-  /-
+  /--
   info: []
   -/
   #guard_msgs in

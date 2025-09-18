@@ -32,25 +32,25 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval is_dd 664444309
   
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval is_dd 122
   
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval is_dd 30313
   
-  /-
+  /--
   info: False
   -/
   #guard_msgs in

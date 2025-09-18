@@ -61,13 +61,13 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 22
   -/
   #guard_msgs in
   #eval count_distinct_sequences "karp"
   
-  /-
+  /--
   info: 24
   -/
   #guard_msgs in

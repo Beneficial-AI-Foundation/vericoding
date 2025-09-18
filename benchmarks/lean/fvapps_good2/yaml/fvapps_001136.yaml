@@ -55,19 +55,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 'YESS(sunglass emo)'
   -/
   #guard_msgs in
   #eval solve_lovers_lcm 111
   
-  /-
+  /--
   info: 'YESS(sunglass emo)'
   -/
   #guard_msgs in
   #eval solve_lovers_lcm 10
   
-  /-
+  /--
   info: 'YESS(sunglass emo)'
   -/
   #guard_msgs in

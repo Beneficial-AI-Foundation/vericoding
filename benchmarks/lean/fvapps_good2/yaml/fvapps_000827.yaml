@@ -54,19 +54,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 100
   -/
   #guard_msgs in
   #eval find_max_team_score 7 [10, 40, 30, 30, 20, 0, 0]
   
-  /-
+  /--
   info: 100
   -/
   #guard_msgs in
   #eval find_max_team_score 7 [50, 20, 30, 10, 40, 15, 25]
   
-  /-
+  /--
   info: 60
   -/
   #guard_msgs in

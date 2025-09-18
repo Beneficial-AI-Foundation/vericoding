@@ -33,19 +33,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval same [[2, 5], [3, 6]] [[5, 2], [3, 6]]
   
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval same [] []
   
-  /-
+  /--
   info: False
   -/
   #guard_msgs in

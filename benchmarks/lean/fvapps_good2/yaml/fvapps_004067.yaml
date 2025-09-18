@@ -24,25 +24,25 @@ vc-theorems: |-
   sorry
 
 vc-postamble: |-
-  /-
+  /--
   info: 'int'
   -/
   #guard_msgs in
   #eval types 23
   
-  /-
+  /--
   info: 'float'
   -/
   #guard_msgs in
   #eval types 2.3
   
-  /-
+  /--
   info: 'str'
   -/
   #guard_msgs in
   #eval types "Hello"
   
-  /-
+  /--
   info: 'bool'
   -/
   #guard_msgs in

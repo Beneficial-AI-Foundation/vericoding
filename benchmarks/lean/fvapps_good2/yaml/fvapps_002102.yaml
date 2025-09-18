@@ -33,19 +33,19 @@ vc-postamble: |-
   -- Apps difficulty: competition
   -- Assurance level: guarded_and_plausible
   
-  /-
+  /--
   info: 4
   -/
   #guard_msgs in
   #eval count_distinct_names ["mihail", "oolyana", "kooooper", "hoon", "ulyana", "koouper", "mikhail", "khun", "kuooper", "kkkhoon"]
   
-  /-
+  /--
   info: 5
   -/
   #guard_msgs in
   #eval count_distinct_names ["hariton", "hkariton", "buoi", "kkkhariton", "boooi", "bui", "khariton", "boui", "boi"]
   
-  /-
+  /--
   info: 1
   -/
   #guard_msgs in

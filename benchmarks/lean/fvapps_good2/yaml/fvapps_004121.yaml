@@ -34,19 +34,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 'aid'
   -/
   #guard_msgs in
   #eval hidden 637
   
-  /-
+  /--
   info: 'dean'
   -/
   #guard_msgs in
   #eval hidden 7468
   
-  /-
+  /--
   info: 'email'
   -/
   #guard_msgs in

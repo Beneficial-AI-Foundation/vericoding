@@ -43,19 +43,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 'Jhon'
   -/
   #guard_msgs in
   #eval series_sum_solver 2
   
-  /-
+  /--
   info: 'Ravi'
   -/
   #guard_msgs in
   #eval series_sum_solver 3
   
-  /-
+  /--
   info: 'Ravi'
   -/
   #guard_msgs in

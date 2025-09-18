@@ -40,19 +40,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: [10]
   -/
   #guard_msgs in
   #eval hex_to_decimal ["A"]
   
-  /-
+  /--
   info: [6691]
   -/
   #guard_msgs in
   #eval hex_to_decimal ["1A23"]
   
-  /-
+  /--
   info: [10, 6691, 11306]
   -/
   #guard_msgs in

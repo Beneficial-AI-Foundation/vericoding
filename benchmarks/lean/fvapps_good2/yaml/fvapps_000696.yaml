@@ -43,13 +43,13 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 27
   -/
   #guard_msgs in
   #eval calculate_string_weight "A"
   
-  /-
+  /--
   info: 65
   -/
   #guard_msgs in

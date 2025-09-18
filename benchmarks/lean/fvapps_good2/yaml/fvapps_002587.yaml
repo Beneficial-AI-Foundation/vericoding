@@ -23,19 +23,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
   
-  /-
+  /--
   info: 98765
   -/
   #guard_msgs in
   #eval find_largest_sequence "1234567898765"
   
-  /-
+  /--
   info: 67890
   -/
   #guard_msgs in
   #eval find_largest_sequence "1234567890"
   
-  /-
+  /--
   info: 12345
   -/
   #guard_msgs in

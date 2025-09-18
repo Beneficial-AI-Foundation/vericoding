@@ -38,13 +38,13 @@ vc-theorems: |-
   sorry
 
 vc-postamble: |-
-  /-
+  /--
   info: n
   -/
   #guard_msgs in
   #eval len solve_matrix_guessing(n, m, c, mock_query_func)
   
-  /-
+  /--
   info: m
   -/
   #guard_msgs in

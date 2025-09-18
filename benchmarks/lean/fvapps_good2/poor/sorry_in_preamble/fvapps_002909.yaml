@@ -47,25 +47,25 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval palindrome 1221
   
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval palindrome 123456
   
-  /-
+  /--
   info: 'Not valid'
   -/
   #guard_msgs in
   #eval palindrome "1221"
   
-  /-
+  /--
   info: 'Not valid'
   -/
   #guard_msgs in

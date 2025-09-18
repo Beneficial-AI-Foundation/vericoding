@@ -43,19 +43,19 @@ vc-postamble: |-
   -- Apps difficulty: competition
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 'b'
   -/
   #guard_msgs in
   #eval find_shortest_non_subsequence "atcoderregularcontest"
   
-  /-
+  /--
   info: 'aa'
   -/
   #guard_msgs in
   #eval find_shortest_non_subsequence "abcdefghijklmnopqrstuvwxyz"
   
-  /-
+  /--
   info: 'aca'
   -/
   #guard_msgs in

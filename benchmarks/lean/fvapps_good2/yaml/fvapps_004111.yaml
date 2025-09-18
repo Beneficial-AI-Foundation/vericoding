@@ -27,19 +27,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
   
-  /-
+  /--
   info: 70
   -/
   #guard_msgs in
   #eval mem_alloc [5, 1, 10, 0, 1, 7, 13, 14, 3, 12, 8, 10, 7, 12, 0, 600]
   
-  /-
+  /--
   info: 316
   -/
   #guard_msgs in
   #eval mem_alloc [53, 21, 10, 0, 1, 7, 13, 14, 3, 12, 8, 10, 7, 12, 0, 60]
   
-  /-
+  /--
   info: 826
   -/
   #guard_msgs in

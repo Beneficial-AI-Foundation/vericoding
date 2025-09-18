@@ -35,19 +35,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 'Automorphic'
   -/
   #guard_msgs in
   #eval automorphic 6
   
-  /-
+  /--
   info: 'Automorphic'
   -/
   #guard_msgs in
   #eval automorphic 25
   
-  /-
+  /--
   info: 'Not!!'
   -/
   #guard_msgs in

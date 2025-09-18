@@ -60,19 +60,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval is_inertial []
   
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval is_inertial [581, -384, 140, -287]
   
-  /-
+  /--
   info: True
   -/
   #guard_msgs in

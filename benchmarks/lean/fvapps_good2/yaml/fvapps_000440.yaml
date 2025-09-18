@@ -49,19 +49,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval valid_utf8 [197, 130, 1]
   
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval valid_utf8 [235, 140, 4]
   
-  /-
+  /--
   info: True
   -/
   #guard_msgs in

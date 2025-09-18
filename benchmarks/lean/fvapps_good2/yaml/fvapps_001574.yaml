@@ -26,19 +26,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
   
-  /-
+  /--
   info: 8
   -/
   #guard_msgs in
   #eval countOnes 4 7
   
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval countOnes 5 5
   
-  /-
+  /--
   info: 14846928141
   -/
   #guard_msgs in

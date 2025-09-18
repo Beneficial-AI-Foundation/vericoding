@@ -43,19 +43,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval check_palindromic_positives [12, 9, 61, 5, 14]
   
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval check_palindromic_positives [-1, 9, 61, 5, 14]
   
-  /-
+  /--
   info: False
   -/
   #guard_msgs in

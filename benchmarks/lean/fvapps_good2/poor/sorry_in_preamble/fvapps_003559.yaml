@@ -48,19 +48,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: '2'
   -/
   #guard_msgs in
   #eval expanded_form 2
   
-  /-
+  /--
   info: '40 + 2'
   -/
   #guard_msgs in
   #eval expanded_form 42
   
-  /-
+  /--
   info: '70000 + 300 + 4'
   -/
   #guard_msgs in

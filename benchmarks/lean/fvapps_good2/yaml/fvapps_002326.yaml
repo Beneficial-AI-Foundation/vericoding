@@ -36,19 +36,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded
   
-  /-
+  /--
   info: 5
   -/
   #guard_msgs in
   #eval length_of_last_word "Hello World"
   
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in
   #eval length_of_last_word "   "
   
-  /-
+  /--
   info: 7
   -/
   #guard_msgs in

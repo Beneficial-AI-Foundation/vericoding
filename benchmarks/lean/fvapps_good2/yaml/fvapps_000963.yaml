@@ -34,13 +34,13 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded
   
-  /-
+  /--
   info: 50
   -/
   #guard_msgs in
   #eval calculate_min_cost [(0, 0), (1000, 0), (1000, 2000), (0, 2000)] [(1000, 10), (2000, 15)]
   
-  /-
+  /--
   info: 6
   -/
   #guard_msgs in

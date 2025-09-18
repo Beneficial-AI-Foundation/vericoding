@@ -37,19 +37,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded
   
-  /-
+  /--
   info: 9
   -/
   #guard_msgs in
   #eval binary_string_to_decimal "hello"
   
-  /-
+  /--
   info: 31
   -/
   #guard_msgs in
   #eval binary_string_to_decimal "aeiou"
   
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in

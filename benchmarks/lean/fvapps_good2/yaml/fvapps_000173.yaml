@@ -40,19 +40,19 @@ vc-theorems: |-
   sorry
 
 vc-postamble: |-
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval is_scramble "great" "rgeat"
   
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval is_scramble "abcde" "caebd"
   
-  /-
+  /--
   info: True
   -/
   #guard_msgs in

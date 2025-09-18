@@ -40,19 +40,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: '1 2'
   -/
   #guard_msgs in
   #eval process_deque_operations ["append 1", "append 2", "append 3", "appendleft 4", "pop", "popleft"]
   
-  /-
+  /--
   info: '10 15'
   -/
   #guard_msgs in
   #eval process_deque_operations ["append 5", "appendleft 10", "pop", "append 15"]
   
-  /-
+  /--
   info: ''
   -/
   #guard_msgs in

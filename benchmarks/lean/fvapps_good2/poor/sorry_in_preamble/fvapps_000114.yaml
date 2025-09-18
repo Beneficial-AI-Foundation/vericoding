@@ -42,25 +42,25 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: []
   -/
   #guard_msgs in
   #eval solve_xor_sum 4 [1, 2, 3, 6]
   
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval len solve_xor_sum(1, [8])
   
-  /-
+  /--
   info: 2 * (arr[0] ^ arr[1] ^ arr[2])
   -/
   #guard_msgs in
   #eval sum [8] + result
   
-  /-
+  /--
   info: 2 * xor
   -/
   #guard_msgs in

@@ -40,13 +40,13 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded
   
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in
   #eval calc_max_product 2 #[1, 2, 3]
   
-  /-
+  /--
   info: 105
   -/
   #guard_msgs in

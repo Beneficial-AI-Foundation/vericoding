@@ -38,19 +38,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval bingo [["B", "I", "N", "G", "O"], [1, 16, 31, 46, 61], [3, 18, 33, 48, 63], [5, 20, "FREE SPACE", 50, 65], [7, 22, 37, 52, 67], [9, 24, 39, 54, 69]] ["B1", "I16", "N31", "G46", "O61"]
   
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval bingo [["B", "I", "N", "G", "O"], [1, 16, 31, 46, 61], [3, 18, 33, 48, 63], [5, 20, "FREE SPACE", 50, 65], [7, 22, 37, 52, 67], [9, 24, 39, 54, 69]] ["B1", "I16", "N31", "G46"]
   
-  /-
+  /--
   info: True
   -/
   #guard_msgs in

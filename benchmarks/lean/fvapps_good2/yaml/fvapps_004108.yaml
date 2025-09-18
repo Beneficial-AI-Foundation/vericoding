@@ -27,19 +27,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
   
-  /-
+  /--
   info: [1, 1, 2, 3, 4]
   -/
   #guard_msgs in
   #eval sort_number [1, 2, 3, 4, 5]
   
-  /-
+  /--
   info: [1, 2, 2]
   -/
   #guard_msgs in
   #eval sort_number [2, 2, 2]
   
-  /-
+  /--
   info: [1]
   -/
   #guard_msgs in

@@ -47,31 +47,31 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: '1'
   -/
   #guard_msgs in
   #eval look_and_say_sequence "1" 1
   
-  /-
+  /--
   info: '21'
   -/
   #guard_msgs in
   #eval look_and_say_sequence "1" 3
   
-  /-
+  /--
   info: '111221'
   -/
   #guard_msgs in
   #eval look_and_say_sequence "1" 5
   
-  /-
+  /--
   info: '22'
   -/
   #guard_msgs in
   #eval look_and_say_sequence "22" 10
   
-  /-
+  /--
   info: '1114'
   -/
   #guard_msgs in

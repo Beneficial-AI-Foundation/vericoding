@@ -37,19 +37,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 'Hello World'
   -/
   #guard_msgs in
   #eval remove_exclamation_marks "Hello World!"
   
-  /-
+  /--
   info: 'Hi Hello'
   -/
   #guard_msgs in
   #eval remove_exclamation_marks "Hi! Hello!"
   
-  /-
+  /--
   info: 'Oh, no'
   -/
   #guard_msgs in

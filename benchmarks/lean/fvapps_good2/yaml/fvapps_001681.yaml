@@ -35,25 +35,25 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 5
   -/
   #guard_msgs in
   #eval mystery 6
   
-  /-
+  /--
   info: 6
   -/
   #guard_msgs in
   #eval mystery_inv 5
   
-  /-
+  /--
   info: 10
   -/
   #guard_msgs in
   #eval mystery mystery_inv(10)
   
-  /-
+  /--
   info: 'Gray code'
   -/
   #guard_msgs in

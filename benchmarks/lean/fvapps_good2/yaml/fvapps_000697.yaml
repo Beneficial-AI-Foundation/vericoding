@@ -33,13 +33,13 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: [5, 3, 5, 11]
   -/
   #guard_msgs in
   #eval dividing_machine 6 7 [2, 5, 8, 10, 3, 44] [[1, 2, 6], [0, 2, 3], [1, 2, 6], [0, 4, 6], [1, 1, 6], [0, 1, 6], [1, 4, 6]]
   
-  /-
+  /--
   info: [1]
   -/
   #guard_msgs in

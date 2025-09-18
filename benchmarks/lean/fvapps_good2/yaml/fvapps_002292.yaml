@@ -29,19 +29,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval check_perfect_number 28
   
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval check_perfect_number 12
   
-  /-
+  /--
   info: False
   -/
   #guard_msgs in

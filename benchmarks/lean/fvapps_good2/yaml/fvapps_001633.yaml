@@ -44,19 +44,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 'poisson'
   -/
   #guard_msgs in
   #eval identify_distribution [1, 2, 3, 2, 1]
   
-  /-
+  /--
   info: 'poisson'
   -/
   #guard_msgs in
   #eval identify_distribution [10, 8, 9, 8, 12]
   
-  /-
+  /--
   info: 'poisson'
   -/
   #guard_msgs in

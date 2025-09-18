@@ -36,19 +36,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 'cabac'
   -/
   #guard_msgs in
   #eval shortest_common_supersequence "abac" "cab"
   
-  /-
+  /--
   info: 6
   -/
   #guard_msgs in
   #eval len shortest_common_supersequence("abc", "def")
   
-  /-
+  /--
   info: 'aaaaa'
   -/
   #guard_msgs in

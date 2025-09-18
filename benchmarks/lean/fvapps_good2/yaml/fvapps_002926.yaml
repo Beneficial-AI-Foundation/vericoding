@@ -49,19 +49,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: [5, 50]
   -/
   #guard_msgs in
   #eval big_primefac_div 100
   
-  /-
+  /--
   info: []
   -/
   #guard_msgs in
   #eval big_primefac_div 997
   
-  /-
+  /--
   info: [5, 900]
   -/
   #guard_msgs in

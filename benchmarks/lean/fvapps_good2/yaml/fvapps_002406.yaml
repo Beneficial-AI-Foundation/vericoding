@@ -39,19 +39,19 @@ vc-theorems: |-
   sorry
 
 vc-postamble: |-
-  /-
+  /--
   info: '1'
   -/
   #guard_msgs in
   #eval count_and_say 1
   
-  /-
+  /--
   info: '1211'
   -/
   #guard_msgs in
   #eval count_and_say 4
   
-  /-
+  /--
   info: '111221'
   -/
   #guard_msgs in

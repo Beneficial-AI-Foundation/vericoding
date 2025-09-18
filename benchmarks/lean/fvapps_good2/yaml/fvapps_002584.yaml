@@ -42,19 +42,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval scf [200, 30, 18, 8, 64, 34]
   
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in
   #eval scf [21, 45, 51, 27, 33]
   
-  /-
+  /--
   info: 1
   -/
   #guard_msgs in

@@ -48,19 +48,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 'YES'
   -/
   #guard_msgs in
   #eval can_reorder_string "LTIMEAZAZAITLME"
   
-  /-
+  /--
   info: 'YES'
   -/
   #guard_msgs in
   #eval can_reorder_string "LLLTTTIIIMMMEEEAHA"
   
-  /-
+  /--
   info: 'NO'
   -/
   #guard_msgs in

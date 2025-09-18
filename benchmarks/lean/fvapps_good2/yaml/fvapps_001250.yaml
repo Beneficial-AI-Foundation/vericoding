@@ -32,19 +32,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 'YES'
   -/
   #guard_msgs in
   #eval can_obtain_k 6 85 [(1, 2), (2, 3), (2, 4), (4, 5), (3, 6)] [3, 5, 4, 7, 1, 9]
   
-  /-
+  /--
   info: 'YES'
   -/
   #guard_msgs in
   #eval can_obtain_k 3 4 [(1, 2), (1, 3)] [2, 3, 1]
   
-  /-
+  /--
   info: 'NO'
   -/
   #guard_msgs in

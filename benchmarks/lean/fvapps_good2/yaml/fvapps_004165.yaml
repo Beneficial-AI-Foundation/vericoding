@@ -28,19 +28,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 256
   -/
   #guard_msgs in
   #eval next_higher 128
   
-  /-
+  /--
   info: 191
   -/
   #guard_msgs in
   #eval next_higher 127
   
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in

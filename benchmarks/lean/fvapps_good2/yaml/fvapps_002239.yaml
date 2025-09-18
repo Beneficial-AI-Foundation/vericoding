@@ -32,25 +32,25 @@ vc-postamble: |-
   -- Apps difficulty: competition
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval solve_test 2 [1, 1]
   
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval solve_test 3 [1, 31, 12]
   
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval solve_test 3 [12345, 67, 84]
   
-  /-
+  /--
   info: 31680
   -/
   #guard_msgs in

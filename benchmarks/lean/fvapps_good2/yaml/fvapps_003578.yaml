@@ -41,19 +41,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: '*'
   -/
   #guard_msgs in
   #eval execute ""
   
-  /-
+  /--
   info: '******'
   -/
   #guard_msgs in
   #eval execute "FFFFF"
   
-  /-
+  /--
   info: '    ****\r\n    *  *\r\n    *  *\r\n********\r\n    *   \r\n    *   '
   -/
   #guard_msgs in

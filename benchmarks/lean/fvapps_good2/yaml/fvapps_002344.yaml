@@ -44,19 +44,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: '1a'
   -/
   #guard_msgs in
   #eval to_hex 26
   
-  /-
+  /--
   info: 'ffffffff'
   -/
   #guard_msgs in
   #eval to_hex -1
   
-  /-
+  /--
   info: '0'
   -/
   #guard_msgs in

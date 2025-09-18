@@ -41,19 +41,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded
   
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in
   #eval find_best_value [4, 9, 3] 10
   
-  /-
+  /--
   info: 5
   -/
   #guard_msgs in
   #eval find_best_value [2, 3, 5] 10
   
-  /-
+  /--
   info: 11361
   -/
   #guard_msgs in

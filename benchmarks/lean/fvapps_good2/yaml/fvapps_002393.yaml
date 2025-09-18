@@ -40,19 +40,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded
   
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in
   #eval min_moves [1, 2, 3]
   
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in
   #eval min_moves [1, 1, 1]
   
-  /-
+  /--
   info: 6
   -/
   #guard_msgs in

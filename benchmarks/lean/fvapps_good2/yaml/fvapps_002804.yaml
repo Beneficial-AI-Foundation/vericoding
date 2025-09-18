@@ -36,19 +36,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: expected1
   -/
   #guard_msgs in
   #eval reverse_sentence "Hello !Nhoj Want to have lunch?"
   
-  /-
+  /--
   info: expected2
   -/
   #guard_msgs in
   #eval reverse_sentence "CodeWars rules!"
   
-  /-
+  /--
   info: expected3
   -/
   #guard_msgs in

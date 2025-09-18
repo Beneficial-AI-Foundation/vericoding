@@ -29,19 +29,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
   
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in
   #eval process_chefgram_filters "wwwwwwwwww" ["+-+-+-+-+-", "----------", "+---------"]
   
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval process_chefgram_filters "wbwbwbwbwb" ["+-+-+-+-+-", "+-+-------", "----+-+-+-"]
   
-  /-
+  /--
   info: 4
   -/
   #guard_msgs in

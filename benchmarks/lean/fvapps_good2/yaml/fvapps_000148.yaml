@@ -56,19 +56,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in
   #eval partition_disjoint [5, 0, 3, 8, 6]
   
-  /-
+  /--
   info: 4
   -/
   #guard_msgs in
   #eval partition_disjoint [1, 1, 1, 0, 6, 12]
   
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in

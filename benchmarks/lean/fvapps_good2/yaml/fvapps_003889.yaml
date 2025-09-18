@@ -37,19 +37,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: '2.60000e+01'
   -/
   #guard_msgs in
   #eval sum_prod "5*4+6"
   
-  /-
+  /--
   info: '2.90000e+01'
   -/
   #guard_msgs in
   #eval sum_prod "5+4*6"
   
-  /-
+  /--
   info: '3.58000e+01'
   -/
   #guard_msgs in

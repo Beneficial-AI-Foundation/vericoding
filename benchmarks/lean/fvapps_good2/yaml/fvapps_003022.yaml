@@ -33,19 +33,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 5076
   -/
   #guard_msgs in
   #eval trotter 1692
   
-  /-
+  /--
   info: 90
   -/
   #guard_msgs in
   #eval trotter 2
   
-  /-
+  /--
   info: 'INSOMNIA'
   -/
   #guard_msgs in

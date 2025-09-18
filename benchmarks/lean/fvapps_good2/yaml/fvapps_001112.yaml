@@ -43,19 +43,19 @@ vc-theorems: |-
   sorry
 
 vc-postamble: |-
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval count_squares 85
   
-  /-
+  /--
   info: 4
   -/
   #guard_msgs in
   #eval count_squares 114
   
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in

@@ -68,19 +68,19 @@ vc-postamble: |-
   -- Apps difficulty: competition
   -- Assurance level: guarded
   
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in
   #eval get_max_beauty 6 1 [3, 6, 10, 12, 13, 16]
   
-  /-
+  /--
   info: 7
   -/
   #guard_msgs in
   #eval get_max_beauty 5 3 [8, 21, 52, 15, 77]
   
-  /-
+  /--
   info: 16
   -/
   #guard_msgs in

@@ -49,19 +49,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 'not valid'
   -/
   #guard_msgs in
   #eval check_password ""
   
-  /-
+  /--
   info: 'not valid'
   -/
   #guard_msgs in
   #eval check_password "Password123"
   
-  /-
+  /--
   info: 'valid'
   -/
   #guard_msgs in

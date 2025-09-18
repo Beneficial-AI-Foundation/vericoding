@@ -29,19 +29,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval circle_area 0
   
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval circle_area "An integer"
   
-  /-
+  /--
   info: 12.57
   -/
   #guard_msgs in

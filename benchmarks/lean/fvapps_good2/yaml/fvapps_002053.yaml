@@ -26,19 +26,19 @@ vc-postamble: |-
   -- Apps difficulty: competition
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 5
   -/
   #guard_msgs in
   #eval count_substring_ways "ababa" "aba"
   
-  /-
+  /--
   info: 274201
   -/
   #guard_msgs in
   #eval count_substring_ways "welcometoroundtwohundredandeightytwo" "d"
   
-  /-
+  /--
   info: 12
   -/
   #guard_msgs in

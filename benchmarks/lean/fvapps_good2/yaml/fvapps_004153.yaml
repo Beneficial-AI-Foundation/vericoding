@@ -38,19 +38,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 'three'
   -/
   #guard_msgs in
   #eval uncollapse "three"
   
-  /-
+  /--
   info: 'eight six'
   -/
   #guard_msgs in
   #eval uncollapse "eightsix"
   
-  /-
+  /--
   info: 'five four seven'
   -/
   #guard_msgs in

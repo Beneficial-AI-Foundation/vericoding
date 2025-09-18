@@ -38,19 +38,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 'YES'
   -/
   #guard_msgs in
   #eval can_transform_triangle 5
   
-  /-
+  /--
   info: 'NO'
   -/
   #guard_msgs in
   #eval can_transform_triangle 3
   
-  /-
+  /--
   info: 'YES'
   -/
   #guard_msgs in

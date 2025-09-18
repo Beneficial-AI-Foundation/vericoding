@@ -41,19 +41,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: '1.024 kB'
   -/
   #guard_msgs in
   #eval memorysize_conversion "1 KiB"
   
-  /-
+  /--
   info: '9.095 TiB'
   -/
   #guard_msgs in
   #eval memorysize_conversion "10 TB"
   
-  /-
+  /--
   info: '4.402 GB'
   -/
   #guard_msgs in

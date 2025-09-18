@@ -36,19 +36,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
   
-  /-
+  /--
   info: 5
   -/
   #guard_msgs in
   #eval count_distinct_stamps ["UK", "China", "USA", "France", "New Zealand", "UK", "France"]
   
-  /-
+  /--
   info: 1
   -/
   #guard_msgs in
   #eval count_distinct_stamps ["India", "India", "India"]
   
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in

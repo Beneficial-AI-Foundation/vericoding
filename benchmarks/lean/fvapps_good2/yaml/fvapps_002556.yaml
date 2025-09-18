@@ -38,19 +38,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 'Truck Driver'
   -/
   #guard_msgs in
   #eval find_employees_role "Morty Smith"
   
-  /-
+  /--
   info: 'Admin'
   -/
   #guard_msgs in
   #eval find_employees_role "Anna Bell"
   
-  /-
+  /--
   info: 'Does not work here!'
   -/
   #guard_msgs in

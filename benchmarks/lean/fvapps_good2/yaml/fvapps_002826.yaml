@@ -42,31 +42,31 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: [3, [2, 3, 3]]
   -/
   #guard_msgs in
   #eval prod_int_part 18
   
-  /-
+  /--
   info: [10, [2, 2, 3, 5]]
   -/
   #guard_msgs in
   #eval prod_int_part 60
   
-  /-
+  /--
   info: [6, [2, 3, 3, 3]]
   -/
   #guard_msgs in
   #eval prod_int_part 54
   
-  /-
+  /--
   info: [0, []]
   -/
   #guard_msgs in
   #eval prod_int_part 37
   
-  /-
+  /--
   info: [0, []]
   -/
   #guard_msgs in

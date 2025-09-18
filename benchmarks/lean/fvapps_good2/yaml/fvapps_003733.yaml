@@ -41,19 +41,19 @@ vc-theorems: |-
   sorry
 
 vc-postamble: |-
-  /-
+  /--
   info: '1 glass of water'
   -/
   #guard_msgs in
   #eval hydrate "1 beer"
   
-  /-
+  /--
   info: '3 glasses of water'
   -/
   #guard_msgs in
   #eval hydrate "2 glasses of wine and 1 shot"
   
-  /-
+  /--
   info: '10 glasses of water'
   -/
   #guard_msgs in

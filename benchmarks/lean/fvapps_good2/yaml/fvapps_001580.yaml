@@ -53,19 +53,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 'bab'
   -/
   #guard_msgs in
   #eval longest_palindrome "babad"
   
-  /-
+  /--
   info: 'abababa'
   -/
   #guard_msgs in
   #eval longest_palindrome "abababa"
   
-  /-
+  /--
   info: 'bb'
   -/
   #guard_msgs in

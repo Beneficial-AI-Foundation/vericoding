@@ -31,25 +31,25 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
   
-  /-
+  /--
   info: (1, 1)
   -/
   #guard_msgs in
   #eval rat_at 0
   
-  /-
+  /--
   info: (1, 3)
   -/
   #guard_msgs in
   #eval rat_at 3
   
-  /-
+  /--
   info: (3, 2)
   -/
   #guard_msgs in
   #eval rat_at 4
   
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in

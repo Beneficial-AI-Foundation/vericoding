@@ -25,19 +25,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
   
-  /-
+  /--
   info: 1023
   -/
   #guard_msgs in
   #eval next_happy_year 1001
   
-  /-
+  /--
   info: 7801
   -/
   #guard_msgs in
   #eval next_happy_year 7712
   
-  /-
+  /--
   info: 9012
   -/
   #guard_msgs in

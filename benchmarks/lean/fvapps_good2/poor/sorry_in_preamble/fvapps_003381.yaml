@@ -43,19 +43,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 'bracadabra'
   -/
   #guard_msgs in
   #eval solve "abracadabra" 1
   
-  /-
+  /--
   info: 'rcdbr'
   -/
   #guard_msgs in
   #eval solve "abracadabra" 6
   
-  /-
+  /--
   info: 'cccbbabaccbc'
   -/
   #guard_msgs in

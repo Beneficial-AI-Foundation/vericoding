@@ -45,19 +45,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 'Sunny day!  #vvv'
   -/
   #guard_msgs in
   #eval omit_hashtag "Sunny day! #lta #vvv" "#lta"
   
-  /-
+  /--
   info: ' #picture_contest'
   -/
   #guard_msgs in
   #eval omit_hashtag "#lta #picture_contest" "#lta"
   
-  /-
+  /--
   info: ' #picture_contest #lta'
   -/
   #guard_msgs in

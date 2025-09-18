@@ -45,13 +45,13 @@ vc-postamble: |-
   -- Apps difficulty: competition
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 25
   -/
   #guard_msgs in
   #eval min_cost_to_cut_trees 5 [1, 2, 3, 4, 5] [5, 4, 3, 2, 0]
   
-  /-
+  /--
   info: 138
   -/
   #guard_msgs in

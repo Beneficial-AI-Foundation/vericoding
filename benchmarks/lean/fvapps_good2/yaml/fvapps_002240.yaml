@@ -53,19 +53,19 @@ vc-postamble: |-
   -- Apps difficulty: competition
   -- Assurance level: guarded
   
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in
   #eval solve_haystack 4 5 [1, 0, 3, 2]
   
-  /-
+  /--
   info: 101
   -/
   #guard_msgs in
   #eval solve_haystack 2 2 [100, 1]
   
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in

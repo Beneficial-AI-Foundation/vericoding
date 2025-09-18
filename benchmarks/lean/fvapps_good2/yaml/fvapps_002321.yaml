@@ -57,19 +57,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: '5F3Z-2E9W'
   -/
   #guard_msgs in
   #eval license_key_formatting "5F3Z-2e-9-w" 4
   
-  /-
+  /--
   info: '2-5G-3J'
   -/
   #guard_msgs in
   #eval license_key_formatting "2-5g-3-J" 2
   
-  /-
+  /--
   info: 'A-B-C'
   -/
   #guard_msgs in

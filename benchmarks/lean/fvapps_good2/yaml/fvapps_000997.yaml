@@ -45,19 +45,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: ['FEELS GOOD', 'FEELS BAD', 'FEELS GOOD']
   -/
   #guard_msgs in
   #eval check_numbers [153, 11, 1634]
   
-  /-
+  /--
   info: ['FEELS GOOD', 'FEELS GOOD', 'FEELS GOOD']
   -/
   #guard_msgs in
   #eval check_numbers [370, 371, 407]
   
-  /-
+  /--
   info: ['FEELS BAD', 'FEELS BAD', 'FEELS BAD']
   -/
   #guard_msgs in

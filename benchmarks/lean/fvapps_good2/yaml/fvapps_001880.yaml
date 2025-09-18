@@ -42,19 +42,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 14
   -/
   #guard_msgs in
   #eval shoppingOffers [2, 5] [[3, 0, 5], [1, 2, 10]] [3, 2]
   
-  /-
+  /--
   info: 11
   -/
   #guard_msgs in
   #eval shoppingOffers [2, 3, 4] [[1, 1, 0, 4], [2, 2, 1, 9]] [1, 2, 1]
   
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in

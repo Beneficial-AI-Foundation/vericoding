@@ -57,19 +57,19 @@ vc-theorems: |-
   sorry
 
 vc-postamble: |-
-  /-
+  /--
   info: 26
   -/
   #guard_msgs in
   #eval calculate_palindromes 1
   
-  /-
+  /--
   info: 52
   -/
   #guard_msgs in
   #eval calculate_palindromes 2
   
-  /-
+  /--
   info: 728
   -/
   #guard_msgs in

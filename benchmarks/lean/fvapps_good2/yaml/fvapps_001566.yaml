@@ -36,19 +36,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded
   
-  /-
+  /--
   info: 89
   -/
   #guard_msgs in
   #eval sq_cub_rev_prime 1
   
-  /-
+  /--
   info: 271
   -/
   #guard_msgs in
   #eval sq_cub_rev_prime 2
   
-  /-
+  /--
   info: 325
   -/
   #guard_msgs in

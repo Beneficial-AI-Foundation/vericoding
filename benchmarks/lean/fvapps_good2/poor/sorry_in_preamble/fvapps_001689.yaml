@@ -46,19 +46,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: sorted(['a'])
   -/
   #guard_msgs in
   #eval sorted permutations("a")
   
-  /-
+  /--
   info: sorted(['ab', 'ba'])
   -/
   #guard_msgs in
   #eval sorted permutations("ab")
   
-  /-
+  /--
   info: sorted(['aabb', 'abab', 'abba', 'baab', 'baba', 'bbaa'])
   -/
   #guard_msgs in

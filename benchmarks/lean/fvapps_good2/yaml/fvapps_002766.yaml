@@ -32,19 +32,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 34
   -/
   #guard_msgs in
   #eval generate_number [1, 2, 3, 4, 6, 9, 10, 15, 69] 34
   
-  /-
+  /--
   info: 29
   -/
   #guard_msgs in
   #eval generate_number [1, 2, 3, 4, 6, 9, 10, 11, 15, 69] 11
   
-  /-
+  /--
   info: None
   -/
   #guard_msgs in

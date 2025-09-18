@@ -49,19 +49,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded
   
-  /-
+  /--
   info: [10, 12, 18, 20]
   -/
   #guard_msgs in
   #eval rthn_between 0 20
   
-  /-
+  /--
   info: [200, 201, 204, 207, 209, 210]
   -/
   #guard_msgs in
   #eval rthn_between 200 210
   
-  /-
+  /--
   info: []
   -/
   #guard_msgs in

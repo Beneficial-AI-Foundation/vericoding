@@ -24,19 +24,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
   
-  /-
+  /--
   info: 1
   -/
   #guard_msgs in
   #eval min_cost_to_move_chips [1, 2, 3]
   
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval min_cost_to_move_chips [2, 2, 2, 3, 3]
   
-  /-
+  /--
   info: 1
   -/
   #guard_msgs in

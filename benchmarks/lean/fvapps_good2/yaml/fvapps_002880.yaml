@@ -51,19 +51,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
   
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in
   #eval levenshtein "kitten" "sitting"
   
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval levenshtein "book" "back"
   
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in

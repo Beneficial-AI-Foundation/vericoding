@@ -37,25 +37,25 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 'For Reasons Unknown'
   -/
   #guard_msgs in
   #eval longest_possible 215
   
-  /-
+  /--
   info: 'YYZ'
   -/
   #guard_msgs in
   #eval longest_possible 270
   
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval longest_possible 13
   
-  /-
+  /--
   info: 'Surfing With The Alien'
   -/
   #guard_msgs in

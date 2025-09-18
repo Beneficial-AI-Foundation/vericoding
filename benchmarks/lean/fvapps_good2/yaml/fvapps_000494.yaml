@@ -64,19 +64,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 'lee(t(c)o)de'
   -/
   #guard_msgs in
   #eval minRemoveToMakeValid "lee(t(c)o)de)"
   
-  /-
+  /--
   info: 'ab(c)d'
   -/
   #guard_msgs in
   #eval minRemoveToMakeValid "a)b(c)d"
   
-  /-
+  /--
   info: ''
   -/
   #guard_msgs in

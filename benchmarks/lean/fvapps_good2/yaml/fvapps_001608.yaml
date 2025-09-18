@@ -38,19 +38,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval isNStraightHand [1, 2, 3, 6, 2, 3, 4, 7, 8] 3
   
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval isNStraightHand [1, 2, 3, 4, 5] 4
   
-  /-
+  /--
   info: True
   -/
   #guard_msgs in

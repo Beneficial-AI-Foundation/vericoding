@@ -38,43 +38,43 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: None
   -/
   #guard_msgs in
   #eval watch_pyramid_from_the_side None
   
-  /-
+  /--
   info: ''
   -/
   #guard_msgs in
   #eval watch_pyramid_from_the_side ""
   
-  /-
+  /--
   info: -1
   -/
   #guard_msgs in
   #eval count_visible_characters_of_the_pyramid None
   
-  /-
+  /--
   info: expected_side
   -/
   #guard_msgs in
   #eval watch_pyramid_from_the_side "abc"
   
-  /-
+  /--
   info: expected_above
   -/
   #guard_msgs in
   #eval watch_pyramid_from_above test_str
   
-  /-
+  /--
   info: 25
   -/
   #guard_msgs in
   #eval count_visible_characters_of_the_pyramid test_str
   
-  /-
+  /--
   info: 35
   -/
   #guard_msgs in

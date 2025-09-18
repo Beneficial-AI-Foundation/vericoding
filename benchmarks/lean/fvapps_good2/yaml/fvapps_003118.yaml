@@ -43,37 +43,37 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: '1 tomato'
   -/
   #guard_msgs in
   #eval sursurungal "1 tomato"
   
-  /-
+  /--
   info: '2 bubanana'
   -/
   #guard_msgs in
   #eval sursurungal "2 bananas"
   
-  /-
+  /--
   info: '3 bananazo'
   -/
   #guard_msgs in
   #eval sursurungal "3 bananas"
   
-  /-
+  /--
   info: '10 gabananaga'
   -/
   #guard_msgs in
   #eval sursurungal "10 bananas"
   
-  /-
+  /--
   info: '6 birdzo with 2 buwing each'
   -/
   #guard_msgs in
   #eval sursurungal "6 birds with 2 wings each"
   
-  /-
+  /--
   info: '\n3 pigzo\nmet 1 wolf\n2 buday ago'
   -/
   #guard_msgs in

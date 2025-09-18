@@ -31,37 +31,37 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
   
-  /-
+  /--
   info: 4
   -/
   #guard_msgs in
   #eval length_sup_u_k 23 12
   
-  /-
+  /--
   info: 35
   -/
   #guard_msgs in
   #eval length_sup_u_k 50 10
   
-  /-
+  /--
   info: 304
   -/
   #guard_msgs in
   #eval length_sup_u_k 500 100
   
-  /-
+  /--
   info: 1
   -/
   #guard_msgs in
   #eval comp 23
   
-  /-
+  /--
   info: 22
   -/
   #guard_msgs in
   #eval comp 100
   
-  /-
+  /--
   info: 63
   -/
   #guard_msgs in

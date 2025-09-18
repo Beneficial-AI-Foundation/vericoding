@@ -45,19 +45,19 @@ vc-postamble: |-
   -- Apps difficulty: competition
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: N1 - 1
   -/
   #guard_msgs in
   #eval len result
   
-  /-
+  /--
   info: -1
   -/
   #guard_msgs in
   #eval check_tree_with_distances 2 [1, 2]
   
-  /-
+  /--
   info: N3 - 1
   -/
   #guard_msgs in

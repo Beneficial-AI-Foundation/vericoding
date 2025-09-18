@@ -53,19 +53,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 'Constant'
   -/
   #guard_msgs in
   #eval order_type [[1, "b", ["p"], 2]]
   
-  /-
+  /--
   info: 'Increasing'
   -/
   #guard_msgs in
   #eval order_type [123, 1234, 12345, 123456]
   
-  /-
+  /--
   info: 'Decreasing'
   -/
   #guard_msgs in

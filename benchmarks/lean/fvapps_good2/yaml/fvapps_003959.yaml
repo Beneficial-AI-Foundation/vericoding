@@ -34,19 +34,19 @@ vc-theorems: |-
   sorry
 
 vc-postamble: |-
-  /-
+  /--
   info: 'aaaaa'
   -/
   #guard_msgs in
   #eval repeater "a" 5
   
-  /-
+  /--
   info: 'NaNaNaNaNaNaNaNaNaNaNaNaNaNaNaNa'
   -/
   #guard_msgs in
   #eval repeater "Na" 16
   
-  /-
+  /--
   info: 'Wub Wub Wub Wub Wub Wub '
   -/
   #guard_msgs in

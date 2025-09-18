@@ -36,19 +36,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
   
-  /-
+  /--
   info: 1
   -/
   #guard_msgs in
   #eval riders [18, 15]
   
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval riders [43, 23, 40, 13]
   
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in

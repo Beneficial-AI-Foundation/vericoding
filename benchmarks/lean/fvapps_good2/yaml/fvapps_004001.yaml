@@ -32,19 +32,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval equable_triangle 5 12 13
   
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval equable_triangle 2 3 4
   
-  /-
+  /--
   info: True
   -/
   #guard_msgs in

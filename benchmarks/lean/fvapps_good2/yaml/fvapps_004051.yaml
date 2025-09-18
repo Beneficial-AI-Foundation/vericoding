@@ -30,19 +30,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 1414
   -/
   #guard_msgs in
   #eval do_math "24z6 1z23 y369 89z 900b"
   
-  /-
+  /--
   info: 1299
   -/
   #guard_msgs in
   #eval do_math "24z6 1x23 y369 89a 900b"
   
-  /-
+  /--
   info: 60
   -/
   #guard_msgs in

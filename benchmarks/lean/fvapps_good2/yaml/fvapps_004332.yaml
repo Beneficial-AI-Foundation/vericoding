@@ -35,19 +35,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 'Two'
   -/
   #guard_msgs in
   #eval max_consec_zeros "9"
   
-  /-
+  /--
   info: 'Three'
   -/
   #guard_msgs in
   #eval max_consec_zeros "550"
   
-  /-
+  /--
   info: 'Eight'
   -/
   #guard_msgs in

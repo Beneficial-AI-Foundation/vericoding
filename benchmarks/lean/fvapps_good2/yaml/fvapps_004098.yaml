@@ -63,19 +63,19 @@ vc-theorems: |-
   sorry
 
 vc-postamble: |-
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval body_count "A6C2E5Z9A4.-F%8.08."
   
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval body_count "PP P6A6T5F5S3.-Z%1.11.hgr"
   
-  /-
+  /--
   info: False
   -/
   #guard_msgs in

@@ -39,19 +39,19 @@ vc-theorems: |-
   sorry
 
 vc-postamble: |-
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval check_if_can_break "abc" "xya"
   
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval check_if_can_break "abe" "acd"
   
-  /-
+  /--
   info: True
   -/
   #guard_msgs in

@@ -32,19 +32,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval is_polydivisible "123" 10
   
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval is_polydivisible "1234" 10
   
-  /-
+  /--
   info: True
   -/
   #guard_msgs in

@@ -44,19 +44,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded
   
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval find_min_divisor [2, 4, 8]
   
-  /-
+  /--
   info: -1
   -/
   #guard_msgs in
   #eval find_min_divisor [4, 7, 5]
   
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in

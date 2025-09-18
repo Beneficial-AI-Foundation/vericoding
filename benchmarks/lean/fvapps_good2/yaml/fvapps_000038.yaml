@@ -39,19 +39,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval solve_card_game 2 1 1 [2] [1]
   
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval solve_card_game 5 2 3 [2, 3] [1, 4, 5]
   
-  /-
+  /--
   info: True
   -/
   #guard_msgs in

@@ -38,19 +38,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: ''
   -/
   #guard_msgs in
   #eval chessboard 0 0
   
-  /-
+  /--
   info: '*.\n.*'
   -/
   #guard_msgs in
   #eval chessboard 2 2
   
-  /-
+  /--
   info: expected
   -/
   #guard_msgs in

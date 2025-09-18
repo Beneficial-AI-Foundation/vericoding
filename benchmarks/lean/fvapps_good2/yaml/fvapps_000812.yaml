@@ -41,19 +41,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 1
   -/
   #guard_msgs in
   #eval count_interesting_subsequences 4 2 [1, 2, 3, 4]
   
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in
   #eval count_interesting_subsequences 3 2 [2, 2, 2]
   
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in

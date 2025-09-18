@@ -39,19 +39,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval find132pattern [1, 2, 3, 4]
   
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval find132pattern [3, 1, 4, 2]
   
-  /-
+  /--
   info: True
   -/
   #guard_msgs in

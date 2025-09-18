@@ -37,19 +37,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
   
-  /-
+  /--
   info: 10
   -/
   #guard_msgs in
   #eval find_max_diff 4 3 [4, 2, 5, 1]
   
-  /-
+  /--
   info: 13
   -/
   #guard_msgs in
   #eval find_max_diff 3 5 [2, 5, 3]
   
-  /-
+  /--
   info: 6
   -/
   #guard_msgs in

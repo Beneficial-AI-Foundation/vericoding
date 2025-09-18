@@ -51,19 +51,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded
   
-  /-
+  /--
   info: [2, 1, 0]
   -/
   #guard_msgs in
   #eval solve ["abc", "abc", "xyz", "abcd", "cde"] ["abc", "cde", "uap"]
   
-  /-
+  /--
   info: [2, 1, 2]
   -/
   #guard_msgs in
   #eval solve ["abc", "xyz", "abc", "xyz", "cde"] ["abc", "cde", "xyz"]
   
-  /-
+  /--
   info: [2, 0, 1]
   -/
   #guard_msgs in

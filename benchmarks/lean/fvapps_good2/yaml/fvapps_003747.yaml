@@ -41,19 +41,19 @@ vc-theorems: |-
   sorry
 
 vc-postamble: |-
-  /-
+  /--
   info: [6, 4, 2, 12, 10, 8, 16, 14]
   -/
   #guard_msgs in
   #eval sel_reverse [2, 4, 6, 8, 10, 12, 14, 16] 3
   
-  /-
+  /--
   info: [2, 1, 4, 3, 6, 5]
   -/
   #guard_msgs in
   #eval sel_reverse [1, 2, 3, 4, 5, 6] 2
   
-  /-
+  /--
   info: [1, 2, 3, 4, 5, 6]
   -/
   #guard_msgs in

@@ -40,19 +40,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: test1_expected
   -/
   #guard_msgs in
   #eval solve_multiple_cases [1, 12, -5]
   
-  /-
+  /--
   info: test2_expected
   -/
   #guard_msgs in
   #eval solve_multiple_cases [-20, 0, 20]
   
-  /-
+  /--
   info: test3_expected
   -/
   #guard_msgs in

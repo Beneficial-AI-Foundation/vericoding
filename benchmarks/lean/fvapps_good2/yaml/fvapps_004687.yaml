@@ -63,19 +63,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: [1, 0]
   -/
   #guard_msgs in
   #eval knapsack 10 [[6, 9], [5, 5]]
   
-  /-
+  /--
   info: [5, 0, 0]
   -/
   #guard_msgs in
   #eval knapsack 10 [[2, 3], [3, 4], [4, 5]]
   
-  /-
+  /--
   info: [0, 0]
   -/
   #guard_msgs in

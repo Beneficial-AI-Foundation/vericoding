@@ -40,19 +40,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
   
-  /-
+  /--
   info: 4
   -/
   #guard_msgs in
   #eval find_nth_ugly_number 3 2 3 5
   
-  /-
+  /--
   info: 6
   -/
   #guard_msgs in
   #eval find_nth_ugly_number 4 2 3 4
   
-  /-
+  /--
   info: 10
   -/
   #guard_msgs in

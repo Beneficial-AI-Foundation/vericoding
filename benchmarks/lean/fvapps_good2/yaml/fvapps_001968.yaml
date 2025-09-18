@@ -32,19 +32,19 @@ vc-postamble: |-
   -- Apps difficulty: competition
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 10031003
   -/
   #guard_msgs in
   #eval process_queries "123123" [["2", "00"]]
   
-  /-
+  /--
   info: 1212
   -/
   #guard_msgs in
   #eval process_queries "123123" [["3", ""]]
   
-  /-
+  /--
   info: 777
   -/
   #guard_msgs in

@@ -40,19 +40,19 @@ vc-postamble: |-
   -- Apps difficulty: competition
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval find_max_remainder [3, 4, 5]
   
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in
   #eval find_max_remainder [1, 2, 4]
   
-  /-
+  /--
   info: 30
   -/
   #guard_msgs in

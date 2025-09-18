@@ -59,19 +59,19 @@ vc-theorems: |-
   sorry
 
 vc-postamble: |-
-  /-
+  /--
   info: [[3, 1]]
   -/
   #guard_msgs in
   #eval sol_equa 5
   
-  /-
+  /--
   info: [[45003, 22501], [9003, 4499], [981, 467], [309, 37]]
   -/
   #guard_msgs in
   #eval sol_equa 90005
   
-  /-
+  /--
   info: []
   -/
   #guard_msgs in

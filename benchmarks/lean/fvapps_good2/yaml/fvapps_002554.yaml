@@ -56,25 +56,25 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 'ninja, samurai and ronin'
   -/
   #guard_msgs in
   #eval format_words ["ninja", "samurai", "ronin"]
   
-  /-
+  /--
   info: 'ninja'
   -/
   #guard_msgs in
   #eval format_words ["ninja"]
   
-  /-
+  /--
   info: 'ninja and ronin'
   -/
   #guard_msgs in
   #eval format_words ["ninja", "", "ronin"]
   
-  /-
+  /--
   info: ''
   -/
   #guard_msgs in

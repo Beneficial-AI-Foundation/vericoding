@@ -44,19 +44,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded
   
-  /-
+  /--
   info: 4
   -/
   #guard_msgs in
   #eval array_pair_sum [1, 4, 3, 2]
   
-  /-
+  /--
   info: 4
   -/
   #guard_msgs in
   #eval array_pair_sum [1, 2, 3, 4]
   
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in

@@ -20,19 +20,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
   
-  /-
+  /--
   info: 254
   -/
   #guard_msgs in
   #eval get_weight "Joe"
   
-  /-
+  /--
   info: 1275
   -/
   #guard_msgs in
   #eval get_weight "George Washington"
   
-  /-
+  /--
   info: 214
   -/
   #guard_msgs in

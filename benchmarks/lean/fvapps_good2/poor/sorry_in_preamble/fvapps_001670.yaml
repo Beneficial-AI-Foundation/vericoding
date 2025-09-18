@@ -43,19 +43,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 'E'
   -/
   #guard_msgs in
   #eval decodeMorse decodeBits("1")
   
-  /-
+  /--
   info: 'E'
   -/
   #guard_msgs in
   #eval decodeMorse decodeBits("111")
   
-  /-
+  /--
   info: 'E'
   -/
   #guard_msgs in

@@ -53,19 +53,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: '5+2i'
   -/
   #guard_msgs in
   #eval complex_sum ["2+3i", "3-i"]
   
-  /-
+  /--
   info: '6i'
   -/
   #guard_msgs in
   #eval complex_sum ["i", "2i", "3i"]
   
-  /-
+  /--
   info: '0'
   -/
   #guard_msgs in

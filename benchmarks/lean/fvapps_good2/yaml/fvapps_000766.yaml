@@ -34,19 +34,19 @@ vc-theorems: |-
   sorry
 
 vc-postamble: |-
-  /-
+  /--
   info: 7
   -/
   #guard_msgs in
   #eval find_nth_number 3
   
-  /-
+  /--
   info: 37
   -/
   #guard_msgs in
   #eval find_nth_number 5
   
-  /-
+  /--
   info: 1
   -/
   #guard_msgs in

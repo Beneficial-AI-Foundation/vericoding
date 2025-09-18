@@ -45,25 +45,25 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval roll ""
   
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval roll {}
   
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval roll "abc"
   
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in

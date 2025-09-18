@@ -36,13 +36,13 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
   
-  /-
+  /--
   info: 1
   -/
   #guard_msgs in
   #eval count_quadruples 6 20 [3, 1, 1, 2, 5, 10]
   
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in

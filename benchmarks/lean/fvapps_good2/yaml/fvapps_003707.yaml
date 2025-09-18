@@ -39,19 +39,19 @@ vc-theorems: |-
   sorry
 
 vc-postamble: |-
-  /-
+  /--
   info: 4
   -/
   #guard_msgs in
   #eval missing "123567"
   
-  /-
+  /--
   info: 92
   -/
   #guard_msgs in
   #eval missing "899091939495"
   
-  /-
+  /--
   info: 100
   -/
   #guard_msgs in

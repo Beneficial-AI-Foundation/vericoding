@@ -26,19 +26,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: expected1
   -/
   #guard_msgs in
   #eval convert_hash_to_array {"name": "Jeremy"}
   
-  /-
+  /--
   info: expected2
   -/
   #guard_msgs in
   #eval convert_hash_to_array {"name": "Jeremy", "age": 24, "role": "Software Engineer"}
   
-  /-
+  /--
   info: expected3
   -/
   #guard_msgs in

@@ -39,19 +39,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 'cbafed'
   -/
   #guard_msgs in
   #eval reverse_and_combine_text "abc def"
   
-  /-
+  /--
   info: 'defabcjklghi'
   -/
   #guard_msgs in
   #eval reverse_and_combine_text "abc def ghi jkl"
   
-  /-
+  /--
   info: 'trzwqfdstrteettr45hh4325543544hjhjh21lllll'
   -/
   #guard_msgs in

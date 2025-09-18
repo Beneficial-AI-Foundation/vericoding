@@ -52,13 +52,13 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 'the cat was rat by the bat'
   -/
   #guard_msgs in
   #eval replace_words ["cat", "bat", "rat"] "the cattle was rattled by the battery"
   
-  /-
+  /--
   info: 'a a a'
   -/
   #guard_msgs in

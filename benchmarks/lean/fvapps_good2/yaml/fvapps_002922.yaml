@@ -44,31 +44,31 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded
   
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in
   #eval count_inversions #[]
   
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in
   #eval count_inversions #[1, 2, 3]
   
-  /-
+  /--
   info: 1
   -/
   #guard_msgs in
   #eval count_inversions #[2, 1, 3]
   
-  /-
+  /--
   info: 15
   -/
   #guard_msgs in
   #eval count_inversions #[6, 5, 4, 3, 2, 1]
   
-  /-
+  /--
   info: 30
   -/
   #guard_msgs in

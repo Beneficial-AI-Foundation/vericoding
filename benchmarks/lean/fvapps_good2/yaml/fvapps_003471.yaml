@@ -46,19 +46,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 'heLLO wORLd!'
   -/
   #guard_msgs in
   #eval swap "Hello world!" 11
   
-  /-
+  /--
   info: 'GooD MorNIng'
   -/
   #guard_msgs in
   #eval swap "gOOd MOrniNg" 7864
   
-  /-
+  /--
   info: 'the lord of the rings'
   -/
   #guard_msgs in

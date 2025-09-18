@@ -40,19 +40,19 @@ sorry
 -- Apps difficulty: interview
 -- Assurance level: unguarded
 
-/-
+/--
 info: [['a', 'c', 'f'], ['a', 'e', 'f']]
 -/
 #guard_msgs in
 #eval shortestPath {"a": {"b": 10, "c": 20, "e": 20}, "b": {"a": 10, "d": 20}, "c": {"a": 10, "f": 20}, "d": {"b": 10, "e": 20, "g": 20}, "e": {"a": 10, "d": 20, "f": 20}, "f": {"c": 10, "e": 20, "h": 20}, "g": {"d": 10, "h": 20}, "h": {"g": 10, "f": 20}} "a" "f"
 
-/-
+/--
 info: [['a', 'e']]
 -/
 #guard_msgs in
 #eval shortestPath topology1 "a" "e"
 
-/-
+/--
 info: [['a', 'c']]
 -/
 #guard_msgs in

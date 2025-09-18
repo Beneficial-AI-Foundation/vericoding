@@ -54,19 +54,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 19
   -/
   #guard_msgs in
   #eval max_sum_range_query [1, 2, 3, 4, 5] [[1, 3], [0, 1]]
   
-  /-
+  /--
   info: 11
   -/
   #guard_msgs in
   #eval max_sum_range_query [1, 2, 3, 4, 5, 6] [[0, 1]]
   
-  /-
+  /--
   info: 47
   -/
   #guard_msgs in

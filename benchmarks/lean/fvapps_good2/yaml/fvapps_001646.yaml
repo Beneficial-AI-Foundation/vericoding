@@ -42,19 +42,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: [[2, 12], [3, 27], [5, 15]]
   -/
   #guard_msgs in
   #eval sum_for_list [12, 15]
   
-  /-
+  /--
   info: [[2, 30], [3, 0], [5, 0]]
   -/
   #guard_msgs in
   #eval sum_for_list [15, 30, -45]
   
-  /-
+  /--
   info: [[2, 54], [3, 135], [5, 90], [7, 21]]
   -/
   #guard_msgs in

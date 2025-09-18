@@ -45,19 +45,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 538
   -/
   #guard_msgs in
   #eval bouncy_ratio 0.5
   
-  /-
+  /--
   info: 21780
   -/
   #guard_msgs in
   #eval bouncy_ratio 0.9
   
-  /-
+  /--
   info: 3088
   -/
   #guard_msgs in

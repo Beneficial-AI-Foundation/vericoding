@@ -42,19 +42,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded
   
-  /-
+  /--
   info: 9
   -/
   #guard_msgs in
   #eval max_gcd_sum [4, 4, 7, 6]
   
-  /-
+  /--
   info: 4
   -/
   #guard_msgs in
   #eval max_gcd_sum [2, 2, 2]
   
-  /-
+  /--
   info: 15
   -/
   #guard_msgs in

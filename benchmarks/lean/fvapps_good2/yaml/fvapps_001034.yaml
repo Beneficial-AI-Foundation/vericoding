@@ -31,19 +31,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded
   
-  /-
+  /--
   info: 6
   -/
   #guard_msgs in
   #eval solve_tile_count 2
   
-  /-
+  /--
   info: 16
   -/
   #guard_msgs in
   #eval solve_tile_count 3
   
-  /-
+  /--
   info: 42
   -/
   #guard_msgs in

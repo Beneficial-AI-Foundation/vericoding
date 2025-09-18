@@ -15,19 +15,19 @@ theorem maxprofit_bounds_pair (a b: Nat) :
 -- Apps difficulty: introductory
 -- Assurance level: guarded_and_plausible
 
-/-
+/--
 info: 7
 -/
 #guard_msgs in
 #eval maxProfit [7, 1, 5, 3, 6, 4]
 
-/-
+/--
 info: 4
 -/
 #guard_msgs in
 #eval maxProfit [1, 2, 3, 4, 5]
 
-/-
+/--
 info: 0
 -/
 #guard_msgs in

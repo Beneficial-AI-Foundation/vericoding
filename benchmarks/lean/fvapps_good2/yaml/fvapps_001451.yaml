@@ -24,19 +24,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
   
-  /-
+  /--
   info: (2, 4, 6, 9)
   -/
   #guard_msgs in
   #eval analyze_brackets 20 [1, 2, 1, 1, 2, 2, 1, 2, 1, 1, 2, 1, 2, 2, 1, 1, 2, 1, 2, 2]
   
-  /-
+  /--
   info: (1, 1, 2, 1)
   -/
   #guard_msgs in
   #eval analyze_brackets 2 [1, 2]
   
-  /-
+  /--
   info: (2, 2, 6, 1)
   -/
   #guard_msgs in

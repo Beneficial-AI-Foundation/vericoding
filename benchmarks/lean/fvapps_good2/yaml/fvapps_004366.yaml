@@ -46,31 +46,31 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval number_increasing 1
   
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval number_increasing 2
   
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval number_increasing 6
   
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval number_increasing 18
   
-  /-
+  /--
   info: True
   -/
   #guard_msgs in

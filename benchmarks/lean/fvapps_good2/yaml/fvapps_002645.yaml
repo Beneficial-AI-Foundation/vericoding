@@ -28,19 +28,19 @@ vc-theorems: |-
   sorry
 
 vc-postamble: |-
-  /-
+  /--
   info: 1
   -/
   #guard_msgs in
   #eval faro_cycles 2
   
-  /-
+  /--
   info: 8
   -/
   #guard_msgs in
   #eval faro_cycles 52
   
-  /-
+  /--
   info: 540
   -/
   #guard_msgs in

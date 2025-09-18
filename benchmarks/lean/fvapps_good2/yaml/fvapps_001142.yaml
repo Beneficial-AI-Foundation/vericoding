@@ -27,19 +27,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 'No'
   -/
   #guard_msgs in
   #eval is_divisible_by_digit_sum 16
   
-  /-
+  /--
   info: 'Yes'
   -/
   #guard_msgs in
   #eval is_divisible_by_digit_sum 27
   
-  /-
+  /--
   info: 'Yes'
   -/
   #guard_msgs in

@@ -43,19 +43,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in
   #eval find_longest_dividing_subsequence [2, 3, 7, 8, 14, 39, 145, 76, 320]
   
-  /-
+  /--
   info: 5
   -/
   #guard_msgs in
   #eval find_longest_dividing_subsequence [2, 11, 16, 12, 36, 60, 71, 17, 29, 144, 288, 129, 432, 993]
   
-  /-
+  /--
   info: 4
   -/
   #guard_msgs in

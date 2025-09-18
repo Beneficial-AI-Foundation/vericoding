@@ -32,19 +32,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 547
   -/
   #guard_msgs in
   #eval find_f1_eq_f2 542 5
   
-  /-
+  /--
   info: 1799
   -/
   #guard_msgs in
   #eval find_f1_eq_f2 1750 6
   
-  /-
+  /--
   info: 14996
   -/
   #guard_msgs in

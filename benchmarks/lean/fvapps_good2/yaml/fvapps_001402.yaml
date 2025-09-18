@@ -48,19 +48,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: [2, 3, 3]
   -/
   #guard_msgs in
   #eval longest_contiguous_subsequence 5 5 3 [1, 1, 0, 1, 1] "?!?!?"
   
-  /-
+  /--
   info: [1, 1, 1]
   -/
   #guard_msgs in
   #eval longest_contiguous_subsequence 3 3 2 [1, 0, 1] "???"
   
-  /-
+  /--
   info: [4, 4]
   -/
   #guard_msgs in

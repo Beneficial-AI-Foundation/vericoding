@@ -80,19 +80,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: '121'
   -/
   #guard_msgs in
   #eval find_closest_palindrome "123"
   
-  /-
+  /--
   info: '999'
   -/
   #guard_msgs in
   #eval find_closest_palindrome "1000"
   
-  /-
+  /--
   info: '1001'
   -/
   #guard_msgs in

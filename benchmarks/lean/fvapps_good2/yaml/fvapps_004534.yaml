@@ -37,19 +37,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded
   
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval count_comfortable_pairs 10 12
   
-  /-
+  /--
   info: 20
   -/
   #guard_msgs in
   #eval count_comfortable_pairs 1 9
   
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in

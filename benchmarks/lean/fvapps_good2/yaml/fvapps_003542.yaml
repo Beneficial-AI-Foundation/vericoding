@@ -38,25 +38,25 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval square_sums_row 5
   
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval square_sums_row 24
   
-  /-
+  /--
   info: 15
   -/
   #guard_msgs in
   #eval len square_sums_row(15)
   
-  /-
+  /--
   info: list(range(1, 16))
   -/
   #guard_msgs in

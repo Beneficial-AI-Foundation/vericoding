@@ -30,19 +30,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
   
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in
   #eval count_palindromic_substrings "abc"
   
-  /-
+  /--
   info: 6
   -/
   #guard_msgs in
   #eval count_palindromic_substrings "aaa"
   
-  /-
+  /--
   info: 10
   -/
   #guard_msgs in

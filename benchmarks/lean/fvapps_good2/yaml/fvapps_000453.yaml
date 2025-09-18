@@ -42,19 +42,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 10
   -/
   #guard_msgs in
   #eval maxValueAfterReverse [2, 3, 1, 5, 4]
   
-  /-
+  /--
   info: 68
   -/
   #guard_msgs in
   #eval maxValueAfterReverse [2, 4, 9, 24, 2, 1, 10]
   
-  /-
+  /--
   info: 8
   -/
   #guard_msgs in

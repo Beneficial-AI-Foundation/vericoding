@@ -46,19 +46,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded
   
-  /-
+  /--
   info: [41]
   -/
   #guard_msgs in
   #eval prime_maxlength_chain 100
   
-  /-
+  /--
   info: [197]
   -/
   #guard_msgs in
   #eval prime_maxlength_chain 200
   
-  /-
+  /--
   info: [499]
   -/
   #guard_msgs in

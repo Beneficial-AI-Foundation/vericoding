@@ -56,19 +56,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 'REACHED'
   -/
   #guard_msgs in
   #eval track_rakesh 20 20 4 5 "LLUUUUURRRRRR"
   
-  /-
+  /--
   info: 'DANGER'
   -/
   #guard_msgs in
   #eval track_rakesh 10 10 3 4 "UDUDDRR"
   
-  /-
+  /--
   info: 'SOMEWHERE'
   -/
   #guard_msgs in

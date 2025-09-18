@@ -51,19 +51,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: '275*+'
   -/
   #guard_msgs in
   #eval to_postfix "2+7*5"
   
-  /-
+  /--
   info: '33*71+/'
   -/
   #guard_msgs in
   #eval to_postfix "3*3/(7+1)"
   
-  /-
+  /--
   info: '562-9*+371-^+'
   -/
   #guard_msgs in

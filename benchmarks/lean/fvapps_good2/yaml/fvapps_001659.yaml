@@ -58,13 +58,13 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval path_finder "\n".join([".W.", ".W.", "..."])
   
-  /-
+  /--
   info: False
   -/
   #guard_msgs in

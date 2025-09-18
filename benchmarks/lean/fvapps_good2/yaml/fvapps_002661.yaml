@@ -33,19 +33,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: expected
   -/
   #guard_msgs in
   #eval areYouPlayingBanjo "Adam"
   
-  /-
+  /--
   info: expected
   -/
   #guard_msgs in
   #eval areYouPlayingBanjo "Ringo"
   
-  /-
+  /--
   info: expected
   -/
   #guard_msgs in

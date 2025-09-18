@@ -44,19 +44,19 @@ vc-theorems: |-
   sorry
 
 vc-postamble: |-
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval sel_number 20 2
   
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in
   #eval sel_number 0 1
   
-  /-
+  /--
   info: 12
   -/
   #guard_msgs in

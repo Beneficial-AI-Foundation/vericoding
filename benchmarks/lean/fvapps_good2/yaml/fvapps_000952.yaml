@@ -58,19 +58,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded
   
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in
   #eval min_horse_skill_diff 5 [4, 9, 1, 32, 13]
   
-  /-
+  /--
   info: 1
   -/
   #guard_msgs in
   #eval min_horse_skill_diff 3 [4, 5, 6]
   
-  /-
+  /--
   info: 9
   -/
   #guard_msgs in

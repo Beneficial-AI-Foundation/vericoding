@@ -59,19 +59,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval max_teams 5 10 [7, 11, 2, 9, 5]
   
-  /-
+  /--
   info: 1
   -/
   #guard_msgs in
   #eval max_teams 4 8 [2, 4, 2, 3]
   
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in

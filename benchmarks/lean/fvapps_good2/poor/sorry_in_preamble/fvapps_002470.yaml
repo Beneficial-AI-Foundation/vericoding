@@ -50,19 +50,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 'Stuart 12'
   -/
   #guard_msgs in
   #eval minion_game "BANANA"
   
-  /-
+  /--
   info: 'Stuart 6'
   -/
   #guard_msgs in
   #eval minion_game "MINE"
   
-  /-
+  /--
   info: 'Kevin 3'
   -/
   #guard_msgs in

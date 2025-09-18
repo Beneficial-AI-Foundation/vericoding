@@ -22,19 +22,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
   
-  /-
+  /--
   info: 7
   -/
   #guard_msgs in
   #eval min_candies_for_party [2, 3] 1
   
-  /-
+  /--
   info: 13
   -/
   #guard_msgs in
   #eval min_candies_for_party [2, 4, 6] 1
   
-  /-
+  /--
   info: 7
   -/
   #guard_msgs in

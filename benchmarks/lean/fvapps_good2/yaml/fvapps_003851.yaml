@@ -54,25 +54,25 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 1
   -/
   #guard_msgs in
   #eval count_ones 1
   
-  /-
+  /--
   info: 4
   -/
   #guard_msgs in
   #eval count_ones 5
   
-  /-
+  /--
   info: 5
   -/
   #guard_msgs in
   #eval max_pn 1
   
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in

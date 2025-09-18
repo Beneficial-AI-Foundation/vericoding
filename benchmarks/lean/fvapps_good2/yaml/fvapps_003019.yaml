@@ -65,19 +65,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: [22, 212, 343, 22122]
   -/
   #guard_msgs in
   #eval palindrome 34322122
   
-  /-
+  /--
   info: 'No palindromes found'
   -/
   #guard_msgs in
   #eval palindrome 1294
   
-  /-
+  /--
   info: 'Not valid'
   -/
   #guard_msgs in

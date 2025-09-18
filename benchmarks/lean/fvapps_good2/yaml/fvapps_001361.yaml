@@ -53,19 +53,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: '3'
   -/
   #guard_msgs in
   #eval decrypt_password [("5", "3"), ("3", "1")] "5"
   
-  /-
+  /--
   info: '1800'
   -/
   #guard_msgs in
   #eval decrypt_password [] "01800.00"
   
-  /-
+  /--
   info: '321.33098'
   -/
   #guard_msgs in

@@ -43,19 +43,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: ['2 4']
   -/
   #guard_msgs in
   #eval solve_xor_parity 6 1 [4, 2, 15, 9, 8, 8] [3]
   
-  /-
+  /--
   info: ['0 2']
   -/
   #guard_msgs in
   #eval solve_xor_parity 2 1 [1, 2] [3]
   
-  /-
+  /--
   info: ['0 1']
   -/
   #guard_msgs in

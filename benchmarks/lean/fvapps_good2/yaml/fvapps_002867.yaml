@@ -59,37 +59,37 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 'VISA'
   -/
   #guard_msgs in
   #eval get_issuer 4111111111111111
   
-  /-
+  /--
   info: 'VISA'
   -/
   #guard_msgs in
   #eval get_issuer 4111111111111
   
-  /-
+  /--
   info: 'AMEX'
   -/
   #guard_msgs in
   #eval get_issuer 378282246310005
   
-  /-
+  /--
   info: 'Mastercard'
   -/
   #guard_msgs in
   #eval get_issuer 5105105105105100
   
-  /-
+  /--
   info: 'Discover'
   -/
   #guard_msgs in
   #eval get_issuer 6011111111111117
   
-  /-
+  /--
   info: 'Unknown'
   -/
   #guard_msgs in

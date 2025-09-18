@@ -49,19 +49,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval loneliest 34315
   
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval loneliest 8854778
   
-  /-
+  /--
   info: True
   -/
   #guard_msgs in

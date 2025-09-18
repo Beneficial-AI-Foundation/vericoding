@@ -23,19 +23,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
   
-  /-
+  /--
   info: 4
   -/
   #guard_msgs in
   #eval is_prefix_of_word "i love eating burger" "burg"
   
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval is_prefix_of_word "this problem is an easy problem" "pro"
   
-  /-
+  /--
   info: -1
   -/
   #guard_msgs in

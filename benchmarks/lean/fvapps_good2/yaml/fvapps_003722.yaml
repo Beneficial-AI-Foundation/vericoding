@@ -36,19 +36,19 @@ vc-theorems: |-
     sorry
 
 vc-postamble: |-
-  /-
+  /--
   info: 4
   -/
   #guard_msgs in
   #eval hamming_distance 25 87
   
-  /-
+  /--
   info: 4
   -/
   #guard_msgs in
   #eval hamming_distance 256 302
   
-  /-
+  /--
   info: 4
   -/
   #guard_msgs in

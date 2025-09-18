@@ -34,19 +34,19 @@ sorry
 -- Apps difficulty: introductory
 -- Assurance level: guarded
 
-/-
+/--
 info: "1.35 metres: He's crap!"
 -/
 #guard_msgs in
 #eval ski_jump ["*"]
 
-/-
+/--
 info: "12.15 metres: He's ok!"
 -/
 #guard_msgs in
 #eval ski_jump ["*", "**", "***"]
 
-/-
+/--
 info: "48.60 metres: He's flying!"
 -/
 #guard_msgs in

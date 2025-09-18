@@ -53,19 +53,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 4
   -/
   #guard_msgs in
   #eval rob [1, 2, 3, 1]
   
-  /-
+  /--
   info: 12
   -/
   #guard_msgs in
   #eval rob [2, 7, 9, 3, 1]
   
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in

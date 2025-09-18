@@ -46,19 +46,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 'we-are- code-warriors.-'
   -/
   #guard_msgs in
   #eval replace_dashes_as_one "we-are- - - code----warriors.-"
   
-  /-
+  /--
   info: 'a-b-c'
   -/
   #guard_msgs in
   #eval replace_dashes_as_one "a---b- - -c"
   
-  /-
+  /--
   info: 'a-'
   -/
   #guard_msgs in

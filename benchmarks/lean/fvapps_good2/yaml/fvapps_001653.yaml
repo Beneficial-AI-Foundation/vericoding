@@ -43,13 +43,13 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval has_exit ["# ##", "# k#", "####"]
   
-  /-
+  /--
   info: False
   -/
   #guard_msgs in

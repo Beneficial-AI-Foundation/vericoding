@@ -38,19 +38,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded
   
-  /-
+  /--
   info: 8
   -/
   #guard_msgs in
   #eval findSquares 3 2
   
-  /-
+  /--
   info: 20
   -/
   #guard_msgs in
   #eval findSquares 4 3
   
-  /-
+  /--
   info: 100
   -/
   #guard_msgs in

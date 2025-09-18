@@ -39,19 +39,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 'aaccba'
   -/
   #guard_msgs in
   #eval break_palindrome "abccba"
   
-  /-
+  /--
   info: ''
   -/
   #guard_msgs in
   #eval break_palindrome "a"
   
-  /-
+  /--
   info: 'ab'
   -/
   #guard_msgs in

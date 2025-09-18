@@ -40,37 +40,37 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: '5'
   -/
   #guard_msgs in
   #eval bin_to_hex "000101"
   
-  /-
+  /--
   info: '4d2'
   -/
   #guard_msgs in
   #eval bin_to_hex "10011010010"
   
-  /-
+  /--
   info: '0'
   -/
   #guard_msgs in
   #eval bin_to_hex "000"
   
-  /-
+  /--
   info: '1111'
   -/
   #guard_msgs in
   #eval hex_to_bin "00F"
   
-  /-
+  /--
   info: '101'
   -/
   #guard_msgs in
   #eval hex_to_bin "5"
   
-  /-
+  /--
   info: '10011010010'
   -/
   #guard_msgs in

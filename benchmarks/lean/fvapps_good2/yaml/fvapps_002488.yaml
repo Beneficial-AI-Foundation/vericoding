@@ -34,19 +34,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded
   
-  /-
+  /--
   info: 13
   -/
   #guard_msgs in
   #eval student_union 9 "1 2 3 4 5 6 7 8 9" 9 "10 1 2 3 11 21 55 6 8"
   
-  /-
+  /--
   info: 6
   -/
   #guard_msgs in
   #eval student_union 3 "1 2 3" 3 "4 5 6"
   
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in

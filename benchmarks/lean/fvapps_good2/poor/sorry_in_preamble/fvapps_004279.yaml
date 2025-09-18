@@ -33,37 +33,37 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: '11010'
   -/
   #guard_msgs in
   #eval int_to_negabinary 6
   
-  /-
+  /--
   info: 6
   -/
   #guard_msgs in
   #eval negabinary_to_int "11010"
   
-  /-
+  /--
   info: '1110'
   -/
   #guard_msgs in
   #eval int_to_negabinary -6
   
-  /-
+  /--
   info: -6
   -/
   #guard_msgs in
   #eval negabinary_to_int "1110"
   
-  /-
+  /--
   info: '100'
   -/
   #guard_msgs in
   #eval int_to_negabinary 4
   
-  /-
+  /--
   info: 4
   -/
   #guard_msgs in

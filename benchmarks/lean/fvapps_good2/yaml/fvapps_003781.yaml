@@ -39,19 +39,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: Decimal('100.00')
   -/
   #guard_msgs in
   #eval discover_original_price 75 25
   
-  /-
+  /--
   info: Decimal('100.00')
   -/
   #guard_msgs in
   #eval discover_original_price 25 75
   
-  /-
+  /--
   info: Decimal('421.00')
   -/
   #guard_msgs in

@@ -28,19 +28,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: [3]
   -/
   #guard_msgs in
   #eval solve_atoms [case1]
   
-  /-
+  /--
   info: [4]
   -/
   #guard_msgs in
   #eval solve_atoms [case2]
   
-  /-
+  /--
   info: [3, 4]
   -/
   #guard_msgs in

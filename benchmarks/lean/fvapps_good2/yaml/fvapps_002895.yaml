@@ -32,25 +32,25 @@ vc-theorems: |-
   sorry
 
 vc-postamble: |-
-  /-
+  /--
   info: '0'
   -/
   #guard_msgs in
   #eval thue_morse 1
   
-  /-
+  /--
   info: '01'
   -/
   #guard_msgs in
   #eval thue_morse 2
   
-  /-
+  /--
   info: '01101'
   -/
   #guard_msgs in
   #eval thue_morse 5
   
-  /-
+  /--
   info: '0110100110'
   -/
   #guard_msgs in

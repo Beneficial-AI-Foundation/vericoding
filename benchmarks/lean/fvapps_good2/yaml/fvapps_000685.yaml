@@ -43,19 +43,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded
   
-  /-
+  /--
   info: 5
   -/
   #guard_msgs in
   #eval solve_eugene_homework 12 2 17
   
-  /-
+  /--
   info: 6
   -/
   #guard_msgs in
   #eval solve_eugene_homework 523 3 11
   
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in

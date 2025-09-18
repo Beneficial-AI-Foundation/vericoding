@@ -43,31 +43,31 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 'Successfully Logged in!'
   -/
   #guard_msgs in
   #eval validate "Timmy" "password"
   
-  /-
+  /--
   info: 'Wrong username or password!'
   -/
   #guard_msgs in
   #eval validate "Timmy" "h4x0r"
   
-  /-
+  /--
   info: 'Successfully Logged in!'
   -/
   #guard_msgs in
   #eval validate "Alice" "alice"
   
-  /-
+  /--
   info: 'Wrong username or password!'
   -/
   #guard_msgs in
   #eval validate "Timmy" "password"||""==""
   
-  /-
+  /--
   info: 'Wrong username or password!'
   -/
   #guard_msgs in

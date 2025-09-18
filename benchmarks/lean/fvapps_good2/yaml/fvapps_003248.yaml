@@ -43,19 +43,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: '.... . .-.. .-.. ---   .-- --- .-. .-.. -..'
   -/
   #guard_msgs in
   #eval encryption "HELLO WORLD"
   
-  /-
+  /--
   info: '... --- ...'
   -/
   #guard_msgs in
   #eval encryption "SOS"
   
-  /-
+  /--
   info: '- .... .   --.- ..- .. -.-. -.-   -... .-. --- .-- -.   ..-. --- -..-'
   -/
   #guard_msgs in

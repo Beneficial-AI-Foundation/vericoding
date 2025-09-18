@@ -38,19 +38,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
   
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval get_kth_magical_number 2
   
-  /-
+  /--
   info: 8
   -/
   #guard_msgs in
   #eval get_kth_magical_number 5
   
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in

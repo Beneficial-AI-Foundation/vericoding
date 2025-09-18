@@ -31,19 +31,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: expected
   -/
   #guard_msgs in
   #eval string_transformer "Example string"
   
-  /-
+  /--
   info: expected
   -/
   #guard_msgs in
   #eval string_transformer "To be OR not to be That is the Question"
   
-  /-
+  /--
   info: expected
   -/
   #guard_msgs in

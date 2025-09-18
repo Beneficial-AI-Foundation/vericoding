@@ -51,13 +51,13 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: '-1'
   -/
   #guard_msgs in
   #eval find_similar_string ["aaaa", "bbbb"] 2 4
   
-  /-
+  /--
   info: 'aaa'
   -/
   #guard_msgs in

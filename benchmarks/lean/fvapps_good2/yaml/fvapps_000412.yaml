@@ -47,13 +47,13 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 'bb'
   -/
   #guard_msgs in
   #eval find_longest_palindrome "cbbd"
   
-  /-
+  /--
   info: 'a'
   -/
   #guard_msgs in

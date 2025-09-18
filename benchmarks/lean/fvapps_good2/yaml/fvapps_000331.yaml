@@ -49,19 +49,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: '/home'
   -/
   #guard_msgs in
   #eval simplify_path "/home/"
   
-  /-
+  /--
   info: '/c'
   -/
   #guard_msgs in
   #eval simplify_path "/a/./b/../../c/"
   
-  /-
+  /--
   info: '/home/foo'
   -/
   #guard_msgs in

@@ -41,19 +41,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded
   
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval max_power "leetcode"
   
-  /-
+  /--
   info: 5
   -/
   #guard_msgs in
   #eval max_power "abbcccddddeeeeedcba"
   
-  /-
+  /--
   info: 1
   -/
   #guard_msgs in

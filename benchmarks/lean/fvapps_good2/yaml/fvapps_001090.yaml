@@ -66,19 +66,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 'Gandhi'
   -/
   #guard_msgs in
   #eval format_name "gandhi"
   
-  /-
+  /--
   info: 'M. Gandhi'
   -/
   #guard_msgs in
   #eval format_name "mahatma gandhI"
   
-  /-
+  /--
   info: 'M. K. Gandhi'
   -/
   #guard_msgs in

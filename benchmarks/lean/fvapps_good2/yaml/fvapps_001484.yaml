@@ -36,19 +36,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
   
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in
   #eval count_jewels "abc" "abcdef"
   
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval count_jewels "aA" "abAZ"
   
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in

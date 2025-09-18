@@ -50,19 +50,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: '23:41'
   -/
   #guard_msgs in
   #eval find_latest_time [1, 2, 3, 4]
   
-  /-
+  /--
   info: ''
   -/
   #guard_msgs in
   #eval find_latest_time [5, 5, 5, 5]
   
-  /-
+  /--
   info: '00:00'
   -/
   #guard_msgs in

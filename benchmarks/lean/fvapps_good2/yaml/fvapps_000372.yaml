@@ -23,19 +23,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
   
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval min_subarray_len 7 [2, 3, 1, 2, 4, 3]
   
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in
   #eval min_subarray_len 5 []
   
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in

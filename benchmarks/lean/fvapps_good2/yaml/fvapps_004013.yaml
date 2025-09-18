@@ -31,19 +31,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
   
-  /-
+  /--
   info: [[3, 7], [5, 5]]
   -/
   #guard_msgs in
   #eval goldbach 10
   
-  /-
+  /--
   info: [[5, 47], [11, 41], [23, 29]]
   -/
   #guard_msgs in
   #eval goldbach 52
   
-  /-
+  /--
   info: [[5, 53], [11, 47], [17, 41], [29, 29]]
   -/
   #guard_msgs in

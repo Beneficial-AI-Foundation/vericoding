@@ -32,19 +32,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 'same'
   -/
   #guard_msgs in
   #eval mean_vs_median [1, 1, 1]
   
-  /-
+  /--
   info: 'mean'
   -/
   #guard_msgs in
   #eval mean_vs_median [1, 2, 37]
   
-  /-
+  /--
   info: 'median'
   -/
   #guard_msgs in

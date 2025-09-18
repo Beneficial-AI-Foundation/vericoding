@@ -49,19 +49,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 15
   -/
   #guard_msgs in
   #eval count_squares [[0, 1, 1, 1], [1, 1, 1, 1], [0, 1, 1, 1]]
   
-  /-
+  /--
   info: 7
   -/
   #guard_msgs in
   #eval count_squares [[1, 0, 1], [1, 1, 0], [1, 1, 0]]
   
-  /-
+  /--
   info: 5
   -/
   #guard_msgs in

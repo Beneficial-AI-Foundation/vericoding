@@ -42,19 +42,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 20
   -/
   #guard_msgs in
   #eval min_unfairness [30, 100, 1000, 150, 60, 250, 10, 120, 20] 3
   
-  /-
+  /--
   info: 1
   -/
   #guard_msgs in
   #eval min_unfairness [1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2] 10
   
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in

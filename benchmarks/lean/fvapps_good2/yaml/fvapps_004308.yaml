@@ -44,19 +44,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 'X'
   -/
   #guard_msgs in
   #eval get_score -133.69 -147.38
   
-  /-
+  /--
   info: 'DB'
   -/
   #guard_msgs in
   #eval get_score 4.06 0.71
   
-  /-
+  /--
   info: 'T2'
   -/
   #guard_msgs in

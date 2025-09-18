@@ -31,19 +31,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
   
-  /-
+  /--
   info: (1, 58)
   -/
   #guard_msgs in
   #eval find_winner_and_max_lead [(140, 82), (89, 134), (90, 110), (112, 106), (88, 90)]
   
-  /-
+  /--
   info: (1, 15)
   -/
   #guard_msgs in
   #eval find_winner_and_max_lead [(10, 5), (20, 15), (30, 25)]
   
-  /-
+  /--
   info: (2, 15)
   -/
   #guard_msgs in

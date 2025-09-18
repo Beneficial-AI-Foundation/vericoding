@@ -36,31 +36,31 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded
   
-  /-
+  /--
   info: 212
   -/
   #guard_msgs in
   #eval convert_temp 100 "C" "F"
   
-  /-
+  /--
   info: 50
   -/
   #guard_msgs in
   #eval convert_temp 40 "Re" "C"
   
-  /-
+  /--
   info: 140
   -/
   #guard_msgs in
   #eval convert_temp 60 "De" "F"
   
-  /-
+  /--
   info: 33
   -/
   #guard_msgs in
   #eval convert_temp 373.15 "K" "N"
   
-  /-
+  /--
   info: 666
   -/
   #guard_msgs in

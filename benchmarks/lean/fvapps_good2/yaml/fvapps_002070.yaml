@@ -35,19 +35,19 @@ vc-postamble: |-
   -- Apps difficulty: competition
   -- Assurance level: guarded
   
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in
   #eval solve_binary_string "000"
   
-  /-
+  /--
   info: 6
   -/
   #guard_msgs in
   #eval solve_binary_string "0101"
   
-  /-
+  /--
   info: 16
   -/
   #guard_msgs in

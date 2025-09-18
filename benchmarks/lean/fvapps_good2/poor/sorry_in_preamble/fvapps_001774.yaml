@@ -42,19 +42,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: [8, 12, 6, 10, 10, 10]
   -/
   #guard_msgs in
   #eval sum_of_distances_in_tree 6 [[0, 1], [0, 2], [2, 3], [2, 4], [2, 5]]
   
-  /-
+  /--
   info: [2, 3, 3]
   -/
   #guard_msgs in
   #eval sum_of_distances_in_tree 3 [[0, 1], [0, 2]]
   
-  /-
+  /--
   info: [6, 4, 4, 6]
   -/
   #guard_msgs in

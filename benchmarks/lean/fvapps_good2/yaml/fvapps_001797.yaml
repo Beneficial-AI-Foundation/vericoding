@@ -49,13 +49,13 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: sorted(expected1)
   -/
   #guard_msgs in
   #eval sorted find_all_paths(graph1)
   
-  /-
+  /--
   info: sorted(expected3)
   -/
   #guard_msgs in

@@ -54,13 +54,13 @@ vc-theorems: |-
   sorry
 
 vc-postamble: |-
-  /-
+  /--
   info: 1
   -/
   #guard_msgs in
   #eval solve_min_wire_length 2 "01" [1, 2]
   
-  /-
+  /--
   info: 5
   -/
   #guard_msgs in

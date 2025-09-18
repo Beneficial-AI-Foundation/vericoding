@@ -39,19 +39,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in
   #eval solve_snuffles_array 5 2 [1, 4, 5, 2, 3]
   
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval solve_snuffles_array 3 1 [1, 4, 1]
   
-  /-
+  /--
   info: -1
   -/
   #guard_msgs in

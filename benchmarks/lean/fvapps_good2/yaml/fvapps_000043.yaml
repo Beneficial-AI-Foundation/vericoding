@@ -38,19 +38,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded
   
-  /-
+  /--
   info: 5
   -/
   #guard_msgs in
   #eval solve_dishes 4 [3, 7, 4, 5] [2, 1, 2, 4]
   
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in
   #eval solve_dishes 4 [1, 2, 3, 4] [3, 3, 3, 3]
   
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in

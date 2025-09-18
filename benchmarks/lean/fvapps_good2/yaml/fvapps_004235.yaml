@@ -67,19 +67,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: '5*10+6'
   -/
   #guard_msgs in
   #eval simplify 56
   
-  /-
+  /--
   info: '9*100+9*10+9'
   -/
   #guard_msgs in
   #eval simplify 999
   
-  /-
+  /--
   info: '1*10000+4'
   -/
   #guard_msgs in

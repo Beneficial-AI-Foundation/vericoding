@@ -36,19 +36,19 @@ vc-theorems: |-
   sorry
 
 vc-postamble: |-
-  /-
+  /--
   info: 5
   -/
   #guard_msgs in
   #eval calc_army_power 24
   
-  /-
+  /--
   info: 1
   -/
   #guard_msgs in
   #eval calc_army_power 1
   
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in

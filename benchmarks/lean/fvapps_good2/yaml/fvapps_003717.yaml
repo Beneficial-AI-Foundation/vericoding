@@ -48,19 +48,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: expected1
   -/
   #guard_msgs in
   #eval count_carries "123 456\n555 555\n123 594"
   
-  /-
+  /--
   info: expected2
   -/
   #guard_msgs in
   #eval count_carries "99 99"
   
-  /-
+  /--
   info: expected3
   -/
   #guard_msgs in

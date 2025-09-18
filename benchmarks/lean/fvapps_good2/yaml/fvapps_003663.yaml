@@ -27,19 +27,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 'code here'
   -/
   #guard_msgs in
   #eval unscramble_eggs "ceggodegge heggeregge"
   
-  /-
+  /--
   info: 'FUN KATA'
   -/
   #guard_msgs in
   #eval unscramble_eggs "FeggUNegg KeggATeggA"
   
-  /-
+  /--
   info: 'vegymite on toast'
   -/
   #guard_msgs in

@@ -40,19 +40,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
   
-  /-
+  /--
   info: 1
   -/
   #guard_msgs in
   #eval solve_max_diagonal_moves 2 2 3
   
-  /-
+  /--
   info: 6
   -/
   #guard_msgs in
   #eval solve_max_diagonal_moves 4 3 7
   
-  /-
+  /--
   info: -1
   -/
   #guard_msgs in

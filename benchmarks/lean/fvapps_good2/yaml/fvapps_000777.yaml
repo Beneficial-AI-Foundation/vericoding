@@ -48,19 +48,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval solve_competition_duration "saturday" "sunday" 2 4
   
-  /-
+  /--
   info: 'many'
   -/
   #guard_msgs in
   #eval solve_competition_duration "monday" "wednesday" 1 20
   
-  /-
+  /--
   info: 'impossible'
   -/
   #guard_msgs in

@@ -35,25 +35,25 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 'jx'
   -/
   #guard_msgs in
   #eval encode "on" "cryptogram" 10
   
-  /-
+  /--
   info: msg
   -/
   #guard_msgs in
   #eval decode "jx" key shift
   
-  /-
+  /--
   info: msg
   -/
   #guard_msgs in
   #eval decode encode(msg, key, shift) "keyword" 5
   
-  /-
+  /--
   info: msg
   -/
   #guard_msgs in

@@ -50,19 +50,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: '47 ohms, 20%'
   -/
   #guard_msgs in
   #eval decode_resistor_colors "yellow violet black"
   
-  /-
+  /--
   info: '4.7k ohms, 5%'
   -/
   #guard_msgs in
   #eval decode_resistor_colors "yellow violet red gold"
   
-  /-
+  /--
   info: '1M ohms, 10%'
   -/
   #guard_msgs in

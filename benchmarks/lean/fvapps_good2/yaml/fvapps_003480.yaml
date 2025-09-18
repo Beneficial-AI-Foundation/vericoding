@@ -46,19 +46,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: '96987F'
   -/
   #guard_msgs in
   #eval mid_endian 9999999
   
-  /-
+  /--
   info: '00'
   -/
   #guard_msgs in
   #eval mid_endian 0
   
-  /-
+  /--
   info: '0B0A0C'
   -/
   #guard_msgs in

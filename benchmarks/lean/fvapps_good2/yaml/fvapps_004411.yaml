@@ -49,19 +49,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: expected1
   -/
   #guard_msgs in
   #eval order "is2 Thi1s T4est 3a"
   
-  /-
+  /--
   info: expected2
   -/
   #guard_msgs in
   #eval order "4of Fo1r pe6ople g3ood th5e the2"
   
-  /-
+  /--
   info: expected3
   -/
   #guard_msgs in

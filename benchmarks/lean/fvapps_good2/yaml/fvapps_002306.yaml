@@ -33,19 +33,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval contains_duplicate [1, 2, 3, 1]
   
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval contains_duplicate [1, 2, 3, 4]
   
-  /-
+  /--
   info: True
   -/
   #guard_msgs in

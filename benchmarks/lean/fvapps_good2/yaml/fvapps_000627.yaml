@@ -40,19 +40,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded
   
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in
   #eval min_string_length "abccd"
   
-  /-
+  /--
   info: 1
   -/
   #guard_msgs in
   #eval min_string_length "abbac"
   
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in

@@ -51,19 +51,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 'Vivek'
   -/
   #guard_msgs in
   #eval solve_game 2 2 [[0, 0], [0, 0]]
   
-  /-
+  /--
   info: 'Ashish'
   -/
   #guard_msgs in
   #eval solve_game 2 2 [[0, 0], [0, 1]]
   
-  /-
+  /--
   info: 'Vivek'
   -/
   #guard_msgs in

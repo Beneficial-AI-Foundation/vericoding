@@ -38,19 +38,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 'Yes'
   -/
   #guard_msgs in
   #eval can_convert_binary_strings "00" "00"
   
-  /-
+  /--
   info: 'No'
   -/
   #guard_msgs in
   #eval can_convert_binary_strings "101" "010"
   
-  /-
+  /--
   info: 'Yes'
   -/
   #guard_msgs in

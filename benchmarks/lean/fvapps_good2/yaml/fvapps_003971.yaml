@@ -41,19 +41,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 'KkLlMmNnOoPp4567'
   -/
   #guard_msgs in
   #eval highest_value "AaBbCcXxYyZz0189" "KkLlMmNnOoPp4567"
   
-  /-
+  /--
   info: 'ABcd'
   -/
   #guard_msgs in
   #eval highest_value "ABcd" "0123"
   
-  /-
+  /--
   info: "{}[]@~'#:;"
   -/
   #guard_msgs in

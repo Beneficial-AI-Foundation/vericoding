@@ -27,19 +27,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
   
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval max_profit 2 [2, 4, 1]
   
-  /-
+  /--
   info: 7
   -/
   #guard_msgs in
   #eval max_profit 2 [3, 2, 6, 5, 0, 3]
   
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in

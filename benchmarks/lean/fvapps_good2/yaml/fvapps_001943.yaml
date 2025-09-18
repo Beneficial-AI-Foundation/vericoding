@@ -55,19 +55,19 @@ vc-postamble: |-
   -- Apps difficulty: competition
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval solve_palindrome_cuts "nolon"
   
-  /-
+  /--
   info: 1
   -/
   #guard_msgs in
   #eval solve_palindrome_cuts "otto"
   
-  /-
+  /--
   info: 'Impossible'
   -/
   #guard_msgs in

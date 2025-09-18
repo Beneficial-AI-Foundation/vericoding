@@ -34,19 +34,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval isGoodArray #[12, 5, 7, 23]
   
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval isGoodArray #[29, 6, 10]
   
-  /-
+  /--
   info: False
   -/
   #guard_msgs in

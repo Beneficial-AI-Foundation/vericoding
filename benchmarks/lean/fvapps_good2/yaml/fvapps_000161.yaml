@@ -47,19 +47,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: '1342'
   -/
   #guard_msgs in
   #eval minInteger "4321" 4
   
-  /-
+  /--
   info: '010'
   -/
   #guard_msgs in
   #eval minInteger "100" 1
   
-  /-
+  /--
   info: '36789'
   -/
   #guard_msgs in

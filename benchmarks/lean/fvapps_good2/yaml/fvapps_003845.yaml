@@ -41,19 +41,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded
   
-  /-
+  /--
   info: [150, 11, 2, 75]
   -/
   #guard_msgs in
   #eval get_num [2, 3, 5, 5]
   
-  /-
+  /--
   info: [378, 15, 2, 189]
   -/
   #guard_msgs in
   #eval get_num [2, 3, 3, 3, 7]
   
-  /-
+  /--
   info: [23400, 71, 2, 11700]
   -/
   #guard_msgs in

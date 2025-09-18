@@ -56,19 +56,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 4
   -/
   #guard_msgs in
   #eval maximal_square [["1", "0", "1", "0", "0"], ["1", "0", "1", "1", "1"], ["1", "1", "1", "1", "1"], ["1", "0", "0", "1", "0"]]
   
-  /-
+  /--
   info: 4
   -/
   #guard_msgs in
   #eval maximal_square [["1", "1"], ["1", "1"]]
   
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in

@@ -24,19 +24,19 @@ theorem aks_consistency (n : Nat) (h : n ≥ 2) :
 -- Apps difficulty: introductory
 -- Assurance level: unguarded
 
-/-
+/--
 info: True
 -/
 #guard_msgs in
 #eval aks_test 3
 
-/-
+/--
 info: False
 -/
 #guard_msgs in
 #eval aks_test 4
 
-/-
+/--
 info: True
 -/
 #guard_msgs in

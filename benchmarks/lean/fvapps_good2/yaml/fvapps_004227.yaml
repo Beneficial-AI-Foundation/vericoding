@@ -32,19 +32,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 'Sunday'
   -/
   #guard_msgs in
   #eval whatday 1
   
-  /-
+  /--
   info: 'Saturday'
   -/
   #guard_msgs in
   #eval whatday 7
   
-  /-
+  /--
   info: ERROR
   -/
   #guard_msgs in

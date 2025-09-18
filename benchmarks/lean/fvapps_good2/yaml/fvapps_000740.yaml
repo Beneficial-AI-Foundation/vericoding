@@ -35,19 +35,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 5
   -/
   #guard_msgs in
   #eval find_max_prime_factor [3, 2, 15, 6, 8, 5, 10]
   
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval find_max_prime_factor [4, 8, 12, 15]
   
-  /-
+  /--
   info: 11
   -/
   #guard_msgs in

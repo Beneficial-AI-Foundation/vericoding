@@ -30,19 +30,19 @@ vc-theorems: |-
   sorry
 
 vc-postamble: |-
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval solve_gem_game 4 2
   
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in
   #eval solve_gem_game 6 3
   
-  /-
+  /--
   info: 5
   -/
   #guard_msgs in

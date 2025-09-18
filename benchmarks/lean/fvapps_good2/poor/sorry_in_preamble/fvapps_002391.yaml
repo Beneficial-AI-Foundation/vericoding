@@ -41,19 +41,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded
   
-  /-
+  /--
   info: 6
   -/
   #guard_msgs in
   #eval countCharacters ["cat", "bt", "hat", "tree"] "atach"
   
-  /-
+  /--
   info: 10
   -/
   #guard_msgs in
   #eval countCharacters ["hello", "world", "leetcode"] "welldonehoneyr"
   
-  /-
+  /--
   info: 8
   -/
   #guard_msgs in

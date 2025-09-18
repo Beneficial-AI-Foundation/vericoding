@@ -31,19 +31,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 'olleH'
   -/
   #guard_msgs in
   #eval reverse_it "Hello"
   
-  /-
+  /--
   info: 951413
   -/
   #guard_msgs in
   #eval reverse_it 314159
   
-  /-
+  /--
   info: [1, 2, 3]
   -/
   #guard_msgs in

@@ -40,21 +40,21 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /- Constants for special float values -/
+  /-- Constants for special float values -/
   
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval is_negative_zero -0.0
   
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval is_negative_zero 0.0
   
-  /-
+  /--
   info: False
   -/
   #guard_msgs in

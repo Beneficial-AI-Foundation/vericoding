@@ -43,19 +43,19 @@ vc-postamble: |-
   -- Apps difficulty: competition
   -- Assurance level: guarded
   
-  /-
+  /--
   info: 4
   -/
   #guard_msgs in
   #eval count_valid_bit_swaps 5 "01011" "11001"
   
-  /-
+  /--
   info: 6
   -/
   #guard_msgs in
   #eval count_valid_bit_swaps 6 "011000" "010011"
   
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in

@@ -39,19 +39,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 'odds win'
   -/
   #guard_msgs in
   #eval bits_war [1, 5, 12]
   
-  /-
+  /--
   info: 'evens win'
   -/
   #guard_msgs in
   #eval bits_war [7, -3, 20]
   
-  /-
+  /--
   info: 'tie'
   -/
   #guard_msgs in

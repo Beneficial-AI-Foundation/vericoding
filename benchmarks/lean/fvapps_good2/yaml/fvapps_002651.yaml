@@ -19,19 +19,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 'hue'
   -/
   #guard_msgs in
   #eval spam 1
   
-  /-
+  /--
   info: 'huehuehuehuehuehue'
   -/
   #guard_msgs in
   #eval spam 6
   
-  /-
+  /--
   info: 'huehuehuehuehuehuehuehuehuehuehuehuehuehue'
   -/
   #guard_msgs in

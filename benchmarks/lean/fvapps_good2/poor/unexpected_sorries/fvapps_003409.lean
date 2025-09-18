@@ -51,19 +51,19 @@ sorry
 -- Apps difficulty: introductory
 -- Assurance level: unguarded
 
-/-
+/--
 info: 'abCCde'
 -/
 #guard_msgs in
 #eval work_on_strings "abc" "cde"
 
-/-
+/--
 info: 'ABABbababa'
 -/
 #guard_msgs in
 #eval work_on_strings "abab" "bababa"
 
-/-
+/--
 info: 'abcDEfgDEFGg'
 -/
 #guard_msgs in

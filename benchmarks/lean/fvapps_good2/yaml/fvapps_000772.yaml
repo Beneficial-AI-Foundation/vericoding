@@ -27,13 +27,13 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
   
-  /-
+  /--
   info: 1326
   -/
   #guard_msgs in
   #eval count_possible_strings 3 "a"
   
-  /-
+  /--
   info: 76
   -/
   #guard_msgs in

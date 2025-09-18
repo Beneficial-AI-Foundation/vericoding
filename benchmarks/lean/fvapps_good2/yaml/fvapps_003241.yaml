@@ -23,19 +23,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
   
-  /-
+  /--
   info: 1100
   -/
   #guard_msgs in
   #eval scratch ["tiger tiger tiger 100", "rabbit dragon snake 100", "rat ox pig 1000", "dog cock sheep 10", "horse monkey rat 5", "dog dog dog 1000"]
   
-  /-
+  /--
   info: 350
   -/
   #guard_msgs in
   #eval scratch ["cat cat cat 50", "dog dog dog 100", "pig pig pig 200"]
   
-  /-
+  /--
   info: 500
   -/
   #guard_msgs in

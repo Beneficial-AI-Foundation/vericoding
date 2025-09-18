@@ -36,37 +36,37 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 'hsi  etTi sats!'
   -/
   #guard_msgs in
   #eval encrypt "This is a test!" 1
   
-  /-
+  /--
   info: 'This is a test!'
   -/
   #guard_msgs in
   #eval decrypt "hsi  etTi sats!" 1
   
-  /-
+  /--
   info: 's eT ashi tist!'
   -/
   #guard_msgs in
   #eval encrypt "This is a test!" 2
   
-  /-
+  /--
   info: 'This is a test!'
   -/
   #guard_msgs in
   #eval decrypt "s eT ashi tist!" 2
   
-  /-
+  /--
   info: ''
   -/
   #guard_msgs in
   #eval encrypt "" 1
   
-  /-
+  /--
   info: None
   -/
   #guard_msgs in

@@ -37,19 +37,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 8
   -/
   #guard_msgs in
   #eval min_grid_area "DSAWWAW"
   
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval min_grid_area "D"
   
-  /-
+  /--
   info: 4
   -/
   #guard_msgs in

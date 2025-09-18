@@ -44,19 +44,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 'lowringter'
   -/
   #guard_msgs in
   #eval word_mesh ["allow", "lowering", "ringmaster", "terror"]
   
-  /-
+  /--
   info: 'failed to mesh'
   -/
   #guard_msgs in
   #eval word_mesh ["kingdom", "dominator", "notorious", "usual", "allegory"]
   
-  /-
+  /--
   info: 'conumcal'
   -/
   #guard_msgs in

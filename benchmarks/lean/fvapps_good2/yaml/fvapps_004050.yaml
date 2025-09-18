@@ -30,19 +30,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 'Friday May 2'
   -/
   #guard_msgs in
   #eval shorten_to_date "Friday May 2, 7pm"
   
-  /-
+  /--
   info: 'Tuesday January 29'
   -/
   #guard_msgs in
   #eval shorten_to_date "Tuesday January 29, 10pm"
   
-  /-
+  /--
   info: 'Wed September 1'
   -/
   #guard_msgs in

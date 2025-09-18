@@ -34,19 +34,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: [1, -1, -2]
   -/
   #guard_msgs in
   #eval find_robot_gather_point [[-1, -2, 0, 0, 0, 0], [-1, -2, 0, 0, 0, 0]]
   
-  /-
+  /--
   info: [1, 2, 5]
   -/
   #guard_msgs in
   #eval find_robot_gather_point [[1, 5, 1, 1, 1, 1], [2, 5, 0, 1, 0, 1], [3, 5, 1, 0, 0, 0]]
   
-  /-
+  /--
   info: [0]
   -/
   #guard_msgs in

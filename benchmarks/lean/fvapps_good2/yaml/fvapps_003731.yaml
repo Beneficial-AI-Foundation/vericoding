@@ -63,19 +63,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: ['road']
   -/
   #guard_msgs in
   #eval build_or_buy "bwoo"
   
-  /-
+  /--
   info: []
   -/
   #guard_msgs in
   #eval build_or_buy ""
   
-  /-
+  /--
   info: ['city']
   -/
   #guard_msgs in

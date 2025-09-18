@@ -49,19 +49,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: '1\n121\n12321'
   -/
   #guard_msgs in
   #eval make_palindrome_triangle 3
   
-  /-
+  /--
   info: '1\n121\n12321\n1234321\n123454321'
   -/
   #guard_msgs in
   #eval make_palindrome_triangle 5
   
-  /-
+  /--
   info: '1'
   -/
   #guard_msgs in

@@ -37,19 +37,19 @@ vc-theorems: |-
   sorry
 
 vc-postamble: |-
-  /-
+  /--
   info: 47
   -/
   #guard_msgs in
   #eval halving_sum 25
   
-  /-
+  /--
   info: 247
   -/
   #guard_msgs in
   #eval halving_sum 127
   
-  /-
+  /--
   info: 1
   -/
   #guard_msgs in

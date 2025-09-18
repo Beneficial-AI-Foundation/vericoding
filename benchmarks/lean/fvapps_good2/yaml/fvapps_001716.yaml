@@ -38,19 +38,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 6.0
   -/
   #guard_msgs in
   #eval convex_hull_area [(0, 0), (0, 3), (4, 0)]
   
-  /-
+  /--
   info: 4.0
   -/
   #guard_msgs in
   #eval convex_hull_area [(0, 0), (0, 2), (2, 2), (2, 0)]
   
-  /-
+  /--
   info: 6.0
   -/
   #guard_msgs in

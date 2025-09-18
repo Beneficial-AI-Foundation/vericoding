@@ -65,19 +65,19 @@ vc-theorems: |-
   sorry
 
 vc-postamble: |-
-  /-
+  /--
   info: 'Major'
   -/
   #guard_msgs in
   #eval minor_or_major "C E G"
   
-  /-
+  /--
   info: 'Minor'
   -/
   #guard_msgs in
   #eval minor_or_major "C Eb G"
   
-  /-
+  /--
   info: 'Not a chord'
   -/
   #guard_msgs in

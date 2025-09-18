@@ -47,19 +47,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: '1001'
   -/
   #guard_msgs in
   #eval add "111" "10"
   
-  /-
+  /--
   info: '10010'
   -/
   #guard_msgs in
   #eval add "1101" "101"
   
-  /-
+  /--
   info: '100100'
   -/
   #guard_msgs in

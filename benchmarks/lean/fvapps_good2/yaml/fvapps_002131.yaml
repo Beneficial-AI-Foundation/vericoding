@@ -51,19 +51,19 @@ vc-postamble: |-
   -- Apps difficulty: competition
   -- Assurance level: guarded
   
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in
   #eval solve "ababcba" "abb" [5, 3, 4, 1, 7, 6, 2]
   
-  /-
+  /--
   info: 4
   -/
   #guard_msgs in
   #eval solve "bbbabb" "bb" [1, 6, 3, 4, 2, 5]
   
-  /-
+  /--
   info: 9
   -/
   #guard_msgs in

@@ -39,13 +39,13 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 'GoOutside'
   -/
   #guard_msgs in
   #eval sha256_cracker "b8c49d81cb795985c007d78379e98613a4dfc824381be472238dbd2f974e37ae" "deGioOstu"
   
-  /-
+  /--
   info: 'code'
   -/
   #guard_msgs in

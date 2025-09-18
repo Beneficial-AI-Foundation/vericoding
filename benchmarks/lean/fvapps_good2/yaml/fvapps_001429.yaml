@@ -48,19 +48,19 @@ vc-theorems: |-
     sorry
 
 vc-postamble: |-
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in
   #eval min_ops_for_self_destruct "001101"
   
-  /-
+  /--
   info: 1
   -/
   #guard_msgs in
   #eval min_ops_for_self_destruct "1101"
   
-  /-
+  /--
   info: -1
   -/
   #guard_msgs in

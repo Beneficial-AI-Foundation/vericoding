@@ -44,19 +44,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: (3, 2)
   -/
   #guard_msgs in
   #eval solve_door_peaks 8 6 [1, 2, 4, 1, 2, 4, 1, 2]
   
-  /-
+  /--
   info: (2, 2)
   -/
   #guard_msgs in
   #eval solve_door_peaks 5 3 [3, 2, 3, 2, 1]
   
-  /-
+  /--
   info: (2, 1)
   -/
   #guard_msgs in

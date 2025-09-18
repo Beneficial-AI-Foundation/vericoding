@@ -36,19 +36,19 @@ vc-theorems: |-
   sorry
 
 vc-postamble: |-
-  /-
+  /--
   info: 'Grae said: "Practice makes perfect"'
   -/
   #guard_msgs in
   #eval quotable "Grae" "Practice makes perfect"
   
-  /-
+  /--
   info: 'Alex said: "Python is great fun"'
   -/
   #guard_msgs in
   #eval quotable "Alex" "Python is great fun"
   
-  /-
+  /--
   info: 'Bethany said: "Yes, way more fun than R"'
   -/
   #guard_msgs in

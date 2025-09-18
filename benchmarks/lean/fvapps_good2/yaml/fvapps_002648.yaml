@@ -30,19 +30,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded
   
-  /-
+  /--
   info: 27
   -/
   #guard_msgs in
   #eval longest_collatz [1, 5, 27, 4]
   
-  /-
+  /--
   info: 27
   -/
   #guard_msgs in
   #eval longest_collatz [64, 64, 27, 64]
   
-  /-
+  /--
   info: 75
   -/
   #guard_msgs in

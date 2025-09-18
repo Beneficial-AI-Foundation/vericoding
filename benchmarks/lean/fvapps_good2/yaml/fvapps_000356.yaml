@@ -40,19 +40,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 10
   -/
   #guard_msgs in
   #eval unique_letter_string "ABC"
   
-  /-
+  /--
   info: 8
   -/
   #guard_msgs in
   #eval unique_letter_string "ABA"
   
-  /-
+  /--
   info: 92
   -/
   #guard_msgs in

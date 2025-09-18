@@ -36,13 +36,13 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 24
   -/
   #guard_msgs in
   #eval solve_max_path_profits 4 [1, 2, 3, 4] [(1, 2), (2, 3), (2, 4)]
   
-  /-
+  /--
   info: 15
   -/
   #guard_msgs in

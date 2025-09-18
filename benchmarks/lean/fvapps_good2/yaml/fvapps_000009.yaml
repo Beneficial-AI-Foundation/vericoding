@@ -44,19 +44,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
   
-  /-
+  /--
   info: 4
   -/
   #guard_msgs in
   #eval count_alice_score "01111001"
   
-  /-
+  /--
   info: 6
   -/
   #guard_msgs in
   #eval count_alice_score "111111"
   
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in

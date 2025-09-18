@@ -47,19 +47,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded
   
-  /-
+  /--
   info: 37
   -/
   #guard_msgs in
   #eval find_max_distinct_subarray_sum 10 6 [8, 8, 3, 5, 3, 8, 5, 7, 7, 7]
   
-  /-
+  /--
   info: 6
   -/
   #guard_msgs in
   #eval find_max_distinct_subarray_sum 5 3 [1, 2, 1, 2, 3]
   
-  /-
+  /--
   info: 10
   -/
   #guard_msgs in

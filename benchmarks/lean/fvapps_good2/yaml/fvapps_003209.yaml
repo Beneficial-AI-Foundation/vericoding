@@ -59,25 +59,25 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: "one o'clock"
   -/
   #guard_msgs in
   #eval time_to_words "13:00"
   
-  /-
+  /--
   info: 'quarter past one'
   -/
   #guard_msgs in
   #eval time_to_words "13:15"
   
-  /-
+  /--
   info: 'midnight'
   -/
   #guard_msgs in
   #eval time_to_words "00:00"
   
-  /-
+  /--
   info: 'quarter to midnight'
   -/
   #guard_msgs in

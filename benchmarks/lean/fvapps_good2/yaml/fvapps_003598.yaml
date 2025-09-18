@@ -46,19 +46,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: [True, False, False]
   -/
   #guard_msgs in
   #eval moment_of_time_in_space "01:00 pm"
   
-  /-
+  /--
   info: [False, True, False]
   -/
   #guard_msgs in
   #eval moment_of_time_in_space "12:02 pm"
   
-  /-
+  /--
   info: [False, False, True]
   -/
   #guard_msgs in
