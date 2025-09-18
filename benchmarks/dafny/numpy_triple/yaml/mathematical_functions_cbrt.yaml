@@ -1,0 +1,22 @@
+---
+vc-description: |-
+  This file implements the specification for numpy.cbrt functionality,
+  which computes the cube root of each element in an array element-wise.
+  The cube root function is defined for all real numbers, including negative numbers.
+vc-preamble: |-
+  // Method to compute cube root of each element in an array
+vc-helpers: |-
+  
+vc-spec: |-
+  method cbrt(x: array<real>) returns (result: array<real>)
+    // Postconditions: result array properties
+    ensures result.Length == x.Length
+    // Core specification: each result element is the cube root of corresponding input element
+    ensures forall i :: 0 <= i < result.Length ==> 
+      result[i] * result[i] * result[i] == x[i]
+vc-code: |-
+  {
+    assume {:axiom} false;
+  }
+vc-postamble: |-
+  
