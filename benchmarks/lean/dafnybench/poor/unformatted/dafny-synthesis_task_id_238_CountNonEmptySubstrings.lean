@@ -1,21 +1,18 @@
-import Std
 import Init
 
-open Std.Do
 
 /-!
 {
-  "name": "dafny-synthesis_task_id_238_CountNonEmptySubstrings",
-  "category": "Dafny Translation", 
-  "description": "Automatically translated from Dafny specification: dafny-synthesis_task_id_238_CountNonEmptySubstrings",
-  "source": "Dafny",
-  "translation_date": "2024",
-  "functions": ,
-  "methods": 
+"name": "dafny-synthesis_task_id_238_CountNonEmptySubstrings",
+"category": "Dafny Translation",
+"description": "Automatically translated from Dafny specification: dafny-synthesis_task_id_238_CountNonEmptySubstrings",
+"source": "Dafny",
+"translation_date": "2024",
+"functions": ,
+"methods":
 }
 -/
 
-namespace DafnyBenchmarks
 
 /--
 Counts the number of non-empty substrings in a string.
@@ -29,7 +26,5 @@ Specification for CountNonEmptySubstrings:
 - Result equals (|s| * (|s| + 1)) / 2
 -/
 theorem CountNonEmptySubstrings_spec (s : String) :
-  let count := CountNonEmptySubstrings s
-  count ≥ 0 ∧ count = (s.length * (s.length + 1)) / 2 := sorry
-
-end DafnyBenchmarks
+let count := CountNonEmptySubstrings s
+count ≥ 0 ∧ count = (s.length * (s.length + 1)) / 2 := sorry

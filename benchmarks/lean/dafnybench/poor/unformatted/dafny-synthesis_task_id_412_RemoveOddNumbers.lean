@@ -1,26 +1,23 @@
-import Std
 
-open Std.Do
 
 /-!
 {
-  "name": "dafny-synthesis_task_id_412_RemoveOddNumbers",
-  "category": "Dafny Translation",
-  "description": "Automatically translated from Dafny specification: dafny-synthesis_task_id_412_RemoveOddNumbers",
-  "source": "Dafny",
-  "translation_date": "2024",
-  "functions": ,
-  "methods":
+"name": "dafny-synthesis_task_id_412_RemoveOddNumbers",
+"category": "Dafny Translation",
+"description": "Automatically translated from Dafny specification: dafny-synthesis_task_id_412_RemoveOddNumbers",
+"source": "Dafny",
+"translation_date": "2024",
+"functions": ,
+"methods":
 }
 -/
 
-namespace DafnyBenchmarks
 
 /--
 Predicate indicating if a number is even
 -/
 def IsEven (n : Int) : Prop :=
-  n % 2 = 0
+n % 2 = 0
 
 /--
 Removes odd numbers from an array of integers.
@@ -30,7 +27,7 @@ Returns a new array containing only the even numbers from the input array.
 @return An array containing only the even numbers from the input
 -/
 def RemoveOddNumbers (arr : Array Int) : Array Int :=
-  sorry
+sorry
 
 /--
 Specification for RemoveOddNumbers:
@@ -38,9 +35,7 @@ Specification for RemoveOddNumbers:
 2. All even numbers in the input array are in the output array
 -/
 theorem RemoveOddNumbers_spec (arr : Array Int) :
-  let result := RemoveOddNumbers arr
-  (∀ i, 0 ≤ i ∧ i < result.size → IsEven (result[i]!) ∧ (∃ j, 0 ≤ j ∧ j < arr.size ∧ result[i]! = arr[j]!)) ∧
-  (∀ i, 0 ≤ i ∧ i < arr.size ∧ IsEven (arr[i]!) → (∃ j, 0 ≤ j ∧ j < result.size ∧ arr[i]! = result[j]!)) :=
-  sorry
-
-end DafnyBenchmarks
+let result := RemoveOddNumbers arr
+(∀ i, 0 ≤ i ∧ i < result.size → IsEven (result[i]!) ∧ (∃ j, 0 ≤ j ∧ j < arr.size ∧ result[i]! = arr[j]!)) ∧
+(∀ i, 0 ≤ i ∧ i < arr.size ∧ IsEven (arr[i]!) → (∃ j, 0 ≤ j ∧ j < result.size ∧ arr[i]! = result[j]!)) :=
+sorry

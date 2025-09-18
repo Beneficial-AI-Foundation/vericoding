@@ -1,16 +1,14 @@
-import Std
 
-open Std.Do
 
 /-!
 {
-  "name": "SENG2011_tmp_tmpgk5jq85q_ass2_ex1_StringSwap",
-  "category": "Dafny Translation",
-  "description": "Automatically translated from Dafny specification: SENG2011_tmp_tmpgk5jq85q_ass2_ex1_StringSwap",
-  "source": "Dafny",
-  "translation_date": "2024",
-  "functions": ,
-  "methods":
+"name": "SENG2011_tmp_tmpgk5jq85q_ass2_ex1_StringSwap",
+"category": "Dafny Translation",
+"description": "Automatically translated from Dafny specification: SENG2011_tmp_tmpgk5jq85q_ass2_ex1_StringSwap",
+"source": "Dafny",
+"translation_date": "2024",
+"functions": ,
+"methods":
 }
 -/
 
@@ -37,13 +35,12 @@ Ensures:
 - Empty string case handled correctly
 -/
 theorem StringSwap_spec (s : String) (i j : Nat) :
-  i ≥ 0 ∧ j ≥ 0 ∧ s.length ≥ 0 →
-  (s.length > 0 → i < s.length ∧ j < s.length) →
-  let t := StringSwap s i j
-  (s.length = t.length) ∧
-  (s.length > 0 →
-    (∀ k : Nat, k ≠ i ∧ k ≠ j ∧ k < s.length → t.get ⟨k⟩ = s.get ⟨k⟩) ∧
-    t.get ⟨i⟩ = s.get ⟨j⟩ ∧ t.get ⟨j⟩ = s.get ⟨i⟩) ∧
-  (s.length = 0 → t = s) := sorry
-
+i ≥ 0 ∧ j ≥ 0 ∧ s.length ≥ 0 →
+(s.length > 0 → i < s.length ∧ j < s.length) →
+let t := StringSwap s i j
+(s.length = t.length) ∧
+(s.length > 0 →
+(∀ k : Nat, k ≠ i ∧ k ≠ j ∧ k < s.length → t.get ⟨k⟩ = s.get ⟨k⟩) ∧
+t.get ⟨i⟩ = s.get ⟨j⟩ ∧ t.get ⟨j⟩ = s.get ⟨i⟩) ∧
+(s.length = 0 → t = s) := sorry
 

@@ -1,0 +1,25 @@
+vc-description: |-
+  Element-wise multiplication of two vectors of the same length.
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+vc-helpers: |-
+
+vc-spec: |-
+  fn multiply(a: Vec<i32>, b: Vec<i32>) -> (result: Vec<i32>)
+      requires a.len() == b.len(),
+      ensures 
+          result.len() == a.len(),
+          forall|i: int| 0 <= i < a.len() ==> result[i] == a[i] * b[i]
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      unreached()
+      // impl-end
+  }
+vc-postamble: |-
+
+  }
+  fn main() {}

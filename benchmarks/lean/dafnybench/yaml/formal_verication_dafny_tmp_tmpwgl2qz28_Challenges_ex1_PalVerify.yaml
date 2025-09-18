@@ -1,0 +1,39 @@
+vc-description: |-
+  /- 
+  {
+  "name": "formal_verication_dafny_tmp_tmpwgl2qz28_Challenges_ex1_PalVerify",
+  "category": "Dafny Translation",
+  "description": "Automatically translated from Dafny specification: formal_verication_dafny_tmp_tmpwgl2qz28_Challenges_ex1_PalVerify",
+  "source": "Dafny",
+  "translation_date": "2024",
+  "functions": ,
+  "methods":
+  }
+  -/
+  
+  /- 
+  PalVerify checks if an array of characters is a palindrome.
+  A palindrome reads the same forwards and backwards.
+  
+  @param a The input array of characters
+  @return A boolean indicating if the array is a palindrome
+  -/
+
+vc-preamble: |-
+
+vc-helpers: |-
+
+vc-definitions: |-
+  def PalVerify (a : Array Char) : Bool :=
+  sorry
+
+vc-theorems: |-
+  theorem PalVerify_spec (a : Array Char) :
+  let yn := PalVerify a
+  (yn = true → ∀ i, 0 ≤ i ∧ i < a.size/2 → a[i]! = a[a.size - i - 1]!) ∧
+  (yn = false → ∃ i, 0 ≤ i ∧ i < a.size/2 ∧ a[i]! ≠ a[a.size - i - 1]!) ∧
+  (∀ j, 0 ≤ j ∧ j < a.size → a[j]! = a[j]!) :=
+  sorry
+
+vc-postamble: |-
+

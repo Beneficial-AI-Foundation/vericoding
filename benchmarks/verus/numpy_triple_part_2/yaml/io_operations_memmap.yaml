@@ -1,0 +1,73 @@
+vc-description: |-
+  numpy.memmap: Create a memory-map to an array stored in a binary file on disk.
+
+  Memory-mapped files are used for accessing small segments of large files
+  on disk, without reading the entire file into memory. The memmap provides
+  an array-like interface to the file contents.
+
+  This function creates a Vector view into a binary file on disk with the
+  specified shape and access mode. The file is accessed starting at the
+  given offset.
+
+  Specification: numpy.memmap creates a memory-mapped view of a file.
+
+  This specification captures the essential properties of memory mapping:
+  1. The result is a valid vector of the specified size
+  2. The mapping respects the file access mode constraints
+  3. The offset is within valid bounds for the file
+  4. Read-only modes preserve data integrity
+  5. Write modes allow modification of the underlying file
+
+  Preconditions:
+  - The filename represents a valid file path
+  - The offset is non-negative and within the file bounds
+  - For WriteNew mode, the file will be created if it doesn't exist
+  - For ReadOnly mode, the file must exist and be readable
+
+  Postconditions:
+  - Returns a vector of the specified size n
+  - The vector provides a view into the file starting at the given offset
+  - Read operations reflect the file contents at the mapped region
+  - Write operations (when mode allows) modify the underlying file
+  - The mapping preserves the mathematical properties of array access
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+  /* A simplified representation of file access mode for memory mapping */
+  #[derive(PartialEq, Eq)]
+  enum FileMode {
+      /* ReadOnly mode ('r') - read-only access to existing file */
+      ReadOnly,
+      /* ReadWrite mode ('r+') - read-write access to existing file */
+      ReadWrite,
+      /* WriteNew mode ('w+') - create new file with read-write access */
+      WriteNew,
+      /* CopyOnWrite mode ('c') - copy-on-write access, changes don't persist to disk */
+      CopyOnWrite,
+  }
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn memmap(filename_valid: bool, mode: FileMode, offset: usize, n: usize) -> (result: Vec<f32>)
+      requires 
+          filename_valid,
+      ensures
+          result.len() == n,
+          forall|i: int| 0 <= i < n ==> #[trigger] result[i] == result[i],
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      unreached()
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {}

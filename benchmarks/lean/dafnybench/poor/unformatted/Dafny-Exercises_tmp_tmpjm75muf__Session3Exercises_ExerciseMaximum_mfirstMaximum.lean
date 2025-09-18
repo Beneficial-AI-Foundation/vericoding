@@ -1,20 +1,17 @@
-import Std
 
-open Std.Do
 
 /-!
 {
-  "name": "Dafny-Exercises_tmp_tmpjm75muf__Session3Exercises_ExerciseMaximum_mfirstMaximum",
-  "category": "Dafny Translation",
-  "description": "Automatically translated from Dafny specification: Dafny-Exercises_tmp_tmpjm75muf__Session3Exercises_ExerciseMaximum_mfirstMaximum",
-  "source": "Dafny",
-  "translation_date": "2024",
-  "functions": ,
-  "methods":
+"name": "Dafny-Exercises_tmp_tmpjm75muf__Session3Exercises_ExerciseMaximum_mfirstMaximum",
+"category": "Dafny Translation",
+"description": "Automatically translated from Dafny specification: Dafny-Exercises_tmp_tmpjm75muf__Session3Exercises_ExerciseMaximum_mfirstMaximum",
+"source": "Dafny",
+"translation_date": "2024",
+"functions": ,
+"methods":
 }
 -/
 
-namespace DafnyBenchmarks
 
 /--
 Finds the first maximum element in an array from left to right.
@@ -32,10 +29,8 @@ Specification for mfirstMaximum:
 - Ensures element at returned index is > all elements to its left
 -/
 theorem mfirstMaximum_spec (v : Array Int) :
-  v.size > 0 →
-  let i := mfirstMaximum v
-  (0 ≤ i ∧ i < v.size) ∧
-  (∀ k, 0 ≤ k ∧ k < v.size → v[i.toNat]! ≥ v[k]!) ∧
-  (∀ l, 0 ≤ l ∧ l < i → v[i.toNat]! > v[l.toNat]!) := sorry
-
-end DafnyBenchmarks
+v.size > 0 →
+let i := mfirstMaximum v
+(0 ≤ i ∧ i < v.size) ∧
+(∀ k, 0 ≤ k ∧ k < v.size → v[i.toNat]! ≥ v[k]!) ∧
+(∀ l, 0 ≤ l ∧ l < i → v[i.toNat]! > v[l.toNat]!) := sorry

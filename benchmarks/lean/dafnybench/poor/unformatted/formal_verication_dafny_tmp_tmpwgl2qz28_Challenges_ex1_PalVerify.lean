@@ -1,20 +1,17 @@
-import Std
 
-open Std.Do
 
 /-!
 {
-  "name": "formal_verication_dafny_tmp_tmpwgl2qz28_Challenges_ex1_PalVerify",
-  "category": "Dafny Translation",
-  "description": "Automatically translated from Dafny specification: formal_verication_dafny_tmp_tmpwgl2qz28_Challenges_ex1_PalVerify",
-  "source": "Dafny",
-  "translation_date": "2024",
-  "functions": ,
-  "methods":
+"name": "formal_verication_dafny_tmp_tmpwgl2qz28_Challenges_ex1_PalVerify",
+"category": "Dafny Translation",
+"description": "Automatically translated from Dafny specification: formal_verication_dafny_tmp_tmpwgl2qz28_Challenges_ex1_PalVerify",
+"source": "Dafny",
+"translation_date": "2024",
+"functions": ,
+"methods":
 }
 -/
 
-namespace DafnyBenchmarks
 
 /--
 PalVerify checks if an array of characters is a palindrome.
@@ -33,9 +30,7 @@ Ensures:
 3. Array contents are unchanged
 -/
 theorem PalVerify_spec (a : Array Char) :
-  let yn := PalVerify a
-  (yn = true → ∀ i, 0 ≤ i ∧ i < a.size/2 → a[i]! = a[a.size - i - 1]!) ∧
-  (yn = false → ∃ i, 0 ≤ i ∧ i < a.size/2 ∧ a[i]! ≠ a[a.size - i - 1]!) ∧
-  (∀ j, 0 ≤ j ∧ j < a.size → a[j]! = a[j]!) := sorry
-
-end DafnyBenchmarks
+let yn := PalVerify a
+(yn = true → ∀ i, 0 ≤ i ∧ i < a.size/2 → a[i]! = a[a.size - i - 1]!) ∧
+(yn = false → ∃ i, 0 ≤ i ∧ i < a.size/2 ∧ a[i]! ≠ a[a.size - i - 1]!) ∧
+(∀ j, 0 ≤ j ∧ j < a.size → a[j]! = a[j]!) := sorry

@@ -1,20 +1,17 @@
-import Std
 
-open Std.Do
 
 /-!
 {
-  "name": "dafny-synthesis_task_id_470_PairwiseAddition",
-  "category": "Dafny Translation",
-  "description": "Automatically translated from Dafny specification: dafny-synthesis_task_id_470_PairwiseAddition",
-  "source": "Dafny",
-  "translation_date": "2024",
-  "functions": ,
-  "methods":
+"name": "dafny-synthesis_task_id_470_PairwiseAddition",
+"category": "Dafny Translation",
+"description": "Automatically translated from Dafny specification: dafny-synthesis_task_id_470_PairwiseAddition",
+"source": "Dafny",
+"translation_date": "2024",
+"functions": ,
+"methods":
 }
 -/
 
-namespace DafnyBenchmarks
 
 /--
 Performs pairwise addition on an array, combining adjacent elements.
@@ -32,10 +29,8 @@ Specification for PairwiseAddition:
 - Each element is sum of corresponding adjacent pairs from input
 -/
 theorem PairwiseAddition_spec (a : Array Int) :
-  a.size % 2 = 0 →
-  let result := PairwiseAddition a
-  result.size = a.size / 2 ∧
-  ∀ i, 0 ≤ i ∧ i < result.size →
-    result[i]! = a[2*i]! + a[2*i + 1]! := sorry
-
-end DafnyBenchmarks
+a.size % 2 = 0 →
+let result := PairwiseAddition a
+result.size = a.size / 2 ∧
+∀ i, 0 ≤ i ∧ i < result.size →
+result[i]! = a[2*i]! + a[2*i + 1]! := sorry

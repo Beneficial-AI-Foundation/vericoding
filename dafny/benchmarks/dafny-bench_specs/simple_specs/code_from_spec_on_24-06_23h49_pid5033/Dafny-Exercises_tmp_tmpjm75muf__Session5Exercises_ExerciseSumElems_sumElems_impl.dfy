@@ -1,1 +1,0 @@
-SumRLeftToRight(v[..], i);

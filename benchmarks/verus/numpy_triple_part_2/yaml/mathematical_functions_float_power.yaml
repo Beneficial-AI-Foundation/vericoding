@@ -1,0 +1,37 @@
+vc-description: |-
+  Element-wise power operation with float promotion. 
+  Raises each element of the base vector to the corresponding power in the exponent vector.
+  All values are promoted to Float (minimum precision of Float64).
+  
+  Specification: float_power computes element-wise exponentiation with appropriate constraints.
+  - For positive bases: result is always well-defined
+  - For zero bases: only non-negative exponents are valid
+  - For negative bases: only integer exponents are mathematically valid (though NumPy allows all)
+  - The result preserves the mathematical power relationship element-wise
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+vc-helpers: |-
+
+vc-spec: |-
+  spec fn float_pow(base: f64, exponent: f64) -> f64;
+
+  fn float_power(base: Vec<f64>, exponent: Vec<f64>) -> (result: Vec<f64>)
+      requires 
+          base.len() == exponent.len()
+      ensures 
+          result.len() == base.len(),
+          forall|i: int| 0 <= i < result.len() ==> 
+              result[i] == float_pow(base[i], exponent[i])
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      unreached()
+      // impl-end
+  }
+vc-postamble: |-
+
+  }
+  fn main() {}

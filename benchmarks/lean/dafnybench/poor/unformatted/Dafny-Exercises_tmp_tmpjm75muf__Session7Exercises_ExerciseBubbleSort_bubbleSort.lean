@@ -1,27 +1,24 @@
-import Std
 
-open Std.Do
 
 /-!
 {
-  "name": "Dafny-Exercises_tmp_tmpjm75muf__Session7Exercises_ExerciseBubbleSort_bubbleSort",
-  "category": "Dafny Translation",
-  "description": "Automatically translated from Dafny specification: Dafny-Exercises_tmp_tmpjm75muf__Session7Exercises_ExerciseBubbleSort_bubbleSort",
-  "source": "Dafny",
-  "translation_date": "2024",
-  "functions": ,
-  "methods":
+"name": "Dafny-Exercises_tmp_tmpjm75muf__Session7Exercises_ExerciseBubbleSort_bubbleSort",
+"category": "Dafny Translation",
+"description": "Automatically translated from Dafny specification: Dafny-Exercises_tmp_tmpjm75muf__Session7Exercises_ExerciseBubbleSort_bubbleSort",
+"source": "Dafny",
+"translation_date": "2024",
+"functions": ,
+"methods":
 }
 -/
 
-namespace DafnyBenchmarks
 
 /--
 Predicate indicating if array segment [i,j) is sorted
 -/
 def sorted_seg (a : Array Int) (i j : Int) : Prop :=
-  0 ≤ i ∧ i ≤ j ∧ j ≤ a.size ∧
-  ∀ l k : Nat, i ≤ l ∧ l ≤ k ∧ k < j → a[l]! ≤ a[k]!
+0 ≤ i ∧ i ≤ j ∧ j ≤ a.size ∧
+∀ l k : Nat, i ≤ l ∧ l ≤ k ∧ k < j → a[l]! ≤ a[k]!
 
 /--
 BubbleSort implementation for array segment [c,f)
@@ -35,10 +32,8 @@ Main specification for bubbleSort:
 3. Elements outside [c,f) are unchanged
 -/
 theorem bubbleSort_spec (a : Array Int) (c f : Int) :
-  0 ≤ c ∧ c ≤ f ∧ f ≤ a.size →
-  let result := bubbleSort a c f
-  sorted_seg result c f ∧
-  -- Note: Multiset and array slice specifications simplified due to translation limitations
-  result.size = a.size := sorry
-
-end DafnyBenchmarks
+0 ≤ c ∧ c ≤ f ∧ f ≤ a.size →
+let result := bubbleSort a c f
+sorted_seg result c f ∧
+-- Note: Multiset and array slice specifications simplified due to translation limitations
+result.size = a.size := sorry

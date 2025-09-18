@@ -1,20 +1,17 @@
-import Std
 
-open Std.Do
 
 /-!
 {
-  "name": "dafny-synthesis_task_id_441_CubeSurfaceArea",
-  "category": "Dafny Translation", 
-  "description": "Automatically translated from Dafny specification: dafny-synthesis_task_id_441_CubeSurfaceArea",
-  "source": "Dafny",
-  "translation_date": "2024",
-  "functions": ,
-  "methods": 
+"name": "dafny-synthesis_task_id_441_CubeSurfaceArea",
+"category": "Dafny Translation",
+"description": "Automatically translated from Dafny specification: dafny-synthesis_task_id_441_CubeSurfaceArea",
+"source": "Dafny",
+"translation_date": "2024",
+"functions": ,
+"methods":
 }
 -/
 
-namespace DafnyBenchmarks
 
 /--
 Calculates the surface area of a cube given its size.
@@ -25,8 +22,8 @@ Calculates the surface area of a cube given its size.
 Translated from Dafny method:
 dafny
 method CubeSurfaceArea(size: int) returns (area: int)
-    requires size > 0
-    ensures area == 6 * size * size
+requires size > 0
+ensures area == 6 * size * size
 
 -/
 def CubeSurfaceArea (size : Int) : Int := sorry
@@ -35,6 +32,4 @@ def CubeSurfaceArea (size : Int) : Int := sorry
 Specification for CubeSurfaceArea ensuring the result is correct.
 -/
 theorem CubeSurfaceArea_spec (size : Int) :
-  size > 0 → CubeSurfaceArea size = 6 * size * size := sorry
-
-end DafnyBenchmarks
+size > 0 → CubeSurfaceArea size = 6 * size * size := sorry

@@ -1,69 +1,64 @@
-import Std
 
 
-open Std.Do
 
 /-!
 {
-  "name": "AssertivePrograming_tmp_tmpwf43uz0e_MergeSort_Merge",
-  "category": "Dafny Translation",
-  "description": "Automatically translated from Dafny specification: AssertivePrograming_tmp_tmpwf43uz0e_MergeSort_Merge",
-  "source": "Dafny",
-  "translation_date": "2024",
-  "functions": ,
-  "methods":
+"name": "AssertivePrograming_tmp_tmpwf43uz0e_MergeSort_Merge",
+"category": "Dafny Translation",
+"description": "Automatically translated from Dafny specification: AssertivePrograming_tmp_tmpwf43uz0e_MergeSort_Merge",
+"source": "Dafny",
+"translation_date": "2024",
+"functions": ,
+"methods":
 }
 -/
 
-namespace DafnyBenchmarks
 
 /-- Predicate indicating if an array is sorted -/
 def Sorted (q : Array Int) : Prop :=
-  ∀ i j, 0 ≤ i → i ≤ j → j < q.size → q[i]! ≤ q[j]!
+∀ i j, 0 ≤ i → i ≤ j → j < q.size → q[i]! ≤ q[j]!
 
 /-- Invariant for merge operation -/
-def Inv (a : Array Int) (a1 : Array Int) (a2 : Array Int) (i : Nat) (mid : Nat) : Prop :=
-  i ≤ a1.size ∧ i ≤ a2.size ∧ i + mid ≤ a.size ∧
-  (a1.extract 0 i = a.extract 0 i) ∧
-  (a2.extract 0 i = a.extract mid (i + mid))
+def Inv_ (a : Array Int) (a1 : Array Int) (a2 : Array Int) (i : Nat) (mid : Nat) : Prop :=
+i ≤ a1.size ∧ i ≤ a2.size ∧ i + mid ≤ a.size ∧
+(a1.extract 0 i = a.extract 0 i) ∧
+(a2.extract 0 i = a.extract mid (i + mid))
 
 /-- Invariant for sorted property during merge -/
 def InvSorted (b : Array Int) (c : Array Int) (d : Array Int) (i : Nat) (j : Nat) : Prop :=
-  i ≤ c.size ∧ j ≤ d.size ∧ i + j ≤ b.size ∧
-  ((i + j > 0 ∧ i < c.size) →  (b[j + i - 1]! ≤ c[i]!)) ∧
-  ((i + j > 0 ∧ j < d.size) → (b[j + i - 1]! ≤ d[j]!)) ∧
-  Sorted (b.extract 0 (i + j))
+i ≤ c.size ∧ j ≤ d.size ∧ i + j ≤ b.size ∧
+((i + j > 0 ∧ i < c.size) →  (b[j + i - 1]! ≤ c[i]!)) ∧
+((i + j > 0 ∧ j < d.size) → (b[j + i - 1]! ≤ d[j]!)) ∧
+Sorted (b.extract 0 (i + j))
 
 /-- Invariant for subset property during merge -/
 def InvSubSet (b : Array Int) (c : Array Int) (d : Array Int) (i : Nat) (j : Nat) : Prop :=
-  i ≤ c.size ∧ j ≤ d.size ∧ i + j ≤ b.size ∧
-   (b.extract 0 (i + j)) =  (c.extract 0 i).append (d.extract 0 j)
+i ≤ c.size ∧ j ≤ d.size ∧ i + j ≤ b.size ∧
+(b.extract 0 (i + j)) =  (c.extract 0 i).append (d.extract 0 j)
 
 /-- MergeLoop operation specification -/
 def MergeLoop (b c d : Array Int) (i0 j0 : Nat) : (Nat × Nat) :=
-  sorry
+sorry
 
 theorem MergeLoop_spec (b c d : Array Int) (i0 j0 : Nat) :
-  b ≠ c → b ≠ d → b.size = c.size + d.size →
-  Sorted c → Sorted d →
-  i0 ≤ c.size → j0 ≤ d.size → i0 + j0 ≤ b.size →
-  InvSubSet b c d i0 j0 →
-  InvSorted b c d i0 j0 →
-  i0 + j0 < b.size →
-  let (i, j) := MergeLoop b c d i0 j0
-  i ≤ c.size ∧ j ≤ d.size ∧ i + j ≤ b.size ∧
-  InvSubSet b c d i j ∧
-  InvSorted b c d i j ∧
-  (0 ≤ c.size - i ∧ c.size - i < c.size - i0 ∨
-   (c.size - i = c.size - i0 ∧ 0 ≤ d.size - j ∧ d.size - j < d.size - j0)) := sorry
+b ≠ c → b ≠ d → b.size = c.size + d.size →
+Sorted c → Sorted d →
+i0 ≤ c.size → j0 ≤ d.size → i0 + j0 ≤ b.size →
+InvSubSet b c d i0 j0 →
+InvSorted b c d i0 j0 →
+i0 + j0 < b.size →
+let (i, j) := MergeLoop b c d i0 j0
+i ≤ c.size ∧ j ≤ d.size ∧ i + j ≤ b.size ∧
+InvSubSet b c d i j ∧
+InvSorted b c d i j ∧
+(0 ≤ c.size - i ∧ c.size - i < c.size - i0 ∨
+(c.size - i = c.size - i0 ∧ 0 ≤ d.size - j ∧ d.size - j < d.size - j0)) := sorry
 
 /-- Merge operation specification -/
 def Merge (b c d : Array Int) : Unit :=
-  sorry
+sorry
 
 theorem Merge_spec (b c d : Array Int) :
-  b ≠ c → b ≠ d → b.size = c.size + d.size →
-  Sorted c → Sorted d →
-  Sorted b ∧  (b.extract 0 (i + j)) =  (c.extract 0 i).append (d.extract 0 j) := sorry
-
-end DafnyBenchmarks
+b ≠ c → b ≠ d → b.size = c.size + d.size →
+Sorted c → Sorted d →
+Sorted b ∧  (b.extract 0 (i + j)) =  (c.extract 0 i).append (d.extract 0 j) := sorry

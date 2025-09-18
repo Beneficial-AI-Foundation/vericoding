@@ -128,8 +128,8 @@ def convert_yaml_to_jsonl(yaml_path: Path, output_path: Path = None) -> None:
     if not yaml_path.is_dir():
         raise ValueError(f"{yaml_path} is not a directory")
     
-    # Find all .yaml files in the directory
-    yaml_files = sorted(list(yaml_path.glob("*.yaml")))
+    # Find all .yaml files in the directory (recursively)
+    yaml_files = sorted(list(yaml_path.glob("**/*.yaml")))
     
     if not yaml_files:
         print(f"No .yaml files found in {yaml_path}")
@@ -146,15 +146,51 @@ def convert_yaml_to_jsonl(yaml_path: Path, output_path: Path = None) -> None:
             # Load the YAML spec
             spec = yaml.load(yaml_file)
             
-            # Create a new dictionary with id field first
-            new_spec = {'id': yaml_file.stem}
+            # Create a new dictionary with id field first, preserving relative path structure
+            relative_path = yaml_file.relative_to(yaml_path)
+            # Use the relative path without extension as the ID to preserve directory structure
+            file_id = str(relative_path.with_suffix(''))
+            new_spec = {'id': file_id}
             new_spec.update(spec)
             
             # Write as JSON line
             json.dump(new_spec, f, ensure_ascii=False)
             f.write('\n')
+
+    processed_count = 0
+    skipped_count = 0
+        
+    with open(output_path, 'w') as f:
+        yaml_parser = YAML()
+        yaml_parser.preserve_quotes = True  # Preserve original formatting
+        for yaml_file in yaml_files:
+            try:
+                # Load the YAML spec
+                spec = yaml_parser.load(yaml_file)
+                
+                # Validate that spec is a dictionary
+                if not isinstance(spec, dict):
+                    print(f"Warning: {yaml_file} does not contain a YAML dictionary, skipping")
+                    skipped_count += 1
+                    continue
+                
+                # Create a new dictionary with id field first
+                new_spec = {'id': yaml_file.stem}
+                new_spec.update(spec)
+                
+                # Write as JSON line
+                json.dump(new_spec, f, ensure_ascii=False)
+                f.write('\n')
+                processed_count += 1
+                
+            except Exception as e:
+                print(f"Warning: Failed to parse {yaml_file} as YAML (likely contains raw code instead of YAML): {e}")
+                skipped_count += 1
+                continue
     
-    print(f"Converted {len(yaml_files)} YAML files to {output_path}")
+    print(f"Converted {processed_count} YAML files to {output_path}")
+    if skipped_count > 0:
+        print(f"Skipped {skipped_count} files that were not valid YAML")
 
 
 def convert_yaml_to_dir(suffix: str, yaml_path: Path, output_path: Path = None, use_all_keys: bool = False) -> None:
@@ -170,8 +206,8 @@ def convert_yaml_to_dir(suffix: str, yaml_path: Path, output_path: Path = None, 
     if not yaml_path.is_dir():
         raise ValueError(f"{yaml_path} is not a directory")
     
-    # Find all .yaml files in the directory
-    yaml_files = list(yaml_path.glob("*.yaml"))
+    # Find all .yaml files in the directory (recursively)
+    yaml_files = list(yaml_path.glob("**/*.yaml"))
     
     if not yaml_files:
         print(f"No .yaml files found in {yaml_path}")
@@ -190,12 +226,20 @@ def convert_yaml_to_dir(suffix: str, yaml_path: Path, output_path: Path = None, 
     
     if suffix in ['lean', 'dfy', 'rs']:
         for yaml_file in yaml_files:
-            output_file = output_dir / f"{yaml_file.stem}.{suffix}"
+            # Preserve directory structure in output
+            relative_path = yaml_file.relative_to(yaml_path)
+            output_file = output_dir / relative_path.with_suffix(f'.{suffix}')
+            # Ensure the output directory exists
+            output_file.parent.mkdir(parents=True, exist_ok=True)
             convert_yaml_to_file(yaml_file, output_file, use_all_keys)  
 
     elif suffix == 'json':
         for yaml_file in yaml_files:
-            output_file = output_dir / f"{yaml_file.stem}.{suffix}"
+            # Preserve directory structure in output
+            relative_path = yaml_file.relative_to(yaml_path)
+            output_file = output_dir / relative_path.with_suffix(f'.{suffix}')
+            # Ensure the output directory exists
+            output_file.parent.mkdir(parents=True, exist_ok=True)
             convert_yaml_to_json(yaml_file, output_file)
 
     else:
@@ -248,11 +292,17 @@ def convert_jsonl_to_dir(suffix: str, jsonl_path: Path, output_path: Path = None
                 file_id = spec['id']
                 
                 if suffix in ['lean', 'dfy', 'rs']:
+                    # Reconstruct directory structure from the file_id (which contains relative path)
                     output_file = output_dir / f"{file_id}.{suffix}"
+                    # Ensure the output directory exists
+                    output_file.parent.mkdir(parents=True, exist_ok=True)
                     convert_spec_to_file(spec, output_file, use_all_keys)
                 
                 elif suffix == 'json':
+                    # Reconstruct directory structure from the file_id (which contains relative path)
                     output_file = output_dir / f"{file_id}.{suffix}"
+                    # Ensure the output directory exists
+                    output_file.parent.mkdir(parents=True, exist_ok=True)
                     with open(output_file, 'w') as out_f:
                         json.dump(spec, out_f, ensure_ascii=False, indent=2)
                 
@@ -329,9 +379,12 @@ def process_bench(bench_dir: Path, suffix: str = None, use_all_keys: bool = Fals
     jsonl_path = bench_dir / jsonl_filename
     convert_yaml_to_jsonl(yaml_dir, jsonl_path)
     
-    # 2. Convert JSONL to individual files in 'files' folder
-    files_dir = bench_dir / "files"
-    convert_jsonl_to_dir(bench_suffix, jsonl_path, files_dir, use_all_keys)
+    # 2. Convert JSONL to individual files in 'files' folder (only if JSONL was created)
+    if jsonl_path.exists():
+        files_dir = bench_dir / "files"
+        convert_jsonl_to_dir(bench_suffix, jsonl_path, files_dir, use_all_keys)
+    else:
+        print(f"No JSONL file created, skipping file conversion for {bench_dir}")
 
 
 def process_benchmarks(benchmarks_dir: Path, suffix: str = None, use_all_keys: bool = False) -> None:

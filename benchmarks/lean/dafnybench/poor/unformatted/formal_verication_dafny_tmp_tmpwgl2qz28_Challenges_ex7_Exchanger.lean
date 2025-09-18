@@ -1,42 +1,37 @@
-import Std
 
-open Std.Do
 
 /-!
 {
-  "name": "formal_verication_dafny_tmp_tmpwgl2qz28_Challenges_ex7_Exchanger",
-  "category": "Dafny Translation",
-  "description": "Automatically translated from Dafny specification: formal_verication_dafny_tmp_tmpwgl2qz28_Challenges_ex7_Exchanger",
-  "source": "Dafny",
-  "translation_date": "2024",
-  "functions": ,
-  "methods":
+"name": "formal_verication_dafny_tmp_tmpwgl2qz28_Challenges_ex7_Exchanger",
+"category": "Dafny Translation",
+"description": "Automatically translated from Dafny specification: formal_verication_dafny_tmp_tmpwgl2qz28_Challenges_ex7_Exchanger",
+"source": "Dafny",
+"translation_date": "2024",
+"functions": ,
+"methods":
 }
 -/
 
-namespace DafnyBenchmarks
 
 
 /-- Represents DNA bases -/
 inductive Bases
-  | A
-  | C
-  | G
-  | T
-  deriving Repr, BEq, Inhabited
+| A
+| C
+| G
+| T
+deriving Repr, BEq, Inhabited
 
 
 /-- Exchanges elements at positions x and y in sequence s -/
 def Exchanger (s : Array Bases) (x y : Nat) : Array Bases :=
-  let temp := s[x]!
-  s.set! x s[y]! |>.set! y temp
+let temp := s[x]!
+s.set! x s[y]! |>.set! y temp
 
 /-- Specification for Exchanger method -/
 theorem Exchanger_spec (s : Array Bases) (x y : Nat) :
-  0 < s.size ∧ x < s.size ∧ y < s.size →
-  let t := Exchanger s x y
-  t.size = s.size ∧
-  (∀ b : Nat, 0 ≤ b ∧ b < s.size ∧ b ≠ x ∧ b ≠ y → t[b]! == s[b]!) ∧
-  t[x]! == s[y]! ∧ s[x]! == t[y]! := sorry
-
-end DafnyBenchmarks
+0 < s.size ∧ x < s.size ∧ y < s.size →
+let t := Exchanger s x y
+t.size = s.size ∧
+(∀ b : Nat, 0 ≤ b ∧ b < s.size ∧ b ≠ x ∧ b ≠ y → t[b]! == s[b]!) ∧
+t[x]! == s[y]! ∧ s[x]! == t[y]! := sorry

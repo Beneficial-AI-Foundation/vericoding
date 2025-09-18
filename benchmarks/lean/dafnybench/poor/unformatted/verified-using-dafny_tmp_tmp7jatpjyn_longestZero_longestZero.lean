@@ -1,26 +1,23 @@
-import Std
 
-open Std.Do
 
 /-!
 {
-  "name": "verified-using-dafny_tmp_tmp7jatpjyn_longestZero_longestZero",
-  "category": "Dafny Translation",
-  "description": "Automatically translated from Dafny specification: verified-using-dafny_tmp_tmp7jatpjyn_longestZero_longestZero",
-  "source": "Dafny",
-  "translation_date": "2024",
-  "functions": ,
-  "methods":
+"name": "verified-using-dafny_tmp_tmp7jatpjyn_longestZero_longestZero",
+"category": "Dafny Translation",
+"description": "Automatically translated from Dafny specification: verified-using-dafny_tmp_tmp7jatpjyn_longestZero_longestZero",
+"source": "Dafny",
+"translation_date": "2024",
+"functions": ,
+"methods":
 }
 -/
 
-namespace DafnyBenchmarks
 
 /--
 Gets the size of a sequence from index i to j inclusive.
 -/
 def getSize (i j : Int) : Int :=
-  j - i + 1
+j - i + 1
 
 /--
 Finds the longest subsequence of zeros in an array.
@@ -44,13 +41,11 @@ def longestZero (a : Array Int) : Int × Int := sorry
 Main specification theorem for longestZero.
 -/
 theorem longestZero_spec (a : Array Int) :
-  1 ≤ a.size →
-  let (sz, pos) := longestZero a
-  0 ≤ sz ∧ sz ≤ a.size ∧
-  0 ≤ pos ∧ pos < a.size ∧
-  pos + sz ≤ a.size ∧
-  (∀ i:Nat, pos ≤ i ∧ i < pos + sz → a[i]! = 0) ∧
-  (∀ i j:Nat, 0 ≤ i ∧ i < j ∧ j < a.size ∧ getSize i j > sz →
-    ∃ k, i ≤ k ∧ k ≤ j ∧ a[k]! ≠ 0) := sorry
-
-end DafnyBenchmarks
+1 ≤ a.size →
+let (sz, pos) := longestZero a
+0 ≤ sz ∧ sz ≤ a.size ∧
+0 ≤ pos ∧ pos < a.size ∧
+pos + sz ≤ a.size ∧
+(∀ i:Nat, pos ≤ i ∧ i < pos + sz → a[i]! = 0) ∧
+(∀ i j:Nat, 0 ≤ i ∧ i < j ∧ j < a.size ∧ getSize i j > sz →
+∃ k, i ≤ k ∧ k ≤ j ∧ a[k]! ≠ 0) := sorry

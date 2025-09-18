@@ -1,20 +1,17 @@
-import Std
 
-open Std.Do
 
 /-!
 {
-  "name": "dafny-exercise_tmp_tmpouftptir_appendArray_appendArray",
-  "category": "Dafny Translation",
-  "description": "Automatically translated from Dafny specification: dafny-exercise_tmp_tmpouftptir_appendArray_appendArray",
-  "source": "Dafny",
-  "translation_date": "2024",
-  "functions": ,
-  "methods":
+"name": "dafny-exercise_tmp_tmpouftptir_appendArray_appendArray",
+"category": "Dafny Translation",
+"description": "Automatically translated from Dafny specification: dafny-exercise_tmp_tmpouftptir_appendArray_appendArray",
+"source": "Dafny",
+"translation_date": "2024",
+"functions": ,
+"methods":
 }
 -/
 
-namespace DafnyBenchmarks
 
 /--
 Appends two arrays of integers into a new array.
@@ -33,9 +30,7 @@ Specification for appendArray method ensuring:
 3. Second part of output matches second input array
 -/
 theorem appendArray_spec (a b c : Array Int) :
-  c = appendArray a b →
-  (c.size = a.size + b.size) ∧
-  (∀ i, 0 ≤ i ∧ i < a.size → a[i]! = c[i]!) ∧
-  (∀ i, 0 ≤ i ∧ i < b.size → b[i]! = c[a.size + i]!) := sorry
-
-end DafnyBenchmarks
+c = appendArray a b →
+(c.size = a.size + b.size) ∧
+(∀ i, 0 ≤ i ∧ i < a.size → a[i]! = c[i]!) ∧
+(∀ i, 0 ≤ i ∧ i < b.size → b[i]! = c[a.size + i]!) := sorry

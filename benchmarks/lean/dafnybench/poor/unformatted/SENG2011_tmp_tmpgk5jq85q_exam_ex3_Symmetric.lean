@@ -1,20 +1,17 @@
-import Std
 
-open Std.Do
 
 /-!
 {
-  "name": "SENG2011_tmp_tmpgk5jq85q_exam_ex3_Symmetric",
-  "category": "Dafny Translation",
-  "description": "Automatically translated from Dafny specification: SENG2011_tmp_tmpgk5jq85q_exam_ex3_Symmetric",
-  "source": "Dafny",
-  "translation_date": "2024",
-  "functions": ,
-  "methods":
+"name": "SENG2011_tmp_tmpgk5jq85q_exam_ex3_Symmetric",
+"category": "Dafny Translation",
+"description": "Automatically translated from Dafny specification: SENG2011_tmp_tmpgk5jq85q_exam_ex3_Symmetric",
+"source": "Dafny",
+"translation_date": "2024",
+"functions": ,
+"methods":
 }
 -/
 
-namespace DafnyBenchmarks
 
 /--
 Checks if an array is symmetric around its midpoint.
@@ -31,8 +28,6 @@ Specification for Symmetric method:
 - If flag is false, then array is not symmetric (at least one mismatch exists)
 -/
 theorem Symmetric_spec (a : Array Int) :
-  let flag := Symmetric a
-  (flag = true → ∀ x, 0 ≤ x ∧ x < a.size → a[x]! = a[a.size - x - 1]!) ∧
-  (flag = false → ∃ x, 0 ≤ x ∧ x < a.size ∧ a[x]! ≠ a[a.size - x - 1]!) := sorry
-
-end DafnyBenchmarks
+let flag := Symmetric a
+(flag = true → ∀ x, 0 ≤ x ∧ x < a.size → a[x]! = a[a.size - x - 1]!) ∧
+(flag = false → ∃ x, 0 ≤ x ∧ x < a.size ∧ a[x]! ≠ a[a.size - x - 1]!) := sorry

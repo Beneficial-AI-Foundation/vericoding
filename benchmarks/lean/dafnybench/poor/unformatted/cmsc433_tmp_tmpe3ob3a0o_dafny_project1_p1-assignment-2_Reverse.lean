@@ -1,21 +1,18 @@
-import Std
 
 
-open Std.Do
 
 /-!
 {
-  "name": "cmsc433_tmp_tmpe3ob3a0o_dafny_project1_p1-assignment-2_Reverse",
-  "category": "Dafny Translation",
-  "description": "Automatically translated from Dafny specification: cmsc433_tmp_tmpe3ob3a0o_dafny_project1_p1-assignment-2_Reverse",
-  "source": "Dafny",
-  "translation_date": "2024",
-  "functions": ,
-  "methods":
+"name": "cmsc433_tmp_tmpe3ob3a0o_dafny_project1_p1-assignment-2_Reverse",
+"category": "Dafny Translation",
+"description": "Automatically translated from Dafny specification: cmsc433_tmp_tmpe3ob3a0o_dafny_project1_p1-assignment-2_Reverse",
+"source": "Dafny",
+"translation_date": "2024",
+"functions": ,
+"methods":
 }
 -/
 
-namespace DafnyBenchmarks
 
 /--
 Reverses an array of integers.
@@ -34,8 +31,6 @@ Ensures:
 3. The output array is newly created
 -/
 theorem reverse_spec (a : Array Int) (aRev : Array Int) :
-  aRev = Reverse a →
-  (aRev.size = a.size) ∧
-  (∀ i, 0 ≤ i ∧ i < a.size → a[i]! = aRev[(aRev.size - i - 1)]!) := sorry
-
-end DafnyBenchmarks
+aRev = Reverse a →
+(aRev.size = a.size) ∧
+(∀ i, 0 ≤ i ∧ i < a.size → a[i]! = aRev[(aRev.size - i - 1)]!) := sorry

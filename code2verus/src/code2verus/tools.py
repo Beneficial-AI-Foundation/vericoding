@@ -6,7 +6,7 @@ from typing import Annotated
 from pydantic import Field
 
 from code2verus.config import cfg
-from code2verus.models import VerusToolResult, DafnyToolResult
+from code2verus.models import VerusToolResult, DafnyToolResult, LeanToolResult
 
 
 def verus_tool(
@@ -79,6 +79,47 @@ def dafny_tool(
     except OSError as exc:
         return DafnyToolResult(
             success=False, output="", error=f"Error running Dafny: {str(exc)}"
+        )
+    finally:
+        # Clean up temporary file
+        try:
+            os.unlink(temp_file)
+        except OSError:
+            pass
+
+
+def lean_tool(
+    code: Annotated[str, Field(description="Lean code to verify")],
+) -> LeanToolResult:
+    """Execute Lean verification on the provided code"""
+    lean_path = cfg.get("lean_path", "lean")
+
+    # Create temporary file with the code
+    with tempfile.NamedTemporaryFile(mode="w", suffix=".lean", delete=False) as tmpfile:
+        tmpfile.write(code)
+        temp_file = tmpfile.name
+
+    try:
+        # Run lean verification
+        result = subprocess.run(
+            [lean_path, "--check", temp_file],
+            capture_output=True,
+            text=True,
+            timeout=30,
+        )
+
+        return LeanToolResult(
+            success=result.returncode == 0, output=result.stdout, error=result.stderr
+        )
+    except subprocess.TimeoutExpired:
+        return LeanToolResult(
+            success=False,
+            output="",
+            error="Lean verification timed out after 30 seconds",
+        )
+    except OSError as exc:
+        return LeanToolResult(
+            success=False, output="", error=f"Error running Lean: {str(exc)}"
         )
     finally:
         # Clean up temporary file

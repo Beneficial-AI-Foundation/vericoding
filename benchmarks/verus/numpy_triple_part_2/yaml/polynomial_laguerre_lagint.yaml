@@ -1,0 +1,54 @@
+vc-description: |-
+  numpy.polynomial.laguerre.lagint: Integrate a Laguerre series.
+
+  Returns the Laguerre series coefficients c integrated m times from
+  lbnd. At each iteration the resulting series is multiplied by scl 
+  and an integration constant k is added. The scaling factor is for use 
+  in a linear change of variable.
+
+  The argument c is a vector of coefficients from low to high degree,
+  e.g., [1,2,3] represents the series L_0 + 2*L_1 + 3*L_2.
+
+  Specification: lagint integrates a Laguerre series.
+
+  Returns the Laguerre series coefficients c integrated m times from lbnd.
+  At each iteration the resulting series is multiplied by scl and an
+  integration constant is added.
+
+  Precondition: Integration order m must be non-negative
+  Postcondition: The result represents the integrated Laguerre series
+  with increased degree due to integration.
+
+  Mathematical properties:
+  1. The result has degree n + m - 1 (m integrations increase degree by m)
+  2. Integration is linear: lagint(α*c1 + β*c2) = α*lagint(c1) + β*lagint(c2) 
+  3. For zero coefficients, integration with constants gives the constant
+  4. Multiple integrations accumulate degree increases
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn lagint(c: Vec<f64>, m: usize, k: Vec<f64>, lbnd: f64, scl: f64) -> (result: Vec<f64>)
+      requires 
+          k.len() == m,
+          scl != 0.0,
+      ensures 
+          result.len() == c.len() + m
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      unreached()
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {}

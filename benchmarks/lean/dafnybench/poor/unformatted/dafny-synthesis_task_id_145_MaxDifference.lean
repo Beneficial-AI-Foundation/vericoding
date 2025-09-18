@@ -1,20 +1,17 @@
-import Std
 
-open Std.Do
 
 /-!
 {
-  "name": "dafny-synthesis_task_id_145_MaxDifference",
-  "category": "Dafny Translation",
-  "description": "Automatically translated from Dafny specification: dafny-synthesis_task_id_145_MaxDifference",
-  "source": "Dafny",
-  "translation_date": "2024",
-  "functions": ,
-  "methods":
+"name": "dafny-synthesis_task_id_145_MaxDifference",
+"category": "Dafny Translation",
+"description": "Automatically translated from Dafny specification: dafny-synthesis_task_id_145_MaxDifference",
+"source": "Dafny",
+"translation_date": "2024",
+"functions": ,
+"methods":
 }
 -/
 
-namespace DafnyBenchmarks
 
 /--
 MaxDifference takes an array of integers and returns the maximum difference between any two elements.
@@ -29,8 +26,6 @@ Specification for MaxDifference:
 - Ensures returned difference is ≥ any difference between array elements
 -/
 theorem MaxDifference_spec (a : Array Int) (diff : Int) :
-  a.size > 1 →
-  (∀ i j, 0 ≤ i ∧ i < a.size ∧ 0 ≤ j ∧ j < a.size →
-    (a[i]!) - (a[j]!) ≤ diff) := sorry
-
-end DafnyBenchmarks
+a.size > 1 →
+(∀ i j, 0 ≤ i ∧ i < a.size ∧ 0 ≤ j ∧ j < a.size →
+(a[i]!) - (a[j]!) ≤ diff) := sorry

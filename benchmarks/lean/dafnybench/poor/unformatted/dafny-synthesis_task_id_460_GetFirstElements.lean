@@ -1,20 +1,17 @@
-import Std
 
-open Std.Do
 
 /-!
 {
-  "name": "dafny-synthesis_task_id_460_GetFirstElements",
-  "category": "Dafny Translation",
-  "description": "Automatically translated from Dafny specification: dafny-synthesis_task_id_460_GetFirstElements",
-  "source": "Dafny",
-  "translation_date": "2024",
-  "functions": ,
-  "methods":
+"name": "dafny-synthesis_task_id_460_GetFirstElements",
+"category": "Dafny Translation",
+"description": "Automatically translated from Dafny specification: dafny-synthesis_task_id_460_GetFirstElements",
+"source": "Dafny",
+"translation_date": "2024",
+"functions": ,
+"methods":
 }
 -/
 
-namespace DafnyBenchmarks
 
 /--
 GetFirstElements takes a sequence of sequences of integers and returns a sequence containing
@@ -31,7 +28,7 @@ Ensures:
 - Each element in the output is the first element of the corresponding inner sequence
 -/
 def GetFirstElements (lst : Array (Array Int)) : Array Int :=
-  sorry
+sorry
 
 /--
 Specification for GetFirstElements:
@@ -40,10 +37,8 @@ Specification for GetFirstElements:
 - Ensures each output element is the first element of corresponding inner sequence
 -/
 theorem GetFirstElements_spec (lst : Array (Array Int)) :
-  (∀ i, 0 ≤ i ∧ i < lst.size → (lst[i]!).size > 0) →
-  let result := GetFirstElements lst
-  result.size = lst.size ∧
-  (∀ i, 0 ≤ i ∧ i < result.size → result[i]! = (lst[i]!)[0]!) :=
-  sorry
-
-end DafnyBenchmarks
+(∀ i, 0 ≤ i ∧ i < lst.size → (lst[i]!).size > 0) →
+let result := GetFirstElements lst
+result.size = lst.size ∧
+(∀ i, 0 ≤ i ∧ i < result.size → result[i]! = (lst[i]!)[0]!) :=
+sorry

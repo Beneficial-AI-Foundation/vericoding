@@ -1,20 +1,17 @@
-import Std
 
-open Std.Do
 
 /-!
 {
-  "name": "Dafny_Verify_tmp_tmphq7j0row_dataset_bql_exampls_SmallNum_add_small_numbers",
-  "category": "Dafny Translation",
-  "description": "Automatically translated from Dafny specification: Dafny_Verify_tmp_tmphq7j0row_dataset_bql_exampls_SmallNum_add_small_numbers",
-  "source": "Dafny",
-  "translation_date": "2024",
-  "functions": ,
-  "methods":
+"name": "Dafny_Verify_tmp_tmphq7j0row_dataset_bql_exampls_SmallNum_add_small_numbers",
+"category": "Dafny Translation",
+"description": "Automatically translated from Dafny specification: Dafny_Verify_tmp_tmphq7j0row_dataset_bql_exampls_SmallNum_add_small_numbers",
+"source": "Dafny",
+"translation_date": "2024",
+"functions": ,
+"methods":
 }
 -/
 
-namespace DafnyBenchmarks
 
 /--
 Translates the Dafny method add_small_numbers which adds numbers from an array up to index n,
@@ -35,9 +32,7 @@ Specification for add_small_numbers method ensuring:
 4. result is bounded by max * n
 -/
 theorem add_small_numbers_spec (a : Array Int) (n : Int) (max : Int) (r : Int) :
-  n > 0 ∧
-  n ≤ a.size ∧
-  (∀ i : Nat, i < n → a[i]! ≤ max) →
-  r ≤ max * n := sorry
-
-end DafnyBenchmarks
+n > 0 ∧
+n ≤ a.size ∧
+(∀ i : Nat, i < n → a[i]! ≤ max) →
+r ≤ max * n := sorry

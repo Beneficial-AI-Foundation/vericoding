@@ -1,0 +1,25 @@
+vc-description: |-
+  Finds the minimum element in a non-empty vector.
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+vc-helpers: |-
+
+vc-spec: |-
+  fn min(a: Vec<i32>) -> (result: i32)
+      requires a.len() > 0,
+      ensures 
+          exists|i: int| 0 <= i < a.len() && result == a[i],
+          forall|i: int| 0 <= i < a.len() ==> result <= a[i]
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      unreached()
+      // impl-end
+  }
+vc-postamble: |-
+
+  }
+  fn main() {}

@@ -1,0 +1,39 @@
+vc-description: |-
+  /- 
+  {
+  "name": "MFS_tmp_tmpmmnu354t_Praticas_TP9_Power_powerIter",
+  "category": "Dafny Translation",
+  "description": "Automatically translated from Dafny specification: MFS_tmp_tmpmmnu354t_Praticas_TP9_Power_powerIter",
+  "source": "Dafny",
+  "translation_date": "2024",
+  "functions": ,
+  "methods":
+  }
+  -/
+  
+  /- 
+  Initial specification/definition of x^n, recursive, functional style.
+  Time and space complexity O(n).
+  -/
+  
+  /- 
+  Iterative version of power function with time complexity O(n) and space complexity O(1).
+  -/
+
+vc-preamble: |-
+  def power (x : Float) (n : Nat) : Float :=
+  if n = 0 then 1.0 else x * power x (n-1)
+
+vc-helpers: |-
+
+vc-definitions: |-
+  def powerIter (b : Float) (n : Nat) : Float :=
+  sorry
+
+vc-theorems: |-
+  theorem powerIter_spec (b : Float) (n : Nat) :
+  powerIter b n = power b n :=
+  sorry
+
+vc-postamble: |-
+

@@ -1,0 +1,50 @@
+vc-description: |-
+  Compute matrix norm of a matrix (Frobenius norm by default)
+
+  Specification: matrix_norm computes the Frobenius norm of a matrix 
+  The Frobenius norm is the square root of the sum of squares of all elements.
+
+  Properties:
+  1. Non-negativity: norm is always ≥ 0
+  2. Zero property: norm is 0 iff all elements are 0
+  3. Homogeneity: norm(c*A) = |c| * norm(A) for scalar c
+  4. Triangle inequality: norm(A + B) ≤ norm(A) + norm(B)
+  5. Submultiplicativity: norm(A) dominates the absolute value of any element
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+  spec fn abs_val(x: int) -> int {
+      if x >= 0 { x } else { -x }
+  }
+
+vc-helpers: |
+
+vc-spec: |-
+  fn matrix_norm(x: Vec<Vec<i32>>) -> (result: i32)
+      requires 
+          x.len() > 0,
+          forall|i: int| 0 <= i < x.len() ==> #[trigger] x[i].len() > 0,
+          forall|i: int| 0 <= i < x.len() ==> #[trigger] x[i].len() == x[0].len(),
+      ensures
+          result >= 0,
+          (result == 0) == (forall|i: int, j: int| 
+              0 <= i < x.len() && 0 <= j < x[i].len() ==> #[trigger] x[i][j] == 0),
+          forall|i: int, j: int| 
+              0 <= i < x.len() && 0 <= j < x[i].len() ==> abs_val(#[trigger] x[i][j] as int) <= result,
+          (exists|i: int, j: int| 
+              0 <= i < x.len() && 0 <= j < x[i].len() && #[trigger] x[i][j] != 0) ==> result > 0,
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      0i32
+      // impl-end
+  }
+
+vc-postamble: |2-
+
+  }
+  fn main() {}

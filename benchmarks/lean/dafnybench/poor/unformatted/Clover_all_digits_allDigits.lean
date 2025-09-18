@@ -1,21 +1,18 @@
-import Std
 
 
-open Std.Do
 
 /-!
 {
-  "name": "Clover_all_digits_allDigits",
-  "category": "Dafny Translation",
-  "description": "Automatically translated from Dafny specification: Clover_all_digits_allDigits",
-  "source": "Dafny",
-  "translation_date": "2024",
-  "functions": ,
-  "methods":
+"name": "Clover_all_digits_allDigits",
+"category": "Dafny Translation",
+"description": "Automatically translated from Dafny specification: Clover_all_digits_allDigits",
+"source": "Dafny",
+"translation_date": "2024",
+"functions": ,
+"methods":
 }
 -/
 
-namespace DafnyBenchmarks
 
 /--
 Checks if all characters in a string are digits.
@@ -31,6 +28,4 @@ Specification for allDigits method.
 Ensures the result is true if and only if all characters in the string are digits.
 -/
 theorem allDigits_spec (s : String) :
-  allDigits s = true ↔ (∀ i, 0 ≤ i ∧ i < s.length → (s.get ⟨i⟩).isDigit) := sorry
-
-end DafnyBenchmarks
+allDigits s = true ↔ (∀ i, 0 ≤ i ∧ i < s.length → (s.get ⟨i⟩).isDigit) := sorry

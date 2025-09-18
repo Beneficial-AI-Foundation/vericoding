@@ -1,0 +1,52 @@
+vc-description: |-
+  /- 
+  {
+  "name": "Dafny_tmp_tmpmvs2dmry_examples2_Product",
+  "category": "Dafny Translation",
+  "description": "Automatically translated from Dafny specification: Dafny_tmp_tmpmvs2dmry_examples2_Product",
+  "source": "Dafny",
+  "translation_date": "2024",
+  "functions": ,
+  "methods":
+  }
+  -/
+  
+  /-  Translation of Dafny gcd function with requirements m > 0 and n > 0 -/
+  
+  /-  Specification for gcd function -/
+  
+  /-  Translation of Dafny exp function for real numbers and natural exponents -/
+  
+  /-  Translation of Dafny Product method -/
+  
+  /-  Specification for Product method ensuring result equals m * n -/
+
+vc-preamble: |-
+  partial def gcd (m n : Nat) : Nat :=
+  if m = n then n
+  else if m > n then gcd (m - n) n
+  else gcd m (n - m)
+  
+  def exp (x : Float) (n : Nat) : Float :=
+  if n = 0 then 1.0
+  else if x == 0.0 then 0.0
+  else if n = 0 ∧ x == 0.0 then 1.0
+  else x * exp x (n - 1)
+
+vc-helpers: |-
+
+vc-definitions: |-
+  def Product (m n : Nat) : Nat :=
+  sorry
+
+vc-theorems: |-
+  theorem gcd_spec (m n : Nat) :
+  m > 0 ∧ n > 0 → gcd m n > 0 :=
+  sorry
+  
+  theorem Product_spec (m n : Nat) :
+  Product m n = m * n :=
+  sorry
+
+vc-postamble: |-
+

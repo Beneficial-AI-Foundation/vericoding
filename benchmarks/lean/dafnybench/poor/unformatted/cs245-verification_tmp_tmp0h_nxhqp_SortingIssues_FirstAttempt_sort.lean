@@ -1,20 +1,17 @@
-import Std
 
-open Std.Do
 
 /-!
 {
-  "name": "cs245-verification_tmp_tmp0h_nxhqp_SortingIssues_FirstAttempt_sort",
-  "category": "Dafny Translation",
-  "description": "Automatically translated from Dafny specification: cs245-verification_tmp_tmp0h_nxhqp_SortingIssues_FirstAttempt_sort",
-  "source": "Dafny",
-  "translation_date": "2024",
-  "functions": ,
-  "methods":
+"name": "cs245-verification_tmp_tmp0h_nxhqp_SortingIssues_FirstAttempt_sort",
+"category": "Dafny Translation",
+"description": "Automatically translated from Dafny specification: cs245-verification_tmp_tmp0h_nxhqp_SortingIssues_FirstAttempt_sort",
+"source": "Dafny",
+"translation_date": "2024",
+"functions": ,
+"methods":
 }
 -/
 
-namespace DafnyBenchmarks
 
 /--
 Translation of Dafny sort method specification.
@@ -37,9 +34,7 @@ def sort (A : Array Int) (n : Int) : Array Int := sorry
 Specification for sort method capturing pre and post conditions
 -/
 theorem sort_spec (A : Array Int) (n : Int) :
-  n = A.size ∧
-  n ≥ 0 →
-  ∀ i j, 0 ≤ i ∧ i ≤ j ∧ j < n →
-    (sort A n)[i.toNat]! ≤ (sort A n)[j.toNat]! := sorry
-
-end DafnyBenchmarks
+n = A.size ∧
+n ≥ 0 →
+∀ i j, 0 ≤ i ∧ i ≤ j ∧ j < n →
+(sort A n)[i.toNat]! ≤ (sort A n)[j.toNat]! := sorry

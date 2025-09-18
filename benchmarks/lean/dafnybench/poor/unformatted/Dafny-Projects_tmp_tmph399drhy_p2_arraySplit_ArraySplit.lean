@@ -1,20 +1,17 @@
-import Std
 
-open Std.Do
 
 /-!
 {
-  "name": "Dafny-Projects_tmp_tmph399drhy_p2_arraySplit_ArraySplit",
-  "category": "Dafny Translation", 
-  "description": "Automatically translated from Dafny specification: Dafny-Projects_tmp_tmph399drhy_p2_arraySplit_ArraySplit",
-  "source": "Dafny",
-  "translation_date": "2024",
-  "functions": ,
-  "methods": 
+"name": "Dafny-Projects_tmp_tmph399drhy_p2_arraySplit_ArraySplit",
+"category": "Dafny Translation",
+"description": "Automatically translated from Dafny specification: Dafny-Projects_tmp_tmph399drhy_p2_arraySplit_ArraySplit",
+"source": "Dafny",
+"translation_date": "2024",
+"functions": ,
+"methods":
 }
 -/
 
-namespace DafnyBenchmarks
 
 /--
 Splits an array into two arrays.
@@ -34,11 +31,9 @@ Ensures:
 - For arrays longer than 1, each result is shorter than input
 -/
 theorem ArraySplit_spec (a : Array Int) (res : Array Int × Array Int) :
-  let (b, c) := res
-  -- Note: fresh arrays concept simplified
-  (a.size = b.size + c.size) ∧
-  -- Note: array concatenation simplified
-  (a.size > 1 → a.size > b.size) ∧
-  (a.size > 1 → a.size > c.size) := sorry
-
-end DafnyBenchmarks
+let (b, c) := res
+-- Note: fresh arrays concept simplified
+(a.size = b.size + c.size) ∧
+-- Note: array concatenation simplified
+(a.size > 1 → a.size > b.size) ∧
+(a.size > 1 → a.size > c.size) := sorry

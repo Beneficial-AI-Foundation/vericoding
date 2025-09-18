@@ -1,0 +1,24 @@
+vc-description: |-
+
+vc-preamble: |-
+  type Matrix<T> = seq<seq<T>>
+
+  function MatrixSize<T>(mat: Matrix<T>): nat
+  {
+      if |mat| == 0 then 0 else |mat| * |mat[0]|
+  }
+
+vc-helpers: |-
+
+vc-spec: |-
+  method Reshape(arr: seq<int>, shape: seq<nat>) returns (result: Matrix<int>)
+      requires 
+          |arr| > 0 &&
+          |shape| == 2
+
+vc-code: |-
+  {
+      assume {:axiom} false;
+  }
+
+vc-postamble: |-

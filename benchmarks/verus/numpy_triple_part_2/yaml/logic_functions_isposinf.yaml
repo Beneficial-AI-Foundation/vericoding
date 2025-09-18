@@ -1,0 +1,70 @@
+vc-description: |-
+  Test element-wise for positive infinity, return result as bool array.
+  
+  This function tests each element according to IEEE 754 floating-point standard:
+  - Returns true if the element is positive infinity (+∞)
+  - Returns false for all other values including negative infinity, NaN, finite numbers, and zero
+
+  Mathematical properties:
+  1. Positive infinity detection: result[i] = true iff x[i] is positive infinity
+  2. Distinction from negative infinity: only positive infinity returns true
+  3. Distinction from NaN: positive infinity and NaN are mutually exclusive
+  4. Result preserves shape: output vector has same length as input
+  5. Finite values: All normal, subnormal, and zero values return false
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  spec fn is_pos_inf(x: i32) -> bool {
+      x == 0x7f800000i32
+  }
+
+  spec fn is_neg_inf(x: i32) -> bool {
+      x == 0xff800000u32 as i32
+  }
+
+  spec fn is_nan(x: i32) -> bool {
+      (x & 0x7f800000i32) == 0x7f800000i32 && (x & 0x7fffffi32) != 0
+  }
+
+  spec fn is_finite(x: i32) -> bool {
+      (x & 0x7f800000i32) != 0x7f800000i32
+  }
+
+  fn isposinf(x: Vec<i32>) -> (result: Vec<bool>)
+      ensures
+          result.len() == x.len(),
+          forall|i: int| 0 <= i < x.len() ==> {
+              /* Primary property: result is true iff input is positive infinity */
+              result[i] == is_pos_inf(x[i]) &&
+              /* Sanity checks: finite values return false */
+              (is_finite(x[i]) ==> result[i] == false) &&
+              /* Negative infinity returns false */
+              (is_neg_inf(x[i]) ==> result[i] == false) &&
+              /* NaN is not positive infinity */
+              (is_nan(x[i]) ==> result[i] == false) &&
+              /* Zero is not positive infinity */
+              (x[i] == 0 ==> result[i] == false) &&
+              /* Mathematical property: if result is true, then x is positive infinity */
+              (result[i] == true ==> is_pos_inf(x[i])) &&
+              /* Exclusivity: cannot be both positive infinity and NaN */
+              (result[i] == true ==> !is_nan(x[i]))
+          }
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      unreached()
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {}

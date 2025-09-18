@@ -1,0 +1,92 @@
+// <vc-preamble>
+// ======= TASK =======
+// Given an integer x and a shift amount, perform a circular right shift on the digits of x 
+// and return the result as a string. A circular right shift moves digits from the end to the 
+// beginning. If the shift amount exceeds the number of digits in x, return the digits of x 
+// in reversed order instead.
+
+// ======= SPEC REQUIREMENTS =======
+function intToString(x: int): string
+    requires x >= 0
+    ensures |intToString(x)| >= 1
+    ensures forall i :: 0 <= i < |intToString(x)| ==> '0' <= intToString(x)[i] <= '9'
+{
+    if x == 0 then "0"
+    else intToStringHelper(x, "")
+}
+
+function intToStringHelper(x: int, acc: string): string
+    requires x >= 0
+    requires forall i :: 0 <= i < |acc| ==> '0' <= acc[i] <= '9'
+    ensures forall i :: 0 <= i < |intToStringHelper(x, acc)| ==> '0' <= intToStringHelper(x, acc)[i] <= '9'
+    ensures x > 0 ==> |intToStringHelper(x, acc)| > |acc|
+{
+    if x == 0 then acc
+    else intToStringHelper(x / 10, [((x % 10) + '0' as int) as char] + acc)
+}
+
+function reverseString(s: string): string
+    ensures |reverseString(s)| == |s|
+    ensures forall i :: 0 <= i < |s| ==> reverseString(s)[i] == s[|s| - 1 - i]
+{
+    if |s| <= 1 then s
+    else reverseString(s[1..]) + [s[0]]
+}
+// </vc-preamble>
+
+// <vc-helpers>
+// ======= HELPERS =======
+// </vc-helpers>
+
+// <vc-spec>
+// ======= MAIN METHOD =======
+method circular_shift(x: int, shift: int) returns (result: string)
+    ensures |result| == |intToString(if x < 0 then -x else x)|
+    ensures shift > |intToString(if x < 0 then -x else x)| ==> 
+            result == reverseString(intToString(if x < 0 then -x else x))
+    ensures shift <= |intToString(if x < 0 then -x else x)| && |intToString(if x < 0 then -x else x)| > 0 ==>
+            (var digits := intToString(if x < 0 then -x else x);
+             var n := |digits|;
+             var normalizedShift := shift % n;
+             normalizedShift == 0 ==> result == digits)
+    ensures shift <= |intToString(if x < 0 then -x else x)| && |intToString(if x < 0 then -x else x)| > 0 ==>
+            (var digits := intToString(if x < 0 then -x else x);
+             var n := |digits|;
+             var normalizedShift := shift % n;
+             normalizedShift > 0 ==> result == digits[n - normalizedShift..] + digits[..n - normalizedShift])
+    ensures forall i :: 0 <= i < |result| ==> '0' <= result[i] <= '9'
+// </vc-spec>
+// <vc-code>
+{
+    // Convert to string to work with digits, handle negative numbers
+    var digits := intToString(if x < 0 then -x else x);
+    var n := |digits|;
+
+    // If shift is greater than number of digits, return reversed digits
+    if shift > n {
+        result := reverseString(digits);
+        return;
+    }
+
+    // Handle case where shift is 0 or n is 0
+    if shift == 0 || n == 0 {
+        result := digits;
+        return;
+    }
+
+    // Normalize shift to be within range [0, n)
+    var normalizedShift := shift % n;
+
+    // If normalized shift is 0, return original
+    if normalizedShift == 0 {
+        result := digits;
+        return;
+    }
+
+    // Perform circular right shift
+    // Right shift by 'shift' means taking last 'shift' digits and moving them to front
+    var lastPart := digits[n - normalizedShift..];
+    var firstPart := digits[..n - normalizedShift];
+    result := lastPart + firstPart;
+}
+// </vc-code>

@@ -1,0 +1,50 @@
+vc-description: |-
+  numpy.diff: Calculate the n-th discrete difference along the given axis.
+  
+  The first difference is given by out[i] = a[i+1] - a[i] along the given axis.
+  Higher differences are calculated by using diff recursively.
+  
+  For a 1D array, the first difference computes the difference between 
+  consecutive elements, producing an array with one less element.
+  
+  The function is particularly useful for numerical analyses where 
+  understanding incremental changes within data is crucial.
+  
+  Specification: numpy.diff returns a vector where each element is the difference
+  of consecutive elements from the input array.
+  
+  Precondition: Input array must be non-empty (at least 2 elements for first difference)
+  Postcondition: For all indices i, result[i] = a[i+1] - a[i]
+  
+  Mathematical Properties:
+  1. Length property: |result| = |input| - 1
+  2. Difference property: Each element represents the discrete difference
+  3. Type preservation: Result maintains the same numeric type as input
+  4. Monotonicity: If input is monotonic, result has consistent sign
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn numpy_diff(a: Vec<i32>) -> (result: Vec<i32>)
+      requires a.len() >= 2,
+      ensures 
+          result.len() == a.len() - 1,
+          forall|i: int| 0 <= i < result.len() ==> result[i] == a[i + 1] - a[i],
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      unreached()
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {}

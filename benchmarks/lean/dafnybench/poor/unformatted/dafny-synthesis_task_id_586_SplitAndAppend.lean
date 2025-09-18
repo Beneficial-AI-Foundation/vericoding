@@ -1,20 +1,17 @@
-import Std
 
-open Std.Do
 
 /-!
 {
-  "name": "dafny-synthesis_task_id_586_SplitAndAppend",
-  "category": "Dafny Translation",
-  "description": "Automatically translated from Dafny specification: dafny-synthesis_task_id_586_SplitAndAppend",
-  "source": "Dafny",
-  "translation_date": "2024",
-  "functions": ,
-  "methods":
+"name": "dafny-synthesis_task_id_586_SplitAndAppend",
+"category": "Dafny Translation",
+"description": "Automatically translated from Dafny specification: dafny-synthesis_task_id_586_SplitAndAppend",
+"source": "Dafny",
+"translation_date": "2024",
+"functions": ,
+"methods":
 }
 -/
 
-namespace DafnyBenchmarks
 
 /--
 Splits an array at index n and appends the parts in reverse order.
@@ -33,9 +30,7 @@ Specification for SplitAndAppend:
 - Ensures elements are rotated by n positions
 -/
 theorem SplitAndAppend_spec (l : Array Int) (n : Int) :
-  n ≥ 0 ∧ n < l.size →
-  let r := SplitAndAppend l n
-  r.size = l.size ∧
-  ∀ i, 0 ≤ i ∧ i < l.size → r[i]! = l[(((i + n) % l.size).toNat)]! := sorry
-
-end DafnyBenchmarks
+n ≥ 0 ∧ n < l.size →
+let r := SplitAndAppend l n
+r.size = l.size ∧
+∀ i, 0 ≤ i ∧ i < l.size → r[i]! = l[(((i + n) % l.size).toNat)]! := sorry

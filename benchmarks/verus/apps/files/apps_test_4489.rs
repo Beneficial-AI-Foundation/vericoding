@@ -98,9 +98,6 @@ fn solve(blue_cards: Seq<&str>, red_cards: Seq<&str>) -> (result: int)
 // </vc-spec>
 // <vc-code>
 {
-    proof {
-        max_net_earnings_non_negative(blue_cards, red_cards);
-    }
     assume(false);
     unreached()
 }

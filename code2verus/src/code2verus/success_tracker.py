@@ -1,4 +1,5 @@
 """Success tracking functionality for code2verus"""
+
 import json
 from pathlib import Path
 import yaml
@@ -6,10 +7,48 @@ import yaml
 from code2verus.config import ARTIFACTS
 
 
-def load_success_tracking(benchmark_name: str, is_flat: bool) -> dict:
+def get_success_base_path(benchmark_name: str, benchmark_path: str = "") -> Path:
+    """Get the base path for success tracking, supporting both old and new path structures"""
+    # Try to derive path using the same logic as derive_output_path
+    if benchmark_path:
+        benchmark_path_obj = Path(benchmark_path).resolve()
+
+        # Check if this is a path under benchmarks/lean/
+        if (
+            "benchmarks" in benchmark_path_obj.parts
+            and "lean" in benchmark_path_obj.parts
+        ):
+            # Find the benchmarks and lean parts in the path
+            parts = list(benchmark_path_obj.parts)
+            try:
+                benchmarks_idx = parts.index("benchmarks")
+                lean_idx = parts.index("lean", benchmarks_idx)
+
+                # The benchmark name should be the next part after 'lean'
+                if lean_idx + 1 < len(parts):
+                    lean_benchmark_name = parts[lean_idx + 1]
+
+                    # Build new path: benchmarks/verus/<lean_benchmark_name>
+                    return (
+                        Path(*parts[: benchmarks_idx + 1])
+                        / "verus"
+                        / lean_benchmark_name
+                        / "files"
+                    )
+            except (ValueError, IndexError):
+                pass
+
+    # Fallback to current behavior
+    return ARTIFACTS / benchmark_name
+
+
+def load_success_tracking(
+    benchmark_name: str, is_flat: bool, benchmark_path: str = ""
+) -> dict:
     """Load existing success tracking data"""
     if is_flat:
-        success_file = ARTIFACTS / benchmark_name / "success_tracking.json"
+        base_path = get_success_base_path(benchmark_name, benchmark_path)
+        success_file = base_path / "success_tracking.json"
         if success_file.exists():
             try:
                 with open(success_file, "r") as f:
@@ -19,13 +58,21 @@ def load_success_tracking(benchmark_name: str, is_flat: bool) -> dict:
     return {}
 
 
-def save_success_info(artifact_path: Path, filename: str, info: dict, benchmark_name: str, is_flat: bool):
+def save_success_info(
+    artifact_path: Path,
+    filename: str,
+    info: dict,
+    benchmark_name: str,
+    is_flat: bool,
+    benchmark_path: str = "",
+):
     """Save success information either as individual YAML or consolidated JSON"""
     if is_flat:
         # Use consolidated JSON file for flat structures
-        success_file = ARTIFACTS / benchmark_name / "success_tracking.json"
+        base_path = get_success_base_path(benchmark_name, benchmark_path)
+        success_file = base_path / "success_tracking.json"
         success_file.parent.mkdir(parents=True, exist_ok=True)
-        
+
         # Load existing data
         existing_data = {}
         if success_file.exists():
@@ -34,10 +81,10 @@ def save_success_info(artifact_path: Path, filename: str, info: dict, benchmark_
                     existing_data = json.load(f)
             except Exception:
                 pass
-        
+
         # Update with new info
         existing_data[filename] = info
-        
+
         # Save updated data
         with open(success_file, "w") as f:
             json.dump(existing_data, f, indent=2)
@@ -47,14 +94,21 @@ def save_success_info(artifact_path: Path, filename: str, info: dict, benchmark_
             yaml.dump(info, success_file)
 
 
-def is_sample_already_successful(relative_path: Path, benchmark_name: str = "dafnybench", filename: str = None, is_flat: bool = False) -> bool:
+def is_sample_already_successful(
+    relative_path: Path,
+    benchmark_name: str = "dafnybench",
+    filename: str | None = None,
+    is_flat: bool = False,
+    benchmark_path: str = "",
+) -> bool:
     """Check if a sample already has success: true in its success file"""
     if is_flat and filename:
         # Check consolidated JSON for flat structures
-        success_file = ARTIFACTS / benchmark_name / "success_tracking.json"
+        base_path = get_success_base_path(benchmark_name, benchmark_path)
+        success_file = base_path / "success_tracking.json"
         if not success_file.exists():
             return False
-        
+
         try:
             with open(success_file, "r") as f:
                 data = json.load(f)
@@ -63,7 +117,16 @@ def is_sample_already_successful(relative_path: Path, benchmark_name: str = "daf
             return False
     else:
         # Check individual YAML files for hierarchical structures
-        artifact_path = ARTIFACTS / benchmark_name / relative_path.parent
+        # Use the new path derivation logic
+        if benchmark_path:
+            from code2verus.processing import derive_output_path
+
+            base_path = derive_output_path(benchmark_path, benchmark_name, False)
+            artifact_path = base_path / relative_path.parent
+        else:
+            # Fallback to old behavior
+            artifact_path = ARTIFACTS / benchmark_name / relative_path.parent
+
         success_file = artifact_path / "success.yml"
 
         if not success_file.exists():

@@ -1,20 +1,17 @@
-import Std
 
-open Std.Do
 
 /-!
 {
-  "name": "dafny-synthesis_task_id_284_AllElementsEqual",
-  "category": "Dafny Translation",
-  "description": "Automatically translated from Dafny specification: dafny-synthesis_task_id_284_AllElementsEqual",
-  "source": "Dafny",
-  "translation_date": "2024",
-  "functions": ,
-  "methods":
+"name": "dafny-synthesis_task_id_284_AllElementsEqual",
+"category": "Dafny Translation",
+"description": "Automatically translated from Dafny specification: dafny-synthesis_task_id_284_AllElementsEqual",
+"source": "Dafny",
+"translation_date": "2024",
+"functions": ,
+"methods":
 }
 -/
 
-namespace DafnyBenchmarks
 
 /--
 Checks if all elements in an array are equal to a given value n.
@@ -31,7 +28,5 @@ Specification for AllElementsEqual:
 - If result is false, then there exists an element not equal to n
 -/
 theorem AllElementsEqual_spec (a : Array Int) (n : Int) :
-  (AllElementsEqual a n = true → ∀ i, 0 ≤ i ∧ i < a.size → a[i]! = n) ∧
-  (AllElementsEqual a n = false → ∃ i, 0 ≤ i ∧ i < a.size ∧ a[i]! ≠ n) := sorry
-
-end DafnyBenchmarks
+(AllElementsEqual a n = true → ∀ i, 0 ≤ i ∧ i < a.size → a[i]! = n) ∧
+(AllElementsEqual a n = false → ∃ i, 0 ≤ i ∧ i < a.size ∧ a[i]! ≠ n) := sorry

@@ -1,20 +1,17 @@
-import Std
 
-open Std.Do
 
 /-!
 {
-  "name": "dafny-synthesis_task_id_432_MedianLength",
-  "category": "Dafny Translation", 
-  "description": "Automatically translated from Dafny specification: dafny-synthesis_task_id_432_MedianLength",
-  "source": "Dafny",
-  "translation_date": "2024",
-  "functions": ,
-  "methods": 
+"name": "dafny-synthesis_task_id_432_MedianLength",
+"category": "Dafny Translation",
+"description": "Automatically translated from Dafny specification: dafny-synthesis_task_id_432_MedianLength",
+"source": "Dafny",
+"translation_date": "2024",
+"functions": ,
+"methods":
 }
 -/
 
-namespace DafnyBenchmarks
 
 /--
 Computes the median length of two positive integers.
@@ -35,7 +32,5 @@ Specification for MedianLength method ensuring:
 2. Returns median = (a + b) / 2
 -/
 theorem MedianLength_spec (a b : Int) :
-  a > 0 ∧ b > 0 → 
-  MedianLength a b = (a + b) / 2 := sorry
-
-end DafnyBenchmarks
+a > 0 ∧ b > 0 →
+MedianLength a b = (a + b) / 2 := sorry

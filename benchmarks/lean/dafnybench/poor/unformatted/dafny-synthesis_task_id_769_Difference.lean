@@ -1,20 +1,17 @@
-import Std
 
-open Std.Do
 
 /-!
 {
-  "name": "dafny-synthesis_task_id_769_Difference",
-  "category": "Dafny Translation",
-  "description": "Automatically translated from Dafny specification: dafny-synthesis_task_id_769_Difference",
-  "source": "Dafny",
-  "translation_date": "2024",
-  "functions": ,
-  "methods":
+"name": "dafny-synthesis_task_id_769_Difference",
+"category": "Dafny Translation",
+"description": "Automatically translated from Dafny specification: dafny-synthesis_task_id_769_Difference",
+"source": "Dafny",
+"translation_date": "2024",
+"functions": ,
+"methods":
 }
 -/
 
-namespace DafnyBenchmarks
 
 /--
 Computes the difference between two arrays, returning elements in first array not in second.
@@ -26,8 +23,6 @@ def Difference (a : Array Int) (b : Array Int) : Array Int := sorry
 
 /-- Specification for Difference method -/
 theorem difference_spec (a b diff : Array Int) :
-  diff = Difference a b →
-  (∀ x, diff.contains x ↔ (a.contains x ∧ ¬b.contains x)) ∧
-  (∀ i j, 0 ≤ i → i < j → j < diff.size → diff[i]! ≠ diff[j]!) := sorry
-
-end DafnyBenchmarks
+diff = Difference a b →
+(∀ x, diff.contains x ↔ (a.contains x ∧ ¬b.contains x)) ∧
+(∀ i j, 0 ≤ i → i < j → j < diff.size → diff[i]! ≠ diff[j]!) := sorry

@@ -1,20 +1,17 @@
-import Std
 
-open Std.Do
 
 /-!
 {
-  "name": "dafny_examples_tmp_tmp8qotd4ez_leetcode_0027-remove-element_RemoveElement",
-  "category": "Dafny Translation",
-  "description": "Automatically translated from Dafny specification: dafny_examples_tmp_tmp8qotd4ez_leetcode_0027-remove-element_RemoveElement",
-  "source": "Dafny",
-  "translation_date": "2024",
-  "functions": ,
-  "methods": 
+"name": "dafny_examples_tmp_tmp8qotd4ez_leetcode_0027-remove-element_RemoveElement",
+"category": "Dafny Translation",
+"description": "Automatically translated from Dafny specification: dafny_examples_tmp_tmp8qotd4ez_leetcode_0027-remove-element_RemoveElement",
+"source": "Dafny",
+"translation_date": "2024",
+"functions": ,
+"methods":
 }
 -/
 
-namespace DafnyBenchmarks
 
 /--
 Translates the RemoveElement method from Dafny.
@@ -33,7 +30,5 @@ Captures the key properties:
 3. Multiset preservation property
 -/
 theorem RemoveElement_spec (nums : Array Int) (val : Int) :
-  let newLength := RemoveElement nums val
-  0 ≤ newLength ∧ newLength ≤ nums.size := sorry
-
-end DafnyBenchmarks
+let newLength := RemoveElement nums val
+0 ≤ newLength ∧ newLength ≤ nums.size := sorry

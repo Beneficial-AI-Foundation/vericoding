@@ -1,20 +1,17 @@
-import Std
 
-open Std.Do
 
 /-!
 {
-  "name": "dafny-synthesis_task_id_240_ReplaceLastElement",
-  "category": "Dafny Translation",
-  "description": "Automatically translated from Dafny specification: dafny-synthesis_task_id_240_ReplaceLastElement",
-  "source": "Dafny",
-  "translation_date": "2024",
-  "functions": ,
-  "methods":
+"name": "dafny-synthesis_task_id_240_ReplaceLastElement",
+"category": "Dafny Translation",
+"description": "Automatically translated from Dafny specification: dafny-synthesis_task_id_240_ReplaceLastElement",
+"source": "Dafny",
+"translation_date": "2024",
+"functions": ,
+"methods":
 }
 -/
 
-namespace DafnyBenchmarks
 
 /--
 Replaces the last element of the first array with all elements of the second array.
@@ -33,10 +30,8 @@ Specification for ReplaceLastElement:
 - Ensures elements after first array are from second array
 -/
 theorem ReplaceLastElement_spec (first second : Array Int) :
-  first.size > 0 →
-  let result := ReplaceLastElement first second
-  result.size = first.size - 1 + second.size ∧
-  (∀ i, 0 ≤ i ∧ i < first.size - 1 → result[i]! = first[i]!) ∧
-  (∀ i, first.size - 1 ≤ i ∧ i < result.size → result[i]! = second[i - first.size + 1]!) := sorry
-
-end DafnyBenchmarks
+first.size > 0 →
+let result := ReplaceLastElement first second
+result.size = first.size - 1 + second.size ∧
+(∀ i, 0 ≤ i ∧ i < first.size - 1 → result[i]! = first[i]!) ∧
+(∀ i, first.size - 1 ≤ i ∧ i < result.size → result[i]! = second[i - first.size + 1]!) := sorry

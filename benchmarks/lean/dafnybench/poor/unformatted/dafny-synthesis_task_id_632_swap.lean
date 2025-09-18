@@ -1,29 +1,26 @@
-import Std
 
-open Std.Do
 
 /-!
 {
-  "name": "dafny-synthesis_task_id_632_swap",
-  "category": "Dafny Translation",
-  "description": "Automatically translated from Dafny specification: dafny-synthesis_task_id_632_swap",
-  "source": "Dafny",
-  "translation_date": "2024",
-  "functions": ,
-  "methods":
+"name": "dafny-synthesis_task_id_632_swap",
+"category": "Dafny Translation",
+"description": "Automatically translated from Dafny specification: dafny-synthesis_task_id_632_swap",
+"source": "Dafny",
+"translation_date": "2024",
+"functions": ,
+"methods":
 }
 -/
 
-namespace DafnyBenchmarks
 
 /--
 Counts occurrences of a value in an array.
 -/
 partial def count (arr : Array Int) (value : Int) : Nat :=
-  if arr.size = 0 then
-    0
-  else
-    (if arr[0]! = value then 1 else 0) + count (arr.extract 1 arr.size) value
+if arr.size = 0 then
+0
+else
+(if arr[0]! = value then 1 else 0) + count (arr.extract 1 arr.size) value
 
 /--
 Swaps two elements in an array.
@@ -41,13 +38,11 @@ def swap (arr : Array Int) (i j : Int) : Array Int := sorry
 Specification for swap operation
 -/
 theorem swap_spec (arr : Array Int) (i j : Nat) :
-  arr.size > 0 ∧
-  0 ≤ i ∧ i < arr.size ∧
-  0 ≤ j ∧ j < arr.size →
-  let result := swap arr i j
-  result.size = arr.size ∧
-  result[i]! = arr[j]! ∧
-  result[j]! = arr[i]! ∧
-  (∀ k, 0 ≤ k ∧ k < arr.size ∧ k ≠ i ∧ k ≠ j → result[k]! = arr[k]!) := sorry
-
-end DafnyBenchmarks
+arr.size > 0 ∧
+0 ≤ i ∧ i < arr.size ∧
+0 ≤ j ∧ j < arr.size →
+let result := swap arr i j
+result.size = arr.size ∧
+result[i]! = arr[j]! ∧
+result[j]! = arr[i]! ∧
+(∀ k, 0 ≤ k ∧ k < arr.size ∧ k ≠ i ∧ k ≠ j → result[k]! = arr[k]!) := sorry

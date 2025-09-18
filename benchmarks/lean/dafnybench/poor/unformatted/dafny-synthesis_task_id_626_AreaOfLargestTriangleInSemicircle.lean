@@ -1,20 +1,17 @@
-import Std
 
-open Std.Do
 
 /-!
 {
-  "name": "dafny-synthesis_task_id_626_AreaOfLargestTriangleInSemicircle",
-  "category": "Dafny Translation", 
-  "description": "Automatically translated from Dafny specification: dafny-synthesis_task_id_626_AreaOfLargestTriangleInSemicircle",
-  "source": "Dafny",
-  "translation_date": "2024",
-  "functions": ,
-  "methods": 
+"name": "dafny-synthesis_task_id_626_AreaOfLargestTriangleInSemicircle",
+"category": "Dafny Translation",
+"description": "Automatically translated from Dafny specification: dafny-synthesis_task_id_626_AreaOfLargestTriangleInSemicircle",
+"source": "Dafny",
+"translation_date": "2024",
+"functions": ,
+"methods":
 }
 -/
 
-namespace DafnyBenchmarks
 
 /--
 Calculates the area of the largest triangle that can be inscribed in a semicircle.
@@ -30,7 +27,5 @@ Specification for AreaOfLargestTriangleInSemicircle:
 - Ensures the returned area equals radius squared
 -/
 theorem AreaOfLargestTriangleInSemicircle_spec (radius : Int) :
-  radius > 0 → 
-  AreaOfLargestTriangleInSemicircle radius = radius * radius := sorry
-
-end DafnyBenchmarks
+radius > 0 →
+AreaOfLargestTriangleInSemicircle radius = radius * radius := sorry

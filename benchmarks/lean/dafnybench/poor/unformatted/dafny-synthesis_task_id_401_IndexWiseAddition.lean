@@ -1,20 +1,17 @@
-import Std
 
-open Std.Do
 
 /-!
 {
-  "name": "dafny-synthesis_task_id_401_IndexWiseAddition",
-  "category": "Dafny Translation",
-  "description": "Automatically translated from Dafny specification: dafny-synthesis_task_id_401_IndexWiseAddition",
-  "source": "Dafny",
-  "translation_date": "2024",
-  "functions": ,
-  "methods":
+"name": "dafny-synthesis_task_id_401_IndexWiseAddition",
+"category": "Dafny Translation",
+"description": "Automatically translated from Dafny specification: dafny-synthesis_task_id_401_IndexWiseAddition",
+"source": "Dafny",
+"translation_date": "2024",
+"functions": ,
+"methods":
 }
 -/
 
-namespace DafnyBenchmarks
 
 /--
 Adds two 2D arrays element-wise.
@@ -32,14 +29,12 @@ Specification for IndexWiseAddition:
 - Each element is sum of corresponding input elements
 -/
 theorem IndexWiseAddition_spec (a b : Array (Array Int)) :
-  a.size > 0 ∧ b.size > 0 ∧
-  a.size = b.size ∧
-  (∀ i, 0 ≤ i ∧ i < a.size → (a[i]!).size = (b[i]!).size) →
-  let result := IndexWiseAddition a b
-  result.size = a.size ∧
-  (∀ i, 0 ≤ i ∧ i < result.size → (result[i]!).size = (a[i]!).size) ∧
-  (∀ i, 0 ≤ i ∧ i < result.size →
-      ∀ j, 0 ≤ j ∧ j < (result[i]!).size →
-      (result[i]!)[j]! = (a[i]!)[j]! + (b[i]!)[j]!) := sorry
-
-end DafnyBenchmarks
+a.size > 0 ∧ b.size > 0 ∧
+a.size = b.size ∧
+(∀ i, 0 ≤ i ∧ i < a.size → (a[i]!).size = (b[i]!).size) →
+let result := IndexWiseAddition a b
+result.size = a.size ∧
+(∀ i, 0 ≤ i ∧ i < result.size → (result[i]!).size = (a[i]!).size) ∧
+(∀ i, 0 ≤ i ∧ i < result.size →
+∀ j, 0 ≤ j ∧ j < (result[i]!).size →
+(result[i]!)[j]! = (a[i]!)[j]! + (b[i]!)[j]!) := sorry

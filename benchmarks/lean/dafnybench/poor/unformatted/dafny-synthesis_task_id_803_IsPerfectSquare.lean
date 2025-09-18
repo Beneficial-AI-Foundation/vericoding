@@ -1,20 +1,17 @@
-import Std
 
-open Std.Do
 
 /-!
 {
-  "name": "dafny-synthesis_task_id_803_IsPerfectSquare",
-  "category": "Dafny Translation",
-  "description": "Automatically translated from Dafny specification: dafny-synthesis_task_id_803_IsPerfectSquare",
-  "source": "Dafny",
-  "translation_date": "2024",
-  "functions": ,
-  "methods": 
+"name": "dafny-synthesis_task_id_803_IsPerfectSquare",
+"category": "Dafny Translation",
+"description": "Automatically translated from Dafny specification: dafny-synthesis_task_id_803_IsPerfectSquare",
+"source": "Dafny",
+"translation_date": "2024",
+"functions": ,
+"methods":
 }
 -/
 
-namespace DafnyBenchmarks
 
 /--
 Checks if a number is a perfect square.
@@ -32,9 +29,7 @@ Ensures:
 - If result is false, for all a where 0 < a*a < n, a*a ≠ n
 -/
 theorem IsPerfectSquare_spec (n : Int) :
-  n ≥ 0 →
-  let result := IsPerfectSquare n
-  (result = true → ∃ i : Int, 0 ≤ i ∧ i ≤ n ∧ i * i = n) ∧
-  (result = false → ∀ a : Int, (0 < a*a ∧ a*a < n) → a*a ≠ n) := sorry
-
-end DafnyBenchmarks
+n ≥ 0 →
+let result := IsPerfectSquare n
+(result = true → ∃ i : Int, 0 ≤ i ∧ i ≤ n ∧ i * i = n) ∧
+(result = false → ∀ a : Int, (0 < a*a ∧ a*a < n) → a*a ≠ n) := sorry

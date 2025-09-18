@@ -1,20 +1,17 @@
-import Std
 
-open Std.Do
 
 /-!
 {
-  "name": "Clover_update_array_UpdateElements",
-  "category": "Dafny Translation",
-  "description": "Automatically translated from Dafny specification: Clover_update_array_UpdateElements",
-  "source": "Dafny",
-  "translation_date": "2024",
-  "functions": ,
-  "methods":
+"name": "Clover_update_array_UpdateElements",
+"category": "Dafny Translation",
+"description": "Automatically translated from Dafny specification: Clover_update_array_UpdateElements",
+"source": "Dafny",
+"translation_date": "2024",
+"functions": ,
+"methods":
 }
 -/
 
-namespace DafnyBenchmarks
 
 /--
 UpdateElements modifies an array by:
@@ -32,10 +29,8 @@ Specification for UpdateElements:
 - Ensures all other elements remain unchanged
 -/
 theorem UpdateElements_spec (a : Array Int) :
-  a.size ≥ 8 →
-  let a' := UpdateElements a
-  (a'[4]! = a[4]! + 3) ∧
-  (a'[7]! = 516) ∧
-  (∀ i, 0 ≤ i ∧ i < a.size → i ≠ 7 ∧ i ≠ 4 → a'[i]! = a[i]!) := sorry
-
-end DafnyBenchmarks
+a.size ≥ 8 →
+let a' := UpdateElements a
+(a'[4]! = a[4]! + 3) ∧
+(a'[7]! = 516) ∧
+(∀ i, 0 ≤ i ∧ i < a.size → i ≠ 7 ∧ i ≠ 4 → a'[i]! = a[i]!) := sorry

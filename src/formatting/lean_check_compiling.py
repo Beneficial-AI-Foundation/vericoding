@@ -9,7 +9,7 @@ import shutil
 from pathlib import Path
 import sys
 
-def run_lake_build(file_path):
+def run_lake_build(file_path, cwd=Path.cwd()):
     """Run lake build on a specific file and return the result."""
     try:
         # Run lake build on the specific file
@@ -17,7 +17,7 @@ def run_lake_build(file_path):
             ['lake', 'build', str(file_path)],
             capture_output=True,
             text=True,
-            cwd='/home/shaowei/projects/vericoding'
+            cwd=cwd
         )
         return result.returncode, result.stdout, result.stderr
     except Exception as e:
@@ -42,9 +42,9 @@ def has_only_sorry_warnings(stderr):
     return True
 
 def main():
-    unformatted_dir = Path('/home/shaowei/projects/vericoding/benchmarks/lean/dafnybench/poor/unformatted')
-    compiling_dir = Path('/home/shaowei/projects/vericoding/benchmarks/lean/dafnybench/poor/compiling')
-    non_compiling_dir = Path('/home/shaowei/projects/vericoding/benchmarks/lean/dafnybench/poor/non_compiling')
+    unformatted_dir = Path('benchmarks/lean/dafnybench/poor/unformatted')
+    compiling_dir = Path('benchmarks/lean/dafnybench/poor/compiling')
+    non_compiling_dir = Path('benchmarks/lean/dafnybench/poor/non_compiling')
     
     # Ensure directories exist
     compiling_dir.mkdir(exist_ok=True)

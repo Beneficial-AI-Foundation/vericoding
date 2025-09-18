@@ -1,0 +1,59 @@
+vc-description: |-
+  numpy.trim_zeros: Trim the leading and/or trailing zeros from a 1-D array.
+
+  Removes zeros from the beginning and/or end of a vector based on the trim mode.
+  - Front: removes leading zeros only
+  - Back: removes trailing zeros only
+  - Both: removes both leading and trailing zeros (default)
+
+  The function preserves all non-zero elements and internal zeros.
+
+  Specification: trim_zeros removes leading and/or trailing zeros while preserving order.
+
+  The function guarantees:
+  1. All non-zero elements from the original array are preserved in order
+  2. Internal zeros (zeros between non-zero elements) are preserved
+  3. Only leading/trailing zeros are removed based on the mode
+  4. If the array contains only zeros, returns an empty vector
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+  /* Represents the trim mode for trim_zeros function */
+  #[derive(Eq, PartialEq)]
+  pub enum TrimMode {
+      /* Trim zeros from the front of the array only (corresponds to 'f') */
+      Front,
+      /* Trim zeros from the back of the array only (corresponds to 'b') */
+      Back,
+      /* Trim zeros from both front and back of the array (corresponds to 'fb', default) */
+      Both,
+  }
+vc-helpers: |-
+
+vc-spec: |-
+  fn trim_zeros(arr: Vec<f32>, mode: TrimMode) -> (result: Vec<f32>)
+      ensures
+          result.len() <= arr.len(),
+          /* Result contains only elements from the original array */
+          forall|i: int| 0 <= i < result.len() ==> 
+              exists|j: int| 0 <= j < arr.len() && #[trigger] result[i] == arr[j],
+          /* Basic trimming properties based on mode */
+          (mode == TrimMode::Front ==> 
+              (result.len() == 0 || result[0] != 0.0f32)),
+          (mode == TrimMode::Back ==> 
+              (result.len() == 0 || result[result.len() - 1] != 0.0f32)),
+          (mode == TrimMode::Both ==> 
+              (result.len() == 0 || (result[0] != 0.0f32 && result[result.len() - 1] != 0.0f32)))
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      unreached()
+      // impl-end
+  }
+vc-postamble: |-
+
+  }
+  fn main() {}

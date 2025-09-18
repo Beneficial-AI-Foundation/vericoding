@@ -1,0 +1,32 @@
+-- <vc-preamble>
+def ValidInput (input : String) : Prop :=
+  input.length > 0
+
+def ValidTestCase (x1 y1 x2 y2 : Int) : Prop :=
+  1 ≤ x1 ∧ x1 ≤ x2 ∧ 1 ≤ y1 ∧ y1 ≤ y2
+
+def CountDifferentSums (x1 y1 x2 y2 : Int) (h : ValidTestCase x1 y1 x2 y2) : Int :=
+  (x2 - x1) * (y2 - y1) + 1
+
+@[reducible, simp]
+def solve_precond (input : String) : Prop :=
+  ValidInput input
+-- </vc-preamble>
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+-- <vc-definitions>
+def solve (input : String) (h_precond : solve_precond input) : String :=
+  sorry
+-- </vc-definitions>
+
+-- <vc-theorems>
+@[reducible, simp]
+def solve_postcond (input : String) (output : String) (h_precond : solve_precond input) : Prop :=
+  output.length ≥ 0
+
+theorem solve_spec_satisfied (input : String) (h_precond : solve_precond input) :
+    solve_postcond input (solve input h_precond) h_precond := by
+  sorry
+-- </vc-theorems>
