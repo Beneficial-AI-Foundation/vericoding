@@ -29,7 +29,18 @@ dependencies = [
 
 [project.optional-dependencies]
 openai = ["openai>=1.0.0"]
-all = ["openai>=1.0.0"]
+vector = [
+    "sentence-transformers>=2.2.2",
+    "scikit-learn>=1.3.0",
+    "faiss-cpu>=1.7.4",
+    "numpy>=1.21.0",
+]
+all = [
+    "openai>=1.0.0",
+    "sentence-transformers>=2.2.2",
+    "scikit-learn>=1.3.0",
+    "faiss-cpu>=1.7.4",
+]
 test = [
     "pytest>=7.0.0",
     "pytest-cov>=4.0.0",
