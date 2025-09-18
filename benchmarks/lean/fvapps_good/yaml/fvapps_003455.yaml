@@ -1,0 +1,113 @@
+vc-description: |-
+  /-
+  Every now and then people in the office moves teams or departments. Depending what people are doing with their time they can become more or less boring. Time to assess the current team.
+
+  ```if-not:java
+  You will be provided with an object(staff) containing the staff names as keys, and the department they work in as values.
+  ```
+
+  ```if:java
+  You will be provided with an array of `Person` objects with each instance containing the name and department for a staff member.
+  ~~~java
+  public class Person {
+    public final String name;        // name of the staff member
+    public final String department;  // department they work in
+  }
+  ~~~
+  ```
+
+  Each department has a different boredom assessment score, as follows:
+
+  accounts = 1
+  finance = 2 
+  canteen = 10 
+  regulation = 3 
+  trading = 6 
+  change = 6
+  IS = 8
+  retail = 5 
+  cleaning = 4
+  pissing about = 25
+
+  Depending on the cumulative score of the team, return the appropriate sentiment:
+
+  <=80: 'kill me now'
+  < 100 & > 80: 'i can handle this'
+  100 or over: 'party time!!'
+
+  The Office I - Outed
+  The Office III - Broken Photocopier
+  The Office IV - Find a Meeting Room
+  The Office V - Find a Chair
+  -/
+
+vc-preamble: |-
+  def VALID_DEPTS := ["accounts", "finance", "canteen", "regulation", "trading", 
+                      "change", "IS", "retail", "cleaning", "pissing about"]
+
+  def scores : List (String × Nat) := [
+    ("accounts", 1), ("finance", 2), ("canteen", 10), ("regulation", 3),
+    ("trading", 6), ("change", 6), ("IS", 8), ("retail", 5),
+    ("cleaning", 4), ("pissing about", 25)
+  ]
+
+  def getScore (dept : String) : Nat :=
+    match scores.find? (fun p => p.1 = dept) with
+    | some p => p.2
+    | none => 0
+
+  def getTotalScore (staff : List (String × String)) : Nat :=
+    staff.foldl (fun acc x => acc + getScore x.2) 0
+
+vc-helpers: |
+
+vc-definitions: |-
+  def boredom (staff : List (String × String)) : String :=
+    sorry
+
+vc-theorems: |-
+  theorem boredom_output_valid (staff : List (String × String)) :
+    let result := boredom staff
+    result = "kill me now" ∨ result = "i can handle this" ∨ result = "party time!!" := 
+    sorry
+
+  theorem boredom_threshold_low (staff : List (String × String)) 
+    (h : ∀ x ∈ staff, x.2 ∈ VALID_DEPTS) :
+    let total := getTotalScore staff
+    total ≤ 80 → boredom staff = "kill me now" :=
+    sorry
+
+  theorem boredom_threshold_mid (staff : List (String × String))
+    (h : ∀ x ∈ staff, x.2 ∈ VALID_DEPTS) :
+    let total := getTotalScore staff
+    total > 80 ∧ total < 100 → boredom staff = "i can handle this" :=
+    sorry
+
+  theorem boredom_threshold_high (staff : List (String × String))
+    (h : ∀ x ∈ staff, x.2 ∈ VALID_DEPTS) :
+    let total := getTotalScore staff
+    total ≥ 100 → boredom staff = "party time!!" :=
+    sorry
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded
+
+  /-
+  info: 'kill me now'
+  -/
+  #guard_msgs in
+  #eval boredom {"tim": "change", "jim": "accounts", "randy": "canteen", "sandy": "change", "andy": "change", "katie": "IS", "laura": "change", "saajid": "IS", "alex": "trading", "john": "accounts", "mr": "finance"}
+
+  /-
+  info: 'i can handle this'
+  -/
+  #guard_msgs in
+  #eval boredom {"tim": "IS", "jim": "finance", "randy": "pissing about", "sandy": "cleaning", "andy": "cleaning", "katie": "cleaning", "laura": "pissing about", "saajid": "regulation", "alex": "regulation", "john": "accounts", "mr": "canteen"}
+
+  /-
+  info: 'party time!!'
+  -/
+  #guard_msgs in
+  #eval boredom {"tim": "accounts", "jim": "accounts", "randy": "pissing about", "sandy": "finance", "andy": "change", "katie": "IS", "laura": "IS", "saajid": "canteen", "alex": "pissing about", "john": "retail", "mr": "pissing about"}
+

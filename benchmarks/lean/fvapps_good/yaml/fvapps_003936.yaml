@@ -1,0 +1,83 @@
+vc-description: |-
+  /-
+  To celebrate today's launch of my Hero's new book: Alan Partridge: Nomad, We have a new series of kata arranged around the great man himself.
+
+  Given an array of terms, if any of those terms relate to Alan Partridge, return Mine's a Pint!
+
+  The number of ! after the t should be determined by the number of Alan related terms you find in the provided array (x). The related terms are:
+
+  Partridge
+  PearTree
+  Chat
+  Dan
+  Toblerone
+  Lynn
+  AlphaPapa
+  Nomad
+
+  If you don't find any related terms, return 'Lynn, I've pierced my foot on a spike!!'
+
+  All Hail King Partridge
+
+  Other katas in this series:
+  Alan Partridge II - Apple Turnover
+  Alan Partridge III - London
+  -/
+
+vc-preamble: |-
+  def ALAN_TERMS : List String := ["Partridge", "PearTree", "Chat", "Dan", "Toblerone", "Lynn", "AlphaPapa", "Nomad"]
+
+  def isAlanTerm (s : String) : Bool :=
+    ALAN_TERMS.contains s
+
+  def countChar (s : String) (c : Char) : Nat :=
+    s.toList.filter (· = c) |>.length
+
+vc-helpers: |
+
+vc-definitions: |-
+  def part (arr : List String) : String :=
+    sorry
+
+vc-theorems: |-
+  theorem empty_or_irrelevant_returns_spike_message {arr : List String} :
+    (∀ x ∈ arr, ¬isAlanTerm x) →
+    part arr = "Lynn, I've pierced my foot on a spike!!" :=
+  sorry
+
+  theorem alan_terms_return_pint_with_exclamations {arr : List String} :
+    (arr ≠ []) →
+    (∀ x ∈ arr, isAlanTerm x) →
+    (part arr).startsWith "Mine's a Pint" ∧
+    countChar (part arr) '!' = arr.length :=
+  sorry
+
+  theorem mixed_terms_count_only_alan_terms (alan_arr other_arr : List String) :
+    (alan_arr ≠ []) →
+    (∀ x ∈ alan_arr, isAlanTerm x) →
+    (∀ x ∈ other_arr, ¬isAlanTerm x) →
+    countChar (part (alan_arr ++ other_arr)) '!' = alan_arr.length :=
+  sorry
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded
+
+  /-
+  info: "Mine's a Pint!"
+  -/
+  #guard_msgs in
+  #eval part ["Grouse", "Partridge", "Pheasant"]
+
+  /-
+  info: "Lynn, I've pierced my foot on a spike!!"
+  -/
+  #guard_msgs in
+  #eval part ["Pheasant", "Goose", "Starling", "Robin"]
+
+  /-
+  info: "Mine's a Pint!!!!!"
+  -/
+  #guard_msgs in
+  #eval part ["Partridge", "PearTree", "Chat", "Dan", "Toblerone"]
+

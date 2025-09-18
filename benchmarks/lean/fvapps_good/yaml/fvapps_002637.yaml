@@ -1,0 +1,77 @@
+vc-description: |-
+  /-
+  One suggestion to build a satisfactory password is to start with a memorable phrase or sentence and make a password by extracting the first letter of each word. 
+
+  Even better is to replace some of those letters with numbers (e.g., the letter `O` can be replaced with the number `0`):
+
+  * instead of including `i` or `I` put the number `1` in the password;
+  * instead of including `o` or `O` put the number `0` in the password;
+  * instead of including `s` or `S` put the number `5` in the password.
+
+  ## Examples:
+  ```
+  "Give me liberty or give me death"  --> "Gml0gmd"
+  "Keep Calm and Carry On"            --> "KCaC0"
+  ```
+  -/
+
+vc-preamble: |-
+  def SWAP : Char → Char
+    | 'a' => '@'
+    | 'i' => '1'
+    | 'e' => '3'
+    | 'o' => '0'
+    | c => c
+
+vc-helpers: |
+
+vc-definitions: |-
+  def make_password (phrase : String) : String :=
+    sorry
+
+vc-theorems: |-
+  theorem password_length_matches_words (words : List String) :
+    (make_password (String.intercalate " " words)).length = words.length :=
+    sorry
+
+  theorem first_letters_property (words : List String) (h : ∀ w ∈ words, w.length > 0) :
+    let pass := make_password (String.intercalate " " words)
+    ∀ i < pass.length, ∀ j < words.length, i = j →
+      pass.data[i]! = SWAP (words[j]!.data[0]!) :=
+    sorry
+
+  theorem empty_words_filtered (phrase : String) :
+    let clean := String.intercalate " " (phrase.split (· = ' ') |>.filter (·.length > 0))
+    make_password phrase = make_password clean :=
+    sorry
+
+  theorem swap_chars_applied (words : List String) (h : ∀ w ∈ words, w.length > 0) :
+    let pass := make_password (String.intercalate " " words)
+    ∀ i < pass.length, ∀ j < words.length, i = j →
+      let firstChar := words[j]!.data[0]!
+      firstChar ∈ ['a', 'i', 'e', 'o'] →
+      pass.data[i]! = SWAP firstChar :=
+    sorry
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded
+
+  /-
+  info: 'Gml0gmd'
+  -/
+  #guard_msgs in
+  #eval make_password "Give me liberty or give me death"
+
+  /-
+  info: 'KCaC0'
+  -/
+  #guard_msgs in
+  #eval make_password "Keep Calm and Carry On"
+
+  /-
+  info: '505'
+  -/
+  #guard_msgs in
+  #eval make_password "Save Our Souls"
+
