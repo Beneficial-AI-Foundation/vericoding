@@ -28,21 +28,28 @@ models=[
     "grok-code",
 ]
 
-def submit_job(model):
+# Region configurations
+regions = [
+    {"region": "eu-west-2", "job_queue": "vericoding-job-queue", "job_definition": "lean-verification"},
+    {"region": "eu-west-1", "job_queue": "vericoding2-job-queue", "job_definition": "lean-verification2"},
+    {"region": "us-east-1", "job_queue": "vericoding3-job-queue", "job_definition": "lean-verification3"},
+]
+
+def submit_job(model, region_config):
     """Submit a single job"""
     # Create job name with sanitized model name
     sanitized_model = ''.join(c if c.isalnum() else '-' for c in model)
     job_name = f"{tag}-exp-{sanitized_model}-{int(datetime.now().timestamp())}"
     
-    print(f"Submitting job: {job_name} with model: {model}")
+    print(f"Submitting job: {job_name} with model: {model} to region: {region_config['region']}")
     
     # Build the command
     command = [
         "aws", "batch", "submit-job",
-        "--region", "eu-west-2",
+        "--region", region_config["region"],
         "--job-name", job_name,
-        "--job-queue", "vericoding-job-queue",
-        "--job-definition", "lean-verification",
+        "--job-queue", region_config["job_queue"],
+        "--job-definition", region_config["job_definition"],
         "--container-overrides", json.dumps({
             "command": [
                 "/bin/bash",
@@ -57,9 +64,10 @@ def submit_job(model):
     job_response = json.loads(result.stdout)
     return job_response["jobId"]
 
-# Submit jobs for each model
-for model in models:
-    job_id = submit_job(model)
+# Submit jobs for each model, cycling through regions
+for i, model in enumerate(models):
+    region_config = regions[i % len(regions)]
+    job_id = submit_job(model, region_config)
     print(job_id)
 
 print(f"All experiments submitted with tag: {tag}")
