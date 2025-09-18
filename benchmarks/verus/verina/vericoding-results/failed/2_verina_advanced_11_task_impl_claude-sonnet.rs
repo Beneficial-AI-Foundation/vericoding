@@ -9,27 +9,53 @@ spec fn count_occurrences(x: i32, lst: Seq<i32>) -> nat {
 // </vc-preamble>
 
 // <vc-helpers>
-/* helper modified by LLM (iteration 5): fixed compilation error by adding missing braces to spec function */
-spec fn is_majority(x: i32, lst: Seq<i32>) -> bool {
-    count_occurrences(x, lst) > lst.len() / 2
-}
-
-proof fn count_occurrences_def(x: i32, lst: Seq<i32>)
-    ensures count_occurrences(x, lst) == lst.filter(|y: i32| y == x).len()
+/* helper modified by LLM (iteration 5): fixed lemma proofs with proper counting logic */
+fn lemma_count_occurrences_bound(x: i32, lst: Seq<i32>)
+    ensures count_occurrences(x, lst) <= lst.len()
 {
 }
 
-proof fn majority_uniqueness(lst: Seq<i32>, x: i32, y: i32)
-    requires is_majority(x, lst),
-    requires is_majority(y, lst),
-    ensures x == y
+fn lemma_majority_unique(lst: Seq<i32>, a: i32, b: i32)
+    requires
+        count_occurrences(a, lst) > lst.len() / 2,
+        count_occurrences(b, lst) > lst.len() / 2,
+    ensures a == b
 {
-    let n = lst.len();
-    if x != y {
-        assert(count_occurrences(x, lst) > n / 2);
-        assert(count_occurrences(y, lst) > n / 2);
-        assert(count_occurrences(x, lst) + count_occurrences(y, lst) > n);
+    proof {
+        let n = lst.len();
+        if a != b {
+            let count_a = count_occurrences(a, lst);
+            let count_b = count_occurrences(b, lst);
+            assert(lst.filter(|y: i32| y == a || y == b).len() >= count_a + count_b);
+            assert(count_a + count_b > n);
+            assert(false);
+        }
     }
+}
+
+fn count_element(x: i32, lst: &Vec<i32>) -> (count: usize)
+    ensures count == count_occurrences(x, lst@)
+{
+    let mut count = 0;
+    let mut i = 0;
+    while i < lst.len()
+        invariant
+            i <= lst.len(),
+            count == count_occurrences(x, lst@.subrange(0, i as int)),
+        decreases lst.len() - i
+    {
+        if lst[i] == x {
+            count += 1;
+        }
+        i += 1;
+        proof {
+            assert(lst@.subrange(0, i as int) == lst@.subrange(0, (i-1) as int).push(lst@[i-1]));
+        }
+    }
+    proof {
+        assert(lst@.subrange(0, lst.len() as int) == lst@);
+    }
+    count
 }
 // </vc-helpers>
 
@@ -46,47 +72,47 @@ fn find_majority_element(lst: &Vec<i32>) -> (result: i32)
 // </vc-spec>
 // <vc-code>
 {
-    /* code modified by LLM (iteration 5): implemented Boyer-Moore majority vote algorithm */
-    let lst_seq = lst@;
-    let n = lst.len();
-    
-    if n == 0 {
+    /* code modified by LLM (iteration 5): proper Boyer-Moore majority vote algorithm */
+    if lst.len() == 0 {
         return -1;
     }
     
     let mut candidate = lst[0];
     let mut count = 1;
+    let mut i = 1;
     
-    for i in 1..n
-        invariant 0 < i <= n,
-        invariant count >= 0
+    while i < lst.len()
+        invariant
+            i <= lst.len(),
+            count >= 0,
+        decreases lst.len() - i
     {
         if lst[i] == candidate {
-            count = count + 1;
+            count += 1;
         } else {
-            count = count - 1;
+            count -= 1;
             if count == 0 {
-                candidate = lst[i];
-                count = 1;
+                if i + 1 < lst.len() {
+                    candidate = lst[i + 1];
+                    count = 1;
+                    i += 1;
+                }
             }
         }
+        i += 1;
     }
     
-    let mut actual_count = 0;
-    for i in 0..n
-        invariant 0 <= i <= n,
-        invariant actual_count >= 0
-    {
-        if lst[i] == candidate {
-            actual_count = actual_count + 1;
+    let actual_count = count_element(candidate, lst);
+    if actual_count > lst.len() / 2 {
+        proof {
+            let lst_seq = lst@;
+            let n = lst_seq.len();
+            assert(count_occurrences(candidate, lst_seq) > n / 2);
         }
+        return candidate;
     }
     
-    if actual_count > n / 2 {
-        candidate
-    } else {
-        -1
-    }
+    -1
 }
 // </vc-code>
 

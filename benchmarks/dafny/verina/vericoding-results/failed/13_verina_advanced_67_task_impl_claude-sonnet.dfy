@@ -6,61 +6,39 @@ function DecodeRle(lst: seq<(char, nat)>): seq<char>
 // </vc-preamble>
 
 // <vc-helpers>
-/* helper modified by LLM (iteration 5): Fix termination and proof issues */
-function DecodeRleReal(lst: seq<(char, nat)>): seq<char>
-    decreases |lst|
+/* helper modified by LLM (iteration 5): fixed DecodeRle recursive implementation and improved lemma proofs */
+function DecodeRle(lst: seq<(char, nat)>): seq<char>
 {
     if |lst| == 0 then []
-    else RepeatChar(lst[0].0, lst[0].1) + DecodeRleReal(lst[1..])
+    else
+        var (ch, count) := lst[0];
+        seq(count, _ => ch) + DecodeRle(lst[1..])
 }
 
-function RepeatChar(c: char, n: nat): seq<char>
-    decreases n
+lemma DecodeRleConcat(lst1: seq<(char, nat)>, lst2: seq<(char, nat)>)
+    ensures DecodeRle(lst1 + lst2) == DecodeRle(lst1) + DecodeRle(lst2)
 {
-    if n == 0 then []
-    else [c] + RepeatChar(c, n - 1)
-}
-
-lemma RepeatCharLength(c: char, n: nat)
-    ensures |RepeatChar(c, n)| == n
-    decreases n
-{
-    if n == 0 {
+    if |lst1| == 0 {
     } else {
-        RepeatCharLength(c, n - 1);
+        var (ch, count) := lst1[0];
+        DecodeRleConcat(lst1[1..], lst2);
     }
 }
 
-lemma DecodeRleEquivalence(result: seq<(char, nat)>)
-    ensures DecodeRle(result) == DecodeRleReal(result)
-    decreases |result|
+lemma DecodeRlePrefix(result: seq<(char, nat)>, ch: char, count: nat)
+    requires count > 0
+    ensures DecodeRle(result + [(ch, count)]) == DecodeRle(result) + seq(count, _ => ch)
 {
-    if |result| == 0 {
-    } else {
-        DecodeRleEquivalence(result[1..]);
-    }
+    DecodeRleConcat(result, [(ch, count)]);
 }
 
-lemma SegmentEqualsRepeat(s: seq<char>, start: int, end: int, c: char)
-    requires 0 <= start <= end <= |s|
-    requires forall k :: start <= k < end ==> s[k] == c
-    ensures s[start..end] == RepeatChar(c, end - start)
-    decreases end - start
+lemma DistinctCharProperty(s: seq<char>, start: int, end: int, ch: char, result: seq<(char, nat)>)
+    requires 0 <= start < end <= |s|
+    requires forall k :: start <= k < end ==> s[k] == ch
+    requires forall j :: 0 <= j < |result| ==> j + 1 < |result| ==> result[j].0 != result[j + 1].0
+    requires start == 0 || s[start - 1] != ch
+    ensures |result| == 0 || result[|result| - 1].0 != ch
 {
-    if start == end {
-    } else {
-        SegmentEqualsRepeat(s, start + 1, end, c);
-    }
-}
-
-lemma DecodeRleRealAppend(prefix: seq<(char, nat)>, suffix: seq<(char, nat)>)
-    ensures DecodeRleReal(prefix + suffix) == DecodeRleReal(prefix) + DecodeRleReal(suffix)
-    decreases |prefix|
-{
-    if |prefix| == 0 {
-    } else {
-        DecodeRleRealAppend(prefix[1..], suffix);
-    }
 }
 // </vc-helpers>
 
@@ -75,55 +53,38 @@ method RunLengthEncode(s: seq<char>) returns (result: seq<(char, nat)>)
 // </vc-spec>
 // <vc-code>
 {
-    /* code modified by LLM (iteration 5): Fix invariant and proof assertions */
+    /* code modified by LLM (iteration 5): added proper tracking of character transitions and loop invariants */
     result := [];
-    if |s| == 0 {
-        DecodeRleEquivalence(result);
-        return;
-    }
-    
     var i := 0;
     while i < |s|
         invariant 0 <= i <= |s|
         invariant forall j :: 0 <= j < |result| ==> result[j].1 > 0
-        invariant forall j :: 0 <= j <= |result| - 2 ==> result[j].0 != result[j + 1].0
-        invariant DecodeRleReal(result) == s[..i]
+        invariant forall j :: 0 <= j < |result| ==> j + 1 < |result| ==> result[j].0 != result[j + 1].0
+        invariant DecodeRle(result) == s[..i]
+        invariant i > 0 ==> |result| > 0
     {
-        var currentChar := s[i];
+        var ch := s[i];
         var count := 1;
         var j := i + 1;
-        
-        while j < |s| && s[j] == currentChar
+        while j < |s| && s[j] == ch
             invariant i < j <= |s|
             invariant count == j - i
-            invariant count > 0
-            invariant forall k :: i <= k < j ==> s[k] == currentChar
+            invariant forall k :: i <= k < j ==> s[k] == ch
         {
             count := count + 1;
             j := j + 1;
         }
         
-        assert count > 0;
-        assert j > i;
-        assert forall k :: i <= k < j ==> s[k] == currentChar;
+        // Character transition property
+        if i > 0 {
+            assert s[i - 1] != ch;
+            assert |result| > 0;
+            assert result[|result| - 1].0 != ch;
+        }
         
-        RepeatCharLength(currentChar, count);
-        SegmentEqualsRepeat(s, i, j, currentChar);
-        
-        var oldResult := result;
-        result := result + [(currentChar, count)];
-        
-        DecodeRleRealAppend(oldResult, [(currentChar, count)]);
-        assert DecodeRleReal(result) == DecodeRleReal(oldResult) + DecodeRleReal([(currentChar, count)]);
-        assert DecodeRleReal([(currentChar, count)]) == RepeatChar(currentChar, count);
-        assert DecodeRleReal(oldResult) == s[..i];
-        assert s[i..j] == RepeatChar(currentChar, count);
-        assert s[..j] == s[..i] + s[i..j];
-        assert DecodeRleReal(result) == s[..j];
-        
+        DecodeRlePrefix(result, ch, count);
+        result := result + [(ch, count)];
         i := j;
     }
-    
-    DecodeRleEquivalence(result);
 }
 // </vc-code>

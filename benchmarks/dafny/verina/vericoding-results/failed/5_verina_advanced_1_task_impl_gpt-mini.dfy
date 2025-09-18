@@ -15,39 +15,49 @@ function FilterEqual(nums: seq<int>, x: int): seq<int>
 // </vc-preamble>
 
 // <vc-helpers>
-/* helper modified by LLM (iteration 4): construct index witness for membership and derive non-empty occurrence set */
-lemma ExistsIndexForMember(nums: seq<int>, x: int)
-  requires x in nums
-  ensures exists i :: 0 <= i < |nums| && nums[i] == x
+/* helper modified by LLM (iteration 5): relate CountOccurrences and FilterEqual lengths */
+lemma CountEqualsFilter(nums: seq<int>, x: int)
+  ensures CountOccurrences(nums, x) == |FilterEqual(nums, x)|
+  decreases |nums|
 {
   if |nums| == 0 {
-    // impossible due to requires
+    // both sides are 0 by definitions
   } else {
+    var tail := nums[1..];
+    CountEqualsFilter(tail, x);
     if nums[0] == x {
-      assert exists i :: 0 <= i < |nums| && nums[i] == x;
+      // unfold definitions: CountOccurrences adds 1 for index 0, FilterEqual prepends element
+      assert CountOccurrences(nums, x) == 1 + CountOccurrences(tail, x);
+      assert |FilterEqual(nums, x)| == 1 + |FilterEqual(tail, x)|;
+      assert CountOccurrences(nums, x) == |FilterEqual(nums, x)|;
     } else {
-      ExistsIndexForMember(nums[1..], x);
-      var j :| 0 <= j < |nums[1..]| && nums[1..][j] == x;
-      assert 0 <= j + 1 < |nums|;
-      assert nums[j + 1] == x;
-      assert exists i :: 0 <= i < |nums| && nums[i] == x;
+      // element at head does not contribute
+      assert CountOccurrences(nums, x) == CountOccurrences(tail, x);
+      assert |FilterEqual(nums, x)| == |FilterEqual(tail, x)|;
+      assert CountOccurrences(nums, x) == |FilterEqual(nums, x)|;
     }
   }
 }
 
-/* helper modified by LLM (iteration 4): show CountOccurrences >= 1 implies membership */
-lemma CountOccurrences_positive_implies_member(nums: seq<int>, x: int)
-  requires CountOccurrences(nums, x) >= 1
-  ensures x in nums
+/* helper modified by LLM (iteration 5): find an index of an element appearing exactly once using a loop */
+method IndexOfCountOne(nums: seq<int>, x: int) returns (i: int)
+  requires CountOccurrences(nums, x) == 1
+  ensures 0 <= i < |nums| && nums[i] == x
+  decreases |nums|
 {
-  assert CountOccurrences(nums, x) == |set k | 0 <= k < |nums| && nums[k] == x|;
-  assert CountOccurrences(nums, x) >= 1;
-  assert |set k | 0 <= k < |nums| && nums[k] == x| >= 1;
-  var k :| 0 <= k < |nums| && nums[k] == x;
-  assert nums[k] == x;
-  assert x in nums;
+  var k := 0;
+  while k < |nums|
+    decreases |nums| - k
+  {
+    if nums[k] == x {
+      i := k;
+      return;
+    }
+    k := k + 1;
+  }
+  // impossible because requires says there is exactly one occurrence
+  assert false;
 }
-
 // </vc-helpers>
 
 // <vc-spec>
@@ -65,25 +75,20 @@ method FindSingleNumber(nums: array<int>) returns (result: int)
 // </vc-spec>
 // <vc-code>
 {
-  /* code modified by LLM (iteration 4): iterate to find element with single occurrence and return it */
-  var found := false;
+  /* code modified by LLM (iteration 5): linear search to find the element whose CountOccurrences is 1 */
+  var n := nums.Length;
   var i := 0;
-  while i < nums.Length && !found
-    decreases nums.Length - i
+  while i < n
+    decreases n - i
   {
     if CountOccurrences(nums[..], nums[i]) == 1 {
       result := nums[i];
-      found := true;
+      return;
     }
     i := i + 1;
   }
-  if !found {
-    // Use existence precondition to obtain a value with single occurrence
-    var v: int :| CountOccurrences(nums[..], v) == 1;
-    // get an index where v occurs
-    var idx: int :| 0 <= idx < nums.Length && nums[idx] == v;
-    result := nums[idx];
-  }
+  // precondition guarantees existence of such an element
+  assert false;
 }
 
 // </vc-code>

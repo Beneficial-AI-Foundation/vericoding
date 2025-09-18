@@ -14,11 +14,11 @@ method RemoveDuplicates(nums: seq<int>) returns (result: nat)
 {
     var seen := {};
     result := 0;
+    
     var i := 0;
     while i < |nums|
         invariant 0 <= i <= |nums|
         invariant result <= i
-        invariant result <= |nums|
     {
         if nums[i] !in seen {
             seen := seen + {nums[i]};

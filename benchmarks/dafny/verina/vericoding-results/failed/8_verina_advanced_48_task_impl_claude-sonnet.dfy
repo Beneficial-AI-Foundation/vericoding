@@ -2,25 +2,15 @@
 // </vc-preamble>
 
 // <vc-helpers>
-/* helper modified by LLM (iteration 5): added sequence slice lemmas to prove multiset assertions */
-lemma SeqSliceLemma<T>(s: seq<T>)
-    requires |s| > 0
-    ensures multiset([s[0]]) + multiset(s[1..]) == multiset(s)
+/* helper modified by LLM (iteration 5): Added explicit assertions to prove properties */
+function IsSorted(s: seq<int>): bool
 {
-    assert s == [s[0]] + s[1..];
-}
-
-lemma SeqPartitionLemma<T>(s: seq<T>, mid: int)
-    requires 0 <= mid <= |s|
-    ensures multiset(s[..mid]) + multiset(s[mid..]) == multiset(s)
-{
-    assert s == s[..mid] + s[mid..];
+    forall i, j :: 0 <= i < j < |s| ==> s[i] <= s[j]
 }
 
 function Merge(left: seq<int>, right: seq<int>): seq<int>
-    requires forall i, j :: 0 <= i < j < |left| ==> left[i] <= left[j]
-    requires forall i, j :: 0 <= i < j < |right| ==> right[i] <= right[j]
-    ensures forall i, j :: 0 <= i < j < |Merge(left, right)| ==> Merge(left, right)[i] <= Merge(left, right)[j]
+    requires IsSorted(left) && IsSorted(right)
+    ensures IsSorted(Merge(left, right))
     ensures multiset(Merge(left, right)) == multiset(left) + multiset(right)
     ensures |Merge(left, right)| == |left| + |right|
     decreases |left| + |right|
@@ -28,25 +18,31 @@ function Merge(left: seq<int>, right: seq<int>): seq<int>
     if |left| == 0 then right
     else if |right| == 0 then left
     else if left[0] <= right[0] then
-        SeqSliceLemma(left);
+        assert IsSorted(left[1..]);
+        assert multiset([left[0]]) + multiset(Merge(left[1..], right)) == multiset([left[0]]) + multiset(left[1..]) + multiset(right);
+        assert multiset([left[0]]) + multiset(left[1..]) == multiset(left);
         [left[0]] + Merge(left[1..], right)
     else
-        SeqSliceLemma(right);
+        assert IsSorted(right[1..]);
+        assert multiset([right[0]]) + multiset(Merge(left, right[1..])) == multiset([right[0]]) + multiset(left) + multiset(right[1..]);
+        assert multiset([right[0]]) + multiset(right[1..]) == multiset(right);
         [right[0]] + Merge(left, right[1..])
 }
 
-function MergeSortImpl(list: seq<int>): seq<int>
-    ensures forall i, j :: 0 <= i < j < |MergeSortImpl(list)| ==> MergeSortImpl(list)[i] <= MergeSortImpl(list)[j]
-    ensures multiset(MergeSortImpl(list)) == multiset(list)
-    ensures |MergeSortImpl(list)| == |list|
+function MergeSortFunc(list: seq<int>): seq<int>
+    ensures |MergeSortFunc(list)| == |list|
+    ensures IsSorted(MergeSortFunc(list))
+    ensures multiset(MergeSortFunc(list)) == multiset(list)
     decreases |list|
 {
     if |list| <= 1 then list
     else
         var mid := |list| / 2;
-        SeqPartitionLemma(list, mid);
-        var left := MergeSortImpl(list[..mid]);
-        var right := MergeSortImpl(list[mid..]);
+        var left := MergeSortFunc(list[0..mid]);
+        var right := MergeSortFunc(list[mid..]);
+        assert multiset(left) == multiset(list[0..mid]);
+        assert multiset(right) == multiset(list[mid..]);
+        assert multiset(list[0..mid]) + multiset(list[mid..]) == multiset(list);
         Merge(left, right)
 }
 // </vc-helpers>
@@ -59,8 +55,8 @@ method MergeSort(list: seq<int>) returns (result: seq<int>)
         multiset(result) == multiset(list)
 // </vc-spec>
 // <vc-code>
+/* code modified by LLM (iteration 5): Simple call to verified MergeSortFunc */
 {
-    /* code modified by LLM (iteration 5): using helper function with proper lemmas */
-    result := MergeSortImpl(list);
+    result := MergeSortFunc(list);
 }
 // </vc-code>

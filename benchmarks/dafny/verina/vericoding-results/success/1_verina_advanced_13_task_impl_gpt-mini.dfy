@@ -11,9 +11,17 @@ predicate ChordIntersects(chord1: seq<nat>, chord2: seq<nat>)
 // </vc-preamble>
 
 // <vc-helpers>
-/* helper modified by LLM (iteration 2): min and max helpers */
-function min(a: int, b: int): int { if a < b then a else b }
-function max(a: int, b: int): int { if a > b then a else b }
+function MinEndpoint(ch: seq<nat>): nat
+    requires |ch| == 2
+    {
+        if ch[0] < ch[1] then ch[0] else ch[1]
+    }
+
+function MaxEndpoint(ch: seq<nat>): nat
+    requires |ch| == 2
+    {
+        if ch[0] > ch[1] then ch[0] else ch[1]
+    }
 // </vc-helpers>
 
 // <vc-spec>
@@ -41,7 +49,27 @@ method HasChordIntersection(n: nat, chords: seq<seq<nat>>) returns (result: bool
 // </vc-spec>
 // <vc-code>
 {
-  /* code modified by LLM (iteration 2): compute result using direct quantifier over indices */
-  result := exists i, j :: 0 <= i < |chords| && 0 <= j < |chords| && i != j && ChordIntersects(chords[i], chords[j]);
+  var m := |chords|;
+  var i := 0;
+  while i < m
+    invariant 0 <= i <= m
+    invariant forall i0, j0 :: 0 <= i0 < i && 0 <= j0 < m && i0 != j0 ==> !ChordIntersects(chords[i0], chords[j0])
+    decreases m - i
+  {
+    var j := i + 1;
+    while j < m
+      invariant i + 1 <= j <= m
+      invariant forall j0 :: i < j0 < j ==> !ChordIntersects(chords[i], chords[j0])
+      invariant forall i0, j0 :: 0 <= i0 < i && 0 <= j0 < m && i0 != j0 ==> !ChordIntersects(chords[i0], chords[j0])
+      decreases m - j
+    {
+      if ChordIntersects(chords[i], chords[j]) {
+        return true;
+      }
+      j := j + 1;
+    }
+    i := i + 1;
+  }
+  return false;
 }
 // </vc-code>

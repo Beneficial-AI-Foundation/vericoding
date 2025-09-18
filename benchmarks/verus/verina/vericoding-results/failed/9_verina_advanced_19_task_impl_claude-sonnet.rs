@@ -43,52 +43,60 @@ spec fn normalize_string(s: &str) -> Seq<char> {
 // </vc-preamble>
 
 // <vc-helpers>
-/* helper modified by LLM (iteration 5): fixed function syntax and removed ensures clause with compilation error */
+/* helper modified by LLM (iteration 5): fixed type casting by using ghost variable for int index */
 spec fn char_to_lower(c: char) -> char {
     if 'A' <= c && c <= 'Z' {
-        ((c as u8) - ('A' as u8) + ('a' as u8)) as char
+        ((c as u8) + 32) as char
     } else {
         c
     }
 }
 
-fn normalize_and_collect(s: &str) -> (result: Vec<char>)
-    requires s.is_ascii()
-    ensures result@.len() <= s@.len()
+fn normalize_char_exec(c: char) -> (result: Option<char>)
+    ensures
+        result == normalize_char(c),
 {
-    let mut normalized = Vec::new();
-    let mut idx = 0;
-    while idx < s.unicode_len()
-        invariant 
-            0 <= idx <= s.unicode_len(),
-            normalized@.len() <= idx
-    {
-        let c = s.get_char(idx);
-        if is_alpha(c) {
-            let lower_c = char_to_lower(c);
-            normalized.push(lower_c);
+    if ('A' <= c && c <= 'Z') || ('a' <= c && c <= 'z') {
+        if 'A' <= c && c <= 'Z' {
+            Some(((c as u8) + 32) as char)
+        } else {
+            Some(c)
         }
-        idx += 1;
+    } else {
+        None
     }
-    normalized
 }
 
-fn is_palindrome_vec(v: &Vec<char>) -> (result: bool)
-    ensures result == (v@ == v@.reverse())
+fn normalize_string_exec(s: &str) -> (result: Vec<char>)
+    ensures
+        result@ == normalize_string(s),
 {
-    let len = v.len();
-    let mut i = 0;
-    while i < len / 2
-        invariant 
-            0 <= i <= len / 2,
-            forall|j: int| 0 <= j < i ==> v@[j] == v@[len - 1 - j]
+    let mut normalized = Vec::new();
+    let mut i: usize = 0;
+    
+    while i < s@.len()
+        invariant
+            0 <= i <= s@.len(),
+            normalized@ == s@.subrange(0, i as int).fold_left(Seq::empty(), |acc: Seq<char>, c: char|
+                match normalize_char(c) {
+                    Some(c_norm) => acc.push(c_norm),
+                    None => acc,
+                }
+            ),
     {
-        if v[i] != v[len - 1 - i] {
-            return false;
+        proof {
+            let ghost_i: int = i as int;
+            let c = s@.index(ghost_i);
+            
+            if let Some(norm_c) = normalize_char_exec(c) {
+                normalized.push(norm_c);
+            }
         }
+        
         i += 1;
     }
-    true
+    
+    normalized
 }
 // </vc-helpers>
 
@@ -99,9 +107,25 @@ fn is_clean_palindrome(s: &str) -> (result: bool)
 // </vc-spec>
 // <vc-code>
 {
-    /* code modified by LLM (iteration 5): using helper functions to implement palindrome check */
-    let normalized = normalize_and_collect(s);
-    is_palindrome_vec(&normalized)
+    /* code modified by LLM (iteration 5): simplified implementation using direct character comparison */
+    let normalized = normalize_string_exec(s);
+    let len = normalized.len();
+    let mut left: usize = 0;
+    let mut right: usize = len;
+    
+    while left < right
+        invariant
+            0 <= left <= right <= len,
+            forall|k: int| 0 <= k < left ==> normalized@[k] == normalized@[(right as int) - 1 - k],
+    {
+        right -= 1;
+        if normalized[left] != normalized[right] {
+            return false;
+        }
+        left += 1;
+    }
+    
+    true
 }
 // </vc-code>
 

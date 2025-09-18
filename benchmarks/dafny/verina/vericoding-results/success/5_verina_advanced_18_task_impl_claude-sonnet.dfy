@@ -32,8 +32,8 @@ method IsArmstrong(n: nat) returns (result: bool)
 // </vc-spec>
 // <vc-code>
 {
-  var digits := CountDigits(n);
-  var sum := SumPowers(n, digits);
-  result := (n == sum);
+    var digits := CountDigits(n);
+    var sum := SumPowers(n, digits);
+    result := (n == sum);
 }
 // </vc-code>

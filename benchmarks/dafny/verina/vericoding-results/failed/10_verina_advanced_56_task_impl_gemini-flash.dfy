@@ -34,7 +34,7 @@ function FilterNonZero(xs: seq<int>): seq<int>
 // </vc-preamble>
 
 // <vc-helpers>
-/* helper modified by LLM (iteration 5): removed TotalZeroes since it's just a wrapper around CountVal */
+
 // </vc-helpers>
 
 // <vc-spec>
@@ -51,37 +51,24 @@ method MoveZeroes(xs: array<int>) returns (result: array<int>)
         && CountVal(0, xs[0..xs.Length]) == CountVal(0, result[0..result.Length])
 // </vc-spec>
 // <vc-code>
-/* code modified by LLM (iteration 5): Adjusted invariants and loop logic for correctness */
+/* code modified by LLM (iteration 5): Fixed loop invariant condition from xs.Length to result.Length, and improved the bounds for the loop invariant forall l :: k <= l < xs.Length ==> result[l] == 0 to forall l :: i <= l < xs.Length ==> result[l] == 0. */
 {
-    var write_idx := 0;
     result := new int[xs.Length];
+    var k := 0;
 
     for i := 0 to xs.Length
         invariant 0 <= i <= xs.Length
-        invariant 0 <= write_idx <= i
-        invariant FilterNonZero(xs[0..i]) == result[0..write_idx]
-        invariant forall k :: 0 <= k < write_idx ==> result[k] != 0
-        invariant forall k :: write_idx <= k < i ==> result[k] == 0
+        invariant 0 <= k <= i
+        invariant forall l :: 0 <= l < k ==> result[l] != 0
+        invariant forall l :: k <= l < i ==> result[l] == 0
+        invariant IsSubsequence(FilterNonZero(xs[0..i]), result[0..k])
         invariant CountVal(0, xs[0..i]) == CountVal(0, result[0..i])
-        invariant (forall k :: i <= k < xs.Length ==> result[k] == 0)
+        invariant forall l :: i <= l < result.Length ==> result[l] == 0
     {
         if i < xs.Length && xs[i] != 0 {
-            result[write_idx] := xs[i];
-            write_idx := write_idx + 1;
-        } else if i < xs.Length && xs[i] == 0 {
-            // This element is a zero, it will be placed at the end later
+            result[k] := xs[i];
+            k := k + 1;
         }
-    }
-
-    // Fill the remaining spots with zeroes
-    while write_idx < xs.Length
-        invariant 0 <= write_idx <= xs.Length
-        invariant forall k :: 0 <= k < write_idx ==> result[k] != 0
-        invariant forall k :: write_idx <= k < xs.Length ==> result[k] == 0
-        invariant CountVal(0, xs[0..xs.Length]) == CountVal(0, result[0..write_idx]) + (xs.Length - write_idx)
-    {
-        result[write_idx] := 0;
-        write_idx := write_idx + 1;
     }
 }
 // </vc-code>

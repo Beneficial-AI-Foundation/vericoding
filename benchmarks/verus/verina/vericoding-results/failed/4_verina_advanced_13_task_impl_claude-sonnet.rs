@@ -13,26 +13,18 @@ spec fn chord_intersects(chord1: &Vec<usize>, chord2: &Vec<usize>) -> bool {
 // </vc-preamble>
 
 // <vc-helpers>
-/* helper modified by LLM (iteration 5): removed type conversion in spec function call */
-fn check_chord_intersection(chords: &Vec<Vec<usize>>, i: usize, j: usize) -> (result: bool)
-    requires
-        i < chords.len(),
-        j < chords.len(),
-        forall|k: int| 0 <= k < chords.len() ==> chords[k].len() == 2
-    ensures
-        result == (i != j && chord_intersects(&chords[i as int], &chords[j as int]))
+/* helper modified by LLM (iteration 5): simplified helper to return actual vectors for exec code */
+exec fn get_chord_exec(chords: &Vec<Vec<usize>>, i: usize) -> (result: Vec<usize>)
+    requires i < chords.len()
+    ensures result == chords@[i as int]
 {
-    if i == j {
-        false
-    } else {
-        let chord1 = &chords[i];
-        let chord2 = &chords[j];
-        let a1 = if chord1[0] < chord1[1] { chord1[0] } else { chord1[1] };
-        let b1 = if chord1[0] > chord1[1] { chord1[0] } else { chord1[1] };
-        let a2 = if chord2[0] < chord2[1] { chord2[0] } else { chord2[1] };
-        let b2 = if chord2[0] > chord2[1] { chord2[0] } else { chord2[1] };
-        (a1 < a2 && a2 < b1 && b1 < b2) || (a2 < a1 && a1 < b2 && b2 < b1)
-    }
+    chords[i].clone()
+}
+
+spec fn get_chord(chords: &Vec<Vec<usize>>, i: int) -> Vec<usize>
+    requires 0 <= i < chords.len()
+{
+    chords@[i]
 }
 // </vc-helpers>
 
@@ -58,24 +50,24 @@ fn has_chord_intersection(n: usize, chords: &Vec<Vec<usize>>) -> (result: bool)
 // </vc-spec>
 // <vc-code>
 {
-    /* code modified by LLM (iteration 5): added decreases clause to while loops */
+    /* code modified by LLM (iteration 5): use exec helper for actual chord access */
     let mut i = 0;
     while i < chords.len()
         invariant
-            i <= chords.len(),
-            forall|x: int, y: int| 0 <= x < i && 0 <= y < chords.len() && x != y ==> !chord_intersects(&chords[x], &chords[y])
-        decreases chords.len() - i
+            0 <= i <= chords.len(),
+            forall|k: int, l: int| 0 <= k < i && 0 <= l < chords.len() && k != l ==> !chord_intersects(&get_chord(chords, k), &get_chord(chords, l)),
     {
-        let mut j = 0;
+        let mut j = i + 1;
         while j < chords.len()
             invariant
                 i < chords.len(),
-                j <= chords.len(),
-                forall|x: int, y: int| 0 <= x < i && 0 <= y < chords.len() && x != y ==> !chord_intersects(&chords[x], &chords[y]),
-                forall|y: int| 0 <= y < j && i as int != y ==> !chord_intersects(&chords[i as int], &chords[y])
-            decreases chords.len() - j
+                i + 1 <= j <= chords.len(),
+                forall|k: int, l: int| 0 <= k < i && 0 <= l < chords.len() && k != l ==> !chord_intersects(&get_chord(chords, k), &get_chord(chords, l)),
+                forall|l: int| i + 1 <= l < j ==> !chord_intersects(&get_chord(chords, i as int), &get_chord(chords, l)),
         {
-            if check_chord_intersection(chords, i, j) {
+            let chord_i = get_chord_exec(chords, i);
+            let chord_j = get_chord_exec(chords, j);
+            if chord_intersects(&chord_i, &chord_j) {
                 return true;
             }
             j += 1;

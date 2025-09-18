@@ -5,8 +5,23 @@ verus! {
 // </vc-preamble>
 
 // <vc-helpers>
-/* helper modified by LLM (iteration 5): duplicate predicate using &Seq indexing */
-spec fn has_duplicate(lst: &Seq<i32>) -> bool { exists|i: nat, j: nat| i < j && j < lst.len() && lst[i] == lst[j] }
+/* helper modified by LLM (iteration 5): runtime helper using Vec to avoid ghost nat types */
+fn find_prev_index_run(lst: &Seq<i32>, j: usize) -> Option<usize>
+{
+    let v = lst.to_vec();
+    let mut k: usize = 0;
+    while k < j
+        invariant
+            k <= j,
+        decreases j - k
+    {
+        if v[k] == v[j] {
+            return Some(k);
+        }
+        k = k + 1;
+    }
+    None
+}
 // </vc-helpers>
 
 // <vc-spec>
@@ -22,21 +37,37 @@ fn first_duplicate(lst: &Seq<i32>) -> (result: i32)
 // </vc-spec>
 // <vc-code>
 {
-    /* code modified by LLM (iteration 5): iterate to find first element with a later duplicate using &Seq indexing */
-    let n: nat = lst.len();
-    if !has_duplicate(lst) {
-        -1
-    } else {
-        let mut i: nat = 0;
-        while i < n
-            decreases n - i
-        {
-            if exists|j: nat| i < j && j < n && lst[i] == lst[j] {
-                return lst[i];
+    /* code modified by LLM (iteration 5): scan sequence using Vec to find earliest duplicate pair and return its value or -1 */
+    let v = lst.to_vec();
+    let n: usize = v.len();
+    let mut best_j: Option<usize> = None;
+    let mut best_i: usize = 0;
+    let mut j: usize = 0;
+    while j < n
+        invariant
+            j <= n,
+        decreases n - j
+    {
+        let prev = find_prev_index_run(lst, j);
+        if let Some(p) = prev {
+            match best_j {
+                None => {
+                    best_j = Some(j);
+                    best_i = p;
+                }
+                Some(bj) => {
+                    if j < bj {
+                        best_j = Some(j);
+                        best_i = p;
+                    }
+                }
             }
-            i = i + 1;
         }
-        -1
+        j = j + 1;
+    }
+    match best_j {
+        None => -1,
+        Some(_) => v[best_i],
     }
 }
 // </vc-code>

@@ -2,7 +2,11 @@
 // </vc-preamble>
 
 // <vc-helpers>
-function maxInt(a: int, b: int): int { if a >= b then a else b }
+/* helper modified by LLM (iteration 3): max function */
+function max(a: int, b: int): int { if a >= b then a else b }
+
+/* helper modified by LLM (iteration 3): abs function */
+function abs(x: int): int { if x >= 0 then x else -x }
 // </vc-helpers>
 
 // <vc-spec>
@@ -14,21 +18,20 @@ method MaxStrength(nums: array<int>) returns (result: int)
         exists i :: 0 <= i < nums.Length && result >= nums[i]
 // </vc-spec>
 // <vc-code>
+/* code modified by LLM (iteration 3): return maximum element of nums ensuring postcondition */
 {
-    var n := nums.Length;
-    var cur := nums[0];
-    var i := 1;
-    while i < n
-      invariant 1 <= i <= n
-      invariant forall k :: 0 <= k < i ==> cur >= nums[k]
-      invariant exists j :: 0 <= j < i && cur == nums[j]
-      decreases n - i
-    {
-      if nums[i] > cur {
-        cur := nums[i];
-      }
-      i := i + 1;
+  var n := nums.Length;
+  var i := 1;
+  var maxElem := nums[0];
+  while i < n
+    invariant 0 <= i <= n
+    invariant forall j :: 0 <= j < i ==> maxElem >= nums[j]
+  {
+    if nums[i] > maxElem {
+      maxElem := nums[i];
     }
-    result := cur;
+    i := i + 1;
   }
+  result := maxElem;
+}
 // </vc-code>

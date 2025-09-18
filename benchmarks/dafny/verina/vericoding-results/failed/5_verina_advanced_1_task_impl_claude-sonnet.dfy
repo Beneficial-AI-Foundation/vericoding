@@ -15,36 +15,26 @@ function FilterEqual(nums: seq<int>, x: int): seq<int>
 // </vc-preamble>
 
 // <vc-helpers>
-/* helper modified by LLM (iteration 5): fixed lemma to use correct function signature */
-lemma CountOccurrencesSliceProperty(nums: seq<int>, x: int, j: int)
-    requires 0 <= j <= |nums|
-    ensures CountOccurrences(nums[..j], x) <= CountOccurrences(nums[..], x)
+/* helper modified by LLM (iteration 5): Fixed lemmas with proper proofs */
+function CountOccurrencesInRange(nums: array<int>, x: int, start: int, end: int): nat
+    requires 0 <= start <= end <= nums.Length
+    reads nums
 {
-    if j == |nums| {
-        assert nums[..j] == nums[..];
-    } else {
-        var fullCount := |set i | 0 <= i < |nums| && nums[i] == x|;
-        var sliceCount := |set i | 0 <= i < j && nums[i] == x|;
-        assert sliceCount <= fullCount;
-    }
+    |set i | start <= i < end && nums[i] == x|
 }
 
-lemma SliceInvariantHelper(nums: seq<int>, i: int, j: int)
-    requires 0 <= i < |nums|
-    requires 0 <= j <= |nums|
-    ensures CountOccurrences(nums[..j], nums[i]) == |set k | 0 <= k < j && nums[k] == nums[i]|
+lemma CountOccurrencesEquivalence(nums: array<int>, x: int, end: int)
+    requires 0 <= end <= nums.Length
+    ensures CountOccurrencesInRange(nums, x, 0, end) == CountOccurrences(nums[..end], x)
 {
-    assert CountOccurrences(nums[..j], nums[i]) == |set k | 0 <= k < |nums[..j]| && nums[..j][k] == nums[i]|;
-    assert |set k | 0 <= k < |nums[..j]| && nums[..j][k] == nums[i]| == |set k | 0 <= k < j && nums[k] == nums[i]|;
+    assert forall i :: 0 <= i < end ==> (nums[i] == x <==> nums[..end][i] == x);
 }
 
-lemma UniqueElementExists(nums: seq<int>)
-    requires exists unique_elem :: CountOccurrences(nums, unique_elem) == 1
-    requires forall elem :: elem in nums ==> (CountOccurrences(nums, elem) == 1 || CountOccurrences(nums, elem) == 2)
-    ensures exists x :: x in nums && CountOccurrences(nums, x) == 1
+lemma CountOccurrencesComplete(nums: array<int>, x: int)
+    ensures CountOccurrencesInRange(nums, x, 0, nums.Length) == CountOccurrences(nums[..], x)
 {
-    var unique_elem :| CountOccurrences(nums, unique_elem) == 1;
-    assert unique_elem in nums;
+    assert nums[..nums.Length] == nums[..];
+    CountOccurrencesEquivalence(nums, x, nums.Length);
 }
 // </vc-helpers>
 
@@ -62,31 +52,54 @@ method FindSingleNumber(nums: array<int>) returns (result: int)
         forall x :: x in nums[..] ==> (x == result || CountOccurrences(nums[..], x) == 2)
 // </vc-spec>
 // <vc-code>
-/* code modified by LLM (iteration 5): simplified implementation with proper initialization and invariant handling */
 {
-    result := nums[0];
-    var found := false;
+    /* code modified by LLM (iteration 5): Fixed syntax error with proper assertion block */
+    result := 0;
+    var i := 0;
     
-    for i := 0 to nums.Length
+    while i < nums.Length
         invariant 0 <= i <= nums.Length
-        invariant found ==> (result in nums[..] && CountOccurrences(nums[..], result) == 1)
-        invariant !found ==> forall x :: x in nums[..i] ==> CountOccurrences(nums[..], x) != 1
-        invariant found ==> (forall x :: x in nums[..i] && CountOccurrences(nums[..], x) == 1 ==> x == result)
+        invariant forall k :: 0 <= k < i ==> CountOccurrences(nums[..], nums[k]) != 1
     {
         var count := 0;
-        for j := 0 to nums.Length
+        var j := 0;
+        ghost var target := nums[i];
+        
+        while j < nums.Length
             invariant 0 <= j <= nums.Length
-            invariant count == |set k | 0 <= k < j && nums[k] == nums[i]|
+            invariant target == nums[i]
+            invariant count == CountOccurrencesInRange(nums, target, 0, j)
         {
-            if nums[j] == nums[i] {
+            if nums[j] == target {
                 count := count + 1;
             }
+            j := j + 1;
         }
+        
+        CountOccurrencesComplete(nums, target);
+        assert count == CountOccurrences(nums[..], target);
         
         if count == 1 {
             result := nums[i];
-            found := true;
+            assert CountOccurrences(nums[..], result) == 1;
+            assert forall x :: x in nums[..] ==> (x == result || CountOccurrences(nums[..], x) == 2) by {
+                forall x | x in nums[..]
+                    ensures x == result || CountOccurrences(nums[..], x) == 2
+                {
+                    if x != result {
+                        assert CountOccurrences(nums[..], x) != 1;
+                        assert CountOccurrences(nums[..], x) == 1 || CountOccurrences(nums[..], x) == 2;
+                        assert CountOccurrences(nums[..], x) == 2;
+                    }
+                }
+            }
+            return;
         }
+        
+        i := i + 1;
     }
+    
+    // This should never be reached due to preconditions
+    assert false;
 }
 // </vc-code>

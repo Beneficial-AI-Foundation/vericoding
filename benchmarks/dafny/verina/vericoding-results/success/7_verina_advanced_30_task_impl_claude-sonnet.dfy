@@ -13,36 +13,35 @@ method LongestIncreasingStreak(nums: array<int>) returns (result: nat)
 // </vc-spec>
 // <vc-code>
 {
-  /* code modified by LLM (iteration 3): fixed loop invariant by ensuring maxStreak bounds are properly maintained */
-  if nums.Length == 0 {
-    result := 0;
-    return;
-  }
-  
-  var maxStreak := 1;
-  var currentStreak := 1;
-  var i := 1;
-  
-  while i < nums.Length
-    invariant 1 <= i <= nums.Length
-    invariant currentStreak >= 1
-    invariant maxStreak >= 1
-    invariant maxStreak <= i
-    invariant maxStreak >= currentStreak
-  {
-    if nums[i] > nums[i-1] {
-      currentStreak := currentStreak + 1;
-    } else {
-      currentStreak := 1;
+    if nums.Length == 0 {
+        result := 0;
+        return;
     }
     
-    if currentStreak > maxStreak {
-      maxStreak := currentStreak;
+    var maxStreak := 1;
+    var currentStreak := 1;
+    var i := 1;
+    
+    while i < nums.Length
+        invariant 1 <= i <= nums.Length
+        invariant currentStreak >= 1
+        invariant maxStreak >= 1
+        invariant maxStreak <= i
+        invariant currentStreak <= i
+    {
+        if nums[i] > nums[i-1] {
+            currentStreak := currentStreak + 1;
+        } else {
+            currentStreak := 1;
+        }
+        
+        if currentStreak > maxStreak {
+            maxStreak := currentStreak;
+        }
+        
+        i := i + 1;
     }
     
-    i := i + 1;
-  }
-  
-  result := maxStreak;
+    result := maxStreak;
 }
 // </vc-code>

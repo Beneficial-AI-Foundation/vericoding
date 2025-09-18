@@ -2,7 +2,12 @@
 // </vc-preamble>
 
 // <vc-helpers>
-
+/* helper modified by LLM (iteration 3): removed problematic helpers causing verification issues */
+function IsSorted(nums: array<int>): bool
+    reads nums
+{
+    forall i, j :: 0 <= i < j < nums.Length ==> nums[i] <= nums[j]
+}
 // </vc-helpers>
 
 // <vc-spec>
@@ -18,63 +23,58 @@ method MinimumRightShifts(nums: array<int>) returns (result: int)
 // </vc-spec>
 // <vc-code>
 {
+    /* code modified by LLM (iteration 3): fixed array bounds and simplified implementation */
     var n := nums.Length;
     if n <= 1 {
         result := 0;
         return;
     }
     
-    var sorted := new int[n];
+    var temp := new int[n];
     var i := 0;
-    while i < n
-        invariant 0 <= i <= n
-    {
-        sorted[i] := nums[i];
+    while i < n {
+        temp[i] := nums[i];
         i := i + 1;
     }
     
-    // Simple bubble sort
-    var outer := 0;
-    while outer < n - 1
-        invariant 0 <= outer <= n - 1
-    {
-        var inner := 0;
-        while inner < n - 1 - outer
-            invariant 0 <= inner <= n - 1 - outer
-        {
-            if sorted[inner] > sorted[inner + 1] {
-                var temp := sorted[inner];
-                sorted[inner] := sorted[inner + 1];
-                sorted[inner + 1] := temp;
-            }
-            inner := inner + 1;
-        }
-        outer := outer + 1;
-    }
-    
-    // Try each possible rotation
-    var shifts := 0;
-    while shifts < n
-        invariant 0 <= shifts <= n
-    {
-        var matches := true;
-        var j := 0;
-        while j < n && matches
-            invariant 0 <= j <= n
-        {
-            if nums[(j + shifts) % n] != sorted[j] {
-                matches := false;
+    // Sort the temporary array
+    var k := 0;
+    while k < n - 1 {
+        var minIdx := k;
+        var j := k + 1;
+        while j < n {
+            if j < temp.Length && minIdx < temp.Length && temp[j] < temp[minIdx] {
+                minIdx := j;
             }
             j := j + 1;
         }
-        
-        if matches {
+        if k < temp.Length && minIdx < temp.Length {
+            var tempVal := temp[k];
+            temp[k] := temp[minIdx];
+            temp[minIdx] := tempVal;
+        }
+        k := k + 1;
+    }
+    
+    // Check each possible rotation
+    var shifts := 0;
+    result := -1; // Initialize result to default value
+    while shifts < n
+        decreases n - shifts
+    {
+        var isMatch := true;
+        var idx := 0;
+        while idx < n && isMatch {
+            if nums[(idx + shifts) % n] != temp[idx] {
+                isMatch := false;
+            }
+            idx := idx + 1;
+        }
+        if isMatch {
             result := shifts;
-            return;
+            break;
         }
         shifts := shifts + 1;
     }
-    
-    result := -1;
 }
 // </vc-code>

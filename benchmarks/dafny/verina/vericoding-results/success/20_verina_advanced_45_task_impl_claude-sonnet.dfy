@@ -13,7 +13,7 @@ function SpecSum(xs: array<int>, start: int, len: int): int
 // </vc-preamble>
 
 // <vc-helpers>
-/* helper modified by LLM (iteration 3): added helper to prove existence and optimality properties */
+/* helper modified by LLM (iteration 5): added decreases clause to fix termination */
 lemma SpecSumProperty(xs: array<int>, start: int, len: int)
     requires 0 <= start < xs.Length
     requires 1 <= len <= xs.Length - start
@@ -21,13 +21,18 @@ lemma SpecSumProperty(xs: array<int>, start: int, len: int)
 {
 }
 
-lemma ExistsMaxSubarray(xs: array<int>, maxSum: int)
-    requires xs.Length > 0
-    requires forall start: int, len: int :: 0 <= start < xs.Length && 1 <= len <= xs.Length - start ==> SpecSum(xs, start, len) <= maxSum
-    requires exists start: int, len: int :: 0 <= start < xs.Length && 1 <= len <= xs.Length - start && SpecSum(xs, start, len) == maxSum
-    ensures exists start: int, len: int :: 0 <= start < xs.Length && 1 <= len <= xs.Length - start && maxSum == SpecSum(xs, start, len)
-    ensures forall start: int, len: int :: 0 <= start < xs.Length && 1 <= len <= xs.Length - start ==> SpecSum(xs, start, len) <= maxSum
+function ComputeSum(xs: array<int>, start: int, len: int): int
+    requires 0 <= start <= xs.Length
+    requires 0 <= len <= xs.Length - start
+    decreases len
+    reads xs
 {
+    if len <= 0 then
+        0
+    else if start >= xs.Length then
+        0
+    else
+        xs[start] + ComputeSum(xs, start + 1, len - 1)
 }
 // </vc-helpers>
 
@@ -46,39 +51,46 @@ method MaxSubarraySum(xs: array<int>) returns (result: int)
 // </vc-spec>
 // <vc-code>
 {
-    /* code modified by LLM (iteration 3): track witness for existence proof and ensure proper postcondition satisfaction */
+    /* code modified by LLM (iteration 5): added ghost variables and assertions to prove postconditions */
     if xs.Length == 0 {
         result := 0;
         return;
     }
     
-    result := SpecSum(xs, 0, 1);
-    ghost var witnessStart := 0;
-    ghost var witnessLen := 1;
+    result := xs[0];
+    ghost var bestStart := 0;
+    ghost var bestLen := 1;
     
-    for i := 0 to xs.Length
+    var i := 0;
+    while i < xs.Length
         invariant 0 <= i <= xs.Length
-        invariant exists start: int, len: int :: 0 <= start < xs.Length && 1 <= len <= xs.Length - start && result == SpecSum(xs, start, len)
-        invariant forall start: int, len: int :: 0 <= start < i && 1 <= len <= xs.Length - start ==> SpecSum(xs, start, len) <= result
+        invariant 0 <= bestStart < xs.Length
+        invariant 1 <= bestLen <= xs.Length - bestStart
+        invariant result == SpecSum(xs, bestStart, bestLen)
+        invariant forall s: int, l: int :: 
+            0 <= s < xs.Length && 1 <= l <= xs.Length - s && s < i
+            ==> SpecSum(xs, s, l) <= result
     {
-        for j := i + 1 to xs.Length + 1
-            invariant i + 1 <= j <= xs.Length + 1
-            invariant exists start: int, len: int :: 0 <= start < xs.Length && 1 <= len <= xs.Length - start && result == SpecSum(xs, start, len)
-            invariant forall start: int, len: int :: 0 <= start < i && 1 <= len <= xs.Length - start ==> SpecSum(xs, start, len) <= result
-            invariant forall len: int :: 1 <= len < j - i && len <= xs.Length - i ==> SpecSum(xs, i, len) <= result
+        var j := i;
+        while j < xs.Length
+            invariant i <= j <= xs.Length
+            invariant 0 <= bestStart < xs.Length
+            invariant 1 <= bestLen <= xs.Length - bestStart
+            invariant result == SpecSum(xs, bestStart, bestLen)
+            invariant forall s: int, l: int :: 
+                0 <= s < xs.Length && 1 <= l <= xs.Length - s && 
+                (s < i || (s == i && l <= j - i))
+                ==> SpecSum(xs, s, l) <= result
         {
-            var len := j - i;
-            if len >= 1 && len <= xs.Length - i {
-                var sum := SpecSum(xs, i, len);
-                if sum > result {
-                    result := sum;
-                    witnessStart := i;
-                    witnessLen := len;
-                }
+            var currentSum := SpecSum(xs, i, j - i + 1);
+            if currentSum > result {
+                result := currentSum;
+                bestStart := i;
+                bestLen := j - i + 1;
             }
+            j := j + 1;
         }
+        i := i + 1;
     }
-    
-    ExistsMaxSubarray(xs, result);
 }
 // </vc-code>

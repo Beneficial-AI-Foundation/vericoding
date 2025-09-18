@@ -21,53 +21,52 @@ spec fn count_occurrences(nums: Seq<i32>, x: i32) -> nat
 // </vc-preamble>
 
 // <vc-helpers>
-proof fn majority_element_lemma(nums: Seq<i32>, candidate: i32)
-    requires 
-        nums.len() > 0,
-        count_occurrences(nums, candidate) > nums.len() / 2,
-    ensures 
-        forall|x: i32| x != candidate ==> count_occurrences(nums, x) <= nums.len() / 2
+/* helper modified by LLM (iteration 5): fixed lemma syntax by removing duplicate lemma keyword */
+proof fn lemma_count_occurrences_subrange(nums: Seq<i32>, x: i32, start: int, end: int)
+    requires
+        0 <= start <= end <= nums.len(),
+    ensures
+        count_occurrences(nums.subrange(start, end), x) <= count_occurrences(nums, x),
+    decreases end - start
 {
-    assert forall|x: i32| x != candidate implies {
-        count_occurrences(nums, x) + count_occurrences(nums, candidate) <= nums.len()
-    } by {
-        let total_x = count_occurrences(nums, x);
-        let total_candidate = count_occurrences(nums, candidate);
-        assert(total_x + total_candidate <= nums.len());
+    if start == end {
+        return;
+    }
+    if start + 1 == end {
+        return;
+    }
+    let mid = start + (end - start) / 2;
+    lemma_count_occurrences_subrange(nums, x, start, mid);
+    lemma_count_occurrences_subrange(nums, x, mid, end);
+}
+
+proof fn lemma_majority_unique(nums: Seq<i32>, x: i32, y: i32)
+    requires
+        count_occurrences(nums, x) > nums.len() / 2,
+        count_occurrences(nums, y) > nums.len() / 2,
+    ensures
+        x == y,
+{
+    if x != y {
+        assert(count_occurrences(nums, x) + count_occurrences(nums, y) > nums.len());
+        lemma_count_sum_bound(nums, x, y);
+        assert(false);
     }
 }
 
-/* helper modified by LLM (iteration 5): fixed ghost type usage in executable code */
-fn find_majority_linear(nums: Seq<i32>) -> (result: i32)
-    requires 
-        nums.len() > 0,
-        exists|x: i32| count_occurrences(nums, x) > nums.len() / 2,
-    ensures 
-        count_occurrences(nums, result) > nums.len() / 2
+proof fn lemma_count_sum_bound(nums: Seq<i32>, x: i32, y: i32)
+    requires
+        x != y,
+    ensures
+        count_occurrences(nums, x) + count_occurrences(nums, y) <= nums.len(),
+    decreases nums.len()
 {
-    let mut candidate = nums[0];
-    let mut count = 1;
-    let mut i: usize = 1;
-    
-    while i < nums.len()
-        invariant 
-            1 <= i <= nums.len(),
-            exists|x: i32| count_occurrences(nums, x) > nums.len() / 2
-    {
-        if nums[i as int] == candidate {
-            count = count + 1;
-        } else {
-            if count > 1 {
-                count = count - 1;
-            } else {
-                candidate = nums[i as int];
-                count = 1;
-            }
-        }
-        i = i + 1;
+    if nums.len() == 0 {
+        return;
     }
-    
-    candidate
+    let first = nums[0];
+    let rest = nums.subrange(1, nums.len() as int);
+    lemma_count_sum_bound(rest, x, y);
 }
 // </vc-helpers>
 
@@ -82,11 +81,51 @@ fn majority_element(nums: Seq<i32>) -> (result: i32)
 // </vc-spec>
 // <vc-code>
 {
-    /* code modified by LLM (iteration 5): using helper function to find majority element */
-    let candidate = find_majority_linear(nums);
-    proof {
-        majority_element_lemma(nums, candidate);
+    /* code modified by LLM (iteration 5): fixed type error by using usize for loop counter */
+    let mut candidate = nums@[0];
+    let mut count = 1;
+    let mut i: usize = 1;
+    
+    while i < nums.len()
+        invariant
+            1 <= i <= nums.len(),
+            count >= 0,
+            exists|x: i32| count_occurrences(nums, x) > nums.len() / 2,
+        decreases nums.len() - i
+    {
+        if nums@[i as int] == candidate {
+            count = count + 1;
+        } else {
+            count = count - 1;
+            if count == 0 {
+                candidate = nums@[i as int];
+                count = 1;
+            }
+        }
+        i = i + 1;
     }
+    
+    proof {
+        assert(exists|x: i32| count_occurrences(nums, x) > nums.len() / 2);
+        let witness_x = choose|x: i32| count_occurrences(nums, x) > nums.len() / 2;
+        
+        if count_occurrences(nums, candidate) <= nums.len() / 2 {
+            lemma_majority_unique(nums, witness_x, candidate);
+            assert(false);
+        }
+        
+        assert(count_occurrences(nums, candidate) > nums.len() / 2);
+        
+        assert(forall|x: i32| x != candidate ==> {
+            if count_occurrences(nums, x) > nums.len() / 2 {
+                lemma_majority_unique(nums, candidate, x);
+                false
+            } else {
+                true
+            }
+        });
+    }
+    
     candidate
 }
 // </vc-code>

@@ -13,11 +13,24 @@ spec fn chord_intersects(chord1: &Vec<usize>, chord2: &Vec<usize>) -> bool {
 // </vc-preamble>
 
 // <vc-helpers>
-/* helper modified by LLM (iteration 5): symmetry of chord_intersects */
-spec fn chord_intersects_sym(ch1: &Vec<usize>, ch2: &Vec<usize>) -> bool { chord_intersects(ch1, ch2) == chord_intersects(ch2, ch1) }
+/* helper modified by LLM (iteration 5): prove runtime computation implies spec predicate */
+proof fn chord_intersects_from_vals(ch1: &Vec<usize>, ch2: &Vec<usize>, a1: usize, b1: usize, a2: usize, b2: usize, inter: bool)
+    requires
+        ch1.len() == 2,
+        ch2.len() == 2,
+        a1 == if ch1[0] < ch1[1] { ch1[0] } else { ch1[1] },
+        b1 == if ch1[0] > ch1[1] { ch1[0] } else { ch1[1] },
+        a2 == if ch2[0] < ch2[1] { ch2[0] } else { ch2[1] },
+        b2 == if ch2[0] > ch2[1] { ch2[0] } else { ch2[1] },
+        inter == ((a1 < a2 && a2 < b1 && b1 < b2) || (a2 < a1 && a1 < b2 && b2 < b1)),
+    ensures
+        chord_intersects(ch1, ch2) == inter,
+{
+    proof {
+        assert(chord_intersects(ch1, ch2) == ((a1 < a2 && a2 < b1 && b1 < b2) || (a2 < a1 && a1 < b2 && b2 < b1)));
+    }
+}
 
-/* helper modified by LLM (iteration 5): convert vector length to int */
-spec fn vec_len_int<T>(v: &Vec<T>) -> int { v.len() as int }
 // </vc-helpers>
 
 // <vc-spec>
@@ -42,29 +55,54 @@ fn has_chord_intersection(n: usize, chords: &Vec<Vec<usize>>) -> (result: bool)
 // </vc-spec>
 // <vc-code>
 {
-    /* code modified by LLM (iteration 5): iterative search with corrected invariant syntax avoiding `@` */
-    let len = chords.len() as int;
-    let mut i: int = 0;
-    while i < len
-        invariant 0 <= i && i <= len
-        invariant (forall |p: int, q: int| (0 <= p && p < i && p < q && q < len) ==> !chord_intersects(&chords[p as usize], &chords[q as usize]))
-        decreases len - i
+    /* code modified by LLM (iteration 5): replaced int counters with usize and added proof linking runtime inter to spec */
+    let mut i: usize = 0;
+    let mut res: bool = false;
+    while i < chords.len()
+        invariant
+            0 <= (i as int),
+            (i as int) <= (chords.len() as int),
+            res == exists|p: int, q: int|
+                0 <= p < (i as int) && 0 <= q < (chords.len() as int) && p != q &&
+                #[trigger] chord_intersects(&chords[p as usize], &chords[q as usize]),
+        decreases chords.len() - i
     {
-        let mut j: int = i + 1;
-        while j < len
-            invariant i + 1 <= j && j <= len
-            invariant (forall |q: int| (i < q && q < j) ==> !chord_intersects(&chords[i as usize], &chords[q as usize]))
-            decreases len - j
+        let mut j: usize = 0;
+        while j < chords.len()
+            invariant
+                0 <= (j as int),
+                (j as int) <= (chords.len() as int),
+                res == (exists|p: int, q: int|
+                            0 <= p < (i as int) && 0 <= q < (chords.len() as int) && p != q &&
+                            #[trigger] chord_intersects(&chords[p as usize], &chords[q as usize])
+                        ) || (exists|q2: int|
+                            0 <= q2 < (j as int) && q2 != (i as int) &&
+                            #[trigger] chord_intersects(&chords[i], &chords[q2])
+                        ),
+            decreases chords.len() - j
         {
-            if chord_intersects(&chords[i as usize], &chords[j as usize]) {
-                return true;
+            if i != j {
+                let a1 = if chords[i][0] < chords[i][1] { chords[i][0] } else { chords[i][1] };
+                let b1 = if chords[i][0] > chords[i][1] { chords[i][0] } else { chords[i][1] };
+                let a2 = if chords[j][0] < chords[j][1] { chords[j][0] } else { chords[j][1] };
+                let b2 = if chords[j][0] > chords[j][1] { chords[j][0] } else { chords[j][1] };
+                let inter = (a1 < a2 && a2 < b1 && b1 < b2) || (a2 < a1 && a1 < b2 && b2 < b1);
+                if inter {
+                    proof {
+                        chord_intersects_from_vals(&chords[i], &chords[j], a1, b1, a2, b2, inter);
+                        assert(chord_intersects(&chords[i], &chords[j]));
+                        assert(exists|q2: int| 0 <= q2 < ((j as int) + 1) && q2 != (i as int) && chord_intersects(&chords[i], &chords[q2]));
+                    }
+                    res = true;
+                }
             }
-            j += 1;
+            j = j + 1;
         }
-        i += 1;
+        i = i + 1;
     }
-    false
+    res
 }
+
 // </vc-code>
 
 }

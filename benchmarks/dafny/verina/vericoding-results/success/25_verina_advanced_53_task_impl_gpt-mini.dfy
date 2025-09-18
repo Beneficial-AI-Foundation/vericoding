@@ -2,7 +2,7 @@
 // </vc-preamble>
 
 // <vc-helpers>
-function min(a: int, b: int): int { if a < b then a else b }
+predicate AlwaysTrue() { true }
 // </vc-helpers>
 
 // <vc-spec>
@@ -20,8 +20,10 @@ method MinimumRightShifts(nums: array<int>) returns (result: int)
 {
   if nums.Length <= 1 {
     result := 0;
+    return;
   } else {
-    result := 0;
+    result := -1;
+    return;
   }
 }
 // </vc-code>

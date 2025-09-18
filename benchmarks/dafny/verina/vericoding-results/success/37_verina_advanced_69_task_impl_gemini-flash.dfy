@@ -19,7 +19,7 @@ method SearchInsert(xs: array<int>, target: int) returns (result: int)
     while low < high
         invariant 0 <= low <= high <= xs.Length
         invariant forall i :: 0 <= i < low ==> xs[i] < target
-        invariant forall j :: high <= j < xs.Length ==> xs[j] >= target
+        invariant forall i :: high <= i < xs.Length ==> xs[i] >= target
     {
         var mid := low + (high - low) / 2;
         if xs[mid] < target {

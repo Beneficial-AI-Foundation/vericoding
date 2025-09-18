@@ -11,12 +11,7 @@ predicate ChordIntersects(chord1: seq<nat>, chord2: seq<nat>)
 // </vc-preamble>
 
 // <vc-helpers>
-function ChordPairIntersects(chords: seq<seq<nat>>, i: nat, j: nat): bool
-    requires i < |chords| && j < |chords|
-    requires |chords[i]| == 2 && |chords[j]| == 2
-{
-    ChordIntersects(chords[i], chords[j])
-}
+
 // </vc-helpers>
 
 // <vc-spec>
@@ -47,15 +42,12 @@ method HasChordIntersection(n: nat, chords: seq<seq<nat>>) returns (result: bool
     var i := 0;
     while i < |chords|
         invariant 0 <= i <= |chords|
-        invariant forall x, y :: 0 <= x < i && 0 <= y < |chords| && x != y ==> !ChordIntersects(chords[x], chords[y])
-        invariant forall x, y :: 0 <= x < |chords| && 0 <= y < i && x != y ==> !ChordIntersects(chords[x], chords[y])
+        invariant forall i1, j1 :: 0 <= i1 < i && 0 <= j1 < |chords| && i1 != j1 ==> !ChordIntersects(chords[i1], chords[j1])
     {
         var j := 0;
         while j < |chords|
             invariant 0 <= j <= |chords|
-            invariant forall y :: 0 <= y < j && i != y ==> !ChordIntersects(chords[i], chords[y])
-            invariant forall x, y :: 0 <= x < i && 0 <= y < |chords| && x != y ==> !ChordIntersects(chords[x], chords[y])
-            invariant forall x, y :: 0 <= x < |chords| && 0 <= y < i && x != y ==> !ChordIntersects(chords[x], chords[y])
+            invariant forall j1 :: 0 <= j1 < j && i != j1 ==> !ChordIntersects(chords[i], chords[j1])
         {
             if i != j && ChordIntersects(chords[i], chords[j]) {
                 result := true;

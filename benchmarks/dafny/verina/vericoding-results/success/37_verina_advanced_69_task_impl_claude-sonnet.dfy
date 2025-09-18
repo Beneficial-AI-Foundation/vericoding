@@ -22,8 +22,7 @@ method SearchInsert(xs: array<int>, target: int) returns (result: int)
         invariant forall i :: 0 <= i < left ==> xs[i] < target
         invariant forall i :: right <= i < xs.Length ==> target <= xs[i]
     {
-        var mid := left + (right - left) / 2;
-        
+        var mid := (left + right) / 2;
         if xs[mid] < target {
             left := mid + 1;
         } else {

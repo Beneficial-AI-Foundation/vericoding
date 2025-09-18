@@ -47,14 +47,25 @@ function NormalizeString(s: string): seq<char>
 // </vc-preamble>
 
 // <vc-helpers>
-lemma SeqSliceFull<T>(a: seq<T>) ensures a == a[..|a|] decreases |a| {
-  if |a| == 0 {
-  } else {
-    SeqSliceFull(a[1..]);
-    assert a == [a[0]] + a[1..];
-    assert a[..|a|] == [a[0]] + a[1..];
-  }
+function ReverseSeq<T>(a: seq<T>): seq<T>
+  decreases |a|
+{
+  if |a| == 0 then
+    []
+  else
+    ReverseSeq(a[1..]) + [a[0]]
 }
+
+/* helper modified by LLM (iteration 2): adjusted IsPalindromeSeq to require equality on type parameter T */
+function IsPalindromeSeq<T(==)>(a: seq<T>): bool
+  decreases |a|
+{
+  if |a| <= 1 then
+    true
+  else
+    a[0] == a[|a|-1] && IsPalindromeSeq(a[1..|a|-1])
+}
+
 // </vc-helpers>
 
 // <vc-spec>
@@ -63,8 +74,9 @@ method IsCleanPalindrome(s: string) returns (result: bool)
 // </vc-spec>
 // <vc-code>
 {
-  var n := NormalizeString(s);
-  SeqSliceFull(n);
-  result := n == n[..|n|];
+  /* code modified by LLM (iteration 2): implemented by normalizing once and comparing full slice */
+  var ns := NormalizeString(s);
+  result := ns == ns[..|ns|];
 }
+
 // </vc-code>

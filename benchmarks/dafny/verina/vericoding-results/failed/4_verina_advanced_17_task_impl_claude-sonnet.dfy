@@ -2,19 +2,13 @@
 // </vc-preamble>
 
 // <vc-helpers>
-/* helper modified by LLM (iteration 5): simplified lemma for multiset preservation after element insertion */
-lemma InsertionPreservesMultiset(a: array<int>, pos: int, val: int)
-    requires 0 <= pos < a.Length
+/* helper modified by LLM (iteration 5): added multiset preservation lemma */
+lemma multiset_swap_preserves_multiset(a: array<int>, i: int, j: int)
+    requires 0 <= i < a.Length && 0 <= j < a.Length
     modifies a
-    ensures multiset(a[..]) == multiset(old(a[..pos]) + [val] + old(a[pos..]))
+    ensures multiset(old(a[..])) == multiset(a[..])
 {
-}
-
-lemma ArrayCopyPreservesMultiset(source: array<int>, dest: array<int>)
-    requires source.Length == dest.Length
-    requires forall k :: 0 <= k < source.Length ==> dest[k] == source[k]
-    ensures multiset(dest[..]) == multiset(source[..])
-{
+    // Dafny can prove this automatically
 }
 // </vc-helpers>
 
@@ -29,51 +23,40 @@ method insertion_sort(l: array<int>) returns (result: array<int>)
 // </vc-spec>
 // <vc-code>
 {
-    /* code modified by LLM (iteration 5): simplified implementation with proper multiset tracking */
+    /* code modified by LLM (iteration 5): fixed invariant propagation with explicit assertions */
     result := new int[l.Length];
-    
     if l.Length == 0 {
         return;
     }
     
-    // Copy all elements first
     var i := 0;
     while i < l.Length
         invariant 0 <= i <= l.Length
         invariant result.Length == l.Length
-        invariant forall k :: 0 <= k < i ==> result[k] == l[k]
-    {
-        result[i] := l[i];
-        i := i + 1;
-    }
-    
-    // Now result is a copy of l, so multiset(result[..]) == multiset(l[..])
-    
-    // Insertion sort
-    i := 1;
-    while i < result.Length
-        invariant 1 <= i <= result.Length
-        invariant result.Length == l.Length
-        invariant multiset(result[..]) == multiset(l[..])
+        invariant multiset(result[..i]) == multiset(l[..i])
         invariant forall x, y :: 0 <= x < y < i ==> result[x] <= result[y]
     {
-        var key := result[i];
-        var j := i - 1;
+        result[i] := l[i];
         
-        // Shift elements to make space for key
-        while j >= 0 && result[j] > key
-            invariant -1 <= j < i
-            invariant forall x :: j + 1 < x <= i ==> result[x] > key
-            invariant forall x :: i + 1 <= x < result.Length ==> result[x] == old(result[x])
-            invariant forall x, y :: 0 <= x < y <= j ==> result[x] <= result[y]
-            invariant multiset(result[..]) == multiset(l[..])
-            invariant result[i] == key
+        var j := i;
+        while j > 0 && result[j] < result[j-1]
+            invariant 0 <= j <= i
+            invariant result.Length == l.Length
+            invariant multiset(result[..i+1]) == multiset(l[..i+1])
+            invariant forall x, y :: 0 <= x < y < j ==> result[x] <= result[y]
+            invariant forall x, y :: j < x < y <= i ==> result[x] <= result[y]
+            invariant j < i ==> result[j] <= result[j+1]
         {
-            result[j + 1] := result[j];
+            var temp := result[j];
+            result[j] := result[j-1];
+            result[j-1] := temp;
+            
+            // Help Dafny see that the partial sortedness is maintained
+            assert forall x, y :: j-1 < x < y <= i ==> result[x] <= result[y];
+            
             j := j - 1;
         }
         
-        result[j + 1] := key;
         i := i + 1;
     }
 }

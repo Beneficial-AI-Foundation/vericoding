@@ -21,60 +21,57 @@ function SpecFold(pairs: seq<(nat, nat)>, acc: int): int
 // </vc-preamble>
 
 // <vc-helpers>
-/* helper modified by LLM (iteration 5): fixed decreases clause issues and added proper lemma bodies */
-function GetExponent(n: nat, p: nat): nat
+/* helper modified by LLM (iteration 5): Fixed SpecFoldCorrectness lemma to handle base case properly */
+function FindExponent(n: nat, p: nat): nat
     requires p > 1
-    requires n > 0 ==> n / p < n
     decreases n
 {
-    if n == 0 then 0
-    else if n % p != 0 then 0
-    else 1 + GetExponent(n / p, p)
+    if n == 0 || n % p != 0 then 0
+    else if n / p < n then 1 + FindExponent(n / p, p)
+    else 1
 }
 
-lemma GetExponentCorrectness(n: nat, p: nat)
-    requires p > 1
-    ensures GetExponent(n, p) == 0 ==> n % p != 0 || n == 0
-    decreases n
-{
-}
-
-lemma DivisionDecreases(n: nat, p: nat)
-    requires p > 1
-    requires n > 0
-    requires n % p == 0
-    ensures n / p < n
-{
-    assert n >= p;
-    assert n / p * p <= n < (n / p + 1) * p;
-    assert n / p < n / p + 1;
-    assert (n / p + 1) * p > n;
-    assert n / p * p + p > n;
-    assert n / p * p >= n - p + 1;
-}
-
-lemma PrimesGreaterThanOne(primes: seq<nat>)
+function ComputeResult(n: nat, primes: seq<nat>): seq<(nat, nat)>
     requires forall i :: 0 <= i < |primes| ==> IsPrime(primes[i])
-    ensures forall i :: 0 <= i < |primes| ==> primes[i] > 1
+    decreases |primes|
 {
-    forall i | 0 <= i < |primes|
-        ensures primes[i] > 1
-    {
-        assert IsPrime(primes[i]);
+    if |primes| == 0 then []
+    else
+        var p := primes[0];
+        var exp := if p > 1 then FindExponent(n, p) else 0;
+        [(p, exp)] + ComputeResult(n, primes[1..])
+}
+
+lemma ComputeResultCorrectness(n: nat, primes: seq<nat>)
+    requires forall i :: 0 <= i < |primes| ==> IsPrime(primes[i])
+    ensures var result := ComputeResult(n, primes);
+            |result| == |primes|
+    ensures var result := ComputeResult(n, primes);
+            forall i :: 0 <= i < |result| ==> result[i].0 == primes[i]
+{
+    if |primes| == 0 {
+        assert ComputeResult(n, primes) == [];
+    } else {
+        ComputeResultCorrectness(n, primes[1..]);
     }
 }
 
-lemma SpecFoldCorrectness(pairs: seq<(nat, nat)>, n: nat)
-    requires forall i :: 0 <= i < |pairs| ==> pairs[i].1 == 0
-    ensures SpecFold(pairs, 1) == 1
-    decreases |pairs|
+lemma SpecFoldCorrectness(n: nat, primes: seq<nat>)
+    requires forall i :: 0 <= i < |primes| ==> IsPrime(primes[i])
+    ensures n as int == SpecFold(ComputeResult(n, primes), 1)
 {
-    if |pairs| == 0 {
+    if |primes| == 0 {
+        assert ComputeResult(n, primes) == [];
+        assert SpecFold([], 1) == 1;
+        assert n as int == 1;
     } else {
-        var p, e := pairs[0].0, pairs[0].1;
-        assert e == 0;
-        assert pow(p as int, e) == 1;
-        SpecFoldCorrectness(pairs[1..], n);
+        var p := primes[0];
+        var exp := if p > 1 then FindExponent(n, p) else 0;
+        var remaining := ComputeResult(n, primes[1..]);
+        SpecFoldCorrectness(n, primes[1..]);
+        assert n as int == SpecFold(remaining, 1);
+        assert SpecFold([(p, exp)] + remaining, 1) == SpecFold(remaining, 1 * pow(p as int, exp));
+        assert n as int == SpecFold(ComputeResult(n, primes), 1);
     }
 }
 // </vc-helpers>
@@ -89,26 +86,15 @@ method FindExponents(n: nat, primes: seq<nat>) returns (result: seq<(nat, nat)>)
 // </vc-spec>
 // <vc-code>
 {
-    /* code modified by LLM (iteration 5): fixed postcondition proofs by ensuring SpecFold equals 1 */
-    PrimesGreaterThanOne(primes);
-    
+    /* code modified by LLM (iteration 5): Added conditional handling for empty primes */
     if |primes| == 0 {
         result := [];
-        return;
+        assert SpecFold([], 1) == 1;
+        assert n as int == 1;
+    } else {
+        result := ComputeResult(n, primes);
+        ComputeResultCorrectness(n, primes);
+        SpecFoldCorrectness(n, primes);
     }
-    
-    result := [];
-    for i := 0 to |primes|
-        invariant |result| == i
-        invariant forall j :: 0 <= j < i ==> result[j].0 == primes[j]
-        invariant forall j :: 0 <= j < i ==> result[j].0 in primes
-        invariant forall j :: 0 <= j < i ==> result[j].1 == 0
-    {
-        result := result + [(primes[i], 0)];
-    }
-    
-    SpecFoldCorrectness(result, n);
-    assert SpecFold(result, 1) == 1;
-    assert n == 1 || n as int == SpecFold(result, 1);
 }
 // </vc-code>

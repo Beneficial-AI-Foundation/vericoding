@@ -2,8 +2,22 @@
 // </vc-preamble>
 
 // <vc-helpers>
-function min(a: int, b: int): int {
-  if a < b then a else b
+/* helper modified by LLM (iteration 5): The helper predicate `IsFirstDuplicate` is designed to verify if a given value `val` is indeed the 'first duplicate' according to the problem's definition. The definition of 'first duplicate' is that for any other duplicate `(lst[k], lst[l])` where `l < j` (meaning it appears earlier in the sequence), the value `lst[k]` must not be `val`. The previous version of the helper was slightly off by not correctly capturing this condition regarding other duplicates existing earlier in the sequence. It's not enough to check that all other duplicates appear after `(i, j)`. It must ensure no other duplicates appear before `i`. */
+predicate IsFirstDuplicate(lst: seq<int>, val: int)
+    requires exists i, j :: 0 <= i < j < |lst| && lst[i] == lst[j] && lst[i] == val
+{
+    exists i, j :: (0 <= i < j < |lst| && lst[i] == lst[j] && lst[i] == val &&
+    
+    // forall k, l :: 0 <= k < l < |lst| && lst[k] == lst[l] && l <= i ==> k >= i
+    // The original ensures clause definition for FirstDuplicate: 
+    // (result != -1 ==> exists i, j :: (0 <= i < j < |lst| && lst[i] == lst[j] && lst[i] == result &&
+    // forall k, l :: 0 <= k < l < |lst| && lst[k] == lst[l] && l <= i ==> k >= i))
+    
+    // This part should match the 'forall' in the ensures clause.
+    // means that if there's any other duplicate pair (k, l) with l <= i, then k must also be >= i.
+    // This means that the 'i' for our 'val' is the smallest possible start index for any duplicate.
+    forall k, l :: 0 <= k < l < |lst| && lst[k] == lst[l] && l <= i ==> k >= i
+    )
 }
 // </vc-helpers>
 
@@ -18,25 +32,42 @@ method FirstDuplicate(lst: seq<int>) returns (result: int)
             forall k, l :: 0 <= k < l < |lst| && lst[k] == lst[l] && l <= i ==> k >= i))
 // </vc-spec>
 // <vc-code>
-/* code modified by LLM (iteration 5): Updated the invariant for result to correctly reflect its state throughout the loop. When a duplicate is found, the loop terminates immediately, so the invariant on result needs to capture that `result` is only updated right before returning.  The invariant that `forall k, l :: 0 <= k < l < i && lst[k] == lst[l] ==> false` is only true if no duplicate has been found yet.  The invariant `result == -1` is crucial for the case where no duplicate is found after the loop.*/
+/* code modified by LLM (iteration 5): The logic for finding the first duplicate array was refined based on the `ensures` clause which primarily defines the `first duplicate`. The definition of the `first duplicate` focuses on identifying a duplicate `val` such that its first occurrence in a pair `(i,j)` makes `i` the smallest possible start index for a duplicate. The original code was identifying the duplicate with the smallest `j`. To align with the updated `ensures` clause, the code now searches for the `duplicate_value` where its first index `i` is the minimum across all possible duplicates in the sequence. This ensures to find the correct duplicate matching the new `ensures` clause which checks `l <= i ==> k >= i`. */
 {
-    var seen: set<int> := {};
-    result := -1;
-    var i := 0;
-    while i < |lst|
-        invariant 0 <= i <= |lst|
-        invariant forall k, l :: 0 <= k < l < i && lst[k] == lst[l] ==> false // No duplicates found up to index i-1
-        invariant forall k :: 0 <= k < i ==> lst[k] in seen
-        invariant forall x :: x in seen ==> (exists k :: 0 <= k < i && lst[k] == x)
-        invariant result == -1
-    {
-        if lst[i] in seen {
-            result := lst[i];
-            return;
-        } else {
-            seen := seen + {lst[i]};
+    if |lst| <= 1 {
+        result := -1;
+        return;
+    }
+
+    var min_i := |lst|; // Stores the smallest index `i` of a first occurrence of a duplicate
+    var min_j_for_min_i := |lst|;
+    var first_duplicate_val := -1;
+
+    for i := 0 to |lst| - 2 {
+        for j := i + 1 to |lst| - 1 
+            //loop invariant exists k, l :: 0 <= k < l < |lst| && lst[k] == lst[l]
+            //loop invariant min_i holds the minimum i index encountered for a duplicate pair
+            //loop invariant first_duplicate_val is the value at min_i
+        {
+            if lst[i] == lst[j] {
+                if i < min_i {
+                    min_i := i;
+                    min_j_for_min_i := j;
+                    first_duplicate_val := lst[i];
+                } else if i == min_i && j < min_j_for_min_i {
+                    min_j_for_min_i := j;
+                    first_duplicate_val := lst[i];
+                }
+            }
         }
-        i := i + 1;
+    }
+
+    result := first_duplicate_val;
+
+    // Assert the condition from the ensures clause to help the verifier
+    if result != -1 {
+        assert exists i_idx, j_idx :: (0 <= i_idx < j_idx < |lst| && lst[i_idx] == lst[j_idx] && lst[i_idx] == first_duplicate_val &&
+               forall k, l :: 0 <= k < l < |lst| && lst[k] == lst[l] && l <= i_idx ==> k >= i_idx);
     }
 }
 // </vc-code>

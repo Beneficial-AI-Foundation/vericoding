@@ -11,39 +11,38 @@ function CountMatches(xs: seq<nat>, x: nat): nat
 // </vc-preamble>
 
 // <vc-helpers>
-lemma CountMatches_Pos_ExistsIndex(xs: seq<nat>, x: nat)
-  decreases |xs|
-  ensures CountMatches(xs, x) > 0 ==> exists i :: 0 <= i < |xs| && xs[i] == x
+/* helper modified by LLM (iteration 4): obtain an index from a positive CountMatches */
+lemma CountMatchesHasIndex(s: seq<nat>, x: nat)
+  requires CountMatches(s, x) > 0
+  ensures exists i :: 0 <= i < |s| && s[i] == x
+  decreases |s|
 {
-  if |xs| == 0 {
-    // vacuously true
-  } else if xs[0] == x {
-    if CountMatches(xs, x) > 0 {
-      assert exists i :: 0 <= i < |xs| && xs[i] == x;
-    }
-  } else {
-    CountMatches_Pos_ExistsIndex(xs[1..], x);
-    if CountMatches(xs, x) > 0 {
-      assert CountMatches(xs[1..], x) > 0;
-      var k :| 0 <= k < |xs[1..]| && xs[1..][k] == x;
-      var i := k + 1;
-      assert 0 <= i < |xs|;
-      assert xs[i] == x;
-      assert exists j :: 0 <= j < |xs| && xs[j] == x;
-    }
+  if |s| == 0 {
+    assert false;
   }
+  if s[0] == x {
+    assert 0 <= 0 < |s|;
+    assert s[0] == x;
+    return;
+  }
+  assert CountMatches(s[1..], x) > 0;
+  CountMatchesHasIndex(s[1..], x);
+  var j :| 0 <= j < |s|-1 && s[1..][j] == x;
+  assert 0 <= j+1 < |s|;
+  assert s[j+1] == x;
+  return;
 }
 
-lemma ExistsMajorityImpliesElementPresent(xs: seq<nat>)
-  requires exists x :: CountMatches(xs, x) > |xs| / 2
-  ensures exists i :: 0 <= i < |xs| && CountMatches(xs, xs[i]) > |xs| / 2
+/* helper modified by LLM (iteration 4): from existence of majority value to existence of index holding a majority */
+lemma ExistsMajorityIndex(s: seq<nat>)
+  requires exists x :: CountMatches(s, x) > |s|/2
+  ensures exists k :: 0 <= k < |s| && CountMatches(s, s[k]) > |s|/2
 {
-  var x :| CountMatches(xs, x) > |xs| / 2;
-  CountMatches_Pos_ExistsIndex(xs, x);
-  var j :| 0 <= j < |xs| && xs[j] == x;
-  assert CountMatches(xs, xs[j]) == CountMatches(xs, x);
-  assert CountMatches(xs, xs[j]) > |xs| / 2;
-  assert exists i :: 0 <= i < |xs| && CountMatches(xs, xs[i]) > |xs| / 2;
+  var x :| CountMatches(s, x) > |s|/2;
+  CountMatchesHasIndex(s, x);
+  var j :| 0 <= j < |s| && s[j] == x;
+  assert CountMatches(s, s[j]) == CountMatches(s, x);
+  return;
 }
 // </vc-helpers>
 
@@ -58,20 +57,10 @@ method MajorityElement(xs: array<nat>) returns (result: nat)
 // </vc-spec>
 // <vc-code>
 {
+  /* code modified by LLM (iteration 4): choose a witness index with majority and return its value */
   var n := xs.Length;
-  var i := 0;
-  while i < n
-    invariant 0 <= i <= n
-  {
-    if CountMatches(xs[..], xs[i]) > n / 2 {
-      result := xs[i];
-      return;
-    }
-    i := i + 1;
-  }
-  // Constructively pick the majority element (guaranteed by the precondition)
-  ExistsMajorityImpliesElementPresent(xs[..]);
-  var j :| 0 <= j < n && CountMatches(xs[..], xs[j]) > n / 2;
-  result := xs[j];
+  ExistsMajorityIndex(xs[..]);
+  var k :| 0 <= k < n && CountMatches(xs[..], xs[k]) > n/2;
+  result := xs[k];
 }
 // </vc-code>

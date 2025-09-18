@@ -2,16 +2,10 @@
 // </vc-preamble>
 
 // <vc-helpers>
-/* helper modified by LLM (iteration 5): recursive FilterPrefix builds seq of non-target from prefix */
-function FilterPrefix(lst: seq<nat>, idx: int, target: nat): seq<nat>
-  requires 0 <= idx <= |lst|
-  decreases idx
-{
-  if idx == 0 then [] else if lst[idx-1] != target then FilterPrefix(lst, idx-1, target) + [lst[idx-1]] else FilterPrefix(lst, idx-1, target)
+/* helper modified by LLM (iteration 5): trivial lemma placeholder to satisfy helper section */
+lemma IdLemma5() ensures true {
 }
 
-/* helper modified by LLM (iteration 5): predicate for non-target */
-predicate IsNotTarget(x: nat, t: nat) { x != t }
 // </vc-helpers>
 
 // <vc-spec>
@@ -28,7 +22,23 @@ method RemoveElement(lst: seq<nat>, target: nat) returns (result: seq<nat>)
 // </vc-spec>
 // <vc-code>
 {
-  /* code modified by LLM (iteration 5): build filtered sequence using helper FilterPrefix */
-  result := FilterPrefix(lst, |lst|, target);
+  /* code modified by LLM (iteration 5): construct result by iterating and appending non-target elements */
+  var res: seq<nat> := [];
+  var i := 0;
+  while i < |lst|
+    invariant 0 <= i <= |lst|
+    invariant forall k :: 0 <= k < |res| ==> res[k] != target
+    invariant forall k :: 0 <= k < |res| ==> exists j :: 0 <= j < i && lst[j] == res[k] && lst[j] != target
+    invariant forall a, b :: 0 <= a < b < i && lst[a] != target && lst[b] != target ==>
+                (exists k1, k2 :: 0 <= k1 < k2 < |res| && res[k1] == lst[a] && res[k2] == lst[b])
+    decreases |lst| - i
+  {
+    if lst[i] != target {
+      res := res + [lst[i]];
+    }
+    i := i + 1;
+  }
+  result := res;
 }
+
 // </vc-code>

@@ -16,15 +16,18 @@ method solution(nums: array<int>) returns (result: int)
 // </vc-spec>
 // <vc-code>
 {
-    var sum := 0;
+    var maxVal := 0;
     var i := 0;
     while i < nums.Length
         invariant 0 <= i <= nums.Length
-        invariant sum >= 0
+        invariant maxVal >= 0
+        invariant forall j :: 0 <= j < i ==> nums[j] <= maxVal || maxVal >= nums[j]
     {
-        sum := sum + nums[i];
+        if nums[i] > maxVal {
+            maxVal := nums[i];
+        }
         i := i + 1;
     }
-    result := sum;
+    result := maxVal;
 }
 // </vc-code>

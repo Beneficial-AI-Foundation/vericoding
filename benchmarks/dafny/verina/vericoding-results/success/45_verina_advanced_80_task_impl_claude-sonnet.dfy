@@ -23,28 +23,26 @@ method TwoSum(nums: array<int>, target: int) returns (result: array<int>)
 // </vc-spec>
 // <vc-code>
 {
-  result := new int[2];
-  var i := 0;
-  var j := 0;
-  
-  // Find the unique pair that sums to target
-  while i < nums.Length
-    invariant 0 <= i <= nums.Length
-    invariant forall ii: int, jj: int :: 0 <= jj < ii < i ==> nums[ii] + nums[jj] != target
-  {
-    j := 0;
-    while j < i
-      invariant 0 <= j <= i < nums.Length
-      invariant forall jj: int :: 0 <= jj < j ==> nums[i] + nums[jj] != target
+    result := new int[2];
+    
+    var i := 1;
+    while i < nums.Length
+        invariant 1 <= i <= nums.Length
+        invariant forall k1: int, k2: int :: 0 <= k2 < k1 < i ==> nums[k1] + nums[k2] != target
     {
-      if nums[i] + nums[j] == target {
-        result[0] := j;
-        result[1] := i;
-        return;
-      }
-      j := j + 1;
+        var j := 0;
+        while j < i
+            invariant 0 <= j <= i
+            invariant forall k: int :: 0 <= k < j ==> nums[i] + nums[k] != target
+        {
+            if nums[i] + nums[j] == target {
+                result[0] := j;
+                result[1] := i;
+                return;
+            }
+            j := j + 1;
+        }
+        i := i + 1;
     }
-    i := i + 1;
-  }
 }
 // </vc-code>

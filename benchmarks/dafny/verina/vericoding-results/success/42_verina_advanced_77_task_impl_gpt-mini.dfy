@@ -2,8 +2,9 @@
 // </vc-preamble>
 
 // <vc-helpers>
-function max(a: nat, b: nat): nat { if a > b then a else b }
-function min(a: nat, b: nat): nat { if a < b then a else b }
+function Max(a: nat, b: nat): nat { if a >= b then a else b }
+
+function Min(a: nat, b: nat): nat { if a <= b then a else b }
 // </vc-helpers>
 
 // <vc-spec>
@@ -14,38 +15,33 @@ method TrapRainWater(height: array<nat>) returns (result: nat)
 // <vc-code>
 {
   var n := height.Length;
-  result := 0;
-  if n < 2 {
-    return;
-  }
-  var l := 0;
-  var r := n - 1;
+  var left := 0;
+  var right := if n == 0 then -1 else n - 1;
   var leftMax: nat := 0;
   var rightMax: nat := 0;
-  while l < r
-    invariant 0 <= l < n
-    invariant 0 <= r < n
+  result := 0;
+  while left <= right
+    invariant 0 <= left <= n
+    invariant -1 <= right < n
+    invariant 0 <= leftMax
+    invariant 0 <= rightMax
     invariant result >= 0
-    invariant leftMax >= 0
-    invariant rightMax >= 0
-    decreases r - l
   {
-    if height[l] <= height[r] {
-      if height[l] >= leftMax {
-        leftMax := height[l];
+    if height[left] <= height[right] {
+      if height[left] >= leftMax {
+        leftMax := height[left];
       } else {
-        result := result + (leftMax - height[l]);
+        result := result + leftMax - height[left];
       }
-      l := l + 1;
+      left := left + 1;
     } else {
-      if height[r] >= rightMax {
-        rightMax := height[r];
+      if height[right] >= rightMax {
+        rightMax := height[right];
       } else {
-        result := result + (rightMax - height[r]);
+        result := result + rightMax - height[right];
       }
-      r := r - 1;
+      right := right - 1;
     }
   }
 }
-
 // </vc-code>

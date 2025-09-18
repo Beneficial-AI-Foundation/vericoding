@@ -22,7 +22,9 @@ function SumPowers(n: nat, k: nat): nat
 // </vc-preamble>
 
 // <vc-helpers>
-
+predicate IsArmstrong_helper(n: nat) {
+    n == SumPowers(n, CountDigits(n))
+}
 // </vc-helpers>
 
 // <vc-spec>
@@ -32,8 +34,6 @@ method IsArmstrong(n: nat) returns (result: bool)
 // </vc-spec>
 // <vc-code>
 {
-    var numDigits := CountDigits(n);
-    var sum := SumPowers(n, numDigits);
-    result := (n == sum);
+    result := IsArmstrong_helper(n);
 }
 // </vc-code>

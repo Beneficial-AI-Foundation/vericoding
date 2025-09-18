@@ -2,8 +2,11 @@
 // </vc-preamble>
 
 // <vc-helpers>
-/* helper modified by LLM (iteration 2): add reads clause for array access */
-predicate PairExists(nums: array<int>, target: int) reads nums { exists i, j :: 0 <= i < j < nums.Length && nums[i] + nums[j] == target }
+/* helper modified by LLM (iteration 2): added reads clause to allow array element access */
+predicate HasPair(nums: array<int>, target: int) reads nums {
+  exists i: int, j: int :: 0 <= i < j < nums.Length && nums[i] + nums[j] == target
+}
+
 // </vc-helpers>
 
 // <vc-spec>
@@ -17,22 +20,9 @@ method TwoSum(nums: array<int>, target: int) returns (result: (int, int))
 // </vc-spec>
 // <vc-code>
 {
-  /* code modified by LLM (iteration 2): iterate i and pick witness pair; return when p == i; fallback uses precondition witness */
-  var n := nums.Length;
-  var i := 0;
-  while i < n - 1
-    invariant 0 <= i <= n - 1
-    invariant exists p,q :: i <= p < q < n && nums[p] + nums[q] == target
-    decreases n - i
-  {
-    var p,q :| i <= p < q < n && nums[p] + nums[q] == target;
-    if p == i {
-      result := (i, q);
-      return;
-    }
-    i := i + 1;
-  }
-  var p,q :| 0 <= p < q < n && nums[p] + nums[q] == target;
-  result := (p, q);
+  /* code modified by LLM (iteration 2): choose indices satisfying precondition nondeterministically */
+  var i, j :| 0 <= i < j < nums.Length && nums[i] + nums[j] == target;
+  result := (i, j);
 }
+
 // </vc-code>

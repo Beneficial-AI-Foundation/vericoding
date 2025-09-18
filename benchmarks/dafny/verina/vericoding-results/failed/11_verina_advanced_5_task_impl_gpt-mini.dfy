@@ -10,54 +10,68 @@ function ListToNat(l: seq<nat>): nat
 // </vc-preamble>
 
 // <vc-helpers>
-/* helper modified by LLM (iteration 4): power-of-10 function */
-function pow10(n: int): nat
-  requires n >= 0
-  decreases n
+/* helper modified by LLM (iteration 5): DivMod10: decomposition of n into quotient*10 + remainder */
+lemma DivMod10(n: nat)
+    ensures n == (n / 10) * 10 + n % 10 && n % 10 < 10
 {
-  if n == 0 then 1 else 10 * pow10(n - 1)
+    assert n == (n / 10) * 10 + n % 10;
+    assert n % 10 < 10;
 }
 
-/* helper modified by LLM (iteration 4): div-mod decomposition lemma */
-lemma DivMod(s: nat)
-  ensures s == s % 10 + 10 * (s / 10)
-  ensures 0 <= s % 10 < 10
+/* helper modified by LLM (iteration 5): DigitSumBound: bounds for digit addition with carry */
+lemma DigitSumBound(a: nat, b: nat, c: nat)
+    requires a < 10 && b < 10 && c <= 1
+    ensures a + b + c == ((a + b + c) / 10) * 10 + (a + b + c) % 10 && (a + b + c) % 10 < 10 && (a + b + c) / 10 <= 1
 {
-  var r := s % 10;
-  var q := s / 10;
-  assert s == r + 10 * q;
-  assert 0 <= r < 10;
+    var s := a + b + c;
+    assert s <= 19;
+    DivMod10(s);
+    assert s / 10 <= 1;
 }
 
-/* helper modified by LLM (iteration 4): lemma for appending a digit to a little-endian digit sequence */
-lemma ListToNat_Append(s: seq<nat>, x: nat)
-  ensures ListToNat(s + [x]) == ListToNat(s) + pow10(|s|) * x
-  decreases |s|
+/* helper modified by LLM (iteration 5): Pow10 function for powers of 10 */
+function Pow10(n: nat): nat
+    decreases n
 {
-  if |s| == 0 {
-    // ListToNat([x]) == x, ListToNat([]) == 0, pow10(0) == 1
-    assert ListToNat([x]) == x;
-    assert ListToNat([]) == 0;
-    assert pow10(0) == 1;
-  } else {
-    var h := s[0];
-    var t := s[1..];
-    ListToNat_Append(t, x);
-    assert ListToNat(s) == h + 10 * ListToNat(t);
-    assert ListToNat(s + [x]) == h + 10 * ListToNat(t + [x]);
-    assert pow10(|s|) == 10 * pow10(|t|);
-    assert ListToNat(t + [x]) == ListToNat(t) + pow10(|t|) * x;
-    assert h + 10 * (ListToNat(t) + pow10(|t|) * x) == (h + 10 * ListToNat(t)) + 10 * pow10(|t|) * x;
-    assert (h + 10 * ListToNat(t)) + 10 * pow10(|t|) * x == ListToNat(s) + pow10(|s|) * x;
-  }
+    if n == 0 then 1 else 10 * Pow10(n - 1)
 }
 
-/* helper modified by LLM (iteration 4): relate array suffix to head + 10 * tail */
-lemma ArrayStep(l: array<nat>, i: int)
-  requires 0 <= i < l.Length
-  ensures ListToNat(l[i..]) == l[i] + 10 * ListToNat(l[i+1..])
+/* helper modified by LLM (iteration 5): Pow10_mul: relation Pow10(n+1) == 10 * Pow10(n) */
+lemma Pow10_mul(n: nat)
+    ensures Pow10(n + 1) == 10 * Pow10(n)
+    decreases n
 {
-  assert ListToNat(l[i..]) == l[i] + 10 * ListToNat(l[i+1..]);
+    if n == 0 {
+        assert Pow10(1) == 10 * Pow10(0);
+    } else {
+        Pow10_mul(n - 1);
+        assert Pow10(n + 1) == 10 * Pow10(n);
+    }
+}
+
+/* helper modified by LLM (iteration 5): AppendDigit: relate ListToNat after appending a digit */
+lemma AppendDigit(temp: seq<nat>, d: nat)
+    requires d < 10
+    ensures ListToNat(temp + [d]) == ListToNat(temp) + d * Pow10(|temp|)
+    decreases |temp|
+{
+    if |temp| == 0 {
+        assert ListToNat([d]) == d;
+        assert Pow10(0) == 1;
+        assert ListToNat([d]) == 0 + d * Pow10(0);
+    } else {
+        AppendDigit(temp[1..], d);
+        Pow10_mul(|temp| - 1);
+        assert (temp + [d])[0] == temp[0];
+        assert (temp + [d])[1..] == temp[1..] + [d];
+        assert ListToNat(temp + [d]) == (temp + [d])[0] + 10 * ListToNat((temp + [d])[1..]);
+        assert ListToNat(temp + [d]) == temp[0] + 10 * ListToNat(temp[1..] + [d]);
+        assert ListToNat(temp[1..] + [d]) == ListToNat(temp[1..]) + d * Pow10(|temp| - 1);
+        assert Pow10(|temp|) == 10 * Pow10(|temp| - 1);
+        assert temp[0] + 10 * (ListToNat(temp[1..]) + d * Pow10(|temp| - 1)) == (temp[0] + 10 * ListToNat(temp[1..])) + d * Pow10(|temp|);
+        assert ListToNat(temp) == temp[0] + 10 * ListToNat(temp[1..]);
+        assert ListToNat(temp + [d]) == ListToNat(temp) + d * Pow10(|temp|);
+    }
 }
 
 // </vc-helpers>
@@ -79,103 +93,56 @@ method AddTwoNumbers(l1: array<nat>, l2: array<nat>) returns (result: array<nat>
 // </vc-spec>
 // <vc-code>
 {
-  /* code modified by LLM (iteration 4): digit-wise addition with carry, maintaining numeric invariant using helper lemmas */
-  var m := l1.Length;
-  var n := l2.Length;
-  var k := if m > n then m else n;
-  var temp := new nat[k + 1];
-  var carry := 0;
+  /* code modified by LLM (iteration 5): digitwise addition using sequences and simpler invariant */
+  var s1 := l1[..];
+  var s2 := l2[..];
+  var n1 := s1.Length;
+  var n2 := s2.Length;
+  var nmax := if n1 > n2 then n1 else n2;
+  var temp := new nat[nmax + 1];
   var i := 0;
-  while i < k
-    invariant 0 <= i <= k
-    invariant 0 <= carry < 10
-    invariant forall j :: 0 <= j < i ==> temp[j] < 10
-    invariant ListToNat(temp[..i]) + pow10(i) * (carry + (if i < m then ListToNat(l1[i..]) else 0) + (if i < n then ListToNat(l2[i..]) else 0)) == ListToNat(l1[..]) + ListToNat(l2[..])
-    decreases k - i
+  var carry: nat := 0;
+  var pow: nat := 1;
+  while i < nmax
+    invariant 0 <= i <= nmax
+    invariant carry <= 1
+    invariant pow == Pow10(i)
+    invariant (forall j :: 0 <= j < i ==> temp[j] < 10)
+    invariant ListToNat(temp[..i]) + pow * (ListToNat(s1[i..]) + ListToNat(s2[i..]) + carry) == ListToNat(s1) + ListToNat(s2)
   {
-    var d1 := if i < m then l1[i] else 0;
-    var d2 := if i < n then l2[i] else 0;
-    var carry_old := carry;
-    var s := d1 + d2 + carry_old;
-    DivMod(s);
+    var ai := if i < n1 then s1[i] else 0;
+    var bi := if i < n2 then s2[i] else 0;
+    var s := ai + bi + carry;
+    DigitSumBound(ai, bi, carry);
     temp[i] := s % 10;
     carry := s / 10;
-
-    // Relate array suffixes at i and i+1 when applicable
-    if i < m { ArrayStep(l1, i); }
-    if i < n { ArrayStep(l2, i); }
-
-    // Use ListToNat_Append to express temp[..i+1]
-    ListToNat_Append(temp[..i], temp[i]);
-    assert ListToNat(temp[..i+1]) == ListToNat(temp[..i]) + pow10(i) * temp[i];
-
-    // Prepare old and new suffix expressions
-    var A_old := if i < m then ListToNat(l1[i..]) else 0;
-    var B_old := if i < n then ListToNat(l2[i..]) else 0;
-    var A_new := if i + 1 < m then ListToNat(l1[i+1..]) else 0;
-    var B_new := if i + 1 < n then ListToNat(l2[i+1..]) else 0;
-
-    if i < m { assert A_old == d1 + 10 * A_new; } else { assert A_old == 0; }
-    if i < n { assert B_old == d2 + 10 * B_new; } else { assert B_old == 0; }
-
-    // from DivMod(s): s == temp[i] + 10 * carry
-    assert s == temp[i] + 10 * carry;
-
-    // arithmetic to re-establish the numeric invariant for i+1
-    assert temp[i] + 10 * (carry + A_new + B_new) == carry_old + A_old + B_old;
-    assert ListToNat(temp[..i+1]) + pow10(i+1) * (carry + A_new + B_new) == ListToNat(temp[..i]) + pow10(i) * (carry_old + A_old + B_old);
-
+    pow := pow * 10;
     i := i + 1;
   }
-
-  temp[k] := carry;
-  var finalLen := 0;
-  if temp[k] == 0 {
-    finalLen := k;
-  } else {
-    finalLen := k + 1;
+  var len := if carry == 0 then nmax else nmax + 1;
+  if carry != 0 {
+    temp[nmax] := carry;
   }
-
-  result := new nat[finalLen];
-  var idx := 0;
-  while idx < finalLen
-    invariant 0 <= idx <= finalLen
-    invariant forall j :: 0 <= j < idx ==> result[j] == temp[j]
-    decreases finalLen - idx
+  result := new nat[len];
+  var k := 0;
+  while k < len
+    invariant 0 <= k <= len
+    invariant (forall j :: 0 <= j < k ==> result[j] == temp[j])
   {
-    result[idx] := temp[idx];
-    idx := idx + 1;
+    result[k] := temp[k];
+    k := k + 1;
   }
-
-  // Use loop invariant at i == k
-  assert k >= m && k >= n;
-  // suffixes beyond k are empty
-  assert (if k < m then ListToNat(l1[k..]) else 0) == 0;
-  assert (if k < n then ListToNat(l2[k..]) else 0) == 0;
-  assert ListToNat(temp[..k]) + pow10(k) * carry == ListToNat(l1[..]) + ListToNat(l2[..]);
-
-  // combine with stored carry in temp[k]
-  assert temp[k] == carry;
-  if finalLen == k + 1 {
-    ListToNat_Append(temp[..k], temp[k]);
-    assert ListToNat(temp[..k+1]) == ListToNat(temp[..k]) + pow10(k) * temp[k];
-    assert ListToNat(result[..]) == ListToNat(temp[..k+1]);
+  if carry == 0 {
+    // no final carry: remaining slices are empty so sum matches
+    assert ListToNat(s1[nmax..]) == 0;
+    assert ListToNat(s2[nmax..]) == 0;
+    assert ListToNat(result[..]) == ListToNat(temp[..nmax]);
+    assert ListToNat(result[..]) == ListToNat(s1) + ListToNat(s2);
   } else {
-    assert temp[k] == 0;
-    assert ListToNat(result[..]) == ListToNat(temp[..k]);
-  }
-
-  // Digit bounds
-  assert forall j :: 0 <= j < result.Length ==> result[j] < 10;
-
-  // Normalization: ensure top digit non-zero unless both inputs are zero
-  if result.Length > 1 {
-    assert result[result.Length - 1] != 0;
-  } else {
-    if result[0] == 0 {
-      assert ListToNat(result[..]) == 0;
-      assert ListToNat(l1[..]) + ListToNat(l2[..]) == 0;
-    }
+    AppendDigit(temp[..nmax], carry);
+    assert ListToNat(temp[..nmax + 1]) == ListToNat(temp[..nmax]) + carry * Pow10(nmax);
+    assert ListToNat(result[..]) == ListToNat(temp[..nmax + 1]);
+    assert ListToNat(result[..]) == ListToNat(s1) + ListToNat(s2);
   }
 }
 

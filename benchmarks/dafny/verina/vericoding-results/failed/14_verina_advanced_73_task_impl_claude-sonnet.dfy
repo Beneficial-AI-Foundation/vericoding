@@ -2,40 +2,48 @@
 // </vc-preamble>
 
 // <vc-helpers>
-/* helper modified by LLM (iteration 5): fixed postconditions and added proper implementation */
-function SmallestMissingImpl(l: seq<nat>): nat
-{
-  SmallestMissingRec(l, 0)
-}
-
-function SmallestMissingRec(l: seq<nat>, start: nat): nat
-  decreases |l|
-{
-  if start >= |l| then start
-  else if start !in l then start
-  else SmallestMissingRec(l, start + 1)
-}
-
-lemma SmallestMissingRecCorrect(l: seq<nat>, start: nat)
+/* helper modified by LLM (iteration 5): removed duplicate SmallestMissing function definition */
+function SmallestMissingHelper(l: seq<nat>, index: nat, expected: nat): nat
+  requires index <= |l|
+  requires expected <= index
+  requires forall i :: 0 <= i < index ==> i < |l| && l[i] == i
   requires forall i, j :: 0 <= i < j < |l| ==> l[i] < l[j]
-  ensures SmallestMissingRec(l, start) !in l || SmallestMissingRec(l, start) < start
-  ensures forall candidate: nat :: start <= candidate < SmallestMissingRec(l, start) ==> candidate in l
-  decreases |l|
+  decreases |l| - index
 {
-  var result := SmallestMissingRec(l, start);
-  if start >= |l| {
-    // result == start >= |l|, so result not in l since all elements < |l|
-    assert result >= |l|;
-    assert forall x :: x in l ==> x < |l|;
-  } else if start !in l {
-    // result == start and start !in l
-  } else {
-    SmallestMissingRecCorrect(l, start + 1);
-    assert result == SmallestMissingRec(l, start + 1);
-    assert result !in l || result < start + 1;
-    if result >= start + 1 {
-      assert result !in l;
+  if index == |l| then expected
+  else if l[index] == expected then SmallestMissingHelper(l, index + 1, expected + 1)
+  else expected
+}
+
+/* helper modified by LLM (iteration 5): strengthened preconditions for correct indexing */
+lemma SmallestMissingHelperCorrect(l: seq<nat>, index: nat, expected: nat)
+  requires index <= |l|
+  requires expected <= index
+  requires forall i :: 0 <= i < index ==> i < |l| && l[i] == i
+  requires forall i, j :: 0 <= i < j < |l| ==> l[i] < l[j]
+  ensures SmallestMissingHelper(l, index, expected) !in l
+  ensures forall candidate: nat :: candidate < SmallestMissingHelper(l, index, expected) ==> candidate in l
+  decreases |l| - index
+{
+  var result := SmallestMissingHelper(l, index, expected);
+  if index == |l| {
+    // result == expected
+    // Show expected !in l
+    if expected in l {
+      var pos :| 0 <= pos < |l| && l[pos] == expected;
+      assert pos < index; // since index == |l|
+      assert l[pos] == pos; // from precondition
+      assert l[pos] == expected;
+      assert pos == expected;
+      assert expected < index;
+      assert false;
     }
+  } else if l[index] == expected {
+    SmallestMissingHelperCorrect(l, index + 1, expected + 1);
+  } else {
+    // result == expected and l[index] != expected
+    // Since l is sorted and l[index] != expected, and we know 0,1,...,expected-1 are in l
+    // expected cannot be in l
   }
 }
 // </vc-helpers>
@@ -50,22 +58,13 @@ lemma SmallestMissingSpecSatisfied(l: seq<nat>)
 // </vc-spec>
 // <vc-code>
 {
-  /* code modified by LLM (iteration 5): proper implementation using corrected helper */
-  SmallestMissingRecCorrect(l, 0);
-  
-  var result := SmallestMissingImpl(l);
-  
-  // Prove result !in l
-  assert result !in l || result < 0;
-  assert result >= 0; // natural numbers are >= 0
-  assert result !in l;
-  
-  // Prove all candidates < result are in l
-  forall candidate: nat | candidate < result
-    ensures candidate in l
-  {
-    assert 0 <= candidate < result;
-    assert candidate in l; // from helper postcondition
+  /* code modified by LLM (iteration 5): implement SmallestMissing function body */
+  if |l| == 0 {
+    return 0;
+  } else if l[0] != 0 {
+    return 0;
+  } else {
+    return SmallestMissingHelper(l, 0, 0);
   }
 }
 // </vc-code>

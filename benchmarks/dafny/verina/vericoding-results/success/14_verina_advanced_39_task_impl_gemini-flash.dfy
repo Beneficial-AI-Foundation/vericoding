@@ -2,7 +2,9 @@
 // </vc-preamble>
 
 // <vc-helpers>
-
+function Max(a: nat, b: nat): nat {
+    if a > b then a else b
+}
 // </vc-helpers>
 
 // <vc-spec>
@@ -16,13 +18,11 @@ method MaxOfList(lst: array<nat>) returns (result: nat)
     result := lst[0];
     var i := 1;
     while i < lst.Length
-        invariant 1 <= i <= lst.Length
+        invariant 0 < i <= lst.Length
         invariant exists k :: 0 <= k < i && lst[k] == result
         invariant forall k :: 0 <= k < i ==> lst[k] <= result
     {
-        if lst[i] > result {
-            result := lst[i];
-        }
+        result := Max(result, lst[i]);
         i := i + 1;
     }
 }

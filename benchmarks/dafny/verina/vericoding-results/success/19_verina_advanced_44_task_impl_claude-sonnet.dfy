@@ -2,19 +2,25 @@
 // </vc-preamble>
 
 // <vc-helpers>
-/* helper modified by LLM (iteration 2): added decreases clause to fix termination */ 
-function SubarraySum(arr: array<int>, start: int, end: int): int
-  requires 0 <= start <= end <= arr.Length
-  reads arr
-  decreases end - start
+/* helper modified by LLM (iteration 2): fixed termination and division by zero errors */
+function MaxSum(arr: array<int>, start: int, end: int): int
+    requires 0 <= start <= end <= arr.Length
+    reads arr
+    decreases end - start
 {
-  if start == end then 0
-  else arr[start] + SubarraySum(arr, start + 1, end)
+    if start == end then 0
+    else arr[start] + MaxSum(arr, start + 1, end)
+}
+
+function IsValidSubarray(start: int, end: int, k: int): bool
+    requires k > 0
+{
+    (end - start) % k == 0
 }
 
 function MaxOfTwo(a: int, b: int): int
 {
-  if a >= b then a else b
+    if a >= b then a else b
 }
 // </vc-helpers>
 
@@ -24,30 +30,32 @@ method MaxSubarraySumDivisibleByK(arr: array<int>, k: int) returns (result: int)
     ensures true // TODO: Add postcondition based on subarrays with length divisible by k
 // </vc-spec>
 // <vc-code>
-/* code modified by LLM (iteration 2): added loop invariants for verification */
 {
-  if arr.Length == 0 {
+    /* code modified by LLM (iteration 2): simplified implementation without helper function calls */
     result := 0;
-    return;
-  }
-  
-  var maxSum := 0;
-  var i := 0;
-  
-  while i < arr.Length
-    invariant 0 <= i <= arr.Length
-  {
-    var j := i + k;
-    while j <= arr.Length
-      invariant i + k <= j <= arr.Length + k
+    var maxSum := 0;
+    
+    var i := 0;
+    while i < arr.Length
     {
-      var currentSum := SubarraySum(arr, i, j);
-      maxSum := MaxOfTwo(maxSum, currentSum);
-      j := j + k;
+        var j := i + k;
+        while j <= arr.Length
+        {
+            var currentSum := 0;
+            var idx := i;
+            while idx < j
+            {
+                currentSum := currentSum + arr[idx];
+                idx := idx + 1;
+            }
+            if currentSum >= maxSum {
+                maxSum := currentSum;
+            }
+            j := j + k;
+        }
+        i := i + 1;
     }
-    i := i + 1;
-  }
-  
-  result := maxSum;
+    
+    result := maxSum;
 }
 // </vc-code>

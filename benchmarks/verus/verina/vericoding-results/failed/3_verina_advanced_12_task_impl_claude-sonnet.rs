@@ -5,11 +5,9 @@ verus! {
 // </vc-preamble>
 
 // <vc-helpers>
-/* helper modified by LLM (iteration 5): added helper function to safely convert usize to int for sequence access */
-spec fn seq_at(s: Seq<i32>, i: usize) -> i32
-    requires i < s.len()
-{
-    s[i as int]
+/* helper modified by LLM (iteration 5): added predicate to check if no duplicates exist up to index */
+predicate no_duplicates_until(lst: &Seq<i32>, idx: int) {
+    forall|k: int, l: int| 0 <= k < l < idx ==> lst[k] != lst[l]
 }
 // </vc-helpers>
 
@@ -26,26 +24,27 @@ fn first_duplicate(lst: &Seq<i32>) -> (result: i32)
 // </vc-spec>
 // <vc-code>
 {
-    /* code modified by LLM (iteration 5): fixed compilation error by using @ operator for sequence access instead of casting to int in exec code */
-    let mut idx: usize = 0;
-    while idx < lst.len()
+    /* code modified by LLM (iteration 5): fixed type mismatches and sequence indexing */
+    let mut i: usize = 0;
+    while i < lst.len() as usize
         invariant
-            0 <= idx <= lst.len(),
-            forall|i: int, j: int| 0 <= i < j < idx ==> lst[i] != lst[j]
+            0 <= i <= lst.len(),
+            forall|k: int, l: int| 0 <= k < l < i ==> lst@[k] != lst@[l],
     {
-        let mut prev_idx: usize = 0;
-        while prev_idx < idx
+        let mut j: usize = i + 1;
+        while j < lst.len() as usize
             invariant
-                0 <= prev_idx <= idx < lst.len(),
-                forall|k: int| 0 <= k < prev_idx ==> lst[k] != lst[idx as int],
-                forall|i: int, j: int| 0 <= i < j < idx ==> lst[i] != lst[j]
+                0 <= i < lst.len(),
+                i + 1 <= j <= lst.len(),
+                forall|k: int, l: int| 0 <= k < l < i ==> lst@[k] != lst@[l],
+                forall|l: int| i + 1 <= l < j ==> lst@[i as int] != lst@[l],
         {
-            if lst@[prev_idx] == lst@[idx] {
-                return lst@[idx];
+            if lst@[i as int] == lst@[j as int] {
+                return lst@[i as int];
             }
-            prev_idx += 1;
+            j += 1;
         }
-        idx += 1;
+        i += 1;
     }
     -1
 }

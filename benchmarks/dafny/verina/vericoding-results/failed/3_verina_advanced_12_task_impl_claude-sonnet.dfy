@@ -2,49 +2,7 @@
 // </vc-preamble>
 
 // <vc-helpers>
-predicate HasDuplicateAt(lst: seq<int>, i: int, j: int)
-  requires 0 <= i < j < |lst|
-{
-  lst[i] == lst[j]
-}
 
-predicate IsFirstDuplicate(lst: seq<int>, value: int, firstIdx: int, secondIdx: int)
-  requires 0 <= firstIdx < secondIdx < |lst|
-{
-  lst[firstIdx] == value && lst[secondIdx] == value &&
-  forall k, l :: 0 <= k < l < |lst| && lst[k] == lst[l] && l <= firstIdx ==> k >= firstIdx
-}
-
-/* helper modified by LLM (iteration 5): fixed lemma to properly handle all cases and match loop invariant structure */
-lemma PreserveDuplicateInvariant(lst: seq<int>, i: int)
-  requires 0 <= i < |lst|
-  requires forall k, l :: 0 <= k < l < |lst| && l < i ==> lst[k] != lst[l]
-  requires forall k :: i < k < |lst| ==> lst[i] != lst[k]
-  ensures forall k, l :: 0 <= k < l < |lst| && l <= i ==> lst[k] != lst[l]
-{
-  forall k, l | 0 <= k < l < |lst| && l <= i
-    ensures lst[k] != lst[l]
-  {
-    if l < i {
-      // Already ensured by first precondition
-    } else {
-      // l == i, so we need lst[k] != lst[i] where k < i
-      // This follows from the second precondition
-      assert lst[k] != lst[i];
-    }
-  }
-}
-
-/* helper modified by LLM (iteration 5): lemma to establish first duplicate property */
-lemma EstablishFirstDuplicate(lst: seq<int>, i: int, j: int)
-  requires 0 <= i < j < |lst|
-  requires lst[i] == lst[j]
-  requires forall k, l :: 0 <= k < l < |lst| && l < i ==> lst[k] != lst[l]
-  ensures IsFirstDuplicate(lst, lst[i], i, j)
-{
-  // The key insight: since no duplicates exist before position i,
-  // any duplicate involving lst[i] must have i as the first occurrence
-}
 // </vc-helpers>
 
 // <vc-spec>
@@ -59,37 +17,52 @@ method FirstDuplicate(lst: seq<int>) returns (result: int)
 // </vc-spec>
 // <vc-code>
 {
-  /* code modified by LLM (iteration 5): fixed assertion logic and postcondition establishment */
-  result := -1;
-  var i := 0;
-  
-  while i < |lst|
-    invariant 0 <= i <= |lst|
-    invariant result == -1 ==> forall k, l :: 0 <= k < l < |lst| && l < i ==> lst[k] != lst[l]
-    invariant result != -1 ==> exists k, l :: 0 <= k < l < |lst| && lst[k] == lst[l] && lst[k] == result && IsFirstDuplicate(lst, result, k, l)
-  {
-    var j := i + 1;
-    
-    while j < |lst|
-      invariant i < j <= |lst|
-      invariant result == -1 ==> forall k :: i < k < j ==> lst[i] != lst[k]
-      invariant result == -1 ==> forall k, l :: 0 <= k < l < |lst| && l < i ==> lst[k] != lst[l]
-      invariant result != -1 ==> exists k, l :: 0 <= k < l < |lst| && lst[k] == lst[l] && lst[k] == result && IsFirstDuplicate(lst, result, k, l)
+    /* code modified by LLM (iteration 5): fixed syntax error by removing extra semicolon */
+    result := -1;
+    var i := 0;
+    while i < |lst|
+        invariant 0 <= i <= |lst|
+        invariant result == -1 ==> forall k, l :: 0 <= k < l < i ==> lst[k] != lst[l]
+        invariant result != -1 ==> exists k, l :: 0 <= k < l < i && lst[k] == lst[l] && lst[k] == result && forall m, n :: 0 <= m < n < i && lst[m] == lst[n] && n <= k ==> m >= k
     {
-      if lst[i] == lst[j] {
-        result := lst[i];
-        EstablishFirstDuplicate(lst, i, j);
-        assert IsFirstDuplicate(lst, result, i, j);
-        return;
-      }
-      j := j + 1;
+        var j := 0;
+        while j < i
+            invariant 0 <= j <= i
+            invariant result == -1 ==> forall k :: 0 <= k < j ==> lst[k] != lst[i]
+            invariant result != -1 ==> exists k, l :: 0 <= k < l < i && lst[k] == lst[l] && lst[k] == result && forall m, n :: 0 <= m < n < i && lst[m] == lst[n] && n <= k ==> m >= k
+        {
+            if lst[j] == lst[i] {
+                result := lst[i];
+                assert 0 <= j < i < |lst| && lst[j] == lst[i] && lst[j] == result;
+                assert forall m, n :: 0 <= m < n < |lst| && lst[m] == lst[n] && n <= j ==> m >= j by {
+                    forall m, n | 0 <= m < n < |lst| && lst[m] == lst[n] && n <= j
+                        ensures m >= j
+                    {
+                        if n <= j {
+                            if n < j {
+                                assert 0 <= m < n < i;
+                                assert lst[m] == lst[n];
+                                assert false;
+                            } else {
+                                assert n == j;
+                                if m < j {
+                                    assert lst[m] == lst[j] == lst[i];
+                                    assert 0 <= m < j < i;
+                                    assert false;
+                                }
+                            }
+                        }
+                    }
+                };
+                assert exists k, l :: 0 <= k < l < |lst| && lst[k] == lst[l] && lst[k] == result && forall m, n :: 0 <= m < n < |lst| && lst[m] == lst[n] && n <= k ==> m >= k by {
+                    assert 0 <= j < i < |lst| && lst[j] == lst[i] && lst[j] == result;
+                }
+                return;
+            }
+            j := j + 1;
+        }
+        i := i + 1;
     }
-    
-    PreserveDuplicateInvariant(lst, i);
-    i := i + 1;
-  }
-  
-  // At this point, we've checked all pairs and found no duplicates
-  assert forall k, l :: 0 <= k < l < |lst| ==> lst[k] != lst[l];
+    assert forall k, l :: 0 <= k < l < |lst| ==> lst[k] != lst[l];
 }
 // </vc-code>

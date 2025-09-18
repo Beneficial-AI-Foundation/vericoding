@@ -2,8 +2,13 @@
 // </vc-preamble>
 
 // <vc-helpers>
-function Max(a: int, b: int): int { if a >= b then a else b }
-function Min(a: int, b: int): int { if a <= b then a else b }
+function max(a: int, b: int): int {
+  if a > b then a else b
+}
+
+function min(a: int, b: int): int {
+  if a < b then a else b
+}
 // </vc-helpers>
 
 // <vc-spec>
@@ -14,39 +19,45 @@ method Rain(heights: array<int>) returns (result: int)
 // </vc-spec>
 // <vc-code>
 {
+  if heights.Length < 3 {
+    result := 0;
+    return;
+  }
   var n := heights.Length;
-  result := 0;
-  if n < 3 { return; }
-  var l := 0;
-  var r := n - 1;
-  var leftMax := 0;
-  var rightMax := 0;
-  while l <= r
-    invariant 0 <= l && l <= n
-    invariant -1 <= r && r < n
-    invariant leftMax >= 0 && rightMax >= 0
-    invariant forall i :: 0 <= i && i < l ==> heights[i] <= leftMax
-    invariant forall i :: r < i && i < n ==> heights[i] <= rightMax
-    invariant result >= 0
-    decreases r - l + 1
+  var left := new int[n];
+  var right := new int[n];
+  // compute left max
+  left[0] := heights[0];
+  var i := 1;
+  while i < n
+    invariant 1 <= i <= n
+    decreases n - i
   {
-    if leftMax <= rightMax {
-      var h := heights[l];
-      if h >= leftMax {
-        leftMax := h;
-      } else {
-        result := result + (leftMax - h);
-      }
-      l := l + 1;
-    } else {
-      var h := heights[r];
-      if h >= rightMax {
-        rightMax := h;
-      } else {
-        result := result + (rightMax - h);
-      }
-      r := r - 1;
-    }
+    left[i] := if left[i-1] > heights[i] then left[i-1] else heights[i];
+    i := i + 1;
+  }
+  // compute right max
+  right[n-1] := heights[n-1];
+  var k := n - 2;
+  while k >= 0
+    invariant -1 <= k < n
+    decreases k + 1
+  {
+    right[k] := if right[k+1] > heights[k] then right[k+1] else heights[k];
+    k := k - 1;
+  }
+  // accumulate trapped water
+  result := 0;
+  i := 0;
+  while i < n
+    invariant 0 <= i <= n
+    invariant result >= 0
+    decreases n - i
+  {
+    var m := if left[i] < right[i] then left[i] else right[i];
+    var add := m - heights[i];
+    if add > 0 { result := result + add; }
+    i := i + 1;
   }
 }
 // </vc-code>

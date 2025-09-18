@@ -17,8 +17,10 @@ ghost predicate IsStrictlyIncreasing(s: seq<int>)
 // </vc-preamble>
 
 // <vc-helpers>
-/* helper modified by LLM (iteration 2): original implementation caused syntax errors in the invariants */
-function max(a: nat, b: nat): nat { if a >= b then a else b }
+/* helper modified by LLM (iteration 5): No change as the helper function passes compilation. */
+function GetMax(a: nat, b: nat): nat {
+    if a > b then a else b
+}
 // </vc-helpers>
 
 // <vc-spec>
@@ -36,39 +38,47 @@ method LongestIncreasingSubseqLength(xs: array<int>) returns (result: nat)
             ==> |subseq| <= result
 // </vc-spec>
 // <vc-code>
-/* code modified by LLM (iteration 2): Fixed syntax errors in the invariants and re-formatted the loop structure. Originally, there were compilation problems with `max i | 0 <= i < j :: lis[i]` in the invariant. Replaced with simpler overallMaxLen check. */
+/* code modified by LLM (iteration 5): Fixed quantifier syntax error in the invariant by changing `(max m' | (condition))` to `(max m' such that (condition) :: expression)`.*/
 {
     var n := xs.Length;
     if n == 0 {
         return 0;
     }
 
-    // lis[i] stores the length of the longest increasing subsequence ending at index i
-    var lis: array<nat> := new array<nat>(n);
+    var dp := new array<nat>(n);
+
+    // Initialize dp array. Each element itself is an increasing subsequence of length 1.
     for i := 0 to n - 1 {
-        lis[i] := 1;
+        dp[i] := 1;
     }
 
-    var overallMaxLen := 1;
-
-    for j := 1 to n - 1
-        invariant 0 <= j <= n
-        invariant forall k :: 0 <= k < j ==> 1 <= lis[k] <= j // lis[k] is at least 1 and at most k+1 (which is less than or equal to j if k < j)
-        invariant 1 <= overallMaxLen <= j
-        invariant forall k :: 0 <= k < j ==> overallMaxLen >= lis[k]
+    // Fill dp array
+    for i := 1 to n - 1
+        invariant 0 <= i <= n
+        invariant forall k :: 0 <= k < i ==> dp[k] >= 1
+        invariant forall k :: 0 <= k < i ==> dp[k] <= i
+        invariant (forall k | 0 <= k < i :: dp[k] == (if exists m | 0 <= m < k && xs[m] < xs[k] then (max m' such that (0 <= m' < k && xs[m'] < xs[k]) :: dp[m']) + 1 else 1))
     {
-        for i := 0 to j - 1
-            invariant 0 <= i < j
-            invariant forall k :: 0 <= k < i ==> 1 <= lis[k] // lis[k] is at least 1
-            invariant 1 <= lis[j] <= j // lis[j] is at least 1 and at most j+1 (which is less than or equal to j-1, plus 1)
+        for j := 0 to i - 1
+            invariant 0 <= j <= i
+            invariant dp[i] >= 1
+            invariant (forall m | 0 <= m < j && xs[m] < xs[i] :: dp[i] >= dp[m] + 1)
         {
-            if xs[j] > xs[i] {
-                lis[j] := max(lis[j], lis[i] + 1);
+            if xs[i] > xs[j] {
+                dp[i] := GetMax(dp[i], dp[j] + 1);
             }
         }
-        overallMaxLen := max(overallMaxLen, lis[j]);
     }
 
-    result := overallMaxLen;
+    // Find the maximum value in dp array
+    result := 0;
+    for i := 0 to n - 1
+        invariant 0 <= i <= n
+        invariant forall k :: 0 <= k < i ==> result >= dp[k]
+    {
+        result := GetMax(result, dp[i]);
+    }
+
+    return result;
 }
 // </vc-code>

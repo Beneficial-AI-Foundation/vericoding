@@ -47,9 +47,9 @@ function NormalizeString(s: string): seq<char>
 // </vc-preamble>
 
 // <vc-helpers>
-function IsPalindrome(s: seq<char>): bool
+predicate IsPalindrome(s: seq<char>)
 {
-    s == s[..] // A sequence is a palindrome if it reads the same forwards and backwards
+  s == s[..] // A sequence is a palindrome if it equals its reverse
 }
 // </vc-helpers>
 
@@ -60,6 +60,6 @@ method IsCleanPalindrome(s: string) returns (result: bool)
 // <vc-code>
 {
     var normalized_s := NormalizeString(s);
-    result := normalized_s == normalized_s[..];
+    return IsPalindrome(normalized_s);
 }
 // </vc-code>

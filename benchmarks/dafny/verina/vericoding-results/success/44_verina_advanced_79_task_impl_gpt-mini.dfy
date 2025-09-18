@@ -3,9 +3,14 @@ datatype Option<T> = None | Some(value: T)
 // </vc-preamble>
 
 // <vc-helpers>
-predicate IsPair(a: seq<int>, i: int, j: int, target: int) {
-  0 <= i < |a| && 0 <= j < |a| && i < j && a[i] + a[j] == target
+{
+  lemma IndexBounds(n: int, i: int)
+    requires 0 <= i < n
+    ensures 0 <= i && i < n
+  {
+  }
 }
+
 // </vc-helpers>
 
 // <vc-spec>
@@ -26,16 +31,14 @@ method TwoSum(nums: array<int>, target: int) returns (result: Option<(nat, nat)>
   var n := nums.Length;
   var i := 0;
   while i < n
-    decreases n - i
     invariant 0 <= i <= n
-    invariant forall k1,k2 :: 0 <= k1 < k2 < n && k1 < i ==> nums[k1] + nums[k2] != target
+    invariant forall k1,k2 :: 0 <= k1 < n && 0 <= k2 < n && k1 < k2 && k1 < i ==> nums[k1] + nums[k2] != target
   {
     var j := i + 1;
     while j < n
-      decreases n - j
-      invariant 0 <= j <= n
-      invariant i < n
-      invariant forall k1,k2 :: 0 <= k1 < k2 < n && (k1 < i || (k1 == i && k2 < j)) ==> nums[k1] + nums[k2] != target
+      invariant 0 <= i < n
+      invariant i + 1 <= j <= n
+      invariant forall k1,k2 :: 0 <= k1 < n && 0 <= k2 < n && k1 < k2 && (k1 < i || (k1 == i && k2 < j)) ==> nums[k1] + nums[k2] != target
     {
       if nums[i] + nums[j] == target {
         result := Some((i as nat, j as nat));
@@ -47,4 +50,5 @@ method TwoSum(nums: array<int>, target: int) returns (result: Option<(nat, nat)>
   }
   result := None;
 }
+
 // </vc-code>

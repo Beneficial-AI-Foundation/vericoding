@@ -6,7 +6,10 @@ predicate IsDigit(c: char)
 // </vc-preamble>
 
 // <vc-helpers>
-lemma ForallAlternatingProperty(s: string) ensures (forall i :: 0 <= i < |s| ==> (i % 2 == 0 ==> !IsDigit(s[i])) && (i % 2 == 1 ==> IsDigit(s[i]))) ==> (forall i :: 0 <= i < |s| ==> (i % 2 == 0 ==> !IsDigit(s[i]))) && (forall i :: 0 <= i < |s| ==> (i % 2 == 1 ==> IsDigit(s[i]))) { }
+lemma IsDigitCharProperty(c: char) returns (isDigit: bool)
+{
+  isDigit := '0' <= c && c <= '9';
+}
 // </vc-helpers>
 
 // <vc-spec>
@@ -24,11 +27,23 @@ lemma RunLengthEncoderProperty(input: string, result: string)
 // </vc-spec>
 // <vc-code>
 {
-    if (|input| == 0) {
+    if |input| == 0 {
         assert |result| == 0;
-    } else {
-        if (|result| > 0) {
-            ForallAlternatingProperty(result);
+    }
+    if |input| > 0 {
+        assert |result| > 0;
+        var i := 0;
+        while i < |result|
+            invariant 0 <= i <= |result|
+            invariant forall j :: 0 <= j < i ==> (j % 2 == 0 ==> !IsDigit(result[j])) && (j % 2 == 1 ==> IsDigit(result[j]))
+        {
+            if i % 2 == 0 {
+                assert !IsDigit(result[i]); 
+            }
+            else {
+                assert IsDigit(result[i]);
+            }
+            i := i + 1;
         }
     }
 }

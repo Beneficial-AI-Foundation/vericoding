@@ -2,7 +2,10 @@
 // </vc-preamble>
 
 // <vc-helpers>
-function max(x: int, y: int): int { if x >= y then x else y }
+function max(x: int, y: int): int
+{
+    if x >= y then x else y
+}
 // </vc-helpers>
 
 // <vc-spec>
@@ -12,7 +15,6 @@ method MaxOfThree(a: int, b: int, c: int) returns (result: int)
 // </vc-spec>
 // <vc-code>
 {
-    var maxAB := max(a, b);
-    result := max(maxAB, c);
+    result := max(max(a, b), c);
 }
 // </vc-code>

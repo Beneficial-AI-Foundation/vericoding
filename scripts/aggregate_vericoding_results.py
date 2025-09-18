@@ -307,7 +307,10 @@ def main() -> int:
 
     # Detect language based on path (dafny vs verus)
     is_verus = "verus" in bench_root.parts
-    spec_ext = ".rs" if is_verus else ".yaml"
+    # For Dafny benchmarks, some suites (e.g. verina) use .dfy specs directly,
+    # while others (e.g. dafnybench) use .yaml. Try a list of candidates.
+    spec_ext_candidates = [".rs"] if is_verus else [".yaml", ".dfy"]
+    # Choose an impl extension based on language
     impl_ext = ".rs" if is_verus else ".dfy"
 
     if args.best:
@@ -350,14 +353,27 @@ def main() -> int:
     # Use canonical file list from the benchmark directory instead of collecting from runs
     # This ensures we only include the official test files, not extras from W&B runs
     files_dir = bench_root / "files"
+    chosen_spec_ext = None
     if files_dir.exists():
         all_files = set()
-        for f in files_dir.glob(f"*{spec_ext}"):
-            base_name = f.stem  # filename without extension
-            all_files.add(base_name)
+        # Try each candidate extension until we find any files
+        for cand in spec_ext_candidates:
+            matched = list(files_dir.glob(f"*{cand}"))
+            if matched:
+                for f in matched:
+                    base_name = f.stem  # filename without extension
+                    all_files.add(base_name)
+                chosen_spec_ext = cand
+                break
+        # If nothing matched (e.g., unexpected layout), fallback to collecting from runs
+        if not all_files:
+            all_files = collect_all_files(selected_runs)
+            # Best-effort default for printing extensions
+            chosen_spec_ext = spec_ext_candidates[-1] if spec_ext_candidates else ""
     else:
         # Fallback to collecting from runs if no files/ directory
         all_files = collect_all_files(selected_runs)
+        chosen_spec_ext = spec_ext_candidates[-1] if spec_ext_candidates else ""
 
     # Aggregate rows and file->llms mapping
     rows: List[Tuple[str, str, int, str]] = []
@@ -415,11 +431,13 @@ def main() -> int:
         sf.write("Successful files:\n")
         for f in sorted(successful_files):
             llms = ", ".join(file_to_llms[f])
-            sf.write(f"✓ {f}{spec_ext} — by: {llms}\n")
+            ext = chosen_spec_ext or (".rs" if is_verus else ".dfy")
+            sf.write(f"✓ {f}{ext} — by: {llms}\n")
         sf.write("\n")
         sf.write("Failed files:\n")
         for f in sorted(failed_files):
-            sf.write(f"✗ {f}{spec_ext}\n")
+            ext = chosen_spec_ext or (".rs" if is_verus else ".dfy")
+            sf.write(f"✗ {f}{ext}\n")
 
     # Copy all successful implementations into success folder with per-file index prefix and LLM suffix
     success_dir = results_root / "success"

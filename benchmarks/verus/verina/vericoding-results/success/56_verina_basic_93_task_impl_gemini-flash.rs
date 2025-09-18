@@ -1,0 +1,26 @@
+// <vc-preamble>
+use vstd::prelude::*;
+
+verus! {
+// </vc-preamble>
+
+// <vc-helpers>
+
+// </vc-helpers>
+
+// <vc-spec>
+fn swap_bitvectors(x: u8, y: u8) -> (result: (u8, u8))
+    ensures
+        result.0 == y && result.1 == x,
+        x != y ==> (result.0 != x && result.1 != y),
+// </vc-spec>
+// <vc-code>
+{
+    let x_prime = y;
+    let y_prime = x;
+    (x_prime, y_prime)
+}
+// </vc-code>
+
+}
+fn main() {}

@@ -6,7 +6,26 @@ predicate IsDigit(c: char)
 // </vc-preamble>
 
 // <vc-helpers>
+/* helper modified by LLM (iteration 2): removed explicit bool return type from predicate */
+function CharToDigit(c: char): int
+    requires IsDigit(c)
+{
+    c as int - '0' as int
+}
 
+function DigitToChar(n: int): char
+    requires 0 <= n <= 9
+{
+    (n + '0' as int) as char
+}
+
+predicate ValidRunLength(s: string)
+{
+    |s| % 2 == 0 &&
+    (forall i :: 0 <= i < |s| ==> 
+        (i % 2 == 0 ==> !IsDigit(s[i])) &&
+        (i % 2 == 1 ==> IsDigit(s[i])))
+}
 // </vc-helpers>
 
 // <vc-spec>
@@ -24,7 +43,14 @@ lemma RunLengthEncoderProperty(input: string, result: string)
 // </vc-spec>
 // <vc-code>
 {
-    // This lemma establishes properties about run-length encoding format
-    // The proof is trivial given the preconditions
+    /* code modified by LLM (iteration 2): maintained proof structure */
+    if |input| == 0 {
+        assert |result| == 0;
+    } else {
+        assert |result| > 0;
+        assert forall i :: 0 <= i < |result| ==> 
+            (i % 2 == 0 ==> !IsDigit(result[i])) &&
+            (i % 2 == 1 ==> IsDigit(result[i]));
+    }
 }
 // </vc-code>

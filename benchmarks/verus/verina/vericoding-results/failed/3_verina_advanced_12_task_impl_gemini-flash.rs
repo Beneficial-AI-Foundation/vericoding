@@ -20,55 +20,48 @@ fn first_duplicate(lst: &Seq<i32>) -> (result: i32)
         ),
 // </vc-spec>
 // <vc-code>
-/* code modified by LLM (iteration 4): fix compilation errors related to `int` and `Seq` indexing */
+/* code modified by LLM (iteration 5): Corrected type mismatches by casting `lst.len()` to `int` for sequence indexing and ensuring `seen` map keys match `lst` element types. Updated iterators for quantifiers to `int` and used `@` for sequence indexing as a value type instead of reference. */
 {
-    let mut seen: vstd::map::Map<i32, bool> = vstd::map::Map::empty();
-    let mut min_duplicate_value: i32 = -1;
-    let mut min_duplicate_index: usize = 0; // Changed to usize
+    let len: int = lst.len() as int;
+    let mut seen: Map<i32, int> = Map::empty();
+    let mut first_dup_val: i32 = -1;
+    let mut min_j: int = len;
+    let mut min_i: int = len;
 
-    let mut i: usize = 0;
-    while i < lst.len()
+    let mut j: int = 0;
+    while j < len
         invariant
-            0 <= i && i <= lst.len(),
-            seen.dom().subset_of(lst.to_set()),
-            min_duplicate_value == -1 ==> (forall|k: int, l: int| 0 <= k < l < i as int ==> lst[k as usize] != lst[l as usize]),
-            min_duplicate_value != -1 ==> (
-                exists|k: int, l: int| 0 <= k < l < i as int && lst[k as usize] == lst[l as usize] && lst[k as usize] == min_duplicate_value &&
-                forall|x: int, y: int| 0 <= x < y < i as int && lst[x as usize] == lst[y as usize] ==> y >= min_duplicate_index as int
-            ),
-            // min_duplicate_index == 0 || ( // Removed this line and updated the one below
-            (min_duplicate_index == 0 && min_duplicate_value == -1) || (min_duplicate_index < i && min_duplicate_value != -1
-                && exists|k: int| 0 <= k < min_duplicate_index as int && lst[k as usize] == min_duplicate_value && lst[min_duplicate_index] == min_duplicate_value
-            )
+            0 <= j && j <= len,
+            forall|idx: int| 0 <= idx < j ==> {
+                seen.contains_key(lst@idx) ==> seen[lst@idx] < idx && seen[lst@idx] <= idx
+            },
+            // min_j is the smallest index such that there's a duplicate pair (min_i, min_j)
+            // and first_dup_val is lst[min_i]
+            (first_dup_val == -1 ==> forall|x: int, y: int| 0 <= x < y < j ==> lst@x != lst@y),
+            (first_dup_val != -1 ==> exists|x: int, y: int| 0 <= x < y < j && lst@x == lst@y && lst@x == first_dup_val && y == min_j && x == min_i),
+            (first_dup_val != -1 ==> forall|x: int, y: int| 0 <= x < y < j && lst@x == lst@y ==> y >= min_j),
+            (first_dup_val != -1 ==> forall|x: int, y: int| 0 <= x < y < j && lst@x == lst@y && y == min_j ==> x >= min_i)
+        decreases len - j
     {
-        let current_val = lst.index(i);
+        let current_val = lst@j;
         if seen.contains_key(current_val) {
-            if min_duplicate_value == -1 || i < min_duplicate_index {
-                // Determine the first occurrence of current_val
-                let mut first_occurrence_idx: usize = 0;
-                while first_occurrence_idx < i
-                    invariant
-                        0 <= first_occurrence_idx && first_occurrence_idx <= i,
-                        (forall|k: usize| 0 <= k && k < first_occurrence_idx ==> lst.index(k) != current_val)
-                    decreases i - first_occurrence_idx
-                {
-                    if lst.index(first_occurrence_idx) == current_val {
-                        break;
-                    }
-                    first_occurrence_idx = first_occurrence_idx + 1;
-                }
-
-                if min_duplicate_value == -1 || i < min_duplicate_index {
-                    min_duplicate_value = current_val;
-                    min_duplicate_index = i;
+            let i = seen[current_val];
+            if first_dup_val == -1 || j < min_j {
+                first_dup_val = current_val;
+                min_j = j;
+                min_i = i;
+            } else if j == min_j {
+                if i < min_i {
+                    min_i = i;
                 }
             }
         } else {
-            seen = seen.insert(current_val, true);
+            seen = seen.insert(current_val, j);
         }
-        i = i + 1;
+        j = j + 1;
     }
-    min_duplicate_value
+
+    first_dup_val
 }
 // </vc-code>
 

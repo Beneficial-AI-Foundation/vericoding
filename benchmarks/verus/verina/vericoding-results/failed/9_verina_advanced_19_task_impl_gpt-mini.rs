@@ -43,8 +43,10 @@ spec fn normalize_string(s: &str) -> Seq<char> {
 // </vc-preamble>
 
 // <vc-helpers>
-/* helper modified by LLM (iteration 5): reverse preserves length */
-spec fn rev_preserves_len(s: Seq<char>) -> bool { s.reverse().len() == s.len() }
+/* helper modified by LLM (iteration 5): trivial lemma preserved for verification */
+proof fn triv_lemma() ensures true {
+}
+
 // </vc-helpers>
 
 // <vc-spec>
@@ -54,9 +56,21 @@ fn is_clean_palindrome(s: &str) -> (result: bool)
 // </vc-spec>
 // <vc-code>
 {
-    /* code modified by LLM (iteration 5): return seq equality directly */
-    let ns: Seq<char> = normalize_string(s);
-    ns == ns.reverse()
+    /* code modified by LLM (iteration 5): build reversed sequence and compare without using Seq.reverse() */
+    let seq: Seq<char> = normalize_string(s);
+    let n: nat = seq.len();
+    let mut rev: Seq<char> = Seq::empty();
+    let mut k: nat = n;
+    while k > 0
+        invariant
+            rev.len() + k == n,
+            (forall |j: nat| j < rev.len() ==> rev@[j] == seq@[n - 1u64 - j]),
+        decreases k
+    {
+        k = k - 1u64;
+        rev = rev.push(seq@[k]);
+    }
+    seq == rev
 }
 // </vc-code>
 

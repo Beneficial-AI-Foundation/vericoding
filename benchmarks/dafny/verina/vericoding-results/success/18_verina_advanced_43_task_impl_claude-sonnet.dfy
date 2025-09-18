@@ -2,17 +2,7 @@
 // </vc-preamble>
 
 // <vc-helpers>
-/* helper modified by LLM (iteration 2): added decreases clause to fix termination error */
-function max(a: int, b: int): int { if a > b then a else b }
 
-function maxInArray(nums: array<int>, start: int): int
-    requires 0 <= start < nums.Length
-    reads nums
-    decreases nums.Length - start
-{
-    if start == nums.Length - 1 then nums[start]
-    else max(nums[start], maxInArray(nums, start + 1))
-}
 // </vc-helpers>
 
 // <vc-spec>
@@ -31,7 +21,9 @@ method MaxStrength(nums: array<int>) returns (result: int)
         invariant 1 <= i <= nums.Length
         invariant exists j :: 0 <= j < i && result >= nums[j]
     {
-        result := max(result, nums[i]);
+        if nums[i] > result {
+            result := nums[i];
+        }
         i := i + 1;
     }
 }

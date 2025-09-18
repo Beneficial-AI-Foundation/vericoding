@@ -2,41 +2,7 @@
 // </vc-preamble>
 
 // <vc-helpers>
-function max(a: nat, b: nat): nat { if a > b then a else b }
 
-function min(a: nat, b: nat): nat { if a < b then a else b }
-
-/* helper modified by LLM (iteration 2): added decreases clause to fix termination proof */
-function maxLeft(height: array<nat>, i: nat): nat
-    requires i < height.Length
-    reads height
-    decreases i
-{
-    if i == 0 then height[0]
-    else max(height[i], maxLeft(height, i-1))
-}
-
-/* helper modified by LLM (iteration 2): added decreases clause to fix termination proof */
-function maxRight(height: array<nat>, i: nat): nat
-    requires i < height.Length
-    reads height
-    decreases height.Length - i
-{
-    if i == height.Length - 1 then height[i]
-    else max(height[i], maxRight(height, i+1))
-}
-
-function waterAt(height: array<nat>, i: nat): nat
-    requires i < height.Length
-    reads height
-{
-    if height.Length <= 1 then 0
-    else
-        var left := maxLeft(height, i);
-        var right := maxRight(height, i);
-        var waterLevel := min(left, right);
-        if waterLevel > height[i] then waterLevel - height[i] else 0
-}
 // </vc-helpers>
 
 // <vc-spec>
@@ -46,18 +12,45 @@ method TrapRainWater(height: array<nat>) returns (result: nat)
 // </vc-spec>
 // <vc-code>
 {
-    if height.Length <= 1 {
+    if height.Length <= 2 {
         result := 0;
-    } else {
-        result := 0;
-        var i := 0;
-        while i < height.Length
-            invariant 0 <= i <= height.Length
-            invariant result >= 0
-        {
-            result := result + waterAt(height, i);
-            i := i + 1;
+        return;
+    }
+    
+    var left := new nat[height.Length];
+    var right := new nat[height.Length];
+    
+    left[0] := height[0];
+    var i := 1;
+    while i < height.Length
+        invariant 1 <= i <= height.Length
+        invariant forall k :: 0 <= k < i ==> left[k] >= 0
+    {
+        left[i] := if height[i] > left[i-1] then height[i] else left[i-1];
+        i := i + 1;
+    }
+    
+    right[height.Length-1] := height[height.Length-1];
+    i := height.Length - 2;
+    while i >= 0
+        invariant -1 <= i < height.Length - 1
+        invariant forall k :: i < k < height.Length ==> right[k] >= 0
+    {
+        right[i] := if height[i] > right[i+1] then height[i] else right[i+1];
+        i := i - 1;
+    }
+    
+    result := 0;
+    i := 0;
+    while i < height.Length
+        invariant 0 <= i <= height.Length
+        invariant result >= 0
+    {
+        var water_level := if left[i] < right[i] then left[i] else right[i];
+        if water_level > height[i] {
+            result := result + (water_level - height[i]);
         }
+        i := i + 1;
     }
 }
 // </vc-code>

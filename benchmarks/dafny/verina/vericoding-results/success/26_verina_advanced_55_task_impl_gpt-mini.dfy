@@ -7,10 +7,15 @@ function CountOccurrences(xs: seq<int>, target: int): nat
 // </vc-preamble>
 
 // <vc-helpers>
-function CountAtIndex(xs: seq<int>, i: int): nat
+/* helper modified by LLM (iteration 3): use |xs| for sequence length and prove occurrence positive */
+lemma OccurrencePositive(xs: seq<int>, i: int)
   requires 0 <= i < |xs|
+  ensures CountOccurrences(xs, xs[i]) > 0
 {
-  CountOccurrences(xs, xs[i])
+  var S := set j | 0 <= j < |xs| && xs[j] == xs[i];
+  assert i in S;
+  assert CountOccurrences(xs, xs[i]) == |S|;
+  assert |S| > 0;
 }
 // </vc-helpers>
 
@@ -27,24 +32,29 @@ method MostFrequent(xs: array<int>) returns (result: int)
 // </vc-spec>
 // <vc-code>
 {
-  var n := xs.Length;
-  var bestIdx := 0;
-  var bestCount := CountOccurrences(xs[..], xs[0]);
+  /* code modified by LLM (iteration 3): Implement MostFrequent using linear scan and CountOccurrences */
   var i := 1;
-  while i < n
-    invariant 0 <= i <= n
-    invariant 0 <= bestIdx < n
-    invariant bestCount == CountOccurrences(xs[..], xs[bestIdx])
+  var bestIdx := 0;
+  var best := xs[0];
+  var bestCount: nat := CountOccurrences(xs[..], best);
+  while i < xs.Length
+    decreases xs.Length - i
+    invariant 0 <= i <= xs.Length
+    invariant 0 <= bestIdx < i
+    invariant xs[bestIdx] == best
+    invariant bestCount == CountOccurrences(xs[..], best)
     invariant forall j :: 0 <= j < i ==> CountOccurrences(xs[..], xs[j]) <= bestCount
     invariant forall j :: 0 <= j < bestIdx ==> CountOccurrences(xs[..], xs[j]) < bestCount
   {
-    var c := CountOccurrences(xs[..], xs[i]);
+    var x := xs[i];
+    var c := CountOccurrences(xs[..], x);
     if c > bestCount {
-      bestIdx := i;
+      best := x;
       bestCount := c;
+      bestIdx := i;
     }
     i := i + 1;
   }
-  result := xs[bestIdx];
+  result := best;
 }
 // </vc-code>

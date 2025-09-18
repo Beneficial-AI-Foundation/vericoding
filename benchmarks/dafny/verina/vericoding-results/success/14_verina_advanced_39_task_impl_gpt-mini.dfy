@@ -2,15 +2,7 @@
 // </vc-preamble>
 
 // <vc-helpers>
-/* helper modified by LLM (iteration 3): recursive max over a non-empty sequence */
-function MaxSeq(s: seq<nat>): nat
-  requires |s| > 0
-  ensures exists i :: 0 <= i < |s| && s[i] == MaxSeq(s)
-  ensures forall i :: 0 <= i < |s| ==> s[i] <= MaxSeq(s)
-  decreases |s|
-{
-  if |s| == 1 then s[0] else if s[0] > MaxSeq(s[1..]) then s[0] else MaxSeq(s[1..])
-}
+function Max2(a: nat, b: nat): nat { if a >= b then a else b }
 // </vc-helpers>
 
 // <vc-spec>
@@ -21,18 +13,21 @@ method MaxOfList(lst: array<nat>) returns (result: nat)
 // </vc-spec>
 // <vc-code>
 {
-  /* code modified by LLM (iteration 3): compute max iteratively with invariants */
-  var i := 1;
-  result := lst[0];
-  while i < lst.Length
-    invariant 1 <= i <= lst.Length
-    invariant exists j :: 0 <= j < i && lst[j] == result
-    invariant forall j :: 0 <= j < i ==> lst[j] <= result
+  var pos := 1;
+  var cur := lst[0];
+  var idx := 0;
+  while pos < lst.Length
+    invariant 0 <= pos <= lst.Length
+    invariant 0 <= idx < pos
+    invariant cur == lst[idx]
+    invariant forall i :: 0 <= i < pos ==> lst[i] <= cur
   {
-    if lst[i] > result {
-      result := lst[i];
+    if lst[pos] > cur {
+      cur := lst[pos];
+      idx := pos;
     }
-    i := i + 1;
+    pos := pos + 1;
   }
+  result := cur;
 }
 // </vc-code>

@@ -13,17 +13,17 @@ method MaxOfList(lst: array<nat>) returns (result: nat)
 // </vc-spec>
 // <vc-code>
 {
-  result := lst[0];
-  var i := 1;
-  while i < lst.Length
-    invariant 1 <= i <= lst.Length
-    invariant exists j :: 0 <= j < i && lst[j] == result
-    invariant forall j :: 0 <= j < i ==> lst[j] <= result
-  {
-    if lst[i] > result {
-      result := lst[i];
+    result := lst[0];
+    var i := 1;
+    while i < lst.Length
+        invariant 1 <= i <= lst.Length
+        invariant exists j :: 0 <= j < i && lst[j] == result
+        invariant forall j :: 0 <= j < i ==> lst[j] <= result
+    {
+        if lst[i] > result {
+            result := lst[i];
+        }
+        i := i + 1;
     }
-    i := i + 1;
-  }
 }
 // </vc-code>

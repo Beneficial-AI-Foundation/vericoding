@@ -21,23 +21,14 @@ function FilterAlphanumeric(s: seq<char>): seq<char>
 // </vc-preamble>
 
 // <vc-helpers>
-function ReverseSequence(s: seq<char>): seq<char>
+function StringToCharSeq(s: string): seq<char>
+{
+    s[..]
+}
+
+function ReverseSeq(s: seq<char>): seq<char>
 {
     seq(|s|, i requires 0 <= i < |s| => s[|s| - 1 - i])
-}
-
-lemma FilterAlphanumericPreservesLength(s: seq<char>)
-    ensures |FilterAlphanumeric(s)| <= |s|
-{
-    if |s| == 0 {
-    } else {
-        FilterAlphanumericPreservesLength(s[1..]);
-    }
-}
-
-lemma ReverseSequenceLength(s: seq<char>)
-    ensures |ReverseSequence(s)| == |s|
-{
 }
 // </vc-helpers>
 

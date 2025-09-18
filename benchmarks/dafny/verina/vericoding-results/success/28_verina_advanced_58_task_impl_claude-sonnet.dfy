@@ -6,18 +6,34 @@ predicate NthUglyNumberPrecond(n: nat)
 // </vc-preamble>
 
 // <vc-helpers>
-/* helper modified by LLM (iteration 4): simplified to focus on basic operations needed for ugly number generation */
-function Min3(a: int, b: int, c: int): int
+/* helper modified by LLM (iteration 4): removed non-compilable exists quantifier, using computational approach */
+predicate IsUglyNumber(num: int)
 {
-    if a <= b && a <= c then a
-    else if b <= c then b
-    else c
+    num > 0 && OnlyHasFactors235(num)
 }
 
-lemma Min3Positive(a: int, b: int, c: int)
-    requires a > 0 && b > 0 && c > 0
-    ensures Min3(a, b, c) > 0
+predicate OnlyHasFactors235(num: int)
+    requires num > 0
 {
+    var reduced := ReduceBy235(num);
+    reduced == 1
+}
+
+function ReduceBy235(num: int): int
+    requires num > 0
+    ensures ReduceBy235(num) > 0
+{
+    if num % 2 == 0 then ReduceBy235(num / 2)
+    else if num % 3 == 0 then ReduceBy235(num / 3) 
+    else if num % 5 == 0 then ReduceBy235(num / 5)
+    else num
+}
+
+function Power(base: int, exp: int): int
+    requires base > 0 && exp >= 0
+    ensures Power(base, exp) > 0
+{
+    if exp == 0 then 1 else base * Power(base, exp - 1)
 }
 // </vc-helpers>
 
@@ -28,41 +44,55 @@ method NthUglyNumber(n: int) returns (result: int)
 // </vc-spec>
 // <vc-code>
 {
-    /* code modified by LLM (iteration 4): added invariants to prove result > 0 */
-    var ugly := new int[n];
-    ugly[0] := 1;
-    var i2, i3, i5 := 0, 0, 0;
-    var next2, next3, next5 := 2, 3, 5;
-    
-    var i := 1;
-    while i < n
-        invariant 0 <= i <= n
-        invariant 0 <= i2 < i
-        invariant 0 <= i3 < i
-        invariant 0 <= i5 < i
-        invariant forall j :: 0 <= j < i ==> ugly[j] > 0
-        invariant next2 > 0 && next3 > 0 && next5 > 0
-    {
-        var nextUgly := Min3(next2, next3, next5);
-        Min3Positive(next2, next3, next5);
-        ugly[i] := nextUgly;
+    /* code modified by LLM (iteration 4): fixed loop invariant by adding initialization assertion */
+    if n == 1 {
+        result := 1;
+    } else {
+        var ugly := new int[n];
+        ugly[0] := 1;
+        var i2, i3, i5 := 0, 0, 0;
+        var next_multiple_of_2, next_multiple_of_3, next_multiple_of_5 := 2, 3, 5;
         
-        if nextUgly == next2 {
-            i2 := i2 + 1;
-            next2 := 2 * ugly[i2];
-        }
-        if nextUgly == next3 {
-            i3 := i3 + 1;
-            next3 := 3 * ugly[i3];
-        }
-        if nextUgly == next5 {
-            i5 := i5 + 1;
-            next5 := 5 * ugly[i5];
+        var i := 1;
+        while i < n
+            invariant 1 <= i <= n
+            invariant ugly[0] == 1
+            invariant 0 <= i2 < i
+            invariant 0 <= i3 < i
+            invariant 0 <= i5 < i
+            invariant forall j :: 0 <= j < i ==> ugly[j] > 0
+            invariant next_multiple_of_2 > 0
+            invariant next_multiple_of_3 > 0
+            invariant next_multiple_of_5 > 0
+        {
+            var next_ugly := next_multiple_of_2;
+            if next_multiple_of_3 < next_ugly {
+                next_ugly := next_multiple_of_3;
+            }
+            if next_multiple_of_5 < next_ugly {
+                next_ugly := next_multiple_of_5;
+            }
+            
+            ugly[i] := next_ugly;
+            assert ugly[i] > 0;
+            
+            if next_ugly == next_multiple_of_2 {
+                i2 := i2 + 1;
+                next_multiple_of_2 := ugly[i2] * 2;
+            }
+            if next_ugly == next_multiple_of_3 {
+                i3 := i3 + 1;
+                next_multiple_of_3 := ugly[i3] * 3;
+            }
+            if next_ugly == next_multiple_of_5 {
+                i5 := i5 + 1;
+                next_multiple_of_5 := ugly[i5] * 5;
+            }
+            
+            i := i + 1;
         }
         
-        i := i + 1;
+        result := ugly[n-1];
     }
-    
-    result := ugly[n - 1];
 }
 // </vc-code>

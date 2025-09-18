@@ -15,86 +15,48 @@ function CountOccurrences(nums: seq<int>, x: int): nat
 // </vc-preamble>
 
 // <vc-helpers>
-/* helper modified by LLM (iteration 2): existence of an index for any positive occurrence */
-lemma OccurrenceImpliesIndex(nums: seq<int>, x: int)
-  ensures CountOccurrences(nums, x) > 0 ==> exists i :: 0 <= i < |nums| && nums[i] == x
-  decreases |nums|
-{
-  if |nums| == 0 {
-  } else {
-    var first := nums[0];
-    var rest := nums[1..];
-    if first == x {
-      if CountOccurrences(nums, x) > 0 {
-        assert 0 < |nums|;
-        assert nums[0] == x;
-        assert exists i :: 0 <= i < |nums| && nums[i] == x;
-      }
-    } else {
-      if CountOccurrences(nums, x) > 0 {
-        OccurrenceImpliesIndex(rest, x);
-        var j :| 0 <= j < |rest| && rest[j] == x;
-        var i := j + 1;
-        assert 0 <= i < |nums|;
-        assert nums[i] == x;
-        assert exists k :: 0 <= k < |nums| && nums[k] == x;
-      }
-    }
-  }
-}
-
-/* helper modified by LLM (iteration 2): sum of occurrences of two distinct values is <= length */
-lemma CountSumLeqLength(nums: seq<int>, a: int, b: int)
+/* helper modified by LLM (iteration 2): prove sum of counts of two distinct values <= length */
+lemma CountOccurrences_Disjoint_Bound(nums: seq<int>, a: int, b: int)
   requires a != b
-  ensures CountOccurrences(nums, a) + CountOccurrences(nums, b) <= |nums|
+  ensures CountOccurrences(nums,a) + CountOccurrences(nums,b) <= |nums|
   decreases |nums|
 {
   if |nums| == 0 {
+    assert CountOccurrences(nums,a) + CountOccurrences(nums,b) == 0;
   } else {
     var first := nums[0];
     var rest := nums[1..];
-    CountSumLeqLength(rest, a, b);
+    CountOccurrences_Disjoint_Bound(rest,a,b);
+    assert |nums| == |rest| + 1;
     if first == a {
-      assert CountOccurrences(nums, a) == CountOccurrences(rest, a) + 1;
-      assert CountOccurrences(nums, b) == CountOccurrences(rest, b);
-      assert CountOccurrences(nums, a) + CountOccurrences(nums, b) == CountOccurrences(rest, a) + CountOccurrences(rest, b) + 1;
-      assert CountOccurrences(rest, a) + CountOccurrences(rest, b) + 1 <= |rest| + 1;
-      assert CountOccurrences(nums, a) + CountOccurrences(nums, b) <= |nums|;
+      assert CountOccurrences(nums,a) == CountOccurrences(rest,a) + 1;
+      assert CountOccurrences(nums,b) == CountOccurrences(rest,b);
     } else if first == b {
-      assert CountOccurrences(nums, a) == CountOccurrences(rest, a);
-      assert CountOccurrences(nums, b) == CountOccurrences(rest, b) + 1;
-      assert CountOccurrences(nums, a) + CountOccurrences(nums, b) == CountOccurrences(rest, a) + CountOccurrences(rest, b) + 1;
-      assert CountOccurrences(rest, a) + CountOccurrences(rest, b) + 1 <= |rest| + 1;
-      assert CountOccurrences(nums, a) + CountOccurrences(nums, b) <= |nums|;
+      assert CountOccurrences(nums,a) == CountOccurrences(rest,a);
+      assert CountOccurrences(nums,b) == CountOccurrences(rest,b) + 1;
     } else {
-      assert CountOccurrences(nums, a) == CountOccurrences(rest, a);
-      assert CountOccurrences(nums, b) == CountOccurrences(rest, b);
-      assert CountOccurrences(nums, a) + CountOccurrences(nums, b) <= |nums|;
+      assert CountOccurrences(nums,a) == CountOccurrences(rest,a);
+      assert CountOccurrences(nums,b) == CountOccurrences(rest,b);
     }
+    assert CountOccurrences(rest,a) + CountOccurrences(rest,b) <= |rest|;
+    assert CountOccurrences(nums,a) + CountOccurrences(nums,b) <= |rest| + 1;
+    assert CountOccurrences(nums,a) + CountOccurrences(nums,b) <= |nums|;
   }
 }
 
-/* helper modified by LLM (iteration 2): majority is unique */
-lemma MajorityUnique(nums: seq<int>, a: int, b: int)
-  requires CountOccurrences(nums, a) > |nums| / 2 && CountOccurrences(nums, b) > |nums| / 2
-  ensures a == b
+/* helper modified by LLM (iteration 2): show majority element is unique above half */
+lemma Majority_NoOtherGreater(nums: seq<int>, m: int)
+  requires CountOccurrences(nums,m) > |nums|/2
+  ensures forall x :: x != m ==> CountOccurrences(nums,x) <= |nums|/2
 {
-  if a != b {
-    CountSumLeqLength(nums, a, b);
-    assert CountOccurrences(nums, a) + CountOccurrences(nums, b) <= |nums|;
-    assert CountOccurrences(nums, a) + CountOccurrences(nums, b) > |nums|;
-    assert false;
-  }
-}
-
-/* helper modified by LLM (iteration 3): majority element implies uniqueness */
-lemma MajorityImpliesUnique(nums: seq<int>, m: int)
-  requires CountOccurrences(nums, m) > |nums| / 2
-  ensures forall x :: x != m ==> CountOccurrences(nums, x) <= |nums| / 2
-{
-  if exists x :: x != m && CountOccurrences(nums, x) > |nums| / 2 {
-    var x :| x != m && CountOccurrences(nums, x) > |nums| / 2;
-    MajorityUnique(nums, m, x);
+  var n := |nums|;
+  if exists x :: x != m && CountOccurrences(nums,x) > n/2 {
+    var x :| x != m && CountOccurrences(nums,x) > n/2;
+    CountOccurrences_Disjoint_Bound(nums,m,x);
+    assert CountOccurrences(nums,m) + CountOccurrences(nums,x) <= n;
+    assert CountOccurrences(nums,m) > n/2;
+    assert CountOccurrences(nums,x) > n/2;
+    assert CountOccurrences(nums,m) + CountOccurrences(nums,x) > n;
     assert false;
   }
 }
@@ -112,26 +74,11 @@ method MajorityElement(nums: seq<int>) returns (result: int)
 // </vc-spec>
 // <vc-code>
 {
-  /* code modified by LLM (iteration 3): linear scan returns when finds majority, otherwise use witness from precondition and apply uniqueness lemma */
+  /* code modified by LLM (iteration 2): choose majority witness and apply lemma */
   var n := |nums|;
-  var i := 0;
-  while i < n
-    decreases n - i
-    invariant 0 <= i <= n
-    invariant forall k :: 0 <= k < i ==> CountOccurrences(nums, nums[k]) <= n / 2
-  {
-    var cand := nums[i];
-    if CountOccurrences(nums, cand) > n / 2 {
-      MajorityImpliesUnique(nums, cand);
-      result := cand;
-      return;
-    } else {
-      i := i + 1;
-    }
-  }
-  var maj :| CountOccurrences(nums, maj) > n / 2;
-  MajorityImpliesUnique(nums, maj);
-  result := maj;
+  var m :| CountOccurrences(nums, m) > n / 2;
+  result := m;
+  Majority_NoOtherGreater(nums, result);
 }
 
 // </vc-code>

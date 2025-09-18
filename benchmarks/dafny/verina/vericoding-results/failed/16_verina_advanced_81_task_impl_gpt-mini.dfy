@@ -2,44 +2,43 @@
 // </vc-preamble>
 
 // <vc-helpers>
-/* helper modified by LLM (iteration 2): sequence-to-set function */
-function SeqSet(s: seq<int>): set<int> { set x | x in s }
-
-/* helper modified by LLM (iteration 2): lemma that inserting into a sorted sequence at index k yields a sorted sequence of length +1 */
-lemma InsertPreserves(uniq: seq<int>, k: int, x: int)
-  requires 0 <= k <= |uniq|
-  requires forall j :: 0 <= j < |uniq| - 1 ==> uniq[j] <= uniq[j+1]
-  requires forall t :: 0 <= t < k ==> uniq[t] < x
-  requires forall t :: k <= t < |uniq| ==> uniq[t] >= x
-  requires x !in uniq
-  ensures var new := uniq[..k] + [x] + uniq[k..]; |new| == |uniq| + 1 && forall j :: 0 <= j < |new| - 1 ==> new[j] <= new[j+1]
+/* helper modified by LLM (iteration 5): define Sorted */
+predicate Sorted(s: seq<int>)
 {
-  var new := uniq[..k] + [x] + uniq[k..];
-  assert |new| == |uniq| + 1;
-  var j := 0;
-  while j < |new| - 1
-    invariant 0 <= j <= |new| - 1
-  {
-    if j < k - 1 {
-      assert new[j] == uniq[j];
-      assert new[j+1] == uniq[j+1];
-      assert uniq[j] <= uniq[j+1];
-      assert new[j] <= new[j+1];
-    } else if j == k - 1 {
-      if k >= 1 {
-        assert new[j] == uniq[k-1];
-        assert uniq[k-1] < x;
-        assert new[j+1] == x;
-        assert new[j] <= new[j+1];
-      }
-    } else {
-      assert new[j] == uniq[j-1];
-      assert new[j+1] == uniq[j];
-      assert uniq[j-1] <= uniq[j];
-      assert new[j] <= new[j+1];
-    }
-    j := j + 1;
-  }
+  forall i :: 0 <= i < |s| - 1 ==> s[i] <= s[i + 1]
+}
+
+/* helper modified by LLM (iteration 5): sequence to set conversion */
+function SeqToSet(s: seq<int>): set<int>
+{
+  set x | x in s
+}
+
+/* helper modified by LLM (iteration 5): removing element from sequence corresponds to set difference, requires uniqueness */
+lemma SeqRemoveElementSet(rem: seq<int>, idx: int)
+  requires 0 <= idx < |rem|
+  requires forall i,j :: 0 <= i < j < |rem| ==> rem[i] != rem[j]
+  ensures SeqToSet(rem[..idx] + rem[idx+1..]) == SeqToSet(rem) - { rem[idx] }
+{
+  // Prove pointwise membership equivalence; unfolding definitions of SeqToSet and concatenation
+  assert forall v :: (v in SeqToSet(rem[..idx] + rem[idx+1..])) <==> (v in SeqToSet(rem) && v != rem[idx]);
+  assert SeqToSet(rem[..idx] + rem[idx+1..]) == SeqToSet(rem) - { rem[idx] };
+}
+
+/* helper modified by LLM (iteration 5): appending singleton to sequence corresponds to adding element to set */
+lemma SeqAppendSingletonSet(s: seq<int>, x: int)
+  ensures SeqToSet(s + [x]) == SeqToSet(s) + { x }
+{
+  assert forall v :: v in SeqToSet(s + [x]) <==> (v in SeqToSet(s) || v == x);
+}
+
+/* helper modified by LLM (iteration 5): appending element preserves sortedness when element >= all in seq */
+lemma AppendPreservesSorted(s: seq<int>, b: int)
+  requires Sorted(s)
+  requires forall a :: a in s ==> a <= b
+  ensures Sorted(s + [b])
+{
+  assert forall i :: 0 <= i < |s + [b]| - 1 ==> (s + [b])[i] <= (s + [b])[i + 1];
 }
 
 // </vc-helpers>
@@ -51,45 +50,61 @@ method UniqueSorted(arr: array<int>) returns (result: array<int>)
     ensures forall x :: x in arr[..] <==> x in result[..]
 // </vc-spec>
 // <vc-code>
+/* code modified by LLM (iteration 5): collect unique elements and produce a sorted array of uniques */
 {
-  /* code modified by LLM (iteration 2): build sorted unique sequence and copy to result, with helper lemma calls */
-  var uniq: seq<int> := [];
+  var n := arr.Length;
+  var seen: set<int> := {};
+  var tmpSeq: seq<int> := [];
   var i := 0;
-  while i < arr.Length
-    invariant 0 <= i <= arr.Length
-    invariant |uniq| <= i
-    invariant forall j :: 0 <= j < |uniq| - 1 ==> uniq[j] <= uniq[j+1]
-    invariant forall x :: x in arr[..i] <==> x in uniq[..]
+  while i < n
+    invariant 0 <= i <= n
+    invariant seen == SeqToSet(tmpSeq)
+    invariant forall p, q :: 0 <= p < q < |tmpSeq| ==> tmpSeq[p] != tmpSeq[q]
   {
     var x := arr[i];
-    if x in uniq {
-      i := i + 1;
-      continue;
+    if x !in seen {
+      tmpSeq := tmpSeq + [x];
+      seen := seen + {x};
     }
-    var k := 0;
-    while k < |uniq| && uniq[k] < x
-      invariant 0 <= k <= |uniq|
-      invariant forall t :: 0 <= t < k ==> uniq[t] < x
-    {
-      k := k + 1;
-    }
-    if k < |uniq| {
-      assert uniq[k] >= x;
-      assert forall t :: k <= t < |uniq| ==> uniq[t] >= x;
-    } else {
-      assert forall t :: k <= t < |uniq| ==> uniq[t] >= x;
-    }
-    InsertPreserves(uniq, k, x);
-    uniq := uniq[..k] + [x] + uniq[k..];
     i := i + 1;
   }
-  result := new int[|uniq|];
-  var idx := 0;
-  while idx < |uniq|
-    invariant 0 <= idx <= |uniq|
-    invariant forall j :: 0 <= j < idx ==> result[j] == uniq[j]
+
+  var rem := tmpSeq;
+  var sortedSeq: seq<int> := [];
+  while |rem| > 0
+    invariant SeqToSet(sortedSeq) + SeqToSet(rem) == SeqToSet(tmpSeq)
+    invariant Sorted(sortedSeq)
+    invariant forall a, b :: a in sortedSeq && b in rem ==> a <= b
+    invariant forall p, q :: 0 <= p < q < |rem| ==> rem[p] != rem[q]
   {
-    result[idx] := uniq[idx];
+    var minIdx := 0;
+    var j := 1;
+    while j < |rem|
+      invariant 1 <= j <= |rem|
+      invariant 0 <= minIdx < |rem|
+      invariant forall p :: 0 <= p < j ==> rem[minIdx] <= rem[p]
+    {
+      if rem[j] < rem[minIdx] {
+        minIdx := j;
+      }
+      j := j + 1;
+    }
+    var picked := rem[minIdx];
+    // update set and sequence invariants using lemmas
+    SeqAppendSingletonSet(sortedSeq, picked);
+    SeqRemoveElementSet(rem, minIdx);
+    sortedSeq := sortedSeq + [picked];
+    rem := rem[..minIdx] + rem[minIdx + 1..];
+  }
+
+  var k := |sortedSeq|;
+  result := new int[k];
+  var idx := 0;
+  while idx < k
+    invariant 0 <= idx <= k
+    invariant forall p :: 0 <= p < idx ==> result[p] == sortedSeq[p]
+  {
+    result[idx] := sortedSeq[idx];
     idx := idx + 1;
   }
 }

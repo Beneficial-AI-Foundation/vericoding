@@ -2,50 +2,17 @@
 // </vc-preamble>
 
 // <vc-helpers>
-/* helper modified by LLM (iteration 5): completely reworked sort with simpler bubble sort approach */
-function Contains(arr: array<int>, x: int): bool
-  reads arr
+/* helper modified by LLM (iteration 5): simplified sorting helper function */
+function insert_sorted(x: int, sorted: seq<int>): seq<int>
+  requires forall i :: 0 <= i < |sorted| - 1 ==> sorted[i] <= sorted[i + 1]
+  ensures forall i :: 0 <= i < |insert_sorted(x, sorted)| - 1 ==> insert_sorted(x, sorted)[i] <= insert_sorted(x, sorted)[i + 1]
+  ensures x in insert_sorted(x, sorted)
+  ensures forall y :: y in sorted ==> y in insert_sorted(x, sorted)
+  ensures forall y :: y in insert_sorted(x, sorted) ==> y == x || y in sorted
 {
-  x in arr[..]
-}
-
-function IsSorted(arr: array<int>): bool
-  reads arr
-{
-  forall i :: 0 <= i < arr.Length - 1 ==> arr[i] <= arr[i + 1]
-}
-
-function HasNoDuplicates(arr: array<int>): bool
-  reads arr
-{
-  forall i, j :: 0 <= i < j < arr.Length ==> arr[i] != arr[j]
-}
-
-method Sort(arr: array<int>)
-  modifies arr
-  ensures multiset(arr[..]) == multiset(old(arr[..]))
-  ensures forall i :: 0 <= i < arr.Length - 1 ==> arr[i] <= arr[i + 1]
-{
-  var n := arr.Length;
-  var i := 0;
-  while i < n
-    invariant 0 <= i <= n
-    invariant multiset(arr[..]) == multiset(old(arr[..]))
-    invariant forall k :: 0 <= k < i - 1 ==> arr[k] <= arr[k + 1]
-  {
-    var j := 0;
-    while j < n - 1 - i
-      invariant 0 <= j <= n - 1 - i
-      invariant multiset(arr[..]) == multiset(old(arr[..]))
-      invariant forall k :: 0 <= k < i ==> (k < i - 1 ==> arr[k] <= arr[k + 1])
-    {
-      if arr[j] > arr[j + 1] {
-        arr[j], arr[j + 1] := arr[j + 1], arr[j];
-      }
-      j := j + 1;
-    }
-    i := i + 1;
-  }
+  if |sorted| == 0 then [x]
+  else if x <= sorted[0] then [x] + sorted
+  else [sorted[0]] + insert_sorted(x, sorted[1..])
 }
 // </vc-helpers>
 
@@ -57,7 +24,7 @@ method UniqueSorted(arr: array<int>) returns (result: array<int>)
 // </vc-spec>
 // <vc-code>
 {
-  /* code modified by LLM (iteration 5): simplified with fixed invariants and proper element tracking */
+  /* code modified by LLM (iteration 5): corrected invariants and ensured proper sorted order maintenance */
   var temp := new int[arr.Length];
   var i := 0;
   while i < arr.Length
@@ -68,41 +35,66 @@ method UniqueSorted(arr: array<int>) returns (result: array<int>)
     i := i + 1;
   }
   
-  Sort(temp);
-  
-  var unique := new int[arr.Length];
-  var uniqueCount := 0;
-  
+  // Sort the array using insertion sort
   if temp.Length > 0 {
-    unique[0] := temp[0];
-    uniqueCount := 1;
-    
     i := 1;
     while i < temp.Length
       invariant 1 <= i <= temp.Length
-      invariant 1 <= uniqueCount <= i
-      invariant uniqueCount <= unique.Length
-      invariant forall k :: 0 <= k < uniqueCount - 1 ==> unique[k] <= unique[k + 1]
-      invariant forall k :: 0 <= k < uniqueCount ==> unique[k] in temp[..]
-      invariant forall x :: x in temp[..i] ==> x in unique[..uniqueCount]
-      invariant forall x :: x in unique[..uniqueCount] ==> x in temp[..]
+      invariant forall j :: 0 <= j < i - 1 ==> temp[j] <= temp[j + 1]
+      invariant forall x :: x in temp[..] <==> x in arr[..]
     {
-      if temp[i] != temp[i - 1] {
-        unique[uniqueCount] := temp[i];
-        uniqueCount := uniqueCount + 1;
+      var key := temp[i];
+      var j := i - 1;
+      while j >= 0 && temp[j] > key
+        invariant -1 <= j < i
+        invariant forall k :: j + 2 <= k <= i ==> temp[k] > key
+        invariant temp[j + 1] == key || (j + 1 < i && temp[j + 1] > key)
+        invariant forall x :: x in temp[..] <==> x in arr[..]
+      {
+        temp[j + 1] := temp[j];
+        j := j - 1;
       }
+      temp[j + 1] := key;
       i := i + 1;
     }
   }
   
-  result := new int[uniqueCount];
+  // Count unique elements first
+  var uniqueCount := 0;
   i := 0;
-  while i < uniqueCount
-    invariant 0 <= i <= uniqueCount
-    invariant forall k :: 0 <= k < i ==> result[k] == unique[k]
+  while i < temp.Length
+    invariant 0 <= i <= temp.Length
+    invariant 0 <= uniqueCount <= i
   {
-    result[i] := unique[i];
+    if i == 0 || temp[i] != temp[i - 1] {
+      uniqueCount := uniqueCount + 1;
+    }
     i := i + 1;
+  }
+  
+  // Create result array and fill with unique elements
+  result := new int[uniqueCount];
+  if uniqueCount > 0 {
+    var resultIndex := 0;
+    i := 0;
+    while i < temp.Length && resultIndex < result.Length
+      invariant 0 <= i <= temp.Length
+      invariant 0 <= resultIndex <= result.Length
+      invariant resultIndex <= uniqueCount
+      invariant resultIndex > 0 ==> (forall k :: 0 <= k < resultIndex - 1 ==> result[k] <= result[k + 1])
+      invariant forall x :: x in result[..resultIndex] ==> x in arr[..]
+      invariant forall k :: 0 <= k < resultIndex ==> (exists j :: 0 <= j < i && temp[j] == result[k])
+    {
+      if i == 0 || temp[i] != temp[i - 1] {
+        if resultIndex > 0 {
+          assert temp[i - 1] <= temp[i];
+          assert result[resultIndex - 1] <= temp[i];
+        }
+        result[resultIndex] := temp[i];
+        resultIndex := resultIndex + 1;
+      }
+      i := i + 1;
+    }
   }
 }
 // </vc-code>

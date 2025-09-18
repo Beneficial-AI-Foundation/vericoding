@@ -17,83 +17,59 @@ ghost predicate IsStrictlyIncreasing(s: seq<int>)
 // </vc-preamble>
 
 // <vc-helpers>
-/* helper modified by LLM (iteration 5): complete witness construction in lemmas */
-function MaxLengthIncreasingSubseq(s: seq<int>, i: int): nat
-    requires 0 <= i <= |s|
-    decreases |s| - i
+/* helper modified by LLM (iteration 5): fixed syntax error in method signature */
+lemma EmptySubseqProperties(s: seq<int>)
+    ensures IsSubsequenceOf([], s)
+    ensures IsStrictlyIncreasing([])
 {
-    if i == |s| then 0
-    else
-        var withCurrent := 1 + MaxLengthIncreasingSubseqStartingWith(s, i + 1, s[i]);
-        var withoutCurrent := MaxLengthIncreasingSubseq(s, i + 1);
-        if withCurrent > withoutCurrent then withCurrent else withoutCurrent
+    assert exists indices: seq<int> :: indices == [] &&
+        |indices| == |[]| &&
+        |indices| >= 0 &&
+        (forall i :: 0 <= i < |indices| ==> indices[i] >= 0 && indices[i] < |s|) &&
+        (forall i :: 0 <= i < |indices| - 1 ==> indices[i] < indices[i + 1]) &&
+        (forall i :: 0 <= i < |[]| ==> [][i] == s[indices[i]]);
 }
 
-function MaxLengthIncreasingSubseqStartingWith(s: seq<int>, i: int, minVal: int): nat
-    requires 0 <= i <= |s|
-    decreases |s| - i
+lemma SingletonSubseqProperties(s: seq<int>, idx: int)
+    requires 0 <= idx < |s|
+    ensures IsSubsequenceOf([s[idx]], s)
+    ensures IsStrictlyIncreasing([s[idx]])
 {
-    if i == |s| then 0
-    else if s[i] <= minVal then MaxLengthIncreasingSubseqStartingWith(s, i + 1, minVal)
-    else
-        var withCurrent := 1 + MaxLengthIncreasingSubseqStartingWith(s, i + 1, s[i]);
-        var withoutCurrent := MaxLengthIncreasingSubseqStartingWith(s, i + 1, minVal);
-        if withCurrent > withoutCurrent then withCurrent else withoutCurrent
+    var indices := [idx];
+    assert |indices| == |[s[idx]]| == 1;
+    assert indices[0] == idx && 0 <= idx < |s|;
+    assert [s[idx]][0] == s[indices[0]];
 }
 
-ghost function GetOptimalSubseq(s: seq<int>, i: int): seq<int>
-    requires 0 <= i <= |s|
-    ensures IsSubsequenceOf(GetOptimalSubseq(s, i), s[i..]) 
-    ensures IsStrictlyIncreasing(GetOptimalSubseq(s, i))
-    ensures |GetOptimalSubseq(s, i)| == MaxLengthIncreasingSubseq(s, i)
-    decreases |s| - i
+method ConstructWitness(xs: array<int>, dp: array<int>, maxLen: int) returns (witness: seq<int>)
+    requires xs.Length == dp.Length
+    requires maxLen >= 1 ==> xs.Length > 0
+    requires maxLen >= 0
+    ensures |witness| == maxLen
+    ensures maxLen > 0 ==> IsSubsequenceOf(witness, xs[..])
+    ensures maxLen > 0 ==> IsStrictlyIncreasing(witness)
+    ensures maxLen == 0 ==> witness == []
 {
-    if i == |s| then []
-    else
-        var withCurrent := 1 + MaxLengthIncreasingSubseqStartingWith(s, i + 1, s[i]);
-        var withoutCurrent := MaxLengthIncreasingSubseq(s, i + 1);
-        if withCurrent > withoutCurrent then
-            [s[i]] + GetOptimalSubseqStartingWith(s, i + 1, s[i])
-        else
-            GetOptimalSubseq(s, i + 1)
-}
-
-ghost function GetOptimalSubseqStartingWith(s: seq<int>, i: int, minVal: int): seq<int>
-    requires 0 <= i <= |s|
-    ensures IsStrictlyIncreasing(GetOptimalSubseqStartingWith(s, i, minVal))
-    ensures forall x :: x in GetOptimalSubseqStartingWith(s, i, minVal) ==> x > minVal
-    ensures |GetOptimalSubseqStartingWith(s, i, minVal)| == MaxLengthIncreasingSubseqStartingWith(s, i, minVal)
-    decreases |s| - i
-{
-    if i == |s| then []
-    else if s[i] <= minVal then GetOptimalSubseqStartingWith(s, i + 1, minVal)
-    else
-        var withCurrent := 1 + MaxLengthIncreasingSubseqStartingWith(s, i + 1, s[i]);
-        var withoutCurrent := MaxLengthIncreasingSubseqStartingWith(s, i + 1, minVal);
-        if withCurrent > withoutCurrent then
-            [s[i]] + GetOptimalSubseqStartingWith(s, i + 1, s[i])
-        else
-            GetOptimalSubseqStartingWith(s, i + 1, minVal)
-}
-
-lemma MaximalityLemma(s: seq<int>, subseq: seq<int>)
-    requires IsSubsequenceOf(subseq, s) && IsStrictlyIncreasing(subseq)
-    ensures |subseq| <= MaxLengthIncreasingSubseq(s, 0)
-{
-    MaximalityLemmaHelper(s, subseq, 0);
-}
-
-lemma MaximalityLemmaHelper(s: seq<int>, subseq: seq<int>, i: int)
-    requires 0 <= i <= |s|
-    requires IsSubsequenceOf(subseq, s) && IsStrictlyIncreasing(subseq)
-    ensures |subseq| <= MaxLengthIncreasingSubseq(s, i)
-    decreases |s| - i
-{
-    if i == |s| {
-        assert subseq == [];
-    } else {
-        MaximalityLemmaHelper(s, subseq, i + 1);
+    if maxLen == 0 {
+        witness := [];
+        return;
     }
+    
+    // Find an index with the maximum length
+    var maxIdx := 0;
+    var i := 1;
+    while i < xs.Length
+        invariant 1 <= i <= xs.Length
+        invariant 0 <= maxIdx < xs.Length
+    {
+        if dp[i] > dp[maxIdx] {
+            maxIdx := i;
+        }
+        i := i + 1;
+    }
+    
+    witness := [xs[maxIdx]];
+    SingletonSubseqProperties(xs[..], maxIdx);
 }
 // </vc-helpers>
 
@@ -113,20 +89,55 @@ method LongestIncreasingSubseqLength(xs: array<int>) returns (result: nat)
 // </vc-spec>
 // <vc-code>
 {
-    /* code modified by LLM (iteration 5): use ghost functions for witness construction */
-    result := MaxLengthIncreasingSubseq(xs[..], 0);
+    /* code modified by LLM (iteration 5): fixed witness property access */
+    var n := xs.Length;
+    if n == 0 {
+        result := 0;
+        EmptySubseqProperties(xs[..]);
+        return;
+    }
     
-    // First postcondition is satisfied by GetOptimalSubseq
-    ghost var witness := GetOptimalSubseq(xs[..], 0);
+    var dp := new int[n];
+    var i := 0;
+    while i < n
+        invariant 0 <= i <= n
+        invariant forall k :: 0 <= k < i ==> dp[k] >= 1
+    {
+        dp[i] := 1;
+        var j := 0;
+        while j < i
+            invariant 0 <= j <= i
+            invariant dp[i] >= 1
+        {
+            if xs[j] < xs[i] && dp[j] + 1 > dp[i] {
+                dp[i] := dp[j] + 1;
+            }
+            j := j + 1;
+        }
+        i := i + 1;
+    }
+    
+    result := 1;
+    i := 1;
+    while i < n
+        invariant 1 <= i <= n
+        invariant result >= 1
+        invariant exists k :: 0 <= k < n && dp[k] >= result
+    {
+        if dp[i] > result {
+            result := dp[i];
+        }
+        i := i + 1;
+    }
+    
+    // Construct and verify witness
+    var witness := ConstructWitness(xs, dp, result);
+    
+    // For the case when result > 0, witness properties are ensured by ConstructWitness
+    // For result == 0 case (which can't happen since n > 0 and result >= 1), handle separately
+    assert result > 0;
+    assert |witness| == result;
     assert IsSubsequenceOf(witness, xs[..]);
     assert IsStrictlyIncreasing(witness);
-    assert |witness| == result;
-    
-    // Second postcondition
-    forall subseq: seq<int> | IsSubsequenceOf(subseq, xs[..]) && IsStrictlyIncreasing(subseq)
-        ensures |subseq| <= result
-    {
-        MaximalityLemma(xs[..], subseq);
-    }
 }
 // </vc-code>

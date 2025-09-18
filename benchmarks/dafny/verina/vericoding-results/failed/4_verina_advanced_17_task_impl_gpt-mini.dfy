@@ -2,8 +2,35 @@
 // </vc-preamble>
 
 // <vc-helpers>
-/* helper modified by LLM (iteration 5): simple min helper */
-function min(a: int, b: int): int { if a < b then a else b }
+/* helper modified by LLM (iteration 5): CopyArray copies elements preserving multiset */
+method CopyArray(l: array<int>, a: array<int>)
+  requires l != null && a != null && l.Length == a.Length
+  modifies a
+  ensures multiset(a[..]) == multiset(l[..])
+{
+  var n := l.Length;
+  var i := 0;
+  while i < n
+    invariant 0 <= i <= n
+    invariant multiset(a[..i]) == multiset(l[..i])
+  {
+    a[i] := l[i];
+    i := i + 1;
+  }
+}
+
+/* helper modified by LLM (iteration 5): Swap exchanges two elements preserving multiset */
+method Swap(a: array<int>, i: int, j: int)
+  requires a != null && 0 <= i < a.Length && 0 <= j < a.Length
+  modifies a
+  ensures multiset(a[..]) == old(multiset(a[..]))
+{
+  if i == j { return; }
+  var tmp := a[i];
+  a[i] := a[j];
+  a[j] := tmp;
+}
+
 // </vc-helpers>
 
 // <vc-spec>
@@ -17,37 +44,33 @@ method insertion_sort(l: array<int>) returns (result: array<int>)
 // </vc-spec>
 // <vc-code>
 {
-  /* code modified by LLM (iteration 5): insertion sort using immutable sequences */
-  var n := l.Length;
-  var s: seq<int> := [];
-  var idx := 0;
-  while idx < n
-    invariant 0 <= idx <= n
-    invariant s.Length == idx
-    invariant forall p, q :: 0 <= p < q < s.Length ==> s[p] <= s[q]
-    invariant multiset(s) == multiset(l[..idx])
+  /* code modified by LLM (iteration 5): Selection sort using CopyArray and Swap, preserving multiset */
+  result := new int[l.Length];
+  CopyArray(l, result);
+  var n := result.Length;
+  var i := 0;
+  while i < n
+    invariant 0 <= i <= n
+    invariant multiset(result[..]) == multiset(l[..])
+    invariant forall p, q :: 0 <= p < q < i ==> result[p] <= result[q]
+    invariant forall p :: 0 <= p < i ==> forall k :: i <= k < n ==> result[p] <= result[k]
   {
-    var v := l[idx];
-    var pos := 0;
-    while pos < s.Length && s[pos] <= v
-      invariant 0 <= pos <= s.Length
-      invariant forall p, q :: 0 <= p < q < pos ==> s[p] <= s[q]
-      invariant forall p :: 0 <= p < pos ==> s[p] <= v
+    var m := i;
+    var k := i + 1;
+    while k < n
+      invariant i <= m < n
+      invariant i + 1 <= k <= n
+      invariant multiset(result[..]) == multiset(l[..])
+      invariant forall t :: i <= t < k ==> result[m] <= result[t]
     {
-      pos := pos + 1;
+      if result[k] < result[m] {
+        m := k;
+      }
+      k := k + 1;
     }
-    s := s[..pos] + [v] + s[pos..];
-    idx := idx + 1;
-  }
-
-  result := new int[n];
-  var k := 0;
-  while k < n
-    invariant 0 <= k <= n
-    invariant forall p :: 0 <= p < k ==> result[p] == s[p]
-  {
-    result[k] := s[k];
-    k := k + 1;
+    Swap(result, i, m);
+    i := i + 1;
   }
 }
+
 // </vc-code>

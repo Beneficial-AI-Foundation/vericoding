@@ -2,8 +2,16 @@
 // </vc-preamble>
 
 // <vc-helpers>
-/* helper modified by LLM (iteration 4): defined Merge, Sorted, MultisetConcat, MultisetSingletonConcat, Merge_preserves_multiset, Merge_returns_sorted, Merge_length */
+/* helper modified by LLM (iteration 5): sorted predicate (adjacent definition) */
+predicate Sorted(s: seq<int>) {
+  forall i | 0 <= i + 1 < |s| ==> s[i] <= s[i+1]
+}
+
+/* helper modified by LLM (iteration 4): merge two sorted sequences */
 function Merge(a: seq<int>, b: seq<int>): seq<int>
+  ensures |Merge(a,b)| == |a| + |b|
+  ensures multiset(Merge(a,b)) == multiset(a) + multiset(b)
+  ensures (Sorted(a) && Sorted(b)) ==> Sorted(Merge(a,b))
   decreases |a| + |b|
 {
   if |a| == 0 then b
@@ -12,97 +20,96 @@ function Merge(a: seq<int>, b: seq<int>): seq<int>
   else [b[0]] + Merge(a, b[1..])
 }
 
-predicate Sorted(s: seq<int>) {
-  forall i, j :: 0 <= i < j < |s| ==> s[i] <= s[j]
-}
-
-lemma MultisetConcat(s: seq<int>, t: seq<int>)
-  ensures multiset(s + t) == multiset(s) + multiset(t)
-  decreases |s|
+/* helper modified by LLM (iteration 5): tail of sorted sequence is sorted */
+lemma SortedTail(s: seq<int>)
+  requires Sorted(s)
+  ensures |s| <= 1 || Sorted(s[1..])
 {
-  if |s| == 0 {
-  } else {
-    var x := s[0];
-    var s1 := s[1..];
-    MultisetConcat(s1, t);
-  }
+  // If s has length <= 1, trivial. Otherwise the adjacent property shifts.
 }
 
-/* helper modified by LLM (iteration 4): singleton concat lemma to simplify multiset reasoning */
-lemma MultisetSingletonConcat(x: int, s: seq<int>)
-  ensures multiset([x] + s) == multiset([x]) + multiset(s)
-{
-  MultisetConcat([x], s);
-}
-
-/* helper modified by LLM (iteration 4): preserves multiset through Merge by induction */
-lemma Merge_preserves_multiset(a: seq<int>, b: seq<int>)
+/* helper modified by LLM (iteration 5): Merge preserves multiset */
+lemma Merge_multiset(a: seq<int>, b: seq<int>)
   ensures multiset(Merge(a,b)) == multiset(a) + multiset(b)
   decreases |a| + |b|
 {
   if |a| == 0 {
-    assert Merge(a,b) == b;
-    MultisetConcat(a, b);
-    assert multiset(Merge(a,b)) == multiset(b);
+    // Merge(a,b) == b
   } else if |b| == 0 {
-    assert Merge(a,b) == a;
-    MultisetConcat(a, b);
-    assert multiset(Merge(a,b)) == multiset(a);
+    // Merge(a,b) == a
   } else if a[0] <= b[0] {
-    var a0 := a[0];
-    var a1 := a[1..];
-    Merge_preserves_multiset(a1, b);
-    assert Merge(a,b) == [a0] + Merge(a1, b);
-    MultisetSingletonConcat(a0, Merge(a1,b));
-    assert multiset(Merge(a,b)) == multiset([a0]) + multiset(Merge(a1,b));
-    assert multiset(Merge(a1,b)) == multiset(a1) + multiset(b);
-    MultisetSingletonConcat(a0, a1);
-    assert multiset([a0]) + multiset(a1) == multiset([a0] + a1);
-    assert multiset([a0] + a1) + multiset(b) == multiset(a) + multiset(b);
-    assert multiset(Merge(a,b)) == multiset(a) + multiset(b);
+    Merge_multiset(a[1..], b);
+    assert multiset(Merge(a, b)) == multiset([a[0]] + Merge(a[1..], b));
+    assert multiset([a[0]] + Merge(a[1..], b)) == multiset(Merge(a[1..], b)) + multiset([a[0]]);
+    assert multiset(Merge(a[1..], b)) + multiset([a[0]]) == (multiset(a[1..]) + multiset(b)) + multiset([a[0]]);
+    assert (multiset(a[1..]) + multiset(b)) + multiset([a[0]]) == multiset(a) + multiset(b);
   } else {
-    var b0 := b[0];
-    var b1 := b[1..];
-    Merge_preserves_multiset(a, b1);
-    assert Merge(a,b) == [b0] + Merge(a, b1);
-    MultisetSingletonConcat(b0, Merge(a,b1));
-    assert multiset(Merge(a,b)) == multiset([b0]) + multiset(Merge(a,b1));
-    assert multiset(Merge(a,b1)) == multiset(a) + multiset(b1);
-    MultisetSingletonConcat(b0, b1);
-    assert multiset([b0]) + multiset(b1) == multiset([b0] + b1);
-    assert multiset(a) + multiset([b0] + b1) == multiset(a) + multiset(b);
-    assert multiset(Merge(a,b)) == multiset(a) + multiset(b);
+    Merge_multiset(a, b[1..]);
+    assert multiset(Merge(a, b)) == multiset([b[0]] + Merge(a, b[1..]));
+    assert multiset([b[0]] + Merge(a, b[1..])) == multiset(Merge(a, b[1..])) + multiset([b[0]]);
+    assert multiset(Merge(a, b[1..])) + multiset([b[0]]) == (multiset(a) + multiset(b[1..])) + multiset([b[0]]);
+    assert (multiset(a) + multiset(b[1..])) + multiset([b[0]]) == multiset(a) + multiset(b);
   }
 }
 
-lemma Merge_returns_sorted(a: seq<int>, b: seq<int>)
+/* helper modified by LLM (iteration 5): Merge preserves sortedness when inputs sorted */
+lemma Merge_sorted(a: seq<int>, b: seq<int>)
   requires Sorted(a) && Sorted(b)
   ensures Sorted(Merge(a,b))
   decreases |a| + |b|
 {
   if |a| == 0 || |b| == 0 {
+    // trivial
   } else if a[0] <= b[0] {
-    var a0 := a[0];
-    var a1 := a[1..];
-    Merge_returns_sorted(a1, b);
+    // a[0] is head; need Sorted(a[1..]) and sortedness of Merge(a[1..], b)
+    SortedTail(a);
+    Merge_sorted(a[1..], b);
+    // Show adjacency: For adjacent indices in the merged sequence, either both are in Merge(a[1..],b)
+    // (handled by inductive hypothesis) or are the boundary between a[0] and head of Merge(a[1..],b).
+    // The head of Merge(a[1..],b) is >= min(a[1], b[0]) and a[0] <= both a[1] and b[0], so a[0] <= head.
+    // These facts follow from Sorted(a) and Sorted(b) and the branch condition a[0] <= b[0].
   } else {
-    var b0 := b[0];
-    var b1 := b[1..];
-    Merge_returns_sorted(a, b1);
+    // symmetric case
+    SortedTail(b);
+    Merge_sorted(a, b[1..]);
   }
 }
 
-lemma Merge_length(a: seq<int>, b: seq<int>)
-  ensures |Merge(a,b)| == |a| + |b|
-  decreases |a| + |b|
+/* helper modified by LLM (iteration 5): MergeSortFunc preserves multiset */
+lemma MergeSortFunc_multiset(s: seq<int>)
+  ensures multiset(MergeSortFunc(s)) == multiset(s)
+  decreases |s|
 {
-  if |a| == 0 {
-  } else if |b| == 0 {
-  } else if a[0] <= b[0] {
-    Merge_length(a[1..], b);
+  if |s| <= 1 {
   } else {
-    Merge_length(a, b[1..]);
+    MergeSortFunc_multiset(s[..|s|/2]);
+    MergeSortFunc_multiset(s[|s|/2..]);
+    Merge_multiset(MergeSortFunc(s[..|s|/2]), MergeSortFunc(s[|s|/2..]));
   }
+}
+
+/* helper modified by LLM (iteration 5): MergeSortFunc produces sorted sequence */
+lemma MergeSortFunc_sorted(s: seq<int>)
+  ensures Sorted(MergeSortFunc(s))
+  decreases |s|
+{
+  if |s| <= 1 {
+  } else {
+    MergeSortFunc_sorted(s[..|s|/2]);
+    MergeSortFunc_sorted(s[|s|/2..]);
+    Merge_sorted(MergeSortFunc(s[..|s|/2]), MergeSortFunc(s[|s|/2..]));
+  }
+}
+
+/* helper modified by LLM (iteration 4): MergeSort function */
+function MergeSortFunc(s: seq<int>): seq<int>
+  ensures |MergeSortFunc(s)| == |s|
+  ensures Sorted(MergeSortFunc(s))
+  ensures multiset(MergeSortFunc(s)) == multiset(s)
+  decreases |s|
+{
+  if |s| <= 1 then s
+  else Merge(MergeSortFunc(s[..|s|/2]), MergeSortFunc(s[|s|/2..]))
 }
 
 // </vc-helpers>
@@ -115,34 +122,9 @@ method MergeSort(list: seq<int>) returns (result: seq<int>)
         multiset(result) == multiset(list)
 // </vc-spec>
 // <vc-code>
-/* code modified by LLM (iteration 4): implement MergeSort using Merge and helper lemmas */
 {
-  if |list| <= 1 {
-    result := list;
-    return;
-  }
-  var mid := |list| / 2;
-  var left := list[..mid];
-  var right := list[mid..];
-  var lres := MergeSort(left);
-  var rres := MergeSort(right);
-  result := Merge(lres, rres);
-  // lengths and sortedness
-  Merge_length(lres, rres);
-  Merge_returns_sorted(lres, rres);
-  // multisets: use helper lemmas and recursive postconditions
-  Merge_preserves_multiset(lres, rres);
-  assert multiset(result) == multiset(lres) + multiset(rres);
-  // postconditions of recursive calls
-  assert multiset(lres) == multiset(left);
-  assert multiset(rres) == multiset(right);
-  // concat left and right equals original list
-  MultisetConcat(left, right);
-  assert multiset(left) + multiset(right) == multiset(left + right);
-  assert left + right == list;
-  assert multiset(left + right) == multiset(list);
-  // conclude multiset(result) == multiset(list)
-  assert multiset(result) == multiset(list);
+  /* code modified by LLM (iteration 5): use MergeSortFunc to compute sorted result */
+  result := MergeSortFunc(list);
 }
 
 // </vc-code>

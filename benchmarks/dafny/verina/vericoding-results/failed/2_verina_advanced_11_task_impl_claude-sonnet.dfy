@@ -6,81 +6,69 @@ function CountOccurrences(x: int, lst: seq<int>): nat
 // </vc-preamble>
 
 // <vc-helpers>
-/* helper modified by LLM (iteration 5): fixed set cardinality proof and disjointness reasoning */
-predicate IsMajority(x: int, lst: seq<int>)
+/* helper modified by LLM (iteration 5): Fixed set union syntax error */
+function IsMajorityElement(x: int, lst: seq<int>): bool
 {
-    CountOccurrences(x, lst) > |lst| / 2
+    var n := |lst|;
+    CountOccurrences(x, lst) > n / 2
 }
 
-function CountOccurrencesInArray(x: int, arr: array<int>, end: nat): nat
-    requires end <= arr.Length
-    reads arr
+lemma DisjointSetsCardinality(x: int, y: int, lst: seq<int>)
+    requires x != y
+    ensures var x_indices := set i | 0 <= i < |lst| && lst[i] == x;
+            var y_indices := set i | 0 <= i < |lst| && lst[i] == y;
+            x_indices !! y_indices && |x_indices| + |y_indices| <= |lst|
 {
-    CountOccurrences(x, arr[..end])
-}
-
-lemma CountOccurrencesProperty(x: int, arr: array<int>, i: nat)
-    requires i < arr.Length
-    ensures CountOccurrencesInArray(x, arr, i+1) == CountOccurrencesInArray(x, arr, i) + (if arr[i] == x then 1 else 0)
-{
-    var s1 := arr[..i];
-    var s2 := arr[..i+1];
-    assert s2 == s1 + [arr[i]];
+    var x_indices := set i | 0 <= i < |lst| && lst[i] == x;
+    var y_indices := set i | 0 <= i < |lst| && lst[i] == y;
     
-    assert CountOccurrences(x, s2) == |set j | 0 <= j < |s2| && s2[j] == x|;
-    assert CountOccurrences(x, s1) == |set j | 0 <= j < |s1| && s1[j] == x|;
-    
-    var set1 := set j | 0 <= j < |s1| && s1[j] == x;
-    var set2 := set j | 0 <= j < |s2| && s2[j] == x;
-    
-    if arr[i] == x {
-        assert set2 == set1 + {|s1|};
-        assert |s1| !in set1;
-        assert |set2| == |set1| + 1;
-    } else {
-        assert set2 == set1;
-        assert |set2| == |set1|;
-    }
-}
-
-lemma MajorityUniqueness(lst: seq<int>)
-    ensures forall x, y :: x != y && CountOccurrences(x, lst) > |lst| / 2 && CountOccurrences(y, lst) > |lst| / 2 ==> false
-{
-    forall x, y | x != y && CountOccurrences(x, lst) > |lst| / 2 && CountOccurrences(y, lst) > |lst| / 2
-        ensures false
+    forall i | i in x_indices
+        ensures i !in y_indices
     {
-        var setX := set i | 0 <= i < |lst| && lst[i] == x;
-        var setY := set i | 0 <= i < |lst| && lst[i] == y;
-        var universeSet := set i | 0 <= i < |lst|;
-        assert setX !! setY;
-        assert setX <= universeSet;
-        assert setY <= universeSet;
-        assert setX + setY <= universeSet;
-        assert |setX + setY| == |setX| + |setY|;
-        assert |setX + setY| <= |universeSet|;
-        assert |setX| + |setY| <= |lst|;
-        assert CountOccurrences(x, lst) + CountOccurrences(y, lst) <= |lst|;
-        assert CountOccurrences(x, lst) > |lst| / 2;
-        assert CountOccurrences(y, lst) > |lst| / 2;
-        assert CountOccurrences(x, lst) + CountOccurrences(y, lst) > |lst|;
+        assert lst[i] == x;
+        assert lst[i] != y;
     }
+    
+    assert x_indices !! y_indices;
+    assert x_indices <= set i | 0 <= i < |lst|;
+    assert y_indices <= set i | 0 <= i < |lst|;
+    assert |x_indices * y_indices| == |x_indices| + |y_indices|;
+    assert x_indices * y_indices <= set i | 0 <= i < |lst|;
+    assert |x_indices * y_indices| <= |lst|;
 }
 
-lemma MajorityExistsImpliesUnique(x: int, lst: seq<int>)
-    requires CountOccurrences(x, lst) > |lst| / 2
-    ensures forall y :: y != x ==> CountOccurrences(y, lst) <= |lst| / 2
+lemma MajorityElementUnique(lst: seq<int>, x: int, y: int)
+    requires IsMajorityElement(x, lst)
+    requires IsMajorityElement(y, lst)
+    ensures x == y
 {
-    forall y | y != x
-        ensures CountOccurrences(y, lst) <= |lst| / 2
-    {
-        if CountOccurrences(y, lst) > |lst| / 2 {
-            MajorityUniqueness(lst);
-            assert false;
-        }
+    var n := |lst|;
+    if x != y {
+        DisjointSetsCardinality(x, y, lst);
+        var x_count := CountOccurrences(x, lst);
+        var y_count := CountOccurrences(y, lst);
+        assert x_count > n / 2;
+        assert y_count > n / 2;
+        assert x_count + y_count > n;
+        assert false;
     }
 }
 
-lemma NoMajorityLemma(candidate: int, lst: seq<int>)
+lemma CountOccurrencesSliceExtend(x: int, lst: seq<int>, i: int)
+    requires 0 <= i < |lst|
+    ensures CountOccurrences(x, lst[..i+1]) == 
+            CountOccurrences(x, lst[..i]) + (if lst[i] == x then 1 else 0)
+{
+}
+
+lemma CountOccurrencesCorrect(candidate: int, lst: seq<int>, count: nat)
+    requires count == CountOccurrences(candidate, lst)
+    ensures count > |lst| / 2 ==> IsMajorityElement(candidate, lst)
+    ensures count <= |lst| / 2 ==> !IsMajorityElement(candidate, lst)
+{
+}
+
+lemma NoMajorityImpliesAllBounded(lst: seq<int>, candidate: int)
     requires CountOccurrences(candidate, lst) <= |lst| / 2
     ensures forall x :: CountOccurrences(x, lst) <= |lst| / 2
 {
@@ -88,7 +76,8 @@ lemma NoMajorityLemma(candidate: int, lst: seq<int>)
         ensures CountOccurrences(x, lst) <= |lst| / 2
     {
         if CountOccurrences(x, lst) > |lst| / 2 {
-            MajorityUniqueness(lst);
+            assert IsMajorityElement(x, lst);
+            assert CountOccurrences(candidate, lst) > |lst| / 2;
             assert false;
         }
     }
@@ -106,53 +95,65 @@ method FindMajorityElement(lst: array<int>) returns (result: int)
 // </vc-spec>
 // <vc-code>
 {
-    /* code modified by LLM (iteration 5): fixed postcondition proof with proper helper lemma */
-    if lst.Length == 0 {
+    /* code modified by LLM (iteration 5): Fixed loop invariants and added proper slice handling */
+    var n := lst.Length;
+    if n == 0 {
         result := -1;
         return;
     }
     
     var candidate := lst[0];
-    var count := 0;
-    var i := 0;
+    var count := 1;
     
-    while i < lst.Length
-        invariant 0 <= i <= lst.Length
+    var i := 1;
+    while i < n
+        invariant 1 <= i <= n
+        invariant 0 <= count
     {
-        if count == 0 {
-            candidate := lst[i];
-            count := 1;
-        } else if lst[i] == candidate {
+        if lst[i] == candidate {
             count := count + 1;
         } else {
             count := count - 1;
+            if count == 0 {
+                candidate := lst[i];
+                count := 1;
+            }
         }
         i := i + 1;
     }
     
-    var actualCount := 0;
+    var verify_count := 0;
     i := 0;
-    while i < lst.Length
-        invariant 0 <= i <= lst.Length
-        invariant actualCount == CountOccurrencesInArray(candidate, lst, i)
+    while i < n
+        invariant 0 <= i <= n
+        invariant verify_count == CountOccurrences(candidate, lst[..i])
     {
-        CountOccurrencesProperty(candidate, lst, i);
+        CountOccurrencesSliceExtend(candidate, lst[..], i);
         if lst[i] == candidate {
-            actualCount := actualCount + 1;
+            verify_count := verify_count + 1;
         }
         i := i + 1;
     }
     
-    if actualCount > lst.Length / 2 {
+    assert lst[..] == lst[..n];
+    assert verify_count == CountOccurrences(candidate, lst[..]);
+    CountOccurrencesCorrect(candidate, lst[..], verify_count);
+    
+    if verify_count > n / 2 {
         result := candidate;
-        assert CountOccurrences(result, lst[..]) > |lst[..]| / 2;
-        MajorityExistsImpliesUnique(result, lst[..]);
-        assert forall x :: CountOccurrences(x, lst[..]) <= |lst[..]| / 2 || x == result;
+        assert IsMajorityElement(result, lst[..]);
+        assert CountOccurrences(result, lst[..]) > n / 2;
+        forall x | x != result
+            ensures CountOccurrences(x, lst[..]) <= n / 2
+        {
+            if CountOccurrences(x, lst[..]) > n / 2 {
+                MajorityElementUnique(lst[..], result, x);
+            }
+        }
     } else {
         result := -1;
-        assert CountOccurrences(candidate, lst[..]) <= lst.Length / 2;
-        NoMajorityLemma(candidate, lst[..]);
-        assert forall x :: CountOccurrences(x, lst[..]) <= |lst[..]| / 2;
+        assert CountOccurrences(candidate, lst[..]) <= n / 2;
+        NoMajorityImpliesAllBounded(lst[..], candidate);
     }
 }
 // </vc-code>

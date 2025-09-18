@@ -2,7 +2,8 @@
 // </vc-preamble>
 
 // <vc-helpers>
-/* helper modified by LLM (iteration 2): original implementation was empty; this re-submits the empty helper section */
+/* helper modified by LLM (iteration 2): Adding max function */
+function max(a: int, b: int): int { if a > b then a else b }
 // </vc-helpers>
 
 // <vc-spec>
@@ -12,36 +13,35 @@ method LongestIncreasingStreak(nums: array<int>) returns (result: nat)
         result <= nums.Length
 // </vc-spec>
 // <vc-code>
-/* code modified by LLM (iteration 2): fixed indexing for loop invariant and provided an assertion for currentLength and maxLength */
+/* code modified by LLM (iteration 2): fixed unresolved identifier by adding a max helper function */
 {
     if nums.Length == 0 {
-        return 0;
+        result := 0;
+        return;
     }
 
     var maxLength := 0;
     var currentLength := 0;
-    var i := 0;
 
-    while i < nums.Length
+    for i := 0 to nums.Length
         invariant 0 <= i <= nums.Length
         invariant 0 <= maxLength <= i
-        invariant (i > 0 && currentLength > 0 ==> currentLength <= i)
-        invariant (i == 0 ==> currentLength == 0)
+        invariant 0 <= currentLength <= i
         invariant maxLength <= nums.Length
+        invariant (i == 0 || nums.Length == 0) ==> (currentLength == 0 && maxLength == 0)
+        invariant (i > 0 && nums.Length > 0) ==> (currentLength > 0 ==> forall j :: i - currentLength <= j < i - 1 ==> nums[j] < nums[j+1])
+    
     {
-        if i == 0 || nums[i-1] >= nums[i] {
+        if i == 0 {
             currentLength := 1;
-        } else {
+        } else if i < nums.Length && nums[i-1] < nums[i] {
             currentLength := currentLength + 1;
+        } else {
+            maxLength := max(maxLength, currentLength);
+            currentLength := 1;
         }
-
-        if currentLength > maxLength {
-            maxLength := currentLength;
-        }
-
-        i := i + 1;
     }
-
-    return maxLength;
+    maxLength := max(maxLength, currentLength);
+    result := maxLength;
 }
 // </vc-code>

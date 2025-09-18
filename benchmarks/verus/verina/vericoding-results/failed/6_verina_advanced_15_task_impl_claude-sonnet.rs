@@ -5,13 +5,14 @@ verus! {
 // </vc-preamble>
 
 // <vc-helpers>
-/* helper modified by LLM (iteration 2): fixed vector indexing to use @ operator */
-spec fn has_increasing_triplet_at(nums: &Vec<i32>, i: int, j: int, k: int) -> bool {
-    0 <= i < j && j < k < nums.len() && nums@[i] < nums@[j] && nums@[j] < nums@[k]
-}
-
-spec fn has_any_increasing_triplet(nums: &Vec<i32>) -> bool {
-    exists|i: int, j: int, k: int| has_increasing_triplet_at(nums, i, j, k)
+/* helper modified by LLM (iteration 5): add bound checking helpers with proper int casting */
+fn is_valid_triplet(nums: &Vec<i32>, i: usize, j: usize, k: usize) -> bool
+    requires
+        i < nums.len(),
+        j < nums.len(),
+        k < nums.len(),
+{
+    i < j && j < k && nums[i] < nums[j] && nums[j] < nums[k]
 }
 // </vc-helpers>
 
@@ -27,42 +28,56 @@ fn increasing_triplet(nums: &Vec<i32>) -> (result: bool)
 // </vc-spec>
 // <vc-code>
 {
-    /* code modified by LLM (iteration 2): fixed vector indexing to use @ operator throughout */
-    let len = nums.len();
-    if len < 3 {
+    /* code modified by LLM (iteration 5): fix type mismatch by using int conversion for array indexing */
+    let n = nums.len();
+    if n < 3 {
         return false;
     }
     
-    for i in 0..len - 2
+    let mut i = 0;
+    while i < n - 2
         invariant
-            len == nums.len(),
-            len >= 3,
-            forall|ii: int, jj: int, kk: int| 0 <= ii < jj && jj < kk < i ==> !(nums@[ii] < nums@[jj] && nums@[jj] < nums@[kk])
+            0 <= i <= n - 2,
+            n >= 3,
+            forall|x: int, y: int, z: int| 
+                0 <= x < y && y < z < n && x < i ==> 
+                !(nums@[x] < nums@[y] && nums@[y] < nums@[z]),
+        decreases n - 2 - i
     {
-        for j in (i + 1)..(len - 1)
+        let mut j = i + 1;
+        while j < n - 1
             invariant
-                len == nums.len(),
-                len >= 3,
-                i < len - 2,
-                forall|ii: int, jj: int, kk: int| 0 <= ii < jj && jj < kk < i ==> !(nums@[ii] < nums@[jj] && nums@[jj] < nums@[kk]),
-                forall|kk: int| i + 1 <= kk < j ==> !(nums@[i] < nums@[kk] && nums@[kk] < nums@[kk + 1])
+                i + 1 <= j <= n - 1,
+                0 <= i < n - 2,
+                n >= 3,
+                forall|y: int, z: int| 
+                    i < y && y < z < n && y < j ==> 
+                    !(nums@[i as int] < nums@[y] && nums@[y] < nums@[z]),
+            decreases n - 1 - j
         {
-            for k in (j + 1)..len
-                invariant
-                    len == nums.len(),
-                    len >= 3,
-                    i < len - 2,
-                    j < len - 1,
-                    forall|ii: int, jj: int, kk: int| 0 <= ii < jj && jj < kk < i ==> !(nums@[ii] < nums@[jj] && nums@[jj] < nums@[kk]),
-                    forall|kk: int| j + 1 <= kk < k ==> !(nums@[i] < nums@[j] && nums@[j] < nums@[kk])
-            {
-                if nums[i] < nums[j] && nums[j] < nums[k] {
-                    return true;
+            if i < nums.len() && j < nums.len() && nums@[i as int] < nums@[j as int] {
+                let mut k = j + 1;
+                while k < n
+                    invariant
+                        j + 1 <= k <= n,
+                        0 <= i < j,
+                        j < n - 1,
+                        i < nums.len(),
+                        j < nums.len(),
+                        nums@[i as int] < nums@[j as int],
+                        forall|z: int| j < z < k ==> nums@[j as int] >= nums@[z],
+                    decreases n - k
+                {
+                    if k < nums.len() && nums@[j as int] < nums@[k as int] {
+                        return true;
+                    }
+                    k += 1;
                 }
             }
+            j += 1;
         }
+        i += 1;
     }
-    
     false
 }
 // </vc-code>
