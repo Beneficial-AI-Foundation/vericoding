@@ -4,7 +4,7 @@ import argparse
 import json
 import shutil
 from pathlib import Path
-from ruamel.yaml import YAML
+from ruamel.yaml import YAML, YAMLError
 
 def _sanitize_lean_description(text: str) -> str:
     """Sanitize description text before embedding in a Lean block comment.
@@ -139,24 +139,6 @@ def convert_yaml_to_jsonl(yaml_path: Path, output_path: Path = None) -> None:
     if output_path is None:
         output_path = yaml_path.parent / f"{yaml_path.name}.jsonl"
     
-    with open(output_path, 'w') as f:
-        yaml = YAML()
-        yaml.preserve_quotes = True  # Preserve original formatting
-        for yaml_file in yaml_files:
-            # Load the YAML spec
-            spec = yaml.load(yaml_file)
-            
-            # Create a new dictionary with id field first, preserving relative path structure
-            relative_path = yaml_file.relative_to(yaml_path)
-            # Use the relative path without extension as the ID to preserve directory structure
-            file_id = str(relative_path.with_suffix(''))
-            new_spec = {'id': file_id}
-            new_spec.update(spec)
-            
-            # Write as JSON line
-            json.dump(new_spec, f, ensure_ascii=False)
-            f.write('\n')
-
     processed_count = 0
     skipped_count = 0
         
@@ -183,7 +165,7 @@ def convert_yaml_to_jsonl(yaml_path: Path, output_path: Path = None) -> None:
                 f.write('\n')
                 processed_count += 1
                 
-            except Exception as e:
+            except YAMLError as e:
                 print(f"Warning: Failed to parse {yaml_file} as YAML (likely contains raw code instead of YAML): {e}")
                 skipped_count += 1
                 continue
