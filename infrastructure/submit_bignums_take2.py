@@ -15,7 +15,18 @@ tag = f"{SHORTNAME}-{timestamp}"
 print(f"Submitting experiments with tag: {tag}")
 
 # Define models to test (from batch_experiments.py)
-models = ["gemini", "gpt", "gpt-mini", "grok"]
+models=[
+    "claude-opus",
+    "claude-sonnet",
+    "deepseek",
+    "gemini",
+    "gemini-flash",
+    "glm",
+    "gpt",
+    "gpt-mini",
+    "grok",
+    "grok-code",
+]
 
 def submit_job(model):
     """Submit a single job"""
