@@ -40,17 +40,17 @@ def extract_sample_id(lean_file: Path) -> str:
 def check_lean_compilation(lean_file: Path, project_root: Path) -> bool:
     """
     Check if a Lean file compiles by running `lake build` on it.
-    
+
     Args:
         lean_file: Path to the .lean file
         project_root: Root directory of the Lean project
-        
+
     Returns:
         True if compilation succeeds, False otherwise
     """
     # Convert to relative path from project root
     relative_path = lean_file.relative_to(project_root)
-    
+
     try:
         # Run lake build on the specific file
         result = subprocess.run(
@@ -60,10 +60,23 @@ def check_lean_compilation(lean_file: Path, project_root: Path) -> bool:
             text=True,
             timeout=60  # 60 second timeout
         )
-        
+
+        # If lake build fails, try fallback with lake env lean
+        if result.returncode != 0:
+            print(f"    Lake build failed for {lean_file.name}, trying fallback with lake env lean...")
+            fallback_result = subprocess.run(
+                ["lake", "env", "lean", str(relative_path)],
+                cwd=project_root,
+                capture_output=True,
+                text=True,
+                timeout=60
+            )
+            # Return True if fallback succeeds
+            return fallback_result.returncode == 0
+
         # Return True if exit code is 0 (success)
         return result.returncode == 0
-        
+
     except subprocess.TimeoutExpired:
         print(f"Timeout compiling {lean_file.name}")
         return False
