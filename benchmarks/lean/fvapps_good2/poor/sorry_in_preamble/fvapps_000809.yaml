@@ -1,0 +1,70 @@
+vc-description: |-
+
+vc-preamble: |-
+  def calculate_ad_revenue (n: Nat) (team_strengths: List Nat) : Nat := sorry
+  
+  def getPairs (l: List Nat) : List (Nat × Nat) :=
+    match l with
+    | [] => []
+    | x :: xs => (xs.map (fun y => (x, y))) ++ getPairs xs
+  
+  def abs (n: Nat) (m: Nat) : Nat :=
+    if n ≥ m then n - m else m - n
+  
+  def pairSum (pairs: List (Nat × Nat)) : Nat :=
+    match pairs with
+    | [] => 0
+    | (x, y) :: rest => abs x y + pairSum rest
+
+vc-helpers: |-
+
+vc-definitions: |-
+
+vc-theorems: |-
+  theorem revenue_nonnegative (n: Nat) (team_strengths: List Nat)
+    (h1: n ≥ 2) (h2: team_strengths.length = n) :
+    calculate_ad_revenue n team_strengths ≥ 0 :=
+  sorry
+  
+  theorem revenue_matches_manual_calc (n: Nat) (team_strengths: List Nat)
+    (h1: n ≥ 2) (h2: team_strengths.length = n) :
+    calculate_ad_revenue n team_strengths = pairSum (getPairs team_strengths) :=
+  sorry
+  
+  theorem revenue_pair_count (n: Nat) (team_strengths: List Nat)
+    (h1: n ≥ 2) (h2: team_strengths.length = n) :
+    (getPairs team_strengths).length = n * (n-1) / 2 :=
+  sorry
+  
+  theorem identical_strengths_zero_revenue (n: Nat) (x: Nat)
+    (h1: n ≥ 2) :
+    calculate_ad_revenue n (List.replicate n x) = 0 :=
+  sorry
+  
+  theorem minimal_cases :
+    calculate_ad_revenue 2 [0, 0] = 0 ∧
+    calculate_ad_revenue 2 [0, 1] = 1 :=
+  sorry
+
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded
+  
+  /-
+  info: 23
+  -/
+  #guard_msgs in
+  #eval calculate_ad_revenue 4 [3, 10, 3, 5]
+  
+  /-
+  info: 4
+  -/
+  #guard_msgs in
+  #eval calculate_ad_revenue 2 [1, 5]
+  
+  /-
+  info: 0
+  -/
+  #guard_msgs in
+  #eval calculate_ad_revenue 3 [10, 10, 10]
+

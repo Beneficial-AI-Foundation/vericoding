@@ -1,0 +1,49 @@
+vc-description: |-
+
+vc-preamble: |-
+  def is_power_of_two (n: Nat) : Bool := sorry
+  
+  def simulation_loop (n steps: Nat) : Nat :=
+    match n with
+    | 0 => steps
+    | n+1 => if n % 2 = 0
+             then simulation_loop (n / 2) (steps + 1)
+             else simulation_loop (n - 1) (steps + 1)
+
+vc-helpers: |-
+
+vc-definitions: |-
+  def number_of_steps (n: Nat) : Nat :=
+  sorry
+
+vc-theorems: |-
+  theorem number_of_steps_nonneg (n: Nat) :
+    number_of_steps n ≥ 0 :=
+  sorry
+  
+  theorem zero_steps :
+    number_of_steps 0 = 0 :=
+  sorry
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded_and_plausible
+  
+  /-
+  info: 6
+  -/
+  #guard_msgs in
+  #eval number_of_steps 14
+  
+  /-
+  info: 4
+  -/
+  #guard_msgs in
+  #eval number_of_steps 8
+  
+  /-
+  info: 12
+  -/
+  #guard_msgs in
+  #eval number_of_steps 123
+
