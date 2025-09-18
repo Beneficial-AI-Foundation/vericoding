@@ -13,5 +13,3 @@ I moved 5 to problematic:
 - humaneval_096.yaml - resolution error (probably still the trigger issue)
 - humaneval_091.yaml - count_bored_sentences timeout
 - humaneval_140.yaml - still has indentation issue
-
-For reference, I copied (not moved) 10 to default_values (most have validation predicates as true). If you decide that any of these files we should consider as poor, we can delete them afterwards. 
