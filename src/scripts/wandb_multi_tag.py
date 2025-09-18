@@ -219,21 +219,26 @@ def main():
         else:
             print(f"% {model}\tunknown\t--\t--")
     
-    # Calculate and print model union
-    union_result = calculate_model_union(detailed_results, dataset_file_count)
+    # Only calculate and print model union if we have results and no unknown models
+    has_unknown_models = any(model not in results for model in MODEL_ORDER if model in results) or \
+                        any(data['files_dir'] == 'unknown' for data in results.values())
     
-    # Get files_dir from any available result for union row
-    union_files_dir = "unknown"
-    if results:
+    if not has_unknown_models and results:
+        union_result = calculate_model_union(detailed_results, dataset_file_count)
+        
+        # Get files_dir from any available result for union row
         union_files_dir = next(iter(results.values()))['files_dir']
-    
-    if union_result:
-        print(f"\n# Model Union")
-        print(f"% MODEL_UNION\t{union_files_dir}\t{union_result['success_rate']:.1f}\\%\t--")
-        print(f"# Union: {union_result['successful_files']}/{union_result['total_files']} files")
+        
+        if union_result:
+            print(f"\n# Model Union")
+            print(f"% MODEL_UNION\t{union_files_dir}\t{union_result['success_rate']:.1f}\\%\t--")
+            print(f"# Union: {union_result['successful_files']}/{union_result['total_files']} files")
+        else:
+            print(f"\n# Model Union")
+            print(f"% MODEL_UNION\t{union_files_dir}\t--\t-- (no detailed results available)")
     else:
         print(f"\n# Model Union")
-        print(f"% MODEL_UNION\t{union_files_dir}\t--\t-- (no detailed results available)")
+        print("# Skipping model union - some models have unknown files_dir")
 
 if __name__ == "__main__":
     main()
