@@ -5,8 +5,8 @@ import json
 from datetime import datetime
 
 # CHANGE THESE
-SHORTNAME = "fvapps"
-LONGNAME = "benchmarks/lean/fvapps/files"
+SHORTNAME = "fvapps-good"
+LONGNAME = "benchmarks/lean/fvapps_good/files"
 
 # Generate a timestamp tag for this batch of experiments
 timestamp = datetime.now().strftime("%Y%m%d-%H%M%S")
