@@ -2,7 +2,7 @@ vc-description: |-
   /-
   You are given a string s, a split is called good if you can split s into 2 non-empty strings p and q where its concatenation is equal to s and the number of distinct letters in p and q are the same.
   Return the number of good splits you can make in s.
-  
+
   Example 1:
   Input: s = "aacaba"
   Output: 2
@@ -12,12 +12,12 @@ vc-description: |-
   ("aac", "aba") Left string and right string contains 2 and 2 different letters respectively (good split).
   ("aaca", "ba") Left string and right string contains 2 and 2 different letters respectively (good split).
   ("aacab", "a") Left string and right string contains 3 and 1 different letters respectively.
-  
+
   Example 2:
   Input: s = "abcd"
   Output: 1
   Explanation: Split the string as follows ("ab", "cd").
-  
+
   Example 3:
   Input: s = "aaaaa"
   Output: 4
@@ -25,9 +25,9 @@ vc-description: |-
   Example 4:
   Input: s = "acbadbaada"
   Output: 2
-  
+
   Constraints:
-  
+
   s contains only lowercase English letters.
   1 <= s.length <= 10^5
   -/
@@ -35,11 +35,11 @@ vc-description: |-
 vc-preamble: |-
   def num_good_splits (s : String) : Nat :=
   sorry
-  
+
   def reverse (s : String) : String :=
   sorry
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def uniqueChars (s : String) : Bool :=
@@ -49,26 +49,26 @@ vc-theorems: |-
   theorem num_good_splits_bounds (s : String) (h : s.length > 0) :
     num_good_splits s ≤ s.length - 1 ∧ num_good_splits s ≥ 0 :=
   sorry
-  
-  /-
-  info: 2
-  -/
-  -- #guard_msgs in
-  -- #eval num_good_splits "aacaba"
-  
-  /-
-  info: 1
-  -/
-  -- #guard_msgs in
-  -- #eval num_good_splits "abcd"
-  
-  /-
-  info: 4
-  -/
-  -- #guard_msgs in
-  -- #eval num_good_splits "aaaaa"
 
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
+
+  /-
+  info: 2
+  -/
+  #guard_msgs in
+  #eval num_good_splits "aacaba"
+
+  /-
+  info: 1
+  -/
+  #guard_msgs in
+  #eval num_good_splits "abcd"
+
+  /-
+  info: 4
+  -/
+  #guard_msgs in
+  #eval num_good_splits "aaaaa"
 

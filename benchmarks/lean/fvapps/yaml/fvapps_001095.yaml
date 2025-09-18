@@ -6,29 +6,29 @@ vc-description: |-
   - Left parenthesis '(' must go before the corresponding right parenthesis ')'. 
   Note: Shaun could match opening and closing brackets of different colours. 
   Since number of ways can be large, Shaun would report the answer as modulo 1000000007 ($10^9 + 7$).
-  
+
   -----Input:-----
   - First line will contain $T$, number of testcases. Then the testcases follow. 
   - Each testcase contains of a single line of input, one integer $N$. 
-  
+
   -----Output:-----
   For each testcase, output in a single line answer given by Shaun to his teacher modulo 1000000007.
-  
+
   -----Constraints-----
   - $1 \leq T \leq 100000$
   - $1 \leq N \leq 100000$
-  
+
   -----Sample Input:-----
   3
   1
   2
   3
-  
+
   -----Sample Output:-----
   1
   6
   90
-  
+
   -----EXPLANATION:-----
   Here numbers from $1$ to $N$ have been used to denote parenthesis.A unique number corresponds to a unique pair of parenthesis.
   -In the first test case , you can use only one color to color the parenthesis  you could arrange it only in one way i.e, 1 1
@@ -41,50 +41,50 @@ vc-description: |-
   2 1 2 1
   -/
 
-vc-preamble: |-
+vc-preamble: |
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def solve_colored_parentheses (n: Nat) : Nat := sorry
-  
+
   def MOD : Nat := 1000000007
 
 vc-theorems: |-
   theorem result_in_valid_range (n: Nat) :
     solve_colored_parentheses n ≥ 0 ∧ solve_colored_parentheses n < MOD := sorry
-  
+
   theorem result_deterministic (n: Nat) :
     solve_colored_parentheses n = solve_colored_parentheses n := sorry
-  
+
   theorem base_cases :
     solve_colored_parentheses 0 = 1 ∧
     solve_colored_parentheses 1 = 1 := sorry
-  
+
   theorem known_sequence_values :
     solve_colored_parentheses 1 = 1 ∧
     solve_colored_parentheses 2 = 6 ∧
     solve_colored_parentheses 3 = 90 := sorry
-  
-  /-
-  info: 1
-  -/
-  -- #guard_msgs in
-  -- #eval solve_colored_parentheses 1
-  
-  /-
-  info: 6
-  -/
-  -- #guard_msgs in
-  -- #eval solve_colored_parentheses 2
-  
-  /-
-  info: 90
-  -/
-  -- #guard_msgs in
-  -- #eval solve_colored_parentheses 3
 
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
+
+  /-
+  info: 1
+  -/
+  #guard_msgs in
+  #eval solve_colored_parentheses 1
+
+  /-
+  info: 6
+  -/
+  #guard_msgs in
+  #eval solve_colored_parentheses 2
+
+  /-
+  info: 90
+  -/
+  #guard_msgs in
+  #eval solve_colored_parentheses 3
 

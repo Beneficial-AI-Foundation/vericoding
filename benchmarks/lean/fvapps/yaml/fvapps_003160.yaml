@@ -7,14 +7,14 @@ vc-description: |-
   else:         statementb
   ```
   It means that if the condition is true, then execute the statementa, otherwise execute the statementb.If the statementa or statementb more than one line, you need to add ```{``` and ```}``` at the head and tail of statement in JS, to keep the same indentation on Python and to put a `end` in Ruby where it indeed ends.
-  
+
   An example, if we want to judge whether a number is odd or even, we can write code like this:
   ```python
   def odd_even(n):
       if n%2: return "odd number"
       else:   return "even number"
   ```
-  
+
   If there is more than one condition to judge, we can use the compound if...else statement. an example:
   ```python
   def old_young(age):
@@ -23,7 +23,7 @@ vc-description: |-
       else:             return "old man"
   ```
   This function returns a different value depending on the parameter age.
-  
+
   Looks very complicated? Well, JS and Ruby also support the ```ternary operator``` and Python has something similar too:
   ```python
   statementa if condition else statementb
@@ -36,7 +36,7 @@ vc-description: |-
   def old_young(age):
       return "children" if age<16 else "young man" if age<50 else "old man"
   ```
-  
+
   ## Task:
   Complete function `saleHotdogs`/`SaleHotDogs`/`sale_hotdogs`, function accept 1  parameters:`n`, n is the number of customers to buy hotdogs, different numbers have different prices (refer to the following table), return a number that the customer need to pay how much money.
   ```
@@ -51,15 +51,15 @@ vc-description: |-
   +---------------+-------------+
   ```
   You can use if..else or ternary operator to complete it.
-  
+
       When you have finished the work, click "Run Tests" to see if your code is working properly.
-  
+
       In the end, click "Submit" to submit your code pass this kata.
-  
+
   ## [Series](http://github.com/myjinxin2015/Katas-list-of-Training-JS-series):
-  
+
   ( ↑↑↑ Click the link above can get my newest kata list, Please add it to your favorites)
-  
+
    - [#1: create your first JS function helloWorld](http://www.codewars.com/kata/571ec274b1c8d4a61c0000c8)
    - [#2: Basic data types--Number](http://www.codewars.com/kata/571edd157e8954bab500032d)
    - [#3:  Basic data types--String](http://www.codewars.com/kata/571edea4b625edcb51000d8e)
@@ -104,9 +104,9 @@ vc-description: |-
    - [#42: Regular Expression--(?:), (?=) and (?!)](http://www.codewars.com/kata/573fb9223f9793e485000453)
   -/
 
-vc-preamble: |-
+vc-preamble: |
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def sale_hotdogs (n: Nat) : Nat :=
@@ -116,38 +116,38 @@ vc-theorems: |-
   theorem hotdog_prices_monotonic {n: Nat} (h: n > 1) : 
     sale_hotdogs n / n ≤ sale_hotdogs (n-1) / (n-1) :=
   sorry
-  
+
   theorem hotdog_price_tiers_less_than_5 {n: Nat} (h: n > 0 ∧ n < 5) :
     sale_hotdogs n = n * 100 :=
   sorry
-  
+
   theorem hotdog_price_tiers_less_than_10 {n: Nat} (h: n ≥ 5 ∧ n < 10) :
     sale_hotdogs n = n * 95 :=
   sorry 
-  
+
   theorem hotdog_price_tiers_10_or_more {n: Nat} (h: n ≥ 10) :
     sale_hotdogs n = n * 90 :=
   sorry
-  
-  /-
-  info: 300
-  -/
-  -- #guard_msgs in
-  -- #eval sale_hotdogs 3
-  
-  /-
-  info: 665
-  -/
-  -- #guard_msgs in
-  -- #eval sale_hotdogs 7
-  
-  /-
-  info: 9000
-  -/
-  -- #guard_msgs in
-  -- #eval sale_hotdogs 100
 
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
+
+  /-
+  info: 300
+  -/
+  #guard_msgs in
+  #eval sale_hotdogs 3
+
+  /-
+  info: 665
+  -/
+  #guard_msgs in
+  #eval sale_hotdogs 7
+
+  /-
+  info: 9000
+  -/
+  #guard_msgs in
+  #eval sale_hotdogs 100
 

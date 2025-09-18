@@ -5,7 +5,7 @@ vc-description: |-
   Notice that fuel cannot become negative at any point in time, and that you are allowed to visit any city more than once (including start and finish).
   Return the count of all possible routes from start to finish.
   Since the answer may be too large, return it modulo 10^9 + 7.
-  
+
   Example 1:
   Input: locations = [2,3,6,8,4], start = 1, finish = 3, fuel = 5
   Output: 4
@@ -14,7 +14,7 @@ vc-description: |-
   1 -> 2 -> 3
   1 -> 4 -> 3
   1 -> 4 -> 2 -> 3
-  
+
   Example 2:
   Input: locations = [4,3,1], start = 1, finish = 0, fuel = 6
   Output: 5
@@ -24,7 +24,7 @@ vc-description: |-
   1 -> 2 -> 1 -> 0, used fuel = 5
   1 -> 0 -> 1 -> 0, used fuel = 3
   1 -> 0 -> 1 -> 0 -> 1 -> 0, used fuel = 5
-  
+
   Example 3:
   Input: locations = [5,2,1], start = 0, finish = 2, fuel = 3
   Output: 0
@@ -37,9 +37,9 @@ vc-description: |-
   Input: locations = [1,2,3], start = 0, finish = 2, fuel = 40
   Output: 615088286
   Explanation: The total number of possible routes is 2615088300. Taking this number modulo 10^9 + 7 gives us 615088286.
-  
+
   Constraints:
-  
+
   2 <= locations.length <= 100
   1 <= locations[i] <= 10^9
   All integers in locations are distinct.
@@ -47,13 +47,13 @@ vc-description: |-
   1 <= fuel <= 200
   -/
 
-vc-preamble: |-
+vc-preamble: |
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def count_routes (locations : List Int) (start finish : Nat) (fuel : Nat) : Nat := sorry
-  
+
   def MOD := 1000000007
 
 vc-theorems: |-
@@ -67,7 +67,7 @@ vc-theorems: |-
     (h5 : fuel ≤ 200) :
     0 ≤ count_routes locations start finish fuel ∧ 
     count_routes locations start finish fuel < MOD := sorry
-  
+
   theorem zero_fuel_routes
     (locations : List Int)
     (start finish : Nat)
@@ -76,21 +76,21 @@ vc-theorems: |-
     (h3 : start < locations.length)
     (h4 : finish < locations.length) :
     (count_routes locations start finish 0 > 0) ↔ (start = finish) := sorry
-  
+
   theorem self_routes_nonempty
     (locations : List Int)
     (fuel : Nat)
     (h1 : ∀ x ∈ locations, 1 ≤ x ∧ x ≤ 1000)
     (h2 : 2 ≤ locations.length) :
     count_routes locations 0 0 fuel ≥ 1 := sorry
-  
+
   theorem routes_symmetric
     (locations : List Int)
     (fuel : Nat)
     (h1 : ∀ x ∈ locations, 1 ≤ x ∧ x ≤ 1000)
     (h2 : 2 ≤ locations.length) :
     count_routes locations 0 1 fuel = count_routes locations 1 0 fuel := sorry
-  
+
   theorem more_fuel_more_routes
     (locations : List Int)
     (start finish : Nat)
@@ -102,26 +102,26 @@ vc-theorems: |-
     (h5 : fuel1 ≤ fuel2) :
     count_routes locations start finish fuel1 ≤ 
     count_routes locations start finish fuel2 := sorry
-  
-  /-
-  info: 4
-  -/
-  -- #guard_msgs in
-  -- #eval count_routes [2, 3, 6, 8, 4] 1 3 5
-  
-  /-
-  info: 5
-  -/
-  -- #guard_msgs in
-  -- #eval count_routes [4, 3, 1] 1 0 6
-  
-  /-
-  info: 0
-  -/
-  -- #guard_msgs in
-  -- #eval count_routes [5, 2, 1] 0 2 3
 
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
+
+  /-
+  info: 4
+  -/
+  #guard_msgs in
+  #eval count_routes [2, 3, 6, 8, 4] 1 3 5
+
+  /-
+  info: 5
+  -/
+  #guard_msgs in
+  #eval count_routes [4, 3, 1] 1 0 6
+
+  /-
+  info: 0
+  -/
+  #guard_msgs in
+  #eval count_routes [5, 2, 1] 0 2 3
 

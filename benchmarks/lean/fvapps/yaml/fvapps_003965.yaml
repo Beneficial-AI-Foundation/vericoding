@@ -2,7 +2,7 @@ vc-description: |-
   /-
   # Task
    Changu and Mangu are great buddies. Once they found an infinite paper which had 1,2,3,4,5,6,7,8,......... till infinity, written on it.
-  
+
    Both of them did not like the sequence and started deleting some numbers in the following way.
    ```
   First they deleted every 2nd number.
@@ -12,69 +12,69 @@ vc-description: |-
   Then they deleted every 4th number.
   So remaining numbers on the paper: 1,3,7,13,15..........till infinity.```
   Then kept on doing this (deleting every 5th, then every 6th ...) untill they got old and died.
-  
+
    It is obvious that some of the numbers will never get deleted(E.g. 1,3,7,13..) and hence are know to us as survivor numbers.
-  
+
    Given a number `n`, check whether its a survivor number or not.
-  
+
   # Input/Output
-  
+
    - `[input]` integer `n`
-  
+
     `0 < n <= 10^8`
-  
+
    - `[output]` a boolean value
-  
+
     `true` if the number is a survivor else `false`.
   -/
 
-vc-preamble: |-
+vc-preamble: |
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def survivor (n : Nat) : Bool := sorry
-  
+
   -- Basic properties
 
 vc-theorems: |-
   theorem survivor_returns_bool (n : Nat) : 
     survivor n = true ∨ survivor n = false := by sorry
-  
+
   -- Properties about n = 1
-  
+
   theorem one_is_survivor : 
     survivor 1 = true := by sorry
-  
+
   -- Consistency property
-  
+
   theorem survivor_is_consistent (n : Nat) :
     survivor n = survivor n := by sorry
-  
+
   -- At least one survivor property
-  
+
   theorem exists_survivor_up_to_n (n : Nat) :
     n > 0 → ∃ k : Nat, k ≤ n ∧ k > 0 ∧ survivor k = true := by sorry
-  
-  /-
-  info: True
-  -/
-  -- #guard_msgs in
-  -- #eval survivor 1
-  
-  /-
-  info: False
-  -/
-  -- #guard_msgs in
-  -- #eval survivor 5
-  
-  /-
-  info: True
-  -/
-  -- #guard_msgs in
-  -- #eval survivor 13
 
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+
+  /-
+  info: True
+  -/
+  #guard_msgs in
+  #eval survivor 1
+
+  /-
+  info: False
+  -/
+  #guard_msgs in
+  #eval survivor 5
+
+  /-
+  info: True
+  -/
+  #guard_msgs in
+  #eval survivor 13
 

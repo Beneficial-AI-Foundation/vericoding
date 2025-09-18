@@ -1,24 +1,24 @@
 vc-description: |-
   /-
   Write a function that checks if all the letters in the second string are present in the first one at least once, regardless of how many times they appear:
-  
+
   ```
   ["ab", "aaa"]    =>  true
   ["trances", "nectar"]    =>  true
   ["compadres", "DRAPES"]  =>  true
   ["parses", "parsecs"]    =>  false
   ```
-  
+
   Function should not be case sensitive, as indicated in example #2. Note: both strings are presented as a **single argument** in the form of an array.
   -/
 
-vc-preamble: |-
+vc-preamble: |
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def letter_check (input : List String) : Bool := sorry
-  
+
   theorem letter_check_empty_second_string 
     (s₁ : String) : 
     letter_check [s₁, ""] = true := sorry
@@ -27,39 +27,39 @@ vc-theorems: |-
   theorem letter_check_identical_strings
     (s : String) :
     letter_check [s, s] = true := sorry
-  
+
   theorem letter_check_case_insensitive
     (s₁ s₂ : String) :
     letter_check [s₁, s₂] = letter_check [s₁.toUpper, s₂.toLower] := sorry
-  
+
   theorem letter_check_true_implies_chars_exist
     (s₁ s₂ : String) :
     letter_check [s₁, s₂] = true →
     ∀ c ∈ s₂.data, c.toLower ∈ (s₁.map Char.toLower).data := sorry
-  
+
   theorem letter_check_self_subset
     (s : String) :
     letter_check [s, s] = true := sorry
-  
-  /-
-  info: True
-  -/
-  -- #guard_msgs in
-  -- #eval letter_check ["ab", "aaa"]
-  
-  /-
-  info: True
-  -/
-  -- #guard_msgs in
-  -- #eval letter_check ["trances", "nectar"]
-  
-  /-
-  info: False
-  -/
-  -- #guard_msgs in
-  -- #eval letter_check ["parses", "parsecs"]
 
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+
+  /-
+  info: True
+  -/
+  #guard_msgs in
+  #eval letter_check ["ab", "aaa"]
+
+  /-
+  info: True
+  -/
+  #guard_msgs in
+  #eval letter_check ["trances", "nectar"]
+
+  /-
+  info: False
+  -/
+  #guard_msgs in
+  #eval letter_check ["parses", "parsecs"]
 

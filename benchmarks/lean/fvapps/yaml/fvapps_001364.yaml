@@ -1,25 +1,25 @@
 vc-description: |-
   /-
   Given a string s. Can you make it a palindrome by deleting exactly one character? Note that size of the string after deletion would be one less than it was before. 
-  
+
   -----Input-----
   First line of the input contains a single integer T denoting number of test cases.
   For each test case, you are given a single line containing string  s. 
-  
+
   -----Output-----
   For each test case, print YES or NO depending on the answer of the problem. 
-  
+
   -----Constraints-----
   Subtask 1, 35 points 
   -  1 ≤ T ≤ 100
   - 2 ≤  size of string s ≤ 1000
   -  String s contains lowercase English alphabets (ie. from 'a' to 'z').
-  
+
   Subtask 2, 65 points 
   - 2 ≤  size of string s ≤ 10^5
   -  Sum of size of string s over all the input test cases won't exceed 10^6
   -  String s contains lowercase English alphabets (ie. from 'a' to 'z').
-  
+
   -----Example-----
   Input:
   4
@@ -27,13 +27,13 @@ vc-description: |-
   abc
   abdbca
   abba
-  
+
   Output:
   YES
   NO
   YES
   YES
-  
+
   -----Explanation-----
   Example case 1. Delete any one 'a', resulting string is "aa" which is a palindrome.
   Example case 2. It is not possible to delete exactly one character and having a palindrome.
@@ -45,52 +45,52 @@ vc-preamble: |-
   def can_make_palindrome (s : String) : Bool := sorry
   def process_test_case (s : String) : String := sorry
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def reverse (s : String) : String := sorry
-  
+
   theorem palindrome_stays_true {s : String} :
     s = reverse s → can_make_palindrome s = true := sorry
 
 vc-theorems: |-
   theorem single_char_is_palindrome {s : String} :
     s.length = 1 → can_make_palindrome s = true := sorry
-  
+
   theorem reverse_preserves_palindrome {s : String} :
     can_make_palindrome s = can_make_palindrome (reverse s) := sorry
-  
+
   theorem process_returns_yes_no {s : String} 
     (h : s.length > 0) :
     process_test_case s = "YES" ∨ process_test_case s = "NO" := sorry
-  
+
   theorem process_matches_can_make {s : String} :
     (process_test_case s = "YES") = can_make_palindrome s := sorry
-  
+
   theorem basic_palindrome_cases :
     can_make_palindrome "a" ∧ 
     can_make_palindrome "aa" ∧
     can_make_palindrome "aba" := sorry
-  
-  /-
-  info: 'YES'
-  -/
-  -- #guard_msgs in
-  -- #eval process_test_case "aaa"
-  
-  /-
-  info: 'NO'
-  -/
-  -- #guard_msgs in
-  -- #eval process_test_case "abc"
-  
-  /-
-  info: 'YES'
-  -/
-  -- #guard_msgs in
-  -- #eval process_test_case "abdbca"
 
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
+
+  /-
+  info: 'YES'
+  -/
+  #guard_msgs in
+  #eval process_test_case "aaa"
+
+  /-
+  info: 'NO'
+  -/
+  #guard_msgs in
+  #eval process_test_case "abc"
+
+  /-
+  info: 'YES'
+  -/
+  #guard_msgs in
+  #eval process_test_case "abdbca"
 

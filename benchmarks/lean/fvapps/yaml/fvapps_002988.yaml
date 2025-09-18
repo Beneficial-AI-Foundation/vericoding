@@ -1,12 +1,12 @@
 vc-description: |-
   /-
   Write a function that removes every lone 9 that is inbetween 7s.
-  
+
   ```python
   seven_ate9('79712312') => '7712312'
   seven_ate9('79797') => '777'
   ```
-  
+
   Input: String
   Output: String
   -/
@@ -14,14 +14,14 @@ vc-description: |-
 vc-preamble: |-
   def seven_ate9 (s : String) : String :=
     sorry
-  
+
   def countSubstr (s : String) (sub : String) : Nat :=
     sorry
-  
+
   def containsSubstr (s : String) (sub : String) : Bool :=
     sorry
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def iterativeReplace (s : String) (n : Nat) : String :=
@@ -37,41 +37,41 @@ vc-theorems: |-
     s.all (fun c => c.isDigit) → 
     (seven_ate9 s).all (fun c => c.isDigit) :=
   sorry
-  
+
   theorem output_length_correct {s : String} :
     s.all (fun c => c.isDigit) →
     (seven_ate9 s).length = s.length - (countSubstr s "797") :=
   sorry 
-  
+
   theorem no_797_in_result {s : String} :
     s.all (fun c => c.isDigit) →
     ¬(containsSubstr (seven_ate9 s) "797") := 
   sorry
-  
+
   theorem only_797_modified {s : String} :
     s.all (fun c => c.isDigit) →
     seven_ate9 s = iterativeReplace s s.length :=
   sorry
-  
-  /-
-  info: '7712312'
-  -/
-  -- #guard_msgs in
-  -- #eval seven_ate9 "79712312"
-  
-  /-
-  info: '777'
-  -/
-  -- #guard_msgs in
-  -- #eval seven_ate9 "79797"
-  
-  /-
-  info: '7777'
-  -/
-  -- #guard_msgs in
-  -- #eval seven_ate9 "7979797"
 
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+
+  /-
+  info: '7712312'
+  -/
+  #guard_msgs in
+  #eval seven_ate9 "79712312"
+
+  /-
+  info: '777'
+  -/
+  #guard_msgs in
+  #eval seven_ate9 "79797"
+
+  /-
+  info: '7777'
+  -/
+  #guard_msgs in
+  #eval seven_ate9 "7979797"
 

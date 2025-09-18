@@ -1,36 +1,36 @@
 vc-description: |-
   /-
   Given a pattern and a string str, find if str follows the same pattern.
-  
+
   Here follow means a full match, such that there is a bijection between a letter in pattern and a non-empty word in str.
-  
+
   Example 1:
-  
+
   Input: pattern = "abba", str = "dog cat cat dog"
   Output: true
-  
+
   Example 2:
-  
+
   Input:pattern = "abba", str = "dog cat cat fish"
   Output: false
-  
+
   Example 3:
-  
+
   Input: pattern = "aaaa", str = "dog cat cat dog"
   Output: false
-  
+
   Example 4:
-  
+
   Input: pattern = "abba", str = "dog dog dog dog"
   Output: false
-  
+
   Notes:
   You may assume pattern contains only lowercase letters, and str contains lowercase letters separated by a single space.
   -/
 
-vc-preamble: |-
+vc-preamble: |
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def word_pattern (pattern : String) (str: String) : Bool :=
@@ -43,7 +43,7 @@ vc-theorems: |-
     (h : pattern.length ≠ words.length) :
     word_pattern pattern (String.intercalate " " words) = false :=
     sorry
-  
+
   theorem repeated_pattern
     (n : Nat) 
     (word : String)
@@ -52,7 +52,7 @@ vc-theorems: |-
     let pattern := String.mk (List.replicate n 'a')
     word_pattern pattern (String.intercalate " " (List.replicate n word)) = true :=
     sorry
-  
+
   theorem bijection  
     (pattern : String)
     (word1 word2 : String)
@@ -65,26 +65,26 @@ vc-theorems: |-
     word_pattern pattern (String.intercalate " " mapped) = 
     (uniquePatternChars.length = uniqueMappedWords.length) :=
     sorry
-  
-  /-
-  info: True
-  -/
-  -- #guard_msgs in
-  -- #eval word_pattern "abba" "dog cat cat dog"
-  
-  /-
-  info: False
-  -/
-  -- #guard_msgs in
-  -- #eval word_pattern "abba" "dog cat cat fish"
-  
-  /-
-  info: False
-  -/
-  -- #guard_msgs in
-  -- #eval word_pattern "aaaa" "dog cat cat dog"
 
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+
+  /-
+  info: True
+  -/
+  #guard_msgs in
+  #eval word_pattern "abba" "dog cat cat dog"
+
+  /-
+  info: False
+  -/
+  #guard_msgs in
+  #eval word_pattern "abba" "dog cat cat fish"
+
+  /-
+  info: False
+  -/
+  #guard_msgs in
+  #eval word_pattern "aaaa" "dog cat cat dog"
 

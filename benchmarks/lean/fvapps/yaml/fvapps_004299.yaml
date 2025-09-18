@@ -2,22 +2,22 @@ vc-description: |-
   /-
   Create a function that takes an input String and returns a String, where all the uppercase words of the input String are in front and all the lowercase words at the end.
   The order of the uppercase and lowercase words should be the order in which they occur.
-  
+
   If a word starts with a number or special character, skip the word and leave it out of the result. 
-  
+
   Input String will not be empty.
-  
+
   For an input String: "hey You, Sort me Already!" 
   the function should return: "You, Sort Already! hey me"
   -/
 
-vc-preamble: |-
+vc-preamble: |
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def capitals_first (s : String) : String := sorry
-  
+
   theorem capitals_first_output_format (s : String) 
     (h : s.length > 0) :
     let words := (capitals_first s).split (· = ' ')
@@ -39,26 +39,26 @@ vc-theorems: |-
       j < ((capitals_first s).split (· = ' ')).length ∧
       (∀ w ∈ ((capitals_first s).split (· = ' '))[i]?, ∀ c ∈ w.get? 0, c.isUpper) ∧
       (∀ w ∈ ((capitals_first s).split (· = ' '))[j]?, ∀ c ∈ w.get? 0, c.isLower) := sorry
-  
-  /-
-  info: 'You, Sort Already! hey me'
-  -/
-  -- #guard_msgs in
-  -- #eval capitals_first "hey You, Sort me Already!"
-  
-  /-
-  info: 'Does That Make sense to you?'
-  -/
-  -- #guard_msgs in
-  -- #eval capitals_first "sense Does to That Make you?"
-  
-  /-
-  info: 'Life Sometimes gets pretty'
-  -/
-  -- #guard_msgs in
-  -- #eval capitals_first "Life gets Sometimes pretty !Hard"
 
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+
+  /-
+  info: 'You, Sort Already! hey me'
+  -/
+  #guard_msgs in
+  #eval capitals_first "hey You, Sort me Already!"
+
+  /-
+  info: 'Does That Make sense to you?'
+  -/
+  #guard_msgs in
+  #eval capitals_first "sense Does to That Make you?"
+
+  /-
+  info: 'Life Sometimes gets pretty'
+  -/
+  #guard_msgs in
+  #eval capitals_first "Life gets Sometimes pretty !Hard"
 

@@ -1,26 +1,26 @@
 vc-description: |-
   /-
   # Introduction 
-  
+
   Ka ka ka cypher is a cypher used by small children in some country. When a girl wants to pass something to the other girls and there are some boys nearby, she can use Ka cypher. So only the other girls are able to understand her. 
   She speaks using KA, ie.: 
   `ka thi ka s ka bo ka y ka i ka s ka u ka gly` what simply means `this boy is ugly`. 
-  
+
   # Task 
-  
+
   Write a function `KaCokadekaMe` (`ka_co_ka_de_ka_me` in Python) that accepts a string word and returns encoded message using ka cypher. 
   Our rules:
   - The encoded word should start from `ka`.
   - The `ka` goes after vowel (a,e,i,o,u)
   - When there is multiple vowels together, the `ka` goes only after the last `vowel`
   - When the word is finished by a vowel, do not add the `ka` after
-  
+
   # Input/Output
-  
+
   The `word` string consists of only lowercase and uppercase characters. There is only 1 word to convert - no white spaces.
-  
+
   # Example
-  
+
   ```
   KaCokadekaMe("a");  //=> "kaa"
   KaCokadekaMe("ka");  //=> "kaka"
@@ -30,58 +30,58 @@ vc-description: |-
   KaCokadekaMe("Woodie"); //=> kaWookadie
   KacokadekaMe("Incomprehensibilities"); //=> kaIkancokamprekahekansikabikalikatiekas
   ```
-  
+
   # Remark
-  
+
   Ka cypher's country residents, please don't hate me for simplifying the way how we divide the words into "syllables" in the Kata. I don't want to make it too hard for other nations ;-P
   -/
 
 vc-preamble: |-
   def ka_co_ka_de_ka_me (s: String) : String := sorry
-  
+
   /- Helper functions -/
-  
+
   def isVowel (c: Char) : Bool := sorry
   def removeKa (s: String) : String := sorry
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def getConsonants (s: String) : String := sorry
-  
+
   theorem ka_prefix (word: String) :
     String.isPrefixOf "ka" (ka_co_ka_de_ka_me word) := sorry
 
 vc-theorems: |-
   theorem length_increases (word: String) : 
     word.length > 0 → (ka_co_ka_de_ka_me word).length > word.length := sorry
-  
+
   theorem all_vowels (word: String) :
     (∀ c ∈ word.data, isVowel c) →
     ka_co_ka_de_ka_me word = "ka" ++ word := sorry
-  
+
   theorem consonants_unchanged (word: String) :
     getConsonants word = getConsonants (removeKa (ka_co_ka_de_ka_me word)) := sorry
-  
-  /-
-  info: 'kaa'
-  -/
-  -- #guard_msgs in
-  -- #eval ka_co_ka_de_ka_me "a"
-  
-  /-
-  info: 'kamaikantekanakance'
-  -/
-  -- #guard_msgs in
-  -- #eval ka_co_ka_de_ka_me "maintenance"
-  
-  /-
-  info: 'kaIkancokamprekahekansikabikalikatiekas'
-  -/
-  -- #guard_msgs in
-  -- #eval ka_co_ka_de_ka_me "Incomprehensibilities"
 
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+
+  /-
+  info: 'kaa'
+  -/
+  #guard_msgs in
+  #eval ka_co_ka_de_ka_me "a"
+
+  /-
+  info: 'kamaikantekanakance'
+  -/
+  #guard_msgs in
+  #eval ka_co_ka_de_ka_me "maintenance"
+
+  /-
+  info: 'kaIkancokamprekahekansikabikalikatiekas'
+  -/
+  #guard_msgs in
+  #eval ka_co_ka_de_ka_me "Incomprehensibilities"
 
