@@ -8,6 +8,7 @@ generates implementations using various LLM APIs, and iteratively fixes verifica
 
 import argparse
 import json
+import math
 import os
 import platform
 import shutil
@@ -46,6 +47,39 @@ load_environment()
 
 
 
+def apply_sharding(files: list[str], shard_spec: str | None, limit: int | None = None) -> tuple[list[str], str]:
+    """Apply sharding to file list and return selected files with description."""
+    total = len(files)
+
+    if shard_spec:
+        # Parse shard spec like "2/5"
+        try:
+            current, total_shards = map(int, shard_spec.split('/'))
+        except ValueError:
+            raise ValueError(f"Invalid shard format: {shard_spec}. Use format K/N (e.g., '2/5')")
+
+        if current < 1 or current > total_shards:
+            raise ValueError(f"Invalid shard {current}/{total_shards}: shard number must be between 1 and {total_shards}")
+
+        # Calculate this shard's slice
+        shard_size = math.ceil(total / total_shards)
+        start = (current - 1) * shard_size
+        end = min(current * shard_size, total)
+
+        selected = files[start:end]
+
+        description = f"shard {current}/{total_shards} (files {start+1}-{end} of {total})"
+    else:
+        # No sharding, just apply limit if specified
+        selected = files[:limit] if limit else files
+        if limit and limit < total:
+            description = f"first {limit} of {total} files"
+        else:
+            description = f"all {total} files"
+
+    return selected, description
+
+
 def parse_arguments():
     """Parse command-line arguments."""
     # Get available languages for argument choices
@@ -59,14 +93,11 @@ Supported languages: {", ".join(available_languages.keys())}
 Supported LLM providers: claude-sonnet, claude-opus, gpt, gpt-mini, o1, gemini, gemini-flash, grok, grok-code, deepseek, glm, mistral-medium, mistral-codestral, qwen-thinking, qwen-coder, claude-direct, openai-direct, grok-direct, claude, openai
 
 Examples:
-  uv run vericoder.py dafny ./specs
-  uv run vericoder.py lean ./NumpySpec/DafnySpecs --iterations 3
-  uv run vericoder.py verus ./benchmarks/verus_specs --debug --iterations 5
-  uv run vericoder.py dafny ./specs --workers 8 --iterations 3 --llm-provider gpt
-  uv run vericoder.py verus ./specs --workers 2 --debug --llm-provider deepseek
-  uv run vericoder.py dafny ./specs --llm-provider claude-sonnet
-  uv run vericoder.py lean ./specs --llm-provider gemini-flash
-  uv run vericoder.py verus ./specs --llm-provider openai-direct --llm-model gpt-4o
+  uv run vericoder.py dafny ./specs --llm gemini-flash
+  uv run vericoder.py lean ./NumpySpec/DafnySpecs --iterations 3 --llm claude-sonnet
+  uv run vericoder.py verus ./benchmarks/verus_specs --iterations 5 --llm gpt
+  uv run vericoder.py dafny ./specs --shard 2/5 --llm gemini-flash  # Process shard 2 of 5
+  uv run vericoder.py verus ./specs --workers 8 --llm deepseek
         """,
     )
 
@@ -139,6 +170,12 @@ Examples:
         "-n",
         type=int,
         help="Process only the first N files from the dataset (default: process all files)",
+    )
+
+    parser.add_argument(
+        "--shard",
+        type=str,
+        help="Process shard K of N total shards (format: K/N, e.g., '2/5' for shard 2 of 5)",
     )
 
     parser.add_argument(
@@ -316,11 +353,13 @@ def get_experiment_metadata(config: ProcessingConfig, args, prompt_loader: Promp
         "max_iterations": config.max_iterations,
         "llm": config.llm,
         "max_workers": config.max_workers,
-        
+
         # File and benchmark info  
         "files_dir": config.files_dir,
         "input_type": input_type,
-        "benchmark_files": len(find_spec_files(config)),
+        "benchmark_files_total": len(find_spec_files(config)),
+        "shard": args.shard,
+        "limit": args.limit,
         
         # Tool versions and environment
         "tool_version": tool_version,
@@ -616,6 +655,9 @@ def main():
     # Parse command-line arguments first
     args = parse_arguments()
 
+    if args.limit and args.shard:
+        raise ValueError("Cannot specify limit and shard")
+
     # Set up configuration
     config = setup_configuration(args)
     
@@ -623,8 +665,13 @@ def main():
     wandb_run = None
     if not args.no_wandb and os.getenv("WANDB_API_KEY"):
         try:
+            # Include shard in run name if specified
+            shard_suffix = ""
+            if args.shard:
+                shard_suffix = f"_shard{args.shard.replace('/', 'of')}"
+
             # Initialize wandb run
-            run_name = f"vericoding_{config.language}_{datetime.now().strftime('%Y%m%d_%H%M%S')}"
+            run_name = f"vericoding_{config.language}_{datetime.now().strftime('%Y%m%d_%H%M%S')}{shard_suffix}"
             
             # Get comprehensive metadata
             experiment_metadata = get_experiment_metadata(config, args)
@@ -781,16 +828,22 @@ def main():
     print(f"✓ {tool_availability.message}")
     print("")
 
-    # Find all specification files
-    spec_files = find_spec_files(config)
+    # Find all specification files (already sorted)
+    all_spec_files = find_spec_files(config)
 
-    # Apply limit if specified
-    total_files = len(spec_files)
-    if args.limit and args.limit > 0:
-        spec_files = spec_files[:args.limit]
-        print(f"Found {total_files} {config.language_config.name} specification files, processing first {len(spec_files)} (limited by --limit {args.limit})")
-    else:
-        print(f"Found {len(spec_files)} {config.language_config.name} specification files to process")
+    # Apply sharding/limiting
+    try:
+        spec_files, selection_desc = apply_sharding(
+            all_spec_files,
+            args.shard,
+            args.limit
+        )
+    except ValueError as e:
+        print(f"Error: {e}")
+        sys.exit(1)
+
+    print(f"Found {len(all_spec_files)} {config.language_config.name} specification files")
+    print(f"Processing: {selection_desc}")
     if config.language == "lean":
         print("(Only Lean files containing 'sorry' are selected)")
     print("")
