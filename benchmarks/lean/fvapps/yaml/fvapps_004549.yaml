@@ -1,11 +1,11 @@
 vc-description: |-
   /-
   Introduction 
-  
+
   The GADERYPOLUKI is a simple substitution cypher used in scouting to encrypt messages. The encryption is based on short, easy to remember key. The key is written as paired letters, which are in the cipher simple replacement.
-  
+
   The most frequently used key is "GA-DE-RY-PO-LU-KI".
-  
+
   ```
    G => A
    g => a
@@ -14,35 +14,35 @@ vc-description: |-
    D => E
     etc.
   ```
-  
+
   The letters, which are not on the list of substitutes, stays in the encrypted text without changes.
-  
+
   Task
-  
+
   Your task is to help scouts to encrypt and decrypt thier messages.
   Write the `Encode` and `Decode` functions.
-  
+
   Input/Output
-  
+
   The input string consists of lowercase and uperrcase characters and white .
   The substitution has to be case-sensitive. 
-  
+
   Example
-  
+
   # GADERYPOLUKI collection
-  
+
   GADERYPOLUKI cypher vol 1
-  
+
   GADERYPOLUKI cypher vol 2
-  
+
   GADERYPOLUKI cypher vol 3 - Missing Key
-  
+
   GADERYPOLUKI cypher vol 4 - Missing key madness
   -/
 
-vc-preamble: |-
+vc-preamble: |
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def encode (s : String) : String := sorry
@@ -51,41 +51,41 @@ vc-definitions: |-
 vc-theorems: |-
   theorem encode_decode_roundtrip (s : String) :
     decode (encode s) = s := sorry 
-  
+
   theorem decode_encode_roundtrip (s : String) :
     encode (decode s) = s := sorry
-  
+
   theorem map_symmetry {k v : Char} (h : encode k.toString = v.toString) :
     decode v.toString = k.toString := sorry
-  
+
   theorem case_preservation (s : String) (i : String.Pos) :
     let encoded := encode s
     (s.get i).isUpper = (encoded.get i).isUpper ∧ 
     (s.get i).isLower = (encoded.get i).isLower := sorry
-  
+
   theorem non_alpha_unchanged (s : String) (i : String.Pos) :
     let encoded := encode s
     ¬(s.get i).isAlpha → s.get i = encoded.get i := sorry
-  
-  /-
-  info: 'AGEDYROPULIK'
-  -/
-  -- #guard_msgs in
-  -- #eval encode "GADERYPOLUKI"
-  
-  /-
-  info: 'Aed'
-  -/
-  -- #guard_msgs in
-  -- #eval decode "Gde"
-  
-  /-
-  info: test
-  -/
-  -- #guard_msgs in
-  -- #eval decode encode(test)
 
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+
+  /-
+  info: 'AGEDYROPULIK'
+  -/
+  #guard_msgs in
+  #eval encode "GADERYPOLUKI"
+
+  /-
+  info: 'Aed'
+  -/
+  #guard_msgs in
+  #eval decode "Gde"
+
+  /-
+  info: test
+  -/
+  #guard_msgs in
+  #eval decode encode(test)
 

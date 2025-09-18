@@ -1,18 +1,18 @@
 vc-description: |-
   /-
   # Two samurai generals are discussing dinner plans after a battle, but they can't seem to agree.
-  
+
   The discussion gets heated and you are cannot risk favoring either of them as this might damage your political standing with either of the two clans the samurai generals belong to. Thus, the only thing left to do is find what the common ground of what they are saying is.
-  
+
   Compare the proposals with the following function: 
   ```python
   def common_ground(s1,s2)
   ```
-  
+
   The parameters ```s1``` and ```s2``` are the strings representing what each of the generals said. You should output a string containing the words in ```s1``` that also occur in ```s2```.
-  
+
   Each word in the resulting string shall occur once, and the order of the words need to follow the order of the first occurence of each word in ```s2```.
-  
+
   If they are saying nothing in common, kill both samurai and blame a ninja. (output "death")
   -/
 
@@ -20,7 +20,7 @@ vc-preamble: |-
   def common_ground (s1 s2 : String) : String :=
     sorry
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def split (s : String) : List String :=
@@ -33,7 +33,7 @@ vc-theorems: |-
     (∀ w, w ∈ split result → 
       w ∈ split s1 ∧ w ∈ split s2) :=
   sorry
-  
+
   theorem common_ground_order (s1 s2 : String) :
     let result := common_ground s1 s2
     result ≠ "death" →
@@ -43,31 +43,31 @@ vc-theorems: |-
       s2_words.findIdx (· = result_words[i]!) < 
       s2_words.findIdx (· = result_words[j]!) :=
   sorry
-  
+
   theorem common_ground_no_overlap (s1 s2 : String) :
     (∀ w1 w2, w1 ∈ split s1 → w2 ∈ split s2 → w1 ≠ w2) →
     common_ground s1 s2 = "death" :=
   sorry
-  
-  /-
-  info: 'eat chicken'
-  -/
-  -- #guard_msgs in
-  -- #eval common_ground "eat chicken" "eat chicken and rice"
-  
-  /-
-  info: 'drink a coke'
-  -/
-  -- #guard_msgs in
-  -- #eval common_ground "eat a burger and drink a coke" "drink a coke"
-  
-  /-
-  info: 'death'
-  -/
-  -- #guard_msgs in
-  -- #eval common_ground "i like turtles" "what are you talking about"
 
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+
+  /-
+  info: 'eat chicken'
+  -/
+  #guard_msgs in
+  #eval common_ground "eat chicken" "eat chicken and rice"
+
+  /-
+  info: 'drink a coke'
+  -/
+  #guard_msgs in
+  #eval common_ground "eat a burger and drink a coke" "drink a coke"
+
+  /-
+  info: 'death'
+  -/
+  #guard_msgs in
+  #eval common_ground "i like turtles" "what are you talking about"
 

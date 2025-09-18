@@ -20,26 +20,26 @@ vc-description: |-
    - the number of elements of a best representation of w
    - the number of the best representations of w, modulo 1000000007 \, (=10^9+7)
   (It is guaranteed that a good representation of w always exists.)
-  
+
   -----Constraints-----
    - 1 \leq |w| \leq 500000 \, (=5 \times 10^5)
    - w consists of lowercase letters (a-z).
-  
+
   -----Partial Score-----
    - 400 points will be awarded for passing the test set satisfying 1 \leq |w| \leq 4000.
-  
+
   -----Input-----
   The input is given from Standard Input in the following format:
   w
-  
+
   -----Output-----
   Print 2 lines.
    - In the first line, print the number of elements of a best representation of w.
    - In the second line, print the number of the best representations of w, modulo 1000000007.
-  
+
   -----Sample Input-----
   aab
-  
+
   -----Sample Output-----
   1
   1
@@ -49,12 +49,12 @@ vc-preamble: |-
   def solve_good_substrings : String → Nat × Nat :=
     fun _ => sorry
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def reverseString : String → String :=
     fun _ => sorry
-  
+
   #check solve_good_substrings
 
 vc-theorems: |-
@@ -64,40 +64,40 @@ vc-theorems: |-
       let result := solve_good_substrings s
       result.1 > 0 ∧ result.2 > 0 :=
     sorry
-  
+
   theorem solve_good_substrings_first_element_values
       {s : String}
       (h : s.length > 0) :
       let result := solve_good_substrings s
       result.1 = 1 ∨ result.1 = 2 ∨ result.1 = s.length :=
     sorry
-  
+
   theorem solve_good_substrings_count_bound
       {s : String}
       (h : s.length > 0) :
       let result := solve_good_substrings s
       result.2 ≤ s.length - 1 ∨ result.2 = 1 :=
     sorry
-  
-  /-
-  info: (1, 1)
-  -/
-  -- #guard_msgs in
-  -- #eval solve_good_substrings "aab"
-  
-  /-
-  info: (2, 3)
-  -/
-  -- #guard_msgs in
-  -- #eval solve_good_substrings "bcbc"
-  
-  /-
-  info: (3, 1)
-  -/
-  -- #guard_msgs in
-  -- #eval solve_good_substrings "ddd"
 
 vc-postamble: |-
   -- Apps difficulty: competition
   -- Assurance level: guarded_and_plausible
+
+  /-
+  info: (1, 1)
+  -/
+  #guard_msgs in
+  #eval solve_good_substrings "aab"
+
+  /-
+  info: (2, 3)
+  -/
+  #guard_msgs in
+  #eval solve_good_substrings "bcbc"
+
+  /-
+  info: (3, 1)
+  -/
+  #guard_msgs in
+  #eval solve_good_substrings "ddd"
 

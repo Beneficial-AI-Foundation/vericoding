@@ -3,21 +3,21 @@ vc-description: |-
   There is a special square room with mirrors on each of the four walls.  Except for the southwest corner, there are receptors on each of the remaining corners, numbered 0, 1, and 2.
   The square room has walls of length p, and a laser ray from the southwest corner first meets the east wall at a distance q from the 0th receptor.
   Return the number of the receptor that the ray meets first.  (It is guaranteed that the ray will meet a receptor eventually.)
-  
+
   Example 1:
   Input: p = 2, q = 1
   Output: 2
   Explanation: The ray meets receptor 2 the first time it gets reflected back to the left wall.
-  
+
   Note:
-  
+
   1 <= p <= 1000
   0 <= q <= p
   -/
 
-vc-preamble: |-
+vc-preamble: |
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def mirrorReflection (p q : Nat) : Nat :=
@@ -28,44 +28,44 @@ vc-theorems: |-
     let r := mirrorReflection p q
     r = 0 ∨ r = 1 ∨ r = 2 :=
   sorry
-  
+
   theorem mirror_reflection_reduction (p q : Nat) (hp : p > 0) (hq : q > 0) :
     let p2 := p
     let q2 := q
     mirrorReflection p q = mirrorReflection p2 q2 :=
   sorry
-  
+
   theorem mirror_reflection_even_odd (n : Nat) (hn : n > 0) :
     mirrorReflection (2*n) (2*n-1) = 2 :=
   sorry
-  
+
   theorem mirror_reflection_odd_even (n : Nat) (hn : n > 0) :
     mirrorReflection (2*n-1) (2*n) = 0 :=
   sorry
-  
+
   theorem mirror_reflection_both_odd (n : Nat) (hn : n > 0) :
     mirrorReflection (2*n-1) (2*n-1) = 1 :=
   sorry
-  
-  /-
-  info: 2
-  -/
-  -- #guard_msgs in
-  -- #eval mirrorReflection 2 1
-  
-  /-
-  info: 2
-  -/
-  -- #guard_msgs in
-  -- #eval mirrorReflection 4 2
-  
-  /-
-  info: 1
-  -/
-  -- #guard_msgs in
-  -- #eval mirrorReflection 5 5
 
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
+
+  /-
+  info: 2
+  -/
+  #guard_msgs in
+  #eval mirrorReflection 2 1
+
+  /-
+  info: 2
+  -/
+  #guard_msgs in
+  #eval mirrorReflection 4 2
+
+  /-
+  info: 1
+  -/
+  #guard_msgs in
+  #eval mirrorReflection 5 5
 

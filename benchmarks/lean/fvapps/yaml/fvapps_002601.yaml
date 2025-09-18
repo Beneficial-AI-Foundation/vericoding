@@ -2,23 +2,23 @@ vc-description: |-
   /-
   ## The story you are about to hear is true
   Our cat, Balor, sadly died of cancer in 2015.
-  
+
   While he was alive, the three neighborhood cats Lou, Mustache Cat, and Raoul all recognized our house and yard as Balor's territory, and would behave respectfully towards him and each other when they would visit. 
-  
+
   But after Balor died, gradually each of these three neighborhood cats began trying to claim his territory as their own, trying to drive the others away by growling, yowling, snarling, chasing, and even fighting, when one came too close to another, and no human was right there to distract or extract one of them before the situation could escalate. 
-  
+
   It is sad that these otherwise-affectionate animals, who had spent many afternoons peacefully sitting and/or lying near Balor and each other on our deck or around our yard, would turn on each other like that. However, sometimes, if they are far enough away from each other, especially on a warm day when all they really want to do is pick a spot in the sun and lie in it, they will ignore each other, and once again there will be a Peaceable Kingdom.
-  
+
   ## Your Mission
   In this, the first and simplest of a planned trilogy of cat katas :-), all you have to do is determine whether the distances between any visiting cats are large enough to make for a peaceful afternoon, or whether there is about to be an altercation someone will need to deal with by carrying one of them into the house or squirting them with water or what have you.
-  
+
   As input your function will receive a list of strings representing the yard as a grid, and an integer representing the minimum distance needed to prevent problems (considering the cats' current states of sleepiness). A point with no cat in it will be represented by a "-" dash. Lou, Mustache Cat, and Raoul will be represented by an upper case L, M, and R respectively. At any particular time all three cats may be in the yard, or maybe two, one, or even none. 
-  
+
   If the number of cats in the yard is one or none, or if the distances between all cats are at least the minimum distance, your function should return True/true/TRUE (depending on what language you're using), but if there are two or three cats, and the distance between at least two of them is smaller than the minimum distance, your function should return False/false/FALSE.
-  
+
   ## Some examples
   (The yard will be larger in the random test cases, but a smaller yard is easier to see and fit into the instructions here.)
-  
+
   In this first example, there is only one cat, so your function should return True.
   ```
   ["------------",
@@ -52,17 +52,17 @@ vc-description: |-
 vc-preamble: |-
   def peaceful_yard (yard : List String) (distance : Float) : Bool :=
     sorry
-  
+
   def mkRow (n : Nat) : String :=
     sorry
-  
+
   def updateRow (s : String) (pos : Nat) (c : Char) : String :=
     sorry
-  
+
   def distance (p1 p2 : Nat × Nat) : Float :=
     sorry
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def replaceNth {α : Type} (xs : List α) (n : Nat) (v : α) : List α :=
@@ -76,7 +76,7 @@ vc-theorems: |-
     let yard := List.replicate size emptyRow
     peaceful_yard yard distance = true :=
   sorry
-  
+
   theorem single_cat_is_peaceful {size : Nat} {distance : Float}
     (h1 : size ≥ 1) (h2 : size ≤ 20)
     (h3 : distance ≥ 0.1) (h4 : distance ≤ 30) :
@@ -87,7 +87,7 @@ vc-theorems: |-
     let yard' := replaceNth yard midPos catRow
     peaceful_yard yard' distance = true :=
   sorry
-  
+
   theorem cats_distance_property 
     {size : Nat} {distance : Float} {catPositions : List (Nat × Nat × Char)}
     (h1 : size ≥ 2) (h2 : size ≤ 20)
@@ -107,26 +107,26 @@ vc-theorems: |-
            let minDist : Float := sorry -- minimum distance computation
            minDist ≥ distance :=
   sorry
-  
-  /-
-  info: True
-  -/
-  -- #guard_msgs in
-  -- #eval peaceful_yard ["------------", "------------", "-L----------", "------------", "------------", "------------"] 10
-  
-  /-
-  info: False
-  -/
-  -- #guard_msgs in
-  -- #eval peaceful_yard ["------------", "---M--------", "------------", "------------", "-------R----", "------------"] 6
-  
-  /-
-  info: True
-  -/
-  -- #guard_msgs in
-  -- #eval peaceful_yard ["-----------L", "--R---------", "------------", "------------", "------------", "--M---------"] 4
 
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+
+  /-
+  info: True
+  -/
+  #guard_msgs in
+  #eval peaceful_yard ["------------", "------------", "-L----------", "------------", "------------", "------------"] 10
+
+  /-
+  info: False
+  -/
+  #guard_msgs in
+  #eval peaceful_yard ["------------", "---M--------", "------------", "------------", "-------R----", "------------"] 6
+
+  /-
+  info: True
+  -/
+  #guard_msgs in
+  #eval peaceful_yard ["-----------L", "--R---------", "------------", "------------", "------------", "--M---------"] 4
 

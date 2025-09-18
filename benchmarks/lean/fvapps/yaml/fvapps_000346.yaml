@@ -1,24 +1,24 @@
 vc-description: |-
   /-
   Given integers n and k, find the lexicographically k-th smallest integer in the range from 1 to n.
-  
+
   Note: 1 ≤ k ≤ n ≤ 109.
-  
+
   Example:
-  
+
   Input:
   n: 13   k: 2
-  
+
   Output:
   10
-  
+
   Explanation:
   The lexicographical order is [1, 10, 11, 12, 13, 2, 3, 4, 5, 6, 7, 8, 9], so the second smallest number is 10.
   -/
 
-vc-preamble: |-
+vc-preamble: |
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def find_kth_number (n k : Nat) : Nat :=
@@ -32,26 +32,26 @@ vc-theorems: |-
     find_kth_number 20 1 = 1 ∧
     find_kth_number 50 5 = 13 := by
     sorry
-  
-  /-
-  info: 10
-  -/
-  -- #guard_msgs in
-  -- #eval find_kth_number 13 2
-  
-  /-
-  info: 2
-  -/
-  -- #guard_msgs in
-  -- #eval find_kth_number 10 3
-  
-  /-
-  info: 17
-  -/
-  -- #guard_msgs in
-  -- #eval find_kth_number 100 10
 
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
+
+  /-
+  info: 10
+  -/
+  #guard_msgs in
+  #eval find_kth_number 13 2
+
+  /-
+  info: 2
+  -/
+  #guard_msgs in
+  #eval find_kth_number 10 3
+
+  /-
+  info: 17
+  -/
+  #guard_msgs in
+  #eval find_kth_number 100 10
 

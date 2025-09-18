@@ -1,21 +1,21 @@
 vc-description: |-
   /-
   # Task
-  
+
   The function `fold_cube(number_list)` should return a boolean based on a net (given as a number list), if the net can fold into a cube. 
   Your code must be effecient and complete the tests within 500ms. 
-  
+
   ## Input
-  
+
   Imagine a net such as the one below.
-  
+
   ```
   @
   @ @ @ @
       @
   ```
   Then, put it on the table with each `@` being one cell.
-  
+
   ```
   --------------------------
   |  1 |  2 |  3 |  4 |  5 |
@@ -30,21 +30,21 @@ vc-description: |-
   --------------------------
   ```
   The number list for a net will be the numbers the net falls on when placed on the table. Note that the numbers in the list won't always be in order. The position of the net can be anywhere on the table, it can also be rotated.
-  
+
   For the example above, a possible number list will be `[1, 7, 8, 6, 9, 13]`.
-  
+
   ## Output
-  
+
   `fold_cube` should return `True` if the net can be folded into a cube. `False` if not.
-  
+
   ---
-  
+
   # Examples
-  
+
   ### Example 1:
-  
+
   `number_list` = `[24, 20, 14, 19, 18, 9]`
-  
+
   Shape and rotation of net:
   ```
     @
@@ -67,11 +67,11 @@ vc-description: |-
   --------------------------
   ```
   So, `fold_cube([24, 20, 14, 19, 18, 9])` should return `True`.
-  
+
   ### Example 2:
-  
+
   `number_list` = `[1, 7, 6, 17, 12, 16]`
-  
+
   Shape and rotation of net:
   ```
   @
@@ -94,19 +94,19 @@ vc-description: |-
   --------------------------
   ```
   `fold_cube([1, 7, 6, 17, 12, 16])` should return `False`.
-  
+
   #### *Translations appreciated!!*
-  
+
   ---
-  
+
   ### If you liked this kata.... check out these!             
   - [Folding a 4D Cube (Tesseract)](https://www.codewars.com/kata/5f3b561bc4a71f000f191ef7)  
   - [Wraping a net around a cube](https://www.codewars.com/kata/5f4af9c169f1cd0001ae764d)
   -/
 
-vc-preamble: |-
+vc-preamble: |
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def fold_cube (nums : List Nat) : Bool :=
@@ -120,7 +120,7 @@ vc-theorems: |-
     (h3: List.Nodup nums)
     : fold_cube nums = true ∨ fold_cube nums = false :=
   sorry
-  
+
   theorem fold_cube_consistent_results
     {nums : List Nat}
     (h1: nums.length = 6)
@@ -128,34 +128,34 @@ vc-theorems: |-
     (h3: List.Nodup nums)
     : fold_cube nums = fold_cube nums :=
   sorry
-  
+
   theorem fold_cube_known_valid
     : fold_cube [24, 20, 14, 19, 18, 9] = true :=
   sorry
-  
+
   theorem fold_cube_known_invalid
     : fold_cube [1, 7, 6, 17, 12, 16] = false :=
   sorry
-  
-  /-
-  info: True
-  -/
-  -- #guard_msgs in
-  -- #eval fold_cube test1.copy()
-  
-  /-
-  info: False
-  -/
-  -- #guard_msgs in
-  -- #eval fold_cube test2.copy()
-  
-  /-
-  info: True
-  -/
-  -- #guard_msgs in
-  -- #eval fold_cube test3.copy()
 
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+
+  /-
+  info: True
+  -/
+  #guard_msgs in
+  #eval fold_cube test1.copy()
+
+  /-
+  info: False
+  -/
+  #guard_msgs in
+  #eval fold_cube test2.copy()
+
+  /-
+  info: True
+  -/
+  #guard_msgs in
+  #eval fold_cube test3.copy()
 

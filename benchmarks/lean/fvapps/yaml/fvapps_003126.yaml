@@ -1,7 +1,7 @@
 vc-description: |-
   /-
   In this Kata, you will be given a number in form of a string and an integer `k` and your task is to insert `k` commas into the string and determine which of the partitions is the largest. 
-  
+
   ```
   For example:
   solve('1234',1) = 234 because ('1','234') or ('12','34') or ('123','4').
@@ -9,19 +9,19 @@ vc-description: |-
   solve('1234',3) = 4
   solve('2020',1) = 202
   ```
-  
+
   More examples in test cases. Good luck!
-  
+
   Please also try [Simple remove duplicates](https://www.codewars.com/kata/5ba38ba180824a86850000f7)
   -/
 
-vc-preamble: |-
+vc-preamble: |
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def solve (s : String) (k : Nat) : Nat := sorry
-  
+
   theorem solve_k_zero (num_str : String) (h : num_str.all (fun c => '0' <= c ∧ c <= '9')) :
     num_str.length > 0 → solve num_str 0 = num_str.toNat! := sorry
 
@@ -32,7 +32,7 @@ vc-theorems: |-
     let k' := min k (num_str.length - 1)
     let result := solve num_str k'
     toString result |>.length = num_str.length - k' := sorry
-  
+
   theorem solve_returns_largest (num_str : String) (k : Nat)
     (h1 : num_str.all (fun c => '0' <= c ∧ c <= '9'))
     (h2 : num_str.length > 1) :
@@ -42,26 +42,26 @@ vc-theorems: |-
     ∀ i, i + partition_size ≤ num_str.length →
       let substr := (num_str.take (i + partition_size)).drop i
       result ≥ substr.toNat! := sorry
-  
-  /-
-  info: 234
-  -/
-  -- #guard_msgs in
-  -- #eval solve "1234" 1
-  
-  /-
-  info: 34
-  -/
-  -- #guard_msgs in
-  -- #eval solve "1234" 2
-  
-  /-
-  info: 202
-  -/
-  -- #guard_msgs in
-  -- #eval solve "2020" 1
 
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
+
+  /-
+  info: 234
+  -/
+  #guard_msgs in
+  #eval solve "1234" 1
+
+  /-
+  info: 34
+  -/
+  #guard_msgs in
+  #eval solve "1234" 2
+
+  /-
+  info: 202
+  -/
+  #guard_msgs in
+  #eval solve "2020" 1
 

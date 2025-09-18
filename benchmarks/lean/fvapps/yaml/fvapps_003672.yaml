@@ -1,21 +1,21 @@
 vc-description: |-
   /-
   Our fruit guy has a bag of fruit (represented as an array of strings) where some fruits are rotten. He wants to replace all the rotten pieces of fruit with fresh ones. For example, given `["apple","rottenBanana","apple"]` the replaced array should be `["apple","banana","apple"]`. Your task is to implement a method that accepts an array of strings containing fruits should returns an array of strings where all the rotten fruits are replaced by good ones. 
-  
+
   ### Notes
-  
+
   - If the array is null/nil/None or empty you should return empty array (`[]`).
   - The rotten fruit name will be in this camelcase (`rottenFruit`).
   - The returned array should be in lowercase.
   -/
 
-vc-preamble: |-
+vc-preamble: |
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def removeRotten (fruits : Option (List String)) : List String := sorry
-  
+
   theorem remove_rotten_length {fruits : List String} :
     let result := removeRotten (some fruits)
     List.length result = List.length fruits := sorry
@@ -25,41 +25,41 @@ vc-theorems: |-
     let result := removeRotten (some fruits)
     ∀ fruit ∈ result, ¬(fruit.contains 'r' ∧ fruit.contains 'o' ∧ 
       fruit.contains 't' ∧ fruit.contains 't' ∧ fruit.contains 'e' ∧ fruit.contains 'n') := sorry
-  
+
   theorem remove_rotten_preserves_order {fruits : List String} :
     let result := removeRotten (some fruits)
     let original_no_rotten := fruits.map (fun f => (String.replace f "rotten" "").toLower)
     result = original_no_rotten := sorry
-  
+
   theorem remove_rotten_empty :
     removeRotten none = [] ∧ removeRotten (some []) = [] := sorry
-  
+
   theorem remove_rotten_all_rotten {rotten_fruits : List String} 
     (h : ∀ fruit ∈ rotten_fruits, ∃ suffix, fruit = "rotten" ++ suffix) :
     let result := removeRotten (some rotten_fruits)
     (∀ fruit ∈ result, ¬(fruit.contains 'r' ∧ fruit.contains 'o' ∧ 
       fruit.contains 't' ∧ fruit.contains 't' ∧ fruit.contains 'e' ∧ fruit.contains 'n')) ∧ 
     List.length result = List.length rotten_fruits := sorry
-  
-  /-
-  info: expected1
-  -/
-  -- #guard_msgs in
-  -- #eval remove_rotten ["apple", "banana", "kiwi", "melone", "orange"]
-  
-  /-
-  info: expected2
-  -/
-  -- #guard_msgs in
-  -- #eval remove_rotten ["rottenApple", "rottenBanana", "rottenKiwi"]
-  
-  /-
-  info: expected3
-  -/
-  -- #guard_msgs in
-  -- #eval remove_rotten ["apple", "rottenBanana", "rottenApple", "pineapple"]
 
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+
+  /-
+  info: expected1
+  -/
+  #guard_msgs in
+  #eval remove_rotten ["apple", "banana", "kiwi", "melone", "orange"]
+
+  /-
+  info: expected2
+  -/
+  #guard_msgs in
+  #eval remove_rotten ["rottenApple", "rottenBanana", "rottenKiwi"]
+
+  /-
+  info: expected3
+  -/
+  #guard_msgs in
+  #eval remove_rotten ["apple", "rottenBanana", "rottenApple", "pineapple"]
 

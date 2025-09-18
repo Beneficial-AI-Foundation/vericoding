@@ -2,35 +2,35 @@ vc-description: |-
   /-
   # Task
    You are given a string `s`. Every letter in `s` appears once. 
-  
+
    Consider all strings formed by rearranging the letters in `s`. After ordering these strings in dictionary order, return the middle term. (If the sequence has a even length `n`, define its middle term to be the `(n/2)`th term.)
-  
+
   # Example
-  
+
    For `s = "abc"`, the result should be `"bac"`.
   ```
   The permutations in order are:
   "abc", "acb", "bac", "bca", "cab", "cba"
   So, The middle term is "bac".```
-  
+
   # Input/Output
-  
+
    - `[input]` string `s`
-  
+
     unique letters (`2 <= length <= 26`)
-  
+
    - `[output]` a string
-  
+
     middle permutation.
   -/
 
 vc-preamble: |-
   def middle_permutation (s : String) : String := sorry 
-  
+
   theorem middle_permutation_symmetric (s : String) :
     middle_permutation s = middle_permutation s := by sorry
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def char_list_eq (l1 l2 : List Char) : Prop := 
@@ -39,36 +39,36 @@ vc-definitions: |-
 vc-theorems: |-
   theorem middle_permutation_length (s : String) :
     (middle_permutation s).length = s.length := by sorry
-  
+
   theorem middle_permutation_chars (s : String) :
     char_list_eq s.data (middle_permutation s).data := by sorry
-  
+
   theorem middle_permutation_valid (s : String) :
     ∃ perm : List Char, middle_permutation s = String.mk perm ∧
       ∃ (π : List Char → List Char), 
         perm = π s.data ∧
         (∀ (l : List Char), (π l).length = l.length) ∧
         (∀ (l : List Char), char_list_eq (π l) l) := by sorry
-  
-  /-
-  info: 'bac'
-  -/
-  -- #guard_msgs in
-  -- #eval middle_permutation "abc"
-  
-  /-
-  info: 'bdca'
-  -/
-  -- #guard_msgs in
-  -- #eval middle_permutation "abcd"
-  
-  /-
-  info: 'cbxda'
-  -/
-  -- #guard_msgs in
-  -- #eval middle_permutation "abcdx"
 
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
+
+  /-
+  info: 'bac'
+  -/
+  #guard_msgs in
+  #eval middle_permutation "abc"
+
+  /-
+  info: 'bdca'
+  -/
+  #guard_msgs in
+  #eval middle_permutation "abcd"
+
+  /-
+  info: 'cbxda'
+  -/
+  #guard_msgs in
+  #eval middle_permutation "abcdx"
 

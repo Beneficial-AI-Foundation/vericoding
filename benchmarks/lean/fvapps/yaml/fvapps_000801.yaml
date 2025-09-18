@@ -6,31 +6,31 @@ vc-description: |-
   - Yellow, the part of $X$ axis contained in atleast one yellow colored interval and no blue colored interval.
   - Green, the part of $X$ axis contained in at least one blue colored interval and at least one yellow colored interval.
   You want to color the intervals so that the total length of the part colored green is maximized. If there are multiple ways to color which maximize the green part, you can output any of them.
-  
+
   -----Input:-----
   - First line will contain $T$, number of testcases. Then the testcases follow. 
   - The first line of each testcase contains $n$, the number of intervals.
   - The $i^{\text{th}}$ of the next $n$ lines contains two integers $L_i$ and $R_i$ describing the $i^{\text{th}}$ interval.
-  
+
   -----Output:-----
   For each testcase, output a single string on a new line, whose $i^{\text{th}}$ character is $0$ if you color the $i^{\text{th}}$ interval blue, and $1$ if you color it yellow.
-  
+
   -----Constraints-----
   - $ 1 \leq T \leq 10^5 $
   - $ 1 \leq n \leq 10^5 $
   - The sum of $n$ over all testcases doesn't exceed $10^5$.
   - $ 1 \leq L_i \leq R_i \leq 10^9 $ for al $ 1 \leq i \leq n$.
-  
+
   -----Sample Input:-----
   1
   3
   3 7
   2 5
   6 9
-  
+
   -----Sample Output:-----
   100
-  
+
   -----Explanation:-----
   The intervals are $[3, 7]$, $[2, 5]$, $[6, 9]$. It is optimal to color them in yellow, blue and blue respectively. In this coloring:
   - $[2, 3) \cup (7, 9]$ is colored blue.
@@ -41,13 +41,13 @@ vc-description: |-
   Note that 011 is also a valid output.
   -/
 
-vc-preamble: |-
+vc-preamble: |
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def Interval := Int × Int
-  
+
   def color_intervals (intervals : List Interval) : String := sorry
 
 vc-theorems: |-
@@ -56,7 +56,7 @@ vc-theorems: |-
     (∀ c ∈ result.data, c = '0' ∨ c = '1') ∧ 
     result.length = intervals.length
     := sorry
-  
+
   theorem non_overlapping_intervals_share_colors : ∀ (intervals : List Interval),
     intervals.length ≥ 2 →
     (∀ i ∈ intervals, i.1 < i.2) →
@@ -65,14 +65,14 @@ vc-theorems: |-
     let result := color_intervals intervals
     2 ≥ List.length (List.eraseDups result.data)
     := sorry
-  
-  /-
-  info: '100'
-  -/
-  -- #guard_msgs in
-  -- #eval color_intervals [(3, 7), (2, 5), (6, 9)]
 
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
+
+  /-
+  info: '100'
+  -/
+  #guard_msgs in
+  #eval color_intervals [(3, 7), (2, 5), (6, 9)]
 

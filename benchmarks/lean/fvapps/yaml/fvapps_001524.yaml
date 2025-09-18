@@ -10,35 +10,35 @@ vc-description: |-
   Kajaria guarantees that:
   - $X$ and $Y$ are not divisible by each other.
   - A tile with number $S$ can be formed.
-  
+
   -----Input-----
   - First line contains a single integer $T$ - the total no. of testcases
   - Each testcase is described by $2$ lines:
   - $X, Y, S$ - $3$ space-separated natural numbers
   - $u, v$ - $2$ space-separated natural numbers describing the probability $p$
   The value of $p$ is provided as a fraction in its lowest form $u/v$ ($u$ and $v$ are co-prime)
-  
+
   -----Output-----
   - For each testcase, if the expected number of moves can be expressed as a fraction $p/q$ in its lowest form, print $(p * q^{-1})$ modulo $10^9 + 7$, where $q^{-1}$ denotes the modular inverse of $q$ wrt $10^9 + 7$.
-  
+
   -----Constraints-----
   - $1 \leq T \leq 10^5$
   - $2 \leq X, Y \leq 5 * 10^{17}$
   - $1 \leq S \leq 10^{18}$
   - $1 \leq u < v \leq 10^{9}$
-  
+
   -----Sample Input-----
   1
   5 3 96
   1 3
-  
+
   -----Sample Output-----
   48
   -/
 
-vc-preamble: |-
+vc-preamble: |
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def solve_tile_expectation (x y s u v : Nat) : Nat :=
@@ -54,26 +54,26 @@ vc-theorems: |-
       let result := solve_tile_expectation x y s u v
       0 ≤ result ∧ result < 1000000007 :=
     sorry
-  
-  /-
-  info: 48
-  -/
-  -- #guard_msgs in
-  -- #eval solve_tile_expectation 5 3 96 1 3
-  
-  /-
-  info: 24
-  -/
-  -- #guard_msgs in
-  -- #eval solve_tile_expectation 5 3 48 1 3
-  
-  /-
-  info: 96
-  -/
-  -- #guard_msgs in
-  -- #eval solve_tile_expectation 5 3 192 1 3
 
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded
+
+  /-
+  info: 48
+  -/
+  #guard_msgs in
+  #eval solve_tile_expectation 5 3 96 1 3
+
+  /-
+  info: 24
+  -/
+  #guard_msgs in
+  #eval solve_tile_expectation 5 3 48 1 3
+
+  /-
+  info: 96
+  -/
+  #guard_msgs in
+  #eval solve_tile_expectation 5 3 192 1 3
 

@@ -4,13 +4,13 @@ vc-description: |-
   Chef wants you to guess his matrix. To guess integers, you can ask Chef questions of next type: "How many integers from submatrix iL, iR, jL, jR are grater than or equal to x and less than or equal to y?". By submatrix iL, iR, jL, jR we mean all elements Ai, j for all iL ≤ i ≤ iR and jL ≤ j ≤ jR. 
   Also Chef can answer not more than C questions of next type: "What is the sum of integers from submatrix iL, iR, jL, jR?"
   As soon as you think you know the Chefs matrix, you can stop asking questions and tell to the Chef your variant of the matrix. Please see "Scoring" part to understand how your solution will be evaluated. 
-  
+
   -----Input-----
   The first line of the input contains three space-separated integers n, m and C denoting the sizes of the matrix and the maximum number of the second-type questions. After that the judge will answer your questions and evaluate the resuts. Read more about that in the "Interaction with the judge" part of the statement. 
-  
+
   -----Interaction with the judge-----
   To ask a first-type question you should print to the standard output one line containing seven space-separated integers 1 iL iR jL jR x y. To ask a second-type question you should print one line containing five space-separated integers 2 iL iR jL jR. After that you should read from the standard input one integer - answer to the question. To end the game you should print 3 and starting from next line print n lines, each of them contains m space-separated integers - your variant of the matrix A. After that your program must stop. Remember to flush the output after every line you print.
-  
+
   -----Constraints-----
   - 1 ≤ n, m ≤ 2.5 * 105
   - 1 ≤ n * m ≤ 2.5 * 105
@@ -22,13 +22,13 @@ vc-description: |-
   - 0 ≤ number of asked questions ≤ 5 * 105
   - 1 ≤ Bi, j ≤ 50
   - 1 ≤ a1, a2, a3 ≤ 10
-  
+
   ----- Scoring -----
   Let B will be the matrix you output and diff = ∑ |Ai, j - Bi, j| for all 1 ≤ i ≤ n, 1 ≤ j ≤ m. The number of questions you asked is questions. The number of integers, you correctly guessed is correct(i. e. the number of elements i, j such that Ai, j = Bi, j). 
   The score for each test case will be: score = a1 * questions +  a2 * diff +  a3 * (n * m - correct).
   Your goal is to minimize this score.
   Your total score for the problem will be the sum of scores on all the test cases.
-  
+
   -----Example-----
   Input:
   3 3 10
@@ -37,7 +37,7 @@ vc-description: |-
   3
   1
   6
-  
+
   Output:
   1 1 2 1 2 1 3
   1 3 3 1 3 1 1
@@ -48,16 +48,16 @@ vc-description: |-
   2 2 1
   2 2 1
   2 2 2
-  
+
   -----Explanation-----
-  
+
   [1, 2, 3]
   A = [3, 2, 1]
   [2, 2, 2]
-  
+
   For this test case a1 = 1, a2 = 1 and a3 = 1.
   The score for this test case will be 1 * 5 + 1 * 4 + 1 * (9 - 6) = 12.
-  
+
   ----- Test data generation -----
   There will be four types of the test files.
   - Type #1: n = 10,  m = 25000
@@ -70,13 +70,13 @@ vc-description: |-
   For each test case values a1, a2 and a3 are manually chosen.
   -/
 
-vc-preamble: |-
+vc-preamble: |
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def solve_matrix_guessing (n m K : Nat) (queryFunc : Nat → Nat → Nat → Nat → Nat → Nat → Nat → Nat) : List (List Nat) := sorry
-  
+
   /- Query function is consistent for matrices with small values (1-25) -/
 
 vc-theorems: |-
@@ -85,35 +85,35 @@ vc-theorems: |-
     let result := solve_matrix_guessing n m K queryFunc
     ∀ i j, i < n → j < m → 
     1 ≤ ((result.get! i).get! j) ∧ ((result.get! i).get! j) ≤ 25 := sorry
-  
+
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded
+
   /- Query function is consistent for matrices with large values (26-50) -/
-  
+
   theorem solve_matrix_query_consistency_large {n m : Nat} {K : Nat} (hn : 0 < n) (hm : 0 < m) (hK : K = 50)
     (queryFunc : Nat → Nat → Nat → Nat → Nat → Nat → Nat → Nat) :
     let result := solve_matrix_guessing n m K queryFunc
     ∀ i j, i < n → j < m →
     26 ≤ ((result.get! i).get! j) ∧ ((result.get! i).get! j) ≤ 50 := sorry
-  
+
   /- Result matrix has correct dimensions -/
-  
+
   theorem basic_dimensions {n m : Nat} {K : Nat} (hn : 0 < n) (hm : 0 < m) (hK : K = 50)
     (queryFunc : Nat → Nat → Nat → Nat → Nat → Nat → Nat → Nat) :
     let result := solve_matrix_guessing n m K queryFunc
     result.length = n ∧ ∀ row ∈ result, row.length = m := sorry
-  
+
   /-
   info: n
   -/
-  -- #guard_msgs in
-  -- #eval len solve_matrix_guessing(n, m, c, mock_query_func)
-  
+  #guard_msgs in
+  #eval len solve_matrix_guessing(n, m, c, mock_query_func)
+
   /-
   info: m
   -/
-  -- #guard_msgs in
-  -- #eval len result[0]
-
-vc-postamble: |-
-  -- Apps difficulty: interview
-  -- Assurance level: unguarded
+  #guard_msgs in
+  #eval len result[0]
 

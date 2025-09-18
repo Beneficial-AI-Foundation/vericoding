@@ -1,35 +1,35 @@
 vc-description: |-
   /-
   Write a program to check whether a triangle is valid or not, when the three angles of the triangle are the inputs. A triangle is valid if the sum of all the three angles is equal to 180 degrees.
-  
+
   -----Input-----
-  
+
   The first line contains an integer T, the total number of testcases. Then T lines follow, each line contains three angles  A, B and C, of the triangle separated by space. 
-  
+
   -----Output-----
   For each test case, display 'YES' if the triangle is valid, and 'NO', if it is not, in a new line.
-  
+
   -----Constraints-----
   - 1 ≤ T ≤ 1000
   - 1 ≤ A,B,C ≤ 180
-  
+
   -----Example-----
   Input
-  
+
   3 
   40 40 100
   45 45 90
   180 1 1
   Output
-  
+
   YES
   YES
   NO
   -/
 
-vc-preamble: |-
+vc-preamble: |
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def is_valid_triangle (a b c : Int) : String :=
@@ -39,12 +39,12 @@ vc-theorems: |-
   theorem is_valid_triangle_output_valid (a b c : Int) :
     is_valid_triangle a b c = "YES" ∨ is_valid_triangle a b c = "NO" :=
     sorry
-  
+
   theorem valid_triangle_angle_properties {a b c : Int} :
     is_valid_triangle a b c = "YES" →
     a > 0 ∧ b > 0 ∧ c > 0 ∧ a + b + c = 180 :=
     sorry
-  
+
   theorem valid_triangle_construction (a b : Int) 
     (h1 : a > 0) (h2 : b > 0) (h3 : a ≤ 178) (h4 : b ≤ 178) :
     let c := 180 - a - b
@@ -53,32 +53,32 @@ vc-theorems: |-
     else 
       is_valid_triangle a b c = "NO" :=
     sorry
-  
+
   theorem negative_or_zero_angles (x : Int) (h : x ≤ 0) :
     is_valid_triangle x 90 90 = "NO" ∧
     is_valid_triangle 90 x 90 = "NO" ∧
     is_valid_triangle 90 90 x = "NO" :=
     sorry
-  
-  /-
-  info: 'YES'
-  -/
-  -- #guard_msgs in
-  -- #eval is_valid_triangle 40 40 100
-  
-  /-
-  info: 'YES'
-  -/
-  -- #guard_msgs in
-  -- #eval is_valid_triangle 45 45 90
-  
-  /-
-  info: 'NO'
-  -/
-  -- #guard_msgs in
-  -- #eval is_valid_triangle 180 1 1
 
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
+
+  /-
+  info: 'YES'
+  -/
+  #guard_msgs in
+  #eval is_valid_triangle 40 40 100
+
+  /-
+  info: 'YES'
+  -/
+  #guard_msgs in
+  #eval is_valid_triangle 45 45 90
+
+  /-
+  info: 'NO'
+  -/
+  #guard_msgs in
+  #eval is_valid_triangle 180 1 1
 

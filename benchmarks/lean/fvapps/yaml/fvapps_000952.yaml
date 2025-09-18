@@ -2,49 +2,49 @@ vc-description: |-
   /-
   Chef is very fond of horses. He enjoys watching them race. As expected, he has a stable full of horses. He, along with his friends, goes to his stable during the weekends to watch a few of these horses race. Chef wants his friends to enjoy the race and so he wants the race to be close. This can happen only if the horses are comparable on their skill i.e. the difference in their skills is less.
   There are N horses in the stable. The skill of the horse i is represented by an integer S[i]. The Chef needs to pick 2 horses for the race such that the difference in their skills is minimum. This way, he would be able to host a very interesting race. Your task is to help him do this and report the minimum difference that is possible between 2 horses in the race.
-  
+
   -----Input:-----
   First line of the input file contains a single integer T, the number of test cases.
-  
+
   Every test case starts with a line containing the integer N.
-  
+
   The next line contains N space separated integers where the i-th integer is S[i].
-  
+
   -----Output:-----
   For each test case, output a single line containing the minimum difference that is possible.
-  
+
   -----Constraints:-----
   1 ≤ T ≤ 10
   2 ≤ N ≤ 5000
   1 ≤ S[i] ≤ 1000000000
-  
+
   -----Example:-----Input:
   1
   5
   4 9 1 32 13
-  
+
   Output:
   3
-  
+
   Explanation: The minimum difference can be achieved if we pick horses with skills 1 and 4 for the race.
   -/
 
 vc-preamble: |-
   def min_horse_skill_diff (n : Nat) (skills : List Nat) : Nat :=
   sorry
-  
+
   def list_max (l : List Nat) : Nat :=
   sorry
-  
+
   def list_min (l : List Nat) : Nat :=
   sorry
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def list_sort (l : List Nat) : List Nat :=
   sorry
-  
+
   -- Result is non-negative
 
 vc-theorems: |-
@@ -52,56 +52,56 @@ vc-theorems: |-
     (h : skills.length = n) (h2 : skills.length ≥ 2) :
     min_horse_skill_diff n skills ≥ 0 :=
   sorry
-  
+
   -- Result is at most the range of skills
-  
+
   theorem min_horse_skill_diff_le_range {n : Nat} {skills : List Nat}
     (h : skills.length = n) (h2 : skills.length ≥ 2) :
     min_horse_skill_diff n skills ≤ list_max skills - list_min skills :=
   sorry
-  
+
   -- Result is at most any adjacent difference in sorted elements
-  
+
   theorem min_horse_skill_diff_le_adjacent {n : Nat} {skills : List Nat} {i : Nat}
     (h : skills.length = n) (h2 : skills.length ≥ 2) (h3 : i < skills.length - 1) :
     min_horse_skill_diff n skills ≤ 
       (list_sort skills).get! (i+1) - (list_sort skills).get! i :=
   sorry
-  
+
   -- Result is invariant under list reordering
-  
+
   theorem min_horse_skill_diff_order_inv {n : Nat} {skills shuffled : List Nat}
     (h : skills.length = n) (h2 : skills.length ≥ 2)
     (h3 : list_sort skills = list_sort shuffled) :
     min_horse_skill_diff n skills = min_horse_skill_diff n shuffled :=
   sorry
-  
+
   -- n must match list length
-  
+
   theorem min_horse_skill_diff_invalid {n : Nat} {skills : List Nat} 
     (h : skills.length ≠ n) :
     min_horse_skill_diff n skills = 0 :=
   sorry
-  
-  /-
-  info: 3
-  -/
-  -- #guard_msgs in
-  -- #eval min_horse_skill_diff 5 [4, 9, 1, 32, 13]
-  
-  /-
-  info: 1
-  -/
-  -- #guard_msgs in
-  -- #eval min_horse_skill_diff 3 [4, 5, 6]
-  
-  /-
-  info: 9
-  -/
-  -- #guard_msgs in
-  -- #eval min_horse_skill_diff 4 [1, 10, 100, 1000]
 
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded
+
+  /-
+  info: 3
+  -/
+  #guard_msgs in
+  #eval min_horse_skill_diff 5 [4, 9, 1, 32, 13]
+
+  /-
+  info: 1
+  -/
+  #guard_msgs in
+  #eval min_horse_skill_diff 3 [4, 5, 6]
+
+  /-
+  info: 9
+  -/
+  #guard_msgs in
+  #eval min_horse_skill_diff 4 [1, 10, 100, 1000]
 

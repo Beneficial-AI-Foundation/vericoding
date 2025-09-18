@@ -2,7 +2,7 @@ vc-description: |-
   /-
   In this Kata, you will be given a string of numbers in sequence and your task will be to return the missing number. If there is no number
   missing or there is an error in the sequence, return `-1`.
-  
+
   For example:
   ```Haskell
   missing("123567") = 4 
@@ -12,25 +12,25 @@ vc-description: |-
   missing("8990919395") = -1 -- error in sequence. Both 92 and 94 missing.
   ```
   The sequence will always be in ascending order.
-  
+
   More examples in the test cases. 
-  
+
   Good luck!
   -/
 
 vc-preamble: |-
   def String.isDigit : String → Bool :=
     sorry
-  
+
   def missing : String → Int :=
     sorry
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def isSequence : String → Bool :=
     sorry
-  
+
   /- For a sequence with one number removed, missing finds the removed number -/
 
 vc-theorems: |-
@@ -42,9 +42,13 @@ vc-theorems: |-
       isSequence (seq.replace (toString target) "")) →
     missing (seq.replace (toString target) "") = target :=
   sorry
-  
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded
+
   /- For a complete sequence with no gaps, missing returns -1 -/
-  
+
   theorem missing_complete_sequence {start : Nat} (h : start ≥ 1 ∧ start ≤ 999) :
     ∀ seq,
     (∃ curr, curr = start ∧
@@ -52,26 +56,22 @@ vc-theorems: |-
       isSequence seq) →
     missing seq = -1 :=
   sorry
-  
+
   /-
   info: 4
   -/
-  -- #guard_msgs in
-  -- #eval missing "123567"
-  
+  #guard_msgs in
+  #eval missing "123567"
+
   /-
   info: 92
   -/
-  -- #guard_msgs in
-  -- #eval missing "899091939495"
-  
+  #guard_msgs in
+  #eval missing "899091939495"
+
   /-
   info: 100
   -/
-  -- #guard_msgs in
-  -- #eval missing "9899101102"
-
-vc-postamble: |-
-  -- Apps difficulty: introductory
-  -- Assurance level: guarded
+  #guard_msgs in
+  #eval missing "9899101102"
 

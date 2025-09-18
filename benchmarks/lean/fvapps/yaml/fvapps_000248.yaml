@@ -4,9 +4,9 @@ vc-description: |-
   There are n + 1 taps located at points [0, 1, ..., n] in the garden.
   Given an integer n and an integer array ranges of length n + 1 where ranges[i] (0-indexed) means the i-th tap can water the area [i - ranges[i], i + ranges[i]] if it was open.
   Return the minimum number of taps that should be open to water the whole garden, If the garden cannot be watered return -1.
-  
+
   Example 1:
-  
+
   Input: n = 5, ranges = [3,4,1,1,0,0]
   Output: 1
   Explanation: The tap at point 0 can cover the interval [-3,3]
@@ -16,34 +16,34 @@ vc-description: |-
   The tap at point 4 can cover the interval [4,4]
   The tap at point 5 can cover the interval [5,5]
   Opening Only the second tap will water the whole garden [0,5]
-  
+
   Example 2:
   Input: n = 3, ranges = [0,0,0,0]
   Output: -1
   Explanation: Even if you activate all the four taps you cannot water the whole garden.
-  
+
   Example 3:
   Input: n = 7, ranges = [1,2,1,0,2,1,0,1]
   Output: 3
-  
+
   Example 4:
   Input: n = 8, ranges = [4,0,0,0,0,0,0,0,4]
   Output: 2
-  
+
   Example 5:
   Input: n = 8, ranges = [4,0,0,0,4,0,0,0,4]
   Output: 1
-  
+
   Constraints:
-  
+
   1 <= n <= 10^4
   ranges.length == n + 1
   0 <= ranges[i] <= 100
   -/
 
-vc-preamble: |-
+vc-preamble: |
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def minTaps (n: Nat) (ranges: List Nat) : Int :=
@@ -52,43 +52,43 @@ vc-definitions: |-
 vc-theorems: |-
   theorem empty_ranges_theorem (n: Nat) (h: n ≥ 1) (h2: n ≤ 100):
     minTaps n (List.replicate (n+1) 0) = -1 := sorry
-  
+
   theorem full_coverage_theorem (n: Nat) (h: n ≥ 1) (h2: n ≤ 100):
     let ranges := (List.replicate (n+1) 0).set 0 n
     minTaps n ranges = 1 := sorry 
-  
+
   theorem alternating_ranges_theorem (n: Nat) (h: n ≥ 1) (h2: n ≤ 100):
     let ranges := List.range (n+1) |>.map (fun i => if i % 2 = 0 then 1 else 0)
     minTaps n ranges = -1 ∨ minTaps n ranges ≥ n/2 := sorry
-  
+
   theorem basic_properties_theorem (n: Nat) (ranges: List Nat) 
     (h: n ≥ 1) (h2: n ≤ 100) (h3: ranges.length = n+1):
     minTaps n ranges = -1 ∨ minTaps n ranges ≥ 1 := sorry
-  
+
   theorem all_zeros_theorem (n: Nat) (ranges: List Nat)
     (h: n ≥ 1) (h2: n ≤ 100) (h3: ranges.length = n+1)
     (h4: ranges.all (fun x => x = 0)):
     minTaps n ranges = -1 := sorry
-  
-  /-
-  info: 1
-  -/
-  -- #guard_msgs in
-  -- #eval minTaps 5 [3, 4, 1, 1, 0, 0]
-  
-  /-
-  info: -1
-  -/
-  -- #guard_msgs in
-  -- #eval minTaps 3 [0, 0, 0, 0]
-  
-  /-
-  info: 3
-  -/
-  -- #guard_msgs in
-  -- #eval minTaps 7 [1, 2, 1, 0, 2, 1, 0, 1]
 
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
+
+  /-
+  info: 1
+  -/
+  #guard_msgs in
+  #eval minTaps 5 [3, 4, 1, 1, 0, 0]
+
+  /-
+  info: -1
+  -/
+  #guard_msgs in
+  #eval minTaps 3 [0, 0, 0, 0]
+
+  /-
+  info: 3
+  -/
+  #guard_msgs in
+  #eval minTaps 7 [1, 2, 1, 0, 2, 1, 0, 1]
 

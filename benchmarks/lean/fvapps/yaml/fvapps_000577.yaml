@@ -2,33 +2,33 @@ vc-description: |-
   /-
   Mathison recently inherited an ancient papyrus that contained some text. Unfortunately, the text was not a
   pangram. Now, Mathison has a particular liking for holoalphabetic strings and the text bothers him. The good news is that Mathison can buy letters from the local store in order to turn his text into a pangram.
-  
+
   However, each letter has a price and Mathison is not very rich. Can you help Mathison find the cheapest way to obtain a pangram?
-  
+
   -----Input-----
   The first line of the input file will contain one integer, T, representing the number of tests.
   Each test will be formed from two lines. The first one contains 26 space-separated integers, representing the prices of all letters.
   The second will contain Mathison's initial text (a string of N lowercase letters).
-  
+
   -----Output-----
   The output file will contain T lines, one for each test. Each line will contain the answer for the corresponding test.
-  
+
   -----Constraints and notes-----
   - 1 ≤ T ≤ 10
   - 1 ≤ N ≤ 50,000
   - All prices are natural numbers between 1 and 1,000,000 (i.e. 106).
   - A pangram is a string that contains every letter of the Latin alphabet at least once.
   - All purchased letters are added to the end of the string.
-  
+
   -----Subtaks-----
   Subtask #1 (30 points):
-  
+
   - N = 1
-  
+
   Subtask #2 (70 points):
-  
+
   - Original constraints
-  
+
   -----Example-----
   Input:
   2
@@ -36,27 +36,27 @@ vc-description: |-
   abcdefghijklmopqrstuvwz
   1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26
   thequickbrownfoxjumpsoverthelazydog
-  
+
   Output:
   63
   0
-  
+
   -----Explanation-----
   First test
   There are three letters missing from the original string: n (price 14), x (price 24), and y (price 25).
   Therefore the answer is 14 + 24 + 25 = 63.
-  
+
   Second test
   No letter is missing so there is no point in buying something. The answer is 0.
   -/
 
-vc-preamble: |-
+vc-preamble: |
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def get_pangram_cost (prices : List Nat) (text : String) : Nat := sorry
-  
+
   theorem pangram_cost_nonnegative (prices : List Nat) (text : String) 
       (h : prices.length = 26) : 
     get_pangram_cost prices text ≥ 0 := sorry
@@ -65,26 +65,26 @@ vc-theorems: |-
   theorem pangram_cost_empty_string (prices : List Nat)
       (h : prices.length = 26) :
     get_pangram_cost prices "" = prices.foldl (·+·) 0 := sorry
-  
-  /-
-  info: 63
-  -/
-  -- #guard_msgs in
-  -- #eval get_pangram_cost [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26] "abcdefghijklmopqrstuvwz"
-  
-  /-
-  info: 0
-  -/
-  -- #guard_msgs in
-  -- #eval get_pangram_cost [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26] "thequickbrownfoxjumpsoverthelazydog"
-  
-  /-
-  info: 25
-  -/
-  -- #guard_msgs in
-  -- #eval get_pangram_cost [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1] "a"
 
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
+
+  /-
+  info: 63
+  -/
+  #guard_msgs in
+  #eval get_pangram_cost [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26] "abcdefghijklmopqrstuvwz"
+
+  /-
+  info: 0
+  -/
+  #guard_msgs in
+  #eval get_pangram_cost [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26] "thequickbrownfoxjumpsoverthelazydog"
+
+  /-
+  info: 25
+  -/
+  #guard_msgs in
+  #eval get_pangram_cost [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1] "a"
 

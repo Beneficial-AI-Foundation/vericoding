@@ -1,20 +1,20 @@
 vc-description: |-
   /-
   ## Task
-  
+
   Write a method `remainder` which takes two integer arguments, `dividend` and `divisor`, and returns the remainder when dividend is divided by divisor. Do NOT use the modulus operator (%) to calculate the remainder!
-  
+
   #### Assumption
-  
+
   Dividend will always be `greater than or equal to` divisor.
-  
+
   #### Notes
-  
+
   Make sure that the implemented `remainder` function works exactly the same as the `Modulus operator (%)`.
-  
+
   ```if:java
   `SimpleInteger` is a tiny and immutable implementation of an integer number. Its interface is a very small subset of the `java.math.BigInteger` API:
-  
+
   * `#add(SimpleInteger val)`
   * `#subtract(SimpleInteger val)`
   * `#multiply(SimpleInteger val)`
@@ -23,13 +23,13 @@ vc-description: |-
   ```
   -/
 
-vc-preamble: |-
+vc-preamble: |
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def remainder (dividend divisor : Nat) : Nat := sorry
-  
+
   theorem remainder_properties {dividend divisor : Nat} (h : divisor > 0) : 
     let r := remainder dividend divisor
     (r ≥ 0) ∧ 
@@ -40,26 +40,26 @@ vc-definitions: |-
 vc-theorems: |-
   theorem remainder_matches_modulo {dividend divisor : Nat} (h : divisor > 0) :
     remainder dividend divisor = dividend % divisor := sorry
-  
-  /-
-  info: 1
-  -/
-  -- #guard_msgs in
-  -- #eval remainder 3 2
-  
-  /-
-  info: 1
-  -/
-  -- #guard_msgs in
-  -- #eval remainder 19 2
-  
-  /-
-  info: 2
-  -/
-  -- #guard_msgs in
-  -- #eval remainder 27 5
 
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
+
+  /-
+  info: 1
+  -/
+  #guard_msgs in
+  #eval remainder 3 2
+
+  /-
+  info: 1
+  -/
+  #guard_msgs in
+  #eval remainder 19 2
+
+  /-
+  info: 2
+  -/
+  #guard_msgs in
+  #eval remainder 27 5
 

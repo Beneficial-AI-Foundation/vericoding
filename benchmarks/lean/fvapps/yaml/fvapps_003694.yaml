@@ -2,15 +2,15 @@ vc-description: |-
   /-
   Let's say that in a hypothetical platform that resembles Codewars there is a clan with 2 warriors. The 2nd one in ranking (lets call him **D**) wants to at least reach the honor score of his ally (lets call her **M**). 
   *(Let's say that there is no antagonism here, he just wants to prove his ally that she should be proud to have him in the clan and sees this as the only way to achieve it! :P )*
-  
+
   Your task is to help **D** by providing him with the **quickest path** to reach **M**'s honor score.
-  
+
   In this hypothetical platform there are 2 kinds of kata to be solved:
   ```
   '2kyu' worth of 1 point 
   '1kyu' worth of 2 points 
   ```
-  
+
   So if for example:
   ```
   M has honor 11
@@ -27,24 +27,24 @@ vc-description: |-
   ```
   4 '1kyus' and 1 '2kyus' => Solve only 5 kata
   ```
-  
+
   Create a function `getHonorPath` that accepts 2 arguments `honorScore` & `targetHonorScore` with score integers of 2 warriors and returns an object with the **quickest path** for the first one to reach the 2nd's honor. For example:
-  
+
   ```
   getHonorPath(2, 11) should return { '1kyus': 4, '2kyus': 1 }
   getHonorPath(20, 11) should return {}
   ```
-  
+
   **For the purpose of this kata you do not have to worry about any non-integer arguments for honor scores**
   -/
 
-vc-preamble: |-
+vc-preamble: |
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def get_honor_path (honor : Int) (target : Int) : Option (Int × Int) := sorry
-  
+
   theorem honor_path_empty_when_target_not_greater {honor target : Int} :
     target ≤ honor → get_honor_path honor target = none := sorry
 
@@ -54,32 +54,32 @@ vc-theorems: |-
     | none => False 
     | some (kyus1, kyus2) => honor + (kyus1 * 2 + kyus2) = target
     := sorry
-  
+
   theorem honor_path_optimal {honor target : Int} (h: target > honor) :
     match get_honor_path honor target with
     | none => False
     | some (kyus1, kyus2) => kyus2 ≤ 1 ∧ kyus1 ≥ 0
     := sorry
-  
-  /-
-  info: {}
-  -/
-  -- #guard_msgs in
-  -- #eval get_honor_path 11 2
-  
-  /-
-  info: {}
-  -/
-  -- #guard_msgs in
-  -- #eval get_honor_path 11 11
-  
-  /-
-  info: {'1kyus': 4, '2kyus': 1}
-  -/
-  -- #guard_msgs in
-  -- #eval get_honor_path 2 11
 
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+
+  /-
+  info: {}
+  -/
+  #guard_msgs in
+  #eval get_honor_path 11 2
+
+  /-
+  info: {}
+  -/
+  #guard_msgs in
+  #eval get_honor_path 11 11
+
+  /-
+  info: {'1kyus': 4, '2kyus': 1}
+  -/
+  #guard_msgs in
+  #eval get_honor_path 2 11
 

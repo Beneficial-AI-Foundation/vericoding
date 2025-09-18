@@ -2,49 +2,49 @@ vc-description: |-
   /-
   # Task
    Given an integer `product`, find the smallest positive integer the product of whose digits is equal to product. If there is no such integer, return -1 instead.
-  
+
   # Example
-  
+
    For `product = 1`, the output should be `11`;
-  
+
    `1 x 1 = 1` (1 is not a valid result, because it has only 1 digit)
-  
+
    For `product = 12`, the output should be `26`;
-  
+
    `2 x 6 = 12`
-  
+
    For `product = 19`, the output should be `-1`.
-  
+
    No valid result found.
-  
+
    For `product = 450`, the output should be `2559`.
-  
+
    `2 x 5 x 5 x 9 = 450`
-  
+
    For `product = 581`, the output should be `-1`.
-  
+
    No valid result found. 
-  
+
    Someone says the output should be `783`, because `7 x 83 = 581`.
-  
+
    Please note: `83` is not a **DIGIT**.
-  
+
   # Input/Output
-  
+
    - `[input]` integer `product`
-  
+
       Constraints: `0 ≤ product ≤ 600`.
-  
+
    - `[output]` a positive integer
   -/
 
-vc-preamble: |-
+vc-preamble: |
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def digits_product (n : Nat) : Int := sorry
-  
+
   def stringToDigitProduct (s : String) : Nat :=
     s.toList.map (fun c => c.toNat - 48)
       |>.foldl (· * ·) 1
@@ -53,34 +53,34 @@ vc-theorems: |-
   theorem digits_product_result_range (n : Nat) :
     let result := digits_product n
     result = -1 ∨ result > 0 := by sorry
-  
+
   theorem digits_product_single_digit (n : Nat) (h : n ≤ 9) :
     digits_product n = (if n = 0 then 10 else 10 + n) := by sorry
-  
+
   theorem digits_product_product_matches (n : Nat) :
     let result := digits_product n
     result ≠ -1 →
     stringToDigitProduct (toString result.toNat) = n := by sorry
-  
-  /-
-  info: 26
-  -/
-  -- #guard_msgs in
-  -- #eval digits_product 12
-  
-  /-
-  info: -1
-  -/
-  -- #guard_msgs in
-  -- #eval digits_product 19
-  
-  /-
-  info: 2559
-  -/
-  -- #guard_msgs in
-  -- #eval digits_product 450
 
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+
+  /-
+  info: 26
+  -/
+  #guard_msgs in
+  #eval digits_product 12
+
+  /-
+  info: -1
+  -/
+  #guard_msgs in
+  #eval digits_product 19
+
+  /-
+  info: 2559
+  -/
+  #guard_msgs in
+  #eval digits_product 450
 

@@ -9,19 +9,19 @@ vc-description: |-
   iterations replace each pair of consecutive elements with their product.
   ```
   After the algorithm has finished, there will be a single element left in the array. Return that element.
-  
+
   # Example
-  
+
    For inputArray = [1, 2, 3, 4, 5, 6, 7, 8], the output should be 186.
-  
+
    We have `[1, 2, 3, 4, 5, 6, 7, 8] -> [3, 7, 11, 15] -> [21, 165] -> [186]`, so the answer is 186.
-  
+
   # Input/Output
-  
+
    - `[input]` integer array `arr`
-  
+
      Constraints: 2^(1) ≤ arr.length ≤ 2^(5), -9 ≤ arr[i] ≤ 99.
-  
+
    - `[output]` an integer
   -/
 
@@ -29,7 +29,7 @@ vc-preamble: |-
   def isPowerOfTwo (n : Nat) : Bool :=
     sorry
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def arrayConversion (arr : List Nat) : Nat :=
@@ -43,13 +43,13 @@ vc-theorems: |-
     isPowerOfTwo arr.length = true ∧ 
     arrayConversion arr ≥ 0 :=
   sorry
-  
+
   theorem array_conversion_deterministic 
     {arr : List Nat} 
     (h : isPowerOfTwo arr.length = true) :
     arrayConversion arr = arrayConversion arr :=
   sorry
-  
+
   theorem array_conversion_monotonic
     {arr : List Nat} {i : Nat}
     (h1 : isPowerOfTwo arr.length = true)
@@ -57,26 +57,26 @@ vc-theorems: |-
     let arr' := arr.set i (arr[i] + 1)
     arrayConversion arr' ≥ arrayConversion arr :=
   sorry
-  
-  /-
-  info: 186
-  -/
-  -- #guard_msgs in
-  -- #eval array_conversion [1, 2, 3, 4, 5, 6, 7, 8]
-  
-  /-
-  info: 64
-  -/
-  -- #guard_msgs in
-  -- #eval array_conversion [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
-  
-  /-
-  info: 60
-  -/
-  -- #guard_msgs in
-  -- #eval array_conversion [3, 3, 5, 5]
 
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+
+  /-
+  info: 186
+  -/
+  #guard_msgs in
+  #eval array_conversion [1, 2, 3, 4, 5, 6, 7, 8]
+
+  /-
+  info: 64
+  -/
+  #guard_msgs in
+  #eval array_conversion [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+
+  /-
+  info: 60
+  -/
+  #guard_msgs in
+  #eval array_conversion [3, 3, 5, 5]
 

@@ -1,68 +1,68 @@
 vc-description: |-
   /-
   In this Kata, you will be given a string that may have mixed uppercase and lowercase letters and your task is to convert that string to either lowercase only or uppercase only based on: 
-  
+
   * make as few changes as possible. 
   * if the string contains equal number of uppercase and lowercase letters, convert the string to lowercase. 
-  
+
   For example:
   ```Haskell
   solve("coDe") = "code". Lowercase characters > uppercase. Change only the "D" to lowercase.
   solve("CODe") = "CODE". Uppercase characters > lowecase. Change only the "e" to uppercase.
   solve("coDE") = "code". Upper == lowercase. Change all to lowercase.
   ```
-  
+
   More examples in test cases. Good luck!
-  
+
   Please also try:
-  
+
   [Simple time difference](https://www.codewars.com/kata/5b76a34ff71e5de9db0000f2)
-  
+
   [Simple remove duplicates](https://www.codewars.com/kata/5ba38ba180824a86850000f7)
   -/
 
 vc-preamble: |-
   def solve (s : String) : String := sorry
-  
+
   def isUpper (s : String) : Bool := sorry
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def isLower (s : String) : Bool := sorry
-  
+
   theorem solve_returns_either_upper_or_lower (s : String) : 
     (solve s = s.toUpper) ∨ (solve s = s.toLower) := sorry
 
 vc-theorems: |-
   theorem solve_preserves_uppercase (s : String) : 
     isUpper s = true → solve s = s.toUpper := sorry 
-  
+
   theorem solve_preserves_lowercase (s : String) :
     isLower s = true → solve s = s.toLower := sorry
-  
+
   theorem solve_preserves_length (s : String) :
     (solve s).length = s.length := sorry
-  
-  /-
-  info: 'code'
-  -/
-  -- #guard_msgs in
-  -- #eval solve "coDe"
-  
-  /-
-  info: 'CODE'
-  -/
-  -- #guard_msgs in
-  -- #eval solve "CODe"
-  
-  /-
-  info: 'code'
-  -/
-  -- #guard_msgs in
-  -- #eval solve "coDE"
 
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+
+  /-
+  info: 'code'
+  -/
+  #guard_msgs in
+  #eval solve "coDe"
+
+  /-
+  info: 'CODE'
+  -/
+  #guard_msgs in
+  #eval solve "CODe"
+
+  /-
+  info: 'code'
+  -/
+  #guard_msgs in
+  #eval solve "coDE"
 
