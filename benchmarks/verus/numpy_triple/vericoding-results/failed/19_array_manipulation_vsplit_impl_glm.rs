@@ -1,0 +1,50 @@
+// <vc-preamble>
+use vstd::prelude::*;
+
+verus! {
+// </vc-preamble>
+
+// <vc-helpers>
+
+// </vc-helpers>
+
+// <vc-spec>
+fn vsplit(mat: Vec<Vec<f32>>, k: usize) -> (result: Vec<Vec<Vec<f32>>>)
+    requires 
+        k > 0,
+        mat.len() > 0,
+        mat.len() % k == 0,
+        forall|i: int| #![trigger mat[i]] 0 <= i < mat.len() ==> mat[i].len() == mat[0].len(),
+    ensures
+        result.len() == k,
+        forall|split_idx: int| #![trigger result[split_idx]] 0 <= split_idx < k ==> result[split_idx].len() == mat.len() / k,
+        forall|split_idx: int, row_idx: int, col_idx: int| #![trigger result[split_idx][row_idx][col_idx]]
+            0 <= split_idx < k && 0 <= row_idx < mat.len() / k && 0 <= col_idx < mat[0].len() ==>
+            exists|global_row: int| 
+                global_row == split_idx * (mat.len() / k) + row_idx &&
+                0 <= global_row < mat.len() &&
+                result[split_idx][row_idx][col_idx] == #[trigger] mat[global_row][col_idx],
+        forall|orig_row: int| #![trigger mat[orig_row]] 0 <= orig_row < mat.len() ==>
+            exists|split_idx: int, row_idx: int|
+                0 <= split_idx < k && 0 <= row_idx < mat.len() / k &&
+                orig_row == #[trigger] (split_idx * (mat.len() / k) + row_idx),
+// </vc-spec>
+// <vc-code>
+{
+    /* code modified by LLM (iteration 2): fixed move error by cloning rows */
+    let split_height = mat.len() / k;
+    let mut result = Vec::new();
+    for split_idx in 0..k {
+        let start = split_idx * split_height;
+        let mut split = Vec::new();
+        for j in 0..split_height {
+            split.push(mat[start + j].clone());
+        }
+        result.push(split);
+    }
+    result
+}
+// </vc-code>
+
+}
+fn main() {}

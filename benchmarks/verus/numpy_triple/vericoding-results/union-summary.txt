@@ -1,0 +1,395 @@
+=== VERUS PROCESSING SUMMARY (AGGREGATED) ===
+Selection method: latest runs
+Total files: 364
+Successful: 200 (54.9%)
+Failed: 164
+
+Selected latest runs:
+  - claude-opus: vericoder_claude-opus_17-09
+  - claude-sonnet: vericoder_claude-sonnet_17-09
+  - deepseek: vericoder_deepseek_17-09
+  - gemini: vericoder_gemini_17-09
+  - gemini-flash: vericoder_gemini-flash_17-09
+  - glm: vericoder_glm_17-09
+  - gpt: vericoder_gpt_17-09
+  - gpt-mini: vericoder_gpt-mini_17-09
+  - grok-code: vericoder_grok-code_17-09
+
+Per-LLM success rates:
+  - claude-opus: 114/364 (31.3%)
+  - claude-sonnet: 92/364 (25.3%)
+  - deepseek: 37/364 (10.2%)
+  - gemini: 118/364 (32.4%)
+  - gemini-flash: 62/364 (17.0%)
+  - glm: 62/364 (17.0%)
+  - gpt: 160/364 (44.0%)
+  - gpt-mini: 74/364 (20.3%)
+  - grok-code: 74/364 (20.3%)
+
+Successful files:
+✓ array_creation_array.rs — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, grok-code
+✓ array_creation_asanyarray.rs — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt
+✓ array_creation_asarray.rs — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, grok-code
+✓ array_creation_ascontiguousarray.rs — by: claude-opus, claude-sonnet, deepseek, gemini-flash, glm, gpt, grok-code
+✓ array_creation_asmatrix.rs — by: claude-opus, claude-sonnet, deepseek, gemini, glm, gpt, gpt-mini, grok-code
+✓ array_creation_bmat.rs — by: gpt
+✓ array_creation_copy.rs — by: claude-opus, deepseek, gemini, gemini-flash, grok-code
+✓ array_creation_empty_like.rs — by: claude-opus, claude-sonnet, gemini-flash, grok-code
+✓ array_creation_eye.rs — by: claude-opus, gemini, gemini-flash, glm, gpt
+✓ array_creation_frombuffer.rs — by: claude-opus, claude-sonnet, gemini
+✓ array_creation_fromstring.rs — by: claude-opus, claude-sonnet, gemini, gpt, gpt-mini
+✓ array_creation_full_like.rs — by: claude-opus, claude-sonnet, gemini, gpt, grok-code
+✓ array_creation_geomspace.rs — by: claude-opus, gpt
+✓ array_creation_identity.rs — by: claude-opus, claude-sonnet, gemini, gemini-flash
+✓ array_creation_linspace.rs — by: claude-opus, gpt
+✓ array_creation_meshgrid.rs — by: claude-opus, claude-sonnet, gemini-flash
+✓ array_creation_ogrid.rs — by: gpt
+✓ array_creation_ones_like.rs — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt
+✓ array_creation_zeros.rs — by: claude-opus, claude-sonnet, gemini-flash, glm
+✓ array_creation_zeros_like.rs — by: claude-opus, claude-sonnet, gemini, gemini-flash, gpt
+✓ array_manipulation_append.rs — by: claude-opus, claude-sonnet, gemini, gpt, grok-code
+✓ array_manipulation_atleast_1d.rs — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ array_manipulation_atleast_2d.rs — by: claude-opus, claude-sonnet
+✓ array_manipulation_atleast_3d.rs — by: claude-opus, claude-sonnet, gemini, grok-code
+✓ array_manipulation_broadcast.rs — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, grok-code
+✓ array_manipulation_concatenate.rs — by: claude-opus, claude-sonnet, gemini, gpt
+✓ array_manipulation_copyto.rs — by: claude-opus, claude-sonnet, gemini, glm, gpt
+✓ array_manipulation_dstack.rs — by: gemini
+✓ array_manipulation_expand_dims.rs — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ array_manipulation_flip.rs — by: gemini, grok-code
+✓ array_manipulation_flipud.rs — by: gemini, gemini-flash
+✓ array_manipulation_hstack.rs — by: claude-opus, claude-sonnet, gemini
+✓ array_manipulation_insert.rs — by: gemini
+✓ array_manipulation_matrix_transpose.rs — by: gemini
+✓ array_manipulation_ndim.rs — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ array_manipulation_ravel.rs — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini
+✓ array_manipulation_reshape.rs — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ array_manipulation_rollaxis.rs — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ array_manipulation_rot90.rs — by: gpt
+✓ array_manipulation_row_stack.rs — by: gpt, gpt-mini, grok-code
+✓ array_manipulation_shape.rs — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ array_manipulation_size.rs — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ array_manipulation_squeeze.rs — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, grok-code
+✓ array_manipulation_stack.rs — by: gemini, glm, gpt, gpt-mini
+✓ array_manipulation_swapaxes.rs — by: gemini
+✓ array_manipulation_transpose.rs — by: gemini
+✓ array_manipulation_vstack.rs — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ constants_False_.rs — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ constants_NINF.rs — by: claude-opus, claude-sonnet, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ constants_NPY_LOG2E.rs — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ constants_NPY_SQRT1_2.rs — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ constants_PZERO.rs — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ constants_True_.rs — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ constants_e.rs — by: claude-opus, claude-sonnet, glm, gpt, gpt-mini, grok-code
+✓ constants_euler_gamma.rs — by: claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ constants_inf.rs — by: claude-opus, gemini, gpt, gpt-mini, grok-code
+✓ data_type_routines_isdtype.rs — by: claude-opus, claude-sonnet, deepseek, gemini, gpt, gpt-mini
+✓ data_type_routines_issctype.rs — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ data_type_routines_issubclass_.rs — by: claude-opus, gemini, gpt, gpt-mini, grok-code
+✓ data_type_routines_may_share_memory.rs — by: claude-opus, claude-sonnet, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ data_type_routines_obj2sctype.rs — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ data_type_routines_shares_memory.rs — by: gpt, gpt-mini
+✓ data_type_routines_typecodes.rs — by: claude-sonnet, deepseek, grok-code
+✓ datetime_support_timedelta64.rs — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ fft_fft.rs — by: claude-opus, claude-sonnet, gpt
+✓ fft_hfft.rs — by: gpt
+✓ indexing_slicing_argmax.rs — by: claude-opus, claude-sonnet, gemini, grok-code
+✓ indexing_slicing_choose.rs — by: claude-opus, gemini, gemini-flash
+✓ indexing_slicing_fill_diagonal.rs — by: glm
+✓ indexing_slicing_flatiter.rs — by: claude-opus, claude-sonnet, gemini, gemini-flash, gpt, gpt-mini
+✓ indexing_slicing_indices.rs — by: claude-opus, gemini, gemini-flash, gpt
+✓ indexing_slicing_ix_.rs — by: claude-opus, claude-sonnet, deepseek, gemini
+✓ indexing_slicing_ndenumerate.rs — by: gemini
+✓ indexing_slicing_nditer.rs — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ indexing_slicing_place.rs — by: claude-opus, claude-sonnet, gemini, gpt
+✓ indexing_slicing_putmask.rs — by: gemini
+✓ indexing_slicing_r_.rs — by: claude-opus, gemini-flash, glm, gpt
+✓ indexing_slicing_s_.rs — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ indexing_slicing_select.rs — by: gemini
+✓ indexing_slicing_take.rs — by: claude-opus, claude-sonnet, gemini
+✓ indexing_slicing_where.rs — by: claude-opus, claude-sonnet, gemini, glm
+✓ io_operations_array2string.rs — by: gpt
+✓ io_operations_fromfile.rs — by: claude-opus, claude-sonnet, gemini, gpt
+✓ io_operations_fromstring.rs — by: claude-opus, gpt, gpt-mini, grok-code
+✓ io_operations_genfromtxt.rs — by: claude-opus, gpt, grok-code
+✓ io_operations_loadtxt.rs — by: claude-opus, claude-sonnet, gemini, gpt
+✓ io_operations_save.rs — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ io_operations_savez.rs — by: claude-opus, claude-sonnet, deepseek, gemini-flash, glm, gpt-mini, grok-code
+✓ linalg_diagonal.rs — by: gemini
+✓ linalg_eigh.rs — by: claude-opus, claude-sonnet, gemini, gpt
+✓ linalg_matrix_power.rs — by: gemini-flash, gpt
+✓ linalg_matrix_transpose.rs — by: gemini
+✓ linalg_multi_dot.rs — by: gpt
+✓ linalg_norm.rs — by: gpt
+✓ linalg_slogdet.rs — by: claude-sonnet, gpt
+✓ linalg_tensorinv.rs — by: claude-opus, gpt, gpt-mini
+✓ linalg_tensorsolve.rs — by: claude-opus, claude-sonnet, gemini, gemini-flash, gpt, gpt-mini
+✓ linalg_vector_norm.rs — by: gpt
+✓ logic_functions_bitwise_not.rs — by: gemini, gemini-flash
+✓ logic_functions_greater_equal.rs — by: claude-sonnet, gemini, gpt
+✓ logic_functions_isnat.rs — by: gpt
+✓ logic_functions_logical_and.rs — by: claude-opus, gemini
+✓ logic_functions_logical_or.rs — by: claude-opus, gemini, gpt
+✓ logic_functions_logical_xor.rs — by: claude-opus, claude-sonnet, gemini, gpt
+✓ mathematical_functions_arccosh.rs — by: claude-opus, gemini, gemini-flash, glm, gpt, gpt-mini
+✓ mathematical_functions_arcsin.rs — by: gpt
+✓ mathematical_functions_arctan2.rs — by: claude-opus, claude-sonnet, gemini, gpt
+✓ mathematical_functions_around.rs — by: gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ mathematical_functions_cbrt.rs — by: claude-opus, gpt, gpt-mini
+✓ mathematical_functions_ceil.rs — by: claude-opus, gpt
+✓ mathematical_functions_cosh.rs — by: claude-opus, gemini, gpt, gpt-mini, grok-code
+✓ mathematical_functions_cross.rs — by: gpt
+✓ mathematical_functions_exp.rs — by: claude-opus, gemini, gpt, gpt-mini, grok-code
+✓ mathematical_functions_fix.rs — by: claude-opus, claude-sonnet, glm, gpt, gpt-mini, grok-code
+✓ mathematical_functions_floor.rs — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ mathematical_functions_floor_divide.rs — by: gpt
+✓ mathematical_functions_fmin.rs — by: claude-sonnet, gemini, gpt
+✓ mathematical_functions_fmod.rs — by: gemini, gemini-flash, gpt
+✓ mathematical_functions_frexp.rs — by: claude-opus, glm, gpt, grok-code
+✓ mathematical_functions_gradient.rs — by: gpt
+✓ mathematical_functions_imag.rs — by: claude-opus, claude-sonnet, gemini, gemini-flash, gpt
+✓ mathematical_functions_ldexp.rs — by: gemini
+✓ mathematical_functions_log.rs — by: gpt, gpt-mini, grok-code
+✓ mathematical_functions_log2.rs — by: claude-opus, gemini-flash, gpt
+✓ mathematical_functions_logaddexp2.rs — by: claude-opus, gpt, gpt-mini
+✓ mathematical_functions_modf.rs — by: gpt, gpt-mini
+✓ mathematical_functions_nan_to_num.rs — by: claude-opus, claude-sonnet, gemini, glm, gpt, gpt-mini
+✓ mathematical_functions_nancumprod.rs — by: gpt, gpt-mini
+✓ mathematical_functions_positive.rs — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ mathematical_functions_remainder.rs — by: gemini
+✓ mathematical_functions_rint.rs — by: claude-opus, claude-sonnet, gpt, gpt-mini
+✓ mathematical_functions_round.rs — by: gpt, gpt-mini
+✓ mathematical_functions_sin.rs — by: claude-opus, gpt, gpt-mini, grok-code
+✓ mathematical_functions_sinh.rs — by: claude-opus, gemini, glm, gpt
+✓ mathematical_functions_tan.rs — by: claude-opus, gemini, gpt, grok-code
+✓ ndarray_flat.rs — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, gpt, gpt-mini
+✓ ndarray_tofile.rs — by: claude-opus, claude-sonnet, deepseek, gemini, glm, gpt, gpt-mini, grok-code
+✓ polynomial_chebyshev_cheb2poly.rs — by: gpt
+✓ polynomial_chebyshev_chebcompanion.rs — by: gpt
+✓ polynomial_chebyshev_chebint.rs — by: gpt, grok-code
+✓ polynomial_chebyshev_chebline.rs — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, grok-code
+✓ polynomial_chebyshev_chebmulx.rs — by: claude-sonnet, gpt
+✓ polynomial_chebyshev_chebpts2.rs — by: gemini, gpt
+✓ polynomial_chebyshev_chebweight.rs — by: gpt, gpt-mini
+✓ polynomial_hermite_e_HermiteE.rs — by: claude-opus, claude-sonnet, gemini, glm, gpt, gpt-mini, grok-code
+✓ polynomial_hermite_e_hermeder.rs — by: gpt
+✓ polynomial_hermite_e_hermefit.rs — by: claude-opus, claude-sonnet, gpt, gpt-mini
+✓ polynomial_hermite_e_hermefromroots.rs — by: gpt
+✓ polynomial_hermite_e_hermeint.rs — by: gpt
+✓ polynomial_hermite_e_hermeline.rs — by: claude-opus, deepseek, gemini, gemini-flash, gpt, gpt-mini, grok-code
+✓ polynomial_hermite_e_hermemulx.rs — by: claude-opus, claude-sonnet
+✓ polynomial_hermite_hermfit.rs — by: gemini, gpt
+✓ polynomial_hermite_hermint.rs — by: gpt
+✓ polynomial_hermite_hermval2d.rs — by: claude-opus, gemini, gpt
+✓ polynomial_hermite_hermweight.rs — by: gemini, glm, gpt, grok-code
+✓ polynomial_laguerre_lagadd.rs — by: gemini
+✓ polynomial_laguerre_lagcompanion.rs — by: gpt
+✓ polynomial_laguerre_lagdiv.rs — by: gpt
+✓ polynomial_laguerre_lagline.rs — by: claude-opus, claude-sonnet, gemini, glm, gpt, gpt-mini, grok-code
+✓ polynomial_laguerre_lagpow.rs — by: gpt
+✓ polynomial_laguerre_lagval.rs — by: gpt
+✓ polynomial_laguerre_lagval2d.rs — by: gpt
+✓ polynomial_laguerre_lagval3d.rs — by: gpt
+✓ polynomial_laguerre_poly2lag.rs — by: claude-opus, deepseek, gpt, gpt-mini, grok-code
+✓ polynomial_legendre_Legendre.rs — by: claude-opus, claude-sonnet, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ polynomial_legendre_leg2poly.rs — by: claude-sonnet, glm, gpt, gpt-mini, grok-code
+✓ polynomial_legendre_legcompanion.rs — by: gpt
+✓ polynomial_legendre_legder.rs — by: gpt, gpt-mini
+✓ polynomial_legendre_legint.rs — by: gpt
+✓ polynomial_legendre_legline.rs — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ polynomial_legendre_legmul.rs — by: gpt
+✓ polynomial_legendre_legmulx.rs — by: claude-sonnet, gemini, gpt
+✓ polynomial_legendre_legvander.rs — by: gpt
+✓ polynomial_legendre_legweight.rs — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt
+✓ polynomial_legendre_poly2leg.rs — by: gpt, gpt-mini, grok-code
+✓ polynomial_polynomial_polydiv.rs — by: gpt
+✓ polynomial_polynomial_polymulx.rs — by: claude-opus, gemini, glm, gpt, grok-code
+✓ polynomial_polynomial_polyval.rs — by: gemini
+✓ polynomial_polyutils_as_series.rs — by: claude-sonnet, gpt-mini, grok-code
+✓ polynomial_polyutils_mapdomain.rs — by: claude-opus, gpt
+✓ random_BitGenerator.rs — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, grok-code
+✓ random_default_rng.rs — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+✓ sorting_searching_argmax.rs — by: claude-opus, gemini, glm
+✓ sorting_searching_unique.rs — by: gemini, gpt, gpt-mini
+✓ sorting_searching_where.rs — by: claude-opus, claude-sonnet, gemini, glm, gpt
+✓ statistics_amax.rs — by: claude-opus, gemini
+✓ statistics_amin.rs — by: gpt, grok-code
+✓ statistics_histogram2d.rs — by: gpt
+✓ statistics_percentile.rs — by: claude-sonnet, gemini
+✓ statistics_std.rs — by: gpt
+✓ statistics_var.rs — by: gpt
+✓ strings_capitalize.rs — by: gemini, glm, gpt, gpt-mini, grok-code
+✓ strings_count.rs — by: gpt
+✓ strings_lstrip.rs — by: gpt
+✓ strings_mod.rs — by: claude-opus, claude-sonnet, gemini, gpt, gpt-mini, grok-code
+✓ strings_replace.rs — by: gpt, gpt-mini
+✓ strings_splitlines.rs — by: gemini, gpt
+✓ strings_strip.rs — by: gpt, gpt-mini
+✓ ufunc_reduce.rs — by: claude-opus, claude-sonnet, gemini, glm, gpt, grok-code
+✓ ufuncs_ntypes.rs — by: claude-opus, claude-sonnet, deepseek, gemini, gemini-flash, glm, gpt, gpt-mini, grok-code
+
+Failed files:
+✗ array_creation_diagflat.rs
+✗ array_creation_from_dlpack.rs
+✗ array_creation_fromfile.rs
+✗ array_creation_fromfunction.rs
+✗ array_creation_fromiter.rs
+✗ array_creation_full.rs
+✗ array_creation_tri.rs
+✗ array_creation_tril.rs
+✗ array_manipulation_block.rs
+✗ array_manipulation_broadcast_to.rs
+✗ array_manipulation_column_stack.rs
+✗ array_manipulation_delete.rs
+✗ array_manipulation_dsplit.rs
+✗ array_manipulation_fliplr.rs
+✗ array_manipulation_repeat.rs
+✗ array_manipulation_resize.rs
+✗ array_manipulation_split.rs
+✗ array_manipulation_tile.rs
+✗ array_manipulation_vsplit.rs
+✗ bitwise_operations_binary_repr.rs
+✗ bitwise_operations_bitwise_and.rs
+✗ bitwise_operations_bitwise_count.rs
+✗ bitwise_operations_bitwise_or.rs
+✗ bitwise_operations_bitwise_xor.rs
+✗ bitwise_operations_invert.rs
+✗ bitwise_operations_left_shift.rs
+✗ bitwise_operations_packbits.rs
+✗ bitwise_operations_right_shift.rs
+✗ bitwise_operations_unpackbits.rs
+✗ constants_iinfo.rs
+✗ constants_nan.rs
+✗ constants_newaxis.rs
+✗ data_type_routines_as_strided.rs
+✗ data_type_routines_can_cast.rs
+✗ data_type_routines_iinfo.rs
+✗ data_type_routines_issubdtype.rs
+✗ data_type_routines_maximum_sctype.rs
+✗ data_type_routines_mintypecode.rs
+✗ data_type_routines_promote_types.rs
+✗ data_type_routines_result_type.rs
+✗ datetime_support_datetime64.rs
+✗ datetime_support_datetime_as_string.rs
+✗ fft_ifft.rs
+✗ indexing_slicing_argwhere.rs
+✗ indexing_slicing_c_.rs
+✗ indexing_slicing_compress.rs
+✗ indexing_slicing_diag.rs
+✗ indexing_slicing_diagonal.rs
+✗ indexing_slicing_extract.rs
+✗ indexing_slicing_mgrid.rs
+✗ indexing_slicing_nanargmax.rs
+✗ indexing_slicing_nanargmin.rs
+✗ indexing_slicing_ndindex.rs
+✗ indexing_slicing_put.rs
+✗ indexing_slicing_ravel_multi_index.rs
+✗ indexing_slicing_tril.rs
+✗ indexing_slicing_triu.rs
+✗ indexing_slicing_unravel_index.rs
+✗ io_operations_array_str.rs
+✗ io_operations_load.rs
+✗ linalg_LinAlgError.rs
+✗ linalg_eig.rs
+✗ linalg_matmul.rs
+✗ linalg_matrix_rank.rs
+✗ linalg_outer.rs
+✗ linalg_tensordot.rs
+✗ linalg_vecdot.rs
+✗ logic_functions_all.rs
+✗ logic_functions_allclose.rs
+✗ logic_functions_any.rs
+✗ logic_functions_array_equal.rs
+✗ logic_functions_array_equiv.rs
+✗ logic_functions_bitwise_and.rs
+✗ logic_functions_bitwise_or.rs
+✗ logic_functions_bitwise_xor.rs
+✗ logic_functions_equal.rs
+✗ logic_functions_iscomplex.rs
+✗ logic_functions_isinf.rs
+✗ logic_functions_isnan.rs
+✗ logic_functions_isneginf.rs
+✗ logic_functions_isreal.rs
+✗ logic_functions_logical_not.rs
+✗ logic_functions_not_equal.rs
+✗ mathematical_functions_divide.rs
+✗ mathematical_functions_divmod.rs
+✗ mathematical_functions_gcd.rs
+✗ mathematical_functions_heaviside.rs
+✗ mathematical_functions_interp.rs
+✗ mathematical_functions_lcm.rs
+✗ mathematical_functions_logaddexp.rs
+✗ mathematical_functions_nanprod.rs
+✗ mathematical_functions_reciprocal.rs
+✗ mathematical_functions_square.rs
+✗ mathematical_functions_sum.rs
+✗ mathematical_functions_trapezoid.rs
+✗ ndarray_flatten.rs
+✗ polynomial_chebyshev_chebder.rs
+✗ polynomial_chebyshev_chebvander.rs
+✗ polynomial_chebyshev_poly2cheb.rs
+✗ polynomial_hermite_Hermite.rs
+✗ polynomial_hermite_e_hermeadd.rs
+✗ polynomial_hermite_e_hermegrid2d.rs
+✗ polynomial_hermite_e_hermemul.rs
+✗ polynomial_hermite_e_hermepow.rs
+✗ polynomial_hermite_e_hermevander.rs
+✗ polynomial_hermite_e_hermevander2d.rs
+✗ polynomial_hermite_e_hermevander3d.rs
+✗ polynomial_hermite_hermder.rs
+✗ polynomial_hermite_hermmul.rs
+✗ polynomial_hermite_hermpow.rs
+✗ polynomial_hermite_hermvander2d.rs
+✗ polynomial_hermite_poly2herm.rs
+✗ polynomial_laguerre_lag2poly.rs
+✗ polynomial_laguerre_lagmul.rs
+✗ polynomial_laguerre_lagroots.rs
+✗ polynomial_legendre_leggrid3d.rs
+✗ polynomial_legendre_legvander2d.rs
+✗ polynomial_polynomial_polypow.rs
+✗ polynomial_polynomial_polyval2d.rs
+✗ polynomial_polynomial_polyvalfromroots.rs
+✗ polynomial_polynomial_polyvander2d.rs
+✗ polynomial_polynomial_polyvander3d.rs
+✗ polynomial_polyutils_mapparms.rs
+✗ polynomial_polyutils_trimcoef.rs
+✗ polynomial_polyutils_trimseq.rs
+✗ random_PCG64DXSM.rs
+✗ set_operations_in1d.rs
+✗ set_operations_isin.rs
+✗ set_operations_unique.rs
+✗ sorting_searching_argsort.rs
+✗ sorting_searching_argwhere.rs
+✗ sorting_searching_count_nonzero.rs
+✗ sorting_searching_flatnonzero.rs
+✗ sorting_searching_msort.rs
+✗ sorting_searching_nonzero.rs
+✗ statistics_average.rs
+✗ statistics_histogram.rs
+✗ statistics_histogramdd.rs
+✗ statistics_nanmean.rs
+✗ statistics_nanmedian.rs
+✗ statistics_nanvar.rs
+✗ strings_center.rs
+✗ strings_equal.rs
+✗ strings_expandtabs.rs
+✗ strings_find.rs
+✗ strings_greater.rs
+✗ strings_index.rs
+✗ strings_isalnum.rs
+✗ strings_isdigit.rs
+✗ strings_isspace.rs
+✗ strings_istitle.rs
+✗ strings_join.rs
+✗ strings_less.rs
+✗ strings_less_equal.rs
+✗ strings_not_equal.rs
+✗ strings_partition.rs
+✗ strings_rjust.rs
+✗ strings_rstrip.rs
+✗ strings_str_len.rs
+✗ strings_swapcase.rs
+✗ strings_translate.rs
+✗ ufunc___call__.rs
+✗ ufuncs_frompyfunc.rs
+✗ ufuncs_vectorize.rs

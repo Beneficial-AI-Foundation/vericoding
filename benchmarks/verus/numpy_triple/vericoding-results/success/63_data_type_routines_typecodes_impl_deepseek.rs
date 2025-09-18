@@ -1,0 +1,56 @@
+// <vc-preamble>
+use vstd::prelude::*;
+
+verus! {
+// </vc-preamble>
+
+// <vc-helpers>
+
+proof fn character_lemma() {}
+proof fn integer_lemma() {}
+proof fn unsigned_integer_lemma() {}
+proof fn float_lemma() {}
+proof fn complex_lemma() {}
+proof fn all_integer_lemma() {}
+proof fn all_float_lemma() {}
+proof fn datetime_lemma() {}
+proof fn all_lemma() {}
+proof fn other_lemma() {}
+
+// </vc-helpers>
+
+// <vc-spec>
+fn typecodes(category: &str) -> (result: Option<&str>)
+    ensures
+        (category == "Character") ==> (result == Some("S1")),
+        (category == "Integer") ==> (result == Some("bhilqnp")),
+        (category == "UnsignedInteger") ==> (result == Some("BHILQNP")),
+        (category == "Float") ==> (result == Some("fdg")),
+        (category == "Complex") ==> (result == Some("FDG")),
+        (category == "AllInteger") ==> (result == Some("bBhHiIlLqQnNpP")),
+        (category == "AllFloat") ==> (result == Some("fdgFDG")),
+        (category == "Datetime") ==> (result == Some("Mm")),
+        (category == "All") ==> (result == Some("?bhilqnpBHILQNPfdgFDGSUVOMm")),
+        (category != "Character" && category != "Integer" && category != "UnsignedInteger" && 
+         category != "Float" && category != "Complex" && category != "AllInteger" && 
+         category != "AllFloat" && category != "Datetime" && category != "All") ==> (result == None::<&str>)
+// </vc-spec>
+// <vc-code>
+{
+    match category {
+        "Character" => Some("S1"),
+        "Integer" => Some("bhilqnp"),
+        "UnsignedInteger" => Some("BHILQNP"),
+        "Float" => Some("fdg"),
+        "Complex" => Some("FDG"),
+        "AllInteger" => Some("bBhHiIlLqQnNpP"),
+        "AllFloat" => Some("fdgFDG"),
+        "Datetime" => Some("Mm"),
+        "All" => Some("?bhilqnpBHILQNPfdgFDGSUVOMm"),
+        _ => None::<&str>,
+    }
+}
+// </vc-code>
+
+}
+fn main() {}
