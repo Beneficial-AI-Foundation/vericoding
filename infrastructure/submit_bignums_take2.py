@@ -5,8 +5,8 @@ import json
 from datetime import datetime
 
 # CHANGE THESE
-SHORTNAME = "verified-cogen"
-LONGNAME = "benchmarks/lean/verified_cogen/files"
+SHORTNAME = "bignums"
+LONGNAME = "benchmarks/lean/bignum/files/"
 
 # Generate a timestamp tag for this batch of experiments
 timestamp = datetime.now().strftime("%Y%m%d-%H%M%S")
