@@ -1,0 +1,76 @@
+vc-description: |-
+  /-
+  Harish has decided to go to Arya's hotel this morning. We all know he is crazy for masala dosas. And as usual he is always hungry. He decided to order all the masala dosas at once. But then he realised that he did not have enough money to buy all of them. So he decided to share the amount with his friend Ozil. But both of them are fans of even numbers. Both of them says they want to eat even number of dosas. Ozil is ready to put the share if and only if , he is sure that he can get even number of dosas. So given N number of dosas can you please help Harish to decide, if he will be able to get all the dosas at once from the hotel.
+
+  -----Input-----
+  The first line of input contains an integer T which denotes the number of test files. Next T lines contains an integer N where N is the total number of dosas.
+
+  -----Output-----
+  Print "YES" if both can get even number of dosas. If it is not possible print "NO".
+
+  -----Constraints-----
+  - 1 ≤ T ≤ 10^6
+  - 1 ≤ N ≤ 10^18
+
+  -----Subtasks-----
+  Subtask #1 : (20 points)
+  - 1 ≤ T ≤ 10
+  - 1 ≤ N≤ 100
+
+  Subtask 2 : (80 points) 
+
+  - 1 ≤ T ≤ 10^6
+  - 1 ≤ N≤ 10^18
+
+  -----Example-----
+  Input:
+  2 
+  16 
+  27
+  Output:
+  YES
+  NO
+  -/
+
+vc-preamble: |
+
+vc-helpers: |
+
+vc-definitions: |-
+  def can_split_dosas_evenly (n : Nat) : String := sorry
+
+  theorem can_split_dosas_evenly_returns_valid_result (n : Nat) :
+    can_split_dosas_evenly n = "YES" ∨ can_split_dosas_evenly n = "NO" := sorry
+
+vc-theorems: |-
+  theorem can_split_dosas_evenly_matches_parity (n : Nat) :
+    can_split_dosas_evenly n = (if n % 2 = 0 then "YES" else "NO") := sorry
+
+  theorem even_numbers_are_splittable {n : Nat} (h : n % 2 = 0) :
+    can_split_dosas_evenly n = "YES" := sorry
+
+  theorem odd_numbers_are_not_splittable {n : Nat} (h : n % 2 ≠ 0) :
+    can_split_dosas_evenly n = "NO" := sorry
+
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded
+
+  /-
+  info: 'YES'
+  -/
+  #guard_msgs in
+  #eval can_split_dosas_evenly 16
+
+  /-
+  info: 'NO'
+  -/
+  #guard_msgs in
+  #eval can_split_dosas_evenly 27
+
+  /-
+  info: 'YES'
+  -/
+  #guard_msgs in
+  #eval can_split_dosas_evenly 100
+

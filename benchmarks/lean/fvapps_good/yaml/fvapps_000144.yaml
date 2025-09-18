@@ -1,0 +1,66 @@
+vc-description: |-
+  /-
+  Given an encoded string, return it's decoded string.
+
+  The encoding rule is: k[encoded_string], where the encoded_string inside the square brackets is being repeated exactly k times. Note that k is guaranteed to be a positive integer.
+
+  You may assume that the input string is always valid; No extra white spaces, square brackets are well-formed, etc.
+
+  Furthermore, you may assume that the original data does not contain any digits and that digits are only for those repeat numbers, k. For example, there won't be input like 3a or 2[4].
+
+  Examples:
+
+  s = "3[a]2[bc]", return "aaabcbc".
+  s = "3[a2[c]]", return "accaccacc".
+  s = "2[abc]3[cd]ef", return "abcabccdcdcdef".
+  -/
+
+vc-preamble: |
+
+vc-helpers: |
+
+vc-definitions: |-
+  def decode_string (s: String) : String := sorry
+
+  def String.containsChar (s: String) (c: Char) : Prop := 
+    s.data.contains c
+
+vc-theorems: |-
+  theorem decode_string_only_letters (s: String) :
+    ∀ c, String.containsChar (decode_string s) c → c.isAlpha := sorry
+
+  theorem decode_string_letters_from_input (s: String) :
+    ∀ c, String.containsChar (decode_string s) c →
+      ∃ c', String.containsChar s c' ∧ c = c' ∧ c'.isAlpha := sorry
+
+  theorem decode_string_identity_single (c: Char) (h: c.isAlpha) :
+    decode_string (String.singleton c) = String.singleton c := sorry
+
+  theorem decode_string_identity_plain (s: String) (h: ∀ c, String.containsChar s c → c.isAlpha) :
+    decode_string s = s := sorry
+
+  theorem decode_string_simple_repeat (c: Char) (h: c.isAlpha) :
+    decode_string s!"2[{String.singleton c}]" = String.singleton c ++ String.singleton c := sorry
+
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded
+
+  /-
+  info: 'aaabcbc'
+  -/
+  #guard_msgs in
+  #eval decode_string "3[a]2[bc]"
+
+  /-
+  info: 'accaccacc'
+  -/
+  #guard_msgs in
+  #eval decode_string "3[a2[c]]"
+
+  /-
+  info: 'abcabccdcdcdef'
+  -/
+  #guard_msgs in
+  #eval decode_string "2[abc]3[cd]ef"
+

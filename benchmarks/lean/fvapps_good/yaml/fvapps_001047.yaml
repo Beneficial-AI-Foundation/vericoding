@@ -1,0 +1,88 @@
+vc-description: |-
+  /-
+  Every day, Mike goes to his job by a bus, where he buys a ticket. On the ticket, there is a letter-code that can be represented as a string of upper-case Latin letters.
+  Mike believes that the day will be successful in case exactly two different letters in the code alternate.  Otherwise, he believes that the day will be unlucky. Please see note section for formal definition of alternating code.
+  You are given a ticket code. Please determine, whether the day will be successful for Mike or not. Print "YES" or "NO" (without quotes) corresponding to the situation.
+
+  -----Input-----
+  The first line of the input contains an integer T denoting the number of test cases. The description of T test cases follows.
+  The first and only line of each test case contains a single string S denoting the letter code on the ticket.
+
+  -----Output-----
+  For each test case, output a single line containing "YES" (without quotes) in case the day will be successful and "NO" otherwise.
+
+  -----Note-----
+  Two letters x, y where x != y are said to be alternating in a code, if code is of form "xyxyxy...".
+
+  -----Constraints-----
+
+  - 1 ≤ T ≤ 100
+  - S consists only of upper-case Latin letters
+
+  Subtask 1 (50 points):
+
+  - |S| = 2
+
+  Subtask 2 (50 points):
+
+  - 2 ≤ |S| ≤ 100
+
+  -----Example-----
+  Input:
+  2
+  ABABAB
+  ABC
+
+  Output:
+  YES
+  NO
+  -/
+
+vc-preamble: |
+
+vc-helpers: |
+
+vc-definitions: |-
+  def isAlternatingCode (s : String) : Bool := sorry
+
+  abbrev charAt (s : String) (i : Nat) : Char := 
+    s.data[i]'sorry
+
+vc-theorems: |-
+  theorem alternating_code_first_two_different {s : String} :
+    isAlternatingCode s → String.length s ≥ 2 → charAt s 0 ≠ charAt s 1 := sorry 
+
+  theorem alternating_code_even_indices {s : String} {i : Nat} :
+    isAlternatingCode s → String.length s ≥ 2 → 
+    i < String.length s → i % 2 = 0 → charAt s i = charAt s 0 := sorry
+
+  theorem alternating_code_odd_indices {s : String} {i : Nat} :
+    isAlternatingCode s → String.length s ≥ 2 →
+    i < String.length s → i % 2 = 1 → charAt s i = charAt s 1 := sorry
+
+  theorem alternating_code_two_chars {s : String} :
+    String.length s = 2 → 
+    isAlternatingCode s = (charAt s 0 ≠ charAt s 1) := sorry
+
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded
+
+  /-
+  info: True
+  -/
+  #guard_msgs in
+  #eval is_alternating_code "ABABAB"
+
+  /-
+  info: False
+  -/
+  #guard_msgs in
+  #eval is_alternating_code "ABC"
+
+  /-
+  info: False
+  -/
+  #guard_msgs in
+  #eval is_alternating_code "AA"
+

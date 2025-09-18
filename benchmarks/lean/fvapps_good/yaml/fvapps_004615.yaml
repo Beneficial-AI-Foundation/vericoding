@@ -1,0 +1,73 @@
+vc-description: |-
+  /-
+  Given an integer as input, can you round it to the next (meaning, "higher") multiple of 5?
+
+  Examples:
+
+      input:    output:
+      0    ->   0
+      2    ->   5
+      3    ->   5
+      12   ->   15
+      21   ->   25
+      30   ->   30
+      -2   ->   0
+      -5   ->   -5
+      etc.
+
+  Input may be any positive or negative integer (including 0).
+
+  You can assume that all inputs are valid integers.
+  -/
+
+vc-preamble: |
+
+vc-helpers: |
+
+vc-definitions: |-
+  def roundToNext5 (n: Int) : Int := sorry
+
+  theorem roundToNext5_multiple_of_5 (n: Int) :
+    (roundToNext5 n) % 5 = 0 := sorry
+
+vc-theorems: |-
+  theorem roundToNext5_not_less_than_input (n: Int) :
+    roundToNext5 n ≥ n := sorry
+
+  theorem roundToNext5_is_minimum (n: Int) :
+    ∀ x, x < roundToNext5 n → (x % 5 ≠ 0 ∨ x < n) := sorry
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded
+
+  /-
+  info: 0
+  -/
+  #guard_msgs in
+  #eval round_to_next5 0
+
+  /-
+  info: 5
+  -/
+  #guard_msgs in
+  #eval round_to_next5 2
+
+  /-
+  info: 15
+  -/
+  #guard_msgs in
+  #eval round_to_next5 12
+
+  /-
+  info: 0
+  -/
+  #guard_msgs in
+  #eval round_to_next5 -2
+
+  /-
+  info: -5
+  -/
+  #guard_msgs in
+  #eval round_to_next5 -5
+

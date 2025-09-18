@@ -1,0 +1,77 @@
+vc-description: |-
+  /-
+  A permutation $p_1,p_2...p_N$ of $\{1, 2, ..., N\}$ is beautiful if $p_i \& p_{i+1}$ is greater than 0 for every $1 \leq i < N$ . You are given an integer $N$, and your task is toconstruct a beautiful permutation of length $N$ or determine that it's impossible.
+  Note that $a \& b$ denotes the bitwise AND of $a$ and $b$.
+
+  -----Input:-----
+  First line will contain $T$, number of testcases. Then the testcases follow. 
+  Each testcase contains a single line of input, an integer $N$.
+
+  -----Output:-----
+  For each test case output $-1$ if there is no suitable permutation of length $N$, otherwise output $N$ integers in a single line which form a beautiful permutation. If there are multiple answers output any of them.
+
+  -----Constraints-----
+  - $1 \leq N \leq 10^5$
+  - The sum of $N$ over all test cases does not exceed $10^6$
+
+  -----Subtasks-----
+  - 50 points : $1 \leq N,T \leq 9$
+  - 50 points : Original constraints
+
+  -----Sample Input:-----
+  3
+  4
+  3
+  5
+
+  -----Sample Output:-----
+  -1
+  1 3 2
+  2 3 1 5 4
+  -/
+
+vc-preamble: |
+
+vc-helpers: |
+
+vc-definitions: |-
+  def isPowerOfTwo (n : Nat) : Bool := sorry
+
+  def solve_beautiful_permutation (n : Nat) : List Nat := sorry
+
+vc-theorems: |-
+  theorem single_element_case {n : Nat} (h : n = 1) :
+    solve_beautiful_permutation n = [1] := sorry
+
+  theorem power_of_two_case {n : Nat} (h : isPowerOfTwo n = true) :
+    solve_beautiful_permutation n = [0] := sorry  -- Using 0 instead of -1 since we're working with Nat
+
+  theorem length_matches_input {n : Nat} (h : n ≠ 1 ∧ isPowerOfTwo n = false) :
+    (solve_beautiful_permutation n).length = n := sorry  
+
+  theorem permutation_elements {n : Nat} (h : n ≠ 1 ∧ isPowerOfTwo n = false) (i : Nat) (hi : i < n) :
+    ∃ j, j < (solve_beautiful_permutation n).length ∧ 
+         (solve_beautiful_permutation n).get ⟨j, by sorry⟩ = i + 1 := sorry
+
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded
+
+  /-
+  info: [-1]
+  -/
+  #guard_msgs in
+  #eval solve_beautiful_permutation 4
+
+  /-
+  info: [2, 3, 1]
+  -/
+  #guard_msgs in
+  #eval solve_beautiful_permutation 3
+
+  /-
+  info: [2, 3, 1, 5, 4]
+  -/
+  #guard_msgs in
+  #eval solve_beautiful_permutation 5
+

@@ -1,0 +1,92 @@
+vc-description: |-
+  /-
+  "Ring Ring!!"  
+  Sherlock's phone suddenly started ringing. And it was none other than Jim Moriarty..
+  "Long time no see ! You miss me right ? Anyway we'll talk about it later . Let me first tell you something. Dr.Watson is with me . And you've got only one chance to save him . Here's your challenge:.
+  Given a number N and another number M, tell if the remainder of N%M is odd or even. If it's odd, then print "ODD" else print "EVEN" 
+
+  If Sherlock can answer the query correctly, then Watson will be set free. He has approached you for help since you being a programmer.Can you help him? 
+
+  -----Input-----
+  The first line contains, T, the number of test cases..
+  Each test case contains an integer, N and M
+
+  -----Output-----
+  Output the minimum value for each test case 
+
+  -----Constraints-----
+  1 = T = 20
+  1 <= N <= 10^18 
+  1 <= M<= 10^9 
+
+  -----Subtasks-----
+  Subtask #1 : (20 points)
+  1 = T = 20
+  1 <= N <= 100 
+  1 <= M<= 100 
+
+  Subtask 2 : (80 points) 
+
+  1 = T = 20
+  1 <= N <= 10^18 
+  1 <= M<= 10^9 
+
+  -----Example-----
+  Input:
+  2
+  4 4
+  6 5
+
+  Output:
+  EVEN
+  ODD
+  -/
+
+vc-preamble: |
+
+vc-helpers: |
+
+vc-definitions: |-
+  def check_remainder_parity (N M : Int) : String :=
+    sorry
+
+vc-theorems: |-
+  theorem check_remainder_parity_returns_valid_string 
+    (N : Int) (M : Int) (h : M ≠ 0) :
+    check_remainder_parity N M = "ODD" ∨ 
+    check_remainder_parity N M = "EVEN" :=
+  sorry
+
+  theorem check_remainder_parity_matches_modulo
+    (N : Int) (M : Int) (h : M ≠ 0) :
+    (check_remainder_parity N M = "EVEN" ∧ N % M % 2 = 0) ∨ 
+    (check_remainder_parity N M = "ODD" ∧ N % M % 2 = 1) :=
+  sorry
+
+  theorem check_remainder_parity_consistent
+    (N : Int) (M : Int) (h : M ≠ 0) :
+    check_remainder_parity N M = check_remainder_parity N M :=
+  sorry
+
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded
+
+  /-
+  info: 'EVEN'
+  -/
+  #guard_msgs in
+  #eval check_remainder_parity 4 4
+
+  /-
+  info: 'ODD'
+  -/
+  #guard_msgs in
+  #eval check_remainder_parity 6 5
+
+  /-
+  info: 'ODD'
+  -/
+  #guard_msgs in
+  #eval check_remainder_parity 10 3
+

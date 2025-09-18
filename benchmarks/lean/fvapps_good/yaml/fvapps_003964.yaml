@@ -1,0 +1,66 @@
+vc-description: |-
+  /-
+  Your task is to write an update for a lottery machine. Its current version produces a sequence of random letters and integers (passed as a string to the function). Your code must filter out all letters and return **unique** integers as a string, in their order of first appearance. If there are no integers in the string return `"One more run!"`
+
+  ## Examples
+
+  ```
+  "hPrBKWDH8yc6Lt5NQZWQ"  -->  "865"
+  "ynMAisVpHEqpqHBqTrwH"  -->  "One more run!"
+  "555"                   -->  "5"
+  ```
+  -/
+
+vc-preamble: |
+
+vc-helpers: |
+
+vc-definitions: |-
+  def lottery (s : String) : String := sorry
+
+  def dedup (list : List α) [BEq α] : List α := list.foldl (fun acc x => if acc.contains x then acc else acc ++ [x]) []
+
+vc-theorems: |-
+  theorem lottery_result_format (s : String) : 
+      let result := lottery s
+      (result = "One more run!" ∨ result.all Char.isDigit) := by sorry
+
+  theorem lottery_preserves_digit_order (s : String) : 
+      let result := lottery s
+      result ≠ "One more run!" →
+      let input_digits := s.toList.filter Char.isDigit
+      result.toList = dedup input_digits := by sorry
+
+  theorem lottery_no_duplicates (s : String) :
+      let result := lottery s  
+      result ≠ "One more run!" →
+      result.toList.length = (dedup result.toList).length := by sorry
+
+  theorem lottery_all_digits_input (s : String) :
+      s.all Char.isDigit → s.length > 0 →
+      let result := lottery s
+      result.all Char.isDigit ∧ 
+      result.toList.length = (dedup result.toList).length := by sorry
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded
+
+  /-
+  info: '805'
+  -/
+  #guard_msgs in
+  #eval lottery "wQ8Hy0y5m5oshQPeRCkG"
+
+  /-
+  info: 'One more run!'
+  -/
+  #guard_msgs in
+  #eval lottery "ffaQtaRFKeGIIBIcSJtg"
+
+  /-
+  info: '5'
+  -/
+  #guard_msgs in
+  #eval lottery "555"
+

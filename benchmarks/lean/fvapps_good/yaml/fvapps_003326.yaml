@@ -1,0 +1,83 @@
+vc-description: |-
+  /-
+  In the wake of the npm's `left-pad` debacle, you decide to write a new super padding method that superceds the functionality of `left-pad`. Your version will provide the same functionality, but will additionally add right, and justified padding of string -- the `super_pad`.
+
+  Your function `super_pad` should take three arguments: the string `string`, the width of the final string `width`, and a fill character `fill`. However, the fill character can be enriched with a format string resulting in different padding strategies. If `fill` begins with `'<'` the string is padded on the left with the remaining fill string and if `fill` begins with `'>'` the string is padded on the right. Finally, if `fill` begins with `'^'` the string is padded on the left and the right, where the left padding is always greater or equal to the right padding. The `fill` string can contain more than a single char, of course. 
+
+  Some examples to clarify the inner workings:
+
+  - `super_pad("test", 10)` returns "      test"
+  - `super_pad("test", 10, "x")` returns `"xxxxxxtest"`
+  - `super_pad("test", 10, "xO")` returns `"xOxOxOtest"`
+  - `super_pad("test", 10, "xO-")` returns `"xO-xO-test"`
+  - `super_pad("some other test", 10, "nope")` returns `"other test"`
+  - `super_pad("some other test", 10, "> ")` returns `"some other"`
+  - `super_pad("test", 7, ">nope")` returns `"testnop"`
+  - `super_pad("test", 7, "^more complex")` returns `"motestm"`
+  - `super_pad("test", 7, "")` returns `"test"`
+
+  The `super_pad` method always returns a string of length `width` if possible. We expect the `width` to be positive (including 0) and the fill could be also an empty string.
+  -/
+
+vc-preamble: |
+
+vc-helpers: |
+
+vc-definitions: |-
+  def super_pad (s : String) (w : Nat) (f : String := " ") : String := sorry
+
+  theorem default_padding_length 
+    (s : String) (w : Nat) (f : String) 
+    (h : ∀ c ∈ f.data, c ≠ '<' ∧ c ≠ '>' ∧ c ≠ '^') :
+    let result := super_pad s w f
+    (result.length = w) ∨ 
+    (s.length > w ∧ result.length = w) := sorry
+
+vc-theorems: |-
+  theorem right_padding
+    (s : String) (w : Nat) (f : String)
+    (h : ∀ c ∈ f.data, c ≠ '<' ∧ c ≠ '>' ∧ c ≠ '^') :
+    let result := super_pad s w (">" ++ f)
+    result.length = w ∧
+    (s.length ≤ w → result.startsWith s) := sorry 
+
+  theorem center_padding
+    (s : String) (w : Nat) (f : String)
+    (h : ∀ c ∈ f.data, c ≠ '<' ∧ c ≠ '>' ∧ c ≠ '^') :
+    let result := super_pad s w ("^" ++ f)
+    result.length = w ∧ 
+    (s.length ≤ w → ∃ l r : String, result = l ++ s ++ r) := sorry
+
+  theorem left_padding
+    (s : String) (w : Nat) (f : String)
+    (h : ∀ c ∈ f.data, c ≠ '<' ∧ c ≠ '>' ∧ c ≠ '^') :
+    let result := super_pad s w ("<" ++ f)
+    result.length = w ∧
+    (s.length ≤ w → result.endsWith s) := sorry
+
+  theorem default_space_padding
+    (s : String) (w : Nat) :
+    super_pad s w = super_pad s w " " := sorry
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded
+
+  /-
+  info: '      test'
+  -/
+  #guard_msgs in
+  #eval super_pad "test" 10
+
+  /-
+  info: 'testnop'
+  -/
+  #guard_msgs in
+  #eval super_pad "test" 7 ">nope"
+
+  /-
+  info: 'motestm'
+  -/
+  #guard_msgs in
+  #eval super_pad "test" 7 "^more complex"
+

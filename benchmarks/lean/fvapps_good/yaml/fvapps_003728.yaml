@@ -1,0 +1,57 @@
+vc-description: |-
+  /-
+  You can print your name on a billboard ad. Find out how much it will cost you. Each letter has a default price of £30, but that can be different if you are given 2 parameters instead of 1.
+
+  You can not use multiplier "*" operator.
+
+  If your name would be Jeong-Ho Aristotelis, ad would cost £600.
+  20 leters * 30 = 600 (Space counts as a letter).
+  -/
+
+vc-preamble: |
+
+vc-helpers: |
+
+vc-definitions: |-
+  def billboard (name : String) (price : Nat := 30) : Nat := sorry
+
+  theorem billboard_properties {name : String} {price : Nat} 
+    (h1 : name.length > 0) (h2 : price > 0) (h3 : price ≤ 1000) :
+    let result := billboard name price
+    (result = name.length * price) ∧ 
+    (result ≥ price) ∧
+    (result % price = 0) := sorry
+
+vc-theorems: |-
+  theorem billboard_default_price {name : String} (h : name.length > 0) : 
+    let result := billboard name
+    (result = name.length * 30) ∧ 
+    (result % 30 = 0) := sorry
+
+  theorem billboard_general {name : String} :
+    let result := billboard name
+    (result ≥ 0) ∧
+    (name.length * 30 = result) := sorry
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded_and_plausible
+
+  /-
+  info: 600
+  -/
+  #guard_msgs in
+  #eval billboard "Jeong-Ho Aristotelis"
+
+  /-
+  info: 260
+  -/
+  #guard_msgs in
+  #eval billboard "Hadufuns John" 20
+
+  /-
+  info: 270
+  -/
+  #guard_msgs in
+  #eval billboard "Paolo Oli"
+

@@ -1,0 +1,99 @@
+vc-description: |-
+  /-
+  -----Coal Company -----
+
+  The Tunisian Coal Mining company uses a train to ferry out coal blocks from its coal mines. The train has N containers numbered from 1 to N which need to
+
+  be filled with blocks of coal. Assume there are infinite coal blocks. The containers are arranged in increasing order of capacity, and the ith container
+
+  has capacity i. Every container has a specific loading cost ci. The workers fill the containers in rounds. In every round, they choose a subset of
+
+  containers and load them with coal blocks. This subset should be such that each subsequent container chosen in a round should be more spacious than the
+
+  previous one. Also, the difference in loading cost of consecutive containers should be at least K.
+
+  What is the least number of rounds in which all containers can be filled?
+
+  -----
+  Input
+  -----
+
+  The first line contains the number of test cases T. T test cases follow.
+
+  Each case contains an integer N and K on the first line, followed by integers c1,...,cn on the second line.
+
+  1 <= T <= 100
+
+  1 <= N <= 300
+
+  1 <= ci <= 1000
+
+  1 <= K <= 1000
+
+  -----
+  Output
+  -----
+
+  Output T lines, one for each test case, containing the minimum number of rounds in which all containers could be filled.
+
+  -----
+  Example
+  -----
+
+  Input:
+
+  2
+
+  3 2
+
+  5 4 7
+
+  5 1
+
+  5 3 4 5 6
+
+  Output:
+
+  2
+
+  1
+
+  Explanation:
+
+  For the first example, workers can fill the containers of cost 5 and 7 in the first round and the container with cost 4 in the next round. Note that the
+
+  containers with cost 5 and 4 cannot be filled consecutively because the loading costs should differ by at least K (which is 2). Also, the containers cannot
+
+  be filled in order 5, 7, 4 in one round because the containers filled in a round should be in increasing capacity.
+  -/
+
+vc-preamble: |
+
+vc-helpers: |
+
+vc-definitions: |-
+  def solve_coal_containers (n k : Nat) (costs : List Nat) : Nat :=
+  sorry
+
+vc-theorems: |-
+  theorem solve_coal_containers_single_element
+    (n : Nat) (h : n > 0) :
+    solve_coal_containers 1 n [0] = 1 :=
+  sorry
+
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: guarded_and_plausible
+
+  /-
+  info: 2
+  -/
+  #guard_msgs in
+  #eval solve_coal_containers 3 2 [5, 4, 7]
+
+  /-
+  info: 1
+  -/
+  #guard_msgs in
+  #eval solve_coal_containers 5 1 [5, 3, 4, 5, 6]
+

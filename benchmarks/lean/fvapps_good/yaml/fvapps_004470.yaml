@@ -1,0 +1,66 @@
+vc-description: |-
+  /-
+  DropCaps means that the first letter of the starting word of the paragraph should be in caps and the remaining lowercase, just like you see in the newspaper. 
+
+  But for a change, let's do that for each and every word of the given String. Your task is to capitalize every word that has length greater than 2, leaving smaller words as they are.
+
+  *should work also on Leading and Trailing Spaces and caps.
+
+  ```python
+  drop_cap('apple') => "Apple"
+  drop_cap('apple of banana'); => "Apple of Banana"
+  drop_cap('one   space'); => "One   Space" 
+  drop_cap('   space WALK   '); => "   Space Walk   " 
+  ```
+
+  **Note:** you will be provided atleast one word and should take string as input and return string as output.
+  -/
+
+vc-preamble: |
+
+vc-helpers: |
+
+vc-definitions: |-
+  def drop_cap (s : String) : String := sorry
+
+  theorem empty_and_whitespace (s : String) :
+    (s.isEmpty → (drop_cap s).isEmpty) ∧ 
+    (¬s.isEmpty → (drop_cap s).length ≥ s.trim.length) := by sorry
+
+vc-theorems: |-
+  theorem spacing_preserved (s : String) (h : ¬s.isEmpty) :
+    let orig_spaces := s.split (λ c => c.isWhitespace)
+    let result_spaces := (drop_cap s).split (λ c => c.isWhitespace)
+    orig_spaces.map (λ s => s.length) = result_spaces.map (λ s => s.length) := by sorry
+
+  theorem edge_cases (s : String) :
+    (s.trim.length ≤ 2 → drop_cap s = s) ∧
+    (s.trim.length > 2 → drop_cap s = s.toLower.capitalize) := by sorry
+
+  theorem uppercase_words (s : String) 
+    (h₁ : s.length ≥ 3)
+    (h₂ : ∀ c ∈ s.data, 65 ≤ c.toNat ∧ c.toNat ≤ 90) :
+    drop_cap s = s.toLower.capitalize := by sorry
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded
+
+  /-
+  info: 'Apple Banana'
+  -/
+  #guard_msgs in
+  #eval drop_cap "apple banana"
+
+  /-
+  info: 'One   Space'
+  -/
+  #guard_msgs in
+  #eval drop_cap "one   space"
+
+  /-
+  info: '   Space Walk   '
+  -/
+  #guard_msgs in
+  #eval drop_cap "   space WALK   "
+

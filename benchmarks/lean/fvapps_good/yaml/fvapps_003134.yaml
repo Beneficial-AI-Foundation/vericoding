@@ -1,0 +1,77 @@
+vc-description: |-
+  /-
+  Return the century of the input year. The input will always be a 4 digit string, so there is no need for validation. 
+
+  ### Examples
+  ```
+  "1999" --> "20th"
+  "2011" --> "21st"
+  "2154" --> "22nd"
+  "2259" --> "23rd"
+  "1124" --> "12th"
+  "2000" --> "20th"
+  ```
+  -/
+
+vc-preamble: |
+
+vc-helpers: |
+
+vc-definitions: |-
+  def what_century (year : String) : String := sorry
+
+  theorem what_century_valid_suffix {year : String} 
+    (h : year.length = 4 ∧ (∀ c ∈ year.data, '0' ≤ c ∧ c ≤ '9')) : 
+    let result := what_century year
+    (result.endsWith "st" ∨ result.endsWith "nd" ∨ result.endsWith "rd" ∨ result.endsWith "th") := sorry
+
+vc-theorems: |-
+  theorem what_century_positive {year : String}
+    (h : year.length = 4 ∧ (∀ c ∈ year.data, '0' ≤ c ∧ c ≤ '9')) :
+    let result := what_century year
+    let century_num := (result.dropRight 2).toNat!
+    century_num > 0 := sorry
+
+  theorem what_century_calculation {year : String}
+    (h : year.length = 4 ∧ (∀ c ∈ year.data, '0' ≤ c ∧ c ≤ '9')) :
+    let year_num := year.toNat!
+    let expected_century := (year_num - 1) / 100 + 1
+    let result := what_century year
+    let century_num := (result.dropRight 2).toNat!
+    century_num = expected_century := sorry
+
+  theorem what_century_suffix_rules {year : String}
+    (h : year.length = 4 ∧ (∀ c ∈ year.data, '0' ≤ c ∧ c ≤ '9')) :
+    let result := what_century year
+    let century_num := (result.dropRight 2).toNat!
+    (century_num < 20 → result.endsWith "th") ∧
+    (century_num ≥ 20 → 
+      match century_num % 10 with
+      | 1 => result.endsWith "st"
+      | 2 => result.endsWith "nd"
+      | 3 => result.endsWith "rd"
+      | _ => result.endsWith "th"
+    ) := sorry
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded
+
+  /-
+  info: '20th'
+  -/
+  #guard_msgs in
+  #eval what_century "1999"
+
+  /-
+  info: '21st'
+  -/
+  #guard_msgs in
+  #eval what_century "2011"
+
+  /-
+  info: '20th'
+  -/
+  #guard_msgs in
+  #eval what_century "2000"
+

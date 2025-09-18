@@ -1,0 +1,89 @@
+vc-description: |-
+  /-
+  You are given a string $S$ and an integer $L$. A operation is described as :- "You are allowed to pick any substring from first $L$ charcaters of $S$, and place it at the end of the string $S$. 
+  A string $A$ is a substring of an string $B$ if $A$ can be obtained from $B$ by deletion of several (possibly, zero or all) characters from the beginning and several (possibly, zero or all) elements from the end.
+  Find the lexographically smallest string after performing this opertaion any number of times (possibly zero).
+  For example $S$ = "codechef" and $L=4$. Then, we can take substring "ode" from S[0-3] and place it at end of the string $S$ = "cchefode".
+
+  -----Input:-----
+  - First line will contain $T$, number of testcases. 
+  - Then each of the N lines contain an integer $L$ and a string $S$. 
+
+  -----Output:-----
+  For each testcase, output in a single line answer lexographically smallest string.
+
+  -----Constraints-----
+  - $1 \leq T \leq 10^4$
+  - $2 \leq |S| \leq 10^3$
+  - $1 \leq L \leq N $
+
+  -----Sample Input:-----
+  2
+  1 rga
+  2 cab
+
+  -----Sample Output:-----
+  arg
+  abc
+
+  -----EXPLANATION:-----
+  In the first testcase:
+  substring 'r' is picked and placed at the end of the string. rga -> gar
+  Then performing same operation gives :- gar -> arg
+  -/
+
+vc-preamble: |
+
+vc-helpers: |
+
+vc-definitions: |-
+  def solve (l : Nat) (s : String) : String := sorry
+
+  theorem solve_l1_maintains_length (s : String) (h : s.length > 0) : 
+    (solve 1 s).length = s.length := sorry
+
+vc-theorems: |-
+  theorem solve_l1_is_rotation (s : String) (h : s.length > 0) :
+    ∃ i, i < s.length ∧ solve 1 s = s.drop i ++ s.take i := sorry
+
+  theorem solve_l1_is_lexmin (s : String) (h : s.length > 0) :
+    ∀ i, i < s.length → solve 1 s ≤ (s.drop i ++ s.take i) := sorry
+
+  theorem solve_l1_same_chars (s : String) (h : s.length > 0) :
+    ∀ c, (s.data.count c = (solve 1 s).data.count c) := sorry
+
+  theorem solve_general_maintains_length (l : Nat) (s : String) (hl : l ≥ 2) (hs : s.length > 0) :
+    (solve l s).length = s.length := sorry
+
+  theorem solve_general_same_chars (l : Nat) (s : String) (hl : l ≥ 2) (hs : s.length > 0) :
+    ∀ c, (s.data.count c = (solve l s).data.count c) := sorry
+
+  theorem solve_general_lexmin (l : Nat) (s : String) (hl : l ≥ 2) (hs : s.length > 0) :
+    solve l s ≤ s := sorry
+
+  theorem solve_single_char (c : Char) (h : 'a' ≤ c ∧ c ≤ 'z') :
+    solve 1 (String.mk [c]) = String.mk [c] ∧ 
+    solve 2 (String.mk [c]) = String.mk [c] := sorry
+
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded
+
+  /-
+  info: 'arg'
+  -/
+  #guard_msgs in
+  #eval solve 1 "rga"
+
+  /-
+  info: 'abc'
+  -/
+  #guard_msgs in
+  #eval solve 2 "cab"
+
+  /-
+  info: 'cchefode'
+  -/
+  #guard_msgs in
+  #eval solve 4 "codechef"
+

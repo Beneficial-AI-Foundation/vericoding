@@ -1,0 +1,72 @@
+vc-description: |-
+  /-
+  The town sheriff dislikes odd numbers and wants all odd numbered families out of town! In town crowds can form and individuals are often mixed with other people and families. However you can distinguish the family they belong to by the number on the shirts they wear. As the sheriff's assistant it's your job to find all the odd numbered families and remove them from the town!
+  ~~~if-not:cpp
+  Challenge: You are given a list of numbers. The numbers each repeat a certain number of times. Remove all numbers that repeat an odd number of times while keeping everything else the same.
+  ~~~
+  ~~~if:cpp
+  Challenge: You are given a vector of numbers. The numbers each repeat a certain number of times. Remove all numbers that repeat an odd number of times while keeping everything else the same.
+  ~~~
+  ```python
+  odd_ones_out([1, 2, 3, 1, 3, 3]) = [1, 1]
+  ```
+  In the above example:
+  - the number 1 appears twice
+  - the number 2 appears once
+  - the number 3 appears three times
+
+  `2` and `3` both appear an odd number of times, so they are removed from the list. The final result is: `[1,1]`
+
+  Here are more examples:
+  ```python
+  odd_ones_out([1, 1, 2, 2, 3, 3, 3]) = [1, 1, 2, 2]
+  odd_ones_out([26, 23, 24, 17, 23, 24, 23, 26]) = [26, 24, 24, 26]
+  odd_ones_out([1, 2, 3]) = []
+  odd_ones_out([1]) = []
+  ```
+
+  Are you up to the challenge?
+  -/
+
+vc-preamble: |
+
+vc-helpers: |
+
+vc-definitions: |-
+  def odd_ones_out (xs : List Int) : List Int := sorry
+
+  theorem odd_ones_out_preserves_pairs {xs : List Int} (h : xs ≠ []) :
+    odd_ones_out xs = xs.filter (fun x => (xs.count x) % 2 = 0) := sorry
+
+vc-theorems: |-
+  theorem odd_ones_out_elements_from_input {xs : List Int} (h : xs ≠ []) :
+    ∀ x ∈ odd_ones_out xs, x ∈ xs := sorry 
+
+  theorem odd_ones_out_even_counts {xs : List Int} (h : xs ≠ []) :
+    ∀ x ∈ odd_ones_out xs, (odd_ones_out xs).count x % 2 = 0 := sorry
+
+  theorem odd_ones_out_maintains_order {xs : List Int} (h : xs ≠ []) : 
+    odd_ones_out xs = xs.filter (fun x => xs.count x % 2 = 0) := sorry
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded
+
+  /-
+  info: [1, 1]
+  -/
+  #guard_msgs in
+  #eval odd_ones_out [1, 2, 3, 1, 3, 3]
+
+  /-
+  info: [75, 68, 75, 68]
+  -/
+  #guard_msgs in
+  #eval odd_ones_out [75, 68, 75, 47, 68]
+
+  /-
+  info: [100, 100, 100, 100]
+  -/
+  #guard_msgs in
+  #eval odd_ones_out [100, 100, 5, 5, 100, 50, 68, 50, 68, 50, 68, 5, 100]
+

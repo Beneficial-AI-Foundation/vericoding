@@ -1,0 +1,108 @@
+vc-description: |-
+  /-
+  We start with a string $s$ consisting only of the digits $1$, $2$, or $3$. The length of $s$ is denoted by $|s|$. For each $i$ from $1$ to $|s|$, the $i$-th character of $s$ is denoted by $s_i$. 
+
+  There is one cursor. The cursor's location $\ell$ is denoted by an integer in $\{0, \ldots, |s|\}$, with the following meaning:   If $\ell = 0$, then the cursor is located before the first character of $s$.  If $\ell = |s|$, then the cursor is located right after the last character of $s$.  If $0 < \ell < |s|$, then the cursor is located between $s_\ell$ and $s_{\ell+1}$. 
+
+  We denote by $s_\text{left}$ the string to the left of the cursor and $s_\text{right}$ the string to the right of the cursor. 
+
+  We also have a string $c$, which we call our clipboard, which starts out as empty. There are three types of actions:  The Move action. Move the cursor one step to the right. This increments $\ell$ once.  The Cut action. Set $c \leftarrow s_\text{right}$, then set $s \leftarrow s_\text{left}$.  The Paste action. Append the value of $c$ to the end of the string $s$. Note that this doesn't modify $c$. 
+
+  The cursor initially starts at $\ell = 0$. Then, we perform the following procedure:  Perform the Move action once.  Perform the Cut action once.  Perform the Paste action $s_\ell$ times.  If $\ell = x$, stop. Otherwise, return to step 1. 
+
+  You're given the initial string $s$ and the integer $x$. What is the length of $s$ when the procedure stops? Since this value may be very large, only find it modulo $10^9 + 7$. 
+
+  It is guaranteed that $\ell \le |s|$ at any time.
+
+  -----Input-----
+
+  The first line of input contains a single integer $t$ ($1 \le t \le 1000$) denoting the number of test cases. The next lines contain descriptions of the test cases.
+
+  The first line of each test case contains a single integer $x$ ($1 \le x \le 10^6$). The second line of each test case consists of the initial string $s$ ($1 \le |s| \le 500$). It is guaranteed, that $s$ consists of the characters "1", "2", "3".
+
+  It is guaranteed that the sum of $x$ in a single file is at most $10^6$. It is guaranteed that in each test case before the procedure will stop it will be true that $\ell \le |s|$ at any time.
+
+  -----Output-----
+
+  For each test case, output a single line containing a single integer denoting the answer for that test case modulo $10^9 + 7$. 
+
+  -----Example-----
+  Input
+  4
+  5
+  231
+  7
+  2323
+  6
+  333
+  24
+  133321333
+
+  Output
+  25
+  1438
+  1101
+  686531475
+
+  -----Note-----
+
+  Let's illustrate what happens with the first test case. Initially, we have $s = $ 231. Initially, $\ell = 0$ and $c = \varepsilon$ (the empty string). The following things happen if we follow the procedure above:
+
+    Step 1, Move once: we get $\ell = 1$.  Step 2, Cut once: we get $s = $ 2 and $c = $ 31.  Step 3, Paste $s_\ell = $ 2 times: we get $s = $ 23131.  Step 4: $\ell = 1 \not= x = 5$, so we return to step 1. 
+
+    Step 1, Move once: we get $\ell = 2$.  Step 2, Cut once: we get $s = $ 23 and $c = $ 131.  Step 3, Paste $s_\ell = $ 3 times: we get $s = $ 23131131131.  Step 4: $\ell = 2 \not= x = 5$, so we return to step 1. 
+
+    Step 1, Move once: we get $\ell = 3$.  Step 2, Cut once: we get $s = $ 231 and $c = $ 31131131.  Step 3, Paste $s_\ell = $ 1 time: we get $s = $ 23131131131.  Step 4: $\ell = 3 \not= x = 5$, so we return to step 1. 
+
+    Step 1, Move once: we get $\ell = 4$.  Step 2, Cut once: we get $s = $ 2313 and $c = $ 1131131.  Step 3, Paste $s_\ell = $ 3 times: we get $s = $ 2313113113111311311131131.  Step 4: $\ell = 4 \not= x = 5$, so we return to step 1. 
+
+    Step 1, Move once: we get $\ell = 5$.  Step 2, Cut once: we get $s = $ 23131 and $c = $ 13113111311311131131.  Step 3, Paste $s_\ell = $ 1 times: we get $s = $ 2313113113111311311131131.  Step 4: $\ell = 5 = x$, so we stop. 
+
+  At the end of the procedure, $s$ has length $25$.
+  -/
+
+vc-preamble: |
+
+vc-helpers: |
+
+vc-definitions: |-
+  def solve (x : Nat) (s : String) : Nat :=
+    sorry
+
+vc-theorems: |-
+  theorem solve_result_bounded (x : Nat) (s : String) :
+    0 ≤ solve x s ∧ solve x s < 10^9 + 7
+    := sorry
+
+  theorem solve_deterministic (x : Nat) (s : String) :
+    solve x s = solve x s
+    := sorry
+
+  theorem solve_examples_correct :
+    solve 5 "231" = 25 ∧ 
+    solve 7 "2323" = 1438 ∧
+    solve 6 "333" = 1101
+    := sorry
+
+vc-postamble: |-
+  -- Apps difficulty: competition
+  -- Assurance level: unguarded
+
+  /-
+  info: 25
+  -/
+  #guard_msgs in
+  #eval solve 5 "231"
+
+  /-
+  info: 1438
+  -/
+  #guard_msgs in
+  #eval solve 7 "2323"
+
+  /-
+  info: 1101
+  -/
+  #guard_msgs in
+  #eval solve 6 "333"
+

@@ -1,0 +1,69 @@
+vc-description: |-
+  /-
+  Find the first character that repeats in a String and return that character. 
+
+  ```python
+  first_dup('tweet') => 't'
+  first_dup('like') => None
+  ```
+
+  *This is not the same as finding the character that repeats first.*
+  *In that case, an input of 'tweet' would yield 'e'.*
+  -/
+
+vc-preamble: |
+
+vc-helpers: |
+
+vc-definitions: |-
+  def firstDup (s : String) : Option Char := sorry
+
+  theorem first_dup_result_in_string {s : String} :
+    match firstDup s with
+    | none => True 
+    | some c => s.data.contains c
+    := sorry
+
+vc-theorems: |-
+  theorem first_dup_has_multiple_occurrences {s : String} :
+    match firstDup s with
+    | none => True
+    | some c => (s.data.filter (· = c)).length > 1
+    := sorry
+
+  theorem first_dup_returns_first_duplicate {s : String} (h : s.length > 0) :
+    match firstDup s with
+    | none => True
+    | some c => 
+      let firstIdx := s.data.findIdx (· = c)
+      ∀ i < firstIdx, ((s.data.take i).filter (· = c)).length ≤ 1
+    := sorry
+
+  theorem first_dup_valid_chars {s : String} :
+    match firstDup s with
+    | none => True
+    | some c => True
+    := sorry
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded
+
+  /-
+  info: 't'
+  -/
+  #guard_msgs in
+  #eval first_dup "tweet"
+
+  /-
+  info: ' '
+  -/
+  #guard_msgs in
+  #eval first_dup "Ode to Joy"
+
+  /-
+  info: None
+  -/
+  #guard_msgs in
+  #eval first_dup "bar"
+

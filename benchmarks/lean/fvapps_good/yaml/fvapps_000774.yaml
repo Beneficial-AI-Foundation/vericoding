@@ -1,0 +1,93 @@
+vc-description: |-
+  /-
+  One day, Tanya was studying graph theory. She is very inquisitive, so the following problem soon came to her mind.
+  Find the number of undirected unweighted connected simple graphs with $N$ vertices (numbered $1$ through $N$) and $M$ edges, such that for each $i$ ($2 \le i \le N$), the shortest path from vertex $1$ to vertex $i$ is unique and its length is equal to $A_i$. In other words, for each $i$ ($2 \le i \le N$), there should be exactly one path with length $A_i$ between vertices $1$ and $i$, and there should be no paths with smaller length between these vertices.
+  Two graphs with $N$ vertices are distinct if we can find two vertices $u$ and $v$ such that there is an edge between these vertices in one graph, but not in the other graph.
+  Since the answer could be very large, compute it modulo $1,000,000,007$ ($10^9 + 7$).
+
+  -----Input-----
+  - The first line of the input contains a single integer $T$ denoting the number of test cases. The description of $T$ test cases follows.
+  - The first line of each test case contains two space-separated integers $N$ and $M$.
+  - The second line contains $N - 1$ space-separated integers $A_2, A_3, \ldots, A_N$.
+
+  -----Output-----
+  For each test case, print a single line containing one integer ― the number of graphs modulo $10^9 + 7$.
+
+  -----Constraints-----
+  - $1 \le T \le 1,000$
+  - $2 \le N \le 10^5$
+  - $N-1 \le M \le \mathrm{min}\left(2\cdot 10^5, \frac{N(N-1)}{2}\right)$
+  - $1 \le A_i \le N-1$ for each valid $i$
+  - the sum of $N$ over all test cases does not exceed $2 \cdot 10^5$
+  - the sum of $M$ over all test cases does not exceed $2 \cdot 10^5$
+
+  -----Subtasks-----
+  Subtask #1 (50 points): $M = N-1$
+  Subtask #2 (50 points): original constraints
+
+  -----Example Input-----
+  3
+  4 3
+  1 2 1
+  4 6
+  1 2 1
+  3 2
+  2 2
+
+  -----Example Output-----
+  2
+  0
+  0
+
+  -----Explanation-----
+  Example case 1: The two graphs which satisfy all conditions are:
+  -/
+
+vc-preamble: |
+
+vc-helpers: |
+
+vc-definitions: |-
+  def count_graphs (n : Nat) (m : Nat) (distances : List Nat) : Nat :=
+    sorry
+
+vc-theorems: |-
+  theorem result_is_modulo (n : Nat) (distances : List Nat)
+      (h1 : n ≥ 3) (h2 : distances.length ≥ 1) 
+      (h3 : ∀ d ∈ distances, d ≥ 1 ∧ d ≤ 99) :
+      let result := count_graphs n (n-1) distances
+      0 ≤ result ∧ result ≤ 1000000007 :=
+    sorry
+
+  theorem valid_distance_one (n : Nat) (h : n ≥ 3) :
+      let distances := List.replicate (n-2) 1
+      count_graphs n (n-1) distances = 1 :=
+    sorry
+
+  theorem invalid_distances_return_zero (n : Nat) (h : n ≥ 3) :
+      let distances := List.replicate (n-2) n
+      count_graphs n (n-1) distances = 0 :=
+    sorry
+
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded
+
+  /-
+  info: 2
+  -/
+  #guard_msgs in
+  #eval count_graphs 4 3 [1, 2, 1]
+
+  /-
+  info: 0
+  -/
+  #guard_msgs in
+  #eval count_graphs 4 6 [1, 2, 1]
+
+  /-
+  info: 0
+  -/
+  #guard_msgs in
+  #eval count_graphs 3 2 [2, 2]
+

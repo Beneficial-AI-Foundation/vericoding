@@ -1,0 +1,86 @@
+vc-description: |-
+  /-
+  ASC Week 1 Challenge 4 (Medium #1) 
+
+  Write a function that converts any sentence into a V  A  P  O  R  W  A  V  E sentence. a V  A  P  O  R  W  A  V  E sentence converts all the letters into uppercase, and adds 2 spaces between each letter (or special character) to create this V  A  P  O  R  W  A  V  E effect.
+
+  Examples:
+  ```javascript 
+    vaporcode("Lets go to the movies") // output => "L  E  T  S  G  O  T  O  T  H  E  M  O  V  I  E  S"
+    vaporcode("Why isn't my code working?") // output => "W  H  Y  I  S  N  '  T  M  Y  C  O  D  E  W  O  R  K  I  N  G  ?"
+  ```
+  ```ruby 
+    vaporcode("Lets go to the movies") # output => "L  E  T  S  G  O  T  O  T  H  E  M  O  V  I  E  S"
+    vaporcode("Why isn't my code working?") # output => "W  H  Y  I  S  N  '  T  M  Y  C  O  D  E  W  O  R  K  I  N  G  ?"
+  ```
+  ```python 
+    vaporcode("Lets go to the movies") # output => "L  E  T  S  G  O  T  O  T  H  E  M  O  V  I  E  S"
+    vaporcode("Why isn't my code working?") # output => "W  H  Y  I  S  N  '  T  M  Y  C  O  D  E  W  O  R  K  I  N  G  ?"
+  ```
+  ```crystal 
+    vaporcode("Lets go to the movies") # output => "L  E  T  S  G  O  T  O  T  H  E  M  O  V  I  E  S"
+    vaporcode("Why isn't my code working?") # output => "W  H  Y  I  S  N  '  T  M  Y  C  O  D  E  W  O  R  K  I  N  G  ?"
+  ```
+  ```cpp 
+    vaporcode("Lets go to the movies") // output => "L  E  T  S  G  O  T  O  T  H  E  M  O  V  I  E  S"
+    vaporcode("Why isn't my code working?") // output => "W  H  Y  I  S  N  '  T  M  Y  C  O  D  E  W  O  R  K  I  N  G  ?"
+  ```
+  ```haskell 
+    vaporcode "Lets go to the movies" 
+    -- output => "L  E  T  S  G  O  T  O  T  H  E  M  O  V  I  E  S"
+    vaporcode "Why isn't my code working?" 
+    -- output => "W  H  Y  I  S  N  '  T  M  Y  C  O  D  E  W  O  R  K  I  N  G  ?"
+  ```
+  -/
+
+vc-preamble: |
+
+vc-helpers: |
+
+vc-definitions: |-
+  def vaporcode (s : String) : String := sorry
+
+  theorem vaporcode_uppercase (s : String) :
+    (vaporcode s).toUpper = vaporcode s := sorry
+
+vc-theorems: |-
+  theorem vaporcode_no_consecutive_spaces (s : String) :
+    ¬ String.contains (vaporcode s) ' ' := sorry 
+
+  theorem vaporcode_preserves_nonspaces (s : String) :
+    ((vaporcode s).replace " " "").length = (s.replace " " "").length := sorry
+
+  theorem vaporcode_only_original_chars (s : String) (c : Char) :
+    c ∈ (vaporcode s).data → (c = ' ' ∨ c ∈ s.toUpper.data) := sorry
+
+  theorem vaporcode_spacing (s : String) (h : s.length > 0) :
+    (String.splitOn (vaporcode s) "  ").length = (s.replace " " "").length := sorry
+
+  theorem vaporcode_empty :
+    vaporcode "" = "" := sorry
+
+  theorem vaporcode_roundtrip (s : String) :
+    ((vaporcode s).replace " " "").toUpper = (s.replace " " "").toUpper := sorry
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded
+
+  /-
+  info: expected1
+  -/
+  #guard_msgs in
+  #eval vaporcode "Lets go to the movies"
+
+  /-
+  info: expected2
+  -/
+  #guard_msgs in
+  #eval vaporcode "Why isn"t my code working?"
+
+  /-
+  info: expected3
+  -/
+  #guard_msgs in
+  #eval vaporcode "Hello World"
+

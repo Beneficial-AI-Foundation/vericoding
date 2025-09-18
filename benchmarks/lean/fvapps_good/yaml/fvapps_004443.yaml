@@ -1,0 +1,35 @@
+vc-description: |-
+  /-
+  Given three arrays of integers, return the sum of elements that are common in all three arrays.
+  
+  For example: 
+  
+  ```
+  common([1,2,3],[5,3,2],[7,3,2]) = 5 because 2 & 3 are common in all 3 arrays
+  common([1,2,2,3],[5,3,2,2],[7,3,2,2]) = 7 because 2,2 & 3 are common in the 3 arrays
+  ```
+  
+  More examples in the test cases. 
+  
+  Good luck!
+  -/
+
+vc-preamble: |-
+
+vc-helpers: |-
+
+vc-definitions: |-
+  def common (lst1 lst2 lst3 : List Int) : Int := sorry
+  
+  theorem common_disjoint (lst : List Int) : 
+    lst ≠ [] → 
+    let shifted1 := lst.map (· + 10000)
+    let shifted2 := lst.map (· + 20000)
+    common lst shifted1 shifted2 = 0 := sorry
+
+vc-theorems: |-
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded_and_plausible
+

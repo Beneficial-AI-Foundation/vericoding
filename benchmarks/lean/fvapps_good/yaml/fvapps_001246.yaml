@@ -1,0 +1,76 @@
+vc-description: |-
+  /-
+  Write a program to obtain a number $(N)$ from the user and display whether the number is a one digit number, 2 digit number, 3 digit number or more than 3 digit number
+
+  -----Input:-----
+  - First line will contain the number $N$,
+
+  -----Output:-----
+  Print "1" if N is a 1 digit number.
+  Print "2" if N is a 2 digit number.
+  Print "3" if N is a 3 digit number.
+  Print "More than 3 digits" if N has more than 3 digits.
+
+  -----Constraints-----
+  - $0 \leq N \leq 1000000$
+
+  -----Sample Input:-----
+  9
+
+  -----Sample Output:-----
+  1
+  -/
+
+vc-preamble: |
+
+vc-helpers: |
+
+vc-definitions: |-
+  def count_digits (n : Int) : String := sorry
+
+  theorem single_digit_count 
+    (n : Int) (h : 0 ≤ n ∧ n ≤ 9) : 
+    count_digits n = "1" := sorry
+
+vc-theorems: |-
+  theorem double_digit_count 
+    (n : Int) (h : 10 ≤ n ∧ n ≤ 99) :
+    count_digits n = "2" := sorry
+
+  theorem triple_digit_count
+    (n : Int) (h : 100 ≤ n ∧ n ≤ 999) :
+    count_digits n = "3" := sorry
+
+  theorem more_than_three_digits
+    (n : Int) (h : 1000 ≤ n) :
+    count_digits n = "More than 3 digits" := sorry
+
+  theorem digit_count_ranges
+    (n : Int) :
+    (n < 10 → count_digits n = "1") ∧ 
+    (10 ≤ n ∧ n < 100 → count_digits n = "2") ∧
+    (100 ≤ n ∧ n < 1000 → count_digits n = "3") ∧
+    (1000 ≤ n → count_digits n = "More than 3 digits") := sorry
+
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded
+
+  /-
+  info: '1'
+  -/
+  #guard_msgs in
+  #eval count_digits 9
+
+  /-
+  info: '2'
+  -/
+  #guard_msgs in
+  #eval count_digits 42
+
+  /-
+  info: 'More than 3 digits'
+  -/
+  #guard_msgs in
+  #eval count_digits 12345
+

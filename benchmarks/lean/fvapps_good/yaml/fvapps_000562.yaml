@@ -1,0 +1,118 @@
+vc-description: |-
+  /-
+  Not everyone probably knows that Chef has younder brother Jeff. Currently Jeff learns to read.
+  He knows some subset of the letter of Latin alphabet. In order to help Jeff to study, Chef gave him a book with the text consisting of N words. Jeff can read a word iff it consists only of the letters he knows.
+  Now Chef is curious about which words his brother will be able to read, and which are not. Please help him!
+
+  -----Input-----
+  The first line of the input contains a lowercase Latin letter string S, consisting of the letters Jeff can read. Every letter will appear in S no more than once.
+  The second line of the input contains an integer N denoting the number of words in the book.
+  Each of the following N lines contains a single lowecase Latin letter string Wi, denoting the ith word in the book.
+
+  -----Output-----
+  For each of the words, output "Yes" (without quotes) in case Jeff can read it, and "No" (without quotes) otherwise.
+
+  -----Constraints-----
+  - 1 ≤ |S| ≤ 26
+  - 1 ≤ N ≤ 1000
+  - 1 ≤ |Wi| ≤ 12
+  - Each letter will appear in S no more than once.
+  - S, Wi consist only of lowercase Latin letters.
+
+  -----Subtasks-----
+  - Subtask #1 (31 point): |S| = 1, i.e. Jeff knows only one letter.
+  - Subtask #2 (69 point)	: no additional constraints
+
+  -----Example-----
+  Input:act
+  2
+  cat
+  dog
+
+  Output:Yes
+  No
+
+  -----Explanation-----
+  The first word can be read.
+  The second word contains the letters d, o and g that aren't known by Jeff.
+  -/
+
+vc-preamble: |
+
+vc-helpers: |
+
+vc-definitions: |-
+  def can_read_words (known_letters : String) (word_list : List String) : List String := sorry
+
+  theorem can_read_words_length
+    (known_letters : String)
+    (word_list : List String)
+    (h₁ : known_letters.length > 0) :
+    (can_read_words known_letters word_list).length = word_list.length := sorry
+
+vc-theorems: |-
+  theorem can_read_words_valid_outputs
+    (known_letters : String) 
+    (word_list : List String)
+    (h₁ : known_letters.length > 0) :
+    ∀ x ∈ can_read_words known_letters word_list, x = "Yes" ∨ x = "No" := sorry
+
+  theorem can_read_words_yes_implies_all_letters_known
+    (known_letters : String)
+    (word_list : List String)
+    (h₁ : known_letters.length > 0) 
+    (i : Nat)
+    (h₂ : i < word_list.length)
+    (h₃ : (can_read_words known_letters word_list)[i]? = some "Yes") :
+    ∀ c ∈ (word_list[i]?.getD "").data, c ∈ known_letters.data := sorry
+
+  theorem can_read_words_no_implies_some_letter_unknown
+    (known_letters : String)
+    (word_list : List String)
+    (h₁ : known_letters.length > 0)
+    (i : Nat)
+    (h₂ : i < word_list.length)
+    (h₃ : (can_read_words known_letters word_list)[i]? = some "No") :
+    ∃ c ∈ (word_list[i]?.getD "").data, c ∉ known_letters.data := sorry
+
+  theorem can_read_words_empty_list
+    (known_letters : String)
+    (h₁ : known_letters.length > 0) :
+    can_read_words known_letters [] = [] := sorry
+
+  theorem can_read_words_single_word
+    (known_letters : String)
+    (word : String)
+    (h₁ : known_letters.length > 0) :
+    (∀ c ∈ word.data, c ∈ known_letters.data) →
+    can_read_words known_letters [word] = ["Yes"] := sorry
+
+  theorem can_read_words_single_word_not
+    (known_letters : String)
+    (word : String)
+    (h₁ : known_letters.length > 0) :
+    (∃ c ∈ word.data, c ∉ known_letters.data) →
+    can_read_words known_letters [word] = ["No"] := sorry
+
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded
+
+  /-
+  info: ['Yes', 'No']
+  -/
+  #guard_msgs in
+  #eval can_read_words "act" ["cat", "dog"]
+
+  /-
+  info: ['Yes', 'No', 'Yes']
+  -/
+  #guard_msgs in
+  #eval can_read_words "a" ["a", "b", "aa"]
+
+  /-
+  info: ['Yes', 'Yes', 'Yes', 'No']
+  -/
+  #guard_msgs in
+  #eval can_read_words "xyz" ["x", "xy", "xyz", "abc"]
+

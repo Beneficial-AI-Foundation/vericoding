@@ -1,0 +1,85 @@
+vc-description: |-
+  /-
+  The chef is trying to solve some pattern problems, Chef wants your help to code it. Chef has one number K to form a new pattern. Help the chef to code this pattern problem.
+
+  -----Input:-----
+  - First-line will contain $T$, the number of test cases. Then the test cases follow. 
+  - Each test case contains a single line of input, one integer $K$. 
+
+  -----Output:-----
+  For each test case, output as the pattern.
+
+  -----Constraints-----
+  - $1 \leq T \leq 100$
+  - $1 \leq K \leq 100$
+
+  -----Sample Input:-----
+  4
+  1
+  2
+  3
+  4
+
+  -----Sample Output:-----
+  1
+  21
+  *1
+  321
+  *21
+  **1
+  4321
+  *321
+  **21
+  ***1
+
+  -----EXPLANATION:-----
+  No need, else pattern can be decode easily.
+  -/
+
+vc-preamble: |
+
+vc-helpers: |
+
+vc-definitions: |-
+  def generate_pattern (n : Nat) : List String := sorry 
+
+  def String.countChar (s : String) (c : Char) : Nat :=
+    s.data.filter (· = c) |>.length
+
+vc-theorems: |-
+  theorem pattern_length (n : Nat) (h : n > 0) :
+    (generate_pattern n).length = n := sorry
+
+  theorem pattern_first_line (n : Nat) (h : n > 0) :
+    (generate_pattern n).head! = String.join (List.map toString (List.range' n n 1)) := sorry
+
+  theorem pattern_stars_increment (n : Nat) (h : n > 0) (i : Fin n) : 
+    let len_eq := pattern_length n h
+    ((generate_pattern n).get ⟨i.val, by rw [len_eq]; exact i.isLt⟩).countChar '*' = i.val := sorry
+
+  theorem pattern_stars_prefix (n : Nat) (h : n > 0) (i : Fin n) :
+    let len_eq := pattern_length n h
+    ((generate_pattern n).get ⟨i.val, by rw [len_eq]; exact i.isLt⟩).startsWith (String.mk (List.replicate i.val '*')) := sorry
+
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded
+
+  /-
+  info: ['1']
+  -/
+  #guard_msgs in
+  #eval generate_pattern 1
+
+  /-
+  info: ['21', '*1']
+  -/
+  #guard_msgs in
+  #eval generate_pattern 2
+
+  /-
+  info: ['4321', '*321', '**21', '***1']
+  -/
+  #guard_msgs in
+  #eval generate_pattern 4
+

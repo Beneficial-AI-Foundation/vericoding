@@ -1,0 +1,68 @@
+vc-description: |-
+  /-
+  You have k lists of sorted integers in ascending order. Find the smallest range that includes at least one number from each of the k lists. 
+
+  We define the range [a,b] is smaller than range [c,d] if b-a < d-c or a < c if b-a == d-c.
+
+  Example 1:
+
+  Input:[[4,10,15,24,26], [0,9,12,20], [5,18,22,30]]
+  Output: [20,24]
+  Explanation: 
+  List 1: [4, 10, 15, 24,26], 24 is in range [20,24].
+  List 2: [0, 9, 12, 20], 20 is in range [20,24].
+  List 3: [5, 18, 22, 30], 22 is in range [20,24].
+
+  Note:
+
+  The given list may contain duplicates, so ascending order means >= here.
+  1 k 
+   -105 value of elements 5.
+  For Java users, please note that the input type has been changed to List<List<Integer>>. And after you reset the code template, you'll see this point.
+  -/
+
+vc-preamble: |
+
+vc-helpers: |
+
+vc-definitions: |-
+  def find_smallest_range (lists : List (List Int)) : Int × Int :=
+    sorry
+
+vc-theorems: |-
+  theorem range_contains_number_from_each_list (lists : List (List Int))
+      (h1 : ∀ l ∈ lists, l.length > 0) :
+    let result := find_smallest_range lists
+    ∀ l ∈ lists, ∃ x ∈ l, result.1 ≤ x ∧ x ≤ result.2 := by
+    sorry
+
+  theorem range_bounds (lists : List (List Int)) 
+      (h1 : ∀ l ∈ lists, l.length > 0)
+      (h2 : lists.length > 0) :
+    let result := find_smallest_range lists
+    (∃ l ∈ lists, ∃ x ∈ l, x = result.1) ∧
+    (∃ l ∈ lists, ∃ x ∈ l, x = result.2) := by
+    sorry
+
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded
+
+  /-
+  info: [20, 24]
+  -/
+  #guard_msgs in
+  #eval find_smallest_range [[4, 10, 15, 24, 26], [0, 9, 12, 20], [5, 18, 22, 30]]
+
+  /-
+  info: [1, 1]
+  -/
+  #guard_msgs in
+  #eval find_smallest_range [[1, 2, 3], [1, 2, 3], [1, 2, 3]]
+
+  /-
+  info: [10, 11]
+  -/
+  #guard_msgs in
+  #eval find_smallest_range [[10, 10], [11, 11]]
+

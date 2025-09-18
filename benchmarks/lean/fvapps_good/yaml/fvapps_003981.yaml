@@ -1,0 +1,78 @@
+vc-description: |-
+  /-
+  You get a "text" and have to shift the vowels by "n" positions to the right.
+  (Negative value for n should shift to the left.)
+  "Position" means the vowel's position if taken as one item in a list of all vowels within the string.
+  A shift by 1 would mean, that every vowel shifts to the place of the next vowel.
+  Shifting over the edges of the text should continue at the other edge.
+
+  Example:
+
+  text = "This is a test!"
+  n = 1
+  output = "Thes is i tast!"
+
+  text = "This is a test!"
+  n = 3
+  output = "This as e tist!"
+
+  If text is null or empty return exactly this value.
+  Vowels are "a,e,i,o,u".
+
+  Have fun coding it and please don't forget to vote and rank this kata! :-)
+
+  I have created other katas. Have a look if you like coding and challenges.
+  -/
+
+vc-preamble: |
+
+vc-helpers: |
+
+vc-definitions: |-
+  def vowel_shift (s : Option String) (n : Int) : Option String := sorry
+
+  theorem empty_cases (n : Int) : 
+    vowel_shift none n = none ∧ 
+    vowel_shift (some "") n = some "" := sorry
+
+vc-theorems: |-
+  theorem zero_shift (s : String) :
+    vowel_shift (some s) 0 = some s := sorry
+
+  theorem full_rotation {s : String} (h : s ≠ "") :
+    let vowel_count := (s.data.filter (fun c => ['a', 'e', 'i', 'o', 'u'].contains c.toLower)).length
+    vowel_count > 0 → 
+    vowel_shift (some s) vowel_count = some s := sorry
+
+  theorem shift_composition {s : String} (h : s ≠ "") (n1 n2 : Int) 
+    (h1 : n1 ≥ -100) (h2 : n1 ≤ 100) (h3 : n2 ≥ -100) (h4 : n2 ≤ 100) :
+    match vowel_shift (some s) n1 with
+    | none => True
+    | some s1 => 
+      match vowel_shift (some s1) n2 with
+      | none => True
+      | some s2 => s2 = (vowel_shift (some s) (n1 + n2)).get!
+    := sorry
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded
+
+  /-
+  info: 'Thes is i tast!'
+  -/
+  #guard_msgs in
+  #eval vowel_shift "This is a test!" 1
+
+  /-
+  info: ''
+  -/
+  #guard_msgs in
+  #eval vowel_shift "" 0
+
+  /-
+  info: 'This as e tist!'
+  -/
+  #guard_msgs in
+  #eval vowel_shift "This is a test!" -1
+

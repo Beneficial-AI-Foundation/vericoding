@@ -1,0 +1,65 @@
+vc-description: |-
+  /-
+  Given an integer, write a function to determine if it is a power of two.
+
+  Example 1:
+
+  Input: 1
+  Output: true 
+  Explanation: 20 = 1
+
+  Example 2:
+
+  Input: 16
+  Output: true
+  Explanation: 24 = 16
+
+  Example 3:
+
+  Input: 218
+  Output: false
+  -/
+
+vc-preamble: |
+
+vc-helpers: |
+
+vc-definitions: |-
+  def isPowerOfTwo (n: Int) : Bool :=
+    sorry
+
+vc-theorems: |-
+  theorem power_of_two_positive (n : Int) : 
+    n ≤ 0 → isPowerOfTwo n = false :=
+    sorry
+
+  theorem power_of_two_exactly_one_bit {n : Int} :
+    n > 0 → (isPowerOfTwo n = true ↔ ∃ k, n = 2^k) :=
+    sorry
+
+  theorem power_of_two_exp (k : Nat) : 
+    isPowerOfTwo (2^k) = true :=
+    sorry
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded
+
+  /-
+  info: True
+  -/
+  #guard_msgs in
+  #eval is_power_of_two 1
+
+  /-
+  info: True
+  -/
+  #guard_msgs in
+  #eval is_power_of_two 16
+
+  /-
+  info: False
+  -/
+  #guard_msgs in
+  #eval is_power_of_two 218
+

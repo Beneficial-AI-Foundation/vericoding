@@ -1,0 +1,88 @@
+vc-description: |-
+  /-
+  Dhruvil has always been a studious person and will be completing his Engineering soon. He is always kneen about solving problems and is preparing hard for his next interview at Hackerrank. He has practiced lots of problems and now he came across this problem.
+  Given a message containing English letters(A-Z), it is being encoded to numbers using the following mapping:
+  'A' -> 1,'B' -> 2 ……………… 'Z' -> 26.
+  Now, given a non-empty string containing only digits, help Dhruvil determine the total number of ways to decode it.
+  While decoding you need to choose a substring of charachters and not a subsequence. Also a chosen substring should not contain any leading "0"s, but can contain trailing "0"s. Since the output can be very large print the answer as modulo 10^9 + 7 i.e 1000000007.
+
+  -----Input:-----
+  The first line of the input consists of single integer T, the number of test cases.
+  Each test case consists of a string.
+
+  -----Output:-----
+  For each test case print a single integer - the total number of ways to decode the digit string.
+
+  -----Constraints-----
+  - $1 \leq T \leq 1000$
+  - $2 \leq S \leq 10^9$
+
+  -----Sample Input:-----
+  2
+  12
+
+  226
+
+  -----Sample Output:-----
+  2
+
+  3
+
+  -----EXPLANATION:-----
+  There are 2 possible ways. It could be decoded as "AB" {1,2} or "L" {12}.
+  There are 3 possible ways. It could be decoded as "BZ" {2,26}, "VF" {22,6}, or "BBF" {2,2,6}.
+  -/
+
+vc-preamble: |
+
+vc-helpers: |
+
+vc-definitions: |-
+  def decode_string (s : String) : Nat := sorry
+
+  theorem decode_string_empty :
+    decode_string "" = 0 := sorry
+
+vc-theorems: |-
+  theorem decode_string_single_zero :
+    decode_string "0" = 0 := sorry
+
+  theorem decode_string_leading_zero :
+    decode_string "01" = 0 := sorry
+
+  theorem decode_string_single_digit {d : Char} 
+    (h1 : d.isDigit)
+    (h2 : d ≠ '0') :
+    decode_string (String.mk [d]) = 1 := sorry
+
+  theorem decode_string_twelve :
+    decode_string "12" = 2 := sorry
+
+  theorem decode_string_226 :
+    decode_string "226" = 3 := sorry
+
+  theorem decode_string_eleven :
+    decode_string "11" = 2 := sorry
+
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: guarded_and_plausible
+
+  /-
+  info: 2
+  -/
+  #guard_msgs in
+  #eval decode_string "12"
+
+  /-
+  info: 3
+  -/
+  #guard_msgs in
+  #eval decode_string "226"
+
+  /-
+  info: 3
+  -/
+  #guard_msgs in
+  #eval decode_string "123"
+

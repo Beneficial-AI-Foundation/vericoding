@@ -1,0 +1,86 @@
+vc-description: |-
+  /-
+  # Let's watch a parade!
+  ## Brief
+  You're going to watch a parade, but you only care about one of the groups marching. The parade passes through the street where your house is. Your house is at number `location` of the street. Write a function `parade_time` that will tell you the times when you need to appear to see all appearences of that group.
+
+  ## Specifications
+  You'll be given:
+
+  * A `list` of `string`s containing `groups` in the parade, in order of appearance. A group may appear multiple times. You want to see all the parts of your favorite group.
+  * An positive `integer` with the `location` on the parade route where you'll be watching.
+  * An positive `integer` with the `speed` of the parade
+  * A `string` with the `pref`ferred group you'd like to see
+
+  You need to return the time(s) you need to be at the parade to see your favorite group as a `list` of `integer`s.
+
+  It's possible the group won't be at your `location` at an exact `time`. In that case, just be sure to get there right before it passes (i.e. the largest integer `time` before the float passes the `position`).
+
+  ## Example
+  ```python
+  groups = ['A','B','C','D','E','F']
+  location = 3
+  speed = 2
+  pref = 'C'
+                    v
+  Locations: |0|1|2|3|4|5|6|7|8|9|...
+  F E D C B A      | |               time = 0
+  > > F E D C B A  | |               time = 1
+      > > F E D C B|A|               time = 2
+          > > F E D|C|B A            time = 3
+                    ^
+  parade_time(['A','B','C','D','E','F'], 3, 2,'C']) == [3]
+  ```
+  -/
+
+vc-preamble: |
+
+vc-helpers: |
+
+vc-definitions: |-
+  def parade_time (groups : List String) (location speed : Nat) (pref : String) : List Nat :=
+    sorry
+
+vc-theorems: |-
+  theorem parade_time_output_structure 
+    (groups : List String) (location speed : Nat) (pref : String)
+    (h1 : groups ≠ []) (h2 : ∀ g ∈ groups, g ≠ "") (h3 : speed > 0) (h4 : pref ≠ "") :
+    let result := parade_time groups location speed pref
+    ∀ x ∈ result, x ≥ 0 :=
+  sorry
+
+  theorem parade_time_length 
+    (groups : List String) (location speed : Nat) (pref : String)
+    (h1 : groups ≠ []) (h2 : ∀ g ∈ groups, g ≠ "") (h3 : speed > 0) (h4 : pref ≠ "") :
+    let result := parade_time groups location speed pref
+    List.length result = List.countP (· = pref) groups :=
+  sorry
+
+  theorem parade_time_no_matches
+    (groups : List String) (location speed : Nat) (pref : String)
+    (h1 : groups ≠ []) (h2 : ∀ g ∈ groups, g ≠ pref) (h3 : speed > 0) :
+    parade_time groups location speed pref = [] :=
+  sorry
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded
+
+  /-
+  info: [3]
+  -/
+  #guard_msgs in
+  #eval parade_time ["a", "b", "c", "d", "e", "f"] 3 2 "c"
+
+  /-
+  info: [2, 3]
+  -/
+  #guard_msgs in
+  #eval parade_time ["c", "b", "c", "d", "e", "f"] 3 2 "c"
+
+  /-
+  info: [10, 11, 13]
+  -/
+  #guard_msgs in
+  #eval parade_time ["a", "b", "c", "c", "e", "c"] 7 1 "c"
+

@@ -1,0 +1,69 @@
+vc-description: |-
+  /-
+  Given a rectangle of size n x m, find the minimum number of integer-sided squares that tile the rectangle.
+
+  Example 1:
+
+  Input: n = 2, m = 3
+  Output: 3
+  Explanation: 3 squares are necessary to cover the rectangle.
+  2 (squares of 1x1)
+  1 (square of 2x2)
+  Example 2:
+
+  Input: n = 5, m = 8
+  Output: 5
+
+  Example 3:
+
+  Input: n = 11, m = 13
+  Output: 6
+
+  Constraints:
+
+  1 <= n <= 13
+  1 <= m <= 13
+  -/
+
+vc-preamble: |
+
+vc-helpers: |
+
+vc-definitions: |-
+  def tileRectangle (n m : Nat) : Nat := sorry
+
+  theorem square_input {n : Nat} (h : n > 0) : 
+    tileRectangle n n = 1 := sorry
+
+vc-theorems: |-
+  theorem multiples {n : Nat} (h : n > 0) :
+    tileRectangle n (2 * n) = 2 ∧ tileRectangle (2 * n) n = 2 := sorry
+
+  theorem lower_bound {n m : Nat} (hn : n > 0) (hm : m > 0) :
+    tileRectangle n m ≥ 1 := sorry
+
+  theorem upper_bound {n m : Nat} (hn : n > 0) (hm : m > 0) :
+    tileRectangle n m ≤ n * m := sorry
+
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: guarded
+
+  /-
+  info: 3
+  -/
+  #guard_msgs in
+  #eval tile_rectangle 2 3
+
+  /-
+  info: 5
+  -/
+  #guard_msgs in
+  #eval tile_rectangle 5 8
+
+  /-
+  info: 6
+  -/
+  #guard_msgs in
+  #eval tile_rectangle 11 13
+

@@ -1,0 +1,49 @@
+vc-description: |-
+  /-
+  Count the number of segments in a string, where a segment is defined to be a contiguous sequence of non-space characters.
+
+  Please note that the string does not contain any non-printable characters.
+
+  Example:
+
+  Input: "Hello, my name is John"
+  Output: 5
+  -/
+
+vc-preamble: |
+
+vc-helpers: |
+
+vc-definitions: |-
+  def count_segments (s : String) : Nat := sorry
+
+  theorem count_segments_empty :
+    count_segments "" = 0 := sorry
+
+vc-theorems: |-
+  theorem count_segments_basic_cases :
+    count_segments "Hello world" = 2 ∧
+    count_segments "   spaces   around   " = 2 := sorry
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded_and_plausible
+
+  /-
+  info: 5
+  -/
+  #guard_msgs in
+  #eval count_segments "Hello, my name is John"
+
+  /-
+  info: 0
+  -/
+  #guard_msgs in
+  #eval count_segments ""
+
+  /-
+  info: 1
+  -/
+  #guard_msgs in
+  #eval count_segments "Hello"
+

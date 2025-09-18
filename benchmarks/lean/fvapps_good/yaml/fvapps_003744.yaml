@@ -1,0 +1,83 @@
+vc-description: |-
+  /-
+  Student A and student B are giving each other test answers during a test.  
+  They don't want to be caught so they are sending each other coded messages.
+
+  Student A is sending student B the message: `Answer to Number 5 Part b`.  
+  He starts of with a square grid (in this example the grid = 5x5).  
+  He writes the message down (with spaces):
+
+  ```
+  Answe
+  r to 
+  Numbe
+  r 5 P
+  art b
+  ```
+
+  He then starts writing the message down one column at a time (from the top to the bottom).  
+  The new message is now: `ArNran u rstm5twob  e ePb`
+
+  You are the teacher of this class.  
+  Your job is to decipher this message and bust the students.
+
+  # Task
+
+  Write a function `decipher_message`.  
+  This function will take one parameter (`message`).  
+  This function will return the original message.  
+  *** Note: The length of the string is always going to be a prefect square ***
+
+  Hint: You should probably decipher the example message first before you start coding
+
+  Have fun !!!
+  -/
+
+vc-preamble: |
+
+vc-helpers: |
+
+vc-definitions: |-
+  def decipher_message (s : String) : String := sorry
+
+  theorem decipher_preserves_length (s : String) (h : s.length > 0) :
+    (decipher_message s).length = s.length := sorry
+
+vc-theorems: |-
+  theorem decipher_preserves_chars (s : String) (h : s.length > 0) :
+    ∀ c, (c ∈ (decipher_message s).data ↔ c ∈ s.data) := sorry
+
+  theorem decipher_idempotent (s : String) (h : s.length > 0) 
+    (h2 : ∃ n : Nat, n * n = s.length) :
+    decipher_message (decipher_message s) = s := sorry
+
+  theorem decipher_small_strings (s : String) (h : s.length ≤ 1) :
+    decipher_message s = s := sorry
+
+  theorem decipher_perfect_squares (n : Nat) (h : n > 0) (h2 : n ≤ 10) :
+    let s := String.mk (List.replicate (n*n) 'x')
+    (decipher_message s).length = n*n ∧
+    (decipher_message s).data.all (· = 'x') := sorry
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded
+
+  /-
+  info: expected1
+  -/
+  #guard_msgs in
+  #eval decipher_message "ArNran u rstm5twob  e ePb"
+
+  /-
+  info: expected2
+  -/
+  #guard_msgs in
+  #eval decipher_message "92287a76 585a2y0"
+
+  /-
+  info: expected3
+  -/
+  #guard_msgs in
+  #eval decipher_message "796820 2 "
+
