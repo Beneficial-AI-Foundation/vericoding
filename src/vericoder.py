@@ -364,8 +364,8 @@ def get_experiment_metadata(config: ProcessingConfig, args, prompt_loader: Promp
         "files_dir": config.files_dir,
         "input_type": input_type,
         "benchmark_files_total": len(find_spec_files(config)),
-        "shard": args.shard if hasattr(args, 'shard') and args.shard else None,
-        "limit": args.limit if hasattr(args, 'limit') and args.limit else None,
+        "shard": args.shard,
+        "limit": args.limit,
         
         # Tool versions and environment
         "tool_version": tool_version,
@@ -670,7 +670,7 @@ def main():
         try:
             # Include shard in run name if specified
             shard_suffix = ""
-            if hasattr(args, 'shard') and args.shard:
+            if args.shard:
                 shard_suffix = f"_shard{args.shard.replace('/', 'of')}"
 
             # Initialize wandb run
@@ -838,7 +838,7 @@ def main():
     try:
         spec_files, selection_desc = apply_sharding(
             all_spec_files,
-            args.shard if hasattr(args, 'shard') else None,
+            args.shard,
             args.limit
         )
     except ValueError as e:
