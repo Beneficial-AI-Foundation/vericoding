@@ -39,19 +39,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval is_perfect_square 16
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval is_perfect_square 14
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in

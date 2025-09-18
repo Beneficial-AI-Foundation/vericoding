@@ -72,31 +72,31 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: '1'
   -/
   #guard_msgs in
   #eval pattern 1
 
-  /-
+  /--
   info: '2\n21'
   -/
   #guard_msgs in
   #eval pattern 2
 
-  /-
+  /--
   info: expected
   -/
   #guard_msgs in
   #eval pattern 4
 
-  /-
+  /--
   info: ''
   -/
   #guard_msgs in
   #eval pattern 0
 
-  /-
+  /--
   info: ''
   -/
   #guard_msgs in

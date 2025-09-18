@@ -64,19 +64,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: 4
   -/
   #guard_msgs in
   #eval solve_binary_substrings "0110"
 
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in
   #eval solve_binary_substrings "0101"
 
-  /-
+  /--
   info: 4
   -/
   #guard_msgs in

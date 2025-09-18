@@ -53,19 +53,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in
   #eval smallest_integer [[0, 2], [5, 1]]
 
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in
   #eval smallest_integer [[1, 2], [3, 4]]
 
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in

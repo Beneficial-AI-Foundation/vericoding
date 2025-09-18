@@ -47,19 +47,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: '(123) 456-7890'
   -/
   #guard_msgs in
   #eval create_phone_number [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
 
-  /-
+  /--
   info: '(111) 111-1111'
   -/
   #guard_msgs in
   #eval create_phone_number [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
 
-  /-
+  /--
   info: '(000) 000-0000'
   -/
   #guard_msgs in

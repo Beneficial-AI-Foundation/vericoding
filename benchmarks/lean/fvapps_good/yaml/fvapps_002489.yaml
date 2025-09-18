@@ -47,19 +47,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: 4710194409608608369201743232
   -/
   #guard_msgs in
   #eval calculate_power_sum 9 29 7 27
 
-  /-
+  /--
   info: 17
   -/
   #guard_msgs in
   #eval calculate_power_sum 2 3 3 2
 
-  /-
+  /--
   info: 50
   -/
   #guard_msgs in

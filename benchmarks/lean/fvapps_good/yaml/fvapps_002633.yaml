@@ -50,19 +50,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval check_concatenated_sum 2997 3
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval check_concatenated_sum -198 2
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in

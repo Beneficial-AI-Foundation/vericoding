@@ -82,19 +82,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 4
   -/
   #guard_msgs in
   #eval maxJumps [6, 4, 14, 6, 8, 13, 9, 7, 10, 6, 12] 2
 
-  /-
+  /--
   info: 1
   -/
   #guard_msgs in
   #eval maxJumps [3, 3, 3, 3, 3] 3
 
-  /-
+  /--
   info: 7
   -/
   #guard_msgs in

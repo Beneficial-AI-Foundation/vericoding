@@ -64,19 +64,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in
   #eval solve_laddu_power 2 2
 
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in
   #eval solve_laddu_power 4 6
 
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in

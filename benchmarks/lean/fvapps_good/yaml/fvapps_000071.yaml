@@ -110,13 +110,13 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: n1 * k1
   -/
   #guard_msgs in
   #eval len result1
 
-  /-
+  /--
   info: n3 * k3
   -/
   #guard_msgs in

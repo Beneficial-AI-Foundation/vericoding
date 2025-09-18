@@ -74,19 +74,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'Kefa'
   -/
   #guard_msgs in
   #eval solve_race 1 3 2 1 2
 
-  /-
+  /--
   info: 'Chef'
   -/
   #guard_msgs in
   #eval solve_race 1 5 2 1 2
 
-  /-
+  /--
   info: 'Draw'
   -/
   #guard_msgs in

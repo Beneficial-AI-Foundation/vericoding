@@ -48,25 +48,25 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: []
   -/
   #guard_msgs in
   #eval max_collatz_length 0
 
-  /-
+  /--
   info: [1, 1]
   -/
   #guard_msgs in
   #eval max_collatz_length 1
 
-  /-
+  /--
   info: [3, 8]
   -/
   #guard_msgs in
   #eval max_collatz_length 4
 
-  /-
+  /--
   info: [27, 112]
   -/
   #guard_msgs in

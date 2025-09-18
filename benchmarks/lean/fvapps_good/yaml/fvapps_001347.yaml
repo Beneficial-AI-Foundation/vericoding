@@ -75,19 +75,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded
 
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in
   #eval longest_distinct_subsequence "abc"
 
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval longest_distinct_subsequence "aba"
 
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in

@@ -75,19 +75,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded
 
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in
   #eval solve_transformations 1 1 1 1
 
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval solve_transformations 2 2 1 1
 
-  /-
+  /--
   info: 4
   -/
   #guard_msgs in

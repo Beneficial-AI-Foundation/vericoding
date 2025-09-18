@@ -45,19 +45,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded
 
-  /-
+  /--
   info: 6
   -/
   #guard_msgs in
   #eval tram 4 [0, 2, 4, 4] [3, 5, 2, 0]
 
-  /-
+  /--
   info: 6
   -/
   #guard_msgs in
   #eval tram 2 [0, 2, 4, 4] [3, 5, 2, 0]
 
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in

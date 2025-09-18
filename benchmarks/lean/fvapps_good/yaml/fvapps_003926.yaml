@@ -38,19 +38,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded
 
-  /-
+  /--
   info: 80
   -/
   #guard_msgs in
   #eval rental_car_cost 2
 
-  /-
+  /--
   info: 180
   -/
   #guard_msgs in
   #eval rental_car_cost 5
 
-  /-
+  /--
   info: 350
   -/
   #guard_msgs in

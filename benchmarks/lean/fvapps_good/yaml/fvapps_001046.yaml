@@ -75,19 +75,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: expected1
   -/
   #guard_msgs in
   #eval count_fours [447474, 228, 6664, 40, 81]
 
-  /-
+  /--
   info: expected2
   -/
   #guard_msgs in
   #eval count_fours [4444, 1234, 5678]
 
-  /-
+  /--
   info: expected3
   -/
   #guard_msgs in

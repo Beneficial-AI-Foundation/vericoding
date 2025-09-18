@@ -58,19 +58,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: (19, 36)
   -/
   #guard_msgs in
   #eval count_chef_entries 19 17
 
-  /-
+  /--
   info: (5, 7)
   -/
   #guard_msgs in
   #eval count_chef_entries 5 2
 
-  /-
+  /--
   info: (10, 10)
   -/
   #guard_msgs in

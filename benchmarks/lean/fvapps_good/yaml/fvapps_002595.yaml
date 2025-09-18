@@ -40,19 +40,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in
   #eval inverseMod 2 5
 
-  /-
+  /--
   info: 40
   -/
   #guard_msgs in
   #eval inverseMod 48 101
 
-  /-
+  /--
   info: 419
   -/
   #guard_msgs in

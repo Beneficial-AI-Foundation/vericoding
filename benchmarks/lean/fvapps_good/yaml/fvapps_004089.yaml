@@ -36,19 +36,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: 13824
   -/
   #guard_msgs in
   #eval box_capacity 32 64 16
 
-  /-
+  /--
   info: 3375
   -/
   #guard_msgs in
   #eval box_capacity 20 20 20
 
-  /-
+  /--
   info: 27000
   -/
   #guard_msgs in

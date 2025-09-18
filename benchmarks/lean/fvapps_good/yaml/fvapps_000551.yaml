@@ -79,19 +79,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'Yes'
   -/
   #guard_msgs in
   #eval check_palindrome_possible "abc" "abc"
 
-  /-
+  /--
   info: 'No'
   -/
   #guard_msgs in
   #eval check_palindrome_possible "a" "b"
 
-  /-
+  /--
   info: 'Yes'
   -/
   #guard_msgs in

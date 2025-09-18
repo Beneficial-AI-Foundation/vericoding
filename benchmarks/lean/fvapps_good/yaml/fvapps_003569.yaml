@@ -117,19 +117,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: [20, 12]
   -/
   #guard_msgs in
   #eval product_array #[12, 20]
 
-  /-
+  /--
   info: [216, 24, 162, 324]
   -/
   #guard_msgs in
   #eval product_array #[3, 27, 4, 2]
 
-  /-
+  /--
   info: [900, 1170, 2340, 5850, 1300]
   -/
   #guard_msgs in

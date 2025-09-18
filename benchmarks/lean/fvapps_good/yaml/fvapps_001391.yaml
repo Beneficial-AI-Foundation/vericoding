@@ -59,19 +59,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in
   #eval solve_cake_baking 2
 
-  /-
+  /--
   info: 4
   -/
   #guard_msgs in
   #eval solve_cake_baking 4
 
-  /-
+  /--
   info: 7
   -/
   #guard_msgs in

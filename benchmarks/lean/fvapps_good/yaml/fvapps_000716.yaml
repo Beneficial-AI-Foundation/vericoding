@@ -56,19 +56,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'YES'
   -/
   #guard_msgs in
   #eval can_split_dosas_evenly 16
 
-  /-
+  /--
   info: 'NO'
   -/
   #guard_msgs in
   #eval can_split_dosas_evenly 27
 
-  /-
+  /--
   info: 'YES'
   -/
   #guard_msgs in

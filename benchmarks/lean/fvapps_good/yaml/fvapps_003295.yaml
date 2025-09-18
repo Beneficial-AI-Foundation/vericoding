@@ -60,19 +60,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 254
   -/
   #guard_msgs in
   #eval mod256_without_mod 254
 
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in
   #eval mod256_without_mod 256
 
-  /-
+  /--
   info: 254
   -/
   #guard_msgs in

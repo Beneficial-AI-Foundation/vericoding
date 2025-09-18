@@ -48,19 +48,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 18
   -/
   #guard_msgs in
   #eval calculate_salary 3 10
 
-  /-
+  /--
   info: 30
   -/
   #guard_msgs in
   #eval calculate_salary 2 10
 
-  /-
+  /--
   info: 50
   -/
   #guard_msgs in

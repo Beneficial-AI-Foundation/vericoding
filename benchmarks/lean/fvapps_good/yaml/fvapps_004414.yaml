@@ -24,19 +24,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: 21
   -/
   #guard_msgs in
   #eval array_plus_array [1, 2, 3] [4, 5, 6]
 
-  /-
+  /--
   info: -21
   -/
   #guard_msgs in
   #eval array_plus_array [-1, -2, -3] [-4, -5, -6]
 
-  /-
+  /--
   info: 2100
   -/
   #guard_msgs in

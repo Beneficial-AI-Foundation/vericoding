@@ -58,19 +58,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'CdWr oeas'
   -/
   #guard_msgs in
   #eval sort_my_string "CodeWars"
 
-  /-
+  /--
   info: 'ACE BDF'
   -/
   #guard_msgs in
   #eval sort_my_string "ABCDEF"
 
-  /-
+  /--
   info: 'Wleclgltihuebredrf ofsheesenasnegrof'
   -/
   #guard_msgs in

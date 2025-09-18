@@ -52,19 +52,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: '((('
   -/
   #guard_msgs in
   #eval duplicate_encode "din"
 
-  /-
+  /--
   info: '()()()'
   -/
   #guard_msgs in
   #eval duplicate_encode "recede"
 
-  /-
+  /--
   info: ')())())'
   -/
   #guard_msgs in

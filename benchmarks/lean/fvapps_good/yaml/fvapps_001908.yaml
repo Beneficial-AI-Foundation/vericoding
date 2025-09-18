@@ -93,19 +93,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: expected1
   -/
   #guard_msgs in
   #eval remove_comments ["/*Test program */", "int main()", "{ ", "  // variable declaration ", "int a, b, c;", "/* This is a test", "   multiline  ", "   comment for ", "   testing */", "a = b + c;", "}"]
 
-  /-
+  /--
   info: expected2
   -/
   #guard_msgs in
   #eval remove_comments ["a/*comment", "line", "more_comment*/b"]
 
-  /-
+  /--
   info: expected3
   -/
   #guard_msgs in

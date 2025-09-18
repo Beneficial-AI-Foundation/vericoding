@@ -64,19 +64,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: expected1
   -/
   #guard_msgs in
   #eval player_manager "John Doe, 8167238327, Jane Doe, 8163723827"
 
-  /-
+  /--
   info: []
   -/
   #guard_msgs in
   #eval player_manager ""
 
-  /-
+  /--
   info: []
   -/
   #guard_msgs in

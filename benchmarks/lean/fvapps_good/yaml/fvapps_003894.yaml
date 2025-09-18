@@ -79,19 +79,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 4
   -/
   #guard_msgs in
   #eval self_converge 4321
 
-  /-
+  /--
   info: 7
   -/
   #guard_msgs in
   #eval self_converge 211
 
-  /-
+  /--
   info: 9
   -/
   #guard_msgs in

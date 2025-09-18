@@ -38,19 +38,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 0.5
   -/
   #guard_msgs in
   #eval riemann_trapezoidal lambda x: x 1 0 1
 
-  /-
+  /--
   info: 2.0
   -/
   #guard_msgs in
   #eval riemann_trapezoidal lambda x: 1 1 0 2
 
-  /-
+  /--
   info: 2.0
   -/
   #guard_msgs in

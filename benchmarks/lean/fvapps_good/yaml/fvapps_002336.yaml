@@ -47,19 +47,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval can_construct "a" "b"
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval can_construct "aa" "ab"
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in

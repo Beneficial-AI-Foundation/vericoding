@@ -77,37 +77,37 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in
   #eval scrabble_score ""
 
-  /-
+  /--
   info: 6
   -/
   #guard_msgs in
   #eval scrabble_score "street"
 
-  /-
+  /--
   info: 14
   -/
   #guard_msgs in
   #eval scrabble_score "cabbage"
 
-  /-
+  /--
   info: 6
   -/
   #guard_msgs in
   #eval scrabble_score "STREET"
 
-  /-
+  /--
   info: 6
   -/
   #guard_msgs in
   #eval scrabble_score "st re et"
 
-  /-
+  /--
   info: 22
   -/
   #guard_msgs in

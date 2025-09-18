@@ -61,19 +61,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'Good work Joe!'
   -/
   #guard_msgs in
   #eval is_kiss "Joe had a bad day"
 
-  /-
+  /--
   info: 'Keep It Simple Stupid'
   -/
   #guard_msgs in
   #eval is_kiss "Joe is having no fun"
 
-  /-
+  /--
   info: 'Good work Joe!'
   -/
   #guard_msgs in

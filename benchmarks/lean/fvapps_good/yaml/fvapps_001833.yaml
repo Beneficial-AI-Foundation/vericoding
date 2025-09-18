@@ -64,19 +64,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded
 
-  /-
+  /--
   info: 110
   -/
   #guard_msgs in
   #eval min_cost_two_cities [[10, 20], [30, 200], [400, 50], [30, 20]]
 
-  /-
+  /--
   info: 1859
   -/
   #guard_msgs in
   #eval min_cost_two_cities [[259, 770], [448, 54], [926, 667], [184, 139], [840, 118], [577, 469]]
 
-  /-
+  /--
   info: 3086
   -/
   #guard_msgs in

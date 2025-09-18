@@ -55,19 +55,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval is_onion_array [6, 0, 4]
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval is_onion_array [1, 1, 15, 10, -1]
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in

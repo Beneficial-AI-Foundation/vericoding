@@ -48,25 +48,25 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 28.8
   -/
   #guard_msgs in
   #eval nba_extrap 12 20
 
-  /-
+  /--
   info: 48.0
   -/
   #guard_msgs in
   #eval nba_extrap 10 10
 
-  /-
+  /--
   info: 14.1
   -/
   #guard_msgs in
   #eval nba_extrap 5 17
 
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in

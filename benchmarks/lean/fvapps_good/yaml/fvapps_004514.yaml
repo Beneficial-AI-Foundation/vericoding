@@ -47,19 +47,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'Dbftbs Djqifs'
   -/
   #guard_msgs in
   #eval encryptor 1 "Caesar Cipher"
 
-  /-
+  /--
   info: 'Bzdrzq Bhogdq'
   -/
   #guard_msgs in
   #eval encryptor -1 "Caesar Cipher"
 
-  /-
+  /--
   info: 'Khoor, Zruog 123!'
   -/
   #guard_msgs in

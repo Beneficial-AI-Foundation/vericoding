@@ -81,19 +81,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 65536
   -/
   #guard_msgs in
   #eval solve_magical_power "35566"
 
-  /-
+  /--
   info: -1
   -/
   #guard_msgs in
   #eval solve_magical_power "31"
 
-  /-
+  /--
   info: 256
   -/
   #guard_msgs in

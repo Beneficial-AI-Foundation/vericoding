@@ -54,19 +54,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval is_matched ["36M", "CATAATACTTTACCTACTCTCAACAAATGCGGGAGA"]
 
-  /-
+  /--
   info: 'Invalid cigar'
   -/
   #guard_msgs in
   #eval is_matched ["10M6H", "GAGCGAGTGCGCCTTAC"]
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in

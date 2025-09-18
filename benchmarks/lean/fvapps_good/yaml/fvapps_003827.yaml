@@ -39,19 +39,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'fooBAR'
   -/
   #guard_msgs in
   #eval sillycase "foobar"
 
-  /-
+  /--
   info: 'briAN'
   -/
   #guard_msgs in
   #eval sillycase "brian"
 
-  /-
+  /--
   info: 'javasCRIPT'
   -/
   #guard_msgs in

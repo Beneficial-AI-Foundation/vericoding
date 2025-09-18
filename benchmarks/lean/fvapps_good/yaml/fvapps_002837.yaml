@@ -31,25 +31,25 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in
   #eval bouncy_count 0
 
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in
   #eval bouncy_count 1
 
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in
   #eval bouncy_count 2
 
-  /-
+  /--
   info: 525
   -/
   #guard_msgs in

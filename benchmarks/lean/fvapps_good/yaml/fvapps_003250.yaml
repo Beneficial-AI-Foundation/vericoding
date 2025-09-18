@@ -72,19 +72,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: expected1
   -/
   #guard_msgs in
   #eval diamond 3
 
-  /-
+  /--
   info: None
   -/
   #guard_msgs in
   #eval diamond 0
 
-  /-
+  /--
   info: None
   -/
   #guard_msgs in

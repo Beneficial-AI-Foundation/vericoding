@@ -54,19 +54,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'Elevator'
   -/
   #guard_msgs in
   #eval solve_chef_transport 5 10 15
 
-  /-
+  /--
   info: 'Stairs'
   -/
   #guard_msgs in
   #eval solve_chef_transport 2 10 14
 
-  /-
+  /--
   info: 'Stairs'
   -/
   #guard_msgs in

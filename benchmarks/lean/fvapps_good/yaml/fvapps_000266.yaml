@@ -54,19 +54,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval racecar 3
 
-  /-
+  /--
   info: 5
   -/
   #guard_msgs in
   #eval racecar 6
 
-  /-
+  /--
   info: 5
   -/
   #guard_msgs in

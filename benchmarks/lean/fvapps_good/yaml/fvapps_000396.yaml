@@ -77,19 +77,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded
 
-  /-
+  /--
   info: 5
   -/
   #guard_msgs in
   #eval ladder_length "hit" "cog" ["hot", "dot", "dog", "lot", "log", "cog"]
 
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in
   #eval ladder_length "hit" "cog" ["hot", "dot", "dog", "lot", "log"]
 
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in

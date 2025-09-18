@@ -75,19 +75,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded
 
-  /-
+  /--
   info: 577500
   -/
   #guard_msgs in
   #eval calculate_net_income 600000
 
-  /-
+  /--
   info: 250000
   -/
   #guard_msgs in
   #eval calculate_net_income 250000
 
-  /-
+  /--
   info: 925000
   -/
   #guard_msgs in

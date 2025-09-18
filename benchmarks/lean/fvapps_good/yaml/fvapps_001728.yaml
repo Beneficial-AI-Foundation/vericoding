@@ -106,19 +106,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: [3, 149, 379]
   -/
   #guard_msgs in
   #eval permutational_primes 1000 3
 
-  /-
+  /--
   info: [9, 113, 389]
   -/
   #guard_msgs in
   #eval permutational_primes 1000 2
 
-  /-
+  /--
   info: [34, 13, 797]
   -/
   #guard_msgs in

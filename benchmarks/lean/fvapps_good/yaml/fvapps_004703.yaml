@@ -32,19 +32,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: 18
   -/
   #guard_msgs in
   #eval how_many_years "1997/10/10" "2015/10/10"
 
-  /-
+  /--
   info: 18
   -/
   #guard_msgs in
   #eval how_many_years "2015/10/10" "1997/10/10"
 
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in

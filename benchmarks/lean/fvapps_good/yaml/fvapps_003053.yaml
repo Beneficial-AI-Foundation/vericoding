@@ -45,25 +45,25 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval generate_hashtag ""
 
-  /-
+  /--
   info: '#HelloWorld'
   -/
   #guard_msgs in
   #eval generate_hashtag "hello world"
 
-  /-
+  /--
   info: '#HelloWorld'
   -/
   #guard_msgs in
   #eval generate_hashtag "   hello     world   "
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in

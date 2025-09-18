@@ -69,19 +69,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'Dynamic'
   -/
   #guard_msgs in
   #eval is_dynamic_string "aaaabccc"
 
-  /-
+  /--
   info: 'Not'
   -/
   #guard_msgs in
   #eval is_dynamic_string "aabbcc"
 
-  /-
+  /--
   info: 'Dynamic'
   -/
   #guard_msgs in

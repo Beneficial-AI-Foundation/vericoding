@@ -50,19 +50,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 3675
   -/
   #guard_msgs in
   #eval sc_perm_comb 348
 
-  /-
+  /--
   info: 1631
   -/
   #guard_msgs in
   #eval sc_perm_comb 340
 
-  /-
+  /--
   info: 369
   -/
   #guard_msgs in

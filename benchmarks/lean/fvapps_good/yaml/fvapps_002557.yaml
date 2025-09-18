@@ -51,19 +51,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'exampleexample'
   -/
   #guard_msgs in
   #eval remove_parentheses "example(unwanted thing)example"
 
-  /-
+  /--
   info: 'a'
   -/
   #guard_msgs in
   #eval remove_parentheses "a(b(c))"
 
-  /-
+  /--
   info: '  '
   -/
   #guard_msgs in

@@ -59,19 +59,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'Real Fancy'
   -/
   #guard_msgs in
   #eval classify_quotes "i do not have any fancy quotes"
 
-  /-
+  /--
   info: 'regularly fancy'
   -/
   #guard_msgs in
   #eval classify_quotes "when nothing goes right go left"
 
-  /-
+  /--
   info: 'Real Fancy'
   -/
   #guard_msgs in

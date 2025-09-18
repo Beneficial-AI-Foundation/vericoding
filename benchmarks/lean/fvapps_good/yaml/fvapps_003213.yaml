@@ -52,19 +52,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 4
   -/
   #guard_msgs in
   #eval get_real_floor 5
 
-  /-
+  /--
   info: 13
   -/
   #guard_msgs in
   #eval get_real_floor 15
 
-  /-
+  /--
   info: -3
   -/
   #guard_msgs in

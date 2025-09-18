@@ -86,19 +86,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval nth_smallest [3, 1, 2] 2
 
-  /-
+  /--
   info: 7
   -/
   #guard_msgs in
   #eval nth_smallest [15, 20, 7, 10, 4, 3] 3
 
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in

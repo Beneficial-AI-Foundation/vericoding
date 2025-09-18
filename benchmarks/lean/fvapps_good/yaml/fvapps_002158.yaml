@@ -62,37 +62,37 @@ vc-postamble: |-
   -- Apps difficulty: competition
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: 1
   -/
   #guard_msgs in
   #eval count_cuboids 1 1 1
 
-  /-
+  /--
   info: 4
   -/
   #guard_msgs in
   #eval count_cuboids 1 6 1
 
-  /-
+  /--
   info: 4
   -/
   #guard_msgs in
   #eval count_cuboids 2 2 2
 
-  /-
+  /--
   info: 165
   -/
   #guard_msgs in
   #eval count_cuboids 100 100 100
 
-  /-
+  /--
   info: 8436
   -/
   #guard_msgs in
   #eval count_cuboids 100000 100000 100000
 
-  /-
+  /--
   info: 41
   -/
   #guard_msgs in

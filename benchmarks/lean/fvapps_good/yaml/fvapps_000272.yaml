@@ -65,19 +65,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: '213'
   -/
   #guard_msgs in
   #eval get_permutation 3 3
 
-  /-
+  /--
   info: '2314'
   -/
   #guard_msgs in
   #eval get_permutation 4 9
 
-  /-
+  /--
   info: '21'
   -/
   #guard_msgs in

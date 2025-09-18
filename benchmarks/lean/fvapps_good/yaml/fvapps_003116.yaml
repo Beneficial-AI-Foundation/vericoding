@@ -68,25 +68,25 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'addition'
   -/
   #guard_msgs in
   #eval calc_type 1 2 3
 
-  /-
+  /--
   info: 'subtraction'
   -/
   #guard_msgs in
   #eval calc_type 10 5 5
 
-  /-
+  /--
   info: 'multiplication'
   -/
   #guard_msgs in
   #eval calc_type 10 4 40
 
-  /-
+  /--
   info: 'division'
   -/
   #guard_msgs in

@@ -62,19 +62,19 @@ vc-postamble: |-
   -- Apps difficulty: competition
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: 5
   -/
   #guard_msgs in
   #eval min_visible_kangaroos 8 [2, 5, 7, 6, 9, 8, 4, 2]
 
-  /-
+  /--
   info: 5
   -/
   #guard_msgs in
   #eval min_visible_kangaroos 8 [9, 1, 6, 2, 6, 5, 8, 3]
 
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in

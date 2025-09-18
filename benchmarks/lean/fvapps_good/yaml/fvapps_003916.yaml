@@ -55,19 +55,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: expected
   -/
   #guard_msgs in
   #eval queue [2, 5, 3, 6, 4] 0
 
-  /-
+  /--
   info: expected
   -/
   #guard_msgs in
   #eval queue [2, 5, 3, 6, 4] 2
 
-  /-
+  /--
   info: expected
   -/
   #guard_msgs in

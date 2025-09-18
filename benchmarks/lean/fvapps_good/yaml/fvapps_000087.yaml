@@ -83,19 +83,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: ['YES', 'YES', 'YES', 'NO']
   -/
   #guard_msgs in
   #eval solve_dice_tower [29, 34, 19, 38]
 
-  /-
+  /--
   info: ['NO', 'NO', 'NO']
   -/
   #guard_msgs in
   #eval solve_dice_tower [7, 14, 21]
 
-  /-
+  /--
   info: ['YES', 'YES', 'YES']
   -/
   #guard_msgs in

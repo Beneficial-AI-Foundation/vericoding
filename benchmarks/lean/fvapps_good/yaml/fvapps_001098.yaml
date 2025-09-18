@@ -46,19 +46,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: [1, 2, 5, 4, 3]
   -/
   #guard_msgs in
   #eval reorder_dinosaurs 5 2
 
-  /-
+  /--
   info: [1, 4, 3, 2]
   -/
   #guard_msgs in
   #eval reorder_dinosaurs 4 1
 
-  /-
+  /--
   info: [3, 2, 1]
   -/
   #guard_msgs in

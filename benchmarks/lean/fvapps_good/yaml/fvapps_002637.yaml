@@ -57,19 +57,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'Gml0gmd'
   -/
   #guard_msgs in
   #eval make_password "Give me liberty or give me death"
 
-  /-
+  /--
   info: 'KCaC0'
   -/
   #guard_msgs in
   #eval make_password "Keep Calm and Carry On"
 
-  /-
+  /--
   info: '505'
   -/
   #guard_msgs in

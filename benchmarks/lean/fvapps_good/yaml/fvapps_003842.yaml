@@ -32,19 +32,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: [1, 2, 3, 4, 5]
   -/
   #guard_msgs in
   #eval monkey_count 5
 
-  /-
+  /--
   info: [1]
   -/
   #guard_msgs in
   #eval monkey_count 1
 
-  /-
+  /--
   info: [1, 2, 3]
   -/
   #guard_msgs in

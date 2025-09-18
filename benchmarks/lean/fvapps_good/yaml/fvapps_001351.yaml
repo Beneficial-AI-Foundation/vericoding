@@ -79,19 +79,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in
   #eval count_binary_additions "100010" "0"
 
-  /-
+  /--
   info: 1
   -/
   #guard_msgs in
   #eval count_binary_additions "0" "100010"
 
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in

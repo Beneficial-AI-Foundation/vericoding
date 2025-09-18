@@ -93,19 +93,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: ['Error Code: integer division or modulo by zero']
   -/
   #guard_msgs in
   #eval process_divisions ["1 0"]
 
-  /-
+  /--
   info: ["Error Code: invalid literal for int() with base 10: '$'"]
   -/
   #guard_msgs in
   #eval process_divisions ["2 $"]
 
-  /-
+  /--
   info: ['3']
   -/
   #guard_msgs in

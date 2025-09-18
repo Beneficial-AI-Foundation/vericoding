@@ -32,19 +32,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: [-3, 2, -4, 5, -9, 8, -42]
   -/
   #guard_msgs in
   #eval alternate_sort [5, -42, 2, -3, -4, 8, -9]
 
-  /-
+  /--
   info: [2, 3, 4, 5, 8, 9]
   -/
   #guard_msgs in
   #eval alternate_sort [5, 2, 9, 3, 8, 4]
 
-  /-
+  /--
   info: [-2, 0, -5, 3, -8, 4, -9]
   -/
   #guard_msgs in

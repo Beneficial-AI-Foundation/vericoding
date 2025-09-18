@@ -70,19 +70,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: '77/12/13'
   -/
   #guard_msgs in
   #eval unique_date 13 12 77
 
-  /-
+  /--
   info: 'ambiguous'
   -/
   #guard_msgs in
   #eval unique_date 1 2 3
 
-  /-
+  /--
   info: 'invalid'
   -/
   #guard_msgs in

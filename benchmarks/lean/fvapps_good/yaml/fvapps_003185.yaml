@@ -36,19 +36,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: 100
   -/
   #guard_msgs in
   #eval find_longest [1, 10, 100]
 
-  /-
+  /--
   info: 9000
   -/
   #guard_msgs in
   #eval find_longest [9000, 8, 800]
 
-  /-
+  /--
   info: 900
   -/
   #guard_msgs in

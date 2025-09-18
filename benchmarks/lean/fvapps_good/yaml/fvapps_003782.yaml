@@ -36,19 +36,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'emocleW'
   -/
   #guard_msgs in
   #eval spin_words "Welcome"
 
-  /-
+  /--
   info: 'Hey wollef sroirraw'
   -/
   #guard_msgs in
   #eval spin_words "Hey fellow warriors"
 
-  /-
+  /--
   info: 'This ecnetnes is a ecnetnes'
   -/
   #guard_msgs in

@@ -70,19 +70,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval compare_versions "11" "10"
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval compare_versions "10.4.6" "10.4"
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in

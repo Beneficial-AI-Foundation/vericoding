@@ -106,19 +106,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'unsafe'
   -/
   #guard_msgs in
   #eval solve_robot_safety 1 1 "R"
 
-  /-
+  /--
   info: 'safe'
   -/
   #guard_msgs in
   #eval solve_robot_safety 2 3 "LLRU"
 
-  /-
+  /--
   info: 'unsafe'
   -/
   #guard_msgs in

@@ -54,19 +54,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 5
   -/
   #guard_msgs in
   #eval flipping_game [1, 0, 0, 1, 0, 0]
 
-  /-
+  /--
   info: 4
   -/
   #guard_msgs in
   #eval flipping_game [1, 0, 0, 1]
 
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in

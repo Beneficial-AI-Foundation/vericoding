@@ -67,19 +67,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: 4
   -/
   #guard_msgs in
   #eval numSubseq [3, 5, 6, 7] 9
 
-  /-
+  /--
   info: 6
   -/
   #guard_msgs in
   #eval numSubseq [3, 3, 6, 8] 10
 
-  /-
+  /--
   info: 61
   -/
   #guard_msgs in

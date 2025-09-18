@@ -77,19 +77,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded
 
-  /-
+  /--
   info: 1
   -/
   #guard_msgs in
   #eval count_heads_after_operations 5 3 "H T T H T"
 
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval count_heads_after_operations 7 4 "H H T T T H H"
 
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in

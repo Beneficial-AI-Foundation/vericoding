@@ -116,13 +116,13 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: (0,)
   -/
   #guard_msgs in
   #eval hyperrectangularity_properties []
 
-  /-
+  /--
   info: (3, 3)
   -/
   #guard_msgs in

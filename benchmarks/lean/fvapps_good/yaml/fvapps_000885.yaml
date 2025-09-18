@@ -100,13 +100,13 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded
 
-  /-
+  /--
   info: 13
   -/
   #guard_msgs in
   #eval calculate_scale_plays "C" 2
 
-  /-
+  /--
   info: 21
   -/
   #guard_msgs in

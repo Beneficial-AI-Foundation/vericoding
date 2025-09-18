@@ -54,19 +54,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded
 
-  /-
+  /--
   info: 120
   -/
   #guard_msgs in
   #eval find_second_largest [120, 11, 400]
 
-  /-
+  /--
   info: 312
   -/
   #guard_msgs in
   #eval find_second_largest [10213, 312, 10]
 
-  /-
+  /--
   info: 10
   -/
   #guard_msgs in

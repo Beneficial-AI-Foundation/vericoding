@@ -64,19 +64,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: '<br />'
   -/
   #guard_msgs in
   #eval html "br"
 
-  /-
+  /--
   info: '<title>Webpage Title</title>'
   -/
   #guard_msgs in
   #eval html "title" "Webpage Title"
 
-  /-
+  /--
   info: '<p class="text" id="para">Hello</p>\n<p class="text" id="para">World</p>'
   -/
   #guard_msgs in

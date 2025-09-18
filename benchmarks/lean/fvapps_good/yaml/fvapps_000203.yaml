@@ -42,19 +42,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: '210'
   -/
   #guard_msgs in
   #eval largest_number [10, 2]
 
-  /-
+  /--
   info: '9534330'
   -/
   #guard_msgs in
   #eval largest_number [3, 30, 34, 5, 9]
 
-  /-
+  /--
   info: '0'
   -/
   #guard_msgs in

@@ -125,19 +125,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: [1, 0, 1]
   -/
   #guard_msgs in
   #eval get_candy_position 6 2 2 3
 
-  /-
+  /--
   info: [2, 1, 1]
   -/
   #guard_msgs in
   #eval get_candy_position 6 2 2 5
 
-  /-
+  /--
   info: [-1, -1, -1]
   -/
   #guard_msgs in

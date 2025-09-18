@@ -63,13 +63,13 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: len(test1)
   -/
   #guard_msgs in
   #eval len mix_words(test1)
 
-  /-
+  /--
   info: sorted(mixed[1:-1])
   -/
   #guard_msgs in

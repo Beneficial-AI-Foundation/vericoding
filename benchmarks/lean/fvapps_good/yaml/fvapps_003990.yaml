@@ -65,19 +65,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: 16
   -/
   #guard_msgs in
   #eval largest_rect [3, 5, 12, 4, 10]
 
-  /-
+  /--
   info: 12
   -/
   #guard_msgs in
   #eval largest_rect [6, 2, 5, 4, 5, 1, 6]
 
-  /-
+  /--
   info: 70
   -/
   #guard_msgs in

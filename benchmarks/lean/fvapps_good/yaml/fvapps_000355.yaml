@@ -54,19 +54,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval can_measure_water 3 5 4
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval can_measure_water 2 6 5
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in

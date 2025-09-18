@@ -67,19 +67,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in
   #eval calc_tip 24 1
 
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval calc_tip 25 0
 
-  /-
+  /--
   info: 6
   -/
   #guard_msgs in

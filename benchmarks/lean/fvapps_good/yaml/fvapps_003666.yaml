@@ -85,19 +85,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'I am furious. You and you are fired!'
   -/
   #guard_msgs in
   #eval fire_and_fury "FURYYYFIREYYFIRE"
 
-  /-
+  /--
   info: 'You are fired! I am really furious. You are fired!'
   -/
   #guard_msgs in
   #eval fire_and_fury "FIREYYFURYYFURYYFURRYFIRE"
 
-  /-
+  /--
   info: 'Fake tweet.'
   -/
   #guard_msgs in

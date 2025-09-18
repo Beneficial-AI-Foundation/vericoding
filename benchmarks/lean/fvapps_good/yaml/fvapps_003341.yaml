@@ -46,25 +46,25 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval on_line []
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval on_line [(1, 1)]
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval on_line [(1, 2), (7, 4), (22, 9)]
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in

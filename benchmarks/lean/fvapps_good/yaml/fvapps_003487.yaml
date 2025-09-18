@@ -34,19 +34,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: '10'
   -/
   #guard_msgs in
   #eval add_binary 1 1
 
-  /-
+  /--
   info: '111111'
   -/
   #guard_msgs in
   #eval add_binary 51 12
 
-  /-
+  /--
   info: '1000000000001'
   -/
   #guard_msgs in

@@ -40,19 +40,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in
   #eval match_arrays ["Perl", "Closure", "JavaScript"] ["Go", "C++", "Erlang"]
 
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in
   #eval match_arrays ["Erlang", "JavaScript"] ["Go", "C++", "Python"]
 
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in

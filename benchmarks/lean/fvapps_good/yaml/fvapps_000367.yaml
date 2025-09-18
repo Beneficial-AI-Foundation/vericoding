@@ -50,19 +50,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 6
   -/
   #guard_msgs in
   #eval min_score_triangulation [1, 2, 3]
 
-  /-
+  /--
   info: 144
   -/
   #guard_msgs in
   #eval min_score_triangulation [3, 7, 4, 5]
 
-  /-
+  /--
   info: 13
   -/
   #guard_msgs in

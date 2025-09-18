@@ -74,19 +74,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval min_cost_clear_mines 1 1 "01000010"
 
-  /-
+  /--
   info: 6
   -/
   #guard_msgs in
   #eval min_cost_clear_mines 5 1 "01101110"
 
-  /-
+  /--
   info: 5
   -/
   #guard_msgs in

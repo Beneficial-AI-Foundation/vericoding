@@ -73,19 +73,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: [1, 1]
   -/
   #guard_msgs in
   #eval binomial_sum_coefficients 0
 
-  /-
+  /--
   info: [1, 2, 3]
   -/
   #guard_msgs in
   #eval binomial_sum_coefficients 1
 
-  /-
+  /--
   info: [1, 2, 4, 8, 15]
   -/
   #guard_msgs in

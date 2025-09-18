@@ -59,19 +59,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval find_most_common_divisor 19 29
 
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval find_most_common_divisor 3 6
 
-  /-
+  /--
   info: 5
   -/
   #guard_msgs in

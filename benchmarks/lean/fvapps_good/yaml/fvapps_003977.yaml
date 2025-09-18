@@ -58,19 +58,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: expected1
   -/
   #guard_msgs in
   #eval merge [2, 0, 2, 2]
 
-  /-
+  /--
   info: expected2
   -/
   #guard_msgs in
   #eval merge [2, 2, 2, 2, 2]
 
-  /-
+  /--
   info: expected3
   -/
   #guard_msgs in

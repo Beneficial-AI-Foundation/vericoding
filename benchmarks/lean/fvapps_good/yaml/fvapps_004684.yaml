@@ -74,43 +74,43 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval is_uppercase "c"
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval is_uppercase "C"
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval is_uppercase "hello I AM DONALD"
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval is_uppercase "HELLO I AM DONALD"
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval is_uppercase "ACSKLDFJSgSKLDFJSKLDFJ"
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval is_uppercase "ACSKLDFJSGSKLDFJSKLDFJ"
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in

@@ -97,19 +97,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'yes'
   -/
   #guard_msgs in
   #eval is_balanced_contest 3 100 [10, 1, 100]
 
-  /-
+  /--
   info: 'no'
   -/
   #guard_msgs in
   #eval is_balanced_contest 3 100 [11, 1, 100]
 
-  /-
+  /--
   info: 'no'
   -/
   #guard_msgs in

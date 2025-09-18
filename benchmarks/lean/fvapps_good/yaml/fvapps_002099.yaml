@@ -59,19 +59,19 @@ vc-postamble: |-
   -- Apps difficulty: competition
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: 4
   -/
   #guard_msgs in
   #eval solve_permutation 7 [10, 1, 1, 1, 5, 5, 3]
 
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in
   #eval solve_permutation 5 [1, 1, 1, 1, 1]
 
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in

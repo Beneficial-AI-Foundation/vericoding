@@ -97,19 +97,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: [2]
   -/
   #guard_msgs in
   #eval solve_spam_dataset [test1]
 
-  /-
+  /--
   info: [6]
   -/
   #guard_msgs in
   #eval solve_spam_dataset [test2]
 
-  /-
+  /--
   info: [3]
   -/
   #guard_msgs in

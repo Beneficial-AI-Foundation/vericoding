@@ -65,19 +65,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'dcba'
   -/
   #guard_msgs in
   #eval reverse_parentheses "(abcd)"
 
-  /-
+  /--
   info: 'iloveu'
   -/
   #guard_msgs in
   #eval reverse_parentheses "(u(love)i)"
 
-  /-
+  /--
   info: 'apmnolkjihgfedcbq'
   -/
   #guard_msgs in

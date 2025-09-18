@@ -34,19 +34,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: ''
   -/
   #guard_msgs in
   #eval spacify ""
 
-  /-
+  /--
   info: 'a'
   -/
   #guard_msgs in
   #eval spacify "a"
 
-  /-
+  /--
   info: 'P i p p i'
   -/
   #guard_msgs in

@@ -47,19 +47,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded
 
-  /-
+  /--
   info: 7
   -/
   #guard_msgs in
   #eval count_letters_and_digits "n!!ice!!123"
 
-  /-
+  /--
   info: 8
   -/
   #guard_msgs in
   #eval count_letters_and_digits "de?=?=tttes!!t"
 
-  /-
+  /--
   info: 10
   -/
   #guard_msgs in

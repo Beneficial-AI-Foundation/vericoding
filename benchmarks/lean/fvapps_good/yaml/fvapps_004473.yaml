@@ -32,19 +32,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'drk'
   -/
   #guard_msgs in
   #eval remove_vowels "drake"
 
-  /-
+  /--
   info: 'schlrstm'
   -/
   #guard_msgs in
   #eval remove_vowels "scholarstem"
 
-  /-
+  /--
   info: 'hgh fvs!'
   -/
   #guard_msgs in

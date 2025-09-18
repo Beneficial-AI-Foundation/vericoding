@@ -51,19 +51,19 @@ vc-postamble: |-
   -- Apps difficulty: competition
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: 800
   -/
   #guard_msgs in
   #eval solve_workout_paths 3 3 [[100, 100, 100], [100, 1, 100], [100, 100, 100]]
 
-  /-
+  /--
   info: 16
   -/
   #guard_msgs in
   #eval solve_workout_paths 3 3 [[3, 1, 2], [3, 2, 0], [2, 3, 2]]
 
-  /-
+  /--
   info: 501
   -/
   #guard_msgs in

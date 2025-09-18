@@ -46,19 +46,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 37
   -/
   #guard_msgs in
   #eval find_jojo_aadhar 3
 
-  /-
+  /--
   info: 109
   -/
   #guard_msgs in
   #eval find_jojo_aadhar 10
 
-  /-
+  /--
   info: 424
   -/
   #guard_msgs in

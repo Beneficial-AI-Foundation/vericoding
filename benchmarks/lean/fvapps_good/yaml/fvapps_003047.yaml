@@ -45,19 +45,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'We have this much circle: 3'
   -/
   #guard_msgs in
   #eval sum_circles 2
 
-  /-
+  /--
   info: 'We have this much circle: 23'
   -/
   #guard_msgs in
   #eval sum_circles 2 3 4
 
-  /-
+  /--
   info: 'We have this much circle: 2040'
   -/
   #guard_msgs in

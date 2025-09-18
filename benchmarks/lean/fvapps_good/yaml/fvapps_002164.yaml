@@ -76,19 +76,19 @@ vc-postamble: |-
   -- Apps difficulty: competition
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval count_no_meet_paths 
 
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval count_no_meet_paths 
 
-  /-
+  /--
   info: 6
   -/
   #guard_msgs in

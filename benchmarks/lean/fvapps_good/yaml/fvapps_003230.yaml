@@ -64,19 +64,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'A,Bb,Ccc,Ffffff,Ffffff'
   -/
   #guard_msgs in
   #eval alpha_seq "BfcFA"
 
-  /-
+  /--
   info: 'Ggggggg,Llllllllllll,Nnnnnnnnnnnnnn,Pppppppppppppppp,Rrrrrrrrrrrrrrrrrr,Zzzzzzzzzzzzzzzzzzzzzzzzzz'
   -/
   #guard_msgs in
   #eval alpha_seq "ZpglnR"
 
-  /-
+  /--
   info: 'A,Bb,Ccc'
   -/
   #guard_msgs in

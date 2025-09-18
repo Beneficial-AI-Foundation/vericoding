@@ -141,19 +141,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval fold_cube test1.copy()
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval fold_cube test2.copy()
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in

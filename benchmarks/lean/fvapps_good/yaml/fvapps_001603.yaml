@@ -101,19 +101,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: [5, 21, 0, 29]
   -/
   #guard_msgs in
   #eval amazon_check_mate "d3" "e4"
 
-  /-
+  /--
   info: [0, 29, 1, 29]
   -/
   #guard_msgs in
   #eval amazon_check_mate "a1" "g5"
 
-  /-
+  /--
   info: [1, 32, 1, 23]
   -/
   #guard_msgs in

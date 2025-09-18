@@ -54,19 +54,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: '1219'
   -/
   #guard_msgs in
   #eval remove_k_digits "1432219" 3
 
-  /-
+  /--
   info: '200'
   -/
   #guard_msgs in
   #eval remove_k_digits "10200" 1
 
-  /-
+  /--
   info: '0'
   -/
   #guard_msgs in

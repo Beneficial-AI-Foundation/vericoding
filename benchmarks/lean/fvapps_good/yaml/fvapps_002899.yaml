@@ -63,19 +63,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'India Foxtrot Yankee Oscar Uniform Charlie Alfa November Romeo Echo Alfa Delta'
   -/
   #guard_msgs in
   #eval to_nato "If you can read"
 
-  /-
+  /--
   info: 'Delta India Delta November Oscar Tango Sierra Echo Echo Tango Hotel Alfa Tango Charlie Oscar Mike India November Golf'
   -/
   #guard_msgs in
   #eval to_nato "Did not see that coming"
 
-  /-
+  /--
   info: 'India Foxtrot , Yankee Oscar Uniform Charlie Alfa November Romeo Echo Alfa Delta ?'
   -/
   #guard_msgs in

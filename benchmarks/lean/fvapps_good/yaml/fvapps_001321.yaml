@@ -58,19 +58,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: 77
   -/
   #guard_msgs in
   #eval find_victory_number 22
 
-  /-
+  /--
   info: 41
   -/
   #guard_msgs in
   #eval find_victory_number 13
 
-  /-
+  /--
   info: 17
   -/
   #guard_msgs in

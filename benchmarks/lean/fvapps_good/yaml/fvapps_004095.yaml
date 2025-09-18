@@ -48,19 +48,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in
   #eval count_zeros ""
 
-  /-
+  /--
   info: 6
   -/
   #guard_msgs in
   #eval count_zeros "0oO0oO"
 
-  /-
+  /--
   info: 8
   -/
   #guard_msgs in

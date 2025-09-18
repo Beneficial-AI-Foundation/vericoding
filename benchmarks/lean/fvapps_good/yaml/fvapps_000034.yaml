@@ -57,19 +57,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: 7
   -/
   #guard_msgs in
   #eval find_max_display 3
 
-  /-
+  /--
   info: 11
   -/
   #guard_msgs in
   #eval find_max_display 4
 
-  /-
+  /--
   info: 71
   -/
   #guard_msgs in

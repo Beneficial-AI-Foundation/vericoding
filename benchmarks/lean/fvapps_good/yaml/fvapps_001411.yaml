@@ -68,19 +68,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: expected1
   -/
   #guard_msgs in
   #eval process_test_cases ["Government clg Berhampore", "SeRaMporE textile college", "Girls college Kolkata"]
 
-  /-
+  /--
   info: expected2
   -/
   #guard_msgs in
   #eval process_test_cases ["Berhampore Serampore"]
 
-  /-
+  /--
   info: expected3
   -/
   #guard_msgs in

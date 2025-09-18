@@ -31,19 +31,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'Factory'
   -/
   #guard_msgs in
   #eval ghostbusters "Factor y"
 
-  /-
+  /--
   info: 'Office'
   -/
   #guard_msgs in
   #eval ghostbusters "O  f fi ce"
 
-  /-
+  /--
   info: "You just wanted my autograph didn't you?"
   -/
   #guard_msgs in

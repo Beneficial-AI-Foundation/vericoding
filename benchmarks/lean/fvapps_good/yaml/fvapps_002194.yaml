@@ -75,19 +75,19 @@ vc-postamble: |-
   -- Apps difficulty: competition
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval solve 2 [(1, 2), (3, 2)]
 
-  /-
+  /--
   info: 9
   -/
   #guard_msgs in
   #eval solve 3 [(8, 3), (0, 1), (4, 8)]
 
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in
