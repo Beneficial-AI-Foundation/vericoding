@@ -97,7 +97,6 @@ Examples:
   uv run vericoder.py lean ./NumpySpec/DafnySpecs --iterations 3 --llm claude-sonnet
   uv run vericoder.py verus ./benchmarks/verus_specs --iterations 5 --llm gpt
   uv run vericoder.py dafny ./specs --shard 2/5 --llm gemini-flash  # Process shard 2 of 5
-  uv run vericoder.py lean ./specs --shard 1/3 --limit 50 --llm claude  # Shard 1 of 3, max 50 files
   uv run vericoder.py verus ./specs --workers 8 --llm deepseek
         """,
     )
