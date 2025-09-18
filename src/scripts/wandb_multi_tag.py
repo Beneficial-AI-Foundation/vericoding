@@ -104,12 +104,16 @@ def get_wandb_results_for_tags(tags, project="vericoding", entity=None, debug=Fa
         # Map model name
         model_name = MODEL_MAPPING.get(llm, llm)
         
+        # Get files_dir for dataset identification
+        files_dir = config.get('files_dir', 'unknown')
+        
         # Store results (overwrite if duplicate model - last one wins)
         results[model_name] = {
             'success_rate': success_rate_percent,
             'successful_files': successful_files,
             'total_files': total_files,
-            'url': run.url
+            'url': run.url,
+            'files_dir': files_dir
         }
         
         # Get detailed results for model union calculation
@@ -211,19 +215,25 @@ def main():
     for model in MODEL_ORDER:
         if model in results:
             data = results[model]
-            print(f"{model}\tdataset\t{data['success_rate']:.1f}\\%\t{data['url']}")
+            print(f"% {model}\t{data['files_dir']}\t{data['success_rate']:.1f}\\%\t{data['url']}")
         else:
-            print(f"{model}\tdataset\t--\t--")
+            print(f"% {model}\tunknown\t--\t--")
     
     # Calculate and print model union
     union_result = calculate_model_union(detailed_results, dataset_file_count)
+    
+    # Get files_dir from any available result for union row
+    union_files_dir = "unknown"
+    if results:
+        union_files_dir = next(iter(results.values()))['files_dir']
+    
     if union_result:
         print(f"\n# Model Union")
-        print(f"MODEL_UNION\tdataset\t{union_result['success_rate']:.1f}\\%\t--")
+        print(f"% MODEL_UNION\t{union_files_dir}\t{union_result['success_rate']:.1f}\\%\t--")
         print(f"# Union: {union_result['successful_files']}/{union_result['total_files']} files")
     else:
         print(f"\n# Model Union")
-        print("MODEL_UNION\tdataset\t--\t-- (no detailed results available)")
+        print(f"% MODEL_UNION\t{union_files_dir}\t--\t-- (no detailed results available)")
 
 if __name__ == "__main__":
     main()
