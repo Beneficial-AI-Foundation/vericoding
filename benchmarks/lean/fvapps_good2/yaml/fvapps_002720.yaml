@@ -1,0 +1,69 @@
+vc-description: |-
+  /- The result length is at least as long as the longest input -/
+  
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded
+  
+  /- The result length is at most the sum of input lengths -/
+  
+  /- The function is symmetric -/
+  
+  /- Strings of all dots combine to max length -/
+  
+  /- Strings of all stars combine to sum of lengths -/
+  
+  -- represents strings of only * and .
+
+vc-preamble: |-
+  def CombString := String
+
+vc-helpers: |-
+
+vc-definitions: |-
+  def combs (a b : CombString) : Nat :=
+  sorry
+
+vc-theorems: |-
+  theorem combs_min_length {a b : CombString} :
+    combs a b ≥ max a.length b.length :=
+  sorry
+  
+  theorem combs_max_length {a b : CombString} :
+    combs a b ≤ a.length + b.length :=
+  sorry
+  
+  theorem combs_symmetric {a b : CombString} :
+    combs a b = combs b a :=
+  sorry
+  
+  theorem combs_all_dots {a b : CombString}
+    (ha : ∀ c, c ∈ a.data → c = '.')
+    (hb : ∀ c, c ∈ b.data → c = '.') :
+    combs a b = max a.length b.length :=
+  sorry
+  
+  theorem combs_all_stars {a b : CombString}
+    (ha : ∀ c, c ∈ a.data → c = '*')
+    (hb : ∀ c, c ∈ b.data → c = '*') :
+    combs a b = a.length + b.length :=
+  sorry
+
+vc-postamble: |-
+  /-
+  info: 5
+  -/
+  #guard_msgs in
+  #eval combs "*..*" "*.*"
+  
+  /-
+  info: 5
+  -/
+  #guard_msgs in
+  #eval combs "*...*" "*.*"
+  
+  /-
+  info: 9
+  -/
+  #guard_msgs in
+  #eval combs "*..*.*" "*.***"
+

@@ -1,0 +1,64 @@
+vc-description: |-
+  /- Output is bounded between 0 and string length -/
+  
+  -- Apps difficulty: interview
+  -- Assurance level: guarded
+  
+  /- Already sorted columns need 0 deletions -/
+  
+  /- Reverse sorted columns need at most string length deletions -/
+  
+  /- Identical strings need 0 deletions -/
+  
+  -- imagine this is the input with sorted columns
+  
+  -- imagine this is input with reverse sorted columns
+
+vc-preamble: |-
+
+vc-helpers: |-
+
+vc-definitions: |-
+  def minDeletionSize (A : List (List Char)) : Nat :=
+    sorry
+
+vc-theorems: |-
+  theorem output_bounds (A : List (List Char)) (h : A.all (λ s => s.length = A.head!.length)) :
+    let result := minDeletionSize A
+    0 ≤ result ∧ result ≤ A.head!.length :=
+  sorry
+  
+  theorem sorted_columns_zero_deletions (A : List (List Char)) (h : A.all (λ s => s.length = A.head!.length)) :
+    let sorted_columns := A
+    minDeletionSize sorted_columns = 0 :=
+  sorry
+  
+  theorem reverse_sorted_most_deletions (A : List (List Char)) (h₁ : A ≠ []) (h₂ : A.all (λ s => s.length = A.head!.length)) :
+    let reverse_sorted := A
+    minDeletionSize reverse_sorted ≤ A.head!.length :=
+  sorry
+  
+  theorem identical_strings_zero_deletions (A : List (List Char)) (s : List Char)
+      (h₁ : A ≠ []) (h₂ : A.all (λ str => str = s)) :
+    minDeletionSize A = 0 :=
+  sorry
+
+vc-postamble: |-
+  /-
+  info: 1
+  -/
+  #guard_msgs in
+  #eval min_deletion_size ["ca", "bb", "ac"]
+  
+  /-
+  info: 0
+  -/
+  #guard_msgs in
+  #eval min_deletion_size ["xc", "yb", "za"]
+  
+  /-
+  info: 3
+  -/
+  #guard_msgs in
+  #eval min_deletion_size ["zyx", "wvu", "tsr"]
+

@@ -1,0 +1,40 @@
+vc-description: |-
+
+vc-preamble: |-
+  def iterateN (f : Nat → Nat) : Nat → Nat → Nat
+    | 0, x => x
+    | n+1, x => iterateN f n (f x)
+
+vc-helpers: |-
+
+vc-definitions: |-
+  def find_the_ball (start : Nat) (swaps : List (Nat × Nat)) : Nat :=
+    sorry
+
+vc-theorems: |-
+  theorem find_the_ball_no_swaps (start : Nat) :
+    find_the_ball start [] = start :=
+  sorry
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded_and_plausible
+  
+  /-
+  info: 5
+  -/
+  #guard_msgs in
+  #eval find_the_ball 5 []
+  
+  /-
+  info: 2
+  -/
+  #guard_msgs in
+  #eval find_the_ball 0 [(0, 1), (1, 2)]
+  
+  /-
+  info: 3
+  -/
+  #guard_msgs in
+  #eval find_the_ball 0 [(0, 1), (1, 2), (2, 3)]
+
