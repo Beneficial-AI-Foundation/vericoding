@@ -1,8 +1,7 @@
 import Lake
 open Lake DSL
 
-require mathlib from git
-  "https://github.com/leanprover-community/mathlib4" @ "v4.23.0-rc2"
+require mathlib from "../mathlib4"
 
 package Vericoding where
   version := v!"0.1.0"
