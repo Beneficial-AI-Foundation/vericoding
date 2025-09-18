@@ -7,12 +7,9 @@ spec fn is_prime_number(num: int) -> bool {
     num >= 2 && forall|k: int| 2 <= k < num ==> #[trigger] (num % k) != 0
 }
 
-fn is_prime(num: int) -> (prime: bool)
-    requires num >= 0
-    ensures prime == is_prime_number(num)
-{
-    assume(false);
-    false
+spec fn is_prime(n: nat) -> bool {
+    n > 1 &&
+    forall|k: nat| 2 <= k < n ==> #[trigger] (n % k) != 0
 }
 // </vc-preamble>
 
