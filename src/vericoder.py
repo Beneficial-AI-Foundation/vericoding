@@ -45,12 +45,6 @@ from vericoding.utils import (
 load_environment()
 
 
-def load_claude_context() -> str:
-    """Load project guidance from CLAUDE.md if available."""
-    project_root = Path(__file__).resolve().parent.parent
-    claude_path = project_root / "CLAUDE.md"
-    return claude_path.read_text(encoding="utf-8")
-
 
 def parse_arguments():
     """Parse command-line arguments."""
@@ -284,7 +278,7 @@ def get_tool_version(config: ProcessingConfig) -> str:
         return f"Error getting version: {str(e)}"
 
 
-def get_experiment_metadata(config: ProcessingConfig, args, prompt_loader: PromptLoader | None = None) -> dict:
+def get_experiment_metadata(config: ProcessingConfig, args, prompt_loader: PromptLoader = None) -> dict:
     """Collect comprehensive metadata for the experiment."""
     # Get git information
     git_url = get_git_remote_url()
@@ -322,7 +316,6 @@ def get_experiment_metadata(config: ProcessingConfig, args, prompt_loader: Promp
         "max_iterations": config.max_iterations,
         "llm": config.llm,
         "max_workers": config.max_workers,
-        "claude_context_included": bool(getattr(config, "claude_context", None)),
         
         # File and benchmark info  
         "files_dir": config.files_dir,
@@ -625,15 +618,6 @@ def main():
 
     # Set up configuration
     config = setup_configuration(args)
-
-    # Attach CLAUDE.md guidance for Lean processing
-    if config.language == "lean":
-        claude_context = load_claude_context()
-        if claude_context:
-            config.claude_context = claude_context
-            print("✅ CLAUDE.md context loaded for Lean prompts")
-        else:
-            print("⚠️  CLAUDE.md not found or unreadable; continuing without additional Lean context")
     
     # Initialize wandb for experiment tracking (unless disabled)
     wandb_run = None
