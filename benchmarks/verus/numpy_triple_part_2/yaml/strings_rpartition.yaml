@@ -1,0 +1,53 @@
+vc-description: |-
+  numpy.strings.rpartition: Partition each element in a around the right-most separator.
+
+  Partitions each string in the input vector at the last occurrence of the separator.
+  Returns a 3-tuple of vectors: (before_separator, separator, after_separator).
+
+  For each element in the input array, splits the element at the last occurrence
+  of the separator, and returns three vectors containing the part before the separator,
+  the separator itself, and the part after the separator. If the separator is not found,
+  the third vector contains the whole string, and the first and second vectors contain
+  empty strings.
+
+  From NumPy documentation:
+  - Parameters: a (array_like with StringDType), sep (array_like with StringDType)
+  - Returns: 3-tuple of ndarrays with StringDType
+
+  Mathematical Properties:
+  1. Right partition semantics: For each string s, if sep occurs at position i (rightmost), then:
+     - before = s[0:i]
+     - separator = sep (if found) or "" (if not found)
+     - after = s[i+len(sep):] (if found) or "" (if not found)
+  2. Completeness: before ++ separator ++ after = original string (when sep is found)
+  3. Last occurrence: Only splits at the last occurrence of sep
+  4. Not found case: If sep not in string, returns ("", "", original_string)
+  5. Preserves vector length: All three result vectors have the same length as input
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn rpartition(a: Vec<String>, sep: String) -> (result: (Vec<String>, Vec<String>, Vec<String>))
+      requires true,
+      ensures 
+          result.0.len() == a.len(),
+          result.1.len() == a.len(),
+          result.2.len() == a.len()
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      unreached()
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {}

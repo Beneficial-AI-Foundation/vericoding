@@ -1,4 +1,0 @@
-//IMPL 
-method Quotient()
-{
-}

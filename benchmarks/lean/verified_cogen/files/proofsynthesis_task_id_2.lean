@@ -21,3 +21,5 @@ theorem sharedElements_spec_satisfied (list1: Array Int) (list2: Array Int) (h_p
     sharedElements_postcond (list1) (list2) (sharedElements (list1) (list2) h_precond) h_precond := by
   sorry
 -- </vc-theorems>
+
+def main : IO Unit := return ()

@@ -1,0 +1,24 @@
+vc-description: |-
+  Computes the absolute value of each element in a vector.
+
+vc-preamble: |-
+  function AbsInt(x: int): int
+  {
+      if x < 0 then -x else x
+  }
+
+vc-helpers: |-
+
+vc-spec: |-
+  method Abs(a: array<int>) returns (result: array<int>)
+      ensures 
+          result.Length == a.Length &&
+          (forall i :: 0 <= i < a.Length ==> result[i] == AbsInt(a[i])) &&
+          (forall i :: 0 <= i < result.Length ==> result[i] >= 0)
+
+vc-code: |-
+  {
+      assume {:axiom} false;
+  }
+
+vc-postamble: |-

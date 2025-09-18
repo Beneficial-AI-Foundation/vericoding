@@ -27,3 +27,5 @@ theorem primeNum_spec_satisfied (n: Nat) (h_precond : primeNum_precond (n)) :
 -- </vc-theorems>
 
 /- Main function for testing -/
+def main : IO Unit := do
+  pure ()

@@ -17,10 +17,12 @@ def replaceChars (str1 : Array Char) (old_char : Char) (new_char : Char) (h_prec
 -- <vc-theorems>
 @[reducible, simp]
 def replaceChars_postcond (str1 : Array Char) (old_char : Char) (new_char : Char) (result : Array Char) (h_precond : replaceChars_precond str1 old_char new_char) :=
-  str1.size = result.size ∧
+  str1.size = result.size ∧ 
   (∀ i, i < str1.size → result[i]! = inner_expr_replace_chars str1 old_char new_char i)
 
 theorem replaceChars_spec_satisfied (str1 : Array Char) (old_char : Char) (new_char : Char) (h_precond : replaceChars_precond str1 old_char new_char) :
     replaceChars_postcond str1 old_char new_char (replaceChars str1 old_char new_char h_precond) h_precond := by
   sorry
 -- </vc-theorems>
+
+def main : IO Unit := return ()

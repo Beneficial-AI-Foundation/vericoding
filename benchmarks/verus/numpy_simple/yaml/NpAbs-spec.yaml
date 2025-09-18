@@ -1,0 +1,29 @@
+vc-description: |-
+  Computes the absolute value of each element in a vector.
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+  spec fn abs_int(x: int) -> int {
+      if x < 0 { -x } else { x }
+  }
+vc-helpers: |-
+
+vc-spec: |-
+  fn abs(a: Vec<i32>) -> (result: Vec<i32>)
+      ensures 
+          result.len() == a.len(),
+          forall|i: int| 0 <= i < a.len() ==> result[i] == abs_int(a[i] as int),
+          forall|i: int| 0 <= i < result.len() ==> result[i] >= 0,
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      unreached()
+      // impl-end
+  }
+vc-postamble: |-
+
+  }
+  fn main() {}

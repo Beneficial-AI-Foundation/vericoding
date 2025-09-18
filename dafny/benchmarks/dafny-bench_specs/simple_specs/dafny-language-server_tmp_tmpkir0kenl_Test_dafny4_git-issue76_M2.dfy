@@ -1,5 +1,0 @@
-// SPEC
-
-method M2()
-{
-}

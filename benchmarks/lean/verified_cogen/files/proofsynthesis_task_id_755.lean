@@ -36,3 +36,5 @@ theorem secondSmallest_spec_satisfied (numbers : Array Int) (h_precond : secondS
     secondSmallest_postcond (numbers) (secondSmallest (numbers) h_precond) h_precond := by
   sorry
 -- </vc-theorems>
+
+def main : IO Unit := pure ()

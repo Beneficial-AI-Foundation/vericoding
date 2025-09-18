@@ -1,4 +1,0 @@
-//IMPL HoareTripleAssmAssrt
-method HoareTripleAssmAssrt()
-{
-}

@@ -21,3 +21,5 @@ theorem myfun_spec_satisfied (a: Array UInt32) (N: UInt32) (h_precond : myfun_pr
     myfun_postcond a N (myfun a N h_precond) h_precond := by
   sorry
 -- </vc-theorems>
+
+def main : IO Unit := pure ()

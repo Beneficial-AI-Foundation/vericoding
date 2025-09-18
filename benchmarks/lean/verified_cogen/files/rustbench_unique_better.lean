@@ -23,3 +23,4 @@ theorem uniqueBetter_spec_satisfied (a: Array Int) (h_precond : uniqueBetter_pre
 -- </vc-theorems>
 
 /- Main function placeholder -/
+def main : IO Unit := return ()

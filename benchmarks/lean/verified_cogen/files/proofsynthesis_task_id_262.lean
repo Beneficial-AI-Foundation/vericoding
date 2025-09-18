@@ -21,3 +21,5 @@ theorem splitArray_spec_satisfied (list: Array Int) (l: Nat) (h_precond : splitA
     splitArray_postcond list l (splitArray list l h_precond) h_precond := by
   sorry
 -- </vc-theorems>
+
+def main : IO Unit := pure ()

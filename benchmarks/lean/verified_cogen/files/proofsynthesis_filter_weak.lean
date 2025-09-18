@@ -21,3 +21,5 @@ theorem myfun4_spec_satisfied (x : Array Nat) (y : Array Nat) (h_precond : myfun
     myfun4_postcond x y (myfun4 x y h_precond) h_precond := by
   sorry
 -- </vc-theorems>
+
+def main : IO Unit := return ()

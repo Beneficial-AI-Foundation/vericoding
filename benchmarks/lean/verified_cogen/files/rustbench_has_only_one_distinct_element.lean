@@ -20,3 +20,5 @@ theorem hasOnlyOneDistinctElement_spec_satisfied (a: Array Int) :
     hasOnlyOneDistinctElement_postcond (a) (hasOnlyOneDistinctElement (a)) := by
   sorry
 -- </vc-theorems>
+
+def main : IO Unit := return ()

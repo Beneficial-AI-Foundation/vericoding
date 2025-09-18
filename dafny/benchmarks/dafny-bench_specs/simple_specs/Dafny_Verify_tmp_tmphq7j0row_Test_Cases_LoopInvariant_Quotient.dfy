@@ -1,6 +1,0 @@
-// SPEC
-
-
-method Quotient()
-{
-}

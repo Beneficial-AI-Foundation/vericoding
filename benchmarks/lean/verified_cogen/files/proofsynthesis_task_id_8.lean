@@ -21,3 +21,5 @@ theorem squareNums_spec_satisfied (nums: Array Int) (h_precond : squareNums_prec
     squareNums_postcond (nums) (squareNums (nums) h_precond) h_precond := by
   sorry
 -- </vc-theorems>
+
+def main : IO Unit := pure ()

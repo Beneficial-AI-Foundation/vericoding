@@ -23,3 +23,5 @@ theorem binarySearch_spec_satisfied (arr : Array Int) (target : Int) (h_precond 
     binarySearch_postcond arr target (binarySearch arr target h_precond) h_precond := by
   sorry
 -- </vc-theorems>
+
+def main : IO Unit := return ()

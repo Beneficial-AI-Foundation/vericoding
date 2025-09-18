@@ -1,7 +1,7 @@
 -- <vc-preamble>
 @[reducible, simp]
 def transpose_precond (matrix : Array (Array Int)) : Prop :=
-  matrix.size > 0 ∧
+  matrix.size > 0 ∧ 
   (∀ i, i < matrix.size → matrix[i]!.size = matrix[0]!.size) ∧
   (∀ i, i < matrix.size → matrix[i]!.size = matrix.size)
 -- </vc-preamble>
@@ -25,3 +25,5 @@ theorem transpose_spec_satisfied (matrix : Array (Array Int)) (h_precond : trans
     transpose_postcond matrix (transpose matrix h_precond) h_precond := by
   sorry
 -- </vc-theorems>
+
+def main : IO Unit := return ()

@@ -156,8 +156,41 @@ def convert_yaml_to_jsonl(yaml_path: Path, output_path: Path = None) -> None:
             # Write as JSON line
             json.dump(new_spec, f, ensure_ascii=False)
             f.write('\n')
+
+    processed_count = 0
+    skipped_count = 0
+        
+    with open(output_path, 'w') as f:
+        yaml_parser = YAML()
+        yaml_parser.preserve_quotes = True  # Preserve original formatting
+        for yaml_file in yaml_files:
+            try:
+                # Load the YAML spec
+                spec = yaml_parser.load(yaml_file)
+                
+                # Validate that spec is a dictionary
+                if not isinstance(spec, dict):
+                    print(f"Warning: {yaml_file} does not contain a YAML dictionary, skipping")
+                    skipped_count += 1
+                    continue
+                
+                # Create a new dictionary with id field first
+                new_spec = {'id': yaml_file.stem}
+                new_spec.update(spec)
+                
+                # Write as JSON line
+                json.dump(new_spec, f, ensure_ascii=False)
+                f.write('\n')
+                processed_count += 1
+                
+            except Exception as e:
+                print(f"Warning: Failed to parse {yaml_file} as YAML (likely contains raw code instead of YAML): {e}")
+                skipped_count += 1
+                continue
     
-    print(f"Converted {len(yaml_files)} YAML files to {output_path}")
+    print(f"Converted {processed_count} YAML files to {output_path}")
+    if skipped_count > 0:
+        print(f"Skipped {skipped_count} files that were not valid YAML")
 
 
 def convert_yaml_to_dir(suffix: str, yaml_path: Path, output_path: Path = None, use_all_keys: bool = False) -> None:

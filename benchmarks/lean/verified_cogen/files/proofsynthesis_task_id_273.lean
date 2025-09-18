@@ -21,3 +21,5 @@ theorem elementWiseSubtract_spec_satisfied (arr1 : Array Int) (arr2 : Array Int)
     elementWiseSubtract_postcond arr1 arr2 (elementWiseSubtract arr1 arr2 h_precond) h_precond := by
   sorry
 -- </vc-theorems>
+
+def main : IO Unit := return ()

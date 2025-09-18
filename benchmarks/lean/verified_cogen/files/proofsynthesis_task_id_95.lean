@@ -16,7 +16,7 @@ def smallestListLength (list : Array (Array Int)) (h_precond : smallestListLengt
 -- <vc-theorems>
 @[reducible, simp]
 def smallestListLength_postcond (list : Array (Array Int)) (min : Nat) (h_precond : smallestListLength_precond list) : Prop :=
-  min ≥ 0 ∧
+  min ≥ 0 ∧ 
   (∀ i, i < list.size → min ≤ list[i]!.size) ∧
   (∃ i, i < list.size ∧ min = list[i]!.size)
 
@@ -24,3 +24,6 @@ theorem smallestListLength_spec_satisfied (list : Array (Array Int)) (h_precond 
     smallestListLength_postcond list (smallestListLength list h_precond) h_precond := by
   sorry
 -- </vc-theorems>
+
+def main : IO Unit := 
+  pure ()

@@ -6,8 +6,8 @@ def absSpec (i : Int) : Int :=
 /- Precondition for hasCloseElements function -/
 @[reducible, simp]
 def hasCloseElements_precond (numbers : Array Int) (threshold : Int) : Prop :=
-  threshold > 0 ∧
-  ∀ i j, 0 ≤ i ∧ i < numbers.size ∧ 0 ≤ j ∧ j < numbers.size →
+  threshold > 0 ∧ 
+  ∀ i j, 0 ≤ i ∧ i < numbers.size ∧ 0 ≤ j ∧ j < numbers.size → 
     numbers[i]! - numbers[j]! < 2147483647 ∧ -(numbers[i]! - numbers[j]!) < 2147483647
 -- </vc-preamble>
 
@@ -28,3 +28,5 @@ theorem hasCloseElements_spec_satisfied (numbers : Array Int) (threshold : Int) 
     hasCloseElements_postcond numbers threshold (hasCloseElements numbers threshold h_precond) h_precond := by
   sorry
 -- </vc-theorems>
+
+def main : IO Unit := return ()

@@ -21,3 +21,5 @@ theorem minSecondValueFirst_spec_satisfied (arr : Array (Array Int)) (h_precond 
     minSecondValueFirst_postcond arr (minSecondValueFirst arr h_precond) h_precond := by
   sorry
 -- </vc-theorems>
+
+def main : IO Unit := return ()
