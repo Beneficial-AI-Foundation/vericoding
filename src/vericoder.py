@@ -661,6 +661,9 @@ def main():
     # Parse command-line arguments first
     args = parse_arguments()
 
+    if args.limit and args.shard:
+        raise ValueError("Cannot specify limit and shard")
+
     # Set up configuration
     config = setup_configuration(args)
     
