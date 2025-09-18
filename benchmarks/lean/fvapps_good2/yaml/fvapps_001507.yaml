@@ -36,19 +36,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded
   
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval find_min_m 1 [5]
   
-  /-
+  /--
   info: -1
   -/
   #guard_msgs in
   #eval find_min_m 1 [7]
   
-  /-
+  /--
   info: 1
   -/
   #guard_msgs in

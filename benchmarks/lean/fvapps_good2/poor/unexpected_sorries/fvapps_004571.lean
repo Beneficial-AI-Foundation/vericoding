@@ -34,19 +34,19 @@ sorry
 -- Apps difficulty: introductory
 -- Assurance level: unguarded
 
-/-
+/--
 info: expected1
 -/
 #guard_msgs in
 #eval all_non_consecutive [1, 2, 3, 4, 6, 7, 8, 15, 16]
 
-/-
+/--
 info: expected2
 -/
 #guard_msgs in
 #eval all_non_consecutive [1, 2, 3, 4, 5]
 
-/-
+/--
 info: expected3
 -/
 #guard_msgs in

@@ -31,19 +31,19 @@ vc-theorems: |-
   sorry
 
 vc-postamble: |-
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval calc_min_ops_lucky_num "25"
   
-  /-
+  /--
   info: 1
   -/
   #guard_msgs in
   #eval calc_min_ops_lucky_num "46"
   
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in

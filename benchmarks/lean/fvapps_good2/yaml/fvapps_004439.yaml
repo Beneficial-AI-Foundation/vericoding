@@ -43,19 +43,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval check_valid_tr_number 36637640050
   
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval check_valid_tr_number 12762438338
   
-  /-
+  /--
   info: True
   -/
   #guard_msgs in

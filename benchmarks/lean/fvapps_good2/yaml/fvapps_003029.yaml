@@ -38,19 +38,19 @@ vc-theorems: |-
     sorry
 
 vc-postamble: |-
-  /-
+  /--
   info: 10
   -/
   #guard_msgs in
   #eval sum_nested [1, [2, [3, [4]]]]
   
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in
   #eval sum_nested [[[], []]]
   
-  /-
+  /--
   info: 8
   -/
   #guard_msgs in

@@ -36,19 +36,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded
   
-  /-
+  /--
   info: [7, 11, 13, 17, 19, 23]
   -/
   #guard_msgs in
   #eval find_primes_sextuplet 70
   
-  /-
+  /--
   info: [97, 101, 103, 107, 109, 113]
   -/
   #guard_msgs in
   #eval find_primes_sextuplet 600
   
-  /-
+  /--
   info: [1091257, 1091261, 1091263, 1091267, 1091269, 1091273]
   -/
   #guard_msgs in

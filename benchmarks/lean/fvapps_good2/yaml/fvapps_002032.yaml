@@ -47,19 +47,19 @@ vc-postamble: |-
   -- Apps difficulty: competition
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: [3, 3, 5, 5]
   -/
   #guard_msgs in
   #eval solve_carrot_game 4 [1, 2, 3, 5]
   
-  /-
+  /--
   info: expected2
   -/
   #guard_msgs in
   #eval solve_carrot_game 5 [1000000000, 1000000000, 1000000000, 1000000000, 1]
   
-  /-
+  /--
   info: [2, 8, 8]
   -/
   #guard_msgs in

@@ -57,19 +57,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 10
   -/
   #guard_msgs in
   #eval min_robbery_cost 3 [[4, 7, 2, 9], [5, 6, 4, 7], [2, 6, 4, 3]]
   
-  /-
+  /--
   info: 7
   -/
   #guard_msgs in
   #eval min_robbery_cost 2 [[1, 2, 3, 4], [5, 6, 7, 8]]
   
-  /-
+  /--
   info: 10
   -/
   #guard_msgs in

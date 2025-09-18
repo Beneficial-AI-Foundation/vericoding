@@ -42,19 +42,19 @@ vc-theorems: |-
   sorry
 
 vc-postamble: |-
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in
   #eval pac_man 4 [3, 0] [[1, 2]]
   
-  /-
+  /--
   info: 8
   -/
   #guard_msgs in
   #eval pac_man 3 [0, 0] []
   
-  /-
+  /--
   info: 19
   -/
   #guard_msgs in

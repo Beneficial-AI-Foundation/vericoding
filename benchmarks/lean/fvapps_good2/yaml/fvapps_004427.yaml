@@ -37,19 +37,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 'sex'
   -/
   #guard_msgs in
   #eval to_freud "test"
   
-  /-
+  /--
   info: 'sex sex sex sex'
   -/
   #guard_msgs in
   #eval to_freud "This is a test"
   
-  /-
+  /--
   info: ''
   -/
   #guard_msgs in

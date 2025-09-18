@@ -23,19 +23,19 @@ theorem swap_capitalizes_vowels (s : String) (i : String.Pos) :
 -- Apps difficulty: introductory
 -- Assurance level: unguarded
 
-/-
+/--
 info: 'HEllOWOrld!'
 -/
 #guard_msgs in
 #eval swap "HelloWorld!"
 
-/-
+/--
 info: 'SUndAy'
 -/
 #guard_msgs in
 #eval swap "Sunday"
 
-/-
+/--
 info: 'AbrAcAdAbrA'
 -/
 #guard_msgs in

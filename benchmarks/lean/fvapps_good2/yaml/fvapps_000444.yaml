@@ -30,19 +30,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
   
-  /-
+  /--
   info: 7236
   -/
   #guard_msgs in
   #eval maximum_swap 2736
   
-  /-
+  /--
   info: 9973
   -/
   #guard_msgs in
   #eval maximum_swap 9973
   
-  /-
+  /--
   info: 9913
   -/
   #guard_msgs in

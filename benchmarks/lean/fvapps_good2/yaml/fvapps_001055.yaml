@@ -41,13 +41,13 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 4
   -/
   #guard_msgs in
   #eval solve_tree_trimming 13 [1, 1, 1, 1, 1, 4, 3, 4, 4, 3, 4, 3]
   
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in

@@ -38,19 +38,19 @@ theorem sorted_sequence_maintains_xor_pair
 -- Apps difficulty: competition
 -- Assurance level: unguarded
 
-/-
+/--
 info: 7
 -/
 #guard_msgs in
 #eval find_max_lucky_number [5, 2, 1, 4, 3]
 
-/-
+/--
 info: 15
 -/
 #guard_msgs in
 #eval find_max_lucky_number [9, 8, 3, 5, 7]
 
-/-
+/--
 info: 2
 -/
 #guard_msgs in

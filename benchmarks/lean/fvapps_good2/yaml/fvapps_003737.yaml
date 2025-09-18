@@ -42,19 +42,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: [11, 1110, 12555]
   -/
   #guard_msgs in
   #eval max_sumDig 2000 3
   
-  /-
+  /--
   info: [21, 1120, 23665]
   -/
   #guard_msgs in
   #eval max_sumDig 2000 4
   
-  /-
+  /--
   info: [85, 1200, 99986]
   -/
   #guard_msgs in

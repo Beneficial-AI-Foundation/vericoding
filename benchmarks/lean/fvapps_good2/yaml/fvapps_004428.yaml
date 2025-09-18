@@ -45,19 +45,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: ''
   -/
   #guard_msgs in
   #eval alphabetized ""
   
-  /-
+  /--
   info: 'BbeehHilloTy'
   -/
   #guard_msgs in
   #eval alphabetized "The Holy Bible"
   
-  /-
+  /--
   info: 'aaaaCcdddeLnooorstTWy'
   -/
   #guard_msgs in

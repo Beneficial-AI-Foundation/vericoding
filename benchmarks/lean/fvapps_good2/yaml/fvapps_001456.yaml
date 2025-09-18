@@ -41,19 +41,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 1
   -/
   #guard_msgs in
   #eval max_magnet_attract 4 5 "I::M"
   
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval max_magnet_attract 9 10 "MIM_XII:M"
   
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in

@@ -32,19 +32,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 'Sc o!uhWw'
   -/
   #guard_msgs in
   #eval jumbled_string "Such Wow!" 1
   
-  /-
+  /--
   info: 'bexltept merae'
   -/
   #guard_msgs in
   #eval jumbled_string "better example" 2
   
-  /-
+  /--
   info: 'qtorieuwy'
   -/
   #guard_msgs in

@@ -26,19 +26,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
   
-  /-
+  /--
   info: [0, 1, 4]
   -/
   #guard_msgs in
   #eval people_indexes [["leetcode", "google", "facebook"], ["google", "microsoft"], ["google", "facebook"], ["google"], ["amazon"]]
   
-  /-
+  /--
   info: [0, 1]
   -/
   #guard_msgs in
   #eval people_indexes [["leetcode", "google", "facebook"], ["leetcode", "amazon"], ["facebook", "google"]]
   
-  /-
+  /--
   info: [0, 1, 2, 3]
   -/
   #guard_msgs in

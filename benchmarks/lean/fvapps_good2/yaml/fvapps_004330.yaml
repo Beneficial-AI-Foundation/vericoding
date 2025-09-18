@@ -37,19 +37,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 'ac'
   -/
   #guard_msgs in
   #eval clean_string "abc#d##c"
   
-  /-
+  /--
   info: ''
   -/
   #guard_msgs in
   #eval clean_string "#######"
   
-  /-
+  /--
   info: 'jf'
   -/
   #guard_msgs in

@@ -47,19 +47,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded
   
-  /-
+  /--
   info: 1
   -/
   #guard_msgs in
   #eval solve_garland 9 2 "010001010"
   
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval solve_garland 9 3 "111100000"
   
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in

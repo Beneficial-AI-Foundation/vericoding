@@ -45,19 +45,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 'A'
   -/
   #guard_msgs in
   #eval find_possible_ascii_chars "65"
   
-  /-
+  /--
   info: 'AB'
   -/
   #guard_msgs in
   #eval find_possible_ascii_chars "566"
   
-  /-
+  /--
   info: ''
   -/
   #guard_msgs in

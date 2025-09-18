@@ -53,19 +53,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: expected1
   -/
   #guard_msgs in
   #eval group_groceries "fruit_banana,vegetable_carrot,meat_chicken,drink_juice"
   
-  /-
+  /--
   info: expected2
   -/
   #guard_msgs in
   #eval group_groceries "fruit_banana,vegetable_carrot,fruit_apple,canned_sardines,drink_juice,fruit_orange"
   
-  /-
+  /--
   info: expected3
   -/
   #guard_msgs in

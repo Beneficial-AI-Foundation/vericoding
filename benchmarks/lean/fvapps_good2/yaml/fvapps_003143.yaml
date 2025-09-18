@@ -50,19 +50,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval solve "code*s" "codewars"
   
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval solve "codewar*s" "codewars"
   
-  /-
+  /--
   info: False
   -/
   #guard_msgs in

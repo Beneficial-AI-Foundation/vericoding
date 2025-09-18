@@ -49,19 +49,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 'uniform'
   -/
   #guard_msgs in
   #eval check_uniform "00000000"
   
-  /-
+  /--
   info: 'non-uniform'
   -/
   #guard_msgs in
   #eval check_uniform "10101010"
   
-  /-
+  /--
   info: 'uniform'
   -/
   #guard_msgs in

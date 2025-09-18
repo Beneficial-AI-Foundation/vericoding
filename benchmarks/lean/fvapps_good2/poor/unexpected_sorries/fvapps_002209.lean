@@ -20,13 +20,13 @@ theorem results_are_nonnegative {queries : List (Nat × Nat × Nat)} (h : querie
 -- Apps difficulty: competition
 -- Assurance level: unguarded
 
-/-
+/--
 info: [1, 4, 0, 8]
 -/
 #guard_msgs in
 #eval count_numbers_with_special_value [(22, 73, 9), (45, 64, 6), (47, 55, 7), (2, 62, 4)]
 
-/-
+/--
 info: [3, 1, 1, 5]
 -/
 #guard_msgs in

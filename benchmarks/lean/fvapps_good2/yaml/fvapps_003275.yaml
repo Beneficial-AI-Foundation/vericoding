@@ -35,31 +35,31 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: None
   -/
   #guard_msgs in
   #eval array ""
   
-  /-
+  /--
   info: None
   -/
   #guard_msgs in
   #eval array "1"
   
-  /-
+  /--
   info: None
   -/
   #guard_msgs in
   #eval array "1,2"
   
-  /-
+  /--
   info: '2'
   -/
   #guard_msgs in
   #eval array "1,2,3"
   
-  /-
+  /--
   info: '2 3'
   -/
   #guard_msgs in

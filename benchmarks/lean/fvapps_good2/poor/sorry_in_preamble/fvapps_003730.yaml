@@ -48,25 +48,25 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: '0 dollars.'
   -/
   #guard_msgs in
   #eval dollar_to_speech "$0.00"
   
-  /-
+  /--
   info: '1 dollar.'
   -/
   #guard_msgs in
   #eval dollar_to_speech "$1.00"
   
-  /-
+  /--
   info: '20 dollars and 18 cents.'
   -/
   #guard_msgs in
   #eval dollar_to_speech "$20.18"
   
-  /-
+  /--
   info: 'No negative numbers are allowed!'
   -/
   #guard_msgs in

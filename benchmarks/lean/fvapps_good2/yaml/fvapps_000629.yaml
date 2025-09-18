@@ -38,13 +38,13 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded
   
-  /-
+  /--
   info: [3, 4]
   -/
   #guard_msgs in
   #eval hill_jumping_competition 5 [1, 2, 3, 4, 5] [[1, 1, 2], [2, 3, 4, -1], [1, 1, 2]]
   
-  /-
+  /--
   info: [2, 2]
   -/
   #guard_msgs in

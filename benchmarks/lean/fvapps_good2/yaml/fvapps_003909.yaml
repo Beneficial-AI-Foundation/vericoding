@@ -50,19 +50,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 'Aa'
   -/
   #guard_msgs in
   #eval sc "Aab"
   
-  /-
+  /--
   info: 'AabB'
   -/
   #guard_msgs in
   #eval sc "AabBc"
   
-  /-
+  /--
   info: 'SONson'
   -/
   #guard_msgs in

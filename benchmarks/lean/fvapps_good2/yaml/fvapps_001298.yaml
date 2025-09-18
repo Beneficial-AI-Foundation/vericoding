@@ -35,13 +35,13 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 'Hello World'
   -/
   #guard_msgs in
   #eval decode_ascii_message "721011081081113287111114108100"
   
-  /-
+  /--
   info: 'Welcome to India'
   -/
   #guard_msgs in

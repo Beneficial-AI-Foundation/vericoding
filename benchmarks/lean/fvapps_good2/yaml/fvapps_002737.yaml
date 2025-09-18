@@ -79,19 +79,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: expected1
   -/
   #guard_msgs in
   #eval sort_photos ["2016.img1", "2016.img2", "2015.img3", "2016.img4", "2013.img5"]
   
-  /-
+  /--
   info: expected2
   -/
   #guard_msgs in
   #eval sort_photos ["2016.img1"]
   
-  /-
+  /--
   info: expected3
   -/
   #guard_msgs in

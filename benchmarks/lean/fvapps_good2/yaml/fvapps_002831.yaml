@@ -40,19 +40,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 'WE ARE THE CHAMPIONS MY FRIEND'
   -/
   #guard_msgs in
   #eval song_decoder "WUBWEWUBAREWUBWUBTHEWUBCHAMPIONSWUBMYWUBFRIENDWUB"
   
-  /-
+  /--
   info: 'A B C'
   -/
   #guard_msgs in
   #eval song_decoder "AWUBBWUBC"
   
-  /-
+  /--
   info: 'O IPVCQAFWY Q XHDKCPYKCTWWY V FZ'
   -/
   #guard_msgs in

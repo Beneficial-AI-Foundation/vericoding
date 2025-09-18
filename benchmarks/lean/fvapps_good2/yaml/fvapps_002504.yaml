@@ -49,13 +49,13 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded
   
-  /-
+  /--
   info: 206
   -/
   #guard_msgs in
   #eval find_max_modular_sum 1000 [[5, 4], [7, 8, 9], [5, 7, 8, 9, 10]]
   
-  /-
+  /--
   info: 20
   -/
   #guard_msgs in

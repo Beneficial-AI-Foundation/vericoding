@@ -46,19 +46,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded
   
-  /-
+  /--
   info: 5
   -/
   #guard_msgs in
   #eval aa_percentage "MSRSLLLRFLLFLLLLPPLP" ["M"]
   
-  /-
+  /--
   info: 29
   -/
   #guard_msgs in
   #eval aa_percentage "RLMADDFFGQTLMAAAAAAQERRR" ["A"]
   
-  /-
+  /--
   info: 50
   -/
   #guard_msgs in

@@ -34,19 +34,19 @@ vc-theorems: |-
   sorry
 
 vc-postamble: |-
-  /-
+  /--
   info: 4
   -/
   #guard_msgs in
   #eval path_finder ".W.\n    .W.\n    ...".replace("    ", "")
   
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval path_finder ".W.\n    .W.\n    .W.".replace("    ", "")
   
-  /-
+  /--
   info: 4
   -/
   #guard_msgs in

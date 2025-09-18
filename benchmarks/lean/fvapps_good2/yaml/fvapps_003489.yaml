@@ -40,25 +40,25 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 13
   -/
   #guard_msgs in
   #eval sum_it_up [["101", 2], ["10", 8]]
   
-  /-
+  /--
   info: 2751
   -/
   #guard_msgs in
   #eval sum_it_up [["ABC", 16], ["11", 2]]
   
-  /-
+  /--
   info: 4258
   -/
   #guard_msgs in
   #eval sum_it_up [["101", 16], ["7640", 8], ["1", 9]]
   
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in

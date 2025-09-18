@@ -42,13 +42,13 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: '12345'
   -/
   #guard_msgs in
   #eval crack "827ccb0eea8a706c4c34a16891f84e7b"
   
-  /-
+  /--
   info: '00078'
   -/
   #guard_msgs in

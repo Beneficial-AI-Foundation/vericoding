@@ -48,19 +48,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: (1, 4)
   -/
   #guard_msgs in
   #eval solve_min_pairs 4 9 [4, 4, 2, 6]
   
-  /-
+  /--
   info: (2, 1)
   -/
   #guard_msgs in
   #eval solve_min_pairs 2 10 [3, 5]
   
-  /-
+  /--
   info: (4, 3)
   -/
   #guard_msgs in

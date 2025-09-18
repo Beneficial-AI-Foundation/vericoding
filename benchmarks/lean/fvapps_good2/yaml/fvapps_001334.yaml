@@ -40,19 +40,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
   
-  /-
+  /--
   info: 5
   -/
   #guard_msgs in
   #eval max_pizza_time 13 2 "0101110000101"
   
-  /-
+  /--
   info: 4
   -/
   #guard_msgs in
   #eval max_pizza_time 6 3 "100001"
   
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in

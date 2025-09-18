@@ -56,19 +56,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 'c:**,h:*,i:*,a:*,g:*,o:*'
   -/
   #guard_msgs in
   #eval get_strings "Chicago"
   
-  /-
+  /--
   info: 'b:*,a:*,n:*,g:*,k:**,o:*'
   -/
   #guard_msgs in
   #eval get_strings "Bangkok"
   
-  /-
+  /--
   info: 'l:*,a:**,s:**,v:*,e:*,g:*'
   -/
   #guard_msgs in

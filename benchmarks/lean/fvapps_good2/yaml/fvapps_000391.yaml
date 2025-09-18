@@ -44,19 +44,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded
   
-  /-
+  /--
   info: 18
   -/
   #guard_msgs in
   #eval maxSumDivThree [3, 6, 5, 1, 8]
   
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in
   #eval maxSumDivThree [4]
   
-  /-
+  /--
   info: 12
   -/
   #guard_msgs in

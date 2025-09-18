@@ -24,19 +24,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
   
-  /-
+  /--
   info: [13, 17, 31, 37, 71, 73, 79, 97]
   -/
   #guard_msgs in
   #eval backwards_prime 2 100
   
-  /-
+  /--
   info: [9923, 9931, 9941, 9967]
   -/
   #guard_msgs in
   #eval backwards_prime 9900 10000
   
-  /-
+  /--
   info: []
   -/
   #guard_msgs in

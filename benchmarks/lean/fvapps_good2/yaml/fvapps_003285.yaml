@@ -38,19 +38,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 'eat chicken'
   -/
   #guard_msgs in
   #eval common_ground "eat chicken" "eat chicken and rice"
   
-  /-
+  /--
   info: 'drink a coke'
   -/
   #guard_msgs in
   #eval common_ground "eat a burger and drink a coke" "drink a coke"
   
-  /-
+  /--
   info: 'death'
   -/
   #guard_msgs in

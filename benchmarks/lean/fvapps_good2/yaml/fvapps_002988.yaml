@@ -46,19 +46,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: '7712312'
   -/
   #guard_msgs in
   #eval seven_ate9 "79712312"
   
-  /-
+  /--
   info: '777'
   -/
   #guard_msgs in
   #eval seven_ate9 "79797"
   
-  /-
+  /--
   info: '7777'
   -/
   #guard_msgs in

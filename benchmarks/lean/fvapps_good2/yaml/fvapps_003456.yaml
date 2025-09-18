@@ -27,19 +27,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
   
-  /-
+  /--
   info: [[0, 1], [2, 3]]
   -/
   #guard_msgs in
   #eval distribute 2 4
   
-  /-
+  /--
   info: [[0], [1], [2]]
   -/
   #guard_msgs in
   #eval distribute 3 3
   
-  /-
+  /--
   info: [[0, 1, 2], [3, 4, 5], [6, 7], [8, 9]]
   -/
   #guard_msgs in

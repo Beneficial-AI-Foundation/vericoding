@@ -47,19 +47,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 'aaacecaaa'
   -/
   #guard_msgs in
   #eval shortest_palindrome "aacecaaa"
   
-  /-
+  /--
   info: 'dcbabcd'
   -/
   #guard_msgs in
   #eval shortest_palindrome "abcd"
   
-  /-
+  /--
   info: 'a'
   -/
   #guard_msgs in

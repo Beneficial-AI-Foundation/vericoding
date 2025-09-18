@@ -25,19 +25,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
   
-  /-
+  /--
   info: 13
   -/
   #guard_msgs in
   #eval kth_smallest_in_sorted_matrix [[1, 5, 9], [10, 11, 13], [12, 13, 15]] 8
   
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in
   #eval kth_smallest_in_sorted_matrix [[1, 2], [3, 4]] 3
   
-  /-
+  /--
   info: 13
   -/
   #guard_msgs in

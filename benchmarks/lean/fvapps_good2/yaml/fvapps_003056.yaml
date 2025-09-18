@@ -35,19 +35,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded
   
-  /-
+  /--
   info: 1
   -/
   #guard_msgs in
   #eval reduce_pyramid [1]
   
-  /-
+  /--
   info: 8
   -/
   #guard_msgs in
   #eval reduce_pyramid [3, 5]
   
-  /-
+  /--
   info: 25
   -/
   #guard_msgs in

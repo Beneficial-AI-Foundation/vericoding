@@ -45,13 +45,13 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: set(range(1, 6))
   -/
   #guard_msgs in
   #eval set min3
   
-  /-
+  /--
   info: set(range(1, 6))
   -/
   #guard_msgs in

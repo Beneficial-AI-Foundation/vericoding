@@ -41,19 +41,19 @@ vc-postamble: |-
   -- Apps difficulty: competition
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in
   #eval min_inversions 2 [2, 1]
   
-  /-
+  /--
   info: 6
   -/
   #guard_msgs in
   #eval min_inversions 9 [-2, 0, -1, 0, -1, 2, 1, 0, -1]
   
-  /-
+  /--
   info: 5
   -/
   #guard_msgs in

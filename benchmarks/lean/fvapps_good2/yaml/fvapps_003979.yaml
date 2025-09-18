@@ -61,37 +61,37 @@ vc-theorems: |-
   sorry
 
 vc-postamble: |-
-  /-
+  /--
   info: '1'
   -/
   #guard_msgs in
   #eval simplify 1
   
-  /-
+  /--
   info: '2 sqrt 2'
   -/
   #guard_msgs in
   #eval simplify 8
   
-  /-
+  /--
   info: '2 sqrt 5'
   -/
   #guard_msgs in
   #eval simplify 20
   
-  /-
+  /--
   info: 1
   -/
   #guard_msgs in
   #eval desimplify "1"
   
-  /-
+  /--
   info: 8
   -/
   #guard_msgs in
   #eval desimplify "2 sqrt 2"
   
-  /-
+  /--
   info: 20
   -/
   #guard_msgs in

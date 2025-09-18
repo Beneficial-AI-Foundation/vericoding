@@ -45,19 +45,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: [0, 1, 3]
   -/
   #guard_msgs in
   #eval meeting [["XXX", 3], ["XXXXX", 6], ["XXXXXX", 9]] 4
   
-  /-
+  /--
   info: 'Game On'
   -/
   #guard_msgs in
   #eval meeting [["XX", 2], ["XXXX", 6], ["XXXXX", 4]] 0
   
-  /-
+  /--
   info: [0, 2]
   -/
   #guard_msgs in

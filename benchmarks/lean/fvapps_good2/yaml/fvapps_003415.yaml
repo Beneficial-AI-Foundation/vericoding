@@ -47,19 +47,19 @@ vc-theorems: |-
   sorry
 
 vc-postamble: |-
-  /-
+  /--
   info: 45
   -/
   #guard_msgs in
   #eval find_nb 1071225
   
-  /-
+  /--
   info: -1
   -/
   #guard_msgs in
   #eval find_nb 91716553919377
   
-  /-
+  /--
   info: 2022
   -/
   #guard_msgs in

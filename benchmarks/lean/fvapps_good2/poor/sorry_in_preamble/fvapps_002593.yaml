@@ -53,19 +53,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: '12\n12'
   -/
   #guard_msgs in
   #eval square_it 1212
   
-  /-
+  /--
   info: '123\n123\n123'
   -/
   #guard_msgs in
   #eval square_it 123123123
   
-  /-
+  /--
   info: 'Not a perfect square!'
   -/
   #guard_msgs in

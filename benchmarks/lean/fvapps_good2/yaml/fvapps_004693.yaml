@@ -54,19 +54,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 'I'
   -/
   #guard_msgs in
   #eval solution 1
   
-  /-
+  /--
   info: 'MCMXC'
   -/
   #guard_msgs in
   #eval solution 1990
   
-  /-
+  /--
   info: 'MMVIII'
   -/
   #guard_msgs in

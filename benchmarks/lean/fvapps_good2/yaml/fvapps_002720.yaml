@@ -49,19 +49,19 @@ vc-theorems: |-
   sorry
 
 vc-postamble: |-
-  /-
+  /--
   info: 5
   -/
   #guard_msgs in
   #eval combs "*..*" "*.*"
   
-  /-
+  /--
   info: 5
   -/
   #guard_msgs in
   #eval combs "*...*" "*.*"
   
-  /-
+  /--
   info: 9
   -/
   #guard_msgs in

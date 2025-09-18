@@ -30,19 +30,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 'y'
   -/
   #guard_msgs in
   #eval find_smallest_palindrome 2 "zy"
   
-  /-
+  /--
   info: 'c'
   -/
   #guard_msgs in
   #eval find_smallest_palindrome 1 "cd"
   
-  /-
+  /--
   info: 'm'
   -/
   #guard_msgs in

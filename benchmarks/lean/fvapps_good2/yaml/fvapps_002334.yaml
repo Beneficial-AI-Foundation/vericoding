@@ -37,25 +37,25 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
   
-  /-
+  /--
   info: 1
   -/
   #guard_msgs in
   #eval remove_palindrome_subseq "ababa"
   
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval remove_palindrome_subseq "abb"
   
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval remove_palindrome_subseq "baabb"
   
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in

@@ -52,19 +52,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: '1,2,2'
   -/
   #guard_msgs in
   #eval search 3 [6, 1, 2, 9, 2]
   
-  /-
+  /--
   info: '3,7,7,9,14'
   -/
   #guard_msgs in
   #eval search 14 [7, 3, 23, 9, 14, 20, 7]
   
-  /-
+  /--
   info: '0,1,2.7,5.5'
   -/
   #guard_msgs in

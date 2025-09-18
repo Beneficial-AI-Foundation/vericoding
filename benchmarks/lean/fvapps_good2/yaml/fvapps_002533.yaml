@@ -30,37 +30,37 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval solve "abba"
   
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval solve "abbaa"
   
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval solve "abbx"
   
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval solve "aa"
   
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval solve "ab"
   
-  /-
+  /--
   info: True
   -/
   #guard_msgs in

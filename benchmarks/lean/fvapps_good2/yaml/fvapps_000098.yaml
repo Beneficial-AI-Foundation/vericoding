@@ -43,19 +43,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: '0001111111'
   -/
   #guard_msgs in
   #eval clean_binary_string 10 "0001111111"
   
-  /-
+  /--
   info: '001'
   -/
   #guard_msgs in
   #eval clean_binary_string 4 "0101"
   
-  /-
+  /--
   info: '01'
   -/
   #guard_msgs in

@@ -50,19 +50,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 'YES'
   -/
   #guard_msgs in
   #eval can_transform_string "11000" "01001"
   
-  /-
+  /--
   info: 'NO'
   -/
   #guard_msgs in
   #eval can_transform_string "110" "001"
   
-  /-
+  /--
   info: 'YES'
   -/
   #guard_msgs in

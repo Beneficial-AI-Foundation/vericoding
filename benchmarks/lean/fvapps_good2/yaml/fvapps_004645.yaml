@@ -41,19 +41,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 'Bravo Alpha November Alpha November Alpha'
   -/
   #guard_msgs in
   #eval nato "Banana"
   
-  /-
+  /--
   info: 'Hotel India'
   -/
   #guard_msgs in
   #eval nato "Hi"
   
-  /-
+  /--
   info: 'Alpha Bravo Charlie'
   -/
   #guard_msgs in

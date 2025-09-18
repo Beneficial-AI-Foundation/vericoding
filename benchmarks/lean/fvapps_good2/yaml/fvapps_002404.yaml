@@ -49,19 +49,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 321
   -/
   #guard_msgs in
   #eval reverse_integer 123
   
-  /-
+  /--
   info: -321
   -/
   #guard_msgs in
   #eval reverse_integer -123
   
-  /-
+  /--
   info: 21
   -/
   #guard_msgs in

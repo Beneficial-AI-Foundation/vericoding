@@ -25,19 +25,19 @@ vc-theorems: |-
   sorry
 
 vc-postamble: |-
-  /-
+  /--
   info: 3.95
   -/
   #guard_msgs in
   #eval cheapest_quote 41
   
-  /-
+  /--
   info: 2.52
   -/
   #guard_msgs in
   #eval cheapest_quote 26
   
-  /-
+  /--
   info: 48.06
   -/
   #guard_msgs in

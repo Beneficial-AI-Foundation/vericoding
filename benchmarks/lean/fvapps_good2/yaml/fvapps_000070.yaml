@@ -25,19 +25,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
   
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in
   #eval solve_array_zeroes 4 [-3, 5, -3, 1]
   
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in
   #eval solve_array_zeroes 2 [1, -1]
   
-  /-
+  /--
   info: 4
   -/
   #guard_msgs in

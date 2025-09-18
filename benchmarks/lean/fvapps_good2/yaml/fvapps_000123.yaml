@@ -44,19 +44,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 8
   -/
   #guard_msgs in
   #eval super_pow 2 [3]
   
-  /-
+  /--
   info: 1024
   -/
   #guard_msgs in
   #eval super_pow 2 [1, 0]
   
-  /-
+  /--
   info: 9
   -/
   #guard_msgs in

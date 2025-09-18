@@ -44,19 +44,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: '2 1'
   -/
   #guard_msgs in
   #eval find_building_arrangement 2 1
   
-  /-
+  /--
   info: '1 2 3'
   -/
   #guard_msgs in
   #eval find_building_arrangement 3 0
   
-  /-
+  /--
   info: 'CAPTAIN AMERICA EVADES'
   -/
   #guard_msgs in

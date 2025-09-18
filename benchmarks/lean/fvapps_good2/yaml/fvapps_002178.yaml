@@ -41,19 +41,19 @@ vc-postamble: |-
   -- Apps difficulty: competition
   -- Assurance level: guarded
   
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval count_empty_parabolas [(-1, 0), (0, 2), (1, 0)]
   
-  /-
+  /--
   info: 1
   -/
   #guard_msgs in
   #eval count_empty_parabolas [(1, 0), (1, -1), (0, -1), (-1, 0), (-1, -1)]
   
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in

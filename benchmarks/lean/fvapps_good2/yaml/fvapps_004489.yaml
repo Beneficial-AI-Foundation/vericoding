@@ -27,19 +27,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
   
-  /-
+  /--
   info: 6
   -/
   #guard_msgs in
   #eval target_game [1, 2, 3, 4]
   
-  /-
+  /--
   info: 15
   -/
   #guard_msgs in
   #eval target_game [5, 5, 5, 5, 5]
   
-  /-
+  /--
   info: 5
   -/
   #guard_msgs in

@@ -35,25 +35,25 @@ vc-theorems: |-
   sorry
 
 vc-postamble: |-
-  /-
+  /--
   info: solution
   -/
   #guard_msgs in
   #eval encode 10 "If you wish to make an apple pie from scratch, you must first invent the universe."
   
-  /-
+  /--
   info: quote
   -/
   #guard_msgs in
   #eval decode encode(10, quote)
   
-  /-
+  /--
   info: test2
   -/
   #guard_msgs in
   #eval decode encode(3, test2)
   
-  /-
+  /--
   info: test3
   -/
   #guard_msgs in

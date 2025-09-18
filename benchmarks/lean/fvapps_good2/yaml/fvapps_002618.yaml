@@ -47,19 +47,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: ['ab', 'abc', 'zab']
   -/
   #guard_msgs in
   #eval word_search "ab" ["za", "ab", "abc", "zab", "zbc"]
   
-  /-
+  /--
   info: ['ab', 'abc', 'zab']
   -/
   #guard_msgs in
   #eval word_search "aB" ["za", "ab", "abc", "zab", "zbc"]
   
-  /-
+  /--
   info: ['None']
   -/
   #guard_msgs in

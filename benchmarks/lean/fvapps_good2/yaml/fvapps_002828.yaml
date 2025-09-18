@@ -51,19 +51,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: ['Hi', 'everybody']
   -/
   #guard_msgs in
   #eval multiple_split "Hi everybody!" [" ", "!"]
   
-  /-
+  /--
   info: ['1', '2', '3']
   -/
   #guard_msgs in
   #eval multiple_split "1+2-3" ["+", "-"]
   
-  /-
+  /--
   info: []
   -/
   #guard_msgs in

@@ -43,19 +43,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 'steps'
   -/
   #guard_msgs in
   #eval shortestCompletingWord "1s3 PSt" ["step", "steps", "stripe", "stepple"]
   
-  /-
+  /--
   info: 'pest'
   -/
   #guard_msgs in
   #eval shortestCompletingWord "1s3 456" ["looks", "pest", "stew", "show"]
   
-  /-
+  /--
   info: 'supper'
   -/
   #guard_msgs in

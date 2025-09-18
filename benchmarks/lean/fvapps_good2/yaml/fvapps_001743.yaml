@@ -52,19 +52,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: ['daniel']
   -/
   #guard_msgs in
   #eval alert_names ["daniel", "daniel", "daniel", "luis", "luis", "luis", "luis"] ["10:00", "10:40", "11:00", "09:00", "11:00", "13:00", "15:00"]
   
-  /-
+  /--
   info: ['bob']
   -/
   #guard_msgs in
   #eval alert_names ["alice", "alice", "alice", "bob", "bob", "bob", "bob"] ["12:01", "12:00", "18:00", "21:00", "21:20", "21:30", "23:00"]
   
-  /-
+  /--
   info: ['clare', 'leslie']
   -/
   #guard_msgs in

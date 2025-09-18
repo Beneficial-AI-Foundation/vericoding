@@ -32,19 +32,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 'dbU30'
   -/
   #guard_msgs in
   #eval changer "Cat30"
   
-  /-
+  /--
   info: 'Ifmmp xpsmE'
   -/
   #guard_msgs in
   #eval changer "Hello World"
   
-  /-
+  /--
   info: 'A'
   -/
   #guard_msgs in

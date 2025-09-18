@@ -50,19 +50,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 23
   -/
   #guard_msgs in
   #eval calculate_ad_revenue 4 [3, 10, 3, 5]
   
-  /-
+  /--
   info: 4
   -/
   #guard_msgs in
   #eval calculate_ad_revenue 2 [1, 5]
   
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in

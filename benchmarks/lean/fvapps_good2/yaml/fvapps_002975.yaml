@@ -29,19 +29,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval divisible_by_three "123"
   
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval divisible_by_three "88"
   
-  /-
+  /--
   info: True
   -/
   #guard_msgs in

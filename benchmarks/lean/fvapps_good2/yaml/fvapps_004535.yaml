@@ -53,19 +53,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 3.67
   -/
   #guard_msgs in
   #eval flesch_kincaid "The turtle is leaving."
   
-  /-
+  /--
   info: 2.89
   -/
   #guard_msgs in
   #eval flesch_kincaid "Hi there."
   
-  /-
+  /--
   info: 2.89
   -/
   #guard_msgs in

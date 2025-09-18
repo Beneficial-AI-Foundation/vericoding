@@ -58,19 +58,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded
   
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval find_str "hello" "ll"
   
-  /-
+  /--
   info: -1
   -/
   #guard_msgs in
   #eval find_str "aaaaa" "bba"
   
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in

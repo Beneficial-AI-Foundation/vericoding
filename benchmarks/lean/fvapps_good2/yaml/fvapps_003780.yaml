@@ -34,19 +34,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
   
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in
   #eval find_even_index [1, 2, 3, 4, 3, 2, 1]
   
-  /-
+  /--
   info: 1
   -/
   #guard_msgs in
   #eval find_even_index [1, 100, 50, -51, 1, 1]
   
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in

@@ -50,19 +50,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 'Accepted'
   -/
   #guard_msgs in
   #eval find_gift_pair 5 [10, 2, 1000, 50, 1000]
   
-  /-
+  /--
   info: 'Rejected'
   -/
   #guard_msgs in
   #eval find_gift_pair 3 [500, 500, 500]
   
-  /-
+  /--
   info: 'Accepted'
   -/
   #guard_msgs in

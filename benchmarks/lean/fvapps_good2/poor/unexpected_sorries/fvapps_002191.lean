@@ -30,19 +30,19 @@ theorem solve_good_substrings_count_bound
 -- Apps difficulty: competition
 -- Assurance level: guarded_and_plausible
 
-/-
+/--
 info: (1, 1)
 -/
 #guard_msgs in
 #eval solve_good_substrings "aab"
 
-/-
+/--
 info: (2, 3)
 -/
 #guard_msgs in
 #eval solve_good_substrings "bcbc"
 
-/-
+/--
 info: (3, 1)
 -/
 #guard_msgs in

@@ -42,19 +42,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 'yyyyybbbbbbrbbrbbrrrrrrrrrrgggggggggooooooooowwwwwwwww'
   -/
   #guard_msgs in
   #eval perform "F"
   
-  /-
+  /--
   info: 'yyyyyywwwbbgbbgbbgrrrrrrrrrbggbggbggoooooooooyyywwwwww'
   -/
   #guard_msgs in
   #eval perform "F2"
   
-  /-
+  /--
   info: 'yyyyyooobbwbbwbbwrrrrrrrrrwggwggwggooooooooobbbrwwwww'
   -/
   #guard_msgs in

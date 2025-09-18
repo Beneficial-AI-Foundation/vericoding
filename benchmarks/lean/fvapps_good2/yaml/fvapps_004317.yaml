@@ -46,19 +46,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: (False, '')
   -/
   #guard_msgs in
   #eval play_if_enough "" "bw"
   
-  /-
+  /--
   info: (True, 'oogssbbb')
   -/
   #guard_msgs in
   #eval play_if_enough "ooooogggssbbb" "ooogg"
   
-  /-
+  /--
   info: (False, 'oogssbbb')
   -/
   #guard_msgs in

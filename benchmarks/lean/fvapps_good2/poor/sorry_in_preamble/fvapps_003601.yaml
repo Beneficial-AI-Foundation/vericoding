@@ -53,19 +53,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 34
   -/
   #guard_msgs in
   #eval nth_smallest [14, 12, 46, 34, 334] 3
   
-  /-
+  /--
   info: 4000
   -/
   #guard_msgs in
   #eval nth_smallest [4000] 1
   
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in

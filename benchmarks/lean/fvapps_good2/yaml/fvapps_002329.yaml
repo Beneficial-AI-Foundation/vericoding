@@ -44,19 +44,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 1
   -/
   #guard_msgs in
   #eval max_balloons "nlaebolko"
   
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval max_balloons "loonbalxballpoon"
   
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in

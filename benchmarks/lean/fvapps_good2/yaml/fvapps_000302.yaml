@@ -66,19 +66,19 @@ vc-theorems: |-
   sorry
 
 vc-postamble: |-
-  /-
+  /--
   info: 9
   -/
   #guard_msgs in
   #eval monotone_increasing_digits 10
   
-  /-
+  /--
   info: 1234
   -/
   #guard_msgs in
   #eval monotone_increasing_digits 1234
   
-  /-
+  /--
   info: 299
   -/
   #guard_msgs in

@@ -42,19 +42,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 'STRONG!!!!'
   -/
   #guard_msgs in
   #eval strong_num 145
   
-  /-
+  /--
   info: 'Not Strong !!'
   -/
   #guard_msgs in
   #eval strong_num 123
   
-  /-
+  /--
   info: 'STRONG!!!!'
   -/
   #guard_msgs in

@@ -42,19 +42,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 5
   -/
   #guard_msgs in
   #eval determinant #[[5]]
   
-  /-
+  /--
   info: -2
   -/
   #guard_msgs in
   #eval determinant #[[1, 2], [3, 4]]
   
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in

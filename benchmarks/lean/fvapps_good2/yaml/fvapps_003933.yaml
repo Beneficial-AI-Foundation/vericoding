@@ -39,19 +39,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 'yes, ascending'
   -/
   #guard_msgs in
   #eval is_sorted_and_how [1, 2]
   
-  /-
+  /--
   info: 'yes, descending'
   -/
   #guard_msgs in
   #eval is_sorted_and_how [15, 7, 3, -8]
   
-  /-
+  /--
   info: 'no'
   -/
   #guard_msgs in

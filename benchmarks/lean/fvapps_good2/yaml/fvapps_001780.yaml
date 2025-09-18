@@ -34,13 +34,13 @@ vc-theorems: |-
   sorry
 
 vc-postamble: |-
-  /-
+  /--
   info: 11
   -/
   #guard_msgs in
   #eval minimum_moves #[[0, 0, 0, 0, 0, 1], [1, 1, 0, 0, 1, 0], [0, 0, 0, 0, 1, 1], [0, 0, 1, 0, 1, 0], [0, 1, 1, 0, 0, 0], [0, 1, 1, 0, 0, 0]]
   
-  /-
+  /--
   info: 9
   -/
   #guard_msgs in

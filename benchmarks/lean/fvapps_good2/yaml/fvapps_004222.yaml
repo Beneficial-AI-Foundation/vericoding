@@ -52,55 +52,55 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
   
-  /-
+  /--
   info: 55
   -/
   #guard_msgs in
   #eval sumin 5
   
-  /-
+  /--
   info: 91
   -/
   #guard_msgs in
   #eval sumin 6
   
-  /-
+  /--
   info: 1240
   -/
   #guard_msgs in
   #eval sumin 15
   
-  /-
+  /--
   info: 161
   -/
   #guard_msgs in
   #eval sumax 6
   
-  /-
+  /--
   info: 61755
   -/
   #guard_msgs in
   #eval sumax 45
   
-  /-
+  /--
   info: 671650
   -/
   #guard_msgs in
   #eval sumax 100
   
-  /-
+  /--
   info: 252
   -/
   #guard_msgs in
   #eval sumsum 6
   
-  /-
+  /--
   info: 93150
   -/
   #guard_msgs in
   #eval sumsum 45
   
-  /-
+  /--
   info: 1010000
   -/
   #guard_msgs in

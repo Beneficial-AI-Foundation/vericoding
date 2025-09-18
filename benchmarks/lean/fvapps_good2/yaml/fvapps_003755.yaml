@@ -38,19 +38,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: expected1
   -/
   #guard_msgs in
   #eval uniq_c ["a", "a", "b", "b", "c", "a", "b", "c"]
   
-  /-
+  /--
   info: expected2
   -/
   #guard_msgs in
   #eval uniq_c ["a", "a", "a", "b", "b", "b", "c", "c", "c"]
   
-  /-
+  /--
   info: expected3
   -/
   #guard_msgs in

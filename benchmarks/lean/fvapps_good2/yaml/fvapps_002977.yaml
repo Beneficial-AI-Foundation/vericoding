@@ -46,19 +46,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded
   
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in
   #eval unique_digit_products [2, 8, 121, 42, 222, 23]
   
-  /-
+  /--
   info: 1
   -/
   #guard_msgs in
   #eval unique_digit_products [239]
   
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in

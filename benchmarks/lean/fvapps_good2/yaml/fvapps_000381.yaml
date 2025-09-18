@@ -42,19 +42,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval getMaxRepetitions "acb" 4 "ab" 2
   
-  /-
+  /--
   info: 4
   -/
   #guard_msgs in
   #eval getMaxRepetitions "aaa" 3 "aa" 1
   
-  /-
+  /--
   info: 4
   -/
   #guard_msgs in

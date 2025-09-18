@@ -56,19 +56,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 'Right side wins!'
   -/
   #guard_msgs in
   #eval alphabet_war "z"
   
-  /-
+  /--
   info: 'Left side wins!'
   -/
   #guard_msgs in
   #eval alphabet_war "wq"
   
-  /-
+  /--
   info: "Let's fight again!"
   -/
   #guard_msgs in

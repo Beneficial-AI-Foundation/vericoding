@@ -49,19 +49,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 'NO'
   -/
   #guard_msgs in
   #eval can_tomu_win 6 0 [1, 1, 1, 1, 1, 1]
   
-  /-
+  /--
   info: 'YES'
   -/
   #guard_msgs in
   #eval can_tomu_win 5 1 [2, 4, 6, 3, 4]
   
-  /-
+  /--
   info: 'YES'
   -/
   #guard_msgs in

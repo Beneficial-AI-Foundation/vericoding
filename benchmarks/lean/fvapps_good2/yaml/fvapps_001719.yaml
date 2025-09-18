@@ -58,19 +58,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: expected1
   -/
   #guard_msgs in
   #eval generate_bc "mysite.com/pictures/holidays.html" " : "
   
-  /-
+  /--
   info: expected2
   -/
   #guard_msgs in
   #eval generate_bc "www.microsoft.com/docs/index.htm" " * "
   
-  /-
+  /--
   info: expected3
   -/
   #guard_msgs in

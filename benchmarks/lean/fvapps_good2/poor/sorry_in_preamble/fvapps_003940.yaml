@@ -54,19 +54,19 @@ vc-theorems: |-
   sorry
 
 vc-postamble: |-
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in
   #eval solve 0 10
   
-  /-
+  /--
   info: 4
   -/
   #guard_msgs in
   #eval solve 10 100
   
-  /-
+  /--
   info: 12
   -/
   #guard_msgs in

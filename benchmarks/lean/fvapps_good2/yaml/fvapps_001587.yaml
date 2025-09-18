@@ -26,31 +26,31 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
   
-  /-
+  /--
   info: 4
   -/
   #guard_msgs in
   #eval sum_of_squares 15
   
-  /-
+  /--
   info: 1
   -/
   #guard_msgs in
   #eval sum_of_squares 16
   
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval sum_of_squares 17
   
-  /-
+  /--
   info: 1
   -/
   #guard_msgs in
   #eval sum_of_squares 999887641
   
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in

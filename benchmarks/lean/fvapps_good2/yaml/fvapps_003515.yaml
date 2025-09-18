@@ -30,19 +30,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 'Bronze!'
   -/
   #guard_msgs in
   #eval olympic_ring "wHjMudLwtoPGocnJ"
   
-  /-
+  /--
   info: 'Not even a medal!'
   -/
   #guard_msgs in
   #eval olympic_ring "JKniLfLW"
   
-  /-
+  /--
   info: 'Gold!'
   -/
   #guard_msgs in

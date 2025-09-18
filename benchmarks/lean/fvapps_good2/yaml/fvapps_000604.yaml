@@ -39,19 +39,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 'grace'
   -/
   #guard_msgs in
   #eval find_stem ["grace", "graceful", "disgraceful", "gracefully"]
   
-  /-
+  /--
   info: 'cat'
   -/
   #guard_msgs in
   #eval find_stem ["cat", "catch", "cathedral"]
   
-  /-
+  /--
   info: 'python'
   -/
   #guard_msgs in

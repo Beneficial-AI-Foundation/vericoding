@@ -27,39 +27,39 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
   
-  /- Helper functions for binary/base-3 conversion -/
+  /-- Helper functions for binary/base-3 conversion -/
   
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in
   #eval sequence 0
   
-  /-
+  /--
   info: 1
   -/
   #guard_msgs in
   #eval sequence 1
   
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in
   #eval sequence 2
   
-  /-
+  /--
   info: 4
   -/
   #guard_msgs in
   #eval sequence 3
   
-  /-
+  /--
   info: 9
   -/
   #guard_msgs in
   #eval sequence 4
   
-  /-
+  /--
   info: 7329
   -/
   #guard_msgs in

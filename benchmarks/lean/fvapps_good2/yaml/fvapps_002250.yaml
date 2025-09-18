@@ -26,13 +26,13 @@ vc-postamble: |-
   -- Apps difficulty: competition
   -- Assurance level: guarded_and_plausible
   
-  /-
+  /--
   info: 8
   -/
   #guard_msgs in
   #eval solve_sequence_sum 3 5 [1, 2, 1]
   
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in

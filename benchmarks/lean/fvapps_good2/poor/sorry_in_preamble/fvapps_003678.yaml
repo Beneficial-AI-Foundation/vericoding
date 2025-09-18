@@ -21,19 +21,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
   
-  /-
+  /--
   info: [24, 12, 8, 6]
   -/
   #guard_msgs in
   #eval product_sans_n [1, 2, 3, 4]
   
-  /-
+  /--
   info: [0, -18, 0]
   -/
   #guard_msgs in
   #eval product_sans_n [9, 0, -2]
   
-  /-
+  /--
   info: [0, 0, 0]
   -/
   #guard_msgs in

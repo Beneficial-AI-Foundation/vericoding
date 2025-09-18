@@ -46,19 +46,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: ['super']
   -/
   #guard_msgs in
   #eval slogan_maker ["super"]
   
-  /-
+  /--
   info: set(['super hot', 'hot super'])
   -/
   #guard_msgs in
   #eval set slogan_maker(["super", "hot"])
   
-  /-
+  /--
   info: set(['super hot guacamole', 'super guacamole hot', 'hot super guacamole', 'hot guacamole super', 'guacamole super hot', 'guacamole hot super'])
   -/
   #guard_msgs in

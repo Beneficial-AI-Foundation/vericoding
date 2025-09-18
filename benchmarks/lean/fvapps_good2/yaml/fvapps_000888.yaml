@@ -38,13 +38,13 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded
   
-  /-
+  /--
   info: 16
   -/
   #guard_msgs in
   #eval min_delivery_time 5 4 3 [[2, 3, 4, 1], [1, 4, 5, 2], [3, 3, 5, 3]]
   
-  /-
+  /--
   info: 23
   -/
   #guard_msgs in

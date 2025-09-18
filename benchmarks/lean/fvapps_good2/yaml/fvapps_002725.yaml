@@ -46,19 +46,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: expected1
   -/
   #guard_msgs in
   #eval alan_annoying_kid "Today I played football."
   
-  /-
+  /--
   info: expected2
   -/
   #guard_msgs in
   #eval alan_annoying_kid "Today I didn"t play football."
   
-  /-
+  /--
   info: expected3
   -/
   #guard_msgs in

@@ -51,25 +51,25 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 21
   -/
   #guard_msgs in
   #eval next_bigger 12
   
-  /-
+  /--
   info: 531
   -/
   #guard_msgs in
   #eval next_bigger 513
   
-  /-
+  /--
   info: 2071
   -/
   #guard_msgs in
   #eval next_bigger 2017
   
-  /-
+  /--
   info: -1
   -/
   #guard_msgs in

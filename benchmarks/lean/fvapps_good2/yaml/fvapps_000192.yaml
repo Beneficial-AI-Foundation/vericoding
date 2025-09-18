@@ -35,19 +35,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
   
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in
   #eval maxSubarraySumCircular [-2, 3, -2, 1]
   
-  /-
+  /--
   info: 10
   -/
   #guard_msgs in
   #eval maxSubarraySumCircular [5, -3, 5]
   
-  /-
+  /--
   info: -1
   -/
   #guard_msgs in

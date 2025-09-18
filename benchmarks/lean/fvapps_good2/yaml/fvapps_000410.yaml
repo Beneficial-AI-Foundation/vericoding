@@ -45,19 +45,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 13
   -/
   #guard_msgs in
   #eval find_longest_even_vowel_substring "eleetminicoworoep"
   
-  /-
+  /--
   info: 5
   -/
   #guard_msgs in
   #eval find_longest_even_vowel_substring "leetcodeisgreat"
   
-  /-
+  /--
   info: 6
   -/
   #guard_msgs in

@@ -36,31 +36,31 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded
   
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in
   #eval langtons_ant 0
   
-  /-
+  /--
   info: 1
   -/
   #guard_msgs in
   #eval langtons_ant 1
   
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval langtons_ant 2
   
-  /-
+  /--
   info: 6
   -/
   #guard_msgs in
   #eval langtons_ant 10
   
-  /-
+  /--
   info: 20
   -/
   #guard_msgs in

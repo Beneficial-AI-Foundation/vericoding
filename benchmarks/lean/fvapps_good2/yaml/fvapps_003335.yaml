@@ -33,13 +33,13 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 'ihrbfj'
   -/
   #guard_msgs in
   #eval encode "cipher" "cipher"
   
-  /-
+  /--
   info: 'ihrbfj'
   -/
   #guard_msgs in

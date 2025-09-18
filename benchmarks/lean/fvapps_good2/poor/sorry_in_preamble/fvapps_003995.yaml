@@ -44,19 +44,19 @@ vc-theorems: |-
   sorry
 
 vc-postamble: |-
-  /-
+  /--
   info: 'emocleW.'
   -/
   #guard_msgs in
   #eval spin_solve "Welcome."
   
-  /-
+  /--
   info: 'MOTHER, PLEASE, HELP, ME.'
   -/
   #guard_msgs in
   #eval spin_solve "Mother, please, help, me."
   
-  /-
+  /--
   info: 'IF 0 man does not keep pace with his snoinapmoc, spahrep IT IS esuaceb HE hears 0 tnereffid remmurd.'
   -/
   #guard_msgs in

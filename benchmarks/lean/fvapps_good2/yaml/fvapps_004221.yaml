@@ -39,19 +39,19 @@ vc-theorems: |-
   sorry
 
 vc-postamble: |-
-  /-
+  /--
   info: 9
   -/
   #guard_msgs in
   #eval presses "LOL"
   
-  /-
+  /--
   info: 13
   -/
   #guard_msgs in
   #eval presses "HOW R U"
   
-  /-
+  /--
   info: 47
   -/
   #guard_msgs in

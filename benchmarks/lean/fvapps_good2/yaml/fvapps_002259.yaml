@@ -47,19 +47,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 6
   -/
   #guard_msgs in
   #eval min_moves_to_equalize 3 [3, 5, 6] [3, 2, 3]
   
-  /-
+  /--
   info: 16
   -/
   #guard_msgs in
   #eval min_moves_to_equalize 5 [1, 2, 3, 4, 5] [5, 4, 3, 2, 1]
   
-  /-
+  /--
   info: 7
   -/
   #guard_msgs in

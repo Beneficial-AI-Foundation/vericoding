@@ -41,19 +41,19 @@ vc-postamble: |-
   -- Apps difficulty: competition
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 'a'
   -/
   #guard_msgs in
   #eval find_smallest_substring 3 "cbabc"
   
-  /-
+  /--
   info: 'aab'
   -/
   #guard_msgs in
   #eval find_smallest_substring 2 "abcab"
   
-  /-
+  /--
   info: 'aaabb'
   -/
   #guard_msgs in

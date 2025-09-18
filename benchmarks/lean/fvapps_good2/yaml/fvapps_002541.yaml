@@ -34,19 +34,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 'b***i***t***c***o***i***n'
   -/
   #guard_msgs in
   #eval two_sort ["bitcoin", "take", "over", "the", "world", "maybe", "who", "knows", "perhaps"]
   
-  /-
+  /--
   info: 'a***r***e'
   -/
   #guard_msgs in
   #eval two_sort ["turns", "out", "random", "test", "cases", "are", "easier", "than", "writing", "out", "basic", "ones"]
   
-  /-
+  /--
   info: 'L***e***t***s'
   -/
   #guard_msgs in

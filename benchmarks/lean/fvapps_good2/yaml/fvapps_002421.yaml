@@ -54,19 +54,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 5
   -/
   #guard_msgs in
   #eval largest_triangle_perimeter [2, 1, 2]
   
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in
   #eval largest_triangle_perimeter [1, 2, 1]
   
-  /-
+  /--
   info: 10
   -/
   #guard_msgs in

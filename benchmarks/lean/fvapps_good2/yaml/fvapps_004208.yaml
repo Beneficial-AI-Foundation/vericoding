@@ -33,19 +33,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 24
   -/
   #guard_msgs in
   #eval div_num 15 30
   
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval div_num 1 2
   
-  /-
+  /--
   info: 'Error'
   -/
   #guard_msgs in

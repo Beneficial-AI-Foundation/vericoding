@@ -32,19 +32,19 @@ vc-theorems: |-
   sorry
 
 vc-postamble: |-
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in
   #eval solve_prime_sum 1
   
-  /-
+  /--
   info: 8
   -/
   #guard_msgs in
   #eval solve_prime_sum 2
   
-  /-
+  /--
   info: 19
   -/
   #guard_msgs in

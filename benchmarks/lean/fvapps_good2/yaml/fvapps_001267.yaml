@@ -51,7 +51,7 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: [1, 2, 3]
   -/
   #guard_msgs in

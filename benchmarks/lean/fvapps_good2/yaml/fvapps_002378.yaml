@@ -59,19 +59,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: '1[.]1[.]1[.]1'
   -/
   #guard_msgs in
   #eval defang_ip_addr "1.1.1.1"
   
-  /-
+  /--
   info: '255[.]100[.]50[.]0'
   -/
   #guard_msgs in
   #eval defang_ip_addr "255.100.50.0"
   
-  /-
+  /--
   info: '192[.]168[.]1[.]1'
   -/
   #guard_msgs in

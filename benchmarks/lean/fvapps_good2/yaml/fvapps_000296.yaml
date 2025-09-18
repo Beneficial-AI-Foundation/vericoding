@@ -49,19 +49,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 84
   -/
   #guard_msgs in
   #eval max_sum_after_partitioning [1, 15, 7, 9, 2, 5, 10] 3
   
-  /-
+  /--
   info: 83
   -/
   #guard_msgs in
   #eval max_sum_after_partitioning [1, 4, 1, 5, 7, 3, 6, 1, 9, 9, 3] 4
   
-  /-
+  /--
   info: 1
   -/
   #guard_msgs in

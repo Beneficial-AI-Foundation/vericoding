@@ -51,19 +51,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: ['aabb', 'bbaa']
   -/
   #guard_msgs in
   #eval anagrams "abba" ["aabb", "abcd", "bbaa", "dada"]
   
-  /-
+  /--
   info: ['carer', 'racer']
   -/
   #guard_msgs in
   #eval anagrams "racer" ["crazer", "carer", "racar", "caers", "racer"]
   
-  /-
+  /--
   info: []
   -/
   #guard_msgs in

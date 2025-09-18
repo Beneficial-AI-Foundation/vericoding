@@ -43,31 +43,31 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 'In with a chance'
   -/
   #guard_msgs in
   #eval validate_number "07454876120"
   
-  /-
+  /--
   info: 'In with a chance'
   -/
   #guard_msgs in
   #eval validate_number "0745--487-61-20"
   
-  /-
+  /--
   info: 'In with a chance'
   -/
   #guard_msgs in
   #eval validate_number "+447535514555"
   
-  /-
+  /--
   info: 'Plenty more fish in the sea'
   -/
   #guard_msgs in
   #eval validate_number "0754876120"
   
-  /-
+  /--
   info: 'Plenty more fish in the sea'
   -/
   #guard_msgs in

@@ -49,19 +49,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 'x-y-z'
   -/
   #guard_msgs in
   #eval solve "x-(y+z)"
   
-  /-
+  /--
   info: 'x-y+z'
   -/
   #guard_msgs in
   #eval solve "x-(y-z)"
   
-  /-
+  /--
   info: 'u-v+w+x+y-z'
   -/
   #guard_msgs in

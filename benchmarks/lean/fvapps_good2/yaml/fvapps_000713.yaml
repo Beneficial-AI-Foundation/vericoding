@@ -26,19 +26,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
   
-  /-
+  /--
   info: 5
   -/
   #guard_msgs in
   #eval find_weird_distance 4 [1, 3, 3, 4] [1, 2, 4, 4]
   
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in
   #eval find_weird_distance 2 [2, 3] [3, 2]
   
-  /-
+  /--
   info: 6
   -/
   #guard_msgs in

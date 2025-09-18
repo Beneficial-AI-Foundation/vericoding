@@ -42,19 +42,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 'heLLo world'
   -/
   #guard_msgs in
   #eval reverse "hello world"
   
-  /-
+  /--
   info: 'www'
   -/
   #guard_msgs in
   #eval reverse "WWW"
   
-  /-
+  /--
   info: 'bOOKKEEper'
   -/
   #guard_msgs in

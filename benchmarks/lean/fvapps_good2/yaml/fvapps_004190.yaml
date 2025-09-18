@@ -63,19 +63,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in
   #eval to_seconds "00:00:00"
   
-  /-
+  /--
   info: 3723
   -/
   #guard_msgs in
   #eval to_seconds "01:02:03"
   
-  /-
+  /--
   info: 359999
   -/
   #guard_msgs in

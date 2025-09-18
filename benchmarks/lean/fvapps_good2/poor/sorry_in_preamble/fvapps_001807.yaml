@@ -31,19 +31,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded
   
-  /-
+  /--
   info: [0, 1, 1, 2, 1, 2]
   -/
   #guard_msgs in
   #eval count_bits 5
   
-  /-
+  /--
   info: [0]
   -/
   #guard_msgs in
   #eval count_bits 0
   
-  /-
+  /--
   info: [0, 1, 1]
   -/
   #guard_msgs in

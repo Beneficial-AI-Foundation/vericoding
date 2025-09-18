@@ -31,19 +31,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: '100.00'
   -/
   #guard_msgs in
   #eval share_price 100 []
   
-  /-
+  /--
   info: '75.00'
   -/
   #guard_msgs in
   #eval share_price 100 [-50, 50]
   
-  /-
+  /--
   info: '1113.64'
   -/
   #guard_msgs in

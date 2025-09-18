@@ -34,19 +34,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 'abc'
   -/
   #guard_msgs in
   #eval combine_strings "abc"
   
-  /-
+  /--
   info: 'a1b2c3'
   -/
   #guard_msgs in
   #eval combine_strings "abc" "123"
   
-  /-
+  /--
   info: 'a1$b2%c3^d&'
   -/
   #guard_msgs in

@@ -45,19 +45,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval numBusesToDestination [[1, 2, 7], [3, 6, 7]] 1 6
   
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval numBusesToDestination [[1, 2, 3], [3, 4, 5]] 1 5
   
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in

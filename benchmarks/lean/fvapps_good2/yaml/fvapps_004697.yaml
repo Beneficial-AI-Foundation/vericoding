@@ -46,13 +46,13 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 1
   -/
   #guard_msgs in
   #eval count_deaf_rats ["↗ P     ", "  ↘   ↖", "  ↑     ", "↗       "]
   
-  /-
+  /--
   info: 7
   -/
   #guard_msgs in

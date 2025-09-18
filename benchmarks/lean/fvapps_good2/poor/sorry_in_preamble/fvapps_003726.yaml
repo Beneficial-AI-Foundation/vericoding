@@ -37,25 +37,25 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: '25, 5'
   -/
   #guard_msgs in
   #eval check_root "1,2,3,4"
   
-  /-
+  /--
   info: '25, 5'
   -/
   #guard_msgs in
   #eval check_root "-4,-3,-2,-1"
   
-  /-
+  /--
   info: 'incorrect input'
   -/
   #guard_msgs in
   #eval check_root "1,2,3"
   
-  /-
+  /--
   info: 'not consecutive'
   -/
   #guard_msgs in

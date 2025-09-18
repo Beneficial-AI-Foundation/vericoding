@@ -51,19 +51,19 @@ vc-postamble: |-
   -- Apps difficulty: competition
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 4
   -/
   #guard_msgs in
   #eval solve_minimized_workload 5 2 [2, 3, 4, 4, 3]
   
-  /-
+  /--
   info: 1
   -/
   #guard_msgs in
   #eval solve_minimized_workload 3 1 [2, 10, 1000]
   
-  /-
+  /--
   info: 146981438
   -/
   #guard_msgs in

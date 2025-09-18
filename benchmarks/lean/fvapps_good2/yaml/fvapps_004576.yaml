@@ -42,13 +42,13 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 149
   -/
   #guard_msgs in
   #eval new_avg [14, 30, 5, 7, 9, 11, 15] 30
   
-  /-
+  /--
   info: 645
   -/
   #guard_msgs in

@@ -35,19 +35,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 'bac'
   -/
   #guard_msgs in
   #eval middle_permutation "abc"
   
-  /-
+  /--
   info: 'bdca'
   -/
   #guard_msgs in
   #eval middle_permutation "abcd"
   
-  /-
+  /--
   info: 'cbxda'
   -/
   #guard_msgs in

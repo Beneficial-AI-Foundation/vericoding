@@ -50,19 +50,19 @@ vc-theorems: |-
   sorry
 
 vc-postamble: |-
-  /-
+  /--
   info: []
   -/
   #guard_msgs in
   #eval shades_of_grey -1
   
-  /-
+  /--
   info: ['#010101']
   -/
   #guard_msgs in
   #eval shades_of_grey 1
   
-  /-
+  /--
   info: ['#010101', '#020202', '#030303']
   -/
   #guard_msgs in

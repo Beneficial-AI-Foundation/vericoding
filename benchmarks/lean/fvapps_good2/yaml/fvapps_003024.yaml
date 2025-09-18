@@ -45,19 +45,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 7
   -/
   #guard_msgs in
   #eval last_digit_to_appear 2
   
-  /-
+  /--
   info: 7
   -/
   #guard_msgs in
   #eval last_digit_to_appear 8
   
-  /-
+  /--
   info: None
   -/
   #guard_msgs in

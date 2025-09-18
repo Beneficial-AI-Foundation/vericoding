@@ -22,19 +22,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
   
-  /-
+  /--
   info: 11111
   -/
   #guard_msgs in
   #eval morse_converter ".----.----.----.----.----"
   
-  /-
+  /--
   info: 207600
   -/
   #guard_msgs in
   #eval morse_converter "..----------...-....----------"
   
-  /-
+  /--
   info: 1234567890
   -/
   #guard_msgs in

@@ -33,19 +33,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded
   
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval find_number_of_lis [1, 3, 5, 4, 7]
   
-  /-
+  /--
   info: 5
   -/
   #guard_msgs in
   #eval find_number_of_lis [2, 2, 2, 2, 2]
   
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in

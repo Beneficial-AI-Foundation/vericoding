@@ -35,19 +35,19 @@ vc-postamble: |-
   -- Apps difficulty: competition
   -- Assurance level: guarded_and_plausible
   
-  /-
+  /--
   info: 4
   -/
   #guard_msgs in
   #eval min_rounds_needed 3 [3, 2, 2]
   
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in
   #eval min_rounds_needed 4 [2, 2, 2, 2]
   
-  /-
+  /--
   info: 1005000000
   -/
   #guard_msgs in

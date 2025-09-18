@@ -50,19 +50,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded
   
-  /-
+  /--
   info: 9983
   -/
   #guard_msgs in
   #eval maximize_stock_price 4483 2
   
-  /-
+  /--
   info: 9234
   -/
   #guard_msgs in
   #eval maximize_stock_price 1234 1
   
-  /-
+  /--
   info: 9999
   -/
   #guard_msgs in

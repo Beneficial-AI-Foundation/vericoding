@@ -35,19 +35,19 @@ vc-theorems: |-
   sorry
 
 vc-postamble: |-
-  /-
+  /--
   info: 'Sunday 00:00'
   -/
   #guard_msgs in
   #eval day_and_time 0
   
-  /-
+  /--
   info: 'Saturday 23:57'
   -/
   #guard_msgs in
   #eval day_and_time -3
   
-  /-
+  /--
   info: 'Monday 00:07'
   -/
   #guard_msgs in

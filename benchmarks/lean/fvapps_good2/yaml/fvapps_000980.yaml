@@ -58,19 +58,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 'chef'
   -/
   #guard_msgs in
   #eval classify_message 5 1 "frauD"
   
-  /-
+  /--
   info: 'brother'
   -/
   #guard_msgs in
   #eval classify_message 5 1 "FRAUD"
   
-  /-
+  /--
   info: 'both'
   -/
   #guard_msgs in

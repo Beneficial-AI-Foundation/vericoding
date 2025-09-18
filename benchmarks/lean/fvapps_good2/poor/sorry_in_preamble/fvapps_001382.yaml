@@ -67,19 +67,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: '7'
   -/
   #guard_msgs in
   #eval get_lucky_string "4" "7"
   
-  /-
+  /--
   info: '74'
   -/
   #guard_msgs in
   #eval get_lucky_string "435" "479"
   
-  /-
+  /--
   info: '777744'
   -/
   #guard_msgs in

@@ -45,19 +45,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: expected1
   -/
   #guard_msgs in
   #eval solve_equations ["2x + 4y + 6z = 18", "3y + 3z = 6", "x + 2y = z - 3"]
   
-  /-
+  /--
   info: None
   -/
   #guard_msgs in
   #eval solve_equations ["x + y = 2", "x + y = 3"]
   
-  /-
+  /--
   info: expected3
   -/
   #guard_msgs in

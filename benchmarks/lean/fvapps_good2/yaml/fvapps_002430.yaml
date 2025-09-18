@@ -34,19 +34,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 'this   is   a   sentence'
   -/
   #guard_msgs in
   #eval reorder_spaces "  this   is  a sentence "
   
-  /-
+  /--
   info: 'practice   makes   perfect '
   -/
   #guard_msgs in
   #eval reorder_spaces " practice   makes   perfect"
   
-  /-
+  /--
   info: 'a'
   -/
   #guard_msgs in

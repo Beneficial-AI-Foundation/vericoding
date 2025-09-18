@@ -41,19 +41,19 @@ vc-theorems: |-
   sorry
 
 vc-postamble: |-
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in
   #eval variance ["Hello", "world"]
   
-  /-
+  /--
   info: 2.25
   -/
   #guard_msgs in
   #eval variance ["Hi", "world"]
   
-  /-
+  /--
   info: 7.5556
   -/
   #guard_msgs in

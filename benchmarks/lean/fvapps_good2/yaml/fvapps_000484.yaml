@@ -36,19 +36,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: expected1
   -/
   #guard_msgs in
   #eval lastStoneWeightII [2, 7, 4, 1, 8, 1]
   
-  /-
+  /--
   info: expected2
   -/
   #guard_msgs in
   #eval lastStoneWeightII [1, 1, 1]
   
-  /-
+  /--
   info: expected3
   -/
   #guard_msgs in

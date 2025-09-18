@@ -44,21 +44,21 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /- Helper function to check if a string expression evaluates to a number -/
+  /-- Helper function to check if a string expression evaluates to a number -/
   
-  /-
+  /--
   info: 5
   -/
   #guard_msgs in
   #eval operator_insertor 11
   
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in
   #eval operator_insertor 100
   
-  /-
+  /--
   info: None
   -/
   #guard_msgs in

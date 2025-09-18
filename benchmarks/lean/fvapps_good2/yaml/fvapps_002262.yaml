@@ -43,19 +43,19 @@ vc-theorems: |-
   sorry
 
 vc-postamble: |-
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in
   #eval find_shortest_prefix 4 [1, 2, 3, 4]
   
-  /-
+  /--
   info: 4
   -/
   #guard_msgs in
   #eval find_shortest_prefix 7 [4, 3, 3, 8, 4, 5, 2]
   
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in

@@ -25,19 +25,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
   
-  /-
+  /--
   info: 4
   -/
   #guard_msgs in
   #eval maximum_sum_with_deletion [1, -2, 0, 3]
   
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in
   #eval maximum_sum_with_deletion [1, -2, -2, 3]
   
-  /-
+  /--
   info: -1
   -/
   #guard_msgs in

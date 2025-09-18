@@ -45,19 +45,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: {3: 8}
   -/
   #guard_msgs in
   #eval bracket_pairs "len(list)"
   
-  /-
+  /--
   info: {}
   -/
   #guard_msgs in
   #eval bracket_pairs "string"
   
-  /-
+  /--
   info: {0: 9, 2: 4, 6: 7}
   -/
   #guard_msgs in

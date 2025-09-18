@@ -46,13 +46,13 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval solve 7 2 13 [[1, 10, 1], [1, 14, 2], [6, 4, 1], [2, 2, 1], [0, 12, 2], [2, 11, 2], [0, 6, 1]] [8, 10]
   
-  /-
+  /--
   info: 4
   -/
   #guard_msgs in

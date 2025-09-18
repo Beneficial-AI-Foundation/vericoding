@@ -46,19 +46,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: [2, 4]
   -/
   #guard_msgs in
   #eval find_common_divisors [38, 6, 34]
   
-  /-
+  /--
   info: [2, 3, 6]
   -/
   #guard_msgs in
   #eval find_common_divisors [12, 18, 24]
   
-  /-
+  /--
   info: [5]
   -/
   #guard_msgs in

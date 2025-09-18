@@ -37,19 +37,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded
   
-  /-
+  /--
   info: 32768
   -/
   #guard_msgs in
   #eval flip_bit 0 16
   
-  /-
+  /--
   info: 1073741823
   -/
   #guard_msgs in
   #eval flip_bit 2147483647 31
   
-  /-
+  /--
   info: 255
   -/
   #guard_msgs in

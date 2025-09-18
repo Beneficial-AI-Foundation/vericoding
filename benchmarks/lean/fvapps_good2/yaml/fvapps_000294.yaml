@@ -46,19 +46,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
   
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval max_uncrossed_lines [1, 4, 2] [1, 2, 4]
   
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in
   #eval max_uncrossed_lines [2, 5, 1, 2, 5] [10, 5, 2, 1, 5, 2]
   
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in

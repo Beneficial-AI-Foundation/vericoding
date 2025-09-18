@@ -39,19 +39,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 'Take this back!'
   -/
   #guard_msgs in
   #eval present "badpresent" 3
   
-  /-
+  /--
   info: 'pxxmy{n|nw}'
   -/
   #guard_msgs in
   #eval present "goodpresent" 9
   
-  /-
+  /--
   info: 'pass out from excitement 23 times'
   -/
   #guard_msgs in

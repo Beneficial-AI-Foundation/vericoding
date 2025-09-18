@@ -45,19 +45,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: expected1
   -/
   #guard_msgs in
   #eval highlight "F3RF5LF7"
   
-  /-
+  /--
   info: expected2
   -/
   #guard_msgs in
   #eval highlight "FFFR345F2LL"
   
-  /-
+  /--
   info: expected3
   -/
   #guard_msgs in

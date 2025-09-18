@@ -29,19 +29,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded
   
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in
   #eval solve_swaps 1
   
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in
   #eval solve_swaps 2
   
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in

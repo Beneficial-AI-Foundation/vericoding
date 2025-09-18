@@ -33,19 +33,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 4
   -/
   #guard_msgs in
   #eval binary_gcd 300 45
   
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in
   #eval binary_gcd 0 0
   
-  /-
+  /--
   info: 1
   -/
   #guard_msgs in

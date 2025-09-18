@@ -34,13 +34,13 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 6
   -/
   #guard_msgs in
   #eval solve_virus_spread 9 "000010000" 3 [2, 5, 8]
   
-  /-
+  /--
   info: 1
   -/
   #guard_msgs in

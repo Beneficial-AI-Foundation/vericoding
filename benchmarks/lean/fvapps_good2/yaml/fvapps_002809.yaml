@@ -36,31 +36,31 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
   
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in
   #eval how_many_measurements 1
   
-  /-
+  /--
   info: 1
   -/
   #guard_msgs in
   #eval how_many_measurements 2
   
-  /-
+  /--
   info: 1
   -/
   #guard_msgs in
   #eval how_many_measurements 3
   
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval how_many_measurements 8
   
-  /-
+  /--
   info: 5
   -/
   #guard_msgs in

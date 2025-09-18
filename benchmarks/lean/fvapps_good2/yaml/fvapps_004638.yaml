@@ -43,19 +43,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: '</i>'
   -/
   #guard_msgs in
   #eval html_end_tag_by_start_tag "<i>"
   
-  /-
+  /--
   info: '</button>'
   -/
   #guard_msgs in
   #eval html_end_tag_by_start_tag "<button type="button" disabled>"
   
-  /-
+  /--
   info: '</div>'
   -/
   #guard_msgs in

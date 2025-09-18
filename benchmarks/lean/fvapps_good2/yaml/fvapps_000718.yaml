@@ -35,19 +35,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 'YES'
   -/
   #guard_msgs in
   #eval check_land_split 7 5
   
-  /-
+  /--
   info: 'NO'
   -/
   #guard_msgs in
   #eval check_land_split 6 5
   
-  /-
+  /--
   info: 'YES'
   -/
   #guard_msgs in

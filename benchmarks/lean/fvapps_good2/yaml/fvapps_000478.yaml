@@ -60,19 +60,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 4
   -/
   #guard_msgs in
   #eval max_width_ramp [6, 0, 8, 2, 1, 5]
   
-  /-
+  /--
   info: 7
   -/
   #guard_msgs in
   #eval max_width_ramp [9, 8, 1, 0, 1, 9, 4, 0, 4, 1]
   
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in

@@ -24,19 +24,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
   
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in
   #eval check_divisible_by_five "19"
   
-  /-
+  /--
   info: 1
   -/
   #guard_msgs in
   #eval check_divisible_by_five "385"
   
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in

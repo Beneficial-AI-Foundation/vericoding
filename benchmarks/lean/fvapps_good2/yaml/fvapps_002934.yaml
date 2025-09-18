@@ -51,19 +51,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 'OK'
   -/
   #guard_msgs in
   #eval solve "abba"
   
-  /-
+  /--
   info: 'remove one'
   -/
   #guard_msgs in
   #eval solve "abbaa"
   
-  /-
+  /--
   info: 'not possible'
   -/
   #guard_msgs in

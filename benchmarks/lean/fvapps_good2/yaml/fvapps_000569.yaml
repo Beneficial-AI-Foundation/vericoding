@@ -44,19 +44,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in
   #eval solve_evil_sorcerer 4 [5]
   
-  /-
+  /--
   info: 4
   -/
   #guard_msgs in
   #eval solve_evil_sorcerer 6 [2, 4]
   
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in

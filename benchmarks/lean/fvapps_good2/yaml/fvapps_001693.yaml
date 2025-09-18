@@ -53,19 +53,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 49
   -/
   #guard_msgs in
   #eval mouse_path "4R2L1R5R9R4R4L3"
   
-  /-
+  /--
   info: None
   -/
   #guard_msgs in
   #eval mouse_path "4R2L1R5"
   
-  /-
+  /--
   info: None
   -/
   #guard_msgs in

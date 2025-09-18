@@ -49,19 +49,19 @@ vc-theorems: |-
   sorry
 
 vc-postamble: |-
-  /-
+  /--
   info: [[], 3]
   -/
   #guard_msgs in
   #eval decompose 3
   
-  /-
+  /--
   info: [[4, 2], 1]
   -/
   #guard_msgs in
   #eval decompose 26
   
-  /-
+  /--
   info: [[], 0]
   -/
   #guard_msgs in

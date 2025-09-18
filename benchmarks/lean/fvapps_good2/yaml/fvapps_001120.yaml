@@ -37,19 +37,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in
   #eval count_ciel_number_prices ["milk 58", "Ciel"s Drink 80", "The curry 2nd edition 888888", "rice omelet 85855", "unagi 1", "The first and last letters can be a space 358"]
   
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval count_ciel_number_prices ["menu 8", "special 853", "dessert 123"]
   
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in

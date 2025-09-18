@@ -30,19 +30,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
   
-  /-
+  /--
   info: 15
   -/
   #guard_msgs in
   #eval subtract_product_and_sum 234
   
-  /-
+  /--
   info: 21
   -/
   #guard_msgs in
   #eval subtract_product_and_sum 4421
   
-  /-
+  /--
   info: -2
   -/
   #guard_msgs in

@@ -40,19 +40,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
   
-  /-
+  /--
   info: (20, 2)
   -/
   #guard_msgs in
   #eval find_rectangle_areas 5 [4, 2, 1, 5, 3]
   
-  /-
+  /--
   info: (12, 2)
   -/
   #guard_msgs in
   #eval find_rectangle_areas 4 [1, 2, 3, 4]
   
-  /-
+  /--
   info: (30, 2)
   -/
   #guard_msgs in

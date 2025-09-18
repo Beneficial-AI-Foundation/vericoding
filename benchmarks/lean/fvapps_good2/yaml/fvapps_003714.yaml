@@ -50,19 +50,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: '11'
   -/
   #guard_msgs in
   #eval arr2bin [1, 2]
   
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval arr2bin [1, 2, "a"]
   
-  /-
+  /--
   info: '0'
   -/
   #guard_msgs in

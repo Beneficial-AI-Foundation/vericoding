@@ -37,19 +37,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 'R1C1'
   -/
   #guard_msgs in
   #eval spreadsheet "A1"
   
-  /-
+  /--
   info: 'AA48'
   -/
   #guard_msgs in
   #eval spreadsheet "R48C27"
   
-  /-
+  /--
   info: 'R12C63'
   -/
   #guard_msgs in

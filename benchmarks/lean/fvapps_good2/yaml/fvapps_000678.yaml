@@ -42,19 +42,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 12
   -/
   #guard_msgs in
   #eval find_max_consecutive_power [1, 2, 3, 4, 5] 3
   
-  /-
+  /--
   info: -3
   -/
   #guard_msgs in
   #eval find_max_consecutive_power [-1, -2, -3, -4, -5] 2
   
-  /-
+  /--
   info: 4
   -/
   #guard_msgs in

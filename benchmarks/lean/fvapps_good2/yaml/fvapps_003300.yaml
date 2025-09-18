@@ -36,19 +36,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
   
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval unlucky_number 20
   
-  /-
+  /--
   info: 7
   -/
   #guard_msgs in
   #eval unlucky_number 100
   
-  /-
+  /--
   info: 40
   -/
   #guard_msgs in

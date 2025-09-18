@@ -49,19 +49,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 'Bart, Lisa & Maggie'
   -/
   #guard_msgs in
   #eval namelist [{"name": "Bart"}, {"name": "Lisa"}, {"name": "Maggie"}]
   
-  /-
+  /--
   info: 'Bart & Lisa'
   -/
   #guard_msgs in
   #eval namelist [{"name": "Bart"}, {"name": "Lisa"}]
   
-  /-
+  /--
   info: ''
   -/
   #guard_msgs in

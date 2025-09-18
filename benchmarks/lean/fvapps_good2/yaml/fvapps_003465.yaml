@@ -38,19 +38,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 'RBRB'
   -/
   #guard_msgs in
   #eval button_sequences "10011010" "10110111"
   
-  /-
+  /--
   info: 'RB'
   -/
   #guard_msgs in
   #eval button_sequences "01001000" "01011100"
   
-  /-
+  /--
   info: 'RBRBRBRB'
   -/
   #guard_msgs in

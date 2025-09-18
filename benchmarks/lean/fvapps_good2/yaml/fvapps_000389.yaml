@@ -39,19 +39,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval num_decodings "12"
   
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in
   #eval num_decodings "226"
   
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in

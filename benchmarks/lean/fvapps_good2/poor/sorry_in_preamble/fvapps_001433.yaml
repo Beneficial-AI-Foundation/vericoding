@@ -50,19 +50,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded
   
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval solve_pizza_balance 6 ["100000", "100000", "100000", "100000", "010010", "001100"]
   
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in
   #eval solve_pizza_balance 4 ["0011", "1100", "1110", "0001"]
   
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in

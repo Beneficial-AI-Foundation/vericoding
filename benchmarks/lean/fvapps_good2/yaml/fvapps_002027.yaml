@@ -35,19 +35,19 @@ vc-theorems: |-
   sorry
 
 vc-postamble: |-
-  /-
+  /--
   info: 'NO'
   -/
   #guard_msgs in
   #eval stones_game 1 [5]
   
-  /-
+  /--
   info: 'YES'
   -/
   #guard_msgs in
   #eval stones_game 2 [1, 2]
   
-  /-
+  /--
   info: 'NO'
   -/
   #guard_msgs in

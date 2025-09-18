@@ -50,19 +50,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded
   
-  /-
+  /--
   info: [[1, 1], [42, 2500], [246, 84100]]
   -/
   #guard_msgs in
   #eval list_squared 1 250
   
-  /-
+  /--
   info: [[42, 2500], [246, 84100]]
   -/
   #guard_msgs in
   #eval list_squared 42 250
   
-  /-
+  /--
   info: [[287, 84100]]
   -/
   #guard_msgs in

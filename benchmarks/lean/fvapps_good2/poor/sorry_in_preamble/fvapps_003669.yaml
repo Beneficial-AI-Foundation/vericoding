@@ -50,19 +50,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: '128.114.17.104'
   -/
   #guard_msgs in
   #eval int32_to_ip 2154959208
   
-  /-
+  /--
   info: '0.0.0.0'
   -/
   #guard_msgs in
   #eval int32_to_ip 0
   
-  /-
+  /--
   info: '128.32.10.1'
   -/
   #guard_msgs in

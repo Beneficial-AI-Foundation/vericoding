@@ -42,19 +42,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: None
   -/
   #guard_msgs in
   #eval string_color "A"
   
-  /-
+  /--
   info: None
   -/
   #guard_msgs in
   #eval string_color ""
   
-  /-
+  /--
   info: '79CAE5'
   -/
   #guard_msgs in

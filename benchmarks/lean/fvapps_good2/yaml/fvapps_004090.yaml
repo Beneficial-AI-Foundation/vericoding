@@ -64,19 +64,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: [0, 1]
   -/
   #guard_msgs in
   #eval chess_bishop_dream [3, 7] [1, 2] [-1, 1] 13
   
-  /-
+  /--
   info: [0, 1]
   -/
   #guard_msgs in
   #eval chess_bishop_dream [1, 2] [0, 0] [1, 1] 6
   
-  /-
+  /--
   info: [1, 0]
   -/
   #guard_msgs in

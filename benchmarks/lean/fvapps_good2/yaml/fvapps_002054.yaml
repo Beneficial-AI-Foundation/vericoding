@@ -36,19 +36,19 @@ vc-postamble: |-
   -- Apps difficulty: competition
   -- Assurance level: guarded
   
-  /-
+  /--
   info: 48
   -/
   #guard_msgs in
   #eval find_max_fun_factor 5 2 11 #[8, 10, 15, 23, 5]
   
-  /-
+  /--
   info: 195
   -/
   #guard_msgs in
   #eval find_max_fun_factor 20 2 16 #[20, 5, 8, 2, 18, 16, 2, 16, 16, 1, 5, 16, 2, 13, 6, 16, 4, 17, 21, 7]
   
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in

@@ -37,19 +37,19 @@ vc-theorems: |-
   sorry
 
 vc-postamble: |-
-  /-
+  /--
   info: 'H'
   -/
   #guard_msgs in
   #eval okkOokOo "Ok, Ook, Ooo!"
   
-  /-
+  /--
   info: 'Hello'
   -/
   #guard_msgs in
   #eval okkOokOo "Ok, Ook, Ooo?  Okk, Ook, Ok?  Okk, Okk, Oo?  Okk, Okk, Oo?  Okk, Okkkk!"
   
-  /-
+  /--
   info: 'World!'
   -/
   #guard_msgs in

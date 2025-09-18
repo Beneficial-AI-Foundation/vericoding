@@ -56,19 +56,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: [-3375, -1331, -1, 1, 1331, 3375]
   -/
   #guard_msgs in
   #eval odd_dig_cubic -5000 5000
   
-  /-
+  /--
   info: [1, 1331, 3375]
   -/
   #guard_msgs in
   #eval odd_dig_cubic 0 5000
   
-  /-
+  /--
   info: [-3375, -1331]
   -/
   #guard_msgs in

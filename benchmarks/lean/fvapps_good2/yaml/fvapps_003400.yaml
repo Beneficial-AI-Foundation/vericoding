@@ -40,19 +40,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: [8, 218, 379, 2388]
   -/
   #guard_msgs in
   #eval proc_seq 23 17 89
   
-  /-
+  /--
   info: [1, 2222]
   -/
   #guard_msgs in
   #eval proc_seq 22 22 22 22
   
-  /-
+  /--
   info: [4, 218, 358, 1152]
   -/
   #guard_msgs in

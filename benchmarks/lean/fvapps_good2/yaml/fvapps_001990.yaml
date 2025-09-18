@@ -91,19 +91,19 @@ vc-postamble: |-
   -- Apps difficulty: competition
   -- Assurance level: guarded
   
-  /-
+  /--
   info: 200
   -/
   #guard_msgs in
   #eval solve_discount_shopping 1 [2] 4 [50, 50, 100, 100]
   
-  /-
+  /--
   info: 150
   -/
   #guard_msgs in
   #eval solve_discount_shopping 2 [2, 3] 5 [50, 50, 50, 50, 50]
   
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in

@@ -35,19 +35,19 @@ vc-postamble: |-
   -- Apps difficulty: competition
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in
   #eval count_rectangle_pairs 1 [(1, 1, 9)]
   
-  /-
+  /--
   info: 6
   -/
   #guard_msgs in
   #eval count_rectangle_pairs 2 [(2, 3, 20), (2, 4, 40)]
   
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in

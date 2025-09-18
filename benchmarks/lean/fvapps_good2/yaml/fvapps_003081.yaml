@@ -47,19 +47,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 1
   -/
   #guard_msgs in
   #eval maximum_product [1, 2, 3]
   
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval maximum_product [-1, 2, -3]
   
-  /-
+  /--
   info: -1
   -/
   #guard_msgs in

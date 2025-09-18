@@ -23,19 +23,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
   
-  /-
+  /--
   info: 26
   -/
   #guard_msgs in
   #eval solve "zodiac"
   
-  /-
+  /--
   info: 57
   -/
   #guard_msgs in
   #eval solve "strength"
   
-  /-
+  /--
   info: 73
   -/
   #guard_msgs in

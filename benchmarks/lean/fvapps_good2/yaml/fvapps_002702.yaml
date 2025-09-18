@@ -36,19 +36,19 @@ vc-theorems: |-
   sorry
 
 vc-postamble: |-
-  /-
+  /--
   info: [0, 0, 2]
   -/
   #guard_msgs in
   #eval withdraw 40
   
-  /-
+  /--
   info: [2, 1, 0]
   -/
   #guard_msgs in
   #eval withdraw 250
   
-  /-
+  /--
   info: [2, 0, 3]
   -/
   #guard_msgs in

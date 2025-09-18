@@ -46,37 +46,37 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: encrypted1
   -/
   #guard_msgs in
   #eval encrypt "Business"
   
-  /-
+  /--
   info: text1
   -/
   #guard_msgs in
   #eval decrypt encrypted1
   
-  /-
+  /--
   info: encrypted2
   -/
   #guard_msgs in
   #eval encrypt "This is a test!"
   
-  /-
+  /--
   info: text2
   -/
   #guard_msgs in
   #eval decrypt encrypted2
   
-  /-
+  /--
   info: ''
   -/
   #guard_msgs in
   #eval encrypt ""
   
-  /-
+  /--
   info: ''
   -/
   #guard_msgs in

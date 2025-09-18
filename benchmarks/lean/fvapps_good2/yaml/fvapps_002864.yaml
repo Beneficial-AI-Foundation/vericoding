@@ -37,19 +37,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval shared_bits 1 2
   
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval shared_bits 7 10
   
-  /-
+  /--
   info: True
   -/
   #guard_msgs in

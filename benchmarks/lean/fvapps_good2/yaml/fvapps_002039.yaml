@@ -28,19 +28,19 @@ vc-postamble: |-
   -- Apps difficulty: competition
   -- Assurance level: guarded_and_plausible
   
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in
   #eval solve_startups 3 [-1, -1, -1]
   
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in
   #eval solve_startups 2 [2, -1]
   
-  /-
+  /--
   info: 755808950
   -/
   #guard_msgs in

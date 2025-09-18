@@ -36,19 +36,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 440
   -/
   #guard_msgs in
   #eval arithmetic_sequence_sum 3 2 20
   
-  /-
+  /--
   info: 110
   -/
   #guard_msgs in
   #eval arithmetic_sequence_sum 2 2 10
   
-  /-
+  /--
   info: -80
   -/
   #guard_msgs in

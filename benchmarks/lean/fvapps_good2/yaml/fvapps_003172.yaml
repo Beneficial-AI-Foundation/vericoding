@@ -50,19 +50,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded
   
-  /-
+  /--
   info: []
   -/
   #guard_msgs in
   #eval ones_counter [0, 0, 0, 0, 0, 0, 0, 0]
   
-  /-
+  /--
   info: [3, 1, 2]
   -/
   #guard_msgs in
   #eval ones_counter [1, 1, 1, 0, 0, 1, 0, 1, 1, 0]
   
-  /-
+  /--
   info: [1, 2, 4, 1]
   -/
   #guard_msgs in

@@ -40,19 +40,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: '1,000'
   -/
   #guard_msgs in
   #eval commas 1000
   
-  /-
+  /--
   info: '100.235'
   -/
   #guard_msgs in
   #eval commas 100.2346
   
-  /-
+  /--
   info: '-1,000,000.123'
   -/
   #guard_msgs in

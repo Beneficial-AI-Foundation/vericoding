@@ -41,19 +41,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 5
   -/
   #guard_msgs in
   #eval spread lambda x, y: x + y [2, 3]
   
-  /-
+  /--
   info: 'abc'
   -/
   #guard_msgs in
   #eval spread lambda x, y, z: x + y + z ["a", "b", "c"]
   
-  /-
+  /--
   info: 42
   -/
   #guard_msgs in

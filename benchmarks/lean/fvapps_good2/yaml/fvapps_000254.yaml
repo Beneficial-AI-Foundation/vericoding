@@ -37,19 +37,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 5
   -/
   #guard_msgs in
   #eval find_smallest_divisor [1, 2, 5, 9] 6
   
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in
   #eval find_smallest_divisor [2, 3, 5, 7, 11] 11
   
-  /-
+  /--
   info: 4
   -/
   #guard_msgs in

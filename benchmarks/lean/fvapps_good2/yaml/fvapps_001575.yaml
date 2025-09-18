@@ -38,19 +38,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: '一百二十三点四五'
   -/
   #guard_msgs in
   #eval to_chinese_numeral 123.45
   
-  /-
+  /--
   info: '负一千零四'
   -/
   #guard_msgs in
   #eval to_chinese_numeral -1004
   
-  /-
+  /--
   info: '一万零四点零零五'
   -/
   #guard_msgs in

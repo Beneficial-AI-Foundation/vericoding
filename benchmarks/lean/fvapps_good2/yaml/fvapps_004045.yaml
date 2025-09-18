@@ -62,19 +62,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 'Starting as a deprived, level 6 will require 0 souls.'
   -/
   #guard_msgs in
   #eval souls "deprived" [11, 11, 11, 11, 11, 11, 11, 11]
   
-  /-
+  /--
   info: 'Starting as a pyromancer, level 2 will require 673 souls.'
   -/
   #guard_msgs in
   #eval souls "pyromancer" [10, 12, 11, 12, 9, 12, 11, 8]
   
-  /-
+  /--
   info: 'Starting as a pyromancer, level 12 will require 8348 souls.'
   -/
   #guard_msgs in

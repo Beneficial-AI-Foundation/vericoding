@@ -45,37 +45,37 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 1
   -/
   #guard_msgs in
   #eval to_twos_complement "00000001" 8
   
-  /-
+  /--
   info: '00000001'
   -/
   #guard_msgs in
   #eval from_twos_complement 1 8
   
-  /-
+  /--
   info: -1
   -/
   #guard_msgs in
   #eval to_twos_complement "11111111" 8
   
-  /-
+  /--
   info: '11111111'
   -/
   #guard_msgs in
   #eval from_twos_complement -1 8
   
-  /-
+  /--
   info: -1440552402
   -/
   #guard_msgs in
   #eval to_twos_complement "1010 1010 0010 0010 1110 1010 0010 1110" 32
   
-  /-
+  /--
   info: '10101010001000101110101000101110'
   -/
   #guard_msgs in

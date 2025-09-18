@@ -60,19 +60,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded
   
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in
   #eval count_nice_strings "aaa"
   
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in
   #eval count_nice_strings "abc"
   
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in

@@ -38,19 +38,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 'Valid'
   -/
   #guard_msgs in
   #eval check_valid_snake_procession "..H..T...HTH....T."
   
-  /-
+  /--
   info: 'Invalid'
   -/
   #guard_msgs in
   #eval check_valid_snake_procession "H..H..T..T"
   
-  /-
+  /--
   info: 'Valid'
   -/
   #guard_msgs in

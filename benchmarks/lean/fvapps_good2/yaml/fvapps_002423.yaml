@@ -38,19 +38,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval is_monotonic [1, 2, 2, 3]
   
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval is_monotonic [6, 5, 4, 4]
   
-  /-
+  /--
   info: False
   -/
   #guard_msgs in

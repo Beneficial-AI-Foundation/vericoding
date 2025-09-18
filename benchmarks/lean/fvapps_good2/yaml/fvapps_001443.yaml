@@ -54,19 +54,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded
   
-  /-
+  /--
   info: 10
   -/
   #guard_msgs in
   #eval find_path_number "lrl"
   
-  /-
+  /--
   info: 14
   -/
   #guard_msgs in
   #eval find_path_number "rll"
   
-  /-
+  /--
   info: 4
   -/
   #guard_msgs in

@@ -44,19 +44,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in
   #eval maximum_gap [3, 6, 9, 1]
   
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in
   #eval maximum_gap [10]
   
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in

@@ -44,19 +44,19 @@ vc-postamble: |-
   -- Apps difficulty: competition
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in
   #eval len find_min_questions(4)
   
-  /-
+  /--
   info: 4
   -/
   #guard_msgs in
   #eval len find_min_questions(6)
   
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in

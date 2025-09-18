@@ -35,19 +35,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval small_enough [66, 101] 200
   
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval small_enough [78, 117, 110, 99, 104, 117, 107, 115] 100
   
-  /-
+  /--
   info: True
   -/
   #guard_msgs in

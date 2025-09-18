@@ -36,19 +36,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval permutation_average 2
   
-  /-
+  /--
   info: 38
   -/
   #guard_msgs in
   #eval permutation_average 25
   
-  /-
+  /--
   info: 629
   -/
   #guard_msgs in

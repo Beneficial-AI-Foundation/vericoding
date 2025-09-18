@@ -40,19 +40,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
   
-  /-
+  /--
   info: 6
   -/
   #guard_msgs in
   #eval uniq_count "ABC"
   
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in
   #eval uniq_count "ABA"
   
-  /-
+  /--
   info: 24
   -/
   #guard_msgs in

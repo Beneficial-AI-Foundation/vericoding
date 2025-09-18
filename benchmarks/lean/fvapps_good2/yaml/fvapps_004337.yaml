@@ -34,19 +34,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 'ooobuoobugsoo'
   -/
   #guard_msgs in
   #eval debug "obugobugobuoobugsoo"
   
-  /-
+  /--
   info: 'bugs gy'
   -/
   #guard_msgs in
   #eval debug "bugs buggy"
   
-  /-
+  /--
   info: ''
   -/
   #guard_msgs in

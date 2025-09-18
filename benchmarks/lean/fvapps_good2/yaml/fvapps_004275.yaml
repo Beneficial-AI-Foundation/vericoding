@@ -41,19 +41,19 @@ vc-theorems: |-
   sorry
 
 vc-postamble: |-
-  /-
+  /--
   info: 'Invalid rhythm'
   -/
   #guard_msgs in
   #eval validate_rhythm [4, 4] "4444|8484842|888"
   
-  /-
+  /--
   info: 'Valid rhythm with anacrusis'
   -/
   #guard_msgs in
   #eval validate_rhythm [2, 4] "4|44|88"
   
-  /-
+  /--
   info: 'Valid rhythm'
   -/
   #guard_msgs in

@@ -41,19 +41,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: '1304550'
   -/
   #guard_msgs in
   #eval penalty ["45", "30", "50", "1"]
   
-  /-
+  /--
   info: '100101'
   -/
   #guard_msgs in
   #eval penalty ["100", "10", "1"]
   
-  /-
+  /--
   info: '323'
   -/
   #guard_msgs in

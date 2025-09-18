@@ -4,7 +4,7 @@ def fallingSquares (positions: List (List Int)) : List Int :=
 variable (positions : List (List Int))
 variable (result : List Int := fallingSquares positions)
 
-/- Result length should match input length -/
+/-- Result length should match input length -/
 
 theorem result_length :
   result.length = positions.length := sorry
@@ -12,7 +12,7 @@ theorem result_length :
 -- Apps difficulty: interview
 -- Assurance level: unguarded
 
-/- Heights are monotonically non-decreasing -/
+/-- Heights are monotonically non-decreasing -/
 
 theorem heights_monotonic {i : Nat} (h : i + 1 < result.length) :
   match result[i]?, result[i+1]? with
@@ -20,7 +20,7 @@ theorem heights_monotonic {i : Nat} (h : i + 1 < result.length) :
   | _, _ => False
   := sorry
 
-/- Each height is at least as tall as corresponding square -/
+/-- Each height is at least as tall as corresponding square -/
 
 theorem heights_geq_sides :
   ∀ (i : Nat) (h : i < positions.length),
@@ -32,7 +32,7 @@ theorem heights_geq_sides :
   | _, _ => True
   := sorry
 
-/- Maximum height is bounded by sum of all side lengths -/
+/-- Maximum height is bounded by sum of all side lengths -/
 
 theorem max_height_bound (sides : List Int) :
   (∀ i < positions.length,
@@ -42,24 +42,24 @@ theorem max_height_bound (sides : List Int) :
   result.length > 0 →
   ∀ h ∈ result, h ≤ sides.foldl (·+·) 0 := sorry
 
-/- Results are non-negative integers -/
+/-- Results are non-negative integers -/
 
 theorem results_nonneg :
   ∀ x ∈ result, x ≥ 0 := sorry
 
-/-
+/--
 info: [2, 5, 5]
 -/
 #guard_msgs in
 #eval fallingSquares [[1, 2], [2, 3], [6, 1]]
 
-/-
+/--
 info: [100, 100]
 -/
 #guard_msgs in
 #eval fallingSquares [[100, 100], [200, 100]]
 
-/-
+/--
 info: [2, 2]
 -/
 #guard_msgs in

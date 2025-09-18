@@ -39,19 +39,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 'holle'
   -/
   #guard_msgs in
   #eval reverse_vowels "hello"
   
-  /-
+  /--
   info: 'leotcede'
   -/
   #guard_msgs in
   #eval reverse_vowels "leetcode"
   
-  /-
+  /--
   info: 'Aa'
   -/
   #guard_msgs in

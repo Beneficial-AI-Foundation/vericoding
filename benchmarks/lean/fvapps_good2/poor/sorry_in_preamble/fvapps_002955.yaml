@@ -42,19 +42,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 'paefilnoorsss'
   -/
   #guard_msgs in
   #eval scramble_words "professionals"
   
-  /-
+  /--
   info: 'caac-dinrrryg'
   -/
   #guard_msgs in
   #eval scramble_words "card-carrying"
   
-  /-
+  /--
   info: "you've gotta dacne"
   -/
   #guard_msgs in

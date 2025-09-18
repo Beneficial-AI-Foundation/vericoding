@@ -40,19 +40,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 'kaa'
   -/
   #guard_msgs in
   #eval ka_co_ka_de_ka_me "a"
   
-  /-
+  /--
   info: 'kamaikantekanakance'
   -/
   #guard_msgs in
   #eval ka_co_ka_de_ka_me "maintenance"
   
-  /-
+  /--
   info: 'kaIkancokamprekahekansikabikalikatiekas'
   -/
   #guard_msgs in

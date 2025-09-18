@@ -42,19 +42,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: [1, 2, 4, 10]
   -/
   #guard_msgs in
   #eval decompose 11
   
-  /-
+  /--
   info: [1, 3, 5, 8, 49]
   -/
   #guard_msgs in
   #eval decompose 50
   
-  /-
+  /--
   info: None
   -/
   #guard_msgs in

@@ -42,19 +42,19 @@ vc-postamble: |-
   -- Apps difficulty: competition
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: '1/6'
   -/
   #guard_msgs in
   #eval fraction_to_str calc_fraction(2)
   
-  /-
+  /--
   info: '7/30'
   -/
   #guard_msgs in
   #eval fraction_to_str calc_fraction(3)
   
-  /-
+  /--
   info: '5/14'
   -/
   #guard_msgs in

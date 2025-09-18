@@ -46,19 +46,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded
   
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in
   #eval find_max_good_group "123343"
   
-  /-
+  /--
   info: 5
   -/
   #guard_msgs in
   #eval find_max_good_group "95665"
   
-  /-
+  /--
   info: 4
   -/
   #guard_msgs in

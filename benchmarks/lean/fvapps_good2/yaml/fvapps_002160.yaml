@@ -48,19 +48,19 @@ vc-theorems: |-
   sorry
 
 vc-postamble: |-
-  /-
+  /--
   info: m
   -/
   #guard_msgs in
   #eval len allocate_stadium_games(n, m, k, games)
   
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in
   #eval len allocate_stadium_games(n, m, k, games)
   
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in

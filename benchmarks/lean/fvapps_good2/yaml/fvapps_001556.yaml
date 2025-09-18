@@ -25,19 +25,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 'Yellow'
   -/
   #guard_msgs in
   #eval who_is_winner ["A_Red", "B_Yellow", "A_Red", "B_Yellow", "A_Red", "B_Yellow", "G_Red", "B_Yellow"]
   
-  /-
+  /--
   info: 'Red'
   -/
   #guard_msgs in
   #eval who_is_winner ["A_Yellow", "B_Red", "B_Yellow", "C_Red", "G_Yellow", "C_Red", "C_Yellow", "D_Red", "G_Yellow", "D_Red", "G_Yellow", "D_Red", "F_Yellow", "E_Red", "D_Yellow"]
   
-  /-
+  /--
   info: 'Yellow'
   -/
   #guard_msgs in

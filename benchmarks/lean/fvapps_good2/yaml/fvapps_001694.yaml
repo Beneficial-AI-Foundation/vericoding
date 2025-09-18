@@ -51,19 +51,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 5
   -/
   #guard_msgs in
   #eval solve TestEmulator(1, 10, 5)
   
-  /-
+  /--
   info: 20
   -/
   #guard_msgs in
   #eval solve TestEmulator(2, 10, 20)
   
-  /-
+  /--
   info: 55
   -/
   #guard_msgs in

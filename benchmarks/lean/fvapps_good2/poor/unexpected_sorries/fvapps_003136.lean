@@ -1,7 +1,7 @@
 def calculate : List Nat → Nat
 | xs => sorry
 
-/- Helper function to sum a list of naturals -/
+/-- Helper function to sum a list of naturals -/
 
 def listSum : List Nat → Nat
 | [] => 0

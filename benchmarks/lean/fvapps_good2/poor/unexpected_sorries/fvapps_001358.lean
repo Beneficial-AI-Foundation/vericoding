@@ -24,19 +24,19 @@ theorem count_ones_equals_bit_count {x : Int} (h : x ≥ 0) :
 -- Apps difficulty: interview
 -- Assurance level: unguarded
 
-/-
+/--
 info: 1
 -/
 #guard_msgs in
 #eval count_ones_in_binary test_input[0]
 
-/-
+/--
 info: 2
 -/
 #guard_msgs in
 #eval count_ones_in_binary test_input[0]
 
-/-
+/--
 info: 3
 -/
 #guard_msgs in

@@ -39,19 +39,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 'Hi!'
   -/
   #guard_msgs in
   #eval remove "Hi!"
   
-  /-
+  /--
   info: 'Hi!!!'
   -/
   #guard_msgs in
   #eval remove "Hi!!!"
   
-  /-
+  /--
   info: 'Hi!'
   -/
   #guard_msgs in

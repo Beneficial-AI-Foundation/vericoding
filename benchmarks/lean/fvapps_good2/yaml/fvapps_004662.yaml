@@ -65,19 +65,19 @@ vc-theorems: |-
   sorry
 
 vc-postamble: |-
-  /-
+  /--
   info: expected1
   -/
   #guard_msgs in
   #eval lineup_students "Tadashi Takahiro Takao Takashi Takayuki Takehiko Takeo Takeshi Takeshi"
   
-  /-
+  /--
   info: expected2
   -/
   #guard_msgs in
   #eval lineup_students "xxa xxb xxc xxd xa xb xc xd"
   
-  /-
+  /--
   info: expected3
   -/
   #guard_msgs in

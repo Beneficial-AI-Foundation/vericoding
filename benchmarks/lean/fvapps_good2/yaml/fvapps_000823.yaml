@@ -36,19 +36,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
   
-  /-
+  /--
   info: [1, 2, 3, 2, 0, 1]
   -/
   #guard_msgs in
   #eval solve_tweet_clicks 3 ["CLICK 1", "CLICK 2", "CLICK 3", "CLICK 2", "CLOSEALL", "CLICK 1"]
   
-  /-
+  /--
   info: [1, 2, 0]
   -/
   #guard_msgs in
   #eval solve_tweet_clicks 2 ["CLICK 1", "CLICK 2", "CLOSEALL"]
   
-  /-
+  /--
   info: [1, 0, 1]
   -/
   #guard_msgs in

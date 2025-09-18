@@ -47,19 +47,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded
   
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval min_points_for_string_conversion "abba"
   
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in
   #eval min_points_for_string_conversion "a"
   
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in

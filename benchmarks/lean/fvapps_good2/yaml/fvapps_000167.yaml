@@ -59,19 +59,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in
   #eval find_length_of_shortest_subarray [1, 2, 3, 10, 4, 2, 3, 5]
   
-  /-
+  /--
   info: 4
   -/
   #guard_msgs in
   #eval find_length_of_shortest_subarray [5, 4, 3, 2, 1]
   
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in

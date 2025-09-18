@@ -38,19 +38,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
   
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in
   #eval eq_dice [6, 6]
   
-  /-
+  /--
   info: 5
   -/
   #guard_msgs in
   #eval eq_dice [5, 6, 4]
   
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in

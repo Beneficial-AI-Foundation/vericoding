@@ -47,19 +47,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 'whatisup'
   -/
   #guard_msgs in
   #eval recoverSecret [["t", "u", "p"], ["w", "h", "i"], ["t", "s", "u"], ["a", "t", "s"], ["h", "a", "p"], ["t", "i", "s"], ["w", "h", "s"]]
   
-  /-
+  /--
   info: 'abcd'
   -/
   #guard_msgs in
   #eval recoverSecret [["a", "b", "c"], ["a", "c", "d"]]
   
-  /-
+  /--
   info: 'great'
   -/
   #guard_msgs in

@@ -26,19 +26,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
   
-  /-
+  /--
   info: 'c'
   -/
   #guard_msgs in
   #eval added_char "hello" "checlclo"
   
-  /-
+  /--
   info: 'c'
   -/
   #guard_msgs in
   #eval added_char "aabbcc" "aacccbbcc"
   
-  /-
+  /--
   info: '2'
   -/
   #guard_msgs in

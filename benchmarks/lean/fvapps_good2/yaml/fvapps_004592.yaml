@@ -45,25 +45,25 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: [0, 0, 1, 2, 2, 3, 4, 4, 5, 6, 6]
   -/
   #guard_msgs in
   #eval john 11
   
-  /-
+  /--
   info: [1, 1, 2, 2, 3, 3]
   -/
   #guard_msgs in
   #eval ann 6
   
-  /-
+  /--
   info: 1720
   -/
   #guard_msgs in
   #eval sum_john 75
   
-  /-
+  /--
   info: 6930
   -/
   #guard_msgs in

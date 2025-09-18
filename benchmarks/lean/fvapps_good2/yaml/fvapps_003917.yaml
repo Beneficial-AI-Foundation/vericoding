@@ -37,37 +37,37 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval is_valid_HK_phone_number "1234 5678"
   
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval is_valid_HK_phone_number "abcd efgh"
   
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval is_valid_HK_phone_number "836g 2986"
   
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval has_valid_HK_phone_number "Call 1234 5678 now"
   
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval has_valid_HK_phone_number "No number here"
   
-  /-
+  /--
   info: True
   -/
   #guard_msgs in

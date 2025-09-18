@@ -56,19 +56,19 @@ vc-theorems: |-
   sorry
 
 vc-postamble: |-
-  /-
+  /--
   info: '100'
   -/
   #guard_msgs in
   #eval find_median_binary_string 3 3 ["010", "001", "111"]
   
-  /-
+  /--
   info: '010'
   -/
   #guard_msgs in
   #eval find_median_binary_string 4 3 ["000", "111", "100", "011"]
   
-  /-
+  /--
   info: '0'
   -/
   #guard_msgs in

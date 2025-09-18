@@ -29,19 +29,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
   
-  /-
+  /--
   info: 1
   -/
   #guard_msgs in
   #eval solve_proxy_attendance 9 "PAAPPAPPP"
   
-  /-
+  /--
   info: -1
   -/
   #guard_msgs in
   #eval solve_proxy_attendance 5 "PAAAA"
   
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in

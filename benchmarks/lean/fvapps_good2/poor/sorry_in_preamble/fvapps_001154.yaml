@@ -25,19 +25,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
   
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval max_removable_steps 7 "ULUDLLU"
   
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in
   #eval max_removable_steps 4 "RUUR"
   
-  /-
+  /--
   info: 4
   -/
   #guard_msgs in

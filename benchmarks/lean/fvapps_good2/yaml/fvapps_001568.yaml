@@ -32,49 +32,49 @@ vc-theorems: |-
   sorry
 
 vc-postamble: |-
-  /-
+  /--
   info: 1
   -/
   #guard_msgs in
   #eval solve 1
   
-  /-
+  /--
   info: 1
   -/
   #guard_msgs in
   #eval solve 2
   
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval solve 3
   
-  /-
+  /--
   info: 1
   -/
   #guard_msgs in
   #eval solve 100
   
-  /-
+  /--
   info: 1
   -/
   #guard_msgs in
   #eval solve 55
   
-  /-
+  /--
   info: 6
   -/
   #guard_msgs in
   #eval solve 123456
   
-  /-
+  /--
   info: 4
   -/
   #guard_msgs in
   #eval solve 999999999999999999
   
-  /-
+  /--
   info: 1
   -/
   #guard_msgs in

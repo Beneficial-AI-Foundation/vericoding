@@ -43,25 +43,25 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: ['']
   -/
   #guard_msgs in
   #eval balanced_parens 0
   
-  /-
+  /--
   info: ['()']
   -/
   #guard_msgs in
   #eval balanced_parens 1
   
-  /-
+  /--
   info: ['(())', '()()']
   -/
   #guard_msgs in
   #eval balanced_parens 2
   
-  /-
+  /--
   info: ['((()))', '(()())', '(())()', '()(())', '()()()']
   -/
   #guard_msgs in

@@ -37,19 +37,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval is_palindrome "A man, a plan, a canal: Panama"
   
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval is_palindrome "race a car"
   
-  /-
+  /--
   info: True
   -/
   #guard_msgs in

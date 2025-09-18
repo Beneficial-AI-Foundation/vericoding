@@ -37,19 +37,19 @@ vc-postamble: |-
   -- Apps difficulty: competition
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: -31
   -/
   #guard_msgs in
   #eval solve_fireworks 50 3 1 [(49, 1, 1), (26, 1, 4), (6, 1, 10)]
   
-  /-
+  /--
   info: 1992
   -/
   #guard_msgs in
   #eval solve_fireworks 10 2 1 [(1, 1000, 4), (9, 1000, 4)]
   
-  /-
+  /--
   info: 418
   -/
   #guard_msgs in

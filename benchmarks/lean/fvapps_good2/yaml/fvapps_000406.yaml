@@ -32,19 +32,19 @@ vc-theorems: |-
   sorry
 
 vc-postamble: |-
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in
   #eval cat_mouse_game [[2, 5], [3], [0, 4, 5], [1, 4, 5], [2, 3], [0, 2, 3]]
   
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in
   #eval cat_mouse_game [[2, 5], [3], [0, 4, 5], [1, 4, 5], [2, 3], [0, 2, 3], [], []]
   
-  /-
+  /--
   info: 1
   -/
   #guard_msgs in

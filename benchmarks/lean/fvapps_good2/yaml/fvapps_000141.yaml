@@ -24,19 +24,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
   
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in
   #eval total_fruit [1, 2, 1]
   
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in
   #eval total_fruit [0, 1, 2, 2]
   
-  /-
+  /--
   info: 4
   -/
   #guard_msgs in

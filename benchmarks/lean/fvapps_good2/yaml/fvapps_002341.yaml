@@ -31,19 +31,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval backspace_compare "ab#c" "ad#c"
   
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval backspace_compare "ab##" "c#d#"
   
-  /-
+  /--
   info: False
   -/
   #guard_msgs in

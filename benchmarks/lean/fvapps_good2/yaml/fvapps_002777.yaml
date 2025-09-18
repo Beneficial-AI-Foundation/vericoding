@@ -40,13 +40,13 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded
   
-  /-
+  /--
   info: 2013
   -/
   #guard_msgs in
   #eval distinct_digit_year 1987
   
-  /-
+  /--
   info: 2014
   -/
   #guard_msgs in

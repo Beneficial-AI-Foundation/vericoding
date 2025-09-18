@@ -63,13 +63,13 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 'yes'
   -/
   #guard_msgs in
   #eval can_complete_team 4 90 [3, 8, 6, 5] [0, 1, 1, 0]
   
-  /-
+  /--
   info: 'no'
   -/
   #guard_msgs in

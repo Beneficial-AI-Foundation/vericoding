@@ -40,13 +40,13 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
   
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval max_topics_prepared 5 4 10 [10, 24, 30, 19, 40]
   
-  /-
+  /--
   info: 4
   -/
   #guard_msgs in

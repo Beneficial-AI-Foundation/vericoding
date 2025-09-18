@@ -41,19 +41,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 639
   -/
   #guard_msgs in
   #eval sum_of_regular_numbers [54, 70, 86, 1, -2, -5, 0, 5, 78, 145, 212, 15]
   
-  /-
+  /--
   info: 1200
   -/
   #guard_msgs in
   #eval sum_of_regular_numbers [7, 2, 3, 2, -2, 400, 802]
   
-  /-
+  /--
   info: -13994
   -/
   #guard_msgs in

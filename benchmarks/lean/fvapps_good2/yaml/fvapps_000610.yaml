@@ -38,19 +38,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 'Chef'
   -/
   #guard_msgs in
   #eval game_winner "W"
   
-  /-
+  /--
   info: 'Aleksa'
   -/
   #guard_msgs in
   #eval game_winner "BW"
   
-  /-
+  /--
   info: 'Aleksa'
   -/
   #guard_msgs in

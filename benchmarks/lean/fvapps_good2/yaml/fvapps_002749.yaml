@@ -37,31 +37,31 @@ vc-theorems: |-
   sorry
 
 vc-postamble: |-
-  /-
+  /--
   info: 'Hi'
   -/
   #guard_msgs in
   #eval remove "Hi!"
   
-  /-
+  /--
   info: 'Hi'
   -/
   #guard_msgs in
   #eval remove "Hi!!!"
   
-  /-
+  /--
   info: '!Hi'
   -/
   #guard_msgs in
   #eval remove "!Hi!"
   
-  /-
+  /--
   info: 'Hi Hi'
   -/
   #guard_msgs in
   #eval remove "Hi! Hi!"
   
-  /-
+  /--
   info: '!!!Hi !!hi !hi'
   -/
   #guard_msgs in

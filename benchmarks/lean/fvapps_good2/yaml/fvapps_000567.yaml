@@ -44,19 +44,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 'NO'
   -/
   #guard_msgs in
   #eval can_make_sequence_good 1 [-1]
   
-  /-
+  /--
   info: 'YES'
   -/
   #guard_msgs in
   #eval can_make_sequence_good 2 [1, 2]
   
-  /-
+  /--
   info: 'YES'
   -/
   #guard_msgs in

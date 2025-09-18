@@ -61,13 +61,13 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded
   
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in
   #eval count_subarrays_with_min [2, 2] 2
   
-  /-
+  /--
   info: 1
   -/
   #guard_msgs in

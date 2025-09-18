@@ -29,19 +29,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
   
-  /-
+  /--
   info: 69
   -/
   #guard_msgs in
   #eval tv_remote "Code Wars"
   
-  /-
+  /--
   info: 12
   -/
   #guard_msgs in
   #eval tv_remote "A"
   
-  /-
+  /--
   info: 16
   -/
   #guard_msgs in

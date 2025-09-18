@@ -64,55 +64,55 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: [2, 2, 5, 5]
   -/
   #guard_msgs in
   #eval getAllPrimeFactors 100
   
-  /-
+  /--
   info: []
   -/
   #guard_msgs in
   #eval getAllPrimeFactors 0
   
-  /-
+  /--
   info: [1]
   -/
   #guard_msgs in
   #eval getAllPrimeFactors 1
   
-  /-
+  /--
   info: [[2, 5], [2, 2]]
   -/
   #guard_msgs in
   #eval getUniquePrimeFactorsWithCount 100
   
-  /-
+  /--
   info: [[], []]
   -/
   #guard_msgs in
   #eval getUniquePrimeFactorsWithCount 0
   
-  /-
+  /--
   info: [[1], [1]]
   -/
   #guard_msgs in
   #eval getUniquePrimeFactorsWithCount 1
   
-  /-
+  /--
   info: [4, 25]
   -/
   #guard_msgs in
   #eval getUniquePrimeFactorsWithProducts 100
   
-  /-
+  /--
   info: []
   -/
   #guard_msgs in
   #eval getUniquePrimeFactorsWithProducts 0
   
-  /-
+  /--
   info: [1]
   -/
   #guard_msgs in

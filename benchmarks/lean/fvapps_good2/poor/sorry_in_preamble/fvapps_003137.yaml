@@ -37,19 +37,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
-  /-
+  /--
   info: 'ezu'
   -/
   #guard_msgs in
   #eval transform_word "cat"
   
-  /-
+  /--
   info: 'enedazuu'
   -/
   #guard_msgs in
   #eval transform_word "codewars"
   
-  /-
+  /--
   info: 'zeeeutaaaaa'
   -/
   #guard_msgs in
