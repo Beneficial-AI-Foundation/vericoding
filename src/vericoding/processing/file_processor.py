@@ -98,15 +98,6 @@ class ProcessingResult:
     llm_responses: list[LLMResponse] | None = None
 
 
-def prepend_claude_context(config: ProcessingConfig, prompt: str) -> str:
-    """Attach CLAUDE.md guidance to Lean prompts when available."""
-    if config.language == "lean":
-        claude_context = getattr(config, "claude_context", None)
-        if claude_context:
-            header = "# Project Context (from CLAUDE.md)\n\n"
-            separator = "\n\n---\n\n"
-            return f"{header}{claude_context}{separator}{prompt}"
-    return prompt
 
 
 def process_spec_file(
@@ -168,7 +159,6 @@ def process_spec_file(
                 placeholder_count=placeholder_count,
                 max_iterations=config.max_iterations
             )
-            generate_prompt = prepend_claude_context(config, generate_prompt)
         except KeyError as e:
             logger.info(f"  ✗ Prompt error: {e}")
             logger.info(f"  Available prompts: {list(prompt_loader.prompts.keys())}")
@@ -414,7 +404,6 @@ def process_spec_file(
                     placeholder_count=placeholder_count,
                     max_iterations=config.max_iterations
                 )
-                fix_prompt = prepend_claude_context(config, fix_prompt)
 
                 # Track fix prompt for W&B logging
                 all_fix_prompts.append(fix_prompt)

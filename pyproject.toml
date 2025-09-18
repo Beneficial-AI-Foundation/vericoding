@@ -4,7 +4,7 @@ name = "vericoding"
 version = "0.1.0"
 description = "Lean 4 verification experiment framework"
 authors = [
-    { name = "Alok Singh", email = "alokbeniwal@gmail.com" }
+    { name = "Anonymous Author", email = "anonymous@example.com" }
 ]
 requires-python = ">=3.12"
 dependencies = [
@@ -24,6 +24,7 @@ dependencies = [
     "openai>=1.104.2",
     "datasets>=4.0.0",
     "pytest>=8.4.1",
+    "matplotlib>=3.10.6",
 ]
 
 [project.optional-dependencies]
