@@ -68,12 +68,7 @@ def apply_sharding(files: list[str], shard_spec: str | None, limit: int | None =
 
         selected = files[start:end]
 
-        # Apply optional limit within the shard
-        if limit and limit < len(selected):
-            selected = selected[:limit]
-            description = f"shard {current}/{total_shards} (files {start+1}-{start+limit} of {total})"
-        else:
-            description = f"shard {current}/{total_shards} (files {start+1}-{end} of {total})"
+        description = f"shard {current}/{total_shards} (files {start+1}-{end} of {total})"
     else:
         # No sharding, just apply limit if specified
         selected = files[:limit] if limit else files
