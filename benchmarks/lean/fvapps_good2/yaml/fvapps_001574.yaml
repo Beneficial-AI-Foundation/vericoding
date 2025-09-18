@@ -1,0 +1,46 @@
+vc-description: |-
+
+vc-preamble: |-
+
+vc-helpers: |-
+
+vc-definitions: |-
+  def countOnes (a b : Nat) : Nat :=
+  sorry
+  
+  def toBinary (n : Nat) : List Nat :=
+  sorry
+  
+  def countBinaryOnes (n : Nat) : Nat :=
+  sorry
+
+vc-theorems: |-
+  theorem countOnes_non_negative
+    (a b : Nat)
+    (h1 : 0 < a) (h2 : a ≤ 10^6)
+    (h3 : 0 < b) (h4 : b ≤ 10^6) :
+    0 ≤ countOnes a b :=
+  sorry
+
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: guarded_and_plausible
+  
+  /-
+  info: 8
+  -/
+  #guard_msgs in
+  #eval countOnes 4 7
+  
+  /-
+  info: 2
+  -/
+  #guard_msgs in
+  #eval countOnes 5 5
+  
+  /-
+  info: 14846928141
+  -/
+  #guard_msgs in
+  #eval countOnes 1 1000000000
+

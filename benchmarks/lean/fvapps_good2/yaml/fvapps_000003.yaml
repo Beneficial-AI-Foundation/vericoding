@@ -1,0 +1,96 @@
+vc-description: |-
+  /- Helper function to sum a list -/
+  
+  /- Helper function to get maximum of non-empty list -/
+  
+  -- Apps difficulty: interview
+  -- Assurance level: guarded
+  
+  /- max_water_difference result is greater than or equal to max barrel -/
+  
+  /- max_water_difference result is less than or equal to sum of all barrels -/
+  
+  /- max_water_difference does not modify input list -/
+  
+  /- Helper function to sort list descending -/
+  
+  /- Helper function to take first n elements -/
+  
+  /- max_water_difference returns sum of k+1 largest values -/
+
+vc-preamble: |-
+  def listSum : List Nat → Nat
+    | [] => 0
+    | x :: xs => x + listSum xs
+  
+  def listMaximum : List Nat → Nat
+    | [] => 0
+    | [x] => x
+    | x :: xs => if x > listMaximum xs then x else listMaximum xs
+  
+  def takeFront : Nat → List Nat → List Nat
+    | 0, _ => []
+    | _, [] => []
+    | n+1, x :: xs => x :: takeFront n xs
+
+vc-helpers: |-
+
+vc-definitions: |-
+  def max_water_difference (n : Nat) (k : Nat) (barrels : List Nat) : Nat :=
+    sorry
+  
+  def sortDescending (l : List Nat) : List Nat :=
+    sorry
+
+vc-theorems: |-
+  theorem max_water_diff_equals_k_plus_one_largest
+    {n k : Nat} {barrels : List Nat}
+    (h₁ : barrels.length = n)
+    (h₂ : k < n) :
+    max_water_difference n k barrels =
+      listSum (takeFront (k+1) (sortDescending barrels)) :=
+  sorry
+  
+  theorem max_water_diff_ge_max_barrel
+    {n k : Nat} {barrels : List Nat}
+    (h₁ : barrels.length = n)
+    (h₂ : k < n)
+    (h₃ : barrels ≠ []) :
+    max_water_difference n k barrels ≥ listMaximum barrels :=
+  sorry
+  
+  theorem max_water_diff_le_total_sum
+    {n k : Nat} {barrels : List Nat}
+    (h₁ : barrels.length = n)
+    (h₂ : k < n) :
+    max_water_difference n k barrels ≤ listSum barrels :=
+  sorry
+  
+  theorem max_water_diff_preserves_input
+    {n k : Nat} {barrels : List Nat}
+    (h₁ : barrels.length = n)
+    (h₂ : k < n) :
+    let original := barrels
+    let _ := max_water_difference n k barrels
+    barrels = original :=
+  sorry
+
+vc-postamble: |-
+  /-
+  info: 10
+  -/
+  #guard_msgs in
+  #eval max_water_difference 4 1 [5, 5, 5, 5]
+  
+  /-
+  info: 0
+  -/
+  #guard_msgs in
+  #eval max_water_difference 3 2 [0, 0, 0]
+  
+  /-
+  info: 12
+  -/
+  #guard_msgs in
+  #eval max_water_difference 5 2 [1, 2, 3, 4, 5]
+

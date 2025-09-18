@@ -1,0 +1,58 @@
+vc-description: |-
+  -- Result should be non-negative
+  
+  -- For 0 dimensions, result should be 0
+  
+  -- Result should be x*y for 1xN rectangles
+  
+  -- For a square, result should be sum of squares from 1 to side length
+
+vc-preamble: |-
+  def sum_squares (n : Nat) : Nat :=
+    Nat.rec 0 (fun k res => res + k*k) n
+
+vc-helpers: |-
+
+vc-definitions: |-
+  def findSquares (x y : Nat) : Nat :=
+  sorry
+
+vc-theorems: |-
+  theorem findSquares_nonneg (x y : Nat) :
+    findSquares x y ≥ 0 :=
+  sorry
+  
+  theorem findSquares_zero (x y : Nat) :
+    x = 0 ∨ y = 0 → findSquares x y = 0 :=
+  sorry
+  
+  theorem findSquares_stripe (x y : Nat) :
+    y = 1 → findSquares x y = x :=
+  sorry
+  
+  theorem findSquares_square (n : Nat) :
+    findSquares n n = sum_squares n :=
+  sorry
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded
+  
+  /-
+  info: 8
+  -/
+  #guard_msgs in
+  #eval findSquares 3 2
+  
+  /-
+  info: 20
+  -/
+  #guard_msgs in
+  #eval findSquares 4 3
+  
+  /-
+  info: 100
+  -/
+  #guard_msgs in
+  #eval findSquares 11 4
+
