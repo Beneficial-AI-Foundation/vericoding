@@ -59,13 +59,13 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: 200000002
   -/
   #guard_msgs in
   #eval solve_sokka_journey 5
 
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in

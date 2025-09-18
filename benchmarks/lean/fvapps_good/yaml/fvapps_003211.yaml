@@ -46,19 +46,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'man'
   -/
   #guard_msgs in
   #eval encrypter "amz"
 
-  /-
+  /--
   info: 'fibby'
   -/
   #guard_msgs in
   #eval encrypter "hello"
 
-  /-
+  /--
   info: 'qibkyai ty tfi yvgmzenmteyz'
   -/
   #guard_msgs in

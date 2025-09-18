@@ -54,19 +54,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval three_sum_closest [-4, -1, 1, 2] 1
 
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in
   #eval three_sum_closest [1, 1, 1, 0] 100
 
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in

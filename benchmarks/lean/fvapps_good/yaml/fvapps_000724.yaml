@@ -63,19 +63,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'NO'
   -/
   #guard_msgs in
   #eval solve_apple_distribution 5 1
 
-  /-
+  /--
   info: 'NO'
   -/
   #guard_msgs in
   #eval solve_apple_distribution 4 2
 
-  /-
+  /--
   info: 'YES'
   -/
   #guard_msgs in

@@ -58,19 +58,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 5
   -/
   #guard_msgs in
   #eval how_many_bees ["bee.bee", ".e..e..", ".b..eeb"]
 
-  /-
+  /--
   info: 7
   -/
   #guard_msgs in
   #eval how_many_bees ["beee..", "eeb.e.", "ebee.b"]
 
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in

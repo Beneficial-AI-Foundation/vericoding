@@ -78,19 +78,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'Tracy'
   -/
   #guard_msgs in
   #eval solve_string_game "codechef" ["code", "chef"]
 
-  /-
+  /--
   info: 'Tracy'
   -/
   #guard_msgs in
   #eval solve_string_game "foo" ["bar"]
 
-  /-
+  /--
   info: 'Teddy'
   -/
   #guard_msgs in

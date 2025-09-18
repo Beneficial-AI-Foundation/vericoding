@@ -92,19 +92,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: [5, 10]
   -/
   #guard_msgs in
   #eval asteroidCollision [5, 10, -5]
 
-  /-
+  /--
   info: []
   -/
   #guard_msgs in
   #eval asteroidCollision [8, -8]
 
-  /-
+  /--
   info: [-2, -1, 1, 2]
   -/
   #guard_msgs in

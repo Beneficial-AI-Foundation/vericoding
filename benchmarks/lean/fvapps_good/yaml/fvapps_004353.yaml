@@ -81,19 +81,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: ['c8', 'h3']
   -/
   #guard_msgs in
   #eval bishop_diagonal "d7" "f5"
 
-  /-
+  /--
   info: ['b5', 'd8']
   -/
   #guard_msgs in
   #eval bishop_diagonal "d8" "b5"
 
-  /-
+  /--
   info: ['a1', 'h8']
   -/
   #guard_msgs in

@@ -58,19 +58,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval can_transform "RXXLRXRXL" "XRLXXRRLX"
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval can_transform "X" "L"
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in

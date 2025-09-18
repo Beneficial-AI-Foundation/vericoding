@@ -38,55 +38,55 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval is_prime 0
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval is_prime 1
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval is_prime 2
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval is_prime 11
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval is_prime 61
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval is_prime 571
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval is_prime 12
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval is_prime 573
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in

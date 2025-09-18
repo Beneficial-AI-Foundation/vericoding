@@ -52,19 +52,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval substring_test "Something" "Home"
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval substring_test "Something" "Fun"
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in

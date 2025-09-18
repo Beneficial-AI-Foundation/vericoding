@@ -46,19 +46,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval judge_circle "UD"
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval judge_circle "LL"
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in

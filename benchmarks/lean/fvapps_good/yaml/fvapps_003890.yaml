@@ -26,19 +26,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: 1
   -/
   #guard_msgs in
   #eval odd_not_prime 5
 
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval odd_not_prime 10
 
-  /-
+  /--
   info: 26
   -/
   #guard_msgs in

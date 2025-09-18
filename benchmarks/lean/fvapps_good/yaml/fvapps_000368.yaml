@@ -56,19 +56,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded
 
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval nth_magical_number 1 2 3
 
-  /-
+  /--
   info: 6
   -/
   #guard_msgs in
   #eval nth_magical_number 4 2 3
 
-  /-
+  /--
   info: 10
   -/
   #guard_msgs in

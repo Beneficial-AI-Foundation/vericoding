@@ -51,19 +51,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'B'
   -/
   #guard_msgs in
   #eval solve_marbles_game 1
 
-  /-
+  /--
   info: 'A'
   -/
   #guard_msgs in
   #eval solve_marbles_game 3
 
-  /-
+  /--
   info: 'B'
   -/
   #guard_msgs in

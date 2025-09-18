@@ -73,19 +73,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'Truly Happy'
   -/
   #guard_msgs in
   #eval solve_happiness 4 [1, 1, 2, 3]
 
-  /-
+  /--
   info: 'Poor Chef'
   -/
   #guard_msgs in
   #eval solve_happiness 4 [2, 1, 3, 3]
 
-  /-
+  /--
   info: 'Truly Happy'
   -/
   #guard_msgs in

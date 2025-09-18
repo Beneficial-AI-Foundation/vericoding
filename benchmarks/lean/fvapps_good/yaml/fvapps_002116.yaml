@@ -73,19 +73,19 @@ vc-postamble: |-
   -- Apps difficulty: competition
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: expected[i]
   -/
   #guard_msgs in
   #eval find_array_element 4 queries[i]
 
-  /-
+  /--
   info: expected[i]
   -/
   #guard_msgs in
   #eval find_array_element 13 queries[i]
 
-  /-
+  /--
   info: expected[i]
   -/
   #guard_msgs in

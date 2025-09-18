@@ -60,19 +60,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: 8919
   -/
   #guard_msgs in
   #eval find_lowest_int 100
 
-  /-
+  /--
   info: 477
   -/
   #guard_msgs in
   #eval find_lowest_int 325
 
-  /-
+  /--
   info: 2394
   -/
   #guard_msgs in

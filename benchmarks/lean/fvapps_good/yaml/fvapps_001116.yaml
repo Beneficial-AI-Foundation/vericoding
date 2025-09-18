@@ -34,19 +34,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded
 
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in
   #eval find_imposter 3 [4, 2, 5] [4, 2, 3, 5]
 
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval find_imposter 2 [1, 1] [1, 1, 2]
 
-  /-
+  /--
   info: 5
   -/
   #guard_msgs in

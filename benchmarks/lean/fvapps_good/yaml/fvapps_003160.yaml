@@ -133,19 +133,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: 300
   -/
   #guard_msgs in
   #eval sale_hotdogs 3
 
-  /-
+  /--
   info: 665
   -/
   #guard_msgs in
   #eval sale_hotdogs 7
 
-  /-
+  /--
   info: 9000
   -/
   #guard_msgs in

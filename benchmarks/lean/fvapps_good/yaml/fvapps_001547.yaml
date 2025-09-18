@@ -58,19 +58,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in
   #eval solve_nice_integers 1 1
 
-  /-
+  /--
   info: 8
   -/
   #guard_msgs in
   #eval solve_nice_integers 2 2
 
-  /-
+  /--
   info: 247750000
   -/
   #guard_msgs in

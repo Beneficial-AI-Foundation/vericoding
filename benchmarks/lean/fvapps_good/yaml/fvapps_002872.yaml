@@ -44,19 +44,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'komppu-lantti'
   -/
   #guard_msgs in
   #eval kontti "lamppu"
 
-  /-
+  /--
   info: 'kolly-sintti kome-gantti'
   -/
   #guard_msgs in
   #eval kontti "silly game"
 
-  /-
+  /--
   info: 'koz-xyntti komppu-lantti'
   -/
   #guard_msgs in

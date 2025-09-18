@@ -80,13 +80,13 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: [17, 22, 20, 20]
   -/
   #guard_msgs in
   #eval solve_roasting_club 5 4 [7, 12, 10, 1]
 
-  /-
+  /--
   info: [7, 7]
   -/
   #guard_msgs in

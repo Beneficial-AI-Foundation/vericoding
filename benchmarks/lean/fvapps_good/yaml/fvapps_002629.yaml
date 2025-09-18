@@ -54,19 +54,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: [4, 0]
   -/
   #guard_msgs in
   #eval scoreboard "The score is four nil"
 
-  /-
+  /--
   info: [2, 3]
   -/
   #guard_msgs in
   #eval scoreboard "new score: two three"
 
-  /-
+  /--
   info: [2, 0]
   -/
   #guard_msgs in

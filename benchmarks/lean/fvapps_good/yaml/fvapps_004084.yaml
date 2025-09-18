@@ -49,25 +49,25 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'MAS'
   -/
   #guard_msgs in
   #eval make_acronym "My aunt sally"
 
-  /-
+  /--
   info: 'Not a string'
   -/
   #guard_msgs in
   #eval make_acronym [1, 2, 3]
 
-  /-
+  /--
   info: 'Not letters'
   -/
   #guard_msgs in
   #eval make_acronym "a42"
 
-  /-
+  /--
   info: ''
   -/
   #guard_msgs in

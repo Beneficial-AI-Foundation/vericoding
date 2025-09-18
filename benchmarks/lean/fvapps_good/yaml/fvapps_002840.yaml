@@ -42,19 +42,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval is_divide_by -12 2 -6
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval is_divide_by 45 1 6
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in

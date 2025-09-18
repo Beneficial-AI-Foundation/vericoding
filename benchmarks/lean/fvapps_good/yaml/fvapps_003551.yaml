@@ -42,13 +42,13 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 1.0
   -/
   #guard_msgs in
   #eval vector_affinity [1, 2, 3] [1, 2, 3]
 
-  /-
+  /--
   info: 1.0
   -/
   #guard_msgs in

@@ -44,19 +44,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'Match!'
   -/
   #guard_msgs in
   #eval match [26, 23, 19] 3
 
-  /-
+  /--
   info: 'No match!'
   -/
   #guard_msgs in
   #eval match [15, 24, 12] 4
 
-  /-
+  /--
   info: 'Match!'
   -/
   #guard_msgs in

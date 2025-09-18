@@ -58,19 +58,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'acb'
   -/
   #guard_msgs in
   #eval orderlyQueue "cba" 1
 
-  /-
+  /--
   info: 'aaabc'
   -/
   #guard_msgs in
   #eval orderlyQueue "baaca" 3
 
-  /-
+  /--
   info: 'abcd'
   -/
   #guard_msgs in

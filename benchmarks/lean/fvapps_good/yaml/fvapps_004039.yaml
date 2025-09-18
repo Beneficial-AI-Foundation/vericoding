@@ -60,19 +60,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval robot_walk [4, 4, 3, 2, 2, 3]
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval robot_walk [34241, 23434, 2341]
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in

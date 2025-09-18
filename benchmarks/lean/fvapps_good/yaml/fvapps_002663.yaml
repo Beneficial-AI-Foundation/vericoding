@@ -47,19 +47,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: [24, 15]
   -/
   #guard_msgs in
   #eval beasts 123 39
 
-  /-
+  /--
   info: 'No solutions'
   -/
   #guard_msgs in
   #eval beasts -1 -1
 
-  /-
+  /--
   info: [0, 0]
   -/
   #guard_msgs in

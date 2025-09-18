@@ -46,19 +46,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: ['a', 'need', 'ubud', 'i', 'taxi', 'man', 'to', 'up']
   -/
   #guard_msgs in
   #eval last "man i need a taxi up to ubud"
 
-  /-
+  /--
   info: ['take', 'me', 'semynak', 'to']
   -/
   #guard_msgs in
   #eval last "take me to semynak"
 
-  /-
+  /--
   info: ['massage', 'massage', 'massage', 'yes', 'yes']
   -/
   #guard_msgs in

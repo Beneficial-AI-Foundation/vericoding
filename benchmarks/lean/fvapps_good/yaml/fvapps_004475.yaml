@@ -45,19 +45,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: ['one', 'three', 'five', 'four']
   -/
   #guard_msgs in
   #eval numbers_of_letters 1
 
-  /-
+  /--
   info: ['onetwo', 'six', 'three', 'five', 'four']
   -/
   #guard_msgs in
   #eval numbers_of_letters 12
 
-  /-
+  /--
   info: ['nineninenine', 'onetwo', 'six', 'three', 'five', 'four']
   -/
   #guard_msgs in

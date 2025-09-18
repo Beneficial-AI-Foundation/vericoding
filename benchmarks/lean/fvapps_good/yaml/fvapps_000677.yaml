@@ -80,13 +80,13 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'Possible'
   -/
   #guard_msgs in
   #eval can_obtain_permutation 7 4 [3, 1, 2, 4, 5, 7, 6] [[1, 2], [4, 4], [6, 7], [2, 3]]
 
-  /-
+  /--
   info: 'Impossible'
   -/
   #guard_msgs in

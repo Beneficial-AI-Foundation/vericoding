@@ -44,19 +44,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: "It's hotter than the sun!!"
   -/
   #guard_msgs in
   #eval apple "50"
 
-  /-
+  /--
   info: 'Help yourself to a honeycomb Yorkie for the glovebox.'
   -/
   #guard_msgs in
   #eval apple 4
 
-  /-
+  /--
   info: "It's hotter than the sun!!"
   -/
   #guard_msgs in

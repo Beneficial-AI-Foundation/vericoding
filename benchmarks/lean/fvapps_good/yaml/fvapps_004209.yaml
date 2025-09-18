@@ -46,31 +46,31 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval validate_pin "1234"
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval validate_pin "12345"
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval validate_pin "a234"
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval validate_pin "123456"
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in

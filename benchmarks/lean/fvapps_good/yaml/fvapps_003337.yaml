@@ -66,19 +66,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded
 
-  /-
+  /--
   info: [3]
   -/
   #guard_msgs in
   #eval parade_time ["a", "b", "c", "d", "e", "f"] 3 2 "c"
 
-  /-
+  /--
   info: [2, 3]
   -/
   #guard_msgs in
   #eval parade_time ["c", "b", "c", "d", "e", "f"] 3 2 "c"
 
-  /-
+  /--
   info: [10, 11, 13]
   -/
   #guard_msgs in

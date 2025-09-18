@@ -65,19 +65,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded
 
-  /-
+  /--
   info: 10
   -/
   #guard_msgs in
   #eval replace_zero [1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 0, 1, 1]
 
-  /-
+  /--
   info: 5
   -/
   #guard_msgs in
   #eval replace_zero [1, 1, 0, 1, 1, 0, 1, 1]
 
-  /-
+  /--
   info: 6
   -/
   #guard_msgs in

@@ -41,19 +41,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: ''
   -/
   #guard_msgs in
   #eval binary_to_string ""
 
-  /-
+  /--
   info: 'Hello'
   -/
   #guard_msgs in
   #eval binary_to_string "0100100001100101011011000110110001101111"
 
-  /-
+  /--
   info: '1011'
   -/
   #guard_msgs in

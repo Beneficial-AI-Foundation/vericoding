@@ -73,19 +73,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded
 
-  /-
+  /--
   info: 10
   -/
   #guard_msgs in
   #eval min_shots_to_find_x 1 10
 
-  /-
+  /--
   info: 4
   -/
   #guard_msgs in
   #eval min_shots_to_find_x 2 10
 
-  /-
+  /--
   info: 4
   -/
   #guard_msgs in

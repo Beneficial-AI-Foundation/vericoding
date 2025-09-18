@@ -72,19 +72,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval can_take_bath 5 10 5 20 8 15
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval can_take_bath 5 10 5 20 1 30
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in

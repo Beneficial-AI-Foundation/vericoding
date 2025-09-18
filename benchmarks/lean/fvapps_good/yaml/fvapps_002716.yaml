@@ -79,19 +79,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: expected1
   -/
   #guard_msgs in
   #eval sort_reindeer ["Dasher Tonoyan", "Dancer Moore", "Prancer Chua"]
 
-  /-
+  /--
   info: expected2
   -/
   #guard_msgs in
   #eval sort_reindeer []
 
-  /-
+  /--
   info: expected3
   -/
   #guard_msgs in

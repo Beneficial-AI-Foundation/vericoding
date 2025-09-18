@@ -64,19 +64,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: 5
   -/
   #guard_msgs in
   #eval find_min_chocolate_break_cost 2 2 1
 
-  /-
+  /--
   info: 5
   -/
   #guard_msgs in
   #eval find_min_chocolate_break_cost 2 2 3
 
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in

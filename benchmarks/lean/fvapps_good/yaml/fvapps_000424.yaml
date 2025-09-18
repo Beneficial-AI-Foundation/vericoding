@@ -65,19 +65,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded
 
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in
   #eval longest_subarray_ones_after_delete [1, 1, 0, 1]
 
-  /-
+  /--
   info: 5
   -/
   #guard_msgs in
   #eval longest_subarray_ones_after_delete [0, 1, 1, 1, 0, 1, 1, 0, 1]
 
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in

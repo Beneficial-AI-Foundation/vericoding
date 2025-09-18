@@ -63,19 +63,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded
 
-  /-
+  /--
   info: 15
   -/
   #guard_msgs in
   #eval next_numb 12
 
-  /-
+  /--
   info: 105
   -/
   #guard_msgs in
   #eval next_numb 99
 
-  /-
+  /--
   info: 1023459
   -/
   #guard_msgs in

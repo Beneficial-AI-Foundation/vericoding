@@ -46,19 +46,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: 32
   -/
   #guard_msgs in
   #eval mct_from_leaf_values [6, 2, 4]
 
-  /-
+  /--
   info: 44
   -/
   #guard_msgs in
   #eval mct_from_leaf_values [4, 11]
 
-  /-
+  /--
   info: 500
   -/
   #guard_msgs in

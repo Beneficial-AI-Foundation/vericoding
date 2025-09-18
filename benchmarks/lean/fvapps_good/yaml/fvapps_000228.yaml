@@ -56,19 +56,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded
 
-  /-
+  /--
   info: 4
   -/
   #guard_msgs in
   #eval find_poisoned_duration [1, 4] 2
 
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in
   #eval find_poisoned_duration [1, 2] 2
 
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in

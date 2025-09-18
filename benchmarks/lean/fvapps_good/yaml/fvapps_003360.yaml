@@ -62,19 +62,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'foo1'
   -/
   #guard_msgs in
   #eval increment_string "foo"
 
-  /-
+  /--
   info: 'foobar002'
   -/
   #guard_msgs in
   #eval increment_string "foobar001"
 
-  /-
+  /--
   info: 'foobar100'
   -/
   #guard_msgs in

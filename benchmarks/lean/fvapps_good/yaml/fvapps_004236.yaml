@@ -31,19 +31,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval is_narcissistic 153
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval is_narcissistic 370
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in

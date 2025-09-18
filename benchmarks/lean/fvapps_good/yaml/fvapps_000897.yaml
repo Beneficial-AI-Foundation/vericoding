@@ -54,19 +54,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval min_time_to_eat_bananas 2
 
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in
   #eval min_time_to_eat_bananas 4
 
-  /-
+  /--
   info: 5
   -/
   #guard_msgs in

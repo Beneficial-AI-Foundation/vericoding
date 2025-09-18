@@ -53,19 +53,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'YES'
   -/
   #guard_msgs in
   #eval can_complete_task 1 2
 
-  /-
+  /--
   info: 'YES'
   -/
   #guard_msgs in
   #eval can_complete_task 2 3
 
-  /-
+  /--
   info: 'NO'
   -/
   #guard_msgs in

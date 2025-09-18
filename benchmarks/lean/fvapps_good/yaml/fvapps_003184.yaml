@@ -98,19 +98,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'Silver'
   -/
   #guard_msgs in
   #eval evil_code_medal "00:30:00" "00:15:00" "00:45:00" "01:15:00"
 
-  /-
+  /--
   info: 'None'
   -/
   #guard_msgs in
   #eval evil_code_medal "01:15:00" "00:15:00" "00:45:00" "01:15:00"
 
-  /-
+  /--
   info: 'Gold'
   -/
   #guard_msgs in

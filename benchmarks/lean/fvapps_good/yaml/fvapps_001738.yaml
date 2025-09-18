@@ -77,19 +77,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: ['pes', 'fifa', 'gta', 'pes(2019)']
   -/
   #guard_msgs in
   #eval get_folder_names ["pes", "fifa", "gta", "pes(2019)"]
 
-  /-
+  /--
   info: ['gta', 'gta(1)', 'gta(2)', 'avalon']
   -/
   #guard_msgs in
   #eval get_folder_names ["gta", "gta(1)", "gta", "avalon"]
 
-  /-
+  /--
   info: ['kaido', 'kaido(1)', 'kaido(2)', 'kaido(1)(1)']
   -/
   #guard_msgs in

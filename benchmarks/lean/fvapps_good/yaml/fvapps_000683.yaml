@@ -53,19 +53,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'Yes'
   -/
   #guard_msgs in
   #eval will_pipe_burst 4 5 10
 
-  /-
+  /--
   info: 'No'
   -/
   #guard_msgs in
   #eval will_pipe_burst 2 2 5
 
-  /-
+  /--
   info: 'Yes'
   -/
   #guard_msgs in

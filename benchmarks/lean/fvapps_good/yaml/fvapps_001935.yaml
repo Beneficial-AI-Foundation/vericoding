@@ -69,13 +69,13 @@ vc-postamble: |-
   -- Apps difficulty: competition
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: sum(beads1)
   -/
   #guard_msgs in
   #eval len necklace1
 
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in

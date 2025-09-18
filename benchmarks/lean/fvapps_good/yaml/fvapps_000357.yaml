@@ -52,19 +52,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in
   #eval longest_substring_with_k_occurrences "aaabb" 3
 
-  /-
+  /--
   info: 5
   -/
   #guard_msgs in
   #eval longest_substring_with_k_occurrences "ababbc" 2
 
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in

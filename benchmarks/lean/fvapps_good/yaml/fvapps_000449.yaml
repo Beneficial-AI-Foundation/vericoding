@@ -66,19 +66,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: 4
   -/
   #guard_msgs in
   #eval character_replacement "ABAB" 2
 
-  /-
+  /--
   info: 4
   -/
   #guard_msgs in
   #eval character_replacement "AABABBA" 1
 
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in

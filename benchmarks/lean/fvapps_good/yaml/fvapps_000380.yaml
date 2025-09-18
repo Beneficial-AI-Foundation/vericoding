@@ -66,19 +66,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval can_alice_win_stones 1
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval can_alice_win_stones 2
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in

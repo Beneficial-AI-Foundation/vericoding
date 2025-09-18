@@ -47,19 +47,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 12
   -/
   #guard_msgs in
   #eval highest_rank [12, 10, 8, 12, 7, 6, 4, 10, 12]
 
-  /-
+  /--
   info: 12
   -/
   #guard_msgs in
   #eval highest_rank [12, 10, 8, 12, 7, 6, 4, 10, 12, 10]
 
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in

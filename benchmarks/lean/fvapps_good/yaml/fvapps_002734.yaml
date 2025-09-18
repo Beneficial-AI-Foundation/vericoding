@@ -47,19 +47,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: ['H', 'T']
   -/
   #guard_msgs in
   #eval coin 1
 
-  /-
+  /--
   info: ['HH', 'HT', 'TH', 'TT']
   -/
   #guard_msgs in
   #eval coin 2
 
-  /-
+  /--
   info: ['HHH', 'HHT', 'HTH', 'HTT', 'THH', 'THT', 'TTH', 'TTT']
   -/
   #guard_msgs in

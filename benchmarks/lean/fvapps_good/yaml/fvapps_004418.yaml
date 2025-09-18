@@ -40,19 +40,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: 1234
   -/
   #guard_msgs in
   #eval string_to_number "1234"
 
-  /-
+  /--
   info: -7
   -/
   #guard_msgs in
   #eval string_to_number "-7"
 
-  /-
+  /--
   info: 605
   -/
   #guard_msgs in

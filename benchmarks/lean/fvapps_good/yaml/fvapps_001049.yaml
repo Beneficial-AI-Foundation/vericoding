@@ -101,19 +101,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded
 
-  /-
+  /--
   info: 4
   -/
   #guard_msgs in
   #eval solve_cinema_seating 2 2 3 2 1 1
 
-  /-
+  /--
   info: 8
   -/
   #guard_msgs in
   #eval solve_cinema_seating 3 3 1 2 0 9
 
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in

@@ -56,19 +56,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval isomorph "ESTATE" "DUELED"
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval isomorph "AB" "CC"
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in

@@ -77,19 +77,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: (44, 28)
   -/
   #guard_msgs in
   #eval animals 72 200
 
-  /-
+  /--
   info: (0, 0)
   -/
   #guard_msgs in
   #eval animals 0 0
 
-  /-
+  /--
   info: 'No solutions'
   -/
   #guard_msgs in

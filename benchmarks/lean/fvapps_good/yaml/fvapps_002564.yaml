@@ -38,19 +38,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'hello World'
   -/
   #guard_msgs in
   #eval solution "helloWorld"
 
-  /-
+  /--
   info: 'camel Case'
   -/
   #guard_msgs in
   #eval solution "camelCase"
 
-  /-
+  /--
   info: 'break Camel Case'
   -/
   #guard_msgs in

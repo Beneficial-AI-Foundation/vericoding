@@ -81,19 +81,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'Roma'
   -/
   #guard_msgs in
   #eval meme_sorting "This is programmer meme ecause it has bug"
 
-  /-
+  /--
   info: 'Danik'
   -/
   #guard_msgs in
   #eval meme_sorting "This is edsigner meme cause it has key word"
 
-  /-
+  /--
   info: 'Vlad'
   -/
   #guard_msgs in

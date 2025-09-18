@@ -65,19 +65,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in
   #eval min_boxes_remaining 5 boxes1.copy()
 
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval min_boxes_remaining 3 boxes2.copy()
 
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in

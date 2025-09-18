@@ -71,13 +71,13 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded
 
-  /-
+  /--
   info: [4, 6, 6]
   -/
   #guard_msgs in
   #eval solve_puppy_path 2 3 [(1, 2), (0, 1)] "RDL"
 
-  /-
+  /--
   info: [1, 2]
   -/
   #guard_msgs in

@@ -35,19 +35,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval feast "great blue heron" "garlic naan"
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval feast "chickadee" "chocolate cake"
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in

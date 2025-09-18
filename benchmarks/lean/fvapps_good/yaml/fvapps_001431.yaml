@@ -53,19 +53,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: 6
   -/
   #guard_msgs in
   #eval solve_caterpillars 20 [3, 2, 5]
 
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in
   #eval solve_caterpillars 10 [2, 3]
 
-  /-
+  /--
   info: 5
   -/
   #guard_msgs in

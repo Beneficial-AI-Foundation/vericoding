@@ -31,25 +31,25 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'Hello, World!'
   -/
   #guard_msgs in
   #eval hello 
 
-  /-
+  /--
   info: 'Hello, World!'
   -/
   #guard_msgs in
   #eval hello ""
 
-  /-
+  /--
   info: 'Hello, Alice!'
   -/
   #guard_msgs in
   #eval hello "alice"
 
-  /-
+  /--
   info: 'Hello, John!'
   -/
   #guard_msgs in

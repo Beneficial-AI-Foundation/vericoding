@@ -64,19 +64,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'A'
   -/
   #guard_msgs in
   #eval convert_to_excel_title 1
 
-  /-
+  /--
   info: 'AB'
   -/
   #guard_msgs in
   #eval convert_to_excel_title 28
 
-  /-
+  /--
   info: 'ZY'
   -/
   #guard_msgs in

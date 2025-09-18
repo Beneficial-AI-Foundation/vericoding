@@ -64,19 +64,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'i2n2f1o2r1m1a1t1'
   -/
   #guard_msgs in
   #eval encrypt_message "information"
 
-  /-
+  /--
   info: 'a2b2c1d1f1'
   -/
   #guard_msgs in
   #eval encrypt_message "abcdabf"
 
-  /-
+  /--
   info: 'a3'
   -/
   #guard_msgs in

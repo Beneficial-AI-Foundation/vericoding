@@ -53,19 +53,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval find_word [["I", "L", "A", "W"], ["B", "N", "G", "E"], ["I", "U", "A", "O"], ["A", "S", "R", "L"]] "BINGO"
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval find_word board1 "BUNGIE"
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in

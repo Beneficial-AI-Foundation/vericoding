@@ -65,19 +65,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: [0, 0]
   -/
   #guard_msgs in
   #eval owned_cat_and_dog 9 7
 
-  /-
+  /--
   info: [2, 2]
   -/
   #guard_msgs in
   #eval owned_cat_and_dog 24 24
 
-  /-
+  /--
   info: [10, 10]
   -/
   #guard_msgs in

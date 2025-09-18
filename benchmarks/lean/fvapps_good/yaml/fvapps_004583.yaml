@@ -64,19 +64,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: 6
   -/
   #guard_msgs in
   #eval count_black_cells 3 4
 
-  /-
+  /--
   info: 7
   -/
   #guard_msgs in
   #eval count_black_cells 3 3
 
-  /-
+  /--
   info: 1
   -/
   #guard_msgs in

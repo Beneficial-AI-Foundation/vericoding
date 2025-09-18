@@ -38,25 +38,25 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval search_substr "aa_bb_cc_dd_bb_e" "bb"
 
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval search_substr "aaa" "aa"
 
-  /-
+  /--
   info: 1
   -/
   #guard_msgs in
   #eval search_substr "aaa" "aa" False
 
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in

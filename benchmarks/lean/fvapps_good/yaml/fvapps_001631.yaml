@@ -75,19 +75,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded
 
-  /-
+  /--
   info: 5
   -/
   #guard_msgs in
   #eval estimate_population [4, 5, 5, 5, 6, 6]
 
-  /-
+  /--
   info: 4
   -/
   #guard_msgs in
   #eval estimate_population [2, 3, 4, 5, 6, 7]
 
-  /-
+  /--
   info: 5
   -/
   #guard_msgs in

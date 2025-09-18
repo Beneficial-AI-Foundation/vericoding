@@ -90,19 +90,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in
   #eval find_max_height_visits 5 [2, 2, 1, 2, 4]
 
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval find_max_height_visits n2 heights2
 
-  /-
+  /--
   info: 5
   -/
   #guard_msgs in

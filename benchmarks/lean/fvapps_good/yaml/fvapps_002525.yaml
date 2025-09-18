@@ -52,19 +52,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: ['BCCH', 'COTE']
   -/
   #guard_msgs in
   #eval bird_code ["Black-Capped Chickadee", "Common Tern"]
 
-  /-
+  /--
   info: ['AMRE', 'NOCA', 'PIGR']
   -/
   #guard_msgs in
   #eval bird_code ["American Redstart", "Northern Cardinal", "Pine Grosbeak"]
 
-  /-
+  /--
   info: ['GCFL', 'BOBO', 'ESOW']
   -/
   #guard_msgs in

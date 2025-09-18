@@ -47,19 +47,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: [0, 5, 85, 45, 10, 10]
   -/
   #guard_msgs in
   #eval round_to_five [1, 5, 87, 45, 8, 8]
 
-  /-
+  /--
   info: [5, 55, 10, 15]
   -/
   #guard_msgs in
   #eval round_to_five [3, 56.2, 11, 13]
 
-  /-
+  /--
   info: [25, 545, 80]
   -/
   #guard_msgs in

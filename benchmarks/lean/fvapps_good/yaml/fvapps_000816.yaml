@@ -54,19 +54,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: 10
   -/
   #guard_msgs in
   #eval sum_multiples_of_ten 10
 
-  /-
+  /--
   info: 30
   -/
   #guard_msgs in
   #eval sum_multiples_of_ten 20
 
-  /-
+  /--
   info: 550
   -/
   #guard_msgs in

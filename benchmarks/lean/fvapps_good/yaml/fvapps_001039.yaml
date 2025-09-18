@@ -58,19 +58,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'XXXDDD'
   -/
   #guard_msgs in
   #eval min_length_xd_sequence 9
 
-  /-
+  /--
   info: 'XXDD'
   -/
   #guard_msgs in
   #eval min_length_xd_sequence 4
 
-  /-
+  /--
   info: 'XD'
   -/
   #guard_msgs in

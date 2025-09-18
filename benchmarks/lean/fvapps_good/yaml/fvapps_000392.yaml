@@ -61,19 +61,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval is_escape_possible [[0, 1], [1, 0]] [0, 0] [0, 2]
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval is_escape_possible [] [0, 0] [999999, 999999]
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in

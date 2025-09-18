@@ -33,19 +33,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'wide'
   -/
   #guard_msgs in
   #eval mouth_size "toucan"
 
-  /-
+  /--
   info: 'wide'
   -/
   #guard_msgs in
   #eval mouth_size "ant bear"
 
-  /-
+  /--
   info: 'small'
   -/
   #guard_msgs in

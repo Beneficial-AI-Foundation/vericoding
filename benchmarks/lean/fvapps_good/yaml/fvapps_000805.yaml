@@ -51,19 +51,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: 5
   -/
   #guard_msgs in
   #eval solve_barbecue_sticks 4
 
-  /-
+  /--
   info: 9
   -/
   #guard_msgs in
   #eval solve_barbecue_sticks 5
 
-  /-
+  /--
   info: 17
   -/
   #guard_msgs in

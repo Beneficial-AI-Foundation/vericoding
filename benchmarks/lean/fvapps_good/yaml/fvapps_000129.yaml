@@ -101,19 +101,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded
 
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in
   #eval evaluate_lisp "(add 1 2)"
 
-  /-
+  /--
   info: 15
   -/
   #guard_msgs in
   #eval evaluate_lisp "(mult 3 (add 2 3))"
 
-  /-
+  /--
   info: 14
   -/
   #guard_msgs in

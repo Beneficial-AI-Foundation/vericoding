@@ -66,19 +66,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded
 
-  /-
+  /--
   info: [35, 1]
   -/
   #guard_msgs in
   #eval seven 371
 
-  /-
+  /--
   info: [7, 2]
   -/
   #guard_msgs in
   #eval seven 1603
 
-  /-
+  /--
   info: [28, 7]
   -/
   #guard_msgs in

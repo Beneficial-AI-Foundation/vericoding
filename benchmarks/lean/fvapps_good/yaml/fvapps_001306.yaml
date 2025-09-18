@@ -93,13 +93,13 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'yes'
   -/
   #guard_msgs in
   #eval check_car_logs [[1, 1, 1, 2, 2], [2, 2, 1, 2, 2], [4, 2, 2, 2, 3]]
 
-  /-
+  /--
   info: 'no'
   -/
   #guard_msgs in

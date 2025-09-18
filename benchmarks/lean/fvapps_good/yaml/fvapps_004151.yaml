@@ -55,19 +55,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'James Stevens'
   -/
   #guard_msgs in
   #eval combine_names "James" "Stevens"
 
-  /-
+  /--
   info: 'Davy Back'
   -/
   #guard_msgs in
   #eval combine_names "Davy" "Back"
 
-  /-
+  /--
   info: 'Arthur Dent'
   -/
   #guard_msgs in

@@ -73,19 +73,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: 7
   -/
   #guard_msgs in
   #eval harry_biscuits 4 2 6
 
-  /-
+  /--
   info: 4
   -/
   #guard_msgs in
   #eval harry_biscuits 3 3 4
 
-  /-
+  /--
   info: 6
   -/
   #guard_msgs in

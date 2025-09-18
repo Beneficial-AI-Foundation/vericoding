@@ -65,19 +65,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'Ifmmp'
   -/
   #guard_msgs in
   #eval next_letter "Hello"
 
-  /-
+  /--
   info: 'Xibu jt zpvs obnf?'
   -/
   #guard_msgs in
   #eval next_letter "What is your name?"
 
-  /-
+  /--
   info: 'aPp'
   -/
   #guard_msgs in

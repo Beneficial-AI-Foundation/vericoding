@@ -59,19 +59,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: (1, 1)
   -/
   #guard_msgs in
   #eval calc_robbery_probability 1
 
-  /-
+  /--
   info: (1, 10)
   -/
   #guard_msgs in
   #eval calc_robbery_probability 2
 
-  /-
+  /--
   info: (1, 10)
   -/
   #guard_msgs in

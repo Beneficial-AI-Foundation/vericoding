@@ -54,19 +54,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: '1111010'
   -/
   #guard_msgs in
   #eval binary_pyramid 1 4
 
-  /-
+  /--
   info: '101001101'
   -/
   #guard_msgs in
   #eval binary_pyramid 1 6
 
-  /-
+  /--
   info: '0'
   -/
   #guard_msgs in

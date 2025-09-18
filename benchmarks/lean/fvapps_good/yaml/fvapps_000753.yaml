@@ -75,19 +75,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: 9
   -/
   #guard_msgs in
   #eval count_exponential_palindromes "11010"
 
-  /-
+  /--
   info: 18
   -/
   #guard_msgs in
   #eval count_exponential_palindromes "101001011"
 
-  /-
+  /--
   info: 4
   -/
   #guard_msgs in

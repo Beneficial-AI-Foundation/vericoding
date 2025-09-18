@@ -44,19 +44,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: expected1
   -/
   #guard_msgs in
   #eval num_obj [118, 117, 120]
 
-  /-
+  /--
   info: expected2
   -/
   #guard_msgs in
   #eval num_obj [101, 121, 110]
 
-  /-
+  /--
   info: expected3
   -/
   #guard_msgs in

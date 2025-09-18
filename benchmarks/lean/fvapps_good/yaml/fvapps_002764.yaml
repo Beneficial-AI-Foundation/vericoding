@@ -41,19 +41,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'Hello world!'
   -/
   #guard_msgs in
   #eval filter_words "HELLO world!"
 
-  /-
+  /--
   info: 'This will not pass'
   -/
   #guard_msgs in
   #eval filter_words "This    will    not    pass "
 
-  /-
+  /--
   info: 'Now this is a very exciting test!'
   -/
   #guard_msgs in

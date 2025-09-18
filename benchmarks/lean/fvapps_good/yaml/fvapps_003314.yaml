@@ -58,19 +58,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'Jedrzej Bladzinski'
   -/
   #guard_msgs in
   #eval correct_polish_letters "Jędrzej Błądziński"
 
-  /-
+  /--
   info: 'Lech Walesa'
   -/
   #guard_msgs in
   #eval correct_polish_letters "Lech Wałęsa"
 
-  /-
+  /--
   info: 'Zazolc gesla jazn'
   -/
   #guard_msgs in

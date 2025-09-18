@@ -39,19 +39,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: expected1
   -/
   #guard_msgs in
   #eval format_poem "Beautiful is better than ugly. Explicit is better than implicit. Simple is better than complex. Complex is better than complicated."
 
-  /-
+  /--
   info: expected2
   -/
   #guard_msgs in
   #eval format_poem "Flat is better than nested. Sparse is better than dense. Readability counts. Special cases aren"t special enough to break the rules."
 
-  /-
+  /--
   info: expected3
   -/
   #guard_msgs in

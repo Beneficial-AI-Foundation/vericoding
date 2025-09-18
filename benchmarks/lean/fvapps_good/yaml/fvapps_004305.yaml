@@ -53,25 +53,25 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'eBIIL TLOIA!'
   -/
   #guard_msgs in
   #eval caesar_crypto_encode "Hello world!" 127
 
-  /-
+  /--
   info: ''
   -/
   #guard_msgs in
   #eval caesar_crypto_encode "" 10
 
-  /-
+  /--
   info: ''
   -/
   #guard_msgs in
   #eval caesar_crypto_encode "   " 10
 
-  /-
+  /--
   info: 'Hello world!'
   -/
   #guard_msgs in

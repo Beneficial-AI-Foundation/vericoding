@@ -30,13 +30,13 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 60
   -/
   #guard_msgs in
   #eval get_volume_of_cuboid 2 5 6
 
-  /-
+  /--
   info: 94.5
   -/
   #guard_msgs in

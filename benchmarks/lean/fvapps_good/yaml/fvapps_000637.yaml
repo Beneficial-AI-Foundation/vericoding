@@ -45,19 +45,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: 4
   -/
   #guard_msgs in
   #eval increment_or_decrement 5
 
-  /-
+  /--
   info: 9
   -/
   #guard_msgs in
   #eval increment_or_decrement 8
 
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in

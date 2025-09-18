@@ -77,19 +77,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval is_valid_serialization "9,3,4,#,#,1,#,#,2,#,6,#,#"
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval is_valid_serialization "1,#"
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in

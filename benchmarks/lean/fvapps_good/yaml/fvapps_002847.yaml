@@ -54,37 +54,37 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 1860
   -/
   #guard_msgs in
   #eval sum_mul 4 123
 
-  /-
+  /--
   info: 20
   -/
   #guard_msgs in
   #eval sum_mul 2 10
 
-  /-
+  /--
   info: 86469
   -/
   #guard_msgs in
   #eval sum_mul 123 4567
 
-  /-
+  /--
   info: 'INVALID'
   -/
   #guard_msgs in
   #eval sum_mul 0 2
 
-  /-
+  /--
   info: 'INVALID'
   -/
   #guard_msgs in
   #eval sum_mul 2 0
 
-  /-
+  /--
   info: 'INVALID'
   -/
   #guard_msgs in

@@ -45,19 +45,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: 1
   -/
   #guard_msgs in
   #eval consecutive_sum 1
 
-  /-
+  /--
   info: 4
   -/
   #guard_msgs in
   #eval consecutive_sum 15
 
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in

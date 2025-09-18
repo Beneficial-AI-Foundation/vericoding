@@ -27,19 +27,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'Your plant has had more than enough water for today!'
   -/
   #guard_msgs in
   #eval rain_amount 100
 
-  /-
+  /--
   info: 'Your plant has had more than enough water for today!'
   -/
   #guard_msgs in
   #eval rain_amount 40
 
-  /-
+  /--
   info: 'You need to give your plant 35mm of water'
   -/
   #guard_msgs in

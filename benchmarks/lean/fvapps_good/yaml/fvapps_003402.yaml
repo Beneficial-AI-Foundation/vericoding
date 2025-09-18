@@ -63,31 +63,31 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: '1'
   -/
   #guard_msgs in
   #eval original_number "ONE"
 
-  /-
+  /--
   info: '1'
   -/
   #guard_msgs in
   #eval original_number "OEN"
 
-  /-
+  /--
   info: '12'
   -/
   #guard_msgs in
   #eval original_number "ONETWO"
 
-  /-
+  /--
   info: '12'
   -/
   #guard_msgs in
   #eval original_number "OONETW"
 
-  /-
+  /--
   info: '123'
   -/
   #guard_msgs in

@@ -65,19 +65,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in
   #eval minSwaps [[0, 0, 1], [1, 1, 0], [1, 0, 0]]
 
-  /-
+  /--
   info: -1
   -/
   #guard_msgs in
   #eval minSwaps [[0, 1, 1, 0], [0, 1, 1, 0], [0, 1, 1, 0], [0, 1, 1, 0]]
 
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in

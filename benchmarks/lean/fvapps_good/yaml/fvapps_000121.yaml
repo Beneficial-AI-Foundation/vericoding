@@ -61,19 +61,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: 6
   -/
   #guard_msgs in
   #eval num_music_playlists 3 3 1
 
-  /-
+  /--
   info: 6
   -/
   #guard_msgs in
   #eval num_music_playlists 2 3 0
 
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in

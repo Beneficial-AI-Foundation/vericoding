@@ -74,13 +74,13 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: '1 0 1'
   -/
   #guard_msgs in
   #eval edge_detection "1 5 1"
 
-  /-
+  /--
   info: '2 9 4'
   -/
   #guard_msgs in

@@ -49,19 +49,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval reindeer 0
 
-  /-
+  /--
   info: 4
   -/
   #guard_msgs in
   #eval reindeer 31
 
-  /-
+  /--
   info: 8
   -/
   #guard_msgs in
