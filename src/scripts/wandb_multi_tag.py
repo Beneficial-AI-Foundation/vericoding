@@ -72,7 +72,7 @@ def get_wandb_results_for_tags(tags, project="vericoding", entity=None, debug=Fa
             print(f"Tags: {run.tags}", file=sys.stderr)
             print("-" * 50, file=sys.stderr)
         
-        llm_provider = config.get('llm_provider', '')
+        llm = config.get('llm', '')
         language = config.get('language', '')
         
         # Skip non-Lean runs
@@ -102,7 +102,7 @@ def get_wandb_results_for_tags(tags, project="vericoding", entity=None, debug=Fa
             print(f"Warning: File count mismatch - expected {dataset_file_count}, got {total_files} for run {run.name}", file=sys.stderr)
         
         # Map model name
-        model_name = MODEL_MAPPING.get(llm_provider, llm_provider)
+        model_name = MODEL_MAPPING.get(llm, llm)
         
         # Store results (overwrite if duplicate model - last one wins)
         results[model_name] = {
