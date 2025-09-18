@@ -211,19 +211,19 @@ def main():
     for model in MODEL_ORDER:
         if model in results:
             data = results[model]
-            print(f"{model}\t{data['success_rate']:.1f}%\t{data['url']}")
+            print(f"{model}\tdataset\t{data['success_rate']:.1f}\\%\t{data['url']}")
         else:
-            print(f"{model}\t--\t--")
+            print(f"{model}\tdataset\t--\t--")
     
     # Calculate and print model union
     union_result = calculate_model_union(detailed_results, dataset_file_count)
     if union_result:
         print(f"\n# Model Union")
-        print(f"MODEL_UNION\t{union_result['success_rate']:.1f}%\t--")
+        print(f"MODEL_UNION\tdataset\t{union_result['success_rate']:.1f}\\%\t--")
         print(f"# Union: {union_result['successful_files']}/{union_result['total_files']} files")
     else:
         print(f"\n# Model Union")
-        print("MODEL_UNION\t--\t-- (no detailed results available)")
+        print("MODEL_UNION\tdataset\t--\t-- (no detailed results available)")
 
 if __name__ == "__main__":
     main()
