@@ -16,10 +16,13 @@ fn match_strings(s: &str, p: &str) -> (result: bool)
 // </vc-spec>
 // <vc-code>
 {
+    // impl-start
     assume(false);
-    unreached()
+    false
+    // impl-end
 }
 // </vc-code>
+
 
 }
 fn main() {}

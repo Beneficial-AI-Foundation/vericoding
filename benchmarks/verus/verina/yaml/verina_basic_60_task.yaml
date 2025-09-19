@@ -12,31 +12,27 @@ vc-description: |-
   
   -----Note-----
   There are no additional preconditions. The function must adhere to the provided specification which enforces evenness and order preservation for the elements in the output array.
-
 vc-preamble: |-
   use vstd::prelude::*;
-  
+
   verus! {
-  
+vc-helpers: |-
   spec fn is_even(n: i32) -> bool {
       n % 2 == 0
   }
-
-vc-helpers: |-
-
 vc-spec: |-
   fn find_even_numbers(arr: &Vec<i32>) -> (result: Vec<i32>)
       ensures
           forall|i: int| 0 <= i < result.len() ==> is_even(#[trigger] result[i]),
           forall|i: int| 0 <= i < result.len() ==> exists|j: int| 0 <= j < arr.len() && #[trigger] result[i] == arr[j],
-
 vc-code: |-
   {
+      // impl-start
       assume(false);
-      unreached()
+      Vec::new()
+      // impl-end
   }
-
 vc-postamble: |-
+
   }
   fn main() {}
-

@@ -10,12 +10,10 @@ vc-description: |-
   Output:
   The output is a natural number:
   Returns the length of the longest strictly increasing contiguous subarray. If the list is empty, the function should return 0.
-
 vc-preamble: |-
   use vstd::prelude::*;
-  
-  verus! {
 
+  verus! {
 vc-helpers: |-
 
 vc-spec: |-
@@ -23,14 +21,14 @@ vc-spec: |-
       ensures
           (nums.len() == 0 ==> result == 0),
           result <= nums.len(),
-
 vc-code: |-
   {
+      // impl-start
       assume(false);
-      unreached()
+      0
+      // impl-end
   }
-
 vc-postamble: |-
+
   }
   fn main() {}
-

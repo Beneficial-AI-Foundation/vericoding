@@ -21,10 +21,13 @@ fn insert(oline: &Vec<char>, l: usize, nl: &Vec<char>, p: usize, at_pos: usize) 
 // </vc-spec>
 // <vc-code>
 {
+    // impl-start
     assume(false);
-    unreached()
+    Vec::new()
+    // impl-end
 }
 // </vc-code>
+
 
 }
 fn main() {}

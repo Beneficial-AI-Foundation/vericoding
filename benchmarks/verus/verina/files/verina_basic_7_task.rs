@@ -15,10 +15,13 @@ fn sum_of_squares_of_first_n_odd_numbers(n: u32) -> (result: u32)
 // </vc-spec>
 // <vc-code>
 {
+    // impl-start
     assume(false);
-    unreached()
+    0
+    // impl-end
 }
 // </vc-code>
+
 
 }
 fn main() {}

@@ -1,20 +1,16 @@
 vc-description: |-
   This task requires implementing a Run-Length Encoding (RLE) algorithm in Verus. The method should take a string as input and return a compressed string where consecutive duplicate characters are replaced by the character followed by its count. The output must strictly alternate between characters and digits, reconstruct to the original input when decoded, and return a non-empty string if and only if the input is non-empty.
-  
+
   Input: The input is a string consisting of any characters (including special characters and digits).
-  
+
   Output: The output is a string where each sequence of identical characters is replaced by the character followed by its count. The output must:
   1. Alternate between characters and digits (e.g., "a3b2").
   2. Reconstruct to the original input when decoded.
   3. Be non-empty if and only if the input is non-empty.
-  
-  // Non-empty check: input is empty iff result is empty
-  
-  // Format validation: result alternates between characters and digits
 
 vc-preamble: |-
   use vstd::prelude::*;
-  
+
   verus! {
 
 vc-helpers: |-
@@ -23,12 +19,12 @@ vc-spec: |-
   spec fn is_digit(c: char) -> bool {
       '0' <= c && c <= '9'  
   }
-  
+
   proof fn run_length_encoder_property(input: String, result: String)
       requires
-  
+          // Non-empty check: input is empty iff result is empty
           input@ == Seq::<char>::empty() <==> result@ == Seq::<char>::empty(),
-  
+          // Format validation: result alternates between characters and digits
           (result@.len() > 0 ==> (
               forall|i: int| 0 <= i < result@.len() ==> 
                   (i % 2 == 0 ==> !is_digit(result@[i])) &&
@@ -37,10 +33,12 @@ vc-spec: |-
 
 vc-code: |-
   {
-      assume(false);      
+      // impl-start
+      assume(false); // TODO: Remove this line and implement the proof
+      // impl-end
   }
 
 vc-postamble: |-
+
   }
   fn main() {}
-

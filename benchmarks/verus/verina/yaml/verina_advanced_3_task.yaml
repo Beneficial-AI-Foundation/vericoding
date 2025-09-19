@@ -1,0 +1,37 @@
+vc-description: |-
+  This task requires writing a Verus method that finds the length of the longest common subsequence of two input arrays.
+  
+  -----Input-----
+  The input consists of two arrays:
+  a: The first array.
+  b: The second array.
+  
+  
+  -----Output-----
+  The output is an integer:
+  Returns the length of array a and b's longest common subsequence.
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+vc-helpers: |-
+  fn int_max(x: int, y: int) -> (result: int)
+      ensures result >= x && result >= y,
+              result == x || result == y,
+  {
+      if x < y { y } else { x }
+  }
+vc-spec: |-
+  fn longest_common_subsequence(a: &Vec<i32>, b: &Vec<i32>) -> (result: int)
+      ensures result >= 0,
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      0int
+      // impl-end
+  }
+vc-postamble: |-
+
+  }
+  fn main() {}

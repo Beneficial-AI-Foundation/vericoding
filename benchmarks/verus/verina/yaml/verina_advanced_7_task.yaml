@@ -1,0 +1,58 @@
+vc-description: |-
+  This task requires writing a Verus function that converts a binary number represented as a sequence of digits (0 or 1) into its corresponding decimal value. The sequence is ordered in big-endian format, meaning the most significant digit comes first.
+  The function should interpret the sequence as a binary number and return its decimal representation as a natural number.
+  
+  -----Input-----
+  The input is a sequence of natural numbers:
+  digits: A sequence of digits, each of which is either 0 or 1, representing a binary number in big-endian order.
+  
+  -----Output-----
+  The output is a natural number:
+  Returns the decimal value of the binary number represented by the input sequence.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+  spec fn binary_digits_valid(digits: Seq<u32>) -> bool {
+      forall|i: int| 0 <= i < digits.len() ==> (digits[i] == 0 || digits[i] == 1)
+  }
+
+  spec fn spec_binary_to_decimal_value(digits: Seq<u32>) -> nat {
+      if digits.len() == 0 {
+          0
+      } else {
+          digits.fold_left(0nat, |acc: nat, bit: u32| acc * 2 + bit as nat)
+      }
+  }
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn binary_to_decimal(digits: &Vec<u32>) -> (result: u32)
+      requires binary_digits_valid(digits@),
+      ensures result as nat == spec_binary_to_decimal_value(digits@),
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      0
+      // impl-end
+  }
+
+  proof fn binary_to_decimal_spec_satisfied(digits: Seq<u32>)
+      requires binary_digits_valid(digits),
+      ensures {
+          let result = spec_binary_to_decimal_value(digits);
+          result == spec_binary_to_decimal_value(digits)
+      }
+  {
+      assume(false); // TODO: Remove this line and implement the proof
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {}

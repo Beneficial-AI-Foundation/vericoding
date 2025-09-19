@@ -8,15 +8,18 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn sum_of_digits(n: nat) -> (result: nat)
-    ensures result >= 0
+spec fn sum_of_digits(n: nat) -> nat;
 // </vc-spec>
 // <vc-code>
+proof fn sum_of_digits_spec_satisfied(n: nat)
+    ensures sum_of_digits(n) >= 0,
 {
-    assume(false);
-    unreached()
+    // impl-start
+    assume(false); // TODO: Remove this line and implement the proof
+    // impl-end
 }
 // </vc-code>
+
 
 }
 fn main() {}

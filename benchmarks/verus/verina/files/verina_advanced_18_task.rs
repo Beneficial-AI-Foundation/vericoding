@@ -2,7 +2,9 @@
 use vstd::prelude::*;
 
 verus! {
+// </vc-preamble>
 
+// <vc-helpers>
 spec fn count_digits(n: nat) -> nat
     decreases n
 {
@@ -24,9 +26,6 @@ spec fn sum_powers(n: nat, k: nat) -> nat
 {
     if n == 0 { 0 } else { pow_nat(n % 10, k) + sum_powers(n / 10, k) }
 }
-// </vc-preamble>
-
-// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>
@@ -36,10 +35,22 @@ fn is_armstrong(n: u32) -> (result: bool)
 // </vc-spec>
 // <vc-code>
 {
+    // impl-start
     assume(false);
-    unreached()
+    false
+    // impl-end
 }
 // </vc-code>
 
+
 }
-fn main() {}
+fn main() {
+    // let n = 153;
+    // println!("Is {} an Armstrong number? {}", n, is_armstrong(n));
+    // 
+    // let n = 9474;
+    // println!("Is {} an Armstrong number? {}", n, is_armstrong(n));
+    // 
+    // let n = 9475;
+    // println!("Is {} an Armstrong number? {}", n, is_armstrong(n));
+}

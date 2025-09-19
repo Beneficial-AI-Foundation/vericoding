@@ -8,7 +8,9 @@ spec fn find_product_precond(lst: Seq<i32>) -> bool {
     (exists|x: i32| lst.contains(x) && is_even(x)) &&
     (exists|x: i32| lst.contains(x) && is_odd(x))
 }
+// </vc-preamble>
 
+// <vc-helpers>
 spec fn is_even(n: i32) -> bool {
     n % 2 == 0
 }
@@ -27,9 +29,6 @@ spec fn first_even_odd_indices(lst: Seq<i32>) -> Option<(int, int)> {
         None
     }
 }
-// </vc-preamble>
-
-// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>
@@ -46,10 +45,13 @@ fn find_product(lst: &Vec<i32>) -> (result: i32)
 // </vc-spec>
 // <vc-code>
 {
+    // impl-start
     assume(false);
-    unreached()
+    0
+    // impl-end
 }
 // </vc-code>
+
 
 }
 fn main() {}

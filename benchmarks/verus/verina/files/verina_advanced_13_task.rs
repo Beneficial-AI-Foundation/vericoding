@@ -2,7 +2,9 @@
 use vstd::prelude::*;
 
 verus! {
+// </vc-preamble>
 
+// <vc-helpers>
 spec fn chord_intersects(chord1: &Vec<usize>, chord2: &Vec<usize>) -> bool {
     let a1 = if chord1[0] < chord1[1] { chord1[0] } else { chord1[1] };
     let b1 = if chord1[0] > chord1[1] { chord1[0] } else { chord1[1] };
@@ -10,9 +12,6 @@ spec fn chord_intersects(chord1: &Vec<usize>, chord2: &Vec<usize>) -> bool {
     let b2 = if chord2[0] > chord2[1] { chord2[0] } else { chord2[1] };
     (a1 < a2 && a2 < b1 && b1 < b2) || (a2 < a1 && a1 < b2 && b2 < b1)
 }
-// </vc-preamble>
-
-// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>
@@ -25,7 +24,7 @@ fn has_chord_intersection(n: usize, chords: &Vec<Vec<usize>>) -> (result: bool)
             chords[i][0] >= 1 && chords[i][0] <= 2 * n &&
             chords[i][1] >= 1 && chords[i][1] <= 2 * n
         ),
-
+        /* All endpoints are distinct */
         forall|i: int, j: int, k: int, l: int| 
             0 <= i < chords.len() && 0 <= j < chords.len() && 
             0 <= k < 2 && 0 <= l < 2 && 
@@ -37,10 +36,13 @@ fn has_chord_intersection(n: usize, chords: &Vec<Vec<usize>>) -> (result: bool)
 // </vc-spec>
 // <vc-code>
 {
+    // impl-start
     assume(false);
-    unreached()
+    false
+    // impl-end
 }
 // </vc-code>
+
 
 }
 fn main() {}

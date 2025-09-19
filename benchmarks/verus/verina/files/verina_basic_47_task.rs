@@ -21,10 +21,71 @@ fn array_sum(a: &Vec<i32>) -> (result: i32)
 // </vc-spec>
 // <vc-code>
 {
+    // impl-start
     assume(false);
-    unreached()
+    0
+    // impl-end
 }
 // </vc-code>
 
+
 }
-fn main() {}
+fn main() {
+    /*
+    -- Invalid Inputs
+    [
+        {
+            "input": {
+                "a": "#[]"
+            }
+        }
+    ]
+    -- Tests
+    [
+        {
+            "input": {
+                "a": "#[1, 2, 3, 4, 5]"
+            },
+            "expected": 15,
+            "unexpected": [
+                14,
+                10,
+                16
+            ]
+        },
+        {
+            "input": {
+                "a": "#[13, 14, 15, 16, 17]"
+            },
+            "expected": 75,
+            "unexpected": [
+                74,
+                76,
+                70
+            ]
+        },
+        {
+            "input": {
+                "a": "#[-1, -2, -3]"
+            },
+            "expected": -6,
+            "unexpected": [
+                -5,
+                -7,
+                0
+            ]
+        },
+        {
+            "input": {
+                "a": "#[10, -10]"
+            },
+            "expected": 0,
+            "unexpected": [
+                5,
+                -5,
+                10
+            ]
+        }
+    ]
+    */
+}

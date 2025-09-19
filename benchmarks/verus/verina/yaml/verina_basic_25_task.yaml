@@ -1,3 +1,5 @@
+Perfect! Now let me format this as the required YAML output:
+
 vc-description: |-
   This task requires writing a Verus method that calculates both the sum and the average of the first n natural numbers. The method should compute the sum of numbers from 0 to n (which equals n * (n + 1) / 2) and then determine the average by dividing this sum by n. The specification assumes that the input n is a positive integer.
   
@@ -12,10 +14,34 @@ vc-description: |-
   
   -----Note-----
   The input n must be a positive integer.
-  
-  /* reasonable bound to prevent overflow */
-  
-  /*
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn sum_and_average(n: u32) -> (result: (u32, f64))
+      requires n < 100000, /* reasonable bound to prevent overflow */
+      ensures
+          n == 0 ==> result.0 == 0,
+          n > 0 ==> result.0 == (n * (n + 1)) / 2,
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      (0u32, 0.0)
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {
+      /*
       -- Invalid Inputs
       []
       -- Tests
@@ -72,28 +98,4 @@ vc-description: |-
           }
       ]
       */
-
-vc-preamble: |-
-  use vstd::prelude::*;
-  
-  verus! {
-
-vc-helpers: |-
-
-vc-spec: |-
-  fn sum_and_average(n: u32) -> (result: (u32, f64))
-      requires n < 100000,
-      ensures
-          n == 0 ==> result.0 == 0,
-          n > 0 ==> result.0 == (n * (n + 1)) / 2,
-
-vc-code: |-
-  {
-      assume(false);
-      unreached()
   }
-
-vc-postamble: |-
-  }
-  fn main() {}
-

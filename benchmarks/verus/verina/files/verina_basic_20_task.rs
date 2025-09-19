@@ -10,15 +10,18 @@ verus! {
 // <vc-spec>
 fn unique_product(arr: &Vec<i32>) -> (result: i32)
     ensures
-
-        true,
+        /* Product of all unique integers in the array */
+        true, /* Placeholder for actual postcondition */
 // </vc-spec>
 // <vc-code>
 {
+    // impl-start
     assume(false);
-    unreached()
+    0
+    // impl-end
 }
 // </vc-code>
+
 
 }
 fn main() {}

@@ -2,7 +2,9 @@
 use vstd::prelude::*;
 
 verus! {
+// </vc-preamble>
 
+// <vc-helpers>
 spec fn is_alphanumeric(c: char) -> bool {
     ('a' <= c && c <= 'z') || ('A' <= c && c <= 'Z') || ('0' <= c && c <= '9')
 }
@@ -14,9 +16,6 @@ spec fn to_lowercase(c: char) -> char {
         c
     }
 }
-// </vc-preamble>
-
-// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>
@@ -32,10 +31,71 @@ fn palindrome_ignore_non_alnum(s: &str) -> (result: bool)
 // </vc-spec>
 // <vc-code>
 {
+    // impl-start
     assume(false);
-    unreached()
+    false
+    // impl-end
 }
 // </vc-code>
 
+
 }
-fn main() {}
+fn main() {
+    /* Tests
+    [
+        {
+            "input": {
+                "s": ""
+            },
+            "expected": true,
+            "unexpected": [
+                false
+            ]
+        },
+        {
+            "input": {
+                "s": "A man, a plan, a canal: Panama"
+            },
+            "expected": true,
+            "unexpected": [
+                false
+            ]
+        },
+        {
+            "input": {
+                "s": "race a car"
+            },
+            "expected": false,
+            "unexpected": [
+                true
+            ]
+        },
+        {
+            "input": {
+                "s": "No 'x' in Nixon"
+            },
+            "expected": true,
+            "unexpected": [
+                false
+            ]
+        },
+        {
+            "input": {
+                "s": "abc!!cba?"
+            },
+            "expected": true,
+            "unexpected": [
+                false
+            ]
+        },
+        {
+            "input": {
+                "s": "Hello, world!"
+            },
+            "expected": false,
+            "unexpected": [
+                true
+            ]
+        }
+    ] */
+}

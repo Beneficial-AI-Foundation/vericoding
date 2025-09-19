@@ -14,10 +14,129 @@ fn is_divisible_by_11(n: i32) -> (result: bool)
 // </vc-spec>
 // <vc-code>
 {
+    // impl-start
     assume(false);
-    unreached()
+    false
+    // impl-end
 }
 // </vc-code>
 
+
 }
-fn main() {}
+fn main() {
+    // /* 
+    // -- Invalid Inputs
+    // []
+    // -- Tests
+    // [
+    //     {
+    //         "input": {
+    //             "n": 0
+    //         },
+    //         "expected": true,
+    //         "unexpected": [
+    //             false
+    //         ]
+    //     },
+    //     {
+    //         "input": {
+    //             "n": 11
+    //         },
+    //         "expected": true,
+    //         "unexpected": [
+    //             false
+    //         ]
+    //     },
+    //     {
+    //         "input": {
+    //             "n": 22
+    //         },
+    //         "expected": true,
+    //         "unexpected": [
+    //             false
+    //         ]
+    //     },
+    //     {
+    //         "input": {
+    //             "n": 23
+    //         },
+    //         "expected": false,
+    //         "unexpected": [
+    //             true
+    //         ]
+    //     },
+    //     {
+    //         "input": {
+    //             "n": 33
+    //         },
+    //         "expected": true,
+    //         "unexpected": [
+    //             false
+    //         ]
+    //     },
+    //     {
+    //         "input": {
+    //             "n": 44
+    //         },
+    //         "expected": true,
+    //         "unexpected": [
+    //             false
+    //         ]
+    //     },
+    //     {
+    //         "input": {
+    //             "n": -11
+    //         },
+    //         "expected": true,
+    //         "unexpected": [
+    //             false
+    //         ]
+    //     },
+    //     {
+    //         "input": {
+    //             "n": -22
+    //         },
+    //         "expected": true,
+    //         "unexpected": [
+    //             false
+    //         ]
+    //     },
+    //     {
+    //         "input": {
+    //             "n": 1
+    //         },
+    //         "expected": false,
+    //         "unexpected": [
+    //             true
+    //         ]
+    //     },
+    //     {
+    //         "input": {
+    //             "n": -1
+    //         },
+    //         "expected": false,
+    //         "unexpected": [
+    //             true
+    //         ]
+    //     },
+    //     {
+    //         "input": {
+    //             "n": 121
+    //         },
+    //         "expected": true,
+    //         "unexpected": [
+    //             false
+    //         ]
+    //     },
+    //     {
+    //         "input": {
+    //             "n": 123
+    //         },
+    //         "expected": false,
+    //         "unexpected": [
+    //             true
+    //         ]
+    //     }
+    // ]
+    // */
+}

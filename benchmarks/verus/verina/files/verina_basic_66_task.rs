@@ -14,10 +14,13 @@ fn compute_is_even(x: int) -> (result: bool)
 // </vc-spec>
 // <vc-code>
 {
+    // impl-start
     assume(false);
-    unreached()
+    false
+    // impl-end
 }
 // </vc-code>
+
 
 }
 fn main() {}

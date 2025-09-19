@@ -1,0 +1,45 @@
+vc-description: |-
+  This task requires writing a Verus function that finds the single number in a non-empty list of integers, where every element appears exactly twice except for one element that appears only once. The function should return the integer that appears only once.
+  
+  Input: The input is a non-empty list of integers where each integer appears exactly twice except for one element that appears only once.
+  
+  Output: The output is a single integer - the unique integer that appears exactly once in the list.
+  
+  // Helper function to count occurrences of an element in a sequence
+  
+  // Helper function to filter elements equal to x
+
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+  
+  spec fn count_occurrences(nums: Seq<i32>, x: i32) -> nat {
+      nums.filter(|elem: i32| elem == x).len()
+  }
+  
+  spec fn filter_equal(nums: Seq<i32>, x: i32) -> Seq<i32> {
+      nums.filter(|elem: i32| elem == x)
+  }
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn find_single_number(nums: &Vec<i8>) -> (result: i8)
+      requires 
+          nums.len() > 0,
+          exists|unique_elem: i32| count_occurrences(nums@.map(|i: int, x: i8| x as i32), unique_elem) == 1,
+          forall|elem: i32| nums@.map(|i: int, x: i8| x as i32).contains(elem) ==> (count_occurrences(nums@.map(|i: int, x: i8| x as i32), elem) == 1 || count_occurrences(nums@.map(|i: int, x: i8| x as i32), elem) == 2),
+      ensures
+          count_occurrences(nums@.map(|i: int, x: i8| x as i32), result as i32) == 1,
+          forall|x: i32| nums@.map(|i: int, y: i8| y as i32).contains(x) ==> (x == result as i32 || count_occurrences(nums@.map(|i: int, y: i8| y as i32), x) == 2),
+
+vc-code: |-
+  {
+      assume(false);
+      unreached()
+  }
+
+vc-postamble: |-
+  }
+  fn main() {}

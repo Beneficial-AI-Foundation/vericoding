@@ -19,10 +19,13 @@ fn rotate(a: &Vec<i32>, offset: int) -> (result: Vec<i32>)
 // </vc-spec>
 // <vc-code>
 {
+    // impl-start
     assume(false);
-    unreached()
+    Vec::new()
+    // impl-end
 }
 // </vc-code>
+
 
 }
 fn main() {}

@@ -13,8 +13,34 @@ vc-description: |-
   
   -----Note-----
   There are no strict preconditions on the input; the method should work correctly for any array of integers. The specification ensures that the returned index is always valid: it is either within the array bounds with a matching element or equals the array's size if the element is absent.
-  
-  /*
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn linear_search(a: &Vec<i32>, e: i32) -> (result: usize)
+      ensures
+          result <= a.len(),
+          result == a.len() || a[result as int] == e,
+          forall|i: int| 0 <= i < result ==> a[i] != e,
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      0
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {
+      /*
       -- Invalid Inputs
       []
       -- Tests
@@ -81,28 +107,4 @@ vc-description: |-
           }
       ]
       */
-
-vc-preamble: |-
-  use vstd::prelude::*;
-  
-  verus! {
-
-vc-helpers: |-
-
-vc-spec: |-
-  fn linear_search(a: &Vec<i32>, e: i32) -> (result: usize)
-      ensures
-          result <= a.len(),
-          result == a.len() || a[result as int] == e,
-          forall|i: int| 0 <= i < result ==> a[i] != e,
-
-vc-code: |-
-  {
-      assume(false);
-      unreached()
   }
-
-vc-postamble: |-
-  }
-  fn main() {}
-

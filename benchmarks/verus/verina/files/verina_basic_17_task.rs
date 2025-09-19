@@ -2,17 +2,18 @@
 use vstd::prelude::*;
 
 verus! {
+// </vc-preamble>
 
+// <vc-helpers>
+/* Helper function to check if a character is uppercase */
 spec fn is_uppercase(c: char) -> bool {
     'A' <= c && c <= 'Z'
 }
 
+/* Helper function to shift character by 32 positions */
 spec fn shift32(c: char) -> char {
     ((c as int) + 32) as char
 }
-// </vc-preamble>
-
-// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>
@@ -29,10 +30,13 @@ fn to_lowercase(s: &Vec<char>) -> (result: Vec<char>)
 // </vc-spec>
 // <vc-code>
 {
+    // impl-start
     assume(false);
-    unreached()
+    Vec::new()
+    // impl-end
 }
 // </vc-code>
+
 
 }
 fn main() {}

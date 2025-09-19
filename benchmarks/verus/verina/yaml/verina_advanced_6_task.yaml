@@ -10,12 +10,11 @@ vc-description: |-
   -----Output-----
   The output is true or false:
   Returns true if the input string contains all 5 vowels (a, e, i, o, u), false otherwise.
-
 vc-preamble: |-
   use vstd::prelude::*;
-  
+
   verus! {
-  
+vc-helpers: |-
   spec fn to_lower(c: char) -> char {
       if 'A' <= c && c <= 'Z' {
           ((c as int + 32) as char)
@@ -27,9 +26,6 @@ vc-preamble: |-
   spec fn normalize_str(s: &str) -> Seq<char> {
       s.view().map_values(|c| to_lower(c))
   }
-
-vc-helpers: |-
-
 vc-spec: |-
   fn all_vowels(s: &str) -> (result: bool)
       ensures
@@ -40,14 +36,14 @@ vc-spec: |-
               normalize_str(s).contains('o') &&
               normalize_str(s).contains('u')
           ),
-
 vc-code: |-
   {
+      // impl-start
       assume(false);
-      unreached()
+      false
+      // impl-end
   }
-
 vc-postamble: |-
+
   }
   fn main() {}
-

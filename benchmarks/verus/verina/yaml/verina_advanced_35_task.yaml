@@ -6,12 +6,11 @@ vc-description: |-
   
   -----Output-----
   - An integer: the element that appears more than ⌊n/2⌋ times.
-
 vc-preamble: |-
   use vstd::prelude::*;
-  
+
   verus! {
-  
+
   spec fn count_occurrences(nums: Seq<i32>, x: i32) -> nat 
       decreases nums.len()
   {
@@ -27,7 +26,6 @@ vc-preamble: |-
           }
       }
   }
-
 vc-helpers: |-
 
 vc-spec: |-
@@ -38,14 +36,14 @@ vc-spec: |-
       ensures 
           count_occurrences(nums, result) > nums.len() / 2,
           forall|x: i32| x != result ==> count_occurrences(nums, x) <= nums.len() / 2,
-
 vc-code: |-
   {
+      // impl-start
       assume(false);
-      unreached()
+      0
+      // impl-end
   }
-
 vc-postamble: |-
+
   }
   fn main() {}
-

@@ -18,10 +18,13 @@ fn update_elements(a: &Vec<i32>) -> (result: Vec<i32>)
 // </vc-spec>
 // <vc-code>
 {
+    // impl-start
     assume(false);
-    unreached()
+    Vec::new()
+    // impl-end
 }
 // </vc-code>
+
 
 }
 fn main() {}

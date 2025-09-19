@@ -24,10 +24,13 @@ fn minimum_right_shifts(nums: Vec<i32>) -> (result: i32)
 // </vc-spec>
 // <vc-code>
 {
+    // impl-start
     assume(false);
-    unreached()
+    0
+    // impl-end
 }
 // </vc-code>
+
 
 }
 fn main() {}

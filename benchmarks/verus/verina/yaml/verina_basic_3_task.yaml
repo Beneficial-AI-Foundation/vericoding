@@ -1,3 +1,5 @@
+Perfect! Now let me provide the corrected YAML structure:
+
 vc-description: |-
   This task requires writing a Verus method that determines whether a given integer is divisible by 11. The method should return true if the number is divisible by 11 and false otherwise.
   
@@ -9,8 +11,28 @@ vc-description: |-
   The output is a Boolean value:
   Returns true if the input number is divisible by 11.
   Returns false if the input number is not divisible by 11.
-  
-  /* 
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+vc-helpers: |-
+
+vc-spec: |-
+  fn is_divisible_by_11(n: i32) -> (result: bool)
+      ensures
+          result <==> (exists|k: int| #[trigger] (k * 11) == n),
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      false
+      // impl-end
+  }
+vc-postamble: |-
+
+  }
+  fn main() {
+      // /* 
       // -- Invalid Inputs
       // []
       // -- Tests
@@ -125,28 +147,4 @@ vc-description: |-
       //     }
       // ]
       // */
-  
-  //
-
-vc-preamble: |-
-  use vstd::prelude::*;
-  
-  verus! {
-
-vc-helpers: |-
-
-vc-spec: |-
-  fn is_divisible_by_11(n: i32) -> (result: bool)
-      ensures
-          result <==> (exists|k: int| #[trigger] (k * 11) == n),
-
-vc-code: |-
-  {
-      assume(false);
-      unreached()
   }
-
-vc-postamble: |-
-  }
-  fn main() {}
-

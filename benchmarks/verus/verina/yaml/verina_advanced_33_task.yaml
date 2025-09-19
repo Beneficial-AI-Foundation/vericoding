@@ -10,8 +10,29 @@ vc-description: |-
   -----Output-----
   - A natural number representing the length of the longest strictly increasing subsequence.
   - If there is no increasing subsequence, return 0.
-  
-  /* 
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+vc-helpers: |-
+
+vc-spec: |-
+  fn longest_increasing_subsequence(nums: Vec<i32>) -> (result: usize)
+      ensures
+          result >= 0,
+          nums.len() == 0 ==> result == 0,
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      0
+      // impl-end
+  }
+vc-postamble: |-
+
+  }
+  fn main() {
+      /* 
       -- Invalid Inputs
       []
       -- Tests
@@ -66,27 +87,4 @@ vc-description: |-
           }
       ]
       */
-
-vc-preamble: |-
-  use vstd::prelude::*;
-  
-  verus! {
-
-vc-helpers: |-
-
-vc-spec: |-
-  fn longest_increasing_subsequence(nums: Vec<i32>) -> (result: usize)
-      ensures
-          result >= 0,
-          nums.len() == 0 ==> result == 0,
-
-vc-code: |-
-  {
-      assume(false);
-      unreached()
   }
-
-vc-postamble: |-
-  }
-  fn main() {}
-

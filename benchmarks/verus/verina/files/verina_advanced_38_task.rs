@@ -15,10 +15,13 @@ fn max_coverage_after_removing_one(intervals: &Vec<(usize, usize)>) -> (result: 
 // </vc-spec>
 // <vc-code>
 {
+    // impl-start
     assume(false);
-    unreached()
+    0
+    // impl-end
 }
 // </vc-code>
+
 
 }
 fn main() {}

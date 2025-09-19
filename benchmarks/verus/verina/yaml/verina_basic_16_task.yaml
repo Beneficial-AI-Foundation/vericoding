@@ -1,0 +1,41 @@
+vc-description: |-
+  This task requires writing a Verus method that replaces every occurrence of a specified character within a string with a new character. The output should be a new string that maintains the same length as the input string, with all instances of the designated character replaced by the given substitute, and all other characters preserved unchanged.
+
+  -----Input-----
+  The input consists of:
+  s: A string in which the replacement will occur.
+  oldChar: The character within the string that needs to be replaced.
+  newChar: The character that will substitute for every occurrence of oldChar.
+
+  -----Output-----
+  The output is a string that meets the following:
+  - It has the same length as the input string.
+  - All occurrences of oldChar in the input string are replaced with newChar.
+  - All characters other than oldChar remain unchanged.
+
+  -----Note-----
+  There are no preconditions; the method will always work. It is assumed that the input string is valid and non-null.
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+vc-helpers: |-
+
+vc-spec: |-
+  fn replace_chars(s: &str, old_char: char, new_char: char) -> (result: Seq<char>)
+      ensures
+          result.len() == s@.len(),
+          forall|i: int| 0 <= i < s@.len() ==> 
+              (s@[i] == old_char ==> result[i] == new_char) &&
+              (s@[i] != old_char ==> result[i] == s@[i]),
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      seq![]
+      // impl-end
+  }
+vc-postamble: |-
+
+  }
+  fn main() {}

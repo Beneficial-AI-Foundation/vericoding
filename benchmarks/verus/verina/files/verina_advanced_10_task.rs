@@ -7,17 +7,6 @@ verus! {
 spec fn is_prime(n: nat) -> bool {
     arbitrary()
 }
-
-spec fn spec_fold(pairs: Seq<(nat, nat)>, acc: int) -> int
-    decreases pairs.len()
-{
-    if pairs.len() == 0 {
-        acc
-    } else {
-        let (p, e) = pairs[0];
-        spec_fold(pairs.subrange(1, pairs.len() as int), acc * pow(p as int, e as nat))
-    }
-}
 // </vc-preamble>
 
 // <vc-helpers>
@@ -35,10 +24,30 @@ fn find_exponents(n: nat, primes: Vec<nat>) -> (result: Vec<(nat, nat)>)
 // </vc-spec>
 // <vc-code>
 {
+    // impl-start
     assume(false);
-    unreached()
+    Vec::new()
+    // impl-end
+}
+
+spec fn spec_fold(pairs: Seq<(nat, nat)>, acc: int) -> int
+    decreases pairs.len()
+{
+    if pairs.len() == 0 {
+        acc
+    } else {
+        let (p, e) = pairs[0];
+        spec_fold(pairs.subrange(1, pairs.len() as int), acc * pow(p as int, e as nat))
+    }
+}
+
+proof fn find_exponents_satisfies_spec(n: nat, primes: Vec<nat>)
+    requires forall|i: int| 0 <= i < primes.len() ==> is_prime(primes[i])
+{
+    assume(false); /* TODO: Remove this line and implement the proof */
 }
 // </vc-code>
+
 
 }
 fn main() {}

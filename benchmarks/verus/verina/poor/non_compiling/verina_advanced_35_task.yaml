@@ -1,0 +1,50 @@
+vc-description: |-
+  This task requires writing a Verus function that finds the majority element in a sequence of integers. The majority element is the element that appears more than ⌊n/2⌋ times, where n is the sequence's length. You may assume that a majority element always exists in the input.
+  
+  -----Input-----
+  - nums: A sequence of integers of length ≥ 1, containing a majority element.
+  
+  -----Output-----
+  - An integer: the element that appears more than ⌊n/2⌋ times.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+  
+  spec fn count_occurrences(nums: Seq<i32>, x: i32) -> nat 
+      decreases nums.len()
+  {
+      if nums.len() == 0 {
+          0
+      } else {
+          let first = nums[0];
+          let rest_count = count_occurrences(nums.subrange(1, nums.len() as int), x);
+          if first == x {
+              rest_count + 1
+          } else {
+              rest_count
+          }
+      }
+  }
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn majority_element(nums: Vec<i8>) -> (result: i8)
+      requires 
+          nums.len() > 0,
+          exists|x: i32| #[trigger] count_occurrences(nums@.map(|_i: int, v: i8| v as i32), x) > nums.len() / 2,
+      ensures 
+          count_occurrences(nums@.map(|_i: int, v: i8| v as i32), result as i32) > nums.len() / 2,
+          forall|x: i32| x != result as i32 ==> #[trigger] count_occurrences(nums@.map(|_i: int, v: i8| v as i32), x) <= nums.len() / 2,
+
+vc-code: |-
+  {
+      assume(false);
+      unreached()
+  }
+
+vc-postamble: |-
+  }
+  fn main() {}

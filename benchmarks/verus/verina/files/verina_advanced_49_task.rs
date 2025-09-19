@@ -18,10 +18,86 @@ fn merge_sorted_lists(arr1: &Vec<i32>, arr2: &Vec<i32>) -> (result: Vec<i32>)
 // </vc-spec>
 // <vc-code>
 {
+    // impl-start
     assume(false);
-    unreached()
+    Vec::new()
+    // impl-end
 }
 // </vc-code>
 
+
 }
-fn main() {}
+fn main() {
+    /* 
+    -- Invalid Inputs
+    [
+        {
+            "input": {
+                "arr1": "[3, 2, 1]",
+                "arr2": "[6, 5, 4]"
+            }
+        }
+    ]
+    -- Tests
+    [
+        {
+            "input": {
+                "arr1": "[1, 3, 5]",
+                "arr2": "[2, 4, 6]"
+            },
+            "expected": "[1, 2, 3, 4, 5, 6]",
+            "unexpected": [
+                "[1, 3, 5]",
+                "[2, 4, 6]",
+                "[1, 3, 2, 4, 5, 6]"
+            ]
+        },
+        {
+            "input": {
+                "arr1": "[]",
+                "arr2": "[]"
+            },
+            "expected": "[]",
+            "unexpected": [
+                "[0]",
+                "[999]"
+            ]
+        },
+        {
+            "input": {
+                "arr1": "[-2, 0, 1]",
+                "arr2": "[-3, -1]"
+            },
+            "expected": "[-3, -2, -1, 0, 1]",
+            "unexpected": [
+                "[-3, -1]",
+                "[0, 1]",
+                "[-2, 0, 1]"
+            ]
+        },
+        {
+            "input": {
+                "arr1": "[10, 20, 30]",
+                "arr2": "[5, 25, 35]"
+            },
+            "expected": "[5, 10, 20, 25, 30, 35]",
+            "unexpected": [
+                "[10, 20, 30]",
+                "[5, 25, 35]",
+                "[10, 20, 25, 30, 35]"
+            ]
+        },
+        {
+            "input": {
+                "arr1": "[1, 2, 2]",
+                "arr2": "[2, 3, 3]"
+            },
+            "expected": "[1, 2, 2, 2, 3, 3]",
+            "unexpected": [
+                "[1, 2, 3]",
+                "[2, 2, 2, 3, 3]"
+            ]
+        }
+    ]
+    */
+}

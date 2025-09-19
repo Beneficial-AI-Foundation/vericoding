@@ -15,10 +15,13 @@ fn my_min(a: i32, b: i32) -> (result: i32)
 // </vc-spec>
 // <vc-code>
 {
+    // impl-start
     assume(false);
-    unreached()
+    0
+    // impl-end
 }
 // </vc-code>
+
 
 }
 fn main() {}

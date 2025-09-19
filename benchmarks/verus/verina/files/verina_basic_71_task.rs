@@ -18,10 +18,13 @@ fn longest_common_prefix(str1: &Vec<char>, str2: &Vec<char>) -> (result: Vec<cha
 // </vc-spec>
 // <vc-code>
 {
+    // impl-start
     assume(false);
-    unreached()
+    Vec::new()
+    // impl-end
 }
 // </vc-code>
+
 
 }
 fn main() {}

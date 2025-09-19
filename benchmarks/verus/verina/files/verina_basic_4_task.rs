@@ -14,10 +14,13 @@ fn kth_element_impl(arr: &Vec<i32>, k: usize) -> (result: i32)
 // </vc-spec>
 // <vc-code>
 {
+    // impl-start
     assume(false);
-    unreached()
+    0
+    // impl-end
 }
 // </vc-code>
+
 
 }
 fn main() {}

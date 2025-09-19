@@ -8,16 +8,23 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn sum_of_fourth_power_of_odd_numbers(n: nat) -> (result: nat)
-    ensures
-        15 * result == n * (2 * n + 1) * (7 + 24 * (n * n * n) - 12 * (n * n) - 14 * n)
+spec fn sum_of_fourth_power_of_odd_numbers(n: nat) -> nat
 // </vc-spec>
 // <vc-code>
 {
-    assume(false);
-    unreached()
+    // impl-start
+    0
+    // impl-end
+}
+
+proof fn sum_of_fourth_power_of_odd_numbers_spec(n: nat)
+    ensures
+        15 * sum_of_fourth_power_of_odd_numbers(n) == n * (2 * n + 1) * (7 + 24 * (n * n * n) - 12 * (n * n) - 14 * n),
+{
+    assume(false); // TODO: Remove this line and implement the proof
 }
 // </vc-code>
+
 
 }
 fn main() {}

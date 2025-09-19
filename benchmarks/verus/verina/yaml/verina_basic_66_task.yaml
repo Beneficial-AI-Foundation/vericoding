@@ -12,26 +12,24 @@ vc-description: |-
   
   -----Note-----
   No additional preconditions are required. The method should work correctly for any integer value.
-
 vc-preamble: |-
   use vstd::prelude::*;
-  
-  verus! {
 
+  verus! {
 vc-helpers: |-
 
 vc-spec: |-
   fn compute_is_even(x: int) -> (result: bool)
       ensures
           result == true <==> #[trigger] (x % 2) == 0,
-
 vc-code: |-
   {
+      // impl-start
       assume(false);
-      unreached()
+      false
+      // impl-end
   }
-
 vc-postamble: |-
+
   }
   fn main() {}
-

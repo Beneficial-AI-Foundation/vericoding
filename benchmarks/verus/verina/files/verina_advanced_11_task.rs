@@ -2,13 +2,12 @@
 use vstd::prelude::*;
 
 verus! {
-
-spec fn count_occurrences(x: i32, lst: Seq<i32>) -> nat {
-    lst.filter(|y: i32| y == x).len()
-}
 // </vc-preamble>
 
 // <vc-helpers>
+spec fn count_occurrences(x: i32, lst: Seq<i32>) -> nat {
+    lst.filter(|y: i32| y == x).len()
+}
 // </vc-helpers>
 
 // <vc-spec>
@@ -24,10 +23,13 @@ fn find_majority_element(lst: &Vec<i32>) -> (result: i32)
 // </vc-spec>
 // <vc-code>
 {
+    // impl-start
     assume(false);
-    unreached()
+    0
+    // impl-end
 }
 // </vc-code>
+
 
 }
 fn main() {}

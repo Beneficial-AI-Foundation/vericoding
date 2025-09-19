@@ -12,8 +12,49 @@ vc-description: |-
   
   -----Note-----
   It is assumed that the provided array is non-empty. In cases where the array is empty, the function's behavior is not defined.
-  
-  /*
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+  spec fn max_array_precond(a: &Vec<i32>) -> bool {
+      a.len() > 0
+  }
+
+vc-helpers: |-
+  fn max_array_aux(a: &Vec<i32>, index: usize, current: i32) -> (result: i32)
+      requires index <= a.len(),
+      decreases a.len() - index,
+  {
+      if index < a.len() {
+          let new_current = if current > a[index] { current } else { a[index] };
+          max_array_aux(a, index + 1, new_current)
+      } else {
+          current
+      }
+  }
+
+vc-spec: |-
+  fn max_array(a: &Vec<i32>) -> (result: i32)
+      requires max_array_precond(a),
+      ensures
+          forall|k: int| 0 <= k < a.len() ==> result >= a[k],
+          exists|k: int| 0 <= k < a.len() && result == a[k],
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      0
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {
+      /*
       -- Invalid Inputs
       [
           {
@@ -78,32 +119,4 @@ vc-description: |-
           }
       ]
       */
-
-vc-preamble: |-
-  use vstd::prelude::*;
-  
-  verus! {
-  
-  spec fn max_array_precond(a: &Vec<i32>) -> bool {
-      a.len() > 0
   }
-
-vc-helpers: |-
-
-vc-spec: |-
-  fn max_array(a: &Vec<i32>) -> (result: i32)
-      requires max_array_precond(a),
-      ensures
-          forall|k: int| 0 <= k < a.len() ==> result >= a[k],
-          exists|k: int| 0 <= k < a.len() && result == a[k],
-
-vc-code: |-
-  {
-      assume(false);
-      unreached()
-  }
-
-vc-postamble: |-
-  }
-  fn main() {}
-

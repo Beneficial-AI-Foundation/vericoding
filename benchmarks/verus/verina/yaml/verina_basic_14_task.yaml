@@ -12,26 +12,24 @@ vc-description: |-
   
   -----Note-----
   There are no preconditions; the method will always work as strings and sequences are considered non-null.
-
 vc-preamble: |-
   use vstd::prelude::*;
-  
-  verus! {
 
+  verus! {
 vc-helpers: |-
 
 vc-spec: |-
   fn contains_z(s: &str) -> (result: bool)
       ensures
           result <==> exists|i: int| 0 <= i < s@.len() && (s@[i] == 'z' || s@[i] == 'Z'),
-
 vc-code: |-
   {
+      // impl-start
       assume(false);
-      unreached()
+      false
+      // impl-end
   }
-
 vc-postamble: |-
+
   }
   fn main() {}
-

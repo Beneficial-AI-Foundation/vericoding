@@ -15,8 +15,38 @@ vc-description: |-
   
   -----Note-----
   It is assumed that both indices i and j are non-negative and within the bounds of the array (i.e., i and j are less than arr.len()).
-  
-  /*
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn swap(arr: &Vec<i32>, i: usize, j: usize) -> (result: Vec<i32>)
+      requires
+          i < arr.len(),
+          j < arr.len(),
+      ensures
+          result.len() == arr.len(),
+          result[i as int] == arr[j as int],
+          result[j as int] == arr[i as int],
+          forall|k: int| 0 <= k < arr.len() && k != i && k != j ==> result[k] == arr[k],
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      Vec::new()
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {
+      // /*
       // -- Invalid Inputs
       // [
       //     {
@@ -91,34 +121,4 @@ vc-description: |-
       //     }
       // ]
       // */
-  
-  //
-
-vc-preamble: |-
-  use vstd::prelude::*;
-  
-  verus! {
-
-vc-helpers: |-
-
-vc-spec: |-
-  fn swap(arr: &Vec<i32>, i: usize, j: usize) -> (result: Vec<i32>)
-      requires
-          i < arr.len(),
-          j < arr.len(),
-      ensures
-          result.len() == arr.len(),
-          result[i as int] == arr[j as int],
-          result[j as int] == arr[i as int],
-          forall|k: int| 0 <= k < arr.len() && k != i && k != j ==> result[k] == arr[k],
-
-vc-code: |-
-  {
-      assume(false);
-      unreached()
   }
-
-vc-postamble: |-
-  }
-  fn main() {}
-

@@ -17,10 +17,13 @@ fn solution(nums: Vec<u32>) -> (result: u32)
 // </vc-spec>
 // <vc-code>
 {
+    // impl-start
     assume(false);
-    unreached()
+    0
+    // impl-end
 }
 // </vc-code>
+
 
 }
 fn main() {}

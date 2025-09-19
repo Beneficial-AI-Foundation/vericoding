@@ -25,10 +25,13 @@ fn two_sum(nums: &Vec<i32>, target: i32) -> (result: Vec<usize>)
 // </vc-spec>
 // <vc-code>
 {
+    // impl-start
     assume(false);
-    unreached()
+    Vec::new()
+    // impl-end
 }
 // </vc-code>
+
 
 }
 fn main() {}

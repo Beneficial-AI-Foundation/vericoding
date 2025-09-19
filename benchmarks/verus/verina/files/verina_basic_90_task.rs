@@ -12,6 +12,9 @@ spec fn slope_search_precond(a: &Vec<Vec<i32>>, key: i32) -> bool {
 // </vc-preamble>
 
 // <vc-helpers>
+spec fn get2d(a: &Vec<Vec<i32>>, i: i32, j: i32) -> i32 {
+    a[i as int][j as int]
+}
 // </vc-helpers>
 
 // <vc-spec>
@@ -26,10 +29,81 @@ fn slope_search(a: &Vec<Vec<i32>>, key: i32) -> (result: (i32, i32))
 // </vc-spec>
 // <vc-code>
 {
+    // impl-start
     assume(false);
-    unreached()
+    (-1, -1)
+    // impl-end
 }
 // </vc-code>
 
 }
-fn main() {}
+fn main() {
+    /* Invalid Inputs
+    [
+        {
+            "input": {
+                "a": "vec![vec![1, 3, 2], vec![0, 6, 5], vec![7, 8, 9]]",
+                "key": 2
+            }
+        }
+    ]
+    Tests
+    [
+        {
+            "input": {
+                "a": "vec![vec![1, 2, 3], vec![4, 5, 6], vec![7, 8, 9]]",
+                "key": 5
+            },
+            "expected": "(1, 1)",
+            "unexpected": [
+                "(1, 2)",
+                "(0, 1)"
+            ]
+        },
+        {
+            "input": {
+                "a": "vec![vec![1, 2, 3], vec![4, 5, 6], vec![7, 8, 9]]",
+                "key": 3
+            },
+            "expected": "(0, 2)",
+            "unexpected": [
+                "(0, 1)",
+                "(1, 2)"
+            ]
+        },
+        {
+            "input": {
+                "a": "vec![vec![1, 2, 3], vec![4, 5, 6], vec![7, 8, 9]]",
+                "key": 10
+            },
+            "expected": "(-1, -1)",
+            "unexpected": [
+                "(1, 1)",
+                "(2, 2)"
+            ]
+        },
+        {
+            "input": {
+                "a": "vec![vec![1, 2, 3, 4]]",
+                "key": 4
+            },
+            "expected": "(0, 3)",
+            "unexpected": [
+                "(0, 2)",
+                "(1, 3)",
+                "(0, 4)"
+            ]
+        },
+        {
+            "input": {
+                "a": "vec![vec![1], vec![2], vec![3], vec![4]]",
+                "key": 3
+            },
+            "expected": "(2, 0)",
+            "unexpected": [
+                "(1, 0)",
+                "(2, 1)"
+            ]
+        }
+    ] */
+}

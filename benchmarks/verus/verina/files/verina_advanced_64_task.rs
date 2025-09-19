@@ -19,10 +19,13 @@ fn remove_element(lst: &Vec<nat>, target: nat) -> (result: Vec<nat>)
 // </vc-spec>
 // <vc-code>
 {
+    // impl-start
     assume(false);
-    unreached()
+    Vec::new()
+    // impl-end
 }
 // </vc-code>
+
 
 }
 fn main() {}

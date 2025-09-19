@@ -11,24 +11,20 @@ vc-description: |-
   
   Note:
   There are no preconditions since the method assumes that the input string is always valid (i.e., non-null).
-
 vc-preamble: |-
   use vstd::prelude::*;
-  
+
   verus! {
-  
+vc-helpers: |-
   spec fn is_lower_case(c: char) -> bool
   {
       'a' <= c && c <= 'z'
   }
-  
+
   spec fn shift_minus_32(c: char) -> char
   {
       arbitrary()
   }
-
-vc-helpers: |-
-
 vc-spec: |-
   fn to_uppercase(s: &str) -> (result: String)
       ensures
@@ -42,14 +38,14 @@ vc-spec: |-
                   r == c
               }
           },
-
 vc-code: |-
   {
+      // impl-start
       assume(false);
-      unreached()
+      "".to_string()
+      // impl-end
   }
-
 vc-postamble: |-
+
   }
   fn main() {}
-

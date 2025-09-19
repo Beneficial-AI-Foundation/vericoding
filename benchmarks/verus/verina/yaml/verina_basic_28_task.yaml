@@ -12,8 +12,30 @@ vc-description: |-
   
   Note:
   The input is expected to satisfy the condition n ≥ 2.
-  
-  /* 
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+vc-helpers: |-
+
+vc-spec: |-
+  fn is_prime(n: nat) -> (result: bool)
+      requires n >= 2,
+      ensures
+          result ==> forall|k: nat| 2 <= k < n ==> #[trigger] (n % k) != 0,
+          !result ==> exists|k: nat| 2 <= k < n && #[trigger] (n % k) == 0,
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      false
+      // impl-end
+  }
+vc-postamble: |-
+
+  }
+  fn main() {
+      /* 
       Invalid Inputs
       [
           {
@@ -98,28 +120,4 @@ vc-description: |-
           }
       ]
       */
-
-vc-preamble: |-
-  use vstd::prelude::*;
-  
-  verus! {
-
-vc-helpers: |-
-
-vc-spec: |-
-  fn is_prime(n: nat) -> (result: bool)
-      requires n >= 2,
-      ensures
-          result ==> forall|k: nat| 2 <= k < n ==> #[trigger] (n % k) != 0,
-          !result ==> exists|k: nat| 2 <= k < n && #[trigger] (n % k) == 0,
-
-vc-code: |-
-  {
-      assume(false);
-      unreached()
   }
-
-vc-postamble: |-
-  }
-  fn main() {}
-

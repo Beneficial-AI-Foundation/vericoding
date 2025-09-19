@@ -12,12 +12,10 @@ vc-description: |-
   
   -----Note-----
   There are no special preconditions; the method is expected to work correctly for any array of integers and any integer b.
-
 vc-preamble: |-
   use vstd::prelude::*;
-  
-  verus! {
 
+  verus! {
 vc-helpers: |-
 
 vc-spec: |-
@@ -26,14 +24,14 @@ vc-spec: |-
           result.len() == a.len() + 1,
           forall|i: int| 0 <= i < a.len() ==> result[i] == a[i],
           result[a.len() as int] == b,
-
 vc-code: |-
   {
+      // impl-start
       assume(false);
-      unreached()
+      Vec::new()
+      // impl-end
   }
-
 vc-postamble: |-
+
   }
   fn main() {}
-

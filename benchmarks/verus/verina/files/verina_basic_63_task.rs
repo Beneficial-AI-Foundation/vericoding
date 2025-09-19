@@ -2,13 +2,12 @@
 use vstd::prelude::*;
 
 verus! {
-
-spec fn abs_diff(a: int, b: int) -> int {
-    if a >= b { a - b } else { b - a }
-}
 // </vc-preamble>
 
 // <vc-helpers>
+spec fn abs_diff(a: int, b: int) -> int {
+    if a >= b { a - b } else { b - a }
+}
 // </vc-helpers>
 
 // <vc-spec>
@@ -21,10 +20,13 @@ fn has_close_elements(numbers: &Vec<i32>, threshold: i32) -> (result: bool)
 // </vc-spec>
 // <vc-code>
 {
+    // impl-start
     assume(false);
-    unreached()
+    false
+    // impl-end
 }
 // </vc-code>
+
 
 }
 fn main() {}

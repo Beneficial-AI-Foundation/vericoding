@@ -2,13 +2,13 @@
 use vstd::prelude::*;
 
 verus! {
-
-spec fn count_occurrences(xs: Seq<i32>, target: i32) -> nat {
-    xs.filter(|x: i32| x == target).len()
-}
 // </vc-preamble>
 
 // <vc-helpers>
+/* Helper function to count occurrences of a target value in a sequence */
+spec fn count_occurrences(xs: Seq<i32>, target: i32) -> nat {
+    xs.filter(|x: i32| x == target).len()
+}
 // </vc-helpers>
 
 // <vc-spec>
@@ -25,10 +25,14 @@ fn most_frequent(xs: Vec<i32>) -> (result: i32)
 // </vc-spec>
 // <vc-code>
 {
+    // impl-start
     assume(false);
-    unreached()
+    0
+    // impl-end
 }
 // </vc-code>
 
+
 }
+
 fn main() {}

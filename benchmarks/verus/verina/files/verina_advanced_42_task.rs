@@ -16,10 +16,13 @@ fn max_profit(prices: Seq<usize>) -> (result: usize)
 // </vc-spec>
 // <vc-code>
 {
+    // impl-start
     assume(false);
-    unreached()
+    0
+    // impl-end
 }
 // </vc-code>
+
 
 }
 fn main() {}

@@ -2,7 +2,9 @@
 use vstd::prelude::*;
 
 verus! {
+// </vc-preamble>
 
+// <vc-helpers>
 spec fn count_matches(xs: Seq<u64>, x: u64) -> nat
     decreases xs.len()
 {
@@ -13,9 +15,6 @@ spec fn count_matches(xs: Seq<u64>, x: u64) -> nat
         first_match + count_matches(xs.skip(1), x)
     }
 }
-// </vc-preamble>
-
-// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>
@@ -28,10 +27,14 @@ fn majority_element(xs: &Vec<u64>) -> (result: u64)
 // </vc-spec>
 // <vc-code>
 {
+    // impl-start
     assume(false);
-    unreached()
+    0
+    // impl-end
 }
 // </vc-code>
 
+
 }
+
 fn main() {}

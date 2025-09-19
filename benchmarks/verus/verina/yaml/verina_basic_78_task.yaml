@@ -13,8 +13,33 @@ vc-description: |-
   
   -----Note-----
   It is assumed that x and y are valid integers. There are no additional constraints on the inputs.
-  
-  /*
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn multiple_returns(x: i32, y: i32) -> (result: (i32, i32))
+      ensures
+          result.0 == x + y,
+          result.1 + y == x,
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      (0, 0)
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {
+      // /*
       // -- Invalid Inputs
       // []
       // -- Tests
@@ -81,29 +106,4 @@ vc-description: |-
       //     }
       // ]
       // */
-  
-  //
-
-vc-preamble: |-
-  use vstd::prelude::*;
-  
-  verus! {
-
-vc-helpers: |-
-
-vc-spec: |-
-  fn multiple_returns(x: i32, y: i32) -> (result: (i32, i32))
-      ensures
-          result.0 == x + y,
-          result.1 + y == x,
-
-vc-code: |-
-  {
-      assume(false);
-      unreached()
   }
-
-vc-postamble: |-
-  }
-  fn main() {}
-

@@ -16,10 +16,13 @@ fn swap(x: i32, y: i32) -> (result: (i32, i32))
 // </vc-spec>
 // <vc-code>
 {
+    // impl-start
     assume(false);
-    unreached()
+    (0, 0)
+    // impl-end
 }
 // </vc-code>
+
 
 }
 fn main() {}

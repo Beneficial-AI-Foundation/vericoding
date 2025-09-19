@@ -15,10 +15,13 @@ fn reverse_string(s: &Vec<char>) -> (result: Vec<char>)
 // </vc-spec>
 // <vc-code>
 {
+    // impl-start
     assume(false);
-    unreached()
+    Vec::new()
+    // impl-end
 }
 // </vc-code>
+
 
 }
 fn main() {}

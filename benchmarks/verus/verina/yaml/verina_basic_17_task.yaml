@@ -11,26 +11,20 @@ vc-description: |-
   
   -----Note-----
   There are no preconditions; the method is expected to work for any non-null string.
-  
-  /* Helper function to check if a character is uppercase */
-  
-  /* Helper function to shift character by 32 positions */
-
 vc-preamble: |-
   use vstd::prelude::*;
-  
+
   verus! {
-  
+vc-helpers: |-
+  /* Helper function to check if a character is uppercase */
   spec fn is_uppercase(c: char) -> bool {
       'A' <= c && c <= 'Z'
   }
-  
+
+  /* Helper function to shift character by 32 positions */
   spec fn shift32(c: char) -> char {
       ((c as int) + 32) as char
   }
-
-vc-helpers: |-
-
 vc-spec: |-
   fn to_lowercase(s: &Vec<char>) -> (result: Vec<char>)
       ensures
@@ -42,14 +36,14 @@ vc-spec: |-
                   result[i] == s[i]
               }
           },
-
 vc-code: |-
   {
+      // impl-start
       assume(false);
-      unreached()
+      Vec::new()
+      // impl-end
   }
-
 vc-postamble: |-
+
   }
   fn main() {}
-

@@ -11,30 +11,28 @@ vc-description: |-
   Output:
   The output is a natural number:
   The nth smallest ugly number.
-
 vc-preamble: |-
   use vstd::prelude::*;
-  
+
   verus! {
-  
+
   spec fn nth_ugly_number_precond(n: nat) -> bool {
       n > 0
   }
-
 vc-helpers: |-
 
 vc-spec: |-
   fn nth_ugly_number(n: u32) -> (result: u32)
       requires n > 0,
       ensures result > 0,
-
 vc-code: |-
   {
+      // impl-start
       assume(false);
-      unreached()
+      1
+      // impl-end
   }
-
 vc-postamble: |-
+
   }
   fn main() {}
-

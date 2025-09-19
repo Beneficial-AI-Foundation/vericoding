@@ -19,10 +19,13 @@ fn rotate_right(l: &Vec<i32>, n: usize) -> (result: Vec<i32>)
 // </vc-spec>
 // <vc-code>
 {
+    // impl-start
     assume(false);
-    unreached()
+    Vec::new()
+    // impl-end
 }
 // </vc-code>
+
 
 }
 fn main() {}

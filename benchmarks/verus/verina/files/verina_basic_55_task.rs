@@ -14,10 +14,13 @@ fn compare(a: i32, b: i32) -> (result: bool)
 // </vc-spec>
 // <vc-code>
 {
+    // impl-start
     assume(false);
-    unreached()
+    false
+    // impl-end
 }
 // </vc-code>
+
 
 }
 fn main() {}

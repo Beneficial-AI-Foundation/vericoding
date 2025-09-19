@@ -11,28 +11,15 @@ vc-description: |-
   -----Output-----
   The output is `Vec<(nat, nat)>`:
   Return a list of pair/Cartesian product of two natural numbers (p, e), where p is the prime and e is the exponent of p in the factorization. Each prime in the output must be from the input list, and every prime in the input list must appear in the output.
-
 vc-preamble: |-
   use vstd::prelude::*;
   use vstd::arithmetic::power::pow;
-  
+
   verus! {
-  
+
   spec fn is_prime(n: nat) -> bool {
       arbitrary()
   }
-  
-  spec fn spec_fold(pairs: Seq<(nat, nat)>, acc: int) -> int
-      decreases pairs.len()
-  {
-      if pairs.len() == 0 {
-          acc
-      } else {
-          let (p, e) = pairs[0];
-          spec_fold(pairs.subrange(1, pairs.len() as int), acc * pow(p as int, e as nat))
-      }
-  }
-
 vc-helpers: |-
 
 vc-spec: |-
@@ -44,14 +31,31 @@ vc-spec: |-
           forall|i: int| 0 <= i < result.len() ==> (#[trigger] primes@.contains(result[i].0)),
           forall|p: nat| (#[trigger] primes@.contains(p)) ==> 
               exists|j: int| 0 <= j < result.len() && result[j].0 == p,
-
 vc-code: |-
   {
+      // impl-start
       assume(false);
-      unreached()
+      Vec::new()
+      // impl-end
   }
 
+  spec fn spec_fold(pairs: Seq<(nat, nat)>, acc: int) -> int
+      decreases pairs.len()
+  {
+      if pairs.len() == 0 {
+          acc
+      } else {
+          let (p, e) = pairs[0];
+          spec_fold(pairs.subrange(1, pairs.len() as int), acc * pow(p as int, e as nat))
+      }
+  }
+
+  proof fn find_exponents_satisfies_spec(n: nat, primes: Vec<nat>)
+      requires forall|i: int| 0 <= i < primes.len() ==> is_prime(primes[i])
+  {
+      assume(false); /* TODO: Remove this line and implement the proof */
+  }
 vc-postamble: |-
+
   }
   fn main() {}
-

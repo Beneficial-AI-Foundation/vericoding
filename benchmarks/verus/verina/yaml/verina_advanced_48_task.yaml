@@ -16,12 +16,10 @@ vc-description: |-
   Output:
   The output is a list of integers:
   Returns a new list containing all elements from the input list, sorted in ascending order.
-
 vc-preamble: |-
   use vstd::prelude::*;
-  
-  verus! {
 
+  verus! {
 vc-helpers: |-
 
 vc-spec: |-
@@ -30,14 +28,14 @@ vc-spec: |-
           result.len() == list.len(),
           forall|i: int, j: int| 0 <= i < j < result.len() ==> result[i] <= result[j],
           result@ =~= list@,
-
 vc-code: |-
   {
+      // impl-start
       assume(false);
-      unreached()
+      Vec::new()
+      // impl-end
   }
-
 vc-postamble: |-
+
   }
   fn main() {}
-

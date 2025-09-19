@@ -1,0 +1,43 @@
+vc-description: |-
+  This task requires writing a Verus function that finds the one missing number in a list of distinct natural numbers from 0 to n. The list contains exactly n numbers and all numbers are in the range [0, n], but one number in that range is missing.
+
+  Your function must return the missing number. You may assume the input list contains no duplicates and only one number is missing.
+
+  -----Input-----
+  - nums: A list of natural numbers of length n, each in the range [0, n] with exactly one number missing.
+
+  -----Output-----
+  - A natural number: the missing number in the range [0, n] not present in the list.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+  spec fn missing_number_precond(nums: &Vec<usize>) -> bool {
+      (forall|i: int| 0 <= i < nums.len() ==> nums[i] <= nums.len()) &&
+      nums.no_duplicates()
+  }
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn missing_number(nums: &Vec<usize>) -> (result: usize)
+      requires missing_number_precond(nums),
+      ensures
+          result <= nums.len(),
+          !nums.contains(&result),
+          forall|x: usize| x <= nums.len() && x != result ==> nums.contains(&x),
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      0
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {}

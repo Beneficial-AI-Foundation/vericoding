@@ -19,10 +19,75 @@ fn increasing_triplet(nums: &Vec<i32>) -> (result: bool)
 // </vc-spec>
 // <vc-code>
 {
+    // impl-start
     assume(false);
-    unreached()
+    false
+    // impl-end
 }
 // </vc-code>
 
+
 }
-fn main() {}
+fn main() {
+    /*
+    -- Invalid Inputs
+    []
+    -- Tests
+    [
+        {
+            "input": {
+                "nums": "[1, 2, 3]"
+            },
+            "expected": true,
+            "unexpected": [
+                false
+            ]
+        },
+        {
+            "input": {
+                "nums": "[5, 4, 3, 2, 1]"
+            },
+            "expected": false,
+            "unexpected": [
+                true
+            ]
+        },
+        {
+            "input": {
+                "nums": "[2, 1, 5, 0, 4, 6]"
+            },
+            "expected": true,
+            "unexpected": [
+                false
+            ]
+        },
+        {
+            "input": {
+                "nums": "[1, 5, 0, 4, 1, 3]"
+            },
+            "expected": true,
+            "unexpected": [
+                false
+            ]
+        },
+        {
+            "input": {
+                "nums": "[5, 4, 3]"
+            },
+            "expected": false,
+            "unexpected": [
+                true
+            ]
+        },
+        {
+            "input": {
+                "nums": "[]"
+            },
+            "expected": false,
+            "unexpected": [
+                true
+            ]
+        }
+    ]
+    */
+}

@@ -1,0 +1,34 @@
+vc-description: |-
+  This task requires writing a Verus method that calculates the surface area of a cube based on the length of one of its edges. The method should compute the surface area using the standard formula for a cube.
+  
+  -----Input-----
+  The input consists of:
+  size: A natural number representing the length of an edge of the cube.
+  
+  -----Output-----
+  The output is a natural number:
+  Returns the surface area of the cube.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn cube_surface_area(size: nat) -> (result: nat)
+      ensures result == 6 * size * size,
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      0
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {}

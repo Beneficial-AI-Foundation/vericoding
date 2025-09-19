@@ -2,13 +2,12 @@
 use vstd::prelude::*;
 
 verus! {
-
-spec fn decode_rle(lst: Vec<(char, usize)>) -> Seq<char> {
-    Seq::empty()
-}
 // </vc-preamble>
 
 // <vc-helpers>
+spec fn decode_rle(lst: Vec<(char, usize)>) -> Seq<char> {
+    Seq::empty()
+}
 // </vc-helpers>
 
 // <vc-spec>
@@ -20,10 +19,13 @@ fn run_length_encode(s: &Vec<char>) -> (result: Vec<(char, usize)>)
 // </vc-spec>
 // <vc-code>
 {
+    // impl-start
     assume(false);
-    unreached()
+    Vec::new()
+    // impl-end
 }
 // </vc-code>
+
 
 }
 fn main() {}

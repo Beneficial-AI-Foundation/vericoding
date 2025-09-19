@@ -2,7 +2,9 @@
 use vstd::prelude::*;
 
 verus! {
+// </vc-preamble>
 
+// <vc-helpers>
 spec fn to_lower(c: char) -> char {
     if 'A' <= c && c <= 'Z' {
         ((c as int + 32) as char)
@@ -14,9 +16,6 @@ spec fn to_lower(c: char) -> char {
 spec fn normalize_str(s: &str) -> Seq<char> {
     s.view().map_values(|c| to_lower(c))
 }
-// </vc-preamble>
-
-// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>
@@ -32,10 +31,13 @@ fn all_vowels(s: &str) -> (result: bool)
 // </vc-spec>
 // <vc-code>
 {
+    // impl-start
     assume(false);
-    unreached()
+    false
+    // impl-end
 }
 // </vc-code>
+
 
 }
 fn main() {}

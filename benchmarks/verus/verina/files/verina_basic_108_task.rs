@@ -17,10 +17,13 @@ fn below_zero(operations: &Vec<i32>) -> (result: (Vec<i32>, bool))
 // </vc-spec>
 // <vc-code>
 {
+    // impl-start
     assume(false);
-    unreached()
+    (Vec::new(), false)
+    // impl-end
 }
 // </vc-code>
+
 
 }
 fn main() {}

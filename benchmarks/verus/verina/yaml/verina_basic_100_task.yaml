@@ -12,8 +12,33 @@ vc-description: |-
   
   -----Note-----
   There are no additional preconditions. It is assumed that x is a valid integer.
-  
-  /*
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn triple(x: i32) -> (result: i32)
+      ensures
+          result / 3 == x,
+          result / 3 * 3 == result,
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      0
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {
+      /*
       -- Invalid Inputs
       []
       -- Tests
@@ -75,27 +100,4 @@ vc-description: |-
           }
       ]
       */
-
-vc-preamble: |-
-  use vstd::prelude::*;
-  
-  verus! {
-
-vc-helpers: |-
-
-vc-spec: |-
-  fn triple(x: i32) -> (result: i32)
-      ensures
-          result / 3 == x,
-          result / 3 * 3 == result,
-
-vc-code: |-
-  {
-      assume(false);
-      unreached()
   }
-
-vc-postamble: |-
-  }
-  fn main() {}
-

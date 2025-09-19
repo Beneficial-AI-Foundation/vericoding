@@ -24,10 +24,73 @@ fn two_sum(nums: Vec<i32>, target: i32) -> (result: Option<(usize, usize)>)
 // </vc-spec>
 // <vc-code>
 {
+    // impl-start
     assume(false);
-    unreached()
+    None
+    // impl-end
 }
 // </vc-code>
 
+
 }
-fn main() {}
+fn main() {
+    /*
+    -- Tests
+    [
+        {
+            "input": {
+                "nums": "[2, 7, 11, 15]",
+                "target": 9
+            },
+            "expected": "some (0, 1)",
+            "unexpected": [
+                "some (1, 2)",
+                "none"
+            ]
+        },
+        {
+            "input": {
+                "nums": "[3, 2, 4]",
+                "target": 6
+            },
+            "expected": "some (1, 2)",
+            "unexpected": [
+                "some (0, 2)",
+                "none"
+            ]
+        },
+        {
+            "input": {
+                "nums": "[3, 3]",
+                "target": 6
+            },
+            "expected": "some (0, 1)",
+            "unexpected": [
+                "some (1, 1)",
+                "none"
+            ]
+        },
+        {
+            "input": {
+                "nums": "[1, 2, 3]",
+                "target": 7
+            },
+            "expected": "none",
+            "unexpected": [
+                "some (0, 2)"
+            ]
+        },
+        {
+            "input": {
+                "nums": "[0, 4, 3, 0]",
+                "target": 0
+            },
+            "expected": "some (0, 3)",
+            "unexpected": [
+                "some (1, 2)",
+                "none"
+            ]
+        }
+    ]
+    */
+}

@@ -11,8 +11,35 @@ vc-description: |-
   
   -----Note-----
   - The input array is assumed not to be null.
-  
-  /*
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+  spec fn sum_to(a: &Vec<i32>, n: int) -> int
+      decreases n
+  {
+      if n <= 0 { 0 } else { sum_to(a, n - 1) + a[n - 1] }
+  }
+vc-helpers: |-
+
+vc-spec: |-
+  fn array_sum(a: &Vec<i32>) -> (result: i32)
+      requires a.len() > 0,
+      ensures
+          result == sum_to(a, a.len() as int),
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      0
+      // impl-end
+  }
+vc-postamble: |-
+
+  }
+  fn main() {
+      /*
       -- Invalid Inputs
       [
           {
@@ -69,33 +96,4 @@ vc-description: |-
           }
       ]
       */
-
-vc-preamble: |-
-  use vstd::prelude::*;
-  
-  verus! {
-  
-  spec fn sum_to(a: &Vec<i32>, n: int) -> int
-      decreases n
-  {
-      if n <= 0 { 0 } else { sum_to(a, n - 1) + a[n - 1] }
   }
-
-vc-helpers: |-
-
-vc-spec: |-
-  fn array_sum(a: &Vec<i32>) -> (result: i32)
-      requires a.len() > 0,
-      ensures
-          result == sum_to(a, a.len() as int),
-
-vc-code: |-
-  {
-      assume(false);
-      unreached()
-  }
-
-vc-postamble: |-
-  }
-  fn main() {}
-

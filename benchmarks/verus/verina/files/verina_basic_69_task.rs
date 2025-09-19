@@ -5,6 +5,20 @@ verus! {
 // </vc-preamble>
 
 // <vc-helpers>
+fn linear_search_aux(a: &Vec<i32>, e: i32, n: usize) -> (result: usize)
+    requires n <= a.len(),
+    decreases a.len() - n,
+{
+    if n < a.len() {
+        if a[n] == e {
+            n
+        } else {
+            linear_search_aux(a, e, n + 1)
+        }
+    } else {
+        0
+    }
+}
 // </vc-helpers>
 
 // <vc-spec>
@@ -17,10 +31,13 @@ fn linear_search(a: &Vec<i32>, e: i32) -> (result: usize)
 // </vc-spec>
 // <vc-code>
 {
+    // impl-start
     assume(false);
-    unreached()
+    0
+    // impl-end
 }
 // </vc-code>
+
 
 }
 fn main() {}

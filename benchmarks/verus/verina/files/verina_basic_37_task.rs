@@ -23,10 +23,13 @@ fn find_first_occurrence(arr: &Vec<i32>, target: i32) -> (result: i32)
 // </vc-spec>
 // <vc-code>
 {
+    // impl-start
     assume(false);
-    unreached()
+    -1
+    // impl-end
 }
 // </vc-code>
+
 
 }
 fn main() {}

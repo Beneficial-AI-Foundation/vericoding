@@ -4,26 +4,24 @@ vc-description: |-
   Input: numbers: A list of integers.
   
   Output: A natural number representing the length of the longest increasing subsequence in the input list. If the list is empty, the function returns 0.
-
 vc-preamble: |-
   use vstd::prelude::*;
-  
-  verus! {
 
+  verus! {
 vc-helpers: |-
 
 vc-spec: |-
   fn longest_increasing_subsequence(numbers: Vec<i32>) -> (result: usize)
       ensures
           result <= numbers.len(),
-
 vc-code: |-
   {
+      // impl-start
       assume(false);
-      unreached()
+      0
+      // impl-end
   }
-
 vc-postamble: |-
+
   }
   fn main() {}
-

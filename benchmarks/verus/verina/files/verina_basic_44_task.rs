@@ -2,13 +2,12 @@
 use vstd::prelude::*;
 
 verus! {
-
-spec fn is_odd(n: i32) -> bool {
-    n % 2 == 1
-}
 // </vc-preamble>
 
 // <vc-helpers>
+spec fn is_odd(n: i32) -> bool {
+    n % 2 == 1
+}
 // </vc-helpers>
 
 // <vc-spec>
@@ -18,10 +17,13 @@ fn is_odd_at_index_odd(a: &Vec<i32>) -> (result: bool)
 // </vc-spec>
 // <vc-code>
 {
+    // impl-start
     assume(false);
-    unreached()
+    false
+    // impl-end
 }
 // </vc-code>
+
 
 }
 fn main() {}

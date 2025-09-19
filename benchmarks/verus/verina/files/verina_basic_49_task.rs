@@ -2,13 +2,12 @@
 use vstd::prelude::*;
 
 verus! {
-
-spec fn is_odd(x: i32) -> bool {
-    x % 2 != 0
-}
 // </vc-preamble>
 
 // <vc-helpers>
+spec fn is_odd(x: i32) -> bool {
+    x % 2 != 0
+}
 // </vc-helpers>
 
 // <vc-spec>
@@ -23,10 +22,13 @@ fn find_first_odd(a: &Vec<i32>) -> (result: Option<usize>)
 // </vc-spec>
 // <vc-code>
 {
+    // impl-start
     assume(false);
-    unreached()
+    None
+    // impl-end
 }
 // </vc-code>
+
 
 }
 fn main() {}

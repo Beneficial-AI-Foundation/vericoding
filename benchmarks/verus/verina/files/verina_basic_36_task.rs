@@ -2,14 +2,13 @@
 use vstd::prelude::*;
 
 verus! {
+// </vc-preamble>
 
+// <vc-helpers>
 spec fn is_space_comma_dot(c: char) -> bool
 {
     c == ' ' || c == ',' || c == '.'
 }
-// </vc-preamble>
-
-// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>
@@ -22,10 +21,13 @@ fn replace_with_colon(s: &str) -> (result: String)
 // </vc-spec>
 // <vc-code>
 {
+    // impl-start
     assume(false);
-    unreached()
+    "".to_string()
+    // impl-end
 }
 // </vc-code>
+
 
 }
 fn main() {}

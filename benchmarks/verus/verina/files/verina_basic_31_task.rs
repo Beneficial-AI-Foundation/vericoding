@@ -2,7 +2,9 @@
 use vstd::prelude::*;
 
 verus! {
+// </vc-preamble>
 
+// <vc-helpers>
 spec fn is_lower_case(c: char) -> bool
 {
     'a' <= c && c <= 'z'
@@ -12,9 +14,6 @@ spec fn shift_minus_32(c: char) -> char
 {
     arbitrary()
 }
-// </vc-preamble>
-
-// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>
@@ -33,10 +32,13 @@ fn to_uppercase(s: &str) -> (result: String)
 // </vc-spec>
 // <vc-code>
 {
+    // impl-start
     assume(false);
-    unreached()
+    "".to_string()
+    // impl-end
 }
 // </vc-code>
+
 
 }
 fn main() {}

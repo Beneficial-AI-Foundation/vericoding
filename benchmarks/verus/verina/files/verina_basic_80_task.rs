@@ -2,13 +2,12 @@
 use vstd::prelude::*;
 
 verus! {
-
-spec fn count_occurrences(a: Seq<i32>, key: i32) -> nat {
-    a.filter(|x: i32| x == key).len()
-}
 // </vc-preamble>
 
 // <vc-helpers>
+spec fn count_occurrences(a: Seq<i32>, key: i32) -> nat {
+    a.filter(|x: i32| x == key).len()
+}
 // </vc-helpers>
 
 // <vc-spec>
@@ -18,10 +17,13 @@ fn only_once(a: &Vec<i32>, key: i32) -> (result: bool)
 // </vc-spec>
 // <vc-code>
 {
+    // impl-start
     assume(false);
-    unreached()
+    false
+    // impl-end
 }
 // </vc-code>
+
 
 }
 fn main() {}

@@ -13,12 +13,10 @@ vc-description: |-
   -----Note-----
   • The precondition requires that n is non-negative.
   • If the input list is empty, it should be returned unchanged.
-
 vc-preamble: |-
   use vstd::prelude::*;
-  
-  verus! {
 
+  verus! {
 vc-helpers: |-
 
 vc-spec: |-
@@ -30,14 +28,14 @@ vc-spec: |-
               let rotated_index = ((i - n as int + len) % len) as int;
               #[trigger] result[i] == l[rotated_index]
           },
-
 vc-code: |-
   {
+      // impl-start
       assume(false);
-      unreached()
+      Vec::new()
+      // impl-end
   }
-
 vc-postamble: |-
+
   }
   fn main() {}
-

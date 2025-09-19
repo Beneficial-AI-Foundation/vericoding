@@ -1,0 +1,42 @@
+vc-description: |-
+  This task requires writing a Verus method that finds the last occurrence of a specified element in a sorted array of integers. The method should return the index corresponding to the last occurrence of the element if it is present; if the element is absent, it should return -1. Additionally, the array must remain unchanged after the method is executed.
+  
+  Input:
+  The input consists of:
+  arr: A sorted array of integers in non-decreasing order.
+  elem: An integer whose last occurrence position is to be determined.
+  
+  Output:
+  The output is an integer:
+  Returns the index of the last occurrence of the specified integer in the array if it exists.
+  Returns -1 if the integer is not found in the array.
+  
+  Note:
+  The input array is assumed to be sorted in non-decreasing order and remains unchanged by the method.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn last_position(arr: &Vec<i8>, elem: i8) -> (result: i8)
+      requires forall|i: int, j: int| 0 <= i < j < arr.len() ==> arr[i] as int <= arr[j] as int,
+      ensures
+          (result >= 0 ==> 
+              0 <= result as int && result as int < arr.len() &&
+              arr[result as int] as int == elem as int &&
+              forall|k: int| result as int < k < arr.len() ==> arr[k] as int != elem as int) &&
+          (result == -1 ==> forall|k: int| 0 <= k < arr.len() ==> arr[k] as int != elem as int),
+
+vc-code: |-
+  {
+      assume(false);
+      unreached()
+  }
+
+vc-postamble: |-
+  }
+  fn main() {}

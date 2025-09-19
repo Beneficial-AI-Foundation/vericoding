@@ -20,10 +20,13 @@ fn copy(src: &Vec<i32>, s_start: usize, dest: &Vec<i32>, d_start: usize, len: us
 // </vc-spec>
 // <vc-code>
 {
+    // impl-start
     assume(false);
-    unreached()
+    Vec::new()
+    // impl-end
 }
 // </vc-code>
+
 
 }
 fn main() {}

@@ -2,17 +2,18 @@
 use vstd::prelude::*;
 
 verus! {
+// </vc-preamble>
 
+// <vc-helpers>
+// Helper function to count occurrences of an element in a sequence
 spec fn count_occurrences(nums: Seq<i32>, x: i32) -> nat {
     nums.filter(|elem: i32| elem == x).len()
 }
 
+// Helper function to filter elements equal to x
 spec fn filter_equal(nums: Seq<i32>, x: i32) -> Seq<i32> {
     nums.filter(|elem: i32| elem == x)
 }
-// </vc-preamble>
-
-// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>
@@ -27,10 +28,13 @@ fn find_single_number(nums: &Vec<i32>) -> (result: i32)
 // </vc-spec>
 // <vc-code>
 {
+    // impl-start
     assume(false);
-    unreached()
+    0
+    // impl-end
 }
 // </vc-code>
+
 
 }
 fn main() {}

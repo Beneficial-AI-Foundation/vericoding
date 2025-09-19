@@ -2,7 +2,9 @@
 use vstd::prelude::*;
 
 verus! {
+// </vc-preamble>
 
+// <vc-helpers>
 spec fn count_char(chars: Seq<char>, c: char) -> nat 
     decreases chars.len()
 {
@@ -30,9 +32,6 @@ spec fn first_occurrence_index(chars: Seq<char>, c: char) -> int {
 spec fn second_occurrence_exists(chars: Seq<char>, c: char) -> bool {
     exists|i: int, j: int| 0 <= i < j < chars.len() && #[trigger] chars[i] == c && #[trigger] chars[j] == c
 }
-// </vc-preamble>
-
-// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>
@@ -55,10 +54,14 @@ fn find_first_repeated_char(s: &Vec<char>) -> (result: Option<char>)
 // </vc-spec>
 // <vc-code>
 {
+    // impl-start
     assume(false);
-    unreached()
+    None
+    // impl-end
 }
 // </vc-code>
 
+
 }
+
 fn main() {}

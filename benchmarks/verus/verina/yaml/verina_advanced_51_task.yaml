@@ -1,16 +1,53 @@
 vc-description: |-
   This task requires writing a Verus method that takes two sorted (non-decreasing) integer lists and merges them into a single sorted list. The output must preserve order and include all elements from both input lists.
-  
+
   Input:
   The input consists of:
   a: A list of integers sorted in non-decreasing order.
   b: Another list of integers sorted in non-decreasing order.
-  
+
   Output:
   The output is a list of integers:
   Returns a merged list that contains all elements from both input lists, sorted in non-decreasing order.
-  
-  /* 
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+  spec fn is_sorted(s: Seq<i32>) -> bool {
+      forall|i: int, j: int| 0 <= i < j < s.len() ==> s[i] <= s[j]
+  }
+
+  spec fn multiset_equiv(s1: Seq<i32>, s2: Seq<i32>) -> bool {
+      s1.to_multiset() == s2.to_multiset()
+  }
+vc-helpers: |-
+  fn merge_sorted_aux(a: Vec<i32>, b: Vec<i32>) -> (result: Vec<i32>)
+  {
+      // impl-start
+      assume(false);
+      Vec::new()
+      // impl-end
+  }
+vc-spec: |-
+  fn merge_sorted(a: Vec<i32>, b: Vec<i32>) -> (result: Vec<i32>)
+      requires 
+          is_sorted(a@),
+          is_sorted(b@),
+      ensures 
+          is_sorted(result@),
+          multiset_equiv(result@, a@ + b@),
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      Vec::new()
+      // impl-end
+  }
+vc-postamble: |-
+  }
+  fn main() {
+      /* 
       -- Invalid Inputs
       [
           {
@@ -82,38 +119,4 @@ vc-description: |-
           }
       ]
       */
-
-vc-preamble: |-
-  use vstd::prelude::*;
-  
-  verus! {
-  
-  spec fn is_sorted(s: Seq<i32>) -> bool {
-      forall|i: int, j: int| 0 <= i < j < s.len() ==> s[i] <= s[j]
   }
-  
-  spec fn multiset_equiv(s1: Seq<i32>, s2: Seq<i32>) -> bool {
-      s1.to_multiset() == s2.to_multiset()
-  }
-
-vc-helpers: |-
-
-vc-spec: |-
-  fn merge_sorted(a: Vec<i32>, b: Vec<i32>) -> (result: Vec<i32>)
-      requires 
-          is_sorted(a@),
-          is_sorted(b@),
-      ensures 
-          is_sorted(result@),
-          multiset_equiv(result@, a@ + b@),
-
-vc-code: |-
-  {
-      assume(false);
-      unreached()
-  }
-
-vc-postamble: |-
-  }
-  fn main() {}
-

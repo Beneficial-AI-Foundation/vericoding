@@ -9,12 +9,10 @@ vc-description: |-
   The output is a tuple of two lists:
   - The first list contains all even numbers from the input list, in order.
   - The second list contains all odd numbers from the input list, in order.
-
 vc-preamble: |-
   use vstd::prelude::*;
-  
-  verus! {
 
+  verus! {
 vc-helpers: |-
 
 vc-spec: |-
@@ -27,14 +25,14 @@ vc-spec: |-
           &&& forall|i: int| 0 <= i < evens.len() ==> evens[i] % 2 == 0
           &&& forall|i: int| 0 <= i < odds.len() ==> odds[i] % 2 == 1
       }),
-
 vc-code: |-
   {
+      // impl-start
       assume(false);
-      unreached()
+      (Vec::new(), Vec::new())
+      // impl-end
   }
-
 vc-postamble: |-
+
   }
   fn main() {}
-

@@ -12,30 +12,28 @@ vc-description: |-
   
   -----Note-----
   This function should correctly handle zero, positive, and negative integers.
-
 vc-preamble: |-
   use vstd::prelude::*;
-  
+
   verus! {
-  
+
   spec fn abs(x: int) -> int {
       if x >= 0 { x } else { -x }
   }
-
 vc-helpers: |-
 
 vc-spec: |-
   fn abs_impl(x: i32) -> (result: i32)
       ensures
           (x >= 0 ==> result == x) && (x < 0 ==> x + result == 0),
-
 vc-code: |-
   {
+      // impl-start
       assume(false);
-      unreached()
+      0
+      // impl-end
   }
-
 vc-postamble: |-
+
   }
   fn main() {}
-

@@ -2,13 +2,12 @@
 use vstd::prelude::*;
 
 verus! {
-
-spec fn is_even(n: i32) -> bool {
-    n % 2 == 0
-}
 // </vc-preamble>
 
 // <vc-helpers>
+spec fn is_even(n: i32) -> bool {
+    n % 2 == 0
+}
 // </vc-helpers>
 
 // <vc-spec>
@@ -19,10 +18,13 @@ fn find_even_numbers(arr: &Vec<i32>) -> (result: Vec<i32>)
 // </vc-spec>
 // <vc-code>
 {
+    // impl-start
     assume(false);
-    unreached()
+    Vec::new()
+    // impl-end
 }
 // </vc-code>
+
 
 }
 fn main() {}

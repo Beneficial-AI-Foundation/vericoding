@@ -14,10 +14,13 @@ fn trap_rain_water(height: &Vec<usize>) -> (result: usize)
 // </vc-spec>
 // <vc-code>
 {
+    // impl-start
     assume(false);
-    unreached()
+    0
+    // impl-end
 }
 // </vc-code>
+
 
 }
 fn main() {}

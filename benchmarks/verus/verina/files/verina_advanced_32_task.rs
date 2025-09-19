@@ -14,10 +14,13 @@ fn longest_increasing_subsequence(numbers: Vec<i32>) -> (result: usize)
 // </vc-spec>
 // <vc-code>
 {
+    // impl-start
     assume(false);
-    unreached()
+    0
+    // impl-end
 }
 // </vc-code>
+
 
 }
 fn main() {}

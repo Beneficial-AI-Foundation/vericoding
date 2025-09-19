@@ -5,6 +5,14 @@ verus! {
 // </vc-preamble>
 
 // <vc-helpers>
+fn update_inner(a: Vec<nat>, idx: usize, val: nat) -> (result: Vec<nat>)
+    requires idx < a.len(),
+    ensures result.len() == a.len(),
+{
+    let mut result = a;
+    result.set(idx, val);
+    result
+}
 // </vc-helpers>
 
 // <vc-spec>
@@ -20,10 +28,99 @@ fn modify_array_element(arr: Vec<Vec<nat>>, index1: usize, index2: usize, val: n
 // </vc-spec>
 // <vc-code>
 {
+    // impl-start
     assume(false);
-    unreached()
+    Vec::new()
+    // impl-end
 }
 // </vc-code>
 
+
 }
-fn main() {}
+fn main() {
+    /* 
+    -- Invalid Inputs
+    [
+        {
+            "input": {
+                "arr": "#[#[1, 2, 3], #[4, 5, 6]]",
+                "index1": 1,
+                "index2": 3,
+                "val": 99
+            }
+        }
+    ]
+    -- Tests
+    [
+        {
+            "input": {
+                "arr": "#[#[1, 2, 3], #[4, 5, 6]]",
+                "index1": 0,
+                "index2": 1,
+                "val": 99
+            },
+            "expected": "#[#[1, 99, 3], #[4, 5, 6]]",
+            "unexpected": [
+                "#[#[1, 2, 3], #[4, 99, 6]]",
+                "#[#[1, 99, 3], #[4, 5, 7]]",
+                "#[#[99, 1, 3], #[4, 5, 6]]"
+            ]
+        },
+        {
+            "input": {
+                "arr": "#[#[7, 8], #[9, 10]]",
+                "index1": 1,
+                "index2": 0,
+                "val": 0
+            },
+            "expected": "#[#[7, 8], #[0, 10]]",
+            "unexpected": [
+                "#[#[7, 0], #[9, 10]]",
+                "#[#[7, 8], #[9, 0]]",
+                "#[#[0, 8], #[9, 10]]"
+            ]
+        },
+        {
+            "input": {
+                "arr": "#[#[0, 0, 0]]",
+                "index1": 0,
+                "index2": 2,
+                "val": 5
+            },
+            "expected": "#[#[0, 0, 5]]",
+            "unexpected": [
+                "#[#[0, 5, 0]]",
+                "#[#[5, 0, 0]]"
+            ]
+        },
+        {
+            "input": {
+                "arr": "#[#[3, 4, 5], #[6, 7, 8], #[9, 10, 11]]",
+                "index1": 2,
+                "index2": 1,
+                "val": 100
+            },
+            "expected": "#[#[3, 4, 5], #[6, 7, 8], #[9, 100, 11]]",
+            "unexpected": [
+                "#[#[3, 4, 5], #[6, 7, 8], #[9, 10, 11]]",
+                "#[#[3, 4, 5], #[6, 7, 8], #[9, 7, 11]]",
+                "#[#[3, 4, 5], #[6, 7, 8], #[100, 10, 11]]"
+            ]
+        },
+        {
+            "input": {
+                "arr": "#[#[1]]",
+                "index1": 0,
+                "index2": 0,
+                "val": 42
+            },
+            "expected": "#[#[42]]",
+            "unexpected": [
+                "#[#[1]]",
+                "#[#[0]]",
+                "#[#[99]]"
+            ]
+        }
+    ]
+    */
+}

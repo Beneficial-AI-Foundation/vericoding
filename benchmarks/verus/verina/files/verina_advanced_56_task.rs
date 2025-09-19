@@ -2,7 +2,10 @@
 use vstd::prelude::*;
 
 verus! {
+// </vc-preamble>
 
+// <vc-helpers>
+/* Count how many times a specific value appears in the sequence */
 spec fn count_val(val: i32, xs: Seq<i32>) -> nat 
     decreases xs.len()
 {
@@ -14,6 +17,7 @@ spec fn count_val(val: i32, xs: Seq<i32>) -> nat
     }
 }
 
+/* Check whether one sequence is a subsequence of another (preserving relative order) */
 spec fn is_subsequence(xs: Seq<i32>, ys: Seq<i32>) -> bool 
     decreases xs.len() + ys.len()
 {
@@ -29,30 +33,30 @@ spec fn is_subsequence(xs: Seq<i32>, ys: Seq<i32>) -> bool
         }
     }
 }
-// </vc-preamble>
-
-// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>
 fn move_zeroes(xs: Vec<i32>) -> (result: Vec<i32>)
     ensures
-
+        /* All non-zero elements must maintain their relative order */
         is_subsequence(xs@.filter(|x: i32| x != 0), result@),
-
+        /* All zeroes must be located at the end of the output vector */
         forall|i: int| 0 <= i < result.len() && result[i] != 0 ==> 
             forall|j: int| i < j < result.len() ==> result[j] != 0,
-
+        /* The output must contain the same number of elements */
         xs.len() == result.len(),
-
+        /* The number of zeroes must remain unchanged */
         count_val(0, xs@) == count_val(0, result@),
 // </vc-spec>
 // <vc-code>
 {
+    // impl-start
     assume(false);
-    unreached()
+    Vec::new()
+    // impl-end
 }
 // </vc-code>
+
 
 }
 fn main() {}

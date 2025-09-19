@@ -24,10 +24,13 @@ fn online_max(a: &Vec<i32>, x: usize) -> (result: (i32, usize))
 // </vc-spec>
 // <vc-code>
 {
+    // impl-start
     assume(false);
-    unreached()
+    (0, x)
+    // impl-end
 }
 // </vc-code>
+
 
 }
 fn main() {}

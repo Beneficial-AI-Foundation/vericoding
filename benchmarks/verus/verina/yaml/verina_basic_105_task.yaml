@@ -14,8 +14,30 @@ vc-description: |-
   
   -----Note-----
   It is assumed that the arrays are of equal length for the theorem specification, although the implementation defaults missing indices to 0.
-  
-  /*
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+vc-helpers: |-
+
+vc-spec: |-
+  fn array_product(a: &Vec<i32>, b: &Vec<i32>) -> (result: Vec<i32>)
+      requires a.len() == b.len(),
+      ensures
+          result.len() == a.len(),
+          forall|i: int| 0 <= i < a.len() ==> result[i] == a[i] * b[i],
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      Vec::new()
+      // impl-end
+  }
+vc-postamble: |-
+
+  }
+  fn main() {
+      /*
       -- Invalid Inputs
       [
           {
@@ -89,28 +111,4 @@ vc-description: |-
           }
       ]
       */
-
-vc-preamble: |-
-  use vstd::prelude::*;
-  
-  verus! {
-
-vc-helpers: |-
-
-vc-spec: |-
-  fn array_product(a: &Vec<i32>, b: &Vec<i32>) -> (result: Vec<i32>)
-      requires a.len() == b.len(),
-      ensures
-          result.len() == a.len(),
-          forall|i: int| 0 <= i < a.len() ==> result[i] == a[i] * b[i],
-
-vc-code: |-
-  {
-      assume(false);
-      unreached()
   }
-
-vc-postamble: |-
-  }
-  fn main() {}
-

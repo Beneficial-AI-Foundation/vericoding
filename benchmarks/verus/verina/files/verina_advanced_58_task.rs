@@ -18,10 +18,13 @@ fn nth_ugly_number(n: u32) -> (result: u32)
 // </vc-spec>
 // <vc-code>
 {
+    // impl-start
     assume(false);
-    unreached()
+    1
+    // impl-end
 }
 // </vc-code>
+
 
 }
 fn main() {}

@@ -1,0 +1,44 @@
+vc-description: |-
+  This task requires writing a Verus method that rearranges an array of integers by moving all zero values to the end of the array. The method should ensure that the relative order of the non-zero elements remains the same, the overall size of the array is unchanged, and the number of zeroes in the array stays constant.
+  
+  -----Input-----
+  The input consists of:
+  arr: An array of integers.
+  
+  -----Output-----
+  The output is an array of integers:
+  Returns an array where:
+  - The length is the same as that of the input array.
+  - All zero values are positioned at the end.
+  - The relative order of non-zero elements is preserved.
+  - The count of zero values remains the same as in the input array.
+  
+  -----Note-----
+  There are no preconditions; the method will always work for any array of integers.
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+vc-helpers: |-
+
+vc-spec: |-
+  fn move_zeros_to_end(arr: Vec<i32>) -> (result: Vec<i32>)
+      ensures
+          result.len() == arr.len(),
+          multiset_equiv(result@, arr@),
+          {
+              let non_zero_count = arr@.filter(|x: i32| *x != 0).len();
+              &&& result@.subrange(0, non_zero_count) =~= arr@.filter(|x: i32| *x != 0)
+              &&& result@.subrange(non_zero_count, result.len() as int) =~= arr@.filter(|x: i32| *x == 0)
+          },
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      Vec::new()
+      // impl-end
+  }
+vc-postamble: |-
+
+  }
+  fn main() {}

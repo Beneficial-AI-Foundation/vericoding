@@ -9,12 +9,10 @@ vc-description: |-
   The output is a Boolean value:
   Returns true if every character in the string is identical.
   Returns false if there is at least one differing character.
-
 vc-preamble: |-
   use vstd::prelude::*;
-  
-  verus! {
 
+  verus! {
 vc-helpers: |-
 
 vc-spec: |-
@@ -23,14 +21,14 @@ vc-spec: |-
       ensures
           result ==> (forall|i: int, j: int| 0 <= i < s.len() && 0 <= j < s.len() ==> s[i] == s[j]),
           !result ==> (s.len() > 0 && exists|i: int| 0 <= i < s.len() && #[trigger] s[i] != s[0]),
-
 vc-code: |-
   {
+      // impl-start
       assume(false);
-      unreached()
+      false
+      // impl-end
   }
-
 vc-postamble: |-
+
   }
   fn main() {}
-

@@ -1,0 +1,56 @@
+vc-description: |-
+  This task requires writing a Verus method that decomposes a natural number `n` into its prime factorization components based on a user-provided list of primes. Specifically, it calculates the exponents for each prime in the factorization such that:
+  \[ n = \prod p^e \]
+  In other words, it determines the exponent e for each prime p.
+  
+  -----Input-----
+  The input consists of a natural number n, and a list of prime numbers. The input n is obtained by multiplying together any powers of the prime numbers from the provided list.
+  n: The natural number to be factorized.
+  primes: A list of primes to decompose n into.
+  
+  -----Output-----
+  The output is `Vec<(nat, nat)>`:
+  Return a list of pair/Cartesian product of two natural numbers (p, e), where p is the prime and e is the exponent of p in the factorization. Each prime in the output must be from the input list, and every prime in the input list must appear in the output.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+  use vstd::arithmetic::power::pow;
+  
+  verus! {
+  
+  spec fn is_prime(n: nat) -> bool {
+      arbitrary()
+  }
+  
+  spec fn spec_fold(pairs: Seq<(nat, nat)>, acc: int) -> int
+      decreases pairs.len()
+  {
+      if pairs.len() == 0 {
+          acc
+      } else {
+          let (p, e) = pairs[0];
+          spec_fold(pairs.subrange(1, pairs.len() as int), acc * pow(p as int, e as nat))
+      }
+  }
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn find_exponents(n: u8, primes: Vec<u8>) -> (result: Vec<(u8, u8)>)
+      requires
+          forall|i: int| 0 <= i < primes.len() ==> is_prime(primes[i] as nat),
+      ensures
+          n as int == spec_fold(result@.map(|i: int, pair: (u8, u8)| (pair.0 as nat, pair.1 as nat)), 1int),
+          forall|i: int| 0 <= i < result.len() ==> (#[trigger] result[i].0) && primes@.contains(result[i].0),
+          forall|p: u8| (#[trigger] primes@.contains(p)) ==> 
+              exists|j: int| 0 <= j < result.len() && result[j].0 == p,
+
+vc-code: |-
+  {
+      assume(false);
+      unreached()
+  }
+
+vc-postamble: |-
+  }
+  fn main() {}

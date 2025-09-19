@@ -2,7 +2,10 @@
 use vstd::prelude::*;
 
 verus! {
+// </vc-preamble>
 
+// <vc-helpers>
+/* Helper function to recursively count elements less than threshold */
 spec fn count_less_than_spec(numbers: Seq<i32>, threshold: i32) -> nat
     decreases numbers.len()
 {
@@ -18,9 +21,6 @@ spec fn count_less_than_spec(numbers: Seq<i32>, threshold: i32) -> nat
         }
     }
 }
-// </vc-preamble>
-
-// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>
@@ -30,10 +30,13 @@ fn count_less_than(numbers: &Vec<i32>, threshold: i32) -> (result: usize)
 // </vc-spec>
 // <vc-code>
 {
+    // impl-start
     assume(false);
-    unreached()
+    0
+    // impl-end
 }
 // </vc-code>
+
 
 }
 fn main() {}

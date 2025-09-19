@@ -1,3 +1,5 @@
+Good! Now let me provide the YAML output with the corrected Verus code:
+
 vc-description: |-
   This task requires writing a Verus method that given a 0-indexed integer array `nums` representing the scores of students in an exam. A teacher wants to select a non empty group of students such that the strength of group is maximized.
   
@@ -5,17 +7,42 @@ vc-description: |-
   
   You can choose any non-empty subset of students. The goal is to compute the maximum product of any such subset.
   
+  
   ----Input---
   nums: An non-empty list of integers.
   
   -----Output-----
   
   An integer representing the maximum strength.
-  
-  /* The result represents the maximum product of any non-empty subset of nums.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn max_strength(nums: &Vec<i32>) -> (result: i32)
+      requires nums.len() > 0,
+      ensures
+          /* The result represents the maximum product of any non-empty subset of nums.
              For simplicity, we ensure that the result is at least as large as one of the elements. */
-  
-  /* 
+          exists|i: int| 0 <= i < nums.len() && result >= nums[i],
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      0
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {
+      /* 
       // Invalid Inputs
       [
           {
@@ -80,28 +107,4 @@ vc-description: |-
           }
       ]
       */
-
-vc-preamble: |-
-  use vstd::prelude::*;
-  
-  verus! {
-
-vc-helpers: |-
-
-vc-spec: |-
-  fn max_strength(nums: &Vec<i32>) -> (result: i32)
-      requires nums.len() > 0,
-      ensures
-  
-          exists|i: int| 0 <= i < nums.len() && result >= nums[i],
-
-vc-code: |-
-  {
-      assume(false);
-      unreached()
   }
-
-vc-postamble: |-
-  }
-  fn main() {}
-

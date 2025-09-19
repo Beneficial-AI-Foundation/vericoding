@@ -17,7 +17,7 @@ vc-description: |-
 
 vc-preamble: |-
   use vstd::prelude::*;
-  
+
   verus! {
 
 vc-helpers: |-
@@ -35,11 +35,13 @@ vc-spec: |-
 
 vc-code: |-
   {
+      // impl-start
       assume(false);
-      unreached()
+      (0, 1)
+      // impl-end
   }
 
 vc-postamble: |-
+
   }
   fn main() {}
-

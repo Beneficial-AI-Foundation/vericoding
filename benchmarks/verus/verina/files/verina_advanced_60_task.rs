@@ -20,10 +20,13 @@ fn partition_evens_odds(nums: &Vec<nat>) -> (result: (Vec<nat>, Vec<nat>))
 // </vc-spec>
 // <vc-code>
 {
+    // impl-start
     assume(false);
-    unreached()
+    (Vec::new(), Vec::new())
+    // impl-end
 }
 // </vc-code>
+
 
 }
 fn main() {}

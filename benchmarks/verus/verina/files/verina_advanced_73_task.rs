@@ -8,18 +8,19 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn smallest_missing(l: Seq<nat>) -> (result: nat)
-    requires forall|i: int, j: int| 0 <= i < j < l.len() ==> l[i] < l[j],
-    ensures
-        !l.contains(result),
-        forall|candidate: nat| candidate < result ==> l.contains(candidate)
+spec fn smallest_missing(l: Seq<nat>) -> nat;
 // </vc-spec>
 // <vc-code>
+proof fn smallest_missing_spec_satisfied(l: Seq<nat>)
+    requires forall|i: int, j: int| 0 <= i < j < l.len() ==> l[i] < l[j],
+    ensures
+        !l.contains(smallest_missing(l)),
+        forall|candidate: nat| candidate < smallest_missing(l) ==> l.contains(candidate),
 {
-    assume(false);
-    unreached()
+    assume(false); // TODO: Remove this line and implement the proof
 }
 // </vc-code>
+
 
 }
 fn main() {}

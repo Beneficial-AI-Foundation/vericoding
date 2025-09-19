@@ -19,10 +19,13 @@ fn find_smallest(s: &Vec<nat>) -> (result: Option<nat>)
 // </vc-spec>
 // <vc-code>
 {
+    // impl-start
     assume(false);
-    unreached()
+    None
+    // impl-end
 }
 // </vc-code>
+
 
 }
 fn main() {}
