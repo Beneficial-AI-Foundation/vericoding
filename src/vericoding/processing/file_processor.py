@@ -463,8 +463,8 @@ def process_spec_file(
             if verification.success:
                 logger.info("    ✓ Verification successful!")
                 
-                # Unit test mode: Test with postamble if enabled and code is clean (no cheats)
-                if config.unit_test and config.language == 'lean' and not has_final_failure_cheats(current_code, config.language):
+                # Unit test mode: Test with postamble if enabled and code is clean
+                if config.unit_test and config.language == 'lean':
                     logger.info("    🧪 Clean solution found - entering unit test mode with postamble!")
                     unit_test_result = run_unit_test_with_postamble(
                         config, current_code, file_path, relative_path, 
