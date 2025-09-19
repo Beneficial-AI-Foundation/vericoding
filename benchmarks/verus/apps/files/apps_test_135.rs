@@ -19,12 +19,12 @@ spec fn has_non_distinct_remainder(n: int, k: int) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: int, k: int) -> (result: String)
+fn solve(n: i8, k: i8) -> (result: String)
     requires
-        valid_input(n, k),
+        valid_input(n as int, k as int),
     ensures
-        result@ == seq!['Y', 'e', 's', '\n'] <==> all_remainders_distinct(n, k),
-        result@ == seq!['N', 'o', '\n'] <==> has_non_distinct_remainder(n, k),
+        result@ == seq!['Y', 'e', 's', '\n'] <==> all_remainders_distinct(n as int, k as int),
+        result@ == seq!['N', 'o', '\n'] <==> has_non_distinct_remainder(n as int, k as int),
 // </vc-spec>
 // <vc-code>
 {

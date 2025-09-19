@@ -63,12 +63,12 @@ spec fn valid_input(k: int, p: int) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(k: int, p: int) -> (result: int)
+fn solve(k: i8, p: i8) -> (result: i8)
     requires
-        valid_input(k, p),
+        valid_input(k as int, p as int),
     ensures
         0 <= result < p,
-        result == (sum_of_palindromes(k) % p),
+        result as int == (sum_of_palindromes(k as int) % (p as int)),
 // </vc-spec>
 // <vc-code>
 {

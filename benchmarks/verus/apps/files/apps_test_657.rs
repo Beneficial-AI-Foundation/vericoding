@@ -27,12 +27,12 @@ spec fn min_additional_crystals(a: int, b: int, x: int, y: int, z: int) -> int {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(a: int, b: int, x: int, y: int, z: int) -> (result: int)
+fn solve(a: i8, b: i8, x: i8, y: i8, z: i8) -> (result: i8)
     requires 
-        valid_input(a, b, x, y, z)
+        valid_input(a as int, b as int, x as int, y as int, z as int)
     ensures 
         result >= 0,
-        result == min_additional_crystals(a, b, x, y, z)
+        result as int == min_additional_crystals(a as int, b as int, x as int, y as int, z as int)
 // </vc-spec>
 // <vc-code>
 {

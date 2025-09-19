@@ -58,12 +58,12 @@ proof fn max_height_ending_in_row2_decreases(n: int, h1: Seq<int>, h2: Seq<int>)
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: int, h1: Seq<int>, h2: Seq<int>) -> (result: int)
+fn solve(n: i8, h1: Vec<i8>, h2: Vec<i8>) -> (result: i8)
     requires 
-        valid_input(n, h1, h2)
+        valid_input(n as int, h1@.map_values(|x: i8| x as int), h2@.map_values(|x: i8| x as int))
     ensures 
         result >= 0,
-        result == max_team_height(n, h1, h2)
+        result as int == max_team_height(n as int, h1@.map_values(|x: i8| x as int), h2@.map_values(|x: i8| x as int))
 // </vc-spec>
 // <vc-code>
 {

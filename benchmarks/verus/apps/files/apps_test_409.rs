@@ -50,7 +50,10 @@ spec fn valid_input(input: Seq<char>) -> bool {
 
 // <vc-spec>
 fn solve(input: Vec<char>) -> (result: Vec<char>)
-    requires true
+    requires valid_input(input@)
+    ensures 
+        result@ == seq!['Y', 'E', 'S'] || result@ == seq!['N', 'O'],
+        has_non_overlapping_ab_and_ba(input@) <==> result@ == seq!['Y', 'E', 'S']
 // </vc-spec>
 // <vc-code>
 {

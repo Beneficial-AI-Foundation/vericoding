@@ -17,13 +17,13 @@ spec fn gcd_of_range(a: int, b: int) -> int
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(a: int, b: int) -> (result: int)
+fn solve(a: i8, b: i8) -> (result: i8)
     requires 
-        valid_input(a, b)
+        valid_input(a as int, b as int)
     ensures 
-        result == gcd_of_range(a, b),
-        a == b ==> result == a,
-        a < b ==> result == 1
+        result as int == gcd_of_range(a as int, b as int),
+        a == b ==> result as int == a as int,
+        a < b ==> result as int == 1
 // </vc-spec>
 // <vc-code>
 {

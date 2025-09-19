@@ -72,8 +72,8 @@ spec fn is_valid_arrangement(original: Seq<Seq<char>>, arranged: Seq<Seq<char>>)
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(input: Seq<Seq<char>>) -> (result: i32)
-    requires valid_input(input)
+fn solve(input: Vec<Vec<char>>) -> (result: i32)
+    requires valid_input(input@.map(|i, v: Vec<char>| v@))
     ensures result >= 0
 // </vc-spec>
 // <vc-code>

@@ -87,14 +87,14 @@ spec fn calculate_minimum_bullets_helper(waves: Seq<Wave>, k: nat, wave_index: n
 // </vc-helpers>
 
 // <vc-spec>
-fn solve_monster_waves(waves: Seq<Wave>, k: nat) -> (result: i32)
+fn solve_monster_waves(waves: Vec<Wave>, k: u8) -> (result: i32)
     requires 
-        valid_waves(waves),
+        valid_waves(waves@),
         k > 0,
     ensures 
-        result == -1 <==> !can_solve_all_waves(waves, k),
-        result >= 0 <==> can_solve_all_waves(waves, k),
-        can_solve_all_waves(waves, k) ==> result == calculate_minimum_bullets(waves, k),
+        result == -1 <==> !can_solve_all_waves(waves@, k as nat),
+        result >= 0 <==> can_solve_all_waves(waves@, k as nat),
+        can_solve_all_waves(waves@, k as nat) ==> result == calculate_minimum_bullets(waves@, k as nat) as i32,
 // </vc-spec>
 // <vc-code>
 {

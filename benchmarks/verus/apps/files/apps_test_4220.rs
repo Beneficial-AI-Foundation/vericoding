@@ -100,9 +100,9 @@ spec fn string_to_int_helper(s: Seq<char>, pos: nat, acc: int) -> int
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(stdin_input: Seq<char>) -> (result: Seq<char>)
-    requires valid_input(stdin_input)
-    ensures correct_output(stdin_input, result)
+fn solve(stdin_input: Vec<char>) -> (result: Vec<char>)
+    requires valid_input(stdin_input@)
+    ensures correct_output(stdin_input@, result@)
 // </vc-spec>
 // <vc-code>
 {

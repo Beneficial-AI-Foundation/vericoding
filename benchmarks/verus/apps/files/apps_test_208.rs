@@ -48,15 +48,15 @@ spec fn valid_output(result: Seq<int>) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(x1: int, y1: int, x2: int, y2: int) -> (result: Vec<int>)
+fn solve(x1: i8, y1: i8, x2: i8, y2: i8) -> (result: Vec<i8>)
     requires 
-        valid_input(x1, y1, x2, y2)
+        valid_input(x1 as int, y1 as int, x2 as int, y2 as int)
     ensures 
-        valid_output(result@),
-        is_invalid_case(x1, y1, x2, y2) ==> result@ == seq![-1],
-        is_diagonal_case(x1, y1, x2, y2) ==> result@ == expected_diagonal_result(x1, y1, x2, y2),
-        is_vertical_edge_case(x1, y1, x2, y2) ==> result@ == expected_vertical_result(x1, y1, x2, y2),
-        is_horizontal_edge_case(x1, y1, x2, y2) ==> result@ == expected_horizontal_result(x1, y1, x2, y2)
+        valid_output(result@.map(|i, v| v as int)),
+        is_invalid_case(x1 as int, y1 as int, x2 as int, y2 as int) ==> result@.map(|i, v| v as int) == seq![-1],
+        is_diagonal_case(x1 as int, y1 as int, x2 as int, y2 as int) ==> result@.map(|i, v| v as int) == expected_diagonal_result(x1 as int, y1 as int, x2 as int, y2 as int),
+        is_vertical_edge_case(x1 as int, y1 as int, x2 as int, y2 as int) ==> result@.map(|i, v| v as int) == expected_vertical_result(x1 as int, y1 as int, x2 as int, y2 as int),
+        is_horizontal_edge_case(x1 as int, y1 as int, x2 as int, y2 as int) ==> result@.map(|i, v| v as int) == expected_horizontal_result(x1 as int, y1 as int, x2 as int, y2 as int)
 // </vc-spec>
 // <vc-code>
 {

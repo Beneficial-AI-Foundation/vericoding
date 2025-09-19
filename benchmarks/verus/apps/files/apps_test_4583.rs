@@ -58,11 +58,11 @@ spec fn valid_output(result: Seq<char>, input: Seq<char>) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(input: Seq<char>) -> (result: Seq<char>)
+fn solve(input: Vec<char>) -> (result: Vec<char>)
     requires 
-        valid_input(input),
-        solution_exists(input),
-    ensures valid_output(result, input)
+        valid_input(input@),
+        solution_exists(input@),
+    ensures valid_output(result@, input@)
 // </vc-spec>
 // <vc-code>
 {

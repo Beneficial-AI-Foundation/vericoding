@@ -34,8 +34,8 @@ vc-preamble: |-
 vc-helpers: |
 
 vc-spec: |-
-  fn solve(input: Seq<Seq<char>>) -> (result: Seq<char>)
-      requires valid_input(input)
+  fn solve(input: Vec<Vec<char>>) -> (result: Vec<char>)
+      requires valid_input(input@.map(|i, row: Vec<char>| row@))
 
 vc-code: |-
   {

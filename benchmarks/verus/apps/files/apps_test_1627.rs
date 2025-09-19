@@ -63,14 +63,14 @@ spec fn count_inversions(arr: Seq<int>) -> nat {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: int, arr: Seq<int>) -> (operations: Vec<(int, int)>)
+fn solve(n: i8, arr: Vec<i8>) -> (operations: Vec<(i8, i8)>)
   requires 
-      valid_input(n, arr),
+      valid_input(n as int, arr@.map_values(|x: i8| x as int)),
   ensures 
-      valid_operations(operations@, n) &&
-      (is_sorted(apply_operations(arr, operations@)) || operations.len() == 20000) &&
+      valid_operations(operations@.map_values(|op: (i8, i8)| (op.0 as int, op.1 as int)), n as int) &&
+      (is_sorted(apply_operations(arr@.map_values(|x: i8| x as int), operations@.map_values(|op: (i8, i8)| (op.0 as int, op.1 as int)))) || operations.len() == 20000) &&
       operations.len() <= 20000 &&
-      (is_sorted(arr) ==> operations.len() == 0)
+      (is_sorted(arr@.map_values(|x: i8| x as int)) ==> operations.len() == 0)
 // </vc-spec>
 // <vc-code>
 {

@@ -36,9 +36,9 @@ spec fn repeat_eve(count: int) -> Seq<char>
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(d: int) -> (result: String)
-    requires valid_input(d)
-    ensures result@ == expected_output(d)
+fn solve(d: i8) -> (result: String)
+    requires valid_input(d as int)
+    ensures result@ == expected_output(d as int)
 // </vc-spec>
 // <vc-code>
 {

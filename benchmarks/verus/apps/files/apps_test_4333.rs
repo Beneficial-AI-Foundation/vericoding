@@ -29,9 +29,9 @@ spec fn valid_output(x1: int, y1: int, x2: int, y2: int, result: Seq<int>) -> bo
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(x1: int, y1: int, x2: int, y2: int) -> (result: Vec<int>)
-    requires valid_input(x1, y1, x2, y2)
-    ensures valid_output(x1, y1, x2, y2, result@)
+fn solve(x1: i8, y1: i8, x2: i8, y2: i8) -> (result: Vec<i8>)
+    requires valid_input(x1 as int, y1 as int, x2 as int, y2 as int)
+    ensures valid_output(x1 as int, y1 as int, x2 as int, y2 as int, result@.map(|i, v: i8| v as int))
 // </vc-spec>
 // <vc-code>
 {

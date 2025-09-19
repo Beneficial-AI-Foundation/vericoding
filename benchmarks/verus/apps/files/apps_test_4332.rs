@@ -71,7 +71,7 @@ spec fn valid_input(input: Seq<char>) -> bool {
 
 // <vc-spec>
 fn solve(input: &str) -> (result: String)
-    requires valid_input(input@.map(|i, c| c))
+    requires valid_input(input@)
     ensures result@ == seq!['Y', 'e', 's'] || result@ == seq!['N', 'o']
 // </vc-spec>
 // <vc-code>

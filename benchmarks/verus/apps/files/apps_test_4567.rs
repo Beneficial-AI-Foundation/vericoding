@@ -45,9 +45,9 @@ spec fn correct_result(scores: Seq<int>, result: int) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(scores: Seq<int>) -> (result: int)
-    requires valid_input(scores)
-    ensures correct_result(scores, result)
+fn solve(scores: Vec<i8>) -> (result: i8)
+    requires valid_input(scores@.map(|i, x| x as int))
+    ensures correct_result(scores@.map(|i, x| x as int), result as int)
 // </vc-spec>
 // <vc-code>
 {

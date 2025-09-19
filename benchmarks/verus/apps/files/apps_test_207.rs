@@ -17,12 +17,12 @@ spec fn can_be_divided(a: Seq<int>) -> bool
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(a: Seq<int>) -> (result: String)
+fn solve(a: Vec<i8>) -> (result: String)
     requires 
-        valid_input(a),
+        valid_input(a@.map(|i, x| x as int)),
     ensures 
-        can_be_divided(a) ==> result@ =~= seq!['Y', 'e', 's'],
-        (!can_be_divided(a)) ==> result@ =~= seq!['N', 'o'],
+        can_be_divided(a@.map(|i, x| x as int)) ==> result@ =~= seq!['Y', 'e', 's'],
+        (!can_be_divided(a@.map(|i, x| x as int))) ==> result@ =~= seq!['N', 'o'],
 // </vc-spec>
 // <vc-code>
 {

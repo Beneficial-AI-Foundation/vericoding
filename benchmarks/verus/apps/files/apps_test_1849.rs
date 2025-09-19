@@ -41,9 +41,9 @@ spec fn valid_result(result: Seq<int>, n: int) -> bool
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: int) -> (result: Vec<int>)
-  requires valid_input(n)
-  ensures valid_result(result@, n)
+fn solve(n: i8) -> (result: Vec<i8>)
+  requires valid_input(n as int)
+  ensures valid_result(result@.map(|_index: int, x: i8| x as int), n as int)
 // </vc-spec>
 // <vc-code>
 {

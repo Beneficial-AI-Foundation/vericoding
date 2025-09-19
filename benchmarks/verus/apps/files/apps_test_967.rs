@@ -45,12 +45,12 @@ spec fn correct_result(n: int, a: Seq<int>) -> int
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: int, a: Seq<int>) -> (result: int)
+fn solve(n: i8, a: Vec<i8>) -> (result: i8)
     requires 
-        valid_input(n, a)
+        valid_input(n as int, a@.map_values(|x: i8| x as int))
     ensures 
-        valid_output(n, result) &&
-        result == correct_result(n, a)
+        valid_output(n as int, result as int) &&
+        result as int == correct_result(n as int, a@.map_values(|x: i8| x as int))
 // </vc-spec>
 // <vc-code>
 {

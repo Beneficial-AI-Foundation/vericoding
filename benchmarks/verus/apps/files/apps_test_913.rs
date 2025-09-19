@@ -29,9 +29,9 @@ spec fn min_max_point_value(n: int, r: Seq<int>, b: Seq<int>) -> int {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: int, r: Seq<int>, b: Seq<int>) -> (result: int)
-    requires valid_input(n, r, b)
-    ensures if can_win(n, r, b) { result == min_max_point_value(n, r, b) } else { result == -1 }
+fn solve(n: i8, r: Vec<i8>, b: Vec<i8>) -> (result: i8)
+    requires valid_input(n as int, r@.map_values(|x: i8| x as int), b@.map_values(|x: i8| x as int))
+    ensures if can_win(n as int, r@.map_values(|x: i8| x as int), b@.map_values(|x: i8| x as int)) { result as int == min_max_point_value(n as int, r@.map_values(|x: i8| x as int), b@.map_values(|x: i8| x as int)) } else { result == -1 }
 // </vc-spec>
 // <vc-code>
 {

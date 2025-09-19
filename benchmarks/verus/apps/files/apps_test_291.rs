@@ -15,7 +15,7 @@ spec fn pow(base: int, exp: int) -> int
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(a: int, b: int) -> (years: int)
+fn solve(a: i8, b: i8) -> (years: i8)
   requires 
       1 <= a <= b <= 10,
       forall|base: int, exp: int| exp >= 0 ==> (
@@ -25,8 +25,8 @@ fn solve(a: int, b: int) -> (years: int)
       ),
   ensures 
       years >= 0,
-      a * pow(3, years) > b * pow(2, years),
-      years == 0 || a * pow(3, years - 1) <= b * pow(2, years - 1),
+      (a as int) * pow(3, years as int) > (b as int) * pow(2, years as int),
+      years == 0 || (a as int) * pow(3, (years - 1) as int) <= (b as int) * pow(2, (years - 1) as int),
 // </vc-spec>
 // <vc-code>
 {

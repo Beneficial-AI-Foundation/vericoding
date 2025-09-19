@@ -28,9 +28,9 @@ spec fn valid_output(n: int, teams: Seq<(int, int)>, result: Seq<(int, int)>) ->
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: int, teams: Seq<(int, int)>) -> (result: Seq<(int, int)>)
-  requires valid_input(n, teams)
-  ensures valid_output(n, teams, result)
+fn solve(n: i8, teams: Vec<(i8, i8)>) -> (result: Vec<(i8, i8)>)
+  requires valid_input(n as int, teams@.map_values(|t: (i8, i8)| (t.0 as int, t.1 as int)))
+  ensures valid_output(n as int, teams@.map_values(|t: (i8, i8)| (t.0 as int, t.1 as int)), result@.map_values(|r: (i8, i8)| (r.0 as int, r.1 as int)))
 // </vc-spec>
 // <vc-code>
 {

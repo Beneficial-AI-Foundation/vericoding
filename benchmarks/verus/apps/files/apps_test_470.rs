@@ -36,13 +36,13 @@ spec fn min_possible_sum(cards: Seq<int>) -> int {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(cards: Seq<int>) -> (result: int)
+fn solve(cards: Vec<i8>) -> (result: i8)
     requires 
-        valid_input(cards),
+        valid_input(cards@.map(|_index, x: i8| x as int)),
     ensures 
         result >= 0,
-        result <= sum(cards),
-        result == min_possible_sum(cards)
+        result as int <= sum(cards@.map(|_index, x: i8| x as int)),
+        result as int == min_possible_sum(cards@.map(|_index, x: i8| x as int))
 // </vc-spec>
 // <vc-code>
 {

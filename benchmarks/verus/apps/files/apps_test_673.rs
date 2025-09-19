@@ -17,9 +17,9 @@ spec fn is_correct_result(n: int, k: int, result: int) -> bool
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: int, k: int) -> (result: int)
-    requires valid_input(n, k)
-    ensures is_correct_result(n, k, result)
+fn solve(n: i8, k: i8) -> (result: i8)
+    requires valid_input(n as int, k as int)
+    ensures is_correct_result(n as int, k as int, result as int)
 // </vc-spec>
 // <vc-code>
 {

@@ -24,11 +24,11 @@ spec fn count_primitive_roots(p: int) -> int
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(p: int) -> (result: int)
-    requires valid_input(p)
+fn solve(p: i8) -> (result: i8)
+    requires valid_input(p as int)
     ensures 
         result >= 0 &&
-        result == count_primitive_roots(p)
+        result as int == count_primitive_roots(p as int)
 // </vc-spec>
 // <vc-code>
 {

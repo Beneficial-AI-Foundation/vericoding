@@ -31,9 +31,9 @@ spec fn max_diff_helper(s: Seq<int>, index: int, current_max: int) -> int
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(holds: Seq<int>) -> (result: int)
-    requires valid_input(holds)
-    ensures result >= 0
+fn solve(holds: Vec<i8>) -> (result: i8)
+    requires valid_input(holds@.map(|i, x: i8| x as int))
+    ensures result as int >= 0
 // </vc-spec>
 // <vc-code>
 {

@@ -40,8 +40,8 @@ spec fn max_seq(s: Seq<int>) -> int
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: int, k: int, l: Seq<int>) -> (result: int)
-    requires valid_input(n, k, l)
+fn solve(n: i8, k: i8, l: Vec<i8>) -> (result: i8)
+    requires valid_input(n as int, k as int, l@.map_values(|v: i8| v as int))
     ensures result >= 0
 // </vc-spec>
 // <vc-code>

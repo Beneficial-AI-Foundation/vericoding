@@ -158,17 +158,17 @@ vc-preamble: |-
 vc-helpers: |-
 
 vc-spec: |-
-  fn solve(input: Seq<char>) -> (result: (usize, usize))
+  fn solve(input: Vec<char>) -> (result: (usize, usize))
       requires
-          input.len() > 0,
-          exists|i: int| 0 <= i < input.len() && input[i] == '\n',
-          forall|i: int| 0 <= i < input.len() ==> (is_letter(input[i]) || input[i] == '_' || input[i] == '(' || input[i] == ')' || input[i] == '\n' || input[i] == '\r' || ('0' <= input[i] <= '9')),
-          valid_parentheses(input)
+          input@.len() > 0,
+          exists|i: int| 0 <= i < input@.len() && input@[i] == '\n',
+          forall|i: int| 0 <= i < input@.len() ==> (is_letter(input@[i]) || input@[i] == '_' || input@[i] == '(' || input@[i] == ')' || input@[i] == '\n' || input@[i] == '\r' || ('0' <= input@[i] <= '9')),
+          valid_parentheses(input@)
       ensures
           result.0 >= 0 && result.1 >= 0,
-          result.0 == longest_word_outside(input),
-          result.1 == count_words_inside(input),
-          valid_output(input, result.0 as int, result.1 as int)
+          result.0 as int == longest_word_outside(input@),
+          result.1 as int == count_words_inside(input@),
+          valid_output(input@, result.0 as int, result.1 as int)
 
 vc-code: |-
   {

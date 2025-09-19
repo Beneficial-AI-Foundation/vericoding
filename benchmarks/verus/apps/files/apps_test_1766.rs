@@ -45,9 +45,9 @@ spec fn valid_output(scores: Seq<int>, cards: Seq<int>) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(cards: Seq<int>) -> (scores: Seq<int>)
-    requires valid_input(cards)
-    ensures valid_output(scores, cards)
+fn solve(cards: Vec<i8>) -> (scores: Vec<i8>)
+    requires valid_input(cards@.map(|i, x| x as int))
+    ensures valid_output(scores@.map(|i, x| x as int), cards@.map(|i, x| x as int))
 // </vc-spec>
 // <vc-code>
 {

@@ -24,9 +24,9 @@ spec fn snow_depth_formula(a: int, b: int) -> int
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(a: int, b: int) -> (result: int)
-  requires valid_input(a, b) && valid_snow_depth(a, b, ((b - a) * (b - a) - (a + b)) / 2)
-  ensures result >= 1 && result == snow_depth_formula(a, b)
+fn solve(a: i8, b: i8) -> (result: i8)
+  requires valid_input(a as int, b as int) && valid_snow_depth(a as int, b as int, ((b as int - a as int) * (b as int - a as int) - (a as int + b as int)) / 2)
+  ensures result as int >= 1 && result as int == snow_depth_formula(a as int, b as int)
 // </vc-spec>
 // <vc-code>
 {

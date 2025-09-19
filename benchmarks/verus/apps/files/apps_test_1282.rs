@@ -90,14 +90,14 @@ spec fn nat_to_string_helper(n: nat, acc: Seq<char>) -> Seq<char>
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(input: Seq<char>) -> (result: Seq<char>)
+fn solve(input: Vec<char>) -> (result: Vec<char>)
     requires 
-        valid_input(input)
+        valid_input(input@)
     ensures 
-        result.len() >= 1,
-        result[result.len() - 1] == '\n',
-        exists|val: nat| val >= 0 && result == nat_to_string(val) + seq!['\n'],
-        result == nat_to_string(compute_swap_time(input)) + seq!['\n']
+        result@.len() >= 1,
+        result@[result@.len() - 1] == '\n',
+        exists|val: nat| val >= 0 && result@ == nat_to_string(val) + seq!['\n'],
+        result@ == nat_to_string(compute_swap_time(input@)) + seq!['\n']
 // </vc-spec>
 // <vc-code>
 {

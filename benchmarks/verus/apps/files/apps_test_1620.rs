@@ -21,12 +21,12 @@ spec fn minimal_c_usage(s: &Seq<char>) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: int) -> (result: Seq<char>)
+fn solve(n: i8) -> (result: Vec<char>)
   requires 
-    valid_input(n)
+    valid_input(n as int)
   ensures 
-    valid_output(&result, n) &&
-    minimal_c_usage(&result)
+    valid_output(&result@, n as int) &&
+    minimal_c_usage(&result@)
 // </vc-spec>
 // <vc-code>
 {

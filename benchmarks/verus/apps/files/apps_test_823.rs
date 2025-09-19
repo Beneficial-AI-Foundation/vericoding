@@ -43,17 +43,17 @@ spec fn compute_turns(x: int, y: int) -> int
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(x: int, y: int) -> (result: int)
+fn solve(x: i8, y: i8) -> (result: i8)
     requires 
-        valid_input(x, y)
+        valid_input(x as int, y as int)
     ensures 
-        result >= 0,
-        result == compute_turns(x, y),
-        is_origin_or_first_point(x, y) ==> result == 0,
-        is_right_edge(x, y) ==> result == 1 + 4 * (x - 1),
-        is_left_edge(x, y) ==> result == 3 + 4 * (-x - 1),
-        is_top_edge(x, y) ==> result == 2 + 4 * (y - 1),
-        !(is_origin_or_first_point(x, y) || is_right_edge(x, y) || is_left_edge(x, y) || is_top_edge(x, y)) ==> result == -4 * y,
+        result as int >= 0,
+        result as int == compute_turns(x as int, y as int),
+        is_origin_or_first_point(x as int, y as int) ==> result as int == 0,
+        is_right_edge(x as int, y as int) ==> result as int == 1 + 4 * (x as int - 1),
+        is_left_edge(x as int, y as int) ==> result as int == 3 + 4 * (-(x as int) - 1),
+        is_top_edge(x as int, y as int) ==> result as int == 2 + 4 * (y as int - 1),
+        !(is_origin_or_first_point(x as int, y as int) || is_right_edge(x as int, y as int) || is_left_edge(x as int, y as int) || is_top_edge(x as int, y as int)) ==> result as int == -4 * y as int,
 // </vc-spec>
 // <vc-code>
 {

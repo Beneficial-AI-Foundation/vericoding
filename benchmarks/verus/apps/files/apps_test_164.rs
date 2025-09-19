@@ -57,12 +57,12 @@ spec fn compute_solution(y1: int, y2: int, y_w: int, x_b: int, y_b: int, r: int)
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(y1: int, y2: int, y_w: int, x_b: int, y_b: int, r: int) -> (result: int)
+fn solve(y1: i8, y2: i8, y_w: i8, x_b: i8, y_b: i8, r: i8) -> (result: i8)
     requires 
-        valid_input(y1, y2, y_w, x_b, y_b, r)
+        valid_input(y1 as int, y2 as int, y_w as int, x_b as int, y_b as int, r as int)
     ensures 
-        is_impossible(y1, y2, y_w, x_b, y_b, r) ==> result == -1,
-        !is_impossible(y1, y2, y_w, x_b, y_b, r) ==> result == compute_solution(y1, y2, y_w, x_b, y_b, r)
+        is_impossible(y1 as int, y2 as int, y_w as int, x_b as int, y_b as int, r as int) ==> result == -1,
+        !is_impossible(y1 as int, y2 as int, y_w as int, x_b as int, y_b as int, r as int) ==> result as int == compute_solution(y1 as int, y2 as int, y_w as int, x_b as int, y_b as int, r as int)
 // </vc-spec>
 // <vc-code>
 {

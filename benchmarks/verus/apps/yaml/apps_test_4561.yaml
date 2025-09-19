@@ -31,11 +31,11 @@ vc-preamble: |-
 vc-helpers: |
 
 vc-spec: |-
-  fn determine_food_safety(x: int, a: int, b: int) -> (outcome: &'static str)
+  fn determine_food_safety(x: i8, a: i8, b: i8) -> (outcome: &'static str)
       requires 
-          x >= 0,
+          x as int >= 0,
       ensures 
-          outcome == expected_outcome(x, a, b),
+          outcome == expected_outcome(x as int, a as int, b as int),
           valid_outcome(outcome),
 
 vc-code: |-

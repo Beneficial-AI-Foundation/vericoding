@@ -15,13 +15,13 @@ spec fn count_distinct_chars(s: Seq<char>) -> int {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: usize, s: Seq<char>) -> (result: i32)
+fn solve(n: usize, s: Vec<char>) -> (result: i32)
     requires 
-        valid_input(n as int, s)
+        valid_input(n as int, s@)
     ensures 
         n > 26 ==> result == -1,
         n <= 26 ==> result >= 0 && result < n as i32,
-        n <= 26 ==> result == s.len() as i32 - count_distinct_chars(s)
+        n <= 26 ==> result == s@.len() as i32 - count_distinct_chars(s@)
 // </vc-spec>
 // <vc-code>
 {

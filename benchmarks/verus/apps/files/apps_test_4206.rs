@@ -26,12 +26,12 @@ spec fn max_divisible_by_3_segments(s: Seq<char>) -> int {
 // </vc-helpers>
 
 // <vc-spec>
-exec fn solve(input: Seq<char>) -> (result: Seq<char>)
+exec fn solve(input: Vec<char>) -> (result: Vec<char>)
     requires
-        valid_input(input),
+        valid_input(input@),
     ensures
-        result.len() > 0,
-        result[result.len() - 1] == '\n',
+        result@.len() > 0,
+        result@[result@.len() - 1] == '\n',
 // </vc-spec>
 // <vc-code>
 {

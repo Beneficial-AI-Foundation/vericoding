@@ -142,9 +142,9 @@ spec fn split_by_char(s: Seq<char>, delimiter: char) -> Seq<Seq<char>>
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(stdin_input: Seq<char>) -> (result: Seq<char>)
-    requires valid_input(stdin_input)
-    ensures result == get_expected_output(stdin_input)
+fn solve(stdin_input: Vec<u8>) -> (result: Vec<u8>)
+    requires valid_input(stdin_input@.map(|i, c| c as char))
+    ensures result@.map(|i, c| c as char) == get_expected_output(stdin_input@.map(|i, c| c as char))
 // </vc-spec>
 // <vc-code>
 {

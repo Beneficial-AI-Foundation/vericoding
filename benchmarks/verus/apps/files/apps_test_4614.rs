@@ -61,15 +61,15 @@ spec fn int_to_string_pure(n: int) -> Seq<char> {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(input: Seq<char>) -> (result: Seq<char>)
+fn solve(input: Vec<char>) -> (result: Vec<char>)
     requires 
-        input.len() > 0,
-        contains_three_space_separated_integers(input),
-        exactly_two_are_equal(input),
+        input@.len() > 0,
+        contains_three_space_separated_integers(input@),
+        exactly_two_are_equal(input@),
     ensures
-        result.len() > 0,
-        is_valid_integer_string(result),
-        result == find_different_number(input),
+        result@.len() > 0,
+        is_valid_integer_string(result@),
+        result@ == find_different_number(input@),
 // </vc-spec>
 // <vc-code>
 {

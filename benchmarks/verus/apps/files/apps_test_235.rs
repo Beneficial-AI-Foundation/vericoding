@@ -30,11 +30,11 @@ spec fn is_minimal_solution(n: int, k: int) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: int) -> (result: int)
-    requires valid_input(n)
+fn solve(n: i8) -> (result: i8)
+    requires valid_input(n as int)
     ensures
-        1 <= result <= n,
-        is_minimal_solution(n, result)
+        1 <= result as int <= n as int,
+        is_minimal_solution(n as int, result as int)
 // </vc-spec>
 // <vc-code>
 {

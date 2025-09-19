@@ -72,14 +72,14 @@ spec fn char_from_digit(d: int) -> char
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(l: int, r: int) -> (result: Vec<Vec<char>>)
-    requires valid_input(l, r)
+fn solve(l: i8, r: i8) -> (result: Vec<Vec<char>>)
+    requires valid_input(l as int, r as int)
     ensures
         result.len() >= 1,
         result[0]@ == seq!['Y', 'E', 'S'],
-        result.len() == 1 + (r - l + 1) / 2,
+        result.len() == 1 + (r as int - l as int + 1) / 2,
         forall|i: int| 1 <= i < result.len() ==> 
-            #[trigger] result[i]@ == int_to_string(l + 2 * (i - 1)).add(seq![' ']).add(int_to_string(l + 2 * (i - 1) + 1))
+            #[trigger] result[i]@ == int_to_string(l as int + 2 * (i - 1)).add(seq![' ']).add(int_to_string(l as int + 2 * (i - 1) + 1))
 // </vc-spec>
 // <vc-code>
 {

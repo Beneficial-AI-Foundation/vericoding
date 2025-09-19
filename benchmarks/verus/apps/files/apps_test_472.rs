@@ -17,14 +17,14 @@ spec fn digit_sum(n: int) -> int
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: int) -> (result: int)
+fn solve(n: i8) -> (result: i8)
   requires 
     n >= 1,
   ensures 
     n == 1 ==> result == -1,
-    n > 1 && result > 0 ==> result * result + digit_sum(result) * result == n,
-    n > 1 && result > 0 ==> forall|y: int| y > 0 && y < result ==> y * y + digit_sum(y) * y != n,
-    n > 1 && result == -1 ==> forall|x: int| x > 0 ==> x * x + digit_sum(x) * x != n,
+    n > 1 && result > 0 ==> (result as int) * (result as int) + digit_sum(result as int) * (result as int) == n as int,
+    n > 1 && result > 0 ==> forall|y: int| y > 0 && y < result as int ==> y * y + digit_sum(y) * y != n as int,
+    n > 1 && result == -1 ==> forall|x: int| x > 0 ==> x * x + digit_sum(x) * x != n as int,
     result == -1 || result > 0,
 // </vc-spec>
 // <vc-code>

@@ -34,8 +34,9 @@ spec fn optimal_elimination_game_winner(s: Seq<char>) -> Seq<char> {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: int, s: Seq<char>) -> (result: Seq<char>)
-    requires valid_input(n, s)
+fn solve(n: usize, s: Vec<char>) -> (result: Vec<char>)
+    requires valid_input(n as int, s@)
+    ensures result@ == optimal_elimination_game_winner(s@)
 // </vc-spec>
 // <vc-code>
 {

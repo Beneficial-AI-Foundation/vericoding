@@ -51,9 +51,9 @@ spec fn valid_output(result: Seq<char>, input: Seq<char>) -> bool
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(stdin_input: Seq<char>) -> (result: Seq<char>)
-    requires valid_input(stdin_input)
-    ensures valid_output(result, stdin_input)
+fn solve(stdin_input: Vec<char>) -> (result: Vec<char>)
+    requires valid_input(stdin_input@)
+    ensures valid_output(result@, stdin_input@)
 // </vc-spec>
 // <vc-code>
 {

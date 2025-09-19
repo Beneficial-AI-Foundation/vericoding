@@ -65,9 +65,9 @@ spec fn sum_segment_counts(segments: Seq<nat>) -> nat
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: nat, k: nat, s: Seq<char>, available: Seq<char>) -> (result: nat)
-    requires valid_input(n, k, s, available)
-    ensures result <= n * (n + 1) / 2
+fn solve(n: u8, k: u8, s: Vec<char>, available: Vec<char>) -> (result: u8)
+    requires valid_input(n as nat, k as nat, s@, available@)
+    ensures result as nat <= (n as nat) * ((n as nat) + 1) / 2
 // </vc-spec>
 // <vc-code>
 {

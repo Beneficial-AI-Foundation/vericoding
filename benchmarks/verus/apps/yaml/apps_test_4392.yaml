@@ -82,12 +82,12 @@ vc-preamble: |-
 vc-helpers: |-
 
 vc-spec: |-
-  fn can_sort(a: &mut Vec<int>, allowed_pos: &[bool]) -> (result: bool)
+  fn can_sort(a: &mut Vec<i8>, allowed_pos: &[bool]) -> (result: bool)
       requires 
-          valid_input(old(a)@, allowed_pos@),
+          valid_input(old(a)@.map_values(|x: i8| x as int), allowed_pos@),
       ensures 
-          a@.to_multiset() == old(a)@.to_multiset(),
-          result == is_sorted(a@),
+          a@.map_values(|x: i8| x as int).to_multiset() == old(a)@.map_values(|x: i8| x as int).to_multiset(),
+          result == is_sorted(a@.map_values(|x: i8| x as int)),
 
 vc-code: |-
   {

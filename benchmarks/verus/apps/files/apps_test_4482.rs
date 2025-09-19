@@ -28,9 +28,9 @@ spec fn is_optimal_cost(result: int, a: Seq<int>) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: int, a: Seq<int>) -> (result: int)
-    requires valid_input(n, a)
-    ensures is_optimal_cost(result, a)
+fn solve(n: i8, a: Vec<i8>) -> (result: i8)
+    requires valid_input(n as int, a@.map(|_i: int, x: i8| x as int))
+    ensures is_optimal_cost(result as int, a@.map(|_i: int, x: i8| x as int))
 // </vc-spec>
 // <vc-code>
 {

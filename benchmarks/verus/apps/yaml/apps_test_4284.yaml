@@ -27,14 +27,14 @@ vc-preamble: |-
 vc-helpers: |
 
 vc-spec: |-
-  fn solve(queries: Vec<(int, int, int, int)>) -> (results: Vec<int>)
+  fn solve(queries: Vec<(i8, i8, i8, i8)>) -> (results: Vec<i8>)
       requires 
           queries.len() > 0,
-          forall|i: int| 0 <= i < queries.len() ==> valid_query(#[trigger] queries[i].0, queries[i].1, queries[i].2, queries[i].3),
+          forall|i: int| 0 <= i < queries.len() ==> valid_query(#[trigger] queries[i as int].0 as int, queries[i as int].1 as int, queries[i as int].2 as int, queries[i as int].3 as int),
       ensures 
           results.len() == queries.len(),
-          forall|i: int| 0 <= i < queries.len() ==> results[i] == max_action_a_turns(#[trigger] queries[i].0, queries[i].1, queries[i].2, queries[i].3),
-          forall|i: int| 0 <= i < results.len() ==> valid_result(#[trigger] results[i], queries[i].0, queries[i].1, queries[i].2, queries[i].3),
+          forall|i: int| 0 <= i < queries.len() ==> results[i as int] as int == max_action_a_turns(#[trigger] queries[i as int].0 as int, queries[i as int].1 as int, queries[i as int].2 as int, queries[i as int].3 as int),
+          forall|i: int| 0 <= i < results.len() ==> valid_result(#[trigger] results[i as int] as int, queries[i as int].0 as int, queries[i as int].1 as int, queries[i as int].2 as int, queries[i as int].3 as int),
 
 vc-code: |-
   {

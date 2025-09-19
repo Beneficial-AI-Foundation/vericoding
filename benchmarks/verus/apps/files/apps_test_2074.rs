@@ -46,11 +46,12 @@ spec fn seq_max(s: Seq<int>) -> int
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(grid: Seq<Seq<int>>) -> (result: int)
-    requires valid_grid(grid)
+fn solve(grid: Vec<Vec<i8>>) -> (result: i8)
+    requires valid_grid(grid@.map(|i: int, row: Vec<i8>| row@.map(|j: int, x: i8| x as int)))
     ensures ({
-        let row_mins = Seq::new(grid.len(), |i: int| seq_min(grid[i]));
-        result == seq_max(row_mins)
+        let grid_spec = grid@.map(|i: int, row: Vec<i8>| row@.map(|j: int, x: i8| x as int));
+        let row_mins = Seq::new(grid_spec.len(), |i: int| seq_min(grid_spec[i]));
+        result as int == seq_max(row_mins)
     })
 // </vc-spec>
 // <vc-code>

@@ -52,17 +52,17 @@ spec fn is_subsequence_helper(pattern: Seq<char>, text: Seq<char>, pattern_index
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(input: Seq<Seq<char>>) -> (result: Seq<char>)
+fn solve(input: Vec<Vec<char>>) -> (result: Vec<char>)
     requires 
         input.len() >= 2,
-        valid_input(input)
+        valid_input(input@.map(|i, v: Vec<char>| v@))
     ensures 
-        result == seq!['y', 'e', 's'] || result == seq!['n', 'o'],
-        result == seq!['y', 'e', 's'] <==> {
-            valid_input(input) && {
-                let n = parse_int_helper(input[0], 0, 0);
-                let expected = build_expected_pattern(input.subrange(1, n + 1));
-                let message = input[n + 1];
+        result@ == seq!['y', 'e', 's'] || result@ == seq!['n', 'o'],
+        result@ == seq!['y', 'e', 's'] <==> {
+            valid_input(input@.map(|i, v: Vec<char>| v@)) && {
+                let n = parse_int_helper(input@.map(|i, v: Vec<char>| v@)[0], 0, 0);
+                let expected = build_expected_pattern(input@.map(|i, v: Vec<char>| v@).subrange(1, n + 1));
+                let message = input@.map(|i, v: Vec<char>| v@)[n + 1];
                 is_subsequence(expected, message)
             }
         }

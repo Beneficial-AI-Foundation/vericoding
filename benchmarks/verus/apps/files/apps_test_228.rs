@@ -36,8 +36,8 @@ spec fn valid_input(n: int, piles: Seq<int>) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: int, piles: Seq<int>) -> (result: &'static str)
-    requires valid_input(n, piles)
+fn solve(n: i8, piles: Vec<i8>) -> (result: &'static str)
+    requires valid_input(n as int, piles@.map_values(|v: i8| v as int))
     ensures result == "Alice" || result == "Bob"
 // </vc-spec>
 // <vc-code>

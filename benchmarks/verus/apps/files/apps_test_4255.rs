@@ -24,9 +24,9 @@ spec fn valid_area(ab: int, bc: int, area: int) -> bool
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(ab: int, bc: int, ca: int) -> (result: String)
-    requires valid_input(ab, bc, ca)
-    ensures exists|area: int| valid_area(ab, bc, area)
+fn solve(ab: i8, bc: i8, ca: i8) -> (result: String)
+    requires valid_input(ab as int, bc as int, ca as int)
+    ensures exists|area: int| valid_area(ab as int, bc as int, area)
 // </vc-spec>
 // <vc-code>
 {

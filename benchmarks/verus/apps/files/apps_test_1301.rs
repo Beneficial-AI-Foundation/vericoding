@@ -52,15 +52,15 @@ spec fn is_first_match(result: Seq<char>, pattern: Seq<char>, pokemon_list: Seq<
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(input: Seq<char>) -> (result: Seq<char>)
+fn solve(input: Vec<char>) -> (result: Vec<char>)
     requires
-        valid_input(input),
+        valid_input(input@),
     ensures
-        valid_pokemon_name(result),
-        is_first_match(result, input, get_pokemon_list()),
+        valid_pokemon_name(result@),
+        is_first_match(result@, input@, get_pokemon_list()),
         exists|i: int| 0 <= i < get_pokemon_list().len() && 
-            get_pokemon_list()[i] == result &&
-            matches_pattern(result, input),
+            get_pokemon_list()[i] == result@ &&
+            matches_pattern(result@, input@),
 // </vc-spec>
 // <vc-code>
 {

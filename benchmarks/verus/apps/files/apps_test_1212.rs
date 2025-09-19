@@ -33,9 +33,9 @@ spec fn valid_result(result: int, n: int, k: int, heights: Seq<int>) -> bool
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: int, k: int, heights: Seq<int>) -> (result: int)
-  requires valid_input(n, k, heights)
-  ensures valid_result(result, n, k, heights)
+fn solve(n: i8, k: i8, heights: Vec<i8>) -> (result: i8)
+  requires valid_input(n as int, k as int, heights@.map(|i: int, v: i8| v as int))
+  ensures valid_result(result as int, n as int, k as int, heights@.map(|i: int, v: i8| v as int))
 // </vc-spec>
 // <vc-code>
 {

@@ -23,9 +23,9 @@ spec fn correct_capitalization(input: Seq<char>, output: Seq<char>) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn capitalize_first_letter(word: Seq<char>) -> (result: Seq<char>)
-    requires valid_input(word)
-    ensures correct_capitalization(word, result)
+fn capitalize_first_letter(word: Vec<char>) -> (result: Vec<char>)
+    requires valid_input(word@)
+    ensures correct_capitalization(word@, result@)
 // </vc-spec>
 // <vc-code>
 {

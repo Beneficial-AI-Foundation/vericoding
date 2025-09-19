@@ -31,14 +31,14 @@ spec fn current_value_at_index(s: Seq<char>, index: int) -> int
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: i32, s: Seq<char>) -> (result: i32)
+fn solve(n: i8, s: Vec<char>) -> (result: i8)
     requires 
         1 <= n <= 100,
-        n == s.len(),
-        forall|i: int| 0 <= i < s.len() ==> s[i] == 'I' || s[i] == 'D',
+        n as int == s@.len(),
+        forall|i: int| 0 <= i < s@.len() ==> s@[i] == 'I' || s@[i] == 'D',
     ensures 
         result >= 0,
-        result == max_value(s),
+        result as int == max_value(s@),
 // </vc-spec>
 // <vc-code>
 {

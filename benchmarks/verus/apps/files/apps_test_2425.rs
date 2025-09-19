@@ -64,9 +64,9 @@ spec fn valid_results(queries: Seq<int>, results: Seq<int>) -> bool
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(queries: Seq<int>) -> (results: Seq<int>)
-    requires valid_queries(queries)
-    ensures valid_results(queries, results)
+fn solve(queries: Vec<i8>) -> (results: Vec<i8>)
+    requires valid_queries(queries@.map(|_i, x: i8| x as int))
+    ensures valid_results(queries@.map(|_i, x: i8| x as int), results@.map(|_i, x: i8| x as int))
 // </vc-spec>
 // <vc-code>
 {

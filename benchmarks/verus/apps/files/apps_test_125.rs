@@ -70,16 +70,16 @@ spec fn accident_at_lane(i: int, lanes: Seq<Seq<int>>) -> bool
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(s: Seq<char>) -> (result: Seq<char>)
+fn solve(s: Vec<char>) -> (result: Vec<char>)
     requires 
         s.len() > 0,
-        forall|i: int| 0 <= i < s.len() ==> (#[trigger] s[i] as int >= 0 && #[trigger] s[i] as int <= 127),
-        valid_input_string(s)
+        forall|i: int| 0 <= i < s.len() ==> (#[trigger] s@[i] as int >= 0 && #[trigger] s@[i] as int <= 127),
+        valid_input_string(s@)
     ensures 
-        result == "YES\n"@ || result == "NO\n"@,
+        result@ == "YES\n"@ || result@ == "NO\n"@,
         exists|input_lines: Seq<Seq<int>>| 
-            parse_input(s, input_lines) && 
-            (result == "YES\n"@ <==> accident_possible(input_lines)),
+            parse_input(s@, input_lines) && 
+            (result@ == "YES\n"@ <==> accident_possible(input_lines)),
         result.len() >= 3
 // </vc-spec>
 // <vc-code>

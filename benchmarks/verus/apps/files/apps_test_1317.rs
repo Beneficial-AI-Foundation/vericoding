@@ -20,7 +20,7 @@ spec fn valid_input(n: int, m: int) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: u32, m: u32) -> (result: u32)
+fn solve(n: i8, m: i8) -> (result: i8)
   requires 
     valid_input(n as int, m as int),
   ensures 

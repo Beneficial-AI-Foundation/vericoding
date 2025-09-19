@@ -33,6 +33,8 @@ vc-helpers: |
 
 vc-spec: |-
   fn solve(n: String) -> (result: String)
+    requires valid_input(n@)
+    ensures valid_output(result)
 
 vc-code: |-
   {

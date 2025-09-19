@@ -20,13 +20,13 @@ spec fn empty_matrix(matrix: Seq<Seq<&str>>) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn maximal_rectangle(matrix: Seq<Seq<&str>>) -> (result: i32)
+fn maximal_rectangle(matrix: Vec<Vec<&str>>) -> (result: i32)
     requires
-        valid_matrix(matrix),
+        valid_matrix(matrix@.map(|i: int, row: Vec<&str>| row@)),
     ensures
         result >= 0,
-        empty_matrix(matrix) ==> result == 0,
-        result <= max_possible_area(matrix),
+        empty_matrix(matrix@.map(|i: int, row: Vec<&str>| row@)) ==> result == 0,
+        result <= max_possible_area(matrix@.map(|i: int, row: Vec<&str>| row@)),
 // </vc-spec>
 // <vc-code>
 {

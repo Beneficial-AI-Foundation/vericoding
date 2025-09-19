@@ -35,12 +35,12 @@ spec fn is_max_of_all_expressions(result: int, a: int, b: int, c: int) -> bool
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(a: int, b: int, c: int) -> (result: int)
+fn solve(a: i8, b: i8, c: i8) -> (result: i8)
     requires 
-        valid_input(a, b, c),
+        valid_input(a as int, b as int, c as int),
     ensures 
-        is_max_of_all_expressions(result, a, b, c),
-        result == max_expression(a, b, c),
+        is_max_of_all_expressions(result as int, a as int, b as int, c as int),
+        result as int == max_expression(a as int, b as int, c as int),
 // </vc-spec>
 // <vc-code>
 {

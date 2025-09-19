@@ -133,14 +133,14 @@ vc-preamble: |-
 vc-helpers: |
 
 vc-spec: |-
-  fn solve(input: Seq<char>) -> (output: Seq<char>)
+  fn solve(input: Vec<char>) -> (output: Vec<char>)
       requires 
           input.len() > 0,
-          valid_input_format(input),
+          valid_input_format(input@),
       ensures 
           forall|i: int| 0 <= i < output.len() ==> output[i] == 'Y' || output[i] == 'E' || output[i] == 'S' || output[i] == 'N' || output[i] == 'O' || output[i] == '\n',
-          valid_output_format(output, input),
-          correct_divisibility_results(input, output),
+          valid_output_format(output@, input@),
+          correct_divisibility_results(input@, output@),
 
 vc-code: |-
   {

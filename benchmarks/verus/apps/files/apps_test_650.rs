@@ -32,9 +32,9 @@ spec fn all_in_same_group(word: Seq<char>) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(word: Seq<char>) -> (result: Seq<char>)
-    requires valid_input(word)
-    ensures (all_in_same_group(word) <==> result == seq!['Y','E','S']) && (result == seq!['Y','E','S'] || result == seq!['N','O'])
+fn solve(word: Vec<char>) -> (result: Vec<char>)
+    requires valid_input(word@)
+    ensures (all_in_same_group(word@) <==> result@ == seq!['Y','E','S']) && (result@ == seq!['Y','E','S'] || result@ == seq!['N','O'])
 // </vc-spec>
 // <vc-code>
 {

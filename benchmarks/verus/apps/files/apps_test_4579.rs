@@ -15,13 +15,13 @@ spec fn valid_input(strings: Seq<String>) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(strings: Seq<String>) -> (count: int)
+fn solve(strings: Vec<String>) -> (count: i8)
     requires 
-        valid_input(strings)
+        valid_input(strings@)
     ensures 
-        count >= 1,
-        count <= strings.len(),
-        count == distinct_strings(strings).len()
+        count as int >= 1,
+        count as int <= strings@.len(),
+        count as int == distinct_strings(strings@).len()
 // </vc-spec>
 // <vc-code>
 {

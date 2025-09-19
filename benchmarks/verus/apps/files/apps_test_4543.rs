@@ -31,9 +31,9 @@ fn string_to_int(s: String) -> (result: int)
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(a: int, b: int) -> (result: String)
-  requires a >= 1 && a <= 100,
-           b >= 1 && b <= 100
+fn solve(a: i8, b: i8) -> (result: String)
+  requires a as int >= 1 && a as int <= 100,
+           b as int >= 1 && b as int <= 100
   ensures result@ == "Yes"@ || result@ == "No"@
 // </vc-spec>
 // <vc-code>

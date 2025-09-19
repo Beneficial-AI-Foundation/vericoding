@@ -22,8 +22,8 @@ spec fn valid_output(input: Seq<char>, output: Seq<char>) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(s: Seq<char>) -> (result: Seq<char>)
-    ensures valid_output(s, result)
+fn solve(s: Vec<char>) -> (result: Vec<char>)
+    ensures valid_output(s@, result@)
 // </vc-spec>
 // <vc-code>
 {

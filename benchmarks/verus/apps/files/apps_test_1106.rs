@@ -26,8 +26,8 @@ spec fn dfs_result(i: int, n: int, a: Seq<int>) -> (int, int) {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: int, lights: Seq<int>) -> (result: int)
-    requires valid_input(n, lights)
+fn solve(n: i8, lights: Vec<i8>) -> (result: i8)
+    requires valid_input(n as int, lights@.map(|_i: int, x: i8| x as int))
     ensures result >= 0
 // </vc-spec>
 // <vc-code>

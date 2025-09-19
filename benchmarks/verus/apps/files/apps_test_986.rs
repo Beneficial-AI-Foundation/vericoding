@@ -16,9 +16,9 @@ spec fn valid_solution(n: int, k: int, requests: Seq<int>, cost: int) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: int, k: int, requests: Seq<int>) -> (cost: int)
-    requires valid_input(n, k, requests)
-    ensures valid_solution(n, k, requests, cost)
+fn solve(n: i8, k: i8, requests: Vec<i8>) -> (cost: i8)
+    requires valid_input(n as int, k as int, requests@.map(|i: int, x: i8| x as int))
+    ensures valid_solution(n as int, k as int, requests@.map(|i: int, x: i8| x as int), cost as int)
 // </vc-spec>
 // <vc-code>
 {

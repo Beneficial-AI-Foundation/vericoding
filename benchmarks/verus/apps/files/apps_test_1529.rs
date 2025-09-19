@@ -90,9 +90,9 @@ spec fn min(a: int, b: int) -> int {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(input: Seq<char>) -> (result: Seq<char>)
-    requires valid_input(input)
-    ensures result.len() >= 0
+fn solve(input: Vec<char>) -> (result: Vec<char>)
+    requires valid_input(input@)
+    ensures result@.len() >= 0
 // </vc-spec>
 // <vc-code>
 {

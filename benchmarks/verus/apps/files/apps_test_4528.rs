@@ -26,14 +26,14 @@ spec fn valid_output(results: Seq<int>) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(test_cases: Seq<(int, int)>) -> (results: Seq<int>)
+fn solve(test_cases: Vec<(i8, i8)>) -> (results: Vec<i16>)
     requires 
-        valid_input(test_cases)
+        valid_input(test_cases@.map(|i: int, x: (i8, i8)| (x.0 as int, x.1 as int)))
     ensures 
         results.len() == test_cases.len(),
         forall|i: int| 0 <= i < results.len() ==> 
-            #[trigger] results[i] == minutes_until_midnight(test_cases[i].0, test_cases[i].1),
-        valid_output(results)
+            #[trigger] results[i] as int == minutes_until_midnight(test_cases[i].0 as int, test_cases[i].1 as int),
+        valid_output(results@.map(|i: int, x: i16| x as int))
 // </vc-spec>
 // <vc-code>
 {
