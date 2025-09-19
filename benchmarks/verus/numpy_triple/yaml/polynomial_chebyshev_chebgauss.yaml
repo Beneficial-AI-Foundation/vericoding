@@ -1,0 +1,38 @@
+vc-description: |-
+  Computes the sample points and weights for Gauss-Chebyshev quadrature.
+  These sample points and weights will correctly integrate polynomials of
+  degree 2*n - 1 or less over the interval [-1, 1] with the weight 
+  function f(x) = 1/√(1 - x²).
+
+  Specification: chebgauss returns Gauss-Chebyshev quadrature nodes and weights
+  where nodes are the zeros of the n-th Chebyshev polynomial and weights are 
+  uniform π/n. The nodes are given by cos(π(2i-1)/(2n)) for i = 1 to n.
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+vc-helpers: |-
+
+vc-spec: |-
+  fn chebgauss(n: u8) -> (result: (Vec<f32>, Vec<f32>))
+      requires n > 0,
+      ensures
+          result.0.len() == n as usize,
+          result.1.len() == n as usize,
+          /* All weights are equal (uniform weights) */
+          forall|i: int, j: int| 0 <= i < n as int && 0 <= j < n as int ==> 
+              #[trigger] result.1[i] == #[trigger] result.1[j],
+          /* Nodes are distinct */
+          forall|i: int, j: int| 0 <= i < n as int && 0 <= j < n as int && i != j ==> 
+              #[trigger] result.0[i] != #[trigger] result.0[j],
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      (Vec::new(), Vec::new())
+      // impl-end
+  }
+vc-postamble: |-
+
+  }
+  fn main() {}

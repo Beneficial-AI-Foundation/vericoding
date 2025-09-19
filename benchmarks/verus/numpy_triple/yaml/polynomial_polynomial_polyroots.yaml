@@ -18,7 +18,6 @@ vc-spec: |-
           c[c.len() - 1] != 0.0,
       ensures
           roots.len() == c.len() - 1,
-          forall|i: int| 0 <= i < c.len() ==> exists|j: int| 0 <= j < c.len() && c[j] != 0.0,
 
 vc-code: |-
   {
@@ -29,4 +28,3 @@ vc-code: |-
 vc-postamble: |-
   }
   fn main() {}
-

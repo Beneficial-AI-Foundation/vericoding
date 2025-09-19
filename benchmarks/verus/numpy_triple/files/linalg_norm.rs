@@ -8,7 +8,7 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn norm(x: Vec<f32>) -> (result: f32)
+fn norm(x: Vec<i8>) -> (result: i8)
     requires true,
     ensures true,
 // </vc-spec>
