@@ -249,7 +249,7 @@ def main():
             # Check if total files differs from dataset file count
             if dataset_file_count and data['total_files'] != dataset_file_count:
                 file_warning = f" ⚠️ {data['successful_files']}/{data['total_files']} files"
-                print(f"% WARNING: {model} has different file count: {data['total_files']} vs expected {dataset_file_count}", file=sys.stderr)
+                print(f"\033[93m% WARNING: {model} has different file count: {data['total_files']} vs expected {dataset_file_count}\033[0m", file=sys.stderr)
             else:
                 file_warning = f" {data['successful_files']}/{data['total_files']} files"
             print(f"% {model}\t{data['files_dir']}\t{data['success_rate']:.1f}\\%{file_warning}{shard_info}\t{data['url']}")
