@@ -28,7 +28,6 @@ models=[
     "glm",
     "gpt",
     "gpt-mini",
-    "grok",
     "grok-code",
 ]
 
