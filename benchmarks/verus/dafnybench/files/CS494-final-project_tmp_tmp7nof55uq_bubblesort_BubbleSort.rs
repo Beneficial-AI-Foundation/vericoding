@@ -21,14 +21,21 @@ spec fn pivot(a: &Vec<i32>, to: usize, pvt: usize) -> bool
 // </vc-preamble>
 
 // <vc-helpers>
+spec fn sorted_i8(a: &Vec<i8>, from: usize, to: usize) -> bool
+    recommends 
+        from <= to,
+        to <= a.len(),
+{
+    forall|x: usize, y: usize| from <= x < y < to ==> a[x as int] <= a[y as int]
+}
 // </vc-helpers>
 
 // <vc-spec>
-fn BubbleSort(a: &mut Vec<i32>)
+fn BubbleSort(a: &mut Vec<i8>)
     requires 
         old(a).len() > 0,
     ensures 
-        sorted(a, 0, a.len()),
+        sorted_i8(a, 0, a.len()),
         a@.to_multiset() == old(a)@.to_multiset(),
 // </vc-spec>
 // <vc-code>

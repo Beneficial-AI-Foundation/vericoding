@@ -42,11 +42,11 @@ spec fn no_duplicates(q: Seq<int>) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn insert_bst(t0: Tree, x: int) -> (t: Tree)
+fn insert_bst(t0: Tree, x: i8) -> (t: Tree)
     requires 
-        bst(t0) && !numbers_in_tree(t0).contains(x)
+        bst(t0) && !numbers_in_tree(t0).contains(x as int)
     ensures 
-        bst(t) && numbers_in_tree(t) =~= numbers_in_tree(t0).insert(x)
+        bst(t) && numbers_in_tree(t) =~= numbers_in_tree(t0).insert(x as int)
 // </vc-spec>
 // <vc-code>
 {

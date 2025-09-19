@@ -40,10 +40,10 @@ vc-preamble: |-
 vc-helpers: |-
 
 vc-spec: |-
-  fn prod_and_count(q: &[i32], key: i32) -> (result: (i32, u32))
+  fn prod_and_count(q: &Vec<i8>, key: i8) -> (result: (i8, u8))
       ensures 
-          result.0 == recursive_positive_product(q@.map(|_i, x: i32| x as int)),
-          result.1 == recursive_count(key as int, q@.map(|_i, x: i32| x as int)) as u32
+          result.0 == recursive_positive_product(q@.map(|_i, x: i8| x as int)) as i8,
+          result.1 == recursive_count(key as int, q@.map(|_i, x: i8| x as int)) as u8
 
 vc-code: |-
   {
@@ -54,4 +54,3 @@ vc-code: |-
 vc-postamble: |-
   }
   fn main() {}
-

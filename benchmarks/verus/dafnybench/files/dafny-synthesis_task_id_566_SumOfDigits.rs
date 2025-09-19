@@ -37,11 +37,11 @@ spec fn number_of_digits(n: nat) -> nat
 // </vc-helpers>
 
 // <vc-spec>
-fn sum_of_digits(number: u64) -> (sum: u64)
-    requires number >= 0,
+fn sum_of_digits(number: u8) -> (sum: u8)
+    requires number as nat >= 0,
     ensures 
-        sum >= 0,
-        sum == sum_digits(number as nat),
+        sum as nat >= 0,
+        sum as nat == sum_digits(number as nat),
 // </vc-spec>
 // <vc-code>
 {

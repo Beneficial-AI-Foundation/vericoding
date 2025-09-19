@@ -43,8 +43,8 @@ spec fn have_not_common_k_substring_pred(k: nat, str1: Seq<char>, str2: Seq<char
 // </vc-helpers>
 
 // <vc-spec>
-fn is_substring(sub: Seq<char>, str: Seq<char>) -> (res: bool)
-    ensures res <==> is_substring_pred(sub, str)
+fn is_substring(sub: Vec<char>, str: Vec<char>) -> (res: bool)
+    ensures res <==> is_substring_pred(sub@, str@)
 // </vc-spec>
 // <vc-code>
 {

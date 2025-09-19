@@ -8,12 +8,12 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn is_sorted(a: &[i32]) -> (sorted: bool)
+fn is_sorted(a: &Vec<i8>) -> (sorted: bool)
     requires
         a.len() > 0,
     ensures
-        sorted <==> forall|i: int, j: int| 0 <= i < j < a.len() ==> a[i] <= a[j],
-        !sorted ==> exists|i: int, j: int| 0 <= i < j < a.len() && a[i] > a[j],
+        sorted <==> forall|i: int, j: int| 0 <= i < j < a.len() ==> a[i] as int <= a[j] as int,
+        !sorted ==> exists|i: int, j: int| 0 <= i < j < a.len() && a[i] as int > a[j] as int,
 // </vc-spec>
 // <vc-code>
 {

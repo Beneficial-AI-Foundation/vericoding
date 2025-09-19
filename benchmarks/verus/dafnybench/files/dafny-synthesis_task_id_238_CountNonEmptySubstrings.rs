@@ -8,10 +8,10 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn count_non_empty_substrings(s: Seq<char>) -> (count: usize)
+fn count_non_empty_substrings(s: Vec<char>) -> (count: usize)
     ensures 
         count >= 0,
-        count == (s.len() * (s.len() + 1)) / 2,
+        count == (s@.len() * (s@.len() + 1)) / 2,
 // </vc-spec>
 // <vc-code>
 {

@@ -21,8 +21,8 @@ vc-preamble: |-
 vc-helpers: |-
 
 vc-spec: |-
-  fn mall_equal1(v: &[i32]) -> (b: bool)
-      ensures b == all_equal(v@)
+  fn mall_equal1(v: &[i8]) -> (b: bool)
+      ensures b == all_equal(v@.map(|_i: int, val: i8| val as i32))
 
 vc-code: |-
   {
@@ -33,4 +33,3 @@ vc-code: |-
 vc-postamble: |-
   }
   fn main() {}
-

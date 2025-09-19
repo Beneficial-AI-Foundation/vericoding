@@ -20,7 +20,7 @@ spec fn sum_range(lo: int, hi: int) -> int
 // </vc-helpers>
 
 // <vc-spec>
-fn bubble_sort(a: &mut Vec<i32>) -> (n: usize) 
+fn bubble_sort(a: &mut Vec<i8>) -> (n: usize) 
     ensures n <= n_choose_2(a.len() as int) as usize
 // </vc-spec>
 // <vc-code>

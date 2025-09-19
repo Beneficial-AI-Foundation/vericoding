@@ -9,15 +9,18 @@ spec fn triple(a: &[int]) -> bool {
 // </vc-preamble>
 
 // <vc-helpers>
+spec fn triple_seq(a: Seq<int>) -> bool {
+    exists|i: int| 0 <= i < a.len() - 2 && #[trigger] a[i] == a[i + 1] && a[i + 1] == a[i + 2]
+}
 // </vc-helpers>
 
 // <vc-spec>
-fn get_triple(a: &[int]) -> (index: usize)
+fn get_triple(a: &[i8]) -> (index: usize)
 ensures 
     (0 <= index < a.len() - 1) || index == a.len(),
-    index == a.len() <==> !triple(a),
-    (0 <= index < a.len() - 1) <==> triple(a),
-    (0 <= index < a.len() - 1) ==> a[index as int] == a[index as int + 1] && a[index as int + 1] == a[index as int + 2]
+    index == a.len() <==> !triple_seq(a@.map(|_i, x| x as int)),
+    (0 <= index < a.len() - 1) <==> triple_seq(a@.map(|_i, x| x as int)),
+    (0 <= index < a.len() - 1) ==> a@[index as int] as int == a@[index as int + 1] as int && a@[index as int + 1] as int == a@[index as int + 2] as int
 // </vc-spec>
 // <vc-code>
 {

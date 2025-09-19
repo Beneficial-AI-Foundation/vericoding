@@ -27,12 +27,12 @@ vc-preamble: |-
 vc-helpers: |-
 
 vc-spec: |-
-  fn mergeSimple(a1: Seq<i32>, a2: Seq<i32>, start: usize, end: usize, b: &mut Vec<i32>)
+  fn mergeSimple(a1: Vec<i32>, a2: Vec<i32>, start: usize, end: usize, b: &mut Vec<i32>)
       requires
-          sorted_seq(a1),
-          sorted_seq(a2),
+          sorted_seq(a1@),
+          sorted_seq(a2@),
           0 <= start <= end <= old(b).len(),
-          a1.len() + a2.len() == end - start + 1,
+          a1@.len() + a2@.len() == end - start + 1,
       ensures
           sorted_slice(b, start as int, end as int),
 
@@ -45,4 +45,3 @@ vc-code: |-
 vc-postamble: |-
   }
   fn main() {}
-

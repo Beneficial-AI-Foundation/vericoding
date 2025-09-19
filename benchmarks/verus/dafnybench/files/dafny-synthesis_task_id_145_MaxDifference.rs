@@ -8,9 +8,9 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn max_difference(a: &[i32]) -> (diff: i32)
-    requires a.len() > 1
-    ensures forall|i: int, j: int| 0 <= i < a.len() && 0 <= j < a.len() ==> a[i] - a[j] <= diff
+fn max_difference(a: &Vec<i8>) -> (diff: i8)
+    requires a@.len() > 1
+    ensures forall|i: int, j: int| 0 <= i < a@.len() && 0 <= j < a@.len() ==> a@[i] as int - a@[j] as int <= diff as int
 // </vc-spec>
 // <vc-code>
 {

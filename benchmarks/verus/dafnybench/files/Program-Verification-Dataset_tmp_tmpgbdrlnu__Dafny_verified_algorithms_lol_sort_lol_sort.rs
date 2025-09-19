@@ -31,10 +31,10 @@ spec fn sorted(a: Seq<int>) -> bool
 // </vc-helpers>
 
 // <vc-spec>
-fn lol_sort(a: &mut Vec<int>)
+fn lol_sort(a: &mut Vec<i8>)
     ensures 
-        valid_permut(a@, old(a)@),
-        sorted(a@),
+        valid_permut(a@.map(|i: int, x: i8| x as int), old(a)@.map(|i: int, x: i8| x as int)),
+        sorted(a@.map(|i: int, x: i8| x as int)),
 // </vc-spec>
 // <vc-code>
 {

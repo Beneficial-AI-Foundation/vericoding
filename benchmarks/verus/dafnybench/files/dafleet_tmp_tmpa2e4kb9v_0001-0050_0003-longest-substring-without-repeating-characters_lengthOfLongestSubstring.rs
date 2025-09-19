@@ -28,10 +28,10 @@ pub open spec fn valid_interval(s: Seq<char>, iv: Interval) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn lengthOfLongestSubstring(s: Seq<char>) -> (result: (usize, Ghost<Interval>))
+fn lengthOfLongestSubstring(s: Vec<char>) -> (result: (usize, Ghost<Interval>))
     ensures 
-        (valid_interval(s, result.1@) && length(result.1@) == result.0 as int),
-        (forall|iv: Interval| valid_interval(s, iv) ==> length(iv) <= result.0 as int),
+        (valid_interval(s@, result.1@) && length(result.1@) == result.0 as int),
+        (forall|iv: Interval| valid_interval(s@, iv) ==> length(iv) <= result.0 as int),
 // </vc-spec>
 // <vc-code>
 {

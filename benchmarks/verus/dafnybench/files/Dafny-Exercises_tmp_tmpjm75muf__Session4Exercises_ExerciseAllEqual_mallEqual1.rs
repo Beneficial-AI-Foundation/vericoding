@@ -12,8 +12,8 @@ spec fn all_equal(s: Seq<i32>) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn mall_equal1(v: &[i32]) -> (b: bool)
-    ensures b == all_equal(v@)
+fn mall_equal1(v: &[i8]) -> (b: bool)
+    ensures b == all_equal(v@.map(|_i: int, val: i8| val as i32))
 // </vc-spec>
 // <vc-code>
 {

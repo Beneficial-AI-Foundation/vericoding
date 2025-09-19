@@ -8,12 +8,12 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn is_perfect_square(n: int) -> (result: bool)
+fn is_perfect_square(n: i8) -> (result: bool)
     requires 
         n >= 0,
     ensures 
-        result == true ==> (exists|i: int| 0 <= i <= n && #[trigger] (i * i) == n),
-        result == false ==> (forall|a: int| 0 < a*a < n ==> #[trigger] (a*a) != n),
+        result == true ==> (exists|i: int| 0 <= i <= n as int && #[trigger] (i * i) == n as int),
+        result == false ==> (forall|a: int| 0 < a*a < n as int ==> #[trigger] (a*a) != n as int),
 // </vc-spec>
 // <vc-code>
 {

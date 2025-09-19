@@ -14,9 +14,9 @@ spec fn factorial(n: nat) -> nat
 // </vc-helpers>
 
 // <vc-spec>
-fn compute_factorial(n: i32) -> (u: i32)
-    requires 1 <= n,
-    ensures u == factorial(n as nat),
+fn compute_factorial(n: i8) -> (u: i8)
+    requires 1 <= n as int,
+    ensures u as nat == factorial(n as nat),
 // </vc-spec>
 // <vc-code>
 {

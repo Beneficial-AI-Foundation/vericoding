@@ -8,12 +8,12 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn flip(a: &mut Vec<i32>, num: usize)
+fn flip(a: &mut Vec<i8>, num: usize)
     requires 
         old(a).len() > 0,
         num < old(a).len(),
     ensures
-        forall|k: int| 0 <= k <= num as int ==> #[trigger] a[k] == old(a)[num as int - k],
+        forall|k: int| 0 <= k <= num as int ==> #[trigger] a@[k] == old(a)@[num as int - k],
 
         a.len() == old(a).len(),
 // </vc-spec>

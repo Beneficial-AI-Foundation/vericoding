@@ -67,15 +67,15 @@ spec fn max_interval_for_same_center(s: Seq<char>, k: int, lo: int, hi: int) -> 
 // </vc-helpers>
 
 // <vc-spec>
-fn expand_from_center(s: Seq<char>, i0: usize, j0: usize) -> (result: (usize, usize))
+fn expand_from_center(s: Vec<char>, i0: usize, j0: usize) -> (result: (usize, usize))
     requires 0 <= i0 <= j0 <= s.len(),
-             palindromic(s, i0 as int, j0 as int)
+             palindromic(s@, i0 as int, j0 as int)
     ensures 
         ({
             let (lo, hi) = result;
             &&& 0 <= lo <= hi <= s.len()
-            &&& palindromic(s, lo as int, hi as int)
-            &&& forall|i: int, j: int| 0 <= i <= j <= s.len() && palindromic(s, i, j)
+            &&& palindromic(s@, lo as int, hi as int)
+            &&& forall|i: int, j: int| 0 <= i <= j <= s@.len() && palindromic(s@, i, j)
               && i + j == i0 + j0
               ==> j - i <= hi - lo
         })

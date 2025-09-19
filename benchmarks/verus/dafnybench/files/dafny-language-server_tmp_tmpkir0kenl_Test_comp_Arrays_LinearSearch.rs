@@ -25,10 +25,10 @@ fn print_matrix<A>(m: &Vec<Vec<A>>) {
 // </vc-helpers>
 
 // <vc-spec>
-fn linear_search(a: &[int], key: int) -> (n: usize)
+fn linear_search(a: &[i8], key: i8) -> (n: usize)
     ensures 
         0 <= n <= a.len(),
-        n == a.len() || a[n as int] == key,
+        n == a.len() || a[n as int] as int == key as int,
 // </vc-spec>
 // <vc-code>
 {

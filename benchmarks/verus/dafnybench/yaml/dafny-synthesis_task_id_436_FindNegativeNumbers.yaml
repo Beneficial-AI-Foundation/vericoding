@@ -19,14 +19,14 @@ vc-preamble: |-
 vc-helpers: |-
 
 vc-spec: |-
-  fn find_negative_numbers(arr: &[int]) -> (negative_list: Vec<int>)
+  fn find_negative_numbers(arr: &[i8]) -> (negative_list: Vec<i8>)
       ensures
   
-          forall|i: int| 0 <= i < negative_list.len() ==> 
-              is_negative(negative_list[i]) && exists|j: int| 0 <= j < arr.len() && arr[j] == negative_list[i],
+          forall|i: int| 0 <= i < negative_list@.len() ==> 
+              is_negative(negative_list@[i] as int) && exists|j: int| 0 <= j < arr@.len() && arr@[j] == negative_list@[i],
   
-          forall|i: int| 0 <= i < arr.len() && is_negative(arr[i]) ==> 
-              exists|j: int| 0 <= j < negative_list.len() && negative_list[j] == arr[i],
+          forall|i: int| 0 <= i < arr@.len() && is_negative(arr@[i] as int) ==> 
+              exists|j: int| 0 <= j < negative_list@.len() && negative_list@[j] == arr@[i],
 
 vc-code: |-
   {
@@ -37,4 +37,3 @@ vc-code: |-
 vc-postamble: |-
   }
   fn main() {}
-

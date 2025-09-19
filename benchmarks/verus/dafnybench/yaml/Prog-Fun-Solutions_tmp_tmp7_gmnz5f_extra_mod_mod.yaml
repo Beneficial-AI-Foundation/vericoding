@@ -16,8 +16,8 @@ vc-preamble: |-
 vc-helpers: |-
 
 vc-spec: |-
-  fn mod_fn(n: u64) -> (a: u64)
-      requires n >= 0,
+  fn mod_fn(n: u8) -> (a: u8)
+      requires n as nat >= 0,
       ensures a as nat == f(n as nat),
 
 vc-code: |-
@@ -29,4 +29,3 @@ vc-code: |-
 vc-postamble: |-
   }
   fn main() {}
-

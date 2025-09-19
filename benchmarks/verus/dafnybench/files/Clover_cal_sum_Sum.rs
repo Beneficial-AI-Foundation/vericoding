@@ -8,9 +8,9 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn sum(n: u32) -> (s: u32)
-    requires n >= 0
-    ensures s == n * (n + 1) / 2
+fn sum(n: u8) -> (s: u8)
+    requires n as nat >= 0
+    ensures s as nat == n as nat * (n as nat + 1) / 2
 // </vc-spec>
 // <vc-code>
 {

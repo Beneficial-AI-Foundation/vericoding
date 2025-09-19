@@ -8,7 +8,7 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn last_position(arr: &Vec<i32>, elem: i32) -> (pos: i32)
+fn last_position(arr: &Vec<i8>, elem: i8) -> (pos: i8)
     requires 
         arr.len() > 0,
         forall|i: int, j: int| 0 <= i < j < arr.len() ==> arr[i] <= arr[j],

@@ -8,7 +8,7 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn replace_last_element(first: &Vec<i32>, second: &Vec<i32>) -> (result: Vec<i32>)
+fn replace_last_element(first: &Vec<i8>, second: &Vec<i8>) -> (result: Vec<i8>)
     requires 
         first.len() > 0,
     ensures 

@@ -8,9 +8,9 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn remove_duplicates(a: &[i32]) -> (result: Vec<i32>)
+fn remove_duplicates(a: &[i8]) -> (result: Vec<i8>)
     ensures
-        forall|x: i32| result@.contains(x) <==> exists|i: int| 0 <= i < a.len() && a[i] == x,
+        forall|x: i8| result@.contains(x) <==> exists|i: int| 0 <= i < a.len() && a[i] == x,
         forall|i: int, j: int| 0 <= i < j < result.len() ==> result@[i] != result@[j]
 // </vc-spec>
 // <vc-code>

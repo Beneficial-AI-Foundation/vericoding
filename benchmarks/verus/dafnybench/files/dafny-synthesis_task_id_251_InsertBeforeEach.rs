@@ -9,10 +9,10 @@ verus! {
 
 // <vc-spec>
 #[verifier::exec_allows_no_decreases_clause]
-fn insert_before_each(s: Seq<String>, x: String) -> (v: Seq<String>)
+fn insert_before_each(s: Vec<String>, x: String) -> (v: Vec<String>)
     ensures
-        v.len() == 2 * s.len(),
-        forall|i: int| 0 <= i < s.len() ==> v[2*i] == x && v[2*i + 1] == s[i],
+        v@.len() == 2 * s@.len(),
+        forall|i: int| 0 <= i < s@.len() ==> v@[2*i] == x && v@[2*i + 1] == s@[i],
 // </vc-spec>
 // <vc-code>
 {

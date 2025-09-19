@@ -8,7 +8,7 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn selection_sorted(array: &mut Vec<i32>) 
+fn selection_sorted(array: &mut Vec<i8>) 
     ensures array@.to_multiset() == old(array)@.to_multiset()
 // </vc-spec>
 // <vc-code>

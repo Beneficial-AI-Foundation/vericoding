@@ -1,0 +1,45 @@
+vc-description: |-
+  // Checks if array 'a' is sorted.
+  
+  // Finds a value 'x' in a sorted array 'a', and returns its index,
+  
+  // or -1 if not found.
+  
+  // Simple test cases to check the post-condition.
+  
+  /*
+  a) Identify adequate pre and post-conditions for this method, 
+  and encode them as "requires" and "ensures" clauses in Verus. 
+  You can use the predicate below if needed.
+  
+  b) Identify an adequate loop variant and loop invariant, and encode them 
+  as "decreases" and "invariant" clauses in Verus.
+  */
+
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+  
+  spec fn is_sorted(a: &[i32]) -> bool {
+      forall|i: int, j: int| 0 <= i < j < a.len() ==> a[i] <= a[j]
+  }
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn binary_search(a: &[i8], x: i8) -> (index: i8)
+      requires is_sorted(&(a@.map_values(|v: i8| v as i32)))
+      ensures -1 <= index as int && index as int < a@.len() && 
+              (index != -1 ==> a[index as int] as i32 == x as i32) &&
+              (index == -1 ==> !(a@.map_values(|v: i8| v as i32)).contains(x as i32))
+
+vc-code: |-
+  {
+      assume(false);
+      unreached()
+  }
+
+vc-postamble: |-
+  }
+  fn main() {}

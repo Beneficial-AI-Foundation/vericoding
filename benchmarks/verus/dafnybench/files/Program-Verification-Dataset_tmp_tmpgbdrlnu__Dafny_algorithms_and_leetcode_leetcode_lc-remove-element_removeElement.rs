@@ -8,8 +8,8 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn removeElement(nums: &mut Vec<i32>, val: i32) -> (i: usize)
-    ensures forall|k: int| 0 < k < i && k < nums.len() ==> nums[k] != val,
+fn removeElement(nums: &mut Vec<i8>, val: i8) -> (i: usize)
+    ensures forall|k: int| 0 < k < i && k < nums@.len() ==> nums@[k] as i8 != val,
 // </vc-spec>
 // <vc-code>
 {

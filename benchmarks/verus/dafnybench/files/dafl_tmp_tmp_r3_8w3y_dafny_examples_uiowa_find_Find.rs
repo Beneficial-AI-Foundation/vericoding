@@ -8,20 +8,20 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn find(a: &[i32], key: i32) -> (i: i32)
+fn find(a: &Vec<i8>, key: i8) -> (i: i8)
     ensures
 
         0 <= i ==> (
-                    i < a.len() && 
+                    (i as int) < a@.len() && 
 
-                    a[i as int] == key && 
+                    a@[i as int] == (key as int) && 
 
-                    forall|k: int| 0 <= k < i ==> a[k] != key
+                    forall|k: int| 0 <= k < (i as int) ==> a@[k] != (key as int)
                    ),
 
         i < 0 ==> 
 
-                forall|k: int| 0 <= k < a.len() ==> a[k] != key,
+                forall|k: int| 0 <= k < a@.len() ==> a@[k] != (key as int),
 // </vc-spec>
 // <vc-code>
 {

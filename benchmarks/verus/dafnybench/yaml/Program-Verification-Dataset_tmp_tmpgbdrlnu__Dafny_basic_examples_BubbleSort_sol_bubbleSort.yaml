@@ -25,7 +25,7 @@ vc-spec: |-
           old(a).len() > 0,
       ensures
           sorted(a),
-          old(a)@ == a@,
+          old(a)@ =~= a@,
 
 vc-code: |-
   {
@@ -36,4 +36,3 @@ vc-code: |-
 vc-postamble: |-
   }
   fn main() {}
-

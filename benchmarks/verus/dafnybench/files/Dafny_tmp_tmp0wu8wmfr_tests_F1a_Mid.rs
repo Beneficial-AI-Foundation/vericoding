@@ -8,14 +8,14 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn mid(p: int, q: int) -> (m: int)
+fn mid(p: i8, q: i8) -> (m: i8)
 
     requires 
-        p <= q,
+        p as int <= q as int,
     ensures 
-        p <= m <= q,
-        m - p <= q - m,
-        0 <= (q - m) - (m - p) <= 1,
+        p as int <= m as int <= q as int,
+        (m as int) - (p as int) <= (q as int) - (m as int),
+        0 <= ((q as int) - (m as int)) - ((m as int) - (p as int)) <= 1,
 // </vc-spec>
 // <vc-code>
 {

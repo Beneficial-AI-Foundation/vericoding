@@ -12,8 +12,8 @@ spec fn is_odd(n: int) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn is_odd_at_index_odd(a: &[int]) -> (result: bool)
-    ensures result <==> forall|i: int| 0 <= i < a.len() ==> (is_odd(i) ==> is_odd(a[i]))
+fn is_odd_at_index_odd(a: &Vec<i8>) -> (result: bool)
+    ensures result <==> forall|i: int| 0 <= i < a@.len() ==> (is_odd(i) ==> is_odd(a@[i] as int))
 // </vc-spec>
 // <vc-code>
 {

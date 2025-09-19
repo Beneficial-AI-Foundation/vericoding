@@ -22,9 +22,9 @@ vc-preamble: |-
 vc-helpers: |-
 
 vc-spec: |-
-  fn count(v: i32, a: &[i32], n: usize) -> (r: i32)
-      requires n <= a.len()
-      ensures n <= a.len() ==> has_count(v as int, a@.map_values(|x: i32| x as int), n as nat) == r as int
+  fn count(v: i8, a: &Vec<i8>, n: u8) -> (r: i8)
+      requires n as nat <= a@.len()
+      ensures n as nat <= a@.len() ==> has_count(v as int, a@.map_values(|x: i8| x as int), n as nat) == r as int
 
 vc-code: |-
   {
@@ -35,4 +35,3 @@ vc-code: |-
 vc-postamble: |-
   }
   fn main() {}
-

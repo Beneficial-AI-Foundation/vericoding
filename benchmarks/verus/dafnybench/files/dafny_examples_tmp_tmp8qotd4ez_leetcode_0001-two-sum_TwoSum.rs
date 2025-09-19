@@ -12,12 +12,12 @@ spec fn in_map(nums: Seq<int>, m: Map<int, int>, t: int) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn two_sum(nums: &[i32], target: i32) -> (r: (i32, i32))
+fn two_sum(nums: &[i8], target: i8) -> (r: (i8, i8))
     ensures 
-        0 <= r.0 ==> 0 <= r.0 < r.1 < nums.len() && 
-                     nums.view()[r.0 as int] + nums.view()[r.1 as int] == target &&
-                     forall|i: int, j: int| 0 <= i < j < r.1 ==> nums.view()[i] + nums.view()[j] != target,
-        r.0 == -1 <==> forall|i: int, j: int| 0 <= i < j < nums.len() ==> nums.view()[i] + nums.view()[j] != target,
+        0 <= r.0 ==> 0 <= r.0 < r.1 < nums@.len() && 
+                     nums@[r.0 as int] + nums@[r.1 as int] == target as int &&
+                     forall|i: int, j: int| 0 <= i < j < r.1 as int ==> nums@[i] + nums@[j] != target as int,
+        r.0 == -1 <==> forall|i: int, j: int| 0 <= i < j < nums@.len() ==> nums@[i] + nums@[j] != target as int,
 // </vc-spec>
 // <vc-code>
 {

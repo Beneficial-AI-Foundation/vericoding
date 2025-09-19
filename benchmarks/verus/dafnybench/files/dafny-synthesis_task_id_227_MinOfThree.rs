@@ -8,9 +8,9 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn min_of_three(a: i32, b: i32, c: i32) -> (min: i32)
+fn min_of_three(a: i8, b: i8, c: i8) -> (min: i8)
     ensures
-        min <= a && min <= b && min <= c,
+        min as int <= a as int && min as int <= b as int && min as int <= c as int,
         (min == a) || (min == b) || (min == c),
 // </vc-spec>
 // <vc-code>

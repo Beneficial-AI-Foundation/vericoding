@@ -15,8 +15,8 @@ spec fn power(a: int, n: nat) -> int
     if n == 0 { 1 } else { a * power(a, (n - 1) as nat) }
 }
 
-fn compute_power(a: u64, n: u64) -> (s: u64)
-    requires n >= 0 && a >= 0
+fn compute_power(a: i8, n: u8) -> (s: i8)
+    requires n as nat >= 0 && a as int >= 0
     ensures s as int == power(a as int, n as nat)
 // </vc-spec>
 // <vc-code>

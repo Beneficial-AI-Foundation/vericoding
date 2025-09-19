@@ -11,10 +11,10 @@ spec fn even(n: nat) -> bool { n % 2 == 0 }
 // </vc-helpers>
 
 // <vc-spec>
-fn partitionOddEven(a: &mut Vec<nat>)
+fn partitionOddEven(a: &mut Vec<u8>)
     ensures 
-        a@.to_multiset() == old(a)@.to_multiset(),
-        !(exists|i: int, j: int| 0 <= i < j < a@.len() && even(a@[i]) && odd(a@[j])),
+        a@.map_values(|x: u8| x as nat).to_multiset() == old(a)@.map_values(|x: u8| x as nat).to_multiset(),
+        !(exists|i: int, j: int| 0 <= i < j < a@.len() && even(a@[i] as nat) && odd(a@[j] as nat)),
 // </vc-spec>
 // <vc-code>
 {

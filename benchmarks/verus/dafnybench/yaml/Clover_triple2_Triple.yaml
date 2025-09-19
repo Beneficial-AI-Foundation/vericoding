@@ -8,8 +8,8 @@ vc-preamble: |-
 vc-helpers: |-
 
 vc-spec: |-
-  fn triple(x: int) -> (r: int)
-    ensures r == 3 * x
+  fn triple(x: i8) -> (r: i8)
+    ensures r as int == 3 * (x as int)
 
 vc-code: |-
   {
@@ -20,4 +20,3 @@ vc-code: |-
 vc-postamble: |-
   }
   fn main() {}
-

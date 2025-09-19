@@ -28,11 +28,11 @@ spec fn sum_up(nums: Seq<int>) -> int
 // </vc-helpers>
 
 // <vc-spec>
-fn find_pivot_index(nums: &Vec<i32>) -> (index: i32)
+fn find_pivot_index(nums: &Vec<i8>) -> (index: i8)
     requires nums.len() > 0
     ensures 
-        index == -1 ==> forall |k: nat| #[trigger] sum(nums@.map_values(|v: i32| v as int).subrange(0, k as int)) != #[trigger] sum(nums@.map_values(|v: i32| v as int).subrange((k + 1) as int, nums@.len() as int)),
-        0 <= index < nums.len() ==> sum(nums@.map_values(|v: i32| v as int).subrange(0, index as int)) == sum(nums@.map_values(|v: i32| v as int).subrange((index + 1) as int, nums@.len() as int))
+        index == -1 ==> forall |k: nat| k < nums.len() ==> sum(nums@.subrange(0, k as int).map_values(|v: i8| v as int)) != sum(nums@.subrange((k + 1) as int, nums@.len() as int).map_values(|v: i8| v as int)),
+        0 <= index < nums.len() ==> sum(nums@.subrange(0, index as int).map_values(|v: i8| v as int)) == sum(nums@.subrange((index + 1) as int, nums@.len() as int).map_values(|v: i8| v as int))
 // </vc-spec>
 // <vc-code>
 {

@@ -8,7 +8,7 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn swap_simultaneous(x_param: i32, y_param: i32) -> (ret: (i32, i32))
+fn swap_simultaneous(x_param: i8, y_param: i8) -> (ret: (i8, i8))
     ensures 
         ret.0 == y_param,
         ret.1 == x_param,

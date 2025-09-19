@@ -8,7 +8,7 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn findMax(a: &[i32], n: usize) -> (r: usize)
+fn findMax(a: &[i8], n: usize) -> (r: usize)
     requires
         a.len() > 0,
         0 < n <= a.len(),

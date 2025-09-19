@@ -25,6 +25,11 @@ spec fn sorted(a: Seq<i32>) -> bool {
 
 // <vc-spec>
 fn selection_sort(a: &mut [i32])
+    requires
+        old(a).len() > 0,
+    ensures
+        a@.to_multiset() == old(a)@.to_multiset(),
+        sorted(a@),
 // </vc-spec>
 // <vc-code>
 {

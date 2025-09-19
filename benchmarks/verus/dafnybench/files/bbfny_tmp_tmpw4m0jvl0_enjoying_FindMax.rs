@@ -35,12 +35,12 @@ spec fn sorted(a: &[int]) -> bool
 // </vc-helpers>
 
 // <vc-spec>
-fn find_max(a: &[int]) -> (i: usize)
+fn find_max(a: &[i8]) -> (i: usize)
     requires 
         a.len() >= 1
     ensures 
         0 <= i < a.len(),
-        forall|k: int| 0 <= k < a.len() ==> a[k] <= a[i as int]
+        forall|k: int| 0 <= k < a@.len() ==> a@[k] <= a@[i as int]
 // </vc-spec>
 // <vc-code>
 {

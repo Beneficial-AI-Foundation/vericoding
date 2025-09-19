@@ -8,12 +8,12 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn pairwise_addition(a: &[i32]) -> (result: Vec<i32>)
+fn pairwise_addition(a: &[i8]) -> (result: Vec<i8>)
     requires
-        a.len() % 2 == 0,
+        a@.len() % 2 == 0,
     ensures
-        result.len() == a.len() / 2,
-        forall|i: int| 0 <= i < result.len() ==> result[i as int] == a[2*i] + a[2*i + 1],
+        result@.len() == a@.len() / 2,
+        forall|i: int| 0 <= i < result@.len() ==> result@[i] == a@[2*i] + a@[2*i + 1],
 // </vc-spec>
 // <vc-code>
 {

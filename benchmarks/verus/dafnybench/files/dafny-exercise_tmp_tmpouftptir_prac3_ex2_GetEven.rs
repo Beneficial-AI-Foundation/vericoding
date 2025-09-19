@@ -8,14 +8,14 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn get_even(s: &mut Vec<nat>)
+fn get_even(s: &mut Vec<u8>)
     ensures 
-        s.len() == old(s).len(),
-        forall|i: int| 0 <= i < s.len() ==> {
-            if old(s)[i] % 2 == 1 {
-                s[i] == old(s)[i] + 1
+        s@.len() == old(s)@.len(),
+        forall|i: int| 0 <= i < s@.len() ==> {
+            if old(s)@[i] as nat % 2 == 1 {
+                s@[i] as nat == old(s)@[i] as nat + 1
             } else {
-                s[i] == old(s)[i]
+                s@[i] as nat == old(s)@[i] as nat
             }
         }
 // </vc-spec>

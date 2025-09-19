@@ -29,7 +29,7 @@ spec fn is_permutation2(a: Seq<int>, b: Seq<int>) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn find_min_index(a: &[int], s: usize, e: usize) -> (min_i: usize)
+fn find_min_index(a: &[i8], s: usize, e: usize) -> (min_i: usize)
     requires
         a.len() > 0,
         s < a.len(),
@@ -38,7 +38,7 @@ fn find_min_index(a: &[int], s: usize, e: usize) -> (min_i: usize)
     ensures
         min_i >= s,
         min_i < e,
-        forall|k: int| s <= k < e ==> a[min_i as int] <= a[k],
+        forall|k: int| s <= k < e ==> a@[min_i as int] <= a@[k],
 // </vc-spec>
 // <vc-code>
 {

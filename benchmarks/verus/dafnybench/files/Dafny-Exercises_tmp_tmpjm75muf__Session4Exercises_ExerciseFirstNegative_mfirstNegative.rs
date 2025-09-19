@@ -12,10 +12,10 @@ spec fn positive(s: Seq<int>) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn mfirstNegative(v: &[int]) -> (result: (bool, usize))
+fn mfirstNegative(v: &[i8]) -> (result: (bool, usize))
     ensures 
-        (result.0 <==> exists|k: int| 0 <= k < v.len() && v[k] < 0) &&
-        (result.0 ==> (result.1 < v.len() && v[result.1 as int] < 0 && positive(v@.subrange(0, result.1 as int))))
+        (result.0 <==> exists|k: int| 0 <= k < v@.len() && v@[k] < 0) &&
+        (result.0 ==> (result.1 < v@.len() && v@[result.1 as int] < 0 && positive(v@.map(|i, x: i8| x as int).subrange(0, result.1 as int))))
 // </vc-spec>
 // <vc-code>
 {

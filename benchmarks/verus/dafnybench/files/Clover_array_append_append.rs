@@ -8,8 +8,8 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn append(a: &Vec<i32>, b: i32) -> (c: Vec<i32>)
-    ensures c@ == a@ + seq![b]
+fn append(a: &Vec<i8>, b: i8) -> (c: Vec<i8>)
+    ensures c@.map(|i: int, x: i8| x as int) == a@.map(|i: int, x: i8| x as int) + seq![b as int]
 // </vc-spec>
 // <vc-code>
 {

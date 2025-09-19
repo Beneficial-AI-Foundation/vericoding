@@ -20,7 +20,7 @@ spec fn suma_aux(V: &[i32], n: int) -> int
 
 // <vc-spec>
 fn suma_componentes(V: &[i32]) -> (suma: i32)
-    ensures suma == suma_aux(V, 0)
+    ensures suma as int == suma_aux(V, 0)
 // </vc-spec>
 // <vc-code>
 {

@@ -8,10 +8,10 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn min(x: int, y: int) -> (z: int)
+fn min(x: i8, y: i8) -> (z: i8)
     ensures
-        x <= y ==> z == x,
-        x > y ==> z == y,
+        x as int <= y as int ==> z as int == x as int,
+        x as int > y as int ==> z as int == y as int,
 // </vc-spec>
 // <vc-code>
 {

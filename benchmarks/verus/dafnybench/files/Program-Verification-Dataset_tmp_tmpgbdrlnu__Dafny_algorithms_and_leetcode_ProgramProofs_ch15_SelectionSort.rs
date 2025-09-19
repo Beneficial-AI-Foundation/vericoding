@@ -20,10 +20,10 @@ spec fn swap_frame(a_old: &Vec<int>, a_new: &Vec<int>, lo: int, hi: int) -> bool
 // </vc-helpers>
 
 // <vc-spec>
-fn selection_sort(a: &mut Vec<int>)
+fn selection_sort(a: &mut Vec<i8>)
     ensures
-        forall|i: int, j: int| 0 <= i < j < a.len() ==> a[i] <= a[j],
-        a@.to_multiset() == old(a)@.to_multiset(),
+        forall|i: int, j: int| 0 <= i < j < a.len() ==> a[i] as int <= a[j] as int,
+        a@.map_values(|x: i8| x as int).to_multiset() == old(a)@.map_values(|x: i8| x as int).to_multiset(),
 // </vc-spec>
 // <vc-code>
 {

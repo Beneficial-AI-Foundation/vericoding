@@ -8,12 +8,12 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn smallest_list_length(s: Seq<Seq<int>>) -> (v: int)
+fn smallest_list_length(s: Vec<Vec<i8>>) -> (v: i8)
     requires
-        s.len() > 0,
+        s@.len() > 0,
     ensures
-        forall|i: int| 0 <= i < s.len() ==> v <= s[i].len(),
-        exists|i: int| 0 <= i < s.len() && v == #[trigger] s[i].len(),
+        forall|i: int| 0 <= i < s@.len() ==> v as int <= s@[i].len(),
+        exists|i: int| 0 <= i < s@.len() && v as int == #[trigger] s@[i].len(),
 // </vc-spec>
 // <vc-code>
 {

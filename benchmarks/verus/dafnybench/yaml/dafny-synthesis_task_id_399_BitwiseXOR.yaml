@@ -8,12 +8,12 @@ vc-preamble: |-
 vc-helpers: |-
 
 vc-spec: |-
-  fn bitwise_xor(a: Seq<u32>, b: Seq<u32>) -> (result: Seq<u32>)
+  fn bitwise_xor(a: Vec<u32>, b: Vec<u32>) -> (result: Vec<u32>)
       requires
-          a.len() == b.len(),
+          a@.len() == b@.len(),
       ensures
-          result.len() == a.len(),
-          forall|i: int| 0 <= i < result.len() ==> result[i] == a[i] ^ b[i],
+          result@.len() == a@.len(),
+          forall|i: int| 0 <= i < result@.len() ==> result@[i] == a@[i] ^ b@[i],
 
 vc-code: |-
   {
@@ -24,4 +24,3 @@ vc-code: |-
 vc-postamble: |-
   }
   fn main() {}
-

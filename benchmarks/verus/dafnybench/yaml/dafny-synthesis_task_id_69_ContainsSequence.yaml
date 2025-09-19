@@ -8,8 +8,8 @@ vc-preamble: |-
 vc-helpers: |-
 
 vc-spec: |-
-  fn contains_sequence(list: Seq<Seq<int>>, sub: Seq<int>) -> (result: bool)
-      ensures result <==> exists|i: int| 0 <= i < list.len() && sub == list[i]
+  fn contains_sequence(list: Vec<Vec<i8>>, sub: Vec<i8>) -> (result: bool)
+      ensures result <==> exists|i: int| 0 <= i < list@.len() && sub@ == list@[i]@
 
 vc-code: |-
   {
@@ -20,4 +20,3 @@ vc-code: |-
 vc-postamble: |-
   }
   fn main() {}
-

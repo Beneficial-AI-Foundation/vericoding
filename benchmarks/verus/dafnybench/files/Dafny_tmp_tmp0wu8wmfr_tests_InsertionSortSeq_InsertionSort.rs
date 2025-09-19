@@ -12,10 +12,10 @@ spec fn is_sorted(s: Seq<int>) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn insertion_sort(s: Seq<int>) -> (r: Seq<int>)
+fn insertion_sort(s: Vec<i8>) -> (r: Vec<i8>)
     ensures
-        s.to_multiset() == r.to_multiset(),
-        is_sorted(r),
+        s@.map(|i, x: i8| x as int).to_multiset() == r@.map(|i, x: i8| x as int).to_multiset(),
+        is_sorted(r@.map(|i, x: i8| x as int)),
 // </vc-spec>
 // <vc-code>
 {

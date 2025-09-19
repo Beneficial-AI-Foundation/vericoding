@@ -80,8 +80,8 @@ vc-preamble: |-
 vc-helpers: |-
 
 vc-spec: |-
-  fn vector_Sum(v: Seq<int>) -> (x: i32)
-      ensures x == sum(v)
+  fn vector_Sum(v: Vec<i8>) -> (x: i8)
+      ensures x as int == sum(v@.map(|i: int, x: i8| x as int))
 
 vc-code: |-
   {
@@ -92,4 +92,3 @@ vc-code: |-
 vc-postamble: |-
   }
   fn main() {}
-

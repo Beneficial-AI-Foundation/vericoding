@@ -52,9 +52,9 @@ impl PrimeMap {
 // </vc-helpers>
 
 // <vc-spec>
-fn test_primeness(n: nat) -> (result: bool) 
-      requires n >= 0,
-      ensures result <==> prime(n),
+fn test_primeness(n: u8) -> (result: bool) 
+      requires n as nat >= 0,
+      ensures result <==> prime(n as nat),
 // </vc-spec>
 // <vc-code>
 {

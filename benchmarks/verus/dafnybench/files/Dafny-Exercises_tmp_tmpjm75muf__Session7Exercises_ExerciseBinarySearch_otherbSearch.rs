@@ -25,11 +25,11 @@ fn binary_search(v: &Vec<i32>, elem: i32) -> (p: i32)
 fn other_b_search(v: &Vec<i32>, elem: i32) -> (res: (bool, usize))
     requires sorted(v@)
     ensures 
-        0 <= res.1 <= v.len(),
+        0 <= res.1 <= v@.len(),
         res.0 == v@.contains(elem),
-        res.0 ==> res.1 < v.len() && v[res.1 as int] == elem,
-        !res.0 ==> forall|u: int| 0 <= u < res.1 ==> v[u] < elem,
-        !res.0 ==> forall|w: int| res.1 <= w < v.len() ==> v[w] > elem
+        res.0 ==> res.1 < v@.len() && v[res.1 as int] == elem,
+        !res.0 ==> forall|u: int| 0 <= u < res.1 as int ==> v[u] < elem,
+        !res.0 ==> forall|w: int| res.1 as int <= w < v@.len() ==> v[w] > elem
 // </vc-spec>
 // <vc-code>
 {

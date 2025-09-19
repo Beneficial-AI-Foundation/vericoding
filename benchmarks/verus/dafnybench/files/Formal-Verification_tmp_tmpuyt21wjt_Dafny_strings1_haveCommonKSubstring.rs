@@ -51,10 +51,10 @@ spec fn max_common_substring_predicate(str1: Seq<char>, str2: Seq<char>, len: na
 // </vc-helpers>
 
 // <vc-spec>
-fn have_common_k_substring(k: nat, str1: Seq<char>, str2: Seq<char>) -> (found: bool)
+fn have_common_k_substring(k: u8, str1: Vec<char>, str2: Vec<char>) -> (found: bool)
     ensures 
-        (str1.len() < k || str2.len() < k) ==> !found,
-        have_common_k_substring_predicate(k, str1, str2) == found,
+        (str1@.len() < k as nat || str2@.len() < k as nat) ==> !found,
+        have_common_k_substring_predicate(k as nat, str1@, str2@) == found,
 // </vc-spec>
 // <vc-code>
 {

@@ -26,9 +26,9 @@ spec fn gcd_prime(x: int, y: int) -> int
 // </vc-helpers>
 
 // <vc-spec>
-fn gcd_i(m: int, n: int) -> (d: int)
-    requires m > 0 && n > 0
-    ensures d == gcd(m, n)
+fn gcd_i(m: i8, n: i8) -> (d: i8)
+    requires m as int > 0 && n as int > 0
+    ensures d as int == gcd(m as int, n as int)
 // </vc-spec>
 // <vc-code>
 {

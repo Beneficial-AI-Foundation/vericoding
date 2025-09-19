@@ -1,0 +1,34 @@
+vc-description: |-
+  // RUN: %verus "%s"
+
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+  
+  spec fn sum(a: Seq<int>, s: int, t: int) -> int
+      recommends 0 <= s <= t <= a.len()
+      decreases t - s when 0 <= s <= t <= a.len()
+  {
+      if s == t { 0 } else { sum(a, s, t-1) + a[t-1] }
+  }
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn max_seg_sum(a: &Vec<i8>) -> (result: (usize, usize))
+      ensures ({
+          let (k, m) = result;
+          &&& k <= m <= a.len()
+          &&& forall |p: int, q: int| 0 <= p <= q <= a.len() ==> #[trigger] sum(a@.map(|i, v| v as int), p, q) <= sum(a@.map(|i, v| v as int), k as int, m as int)
+      })
+
+vc-code: |-
+  {
+      assume(false);
+      unreached()
+  }
+
+vc-postamble: |-
+  }
+  fn main() {}

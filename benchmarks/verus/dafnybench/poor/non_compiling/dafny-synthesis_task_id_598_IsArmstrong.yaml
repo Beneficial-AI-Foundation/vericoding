@@ -1,0 +1,23 @@
+vc-description: |-
+
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn is_armstrong(n: i8) -> (result: bool)
+      requires 100 <= n as int < 1000
+      ensures result == (n as int == ((n as int / 100) * (n as int / 100) * (n as int / 100) + ((n as int / 10) % 10) * ((n as int / 10) % 10) * ((n as int / 10) % 10) + (n as int % 10) * (n as int % 10) * (n as int % 10)))
+
+vc-code: |-
+  {
+      assume(false);
+      unreached()
+  }
+
+vc-postamble: |-
+  }
+  fn main() {}

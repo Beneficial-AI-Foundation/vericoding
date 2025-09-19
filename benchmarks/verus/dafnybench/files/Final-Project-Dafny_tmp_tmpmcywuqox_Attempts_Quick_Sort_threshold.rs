@@ -12,12 +12,12 @@ spec fn quick_sorted(seq: Seq<int>) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn threshold(thres: int, seq: Seq<int>) -> (ret: (Seq<int>, Seq<int>))
+fn threshold(thres: i8, seq: Vec<i8>) -> (ret: (Vec<i8>, Vec<i8>))
     ensures 
-        (forall|x: int| ret.0.contains(x) ==> x <= thres) &&
-        (forall|x: int| ret.1.contains(x) ==> x >= thres) &&
-        ret.0.len() + ret.1.len() == seq.len() &&
-        ret.0.to_multiset().add(ret.1.to_multiset()) == seq.to_multiset()
+        (forall|x: i8| ret.0@.contains(x) ==> x as int <= thres as int) &&
+        (forall|x: i8| ret.1@.contains(x) ==> x as int >= thres as int) &&
+        ret.0@.len() + ret.1@.len() == seq@.len() &&
+        ret.0@.to_multiset().add(ret.1@.to_multiset()) == seq@.to_multiset()
 // </vc-spec>
 // <vc-code>
 {

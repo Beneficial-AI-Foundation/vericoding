@@ -8,7 +8,7 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn longest_prefix(a: &[i32], b: &[i32]) -> (i: usize)
+fn longest_prefix(a: &[i8], b: &[i8]) -> (i: usize)
     ensures 
         i <= a.len() && i <= b.len(),
         a@.subrange(0, i as int) == b@.subrange(0, i as int),

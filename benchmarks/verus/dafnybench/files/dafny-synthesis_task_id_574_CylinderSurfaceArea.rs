@@ -8,9 +8,9 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn cylinder_surface_area(radius: u64, height: u64) -> (area: u64)
+fn cylinder_surface_area(radius: u8, height: u8) -> (area: u8)
     requires radius > 0 && height > 0
-    ensures area == 2 * radius * (radius + height)
+    ensures area as nat == 2 * radius as nat * (radius as nat + height as nat)
 // </vc-spec>
 // <vc-code>
 {

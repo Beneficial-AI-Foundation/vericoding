@@ -39,21 +39,21 @@ vc-preamble: |-
 vc-helpers: |-
 
 vc-spec: |-
-  fn search_2_pow_recursive(a: &[i32], i: usize, n: usize, x: i32) -> (k: usize)
+  fn search_2_pow_recursive(a: &[i8], i: u8, n: u8, x: i8) -> (k: u8)
       requires
-          i + n <= a.len(),
+          i as int + n as int <= a@.len(),
           ({(forall|p: int, q: int|
-              0 <= p < q && i as int <= p && q < (i + n) as int ==> 
-              a[p] <= a[q])}),
-          is_2_pow((n + 1) as int),
+              0 <= p < q && i as int <= p && q < (i as int + n as int) ==> 
+              a@[p] <= a@[q])}),
+          is_2_pow((n as int + 1) as int),
       ensures
-          i <= k <= i + n,
+          i as int <= k as int <= i as int + n as int,
           ({(forall|r: int|
               0 <= r && i as int <= r < k as int ==> 
-              a[r] < x)}),
+              a@[r] < x as int)}),
           ({(forall|r: int|
-              0 <= r && k as int <= r < (i + n) as int ==> 
-              a[r] >= x)}),
+              0 <= r && k as int <= r < (i as int + n as int) ==> 
+              a@[r] >= x as int)}),
       decreases n
 
 vc-code: |-
@@ -65,4 +65,3 @@ vc-code: |-
 vc-postamble: |-
   }
   fn main() {}
-

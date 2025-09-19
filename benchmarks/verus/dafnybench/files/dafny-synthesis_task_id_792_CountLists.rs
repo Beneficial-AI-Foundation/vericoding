@@ -8,10 +8,10 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn count_lists(lists: &Vec<Vec<int>>) -> (count: usize)
+fn count_lists(lists: &Vec<Vec<i8>>) -> (count: usize)
     ensures 
         count >= 0,
-        count == lists.len(),
+        count == lists@.len(),
 // </vc-spec>
 // <vc-code>
 {

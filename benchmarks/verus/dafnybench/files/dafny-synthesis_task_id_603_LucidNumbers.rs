@@ -8,13 +8,13 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn lucid_numbers(n: i32) -> (lucid: Vec<i32>)
+fn lucid_numbers(n: i8) -> (lucid: Vec<i8>)
     requires 
         n >= 0,
     ensures 
-        forall|i: int| 0 <= i < lucid.len() ==> lucid[i] % 3 == 0,
-        forall|i: int| 0 <= i < lucid.len() ==> lucid[i] <= n,
-        forall|i: int, j: int| 0 <= i < j < lucid.len() ==> lucid[i] < lucid[j],
+        forall|i: int| 0 <= i < lucid@.len() ==> lucid@[i] as int % 3 == 0,
+        forall|i: int| 0 <= i < lucid@.len() ==> lucid@[i] as int <= n as int,
+        forall|i: int, j: int| 0 <= i < j < lucid@.len() ==> (lucid@[i] as int) < (lucid@[j] as int),
 // </vc-spec>
 // <vc-code>
 {

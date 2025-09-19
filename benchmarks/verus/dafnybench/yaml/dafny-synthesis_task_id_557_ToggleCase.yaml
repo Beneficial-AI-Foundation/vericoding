@@ -34,10 +34,10 @@ vc-helpers: |-
 vc-spec: |-
   fn toggle_case(s: Vec<char>) -> (v: Vec<char>)
       ensures
-          v.len() == s.len(),
-          forall|i: int| 0 <= i < s.len() ==> {
-              let s_char = #[trigger] s[i];
-              let v_char = v[i];
+          v@.len() == s@.len(),
+          forall|i: int| 0 <= i < s@.len() ==> {
+              let s_char = #[trigger] s@[i];
+              let v_char = v@[i];
               if is_lower_case(s_char) {
                   is_lower_upper_pair(s_char, v_char)
               } else if is_upper_case(s_char) {
@@ -56,4 +56,3 @@ vc-code: |-
 vc-postamble: |-
   }
   fn main() {}
-

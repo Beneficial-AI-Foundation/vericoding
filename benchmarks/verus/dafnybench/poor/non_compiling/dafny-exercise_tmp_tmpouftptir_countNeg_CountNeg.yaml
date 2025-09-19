@@ -1,0 +1,32 @@
+vc-description: |-
+
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+  
+  spec fn verify_neg(a: &[int], idx: int) -> nat
+      decreases idx
+  {
+      if idx <= 0 {
+          0nat
+      } else {
+          verify_neg(a, idx - 1) + (if a[idx - 1] < 0 { 1nat } else { 0nat })
+      }
+  }
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn count_neg(a: &[i8]) -> (cnt: usize)
+      ensures cnt == verify_neg(a@.map(|_idx, v: i8| v as int).as_slice(), a@.len() as int)
+
+vc-code: |-
+  {
+      assume(false);
+      unreached()
+  }
+
+vc-postamble: |-
+  }
+  fn main() {}

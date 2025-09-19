@@ -14,8 +14,8 @@ spec fn power(x: int, n: nat) -> int
 // </vc-helpers>
 
 // <vc-spec>
-fn power_iter(x: i64, n: u64) -> (p: i64)
-    ensures p == power(x as int, n as nat)
+fn power_iter(x: i8, n: u8) -> (p: i8)
+    ensures p as int == power(x as int, n as nat)
 // </vc-spec>
 // <vc-code>
 {

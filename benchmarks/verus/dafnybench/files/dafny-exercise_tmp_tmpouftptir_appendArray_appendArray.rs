@@ -8,7 +8,7 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn append_array(a: &[i32], b: &[i32]) -> (c: Vec<i32>)
+fn append_array(a: &[i8], b: &[i8]) -> (c: Vec<i8>)
     ensures 
         c.len() == a.len() + b.len(),
         forall|i: int| 0 <= i < a.len() ==> a[i] == c[i],

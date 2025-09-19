@@ -17,12 +17,12 @@ spec fn sorted_a(a: &[int], i: int) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn look_for_min(a: &[int], i: usize) -> (m: usize)
+fn look_for_min(a: &[i8], i: usize) -> (m: usize)
     requires 
         0 <= i < a.len(),
     ensures
         i <= m < a.len(),
-        forall|k: int| #![trigger a[k]] i <= k < a.len() ==> a[k] >= a[m as int],
+        forall|k: int| #![trigger a@[k]] i <= k < a@.len() ==> a@[k] >= a@[m as int],
 // </vc-spec>
 // <vc-code>
 {

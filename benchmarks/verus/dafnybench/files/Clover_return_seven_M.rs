@@ -8,8 +8,8 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn M(x: int) -> (seven: int)
-  ensures seven == 7
+fn M(x: i8) -> (seven: i8)
+  ensures seven as int == 7
 // </vc-spec>
 // <vc-code>
 {

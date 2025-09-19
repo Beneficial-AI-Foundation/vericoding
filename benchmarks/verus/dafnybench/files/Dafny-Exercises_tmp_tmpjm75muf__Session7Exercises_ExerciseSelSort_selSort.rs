@@ -14,13 +14,13 @@ spec fn sorted_seg(a: Seq<int>, i: int, j: int) -> bool
 // </vc-helpers>
 
 // <vc-spec>
-fn sel_sort(a: &mut Vec<int>, c: usize, f: usize)
+fn sel_sort(a: &mut Vec<i8>, c: usize, f: usize)
     requires 
         c <= f <= old(a).len(),
     ensures 
-        sorted_seg(a@, c as int, f as int),
+        sorted_seg(a@.map(|i: int, x: i8| x as int), c as int, f as int),
         a.len() == old(a).len(),
-        a@.subrange(c as int, f as int).to_multiset() == old(a)@.subrange(c as int, f as int).to_multiset(),
+        a@.subrange(c as int, f as int).map(|i: int, x: i8| x as int).to_multiset() == old(a)@.subrange(c as int, f as int).map(|i: int, x: i8| x as int).to_multiset(),
         a@.subrange(0, c as int) == old(a)@.subrange(0, c as int),
         a@.subrange(f as int, a.len() as int) == old(a)@.subrange(f as int, old(a).len() as int),
 // </vc-spec>

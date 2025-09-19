@@ -56,10 +56,10 @@ spec fn haveNotCommonKSubstringPred(k: nat, str1: Seq<char>, str2: Seq<char>) ->
 // </vc-helpers>
 
 // <vc-spec>
-fn haveCommonKSubstring(k: nat, str1: Seq<char>, str2: Seq<char>) -> (found: bool)
+fn haveCommonKSubstring(k: u8, str1: Vec<char>, str2: Vec<char>) -> (found: bool)
     ensures
-        found <==> haveCommonKSubstringPred(k, str1, str2),
-        !found <==> haveNotCommonKSubstringPred(k, str1, str2),
+        found <==> haveCommonKSubstringPred(k as nat, str1@, str2@),
+        !found <==> haveNotCommonKSubstringPred(k as nat, str1@, str2@),
 // </vc-spec>
 // <vc-code>
 {

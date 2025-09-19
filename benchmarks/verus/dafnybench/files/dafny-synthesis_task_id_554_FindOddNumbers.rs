@@ -12,7 +12,7 @@ spec fn is_odd(n: int) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn find_odd_numbers(arr: &[i32]) -> (odd_list: Vec<i32>)
+fn find_odd_numbers(arr: &[i8]) -> (odd_list: Vec<i8>)
 
     ensures 
         forall|i: int| 0 <= i < odd_list.len() ==> is_odd(odd_list[i] as int) && arr@.contains(odd_list[i]),

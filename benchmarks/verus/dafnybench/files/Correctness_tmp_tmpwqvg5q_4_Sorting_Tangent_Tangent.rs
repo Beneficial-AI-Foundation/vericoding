@@ -21,15 +21,15 @@ fn binary_search(a: &[int], circle: int) -> (n: usize)
 // </vc-helpers>
 
 // <vc-spec>
-fn tangent(r: &[int], x: &[int]) -> (found: bool)
+fn tangent(r: &Vec<i8>, x: &Vec<i8>) -> (found: bool)
     requires
-        forall|i: int| 1 <= i < x.len() ==> x[i-1] < #[trigger] x[i],
-        forall|i: int, j: int| 0 <= i < j < x.len() ==> #[trigger] x[i] < #[trigger] x[j],
+        forall|i: int| 1 <= i < x@.len() ==> x@[i-1] < #[trigger] x@[i],
+        forall|i: int, j: int| 0 <= i < j < x@.len() ==> #[trigger] x@[i] < #[trigger] x@[j],
     ensures
         !found ==> forall|i: int, j: int| 
-            0 <= i < r.len() && 0 <= j < x.len() ==> #[trigger] r[i] != #[trigger] x[j],
+            0 <= i < r@.len() && 0 <= j < x@.len() ==> #[trigger] r@[i] != #[trigger] x@[j],
         found ==> exists|i: int, j: int|
-            0 <= i < r.len() && 0 <= j < x.len() && #[trigger] r[i] == #[trigger] x[j],
+            0 <= i < r@.len() && 0 <= j < x@.len() && #[trigger] r@[i] == #[trigger] x@[j],
 // </vc-spec>
 // <vc-code>
 {

@@ -8,7 +8,7 @@ vc-preamble: |-
 vc-helpers: |-
 
 vc-spec: |-
-  fn copy(src: &[i32], s_start: usize, dest: &[i32], d_start: usize, len: usize) -> (r: Vec<i32>)
+  fn copy(src: &[i8], s_start: usize, dest: &[i8], d_start: usize, len: usize) -> (r: Vec<i8>)
       requires 
           src.len() >= s_start + len,
           dest.len() >= d_start + len,
@@ -27,4 +27,3 @@ vc-code: |-
 vc-postamble: |-
   }
   fn main() {}
-

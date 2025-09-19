@@ -8,11 +8,11 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn join(a: &[i32], b: &[i32]) -> (c: Vec<i32>)
+fn join(a: &[i8], b: &[i8]) -> (c: Vec<i8>)
     ensures
-        a@ + b@ == c@,
-        (a@ + b@).to_multiset() == c@.to_multiset(),
-        a@.to_multiset().add(b@.to_multiset()) == c@.to_multiset(),
+        a@.map(|i: int, x: i8| x as int) + b@.map(|i: int, x: i8| x as int) == c@.map(|i: int, x: i8| x as int),
+        (a@.map(|i: int, x: i8| x as int) + b@.map(|i: int, x: i8| x as int)).to_multiset() == c@.map(|i: int, x: i8| x as int).to_multiset(),
+        a@.map(|i: int, x: i8| x as int).to_multiset().add(b@.map(|i: int, x: i8| x as int).to_multiset()) == c@.map(|i: int, x: i8| x as int).to_multiset(),
         a.len() + b.len() == c.len(),
 
         forall|i: int| 0 <= i < a.len() ==> c[i] == a[i],

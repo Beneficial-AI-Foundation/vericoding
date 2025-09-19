@@ -44,8 +44,8 @@ vc-preamble: |-
 vc-helpers: |-
 
 vc-spec: |-
-  fn is_substring(sub: Seq<char>, str: Seq<char>) -> (res: bool)
-      ensures res <==> is_substring_pred(sub, str)
+  fn is_substring(sub: Vec<char>, str: Vec<char>) -> (res: bool)
+      ensures res <==> is_substring_pred(sub@, str@)
 
 vc-code: |-
   {
@@ -56,4 +56,3 @@ vc-code: |-
 vc-postamble: |-
   }
   fn main() {}
-

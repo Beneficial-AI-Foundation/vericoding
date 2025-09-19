@@ -1,0 +1,25 @@
+vc-description: |-
+
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn find(a: &[i8], key: i8) -> (index: i8)
+      ensures
+          -1 <= index as int && index as int < a.len(),
+          index != -1 ==> a[index as int] == key && (forall|i: int| 0 <= i < index as int ==> a[i] != key),
+          index == -1 ==> (forall|i: int| 0 <= i < a.len() ==> a[i] != key),
+
+vc-code: |-
+  {
+      assume(false);
+      unreached()
+  }
+
+vc-postamble: |-
+  }
+  fn main() {}

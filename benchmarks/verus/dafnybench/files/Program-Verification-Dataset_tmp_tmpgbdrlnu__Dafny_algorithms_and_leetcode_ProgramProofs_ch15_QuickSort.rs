@@ -44,9 +44,9 @@ fn quick_sort_aux(a: &mut Vec<int>, lo: usize, hi: usize)
 // </vc-helpers>
 
 // <vc-spec>
-fn quick_sort(a: &mut Vec<int>)
+fn quick_sort(a: &mut Vec<i8>)
     ensures 
-        forall|i: int, j: int| 0 <= i < j < a.len() ==> a[i] <= a[j],
+        forall|i: int, j: int| 0 <= i < j < a.len() ==> a[i] as int <= a[j] as int,
         a@.to_multiset() =~= old(a)@.to_multiset(),
 // </vc-spec>
 // <vc-code>

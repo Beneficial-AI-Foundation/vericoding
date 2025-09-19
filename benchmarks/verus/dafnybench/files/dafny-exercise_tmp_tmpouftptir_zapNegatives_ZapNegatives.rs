@@ -8,12 +8,12 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn zap_negatives(a: &mut Vec<i32>)
+fn zap_negatives(a: &mut Vec<i8>)
     ensures 
-        a.len() == old(a).len(),
-        forall|i: int| 0 <= i < a.len() ==> 
-            if old(a)[i] < 0 { a[i] == 0 } 
-            else { a[i] == old(a)[i] }
+        a@.len() == old(a)@.len(),
+        forall|i: int| 0 <= i < a@.len() ==> 
+            if old(a)@[i] < 0 { a@[i] == 0 } 
+            else { a@[i] == old(a)@[i] }
 // </vc-spec>
 // <vc-code>
 {

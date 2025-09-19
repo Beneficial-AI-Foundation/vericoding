@@ -14,8 +14,8 @@ spec fn expt(b: int, n: nat) -> int
 // </vc-helpers>
 
 // <vc-spec>
-fn expt_method(b: i32, n: u32) -> (res: i32)
-    ensures res == expt(b as int, n as nat)
+fn expt_method(b: i8, n: u8) -> (res: i8)
+    ensures res as int == expt(b as int, n as nat)
 // </vc-spec>
 // <vc-code>
 {

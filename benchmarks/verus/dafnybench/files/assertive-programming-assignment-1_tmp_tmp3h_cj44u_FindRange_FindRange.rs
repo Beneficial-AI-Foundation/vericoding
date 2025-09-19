@@ -42,13 +42,13 @@ fn binary_search(q: Seq<int>, key: int, lower_bound: usize, upper_bound: usize, 
 // </vc-helpers>
 
 // <vc-spec>
-fn find_range(q: Seq<int>, key: int) -> (res: (usize, usize))
-    requires sorted(q)
+fn find_range(q: Vec<i8>, key: i8) -> (res: (usize, usize))
+    requires sorted(q@.map_values(|x: i8| x as int))
     ensures
         res.0 <= res.1 <= q.len(),
-        forall |i: int| 0 <= i < res.0 ==> q[i] < key,
-        forall |i: int| res.0 <= i < res.1 ==> q[i] == key,
-        forall |i: int| res.1 <= i < q.len() ==> q[i] > key
+        forall |i: int| 0 <= i < res.0 ==> (q@[i] as int) < (key as int),
+        forall |i: int| res.0 <= i < res.1 ==> (q@[i] as int) == (key as int),
+        forall |i: int| res.1 <= i < q.len() ==> (q@[i] as int) > (key as int)
 // </vc-spec>
 // <vc-code>
 {

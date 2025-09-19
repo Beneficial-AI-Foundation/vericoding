@@ -20,11 +20,11 @@ proof fn min_of_multiset(m: Multiset<int>) -> (min: int)
 // </vc-helpers>
 
 // <vc-spec>
-exec fn sort(m: Multiset<int>) -> (s: Vec<int>)
+exec fn sort(m: Multiset<int>) -> (s: Vec<i8>)
 
     ensures 
-        s@.to_multiset() == m,
-        forall|p: int, q: int| 0 <= p < q < s.len() ==> s[p] <= s[q],
+        s@.map_values(|x: i8| x as int).to_multiset() == m,
+        forall|p: int, q: int| 0 <= p < q < s.len() ==> s[p] as int <= s[q] as int,
 // </vc-spec>
 // <vc-code>
 {

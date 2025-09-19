@@ -12,8 +12,8 @@ spec fn is_even(n: int) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn is_product_even(a: &[int]) -> (result: bool)
-    ensures result <==> exists|i: int| 0 <= i < a.len() && is_even(a@[i])
+fn is_product_even(a: &Vec<i8>) -> (result: bool)
+    ensures result <==> exists|i: int| 0 <= i < a@.len() && is_even(a@[i] as int)
 // </vc-spec>
 // <vc-code>
 {

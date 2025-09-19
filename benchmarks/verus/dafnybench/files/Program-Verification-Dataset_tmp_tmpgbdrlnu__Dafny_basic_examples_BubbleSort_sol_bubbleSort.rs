@@ -25,7 +25,7 @@ fn bubbleSort(a: &mut Vec<i32>)
         old(a).len() > 0,
     ensures
         sorted(a),
-        old(a)@ == a@,
+        old(a)@ =~= a@,
 // </vc-spec>
 // <vc-code>
 {

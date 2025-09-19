@@ -24,20 +24,20 @@ spec fn range_satisfies_comparer_negation(q: Seq<int>, key: int, lower_bound: na
 // </vc-helpers>
 
 // <vc-spec>
-fn binary_search(q: Seq<int>, key: int, lower_bound: usize, upper_bound: usize, comparer: spec_fn(int, int) -> bool) -> (index: usize)
+fn binary_search(q: Vec<i8>, key: i8, lower_bound: usize, upper_bound: usize, comparer: spec_fn(int, int) -> bool) -> (index: usize)
     requires
-        sorted(q),
+        sorted(q@.map(|i, x| x as int)),
         0 <= lower_bound <= upper_bound <= q.len(),
-        range_satisfies_comparer_negation(q, key, lower_bound as nat, upper_bound as nat, comparer),
-        range_satisfies_comparer(q, key, upper_bound as nat, q.len() as nat, comparer),
+        range_satisfies_comparer_negation(q@.map(|i, x| x as int), key as int, lower_bound as nat, upper_bound as nat, comparer),
+        range_satisfies_comparer(q@.map(|i, x| x as int), key as int, upper_bound as nat, q.len() as nat, comparer),
 
         (forall|n1: int, n2: int| #[trigger] comparer(n1, n2) ==> comparer(n1, n2) == (n1 > n2)) ||
         (forall|n1: int, n2: int| #[trigger] comparer(n1, n2) ==> comparer(n1, n2) == (n1 >= n2)),
 
     ensures
         lower_bound <= index <= upper_bound,
-        range_satisfies_comparer_negation(q, key, 0nat, index as nat, comparer),
-        range_satisfies_comparer(q, key, index as nat, q.len() as nat, comparer),
+        range_satisfies_comparer_negation(q@.map(|i, x| x as int), key as int, 0nat, index as nat, comparer),
+        range_satisfies_comparer(q@.map(|i, x| x as int), key as int, index as nat, q.len() as nat, comparer),
 // </vc-spec>
 // <vc-code>
 {

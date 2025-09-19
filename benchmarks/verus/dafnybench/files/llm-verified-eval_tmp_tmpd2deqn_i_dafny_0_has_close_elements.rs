@@ -12,14 +12,14 @@ spec fn abs(x: int) -> int {
 // </vc-helpers>
 
 // <vc-spec>
-fn has_close_elements(numbers: Seq<int>, threshold: int) -> (result: bool)
+fn has_close_elements(numbers: Vec<i8>, threshold: i8) -> (result: bool)
     ensures
         result <==> exists|i: int, j: int|
-            0 <= i < numbers.len() &&
-            0 <= j < numbers.len() &&
+            0 <= i < numbers@.len() &&
+            0 <= j < numbers@.len() &&
             i != j &&
-            abs(numbers[i] - numbers[j]) < threshold,
-        result ==> numbers.len() > 1,
+            abs(numbers@[i] as int - numbers@[j] as int) < threshold as int,
+        result ==> numbers@.len() > 1,
 // </vc-spec>
 // <vc-code>
 {

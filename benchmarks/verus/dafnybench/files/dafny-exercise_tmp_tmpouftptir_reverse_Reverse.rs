@@ -10,10 +10,10 @@ verus! {
 // <vc-spec>
 fn reverse(a: &Vec<char>) -> (b: Vec<char>)
     requires 
-        a.len() > 0,
+        a@.len() > 0,
     ensures 
-        b.len() == a.len(),
-        forall|i: int| 0 <= i < a.len() ==> b[i] == a[a.len() - i - 1],
+        b@.len() == a@.len(),
+        forall|i: int| 0 <= i < a@.len() ==> b@[i] == a@[a@.len() - i - 1],
 // </vc-spec>
 // <vc-code>
 {

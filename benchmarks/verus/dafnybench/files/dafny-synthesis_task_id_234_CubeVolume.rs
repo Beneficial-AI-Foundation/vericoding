@@ -8,9 +8,9 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn cube_volume(size: i32) -> (volume: i32)
+fn cube_volume(size: i8) -> (volume: i8)
     requires size > 0
-    ensures volume == size * size * size
+    ensures volume as int == size as int * size as int * size as int
 // </vc-spec>
 // <vc-code>
 {

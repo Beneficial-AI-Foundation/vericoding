@@ -8,7 +8,7 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn concat(a: &[i32], b: &[i32]) -> (c: Vec<i32>)
+fn concat(a: &[i8], b: &[i8]) -> (c: Vec<i8>)
     ensures 
         c.len() == b.len() + a.len(),
         forall|k: int| 0 <= k < a.len() ==> c[k] == a[k],

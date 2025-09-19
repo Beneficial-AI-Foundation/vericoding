@@ -8,11 +8,11 @@ vc-preamble: |-
 vc-helpers: |-
 
 vc-spec: |-
-  fn counting_bits(n: usize) -> (result: Vec<usize>)
-      requires 0 <= n <= 100000
-      ensures result.len() == n + 1 &&
-              (forall|i: int| 1 <= i < (n + 1) as int ==> 
-                  #[trigger] result[i as int] == result[(i / 2) as int] + (i % 2) as usize)
+  fn counting_bits(n: u8) -> (result: Vec<u8>)
+      requires n <= 100
+      ensures result@.len() == (n as int) + 1 &&
+              (forall|i: int| 1 <= i < (n as int) + 1 ==> 
+                  #[trigger] (result@[i] as int) == (result@[i / 2] as int) + (i % 2))
 
 vc-code: |-
   {
@@ -23,4 +23,3 @@ vc-code: |-
 vc-postamble: |-
   }
   fn main() {}
-

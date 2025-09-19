@@ -1,0 +1,30 @@
+vc-description: |-
+
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+  
+  spec fn sorted(a: &[int]) -> bool {
+      forall|j: int, k: int| 0 <= j < k < a.len() ==> a[j] <= a[k]
+  }
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn binary_search(a: &[i8], value: i8) -> (index: i32)
+      requires 
+          sorted(a@.map(|_, x| x as int).as_slice()),
+      ensures 
+          0 <= index ==> index < a@.len() && a@[index as int] == value as int,
+          index < 0 ==> forall|k: int| 0 <= k < a@.len() ==> a@[k] != value as int,
+
+vc-code: |-
+  {
+      assume(false);
+      unreached()
+  }
+
+vc-postamble: |-
+  }
+  fn main() {}

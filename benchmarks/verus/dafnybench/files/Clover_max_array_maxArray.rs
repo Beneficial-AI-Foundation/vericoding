@@ -8,11 +8,11 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn maxArray(a: &[int]) -> (m: int)
+fn maxArray(a: &Vec<i8>) -> (m: i8)
     requires a.len() >= 1,
     ensures 
-        forall|k: int| 0 <= k < a.len() ==> m >= a@[k] &&
-        exists|k: int| 0 <= k < a.len() && m == a@[k],
+        forall|k: int| 0 <= k < a.len() ==> m as int >= a@[k] as int &&
+        exists|k: int| 0 <= k < a.len() && m as int == a@[k] as int,
 // </vc-spec>
 // <vc-code>
 {

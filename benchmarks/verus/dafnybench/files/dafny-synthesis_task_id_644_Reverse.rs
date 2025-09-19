@@ -8,8 +8,8 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn reverse(a: &mut Vec<i32>)
-    ensures forall|k: int| 0 <= k < old(a).len() ==> a[k] == old(a)[old(a).len() as int - 1 - k]
+fn reverse(a: &mut Vec<i8>)
+    ensures forall|k: int| 0 <= k < old(a)@.len() ==> a@[k] == old(a)@[old(a)@.len() - 1 - k]
 // </vc-spec>
 // <vc-code>
 {

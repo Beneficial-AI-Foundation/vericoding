@@ -8,10 +8,10 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn invert_array(a: &mut Vec<i32>)
+fn invert_array(a: &mut Vec<i8>)
     ensures
-        a.len() == old(a).len(),
-        forall|i: int| 0 <= i < a.len() ==> a[i] == old(a)[a.len() - 1 - i],
+        a@.len() == old(a)@.len(),
+        forall|i: int| 0 <= i < a@.len() ==> a@[i] == old(a)@[a@.len() - 1 - i],
 // </vc-spec>
 // <vc-code>
 {

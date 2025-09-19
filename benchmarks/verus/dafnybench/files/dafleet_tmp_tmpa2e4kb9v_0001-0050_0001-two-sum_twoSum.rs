@@ -17,12 +17,15 @@ spec fn seq_i32_to_int(s: Seq<i32>) -> Seq<int> {
 // </vc-preamble>
 
 // <vc-helpers>
+spec fn vec_i8_to_seq_int(nums: Vec<i8>) -> Seq<int> {
+    nums@.map(|idx, v| v as int)
+}
 // </vc-helpers>
 
 // <vc-spec>
-fn twoSum(nums: Seq<i32>, target: i32) -> (pair: (usize, usize))
-    requires exists|i: int, j: int| correct_pair((i, j), seq_i32_to_int(nums), target as int)
-    ensures correct_pair((pair.0 as int, pair.1 as int), seq_i32_to_int(nums), target as int)
+fn twoSum(nums: Vec<i8>, target: i8) -> (pair: (usize, usize))
+    requires exists|i: int, j: int| #[trigger] correct_pair((i, j), vec_i8_to_seq_int(nums), target as int)
+    ensures correct_pair((pair.0 as int, pair.1 as int), vec_i8_to_seq_int(nums), target as int)
 // </vc-spec>
 // <vc-code>
 {

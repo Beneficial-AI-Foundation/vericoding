@@ -12,7 +12,7 @@ spec fn is_even(n: int) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn remove_odd_numbers(arr: &[i32]) -> (even_list: Vec<i32>)
+fn remove_odd_numbers(arr: &[i8]) -> (even_list: Vec<i8>)
     ensures
 
         forall|i: int| 0 <= i < even_list.len() ==> is_even(even_list[i] as int) && arr@.contains(even_list[i]),

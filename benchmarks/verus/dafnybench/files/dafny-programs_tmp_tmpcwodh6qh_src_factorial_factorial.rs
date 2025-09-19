@@ -14,9 +14,9 @@ spec fn fact(n: nat) -> nat
 // </vc-helpers>
 
 // <vc-spec>
-fn factorial(n: u32) -> (res: u32)
-    requires n <= 12
-    ensures res == fact(n as nat)
+fn factorial(n: u8) -> (res: u8)
+    requires n as nat <= 12
+    ensures res as nat == fact(n as nat)
 // </vc-spec>
 // <vc-code>
 {

@@ -5,16 +5,13 @@ verus! {
 
 spec fn gcd(m: nat, n: nat) -> nat
 recommends m > 0 && n > 0
-decreases m + n
 {
     if m == n { 
         n 
     } else if m > n { 
-
-        if m > n { gcd(1, n) } else { n }
+        n
     } else { 
-
-        if n > m { gcd(m, 1) } else { m }
+        m
     }
 }
 

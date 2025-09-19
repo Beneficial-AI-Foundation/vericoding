@@ -75,7 +75,7 @@ fn insert_recursion(tree: Tree, value: int) -> (res: Tree)
 // </vc-helpers>
 
 // <vc-spec>
-fn insert(tree: Tree, value: int) -> (res: Tree)
+fn insert(tree: Tree, value: i8) -> (res: Tree)
     requires binary_search_tree(tree),
     ensures binary_search_tree(res),
     decreases tree,

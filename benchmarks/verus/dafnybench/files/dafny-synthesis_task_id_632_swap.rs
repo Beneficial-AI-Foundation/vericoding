@@ -23,7 +23,7 @@ proof fn count_bound(arr: Seq<int>, value: int)
 // </vc-helpers>
 
 // <vc-spec>
-fn swap(arr: &mut Vec<int>, i: usize, j: usize)
+fn swap(arr: &mut Vec<i8>, i: usize, j: usize)
     requires 
         old(arr).len() > 0,
         i < old(arr).len(),

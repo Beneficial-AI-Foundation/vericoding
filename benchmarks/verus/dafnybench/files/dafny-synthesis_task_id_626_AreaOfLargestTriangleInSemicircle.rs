@@ -8,9 +8,9 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn area_of_largest_triangle_in_semicircle(radius: i32) -> (area: i32)
+fn area_of_largest_triangle_in_semicircle(radius: i8) -> (area: i8)
     requires radius > 0
-    ensures area == radius * radius
+    ensures area as int == radius as int * radius as int
 // </vc-spec>
 // <vc-code>
 {

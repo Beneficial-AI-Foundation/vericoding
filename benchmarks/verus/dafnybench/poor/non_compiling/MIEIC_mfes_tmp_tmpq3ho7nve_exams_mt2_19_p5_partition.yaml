@@ -1,0 +1,39 @@
+vc-description: |-
+  // example
+  
+  // Partitions a nonempty array 'a', by reordering the elements in the array,
+  
+  // so that elements smaller than a chosen pivot are placed to the left of the
+  
+  // pivot, and values greater or equal than the pivot are placed to the right of 
+  
+  // the pivot. Returns the pivot position.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+  
+  type T = int;
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn partition(a: &mut Vec<i8>) -> (pivotPos: usize)
+      requires 
+          old(a).len() > 0,
+      ensures 
+          pivotPos < a.len(),
+          forall|i: int| 0 <= i < pivotPos ==> a[i] as int < a[pivotPos as int] as int,
+          forall|i: int| pivotPos < i < a.len() ==> a[i] as int >= a[pivotPos as int] as int,
+          a@.to_multiset() == old(a)@.to_multiset(),
+
+vc-code: |-
+  {
+      assume(false);
+      unreached()
+  }
+
+vc-postamble: |-
+  }
+  fn main() {}
