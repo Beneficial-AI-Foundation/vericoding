@@ -416,29 +416,29 @@ def process_spec_file(
             verification = verify_file(config, str(output_path))
             last_verification = verification
             
-            # Check for cheats - but only report if final success would be claimed
-            has_cheats = has_final_failure_cheats(current_code, config.language)
-            
-            if verification.success and has_cheats:
-                # Verification succeeded but cheats found - treat as verification failure for iteration purposes
+            # Check for cheats in final code - combine with verification output
+            if has_final_failure_cheats(current_code, config.language):
                 cheats = check_for_cheats(current_code, config.language)
                 cheat_descriptions = [desc for _, desc in cheats]
-                logger.info(f"    ⚠️ Code contains verification bypasses: {'; '.join(cheat_descriptions)}")
+                logger.info(f"    ⚠️ Final code contains verification bypasses: {'; '.join(cheat_descriptions)}")
                 
+                # Combine cheat message with original verification result
                 cheat_message = f"VERIFICATION BYPASSES DETECTED: {'; '.join(cheat_descriptions)}. Code contains verification bypasses and cannot be considered successfully verified."
-                combined_error = f"{cheat_message}\n\nNote: Verification succeeded but verification bypasses prevent success."
-                logger.info("    ✗ Marking as failed due to verification bypasses (verification succeeded)")
+                
+                if verification.success:
+                    # Verification succeeded but cheats found
+                    combined_error = f"{cheat_message}\n\nNote: Verification succeeded but verification bypasses prevent final success."
+                    logger.info("    ✗ Marking as failed due to verification bypasses (verification succeeded)")
+                else:
+                    # Verification failed AND cheats found - combine both messages
+                    original_error = verification.error or "Verification failed"
+                    combined_error = f"{cheat_message}\n\nOriginal verification output:\n{original_error}"
+                    logger.info("    ✗ Failed due to both verification errors AND verification bypasses")
                 
                 verification = replace(verification,
                     success=False,
                     error=combined_error
                 )
-            elif not verification.success and has_cheats:
-                # Both verification failed AND cheats found - just mention both in logs but keep original verification error
-                cheats = check_for_cheats(current_code, config.language)
-                cheat_descriptions = [desc for _, desc in cheats]
-                logger.info(f"    ⚠️ Code also contains verification bypasses: {'; '.join(cheat_descriptions)} (in addition to verification failure)")
-                # Keep original verification.error for normal iteration feedback
             
             # Log verification attempt to wandb
             if wandb.run:
@@ -464,7 +464,7 @@ def process_spec_file(
                 logger.info("    ✓ Verification successful!")
                 
                 # Unit test mode: Test with postamble if enabled and code is clean (no cheats)
-                if config.unit_test and config.language == 'lean' and not has_cheats:
+                if config.unit_test and config.language == 'lean' and not has_final_failure_cheats(current_code, config.language):
                     logger.info("    🧪 Clean solution found - entering unit test mode with postamble!")
                     unit_test_result = run_unit_test_with_postamble(
                         config, current_code, file_path, relative_path, 
