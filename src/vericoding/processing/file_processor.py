@@ -96,6 +96,7 @@ class ProcessingResult:
     generate_prompt: str | None = None
     fix_prompts: list[str] | None = None
     llm_responses: list[LLMResponse] | None = None
+    unit_test_passed: bool | None = None  # None if unit test not run, True/False if run
 
 
 @dataclass 
@@ -365,7 +366,8 @@ def process_spec_file(
                 original_compilation_failed=original_compilation_failed,
                 generate_prompt=generate_prompt,
                 fix_prompts=[],
-                llm_responses=llm_responses if wandb.run and llm_responses else None
+                llm_responses=llm_responses if wandb.run and llm_responses else None,
+                unit_test_passed=None  # JSON parsing failed, unit test not run
             )
         
         # Save initial generated code
@@ -462,24 +464,8 @@ def process_spec_file(
 
             if verification.success:
                 logger.info("    ✓ Verification successful!")
-                
-                # Unit test mode: Test with postamble if enabled and code is clean
-                if config.unit_test and config.language == 'lean':
-                    logger.info("    🧪 Clean solution found - entering unit test mode with postamble!")
-                    unit_test_result = run_unit_test_with_postamble(
-                        config, current_code, file_path, relative_path, 
-                        output_path, base_file_name, iteration
-                    )
-                    success = unit_test_result.success
-                    if not success:
-                        verification = unit_test_result.verification
-                        # In unit test mode, failure here is final - no more attempts
-                        break
-                else:
-                    success = True
-                
-                if success:
-                    break
+                success = True
+                break
             else:
                 # Save full error log to debug directory
                 if config.debug_mode and verification.error:
@@ -600,6 +586,20 @@ def process_spec_file(
                     logger.info(f"    ✗ Failed to generate fix: {str(e)}")
                     break
 
+        # Run unit test if enabled and we have a successful solution
+        unit_test_passed = None
+        if success and config.unit_test and config.language == 'lean':
+            logger.info("    🧪 Running unit test with postamble (does not affect success status)...")
+            unit_test_result = run_unit_test_with_postamble(
+                config, current_code, file_path, relative_path, 
+                output_path, base_file_name, iteration
+            )
+            unit_test_passed = unit_test_result.success
+            if unit_test_passed:
+                logger.info("    ✓ Unit test passed!")
+            else:
+                logger.info("    ✗ Unit test failed (but main verification still counts as success)")
+
         if success:
             logger.info(f"  ✓ Successfully generated and verified: {output_path.name}")
             
@@ -621,7 +621,8 @@ def process_spec_file(
                 original_compilation_failed=original_compilation_failed,
                 generate_prompt=generate_prompt,
                 fix_prompts=all_fix_prompts if all_fix_prompts else None,
-                llm_responses=llm_responses if wandb.run and llm_responses else None
+                llm_responses=llm_responses if wandb.run and llm_responses else None,
+                unit_test_passed=unit_test_passed
             )
         else:
             error_msg = (
@@ -663,7 +664,8 @@ def process_spec_file(
                 original_compilation_failed=original_compilation_failed,
                 generate_prompt=generate_prompt,
                 fix_prompts=all_fix_prompts if all_fix_prompts else None,
-                llm_responses=llm_responses if wandb.run and llm_responses else None
+                llm_responses=llm_responses if wandb.run and llm_responses else None,
+                unit_test_passed=unit_test_passed
             )
 
     except Exception as e:
@@ -688,7 +690,8 @@ def process_spec_file(
             original_compilation_failed="original_compilation_failed" in locals() and original_compilation_failed,
             generate_prompt=generate_prompt if "generate_prompt" in locals() else None,
             fix_prompts=all_fix_prompts if "all_fix_prompts" in locals() and all_fix_prompts else None,
-            llm_responses=llm_responses if wandb.run and "llm_responses" in locals() and llm_responses else None
+            llm_responses=llm_responses if wandb.run and "llm_responses" in locals() and llm_responses else None,
+            unit_test_passed=None  # Exception occurred, unit test not run
         )
     finally:
         # Log failure table to W&B and save LLM responses to debug folder
@@ -770,6 +773,7 @@ def process_files_parallel(
                     original_compilation_failed=False,  # Unknown since we didn't get that far
                     generate_prompt=None,
                     fix_prompts=None,
+                    unit_test_passed=None,  # Exception occurred, unit test not run
                 )
                 results.append(error_result)
                 logger.info(

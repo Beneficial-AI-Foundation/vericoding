@@ -486,7 +486,7 @@ def log_experiment_results_to_wandb(
     results_table = wandb.Table(columns=[
         "file_name", "subfolder", "success", "output_file", "error_message",
         "has_bypass", "file_path", "original_spec", "final_output", "debug_files",
-        "generate_prompt", "fix_prompts"
+        "generate_prompt", "fix_prompts", "unit_test_passed"
     ])
     
     for result in results:
@@ -551,7 +551,8 @@ def log_experiment_results_to_wandb(
             final_output,
             debug_files_text or "No debug files",
             result.generate_prompt if hasattr(result, 'generate_prompt') and result.generate_prompt else "",
-            "\\n\\n---\\n\\n".join(result.fix_prompts) if hasattr(result, 'fix_prompts') and result.fix_prompts else ""
+            "\\n\\n---\\n\\n".join(result.fix_prompts) if hasattr(result, 'fix_prompts') and result.fix_prompts else "",
+            result.unit_test_passed if hasattr(result, 'unit_test_passed') else None
         )
     
     wandb.log({"detailed_results": results_table})
