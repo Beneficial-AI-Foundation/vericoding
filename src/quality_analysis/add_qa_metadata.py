@@ -260,9 +260,20 @@ class QAMetadataGenerator:
         }
 
         try:
+            # Only analyze the yaml directory, not poor/non_compiling directories
+            yaml_dir = benchmark_path / "yaml"
+            if yaml_dir.exists():
+                analysis_path = yaml_dir
+                self.log(f"Analyzing yaml directory: {yaml_dir}")
+            else:
+                analysis_path = benchmark_path
+                self.log(
+                    f"No yaml directory found, analyzing entire benchmark: {benchmark_path}"
+                )
+
             # 1. Check spec functions for default values
             spec_output = self.run_qa_script(
-                "verus/check_spec_functions.py", benchmark_path
+                "verus/check_spec_functions.py", analysis_path
             )
             spec_files = self.extract_file_lists_from_qa_output(spec_output)
             metadata["specs_with_default_values"] = spec_files.get(
@@ -271,7 +282,7 @@ class QAMetadataGenerator:
 
             # 2. Check executable functions for implementations
             func_output = self.run_qa_script(
-                "verus/check_verus_functions.py", benchmark_path
+                "verus/check_verus_functions.py", analysis_path
             )
             func_files = self.extract_file_lists_from_qa_output(func_output)
             metadata["execs_with_bodies"] = func_files.get(
@@ -280,7 +291,7 @@ class QAMetadataGenerator:
 
             # 3. Check for ghost types in executable functions
             type_output = self.run_qa_script(
-                "verus/check_verus_types.py", benchmark_path
+                "verus/check_verus_types.py", analysis_path
             )
             type_files = self.extract_file_lists_from_qa_output(type_output)
             metadata["execs_with_ghost_types"] = type_files.get("files_with_issues", [])
@@ -334,9 +345,13 @@ class QAMetadataGenerator:
         }
 
         try:
+            # Only analyze the yaml directory, not poor/non_compiling directories
+            yaml_dir = benchmark_path / "yaml"
+            analysis_path = yaml_dir if yaml_dir.exists() else benchmark_path
+
             # 1. Check functions/predicates for default values
             func_output = self.run_qa_script(
-                "dafny/check_dafny_functions.py", benchmark_path
+                "dafny/check_dafny_functions.py", analysis_path
             )
             func_files = self.extract_file_lists_from_qa_output(func_output)
             metadata["functions_with_default_values"] = func_files.get(
@@ -345,7 +360,7 @@ class QAMetadataGenerator:
 
             # 2. Check methods for implementations
             method_output = self.run_qa_script(
-                "dafny/check_dafny_methods.py", benchmark_path
+                "dafny/check_dafny_methods.py", analysis_path
             )
             method_files = self.extract_file_lists_from_qa_output(method_output)
             metadata["methods_with_bodies"] = method_files.get(
@@ -388,9 +403,13 @@ class QAMetadataGenerator:
         metadata = {"definitions_with_sorry": [], "score": 100}
 
         try:
+            # Only analyze the yaml directory, not poor/non_compiling directories
+            yaml_dir = benchmark_path / "yaml"
+            analysis_path = yaml_dir if yaml_dir.exists() else benchmark_path
+
             # Check definitions for sorry usage
             lean_output = self.run_qa_script(
-                "lean/check_lean_definitions.py", benchmark_path
+                "lean/check_lean_definitions.py", analysis_path
             )
             lean_files = self.extract_file_lists_from_qa_output(lean_output)
             metadata["definitions_with_sorry"] = lean_files.get("files_with_sorry", [])
