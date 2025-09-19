@@ -8,14 +8,14 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn logspace(start: i32, stop: i32, endpoint: bool, base: i32, num: usize) -> (result: Vec<i32>)
+fn logspace(start: i8, stop: i8, endpoint: bool, base: i8, num: usize) -> (result: Vec<i8>)
     requires 
-        base > 0,
-        base != 1,
+        base as int > 0,
+        base as int != 1,
         num > 0,
     ensures
         result.len() == num,
-        forall|i: int| 0 <= i < num ==> result[i] > 0,
+        forall|i: int| 0 <= i < num ==> result@[i] as int > 0,
 // </vc-spec>
 // <vc-code>
 {

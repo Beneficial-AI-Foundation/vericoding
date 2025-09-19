@@ -20,7 +20,7 @@ fn chebinterpolate(deg: usize, func: spec_fn(f64) -> f64) -> (coef: Vec<f64>)
            2. When the function is constant, all coefficients except the first are zero */
         is_constant_function(func) ==> (
             coef[0] == func(0.0) &&
-            forall|i: int| 1 <= i < coef@.len() ==> #[trigger] coef@[i] == 0.0
+            forall|i: int| 1 <= i < coef.len() ==> #[trigger] coef[i] == 0.0
         )
 // </vc-spec>
 // <vc-code>

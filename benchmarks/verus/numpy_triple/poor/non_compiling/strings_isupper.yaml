@@ -17,11 +17,13 @@ vc-preamble: |-
 vc-helpers: |-
 
 vc-spec: |-
-  #[verifier::uninterpreted]
-  spec fn is_alpha_char(c: char) -> bool;
+  spec fn is_alpha_char(c: char) -> bool
+      uninterp
+  ;
 
-  #[verifier::uninterpreted]
-  spec fn is_upper_char(c: char) -> bool;
+  spec fn is_upper_char(c: char) -> bool
+      uninterp
+  ;
 
   spec fn has_alpha_chars(s: Seq<char>) -> bool {
       exists|i: int| 0 <= i < s.len() && is_alpha_char(s[i])

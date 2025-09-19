@@ -59,12 +59,9 @@ fn ihfft(a: Vec<Complex>) -> (result: Vec<Complex>)
         /* Hermitian symmetry property: if input has Hermitian symmetry,
            then ihfft should produce a real-valued result */
         (forall|i: int, j: int| 
-            #![trigger a@[i], a@[j]]
-            0 <= i < a@.len() && 0 <= j < a@.len() && i + j + 1 == a@.len() ==> 
+            (0 <= i < a@.len() && 0 <= j < a@.len() && i + j + 1 == a@.len()) ==> 
                 a@[i] == a@[j].conj()) ==>
-        (forall|i: int| 
-            #![trigger result@[i]]
-            0 <= i < result@.len() ==> result@[i].is_real())
+        (forall|i: int| (0 <= i < result@.len()) ==> result@[i].is_real())
 // </vc-spec>
 // <vc-code>
 {

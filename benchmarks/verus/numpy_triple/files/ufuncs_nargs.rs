@@ -17,7 +17,6 @@ struct Ufunc {
 
 // <vc-spec>
 fn numpy_nargs(ufunc: Ufunc) -> (result: u8)
-    requires ufunc.nin + ufunc.nout <= 255
     ensures result as nat == ufunc.nin + ufunc.nout
 // </vc-spec>
 // <vc-code>

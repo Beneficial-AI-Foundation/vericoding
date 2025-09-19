@@ -37,15 +37,18 @@ vc-spec: |-
       ensures 
           result.len() == x.len(),
           forall|i: int| 0 <= i < x.len() ==> {
+              /* Core mathematical definition: tanh(x) = sinh(x) / cosh(x) */
+              /* Bounded property: |tanh(x)| < 1 for all finite x */
+              -1 < result[i] as int && result[i] as int < 1 &&
               /* Zero property: tanh(0) = 0 */
               (x[i] as int == 0 ==> result[i] as int == 0) &&
               /* Sign property: tanh(x) has the same sign as x */
               (x[i] as int > 0 ==> result[i] as int > 0) &&
               (x[i] as int < 0 ==> result[i] as int < 0) &&
               /* Asymptotic behavior: for positive x, 0 < tanh(x) < 1 */
-              (x[i] as int > 0 ==> (result[i] as int > 0 && result[i] as int < 1)) &&
+              (x[i] as int > 0 ==> result[i] as int > 0 && result[i] as int < 1) &&
               /* Asymptotic behavior: for negative x, -1 < tanh(x) < 0 */
-              (x[i] as int < 0 ==> (result[i] as int < 0 && result[i] as int > -1))
+              (x[i] as int < 0 ==> result[i] as int < 0 && result[i] as int > -1)
           },
 
 vc-code: |-
