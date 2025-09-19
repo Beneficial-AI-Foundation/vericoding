@@ -182,7 +182,11 @@ async def process_item(
     for attempt in range(max_retries + 1):
         try:
             translation_result = await translate_code_to_verus(
-                source_code, source_language, target_language, is_yaml, fix_types=fix_types
+                source_code,
+                source_language,
+                target_language,
+                is_yaml,
+                fix_types=fix_types,
             )
 
             translated_code = translation_result.output_content
@@ -259,13 +263,15 @@ async def process_item(
                     original_file_path = Path(item["source_path"])
                 else:
                     # Fallback to source_filename for other cases
-                    original_file_path = source_filename if hasattr(source_filename, 'exists') else Path(source_filename)
-                
+                    original_file_path = (
+                        source_filename
+                        if hasattr(source_filename, "exists")
+                        else Path(source_filename)
+                    )
+
                 with open(original_file_path, "w") as output_file:
                     output_file.write(translated_code)
-                logfire.info(
-                    f"Fixed file in-place: {original_file_path}"
-                )
+                logfire.info(f"Fixed file in-place: {original_file_path}")
                 output_file_path = original_file_path  # Update for logging/debug
             elif fix_to_folder:
                 # For fix-to-folder, create the same structure under the target folder organized by verification status
@@ -279,13 +285,19 @@ async def process_item(
                         # If we can't make it relative, use the filename
                         relative_path = original_file_path.name
                 else:
-                    relative_path = source_filename.name if hasattr(source_filename, 'name') else str(source_filename)
-                
+                    relative_path = (
+                        source_filename.name
+                        if hasattr(source_filename, "name")
+                        else str(source_filename)
+                    )
+
                 # Create the target path in the fix_to_folder within the benchmark directory, organized by verification status
-                fix_folder_path = Path(benchmark_path) / fix_to_folder / compilation_status
+                fix_folder_path = (
+                    Path(benchmark_path) / fix_to_folder / compilation_status
+                )
                 target_file_path = fix_folder_path / relative_path
                 target_file_path.parent.mkdir(parents=True, exist_ok=True)
-                
+
                 with open(target_file_path, "w") as output_file:
                     output_file.write(translated_code)
                 logfire.info(

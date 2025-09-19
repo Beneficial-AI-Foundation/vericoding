@@ -179,9 +179,11 @@ Debug Examples:
 
     # Special handling for --fix-in-place and --fix-to-folder
     if args.fix_in_place and args.fix_to_folder:
-        print("Error: Cannot use both --fix-in-place and --fix-to-folder at the same time")
+        print(
+            "Error: Cannot use both --fix-in-place and --fix-to-folder at the same time"
+        )
         sys.exit(1)
-    
+
     if args.fix_in_place or args.fix_to_folder:
         if not args.fix_types:
             option = "--fix-in-place" if args.fix_in_place else "--fix-to-folder"
@@ -226,7 +228,7 @@ Debug Examples:
             file_pattern = "*.dfy"
         elif args.source_language == "verus":
             file_pattern = "*.rs"
-    
+
     # For fix-in-place mode, force *.rs pattern if not already set
     if args.fix_in_place and args.file_pattern == "*.dfy":
         file_pattern = "*.rs"

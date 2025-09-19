@@ -183,7 +183,9 @@ async def translate_code_to_verus(
         # Load translation-specific config to get the correct max_iterations
         if fix_types:
             # Use the type fix configuration instead
-            translation_cfg = load_config(Path(__file__).parent.parent.parent / "config" / "verus-type-fix.yml")
+            translation_cfg = load_config(
+                Path(__file__).parent.parent.parent / "config" / "verus-type-fix.yml"
+            )
         else:
             translation_cfg = load_translation_config(
                 source_language.lower(), target_language.lower()
@@ -228,7 +230,9 @@ async def translate_code_to_verus(
     # Load translation-specific configuration for this context
     if fix_types:
         # Use the type fix configuration instead
-        translation_cfg = load_config(Path(__file__).parent.parent.parent / "config" / "verus-type-fix.yml")
+        translation_cfg = load_config(
+            Path(__file__).parent.parent.parent / "config" / "verus-type-fix.yml"
+        )
     else:
         translation_cfg = load_translation_config(
             source_language.lower(), target_language.lower()
