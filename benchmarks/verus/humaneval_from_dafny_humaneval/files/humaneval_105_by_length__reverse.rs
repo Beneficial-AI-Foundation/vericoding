@@ -21,10 +21,10 @@ spec fn number_to_name(n: int) -> &'static str
 // </vc-helpers>
 
 // <vc-spec>
-fn reverse(s: Seq<int>) -> (rev: Seq<int>)
+fn reverse(s: Vec<i8>) -> (rev: Vec<i8>)
     ensures 
         rev.len() == s.len(),
-        forall|k: int| 0 <= k < s.len() ==> rev[k] == s[s.len() - 1 - k]
+        forall|k: int| 0 <= k < s.len() ==> rev[k] as int == s@[s.len() - 1 - k] as int
 // </vc-spec>
 // <vc-code>
 {

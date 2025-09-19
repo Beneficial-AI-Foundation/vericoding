@@ -47,7 +47,7 @@ spec fn count_odd_digits(n: nat) -> nat
 // </vc-helpers>
 
 // <vc-spec>
-fn even_odd_count(num: i32) -> (result: (i32, i32))
+fn even_odd_count(num: i8) -> (result: (i8, i8))
     ensures 
         result.0 >= 0 && result.1 >= 0 &&
         result.0 + result.1 >= 1 &&
@@ -56,7 +56,7 @@ fn even_odd_count(num: i32) -> (result: (i32, i32))
             result.0 as nat == count_even_digits(abs_num) &&
             result.1 as nat == count_odd_digits(abs_num)
         }) &&
-        result.0 + result.1 == count_digits(abs_value(num as int)) as i32 &&
+        result.0 + result.1 == count_digits(abs_value(num as int)) as i8 &&
         (num == 0 ==> (result.0 == 1 && result.1 == 0)) &&
         (abs_value(num as int) == abs_value((-num) as int) ==> 
             (result.0 as nat == count_even_digits(abs_value((-num) as int)) && 

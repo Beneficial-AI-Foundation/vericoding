@@ -41,12 +41,12 @@ proof fn product_seq_append(s: Seq<int>, x: int)
 // </vc-helpers>
 
 // <vc-spec>
-fn sum_product(numbers: Seq<int>) -> (result: (i32, i32))
+fn sum_product(numbers: Vec<i8>) -> (result: (i8, i8))
     ensures ({
         let (sum, product) = result;
-        sum == sum_seq(numbers) &&
-        product == product_seq(numbers) &&
-        (numbers.len() == 0 ==> sum == 0 && product == 1)
+        sum as int == sum_seq(numbers@.map(|i, x| x as int)) &&
+        product as int == product_seq(numbers@.map(|i, x| x as int)) &&
+        (numbers@.len() == 0 ==> sum == 0 && product == 1)
     })
 // </vc-spec>
 // <vc-code>

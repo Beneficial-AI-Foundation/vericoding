@@ -38,7 +38,10 @@ spec fn binary_to_decimal(s: Seq<char>) -> nat
 // </vc-helpers>
 
 // <vc-spec>
-fn decimal_to_binary(n: nat) -> (s: Seq<char>)
+fn decimal_to_binary(n: u8) -> (s: Vec<char>)
+  ensures
+    is_binary_string(s@),
+    binary_to_decimal(s@) == n as nat,
 // </vc-spec>
 // <vc-code>
 {

@@ -39,7 +39,7 @@ spec fn swap_case(c: char) -> char {
 // </vc-helpers>
 
 // <vc-spec>
-fn encode(message: Seq<char>) -> (result: Seq<char>)
+fn encode(message: Vec<char>) -> (result: Vec<char>)
 // </vc-spec>
 // <vc-code>
 {

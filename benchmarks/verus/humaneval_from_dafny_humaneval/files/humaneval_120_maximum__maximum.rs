@@ -8,15 +8,15 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn maximum(s: Seq<int>, k: int) -> (result: Seq<int>)
+fn maximum(s: Vec<i8>, k: i8) -> (result: Vec<i8>)
   requires 
-      1 <= k <= s.len(),
-      1 <= s.len() <= 1000,
-      forall|x: int| s.contains(x) ==> -1000 <= x <= 1000,
+      1 <= k as int <= s@.len(),
+      1 <= s@.len() <= 1000,
+      forall|x: i8| s@.contains(x) ==> -1000 <= x as int <= 1000,
   ensures 
-      result.len() == k,
-      forall|i: int, j: int| 0 <= i < j < k ==> result[i] <= result[j],
-      forall|x: int| result.contains(x) ==> s.contains(x),
+      result@.len() == k as int,
+      forall|i: int, j: int| 0 <= i < j < k as int ==> result@[i] as int <= result@[j] as int,
+      forall|x: i8| result@.contains(x) ==> s@.contains(x),
 // </vc-spec>
 // <vc-code>
 {

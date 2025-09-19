@@ -23,8 +23,8 @@ spec fn valid_result(x: int, y: int, z: int, result: bool) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn any_int(x: int, y: int, z: int) -> (result: bool)
-    ensures valid_result(x, y, z, result)
+fn any_int(x: i8, y: i8, z: i8) -> (result: bool)
+    ensures valid_result(x as int, y as int, z as int, result)
 // </vc-spec>
 // <vc-code>
 {

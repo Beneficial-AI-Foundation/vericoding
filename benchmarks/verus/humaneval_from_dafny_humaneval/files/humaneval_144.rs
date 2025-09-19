@@ -71,16 +71,16 @@ spec fn string_to_int_helper(s: Seq<char>, acc: int) -> int
 // </vc-helpers>
 
 // <vc-spec>
-fn simplify(x: Seq<char>, n: Seq<char>) -> (result: bool)
+fn simplify(x: Vec<char>, n: Vec<char>) -> (result: bool)
     requires 
         x.len() > 0 && n.len() > 0,
-        exists|i: int| 0 <= i < x.len() && x[i] == '/',
-        exists|j: int| 0 <= j < n.len() && n[j] == '/',
-        forall|i: int| 0 <= i < x.len() ==> (x[i] == '/' || ('0' <= x[i] <= '9')),
-        forall|j: int| 0 <= j < n.len() ==> (n[j] == '/' || ('0' <= n[j] <= '9')),
-        valid_fraction(x),
-        valid_fraction(n),
-    ensures result <==> (get_numerator(x) * get_numerator(n)) % (get_denominator(x) * get_denominator(n)) == 0
+        exists|i: int| 0 <= i < x@.len() && x@[i] == '/',
+        exists|j: int| 0 <= j < n@.len() && n@[j] == '/',
+        forall|i: int| 0 <= i < x@.len() ==> (x@[i] == '/' || ('0' <= x@[i] <= '9')),
+        forall|j: int| 0 <= j < n@.len() ==> (n@[j] == '/' || ('0' <= n@[j] <= '9')),
+        valid_fraction(x@),
+        valid_fraction(n@),
+    ensures result <==> (get_numerator(x@) * get_numerator(n@)) % (get_denominator(x@) * get_denominator(n@)) == 0
 // </vc-spec>
 // <vc-code>
 {

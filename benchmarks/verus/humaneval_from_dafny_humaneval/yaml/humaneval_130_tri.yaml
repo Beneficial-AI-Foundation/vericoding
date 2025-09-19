@@ -25,10 +25,10 @@ vc-preamble: |-
 vc-helpers: |-
 
 vc-spec: |-
-  fn tribonacci(n: nat) -> (result: Vec<nat>)
+  fn tribonacci(n: u8) -> (result: Vec<u8>)
     ensures 
-      result.len() == n + 1 &&
-      (forall|i: int| 0 <= i <= n ==> result[i] == tri(i as nat))
+      result.len() == n as int + 1 &&
+      (forall|i: int| 0 <= i <= n as int ==> result[i] as nat == tri(i as nat))
 
 vc-code: |-
   {

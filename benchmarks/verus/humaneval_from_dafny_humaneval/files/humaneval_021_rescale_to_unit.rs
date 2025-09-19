@@ -17,14 +17,14 @@ spec fn affine_seq(s: Seq<int>, r: Seq<int>, shift: int, scale: int) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn rescale_to_unit(s: Seq<int>) -> (r: Seq<int>)
-    requires s.len() >= 2,
-             exists|i: int, j: int| (0 <= i < j < s.len()) && s[i] != s[j]
-    ensures r.len() == s.len(),
-            forall|i: int| 0 <= i < s.len() ==> 0 <= r[i] && r[i] <= 1,
-            exists|i: int| 0 <= i < s.len() && r[i] == 0,
-            exists|i: int| 0 <= i < s.len() && r[i] == 1,
-            exists|shift: int, scale: int| scale > 0 && affine_seq(s, r, shift, scale)
+fn rescale_to_unit(s: Vec<i8>) -> (r: Vec<i8>)
+    requires s@.len() >= 2,
+             exists|i: int, j: int| (0 <= i < j < s@.len()) && s@[i] != s@[j]
+    ensures r@.len() == s@.len(),
+            forall|i: int| 0 <= i < s@.len() ==> 0 <= r@[i] as int && r@[i] as int <= 1,
+            exists|i: int| 0 <= i < s@.len() && r@[i] as int == 0,
+            exists|i: int| 0 <= i < s@.len() && r@[i] as int == 1,
+            exists|shift: int, scale: int| #[trigger] affine_seq(s@.map(|i, x| x as int), r@.map(|i, x| x as int), shift, scale) && scale > 0
 // </vc-spec>
 // <vc-code>
 {

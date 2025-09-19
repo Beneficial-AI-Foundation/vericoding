@@ -23,9 +23,9 @@ spec fn is_optimal_pair(numbers: Seq<int>, pair: (int, int)) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn find_closest_elements(numbers: Seq<int>) -> (result: (int, int))
-    requires valid_input(numbers)
-    ensures is_optimal_pair(numbers, result)
+fn find_closest_elements(numbers: Vec<i8>) -> (result: (i8, i8))
+    requires valid_input(numbers@.map(|_index, x| x as int))
+    ensures is_optimal_pair(numbers@.map(|_index, x| x as int), (result.0 as int, result.1 as int))
 // </vc-spec>
 // <vc-code>
 {

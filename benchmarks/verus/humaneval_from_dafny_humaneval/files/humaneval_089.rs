@@ -8,7 +8,7 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn encrypt(s: Seq<char>) -> (result: Seq<char>)
+fn encrypt(s: Vec<char>) -> (result: Vec<char>)
 // </vc-spec>
 // <vc-code>
 {

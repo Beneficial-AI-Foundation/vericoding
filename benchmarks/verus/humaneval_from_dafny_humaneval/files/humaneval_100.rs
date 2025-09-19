@@ -19,9 +19,9 @@ spec fn valid_pile(pile: Seq<int>, n: int) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn make_a_pile(n: int) -> (pile: Vec<int>)
-    requires valid_input(n)
-    ensures valid_pile(pile@, n)
+fn make_a_pile(n: i8) -> (pile: Vec<i8>)
+    requires valid_input(n as int)
+    ensures valid_pile(pile@.map(|i: int, x: i8| x as int), n as int)
 // </vc-spec>
 // <vc-code>
 {

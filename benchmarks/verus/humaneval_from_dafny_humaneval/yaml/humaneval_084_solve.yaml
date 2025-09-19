@@ -17,8 +17,8 @@ vc-preamble: |-
 vc-helpers: |-
 
 vc-spec: |-
-  fn solve(n: nat) -> (r: nat)
-      ensures r == popcount(n)
+  fn solve(n: u8) -> (r: u8)
+      ensures r as nat == popcount(n as nat)
 
 vc-code: |-
   {

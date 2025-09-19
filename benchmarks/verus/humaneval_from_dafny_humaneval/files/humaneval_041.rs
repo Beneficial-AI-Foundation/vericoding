@@ -24,7 +24,7 @@ spec fn valid_result(n: int, result: int) -> bool
 // </vc-helpers>
 
 // <vc-spec>
-fn car_race_collision(n: i32) -> (result: i32)
+fn car_race_collision(n: i8) -> (result: i8)
     requires valid_input(n as int)
     ensures valid_result(n as int, result as int)
 // </vc-spec>

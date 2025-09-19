@@ -30,11 +30,11 @@ vc-preamble: |-
 vc-helpers: |-
 
 vc-spec: |-
-  fn get_odd_collatz_unsorted(n: nat) -> (odd_collatz: Vec<nat>)
-    requires n > 1,
+  fn get_odd_collatz_unsorted(n: u8) -> (odd_collatz: Vec<u8>)
+    requires n as nat > 1,
     ensures 
-      forall|i: int| 0 <= i < odd_collatz.len() ==> #[trigger] odd_collatz[i] % 2 == 1,
-      forall|i: int| 1 <= i < odd_collatz.len() ==> #[trigger] odd_collatz[i] == next_odd_collatz(odd_collatz[i - 1]),
+      forall|i: int| 0 <= i < odd_collatz@.len() ==> #[trigger] odd_collatz@[i] as nat % 2 == 1,
+      forall|i: int| 1 <= i < odd_collatz@.len() ==> #[trigger] odd_collatz@[i] as nat == next_odd_collatz(odd_collatz@[i - 1] as nat),
 
 vc-code: |-
   {

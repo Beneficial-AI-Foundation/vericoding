@@ -17,12 +17,15 @@ spec fn has_close_elements(numbers: Seq<int>, threshold: int) -> bool {
 // </vc-preamble>
 
 // <vc-helpers>
+spec fn seq_map_to_int(numbers: Seq<i8>) -> Seq<int> {
+    numbers.map(|x: i8| x as int)
+}
 // </vc-helpers>
 
 // <vc-spec>
-fn has_close_elements_impl(numbers: Seq<int>, threshold: int) -> (result: bool)
-    requires valid_input(numbers, threshold)
-    ensures result == has_close_elements(numbers, threshold)
+fn has_close_elements_impl(numbers: Vec<i8>, threshold: i8) -> (result: bool)
+    requires valid_input(seq_map_to_int(numbers@), threshold as int)
+    ensures result == has_close_elements(seq_map_to_int(numbers@), threshold as int)
 // </vc-spec>
 // <vc-code>
 {

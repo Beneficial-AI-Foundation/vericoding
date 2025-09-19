@@ -34,13 +34,13 @@ spec fn swap_case(c: char) -> char
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(s: Seq<char>) -> (result: Seq<char>)
-    ensures (if has_letter(s) {
-        result.len() == s.len() && 
-        (forall|i: int| 0 <= i < s.len() ==> result[i] == swap_case(s[i]))
+fn solve(s: Vec<char>) -> (result: Vec<char>)
+    ensures (if has_letter(s@) {
+        result@.len() == s@.len() && 
+        (forall|i: int| 0 <= i < s@.len() ==> result@[i] == swap_case(s@[i]))
     } else {
-        result == reverse_string(s)
-    }) && result.len() == s.len()
+        result@ == reverse_string(s@)
+    }) && result@.len() == s@.len()
 // </vc-spec>
 // <vc-code>
 {

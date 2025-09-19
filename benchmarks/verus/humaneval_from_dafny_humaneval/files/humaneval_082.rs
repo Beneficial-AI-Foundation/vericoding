@@ -19,8 +19,8 @@ proof fn is_prime(n: usize) -> (result: bool)
 // </vc-helpers>
 
 // <vc-spec>
-fn prime_length(s: Seq<char>) -> (result: bool)
-    ensures result <==> is_prime_number(s.len() as int)
+fn prime_length(s: Vec<char>) -> (result: bool)
+    ensures result <==> is_prime_number(s@.len() as int)
 // </vc-spec>
 // <vc-code>
 {

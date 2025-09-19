@@ -22,11 +22,11 @@ spec fn digits_sum(n: int) -> int {
 // </vc-helpers>
 
 // <vc-spec>
-fn order_by_points(s: Seq<int>) -> (sorted: Seq<int>)
+fn order_by_points(s: Vec<i8>) -> (sorted: Vec<i8>)
   ensures 
-      forall|i: int, j: int| 0 <= i < j < sorted.len() ==> digits_sum(sorted[i]) <= digits_sum(sorted[j]),
-      sorted.len() == s.len(),
-      s.to_multiset() == sorted.to_multiset()
+      forall|i: int, j: int| 0 <= i < j < sorted@.len() ==> digits_sum(sorted@[i] as int) <= digits_sum(sorted@[j] as int),
+      sorted@.len() == s@.len(),
+      s@.to_multiset() == sorted@.to_multiset()
 // </vc-spec>
 // <vc-code>
 {

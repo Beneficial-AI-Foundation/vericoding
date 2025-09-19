@@ -13,9 +13,9 @@ spec fn is_vowel(c: char) -> bool
 // </vc-helpers>
 
 // <vc-spec>
-fn vowel_count(s: &Seq<char>) -> (count: usize)
+fn vowel_count(s: &Vec<char>) -> (count: u8)
   ensures
-    count >= 0,
+    count as nat >= 0,
     /* TODO: Translate set comprehension for vowel counting */
 // </vc-spec>
 // <vc-code>

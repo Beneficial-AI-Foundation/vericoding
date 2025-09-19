@@ -20,9 +20,9 @@ spec fn max(a: int, b: int) -> int {
 // </vc-helpers>
 
 // <vc-spec>
-fn intersection(start1: int, end1: int, start2: int, end2: int) -> (result: String)
-    requires start1 <= end1 && start2 <= end2,
-    ensures (result@ =~= seq!['Y', 'E', 'S'] || result@ =~= seq!['N', 'O']) && (result@ =~= seq!['Y', 'E', 'S'] <==> (max(start1, start2) <= min(end1, end2) && is_prime((min(end1, end2) - max(start1, start2) + 1) as nat))),
+fn intersection(start1: i8, end1: i8, start2: i8, end2: i8) -> (result: String)
+    requires start1 as int <= end1 as int && start2 as int <= end2 as int,
+    ensures (result@ =~= seq!['Y', 'E', 'S'] || result@ =~= seq!['N', 'O']) && (result@ =~= seq!['Y', 'E', 'S'] <==> (max(start1 as int, start2 as int) <= min(end1 as int, end2 as int) && is_prime((min(end1 as int, end2 as int) - max(start1 as int, start2 as int) + 1) as nat))),
 // </vc-spec>
 // <vc-code>
 {

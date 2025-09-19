@@ -12,8 +12,8 @@ spec fn has_pair_sum_to_zero(l: Seq<int>) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn pairs_sum_to_zero(l: Seq<int>) -> (result: bool)
-    ensures result == has_pair_sum_to_zero(l)
+fn pairs_sum_to_zero(l: Vec<i8>) -> (result: bool)
+    ensures result == has_pair_sum_to_zero(l@.map(|i: int, x: i8| x as int))
 // </vc-spec>
 // <vc-code>
 {

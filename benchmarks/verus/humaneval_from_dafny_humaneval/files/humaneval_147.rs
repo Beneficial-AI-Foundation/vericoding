@@ -56,12 +56,12 @@ spec fn valid_input(n: int) -> bool
 // </vc-helpers>
 
 // <vc-spec>
-fn get_max_triples(n: int) -> (result: int)
+fn get_max_triples(n: i8) -> (result: i8)
   requires
-      valid_input(n),
+      valid_input(n as int),
   ensures
       result >= 0,
-      result == count_valid_triples(n),
+      result as int == count_valid_triples(n as int),
 // </vc-spec>
 // <vc-code>
 {

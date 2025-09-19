@@ -62,8 +62,9 @@ fn split_by_spaces(s: Seq<char>) -> (groups: Seq<Seq<char>>)
 // </vc-helpers>
 
 // <vc-spec>
-fn parse_nested_parens(paren_string: Seq<char>) -> (result: Seq<int>)
-    requires forall|i: int| 0 <= i < paren_string.len() ==> paren_string[i] == '(' || paren_string[i] == ')' || paren_string[i] == ' '
+fn parse_nested_parens(paren_string: Vec<char>) -> (result: Vec<i8>)
+    requires forall|i: int| 0 <= i < paren_string@.len() ==> paren_string@[i] == '(' || paren_string@[i] == ')' || paren_string@[i] == ' '
+    ensures forall|i: int| 0 <= i < result@.len() ==> result[i] as int >= 0
 // </vc-spec>
 // <vc-code>
 {

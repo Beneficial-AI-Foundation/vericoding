@@ -29,13 +29,13 @@ spec fn can_make_palindromic_with_changes(arr: Seq<int>, num_changes: int) -> bo
 // </vc-helpers>
 
 // <vc-spec>
-fn smallest_change(arr: Seq<int>) -> (changes: usize)
+fn smallest_change(arr: Vec<i8>) -> (changes: usize)
     ensures 
-        changes <= arr.len() / 2,
-        changes == count_mismatched_pairs(arr),
-        arr.len() <= 1 ==> changes == 0,
-        forall|c: int| 0 <= c < changes ==> !can_make_palindromic_with_changes(arr, c),
-        can_make_palindromic_with_changes(arr, changes as int)
+        changes <= arr@.len() / 2,
+        changes as int == count_mismatched_pairs(arr@.map(|i, x| x as int)),
+        arr@.len() <= 1 ==> changes == 0,
+        forall|c: int| #[trigger] can_make_palindromic_with_changes(arr@.map(|i, x| x as int), c) ==> (0 <= c < changes as int ==> !can_make_palindromic_with_changes(arr@.map(|i, x| x as int), c)),
+        can_make_palindromic_with_changes(arr@.map(|i, x| x as int), changes as int)
 // </vc-spec>
 // <vc-code>
 {

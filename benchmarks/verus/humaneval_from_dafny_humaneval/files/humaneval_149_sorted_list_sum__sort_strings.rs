@@ -32,10 +32,10 @@ spec fn comparison(a: Seq<char>, b: Seq<char>, i: int) -> bool
 // </vc-helpers>
 
 // <vc-spec>
-fn sort_strings(list: Seq<Seq<char>>) -> (sorted: Seq<Seq<char>>)
+fn sort_strings(list: Vec<Vec<char>>) -> (sorted: Vec<Vec<char>>)
     ensures
-        sorted.len() == list.len(),
-        sorted.to_multiset() == list.to_multiset(),
+        sorted@.len() == list@.len(),
+        sorted@.to_multiset() == list@.to_multiset(),
 // </vc-spec>
 // <vc-code>
 {
