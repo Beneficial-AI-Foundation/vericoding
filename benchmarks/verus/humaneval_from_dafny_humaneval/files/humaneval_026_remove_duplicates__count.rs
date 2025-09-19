@@ -18,9 +18,9 @@ spec fn count_rec(a: Seq<int>, x: int) -> int
 // </vc-helpers>
 
 // <vc-spec>
-fn count(a: Seq<int>, x: int) -> (cnt: int)
+fn count(a: Vec<i8>, x: i8) -> (cnt: i8)
     ensures 
-        cnt == count_rec(a, x)
+        cnt as int == count_rec(a@.map(|i: int, v: i8| v as int), x as int)
 // </vc-spec>
 // <vc-code>
 {

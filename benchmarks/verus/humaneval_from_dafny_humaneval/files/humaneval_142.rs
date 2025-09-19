@@ -32,11 +32,14 @@ spec fn sum_transformed(lst: Seq<int>) -> int
 // </vc-preamble>
 
 // <vc-helpers>
+spec fn seq_to_int(s: Seq<i8>) -> Seq<int> {
+    s.map(|i, x: i8| x as int)
+}
 // </vc-helpers>
 
 // <vc-spec>
-fn sum_squares(lst: Seq<int>) -> (result: int)
-    ensures result == sum_transformed(lst)
+fn sum_squares(lst: Vec<i8>) -> (result: i8)
+    ensures result as int == sum_transformed(seq_to_int(lst@))
 // </vc-spec>
 // <vc-code>
 {

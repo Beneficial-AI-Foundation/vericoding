@@ -31,9 +31,9 @@ spec fn correct_result(x: int, y: int, result: int) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn choose_num(x: int, y: int) -> (result: int)
-    requires valid_input(x, y)
-    ensures correct_result(x, y, result)
+fn choose_num(x: i8, y: i8) -> (result: i8)
+    requires valid_input(x as int, y as int)
+    ensures correct_result(x as int, y as int, result as int)
 // </vc-spec>
 // <vc-code>
 {

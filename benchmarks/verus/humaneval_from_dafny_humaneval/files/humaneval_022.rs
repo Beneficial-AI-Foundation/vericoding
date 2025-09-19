@@ -38,11 +38,11 @@ spec fn valid_output(input: Seq<Value>, output: Seq<int>) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn filter_integers(values: Seq<Value>) -> (result: Seq<int>)
+fn filter_integers(values: Vec<Value>) -> (result: Vec<i8>)
     requires
-        valid_input(values),
+        valid_input(values@),
     ensures
-        valid_output(values, result),
+        valid_output(values@, result@.map(|i: int, v: i8| v as int)),
         result.len() <= values.len()
 // </vc-spec>
 // <vc-code>

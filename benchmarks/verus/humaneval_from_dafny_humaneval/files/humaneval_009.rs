@@ -20,20 +20,23 @@ spec fn max_up_to(numbers: Seq<int>, index: int) -> int
 // </vc-preamble>
 
 // <vc-helpers>
+spec fn vec_to_seq_int(v: Vec<i8>) -> Seq<int> {
+    v@.map(|i, x| x as int)
+}
 // </vc-helpers>
 
 // <vc-spec>
-fn rolling_max(numbers: Seq<int>) -> (result: Seq<int>)
+fn rolling_max(numbers: Vec<i8>) -> (result: Vec<i8>)
     ensures 
         result.len() == numbers.len() &&
         (numbers.len() == 0 ==> result.len() == 0) &&
         (numbers.len() > 0 ==> result.len() > 0) &&
         (forall|i: int| #![trigger result[i]] 0 <= i < result.len() ==>
-            result[i] == max_up_to(numbers, i)) &&
+            result[i] as int == max_up_to(vec_to_seq_int(numbers), i)) &&
         (forall|i: int| #![trigger result[i]] 0 <= i < result.len() ==>
-            forall|j: int| #![trigger numbers[j]] 0 <= j <= i ==> numbers[j] <= result[i]) &&
+            forall|j: int| #![trigger numbers@[j]] 0 <= j <= i ==> numbers@[j] as int <= result[i] as int) &&
         (forall|i: int| #![trigger result[i]] 0 <= i < result.len() ==>
-            exists|j: int| 0 <= j <= i && numbers[j] == result[i])
+            exists|j: int| 0 <= j <= i && numbers@[j] as int == result[i] as int)
 // </vc-spec>
 // <vc-code>
 {

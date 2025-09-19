@@ -99,12 +99,30 @@ spec fn get_planets_between_indices(start: int, end: int) -> Seq<Seq<char>>
 // </vc-preamble>
 
 // <vc-helpers>
+spec fn seq_char_to_string(chars: Seq<char>) -> String {
+    if chars.len() == 0 {
+        "".to_string()
+    } else {
+        arbitrary()
+    }
+}
+
+spec fn planets_seq_to_string_vec(planets: Seq<Seq<char>>) -> Seq<String> 
+    decreases planets.len()
+{
+    if planets.len() == 0 {
+        seq![]
+    } else {
+        let first_planet = planets[0];
+        let rest = planets.drop_first();
+        seq![seq_char_to_string(first_planet)].add(planets_seq_to_string_vec(rest))
+    }
+}
 // </vc-helpers>
 
 // <vc-spec>
-fn bf(start: int, end: int) -> (planets: Vec<String>)
-    requires 0 <= start <= 7 && 0 <= end <= 7
-    ensures planets.len() <= (if start <= end { (end - start + 1) as usize } else { 0 })
+fn bf(planet1: String, planet2: String) -> (planets: Vec<String>)
+    ensures planets@ == planets_seq_to_string_vec(get_planets_between(planet1@, planet2@))
 // </vc-spec>
 // <vc-code>
 {

@@ -29,15 +29,15 @@ vc-preamble: |-
 vc-helpers: |-
 
 vc-spec: |-
-  fn largest_prime_factor(n: int) -> (result: int)
+  fn largest_prime_factor(n: i8) -> (result: i8)
       requires 
-          n > 1,
-          !is_prime(n),
+          n as int > 1,
+          !is_prime(n as int),
       ensures 
-          result > 1,
-          n % result == 0,
-          forall|k: int| k > result && n % k == 0 ==> !is_prime(k),
-          is_prime(result),
+          result as int > 1,
+          (n as int) % (result as int) == 0,
+          forall|k: int| k > result as int && (n as int) % k == 0 ==> !is_prime(k),
+          is_prime(result as int),
 
 vc-code: |-
   {

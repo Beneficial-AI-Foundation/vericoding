@@ -15,11 +15,11 @@ spec fn is_valid_md5_hash(s: Seq<char>) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn string_to_md5(text: Seq<char>) -> (result: Option<Seq<char>>)
+fn string_to_md5(text: String) -> (result: Option<String>)
     ensures ({
-        (text.len() == 0 ==> matches!(result, Option::None)) &&
-        (text.len() != 0 ==> match result {
-            Option::Some(value) => is_valid_md5_hash(value),
+        (text@.len() == 0 ==> matches!(result, Option::None)) &&
+        (text@.len() != 0 ==> match result {
+            Option::Some(value) => is_valid_md5_hash(value@),
             Option::None => false,
         })
     })

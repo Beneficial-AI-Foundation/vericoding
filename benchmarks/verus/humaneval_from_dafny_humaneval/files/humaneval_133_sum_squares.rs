@@ -22,8 +22,8 @@ spec fn square_seq(lst: Seq<int>) -> Seq<int> {
 // </vc-helpers>
 
 // <vc-spec>
-fn sum_squares(lst: Seq<int>) -> (r: int)
-    ensures r == sum(square_seq(lst))
+fn sum_squares(lst: Vec<i8>) -> (r: i8)
+    ensures r as int == sum(square_seq(lst@.map(|i: int, x: i8| x as int)))
 // </vc-spec>
 // <vc-code>
 {

@@ -20,10 +20,10 @@ spec fn valid_result(result: int) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn multiply(a: int, b: int) -> (result: int)
+fn multiply(a: i8, b: i8) -> (result: i8)
     ensures 
-        result == product_of_unit_digits(a, b),
-        valid_result(result),
+        result as int == product_of_unit_digits(a as int, b as int),
+        valid_result(result as int),
 // </vc-spec>
 // <vc-code>
 {

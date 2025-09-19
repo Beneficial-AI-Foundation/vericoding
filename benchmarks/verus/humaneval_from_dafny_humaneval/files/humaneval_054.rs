@@ -12,8 +12,8 @@ spec fn char_set(s: Seq<char>) -> Set<char> {
 // </vc-helpers>
 
 // <vc-spec>
-fn same_chars(s0: Seq<char>, s1: Seq<char>) -> (result: bool)
-    ensures result == (char_set(s0) == char_set(s1))
+fn same_chars(s0: Vec<char>, s1: Vec<char>) -> (result: bool)
+    ensures result == (char_set(s0@) == char_set(s1@))
 // </vc-spec>
 // <vc-code>
 {

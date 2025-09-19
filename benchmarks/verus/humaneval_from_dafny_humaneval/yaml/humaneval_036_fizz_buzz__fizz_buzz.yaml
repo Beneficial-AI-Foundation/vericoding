@@ -25,10 +25,10 @@ vc-preamble: |-
 vc-helpers: |-
 
 vc-spec: |-
-  fn fizz_buzz(n: nat) -> (result: nat)
-      ensures result == sum(
-          Seq::new(n, |i: int| 
-              if 0 <= i < n && (i % 11 == 0 || i % 13 == 0) { count7_r(i as nat) } else { 0 }
+  fn fizz_buzz(n: u8) -> (result: u8)
+      ensures result as nat == sum(
+          Seq::new(n as nat, |i: int| 
+              if 0 <= i < n as nat && (i % 11 == 0 || i % 13 == 0) { count7_r(i as nat) } else { 0 }
           )
       )
 

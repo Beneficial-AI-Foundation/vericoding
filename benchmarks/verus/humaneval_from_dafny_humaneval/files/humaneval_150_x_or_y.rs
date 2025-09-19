@@ -13,10 +13,10 @@ spec fn is_prime(n: nat) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn x_or_y(n: nat, x: int, y: int) -> (result: int)
+fn x_or_y(n: u8, x: i8, y: i8) -> (result: i8)
     ensures 
-        is_prime(n) ==> result == x,
-        !is_prime(n) ==> result == y,
+        is_prime(n as nat) ==> result == x,
+        !is_prime(n as nat) ==> result == y,
 // </vc-spec>
 // <vc-code>
 {

@@ -48,9 +48,9 @@ spec fn ceil_nonnegative(x: int) -> int {
 // </vc-helpers>
 
 // <vc-spec>
-fn truncate_number(number: int) -> (result: int)
-    requires valid_input(number)
-    ensures valid_output(result, number)
+fn truncate_number(number: i8) -> (result: i8)
+    requires valid_input(number as int)
+    ensures valid_output(result as int, number as int)
 // </vc-spec>
 // <vc-code>
 {

@@ -20,8 +20,8 @@ spec fn is_happy_spec(s: Seq<char>) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn is_happy(s: Seq<char>) -> (result: bool)
-    ensures result == is_happy_spec(s)
+fn is_happy(s: Vec<char>) -> (result: bool)
+    ensures result == is_happy_spec(s@)
 // </vc-spec>
 // <vc-code>
 {

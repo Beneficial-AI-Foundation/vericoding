@@ -31,8 +31,8 @@ spec fn valid_flip_case(s: Seq<char>, result: Seq<char>) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn flip_case(s: Seq<char>) -> (result: Seq<char>)
-    ensures valid_flip_case(s, result)
+fn flip_case(s: Vec<char>) -> (result: Vec<char>)
+    ensures valid_flip_case(s@, result@)
 // </vc-spec>
 // <vc-code>
 {

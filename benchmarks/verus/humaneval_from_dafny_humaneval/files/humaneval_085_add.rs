@@ -23,8 +23,8 @@ spec fn add_condition(lst: Seq<int>) -> Seq<bool> {
 // </vc-helpers>
 
 // <vc-spec>
-fn add(v: Seq<int>) -> (r: int)
-    ensures r == sumc(v, add_condition(v))
+fn add(v: Vec<i8>) -> (r: i8)
+    ensures r == sumc(v@.map_values(|x: i8| x as int), add_condition(v@.map_values(|x: i8| x as int)))
 // </vc-spec>
 // <vc-code>
 {

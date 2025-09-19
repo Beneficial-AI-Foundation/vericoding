@@ -54,15 +54,15 @@ proof fn digits_reversal_lemma(digits: Seq<char>, reversed: Seq<char>, base: int
 // </vc-helpers>
 
 // <vc-spec>
-fn change_base(x: int, base: int) -> (result: Vec<char>)
+fn change_base(x: i8, base: i8) -> (result: Vec<char>)
   requires 
     base >= 2 && base < 10,
     x >= 0,
   ensures 
-    x == 0 ==> result@ == seq!['0'],
-    x > 0 ==> result@.len() > 0 && result@[0] != '0',
-    forall|i: int| 0 <= i < result@.len() ==> '0' <= result@[i] <= '9' && (result@[i] as int) - ('0' as int) < base,
-    x > 0 ==> string_to_int_in_base(result@, base) == x,
+    x as int == 0 ==> result@ == seq!['0'],
+    x as int > 0 ==> result@.len() > 0 && result@[0] != '0',
+    forall|i: int| 0 <= i < result@.len() ==> '0' <= result@[i] <= '9' && (result@[i] as int) - ('0' as int) < base as int,
+    x as int > 0 ==> string_to_int_in_base(result@, base as int) == x as int,
 // </vc-spec>
 // <vc-code>
 {

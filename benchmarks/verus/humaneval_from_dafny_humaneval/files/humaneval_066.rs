@@ -33,10 +33,10 @@ proof fn sum_of_uppercase_ascii_lemma(s: Seq<char>, c: char)
 // </vc-helpers>
 
 // <vc-spec>
-fn digit_sum(s: Seq<char>) -> (result: i32)
+fn digit_sum(s: Vec<char>) -> (result: i32)
     ensures 
         result >= 0,
-        result == sum_of_uppercase_ascii(s)
+        result == sum_of_uppercase_ascii(s@)
 // </vc-spec>
 // <vc-code>
 {

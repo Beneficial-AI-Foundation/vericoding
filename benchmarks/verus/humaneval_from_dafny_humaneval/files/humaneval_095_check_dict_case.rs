@@ -18,11 +18,11 @@ type DictCase = Map<Seq<char>, Seq<char>>;
 // </vc-helpers>
 
 // <vc-spec>
-fn check_dict_case(dict: DictCase) -> (result: bool)
+fn check_dict_case(dict: Map<Vec<char>, Vec<char>>) -> (result: bool)
     ensures
         (dict.len() == 0) ==> !result,
-        result ==> ((forall|k: Seq<char>| #[trigger] dict.contains_key(k) ==> is_lower_case(k)) || (forall|k: Seq<char>| #[trigger] dict.contains_key(k) ==> is_upper_case(k))),
-        !result ==> ((dict.len() == 0) || ((exists|k: Seq<char>| #[trigger] dict.contains_key(k) && !is_lower_case(k)) && (exists|k: Seq<char>| #[trigger] dict.contains_key(k) && !is_upper_case(k))))
+        result ==> ((forall|k: Vec<char>| #[trigger] dict.contains_key(k) ==> is_lower_case(k@)) || (forall|k: Vec<char>| #[trigger] dict.contains_key(k) ==> is_upper_case(k@))),
+        !result ==> ((dict.len() == 0) || ((exists|k: Vec<char>| #[trigger] dict.contains_key(k) && !is_lower_case(k@)) && (exists|k: Vec<char>| #[trigger] dict.contains_key(k) && !is_upper_case(k@))))
 // </vc-spec>
 // <vc-code>
 {

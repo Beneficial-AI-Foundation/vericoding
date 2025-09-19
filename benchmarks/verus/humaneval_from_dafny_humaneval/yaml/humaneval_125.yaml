@@ -95,25 +95,25 @@ vc-helpers: |-
   }
 
 vc-spec: |-
-  fn split_words(txt: Seq<char>) -> (result: SplitResult)
+  fn split_words(txt: Vec<char>) -> (result: SplitResult)
       ensures 
-          (contains_space(txt) ==> matches!(result, SplitResult::StringSeq { .. })) &&
-          (!contains_space(txt) && contains_comma(txt) ==> matches!(result, SplitResult::StringSeq { .. })) &&
-          (!contains_space(txt) && !contains_comma(txt) ==> matches!(result, SplitResult::Count { .. })) &&
-          (contains_space(txt) ==> result == SplitResult::StringSeq { words: split_on_whitespace(txt) }) &&
-          (!contains_space(txt) && contains_comma(txt) ==> 
-              result == SplitResult::StringSeq { words: split_on_comma(txt) }) &&
-          (!contains_space(txt) && !contains_comma(txt) ==> 
-              result == SplitResult::Count { value: count_odd_position_lowercase(txt) }) &&
+          (contains_space(txt@) ==> matches!(result, SplitResult::StringSeq { .. })) &&
+          (!contains_space(txt@) && contains_comma(txt@) ==> matches!(result, SplitResult::StringSeq { .. })) &&
+          (!contains_space(txt@) && !contains_comma(txt@) ==> matches!(result, SplitResult::Count { .. })) &&
+          (contains_space(txt@) ==> result == SplitResult::StringSeq { words: split_on_whitespace(txt@) }) &&
+          (!contains_space(txt@) && contains_comma(txt@) ==> 
+              result == SplitResult::StringSeq { words: split_on_comma(txt@) }) &&
+          (!contains_space(txt@) && !contains_comma(txt@) ==> 
+              result == SplitResult::Count { value: count_odd_position_lowercase(txt@) }) &&
           (match result {
               SplitResult::StringSeq { words } => words.len() >= 0,
               SplitResult::Count { value } => value >= 0,
           }) &&
-          (contains_space(txt) ==> match result {
+          (contains_space(txt@) ==> match result {
               SplitResult::StringSeq { words } => forall|w: Seq<char>| words.contains(w) ==> w.len() > 0,
               _ => true,
           }) &&
-          (!contains_space(txt) && contains_comma(txt) ==> match result {
+          (!contains_space(txt@) && contains_comma(txt@) ==> match result {
               SplitResult::StringSeq { words } => words.len() > 0,
               _ => true,
           })

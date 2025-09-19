@@ -17,11 +17,11 @@ spec fn get_val(mx: Option<int>) -> int
 // </vc-helpers>
 
 // <vc-spec>
-fn rolling_max(s: &[int]) -> (res: Option<int>)
+fn rolling_max(s: &Vec<i8>) -> (res: Option<i8>)
     ensures 
-        matches!(res, None) <==> s.len() < 2,
-        matches!(res, Some(_)) ==> exists|x: int| 0 <= x < s.len() && s[x] == get_val(res),
-        forall|x: int, y: int| 0 <= x < y < s.len() ==> s[x] <= get_val(res) || s[y] <= get_val(res),
+        matches!(res, None) <==> s@.len() < 2,
+        matches!(res, Some(_)) ==> exists|x: int| 0 <= x < s@.len() && s@[x] as int == get_val(match res { Some(v) => Some(v as int), None => None }),
+        forall|x: int, y: int| 0 <= x < y < s@.len() ==> s@[x] as int <= get_val(match res { Some(v) => Some(v as int), None => None }) || s@[y] as int <= get_val(match res { Some(v) => Some(v as int), None => None }),
 // </vc-spec>
 // <vc-code>
 {

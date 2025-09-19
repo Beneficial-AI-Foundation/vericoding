@@ -39,7 +39,7 @@ proof fn seq_product_append_lemma(s: Seq<int>, x: int)
 // </vc-helpers>
 
 // <vc-spec>
-fn is_multiply_prime(a: int) -> (result: bool)
+fn is_multiply_prime(a: i8) -> (result: bool)
     requires 
         a >= 0 && a < 100
     ensures 
@@ -47,7 +47,7 @@ fn is_multiply_prime(a: int) -> (result: bool)
         result == true <==> (exists|p1: int, p2: int, p3: int|
             p1 >= 2 && p2 >= 2 && p3 >= 2 && 
             is_prime_number(p1) && is_prime_number(p2) && is_prime_number(p3) &&
-            a == p1 * p2 * p3)
+            a as int == p1 * p2 * p3)
 // </vc-spec>
 // <vc-code>
 {

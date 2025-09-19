@@ -48,18 +48,18 @@ spec fn first_index_of_value(arr: Seq<int>, value: int) -> int
 // </vc-helpers>
 
 // <vc-spec>
-fn pluck(arr: Seq<int>) -> (result: Vec<int>)
+fn pluck(arr: Vec<i8>) -> (result: Vec<i8>)
     requires 
-        valid_input(arr)
+        valid_input(arr@.map_values(|x: i8| x as int))
     ensures 
-        arr.len() == 0 ==> result.len() == 0,
-        !has_even_value(arr) ==> result.len() == 0,
-        has_even_value(arr) ==> result.len() == 2,
-        result.len() == 2 ==> 0 <= result[1] < arr.len(),
-        result.len() == 2 ==> arr[result[1] as int] == result[0],
-        result.len() == 2 ==> result[0] % 2 == 0,
-        result.len() == 2 ==> forall|i: int| 0 <= i < arr.len() && arr[i] % 2 == 0 ==> result[0] <= arr[i],
-        result.len() == 2 ==> forall|i: int| 0 <= i < arr.len() && arr[i] % 2 == 0 && arr[i] == result[0] ==> result[1] <= i
+        arr@.len() == 0 ==> result@.len() == 0,
+        !has_even_value(arr@.map_values(|x: i8| x as int)) ==> result@.len() == 0,
+        has_even_value(arr@.map_values(|x: i8| x as int)) ==> result@.len() == 2,
+        result@.len() == 2 ==> (0 <= result@[1] as int && result@[1] as int < arr@.len()),
+        result@.len() == 2 ==> arr@[result@[1] as int] as int == result@[0] as int,
+        result@.len() == 2 ==> result@[0] as int % 2 == 0,
+        result@.len() == 2 ==> forall|i: int| 0 <= i < arr@.len() && arr@[i] as int % 2 == 0 ==> result@[0] as int <= arr@[i] as int,
+        result@.len() == 2 ==> forall|i: int| 0 <= i < arr@.len() && arr@[i] as int % 2 == 0 && arr@[i] as int == result@[0] as int ==> result@[1] as int <= i
 // </vc-spec>
 // <vc-code>
 {

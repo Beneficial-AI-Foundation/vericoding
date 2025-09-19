@@ -33,9 +33,9 @@ spec fn properly_nested(brackets: Seq<char>) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn correct_bracketing(brackets: Seq<char>) -> (result: bool)
-    requires valid_bracket_string(brackets)
-    ensures result <==> properly_nested(brackets)
+fn correct_bracketing(brackets: Vec<char>) -> (result: bool)
+    requires valid_bracket_string(brackets@)
+    ensures result <==> properly_nested(brackets@)
 // </vc-spec>
 // <vc-code>
 {

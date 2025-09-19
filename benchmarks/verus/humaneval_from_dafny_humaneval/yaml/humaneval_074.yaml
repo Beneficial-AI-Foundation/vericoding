@@ -29,11 +29,11 @@ vc-helpers: |-
   }
 
 vc-spec: |-
-  fn total_match(lst1: Seq<Seq<char>>, lst2: Seq<Seq<char>>) -> (result: Seq<Seq<char>>)
+  fn total_match(lst1: Vec<Vec<char>>, lst2: Vec<Vec<char>>) -> (result: Vec<Vec<char>>)
       ensures 
-          result == lst1 || result == lst2,
-          total_chars(lst1) <= total_chars(lst2) ==> result == lst1,
-          total_chars(lst1) > total_chars(lst2) ==> result == lst2
+          result@ == lst1@ || result@ == lst2@,
+          total_chars(lst1@.map_values(|v: Vec<char>| v@)) <= total_chars(lst2@.map_values(|v: Vec<char>| v@)) ==> result@ == lst1@,
+          total_chars(lst1@.map_values(|v: Vec<char>| v@)) > total_chars(lst2@.map_values(|v: Vec<char>| v@)) ==> result@ == lst2@
 
 vc-code: |-
   {
