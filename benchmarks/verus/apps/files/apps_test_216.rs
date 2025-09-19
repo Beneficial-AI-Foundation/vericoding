@@ -21,9 +21,9 @@ spec fn valid_input(n: int, arr: Seq<int>) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: int, arr: Seq<int>) -> (result: int)
-    requires valid_input(n, arr)
-    ensures result == sum_abs(arr, 0)
+fn solve(n: i8, arr: Vec<i8>) -> (result: i8)
+    requires valid_input(n as int, arr@.map(|i: int, v: i8| v as int))
+    ensures result as int == sum_abs(arr@.map(|i: int, v: i8| v as int), 0)
 // </vc-spec>
 // <vc-code>
 {

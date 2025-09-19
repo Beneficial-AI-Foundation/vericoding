@@ -35,9 +35,9 @@ spec fn min_of_sequence(s: Seq<int>) -> int
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(lst: Seq<int>) -> (result: int)
-    requires valid_input(lst)
-    ensures result == 2 + int_xor(lst[2], min_of_sequence(lst))
+fn solve(lst: Vec<i8>) -> (result: i8)
+    requires valid_input(lst@.map(|i: int, x: i8| x as int))
+    ensures result as int == 2 + int_xor(lst@[2] as int, min_of_sequence(lst@.map(|i: int, x: i8| x as int)))
 // </vc-spec>
 // <vc-code>
 {

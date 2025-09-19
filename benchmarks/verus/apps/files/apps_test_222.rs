@@ -47,16 +47,16 @@ spec fn int_to_string_helper(n: int) -> Seq<char>
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(s: Seq<char>) -> (result: i32)
+fn solve(s: Vec<char>) -> (result: i32)
     requires 
         s.len() > 0,
-        forall|i: int| 0 <= i < s.len() ==> '0' <= #[trigger] s[i] <= '9',
-        s[0] != '0' || s.len() == 1,
+        forall|i: int| 0 <= i < s.len() ==> '0' <= #[trigger] s@[i] <= '9',
+        s@[0] != '0' || s.len() == 1,
     ensures 
         result == -1 || result >= 0,
-        result == -1 ==> forall|sq: int| #[trigger] generate_squares().contains(sq) ==> !is_subsequence(int_to_string(sq), s),
-        result >= 0 ==> exists|sq: int| #![auto] generate_squares().contains(sq) && is_subsequence(int_to_string(sq), s) && result == s.len() - int_to_string(sq).len(),
-        result >= 0 ==> forall|sq: int| #[trigger] generate_squares().contains(sq) && is_subsequence(int_to_string(sq), s) ==> s.len() - int_to_string(sq).len() >= result,
+        result == -1 ==> forall|sq: int| #[trigger] generate_squares().contains(sq) ==> !is_subsequence(int_to_string(sq), s@),
+        result >= 0 ==> exists|sq: int| #![auto] generate_squares().contains(sq) && is_subsequence(int_to_string(sq), s@) && result == s.len() as i32 - int_to_string(sq).len() as i32,
+        result >= 0 ==> forall|sq: int| #[trigger] generate_squares().contains(sq) && is_subsequence(int_to_string(sq), s@) ==> s.len() as i32 - int_to_string(sq).len() as i32 >= result,
 // </vc-spec>
 // <vc-code>
 {

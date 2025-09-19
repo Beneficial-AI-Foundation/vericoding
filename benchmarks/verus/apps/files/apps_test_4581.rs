@@ -49,12 +49,12 @@ spec fn int_to_string_helper_spec(n: int, acc: Seq<char>) -> Seq<char>
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(s: Seq<char>) -> (result: Seq<char>)
+fn solve(s: Vec<char>) -> (result: Vec<char>)
     requires 
-        valid_input(s)
+        valid_input(s@)
     ensures 
-        result == int_to_string_spec(calculate_price(s)) + seq!['\n'],
-        calculate_price(s) >= 700
+        result@ == int_to_string_spec(calculate_price(s@)) + seq!['\n'],
+        calculate_price(s@) >= 700
 // </vc-spec>
 // <vc-code>
 {

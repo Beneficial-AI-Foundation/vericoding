@@ -43,12 +43,12 @@ vc-preamble: |-
 vc-helpers: |
 
 vc-spec: |-
-  fn solve(n: int, h: int, a: int, b: int, queries: Seq<(int, int, int, int)>) -> (results: Seq<int>)
+  fn solve(n: i8, h: i8, a: i8, b: i8, queries: Vec<(i8, i8, i8, i8)>) -> (results: Vec<i8>)
       requires
-          valid_building_params(n, h, a, b),
-          valid_queries(queries, n, h),
+          valid_building_params(n as int, h as int, a as int, b as int),
+          valid_queries(queries@.map_values(|x: (i8, i8, i8, i8)| (x.0 as int, x.1 as int, x.2 as int, x.3 as int)), n as int, h as int),
       ensures
-          correct_results(queries, results, a, b),
+          correct_results(queries@.map_values(|x: (i8, i8, i8, i8)| (x.0 as int, x.1 as int, x.2 as int, x.3 as int)), results@.map_values(|x: i8| x as int), a as int, b as int),
 
 vc-code: |-
   {

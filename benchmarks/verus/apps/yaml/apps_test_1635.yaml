@@ -24,12 +24,12 @@ vc-preamble: |-
 vc-helpers: |-
 
 vc-spec: |-
-  fn solve(cafes: Seq<int>) -> (mini: i32)
+  fn solve(cafes: Vec<i8>) -> (mini: i8)
       requires
           cafes.len() > 0,
       ensures
-          cafes.contains(mini as int),
-          forall|cafe: int| #![auto] cafes.contains(cafe) ==> last_occurrence_position(cafes, mini as int) <= last_occurrence_position(cafes, cafe),
+          cafes@.contains(mini),
+          forall|cafe: i8| #![auto] cafes@.contains(cafe) ==> last_occurrence_position(cafes@.map(|i, x: i8| x as int), mini as int) <= last_occurrence_position(cafes@.map(|i, x: i8| x as int), cafe as int),
 
 vc-code: |-
   {

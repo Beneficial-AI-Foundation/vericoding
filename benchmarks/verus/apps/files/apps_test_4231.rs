@@ -18,11 +18,11 @@ spec fn white_cells_remaining(h: int, w: int, h_selected: int, w_selected: int) 
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(h: int, w: int, h_selected: int, w_selected: int) -> (result: int)
+fn solve(h: i8, w: i8, h_selected: i8, w_selected: i8) -> (result: i8)
     requires 
-        valid_input(h, w, h_selected, w_selected),
+        valid_input(h as int, w as int, h_selected as int, w_selected as int),
     ensures 
-        result == white_cells_remaining(h, w, h_selected, w_selected),
+        result as int == white_cells_remaining(h as int, w as int, h_selected as int, w_selected as int),
         result >= 0,
 // </vc-spec>
 // <vc-code>

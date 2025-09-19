@@ -78,14 +78,14 @@ spec fn min_index_excluding_helper(weights: Seq<int>, exclude: int, current_min:
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(t: int, cases: Seq<(int, int, Seq<int>)>) -> (results: Seq<Result>)
+fn solve(t: i8, cases: Vec<(i8, i8, Vec<i8>)>) -> (results: Vec<Result>)
     requires 
         t >= 0,
-        cases.len() == t,
-        forall|i: int| #![auto] 0 <= i < t ==> 
-            cases[i].0 >= 0 && cases[i].1 >= 0 && cases[i].2.len() == cases[i].0
+        cases.len() == t as nat,
+        forall|i: int| #![auto] 0 <= i < t as int ==> 
+            cases[i].0 >= 0 && cases[i].1 >= 0 && cases[i].2@.len() == cases[i].0 as nat
     ensures 
-        results.len() == t
+        results@.len() == t as nat
 // </vc-spec>
 // <vc-code>
 {

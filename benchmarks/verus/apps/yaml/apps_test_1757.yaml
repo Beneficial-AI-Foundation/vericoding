@@ -27,10 +27,10 @@ vc-preamble: |-
 vc-helpers: |-
 
 vc-spec: |-
-  fn solve(n: int) -> (result: Vec<char>)
-      requires n >= 1 && n <= 1000
+  fn solve(n: i8) -> (result: Vec<char>)
+      requires n >= 1 && n <= 100
       ensures 
-          result.len() == n
+          result.len() == n as nat
           && (forall|i: int| 0 <= i < result.len() ==> result[i] == 'O' || result[i] == 'o')
           && (forall|i: int| 1 <= i <= n ==> (is_fibonacci(i) <==> result[i-1] == 'O'))
           && (forall|i: int| 1 <= i <= n ==> (!is_fibonacci(i) <==> result[i-1] == 'o'))

@@ -90,12 +90,12 @@ spec fn is_winner(muscle: &str, reps: Seq<int>) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn find_strongest_muscle_group(reps: Seq<int>) -> (result: &'static str)
+fn find_strongest_muscle_group(reps: Vec<i8>) -> (result: &'static str)
     requires 
-        valid_input(reps)
+        valid_input(reps@.map(|i: int, x: i8| x as int))
     ensures 
         result == "chest" || result == "biceps" || result == "back",
-        is_winner(result, reps)
+        is_winner(result, reps@.map(|i: int, x: i8| x as int))
 // </vc-spec>
 // <vc-code>
 {

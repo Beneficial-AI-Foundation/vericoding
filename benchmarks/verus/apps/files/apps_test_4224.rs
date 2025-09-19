@@ -34,12 +34,12 @@ spec fn max_operations(a: Seq<int>) -> int {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(a: Seq<int>) -> (result: int)
+fn solve(a: Vec<i8>) -> (result: i8)
     requires 
-        valid_input(a),
+        valid_input(a@.map(|i, x| x as int)),
     ensures 
         result >= 0,
-        result == max_operations(a),
+        result as int == max_operations(a@.map(|i, x| x as int)),
 // </vc-spec>
 // <vc-code>
 {

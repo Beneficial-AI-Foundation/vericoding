@@ -31,8 +31,8 @@ spec fn all_rows_have_alternating_pattern(input: Seq<Seq<char>>) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(input: Seq<Seq<char>>) -> (result: Seq<char>)
-    requires valid_input(input)
+fn solve(input: Vec<Vec<char>>) -> (result: Vec<char>)
+    requires valid_input(input@.map(|i, row: Vec<char>| row@))
 // </vc-spec>
 // <vc-code>
 {

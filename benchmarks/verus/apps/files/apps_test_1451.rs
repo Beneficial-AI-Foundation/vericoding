@@ -33,9 +33,9 @@ spec fn count_valid_numbers(numbers: Seq<int>, k: int, up_to: int) -> int
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: int, k: int, numbers: Seq<int>) -> (result: int)
-    requires valid_input(n, k, numbers)
-    ensures 0 <= result <= n
+fn solve(n: i8, k: i8, numbers: Vec<i8>) -> (result: i8)
+    requires valid_input(n as int, k as int, numbers@.map(|i: int, x: i8| x as int))
+    ensures 0 <= result as int <= n as int
 // </vc-spec>
 // <vc-code>
 {

@@ -25,8 +25,8 @@ spec fn is_impossible(s: Seq<char>, k: int) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(s: Seq<char>, k: int) -> (result: String)
-    requires valid_input(s, k)
+fn solve(s: Vec<char>, k: i8) -> (result: String)
+    requires valid_input(s@, k as int)
 // </vc-spec>
 // <vc-code>
 {

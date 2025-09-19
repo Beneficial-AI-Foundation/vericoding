@@ -30,14 +30,14 @@ spec fn max_product_of_digits_in_range(n: int) -> int
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: int) -> (result: int)
+fn solve(n: i8) -> (result: i8)
   requires 
     n >= 1
   ensures 
-    result == max_product_of_digits_in_range(n),
+    result as int == max_product_of_digits_in_range(n as int),
     result >= 1,
-    forall|k: int| 1 <= k <= n ==> product_of_digits(k) <= result,
-    exists|k: int| 1 <= k <= n && product_of_digits(k) == result
+    forall|k: int| 1 <= k <= n as int ==> product_of_digits(k) <= result as int,
+    exists|k: int| 1 <= k <= n as int && product_of_digits(k) == result as int
 // </vc-spec>
 // <vc-code>
 {

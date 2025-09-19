@@ -58,7 +58,11 @@ vc-preamble: |-
 vc-helpers: |-
 
 vc-spec: |-
-  fn solve(s: Seq<char>) -> (result: Seq<char>)
+  fn solve(s: Vec<char>) -> (result: Vec<char>)
+      requires
+          valid_binary_string(s@),
+      ensures
+          valid_solution(s@, result@),
 
 vc-code: |-
   {

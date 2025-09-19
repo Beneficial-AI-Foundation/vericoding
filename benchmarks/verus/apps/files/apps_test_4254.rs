@@ -86,7 +86,7 @@ spec fn string_to_int_helper(s: Seq<char>, index: int, acc: int) -> int
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(input: Seq<char>) -> (result: Seq<char>)
+fn solve(input: Vec<char>) -> (result: Vec<char>)
     requires input.len() > 0
 // </vc-spec>
 // <vc-code>

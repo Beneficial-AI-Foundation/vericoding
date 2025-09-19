@@ -39,15 +39,15 @@ vc-preamble: |-
 vc-helpers: |
 
 vc-spec: |-
-  fn solve(stairs_amount: int, stair_heights: Seq<int>, boxes_amount: int, boxes: Seq<(int, int)>) -> (result: Seq<int>)
+  fn solve(stairs_amount: i8, stair_heights: Vec<i8>, boxes_amount: i8, boxes: Vec<(i8, i8)>) -> (result: Vec<i8>)
       requires 
           stairs_amount >= 1,
-          stair_heights.len() == stairs_amount,
+          stair_heights.len() == stairs_amount as int,
           boxes_amount >= 0,
-          boxes.len() == boxes_amount,
-          valid_stairs(stair_heights),
-          valid_boxes(boxes, stairs_amount),
-      ensures valid_result(result, boxes, stair_heights)
+          boxes.len() == boxes_amount as int,
+          valid_stairs(stair_heights@.map(|i: int, x: i8| x as int)),
+          valid_boxes(boxes@.map(|i: int, x: (i8, i8)| (x.0 as int, x.1 as int)), stairs_amount as int),
+      ensures valid_result(result@.map(|i: int, x: i8| x as int), boxes@.map(|i: int, x: (i8, i8)| (x.0 as int, x.1 as int)), stair_heights@.map(|i: int, x: i8| x as int))
 
 vc-code: |-
   {

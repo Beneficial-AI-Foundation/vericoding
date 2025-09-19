@@ -44,12 +44,12 @@ spec fn count_denied_people_with_half(groups: Seq<int>, a: int, b: int, half_occ
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: int, a: int, b: int, groups: Seq<int>) -> (denied: int)
+fn solve(n: i8, a: i8, b: i8, groups: Vec<i8>) -> (denied: i8)
     requires 
-        valid_input(n, a, b, groups)
+        valid_input(n as int, a as int, b as int, groups@.map_values(|x: i8| x as int))
     ensures 
         denied >= 0,
-        denied == count_denied_people(groups, a, b)
+        denied as int == count_denied_people(groups@.map_values(|x: i8| x as int), a as int, b as int)
 // </vc-spec>
 // <vc-code>
 {

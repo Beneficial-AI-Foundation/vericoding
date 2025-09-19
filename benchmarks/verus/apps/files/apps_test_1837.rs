@@ -32,11 +32,11 @@ spec fn max_possible_fixed_points(a: Seq<int>) -> int
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: int, a: Seq<int>) -> (result: int)
+fn solve(n: i8, a: Vec<i8>) -> (result: i8)
     requires 
-        valid_input(n, a),
+        valid_input(n as int, a@.map(|i, x| x as int)),
     ensures 
-        result == max_possible_fixed_points(a),
+        result as int == max_possible_fixed_points(a@.map(|i, x| x as int)),
         result >= 0,
 // </vc-spec>
 // <vc-code>

@@ -65,31 +65,31 @@ spec fn string_to_int(s: Seq<char>) -> int
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(stdin_input: Seq<char>) -> (result: Seq<char>)
+fn solve(stdin_input: Vec<char>) -> (result: Vec<char>)
     requires 
-        stdin_input.len() > 0,
-        exists|i: int| 0 <= i < stdin_input.len() && stdin_input[i] == '\n',
+        stdin_input@.len() > 0,
+        exists|i: int| 0 <= i < stdin_input@.len() && stdin_input@[i] == '\n',
         exists|newline_pos: int| {
-            0 <= newline_pos < stdin_input.len() && stdin_input[newline_pos] == '\n' &&
-            newline_pos + 1 < stdin_input.len() &&
+            0 <= newline_pos < stdin_input@.len() && stdin_input@[newline_pos] == '\n' &&
+            newline_pos + 1 < stdin_input@.len() &&
             exists|binary_end: int| {
-                newline_pos + 1 <= binary_end <= stdin_input.len() &&
-                (binary_end == stdin_input.len() || stdin_input[binary_end] == '\n') &&
-                is_valid_integer(stdin_input.subrange(0, newline_pos)) &&
-                is_binary_string(stdin_input.subrange(newline_pos + 1, binary_end))
+                newline_pos + 1 <= binary_end <= stdin_input@.len() &&
+                (binary_end == stdin_input@.len() || stdin_input@[binary_end] == '\n') &&
+                is_valid_integer(stdin_input@.subrange(0, newline_pos)) &&
+                is_binary_string(stdin_input@.subrange(newline_pos + 1, binary_end))
             }
         },
     ensures 
-        result.len() > 0,
-        result[result.len() - 1] == '\n',
+        result@.len() > 0,
+        result@[result@.len() - 1] == '\n',
         exists|newline_pos: int| {
-            0 <= newline_pos < stdin_input.len() && stdin_input[newline_pos] == '\n' &&
-            newline_pos + 1 < stdin_input.len() &&
+            0 <= newline_pos < stdin_input@.len() && stdin_input@[newline_pos] == '\n' &&
+            newline_pos + 1 < stdin_input@.len() &&
             exists|binary_end: int| {
-                newline_pos + 1 <= binary_end <= stdin_input.len() &&
-                (binary_end == stdin_input.len() || stdin_input[binary_end] == '\n') &&
-                is_binary_string(stdin_input.subrange(newline_pos + 1, binary_end)) &&
-                result == int_to_string(abs_diff_count(stdin_input.subrange(newline_pos + 1, binary_end))).add(seq!['\n'])
+                newline_pos + 1 <= binary_end <= stdin_input@.len() &&
+                (binary_end == stdin_input@.len() || stdin_input@[binary_end] == '\n') &&
+                is_binary_string(stdin_input@.subrange(newline_pos + 1, binary_end)) &&
+                result@ == int_to_string(abs_diff_count(stdin_input@.subrange(newline_pos + 1, binary_end))).add(seq!['\n'])
             }
         },
 // </vc-spec>

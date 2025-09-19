@@ -31,9 +31,9 @@ spec fn zero_count(s: Seq<char>, start: int, end: int) -> int
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(s: Seq<char>) -> (result: int)
-    requires valid_input(s)
-    ensures result == digit_sum(s, 1, 7) + 9 * zero_count(s, 1, 7) + 1
+fn solve(s: Vec<char>) -> (result: i8)
+    requires valid_input(s@)
+    ensures result as int == digit_sum(s@, 1, 7) + 9 * zero_count(s@, 1, 7) + 1
 // </vc-spec>
 // <vc-code>
 {

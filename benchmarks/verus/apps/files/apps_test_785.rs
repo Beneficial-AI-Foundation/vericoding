@@ -19,9 +19,9 @@ spec fn valid_output(result: Seq<int>, n: int, a: int, b: int) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: int, a: int, b: int) -> (result: Seq<int>)
-    requires valid_input(n, a, b)
-    ensures valid_output(result, n, a, b)
+fn solve(n: i8, a: i8, b: i8) -> (result: Vec<i8>)
+    requires valid_input(n as int, a as int, b as int)
+    ensures valid_output(result@.map(|i, x| x as int), n as int, a as int, b as int)
 // </vc-spec>
 // <vc-code>
 {

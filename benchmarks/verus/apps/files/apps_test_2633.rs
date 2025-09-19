@@ -54,8 +54,8 @@ spec fn can_survive_path(dungeon: Seq<Seq<int>>, path: Seq<(int, int)>, initial_
 // </vc-helpers>
 
 // <vc-spec>
-fn calculate_minimum_hp(dungeon: Seq<Seq<int>>) -> (result: int)
-    requires valid_dungeon(dungeon)
+fn calculate_minimum_hp(dungeon: Vec<Vec<i8>>) -> (result: i8)
+    requires valid_dungeon(dungeon@.map(|i: int, row: Vec<i8>| row@.map(|j: int, x: i8| x as int)))
     ensures result >= 1
 // </vc-spec>
 // <vc-code>

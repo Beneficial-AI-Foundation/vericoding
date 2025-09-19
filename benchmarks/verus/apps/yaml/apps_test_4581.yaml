@@ -52,12 +52,12 @@ vc-preamble: |-
 vc-helpers: |
 
 vc-spec: |-
-  fn solve(s: Seq<char>) -> (result: Seq<char>)
+  fn solve(s: Vec<char>) -> (result: Vec<char>)
       requires 
-          valid_input(s)
+          valid_input(s@)
       ensures 
-          result == int_to_string_spec(calculate_price(s)) + seq!['\n'],
-          calculate_price(s) >= 700
+          result@ == int_to_string_spec(calculate_price(s@)) + seq!['\n'],
+          calculate_price(s@) >= 700
 
 vc-code: |-
   {

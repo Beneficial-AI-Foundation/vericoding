@@ -39,13 +39,13 @@ spec fn is_possible(n: int, k: int) -> bool
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: int, k: int) -> (result: Vec<int>)
+fn solve(n: i8, k: i8) -> (result: Vec<i8>)
     requires 
-        valid_input(n, k)
+        valid_input(n as int, k as int)
     ensures 
         ((result.len() == 1 && result[0] == -1) || 
-         (valid_sequence(result@, n, k))) &&
-        ((result.len() == 1 && result[0] == -1) <==> !is_possible(n, k))
+         (valid_sequence(result@.map(|_i: int, x: i8| x as int), n as int, k as int))) &&
+        ((result.len() == 1 && result[0] == -1) <==> !is_possible(n as int, k as int))
 // </vc-spec>
 // <vc-code>
 {

@@ -30,6 +30,8 @@ spec fn valid_output(result: String) -> bool {
 
 // <vc-spec>
 fn solve(n: String) -> (result: String)
+  requires valid_input(n@)
+  ensures valid_output(result)
 // </vc-spec>
 // <vc-code>
 {

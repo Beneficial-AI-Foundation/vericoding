@@ -54,12 +54,12 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: int, d: int, current_points: Seq<int>, awards: Seq<int>) -> (result: int)
+fn solve(n: i8, d: i8, current_points: Vec<i8>, awards: Vec<i8>) -> (result: i8)
     requires 
-        valid_input(n, d, current_points, awards)
+        valid_input(n as int, d as int, current_points@.map(|i, x| x as int), awards@.map(|i, x| x as int))
     ensures 
-        1 <= result <= d,
-        result == d - count_overtaken(current_points, awards, d)
+        1 <= result as int <= d as int,
+        result as int == d as int - count_overtaken(current_points@.map(|i, x| x as int), awards@.map(|i, x| x as int), d as int)
 // </vc-spec>
 // <vc-code>
 {

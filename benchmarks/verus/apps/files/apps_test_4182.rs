@@ -23,12 +23,12 @@ spec fn agreement_possible(n: int, m: int, x: int, y: int, xx: Seq<int>, yy: Seq
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: int, m: int, x: int, y: int, xx: Seq<int>, yy: Seq<int>) -> (result: String)
+fn solve(n: i8, m: i8, x: i8, y: i8, xx: Vec<i8>, yy: Vec<i8>) -> (result: String)
     requires 
-        valid_input(n, m, x, y, xx, yy),
+        valid_input(n as int, m as int, x as int, y as int, xx@.map(|_i: int, v: i8| v as int), yy@.map(|_i: int, v: i8| v as int)),
     ensures 
         result@ == seq!['N','o',' ','W','a','r'] || result@ == seq!['W','a','r'],
-        (result@ == seq!['N','o',' ','W','a','r']) == agreement_possible(n, m, x, y, xx, yy),
+        (result@ == seq!['N','o',' ','W','a','r']) == agreement_possible(n as int, m as int, x as int, y as int, xx@.map(|_i: int, v: i8| v as int), yy@.map(|_i: int, v: i8| v as int)),
 // </vc-spec>
 // <vc-code>
 {

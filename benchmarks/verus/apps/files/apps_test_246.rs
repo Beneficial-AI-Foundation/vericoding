@@ -17,9 +17,9 @@ spec fn check(x: int, s: int) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: int, s: int) -> (result: int)
-requires n >= 1 && s >= 1
-ensures result >= 0 && result <= n
+fn solve(n: i8, s: i8) -> (result: i8)
+requires n as int >= 1 && s as int >= 1
+ensures result as int >= 0 && result as int <= n as int
 // </vc-spec>
 // <vc-code>
 {

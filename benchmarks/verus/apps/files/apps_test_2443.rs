@@ -48,14 +48,14 @@ spec fn valid_sequence(sequence: Seq<nat>, m: nat, forbidden: Seq<nat>) -> bool
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: usize, m: usize, forbidden: Vec<usize>) -> (result: (usize, Vec<usize>))
-  requires valid_input(n as nat, m as nat, forbidden@.map(|i, x: usize| x as nat))
+fn solve(n: u8, m: u8, forbidden: Vec<u8>) -> (result: (u8, Vec<u8>))
+  requires valid_input(n as nat, m as nat, forbidden@.map(|i, x: u8| x as nat))
   ensures ({
       let (length, sequence) = result;
-      length == sequence.len() &&
+      length == sequence.len() as u8 &&
       length >= 0 &&
-      (m == 1 ==> length == 0 && sequence@ == Seq::<usize>::empty()) &&
-      (m > 1 ==> valid_sequence(sequence@.map(|i, x: usize| x as nat), m as nat, forbidden@.map(|i, x: usize| x as nat))) &&
+      (m == 1 ==> length == 0 && sequence@ == Seq::<u8>::empty()) &&
+      (m > 1 ==> valid_sequence(sequence@.map(|i, x: u8| x as nat), m as nat, forbidden@.map(|i, x: u8| x as nat))) &&
       (n == 0 && m > 1 ==> length > 0)
   })
 // </vc-spec>

@@ -27,11 +27,11 @@ spec fn max_consecutive_rainy_days(s: Seq<char>) -> int {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(input: Seq<char>) -> (result: int)
+fn solve(input: Vec<char>) -> (result: i8)
     requires 
-        valid_input(input),
+        valid_input(input@),
     ensures 
-        result == max_consecutive_rainy_days(input),
+        result as int == max_consecutive_rainy_days(input@),
         0 <= result && result <= 3,
 // </vc-spec>
 // <vc-code>

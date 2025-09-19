@@ -25,11 +25,11 @@ spec fn min_total_distance(x1: int, x2: int, x3: int) -> int
 // </vc-helpers>
 
 // <vc-spec>
-fn find_minimum_total_distance(x1: int, x2: int, x3: int) -> (result: int)
+fn find_minimum_total_distance(x1: i8, x2: i8, x3: i8) -> (result: i8)
     requires 
-        valid_input(x1, x2, x3)
+        valid_input(x1 as int, x2 as int, x3 as int)
     ensures 
-        result == min_total_distance(x1, x2, x3),
+        result as int == min_total_distance(x1 as int, x2 as int, x3 as int),
         result >= 1 && result <= 99
 // </vc-spec>
 // <vc-code>

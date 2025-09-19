@@ -35,12 +35,12 @@ vc-preamble: |-
 vc-helpers: |
 
 vc-spec: |-
-  fn solve(n: int, parents: Seq<int>) -> (result: String)
+  fn solve(n: i8, parents: Vec<i8>) -> (result: String)
       requires 
-          valid_input(n, parents),
+          valid_input(n as int, parents@.map_values(|x: i8| x as int)),
       ensures 
           result@ == seq!['Y', 'e', 's'] || result@ == seq!['N', 'o'],
-          result@ == seq!['Y', 'e', 's'] <==> is_spruce(n, parents),
+          result@ == seq!['Y', 'e', 's'] <==> is_spruce(n as int, parents@.map_values(|x: i8| x as int)),
 
 vc-code: |-
   {

@@ -32,9 +32,9 @@ spec fn valid_result(n: int, queries: Seq<(int, int)>, results: Seq<int>) -> boo
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: int, queries: Seq<(int, int)>) -> (results: Seq<int>)
-    requires valid_input(n, queries)
-    ensures valid_result(n, queries, results)
+fn solve(n: i8, queries: Vec<(i8, i8)>) -> (results: Vec<i8>)
+    requires valid_input(n as int, queries@.map(|i: int, q: (i8, i8)| (q.0 as int, q.1 as int)))
+    ensures valid_result(n as int, queries@.map(|i: int, q: (i8, i8)| (q.0 as int, q.1 as int)), results@.map(|i: int, r: i8| r as int))
 // </vc-spec>
 // <vc-code>
 {

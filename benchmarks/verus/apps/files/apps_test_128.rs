@@ -31,8 +31,8 @@ spec fn sum_of_consecutive_pairs(n: int, k: int) -> int {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: int, k: int) -> (result: int)
-    requires n >= 1 && k >= 0
+fn solve(n: i8, k: i8) -> (result: i8)
+    requires n as int >= 1 && k as int >= 0
 // </vc-spec>
 // <vc-code>
 {

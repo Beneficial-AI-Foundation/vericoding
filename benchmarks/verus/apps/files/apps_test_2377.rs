@@ -24,8 +24,8 @@ spec fn max_wield_exists(a: Seq<int>, max_a: int) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: int, h: int, a: Seq<int>, b: Seq<int>) -> (result: int)
-    requires valid_input(n, h, a, b)
+fn solve(n: i8, h: i8, a: Vec<i8>, b: Vec<i8>) -> (result: i8)
+    requires valid_input(n as int, h as int, a@.map_values(|x: i8| x as int), b@.map_values(|x: i8| x as int))
     ensures result > 0
 // </vc-spec>
 // <vc-code>

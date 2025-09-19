@@ -29,12 +29,12 @@ spec fn can_turn_on_all_bulbs(m: nat, buttons: Seq<Seq<nat>>) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: nat, m: nat, buttons: Seq<Seq<nat>>) -> (result: String)
+fn solve(n: u8, m: u8, buttons: Vec<Vec<u8>>) -> (result: String)
     requires
-        valid_input(n, m, buttons)
+        valid_input(n as nat, m as nat, buttons@.map(|i: int, button: Vec<u8>| button@.map(|j: int, bulb: u8| bulb as nat))),
     ensures
         result@ == seq!['Y', 'E', 'S'] || result@ == seq!['N', 'O'],
-        (result@ == seq!['Y', 'E', 'S']) <==> can_turn_on_all_bulbs(m, buttons)
+        (result@ == seq!['Y', 'E', 'S']) <==> can_turn_on_all_bulbs(m as nat, buttons@.map(|i: int, button: Vec<u8>| button@.map(|j: int, bulb: u8| bulb as nat)))
 // </vc-spec>
 // <vc-code>
 {

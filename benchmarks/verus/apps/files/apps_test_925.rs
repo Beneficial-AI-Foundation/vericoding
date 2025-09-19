@@ -43,9 +43,9 @@ spec fn valid_output(result: Seq<char>, expected_count: int) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(input: Seq<char>) -> (result: Seq<char>)
-    requires valid_input(input)
-    ensures valid_output(result, compute_total_good_count(input))
+fn solve(input: Vec<char>) -> (result: Vec<char>)
+    requires valid_input(input@)
+    ensures valid_output(result@, compute_total_good_count(input@))
 // </vc-spec>
 // <vc-code>
 {

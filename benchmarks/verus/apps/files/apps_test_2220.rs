@@ -58,8 +58,10 @@ spec fn filter_out(s: Seq<int>, val: int, count: int) -> Seq<int>
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: int, m: int, k: int, emotes: Seq<int>) -> (result: int)
-    requires valid_input(n, m, k, emotes)
+fn solve(n: i8, m: i8, k: i8, emotes: Vec<i8>) -> (result: i8)
+    requires 
+        valid_input(n as int, m as int, k as int, 
+            seq![].add(emotes@.map(|i: int, x: i8| x as int)))
     ensures result >= 0
 // </vc-spec>
 // <vc-code>

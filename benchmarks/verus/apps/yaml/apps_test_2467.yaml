@@ -44,19 +44,22 @@ vc-preamble: |-
   }
 
 vc-helpers: |
+  spec fn to_int_seq(v: Vec<i8>) -> Seq<int> {
+      v@.map(|i: int, x: i8| x as int)
+  }
 
 vc-spec: |-
-  fn combination_sum3(k: int, n: int) -> (result: Vec<Vec<int>>)
+  fn combination_sum3(k: i8, n: i8) -> (result: Vec<Vec<i8>>)
       requires k > 0 && n > 0 && k <= 9
       ensures 
-          (forall|i: int| 0 <= i < result.len() ==> #[trigger] result[i].len() == k) &&
-          (forall|i: int| 0 <= i < result.len() ==> sum(#[trigger] result[i]@) == n) &&
-          (forall|i: int| 0 <= i < result.len() ==> forall|j: int| 0 <= j < #[trigger] result[i].len() ==> 1 <= #[trigger] result[i][j] <= 9) &&
-          (forall|i: int| 0 <= i < result.len() ==> is_distinct(#[trigger] result[i]@)) &&
-          (forall|i: int| 0 <= i < result.len() ==> is_sorted(#[trigger] result[i]@)) &&
-          (forall|i: int, j: int| 0 <= i < j < result.len() ==> #[trigger] result[i]@ != #[trigger] result[j]@) &&
-          (forall|combo: Seq<int>| is_valid_combination(combo, k, n) ==> exists|i: int| 0 <= i < result.len() && #[trigger] result[i]@ == combo) &&
-          (forall|i: int| 0 <= i < result.len() ==> is_valid_combination(#[trigger] result[i]@, k, n))
+          (forall|i: int| 0 <= i < result.len() ==> #[trigger] result[i].len() == k as int) &&
+          (forall|i: int| 0 <= i < result.len() ==> sum(to_int_seq(#[trigger] result[i])) == n as int) &&
+          (forall|i: int| 0 <= i < result.len() ==> forall|j: int| 0 <= j < #[trigger] result[i].len() ==> 1 <= #[trigger] result[i][j] as int <= 9) &&
+          (forall|i: int| 0 <= i < result.len() ==> is_distinct(to_int_seq(#[trigger] result[i]))) &&
+          (forall|i: int| 0 <= i < result.len() ==> is_sorted(to_int_seq(#[trigger] result[i]))) &&
+          (forall|i: int, j: int| 0 <= i < j < result.len() ==> to_int_seq(#[trigger] result[i]) != to_int_seq(#[trigger] result[j])) &&
+          (forall|combo: Seq<int>| is_valid_combination(combo, k as int, n as int) ==> exists|i: int| 0 <= i < result.len() && to_int_seq(#[trigger] result[i]) == combo) &&
+          (forall|i: int| 0 <= i < result.len() ==> is_valid_combination(to_int_seq(#[trigger] result[i]), k as int, n as int))
 
 vc-code: |-
   {

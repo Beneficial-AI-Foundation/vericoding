@@ -29,12 +29,12 @@ spec fn solve_result(cards: Seq<int>, x: int) -> int {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(cards: Seq<int>, x: int) -> (result: int)
+fn solve(cards: Vec<i8>, x: i8) -> (result: i8)
     requires 
-        valid_input(cards, x),
+        valid_input(cards@.map(|i: int, v: i8| v as int), x as int),
     ensures 
-        result >= 0,
-        result == solve_result(cards, x),
+        result as int >= 0,
+        result as int == solve_result(cards@.map(|i: int, v: i8| v as int), x as int),
 // </vc-spec>
 // <vc-code>
 {

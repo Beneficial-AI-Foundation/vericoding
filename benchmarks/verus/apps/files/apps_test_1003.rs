@@ -27,14 +27,14 @@ spec fn can_wear_socks_on_day(n: int, m: int, day: int) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: int, m: int) -> (result: int)
+fn solve(n: i8, m: i8) -> (result: i8)
   requires 
-      valid_input(n, m)
+      valid_input(n as int, m as int)
   ensures 
-      result >= n,
-      result > 0,
-      socks_after_day(n, m, result) <= 0,
-      forall|k: int| 1 <= k < result ==> socks_after_day(n, m, k) > 0
+      result as int >= n as int,
+      result as int > 0,
+      socks_after_day(n as int, m as int, result as int) <= 0,
+      forall|k: int| 1 <= k < result as int ==> socks_after_day(n as int, m as int, k) > 0
 // </vc-spec>
 // <vc-code>
 {

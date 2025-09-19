@@ -49,9 +49,9 @@ spec fn valid_result(n: Seq<char>, result: int) -> bool
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: Seq<char>) -> (result: int)
-    requires valid_lucky_number(n)
-    ensures valid_result(n, result)
+fn solve(n: Vec<char>) -> (result: i8)
+    requires valid_lucky_number(n@)
+    ensures valid_result(n@, result as int)
 // </vc-spec>
 // <vc-code>
 {

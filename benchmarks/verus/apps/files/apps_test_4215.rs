@@ -15,13 +15,13 @@ spec fn uncovered_length(a: int, b: int) -> int {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(a: int, b: int) -> (result: int)
+fn solve(a: i8, b: i8) -> (result: i8)
     requires 
-        valid_input(a, b)
+        valid_input(a as int, b as int)
     ensures 
         result >= 0,
-        result == uncovered_length(a, b),
-        result == if a > 2 * b { a - 2 * b } else { 0 }
+        result as int == uncovered_length(a as int, b as int),
+        result as int == if a as int > 2 * (b as int) { a as int - 2 * (b as int) } else { 0 }
 // </vc-spec>
 // <vc-code>
 {

@@ -45,12 +45,12 @@ spec fn correct_concatenation(input: Seq<char>, output: Seq<char>) -> bool
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(input: Seq<char>) -> (output: Seq<char>)
+fn solve(input: Vec<char>) -> (output: Vec<char>)
     requires
-        valid_input(input),
+        valid_input(input@),
     ensures
-        valid_output(output),
-        correct_concatenation(input, output),
+        valid_output(output@),
+        correct_concatenation(input@, output@),
 // </vc-spec>
 // <vc-code>
 {

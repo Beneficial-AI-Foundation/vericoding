@@ -44,9 +44,9 @@ spec fn int_to_string(n: int) -> Seq<char> {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: int) -> (result: Vec<String>)
-    requires n >= 2
-    ensures valid_output(n, result@)
+fn solve(n: i8) -> (result: Vec<String>)
+    requires n as int >= 2
+    ensures valid_output(n as int, result@)
 // </vc-spec>
 // <vc-code>
 {

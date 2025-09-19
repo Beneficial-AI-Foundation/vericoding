@@ -22,9 +22,9 @@ spec fn valid_input(n: int, years: Seq<int>) -> bool
 // </vc-helpers>
 
 // <vc-spec>
-proof fn solve(n: int, years: Seq<int>) -> (result: int)
-    requires valid_input(n, years)
-    ensures result == sum_range(years, 0, years.len() as int) / n
+fn solve(n: i8, years: Vec<i8>) -> (result: i8)
+    requires n > 0 && years.len() == n as nat
+    ensures result as int == sum_range(years@.map(|i, x| x as int), 0, years.len() as int) / (n as int)
 // </vc-spec>
 // <vc-code>
 {

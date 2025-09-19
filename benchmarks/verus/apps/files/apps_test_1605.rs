@@ -54,9 +54,9 @@ spec fn valid_output(s: Seq<char>, even_count: int, odd_count: int) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(s: Seq<char>) -> (result: (u32, u32))
-    requires valid_input(s)
-    ensures valid_output(s, result.0 as int, result.1 as int)
+fn solve(s: Vec<char>) -> (result: (u32, u32))
+    requires valid_input(s@)
+    ensures valid_output(s@, result.0 as int, result.1 as int)
 // </vc-spec>
 // <vc-code>
 {

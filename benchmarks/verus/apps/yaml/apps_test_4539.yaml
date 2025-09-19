@@ -27,8 +27,8 @@ vc-preamble: |-
 vc-helpers: |
 
 vc-spec: |-
-  fn solve(n: int) -> (result: &'static str)
-    requires valid_input(n)
+  fn solve(n: i8) -> (result: &'static str)
+    requires valid_input(n as int)
 
 vc-code: |-
   {

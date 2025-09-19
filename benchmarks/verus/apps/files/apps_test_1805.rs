@@ -24,9 +24,9 @@ spec fn valid_result(queries: Seq<int>, results: Seq<int>) -> bool
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(queries: Seq<int>) -> (results: Seq<int>)
-    requires valid_input(queries)
-    ensures valid_result(queries, results)
+fn solve(queries: Vec<i8>) -> (results: Vec<i8>)
+    requires valid_input(queries@.map(|i: int, x: i8| x as int))
+    ensures valid_result(queries@.map(|i: int, x: i8| x as int), results@.map(|i: int, x: i8| x as int))
 // </vc-spec>
 // <vc-code>
 {

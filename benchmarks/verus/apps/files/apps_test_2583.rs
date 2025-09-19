@@ -36,16 +36,16 @@ spec fn is_limited_prime(p: int) -> bool
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(input: Vec<int>) -> (result: Vec<&'static str>)
+fn solve(input: Vec<i8>) -> (result: Vec<&'static str>)
     requires
         input.len() >= 1,
-        input[0] >= 1,
-        input.len() == input[0] + 1,
-        forall|i: int| #![auto] 1 <= i < input.len() ==> input[i as int] >= 1
+        input[0] as int >= 1,
+        input.len() == input[0] as int + 1,
+        forall|i: int| #![auto] 1 <= i < input.len() ==> input[i as int] as int >= 1
     ensures
-        result.len() == input[0],
+        result.len() == input[0] as int,
         forall|i: int| #![auto] 0 <= i < result.len() ==> result[i as int] == "FastestFinger" || result[i as int] == "Ashishgup",
-        forall|i: int| #![auto] 1 <= i < input.len() ==> result[(i-1) as int] == determine_winner(input[i as int])
+        forall|i: int| #![auto] 1 <= i < input.len() ==> result[(i-1) as int] == determine_winner(input[i as int] as int)
 // </vc-spec>
 // <vc-code>
 {

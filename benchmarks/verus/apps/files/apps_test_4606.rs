@@ -30,9 +30,9 @@ spec fn int_to_string(n: int) -> Seq<char>
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: int) -> (result: Seq<char>)
-    requires valid_input(n)
-    ensures valid_output(n, result)
+fn solve(n: i8) -> (result: Vec<char>)
+    requires valid_input(n as int)
+    ensures valid_output(n as int, result@)
 // </vc-spec>
 // <vc-code>
 {

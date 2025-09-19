@@ -24,12 +24,12 @@ spec fn correct_result(x: int, a: int, b: int, result: Seq<char>) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(x: int, a: int, b: int) -> (result: String)
+fn solve(x: i8, a: i8, b: i8) -> (result: String)
     requires 
-        valid_input(x, a, b),
+        valid_input(x as int, a as int, b as int),
     ensures 
         result@ == seq!['A'] || result@ == seq!['B'],
-        correct_result(x, a, b, result@),
+        correct_result(x as int, a as int, b as int, result@),
 // </vc-spec>
 // <vc-code>
 {

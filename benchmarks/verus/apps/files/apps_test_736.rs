@@ -41,7 +41,7 @@ spec fn is_minimal_solution(n: int, m: int, result: int) -> bool
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: i32, m: i32) -> (result: i32)
+fn solve(n: i8, m: i8) -> (result: i8)
     requires 
         valid_input(n as int, m as int)
     ensures 

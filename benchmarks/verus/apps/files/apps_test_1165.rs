@@ -23,9 +23,9 @@ spec fn valid_result(a: Seq<int>, queries: Seq<(int, int, int)>, result: Seq<int
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: int, m: int, a: Seq<int>, queries: Seq<(int, int, int)>) -> (result: Seq<int>)
-    requires valid_input(n, m, a, queries)
-    ensures valid_result(a, queries, result)
+fn solve(n: i8, m: i8, a: Vec<i8>, queries: Vec<(i8, i8, i8)>) -> (result: Vec<i8>)
+    requires valid_input(n as int, m as int, a@.map(|i: int, x: i8| x as int), queries@.map(|i: int, q: (i8, i8, i8)| (q.0 as int, q.1 as int, q.2 as int)))
+    ensures valid_result(a@.map(|i: int, x: i8| x as int), queries@.map(|i: int, q: (i8, i8, i8)| (q.0 as int, q.1 as int, q.2 as int)), result@.map(|i: int, x: i8| x as int))
 // </vc-spec>
 // <vc-code>
 {

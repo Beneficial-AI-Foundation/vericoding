@@ -20,9 +20,9 @@ spec fn winner(n: int, m: int) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: int, m: int) -> (result: bool)
-    requires valid_input(n, m)
-    ensures result == winner(n, m)
+fn solve(n: i8, m: i8) -> (result: bool)
+    requires valid_input(n as int, m as int)
+    ensures result == winner(n as int, m as int)
 // </vc-spec>
 // <vc-code>
 {

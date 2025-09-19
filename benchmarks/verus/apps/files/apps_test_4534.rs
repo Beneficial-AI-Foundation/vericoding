@@ -16,11 +16,11 @@ spec fn binomial(n: int, k: int) -> int
 // </vc-helpers>
 
 // <vc-spec>
-fn get_row(k: int) -> (result: Vec<int>)
-    requires 0 <= k <= 33
+fn get_row(k: u8) -> (result: Vec<u8>)
+    requires k <= 33
     ensures 
         result.len() == k + 1,
-        forall|i: int| 0 <= i < result.len() ==> #[trigger] result[i] == binomial(k, i),
+        forall|i: int| 0 <= i < result.len() ==> #[trigger] result[i] as int == binomial(k as int, i),
         forall|i: int| 0 <= i < result.len() ==> result[i] > 0,
 // </vc-spec>
 // <vc-code>

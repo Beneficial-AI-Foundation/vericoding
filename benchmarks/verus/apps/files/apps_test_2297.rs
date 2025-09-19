@@ -39,9 +39,9 @@ spec fn correct_result(queries: Seq<(int, int)>, results: Seq<int>) -> bool
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(queries: Seq<(int, int)>) -> (results: Seq<int>)
-    requires valid_input(queries)
-    ensures correct_result(queries, results)
+fn solve(queries: Vec<(i8, i8)>) -> (results: Vec<i8>)
+    requires valid_input(queries@.map(|i: int, x: (i8, i8)| (x.0 as int, x.1 as int)))
+    ensures correct_result(queries@.map(|i: int, x: (i8, i8)| (x.0 as int, x.1 as int)), results@.map(|i: int, x: i8| x as int))
 // </vc-spec>
 // <vc-code>
 {

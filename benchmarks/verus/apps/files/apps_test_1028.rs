@@ -33,7 +33,7 @@ spec fn max_friendship_pairs(n: int, m: int) -> int
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: i32, m: i32) -> (result: (i32, i32))
+fn solve(n: i8, m: i8) -> (result: (i8, i8))
   requires valid_input(n as int, m as int)
   ensures 
       result.0 >= 0 &&

@@ -39,11 +39,11 @@ vc-preamble: |-
 vc-helpers: |-
 
 vc-spec: |-
-  fn solve_graph(n: int, k: int, f: Seq<int>, w: Seq<int>) -> (result: (Seq<int>, Seq<int>))
+  fn solve_graph(n: i8, k: i8, f: Vec<i8>, w: Vec<i8>) -> (result: (Vec<i8>, Vec<i8>))
     requires 
-      valid_graph(n, f, w),
+      valid_graph(n as int, f@.map_values(|x: i8| x as int), w@.map_values(|x: i8| x as int)),
       k > 0
-    ensures valid_result(n, result.0, result.1)
+    ensures valid_result(n as int, result.0@.map_values(|x: i8| x as int), result.1@.map_values(|x: i8| x as int))
 
 vc-code: |-
   {

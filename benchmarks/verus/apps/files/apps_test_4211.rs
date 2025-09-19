@@ -31,9 +31,9 @@ spec fn correct_result(n: int, b: Seq<int>, result: int) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: int, b: Seq<int>) -> (result: int)
-  requires valid_input(n, b)
-  ensures correct_result(n, b, result)
+fn solve(n: i8, b: Vec<i8>) -> (result: i8)
+  requires valid_input(n as int, b@.map(|i: int, x: i8| x as int))
+  ensures correct_result(n as int, b@.map(|i: int, x: i8| x as int), result as int)
 // </vc-spec>
 // <vc-code>
 {

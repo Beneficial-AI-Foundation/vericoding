@@ -82,19 +82,19 @@ spec fn int_to_string_spec(n: int) -> Seq<char>
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(input: Seq<char>) -> (result: Seq<char>)
+fn solve(input: Vec<char>) -> (result: Vec<char>)
     requires
-        valid_input(input),
+        valid_input(input@),
     ensures
-        result.len() > 0,
-        result[result.len() - 1] == '\n',
+        result@.len() > 0,
+        result@[result@.len() - 1] == '\n',
         ({
-            let parts = split_string_spec(input);
+            let parts = split_string_spec(input@);
             let a = string_to_int_spec(parts[0]);
             let b = string_to_int_spec(parts[1]);
             let c = string_to_int_spec(parts[2]);
             let drinks = compute_drinks(a, b, c);
-            result == int_to_string_spec(drinks) + seq!['\n']
+            result@ == int_to_string_spec(drinks) + seq!['\n']
         }),
 // </vc-spec>
 // <vc-code>

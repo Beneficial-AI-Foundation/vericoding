@@ -19,12 +19,12 @@ recommends valid_input(s)
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(s: Seq<char>) -> (result: String)
+fn solve(s: Vec<char>) -> (result: String)
     requires 
-        valid_input(s)
+        valid_input(s@)
     ensures 
         result@ =~= seq!['Y', 'e', 's'] || result@ =~= seq!['N', 'o'],
-        is_coffee_like(s) <==> result@ =~= seq!['Y', 'e', 's']
+        is_coffee_like(s@) <==> result@ =~= seq!['Y', 'e', 's']
 // </vc-spec>
 // <vc-code>
 {

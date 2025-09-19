@@ -21,11 +21,11 @@ spec fn count_divisible_in_range(a: int, b: int, x: int) -> int
 // </vc-helpers>
 
 // <vc-spec>
-fn count_divisible(a: int, b: int, x: int) -> (count: int)
+fn count_divisible(a: i8, b: i8, x: i8) -> (count: i8)
     requires 
-        valid_input(a, b, x),
+        valid_input(a as int, b as int, x as int),
     ensures 
-        count == count_divisible_in_range(a, b, x),
+        count as int == count_divisible_in_range(a as int, b as int, x as int),
         count >= 0,
 // </vc-spec>
 // <vc-code>

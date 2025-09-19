@@ -167,17 +167,17 @@ spec fn int_to_string_func(n: int) -> Seq<char> {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(stdin_input: Seq<char>) -> (result: Seq<char>)
+fn solve(stdin_input: Vec<char>) -> (result: Vec<char>)
     requires 
-        stdin_input.len() > 0,
-        valid_input_format(stdin_input),
+        stdin_input@.len() > 0,
+        valid_input_format(stdin_input@),
     ensures 
-        result.len() > 0,
-        exists|i: int, j: int| i >= 1 && j >= 1 && result == int_to_string_func(i) + seq![' '] + int_to_string_func(j),
-        valid_solution(stdin_input, result),
-        solution_exists(stdin_input) ==> solution_found(stdin_input, result),
-        correct_matrix_matching(stdin_input, result),
-        always_returns_first_match(stdin_input, result),
+        result@.len() > 0,
+        exists|i: int, j: int| i >= 1 && j >= 1 && result@ == int_to_string_func(i) + seq![' '] + int_to_string_func(j),
+        valid_solution(stdin_input@, result@),
+        solution_exists(stdin_input@) ==> solution_found(stdin_input@, result@),
+        correct_matrix_matching(stdin_input@, result@),
+        always_returns_first_match(stdin_input@, result@),
 // </vc-spec>
 // <vc-code>
 {

@@ -151,13 +151,13 @@ spec(checked) fn greedy_assignment_works(sorted_handles: Seq<(Seq<char>, int)>, 
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(stdin_input: Seq<char>) -> (result: Vec<char>)
+fn solve(stdin_input: Vec<char>) -> (result: Vec<char>)
   requires
-    stdin_input.len() > 0,
-    valid_input(stdin_input),
+    stdin_input@.len() > 0,
+    valid_input(stdin_input@),
   ensures
     result@ == seq!['Y', 'E', 'S'] || result@ == seq!['N', 'O'],
-    (result@ == seq!['Y', 'E', 'S']) <==> can_assign_handles_greedy(stdin_input),
+    (result@ == seq!['Y', 'E', 'S']) <==> can_assign_handles_greedy(stdin_input@),
 // </vc-spec>
 // <vc-code>
 {
