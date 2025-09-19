@@ -75,11 +75,8 @@ def load_postamble_from_yaml(config: ProcessingConfig, lean_file_path: Path) -> 
     if files_dir.name == 'files':
         yaml_dir = files_dir.parent / 'yaml'
     else:
-        # Try common patterns: look for yaml/ subdirectory
-        yaml_dir = files_dir / 'yaml'
-        if not yaml_dir.exists():
-            # Alternative: yaml/ directory parallel to current directory
-            yaml_dir = files_dir.parent / 'yaml'
+        print(f"Error: Expected files directory to end with 'files', got: {files_dir}")
+        sys.exit(1)
     
     full_yaml_path = yaml_dir / yaml_file_path.name
     
