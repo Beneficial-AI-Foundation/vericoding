@@ -14,7 +14,7 @@ fn numpy_arctanh(x: Vec<i8>) -> (result: Vec<i8>)
     ensures
         result@.len() == x@.len(),
         /* Identity property: arctanh(0) = 0 */
-        forall|i: int| 0 <= i < x@.len() && x@[i] == 0 ==> result@[i] == 0,
+        forall|i: int| 0 <= i < x@.len() && x@[i] as int == 0 ==> result@[i] as int == 0,
         /* Range property: result contains finite numbers */
         result@.len() == x@.len(),
 // </vc-spec>

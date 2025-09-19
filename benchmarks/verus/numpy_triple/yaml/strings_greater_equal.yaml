@@ -51,12 +51,12 @@ vc-spec: |-
       requires x1.len() == x2.len(),
       ensures 
           result.len() == x1.len(),
-          forall|i: int| 0 <= i < result.len() as int ==> result[i as int] == string_lex_ge(x1[i as int]@, x2[i as int]@),
+          forall|i: int| 0 <= i < result.len() ==> result[i] == string_lex_ge(x1[i]@, x2[i]@),
           /* Reflexive property: every string is >= itself */
-          forall|i: int| 0 <= i < result.len() as int && x1[i as int] == x2[i as int] ==> result[i as int] == true,
+          forall|i: int| 0 <= i < result.len() && x1[i] == x2[i] ==> result[i] == true,
           /* Empty string properties */
-          forall|i: int| 0 <= i < result.len() as int && x1[i as int]@ == Seq::<char>::empty() && x2[i as int]@ == Seq::<char>::empty() ==> result[i as int] == true,
-          forall|i: int| 0 <= i < result.len() as int && x1[i as int]@ != Seq::<char>::empty() && x2[i as int]@ == Seq::<char>::empty() ==> result[i as int] == true,
+          forall|i: int| 0 <= i < result.len() && x1[i]@ == Seq::<char>::empty() && x2[i]@ == Seq::<char>::empty() ==> result[i] == true,
+          forall|i: int| 0 <= i < result.len() && x1[i]@ != Seq::<char>::empty() && x2[i]@ == Seq::<char>::empty() ==> result[i] == true,
 vc-code: |-
   {
       // impl-start

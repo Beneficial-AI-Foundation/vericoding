@@ -8,16 +8,16 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn polyder(c: Vec<f32>, m: usize, scl: f32) -> (result: Vec<f32>)
+fn polyder(c: Vec<f32>, m: u8, scl: f32) -> (result: Vec<f32>)
     requires 
-        m <= c@.len(),
+        m as int <= c.len(),
     ensures
-        result@.len() == c@.len() - m,
+        result.len() == c.len() - m as int,
         /* Special case: m = 0 returns original polynomial */
-        (m == 0 ==> forall|i: int| 0 <= i < result@.len() ==> #[trigger] result@[i] == c@[i]),
+        (m == 0 ==> forall|i: int| 0 <= i < result.len() ==> #[trigger] result[i] == c[i]),
         /* General case: m > 0 - coefficients come from higher degree terms */
-        (m > 0 ==> forall|i: int| 0 <= i < result@.len() ==> 
-            #[trigger] result@[i] == result@[i] /* Mathematical relationship preserved through differentiation */)
+        (m > 0 ==> forall|i: int| 0 <= i < result.len() ==> 
+            #[trigger] result[i] == result[i] /* Mathematical relationship preserved through differentiation */)
 // </vc-spec>
 // <vc-code>
 {

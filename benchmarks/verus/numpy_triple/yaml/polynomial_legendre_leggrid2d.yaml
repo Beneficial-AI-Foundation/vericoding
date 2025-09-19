@@ -2,16 +2,16 @@ vc-description: |-
   Evaluate a 2-D Legendre series on the Cartesian product of x and y.
   This function computes p(a,b) = ∑_{i,j} c_{i,j} * L_i(a) * L_j(b)
   for all pairs (a,b) from the Cartesian product of x and y.
-  
+
   Specification: leggrid2d correctly evaluates a 2-D Legendre series
   on the Cartesian product of input points.
-  
+
   The function computes the tensor product evaluation of Legendre polynomials
   according to the mathematical formula p(a,b) = ∑_{i,j} c_{i,j} * L_i(a) * L_j(b).
 
 vc-preamble: |-
   use vstd::prelude::*;
-  
+
   verus! {
 
 vc-helpers: |-
@@ -24,15 +24,21 @@ vc-spec: |-
           c@.len() > 0,
           forall|i: int| 0 <= i < c@.len() ==> c@[i].len() > 0,
       ensures
+          /* The result has the correct shape: nx × ny grid */
           result@.len() == x@.len(),
           forall|i: int| 0 <= i < result@.len() ==> result@[i].len() == y@.len(),
+          /* Grid structure preserves dimensionality */
+          x@.len() > 0 && y@.len() > 0,
 
 vc-code: |-
   {
+      // impl-start
       assume(false);
       unreached()
+      // impl-end
   }
 
 vc-postamble: |-
+
   }
   fn main() {}

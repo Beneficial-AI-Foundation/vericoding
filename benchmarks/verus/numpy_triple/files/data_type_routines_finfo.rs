@@ -31,8 +31,8 @@ struct FloatInfo {
 fn numpy_finfo() -> (info: FloatInfo)
     ensures
         /* Basic sanity checks */
-        info.bits@ > 0,
-        info.precision@ > 0,
+        (info.bits as nat) > 0,
+        (info.precision as nat) > 0,
         /* eps is positive and small */
         (info.eps as int) > 0,
         (info.eps as int) < 1,
@@ -40,7 +40,7 @@ fn numpy_finfo() -> (info: FloatInfo)
         (info.max as int) > 0,
         (info.min as int) < 0,
         /* min is typically -max for symmetric floating point types */
-        (info.min as int) == -(info.max as int),
+        (info.min as int) == -((info.max as int)),
         /* resolution is positive */
         (info.resolution as int) > 0,
         /* smallest_normal is positive and smaller than 1 */
@@ -52,7 +52,7 @@ fn numpy_finfo() -> (info: FloatInfo)
         /* eps represents the machine epsilon property */
         (info.eps as int) == (info.resolution as int),
         /* The number of bits should be reasonable (32 or 64 for common float types) */
-        info.bits@ == 32 || info.bits@ == 64,
+        (info.bits as nat) == 32 || (info.bits as nat) == 64,
 // </vc-spec>
 // <vc-code>
 {

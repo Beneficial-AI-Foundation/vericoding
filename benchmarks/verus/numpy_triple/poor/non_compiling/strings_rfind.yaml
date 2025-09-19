@@ -20,22 +20,22 @@ vc-spec: |-
           result.len() == a.len(),
           forall|i: int| 0 <= i < result.len() ==> (
               /* Basic range constraint: result is -1 or within string bounds */
-              (result[i] == -1 || (0 <= result[i] as int && (result[i] as int) < (a[i]@.len() as int))) &&
+              (result[i] == -1 || (0 <= result[i] as int && result[i] as int < a[i].len())) &&
               /* If result is -1, no occurrence of substring within the specified range */
               (result[i] == -1 ==> 
-                  forall|j: int| start[i] as int <= j && j + (sub[i]@.len() as int) <= end_pos[i] as int + 1 && 
-                                 j + (sub[i]@.len() as int) <= (a[i]@.len() as int) ==> 
+                  forall|j: int| start[i] as int <= j && j + sub[i].len() <= end_pos[i] as int + 1 && 
+                                 j + sub[i].len() <= a[i].len() ==> 
                       !string_starts_with(a[i]@, sub[i]@, j)) &&
               /* If result is non-negative, it's the rightmost valid occurrence */
               (result[i] >= 0 ==> 
                   /* The result is within the search range */
                   start[i] as int <= result[i] as int && 
-                  result[i] as int + (sub[i]@.len() as int) <= end_pos[i] as int + 1 &&
+                  result[i] as int + sub[i].len() <= end_pos[i] as int + 1 &&
                   /* The substring matches at this position */
                   string_starts_with(a[i]@, sub[i]@, result[i] as int) &&
                   /* This is the rightmost occurrence within the range */
-                  (forall|j: int| (result[i] as int < j) && (j + (sub[i]@.len() as int) <= end_pos[i] as int + 1) && 
-                                  (start[i] as int <= j) && (j + (sub[i]@.len() as int) <= (a[i]@.len() as int)) ==> 
+                  (forall|j: int| result[i] as int < j && j + sub[i].len() <= end_pos[i] as int + 1 && 
+                                  start[i] as int <= j && j + sub[i].len() <= a[i].len() ==> 
                       !string_starts_with(a[i]@, sub[i]@, j)))
           ),
 vc-code: |-

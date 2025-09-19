@@ -42,14 +42,14 @@ spec fn int_to_complex(x: int) -> Complex {
 fn rfft2(a: Vec<Vec<i8>>) -> (result: Vec<Vec<Complex>>)
     requires 
         a.len() > 0,
-        forall|i: int| 0 <= i < a.len() ==> #[trigger] a@[i].len() > 0,
-        forall|i: int| 0 <= i < a.len() ==> #[trigger] a@[i].len() == a@[0].len(),
+        forall|i: int| 0 <= i < a.len() ==> #[trigger] a[i]@.len() > 0,
+        forall|i: int| 0 <= i < a.len() ==> #[trigger] a[i]@.len() == a[0]@.len(),
     ensures
         result.len() == a.len(),
         forall|k: int| 0 <= k < result.len() ==> 
-            #[trigger] result@[k].len() == (a@[0].len() / 2) + 1,
+            #[trigger] result[k]@.len() == (a[0]@.len() / 2) + 1,
         /* DC component is real (imaginary part is zero) */
-        result@[0]@[0].im == 0,
+        result[0]@[0].im == 0,
 // </vc-spec>
 // <vc-code>
 {

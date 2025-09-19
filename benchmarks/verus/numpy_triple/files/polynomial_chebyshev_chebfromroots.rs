@@ -10,8 +10,8 @@ verus! {
 // <vc-spec>
 fn chebfromroots(roots: Vec<f64>) -> (coeffs: Vec<f64>)
     ensures
-        coeffs.len() == roots.len() + 1,
-        roots.len() > 0 ==> coeffs[roots.len() as int] != 0.0,
+        coeffs@.len() == roots@.len() + 1,
+        roots@.len() > 0 ==> coeffs@[roots@.len() as int] != 0.0,
 // </vc-spec>
 // <vc-code>
 {
