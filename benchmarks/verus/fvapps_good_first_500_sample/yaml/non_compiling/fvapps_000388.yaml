@@ -1,0 +1,91 @@
+vc-description: |-
+  Given an array of integers and an integer k, you need to find the total number of continuous subarrays whose sum equals to k.
+
+  Example 1:
+
+  Input:nums = [1,1,1], k = 2
+  Output: 2
+
+  Note:
+
+  The length of the array is in range [1, 20,000].
+  The range of numbers in the array is [-1000, 1000] and the range of the integer k is [-1e7, 1e7].
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn count_subarrays_with_sum(nums: Vec<i32>, k: i32) -> (result: usize)
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      unreached()
+      // impl-end
+  }
+
+  proof fn empty_list_property(k: i32)
+      ensures count_subarrays_with_sum(vec![], k) == 0,
+  {
+      assume(false); // TODO: Remove this line and implement the proof
+  }
+
+  proof fn single_element_property(x: i32, k: i32)
+      ensures count_subarrays_with_sum(vec![x], k) == if x == k { 1usize } else { 0usize },
+  {
+      assume(false); // TODO: Remove this line and implement the proof
+  }
+
+  proof fn uniform_array_property(x: i32, len: usize, arr: Vec<i32>)
+      requires 
+          len > 0,
+          arr.len() == len,
+          forall|i: int| 0 <= i < len ==> arr[i] == x,
+          x != 0,
+          len >= 2,
+      ensures count_subarrays_with_sum(arr, (2 * x as int) as i32) > 0,
+  {
+      assume(false); // TODO: Remove this line and implement the proof
+  }
+
+  proof fn uniform_zeros_property(len: usize, arr: Vec<i32>)
+      requires 
+          len > 0,
+          arr.len() == len,
+          forall|i: int| 0 <= i < len ==> arr[i] == 0,
+      ensures count_subarrays_with_sum(arr, 0) == len * (len + 1) / 2,
+  {
+      assume(false); // TODO: Remove this line and implement the proof
+  }
+
+  proof fn non_negative_result_property(nums: Vec<i32>, k: i32)
+      ensures count_subarrays_with_sum(nums, k) >= 0,
+  {
+      assume(false); // TODO: Remove this line and implement the proof
+  }
+
+  proof fn reverse_invariant_property(nums: Vec<i32>, k: i32)
+      ensures count_subarrays_with_sum(nums, k) == count_subarrays_with_sum(nums.iter().cloned().rev().collect(), k),
+  {
+      assume(false); // TODO: Remove this line and implement the proof
+  }
+
+vc-postamble: |-
+
+  }
+
+  fn main() {
+      // let result1 = count_subarrays_with_sum(vec![1, 1, 1], 2);
+      // println!("Result 1: {}", result1); // Should be 2
+      
+      // let result2 = count_subarrays_with_sum(vec![1, 2, 3], 3);
+      // println!("Result 2: {}", result2); // Should be 2
+      
+      // let result3 = count_subarrays_with_sum(vec![1, -1, 0], 0);
+      // println!("Result 3: {}", result3); // Should be 3
+  }

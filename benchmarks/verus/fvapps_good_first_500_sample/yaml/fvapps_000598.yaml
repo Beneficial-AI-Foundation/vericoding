@@ -1,0 +1,91 @@
+vc-description: |-
+  Nexus 4.O is going to be organized by ASME, GLA University. Shubhanshu, Head of Finance Team is working for it. He has N number of bills of different values as a1, a2, a3…an.
+  He is interested in a game in which one has to do the addition of the bills. But due to privacy concerns, he cannot share the details with others. 
+  He can only trust his best friend Avani with such a confidential thing. So, he asked her to play this game.
+  Rules of the game :
+  - Avani needs to answer Q queries.
+  - Every Qi query has 2 values Xi and Yi.
+  - Avani needs to find the sum of the values between Xi and Yi (inclusive).
+  So, you need to help Avani in answering the Q queries
+
+  -----Input:-----
+  - First line will contain T, number of testcases. Then the testcases follow. 
+  - The first line of each test case contains the value N and Q.
+  - The second line of each test case contains the N space-separated values as a1, a2, a3…an.
+  - The next line of each test case containing Q query with Xi and Yi.
+
+  -----Output:-----
+  For each test case, Print the total amount between Xi and Yi for Q number of queries.
+
+  -----Constraints-----
+  - 1 ≤ T ≤ 100
+  - 1 ≤ N ≤ 10^5
+  - 1 ≤ Q ≤ 10^5
+  - 1 ≤ ai ≤ 10^9
+
+  -----Sample Input:-----
+  1
+  8 3
+  1 2 3 4 5 6 7 8
+  2 3
+  1 6
+  5 8
+
+  -----Sample Output:-----
+  5
+  21
+  26
+
+  -----EXPLANATION:-----
+  Q1 : (2,3) 2+3=5
+  Q2 : (1,6) 1+2+3+4+5+6=21
+  Q3 : (5,8) 5+6+7+8=26
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  spec fn range_sum(bills: Seq<nat>, start: nat, end: nat) -> nat 
+      decreases end - start
+  {
+      if start > end || start >= bills.len() {
+          0
+      } else if start == end {
+          bills[start as int]
+      } else {
+          bills[start as int] + range_sum(bills, start + 1, end)
+      }
+  }
+
+  fn solve_bill_queries(n: usize, q: usize, bills: Vec<nat>, queries: Vec<(usize, usize)>) -> (result: Vec<nat>)
+      requires 
+          bills.len() > 0,
+          queries.len() > 0,
+          n == bills.len(),
+          q == queries.len(),
+      ensures 
+          result.len() == queries.len(),
+          forall|i: int| 0 <= i < result.len() ==> 
+              #[trigger] result[i] == range_sum(bills@, (queries[i].0 - 1) as nat, (queries[i].1 - 1) as nat),
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      unreached()
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {
+      // let test_bills = vec![1, 2, 3, 4, 5, 6, 7, 8];
+      // let test_queries = vec![(2, 3), (1, 6), (5, 8)];
+      // let result = solve_bill_queries(8, 3, test_bills, test_queries);
+      // println!("Result: {:?}", result); // Expected: [5, 21, 26]
+  }

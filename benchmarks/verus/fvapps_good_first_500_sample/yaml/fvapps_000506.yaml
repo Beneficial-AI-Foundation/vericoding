@@ -1,0 +1,47 @@
+vc-description: |-
+  Indian National Olympiad in Informatics 2015
+  A string is any nonempty sequence of 0s and 1s. Examples of strings are 00, 101, 111000, 1, 0, 01. The length of a string is the number of symbols in it. For example, the length of 111000 is 6. If u and v are strings, then uv is the string obtained by concatenating u and v. For example if u = 110 and v = 0010 then uv = 1100010.
+  A string w is periodic if there exists a string v such that w = vn = vv · · · v (n times), for some n ≥ 2. Note that in this case the length of v is strictly less than that of w. For example, 110110 is periodic, because it is vv for v = 110.
+  Given a positive integer N , find the number of strings of length N which are not periodic. Report the answer modulo M . The non-periodic strings of length 2 are 10 and 01. The non- periodic strings of length 3 are 001, 010, 011, 100, 101, and 110.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+  use vstd::arithmetic::power::pow;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn solve_non_periodic_strings(n: nat, m: nat) -> (result: nat)
+      requires 
+          n >= 2,
+          n <= 10000,
+          m > 0,
+          m <= 1000000000,
+      ensures 
+          result >= 0,
+          result < m,
+          result < pow(2, n),
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      unreached()
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+
+  fn main() {
+      // Apps difficulty: interview
+      // Assurance level: guarded_and_plausible
+      
+      // Example test cases:
+      // solve_non_periodic_strings(3, 176) should return 6
+      // solve_non_periodic_strings(4, 100) should return 12  
+      // solve_non_periodic_strings(2, 50) should return 2
+  }

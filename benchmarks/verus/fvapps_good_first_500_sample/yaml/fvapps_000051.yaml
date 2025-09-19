@@ -1,0 +1,48 @@
+vc-description: |-
+  There are n games in a football tournament. Three teams are participating in it. Currently k games had already been played. 
+
+  You are an avid football fan, but recently you missed the whole k games. Fortunately, you remember a guess of your friend for these k games. Your friend did not tell exact number of wins of each team, instead he thought that absolute difference between number of wins of first and second team will be d_1 and that of between second and third team will be d_2.
+
+  You don't want any of team win the tournament, that is each team should have the same number of wins after n games. That's why you want to know: does there exist a valid tournament satisfying the friend's guess such that no team will win this tournament?
+
+  Note that outcome of a match can not be a draw, it has to be either win or loss.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn can_have_no_winner(n: u64, k: u64, d1: u64, d2: u64) -> (result: bool)
+      requires
+          k <= n,
+          d1 <= k,
+          d2 <= k,
+      ensures
+          /* For no winner to exist, n must be divisible by 3 (each team gets equal wins) */
+          n % 3 != 0 ==> result == false,
+          /* If k > n or differences exceed bounds, impossible */
+          (k > n || d1 > n || d2 > n) ==> result == false,
+          /* If differences are zero and k is divisible by 3, should be possible */
+          (d1 == 0 && d2 == 0 && k % 3 == 0 && k <= n && n % 3 == 0) ==> result == true,
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      false
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {
+      // let test1 = can_have_no_winner(3, 0, 0, 0);
+      // let test2 = can_have_no_winner(3, 3, 0, 0);
+      // let test3 = can_have_no_winner(6, 4, 1, 0);
+      // let test4 = can_have_no_winner(6, 3, 3, 0);
+      // let test5 = can_have_no_winner(3, 3, 3, 2);
+  }

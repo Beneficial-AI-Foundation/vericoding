@@ -1,0 +1,74 @@
+vc-description: |-
+  You are given an integer D. Find an integer sequence A_1, A_2, ..., A_N such that the following conditions are satisfied:
+  - 1 ≤ N ≤ 10^5
+  - 1 ≤ A_i ≤ 10^5 for each valid i
+  - ∑_{i=1}^N ∑_{j=i}^N (min(A_i, A_{i+1}, ..., A_j) - GCD(A_i, A_{i+1}, ..., A_j)) = D
+  It can be proved that a solution always exists under the given constraints.
+  Note: GCD(B_1, B_2, ..., B_M) is the greatest integer which divides all the integers B_1, B_2, ..., B_M.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  spec fn gcd_two(a: u32, b: u32) -> u32 
+      decreases vstd::math::max(a as int, b as int)
+  {
+      if b == 0 {
+          a
+      } else {
+          gcd_two(b, a % b)
+      }
+  }
+
+  spec fn gcd_seq(s: Seq<u32>) -> u32
+      decreases s.len()
+  {
+      if s.len() == 0 {
+          0
+      } else if s.len() == 1 {
+          s[0]
+      } else {
+          gcd_two(s[0], gcd_seq(s.skip(1)))
+      }
+  }
+
+  spec fn min_two(a: u32, b: u32) -> u32 {
+      if a <= b { a } else { b }
+  }
+
+  spec fn min_seq(s: Seq<u32>) -> u32 
+      decreases s.len()
+  {
+      if s.len() == 0 {
+          u32::MAX
+      } else if s.len() == 1 {
+          s[0]
+      } else {
+          min_two(s[0], min_seq(s.skip(1)))
+      }
+  }
+
+  spec fn solve_sequence_spec(d: u32) -> Seq<u32>;
+
+  fn solve_sequence(d: u32) -> (result: Vec<u32>)
+      ensures
+          result.len() >= 1 && result.len() <= 100000,
+          forall|i: int| 0 <= i < result.len() ==> result[i] >= 1 && result[i] <= 100000,
+          result@ == solve_sequence_spec(d)
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      unreached()
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {}

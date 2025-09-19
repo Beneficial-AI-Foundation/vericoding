@@ -1,0 +1,91 @@
+vc-description: |-
+  Given an array nums containing n + 1 integers where each integer is between 1 and n (inclusive), prove that at least one duplicate number must exist. Assume that there is only one duplicate number, find the duplicate one.
+
+  Example 1:
+  Input: [1,3,4,2,2]
+  Output: 2
+
+  Example 2:
+  Input: [3,1,3,4,2]
+  Output: 3
+
+  Note:
+  You must not modify the array (assume the array is read only).
+  You must use only constant, O(1) extra space.
+  Your runtime complexity should be less than O(n2).
+  There is only one duplicate number in the array, but it could be repeated more than once.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn find_duplicate(nums: Seq<u32>) -> (result: Option<u32>)
+      ensures
+          nums.len() == 0 ==> result == Option::<u32>::None,
+          nums =~= seq![1u32, 3u32, 4u32, 2u32, 2u32] ==> result == Some(2u32),
+          nums =~= seq![3u32, 1u32, 3u32, 4u32, 2u32] ==> result == Some(3u32),
+          nums =~= seq![2u32, 2u32, 2u32, 2u32, 2u32] ==> result == Some(2u32),
+          nums =~= seq![1u32, 1u32] ==> result == Some(1u32),
+          nums =~= seq![1u32, 2u32, 3u32, 4u32, 5u32, 6u32, 7u32, 8u32, 9u32, 5u32] ==> result == Some(5u32)
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      None
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  proof fn test_empty_list_return_none() {
+      assert(find_duplicate(seq![]) == None::<u32>);
+      assume(false); // TODO: Remove this line and implement the proof
+  }
+
+  proof fn test_finds_duplicate_in_list1() {
+      assert(find_duplicate(seq![1u32, 3u32, 4u32, 2u32, 2u32]) == Some(2u32));
+      assume(false); // TODO: Remove this line and implement the proof
+  }
+
+  proof fn test_finds_duplicate_in_list2() {
+      assert(find_duplicate(seq![3u32, 1u32, 3u32, 4u32, 2u32]) == Some(3u32));
+      assume(false); // TODO: Remove this line and implement the proof
+  }
+
+  proof fn test_finds_duplicate_in_list3() {
+      assert(find_duplicate(seq![2u32, 2u32, 2u32, 2u32, 2u32]) == Some(2u32));
+      assume(false); // TODO: Remove this line and implement the proof
+  }
+
+  proof fn test_finds_duplicate_in_list4() {
+      assert(find_duplicate(seq![1u32, 1u32]) == Some(1u32));
+      assume(false); // TODO: Remove this line and implement the proof
+  }
+
+  proof fn test_minimal_case_finds_one() {
+      assert(find_duplicate(seq![1u32, 1u32]) == Some(1u32));
+      assume(false); // TODO: Remove this line and implement the proof
+  }
+
+  proof fn test_finds_in_larger_list() {
+      assert(find_duplicate(seq![1u32, 2u32, 3u32, 4u32, 5u32, 6u32, 7u32, 8u32, 9u32, 5u32]) == Some(5u32));
+      assume(false); // TODO: Remove this line and implement the proof
+  }
+
+  }
+
+  fn main() {
+      // let result1 = find_duplicate(seq![1u32, 3u32, 4u32, 2u32, 2u32]);
+      // println!("{:?}", result1);
+      
+      // let result2 = find_duplicate(seq![3u32, 1u32, 3u32, 4u32, 2u32]);
+      // println!("{:?}", result2);
+      
+      // let result3 = find_duplicate(seq![2u32, 2u32, 2u32, 2u32, 2u32]);
+      // println!("{:?}", result3);
+  }

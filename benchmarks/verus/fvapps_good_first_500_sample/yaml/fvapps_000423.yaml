@@ -1,0 +1,79 @@
+vc-description: |-
+  Given an array of integers arr and two integers k and threshold.
+  Return the number of sub-arrays of size k and average greater than or equal to threshold.
+
+  Example 1:
+  Input: arr = [2,2,2,2,5,5,5,8], k = 3, threshold = 4
+  Output: 3
+  Explanation: Sub-arrays [2,5,5],[5,5,5] and [5,5,8] have averages 4, 5 and 6 respectively. All other sub-arrays of size 3 have averages less than 4 (the threshold).
+
+  Example 2:
+  Input: arr = [1,1,1,1,1], k = 1, threshold = 0
+  Output: 5
+
+  Example 3:
+  Input: arr = [11,13,17,23,29,31,7,5,2,3], k = 3, threshold = 5
+  Output: 6
+  Explanation: The first 6 sub-arrays of size 3 have averages greater than 5. Note that averages are not integers.
+
+  Example 4:
+  Input: arr = [7,7,7,7,7,7,7], k = 7, threshold = 7
+  Output: 1
+
+  Example 5:
+  Input: arr = [4,4,4,4], k = 4, threshold = 1
+  Output: 1
+
+  Constraints:
+
+  1 <= arr.length <= 10^5
+  1 <= arr[i] <= 10^4
+  1 <= k <= arr.length
+  0 <= threshold <= 10^4
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  spec fn subarray_sum(arr: Seq<i32>, start: nat, len: nat) -> int
+      decreases len
+  {
+      if len == 0 || start >= arr.len() {
+          0
+      } else {
+          arr[start as int] + subarray_sum(arr, start + 1, (len - 1) as nat)
+      }
+  }
+
+  fn num_of_subarrays(arr: Vec<i32>, k: usize, threshold: i32) -> (result: usize)
+      requires k > 0 && k <= arr.len(),
+      ensures 
+          result >= 0 &&
+          (arr.len() < k ==> result == 0) &&
+          (arr.len() >= k ==> result <= arr.len() - k + 1)
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      unreached()
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {
+      // let result1 = num_of_subarrays(vec![2, 2, 2, 2, 5, 5, 5, 8], 3, 4);
+      // println!("Result 1: {}", result1); // Expected: 3
+      
+      // let result2 = num_of_subarrays(vec![1, 1, 1, 1, 1], 1, 0);
+      // println!("Result 2: {}", result2); // Expected: 5
+      
+      // let result3 = num_of_subarrays(vec![11, 13, 17, 23, 29, 31, 7, 5, 2, 3], 3, 5);
+      // println!("Result 3: {}", result3); // Expected: 6
+  }

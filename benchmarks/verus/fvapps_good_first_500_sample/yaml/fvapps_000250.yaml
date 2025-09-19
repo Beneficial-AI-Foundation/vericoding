@@ -1,0 +1,43 @@
+vc-description: |-
+  Given a non-negative integer n, count all numbers with unique digits, x, where 0 ≤ x < 10^n.
+
+  Example:
+  Given n = 2, return 91. (The answer should be the total numbers in the range of 0 ≤ x < 100, excluding [11,22,33,44,55,66,77,88,99])
+
+  Credits: Special thanks to @memoryless for adding this problem and creating all test cases.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn count_numbers_with_unique_digits(n: u32) -> (result: u32)
+      ensures 
+          result > 0,
+          n == 0 ==> result == 1,
+          n == 1 ==> result == 10
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      unreached()
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+
+  fn main() {
+      // Apps difficulty: interview
+      // Assurance level: guarded
+
+      // Example outputs:
+      // count_numbers_with_unique_digits(2) should return 91
+      // count_numbers_with_unique_digits(0) should return 1  
+      // count_numbers_with_unique_digits(1) should return 10
+  }

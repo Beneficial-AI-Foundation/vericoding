@@ -1,0 +1,44 @@
+vc-description: |-
+  Chef has K chocolates and he wants to distribute them to N people (numbered 1 through N). These people are standing in a line in such a way that for each i (1 ≤ i ≤ N-1), person i and person i+1 are adjacent.
+  First, consider some way to distribute chocolates such that for each valid i, the number of chocolates the i-th person would receive from Chef is A_i and the sum S_1 = ∑_{i=1}^{N-1} |A_i - A_{i+1}| is minimum possible. Of course, each person must receive a non-negative integer number of chocolates.
+  Then, Chef wants to create a new sequence B_1, B_2, …, B_N by rearranging (permuting) the elements of the sequence A_1, A_2, …, A_N. For each valid i, the number of chocolates the i-th person actually receives from Chef is B_i. Chef wants to distribute the chocolates (choose B_1, B_2, …, B_N by permuting the sequence A and give B_i chocolates to the i-th person for each valid i) in such a way that S_2 = ∑_{i=1}^{N-1} |B_i – B_{i+1}| is maximum possible. You need to find the maximum value of S_2.
+  It is guaranteed that S_2 does not depend on the exact choice of the sequence A_1, A_2, …, A_N, as long as it is a sequence that minimises S_1.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn solve_chocolate_distribution(n: nat, k: nat) -> (result: nat)
+      requires n > 0,
+      ensures 
+          result >= 0,
+          result <= 2 * n - 1,
+          k == 0 ==> result == 0,
+          k % n == 0 ==> result == 0
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      unreached()
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+
+  fn main() {
+      // let result1 = solve_chocolate_distribution(3, 2);
+      // println!("Result for (3, 2): {}", result1);
+      
+      // let result2 = solve_chocolate_distribution(2, 2);
+      // println!("Result for (2, 2): {}", result2);
+      
+      // let result3 = solve_chocolate_distribution(3, 4);
+      // println!("Result for (3, 4): {}", result3);
+  }

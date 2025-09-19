@@ -1,0 +1,32 @@
+vc-description: |-
+  Ashley wrote a random number generator code.
+  Due to some reasons, the code only generates random positive integers which are not evenly divisible by 10. She gives N and S as input to the random number generator. The code generates a random number with number of digits equal to N and sum of digits equal to S. The code returns -1 if no number can be generated. Print "-1" in such cases (without quotes). Else print the minimum possible product of digits of the random number generated.
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+vc-helpers: |-
+
+vc-spec: |-
+  fn solve_random_generator(n: nat, s: nat) -> (result: i32)
+      ensures 
+          result >= -1 &&
+          (n == 1 ==> result == s as i32) &&
+          (n == 2 && s > 1 ==> result == (s - 1) as i32) &&
+          (n > 2 && s > 1 ==> result == 0) &&
+          (s <= 1 && n > 1 ==> result == -1)
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      0
+      // impl-end
+  }
+vc-postamble: |-
+
+  }
+  fn main() {
+      // let test1 = solve_random_generator(1, 5);
+      // let test2 = solve_random_generator(2, 2);
+      // let test3 = solve_random_generator(3, 5);
+  }

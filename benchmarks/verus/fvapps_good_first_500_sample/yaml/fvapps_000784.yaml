@@ -1,0 +1,46 @@
+vc-description: |-
+  Bitland declared war on Chefland and sent an army to fight them, but Chefland defended efficiently and Bitland's army has been reduced to N soldiers. They have no chance of winning the war and do not want to surrender, so they are planning to commit group suicide. Josh, the leader of Bitland's remaining soldiers, has different plans — he wants to survive and somehow escape.
+  The soldiers are numbered 1 through N; Josh is soldier N. The soldiers are going to stand in a circle in the order 1,2,…,P−1,N,P,P+1,…,N−1. Formally, they are standing in the circle in such a way that if Josh's position is P (1≤P≤N), then for each i (1≤i≤N−2, i≠P−1), soldier i+1 is directly to the right of soldier i, soldier P (if P≤N−1) or 1 (if P=N) is directly to the right of Josh and Josh is directly to the right of soldier P−1 (if P≥2) or soldier N−1 (if P=1); if 2≤P≤N−2, soldier 1 is also directly to the right of soldier N−1. For each i (1≤i≤N−1), soldier i has a sword with power Ai. Josh plans to take a shield with sufficiently high defense power D.
+  First, the soldiers start to commit group suicide according to the following rules:
+  - Initially, soldier 1 is the attacking soldier.
+  - If the attacking soldier is not Josh, this soldier attacks the soldier that is currently to his right.
+  - When Josh is attacked with power a, the current defense power of his shield decreases by a, and if it becomes negative, Josh dies. When a different soldier is attacked, he does not try to defend and dies immediately. The power of the attacking soldier's sword does not change.
+  - Then, the next living soldier to the right of the current attacking soldier becomes the attacking soldier and the process continues until there is only one soldier left.
+  It is clear that this way, Josh cannot be the last survivor. However, Chefland's general Chef plans to interrupt this process as soon as there are exactly two living soldiers of Bitland left (Josh wants to be one of them) by attacking them with Chefland's full firepower F. Since this attack is unexpected, both attacked soldiers try to defend independently with the weapons they have. Josh survives if the current defense power of his shield is at least F. Any other soldier survives only if the power of his sword is strictly greater than F. Since Chefland does not attack again, if both Josh and another soldier survive, then the other soldier will kill Josh. Therefore, Josh wants to be the only survivor of Chefland's attack.
+  Your task is to find the minimum possible value of D such that Josh survives if he chooses his position P optimally (or determine that he cannot survive) and the lowest position P such that Josh survives if he takes a shield with this defense power D.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn solve_bitland_survival(n: usize, soldiers: Vec<usize>, f: usize) -> (result: (&'static str, Option<usize>, Option<usize>))
+      requires 
+          n >= 2,
+          soldiers.len() == n - 1,
+          forall|i: int| 0 <= i < soldiers.len() ==> #[trigger] soldiers[i] >= 1 && #[trigger] soldiers[i] <= 100,
+          f >= 1,
+      ensures
+          match result.0 {
+              "possible" => exists|p: usize, s: usize| 
+                  result.1 == Some(p) && result.2 == Some(s) &&
+                  p >= 1 && p <= n - 1 && s >= f,
+              "impossible" => result.1.is_none() && result.2.is_none(),
+              _ => false,
+          }
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      ("", None, None)
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {}

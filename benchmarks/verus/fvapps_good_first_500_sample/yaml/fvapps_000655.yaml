@@ -1,0 +1,46 @@
+vc-description: |-
+  Chef bought an electronic board and pen. He wants to use them to record his clients' signatures.
+  The board is a grid with N rows (numbered 1 through N) and M columns (numbered 1 through M) of pixels. Initially, all pixels are white. A client uses the electronic pen to sign on the board; whenever the pen touches a pixel, this pixel becomes black. Note that a signature may be non-continuous (a client may lift the pen while signing).
+  Chef stores a typical signature of his current client as a matrix of characters A_{i, j}, where for each valid i and j, A_{i, j} is either '1' (if the cell in the i-th row and j-th column is black) or '0' (if this cell is white). The client just signed on the board; this signature is stored in the same form as a matrix B_{i, j}. Chef wants to know how close this signature is to this client's typical signature.
+  Two signatures are considered the same if it is possible to choose (possibly negative) integers dr and dc such that for each 1 ≤ i ≤ N and 1 ≤ j ≤ M, A_{i, j} = B_{i + dr, j + dc}. Here, if B_{i + dr, j + dc} does not correspond to a valid cell, it is considered to be '0'.
+  To compare the signatures, the colours of zero or more cells must be flipped in such a way that the signatures become the same (each flipped cell may be in any matrix). The error in the client's current signature is the minimum number of cells whose colours must be flipped. Find the error in the signature.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn compare_signatures(n: usize, m: usize, sig1: Vec<Seq<char>>, sig2: Vec<Seq<char>>) -> (result: usize)
+      requires 
+          n >= 2,
+          m >= 2,
+          n <= 25,
+          m <= 25,
+          sig1.len() == n,
+          sig2.len() == n,
+          forall|i: int| 0 <= i < n ==> sig1[i].len() == m,
+          forall|i: int| 0 <= i < n ==> sig2[i].len() == m,
+      ensures 
+          result <= n * m,
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      0
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+
+  fn main() {
+      // let sig1_1 = vec![seq!['1', '0', '0'], seq!['0', '1', '0'], seq!['0', '0', '0']];
+      // let sig2_1 = vec![seq!['0', '0', '0'], seq!['0', '1', '0'], seq!['0', '0', '1']];
+      // let result1 = compare_signatures(3, 3, sig1_1, sig2_1);
+      // println!("{}", result1); // Expected: 0
+  }

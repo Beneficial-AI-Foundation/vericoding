@@ -1,0 +1,52 @@
+vc-description: |-
+  One of Chef's friends offered him a deal: during D days, they are going to exchange money. For each i (1 ≤ i ≤ D), on the i-th day, Chef's friend would give Chef A rupees, while Chef would give his friend 2^(i-1) rupees (1 rupee on day 1, 2 rupees on day 2, 4 rupees on day 3, and so on). Chef's profit from the deal is the total number of rupees he received from his friend minus the total number of rupees he gave his friend.
+  Chef decided to ask for your advice before accepting the deal. You want to help him by telling him two numbers D1 and D2, where D1 is the maximum value of D such that Chef should accept the deal, i.e. his profit from the deal is positive if D = D1, and D2 is the value of D that leads to the maximum possible profit for Chef. If there are multiple values of D that lead to the maximum profit, D2 is the smallest of these values.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  spec fn profit(a: nat, d: nat) -> int {
+      (a * d) as int + 1 - pow2(d) as int
+  }
+
+  spec fn pow2(n: nat) -> nat 
+      decreases n
+  {
+      if n == 0 {
+          1
+      } else {
+          2 * pow2((n - 1) as nat)
+      }
+  }
+
+  fn solve_max_profit_days(a: u32) -> (result: (u32, u32))
+      requires a >= 2,
+      ensures 
+          result.0 >= result.1,
+          result.0 >= 0,
+          result.1 >= 0,
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      (0, 0)
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+
+  fn main() {
+      // let test_cases = vec![5, 8, 9, 1000000000];
+      // for a in test_cases {
+      //     let (d1, d2) = solve_max_profit_days(a);
+      //     println!("{} {}", d1, d2);
+      // }
+  }

@@ -1,0 +1,76 @@
+vc-description: |-
+  Given a string s, return the maximum number of ocurrences of any substring under the following rules:
+
+  The number of unique characters in the substring must be less than or equal to maxLetters.
+  The substring size must be between minSize and maxSize inclusive.
+
+  Example 1:
+  Input: s = "aababcaab", maxLetters = 2, minSize = 3, maxSize = 4
+  Output: 2
+  Explanation: Substring "aab" has 2 ocurrences in the original string.
+  It satisfies the conditions, 2 unique letters and size 3 (between minSize and maxSize).
+
+  Example 2:
+  Input: s = "aaaa", maxLetters = 1, minSize = 3, maxSize = 3
+  Output: 2
+  Explanation: Substring "aaa" occur 2 times in the string. It can overlap.
+
+  Example 3:
+  Input: s = "aabcabcab", maxLetters = 2, minSize = 2, maxSize = 3
+  Output: 3
+
+  Example 4:
+  Input: s = "abcde", maxLetters = 2, minSize = 3, maxSize = 3
+  Output: 0
+
+  Constraints:
+
+  1 <= s.length <= 10^5
+  1 <= maxLetters <= 26
+  1 <= minSize <= maxSize <= min(26, s.length)
+  s only contains lowercase English letters.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn max_freq(s: Vec<char>, max_letters: usize, min_size: usize, max_size: usize) -> (result: usize)
+      requires 
+          min_size <= max_size,
+          min_size >= 1,
+          max_letters >= 1,
+          max_letters <= 26,
+          s.len() >= 1,
+          min_size <= s.len(),
+          max_size <= s.len(),
+      ensures
+          result <= s.len() - min_size + 1,
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      unreached()
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {
+      // let s1: Vec<char> = "aababcaab".chars().collect();
+      // let result1 = max_freq(s1, 2, 3, 4);
+      // println!("Result 1: {}", result1);
+      
+      // let s2: Vec<char> = "aaaa".chars().collect();
+      // let result2 = max_freq(s2, 1, 3, 3);
+      // println!("Result 2: {}", result2);
+      
+      // let s3: Vec<char> = "aabcabcab".chars().collect();
+      // let result3 = max_freq(s3, 2, 2, 3);
+      // println!("Result 3: {}", result3);
+  }

@@ -1,0 +1,77 @@
+vc-description: |-
+  Ring Ring!!  
+  Sherlock's phone suddenly started ringing. And it was none other than Jim Moriarty..
+  "Long time no see ! You miss me right ? Anyway we'll talk about it later . Let me first tell you something. Dr.Watson is with me . And you've got only one chance to save him . Here's your challenge:.
+  Given a number N and another number M, tell if the remainder of N%M is odd or even. If it's odd, then print "ODD" else print "EVEN" 
+
+  If Sherlock can answer the query correctly, then Watson will be set free. He has approached you for help since you being a programmer.Can you help him? 
+
+  -----Input-----
+  The first line contains, T, the number of test cases..
+  Each test case contains an integer, N and M
+
+  -----Output-----
+  Output the minimum value for each test case 
+
+  -----Constraints-----
+  1 = T = 20
+  1 <= N <= 10^18 
+  1 <= M<= 10^9 
+
+  -----Subtasks-----
+  Subtask #1 : (20 points)
+  1 = T = 20
+  1 <= N <= 100 
+  1 <= M<= 100 
+
+  Subtask 2 : (80 points) 
+
+  1 = T = 20
+  1 <= N <= 10^18 
+  1 <= M<= 10^9 
+
+  -----Example-----
+  Input:
+  2
+  4 4
+  6 5
+
+  Output:
+  EVEN
+  ODD
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn check_remainder_parity(n: i64, m: i64) -> (result: &'static str)
+      requires m != 0,
+      ensures 
+          result == "ODD" || result == "EVEN",
+          (result == "EVEN" && (n % m) % 2 == 0) || (result == "ODD" && (n % m) % 2 == 1)
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      "EVEN"
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {
+      // let result1 = check_remainder_parity(4, 4);
+      // println!("{}", result1); // Should print "EVEN"
+      
+      // let result2 = check_remainder_parity(6, 5);
+      // println!("{}", result2); // Should print "ODD"
+      
+      // let result3 = check_remainder_parity(10, 3);
+      // println!("{}", result3); // Should print "ODD"
+  }

@@ -1,0 +1,69 @@
+vc-description: |-
+  You and your friend are playing the game Mortal Kombat XI. You are trying to pass a challenge tower. There are n bosses in this tower, numbered from 1 to n. The type of the i-th boss is a_i. If the i-th boss is easy then its type is a_i = 0, otherwise this boss is hard and its type is a_i = 1.
+
+  During one session, either you or your friend can kill one or two bosses (neither you nor your friend can skip the session, so the minimum number of bosses killed during one session is at least one). After your friend session, your session begins, then again your friend session begins, your session begins, and so on. The first session is your friend's session.
+
+  Your friend needs to get good because he can't actually kill hard bosses. To kill them, he uses skip points. One skip point can be used to kill one hard boss.
+
+  Your task is to find the minimum number of skip points your friend needs to use so you and your friend kill all n bosses in the given order.
+
+  For example: suppose n = 8, a = [1, 0, 1, 1, 0, 1, 1, 1]. Then the best course of action is the following:
+
+    your friend kills two first bosses, using one skip point for the first boss;  you kill the third and the fourth bosses;  your friend kills the fifth boss;  you kill the sixth and the seventh bosses;  your friend kills the last boss, using one skip point, so the tower is completed using two skip points. 
+
+  You have to answer t independent test cases.
+
+  Input:
+  The first line of the input contains one integer t (1 ≤ t ≤ 2 × 10^4) — the number of test cases. Then t test cases follow.
+
+  The first line of the test case contains one integer n (1 ≤ n ≤ 2 × 10^5) — the number of bosses. The second line of the test case contains n integers a_1, a_2, ..., a_n (0 ≤ a_i ≤ 1), where a_i is the type of the i-th boss.
+
+  It is guaranteed that the sum of n does not exceed 2 × 10^5 (∑ n ≤ 2 × 10^5).
+
+  Output:
+  For each test case, print the answer: the minimum number of skip points your friend needs to use so you and your friend kill all n bosses in the given order.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  spec fn count_ones(arr: Seq<usize>) -> nat
+      decreases arr.len()
+  {
+      if arr.len() == 0 {
+          0nat
+      } else {
+          (arr[0] as nat) + count_ones(arr.skip(1))
+      }
+  }
+
+  fn min_skip_points(n: usize, arr: Vec<usize>) -> (result: usize)
+      requires 
+          n > 0,
+          arr.len() == n,
+          forall|i: int| 0 <= i < arr.len() ==> (arr[i] == 0 || arr[i] == 1),
+      ensures 
+          (result as nat) <= count_ones(arr@),
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      0
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+
+  fn main() {
+      // Examples from the problem:
+      // min_skip_points(8, vec![1, 0, 1, 1, 0, 1, 1, 1]) should return 2
+      // min_skip_points(5, vec![1, 1, 1, 1, 0]) should return 2
+      // min_skip_points(1, vec![0]) should return 0
+  }

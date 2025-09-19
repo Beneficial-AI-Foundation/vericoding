@@ -1,0 +1,58 @@
+vc-description: |-
+  Suppose an array sorted in ascending order is rotated at some pivot unknown to you beforehand.
+
+  (i.e., [0,1,2,4,5,6,7] might become [4,5,6,7,0,1,2]).
+
+  You are given a target value to search. If found in the array return its index, otherwise return -1.
+
+  You may assume no duplicate exists in the array.
+
+  Your algorithm's runtime complexity must be in the order of O(log n).
+
+  Example 1:
+
+  Input: nums = [4,5,6,7,0,1,2], target = 0
+  Output: 4
+
+  Example 2:
+
+  Input: nums = [4,5,6,7,0,1,2], target = 3
+  Output: -1
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn search(arr: Vec<i32>, target: i32) -> (result: i32)
+      ensures
+          arr.len() == 0 ==> result == -1,
+          arr.len() > 0 ==> (
+              (exists|i: int| 0 <= i < arr.len() && arr[i] == target) ==> 
+              (result >= 0 && result < arr.len() && arr[result as int] == target)
+          ),
+          arr.len() > 0 ==> (
+              (forall|i: int| 0 <= i < arr.len() ==> arr[i] != target) ==> 
+              result == -1
+          )
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      -1
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+
+  fn main() {
+      // println!("{}", search(vec![4, 5, 6, 7, 0, 1, 2], 0));
+      // println!("{}", search(vec![4, 5, 6, 7, 0, 1, 2], 3));
+      // println!("{}", search(vec![1], 1));
+  }

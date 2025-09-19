@@ -1,0 +1,81 @@
+vc-description: |-
+  Galileo's latest project involves determining the density of stars in certain regions of the sky. For this purpose he started looking for datasets online, and discovered a dataset on Newton's blog. Newton had decomposed the night sky into a Voronoi tessellation with the generators arranged in a grid. He has stored the number of stars in a Voronoi cell at a position in a matrix that corresponds to the position of the generator in the grid.
+  This dataset does not directly help Galileo, because he needs to be able to query the number of stars in a rectangular portion of the sky. Galileo tried to write a program that does this on his own, but it turned out to be too slow. Can you help him?
+
+  -----Input Format-----
+  The first line contains two integers n and m that denote the height and width of the matrix respectively. This is followed by  n lines each containing m integers each.
+  The line following this would contain a single integer t, the number of queries to be run. Each query line consists of 4 integers px, py, qx, qy. The first two integers denote the row and column numbers of the upper left corner of the rectangular region, and the second pair of numbers correspond to the lower right corner.
+
+  -----Output Format-----
+  For each query output a single line containing the number of stars in that rectangular region.
+
+  -----Example-----
+  Input:
+
+  3 3
+  10 10 10
+  10 10 10
+  10 10 10
+  4
+  1 1 1 1
+  1 1 3 3
+  2 1 3 3
+  3 1 3 3
+
+  Output:
+
+  10
+  90
+  60
+  30
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  spec fn row_sum(row: Seq<nat>) -> nat
+      decreases row.len()
+  {
+      if row.len() == 0 {
+          0
+      } else {
+          row[0] + row_sum(row.skip(1))
+      }
+  }
+
+  spec fn grid_total_sum(grid: Seq<Seq<nat>>) -> nat
+      decreases grid.len()
+  {
+      if grid.len() == 0 {
+          0
+      } else {
+          row_sum(grid[0]) + grid_total_sum(grid.skip(1))
+      }
+  }
+
+  fn count_stars_in_region(grid: Vec<Vec<nat>>, x1: nat, y1: nat, x2: nat, y2: nat) -> (result: nat)
+      requires 
+          grid.len() > 0,
+          forall|i: int| 0 <= i < grid.len() ==> grid[i].len() > 0,
+          x1 >= 1 && y1 >= 1,
+          x1 <= x2 && y1 <= y2,
+      ensures
+          true,
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      unreached()
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+
+  fn main() {}

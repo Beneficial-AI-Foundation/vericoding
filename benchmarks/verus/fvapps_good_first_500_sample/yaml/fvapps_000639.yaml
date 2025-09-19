@@ -1,0 +1,47 @@
+vc-description: |-
+  A sequence of integers (a_1, a_2, ..., a_k) is said to be UpDown, if these inequalities hold true:
+  - a_1 ≤ a_2
+  - a_2 ≥ a_3
+  - a_3 ≤ a_4
+  and so on.
+  That is, every even-indexed element should be at least as large as its adjacent elements. And every odd-indexed element should be at most as large as its adjacent elements. Formally, a_{2i} ≥ a_{2i+1} and a_{2i+1} ≤ a_{2i+2}, for all valid positions.
+  A subsegment is a consecutive portion of a sequence. That is, a subsegment of (b_1, b_2, ..., b_k) will be of the form (b_i, b_{i+1}, ..., b_j), for some i and j.
+  You are given a sequence (s_1, s_2, ..., s_n). You can insert at most one integer anywhere in this sequence. It could be any integer. After inserting an integer (or choosing not to), suppose you have the new sequence (t_1, t_2, ..., t_m). Note that m will either be n+1 or n. You want to maximize the length of the longest subsegment of (t_1, t_2, ..., t_m) which is UpDown, and output the length of that.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn find_updown_length(n: nat, arr: Vec<i32>) -> (result: nat)
+      requires 
+          arr.len() == n,
+          n >= 1,
+      ensures 
+          n >= 2 ==> result >= 2,
+          result <= n + 1
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      unreached()
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {
+      // let result1 = find_updown_length(7, vec![100, 1, 10, 3, 20, 25, 24]);
+      // println!("Result 1: {}", result1); // Should be 7
+      
+      // let result2 = find_updown_length(5, vec![3, 3, 2, 4, 1]);
+      // println!("Result 2: {}", result2); // Should be 6
+      
+      // let result3 = find_updown_length(4, vec![1, 2, 1, 3]);
+      // println!("Result 3: {}", result3); // Should be 5
+  }
