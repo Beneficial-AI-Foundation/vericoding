@@ -184,6 +184,11 @@ resource "aws_instance" "intern_server" {
   vpc_security_group_ids = [aws_security_group.intern_sg.id]
   iam_instance_profile   = aws_iam_instance_profile.intern_instance_profile.name
   
+  root_block_device {
+    volume_size = 100
+    volume_type = "gp3"
+  }
+  
   user_data = <<-EOF
     #!/bin/bash
     apt-get update
