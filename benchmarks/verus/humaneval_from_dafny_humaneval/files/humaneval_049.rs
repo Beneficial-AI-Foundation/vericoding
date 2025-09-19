@@ -18,12 +18,12 @@ spec fn power(base: int, exp: nat) -> int
 // </vc-helpers>
 
 // <vc-spec>
-fn modp(n: int, p: int) -> (result: int)
+fn modp(n: i8, p: i8) -> (result: i8)
     requires 
         n >= 0 && p > 0,
     ensures 
         result >= 0 && result < p,
-        result == power(2, n as nat) % p,
+        result as int == power(2, n as nat) % (p as int),
 // </vc-spec>
 // <vc-code>
 {

@@ -22,7 +22,6 @@ spec fn char_set_from_string(s: Seq<char>) -> Set<char> {
 // <vc-spec>
 fn count_distinct_characters(s: &str) -> (count: usize)
     ensures 
-        count >= 0,
         count <= s@.len(),
         count == char_set_from_string(s@).len(),
 // </vc-spec>

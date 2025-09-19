@@ -54,7 +54,7 @@ fn digit_sum(n: i32) -> (result: i32)
 // </vc-helpers>
 
 // <vc-spec>
-fn count_nums(arr: &[i32]) -> (count: usize)
+fn count_nums(arr: &Vec<i32>) -> (count: usize)
     requires valid_input(arr@)
     ensures valid_output(arr@, count as int)
 // </vc-spec>

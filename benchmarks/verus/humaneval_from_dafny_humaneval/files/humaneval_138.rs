@@ -16,9 +16,9 @@ spec fn can_be_sum_of_four_positive_evens(n: int) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn is_equal_to_sum_even(n: int) -> (result: bool)
-    requires valid_input(n)
-    ensures result == can_be_sum_of_four_positive_evens(n)
+fn is_equal_to_sum_even(n: i8) -> (result: bool)
+    requires valid_input(n as int)
+    ensures result == can_be_sum_of_four_positive_evens(n as int)
 // </vc-spec>
 // <vc-code>
 {

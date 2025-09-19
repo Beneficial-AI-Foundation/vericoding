@@ -34,13 +34,13 @@ spec fn count_positives(s: Seq<int>) -> int {
 // </vc-helpers>
 
 // <vc-spec>
-fn get_positive(l: Seq<int>) -> (result: Seq<int>)
+fn get_positive(l: Vec<i8>) -> (result: Vec<i8>)
     ensures 
-        all_positive(result),
-        all_elements_from_original(result, l),
-        contains_all_positives(result, l),
-        result.len() == count_positives(l),
-        preserves_order(result, l),
+        all_positive(result@.map(|i: int, x: i8| x as int)),
+        all_elements_from_original(result@.map(|i: int, x: i8| x as int), l@.map(|i: int, x: i8| x as int)),
+        contains_all_positives(result@.map(|i: int, x: i8| x as int), l@.map(|i: int, x: i8| x as int)),
+        result.len() == count_positives(l@.map(|i: int, x: i8| x as int)),
+        preserves_order(result@.map(|i: int, x: i8| x as int), l@.map(|i: int, x: i8| x as int)),
 // </vc-spec>
 // <vc-code>
 {

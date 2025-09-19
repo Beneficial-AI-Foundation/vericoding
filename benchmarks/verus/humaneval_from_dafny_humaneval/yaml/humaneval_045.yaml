@@ -20,12 +20,12 @@ vc-helpers: |-
   }
 
 vc-spec: |-
-  fn calculate_triangle_area(base: int, height: int) -> (area: int)
+  fn calculate_triangle_area(base: u8, height: u8) -> (area: u8)
       requires 
-          valid_input(base, height)
+          valid_input(base as int, height as int)
       ensures 
-          area >= 0,
-          area == triangle_area_formula(base, height),
+          area as int >= 0,
+          area as int == triangle_area_formula(base as int, height as int),
           (base == 0 || height == 0) ==> area == 0
 
 vc-code: |-

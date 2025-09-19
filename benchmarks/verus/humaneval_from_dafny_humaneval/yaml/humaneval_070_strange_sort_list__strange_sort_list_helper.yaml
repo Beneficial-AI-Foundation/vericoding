@@ -1,5 +1,5 @@
 vc-description: |-
-  function_signature: fn strange_sort_list_helper(s: Seq<int>) -> (Seq<int>, Seq<int>)
+  function_signature: fn strange_sort_list_helper(s: Vec<i8>) -> (Vec<i8>, Vec<i8>)
 
   Sort elements. Ensures: returns a sorted permutation of the input; returns the correct
   size/count; the result is sorted according to the ordering relation; the result
@@ -13,12 +13,12 @@ vc-preamble: |-
 vc-helpers: |-
 
 vc-spec: |-
-  fn strange_sort_list_helper(s: Seq<int>) -> (res: (Seq<int>, Seq<int>))
+  fn strange_sort_list_helper(s: Vec<i8>) -> (res: (Vec<i8>, Vec<i8>))
       ensures 
-          s.to_multiset() == res.0.to_multiset(),
-          s.len() == res.0.len() && s.len() == res.1.len(),
-          forall|i: int| 0 <= i < s.len() && i % 2 == 0 ==> res.1[i] == res.0[i / 2],
-          forall|i: int| 0 <= i < s.len() && i % 2 == 1 ==> res.1[i] == res.0[s.len() - (i - 1) / 2 - 1]
+          s@.to_multiset() == res.0@.to_multiset(),
+          s@.len() == res.0@.len() && s@.len() == res.1@.len(),
+          forall|i: int| 0 <= i < s@.len() && i % 2 == 0 ==> res.1@[i] == res.0@[i / 2],
+          forall|i: int| 0 <= i < s@.len() && i % 2 == 1 ==> res.1@[i] == res.0@[s@.len() - (i - 1) / 2 - 1]
 
 vc-code: |-
   {

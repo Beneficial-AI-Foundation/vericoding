@@ -25,14 +25,14 @@ spec fn is_non_decreasing(arr: Seq<int>) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn can_arrange(arr: Seq<int>) -> (result: int)
+fn can_arrange(arr: Vec<i8>) -> (result: i8)
     requires 
-        valid_input(arr),
+        valid_input(arr@),
     ensures 
-        result == -1 || (0 < result < arr.len()),
-        result == -1 ==> is_non_decreasing(arr),
-        result != -1 ==> is_largest_decrease_index(arr, result),
-        result != -1 ==> (exists|i: int| has_decrease_at(arr, i)),
+        result == -1 || (0 < result as int && result as int < arr.len()),
+        result == -1 ==> is_non_decreasing(arr@),
+        result != -1 ==> is_largest_decrease_index(arr@, result as int),
+        result != -1 ==> (exists|i: int| has_decrease_at(arr@, i)),
 // </vc-spec>
 // <vc-code>
 {

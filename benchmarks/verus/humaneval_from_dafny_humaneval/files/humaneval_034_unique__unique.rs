@@ -8,11 +8,11 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn unique(s: Seq<int>) -> (result: Seq<int>)
+fn unique(s: Vec<i8>) -> (result: Vec<i8>)
     ensures
-        forall|i: int, j: int| 0 <= i < j < result.len() ==> result[i] < result[j] &&
-        forall|x: int| result.contains(x) ==> s.contains(x) &&
-        forall|x: int| s.contains(x) ==> result.contains(x)
+        forall|i: int, j: int| 0 <= i < j < result@.len() ==> (result@[i] as int) < (result@[j] as int) &&
+        forall|x: i8| result@.contains(x) ==> s@.contains(x) &&
+        forall|x: i8| s@.contains(x) ==> result@.contains(x)
 // </vc-spec>
 // <vc-code>
 {

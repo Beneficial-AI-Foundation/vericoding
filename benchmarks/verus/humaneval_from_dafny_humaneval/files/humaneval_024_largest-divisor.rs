@@ -8,13 +8,14 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn largest_divisor(n: int) -> (d: int)
+fn largest_divisor(n: i8) -> (d: i8)
     requires 
-        n > 1
+        n as int > 1
     ensures 
-        1 <= d < n,
-        n % d == 0,
-        forall|k: int| d < k < n ==> #[trigger] (n % k) != 0,
+        1 <= d as int,
+        d as int < n as int,
+        n as int % d as int == 0,
+        forall|k: int| d as int < k < n as int ==> #[trigger] (n as int % k) != 0,
 // </vc-spec>
 // <vc-code>
 {

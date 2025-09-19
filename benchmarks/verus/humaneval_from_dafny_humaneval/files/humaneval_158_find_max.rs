@@ -8,13 +8,13 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn find_max(strings: Seq<Seq<char>>) -> (s: Seq<char>)
+fn find_max(strings: Vec<String>) -> (s: String)
     requires 
         strings.len() > 0,
     ensures 
-        strings.contains(s),
+        exists|i: int| 0 <= i < strings.len() && strings@.index(i) == s@,
         forall|i: int| 0 <= i < strings.len() ==> 
-            s.to_set().len() >= strings.index(i).to_set().len(),
+            s@.to_set().len() >= strings@.index(i).to_set().len(),
 // </vc-spec>
 // <vc-code>
 {

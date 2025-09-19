@@ -38,9 +38,9 @@ spec fn valid_result(result: Seq<int>, number: int, need: int, remaining: int) -
 // </vc-helpers>
 
 // <vc-spec>
-fn eat(number: int, need: int, remaining: int) -> (result: Vec<int>)
-    requires valid_input(number, need, remaining)
-    ensures valid_result(result@, number, need, remaining)
+fn eat(number: i8, need: i8, remaining: i8) -> (result: Vec<i8>)
+    requires valid_input(number as int, need as int, remaining as int)
+    ensures valid_result(result@.map(|i, x| x as int), number as int, need as int, remaining as int)
 // </vc-spec>
 // <vc-code>
 {

@@ -40,9 +40,9 @@ proof fn count_append_lemma(s: Seq<int>, elem: int, x: int)
 // </vc-helpers>
 
 // <vc-spec>
-fn search(lst: Seq<int>) -> (result: int)
-    requires valid_input(lst)
-    ensures valid_result(lst, result)
+fn search(lst: Vec<i8>) -> (result: i8)
+    requires valid_input(lst@.map(|_index: int, x: i8| x as int))
+    ensures valid_result(lst@.map(|_index: int, x: i8| x as int), result as int)
 // </vc-spec>
 // <vc-code>
 {

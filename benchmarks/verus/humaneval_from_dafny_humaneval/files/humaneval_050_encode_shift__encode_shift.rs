@@ -17,8 +17,8 @@ spec fn decode_char(c: char) -> char {
 
 // <vc-spec>
 fn encode_shift(s: Vec<char>) -> (t: Vec<char>)
-    requires forall|i: int| 0 <= i < s.len() ==> 'a' <= #[trigger] s[i] <= 'z'
-    ensures s.len() == t.len() && forall|i: int| 0 <= i < s.len() ==> t[i] == encode_char(s[i])
+    requires forall|i: int| 0 <= i < s@.len() ==> 'a' <= #[trigger] s@[i] <= 'z'
+    ensures s@.len() == t@.len() && forall|i: int| 0 <= i < s@.len() ==> t@[i] == encode_char(s@[i])
 // </vc-spec>
 // <vc-code>
 {

@@ -43,11 +43,11 @@ spec fn sum_of_squares(lst: Seq<Number>, i: nat) -> int
 // </vc-helpers>
 
 // <vc-spec>
-fn double_the_difference(lst: Seq<Number>) -> (result: i32)
+fn double_the_difference(lst: Vec<Number>) -> (result: i32)
     ensures 
         result >= 0,
-        result == sum_of_squares(lst, lst.len()) as i32,
-        lst.len() == 0 ==> result == 0
+        result == sum_of_squares(lst@, lst@.len()) as i32,
+        lst@.len() == 0 ==> result == 0
 // </vc-spec>
 // <vc-code>
 {

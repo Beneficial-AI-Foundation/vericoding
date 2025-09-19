@@ -16,10 +16,11 @@ spec fn correct_length(s: Seq<char>) -> int {
 // </vc-helpers>
 
 // <vc-spec>
-spec fn strlen(s: Seq<char>) -> int
-    recommends valid_input(s)
+fn strlen(s: &str) -> (result: usize)
+    requires valid_input(s@)
+    ensures correct_length(s@) == (result as int)
 {
-    s.len() as int
+    s.len()
 }
 // </vc-spec>
 // <vc-code>

@@ -26,11 +26,11 @@ spec fn next_odd_collatz(n: nat) -> nat {
 // </vc-helpers>
 
 // <vc-spec>
-fn next_odd_collatz_iter(n: nat) -> (next: nat)
+fn next_odd_collatz_iter(n: u8) -> (next: u8)
   requires n > 0,
   ensures 
-    next % 2 == 1,
-    next == next_odd_collatz(n),
+    (next as nat) % 2 == 1,
+    next as nat == next_odd_collatz(n as nat),
 // </vc-spec>
 // <vc-code>
 {

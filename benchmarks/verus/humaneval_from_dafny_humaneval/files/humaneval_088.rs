@@ -51,11 +51,11 @@ fn sort_descending(arr: Seq<int>) -> (result: Seq<int>)
 // </vc-helpers>
 
 // <vc-spec>
-fn sort_array(arr: Seq<int>) -> (result: Seq<int>)
-    requires valid_input(arr)
+fn sort_array(arr: Vec<i8>) -> (result: Vec<i8>)
+    requires valid_input(arr@.map(|i: int, x: i8| x as int))
     ensures 
-        result.to_multiset() == arr.to_multiset(),
-        correctly_sorted(arr, result)
+        result@.map(|i: int, x: i8| x as int).to_multiset() == arr@.map(|i: int, x: i8| x as int).to_multiset(),
+        correctly_sorted(arr@.map(|i: int, x: i8| x as int), result@.map(|i: int, x: i8| x as int))
 // </vc-spec>
 // <vc-code>
 {

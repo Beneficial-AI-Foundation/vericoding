@@ -19,9 +19,9 @@ spec fn correct_output(l: Seq<int>, result: Seq<int>) -> bool
 // </vc-helpers>
 
 // <vc-spec>
-fn incr_list(l: Seq<int>) -> (result: Seq<int>)
-    requires valid_input(l)
-    ensures correct_output(l, result)
+fn incr_list(l: Vec<i8>) -> (result: Vec<i8>)
+    requires valid_input(l@.map(|i: int, x: i8| x as int))
+    ensures correct_output(l@.map(|i: int, x: i8| x as int), result@.map(|i: int, x: i8| x as int))
 // </vc-spec>
 // <vc-code>
 {

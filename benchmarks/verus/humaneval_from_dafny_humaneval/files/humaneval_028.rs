@@ -18,10 +18,10 @@ spec fn concat_strings(strings: Seq<Seq<char>>, index: nat) -> Seq<char>
 // </vc-helpers>
 
 // <vc-spec>
-fn concatenate(strings: Seq<Seq<char>>) -> (result: Seq<char>)
+fn concatenate(strings: Vec<Vec<char>>) -> (result: Vec<char>)
     ensures 
-        result == concat_strings(strings, 0) &&
-        (strings.len() == 0 ==> result == Seq::<char>::empty())
+        result@ == concat_strings(strings@.map(|i, s: Vec<char>| s@), 0) &&
+        (strings@.len() == 0 ==> result@ == Seq::<char>::empty())
 // </vc-spec>
 // <vc-code>
 {

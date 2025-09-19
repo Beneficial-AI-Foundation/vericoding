@@ -42,13 +42,13 @@ vc-helpers: |-
   }
 
 vc-spec: |-
-  fn reverse_delete(s: Seq<char>, c: Seq<char>) -> (result: (Seq<char>, bool))
+  fn reverse_delete(s: Vec<char>, c: Vec<char>) -> (result: (Vec<char>, bool))
       ensures
-          result.0 == filter_chars(s, c),
-          result.1 == (result.0 == reverse_seq(result.0)),
-          result.0.len() <= s.len(),
-          forall|i: int| #![auto] 0 <= i < result.0.len() ==> !c.contains(result.0[i]),
-          forall|i: int| #![auto] 0 <= i < result.0.len() ==> s.contains(result.0[i]),
+          result.0@ == filter_chars(s@, c@),
+          result.1 == (result.0@ == reverse_seq(result.0@)),
+          result.0@.len() <= s@.len(),
+          forall|i: int| #![auto] 0 <= i < result.0@.len() ==> !c@.contains(result.0@[i]),
+          forall|i: int| #![auto] 0 <= i < result.0@.len() ==> s@.contains(result.0@[i]),
 
 vc-code: |-
   {

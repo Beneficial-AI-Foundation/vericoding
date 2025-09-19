@@ -32,12 +32,13 @@ proof fn product_append(factors: Seq<int>, x: int)
 // </vc-helpers>
 
 // <vc-spec>
-fn factorize(n: int) -> (factors: Vec<int>)
+fn factorize(n: i8) -> (factors: Vec<i8>)
+    requires n >= 0
     ensures 
         n <= 1 ==> factors.len() == 0,
-        n > 1 ==> product(factors@) == n,
-        forall|i: int| 0 <= i < factors.len() ==> is_prime(#[trigger] factors@[i]),
-        is_non_decreasing(factors@),
+        n > 1 ==> product(factors@.map(|i: int, x: i8| x as int)) == n as int,
+        forall|i: int| 0 <= i < factors.len() ==> is_prime(#[trigger] factors@[i] as int),
+        is_non_decreasing(factors@.map(|i: int, x: i8| x as int)),
         forall|i: int| 0 <= i < factors.len() ==> #[trigger] factors@[i] >= 2
 // </vc-spec>
 // <vc-code>

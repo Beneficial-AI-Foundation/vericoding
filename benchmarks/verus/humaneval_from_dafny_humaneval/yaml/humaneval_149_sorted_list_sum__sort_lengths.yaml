@@ -34,14 +34,14 @@ vc-preamble: |-
 vc-helpers: |-
 
 vc-spec: |-
-  fn sort_lengths(list: &Seq<Seq<char>>) -> (sorted: Seq<Seq<char>>)
+  fn sort_lengths(list: &Vec<Vec<char>>) -> (sorted: Vec<Vec<char>>)
       requires 
-          forall|i: int| 0 <= i < list.len() ==> list.index(i).len() % 2 == 0
+          forall|i: int| 0 <= i < list@.len() ==> list@.index(i).len() % 2 == 0
       ensures 
-          forall|i: int| 0 <= i < sorted.len() ==> sorted.index(i).len() % 2 == 0,
-          sorted.len() == list.len(),
-          sorted.to_multiset() == list.to_multiset(),
-          forall|x: int, y: int| 0 <= x < y < sorted.len() ==> sorted.index(x).len() <= sorted.index(y).len()
+          forall|i: int| 0 <= i < sorted@.len() ==> sorted@.index(i).len() % 2 == 0,
+          sorted@.len() == list@.len(),
+          sorted@.to_multiset() == list@.to_multiset(),
+          forall|x: int, y: int| 0 <= x < y < sorted@.len() ==> sorted@.index(x).len() <= sorted@.index(y).len()
 
 vc-code: |-
   {

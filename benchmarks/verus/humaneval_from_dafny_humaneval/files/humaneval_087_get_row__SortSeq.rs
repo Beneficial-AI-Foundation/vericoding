@@ -22,11 +22,11 @@ spec fn less_eq(a: (int, int), b: (int, int)) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn sort_seq(s: SortSeqState) -> (sorted: SortSeqState)
+fn sort_seq(s: Vec<(i8, i8)>) -> (sorted: Vec<(i8, i8)>)
     ensures 
-        forall|i: int, j: int| 0 <= i < j < sorted.len() ==> less_eq(sorted[i], sorted[j]),
-        sorted.len() == s.len(),
-        s.to_multiset() == sorted.to_multiset()
+        forall|i: int, j: int| 0 <= i < j < sorted@.len() ==> less_eq((sorted[i].0 as int, sorted[i].1 as int), (sorted[j].0 as int, sorted[j].1 as int)),
+        sorted@.len() == s@.len(),
+        s@.map(|i: int, x: (i8, i8)| (x.0 as int, x.1 as int)).to_multiset() == sorted@.map(|i: int, x: (i8, i8)| (x.0 as int, x.1 as int)).to_multiset()
 // </vc-spec>
 // <vc-code>
 {

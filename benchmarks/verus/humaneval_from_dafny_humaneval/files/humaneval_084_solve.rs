@@ -14,8 +14,8 @@ spec fn popcount(n: nat) -> nat
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: nat) -> (r: nat)
-    ensures r == popcount(n)
+fn solve(n: u8) -> (r: u8)
+    ensures r as nat == popcount(n as nat)
 // </vc-spec>
 // <vc-code>
 {

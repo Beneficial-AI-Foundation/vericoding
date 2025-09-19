@@ -33,22 +33,34 @@ spec fn reverse_string(s: Seq<char>) -> Seq<char>
 // </vc-helpers>
 
 // <vc-spec>
-fn circular_shift(x: int, shift: int) -> (result: Vec<char>)
+fn circular_shift(x: i8, shift: i8) -> (result: Vec<char>)
     ensures 
-        result.len() == int_to_string(if x < 0 { -x } else { x }).len(),
-        shift > int_to_string(if x < 0 { -x } else { x }).len() ==> 
-            result@ == reverse_string(int_to_string(if x < 0 { -x } else { x })),
-        shift <= int_to_string(if x < 0 { -x } else { x }).len() && int_to_string(if x < 0 { -x } else { x }).len() > 0 ==> {
-            let digits = int_to_string(if x < 0 { -x } else { x });
-            let n = digits.len() as int;
-            let normalized_shift = shift % n;
-            normalized_shift == 0 ==> result@ == digits
+        {
+            let abs_x = if x as int < 0 { 0 - (x as int) } else { x as int };
+            result.len() == int_to_string(abs_x).len()
         },
-        shift <= int_to_string(if x < 0 { -x } else { x }).len() && int_to_string(if x < 0 { -x } else { x }).len() > 0 ==> {
-            let digits = int_to_string(if x < 0 { -x } else { x });
-            let n = digits.len() as int;
-            let normalized_shift = shift % n;
-            normalized_shift > 0 ==> result@ == digits.subrange(n - normalized_shift, n).add(digits.subrange(0, n - normalized_shift))
+        {
+            let abs_x = if x as int < 0 { 0 - (x as int) } else { x as int };
+            shift as int > int_to_string(abs_x).len() ==> 
+                result@ == reverse_string(int_to_string(abs_x))
+        },
+        {
+            let abs_x = if x as int < 0 { 0 - (x as int) } else { x as int };
+            shift as int <= int_to_string(abs_x).len() && int_to_string(abs_x).len() > 0 ==> {
+                let digits = int_to_string(abs_x);
+                let n = digits.len() as int;
+                let normalized_shift = (shift as int) % n;
+                normalized_shift == 0 ==> result@ == digits
+            }
+        },
+        {
+            let abs_x = if x as int < 0 { 0 - (x as int) } else { x as int };
+            shift as int <= int_to_string(abs_x).len() && int_to_string(abs_x).len() > 0 ==> {
+                let digits = int_to_string(abs_x);
+                let n = digits.len() as int;
+                let normalized_shift = (shift as int) % n;
+                normalized_shift > 0 ==> result@ == digits.subrange(n - normalized_shift, n).add(digits.subrange(0, n - normalized_shift))
+            }
         },
         forall|i: int| 0 <= i < result.len() ==> '0' <= result[i] && result[i] <= '9',
 // </vc-spec>

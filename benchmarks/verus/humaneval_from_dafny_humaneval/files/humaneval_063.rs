@@ -19,14 +19,14 @@ spec fn fibfib_spec(n: int) -> int
 // </vc-helpers>
 
 // <vc-spec>
-fn fibfib(n: int) -> (result: int)
+fn fibfib(n: u8) -> (result: u8)
     requires n >= 0
     ensures 
-        result == fibfib_spec(n) &&
+        result as int == fibfib_spec(n as int) &&
         (n == 0 ==> result == 0) &&
         (n == 1 ==> result == 0) &&
         (n == 2 ==> result == 1) &&
-        (n >= 3 ==> result == fibfib_spec(n-1) + fibfib_spec(n-2) + fibfib_spec(n-3))
+        (n >= 3 ==> result as int == fibfib_spec((n-1) as int) + fibfib_spec((n-2) as int) + fibfib_spec((n-3) as int))
 // </vc-spec>
 // <vc-code>
 {

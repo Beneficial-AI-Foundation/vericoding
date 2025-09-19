@@ -32,8 +32,8 @@ vc-preamble: |-
 vc-helpers: |-
 
 vc-spec: |-
-  fn f(n: nat) -> (result: Vec<nat>)
-      ensures valid_result(n, result@)
+  fn f(n: u8) -> (result: Vec<u8>)
+      ensures valid_result(n as nat, result@.map(|i: int, x: u8| x as nat))
 
 vc-code: |-
   {

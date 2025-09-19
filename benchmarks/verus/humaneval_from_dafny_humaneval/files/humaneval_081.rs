@@ -35,11 +35,11 @@ spec fn valid_letter_grades(grades: Seq<String>) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn numerical_letter_grade(grades: Seq<int>) -> (letter_grades: Vec<String>)
+fn numerical_letter_grade(grades: Vec<i8>) -> (letter_grades: Vec<String>)
     ensures 
         letter_grades.len() == grades.len() &&
         (forall|i: int| 0 <= i < grades.len() ==> 
-            #[trigger] letter_grades[i]@ == get_letter_grade(grades[i])) &&
+            #[trigger] letter_grades[i]@ == get_letter_grade(grades[i] as int)) &&
         valid_letter_grades(letter_grades@)
 // </vc-spec>
 // <vc-code>

@@ -29,14 +29,14 @@ spec fn comparison(a: Seq<char>, b: Seq<char>, i: int) -> bool
 // </vc-helpers>
 
 // <vc-spec>
-fn sorted_list_sum(list: Seq<Seq<char>>) -> (sorted: Seq<Seq<char>>)
+fn sorted_list_sum(list: Vec<Vec<char>>) -> (sorted: Vec<Vec<char>>)
     requires 
-        list.len() > 0
+        list@.len() > 0
     ensures 
-        sorted.len() <= list.len(),
-        forall|i: int| 0 <= i < sorted.len() ==> sorted[i].len() % 2 == 0,
-        forall|x: int, y: int| 0 <= x < y < sorted.len() ==> sorted[x].len() <= sorted[y].len(),
-        sorted.to_multiset().subset_of(list.to_multiset())
+        sorted@.len() <= list@.len(),
+        forall|i: int| 0 <= i < sorted@.len() ==> sorted@[i].len() % 2 == 0,
+        forall|x: int, y: int| 0 <= x < y < sorted@.len() ==> sorted@[x].len() <= sorted@[y].len(),
+        sorted@.to_multiset().subset_of(list@.to_multiset())
 // </vc-spec>
 // <vc-code>
 {

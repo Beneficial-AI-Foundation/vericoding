@@ -64,11 +64,11 @@ proof fn sum_of_trips_slice_lemma(grid: Seq<Seq<int>>, i: int, capacity: int)
 // </vc-helpers>
 
 // <vc-spec>
-fn max_fill(grid: Seq<Seq<int>>, capacity: int) -> (result: int)
-    requires valid_input(grid, capacity)
+fn max_fill(grid: Vec<Vec<i8>>, capacity: i8) -> (result: i8)
+    requires valid_input(grid@.map(|i, row: Vec<i8>| row@.map(|j, x: i8| x as int)), capacity as int)
     ensures 
         result >= 0,
-        result == sum_of_trips(grid, capacity)
+        result as int == sum_of_trips(grid@.map(|i, row: Vec<i8>| row@.map(|j, x: i8| x as int)), capacity as int)
 // </vc-spec>
 // <vc-code>
 {

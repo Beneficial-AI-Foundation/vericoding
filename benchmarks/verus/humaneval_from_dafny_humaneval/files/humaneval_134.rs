@@ -16,8 +16,8 @@ spec fn valid_last_char_is_standalone_letter(txt: Seq<char>) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn check_if_last_char_is_a_letter(txt: Seq<char>) -> (result: bool)
-    ensures result == valid_last_char_is_standalone_letter(txt)
+fn check_if_last_char_is_a_letter(txt: &str) -> (result: bool)
+    ensures result == valid_last_char_is_standalone_letter(txt@)
 // </vc-spec>
 // <vc-code>
 {

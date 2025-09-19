@@ -16,12 +16,12 @@ spec fn divides(d: int, n: int) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn greatest_common_divisor(a: i64, b: i64) -> (result: u64)
+fn greatest_common_divisor(a: i8, b: i8) -> (result: u8)
     ensures 
         result > 0 <==> (a != 0 || b != 0),
         result == 0 <==> (a == 0 && b == 0),
         divides(result as int, a as int) && divides(result as int, b as int),
-        forall|d: int| d > 0 && divides(d, a as int) && divides(d, b as int) ==> d <= result
+        forall|d: int| d > 0 && divides(d, a as int) && divides(d, b as int) ==> d <= result as int
 // </vc-spec>
 // <vc-code>
 {

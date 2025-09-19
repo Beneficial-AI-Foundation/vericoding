@@ -20,7 +20,7 @@ spec fn valid_char(c: char) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn decode_shift(s: Seq<char>) -> (t: Seq<char>)
+fn decode_shift(s: Vec<char>) -> (t: Vec<char>)
     requires forall|i: int| 0 <= i < s.len() ==> valid_char(s[i])
     ensures s.len() == t.len(),
             forall|i: int| 0 <= i < s.len() ==> t[i] == decode_char(s[i])

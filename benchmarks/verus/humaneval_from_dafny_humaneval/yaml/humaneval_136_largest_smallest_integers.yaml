@@ -19,7 +19,7 @@ vc-preamble: |-
 vc-helpers: |-
 
 vc-spec: |-
-  fn largest_smallest_integers(arr: Seq<int>) -> (result: (Option<int>, Option<int>))
+  fn largest_smallest_integers(arr: Vec<i8>) -> (result: (Option<i8>, Option<i8>))
 
 vc-code: |-
   {

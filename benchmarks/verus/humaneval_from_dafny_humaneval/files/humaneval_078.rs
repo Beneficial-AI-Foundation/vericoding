@@ -40,9 +40,9 @@ fn hex_key(num: &str) -> (count: usize)
     requires
         is_valid_hex_string(num@),
     ensures
-        count >= 0,
-        count <= num@.len(),
-        count == count_prime_hex_digits(num@),
+        count as int >= 0,
+        count as int <= num@.len(),
+        count as int == count_prime_hex_digits(num@),
 // </vc-spec>
 // <vc-code>
 {

@@ -18,8 +18,8 @@ spec fn monotonic(l: Seq<int>) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn is_monotonic(l: Seq<int>) -> (result: bool)
-    ensures result == monotonic(l)
+fn is_monotonic(l: Vec<i8>) -> (result: bool)
+    ensures result == monotonic(l@.map(|_i: int, x: i8| x as int))
 // </vc-spec>
 // <vc-code>
 {
