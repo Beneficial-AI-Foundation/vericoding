@@ -21,7 +21,7 @@ def isValidGrid (grid: Grid) : Bool :=
     | _::_ =>
       let width := row.length
       rows.all (λ r => r.length = width)
-      
+
 theorem grid_validity {grid: Grid} (h: isValidGrid grid) :
   ∃ (row: List Nat) (rows: List (List Nat)), grid = row::rows :=
 sorry

@@ -21,7 +21,7 @@ def is_valid_string (s : String) (a_count b_count : Nat) : Prop :=
   count_char s 'b' = b_count ∧
   ¬contains_substring "aaa" s ∧
   ¬contains_substring "bbb" s
-  
+
 theorem equal_counts {n : Nat} (h : n > 0) :
   let s := strWithout3a3b n n
   is_valid_string s n n ∧ s.length = 2 * n
