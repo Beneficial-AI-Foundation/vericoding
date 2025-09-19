@@ -16,7 +16,7 @@ from ..core.llm_providers import create_llm_provider
 from ..core.prompts import PromptLoader
 from ..core.language_tools import verify_file
 from ..core.llm_providers import call_llm
-from ..utils.io_utils import save_iteration_code
+from ..utils.io_utils import save_iteration_code, load_postamble_from_yaml
 from .code_fixer import extract_code, apply_json_replacements
 from .cheat_checker import has_final_failure_cheats, check_for_cheats
 
@@ -96,8 +96,115 @@ class ProcessingResult:
     generate_prompt: str | None = None
     fix_prompts: list[str] | None = None
     llm_responses: list[LLMResponse] | None = None
+    unit_test_passed: bool | None = None  # None if unit test not run, True/False if run
 
 
+@dataclass 
+class UnitTestResult:
+    """Result of unit test with postamble."""
+    success: bool
+    verification: 'VerificationResult'
+
+
+
+
+def run_unit_test_with_postamble(
+    config: ProcessingConfig, 
+    current_code: str, 
+    file_path: str, 
+    relative_path: Path, 
+    output_path: Path, 
+    base_file_name: str, 
+    iteration: int
+) -> UnitTestResult:
+    """Run unit test with postamble for Lean files.
+    
+    This function is only called when verification succeeded and no cheats were found.
+    
+    Args:
+        config: Processing configuration
+        current_code: The current working code (clean, no cheats)
+        file_path: Path to the original file
+        relative_path: Relative path from files_dir  
+        output_path: Path to the output file
+        base_file_name: Base filename without extension
+        iteration: Current iteration number
+        
+    Returns:
+        UnitTestResult with success status and verification result
+    """
+    logger.info("    🧪 Testing with postamble...")
+    
+    # Load postamble from YAML (will raise exception if YAML missing or malformed)
+    relative_path_for_yaml = Path(file_path).relative_to(Path(config.files_dir))
+    postamble = load_postamble_from_yaml(config, relative_path_for_yaml)
+    
+    if postamble == "":
+        logger.info("    ⚠️  Empty postamble - treating as normal success")
+        from ..core.language_tools import VerificationResult
+        verification = VerificationResult(success=True, error=None, output="")
+        return UnitTestResult(success=True, verification=verification)
+    
+    # Create code with postamble appended
+    code_with_postamble = current_code + "\n\n" + postamble
+    
+    # Save code with postamble for debugging
+    save_iteration_code(config, relative_path, iteration, code_with_postamble, "unit_test_with_postamble")
+    
+    # Write code with postamble to temporary file for verification
+    temp_output_path = output_path.with_suffix(".unit_test" + config.language_config.file_extension)
+    with temp_output_path.open("w") as f:
+        f.write(code_with_postamble)
+    
+    # Verify with postamble
+    logger.info("    🧪 Verifying with postamble...")
+    postamble_verification = verify_file(config, str(temp_output_path))
+    
+    if postamble_verification.success:
+        logger.info("    ✓ Unit test PASSED: Verification with postamble successful!")
+        
+        # Clean up temporary file
+        temp_output_path.unlink()
+        return UnitTestResult(success=True, verification=postamble_verification)
+    else:
+        logger.info(f"    ✗ Unit test FAILED: Verification with postamble failed")
+        logger.info(f"    ✗ Postamble error: {postamble_verification.error[:200] if postamble_verification.error else 'Unknown error'}...")
+        
+        # Update verification result to reflect unit test failure
+        postamble_error = postamble_verification.error or "Unknown postamble verification error"
+        combined_error = f"UNIT TEST FAILED: Solution passed verification but failed when postamble was added.\n\nPostamble verification error:\n{postamble_error}"
+        
+        # Save postamble error for debugging
+        if config.debug_mode:
+            postamble_error_log_path = (
+                Path(config.output_dir) / "debug" / relative_path.parent
+                if str(relative_path.parent) != "."
+                else Path(config.output_dir) / "debug"
+            ) / f"{base_file_name}_iter{iteration}_unit_test_postamble_error.log"
+            
+            postamble_error_log_path.parent.mkdir(parents=True, exist_ok=True)
+            with postamble_error_log_path.open("w") as f:
+                f.write(f"=== Unit Test Postamble Error - Iteration {iteration} ===\n")
+                f.write(f"File: {file_path}\n")
+                f.write(f"Time: {time.strftime('%Y-%m-%d %H:%M:%S')}\n")
+                f.write(f"\nPostamble Verification Error:\n")
+                f.write("-" * 80 + "\n")
+                f.write(postamble_error)
+                f.write("\n" + "-" * 80 + "\n")
+                f.write("\nPostamble Content:\n")
+                f.write("-" * 80 + "\n")
+                f.write(postamble)
+                f.write("\n" + "-" * 80 + "\n")
+            logger.info(f"    💾 Saved postamble error log to: debug/{relative_path.parent}/{base_file_name}_iter{iteration}_unit_test_postamble_error.log")
+        
+        # Clean up temporary file
+        if temp_output_path.exists():
+            temp_output_path.unlink()
+        
+        # Create failure verification result
+        from ..core.language_tools import VerificationResult
+        verification = VerificationResult(success=False, error=combined_error, output=postamble_verification.output)
+        return UnitTestResult(success=False, verification=verification)
 
 
 def process_spec_file(
@@ -259,7 +366,8 @@ def process_spec_file(
                 original_compilation_failed=original_compilation_failed,
                 generate_prompt=generate_prompt,
                 fix_prompts=[],
-                llm_responses=llm_responses if wandb.run and llm_responses else None
+                llm_responses=llm_responses if wandb.run and llm_responses else None,
+                unit_test_passed=None  # JSON parsing failed, unit test not run
             )
         
         # Save initial generated code
@@ -478,6 +586,20 @@ def process_spec_file(
                     logger.info(f"    ✗ Failed to generate fix: {str(e)}")
                     break
 
+        # Run unit test if enabled and we have a successful solution
+        unit_test_passed = None
+        if success and config.unit_test and config.language == 'lean':
+            logger.info("    🧪 Running unit test with postamble (does not affect success status)...")
+            unit_test_result = run_unit_test_with_postamble(
+                config, current_code, file_path, relative_path, 
+                output_path, base_file_name, iteration
+            )
+            unit_test_passed = unit_test_result.success
+            if unit_test_passed:
+                logger.info("    ✓ Unit test passed!")
+            else:
+                logger.info("    ✗ Unit test failed (but main verification still counts as success)")
+
         if success:
             logger.info(f"  ✓ Successfully generated and verified: {output_path.name}")
             
@@ -499,7 +621,8 @@ def process_spec_file(
                 original_compilation_failed=original_compilation_failed,
                 generate_prompt=generate_prompt,
                 fix_prompts=all_fix_prompts if all_fix_prompts else None,
-                llm_responses=llm_responses if wandb.run and llm_responses else None
+                llm_responses=llm_responses if wandb.run and llm_responses else None,
+                unit_test_passed=unit_test_passed
             )
         else:
             error_msg = (
@@ -541,7 +664,8 @@ def process_spec_file(
                 original_compilation_failed=original_compilation_failed,
                 generate_prompt=generate_prompt,
                 fix_prompts=all_fix_prompts if all_fix_prompts else None,
-                llm_responses=llm_responses if wandb.run and llm_responses else None
+                llm_responses=llm_responses if wandb.run and llm_responses else None,
+                unit_test_passed=unit_test_passed
             )
 
     except Exception as e:
@@ -566,7 +690,8 @@ def process_spec_file(
             original_compilation_failed="original_compilation_failed" in locals() and original_compilation_failed,
             generate_prompt=generate_prompt if "generate_prompt" in locals() else None,
             fix_prompts=all_fix_prompts if "all_fix_prompts" in locals() and all_fix_prompts else None,
-            llm_responses=llm_responses if wandb.run and "llm_responses" in locals() and llm_responses else None
+            llm_responses=llm_responses if wandb.run and "llm_responses" in locals() and llm_responses else None,
+            unit_test_passed=None  # Exception occurred, unit test not run
         )
     finally:
         # Log failure table to W&B and save LLM responses to debug folder
@@ -648,6 +773,7 @@ def process_files_parallel(
                     original_compilation_failed=False,  # Unknown since we didn't get that far
                     generate_prompt=None,
                     fix_prompts=None,
+                    unit_test_passed=None,  # Exception occurred, unit test not run
                 )
                 results.append(error_result)
                 logger.info(

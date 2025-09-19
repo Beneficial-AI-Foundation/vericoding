@@ -53,6 +53,7 @@ lean_lib Benchmarks where
     .andSubmodules `clever,
     .andSubmodules `dafnybench,
     .andSubmodules `fvapps,
+    .andSubmodules `fvapps_good,
     .andSubmodules `numpy_simple,
     .andSubmodules `numpy_triple,
     .andSubmodules `verified_cogen,

@@ -1,0 +1,77 @@
+#!/usr/bin/env bash
+
+# Terraform Docker wrapper script for VeriCoding infrastructure
+# Usage: ./tf [terraform-command] [args...]
+
+set -e
+
+# Colors for output
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+NC='\033[0m' # No Color
+
+# Get the absolute path of the infrastructure directory
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+PROJECT_DIR="$(dirname "$SCRIPT_DIR")"
+
+# AWS credentials and config paths
+AWS_DIR="$HOME/.aws"
+
+# Check if AWS credentials exist
+if [ ! -d "$AWS_DIR" ]; then
+    echo -e "${YELLOW}Warning: AWS credentials directory not found at $AWS_DIR${NC}"
+    echo "Make sure to configure AWS credentials before running Terraform"
+fi
+
+# Function to print usage
+usage() {
+    echo "Usage: $0 [terraform-command] [args...]"
+    echo ""
+    echo "Examples:"
+    echo "  $0 init                    # Initialize Terraform"
+    echo "  $0 plan                    # Create execution plan"
+    echo "  $0 apply                   # Apply changes"
+    echo "  $0 destroy                 # Destroy infrastructure"
+    echo "  $0 output                  # Show outputs"
+    echo "  $0 state list              # List resources in state"
+    echo ""
+    echo "This wrapper runs Terraform in Docker with proper volume mounts."
+}
+
+# Check if Docker is available
+if ! command -v docker &> /dev/null; then
+    echo -e "${RED}Error: Docker is not installed or not in PATH${NC}"
+    exit 1
+fi
+
+# Check if any arguments provided
+if [ $# -eq 0 ]; then
+    usage
+    exit 1
+fi
+
+# Handle help
+if [ "$1" = "help" ] || [ "$1" = "-h" ] || [ "$1" = "--help" ]; then
+    usage
+    exit 0
+fi
+
+echo -e "${GREEN}Running Terraform in Docker...${NC}"
+echo -e "${YELLOW}Command: terraform $*${NC}"
+echo -e "${YELLOW}Working directory: $SCRIPT_DIR${NC}"
+
+# Build Docker run command with proper volume mounts
+DOCKER_CMD=(
+    docker run
+    --rm
+    -it
+    -v "$SCRIPT_DIR:/workspace"
+    -v "$AWS_DIR:/root/.aws:ro"
+    -w /workspace
+    hashicorp/terraform:latest
+    "$@"
+)
+
+# Execute the command
+exec "${DOCKER_CMD[@]}"
