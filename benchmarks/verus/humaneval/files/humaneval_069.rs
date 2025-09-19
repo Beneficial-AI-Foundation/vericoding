@@ -4,7 +4,6 @@ use vstd::prelude::*;
 verus! {
 // </vc-preamble>
 
-// <vc-helpers>
 spec fn count(s: Seq<int>, x: int) -> int {
     s.filter(|i: int| i == x).len() as int
 }
@@ -32,11 +31,7 @@ spec fn valid_result(lst: Seq<int>, result: int) -> bool
     }
 }
 
-proof fn count_append_lemma(s: Seq<int>, elem: int, x: int)
-    ensures count(s.push(elem), x) == count(s, x) + (if x == elem { 1int } else { 0int })
-{
-    assume(false); /* TODO: Remove this line and implement the proof */
-}
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

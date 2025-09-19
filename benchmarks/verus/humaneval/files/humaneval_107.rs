@@ -67,9 +67,6 @@ spec fn count_odd_palindromes_in_range(start: nat, end: nat) -> nat
         count_odd_palindromes_in_range(start + 1, end)
     }
 }
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn count_palindromes_helper(n: nat, current: nat, even_count: nat, odd_count: nat) -> (nat, nat)
     decreases n - current + 1
 {
@@ -85,6 +82,10 @@ spec fn count_palindromes_helper(n: nat, current: nat, even_count: nat, odd_coun
         count_palindromes_helper(n, current + 1, even_count, odd_count)
     }
 }
+
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

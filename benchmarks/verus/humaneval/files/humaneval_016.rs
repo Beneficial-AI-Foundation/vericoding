@@ -12,7 +12,7 @@ spec fn to_lower_char(c: char) -> char {
 }
 
 spec fn char_set_from_string(s: Seq<char>) -> Set<char> {
-    Set::new(|c: char| exists|i: int| 0 <= i < s.len() && to_lower_char(s[i]) == c)
+    Set::new(|c: char| exists|i: int| 0 <= i < s.len() && #[trigger] to_lower_char(s[i]) == c)
 }
 // </vc-preamble>
 

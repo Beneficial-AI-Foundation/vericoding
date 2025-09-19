@@ -27,13 +27,6 @@ spec fn reverse_seq(s: Seq<char>) -> Seq<char>
 // </vc-preamble>
 
 // <vc-helpers>
-proof fn filter_chars_append_lemma(s: Seq<char>, ch: char, c: Seq<char>)
-    ensures filter_chars(s.add(seq![ch]), c) == 
-        (if c.contains(ch) { filter_chars(s, c) } else { filter_chars(s, c).add(seq![ch]) })
-    decreases s.len()
-{
-    assume(false); /* TODO: Remove this line and implement the proof */
-}
 // </vc-helpers>
 
 // <vc-spec>

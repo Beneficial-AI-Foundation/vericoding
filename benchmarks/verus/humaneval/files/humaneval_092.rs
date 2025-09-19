@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn is_integer(x: int) -> bool {
     true
 }
@@ -20,6 +17,10 @@ spec fn one_equals_sum_of_other_two(x: int, y: int, z: int) -> bool {
 spec fn valid_result(x: int, y: int, z: int, result: bool) -> bool {
     result <==> (all_integers(x, y, z) && one_equals_sum_of_other_two(x, y, z))
 }
+
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

@@ -33,13 +33,19 @@ vc-preamble: |-
 vc-helpers: |-
 
 vc-spec: |-
-  fn smallest_change(arr: Seq<int>) -> (changes: usize)
+  fn smallest_change(arr: Vec<i8>) -> (changes: usize)
       ensures 
-          changes <= arr.len() / 2,
-          changes == count_mismatched_pairs(arr),
-          arr.len() <= 1 ==> changes == 0,
-          forall|c: int| 0 <= c < changes ==> !can_make_palindromic_with_changes(arr, c),
-          can_make_palindromic_with_changes(arr, changes as int)
+          changes <= arr@.len() / 2,
+          changes as int == count_mismatched_pairs(arr@.map(|i, x| x as int)),
+          arr@.len() <= 1 ==> changes == 0,
+          ({
+              let arr_int = arr@.map(|i, x| x as int);
+              forall|c: int| can_make_palindromic_with_changes(arr_int, c) ==> (0 <= c < changes as int ==> !can_make_palindromic_with_changes(arr_int, c))
+          }),
+          ({
+              let arr_int = arr@.map(|i, x| x as int);
+              can_make_palindromic_with_changes(arr_int, changes as int)
+          })
 
 vc-code: |-
   {

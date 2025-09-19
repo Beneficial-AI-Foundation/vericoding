@@ -18,12 +18,16 @@ vc-preamble: |-
       exists|i: int, j: int| 0 <= i < j < numbers.len() && abs_diff(numbers[i], numbers[j]) < threshold
   }
 
+  spec fn seq_map_to_int(numbers: Seq<i8>) -> Seq<int> {
+          numbers.map(|_i: int, x: i8| x as int)
+  }
+
 vc-helpers: |-
 
 vc-spec: |-
-  fn has_close_elements_impl(numbers: Seq<int>, threshold: int) -> (result: bool)
-      requires valid_input(numbers, threshold)
-      ensures result == has_close_elements(numbers, threshold)
+  fn has_close_elements_impl(numbers: Vec<i8>, threshold: i8) -> (result: bool)
+      requires valid_input(seq_map_to_int(numbers@), threshold as int)
+      ensures result == has_close_elements(seq_map_to_int(numbers@), threshold as int)
 
 vc-code: |-
   {

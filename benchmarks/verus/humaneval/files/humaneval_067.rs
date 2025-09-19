@@ -20,16 +20,13 @@ spec fn sum_sequence(numbers: Seq<int>) -> int
     decreases numbers.len()
 {
     if numbers.len() == 0 {
-        0
+        0int
     } else {
         numbers[0] + sum_sequence(numbers.subrange(1, numbers.len() as int))
     }
 }
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn extract_numbers_helper(s: Seq<char>, i: int, current_number: int, in_number: bool, numbers: Seq<int>) -> Seq<int>
-    decreases s.len() - i
+    decreases s.len() - i when 0 <= i <= s.len() && current_number >= 0
 {
     if 0 <= i <= s.len() && current_number >= 0 {
         if i == s.len() {
@@ -51,48 +48,16 @@ spec fn extract_numbers_helper(s: Seq<char>, i: int, current_number: int, in_num
         seq![]
     }
 }
+// </vc-preamble>
 
-fn extract_numbers_from_string_imperative(s: &Vec<char>) -> (numbers: Vec<u32>)
-    ensures numbers@.len() >= 0
-{
-    let mut numbers = Vec::new();
-    let mut current_number = 0u32;
-    let mut in_number = false;
-    let mut i = 0;
-
-    while i < s.len()
-        invariant 
-            0 <= i <= s.len(),
-        decreases s.len() - i
-    {
-        let c = s[i];
-        if '0' <= c && c <= '9' {
-            let digit = (c as u8 - 48u8) as u32;
-            if current_number <= (u32::MAX / 10) && (current_number < (u32::MAX / 10) || digit <= (u32::MAX % 10)) {
-                current_number = current_number * 10 + digit;
-                in_number = true;
-            }
-        } else {
-            if in_number {
-                numbers.push(current_number);
-                current_number = 0;
-                in_number = false;
-            }
-        }
-        i = i + 1;
-    }
-
-    if in_number {
-        numbers.push(current_number);
-    }
-
-    numbers
-}
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>
 fn fruit_distribution(s: &Vec<char>, n: u32) -> (mangoes: u32)
-    ensures mangoes <= n
+    requires valid_input(n as int)
+    ensures mangoes as int == (n as int) - sum_of_numbers_in_string(s@),
+            (mangoes as int >= 0) <==> ((n as int) >= sum_of_numbers_in_string(s@))
 // </vc-spec>
 // <vc-code>
 {

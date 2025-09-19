@@ -15,7 +15,7 @@ vc-preamble: |-
       } else if sub.len() > s.len() { 
           false
       } else {
-          exists|i: int| 0 <= i <= s.len() - sub.len() && #[trigger] s.subrange(i, i + sub.len()).ext_equal(sub)
+          exists|i: int| 0 <= i <= s.len() - sub.len() && s.subrange(i, i + sub.len()) == sub
       }
   }
 

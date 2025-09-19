@@ -9,7 +9,7 @@ spec fn affine(x: int, shift: int, scale: int) -> int {
 
 spec fn affine_seq(s: Seq<int>, r: Seq<int>, shift: int, scale: int) -> bool {
     scale > 0 && r.len() == s.len() &&
-    forall|i: int| 0 <= i < s.len() ==> r[i] == affine(s[i], shift, scale)
+    forall|i: int| 0 <= i < s.len() ==> #[trigger] r[i] == #[trigger] affine(s[i], shift, scale)
 }
 // </vc-preamble>
 
@@ -24,7 +24,11 @@ fn rescale_to_unit(s: Vec<i8>) -> (r: Vec<i8>)
             forall|i: int| 0 <= i < s@.len() ==> 0 <= r@[i] as int && r@[i] as int <= 1,
             exists|i: int| 0 <= i < s@.len() && r@[i] as int == 0,
             exists|i: int| 0 <= i < s@.len() && r@[i] as int == 1,
-            exists|shift: int, scale: int| #[trigger] affine_seq(s@.map(|i, x| x as int), r@.map(|i, x| x as int), shift, scale) && scale > 0
+            ({
+                let s_int = s@.map(|i, x| x as int);
+                let r_int = r@.map(|i, x| x as int);
+                exists|shift: int, scale: int| affine_seq(s_int, r_int, shift, scale) && scale > 0
+            })
 // </vc-spec>
 // <vc-code>
 {

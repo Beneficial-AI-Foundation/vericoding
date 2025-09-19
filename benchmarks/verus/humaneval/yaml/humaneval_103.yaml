@@ -16,9 +16,7 @@ vc-preamble: |-
       else { int_to_binary_helper(n) }
   }
 
-  spec fn int_to_binary_helper(n: nat) -> Seq<char>
-      requires n > 0
-  {
+  spec fn int_to_binary_helper(n: nat) -> Seq<char> {
       if n == 1 { seq!['1'] }
       else { int_to_binary_helper(n / 2) + (if n % 2 == 1 { seq!['1'] } else { seq!['0'] }) }
   }
@@ -28,8 +26,8 @@ vc-helpers: |-
 vc-spec: |-
   fn rounded_avg(n: int, m: int) -> (result: String)
       requires n > 0 && m > 0
-      ensures (n > m) ==> (result@ == seq!['-', '1'])
-      ensures (n <= m) ==> (
+      ensures (n > m) ==> (result@ == seq!['-', '1']) &&
+              (n <= m) ==> (
           result@.len() >= 3 &&
           result@.subrange(0, 2) == seq!['0', 'b'] &&
           ({

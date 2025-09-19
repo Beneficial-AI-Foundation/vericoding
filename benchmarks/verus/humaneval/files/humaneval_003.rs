@@ -2,9 +2,7 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
 
-// <vc-helpers>
 spec fn sum_prefix(ops: Seq<int>, len: nat) -> int
   recommends len <= ops.len()
   decreases len
@@ -16,6 +14,10 @@ spec fn sum_prefix(ops: Seq<int>, len: nat) -> int
 spec fn vec_to_seq_int(v: Vec<i8>) -> Seq<int> {
   v@.map(|i, x: i8| x as int)
 }
+
+  // </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

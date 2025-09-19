@@ -27,12 +27,6 @@ spec fn power(base: int, exp: nat) -> int
     }
 }
 
-proof fn seq_product_append_lemma(s: Seq<int>, x: int)
-    ensures seq_product(s.push(x)) == seq_product(s) * x
-    decreases s.len()
-{
-    assume(false); /* TODO: Remove this line and implement the proof */
-}
 // </vc-preamble>
 
 // <vc-helpers>

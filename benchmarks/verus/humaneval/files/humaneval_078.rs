@@ -27,12 +27,6 @@ spec fn count_prime_hex_digits(s: Seq<char>) -> int
 // </vc-preamble>
 
 // <vc-helpers>
-proof fn append_count_lemma(s: Seq<char>, c: char)
-    ensures count_prime_hex_digits(s.push(c)) == count_prime_hex_digits(s) + (if is_prime_hex_digit(c) { 1int } else { 0int })
-    decreases s.len()
-{
-    assume(false); /* TODO: Remove this line and implement the proof */
-}
 // </vc-helpers>
 
 // <vc-spec>

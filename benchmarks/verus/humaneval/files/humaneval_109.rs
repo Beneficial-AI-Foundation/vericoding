@@ -19,12 +19,6 @@ spec fn rotate_right(arr: Seq<int>, k: int) -> Seq<int>
     }
 }
 
-fn quicksort(s: Seq<int>) -> (sorted: Seq<int>)
-    decreases s.len()
-{
-    assume(false);
-    s
-}
 // </vc-preamble>
 
 // <vc-helpers>

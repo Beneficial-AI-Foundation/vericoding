@@ -16,7 +16,7 @@ vc-helpers: |-
       if s.len() < sub.len() {
           false
       } else {
-          exists|i: int| 0 <= i <= s.len() - sub.len() && #[trigger] equal(s.subrange(i, i + sub.len()), sub)
+          exists|i: int| 0 <= i <= s.len() - sub.len() && s.subrange(i, i + sub.len()) == sub
       }
   }
 

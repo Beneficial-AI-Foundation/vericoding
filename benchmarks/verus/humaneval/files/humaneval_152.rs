@@ -14,12 +14,13 @@ spec fn valid_output(game: Seq<int>, guess: Seq<int>, result: Seq<int>) -> bool 
         && (forall|i: int| 0 <= i < result.len() ==> result[i] >= 0)
     )
 }
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn abs_value(x: int) -> int {
     if x >= 0 { x } else { -x }
 }
+
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

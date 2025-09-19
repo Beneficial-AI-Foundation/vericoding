@@ -22,7 +22,7 @@ spec fn contains_all_positives(result: Seq<int>, original: Seq<int>) -> bool {
 spec fn preserves_order(result: Seq<int>, original: Seq<int>) -> bool {
     forall|i: int, j: int| 0 <= i < j < result.len() ==> 
         (exists|k1: int, k2: int| 0 <= k1 < k2 < original.len() && original[k1] == #[trigger] result[i] && original[k2] == #[trigger] result[j] &&
-        forall|k: int| k1 < k < k2 ==> !is_positive(original[k]))
+        forall|k: int| k1 < k < k2 ==> !is_positive(#[trigger] original[k]))
 }
 
 spec fn count_positives(s: Seq<int>) -> int {

@@ -2,9 +2,7 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
 
-// <vc-helpers>
 spec fn valid_input(arr: Seq<int>) -> bool {
     forall|i: int| 0 <= i < arr.len() ==> arr[i] >= 0
 }
@@ -40,6 +38,7 @@ fn sort_ascending(arr: Seq<int>) -> (result: Seq<int>)
     unreached()
 }
 
+
 fn sort_descending(arr: Seq<int>) -> (result: Seq<int>)
     ensures
         result.to_multiset() == arr.to_multiset(),
@@ -48,7 +47,12 @@ fn sort_descending(arr: Seq<int>) -> (result: Seq<int>)
     assume(false);
     unreached()
 }
+
+// </vc-preamble>
+
+// <vc-helpers> 
 // </vc-helpers>
+
 
 // <vc-spec>
 fn sort_array(arr: Vec<i8>) -> (result: Vec<i8>)

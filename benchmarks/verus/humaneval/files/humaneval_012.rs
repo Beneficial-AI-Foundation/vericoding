@@ -9,9 +9,9 @@ spec fn valid_result(strings: Seq<Seq<char>>, result: Option<Seq<char>>) -> bool
     } else {
         match result {
             Option::Some(value) => {
-                exists|i: int| 0 <= i < strings.len() && strings[i] == value &&
-                (forall|s: Seq<char>| strings.contains(s) ==> value.len() >= s.len()) &&
-                (forall|j: int| 0 <= j < i ==> strings[j].len() < value.len())
+                exists|i: int| 0 <= i < strings.len() && #[trigger] strings[i] == value &&
+                (forall|s: Seq<char>| strings.contains(s) ==> value.len() >= #[trigger] (s.len())) &&
+                (forall|j: int| 0 <= j < i ==> #[trigger] (strings[j].len()) < value.len())
             },
             Option::None => false
         }

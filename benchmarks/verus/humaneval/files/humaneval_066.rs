@@ -19,14 +19,6 @@ spec fn sum_of_uppercase_ascii(s: Seq<char>) -> int
     }
 }
 
-proof fn sum_of_uppercase_ascii_lemma(s: Seq<char>, c: char)
-    ensures sum_of_uppercase_ascii(s.push(c)) == 
-            if 'A' <= c && c <= 'Z' { sum_of_uppercase_ascii(s) + (c as int) }
-            else { sum_of_uppercase_ascii(s) }
-    decreases s.len()
-{
-    assume(false); /* TODO: Remove this line and implement the proof */
-}
 // </vc-preamble>
 
 // <vc-helpers>

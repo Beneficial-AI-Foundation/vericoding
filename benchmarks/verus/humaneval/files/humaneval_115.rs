@@ -36,28 +36,7 @@ spec fn sum_of_trips(grid: Seq<Seq<int>>, capacity: int) -> int
     }
 }
 
-proof fn sum_water_slice_lemma(well: Seq<int>, j: int)
-    requires 
-        0 <= j < well.len()
-    ensures sum_water(well.subrange(0, j + 1)) == sum_water(well.subrange(0, j)) + well[j]
-{
-    assume(false); /* TODO: Remove this line and implement the proof */
-}
 
-proof fn sum_water_full_slice_lemma(well: Seq<int>)
-    ensures sum_water(well.subrange(0, well.len() as int)) == sum_water(well)
-{
-    assume(false); /* TODO: Remove this line and implement the proof */
-}
-
-proof fn sum_of_trips_slice_lemma(grid: Seq<Seq<int>>, i: int, capacity: int)
-    requires 
-        capacity > 0,
-        0 <= i < grid.len()
-    ensures sum_of_trips(grid.subrange(0, i + 1), capacity) == sum_of_trips(grid.subrange(0, i), capacity) + trips_for_well(grid[i], capacity)
-{
-    assume(false); /* TODO: Remove this line and implement the proof */
-}
 // </vc-preamble>
 
 // <vc-helpers>

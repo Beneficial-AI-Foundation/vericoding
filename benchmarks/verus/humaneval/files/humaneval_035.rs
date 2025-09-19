@@ -10,9 +10,7 @@ spec fn valid_input(l: Seq<int>) -> bool {
 spec fn is_max_element(l: Seq<int>, max_val: int) -> bool {
     l.contains(max_val) && forall|i: int| 0 <= i < l.len() ==> l[i] <= max_val
 }
-// </vc-preamble>
 
-// <vc-helpers>
 spec fn max_element_func(l: Seq<int>) -> int
     decreases l.len()
 {
@@ -25,6 +23,10 @@ spec fn max_element_func(l: Seq<int>) -> int
         0int
     }
 }
+
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

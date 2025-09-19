@@ -40,17 +40,6 @@ spec fn string_to_int_in_base(s: Seq<char>, base: int) -> int
 // </vc-preamble>
 
 // <vc-helpers>
-proof fn digits_reversal_lemma(digits: Seq<char>, reversed: Seq<char>, base: int)
-  requires 
-    base >= 2,
-    digits.len() == reversed.len() > 0,
-    forall|i: int| 0 <= i < digits.len() ==> '0' <= digits[i] <= '9' && (digits[i] as int) - ('0' as int) < base,
-    forall|i: int| 0 <= i < reversed.len() ==> reversed[i] == digits[digits.len() - 1 - i],
-  ensures string_to_int_in_base(reversed, base) == digits_to_int(digits, base)
-  decreases digits.len()
-{
-  assume(false); /* TODO: Remove this line and implement the proof */
-}
 // </vc-helpers>
 
 // <vc-spec>

@@ -11,7 +11,6 @@ vc-preamble: |-
 
   verus! {
 
-vc-helpers: |-
   spec fn valid_input(arr: Seq<int>) -> bool {
       forall|i: int| 0 <= i < arr.len() ==> arr[i] >= 0
   }
@@ -47,6 +46,7 @@ vc-helpers: |-
       unreached()
   }
 
+
   fn sort_descending(arr: Seq<int>) -> (result: Seq<int>)
       ensures
           result.to_multiset() == arr.to_multiset(),
@@ -55,6 +55,8 @@ vc-helpers: |-
       assume(false);
       unreached()
   }
+
+vc-helpers: |-
 
 vc-spec: |-
   fn sort_array(arr: Vec<i8>) -> (result: Vec<i8>)

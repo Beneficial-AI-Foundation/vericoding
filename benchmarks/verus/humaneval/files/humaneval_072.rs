@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn is_palindrome(s: Seq<int>) -> bool {
     forall|i: int| #![trigger s[i]] 0 <= i < s.len() ==> s[i] == s[s.len() - 1 - i]
 }
@@ -18,6 +15,10 @@ spec fn sum_elements(s: Seq<int>) -> int
         s[0] + sum_elements(s.subrange(1, s.len() as int))
     }
 }
+
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

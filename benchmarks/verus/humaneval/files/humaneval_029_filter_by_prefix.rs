@@ -15,7 +15,7 @@ spec fn starts_with(s: Seq<char>, p: Seq<char>) -> bool
 
 // <vc-spec>
 fn filter_by_prefix(xs: Vec<Vec<char>>, p: Vec<char>) -> (filtered: Vec<Vec<char>>)
-    ensures forall|i: int| 0 <= i < filtered@.len() ==> starts_with(filtered@[i]@, p@)
+    ensures forall|i: int| 0 <= i < filtered@.len() ==> starts_with(#[trigger] filtered@[i]@, #[trigger] p@)
 // </vc-spec>
 // <vc-code>
 {

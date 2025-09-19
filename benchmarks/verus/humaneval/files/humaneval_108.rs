@@ -45,12 +45,6 @@ spec fn valid_output(arr: Seq<i32>, count: int) -> bool {
 // </vc-preamble>
 
 // <vc-helpers>
-fn digit_sum(n: i32) -> (result: i32)
-    ensures result == digit_sum_func(n as int)
-{
-    assume(false);
-    0
-}
 // </vc-helpers>
 
 // <vc-spec>

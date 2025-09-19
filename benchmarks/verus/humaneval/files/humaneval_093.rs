@@ -40,6 +40,19 @@ spec fn swap_case(c: char) -> char {
 
 // <vc-spec>
 fn encode(message: Vec<char>) -> (result: Vec<char>)
+    requires forall|i: int| 0 <= i < message@.len() ==> 
+        (('a' <= message@[i] && message@[i] <= 'z') || 
+         ('A' <= message@[i] && message@[i] <= 'Z') || 
+         message@[i] == ' ')
+    ensures result@.len() == message@.len(),
+            forall|i: int| 0 <= i < message@.len() ==> 
+                if #[trigger] message@[i] == ' ' {
+                    #[trigger] result@[i] == ' '
+                } else if is_vowel(#[trigger] message@[i]) {
+                    result@[i] == swap_case(#[trigger] get_vowel_replacement(#[trigger] message@[i]))
+                } else {
+                    #[trigger] result@[i] == swap_case(#[trigger] message@[i])
+                }
 // </vc-spec>
 // <vc-code>
 {

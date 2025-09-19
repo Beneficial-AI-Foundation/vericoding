@@ -55,7 +55,7 @@ fn pluck(arr: Vec<i8>) -> (result: Vec<i8>)
         arr@.len() == 0 ==> result@.len() == 0,
         !has_even_value(arr@.map_values(|x: i8| x as int)) ==> result@.len() == 0,
         has_even_value(arr@.map_values(|x: i8| x as int)) ==> result@.len() == 2,
-        result@.len() == 2 ==> (0 <= result@[1] as int && result@[1] as int < arr@.len()),
+        result@.len() == 2 ==> (0 <= (result@[1] as int) && (result@[1] as int) < (arr@.len() as int)),
         result@.len() == 2 ==> arr@[result@[1] as int] as int == result@[0] as int,
         result@.len() == 2 ==> result@[0] as int % 2 == 0,
         result@.len() == 2 ==> forall|i: int| 0 <= i < arr@.len() && arr@[i] as int % 2 == 0 ==> result@[0] as int <= arr@[i] as int,

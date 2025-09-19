@@ -2,12 +2,14 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
+
+spec fn cube(n: int) -> int {
+        n * n * n
+}
+    
+    // </vc-preamble>
 
 // <vc-helpers>
-spec fn cube(n: int) -> int {
-    n * n * n
-}
 // </vc-helpers>
 
 // <vc-spec>

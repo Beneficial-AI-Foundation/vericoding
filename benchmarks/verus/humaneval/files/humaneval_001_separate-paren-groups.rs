@@ -37,8 +37,8 @@ fn separate_paren_groups(paren_string: Vec<char>) -> (res: Vec<Vec<char>>)
         parentheses_depth(paren_string@, 0, paren_string.len() as int) == 0,
         inner_depths_nonnegative(paren_string@)
     ensures 
-        forall|k: int| 0 <= k < res.len() ==> parentheses_depth(res[k as int]@, 0, res[k as int].len() as int) == 0,
-        forall|k: int| 0 <= k < res.len() ==> inner_depths_positive(res[k as int]@)
+        forall|k: int| 0 <= k < res.len() ==> parentheses_depth(#[trigger] res[k as int]@, 0, res[k as int].len() as int) == 0,
+        forall|k: int| 0 <= k < res.len() ==> inner_depths_positive(#[trigger] res[k as int]@)
 // </vc-spec>
 // <vc-code>
 {

@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn number_to_name(n: int) -> Seq<char> {
   if 1 <= n <= 9 {
     if n == 1 { seq!['O', 'n', 'e'] }
@@ -20,6 +17,10 @@ spec fn number_to_name(n: int) -> Seq<char> {
     seq!['I', 'n', 'v', 'a', 'l', 'i', 'd']
   }
 }
+
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

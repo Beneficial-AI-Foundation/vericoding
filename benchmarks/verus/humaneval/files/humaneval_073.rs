@@ -34,8 +34,14 @@ fn smallest_change(arr: Vec<i8>) -> (changes: usize)
         changes <= arr@.len() / 2,
         changes as int == count_mismatched_pairs(arr@.map(|i, x| x as int)),
         arr@.len() <= 1 ==> changes == 0,
-        forall|c: int| #[trigger] can_make_palindromic_with_changes(arr@.map(|i, x| x as int), c) ==> (0 <= c < changes as int ==> !can_make_palindromic_with_changes(arr@.map(|i, x| x as int), c)),
-        can_make_palindromic_with_changes(arr@.map(|i, x| x as int), changes as int)
+        ({
+            let arr_int = arr@.map(|i, x| x as int);
+            forall|c: int| can_make_palindromic_with_changes(arr_int, c) ==> (0 <= c < changes as int ==> !can_make_palindromic_with_changes(arr_int, c))
+        }),
+        ({
+            let arr_int = arr@.map(|i, x| x as int);
+            can_make_palindromic_with_changes(arr_int, changes as int)
+        })
 // </vc-spec>
 // <vc-code>
 {

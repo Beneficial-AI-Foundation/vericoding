@@ -52,9 +52,7 @@ spec fn char_to_int(c: char) -> int {
     else if c == '9' { 9 }
     else { 0 }
 }
-// </vc-preamble>
 
-// <vc-helpers>
 spec fn find_slash_helper(s: Seq<char>, pos: int) -> int
     decreases s.len() - pos when 0 <= pos <= s.len() && exists|i: int| pos <= i < s.len() && s[i] == '/'
 {
@@ -68,6 +66,10 @@ spec fn string_to_int_helper(s: Seq<char>, acc: int) -> int
     if s.len() == 0 { acc }
     else { string_to_int_helper(s.subrange(1, s.len() as int), acc * 10 + char_to_int(s[0])) }
 }
+
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

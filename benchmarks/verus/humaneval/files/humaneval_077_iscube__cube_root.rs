@@ -13,7 +13,7 @@ spec fn cube(n: nat) -> nat { n * n * n }
 fn cube_root(n: u8) -> (r: u8)
     ensures 
         cube(r as nat) <= n as nat,
-        n as nat < cube(r as nat + 1),
+        (n as nat) < cube((r as nat) + 1),
         r as nat <= n as nat,
 // </vc-spec>
 // <vc-code>

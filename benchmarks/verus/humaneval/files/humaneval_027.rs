@@ -23,7 +23,7 @@ spec fn flip_char(c: char) -> char {
 
 spec fn valid_flip_case(s: Seq<char>, result: Seq<char>) -> bool {
     result.len() == s.len() &&
-    forall|i: int| 0 <= i < s.len() ==> result[i] == flip_char(s[i])
+    forall|i: int| 0 <= i < s.len() ==> #[trigger] result[i] == #[trigger] flip_char( #[trigger] s[i])
 }
 // </vc-preamble>
 

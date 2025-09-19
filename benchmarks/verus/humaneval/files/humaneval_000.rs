@@ -14,12 +14,15 @@ spec fn abs_diff(a: int, b: int) -> int {
 spec fn has_close_elements(numbers: Seq<int>, threshold: int) -> bool {
     exists|i: int, j: int| 0 <= i < j < numbers.len() && abs_diff(numbers[i], numbers[j]) < threshold
 }
+
+spec fn seq_map_to_int(numbers: Seq<i8>) -> Seq<int> {
+        numbers.map(|_i: int, x: i8| x as int)
+}
+    
+
 // </vc-preamble>
 
 // <vc-helpers>
-spec fn seq_map_to_int(numbers: Seq<i8>) -> Seq<int> {
-    numbers.map(|x: i8| x as int)
-}
 // </vc-helpers>
 
 // <vc-spec>

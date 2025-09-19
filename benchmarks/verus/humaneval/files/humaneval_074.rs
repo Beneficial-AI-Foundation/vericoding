@@ -15,13 +15,6 @@ spec fn total_chars(lst: Seq<Seq<char>>) -> nat
 // </vc-preamble>
 
 // <vc-helpers>
-proof fn total_chars_prefix(lst: Seq<Seq<char>>, i: nat)
-    requires 0 <= i < lst.len()
-    ensures total_chars(lst.subrange(0, i as int + 1)) == total_chars(lst.subrange(0, i as int)) + lst[i as int].len()
-    decreases i
-{
-    assume(false); /* TODO: Remove this line and implement the proof */
-}
 // </vc-helpers>
 
 // <vc-spec>

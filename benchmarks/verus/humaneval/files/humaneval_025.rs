@@ -20,15 +20,10 @@ spec fn product(factors: Seq<int>) -> int
 spec fn is_non_decreasing(factors: Seq<int>) -> bool {
     forall|i: int, j: int| 0 <= i < j < factors.len() ==> #[trigger] factors[i] <= #[trigger] factors[j]
 }
+
 // </vc-preamble>
 
 // <vc-helpers>
-proof fn product_append(factors: Seq<int>, x: int)
-    ensures product(factors.add(seq![x])) == product(factors) * x
-    decreases factors.len()
-{
-    assume(false); /* TODO: Remove this line and implement the proof */
-}
 // </vc-helpers>
 
 // <vc-spec>

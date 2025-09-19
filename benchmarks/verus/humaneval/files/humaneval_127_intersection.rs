@@ -2,9 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn is_prime(n: nat) -> bool {
     n > 1 &&
     forall|k: nat| #[trigger] (n % k) != 0 ==> 2 <= k < n
@@ -17,6 +14,9 @@ spec fn min(a: int, b: int) -> int {
 spec fn max(a: int, b: int) -> int {
     if a >= b { a } else { b }
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

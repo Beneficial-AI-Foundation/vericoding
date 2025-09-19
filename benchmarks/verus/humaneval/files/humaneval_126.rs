@@ -18,9 +18,6 @@ spec fn no_more_than_two_duplicates(lst: Seq<int>) -> bool {
 spec fn valid_list(lst: Seq<int>) -> bool {
     valid_input(lst) && is_sorted_ascending(lst) && no_more_than_two_duplicates(lst)
 }
-// </vc-preamble>
-
-// <vc-helpers>
 spec fn count_occurrences(lst: Seq<int>, value: int) -> int
     decreases lst.len()
 {
@@ -70,6 +67,10 @@ spec fn is_sorted(lst: Seq<int>) -> bool {
         !has_more_than_two_occurrences(lst, 0)
     }
 }
+
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

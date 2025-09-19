@@ -140,7 +140,7 @@ vc-code: |-
   {
       // impl-start
       assume(false);
-      0int
+      0
       // impl-end
   }
 

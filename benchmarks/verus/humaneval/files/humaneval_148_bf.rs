@@ -96,15 +96,9 @@ spec fn get_planets_between_indices(start: int, end: int) -> Seq<Seq<char>>
         }
     }
 }
-// </vc-preamble>
 
-// <vc-helpers>
 spec fn seq_char_to_string(chars: Seq<char>) -> String {
-    if chars.len() == 0 {
-        "".to_string()
-    } else {
-        arbitrary()
-    }
+    arbitrary()
 }
 
 spec fn planets_seq_to_string_vec(planets: Seq<Seq<char>>) -> Seq<String> 
@@ -118,6 +112,9 @@ spec fn planets_seq_to_string_vec(planets: Seq<Seq<char>>) -> Seq<String>
         seq![seq_char_to_string(first_planet)].add(planets_seq_to_string_vec(rest))
     }
 }
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>

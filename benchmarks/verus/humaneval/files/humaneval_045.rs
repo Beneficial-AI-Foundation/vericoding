@@ -10,12 +10,14 @@ spec fn valid_input(base: int, height: int) -> bool {
 spec fn triangle_area_formula(base: int, height: int) -> int {
     (base * height) / 2
 }
-// </vc-preamble>
 
-// <vc-helpers>
 spec fn triangle_area(a: int, h: int) -> int {
     (a * h) / 2
 }
+
+// </vc-preamble>
+
+// <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>
