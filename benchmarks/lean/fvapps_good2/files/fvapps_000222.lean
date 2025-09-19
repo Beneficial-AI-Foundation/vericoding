@@ -22,7 +22,7 @@ def isPerfectSquare (n: Nat) : Bool :=
   | n + 1 =>
     let sq := sqrt n
     sq * sq = n
-    
+
 theorem output_bounds
   (A: List Nat)
   (h1: ∀ x ∈ A, 1 ≤ x ∧ x ≤ 100) :
