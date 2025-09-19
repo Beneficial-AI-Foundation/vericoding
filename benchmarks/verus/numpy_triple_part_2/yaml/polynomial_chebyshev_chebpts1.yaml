@@ -35,8 +35,8 @@ vc-spec: |-
       requires n > 0,
       ensures 
           result.len() == n,
-          forall|k: int| 0 <= k < n ==> #[trigger] result[k] == chebyshev_point_value(k, n as int),
-          forall|k: int| 0 <= k < n ==> -1000 <= #[trigger] result[k] <= 1000,
+          forall|k: int| 0 <= k < n ==> #[trigger] result@[k] == chebyshev_point_value(k, n as int),
+          forall|k: int| 0 <= k < n ==> -1000 <= #[trigger] result@[k] <= 1000,
 
 vc-code: |-
   {

@@ -20,8 +20,8 @@ spec fn is_palindrome_spec(text: Seq<char>) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn is_palindrome(text: Seq<char>) -> (result: bool)
-    ensures result <==> is_palindrome_spec(text)
+fn is_palindrome(text: Vec<char>) -> (result: bool)
+    ensures result <==> is_palindrome_spec(text@)
 // </vc-spec>
 // <vc-code>
 {

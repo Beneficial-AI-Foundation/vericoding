@@ -22,13 +22,13 @@ spec fn less_eq(a: (int, int), b: (int, int)) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn get_row(lst: &Seq<Seq<int>>, x: int) -> (pos: SortSeqState)
+fn get_row(lst: &Vec<Vec<i8>>, x: i8) -> (pos: SortSeqState)
     ensures 
         (forall|i: int| 0 <= i < pos.len() ==> #[trigger] pos[i].0 >= 0 && #[trigger] pos[i].1 >= 0 && {
             let (a, b) = pos[i];
-            0 <= a < lst.len() && 0 <= b < lst[a].len() && lst[a][b] == x
+            0 <= a < lst@.len() && 0 <= b < lst@[a].len() && lst@[a][b] as int == x as int
         }) &&
-        (forall|i: int, j: int| 0 <= i < lst.len() && 0 <= j < lst[i].len() && lst[i][j] == x ==> #[trigger] pos.contains((i, j))) &&
+        (forall|i: int, j: int| 0 <= i < lst@.len() && 0 <= j < lst@[i].len() && lst@[i][j] as int == x as int ==> #[trigger] pos.contains((i, j))) &&
         (forall|i: int, j: int| 0 <= i < j < pos.len() ==> #[trigger] less_eq(pos[i], pos[j]))
 // </vc-spec>
 // <vc-code>

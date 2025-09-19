@@ -51,9 +51,9 @@ spec fn correct_output(lst: Seq<Seq<char>>, result: Seq<char>) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn match_parens(lst: Seq<Seq<char>>) -> (result: Seq<char>)
-    requires valid_input(lst)
-    ensures correct_output(lst, result)
+fn match_parens(lst: Vec<Vec<char>>) -> (result: Vec<char>)
+    requires valid_input(seq![lst[0]@, lst[1]@])
+    ensures correct_output(seq![lst[0]@, lst[1]@], result@)
 // </vc-spec>
 // <vc-code>
 {

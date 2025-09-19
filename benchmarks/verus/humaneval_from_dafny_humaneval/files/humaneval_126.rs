@@ -73,12 +73,12 @@ spec fn is_sorted(lst: Seq<int>) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn check_valid_list(lst: Seq<int>) -> (result: bool)
+fn check_valid_list(lst: Vec<i8>) -> (result: bool)
     requires 
-        valid_input(lst)
+        valid_input(lst@.map(|_i: int, x: i8| x as int))
     ensures 
-        result == valid_list(lst),
-        result == (is_sorted_ascending(lst) && no_more_than_two_duplicates(lst))
+        result == valid_list(lst@.map(|_i: int, x: i8| x as int)),
+        result == (is_sorted_ascending(lst@.map(|_i: int, x: i8| x as int)) && no_more_than_two_duplicates(lst@.map(|_i: int, x: i8| x as int)))
 // </vc-spec>
 // <vc-code>
 {

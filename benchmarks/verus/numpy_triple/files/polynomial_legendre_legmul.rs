@@ -8,7 +8,7 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn legmul(c1: Vec<f32>, c2: Vec<f32>) -> (result: Vec<f32>)
+fn legmul(c1: Vec<i8>, c2: Vec<i8>) -> (result: Vec<i8>)
     requires 
         c1.len() > 0,
         c2.len() > 0,

@@ -21,10 +21,10 @@ spec fn fib_spec(n: int) -> int
 // </vc-helpers>
 
 // <vc-spec>
-fn fib(n: int) -> (result: int)
-    requires valid_input(n)
+fn fib(n: i8) -> (result: i8)
+    requires valid_input(n as int)
     ensures 
-        result == fib_spec(n) &&
+        result as int == fib_spec(n as int) &&
         result > 0
 // </vc-spec>
 // <vc-code>

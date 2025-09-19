@@ -41,16 +41,16 @@ proof fn product_of_signs_append(arr: Seq<int>, i: int)
 // </vc-helpers>
 
 // <vc-spec>
-fn prod_signs(arr: Seq<int>) -> (result: Option<int>)
+fn prod_signs(arr: Vec<i8>) -> (result: Option<i8>)
     ensures 
-        (arr.len() == 0) ==> (result == Option::<int>::None) &&
-        (arr.len() > 0) ==> (result == Option::<int>::Some(sum_of_magnitudes(arr) * product_of_signs(arr)))
+        (arr@.len() == 0) ==> (result == Option::<i8>::None) &&
+        (arr@.len() > 0) ==> (result == Option::<i8>::Some((sum_of_magnitudes(arr@.map(|i: nat, x: i8| x as int)) * product_of_signs(arr@.map(|i: nat, x: i8| x as int))) as i8))
 // </vc-spec>
 // <vc-code>
 {
     // impl-start
     assume(false);
-    Option::<int>::None
+    Option::<i8>::None
     // impl-end
 }
 // </vc-code>

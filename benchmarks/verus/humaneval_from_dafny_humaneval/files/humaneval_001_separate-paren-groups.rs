@@ -32,13 +32,13 @@ spec fn inner_depths_nonnegative(s: Seq<char>) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn separate_paren_groups(paren_string: Seq<char>) -> (res: Seq<Seq<char>>)
+fn separate_paren_groups(paren_string: Vec<char>) -> (res: Vec<Vec<char>>)
     requires 
-        parentheses_depth(paren_string, 0, paren_string.len() as int) == 0,
-        inner_depths_nonnegative(paren_string)
+        parentheses_depth(paren_string@, 0, paren_string.len() as int) == 0,
+        inner_depths_nonnegative(paren_string@)
     ensures 
-        forall|k: int| 0 <= k < res.len() ==> parentheses_depth(res[k], 0, res[k].len() as int) == 0,
-        forall|k: int| 0 <= k < res.len() ==> inner_depths_positive(res[k])
+        forall|k: int| 0 <= k < res.len() ==> parentheses_depth(res[k as int]@, 0, res[k as int].len() as int) == 0,
+        forall|k: int| 0 <= k < res.len() ==> inner_depths_positive(res[k as int]@)
 // </vc-spec>
 // <vc-code>
 {

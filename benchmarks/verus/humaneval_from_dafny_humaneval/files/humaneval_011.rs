@@ -12,17 +12,17 @@ spec fn is_binary_string(s: Seq<char>) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn string_xor(a: Seq<char>, b: Seq<char>) -> (result: Seq<char>)
+fn string_xor(a: Vec<char>, b: Vec<char>) -> (result: Vec<char>)
     requires 
         a.len() == b.len(),
-        is_binary_string(a),
-        is_binary_string(b),
+        is_binary_string(a@),
+        is_binary_string(b@),
     ensures 
         result.len() == a.len(),
-        is_binary_string(result),
-        forall|i: int| 0 <= i < a.len() ==> 
-            (a[i] == b[i] ==> result[i] == '0') &&
-            (a[i] != b[i] ==> result[i] == '1'),
+        is_binary_string(result@),
+        forall|i: int| 0 <= i < a.len() as int ==> 
+            (a@[i] == b@[i] ==> result@[i] == '0') &&
+            (a@[i] != b@[i] ==> result@[i] == '1'),
 // </vc-spec>
 // <vc-code>
 {

@@ -23,12 +23,12 @@ vc-preamble: |-
 vc-helpers: |-
 
 vc-spec: |-
-  fn derivative(xs: Seq<int>) -> (result: Seq<int>)
+  fn derivative(xs: Vec<i8>) -> (result: Vec<i8>)
       requires 
-          valid_input(xs)
+          valid_input(xs@.map(|i: int, x: i8| x as int))
       ensures 
-          correct_derivative_coefficients(xs, result),
-          result.len() == derivative_length(xs)
+          correct_derivative_coefficients(xs@.map(|i: int, x: i8| x as int), result@.map(|i: int, x: i8| x as int)),
+          result@.len() == derivative_length(xs@.map(|i: int, x: i8| x as int))
 
 vc-code: |-
   {

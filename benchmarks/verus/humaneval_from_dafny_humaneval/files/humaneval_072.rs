@@ -21,8 +21,8 @@ spec fn sum_elements(s: Seq<int>) -> int
 // </vc-helpers>
 
 // <vc-spec>
-fn will_it_fly(q: Seq<int>, w: int) -> (result: bool)
-    ensures result == (is_palindrome(q) && sum_elements(q) <= w)
+fn will_it_fly(q: Vec<i8>, w: i8) -> (result: bool)
+    ensures result == (is_palindrome(q@.map(|i: int, x: i8| x as int)) && sum_elements(q@.map(|i: int, x: i8| x as int)) <= w as int)
 // </vc-spec>
 // <vc-code>
 {

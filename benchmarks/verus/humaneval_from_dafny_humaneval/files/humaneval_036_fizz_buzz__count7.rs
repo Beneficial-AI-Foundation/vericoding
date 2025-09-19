@@ -21,8 +21,8 @@ spec fn sum(s: Seq<int>) -> int
 // </vc-helpers>
 
 // <vc-spec>
-fn count7(x: nat) -> (count: nat)
-    ensures count == count7_r(x)
+fn count7(x: u8) -> (count: u8)
+    ensures count as nat == count7_r(x as nat)
 // </vc-spec>
 // <vc-code>
 {

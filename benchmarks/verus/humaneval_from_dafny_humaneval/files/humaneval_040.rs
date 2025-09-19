@@ -12,8 +12,8 @@ spec fn has_triple_sum_to_zero(l: Seq<int>) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn triples_sum_to_zero(l: Seq<int>) -> (result: bool)
-    ensures result == has_triple_sum_to_zero(l)
+fn triples_sum_to_zero(l: Vec<i8>) -> (result: bool)
+    ensures result == has_triple_sum_to_zero(l@.map(|i, x: i8| x as int))
 // </vc-spec>
 // <vc-code>
 {

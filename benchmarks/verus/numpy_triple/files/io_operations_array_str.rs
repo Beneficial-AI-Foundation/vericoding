@@ -8,7 +8,7 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn array_str(a: Vec<f32>) -> (result: String)
+fn array_str(a: Vec<i8>) -> (result: String)
     ensures 
         result@.len() > 0,
         a.len() == 0 ==> result@ == "[]"@,

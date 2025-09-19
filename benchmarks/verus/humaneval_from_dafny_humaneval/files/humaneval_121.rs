@@ -20,9 +20,9 @@ spec fn sum_odd_at_even_positions(lst: Seq<int>, pos: int) -> int
 // </vc-helpers>
 
 // <vc-spec>
-fn solution(lst: Seq<int>) -> (result: int)
-    requires lst.len() > 0
-    ensures result == sum_odd_at_even_positions(lst, 0)
+fn solution(lst: Vec<i8>) -> (result: i8)
+    requires lst@.len() > 0
+    ensures result as int == sum_odd_at_even_positions(lst@.map(|i: int, x: i8| x as int), 0)
 // </vc-spec>
 // <vc-code>
 {

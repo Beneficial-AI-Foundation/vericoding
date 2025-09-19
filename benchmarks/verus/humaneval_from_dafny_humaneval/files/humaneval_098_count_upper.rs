@@ -12,8 +12,8 @@ spec fn is_upper_vowel(c: char) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn count_upper(s: Seq<char>) -> (cnt: usize)
-    ensures cnt == Set::<int>::new(|i: int| 0 <= i < s.len() && i % 2 == 0 && is_upper_vowel(s[i])).len()
+fn count_upper(s: Vec<char>) -> (cnt: usize)
+    ensures cnt == Set::<int>::new(|i: int| 0 <= i < s@.len() && i % 2 == 0 && is_upper_vowel(s@[i])).len()
 // </vc-spec>
 // <vc-code>
 {

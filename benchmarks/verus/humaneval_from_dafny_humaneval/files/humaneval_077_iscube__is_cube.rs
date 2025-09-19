@@ -11,8 +11,8 @@ spec fn cube(n: int) -> int {
 // </vc-helpers>
 
 // <vc-spec>
-fn is_cube(n: nat) -> (r: bool)
-    ensures r == exists|k: int| 0 <= k <= n && n == cube(k)
+fn is_cube(n: u8) -> (r: bool)
+    ensures r == exists|k: int| 0 <= k <= n as int && n as int == cube(k)
 // </vc-spec>
 // <vc-code>
 {

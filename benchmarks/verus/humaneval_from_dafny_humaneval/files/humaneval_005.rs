@@ -21,9 +21,9 @@ spec fn valid_output(numbers: Seq<int>, delimiter: int, result: Seq<int>) -> boo
 // </vc-helpers>
 
 // <vc-spec>
-fn insert_delimiter(numbers: Seq<int>, delimiter: int) -> (result: Seq<int>)
-    requires valid_input(numbers, delimiter)
-    ensures valid_output(numbers, delimiter, result)
+fn insert_delimiter(numbers: Vec<i8>, delimiter: i8) -> (result: Vec<i8>)
+    requires valid_input(numbers@.map(|x: i8| x as int), delimiter as int)
+    ensures valid_output(numbers@.map(|x: i8| x as int), delimiter as int, result@.map(|x: i8| x as int))
 // </vc-spec>
 // <vc-code>
 {

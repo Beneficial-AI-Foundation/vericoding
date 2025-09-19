@@ -13,8 +13,8 @@ spec fn valid_prefixes(s: Seq<char>, result: Seq<Seq<char>>) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn all_prefixes(s: Seq<char>) -> (result: Seq<Seq<char>>)
-    ensures valid_prefixes(s, result)
+fn all_prefixes(s: Vec<char>) -> (result: Vec<Vec<char>>)
+    ensures valid_prefixes(s@, result@.map(|i, v: Vec<char>| v@))
 // </vc-spec>
 // <vc-code>
 {

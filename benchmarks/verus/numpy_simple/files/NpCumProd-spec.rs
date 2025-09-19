@@ -8,12 +8,12 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn cum_prod(a: Vec<i32>) -> (result: Vec<i32>)
+fn cum_prod(a: Vec<i8>) -> (result: Vec<i8>)
     requires a.len() > 0,
     ensures 
         result.len() == a.len(),
         result[0] == a[0],
-        forall|i: int| 0 < i < a.len() ==> result[i] == result[i-1] * a[i]
+        forall|i: int| 0 < i < a.len() ==> result[i] as int == result[i-1] as int * a[i] as int
 // </vc-spec>
 // <vc-code>
 {

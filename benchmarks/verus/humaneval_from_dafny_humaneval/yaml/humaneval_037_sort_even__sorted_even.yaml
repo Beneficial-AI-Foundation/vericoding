@@ -14,14 +14,14 @@ vc-preamble: |-
 vc-helpers: |-
 
 vc-spec: |-
-  fn sorted_even(a: Seq<int>) -> (sorted: Seq<int>)
+  fn sorted_even(a: Vec<i8>) -> (sorted: Vec<i8>)
       requires 
-          a.len() > 0
+          a@.len() > 0
       ensures 
-          sorted.len() == a.len(),
-          forall|i: int, j: int| 0 <= i < j && 2 * i < sorted.len() && 2 * j < sorted.len() ==> #[trigger] sorted[2 * i] <= #[trigger] sorted[2 * j],
-          forall|i: int| 0 <= i < a.len() && i % 2 == 1 ==> #[trigger] sorted[i] == #[trigger] a[i],
-          a.to_multiset() == sorted.to_multiset()
+          sorted@.len() == a@.len(),
+          forall|i: int, j: int| 0 <= i < j && 2 * i < sorted@.len() && 2 * j < sorted@.len() ==> #[trigger] sorted@[2 * i] <= #[trigger] sorted@[2 * j],
+          forall|i: int| 0 <= i < a@.len() && i % 2 == 1 ==> #[trigger] sorted@[i] == #[trigger] a@[i],
+          a@.to_multiset() == sorted@.to_multiset()
 
 vc-code: |-
   {

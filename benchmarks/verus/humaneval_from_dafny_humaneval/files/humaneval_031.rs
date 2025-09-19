@@ -13,8 +13,8 @@ spec fn is_prime_number(n: int) -> bool
 // </vc-helpers>
 
 // <vc-spec>
-fn is_prime(n: int) -> (result: bool)
-    ensures result <==> is_prime_number(n)
+fn is_prime(n: i8) -> (result: bool)
+    ensures result <==> is_prime_number(n as int)
 // </vc-spec>
 // <vc-code>
 {

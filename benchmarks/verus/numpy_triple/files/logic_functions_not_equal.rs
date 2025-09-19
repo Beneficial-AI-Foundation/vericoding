@@ -8,7 +8,7 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn numpy_not_equal<T: PartialEq>(x1: Vec<T>, x2: Vec<T>) -> (result: Vec<bool>)
+fn numpy_not_equal(x1: Vec<i8>, x2: Vec<i8>) -> (result: Vec<bool>)
     requires x1.len() == x2.len(),
     ensures
         result.len() == x1.len(),

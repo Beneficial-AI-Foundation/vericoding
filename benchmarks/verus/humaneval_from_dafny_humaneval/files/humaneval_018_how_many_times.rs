@@ -8,8 +8,8 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn how_many_times(s: Seq<char>, substr: Seq<char>) -> (times: usize)
-    ensures times == Set::new(|i: int| 0 <= i <= s.len() - substr.len() && s.subrange(i, i + substr.len()) == substr).len()
+fn how_many_times(s: Vec<char>, substr: Vec<char>) -> (times: usize)
+    ensures times == Set::new(|i: int| 0 <= i <= s@.len() - substr@.len() && s@.subrange(i, i + substr@.len()) == substr@).len()
 // </vc-spec>
 // <vc-code>
 {

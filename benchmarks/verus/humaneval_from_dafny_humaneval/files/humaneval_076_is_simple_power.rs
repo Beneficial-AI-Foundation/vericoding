@@ -14,9 +14,9 @@ spec fn power(x: nat, y: nat) -> nat
 // </vc-helpers>
 
 // <vc-spec>
-fn is_simple_power(x: nat, n: int) -> (ans: bool)
+fn is_simple_power(x: u8, n: i8) -> (ans: bool)
     requires x > 0
-    ensures ans <==> exists|y: nat| n == power(x, y)
+    ensures ans <==> exists|y: nat| n as int == power(x as nat, y) as int
 // </vc-spec>
 // <vc-code>
 {

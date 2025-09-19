@@ -15,9 +15,13 @@ vc-helpers: |-
     else { sum_prefix(ops, (len - 1) as nat) + ops[len - 1] }
   }
 
+  spec fn vec_to_seq_int(v: Vec<i8>) -> Seq<int> {
+    v@.map(|i, x: i8| x as int)
+  }
+
 vc-spec: |-
-  fn below_zero(operations: Seq<int>) -> (result: bool)
-    ensures result <==> (exists|i: int| 0 < i <= operations.len() && #[trigger] sum_prefix(operations, i as nat) < 0)
+  fn below_zero(operations: Vec<i8>) -> (result: bool)
+    ensures result <==> (exists|i: int| 0 < i <= operations@.len() && #[trigger] sum_prefix(vec_to_seq_int(operations), i as nat) < 0)
 
 vc-code: |-
   {

@@ -23,8 +23,11 @@ spec fn valid_result(strings: Seq<Seq<char>>, result: Option<Seq<char>>) -> bool
 // </vc-helpers>
 
 // <vc-spec>
-fn longest(strings: Seq<Seq<char>>) -> (result: Option<Seq<char>>)
-    ensures valid_result(strings, result)
+fn longest(strings: Vec<Vec<char>>) -> (result: Option<Vec<char>>)
+    ensures match result {
+        Option::Some(value) => valid_result(strings@.map(|_i: int, v: Vec<char>| v@), Option::Some(value@)),
+        Option::None => valid_result(strings@.map(|_i: int, v: Vec<char>| v@), Option::None),
+    }
 // </vc-spec>
 // <vc-code>
 {

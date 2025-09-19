@@ -30,11 +30,11 @@ spec fn count_starts_and_ends_with_1(n: int) -> int {
 // </vc-helpers>
 
 // <vc-spec>
-fn starts_one_ends(n: int) -> (result: int)
+fn starts_one_ends(n: i8) -> (result: i8)
   requires 
-    valid_input(n)
+    valid_input(n as int)
   ensures 
-    result == count_starts_with_1(n) + count_ends_with_1(n) - count_starts_and_ends_with_1(n),
+    result as int == count_starts_with_1(n as int) + count_ends_with_1(n as int) - count_starts_and_ends_with_1(n as int),
     result >= 0
 // </vc-spec>
 // <vc-code>

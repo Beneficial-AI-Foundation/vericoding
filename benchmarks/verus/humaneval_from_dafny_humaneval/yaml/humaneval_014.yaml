@@ -16,8 +16,8 @@ vc-preamble: |-
 vc-helpers: |-
 
 vc-spec: |-
-  fn all_prefixes(s: Seq<char>) -> (result: Seq<Seq<char>>)
-      ensures valid_prefixes(s, result)
+  fn all_prefixes(s: Vec<char>) -> (result: Vec<Vec<char>>)
+      ensures valid_prefixes(s@, result@.map(|i, v: Vec<char>| v@))
 
 vc-code: |-
   {

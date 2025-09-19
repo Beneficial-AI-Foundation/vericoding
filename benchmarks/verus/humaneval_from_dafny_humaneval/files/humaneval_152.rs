@@ -23,9 +23,9 @@ spec fn abs_value(x: int) -> int {
 // </vc-helpers>
 
 // <vc-spec>
-fn compare(game: Seq<int>, guess: Seq<int>) -> (result: Seq<int>)
-    requires valid_input(game, guess)
-    ensures valid_output(game, guess, result)
+fn compare(game: Vec<i8>, guess: Vec<i8>) -> (result: Vec<i8>)
+    requires valid_input(game@.map_values(|x: i8| x as int), guess@.map_values(|x: i8| x as int))
+    ensures valid_output(game@.map_values(|x: i8| x as int), guess@.map_values(|x: i8| x as int), result@.map_values(|x: i8| x as int))
 // </vc-spec>
 // <vc-code>
 {

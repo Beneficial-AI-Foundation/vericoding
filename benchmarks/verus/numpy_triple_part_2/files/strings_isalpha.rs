@@ -26,15 +26,15 @@ fn isalpha(a: Vec<String>) -> (result: Vec<bool>)
     ensures 
         result.len() == a.len(),
         forall|i: int| 0 <= i < a.len() ==> 
-            result[i] == (a[i]@.len() > 0 && all_chars_alpha(a[i]@)),
+            result[i as int] == (a[i as int]@.len() > 0 && all_chars_alpha(a[i as int]@)),
         forall|i: int| 0 <= i < a.len() ==> 
-            (a[i]@.len() == 0 ==> result[i] == false),
+            (a[i as int]@.len() == 0 ==> result[i as int] == false),
         forall|i: int| 0 <= i < a.len() ==> 
-            (a[i]@.len() > 0 ==> (result[i] <==> all_chars_alpha(a[i]@))),
+            (a[i as int]@.len() > 0 ==> (result[i as int] <==> all_chars_alpha(a[i as int]@))),
         forall|i: int| 0 <= i < a.len() ==> 
-            (result[i] == true ==> a[i]@.len() > 0),
+            (result[i as int] == true ==> a[i as int]@.len() > 0),
         forall|i: int| 0 <= i < a.len() ==> 
-            (result[i] == true ==> all_chars_alpha(a[i]@))
+            (result[i as int] == true ==> all_chars_alpha(a[i as int]@))
 // </vc-spec>
 // <vc-code>
 {

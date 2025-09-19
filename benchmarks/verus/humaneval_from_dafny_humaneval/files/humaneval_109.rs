@@ -31,13 +31,13 @@ fn quicksort(s: Seq<int>) -> (sorted: Seq<int>)
 // </vc-helpers>
 
 // <vc-spec>
-fn move_one_ball(arr: Seq<int>) -> (result: bool)
+fn move_one_ball(arr: Vec<i8>) -> (result: bool)
     requires 
-        forall|i: int, j: int| 0 <= i < j < arr.len() ==> arr[i] != arr[j]
+        forall|i: int, j: int| 0 <= i < j < arr.len() ==> arr[i as int] != arr[j as int]
     ensures 
         arr.len() == 0 ==> result == true,
-        result == true ==> (arr.len() == 0 || exists|k: int| 0 <= k < arr.len() && is_sorted(rotate_right(arr, k))),
-        result == false ==> forall|k: int| 0 <= k < arr.len() ==> !is_sorted(rotate_right(arr, k))
+        result == true ==> (arr.len() == 0 || exists|k: int| #[trigger] is_sorted(rotate_right(arr@.map(|i, x: i8| x as int), k)) && 0 <= k < arr.len()),
+        result == false ==> forall|k: int| 0 <= k < arr.len() ==> !is_sorted(rotate_right(arr@.map(|i, x: i8| x as int), k))
 // </vc-spec>
 // <vc-code>
 {

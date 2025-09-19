@@ -34,11 +34,11 @@ fn factorial(num: int) -> (result: int)
 // </vc-helpers>
 
 // <vc-spec>
-fn special_factorial(n: int) -> (result: int)
+fn special_factorial(n: i8) -> (result: i8)
     requires 
         n >= 0,
     ensures 
-        result == special_factorial_func(n),
+        result as int == special_factorial_func(n as int),
         result > 0,
 // </vc-spec>
 // <vc-code>

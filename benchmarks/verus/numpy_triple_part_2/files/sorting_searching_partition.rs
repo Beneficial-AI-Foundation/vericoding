@@ -33,14 +33,14 @@ fn partition(arr: Vec<i32>, kth: usize) -> (result: Vec<i32>)
     ensures
         result.len() == arr.len(),
         /* All elements before kth are <= the kth element */
-        forall|i: int| 0 <= i < kth ==> result[i] <= result[kth as int],
+        forall|i: int| 0 <= i < kth as int ==> result@[i] <= result@[kth as int],
         /* All elements after kth are >= the kth element */
-        forall|i: int| kth < i < result.len() ==> result[i] >= result[kth as int],
+        forall|i: int| (kth as int) < i < (result@.len()) ==> result@[i] >= result@[kth as int],
         /* The k-th element is in its correct sorted position relative to the original array */
         exists|sorted: Seq<i32>| 
             is_sorted(sorted) &&
             multiset_equal(sorted, arr@) &&
-            result[kth as int] == sorted[kth as int],
+            result@[kth as int] == sorted[kth as int],
         /* The result contains the same elements as the original (multiset equality) */
         multiset_equal(result@, arr@)
 // </vc-spec>

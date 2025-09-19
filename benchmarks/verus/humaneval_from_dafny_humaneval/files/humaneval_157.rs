@@ -22,8 +22,8 @@ spec fn valid_right_triangle(a: int, b: int, c: int) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn right_angle_triangle(a: int, b: int, c: int) -> (result: bool)
-    ensures result <==> valid_right_triangle(a, b, c)
+fn right_angle_triangle(a: i8, b: i8, c: i8) -> (result: bool)
+    ensures result <==> valid_right_triangle(a as int, b as int, c as int)
 // </vc-spec>
 // <vc-code>
 {

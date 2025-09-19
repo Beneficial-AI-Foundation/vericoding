@@ -20,15 +20,15 @@ spec fn fib4_func(n: int) -> int
 // </vc-helpers>
 
 // <vc-spec>
-fn fib4(n: int) -> (result: int)
+fn fib4(n: i8) -> (result: i8)
     requires n >= 0
     ensures 
-        result == fib4_func(n) &&
+        result as int == fib4_func(n as int) &&
         (n == 0 ==> result == 0) &&
         (n == 1 ==> result == 0) &&
         (n == 2 ==> result == 2) &&
         (n == 3 ==> result == 0) &&
-        (n >= 4 ==> result == fib4_func(n-1) + fib4_func(n-2) + fib4_func(n-3) + fib4_func(n-4))
+        (n >= 4 ==> result as int == fib4_func(n as int - 1) + fib4_func(n as int - 2) + fib4_func(n as int - 3) + fib4_func(n as int - 4))
 // </vc-spec>
 // <vc-code>
 {

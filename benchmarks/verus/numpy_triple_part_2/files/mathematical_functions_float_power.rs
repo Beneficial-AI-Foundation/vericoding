@@ -5,11 +5,10 @@ verus! {
 // </vc-preamble>
 
 // <vc-helpers>
+spec fn float_pow(base: f64, exponent: f64) -> f64;
 // </vc-helpers>
 
 // <vc-spec>
-spec fn float_pow(base: f64, exponent: f64) -> f64;
-
 fn float_power(base: Vec<f64>, exponent: Vec<f64>) -> (result: Vec<f64>)
     requires 
         base.len() == exponent.len()

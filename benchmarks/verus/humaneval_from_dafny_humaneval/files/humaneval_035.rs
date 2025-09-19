@@ -28,9 +28,9 @@ spec fn max_element_func(l: Seq<int>) -> int
 // </vc-helpers>
 
 // <vc-spec>
-fn find_max_element(l: Seq<int>) -> (max_val: int)
-    requires valid_input(l)
-    ensures is_max_element(l, max_val)
+fn find_max_element(l: Vec<i8>) -> (max_val: i8)
+    requires valid_input(l@.map(|i, x| x as int))
+    ensures is_max_element(l@.map(|i, x| x as int), max_val as int)
 // </vc-spec>
 // <vc-code>
 {

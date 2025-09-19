@@ -29,14 +29,14 @@ spec fn arange_length(start: int, stop: int, step: int) -> nat
     }
 }
 
-fn arange(start: int, stop: int, step: int) -> (result: Vec<int>)
+fn arange(start: i8, stop: i8, step: i8) -> (result: Vec<i8>)
     requires 
         step != 0,
         if step < 0 { start > stop } else { start < stop },
     ensures
-        result.len() == arange_length(start, stop, step),
-        result.len() > 0,
-        result[0] == start
+        result@.len() == arange_length(start as int, stop as int, step as int),
+        result@.len() > 0,
+        result@[0] == start as int
 // </vc-spec>
 // <vc-code>
 {

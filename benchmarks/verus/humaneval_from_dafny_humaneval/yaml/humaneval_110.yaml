@@ -37,12 +37,12 @@ vc-preamble: |-
 vc-helpers: |-
 
 vc-spec: |-
-  fn exchange(lst1: Seq<int>, lst2: Seq<int>) -> (result: String)
+  fn exchange(lst1: Vec<i8>, lst2: Vec<i8>) -> (result: String)
       requires 
-          valid_input(lst1, lst2),
+          valid_input(lst1.view().map(|_i, x| x as int), lst2.view().map(|_i, x| x as int)),
       ensures 
           result@ == seq!['Y', 'E', 'S'] || result@ == seq!['N', 'O'],
-          (result@ == seq!['Y', 'E', 'S']) == can_exchange(lst1, lst2),
+          (result@ == seq!['Y', 'E', 'S']) == can_exchange(lst1.view().map(|_i, x| x as int), lst2.view().map(|_i, x| x as int)),
 
 vc-code: |-
   {
