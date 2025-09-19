@@ -16,10 +16,10 @@ fn fftfreq(n: usize, d: f64) -> (result: Vec<f64>)
         d != 0.0,
     ensures
         result.len() == n,
-        forall|i: int| 0 <= i < ((n + 1) / 2) ==> 
-            result[i] == fft_freq_val(i, n as int, d),
-        forall|i: int| ((n + 1) / 2) <= i < n ==>
-            result[i] == fft_freq_val(i, n as int, d),
+        forall|i: int| 0 <= i < ((n as int + 1) / 2) ==> 
+            result[i as int] == fft_freq_val(i, n as int, d),
+        forall|i: int| ((n as int + 1) / 2) <= i < n as int ==>
+            result[i as int] == fft_freq_val(i, n as int, d),
         result[0] == 0.0,
 // </vc-spec>
 // <vc-code>

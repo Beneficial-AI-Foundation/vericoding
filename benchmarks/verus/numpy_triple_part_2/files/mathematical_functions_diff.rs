@@ -8,11 +8,11 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn numpy_diff(a: Vec<i32>) -> (result: Vec<i32>)
+fn numpy_diff(a: Vec<i8>) -> (result: Vec<i8>)
     requires a.len() >= 2,
     ensures 
         result.len() == a.len() - 1,
-        forall|i: int| 0 <= i < result.len() ==> result[i] == a[i + 1] - a[i],
+        forall|i: int| 0 <= i < result.len() ==> result[i] as int == a[i + 1] as int - a[i] as int,
 // </vc-spec>
 // <vc-code>
 {

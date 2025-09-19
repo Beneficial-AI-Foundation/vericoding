@@ -8,7 +8,7 @@ verus! {
    We focus on the random() method which generates random floats in [0, 1). */
 struct RandomState {
     /* The seed value used to initialize the random number generator */
-    seed: nat,
+    seed: u8,
 }
 // </vc-preamble>
 

@@ -8,7 +8,7 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn histogram_bin_edges(data: Vec<i32>, num_bins: usize) -> (edges: Vec<i32>)
+fn histogram_bin_edges(data: Vec<i8>, num_bins: usize) -> (edges: Vec<i8>)
     requires 
         data.len() > 0,
         num_bins > 0,

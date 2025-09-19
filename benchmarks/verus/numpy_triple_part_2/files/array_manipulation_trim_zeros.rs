@@ -21,17 +21,17 @@ pub enum TrimMode {
 // <vc-spec>
 fn trim_zeros(arr: Vec<f32>, mode: TrimMode) -> (result: Vec<f32>)
     ensures
-        result.len() <= arr.len(),
+        result@.len() <= arr@.len(),
         /* Result contains only elements from the original array */
-        forall|i: int| 0 <= i < result.len() ==> 
-            exists|j: int| 0 <= j < arr.len() && #[trigger] result[i] == arr[j],
+        forall|i: int| 0 <= i < result@.len() ==> 
+            exists|j: int| 0 <= j < arr@.len() && #[trigger] result@[i] == arr@[j],
         /* Basic trimming properties based on mode */
         (mode == TrimMode::Front ==> 
-            (result.len() == 0 || result[0] != 0.0f32)),
+            (result@.len() == 0 || result@[0] != 0.0f32)),
         (mode == TrimMode::Back ==> 
-            (result.len() == 0 || result[result.len() - 1] != 0.0f32)),
+            (result@.len() == 0 || result@[result@.len() - 1] != 0.0f32)),
         (mode == TrimMode::Both ==> 
-            (result.len() == 0 || (result[0] != 0.0f32 && result[result.len() - 1] != 0.0f32)))
+            (result@.len() == 0 || (result@[0] != 0.0f32 && result@[result@.len() - 1] != 0.0f32)))
 // </vc-spec>
 // <vc-code>
 {

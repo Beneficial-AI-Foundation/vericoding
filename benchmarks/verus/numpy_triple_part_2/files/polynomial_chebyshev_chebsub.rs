@@ -8,11 +8,11 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn chebsub(c1: Vec<i32>, c2: Vec<i32>) -> (result: Vec<i32>)
+fn chebsub(c1: Vec<i8>, c2: Vec<i8>) -> (result: Vec<i8>)
     requires c1.len() == c2.len(),
     ensures 
         result.len() == c1.len(),
-        forall|i: int| 0 <= i < result.len() ==> result[i] == c1[i] - c2[i],
+        forall|i: int| 0 <= i < result.len() ==> result[i] as int == c1[i] as int - c2[i] as int,
 // </vc-spec>
 // <vc-code>
 {

@@ -33,10 +33,10 @@ struct PrintOptions {
 
 // <vc-spec>
 fn set_printoptions(
-    precision: Option<nat>,
-    threshold: Option<nat>,
-    edgeitems: Option<nat>,
-    linewidth: Option<nat>,
+    precision: Option<u8>,
+    threshold: Option<u8>,
+    edgeitems: Option<u8>,
+    linewidth: Option<u8>,
     suppress: Option<bool>,
     nanstr: Option<String>,
     infstr: Option<String>,
@@ -45,10 +45,10 @@ fn set_printoptions(
     legacy: Option<String>
 ) -> (result: ())
     requires
-        forall|p: nat| precision == Some(p) ==> p > 0,
-        forall|t: nat| threshold == Some(t) ==> t > 0,
-        forall|e: nat| edgeitems == Some(e) ==> e > 0,
-        forall|l: nat| linewidth == Some(l) ==> l > 0,
+        forall|p: u8| precision == Some(p) ==> p as nat > 0,
+        forall|t: u8| threshold == Some(t) ==> t as nat > 0,
+        forall|e: u8| edgeitems == Some(e) ==> e as nat > 0,
+        forall|l: u8| linewidth == Some(l) ==> l as nat > 0,
         forall|n: String| nanstr == Some(n) ==> n@.len() > 0,
         forall|i: String| infstr == Some(i) ==> i@.len() > 0,
         forall|s: String| sign == Some(s) ==> (s@.len() == 1 && (s@ == seq!['-'] || s@ == seq!['+'] || s@ == seq![' '])),

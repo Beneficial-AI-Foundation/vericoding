@@ -8,12 +8,12 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn lagmulx(c: Vec<i32>) -> (result: Vec<i32>)
-    requires c.len() > 0,
+fn lagmulx(c: Vec<i8>) -> (result: Vec<i8>)
+    requires c@.len() > 0,
     ensures 
-        result.len() == c.len() + 1,
-        result[0] == c[0],
-        result.len() >= 2 ==> result[1] == -c[0]
+        result@.len() == c@.len() + 1,
+        result@[0] as int == c@[0] as int,
+        result@.len() >= 2 ==> result@[1] as int == -(c@[0] as int)
 // </vc-spec>
 // <vc-code>
 {

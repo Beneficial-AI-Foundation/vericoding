@@ -27,12 +27,12 @@ struct StructuredElement {
 
 // <vc-spec>
 fn fromregex(file_content: Vec<u8>, regexp: RegExp, dtype: StructuredDataType) -> (result: Vec<StructuredElement>)
-    requires dtype.fields.len() > 0,
+    requires dtype.fields@.len() > 0,
     ensures
-        forall|i: int| 0 <= i < result.len() ==> result[i].values.len() == dtype.fields.len(),
-        forall|i: int, j: int| 0 <= i < result.len() && 0 <= j < result.len() ==> 
-            result[i].values.len() == result[j].values.len(),
-        result.len() > 0 ==> file_content.len() > 0
+        forall|i: int| 0 <= i < result@.len() ==> result@[i].values@.len() == dtype.fields@.len(),
+        forall|i: int, j: int| 0 <= i < result@.len() && 0 <= j < result@.len() ==> 
+            result@[i].values@.len() == result@[j].values@.len(),
+        result@.len() > 0 ==> file_content@.len() > 0
 // </vc-spec>
 // <vc-code>
 {

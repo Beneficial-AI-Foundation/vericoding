@@ -84,14 +84,9 @@ vc-spec: |-
           /* Hermitian symmetry property: if input has Hermitian symmetry,
              then ihfft should produce a real-valued result */
           (forall|i: int, j: int| 
-              0 <= i < a.len() && 0 <= j < a.len() && i + j + 1 == a.len() ==> 
-                  a[i] == a[j].conj()) ==>
-          (forall|i: int| 0 <= i < result.len() ==> result[i].is_real()),
-          /* Basic conjugate relationship property */
-          exists|rfft_result: Seq<Complex>|
-              rfft_result.len() == result.len() &&
-              forall|i: int| 0 <= i < result.len() ==> 
-                  result[i] == rfft_result[i].conj()
+              (0 <= i < a@.len() && 0 <= j < a@.len() && i + j + 1 == a@.len()) ==> 
+                  a@[i] == a@[j].conj()) ==>
+          (forall|i: int| (0 <= i < result@.len()) ==> result@[i].is_real())
 
 vc-code: |-
   {

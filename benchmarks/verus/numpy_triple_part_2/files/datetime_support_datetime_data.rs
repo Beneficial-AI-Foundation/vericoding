@@ -51,11 +51,11 @@ pub enum DatetimeDtype {
 // </vc-helpers>
 
 // <vc-spec>
-fn datetime_data(dtype: DatetimeDtype) -> (result: (DatetimeUnit, nat))
+fn datetime_data(dtype: DatetimeDtype) -> (result: (DatetimeUnit, u8))
     ensures
         match dtype {
-            DatetimeDtype::Datetime64(info) => result == (info.unit, info.count) && info.count > 0,
-            DatetimeDtype::Timedelta64(info) => result == (info.unit, info.count) && info.count > 0,
+            DatetimeDtype::Datetime64(info) => result == (info.unit, info.count as u8) && info.count > 0,
+            DatetimeDtype::Timedelta64(info) => result == (info.unit, info.count as u8) && info.count > 0,
         }
 // </vc-spec>
 // <vc-code>

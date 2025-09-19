@@ -37,17 +37,17 @@ fn real_if_close(arr: Vec<Complex>, tol: i32) -> (result: Vec<Complex>)
     ensures
         /* Primary behavior: if all imaginary parts are close to zero, return real parts only */
         all_imaginary_parts_close_to_zero(arr@, tol) ==> 
-            forall|i: int| 0 <= i < result.len() ==> result[i].re == arr[i].re && result[i].im == 0,
+            forall|i: int| 0 <= i < result@.len() ==> result@[i].re == arr@[i].re && result@[i].im == 0,
         /* Otherwise, preserve original complex numbers */
         !all_imaginary_parts_close_to_zero(arr@, tol) ==> 
-            forall|i: int| 0 <= i < result.len() ==> result[i] == arr[i],
+            forall|i: int| 0 <= i < result@.len() ==> result@[i] == arr@[i],
         /* Real parts are always preserved */
-        forall|i: int| 0 <= i < result.len() ==> result[i].re == arr[i].re,
+        forall|i: int| 0 <= i < result@.len() ==> result@[i].re == arr@[i].re,
         /* Sanity check: result vector has same length as input */
-        result.len() == arr.len(),
+        result@.len() == arr@.len(),
         /* Mathematical property: if input is already real, output equals input */
-        (forall|i: int| 0 <= i < arr.len() ==> arr[i].im == 0) ==> 
-            forall|i: int| 0 <= i < result.len() ==> result[i] == arr[i],
+        (forall|i: int| 0 <= i < arr@.len() ==> arr@[i].im == 0) ==> 
+            forall|i: int| 0 <= i < result@.len() ==> result@[i] == arr@[i],
 // </vc-spec>
 // <vc-code>
 {

@@ -8,15 +8,15 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn hermsub(c1: Vec<i32>, c2: Vec<i32>) -> (result: Vec<i32>)
+fn hermsub(c1: Vec<i8>, c2: Vec<i8>) -> (result: Vec<i8>)
     ensures
         result.len() == if c1.len() >= c2.len() { c1.len() } else { c2.len() },
         forall|i: int| 0 <= i < c1.len() && 0 <= i < c2.len() ==> 
-            result[i] == c1[i] - c2[i],
+            result@[i] == c1@[i] - c2@[i],
         c1.len() > c2.len() ==> forall|i: int| 
-            c2.len() <= i < c1.len() ==> result[i] == c1[i],
+            c2.len() <= i < c1.len() ==> result@[i] == c1@[i],
         c2.len() > c1.len() ==> forall|i: int| 
-            c1.len() <= i < c2.len() ==> result[i] == -c2[i],
+            c1.len() <= i < c2.len() ==> result@[i] == -c2@[i],
 // </vc-spec>
 // <vc-code>
 {

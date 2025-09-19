@@ -8,7 +8,7 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn union1d(ar1: Vec<i32>, ar2: Vec<i32>) -> (result: Vec<i32>)
+fn union1d(ar1: Vec<i8>, ar2: Vec<i8>) -> (result: Vec<i8>)
     ensures
         /* Union property: every element from either input array is in result */
         forall|i: int| 0 <= i < ar1.len() ==> 

@@ -12,8 +12,8 @@ fn ifftshift(x: Vec<f32>) -> (result: Vec<f32>)
     requires x.len() > 0,
     ensures 
         result.len() == x.len(),
-        forall|i: int| 0 <= i < x.len() ==> 
-            result[i] == x[((i + (x.len() as int) / 2) % (x.len() as int)) as int]
+        forall|i: int| 0 <= i < x@.len() ==> 
+            result[i] == x[((i + (x@.len() as int) / 2) % (x@.len() as int)) as int]
 // </vc-spec>
 // <vc-code>
 {

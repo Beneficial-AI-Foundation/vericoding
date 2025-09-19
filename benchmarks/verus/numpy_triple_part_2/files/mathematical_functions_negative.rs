@@ -8,10 +8,10 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn numpy_negative(x: Vec<i32>) -> (result: Vec<i32>)
+fn numpy_negative(x: Vec<i8>) -> (result: Vec<i8>)
     ensures
         result.len() == x.len(),
-        forall|i: int| 0 <= i < x.len() ==> result[i] == -x[i]
+        forall|i: int| 0 <= i < x.len() ==> result[i] as int == -(x[i] as int)
 // </vc-spec>
 // <vc-code>
 {

@@ -14,10 +14,10 @@ fn split(a: Vec<String>, sep: String, maxsplit: Option<usize>) -> (result: Vec<V
         a.len() > 0,
     ensures
         result.len() == a.len(),
-        forall|i: int| 0 <= i < result.len() ==> {
+        forall|i: int| 0 <= i < result.len() as int ==> {
             let parts = #[trigger] result[i]@;
             let original = #[trigger] a[i]@;
-            (forall|j: int| 0 <= j < parts.len() ==> parts[j]@ != sep@) &&
+            (forall|j: int| 0 <= j < parts.len() as int ==> parts[j]@ != sep@) &&
             (match maxsplit {
                 None => true,
                 Some(limit) => parts.len() <= limit + 1,

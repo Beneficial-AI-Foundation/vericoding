@@ -8,7 +8,7 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn hermeweight(x: Vec<f64>) -> (result: Vec<f64>)
+fn hermeweight(x: Vec<i8>) -> (result: Vec<i8>)
     ensures
         result.len() == x.len(),
 // </vc-spec>
