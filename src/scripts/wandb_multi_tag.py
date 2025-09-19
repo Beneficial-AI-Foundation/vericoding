@@ -54,8 +54,9 @@ def get_wandb_results_for_tags(tags, project="vericoding", entity=None, debug=Fa
     # Combine all tags in the filter
     runs = api.runs(project_path, filters={"tags": {"$in": tags}})
     
-    results = {}  # model_name -> {'success_rate': float, 'successful_files': int, 'total_files': int, 'url': str}
-    detailed_results = defaultdict(dict)  # dataset -> model -> table_data
+    # Store per-shard results for aggregation
+    shard_results = defaultdict(list)  # model_name -> list of {'success_rate': float, 'successful_files': int, 'total_files': int, 'url': str, 'files_dir': str}
+    detailed_results = defaultdict(lambda: defaultdict(list))  # dataset -> model -> list of table_data
     dataset_name = None
     dataset_file_count = None
     
@@ -95,26 +96,20 @@ def get_wandb_results_for_tags(tags, project="vericoding", entity=None, debug=Fa
         total_files = summary['results/total_files']
         successful_files = summary['results/successful_files']
         
-        # Set dataset info (should be consistent across all runs)
-        if dataset_file_count is None:
-            dataset_file_count = total_files
-        elif dataset_file_count != total_files:
-            print(f"Warning: File count mismatch - expected {dataset_file_count}, got {total_files} for run {run.name}", file=sys.stderr)
-        
         # Map model name
         model_name = MODEL_MAPPING.get(llm, llm)
         
         # Get files_dir for dataset identification
         files_dir = config.get('files_dir', 'unknown')
         
-        # Store results (overwrite if duplicate model - last one wins)
-        results[model_name] = {
+        # Store shard results (append to list for aggregation)
+        shard_results[model_name].append({
             'success_rate': success_rate_percent,
             'successful_files': successful_files,
             'total_files': total_files,
             'url': run.url,
             'files_dir': files_dir
-        }
+        })
         
         # Get detailed results for model union calculation
         if 'detailed_results' in summary:
@@ -134,14 +129,47 @@ def get_wandb_results_for_tags(tags, project="vericoding", entity=None, debug=Fa
                     # Clean up downloaded file
                     os.remove(downloaded_file.name)
                     
-                    # Store detailed results
-                    detailed_results['dataset'][model_name] = detailed_table
+                    # Store detailed results (append to list for aggregation)
+                    detailed_results['dataset'][model_name].append(detailed_table)
                     
             except Exception as e:
                 if debug:
                     print(f"Could not download detailed results for {model_name}: {e}", file=sys.stderr)
         
-        print(f"Found: {model_name} = {success_rate_percent:.1f}% ({successful_files}/{total_files} files) - {run.url}", file=sys.stderr)
+        print(f"Found shard: {model_name} = {success_rate_percent:.1f}% ({successful_files}/{total_files} files) - {run.url}", file=sys.stderr)
+    
+    # Aggregate shard results for each model
+    results = {}
+    for model_name, shards in shard_results.items():
+        if shards:
+            # Sum up successful files and total files across shards
+            total_successful = sum(s['successful_files'] for s in shards)
+            total_files = sum(s['total_files'] for s in shards)
+            
+            # Calculate aggregated success rate
+            aggregated_success_rate = (total_successful / total_files * 100) if total_files > 0 else 0
+            
+            # Collect all URLs
+            urls = [s['url'] for s in shards]
+            
+            # Use files_dir from first shard (should be same across all shards)
+            files_dir = shards[0]['files_dir']
+            
+            results[model_name] = {
+                'success_rate': aggregated_success_rate,
+                'successful_files': total_successful,
+                'total_files': total_files,
+                'url': urls[0] if len(urls) == 1 else f"[{len(urls)} shards]",
+                'files_dir': files_dir,
+                'shard_count': len(shards),
+                'shard_urls': urls
+            }
+            
+            print(f"Aggregated: {model_name} = {aggregated_success_rate:.1f}% ({total_successful}/{total_files} files across {len(shards)} shard(s))", file=sys.stderr)
+            
+            # Update dataset file count
+            if dataset_file_count is None:
+                dataset_file_count = total_files
     
     return results, dataset_file_count, detailed_results
 
@@ -154,21 +182,23 @@ def calculate_model_union(detailed_results, dataset_file_count):
     all_files = set()
     file_success = {}  # filename -> bool (True if any model succeeded)
     
-    for model_name, table_data in detailed_results['dataset'].items():
-        if table_data and 'data' in table_data:
-            # Parse the JSON table data to get individual file results
-            for row in table_data['data']:
-                if len(row) >= 3:  # Need at least file_name, subfolder, success
-                    filename = row[0]  # file_name is first column
-                    success = row[2]   # success is third column (index 2)
-                    
-                    all_files.add(filename)
-                    if filename not in file_success:
-                        file_success[filename] = False
-                    
-                    # File succeeds if ANY model succeeded on it
-                    if success:
-                        file_success[filename] = True
+    for model_name, table_data_list in detailed_results['dataset'].items():
+        # Now table_data_list is a list of tables (one per shard)
+        for table_data in table_data_list:
+            if table_data and 'data' in table_data:
+                # Parse the JSON table data to get individual file results
+                for row in table_data['data']:
+                    if len(row) >= 3:  # Need at least file_name, subfolder, success
+                        filename = row[0]  # file_name is first column
+                        success = row[2]   # success is third column (index 2)
+                        
+                        all_files.add(filename)
+                        if filename not in file_success:
+                            file_success[filename] = False
+                        
+                        # File succeeds if ANY model succeeded on it
+                        if success:
+                            file_success[filename] = True
     
     # Calculate union success rate
     if all_files:
@@ -215,7 +245,14 @@ def main():
     for model in MODEL_ORDER:
         if model in results:
             data = results[model]
-            print(f"% {model}\t{data['files_dir']}\t{data['success_rate']:.1f}\\%\t{data['url']}")
+            shard_info = f" ({data['shard_count']} shards)" if data.get('shard_count', 1) > 1 else ""
+            # Check if total files differs from dataset file count
+            if dataset_file_count and data['total_files'] != dataset_file_count:
+                file_warning = f" ⚠️ {data['successful_files']}/{data['total_files']} files"
+                print(f"% WARNING: {model} has different file count: {data['total_files']} vs expected {dataset_file_count}", file=sys.stderr)
+            else:
+                file_warning = f" {data['successful_files']}/{data['total_files']} files"
+            print(f"% {model}\t{data['files_dir']}\t{data['success_rate']:.1f}\\%{file_warning}{shard_info}\t{data['url']}")
         else:
             print(f"% {model}\tunknown\t--\t--")
     
