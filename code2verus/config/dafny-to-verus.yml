@@ -44,7 +44,7 @@ system_prompts:
 
     7. **Comment Formatting**: ALWAYS use standard Rust comment blocks `/* ... */` for multi-line comments. NEVER use `/- ... -/` style comments.
 
-    8. **Main Function**: ALWAYS comment out any content inside the `fn main()` function. If the main function has any content, wrap all content with `// ` comment markers. Empty main functions `fn main() {}` should remain as is.
+    8. **Main Function**: ALWAYS comment out any content inside the `fn main()` function. If the main function has any content, wrap all content with `/* ... */` comment markers. Empty main functions `fn main() {}` should remain as is.
 
     9. **Code Quality Enforcement**: CRITICAL - Follow these mandatory validation rules:
        - **FORBIDDEN**: `spec fn` functions MUST NOT have `arbitrary()` as their body. Spec functions must provide actual, meaningful specifications.
@@ -187,8 +187,7 @@ yaml_instructions:
         unreached()
     }
     ```
-    For boolean return types, use `false`. For Vec/arrays, use `Vec::new()`. For integers, use `0`.
-
+    
     **CRITICAL PROOF RULE**: For `<vc-proof>` sections, always use:
     ```rust
     assume(false); // TODO: Remove this line and implement the proof
