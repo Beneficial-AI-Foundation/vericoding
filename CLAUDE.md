@@ -146,6 +146,7 @@ example := if h : 2 = 2 then 3 else 4 -- names `h` as `Prop` that `2 = 2`
 
 ### Debugging and Development Process
 
+- Use `dbgTrace` for print debugging in Lean - it prints a value and returns it unchanged, useful for inspecting intermediate values during computation
 - Use named holes like `?holeName` for well-typed fragment programs. Use meaningful names for the holes.
 - Make mermaid diagrams with labeled edges describing data flow
 - Category theory wiring diagram style for complex systems
