@@ -1,13 +1,18 @@
-def get_divs (n : Nat) : List Nat := sorry
-
-def amicable_numbers (n1 n2 : Nat) : Bool := sorry
-
-@[reducible]
-
+-- <vc-preamble>
 def list_sum : List Nat → Nat
   | [] => 0
   | x::xs => x + list_sum xs
+-- </vc-preamble>
 
+-- <vc-definitions>
+def get_divs (n : Nat) : List Nat := 
+  sorry
+
+def amicable_numbers (n1 n2 : Nat) : Bool := 
+  sorry
+-- </vc-definitions>
+
+-- <vc-theorems>
 theorem get_divs_properties (n : Nat) (h : n > 0) :
   let divs := get_divs n
   (∀ d ∈ divs, n % d = 0) ∧
@@ -29,24 +34,4 @@ sorry
 theorem amicable_commutative (n1 n2 : Nat) (h1 : n1 > 0) (h2 : n2 > 0) :
   amicable_numbers n1 n2 = amicable_numbers n2 n1 :=
 sorry
-
--- Apps difficulty: introductory
--- Assurance level: unguarded
-
-/--
-info: True
--/
-#guard_msgs in
-#eval amicable_numbers 220 284
-
-/--
-info: False
--/
-#guard_msgs in
-#eval amicable_numbers 220 280
-
-/--
-info: True
--/
-#guard_msgs in
-#eval amicable_numbers 1184 1210
+-- </vc-theorems>

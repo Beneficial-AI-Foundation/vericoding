@@ -1,18 +1,21 @@
+-- <vc-definitions>
 def String.lower : String → String :=
-  fun _ => sorry
+  sorry
 
 def String.swapcase : String → String :=
-  fun _ => sorry
+  sorry
 
 def Char.swapcase : Char → Char :=
-  fun _ => sorry
+  sorry
 
 def String.count (s₁ s₂ : String) : Nat :=
   sorry
 
 def work_on_strings (s₁ s₂ : String) : String :=
   sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem work_on_strings_length (a b : String) :
   (work_on_strings a b).length = a.length + b.length :=
 sorry
@@ -47,24 +50,4 @@ theorem work_on_strings_idempotent (s : String) :
   let result := work_on_strings s s
   work_on_strings s s = result :=
 sorry
-
--- Apps difficulty: introductory
--- Assurance level: unguarded
-
-/--
-info: 'abCCde'
--/
-#guard_msgs in
-#eval work_on_strings "abc" "cde"
-
-/--
-info: 'ABABbababa'
--/
-#guard_msgs in
-#eval work_on_strings "abab" "bababa"
-
-/--
-info: 'abcDEfgDEFGg'
--/
-#guard_msgs in
-#eval work_on_strings "abcdeFg" "defgG"
+-- </vc-theorems>

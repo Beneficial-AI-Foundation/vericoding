@@ -1,11 +1,12 @@
+-- <vc-definitions>
 def solve_good_substrings : String → Nat × Nat :=
   fun _ => sorry
 
 def reverseString : String → String :=
   fun _ => sorry
+-- </vc-definitions>
 
-#check solve_good_substrings
-
+-- <vc-theorems>
 theorem solve_good_substrings_result_structure
     {s : String}
     (h : s.length > 0) :
@@ -26,24 +27,4 @@ theorem solve_good_substrings_count_bound
     let result := solve_good_substrings s
     result.2 ≤ s.length - 1 ∨ result.2 = 1 :=
   sorry
-
--- Apps difficulty: competition
--- Assurance level: guarded_and_plausible
-
-/--
-info: (1, 1)
--/
-#guard_msgs in
-#eval solve_good_substrings "aab"
-
-/--
-info: (2, 3)
--/
-#guard_msgs in
-#eval solve_good_substrings "bcbc"
-
-/--
-info: (3, 1)
--/
-#guard_msgs in
-#eval solve_good_substrings "ddd"
+-- </vc-theorems>

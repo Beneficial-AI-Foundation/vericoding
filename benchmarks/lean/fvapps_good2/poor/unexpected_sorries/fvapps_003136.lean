@@ -1,12 +1,19 @@
-def calculate : List Nat → Nat
-| xs => sorry
-
+-- <vc-description>
 /-- Helper function to sum a list of naturals -/
+-- </vc-description>
 
+-- <vc-preamble>
 def listSum : List Nat → Nat
 | [] => 0
 | (x::xs) => x + listSum xs
+-- </vc-preamble>
 
+-- <vc-definitions>
+def calculate : List Nat → Nat :=
+  sorry
+-- </vc-definitions>
+
+-- <vc-theorems>
 theorem calc_is_positive (cards : List Nat) :
   cards ≠ [] → calculate cards ≥ 0 :=
   sorry
@@ -23,6 +30,4 @@ theorem calc_increases_monotonic (cards : List Nat) (i : Nat) (hi : i < cards.le
 theorem calc_bounded_by_double (cards : List Nat) :
   cards ≠ [] → calculate cards ≤ listSum cards * (2 ^ cards.length) :=
   sorry
-
--- Apps difficulty: introductory
--- Assurance level: guarded
+-- </vc-theorems>

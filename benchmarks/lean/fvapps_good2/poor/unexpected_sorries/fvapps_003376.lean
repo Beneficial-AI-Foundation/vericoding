@@ -1,10 +1,17 @@
-def ski_jump (mountain: List String) : String := sorry
-
+-- <vc-preamble>
 def isValidMessage (msg: String) : Bool :=
   msg = "He's crap!" || msg = "He's ok!" || msg = "He's flying!" || msg = "Gold!!"
+-- </vc-preamble>
 
-def stringToFloat (s: String) : Float := sorry -- helper function
+-- <vc-definitions>
+def ski_jump (mountain: List String) : String := 
+  sorry
 
+def stringToFloat (s: String) : Float := 
+  sorry
+-- </vc-definitions>
+
+-- <vc-theorems>
 theorem ski_jump_output_format {mountain : List String} (h : mountain.length > 0) :
   let result := ski_jump mountain
   let parts := result.splitOn " metres: "
@@ -30,24 +37,4 @@ theorem message_thresholds {mountain : List String} (h : mountain.length > 0) :
   (length ≥ 25 ∧ length < 50 → message = "He's flying!") ∧
   (length ≥ 50 → message = "Gold!!") :=
 sorry
-
--- Apps difficulty: introductory
--- Assurance level: guarded
-
-/--
-info: "1.35 metres: He's crap!"
--/
-#guard_msgs in
-#eval ski_jump ["*"]
-
-/--
-info: "12.15 metres: He's ok!"
--/
-#guard_msgs in
-#eval ski_jump ["*", "**", "***"]
-
-/--
-info: "48.60 metres: He's flying!"
--/
-#guard_msgs in
-#eval ski_jump ["*", "**", "***", "****", "*****", "******"]
+-- </vc-theorems>
