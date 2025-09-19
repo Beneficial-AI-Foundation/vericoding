@@ -57,15 +57,15 @@ pub fn fft(a: Vec<Complex>) -> (result: Vec<Complex>)
     ensures 
         result.len() == a.len(),
         forall|k: usize| k < result.len() ==> 
-            result[k as int] == complex_sum(a.len() as nat, |j: nat| 
+            result@[k as int] == complex_sum(a.len() as nat, |j: nat| 
                 if j < a.len() {
-                    complex_mul(a[j as int], cexp(0.0))
+                    complex_mul(a@[j as int], cexp(0.0))
                 } else {
                     complex_zero()
                 }
             ),
-        result.len() > 0 ==> result[0] == complex_sum(a.len() as nat, |j: nat|
-            if j < a.len() { a[j as int] } else { complex_zero() }
+        result.len() > 0 ==> result@[0] == complex_sum(a.len() as nat, |j: nat|
+            if j < a.len() { a@[j as int] } else { complex_zero() }
         ),
 // </vc-spec>
 // <vc-code>

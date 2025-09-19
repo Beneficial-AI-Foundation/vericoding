@@ -8,13 +8,13 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn condition_number(x: Vec<Vec<i32>>) -> (result: i32)
+fn condition_number(x: Vec<Vec<i8>>) -> (result: i8)
     requires 
         x.len() > 0,
         forall|i: int| 0 <= i < x.len() ==> x[i].len() == x.len(),
     ensures 
-        result >= 0,
-        result >= 1,
+        result as int >= 0,
+        result as int >= 1,
 // </vc-spec>
 // <vc-code>
 {

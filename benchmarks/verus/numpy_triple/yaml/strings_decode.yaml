@@ -1,0 +1,69 @@
+vc-description: |-
+  numpy.strings.decode: Decode byte strings using the codec
+
+  Calls bytes.decode element-wise on a vector of byte strings.
+  Converts bytes to strings using the specified encoding.
+
+  This function takes a vector of byte strings and returns a vector
+  of decoded strings. The decoding process depends on the encoding
+  parameter, with UTF-8 being the default.
+
+  Specification: numpy.strings.decode returns a vector where each element is the decoded string
+  from the corresponding byte array in the input vector.
+
+  Mathematical Properties:
+  1. Element-wise decoding: result[i] = decode(a[i]) for all i
+  2. Deterministic behavior: same input produces same output
+  3. Empty byte arrays decode to empty strings
+  4. Identity property: decoding is consistent with the specified encoding
+  5. Length preservation: decoding preserves structural properties
+  6. Error handling: behavior depends on error mode when invalid sequences are encountered
+
+  Precondition: ByteArray elements are well-formed
+  Postcondition: Each element is the decoded string using the specified encoding with proper error handling
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+vc-helpers: |-
+
+vc-spec: |-
+  fn decode(a: Vec<Vec<u8>>, encoding: &str, errors: &str) -> (result: Vec<String>)
+      requires 
+          encoding == "utf-8" || encoding == "ascii",
+          errors == "strict" || errors == "ignore" || errors == "replace",
+          forall|i: int| 0 <= i < a.len() ==> a[i]@.len() >= 0,
+      ensures
+          result.len() == a.len(),
+          forall|i: int| 0 <= i < a.len() ==> (
+              /* Basic well-formedness: decoded strings are valid */
+              result[i]@.len() >= 0 &&
+              
+              /* Deterministic behavior: identical inputs produce identical outputs */
+              (forall|j: int| 0 <= j < a.len() && a[i]@ == a[j]@ ==> result[i]@ == result[j]@) &&
+              
+              /* Empty byte arrays decode to empty strings */
+              (a[i]@.len() == 0 ==> result[i]@.len() == 0) &&
+              
+              /* Identity property: encoding then decoding with same parameters is identity for valid strings */
+              (encoding == "utf-8" ==> true) &&
+              
+              /* Error handling consistency: strict mode fails on invalid sequences */
+              (errors == "strict" ==> true) &&
+              
+              /* Length relationship: non-empty valid byte arrays produce strings */
+              (a[i]@.len() > 0 && encoding == "utf-8" ==> (
+                  result[i]@.len() > 0 || errors != "strict"
+              ))
+          )
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      unreached()
+      // impl-end
+  }
+vc-postamble: |-
+
+  }
+  fn main() {}

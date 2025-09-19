@@ -24,7 +24,7 @@ fn reduceat_add(arr: Vec<i32>, indices: Vec<usize>) -> (result: Vec<i32>)
     requires 
         arr.len() > 0,
         indices.len() > 0,
-        forall|i: int| 0 <= i < indices.len() ==> #[trigger] (indices[i] as int) < arr.len(),
+        forall|i: int| 0 <= i < indices.len() ==> #[trigger] (indices[i] as int) < arr.len() as int,
     ensures
         result.len() == indices.len(),
         forall|i: int| 0 <= i < indices.len() ==> {

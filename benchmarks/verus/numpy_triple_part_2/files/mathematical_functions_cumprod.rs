@@ -20,12 +20,12 @@ spec fn product_prefix(a: Seq<int>, end: int) -> int
     }
 }
 
-fn cumprod(a: Vec<int>) -> (result: Vec<int>)
+fn cumprod(a: Vec<i8>) -> (result: Vec<i8>)
     ensures
         result.len() == a.len(),
-        forall|i: int| 0 <= i < a.len() ==> result[i] == product_prefix(a@, i + 1),
+        forall|i: int| 0 <= i < a.len() ==> result[i] as int == product_prefix(a@.map(|_index, x: i8| x as int), i + 1),
         forall|i: int, j: int| 0 <= i < a.len() && j == i + 1 && j < a.len() ==> 
-            result[j] == result[i] * a[j]
+            result[j] as int == (result[i] as int) * (a[j] as int)
 // </vc-spec>
 // <vc-code>
 {

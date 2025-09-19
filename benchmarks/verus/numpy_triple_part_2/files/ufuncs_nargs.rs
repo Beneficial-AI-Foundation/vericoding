@@ -16,8 +16,8 @@ struct Ufunc {
 // </vc-helpers>
 
 // <vc-spec>
-fn numpy_nargs(ufunc: Ufunc) -> (result: nat)
-    ensures result == ufunc.nin + ufunc.nout
+fn numpy_nargs(ufunc: Ufunc) -> (result: u8)
+    ensures result as nat == ufunc.nin + ufunc.nout
 // </vc-spec>
 // <vc-code>
 {

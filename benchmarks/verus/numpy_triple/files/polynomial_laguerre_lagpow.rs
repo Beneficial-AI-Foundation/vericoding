@@ -8,7 +8,7 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn lagpow(c: Vec<f32>, pow: usize, maxpower: usize) -> (result: Vec<f32>)
+fn lagpow(c: Vec<f32>, pow: u8, maxpower: u8) -> (result: Vec<f32>)
     requires 
         pow > 0,
         pow <= maxpower,

@@ -8,16 +8,16 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn mapparms(old: [i32; 2], new: [i32; 2]) -> (result: (i32, i32))
+fn mapparms(old: [i8; 2], new: [i8; 2]) -> (result: (i8, i8))
     requires old[0] != old[1],
     ensures ({
         let (offset, scale) = result;
-        let oldlen = old[1] - old[0];
-        let newlen = new[1] - new[0];
-        offset + scale * old[0] == new[0] &&
-        offset + scale * old[1] == new[1] &&
-        scale == newlen / oldlen &&
-        offset == (old[1] * new[0] - old[0] * new[1]) / oldlen
+        let oldlen = old[1] as int - old[0] as int;
+        let newlen = new[1] as int - new[0] as int;
+        offset as int + scale as int * old[0] as int == new[0] as int &&
+        offset as int + scale as int * old[1] as int == new[1] as int &&
+        scale as int == newlen / oldlen &&
+        offset as int == (old[1] as int * new[0] as int - old[0] as int * new[1] as int) / oldlen
     })
 // </vc-spec>
 // <vc-code>

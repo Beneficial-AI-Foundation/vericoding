@@ -8,11 +8,11 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn chebint(c: Vec<f32>, m: u32, k: Vec<f32>, lbnd: f32, scl: f32) -> (result: Vec<f32>)
+fn chebint(c: Vec<f32>, m: u8, k: Vec<f32>, lbnd: f32, scl: f32) -> (result: Vec<f32>)
     requires 
         m > 0,
         scl != 0.0f32,
-        k.len() == m,
+        k.len() == m as usize,
     ensures
         result.len() == c.len() + (m as usize),
 

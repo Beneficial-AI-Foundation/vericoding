@@ -8,15 +8,15 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn mgrid(start: i32, stop: i32, step: i32, n: usize) -> (result: Vec<i32>)
+fn mgrid(start: i8, stop: i8, step: i8, n: usize) -> (result: Vec<i8>)
     requires
         step > 0,
         start < stop,
-        n == ((stop - start) as int / step as int) as usize,
+        n == ((stop as int - start as int) / step as int) as usize,
     ensures
-        result.len() == n,
-        forall|i: int| 0 <= i < result.len() ==> #[trigger] result[i] == start + (i as i32) * step,
-        forall|i: int| 0 <= i < result.len() ==> #[trigger] result[i] < stop,
+        result@.len() == n,
+        forall|i: int| 0 <= i < result@.len() ==> #[trigger] result@[i] == start as int + i * step as int,
+        forall|i: int| 0 <= i < result@.len() ==> #[trigger] result@[i] < stop as int,
 // </vc-spec>
 // <vc-code>
 {

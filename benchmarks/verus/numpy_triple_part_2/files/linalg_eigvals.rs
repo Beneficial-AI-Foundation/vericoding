@@ -18,10 +18,10 @@ type Matrix<T> = Vec<Vec<T>>;
 // <vc-spec>
 fn eigvals(a: &Matrix<f64>) -> (result: Vec<Complex>)
     requires 
-        a.len() > 0,
-        forall|i: int| 0 <= i < a.len() ==> a[i].len() == a.len(),
+        a@.len() > 0,
+        forall|i: int| 0 <= i < a@.len() ==> a@[i].len() == a@.len(),
     ensures
-        result.len() == a.len()
+        result@.len() == a@.len()
 // </vc-spec>
 // <vc-code>
 {

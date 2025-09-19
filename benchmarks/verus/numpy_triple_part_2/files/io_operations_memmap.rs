@@ -25,8 +25,8 @@ fn memmap(filename_valid: bool, mode: FileMode, offset: usize, n: usize) -> (res
     requires 
         filename_valid,
     ensures
-        result.len() == n,
-        forall|i: int| 0 <= i < n ==> #[trigger] result[i] == result[i],
+        result@.len() == n as int,
+        forall|i: int| 0 <= i < n as int ==> #[trigger] result@[i] == result@[i],
 // </vc-spec>
 // <vc-code>
 {

@@ -5,9 +5,6 @@ verus! {
 // </vc-preamble>
 
 // <vc-helpers>
-// </vc-helpers>
-
-// <vc-spec>
 spec fn seq_sum(s: Seq<i32>) -> int {
     s.fold_left(0, |acc: int, x: i32| acc + x)
 }
@@ -19,8 +16,10 @@ spec fn variable_mean(var_data: Seq<i32>) -> int {
         seq_sum(var_data) / (var_data.len() as int)
     }
 }
+// </vc-helpers>
 
-fn numpy_cov(m: Vec<Vec<i32>>) -> (cov_matrix: Vec<Vec<i32>>)
+// <vc-spec>
+fn numpy_cov(m: Vec<Vec<i8>>) -> (cov_matrix: Vec<Vec<i8>>)
     requires 
         m.len() > 0,
         forall|i: int| 0 <= i < m.len() ==> m[i].len() > 0,
@@ -30,7 +29,7 @@ fn numpy_cov(m: Vec<Vec<i32>>) -> (cov_matrix: Vec<Vec<i32>>)
         forall|i: int| 0 <= i < cov_matrix.len() ==> cov_matrix[i].len() == m.len(),
         forall|i: int, j: int| 0 <= i < m.len() && 0 <= j < m.len() ==> 
             cov_matrix[i][j] == cov_matrix[j][i],
-        forall|i: int| 0 <= i < m.len() ==> cov_matrix[i][i] >= 0,
+        forall|i: int| 0 <= i < m.len() ==> (cov_matrix[i][i] as int) >= 0,
 // </vc-spec>
 // <vc-code>
 {

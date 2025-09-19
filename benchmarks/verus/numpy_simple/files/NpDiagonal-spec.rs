@@ -11,12 +11,12 @@ verus! {
 /* Matrix type represented as a 2D vector */
 type Matrix<T> = Vec<Vec<T>>;
 
-fn diagonal(arr: Matrix<i32>, k: i32) -> (result: Vec<i32>)
+fn diagonal(arr: Matrix<i8>, k: i8) -> (result: Vec<i8>)
     requires 
         arr.len() > 0,
         arr.len() == arr[0].len(), /* square matrix */
         forall|i: int| 0 <= i < arr.len() ==> arr[i].len() == arr.len(),
-        -(arr.len() as i32) < k && k < (arr.len() as i32),
+        -(arr.len() as i8) < k && k < (arr.len() as i8),
     ensures
         if k > 0 {
             result.len() == arr.len() - (k as usize) &&

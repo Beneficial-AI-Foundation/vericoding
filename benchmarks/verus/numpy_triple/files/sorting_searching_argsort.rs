@@ -8,7 +8,7 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn argsort(a: Vec<i32>) -> (result: Vec<usize>)
+fn argsort(a: Vec<i8>) -> (result: Vec<usize>)
     ensures 
         result.len() == a.len(),
 

@@ -27,7 +27,7 @@ vc-preamble: |-
 vc-helpers: |-
 
 vc-spec: |-
-  fn numpy_mod(x1: Vec<i32>, x2: Vec<i32>) -> (result: Vec<i32>)
+  fn numpy_mod(x1: Vec<i8>, x2: Vec<i8>) -> (result: Vec<i8>)
       requires 
           x1.len() == x2.len(),
           forall|i: int| 0 <= i < x2.len() ==> x2[i] != 0,

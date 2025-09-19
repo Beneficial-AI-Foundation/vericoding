@@ -9,11 +9,11 @@ verus! {
 
 // <vc-spec>
 fn piecewise(x: Vec<f32>, condlist: Vec<spec_fn(f32) -> bool>, funclist: Vec<spec_fn(f32) -> f32>) -> (ret: Vec<f32>)
-    requires condlist.len() == funclist.len(),
+    requires condlist@.len() == funclist@.len(),
     ensures
-        ret.len() == x.len(),
-        forall|i: int, j: int| 0 <= i < x.len() && 0 <= j < condlist.len() && 
-            condlist[j](x[i]) ==> ret[i] == funclist[j](x[i])
+        ret@.len() == x@.len(),
+        forall|i: int, j: int| 0 <= i < x@.len() && 0 <= j < condlist@.len() && 
+            condlist@[j](x@[i]) ==> ret@[i] == funclist@[j](x@[i])
 // </vc-spec>
 // <vc-code>
 {
