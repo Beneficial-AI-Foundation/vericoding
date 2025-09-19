@@ -189,20 +189,11 @@ resource "aws_instance" "intern_server" {
     apt-get update
     apt-get install -y build-essential git curl
     
-    # Add your SSH public key to ubuntu user
+    # Add Theo's SSH public key to ubuntu user
     mkdir -p /home/ubuntu/.ssh
     echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC4IgPSH5Kkxy80bIHMjAEN6XovrP2NG/4ccZs8j8Ebdpe3rsE6CmLWohtbKGX6i8yJwQ5jCrrmKmnfx6feOkYaiUY2WLXQQR3hZ4j6GfN52LFzIXnwU84vf0YGSGbhWkrYFRHI16ccYn2IZhSTdxgHvgOehflr2VW7I60y6F8rNNJyfoYHTB/H0zQsoBlLcCLMrEbb5/KpOTIy6B+mn/5+fe74a9YNNJWnslqWI7AHMMzWx8UNzE+3kAY8zuApFe9FXnZNwL05N4l+Y8IzWMaZd7PGg6AUt2BLjx6bGJg8Ob3GogY/nMHxw05xMvYhD4lOz+jqjSUFJ6zQ9C3gWO2OwcIAiXS4kr/LIqwPIRNDxqFUFtU6CWMpUIJ323Yok0nMNwIylMoESFRwOqIFdt66kZyNCGRRAYEJKhp8j9Uqm9P3EncJDFvaw7X4hOYIk1hGWVFfOIfeKAYkIc9F7Qn6x45pYNiFaIj1nn4gamlCGYroAlzrRMLnmHN7YIynrw0= theo@lutfisk" >> /home/ubuntu/.ssh/authorized_keys
     chown ubuntu:ubuntu /home/ubuntu/.ssh/authorized_keys
     chmod 600 /home/ubuntu/.ssh/authorized_keys
-    
-    # Create a non-root user for Max Tan
-    useradd -m -s /bin/bash maxtan
-    usermod -aG sudo maxtan
-    
-    # Set up SSH directory for maxtan user
-    mkdir -p /home/maxtan/.ssh
-    chown maxtan:maxtan /home/maxtan/.ssh
-    chmod 700 /home/maxtan/.ssh
     
     echo "Server setup complete" > /var/log/user-data.log
   EOF
