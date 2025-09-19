@@ -195,17 +195,14 @@ resource "aws_instance" "intern_server" {
     chown ubuntu:ubuntu /home/ubuntu/.ssh/authorized_keys
     chmod 600 /home/ubuntu/.ssh/authorized_keys
     
-    # Create a non-root user for the intern
-    useradd -m -s /bin/bash intern
-    usermod -aG sudo intern
+    # Create a non-root user for Max Tan
+    useradd -m -s /bin/bash maxtan
+    usermod -aG sudo maxtan
     
-    # Set up SSH directory for intern user
-    mkdir -p /home/intern/.ssh
-    chown intern:intern /home/intern/.ssh
-    chmod 700 /home/intern/.ssh
-    
-    # Install basic development tools
-    apt-get install -y python3 python3-pip nodejs npm
+    # Set up SSH directory for maxtan user
+    mkdir -p /home/maxtan/.ssh
+    chown maxtan:maxtan /home/maxtan/.ssh
+    chmod 700 /home/maxtan/.ssh
     
     echo "Server setup complete" > /var/log/user-data.log
   EOF
