@@ -1,66 +1,42 @@
-// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
 
-spec fn str2int(s: Seq<char>) -> nat
-    recommends valid_bit_string(s)
-    decreases s.len()
+spec fn Str2Int(s: Seq<char>) -> nat
+  recommends ValidBitString(s)
+  decreases s.len()
 {
-    if s.len() == 0 { 0nat } else { 2nat * str2int(s.subrange(0, s.len() - 1)) + (if s[s.len() - 1] == '1' { 1nat } else { 0nat }) }
+  if s.len() == 0 {
+    0
+  } else {
+    2 * Str2Int(s.subrange(0, s.len() as int - 1))
+      + (if s.index(s.len() as int - 1) == '1' { 1nat } else { 0nat })
+  }
 }
 
-spec fn valid_bit_string(s: Seq<char>) -> bool
+spec fn ValidBitString(s: Seq<char>) -> bool
 {
-    forall|i: int| 0 <= i < s.len() ==> (s[i] == '0' || s[i] == '1')
+  forall |i: int| 0 <= i && i < s.len() as int ==>
+    (s.index(i) == '0' || s.index(i) == '1')
 }
-
-fn sub(s1: Seq<char>, s2: Seq<char>) -> (res: Seq<char>)
-    requires 
-        valid_bit_string(s1) && valid_bit_string(s2),
-        str2int(s1) >= str2int(s2),
-    ensures 
-        valid_bit_string(res),
-        str2int(res) == str2int(s1) - str2int(s2),
-{
-    assume(false);
-    unreached()
-}
-
-fn compare(s1: Seq<char>, s2: Seq<char>) -> (res: i32)
-    requires valid_bit_string(s1) && valid_bit_string(s2),
-    ensures 
-        str2int(s1) < str2int(s2) ==> res == -1,
-        str2int(s1) == str2int(s2) ==> res == 0,
-        str2int(s1) > str2int(s2) ==> res == 1,
-    decreases str2int(s1) + str2int(s2),
-{
-    assume(false);
-    unreached()
-}
-// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>
-fn div_mod(dividend: Seq<char>, divisor: Seq<char>) -> (res: (Seq<char>, Seq<char>))
-    requires 
-        valid_bit_string(dividend) && valid_bit_string(divisor),
-        str2int(divisor) > 0,
-    ensures 
-        valid_bit_string(res.0) && valid_bit_string(res.1),
-        str2int(res.0) == str2int(dividend) / str2int(divisor),
-        str2int(res.1) == str2int(dividend) % str2int(divisor),
+exec fn DivMod_Compare_Sub(dividend: &[char], divisor: &[char]) -> (res: (Vec<char>, Vec<char>))
+  requires ValidBitString(dividend@), ValidBitString(divisor@), Str2Int(divisor@) > 0
+  ensures ValidBitString(res.0@) && ValidBitString(res.1@),
+    Str2Int(res.0@) == Str2Int(dividend@) / Str2Int(divisor@),
+    Str2Int(res.1@) == Str2Int(dividend@) % Str2Int(divisor@)
 // </vc-spec>
 // <vc-code>
 {
-    assume(false);
-    unreached()
+  assume(false);
+  return (Vec::<char>::new(), Vec::<char>::new());
 }
 // </vc-code>
 
-
+fn main() {}
 }
 
-fn main() {}

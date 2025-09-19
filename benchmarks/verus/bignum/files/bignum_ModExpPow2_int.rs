@@ -1,33 +1,31 @@
-// <vc-preamble>
 use vstd::prelude::*;
 
 verus! {
-spec fn exp_int(x: nat, y: nat) -> nat
-    decreases y
+
+spec fn Exp_int(x: nat, y: nat) -> nat
+  decreases y 
 {
-    if y == 0 { 1 } else { x * exp_int(x, (y - 1) as nat) }
+  if y == 0 { 1 } else { x * Exp_int(x, (y - 1) as nat) }
 }
-// </vc-preamble>
 
 // <vc-helpers>
 // </vc-helpers>
 
 // <vc-spec>
-fn mod_exp_pow2_int(x: nat, y: nat, n: nat, z: nat) -> (res: nat)
-    requires 
-        y == exp_int(2, n),
-        z > 0,
-    ensures res == exp_int(x, y) % z
-    decreases n
+exec fn ModExpPow2_int(x: u64, y: u64, n: u64, z: u64) -> (res: u64)
+  requires z > 0u64,
+   (y as nat) == Exp_int(2, n as nat)
+  ensures (res as nat) == Exp_int(x as nat, y as nat) % (z as nat)
+  decreases n
 // </vc-spec>
 // <vc-code>
 {
-    assume(false);
-    unreached()
+  assume(false);
+  return 0u64;
 }
 // </vc-code>
 
-
+fn main() {}
 }
 
-fn main() {}
+

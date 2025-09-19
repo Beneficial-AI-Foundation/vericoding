@@ -1,0 +1,32 @@
+vc-description: |-
+  function_signature: fn cube_root(n: nat) -> (r: nat)
+
+  Find the integer cube root. Ensures: the result r is the largest integer such that
+  r³ ≤ N < (r+1)³; the result is at most N.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+  spec fn cube(n: nat) -> nat { n * n * n }
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn cube_root(n: nat) -> (r: nat)
+      ensures 
+          cube(r) <= n < cube(r + 1),
+          r <= n,
+
+vc-code: |-
+  {
+      assume(false);
+      unreached()
+  }
+
+vc-postamble: |-
+
+  }
+
+  fn main() {}
