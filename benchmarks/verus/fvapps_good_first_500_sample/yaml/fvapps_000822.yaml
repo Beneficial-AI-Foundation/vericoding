@@ -1,0 +1,75 @@
+vc-description: |-
+  You are given N integer sequences A1, A2, ..., AN. Each of these sequences contains N elements. You should pick N elements, one from each sequence; let's denote the element picked from sequence Ai by Ei. For each i (2 ≤ i ≤ N), Ei should be strictly greater than Ei-1.
+  Compute the maximum possible value of E1 + E2 + ... + EN. If it's impossible to pick the elements E1, E2, ..., EN, print -1 instead.
+  
+  Input:
+  - The first line of the input contains a single integer T denoting the number of test cases. The description of T test cases follows.
+  - The first line of each test case contains a single integer N.
+  - N lines follow. For each valid i, the i-th of these lines contains N space-separated integers Ai1, Ai2, ..., AiN denoting the elements of the sequence Ai.
+  
+  Output:
+  For each test case, print a single line containing one integer — the maximum sum of picked elements.
+  
+  Constraints:
+  - 1 ≤ T ≤ 10
+  - 1 ≤ N ≤ 700
+  - 1 ≤ sum of N in all test-cases ≤ 3700
+  - 1 ≤ Aij ≤ 109 for each valid i, j
+  
+  Example:
+  Input:
+  1
+  3
+  1 2 3
+  4 5 6
+  7 8 9
+  
+  Output:
+  18
+  
+  Explanation:
+  Example case 1: To maximise the score, pick 3 from the first row, 6 from the second row and 9 from the third row. The resulting sum is E1+E2+E3 = 3+6+9 = 18.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+  spec fn seq_sum(elements: Seq<i32>) -> int
+      decreases elements.len()
+  {
+      if elements.len() == 0 {
+          0
+      } else {
+          elements[0] + seq_sum(elements.skip(1))
+      }
+  }
+
+vc-spec: |-
+  fn solve_max_sequence_sum(n: usize, grid: Vec<Vec<i32>>) -> (result: i32)
+      requires 
+          n > 0,
+          grid.len() == n,
+          forall|i: int| 0 <= i < grid.len() ==> #[trigger] grid[i].len() == n,
+          forall|i: int, j: int| 0 <= i < grid.len() && 0 <= j < grid[i].len() ==> -1000 <= grid[i][j] && grid[i][j] <= 1000,
+      ensures
+          result == -1 || (
+              exists|elements: Seq<i32>| 
+                  #[trigger] elements.len() == n &&
+                  (forall|i: int, j: int| 0 <= i < j < n ==> #[trigger] elements[i] > #[trigger] elements[j]) &&
+                  result == seq_sum(elements)
+          )
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      unreached()
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {}

@@ -1,0 +1,39 @@
+vc-description: |-
+  In Chefland, there is a very famous street where N types of street food (numbered 1 through N) are offered. For each valid i, there are S_i stores that offer food of the i-th type, the price of one piece of food of this type is V_i (the same in each of these stores) and each day, P_i people come to buy it; each of these people wants to buy one piece of food of the i-th type.
+  Chef is planning to open a new store at this street, where he would offer food of one of these N types. Chef assumes that the people who want to buy the type of food he'd offer will split equally among all stores that offer it, and if this is impossible, i.e. the number of these people p is not divisible by the number of these stores s, then only floor(p/s) people will buy food from Chef.
+  Chef wants to maximise his daily profit. Help Chef choose which type of food to offer and find the maximum daily profit he can make.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn solve_street_food(stores: Vec<(u32, u32, u32)>) -> (result: u32)
+      ensures
+          result >= 0,
+          stores.len() == 0 ==> result == 0
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      0
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+
+  fn main() {
+      // Apps difficulty: interview
+      // Assurance level: unguarded
+
+      // Test cases would go here but are commented out
+      // solve_street_food(vec![(4, 6, 8), (2, 6, 6), (1, 4, 3)]) should return 12
+      // solve_street_food(vec![(7, 7, 4)]) should return 0
+      // solve_street_food(vec![(1, 10, 5), (2, 15, 4)]) should return 25
+  }

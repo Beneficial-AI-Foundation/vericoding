@@ -1,0 +1,70 @@
+vc-description: |-
+  Given a binary array nums, you should delete one element from it.
+  Return the size of the longest non-empty subarray containing only 1's in the resulting array.
+  Return 0 if there is no such subarray.
+
+  Example 1:
+  Input: nums = [1,1,0,1]
+  Output: 3
+  Explanation: After deleting the number in position 2, [1,1,1] contains 3 numbers with value of 1's.
+  Example 2:
+  Input: nums = [0,1,1,1,0,1,1,0,1]
+  Output: 5
+  Explanation: After deleting the number in position 4, [0,1,1,1,1,1,0,1] longest subarray with value of 1's is [1,1,1,1,1].
+  Example 3:
+  Input: nums = [1,1,1]
+  Output: 2
+  Explanation: You must delete one element.
+  Example 4:
+  Input: nums = [1,1,0,0,1,1,1,0,1]
+  Output: 4
+
+  Example 5:
+  Input: nums = [0,0,0]
+  Output: 0
+
+  Constraints:
+
+  1 <= nums.length <= 10^5
+  nums[i] is either 0 or 1.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn longest_subarray_ones_after_delete(nums: Vec<u32>) -> (result: u32)
+      requires 
+          nums.len() > 0,
+          forall|i: int| 0 <= i < nums.len() ==> nums[i] <= 1,
+      ensures 
+          result >= 0,
+          result <= nums.len()
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      0
+      // impl-end
+  }
+
+vc-postamble: |-
+  }
+
+  fn main() {
+      // Apps difficulty: interview
+      // Assurance level: guarded
+
+      // let test1 = vec![1, 1, 0, 1];
+      // assert_eq!(longest_subarray_ones_after_delete(test1), 3);
+
+      // let test2 = vec![0, 1, 1, 1, 0, 1, 1, 0, 1];
+      // assert_eq!(longest_subarray_ones_after_delete(test2), 5);
+
+      // let test3 = vec![1, 1, 1];
+      // assert_eq!(longest_subarray_ones_after_delete(test3), 2);
+  }

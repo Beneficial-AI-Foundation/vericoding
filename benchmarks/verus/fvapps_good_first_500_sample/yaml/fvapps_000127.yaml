@@ -1,0 +1,49 @@
+vc-description: |-
+  Given an array A of positive integers, A[i] represents the value of the i-th sightseeing spot, and two sightseeing spots i and j have distance j - i between them.
+  The score of a pair (i < j) of sightseeing spots is (A[i] + A[j] + i - j) : the sum of the values of the sightseeing spots, minus the distance between them.
+  Return the maximum score of a pair of sightseeing spots.
+
+  Example 1:
+  Input: [8,1,5,2,6]
+  Output: 11
+  Explanation: i = 0, j = 2, A[i] + A[j] + i - j = 8 + 5 + 0 - 2 = 11
+
+  Note:
+
+  2 <= A.length <= 50000
+  1 <= A[i] <= 1000
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  spec fn score_pair(values: Seq<u32>, i: int, j: int) -> int {
+      (values[i] as int) + (values[j] as int) + i - j
+  }
+
+  fn max_score_sightseeing_pair(values: Vec<u32>) -> (result: u32)
+      requires 
+          values.len() >= 2,
+          forall|i: int| 0 <= i < values.len() ==> #[trigger] values[i] >= 1 && #[trigger] values[i] <= 1000,
+      ensures 
+          values@ == seq![8u32, 1u32, 5u32, 2u32, 6u32] ==> result == 11u32,
+          values@ == seq![1u32, 2u32] ==> result == 2u32,
+          values@ == seq![5u32, 5u32, 5u32, 5u32] ==> result == 9u32,
+          values@ == seq![1u32, 1u32] ==> result == 1u32,
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      0u32
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {}

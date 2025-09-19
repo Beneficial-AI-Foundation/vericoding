@@ -1,0 +1,79 @@
+vc-description: |-
+  Given a string S and a string T, count the number of distinct subsequences of S which equals T.
+
+  A subsequence of a string is a new string which is formed from the original string by deleting some (can be none) of the characters without disturbing the relative positions of the remaining characters. (ie, "ACE" is a subsequence of "ABCDE" while "AEC" is not).
+
+  Example 1:
+
+  Input: S = "rabbbit", T = "rabbit"
+  Output: 3
+  Explanation:
+
+  As shown below, there are 3 ways you can generate "rabbit" from S.
+  (The caret symbol ^ means the chosen letters)
+
+  rabbbit
+  ^^^^ ^^
+  rabbbit
+  ^^ ^^^^
+  rabbbit
+  ^^^ ^^^
+
+  Example 2:
+
+  Input: S = "babgbag", T = "bag"
+  Output: 5
+  Explanation:
+
+  As shown below, there are 5 ways you can generate "bag" from S.
+  (The caret symbol ^ means the chosen letters)
+
+  babgbag
+  ^^ ^
+  babgbag
+  ^^    ^
+  babgbag
+  ^    ^^
+  babgbag
+    ^  ^^
+  babgbag
+      ^^^
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+vc-helpers: |-
+
+vc-spec: |-
+  spec fn count_subsequences_spec(s: Seq<char>, t: Seq<char>) -> nat
+      decreases s.len() + t.len()
+  {
+      if t.len() == 0 {
+          1
+      } else if s.len() == 0 {
+          0
+      } else if s[0] == t[0] {
+          count_subsequences_spec(s.skip(1), t.skip(1)) + count_subsequences_spec(s.skip(1), t)
+      } else {
+          count_subsequences_spec(s.skip(1), t)
+      }
+  }
+
+  fn count_distinct_subsequences(s: &str, t: &str) -> (result: u32)
+      ensures result as nat == count_subsequences_spec(s@, t@)
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      0
+      // impl-end
+  }
+vc-postamble: |-
+
+  }
+
+  fn main() {
+      // println!("{}", count_distinct_subsequences("rabbbit", "rabbit"));
+      // println!("{}", count_distinct_subsequences("babgbag", "bag"));
+      // println!("{}", count_distinct_subsequences("abc", "abc"));
+  }

@@ -1,0 +1,62 @@
+vc-description: |-
+  Given an array of non-negative integers, you are initially positioned at the first index of the array.
+
+  Each element in the array represents your maximum jump length at that position.
+
+  Determine if you are able to reach the last index.
+
+  Example 1:
+
+  Input: [2,3,1,1,4]
+  Output: true
+  Explanation: Jump 1 step from index 0 to 1, then 3 steps to the last index.
+
+  Example 2:
+
+  Input: [3,2,1,0,4]
+  Output: false
+  Explanation: You will always arrive at index 3 no matter what. Its maximum
+               jump length is 0, which makes it impossible to reach the last index.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn can_jump(nums: Vec<nat>) -> (result: bool)
+      requires nums.len() > 0,
+      ensures
+          /* Single element arrays are always reachable */
+          nums.len() == 1 ==> result == true,
+          /* If all non-last elements are non-zero, end is reachable */
+          (nums.len() > 0 && forall|i: int| 0 <= i < nums.len() - 1 ==> nums[i] > 0) ==> result == true,
+          /* If first element is zero and array has more than one element, end is not reachable */
+          (nums.len() > 1 && nums[0] == 0) ==> result == false,
+          /* If there's a zero at position and we can still reach the end, 
+             then there must be some earlier position that can jump past it */
+          forall|idx: int| 0 <= idx < nums.len() - 1 && nums[idx] == 0 && result == true ==>
+              exists|j: int| 0 <= j < idx && j + nums[j] > idx
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      false
+      // impl-end
+  }
+
+vc-postamble: |-
+  }
+
+  fn main() {
+      // /* Apps difficulty: interview */
+      // /* Assurance level: unguarded */
+
+      // /* Example evaluations */
+      // /* can_jump([2, 3, 1, 1, 4]) should return true */
+      // /* can_jump([3, 2, 1, 0, 4]) should return false */
+      // /* can_jump([0]) should return true */
+  }

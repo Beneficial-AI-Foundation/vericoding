@@ -1,0 +1,49 @@
+vc-description: |-
+  Humpy, the little elephant, has his birthday coming up. He invited all his cousins but doesn't know how many of them are really coming as some of them are having exams coming up. He will only get to know how many of them are coming on the day of his birthday.
+
+  He ordered sugarcane for his party, of length L.
+
+  Humpy's mom decided that she will be dividing the sugarcane among Humty and his friends in a way such that they get the sugarcane in ratio of their ages.
+
+  Your task is to determine whether it is possible to serve sugarcane to everyone as integral multiples of their ages.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  spec fn sum_ages(ages: Seq<nat>) -> nat
+      decreases ages.len()
+  {
+      if ages.len() == 0 {
+          0
+      } else {
+          ages[0] + sum_ages(ages.skip(1))
+      }
+  }
+
+  fn can_serve_sugarcane(k: nat, l: nat, e: nat, ages: Vec<nat>) -> (result: bool)
+      ensures result == true ==> l % (e + sum_ages(ages@)) == 0
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      false
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+
+  fn main() {
+      // let result1 = can_serve_sugarcane(4, 10, 2, vec![2, 2, 3, 1]);
+      // println!("Test 1: {}", result1); // Should be true
+      
+      // let result2 = can_serve_sugarcane(4, 12, 3, vec![6, 5, 7, 3]);
+      // println!("Test 2: {}", result2); // Should be false
+  }

@@ -1,0 +1,44 @@
+vc-description: |-
+  Chef loves to play chess, so he bought a new chessboard with width M and height N recently.
+  Chef considers a chessboard correct if its width (number of columns) is equal to its height (number of rows) and each cell has no side-adjacent cell of the same color (this is the so-called "chess order" which you can see in real-world chessboards). Chef's chessboard does not have to be a correct chessboard (in particular, it may have N≠M).
+  A sub-board of Chef's chessboard is a rectangular piece of this board with an arbitrarily chosen top left and bottom right cell (possibly equal to the original chessboard). Every sub-board is also a chessboard.
+  Chef can invert some cells; inverting a cell means changing its color from white to black or from black to white. After inverting those cells, he wants to cut the maximum correct sub-board out of the original chessboard.
+  Chef has not yet decided how many cells he would like to invert. Now he wonders about the answers to Q question. In the i-th question (1≤i≤Q), he is allowed to invert at most ci cells (possibly zero); he would like to know the side length of the largest possible correct sub-board of his chessboard. Help Chef answer these questions.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  spec fn min_usize(a: usize, b: usize) -> usize {
+      if a <= b { a } else { b }
+  }
+
+  fn max_chess_subboard(n: usize, m: usize, board: Vec<Vec<u8>>, queries: Vec<usize>) -> (result: Vec<usize>)
+      requires
+          n > 0,
+          m > 0,
+          board.len() == n,
+          forall|i: int| 0 <= i < board.len() ==> board[i].len() == m,
+          queries.len() > 0,
+          forall|i: int, j: int| 0 <= i < board.len() && 0 <= j < board[i].len() ==> (board[i][j] == 0 || board[i][j] == 1),
+      ensures
+          result.len() == queries.len(),
+          forall|i: int| 0 <= i < result.len() ==> 1 <= result[i] && result[i] <= min_usize(n, m),
+          forall|i: int, j: int| 0 <= i < j < result.len() && queries[i] <= queries[j] ==> result[i] <= result[j],
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      unreached()
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {}

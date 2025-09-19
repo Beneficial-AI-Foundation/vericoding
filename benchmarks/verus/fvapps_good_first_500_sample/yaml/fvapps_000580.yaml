@@ -1,0 +1,36 @@
+vc-description: |-
+  Chef Ada is building a new restaurant in the following way:
+  - First, N points X_1, X_2, ..., X_N are chosen on the x-axis.
+  - Then, N columns (numbered 1 through N) are made. For simplicity, the columns are represented as vertical segments; for each valid i, the height of the i-th segment is H_i.
+  - Ada assigns a column to each of the points X_1, X_2, ..., X_N in an arbitrary way (each column must be assigned to exactly one point).
+  - Finally, Ada constructs the roof of the restaurant, represented by a polyline with N vertices. Let's denote the column assigned to the i-th point by P_i. For each valid i, the i-th of these vertices is (X_i, H_{P_i}), i.e. the polyline joins the tops of the columns from left to right.
+  Ada wants the biggest restaurant. Help her choose the positions of the columns in such a way that the area below the roof is the biggest possible. Formally, she wants to maximise the area of the polygon whose perimeter is formed by the roof and the segments (X_N, H_{P_N}) - (X_N, 0) - (X_1, 0) - (X_1, H_{P_1}). Let S be this maximum area; you should compute 2 * S (it is guaranteed that 2 * S is an integer).
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn calculate_restaurant_area(points: Vec<(i32, i32)>) -> (result: i32)
+      ensures result >= 0
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      0
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+
+  fn main() {
+      // let test_points = vec![(1, 1), (2, 2), (3, 3), (4, 4), (5, 5)];
+      // let result = calculate_restaurant_area(test_points);
+      // println!("{}", result);
+  }

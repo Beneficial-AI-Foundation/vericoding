@@ -1,0 +1,63 @@
+vc-description: |-
+  If you didn't copy assignments during your engineering course, did you even do engineering?
+  There are Q students in Chef's class. Chef's teacher has given the students a simple assignment:
+  Write a function that takes as arguments an array A containing only unique elements and a number X guaranteed to be present in the array and returns the (1-based) index of the element that is equal to X.
+  The teacher was expecting a linear search algorithm, but since Chef is such an amazing programmer, he decided to write the following binary search function:
+  integer binary_search(array a, integer n, integer x):
+  integer low, high, mid
+  low := 1
+  high := n
+  while low ≤ high:
+  mid := (low + high) / 2
+  if a[mid] == x:
+  break
+  else if a[mid] is less than x:
+  low := mid+1
+  else:
+  high := mid-1
+  return mid
+  
+  All of Chef's classmates have copied his code and submitted it to the teacher.
+  Chef later realised that since he forgot to sort the array, the binary search algorithm may not work. Luckily, the teacher is tired today, so she asked Chef to assist her with grading the codes. Each student's code is graded by providing an array A and an integer X to it and checking if the returned index is correct. However, the teacher is lazy and provides the exact same array to all codes. The only thing that varies is the value of X.
+  Chef was asked to type in the inputs. He decides that when typing in the input array for each code, he's not going to use the input array he's given, but an array created by swapping some pairs of elements of this original input array. However, he cannot change the position of the element that's equal to X itself, since that would be suspicious.
+  For each of the Q students, Chef would like to know the minimum number of swaps required to make the algorithm find the correct answer.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  spec fn contains_value(arr: Seq<i32>, val: i32) -> bool {
+      exists|i: int| 0 <= i < arr.len() && arr[i] == val
+  }
+
+  spec fn all_distinct(arr: Seq<i32>) -> bool {
+      forall|i: int, j: int| 0 <= i < arr.len() && 0 <= j < arr.len() && i != j ==> arr[i] != arr[j]
+  }
+
+  fn find_min_swaps(arr: Vec<i32>, queries: Vec<i32>) -> (result: Vec<i32>)
+      requires 
+          arr.len() > 0,
+          queries.len() > 0,
+          all_distinct(arr@),
+          forall|q: int| 0 <= q < queries.len() ==> contains_value(arr@, queries[q]),
+      ensures
+          result.len() == queries.len(),
+          forall|i: int| 0 <= i < result.len() ==> (result[i] == -1 || result[i] >= 0),
+          forall|i: int| 0 <= i < result.len() && arr.len() <= 10 ==> (result[i] == -1 || result[i] < arr.len()),
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      unreached()
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {}

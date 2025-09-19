@@ -1,0 +1,67 @@
+vc-description: |-
+  DevuLand is a very strange place. There are n villages in it. Some of the villages are occupied by dinosaurs while the remaining ones by villagers.
+  You are given the information of DevuLand 
+  by an array D of size n. If D[i] is non-negative, it means that there are D[i] villagers in that village. 
+  Otherwise, it means that are -D[i] 
+  dinosaurs in that village.
+
+  It is also guaranteed that total number of villagers in DevuLand is equal to total number of dinosaurs.
+
+  Once dinosaurs got very hungry and started eating villagers. Frightened villagers gathered immediately and met their Sarpanch Deviji. Deviji, being a very daring and negotiable person, met to the head
+  of dinosaurs. Soon both parties called a truce. It was decided that the villagers will provide laddus to 
+  the dinosaurs. So everyday, each villager will take exactly one laddu to one of the dinosaurs in such a way that no dinosaur remains hungry (note that this is possible because number of villagers is the same as the number of dinosaurs).
+
+  Actually, carrying laddus is a quite a tough job. Villagers have to use a bullock cart for that. It takes one unit of grass a bullock to 
+  carry a cart with 1 laddu for 1 kilometre. Laddus used to be very heavy in DevuLand, so a bullock cart can not carry more than one laddu.
+
+  It is also given distance between village indexed i and j is |j - i| (the absolute value) kilometres.
+
+  Now villagers sat down and found a strategy to feed laddus to dinosaurs so that they need to buy the least amount of grass from the nearby market. 
+  They are not very good in 
+  calculations, please find out what is the minimum number of units of grass they need to buy.
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+vc-helpers: |-
+
+vc-spec: |-
+  spec fn list_sum(l: Seq<i32>) -> int
+      decreases l.len()
+  {
+      if l.len() == 0 {
+          0
+      } else {
+          l[0] + list_sum(l.skip(1))
+      }
+  }
+
+  fn min_grass_needed(arr: Vec<i32>) -> (result: nat)
+      requires 
+          arr.len() > 0,
+          list_sum(arr@) == 0,
+      ensures result >= 0
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      unreached()
+      // impl-end
+  }
+vc-postamble: |-
+
+  }
+  fn main() {
+      // /* Test cases to verify the implementation
+      // let test1 = vec![5, -5];
+      // let result1 = min_grass_needed(test1);
+      // assert(result1 == 5);
+      // 
+      // let test2 = vec![-5, 5];  
+      // let result2 = min_grass_needed(test2);
+      // assert(result2 == 5);
+      // 
+      // let test3 = vec![1, 2, -3];
+      // let result3 = min_grass_needed(test3);
+      // assert(result3 == 4); */
+  }

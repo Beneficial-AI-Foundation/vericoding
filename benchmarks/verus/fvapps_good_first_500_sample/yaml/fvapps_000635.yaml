@@ -1,0 +1,66 @@
+vc-description: |-
+  Three numbers A, B and C are the inputs. Write a program to find second largest among them.
+
+  -----Input-----
+
+  The first line contains an integer T, the total number of testcases. Then T lines follow, each line contains three integers A, B and C. 
+
+  -----Output-----
+  For each test case, display the second largest among A, B and C, in a new line.
+
+  -----Constraints-----
+  - 1 ≤ T ≤ 1000
+  - 1 ≤ A,B,C ≤ 1000000
+
+  -----Example-----
+  Input
+  3 
+  120 11 400
+  10213 312 10
+  10 3 450
+
+  Output
+
+  120
+  312
+  10
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn find_second_largest(l: Vec<i32>) -> (result: i32)
+      requires l.len() >= 3,
+      ensures
+          exists|x: i32| l@.contains(x) && x > result,
+          exists|x: i32| l@.contains(x) && x < result,
+          l@.contains(result)
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      unreached()
+      // impl-end
+  }
+
+vc-postamble: |-
+  /* Apps difficulty: interview */
+  /* Assurance level: guarded */
+
+  // #guard_msgs in
+  // #eval find_second_largest [120, 11, 400]
+
+  // #guard_msgs in
+  // #eval find_second_largest [10213, 312, 10]
+
+  // #guard_msgs in
+  // #eval find_second_largest [10, 3, 450]
+
+  }
+
+  fn main() {}

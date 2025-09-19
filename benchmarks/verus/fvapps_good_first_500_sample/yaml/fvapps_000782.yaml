@@ -1,0 +1,83 @@
+vc-description: |-
+  Chef likes to solve difficult tasks. This time, he tried to solve the Big Famous Unsolvable A+B=C. One of his friends played a prank on Chef and randomly shuffled the bits in A and B (independently in each number). However, the funny thing is that the sum of the resulting numbers remained C even after shuffling.
+  Chef is now wondering: in how many ways is it possible to shuffle the bits of A and the bits of B such that their sum after shuffling is equal to C? Let's denote the integers obtained by shuffling the bits of A and B by A_s and B_s respectively; two ways (A_s1, B_s1) and (A_s2, B_s2) are considered distinct if A_s1 ≠ A_s2 or B_s1 ≠ B_s2.
+  It is allowed to add any number (possibly zero) of leading zeroes, i.e. bits 0, to A and any number of leading zeroes to B before shuffling the bits.
+
+  Input:
+  - The first line of the input contains a single integer T denoting the number of test cases. The description of T test cases follows.
+  - The first and only line of each test case contains three space-separated integers A, B and C.
+
+  Output:
+  For each test case, print a single line containing one integer — the number of ways to shuffle the bits.
+
+  Constraints:
+  - 1 ≤ T ≤ 1,000
+  - 1 ≤ A, B, C ≤ 10^9
+  - A+B = C
+
+  Subtasks:
+  Subtask #1 (50 points): 1 ≤ A, B, C ≤ 10^5
+  Subtask #2 (50 points): original constraints
+
+  Example Input:
+  2
+  1 2 3
+  369 428 797
+
+  Example Output:
+  2
+  56
+
+  Explanation:
+  Example case 1: We can consider A=01 and B=10 in binary. Then, there are two possible ways: swapping the two bits of A and the two bits of B (A_s=10, B_s=01 in binary, 2 and 1 in decimal representation) or not shuffling any bits.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  spec fn count_set_bits(n: nat) -> nat
+      decreases n
+  {
+      if n == 0 {
+          0nat
+      } else {
+          ((n % 2) as nat) + count_set_bits(n / 2)
+      }
+  }
+
+  spec fn count_binary_ones(n: nat) -> nat {
+      count_set_bits(n)
+  }
+
+  fn ways_to_shuffle(a: u32, b: u32, c: u32) -> (result: u32)
+      requires 
+          a + b == c,
+          a >= 1 && b >= 1 && c >= 1,
+          a <= 1000000000 && b <= 1000000000 && c <= 1000000000,
+      ensures
+          result >= 0,
+          count_set_bits(a as nat) == count_binary_ones(a as nat),
+          count_set_bits(b as nat) == count_binary_ones(b as nat),
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      0
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+
+  fn main() {
+      // let result1 = ways_to_shuffle(1, 2, 3);
+      // println!("{}", result1);
+      // let result2 = ways_to_shuffle(369, 428, 797);
+      // println!("{}", result2);
+  }

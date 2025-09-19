@@ -1,0 +1,37 @@
+vc-description: |-
+  Mr. X has come up with a new string compression algorithm. Consider a string of length N which contains up to K distinct characters. The compression algorithm works as follows: Replace each maximal contiguous substring containing only one distinct character (repeated an arbitrary number of times) and replace it by 2 values: the character and the length of the substring.
+  For example, the string "aabbaaa" will be compressed to "a, 2, b, 2, a, 3". Thus the length of the compressed string is 6.
+  
+  Since Mr. X is living in advanced times, the length of any integer is considered to be 1. For example, if a string is compressed to "a, 111, b, 13", then its length after compression is considered to be 4.
+  
+  To test his algorithm, he needs to know the expected length of the compressed string for given N and K if the input string is randomly uniformly chosen from all possibilities. He wants to run this experiment multiple times for different N, K and needs your help.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn calculate_compression_length(n: u32, k: u32) -> (result: u32)
+      requires 
+          n > 0,
+          k > 0,
+      ensures 
+          result > 0,
+          result <= 2 * n,
+          n == 1 ==> result == 2,
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      unreached()
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {}

@@ -1,0 +1,49 @@
+vc-description: |-
+  There is a tree with N vertices numbered 1 to N.
+  The i-th edge in this tree connects Vertex a_i and Vertex b_i, and the color and length of that edge are c_i and d_i, respectively.
+  Here the color of each edge is represented by an integer between 1 and N-1 (inclusive). The same integer corresponds to the same color, and different integers correspond to different colors.
+  Answer the following Q queries:
+   - Query j (1 \leq j \leq Q): assuming that the length of every edge whose color is x_j is changed to y_j, find the distance between Vertex u_j and Vertex v_j. (The changes of the lengths of edges do not affect the subsequent queries.)
+  
+  -----Constraints-----
+   - 2 \leq N \leq 10^5
+   - 1 \leq Q \leq 10^5
+   - 1 \leq a_i, b_i \leq N
+   - 1 \leq c_i \leq N-1
+   - 1 \leq d_i \leq 10^4
+   - 1 \leq x_j \leq N-1
+   - 1 \leq y_j \leq 10^4
+   - 1 \leq u_j < v_j \leq N
+   - The given graph is a tree.
+   - All values in input are integers.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn solve_tree_distance_queries(n: usize, root: usize, edges: Vec<(usize, usize, usize, usize)>, queries: Vec<(usize, usize, usize, usize)>) -> (result: Vec<usize>)
+      requires 
+          n >= 2,
+          root >= 1 && root <= n,
+          edges.len() == n - 1,
+          queries.len() > 0,
+      ensures 
+          result.len() == queries.len()
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      Vec::new()
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+
+  fn main() {}

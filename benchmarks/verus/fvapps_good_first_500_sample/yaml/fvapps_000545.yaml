@@ -1,0 +1,53 @@
+vc-description: |-
+  Chef is the judge of a competition. There are two players participating in this competition — Alice and Bob.
+  The competition consists of N races. For each i (1 ≤ i ≤ N), Alice finished the i-th race in Ai minutes, while Bob finished it in Bi minutes. The player with the smallest sum of finish times wins. If this total time is the same for Alice and for Bob, a draw is declared.
+  The rules of the competition allow each player to choose a race which will not be counted towards their total time. That is, Alice may choose an index x and her finish time in the race with this index will be considered zero; similarly, Bob may choose an index y and his finish time in the race with this index will be considered zero. Note that x can be different from y; the index chosen by Alice does not affect Bob's total time or vice versa.
+  Chef, as the judge, needs to announce the result of the competition. He knows that both Alice and Bob play optimally and will always choose the best option. Please help Chef determine the result!
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  spec fn seq_sum(lst: Seq<nat>) -> nat 
+      decreases lst.len()
+  {
+      if lst.len() == 0 {
+          0
+      } else {
+          lst[0] + seq_sum(lst.skip(1))
+      }
+  }
+
+  fn determine_winner(n: usize, alice: Vec<usize>, bob: Vec<usize>) -> (result: String)
+      requires 
+          n >= 2,
+          alice.len() == n,
+          bob.len() == n,
+      ensures 
+          result.view() == "Alice".view() || result.view() == "Bob".view() || result.view() == "Draw".view()
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      unreached()
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {
+      // let result1 = determine_winner(5, vec![3, 1, 3, 3, 4], vec![1, 6, 2, 5, 3]);
+      // println!("{}", result1); // Should print "Alice"
+      
+      // let result2 = determine_winner(5, vec![1, 6, 2, 5, 3], vec![3, 1, 3, 3, 4]);
+      // println!("{}", result2); // Should print "Bob"
+      
+      // let result3 = determine_winner(3, vec![4, 1, 3], vec![2, 2, 7]);
+      // println!("{}", result3); // Should print "Draw"
+  }

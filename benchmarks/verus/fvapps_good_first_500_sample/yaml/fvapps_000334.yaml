@@ -1,0 +1,56 @@
+vc-description: |-
+  Given a positive integer n, find the least number of perfect square numbers (for example, 1, 4, 9, 16, ...) which sum to n.
+
+  Example 1:
+
+  Input: n = 12
+  Output: 3 
+  Explanation: 12 = 4 + 4 + 4.
+
+  Example 2:
+
+  Input: n = 13
+  Output: 2
+  Explanation: 13 = 4 + 9.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn sqrt(n: u32) -> (result: u32)
+      ensures result * result <= n && (result + 1) * (result + 1) > n
+  {
+      // impl-start
+      assume(false);
+      0
+      // impl-end
+  }
+
+  fn num_squares(n: u32) -> (result: u32)
+      requires n >= 1,
+      ensures 
+          result >= 1 && result <= 4
+  {
+      // impl-start
+      assume(false);
+      1
+      // impl-end
+  }
+
+vc-code: |-
+
+vc-postamble: |-
+
+  }
+  fn main() {
+      // Apps difficulty: interview
+      // Assurance level: guarded_and_plausible
+      
+      // println!("{}", num_squares(12)); // Expected: 3
+      // println!("{}", num_squares(13)); // Expected: 2
+      // println!("{}", num_squares(7));  // Expected: 4
+  }

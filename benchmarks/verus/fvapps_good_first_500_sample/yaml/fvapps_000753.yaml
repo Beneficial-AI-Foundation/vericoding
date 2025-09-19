@@ -1,0 +1,48 @@
+vc-description: |-
+  You are given a binary string S of N bits. The bits in the string are indexed starting from 1. S[i] denotes the ith bit of S.
+
+  Let's say that a sequence i1, i2, …, iK(1 ≤ K; 1 ≤ i1 < i2 < … < iK ≤ N) produces a palindrome when applied to S, if the string S[i1] S[i2] … S[ik] is a palindrome (that is, reads the same backward or forward).
+
+  In addition, a sequence i1, i2, …, iK(1 ≤ K; 1 ≤ i1 < i2 < … < iK ≤ N) is said to be exponential, if ij + 1 = p * ij for each integer 1 ≤ j < K and for some integer p > 1. Note, that a sequence of one element is always exponential.
+
+  Your task is to count the number of exponential sequences that produce a palindrome when applied to S.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn count_exponential_palindromes(s: Vec<char>) -> (result: usize)
+      ensures 
+          s.len() > 0 ==> result >= 1,
+          s.len() > 0 ==> result >= s.len(),
+          s.len() == 0 ==> result == 0,
+          s.len() == 1 ==> result == 1
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      unreached()
+      // impl-end
+  }
+
+vc-postamble: |-
+  }
+
+  fn main() {
+      // let s1 = vec!['1', '1', '0', '1', '0'];
+      // let result1 = count_exponential_palindromes(s1);
+      // println!("{}", result1); // Expected: 9
+      
+      // let s2 = vec!['1', '0', '1', '0', '0', '1', '0', '1', '1'];
+      // let result2 = count_exponential_palindromes(s2);
+      // println!("{}", result2); // Expected: 18
+      
+      // let s3 = vec!['1', '1', '0'];
+      // let result3 = count_exponential_palindromes(s3);
+      // println!("{}", result3); // Expected: 4
+  }

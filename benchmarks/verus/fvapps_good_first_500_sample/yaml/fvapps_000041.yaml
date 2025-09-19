@@ -1,0 +1,59 @@
+vc-description: |-
+  You are fed up with your messy room, so you decided to clean it up.
+
+  Your room is a bracket sequence s=s₁s₂...sₙ of length n. Each character of this string is either an opening bracket '(' or a closing bracket ')'.
+
+  In one operation you can choose any consecutive substring of s and reverse it. In other words, you can choose any substring s[l...r]=sₗ, sₗ₊₁, ..., sᵣ and change the order of elements in it into sᵣ, sᵣ₋₁, ..., sₗ.
+
+  For example, if you will decide to reverse substring s[2...4] of string s="((()))" it will be equal to s="()(())".
+
+  A regular (aka balanced) bracket sequence is a bracket sequence that can be transformed into a correct arithmetic expression by inserting characters '1' and '+' between the original characters of the sequence. For example, bracket sequences "()()", "(())" are regular (the resulting expressions are: "(1)+(1)", "((1+1)+1)"), and ")(" and "(" are not.
+
+  A prefix of a string s is a substring that starts at position 1. For example, for s="(())()" there are 6 prefixes: "(", "((", "(()", "(())", "(())(" and "(())()".
+
+  In your opinion, a neat and clean room s is a bracket sequence that:
+    the whole string s is a regular bracket sequence; and there are exactly k prefixes of this sequence which are regular (including whole s itself).
+
+  For example, if k = 2, then "(())()" is a neat and clean room.
+
+  You want to use at most n operations to make your room neat and clean. Operations are applied one after another sequentially.
+
+  It is guaranteed that the answer exists. Note that you do not need to minimize the number of operations: find any way to achieve the desired configuration in n or less operations.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn solve_bracket_sequence(n: usize, k: usize, s: Vec<char>) -> (result: Vec<Vec<usize>>)
+      requires 
+          n >= 2,
+          n % 2 == 0,
+          k >= 1,
+          k <= n / 2,
+          s.len() == n,
+          forall|i: int| 0 <= i < s.len() ==> (s[i] == '(' || s[i] == ')'),
+      ensures
+          result.len() <= n,
+          forall|i: int| 0 <= i < result.len() ==> (
+              result[i].len() == 2 &&
+              result[i][0] >= 1 &&
+              result[i][1] <= n &&
+              result[i][0] <= result[i][1]
+          ),
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      unreached()
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {}

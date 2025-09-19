@@ -1,0 +1,70 @@
+vc-description: |-
+  Given a string, find the length of the longest substring without repeating characters.
+
+  Examples:
+
+  Given "abcabcbb", the answer is "abc", which the length is 3.
+
+  Given "bbbbb", the answer is "b", with the length of 1.
+
+  Given "pwwkew", the answer is "wke", with the length of 3. Note that the answer must be a substring, "pwke" is a subsequence and not a substring.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  spec fn has_duplicate_chars(s: Seq<char>, start: int, end: int) -> bool {
+      exists|i: int, j: int| start <= i < j < end && s[i] == s[j]
+  }
+
+  spec fn is_valid_substring_range(s: Seq<char>, start: int, end: int) -> bool {
+      0 <= start <= end <= s.len()
+  }
+
+  spec fn substring_length(start: int, end: int) -> int {
+      end - start
+  }
+
+  fn length_of_longest_substring(s: &Vec<char>) -> (result: usize)
+      ensures 
+          0 <= result <= s.len(),
+          exists|start: int, end: int| 
+              is_valid_substring_range(s@, start, end) &&
+              substring_length(start, end) == result &&
+              !has_duplicate_chars(s@, start, end) &&
+              (forall|s2: int, e2: int| 
+                  is_valid_substring_range(s@, s2, e2) && !has_duplicate_chars(s@, s2, e2) 
+                  ==> substring_length(s2, e2) <= result),
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      unreached()
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  #[verifier::external_body]
+  proof fn test_empty_string() {
+      assume(false);
+  }
+
+  #[verifier::external_body]  
+  proof fn test_single_char() {
+      assume(false);
+  }
+
+  #[verifier::external_body]
+  proof fn test_all_unique() {
+      assume(false);
+  }
+
+  }
+
+  fn main() {}

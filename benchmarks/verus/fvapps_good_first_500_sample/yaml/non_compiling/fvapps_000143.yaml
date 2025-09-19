@@ -1,0 +1,91 @@
+vc-description: |-
+  You have 4 cards each containing a number from 1 to 9.  You need to judge whether they could operated through *, /, +, -, (, ) to get the value of 24.
+
+  Example 1:
+
+  Input: [4, 1, 8, 7]
+  Output: True
+  Explanation: (8-4) * (7-1) = 24
+
+  Example 2:
+
+  Input: [1, 2, 1, 2]
+  Output: False
+
+  Note:
+
+  The division operator / represents real division, not integer division.  For example, 4 / (1 - 2/3) = 12.
+  Every operation done is between two numbers.  In particular, we cannot use - as a unary operator.  For example, with [1, 1, 1, 1] as input, the expression -1 - 1 - 1 - 1 is not allowed.
+  You cannot concatenate numbers together.  For example, if the input is [1, 2, 1, 2], we cannot write this as 12 + 12.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  spec fn judge_point24_spec(nums: Seq<u32>) -> bool {
+      true
+  }
+
+  fn judge_point24(nums: Vec<u32>) -> (result: bool)
+      requires 
+          nums.len() == 4,
+          forall|i: int| 0 <= i < nums.len() ==> 1 <= nums[i] <= 9,
+      ensures 
+          result == judge_point24_spec(nums@),
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      false
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  proof fn judge_point24_permutation_invariant_proof(nums1: Vec<u32>, nums2: Vec<u32>)
+      requires 
+          nums1.len() == 4,
+          nums2.len() == 4,
+          forall|i: int| 0 <= i < nums1.len() ==> 1 <= nums1[i] <= 9,
+          forall|i: int| 0 <= i < nums2.len() ==> 1 <= nums2[i] <= 9,
+          nums1@.to_multiset() == nums2@.to_multiset(),
+      ensures judge_point24_spec(nums1@) == judge_point24_spec(nums2@)
+  {
+      assume(false); // TODO: Remove this line and implement the proof
+  }
+
+  proof fn judge_point24_all_ones_impossible_proof(nums: Vec<u32>)
+      requires 
+          nums.len() == 4,
+          forall|i: int| 0 <= i < nums.len() ==> nums[i] <= 1,
+      ensures judge_point24_spec(nums@) == false
+  {
+      assume(false); // TODO: Remove this line and implement the proof
+  }
+
+  proof fn judge_point24_with_24_and_ones_proof(nums: Vec<u32>)
+      requires 
+          nums.len() == 4,
+          exists|i: int| 0 <= i < nums.len() && nums[i] == 24,
+          nums@.filter(|x| x == 1).len() == 3,
+      ensures judge_point24_spec(nums@) == true
+  {
+      assume(false); // TODO: Remove this line and implement the proof
+  }
+
+  }
+  fn main() {
+      // let result1 = judge_point24(vec![4, 1, 8, 7]);
+      // println!("Result for [4, 1, 8, 7]: {}", result1);
+      
+      // let result2 = judge_point24(vec![1, 2, 1, 2]);
+      // println!("Result for [1, 2, 1, 2]: {}", result2);
+      
+      // let result3 = judge_point24(vec![3, 3, 8, 8]);
+      // println!("Result for [3, 3, 8, 8]: {}", result3);
+  }
