@@ -8,7 +8,7 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn unique_product(arr: &Vec<i32>) -> (result: i32)
+fn unique_product(arr: &Vec<i8>) -> (result: i8)
     ensures
 
         true,

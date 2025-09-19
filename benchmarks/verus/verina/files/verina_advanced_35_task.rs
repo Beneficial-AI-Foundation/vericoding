@@ -24,13 +24,13 @@ spec fn count_occurrences(nums: Seq<i32>, x: i32) -> nat
 // </vc-helpers>
 
 // <vc-spec>
-fn majority_element(nums: Seq<i32>) -> (result: i32)
+fn majority_element(nums: Vec<i32>) -> (result: i32)
     requires 
         nums.len() > 0,
-        exists|x: i32| count_occurrences(nums, x) > nums.len() / 2,
+        exists|x: i32| count_occurrences(nums@, x) > nums.len() / 2,
     ensures 
-        count_occurrences(nums, result) > nums.len() / 2,
-        forall|x: i32| x != result ==> count_occurrences(nums, x) <= nums.len() / 2,
+        count_occurrences(nums@, result) > nums.len() / 2,
+        forall|x: i32| x != result ==> count_occurrences(nums@, x) <= nums.len() / 2,
 // </vc-spec>
 // <vc-code>
 {

@@ -8,12 +8,12 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn swap_first_and_last(a: &Vec<i32>) -> (result: Vec<i32>)
+fn swap_first_and_last(a: &Vec<i8>) -> (result: Vec<i8>)
     requires a.len() > 0,
     ensures
         result.len() == a.len(),
-        result[0] == a[a.len() - 1],
-        result[result.len() - 1] == a[0],
+        result[0int] == a[(a.len() - 1) as int],
+        result[(result.len() - 1) as int] == a[0int],
         forall|i: int| 1 <= i < result.len() - 1 ==> result[i] == a[i],
 // </vc-spec>
 // <vc-code>

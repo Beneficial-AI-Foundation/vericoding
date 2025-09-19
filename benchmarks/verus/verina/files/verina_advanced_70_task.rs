@@ -8,7 +8,7 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn semi_ordered_permutation(nums: &Vec<i32>) -> (result: i32)
+fn semi_ordered_permutation(nums: &Vec<i8>) -> (result: i8)
     ensures 
         result >= 0
 // </vc-spec>

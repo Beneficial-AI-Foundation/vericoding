@@ -21,11 +21,11 @@ vc-preamble: |-
 vc-helpers: |-
 
 vc-spec: |-
-  fn below_zero(operations: &Vec<i32>) -> (result: (Vec<i32>, bool))
+  fn below_zero(operations: &Vec<i8>) -> (result: (Vec<i8>, bool))
       ensures
           result.0.len() == operations.len() + 1,
           result.0[0] == 0,
-          forall|i: int| 0 <= i < operations.len() ==> result.0[i + 1] == result.0[i] + operations[i],
+          forall|i: int| 0 <= i < operations.len() ==> result.0[i + 1] as int == result.0[i] as int + operations[i] as int,
           result.1 == (exists|i: int| 1 <= i < result.0.len() && result.0[i] < 0),
 
 vc-code: |-
@@ -37,4 +37,3 @@ vc-code: |-
 vc-postamble: |-
   }
   fn main() {}
-

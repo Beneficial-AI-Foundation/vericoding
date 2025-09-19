@@ -8,10 +8,10 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn cube_elements(a: &Vec<i32>) -> (result: Vec<i32>)
+fn cube_elements(a: &Vec<i8>) -> (result: Vec<i8>)
     ensures
         result.len() == a.len(),
-        forall|i: int| 0 <= i < a.len() ==> result[i] == a[i] * a[i] * a[i],
+        forall|i: int| 0 <= i < a.len() ==> result[i] as int == a[i] as int * a[i] as int * a[i] as int,
 // </vc-spec>
 // <vc-code>
 {

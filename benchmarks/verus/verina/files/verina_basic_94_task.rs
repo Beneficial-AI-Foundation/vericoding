@@ -8,7 +8,7 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn iter_copy(s: &Vec<i32>) -> (result: Vec<i32>)
+fn iter_copy(s: &Vec<i8>) -> (result: Vec<i8>)
     ensures
         s.len() == result.len(),
         forall|i: int| 0 <= i < s.len() ==> s[i] == result[i],

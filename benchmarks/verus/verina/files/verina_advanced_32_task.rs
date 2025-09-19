@@ -8,9 +8,9 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn longest_increasing_subsequence(numbers: Vec<i32>) -> (result: usize)
+fn longest_increasing_subsequence(numbers: Vec<i8>) -> (result: usize)
     ensures
-        result <= numbers.len(),
+        result <= numbers@.len(),
 // </vc-spec>
 // <vc-code>
 {

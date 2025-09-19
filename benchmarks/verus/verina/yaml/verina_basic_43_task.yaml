@@ -21,9 +21,9 @@ vc-preamble: |-
 vc-helpers: |-
 
 vc-spec: |-
-  fn sum_of_fourth_power_of_odd_numbers(n: nat) -> (result: nat)
+  fn sum_of_fourth_power_of_odd_numbers(n: u8) -> (result: u8)
       ensures
-          15 * result == n * (2 * n + 1) * (7 + 24 * (n * n * n) - 12 * (n * n) - 14 * n)
+          15 * (result as nat) == (n as nat) * (2 * (n as nat) + 1) * (7 + 24 * ((n as nat) * (n as nat) * (n as nat)) - 12 * ((n as nat) * (n as nat)) - 14 * (n as nat))
 
 vc-code: |-
   {
@@ -34,4 +34,3 @@ vc-code: |-
 vc-postamble: |-
   }
   fn main() {}
-

@@ -27,11 +27,11 @@ fn longest_increasing_subseq_length(xs: &Vec<i32>) -> (result: usize)
         exists|subseq: Seq<i32>| 
             is_subsequence_of(subseq, xs@) && 
             is_strictly_increasing(subseq) && 
-            subseq.len() == result,
+            subseq.len() == result as int,
 
         forall|subseq: Seq<i32>| 
             (is_subsequence_of(subseq, xs@) && is_strictly_increasing(subseq)) 
-            ==> subseq.len() <= result,
+            ==> subseq.len() <= result as int,
 // </vc-spec>
 // <vc-code>
 {

@@ -8,7 +8,7 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn max_of_list(lst: Vec<i32>) -> (result: i32)
+fn max_of_list(lst: Vec<u8>) -> (result: u8)
     requires lst.len() > 0,
     ensures
         exists|i: int| 0 <= i < lst.len() && lst[i] == result,

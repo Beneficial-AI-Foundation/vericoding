@@ -45,14 +45,14 @@ vc-preamble: |-
 vc-helpers: |-
 
 vc-spec: |-
-  fn find_product(lst: &Vec<i32>) -> (result: i32)
+  fn find_product(lst: &Vec<i8>) -> (result: i8)
       requires 
           lst.len() > 1,
-          exists|x: i32| lst@.contains(x) && is_even(x),
-          exists|x: i32| lst@.contains(x) && is_odd(x),
+          exists|x: i32| lst@.contains(x as i8) && is_even(x),
+          exists|x: i32| lst@.contains(x as i8) && is_odd(x),
       ensures
-          match first_even_odd_indices(lst@) {
-              Some((ei, oi)) => result == lst@[ei] * lst@[oi],
+          match first_even_odd_indices(lst@.map(|i, x| x as i32)) {
+              Some((ei, oi)) => result as i32 == lst@.map(|i, x| x as i32)[ei] * lst@.map(|i, x| x as i32)[oi],
               None => true,
           }
 
@@ -65,4 +65,3 @@ vc-code: |-
 vc-postamble: |-
   }
   fn main() {}
-

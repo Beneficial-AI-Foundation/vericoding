@@ -8,10 +8,10 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn insertion_sort(l: Vec<i32>) -> (result: Vec<i32>)
+fn insertion_sort(l: Vec<i8>) -> (result: Vec<i8>)
     ensures
 
-        forall|i: int, j: int| 0 <= i < j < result.len() ==> result[i] <= result[j],
+        forall|i: int, j: int| 0 <= i < j < result.len() ==> result[i] as int <= result[j] as int,
 
         result@.to_multiset() == l@.to_multiset(),
 // </vc-spec>

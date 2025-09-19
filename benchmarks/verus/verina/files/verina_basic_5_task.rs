@@ -8,8 +8,8 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn multiply(a: i32, b: i32) -> (result: i32)
-    ensures result == a * b,
+fn multiply(a: i8, b: i8) -> (result: i8)
+    ensures result as int == (a as int) * (b as int),
 // </vc-spec>
 // <vc-code>
 {

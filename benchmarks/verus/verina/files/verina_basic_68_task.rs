@@ -8,11 +8,11 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn linear_search(a: &Vec<i32>, e: i32) -> (result: usize)
+fn linear_search(a: &Vec<i8>, e: i8) -> (result: usize)
     ensures
         result <= a.len(),
         result == a.len() || a[result as int] == e,
-        forall|i: int| 0 <= i < result ==> a[i] != e,
+        forall|i: int| 0 <= i < result as int ==> a[i] != e,
 // </vc-spec>
 // <vc-code>
 {

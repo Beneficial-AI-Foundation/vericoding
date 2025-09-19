@@ -118,13 +118,13 @@ vc-preamble: |-
 vc-helpers: |-
 
 vc-spec: |-
-  fn merge_sorted(a1: &Vec<nat>, a2: &Vec<nat>) -> (result: Vec<nat>)
+  fn merge_sorted(a1: &Vec<u8>, a2: &Vec<u8>) -> (result: Vec<u8>)
       requires 
-          is_sorted(a1@),
-          is_sorted(a2@),
+          is_sorted(a1@.map(|i: int, x: u8| x as nat)),
+          is_sorted(a2@.map(|i: int, x: u8| x as nat)),
       ensures
-          is_sorted(result@),
-          result@.to_multiset() == a1@.to_multiset().add(a2@.to_multiset()),
+          is_sorted(result@.map(|i: int, x: u8| x as nat)),
+          result@.map(|i: int, x: u8| x as nat).to_multiset() == a1@.map(|i: int, x: u8| x as nat).to_multiset().add(a2@.map(|i: int, x: u8| x as nat).to_multiset()),
 
 vc-code: |-
   {
@@ -135,4 +135,3 @@ vc-code: |-
 vc-postamble: |-
   }
   fn main() {}
-

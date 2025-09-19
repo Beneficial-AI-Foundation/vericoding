@@ -93,7 +93,7 @@ vc-spec: |-
       requires nums.len() > 0,
       ensures
   
-          exists|i: int| 0 <= i < nums.len() && result >= nums[i],
+          exists|i: int| 0 <= i < nums@.len() && result >= nums@[i],
 
 vc-code: |-
   {
@@ -104,4 +104,3 @@ vc-code: |-
 vc-postamble: |-
   }
   fn main() {}
-

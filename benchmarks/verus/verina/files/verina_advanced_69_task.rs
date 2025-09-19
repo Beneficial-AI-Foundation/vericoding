@@ -8,7 +8,7 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn search_insert(xs: &Vec<i32>, target: i32) -> (result: usize)
+fn search_insert(xs: &Vec<i8>, target: i8) -> (result: usize)
     requires forall|i: int, j: int| 0 <= i < j < xs.len() ==> xs[i] < xs[j],
     ensures
         result <= xs.len(),

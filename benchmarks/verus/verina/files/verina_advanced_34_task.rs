@@ -8,10 +8,10 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn longest_increasing_subsequence(nums: &Vec<i32>) -> (result: i32)
+fn longest_increasing_subsequence(nums: &Vec<i8>) -> (result: i8)
     ensures
         result >= 0,
-        result <= nums.len() as i32,
+        result <= nums@.len() as i8,
 // </vc-spec>
 // <vc-code>
 {

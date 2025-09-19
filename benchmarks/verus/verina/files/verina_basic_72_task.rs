@@ -8,11 +8,11 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn append(a: &Vec<i32>, b: i32) -> (result: Vec<i32>)
+fn append(a: &Vec<i8>, b: i8) -> (result: Vec<i8>)
     ensures
         result.len() == a.len() + 1,
-        forall|i: int| 0 <= i < a.len() ==> result[i] == a[i],
-        result[a.len() as int] == b,
+        forall|i: int| 0 <= i < a.len() ==> result[i] as int == a[i] as int,
+        result[a.len() as int] as int == b as int,
 // </vc-spec>
 // <vc-code>
 {

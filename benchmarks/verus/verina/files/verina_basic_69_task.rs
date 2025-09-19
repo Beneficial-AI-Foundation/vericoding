@@ -8,12 +8,12 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn linear_search(a: &Vec<i32>, e: i32) -> (result: usize)
-    requires exists|i: int| 0 <= i < a.len() && a[i] == e,
+fn linear_search(a: &Vec<i8>, e: i8) -> (result: usize)
+    requires exists|i: int| 0 <= i < a@.len() && a@[i] == e as int,
     ensures
-        result < a.len(),
-        a[result as int] == e,
-        forall|k: int| 0 <= k < result ==> a[k] != e,
+        result < a@.len(),
+        a@[result as int] == e as int,
+        forall|k: int| 0 <= k < result ==> a@[k] != e as int,
 // </vc-spec>
 // <vc-code>
 {

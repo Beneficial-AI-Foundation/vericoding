@@ -8,7 +8,7 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn swap(arr: &Vec<i32>, i: usize, j: usize) -> (result: Vec<i32>)
+fn swap(arr: &Vec<i8>, i: usize, j: usize) -> (result: Vec<i8>)
     requires
         i < arr.len(),
         j < arr.len(),
@@ -16,7 +16,7 @@ fn swap(arr: &Vec<i32>, i: usize, j: usize) -> (result: Vec<i32>)
         result.len() == arr.len(),
         result[i as int] == arr[j as int],
         result[j as int] == arr[i as int],
-        forall|k: int| 0 <= k < arr.len() && k != i && k != j ==> result[k] == arr[k],
+        forall|k: int| 0 <= k < arr.len() && k != i as int && k != j as int ==> result[k] == arr[k],
 // </vc-spec>
 // <vc-code>
 {

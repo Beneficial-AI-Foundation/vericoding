@@ -17,9 +17,9 @@ fn find_even_numbers(arr: &Vec<i32>) -> (result: Vec<i32>)
         forall|x: i32| result@.contains(x) ==> is_even(x) && arr@.contains(x),
         forall|x: i32| arr@.contains(x) && is_even(x) ==> result@.contains(x),
         forall|i: int, j: int| 0 <= i < arr.len() && 0 <= j < arr.len() && i <= j && 
-            is_even(arr[i]) && is_even(arr[j]) ==> {
+            is_even(arr[i as int]) && is_even(arr[j as int]) ==> {
                 exists|ri: int, rj: int| 0 <= ri < result.len() && 0 <= rj < result.len() && 
-                    ri <= rj && result[ri] == arr[i] && result[rj] == arr[j]
+                    ri <= rj && result[ri] == arr[i as int] && result[rj] == arr[j as int]
             },
 // </vc-spec>
 // <vc-code>

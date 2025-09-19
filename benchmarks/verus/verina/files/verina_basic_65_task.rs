@@ -8,10 +8,10 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn square_root(n: usize) -> (result: usize)
+fn square_root(n: u8) -> (result: u8)
     ensures
-        result * result <= n,
-        n < (result + 1) * (result + 1),
+        (result as nat) * (result as nat) <= (n as nat),
+        (n as nat) < ((result + 1) as nat) * ((result + 1) as nat),
 // </vc-spec>
 // <vc-code>
 {

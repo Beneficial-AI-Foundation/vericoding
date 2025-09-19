@@ -8,10 +8,10 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn reverse(a: &Vec<i32>) -> (result: Vec<i32>)
+fn reverse(a: &Vec<i8>) -> (result: Vec<i8>)
     ensures
         result.len() == a.len(),
-        forall|i: int| 0 <= i < a.len() ==> result[i] == a[a.len() - 1 - i],
+        forall|i: int| 0 <= i < a@.len() ==> result@[i] == a@[a@.len() - 1 - i],
 // </vc-spec>
 // <vc-code>
 {

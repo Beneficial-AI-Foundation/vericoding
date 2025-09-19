@@ -12,9 +12,9 @@ spec fn nth_ugly_number_precond(n: nat) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn nth_ugly_number(n: u32) -> (result: u32)
-    requires n > 0,
-    ensures result > 0,
+fn nth_ugly_number(n: u8) -> (result: u8)
+    requires n as nat > 0,
+    ensures result as nat > 0,
 // </vc-spec>
 // <vc-code>
 {

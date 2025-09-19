@@ -8,10 +8,10 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn to_array(xs: &Seq<i32>) -> (result: Vec<i32>)
+fn to_array(xs: &Vec<i8>) -> (result: Vec<i8>)
     ensures
         result.len() == xs.len(),
-        forall|i: int| 0 <= i < xs.len() ==> result[i] == xs[i],
+        forall|i: int| 0 <= i < xs@.len() ==> result[i] == xs[i],
 // </vc-spec>
 // <vc-code>
 {

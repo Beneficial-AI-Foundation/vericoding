@@ -8,10 +8,10 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn triple(x: i32) -> (result: i32)
+fn triple(x: i8) -> (result: i8)
     ensures
-        result / 3 == x,
-        result / 3 * 3 == result,
+        result as int / 3 == x as int,
+        result as int / 3 * 3 == result as int,
 // </vc-spec>
 // <vc-code>
 {

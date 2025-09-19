@@ -8,7 +8,7 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn two_sum(nums: &Vec<i32>, target: i32) -> (result: Vec<usize>)
+fn two_sum(nums: &Vec<i8>, target: i8) -> (result: Vec<usize>)
     requires 
         nums.len() >= 2,
         exists|i: int, j: int| 0 <= j < i < nums.len() && nums[i] + nums[j] == target,

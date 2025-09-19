@@ -8,7 +8,7 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn online_max(a: &Vec<i32>, x: usize) -> (result: (i32, usize))
+fn online_max(a: &Vec<i8>, x: usize) -> (result: (i8, usize))
     requires
         a.len() > 0,
         x < a.len(),
@@ -16,10 +16,10 @@ fn online_max(a: &Vec<i32>, x: usize) -> (result: (i32, usize))
         ({
             let (m, p) = result;
             x <= p && p < a.len()
-            && (forall|i: int| 0 <= i < x ==> a[i] <= m)
-            && (exists|i: int| 0 <= i < x && a[i] == m)
-            && ((p < a.len() - 1) ==> (exists|i: int| x <= i <= p && a[i] > m))
-            && ((forall|i: int| x <= i < a.len() ==> a[i] <= m) ==> p == a.len() - 1)
+            && (forall|i: int| 0 <= i < x ==> a[i] as int <= m as int)
+            && (exists|i: int| 0 <= i < x && a[i] as int == m as int)
+            && ((p < a.len() - 1) ==> (exists|i: int| x <= i <= p && a[i] as int > m as int))
+            && ((forall|i: int| x <= i < a.len() ==> a[i] as int <= m as int) ==> p == a.len() - 1)
         })
 // </vc-spec>
 // <vc-code>
