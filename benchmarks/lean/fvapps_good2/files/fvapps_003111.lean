@@ -5,31 +5,23 @@
 -- </vc-helpers>
 
 -- <vc-definitions>
-def find_average [Add α] [Div α] [OfNat α 0] : List α → α
-  | [] => 0
-  | xs =>
-sorry
+def find_average [Add α] [Div α] [OfNat α 0] : List α → α :=
+  sorry
 
-def list_min : List Float → Float
-  | [] => 0
-  | (x::xs) =>
-sorry
+def list_min : List Float → Float :=
+  sorry
 
-def list_max : List Float → Float
-  | [] => 0
-  | (x::xs) =>
-sorry
+def list_max : List Float → Float :=
+  sorry
 
-def list_sum : List Float → Float
-  | [] => 0
-  | (x::xs) =>
-sorry
+def list_sum : List Float → Float :=
+  sorry
 
 def abs (x : Float) : Float :=
-sorry
+  sorry
 
 def toFloat (n : Nat) : Float :=
-sorry
+  sorry
 -- </vc-definitions>
 
 -- <vc-theorems>

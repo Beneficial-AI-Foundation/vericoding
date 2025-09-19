@@ -1,4 +1,61 @@
 vc-description: |-
+  /-
+  Let $a_1, \ldots, a_n$ be an array of $n$ positive integers. In one operation, you can choose an index $i$ such that $a_i = i$, and remove $a_i$ from the array (after the removal, the remaining parts are concatenated).
+  
+  The weight of $a$ is defined as the maximum number of elements you can remove.
+  
+  You must answer $q$ independent queries $(x, y)$: after replacing the $x$ first elements of $a$ and the $y$ last elements of $a$ by $n+1$ (making them impossible to remove), what would be the weight of $a$?
+  
+  -----Input-----
+  
+  The first line contains two integers $n$ and $q$ ($1 \le n, q \le 3 \cdot 10^5$)  — the length of the array and the number of queries.
+  
+  The second line contains $n$ integers $a_1$, $a_2$, ..., $a_n$ ($1 \leq a_i \leq n$) — elements of the array.
+  
+  The $i$-th of the next $q$ lines contains two integers $x$ and $y$ ($x, y \ge 0$ and $x+y < n$).
+  
+  -----Output-----
+  
+  Print $q$ lines, $i$-th line should contain a single integer  — the answer to the $i$-th query.
+  
+  -----Examples-----
+  Input
+  13 5
+  2 2 3 9 5 4 6 5 7 8 3 11 13
+  3 1
+  0 0
+  2 4
+  5 0
+  0 12
+  
+  Output
+  5
+  11
+  6
+  1
+  0
+  
+  Input
+  5 2
+  1 4 1 2 4
+  0 0
+  1 0
+  
+  Output
+  2
+  0
+  
+  -----Note-----
+  
+  Explanation of the first query:
+  
+  After making first $x = 3$ and last $y = 1$ elements impossible to remove, $a$ becomes $[\times, \times, \times, 9, 5, 4, 6, 5, 7, 8, 3, 11, \times]$ (we represent $14$ as $\times$ for clarity).
+  
+  Here is a strategy that removes $5$ elements (the element removed is colored in red):  $[\times, \times, \times, 9, \color{red}{5}, 4, 6, 5, 7, 8, 3, 11, \times]$  $[\times, \times, \times, 9, 4, 6, 5, 7, 8, 3, \color{red}{11}, \times]$  $[\times, \times, \times, 9, 4, \color{red}{6}, 5, 7, 8, 3, \times]$  $[\times, \times, \times, 9, 4, 5, 7, \color{red}{8}, 3, \times]$  $[\times, \times, \times, 9, 4, 5, \color{red}{7}, 3, \times]$  $[\times, \times, \times, 9, 4, 5, 3, \times]$ (final state) 
+  
+  It is impossible to remove more than $5$ elements, hence the weight is $5$.
+  -/
+  
   -- Apps difficulty: competition
   -- Assurance level: unguarded
 

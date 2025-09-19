@@ -1,6 +1,4 @@
 -- <vc-preamble>
-def coprime (x y : Nat) : Prop :=
-  gcd x y = 1
 -- </vc-preamble>
 
 -- <vc-helpers>
@@ -8,16 +6,19 @@ def coprime (x y : Nat) : Prop :=
 
 -- <vc-definitions>
 def gcd (x y : Nat) : Nat :=
-  sorry
+sorry
 
 def rat_at (n : Nat) : Nat × Nat :=
-  sorry
+sorry
 
 def index_of (a b : Nat) : Nat :=
-  sorry
+sorry
 -- </vc-definitions>
 
 -- <vc-theorems>
+def coprime (x y : Nat) : Prop :=
+  gcd x y = 1
+
 theorem rat_at_index_inverse (n : Nat) :
   let (a, b) := rat_at n
   index_of a b = n :=

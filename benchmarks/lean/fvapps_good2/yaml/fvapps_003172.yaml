@@ -1,4 +1,9 @@
 vc-description: |-
+  /-
+  Tranform of input array of zeros and ones to array in which counts number of continuous ones:
+  
+  [1, 1, 1, 0, 1] -> [3,1]
+  -/
 
 vc-preamble: |-
   def sum_list : List Int → Int

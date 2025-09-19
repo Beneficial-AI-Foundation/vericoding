@@ -1,6 +1,4 @@
 -- <vc-preamble>
-def is_hex_string (s : String) : Bool :=
-  s.all is_hex_digit
 -- </vc-preamble>
 
 -- <vc-helpers>
@@ -18,6 +16,9 @@ sorry
 -- </vc-definitions>
 
 -- <vc-theorems>
+def is_hex_string (s : String) : Bool :=
+  s.all is_hex_digit
+
 theorem hex_to_bin_roundtrip (h : String) :
   is_hex_string h →
   bin_to_hex (hex_to_bin h) =

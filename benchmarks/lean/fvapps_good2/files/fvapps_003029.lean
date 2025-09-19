@@ -8,13 +8,11 @@ def listSum : List Int → Int
 -- </vc-helpers>
 
 -- <vc-definitions>
-def sumNested : List (List Int) → Int
-  | _ =>
-sorry
+def sumNested : List (List Int) → Int :=
+  sorry
 
-def flatten : List (List Int) → List Int
-  | _ =>
-sorry
+def flatten : List (List Int) → List Int :=
+  sorry
 -- </vc-definitions>
 
 -- <vc-theorems>

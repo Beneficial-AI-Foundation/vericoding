@@ -5,12 +5,11 @@
 -- </vc-helpers>
 
 -- <vc-definitions>
-def seqR : String → Bool
-  | _ =>
-sorry
+def seqR : String → Bool :=
+  sorry
 
-def seqB : String → Bool
-  | _ => sorry
+def seqB : String → Bool :=
+  sorry
 
 def button_sequences (r : String) (b : String) : String :=
   sorry

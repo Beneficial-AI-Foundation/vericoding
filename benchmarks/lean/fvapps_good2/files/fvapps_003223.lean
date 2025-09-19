@@ -5,13 +5,11 @@
 -- </vc-helpers>
 
 -- <vc-definitions>
-def flatten {α : Type} : List (List α) → List α
-  | [] =>
-sorry
+def flatten {α : Type} : List (List α) → List α :=
+  sorry
 
-def isNestedList {α : Type} : List (List α) → Bool
-  | [] =>
-sorry
+def isNestedList {α : Type} : List (List α) → Bool :=
+  sorry
 -- </vc-definitions>
 
 -- <vc-theorems>

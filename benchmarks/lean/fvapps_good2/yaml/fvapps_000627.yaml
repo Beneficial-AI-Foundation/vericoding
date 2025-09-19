@@ -1,4 +1,38 @@
 vc-description: |-
+  /-
+  Given a string $s$.
+  You can perform the following operation on given string any number of time.
+  Delete two successive elements of the string if they are same.
+  After performing the above operation you have to return the least possible length of the string.
+  
+  -----Input:-----
+  - First line will contain $T$, number of testcases. Then the testcases follow. 
+  - Each testcase contains of a single line of input, a string $s$. 
+  
+  -----Output:-----
+  For each testcase, output in a single line answer- minimum length of string possible after performing given operations.
+  
+  -----Constraints-----
+  - $1 \leq T \leq 1000$
+  - $2 \leq length of string \leq 10^5$
+  $s$ contains only lowercase letters.
+  
+  -----Sample Input:-----
+  3
+  abccd
+  abbac
+  aaaa
+  
+  -----Sample Output:-----
+  3
+  1
+  0
+  
+  -----EXPLANATION:-----
+  - In first case, $"abd"$ will be final string.
+  - in second case, $"c"$ will be final string
+  -/
+  
   -- Result is non-negative
   
   -- Result is at most input length

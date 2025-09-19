@@ -1,4 +1,12 @@
 vc-description: |-
+  /-
+  Implement a function to calculate the sum of the numerical values in a nested list. For example :
+  
+  ```python
+  sum_nested([1, [2, [3, [4]]]]) -> 10
+  ```
+  -/
+  
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
   
@@ -16,13 +24,11 @@ vc-preamble: |-
 vc-helpers: |-
 
 vc-definitions: |-
-  def sumNested : List (List Int) → Int
-    | _ =>
-  sorry
+  def sumNested : List (List Int) → Int :=
+    sorry
   
-  def flatten : List (List Int) → List Int
-    | _ =>
-  sorry
+  def flatten : List (List Int) → List Int :=
+    sorry
 
 vc-theorems: |-
   theorem sum_nested_equals_flatten_sum (l : List (List Int)) :

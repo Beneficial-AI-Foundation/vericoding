@@ -5,9 +5,8 @@
 -- </vc-helpers>
 
 -- <vc-definitions>
-def find_path_number : String → Nat
-  | s =>
-sorry
+def find_path_number : String → Nat :=
+  sorry
 
 def MOD : Nat := 1000000007
 
