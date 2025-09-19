@@ -21,7 +21,7 @@ spec fn sortedbad(s: Seq<char>) -> bool {
 // <vc-spec>
 fn bad_sort(a: Vec<char>) -> (b: Vec<char>)
     requires
-        forall|k: int| 0 <= k < a.len() ==> a[k] == 'b' || a[k] == 'a' || a[k] == 'd',
+        forall|k: int| 0 <= k < a.len() ==> a[k as int] == 'b' || a[k as int] == 'a' || a[k as int] == 'd',
     ensures
         sortedbad(b@),
         a@.to_multiset() =~= b@.to_multiset(),

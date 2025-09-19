@@ -13,9 +13,9 @@ spec fn sqrt(x: int, r: int) -> bool {
 
 // <vc-spec>
 #[verifier::exec_allows_no_decreases_clause]
-fn mySqrt(x: int) -> (res: int)
-    requires 0 <= x,
-    ensures sqrt(x, res),
+fn mySqrt(x: i8) -> (res: i8)
+    requires 0 <= x as int,
+    ensures sqrt(x as int, res as int),
 // </vc-spec>
 // <vc-code>
 {

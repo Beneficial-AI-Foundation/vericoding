@@ -60,10 +60,10 @@ proof fn count_min_property(v: Seq<int>, x: int, i: int)
 // </vc-helpers>
 
 // <vc-spec>
-fn m_count_min(v: &Vec<i32>) -> (c: i32)
+fn m_count_min(v: &Vec<i8>) -> (c: i8)
     requires v.len() > 0
-    ensures c == count_min(v@.map_values(|x: i32| x as int), 
-                          min(v@.map_values(|x: i32| x as int), v.len() as int), 
+    ensures c as int == count_min(v@.map_values(|x: i8| x as int), 
+                          min(v@.map_values(|x: i8| x as int), v.len() as int), 
                           v.len() as int)
 // </vc-spec>
 // <vc-code>

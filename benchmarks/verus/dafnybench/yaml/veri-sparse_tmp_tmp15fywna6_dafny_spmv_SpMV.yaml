@@ -33,17 +33,17 @@ vc-preamble: |-
 vc-helpers: |-
 
 vc-spec: |-
-  fn SpMV(X_val: &[int], X_crd: &[nat], X_pos: &[nat], v: &[int]) -> (y: Vec<int>)
+  fn SpMV(X_val: &[i8], X_crd: &[u8], X_pos: &[u8], v: &[i8]) -> (y: Vec<i8>)
       requires 
           X_crd.len() >= 1,
           X_crd.len() == X_val.len(),
-          forall|i: int, j: int| 0 <= i < j < X_pos.len() ==> X_pos[i] <= X_pos[j],
-          forall|i: int| 0 <= i < X_crd.len() ==> X_crd[i] < v.len(),
-          forall|i: int| 0 <= i < X_pos.len() ==> X_pos[i] <= X_val.len(),
+          forall|i: int, j: int| 0 <= i < j < X_pos.len() ==> X_pos[i] as nat <= X_pos[j] as nat,
+          forall|i: int| 0 <= i < X_crd.len() ==> (X_crd[i] as nat) < v.len(),
+          forall|i: int| 0 <= i < X_pos.len() ==> (X_pos[i] as nat) <= X_val.len(),
           X_pos.len() >= 1,
       ensures
           y.len() + 1 == X_pos.len(),
-          forall|i: int| 0 <= i < y.len() ==> y[i] == sum(X_val@, X_crd@, v@, X_pos[i] as int, X_pos[i + 1] as int),
+          forall|i: int| 0 <= i < y.len() ==> y[i] as int == sum(X_val@.map(|i: int, x: i8| x as int), X_crd@.map(|i: int, x: u8| x as nat), v@.map(|i: int, x: i8| x as int), X_pos[i] as int, X_pos[i + 1] as int),
 
 vc-code: |-
   {
@@ -54,4 +54,3 @@ vc-code: |-
 vc-postamble: |-
   }
   fn main() {}
-

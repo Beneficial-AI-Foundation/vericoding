@@ -18,10 +18,10 @@ fn mcontained(v: &[i32], w: &[i32], n: usize, m: usize) -> (b: bool)
         n >= 0,
         strict_sorted(v@),
         strict_sorted(w@),
-        v@.len() >= n,
-        w@.len() >= m,
+        v@.len() >= n as int,
+        w@.len() >= m as int,
     ensures
-        b == forall|k: int| 0 <= k < n ==> w@.subrange(0, m as int).contains(v@[k])
+        b == forall|k: int| 0 <= k < n as int ==> w@.subrange(0, m as int).contains(v@[k])
 // </vc-spec>
 // <vc-code>
 {

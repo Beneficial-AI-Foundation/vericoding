@@ -16,20 +16,20 @@ spec fn is_odd(n: int) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn first_even_odd_difference(a: &[i32]) -> (diff: i32)
+fn first_even_odd_difference(a: &[i8]) -> (diff: i8)
     requires 
-        a.len() >= 2,
-        exists|i: int| 0 <= i < a.len() && is_even(a[i] as int),
-        exists|i: int| 0 <= i < a.len() && is_odd(a[i] as int),
+        a@.len() >= 2,
+        exists|i: int| 0 <= i < a@.len() && is_even(a@[i] as int),
+        exists|i: int| 0 <= i < a@.len() && is_odd(a@[i] as int),
     ensures 
         exists|i: int, j: int| 
-            0 <= i < a.len() && 
-            0 <= j < a.len() && 
-            is_even(a[i] as int) && 
-            is_odd(a[j] as int) && 
-            diff == a[i] - a[j] && 
-            (forall|k: int| 0 <= k < i ==> is_odd(a[k] as int)) && 
-            (forall|k: int| 0 <= k < j ==> is_even(a[k] as int))
+            0 <= i < a@.len() && 
+            0 <= j < a@.len() && 
+            is_even(a@[i] as int) && 
+            is_odd(a@[j] as int) && 
+            diff as int == a@[i] as int - a@[j] as int && 
+            (forall|k: int| 0 <= k < i ==> is_odd(a@[k] as int)) && 
+            (forall|k: int| 0 <= k < j ==> is_even(a@[k] as int))
 // </vc-spec>
 // <vc-code>
 {

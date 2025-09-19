@@ -59,7 +59,7 @@ spec fn pathSpecific(p: Seq<usize>, start: usize, end: usize, graph: Set<usize>)
 // </vc-helpers>
 
 // <vc-spec>
-fn Find(a: &[int], key: int) -> (index: i32)
+fn Find(a: &[i8], key: i8) -> (index: i32)
     ensures 
         0 <= index ==> index < a.len() && a[index as int] == key,
         index < 0 ==> (forall|k: int| 0 <= k < a.len() ==> a[k] != key),

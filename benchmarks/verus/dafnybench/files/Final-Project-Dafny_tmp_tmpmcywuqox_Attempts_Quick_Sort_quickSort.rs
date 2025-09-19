@@ -23,9 +23,9 @@ fn threshold(thres: int, seq: Seq<int>) -> (res: (Seq<int>, Seq<int>))
 // </vc-helpers>
 
 // <vc-spec>
-fn quick_sort(seq: Seq<int>) -> (res: Seq<int>)
-    ensures seq.to_multiset() == res.to_multiset()
-    decreases seq.len()
+fn quick_sort(seq: Vec<i8>) -> (res: Vec<i8>)
+    ensures seq@.to_multiset() == res@.to_multiset()
+    decreases seq@.len()
 // </vc-spec>
 // <vc-code>
 {

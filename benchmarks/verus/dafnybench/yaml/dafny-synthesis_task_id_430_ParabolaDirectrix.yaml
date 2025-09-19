@@ -11,8 +11,8 @@ vc-preamble: |-
 vc-helpers: |-
 
 vc-spec: |-
-  fn parabola_directrix(a: int, h: int, k: int) -> (directrix: int)
-      requires a != 0
+  fn parabola_directrix(a: i8, h: i8, k: i8) -> (directrix: i8)
+      requires a as int != 0
 
 vc-code: |-
   {
@@ -23,4 +23,3 @@ vc-code: |-
 vc-postamble: |-
   }
   fn main() {}
-

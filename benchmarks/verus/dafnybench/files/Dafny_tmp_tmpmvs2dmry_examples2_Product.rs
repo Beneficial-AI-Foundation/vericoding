@@ -2,19 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-
-spec fn gcd(m: nat, n: nat) -> nat
-recommends m > 0 && n > 0
-decreases m + n
-{
-    if m == n { 
-        n 
-    } else if m > n { 
-        gcd(sub(m, n), n)
-    } else {
-        gcd(m, sub(n, m))
-    }
-}
 // </vc-preamble>
 
 // <vc-helpers>

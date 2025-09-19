@@ -8,11 +8,11 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn get_first_elements(lst: Vec<Vec<i32>>) -> (result: Vec<i32>)
-    requires forall|i: int| 0 <= i < lst.len() ==> lst[i].len() > 0,
+fn get_first_elements(lst: Vec<Vec<i8>>) -> (result: Vec<i8>)
+    requires forall|i: int| 0 <= i < lst@.len() ==> lst@[i].len() > 0,
     ensures 
-        result.len() == lst.len(),
-        forall|i: int| 0 <= i < result.len() ==> result[i] == lst[i][0],
+        result@.len() == lst@.len(),
+        forall|i: int| 0 <= i < result@.len() ==> result@[i] == lst@[i][0],
 // </vc-spec>
 // <vc-code>
 {

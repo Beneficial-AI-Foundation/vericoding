@@ -8,8 +8,8 @@ vc-preamble: |-
 vc-helpers: |-
 
 vc-spec: |-
-  fn any_value_exists(seq1: Seq<int>, seq2: Seq<int>) -> (result: bool)
-      ensures result <==> (exists|i: int| 0 <= i < seq1.len() && seq2.contains(seq1[i]))
+  fn any_value_exists(seq1: Vec<i8>, seq2: Vec<i8>) -> (result: bool)
+      ensures result <==> (exists|i: int| 0 <= i < seq1@.len() && seq2@.contains(seq1@[i]))
 
 vc-code: |-
   {
@@ -20,4 +20,3 @@ vc-code: |-
 vc-postamble: |-
   }
   fn main() {}
-

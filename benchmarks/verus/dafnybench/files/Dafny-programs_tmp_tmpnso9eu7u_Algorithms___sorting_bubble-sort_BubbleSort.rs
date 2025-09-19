@@ -16,10 +16,10 @@ spec fn sorted(a: Seq<int>) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn bubble_sort(a: &mut Vec<int>)
+fn bubble_sort(a: &mut Vec<i8>)
     ensures 
-        sorted(a@),
-        a@.to_multiset() == old(a)@.to_multiset()
+        sorted(a@.map(|i, x: i8| x as int)),
+        a@.map(|i, x: i8| x as int).to_multiset() == old(a)@.map(|i, x: i8| x as int).to_multiset()
 // </vc-spec>
 // <vc-code>
 {

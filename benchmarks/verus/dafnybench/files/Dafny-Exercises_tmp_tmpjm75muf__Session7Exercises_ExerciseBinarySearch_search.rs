@@ -23,9 +23,9 @@ fn binary_search(v: &[int], elem: int) -> (p: i32)
 // </vc-helpers>
 
 // <vc-spec>
-fn search(v: &[int], elem: int) -> (b: bool)
-    requires sorted(v@)
-    ensures b == v@.contains(elem)
+fn search(v: &Vec<i8>, elem: i8) -> (b: bool)
+    requires sorted(v@.map(|_index: int, x: i8| x as int))
+    ensures b == v@.map(|_index: int, x: i8| x as int).contains(elem as int)
 // </vc-spec>
 // <vc-code>
 {

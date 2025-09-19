@@ -8,12 +8,12 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn maximum(values: Seq<int>) -> (max: int)
+fn maximum(values: Vec<i8>) -> (max: i8)
     requires
-        values.len() > 0,
+        values@.len() > 0,
     ensures
-        values.contains(max),
-        forall|i: int| 0 <= i < values.len() ==> values[i] <= max,
+        values@.contains(max),
+        forall|i: int| 0 <= i < values@.len() ==> values@[i] <= max,
 // </vc-spec>
 // <vc-code>
 {

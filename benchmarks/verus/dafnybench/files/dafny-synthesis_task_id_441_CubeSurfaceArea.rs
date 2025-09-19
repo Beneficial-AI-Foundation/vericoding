@@ -8,9 +8,9 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn cube_surface_area(size: i32) -> (area: i32)
+fn cube_surface_area(size: i8) -> (area: i8)
     requires size > 0
-    ensures area == 6 * size * size
+    ensures area as int == 6 * size as int * size as int
 // </vc-spec>
 // <vc-code>
 {

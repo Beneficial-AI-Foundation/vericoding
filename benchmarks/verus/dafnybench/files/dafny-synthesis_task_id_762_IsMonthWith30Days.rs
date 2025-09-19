@@ -8,9 +8,9 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn is_month_with_30_days(month: i32) -> (result: bool)
-    requires 1 <= month <= 12
-    ensures result <==> (month == 4 || month == 6 || month == 9 || month == 11)
+fn is_month_with_30_days(month: i8) -> (result: bool)
+    requires 1 <= month as int <= 12
+    ensures result <==> (month as int == 4 || month as int == 6 || month as int == 9 || month as int == 11)
 // </vc-spec>
 // <vc-code>
 {

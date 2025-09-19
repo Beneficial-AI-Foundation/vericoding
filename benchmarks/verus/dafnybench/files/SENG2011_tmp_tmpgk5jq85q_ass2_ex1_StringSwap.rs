@@ -8,16 +8,16 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn string_swap(s: Seq<char>, i: nat, j: nat) -> (t: Seq<char>)
+fn string_swap(s: Vec<char>, i: u8, j: u8) -> (t: Vec<char>)
     requires 
-        i >= 0 && j >= 0 && s.len() >= 0,
-        s.len() > 0 ==> i < s.len() && j < s.len(),
+        i >= 0 && j >= 0 && s@.len() >= 0,
+        s@.len() > 0 ==> (i as nat) < s@.len() && (j as nat) < s@.len(),
     ensures 
-        s.to_multiset() == t.to_multiset(),
-        s.len() == t.len(),
-        s.len() > 0 ==> forall|k: nat| k != i && k != j && k < s.len() ==> t[k as int] == s[k as int],
-        s.len() > 0 ==> t[i as int] == s[j as int] && t[j as int] == s[i as int],
-        s.len() == 0 ==> t == s,
+        s@.to_multiset() == t@.to_multiset(),
+        s@.len() == t@.len(),
+        s@.len() > 0 ==> forall|k: nat| k != (i as nat) && k != (j as nat) && k < s@.len() ==> t@[k as int] == s@[k as int],
+        s@.len() > 0 ==> t@[(i as nat) as int] == s@[(j as nat) as int] && t@[(j as nat) as int] == s@[(i as nat) as int],
+        s@.len() == 0 ==> t@ == s@,
 // </vc-spec>
 // <vc-code>
 {

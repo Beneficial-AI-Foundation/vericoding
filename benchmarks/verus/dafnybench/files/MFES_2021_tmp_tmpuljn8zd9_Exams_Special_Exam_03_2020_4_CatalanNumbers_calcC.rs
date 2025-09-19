@@ -18,8 +18,8 @@ spec fn C(n: nat) -> nat
 // </vc-helpers>
 
 // <vc-spec>
-fn calcC(n: u64) -> (res: u64)
-    ensures res == C(n as nat),
+fn calcC(n: u8) -> (res: u8)
+    ensures res as nat == C(n as nat),
 // </vc-spec>
 // <vc-code>
 {

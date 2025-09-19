@@ -42,9 +42,9 @@ spec fn max(a: Seq<int>) -> int
 // </vc-helpers>
 
 // <vc-spec>
-fn difference_min_max(a: &[i32]) -> (diff: i32)
+fn difference_min_max(a: Vec<i8>) -> (diff: i8)
     requires a.len() > 0
-    ensures diff == max(a@.map(|i, x| x as int)) - min(a@.map(|i, x| x as int))
+    ensures diff as int == max(a@.map(|i, x| x as int)) - min(a@.map(|i, x| x as int))
 // </vc-spec>
 // <vc-code>
 {

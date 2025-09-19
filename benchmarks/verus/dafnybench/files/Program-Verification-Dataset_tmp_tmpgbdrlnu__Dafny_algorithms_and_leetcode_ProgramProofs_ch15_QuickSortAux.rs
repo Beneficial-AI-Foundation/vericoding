@@ -34,14 +34,14 @@ fn partition(a: &mut Vec<int>, lo: usize, hi: usize) -> (p: usize)
 // </vc-helpers>
 
 // <vc-spec>
-fn quick_sort_aux(a: &mut Vec<int>, lo: usize, hi: usize)
+fn quick_sort_aux(a: &mut Vec<i8>, lo: usize, hi: usize)
     requires 
         0 <= lo <= hi <= old(a).len(),
-        split_point(old(a)@, lo as int) && split_point(old(a)@, hi as int),
+        split_point(old(a)@.map(|i, x| x as int), lo as int) && split_point(old(a)@.map(|i, x| x as int), hi as int),
     ensures
-        forall|i: int, j: int| lo <= i < j < hi ==> a@[i] <= a@[j],
-        swap_frame(old(a)@, a@, lo as int, hi as int),
-        split_point(a@, lo as int) && split_point(a@, hi as int),
+        forall|i: int, j: int| lo <= i < j < hi ==> a@[i] as int <= a@[j] as int,
+        swap_frame(old(a)@.map(|i, x| x as int), a@.map(|i, x| x as int), lo as int, hi as int),
+        split_point(a@.map(|i, x| x as int), lo as int) && split_point(a@.map(|i, x| x as int), hi as int),
     decreases hi - lo
 // </vc-spec>
 // <vc-code>

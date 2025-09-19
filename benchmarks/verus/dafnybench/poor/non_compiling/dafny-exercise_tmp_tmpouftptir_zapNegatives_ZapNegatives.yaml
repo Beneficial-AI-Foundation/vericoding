@@ -1,0 +1,27 @@
+vc-description: |-
+
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn zap_negatives(a: &mut Vec<i8>)
+      ensures 
+          a.len() == old(a).len(),
+          forall|i: int| 0 <= i < a.len() ==> 
+              old(a)[i] as int < 0 ==> a[i] as int == 0,
+          forall|i: int| 0 <= i < a.len() ==> 
+              old(a)[i] as int >= 0 ==> a[i] as int == old(a)[i] as int
+
+vc-code: |-
+  {
+      assume(false);
+      unreached()
+  }
+
+vc-postamble: |-
+  }
+  fn main() {}

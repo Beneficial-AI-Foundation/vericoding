@@ -37,7 +37,7 @@ spec fn sum_v(v: Seq<int>, c: int, f: int) -> int
 // </vc-helpers>
 
 // <vc-spec>
-fn sum_elems_b(v: &[i32]) -> (sum: i32)
+fn sum_elems_b(v: &Vec<i8>) -> (sum: i8)
 ensures sum as int == sum_r(v@.map(|i, x| x as int))
 // </vc-spec>
 // <vc-code>

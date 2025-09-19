@@ -20,8 +20,8 @@ vc-preamble: |-
 vc-helpers: |-
 
 vc-spec: |-
-  fn calcR(n: u64) -> (r: u64)
-      ensures r == R(n as nat)
+  fn calcR(n: u8) -> (r: u8)
+      ensures r as nat == R(n as nat)
 
 vc-code: |-
   {
@@ -32,4 +32,3 @@ vc-code: |-
 vc-postamble: |-
   }
   fn main() {}
-

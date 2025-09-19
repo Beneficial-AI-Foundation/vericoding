@@ -11,18 +11,18 @@ struct Automaton {}
 
 // <vc-spec>
 #[verifier::exec_allows_no_decreases_clause]
-fn execute_automaton(init: Seq<bool>, rule: spec_fn(bool, bool, bool) -> bool, steps: nat) 
-    -> (table: Seq<Seq<bool>>)
+fn execute_automaton(init: Vec<bool>, rule: spec_fn(bool, bool, bool) -> bool, steps: u8) 
+    -> (table: Vec<Vec<bool>>)
     requires 
 
         init.len() >= 2
     ensures 
 
-        table.len() == 1 + steps,
+        table.len() == 1 + steps as int,
 
-        table[0] == init,
+        table@[0]@ == init@,
 
-        forall|i: int| 0 <= i < table.len() ==> #[trigger] table[i].len() == init.len()
+        forall|i: int| 0 <= i < table@.len() ==> #[trigger] table@[i]@.len() == init@.len()
 // </vc-spec>
 // <vc-code>
 {

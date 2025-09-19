@@ -15,11 +15,11 @@ vc-spec: |-
   fn reverse_upto_k(s: &mut Vec<i32>, k: usize)
       requires 
           2 <= k,
-          k <= old(s).len(),
+          k <= old(s)@.len(),
       ensures 
-          s.len() == old(s).len(),
-          forall|i: int| 0 <= i < k ==> array_index(s@, i) == array_index(old(s)@, k - 1 - i),
-          forall|i: int| k <= i < s.len() ==> array_index(s@, i) == array_index(old(s)@, i),
+          s@.len() == old(s)@.len(),
+          forall|i: int| 0 <= i < k as int ==> array_index(s@, i) == array_index(old(s)@, k as int - 1 - i),
+          forall|i: int| k as int <= i < s@.len() ==> array_index(s@, i) == array_index(old(s)@, i),
 
 vc-code: |-
   {
@@ -30,4 +30,3 @@ vc-code: |-
 vc-postamble: |-
   }
   fn main() {}
-

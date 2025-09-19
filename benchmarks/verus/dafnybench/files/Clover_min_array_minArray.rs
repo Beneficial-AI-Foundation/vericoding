@@ -8,9 +8,9 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn min_array(a: &[i32]) -> (r: i32)
+fn min_array(a: &[i8]) -> (r: i8)
     requires a.len() > 0,
-    ensures forall|i: int| 0 <= i < a.len() ==> r <= a[i],
+    ensures forall|i: int| 0 <= i < a@.len() ==> r as int <= a@[i],
 // </vc-spec>
 // <vc-code>
 {

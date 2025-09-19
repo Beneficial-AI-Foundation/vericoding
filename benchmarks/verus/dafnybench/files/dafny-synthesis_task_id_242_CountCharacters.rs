@@ -8,10 +8,10 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn count_characters(s: Seq<char>) -> (count: usize)
+fn count_characters(s: Vec<char>) -> (count: usize)
     ensures 
         count >= 0,
-        count == s.len(),
+        count == s@.len(),
 // </vc-spec>
 // <vc-code>
 {

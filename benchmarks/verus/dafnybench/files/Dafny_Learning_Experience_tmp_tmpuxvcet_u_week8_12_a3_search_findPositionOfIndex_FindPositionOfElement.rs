@@ -8,13 +8,13 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn find_position_of_element(a: &[i32], element: usize, n1: usize, s1: Seq<i32>) -> (result: (i32, usize))
+fn find_position_of_element(a: &[i32], element: i8, n1: usize, s1: Vec<i8>) -> (result: (i32, usize))
     requires
-        n1 == s1.len() && 0 <= n1 <= a.len(),
-        forall|i: int| 0 <= i < s1.len() ==> a[i] == s1[i],
+        n1 == s1@.len() && 0 <= n1 <= a.len(),
+        forall|i: int| 0 <= i < s1@.len() ==> a[i] == s1[i as int] as i32,
     ensures
         result.0 == -1 || result.0 >= 1,
-        s1.len() != 0 && result.0 >= 1 ==> exists|i: int| 0 <= i < s1.len() && s1[i] == element,
+        s1@.len() != 0 && result.0 >= 1 ==> exists|i: int| 0 <= i < s1@.len() && s1[i as int] as int == element as int,
 // </vc-spec>
 // <vc-code>
 {

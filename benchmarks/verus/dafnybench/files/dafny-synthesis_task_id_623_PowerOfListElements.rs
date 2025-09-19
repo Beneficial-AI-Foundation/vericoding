@@ -15,10 +15,10 @@ spec fn power(base: int, exponent: int) -> int
 // </vc-helpers>
 
 // <vc-spec>
-fn power_of_list_elements(l: Vec<i32>, n: u32) -> (result: Vec<i32>)
+fn power_of_list_elements(l: Vec<i8>, n: u8) -> (result: Vec<i8>)
     ensures 
         result.len() == l.len(),
-        forall|i: int| #![auto] 0 <= i < l.len() ==> result[i] == power(l[i] as int, n as int),
+        forall|i: int| #![auto] 0 <= i < l.len() ==> result[i] as int == power(l[i] as int, n as int),
 // </vc-spec>
 // <vc-code>
 {

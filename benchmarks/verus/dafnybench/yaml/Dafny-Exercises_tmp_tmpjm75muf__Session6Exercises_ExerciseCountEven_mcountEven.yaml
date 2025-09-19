@@ -29,9 +29,9 @@ vc-preamble: |-
 vc-helpers: |-
 
 vc-spec: |-
-  fn mcount_even(v: &Vec<i32>) -> (n: i32)
-      requires positive(v@.map(|i: int, x: i32| x as int))
-      ensures n as int == count_even(v@.map(|i: int, x: i32| x as int))
+  fn mcount_even(v: &Vec<i8>) -> (n: i8)
+      requires positive(v@.map(|i: int, x: i8| x as int))
+      ensures n as int == count_even(v@.map(|i: int, x: i8| x as int))
 
 vc-code: |-
   {
@@ -42,4 +42,3 @@ vc-code: |-
 vc-postamble: |-
   }
   fn main() {}
-

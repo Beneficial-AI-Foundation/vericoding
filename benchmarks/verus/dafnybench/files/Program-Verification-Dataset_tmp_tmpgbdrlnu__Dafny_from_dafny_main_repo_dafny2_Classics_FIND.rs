@@ -14,12 +14,12 @@ spec fn factorial(n: nat) -> nat
 // </vc-helpers>
 
 // <vc-spec>
-fn find(A: &mut Vec<i32>, N: usize, f: usize)
+fn find(A: &mut Vec<i8>, N: usize, f: usize)
     requires 
         old(A)@.len() == N,
         f < N,
     ensures
-        forall|p: int, q: int| 0 <= p <= f as int <= q < N as int ==> A@[p] <= A@[q],
+        forall|p: int, q: int| 0 <= p <= f as int <= q < N as int ==> A@[p] as int <= A@[q] as int,
 // </vc-spec>
 // <vc-code>
 {

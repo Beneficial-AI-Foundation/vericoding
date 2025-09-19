@@ -14,15 +14,15 @@ spec fn min(s: Seq<i32>) -> i32;
 // </vc-helpers>
 
 // <vc-spec>
-fn second_smallest(s: &[i32]) -> (result: i32)
+fn second_smallest(s: &[i8]) -> (result: i8)
     requires 
         s.len() >= 2,
         exists|i: int, j: int| 0 <= i < s.len() && 0 <= j < s.len() && i != j && 
-            s[i] == min(s@) && s[j] != s[i]
+            s[i] as i32 == min(s@.map(|k, v| v as i32)) && s[j] as i32 != s[i] as i32
     ensures 
         exists|i: int, j: int| 0 <= i < s.len() && 0 <= j < s.len() && i != j && 
-            s[i] == min(s@) && s[j] == result,
-        forall|k: int| 0 <= k < s.len() && s[k] != min(s@) ==> s[k] >= result
+            s[i] as i32 == min(s@.map(|k, v| v as i32)) && s[j] as i32 == result as i32,
+        forall|k: int| 0 <= k < s.len() && s[k] as i32 != min(s@.map(|k, v| v as i32)) ==> s[k] as i32 >= result as i32
 // </vc-spec>
 // <vc-code>
 {

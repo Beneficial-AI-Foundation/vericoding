@@ -1,0 +1,55 @@
+vc-description: |-
+
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+  
+  spec fn merged(a1: Seq<int>, a2: Seq<int>, b: &Vec<int>, start: int, end: int) -> bool {
+      &&& end - start == a2.len() + a1.len()
+      &&& 0 <= start <= end <= b.len()
+      &&& a1.to_multiset().add(a2.to_multiset()) == b@.subrange(start, end).to_multiset()
+  }
+  
+  spec fn sorted_slice(a: &Vec<int>, start: int, end: int) -> bool {
+      &&& 0 <= start <= end <= a.len()
+      &&& forall|i: int, j: int| start <= i <= j < end ==> a@[i] <= a@[j]
+  }
+  
+  spec fn sorted_seq(a: Seq<int>) -> bool {
+      forall|i: int, j: int| 0 <= i <= j < a.len() ==> a[i] <= a[j]
+  }
+  
+  spec fn sorted(a: &Vec<int>) -> bool {
+      forall|i: int, j: int| 0 <= i < j < a.len() ==> a@[i] <= a@[j]
+  }
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn merge(a1: Vec<i8>, a2: Vec<i8>, start: i8, end: i8, b: &mut Vec<i8>)
+      requires 
+          sorted_seq(a1@.map(|x: i8| x as int)),
+          sorted_seq(a2@.map(|x: i8| x as int)),
+          (end as int) - (start as int) == (a1@ as Seq<int>).len() + (a2@ as Seq<int>).len(),
+          0 <= start as int,
+          (start as int) < (end as int),
+          (end as int) < (a1@ as Seq<int>).len(),
+          (end as int) <= (a2@ as Seq<int>).len(),
+          (a2@ as Seq<int>).len() < old(b)@.len(),
+          (end as int) < (a1@ as Seq<int>).len(),
+          (end as int) < (a2@ as Seq<int>).len(),
+          old(b)@.len() == (a2@ as Seq<int>).len() + (a1@ as Seq<int>).len(),
+      ensures 
+          sorted_slice(b, start as int, end as int),
+          merged(a1@.map(|x: i8| x as int), a2@.map(|x: i8| x as int), b, start as int, end as int),
+
+vc-code: |-
+  {
+      assume(false);
+      unreached()
+  }
+
+vc-postamble: |-
+  }
+  fn main() {}

@@ -8,13 +8,13 @@ vc-preamble: |-
 vc-helpers: |-
 
 vc-spec: |-
-  fn sum_of_common_divisors(a: u32, b: u32) -> (sum: u32)
+  fn sum_of_common_divisors(a: u8, b: u8) -> (sum: u8)
       requires 
           a > 0 && b > 0,
       ensures 
-          sum >= 0,
-          forall|d: u32| #![trigger a % d, b % d] 
-              1 <= d <= a && 1 <= d <= b && a % d == 0 && b % d == 0 ==> sum >= d,
+          sum as nat >= 0,
+          forall|d: nat| #![trigger (a as nat) % d, (b as nat) % d] 
+              1 <= d <= a as nat && 1 <= d <= b as nat && (a as nat) % d == 0 && (b as nat) % d == 0 ==> sum as nat >= d,
 
 vc-code: |-
   {
@@ -25,4 +25,3 @@ vc-code: |-
 vc-postamble: |-
   }
   fn main() {}
-

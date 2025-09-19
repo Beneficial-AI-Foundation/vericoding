@@ -28,16 +28,16 @@ spec fn bordered(s: Seq<Bases>) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn exchanger(s: Seq<Bases>, x: nat, y: nat) -> (t: Seq<Bases>)
+fn exchanger(s: Vec<Bases>, x: u8, y: u8) -> (t: Vec<Bases>)
     requires 
         0 < s.len(),
-        x < s.len(),
-        y < s.len(),
+        (x as int) < s.len(),
+        (y as int) < s.len(),
     ensures 
         t.len() == s.len(),
-        forall|b: nat| 0 <= b < s.len() && b != x && b != y ==> t[b as int] == s[b as int],
+        forall|b: int| 0 <= b < s.len() && b != x as int && b != y as int ==> t[b] == s[b],
         t[x as int] == s[y as int] && s[x as int] == t[y as int],
-        s.to_multiset() == t.to_multiset(),
+        s@.to_multiset() == t@.to_multiset(),
 // </vc-spec>
 // <vc-code>
 {

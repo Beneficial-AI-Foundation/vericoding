@@ -8,12 +8,12 @@ vc-preamble: |-
 vc-helpers: |-
 
 vc-spec: |-
-  fn array_product(a: &[i32], b: &[i32]) -> (c: Vec<i32>)
+  fn array_product(a: &[i8], b: &[i8]) -> (c: Vec<i8>)
       requires 
           a.len() == b.len(),
       ensures 
           c.len() == a.len(),
-          forall|i: int| 0 <= i < a.len() ==> a[i] * b[i] == c[i],
+          forall|i: int| 0 <= i < a.len() ==> a[i] as int * b[i] as int == c[i] as int,
 
 vc-code: |-
   {
@@ -24,4 +24,3 @@ vc-code: |-
 vc-postamble: |-
   }
   fn main() {}
-

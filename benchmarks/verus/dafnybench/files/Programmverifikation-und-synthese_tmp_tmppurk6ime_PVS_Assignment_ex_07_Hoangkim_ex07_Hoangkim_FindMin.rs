@@ -12,13 +12,13 @@ spec fn sorted(a: Seq<int>) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn find_min(a: &[int], lo: usize) -> (minIdx: usize)
+fn find_min(a: &[i8], lo: usize) -> (minIdx: usize)
     requires 
-        a.len() > 0,
-        lo < a.len(),
+        a@.len() > 0,
+        lo < a@.len(),
     ensures 
-        lo <= minIdx < a.len(),
-        forall|x: int| lo <= x < a.len() ==> a[minIdx as int] <= a[x],
+        lo <= minIdx < a@.len(),
+        forall|x: int| lo <= x < a@.len() ==> a@[minIdx as int] <= a@[x],
 // </vc-spec>
 // <vc-code>
 {

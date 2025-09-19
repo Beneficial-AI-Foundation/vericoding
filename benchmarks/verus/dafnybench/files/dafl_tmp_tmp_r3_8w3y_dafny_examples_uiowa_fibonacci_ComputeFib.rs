@@ -16,8 +16,8 @@ spec fn fib(n: nat) -> nat
 // </vc-helpers>
 
 // <vc-spec>
-fn ComputeFib(n: usize) -> (f: usize)
-    ensures f == fib(n as nat)
+fn ComputeFib(n: u8) -> (f: u8)
+    ensures f as nat == fib(n as nat)
 // </vc-spec>
 // <vc-code>
 {

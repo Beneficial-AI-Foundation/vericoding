@@ -8,12 +8,12 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn sort(A: &mut Vec<i32>, n: usize)
+fn sort(A: &mut Vec<i8>, n: usize)
     requires 
         n == old(A).len(),
         n >= 0,
     ensures
-        forall|i: int, j: int| 0 <= i <= j < n ==> A[i] <= A[j],
+        forall|i: int, j: int| 0 <= i <= j < n ==> A[i] as int <= A[j] as int,
 // </vc-spec>
 // <vc-code>
 {
