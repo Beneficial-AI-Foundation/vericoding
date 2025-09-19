@@ -36,14 +36,14 @@ spec fn max_possible_first_score(n: int, m: int, scores: Seq<int>) -> int {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: int, m: int, scores: Seq<int>) -> (result: int)
+fn solve(n: i8, m: i8, scores: Vec<i8>) -> (result: i8)
     requires 
-        valid_input(n, m, scores),
+        valid_input(n as int, m as int, scores@.map(|_i: int, x: i8| x as int)),
     ensures 
-        result == max_possible_first_score(n, m, scores),
-        result == min(sum(scores), m),
-        exists|redistributed: Seq<int>| (valid_redistribution(scores, redistributed, m) && 
-            redistributed[0] == result),
+        result as int == max_possible_first_score(n as int, m as int, scores@.map(|_i: int, x: i8| x as int)),
+        result as int == min(sum(scores@.map(|_i: int, x: i8| x as int)), m as int),
+        exists|redistributed: Seq<int>| (valid_redistribution(scores@.map(|_i: int, x: i8| x as int), redistributed, m as int) && 
+            redistributed[0] == result as int),
 // </vc-spec>
 // <vc-code>
 {

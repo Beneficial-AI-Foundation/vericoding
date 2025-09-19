@@ -19,9 +19,9 @@ spec fn trees_covered(n: int, d: int, inspectors: int) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn min_inspectors(n: int, d: int) -> (result: int)
-    requires valid_input(n, d)
-    ensures trees_covered(n, d, result)
+fn min_inspectors(n: i8, d: i8) -> (result: i8)
+    requires valid_input(n as int, d as int)
+    ensures trees_covered(n as int, d as int, result as int)
 // </vc-spec>
 // <vc-code>
 {

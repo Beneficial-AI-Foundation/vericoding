@@ -42,14 +42,14 @@ vc-preamble: |-
 vc-helpers: |-
 
 vc-spec: |-
-  fn solve(input: Seq<char>) -> (result: Seq<char>)
-      requires valid_input(input)
+  fn solve(input: Vec<char>) -> (result: Vec<char>)
+      requires valid_input(input@)
       ensures ({
-          let nums = parse_two_ints(input);
+          let nums = parse_two_ints(input@);
           let a = nums.0;
           let b = nums.1;
           a > 0 && b > 0
-      }) && valid_output(result)
+      }) && valid_output(result@)
 
 vc-code: |-
   {

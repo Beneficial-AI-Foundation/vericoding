@@ -54,7 +54,7 @@ spec fn isqrt_helper(n: int, low: int, high: int) -> int
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: i32) -> (result: i32)
+fn solve(n: i8) -> (result: i8)
     requires 
         valid_input(n as int),
     ensures

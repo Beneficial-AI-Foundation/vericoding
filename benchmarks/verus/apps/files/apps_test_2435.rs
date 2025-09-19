@@ -56,9 +56,9 @@ spec fn compute_final_bounds_helper(min_pos: int, max_pos: int, operations: Seq<
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(test_cases: Seq<(int, int, Seq<(int, int)>)>) -> (results: Seq<int>)
-    requires valid_input(test_cases)
-    ensures valid_results(test_cases, results)
+fn solve(test_cases: Vec<(i8, i8, Vec<(i8, i8)>)>) -> (results: Vec<i8>)
+    requires valid_input(test_cases@.map(|i: int, tc: (i8, i8, Vec<(i8, i8)>)| (tc.0 as int, tc.1 as int, tc.2@.map(|j: int, op: (i8, i8)| (op.0 as int, op.1 as int)))))
+    ensures valid_results(test_cases@.map(|i: int, tc: (i8, i8, Vec<(i8, i8)>)| (tc.0 as int, tc.1 as int, tc.2@.map(|j: int, op: (i8, i8)| (op.0 as int, op.1 as int)))), results@.map(|i: int, r: i8| r as int))
 // </vc-spec>
 // <vc-code>
 {

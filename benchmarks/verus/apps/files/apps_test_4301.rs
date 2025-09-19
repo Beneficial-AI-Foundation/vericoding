@@ -33,8 +33,8 @@ spec fn max_excluding(s: Seq<int>, exclude_idx: int) -> int
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(input: Seq<int>) -> (result: Seq<int>)
-    requires input.len() >= 2
+fn solve(input: Vec<i8>) -> (result: Vec<i8>)
+    requires input@.len() >= 2
 // </vc-spec>
 // <vc-code>
 {

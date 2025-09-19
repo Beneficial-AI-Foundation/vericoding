@@ -33,14 +33,14 @@ vc-preamble: |-
 vc-helpers: |
 
 vc-spec: |-
-  fn solve(n: int, m: int, a: Seq<int>) -> (result: int)
+  fn solve(n: i8, m: i8, a: Vec<i8>) -> (result: i8)
       requires 
-          valid_input(n, m, a)
+          valid_input(n as int, m as int, a@.map(|i, x: i8| x as int))
       ensures 
-          m == 0 ==> result == n,
-          m > 0 && can_complete_all_assignments(n, a) ==> result == n - total_assignment_days(a),
-          m > 0 && !can_complete_all_assignments(n, a) ==> result == -1,
-          result >= -1
+          m as int == 0 ==> result as int == n as int,
+          m as int > 0 && can_complete_all_assignments(n as int, a@.map(|i, x: i8| x as int)) ==> result as int == n as int - total_assignment_days(a@.map(|i, x: i8| x as int)),
+          m as int > 0 && !can_complete_all_assignments(n as int, a@.map(|i, x: i8| x as int)) ==> result as int == -1,
+          result as int >= -1
 
 vc-code: |-
   {

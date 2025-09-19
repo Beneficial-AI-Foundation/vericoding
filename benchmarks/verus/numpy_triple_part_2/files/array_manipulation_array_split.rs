@@ -25,7 +25,7 @@ spec fn start_index(i: int, n: int, k: int) -> int
 // </vc-helpers>
 
 // <vc-spec>
-fn array_split(v: Vec<f32>, k: usize) -> (result: Vec<Vec<f32>>)
+fn array_split(v: Vec<i8>, k: usize) -> (result: Vec<Vec<i8>>)
     requires k > 0,
     ensures
         result.len() == k,

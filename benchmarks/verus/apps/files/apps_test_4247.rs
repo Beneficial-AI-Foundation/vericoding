@@ -23,12 +23,12 @@ spec fn is_median_of_three(a: int, b: int, c: int) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: usize, p: Seq<int>) -> (result: usize)
+fn solve(n: u8, p: Vec<i8>) -> (result: u8)
     requires
-        valid_input(n as int, p),
+        valid_input(n as int, p@.map(|i: int, x: i8| x as int)),
     ensures
         result <= n - 2,
-        result as nat == count_median_elements(p, n as int),
+        result as nat == count_median_elements(p@.map(|i: int, x: i8| x as int), n as int),
 // </vc-spec>
 // <vc-code>
 {

@@ -38,6 +38,8 @@ spec fn correct_output(s: Seq<char>, result: Seq<char>) -> bool {
 
 // <vc-spec>
 fn solve(stdin_input: &str) -> (result: String)
+    requires valid_input(stdin_input@)
+    ensures correct_output(stdin_input@, result@)
 // </vc-spec>
 // <vc-code>
 {

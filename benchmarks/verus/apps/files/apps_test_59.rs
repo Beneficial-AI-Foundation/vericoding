@@ -38,12 +38,12 @@ spec fn can_sort(n: int, a: Seq<int>, p: Seq<char>) -> bool
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: int, a: Seq<int>, p: Seq<char>) -> (result: String)
+fn solve(n: i8, a: Vec<i8>, p: Vec<char>) -> (result: String)
     requires
-        valid_input(n, a, p),
+        valid_input(n as int, a@.map(|i, x| x as int), p@),
     ensures
         result@ == seq!['Y', 'E', 'S'] || result@ == seq!['N', 'O'],
-        (result@ == seq!['Y', 'E', 'S']) <==> can_sort(n, a, p),
+        (result@ == seq!['Y', 'E', 'S']) <==> can_sort(n as int, a@.map(|i, x| x as int), p@),
 // </vc-spec>
 // <vc-code>
 {

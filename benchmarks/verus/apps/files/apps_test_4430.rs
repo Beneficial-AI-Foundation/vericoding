@@ -40,16 +40,16 @@ spec fn greedy_pack_from_end_helper(a: Seq<int>, pos: int, boxes_left: int, capa
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: int, m: int, k: int, a: Seq<int>) -> (result: int)
+fn solve(n: i8, m: i8, k: i8, a: Vec<i8>) -> (result: i8)
     requires
         n >= 0,
         m >= 1,
         k >= 1,
-        a.len() == n,
-        forall|i: int| 0 <= i < a.len() ==> #[trigger] a[i] >= 1 && #[trigger] a[i] <= k,
+        a.len() == n as usize,
+        forall|i: int| 0 <= i < a.len() ==> #[trigger] a[i] as int >= 1 && #[trigger] a[i] as int <= k as int,
     ensures
-        0 <= result <= n,
-        result == greedy_pack_from_end(a, m, k),
+        0 <= result as int <= n as int,
+        result as int == greedy_pack_from_end(a@.map(|i, x| x as int), m as int, k as int),
 // </vc-spec>
 // <vc-code>
 {

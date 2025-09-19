@@ -31,9 +31,9 @@ spec fn is_valid_result(n: int, a_1: Seq<int>, a_2: Seq<int>, result: int) -> bo
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: int, a_1: Seq<int>, a_2: Seq<int>) -> (result: int)
-    requires valid_input(n, a_1, a_2)
-    ensures is_valid_result(n, a_1, a_2, result)
+fn solve(n: i8, a_1: Vec<i8>, a_2: Vec<i8>) -> (result: i8)
+    requires valid_input(n as int, a_1@.map_values(|x: i8| x as int), a_2@.map_values(|x: i8| x as int))
+    ensures is_valid_result(n as int, a_1@.map_values(|x: i8| x as int), a_2@.map_values(|x: i8| x as int), result as int)
 // </vc-spec>
 // <vc-code>
 {

@@ -41,12 +41,12 @@ fn normalize_bit_string(s: Seq<char>) -> (t: Seq<char>)
 // </vc-helpers>
 
 // <vc-spec>
-fn mul(s1: Seq<char>, s2: Seq<char>) -> (res: Seq<char>)
+fn mul(s1: Vec<char>, s2: Vec<char>) -> (res: Vec<char>)
   requires 
-    valid_bit_string(s1) && valid_bit_string(s2),
+    valid_bit_string(s1@) && valid_bit_string(s2@),
   ensures 
-    valid_bit_string(res) &&
-    str2int(res) == str2int(s1) * str2int(s2),
+    valid_bit_string(res@) &&
+    str2int(res@) == str2int(s1@) * str2int(s2@),
 // </vc-spec>
 // <vc-code>
 {

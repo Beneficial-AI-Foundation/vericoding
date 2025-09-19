@@ -18,12 +18,12 @@ spec fn count_ones_in_octal(a: int) -> int
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(a: int) -> (count: int)
+fn solve(a: i8) -> (count: i8)
     requires 
         a >= 0,
     ensures 
         count >= 0,
-        count == count_ones_in_octal(a),
+        count as int == count_ones_in_octal(a as int),
 // </vc-spec>
 // <vc-code>
 {

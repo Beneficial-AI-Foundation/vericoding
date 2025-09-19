@@ -64,8 +64,8 @@ spec fn get_cycles_helper(n: int, p: Seq<int>, visited: Seq<bool>, cycles: Seq<i
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: int, p: Seq<int>) -> (result: int)
-  requires valid_input(n, p)
+fn solve(n: i8, p: Vec<i8>) -> (result: i8)
+  requires valid_input(n as int, p@.map(|i: int, x: i8| x as int))
   ensures result > 0
 // </vc-spec>
 // <vc-code>

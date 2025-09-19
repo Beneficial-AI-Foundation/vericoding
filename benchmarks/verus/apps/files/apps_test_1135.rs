@@ -21,12 +21,12 @@ spec fn preserves_characters(s: Seq<char>, result: Seq<char>) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: int, s: Seq<char>) -> (result: Seq<char>)
+fn solve(n: i8, s: Vec<char>) -> (result: Vec<char>)
     requires 
-        valid_input(n, s)
+        valid_input(n as int, s@)
     ensures 
-        valid_output(result, n),
-        preserves_characters(s, result)
+        valid_output(result@, n as int),
+        preserves_characters(s@, result@)
 // </vc-spec>
 // <vc-code>
 {

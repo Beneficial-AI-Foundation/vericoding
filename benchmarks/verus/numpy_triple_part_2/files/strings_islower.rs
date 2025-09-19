@@ -28,7 +28,7 @@ fn islower(a: Vec<String>) -> (result: Vec<bool>)
     ensures
         result.len() == a.len(),
         forall|i: int| 0 <= i < result.len() ==> 
-            result[i] == (string_has_cased_char(a[i]@) && string_all_cased_are_lowercase(a[i]@))
+            result[i as int] == (string_has_cased_char(a[i]@) && string_all_cased_are_lowercase(a[i]@))
 // </vc-spec>
 // <vc-code>
 {

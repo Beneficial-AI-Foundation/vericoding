@@ -21,12 +21,12 @@ spec fn valid_input(n: int) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: int) -> (result: int)
-    requires valid_input(n)
+fn solve(n: i8) -> (result: i8)
+    requires valid_input(n as int)
     ensures 
-        result == alternating_sum(n) &&
-        (n % 2 == 0 ==> result == n / 2) &&
-        (n % 2 != 0 ==> result == n / 2 - n)
+        result as int == alternating_sum(n as int) &&
+        (n as int % 2 == 0 ==> result as int == n as int / 2) &&
+        (n as int % 2 != 0 ==> result as int == n as int / 2 - n as int)
 // </vc-spec>
 // <vc-code>
 {

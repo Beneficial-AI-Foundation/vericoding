@@ -78,13 +78,13 @@ spec fn valid_input(k: int, n: int, a: Seq<int>, b: Seq<int>) -> bool
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(k: int, n: int, a: Seq<int>, b: Seq<int>) -> (result: int)
+fn solve(k: i8, n: i8, a: Vec<i8>, b: Vec<i8>) -> (result: i8)
     requires
-        valid_input(k, n, a, b)
+        valid_input(k as int, n as int, a@.map_values(|x: i8| x as int), b@.map_values(|x: i8| x as int))
     ensures
         result >= 0,
         result <= k,
-        result == valid_initial_scores(k, a, b).len(),
+        result as int == valid_initial_scores(k as int, a@.map_values(|x: i8| x as int), b@.map_values(|x: i8| x as int)).len(),
 // </vc-spec>
 // <vc-code>
 {

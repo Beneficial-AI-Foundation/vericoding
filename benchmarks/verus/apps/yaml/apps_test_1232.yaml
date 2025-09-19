@@ -28,14 +28,14 @@ vc-preamble: |-
 vc-helpers: |
 
 vc-spec: |-
-  fn solve(n_a: int, n_b: int, k: int, m: int, a: Seq<int>, b: Seq<int>) -> (result: &'static str)
+  fn solve(n_a: i8, n_b: i8, k: i8, m: i8, a: Vec<i8>, b: Vec<i8>) -> (result: &'static str)
       requires 
-          valid_input(n_a, n_b, k, m, a, b),
-          is_sorted(a),
-          is_sorted(b)
+          valid_input(n_a as int, n_b as int, k as int, m as int, a@.map(|i, x: i8| x as int), b@.map(|i, x: i8| x as int)),
+          is_sorted(a@.map(|i, x: i8| x as int)),
+          is_sorted(b@.map(|i, x: i8| x as int))
       ensures 
           result == "YES" || result == "NO",
-          result == "YES" <==> valid_selection(a, b, k, m)
+          result == "YES" <==> valid_selection(a@.map(|i, x: i8| x as int), b@.map(|i, x: i8| x as int), k as int, m as int)
 
 vc-code: |-
   {

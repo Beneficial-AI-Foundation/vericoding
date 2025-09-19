@@ -33,9 +33,9 @@ spec fn is_minimum_difference(s: Seq<char>, result: int) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(s: Seq<char>) -> (result: int)
-    requires valid_input(s)
-    ensures is_minimum_difference(s, result)
+fn solve(s: Vec<char>) -> (result: i32)
+    requires valid_input(s@)
+    ensures is_minimum_difference(s@, result as int)
 // </vc-spec>
 // <vc-code>
 {

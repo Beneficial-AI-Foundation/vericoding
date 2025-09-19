@@ -24,13 +24,13 @@ spec fn total_adjacent_pairs(n: int, m: int) -> int {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: int, m: int) -> (result: (int, int))
+fn solve(n: i8, m: i8) -> (result: (i8, i8))
     requires 
-        valid_input(n, m)
+        valid_input(n as int, m as int)
     ensures 
-        result.0 == optimal_petya_score(n, m) &&
-        result.1 == optimal_vasya_score(n, m) &&
-        result.0 + result.1 == total_adjacent_pairs(n, m)
+        result.0 as int == optimal_petya_score(n as int, m as int) &&
+        result.1 as int == optimal_vasya_score(n as int, m as int) &&
+        result.0 as int + result.1 as int == total_adjacent_pairs(n as int, m as int)
 // </vc-spec>
 // <vc-code>
 {

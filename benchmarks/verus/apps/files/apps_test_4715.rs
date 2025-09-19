@@ -30,15 +30,15 @@ spec fn all_different(a: int, b: int, c: int) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(a: int, b: int, c: int) -> (result: int)
+fn solve(a: i8, b: i8, c: i8) -> (result: i8)
     requires 
-        valid_input(a, b, c)
+        valid_input(a as int, b as int, c as int)
     ensures 
-        1 <= result <= 3,
-        result == count_distinct_colors(a, b, c),
-        result == 1 <==> all_same(a, b, c),
-        result == 2 <==> exactly_two_same(a, b, c),
-        result == 3 <==> all_different(a, b, c)
+        1 <= result as int <= 3,
+        result as int == count_distinct_colors(a as int, b as int, c as int),
+        result as int == 1 <==> all_same(a as int, b as int, c as int),
+        result as int == 2 <==> exactly_two_same(a as int, b as int, c as int),
+        result as int == 3 <==> all_different(a as int, b as int, c as int)
 // </vc-spec>
 // <vc-code>
 {

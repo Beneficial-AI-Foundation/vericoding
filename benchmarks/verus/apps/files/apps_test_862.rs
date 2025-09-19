@@ -42,12 +42,12 @@ spec fn is_optimal_entrance(n: int, a: Seq<int>, entrance: int) -> bool
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: int, a: Seq<int>) -> (result: int)
+fn solve(n: i8, a: Vec<i8>) -> (result: i8)
   requires
-    valid_input(n, a),
+    valid_input(n as int, a@.map(|i, x: i8| x as int)),
   ensures
-    1 <= result <= n,
-    is_optimal_entrance(n, a, result),
+    1 <= result as int <= n as int,
+    is_optimal_entrance(n as int, a@.map(|i, x: i8| x as int), result as int),
 // </vc-spec>
 // <vc-code>
 {

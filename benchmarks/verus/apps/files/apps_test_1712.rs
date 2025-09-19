@@ -37,9 +37,9 @@ spec fn correct_result(result: Seq<Vec<char>>, n: int, a: int, b: int, mobs: Seq
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: int, a: int, b: int, mobs: Seq<int>) -> (result: Vec<Vec<char>>)
-    requires valid_input(n, a, b, mobs)
-    ensures correct_result(result@, n, a, b, mobs)
+fn solve(n: i8, a: i8, b: i8, mobs: Vec<i8>) -> (result: Vec<Vec<char>>)
+    requires valid_input(n as int, a as int, b as int, mobs@.map_values(|x: i8| x as int))
+    ensures correct_result(result@, n as int, a as int, b as int, mobs@.map_values(|x: i8| x as int))
 // </vc-spec>
 // <vc-code>
 {

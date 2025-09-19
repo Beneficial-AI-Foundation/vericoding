@@ -72,8 +72,8 @@ spec fn int_to_string_helper(n: int, acc: Seq<char>) -> Seq<char>
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(stdin_input: Seq<char>) -> (output: Seq<char>)
-    requires stdin_input.len() > 0
+fn solve(stdin_input: Vec<u8>) -> (output: Vec<u8>)
+    requires stdin_input@.len() > 0
 // </vc-spec>
 // <vc-code>
 {

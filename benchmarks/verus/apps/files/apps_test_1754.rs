@@ -13,10 +13,10 @@ spec fn is_strongest_in_school(student_idx: int, powers: Seq<int>, schools: Seq<
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: int, m: int, k: int, powers: Seq<int>, schools: Seq<int>, chosen: Seq<int>) -> (result: int)
+fn solve(n: i8, m: i8, k: i8, powers: Vec<i8>, schools: Vec<i8>, chosen: Vec<i8>) -> (result: i8)
   requires 
       n >= 1 && m >= 1 && k >= 1 && k <= n && m <= n,
-      powers.len() == n && schools.len() == n && chosen.len() == k
+      powers@.len() == n as nat && schools@.len() == n as nat && chosen@.len() == k as nat
   ensures 
       result >= 0 && result <= k
 // </vc-spec>

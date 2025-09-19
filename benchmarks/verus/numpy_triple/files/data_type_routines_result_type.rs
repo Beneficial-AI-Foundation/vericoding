@@ -66,14 +66,14 @@ fn result_type(operands: Vec<NumpyOperand>) -> (result: NumpyDType)
     requires operands.len() > 0,
     ensures
 
-        forall|i: int| 0 <= i < operands.len() ==> 
-            type_rank(result) >= type_rank(operand_type(operands[i])),
+        forall|i: int| 0 <= i < operands.len() as int ==> 
+            type_rank(result) >= type_rank(operand_type(operands@[i])),
 
-        exists|i: int| 0 <= i < operands.len() && 
-            type_rank(result) == type_rank(operand_type(operands[i])),
+        exists|i: int| 0 <= i < operands.len() as int && 
+            type_rank(result) == type_rank(operand_type(operands@[i])),
 
-        forall|i: int, j: int| 0 <= i < operands.len() && 0 <= j < operands.len() ==>
-            type_rank(result) >= type_rank(promote_types(operand_type(operands[i]), operand_type(operands[j]))),
+        forall|i: int, j: int| 0 <= i < operands.len() as int && 0 <= j < operands.len() as int ==>
+            type_rank(result) >= type_rank(promote_types(operand_type(operands@[i]), operand_type(operands@[j]))),
 // </vc-spec>
 // <vc-code>
 {

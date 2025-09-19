@@ -24,14 +24,14 @@ spec fn extended_string(s: Seq<char>, k: int) -> Seq<char> {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(s: Seq<char>, k: int) -> (result: int)
+fn solve(s: Vec<char>, k: i8) -> (result: i8)
     requires 
         k >= 1,
         s.len() >= 1,
     ensures 
         result >= 0,
         result % 2 == 0,
-        result <= s.len() + k,
+        result as int <= s@.len() + k as int,
 // </vc-spec>
 // <vc-code>
 {

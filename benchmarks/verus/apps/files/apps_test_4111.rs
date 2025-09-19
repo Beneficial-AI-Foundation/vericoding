@@ -64,12 +64,12 @@ spec fn count_helper(arr: Seq<int>, i: int, count1: int, count2: int, temp1: int
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: int, arr: Seq<int>) -> (result: int)
+fn solve(n: i8, arr: Vec<i8>) -> (result: i8)
     requires 
-        valid_input(n, arr),
+        valid_input(n as int, arr@.map(|i: int, x: i8| x as int)),
     ensures 
-        0 <= result <= n,
-        result == count_balanced_removals(arr),
+        0 <= result as int <= n as int,
+        result as int == count_balanced_removals(arr@.map(|i: int, x: i8| x as int)),
 // </vc-spec>
 // <vc-code>
 {

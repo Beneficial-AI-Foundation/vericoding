@@ -27,9 +27,9 @@ spec fn correct_output(angles: Seq<int>, result: Seq<int>) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(angles: Seq<int>) -> (result: Seq<int>)
-    requires valid_input(angles)
-    ensures correct_output(angles, result)
+fn solve(angles: Vec<i8>) -> (result: Vec<i8>)
+    requires valid_input(angles@.map(|i, x: i8| x as int))
+    ensures correct_output(angles@.map(|i, x: i8| x as int), result@.map(|i, x: i8| x as int))
 // </vc-spec>
 // <vc-code>
 {

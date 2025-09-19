@@ -33,13 +33,13 @@ spec fn compute_result(coins: Seq<int>) -> int {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(coins: Seq<int>) -> (result: int)
+fn solve(coins: Vec<i8>) -> (result: i8)
     requires
-        valid_input(coins),
+        valid_input(coins@.map(|i, x| x as int)),
     ensures
-        result == compute_result(coins),
-        has_valid_solution(coins) ==> result == total_coins(coins) / 5,
-        !has_valid_solution(coins) ==> result == -1,
+        result as int == compute_result(coins@.map(|i, x| x as int)),
+        has_valid_solution(coins@.map(|i, x| x as int)) ==> result as int == total_coins(coins@.map(|i, x| x as int)) / 5,
+        !has_valid_solution(coins@.map(|i, x| x as int)) ==> result as int == -1,
 // </vc-spec>
 // <vc-code>
 {

@@ -25,13 +25,13 @@ spec fn count_adjacent_same_pairs_up_to(s: Seq<char>, i: int) -> int
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: int, s: Seq<char>) -> (result: int)
+fn solve(n: i8, s: Vec<char>) -> (result: i8)
     requires 
-        valid_input(n, s),
+        valid_input(n as int, s@),
     ensures 
         result >= 0,
         result <= n - 1,
-        result == count_adjacent_same_pairs(s, n),
+        result as int == count_adjacent_same_pairs(s@, n as int),
 // </vc-spec>
 // <vc-code>
 {

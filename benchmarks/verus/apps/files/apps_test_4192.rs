@@ -15,12 +15,12 @@ spec fn can_travel(d: int, t: int, s: int) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(d: int, t: int, s: int) -> (result: &'static str)
+fn solve(d: i8, t: i8, s: i8) -> (result: &'static str)
     requires 
-        valid_input(d, t, s),
+        valid_input(d as int, t as int, s as int),
     ensures 
-        can_travel(d, t, s) ==> result == "Yes",
-        !can_travel(d, t, s) ==> result == "No",
+        can_travel(d as int, t as int, s as int) ==> result == "Yes",
+        !can_travel(d as int, t as int, s as int) ==> result == "No",
 // </vc-spec>
 // <vc-code>
 {

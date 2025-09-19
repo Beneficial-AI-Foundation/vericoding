@@ -59,13 +59,13 @@ spec fn min_moves_to_one(n: nat) -> nat
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: nat) -> (result: int)
+fn solve(n: u8) -> (result: i8)
     requires
-        valid_input(n),
+        valid_input(n as nat),
     ensures
         result >= -1,
-        result == -1 <==> !can_reach_one(n),
-        result >= 0 ==> can_reach_one(n) && result == min_moves_to_one(n),
+        result == -1 <==> !can_reach_one(n as nat),
+        result >= 0 ==> can_reach_one(n as nat) && result == min_moves_to_one(n as nat) as i8,
 // </vc-spec>
 // <vc-code>
 {

@@ -41,8 +41,8 @@ spec fn stack_algorithm_results_in_empty_stack(input: Seq<char>) -> bool
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(input: Seq<char>) -> (result: Seq<char>)
-    ensures result.len() > 0
+fn solve(input: Vec<char>) -> (result: Vec<char>)
+    ensures result@.len() > 0
 // </vc-spec>
 // <vc-code>
 {

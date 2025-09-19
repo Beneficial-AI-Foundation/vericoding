@@ -23,9 +23,9 @@ spec fn valid_pascal_triangle(triangle: Seq<Seq<int>>, num_rows: int) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn generate(num_rows: int) -> (result: Seq<Seq<int>>)
+fn generate(num_rows: i8) -> (result: Vec<Vec<i8>>)
     requires num_rows >= 0
-    ensures valid_pascal_triangle(result, num_rows)
+    ensures valid_pascal_triangle(result@.map(|i, row: Vec<i8>| row@.map(|j, x: i8| x as int)), num_rows as int)
 // </vc-spec>
 // <vc-code>
 {

@@ -30,12 +30,12 @@ spec fn parse_input(input: Seq<char>) -> (int, Seq<char>) {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(input: Seq<char>) -> (result: Seq<char>)
+fn solve(input: Vec<char>) -> (result: Vec<char>)
     requires 
-        valid_input(input)
+        valid_input(input@)
     ensures 
-        result.len() > 0,
-        result[result.len() - 1] == '\n'
+        result@.len() > 0,
+        result@[result@.len() - 1] == '\n'
 // </vc-spec>
 // <vc-code>
 {

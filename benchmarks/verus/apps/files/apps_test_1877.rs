@@ -35,13 +35,15 @@ spec fn count_transitions_helper(s: Seq<char>, pos: int, x: int, y: int, pred: i
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: int, s: Seq<char>) -> (result: int)
-    requires valid_input(n, s)
+fn solve(n: i8, s: Vec<char>) -> (result: i8)
+    requires 
+        valid_input(n as int, s@),
+        n >= 0
     ensures 
         result >= 0 &&
         result <= n &&
         (n == 0 ==> result == 0) &&
-        result == count_kingdom_transitions(s)
+        result as int == count_kingdom_transitions(s@)
 // </vc-spec>
 // <vc-code>
 {

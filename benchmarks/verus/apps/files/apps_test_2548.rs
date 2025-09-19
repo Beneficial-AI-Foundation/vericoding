@@ -54,12 +54,12 @@ spec fn count_good_subarrays_helper(digits: Seq<int>, pos: int, freq_map: Map<in
 // </vc-helpers>
 
 // <vc-spec>
-fn count_good_subarrays_in_array(digits: Seq<int>) -> (count: int)
+fn count_good_subarrays_in_array(digits: Vec<i8>) -> (count: i8)
     requires 
-        valid_input(digits),
+        valid_input(digits@.map(|i, x| x as int)),
     ensures 
         count >= 0,
-        count == count_good_subarrays(digits),
+        count as int == count_good_subarrays(digits@.map(|i, x| x as int)),
 // </vc-spec>
 // <vc-code>
 {

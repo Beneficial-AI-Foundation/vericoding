@@ -47,14 +47,14 @@ spec fn count_valid_k_values(n: nat) -> int {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: nat) -> (result: int)
+fn solve(n: u8) -> (result: i8)
     requires 
-        valid_input(n)
+        valid_input(n as nat)
     ensures 
-        result == count_valid_k_values(n),
-        n == 1 ==> result == -1,
-        n > 1 ==> result == count_divisors(n as int - 1) as int + count_special_divisors(n) as int - 1,
-        result >= -1
+        result as int == count_valid_k_values(n as nat),
+        n == 1 ==> result as int == -1,
+        n > 1 ==> result as int == count_divisors(n as int - 1) as int + count_special_divisors(n as nat) as int - 1,
+        result as int >= -1
 // </vc-spec>
 // <vc-code>
 {

@@ -23,9 +23,9 @@ spec fn valid_input(n: int, sizes: Seq<int>) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: int, sizes: Seq<int>) -> (result: int)
-    requires valid_input(n, sizes)
-    ensures 1 <= result <= n
+fn solve(n: i8, sizes: Vec<i8>) -> (result: i8)
+    requires valid_input(n as int, sizes@.map(|x: int, v: i8| v as int))
+    ensures 1 <= result as int <= n as int
 // </vc-spec>
 // <vc-code>
 {

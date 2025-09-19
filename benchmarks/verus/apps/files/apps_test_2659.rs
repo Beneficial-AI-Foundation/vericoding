@@ -31,9 +31,9 @@ spec fn valid_output(result: Seq<int>, k: int) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(k: int) -> (result: Seq<int>)
-  requires k >= 1
-  ensures valid_output(result, k)
+fn solve(k: i8) -> (result: Vec<i8>)
+  requires k as int >= 1
+  ensures valid_output(result@.map(|i: int, x: i8| x as int), k as int)
 // </vc-spec>
 // <vc-code>
 {

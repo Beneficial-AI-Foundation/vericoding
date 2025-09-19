@@ -49,12 +49,12 @@ spec fn reverse_seq(s: Seq<int>) -> Seq<int>
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: int, a: Seq<int>) -> (result: Seq<int>)
+fn solve(n: i8, a: Vec<i8>) -> (result: Vec<i8>)
     requires 
-        valid_input(n, a),
+        valid_input(n as int, a@.map(|i: int, x: i8| x as int)),
     ensures 
-        result.len() == n,
-        result == compute_result(a),
+        result.len() == n as int,
+        result@.map(|i: int, x: i8| x as int) == compute_result(a@.map(|i: int, x: i8| x as int)),
 // </vc-spec>
 // <vc-code>
 {

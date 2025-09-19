@@ -22,13 +22,13 @@ spec fn count_segments(s: Seq<char>) -> int
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(s: Seq<char>) -> (result: int)
+fn solve(s: Vec<char>) -> (result: i8)
     requires 
-        valid_input(s),
+        valid_input(s@),
     ensures 
         result >= 0,
-        result == count_segments(s) - 1,
-        result <= s.len() - 1,
+        result as int == count_segments(s@) - 1,
+        result as int <= s.len() - 1,
 // </vc-spec>
 // <vc-code>
 {

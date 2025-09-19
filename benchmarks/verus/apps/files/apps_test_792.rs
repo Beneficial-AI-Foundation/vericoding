@@ -59,8 +59,8 @@ spec fn filter_positive(deposits: Seq<int>) -> Seq<int>
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: int, d: int, transactions: Seq<int>) -> (result: int)
-  requires valid_input(n, d, transactions)
+fn solve(n: i8, d: i8, transactions: Vec<i8>) -> (result: i8)
+  requires valid_input(n as int, d as int, transactions@.map(|x: int, y: i8| y as int))
   ensures result == -1 || result >= 0
 // </vc-spec>
 // <vc-code>

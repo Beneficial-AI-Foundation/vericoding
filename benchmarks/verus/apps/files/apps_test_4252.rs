@@ -40,12 +40,12 @@ spec fn consecutive_x_count(s: Seq<char>, pos: int) -> int
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(s: Seq<char>) -> (result: int)
-    requires valid_input(s)
+fn solve(s: Vec<char>) -> (result: i8)
+    requires valid_input(s@)
     ensures 
         result >= 0,
-        result <= s.len(),
-        result == count_excessive_positions(s)
+        result as int <= s@.len(),
+        result as int == count_excessive_positions(s@)
 // </vc-spec>
 // <vc-code>
 {

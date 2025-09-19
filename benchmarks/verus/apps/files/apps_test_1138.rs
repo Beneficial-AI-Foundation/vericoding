@@ -52,9 +52,9 @@ spec fn correct_result(s: Seq<char>, result: int) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(s: Seq<char>) -> (result: int)
-    requires valid_input(s)
-    ensures correct_result(s, result)
+fn solve(s: Vec<char>) -> (result: i8)
+    requires valid_input(s@)
+    ensures correct_result(s@, result as int)
 // </vc-spec>
 // <vc-code>
 {

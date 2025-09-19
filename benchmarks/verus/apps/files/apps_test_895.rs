@@ -52,9 +52,9 @@ spec fn count_students_in_window_helper(times: Seq<int>, start: int, T: int, ind
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: int, times: Seq<int>, T: int) -> (result: int)
-    requires valid_input(n, times, T)
-    ensures result >= 0 && result <= n && result == max_students_in_window(times, T)
+fn solve(n: i8, times: Vec<i8>, T: i8) -> (result: i8)
+    requires valid_input(n as int, times@.map(|i, v| v as int), T as int)
+    ensures result >= 0 && result <= n && result as int == max_students_in_window(times@.map(|i, v| v as int), T as int)
 // </vc-spec>
 // <vc-code>
 {

@@ -8,12 +8,12 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn loadtxt(fname_len: usize, skiprows: usize) -> (result: Vec<f64>)
+fn loadtxt(fname_len: u8, skiprows: u8) -> (result: Vec<f64>)
     requires 
-        fname_len > 0,
-        skiprows >= 0,
+        fname_len as nat > 0,
+        skiprows as nat >= 0,
     ensures
-        result.len() >= 0,
+        result@.len() >= 0,
 // </vc-spec>
 // <vc-code>
 {

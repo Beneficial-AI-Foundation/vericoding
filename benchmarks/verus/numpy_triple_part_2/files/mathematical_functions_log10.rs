@@ -10,9 +10,9 @@ verus! {
 // <vc-spec>
 fn numpy_log10(x: Vec<f32>) -> (result: Vec<f32>)
     requires 
-        x.len() > 0,
+        x@.len() > 0,
     ensures 
-        result.len() == x.len(),
+        result@.len() == x@.len(),
 // </vc-spec>
 // <vc-code>
 {

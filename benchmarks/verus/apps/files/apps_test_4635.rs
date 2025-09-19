@@ -61,9 +61,9 @@ spec fn split_by_space(line: Seq<char>) -> Seq<Seq<char>> {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(stdin_input: Seq<char>) -> (result: Seq<char>)
-    requires valid_input(stdin_input)
-    ensures result.len() >= 0
+fn solve(stdin_input: Vec<char>) -> (result: Vec<char>)
+    requires valid_input(stdin_input@)
+    ensures result@.len() >= 0
 // </vc-spec>
 // <vc-code>
 {

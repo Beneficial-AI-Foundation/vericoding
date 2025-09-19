@@ -40,9 +40,9 @@ spec fn no_partition_exists(result: Seq<Seq<int>>) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: int, numbers: Seq<int>) -> (result: Seq<Seq<int>>)
-    requires valid_input(n, numbers)
-    ensures no_partition_exists(result) || valid_partition(result, numbers)
+fn solve(n: i8, numbers: Vec<i8>) -> (result: Vec<Vec<i8>>)
+    requires valid_input(n as int, numbers@.map(|i: int, x: i8| x as int))
+    ensures no_partition_exists(result@.map(|i: int, v: Vec<i8>| v@.map(|j: int, x: i8| x as int))) || valid_partition(result@.map(|i: int, v: Vec<i8>| v@.map(|j: int, x: i8| x as int)), numbers@.map(|i: int, x: i8| x as int))
 // </vc-spec>
 // <vc-code>
 {

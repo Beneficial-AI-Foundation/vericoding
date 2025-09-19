@@ -60,9 +60,9 @@ spec fn cyclic_shift_remainder_helper(s: Seq<char>, shift: int, m: int, pos: int
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(stdin_input: Seq<char>) -> (result: Seq<char>)
-    requires valid_input(stdin_input)
-    ensures valid_output(result)
+fn solve(stdin_input: Vec<char>) -> (result: Vec<char>)
+    requires valid_input(stdin_input@)
+    ensures valid_output(result@)
 // </vc-spec>
 // <vc-code>
 {

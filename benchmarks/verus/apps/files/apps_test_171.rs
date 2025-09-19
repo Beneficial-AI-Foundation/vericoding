@@ -45,15 +45,15 @@ spec fn strip_whitespace(s: Seq<char>) -> Seq<char>
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(input: Seq<char>) -> (output: Seq<char>)
-    requires input.len() > 0
+fn solve(input: Vec<char>) -> (output: Vec<char>)
+    requires input@.len() > 0
     ensures ({
-        let processed_input = trim_newline(input);
+        let processed_input = trim_newline(input@);
         let stripped = strip_whitespace(processed_input);
         if is_valid_password(stripped) {
-            output == seq!['C', 'o', 'r', 'r', 'e', 'c', 't', '\n']
+            output@ == seq!['C', 'o', 'r', 'r', 'e', 'c', 't', '\n']
         } else {
-            output == seq!['T', 'o', 'o', ' ', 'w', 'e', 'a', 'k', '\n']
+            output@ == seq!['T', 'o', 'o', ' ', 'w', 'e', 'a', 'k', '\n']
         }
     })
 // </vc-spec>

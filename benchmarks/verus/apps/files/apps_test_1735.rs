@@ -36,12 +36,12 @@ spec fn count_max_moves_helper(s: Seq<char>, i: nat, stack: Seq<char>, moves: na
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(s: Seq<char>) -> (result: &'static str)
+fn solve(s: Vec<char>) -> (result: &'static str)
     requires s.len() >= 1
     ensures
         result == "Yes" || result == "No",
-        result == "Yes" <==> count_max_moves(s) % 2 == 1,
-        result == "No" <==> count_max_moves(s) % 2 == 0,
+        result == "Yes" <==> count_max_moves(s@) % 2 == 1,
+        result == "No" <==> count_max_moves(s@) % 2 == 0,
 // </vc-spec>
 // <vc-code>
 {

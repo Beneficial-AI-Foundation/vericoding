@@ -37,13 +37,13 @@ spec fn valid_input(n: int, k: int) -> bool
 // </vc-helpers>
 
 // <vc-spec>
-fn count_numbers_with_exactly_k_non_zero_digits(n: int, k: int) -> (count: int)
+fn count_numbers_with_exactly_k_non_zero_digits(n: i8, k: i8) -> (count: i8)
 requires
-    valid_input(n, k)
+    valid_input(n as int, k as int)
 ensures
-    count == count_numbers_with_k_non_zero_digits(n, k),
-    count >= 0,
-    count <= n
+    count as int == count_numbers_with_k_non_zero_digits(n as int, k as int),
+    count as int >= 0,
+    count as int <= n as int
 // </vc-spec>
 // <vc-code>
 {

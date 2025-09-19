@@ -48,10 +48,10 @@ spec fn compute_payment_backward(buyers: Seq<&str>, p: int, current_index: int, 
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: int, p: int, buyers: Seq<&str>) -> (result: int)
-    requires valid_input(n, p, buyers)
+fn solve(n: i8, p: i8, buyers: Vec<&str>) -> (result: i8)
+    requires valid_input(n as int, p as int, buyers@)
     ensures result >= 0,
-            result == compute_total_payment(buyers, p)
+            result as int == compute_total_payment(buyers@, p as int)
 // </vc-spec>
 // <vc-code>
 {

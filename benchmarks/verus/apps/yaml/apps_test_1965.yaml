@@ -50,14 +50,14 @@ vc-preamble: |-
 vc-helpers: |
 
 vc-spec: |-
-  fn solve_case(n: int, k: int, ratings: Seq<int>) -> (answer: int)
+  fn solve_case(n: i8, k: i8, ratings: Vec<i8>) -> (answer: i8)
       requires 
-          valid_input(n, ratings)
+          valid_input(n as int, ratings@.map(|i: int, x: i8| x as int))
       ensures 
           answer >= 0 && answer <= 2,
-          all_infected(k, ratings) ==> answer == 0,
-          can_infect_in_one_contest(k, ratings) && !all_infected(k, ratings) ==> answer == 1,
-          requires_two_contests(k, ratings) ==> answer == 2
+          all_infected(k as int, ratings@.map(|i: int, x: i8| x as int)) ==> answer == 0,
+          can_infect_in_one_contest(k as int, ratings@.map(|i: int, x: i8| x as int)) && !all_infected(k as int, ratings@.map(|i: int, x: i8| x as int)) ==> answer == 1,
+          requires_two_contests(k as int, ratings@.map(|i: int, x: i8| x as int)) ==> answer == 2
 
 vc-code: |-
   {

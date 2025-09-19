@@ -34,12 +34,12 @@ spec fn valid_input(n: int, m: int, k: int) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: int, m: int, k: int) -> (result: int)
-  requires valid_input(n, m, k)
+fn solve(n: i8, m: i8, k: i8) -> (result: i8)
+  requires valid_input(n as int, m as int, k as int)
   ensures 
-    1 <= result <= n * m,
-    count_less_or_equal_value(n, m, result) >= k,
-    result == 1 || count_less_or_equal_value(n, m, result - 1) < k
+    1 <= result as int <= (n as int) * (m as int),
+    count_less_or_equal_value(n as int, m as int, result as int) >= k as int,
+    result as int == 1 || count_less_or_equal_value(n as int, m as int, (result as int) - 1) < k as int
 // </vc-spec>
 // <vc-code>
 {

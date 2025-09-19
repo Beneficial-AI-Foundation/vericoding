@@ -28,8 +28,8 @@ spec fn sum_below(m: Seq<int>, dm: Seq<int>) -> int
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: int, m: Seq<int>) -> (result: int)
-    requires valid_input(n, m)
+fn solve(n: i8, m: Vec<i8>) -> (result: i8)
+    requires valid_input(n as int, m@.map(|_i, v: i8| v as int))
     ensures result >= 0
 // </vc-spec>
 // <vc-code>

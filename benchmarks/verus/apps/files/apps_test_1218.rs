@@ -40,13 +40,13 @@ spec fn valid_solution(n: int, k: int, result: int) -> bool
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: int, k: int) -> (result: int)
+fn solve(n: i8, k: i8) -> (result: i8)
     requires 
-        valid_input(n, k)
+        valid_input(n as int, k as int)
     ensures 
         result >= -1,
-        (result == -1) <==> impossibility_condition(n, k),
-        valid_solution(n, k, result)
+        (result == -1) <==> impossibility_condition(n as int, k as int),
+        valid_solution(n as int, k as int, result as int)
 // </vc-spec>
 // <vc-code>
 {

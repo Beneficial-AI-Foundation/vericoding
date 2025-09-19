@@ -30,9 +30,9 @@ spec fn valid_output(x: int, result: int) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn min_bacteria(x: int) -> (result: int)
-    requires valid_input(x)
-    ensures valid_output(x, result)
+fn min_bacteria(x: i8) -> (result: i8)
+    requires valid_input(x as int)
+    ensures valid_output(x as int, result as int)
 // </vc-spec>
 // <vc-code>
 {

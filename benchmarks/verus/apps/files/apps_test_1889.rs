@@ -58,10 +58,10 @@ spec fn compute_score(grid: Seq<Seq<int>>) -> int {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: int, m: int, q: int, grid: Seq<Seq<int>>, queries: Seq<(int, int)>) -> (results: Vec<int>)
+fn solve(n: i8, m: i8, q: i8, grid: Vec<Vec<i8>>, queries: Vec<(i8, i8)>) -> (results: Vec<i8>)
     requires 
-        valid_grid(grid, n, m),
-        valid_queries(queries, q, n, m),
+        valid_grid(grid@.map(|i: int, row: Vec<i8>| row@.map(|j: int, x: i8| x as int)), n as int, m as int),
+        valid_queries(queries@.map(|k: int, query: (i8, i8)| (query.0 as int, query.1 as int)), q as int, n as int, m as int),
     ensures 
         results.len() == q,
 // </vc-spec>

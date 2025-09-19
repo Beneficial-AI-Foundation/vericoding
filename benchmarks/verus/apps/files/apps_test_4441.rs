@@ -85,9 +85,9 @@ spec fn int_to_string_helper(n: int) -> Seq<char>
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(stdin_input: Seq<char>) -> (result: Seq<char>)
-    requires valid_input(stdin_input)
-    ensures result == expected_output(stdin_input)
+fn solve(stdin_input: Vec<char>) -> (result: Vec<char>)
+    requires valid_input(stdin_input@)
+    ensures result@ == expected_output(stdin_input@)
 // </vc-spec>
 // <vc-code>
 {

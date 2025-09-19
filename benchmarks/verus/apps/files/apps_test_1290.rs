@@ -30,9 +30,9 @@ spec fn correct_result(n: int, squares: Seq<int>, result: int) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: int, m: int, squares: Seq<int>) -> (result: int)
-    requires valid_input(n, m, squares)
-    ensures correct_result(n, squares, result)
+fn solve(n: i8, m: i8, squares: Vec<i8>) -> (result: i8)
+    requires valid_input(n as int, m as int, squares@.map(|i: int, v: i8| v as int))
+    ensures correct_result(n as int, squares@.map(|i: int, v: i8| v as int), result as int)
 // </vc-spec>
 // <vc-code>
 {

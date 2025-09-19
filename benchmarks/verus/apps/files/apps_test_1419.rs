@@ -45,13 +45,13 @@ spec fn check_formatting(s: Seq<char>, k: int, max_width: int, pos: int, lines: 
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(k: int, s: Seq<char>) -> (result: int)
+fn solve(k: i8, s: Vec<char>) -> (result: i8)
     requires k >= 1,
             s.len() >= 1,
     ensures result >= 1,
-            result <= s.len(),
-            can_format_text(s, k, result),
-            result > 1 ==> !can_format_text(s, k, result - 1),
+            result <= s@.len(),
+            can_format_text(s@, k as int, result as int),
+            result > 1 ==> !can_format_text(s@, k as int, (result - 1) as int),
 // </vc-spec>
 // <vc-code>
 {

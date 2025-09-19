@@ -28,13 +28,13 @@ vc-preamble: |-
 vc-helpers: |
 
 vc-spec: |-
-  fn determine_winner(x: int, y: int) -> (winner: &'static str)
+  fn determine_winner(x: i8, y: i8) -> (winner: &'static str)
       requires 
-          valid_input(x, y),
+          valid_input(x as int, y as int),
       ensures 
           winner == "Alice" || winner == "Brown",
-          (winner == "Alice") <==> alice_wins(x, y),
-          (winner == "Brown") <==> brown_wins(x, y),
+          (winner == "Alice") <==> alice_wins(x as int, y as int),
+          (winner == "Brown") <==> brown_wins(x as int, y as int),
 
 vc-code: |-
   {

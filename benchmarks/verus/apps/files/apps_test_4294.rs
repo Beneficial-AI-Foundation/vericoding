@@ -15,9 +15,9 @@ spec fn correct_output(x: int, a: int, result: int) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(x: int, a: int) -> (result: int)
-    requires valid_input(x, a)
-    ensures correct_output(x, a, result)
+fn solve(x: i8, a: i8) -> (result: i8)
+    requires valid_input(x as int, a as int)
+    ensures correct_output(x as int, a as int, result as int)
 // </vc-spec>
 // <vc-code>
 {

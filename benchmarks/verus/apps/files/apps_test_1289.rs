@@ -81,7 +81,19 @@ spec fn calculate_total_distance(n: int, positions: Seq<int>, visits: Seq<int>) 
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: int, positions: Seq<int>, m: int, visits: Seq<int>) -> (result: int)
+fn solve(n: i8, positions: Vec<i8>, m: i8, visits: Vec<i8>) -> (result: i8)
+    requires
+        n >= 1,
+        positions.len() == n as nat,
+        is_sorted(positions@.map(|i, x: i8| x as int)),
+        m >= 1,
+        visits.len() == m as nat
+    ensures
+        result as int == if has_ambiguous_path(n as int, positions@.map(|i, x: i8| x as int), visits@.map(|i, x: i8| x as int)) {
+            -1
+        } else {
+            calculate_total_distance(n as int, positions@.map(|i, x: i8| x as int), visits@.map(|i, x: i8| x as int))
+        }
 // </vc-spec>
 // <vc-code>
 {

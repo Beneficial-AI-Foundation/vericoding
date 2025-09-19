@@ -15,14 +15,14 @@ spec fn power(base: int, exp: int) -> int
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: int, k: int) -> (result: int)
+fn solve(n: i8, k: i8) -> (result: i8)
     requires 
         n > 0 && k >= 0,
     ensures 
         result > 0,
-        result % n == 0,
-        result % power(10, k) == 0,
-        forall|m: int| #[trigger] (m % n) == 0 && #[trigger] (m % power(10, k)) == 0 && m > 0 ==> result <= m,
+        (result as int) % (n as int) == 0,
+        (result as int) % power(10, k as int) == 0,
+        forall|m: int| #[trigger] (m % (n as int)) == 0 && #[trigger] (m % power(10, k as int)) == 0 && m > 0 ==> (result as int) <= m,
 // </vc-spec>
 // <vc-code>
 {

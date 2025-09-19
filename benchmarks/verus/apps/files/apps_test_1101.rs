@@ -24,14 +24,14 @@ spec fn optimal_max_distance(placement: Seq<int>) -> int {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: usize, k: usize, rooms: Seq<char>) -> (result: usize)
+fn solve(n: usize, k: usize, rooms: Vec<char>) -> (result: usize)
     requires 
         n > 0 &&
         k > 0 &&
         k < n &&
-        rooms.len() == n &&
-        (forall|i: int| 0 <= i < n ==> #[trigger] rooms[i] == '0' || #[trigger] rooms[i] == '1') &&
-        Set::new(|i: int| 0 <= i < n && rooms[i] == '0').len() >= k + 1
+        rooms@.len() == n &&
+        (forall|i: int| 0 <= i < n ==> #[trigger] rooms@[i] == '0' || #[trigger] rooms@[i] == '1') &&
+        Set::new(|i: int| 0 <= i < n && rooms@[i] == '0').len() >= k + 1
     ensures 
         result >= 0
 // </vc-spec>

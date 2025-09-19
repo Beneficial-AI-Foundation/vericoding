@@ -26,12 +26,12 @@ spec fn correct_for_edge_cases(result: int, n: int, t: int) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: int, t: int) -> (result: int)
+fn solve(n: i8, t: i8) -> (result: i8)
 requires 
-    valid_input(n, t)
+    valid_input(n as int, t as int)
 ensures 
-    valid_result(result, n, t),
-    correct_for_edge_cases(result, n, t)
+    valid_result(result as int, n as int, t as int),
+    correct_for_edge_cases(result as int, n as int, t as int)
 // </vc-spec>
 // <vc-code>
 {

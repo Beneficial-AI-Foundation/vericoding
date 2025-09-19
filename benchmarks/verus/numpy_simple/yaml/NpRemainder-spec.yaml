@@ -8,7 +8,7 @@ vc-preamble: |-
 vc-helpers: |-
 
 vc-spec: |-
-  fn remainder(a: Vec<i32>, b: Vec<i32>) -> (result: Vec<i32>)
+  fn remainder(a: Vec<i8>, b: Vec<i8>) -> (result: Vec<i8>)
       requires 
           a.len() == b.len(),
           forall|i: int| 0 <= i < b.len() ==> b[i] != 0,

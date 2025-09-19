@@ -37,10 +37,10 @@ spec fn is_optimal_rotations(camera_angle: int, result: int) -> bool
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(x: int) -> (result: int)
+fn solve(x: i8) -> (result: u8)
     ensures 
         0 <= result <= 3,
-        is_optimal_rotations(x, result)
+        is_optimal_rotations(x as int, result as int)
 // </vc-spec>
 // <vc-code>
 {

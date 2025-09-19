@@ -48,9 +48,9 @@ spec fn count_killable_helper(sorted_health: Seq<int>, a: int, remaining_k: int,
 // </vc-helpers>
 
 // <vc-spec>
-fn solve_core(n: int, a: int, b: int, k: int, h: Seq<int>) -> (result: int)
-    requires valid_input(n, a, b, k, h)
-    ensures 0 <= result <= n
+fn solve_core(n: i8, a: i8, b: i8, k: i8, h: Vec<i8>) -> (result: i8)
+    requires valid_input(n as int, a as int, b as int, k as int, h@.map_values(|x: i8| x as int))
+    ensures 0 <= result as int <= n as int
 // </vc-spec>
 // <vc-code>
 {

@@ -21,9 +21,9 @@ verus! {
         result <= n
     }
 
-    fn solve_groups(n: int) -> (result: int)
-        requires valid_input(n)
-        ensures valid_solution(n, result)
+    fn solve_groups(n: i8) -> (result: i8)
+        requires valid_input(n as int)
+        ensures valid_solution(n as int, result as int)
 // </vc-preamble>
 
 // <vc-helpers>

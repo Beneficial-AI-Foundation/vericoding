@@ -41,9 +41,9 @@ spec fn valid_solution(n: int, packets: Seq<int>, result: Seq<int>) -> bool
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: int, packets: Seq<int>) -> (result: Seq<int>)
-    requires valid_input(n, packets)
-    ensures valid_solution(n, packets, result)
+fn solve(n: i8, packets: Vec<i8>) -> (result: Vec<i8>)
+    requires valid_input(n as int, packets@.map(|i: int, x: i8| x as int))
+    ensures valid_solution(n as int, packets@.map(|i: int, x: i8| x as int), result@.map(|i: int, x: i8| x as int))
 // </vc-spec>
 // <vc-code>
 {

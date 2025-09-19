@@ -43,9 +43,9 @@ spec fn valid_input(s: Seq<char>, k: int, w: Seq<int>) -> bool
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(s: Seq<char>, k: int, w: Seq<int>) -> (result: int)
-  requires valid_input(s, k, w)
-  ensures result == string_value(s, w) + append_value(s.len() as int, k, max_value(w))
+fn solve(s: Vec<char>, k: i8, w: Vec<i8>) -> (result: i8)
+  requires valid_input(s@, k as int, w@.map(|i, x| x as int))
+  ensures result as int == string_value(s@, w@.map(|i, x| x as int)) + append_value(s@.len() as int, k as int, max_value(w@.map(|i, x| x as int)))
 // </vc-spec>
 // <vc-code>
 {

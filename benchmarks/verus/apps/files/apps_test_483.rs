@@ -42,14 +42,14 @@ spec fn is_minimal_collision_time(result: int, directions: Seq<char>, positions:
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: int, directions: Seq<char>, positions: Seq<int>) -> (result: int)
+fn solve(n: i8, directions: Vec<char>, positions: Vec<i8>) -> (result: i8)
     requires 
-        valid_input(n, directions, positions),
+        valid_input(n as int, directions@, positions@.map(|i: int, v: i8| v as int)),
     ensures 
         result == -1 || result >= 0,
-        result != -1 ==> has_collision(directions, positions),
-        result == -1 ==> !has_collision(directions, positions),
-        result != -1 ==> is_minimal_collision_time(result, directions, positions),
+        result != -1 ==> has_collision(directions@, positions@.map(|i: int, v: i8| v as int)),
+        result == -1 ==> !has_collision(directions@, positions@.map(|i: int, v: i8| v as int)),
+        result != -1 ==> is_minimal_collision_time(result as int, directions@, positions@.map(|i: int, v: i8| v as int)),
 // </vc-spec>
 // <vc-code>
 {

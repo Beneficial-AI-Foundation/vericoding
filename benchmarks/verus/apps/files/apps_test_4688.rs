@@ -23,11 +23,11 @@ spec fn painting_ways(n: int, k: int) -> int
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: int, k: int) -> (result: int)
+fn solve(n: i8, k: i8) -> (result: i8)
   requires 
-    valid_input(n, k)
+    valid_input(n as int, k as int)
   ensures 
-    result == painting_ways(n, k),
+    result as int == painting_ways(n as int, k as int),
     result > 0
 // </vc-spec>
 // <vc-code>

@@ -32,9 +32,9 @@ spec fn expected_result(n: int) -> int {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: int) -> (result: int)
-    requires valid_input(n)
-    ensures result == expected_result(n) && result > 0
+fn solve(n: i8) -> (result: i8)
+    requires valid_input(n as int)
+    ensures result as int == expected_result(n as int) && result > 0
 // </vc-spec>
 // <vc-code>
 {

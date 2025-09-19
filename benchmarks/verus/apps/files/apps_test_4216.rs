@@ -30,13 +30,13 @@ spec fn is_factor_pair(a: int, b: int, n: int) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: int) -> (result: int)
+fn solve(n: i8) -> (result: i8)
   requires 
-    valid_input(n)
+    valid_input(n as int)
   ensures 
     result >= 1,
-    exists|a: int, b: int| is_factor_pair(a, b, n) && result == f(a, b),
-    forall|a: int, b: int| is_factor_pair(a, b, n) ==> result <= f(a, b),
+    exists|a: int, b: int| is_factor_pair(a, b, n as int) && result as int == f(a, b),
+    forall|a: int, b: int| is_factor_pair(a, b, n as int) ==> result as int <= f(a, b),
 // </vc-spec>
 // <vc-code>
 {

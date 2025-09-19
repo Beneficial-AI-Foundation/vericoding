@@ -29,8 +29,8 @@ spec fn valid_checkerboard_placement(result: Seq<Seq<char>>, n: int) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: int) -> (result: Vec<String>)
-    requires valid_input(n)
+fn solve(n: i8) -> (result: Vec<String>)
+    requires valid_input(n as int)
 // </vc-spec>
 // <vc-code>
 {

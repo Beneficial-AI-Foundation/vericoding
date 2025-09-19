@@ -19,8 +19,8 @@ spec fn gcd(a: int, b: int) -> int
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: int, a: int, b: int, p: int, q: int) -> (result: int)
-  requires valid_input(n, a, b, p, q)
+fn solve(n: i8, a: i8, b: i8, p: i8, q: i8) -> (result: i8)
+  requires valid_input(n as int, a as int, b as int, p as int, q as int)
   ensures result >= 0
 // </vc-spec>
 // <vc-code>

@@ -1,0 +1,31 @@
+vc-description: |-
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn sign(a: Vec<i8>) -> (result: Vec<i8>)
+      ensures
+          result.len() == a.len(),
+          forall|i: int| 0 <= i < a.len() ==> (
+              (a[i] as int > 0 ==> result[i] as int == 1) &&
+              (a[i] as int == 0 ==> result[i] as int == 0) &&
+              (a[i] as int < 0 ==> result[i] as int == -1)
+          )
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      unreached()
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {}

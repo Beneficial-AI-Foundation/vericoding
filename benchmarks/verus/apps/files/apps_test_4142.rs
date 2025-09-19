@@ -16,9 +16,9 @@ spec fn easily_playable(s: Seq<char>) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(s: Seq<char>) -> (result: String)
-    requires valid_input(s)
-    ensures result@ == seq!['Y', 'e', 's'] <==> easily_playable(s)
+fn solve(s: String) -> (result: String)
+    requires valid_input(s@)
+    ensures result@ == seq!['Y', 'e', 's'] <==> easily_playable(s@)
 // </vc-spec>
 // <vc-code>
 {

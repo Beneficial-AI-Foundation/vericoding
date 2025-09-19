@@ -17,11 +17,11 @@ spec fn remaining_farm_area(a: int, b: int) -> int
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(a: int, b: int) -> (result: int)
+fn solve(a: i8, b: i8) -> (result: i8)
     requires 
-        valid_farm_dimensions(a, b)
+        valid_farm_dimensions(a as int, b as int)
     ensures 
-        result == remaining_farm_area(a, b),
+        result as int == remaining_farm_area(a as int, b as int),
         result >= 0
 // </vc-spec>
 // <vc-code>

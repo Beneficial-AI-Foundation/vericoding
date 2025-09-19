@@ -42,9 +42,9 @@ spec fn int_to_string_helper(n: int) -> Seq<char>
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(s: Seq<char>) -> (result: Seq<char>)
-    requires valid_input(s)
-    ensures valid_abbreviation(s, result)
+fn solve(s: Vec<char>) -> (result: Vec<char>)
+    requires valid_input(s@)
+    ensures valid_abbreviation(s@, result@)
 // </vc-spec>
 // <vc-code>
 {
