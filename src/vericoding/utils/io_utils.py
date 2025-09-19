@@ -2,6 +2,7 @@
 
 import logging
 import threading
+import yaml
 from pathlib import Path
 
 from ..core.config import ProcessingConfig
@@ -47,3 +48,55 @@ def save_iteration_code(
 
         debug_path = f"debug/{relative_dir}" if str(relative_dir) != "." else "debug"
         logger.info(f"    💾 Saved {phase} code to: {debug_path}/{iteration_file_name}")
+
+
+def load_postamble_from_yaml(config: ProcessingConfig, lean_file_path: Path) -> str | None:
+    """Load the postamble from the corresponding YAML file for unit test mode.
+    
+    Args:
+        config: Processing configuration
+        lean_file_path: Path to the Lean file (relative to files_dir)
+        
+    Returns:
+        The postamble content if found, None otherwise
+    """
+    if config.language != 'lean' or not config.unit_test:
+        return None
+    
+    # Convert from files/ directory to yaml/ directory
+    yaml_file_path = lean_file_path.with_suffix('.yaml')
+    
+    # Look for yaml file in yaml/ subdirectory parallel to files/
+    files_dir = Path(config.files_dir)
+    
+    # If the files_dir ends with 'files', replace with 'yaml'
+    if files_dir.name == 'files':
+        yaml_dir = files_dir.parent / 'yaml'
+    else:
+        # Try common patterns: look for yaml/ subdirectory
+        yaml_dir = files_dir / 'yaml'
+        if not yaml_dir.exists():
+            # Alternative: yaml/ directory parallel to current directory
+            yaml_dir = files_dir.parent / 'yaml'
+    
+    full_yaml_path = yaml_dir / yaml_file_path.name
+    
+    if not full_yaml_path.exists():
+        logger.warning(f"    ⚠️ YAML file not found for unit test mode: {full_yaml_path}")
+        return None
+    
+    try:
+        with full_yaml_path.open('r', encoding='utf-8') as f:
+            yaml_content = yaml.safe_load(f)
+        
+        postamble = yaml_content.get('vc-postamble', '')
+        if postamble:
+            logger.info(f"    📋 Loaded postamble from: {full_yaml_path}")
+            return postamble.strip()
+        else:
+            logger.info(f"    📋 No postamble found in: {full_yaml_path}")
+            return None
+            
+    except Exception as e:
+        logger.warning(f"    ⚠️ Error loading YAML file {full_yaml_path}: {e}")
+        return None

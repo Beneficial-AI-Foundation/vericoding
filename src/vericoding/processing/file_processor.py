@@ -16,7 +16,7 @@ from ..core.llm_providers import create_llm_provider
 from ..core.prompts import PromptLoader
 from ..core.language_tools import verify_file
 from ..core.llm_providers import call_llm
-from ..utils.io_utils import save_iteration_code
+from ..utils.io_utils import save_iteration_code, load_postamble_from_yaml
 from .code_fixer import extract_code, apply_json_replacements
 from .cheat_checker import has_final_failure_cheats, check_for_cheats
 
@@ -98,6 +98,112 @@ class ProcessingResult:
     llm_responses: list[LLMResponse] | None = None
 
 
+@dataclass 
+class UnitTestResult:
+    """Result of unit test with postamble."""
+    success: bool
+    verification: 'VerificationResult'
+
+
+
+
+def run_unit_test_with_postamble(
+    config: ProcessingConfig, 
+    current_code: str, 
+    file_path: str, 
+    relative_path: Path, 
+    output_path: Path, 
+    base_file_name: str, 
+    iteration: int
+) -> UnitTestResult:
+    """Run unit test with postamble for Lean files.
+    
+    This function is only called when verification succeeded and no cheats were found.
+    
+    Args:
+        config: Processing configuration
+        current_code: The current working code (clean, no cheats)
+        file_path: Path to the original file
+        relative_path: Relative path from files_dir  
+        output_path: Path to the output file
+        base_file_name: Base filename without extension
+        iteration: Current iteration number
+        
+    Returns:
+        UnitTestResult with success status and verification result
+    """
+    logger.info("    🧪 Testing with postamble...")
+    
+    # Load postamble from YAML
+    relative_path_for_yaml = Path(file_path).relative_to(Path(config.files_dir))
+    postamble = load_postamble_from_yaml(config, relative_path_for_yaml)
+    
+    if not postamble:
+        logger.info("    ⚠️  No postamble found - treating as normal success")
+        from ..core.language_tools import VerificationResult
+        verification = VerificationResult(success=True, error=None, output="")
+        return UnitTestResult(success=True, verification=verification)
+    
+    # Create code with postamble appended
+    code_with_postamble = current_code + "\n\n" + postamble
+    
+    # Save code with postamble for debugging
+    save_iteration_code(config, relative_path, iteration, code_with_postamble, "unit_test_with_postamble")
+    
+    # Write code with postamble to temporary file for verification
+    temp_output_path = output_path.with_suffix(".unit_test" + config.language_config.file_extension)
+    with temp_output_path.open("w") as f:
+        f.write(code_with_postamble)
+    
+    # Verify with postamble
+    logger.info("    🧪 Verifying with postamble...")
+    postamble_verification = verify_file(config, str(temp_output_path))
+    
+    if postamble_verification.success:
+        logger.info("    ✓ Unit test PASSED: Verification with postamble successful!")
+        
+        # Clean up temporary file
+        temp_output_path.unlink()
+        return UnitTestResult(success=True, verification=postamble_verification)
+    else:
+        logger.info(f"    ✗ Unit test FAILED: Verification with postamble failed")
+        logger.info(f"    ✗ Postamble error: {postamble_verification.error[:200] if postamble_verification.error else 'Unknown error'}...")
+        
+        # Update verification result to reflect unit test failure
+        postamble_error = postamble_verification.error or "Unknown postamble verification error"
+        combined_error = f"UNIT TEST FAILED: Solution passed verification but failed when postamble was added.\n\nPostamble verification error:\n{postamble_error}"
+        
+        # Save postamble error for debugging
+        if config.debug_mode:
+            postamble_error_log_path = (
+                Path(config.output_dir) / "debug" / relative_path.parent
+                if str(relative_path.parent) != "."
+                else Path(config.output_dir) / "debug"
+            ) / f"{base_file_name}_iter{iteration}_unit_test_postamble_error.log"
+            
+            postamble_error_log_path.parent.mkdir(parents=True, exist_ok=True)
+            with postamble_error_log_path.open("w") as f:
+                f.write(f"=== Unit Test Postamble Error - Iteration {iteration} ===\n")
+                f.write(f"File: {file_path}\n")
+                f.write(f"Time: {time.strftime('%Y-%m-%d %H:%M:%S')}\n")
+                f.write(f"\nPostamble Verification Error:\n")
+                f.write("-" * 80 + "\n")
+                f.write(postamble_error)
+                f.write("\n" + "-" * 80 + "\n")
+                f.write("\nPostamble Content:\n")
+                f.write("-" * 80 + "\n")
+                f.write(postamble)
+                f.write("\n" + "-" * 80 + "\n")
+            logger.info(f"    💾 Saved postamble error log to: debug/{relative_path.parent}/{base_file_name}_iter{iteration}_unit_test_postamble_error.log")
+        
+        # Clean up temporary file
+        if temp_output_path.exists():
+            temp_output_path.unlink()
+        
+        # Create failure verification result
+        from ..core.language_tools import VerificationResult
+        verification = VerificationResult(success=False, error=combined_error, output=postamble_verification.output)
+        return UnitTestResult(success=False, verification=verification)
 
 
 def process_spec_file(
@@ -310,29 +416,29 @@ def process_spec_file(
             verification = verify_file(config, str(output_path))
             last_verification = verification
             
-            # Check for cheats in final code - combine with verification output
-            if has_final_failure_cheats(current_code, config.language):
+            # Check for cheats - but only report if final success would be claimed
+            has_cheats = has_final_failure_cheats(current_code, config.language)
+            
+            if verification.success and has_cheats:
+                # Verification succeeded but cheats found - treat as verification failure for iteration purposes
                 cheats = check_for_cheats(current_code, config.language)
                 cheat_descriptions = [desc for _, desc in cheats]
-                logger.info(f"    ⚠️ Final code contains verification bypasses: {'; '.join(cheat_descriptions)}")
+                logger.info(f"    ⚠️ Code contains verification bypasses: {'; '.join(cheat_descriptions)}")
                 
-                # Combine cheat message with original verification result
                 cheat_message = f"VERIFICATION BYPASSES DETECTED: {'; '.join(cheat_descriptions)}. Code contains verification bypasses and cannot be considered successfully verified."
-                
-                if verification.success:
-                    # Verification succeeded but cheats found
-                    combined_error = f"{cheat_message}\n\nNote: Verification succeeded but verification bypasses prevent final success."
-                    logger.info("    ✗ Marking as failed due to verification bypasses (verification succeeded)")
-                else:
-                    # Verification failed AND cheats found - combine both messages
-                    original_error = verification.error or "Verification failed"
-                    combined_error = f"{cheat_message}\n\nOriginal verification output:\n{original_error}"
-                    logger.info("    ✗ Failed due to both verification errors AND verification bypasses")
+                combined_error = f"{cheat_message}\n\nNote: Verification succeeded but verification bypasses prevent success."
+                logger.info("    ✗ Marking as failed due to verification bypasses (verification succeeded)")
                 
                 verification = replace(verification,
                     success=False,
                     error=combined_error
                 )
+            elif not verification.success and has_cheats:
+                # Both verification failed AND cheats found - just mention both in logs but keep original verification error
+                cheats = check_for_cheats(current_code, config.language)
+                cheat_descriptions = [desc for _, desc in cheats]
+                logger.info(f"    ⚠️ Code also contains verification bypasses: {'; '.join(cheat_descriptions)} (in addition to verification failure)")
+                # Keep original verification.error for normal iteration feedback
             
             # Log verification attempt to wandb
             if wandb.run:
@@ -356,8 +462,24 @@ def process_spec_file(
 
             if verification.success:
                 logger.info("    ✓ Verification successful!")
-                success = True
-                break
+                
+                # Unit test mode: Test with postamble if enabled and code is clean (no cheats)
+                if config.unit_test and config.language == 'lean' and not has_cheats:
+                    logger.info("    🧪 Clean solution found - entering unit test mode with postamble!")
+                    unit_test_result = run_unit_test_with_postamble(
+                        config, current_code, file_path, relative_path, 
+                        output_path, base_file_name, iteration
+                    )
+                    success = unit_test_result.success
+                    if not success:
+                        verification = unit_test_result.verification
+                        # In unit test mode, failure here is final - no more attempts
+                        break
+                else:
+                    success = True
+                
+                if success:
+                    break
             else:
                 # Save full error log to debug directory
                 if config.debug_mode and verification.error:

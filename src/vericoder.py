@@ -190,6 +190,12 @@ Examples:
         help="Tag to add to W&B run for experiment tracking",
     )
 
+    parser.add_argument(
+        "--unit-test",
+        action="store_true",
+        help="Unit test mode: verify solution with postamble from YAML (only valid for Lean language)",
+    )
+
     return parser.parse_args()
 
 
@@ -201,6 +207,11 @@ def setup_configuration(args) -> ProcessingConfig:
     # Validate assume-unformatted-lean argument
     if args.assume_unformatted_lean and args.language != 'lean':
         print(f"Error: --assume-unformatted-lean can only be used with Lean language, not '{args.language}'")
+        sys.exit(1)
+
+    # Validate unit-test argument
+    if args.unit_test and args.language != 'lean':
+        print(f"Error: --unit-test can only be used with Lean language, not '{args.language}'")
         sys.exit(1)
 
     print(
@@ -277,6 +288,7 @@ def setup_configuration(args) -> ProcessingConfig:
         llm=args.llm,
         max_directory_traversal_depth=args.max_directory_traversal_depth,
         assume_unformatted_lean=args.assume_unformatted_lean,
+        unit_test=args.unit_test,
     )
 
     print("\nConfiguration:")
@@ -288,6 +300,7 @@ def setup_configuration(args) -> ProcessingConfig:
     print(f"- Tool path: {get_tool_path(config)}")
     print(f"- LLM: {config.llm}")
     print(f"- Debug mode: {'Enabled' if config.debug_mode else 'Disabled'}")
+    print(f"- Unit test mode: {'Enabled' if config.unit_test else 'Disabled'}")
     print(f"- API rate limit delay: {config.api_rate_limit_delay}s")
     print("\nProceeding with configuration...")
 
