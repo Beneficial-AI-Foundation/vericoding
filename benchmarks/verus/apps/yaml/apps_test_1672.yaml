@@ -25,15 +25,15 @@ vc-preamble: |-
 vc-helpers: |-
 
 vc-spec: |-
-  fn solve(magnets: Seq<Seq<char>>) -> (result: usize)
+  fn solve(magnets: Vec<Vec<char>>) -> (result: usize)
       requires 
-          valid_input(magnets)
+          valid_input(magnets@.map(|i, v: Vec<char>| v@))
       ensures 
           result >= 0,
-          magnets.len() == 0 ==> result == 0,
-          magnets.len() > 0 ==> result >= 1,
-          result <= magnets.len(),
-          valid_input(magnets) ==> result == count_groups(magnets) as usize
+          magnets@.len() == 0 ==> result == 0,
+          magnets@.len() > 0 ==> result >= 1,
+          result <= magnets@.len(),
+          valid_input(magnets@.map(|i, v: Vec<char>| v@)) ==> result == count_groups(magnets@.map(|i, v: Vec<char>| v@)) as usize
 
 vc-code: |-
   {

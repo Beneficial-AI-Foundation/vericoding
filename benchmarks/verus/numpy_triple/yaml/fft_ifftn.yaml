@@ -1,0 +1,52 @@
+vc-description: |-
+  Compute the N-dimensional inverse discrete Fourier Transform (IFFTN).
+
+  The IFFTN extends the 1D inverse FFT to multiple dimensions, computing
+  the inverse of the N-dimensional DFT. For a 2D array, this applies the
+  inverse transform along both dimensions.
+
+  For a 2D array of size m×n, the (i,j)-th output element is computed as:
+  X[i,j] = (1/(m*n)) * Σ(k=0 to m-1) Σ(l=0 to n-1) a[k,l] * exp(2πi*(i*k/m + j*l/n))
+
+  This is the mathematical inverse of the N-dimensional FFT.
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+  /* Sum of integers over finite indices */
+  pub open spec fn int_sum(n: nat, f: spec_fn(int) -> int) -> int
+      decreases n
+  {
+      if n == 0 {
+          0
+      } else {
+          f((n - 1) as int) + int_sum((n - 1) as nat, f)
+      }
+  }
+vc-helpers: |-
+
+vc-spec: |-
+  fn ifftn(a: Vec<Vec<i8>>) -> (result: Vec<Vec<i8>>)
+      requires 
+          a.len() > 0,
+          a.len() < usize::MAX,
+          forall|i: int| 0 <= i < a@.len() ==> a@[i].len() > 0,
+          forall|i: int| 0 <= i < a@.len() ==> a@[i].len() < usize::MAX,
+          forall|i: int, j: int| 0 <= i < a@.len() && 0 <= j < a@.len() ==> a@[i].len() == a@[j].len(),
+      ensures 
+          result@.len() == a@.len(),
+          forall|i: int| 0 <= i < result@.len() ==> result@[i].len() == a@[0].len(),
+          forall|i: int, j: int| #[trigger] result@[i][j] == 0 || 
+              (0 <= i < result@.len() && 0 <= j < result@[i].len()),
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      unreached()
+      // impl-end
+  }
+vc-postamble: |-
+
+  }
+  fn main() {}

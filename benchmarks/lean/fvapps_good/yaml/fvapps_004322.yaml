@@ -1,0 +1,86 @@
+vc-description: |-
+  /-
+  Mr. Khalkhoul, an amazing teacher, likes to answer questions sent by his students via e-mail, but he often doesn't have the time to answer all of them. In this kata you will help him by making a program that finds
+  some of the answers.
+
+  You are given a `question` which is a string containing the question and some `information` which is a list of strings representing potential answers.
+
+  Your task is to find among `information` the UNIQUE string that has the highest number of words in common with `question`. We shall consider words to be separated by a single space.
+
+  You can assume that:
+
+  * all strings given contain at least one word and have no leading or trailing spaces,
+  * words are composed with alphanumeric characters only
+
+  You must also consider the case in which you get no matching words (again, ignoring the case): in such a case return `None/nil/null`.
+
+  Mr. Khalkhoul is countin' on you :)
+  -/
+
+vc-preamble: |
+
+vc-helpers: |
+
+vc-definitions: |-
+  def answer (question : String) (info_list : List String) : Option String :=
+    sorry
+
+vc-theorems: |-
+  theorem answer_none_on_empty_list (q : String) :
+    answer q [] = none := by sorry
+
+  theorem result_in_info_list (q : String) (info_list : List String) :
+    let r := answer q info_list
+    match r with
+    | none => True
+    | some result => result ∈ info_list
+    := by sorry
+
+  theorem result_shares_words (q : String) (info_list : List String) :
+    let r := answer q info_list
+    match r with
+    | none => True
+    | some result =>
+      ∃ word ∈ (String.splitOn q " ").map String.toLower,
+      word ∈ String.splitOn result.toLower " "
+    := by sorry
+
+  theorem result_has_max_overlap (q : String) (info_list : List String) :
+    let r := answer q info_list
+    match r with
+    | none => True
+    | some result =>
+      let qwords := String.splitOn q.toLower " "
+      let score (s : String) := (qwords.filter (λ w => w ∈ String.splitOn s.toLower " ")).length
+      ∀ info ∈ info_list, score result ≥ score info
+    := by sorry
+
+  theorem single_answer_behavior (q : String) (info : String) :
+    let qwords := String.splitOn q.toLower " "
+    let iwords := String.splitOn info.toLower " "
+    let shares_words := ∃ w ∈ qwords, w ∈ iwords
+    answer q [info] = if shares_words then some info else none
+    := by sorry
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded
+
+  /--
+  info: 'no he is NOT'
+  -/
+  #guard_msgs in
+  #eval answer "is khalkhoul dumb" ["no he is NOT", "i guess so"]
+
+  /--
+  info: 'my name is bob'
+  -/
+  #guard_msgs in
+  #eval answer "what is your name" ["my name is bob", "i am 20 years old"]
+
+  /--
+  info: None
+  -/
+  #guard_msgs in
+  #eval answer "abc def ghi" ["xyz 123", "foo bar"]
+

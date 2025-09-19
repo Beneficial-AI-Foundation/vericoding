@@ -2,9 +2,9 @@ vc-description: |-
   /-
   # Task
    The sequence of `Chando` is an infinite sequence of all Chando's numbers in ascending order.
-  
+
    A number is called `Chando's` if it is an integer that can be represented as a sum of different positive integer powers of 5.
-  
+
    The first Chando's numbers is 5 (5^1). And the following nth Chando's numbers are:
    ```
    25  (5^2)
@@ -15,23 +15,23 @@ vc-description: |-
    ...
    ...
    ```
-  
+
    Your task is to find the Chando's nth number for a given `n`.
-  
+
   # Input/Output
-  
+
    - `[input]` integer `n`
-  
+
     `1 <= n <= 7000`
-  
+
    - `[output]` an integer
-  
+
     nth Chando's number
   -/
 
-vc-preamble: |-
+vc-preamble: |
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def nth_chandos_number (n : Nat) : Nat :=
@@ -43,26 +43,26 @@ vc-theorems: |-
     nth_chandos_number 2 = 25 ∧
     nth_chandos_number 9 = 630 :=
     sorry
-  
-  /-
-  info: 5
-  -/
-  -- #guard_msgs in
-  -- #eval nth_chandos_number 1
-  
-  /-
-  info: 25
-  -/
-  -- #guard_msgs in
-  -- #eval nth_chandos_number 2
-  
-  /-
-  info: 630
-  -/
-  -- #guard_msgs in
-  -- #eval nth_chandos_number 9
 
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
+
+  /-
+  info: 5
+  -/
+  #guard_msgs in
+  #eval nth_chandos_number 1
+
+  /-
+  info: 25
+  -/
+  #guard_msgs in
+  #eval nth_chandos_number 2
+
+  /-
+  info: 630
+  -/
+  #guard_msgs in
+  #eval nth_chandos_number 9
 

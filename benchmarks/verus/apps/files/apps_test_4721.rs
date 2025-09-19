@@ -21,11 +21,11 @@ spec fn correct_output(n: int, m: int, blocks: int) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: int, m: int) -> (blocks: int)
+fn solve(n: i8, m: i8) -> (blocks: i8)
     requires 
-        valid_input(n, m)
+        valid_input(n as int, m as int)
     ensures 
-        correct_output(n, m, blocks),
+        correct_output(n as int, m as int, blocks as int),
         blocks >= 1
 // </vc-spec>
 // <vc-code>

@@ -17,12 +17,12 @@ spec fn bus_service_exists(input: Seq<char>) -> bool
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(input: Seq<char>) -> (result: Seq<char>)
+fn solve(input: Vec<char>) -> (result: Vec<char>)
     requires
-        valid_input(input),
+        valid_input(input@),
     ensures
-        result == seq!['Y', 'e', 's'] <==> bus_service_exists(input),
-        result == seq!['Y', 'e', 's'] || result == seq!['N', 'o'],
+        result@ == seq!['Y', 'e', 's'] <==> bus_service_exists(input@),
+        result@ == seq!['Y', 'e', 's'] || result@ == seq!['N', 'o'],
 // </vc-spec>
 // <vc-code>
 {

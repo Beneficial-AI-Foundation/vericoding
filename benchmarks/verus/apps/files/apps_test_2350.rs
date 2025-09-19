@@ -22,9 +22,9 @@ spec fn count_different_sums(x1: int, y1: int, x2: int, y2: int) -> int
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(input: Seq<char>) -> (output: Seq<char>)
-    requires valid_input(input)
-    ensures output.len() >= 0
+fn solve(input: Vec<char>) -> (output: Vec<char>)
+    requires valid_input(input@)
+    ensures output@.len() >= 0
 // </vc-spec>
 // <vc-code>
 {

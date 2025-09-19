@@ -32,12 +32,13 @@ spec fn compute_result_helper(s: Seq<char>, i: int, cur: int, pm: int, ans: int)
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(s: Seq<char>) -> (result: int)
+fn solve(s: Vec<char>) -> (result: i8)
     requires 
-        valid_input(s)
+        valid_input(s@),
+        s.len() <= 127
     ensures 
-        result >= s.len(),
-        result == compute_result(s)
+        result as int >= s@.len(),
+        result as int == compute_result(s@)
 // </vc-spec>
 // <vc-code>
 {

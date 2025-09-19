@@ -8,17 +8,17 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn clip(a: Vec<i32>, min: i32, max: i32) -> (result: Vec<i32>)
+fn clip(a: Vec<i8>, min: i8, max: i8) -> (result: Vec<i8>)
     requires min < max,
     ensures
         result.len() == a.len(),
-        forall|i: int| 0 <= i < a.len() ==> {
-            if a[i] < min {
-                result[i] == min
-            } else if a[i] > max {
-                result[i] == max
+        forall|i: int| 0 <= i < a@.len() ==> {
+            if a@[i] < min as int {
+                result@[i] == min as int
+            } else if a@[i] > max as int {
+                result@[i] == max as int
             } else {
-                result[i] == a[i]
+                result@[i] == a@[i]
             }
         }
 // </vc-spec>

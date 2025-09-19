@@ -116,7 +116,7 @@ def parse_lean_file(file_path: str) -> Tuple[str, List[Dict[str, str]]]:
                 description_text = "".join(description_lines)
                 results.append({
                     "type": "desc",
-                    "string": description_text
+                    "string": description_text.rstrip()
                 })
                 
             elif startswith(line, section_starters) or line.startswith("namespace"):
@@ -151,7 +151,7 @@ def parse_lean_file(file_path: str) -> Tuple[str, List[Dict[str, str]]]:
                 comment_text = "".join(comment_lines)
                 partial_results.append({
                     "type": "doc",
-                    "string": comment_text
+                    "string": comment_text.rstrip()
                 })
                 
             elif startswith(line, ["--"]):
@@ -166,7 +166,7 @@ def parse_lean_file(file_path: str) -> Tuple[str, List[Dict[str, str]]]:
                 comment_text = "".join(comment_lines)
                 partial_results.append({    
                     "type": "comment",
-                    "string": comment_text
+                    "string": comment_text.rstrip()
                 })
                 
             elif startswith(line, ["inductive", "structure", "abbrev", "instance", "class", "opaque", "axiom", "noncomputable"]):
@@ -188,7 +188,7 @@ def parse_lean_file(file_path: str) -> Tuple[str, List[Dict[str, str]]]:
                     constr_text = "".join(constr_lines)
                     partial_results.append({
                         "type": "constr",
-                        "string": constr_text
+                        "string": constr_text.rstrip()
                     })
                 
             elif startswith(line, ["def", "partial def"]):
@@ -219,7 +219,7 @@ def parse_lean_file(file_path: str) -> Tuple[str, List[Dict[str, str]]]:
                 if ends_with_equality:
                     results.append({
                         "type": "sig",
-                        "string": sig_text
+                        "string": sig_text.rstrip()
                     })
                 
                     # Parse implementation      
@@ -235,7 +235,7 @@ def parse_lean_file(file_path: str) -> Tuple[str, List[Dict[str, str]]]:
                         impl_text = "".join(impl_lines)
                         results.append({
                             "type": "impl",
-                            "string": impl_text
+                            "string": impl_text.rstrip()
                         })
 
                 else:
@@ -266,7 +266,7 @@ def parse_lean_file(file_path: str) -> Tuple[str, List[Dict[str, str]]]:
                     else:
                         partial_results.append({
                             "type": "sig",
-                            "string": sig_text
+                            "string": sig_text.rstrip()
                         })
                     
             elif startswith(line, ["theorem"]):
@@ -298,7 +298,7 @@ def parse_lean_file(file_path: str) -> Tuple[str, List[Dict[str, str]]]:
                 if ends_with_by:
                     results.append({
                         "type": "cond",
-                        "string": cond_text
+                        "string": cond_text.rstrip()
                     })
 
                     # Parse proof
@@ -314,7 +314,7 @@ def parse_lean_file(file_path: str) -> Tuple[str, List[Dict[str, str]]]:
                         proof_text = "".join(proof_lines)
                         results.append({
                             "type": "proof",
-                            "string": proof_text
+                            "string": proof_text.rstrip()
                         })
                 else:
                     # check if it ends with ":= sorry" or ":= by sorry"
@@ -333,20 +333,20 @@ def parse_lean_file(file_path: str) -> Tuple[str, List[Dict[str, str]]]:
                     else:
                         partial_results.append({
                             "type": "cond",
-                            "string": cond_text
+                            "string": cond_text.rstrip()
                         })
 
             elif line.startswith("namespace"):
                 partial_results.append({
                     "type": "namespace",
-                    "string": lines[i]
+                    "string": lines[i].rstrip()
                 })                
                 i += 1
 
             elif line.startswith("end"):
                 partial_results.append({
                     "type": "namespace",
-                    "string": lines[i]
+                    "string": lines[i].rstrip()
                 })                
                 i += 1
 
@@ -360,7 +360,7 @@ def parse_lean_file(file_path: str) -> Tuple[str, List[Dict[str, str]]]:
             else:
                 partial_results.append({
                     "type": "other",
-                    "string": lines[i]
+                    "string": lines[i].rstrip()
                 })                
                 i += 1
 

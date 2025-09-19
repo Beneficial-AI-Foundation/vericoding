@@ -24,13 +24,13 @@ spec fn is_maximal_solution(s: Seq<char>, result: int) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(s: Seq<char>) -> (result: usize)
+fn solve(s: Vec<char>) -> (result: usize)
     requires 
-        valid_input(s) &&
-        (exists|k: int| valid_solution(s, k))
+        valid_input(s@) &&
+        (exists|k: int| valid_solution(s@, k))
     ensures 
-        valid_solution(s, result as int) &&
-        is_maximal_solution(s, result as int)
+        valid_solution(s@, result as int) &&
+        is_maximal_solution(s@, result as int)
 // </vc-spec>
 // <vc-code>
 {

@@ -1,35 +1,35 @@
 vc-description: |-
   /-
   Raavan gave a problem to his son, Indrajeet, and asked him to solve the problem to prove his intelligence and power. The Problem was like: Given 3 integers, $N$, $K$, and $X$, produce an array $A$ of length $N$, in which the XOR of all elements of each contiguous sub-array, of length $K$, is exactly equal to $X$. Indrajeet found this problem very tricky and difficult, so, help him to solve this problem.
-  
+
   -----Note:-----
   - $A$i must be an integer between $0$ to $10$$18$ (both inclusive), where $A$i denotes the $i$$th$ element of the array, $A$.
   - If there are multiple solutions, satisfying the problem condition(s), you can print any "one" solution.
-  
+
   -----Input:-----
   - First line will contain $T$, number of testcases. Then, the testcases follow. 
   - Each testcase, contains a single line of input, of 3 integers, $N$, $K$, and $X$.
-  
+
   -----Output:-----
   For each testcase, output in a single line, an array $A$ of $N$ integers, where each element of the array is between $0$ to $10$$18$ (both inclusive), satisfying the conditions of the problem, given by Raavan to his son.
-  
+
   -----Constraints:-----
   - $1 \leq T \leq 1000$
   - $1 \leq N \leq 10^3$
   - $1 \leq K \leq N$
   - $0 \leq X \leq 10$$18$
-  
+
   -----Sample Input:-----
   3
   5 1 4
   5 2 4
   5 3 4
-  
+
   -----Sample Output:-----
   4 4 4 4 4
   3 7 3 7 3
   11 6 9 11 6
-  
+
   -----Explanation:-----
   $Sample$ $Case$ $-$ $1$: Since, we can see, the XOR of all elements of all sub-arrays of length $1$, is equal to $4$, hence, the array {$4,4,4,4,4$}, is a valid solution to the $Sample$ $Case$ $-$ $1$. All contiguous sub-arrays of length $1$, of the output array $A$, are as follows:
   [1,1]: {4} - XOR([1,1]) = $4$
@@ -39,22 +39,22 @@ vc-description: |-
   [5,5]: {4} - XOR([5,5]) = $4$
   -/
 
-vc-preamble: |-
+vc-preamble: |
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def solveXorArray (n k x : Nat) : List Nat := sorry
-  
+
   def arrayXor (arr : List Nat) : Nat := sorry
 
 vc-theorems: |-
   theorem k1_fixed_result :
     solveXorArray 5 1 4 = [4, 4, 4, 4, 4] := sorry
-  
+
   theorem k1_fixed_xor :
     arrayXor (solveXorArray 5 1 4) = 4 := sorry
-  
+
   theorem larger_k_correct (n k x : Nat) 
     (h1 : n ≥ 4) 
     (h2 : k ≥ 4) 
@@ -62,26 +62,26 @@ vc-theorems: |-
     let result := solveXorArray n k x
     (List.length result = n) ∧ 
     (arrayXor result = x) := sorry
-  
-  /-
-  info: [4, 4, 4, 4, 4]
-  -/
-  -- #guard_msgs in
-  -- #eval solve_xor_array 5 1 4
-  
-  /-
-  info: [3, 7, 3, 7, 3]
-  -/
-  -- #guard_msgs in
-  -- #eval solve_xor_array 5 2 4
-  
-  /-
-  info: [11, 6, 9, 11, 6]
-  -/
-  -- #guard_msgs in
-  -- #eval solve_xor_array 5 3 4
 
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
+
+  /-
+  info: [4, 4, 4, 4, 4]
+  -/
+  #guard_msgs in
+  #eval solve_xor_array 5 1 4
+
+  /-
+  info: [3, 7, 3, 7, 3]
+  -/
+  #guard_msgs in
+  #eval solve_xor_array 5 2 4
+
+  /-
+  info: [11, 6, 9, 11, 6]
+  -/
+  #guard_msgs in
+  #eval solve_xor_array 5 3 4
 

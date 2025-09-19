@@ -26,8 +26,8 @@ spec fn compute_max_bourles(r: int, s: Seq<int>, b: Seq<int>) -> int
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(input: Seq<char>) -> (result: Seq<char>)
-    requires input.len() > 0 && input.contains('\n' as char) && valid_input(input)
+fn solve(input: Vec<u8>) -> (result: Vec<u8>)
+    requires input.len() > 0 && input@.contains('\n' as u8) && valid_input(input@.map(|i: int, x: u8| x as char))
     ensures result.len() > 0
 // </vc-spec>
 // <vc-code>

@@ -23,11 +23,11 @@ spec fn spec_min(a: int, b: int) -> int {
 // </vc-helpers>
 
 // <vc-spec>
-fn minimum_moves(n: int, k: int) -> (result: int)
+fn minimum_moves(n: i8, k: i8) -> (result: i8)
     requires 
-        valid_input(n, k)
+        valid_input(n as int, k as int)
     ensures 
-        result == optimal_moves(n, k),
+        result as int == optimal_moves(n as int, k as int),
         result > 0
 // </vc-spec>
 // <vc-code>

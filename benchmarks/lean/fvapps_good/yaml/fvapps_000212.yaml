@@ -1,0 +1,74 @@
+vc-description: |-
+  /-
+  Given the string croakOfFrogs, which represents a combination of the string "croak" from different frogs, that is, multiple frogs can croak at the same time, so multiple “croak” are mixed. Return the minimum number of different frogs to finish all the croak in the given string.
+  A valid "croak" means a frog is printing 5 letters ‘c’, ’r’, ’o’, ’a’, ’k’ sequentially. The frogs have to print all five letters to finish a croak. If the given string is not a combination of valid "croak" return -1.
+
+  Example 1:
+  Input: croakOfFrogs = "croakcroak"
+  Output: 1 
+  Explanation: One frog yelling "croak" twice.
+
+  Example 2:
+  Input: croakOfFrogs = "crcoakroak"
+  Output: 2 
+  Explanation: The minimum number of frogs is two. 
+  The first frog could yell "crcoakroak".
+  The second frog could yell later "crcoakroak".
+
+  Example 3:
+  Input: croakOfFrogs = "croakcrook"
+  Output: -1
+  Explanation: The given string is an invalid combination of "croak" from different frogs.
+
+  Example 4:
+  Input: croakOfFrogs = "croakcroa"
+  Output: -1
+
+  Constraints:
+
+  1 <= croakOfFrogs.length <= 10^5
+  All characters in the string are: 'c', 'r', 'o', 'a' or 'k'.
+  -/
+
+vc-preamble: |
+
+vc-helpers: |
+
+vc-definitions: |-
+  def min_number_of_frogs (s: String) : Int := sorry
+
+  def is_valid_croak (s: String) : Bool :=
+    let counts := ['c', 'r', 'o', 'a', 'k'].map (fun c => s.data.count c)
+    counts.all (· = counts[0]!) ∧ 
+    s.length % 5 = 0 ∧ 
+    (s.length > 0 → s.data[0]! = 'c') ∧
+    (s.length > 0 → s.data[s.length - 1]! = 'k')
+
+vc-theorems: |-
+  theorem min_frogs_upper_bound (n_frogs n_times: Nat) (s: String) :
+    s = String.join (List.replicate (n_frogs * n_times) "croak") →
+    min_number_of_frogs s ≤ n_frogs
+    := sorry
+
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: guarded_and_plausible
+
+  /--
+  info: 1
+  -/
+  #guard_msgs in
+  #eval min_number_of_frogs "croakcroak"
+
+  /--
+  info: 2
+  -/
+  #guard_msgs in
+  #eval min_number_of_frogs "crcoakroak"
+
+  /--
+  info: -1
+  -/
+  #guard_msgs in
+  #eval min_number_of_frogs "croakcrook"
+

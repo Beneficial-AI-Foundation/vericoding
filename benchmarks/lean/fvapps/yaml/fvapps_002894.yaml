@@ -1,19 +1,19 @@
 vc-description: |-
   /-
   Given 2 elevators (named "left" and "right") in a building with 3 floors (numbered `0` to `2`), write a function `elevator` accepting 3 arguments (in order):
-  
+
   - `left` - The current floor of the left elevator
   - `right` - The current floor of the right elevator
   - `call` -  The floor that called an elevator
-  
+
   It should return the name of the elevator closest to the called floor (`"left"`/`"right"`).
-  
+
   In the case where both elevators are equally distant from the called floor, choose the elevator to the right.
-  
+
   You can assume that the inputs will always be valid integers between 0-2.
-  
+
   Examples:
-  
+
   ```python
   elevator(0, 1, 0) # => "left"
   elevator(0, 1, 1) # => "right"
@@ -23,9 +23,9 @@ vc-description: |-
   ```
   -/
 
-vc-preamble: |-
+vc-preamble: |
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def Direction := String
@@ -37,7 +37,7 @@ vc-theorems: |-
     (left right call : Int) :
     (elevator left right call = "left") ∨ (elevator left right call = "right") :=
   sorry
-  
+
   theorem elevator_nearest_to_call
     (left right call : Int) :
     let left_dist := Int.natAbs (call - left)
@@ -45,31 +45,31 @@ vc-theorems: |-
     (left_dist < right_dist → elevator left right call = "left") ∧
     (left_dist ≥ right_dist → elevator left right call = "right") :=
   sorry
-  
+
   theorem elevator_equal_distance
     (pos call : Int) :
     elevator pos pos call = "right" :=
   sorry
-  
-  /-
-  info: 'left'
-  -/
-  -- #guard_msgs in
-  -- #eval elevator 0 1 0
-  
-  /-
-  info: 'right'
-  -/
-  -- #guard_msgs in
-  -- #eval elevator 0 0 0
-  
-  /-
-  info: 'left'
-  -/
-  -- #guard_msgs in
-  -- #eval elevator 1 2 0
 
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+
+  /-
+  info: 'left'
+  -/
+  #guard_msgs in
+  #eval elevator 0 1 0
+
+  /-
+  info: 'right'
+  -/
+  #guard_msgs in
+  #eval elevator 0 0 0
+
+  /-
+  info: 'left'
+  -/
+  #guard_msgs in
+  #eval elevator 1 2 0
 

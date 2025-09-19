@@ -1,0 +1,69 @@
+vc-description: |-
+  Computes the inverse of rfft (real-valued inverse FFT).
+  Specification: irfft computes the inverse of rfft with proper length restoration.
+
+  numpy.fft.irfft computes the inverse of the one-dimensional discrete Fourier Transform for real input, 
+  such that irfft(rfft(a), len(a)) == a within numerical accuracy.
+
+  Parameters:
+  - a: Input array (Hermitian-symmetric complex numbers)
+  - n: Length of transformed axis (default calculates based on input)
+  - axis: Axis to compute inverse FFT (default is last axis)
+  - norm: Normalization mode ("backward", "ortho", "forward")
+  - out: Optional output array
+
+  Returns:
+  - Real-valued array transformed along specified axis
+
+  Notes:
+  - Handles Hermitian-symmetric input from rfft
+  - Requires specifying original data length to avoid information loss
+  - Can resample a series via Fourier interpolation
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+  /* Complex number type for FFT operations */
+  pub struct Complex {
+      /* Real part of the complex number */
+      pub re: f64,
+      /* Imaginary part of the complex number */
+      pub im: f64,
+  }
+  /* Helper function to check if a vector is Hermitian-symmetric */
+  spec fn is_hermitian_symmetric(a: Seq<Complex>) -> bool {
+      a.len() > 0 
+  }
+
+vc-helpers: |
+
+vc-spec: |-
+  fn irfft(a: Vec<Complex>, n: usize) -> (result: Vec<f64>)
+      requires 
+          a.len() > 0,
+          n == 2 * (a.len() - 1),
+          is_hermitian_symmetric(a@),
+      ensures
+          /* Length preservation: output length matches specified n */
+          result.len() == n,
+          /* DC component preservation: first element is real when input DC is real */
+          a@[0].im == 0.0 ==> exists|i: int| 0 <= i < result.len() && result[i] == a@[0].re,
+          /* Hermitian input constraint: the input must be Hermitian-symmetric */
+          is_hermitian_symmetric(a@),
+          /* Length relationship: output length is twice the input length minus 2 */
+          n == 2 * (a.len() - 1),
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      unreached()
+      // impl-end
+  }
+
+vc-postamble: |2-
+
+  }
+  fn main() {}

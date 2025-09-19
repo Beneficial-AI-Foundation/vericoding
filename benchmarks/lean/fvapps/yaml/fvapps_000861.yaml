@@ -7,31 +7,31 @@ vc-description: |-
   After this, Chef will give a number to his friend and he has to give the nearest greater and smaller number to it.
   If there is no greater or lesser number, put -1.
   Help his friend to find the two numbers.
-  
+
   -----Input:-----
   - First-line will contain $T$, the number of test cases. Then the test cases follow. 
   - Each test case contains a single line of input, an integers $N$. 
   - Next line contains $N$ integers separated by a space. 
   - Next line contains a number to be found, $M$. 
-  
+
   -----Output:-----
   For each test case, output in a single line answer given the immediate smaller and greater number separated by a space.
-  
+
   -----Constraints-----
   - $1 \leq T \leq 1000$
   - $3 \leq N \leq 10^5$
   - $1 \leq N_i \leq 10^9$
   - $1 \leq M \leq 10^9$
-  
+
   -----Sample Input:-----
   1
   10
   5 15 1 66 55 32 40 22 34 11
   38
-  
+
   -----Sample Output:-----
   35 41
-  
+
   -----Explaination:-----
   Step 1: 15 5 66 1 32 55 22 40 11 34
   Step 2: 15 7 66 2 34 56 23 41 13 35
@@ -39,9 +39,9 @@ vc-description: |-
   35 is the number lesser than 38 and 41 is the number greater than 38 in the given set of numbers.
   -/
 
-vc-preamble: |-
+vc-preamble: |
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def find_nearest_numbers (n : Nat) (arr : List Int) (target : Int) : Int × Int :=
@@ -60,7 +60,7 @@ vc-theorems: |-
         (smaller ≠ -1 → ¬(smaller < transformed ∧ transformed < target)) ∧
         (greater ≠ -1 → ¬(target < transformed ∧ transformed < greater))) :=
   sorry
-  
+
   theorem find_nearest_numbers_basic_properties
     (n : Nat) (arr : List Int) (target : Int) 
     (h : arr.length > 0) :
@@ -69,26 +69,26 @@ vc-theorems: |-
     (smaller ≠ -1 → smaller < target) ∧
     (greater ≠ -1 → greater > target) :=
   sorry
-  
-  /-
-  info: (35, 41)
-  -/
-  -- #guard_msgs in
-  -- #eval find_nearest_numbers 10 arr1.copy() 38
-  
-  /-
-  info: (41, 56)
-  -/
-  -- #guard_msgs in
-  -- #eval find_nearest_numbers 10 arr2.copy() 50
-  
-  /-
-  info: (13, 23)
-  -/
-  -- #guard_msgs in
-  -- #eval find_nearest_numbers 10 arr3.copy() 15
 
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
+
+  /-
+  info: (35, 41)
+  -/
+  #guard_msgs in
+  #eval find_nearest_numbers 10 arr1.copy() 38
+
+  /-
+  info: (41, 56)
+  -/
+  #guard_msgs in
+  #eval find_nearest_numbers 10 arr2.copy() 50
+
+  /-
+  info: (13, 23)
+  -/
+  #guard_msgs in
+  #eval find_nearest_numbers 10 arr3.copy() 15
 

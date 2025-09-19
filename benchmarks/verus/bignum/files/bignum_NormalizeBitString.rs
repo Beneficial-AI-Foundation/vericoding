@@ -23,12 +23,12 @@ spec fn valid_bit_string(s: Seq<char>) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn normalize_bit_string(s: Seq<char>) -> (t: Seq<char>)
+fn normalize_bit_string(s: Vec<char>) -> (t: Vec<char>)
   ensures 
-    valid_bit_string(t) &&
-    t.len() > 0 &&
-    (t.len() > 1 ==> t[0] != '0') &&
-    (valid_bit_string(s) ==> str2int(s) == str2int(t))
+    valid_bit_string(t@) &&
+    t@.len() > 0 &&
+    (t@.len() > 1 ==> t@[0] != '0') &&
+    (valid_bit_string(s@) ==> str2int(s@) == str2int(t@))
 // </vc-spec>
 // <vc-code>
 {

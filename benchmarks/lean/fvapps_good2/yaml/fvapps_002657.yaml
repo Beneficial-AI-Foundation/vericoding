@@ -1,0 +1,50 @@
+vc-description: |-
+  /-
+  The citizens of Codeland read each word from right to left, meaning that lexicographical comparison works differently in their language. Namely, string ```a``` is lexicographically smaller than string ```b``` if either: ```a``` is a suffix of ```b``` (in common sense, i.e. ```b``` ends with a substring equal to ```a```); or their last ```k``` characters are the same but the ```(k + 1)th``` character from the right in string ```a``` is smaller than the same character in string ```b```.
+  
+  Given an array of words in Codeland language, sort them lexicographically according to Codeland's unique rules.
+  
+  For ```words = ["nigeb", "ta", "eht", "gninnigeb"]```, the output should be
+  ```unusualLexOrder(words) = ["ta", "nigeb", "gninnigeb", "eht"]```.
+  
+  In particular, ```"ta" < "nigeb"``` because ```'a' < 'b'``` and ```"nigeb" < "gninnigeb"``` because the former word is a suffix of the latter.
+  
+  S: codefights.com
+  -/
+  
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded
+
+vc-preamble: |-
+
+vc-helpers: |-
+
+vc-definitions: |-
+  def unusual_lex_order (words: List String) : List String :=
+    sorry
+  
+  def reverse (s: String) : String :=
+    sorry
+
+vc-theorems: |-
+  theorem output_length_matches_input (words: List String) (h: words.length > 0) :
+    (unusual_lex_order words).length = words.length :=
+  sorry
+  
+  theorem output_contains_same_elements (words: List String) (h: words.length > 0) :
+    ∀ x, (x ∈ unusual_lex_order words ↔ x ∈ words) :=
+  sorry
+  
+  theorem reverse_sorted_by_reversed_strings (words: List String) (h: words.length > 0) :
+    ∀ (i: Nat) (h': i + 1 < (unusual_lex_order words).length),
+      let result := unusual_lex_order words
+      Option.isSome (result[i]?) ∧ Option.isSome (result[i+1]?) →
+      reverse (Option.get! result[i]?) ≤ reverse (Option.get! result[i+1]?) :=
+  sorry
+  
+  theorem idempotent (words: List String) (h: words.length > 0) :
+    unusual_lex_order (unusual_lex_order words) = unusual_lex_order words :=
+  sorry
+
+vc-postamble: |-
+

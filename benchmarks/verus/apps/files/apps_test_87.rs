@@ -27,9 +27,9 @@ spec fn columns_needed(m: int, d: int) -> int {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(m: int, d: int) -> (result: int)
-    requires valid_input(m, d)
-    ensures result == columns_needed(m, d) && 4 <= result <= 6
+fn solve(m: i8, d: i8) -> (result: i8)
+    requires valid_input(m as int, d as int)
+    ensures result as int == columns_needed(m as int, d as int) && 4 <= result as int <= 6
 // </vc-spec>
 // <vc-code>
 {

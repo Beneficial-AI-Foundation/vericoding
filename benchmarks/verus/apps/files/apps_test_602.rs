@@ -22,9 +22,9 @@ spec fn presidents() -> Seq<&'static str> {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(a: int) -> (result: &'static str)
-    requires valid_input(a)
-    ensures result == presidents()[a - 1]
+fn solve(a: i8) -> (result: &'static str)
+    requires valid_input(a as int)
+    ensures result == presidents()[(a as int) - 1]
 // </vc-spec>
 // <vc-code>
 {

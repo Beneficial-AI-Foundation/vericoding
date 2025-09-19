@@ -1,0 +1,75 @@
+vc-description: |-
+  /-
+  In this Kata, you will be given an array of arrays and your task will be to return the number of unique arrays that can be formed by picking exactly one element from each subarray. 
+
+  For example: `solve([[1,2],[4],[5,6]]) = 4`, because it results in only `4` possiblites. They are `[1,4,5],[1,4,6],[2,4,5],[2,4,6]`. 
+
+  ```if:r
+  In R, we will use a list data structure.
+  So the argument for `solve` is a list of numeric vectors.
+  ~~~
+  solve(list(c(1, 2), 4, c(5, 6)))
+  [1] 4
+  ~~~
+  ```
+
+  Make sure that you don't count duplicates; for example `solve([[1,2],[4,4],[5,6,6]]) = 4`, since the extra outcomes are just duplicates. 
+
+  See test cases for more examples.
+
+  Good luck!
+
+  If you like this Kata, please try:
+
+  [Sum of integer combinations](https://www.codewars.com/kata/59f3178e3640cef6d90000d5)
+
+  [Sum of array singles](https://www.codewars.com/kata/59f11118a5e129e591000134)
+  -/
+
+vc-preamble: |
+
+vc-helpers: |
+
+vc-definitions: |-
+  def solve (lists : List (List Int)) : Nat :=
+    sorry
+
+vc-theorems: |-
+  theorem solve_positive (lists : List (List Int)) :
+    solve lists ≥ 1 := by
+    sorry
+
+  theorem solve_equals_product_unique (lists : List (List Int)) :
+    solve lists = lists.foldl (fun acc l => acc * (l.eraseDups).length) 1 := by
+    sorry
+
+  theorem solve_empty_list :
+    solve [] = 1 := by
+    sorry 
+
+  theorem solve_single_list (lst : List Int) :
+    solve [lst] = (lst.eraseDups).length := by
+    sorry
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded
+
+  /--
+  info: 4
+  -/
+  #guard_msgs in
+  #eval solve [[1, 2], [4], [5, 6]]
+
+  /--
+  info: 4
+  -/
+  #guard_msgs in
+  #eval solve [[1, 2], [4, 4], [5, 6, 6]]
+
+  /--
+  info: 72
+  -/
+  #guard_msgs in
+  #eval solve [[1, 2, 3], [3, 4, 6, 6, 7], [8, 9, 10, 12, 5, 6]]
+

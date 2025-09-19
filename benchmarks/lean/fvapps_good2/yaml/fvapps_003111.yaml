@@ -1,0 +1,98 @@
+vc-description: |-
+  /-
+  ## Find Mean
+  
+  Find the mean (average) of a list of numbers in an array.
+  
+  ## Information
+  
+  To find the mean (average) of a set of numbers add all of the numbers together and divide by the number of values in the list.
+  
+  For an example list of `1, 3, 5, 7`
+  
+  1. Add all of the numbers
+  
+  ```
+  1+3+5+7 = 16
+  ```
+  
+  2. Divide by the number of values in the list. In this example there are 4 numbers in the list.
+  
+  ```
+  16/4 = 4
+  ```
+  
+  3. The mean (or average) of this list is 4
+  -/
+
+vc-preamble: |-
+
+vc-helpers: |-
+
+vc-definitions: |-
+  def find_average [Add α] [Div α] [OfNat α 0] : List α → α :=
+    sorry
+  
+  def list_min : List Float → Float :=
+    sorry
+  
+  def list_max : List Float → Float :=
+    sorry
+  
+  def list_sum : List Float → Float :=
+    sorry
+  
+  def abs (x : Float) : Float :=
+    sorry
+  
+  def toFloat (n : Nat) : Float :=
+    sorry
+
+vc-theorems: |-
+  theorem find_average_empty {α} [Add α] [Div α] [OfNat α 0] (nums : List α) :
+    nums = [] → find_average nums = 0 := by
+  sorry
+  
+  theorem find_average_bounds (nums : List Float) (h : nums ≠ []) :
+    list_min nums ≤ find_average nums ∧
+    find_average nums ≤ list_max nums := by
+  sorry
+  
+  theorem find_average_sum (nums : List Float) :
+    abs (find_average nums * toFloat nums.length - list_sum nums) < 1e-10 := by
+  sorry
+  
+  theorem find_average_float_empty (nums : List Float) :
+    nums = [] → find_average nums = 0 := by
+  sorry
+  
+  theorem find_average_float_type (nums : List Float) (h : nums ≠ []) :
+    find_average nums + 0 = find_average nums := by
+  sorry
+  
+  theorem find_average_float_sum (nums : List Float) :
+    abs (find_average nums * toFloat nums.length - list_sum nums) < 1e-6 := by
+  sorry
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded
+  
+  /--
+  info: 1
+  -/
+  #guard_msgs in
+  #eval find_average [1]
+  
+  /--
+  info: 4
+  -/
+  #guard_msgs in
+  #eval find_average [1, 3, 5, 7]
+  
+  /--
+  info: 0
+  -/
+  #guard_msgs in
+  #eval find_average []
+

@@ -29,13 +29,13 @@ spec fn calculate_wake_time(a: int, b: int, c: int, d: int) -> int {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(a: int, b: int, c: int, d: int) -> (result: int)
+fn solve(a: i8, b: i8, c: i8, d: i8) -> (result: i8)
     requires 
-        valid_input(a, b, c, d)
+        valid_input(a as int, b as int, c as int, d as int)
     ensures 
-        first_alarm_sufficient(a, b) ==> result == b,
-        never_wakes(a, b, c, d) ==> result == -1,
-        eventually_wakes(a, b, c, d) ==> result == calculate_wake_time(a, b, c, d)
+        first_alarm_sufficient(a as int, b as int) ==> result as int == b as int,
+        never_wakes(a as int, b as int, c as int, d as int) ==> result == -1,
+        eventually_wakes(a as int, b as int, c as int, d as int) ==> result as int == calculate_wake_time(a as int, b as int, c as int, d as int)
 // </vc-spec>
 // <vc-code>
 {

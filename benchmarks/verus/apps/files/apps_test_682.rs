@@ -59,9 +59,9 @@ spec fn valid_result(result: Seq<int>, r1: int, c1: int, r2: int, c2: int) -> bo
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(r1: int, c1: int, r2: int, c2: int) -> (result: Vec<int>)
-    requires valid_position(r1, c1) && valid_position(r2, c2)
-    ensures valid_result(result@, r1, c1, r2, c2)
+fn solve(r1: i8, c1: i8, r2: i8, c2: i8) -> (result: Vec<i8>)
+    requires valid_position(r1 as int, c1 as int) && valid_position(r2 as int, c2 as int)
+    ensures valid_result(result@.map(|_idx: int, x: i8| x as int), r1 as int, c1 as int, r2 as int, c2 as int)
 // </vc-spec>
 // <vc-code>
 {

@@ -1,9 +1,9 @@
 vc-description: |-
   /-
   Beaches are filled with sand, water, fish, and sun. Given a string, calculate how many times the words `"Sand"`, `"Water"`, `"Fish"`, and `"Sun"` appear without overlapping (regardless of the case).
-  
+
   ## Examples
-  
+
   ```python
   sum_of_a_beach("WAtErSlIde")                    ==>  1
   sum_of_a_beach("GolDeNSanDyWateRyBeaChSuNN")    ==>  3
@@ -16,12 +16,12 @@ vc-preamble: |-
   def sumOfABeach (s : String) : Nat :=
     sorry
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def substringExists (s : String) (substr : String) : Bool :=
     sorry
-  
+
   -- Theorem: If a string has no beach words, sum is 0
 
 vc-theorems: |-
@@ -32,32 +32,32 @@ vc-theorems: |-
     (¬ substringExists s "sun" ∧ ¬ substringExists s "SUN") →
     sumOfABeach s = 0 :=
   sorry
-  
+
   -- Theorem: Output is always non-negative and bounded by string length
-  
+
   theorem output_range (s : String) :
     sumOfABeach s ≥ 0 ∧ sumOfABeach s ≤ s.length :=
   sorry
-  
-  /-
-  info: 1
-  -/
-  -- #guard_msgs in
-  -- #eval sum_of_a_beach "WAtErSlIde"
-  
-  /-
-  info: 3
-  -/
-  -- #guard_msgs in
-  -- #eval sum_of_a_beach "GolDeNSanDyWateRyBeaChSuNN"
-  
-  /-
-  info: 4
-  -/
-  -- #guard_msgs in
-  -- #eval sum_of_a_beach "gOfIshsunesunFiSh"
 
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded
+
+  /-
+  info: 1
+  -/
+  #guard_msgs in
+  #eval sum_of_a_beach "WAtErSlIde"
+
+  /-
+  info: 3
+  -/
+  #guard_msgs in
+  #eval sum_of_a_beach "GolDeNSanDyWateRyBeaChSuNN"
+
+  /-
+  info: 4
+  -/
+  #guard_msgs in
+  #eval sum_of_a_beach "gOfIshsunesunFiSh"
 

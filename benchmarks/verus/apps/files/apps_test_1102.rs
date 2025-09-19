@@ -45,11 +45,11 @@ spec fn total_criminals_caught(n: int, a: int, x: Seq<int>) -> int {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: int, a: int, x: Seq<int>) -> (result: int)
-    requires valid_input(n, a, x)
+fn solve(n: i8, a: i8, x: Vec<i8>) -> (result: i8)
+    requires valid_input(n as int, a as int, Seq::new(x.len() as nat, |i: int| x[i] as int))
     ensures 
         result >= 0 &&
-        result == total_criminals_caught(n, a, x)
+        result as int == total_criminals_caught(n as int, a as int, Seq::new(x.len() as nat, |i: int| x[i] as int))
 // </vc-spec>
 // <vc-code>
 {

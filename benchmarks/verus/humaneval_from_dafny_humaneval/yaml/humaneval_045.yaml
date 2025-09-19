@@ -1,0 +1,43 @@
+vc-description: |-
+  This task involves calculating the area of a triangle given the length of its base and height using the standard formula: Area = (base × height) ÷ 2. The implementation should handle non-negative inputs and ensure the result is also non-negative.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+  spec fn valid_input(base: int, height: int) -> bool {
+      base >= 0 && height >= 0
+  }
+
+  spec fn triangle_area_formula(base: int, height: int) -> int {
+      (base * height) / 2
+  }
+
+vc-helpers: |-
+  spec fn triangle_area(a: int, h: int) -> int {
+      (a * h) / 2
+  }
+
+vc-spec: |-
+  fn calculate_triangle_area(base: u8, height: u8) -> (area: u8)
+      requires 
+          valid_input(base as int, height as int)
+      ensures 
+          area as int >= 0,
+          area as int == triangle_area_formula(base as int, height as int),
+          (base == 0 || height == 0) ==> area == 0
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      unreached()
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+
+  fn main() {}

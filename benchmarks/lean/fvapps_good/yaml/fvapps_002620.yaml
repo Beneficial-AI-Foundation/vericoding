@@ -1,0 +1,81 @@
+vc-description: |-
+  /-
+  KISS stands for Keep It Simple Stupid.
+  It is a design principle for keeping things simple rather than complex.
+
+  You are the boss of Joe.
+
+  Joe is submitting words to you to publish to a blog. He likes to complicate things.
+
+  Define a function that determines if Joe's work is simple or complex.
+
+  Input will be non emtpy strings with no punctuation.
+
+  It is simple if:
+  ``` the length of each word does not exceed the amount of words in the string ```
+  (See example test cases)
+
+  Otherwise it is complex.
+
+  If complex:
+  ```python
+  return "Keep It Simple Stupid"
+  ```
+  or if it was kept simple:
+  ```python
+  return "Good work Joe!"
+  ```
+
+  Note: Random test are random and nonsensical. Here is a silly example of a random test:
+  ```python
+  "jump always mostly is touchy dancing choice is pineapples mostly"
+  ```
+  -/
+
+vc-preamble: |
+
+vc-helpers: |
+
+vc-definitions: |-
+  def is_kiss (text : String) : String := sorry
+
+  theorem is_kiss_short_words (text : String) 
+    (h₁ : text.split (· = ' ') |>.all (fun word => word.length ≤ 3)) 
+    (h₂ : (text.split (· = ' ') |>.length) > 3)
+    (h₃ : (text.split (· = ' ') |>.length) ≤ 10) :
+    is_kiss text = "Good work Joe!" := sorry
+
+vc-theorems: |-
+  theorem is_kiss_long_words (text : String)
+    (h₁ : text.split (· = ' ') |>.any (fun word => word.length ≥ 10))
+    (h₂ : (text.split (· = ' ') |>.length) > 0)
+    (h₃ : (text.split (· = ' ') |>.length) ≤ 5) :
+    is_kiss text = "Keep It Simple Stupid" := sorry
+
+  theorem is_kiss_valid_output (text : String)
+    (h : text.length > 0) :
+    is_kiss text = "Keep It Simple Stupid" ∨ 
+    is_kiss text = "Good work Joe!" := sorry
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded
+
+  /--
+  info: 'Good work Joe!'
+  -/
+  #guard_msgs in
+  #eval is_kiss "Joe had a bad day"
+
+  /--
+  info: 'Keep It Simple Stupid'
+  -/
+  #guard_msgs in
+  #eval is_kiss "Joe is having no fun"
+
+  /--
+  info: 'Good work Joe!'
+  -/
+  #guard_msgs in
+  #eval is_kiss "Joe listened to the noise and it was an onamonapia"
+

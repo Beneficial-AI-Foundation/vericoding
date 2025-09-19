@@ -29,13 +29,13 @@ vc-preamble: |-
 vc-helpers: |-
 
 vc-spec: |-
-  fn solve(m: int, b: int) -> (result: int)
+  fn solve(m: i8, b: i8) -> (result: i8)
     requires 
-      valid_input(m, b)
+      valid_input(m as int, b as int)
     ensures 
-      result >= -1,
-      forall|k: int| valid_rectangle_corner(k, m, b) ==> result >= rectangle_value(k, m, b),
-      exists|k: int| valid_rectangle_corner(k, m, b) && result == rectangle_value(k, m, b)
+      result as int >= -1,
+      forall|k: int| valid_rectangle_corner(k, m as int, b as int) ==> result as int >= rectangle_value(k, m as int, b as int),
+      exists|k: int| valid_rectangle_corner(k, m as int, b as int) && result as int == rectangle_value(k, m as int, b as int)
 
 vc-code: |-
   {

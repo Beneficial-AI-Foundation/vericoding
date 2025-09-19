@@ -31,8 +31,10 @@ spec fn correct_outcome(result: &str, d: int) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: int, a: Seq<char>, b: Seq<char>) -> (result: &'static str)
-    requires valid_input(n, a, b)
+fn solve(n: i8, a: Vec<char>, b: Vec<char>) -> (result: &'static str)
+    requires n as int > 0 && a@.len() == 2 * n as int && b@.len() == 2 * n as int &&
+             (forall|i: int| 0 <= i < a@.len() ==> a@[i] == '0' || a@[i] == '1') &&
+             (forall|i: int| 0 <= i < b@.len() ==> b@[i] == '0' || b@[i] == '1')
     ensures result == "First" || result == "Second" || result == "Draw"
 // </vc-spec>
 // <vc-code>

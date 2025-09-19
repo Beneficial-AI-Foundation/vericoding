@@ -23,13 +23,13 @@ spec fn num_distinct(s: Seq<int>) -> int
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(diameters: Seq<int>) -> (result: int)
+fn solve(diameters: Vec<i8>) -> (result: i8)
     requires 
-        valid_input(diameters),
+        valid_input(diameters@.map(|i, x| x as int)),
     ensures 
-        result == num_distinct(diameters),
-        result >= 1,
-        result <= diameters.len(),
+        result as int == num_distinct(diameters@.map(|i, x| x as int)),
+        result as int >= 1,
+        result as int <= diameters@.len(),
 // </vc-spec>
 // <vc-code>
 {

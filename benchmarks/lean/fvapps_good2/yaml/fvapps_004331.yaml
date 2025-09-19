@@ -1,0 +1,114 @@
+vc-description: |-
+  /-
+  Decompose a number `num` into an array (tuple in Haskell, array of arrays `long[][]` in C# or Java) of the form `[[k1,k2,k3...], r]`,  `([k1,k2,k3...], r)` in Haskell, `[[k1,k2,k3...], [r]]` in C# or Java) such that:
+  
+  1. each kn is more than one
+  2. eack kn is maximized (first maximizing for 2 then 3 then 4 and so on)
+  3. and 2^(k1) + 3^(k2) + 4^(k3) + ... + n^(kn-1) + r = num
+  
+  ##Examples
+  ```
+  # when there are no `k` more than 1:
+  
+  3 
+  
+  [[], 3] = 
+  
+  3
+  
+  # when the remainder is zero:
+  
+  8330475
+  
+  [[22, 13, 10, 8, 7, 6, 6, 5, 5, 5, 4, 4, 4, 3, 3, 3, 3, 3, 3, 2, 2, 2, 2], 0] = 
+  
+  2 ^ 22 + 3 ^ 13 + 4 ^ 10 + 5 ^ 8 + 6 ^ 7 + 7 ^ 6 + 8 ^ 6 + 9 ^ 5 + 10 ^ 5 + 11 ^ 5 + 12 ^ 4 + 13 ^ 4 + 14 ^ 4 + 15 ^ 3 + 16 ^ 3 + 17 ^ 3 + 18 ^ 3 + 19 ^ 3 + 20 ^ 3 + 21 ^ 2 + 22 ^ 2 + 23 ^ 2 + 24 ^ 2 + 0 = 8330475
+  
+  # when there is both `k` and a remainder:
+  
+  26 
+  
+  [[4, 2], 1] = 
+  
+  2 ^ 4 + 3 ^ 2 + 1 = 26
+  
+  # when there is neither `k` nor a remainder:
+  
+  0
+  
+  [[], 0] = 
+  
+  0
+  ```
+  
+  As allways any feedback would be much appreciated
+  -/
+  
+  /- Decompose function's list result contains only numbers greater than 1 -/
+  
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded
+  
+  /- Decompose function's remainder is non-negative -/
+  
+  /- The decomposition recomposes back to the original number -/
+  
+  /- Negative inputs return empty list and same number as remainder -/
+  
+  /- Small inputs (0,1) return empty list and same number -/
+
+vc-preamble: |-
+
+vc-helpers: |-
+
+vc-definitions: |-
+  def decompose : Int → List Nat × Int :=
+  sorry
+
+vc-theorems: |-
+  theorem decompose_result_gt_one (n : Int) :
+    let (result, _) := decompose n
+    ∀ k ∈ result, k > 1 :=
+  sorry
+  
+  theorem decompose_remainder_nonneg (n : Int) :
+    let (_, remainder) := decompose n
+    remainder ≥ 0 :=
+  sorry
+  
+  theorem decompose_recompose (n : Int) :
+    let (result, remainder) := decompose n
+    let recomposed := remainder + (List.foldl (fun acc (i, k) => acc + (i + 2)^k) 0
+      (List.zip (List.range result.length) result))
+    recomposed = n :=
+  sorry
+  
+  theorem decompose_negative (n : Int) :
+    n < 0 →
+    decompose n = ([], n) :=
+  sorry
+  
+  theorem decompose_small_inputs (n : Int) :
+    n = 0 ∨ n = 1 →
+    decompose n = ([], n) :=
+  sorry
+
+vc-postamble: |-
+  /--
+  info: [[], 3]
+  -/
+  #guard_msgs in
+  #eval decompose 3
+  
+  /--
+  info: [[4, 2], 1]
+  -/
+  #guard_msgs in
+  #eval decompose 26
+  
+  /--
+  info: [[], 0]
+  -/
+  #guard_msgs in
+  #eval decompose 0
+

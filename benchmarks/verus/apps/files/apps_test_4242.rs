@@ -27,9 +27,9 @@ spec fn is_kth_largest_common_divisor(a: int, b: int, k: int, result: int) -> bo
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(a: int, b: int, k: int) -> (result: int)
-  requires valid_input(a, b, k)
-  ensures is_kth_largest_common_divisor(a, b, k, result)
+fn solve(a: i8, b: i8, k: i8) -> (result: i8)
+  requires valid_input(a as int, b as int, k as int)
+  ensures is_kth_largest_common_divisor(a as int, b as int, k as int, result as int)
 // </vc-spec>
 // <vc-code>
 {

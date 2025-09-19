@@ -53,15 +53,15 @@ vc-preamble: |-
 vc-helpers: |-
 
 vc-spec: |-
-  fn solve(n: int, a: int, b: int, seals: Seq<(int, int)>) -> (result: int)
+  fn solve(n: i8, a: i8, b: i8, seals: Vec<(i8, i8)>) -> (result: i8)
       requires n >= 0,
               a >= 1 && b >= 1,
-              seals.len() == n,
-              forall|i: int| 0 <= i < n ==> seals[i].0 >= 1 && seals[i].1 >= 1,
-      ensures result >= 0,
-              result == 0 ==> (forall|i: int, j: int| 0 <= i < n && i < j < n ==> check_pair_func(seals[i], seals[j], a, b) == 0),
-              result > 0 ==> (exists|i: int, j: int| 0 <= i < n && i < j < n && check_pair_func(seals[i], seals[j], a, b) == result),
-              forall|i: int, j: int| 0 <= i < n && i < j < n ==> check_pair_func(seals[i], seals[j], a, b) <= result,
+              seals.len() == n as nat,
+              forall|i: int| 0 <= i < n as int ==> seals@[i].0 as int >= 1 && seals@[i].1 as int >= 1,
+      ensures result as int >= 0,
+              result as int == 0 ==> (forall|i: int, j: int| 0 <= i < n as int && i < j < n as int ==> check_pair_func((seals@[i].0 as int, seals@[i].1 as int), (seals@[j].0 as int, seals@[j].1 as int), a as int, b as int) == 0),
+              result as int > 0 ==> (exists|i: int, j: int| 0 <= i < n as int && i < j < n as int && check_pair_func((seals@[i].0 as int, seals@[i].1 as int), (seals@[j].0 as int, seals@[j].1 as int), a as int, b as int) == result as int),
+              forall|i: int, j: int| 0 <= i < n as int && i < j < n as int ==> check_pair_func((seals@[i].0 as int, seals@[i].1 as int), (seals@[j].0 as int, seals@[j].1 as int), a as int, b as int) <= result as int,
 
 vc-code: |-
   {

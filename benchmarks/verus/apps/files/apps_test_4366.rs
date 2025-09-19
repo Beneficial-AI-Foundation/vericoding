@@ -54,6 +54,7 @@ spec fn correct_output(input: Seq<char>, result: Seq<char>) -> bool {
 
 // <vc-spec>
 fn solve(input: String) -> (result: String)
+    ensures correct_output(input@, result@)
 // </vc-spec>
 // <vc-code>
 {

@@ -18,7 +18,7 @@ fn sinh(x: Vec<f64>) -> (result: Vec<f64>)
     ensures 
         result.len() == x.len(),
 
-        forall|i: int| 0 <= i < x.len() ==> sinh_property(x[i], result[i])
+        forall|i: int| 0 <= i < x@.len() ==> sinh_property(x@[i], result@[i])
 // </vc-spec>
 // <vc-code>
 {

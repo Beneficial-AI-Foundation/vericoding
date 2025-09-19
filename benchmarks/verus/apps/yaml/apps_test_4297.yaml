@@ -38,14 +38,14 @@ vc-preamble: |-
 vc-helpers: |-
 
 vc-spec: |-
-  fn solve(n: i32) -> (result: i32)
+  fn solve(n: i8) -> (result: i8)
       requires 
           n >= 1,
       ensures 
           result >= 1,
-          result % 2 == 0 && result % n == 0,
-          forall|k: i32| 1 <= k < result ==> !(#[trigger] (k % 2) == 0 && #[trigger] (k % n) == 0),
-          (n % 2 == 0 ==> result == n) && (n % 2 != 0 ==> result == n * 2),
+          result as int % 2 == 0 && result as int % n as int == 0,
+          forall|k: int| 1 <= k < result as int ==> !(#[trigger] (k % 2) == 0 && #[trigger] (k % n as int) == 0),
+          (n as int % 2 == 0 ==> result as int == n as int) && (n as int % 2 != 0 ==> result as int == n as int * 2),
 
 vc-code: |-
   {

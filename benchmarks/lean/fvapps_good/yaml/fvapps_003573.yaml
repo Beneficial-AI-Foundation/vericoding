@@ -1,0 +1,67 @@
+vc-description: |-
+  /-
+  You are required to create a simple calculator that returns the result of addition, subtraction, multiplication or division of two numbers.
+
+  Your function will accept three arguments:
+  The first and second argument should be numbers.
+  The third argument should represent a sign indicating the operation to perform on these two numbers.
+  ```if-not:csharp
+  if the variables are not numbers or the sign does not belong to the list above a message "unknown value" must be returned.
+  ```
+  ```if:csharp
+  If the sign is not a valid sign, throw an ArgumentException.
+  ```
+
+  # Example:
+
+  ```python
+  calculator(1, 2, '+') => 3
+  calculator(1, 2, '$') # result will be "unknown value"
+  ```
+
+  Good luck!
+  -/
+
+vc-preamble: |
+
+vc-helpers: |
+
+vc-definitions: |-
+  def calculator (x : Float) (y : Float) (op : String) : Float ⊕ String := sorry 
+
+  theorem calculator_valid_inputs (x y : Float) (op : String) :
+    (op = "+" ∨ op = "-" ∨ op = "*" ∨ op = "/") →
+    (op ≠ "/" ∨ y ≠ 0) →
+    ∃ (result : Float), calculator x y op = Sum.inl result := sorry
+
+vc-theorems: |-
+  theorem calculator_division_by_zero (x y : Float) (op : String) :
+    op = "/" ∧ y = 0 →
+    calculator x y op = Sum.inr "unknown value" := sorry
+
+  theorem calculator_invalid_operator (x y : Float) (op : String) :
+    (op ≠ "+" ∧ op ≠ "-" ∧ op ≠ "*" ∧ op ≠ "/") →
+    calculator x y op = Sum.inr "unknown value" := sorry
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded
+
+  /--
+  info: 8
+  -/
+  #guard_msgs in
+  #eval calculator 6 2 "+"
+
+  /--
+  info: 25
+  -/
+  #guard_msgs in
+  #eval calculator 5 5 "*"
+
+  /--
+  info: 'unknown value'
+  -/
+  #guard_msgs in
+  #eval calculator 6 2 "&"
+

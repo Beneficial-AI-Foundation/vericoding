@@ -10,35 +10,35 @@ vc-description: |-
   You want to do as few operations as possible to put stones at points (ax, ay), (bx, by), and (cx, cy). How many operations do you need to do this?
   It is guaranteed that the desired arrangement of stones - (ax, ay), (bx, by), and (cx, cy) - forms an L. Under this condition, it is always possible to achieve the objective with a finite number of operations.
   You will be given T cases of this problem. Solve each of them.
-  
+
   -----Notes-----
   We assume that the three stones are indistinguishable. For example, the stone that is initially at point (0,0) may be at any of the points (ax, ay), (bx, by), and (cx, cy) in the end.
-  
+
   -----Constraints-----
    - 1 \leq T \leq 10^3
    - |ax|,|ay|,|bx|,|by|,|cx|,|cy| \leq 10^9
    - The desired arrangement of stones - (ax, ay), (bx, by), and (cx, cy) - forms an L.
-  
+
   -----Input-----
   Input is given from Standard Input in the following format:
   T
   \text{case}_1
   \vdots
   \text{case}_T
-  
+
   Each case is in the following format:
   ax ay bx by cx cy
-  
+
   -----Output-----
   Print T values. The i-th value should be the minimum number of operations for \text{case}_i.
-  
+
   -----Sample Input-----
   1
   3 2 2 2 2 1
-  
+
   -----Sample Output-----
   4
-  
+
   Let us use # to represent a stone.
   You can move the stones to the specified positions with four operations, as follows:
   ....    ....    ....    ..#.    ..##
@@ -46,42 +46,42 @@ vc-description: |-
   ##..    .#..    .#..    ....    ....
   -/
 
-vc-preamble: |-
+vc-preamble: |
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def solve (ax ay bx b_y cx c_y : Int) : Nat := sorry
-  
+
   theorem solve_non_negative (ax ay bx b_y cx c_y : Int) :
     solve ax ay bx b_y cx c_y ≥ 0 := sorry
 
 vc-theorems: |-
   theorem solve_symmetric_ab (ax ay bx b_y cx c_y : Int) :
     solve ax ay bx b_y cx c_y = solve bx b_y ax ay cx c_y := sorry
-  
+
   theorem solve_symmetric_bc (ax ay bx b_y cx c_y : Int) :
     solve ax ay bx b_y cx c_y = solve ax ay cx c_y bx b_y := sorry
-  
-  /-
-  info: 4
-  -/
-  -- #guard_msgs in
-  -- #eval solve 3 2 2 2 2 1
-  
-  /-
-  info: 0
-  -/
-  -- #guard_msgs in
-  -- #eval solve 0 0 1 0 0 1
-  
-  /-
-  info: 1
-  -/
-  -- #guard_msgs in
-  -- #eval solve 1 0 0 1 1 1
 
 vc-postamble: |-
   -- Apps difficulty: competition
   -- Assurance level: guarded_and_plausible
+
+  /-
+  info: 4
+  -/
+  #guard_msgs in
+  #eval solve 3 2 2 2 2 1
+
+  /-
+  info: 0
+  -/
+  #guard_msgs in
+  #eval solve 0 0 1 0 0 1
+
+  /-
+  info: 1
+  -/
+  #guard_msgs in
+  #eval solve 1 0 0 1 1 1
 

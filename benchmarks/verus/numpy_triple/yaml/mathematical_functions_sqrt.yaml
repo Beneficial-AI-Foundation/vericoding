@@ -1,0 +1,54 @@
+vc-description: |-
+  numpy.sqrt: Return the non-negative square-root of an array, element-wise.
+
+  Computes the principal square root of each element in the input array.
+  For non-negative input elements, returns the positive square root.
+  For negative input elements, the result is mathematically undefined in
+  the real numbers, but numpy returns NaN (Not a Number).
+
+  The function returns an array of the same shape as the input, containing
+  the non-negative square-root of each element.
+
+  Specification: sqrt returns a vector where each element is the
+  non-negative square root of the corresponding element in x.
+
+  Mathematical properties:
+  1. For non-negative inputs: result² = input and result ≥ 0
+  2. For negative inputs: result is NaN (handled by Float.sqrt)
+  3. The result preserves the shape of the input
+  4. sqrt(0) = 0
+  5. sqrt(1) = 1
+  6. sqrt is monotonic on non-negative inputs
+
+  Precondition: True (function handles all Float inputs)
+  Postcondition: For all indices i, if x[i] ≥ 0 then result[i]² = x[i] and result[i] ≥ 0
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn sqrt(x: Vec<i8>) -> (result: Vec<i8>)
+      ensures 
+          result@.len() == x@.len(),
+          forall|i: int| 0 <= i < x@.len() ==> {
+              &&& (x@[i] >= 0 ==> result@[i] * result@[i] == x@[i] && result@[i] >= 0)
+              &&& (x@[i] == 0 ==> result@[i] == 0)
+              &&& (x@[i] == 1 ==> result@[i] == 1)
+          }
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      unreached()
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {}

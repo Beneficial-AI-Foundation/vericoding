@@ -18,43 +18,43 @@ vc-description: |-
   	}
   	recurse ( b, sizeof( b ) );
   }
-  
+
   Chef Tobby tried to run an experiment with only one integer in the array with value 2 and K = 3. To his horror, he found out that the algorithm is resulting in an infinite loop. He is livid with the possibility that the algorithm can lead to infinite loops for certain cases. On closer inspection he determines that it might be possible to insert additional elements in the initial array to subvert the problem. Since time is very less, Chef Tobby would like to insert the minimum number of elements.
   Chef Tobby has to finish writing the paper, so he asks his graduate student Leamas to fix it. Leamas has no idea how to fix the problem so he asks you for help.
-  
+
   -----Input section-----
   The first line contains T, the number of test cases.
   Each test case consists of 2 lines. The first line contains 2 integers N and K, denoting the number of elements in the array and parameter mentioned in problem statement.
   Next line contains N space separated integers, denoting the elements of the array.
-  
+
   -----Output section-----
   Output the minimum number of elements that need to be inserted so that inifinite loop can be avoided.
-  
+
   -----Input constraints-----
   1 ≤ T ≤ 10
   1 ≤ Sum of N over all test cases ≤ 105
   1 ≤ K ≤ 20
   0 ≤ A[i] ≤ 2K-1, where A[i] denotes the ith element of the array.
-  
+
   -----Sample Input - 1-----
   1
   2 2
   3 1
-  
+
   -----Sample Output - 1-----
   1
-  
+
   -----Explanation - 1-----
   You can win the game by inserting the element 2 into the array.
-  
+
   -----Sample Input - 2-----
   1
   7 3
   3 7 5 4 6 2 1
-  
+
   -----Sample Output - 2-----
   0
-  
+
   -----Explanation - 2-----
   The initial array will result will terminate in the first step of algorithm only. Thus there is no need to insert any new element.
   -/
@@ -63,7 +63,7 @@ vc-preamble: |-
   def min_elements_needed (N K : Nat) (arr : List Nat) : Nat :=
     sorry
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def permutation (l1 l2 : List Nat) : Prop :=
@@ -73,52 +73,52 @@ vc-theorems: |-
   theorem min_elements_non_negative (N K : Nat) (arr : List Nat) :
     min_elements_needed N K arr ≥ 0 :=
     sorry
-  
+
   theorem min_elements_upper_bound (N K : Nat) (arr : List Nat) :
     min_elements_needed N K arr ≤ K :=
     sorry
-  
+
   theorem min_elements_complete_powers (N K : Nat) (arr : List Nat) :
     (∀ i : Nat, i < K → (2^i) ∈ arr) →
     min_elements_needed N K arr = 0 :=
     sorry
-  
+
   theorem min_elements_empty (K : Nat) :
     min_elements_needed 0 K [] = K :=
     sorry
-  
+
   theorem min_elements_singleton_min (K : Nat) :
     min_elements_needed 1 K [1] = K - 1 :=
     sorry
-  
+
   theorem min_elements_singleton_max (K : Nat) :
     min_elements_needed 1 K [2^K] = K :=
     sorry
-  
+
   theorem min_elements_perm_invariant (N K : Nat) (arr₁ arr₂ : List Nat) :
     permutation arr₁ arr₂ →
     min_elements_needed N K arr₁ = min_elements_needed N K arr₂ :=
     sorry
-  
-  /-
-  info: 1
-  -/
-  -- #guard_msgs in
-  -- #eval min_elements_needed 2 2 [3, 1]
-  
-  /-
-  info: 0
-  -/
-  -- #guard_msgs in
-  -- #eval min_elements_needed 7 3 [3, 7, 5, 4, 6, 2, 1]
-  
-  /-
-  info: 2
-  -/
-  -- #guard_msgs in
-  -- #eval min_elements_needed 1 3 [2]
 
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
+
+  /-
+  info: 1
+  -/
+  #guard_msgs in
+  #eval min_elements_needed 2 2 [3, 1]
+
+  /-
+  info: 0
+  -/
+  #guard_msgs in
+  #eval min_elements_needed 7 3 [3, 7, 5, 4, 6, 2, 1]
+
+  /-
+  info: 2
+  -/
+  #guard_msgs in
+  #eval min_elements_needed 1 3 [2]
 

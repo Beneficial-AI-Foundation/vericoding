@@ -30,16 +30,19 @@ vc-preamble: |-
   }
 
 vc-helpers: |
+  spec fn vec_to_seq_seq(v: Vec<Vec<char>>) -> Seq<Seq<char>> {
+      v@.map(|i, row: Vec<char>| row@)
+  }
 
 vc-spec: |-
-  fn solve(n: int, rows: Seq<Seq<char>>) -> (result: Seq<char>)
+  fn solve(n: i8, rows: Vec<Vec<char>>) -> (result: Vec<char>)
       requires 
-          valid_input(n, rows)
+          valid_input(n as int, vec_to_seq_seq(rows))
       ensures 
-          (result.len() == 2 && result[0] == 'N' && result[1] == 'O') || result.len() >= 4,
-          (result.len() == 2 && result[0] == 'N' && result[1] == 'O') ==> no_adjacent_empty_seats(rows),
-          !(result.len() == 2 && result[0] == 'N' && result[1] == 'O') ==> has_adjacent_empty_seats(rows),
-          valid_solution(result, rows)
+          (result@.len() == 2 && result@[0] == 'N' && result@[1] == 'O') || result@.len() >= 4,
+          (result@.len() == 2 && result@[0] == 'N' && result@[1] == 'O') ==> no_adjacent_empty_seats(vec_to_seq_seq(rows)),
+          !(result@.len() == 2 && result@[0] == 'N' && result@[1] == 'O') ==> has_adjacent_empty_seats(vec_to_seq_seq(rows)),
+          valid_solution(result@, vec_to_seq_seq(rows))
 
 vc-code: |-
   {

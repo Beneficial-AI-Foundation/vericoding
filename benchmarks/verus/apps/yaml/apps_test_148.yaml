@@ -71,7 +71,7 @@ vc-spec: |-
   fn solve(stdin_input: Vec<u8>) -> (result: String)
       requires 
           stdin_input.len() > 0,
-          exists|i: int| 0 <= i < stdin_input.len() && stdin_input[i] == '\n' as u8,
+          exists|i: int| 0 <= i < stdin_input@.len() && stdin_input@[i] == '\n' as u8,
           valid_input(stdin_input@.map(|i, x: u8| x as char)),
       ensures
           result@ =~= seq!['Y', 'E', 'S', '\n'] || result@ =~= seq!['N', 'O', '\n'],

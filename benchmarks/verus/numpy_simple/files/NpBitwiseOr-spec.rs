@@ -8,11 +8,11 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn bitwise_or(a: Vec<u32>, b: Vec<u32>) -> (result: Vec<u32>)
+fn bitwise_or(a: Vec<u8>, b: Vec<u8>) -> (result: Vec<u8>)
     requires a.len() == b.len(),
     ensures 
         result.len() == a.len(),
-        forall|i: int| 0 <= i < result.len() ==> result[i] == (a[i] | b[i]),
+        forall|i: int| 0 <= i < result.len() ==> result[i] as u32 == (a[i] as u32 | b[i] as u32),
 // </vc-spec>
 // <vc-code>
 {

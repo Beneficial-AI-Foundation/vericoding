@@ -34,9 +34,9 @@ spec fn correct_result(a: int, b: int, k: int, takahashi: int, aoki: int) -> boo
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(a: int, b: int, k: int) -> (result: (int, int))
-    requires valid_input(a, b, k)
-    ensures correct_result(a, b, k, result.0, result.1)
+fn solve(a: i8, b: i8, k: i8) -> (result: (i8, i8))
+    requires valid_input(a as int, b as int, k as int)
+    ensures correct_result(a as int, b as int, k as int, result.0 as int, result.1 as int)
 // </vc-spec>
 // <vc-code>
 {

@@ -41,9 +41,9 @@ vc-preamble: |-
 vc-helpers: |
 
 vc-spec: |-
-  fn solve(n: int, d: int, t: Seq<int>) -> (result: int)
-      requires valid_input(n, d, t)
-      ensures valid_result(n, d, t, result)
+  fn solve(n: i8, d: i8, t: Vec<i8>) -> (result: i8)
+      requires valid_input(n as int, d as int, t@.map(|_i: int, x: i8| x as int))
+      ensures valid_result(n as int, d as int, t@.map(|_i: int, x: i8| x as int), result as int)
 
 vc-code: |-
   {

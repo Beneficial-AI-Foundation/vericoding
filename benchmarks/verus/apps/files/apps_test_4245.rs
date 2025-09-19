@@ -47,9 +47,9 @@ spec fn correct_result(a: int, b: int, result: int) -> bool
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(a: int, b: int) -> (result: int)
-    requires valid_input(a, b)
-    ensures correct_result(a, b, result)
+fn solve(a: i8, b: i8) -> (result: i8)
+    requires valid_input(a as int, b as int)
+    ensures correct_result(a as int, b as int, result as int)
 // </vc-spec>
 // <vc-code>
 {

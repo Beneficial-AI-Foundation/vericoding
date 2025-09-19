@@ -8,7 +8,7 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn argmax(arr: &Vec<i32>) -> (result: usize)
+fn argmax(arr: &Vec<i8>) -> (result: usize)
     requires arr.len() > 0,
     ensures 
         result < arr.len(),

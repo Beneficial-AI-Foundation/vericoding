@@ -1,0 +1,32 @@
+vc-description: |-
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  spec fn shift_left_int(x: int, shift: nat) -> int;
+
+  fn left_shift(a: Vec<i8>, b: Vec<u8>) -> (result: Vec<i8>)
+      requires 
+          a.len() == b.len(),
+          forall|i: int| 0 <= i < b.len() ==> b[i] as nat < 64
+      ensures
+          result.len() == a.len(),
+          forall|i: int| 0 <= i < result.len() ==> result[i] as int == shift_left_int(a[i] as int, b[i] as nat)
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      unreached()
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {}

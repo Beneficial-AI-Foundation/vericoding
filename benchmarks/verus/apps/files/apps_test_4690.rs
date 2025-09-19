@@ -16,13 +16,13 @@ spec fn max_area(a: int, b: int, c: int, d: int) -> int {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(a: int, b: int, c: int, d: int) -> (result: int)
+fn solve(a: i8, b: i8, c: i8, d: i8) -> (result: i8)
     requires 
-        valid_input(a, b, c, d)
+        valid_input(a as int, b as int, c as int, d as int)
     ensures 
-        result == max_area(a, b, c, d),
-        result >= a * b && result >= c * d,
-        result == a * b || result == c * d
+        result as int == max_area(a as int, b as int, c as int, d as int),
+        result as int >= (a as int) * (b as int) && result as int >= (c as int) * (d as int),
+        result as int == (a as int) * (b as int) || result as int == (c as int) * (d as int)
 // </vc-spec>
 // <vc-code>
 {

@@ -36,9 +36,9 @@ spec fn valid_result(n: int, result: String) -> bool
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: int) -> (result: String)
-    requires valid_input(n)
-    ensures valid_result(n, result)
+fn solve(n: i8) -> (result: String)
+    requires valid_input(n as int)
+    ensures valid_result(n as int, result)
 // </vc-spec>
 // <vc-code>
 {

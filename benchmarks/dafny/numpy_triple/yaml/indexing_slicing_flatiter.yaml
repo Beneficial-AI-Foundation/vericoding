@@ -1,0 +1,23 @@
+---
+vc-description: |-
+  Flat iterator object to iterate over arrays.
+  Provides a flattened view of an array for iteration purposes,
+  allowing access to elements in row-major (C-style) order where
+  the last index varies fastest.
+vc-preamble: |-
+  // Flat iterator method that creates a flattened view of the input array
+vc-helpers: |-
+  
+vc-spec: |-
+  method numpy_flatiter(a: seq<real>) returns (result: seq<real>)
+    // No special preconditions for creating a flat iterator
+    requires true
+    // The result preserves all elements in row-major order
+    ensures |result| == |a|
+    ensures forall i :: 0 <= i < |a| ==> result[i] == a[i]
+vc-code: |-
+  {
+    assume {:axiom} false;
+  }
+vc-postamble: |-
+  

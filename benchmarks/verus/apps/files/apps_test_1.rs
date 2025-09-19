@@ -43,9 +43,9 @@ spec fn valid_result(x: int, result: int) -> bool
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(x: int) -> (result: int)
-  requires valid_input(x)
-  ensures valid_result(x, result)
+fn solve(x: i8) -> (result: i8)
+  requires valid_input(x as int)
+  ensures valid_result(x as int, result as int)
 // </vc-spec>
 // <vc-code>
 {

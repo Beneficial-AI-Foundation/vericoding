@@ -17,7 +17,7 @@ spec fn count_eligible(participations: Seq<int>, k: int) -> int
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: usize, k: usize, participations: Vec<usize>) -> (result: usize)
+fn solve(n: u8, k: u8, participations: Vec<u8>) -> (result: u8)
 // </vc-spec>
 // <vc-code>
 {

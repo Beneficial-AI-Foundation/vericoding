@@ -8,10 +8,10 @@ vc-preamble: |-
 vc-helpers: |-
 
 vc-spec: |-
-  fn zeros(n: usize) -> (result: Vec<i32>)
+  fn zeros(n: usize) -> (result: Vec<i8>)
       ensures 
-          result.len() == n,
-          forall|i: int| 0 <= i < n ==> result[i] == 0
+          result@.len() == n,
+          forall|i: int| 0 <= i < n ==> result@[i] == 0
   {
       // impl-start
       assume(false);
@@ -19,11 +19,11 @@ vc-spec: |-
       // impl-end
   }
 
-  fn zeros2d(rows: usize, cols: usize) -> (result: Vec<Vec<i32>>)
+  fn zeros2d(rows: usize, cols: usize) -> (result: Vec<Vec<i8>>)
       ensures 
-          result.len() == rows,
-          forall|i: int| 0 <= i < rows ==> result[i].len() == cols,
-          forall|i: int, j: int| 0 <= i < rows && 0 <= j < cols ==> result[i][j] == 0
+          result@.len() == rows,
+          forall|i: int| 0 <= i < rows ==> result@[i]@.len() == cols,
+          forall|i: int, j: int| 0 <= i < rows && 0 <= j < cols ==> result@[i]@[j] == 0
   {
       // impl-start
       assume(false);

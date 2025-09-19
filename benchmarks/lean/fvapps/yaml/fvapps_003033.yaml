@@ -1,29 +1,29 @@
 vc-description: |-
   /-
   Your friend has been out shopping for puppies (what a time to be alive!)... He arrives back with multiple dogs, and you simply do not know how to respond!
-  
+
   By repairing the function provided, you will find out exactly how you should respond, depending on the number of dogs he has.
-  
+
   The number of dogs will always be a number and there will always be at least 1 dog.
-  
+
   ```r
   The expected behaviour is as follows:
   - Your friend has fewer than 10 dogs:                    "Hardly any"
   - Your friend has at least 10 but fewer than 51 dogs:    "More than a handful!"
   - Your friend has at least 51 but not exactly 101 dogs:  "Woah that's a lot of dogs!"
   - Your friend has 101 dogs:                              "101 DALMATIANS!!!"
-  
+
   Your friend will always have between 1 and 101 dogs, inclusive.
   ```
   -/
 
-vc-preamble: |-
+vc-preamble: |
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def how_many_dalmatians (n: Int) : String := sorry
-  
+
   theorem dalmatians_output_is_valid_string (n: Int) :
     how_many_dalmatians n = "Hardly any" ∨
     how_many_dalmatians n = "More than a handful!" ∨
@@ -33,36 +33,36 @@ vc-definitions: |-
 vc-theorems: |-
   theorem small_numbers_get_hardly_any (n: Int) :
     n ≤ 10 → how_many_dalmatians n = "Hardly any" := sorry
-  
+
   theorem medium_numbers_get_handful (n: Int) :
     11 ≤ n ∧ n ≤ 50 → how_many_dalmatians n = "More than a handful!" := sorry
-  
+
   theorem large_numbers_get_lots (n: Int) :
     (51 ≤ n ∧ n ≤ 100) ∨ 102 ≤ n →
     how_many_dalmatians n = "Woah that's a lot of dogs!" := sorry
-  
+
   theorem exactly_101 :
     how_many_dalmatians 101 = "101 DALMATIONS!!!" := sorry
-  
-  /-
-  info: 'Hardly any'
-  -/
-  -- #guard_msgs in
-  -- #eval how_many_dalmatians 8
-  
-  /-
-  info: 'More than a handful!'
-  -/
-  -- #guard_msgs in
-  -- #eval how_many_dalmatians 26
-  
-  /-
-  info: '101 DALMATIONS!!!'
-  -/
-  -- #guard_msgs in
-  -- #eval how_many_dalmatians 101
 
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+
+  /-
+  info: 'Hardly any'
+  -/
+  #guard_msgs in
+  #eval how_many_dalmatians 8
+
+  /-
+  info: 'More than a handful!'
+  -/
+  #guard_msgs in
+  #eval how_many_dalmatians 26
+
+  /-
+  info: '101 DALMATIONS!!!'
+  -/
+  #guard_msgs in
+  #eval how_many_dalmatians 101
 

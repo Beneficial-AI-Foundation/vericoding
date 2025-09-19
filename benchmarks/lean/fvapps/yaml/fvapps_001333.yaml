@@ -16,36 +16,36 @@ vc-description: |-
   - Containers with $pH=7$ Chemical is packed at $P3$ cost.
   - Containers with Basic Chemical are packed at $P4$ cost.
   Now $1$ employee given task to find packing cost of containers with labels in range $[ k1, k2]$ (Inclusive). Help him out. As Cost can be large find cost in modulo of $100000007$
-  
+
   -----Input:-----
   - The first line of the input contains a single integer T denoting the number of test cases. The description of $T$ test cases follows.
   - The first line of each test case contains $3$ space separated Integers $N$, $K1$ and $K2$.
   - The second and last line contains $4$ space separated Integers $P1$, $P2$, $P3$ and $P4$
-  
+
   -----Output:-----
   For each test case, print total cost of packing of containers modulo 100000007.
-  
+
   -----Constraints-----
   - $1 \leq T \leq 50000$
   - $1 \leq P1, P2, P3, P4 \leq 2*10^7$
   - $2 \leq N \leq 2*10^7$
   - $1 \leq K1, K2 \leq N$
-  
+
   -----Subtasks-----Subtask #1 (20 points):
   - $1 \leq T \leq 10$
   - $1 \leq P1, P2, P3, P4 \leq 2*10^7$
   - $2 \leq N \leq 1000$
   - $1 \leq K1, K2 \leq N$Subtask #2 (80 points) :
   - Original Constraint
-  
+
   -----Sample Input:-----
   1
   4 1 4
   2 2 2 2
-  
+
   -----Sample Output:-----
   8
-  
+
   -----Explanation:-----
   Let’s use notation, 
   0 for acidic Chemical, 
@@ -69,9 +69,9 @@ vc-description: |-
   Cost = P2+P3+P3+P1 = 2+2+2+2 = 8
   -/
 
-vc-preamble: |-
+vc-preamble: |
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def calculate_packing_cost (N K1 K2 P1 P2 P3 P4 : Nat) : Nat :=
@@ -82,14 +82,14 @@ vc-theorems: |-
     (h1 : N > 0) (h2 : K1 > 0) (h3 : K2 > 0) (h4 : cost > 0) :
     (calculate_packing_cost N K1 K2 cost cost cost cost) % cost = 0 :=
     sorry
-  
-  /-
-  info: 8
-  -/
-  -- #guard_msgs in
-  -- #eval calculate_packing_cost 4 1 4 2 2 2 2
 
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
+
+  /-
+  info: 8
+  -/
+  #guard_msgs in
+  #eval calculate_packing_cost 4 1 4 2 2 2 2
 

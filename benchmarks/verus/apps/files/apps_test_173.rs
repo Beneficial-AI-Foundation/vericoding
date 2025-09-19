@@ -21,12 +21,12 @@ spec fn is_disconnected(hor: Seq<char>, ver: Seq<char>) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: int, m: int, horizontal: Seq<char>, vertical: Seq<char>) -> (result: Seq<char>)
+fn solve(n: i8, m: i8, horizontal: Vec<char>, vertical: Vec<char>) -> (result: Vec<char>)
     requires 
-        valid_input(n, m, horizontal, vertical)
+        valid_input(n as int, m as int, horizontal@, vertical@)
     ensures 
-        result == seq!['Y', 'E', 'S', '\n'] || result == seq!['N', 'O', '\n'],
-        (result == seq!['N', 'O', '\n']) <==> is_disconnected(horizontal, vertical)
+        result@ == seq!['Y', 'E', 'S', '\n'] || result@ == seq!['N', 'O', '\n'],
+        (result@ == seq!['N', 'O', '\n']) <==> is_disconnected(horizontal@, vertical@)
 // </vc-spec>
 // <vc-code>
 {

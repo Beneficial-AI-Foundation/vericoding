@@ -56,6 +56,7 @@ vc-helpers: |
 
 vc-spec: |-
   fn solve(input: String) -> (result: String)
+      ensures correct_output(input@, result@)
 
 vc-code: |-
   {

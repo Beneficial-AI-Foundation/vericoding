@@ -36,7 +36,7 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: i32) -> (result: (i32, char))
+fn solve(n: i8) -> (result: (i8, char))
     requires 
         30 <= n <= 100
     ensures 

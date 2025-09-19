@@ -21,9 +21,9 @@ spec fn valid_result(scores: Seq<int>, result: int) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: int, scores: Seq<int>) -> (result: int)
-    requires valid_input(n, scores)
-    ensures valid_result(scores, result)
+fn solve(n: i8, scores: Vec<i8>) -> (result: i8)
+    requires valid_input(n as int, scores@.map(|i, x| x as int))
+    ensures valid_result(scores@.map(|i, x| x as int), result as int)
 // </vc-spec>
 // <vc-code>
 {

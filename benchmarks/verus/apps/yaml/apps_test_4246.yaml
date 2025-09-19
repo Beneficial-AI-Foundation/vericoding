@@ -58,12 +58,12 @@ vc-preamble: |-
 vc-helpers: |
 
 vc-spec: |-
-  fn solve(input: Seq<char>) -> (result: Seq<char>)
+  fn solve(input: Vec<char>) -> (result: Vec<char>)
       requires
           input.len() > 0,
       ensures
-          result == compute_result(input),
-          result.len() >= 2 && result[result.len() as int - 1] == '\n',
+          result@ == compute_result(input@),
+          result.len() >= 2 && result[result.len() - 1] == '\n',
           result[0] == '0' || result[0] == '1' || result[0] == '2' || result[0] == '3',
 
 vc-code: |-

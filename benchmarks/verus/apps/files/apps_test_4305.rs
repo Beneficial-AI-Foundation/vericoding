@@ -23,12 +23,12 @@ spec fn ceil_div(h: int, a: int) -> int
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(h: int, a: int) -> (attacks: int)
+fn solve(h: i8, a: i8) -> (attacks: i8)
     requires 
-        valid_input(h, a)
+        valid_input(h as int, a as int)
     ensures 
-        is_minimum_attacks(attacks, h, a),
-        attacks == ceil_div(h, a)
+        is_minimum_attacks(attacks as int, h as int, a as int),
+        attacks as int == ceil_div(h as int, a as int)
 // </vc-spec>
 // <vc-code>
 {

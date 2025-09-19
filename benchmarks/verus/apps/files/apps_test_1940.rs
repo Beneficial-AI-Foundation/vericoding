@@ -22,12 +22,12 @@ spec fn sum_trips(w: Seq<int>, k: int) -> int
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: int, k: int, w: Seq<int>) -> (result: int)
+fn solve(n: i8, k: i8, w: Vec<i8>) -> (result: i8)
     requires 
-        valid_input(n, k, w),
+        valid_input(n as int, k as int, w@.map_values(|v: i8| v as int)),
     ensures 
         result >= 0,
-        result == (sum_trips(w, k) + 1) / 2,
+        result as int == (sum_trips(w@.map_values(|v: i8| v as int), k as int) + 1) / 2,
 // </vc-spec>
 // <vc-code>
 {

@@ -1,25 +1,25 @@
 vc-description: |-
   /-
   A reversed arabic no is one whose digits have been written in the reversed order. However in this any trailing zeroes are omitted. The task at hand here is a simple one. You need to add two numbers which have been written in reversed arabic and return the output back in reversed arabic form, assuming no zeroes were lost while reversing.
-  
+
   -----Input-----
   The input consists of N cases. The first line of the input contains only a positive integer N. Then follow the cases. Each case consists of exactly one line with two positive integers seperated by space. These are the reversednumbers you are to add.
-  
+
   -----Output-----
   For each case, print exactly one line containing only one integer- the reversed sum of two reversed numbers. Omit any leading zeroes in the output.
-  
+
   -----Example-----
   Input:
   1
   24 1
-  
+
   Output:
   34
   -/
 
-vc-preamble: |-
+vc-preamble: |
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def StringNum := String
@@ -28,35 +28,35 @@ vc-definitions: |-
 vc-theorems: |-
   theorem reversed_sum_is_integer (s1 s2 : StringNum) : 
     ∃ n : Int, reversed_sum s1 s2 = n := sorry
-  
+
   theorem reversed_sum_logic (s1 s2 : StringNum) :
     let reverse_int (s : StringNum) := sorry
     let a := reverse_int s1
     let b := reverse_int s2
     reversed_sum s1 s2 = reverse_int (toString (a + b)) := sorry
-  
+
   theorem reversed_sum_symmetric (s1 s2 : StringNum) :
     reversed_sum s1 s2 = reversed_sum s2 s1 := sorry
-  
-  /-
-  info: 34
-  -/
-  -- #guard_msgs in
-  -- #eval reversed_sum "24" "1"
-  
-  /-
-  info: 33
-  -/
-  -- #guard_msgs in
-  -- #eval reversed_sum "11" "22"
-  
-  /-
-  info: 579
-  -/
-  -- #guard_msgs in
-  -- #eval reversed_sum "123" "456"
 
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded
+
+  /-
+  info: 34
+  -/
+  #guard_msgs in
+  #eval reversed_sum "24" "1"
+
+  /-
+  info: 33
+  -/
+  #guard_msgs in
+  #eval reversed_sum "11" "22"
+
+  /-
+  info: 579
+  -/
+  #guard_msgs in
+  #eval reversed_sum "123" "456"
 

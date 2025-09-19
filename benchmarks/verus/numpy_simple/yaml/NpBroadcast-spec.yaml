@@ -36,20 +36,20 @@ vc-preamble: |-
 vc-helpers: |
 
 vc-spec: |-
-  fn broadcast(a: Vec<i32>, shape: Vec<usize>) -> (ret: Matrix<i32>)
+  fn broadcast(a: Vec<i8>, shape: Vec<u8>) -> (ret: Matrix<i8>)
       requires 
           a.len() > 0,
           shape.len() == 2,
           shape[0] > 0,
           shape[1] > 0,
-          shape[0] == a.len() || shape[1] == a.len(),
+          shape[0] as int == a.len() || shape[1] as int == a.len(),
       ensures
           ret.wf(),
-          ret.rows == shape[0],
-          ret.cols == shape[1],
-          ret.size() == shape[0] * shape[1],
-          forall|i: int, j: int| 0 <= i < shape[0] && 0 <= j < shape[1] ==> {
-              if shape[0] == a.len() {
+          ret.rows == shape[0] as usize,
+          ret.cols == shape[1] as usize,
+          ret.size() == shape[0] as int * shape[1] as int,
+          forall|i: int, j: int| 0 <= i < shape[0] as int && 0 <= j < shape[1] as int ==> {
+              if shape[0] as int == a.len() {
                   ret.index(i, j) == a[i as int]
               } else {
                   ret.index(i, j) == a[j as int]

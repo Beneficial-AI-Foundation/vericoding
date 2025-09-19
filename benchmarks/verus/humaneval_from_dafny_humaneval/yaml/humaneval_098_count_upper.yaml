@@ -1,0 +1,31 @@
+vc-description: |-
+  function_signature: def count_upper(s : String) -> Int
+
+  Given a string s, count the number of uppercase vowels in even indices.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+  spec fn is_upper_vowel(c: char) -> bool {
+      c == 'A' || c == 'E' || c == 'U' || c == 'I' || c == 'O'
+  }
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn count_upper(s: Vec<char>) -> (cnt: usize)
+      ensures cnt == Set::<int>::new(|i: int| 0 <= i < s@.len() && i % 2 == 0 && is_upper_vowel(s@[i])).len()
+
+vc-code: |-
+  {
+      assume(false);
+      unreached()
+  }
+
+vc-postamble: |-
+
+  }
+
+  fn main() {}

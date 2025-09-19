@@ -1,31 +1,31 @@
 vc-description: |-
   /-
   A common problem in number theory is to find x given a such that:
-  
+
   a * x = 1 mod [n] 
-  
+
   Then x is called the inverse of a modulo n. 
-  
+
   Your goal is to code a function inverseMod wich take a and n as parameters and return x.
-  
+
   You may be interested by these pages:
-  
+
   http://en.wikipedia.org/wiki/Modular_multiplicative_inverse
-  
+
   http://en.wikipedia.org/wiki/Extended_Euclidean_algorithm
-  
+
   a and n should be co-prime to have a solution, if it is not the case, you should return None (Python), nil (Ruby) or null (Javascript). 
-  
+
   a and n will be positive integers. The problem can easily be generalised to negative integer with some sign changes so we won't deal with them.
   -/
 
-vc-preamble: |-
+vc-preamble: |
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def egcd (a b : Int) : Int × Int × Int := sorry
-  
+
   def inverseMod (a m : Int) : Option Int := sorry
 
 vc-theorems: |-
@@ -35,26 +35,26 @@ vc-theorems: |-
     g > 0 ∧
     (a ≠ 0 → Int.natAbs a % g = 0) ∧
     (b ≠ 0 → Int.natAbs b % g = 0) := sorry
-  
-  /-
-  info: 3
-  -/
-  -- #guard_msgs in
-  -- #eval inverseMod 2 5
-  
-  /-
-  info: 40
-  -/
-  -- #guard_msgs in
-  -- #eval inverseMod 48 101
-  
-  /-
-  info: 419
-  -/
-  -- #guard_msgs in
-  -- #eval inverseMod 7 733
 
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
+
+  /-
+  info: 3
+  -/
+  #guard_msgs in
+  #eval inverseMod 2 5
+
+  /-
+  info: 40
+  -/
+  #guard_msgs in
+  #eval inverseMod 48 101
+
+  /-
+  info: 419
+  -/
+  #guard_msgs in
+  #eval inverseMod 7 733
 

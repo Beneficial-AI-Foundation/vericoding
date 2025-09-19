@@ -1,0 +1,32 @@
+vc-description: |-
+  Given a string, return a list of all its prefixes ordered from shortest
+  to longest. A prefix is a substring that starts from the beginning of the original
+  string.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+  spec fn valid_prefixes(s: Seq<char>, result: Seq<Seq<char>>) -> bool {
+      result.len() == s.len() &&
+      forall|i: int| 0 <= i < result.len() ==> result[i] == s.subrange(0, i + 1)
+  }
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn all_prefixes(s: Vec<char>) -> (result: Vec<Vec<char>>)
+      ensures valid_prefixes(s@, result@.map(|i, v: Vec<char>| v@))
+
+vc-code: |-
+  {
+      assume(false);
+      unreached()
+  }
+
+vc-postamble: |-
+
+  }
+
+  fn main() {}

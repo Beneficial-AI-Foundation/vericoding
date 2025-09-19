@@ -2,34 +2,34 @@ vc-description: |-
   /-
   Chef has a binary array in an unsorted manner. Cheffina challenges chef to find the transition point in the sorted (ascending) binary array. Here indexing is starting from 0.
   Note: Transition point always exists.
-  
+
   -----Input:-----
   - First-line will contain $T$, the number of test cases. Then the test cases follow. 
   - Each test case contains two lines of input, $N$.
   - N space-separated binary numbers. 
-  
+
   -----Output:-----
   For each test case, output in a single line answer.
-  
+
   -----Constraints-----
   - $1 \leq T \leq 10$
   - $1 \leq N \leq 10^5$
-  
+
   -----Sample Input:-----
   1
   5
   0 1 0 0 1
-  
+
   -----Sample Output:-----
   3
-  
+
   -----EXPLANATION:-----
   binary array in sorted form will look like = [0, 0, 0, 1, 1]
   -/
 
-vc-preamble: |-
+vc-preamble: |
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def find_transition_point (n : Nat) (arr : List Nat) : Option Nat :=
@@ -40,54 +40,54 @@ vc-theorems: |-
     let result := find_transition_point n arr
     ∀ i, result = some i → i < n := 
     sorry
-  
+
   theorem find_transition_point_zeros_before (n : Nat) (arr : List Nat) :
     let result := find_transition_point n arr
     ∀ i, result = some i →
     ∀ j < i, arr[j]! = 0 := 
     sorry
-  
+
   theorem find_transition_point_first_one (n : Nat) (arr : List Nat) :
     let result := find_transition_point n arr
     ∀ i, result = some i →
     i < n →
     arr[i]! = 1 :=
     sorry
-  
+
   theorem find_transition_point_no_ones (n : Nat) (arr : List Nat) :
     (∀ x ∈ arr, x ≠ 1) →
     find_transition_point n arr = none :=
     sorry
-  
+
   theorem find_transition_point_all_ones (n : Nat) :
     n > 0 →
     find_transition_point n (List.replicate n 1) = some 0 :=
     sorry
-  
+
   theorem find_transition_point_all_zeros (n : Nat) :
     n > 0 →
     find_transition_point n (List.replicate n 0) = none :=
     sorry
-  
-  /-
-  info: 3
-  -/
-  -- #guard_msgs in
-  -- #eval find_transition_point 5 [0, 1, 0, 0, 1]
-  
-  /-
-  info: 1
-  -/
-  -- #guard_msgs in
-  -- #eval find_transition_point 3 [1, 0, 1]
-  
-  /-
-  info: 3
-  -/
-  -- #guard_msgs in
-  -- #eval find_transition_point 4 [0, 0, 0, 1]
 
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
+
+  /-
+  info: 3
+  -/
+  #guard_msgs in
+  #eval find_transition_point 5 [0, 1, 0, 0, 1]
+
+  /-
+  info: 1
+  -/
+  #guard_msgs in
+  #eval find_transition_point 3 [1, 0, 1]
+
+  /-
+  info: 3
+  -/
+  #guard_msgs in
+  #eval find_transition_point 4 [0, 0, 0, 1]
 

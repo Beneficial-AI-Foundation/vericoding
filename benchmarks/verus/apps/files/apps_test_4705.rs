@@ -30,9 +30,9 @@ spec fn net_amount(n: int) -> int
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: int) -> (result: int)
-    requires valid_input(n)
-    ensures result == net_amount(n)
+fn solve(n: i8) -> (result: i8)
+    requires valid_input(n as int)
+    ensures result as int == net_amount(n as int)
 // </vc-spec>
 // <vc-code>
 {

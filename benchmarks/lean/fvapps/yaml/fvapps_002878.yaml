@@ -1,19 +1,19 @@
 vc-description: |-
   /-
   Given a board of `NxN`, distributed with tiles labeled `0` to `N² - 1`(inclusive):
-  
+
   A solved grid will have the tiles in order of label, left to right, top to bottom.
-  
+
   Return `true` if the board state is currently solved, and `false` if the board state is unsolved.
-  
+
   Input will always be a square 2d array.
-  
+
   For example, a 2x2 solved grid:
   ```
   [ [0, 1],
     [2, 3] ]
   ```
-  
+
   A 2x2 unsolved grid:
   ```
   [ [2, 1],
@@ -25,7 +25,7 @@ vc-preamble: |-
   def isSolved (board : List (List Nat)) : Bool :=
     sorry
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def isSequential (board : List (List Nat)) : Bool :=
@@ -36,14 +36,14 @@ vc-theorems: |-
     let board := List.map (fun i => List.map (fun j => n * i + j) (List.range n)) (List.range n)
     isSolved board = isSequential board :=
     sorry
-  
+
   theorem arbitrary_boards_match_sequential (board : List (List Nat))
     (h : board.length > 0) 
     (h2 : board.length ≤ 5)
     (h3 : ∀ row ∈ board, row.length = board.length) :
     isSolved board = isSequential board :=
     sorry
-  
+
   theorem single_swap_breaks_solution 
     {n : Nat} (h : n > 0) (h2 : n ≤ 5) 
     (pos1 pos2 : Nat) (h3 : pos1 ≠ pos2) :
@@ -58,26 +58,26 @@ vc-theorems: |-
     let swapped_board := sorry -- actual swapping implementation would go here
     ¬(isSolved swapped_board) :=
     sorry
-  
-  /-
-  info: False
-  -/
-  -- #guard_msgs in
-  -- #eval is_solved [[1, 0], [3, 2]]
-  
-  /-
-  info: False
-  -/
-  -- #guard_msgs in
-  -- #eval is_solved [[1, 0, 4], [3, 2, 7], [8, 5, 6]]
-  
-  /-
-  info: True
-  -/
-  -- #guard_msgs in
-  -- #eval is_solved [[0, 1], [2, 3]]
 
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+
+  /-
+  info: False
+  -/
+  #guard_msgs in
+  #eval is_solved [[1, 0], [3, 2]]
+
+  /-
+  info: False
+  -/
+  #guard_msgs in
+  #eval is_solved [[1, 0, 4], [3, 2, 7], [8, 5, 6]]
+
+  /-
+  info: True
+  -/
+  #guard_msgs in
+  #eval is_solved [[0, 1], [2, 3]]
 

@@ -1,24 +1,24 @@
 vc-description: |-
   /-
   # Personalized greeting
-  
+
   Create a function that gives a personalized greeting. This function takes two parameters: `name` and `owner`.
-  
+
   Use conditionals to return the proper message:
-  
+
   case | return
   --- | ---
   name equals owner | 'Hello boss'
   otherwise         | 'Hello guest'
   -/
 
-vc-preamble: |-
+vc-preamble: |
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def greet (name : String) (owner : String) : String := sorry
-  
+
   theorem greet_returns_hello_prefix (name owner : String) : 
     let result := greet name owner
     result.startsWith "Hello " = true := sorry
@@ -26,23 +26,23 @@ vc-definitions: |-
 vc-theorems: |-
   theorem greet_returns_hello_boss_when_name_matches_owner (name owner : String) :
     name = owner → greet name owner = "Hello boss" := sorry
-  
+
   theorem greet_returns_hello_guest_when_name_differs (name owner : String) :
     name ≠ owner → greet name owner = "Hello guest" := sorry
-  
-  /-
-  info: 'Hello boss'
-  -/
-  -- #guard_msgs in
-  -- #eval greet "Daniel" "Daniel"
-  
-  /-
-  info: 'Hello guest'
-  -/
-  -- #guard_msgs in
-  -- #eval greet "Greg" "Daniel"
 
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+
+  /-
+  info: 'Hello boss'
+  -/
+  #guard_msgs in
+  #eval greet "Daniel" "Daniel"
+
+  /-
+  info: 'Hello guest'
+  -/
+  #guard_msgs in
+  #eval greet "Greg" "Daniel"
 

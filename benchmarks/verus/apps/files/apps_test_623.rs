@@ -25,12 +25,12 @@ spec fn count_valid_minutes(a: int, b: int) -> int
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(a1: int, a2: int) -> (result: int)
+fn solve(a1: i8, a2: i8) -> (result: i8)
     requires 
         a1 >= 1 && a2 >= 1,
     ensures 
         result >= 0,
-        result == count_valid_minutes(a1, a2),
+        result as int == count_valid_minutes(a1 as int, a2 as int),
         (a1 == 1 && a2 == 1) ==> result == 0,
 // </vc-spec>
 // <vc-code>

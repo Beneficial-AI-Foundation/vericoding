@@ -42,13 +42,13 @@ spec fn all_equal(a: int, b: int, c: int) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(a: int, b: int, c: int) -> (result: int)
+fn solve(a: i8, b: i8, c: i8) -> (result: i8)
     requires
-        valid_input(a, b, c),
+        valid_input(a as int, b as int, c as int),
     ensures
         result >= 0,
-        all_equal(a, b, c) ==> result == 0,
-        result == min_operations(a, b, c),
+        all_equal(a as int, b as int, c as int) ==> result == 0,
+        result as int == min_operations(a as int, b as int, c as int),
 // </vc-spec>
 // <vc-code>
 {

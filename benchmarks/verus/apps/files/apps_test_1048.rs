@@ -25,17 +25,17 @@ spec fn valid_commands(commands: Seq<char>) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: usize, commands: Seq<char>) -> (result: usize)
+fn solve(n: usize, commands: Vec<char>) -> (result: usize)
     requires 
         n >= 0,
-        commands.len() == n,
-        valid_commands(commands)
+        commands@.len() == n,
+        valid_commands(commands@)
     ensures 
         result >= 0,
         result <= n,
         result % 2 == 0,
-        result == 2 * min(count_char(commands, 'L'), count_char(commands, 'R')) + 
-                  2 * min(count_char(commands, 'U'), count_char(commands, 'D'))
+        result as int == 2 * min(count_char(commands@, 'L'), count_char(commands@, 'R')) + 
+                         2 * min(count_char(commands@, 'U'), count_char(commands@, 'D'))
 // </vc-spec>
 // <vc-code>
 {

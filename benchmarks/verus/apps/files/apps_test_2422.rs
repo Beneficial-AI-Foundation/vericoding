@@ -17,16 +17,16 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: int) -> (result: Vec<int>)
+fn solve(n: i8) -> (result: Vec<i8>)
     requires 
-        n >= 1,
+        n as int >= 1,
     ensures 
-        valid_result(n, result@),
-        n % 3 == 0 ==> (result@.len() == 3 && result@ == seq![n / 3, 0, 0]),
-        n % 3 == 1 && n < 7 ==> (result@.len() == 1 && result@[0] == -1),
-        n % 3 == 1 && n >= 7 ==> (result@.len() == 3 && result@ == seq![(n - 7) / 3, 0, 1]),
-        n % 3 == 2 && n < 5 ==> (result@.len() == 1 && result@[0] == -1),
-        n % 3 == 2 && n >= 5 ==> (result@.len() == 3 && result@ == seq![(n - 5) / 3, 1, 0])
+        valid_result(n as int, result@.map(|_index, x: i8| x as int)),
+        (n as int) % 3 == 0 ==> (result@.len() == 3 && result@.map(|_index, x: i8| x as int) == seq![(n as int) / 3, 0, 0]),
+        (n as int) % 3 == 1 && (n as int) < 7 ==> (result@.len() == 1 && result@[0] as int == -1),
+        (n as int) % 3 == 1 && (n as int) >= 7 ==> (result@.len() == 3 && result@.map(|_index, x: i8| x as int) == seq![((n as int) - 7) / 3, 0, 1]),
+        (n as int) % 3 == 2 && (n as int) < 5 ==> (result@.len() == 1 && result@[0] as int == -1),
+        (n as int) % 3 == 2 && (n as int) >= 5 ==> (result@.len() == 3 && result@.map(|_index, x: i8| x as int) == seq![((n as int) - 5) / 3, 1, 0])
 // </vc-spec>
 // <vc-code>
 {

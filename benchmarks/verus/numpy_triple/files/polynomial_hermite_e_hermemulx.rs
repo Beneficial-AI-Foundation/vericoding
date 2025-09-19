@@ -13,7 +13,7 @@ fn hermemulx(c: Vec<f64>) -> (result: Vec<f64>)
     ensures
         result.len() == c.len() + 1,
         result[0] == 0.0,
-        forall|i: int| 1 <= i < c.len() ==> result[i + 1] == c[i],
+        forall|i: int| 1 <= i < c.len() as int ==> result[i + 1] == c[i],
 // </vc-spec>
 // <vc-code>
 {

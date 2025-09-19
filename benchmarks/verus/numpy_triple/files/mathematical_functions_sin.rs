@@ -9,8 +9,8 @@ verus! {
 
 // <vc-spec>
 fn sin(x: Vec<f32>) -> (result: Vec<f32>)
-    requires x.len() > 0,
-    ensures result.len() == x.len()
+    requires x@.len() > 0,
+    ensures result@.len() == x@.len()
 // </vc-spec>
 // <vc-code>
 {

@@ -1,0 +1,91 @@
+vc-description: |-
+  /-
+  Mandarin chinese
+  , Russian and Vietnamese as well.
+  Let's denote $S(x)$ by the sum of prime numbers that divides $x$.
+  You are given an array $a_1, a_2, \ldots, a_n$ of $n$ numbers, find the number of pairs $i, j$ such that $i \neq j$, $a_i$ divides $a_j$ and $S(a_i)$ divides $S(a_j)$.
+
+  -----Input:-----
+  - First line will contain $T$, number of testcases. Then the testcases follow. 
+  - First line of each testcase contains one integer $n$ — number of elements of the array.
+  - Second line of each testcase contains $n$ space-separated integers $a_1, a_2, \ldots, a_n$.
+
+  -----Output:-----
+  For each testcase, output in a single line number of pairs that each of it satisfies given conditions.
+
+  -----Constraints-----
+  - $1 \leq T \leq 100$
+  - $2 \leq n, a_i \leq 10^6$
+  - the sum of $n$ for all test cases does not exceed $10^6$
+
+  -----Subtasks-----
+  Subtask #2 (20 points): $2 \leq n \leq 100$, $2 \leq a_i \leq 10^4$
+  Subtask #2 (80 points): original contsraints
+
+  -----Sample Input:-----
+  1
+  5
+  2 30 2 4 3
+
+  -----Sample Output:-----
+  6
+
+  -----EXPLANATION:-----
+  $S(2) = 2, S(30) = 2 + 3 + 5 = 10, S(4) = 2, S(3) = 3$. So using this information, the pairs of indicies are $(1,2)$, $(1, 3)$, $(1, 4)$, $(3, 1)$, $(3, 2)$, $(3, 4)$.
+  -/
+
+vc-preamble: |
+
+vc-helpers: |
+
+vc-definitions: |-
+  def solve_prime_factors_pairs (arr : List Nat) : Nat :=
+  sorry
+
+vc-theorems: |-
+  theorem identical_elements_count (n : Nat) (x : Nat) (h : x ≥ 2) :
+    solve_prime_factors_pairs (List.replicate n x) = n * (n - 1) :=
+  sorry
+
+  theorem singleton_array_zero (x : Nat) (h : x ≥ 2) :
+    solve_prime_factors_pairs [x] = 0 :=
+  sorry
+
+  theorem power_relationship_two : 
+    solve_prime_factors_pairs [2, 4] = 1 :=
+  sorry
+
+  theorem power_relationship_three :
+    solve_prime_factors_pairs [3, 9] = 1 :=
+  sorry
+
+  theorem known_case_one :
+    solve_prime_factors_pairs [2, 30, 2, 4, 3] = 6 :=
+  sorry
+
+  theorem known_case_two :
+    solve_prime_factors_pairs [4, 8] = 1 :=
+  sorry
+
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded
+
+  /--
+  info: 6
+  -/
+  #guard_msgs in
+  #eval solve_prime_factors_pairs [2, 30, 2, 4, 3]
+
+  /--
+  info: 1
+  -/
+  #guard_msgs in
+  #eval solve_prime_factors_pairs [2, 4]
+
+  /--
+  info: 1
+  -/
+  #guard_msgs in
+  #eval solve_prime_factors_pairs [4, 8]
+

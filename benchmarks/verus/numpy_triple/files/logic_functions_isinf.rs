@@ -15,7 +15,7 @@ fn isinf(x: Vec<f64>) -> (result: Vec<bool>)
     ensures 
         result.len() == x.len(),
         forall|i: int| 0 <= i < x.len() ==> {
-            result[i] == is_infinite(x[i])
+            result[i] == is_infinite(x@[i])
         }
 // </vc-spec>
 // <vc-code>

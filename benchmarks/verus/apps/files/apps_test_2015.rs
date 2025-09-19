@@ -30,9 +30,9 @@ spec fn can_arrange(r: int, g: int, b: int) -> bool
 // </vc-helpers>
 
 // <vc-spec>
-fn check_lamp_arrangement(r: int, g: int, b: int) -> (result: bool)
-    requires valid_input(r, g, b)
-    ensures result == can_arrange(r, g, b)
+fn check_lamp_arrangement(r: i8, g: i8, b: i8) -> (result: bool)
+    requires valid_input(r as int, g as int, b as int)
+    ensures result == can_arrange(r as int, g as int, b as int)
 // </vc-spec>
 // <vc-code>
 {

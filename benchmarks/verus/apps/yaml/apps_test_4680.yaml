@@ -24,12 +24,12 @@ vc-preamble: |-
 vc-helpers: |
 
 vc-spec: |-
-  fn solve(a: int, b: int, c: int) -> (result: &'static str)
+  fn solve(a: i8, b: i8, c: i8) -> (result: &'static str)
       requires 
-          valid_input(a, b, c),
+          valid_input(a as int, b as int, c as int),
       ensures 
           valid_output(result),
-          (result == "YES") <==> can_form_haiku(a, b, c),
+          (result == "YES") <==> can_form_haiku(a as int, b as int, c as int),
 
 vc-code: |-
   {

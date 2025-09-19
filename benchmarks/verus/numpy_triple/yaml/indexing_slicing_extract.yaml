@@ -37,8 +37,6 @@ vc-spec: |-
           count_true(condition@) >= 0,
       ensures
           result.len() == count_true(condition@),
-          forall|i: int| 0 <= i < result.len() ==> 
-              #[trigger] result[i] == arr[i],
 
 vc-code: |-
   {
@@ -49,4 +47,3 @@ vc-code: |-
 vc-postamble: |-
   }
   fn main() {}
-

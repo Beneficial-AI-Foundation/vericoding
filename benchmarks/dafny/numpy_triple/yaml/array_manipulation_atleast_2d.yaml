@@ -1,0 +1,28 @@
+---
+vc-description: |-
+  numpy.atleast_2d: View inputs as arrays with at least two dimensions.
+  
+  This file specifies the behavior of converting 1D vectors to 2D matrices
+  with exactly one row, ensuring arrays have at least 2 dimensions.
+vc-preamble: |-
+  type Vector1D = seq<real>
+  type Matrix2D = seq<seq<real>>
+  
+  /**
+   * Converts a 1D vector to a 2D matrix with exactly one row.
+   * The input vector becomes the single row of the resulting matrix.
+   */
+vc-helpers: |-
+  
+vc-spec: |-
+  method atleast_2d(arr: Vector1D) returns (result: Matrix2D)
+      ensures |result| == 1  // Result has exactly 1 row
+      ensures |result| > 0 ==> |result[0]| == |arr|  // Row has same length as input
+      ensures |result| > 0 ==> result[0] == arr  // Single row matches input exactly
+      ensures |result| > 0 ==> forall i :: 0 <= i < |arr| ==> result[0][i] == arr[i]  // Element preservation
+vc-code: |-
+  {
+    assume {:axiom} false;
+  }
+vc-postamble: |-
+  

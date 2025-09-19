@@ -17,9 +17,9 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: int) -> (result: int)
-    requires valid_input(n)
-    ensures result == worst_case_presses(n) && result >= 1
+fn solve(n: i8) -> (result: i8)
+    requires valid_input(n as int)
+    ensures result as int == worst_case_presses(n as int) && result as int >= 1
 // </vc-spec>
 // <vc-code>
 {

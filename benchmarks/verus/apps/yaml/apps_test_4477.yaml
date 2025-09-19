@@ -47,13 +47,13 @@ vc-preamble: |-
 vc-helpers: |
 
 vc-spec: |-
-  fn solve(x: int) -> (result: int)
-      requires is_boring_apartment(x) && 1 <= x <= 9999
-      ensures result >= 0 && result == total_digits_pressed(x) && 
-              (x == 1 ==> result == 1) &&
-              (x == 22 ==> result == 13) &&
-              (x == 777 ==> result == 66) &&
-              (x == 9999 ==> result == 90)
+  fn solve(x: i32) -> (result: i32)
+      requires is_boring_apartment(x as int) && 1 <= x as int <= 9999
+      ensures result as int >= 0 && result as int == total_digits_pressed(x as int) && 
+              (x as int == 1 ==> result as int == 1) &&
+              (x as int == 22 ==> result as int == 13) &&
+              (x as int == 777 ==> result as int == 66) &&
+              (x as int == 9999 ==> result as int == 90)
 
 vc-code: |-
   {

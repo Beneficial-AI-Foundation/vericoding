@@ -15,9 +15,9 @@ spec fn can_have_exactly_cats(a: int, b: int, x: int) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(a: int, b: int, x: int) -> (result: String)
-    requires valid_input(a, b, x)
-    ensures result@ =~= seq!['Y', 'E', 'S'] <==> can_have_exactly_cats(a, b, x)
+fn solve(a: i8, b: i8, x: i8) -> (result: String)
+    requires valid_input(a as int, b as int, x as int)
+    ensures result@ =~= seq!['Y', 'E', 'S'] <==> can_have_exactly_cats(a as int, b as int, x as int)
 // </vc-spec>
 // <vc-code>
 {

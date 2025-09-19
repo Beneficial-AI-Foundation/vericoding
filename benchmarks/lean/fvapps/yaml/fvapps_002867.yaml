@@ -1,7 +1,7 @@
 vc-description: |-
   /-
   Given a credit card number we can determine who the issuer/vendor is with a few basic knowns.
-  
+
   ```if:python
   Complete the function `get_issuer()` that will use the values shown below to determine the card issuer for a given card number. If the number cannot be matched then the function should return the string `Unknown`.
   ```
@@ -20,7 +20,7 @@ vc-description: |-
   }
   ~~~
   ```
-  
+
   ```markdown
   | Card Type  | Begins With          | Number Length |
   |------------|----------------------|---------------|
@@ -29,13 +29,13 @@ vc-description: |-
   | Mastercard | 51, 52, 53, 54 or 55 | 16            |
   | VISA       | 4                    | 13 or 16      |
   ```
-  
+
   ```if:c,cpp
   **C/C++ note:** The return value in C is not freed.
   ```
-  
+
   ## Examples
-  
+
   ```if-not:python
   ~~~js
   getIssuer(4111111111111111) == "VISA"
@@ -64,7 +64,7 @@ vc-description: |-
 
 vc-preamble: |-
   def get_issuer (number : Nat) : String := sorry
-  
+
   inductive CardIssuer where
     | AMEX : CardIssuer
     | Discover : CardIssuer
@@ -73,7 +73,7 @@ vc-preamble: |-
     | Unknown : CardIssuer
   deriving BEq
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def CardIssuer.toString : CardIssuer → String
@@ -87,67 +87,67 @@ vc-theorems: |-
   theorem issuer_is_valid (n : Nat) :
     let result := get_issuer n
     result = "AMEX" ∨ result = "Discover" ∨ result = "Mastercard" ∨ result = "VISA" ∨ result = "Unknown" := sorry
-  
+
   theorem amex_rules (n : Nat) :
     let digits := n.repr
     (digits.take 2 = "34" ∨ digits.take 2 = "37") → get_issuer n = "AMEX" ∧
     (digits.take 2 = "35" ∨ digits.take 2 = "36") → get_issuer n = "Unknown" := sorry
-  
+
   theorem visa_length_rules (n : Nat) :
     let digits := n.repr
     (digits.get! 0 = '4' ∧ (digits.length = 13 ∨ digits.length = 16)) → 
       get_issuer n = "VISA" ∧
     (digits.get! 0 = '4' ∧ ¬(digits.length = 13 ∨ digits.length = 16)) →
       get_issuer n = "Unknown" := sorry
-  
+
   theorem mastercard_rules (n : Nat) :
     let digits := n.repr
     (digits.take 2 = "51" ∨ digits.take 2 = "52" ∨ digits.take 2 = "53" ∨ digits.take 2 = "54" ∨ digits.take 2 = "55") →
     digits.length = 16 →
     get_issuer n = "Mastercard" := sorry
-  
+
   theorem discover_rules (n : Nat) :
     let digits := n.repr
     digits.startsWith "6011" ∧ digits.length = 16 → 
       get_issuer n = "Discover" := sorry
-  
-  /-
-  info: 'VISA'
-  -/
-  -- #guard_msgs in
-  -- #eval get_issuer 4111111111111111
-  
-  /-
-  info: 'VISA'
-  -/
-  -- #guard_msgs in
-  -- #eval get_issuer 4111111111111
-  
-  /-
-  info: 'AMEX'
-  -/
-  -- #guard_msgs in
-  -- #eval get_issuer 378282246310005
-  
-  /-
-  info: 'Mastercard'
-  -/
-  -- #guard_msgs in
-  -- #eval get_issuer 5105105105105100
-  
-  /-
-  info: 'Discover'
-  -/
-  -- #guard_msgs in
-  -- #eval get_issuer 6011111111111117
-  
-  /-
-  info: 'Unknown'
-  -/
-  -- #guard_msgs in
-  -- #eval get_issuer 9111111111111111
 
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+
+  /-
+  info: 'VISA'
+  -/
+  #guard_msgs in
+  #eval get_issuer 4111111111111111
+
+  /-
+  info: 'VISA'
+  -/
+  #guard_msgs in
+  #eval get_issuer 4111111111111
+
+  /-
+  info: 'AMEX'
+  -/
+  #guard_msgs in
+  #eval get_issuer 378282246310005
+
+  /-
+  info: 'Mastercard'
+  -/
+  #guard_msgs in
+  #eval get_issuer 5105105105105100
+
+  /-
+  info: 'Discover'
+  -/
+  #guard_msgs in
+  #eval get_issuer 6011111111111117
+
+  /-
+  info: 'Unknown'
+  -/
+  #guard_msgs in
+  #eval get_issuer 9111111111111111
 

@@ -1,0 +1,61 @@
+vc-description: |-
+  /-
+  An integer partition of n is a weakly decreasing list of positive integers which sum to n.
+
+  For example, there are 7 integer partitions of 5:
+
+  [5], [4,1], [3,2], [3,1,1], [2,2,1], [2,1,1,1], [1,1,1,1,1].
+
+  Write a function named partitions which returns the number of integer partitions of n.  The function should be able to find the number of integer partitions of n for n as least as large as 100.
+  -/
+
+vc-preamble: |
+
+vc-helpers: |
+
+vc-definitions: |-
+  def partitions (n : Nat) : Nat :=
+    sorry
+
+vc-theorems: |-
+  theorem partitions_positive (n : Nat) (h : n > 0) :
+    partitions n ≥ 1 :=
+  sorry
+
+  theorem partitions_known_values :
+    (partitions 1 = 1) ∧
+    (partitions 2 = 2) ∧ 
+    (partitions 3 = 3) ∧
+    (partitions 4 = 5) ∧
+    (partitions 5 = 7) ∧
+    (partitions 6 = 11) ∧
+    (partitions 7 = 15) ∧
+    (partitions 8 = 22) :=
+  sorry
+
+  theorem partitions_strictly_increasing {n₁ n₂ : Nat} (h₁ : n₁ > 0) (h₂ : n₂ > n₁) :
+    partitions n₂ > partitions n₁ :=
+  sorry
+
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded
+
+  /--
+  info: 7
+  -/
+  #guard_msgs in
+  #eval partitions 5
+
+  /--
+  info: 5
+  -/
+  #guard_msgs in
+  #eval partitions 4
+
+  /--
+  info: 3
+  -/
+  #guard_msgs in
+  #eval partitions 3
+

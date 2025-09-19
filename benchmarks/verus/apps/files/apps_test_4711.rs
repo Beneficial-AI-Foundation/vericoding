@@ -22,9 +22,9 @@ spec fn correct_result(a: int, b: int, c: int) -> int {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(a: int, b: int, c: int) -> (result: int)
-    requires valid_input(a, b, c)
-    ensures result == correct_result(a, b, c)
+fn solve(a: i8, b: i8, c: i8) -> (result: i8)
+    requires valid_input(a as int, b as int, c as int)
+    ensures result as int == correct_result(a as int, b as int, c as int)
 // </vc-spec>
 // <vc-code>
 {

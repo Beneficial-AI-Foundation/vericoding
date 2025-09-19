@@ -5,16 +5,16 @@ vc-description: |-
   Point M is the midpoint of hypotenuse AC.
   You are given the lengths AB and BC.
   Your task is to find ANGLE{MBC} (angle θ°, as shown in the figure) in degrees.
-  
+
   =====Input Format=====
   The first contains the length of side AB.
   The second line contains the length of side BC.
-  
+
   =====Constraints=====
   0<AB≤100
   0<BC≤100
   Lengths AB and BC are natural numbers.
-  
+
   =====Output Format=====
   Output ANGLE{MBC} in degrees.
   Note: Round the angle to the nearest integer.
@@ -24,13 +24,13 @@ vc-description: |-
   If angle is 56.4999999°, then output 56°.
   -/
 
-vc-preamble: |-
+vc-preamble: |
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def find_angle_mbc (ab : Float) (bc : Float) : Float := sorry
-  
+
   theorem angle_properties (ab bc : Float)
     (h1 : ab > 0) (h2 : bc > 0)
     (h3 : ab < bc + bc) (h4 : bc < ab + ab) :
@@ -42,30 +42,30 @@ vc-theorems: |-
     (h1 : x > 0) :
     let angle := find_angle_mbc x x
     angle = 45 := sorry
-  
+
   theorem symmetric_inputs (x : Float)
     (h1 : x > 0) :
     find_angle_mbc x x = 45 := sorry
-  
-  /-
-  info: '45°'
-  -/
-  -- #guard_msgs in
-  -- #eval find_angle_mbc 10 10
-  
-  /-
-  info: '63°'
-  -/
-  -- #guard_msgs in
-  -- #eval find_angle_mbc 20 10
-  
-  /-
-  info: '27°'
-  -/
-  -- #guard_msgs in
-  -- #eval find_angle_mbc 10 20
 
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+
+  /-
+  info: '45°'
+  -/
+  #guard_msgs in
+  #eval find_angle_mbc 10 10
+
+  /-
+  info: '63°'
+  -/
+  #guard_msgs in
+  #eval find_angle_mbc 20 10
+
+  /-
+  info: '27°'
+  -/
+  #guard_msgs in
+  #eval find_angle_mbc 10 20
 

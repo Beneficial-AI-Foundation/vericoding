@@ -17,9 +17,9 @@ spec fn min_jumps(n: int) -> int
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: int) -> (result: int)
-    requires valid_input(n)
-    ensures result == min_jumps(n)
+fn solve(n: i8) -> (result: i8)
+    requires valid_input(n as int)
+    ensures result as int == min_jumps(n as int)
 // </vc-spec>
 // <vc-code>
 {

@@ -1,0 +1,21 @@
+---
+vc-description: |-
+  This file implements numpy.shares_memory functionality for determining
+  if two arrays share memory locations. Unlike may_share_memory, this
+  provides a definitive answer about memory sharing.
+vc-preamble: |-
+  // Predicate to determine if two arrays share memory
+  {
+    a.Length == b.Length && 
+    forall i :: 0 <= i < a.Length ==> a[i] == b[i]
+  }
+vc-helpers: |-
+  
+vc-spec: |-
+  predicate SharesMemory<T(
+vc-code: |-
+  {
+    assume {:axiom} false;
+  }
+vc-postamble: |-
+  

@@ -1,9 +1,9 @@
 vc-description: |-
   /-
   Lexicographic permutations are ordered combinations of a set of items ordered in a specific way.
-  
+
   For instance, the first 8 permutations of the digits 0123, in lexicographic order, are:
-  
+
   ```
   1st 0123
   2nd 0132
@@ -14,28 +14,28 @@ vc-description: |-
   7th 1023
   8th 1032
   ```
-  
+
   Your task is to write a function ```L( n, d )``` that will return a `string` representing the `nth` permutation of the `d` digit, starting with 0 (i.e. d=10 means all digits 0123456789).
-  
+
   So for `d = 4`, `L(7,4)` should return `'1023'`, and `L(4,4)` should return `'0231'`
   .
-  
+
   Some things to bear in mind:
-  
+
   • The function should return a `string`, otherwise permutations beginning with a 0 will have it removed. 
-  
+
   • Test cases will not exceed the highest possible valid values for `n`
-  
+
   • The function should work for any `d` between `1` and `10`.
-  
+
   • A value of 1 for `n` means the 1st permutation, so `n = 0` is not a valid input.
-  
+
   • Oh, and no itertools ;)
   -/
 
-vc-preamble: |-
+vc-preamble: |
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def L (n : Nat) (d : Nat) : String :=
@@ -45,41 +45,41 @@ vc-theorems: |-
   theorem length_matches_input (n d : Nat) (h1 : n ≥ 1) (h2 : n ≤ 1000) (h3 : d ≥ 1) (h4 : d ≤ 10) :
     (L n d).length = d :=
   sorry
-  
+
   theorem all_digits_unique (n d : Nat) (h1 : n ≥ 1) (h2 : n ≤ 1000) (h3 : d ≥ 1) (h4 : d ≤ 10) :
     let result := L n d
     let chars := result.data
     List.Nodup chars :=
   sorry
-  
+
   theorem digits_in_range (n d : Nat) (h1 : n ≥ 1) (h2 : n ≤ 1000) (h3 : d ≥ 1) (h4 : d ≤ 10) :
     let result := L n d
     ∀ c ∈ result.data, c.isDigit ∧ (c.toNat - '0'.toNat) < d :=
   sorry
-  
+
   theorem deterministic (n d : Nat) (h1 : n ≥ 1) (h2 : n ≤ 1000) (h3 : d ≥ 1) (h4 : d ≤ 10) :
     L n d = L n d :=
   sorry
-  
-  /-
-  info: '0'
-  -/
-  -- #guard_msgs in
-  -- #eval L 1 1
-  
-  /-
-  info: '02431'
-  -/
-  -- #guard_msgs in
-  -- #eval L 12 5
-  
-  /-
-  info: '1325460'
-  -/
-  -- #guard_msgs in
-  -- #eval L 1000 7
 
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+
+  /-
+  info: '0'
+  -/
+  #guard_msgs in
+  #eval L 1 1
+
+  /-
+  info: '02431'
+  -/
+  #guard_msgs in
+  #eval L 12 5
+
+  /-
+  info: '1325460'
+  -/
+  #guard_msgs in
+  #eval L 1000 7
 

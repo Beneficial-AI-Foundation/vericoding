@@ -8,12 +8,12 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn log(x: Vec<i32>) -> (result: Vec<i32>)
+fn log(x: Vec<i8>) -> (result: Vec<i8>)
     requires 
-        x.len() > 0,
-        forall|i: int| 0 <= i < x.len() ==> x[i as int] > 0,
+        x@.len() > 0,
+        forall|i: int| 0 <= i < x@.len() ==> x[i] as int > 0,
     ensures 
-        result.len() == x.len(),
+        result@.len() == x@.len(),
 // </vc-spec>
 // <vc-code>
 {

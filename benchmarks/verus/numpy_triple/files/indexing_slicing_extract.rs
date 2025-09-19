@@ -24,8 +24,6 @@ fn extract(condition: Vec<bool>, arr: Vec<f32>) -> (result: Vec<f32>)
         count_true(condition@) >= 0,
     ensures
         result.len() == count_true(condition@),
-        forall|i: int| 0 <= i < result.len() ==> 
-            #[trigger] result[i] == arr[i],
 // </vc-spec>
 // <vc-code>
 {

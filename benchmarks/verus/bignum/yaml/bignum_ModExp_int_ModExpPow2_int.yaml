@@ -29,11 +29,11 @@ vc-preamble: |-
 vc-helpers: |-
 
 vc-spec: |-
-  fn mod_exp_int(x: nat, y: nat, n: nat, z: nat) -> (res: nat)
+  fn mod_exp_int(x: u8, y: u8, n: u8, z: u8) -> (res: u8)
       requires 
-          y < exp_int(2, n + 1),
-          z > 1,
-      ensures res == exp_int(x, y) % z
+          (y as nat) < exp_int(2nat, (n as nat) + 1nat),
+          (z as nat) > 1,
+      ensures (res as nat) == exp_int(x as nat, y as nat) % (z as nat)
       decreases n
 
 vc-code: |-

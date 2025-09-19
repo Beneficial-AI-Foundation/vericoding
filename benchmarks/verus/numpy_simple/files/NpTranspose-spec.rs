@@ -8,9 +8,9 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-type Matrix = Vec<Vec<i32>>;
+type Matrix = Vec<Vec<i8>>;
 
-spec fn matrix_get(mat: Matrix, i: int, j: int) -> i32
+spec fn matrix_get(mat: Matrix, i: int, j: int) -> i8
     recommends 
         0 <= i < mat.len(),
         i < mat.len() ==> 0 <= j < mat[i].len()

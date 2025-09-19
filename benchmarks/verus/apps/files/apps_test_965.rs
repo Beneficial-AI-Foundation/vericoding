@@ -40,9 +40,9 @@ spec fn expected_result(statuses: Seq<char>) -> int {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: int, statuses: Seq<char>) -> (result: int)
-    requires valid_input(n, statuses)
-    ensures result == expected_result(statuses)
+fn solve(n: i8, statuses: Vec<char>) -> (result: i8)
+    requires valid_input(n as int, statuses@)
+    ensures result as int == expected_result(statuses@)
 // </vc-spec>
 // <vc-code>
 {

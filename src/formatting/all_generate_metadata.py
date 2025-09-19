@@ -3,9 +3,9 @@
 Script to extract metadata about files in the benchmarks directory.
 
 For each folder YYY of each folder XXX of `benchmarks`, this script:
-1. Creates an empty object `files_meta`
+1. Creates an empty object `source_meta`
 2. Gets a list of all the files in `benchmarks/XXX/YYY/yaml` and validates they are .yaml files
-3. For each file "ZZZ.yaml" in `benchmarks/XXX/YYY/yaml`, checks if "ZZZ" is a key in `files_meta`
+3. For each file "ZZZ.yaml" in `benchmarks/XXX/YYY/yaml`, checks if "ZZZ" is a key in `source_meta`
 4. If not, creates the key with an empty object as value
 5. Inserts the key-value (XXX, 1) to V
 6. Checks if "source" is a key of V and validates consistency
@@ -16,11 +16,11 @@ import sys
 from pathlib import Path
 from typing import Dict, Any
 
-def get_files_meta(benchmarks_dir: Path) -> Dict[str, Any]:
+def get_source_meta(benchmarks_dir: Path) -> Dict[str, Any]:
     """Get metadata about files in the benchmarks directory."""
 
     # Initialize the main metadata object
-    files_meta: Dict[str, Any] = {}
+    source_meta: Dict[str, Any] = {}
     
     # Iterate through each XXX folder (lean, dafny, verus)
     for xxx_dir in benchmarks_dir.iterdir():
@@ -37,6 +37,7 @@ def get_files_meta(benchmarks_dir: Path) -> Dict[str, Any]:
                 
             yyy_name = yyy_dir.name
             yaml_dir = yyy_dir / "yaml"
+            poor_dir = yyy_dir / "poor"
             
             # Check if yaml directory exists
             if not yaml_dir.exists():
@@ -65,14 +66,19 @@ def get_files_meta(benchmarks_dir: Path) -> Dict[str, Any]:
                 # Extract the base name (ZZZ) from ZZZ.yaml
                 zzz_name = yaml_file.stem  # This removes the .yaml extension
                 
-                # Check if ZZZ is a key in files_meta
-                if zzz_name not in files_meta:
-                    files_meta[zzz_name] = {}
+                # Check if ZZZ is a key in source_meta
+                if zzz_name not in source_meta:
+                    # Initialize SM[XXX][YYY] = "" for YYY in [Lean, Dafny, Verus]
+                    source_meta[zzz_name] = {
+                        "lean": "",
+                        "dafny": "",
+                        "verus": ""
+                    }
                 
-                v = files_meta[zzz_name]
+                v = source_meta[zzz_name]
                 
-                # Insert the key-value (XXX, 1) to V
-                v[xxx_name] = 1
+                # Insert the key-value (XXX, "yaml") to V
+                v[xxx_name] = "yaml"
                 
                 # Check if "source" is a key of V
                 if "source" in v:
@@ -82,42 +88,96 @@ def get_files_meta(benchmarks_dir: Path) -> Dict[str, Any]:
                 else:
                     # Insert the key-value ("source", YYY) to V
                     v["source"] = yyy_name
+            
+            # Process poor directory if it exists
+            if poor_dir.exists() and poor_dir.is_dir():
+                print(f"  Processing poor directory in {yyy_name}...")
+                
+                # Check for any files that are not directories and don't start with "."
+                for item in poor_dir.iterdir():
+                    if item.is_file() and not item.name.startswith('.'):
+                        raise ValueError(f"Found unexpected file in poor directory: {item}. "
+                                       f"Only directories are allowed in poor directory.")
+                
+                # Iterate through each ZZZ folder in poor directory
+                for zzz_dir in poor_dir.iterdir():
+                    if not zzz_dir.is_dir() or zzz_dir.name.startswith('.'):
+                        continue
+                    
+                    zzz_name = zzz_dir.name
+                    print(f"    Processing poor/{zzz_name} folder...")
+                    
+                    # Get all files in the ZZZ folder
+                    zzz_files = list(zzz_dir.iterdir())
+                    
+                    for www_file in zzz_files:
+                        if not www_file.is_file() or www_file.name.startswith('.'):
+                            continue
+                        
+                        www_name = www_file.name
+                        
+                        # Case 1: WWW is of the form UUU.yaml
+                        uuu_name = www_file.stem  # Remove .yaml extension
+                        
+                        # Check if UUU is already in source_meta
+                        if uuu_name in source_meta:
+                            # Raise error if SM[UUU][XXX] starts with "yaml"
+                            if source_meta[uuu_name][xxx_name].startswith("yaml"):
+                                raise ValueError(f"SM[{uuu_name}][{xxx_name}] starts with 'yaml', "
+                                                f"found: {source_meta[uuu_name][xxx_name]}")
+                        else:
+                            # Create entry SM[UUU] with empty strings for all languages
+                            source_meta[uuu_name] = {
+                                "lean": "",
+                                "dafny": "",
+                                "verus": ""
+                            }
+                        
+                        # Set SM[UUU][XXX] to "poor/ZZZ"
+                        source_meta[uuu_name][xxx_name] = f"poor/{zzz_name}"
+                        
+                        # Set source if not already set
+                        if "source" not in source_meta[uuu_name]:
+                            source_meta[uuu_name]["source"] = yyy_name
+                        elif source_meta[uuu_name]["source"] != yyy_name:
+                            raise ValueError(f"Inconsistent source for {uuu_name}. "
+                                            f"Expected {source_meta[uuu_name]['source']}, found {yyy_name}")
 
-    return files_meta
+    return source_meta
 
-def get_all_sources(files_meta: Dict[str, Any]) -> set[str]:
-    """Get all possible sources from files_meta.
+def get_all_sources(source_meta: Dict[str, Any]) -> set[str]:
+    """Get all possible sources from source_meta.
     
     Args:
-        files_meta: Dictionary containing file metadata
+        source_meta: Dictionary containing file metadata
         
     Returns:
-        Set of all unique source values found in files_meta
+        Set of all unique source values found in source_meta
     """
     sources = set()
-    for file_data in files_meta.values():
+    for file_data in source_meta.values():
         if "source" in file_data:
             sources.add(file_data["source"])
     return sources
 
-def count_files_by_source(files_meta: Dict[str, Any]) -> Dict[str, Dict[str, int]]:
+def count_files_by_source(source_meta: Dict[str, Any]) -> Dict[str, Dict[str, int]]:
     """Count files by source and language type.
     
-    For each source in files_meta, counts:
+    For each source in source_meta, counts:
     1. Total number of filenames with that source
     2. Total number of Lean filenames with that source
     3. Total number of Dafny filenames with that source
     4. Total number of Verus filenames with that source
     
     Args:
-        files_meta: Dictionary containing file metadata
+        source_meta: Dictionary containing file metadata
         
     Returns:
         Dictionary mapping source names to counts of different file types
     """
     source_counts = {}
     
-    for filename, file_data in files_meta.items():
+    for filename, file_data in source_meta.items():
         source = file_data.get("source")
         if source is None:
             continue
@@ -126,54 +186,62 @@ def count_files_by_source(files_meta: Dict[str, Any]) -> Dict[str, Dict[str, int
         if source not in source_counts:
             source_counts[source] = {
                 "total": 0,
-                "lean": 0,
-                "dafny": 0,
-                "verus": 0
+                "lean": {'yaml': 0, 'poor': 0},
+                "dafny": {'yaml': 0, 'poor': 0},
+                "verus": {'yaml': 0, 'poor': 0}
             }
         
         # Count total files for this source
         source_counts[source]["total"] += 1
         
-        # Count files by language type
-        if "lean" in file_data:
-            source_counts[source]["lean"] += 1
-        if "dafny" in file_data:
-            source_counts[source]["dafny"] += 1
-        if "verus" in file_data:
-            source_counts[source]["verus"] += 1
+        # Count files by language type (check for non-empty string values)
+        if "lean" in file_data and file_data["lean"].startswith("yaml"):
+            source_counts[source]["lean"]['yaml'] += 1
+        if "dafny" in file_data and file_data["dafny"].startswith("yaml"):
+            source_counts[source]["dafny"]['yaml'] += 1
+        if "verus" in file_data and file_data["verus"].startswith("yaml"):
+            source_counts[source]["verus"]['yaml'] += 1
+        if "lean" in file_data and file_data["lean"].startswith("poor"):
+            source_counts[source]["lean"]['poor'] += 1
+        if "dafny" in file_data and file_data["dafny"].startswith("poor"):
+            source_counts[source]["dafny"]['poor'] += 1
+        if "verus" in file_data and file_data["verus"].startswith("poor"):
+            source_counts[source]["verus"]['poor'] += 1
     
     return source_counts
 
-def validate_source_signatures(files_meta: Dict[str, Any]) -> None:
+def validate_source_signatures(source_meta: Dict[str, Any]) -> None:
     """Validate that all entries for each source have the same signature.
     
-    For each source, filters out all entries from files_meta with that source,
+    For each source, filters out all entries from source_meta with that source,
     then checks that all the filtered entries have the same (Lean, Verus, Dafny) signature.
     Prints out all files with inconsistent signatures.
     
     Args:
-        files_meta: Dictionary containing file metadata
+        source_meta: Dictionary containing file metadata
     """
-    sources = get_all_sources(files_meta)
+    sources = get_all_sources(source_meta)
     inconsistent_files = []
     
     for source in sources:
         # Filter entries for this source
         source_entries = {
-            filename: data for filename, data in files_meta.items()
+            filename: data for filename, data in source_meta.items()
             if data.get("source") == source
         }
         
         if not source_entries:
             continue
             
-        # Get the signature (set of languages) for the first entry
+        # Get the signature (set of languages with non-empty values) for the first entry
         first_entry = next(iter(source_entries.values()))
-        expected_signature = set(key for key in first_entry.keys() if key != "source")
+        expected_signature = set(key for key in first_entry.keys() 
+                               if key != "source" and first_entry[key])
         
         # Check that all other entries have the same signature
         for filename, entry_data in source_entries.items():
-            entry_signature = set(key for key in entry_data.keys() if key != "source")
+            entry_signature = set(key for key in entry_data.keys() 
+                                if key != "source" and entry_data[key])
             if entry_signature != expected_signature:
                 inconsistent_files.append({
                     'source': source,
@@ -198,32 +266,32 @@ def main():
     if not benchmarks_dir.exists():
         raise FileNotFoundError(f"Benchmarks directory {benchmarks_dir} does not exist")
     
-    files_meta = get_files_meta(benchmarks_dir)
+    source_meta = get_source_meta(benchmarks_dir)
     
-    print(f"\nTotal files processed: {len(files_meta)}")
+    print(f"\nTotal files processed: {len(source_meta)}")
     
     # Optionally save to a file
     import json
     output_file = benchmarks_dir / "generated_metadata.json"
     with open(output_file, 'w') as f:
-        json.dump(files_meta, f, indent=2, sort_keys=True)
+        json.dump(source_meta, f, indent=2, sort_keys=True)
     
     print(f"Metadata saved to: {output_file}")
 
     # Validate that all entries for each source have consistent signatures
-    validate_source_signatures(files_meta)
+    validate_source_signatures(source_meta)
     
     # Count files by source and language type
-    source_counts = count_files_by_source(files_meta)
+    source_counts = count_files_by_source(source_meta)
     
     print("\nFile counts by source:")
     print("=" * 50)
     for source, counts in sorted(source_counts.items()):
         print(f"Source: {source}")
         print(f"  Total files: {counts['total']}")
-        print(f"  Lean files: {counts['lean']}")
-        print(f"  Dafny files: {counts['dafny']}")
-        print(f"  Verus files: {counts['verus']}")
+        print(f"  Lean files: {counts['lean']['yaml']} yaml files, {counts['lean']['poor']} poor files")
+        print(f"  Dafny files: {counts['dafny']['yaml']} yaml files, {counts['dafny']['poor']} poor files")
+        print(f"  Verus files: {counts['verus']['yaml']} yaml files, {counts['verus']['poor']} poor files")
         print()
     
 

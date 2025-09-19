@@ -20,7 +20,7 @@ spec fn hermite_basis(k: nat, t: int) -> int
     }
 }
 
-fn hermevander2d(x: Vec<i32>, y: Vec<i32>, x_deg: usize, y_deg: usize) -> (result: Vec<Vec<i32>>)
+fn hermevander2d(x: Vec<i8>, y: Vec<i8>, x_deg: usize, y_deg: usize) -> (result: Vec<Vec<i8>>)
     requires 
         x.len() == y.len(),
         x.len() > 0,

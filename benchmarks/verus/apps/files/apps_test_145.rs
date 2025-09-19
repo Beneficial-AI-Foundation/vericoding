@@ -24,11 +24,11 @@ spec fn correct_output(username: Seq<char>, output: Seq<char>) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(input: Seq<char>) -> (output: Seq<char>)
-    requires valid_input(input)
+fn solve(input: Vec<char>) -> (output: Vec<char>)
+    requires valid_input(input@)
     ensures ({
-        let username = input.subrange(0, input.len() - 1);
-        correct_output(username, output)
+        let username = input@.subrange(0, input@.len() - 1);
+        correct_output(username, output@)
     })
 // </vc-spec>
 // <vc-code>

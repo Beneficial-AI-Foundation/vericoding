@@ -1,0 +1,55 @@
+vc-description: |-
+  /-
+  You might know some pretty large perfect squares.  But what about the NEXT one?
+
+  Complete the `findNextSquare` method that finds the next integral perfect square after the one passed as a parameter.  Recall that an integral perfect square is an integer n such that sqrt(n) is also an integer.  
+
+  If the parameter is itself not a perfect square then `-1` should be returned.  You may assume the parameter is positive.
+
+  **Examples:**
+
+  ```
+  findNextSquare(121) --> returns 144
+  findNextSquare(625) --> returns 676
+  findNextSquare(114) --> returns -1 since 114 is not a perfect
+  ```
+  -/
+
+vc-preamble: |
+
+vc-helpers: |
+
+vc-definitions: |-
+  def sqrt (n : Nat) : Nat := sorry
+
+  def find_next_square (n : Nat) : Int := sorry
+
+vc-theorems: |-
+  theorem next_square_of_perfect (n : Nat) (h : ∃ k, n = k * k) : 
+    find_next_square n = ((sqrt n + 1) * (sqrt n + 1)) := sorry
+
+  theorem non_square_returns_minus_one (n : Nat) (h : ¬∃ k, n = k * k) :
+    find_next_square n = -1 := sorry
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded
+
+  /--
+  info: 144
+  -/
+  #guard_msgs in
+  #eval find_next_square 121
+
+  /--
+  info: 676
+  -/
+  #guard_msgs in
+  #eval find_next_square 625
+
+  /--
+  info: -1
+  -/
+  #guard_msgs in
+  #eval find_next_square 155
+

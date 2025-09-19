@@ -1,56 +1,56 @@
 vc-description: |-
   /-
   Appleman has a tree with n vertices. Some of the vertices (at least one) are colored black and other vertices are colored white.
-  
+
   Consider a set consisting of k (0 ≤ k < n) edges of Appleman's tree. If Appleman deletes these edges from the tree, then it will split into (k + 1) parts. Note, that each part will be a tree with colored vertices.
-  
+
   Now Appleman wonders, what is the number of sets splitting the tree in such a way that each resulting part will have exactly one black vertex? Find this number modulo 1000000007 (10^9 + 7).
-  
+
   -----Input-----
-  
+
   The first line contains an integer n (2  ≤ n ≤ 10^5) — the number of tree vertices. 
-  
+
   The second line contains the description of the tree: n - 1 integers p_0, p_1, ..., p_{n} - 2 (0 ≤ p_{i} ≤ i). Where p_{i} means that there is an edge connecting vertex (i + 1) of the tree and vertex p_{i}. Consider tree vertices are numbered from 0 to n - 1.
-  
+
   The third line contains the description of the colors of the vertices: n integers x_0, x_1, ..., x_{n} - 1 (x_{i} is either 0 or 1). If x_{i} is equal to 1, vertex i is colored black. Otherwise, vertex i is colored white.
-  
+
   -----Output-----
-  
+
   Output a single integer — the number of ways to split the tree modulo 1000000007 (10^9 + 7).
-  
+
   -----Examples-----
   Input
   3
   0 0
   0 1 1
-  
+
   Output
   2
-  
+
   Input
   6
   0 1 1 0 4
   1 1 0 0 1 0
-  
+
   Output
   1
-  
+
   Input
   10
   0 1 2 1 4 4 4 0 8
   0 0 0 1 0 1 1 0 0 1
-  
+
   Output
   27
   -/
 
-vc-preamble: |-
+vc-preamble: |
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def MODULO := 1000000007
-  
+
   def solve_tree_splitting (n : Nat) (parents : List Nat) (colors : List Nat) : Nat := sorry
 
 vc-theorems: |-
@@ -59,7 +59,7 @@ vc-theorems: |-
     let colors := List.replicate n 0
     let result := solve_tree_splitting n parents colors
     result ≥ 0 ∧ result < MODULO := sorry
-  
+
   theorem chain_tree_bounds (n : Nat) (colors : List Nat)
       (h1 : 1 < n ∧ n ≤ 20)
       (h2 : ∀ c ∈ colors, c = 0 ∨ c = 1)
@@ -67,37 +67,37 @@ vc-theorems: |-
     let parents := List.range (n-1)
     let result := solve_tree_splitting n parents colors
     result ≥ 0 ∧ result < MODULO := sorry
-  
+
   theorem star_tree_bounds (n : Nat) (h : 1 < n ∧ n ≤ 20) :
     let parents := List.replicate (n-1) 0
     let colors := List.map (fun i => i % 2) (List.range n)
     let result := solve_tree_splitting n parents colors
     result ≥ 0 ∧ result < MODULO := sorry
-  
+
   theorem edge_cases :
     (solve_tree_splitting 2 [0] [0,1] ≥ 0) ∧
     (solve_tree_splitting 3 [0,0] [1,1,1] ≥ 0) ∧
     (solve_tree_splitting 3 [0,0] [0,0,0] ≥ 0) := sorry
-  
-  /-
-  info: 2
-  -/
-  -- #guard_msgs in
-  -- #eval solve_tree_splitting 3 [0, 0] [0, 1, 1]
-  
-  /-
-  info: 1
-  -/
-  -- #guard_msgs in
-  -- #eval solve_tree_splitting 6 [0, 1, 1, 0, 4] [1, 1, 0, 0, 1, 0]
-  
-  /-
-  info: 27
-  -/
-  -- #guard_msgs in
-  -- #eval solve_tree_splitting 10 [0, 1, 2, 1, 4, 4, 4, 0, 8] [0, 0, 0, 1, 0, 1, 1, 0, 0, 1]
 
 vc-postamble: |-
   -- Apps difficulty: competition
   -- Assurance level: unguarded
+
+  /-
+  info: 2
+  -/
+  #guard_msgs in
+  #eval solve_tree_splitting 3 [0, 0] [0, 1, 1]
+
+  /-
+  info: 1
+  -/
+  #guard_msgs in
+  #eval solve_tree_splitting 6 [0, 1, 1, 0, 4] [1, 1, 0, 0, 1, 0]
+
+  /-
+  info: 27
+  -/
+  #guard_msgs in
+  #eval solve_tree_splitting 10 [0, 1, 2, 1, 4, 4, 4, 0, 8] [0, 0, 0, 1, 0, 1, 1, 0, 0, 1]
 

@@ -12,12 +12,12 @@ pub enum NewAxis {
 // </vc-helpers>
 
 // <vc-spec>
-fn expand_to_column<T>(v: Vec<T>, axis: NewAxis) -> (result: Vec<Vec<T>>)
+fn expand_to_column(v: Vec<i8>, axis: NewAxis) -> (result: Vec<Vec<i8>>)
     ensures
-        result.len() == v.len(),
-        forall|i: int| 0 <= i < result.len() ==> (
-            result[i].len() == 1 &&
-            result[i][0] == v[i]
+        result@.len() == v@.len(),
+        forall|i: int| 0 <= i < result@.len() ==> (
+            result@[i].len() == 1 &&
+            result@[i][0] == v@[i]
         ),
 // </vc-spec>
 // <vc-code>

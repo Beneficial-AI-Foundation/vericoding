@@ -38,12 +38,12 @@ spec fn correct_result(result: int, k: int, n: int, s: int, p: int) -> bool
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(k: int, n: int, s: int, p: int) -> (result: int)
+fn solve(k: i32, n: i32, s: i32, p: i32) -> (result: i32)
   requires
-    valid_input(k, n, s, p),
+    valid_input(k as int, n as int, s as int, p as int),
   ensures
     result >= 1,
-    correct_result(result, k, n, s, p),
+    correct_result(result as int, k as int, n as int, s as int, p as int),
 // </vc-spec>
 // <vc-code>
 {

@@ -52,16 +52,16 @@ spec fn string_to_int(s: Seq<char>) -> int;
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(input: Seq<char>) -> (result: Seq<char>)
+fn solve(input: Vec<char>) -> (result: Vec<char>)
     requires 
-        valid_input(input) &&
-        valid_parsed_input(split_lines(input))
+        valid_input(input@) &&
+        valid_parsed_input(split_lines(input@))
     ensures 
-        result == seq!['A', 'n', 't', 'o', 'n'] || 
-        result == seq!['D', 'a', 'n', 'i', 'k'] || 
-        result == seq!['F', 'r', 'i', 'e', 'n', 'd', 's', 'h', 'i', 'p'] &&
-        result == {
-            let lines = split_lines(input);
+        result@ == seq!['A', 'n', 't', 'o', 'n'] || 
+        result@ == seq!['D', 'a', 'n', 'i', 'k'] || 
+        result@ == seq!['F', 'r', 'i', 'e', 'n', 'd', 's', 'h', 'i', 'p'] &&
+        result@ == {
+            let lines = split_lines(input@);
             let s = lines[1];
             let count_a = count_char(s, 'A');
             let count_d = count_char(s, 'D');

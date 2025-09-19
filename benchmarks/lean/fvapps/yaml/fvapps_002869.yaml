@@ -2,25 +2,25 @@ vc-description: |-
   /-
   # Task
    Vanya gets bored one day and decides to enumerate a large pile of rocks. He first counts the rocks and finds out that he has `n` rocks in the pile, then he goes to the store to buy labels for enumeration. 
-  
+
    Each of the labels is a digit from 0 to 9 and each of the `n` rocks should be assigned a unique number from `1` to `n`.
-  
+
    If each label costs `$1`, how much money will Vanya spend on this project?
-  
+
   # Input/Output
-  
+
    - `[input]` integer `n`
-  
+
     The number of rocks in the pile.
-  
+
     `1  ≤  n  ≤  10^9`
-  
+
    - `[output]` an integer
-  
+
     the cost of the enumeration.
-  
+
   # Example
-  
+
    For `n = 13`, the result should be `17`.
    ```
    the numbers from 1 to n are:
@@ -36,11 +36,11 @@ vc-preamble: |-
     if n < 10 then 0
     else 1 + log10 (n / 10)
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def rocks (n : Nat) : Nat := sorry
-  
+
   theorem rocks_monotonically_increasing 
     (n : Nat)
     (h : n > 1) :
@@ -51,32 +51,32 @@ vc-theorems: |-
     (n : Nat)
     (h : n > 0) : 
     rocks n ≥ n := sorry
-  
+
   theorem rocks_single_digit 
     (n : Nat)
     (h1 : n > 0)
     (h2 : n ≤ 9) :
     rocks n = n := sorry
-  
-  /-
-  info: 1
-  -/
-  -- #guard_msgs in
-  -- #eval rocks 1
-  
-  /-
-  info: 17
-  -/
-  -- #guard_msgs in
-  -- #eval rocks 13
-  
-  /-
-  info: 192
-  -/
-  -- #guard_msgs in
-  -- #eval rocks 100
 
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
+
+  /-
+  info: 1
+  -/
+  #guard_msgs in
+  #eval rocks 1
+
+  /-
+  info: 17
+  -/
+  #guard_msgs in
+  #eval rocks 13
+
+  /-
+  info: 192
+  -/
+  #guard_msgs in
+  #eval rocks 100
 

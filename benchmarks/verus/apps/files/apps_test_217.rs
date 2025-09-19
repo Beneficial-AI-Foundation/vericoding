@@ -38,16 +38,16 @@ spec fn multi_journey_feasibility(a: int, b: int, f: int, k: int, result: int) -
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(a: int, b: int, f: int, k: int) -> (result: int)
+fn solve(a: i8, b: i8, f: i8, k: i8) -> (result: i8)
   requires
-    valid_input(a, b, f, k)
+    valid_input(a as int, b as int, f as int, k as int)
   ensures
-    result >= -1 &&
-    ((result == -1) <==> impossible_conditions(a, b, f, k)) &&
-    (result >= 0 ==> result <= k) &&
-    (result >= 0 ==> feasibility_conditions(a, b, f, k)) &&
-    single_journey_result(a, b, f, k, result) &&
-    multi_journey_feasibility(a, b, f, k, result)
+    result as int >= -1 &&
+    ((result as int == -1) <==> impossible_conditions(a as int, b as int, f as int, k as int)) &&
+    (result as int >= 0 ==> result as int <= k as int) &&
+    (result as int >= 0 ==> feasibility_conditions(a as int, b as int, f as int, k as int)) &&
+    single_journey_result(a as int, b as int, f as int, k as int, result as int) &&
+    multi_journey_feasibility(a as int, b as int, f as int, k as int, result as int)
 // </vc-spec>
 // <vc-code>
 {

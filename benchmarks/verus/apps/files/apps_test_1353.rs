@@ -32,12 +32,12 @@ spec fn optimal_cost(n: int, m: int, a: int, b: int) -> int
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: int, m: int, a: int, b: int) -> (result: int)
+fn solve(n: i8, m: i8, a: i8, b: i8) -> (result: i8)
     requires 
-        valid_input(n, m, a, b),
+        valid_input(n as int, m as int, a as int, b as int),
     ensures 
         result >= 0,
-        result == optimal_cost(n, m, a, b),
+        result as int == optimal_cost(n as int, m as int, a as int, b as int),
 // </vc-spec>
 // <vc-code>
 {

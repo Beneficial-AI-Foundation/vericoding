@@ -1,0 +1,64 @@
+vc-description: |-
+  /-
+  ## Description
+  
+  The task is described in the title: find the sum of all numbers with the same digits(permutations) **including** duplicates. However, due to the fact that this is a performance edition kata, `num` can go up to `10**10000`. That's a number with 10001 digits(at most). Be sure to use efficient algorithms and good luck! All numbers tested for will be positive.
+  
+  **Examples**
+  ```
+  sum_arrangements(98) returns 89+98 = 187
+  sum_arrangements(123) returns 1332 #123 + 132 + 213 + 231 + 312 + 321 = 1332
+  sum_arrangements(1185) returns 99990 #1185 + 1158 + 1815 + 1851 + 1518 + 1581 + 1185 + 1158 + 1815 + 1851 + 1518 + 1581 + 8115 + 8151 + 8115 + 8151 + 8511 + 8511 + 5118 + 5181 + 5118 + 5181 + 5811 + 5811 = 99990
+  ```
+  -/
+
+vc-preamble: |-
+
+vc-helpers: |-
+
+vc-definitions: |-
+  def sum_arrangements (n : Nat) : Nat :=
+  sorry
+  
+  def digit_sum (n : Nat) : Nat :=
+  sorry
+
+vc-theorems: |-
+  theorem deterministic (n : Nat) :
+    sum_arrangements n = sum_arrangements n := by
+  sorry
+  
+  theorem multiple_of_digit_sum (n : Nat) (h : n > 0) :
+    sum_arrangements n % digit_sum n = 0 := by
+  sorry
+  
+  theorem single_digit (n : Nat) (h : n > 0) (h₂ : n < 10) :
+    sum_arrangements n = n := by
+  sorry
+  
+  theorem positive_output (n : Nat) (h : n > 0) :
+    sum_arrangements n > 0 := by
+  sorry
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded
+  
+  /--
+  info: 187
+  -/
+  #guard_msgs in
+  #eval sum_arrangements 98
+  
+  /--
+  info: 1332
+  -/
+  #guard_msgs in
+  #eval sum_arrangements 123
+  
+  /--
+  info: 99990
+  -/
+  #guard_msgs in
+  #eval sum_arrangements 1185
+

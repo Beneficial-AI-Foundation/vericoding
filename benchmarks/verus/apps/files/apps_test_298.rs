@@ -20,12 +20,12 @@ spec fn first_player_wins(n: int, k: int) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: int, k: int) -> (result: String)
+fn solve(n: i8, k: i8) -> (result: String)
     requires
-        valid_input(n, k),
+        valid_input(n as int, k as int),
     ensures
-        first_player_wins(n, k) ==> result@ == seq!['Y', 'E', 'S'],
-        !first_player_wins(n, k) ==> result@ == seq!['N', 'O'],
+        first_player_wins(n as int, k as int) ==> result@ == seq!['Y', 'E', 'S'],
+        !first_player_wins(n as int, k as int) ==> result@ == seq!['N', 'O'],
 // </vc-spec>
 // <vc-code>
 {

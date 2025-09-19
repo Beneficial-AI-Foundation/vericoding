@@ -8,14 +8,14 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn where_fn(condition: Vec<bool>, x: Vec<i32>, y: Vec<i32>) -> (result: Vec<i32>)
+fn where_fn(condition: Vec<bool>, x: Vec<i8>, y: Vec<i8>) -> (result: Vec<i8>)
     requires 
         condition.len() == x.len(),
         x.len() == y.len(),
     ensures 
         result.len() == condition.len(),
         forall|i: int| 0 <= i < result.len() ==> 
-            result[i] == if condition[i] { x[i] } else { y[i] }
+            result[i] as int == if condition[i] { x[i] as int } else { y[i] as int }
 {
     // impl-start
     assume(false);
@@ -23,7 +23,7 @@ fn where_fn(condition: Vec<bool>, x: Vec<i32>, y: Vec<i32>) -> (result: Vec<i32>
     // impl-end
 }
 
-fn where_with_transform(arr: Vec<i32>) -> (result: Vec<i32>)
+fn where_with_transform(arr: Vec<i8>) -> (result: Vec<i8>)
     requires arr.len() >= 0,
     ensures 
         result.len() == arr.len()

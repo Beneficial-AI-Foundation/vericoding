@@ -15,9 +15,9 @@ spec fn min_total_fare(a: int, b: int, c: int, d: int) -> int {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(a: int, b: int, c: int, d: int) -> (result: int)
-    requires valid_input(a, b, c, d)
-    ensures result == min_total_fare(a, b, c, d)
+fn solve(a: i8, b: i8, c: i8, d: i8) -> (result: i8)
+    requires valid_input(a as int, b as int, c as int, d as int)
+    ensures result as int == min_total_fare(a as int, b as int, c as int, d as int)
 // </vc-spec>
 // <vc-code>
 {

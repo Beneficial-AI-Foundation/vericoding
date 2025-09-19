@@ -41,9 +41,9 @@ spec fn optimal_distribution(result: Seq<int>, n: int, m: int) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: int, m: int) -> (result: Seq<int>)
-  requires valid_input(n, m)
-  ensures optimal_distribution(result, n, m)
+fn solve(n: i8, m: i8) -> (result: Vec<i8>)
+  requires valid_input(n as int, m as int)
+  ensures optimal_distribution(result@.map(|i: int, x: i8| x as int), n as int, m as int)
 // </vc-spec>
 // <vc-code>
 {

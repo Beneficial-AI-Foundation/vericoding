@@ -1,6 +1,5 @@
 // <vc-preamble>
 use vstd::prelude::*;
-use vstd::set_lib::*;
 
 verus! {
 spec fn valid_input(n: int, a: Seq<int>) -> bool {
@@ -8,24 +7,17 @@ spec fn valid_input(n: int, a: Seq<int>) -> bool {
 }
 
 spec fn count_violations_for_k(a: Seq<int>, n: int, k: int) -> int {
-  if n >= 2 && a.len() == n && 1 <= k <= n - 1 {
-    set_int_range(2, n + 1).filter(|i: int| {
-      let parent_idx = (i + k - 2) / k;
-      parent_idx >= 1 && a[i-1] < a[parent_idx-1]
-    }).len() as int
-  } else {
-    0
-  }
+  let violations = Set::new(|i: int| 2 <= i <= n && {
+    let parent_idx = (i + k - 2) / k;
+    parent_idx >= 1 && a[i-1] < a[parent_idx-1]
+  });
+  violations.len() as int
 }
 
 spec fn valid_output(result: Seq<int>, n: int, a: Seq<int>) -> bool {
-  if n >= 2 && a.len() == n {
-    result.len() == n - 1 &&
-    (forall|k: int| 1 <= k <= n - 1 ==> result[k-1] >= 0) &&
-    (forall|k: int| 1 <= k <= n - 1 ==> result[k-1] == count_violations_for_k(a, n, k))
-  } else {
-    false
-  }
+  result.len() == n - 1 &&
+  (forall|k: int| 1 <= k <= n - 1 ==> #[trigger] result[k-1] >= 0) &&
+  (forall|k: int| 1 <= k <= n - 1 ==> #[trigger] result[k-1] == count_violations_for_k(a, n, k))
 }
 // </vc-preamble>
 
@@ -33,9 +25,9 @@ spec fn valid_output(result: Seq<int>, n: int, a: Seq<int>) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: int, a: Seq<int>) -> (result: Seq<int>)
-  requires valid_input(n, a)
-  ensures valid_output(result, n, a)
+fn solve(n: i8, a: Vec<i8>) -> (result: Vec<i8>)
+  requires valid_input(n as int, a@.map(|_i, x| x as int))
+  ensures valid_output(result@.map(|_i, x| x as int), n as int, a@.map(|_i, x| x as int))
 // </vc-spec>
 // <vc-code>
 {

@@ -20,12 +20,12 @@ vc-preamble: |-
 vc-helpers: |-
 
 vc-spec: |-
-  fn ravel(arr: Matrix<i32>, m: usize, n: usize) -> (ret: Vec<i32>)
+  fn ravel(arr: Matrix<i8>, m: usize, n: usize) -> (ret: Vec<i8>)
       requires m > 0 && n > 0,
       ensures 
           ret.len() == m * n,
           forall|i: usize, j: usize| i < m && j < n ==> 
-              ret[(i * n + j) as int] == matrix_get(arr, i, j)
+              ret@[(i * n + j) as int] == matrix_get(arr, i, j)
 vc-code: |-
   {
       // impl-start

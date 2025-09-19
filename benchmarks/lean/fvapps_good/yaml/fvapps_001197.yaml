@@ -1,0 +1,77 @@
+vc-description: |-
+  /-
+  The chef is having one array of natural numbers. Cheffina challenges chef that find the sum of weights all the natural numbers present in the array, but the main problem is that all numbers have not original weights. After every 6 natural numbers weight is set to 1 as weight increases by 1 after that. (i.e. weight of 1 is 1, weight of 2 is 2 but the weight of 7 is 1 and weight of 8 is 2 and so on…). Help the chef to find the sum. 
+
+  -----Input:-----
+  - First line will contain $T$, number of testcases. Then the testcases follow. 
+  - Each testcase contains two lines of input, one integer $N$.
+  - Next line has N space separate natural numbers. 
+
+  -----Output:-----
+  For each testcase, output in a single line answer.
+
+  -----Constraints-----
+  - $1 \leq T \leq 10$
+  - $1 \leq N \leq 10^5$
+  - $1 \leq arr[i] \leq 10^6$
+
+  -----Sample Input:-----
+  1
+  6
+  6 7 9 11 4 16
+
+  -----Sample Output:-----
+  23
+
+  -----EXPLANATION:-----
+  Array after conversion = [6, 1, 3, 5, 4, 4]
+  -/
+
+vc-preamble: |
+
+vc-helpers: |
+
+vc-definitions: |-
+  def calc_weighted_sum (arr : List Int) : Int := sorry
+
+  def list_sum (xs : List Int) : Int :=
+    match xs with
+    | [] => 0
+    | h :: t => h + list_sum t
+
+vc-theorems: |-
+  theorem weighted_sum_bounds (arr : List Int) : 
+    let result := calc_weighted_sum arr
+    result ≥ 0 ∧ result ≤ arr.length * 6 := sorry
+
+  theorem weighted_sum_multiples_six {arr : List Int} (h : arr.length > 0) :
+    let multiples := arr.map (· * 6)
+    calc_weighted_sum multiples = 6 * multiples.length := sorry
+
+  theorem weighted_sum_modulo (arr : List Int) :
+    calc_weighted_sum arr = arr.foldr (λ x sum => 
+      if x % 6 = 0 then sum + 6 
+      else sum + x % 6) 0 := sorry
+
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: guarded_and_plausible
+
+  /--
+  info: 23
+  -/
+  #guard_msgs in
+  #eval calc_weighted_sum [6, 7, 9, 11, 4, 16]
+
+  /--
+  info: 6
+  -/
+  #guard_msgs in
+  #eval calc_weighted_sum [1, 2, 3]
+
+  /--
+  info: 6
+  -/
+  #guard_msgs in
+  #eval calc_weighted_sum [7, 8, 13, 14]
+

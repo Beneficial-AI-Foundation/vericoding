@@ -1,0 +1,50 @@
+vc-description: |-
+  /-
+  Write a function that takes a string and returns an array containing binary numbers equivalent to the ASCII codes of the characters of the string. The binary strings should be eight digits long.
+
+  Example: `'man'` should return `[ '01101101', '01100001', '01101110' ]`
+  -/
+
+vc-preamble: |
+
+vc-helpers: |
+
+vc-definitions: |-
+  def word_to_bin (s : String) : List String := sorry
+
+  theorem word_to_bin_length {s : String} (h : s.length > 0) : 
+    (word_to_bin s).length = s.length := sorry
+
+vc-theorems: |-
+  theorem word_to_bin_binary_format {s : String} (h : s.length > 0) :
+    ∀ x ∈ word_to_bin s,
+      x.length = 8 ∧ 
+      ∀ c ∈ x.data, c = '0' ∨ c = '1' := sorry
+
+  theorem word_to_bin_roundtrip {s : String} (h : s.length > 0) :
+    let binList := word_to_bin s
+    let decoded := binList.map (fun x => String.toNat! x)
+    String.mk (decoded.map Char.ofNat) = s := sorry
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded
+
+  /--
+  info: ['01101101', '01100001', '01101110']
+  -/
+  #guard_msgs in
+  #eval word_to_bin "man"
+
+  /--
+  info: ['01100001']
+  -/
+  #guard_msgs in
+  #eval word_to_bin "a"
+
+  /--
+  info: ['01000001', '01000010']
+  -/
+  #guard_msgs in
+  #eval word_to_bin "AB"
+

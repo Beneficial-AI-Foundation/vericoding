@@ -11,12 +11,26 @@ spec fn valid_operations(operations: Seq<(int, int)>, n: int) -> bool {
     forall|op: (int, int)| operations.contains(op) ==> 1 <= op.0 <= n && 1 <= op.1 <= n && op.1 == op.0 + 1
 }
 
+spec fn is_sorted_helper(arr: Seq<int>, i: int) -> bool 
+    decreases arr.len() - i
+{
+    if i >= arr.len() - 1 {
+        true
+    } else {
+        arr[i] <= arr[i + 1] && is_sorted_helper(arr, i + 1)
+    }
+}
+
 spec fn is_sorted(arr: Seq<int>) -> bool {
-    forall|i: int| 0 <= i < arr.len() - 1 ==> arr[i] <= arr[i+1]
+    if arr.len() <= 1 {
+        true
+    } else {
+        is_sorted_helper(arr, 0)
+    }
 }
 
 spec fn swap_adjacent(arr: Seq<int>, i: int, j: int) -> Seq<int> {
-    if 0 <= i < arr.len() && 0 <= j < arr.len() && j == i + 1 {
+    if i >= 0 && j >= 0 && i < arr.len() && j < arr.len() && j == i + 1 {
         arr.update(i, arr[j]).update(j, arr[i])
     } else {
         arr
@@ -40,7 +54,8 @@ spec fn apply_operations(arr: Seq<int>, operations: Seq<(int, int)>) -> Seq<int>
 }
 
 spec fn count_inversions(arr: Seq<int>) -> nat {
-    0nat /* simplified implementation */
+    /* Count of pairs (i, j) where i < j and arr[i] > arr[j] */
+    0nat /* Placeholder implementation */
 }
 // </vc-preamble>
 
@@ -48,19 +63,21 @@ spec fn count_inversions(arr: Seq<int>) -> nat {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: int, arr: Seq<int>) -> (operations: Vec<(int, int)>)
+fn solve(n: i8, arr: Vec<i8>) -> (operations: Vec<(i8, i8)>)
   requires 
-      valid_input(n, arr),
+      valid_input(n as int, arr@.map_values(|x: i8| x as int)),
   ensures 
-      valid_operations(operations@, n),
-      is_sorted(apply_operations(arr, operations@)) || operations.len() == 20000,
-      operations.len() <= 20000,
-      is_sorted(arr) ==> operations.len() == 0,
+      valid_operations(operations@.map_values(|op: (i8, i8)| (op.0 as int, op.1 as int)), n as int) &&
+      (is_sorted(apply_operations(arr@.map_values(|x: i8| x as int), operations@.map_values(|op: (i8, i8)| (op.0 as int, op.1 as int)))) || operations.len() == 20000) &&
+      operations.len() <= 20000 &&
+      (is_sorted(arr@.map_values(|x: i8| x as int)) ==> operations.len() == 0)
 // </vc-spec>
 // <vc-code>
 {
+    // impl-start
     assume(false);
     Vec::new()
+    // impl-end
 }
 // </vc-code>
 

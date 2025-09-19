@@ -25,11 +25,11 @@ spec fn optimal_diplomas(n: int, k: int) -> int
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: int, k: int) -> (result: Vec<int>)
-    requires valid_input(n, k)
+fn solve(n: i8, k: i8) -> (result: Vec<i8>)
+    requires valid_input(n as int, k as int)
     ensures 
-        valid_output(result@, n, k) &&
-        result@[0] == optimal_diplomas(n, k)
+        valid_output(result@.map(|i, x| x as int), n as int, k as int) &&
+        result@[0] as int == optimal_diplomas(n as int, k as int)
 // </vc-spec>
 // <vc-code>
 {

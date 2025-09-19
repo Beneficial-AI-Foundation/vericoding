@@ -47,7 +47,9 @@ spec fn wow_factor_sum(s: Seq<char>, pos: int) -> int
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(s: Seq<char>) -> (result: int)
+fn solve(s: Vec<char>) -> (result: i8)
+    ensures
+        result as int == wow_factor(s@)
 // </vc-spec>
 // <vc-code>
 {

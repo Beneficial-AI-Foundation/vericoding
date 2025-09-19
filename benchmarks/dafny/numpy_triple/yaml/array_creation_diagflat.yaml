@@ -1,0 +1,24 @@
+---
+vc-description: |-
+  This file implements numpy.diagflat functionality: creating a two-dimensional array
+  with the flattened input as a diagonal. Takes an input vector and creates a square
+  matrix where the input values appear along the main diagonal, with all other elements
+  as zero. Returns a 1D flattened representation of the square matrix.
+vc-preamble: |-
+  
+vc-helpers: |-
+  
+vc-spec: |-
+  method diagflat(v: seq<real>) returns (result: seq<real>)
+      requires |v| >= 0
+      ensures |result| == |v| * |v|
+      // Elements on the main diagonal are from the input vector
+      ensures forall i :: 0 <= i < |v| ==> result[i * |v| + i] == v[i]
+      // All other elements are zero  
+      ensures forall i, j {:trigger result[i * |v| + j]} :: 0 <= i < |v| && 0 <= j < |v| && i != j ==> result[i * |v| + j] == 0.0
+vc-code: |-
+  {
+    assume {:axiom} false;
+  }
+vc-postamble: |-
+  

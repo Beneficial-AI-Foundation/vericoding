@@ -15,13 +15,19 @@ vc-preamble: |-
       parse_three_ints_func(input).1 > 0
   }
 
-  spec fn parse_three_ints_func(s: Seq<char>) -> (int, int, int) {
+  spec fn parse_three_ints_func(s: Seq<char>) -> (int, int, int) 
+      recommends s.len() > 0
+  {
       let nums = parse_numbers(s, 0, seq![], 0, false);
-      if nums.len() >= 3 { (nums[0], if nums[1] > 0 { nums[1] } else { 1 }, nums[2]) }
-      else { (0, 1, 0) }
+      if nums.len() >= 3 { 
+          (nums[0], if nums[1] > 0 { nums[1] } else { 1 }, nums[2])
+      } else { 
+          (0, 1, 0) 
+      }
   }
 
   spec fn parse_numbers(s: Seq<char>, i: int, nums: Seq<int>, current: int, in_number: bool) -> Seq<int>
+      recommends 0 <= i <= s.len()
       decreases s.len() - i
   {
       if i >= s.len() {
@@ -31,7 +37,7 @@ vc-preamble: |-
       } else {
           let c = s[i];
           if c >= '0' && c <= '9' {
-              let digit = (c as int) - ('0' as int);
+              let digit = c as int - '0' as int;
               if !in_number {
                   parse_numbers(s, i + 1, nums, digit, true)
               } else {
@@ -51,15 +57,20 @@ vc-preamble: |-
       else { int_to_string_helper_func(n) }
   }
 
-  spec fn int_to_string_helper_func(n: int) -> Seq<char> {
+  spec fn int_to_string_helper_func(n: int) -> Seq<char> 
+      recommends n > 0
+      decreases n
+  {
       if n < 10 {
-          seq![(('0' as int + n) as char)]
+          seq![('0' as int + n) as char]
       } else {
-          int_to_string_helper_func(n / 10).add(seq![(('0' as int + (n % 10)) as char)])
+          int_to_string_helper_func(n / 10).add(seq![('0' as int + (n % 10)) as char])
       }
   }
 
-  spec fn compute_max_value(a: int, b: int, n: int) -> int {
+  spec fn compute_max_value(a: int, b: int, n: int) -> int 
+      recommends b > 0
+  {
       let min_val = if b - 1 < n { b - 1 } else { n };
       (a * min_val) / b
   }
@@ -67,7 +78,7 @@ vc-preamble: |-
 vc-helpers: |
 
 vc-spec: |-
-  fn solve(input: &str) -> (result: String)
+  fn solve(input: String) -> (result: String)
       requires 
           input@.len() > 0,
           valid_input(input@),

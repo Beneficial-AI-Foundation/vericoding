@@ -30,9 +30,9 @@ spec fn valid_output(s: nat, attacking_powers: Seq<nat>, bases: Seq<(nat, nat)>,
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(s: nat, b: nat, attacking_powers: Seq<nat>, bases: Seq<(nat, nat)>) -> (result: Seq<nat>)
-    requires valid_input(s, b, attacking_powers, bases)
-    ensures valid_output(s, attacking_powers, bases, result)
+fn solve(s: u8, b: u8, attacking_powers: Vec<u8>, bases: Vec<(u8, u8)>) -> (result: Vec<u8>)
+    requires valid_input(s as nat, b as nat, attacking_powers@.map(|i, x: u8| x as nat), bases@.map(|i, x: (u8, u8)| (x.0 as nat, x.1 as nat)))
+    ensures valid_output(s as nat, attacking_powers@.map(|i, x: u8| x as nat), bases@.map(|i, x: (u8, u8)| (x.0 as nat, x.1 as nat)), result@.map(|i, x: u8| x as nat))
 // </vc-spec>
 // <vc-code>
 {

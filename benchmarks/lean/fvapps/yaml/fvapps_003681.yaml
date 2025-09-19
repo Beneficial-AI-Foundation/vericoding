@@ -1,7 +1,7 @@
 vc-description: |-
   /-
   The T9 typing predictor helps with suggestions for possible word combinations on an old-style numeric keypad phone. Each digit in the keypad (2-9) represents a group of 3-4 letters. To type a letter, press once the key which corresponds to the letter group that contains the required letter. Typing words is done by typing letters of the word in sequence.
-  
+
   The letter groups and corresponding digits are as follows:
   ```
    -----------------
@@ -15,26 +15,26 @@ vc-description: |-
   | PQRS| TUV | WXYZ|
    -----------------
   ```
-  
+
   The prediction algorithm tries to match the input sequence against a predefined dictionary of words. The combinations which appear in the dictionary are considered valid words and are shown as suggestions.
-  
+
   Given a list of words as a reference dictionary, and a non-empty string (of digits 2-9) as input, complete the function which returns suggestions based on the string of digits, which are found in the reference dictionary.
-  
+
   For example:
   ```python
   T9(['hello', 'world'], '43556') returns ['hello']
   T9(['good', 'home', 'new'], '4663') returns ['good', 'home']
   ```
-  
+
   Note that the dictionary must be case-insensitive (`'hello'` and `'Hello'` are same entries). The list returned must contain the word as it appears in the dictionary (along with the case).
-  
+
   Example:
   ```python
   T9(['Hello', 'world'], '43556') returns ['Hello']
   ```
-  
+
   If there is no prediction available from the given dictionary, then return the string containing first letters of the letter groups, which correspond to the input digits.
-  
+
   For example:
   ```python
   T9([], '43556') returns ['gdjjm']
@@ -46,7 +46,7 @@ vc-preamble: |-
   def translateTableNum (s : String) : String :=
     sorry
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def t9_predict (words : List String) (seq : String) : List String :=
@@ -56,42 +56,42 @@ vc-theorems: |-
   theorem t9_predict_never_empty (words : List String) (seq : String) :
     seq ≠ "" → ∃ result, t9_predict words seq = result ∧ result.length > 0 :=
     sorry
-  
+
   theorem t9_predict_fallback_on_no_matches (words : List String) (seq : String) :
     seq ≠ "" → 
     (∀ w ∈ words, translateTableNum w.toLower ≠ seq) →
     ∃ result, t9_predict words seq = [result] ∧ result.length = seq.length :=
     sorry
-  
+
   theorem t9_predict_all_matches_sequence (words : List String) (seq : String) :
     seq ≠ "" →
     ∀ w ∈ t9_predict words seq, translateTableNum w.toLower = seq :=
     sorry
-  
+
   theorem t9_predict_empty_dict (seq : String) :
     seq ≠ "" →
     ∃ result, t9_predict [] seq = [result] ∧ result.length = seq.length :=
     sorry
-  
-  /-
-  info: ['hello']
-  -/
-  -- #guard_msgs in
-  -- #eval t9_predict ["hello", "world"] "43556"
-  
-  /-
-  info: ['good', 'home']
-  -/
-  -- #guard_msgs in
-  -- #eval t9_predict ["good", "home", "new"] "4663"
-  
-  /-
-  info: ['gdjjm']
-  -/
-  -- #guard_msgs in
-  -- #eval t9_predict [] "43556"
 
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+
+  /-
+  info: ['hello']
+  -/
+  #guard_msgs in
+  #eval t9_predict ["hello", "world"] "43556"
+
+  /-
+  info: ['good', 'home']
+  -/
+  #guard_msgs in
+  #eval t9_predict ["good", "home", "new"] "4663"
+
+  /-
+  info: ['gdjjm']
+  -/
+  #guard_msgs in
+  #eval t9_predict [] "43556"
 

@@ -1,30 +1,30 @@
 vc-description: |-
   /-
   You are given array of integers, your task will be to count all pairs in that array and return their count.
-  
+
   **Notes:**
-  
+
   * Array can be empty or contain only one value; in this case return `0` 
   * If there are more pairs of a certain number, count each pair only once. E.g.: for `[0, 0, 0, 0]` the return value is `2` (= 2 pairs of `0`s)
   * Random tests: maximum array length is 1000, range of values in array is between 0 and 1000
-  
+
   ## Examples
-  
+
   ```
   [1, 2, 5, 6, 5, 2]  -->  2
   ```
   ...because there are 2 pairs: `2` and `5`
-  
+
   ```
   [1, 2, 2, 20, 6, 20, 2, 6, 2]  -->  4
   ```
-  
+
   ...because there are 4 pairs: `2`, `20`, `6` and `2` (again)
   -/
 
-vc-preamble: |-
+vc-preamble: |
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def duplicates (arr : List Int) : Nat :=
@@ -34,50 +34,50 @@ vc-theorems: |-
   theorem duplicates_non_negative (arr : List Int) :
     duplicates arr ≥ 0 := by
     sorry
-  
+
   theorem duplicates_bound (arr : List Int) :  
     duplicates arr ≤ arr.length / 2 := by
     sorry
-  
+
   theorem duplicates_empty :
     duplicates [] = 0 := by
     sorry
-  
+
   theorem duplicates_singleton (x : Int) :
     duplicates [x] = 0 := by
     sorry
-  
+
   theorem duplicates_all_equal (x : Int) (n : Nat) :
     duplicates (List.replicate (4 * n) x) = 2 * n := by
     sorry
-  
+
   theorem duplicates_concatenation (arr1 arr2 : List Int) :
     duplicates (arr1 ++ arr2) ≥ duplicates arr1 + duplicates arr2 := by
     sorry
-  
+
   theorem duplicates_perm (arr1 arr2 : List Int) :
     List.Perm arr1 arr2 → duplicates arr1 = duplicates arr2 := by
     sorry
-  
-  /-
-  info: 4
-  -/
-  -- #guard_msgs in
-  -- #eval duplicates [1, 2, 2, 20, 6, 20, 2, 6, 2]
-  
-  /-
-  info: 1
-  -/
-  -- #guard_msgs in
-  -- #eval duplicates [1000, 1000]
-  
-  /-
-  info: 0
-  -/
-  -- #guard_msgs in
-  -- #eval duplicates []
 
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded
+
+  /-
+  info: 4
+  -/
+  #guard_msgs in
+  #eval duplicates [1, 2, 2, 20, 6, 20, 2, 6, 2]
+
+  /-
+  info: 1
+  -/
+  #guard_msgs in
+  #eval duplicates [1000, 1000]
+
+  /-
+  info: 0
+  -/
+  #guard_msgs in
+  #eval duplicates []
 

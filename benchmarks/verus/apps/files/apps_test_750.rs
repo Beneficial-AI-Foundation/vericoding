@@ -26,13 +26,13 @@ spec fn ceil_div(a: int, b: int) -> int
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: int, k: int) -> (result: int)
+fn solve(n: i8, k: i8) -> (result: i8)
     requires 
-        valid_input(n, k)
+        valid_input(n as int, k as int)
     ensures 
-        result == ceil_div(2 * n, k) + ceil_div(5 * n, k) + ceil_div(8 * n, k),
+        result as int == ceil_div(2 * (n as int), k as int) + ceil_div(5 * (n as int), k as int) + ceil_div(8 * (n as int), k as int),
         result >= 0,
-        result >= (total_sheets_needed(n) + k - 1) / k
+        result as int >= (total_sheets_needed(n as int) + (k as int) - 1) / (k as int)
 // </vc-spec>
 // <vc-code>
 {

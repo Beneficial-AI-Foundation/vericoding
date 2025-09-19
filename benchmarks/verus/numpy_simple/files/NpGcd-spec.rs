@@ -8,12 +8,12 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn gcd_int(a: i32, b: i32) -> (result: i32)
+fn gcd_int(a: i8, b: i8) -> (result: i8)
     ensures
         result >= 0,
-        a % result == 0,
-        b % result == 0,
-        forall|d: i32| d > 0 && #[trigger] (a % d) == 0 && #[trigger] (b % d) == 0 ==> d <= result,
+        (a as int) % (result as int) == 0,
+        (b as int) % (result as int) == 0,
+        forall|d: int| d > 0 && #[trigger] ((a as int) % d) == 0 && #[trigger] ((b as int) % d) == 0 ==> d <= (result as int),
 // </vc-spec>
 // <vc-code>
 {

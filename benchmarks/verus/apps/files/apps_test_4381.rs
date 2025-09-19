@@ -18,7 +18,9 @@ spec fn total_cost(train_fare: int, bus_fare: int) -> int
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(input: String) -> (result: String)
+fn solve(train_fare: i8, bus_fare: i8) -> (result: i8)
+    requires valid_input(train_fare as int, bus_fare as int)
+    ensures result as int == total_cost(train_fare as int, bus_fare as int)
 // </vc-spec>
 // <vc-code>
 {

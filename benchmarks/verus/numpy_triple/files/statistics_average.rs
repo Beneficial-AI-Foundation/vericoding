@@ -8,7 +8,7 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn average(a: Vec<f32>, weights: Option<Vec<f32>>) -> (result: f32)
+fn average(a: Vec<i8>, weights: Option<Vec<i8>>) -> (result: i8)
     requires 
         a.len() > 0,
         match weights {

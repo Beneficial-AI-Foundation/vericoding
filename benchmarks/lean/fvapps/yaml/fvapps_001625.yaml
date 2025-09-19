@@ -3,20 +3,20 @@ vc-description: |-
   Recently Chef learned about Longest Increasing Subsequence. To be precise, he means longest strictly increasing subsequence, when he talks of longest increasing subsequence.  To check his understanding, he took his favorite n-digit number and for each of its n digits, he computed the length of the longest increasing subsequence of digits ending with that digit. Then he stored these lengths in an array named LIS.
   For example, let us say that Chef's favourite 4-digit number is 1531, then the LIS array would be [1, 2, 2, 1]. The length of longest increasing subsequence ending at first digit is 1 (the digit 1 itself) and at the second digit is 2 ([1, 5]), at third digit is also 2 ([1, 3]), and at the 4th digit is 1 (the digit 1 itself).
   Now Chef wants to give you a challenge. He has a valid LIS array with him, and wants you to find any n-digit number having exactly the same LIS array? You are guaranteed that Chef's LIS array is valid, i.e. there exists at least one n-digit number corresponding to the given LIS array.
-  
+
   -----Input-----
   The first line of the input contains an integer T denoting the number of test cases. 
   For each test case, the first line contains an integer n denoting the number of digits in Chef's favourite number.
   The second line will contain n space separated integers denoting LIS array, i.e. LIS1, LIS2, ..., LISn.
-  
+
   -----Output-----
   For each test case, output a single n-digit number (without leading zeroes) having exactly the given LIS array. If there are multiple n-digit numbers satisfying this requirement, any of them will be accepted.
-  
+
   -----Constraints-----
   - 1 ≤ T ≤ 30 000
   - 1 ≤ n ≤ 9
   - It is guaranteed that at least one n-digit number having the given LIS array exists
-  
+
   -----Example-----
   Input:
   5
@@ -30,14 +30,14 @@ vc-description: |-
   1 2 2 1
   7 
   1 2 2 1 3 2 4
-  
+
   Output:
   7
   36
   54
   1531
   1730418
-  
+
   -----Explanation-----
   Example case 1. All one-digit numbers have the same LIS array, so any answer from 0 to 9 will be accepted.
   Example cases 2 & 3. For a two digit number we always have LIS1 = 1, but the value of LIS2 depends on whether the first digit is strictly less than the second one. If this is the case (like for number 36), LIS2 = 2, otherwise (like for numbers 54 or 77) the values of LIS2 is 1.
@@ -46,13 +46,13 @@ vc-description: |-
   indexLISlength117304181217304182317304182417304181517304183617304182717304184
   -/
 
-vc-preamble: |-
+vc-preamble: |
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def solve_lis (n : Nat) (arr : List String) : String := sorry
-  
+
   theorem single_digit_returns_valid_str (n : Nat) (arr : List String) :
     n = 1 → arr = ["1"] → 
     let result := solve_lis n arr
@@ -64,36 +64,36 @@ vc-theorems: |-
     (∀ s ∈ arr, s.length = 1 ∧ s ∈ ["1", "2", "3", "4"]) →
     let result := solve_lis n arr
     result.all Char.isDigit := sorry
-  
+
   theorem length_two_returns_valid_str (n : Nat) (arr : List String) :
     n = 2 →
     (arr = ["1", "1"] ∨ arr = ["1", "2"]) →
     let result := solve_lis n arr
     result.length = 2 ∧ result ∈ ["54", "36"] := sorry
-  
+
   theorem special_cases :
     solve_lis 4 ["1", "2", "2", "1"] = "1531" ∧
     solve_lis 7 ["1", "2", "2", "1", "3", "2", "4"] = "1730418" := sorry
-  
-  /-
-  info: '7'
-  -/
-  -- #guard_msgs in
-  -- #eval solve_lis 1 ["1"]
-  
-  /-
-  info: '36'
-  -/
-  -- #guard_msgs in
-  -- #eval solve_lis 2 ["1", "2"]
-  
-  /-
-  info: '1531'
-  -/
-  -- #guard_msgs in
-  -- #eval solve_lis 4 ["1", "2", "2", "1"]
 
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
+
+  /-
+  info: '7'
+  -/
+  #guard_msgs in
+  #eval solve_lis 1 ["1"]
+
+  /-
+  info: '36'
+  -/
+  #guard_msgs in
+  #eval solve_lis 2 ["1", "2"]
+
+  /-
+  info: '1531'
+  -/
+  #guard_msgs in
+  #eval solve_lis 4 ["1", "2", "2", "1"]
 

@@ -1,0 +1,73 @@
+vc-description: |-
+  /-
+  Vasya learned about integer subtraction in school. He is still not very good at it, so he is only able to subtract any single digit number from any other number (which is not necessarily single digit).
+  For practice, Vasya chose a positive integer n$n$ and wrote it on the first line in his notepad. After that, on the second line he wrote the result of subtraction of the first digit of n$n$ from itself. For example, if n=968$n = 968$, then the second line would contain 968−9=959$968 - 9 = 959$, while with n=5$n = 5$ the second number would be 5−5=0$5 - 5 = 0$. If the second number was still positive, then Vasya would write the result of the same operation on the following line, and so on. For example, if n=91$n = 91$, then the sequence of numbers Vasya would write starts as follows: 91,82,74,67,61,55,50,…$91, 82, 74, 67, 61, 55, 50, \ldots$. One can see that any such sequence eventually terminates with the number 0$0$.
+  Since then, Vasya lost his notepad. However, he remembered the total number k$k$ of integers he wrote down (including the first number n$n$ and the final number 0$0$). What was the largest possible value of n$n$ Vasya could have started with?
+  
+  -----Input:-----
+  The first line contains T$T$ , number of test cases per file.
+  The only line in each testcase contains a single integer k−$k-$ the total number of integers in Vasya's notepad (2≤k≤1012$2 \leq k \leq 10^{12}$).
+  
+  -----Output:-----
+  Print a single integer−$-$ the largest possible value of the starting number n$n$. It is guaranteed that at least one such number n$n$ exists, and the largest possible value is finite.
+  
+  -----Constraints-----
+  - 1≤T≤34$1 \leq  T \leq 34 $
+  - 2≤k≤1012$2 \leq k \leq 10^{12}$
+  
+  -----Sample Input-----
+  3
+  2
+  3
+  100
+  
+  -----Sample Output:-----
+  9
+  10
+  170
+  -/
+
+vc-preamble: |-
+
+vc-helpers: |-
+
+vc-definitions: |-
+  def find_largest_n (k : Nat) : Nat :=
+    sorry
+  
+  def count_steps_to_zero (n : Nat) : Nat :=
+    sorry
+
+vc-theorems: |-
+  theorem find_largest_n_returns_valid (k : Nat) (h : k > 0) (h2 : k ≤ 1000) :
+    find_largest_n k ≥ 0 :=
+  sorry
+  
+  theorem find_largest_n_edge_cases :
+    find_largest_n 1 = 0 ∧
+    find_largest_n 2 = 9 ∧
+    find_largest_n 3 = 10 :=
+  sorry
+
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: guarded_and_plausible
+  
+  /--
+  info: 9
+  -/
+  #guard_msgs in
+  #eval find_largest_n 2
+  
+  /--
+  info: 10
+  -/
+  #guard_msgs in
+  #eval find_largest_n 3
+  
+  /--
+  info: 170
+  -/
+  #guard_msgs in
+  #eval find_largest_n 100
+

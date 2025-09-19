@@ -1,0 +1,24 @@
+---
+vc-description: |-
+  Laguerre series whose graph is a straight line.
+  This module provides functionality to create a Laguerre series representation
+  of a straight line of the form off + scl*x, where the result is a coefficient
+  vector that represents the line in Laguerre polynomial basis.
+vc-preamble: |-
+  // Creates a Laguerre series representation of the straight line off + scl*x
+vc-helpers: |-
+  
+vc-spec: |-
+  method lagline(off: real, scl: real) returns (result: seq<real>)
+    // The result is always a sequence of exactly 2 coefficients
+    ensures |result| == 2
+    // When scl is zero, we have a constant function off, represented as [off, 0]
+    ensures scl == 0.0 ==> result[0] == off && result[1] == 0.0
+    // When scl is non-zero, the Laguerre representation requires specific coefficients
+    ensures scl != 0.0 ==> result[0] == off + scl && result[1] == -scl
+vc-code: |-
+  {
+    assume {:axiom} false;
+  }
+vc-postamble: |-
+  

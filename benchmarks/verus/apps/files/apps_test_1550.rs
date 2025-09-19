@@ -4,7 +4,7 @@ use vstd::prelude::*;
 verus! {
 
 spec fn valid_input(n: int, digits: Seq<char>) -> bool {
-    n > 0 && digits.len() == n && forall|i: int| 0 <= i < digits.len() ==> '0' <= digits[i] <= '9'
+    n > 0 && digits.len() == n && forall|i: int| 0 <= i < digits.len() ==> #[trigger] digits[i] >= '0' && #[trigger] digits[i] <= '9'
 }
 
 spec fn modify_string(s: Seq<char>, index: int) -> Seq<char> {
@@ -20,7 +20,7 @@ spec fn transform_digits(s: Seq<char>, key: int) -> Seq<char>
         seq![]
     } else {
         let digit = (s[0] as int - '0' as int + key) % 10;
-        seq![('0' as int + digit) as char].add(transform_digits(s.subrange(1, s.len() as int), key))
+        seq![('0' as int + digit) as char].add(transform_digits(s.skip(1), key))
     }
 }
 
@@ -28,15 +28,17 @@ spec fn rotate_string(s: Seq<char>, index: int) -> Seq<char> {
     if s.len() == 0 {
         seq![]
     } else {
-        s.subrange(index, s.len() as int).add(s.subrange(0, index))
+        s.skip(index).add(s.take(index))
     }
 }
 
 spec fn is_all_digits(s: Seq<char>) -> bool {
-    forall|i: int| 0 <= i < s.len() ==> '0' <= s[i] <= '9'
+    forall|i: int| 0 <= i < s.len() ==> #[trigger] s[i] >= '0' && #[trigger] s[i] <= '9'
 }
 
-spec fn parse_input(input: Seq<char>) -> Seq<Seq<char>> {
+spec fn parse_input(input: Seq<char>) -> Seq<Seq<char>>
+    decreases input.len()
+{
     parse_input_helper(input, 0, seq![], seq![])
 }
 
@@ -52,23 +54,38 @@ spec fn parse_input_helper(input: Seq<char>, i: int, current_line: Seq<char>, li
     }
 }
 
-spec fn parse_int(s: Seq<char>) -> int {
+spec fn parse_int(s: Seq<char>) -> int
+    decreases s.len()
+{
     if s.len() == 0 {
         0
     } else if !('0' <= s[0] <= '9') {
         0
     } else {
-        (s[0] as int - '0' as int) + 10 * parse_int(s.subrange(1, s.len() as int))
+        (s[0] as int - '0' as int) + 10 * parse_int(s.skip(1))
     }
 }
 
-spec fn seq_to_int(s: Seq<char>) -> int {
-    parse_int(s)
+spec fn string_to_int(s: Seq<char>) -> int
+    decreases s.len()
+{
+    if s.len() == 0 {
+        0
+    } else if !('0' <= s[0] <= '9') {
+        string_to_int(s.skip(1))
+    } else {
+        (s[0] as int - '0' as int) * pow(10, (s.len() - 1) as nat) + string_to_int(s.skip(1))
+    }
 }
 
-spec fn is_minimal(min_result: Seq<char>, n: int, digits: Seq<char>) -> bool {
-    (exists|index: int| 0 <= index < n && min_result == modify_string(digits, index)) &&
-    (forall|index: int| 0 <= index < n ==> seq_to_int(min_result) <= seq_to_int(modify_string(digits, index)))
+spec fn pow(base: int, exp: nat) -> int
+    decreases exp
+{
+    if exp == 0 {
+        1
+    } else {
+        base * pow(base, (exp - 1) as nat)
+    }
 }
 // </vc-preamble>
 
@@ -77,24 +94,23 @@ spec fn is_minimal(min_result: Seq<char>, n: int, digits: Seq<char>) -> bool {
 
 // <vc-spec>
 fn solve(stdin_input: String) -> (result: String)
-    requires 
+    requires
         stdin_input@.len() > 0,
-        exists|i: int| 0 <= i < stdin_input@.len() && stdin_input@[i] == '\n',
-    ensures 
+        (exists|i: int| 0 <= i < stdin_input@.len() && stdin_input@[i] == '\n'),
+    ensures
         result@.len() > 0,
         result@[result@.len() - 1] == '\n',
         ({
-            let input_seq = stdin_input@;
-            let lines = parse_input(input_seq);
+            let lines = parse_input(stdin_input@);
             if lines.len() >= 2 {
                 let n = parse_int(lines[0]);
                 let digits = lines[1];
                 if valid_input(n, digits) {
-                    let result_seq = result@;
-                    let min_result = result_seq.subrange(0, result_seq.len() - 1);
+                    let min_result = result@.take(result@.len() - 1);
                     min_result.len() == n &&
-                    (forall|i: int| 0 <= i < min_result.len() ==> '0' <= min_result[i] <= '9') &&
-                    is_minimal(min_result, n, digits)
+                    (forall|i: int| 0 <= i < min_result.len() ==> #[trigger] min_result[i] >= '0' && #[trigger] min_result[i] <= '9') &&
+                    (exists|index: int| 0 <= index < n && min_result == modify_string(digits, index)) &&
+                    (forall|index: int| 0 <= index < n ==> string_to_int(min_result) <= string_to_int(modify_string(digits, index)))
                 } else {
                     result@ == seq!['\n']
                 }
@@ -107,7 +123,7 @@ fn solve(stdin_input: String) -> (result: String)
 {
     // impl-start
     assume(false);
-    "\n".to_string()
+    unreached()
     // impl-end
 }
 // </vc-code>

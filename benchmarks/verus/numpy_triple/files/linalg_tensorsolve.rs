@@ -23,13 +23,13 @@ spec fn is_invertible_matrix(a: Seq<Seq<f64>>) -> bool {
 fn tensorsolve(a: Vec<Vec<f64>>, b: Vec<f64>) -> (result: Vec<f64>)
     requires
         a.len() > 0,
-        forall|i: int| 0 <= i < a.len() ==> a[i].len() == a.len(),
-        b.len() == a.len(),
+        forall|i: int| 0 <= i < a@.len() ==> a@[i].len() == a@.len(),
+        b@.len() == a@.len(),
         is_square_matrix(a@.map(|i, row: Vec<f64>| row@)),
         is_invertible_matrix(a@.map(|i, row: Vec<f64>| row@)),
     ensures
-        result.len() == b.len(),
-        forall|i: int| 0 <= i < a.len() ==> #[trigger] b[i] == b[i],
+        result@.len() == b@.len(),
+        forall|i: int| 0 <= i < a@.len() ==> #[trigger] b@[i] == b@[i],
 // </vc-spec>
 // <vc-code>
 {

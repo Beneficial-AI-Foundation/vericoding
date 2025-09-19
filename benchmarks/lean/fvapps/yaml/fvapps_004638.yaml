@@ -2,36 +2,36 @@ vc-description: |-
   /-
   # Task
    You are implementing your own HTML editor. To make it more comfortable for developers you would like to add an auto-completion feature to it.
-  
+
    Given the starting HTML tag, find the appropriate end tag which your editor should propose.
-  
+
   # Example
-  
+
    For startTag = "<button type='button' disabled>", the output should be "</button>";
-  
+
    For startTag = "<i>", the output should be "</i>".
-  
+
   # Input/Output
-  
+
    - `[input]` string `startTag`/`start_tag`
-  
+
    - `[output]` a string
   -/
 
 vc-preamble: |-
   def html_end_tag_by_start_tag (start_tag: String) : String :=
     sorry
-  
+
   def is_valid_tag_char (c: Char) : Bool :=
     sorry
-  
+
   def is_valid_tag_first_char (c: Char) : Bool :=
     sorry
-  
+
   def is_valid_attr_name_char (c: Char) : Bool :=
     sorry
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def is_valid_attr_value_char (c: Char) : Bool :=
@@ -41,40 +41,40 @@ vc-theorems: |-
   theorem html_end_tag_starts_with_close : ∀ (start_tag : String),
     (html_end_tag_by_start_tag start_tag).startsWith "</" = true :=
     sorry
-  
+
   theorem html_end_tag_ends_with_angle : ∀ (start_tag : String),
     (html_end_tag_by_start_tag start_tag).endsWith ">" = true :=
     sorry
-  
+
   theorem html_end_tag_matches_start : ∀ (start_tag : String),
     let start_name := (start_tag.drop 1).splitOn " " |>.head!.dropRight 1
     let end_name := (html_end_tag_by_start_tag start_tag).drop 2 |>.dropRight 1
     start_name = end_name :=
     sorry
-  
+
   theorem html_end_tag_no_attributes : ∀ (start_tag : String),
     ¬(html_end_tag_by_start_tag start_tag).contains ' ' :=
     sorry
-  
-  /-
-  info: '</i>'
-  -/
-  -- #guard_msgs in
-  -- #eval html_end_tag_by_start_tag "<i>"
-  
-  /-
-  info: '</button>'
-  -/
-  -- #guard_msgs in
-  -- #eval html_end_tag_by_start_tag "<button type="button" disabled>"
-  
-  /-
-  info: '</div>'
-  -/
-  -- #guard_msgs in
-  -- #eval html_end_tag_by_start_tag "<div class="main" id="content" style="width:100px">"
 
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+
+  /-
+  info: '</i>'
+  -/
+  #guard_msgs in
+  #eval html_end_tag_by_start_tag "<i>"
+
+  /-
+  info: '</button>'
+  -/
+  #guard_msgs in
+  #eval html_end_tag_by_start_tag "<button type="button" disabled>"
+
+  /-
+  info: '</div>'
+  -/
+  #guard_msgs in
+  #eval html_end_tag_by_start_tag "<div class="main" id="content" style="width:100px">"
 

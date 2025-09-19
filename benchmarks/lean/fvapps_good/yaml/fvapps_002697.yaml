@@ -1,0 +1,67 @@
+vc-description: |-
+  /-
+  Consider a sequence made up of the consecutive prime numbers. This infinite sequence would start with: 
+  ```python
+  "2357111317192329313741434753596167717379..."
+  ```
+
+  You will be given two numbers: `a` and `b`, and your task will be to return `b` elements starting from index `a` in this sequence.
+  ```
+  For example:
+  solve(10,5) == `19232` Because these are 5 elements from index 10 in the sequence.
+  ```
+
+  Tests go up to about index `20000`.
+
+  More examples in test cases. Good luck!
+
+  Please also try [Simple time difference](https://www.codewars.com/kata/5b76a34ff71e5de9db0000f2)
+  -/
+
+vc-preamble: |
+
+vc-helpers: |
+
+vc-definitions: |-
+  def solve (start offset : Nat) : String := sorry 
+
+  theorem solve_single_char_len :
+    ∀ (start offset : Nat), offset = 1 → String.length (solve start offset) = 1 := sorry
+
+vc-theorems: |-
+  theorem solve_start_slice :
+    solve 0 3 = "235" := sorry
+
+  theorem solve_middle_slice :
+    solve 10 5 = "19232" := sorry
+
+  theorem solve_longer_slice_len :
+    ∀ (start offset : Nat), offset = 10 → start = 100 → String.length (solve start offset) = 10 := sorry
+
+  theorem solve_result_properties :
+    ∀ (start offset : Nat), start = 50 ∧ offset = 20 → 
+      let result := solve start offset
+      (∀ c ∈ result.data, '0' ≤ c ∧ c ≤ '9') ∧ (result.length > 0) := sorry
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded
+
+  /--
+  info: '57'
+  -/
+  #guard_msgs in
+  #eval solve 2 2
+
+  /--
+  info: '19232'
+  -/
+  #guard_msgs in
+  #eval solve 10 5
+
+  /--
+  info: '192'
+  -/
+  #guard_msgs in
+  #eval solve 10 3
+

@@ -12,13 +12,14 @@ spec fn is_non_zero_vector(v: Seq<i32>) -> bool {
     forall|i: int| 0 <= i < v.len() ==> v[i] != 0
 }
 
-fn floor_divide(a: Vec<i32>, b: Vec<i32>) -> (result: Vec<i32>)
+fn floor_divide(a: Vec<i8>, b: Vec<i8>) -> (result: Vec<i8>)
     requires 
         a.len() == b.len(),
-        is_non_zero_vector(b@),
+        is_non_zero_vector(a@.map(|i, x: i8| x as i32)),
+        is_non_zero_vector(b@.map(|i, x: i8| x as i32)),
     ensures
         result.len() == a.len(),
-        forall|i: int| 0 <= i < result.len() ==> result[i] == a[i] / b[i],
+        forall|i: int| 0 <= i < result.len() ==> result[i] as i32 == (a[i] as i32) / (b[i] as i32),
 // </vc-spec>
 // <vc-code>
 {

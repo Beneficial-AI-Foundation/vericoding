@@ -6,7 +6,7 @@ vc-description: |-
   Choose any leaf node, denoted by $X$, and go down a simple path from $root$ to $X$.
   Let $S$ denote the set of all nodes lying on the simple path from $root$ to $X$.
   For all $ i $ $\epsilon $ $ S $, choose an integer $D$ $\epsilon$ $[2^{A[i]-1},2^{A[i]})$.
-  
+
   Informally, for every node $i$ lying on the simple path from $root$ to $X$, you have to choose an integer $D$ such that  $2^{A[i]-1}\leq D < 2^{A[i]}$.  
   You now have to perform one of the two following operations :   
   - Bitwise XOR of all chosen integers.  
@@ -14,16 +14,16 @@ vc-description: |-
   You have to determine whether you can choose the values in such a way that after performing one of the given operations you can get an integer equal to $K$.  
   - Note : A leaf is a node of the tree without any child nodes.
   Determine if it is possible to obtain the value $K$ by performing the given operations.
-  
+
   -----Input:-----
   - First line will contain $T$, number of testcases. Then the testcases follow. 
   - First line of each testcase contains two space separated integers $N, K$ denoting the number of nodes and the value of the special integer .
   - $N-1$ lines follow , each line contains two space separated integers $u,v$ denoting an edge between $u$ and $v$. 
   - A single line follows containing $N$ space separated integers denoting the value of nodes.
-  
+
   -----Output:-----
   For each testcase, output in a single line "YES"(without quotes) or "NO"(without quotes).
-  
+
   -----Constraints-----
   - $1 \leq T \leq 10000$
   - $2 \leq N \leq 5*10^5$
@@ -31,7 +31,7 @@ vc-description: |-
   - $1 \leq u,v \leq N$
   - $ 1\leq A[i] \leq 64$
   - Sum of $N$ over all test cases does not exceed 1e6.
-  
+
   -----Sample Input:-----
   1
   6 85
@@ -41,10 +41,10 @@ vc-description: |-
   4 5
   3 6
   3 5 4 7 1 9
-  
+
   -----Sample Output:-----
   YES
-  
+
   -----EXPLANATION:-----
   There are two leaf nodes, 5 and 6
   considering path from root to 5
@@ -58,7 +58,7 @@ vc-preamble: |-
   def can_obtain_k (n : Nat) (k : Nat) (edges : List (Nat × Nat)) (values : List Nat) : String :=
   sorry
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def is_valid_tree (n : Nat) (edges : List (Nat × Nat)) : Bool :=
@@ -69,37 +69,37 @@ vc-theorems: |-
       (values : List Nat) (h1 : is_valid_tree n edges = true) :
     (can_obtain_k n k edges values = "YES") ∨ (can_obtain_k n k edges values = "NO") :=
   sorry
-  
+
   theorem can_obtain_k_identical_values_consistent (n : Nat) (k : Nat) (edges : List (Nat × Nat))
       (h1 : is_valid_tree n edges = true) :
     let values := List.replicate n 1
     can_obtain_k n k edges values = can_obtain_k n k edges values :=
   sorry
-  
+
   theorem can_obtain_k_valid_edges (n : Nat) (k : Nat) (edges : List (Nat × Nat)) 
       (values : List Nat) (h1 : is_valid_tree n edges = true) :
     edges.length = n - 1 :=
   sorry
-  
-  /-
-  info: 'YES'
-  -/
-  -- #guard_msgs in
-  -- #eval can_obtain_k 6 85 [(1, 2), (2, 3), (2, 4), (4, 5), (3, 6)] [3, 5, 4, 7, 1, 9]
-  
-  /-
-  info: 'YES'
-  -/
-  -- #guard_msgs in
-  -- #eval can_obtain_k 3 4 [(1, 2), (1, 3)] [2, 3, 1]
-  
-  /-
-  info: 'NO'
-  -/
-  -- #guard_msgs in
-  -- #eval can_obtain_k 4 100 [(1, 2), (2, 3), (2, 4)] [3, 4, 2, 5]
 
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
+
+  /-
+  info: 'YES'
+  -/
+  #guard_msgs in
+  #eval can_obtain_k 6 85 [(1, 2), (2, 3), (2, 4), (4, 5), (3, 6)] [3, 5, 4, 7, 1, 9]
+
+  /-
+  info: 'YES'
+  -/
+  #guard_msgs in
+  #eval can_obtain_k 3 4 [(1, 2), (1, 3)] [2, 3, 1]
+
+  /-
+  info: 'NO'
+  -/
+  #guard_msgs in
+  #eval can_obtain_k 4 100 [(1, 2), (2, 3), (2, 4)] [3, 4, 2, 5]
 

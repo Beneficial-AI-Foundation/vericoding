@@ -7,16 +7,18 @@ spec fn valid_input(n: int) -> bool {
 }
 
 spec fn is_optimal_savings(n: int, savings: int) -> bool {
-    n >= 1 ==>
-    (savings >= 0 &&
-     (2 + savings) * (savings + 1) / 2 > n + 1 &&
-     (savings == 0 || (2 + (savings - 1)) * savings / 2 <= n + 1))
+    n >= 1 ==> (
+        savings >= 0 &&
+        (2 + savings) * (savings + 1) / 2 > n + 1 &&
+        (savings == 0 || (2 + (savings - 1)) * savings / 2 <= n + 1)
+    )
 }
 
 spec fn is_minimal_savings(n: int, savings: int) -> bool {
-    n >= 1 ==>
-    (is_optimal_savings(n, savings) &&
-     (forall|j: int| j >= 0 && j < savings ==> (2 + j) * (j + 1) / 2 <= n + 1))
+    n >= 1 ==> (
+        is_optimal_savings(n, savings) &&
+        (forall|j: int| j >= 0 && j < savings ==> #[trigger] ((2 + j) * (j + 1) / 2) <= n + 1)
+    )
 }
 
 spec fn optimal_cost(n: int, savings: int) -> int {
@@ -32,12 +34,13 @@ spec fn optimal_cost(n: int, savings: int) -> int {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: int) -> (result: int)
-    requires valid_input(n)
+fn solve(n: i8) -> (result: i8)
+    requires 
+        valid_input(n as int)
     ensures 
-        result >= 1 &&
-        result <= n &&
-        exists|savings: int| is_minimal_savings(n, savings) && result == optimal_cost(n, savings)
+        result as int >= 1,
+        result as int <= n as int,
+        exists|savings: int| is_minimal_savings(n as int, savings) && result as int == optimal_cost(n as int, savings),
 // </vc-spec>
 // <vc-code>
 {

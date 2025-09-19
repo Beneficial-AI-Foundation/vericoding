@@ -52,12 +52,12 @@ spec fn compute_segment_contributions(pos: int, k: int, segments: Seq<(int, int)
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: usize, k: usize, segments: Vec<(usize, usize)>) -> (result: usize)
+fn solve(n: i8, k: i8, segments: Vec<(i8, i8)>) -> (result: i8)
     requires 
-        valid_input(n as int, k as int, segments@.map(|idx, seg: (usize, usize)| (seg.0 as int, seg.1 as int)))
+        valid_input(n as int, k as int, segments@.map(|idx, seg: (i8, i8)| (seg.0 as int, seg.1 as int)))
     ensures 
         result < 998244353 &&
-        result == compute_ways_dp(n as int, k as int, segments@.map(|idx, seg: (usize, usize)| (seg.0 as int, seg.1 as int)))
+        result == compute_ways_dp(n as int, k as int, segments@.map(|idx, seg: (i8, i8)| (seg.0 as int, seg.1 as int)))
 // </vc-spec>
 // <vc-code>
 {

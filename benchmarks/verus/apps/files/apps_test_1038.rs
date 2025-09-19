@@ -46,7 +46,8 @@ fn solve(a: i32, b: i32) -> (result: i32)
         b >= 0,
         a <= b
     ensures 
-        result >= 0
+        result >= 0,
+        result as int == xor_range(a as int, b as int)
 // </vc-spec>
 // <vc-code>
 {

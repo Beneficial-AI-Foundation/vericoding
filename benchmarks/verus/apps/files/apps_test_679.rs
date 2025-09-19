@@ -25,7 +25,7 @@ spec fn possible_to_get_all_colors(s: Seq<char>) -> bool {
 // <vc-spec>
 fn solve(s: &[char]) -> (result: Vec<char>)
     requires 
-        s.len() >= 0 && forall|i: int| 0 <= i < s.len() ==> s[i] == 'A' || s[i] == 'B' || s[i] == 'C' || s[i] == '.'
+        s@.len() >= 0 && forall|i: int| 0 <= i < s@.len() ==> s@[i] == 'A' || s@[i] == 'B' || s@[i] == 'C' || s@[i] == '.'
     ensures 
         result@ == seq!['Y', 'e', 's'] ==> possible_to_get_all_colors(s@),
         result@ == seq!['N', 'o'] ==> !possible_to_get_all_colors(s@),

@@ -1,0 +1,50 @@
+vc-description: |-
+  /-
+  Implement `String#to_cents`, which should parse prices expressed as `$1.23` and return number of cents, or in case of bad format return `nil`.
+  -/
+
+vc-preamble: |
+
+vc-helpers: |
+
+vc-definitions: |-
+  def to_cents (s: String) : Option Nat :=
+    sorry
+
+vc-theorems: |-
+  theorem test_whole_dollar_amounts (amount: String) (h: ∃ n: Nat, amount = s!"${n}.00") : 
+    let n := Classical.choose h 
+    to_cents amount = some (n * 100) := 
+    sorry
+
+  theorem test_invalid_formats (amount: String) 
+    (h: ¬∃ d₁ d₂: Nat, amount = s!"${d₁}.{d₂}" ∧ d₂ < 100) :
+    to_cents amount = none :=
+    sorry
+
+  theorem test_empty_string :
+    to_cents "" = none :=
+    sorry
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded
+
+  /--
+  info: 123
+  -/
+  #guard_msgs in
+  #eval to_cents "$1.23"
+
+  /--
+  info: 9999
+  -/
+  #guard_msgs in
+  #eval to_cents "$99.99"
+
+  /--
+  info: 1234567890
+  -/
+  #guard_msgs in
+  #eval to_cents "$12345678.90"
+

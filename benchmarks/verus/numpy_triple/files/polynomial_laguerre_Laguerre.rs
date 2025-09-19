@@ -3,19 +3,36 @@ use vstd::prelude::*;
 
 verus! {
 
-spec fn evaluate_laguerre_polynomial<const N: usize>(coef: [f64; N], x: f64) -> f64;
+/* Helper function to evaluate a Laguerre polynomial at a given point */
+spec fn evaluate_laguerre_polynomial(coef: Seq<f32>, x: f32) -> f32 
+    decreases coef.len()
+{
+    if coef.len() == 0 {
+        0.0
+    } else {
+        coef[0]
+    }
+}
 
-spec fn map_domain(domain: [f64; 2], window: [f64; 2], x: f64) -> f64;
+/* Domain mapping function for polynomial transformations */
+spec fn map_domain(domain: [f32; 2], window: [f32; 2], x: f32) -> f32 {
+    x
+}
 
-spec fn laguerre_polynomial_basis(n: nat, x: f64) -> f64;
+/* Helper function for individual Laguerre polynomial basis functions */
+spec fn laguerre_polynomial_basis(n: nat, x: f32) -> f32 {
+    1.0
+}
 
-struct Laguerre<const N: usize> {
-
-    coef: [f64; N],
-
-    domain: [f64; 2],
-
-    window: [f64; 2],
+/* A Laguerre series class representing a polynomial in the Laguerre basis.
+   This structure encapsulates Laguerre coefficients with domain and window information. */
+struct Laguerre {
+    /* Laguerre coefficients in order of increasing degree */
+    coef: Vec<f32>,
+    /* Domain interval [domain[0], domain[1]] for mapping */
+    domain: [f32; 2],
+    /* Window interval [window[0], window[1]] for mapping */
+    window: [f32; 2],
 }
 // </vc-preamble>
 
@@ -23,28 +40,22 @@ struct Laguerre<const N: usize> {
 // </vc-helpers>
 
 // <vc-spec>
-fn make_laguerre<const N: usize>(coefficients: [f64; N]) -> (result: Laguerre<N>)
+fn make_laguerre(coefficients: Vec<f32>) -> (result: Laguerre)
     ensures
-
-        result.coef == coefficients,
-
-        result.domain[0] == 0.0 && result.domain[1] == 1.0,
-
-        result.window[0] == 0.0 && result.window[1] == 1.0,
-
-        forall|x: f64| {
-            let transformed_x = map_domain(result.domain, result.window, x);
-            exists|value: f64| value == evaluate_laguerre_polynomial(result.coef, transformed_x)
-        },
-
-        forall|i: int| 0 <= i < N ==> result.coef[i] == coefficients[i],
+        result.coef@ == coefficients@,
+        result.domain[0] == 0.0f32 && result.domain[1] == 1.0f32,
+        result.window[0] == 0.0f32 && result.window[1] == 1.0f32,
+        forall|i: int| 0 <= i < coefficients@.len() ==> result.coef@[i] == coefficients@[i]
 // </vc-spec>
 // <vc-code>
 {
+    // impl-start
     assume(false);
     unreached()
+    // impl-end
 }
 // </vc-code>
+
 
 }
 fn main() {}

@@ -1,33 +1,33 @@
 vc-description: |-
   /-
   There are $n$ lamps on a line, numbered from $1$ to $n$. Each one has an initial state off ($0$) or on ($1$).
-  
+
   You're given $k$ subsets $A_1, \ldots, A_k$ of $\{1, 2, \dots, n\}$, such that the intersection of any three subsets is empty. In other words, for all $1 \le i_1 < i_2 < i_3 \le k$, $A_{i_1} \cap A_{i_2} \cap A_{i_3} = \varnothing$.
-  
+
   In one operation, you can choose one of these $k$ subsets and switch the state of all lamps in it. It is guaranteed that, with the given subsets, it's possible to make all lamps be simultaneously on using this type of operation.
-  
+
   Let $m_i$ be the minimum number of operations you have to do in order to make the $i$ first lamps be simultaneously on. Note that there is no condition upon the state of other lamps (between $i+1$ and $n$), they can be either off or on.
-  
+
   You have to compute $m_i$ for all $1 \le i \le n$.
-  
+
   -----Input-----
-  
+
   The first line contains two integers $n$ and $k$ ($1 \le n, k \le 3 \cdot 10^5$).
-  
+
   The second line contains a binary string of length $n$, representing the initial state of each lamp (the lamp $i$ is off if $s_i = 0$, on if $s_i = 1$).
-  
+
   The description of each one of the $k$ subsets follows, in the following format:
-  
+
   The first line of the description contains a single integer $c$ ($1 \le c \le n$)  — the number of elements in the subset.
-  
+
   The second line of the description contains $c$ distinct integers $x_1, \ldots, x_c$ ($1 \le x_i \le n$)  — the elements of the subset.
-  
+
   It is guaranteed that:   The intersection of any three subsets is empty;  It's possible to make all lamps be simultaneously on using some operations. 
-  
+
   -----Output-----
-  
+
   You must output $n$ lines. The $i$-th line should contain a single integer $m_i$  — the minimum number of operations required to make the lamps $1$ to $i$ be simultaneously on.
-  
+
   -----Examples-----
   Input
   7 3
@@ -38,7 +38,7 @@ vc-description: |-
   3 4 7
   2
   2 3
-  
+
   Output
   1
   2
@@ -47,7 +47,7 @@ vc-description: |-
   3
   3
   3
-  
+
   Input
   8 6
   00110011
@@ -63,7 +63,7 @@ vc-description: |-
   4 7
   1
   2
-  
+
   Output
   1
   1
@@ -73,7 +73,7 @@ vc-description: |-
   1
   4
   4
-  
+
   Input
   5 3
   00011
@@ -83,14 +83,14 @@ vc-description: |-
   4
   3
   3 4 5
-  
+
   Output
   1
   1
   1
   1
   1
-  
+
   Input
   19 5
   1001001001100000110
@@ -104,7 +104,7 @@ vc-description: |-
   12 13 14 15 16
   1
   19
-  
+
   Output
   0
   1
@@ -125,17 +125,17 @@ vc-description: |-
   4
   4
   5
-  
+
   -----Note-----
-  
+
   In the first example:   For $i = 1$, we can just apply one operation on $A_1$, the final states will be $1010110$;  For $i = 2$, we can apply operations on $A_1$ and $A_3$, the final states will be $1100110$;  For $i \ge 3$, we can apply operations on $A_1$, $A_2$ and $A_3$, the final states will be $1111111$. 
-  
+
   In the second example:   For $i \le 6$, we can just apply one operation on $A_2$, the final states will be $11111101$;  For $i \ge 7$, we can apply operations on $A_1, A_3, A_4, A_6$, the final states will be $11111111$.
   -/
 
-vc-preamble: |-
+vc-preamble: |
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def solve_lamps (n k : Nat) (initial_state : List Nat) (subsets : List (List Nat)) : List Nat :=
@@ -150,7 +150,7 @@ vc-theorems: |-
     let result := solve_lamps n k initial_state subsets
     (result.length = 1 ∧ ∀ x ∈ result, x ≥ 0) :=
   sorry
-  
+
   theorem solve_lamps_example_case1 
     {n k : Nat} {initial_state : List Nat} {subsets : List (List Nat)}
     (h1 : n = 7)
@@ -161,7 +161,7 @@ vc-theorems: |-
     (result.length = n ∧ 
      ∀ i j, i < j → j < result.length → result.get! i ≤ result.get! j) :=
   sorry
-  
+
   theorem solve_lamps_example_case2
     {n k : Nat} {initial_state : List Nat} {subsets : List (List Nat)}
     (h1 : n = 8)
@@ -172,7 +172,7 @@ vc-theorems: |-
     (result.length = n ∧ 
      ∀ i j, i < j → j < result.length → result.get! i ≤ result.get! j) :=
   sorry
-  
+
   theorem solve_lamps_basic_properties
     {n : Nat} {initial_state : List Nat} {subsets : List (List Nat)}
     (h1 : n > 0)
@@ -183,26 +183,26 @@ vc-theorems: |-
      (∀ x ∈ result, x ≥ 0) ∧
      ∀ i j, i < j → j < result.length → result.get! i ≤ result.get! j) :=
   sorry
-  
-  /-
-  info: expected1
-  -/
-  -- #guard_msgs in
-  -- #eval solve_lamps 7 3 [0, 0, 1, 1, 1, 0, 0] [[1, 4, 6], [3, 4, 7], [2, 3]]
-  
-  /-
-  info: expected2
-  -/
-  -- #guard_msgs in
-  -- #eval solve_lamps 8 6 [0, 0, 1, 1, 0, 0, 1, 1] [[1, 3, 8], [1, 2, 5, 6, 7], [6, 8], [3, 5], [4, 7], [2]]
-  
-  /-
-  info: expected3
-  -/
-  -- #guard_msgs in
-  -- #eval solve_lamps 5 3 [0, 0, 0, 1, 1] [[1, 2, 3], [4], [3, 4, 5]]
 
 vc-postamble: |-
   -- Apps difficulty: competition
   -- Assurance level: unguarded
+
+  /-
+  info: expected1
+  -/
+  #guard_msgs in
+  #eval solve_lamps 7 3 [0, 0, 1, 1, 1, 0, 0] [[1, 4, 6], [3, 4, 7], [2, 3]]
+
+  /-
+  info: expected2
+  -/
+  #guard_msgs in
+  #eval solve_lamps 8 6 [0, 0, 1, 1, 0, 0, 1, 1] [[1, 3, 8], [1, 2, 5, 6, 7], [6, 8], [3, 5], [4, 7], [2]]
+
+  /-
+  info: expected3
+  -/
+  #guard_msgs in
+  #eval solve_lamps 5 3 [0, 0, 0, 1, 1] [[1, 2, 3], [4], [3, 4, 5]]
 

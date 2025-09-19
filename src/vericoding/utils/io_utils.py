@@ -1,7 +1,9 @@
 """File I/O and thread-safe operations."""
 
 import logging
+import sys
 import threading
+import yaml
 from pathlib import Path
 
 from ..core.config import ProcessingConfig
@@ -47,3 +49,56 @@ def save_iteration_code(
 
         debug_path = f"debug/{relative_dir}" if str(relative_dir) != "." else "debug"
         logger.info(f"    💾 Saved {phase} code to: {debug_path}/{iteration_file_name}")
+
+
+def load_postamble_from_yaml(config: ProcessingConfig, lean_file_path: Path) -> str:
+    """Load the postamble from the corresponding YAML file for unit test mode.
+    
+    Args:
+        config: Processing configuration  
+        lean_file_path: Path to the Lean file (relative to files_dir)
+        
+    Returns:
+        The postamble content (empty string if field is empty)
+    """
+    if config.language != 'lean' or not config.unit_test:
+        print(f"Error: load_postamble_from_yaml called incorrectly - language={config.language}, unit_test={config.unit_test}")
+        sys.exit(1)
+    
+    # Convert from files/ directory to yaml/ directory
+    yaml_file_path = lean_file_path.with_suffix('.yaml')
+    
+    # Look for yaml file in yaml/ subdirectory parallel to files/
+    files_dir = Path(config.files_dir)
+    
+    # If the files_dir ends with 'files', replace with 'yaml'
+    if files_dir.name == 'files':
+        yaml_dir = files_dir.parent / 'yaml'
+    else:
+        print(f"Error: Expected files directory to end with 'files', got: {files_dir}")
+        sys.exit(1)
+    
+    full_yaml_path = yaml_dir / yaml_file_path.name
+    
+    if not full_yaml_path.exists():
+        print(f"Error: YAML file not found for unit test mode: {full_yaml_path}")
+        sys.exit(1)
+    
+    try:
+        with full_yaml_path.open('r', encoding='utf-8') as f:
+            yaml_content = yaml.safe_load(f)
+    except Exception as e:
+        print(f"Error: Failed to load YAML file {full_yaml_path}: {e}")
+        sys.exit(1)
+    
+    if 'vc-postamble' not in yaml_content:
+        print(f"Error: YAML file {full_yaml_path} missing required 'vc-postamble' field")
+        sys.exit(1)
+    
+    postamble = yaml_content['vc-postamble']
+    if postamble:
+        logger.info(f"    📋 Loaded postamble from: {full_yaml_path}")
+        return postamble.strip()
+    else:
+        logger.info(f"    📋 Empty postamble found in: {full_yaml_path}")
+        return ""

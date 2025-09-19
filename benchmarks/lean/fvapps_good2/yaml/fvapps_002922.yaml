@@ -1,0 +1,94 @@
+vc-description: |-
+  /-
+  Array inversion indicates how far the array is from being sorted.
+  
+  Inversions are pairs of elements in array that are out of order.
+  
+  ## Examples
+  
+  ```
+  [1, 2, 3, 4]  =>  0 inversions
+  [1, 3, 2, 4]  =>  1 inversion: 2 and 3
+  [4, 1, 2, 3]  =>  3 inversions: 4 and 1, 4 and 2, 4 and 3
+  [4, 3, 2, 1]  =>  6 inversions: 4 and 3, 4 and 2, 4 and 1, 3 and 2, 3 and 1, 2 and 1
+  ```
+  
+  ## Goal
+  
+  The goal is to come up with a function that can calculate inversions for any arbitrary array
+  -/
+
+vc-preamble: |-
+  def isSorted (l : List Int) : Prop :=
+    ∀ i j, i < j → j < l.length → l[i]! ≤ l[j]!
+  
+  def swap (l : List Int) (i j : Nat) (h1 : i < l.length) (h2 : j < l.length) : List Int :=
+    let arr := l.toArray
+    let tmp := arr[i]!
+    let arr := arr.set! i arr[j]!
+    let arr := arr.set! j tmp
+    arr.toList
+
+vc-helpers: |-
+
+vc-definitions: |-
+  def count_inversions (lst : List Int) : Nat :=
+    sorry
+
+vc-theorems: |-
+  theorem empty_list_zero_inversions :
+    count_inversions [] = 0 := by
+    sorry
+  
+  theorem sorted_list_zero_inversions {lst : List Int} :
+    isSorted lst → count_inversions lst = 0 := by
+    sorry
+  
+  theorem reversed_sorted_unique_inversions {lst : List Int} (h1 : List.Nodup lst) (h2 : isSorted lst) :
+    count_inversions (List.reverse lst) = (lst.length * (lst.length - 1)) / 2 := by
+    sorry
+  
+  theorem single_swap_one_inversion {lst : List Int} (h1 : isSorted lst) (h2 : lst.length ≥ 2)
+    (h3 : lst[0]! ≠ lst[1]!)
+    (h4 : 0 < lst.length) (h5 : 1 < lst.length) :
+    count_inversions (swap lst 0 1 h4 h5) = 1 := by
+    sorry
+  
+  theorem count_always_non_negative (lst : List Int) :
+    count_inversions lst ≥ 0 := by
+    sorry
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded
+  
+  /--
+  info: 0
+  -/
+  #guard_msgs in
+  #eval count_inversions #[]
+  
+  /--
+  info: 0
+  -/
+  #guard_msgs in
+  #eval count_inversions #[1, 2, 3]
+  
+  /--
+  info: 1
+  -/
+  #guard_msgs in
+  #eval count_inversions #[2, 1, 3]
+  
+  /--
+  info: 15
+  -/
+  #guard_msgs in
+  #eval count_inversions #[6, 5, 4, 3, 2, 1]
+  
+  /--
+  info: 30
+  -/
+  #guard_msgs in
+  #eval count_inversions #[6, 5, 4, 3, 3, 3, 3, 2, 1]
+

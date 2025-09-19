@@ -1,0 +1,66 @@
+vc-description: |-
+  /-
+  In this Kata, you will be given two integers `n` and `k` and your task is to remove `k-digits` from `n` and return the lowest number possible, without changing the order of the digits in `n`. Return the result as a string.
+  
+  Let's take an example of `solve(123056,4)`. We need to remove `4` digits from `123056` and return the lowest possible number. The best digits to remove are `(1,2,3,6)` so that the remaining digits are `'05'`. Therefore, `solve(123056,4) = '05'`. 
+  
+  Note also that the order of the numbers in `n` does not change: `solve(1284569,2) = '12456',` because we have removed `8` and `9`. 
+  
+  More examples in the test cases.
+  
+  Good luck!
+  -/
+
+vc-preamble: |-
+
+vc-helpers: |-
+
+vc-definitions: |-
+  def isSubsequence (smaller larger : String) : Bool :=
+    sorry
+  
+  def solve (n : Nat) (k : Nat) : String :=
+    sorry
+
+vc-theorems: |-
+  theorem solve_properties {n k : Nat} (h : k < (ToString.toString n).length) :
+    let result := solve n k
+    (result.length = (ToString.toString n).length - k) ∧
+    (isSubsequence result (ToString.toString n) = true) ∧
+    (result.toNat! ≤ n) :=
+  sorry
+  
+  theorem remove_zero_digits (n : Nat) :
+    solve n 0 = ToString.toString n :=
+  sorry
+  
+  theorem result_is_minimal {n k : Nat} (h1 : n ≥ 10) (h2 : k ≥ 1) (h3 : k < (ToString.toString n).length) :
+    let result := solve n k
+    ∀ (s : String),
+      isSubsequence s (ToString.toString n) = true →
+      s.length = (ToString.toString n).length - k →
+      result.toNat! ≤ s.toNat! :=
+  sorry
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded
+  
+  /--
+  info: '05'
+  -/
+  #guard_msgs in
+  #eval solve 123056 4
+  
+  /--
+  info: '12456'
+  -/
+  #guard_msgs in
+  #eval solve 1284569 2
+  
+  /--
+  info: '12056'
+  -/
+  #guard_msgs in
+  #eval solve 123056 1
+

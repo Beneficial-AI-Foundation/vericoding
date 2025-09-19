@@ -7,28 +7,21 @@ vc-preamble: |-
 
   verus! {
   spec fn sum_of_digits(x: int) -> int
-    recommends x >= 0
-    decreases x
+    decreases x when x >= 0
   {
-    if x == 0 { 0 }
-    else { (x % 10) + sum_of_digits(x / 10) }
+    if x <= 0 { 0 } else { (x % 10) + sum_of_digits(x / 10) }
   }
 
-  spec fn check(x: int, s: int) -> bool
-    recommends x >= 0
-  {
-    x - sum_of_digits(x) >= s
+  spec fn check(x: int, s: int) -> bool {
+    x >= 0 && x - sum_of_digits(x) >= s
   }
 
 vc-helpers: |
 
 vc-spec: |-
-  fn solve(n: int, s: int) -> (result: int)
-    requires 
-      n >= 1 && s >= 1
-    ensures 
-      result >= 0 &&
-      result <= n
+  fn solve(n: i8, s: i8) -> (result: i8)
+  requires n as int >= 1 && s as int >= 1
+  ensures result as int >= 0 && result as int <= n as int
 
 vc-code: |-
   {

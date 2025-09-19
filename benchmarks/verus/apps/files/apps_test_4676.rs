@@ -73,9 +73,9 @@ spec fn interleave_unequal(o: Seq<char>, e: Seq<char>) -> Seq<char>
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(input: Seq<char>) -> (result: Seq<char>)
-    requires valid_input(input)
-    ensures result == correct_result(input)
+fn solve(input: Vec<char>) -> (result: Vec<char>)
+    requires valid_input(input@)
+    ensures result@ == correct_result(input@)
 // </vc-spec>
 // <vc-code>
 {

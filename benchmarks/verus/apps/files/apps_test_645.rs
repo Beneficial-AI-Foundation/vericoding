@@ -23,9 +23,9 @@ spec fn count_flips(s: Seq<char>) -> int {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(s: Seq<char>) -> (result: Seq<char>)
-  requires s.len() >= 1 && s.len() <= 50
-  ensures result.len() > 0
+fn solve(s: Vec<char>) -> (result: Vec<char>)
+  requires s@.len() >= 1 && s@.len() <= 50
+  ensures result@.len() > 0
 // </vc-spec>
 // <vc-code>
 {

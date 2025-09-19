@@ -33,14 +33,14 @@ spec fn is_minimal_form(s: Seq<char>, result: Seq<char>) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: usize, s: Seq<char>) -> (result: Seq<char>)
+fn solve(n: u8, s: Vec<char>) -> (result: Vec<char>)
     requires 
         n >= 1 && n <= 100,
-        s.len() == n,
-        valid_binary_string(s),
+        s.len() == n as usize,
+        valid_binary_string(s@),
     ensures 
-        valid_binary_string(result),
-        is_minimal_form(s, result),
+        valid_binary_string(result@),
+        is_minimal_form(s@, result@),
 // </vc-spec>
 // <vc-code>
 {

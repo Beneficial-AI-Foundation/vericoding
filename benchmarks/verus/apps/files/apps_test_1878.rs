@@ -147,19 +147,19 @@ spec fn compute_total_area_partial(rectangle_lines: Seq<Seq<char>>, n: int) -> i
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(input: Seq<char>) -> (result: Seq<char>)
-    requires valid_input(input),
+fn solve(input: Vec<char>) -> (result: Vec<char>)
+    requires valid_input(input@),
     ensures 
-        result.len() >= 1,
-        result[result.len() - 1] == '\n',
+        result@.len() >= 1,
+        result@[result@.len() - 1] == '\n',
         exists|total_area: int| {
             &&& total_area >= 0
-            &&& result == int_to_string_func(total_area) + seq!['\n']
+            &&& result@ == int_to_string_func(total_area) + seq!['\n']
             &&& {
-                let processed_input = if input.len() > 0 && input[input.len() - 1] == '\n' {
-                    input
+                let processed_input = if input@.len() > 0 && input@[input@.len() - 1] == '\n' {
+                    input@
                 } else {
-                    input + seq!['\n']
+                    input@ + seq!['\n']
                 };
                 let lines = split_lines_func(processed_input);
                 if lines.len() == 0 {

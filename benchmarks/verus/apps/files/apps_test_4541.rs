@@ -21,12 +21,12 @@ spec fn expected_output(input: Seq<char>) -> Seq<char>
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(input: Seq<char>) -> (result: Seq<char>)
+fn solve(input: Vec<char>) -> (result: Vec<char>)
     requires 
-        valid_input(input),
+        valid_input(input@),
     ensures 
-        result == expected_output(input),
-        result == seq!['v', 'o', 'w', 'e', 'l'] || result == seq!['c', 'o', 'n', 's', 'o', 'n', 'a', 'n', 't'],
+        result@ == expected_output(input@),
+        result@ == seq!['v', 'o', 'w', 'e', 'l'] || result@ == seq!['c', 'o', 'n', 's', 'o', 'n', 'a', 'n', 't'],
 // </vc-spec>
 // <vc-code>
 {

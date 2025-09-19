@@ -31,8 +31,8 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(t: Seq<char>) -> (result: Seq<char>)
-    requires t.len() >= 1
+fn solve(t: Vec<char>) -> (result: Vec<char>)
+    requires t@.len() >= 1
 // </vc-spec>
 // <vc-code>
 {

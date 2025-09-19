@@ -190,6 +190,12 @@ Examples:
         help="Tag to add to W&B run for experiment tracking",
     )
 
+    parser.add_argument(
+        "--unit-test",
+        action="store_true",
+        help="Unit test mode: verify solution with postamble from YAML (only valid for Lean language)",
+    )
+
     return parser.parse_args()
 
 
@@ -201,6 +207,11 @@ def setup_configuration(args) -> ProcessingConfig:
     # Validate assume-unformatted-lean argument
     if args.assume_unformatted_lean and args.language != 'lean':
         print(f"Error: --assume-unformatted-lean can only be used with Lean language, not '{args.language}'")
+        sys.exit(1)
+
+    # Validate unit-test argument
+    if args.unit_test and args.language != 'lean':
+        print(f"Error: --unit-test can only be used with Lean language, not '{args.language}'")
         sys.exit(1)
 
     print(
@@ -277,6 +288,7 @@ def setup_configuration(args) -> ProcessingConfig:
         llm=args.llm,
         max_directory_traversal_depth=args.max_directory_traversal_depth,
         assume_unformatted_lean=args.assume_unformatted_lean,
+        unit_test=args.unit_test,
     )
 
     print("\nConfiguration:")
@@ -288,6 +300,7 @@ def setup_configuration(args) -> ProcessingConfig:
     print(f"- Tool path: {get_tool_path(config)}")
     print(f"- LLM: {config.llm}")
     print(f"- Debug mode: {'Enabled' if config.debug_mode else 'Disabled'}")
+    print(f"- Unit test mode: {'Enabled' if config.unit_test else 'Disabled'}")
     print(f"- API rate limit delay: {config.api_rate_limit_delay}s")
     print("\nProceeding with configuration...")
 
@@ -473,7 +486,7 @@ def log_experiment_results_to_wandb(
     results_table = wandb.Table(columns=[
         "file_name", "subfolder", "success", "output_file", "error_message",
         "has_bypass", "file_path", "original_spec", "final_output", "debug_files",
-        "generate_prompt", "fix_prompts"
+        "generate_prompt", "fix_prompts", "unit_test_passed"
     ])
     
     for result in results:
@@ -538,7 +551,8 @@ def log_experiment_results_to_wandb(
             final_output,
             debug_files_text or "No debug files",
             result.generate_prompt if hasattr(result, 'generate_prompt') and result.generate_prompt else "",
-            "\\n\\n---\\n\\n".join(result.fix_prompts) if hasattr(result, 'fix_prompts') and result.fix_prompts else ""
+            "\\n\\n---\\n\\n".join(result.fix_prompts) if hasattr(result, 'fix_prompts') and result.fix_prompts else "",
+            result.unit_test_passed if hasattr(result, 'unit_test_passed') else None
         )
     
     wandb.log({"detailed_results": results_table})

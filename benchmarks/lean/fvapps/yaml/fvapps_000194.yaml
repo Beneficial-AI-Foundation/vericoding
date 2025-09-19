@@ -4,7 +4,7 @@ vc-description: |-
   You are also given an integer maxCost.
   Return the maximum length of a substring of s that can be changed to be the same as the corresponding substring of twith a cost less than or equal to maxCost.
   If there is no substring from s that can be changed to its corresponding substring from t, return 0.
-  
+
   Example 1:
   Input: s = "abcd", t = "bcdf", maxCost = 3
   Output: 3
@@ -13,26 +13,26 @@ vc-description: |-
   Input: s = "abcd", t = "cdef", maxCost = 3
   Output: 1
   Explanation: Each character in s costs 2 to change to charactor in t, so the maximum length is 1.
-  
+
   Example 3:
   Input: s = "abcd", t = "acde", maxCost = 0
   Output: 1
   Explanation: You can't make any change, so the maximum length is 1.
-  
+
   Constraints:
-  
+
   1 <= s.length, t.length <= 10^5
   0 <= maxCost <= 10^6
   s and t only contain lower case English letters.
   -/
 
-vc-preamble: |-
+vc-preamble: |
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def equal_substring (s t : String) (max_cost : Nat) : Nat := sorry
-  
+
   theorem equal_substring_bounds {s t : String} {max_cost : Nat} 
     (h : s.length = t.length) :
     0 ≤ equal_substring s t max_cost ∧ equal_substring s t max_cost ≤ s.length :=
@@ -43,26 +43,26 @@ vc-theorems: |-
     (h : s.length = t.length) (h_pos : max_cost > 0) :
     equal_substring s t (max_cost - 1) ≤ equal_substring s t max_cost :=
   sorry
-  
-  /-
-  info: 3
-  -/
-  -- #guard_msgs in
-  -- #eval equal_substring "abcd" "bcdf" 3
-  
-  /-
-  info: 1
-  -/
-  -- #guard_msgs in
-  -- #eval equal_substring "abcd" "cdef" 3
-  
-  /-
-  info: 1
-  -/
-  -- #guard_msgs in
-  -- #eval equal_substring "abcd" "acde" 0
 
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
+
+  /-
+  info: 3
+  -/
+  #guard_msgs in
+  #eval equal_substring "abcd" "bcdf" 3
+
+  /-
+  info: 1
+  -/
+  #guard_msgs in
+  #eval equal_substring "abcd" "cdef" 3
+
+  /-
+  info: 1
+  -/
+  #guard_msgs in
+  #eval equal_substring "abcd" "acde" 0
 

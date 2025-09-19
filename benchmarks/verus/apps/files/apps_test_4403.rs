@@ -25,9 +25,9 @@ spec fn calculate_sum(s: Seq<char>) -> int {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(s: Seq<char>) -> (result: int)
-    requires valid_input(s)
-    ensures result == calculate_sum(s)
+fn solve(s: Vec<char>) -> (result: i8)
+    requires valid_input(s@)
+    ensures result as int == calculate_sum(s@)
 // </vc-spec>
 // <vc-code>
 {

@@ -27,8 +27,8 @@ spec fn valid_input(n: int, k: int, s: Seq<char>) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: int, k: int, s: Seq<char>) -> (result: char)
-    requires valid_input(n, k, s)
+fn solve(n: i8, k: i8, s: Vec<char>) -> (result: char)
+    requires valid_input(n as int, k as int, s@)
     ensures valid_rps_char(result)
 // </vc-spec>
 // <vc-code>

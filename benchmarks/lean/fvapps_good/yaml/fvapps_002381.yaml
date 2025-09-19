@@ -1,0 +1,83 @@
+vc-description: |-
+  /-
+  Given an integer array arr, return true if there are three consecutive odd numbers in the array. Otherwise, return false.
+
+  Example 1:
+  Input: arr = [2,6,4,1]
+  Output: false
+  Explanation: There are no three consecutive odds.
+
+  Example 2:
+  Input: arr = [1,2,34,3,4,5,7,23,12]
+  Output: true
+  Explanation: [5,7,23] are three consecutive odds.
+
+  Constraints:
+
+  1 <= arr.length <= 1000
+  1 <= arr[i] <= 1000
+  -/
+
+vc-preamble: |-
+  def isOdd (n : Int) : Bool :=
+    n % 2 = 1
+
+  /- Helper function to test if a number is even -/
+
+  def isEven (n : Int) : Bool :=
+    n % 2 = 0
+
+vc-helpers: |
+
+vc-definitions: |-
+  def threeConsecutiveOdds (arr : List Int) : Bool := sorry
+
+  theorem threeConsecutiveOdds_returns_bool (arr : List Int) :
+    threeConsecutiveOdds arr = true ∨ threeConsecutiveOdds arr = false :=
+  sorry
+
+vc-theorems: |-
+  theorem threeConsecutiveOdds_true_implies_consecutive (arr : List Int) :
+    threeConsecutiveOdds arr = true →
+    ∃ i, i + 2 < arr.length ∧
+         isOdd arr[i]! ∧ isOdd arr[i+1]! ∧ isOdd arr[i+2]! :=
+  sorry
+
+  theorem threeConsecutiveOdds_false_implies_no_consecutive (arr : List Int) :
+    threeConsecutiveOdds arr = false →
+    ∀ i, i + 2 < arr.length →
+        ¬(isOdd arr[i]! ∧ isOdd arr[i+1]! ∧ isOdd arr[i+2]!) :=
+  sorry
+
+  theorem all_odds_returns_true {arr : List Int} (h : arr.length ≥ 3)
+    (h₂ : ∀ x ∈ arr, isOdd x) :
+    threeConsecutiveOdds arr = true :=
+  sorry
+
+  theorem all_evens_returns_false {arr : List Int}
+    (h : ∀ x ∈ arr, isEven x) :
+    threeConsecutiveOdds arr = false :=
+  sorry
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded
+
+  /--
+  info: False
+  -/
+  #guard_msgs in
+  #eval three_consecutive_odds [2, 6, 4, 1]
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval three_consecutive_odds [1, 2, 34, 3, 4, 5, 7, 23, 12]
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval three_consecutive_odds [1, 3, 5, 2]
+

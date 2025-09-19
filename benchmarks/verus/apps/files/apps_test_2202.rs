@@ -27,12 +27,12 @@ spec fn max_split_score(a: Seq<int>, p: int) -> int
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: int, p: int, a: Seq<int>) -> (result: int)
-    requires valid_input(n, p, a)
+fn solve(n: i8, p: i8, a: Vec<i8>) -> (result: i8)
+    requires valid_input(n as int, p as int, a@.map_values(|x: i8| x as int))
     ensures 
         result >= 0 &&
         result < 2 * p &&
-        result == max_split_score(a, p)
+        result as int == max_split_score(a@.map_values(|x: i8| x as int), p as int)
 // </vc-spec>
 // <vc-code>
 {

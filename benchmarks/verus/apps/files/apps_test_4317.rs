@@ -87,8 +87,9 @@ spec fn int_to_string(i: int) -> Seq<char> {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(input: Seq<char>) -> (result: Seq<char>)
-    requires valid_input(input)
+fn solve(input: Vec<u8>) -> (result: Vec<u8>)
+    requires valid_input(input@.map_values(|b: u8| b as char))
+    ensures result@.map_values(|b: u8| b as char) == int_to_string(max3(get_a(input@.map_values(|b: u8| b as char)) + get_b(input@.map_values(|b: u8| b as char)), get_a(input@.map_values(|b: u8| b as char)) - get_b(input@.map_values(|b: u8| b as char)), get_a(input@.map_values(|b: u8| b as char)) * get_b(input@.map_values(|b: u8| b as char))))
 // </vc-spec>
 // <vc-code>
 {

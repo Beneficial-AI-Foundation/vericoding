@@ -2,52 +2,52 @@ vc-description: |-
   /-
   Introduction
   Brainfuck is one of the most well-known esoteric programming languages. But it can be hard to understand any code longer that 5 characters. In this kata you have to solve that problem.
-  
+
   Description
-  
+
   In this kata you have to write a function which will do 3 tasks:
-  
+
   Optimize the given Brainfuck code.
   Check it for mistakes.
   Translate the given Brainfuck programming code into C programming code.
-  
+
   More formally about each of the tasks:
-  
+
   Your function has to remove from the source code all useless command sequences such as: '+-', '<>', '[]'. Also it must erase all characters except +-<>,.[].
   Example:
   "++--+." -> "+."
   "[][+++]" -> "[+++]"
   "<>><" -> ""
-  
+
   If the source code contains unpaired braces, your function should return "Error!" string.
-  
+
   Your function must generate a string of the C programming code as follows:
-  
+
   Sequences of the X commands + or - must be replaced by \*p += X;\n or \*p -= X;\n.
   Example:
   "++++++++++" -> "\*p += 10;\n"
   "------" -> "\*p -= 6;\n"
-  
+
   Sequences of the Y commands > or < must be replaced by p += Y;\n or p -= Y;\n.
   Example:
   ">>>>>>>>>>" -> "p += 10;\n"
   "<<<<<<" -> "p -= 6;\n"
-  
+
   . command must be replaced by putchar(\*p);\n.
   Example:
   ".." -> "putchar(\*p);\nputchar(\*p);\n"
-  
+
   , command must be replaced by \*p = getchar();\n.
   Example:
   "," -> "\*p = getchar();\n"
-  
+
   [ command must be replaced by if (\*p) do {\n. ] command must be replaced by } while (\*p);\n.
   Example:
   "[>>]" ->
   if (\*p) do {\n
     p += 2;\n
   } while (\*p);\n
-  
+
   Each command in the code block must be shifted 2 spaces to the right accordingly to the previous code block.
   Example:
   "[>>[<<]]" ->
@@ -57,9 +57,9 @@ vc-description: |-
       p -= 2;\n
     } while (\*p);\n
   } while (\*p);\n
-  
+
   Examples
-  
+
   Input:
   +++++[>++++.<-]
   Output:
@@ -73,13 +73,13 @@ vc-description: |-
   } while (*p);
   -/
 
-vc-preamble: |-
+vc-preamble: |
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def brainfuck_to_c (s : String) : String := sorry
-  
+
   def is_balanced (s : String) : Bool := sorry
 
 vc-theorems: |-
@@ -93,16 +93,16 @@ vc-theorems: |-
     let s''''''' := s''''''.replace "<" ""
     let s'''''''' := s'''''''.replace ">" ""
     brainfuck_to_c s'''''''' = "" := sorry
-  
+
   theorem redundant_patterns_removed (patterns : List String) :
     (∀ p ∈ patterns, p = "<>" ∨ p = "><" ∨ p = "+-" ∨ p = "-+" ∨ p = "[]") →
     brainfuck_to_c (String.join patterns) = "" := sorry
-  
+
   theorem unbalanced_brackets (s : String) :
     (∀ c ∈ s.data, c = '[' ∨ c = ']') →
     ¬(is_balanced s) →
     brainfuck_to_c s = "Error!" := sorry
-  
+
   theorem output_format (s : String) :
     let result := brainfuck_to_c s
     result ≠ "Error!" →
@@ -111,26 +111,26 @@ vc-theorems: |-
        line.trimRight.endsWith "{" ∨
        line.trimRight.endsWith "}") ∧
       (line.length - (line.trim).length) % 2 = 0 := sorry
-  
-  /-
-  info: test1_output
-  -/
-  -- #guard_msgs in
-  -- #eval brainfuck_to_c "+++++[>++++.<-]"
-  
-  /-
-  info: 'Error!'
-  -/
-  -- #guard_msgs in
-  -- #eval brainfuck_to_c "[[]"
-  
-  /-
-  info: ''
-  -/
-  -- #guard_msgs in
-  -- #eval brainfuck_to_c "+-><[]"
 
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
+
+  /-
+  info: test1_output
+  -/
+  #guard_msgs in
+  #eval brainfuck_to_c "+++++[>++++.<-]"
+
+  /-
+  info: 'Error!'
+  -/
+  #guard_msgs in
+  #eval brainfuck_to_c "[[]"
+
+  /-
+  info: ''
+  -/
+  #guard_msgs in
+  #eval brainfuck_to_c "+-><[]"
 

@@ -23,9 +23,9 @@ spec fn valid_output(m: int, result: int) -> bool
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(m: int) -> (result: int)
-    requires valid_input(m)
-    ensures valid_output(m, result)
+fn solve(m: i8) -> (result: i8)
+    requires valid_input(m as int)
+    ensures valid_output(m as int, result as int)
 // </vc-spec>
 // <vc-code>
 {

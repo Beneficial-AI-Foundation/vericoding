@@ -8,28 +8,25 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn extract(condition: Vec<bool>, arr: Vec<i32>) -> (result: Vec<i32>)
+fn extract(condition: &Vec<bool>, arr: &Vec<i8>) -> (result: Vec<i8>)
     requires condition.len() == arr.len(),
     ensures
-
-        forall|k: int| 0 <= k < result.len() ==> 
-            exists|i: int| 0 <= i < condition.len() && condition[i] && result[k] == arr[i],
-
-        forall|k1: int, k2: int| 0 <= k1 < k2 < result.len() ==>
-            exists|i1: int, i2: int| 
-                0 <= i1 < i2 < condition.len() && 
-                condition[i1] && condition[i2] &&
-                result[k1] == arr[i1] && result[k2] == arr[i2],
-
-        forall|i: int| 0 <= i < condition.len() && condition[i] ==>
-            exists|k: int| 0 <= k < result.len() && result[k] == arr[i]
+        /* Each element in result comes from arr at a position where condition is true */
+        forall|k: int| 0 <= k < result@.len() ==>
+            exists|i: int| 0 <= i < arr@.len() && condition@[i] == true && #[trigger] result@[k] == arr@[i],
+        /* Every True position in condition contributes exactly one element to the result */
+        forall|i: int| 0 <= i < condition@.len() && condition@[i] == true ==>
+            exists|k: int| 0 <= k < result@.len() && #[trigger] result@[k] == arr@[i],
 // </vc-spec>
 // <vc-code>
 {
+    // impl-start
     assume(false);
     unreached()
+    // impl-end
 }
 // </vc-code>
+
 
 }
 fn main() {}

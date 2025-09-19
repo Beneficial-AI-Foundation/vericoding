@@ -3,11 +3,11 @@ use vstd::prelude::*;
 
 verus! {
 spec fn valid_input(s: Seq<char>) -> bool {
-    s.len() == 7 && s[0] == 'A' && forall|i: int| 1 <= i < 7 ==> '0' <= s[i] <= '9'
+    s.len() == 7 && s[0] == 'A' && forall|i: int| 1 <= i < 7 ==> #[trigger] s[i] >= '0' && #[trigger] s[i] <= '9'
 }
 
 spec fn digit_sum(s: Seq<char>, start: int, end: int) -> int
-    decreases end - start
+    decreases end - start when 0 <= start <= end <= s.len()
 {
     if start >= end {
         0
@@ -17,12 +17,12 @@ spec fn digit_sum(s: Seq<char>, start: int, end: int) -> int
 }
 
 spec fn zero_count(s: Seq<char>, start: int, end: int) -> int
-    decreases end - start
+    decreases end - start when 0 <= start <= end <= s.len()
 {
     if start >= end {
         0
     } else {
-        (if s[start] == '0' { 1int } else { 0int }) + zero_count(s, start + 1, end)
+        (if s[start] == '0' { 1nat } else { 0nat }) as int + zero_count(s, start + 1, end)
     }
 }
 // </vc-preamble>
@@ -31,9 +31,9 @@ spec fn zero_count(s: Seq<char>, start: int, end: int) -> int
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(s: Seq<char>) -> (result: int)
-    requires valid_input(s)
-    ensures result == digit_sum(s, 1, 7) + 9 * zero_count(s, 1, 7) + 1
+fn solve(s: Vec<char>) -> (result: i8)
+    requires valid_input(s@)
+    ensures result as int == digit_sum(s@, 1, 7) + 9 * zero_count(s@, 1, 7) + 1
 // </vc-spec>
 // <vc-code>
 {

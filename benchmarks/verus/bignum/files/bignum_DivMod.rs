@@ -23,14 +23,14 @@ spec fn valid_bit_string(s: Seq<char>) -> bool
 // </vc-helpers>
 
 // <vc-spec>
-fn div_mod(dividend: Seq<char>, divisor: Seq<char>) -> (result: (Seq<char>, Seq<char>))
+fn div_mod(dividend: Vec<char>, divisor: Vec<char>) -> (result: (Vec<char>, Vec<char>))
   requires 
-    valid_bit_string(dividend) && valid_bit_string(divisor),
-    str2int(divisor) > 0,
+    valid_bit_string(dividend@) && valid_bit_string(divisor@),
+    str2int(divisor@) > 0,
   ensures 
-    valid_bit_string(result.0) && valid_bit_string(result.1),
-    str2int(result.0) == str2int(dividend) / str2int(divisor),
-    str2int(result.1) == str2int(dividend) % str2int(divisor),
+    valid_bit_string(result.0@) && valid_bit_string(result.1@),
+    str2int(result.0@) == str2int(dividend@) / str2int(divisor@),
+    str2int(result.1@) == str2int(dividend@) % str2int(divisor@),
 // </vc-spec>
 // <vc-code>
 {

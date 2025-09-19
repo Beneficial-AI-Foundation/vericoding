@@ -8,7 +8,7 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn r_(a: Vec<f32>, b: Vec<f32>) -> (result: Vec<f32>)
+fn r_(a: Vec<i8>, b: Vec<i8>) -> (result: Vec<i8>)
     ensures
         result.len() == a.len() + b.len(),
         forall|i: int| 0 <= i < a.len() ==> result[i] == a[i],

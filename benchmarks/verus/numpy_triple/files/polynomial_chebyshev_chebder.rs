@@ -8,14 +8,14 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn chebder(c: Vec<i32>, scl: i32) -> (result: Vec<i32>)
+fn chebder(c: Vec<i8>, scl: i8) -> (result: Vec<i8>)
     requires c.len() > 0,
     ensures
         result.len() == c.len() - 1,
         c.len() > 1 ==> result[0] == scl * c[1],
         c.len() > 2 ==> result[1] == scl * 4 * c[2],
         forall|j: int| 2 <= j < result.len() ==>
-            result[j] == scl * (2 * ((j + 1) as i32)) * c[j + 1],
+            result[j as int] == scl * (2 * ((j + 1) as i8)) * c[(j + 1) as int],
 // </vc-spec>
 // <vc-code>
 {

@@ -1,0 +1,97 @@
+vc-description: |-
+  /-
+  For a vector $\vec{v} = (x, y)$, define $|v| = \sqrt{x^2 + y^2}$.
+  
+  Allen had a bit too much to drink at the bar, which is at the origin. There are $n$ vectors $\vec{v_1}, \vec{v_2}, \cdots, \vec{v_n}$. Allen will make $n$ moves. As Allen's sense of direction is impaired, during the $i$-th move he will either move in the direction $\vec{v_i}$ or $-\vec{v_i}$. In other words, if his position is currently $p = (x, y)$, he will either move to $p + \vec{v_i}$ or $p - \vec{v_i}$.
+  
+  Allen doesn't want to wander too far from home (which happens to also be the bar). You need to help him figure out a sequence of moves (a sequence of signs for the vectors) such that his final position $p$ satisfies $|p| \le 1.5 \cdot 10^6$ so that he can stay safe.
+  
+  -----Input-----
+  
+  The first line contains a single integer $n$ ($1 \le n \le 10^5$) — the number of moves.
+  
+  Each of the following lines contains two space-separated integers $x_i$ and $y_i$, meaning that $\vec{v_i} = (x_i, y_i)$. We have that $|v_i| \le 10^6$ for all $i$.
+  
+  -----Output-----
+  
+  Output a single line containing $n$ integers $c_1, c_2, \cdots, c_n$, each of which is either $1$ or $-1$. Your solution is correct if the value of $p = \sum_{i = 1}^n c_i \vec{v_i}$, satisfies $|p| \le 1.5 \cdot 10^6$.
+  
+  It can be shown that a solution always exists under the given constraints.
+  
+  -----Examples-----
+  Input
+  3
+  999999 0
+  0 999999
+  999999 0
+  
+  Output
+  1 1 -1 
+  
+  Input
+  1
+  -824590 246031
+  
+  Output
+  1 
+  
+  Input
+  8
+  -67761 603277
+  640586 -396671
+  46147 -122580
+  569609 -2112
+  400 914208
+  131792 309779
+  -850150 -486293
+  5272 721899
+  
+  Output
+  1 1 1 1 1 1 1 -1
+  -/
+  
+  -- Apps difficulty: competition
+  -- Assurance level: guarded
+
+vc-preamble: |-
+
+vc-helpers: |-
+
+vc-definitions: |-
+  def find_path (n : Nat) (vectors : List (Int × Int)) : List Int :=
+    sorry
+  
+  def compute_final_position (vectors : List (Int × Int)) (path : List Int) : Int × Int :=
+    sorry
+  
+  def verify_path_length (x : Int) (y : Int) : Bool :=
+    sorry
+
+vc-theorems: |-
+  theorem find_path_correct_length {n : Nat} {vectors : List (Int × Int)} :
+    let path := find_path n vectors
+    n = vectors.length → path.length = n :=
+  sorry
+  
+  theorem find_path_valid_elements {n : Nat} {vectors : List (Int × Int)} :
+    let path := find_path n vectors
+    n = vectors.length → ∀ x ∈ path, x = 1 ∨ x = -1 :=
+  sorry
+  
+  theorem find_path_bounded_result {n : Nat} {vectors : List (Int × Int)} :
+    let path := find_path n vectors
+    let final_pos := compute_final_position vectors path
+    n = vectors.length →
+    verify_path_length final_pos.1 final_pos.2 = true :=
+  sorry
+  
+  theorem single_vector_axis_bounded {n : Nat} :
+    n > 0 → n ≤ 50 →
+    let vectors := List.replicate n (1000000, 0)
+    let path := find_path n vectors
+    let final_pos := compute_final_position vectors path
+    verify_path_length final_pos.1 final_pos.2 = true :=
+  sorry
+
+vc-postamble: |-
+

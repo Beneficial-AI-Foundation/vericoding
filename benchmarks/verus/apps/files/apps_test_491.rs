@@ -27,9 +27,9 @@ spec fn max_balance_after_operation(n: int) -> int
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: int) -> (result: int)
-    requires valid_input(n)
-    ensures result == max_balance_after_operation(n)
+fn solve(n: i8) -> (result: i8)
+    requires valid_input(n as int)
+    ensures result as int == max_balance_after_operation(n as int)
 // </vc-spec>
 // <vc-code>
 {

@@ -37,9 +37,9 @@ spec fn can_make_non_decreasing(heights: Seq<int>) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: int, heights: Seq<int>) -> (result: String)
-    requires valid_input(n, heights)
-    ensures (result@ == seq!['Y', 'e', 's']) <==> can_make_non_decreasing(heights)
+fn solve(n: i8, heights: Vec<i8>) -> (result: String)
+    requires valid_input(n as int, heights@.map(|i: int, v: i8| v as int))
+    ensures (result@ == seq!['Y', 'e', 's']) <==> can_make_non_decreasing(heights@.map(|i: int, v: i8| v as int))
 // </vc-spec>
 // <vc-code>
 {

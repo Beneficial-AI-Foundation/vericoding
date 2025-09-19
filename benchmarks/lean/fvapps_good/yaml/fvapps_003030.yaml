@@ -1,0 +1,85 @@
+vc-description: |-
+  /-
+  # Base reduction
+
+  ## Input
+
+  A positive integer:
+  ```
+  0 < n < 1000000000
+  ```
+
+  ## Output
+
+  The end result of the base reduction.
+
+  If it cannot be fully reduced (reduced down to a single-digit number), return -1.
+
+  Assume that if 150 conversions from base 11 take place in a row, the number cannot be fully reduced.
+
+  ## Description
+
+  Base reduction is a process where a number is inputted, repeatedly converted into another base, and then outputted if it cannot be reduced anymore. If it cannot be fully reduced, return -1.
+
+  During the base conversions, the number is converted from the lowest base it can be converted from into base 10. For example, 123 would be converted from base 4 to base 10, since base 4 is the lowest base that 123 can be in (123 base 3 is impossible; in base 3, there is no digit 3).
+
+  If the lowest possible base the number can be converted into is 10, convert the number from base 11 to base 10. For example, 53109 would be converted from base 11 to base 10, since base 10 is the lowest base it can be in.
+
+  In the end, you should get a number that cannot be reduced by this process (a single digit number).
+
+  ## Example
+
+  Starting with 5312:
+  ```
+  5312 base 6 = 1196 base 10
+  1196 base 11 = 1557 base 10
+  1557 base 8 = 879 base 10
+  879 base 11 = 1054 base 10
+  1054 base 6 = 250 base 10
+  250 base 6 = 102 base 10
+  102 base 3 = 11 base 10
+  11 base 2 = 3 base 10
+  ```
+  The output would be 3.
+  -/
+
+vc-preamble: |
+
+vc-helpers: |
+
+vc-definitions: |-
+  def basereduct (n : Nat) : Int := sorry
+
+  theorem basereduct_properties {n : Nat} (h : n > 0) :
+    let result : Int := basereduct n
+    (result ≥ -1 ∧ result ≤ 9) ∧
+    (n < 10 → result = n) ∧
+    (result ≠ -1 → result ≥ 0 ∧ result ≤ 9)
+    := by sorry
+
+vc-theorems: |-
+  theorem basereduct_two_digits {n : Nat} (h1 : n ≥ 10) (h2 : n ≤ 100) :
+    basereduct n > -1 := by sorry
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded
+
+  /--
+  info: 2
+  -/
+  #guard_msgs in
+  #eval basereduct 10
+
+  /--
+  info: 3
+  -/
+  #guard_msgs in
+  #eval basereduct 15
+
+  /--
+  info: 3
+  -/
+  #guard_msgs in
+  #eval basereduct 5312
+

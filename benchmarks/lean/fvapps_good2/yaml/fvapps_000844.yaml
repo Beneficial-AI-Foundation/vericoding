@@ -1,0 +1,104 @@
+vc-description: |-
+  /-
+  "It does not matter how slowly you go as long as you do not stop." - Confucius
+  You are given an array $A_1, A_2, \ldots, A_N$ and an integer $K$. For each subarray $S = [A_l, A_{l+1}, \ldots, A_r]$ ($1 \le l \le r \le N$):
+  - Let's define an array $B$ as $S$ concatenated with itself $m$ times, where $m$ is the smallest integer such that $m(r-l+1) \ge K$.
+  - Next, let's sort $B$ and define $X = B_K$, i.e. as a $K$-th smallest element of $B$. Note that $|B| \ge K$.
+  - Then, let's define $F$ as the number of occurrences of $X$ in $S$.
+  - The subarray $S$ is beautiful if $F$ occurs in $S$ at least once.
+  Find the number of beautiful subarrays of $A$. Two subarrays $A_l, A_{l+1}, \ldots, A_r$ and $A_p, A_{p+1}, \ldots, A_q$ are different if $l \neq p$ or $r \neq q$.
+  
+  -----Input-----
+  - The first line of the input contains a single integer $T$ denoting the number of test cases. The description of $T$ test cases follows.
+  - The first line of each test case contains two space-separated integers $N$ and $K$. 
+  - The second line contains $N$ space-separated integers $A_1, A_2, \ldots, A_N$.
+  
+  -----Output-----
+  For each test case, print a single line containing one integer - the number of beautiful subarrays.
+  
+  -----Constraints-----
+  - $1 \le T \le 5$
+  - $1 \le N \le 2,000$
+  - $1 \le K \le 10^9$
+  - $1 \le A_i \le 2000$ for each valid $i$
+  
+  -----Subtasks-----
+  Subtask #1 (20 points): $1 \le N \le 200$
+  Subtask #2 (80 points): original constraints
+  
+  -----Example Input-----
+  1
+  3 3
+  1 2 3
+  
+  -----Example Output-----
+  3
+  
+  -----Explanation-----
+  Example case 1: There are six subarrays of $A$: $[1]$, $[2]$, $[3]$, $[1, 2]$, $[2, 3]$, $[1, 2, 3]$. The corresponding arrays $B$ are $[1, 1, 1]$, $[2, 2, 2]$, $[3, 3, 3]$, $[1, 2, 1, 2]$, $[2, 3, 2, 3]$, $[1, 2, 3]$.
+  Three of the subarrays are beautiful: $[1]$, $[1, 2]$ and $[1, 2, 3]$. For these subarrays, $X$ is $1$, $2$ and $3$ respectively (for example, for $S = [1, 2]$, $B = [1, 2, 1, 2]$ is sorted to $[1, 1, 2, 2]$ and $X = 2$ is the $3$-rd element). Then, $F = 1$ for each of these subarrays, and each of these subarrays contains $1$.
+  -/
+
+vc-preamble: |-
+
+vc-helpers: |-
+
+vc-definitions: |-
+  def count_beautiful_subarrays (n k : Nat) (arr : List Nat) : Nat :=
+    sorry
+  
+  def is_valid_array (arr : List Nat) (n : Nat) : Bool :=
+    sorry
+  
+  def list_sorted (arr : List Nat) : List Nat :=
+    sorry
+
+vc-theorems: |-
+  theorem array_bounds (n k : Nat) (arr : List Nat) :
+    1 ≤ n ∧ n ≤ 100 ∧
+    1 ≤ k ∧ k ≤ 100 ∧
+    arr.length = n ∧
+    (∀ x ∈ arr, 1 ≤ x ∧ x ≤ 2000) →
+    0 ≤ count_beautiful_subarrays n k arr :=
+  sorry
+  
+  theorem single_element_arrays (n k : Nat) :
+    1 ≤ n ∧ n ≤ 10 ∧
+    1 ≤ k ∧ k ≤ 10 →
+    n ≤ count_beautiful_subarrays n k (List.replicate n 1) :=
+  sorry
+  
+  theorem sorted_vs_unsorted (n k : Nat) (arr : List Nat) :
+    1 ≤ n ∧ n ≤ 10 ∧
+    1 ≤ k ∧ k ≤ 10 ∧
+    is_valid_array arr n →
+    count_beautiful_subarrays n k (list_sorted arr) = count_beautiful_subarrays n k arr :=
+  sorry
+  
+  theorem minimal_case (k : Nat) :
+    1 ≤ k ∧ k ≤ 10 →
+    count_beautiful_subarrays 1 k [1] = 1 :=
+  sorry
+
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded
+  
+  /--
+  info: 3
+  -/
+  #guard_msgs in
+  #eval count_beautiful_subarrays 3 3 [1, 2, 3]
+  
+  /--
+  info: 1
+  -/
+  #guard_msgs in
+  #eval count_beautiful_subarrays 1 1 [1]
+  
+  /--
+  info: 2
+  -/
+  #guard_msgs in
+  #eval count_beautiful_subarrays 2 2 [2, 1]
+

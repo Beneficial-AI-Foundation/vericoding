@@ -19,11 +19,11 @@ spec fn calculate_result_from_input(s: Seq<char>) -> Seq<char> {
 fn solve(s: Vec<char>) -> (result: Vec<char>)
     requires 
         s.len() > 0,
-        (exists|i: int| 0 <= i < s.len() && s[i] == '\n'),
+        (exists|i: int| 0 <= i < s.len() as int && s@[i] == '\n'),
         is_valid_input(s@),
     ensures 
         result.len() > 0,
-        result[result.len() as int - 1] == '\n'
+        result@[result.len() as int - 1] == '\n'
 // </vc-spec>
 // <vc-code>
 {

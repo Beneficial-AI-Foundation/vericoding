@@ -1,13 +1,13 @@
 vc-description: |-
   /-
   You are the Dungeon Master for a public DnD game at your local comic shop and recently you've had some trouble keeping your players' info neat and organized so you've decided to write a bit of code to help keep them sorted!
-  
+
   The goal of this code is to create an array of objects that stores a player's name and contact number from a given string.
-  
+
   The method should return an empty array if the argument passed is an empty string or `nil`/`None`/`null`.
-  
+
   ## Examples
-  
+
   ```ruby 
   player_manager("John Doe, 8167238327, Jane Doe, 8163723827") returns [{player: "John Doe", contact: 8167238327}, {player: "Jane Doe", contact: 8163723827}]
   player_manager(nil) returns []
@@ -23,13 +23,13 @@ vc-description: |-
   playerManager(null) returns []
   playerManager("")   returns []
   ```
-  
+
   Have at thee!
   -/
 
-vc-preamble: |-
+vc-preamble: |
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def player_manager (players : String) : List (String × Nat) :=
@@ -39,46 +39,46 @@ vc-theorems: |-
   theorem player_manager_returns_list (players: String) :
     ∀ l : List (String × Nat), player_manager players = l := by
     sorry
-  
+
   theorem player_manager_valid_structure (players: String) (result: List (String × Nat)) :
     result = player_manager players →
     ∀ item : String × Nat, item ∈ result →
     ∃ player: String, ∃ contact: Nat,
       item = (player, contact) := by
     sorry
-  
+
   theorem player_manager_result_count (players: String) :
     players ≠ "" →
     ∃ valid_pairs : List (String × Nat),
     List.length (player_manager players) = List.length valid_pairs := by
     sorry
-  
+
   theorem player_manager_empty_input :
     player_manager "" = [] ∧
     player_manager " " = [] ∧ 
     player_manager "\n" = [] ∧
     player_manager "\t" = [] := by
     sorry
-  
-  /-
-  info: expected1
-  -/
-  -- #guard_msgs in
-  -- #eval player_manager "John Doe, 8167238327, Jane Doe, 8163723827"
-  
-  /-
-  info: []
-  -/
-  -- #guard_msgs in
-  -- #eval player_manager ""
-  
-  /-
-  info: []
-  -/
-  -- #guard_msgs in
-  -- #eval player_manager None
 
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+
+  /-
+  info: expected1
+  -/
+  #guard_msgs in
+  #eval player_manager "John Doe, 8167238327, Jane Doe, 8163723827"
+
+  /-
+  info: []
+  -/
+  #guard_msgs in
+  #eval player_manager ""
+
+  /-
+  info: []
+  -/
+  #guard_msgs in
+  #eval player_manager None
 

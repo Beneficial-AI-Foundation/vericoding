@@ -22,9 +22,9 @@ spec fn expected_time(n: int, m: int) -> int {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: int, m: int) -> (result: int)
-    requires valid_input(n, m)
-    ensures result == expected_time(n, m)
+fn solve(n: i8, m: i8) -> (result: i8)
+    requires valid_input(n as int, m as int)
+    ensures result as int == expected_time(n as int, m as int)
 // </vc-spec>
 // <vc-code>
 {

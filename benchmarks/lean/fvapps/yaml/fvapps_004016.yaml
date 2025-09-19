@@ -1,27 +1,27 @@
 vc-description: |-
   /-
   You're a statistics professor and the deadline for submitting your students' grades is tonight at midnight. Each student's grade is determined by their mean score across all of the tests they took this semester.
-  
+
   You've decided to automate grade calculation by writing a function `calculate_grade()` that takes a list of test scores as an argument and returns a one character string representing the student's grade calculated as follows:
-  
+
    * 90% <= mean score <= 100%: `"A"`,
    * 80% <= mean score < 90%: `"B"`,
    * 70% <= mean score < 80%: `"C"`,
    * 60% <= mean score < 70%: `"D"`,
    * mean score < 60%: `"F"`
-  
+
   For example, `calculate_grade([92, 94, 99])` would return `"A"` since the mean score is `95`, and `calculate_grade([50, 60, 70, 80, 90])` would return `"C"` since the mean score is `70`.
-  
+
   Your function should handle an input list of any length greater than zero.
   -/
 
-vc-preamble: |-
+vc-preamble: |
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def LetterGrade := Char
-  
+
   def calculate_grade (scores : List Nat) : LetterGrade :=
     sorry
 
@@ -30,36 +30,36 @@ vc-theorems: |-
     let grade := calculate_grade scores
     grade = 'F' ∨ grade = 'D' ∨ grade = 'C' ∨ grade = 'B' ∨ grade = 'A' :=
   sorry
-  
+
   theorem all_high_scores_get_a (scores : List Nat) (h : scores ≠ []) :
     (∀ x ∈ scores, x = 95) →
     calculate_grade scores = 'A' :=
   sorry
-  
+
   theorem all_low_scores_get_f (scores : List Nat) (h : scores ≠ []) :
     (∀ x ∈ scores, x = 50) →
     calculate_grade scores = 'F' :=
   sorry
-  
-  /-
-  info: 'A'
-  -/
-  -- #guard_msgs in
-  -- #eval calculate_grade [92, 94, 99]
-  
-  /-
-  info: 'C'
-  -/
-  -- #guard_msgs in
-  -- #eval calculate_grade [50, 60, 70, 80, 90]
-  
-  /-
-  info: 'F'
-  -/
-  -- #guard_msgs in
-  -- #eval calculate_grade [50, 55]
 
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+
+  /-
+  info: 'A'
+  -/
+  #guard_msgs in
+  #eval calculate_grade [92, 94, 99]
+
+  /-
+  info: 'C'
+  -/
+  #guard_msgs in
+  #eval calculate_grade [50, 60, 70, 80, 90]
+
+  /-
+  info: 'F'
+  -/
+  #guard_msgs in
+  #eval calculate_grade [50, 55]
 

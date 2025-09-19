@@ -21,6 +21,15 @@ spec fn distance_to_house(n: int, a: int) -> int
 // </vc-helpers>
 
 // <vc-spec>
+fn min_distance(n: i8, a: i8) -> (result: i8)
+requires
+    valid_input(n as int, a as int)
+ensures
+    result as int == distance_to_house(n as int, a as int)
+{
+    assume(false);
+    unreached()
+}
 // </vc-spec>
 // <vc-code>
 /* placeholder implementation */

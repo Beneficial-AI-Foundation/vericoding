@@ -28,14 +28,14 @@ spec fn count_fs_flights(s: Seq<char>) -> int
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: usize, s: Seq<char>) -> (result: Seq<char>)
+fn solve(n: usize, s: Vec<char>) -> (result: Vec<char>)
     requires 
         n >= 2,
-        s.len() == n,
-        forall|i: int| 0 <= i < s.len() ==> s[i] == 'S' || s[i] == 'F',
+        s@.len() == n,
+        forall|i: int| 0 <= i < s@.len() ==> s@[i] == 'S' || s@[i] == 'F',
     ensures 
-        result == seq!['Y', 'E', 'S'] || result == seq!['N', 'O'],
-        (result == seq!['Y', 'E', 'S']) <==> count_sf_flights(s) > count_fs_flights(s),
+        result@ == seq!['Y', 'E', 'S'] || result@ == seq!['N', 'O'],
+        (result@ == seq!['Y', 'E', 'S']) <==> count_sf_flights(s@) > count_fs_flights(s@),
 // </vc-spec>
 // <vc-code>
 {

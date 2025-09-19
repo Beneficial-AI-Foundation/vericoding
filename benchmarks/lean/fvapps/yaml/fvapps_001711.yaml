@@ -1,47 +1,47 @@
 vc-description: |-
   /-
   ## Description
-  
+
   Beggar Thy Neighbour is a card game taught to me by my parents when I was a small child, and is a game I like to play with my young kids today.
-  
+
   In this kata you will be given two player hands to be played.  And must return the index of the player who will win.
-  
+
   ## Rules of the game
-  
+
   - Special cards are: Jacks, Queens, Kings and Aces
   - The object of the game is to win all the cards.
   - Any player that cannot play a card is out of the game.
-  
+
   To start:
-  
+
   - The 52 cards in a standard deck are shuffled.
   - The cards are dealt equally between all players.
-  
+
   To play:
-  
+
   - The first player turns over and plays the top card from their hand into a common pile.
   - If the card is not special - then the second player plays their next card onto the pile, and play continues back to the first player.
   - If the card is a Jack, Queen, King or Ace, the other player must play 1, 2, 3 or 4 penalty cards respectively.
   - If no special cards are played during a penalty, then the player that played the special card, takes the common pile.
   - If a special card is played during a penalty, then the penalty moves back to the previous player immediately with the size of the new penalty defined by the new special card.  It is possible for this process to repeat several times in one play.  Whoever played the last special card, wins the common pile.
   - The winner of the common pile, places it on the bottom of their hand, and then starts the next common pile.
-  
+
   It is theorised that an initial deal may never end, though so far all of my games have ended!  For that reason, if 10,000 cards are played and no one has won, return `None`.
-  
+
   ## Card Encoding
-  
+
   Cards are represented with a two character code.  The first characater will be one of A23456789TJQK representing Ace, 2 though 9, Ten, Jack, Queen, King respectively.  The second character is the suit, 'S', 'H', 'C', or 'D' representing Spades, Hearts, Clubs and Diamonds respectively.  
-  
+
   For example a hand of `["TD", "AC", "5H"]` would represent 10 of Diamonds, Ace of Clubs, and 5 of hearts.
-  
+
   ## Mini Example Game
-  
+
   Given the following hands:
-  
+
   `Player 1: [9C, JC, 2H, QC], Player 2: [TD, JH, 6H, 9S]`
-  
+
   Play would flow as follows:
-  
+
   ```
   Start   - P1: [9C, JC, 2H, QC],   P2: [TD, JH, 6H, 9S],           Common: []
   Turn  1 - P1: [JC, 2H, QC],       P2: [TD, JH, 6H, 9S],           Common: [9C]
@@ -69,10 +69,10 @@ vc-description: |-
   Player 1 wins the common pool and starts the next game
   ```
   Turn 10 - P1: [QC, 9S, 9C],       P2: [TD, JC, JH, 2H],           Common: [6H]
-  
+
   ```
   And so on... with player 2 eventually winning.
-  
+
   Good luck!
   -/
 
@@ -80,11 +80,11 @@ vc-preamble: |-
   def Suit := Char
   def Card := String
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def Hand := List Card
-  
+
   def who_wins_beggar_thy_neighbour (hands : List Hand) (special_cards : String := "JQKA") : Option Nat :=
     sorry
 
@@ -97,7 +97,7 @@ vc-theorems: |-
     | none => True
     | some n => n ≥ 0 ∧ n < hands.length
     := by sorry
-  
+
   theorem winner_validity 
     (hands : List Hand)
     (special_cards : String)
@@ -109,7 +109,7 @@ vc-theorems: |-
     | none => True
     | some n => n < hands.length
     := by sorry
-  
+
   theorem custom_special_cards
     (hands : List Hand)
     (special_cards : String)
@@ -122,20 +122,20 @@ vc-theorems: |-
     | none => True
     | some n => n ≥ 0 ∧ n < hands.length
     := by sorry
-  
-  /-
-  info: 1
-  -/
-  -- #guard_msgs in
-  -- #eval who_wins_beggar_thy_neighbour ["9C", "JC", "2H", "QC"] ["TD", "JH", "6H", "9S"]
-  
-  /-
-  info: 1
-  -/
-  -- #guard_msgs in
-  -- #eval who_wins_beggar_thy_neighbour ["KC", "2H"] ["AC", "3H"]
 
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
+
+  /-
+  info: 1
+  -/
+  #guard_msgs in
+  #eval who_wins_beggar_thy_neighbour ["9C", "JC", "2H", "QC"] ["TD", "JH", "6H", "9S"]
+
+  /-
+  info: 1
+  -/
+  #guard_msgs in
+  #eval who_wins_beggar_thy_neighbour ["KC", "2H"] ["AC", "3H"]
 

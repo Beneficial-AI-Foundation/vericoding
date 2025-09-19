@@ -4,47 +4,47 @@ vc-description: |-
   Salmon has to make $K$ deliveries, with the $i$-th delivery starting at $(x_i, y_i)$ and ending at $(x'_i, y'_i)$. He can also travel every road with speed $0.5$ (meaning it would take him $2$ units of time to travel $1$ unit of distance). However, Salmon can bribe the mayor of Fish City and make the mayor change exactly one horizontal road to a highway, meaning the speed on that road would increase to $1$.
   He wants to choose a road to be a highway such that the sum of durations of all the deliveries is minimum possible. Help him find this minimum sum!
   Note that each delivery starts exactly at $(x_i, y_i)$ and ends at $(x'_i, y'_i)$, i.e., we don't count the time taken to travel from $(x'_{i-1}, y'_{i-1})$ to $(x_i, y_i)$ in our answer.
-  
+
   -----Input:-----
   The first line contains 3 integers, $N$, $M$ and $K$ ($1 \le N, M, K \le 10^5$).
   The next $K$ lines describe deliveries. Each line contains 4 space-separated integers $x_i$, $y_i$, $x'_i$, $y'_i$ ($1 \le x_i, x'_i \le N$, $1 \le y_i, y'_i \le M$), describing the $i$-th delivery.
-  
+
   -----Output:-----
   Print one integer -- the minimum sum of durations possible.
-  
+
   -----Subtasks-----
   - Subtask 1 [17 points]: $y_i = y_{i-1}$ for all $i>0$. 
   - Subtask 2 [34 points]: $K \le 10$.
   - Subtask 3 [49 points]: No additional constraints.
-  
+
   -----Sample Input 1:-----
   5 4 3
   2 3 4 1
   1 4 5 2
   3 3 5 3
-  
+
   -----Sample Output 1:-----
   16
-  
+
   -----Explanation:-----
-  
+
   Salmon can turn the 3rd horizontal road into a highway.
   - For the first delivery, we can go 2 units to the right taking 2 units of time, and 2 units down taking 4 units of time. The time taken is $2 + 4 = 6$.
   - For the second delivery, we can go 1 unit down taking 2 units of time, 4 units right taking 4 units of time, and 1 unit down taking 2 units of time. The time taken is $2 + 4 + 2 = 8$.
   - For the third delivery, we can go 2 units right taking 2 units of time.
   Therefore, the total time taken is $6 + 8 + 2 = 16$.
-  
+
   -----Sample Input 2:-----
   10 2 3
   1 2 10 2
   2 1 9 1
   4 1 7 1
-  
+
   -----Sample Output 2:-----
   23
-  
+
   -----Explanation:-----
-  
+
   Salmon can turn the 1st horizontal road into a highway.
   - For the first delivery, we can go 1 unit down taking 2 units of time, 9 units right taking 9 units of time, and 1 unit up taking 2 units of time. The time taken is $2 + 9 + 2 = 13$.
   - For the second delivery, we can go 7 units right taking 7 units of time.
@@ -55,14 +55,14 @@ vc-description: |-
 vc-preamble: |-
   def abs (n : Nat) : Nat :=
   sorry
-  
+
   def fst_minus (a b : Nat) : Nat :=
     if a ≥ b then a - b else b - a
-  
+
   def list_sum (l : List Nat) : Nat :=
   sorry
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def min_delivery_time (n m k : Nat) (deliveries : List (Nat × Nat × Nat × Nat)) : Nat :=
@@ -72,33 +72,33 @@ vc-theorems: |-
   theorem min_delivery_time_non_negative (n m k : Nat) (deliveries : List (Nat × Nat × Nat × Nat)) :
     min_delivery_time n m k deliveries ≥ 0 := 
   sorry
-  
+
   theorem min_delivery_time_same_point (n : Nat) :
     let m := n
     let deliveries := [(1,1,1,1)]
     min_delivery_time n m 1 deliveries = 0 :=
   sorry
-  
+
   theorem min_delivery_time_bounded (n m k : Nat) (deliveries : List (Nat × Nat × Nat × Nat)) :
     min_delivery_time n m k deliveries ≤ 
       list_sum (deliveries.map (fun (d: Nat × Nat × Nat × Nat) => 
         let (x1, y1, x2, y2) := d
         2 * (fst_minus x1 x2 + fst_minus y1 y2))) :=
   sorry
-  
-  /-
-  info: 16
-  -/
-  -- #guard_msgs in
-  -- #eval min_delivery_time 5 4 3 [[2, 3, 4, 1], [1, 4, 5, 2], [3, 3, 5, 3]]
-  
-  /-
-  info: 23
-  -/
-  -- #guard_msgs in
-  -- #eval min_delivery_time 10 2 3 [[1, 2, 10, 2], [2, 1, 9, 1], [4, 1, 7, 1]]
 
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded
+
+  /-
+  info: 16
+  -/
+  #guard_msgs in
+  #eval min_delivery_time 5 4 3 [[2, 3, 4, 1], [1, 4, 5, 2], [3, 3, 5, 3]]
+
+  /-
+  info: 23
+  -/
+  #guard_msgs in
+  #eval min_delivery_time 10 2 3 [[1, 2, 10, 2], [2, 1, 9, 1], [4, 1, 7, 1]]
 

@@ -37,11 +37,11 @@ spec fn count_pythagorean_triples_via_primitives(n: int) -> int {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(stdin_input: Seq<char>) -> (result: Seq<char>)
-    requires valid_input(stdin_input)
+fn solve(stdin_input: Vec<char>) -> (result: Vec<char>)
+    requires valid_input(stdin_input@)
     ensures 
-        result.len() > 0,
-        result == int_to_string(count_pythagorean_triples_via_primitives(extract_integer(stdin_input)))
+        result@.len() > 0,
+        result@ == int_to_string(count_pythagorean_triples_via_primitives(extract_integer(stdin_input@)))
 // </vc-spec>
 // <vc-code>
 {

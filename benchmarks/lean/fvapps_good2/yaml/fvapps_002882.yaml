@@ -1,0 +1,65 @@
+vc-description: |-
+  /-
+  Your task is very simple. Just write a function `isAlphabetic(s)`, which takes an input string `s` in lowercase and returns `true`/`false` depending on whether the string is in alphabetical order or not.
+  
+  For example, `isAlphabetic('kata')` is False as 'a' comes after 'k', but `isAlphabetic('ant')` is True.
+  
+  Good luck :)
+  -/
+
+vc-preamble: |-
+  def isSorted (cs : List Char) : Prop :=
+    ∀ i j, i < j → j < cs.length → cs[i]! ≤ cs[j]!
+
+vc-helpers: |-
+
+vc-definitions: |-
+  def alphabetic (s : String) : Bool :=
+  sorry
+
+vc-theorems: |-
+  theorem empty_string_alphabetic :
+    alphabetic "" = true :=
+  sorry
+  
+  theorem single_char_alphabetic (c : Char) :
+    alphabetic (String.singleton c) = true :=
+  sorry
+  
+  theorem alphabetic_iff_sorted (s : String) :
+    alphabetic s = true ↔ isSorted s.data :=
+  sorry
+  
+  theorem alphabetic_monotonic (s : String) :
+    alphabetic s = true →
+    ∀ i : Nat, i + 1 < s.length →
+    s.data[i]! ≤ s.data[i+1]! :=
+  sorry
+  
+  theorem concat_nonalpha_equiv_sorted (ss : List String) (h : ss ≠ []) :
+    (∀ s ∈ ss, alphabetic s = false) →
+    alphabetic (String.join ss) = true ↔ isSorted (String.join ss).data :=
+  sorry
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded
+  
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval alphabetic "door"
+  
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval alphabetic "cell"
+  
+  /--
+  info: False
+  -/
+  #guard_msgs in
+  #eval alphabetic "kata"
+

@@ -1,0 +1,31 @@
+vc-description: |-
+  The mathematical constant 2/π, approximately 0.6366...
+  
+  Specification: NPY_2_PI represents the ratio 2/π and satisfies key mathematical properties
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn npy_2_pi() -> (result: i32)
+      ensures
+          result == 636619772,
+          result > 636000000,
+          result < 637000000,
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      0
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {}

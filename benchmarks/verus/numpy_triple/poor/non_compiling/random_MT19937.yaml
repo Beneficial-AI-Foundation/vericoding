@@ -1,0 +1,79 @@
+vc-description: |-
+  MT19937 BitGenerator for the Mersenne Twister pseudo-random number generator
+  
+  MT19937 provides a capsule containing function pointers that produce doubles, 
+  and unsigned 32 and 64-bit integers. This implementation focuses on the core
+  state initialization and next value generation.
+  
+  The Mersenne Twister is a pseudorandom number generator that maintains an
+  internal state and produces a sequence of 32-bit integers with a period of 2^19937 - 1.
+  
+  Parameters:
+  - seed : u32 optional seed value to initialize the generator
+  
+  The generator produces uniformly distributed values in [0, 2^32 - 1]
+  
+  Specification: MT19937 initializes the generator state with proper seeding
+  
+  The MT19937 generator maintains a state vector of 624 32-bit integers.
+  When initialized with a seed, it produces a deterministic sequence.
+  
+  Precondition: None (any seed value is valid)
+  Postcondition: 
+  1. The state vector has exactly 624 elements
+  2. The state is deterministically initialized based on the seed
+  3. The first element of the state equals the seed
+  4. The generator produces deterministic values based on the seed
+  5. All state values are 32-bit unsigned integers
+  
+  /* The state vector has the correct size (624 elements) */
+  
+  /* The first element equals the seed */
+  
+  /* All elements are valid 32-bit values (guaranteed by type) */
+  
+  /* State initialization follows MT19937 recurrence relation */
+  
+  /* Deterministic: same seed produces same initial state */
+
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn mt19937(seed: u32) -> (state: Vec<u32>)
+      ensures 
+  
+          state.len() == 624,
+  
+          state[0] == seed,
+  
+          true,
+  
+          forall|i: int| 0 <= i < 623 ==> {
+              let k = i + 1;
+              let prev_state = state[i];
+              let shifted = prev_state >> 30;
+              let xor_result = prev_state ^ shifted;
+              let mult_result = 1812433253u32 * xor_result;
+              let next_val = mult_result + (k as u32);
+              state[k] == next_val
+          },
+  
+          forall|seed2: u32, state2: Vec<u32>| 
+              seed == seed2 && state2.len() == 624 && state2[0] == seed2 ==>
+              forall|j: int| 0 <= j < 624 ==> state[j] == state2[j]
+
+vc-code: |-
+  {
+      assume(false);
+      unreached()
+  }
+
+vc-postamble: |-
+  }
+  fn main() {}
+

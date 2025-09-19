@@ -23,14 +23,14 @@ spec fn is_local_extremum(a: Seq<int>, i: int) -> bool
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: int, a: Seq<int>) -> (result: int)
+fn solve(n: i8, a: Vec<i8>) -> (result: i8)
     requires 
-        valid_input(n, a)
+        valid_input(n as int, a@.map_values(|x: i8| x as int))
     ensures 
         result >= 0,
         n <= 2 ==> result == 0,
         n > 2 ==> result <= n - 2,
-        result == count_local_extrema(n, a)
+        result as int == count_local_extrema(n as int, a@.map_values(|x: i8| x as int))
 // </vc-spec>
 // <vc-code>
 {

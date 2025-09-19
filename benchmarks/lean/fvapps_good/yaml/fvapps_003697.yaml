@@ -1,0 +1,43 @@
+vc-description: |-
+  /-
+  Create a function named `divisors`/`Divisors` that takes an integer `n > 1` and returns an array with all of the integer's divisors(except for 1 and the number itself), from smallest to largest. If the number is prime return the string '(integer) is prime' (`null` in C#) (use `Either String a` in Haskell and `Result, String>` in Rust).
+  
+  #### Example:
+  
+  ```python
+  divisors(12); #should return [2,3,4,6]
+  divisors(25); #should return [5]
+  divisors(13); #should return "13 is prime"
+  ```
+  -/
+
+vc-preamble: |-
+
+vc-helpers: |-
+
+vc-definitions: |-
+  def sqrt (n : Nat) : Nat := sorry
+  
+  def divisors (n : Nat) : Option (List Nat) := sorry
+
+vc-theorems: |-
+  theorem divisors_properties (n : Nat) (h : n ≥ 2) :
+    match (divisors n) with
+    | some lst => 
+      -- Each divisor divides n
+      (∀ d ∈ lst, n % d = 0) ∧
+      -- Divisors are ordered
+      (∀ i < lst.length - 1, lst.get ⟨i, sorry⟩ ≤ lst.get ⟨i+1, sorry⟩) ∧
+      -- Divisors are proper (less than n)
+      (∀ d ∈ lst, d < n) ∧
+      -- Divisors are greater than 1
+      (∀ d ∈ lst, d > 1)
+    | none =>
+      -- n is prime 
+      ∀ i : Nat, 2 ≤ i → i ≤ sqrt n → n % i ≠ 0
+    := sorry
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded
+

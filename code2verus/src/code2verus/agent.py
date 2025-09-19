@@ -17,10 +17,12 @@ import logfire
 import yaml
 from dataclasses import dataclass
 from typing import Optional, Any
+from pathlib import Path
 
 from code2verus.config import (
     get_error_template,
     load_translation_config,
+    load_config,
 )
 from code2verus.tools import verus_tool, dafny_tool, lean_tool
 from code2verus.utils import extract_rust_code, concatenate_yaml_fields
@@ -169,6 +171,7 @@ async def translate_code_to_verus(
     target_language: str = "verus",
     is_yaml: bool = False,
     max_iterations: int | None = None,
+    fix_types: bool = False,
 ) -> TranslationResult:
     """Translate source code to target language using the agent with verification feedback
 
@@ -178,9 +181,15 @@ async def translate_code_to_verus(
     # Use config value if max_iterations not provided
     if max_iterations is None:
         # Load translation-specific config to get the correct max_iterations
-        translation_cfg = load_translation_config(
-            source_language.lower(), target_language.lower()
-        )
+        if fix_types:
+            # Use the type fix configuration instead
+            translation_cfg = load_config(
+                Path(__file__).parent.parent.parent / "config" / "verus-type-fix.yml"
+            )
+        else:
+            translation_cfg = load_translation_config(
+                source_language.lower(), target_language.lower()
+            )
         cfg_section = translation_cfg.get("config", {})
         max_iterations = cfg_section.get(
             "max_translation_iterations", 3
@@ -219,18 +228,31 @@ async def translate_code_to_verus(
     )
 
     # Load translation-specific configuration for this context
-    translation_cfg = load_translation_config(
-        source_language.lower(), target_language.lower()
-    )
+    if fix_types:
+        # Use the type fix configuration instead
+        translation_cfg = load_config(
+            Path(__file__).parent.parent.parent / "config" / "verus-type-fix.yml"
+        )
+    else:
+        translation_cfg = load_translation_config(
+            source_language.lower(), target_language.lower()
+        )
 
     # Get language-specific prompts from translation config
     system_prompts = translation_cfg.get("system_prompts", {})
     yaml_instructions = translation_cfg.get("yaml_instructions", {})
     default_prompts = translation_cfg.get("default_prompts", {})
 
-    system_prompt = system_prompts.get(source_language.lower(), "")
-    yaml_instruction = yaml_instructions.get(source_language.lower(), "")
-    default_prompt = default_prompts.get(source_language.lower(), "")
+    if fix_types:
+        # Use the specialized type fix prompts
+        system_prompt = system_prompts.get("verus_type_fix", "")
+        yaml_instruction = yaml_instructions.get("verus_type_fix", "")
+        # Use a default prompt that's more generic for type fixing
+        default_prompt = default_prompts.get("verus_type_fix", "")
+    else:
+        system_prompt = system_prompts.get(source_language.lower(), "")
+        yaml_instruction = yaml_instructions.get(source_language.lower(), "")
+        default_prompt = default_prompts.get(source_language.lower(), "")
 
     if is_yaml:
         logfire.info(

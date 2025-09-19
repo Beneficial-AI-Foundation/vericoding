@@ -39,7 +39,7 @@ vc-spec: |-
           n > 0,
       ensures
           result.len() == n,
-          forall|i: int| 0 <= i < n ==> result[i] == matrix[i * n + i],
+          forall|i: int| 0 <= i < n as int ==> result@[i] == matrix@[i * n as int + i],
 
 vc-code: |-
   {
@@ -50,4 +50,3 @@ vc-code: |-
 vc-postamble: |-
   }
   fn main() {}
-

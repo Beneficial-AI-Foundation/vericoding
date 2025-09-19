@@ -3,32 +3,32 @@ vc-description: |-
   Chef just got a box of chocolates as his birthday gift. The box contains $N$ chocolates in a row (numbered $1$ through $N$), where $N$ is even. For each valid $i$, the $i$-th chocolate has a sweetness value $W_i$.
   Chef wants to eat all the chocolates in the first half of the box and leave all chocolates in the second half uneaten. Since he does not like chocolates that are too sweet, he will be unhappy if at least one of the chocolates he eats has the maximum sweetness among all the chocolates in the box.
   A right cyclic shift by $k$ chocolates ($0 \le k < N$) consists of moving the last $k$ chocolates in the row to the beginning in the same order and moving each of the remaining $N-k$ chocolates $k$ places to the right. Before eating the first half of the chocolates, Chef wants to perform some right cyclic shift in such a way that he will not be unhappy after eating them. Find the number of ways to do this, i.e. the number of valid integers $k$ such that if Chef performs the right cyclic shift by $k$ chocolates and then eats the first half of the chocolates in the box, he does not become unhappy.
-  
+
   -----Input-----
   - The first line of the input contains a single integer $T$ denoting the number of test cases. The description of $T$ test cases follows.
   - The first line of each test case contains a single integer $N$.
   - The second line contains $N$ space-separated integers $W_1, W_2, \ldots, W_N$.
-  
+
   -----Output-----
   For each test case, print a single line containing one integer ― the number of shifts for which Chef does not become unhappy.
-  
+
   -----Constraints-----
   - $1 \le T \le 5$
   - $1 \le N \le 10^5$
   - $N$ is even
   - $1 \le W_i \le 10^5$ for each valid $i$
-  
+
   -----Example Input-----
   2
   6
   1 1 2 1 1 1
   6
   1 1 2 1 1 2
-  
+
   -----Example Output-----
   3
   0
-  
+
   -----Explanation-----
   Example case 1: The three valid right shifts and the contents of the box for these shifts are:
   - shift by $k = 1$: $(1, 1, 1, 2, 1, 1)$
@@ -40,7 +40,7 @@ vc-preamble: |-
   def count_valid_shifts (n : Nat) (nums : List Nat) : Nat :=
   sorry
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def verify_shift (arr : List Nat) (shift_pos : Nat) : Bool :=
@@ -51,31 +51,31 @@ vc-theorems: |-
     (h1 : 2 ≤ n) (h2 : n ≤ 20) (h3 : nums.length = n) :
     0 ≤ count_valid_shifts n nums ∧ count_valid_shifts n nums ≤ n :=
   sorry
-  
+
   theorem all_same_gives_zero (n : Nat)
     (h1 : 2 ≤ n) (h2 : n ≤ 20) :
     count_valid_shifts n (List.replicate n 1) = 0 :=
   sorry
-  
-  /-
-  info: 3
-  -/
-  -- #guard_msgs in
-  -- #eval count_valid_shifts 6 [1, 1, 2, 1, 1, 1]
-  
-  /-
-  info: 0
-  -/
-  -- #guard_msgs in
-  -- #eval count_valid_shifts 6 [1, 1, 2, 1, 1, 2]
-  
-  /-
-  info: 2
-  -/
-  -- #guard_msgs in
-  -- #eval count_valid_shifts 4 [1, 2, 1, 1]
 
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
+
+  /-
+  info: 3
+  -/
+  #guard_msgs in
+  #eval count_valid_shifts 6 [1, 1, 2, 1, 1, 1]
+
+  /-
+  info: 0
+  -/
+  #guard_msgs in
+  #eval count_valid_shifts 6 [1, 1, 2, 1, 1, 2]
+
+  /-
+  info: 2
+  -/
+  #guard_msgs in
+  #eval count_valid_shifts 4 [1, 2, 1, 1]
 

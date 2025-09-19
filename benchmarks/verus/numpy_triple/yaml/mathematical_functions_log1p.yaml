@@ -1,0 +1,51 @@
+vc-description: |-
+  numpy.log1p: Return the natural logarithm of one plus the input array, element-wise.
+
+  Calculates log(1 + x). This function provides greater precision than log(1 + x) 
+  for small values of x near zero, where the naive computation would suffer from 
+  floating-point precision loss.
+
+  Returns an array of the same shape as x, containing log(1 + x) for each element.
+
+  Note: The domain is x > -1 (since log(1 + x) requires 1 + x > 0).
+  For x = -1, the result is -∞ (negative infinity).
+  For x < -1, the result is NaN (not a number).
+
+  Specification: log1p returns a vector where each element is the natural
+  logarithm of one plus the corresponding element in x.
+
+  Precondition: All elements must be greater than -1 (x[i] > -1)
+  Postcondition: For all indices i, result[i] = log(1 + x[i])
+
+  Mathematical properties:
+  - log1p(0) = log(1) = 0
+  - log1p(e - 1) = 1
+  - log1p provides better precision than log(1 + x) for small x
+  - log1p is strictly increasing on (-1, ∞)
+  - log1p(x) = log(1 + x) for all valid x
+  - For small x, log1p(x) ≈ x - x²/2 + x³/3 - ...
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+vc-helpers: |-
+
+vc-spec: |-
+  fn log1p(x: Vec<i8>) -> (result: Vec<i8>)
+      requires 
+          x.len() > 0,
+          forall|i: int| 0 <= i < x.len() ==> x[i] as int > -1,
+      ensures 
+          result.len() == x.len(),
+          forall|i: int| 0 <= i < x.len() && x[i] as int == 0 ==> result[i] as int == 0,
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      unreached()
+      // impl-end
+  }
+vc-postamble: |-
+
+  }
+  fn main() {}

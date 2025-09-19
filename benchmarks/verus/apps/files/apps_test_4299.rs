@@ -34,9 +34,9 @@ spec fn correct_pronunciation(n: int) -> Seq<char> {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: int) -> (result: Seq<char>)
-    requires valid_input(n)
-    ensures result == correct_pronunciation(n)
+fn solve(n: i8) -> (result: Vec<char>)
+    requires valid_input(n as int)
+    ensures result@ == correct_pronunciation(n as int)
 // </vc-spec>
 // <vc-code>
 {

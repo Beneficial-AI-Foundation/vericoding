@@ -1,0 +1,66 @@
+vc-description: |-
+  /-
+  [BasE91](http://base91.sourceforge.net/) is a method for encoding binary as ASCII characters. It is more efficient than Base64 and needs 91 characters to represent the encoded data.
+
+  The following ASCII charakters are used:
+
+      'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
+      '!#$%&()*+,./:;<=>?@[]^_`{|}~"'
+
+  Create two functions that encode strings to basE91 string and decodes the other way round. 
+
+      b91encode('test') = 'fPNKd'
+      b91decode('fPNKd') = 'test'
+
+      b91decode('>OwJh>Io0Tv!8PE') = 'Hello World!'
+      b91encode('Hello World!') = '>OwJh>Io0Tv!8PE'
+
+  Input strings are valid.
+  -/
+
+vc-preamble: |
+
+vc-helpers: |
+
+vc-definitions: |-
+  def b91encode (s : String) : String := sorry
+  def b91decode (s : String) : String := sorry
+
+vc-theorems: |-
+  theorem b91_encode_decode_test_case : 
+    b91decode (b91encode "test") = "test" := sorry
+
+  theorem b91_encode_decode_hello_world : 
+    b91decode (b91encode "Hello World!") = "Hello World!" := sorry
+
+  theorem b91_encode_decode_inverse (s : String) :
+    b91decode (b91encode s) = s := sorry
+
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded
+
+  /--
+  info: 'test'
+  -/
+  #guard_msgs in
+  #eval b91decode "fPNKd"
+
+  /--
+  info: 'Hello World!'
+  -/
+  #guard_msgs in
+  #eval b91decode ">OwJh>Io0Tv!8PE"
+
+  /--
+  info: 'fPNKd'
+  -/
+  #guard_msgs in
+  #eval b91encode "test"
+
+  /--
+  info: '>OwJh>Io0Tv!8PE'
+  -/
+  #guard_msgs in
+  #eval b91encode "Hello World!"
+

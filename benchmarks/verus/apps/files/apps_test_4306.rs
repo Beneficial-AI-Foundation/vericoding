@@ -23,12 +23,12 @@ spec fn interval_overlap_length(a: int, b: int, c: int, d: int) -> int {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(a: int, b: int, c: int, d: int) -> (result: int)
+fn solve(a: i8, b: i8, c: i8, d: i8) -> (result: i8)
     requires
-        valid_input(a, b, c, d),
+        valid_input(a as int, b as int, c as int, d as int),
     ensures
         result >= 0,
-        result == interval_overlap_length(a, b, c, d),
+        result as int == interval_overlap_length(a as int, b as int, c as int, d as int),
         result <= 100,
 // </vc-spec>
 // <vc-code>

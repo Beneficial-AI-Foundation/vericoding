@@ -1,0 +1,61 @@
+vc-description: |-
+  numpy.cumprod: Return the cumulative product of elements along a given axis.
+
+  For a vector [a₁, a₂, a₃, ..., aₙ], returns [a₁, a₁*a₂, a₁*a₂*a₃, ..., a₁*a₂*...*aₙ].
+
+  This function computes the cumulative product by applying successive multiplications
+  from left to right, producing a result vector of the same length as the input.
+
+  The cumulative product is computed as: result[i] = ∏(k=0 to i) input[k]
+
+  For empty vectors, returns an empty vector.
+
+  Specification: cumprod returns the cumulative product of elements.
+
+  Precondition: True (works for any vector, including empty)
+  Postcondition: 
+  - Result has same length as input
+  - For any index i, result[i] = product of all elements from a[0] to a[i] inclusive
+  - Equivalently: result[i] = a[0] * a[1] * ... * a[i]
+  - For empty vectors, returns empty vector (vacuous condition holds)
+
+  Mathematical Properties:
+  - result[0] = a[0] (when n > 0)
+  - result[i+1] = result[i] * a[i+1] (cumulative property)
+  - Each element is the product of all preceding elements (including itself)
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+vc-helpers: |-
+
+vc-spec: |-
+  spec fn product_prefix(a: Seq<int>, end: int) -> int
+      decreases end
+  {
+      if end <= 0 {
+          1
+      } else if end == 1 {
+          a[0]
+      } else {
+          product_prefix(a, end - 1) * a[end - 1]
+      }
+  }
+
+  fn cumprod(a: Vec<i8>) -> (result: Vec<i8>)
+      ensures
+          result.len() == a.len(),
+          forall|i: int| 0 <= i < a.len() ==> result[i] as int == product_prefix(a@.map(|_index, x: i8| x as int), i + 1),
+          forall|i: int, j: int| 0 <= i < a.len() && j == i + 1 && j < a.len() ==> 
+              result[j] as int == (result[i] as int) * (a[j] as int)
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      unreached()
+      // impl-end
+  }
+vc-postamble: |-
+
+  }
+  fn main() {}

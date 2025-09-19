@@ -48,9 +48,9 @@ vc-preamble: |-
 vc-helpers: |
 
 vc-spec: |-
-  fn solve(a1: int, a2: int, k1: int, k2: int, n: int) -> (ret: (int, int))
-      requires valid_input(a1, a2, k1, k2, n)
-      ensures valid_result(a1, a2, k1, k2, n, ret.0, ret.1)
+  fn solve(a1: i8, a2: i8, k1: i8, k2: i8, n: i8) -> (ret: (i8, i8))
+      requires valid_input(a1 as int, a2 as int, k1 as int, k2 as int, n as int)
+      ensures valid_result(a1 as int, a2 as int, k1 as int, k2 as int, n as int, ret.0 as int, ret.1 as int)
 
 vc-code: |-
   {

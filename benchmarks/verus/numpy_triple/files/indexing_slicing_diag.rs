@@ -14,7 +14,7 @@ fn diag(matrix: Vec<f32>, n: usize) -> (result: Vec<f32>)
         n > 0,
     ensures
         result.len() == n,
-        forall|i: int| 0 <= i < n ==> result[i] == matrix[i * n + i],
+        forall|i: int| 0 <= i < n as int ==> result@[i] == matrix@[i * n as int + i],
 // </vc-spec>
 // <vc-code>
 {

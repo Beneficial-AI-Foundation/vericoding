@@ -1,20 +1,20 @@
 vc-description: |-
   /-
   An ordered sequence of numbers from 1 to N is given. One number might have deleted from it, then the remaining numbers were mixed. Find the number that was deleted.
-  
+
   Example: 
    - The starting array sequence is `[1,2,3,4,5,6,7,8,9]`
    - The mixed array with one deleted number is `[3,2,4,6,7,8,1,9]`
    - Your function should return the int `5`.
-  
+
   If no number was deleted from the array and no difference with it, your function should return the int `0`.
-  
+
   Note that N may be 1 or less (in the latter case, the first array will be `[]`).
   -/
 
-vc-preamble: |-
+vc-preamble: |
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def find_deleted_number (arr : List Int) (mixed : List Int) : Int :=
@@ -24,26 +24,26 @@ vc-theorems: |-
   theorem empty_arrays : 
     find_deleted_number [] [] = 0 :=
   sorry
-  
-  /-
-  info: 6
-  -/
-  -- #guard_msgs in
-  -- #eval find_deleted_number [1, 2, 3, 4, 5, 6, 7, 8, 9] [5, 7, 9, 4, 8, 1, 2, 3]
-  
-  /-
-  info: 0
-  -/
-  -- #guard_msgs in
-  -- #eval find_deleted_number [1, 2, 3, 4, 5, 6, 7] [2, 3, 6, 1, 5, 4, 7]
-  
-  /-
-  info: 1
-  -/
-  -- #guard_msgs in
-  -- #eval find_deleted_number [1] []
 
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
+
+  /-
+  info: 6
+  -/
+  #guard_msgs in
+  #eval find_deleted_number [1, 2, 3, 4, 5, 6, 7, 8, 9] [5, 7, 9, 4, 8, 1, 2, 3]
+
+  /-
+  info: 0
+  -/
+  #guard_msgs in
+  #eval find_deleted_number [1, 2, 3, 4, 5, 6, 7] [2, 3, 6, 1, 5, 4, 7]
+
+  /-
+  info: 1
+  -/
+  #guard_msgs in
+  #eval find_deleted_number [1] []
 

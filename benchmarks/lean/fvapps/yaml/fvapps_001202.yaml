@@ -1,25 +1,25 @@
 vc-description: |-
   /-
   The chef is trying to solve some pattern problems, Chef wants your help to code it. Chef has one number K to form a new pattern. Help the chef to code this pattern problem.
-  
+
   -----Input:-----
   - First-line will contain $T$, the number of test cases. Then the test cases follow. 
   - Each test case contains a single line of input, one integer $K$. 
-  
+
   -----Output:-----
   For each test case, output as the pattern.
-  
+
   -----Constraints-----
   - $1 \leq T \leq 100$
   - $1 \leq K \leq 100$
-  
+
   -----Sample Input:-----
   4
   1
   2
   3
   4
-  
+
   -----Sample Output:-----
   1
   13
@@ -31,50 +31,50 @@ vc-description: |-
   9111315
   17192123
   25272931
-  
+
   -----EXPLANATION:-----
   No need, else pattern can be decode easily.
   -/
 
-vc-preamble: |-
+vc-preamble: |
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def pattern_gen (k : Nat) : Array String := sorry
-  
+
   theorem pattern_gen_row_count {k : Nat} (h : k > 0) :
     (pattern_gen k).size = k := sorry
 
 vc-theorems: |-
   theorem pattern_gen_first_element {k : Nat} (h : k > 0) :
     ((pattern_gen k).get! 0).data.get! 0 = '1' := sorry
-  
+
   theorem pattern_gen_all_digits {k : Nat} (h : k > 0) :
     ∀ i < (pattern_gen k).size,
     ∀ j < ((pattern_gen k).get! i).data.length,
     let c := ((pattern_gen k).get! i).data.get! j;
     c.isDigit := sorry
-  
-  /-
-  info: ['1']
-  -/
-  -- #guard_msgs in
-  -- #eval pattern_gen 1
-  
-  /-
-  info: ['13', '57']
-  -/
-  -- #guard_msgs in
-  -- #eval pattern_gen 2
-  
-  /-
-  info: ['135', '7911', '131517']
-  -/
-  -- #guard_msgs in
-  -- #eval pattern_gen 3
 
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
+
+  /-
+  info: ['1']
+  -/
+  #guard_msgs in
+  #eval pattern_gen 1
+
+  /-
+  info: ['13', '57']
+  -/
+  #guard_msgs in
+  #eval pattern_gen 2
+
+  /-
+  info: ['135', '7911', '131517']
+  -/
+  #guard_msgs in
+  #eval pattern_gen 3
 

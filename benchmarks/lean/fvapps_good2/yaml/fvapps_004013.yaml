@@ -1,0 +1,83 @@
+vc-description: |-
+  /-
+  Goldbach's conjecture is one of the oldest and best-known unsolved problems in number theory and all of mathematics. It states:
+  
+  Every even integer greater than 2 can be expressed as the sum of two primes.
+  For example: 
+  
+  `6 = 3 + 3`
+  `8 = 3 + 5`
+  `10 = 3 + 7 = 5 + 5`
+  `12 = 5 + 7`
+  
+  Some rules for the conjecture: 
+  
+  - pairs should be descending like [3,5] not [5,3]
+  
+  - all pairs should be in ascending order based on the first element of the pair: 
+  `[[5, 13], [7, 11]]` is accepted 
+  but `[[7, 11],[5, 13]]` is not accepted.
+  
+  Write the a function that find all identical pairs of prime numbers:
+  ```python
+  def goldbach(even_number)
+  ```
+  You should return an array of containing pairs of primes, like:
+  ```python
+  [[5, 13], [7, 11]]  # even_number = 18
+  ```
+  or
+  ```python
+  [[3, 31], [5, 29], [11, 23], [17, 17]] # even_number = 34
+  ```
+  -/
+
+vc-preamble: |-
+
+vc-helpers: |-
+
+vc-definitions: |-
+  def isPrime (n : Nat) : Bool :=
+    sorry
+  
+  def goldbach (n : Nat) : List (List Nat) :=
+    sorry
+
+vc-theorems: |-
+  theorem goldbach_valid_sums {n : Nat} (h : n ≥ 4) (h2 : n % 2 = 0) :
+    let result := goldbach n
+    (∀ x ∈ result, x.length = 2) ∧
+    (∀ x ∈ result, x[0]! + x[1]! = n) ∧
+    (∀ x ∈ result, x[0]! ≤ x[1]!) :=
+  sorry
+  
+  theorem goldbach_small_inputs {n : Nat} (h : n ≤ 3) :
+    goldbach n = [] :=
+  sorry
+  
+  theorem goldbach_four :
+    goldbach 4 = [[2, 2]] :=
+  sorry
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded_and_plausible
+  
+  /--
+  info: [[3, 7], [5, 5]]
+  -/
+  #guard_msgs in
+  #eval goldbach 10
+  
+  /--
+  info: [[5, 47], [11, 41], [23, 29]]
+  -/
+  #guard_msgs in
+  #eval goldbach 52
+  
+  /--
+  info: [[5, 53], [11, 47], [17, 41], [29, 29]]
+  -/
+  #guard_msgs in
+  #eval goldbach 58
+

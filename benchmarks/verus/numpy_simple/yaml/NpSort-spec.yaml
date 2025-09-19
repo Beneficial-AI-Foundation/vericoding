@@ -9,11 +9,11 @@ vc-preamble: |-
   }
 vc-helpers: |
 vc-spec: |-
-  fn sort(a: Vec<i32>) -> (result: Vec<i32>)
+  fn sort(a: Vec<i8>) -> (result: Vec<i8>)
       ensures
           result.len() == a.len(),
-          forall|i: int, j: int| 0 <= i < j < result.len() ==> result[i] <= result[j],
-          forall|x: i32| multiset_count(result@, x) == multiset_count(a@, x),
+          forall|i: int, j: int| 0 <= i < j < result.len() ==> result[i] as int <= result[j] as int,
+          forall|x: i8| multiset_count(result@, x) == multiset_count(a@, x),
 vc-code: |-
   {
       // impl-start

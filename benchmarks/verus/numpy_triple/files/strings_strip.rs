@@ -11,11 +11,9 @@ verus! {
 fn strip(a: Vec<String>, chars: Option<String>) -> (result: Vec<String>)
     ensures
         result.len() == a.len(),
-        forall|i: int| #[trigger] result[i] == result[i] && 0 <= i < a.len() ==> {
-            let original = a[i];
-            let res = result[i];
-            res@.len() <= original@.len() &&
-            (original@.len() == 0 ==> res@.len() == 0)
+        forall|i: int| 0 <= i < a.len() as int ==> {
+            #[trigger] result[i]@.len() <= a[i]@.len() &&
+            (a[i]@.len() == 0 ==> result[i]@.len() == 0)
         }
 // </vc-spec>
 // <vc-code>

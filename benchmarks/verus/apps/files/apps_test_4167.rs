@@ -43,12 +43,12 @@ spec fn count_with_remainder_half_k(n: int, k: int) -> int
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: int, k: int) -> (result: int)
+fn solve(n: i8, k: i8) -> (result: i8)
     requires 
-        valid_input(n, k)
+        valid_input(n as int, k as int)
     ensures 
         result >= 0,
-        result == count_valid_triples(n, k)
+        result as int == count_valid_triples(n as int, k as int)
 // </vc-spec>
 // <vc-code>
 {

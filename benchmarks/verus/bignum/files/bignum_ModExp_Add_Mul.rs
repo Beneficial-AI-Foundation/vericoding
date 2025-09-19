@@ -47,14 +47,14 @@ fn mul(s1: Seq<char>, s2: Seq<char>) -> (res: Seq<char>)
 // </vc-helpers>
 
 // <vc-spec>
-fn mod_exp(sx: Seq<char>, sy: Seq<char>, sz: Seq<char>) -> (res: Seq<char>)
+fn mod_exp(sx: Vec<char>, sy: Vec<char>, sz: Vec<char>) -> (res: Vec<char>)
   requires 
-    valid_bit_string(sx) && valid_bit_string(sy) && valid_bit_string(sz) &&
-    sy.len() > 0 && str2_int(sz) > 1,
+    valid_bit_string(sx@) && valid_bit_string(sy@) && valid_bit_string(sz@) &&
+    sy@.len() > 0 && str2_int(sz@) > 1,
   ensures 
-    valid_bit_string(res) &&
-    str2_int(res) == exp_int(str2_int(sx), str2_int(sy)) % str2_int(sz),
-  decreases sy.len(),
+    valid_bit_string(res@) &&
+    str2_int(res@) == exp_int(str2_int(sx@), str2_int(sy@)) % str2_int(sz@),
+  decreases sy@.len(),
 // </vc-spec>
 // <vc-code>
 {

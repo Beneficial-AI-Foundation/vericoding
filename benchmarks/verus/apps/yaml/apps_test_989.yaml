@@ -13,15 +13,15 @@ vc-preamble: |-
   }
   
   spec fn has_valid_format(input: Seq<char>) -> bool {
-      exists|first_newline: nat| 
-          first_newline < input.len() && 
-          input[first_newline as int] == '\n' &&
-          (input.len() == first_newline + 1 || input[input.len() - 1] == '\n')
+      exists|first_newline: int| 
+          0 <= first_newline < input.len() 
+          && #[trigger] input[first_newline] == '\n'
+          && (input.len() == first_newline + 1 || input[input.len() - 1] == '\n')
   }
   
   spec fn is_valid_result_string(result: Seq<char>) -> bool {
       result.len() > 0 && 
-      (result == seq!['0'] || (result[0] != '0' && forall|i: int| 0 <= i < result.len() ==> is_digit(result[i])))
+      (result == seq!['0'] || (result[0] != '0' && forall|i: int| 0 <= i < result.len() ==> #[trigger] is_digit(result[i])))
   }
   
   spec fn is_digit(c: char) -> bool {
@@ -34,53 +34,50 @@ vc-preamble: |-
       result == seq!['0']
   }
   
-  spec fn max_seq(a: Seq<int>) -> int
+  spec fn max(a: Seq<int>) -> int
+      recommends a.len() > 0
       decreases a.len()
+      when a.len() > 0
   {
-      if a.len() == 0 { 
-          0 
-      } else if a.len() == 1 { 
-          a[0] 
-      } else if a[0] >= max_seq(a.subrange(1, a.len() as int)) { 
-          a[0] 
-      } else { 
-          max_seq(a.subrange(1, a.len() as int)) 
+      if a.len() == 1 {
+          a[0]
+      } else {
+          let tail_max = max(a.subrange(1, a.len() as int));
+          if a[0] >= tail_max { a[0] } else { tail_max }
       }
   }
   
-  spec fn min_seq(a: Seq<int>) -> int
+  spec fn min(a: Seq<int>) -> int  
+      recommends a.len() > 0
       decreases a.len()
+      when a.len() > 0
   {
-      if a.len() == 0 { 
-          0 
-      } else if a.len() == 1 { 
-          a[0] 
-      } else if a[0] <= min_seq(a.subrange(1, a.len() as int)) { 
-          a[0] 
-      } else { 
-          min_seq(a.subrange(1, a.len() as int)) 
+      if a.len() == 1 {
+          a[0]
+      } else {
+          let tail_min = min(a.subrange(1, a.len() as int));
+          if a[0] <= tail_min { a[0] } else { tail_min }
       }
   }
   
   spec fn int_to_string(n: int) -> Seq<char> {
-      if n == 0 { 
-          seq!['0'] 
-      } else if n > 0 { 
-          int_to_string_helper(n) 
-      } else { 
-          seq!['-'] + int_to_string_helper(-n) 
+      if n == 0 {
+          seq!['0']
+      } else if n > 0 {
+          int_to_string_helper(n)
+      } else {
+          seq!['-'].add(int_to_string_helper(-n))
       }
   }
   
   spec fn int_to_string_helper(n: int) -> Seq<char>
+      recommends n > 0
       decreases n
   {
-      if n <= 0 { 
-          seq![] 
-      } else if n < 10 { 
-          seq![('0' as u8 + (n % 10) as u8) as char] 
-      } else { 
-          int_to_string_helper(n / 10) + seq![('0' as u8 + (n % 10) as u8) as char] 
+      if n < 10 {
+          seq![(n + 48) as char]
+      } else {
+          int_to_string_helper(n / 10).add(seq![(n % 10 + 48) as char])
       }
   }
 

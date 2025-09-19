@@ -1,7 +1,7 @@
 vc-description: |-
   /-
   Cersei wants to be the queen of seven kingdoms.
-  
+
   For this to happen, she needs to address the soldiers in her army. There are n$n$ soldiers in her army (numbered 1$1$ through n$n$). Cersei passes on the message to the first soldier (soldier 1).   
   This message needs to reach every soldier in the army. For this, the soldiers communicate among themselves by one soldier passing the message to another soldier through some communication links. It is known that the message could reach every soldier using the given links.
   Now, each soldier will receive the message from exactly one soldier or Cersei and could pass on the message to atmost two soldiers. That is each soldier (except soldier 1) has only one incoming link and every soldier (including soldier 1) has atmost two outgoing links.  
@@ -9,16 +9,16 @@ vc-description: |-
   To overhear a conversation between soldiers A$A$ and B$B$, there needs to be a sparrow either at soldier A$A$ or soldier B$B$ or both.
   Also, by his research, the High Sparrow has found that the soldiers are partitioned into some classes (1$1$ to k$k$). That is, every soldier belongs to exactly one class. He then demands the presence of atleast one sparrow with each class he knows (1$1$ to k$k$).
   Find the minimum number of sparrows the High Sparrow needs to recruit for the job or tell that he couldn't.
-  
+
   -----Input:-----
   - The first line of the input contains the number of test cases t$t$.
   - The first line of each test case gives the number of soldiers n$n$ in the army, the number of communication links m$m$ between the soldiers and the number of classes k$k$ in soldiers.
   - The next line of the test case consists of n$n$ integers A1,A2....An$A_1,A_2....A_n$ each denoting the class of the ith$i^{th}$ soldier.
   - The next m$m$ lines of the test case contain two integers u$u$ and v$v$, which denotes that soldier u$u$ can pass a message to soldier v$v$ (u≠v$u \neq v$).
-  
+
   -----Output:-----
   For each test case, print in a single line the minimum number of sparrows required for the above task or print −1$-1$ if no such way is possible.
-  
+
   -----Constraints-----
   - 1≤t≤500$1 \leq t \leq 500$
   - 1≤n≤2500$1 \leq n \leq 2500$
@@ -26,7 +26,7 @@ vc-description: |-
   - 1≤k≤10$1 \leq k \leq 10$
   - 1≤ai≤k$1 \leq a_i \leq k$
   - The sum of n$n$ over all test cases is ≤2500$\leq 2500$.
-  
+
   -----Sample Input:-----
   1
   5 4 3
@@ -35,13 +35,13 @@ vc-description: |-
   1 3
   2 4
   2 5
-  
+
   -----Sample Output:-----
   3
-  
+
   -----EXPLANATION:-----
   Selecting soldiers 1,4,5 would satisfy all the conditions.
-  
+
   -----Sample Input:-----
   1
   5 4 5
@@ -50,33 +50,33 @@ vc-description: |-
   1 3
   2 4
   2 5
-  
+
   -----Sample Output:-----
   -1
-  
+
   -----EXPLANATION:-----
   Classes 4 and 5 are not present. So, there is no way possible.
   -/
 
-vc-preamble: |-
+vc-preamble: |
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def solveSparrowProblem (n k : Nat) (classes : List Nat) (links : List (Nat × Nat)) : Int := sorry
-  
+
   def isValidTree (n : Nat) (links : List (Nat × Nat)) : Bool := sorry
 
 vc-theorems: |-
   theorem result_is_int (n k : Nat) (classes : List Nat) (links : List (Nat × Nat)) :
     let result := solveSparrowProblem n k classes links
     result ≥ -1 := sorry
-  
+
   theorem tree_validation (n k : Nat) (classes : List Nat) (links : List (Nat × Nat)) :
     isValidTree n links = true → 
     let result := solveSparrowProblem n k classes links
     result ≥ -1 := sorry
-  
+
   theorem minimal_cases_solvable : 
     (let n₁ := 1; let k₁ := 1; let classes₁ := [1]; let links₁ := [];
      solveSparrowProblem n₁ k₁ classes₁ links₁ ≥ 0) ∧
@@ -84,11 +84,11 @@ vc-theorems: |-
      solveSparrowProblem n₂ k₂ classes₂ links₂ ≥ 0) ∧
     (let n₃ := 2; let k₃ := 2; let classes₃ := [1,2]; let links₃ := [(1,2)];
      solveSparrowProblem n₃ k₃ classes₃ links₃ ≥ 0) := sorry
-  
+
   theorem impossible_case :
     let n := 3; let k := 4; let classes := [1,2,3]; let links := [(1,2), (1,3)];
     solveSparrowProblem n k classes links = -1 := sorry
-  
+
   theorem linear_tree_bounds (n k : Nat) (classes : List Nat) (links : List (Nat × Nat)) :
     n = 4 →
     k = 2 →
@@ -96,20 +96,20 @@ vc-theorems: |-
     links = [(1,2), (2,3), (3,4)] →
     let result := solveSparrowProblem n k classes links
     result ≥ 0 ∧ result ≤ n := sorry
-  
-  /-
-  info: 3
-  -/
-  -- #guard_msgs in
-  -- #eval solve_sparrow_problem 5 3 [1, 1, 2, 2, 3] [(1, 2), (1, 3), (2, 4), (2, 5)]
-  
-  /-
-  info: -1
-  -/
-  -- #guard_msgs in
-  -- #eval solve_sparrow_problem 5 5 [1, 1, 2, 2, 3] [(1, 2), (1, 3), (2, 4), (2, 5)]
 
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
+
+  /-
+  info: 3
+  -/
+  #guard_msgs in
+  #eval solve_sparrow_problem 5 3 [1, 1, 2, 2, 3] [(1, 2), (1, 3), (2, 4), (2, 5)]
+
+  /-
+  info: -1
+  -/
+  #guard_msgs in
+  #eval solve_sparrow_problem 5 5 [1, 1, 2, 2, 3] [(1, 2), (1, 3), (2, 4), (2, 5)]
 

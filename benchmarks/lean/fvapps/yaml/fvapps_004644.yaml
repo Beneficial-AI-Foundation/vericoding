@@ -1,7 +1,7 @@
 vc-description: |-
   /-
   Given a certain array of integers, create a function that may give the minimum number that may be divisible for all the numbers of the array.
-  
+
   ```python
   min_special_mult([2, 3 ,4 ,5, 6, 7]) == 420
   ```
@@ -10,18 +10,18 @@ vc-description: |-
   min_special_mult([18, 22, 4, 3, 21, 6, 3]) == 2772
   ```
   The array should have all its elements integer values. If the function finds an invalid entry (or invalid entries) like strings of the alphabet or symbols will not do the calculation and will compute and register them, outputting a message in singular or plural, depending on the number of invalid entries.
-  
+
   ```python
   min_special_mult([16, 15, 23, 'a', '&', '12']) == "There are 2 invalid entries: ['a', '&']"
-  
+
   min_special_mult([16, 15, 23, 'a', '&', '12', 'a']) == "There are 3 invalid entries: ['a', '&', 'a']"
-  
+
   min_special_mult([16, 15, 23, 'a', '12']) == "There is 1 invalid entry: a"
   ```
   If the string is a valid number, the function will convert it as an integer.
   ```python
   min_special_mult([16, 15, 23, '12']) == 5520
-  
+
   min_special_mult([16, 15, 23, '012']) == 5520
   ```
   All the `None`/`nil` elements of the array will be ignored:
@@ -31,31 +31,31 @@ vc-description: |-
   If the array has a negative number, the function will convert to a positive one.
   ```python
   min_special_mult([18, 22, 4, , None, 3, -21, 6, 3]) == 2772
-  
+
   min_special_mult([16, 15, 23, '-012']) == 5520
   ```
-  
+
   Enjoy it
   -/
 
 vc-preamble: |-
   def min_special_mult (numbers : List Int) : Int ⊕ String := sorry
-  
+
   theorem valid_numbers_only (numbers : List Int) 
     (h : ∀ n ∈ numbers, n > 0)
     : ∃ result, (min_special_mult numbers = Sum.inl result ∧ result > 0) := sorry
-  
+
   /- Helper function to convert strings to a list containing each character -/
-  
+
   def stringToList (s : String) : List Char := s.data
-  
+
   def stringContains (s₁ s₂ : String) : Prop := ∃ pre post : String, s₁ = pre ++ s₂ ++ post
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def parseAsInt (s : String) : Option Int := sorry
-  
+
   theorem invalid_entries (valid_nums invalid_nums : List String)
     (h1 : invalid_nums.length > 0)
     (h2 : invalid_nums.length ≤ 5)
@@ -74,26 +74,26 @@ vc-theorems: |-
     (h3 : ∀ n ∈ numbers, n > 0)
     : ∃ result, min_special_mult numbers = Sum.inl result
         ∧ ∀ n ∈ numbers, result % n = 0 := sorry
-  
-  /-
-  info: 420
-  -/
-  -- #guard_msgs in
-  -- #eval min_special_mult [2, 3, 4, 5, 6, 7]
-  
-  /-
-  info: "There are 2 invalid entries: ['a', '&']"
-  -/
-  -- #guard_msgs in
-  -- #eval min_special_mult [16, 15, 23, "a", "&", "12"]
-  
-  /-
-  info: 5520
-  -/
-  -- #guard_msgs in
-  -- #eval min_special_mult [16, 15, 23, "-012"]
 
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+
+  /-
+  info: 420
+  -/
+  #guard_msgs in
+  #eval min_special_mult [2, 3, 4, 5, 6, 7]
+
+  /-
+  info: "There are 2 invalid entries: ['a', '&']"
+  -/
+  #guard_msgs in
+  #eval min_special_mult [16, 15, 23, "a", "&", "12"]
+
+  /-
+  info: 5520
+  -/
+  #guard_msgs in
+  #eval min_special_mult [16, 15, 23, "-012"]
 

@@ -1,14 +1,14 @@
 vc-description: |-
   /-
   Very simple, given a number, find its opposite.
-  
+
   Examples:
   ```
   1: -1
   14: -14
   -34: 34
   ```
-  
+
   ~~~if:sql
   You will be given a table: `opposite`, with a column: `number`. Return a table with a column: `res`.
   ~~~
@@ -16,52 +16,52 @@ vc-description: |-
 
 vc-preamble: |-
   def opposite (x : Int) : Int := sorry
-  
+
   theorem double_negative_int (x : Int) :
     opposite (opposite x) = x := sorry
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def opposite_real (x : Float) : Float := sorry 
-  
+
   theorem double_negative_real (x : Float) :
     opposite_real (opposite_real x) = x := sorry
 
 vc-theorems: |-
   theorem zero_is_self_opposite :
     opposite 0 = 0 := sorry
-  
+
   theorem nonzero_not_self_opposite (x : Int) :
     x ≠ 0 → opposite x ≠ x := sorry
-  
+
   theorem sum_with_opposite_int (x : Int) :
     x + opposite x = 0 := sorry
-  
-  /- Same theorems for real numbers -/
-  
-  theorem sum_with_opposite_real (x : Float) :
-    x + opposite_real x = 0 := sorry
-  
-  /-
-  info: -1
-  -/
-  -- #guard_msgs in
-  -- #eval opposite 1
-  
-  /-
-  info: 34
-  -/
-  -- #guard_msgs in
-  -- #eval opposite -34
-  
-  /-
-  info: 0
-  -/
-  -- #guard_msgs in
-  -- #eval opposite 0
 
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+
+  /- Same theorems for real numbers -/
+
+  theorem sum_with_opposite_real (x : Float) :
+    x + opposite_real x = 0 := sorry
+
+  /-
+  info: -1
+  -/
+  #guard_msgs in
+  #eval opposite 1
+
+  /-
+  info: 34
+  -/
+  #guard_msgs in
+  #eval opposite -34
+
+  /-
+  info: 0
+  -/
+  #guard_msgs in
+  #eval opposite 0
 

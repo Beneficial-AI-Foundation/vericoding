@@ -23,13 +23,13 @@ spec fn person1_candies(x: int, d: int) -> int {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: int, k: int, m: int, d: int) -> (result: int)
-    requires valid_input(n, k, m, d)
+fn solve(n: i8, k: i8, m: i8, d: i8) -> (result: i8)
+    requires valid_input(n as int, k as int, m as int, d as int)
     ensures
         result >= 0 &&
-        result <= m * d &&
-        (forall|x: int, d_val: int| valid_distribution(x, d_val, n, k, m, d) ==> person1_candies(x, d_val) <= result) &&
-        (exists|x: int, d_val: int| valid_distribution(x, d_val, n, k, m, d) && person1_candies(x, d_val) == result)
+        result as int <= m as int * d as int &&
+        (forall|x: int, d_val: int| valid_distribution(x, d_val, n as int, k as int, m as int, d as int) ==> person1_candies(x, d_val) <= result as int) &&
+        (exists|x: int, d_val: int| valid_distribution(x, d_val, n as int, k as int, m as int, d as int) && person1_candies(x, d_val) == result as int)
 // </vc-spec>
 // <vc-code>
 {

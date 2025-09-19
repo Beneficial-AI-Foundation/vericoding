@@ -40,16 +40,16 @@ spec fn dtype_size_bytes(dtype: DType) -> nat {
 // </vc-helpers>
 
 // <vc-spec>
-fn fromfile(file: FileHandle, dtype: DType, count: i32, sep: &str, offset: nat) -> (result: Vec<i32>)
+fn fromfile(file: FileHandle, dtype: DType, count: i8, sep: &str, offset: u8) -> (result: Vec<i8>)
     requires
         count == -1 || count > 0,
         sep == "" ==> file.is_binary == true,
         file.is_binary == true ==> sep == "",
     ensures
-        count > 0 ==> result.len() == count as usize,
+        count > 0 ==> result.len() == count as int as usize,
 
         file.is_binary == true ==> (
-            #[trigger] (result.len() * dtype_size_bytes(dtype))
+            #[trigger] (result@.len() * dtype_size_bytes(dtype))
             >= 0
         ),
 

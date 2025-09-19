@@ -57,7 +57,7 @@ vc-spec: |-
   fn partition(a: Vec<String>, sep: String) -> (result: (Vec<String>, Vec<String>, Vec<String>))
       ensures
           result.0.len() == a.len() && result.1.len() == a.len() && result.2.len() == a.len(),
-          forall|i: int| 0 <= i < a.len() ==> {
+          forall|i: int| 0 <= i < a.len() as int ==> {
               let original = #[trigger] a[i]@;
               let before_i = result.0[i]@;
               let sep_i = result.1[i]@;
@@ -81,4 +81,3 @@ vc-code: |-
 vc-postamble: |-
   }
   fn main() {}
-

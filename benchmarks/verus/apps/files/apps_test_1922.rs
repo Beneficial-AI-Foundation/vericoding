@@ -25,11 +25,11 @@ spec fn count_face_down_cards(n: int, m: int) -> int
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: int, m: int) -> (result: int)
+fn solve(n: i8, m: i8) -> (result: i8)
     requires 
-        valid_input(n, m),
+        valid_input(n as int, m as int),
     ensures 
-        result == count_face_down_cards(n, m),
+        result as int == count_face_down_cards(n as int, m as int),
         result >= 0,
 // </vc-spec>
 // <vc-code>

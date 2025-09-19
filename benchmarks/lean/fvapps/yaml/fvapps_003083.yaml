@@ -1,60 +1,60 @@
 vc-description: |-
   /-
   You and your best friend Stripes have just landed your first high school jobs! You'll be delivering newspapers to your neighbourhood on weekends. For your services you'll be charging a set price depending on the quantity of the newspaper bundles.
-  
+
   The cost of deliveries is:
-  
+
   - $3.85 for 40 newspapers
   - $1.93 for 20
   - $0.97 for 10 
   - $0.49 for 5 
   - $0.10 for 1 
-  
+
   Stripes is taking care of the footwork doing door-to-door drops and your job is to take care of the finances. What you'll be doing is providing the cheapest possible quotes for your services.
-  
+
   Write a function that's passed an integer representing the amount of newspapers and returns the cheapest price. The returned number must be rounded to two decimal places.
-  
+
   ![Paperboy](http://mametesters.org/file_download.php?file_id=1016&type=bug)
   -/
 
-vc-preamble: |-
+vc-preamble: |
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def cheapest_quote (n : Nat) : Float := sorry
-  
+
   /- Ensures cheapest_quote returns a non-negative float -/
 
 vc-theorems: |-
   theorem cheapest_quote_non_negative (n : Nat) :
     let result := cheapest_quote n
     result ≥ 0 := sorry
-  
-  /- Ensures cheapest_quote is strictly monotonically increasing -/
-  
-  theorem cheapest_quote_monotonic (n : Nat) : n > 0 →
-    cheapest_quote n > cheapest_quote (n-1) := sorry
-  
-  /-
-  info: 3.95
-  -/
-  -- #guard_msgs in
-  -- #eval cheapest_quote 41
-  
-  /-
-  info: 2.52
-  -/
-  -- #guard_msgs in
-  -- #eval cheapest_quote 26
-  
-  /-
-  info: 48.06
-  -/
-  -- #guard_msgs in
-  -- #eval cheapest_quote 499
 
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+
+  /- Ensures cheapest_quote is strictly monotonically increasing -/
+
+  theorem cheapest_quote_monotonic (n : Nat) : n > 0 →
+    cheapest_quote n > cheapest_quote (n-1) := sorry
+
+  /-
+  info: 3.95
+  -/
+  #guard_msgs in
+  #eval cheapest_quote 41
+
+  /-
+  info: 2.52
+  -/
+  #guard_msgs in
+  #eval cheapest_quote 26
+
+  /-
+  info: 48.06
+  -/
+  #guard_msgs in
+  #eval cheapest_quote 499
 

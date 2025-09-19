@@ -1,0 +1,29 @@
+---
+vc-description: |-
+  Weight function of the Laguerre polynomials.
+  Computes exp(-x) element-wise for orthogonality on interval [0, ∞].
+  Note: Uses real type as Dafny approximation for floating-point arithmetic.
+vc-preamble: |-
+  // Exponential function declaration for specification purposes
+  function Exp(x: real): real
+  {
+    0.0  // Placeholder implementation for compilation
+  }
+  
+  // Weight function method that computes exp(-x) for each element
+vc-helpers: |-
+  
+vc-spec: |-
+  method lagweight(x: seq<real>) returns (w: seq<real>)
+    // No special preconditions required for the weight function
+    requires true
+    // Result has same length as input
+    ensures |w| == |x|
+    // Each element of result is exp(-x[i]) for corresponding input element
+    ensures forall i :: 0 <= i < |x| ==> w[i] == Exp(-x[i])
+vc-code: |-
+  {
+    assume {:axiom} false;
+  }
+vc-postamble: |-
+  

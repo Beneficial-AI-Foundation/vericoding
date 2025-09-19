@@ -1,0 +1,33 @@
+---
+vc-description: |-
+  Evaluates a polynomial specified by its roots at given points.
+  For roots r = [r_0, r_1, ..., r_{m-1}], evaluates p(x) = ∏(x - r_i) at each point in x.
+vc-preamble: |-
+  // Helper function to compute the product of (point - roots[j]) for all j in [0, |roots|)
+  function ProductOfDifferences(point: real, roots: seq<real>): real
+  {
+    ProductOfDifferencesHelper(point, roots, 0)
+  }
+  
+  function ProductOfDifferencesHelper(point: real, roots: seq<real>, index: nat): real
+    requires 0 <= index <= |roots|
+    decreases |roots| - index
+  {
+    if index == |roots| then 1.0
+    else (point - roots[index]) * ProductOfDifferencesHelper(point, roots, index + 1)
+  }
+  
+  // Main method: evaluates polynomial with given roots at each point in x
+vc-helpers: |-
+  
+vc-spec: |-
+  method polyvalfromroots(x: seq<real>, r: seq<real>) returns (result: seq<real>)
+    ensures |result| == |x|
+    ensures forall i :: 0 <= i < |x| ==> 
+      result[i] == ProductOfDifferences(x[i], r)
+vc-code: |-
+  {
+    assume {:axiom} false;
+  }
+vc-postamble: |-
+  

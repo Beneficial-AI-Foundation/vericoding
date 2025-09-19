@@ -1,0 +1,33 @@
+vc-description: |-
+  function_signature: def solve(n: int) -> str
+
+  Given a positive integer N, return the total sum of its digits in binary.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+  spec fn popcount(n: nat) -> nat
+      decreases n
+  {
+      if n == 0 { 0 } else { (n % 2) + popcount(n / 2) }
+  }
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn solve(n: u8) -> (r: u8)
+      ensures r as nat == popcount(n as nat)
+
+vc-code: |-
+  {
+      assume(false);
+      unreached()
+  }
+
+vc-postamble: |-
+
+  }
+
+  fn main() {}

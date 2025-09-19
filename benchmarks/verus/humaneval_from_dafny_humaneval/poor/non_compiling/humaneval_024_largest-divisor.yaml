@@ -1,0 +1,32 @@
+vc-description: |-
+  function_signature: fn largest_divisor(n: int) -> int
+
+  For a given number n, find the largest number that divides n evenly, smaller than n
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn largest_divisor(n: int) -> (d: int)
+      requires 
+          n > 1
+      ensures 
+          1 <= d < n,
+          n % d == 0,
+          forall|k: int| d < k < n ==> #[trigger] (n % k) != 0,
+
+vc-code: |-
+  {
+      assume(false);
+      unreached()
+  }
+
+vc-postamble: |-
+
+  }
+
+  fn main() {}

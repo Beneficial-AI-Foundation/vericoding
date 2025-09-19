@@ -1,48 +1,48 @@
 vc-description: |-
   /-
   ## Task
-  
+
   You will receive a string consisting of lowercase letters, uppercase letters and digits as input. Your task is to return this string as blocks separated by dashes (`"-"`). The elements of a block should be sorted with respect to the hierarchy listed below, and each block cannot contain multiple instances of the same character. Elements should be put into the first suitable block.
-  
+
   The hierarchy is:
   1. lowercase letters (`a - z`), in alphabetical order
   2. uppercase letters (`A - Z`), in alphabetical order
   3. digits (`0 - 9`), in ascending order
-  
+
   ## Examples
-  
+
   * `"21AxBz" -> "xzAB12"` - since input does not contain repeating characters, you only need 1 block
   * `"abacad" -> "abcd-a-a"` - character "a" repeats 3 times, thus 3 blocks are needed
   * `"" -> ""` - an empty input should result in an empty output
   * `"hbh420sUUW222IWOxndjn93cdop69NICEep832" -> "bcdehjnopsxCEINOUW0234689-dhnpIUW239-2-2-2"` - a more sophisticated example
-  
+
   Good luck!
   -/
 
-vc-preamble: |-
+vc-preamble: |
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def blocks (s : String) : String := sorry
-  
+
   theorem blocks_empty (s : String) : 
     s = "" → blocks s = "" := sorry
 
 vc-theorems: |-
   theorem blocks_output_is_string (s : String) : 
     blocks s = blocks s := sorry
-  
+
   theorem blocks_contains_input_chars (s : String) (c : Char) :
     c ∈ s.data → ∃ block, block ∈ (blocks s).splitOn "-" ∧ c ∈ block.data := sorry
-  
+
   theorem blocks_preserves_char_count (s : String) (c : Char) :
     (s.data.countP (· = c)) = ((blocks s).data.filter (· ≠ '-')).countP (· = c) := sorry
-  
+
   theorem blocks_preserves_input (s : String) :
     let result := blocks s
     s.data = s.data := sorry
-  
+
   theorem blocks_sorted_within_block (s : String) :
     ∀ block ∈ (blocks s).splitOn "-", 
       ∀ (i j : Fin block.data.length),
@@ -52,26 +52,26 @@ vc-theorems: |-
       (c₁.isDigit && !c₂.isDigit) || 
       (!c₁.isDigit && c₁.isUpper && !c₂.isUpper) ||
       (!c₁.isDigit && !c₂.isDigit && !c₁.isUpper && !c₂.isUpper && c₁ ≤ c₂) := sorry
-  
-  /-
-  info: 'aehiklmpsty-ekst-est'
-  -/
-  -- #guard_msgs in
-  -- #eval blocks "heyitssampletestkk"
-  
-  /-
-  info: ''
-  -/
-  -- #guard_msgs in
-  -- #eval blocks ""
-  
-  /-
-  info: 'xzAB12'
-  -/
-  -- #guard_msgs in
-  -- #eval blocks "21AxBz"
 
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+
+  /-
+  info: 'aehiklmpsty-ekst-est'
+  -/
+  #guard_msgs in
+  #eval blocks "heyitssampletestkk"
+
+  /-
+  info: ''
+  -/
+  #guard_msgs in
+  #eval blocks ""
+
+  /-
+  info: 'xzAB12'
+  -/
+  #guard_msgs in
+  #eval blocks "21AxBz"
 

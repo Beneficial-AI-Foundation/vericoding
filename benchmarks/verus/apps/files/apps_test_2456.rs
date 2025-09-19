@@ -16,9 +16,9 @@ spec fn expected_result(n: int, r: int) -> int {
     }
 }
 
-fn solve_shapes(n: int, r: int) -> (result: int)
-    requires valid_input(n, r)
-    ensures result == expected_result(n, r)
+fn solve_shapes(n: i8, r: i8) -> (result: i8)
+    requires valid_input(n as int, r as int)
+    ensures result as int == expected_result(n as int, r as int)
 // </vc-preamble>
 
 // <vc-helpers>

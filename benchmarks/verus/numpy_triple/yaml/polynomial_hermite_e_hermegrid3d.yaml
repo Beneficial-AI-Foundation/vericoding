@@ -1,0 +1,74 @@
+vc-description: |-
+  numpy.polynomial.hermite_e.hermegrid3d: Evaluate a 3-D HermiteE series on the Cartesian product of x, y, and z.
+
+  This function evaluates a 3-dimensional HermiteE polynomial series
+  on the Cartesian product of coordinate vectors x, y, and z.
+
+  The evaluation follows the mathematical formula:
+  p(a,b,c) = sum_{i,j,k} c[i,j,k] * He_i(a) * He_j(b) * He_k(c)
+
+  where He_i is the i-th probabilist's Hermite polynomial (HermiteE),
+  and the points (a,b,c) are formed by taking all combinations of
+  elements from x, y, and z.
+
+  The result is a 3D tensor where result[i,j,k] contains the polynomial
+  value at the point (x[i], y[j], z[k]).
+
+  Specification: hermegrid3d evaluates a 3D HermiteE polynomial series 
+  on the Cartesian product of x, y, and z coordinates.
+
+  The function computes p(a,b,c) = sum_{i,j,k} c[i,j,k] * He_i(a) * He_j(b) * He_k(c)
+  where He_i is the i-th probabilist's Hermite polynomial.
+
+  Mathematical Properties:
+  1. The result represents evaluation at all Cartesian product points
+  2. HermiteE polynomials satisfy He_0(x) = 1, He_1(x) = x, 
+     and the recurrence He_{n+1}(x) = x * He_n(x) - n * He_{n-1}(x)
+  3. The evaluation is exact for the polynomial representation
+  4. Result shape is nx × ny × nz, matching the Cartesian product
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  spec fn hermite_e_poly(x: int, n: nat) -> int
+      decreases n
+  {
+      if n == 0 {
+          1
+      } else if n == 1 {
+          x
+      } else {
+          x * hermite_e_poly(x, (n - 1) as nat) - (n - 1) * hermite_e_poly(x, (n - 2) as nat)
+      }
+  }
+
+  fn hermegrid3d(x: Vec<f32>, y: Vec<f32>, z: Vec<f32>, c: Vec<Vec<Vec<f32>>>) -> (result: Vec<Vec<Vec<f32>>>)
+      requires
+          x.len() > 0,
+          y.len() > 0,
+          z.len() > 0,
+          c.len() > 0,
+          forall|i: int| 0 <= i < c@.len() ==> c@[i].len() > 0,
+          forall|i: int, j: int| 0 <= i < c@.len() && 0 <= j < c@[i].len() ==> c@[i][j].len() > 0,
+      ensures
+          result.len() == x.len(),
+          forall|i: int| 0 <= i < result@.len() ==> result@[i].len() == y.len(),
+          forall|i: int, j: int| 0 <= i < result@.len() && 0 <= j < result@[i].len() ==> result@[i][j].len() == z.len(),
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      unreached()
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {}

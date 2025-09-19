@@ -32,13 +32,13 @@ fn normalize_bit_string(s: Seq<char>) -> (t: Seq<char>)
 // </vc-helpers>
 
 // <vc-spec>
-fn compare(s1: Seq<char>, s2: Seq<char>) -> (res: int)
-  requires valid_bit_string(s1) && valid_bit_string(s2)
+fn compare(s1: Vec<char>, s2: Vec<char>) -> (res: i8)
+  requires valid_bit_string(s1@) && valid_bit_string(s2@)
   ensures 
-      (str2int(s1) < str2int(s2) ==> res == -1) &&
-      (str2int(s1) == str2int(s2) ==> res == 0) &&
-      (str2int(s1) > str2int(s2) ==> res == 1)
-  decreases str2int(s1) + str2int(s2)
+      (str2int(s1@) < str2int(s2@) ==> res as int == -1) &&
+      (str2int(s1@) == str2int(s2@) ==> res as int == 0) &&
+      (str2int(s1@) > str2int(s2@) ==> res as int == 1)
+  decreases str2int(s1@) + str2int(s2@)
 // </vc-spec>
 // <vc-code>
 {

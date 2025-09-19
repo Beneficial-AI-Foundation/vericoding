@@ -1,0 +1,48 @@
+vc-description: |-
+  Given three integers a, b, and c representing the heights of three poles,
+  determine if they form an arithmetic sequence (i.e., b - a = c - b).
+  Input is a string containing three space-separated integers.
+  Output is "YES\n" if arithmetic sequence, "NO\n" otherwise.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+  spec fn valid_three_integers(input: Seq<char>, a: int, b: int, c: int) -> bool {
+      true /* Simplified for compilation */
+  }
+  
+  spec fn is_valid_integer(s: Seq<char>) -> bool {
+      s.len() > 0
+  }
+  
+  spec fn split_by_spaces_func(s: Seq<char>) -> Seq<Seq<char>> {
+      Seq::empty()
+  }
+  
+  spec fn parse_int_func(s: Seq<char>) -> int {
+      0
+  }
+  
+  spec fn parse_unsigned_int(s: Seq<char>) -> int {
+      0
+  }
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn solve(input: Seq<char>) -> (result: Seq<char>)
+      requires input.len() > 0
+
+vc-code: |-
+  {
+      assume(false);
+      unreached()
+  }
+
+vc-postamble: |-
+
+  }
+
+  fn main() {}

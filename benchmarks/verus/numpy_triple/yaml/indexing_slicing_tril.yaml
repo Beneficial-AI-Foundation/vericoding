@@ -40,9 +40,9 @@ vc-spec: |-
           matrix.len() == n * n,
       ensures
           result.len() == matrix.len(),
-          forall|i: usize, j: usize| #[trigger] result[i * n + j] == matrix[i * n + j] <==
+          forall|i: usize, j: usize| #[trigger] result@[i * n + j] == matrix@[i * n + j] <==
               i < n && j < n && i >= j,
-          forall|i: usize, j: usize| #[trigger] result[i * n + j] == 0.0f32 <==
+          forall|i: usize, j: usize| #[trigger] result@[i * n + j] == 0.0f32 <==
               i < n && j < n && i < j,
 
 vc-code: |-
@@ -54,4 +54,3 @@ vc-code: |-
 vc-postamble: |-
   }
   fn main() {}
-

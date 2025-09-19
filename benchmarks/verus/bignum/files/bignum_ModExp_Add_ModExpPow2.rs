@@ -54,13 +54,13 @@ fn mod_exp_pow2(sx: Seq<u8>, sy: Seq<u8>, n: nat, sz: Seq<u8>) -> (res: Seq<u8>)
 // </vc-helpers>
 
 // <vc-spec>
-fn mod_exp(sx: Seq<u8>, sy: Seq<u8>, sz: Seq<u8>) -> (res: Seq<u8>)
+fn mod_exp(sx: Vec<u8>, sy: Vec<u8>, sz: Vec<u8>) -> (res: Vec<u8>)
   requires 
-    valid_bit_string(sx) && valid_bit_string(sy) && valid_bit_string(sz) &&
-    sy.len() > 0 && str2int(sz) > 1
+    valid_bit_string(sx@) && valid_bit_string(sy@) && valid_bit_string(sz@) &&
+    sy.len() > 0 && str2int(sz@) > 1
   ensures 
-    valid_bit_string(res) &&
-    str2int(res) == exp_int(str2int(sx), str2int(sy)) % str2int(sz)
+    valid_bit_string(res@) &&
+    str2int(res@) == exp_int(str2int(sx@), str2int(sy@)) % str2int(sz@)
   decreases sy.len()
 // </vc-spec>
 // <vc-code>

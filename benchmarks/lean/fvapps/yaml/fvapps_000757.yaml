@@ -6,26 +6,26 @@ vc-description: |-
   - $\sum_{i=1}^N \sum_{j=i}^N \left( \mathrm{min}(A_i, A_{i+1}, \ldots, A_j) - \mathrm{GCD}(A_i, A_{i+1}, \ldots, A_j) \right) = D$
   It can be proved that a solution always exists under the given constraints.
   Note: $\mathrm{GCD}(B_1, B_2, \ldots, B_M)$ is the greatest integer which divides all the integers $B_1, B_2, \ldots, B_M$.
-  
+
   -----Input-----
   - The first line of the input contains a single integer $T$ denoting the number of test cases. The description of $T$ test cases follows.
   - The first and only line of each test case contains a single integer $D$.
-  
+
   -----Output-----
   For each test case, print two lines. The first of these lines should contain a single integer $N$. The second line should contain $N$ space-separated integers $A_1, A_2, \ldots, A_N$.
   If there are multiple solutions, you may find any one of them.
-  
+
   -----Constraints-----
   - $1 \le T \le 10$
   - $0 \le D \le 10^9$
-  
+
   -----Example Input-----
   4
   2
   5
   200
   13
-  
+
   -----Example Output-----
   3
   3 3 2 
@@ -37,45 +37,45 @@ vc-description: |-
   5 4 4 10
   -/
 
-vc-preamble: |-
+vc-preamble: |
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def solve_sequence (D: Nat) : List Nat := sorry
-  
+
   theorem sequence_elements_positive (D: Nat) (x: Nat) :
     x ∈ solve_sequence D → x > 0 := sorry
 
 vc-theorems: |-
   theorem sequence_elements_bounded (D: Nat) (x: Nat) :
     x ∈ solve_sequence D → x ≤ 100000 := sorry
-  
-  /-
-  info: [3, 3, 2]
-  -/
-  -- #guard_msgs in
-  -- #eval solve_sequence 2
-  
-  /-
-  info: [2, 8, 5, 1, 10]
-  -/
-  -- #guard_msgs in
-  -- #eval solve_sequence 5
-  
-  /-
-  info: [5, 4, 4, 10]
-  -/
-  -- #guard_msgs in
-  -- #eval solve_sequence 13
-  
-  /-
-  info: [1]
-  -/
-  -- #guard_msgs in
-  -- #eval solve_sequence 0
 
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
+
+  /-
+  info: [3, 3, 2]
+  -/
+  #guard_msgs in
+  #eval solve_sequence 2
+
+  /-
+  info: [2, 8, 5, 1, 10]
+  -/
+  #guard_msgs in
+  #eval solve_sequence 5
+
+  /-
+  info: [5, 4, 4, 10]
+  -/
+  #guard_msgs in
+  #eval solve_sequence 13
+
+  /-
+  info: [1]
+  -/
+  #guard_msgs in
+  #eval solve_sequence 0
 

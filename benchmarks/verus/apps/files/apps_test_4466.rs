@@ -25,9 +25,9 @@ spec fn valid_solution(x: int, y: int, z: int, result: int) -> bool
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(x: int, y: int, z: int) -> (result: int)
-    requires valid_input(x, y, z)
-    ensures valid_solution(x, y, z, result)
+fn solve(x: i8, y: i8, z: i8) -> (result: i8)
+    requires valid_input(x as int, y as int, z as int)
+    ensures valid_solution(x as int, y as int, z as int, result as int)
 // </vc-spec>
 // <vc-code>
 {

@@ -1,38 +1,38 @@
 vc-description: |-
   /-
   In this kata, your task is to create a function that takes a single list as an argument and returns a flattened list. The input list will have a maximum of one level of nesting (list(s) inside of a list).
-  
+
   ```python
   # no nesting
   [1, 2, 3]
-  
+
   # one level of nesting
   [1, [2, 3]]
   ```
   ---
-  
+
   # Examples
-  
+
   ```python
   >>> flatten_me(['!', '?'])
   ['!', '?']
-  
+
   >>> flatten_me([1, [2, 3], 4])
   [1, 2, 3, 4]
-  
+
   >>> flatten_me([['a', 'b'], 'c', ['d']])
   ['a', 'b', 'c', 'd']
-  
+
   >>> flatten_me([[True, False], ['!'], ['?'], [71, '@']]) 
   [True, False, '!', '?', 71, '@']
   ```
-  
+
   Good luck!
   -/
 
-vc-preamble: |-
+vc-preamble: |
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def flatten_me {α : Type u} (lst : List (List α ⊕ α)) : List α :=
@@ -42,7 +42,7 @@ vc-theorems: |-
   theorem flatten_no_nesting {α : Type u} :
     ∀ (lst : List α), flatten_me (lst.map fun x => Sum.inr x) = lst :=
     sorry
-  
+
   theorem flatten_properties {α : Type u} (lst : List (List α ⊕ α)) :
     let flattened := flatten_me lst
     let atomic_elements := lst.filterMap (fun x => match x with
@@ -62,26 +62,26 @@ vc-theorems: |-
     -- Property 3: Length is sum of atomic elements and nested lengths
     flattened.length = atomic_elements.length + nested_lengths.foldl (·+·) 0 :=
     sorry
-  
-  /-
-  info: [1, 2, 3, 4]
-  -/
-  -- #guard_msgs in
-  -- #eval flatten_me [1, [2, 3], 4]
-  
-  /-
-  info: ['a', 'b', 'c', 'd']
-  -/
-  -- #guard_msgs in
-  -- #eval flatten_me [["a", "b"], "c", ["d"]]
-  
-  /-
-  info: ['!', '?']
-  -/
-  -- #guard_msgs in
-  -- #eval flatten_me ["!", "?"]
 
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+
+  /-
+  info: [1, 2, 3, 4]
+  -/
+  #guard_msgs in
+  #eval flatten_me [1, [2, 3], 4]
+
+  /-
+  info: ['a', 'b', 'c', 'd']
+  -/
+  #guard_msgs in
+  #eval flatten_me [["a", "b"], "c", ["d"]]
+
+  /-
+  info: ['!', '?']
+  -/
+  #guard_msgs in
+  #eval flatten_me ["!", "?"]
 

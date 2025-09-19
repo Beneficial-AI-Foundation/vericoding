@@ -26,17 +26,20 @@ spec fn valid_input(arr: Seq<int>) -> bool {
 // </vc-preamble>
 
 // <vc-helpers>
+spec fn arr_to_seq(arr: Vec<i8>) -> Seq<int> {
+    arr@.map(|i, v| v as int)
+}
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(arr: Seq<int>) -> (result: int)
+fn solve(arr: Vec<i8>) -> (result: u8)
     requires 
-        valid_input(arr),
+        valid_input(arr_to_seq(arr)),
     ensures 
         result > 0,
-        result <= arr.len() - 1,
-        exists|i: int, j: int| 0 <= i < j < arr.len() && #[trigger] arr[i] == #[trigger] arr[j] && arr[i] == seq_min(arr) && j - i == result,
-        forall|i: int, j: int| 0 <= i < j < arr.len() && #[trigger] arr[i] == #[trigger] arr[j] && arr[i] == seq_min(arr) ==> j - i >= result,
+        result as int <= arr.len() - 1,
+        exists|i: int, j: int| 0 <= i < j < arr.len() && #[trigger] arr_to_seq(arr)[i] == #[trigger] arr_to_seq(arr)[j] && arr_to_seq(arr)[i] == seq_min(arr_to_seq(arr)) && j - i == result as int,
+        forall|i: int, j: int| 0 <= i < j < arr.len() && #[trigger] arr_to_seq(arr)[i] == #[trigger] arr_to_seq(arr)[j] && arr_to_seq(arr)[i] == seq_min(arr_to_seq(arr)) ==> j - i >= result as int,
 // </vc-spec>
 // <vc-code>
 {

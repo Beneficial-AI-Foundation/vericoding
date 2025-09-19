@@ -1,31 +1,31 @@
 vc-description: |-
   /-
   In this Kata, you will be given a mathematical string and your task will be to remove all braces as follows:
-  
+
   ```Haskell
   solve("x-(y+z)") = "x-y-z"
   solve("x-(y-z)") = "x-y+z"
   solve("u-(v-w-(x+y))-z") = "u-v+w+x+y-z"
   solve("x-(-y-z)") = "x+y+z"
   ```
-  
+
   There are no spaces in the expression. Only two operators are given: `"+" or "-"`. 
-  
+
   More examples in test cases. 
-  
+
   Good luck!
   -/
 
 vc-preamble: |-
   def solve (expr : String) : String := sorry
-  
+
   def isBalanced (expr : String) : Bool := sorry
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def validateResult (result : String) : Bool := sorry
-  
+
   theorem single_variables_theorem (vars : List Char)
     (h1 : ∀ c ∈ vars, 'a' ≤ c ∧ c ≤ 'z')
     (h2 : vars.length ≥ 1)
@@ -44,7 +44,7 @@ vc-theorems: |-
     let result := solve expr
     validateResult result ∧
     (∀ v ∈ vars, result.data.contains v) := sorry
-  
+
   theorem arbitrary_expressions_theorem (expr : String)
     (h1 : expr.length ≥ 1)
     (h2 : expr.length ≤ 20)
@@ -53,26 +53,26 @@ vc-theorems: |-
     let result := solve expr
     validateResult result ∧
     (∀ c ∈ result.data, c.isAlpha → c ∈ expr.data) := sorry
-  
-  /-
-  info: 'x-y-z'
-  -/
-  -- #guard_msgs in
-  -- #eval solve "x-(y+z)"
-  
-  /-
-  info: 'x-y+z'
-  -/
-  -- #guard_msgs in
-  -- #eval solve "x-(y-z)"
-  
-  /-
-  info: 'u-v+w+x+y-z'
-  -/
-  -- #guard_msgs in
-  -- #eval solve "u-(v-w-(x+y))-z"
 
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+
+  /-
+  info: 'x-y-z'
+  -/
+  #guard_msgs in
+  #eval solve "x-(y+z)"
+
+  /-
+  info: 'x-y+z'
+  -/
+  #guard_msgs in
+  #eval solve "x-(y-z)"
+
+  /-
+  info: 'u-v+w+x+y-z'
+  -/
+  #guard_msgs in
+  #eval solve "u-(v-w-(x+y))-z"
 

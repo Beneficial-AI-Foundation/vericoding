@@ -26,12 +26,12 @@ spec fn correct_output(input: Seq<u8>, result: Seq<u8>) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(input: Seq<u8>) -> (result: Seq<u8>)
+fn solve(input: Vec<u8>) -> (result: Vec<u8>)
     requires 
-        valid_input(input),
+        valid_input(input@),
     ensures 
-        correct_output(input, result),
-        (!valid_command_input(input) ==> result.len() == 0),
+        correct_output(input@, result@),
+        (!valid_command_input(input@) ==> result@.len() == 0),
 // </vc-spec>
 // <vc-code>
 {

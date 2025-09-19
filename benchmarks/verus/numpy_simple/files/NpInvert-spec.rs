@@ -20,7 +20,7 @@ spec fn pow2(n: nat) -> nat
 fn invert(bit_width: u32, a: Vec<u32>) -> (result: Vec<u32>)
     ensures
         result.len() == a.len(),
-        forall|i: int| 0 <= i < a.len() ==> result[i] == (pow2(bit_width as nat) - 1) - a[i]
+        forall|i: int| 0 <= i < a@.len() ==> result@[i] == (pow2(bit_width as nat) - 1) - a@[i]
 // </vc-spec>
 // <vc-code>
 {

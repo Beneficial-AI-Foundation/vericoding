@@ -27,9 +27,9 @@ spec fn valid_output(s: Seq<char>, result: Seq<char>) -> bool
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(s: Seq<char>) -> (result: Seq<char>)
-    requires valid_input(s)
-    ensures valid_output(s, result)
+fn solve(s: Vec<char>) -> (result: Vec<char>)
+    requires valid_input(s@)
+    ensures valid_output(s@, result@)
 // </vc-spec>
 // <vc-code>
 {

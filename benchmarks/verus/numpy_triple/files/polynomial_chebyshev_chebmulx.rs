@@ -8,7 +8,7 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn chebmulx(c: Vec<f64>) -> (result: Vec<f64>)
+fn chebmulx(c: Vec<i8>) -> (result: Vec<i8>)
     requires c.len() > 0,
     ensures
         result.len() == c.len() + 1,

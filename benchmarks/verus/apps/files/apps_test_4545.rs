@@ -24,9 +24,9 @@ spec fn valid_output(n: int, a: int, result: int) -> bool
 // </vc-helpers>
 
 // <vc-spec>
-fn calculate_black_squares(n: int, a: int) -> (black_squares: int)
-    requires valid_input(n, a)
-    ensures valid_output(n, a, black_squares)
+fn calculate_black_squares(n: i8, a: i8) -> (black_squares: i8)
+    requires valid_input(n as int, a as int)
+    ensures valid_output(n as int, a as int, black_squares as int)
 // </vc-spec>
 // <vc-code>
 {

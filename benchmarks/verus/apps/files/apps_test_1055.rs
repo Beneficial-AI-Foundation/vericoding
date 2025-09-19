@@ -32,11 +32,11 @@ spec fn thanos_sort(x: Seq<int>) -> int
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(a: Seq<int>) -> (result: usize)
+fn solve(a: Vec<i8>) -> (result: usize)
     requires 
-        valid_input(a),
+        valid_input(a@.map(|i, x| x as int)),
     ensures 
-        result as int == thanos_sort(a),
+        result as int == thanos_sort(a@.map(|i, x| x as int)),
         1 <= result <= a.len(),
 // </vc-spec>
 // <vc-code>

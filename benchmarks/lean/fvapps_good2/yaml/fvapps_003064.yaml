@@ -1,0 +1,89 @@
+vc-description: |-
+  /-
+  The first positive integer, `n`, with its value `4n² + 1`, being divisible by `5` and `13` is `4`. (condition 1)
+  
+  It can be demonstrated that we have infinite numbers that may satisfy the above condition.
+  
+  If we name **ai**, the different terms of the sequence of numbers with this property, we define `S(n)` as:
+  
+  We are interested in working with numbers of this sequence from 10 to 15 digits. Could you elaborate a solution for these results?
+  
+  You will be given an integer value `m`(always valid an positive) and you should output the closest value of the sequence to `m`.
+  
+  If the given value `m` is in the sequence, your solution should return the same value.
+  
+  In the case that there are two possible solutions: `s1` and `s2`, (`s1 < s2`), because `|m - s1| = |m - s2|`, output the highest solution `s2`
+  
+  No hardcoded solutions are allowed.
+  
+  No misterious formulae are required, just good observation to discover hidden patterns.
+  
+  See the example tests to see output format and useful examples, edge cases are included.
+  
+  Features of the random tests
+  `1000 <= m <= 5.2 e14`
+  
+  **Note** Sierpinsky presented the numbers that satisfy condition (1)
+  -/
+
+vc-preamble: |-
+
+vc-helpers: |-
+
+vc-definitions: |-
+  def generate_sierpinski_sequence (n : Nat) : List Nat :=
+    sorry
+  
+  def find_closest_value (m : Nat) : Nat :=
+    sorry
+  
+  def abs (n : Nat) : Nat :=
+    sorry
+
+vc-theorems: |-
+  theorem sequence_is_strictly_increasing {n : Nat} (h : 0 < n) (h2 : n ≤ 10000) :
+    let seq := generate_sierpinski_sequence n
+    ∀ i, i + 1 < seq.length → seq.get! i < seq.get! (i + 1) :=
+  sorry
+  
+  theorem sequence_first_values {n : Nat} (h : 0 < n) (h2 : n ≤ 10000) :
+    let seq := generate_sierpinski_sequence n
+    seq.length ≥ 4 → seq.take 4 = [4, 13, 69, 130] :=
+  sorry
+  
+  theorem closest_value_properties {m : Nat} (h : 0 < m) (h2 : m ≤ 10000) :
+    let closest := find_closest_value m
+    let seq := generate_sierpinski_sequence (m * 2)
+    (closest ∈ seq) ∧
+    (∀ x ∈ seq, abs (closest - m) ≤ abs (x - m)) ∧
+    (∀ x ∈ seq, abs (x - m) = abs (closest - m) → x > m → closest ≥ x) :=
+  sorry
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded
+  
+  /--
+  info: 4
+  -/
+  #guard_msgs in
+  #eval find_closest_value 1
+  
+  /--
+  info: 5074
+  -/
+  #guard_msgs in
+  #eval find_closest_value 5000
+  
+  /--
+  info: 14313
+  -/
+  #guard_msgs in
+  #eval find_closest_value 14313
+  
+  /--
+  info: 18720
+  -/
+  #guard_msgs in
+  #eval find_closest_value 18332
+

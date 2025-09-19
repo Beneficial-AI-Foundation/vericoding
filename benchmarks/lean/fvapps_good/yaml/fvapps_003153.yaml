@@ -1,0 +1,88 @@
+vc-description: |-
+  /-
+  **Getting Familiar:**
+  LEET: (sometimes written as "1337" or "l33t"), also known as eleet or leetspeak, is another alphabet for the English language that is used mostly on the internet. It uses various combinations of ASCII characters to replace Latinate letters. For example, leet spellings of the word leet include 1337 and l33t; eleet may be spelled 31337 or 3l33t.
+
+  GREEK: 
+  The Greek alphabet has been used to write the Greek language since the 8th century BC. It was derived from the earlier Phoenician alphabet, and was the first alphabetic script to have distinct letters for vowels as well as consonants. It is the ancestor of the Latin and Cyrillic scripts.Apart from its use in writing the Greek language, both in its ancient and its modern forms, the Greek alphabet today also serves as a source of technical symbols and labels in many domains of mathematics, science and other fields.
+
+  **Your Task :** 
+
+      You have to create a function **GrεεκL33t** which    
+      takes a string as input and returns it in the form of 
+      (L33T+Grεεκ)Case.
+      Note: The letters which are not being converted in 
+      (L33T+Grεεκ)Case should be returned in the lowercase.
+
+  **(L33T+Grεεκ)Case:**
+
+      A=α (Alpha)      B=β (Beta)      D=δ (Delta)
+      E=ε (Epsilon)    I=ι (Iota)      K=κ (Kappa)
+      N=η (Eta)        O=θ (Theta)     P=ρ (Rho)
+      R=π (Pi)         T=τ (Tau)       U=μ (Mu)      
+      V=υ (Upsilon)    W=ω (Omega)     X=χ (Chi)
+      Y=γ (Gamma)
+
+  **Examples:**
+
+      GrεεκL33t("CodeWars") = "cθδεωαπs"
+      GrεεκL33t("Kata") = "κατα"
+  -/
+
+vc-preamble: |
+
+vc-helpers: |
+
+vc-definitions: |-
+  def greek_l33t (s : String) : String := sorry
+
+  theorem greek_l33t_length (s : String) :
+    (greek_l33t s).length = s.length :=
+  sorry
+
+vc-theorems: |-
+  theorem greek_l33t_lowercase (s : String) :
+    (greek_l33t s).toLower = greek_l33t s := 
+  sorry
+
+  theorem greek_l33t_unmapped_unchanged (s : String) (i : String.Pos) : 
+    let c := s.get i
+    ¬(c.toLower ∈ ['a', 'b', 'd', 'e', 'i', 'k', 'n', 'o', 'p', 'r', 't', 'u', 'v', 'w', 'x', 'y']) →
+    (greek_l33t s).get i = c.toLower :=
+  sorry
+
+  theorem greek_l33t_mapped_correct (s : String) (i : String.Pos) :
+    let c := s.get i
+    let mapping := [('a','α'), ('b','β'), ('d','δ'), ('e','ε'), ('i','ι'), ('k','κ'),
+                   ('n','η'), ('o','θ'), ('p','ρ'), ('r','π'), ('t','τ'), ('u','μ'),
+                   ('v','υ'), ('w','ω'), ('x','χ'), ('y','γ')]
+    c.toLower ∈ mapping.map Prod.fst →
+    (greek_l33t s).get i = (mapping.find? (fun p => p.1 = c.toLower)).get!.2 :=
+  sorry
+
+  theorem greek_l33t_idempotent (s : String) :
+    greek_l33t (greek_l33t s) = greek_l33t s :=
+  sorry
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded
+
+  /--
+  info: 'cθδεωαπs'
+  -/
+  #guard_msgs in
+  #eval greek_l33t "codewars"
+
+  /--
+  info: 'κατα'
+  -/
+  #guard_msgs in
+  #eval greek_l33t "kata"
+
+  /--
+  info: 'κμmιτε'
+  -/
+  #guard_msgs in
+  #eval greek_l33t "kumite"
+

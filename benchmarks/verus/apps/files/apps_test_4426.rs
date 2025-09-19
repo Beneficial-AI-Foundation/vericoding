@@ -21,12 +21,12 @@ spec fn days_until_sunday(day: &str) -> int {
 // </vc-helpers>
 
 // <vc-spec>
-fn days_to_next_sunday(day: &str) -> (result: int)
+fn days_to_next_sunday(day: &str) -> (result: i8)
     requires 
         valid_day(day)
     ensures 
-        result >= 1 && result <= 7,
-        result == days_until_sunday(day)
+        result as int >= 1 && result as int <= 7,
+        result as int == days_until_sunday(day)
 // </vc-spec>
 // <vc-code>
 {

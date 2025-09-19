@@ -8,41 +8,41 @@ vc-description: |-
   - Replace $X$ with $X+a$.  
   - Replace $X$ with $X-b$.
   Find minimum number of rounds (possibly zero) to make lab clean.
-  
+
   -----Input:-----
   - First line will contain $T$, number of test cases. $T$ testcases follow :  
   - Each test case contains two space separated integers $X, Y$. 
-  
+
   -----Output:-----
   For each test case, output an integer denoting minimum number of rounds to clean the lab.
-  
+
   -----Constraints-----
   - $1 \leq T \leq 10^5$
   - $ |X|,|Y| \leq 10^9$
-  
+
   -----Sample Input:-----
   3
   0 5
   4 -5
   0 10000001
-  
+
   -----Sample Output:-----
   1
   2
   1
-  
+
   -----EXPLANATION:-----
   - 
   For the first testcase, you can convert $X$ to $Y$  by choosing $a=5$ and $b=2$.
-  
+
   It will cost minimum of $1$ cleaning round. You can select any other combination of $a, b$ satisfying above condition but will take minimum of $1$ cleaning round in any case.
   - 
   For the second testcase, you can convert $X$ to $Y$ by choosing $a=1$ and $b=10$. In first round they will replace $X$ to $X+a$ and then in second round replace to $X-b$. You can perform only one operation in one round.
   -/
 
-vc-preamble: |-
+vc-preamble: |
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def calc_min_cleaning_rounds (x y : Int) : Nat :=
@@ -53,15 +53,15 @@ vc-theorems: |-
     let result := calc_min_cleaning_rounds x y
     0 ≤ result ∧ result ≤ 3 :=
     sorry
-  
+
   theorem same_input_zero (x : Int) :
     calc_min_cleaning_rounds x x = 0 :=
     sorry
-  
+
   theorem multiple_four_diff_equals_three (x : Int) :
     calc_min_cleaning_rounds x (x + 4) = 3 :=
     sorry
-  
+
   theorem parity_cleaning_rounds (x y : Int) :
     let result := calc_min_cleaning_rounds x y
     let diff := y - x
@@ -70,26 +70,26 @@ vc-theorems: |-
     (y < x → (diff % 2 = 0 → result = 1) ∧
              (diff % 2 ≠ 0 → result = 2)) :=
     sorry
-  
-  /-
-  info: 1
-  -/
-  -- #guard_msgs in
-  -- #eval calc_min_cleaning_rounds 0 5
-  
-  /-
-  info: 2
-  -/
-  -- #guard_msgs in
-  -- #eval calc_min_cleaning_rounds 4 -5
-  
-  /-
-  info: 1
-  -/
-  -- #guard_msgs in
-  -- #eval calc_min_cleaning_rounds 0 10000001
 
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
+
+  /-
+  info: 1
+  -/
+  #guard_msgs in
+  #eval calc_min_cleaning_rounds 0 5
+
+  /-
+  info: 2
+  -/
+  #guard_msgs in
+  #eval calc_min_cleaning_rounds 4 -5
+
+  /-
+  info: 1
+  -/
+  #guard_msgs in
+  #eval calc_min_cleaning_rounds 0 10000001
 

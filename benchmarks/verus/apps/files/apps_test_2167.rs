@@ -27,9 +27,9 @@ spec fn correct_result(n: int, arr: Seq<int>, result: int) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: int, arr: Seq<int>) -> (result: int)
-    requires valid_input(n, arr)
-    ensures correct_result(n, arr, result)
+fn solve(n: i8, arr: Vec<i8>) -> (result: i8)
+    requires valid_input(n as int, arr@.map(|i: int, x: i8| x as int))
+    ensures correct_result(n as int, arr@.map(|i: int, x: i8| x as int), result as int)
 // </vc-spec>
 // <vc-code>
 {

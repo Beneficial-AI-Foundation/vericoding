@@ -8,35 +8,35 @@ vc-description: |-
   - Every $Q$$i$ query has 2 values $X$$i$ and $Y$$i$.
   - Avani needs to find the sum of the values between $X$$i$ and $Y$$i$ (inclusive).
   So, you need to help Avani in answering the $Q$ queries
-  
+
   -----Input:-----
   - First line will contain $T$, number of testcases. Then the testcases follow. 
   - The first line of each test case contains the value $N$ and $Q$.
   - The second line of each test case contains the $N$ space-separated values as $a$$1$,$ a$$2$, $a$$3$…$a$$n$.
   - The next line of each test case containing $Q$ query with $X$$i$ and $Y$$i$.
-  
+
   -----Output:-----
   For each test case, Print the total amount between $X$$i$ and $Y$$i$ for $Q$ number of queries.
-  
+
   -----Constraints-----
   - $1 \leq T \leq 100$
   - $1 \leq N \leq 10^5$
   - $1 \leq Q \leq 10^5$
   - $1 \leq a$$i$$ \leq 10^9$
-  
+
   -----Subtasks (25 points) :-----
   - $1 \leq N \leq 10^2$.
   - $1 \leq Q \leq 10^2$.
   - $1 \leq a$$i$$ \leq 10^5$.
-  
+
   -----Subtasks (25 points) :-----
   - $1 \leq N \leq 10^3$.
   - $1 \leq Q \leq 10^3$.
   - $1 \leq a$$i$$ \leq 10^5$.
-  
+
   -----Subtasks (50 points) :-----
   - $Original  Constraints$.
-  
+
   -----Sample Input:-----
   1
   8 3
@@ -44,21 +44,21 @@ vc-description: |-
   2 3
   1 6
   5 8
-  
+
   -----Sample Output:-----
   5
   21
   26
-  
+
   -----EXPLANATION:-----
   $Q$$1$ : (2,3) 2+3=5
   $Q$$2$ : (1,6) 1+2+3+4+5+6=21
   $Q$$3$ : (5,8) 5+6+7+8=26
   -/
 
-vc-preamble: |-
+vc-preamble: |
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def solve_bill_queries (n q : Nat) (bills : List Nat) (queries : List (Nat × Nat)) : List Nat :=
@@ -70,13 +70,13 @@ vc-theorems: |-
     (h1 : bills.length > 0) (h2 : queries.length > 0) :
     (solve_bill_queries n q bills queries).length = queries.length :=
   sorry
-  
+
   theorem solve_bill_queries_results_bounded
     (n q : Nat) (bills : List Nat) (queries : List (Nat × Nat))
     (h1 : bills.length > 0) (h2 : queries.length > 0) :
     ∀ x, x ∈ solve_bill_queries n q bills queries → x < 10^9 :=
   sorry
-  
+
   theorem solve_bill_queries_matches_sum_mod
     (n q : Nat) (bills : List Nat) (queries : List (Nat × Nat))
     (h1 : bills.length > 0) (h2 : queries.length > 0)
@@ -87,32 +87,32 @@ vc-theorems: |-
     (solve_bill_queries n q bills queries)[i]'(by rw [solve_bill_queries_results_length n q bills queries h1 h2]; exact hi) = 
       sublist.foldl (fun acc x => acc + x) 0 % (10^9) :=
   sorry
-  
+
   theorem solve_bill_queries_whole_array
     (bills : List Nat) (h : bills.length > 0) :
     solve_bill_queries (bills.length) 1 bills [(1, bills.length)] = 
       [bills.foldl (fun acc x => acc + x) 0 % (10^9)] :=
   sorry
-  
-  /-
-  info: [5, 21, 26]
-  -/
-  -- #guard_msgs in
-  -- #eval solve_bill_queries 8 3 [1, 2, 3, 4, 5, 6, 7, 8] [(2, 3), (1, 6), (5, 8)]
-  
-  /-
-  info: [6, 14]
-  -/
-  -- #guard_msgs in
-  -- #eval solve_bill_queries 5 2 [1, 2, 3, 4, 5] [(1, 3), (2, 5)]
-  
-  /-
-  info: [60]
-  -/
-  -- #guard_msgs in
-  -- #eval solve_bill_queries 3 1 [10, 20, 30] [(1, 3)]
 
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded
+
+  /-
+  info: [5, 21, 26]
+  -/
+  #guard_msgs in
+  #eval solve_bill_queries 8 3 [1, 2, 3, 4, 5, 6, 7, 8] [(2, 3), (1, 6), (5, 8)]
+
+  /-
+  info: [6, 14]
+  -/
+  #guard_msgs in
+  #eval solve_bill_queries 5 2 [1, 2, 3, 4, 5] [(1, 3), (2, 5)]
+
+  /-
+  info: [60]
+  -/
+  #guard_msgs in
+  #eval solve_bill_queries 3 1 [10, 20, 30] [(1, 3)]
 

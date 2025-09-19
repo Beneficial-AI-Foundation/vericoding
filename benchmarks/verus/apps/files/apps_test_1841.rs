@@ -20,12 +20,12 @@ spec fn distinct_count(a: Seq<int>, start: int) -> int
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: int, m: int, a: Seq<int>, queries: Seq<int>) -> (result: Seq<int>)
+fn solve(n: i8, m: i8, a: Vec<i8>, queries: Vec<i8>) -> (result: Vec<i8>)
     requires 
-        valid_input(n, m, a, queries)
+        valid_input(n as int, m as int, a@.map(|i, x| x as int), queries@.map(|i, x| x as int))
     ensures 
         result.len() == m &&
-        (forall|i: int| 0 <= i < m ==> (#[trigger] result[i], result[i] == distinct_count(a, queries[i] - 1)).1)
+        (forall|i: int| 0 <= i < m ==> (#[trigger] result@[i], result@[i] as int == distinct_count(a@.map(|i, x| x as int), queries@[i] as int - 1)).1)
 // </vc-spec>
 // <vc-code>
 {

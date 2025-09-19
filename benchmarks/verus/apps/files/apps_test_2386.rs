@@ -46,12 +46,12 @@ spec fn abs_int(x: int) -> int {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: int, a: Seq<int>) -> (result: int)
+fn solve(n: i8, a: Vec<i8>) -> (result: i8)
     requires 
-        valid_input(n, a),
+        valid_input(n as int, a@.map(|i: int, x: i8| x as int)),
     ensures 
         result >= 0,
-        result == sum_abs_diffs(transform(a), median_of(transform(a))),
+        result as int == sum_abs_diffs(transform(a@.map(|i: int, x: i8| x as int)), median_of(transform(a@.map(|i: int, x: i8| x as int)))),
 // </vc-spec>
 // <vc-code>
 {

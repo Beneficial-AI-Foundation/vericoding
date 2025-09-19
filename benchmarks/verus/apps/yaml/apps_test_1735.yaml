@@ -8,39 +8,47 @@ vc-preamble: |-
   verus! {
 
   spec fn count_max_moves(s: Seq<char>) -> nat
+      decreases s.len()
   {
-      if s.len() == 0 { 0 }
-      else {
-          let stack = Seq::<char>::empty();
-          let moves = 0;
+      if s.len() == 0 {
+          0
+      } else {
+          let stack: Seq<char> = seq![];
+          let moves: nat = 0;
           count_max_moves_helper(s, 0, stack, moves)
       }
   }
   
   spec fn count_max_moves_helper(s: Seq<char>, i: nat, stack: Seq<char>, moves: nat) -> nat
-      recommends i <= s.len()
       decreases s.len() - i
   {
-      if i == s.len() { moves }
-      else if stack.len() > 0 && s[i as int] == stack[stack.len() as int - 1] {
-          count_max_moves_helper(s, i + 1, stack.subrange(0, stack.len() as int - 1), moves + 1)
+      if i <= s.len() {
+          if i == s.len() {
+              moves
+          } else if stack.len() > 0 && s[i as int] == stack[stack.len() as int - 1] {
+              count_max_moves_helper(s, i + 1, stack.subrange(0, stack.len() as int - 1), moves + 1)
+          } else {
+              count_max_moves_helper(s, i + 1, stack.push(s[i as int]), moves)
+          }
       } else {
-          count_max_moves_helper(s, i + 1, stack.push(s[i as int]), moves)
+          0
       }
   }
 
 vc-helpers: |-
 
 vc-spec: |-
-  fn solve(s: &Vec<char>) -> (result: bool)
+  fn solve(s: Vec<char>) -> (result: &'static str)
       requires s.len() >= 1
-      ensures 
-          result <==> count_max_moves(s@) % 2 == 1
+      ensures
+          result == "Yes" || result == "No",
+          result == "Yes" <==> count_max_moves(s@) % 2 == 1,
+          result == "No" <==> count_max_moves(s@) % 2 == 0,
 
 vc-code: |-
   {
       assume(false);
-      false
+      "No"
   }
 
 vc-postamble: |-

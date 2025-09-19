@@ -75,6 +75,9 @@ async def process_item(
     is_flat: bool = False,
     is_yaml: bool = False,
     benchmark_path: str = "",
+    fix_types: bool = False,
+    fix_in_place: bool = False,
+    fix_to_folder: str | None = None,
     # Debug options
     save_debug: bool = False,
     debug_dir: Path = Path("debug_sessions"),
@@ -179,7 +182,11 @@ async def process_item(
     for attempt in range(max_retries + 1):
         try:
             translation_result = await translate_code_to_verus(
-                source_code, source_language, target_language, is_yaml
+                source_code,
+                source_language,
+                target_language,
+                is_yaml,
+                fix_types=fix_types,
             )
 
             translated_code = translation_result.output_content
@@ -248,11 +255,61 @@ async def process_item(
             else:
                 output_file_path = status_artifact_path / output_filename
 
-            with open(output_file_path, "w") as output_file:
-                output_file.write(translated_code)
-            logfire.info(
-                f"Generated {target_language} code saved to: {output_file_path}"
-            )
+            # Handle in-place fixes or fix-to-folder
+            if fix_in_place:
+                # For in-place fixes, write back to the original source file
+                # Use source_path from local benchmark loading if available
+                if "source_path" in item:
+                    original_file_path = Path(item["source_path"])
+                else:
+                    # Fallback to source_filename for other cases
+                    original_file_path = (
+                        source_filename
+                        if hasattr(source_filename, "exists")
+                        else Path(source_filename)
+                    )
+
+                with open(original_file_path, "w") as output_file:
+                    output_file.write(translated_code)
+                logfire.info(f"Fixed file in-place: {original_file_path}")
+                output_file_path = original_file_path  # Update for logging/debug
+            elif fix_to_folder:
+                # For fix-to-folder, create the same structure under the target folder organized by verification status
+                if "source_path" in item:
+                    original_file_path = Path(item["source_path"])
+                    # Get the relative path from the benchmark directory
+                    benchmark_base = Path(benchmark_path)
+                    try:
+                        relative_path = original_file_path.relative_to(benchmark_base)
+                    except ValueError:
+                        # If we can't make it relative, use the filename
+                        relative_path = original_file_path.name
+                else:
+                    relative_path = (
+                        source_filename.name
+                        if hasattr(source_filename, "name")
+                        else str(source_filename)
+                    )
+
+                # Create the target path in the fix_to_folder within the benchmark directory, organized by verification status
+                fix_folder_path = (
+                    Path(benchmark_path) / fix_to_folder / compilation_status
+                )
+                target_file_path = fix_folder_path / relative_path
+                target_file_path.parent.mkdir(parents=True, exist_ok=True)
+
+                with open(target_file_path, "w") as output_file:
+                    output_file.write(translated_code)
+                logfire.info(
+                    f"Fixed file saved to: {target_file_path} (status: {compilation_status})"
+                )
+                output_file_path = target_file_path  # Update for logging/debug
+            else:
+                with open(output_file_path, "w") as output_file:
+                    output_file.write(translated_code)
+                logfire.info(
+                    f"Generated {target_language} code saved to: {output_file_path}"
+                )
 
             # Update debug context with output file path if available
             if debug_context:
@@ -409,6 +466,9 @@ async def main_async(
     max_concurrent: int = 3,
     file_pattern: str = "*.dfy",
     limit: int | None = None,
+    fix_types: bool = False,
+    fix_in_place: bool = False,
+    fix_to_folder: str | None = None,
     # Debug options
     save_debug: bool = False,
     debug_dir: Path = Path("debug_sessions"),
@@ -511,6 +571,9 @@ async def main_async(
                 is_flat=is_flat,
                 is_yaml=is_yaml,
                 benchmark_path=benchmark,
+                fix_types=fix_types,
+                fix_in_place=fix_in_place,
+                fix_to_folder=fix_to_folder,
                 # Debug options
                 save_debug=save_debug,
                 debug_dir=debug_dir,

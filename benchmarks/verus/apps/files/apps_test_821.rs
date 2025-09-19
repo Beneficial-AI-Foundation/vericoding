@@ -32,7 +32,7 @@ spec fn valid_result(result: Seq<char>) -> bool
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(s: i32, v1: i32, v2: i32, t1: i32, t2: i32) -> (result: Vec<char>)
+fn solve(s: i8, v1: i8, v2: i8, t1: i8, t2: i8) -> (result: Vec<char>)
     requires 
         valid_input(s as int, v1 as int, v2 as int, t1 as int, t2 as int)
     ensures 

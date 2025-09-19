@@ -1,0 +1,78 @@
+vc-description: |-
+  /-
+  You are given a string s containing lowercase letters and an integer k. You need to :
+
+  First, change some characters of s to other lowercase English letters.
+  Then divide s into k non-empty disjoint substrings such that each substring is palindrome.
+
+  Return the minimal number of characters that you need to change to divide the string.
+
+  Example 1:
+  Input: s = "abc", k = 2
+  Output: 1
+  Explanation: You can split the string into "ab" and "c", and change 1 character in "ab" to make it palindrome.
+
+  Example 2:
+  Input: s = "aabbc", k = 3
+  Output: 0
+  Explanation: You can split the string into "aa", "bb" and "c", all of them are palindrome.
+  Example 3:
+  Input: s = "leetcode", k = 8
+  Output: 0
+
+  Constraints:
+
+  1 <= k <= s.length <= 100.
+  s only contains lowercase English letters.
+  -/
+
+vc-preamble: |
+
+vc-helpers: |
+
+vc-definitions: |-
+  def palindrome_partition (s : String) (k : Nat) : Nat := sorry
+
+  theorem palindrome_partition_non_negative 
+    (s : String) (k : Nat) (h: k > 0) (h2: k ≤ s.length) :
+    palindrome_partition s k ≥ 0 := sorry
+
+vc-theorems: |-
+  theorem palindrome_partition_full_length
+    (s : String) (h: s.length > 0) :
+    palindrome_partition s s.length = 0 := sorry
+
+  theorem palindrome_partition_bounded
+    (s : String) (k : Nat) (h: k > 0) (h2: k ≤ s.length) :
+    palindrome_partition s k ≤ s.length := sorry
+
+  theorem palindrome_partition_single 
+    (s : String) (h: s.length > 0) :
+    palindrome_partition s 1 = palindrome_partition s 1 := sorry
+
+  theorem palindrome_partition_individual_chars
+    (s : String) (h: s.length > 0) :
+    palindrome_partition s s.length = 0 := sorry
+
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded
+
+  /--
+  info: 1
+  -/
+  #guard_msgs in
+  #eval palindrome_partition "abc" 2
+
+  /--
+  info: 0
+  -/
+  #guard_msgs in
+  #eval palindrome_partition "aabbc" 3
+
+  /--
+  info: 0
+  -/
+  #guard_msgs in
+  #eval palindrome_partition "leetcode" 8
+

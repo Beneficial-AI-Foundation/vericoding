@@ -13,12 +13,12 @@ spec fn is_hard_to_enter(s: Seq<char>) -> bool
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(s: Seq<char>) -> (result: Seq<char>)
-    requires s.len() == 4
+fn solve(s: Vec<char>) -> (result: Vec<char>)
+    requires s@.len() == 4
     ensures 
-        result.len() > 0,
-        (result == seq!['B', 'a', 'd'] <==> is_hard_to_enter(s)),
-        (result == seq!['G', 'o', 'o', 'd'] <==> !is_hard_to_enter(s))
+        result@.len() > 0,
+        (result@ == seq!['B', 'a', 'd'] <==> is_hard_to_enter(s@)),
+        (result@ == seq!['G', 'o', 'o', 'd'] <==> !is_hard_to_enter(s@))
 // </vc-spec>
 // <vc-code>
 {

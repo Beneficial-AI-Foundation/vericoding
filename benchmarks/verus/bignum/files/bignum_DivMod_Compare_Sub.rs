@@ -44,14 +44,14 @@ fn compare(s1: Seq<char>, s2: Seq<char>) -> (res: i32)
 // </vc-helpers>
 
 // <vc-spec>
-fn div_mod(dividend: Seq<char>, divisor: Seq<char>) -> (res: (Seq<char>, Seq<char>))
+fn div_mod(dividend: Vec<char>, divisor: Vec<char>) -> (res: (Vec<char>, Vec<char>))
     requires 
-        valid_bit_string(dividend) && valid_bit_string(divisor),
-        str2int(divisor) > 0,
+        valid_bit_string(dividend@) && valid_bit_string(divisor@),
+        str2int(divisor@) > 0,
     ensures 
-        valid_bit_string(res.0) && valid_bit_string(res.1),
-        str2int(res.0) == str2int(dividend) / str2int(divisor),
-        str2int(res.1) == str2int(dividend) % str2int(divisor),
+        valid_bit_string(res.0@) && valid_bit_string(res.1@),
+        str2int(res.0@) == str2int(dividend@) / str2int(divisor@),
+        str2int(res.1@) == str2int(dividend@) % str2int(divisor@),
 // </vc-spec>
 // <vc-code>
 {

@@ -37,12 +37,12 @@ vc-preamble: |-
 vc-helpers: |-
 
 vc-spec: |-
-  fn hfft(a: Vec<Complex>, m: usize) -> (result: Vec<f32>)
+  fn hfft(a: Vec<Complex>, m: u8) -> (result: Vec<f32>)
       requires 
           m > 0,
-          a.len() == m + 1,
+          a.len() == m as nat + 1,
       ensures
-          result.len() == 2 * m,
+          result.len() == 2 * m as nat,
 
 vc-code: |-
   {
@@ -53,4 +53,3 @@ vc-code: |-
 vc-postamble: |-
   }
   fn main() {}
-

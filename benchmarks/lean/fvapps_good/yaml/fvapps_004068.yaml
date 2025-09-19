@@ -1,0 +1,73 @@
+vc-description: |-
+  /-
+  # Introduction
+
+  The first century spans from the **year 1** *up to* and **including the year 100**, **The second** - *from the year 101 up to and including the year 200*, etc.
+
+  # Task : 
+  Given a year, return the century it is in.
+  -/
+
+vc-preamble: |
+
+vc-helpers: |
+
+vc-definitions: |-
+  def century (year : Nat) : Nat :=
+    sorry
+
+vc-theorems: |-
+  theorem century_positive (year : Nat) (h : year > 0) :
+    century year > 0 :=
+  sorry
+
+  theorem century_lower_bound (year : Nat) (h : year > 0) :
+    (century year) * 100 - 99 ≤ year :=
+  sorry
+
+  theorem century_upper_bound (year : Nat) (h : year > 0) :
+    (century year) * 100 ≥ year :=
+  sorry
+
+  theorem first_century (year : Nat) (h1 : year > 0) (h2 : year < 100) :
+    century year = 1 :=
+  sorry
+
+  theorem century_boundaries_100 :
+    century 100 = 1 :=
+  sorry
+
+  theorem century_boundaries_101 :
+    century 101 = 2 :=
+  sorry
+
+  theorem century_boundaries_200 :
+    century 200 = 2 :=
+  sorry
+
+  theorem century_boundaries_201 :
+    century 201 = 3 :=
+  sorry
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded_and_plausible
+
+  /--
+  info: 18
+  -/
+  #guard_msgs in
+  #eval century 1705
+
+  /--
+  info: 19
+  -/
+  #guard_msgs in
+  #eval century 1900
+
+  /--
+  info: 1
+  -/
+  #guard_msgs in
+  #eval century 89
+

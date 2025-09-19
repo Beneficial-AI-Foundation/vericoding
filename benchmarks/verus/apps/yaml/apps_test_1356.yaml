@@ -32,13 +32,13 @@ vc-preamble: |-
 vc-helpers: |
 
 vc-spec: |-
-  fn solve(s: Seq<char>) -> (result: usize)
+  fn solve(s: Vec<char>) -> (result: usize)
       requires 
-          valid_input(s),
+          valid_input(s@),
       ensures 
           result >= 1,
           result <= s.len(),
-          result == min(2 * count_a(s) - 1, s.len() as int) as usize,
+          result == min(2 * count_a(s@) - 1, s.len() as int) as usize,
 
 vc-code: |-
   {

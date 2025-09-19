@@ -8,11 +8,11 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn not_equal(a: Vec<i32>, b: Vec<i32>) -> (result: Vec<bool>)
+fn not_equal(a: Vec<i8>, b: Vec<i8>) -> (result: Vec<bool>)
     requires a.len() == b.len(),
     ensures 
         result.len() == a.len(),
-        forall|i: int| 0 <= i < a.len() ==> result[i] == (a[i] != b[i])
+        forall|i: int| 0 <= i < a.len() ==> result[i] == (a[i] as int != b[i] as int)
 // </vc-spec>
 // <vc-code>
 {

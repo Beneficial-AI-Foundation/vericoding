@@ -1,25 +1,25 @@
 vc-description: |-
   /-
   Given a string, find the first non-repeating character in it and return it's index. If it doesn't exist, return -1.
-  
+
   Examples:
-  
+
   s = "leetcode"
   return 0.
-  
+
   s = "loveleetcode",
   return 2.
-  
+
   Note: You may assume the string contain only lowercase letters.
   -/
 
-vc-preamble: |-
+vc-preamble: |
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def first_unique_char (s : String) : Int := sorry
-  
+
   theorem empty_string_returns_negative_one : 
     first_unique_char "" = -1 := 
   sorry
@@ -29,26 +29,26 @@ vc-theorems: |-
     (h : 'a' ≤ c ∧ c ≤ 'z') : 
     first_unique_char (String.mk [c]) = 0 := 
   sorry
-  
-  /-
-  info: 0
-  -/
-  -- #guard_msgs in
-  -- #eval first_unique_char "leetcode"
-  
-  /-
-  info: 2
-  -/
-  -- #guard_msgs in
-  -- #eval first_unique_char "loveleetcode"
-  
-  /-
-  info: -1
-  -/
-  -- #guard_msgs in
-  -- #eval first_unique_char "aabb"
 
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
+
+  /-
+  info: 0
+  -/
+  #guard_msgs in
+  #eval first_unique_char "leetcode"
+
+  /-
+  info: 2
+  -/
+  #guard_msgs in
+  #eval first_unique_char "loveleetcode"
+
+  /-
+  info: -1
+  -/
+  #guard_msgs in
+  #eval first_unique_char "aabb"
 

@@ -1,0 +1,95 @@
+vc-description: |-
+  /-
+  Appy and Chef are participating in a contest. There are $N$ problems in this contest; each problem has a unique problem code between $1$ and $N$ inclusive. Appy and Chef decided to split the problems to solve between them ― Appy should solve the problems whose problem codes are divisible by $A$ but not divisible by $B$, and Chef should solve the problems whose problem codes are divisible by $B$ but not divisible by $A$ (they decided to not solve the problems whose codes are divisible by both $A$ and $B$).
+  To win, it is necessary to solve at least $K$ problems. You have to tell Appy whether they are going to win or lose.
+
+  -----Input-----
+  - The first line of the input contains a single integer $T$ denoting the number of test cases. The description of $T$ test cases follows.
+  - The first and only line of each test case contains four space-separated integers $N$, $A$, $B$ and $K$.
+
+  -----Output-----
+  For each test case, print a single line containing the string "Win" if they can solve at least $K$ problems or "Lose" otherwise (without quotes).
+
+  -----Constraints-----
+  - $1 \le T \le 15$
+  - $1 \le K \le N \le 10^{18}$
+  - $1 \le A, B \le 10^9$
+
+  -----Subtasks-----
+  Subtask #1 (15 points):
+  - $1 \le T \le 15$
+  - $1 \le K \le N \le 10^6$
+  - $1 \le A, B \le 10^3$
+  Subtask #2 (85 points): original constraints
+
+  -----Example Input-----
+  1
+  6 2 3 3
+
+  -----Example Output-----
+  Win
+
+  -----Explanation-----
+  Example case 1: Appy is solving the problems with codes $2$ and $4$, Chef is solving the problem with code $3$. Nobody is solving problem $6$, since $6$ is divisible by both $2$ and $3$. Therefore, they can solve $3$ problems and win.
+  -/
+
+vc-preamble: |
+
+vc-helpers: |
+
+vc-definitions: |-
+  def check_win (n a b k : Nat) : String := sorry
+
+  theorem check_win_returns_valid_result 
+    (n a b k : Nat) 
+    (h1 : 0 < n) (h2 : a ≤ n) (h3 : b ≤ n) (h4 : k ≤ n) (h5 : 0 < a) (h6 : 0 < b) :
+    check_win n a b k = "Win" ∨ check_win n a b k = "Lose" := sorry
+
+vc-theorems: |-
+  theorem check_win_is_deterministic 
+    (n a b k : Nat) 
+    (h1 : 0 < n) (h2 : a ≤ n) (h3 : b ≤ n) (h4 : k ≤ n) (h5 : 0 < a) (h6 : 0 < b) :
+    check_win n a b k = check_win n a b k := sorry
+
+  theorem check_win_same_divisor 
+    (n a : Nat) 
+    (h1 : 0 < n) (h2 : 0 < a) (h3 : a ≤ n) :
+    check_win n a a 1 = "Lose" := sorry
+
+  theorem check_win_symmetry 
+    (n a b k : Nat)
+    (h1 : 0 < n) (h2 : a ≤ n) (h3 : b ≤ n) (h4 : k ≤ n) (h5 : 0 < a) (h6 : 0 < b) :
+    check_win n a b k = check_win n b a k := sorry
+
+  theorem check_win_k_zero 
+    (n a b : Nat)
+    (h1 : 0 < n) (h2 : a ≤ n) (h3 : b ≤ n) (h4 : 0 < a) (h5 : 0 < b) :
+    check_win n a b 0 = "Win" := sorry
+
+  theorem check_win_k_too_large 
+    (n a b : Nat)
+    (h1 : 0 < n) (h2 : a ≤ n) (h3 : b ≤ n) (h4 : 0 < a) (h5 : 0 < b) :
+    check_win n a b (n + 1) = "Lose" := sorry
+
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded
+
+  /--
+  info: 'Win'
+  -/
+  #guard_msgs in
+  #eval check_win 6 2 3 3
+
+  /--
+  info: 'Win'
+  -/
+  #guard_msgs in
+  #eval check_win 10 2 3 4
+
+  /--
+  info: 'Lose'
+  -/
+  #guard_msgs in
+  #eval check_win 5 2 2 3
+

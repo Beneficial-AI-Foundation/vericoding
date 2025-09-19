@@ -38,12 +38,12 @@ vc-preamble: |-
 vc-helpers: |
 
 vc-spec: |-
-  fn solve(n: int, f: Seq<int>) -> (result: String)
+  fn solve(n: i8, f: Vec<i8>) -> (result: String)
       requires 
-          valid_input(n, f),
+          valid_input(n as int, f@.map(|i: int, x: i8| x as int)),
       ensures 
           result@.len() == 2 || result@.len() == 3,
-          (result@.len() == 3) <==> has_love_triangle(n, f),
+          (result@.len() == 3) <==> has_love_triangle(n as int, f@.map(|i: int, x: i8| x as int)),
 
 vc-code: |-
   {

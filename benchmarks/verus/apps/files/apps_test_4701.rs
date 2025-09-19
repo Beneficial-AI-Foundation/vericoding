@@ -24,9 +24,9 @@ spec fn apply_operations(start: int, operations: Seq<bool>, k: int) -> int
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: int, k: int) -> (result: int)
-    requires valid_input(n, k)
-    ensures result >= 1
+fn solve(n: i8, k: i8) -> (result: i8)
+    requires valid_input(n as int, k as int)
+    ensures result as int >= 1
 // </vc-spec>
 // <vc-code>
 {

@@ -1,0 +1,81 @@
+vc-description: |-
+  /-
+  Given a string S of '(' and ')' parentheses, we add the minimum number of parentheses ( '(' or ')', and in any positions ) so that the resulting parentheses string is valid.
+  Formally, a parentheses string is valid if and only if:
+  
+  It is the empty string, or
+  It can be written as AB (A concatenated with B), where A and B are valid strings, or
+  It can be written as (A), where A is a valid string.
+  
+  Given a parentheses string, return the minimum number of parentheses we must add to make the resulting string valid.
+  
+  Example 1:
+  Input: "())"
+  Output: 1
+  
+  Example 2:
+  Input: "((("
+  Output: 3
+  
+  Example 3:
+  Input: "()"
+  Output: 0
+  
+  Example 4:
+  Input: "()))(("
+  Output: 4
+  
+  Note:
+  
+  S.length <= 1000
+  S only consists of '(' and ')' characters.
+  -/
+
+vc-preamble: |-
+
+vc-helpers: |-
+
+vc-definitions: |-
+  def min_parens_to_add (s : String) : Nat :=
+  sorry
+  
+  def is_balanced (s : String) : Bool :=
+  sorry
+  
+  def count_char (s : String) (c : Char) : Nat :=
+  sorry
+
+vc-theorems: |-
+  theorem empty_string : min_parens_to_add "" = 0 :=
+  sorry
+  
+  theorem unmatched_open (n : Nat) :
+    min_parens_to_add (String.mk (List.replicate n '(')) = n :=
+  sorry
+  
+  theorem unmatched_close (n : Nat) :
+    min_parens_to_add (String.mk (List.replicate n ')')) = n :=
+  sorry
+
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: guarded_and_plausible
+  
+  /--
+  info: 1
+  -/
+  #guard_msgs in
+  #eval min_parens_to_add "())"
+  
+  /--
+  info: 3
+  -/
+  #guard_msgs in
+  #eval min_parens_to_add "((("
+  
+  /--
+  info: 0
+  -/
+  #guard_msgs in
+  #eval min_parens_to_add "()"
+

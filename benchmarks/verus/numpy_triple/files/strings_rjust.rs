@@ -17,14 +17,14 @@ spec fn is_suffix_of<T>(suffix: Seq<T>, full: Seq<T>) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn rjust(orig: Vec<char>, width: nat, fillchar: char) -> (res: Vec<char>)
+fn rjust(orig: Vec<char>, width: u8, fillchar: char) -> (res: Vec<char>)
     ensures
-        res.len() == max_nat(orig.len() as nat, width),
-        (orig.len() >= width ==> res@ == orig@) &&
-        (orig.len() < width ==> res.len() == width && is_suffix_of(orig@, res@)) &&
-        (orig.len() >= width ==> res.len() == orig.len()) &&
-        (orig.len() < width ==> res.len() == width) &&
-        (orig.len() == 0 ==> res.len() == width)
+        res.len() == max_nat(orig.len() as nat, width as nat),
+        (orig.len() >= width as usize ==> res@ == orig@) &&
+        (orig.len() < width as usize ==> res.len() == width as usize && is_suffix_of(orig@, res@)) &&
+        (orig.len() >= width as usize ==> res.len() == orig.len()) &&
+        (orig.len() < width as usize ==> res.len() == width as usize) &&
+        (orig.len() == 0 ==> res.len() == width as usize)
 // </vc-spec>
 // <vc-code>
 {

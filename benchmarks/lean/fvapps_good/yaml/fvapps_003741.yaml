@@ -1,0 +1,70 @@
+vc-description: |-
+  /-
+  There is enough money available on ATM in nominal value 10, 20, 50, 100, 200 and 500 dollars.
+
+  You are given money in nominal value of `n` with `1<=n<=1500`.
+
+  Try to find minimal number of notes that must be used to repay in dollars, or output -1 if it is impossible.
+
+  Good Luck!!!
+  -/
+
+vc-preamble: |
+
+vc-helpers: |
+
+vc-definitions: |-
+  def solve (n : Int) : Int := sorry
+
+  def bills : List Int := [500, 200, 100, 50, 20, 10]
+
+vc-theorems: |-
+  theorem solve_spec (n : Int) (h : n > 0) (h2 : n ≤ 10^6) :
+    let result := solve n
+    if n % 10 ≠ 0 then
+      result = -1
+    else
+      result ≥ 0 ∧ 
+      result ≤ n / 10 ∧
+      ∃ (count : Int) (remaining : Int) (reconstructed : Int),
+        count = result ∧
+        reconstructed + remaining = n ∧
+        (∀ bill ∈ bills,
+          ∃ (num_bills : Int) (remaining' : Int),
+            remaining = bill * num_bills + remaining' ∧
+            remaining' < bill ∧
+            count ≥ 0) := sorry
+
+  theorem solve_optimal (n : Int) (h : n > 0) (h2 : n ≤ 10^6) (h3 : n % 10 = 0) :
+    let result := solve n
+    result > 0 ∧ 
+    ∀ (count : Int) (total : Int) (remaining : Int),
+      (∀ bill ∈ bills,
+        ∃ (num_bills : Int) (remaining' : Int),
+          remaining = bill * num_bills + remaining' ∧
+          remaining' < bill ∧
+          count = result) →
+      result ≤ count := sorry
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded
+
+  /--
+  info: 4
+  -/
+  #guard_msgs in
+  #eval solve 770
+
+  /--
+  info: 2
+  -/
+  #guard_msgs in
+  #eval solve 550
+
+  /--
+  info: -1
+  -/
+  #guard_msgs in
+  #eval solve 125
+

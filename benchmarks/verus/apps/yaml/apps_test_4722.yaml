@@ -17,11 +17,11 @@ vc-preamble: |-
 vc-helpers: |
 
 vc-spec: |-
-  fn solve(a: int, b: int) -> (result: String)
+  fn solve(a: i8, b: i8) -> (result: String)
       requires 
-          valid_input(a, b)
+          valid_input(a as int, b as int)
       ensures 
-          result@ == seq!['P', 'o', 's', 's', 'i', 'b', 'l', 'e'] <==> distribution_possible(a, b),
+          result@ == seq!['P', 'o', 's', 's', 'i', 'b', 'l', 'e'] <==> distribution_possible(a as int, b as int),
           result@ == seq!['P', 'o', 's', 's', 'i', 'b', 'l', 'e'] || result@ == seq!['I', 'm', 'p', 'o', 's', 's', 'i', 'b', 'l', 'e']
 
 vc-code: |-

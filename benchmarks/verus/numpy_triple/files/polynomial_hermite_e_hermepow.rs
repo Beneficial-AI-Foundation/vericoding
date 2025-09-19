@@ -8,7 +8,7 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn hermepow(c: Vec<f64>, pow: usize, maxpower: usize) -> (result: Vec<f64>)
+fn hermepow(c: Vec<f64>, pow: u8, maxpower: u8) -> (result: Vec<f64>)
     requires 
         pow <= maxpower,
         maxpower <= 16,
@@ -20,10 +20,9 @@ fn hermepow(c: Vec<f64>, pow: usize, maxpower: usize) -> (result: Vec<f64>)
         pow == 1 ==> result.len() == c.len() &&
             (forall|i: int| 0 <= i < c.len() ==> result[i] == c[i]),
 
-        pow >= 1 ==> result.len() == 1 + (c.len() - 1) * pow,
+        pow as int >= 1 ==> result.len() == 1 + (c.len() - 1) * pow as int,
 
-        pow >= 1 && c.len() > 0 ==> exists|highest_coeff: f64| 
-            result[result.len() - 1] == highest_coeff,
+        pow as int >= 1 && c.len() > 0 ==> result.len() > 0,
 // </vc-spec>
 // <vc-code>
 {

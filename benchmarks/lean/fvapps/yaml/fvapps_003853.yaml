@@ -3,21 +3,21 @@ vc-description: |-
   Mr. E Ven only likes even length words.
   Please create a translator so that he doesn't have to hear those pesky odd length words.
   For some reason he also hates punctuation, he likes his sentences to flow.
-  
+
   Your translator should take in a string and output it with all odd length words having an extra letter (the last letter in the word). It should also remove all punctuation (.,?!) as well as any underscores (_).
-  
+
   "How did we end up here? We go?"
   translated becomes-> 
   "Howw didd we endd up here We go"
   -/
 
-vc-preamble: |-
+vc-preamble: |
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def evenize_word (word : String) : String := sorry
-  
+
   def evenator (s : String) : String := sorry
 
 vc-theorems: |-
@@ -27,7 +27,7 @@ vc-theorems: |-
     (result.startsWith word) ∧
     (word.length % 2 = 1 → result = word ++ word.back.toString) ∧
     (word.length % 2 = 0 → result = word) := sorry
-  
+
   theorem evenator_properties (words : List String) :
     let input_string := String.join words
     let result := evenator input_string
@@ -36,30 +36,30 @@ vc-theorems: |-
     (∀ c ∈ result.data, c.isAlphanum ∨ c.isWhitespace) ∧
     (let input_alnum_words := (input_string.split (· = ' ')).filter (fun w => ∃ c ∈ w.data, c.isAlphanum)
      result_words.length = input_alnum_words.length) := sorry
-  
+
   theorem evenator_empty_and_whitespace (s : String) 
     (h : ∀ c ∈ s.data, ¬c.isAlpha ∧ ¬c.isDigit) :
     evenator s = "" := sorry
-  
-  /-
-  info: 'II gott aa hole in 11'
-  -/
-  -- #guard_msgs in
-  -- #eval evenator "I got a hole in 1!"
-  
-  /-
-  info: 'hi howw aree youu Byee'
-  -/
-  -- #guard_msgs in
-  -- #eval evenator test2
-  
-  /-
-  info: 'underr thee seAA'
-  -/
-  -- #guard_msgs in
-  -- #eval evenator test3
 
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+
+  /-
+  info: 'II gott aa hole in 11'
+  -/
+  #guard_msgs in
+  #eval evenator "I got a hole in 1!"
+
+  /-
+  info: 'hi howw aree youu Byee'
+  -/
+  #guard_msgs in
+  #eval evenator test2
+
+  /-
+  info: 'underr thee seAA'
+  -/
+  #guard_msgs in
+  #eval evenator test3
 

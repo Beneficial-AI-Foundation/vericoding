@@ -1,0 +1,37 @@
+vc-description: |-
+  This verification task determines whether a given positive integer
+  n can be expressed as the sum of exactly 4 positive even numbers. The key insight
+  is that the minimum sum is 8 (2+2+2+2), and only even numbers can be expressed this
+  way since the sum of 4 even numbers is always even.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+  spec fn valid_input(n: int) -> bool {
+      n > 0
+  }
+
+  spec fn can_be_sum_of_four_positive_evens(n: int) -> bool {
+      n % 2 == 0 && n >= 8
+  }
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn is_equal_to_sum_even(n: i8) -> (result: bool)
+      requires valid_input(n as int)
+      ensures result == can_be_sum_of_four_positive_evens(n as int)
+
+vc-code: |-
+  {
+      assume(false);
+      unreached()
+  }
+
+vc-postamble: |-
+
+  }
+
+  fn main() {}

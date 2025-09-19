@@ -1,0 +1,106 @@
+vc-description: |-
+  /-
+  Build Tower Advanced
+  ---
+  
+  Build Tower by the following given arguments:
+  __number of floors__ (integer and always greater than 0)
+  __block size__ (width, height) (integer pair and always greater than (0, 0))
+  
+  Tower block unit is represented as `*`
+  
+  * Python: return a `list`;
+  * JavaScript: returns an `Array`;
+  
+  Have fun!
+  ***
+  
+  for example, a tower of 3 floors with block size = (2, 3) looks like below
+  ```
+  [
+    '    **    ',
+    '    **    ',
+    '    **    ',
+    '  ******  ',
+    '  ******  ',
+    '  ******  ',
+    '**********',
+    '**********',
+    '**********'
+  ]
+  ```
+  and a tower of 6 floors with block size = (2, 1) looks like below
+  ```
+  [
+    '          **          ', 
+    '        ******        ', 
+    '      **********      ', 
+    '    **************    ', 
+    '  ******************  ', 
+    '**********************'
+  ]
+  ```
+  ***
+  Go take a look at [Build Tower](https://www.codewars.com/kata/576757b1df89ecf5bd00073b) which is a more basic version :)
+  -/
+
+vc-preamble: |-
+
+vc-helpers: |-
+
+vc-definitions: |-
+  def towerBuilder (n : Nat) (width height : Nat) : List String := sorry
+  
+  theorem tower_builder_row_count
+    {n width height : Nat}
+    (h₁ : n > 0)
+    (h₂ : width > 0)
+    (h₃ : height > 0) :
+    (towerBuilder n width height).length = n * height := sorry
+
+vc-theorems: |-
+  theorem tower_builder_row_width
+    {n width height : Nat}
+    (h₁ : n > 0)
+    (h₂ : width > 0)
+    (h₃ : height > 0)
+    (row : String)
+    (h₄ : row ∈ towerBuilder n width height) :
+    row.length = (2 * n - 1) * width := sorry
+  
+  theorem tower_builder_asterisk_count
+    {n width height : Nat}
+    (h₁ : n > 0) 
+    (h₂ : width > 0)
+    (h₃ : height > 0)
+    (floor : Nat)
+    (h₄ : floor < n)
+    (row : String)
+    (h₅ : row ∈ List.drop (floor * height) (List.take ((floor + 1) * height) (towerBuilder n width height))) :
+    (row.toList.filter (· = '*')).length = (2 * floor + 1) * width := sorry
+  
+  theorem tower_builder_symmetry
+    {n width height : Nat}
+    (h₁ : n > 0)
+    (h₂ : width > 0)
+    (h₃ : height > 0)
+    (row : String)
+    (h₄ : row ∈ towerBuilder n width height) :
+    row.toList = (row.toList.reverse) := sorry
+  
+  theorem tower_builder_consistent_floor_rows
+    {n width height : Nat}
+    (h₁ : n > 0)
+    (h₂ : width > 0)
+    (h₃ : height > 0)
+    (floor : Nat)
+    (h₄ : floor < n)
+    (row₁ row₂ : String)
+    (h₅ : row₁ ∈ List.drop (floor * height) (List.take ((floor + 1) * height) (towerBuilder n width height)))
+    (h₆ : row₂ ∈ List.drop (floor * height) (List.take ((floor + 1) * height) (towerBuilder n width height))) :
+    row₁ = row₂ := sorry
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded
+

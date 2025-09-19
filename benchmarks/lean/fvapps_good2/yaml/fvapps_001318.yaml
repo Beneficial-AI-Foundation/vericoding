@@ -1,0 +1,74 @@
+vc-description: |-
+  /-
+  Master Shifu is training Po to become The Dragon Warrior and as a final assignment he must obtain maximum deliciousness from dumplings. There are  $N$ plates of dumplings in front of him with deliciousness $A_1, A_2, \ldots, A_N$, Po can choose any number of continuous plates of  dumplings. The total deliciousness is the sum of deliciousness of all the  chosen dumplings.
+  What is the minimum number of plates he must choose so that total deliciousness is maximum possible?
+  Note: Po must choose atleast one plate.
+  
+  -----Input:-----
+  - The first line of the input contains a single integer $T$ denoting the number of test cases. The description of $T$ test cases follows.
+  - The first line of each test case contains a single integer $N$.
+  - The second line contains $N$ space-separated integers $A_1, A_2, \ldots, A_N$.
+  
+  -----Output:-----
+  For each test case, print a single line containing one integer.
+  
+  -----Constraints-----
+  - $1 \le T \le 10$
+  - $1 \le N \le 2 \cdot 10^5$
+  - $0 \le A_i \le 10^9$
+  
+  -----Sample Input:-----
+  2
+  4
+  1 2 3 4
+  5
+  3 2 0 3 0
+  
+  -----Sample Output:-----
+  4
+  4
+  -/
+
+vc-preamble: |-
+
+vc-helpers: |-
+
+vc-definitions: |-
+  def min_plates_max_deliciousness (n : Nat) (arr : List Nat) : Nat :=
+    sorry
+  
+  def countLeadingZeros (arr : List Nat) : Nat :=
+  sorry
+  
+  def countTrailingZeros (arr : List Nat) : Nat :=
+  sorry
+
+vc-theorems: |-
+  theorem min_plates_result_bounds {n : Nat} {arr : List Nat}
+    (h : arr.length = n) (h2 : n > 0) :
+    let result := min_plates_max_deliciousness n arr
+    1 ≤ result ∧ result ≤ n :=
+  sorry
+
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: guarded_and_plausible
+  
+  /--
+  info: 4
+  -/
+  #guard_msgs in
+  #eval min_plates_max_deliciousness 4 [1, 2, 3, 4]
+  
+  /--
+  info: 4
+  -/
+  #guard_msgs in
+  #eval min_plates_max_deliciousness 5 [3, 2, 0, 3, 0]
+  
+  /--
+  info: 1
+  -/
+  #guard_msgs in
+  #eval min_plates_max_deliciousness 3 [0, 0, 0]
+

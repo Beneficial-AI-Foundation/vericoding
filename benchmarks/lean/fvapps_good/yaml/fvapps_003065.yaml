@@ -1,0 +1,74 @@
+vc-description: |-
+  /-
+  Given two numbers (m and n) :
+
+  - convert all numbers from m to n to binary
+  - sum them as if they were in base 10 
+  - convert the result to binary
+  - return as string
+
+  Eg: with the numbers 1 and 4
+
+     1 // 1 to binary is 1
+  + 10 // 2 to binary is 10
+  + 11 // 3 to binary is 11
+  +100 // 4 to binary is 100
+  ----
+   122 // 122 in Base 10 to Binary is 1111010
+
+  So BinaryPyramid ( 1 , 4 ) should return "1111010" 
+
+  range should be ascending in order
+  -/
+
+vc-preamble: |
+
+vc-helpers: |
+
+vc-definitions: |-
+  def binary_pyramid (m n : Nat) : String := sorry
+
+  theorem binary_pyramid_valid_bits (m n : Nat) :
+    let result := binary_pyramid m n
+    ∀ c ∈ result.toList, c = '0' ∨ c = '1' := sorry
+
+vc-theorems: |-
+  theorem binary_pyramid_length_bound (m n : Nat) :
+    let maxSum := (List.range (n - m + 1)).map (fun i => toString (Nat.toDigits 2 (i + m)))
+                  |> List.map (fun s => String.toNat! s) 
+                  |> List.foldl (· + ·) 0
+    (binary_pyramid m n).length ≤ (toString (Nat.toDigits 2 maxSum)).length := sorry
+
+  theorem binary_pyramid_value_preservation (m n : Nat) :
+    let result := binary_pyramid m n
+    let maxSum := (List.range (n - m + 1)).map (fun i => toString (Nat.toDigits 2 (i + m)))
+                  |> List.map (fun s => String.toNat! s)
+                  |> List.foldl (· + ·) 0
+    String.toNat! result = maxSum := sorry
+
+  theorem binary_pyramid_zero : binary_pyramid 0 0 = "0" := sorry
+
+  theorem binary_pyramid_one : binary_pyramid 1 1 = "1" := sorry
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded
+
+  /--
+  info: '1111010'
+  -/
+  #guard_msgs in
+  #eval binary_pyramid 1 4
+
+  /--
+  info: '101001101'
+  -/
+  #guard_msgs in
+  #eval binary_pyramid 1 6
+
+  /--
+  info: '0'
+  -/
+  #guard_msgs in
+  #eval binary_pyramid 0 0
+

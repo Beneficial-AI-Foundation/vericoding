@@ -1,0 +1,92 @@
+vc-description: |-
+  /-
+  Fox Ciel wants to write a task for a programming contest. The task is: "You are given a simple undirected graph with n vertexes. Each its edge has unit length. You should calculate the number of shortest paths between vertex 1 and vertex 2."
+  
+  Same with some writers, she wants to make an example with some certain output: for example, her birthday or the number of her boyfriend. Can you help her to make a test case with answer equal exactly to k?
+  
+  -----Input-----
+  
+  The first line contains a single integer k (1 ≤ k ≤ 10^9).
+  
+  -----Output-----
+  
+  You should output a graph G with n vertexes (2 ≤ n ≤ 1000). There must be exactly k shortest paths between vertex 1 and vertex 2 of the graph.
+  
+  The first line must contain an integer n. Then adjacency matrix G with n rows and n columns must follow. Each element of the matrix must be 'N' or 'Y'. If G_{ij} is 'Y', then graph G has a edge connecting vertex i and vertex j. Consider the graph vertexes are numbered from 1 to n.
+  
+  The graph must be undirected and simple: G_{ii} = 'N' and G_{ij} = G_{ji} must hold. And there must be at least one path between vertex 1 and vertex 2. It's guaranteed that the answer exists. If there multiple correct answers, you can output any of them. 
+  
+  -----Examples-----
+  Input
+  2
+  Output
+  4
+  NNYY
+  NNYY
+  YYNN
+  YYNN
+  Input
+  9
+  Output
+  8
+  NNYYYNNN
+  NNNNNYYY
+  YNNNNYYY
+  YNNNNYYY
+  YNNNNYYY
+  NYYYYNNN
+  NYYYYNNN
+  NYYYYNNN
+  Input
+  1
+  Output
+  2
+  NY
+  YN
+  
+  -----Note-----
+  
+  In first example, there are 2 shortest paths: 1-3-2 and 1-4-2.
+  
+  In second example, there are 9 shortest paths: 1-3-6-2, 1-3-7-2, 1-3-8-2, 1-4-6-2, 1-4-7-2, 1-4-8-2, 1-5-6-2, 1-5-7-2, 1-5-8-2.
+  -/
+  
+  -- Apps difficulty: competition
+  -- Assurance level: guarded
+
+vc-preamble: |-
+
+vc-helpers: |-
+
+vc-definitions: |-
+  def Matrix := List (List Char)
+  
+  def is_valid_adjacency_matrix (m: Matrix) : Bool :=
+  sorry
+  
+  def is_symmetric (m: Matrix) : Bool :=
+  sorry
+  
+  def generate_graph (k: Nat) : Nat × Matrix :=
+  sorry
+
+vc-theorems: |-
+  theorem generated_graph_is_valid (k: Nat) :
+    let (n, matrix) := generate_graph k;
+    is_valid_adjacency_matrix matrix = true :=
+  sorry
+  
+  theorem generated_graph_is_symmetric (k: Nat) :
+    let (n, matrix) := generate_graph k;
+    is_symmetric matrix = true :=
+  sorry
+  
+  theorem size_properties (k: Nat) :
+    let (n, matrix) := generate_graph k;
+    n ≤ 4 * k ∧
+    matrix.length = n ∧
+    List.all matrix (fun row => row.length = n) :=
+  sorry
+
+vc-postamble: |-
+

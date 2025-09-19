@@ -1,0 +1,74 @@
+vc-description: |-
+  /-
+  **Principal Diagonal** -- The principal diagonal in a matrix identifies those elements of the matrix running from North-West to South-East.
+
+  **Secondary Diagonal** -- the secondary diagonal of a matrix identifies those elements of the matrix running from North-East to South-West.
+
+  For example:
+  ```
+  matrix:             [1, 2, 3]
+                      [4, 5, 6]
+                      [7, 8, 9]
+
+  principal diagonal: [1, 5, 9]
+  secondary diagonal: [3, 5, 7]
+
+  ```
+
+  ## Task
+  Your task is to find which diagonal is "larger": which diagonal has a bigger sum of their elements.
+
+  * If the principal diagonal is larger, return `"Principal Diagonal win!"`
+  * If the secondary diagonal is larger, return `"Secondary Diagonal win!"`
+  * If they are equal, return `"Draw!"`
+
+  **Note:** You will always receive matrices of the same dimension.
+  -/
+
+vc-preamble: |
+
+vc-helpers: |
+
+vc-definitions: |-
+  def diagonal (matrix : List (List Int)) : String := sorry
+
+  theorem diagonal_2x2_property (m00 m01 m10 m11 : Int) : 
+    let principal := m00 + m11
+    let secondary := m01 + m10
+    let matrix := [[m00, m01], [m10, m11]]
+    diagonal matrix = "Principal Diagonal win!" → principal > secondary ∧
+    diagonal matrix = "Secondary Diagonal win!" → secondary > principal ∧
+    diagonal matrix = "Draw!" → principal = secondary := by sorry
+
+vc-theorems: |-
+  theorem diagonal_identity_matrix_property (n : Nat) :
+    n > 1 →
+    let matrix := List.map (fun i => List.map (fun j => if i = j then 1 else 0) (List.range n)) (List.range n)
+    diagonal matrix = "Principal Diagonal win!" := by sorry
+
+  theorem diagonal_simple_cases :
+    diagonal [[5]] = "Draw!" ∧
+    diagonal [[2,1],[1,3]] = "Principal Diagonal win!" := by sorry
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded
+
+  /--
+  info: 'Secondary Diagonal win!'
+  -/
+  #guard_msgs in
+  #eval diagonal [[2, 2, 2], [4, 2, 6], [8, 8, 2]]
+
+  /--
+  info: 'Draw!'
+  -/
+  #guard_msgs in
+  #eval diagonal [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+
+  /--
+  info: 'Principal Diagonal win!'
+  -/
+  #guard_msgs in
+  #eval diagonal [[7, 2, 2], [4, 2, 6], [1, 8, 1]]
+

@@ -1,0 +1,18 @@
+---
+vc-description: |-
+  Legendre polynomial multiplication by x using the Legendre recurrence relation.
+  This implements the multiplication of a Legendre series by the independent variable x.
+vc-preamble: |-
+  // Method to multiply a Legendre series by x
+vc-helpers: |-
+  
+vc-spec: |-
+  method LegendreMultiplyByX(c: seq<real>) returns (result: seq<real>)
+    requires |c| > 0
+    ensures |result| == |c| + 1
+vc-code: |-
+  {
+    assume {:axiom} false;
+  }
+vc-postamble: |-
+  

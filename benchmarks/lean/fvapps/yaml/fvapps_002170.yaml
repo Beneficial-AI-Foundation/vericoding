@@ -8,32 +8,32 @@ vc-description: |-
    - a_y + a_{y+1} + ... + a_{z-1} = Y
    - a_z + a_{z+1} + ... + a_{w-1} = Z
   Since the answer can be extremely large, print the number modulo 10^9+7.
-  
+
   -----Constraints-----
    - 3 ≦ N ≦ 40
    - 1 ≦ X ≦ 5
    - 1 ≦ Y ≦ 7
    - 1 ≦ Z ≦ 5
-  
+
   -----Input-----
   The input is given from Standard Input in the following format:
   N X Y Z
-  
+
   -----Output-----
   Print the number of the sequences that contain an X,Y,Z-Haiku, modulo 10^9+7.
-  
+
   -----Sample Input-----
   3 5 7 5
-  
+
   -----Sample Output-----
   1
-  
+
   Here, the only sequence that contains a 5,7,5-Haiku is [5, 7, 5].
   -/
 
-vc-preamble: |-
+vc-preamble: |
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def count_haiku_sequences (n k1 k2 k3 : Nat) : Nat :=
@@ -42,38 +42,38 @@ vc-definitions: |-
 vc-theorems: |-
   theorem small_n_property (n : Nat) (h : 1 ≤ n ∧ n ≤ 3) :
     count_haiku_sequences n 2 2 2 < 10^n := sorry
-  
+
   theorem edge_case_min_inputs :
     count_haiku_sequences 1 1 1 1 ≥ 0 := sorry
-  
+
   theorem edge_case_small_inputs :
     count_haiku_sequences 2 2 2 2 < 10^2 := sorry
-  
+
   theorem original_test_case_1 :
     count_haiku_sequences 3 5 7 5 = 1 := sorry
-  
+
   theorem original_test_case_2 :  
     count_haiku_sequences 4 5 7 5 = 34 := sorry
-  
-  /-
-  info: 1
-  -/
-  -- #guard_msgs in
-  -- #eval count_haiku_sequences 3 5 7 5
-  
-  /-
-  info: 34
-  -/
-  -- #guard_msgs in
-  -- #eval count_haiku_sequences 4 5 7 5
-  
-  /-
-  info: 863912418
-  -/
-  -- #guard_msgs in
-  -- #eval count_haiku_sequences 37 4 2 3
 
 vc-postamble: |-
   -- Apps difficulty: competition
   -- Assurance level: unguarded
+
+  /-
+  info: 1
+  -/
+  #guard_msgs in
+  #eval count_haiku_sequences 3 5 7 5
+
+  /-
+  info: 34
+  -/
+  #guard_msgs in
+  #eval count_haiku_sequences 4 5 7 5
+
+  /-
+  info: 863912418
+  -/
+  #guard_msgs in
+  #eval count_haiku_sequences 37 4 2 3
 

@@ -8,84 +8,84 @@ vc-description: |-
   The XOR of integers c_1, c_2, ..., c_m is defined as follows:
    - Let the XOR be X. In the binary representation of X, the digit in the 2^k's place (0 \leq k; k is an integer) is 1 if there are an odd number of integers among c_1, c_2, ...c_m whose binary representation has 1 in the 2^k's place, and 0 if that number is even.
   For example, let us compute the XOR of 3 and 5. The binary representation of 3 is 011, and the binary representation of 5 is 101, thus the XOR has the binary representation 110, that is, the XOR is 6.
-  
+
   -----Constraints-----
    - All input values are integers.
    - 1 \leq N \leq 200,000
    - 0 \leq a_i, b_i < 2^{28}
-  
+
   -----Input-----
   Input is given from Standard Input in the following format:
   N
   a_1 a_2 ... a_N
   b_1 b_2 ... b_N
-  
+
   -----Output-----
   Print the result of the computation.
-  
+
   -----Sample Input-----
   2
   1 2
   3 4
-  
+
   -----Sample Output-----
   2
-  
+
   On the sheet, the following four integers will be written: 4(1+3), 5(1+4), 5(2+3) and 6(2+4).
   -/
 
-vc-preamble: |-
+vc-preamble: |
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def compute_xor_sum (N : Nat) (A B : List Nat) : Nat :=
     sorry
-  
+
   /- For any valid input arrays A and B of length N, the output is non-negative and less than 2^30 -/
 
 vc-theorems: |-
   theorem output_bounds (N : Nat) (A B : List Nat) (h1 : A.length = N) (h2 : B.length = N) (h3 : ∀ x ∈ A, x ≤ 1000000) (h4 : ∀ x ∈ B, x ≤ 1000000) :
     compute_xor_sum N A B ≥ 0 ∧ compute_xor_sum N A B < 2^30 :=
     sorry
-  
-  /- The result is symmetric with respect to input arrays -/
-  
-  theorem symmetry (N : Nat) (A B : List Nat) (h1 : A.length = N) (h2 : B.length = N) :
-    compute_xor_sum N A B = compute_xor_sum N B A :=
-    sorry
-  
-  /- When both input arrays are identical, the result is even -/
-  
-  theorem identical_arrays (N : Nat) (A : List Nat) (h : A.length = N) :
-    2 ∣ compute_xor_sum N A A :=
-    sorry
-  
-  /- When both input arrays contain only zeros, the result is zero -/
-  
-  theorem zero_arrays (N : Nat) :
-    compute_xor_sum N (List.replicate N 0) (List.replicate N 0) = 0 :=
-    sorry
-  
-  /-
-  info: 2
-  -/
-  -- #guard_msgs in
-  -- #eval compute_xor_sum 2 [1, 2] [3, 4]
-  
-  /-
-  info: 8
-  -/
-  -- #guard_msgs in
-  -- #eval compute_xor_sum 6 [4, 6, 0, 0, 3, 3] [0, 5, 6, 5, 0, 3]
-  
-  /-
-  info: 2
-  -/
-  -- #guard_msgs in
-  -- #eval compute_xor_sum 5 [1, 2, 3, 4, 5] [1, 2, 3, 4, 5]
 
 vc-postamble: |-
   -- Apps difficulty: competition
   -- Assurance level: unguarded
+
+  /- The result is symmetric with respect to input arrays -/
+
+  theorem symmetry (N : Nat) (A B : List Nat) (h1 : A.length = N) (h2 : B.length = N) :
+    compute_xor_sum N A B = compute_xor_sum N B A :=
+    sorry
+
+  /- When both input arrays are identical, the result is even -/
+
+  theorem identical_arrays (N : Nat) (A : List Nat) (h : A.length = N) :
+    2 ∣ compute_xor_sum N A A :=
+    sorry
+
+  /- When both input arrays contain only zeros, the result is zero -/
+
+  theorem zero_arrays (N : Nat) :
+    compute_xor_sum N (List.replicate N 0) (List.replicate N 0) = 0 :=
+    sorry
+
+  /-
+  info: 2
+  -/
+  #guard_msgs in
+  #eval compute_xor_sum 2 [1, 2] [3, 4]
+
+  /-
+  info: 8
+  -/
+  #guard_msgs in
+  #eval compute_xor_sum 6 [4, 6, 0, 0, 3, 3] [0, 5, 6, 5, 0, 3]
+
+  /-
+  info: 2
+  -/
+  #guard_msgs in
+  #eval compute_xor_sum 5 [1, 2, 3, 4, 5] [1, 2, 3, 4, 5]
 

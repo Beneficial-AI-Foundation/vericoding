@@ -25,12 +25,12 @@ spec fn valid_bit_string(s: Seq<char>) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn zeros(n: usize) -> (s: Seq<char>)
+fn zeros(n: usize) -> (s: Vec<char>)
     ensures 
-        s.len() == n,
-        valid_bit_string(s),
-        str2int(s) == 0,
-        all_zero(s)
+        s@.len() == n,
+        valid_bit_string(s@),
+        str2int(s@) == 0,
+        all_zero(s@)
 // </vc-spec>
 // <vc-code>
 {

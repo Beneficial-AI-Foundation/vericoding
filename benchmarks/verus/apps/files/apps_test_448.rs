@@ -27,9 +27,9 @@ spec fn sum_candies_still_needed(queue: Seq<Seq<int>>) -> nat
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: int, m: int, a: Seq<int>) -> (result: int)
-    requires valid_input(n, m, a)
-    ensures valid_result(result, n)
+fn solve(n: i8, m: i8, a: Vec<i8>) -> (result: i8)
+    requires valid_input(n as int, m as int, a@.map_values(|x: i8| x as int))
+    ensures valid_result(result as int, n as int)
 // </vc-spec>
 // <vc-code>
 {

@@ -1,17 +1,17 @@
 vc-description: |-
   /-
   Deoxyribonucleic acid, DNA is the primary information storage molecule in biological systems. It is composed of four nucleic acid bases Guanine ('G'), Cytosine ('C'), Adenine ('A'), and Thymine ('T'). 
-  
+
   Ribonucleic acid, RNA, is the primary messenger molecule in cells. RNA differs slightly from DNA its chemical structure and contains no Thymine. In RNA Thymine is replaced by another nucleic acid Uracil ('U').
-  
+
   Create a function which translates a given DNA string into RNA.
-  
+
   For example:
-  
+
   ```
   "GCAT"  =>  "GCAU"
   ```
-  
+
   The input string can be of arbitrary length - in particular, it may be empty.  All input is guaranteed to be valid, i.e. each input string will only ever consist of `'G'`, `'C'`, `'A'` and/or `'T'`.
   -/
 
@@ -19,11 +19,11 @@ vc-preamble: |-
   def DNA := String
   def RNA := String
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def dna_to_rna (dna: DNA) : RNA := sorry
-  
+
   theorem length_preserved (dna: DNA) :
     (dna_to_rna dna).length = dna.length := sorry
 
@@ -34,32 +34,32 @@ vc-theorems: |-
       rna.get i = 'U'
     else
       rna.get i = dna.get i := sorry
-  
+
   theorem valid_rna_chars (dna: DNA) (i: String.Pos) :
     (dna_to_rna dna).get i ∈ ['G', 'C', 'U', 'A'] := sorry
-  
+
   theorem idempotent (rna: RNA) (h: ∀ i: String.Pos, rna.get i ∈ ['G','C','U']) :
     dna_to_rna rna = rna := sorry
-  
-  /-
-  info: 'GCAU'
-  -/
-  -- #guard_msgs in
-  -- #eval dna_to_rna "GCAT"
-  
-  /-
-  info: ''
-  -/
-  -- #guard_msgs in
-  -- #eval dna_to_rna ""
-  
-  /-
-  info: 'GACCGCCGCC'
-  -/
-  -- #guard_msgs in
-  -- #eval dna_to_rna "GACCGCCGCC"
 
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+
+  /-
+  info: 'GCAU'
+  -/
+  #guard_msgs in
+  #eval dna_to_rna "GCAT"
+
+  /-
+  info: ''
+  -/
+  #guard_msgs in
+  #eval dna_to_rna ""
+
+  /-
+  info: 'GACCGCCGCC'
+  -/
+  #guard_msgs in
+  #eval dna_to_rna "GACCGCCGCC"
 

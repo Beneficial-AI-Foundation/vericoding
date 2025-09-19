@@ -15,13 +15,13 @@ spec fn has_adjacent_skills(skills: Seq<int>) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(skills: Seq<int>) -> (teams: int)
+fn solve(skills: Vec<i8>) -> (teams: i8)
     requires 
-        valid_input(skills)
+        valid_input(skills@.map(|i, x| x as int))
     ensures 
         teams == 1 || teams == 2,
-        teams == 2 <==> has_adjacent_skills(skills),
-        teams == 1 <==> !has_adjacent_skills(skills)
+        teams == 2 <==> has_adjacent_skills(skills@.map(|i, x| x as int)),
+        teams == 1 <==> !has_adjacent_skills(skills@.map(|i, x| x as int))
 // </vc-spec>
 // <vc-code>
 {

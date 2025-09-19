@@ -1,0 +1,62 @@
+vc-description: |-
+  /-
+  Write a function `count_vowels` to count the number of vowels in a given string.
+
+  ### Notes:
+
+  - Return `nil` or `None` for non-string inputs.
+  - Return `0` if the parameter is omitted.
+
+  ### Examples:
+
+  ```python
+  count_vowels("abcdefg") => 2
+  count_vowels("aAbcdeEfg") => 4
+
+  count_vowels(12) => None
+  ```
+  -/
+
+vc-preamble: |
+
+vc-helpers: |
+
+vc-definitions: |-
+  def count_vowels (s : String) : Option Nat :=
+    sorry
+
+vc-theorems: |-
+  theorem count_vowels_eq_vowels_count (s : String) :
+    count_vowels s = some (s.data.filter (fun c => ['a', 'e', 'i', 'o', 'u'].contains c.toLower)).length := by
+    sorry
+
+  theorem count_vowels_case_insensitive (s : String) :
+    count_vowels s.toLower = count_vowels s.toUpper := by
+    sorry
+
+  theorem count_vowels_empty :
+    count_vowels "" = some 0 := by
+    sorry
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded
+
+  /--
+  info: 2
+  -/
+  #guard_msgs in
+  #eval count_vowels "abcdefg"
+
+  /--
+  info: 4
+  -/
+  #guard_msgs in
+  #eval count_vowels "aAbcdeEfg"
+
+  /--
+  info: None
+  -/
+  #guard_msgs in
+  #eval count_vowels 12
+

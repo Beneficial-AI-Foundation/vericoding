@@ -22,11 +22,11 @@ spec fn valid_output(result: Seq<char>) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: int) -> (result: Seq<char>)
-    requires valid_input(n)
+fn solve(n: i8) -> (result: Vec<char>)
+    requires valid_input(n as int)
     ensures 
-        valid_output(result) &&
-        ((result == "Yes\n"@) <==> contains_seven(n))
+        valid_output(result@) &&
+        ((result@ == "Yes\n"@) <==> contains_seven(n as int))
 // </vc-spec>
 // <vc-code>
 {

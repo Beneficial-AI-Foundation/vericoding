@@ -17,9 +17,9 @@ spec fn is_minimal_steps(x: int, steps: int) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn min_steps(x: int) -> (result: int)
-    requires valid_input(x)
-    ensures is_minimal_steps(x, result)
+fn min_steps(x: i8) -> (result: i8)
+    requires valid_input(x as int)
+    ensures is_minimal_steps(x as int, result as int)
 // </vc-spec>
 // <vc-code>
 {

@@ -8,7 +8,7 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn nditer(arr: Vec<f32>) -> (iter: (usize, Vec<f32>))
+fn nditer(arr: Vec<i8>) -> (iter: (usize, Vec<i8>))
     ensures
         iter.0 == 0,
         iter.1@ == arr@,

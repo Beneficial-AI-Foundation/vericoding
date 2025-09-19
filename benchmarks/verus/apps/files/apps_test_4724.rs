@@ -19,12 +19,12 @@ spec fn correct_result(r: int, g: int, p: int) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(r: int, g: int) -> (result: int)
+fn solve(r: i8, g: i8) -> (result: i8)
     requires 
-        valid_input(r, g)
+        valid_input(r as int, g as int)
     ensures 
-        result == required_performance(r, g) &&
-        correct_result(r, g, result)
+        result as int == required_performance(r as int, g as int) &&
+        correct_result(r as int, g as int, result as int)
 // </vc-spec>
 // <vc-code>
 {

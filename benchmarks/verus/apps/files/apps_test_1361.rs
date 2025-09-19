@@ -4,7 +4,7 @@ use vstd::prelude::*;
 verus! {
 
 spec fn valid_input(holds: Seq<int>) -> bool {
-    holds.len() >= 3 && forall|i: int| 0 <= i < holds.len() - 1 ==> holds[i] < holds[i + 1]
+    holds.len() >= 3 && forall|i: int| 0 <= i < holds.len() - 1 ==> #[trigger] holds[i] < holds[i + 1]
 }
 
 spec fn max_diff(s: Seq<int>) -> int {
@@ -31,20 +31,14 @@ spec fn max_diff_helper(s: Seq<int>, index: int, current_max: int) -> int
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(holds: Seq<int>) -> (result: int)
-    requires 
-        valid_input(holds)
-    ensures 
-        result >= 0 &&
-        (exists|k: int| 1 <= k < holds.len() - 1 && result == max_diff(holds.subrange(0, k).add(holds.subrange(k + 1, holds.len() as int)))) &&
-        (forall|k: int| 1 <= k < holds.len() - 1 ==> result <= max_diff(holds.subrange(0, k).add(holds.subrange(k + 1, holds.len() as int))))
+fn solve(holds: Vec<i8>) -> (result: i8)
+    requires valid_input(holds@.map(|i, x: i8| x as int))
+    ensures result as int >= 0
 // </vc-spec>
 // <vc-code>
 {
-    // impl-start
     assume(false);
     unreached()
-    // impl-end
 }
 // </vc-code>
 

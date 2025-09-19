@@ -1,0 +1,54 @@
+vc-description: |-
+  Return the distance between x and the nearest adjacent number.
+
+  For each element x in the input array, returns the distance to the nearest
+  adjacent floating-point number. This is equivalent to the machine epsilon
+  for the magnitude of x - it gives the smallest representable difference
+  between floating-point numbers near x.
+
+  For x = 1.0, spacing(1.0) equals the machine epsilon.
+  Spacing of ±inf and NaN is NaN.
+
+  This function is crucial for understanding floating-point precision limits
+  and is used in numerical analysis for error bounds and convergence testing.
+
+  Specification: numpy.spacing returns the distance between each element 
+  and its nearest adjacent floating-point number.
+
+  Precondition: True (spacing is defined for all floating-point numbers)
+  Postcondition: For all indices i, result[i] represents the smallest positive
+  difference between x[i] and the next representable floating-point number.
+
+  Mathematical properties:
+  - spacing(x) > 0 for all finite x (distance is always positive)
+  - spacing(1.0) = machine epsilon
+  - No representable number exists between x and x + spacing(x)
+  - spacing(±∞) = NaN and spacing(NaN) = NaN
+  - spacing(-x) = spacing(x) for finite x (symmetry around zero)
+  - spacing grows with the magnitude of x (floating-point spacing increases)
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn spacing(x: Vec<i8>) -> (result: Vec<i8>)
+      ensures
+          result@.len() == x@.len(),
+          forall|i: int| 0 <= i < x@.len() ==> #[trigger] result@[i] as int > 0
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      unreached()
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {}

@@ -1,0 +1,79 @@
+vc-description: |-
+  /-
+  Let’s get to know our hero: Agent #134 - Mr. Slayer.
+
+  He was sent by his CSV agency to Ancient Rome in order to resolve some important national issues. However, something incredible has happened - the enemies have taken Julius Caesar as a prisoner!!!
+
+  Caesar, not a simple man as you know, managed to send cryptic message with coordinates of his location hoping that somebody would break the code. Here our agent of the secret service comes to the stage.
+
+  But he needs your help!
+
+  **Mission:**
+
+  You have to implement the function “Encode” of CaesarCrypto class that codes or decodes text based on Caesar’s algorithm.the function receives 2 parameters: an original text of any length of type “string” and a number of type “int” that represents shifts;only letters in both cases must be encrypted;alphabet contains only letters in this range: a-zA-Z;by encryption the letter can change the case;shift could be either positive or negative (for left shift);If the input text is empty, null or includes only whitespaces, return an empty string.
+
+  Time's ticking away. The life of Caesar is on the chopping block! Go for it!
+  -/
+
+vc-preamble: |
+
+vc-helpers: |
+
+vc-definitions: |-
+  def caesar_crypto_encode (text : String) (shift : Int) : String := sorry
+
+  theorem caesar_length_preservation (text : String) (shift : Int) :
+    String.length (caesar_crypto_encode text shift) ≤ String.length text := sorry
+
+vc-theorems: |-
+  theorem caesar_length_strip (text : String) (shift : Int) :
+    String.length (String.trim (caesar_crypto_encode text shift)) = String.length (caesar_crypto_encode text shift) := sorry
+
+  theorem caesar_nonletters_preserved (text : String) (shift : Int) (c : Char) :
+    ¬(c.isAlpha) ∧ c ≠ ' ' →
+    (String.contains (caesar_crypto_encode text shift) c ↔ String.contains (String.trim text) c) := sorry
+
+  theorem caesar_shift_wrapping (text : String) (shift : Int) :
+    caesar_crypto_encode text shift = caesar_crypto_encode text (shift % 52) := sorry
+
+  theorem caesar_identity_shift (text : String) :
+    caesar_crypto_encode text 0 = String.trim text ∨ text.all Char.isWhitespace := sorry
+
+  theorem caesar_reverse_shift (text : String) (shift : Int) :
+    String.trim (caesar_crypto_encode (caesar_crypto_encode text shift) (-shift)) = String.trim text ∨ 
+    text.all Char.isWhitespace := sorry
+
+  theorem caesar_empty_and_whitespace_1 :
+    caesar_crypto_encode "" 1 = "" := sorry
+
+  theorem caesar_empty_and_whitespace_2 :
+    caesar_crypto_encode " \t\n" 1 = "" := sorry
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded
+
+  /--
+  info: 'eBIIL TLOIA!'
+  -/
+  #guard_msgs in
+  #eval caesar_crypto_encode "Hello world!" 127
+
+  /--
+  info: ''
+  -/
+  #guard_msgs in
+  #eval caesar_crypto_encode "" 10
+
+  /--
+  info: ''
+  -/
+  #guard_msgs in
+  #eval caesar_crypto_encode "   " 10
+
+  /--
+  info: 'Hello world!'
+  -/
+  #guard_msgs in
+  #eval caesar_crypto_encode "Hello world!" 0
+

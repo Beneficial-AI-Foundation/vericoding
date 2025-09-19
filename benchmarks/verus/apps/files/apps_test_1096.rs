@@ -42,14 +42,14 @@ spec fn valid_moves(position: Seq<char>) -> int
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(position: Seq<char>) -> (moves: i32)
+fn solve(position: Vec<char>) -> (moves: i8)
   requires 
-    valid_input(position),
+    valid_input(position@),
   ensures 
-    moves == valid_moves(position),
-    is_corner(position) ==> moves == 3,
-    is_edge(position) ==> moves == 5,
-    is_interior(position) ==> moves == 8,
+    moves as int == valid_moves(position@),
+    is_corner(position@) ==> moves == 3,
+    is_edge(position@) ==> moves == 5,
+    is_interior(position@) ==> moves == 8,
     moves == 3 || moves == 5 || moves == 8,
 // </vc-spec>
 // <vc-code>

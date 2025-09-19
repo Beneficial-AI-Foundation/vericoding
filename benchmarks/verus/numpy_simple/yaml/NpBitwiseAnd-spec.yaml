@@ -8,7 +8,7 @@ vc-preamble: |-
 vc-helpers: |-
 
 vc-spec: |-
-  fn bitwise_and(a: Vec<u32>, b: Vec<u32>) -> (result: Vec<u32>)
+  fn bitwise_and(a: Vec<u8>, b: Vec<u8>) -> (result: Vec<u8>)
       requires a.len() == b.len(),
       ensures 
           result.len() == a.len(),

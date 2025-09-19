@@ -118,12 +118,12 @@ spec fn solve_circle_separation(input: Seq<char>) -> Seq<char>
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(stdin_input: Seq<char>) -> (result: Seq<char>)
-    requires valid_input(stdin_input)
+fn solve(stdin_input: Vec<char>) -> (result: Vec<char>)
+    requires valid_input(stdin_input@)
     ensures 
-        valid_output(result) &&
-        result == solve_circle_separation(stdin_input) &&
-        result.len() > 0
+        valid_output(result@) &&
+        result@ == solve_circle_separation(stdin_input@) &&
+        result@.len() > 0
 // </vc-spec>
 // <vc-code>
 {

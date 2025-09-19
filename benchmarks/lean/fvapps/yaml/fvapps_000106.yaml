@@ -1,27 +1,27 @@
 vc-description: |-
   /-
   You're given an array $a_1, \ldots, a_n$ of $n$ non-negative integers.
-  
+
   Let's call it sharpened if and only if there exists an integer $1 \le k \le n$ such that $a_1 < a_2 < \ldots < a_k$ and $a_k > a_{k+1} > \ldots > a_n$. In particular, any strictly increasing or strictly decreasing array is sharpened. For example:  The arrays $[4]$, $[0, 1]$, $[12, 10, 8]$ and $[3, 11, 15, 9, 7, 4]$ are sharpened;  The arrays $[2, 8, 2, 8, 6, 5]$, $[0, 1, 1, 0]$ and $[2, 5, 6, 9, 8, 8]$ are not sharpened. 
-  
+
   You can do the following operation as many times as you want: choose any strictly positive element of the array, and decrease it by one. Formally, you can choose any $i$ ($1 \le i \le n$) such that $a_i>0$ and assign $a_i := a_i - 1$.
-  
+
   Tell if it's possible to make the given array sharpened using some number (possibly zero) of these operations.
-  
+
   -----Input-----
-  
+
   The input consists of multiple test cases. The first line contains a single integer $t$ ($1 \le t \le 15\ 000$)  — the number of test cases. The description of the test cases follows.
-  
+
   The first line of each test case contains a single integer $n$ ($1 \le n \le 3 \cdot 10^5$).
-  
+
   The second line of each test case contains a sequence of $n$ non-negative integers $a_1, \ldots, a_n$ ($0 \le a_i \le 10^9$).
-  
+
   It is guaranteed that the sum of $n$ over all test cases does not exceed $3 \cdot 10^5$.
-  
+
   -----Output-----
-  
+
   For each test case, output a single line containing "Yes" (without quotes) if it's possible to make the given array sharpened using the described operations, or "No" (without quotes) otherwise.
-  
+
   -----Example-----
   Input
   10
@@ -45,7 +45,7 @@ vc-description: |-
   0 1 0
   3
   1 0 1
-  
+
   Output
   Yes
   Yes
@@ -57,19 +57,19 @@ vc-description: |-
   Yes
   Yes
   No
-  
+
   -----Note-----
-  
+
   In the first and the second test case of the first test, the given array is already sharpened.
-  
+
   In the third test case of the first test, we can transform the array into $[3, 11, 15, 9, 7, 4]$ (decrease the first element $97$ times and decrease the last element $4$ times). It is sharpened because $3 < 11 < 15$ and $15 > 9 > 7 > 4$.
-  
+
   In the fourth test case of the first test, it's impossible to make the given array sharpened.
   -/
 
-vc-preamble: |-
+vc-preamble: |
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def is_array_sharpenable (n : Nat) (arr : List Int) : Bool :=
@@ -80,12 +80,12 @@ vc-theorems: |-
     (h1 : arr.length > 0) :
     is_array_sharpenable n arr = is_array_sharpenable arr.length arr :=
   sorry
-  
+
   theorem negative_values_work {n : Nat} {arr : List Int}
     (h1 : arr.length > 0) :
     ∃ result : Bool, is_array_sharpenable n arr = result :=
   sorry
-  
+
   theorem strictly_decreasing_large_numbers {n : Nat} {arr : List Int}
     (h1 : arr.length > 0)
     (h2 : ∀ x ∈ arr, x > 0)
@@ -93,32 +93,32 @@ vc-theorems: |-
     (h4 : ∀ (i j : Fin arr.length), i < j → arr.get i > arr.get j) :
     is_array_sharpenable n arr = true :=
   sorry
-  
+
   theorem all_zeros_not_sharpenable {n : Nat} {arr : List Int}
     (h1 : n > 1)
     (h2 : arr = List.replicate n 0) :
     is_array_sharpenable n arr = false :=
   sorry
-  
-  /-
-  info: True
-  -/
-  -- #guard_msgs in
-  -- #eval is_array_sharpenable 1 [248618]
-  
-  /-
-  info: True
-  -/
-  -- #guard_msgs in
-  -- #eval is_array_sharpenable 3 [12, 10, 8]
-  
-  /-
-  info: False
-  -/
-  -- #guard_msgs in
-  -- #eval is_array_sharpenable 4 [0, 1, 1, 0]
 
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
+
+  /-
+  info: True
+  -/
+  #guard_msgs in
+  #eval is_array_sharpenable 1 [248618]
+
+  /-
+  info: True
+  -/
+  #guard_msgs in
+  #eval is_array_sharpenable 3 [12, 10, 8]
+
+  /-
+  info: False
+  -/
+  #guard_msgs in
+  #eval is_array_sharpenable 4 [0, 1, 1, 0]
 

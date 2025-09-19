@@ -8,10 +8,10 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn hermeder(c: Vec<f64>, m: usize, scl: f64) -> (result: Vec<f64>)
+fn hermeder(c: Vec<f64>, m: u8, scl: f64) -> (result: Vec<f64>)
     requires 
         c.len() > 0,
-        m > 0,
+        m as nat > 0,
         scl != 0.0,
     ensures 
         result.len() == c.len() - 1,

@@ -8,11 +8,10 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn fromstring(input: &str, sep: &str, n: usize) -> (result: Vec<f64>)
+fn fromstring(input: &str, sep: &str, n: u8) -> (result: Vec<f64>)
     requires n > 0,
     ensures 
-        result.len() <= n,
-        forall|i: int| 0 <= i < result.len() ==> true,
+        result@.len() <= n as int,
 // </vc-spec>
 // <vc-code>
 {

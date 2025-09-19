@@ -1,0 +1,88 @@
+vc-description: |-
+  /-
+  [Langton's ant](https://en.wikipedia.org/wiki/Langton%27s_ant) is a two-dimensional Turing machine invented in the late 1980s. The ant starts out on a grid of black and white cells and follows a simple set of rules that has complex emergent behavior.
+  
+  ## Task
+  
+  Complete the function and return the `n`th iteration of Langton's ant with the given input.
+  
+  ### Parameters:
+  
+  * `grid` - a two dimensional array of `1`s and `0`s (representing white and black cells respectively)
+  * `column` - horizontal position of ant
+  * `row` - ant's vertical position
+  * `n` - number of iterations
+  * `dir` - ant's current direction (0 - north, 1 - east, 2 - south, 3 - west), **should default to 0**
+  
+  **Note:** parameters `column` and `row` will always be inside the `grid`, and number of generations `n` will never be negative.
+  
+  ## Output
+  
+  The state of the `grid` after `n` iterations.
+  
+  ## Rules
+  
+  The ant can travel in any of the four cardinal directions at each step it takes. The ant moves according to the rules below:
+  
+  * At a white square (represented with `1`), turn 90° right, flip the color of the square, and move forward one unit.
+  * At a black square (`0`), turn 90° left, flip the color of the square, and move forward one unit.
+  
+  The grid has no limits and therefore if the ant moves outside the borders, the grid should be expanded with `0`s, respectively maintaining the rectangle shape.
+  
+  ## Example
+  
+  ```python
+  ant([[1]], 0, 0, 1, 0)   # should return: [[0, 0]]
+  ```
+  
+  Initially facing north (`0`), at the first iteration the ant turns right (because it stands on a white square, `1`), flips the square and moves forward.
+  -/
+  
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded
+
+vc-preamble: |-
+  def BLACK : Int := 1
+  
+  def WHITE : Int := 0
+
+vc-helpers: |-
+
+vc-definitions: |-
+  def ant (grid : List (List Int)) (col : Int) (row : Int) (steps : Int)
+    (direction : Int := 0) : List (List Int) :=
+  sorry
+
+vc-theorems: |-
+  theorem ant_result_rectangular {grid : List (List Int)} {col row steps dir : Int}
+    (h1: 0 ≤ col) (h2: 0 ≤ row) (h3: 0 ≤ steps) (h4: 0 ≤ dir) (h5: dir ≤ 3)
+    (h6: grid.length > 0) (h7 : ∀ r ∈ grid, r.length = grid.head!.length) :
+    let result := ant grid col row steps dir
+    ∀ r ∈ result, r.length = result.head!.length :=
+  sorry
+  
+  theorem ant_result_valid_colors {grid : List (List Int)} {col row steps dir : Int}
+    (h1: 0 ≤ col) (h2: 0 ≤ row) (h3: 0 ≤ steps) (h4: 0 ≤ dir) (h5: dir ≤ 3) :
+    let result := ant grid col row steps dir
+    ∀ r ∈ result, ∀ cell ∈ r, cell = BLACK ∨ cell = WHITE :=
+  sorry
+  
+  theorem ant_result_size {grid : List (List Int)} {col row steps dir : Int}
+    (h1: 0 ≤ col) (h2: 0 ≤ row) (h3: 0 ≤ steps) (h4: 0 ≤ dir) (h5: dir ≤ 3) :
+    let result := ant grid col row steps dir
+    result.length ≥ grid.length ∧ result.head!.length ≥ grid.head!.length :=
+  sorry
+  
+  theorem ant_preserves_input {grid : List (List Int)} {col row steps dir : Int}
+    (h1: 0 ≤ col) (h2: 0 ≤ row) (h3: 0 ≤ steps) (h4: 0 ≤ dir) (h5: dir ≤ 3) :
+    let result := ant grid col row steps dir
+    grid = grid :=
+  sorry
+  
+  theorem ant_zero_steps {grid : List (List Int)} {col row : Int}
+    (h1: 0 ≤ col) (h2: 0 ≤ row) :
+    ant grid col row 0 = grid :=
+  sorry
+
+vc-postamble: |-
+

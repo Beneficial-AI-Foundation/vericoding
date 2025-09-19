@@ -1,6 +1,18 @@
 vc-description: |-
+  {
+    "name": "identity",
+    "description": "The identity value for the ufunc",
+    "details": "Value such that func(x, identity) == x for all x",
+    "examples": {
+      "add.identity": "0",
+      "multiply.identity": "1",
+      "logical_and.identity": "True",
+      "logical_or.identity": "False"
+    }
+  }
+
   ufunc.identity: Get the identity element for a ufunc operation.
-  
+
   Returns the identity element for a given binary operation, which is the value
   that when combined with any other value using that operation, leaves the other
   value unchanged. For example:
@@ -8,37 +20,58 @@ vc-description: |-
   - Multiplication: identity is 1 (x * 1 = x)
   - Logical AND: identity is True (x ∧ True = x)
   - Logical OR: identity is False (x ∨ False = x)
-  
+
   Some operations may have no identity element, in which case None is returned.
-  
+
   Specification: ufunc_identity returns the identity element if it exists.
-  
+
   Precondition: The operation is a valid binary function
   Postcondition: If an identity element exists, applying the operation with
                  that element leaves any other element unchanged
 
 vc-preamble: |-
   use vstd::prelude::*;
-  
-  verus! {
 
-vc-helpers: |-
+  verus! {
+  enum OpType {
+      Add,
+      Multiply,
+      LogicalAnd,
+      LogicalOr,
+  }
+
+  spec fn apply_op(op: OpType, x: int, y: int) -> int {
+      match op {
+          OpType::Add => x + y,
+          OpType::Multiply => x * y,
+          OpType::LogicalAnd => if x != 0 && y != 0 { 1 } else { 0 },
+          OpType::LogicalOr => if x != 0 || y != 0 { 1 } else { 0 },
+      }
+  }
+
+  spec fn has_identity(op: OpType, id: int) -> bool {
+      forall|x: int| apply_op(op, x, id) == x && apply_op(op, id, x) == x
+  }
+
+vc-helpers: |
 
 vc-spec: |-
-  fn ufunc_identity(op: spec_fn(f64, f64) -> f64) -> (result: Option<f64>)
+  fn ufunc_identity(op: OpType) -> (result: Option<i8>)
       ensures
           match result {
-              Some(id) => forall|x: f64| op(x, id) == x && op(id, x) == x,
-              None => !exists|id: f64| forall|x: f64| op(x, id) == x && op(id, x) == x,
+              Some(id) => has_identity(op, id as int),
+              None => forall|id: int| !has_identity(op, id)
           }
 
 vc-code: |-
   {
+      // impl-start
       assume(false);
-      unreached()
+      None
+      // impl-end
   }
 
-vc-postamble: |-
+vc-postamble: |2-
+
   }
   fn main() {}
-

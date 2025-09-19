@@ -2,20 +2,20 @@ vc-description: |-
   /-
   # Letterss of Natac
   In a game I just made up that doesn’t have anything to do with any other game that you may or may not have played, you collect resources on each turn and then use those resources to build things like roads, settlements and cities. If you would like to try other kata about this game, they can be found **[here](https://www.codewars.com/collections/59e6938afc3c49005900011f)**
-  
+
   ## Task
-  
+
   This kata asks you to implement a time efficient version of the function `play_if_enough(hand, play)` , which takes as input a `hand`, the resources you have (a string of letters representing the resources you have), and a `play`, (a string of letters representing the resources required to build a certain game object), and returns a tuple (list in r) of a boolean value, corresponding to whether you have enough resources, and your hand. If you had enough to build the object, the returned hand is your resources minus those you used to build the object. If not, it is your original hand (the one passed to the function).  
-  
+
   For example, if it takes 3 ore and 2 grain to build a city, `play` is `”ooogg”`. If `hand` is `”ooooogggssbbb”`, then `play_if_enough(hand, play)` returns `(True, “oogssbbb”)`. 
-  
+
   ## Examples
   ```python
   play_if_enough("ooooogggssbbb", "ooogg")  => (True, "oogssbbb")
   play_if_enough("oogssbbb", "bwsg")        => (False, "oogssbbb")
   play_if_enough("", "bw")                  => (False, "")
   play_if_enough("abcdefghij", "aa")        => (False, "abcdefghij")
-  
+
   ```
   ## Notes: 
   1. The order of resources in your hand (or play) is not relevant. You can shuffle your hand any way you'd like, so long as you have the same number of each resource.
@@ -30,7 +30,7 @@ vc-preamble: |-
   def play_if_enough (hand play : String) : Bool × String :=
     sorry
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def String.count (s : String) (c : Char) : Nat :=
@@ -41,51 +41,51 @@ vc-theorems: |-
     let res := play_if_enough hand play
     res.1 → res.2.length = hand.length - play.length :=
     sorry
-  
+
   theorem play_if_enough_success_subset {hand play : String} {c : Char} :
     let res := play_if_enough hand play
     res.1 → res.2.count c ≤ hand.count c :=
     sorry 
-  
+
   theorem play_if_enough_failure_preserves {hand play : String} :
     let res := play_if_enough hand play
     ¬res.1 → res.2 = hand :=
     sorry
-  
+
   theorem play_if_enough_empty_succeeds {hand : String} :
     (play_if_enough hand "").1 = true :=
     sorry
-  
+
   theorem play_if_enough_too_long_fails {hand play : String} :
     play.length > hand.length →
     ¬(play_if_enough hand play).1 :=
     sorry
-  
+
   theorem play_if_enough_impossible_preserves {hand : String} :
     let impossible := String.mk (List.replicate (hand.length + 1) 'z')
     let res := play_if_enough hand impossible
     ¬res.1 ∧ res.2 = hand :=
     sorry
-  
-  /-
-  info: (False, '')
-  -/
-  -- #guard_msgs in
-  -- #eval play_if_enough "" "bw"
-  
-  /-
-  info: (True, 'oogssbbb')
-  -/
-  -- #guard_msgs in
-  -- #eval play_if_enough "ooooogggssbbb" "ooogg"
-  
-  /-
-  info: (False, 'oogssbbb')
-  -/
-  -- #guard_msgs in
-  -- #eval play_if_enough "oogssbbb" "bwsg"
 
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+
+  /-
+  info: (False, '')
+  -/
+  #guard_msgs in
+  #eval play_if_enough "" "bw"
+
+  /-
+  info: (True, 'oogssbbb')
+  -/
+  #guard_msgs in
+  #eval play_if_enough "ooooogggssbbb" "ooogg"
+
+  /-
+  info: (False, 'oogssbbb')
+  -/
+  #guard_msgs in
+  #eval play_if_enough "oogssbbb" "bwsg"
 

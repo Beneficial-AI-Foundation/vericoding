@@ -34,7 +34,7 @@ vc-spec: |-
           forall|i: int, j: int| 0 <= i < result.len() && 0 <= j < shape.len() ==> 
               #[trigger] result[i][j] < shape[j],
           forall|i: int, j: int| 0 <= i < result.len() && 0 <= j < result.len() && i != j ==> 
-              (indices[i] != indices[j] ==> result[i] != result[j])
+              (indices[i] != indices[j] ==> result[i]@ != result[j]@)
 
 vc-code: |-
   {
@@ -45,4 +45,3 @@ vc-code: |-
 vc-postamble: |-
   }
   fn main() {}
-

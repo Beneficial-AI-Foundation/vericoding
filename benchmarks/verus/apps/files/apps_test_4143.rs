@@ -35,11 +35,11 @@ spec fn correct_result(n: int, a: int, b: int, c: int, d: int, e: int, result: i
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: int, a: int, b: int, c: int, d: int, e: int) -> (result: int)
+fn solve(n: i8, a: i8, b: i8, c: i8, d: i8, e: i8) -> (result: i8)
     requires 
-        valid_input(n, a, b, c, d, e)
+        valid_input(n as int, a as int, b as int, c as int, d as int, e as int)
     ensures 
-        correct_result(n, a, b, c, d, e, result) &&
+        correct_result(n as int, a as int, b as int, c as int, d as int, e as int, result as int) &&
         result >= 5
 // </vc-spec>
 // <vc-code>

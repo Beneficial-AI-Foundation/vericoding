@@ -13,7 +13,7 @@ vc-description: |-
   System B : 500 + 15 * 0.90 + (15 * 0.90) * 0.90 + (15 * 0.90 * 0.90) * 0.90 ( = 536.5849999999999, no rounding for each ticket)
   ```
   John wants to know how many times he must go to the cinema so that the *final result* of System B, when rounded *up* to the next dollar, will be cheaper than System A.
-  
+
   The function `movie` has 3 parameters: `card` (price of the card), `ticket` (normal price of 
   a ticket), `perc` (fraction of what he paid for the previous ticket) and returns the first `n` such that
   ```
@@ -28,9 +28,9 @@ vc-description: |-
   ```
   -/
 
-vc-preamble: |-
+vc-preamble: |
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def movie (card : Float) (ticket : Float) (perc : Float) : Nat :=
@@ -44,7 +44,7 @@ vc-theorems: |-
     0.1 ≤ perc → perc ≤ 0.99 →
     movie card ticket perc > 0
     := by sorry
-  
+
   theorem higher_card_more_visits :
     ∀ (card1 card2 ticket perc : Float),
     0 ≤ card1 → card1 ≤ 500 →
@@ -53,26 +53,26 @@ vc-theorems: |-
     0.1 ≤ perc → perc ≤ 0.99 →
     movie card1 ticket perc ≤ movie card2 ticket perc
     := by sorry
-  
-  /-
-  info: 43
-  -/
-  -- #guard_msgs in
-  -- #eval movie 500 15 0.9
-  
-  /-
-  info: 24
-  -/
-  -- #guard_msgs in
-  -- #eval movie 100 10 0.95
-  
-  /-
-  info: 21
-  -/
-  -- #guard_msgs in
-  -- #eval movie 250 20 0.9
 
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded
+
+  /-
+  info: 43
+  -/
+  #guard_msgs in
+  #eval movie 500 15 0.9
+
+  /-
+  info: 24
+  -/
+  #guard_msgs in
+  #eval movie 100 10 0.95
+
+  /-
+  info: 21
+  -/
+  #guard_msgs in
+  #eval movie 250 20 0.9
 

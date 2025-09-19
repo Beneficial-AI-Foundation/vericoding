@@ -4,7 +4,7 @@ use vstd::prelude::*;
 verus! {
 
 spec fn count_non_zero_digits(n: int) -> int
-    decreases n
+    decreases n when n >= 0
 {
     if n == 0 { 0 }
     else if n % 10 == 0 { count_non_zero_digits(n / 10) }
@@ -17,13 +17,12 @@ spec fn count_numbers_with_k_non_zero_digits(n: int, k: int) -> int
 }
 
 spec fn count_range(n: int, k: int, start: int, end: int) -> int
-    decreases if end < start { 0 } else { end - start + 1 }
+    decreases if end < start { 0int } else { end - start + 1 }
 {
     if start > end { 0 }
     else if count_non_zero_digits(start) == k { 
         1 + count_range(n, k, start + 1, end)
-    }
-    else { 
+    } else { 
         count_range(n, k, start + 1, end)
     }
 }
@@ -38,12 +37,13 @@ spec fn valid_input(n: int, k: int) -> bool
 // </vc-helpers>
 
 // <vc-spec>
-fn count_numbers_with_exactly_k_non_zero_digits(n: int, k: int) -> (count: int)
-    requires valid_input(n, k)
-    ensures 
-        count == count_numbers_with_k_non_zero_digits(n, k) &&
-        count >= 0 &&
-        count <= n
+fn count_numbers_with_exactly_k_non_zero_digits(n: i8, k: i8) -> (count: i8)
+requires
+    valid_input(n as int, k as int)
+ensures
+    count as int == count_numbers_with_k_non_zero_digits(n as int, k as int),
+    count as int >= 0,
+    count as int <= n as int
 // </vc-spec>
 // <vc-code>
 {

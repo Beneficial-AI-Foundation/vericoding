@@ -8,7 +8,7 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn np_isclose(a: Vec<i32>, b: Vec<i32>, tol: i32) -> (result: Vec<bool>)
+fn np_isclose(a: Vec<i8>, b: Vec<i8>, tol: i8) -> (result: Vec<bool>)
     requires 
         a.len() > 0,
         a.len() == b.len(),
@@ -16,7 +16,7 @@ fn np_isclose(a: Vec<i32>, b: Vec<i32>, tol: i32) -> (result: Vec<bool>)
     ensures
         result.len() == a.len(),
         forall|i: int| 0 <= i < a.len() ==> 
-            result[i] == (-tol < a[i] - b[i] && a[i] - b[i] < tol),
+            result[i] == (-(tol as int) < (a[i] as int) - (b[i] as int) && (a[i] as int) - (b[i] as int) < (tol as int)),
 // </vc-spec>
 // <vc-code>
 {

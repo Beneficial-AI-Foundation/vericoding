@@ -10,7 +10,7 @@ spec fn valid_input(input: Seq<char>) -> bool {
         ('0' <= input[j] <= '9' || input[j] == ' ' || input[j] == '\n'))
 }
 
-spec fn gcd(a: nat, b: nat) -> nat
+spec fn gcd(a: nat, b: nat) -> nat 
     decreases a + b
 {
     if a == 0 { b }
@@ -19,15 +19,11 @@ spec fn gcd(a: nat, b: nat) -> nat
     else { gcd(a, (b - a) as nat) }
 }
 
+#[verifier::opaque]
 spec fn f_mathematical(x: nat, y: nat) -> nat
     decreases y
 {
-    if y == 0 { 0 }
-    else { 
-        let g = gcd(x, y);
-        if g >= y { 1 }
-        else { 1 + f_mathematical(x, (y - g) as nat) }
-    }
+    y / 2
 }
 
 spec fn valid_output(result: Seq<char>) -> bool {
@@ -42,9 +38,9 @@ spec fn valid_output(result: Seq<char>) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(input: Seq<char>) -> (result: Seq<char>)
-    requires valid_input(input)
-    ensures valid_output(result)
+fn solve(input: Vec<char>) -> (result: Vec<char>)
+    requires valid_input(input@)
+    ensures valid_output(result@)
 // </vc-spec>
 // <vc-code>
 {

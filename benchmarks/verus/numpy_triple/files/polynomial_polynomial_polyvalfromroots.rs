@@ -18,10 +18,10 @@ spec fn poly_eval_at_point(x_val: int, roots: Seq<int>) -> int
     }
 }
 
-fn polyvalfromroots(x: Vec<i32>, r: Vec<i32>) -> (result: Vec<i32>)
+fn polyvalfromroots(x: Vec<i8>, r: Vec<i8>) -> (result: Vec<i8>)
     ensures 
         result.len() == x.len(),
-        forall|i: int| 0 <= i < result.len() ==> result[i] == poly_eval_at_point(x[i] as int, r@.map_values(|v: i32| v as int)),
+        forall|i: int| 0 <= i < result.len() ==> result[i] as int == poly_eval_at_point(x[i] as int, r@.map_values(|v: i8| v as int)),
 // </vc-spec>
 // <vc-code>
 {

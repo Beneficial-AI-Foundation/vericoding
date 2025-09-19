@@ -28,12 +28,12 @@ spec fn same_days(a: int, b: int) -> int
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(a: int, b: int) -> (result: (int, int))
-  requires valid_input(a, b)
+fn solve(a: i8, b: i8) -> (result: (i8, i8))
+  requires valid_input(a as int, b as int)
   ensures ({
       let (days_different, days_same) = result;
-      days_different == max_different_days(a, b) &&
-      days_same == same_days(a, b) &&
+      days_different as int == max_different_days(a as int, b as int) &&
+      days_same as int == same_days(a as int, b as int) &&
       days_different >= 0 &&
       days_same >= 0 &&
       days_different <= a && days_different <= b

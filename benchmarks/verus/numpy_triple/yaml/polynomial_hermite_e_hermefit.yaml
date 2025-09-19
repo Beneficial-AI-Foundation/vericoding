@@ -67,7 +67,7 @@ vc-preamble: |-
 vc-helpers: |-
 
 vc-spec: |-
-  fn hermefit(x: Vec<i32>, y: Vec<i32>, deg: usize) -> (result: Vec<i32>)
+  fn hermefit(x: Vec<i8>, y: Vec<i8>, deg: usize) -> (result: Vec<i8>)
       requires 
           x.len() == y.len(),
           deg + 1 <= x.len(),
@@ -84,4 +84,3 @@ vc-code: |-
 vc-postamble: |-
   }
   fn main() {}
-

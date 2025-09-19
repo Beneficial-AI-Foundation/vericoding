@@ -8,7 +8,7 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn may_share_memory(a: &Vec<f32>, b: &Vec<f32>) -> (result: bool)
+fn may_share_memory(a: &Vec<i8>, b: &Vec<i8>) -> (result: bool)
     ensures
 
         (result == true || result == false) &&

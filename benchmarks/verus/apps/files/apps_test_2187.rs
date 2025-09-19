@@ -28,9 +28,9 @@ spec fn correct_result(test_cases: Seq<Seq<int>>, results: Seq<int>) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(test_cases: Seq<Seq<int>>) -> (results: Seq<int>)
-    requires valid_input(test_cases)
-    ensures correct_result(test_cases, results)
+fn solve(test_cases: Vec<Vec<i8>>) -> (results: Vec<i8>)
+    requires valid_input(test_cases@.map_values(|v: Vec<i8>| v@.map_values(|x: i8| x as int)))
+    ensures correct_result(test_cases@.map_values(|v: Vec<i8>| v@.map_values(|x: i8| x as int)), results@.map_values(|x: i8| x as int))
 // </vc-spec>
 // <vc-code>
 {

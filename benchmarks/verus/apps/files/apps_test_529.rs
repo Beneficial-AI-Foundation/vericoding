@@ -92,9 +92,9 @@ spec fn transform_with_comp_char(s: Seq<char>, comp_char: char) -> Seq<char>
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(s: Seq<char>, n: int) -> (result: Seq<char>)
-  requires valid_input(s, n)
-  ensures result == transform_string(s, n)
+fn solve(s: Vec<char>, n: i8) -> (result: Vec<char>)
+  requires valid_input(s@, n as int)
+  ensures result@ == transform_string(s@, n as int)
 // </vc-spec>
 // <vc-code>
 {

@@ -36,12 +36,12 @@ spec fn valid_output(result: Seq<char>) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(s: Seq<char>) -> (result: Seq<char>)
+fn solve(s: Vec<char>) -> (result: Vec<char>)
     requires 
-        valid_input(s),
+        valid_input(s@),
     ensures 
-        valid_output(result),
-        result == simulate_keystrokes(s),
+        valid_output(result@),
+        result@ == simulate_keystrokes(s@),
 // </vc-spec>
 // <vc-code>
 {

@@ -6,16 +6,12 @@ spec fn valid_input(n: int, k: int) -> bool {
     n >= 1 && k >= 1
 }
 
-spec fn all_remainders_distinct(n: int, k: int) -> bool
-    recommends valid_input(n, k)
-{
-    forall|i: int| 1 <= i <= k ==> n % i == (i - 1)
+spec fn all_remainders_distinct(n: int, k: int) -> bool {
+    valid_input(n, k) ==> forall|i: int| 1 <= i <= k ==> #[trigger] (n % i) == (i - 1)
 }
 
-spec fn has_non_distinct_remainder(n: int, k: int) -> bool
-    recommends valid_input(n, k)
-{
-    exists|i: int| 1 <= i <= k && n % i != (i - 1)
+spec fn has_non_distinct_remainder(n: int, k: int) -> bool {
+    valid_input(n, k) ==> exists|i: int| 1 <= i <= k && #[trigger] (n % i) != (i - 1)
 }
 // </vc-preamble>
 
@@ -23,19 +19,17 @@ spec fn has_non_distinct_remainder(n: int, k: int) -> bool
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: int, k: int) -> (result: String)
-    requires 
-        valid_input(n, k),
-    ensures 
-        result@ =~= seq!['Y', 'e', 's', '\n'] <==> all_remainders_distinct(n, k),
-        result@ =~= seq!['N', 'o', '\n'] <==> has_non_distinct_remainder(n, k),
+fn solve(n: i8, k: i8) -> (result: String)
+    requires
+        valid_input(n as int, k as int),
+    ensures
+        result@ == seq!['Y', 'e', 's', '\n'] <==> all_remainders_distinct(n as int, k as int),
+        result@ == seq!['N', 'o', '\n'] <==> has_non_distinct_remainder(n as int, k as int),
 // </vc-spec>
 // <vc-code>
 {
-    // impl-start
     assume(false);
     unreached()
-    // impl-end
 }
 // </vc-code>
 

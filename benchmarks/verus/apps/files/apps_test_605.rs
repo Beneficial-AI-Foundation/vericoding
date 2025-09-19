@@ -28,12 +28,12 @@ spec fn correct_result(a: int, b: int, c: int, d: int, result: Seq<char>) -> boo
 // </vc-helpers>
 
 // <vc-spec>
-fn determine_winner(a: int, b: int, c: int, d: int) -> (result: String)
+fn determine_winner(a: i8, b: i8, c: i8, d: i8) -> (result: String)
     requires 
-        valid_input(a, b, c, d)
+        valid_input(a as int, b as int, c as int, d as int)
     ensures 
         result@ == seq!['M','i','s','h','a'] || result@ == seq!['V','a','s','y','a'] || result@ == seq!['T','i','e'],
-        correct_result(a, b, c, d, result@)
+        correct_result(a as int, b as int, c as int, d as int, result@)
 // </vc-spec>
 // <vc-code>
 {

@@ -30,9 +30,9 @@ spec fn correct_comparison(x: char, y: char, result: Seq<char>) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(stdin_input: Seq<char>) -> (result: Seq<char>)
-    requires valid_input_format(stdin_input)
-    ensures correct_comparison(stdin_input[0], stdin_input[2], result)
+fn solve(stdin_input: Vec<char>) -> (result: Vec<char>)
+    requires valid_input_format(stdin_input@)
+    ensures correct_comparison(stdin_input@[0], stdin_input@[2], result@)
 // </vc-spec>
 // <vc-code>
 {

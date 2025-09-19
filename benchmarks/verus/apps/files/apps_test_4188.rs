@@ -25,12 +25,12 @@ spec fn expected_output(n: int) -> int
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: int) -> (result: int)
+fn solve(n: i8) -> (result: i8)
     requires 
-        valid_input(n)
+        valid_input(n as int)
     ensures 
-        valid_output(result),
-        result == expected_output(n)
+        valid_output(result as int),
+        result as int == expected_output(n as int)
 // </vc-spec>
 // <vc-code>
 {

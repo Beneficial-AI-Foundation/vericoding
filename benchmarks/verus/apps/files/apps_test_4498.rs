@@ -17,11 +17,11 @@ spec fn can_communicate(a: int, b: int, c: int, d: int) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(a: int, b: int, c: int, d: int) -> (result: String)
+fn solve(a: i8, b: i8, c: i8, d: i8) -> (result: String)
     requires 
-        valid_input(a, b, c, d),
+        valid_input(a as int, b as int, c as int, d as int),
     ensures 
-        result@ == seq!['Y', 'e', 's'] <==> can_communicate(a, b, c, d),
+        result@ == seq!['Y', 'e', 's'] <==> can_communicate(a as int, b as int, c as int, d as int),
         result@ == seq!['Y', 'e', 's'] || result@ == seq!['N', 'o'],
 // </vc-spec>
 // <vc-code>

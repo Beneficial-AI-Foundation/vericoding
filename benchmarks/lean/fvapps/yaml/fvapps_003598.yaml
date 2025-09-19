@@ -2,52 +2,52 @@ vc-description: |-
   /-
   # Task
    You are given a `moment` in time and space. What you must do is break it down into time and space, to determine if that moment is from the past, present or future.
-  
+
    `Time` is the sum of characters that increase time (i.e. numbers in range ['1'..'9'].
-  
+
    `Space` in the number of characters which do not increase time (i.e. all characters but those that increase time).
-  
+
    The moment of time is determined as follows:
   ```
   If time is greater than space, than the moment is from the future.
   If time is less than space, then the moment is from the past.
   Otherwise, it is the present moment.```
-  
+
    You should return an array of three elements, two of which are false, and one is true. The true value should be at the `1st, 2nd or 3rd` place for `past, present and future` respectively.
-  
+
   # Examples
-  
+
    For `moment = "01:00 pm"`, the output should be `[true, false, false]`.
-  
+
    time equals 1, and space equals 7, so the moment is from the past.
-  
+
    For `moment = "12:02 pm"`, the output should be `[false, true, false]`.
-  
+
    time equals 5, and space equals 5, which means that it's a present moment.
-  
+
    For `moment = "12:30 pm"`, the output should be `[false, false, true]`.
-  
+
    time equals 6, space equals 5, so the moment is from the future.
-  
+
   # Input/Output
-  
+
    - `[input]` string `moment`
-  
+
     The moment of time and space that the input time came from.
-  
+
    - `[output]` a boolean array
-  
+
     Array of three elements, two of which are false, and one is true. The true value should be at the 1st, 2nd or 3rd place for past, present and future respectively.
   -/
 
 vc-preamble: |-
   def moment_of_time_in_space (s : String) : List Bool :=
     sorry
-  
+
   def sum_digits (s : String) : Nat :=
     sorry
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def count_non_digits (s : String) : Nat :=
@@ -59,13 +59,13 @@ vc-theorems: |-
     List.length result = 3 ∧ 
     List.all result (fun x => x = true ∨ x = false) :=
     sorry
-  
+
   theorem exactly_one_true (s : String) :
     let result := moment_of_time_in_space s 
     let count := List.foldl (fun acc b => acc + if b then 1 else 0) 0 result
     count = 1 :=
     sorry
-  
+
   theorem time_space_comparison (s : String) :
     let time := sum_digits s
     let space := count_non_digits s
@@ -74,32 +74,32 @@ vc-theorems: |-
     (time = space → result = [false, true, false]) ∧ 
     (time > space → result = [false, false, true]) :=
     sorry
-  
+
   theorem permutation_invariant {s₁ s₂ : String} :
     s₁.length = s₂.length →
     (∀ c, s₁.find (· = c) = s₂.find (· = c)) →
     moment_of_time_in_space s₁ = moment_of_time_in_space s₂ :=
     sorry
-  
-  /-
-  info: [True, False, False]
-  -/
-  -- #guard_msgs in
-  -- #eval moment_of_time_in_space "01:00 pm"
-  
-  /-
-  info: [False, True, False]
-  -/
-  -- #guard_msgs in
-  -- #eval moment_of_time_in_space "12:02 pm"
-  
-  /-
-  info: [False, False, True]
-  -/
-  -- #guard_msgs in
-  -- #eval moment_of_time_in_space "12:30 pm"
 
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+
+  /-
+  info: [True, False, False]
+  -/
+  #guard_msgs in
+  #eval moment_of_time_in_space "01:00 pm"
+
+  /-
+  info: [False, True, False]
+  -/
+  #guard_msgs in
+  #eval moment_of_time_in_space "12:02 pm"
+
+  /-
+  info: [False, False, True]
+  -/
+  #guard_msgs in
+  #eval moment_of_time_in_space "12:30 pm"
 
