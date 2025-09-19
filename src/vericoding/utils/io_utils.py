@@ -1,6 +1,7 @@
 """File I/O and thread-safe operations."""
 
 import logging
+import sys
 import threading
 import yaml
 from pathlib import Path
@@ -82,21 +83,24 @@ def load_postamble_from_yaml(config: ProcessingConfig, lean_file_path: Path) -> 
     full_yaml_path = yaml_dir / yaml_file_path.name
     
     if not full_yaml_path.exists():
-        logger.warning(f"    ⚠️ YAML file not found for unit test mode: {full_yaml_path}")
-        return None
+        print(f"Error: YAML file not found for unit test mode: {full_yaml_path}")
+        sys.exit(1)
     
     try:
         with full_yaml_path.open('r', encoding='utf-8') as f:
             yaml_content = yaml.safe_load(f)
-        
-        postamble = yaml_content.get('vc-postamble', '')
-        if postamble:
-            logger.info(f"    📋 Loaded postamble from: {full_yaml_path}")
-            return postamble.strip()
-        else:
-            logger.info(f"    📋 No postamble found in: {full_yaml_path}")
-            return None
-            
     except Exception as e:
-        logger.warning(f"    ⚠️ Error loading YAML file {full_yaml_path}: {e}")
-        return None
+        print(f"Error: Failed to load YAML file {full_yaml_path}: {e}")
+        sys.exit(1)
+    
+    if 'vc-postamble' not in yaml_content:
+        print(f"Error: YAML file {full_yaml_path} missing required 'vc-postamble' field")
+        sys.exit(1)
+    
+    postamble = yaml_content['vc-postamble']
+    if postamble:
+        logger.info(f"    📋 Loaded postamble from: {full_yaml_path}")
+        return postamble.strip()
+    else:
+        logger.info(f"    📋 Empty postamble found in: {full_yaml_path}")
+        return ""

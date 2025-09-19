@@ -134,12 +134,12 @@ def run_unit_test_with_postamble(
     """
     logger.info("    🧪 Testing with postamble...")
     
-    # Load postamble from YAML
+    # Load postamble from YAML (will raise exception if YAML missing or malformed)
     relative_path_for_yaml = Path(file_path).relative_to(Path(config.files_dir))
     postamble = load_postamble_from_yaml(config, relative_path_for_yaml)
     
-    if not postamble:
-        logger.info("    ⚠️  No postamble found - treating as normal success")
+    if postamble == "":
+        logger.info("    ⚠️  Empty postamble - treating as normal success")
         from ..core.language_tools import VerificationResult
         verification = VerificationResult(success=True, error=None, output="")
         return UnitTestResult(success=True, verification=verification)
