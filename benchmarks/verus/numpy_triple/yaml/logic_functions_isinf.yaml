@@ -36,7 +36,7 @@ vc-spec: |-
       ensures 
           result.len() == x.len(),
           forall|i: int| 0 <= i < x.len() ==> {
-              result[i] == is_infinite(x[i])
+              result[i] == is_infinite(x@[i])
           }
 
 vc-code: |-
@@ -48,4 +48,3 @@ vc-code: |-
 vc-postamble: |-
   }
   fn main() {}
-

@@ -1,0 +1,62 @@
+vc-description: |-
+  Compute the q-th quantile of the data in a vector, ignoring NaN values.
+  When all elements are NaN, returns NaN.
+
+  Mathematical Properties:
+  - Ignores NaN values in the computation
+  - Returns the q-th quantile of all non-NaN elements 
+  - If all elements are NaN, returns NaN
+  - If at least one element is not NaN, returns the quantile of non-NaN values
+  - For q=0, returns the minimum of non-NaN elements
+  - For q=1, returns the maximum of non-NaN elements
+  - For vectors with no NaN values, behaves identically to regular quantile
+
+  Specification: nanquantile returns the q-th quantile of non-NaN values in the vector.
+
+  Mathematical properties:
+  1. The quantile parameter q must be between 0 and 1 inclusive
+  2. If there exists at least one non-NaN element, the result is the q-th quantile among non-NaN elements
+  3. If all elements are NaN, the result is NaN
+  4. For q=0, result is the minimum of non-NaN elements
+  5. For q=1, result is the maximum of non-NaN elements
+  6. The result is bounded by the range of non-NaN elements
+  7. NaN values are completely ignored during the quantile computation
+  8. For vectors without NaN values, nanquantile behaves identically to regular quantile
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+vc-helpers: |-
+
+vc-spec: |-
+  fn nanquantile(a: Vec<i8>, q: i8) -> (result: i8)
+      requires 
+          a.len() > 0,
+          0 <= q <= 100,
+      ensures
+          /* Result is bounded by the elements */
+          (forall|min_idx: int| 0 <= min_idx < a@.len() ==> 
+           (forall|j: int| 0 <= j < a@.len() ==> a[min_idx] <= a[j]) ==> a[min_idx] <= result),
+          (forall|max_idx: int| 0 <= max_idx < a@.len() ==>
+           (forall|j: int| 0 <= j < a@.len() ==> a[j] <= a[max_idx]) ==> result <= a[max_idx]),
+          /* For q=0, result is the minimum element */
+          (q == 0) ==> 
+              (forall|min_idx: int| 0 <= min_idx < a@.len() ==>
+               (forall|j: int| 0 <= j < a@.len() ==> a[min_idx] <= a[j]) ==>
+               result == a[min_idx]),
+          /* For q=100, result is the maximum element */
+          (q == 100) ==>
+              (forall|max_idx: int| 0 <= max_idx < a@.len() ==>
+               (forall|j: int| 0 <= j < a@.len() ==> a[j] <= a[max_idx]) ==>
+               result == a[max_idx])
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      0
+      // impl-end
+  }
+vc-postamble: |-
+
+  }
+  fn main() {}

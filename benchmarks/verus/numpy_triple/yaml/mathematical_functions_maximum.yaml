@@ -1,0 +1,55 @@
+vc-description: |-
+  numpy.maximum: Element-wise maximum of array elements.
+
+  Compares two arrays element-wise and returns a new array containing
+  the element-wise maxima. If one of the elements being compared is NaN,
+  then that element is returned.
+
+  This is a universal function (ufunc) that operates element-wise on arrays
+  and supports broadcasting. For 1D arrays, it computes the maximum of
+  corresponding elements.
+
+  Specification: numpy.maximum returns a vector where each element is the maximum
+  of the corresponding elements from x1 and x2.
+
+  Mathematical properties:
+  1. Commutativity: maximum(x1, x2) = maximum(x2, x1)
+  2. Associativity: maximum(maximum(x1, x2), x3) = maximum(x1, maximum(x2, x3))
+  3. Idempotence: maximum(x, x) = x
+  4. Monotonicity: if x1[i] ≤ y1[i] and x2[i] ≤ y2[i], then maximum(x1, x2)[i] ≤ maximum(y1, y2)[i]
+  5. Identity: maximum(x, -∞) = x (where -∞ is negative infinity)
+
+  Precondition: True (no special preconditions for element-wise maximum)
+  Postcondition: For all indices i, result[i] = max(x1[i], x2[i])
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn maximum(x1: Vec<i8>, x2: Vec<i8>) -> (result: Vec<i8>)
+      requires x1.len() == x2.len(),
+      ensures 
+          result.len() == x1.len(),
+          forall|i: int| 0 <= i < result.len() ==> 
+              result@[i] == if x1@[i] >= x2@[i] { x1@[i] } else { x2@[i] },
+          forall|i: int| 0 <= i < result.len() ==> 
+              result@[i] >= x1@[i] && result@[i] >= x2@[i],
+          forall|i: int| 0 <= i < result.len() ==> 
+              result@[i] == x1@[i] || result@[i] == x2@[i],
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      unreached()
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {}

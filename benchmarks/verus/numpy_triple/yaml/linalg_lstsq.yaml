@@ -1,0 +1,46 @@
+vc-description: |-
+  Return the least-squares solution to a linear matrix equation.
+  
+  Solves the equation a @ x = b by minimizing ||b - ax||^2.
+  
+  Parameters:
+  - a: Coefficient matrix (M, N)
+  - b: Ordinate values (M,) or (M, K)
+  - rcond: Cut-off ratio for small singular values
+  
+  Returns tuple of:
+  - x: Least-squares solution
+  - residuals: Sums of squared residuals
+  - rank: Rank of matrix a
+  - s: Singular values of a
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn lstsq(a: Vec<Vec<f32>>, b: Vec<f32>) -> (result: Vec<f32>)
+      requires 
+          a.len() > 0,
+          b.len() > 0,
+          a.len() == b.len(),
+          forall|i: int| 0 <= i < a.len() ==> #[trigger] a@[i].len() > 0,
+          forall|i: int| 0 <= i < a.len() ==> #[trigger] a@[i].len() == a@[0].len(),
+      ensures
+          result.len() == a@[0].len()
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      unreached()
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {}

@@ -8,7 +8,7 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn poly2lag(pol: Vec<f32>) -> (result: Vec<f32>)
+fn poly2lag(pol: Vec<i8>) -> (result: Vec<i8>)
     ensures
         result.len() == pol.len(),
 

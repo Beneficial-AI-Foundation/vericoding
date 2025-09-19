@@ -25,7 +25,7 @@ vc-spec: |-
           result.len() == x.len(),
   
           c.len() == 0 ==> forall|k: int| 0 <= k < result.len() ==> result[k] == 0.0f32,
-          c.len() > 0 && c[0].len() == 0 ==> forall|k: int| 0 <= k < result.len() ==> result[k] == 0.0f32,
+          c.len() > 0 && c@[0].len() == 0 ==> forall|k: int| 0 <= k < result.len() ==> result[k] == 0.0f32,
 
 vc-code: |-
   {
@@ -36,4 +36,3 @@ vc-code: |-
 vc-postamble: |-
   }
   fn main() {}
-

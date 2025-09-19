@@ -1,0 +1,58 @@
+vc-description: |-
+  {
+    "name": "numpy.polynomial.chebyshev.Chebyshev",
+    "category": "Chebyshev polynomials",
+    "description": "A Chebyshev series class.",
+    "url": "https://numpy.org/doc/stable/reference/generated/numpy.polynomial.chebyshev.Chebyshev.html",
+    "doc": "A Chebyshev series class.\n\n    The Chebyshev class provides the standard Python numerical methods\n    '+', '-', '*', '//', '%', 'divmod', '**', and '()' as well as the\n    attributes and methods listed below.\n\n    Parameters\n    ----------\n    coef : array_like\n        Chebyshev coefficients in order of increasing degree, i.e.,\n        \`\`(1, 2, 3)\`\` gives \`\`1*T_0(x) + 2*T_1(x) + 3*T_2(x)\`\`.\n    domain : (2,) array_like, optional\n        Domain to use. The interval \`\`[domain[0], domain[1]]\`\` is mapped\n        to the interval \`\`[window[0], window[1]]\`\` by shifting and scaling.\n        The default value is [-1., 1.].\n    window : (2,) array_like, optional\n        Window, see \`domain\` for its use. The default value is [-1., 1.].\n    symbol : str, optional\n        Symbol used to represent the independent variable in string\n        representations of the polynomial expression, e.g. for printing.\n        The symbol must be a valid Python identifier. Default value is 'x'.\n\n        .. versionadded:: 1.24",
+    "type": "class"
+  }
+  
+  Create a Chebyshev polynomial from coefficients with default domain and window [-1, 1]
+  
+  Specification: Creating a Chebyshev polynomial preserves coefficients and sets default domain/window
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+  /* Structure representing a Chebyshev polynomial with coefficients and domain/window mapping */
+  struct ChebyshevPoly {
+      /* Coefficients of the Chebyshev polynomial in increasing degree order */
+      coef: Vec<i8>,
+      /* Domain interval [domain_min, domain_max] */
+      domain_min: i8,
+      domain_max: i8,
+      /* Window interval [window_min, window_max] */
+      window_min: i8,
+      window_max: i8,
+  }
+vc-helpers: |-
+
+vc-spec: |-
+  fn chebyshev(coef: Vec<i8>) -> (result: ChebyshevPoly)
+      requires coef.len() > 0,
+      ensures
+          /* Coefficients are preserved */
+          result.coef@ =~= coef@,
+          /* Default domain is [-1, 1] */
+          result.domain_min as int == -1,
+          result.domain_max as int == 1,
+          /* Default window is [-1, 1] */
+          result.window_min as int == -1,
+          result.window_max as int == 1,
+          /* Domain interval is valid */
+          result.domain_min < result.domain_max,
+          /* Window interval is valid */
+          result.window_min < result.window_max,
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      unreached()
+      // impl-end
+  }
+vc-postamble: |-
+
+  }
+  fn main() {}
