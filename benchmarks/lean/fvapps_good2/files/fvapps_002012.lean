@@ -4,10 +4,6 @@ structure BridgeProblemInputs where
   m : Nat
   islands : List (List Int)
   bridges : List Int
-
-def get_indices (result : String) : List Nat :=
-  if result = "No" then []
-  else string_to_nat_array (result.splitOn "\n").head!
 -- </vc-preamble>
 
 -- <vc-helpers>
@@ -25,6 +21,10 @@ sorry
 -- </vc-definitions>
 
 -- <vc-theorems>
+def get_indices (result : String) : List Nat :=
+  if result = "No" then []
+  else string_to_nat_array (result.splitOn "\n").head!
+
 theorem result_format_valid (n m : Nat) (islands : List (List Int)) (bridges : List Int) :
   let result := solve_bridge_problem n m islands bridges
   (result = "No") ∨

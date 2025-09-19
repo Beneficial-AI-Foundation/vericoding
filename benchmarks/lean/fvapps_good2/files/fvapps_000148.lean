@@ -1,7 +1,10 @@
 -- <vc-preamble>
-axiom List.maximum' : List Int → Int
+def List.maximum' : List Int → Int
+  | [] => 0 
+  | [x] => x
+  | (x::xs) => max x (List.maximum' xs)
 
-axiom List.Sorted : List Int → Prop
+def List.Sorted : List Int → Prop := List.Pairwise (· ≤ ·)
 
 def partitioned_at (p : Nat) (nums : List Int) : Prop :=
   let left := (nums.take p)

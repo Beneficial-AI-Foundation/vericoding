@@ -10,16 +10,14 @@ def Solution := List (String × Int)
 -- </vc-helpers>
 
 -- <vc-definitions>
-def solve_equations : List Equation → Option Solution
-  | _ =>
-sorry
+def solve_equations : List Equation → Option Solution :=
+  sorry
 
-def equation_vars : Equation → List String
-  | _ =>
-sorry
+def equation_vars : Equation → List String :=
+  sorry
 
-def solution_vars : Solution → List String
-  | _ => sorry
+def solution_vars : Solution → List String :=
+  sorry
 
 def verify_solution (equations : List Equation) (solution : Option Solution) : Bool :=
 sorry

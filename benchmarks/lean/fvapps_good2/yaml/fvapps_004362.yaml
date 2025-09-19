@@ -1,7 +1,22 @@
 vc-description: |-
-  --") ∧
+  /-
+  # Task
+   If string has more than one neighboring dashes(e.g. --) replace they with one dash(-). 
   
-  --") ∧
+   Dashes are considered neighbors even if there is some whitespace **between** them.
+  
+  # Example
+  
+   For `str = "we-are- - - code----warriors.-"`
+  
+   The result should be `"we-are- code-warriors.-"`
+  
+  # Input/Output
+  
+   - `[input]` string `str`
+  
+   - `[output]` a string
+  -/
 
 vc-preamble: |-
 
@@ -20,7 +35,7 @@ vc-definitions: |-
 vc-theorems: |-
   theorem no_consecutive_dashes
     (s : String) :
-    ¬ (containsSubstring (replace_dashes_as_one s) "
+    ¬ (containsSubstring (replace_dashes_as_one s) "--") ∧ 
     ¬ (containsSubstring (replace_dashes_as_one s) "- -") :=
   sorry
   
@@ -38,7 +53,7 @@ vc-theorems: |-
     (s : String)
     (h : ∀ c, String.contains s c → (c = '-' ∨ c = ' ')) :
     (∀ c, String.contains (replace_dashes_as_one s) c → (c = '-' ∨ c = ' ')) ∧
-    ¬ (containsSubstring (replace_dashes_as_one s) "
+    ¬ (containsSubstring (replace_dashes_as_one s) "--") ∧ 
     ¬ (containsSubstring (replace_dashes_as_one s) "- -") :=
   sorry
 

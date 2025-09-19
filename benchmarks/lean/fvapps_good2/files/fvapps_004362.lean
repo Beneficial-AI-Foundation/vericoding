@@ -18,7 +18,7 @@ sorry
 -- <vc-theorems>
 theorem no_consecutive_dashes
   (s : String) :
-  ¬ (containsSubstring (replace_dashes_as_one s) "
+  ¬ (containsSubstring (replace_dashes_as_one s) "--") ∧ 
   ¬ (containsSubstring (replace_dashes_as_one s) "- -") :=
 sorry
 
@@ -36,7 +36,7 @@ theorem dash_only_strings
   (s : String)
   (h : ∀ c, String.contains s c → (c = '-' ∨ c = ' ')) :
   (∀ c, String.contains (replace_dashes_as_one s) c → (c = '-' ∨ c = ' ')) ∧
-  ¬ (containsSubstring (replace_dashes_as_one s) "
+  ¬ (containsSubstring (replace_dashes_as_one s) "--") ∧ 
   ¬ (containsSubstring (replace_dashes_as_one s) "- -") :=
 sorry
 -- </vc-theorems>

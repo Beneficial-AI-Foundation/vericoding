@@ -1,10 +1,4 @@
 -- <vc-preamble>
-def isPerfectSquare (n: Nat) : Bool :=
-  match n with
-  | 0 => true
-  | n + 1 =>
-    let sq := sqrt n
-    sq * sq = n
 -- </vc-preamble>
 
 -- <vc-helpers>
@@ -22,6 +16,13 @@ sorry
 -- </vc-definitions>
 
 -- <vc-theorems>
+def isPerfectSquare (n: Nat) : Bool :=
+  match n with
+  | 0 => true
+  | n + 1 =>
+    let sq := sqrt n
+    sq * sq = n
+    
 theorem output_bounds
   (A: List Nat)
   (h1: ∀ x ∈ A, 1 ≤ x ∧ x ≤ 100) :

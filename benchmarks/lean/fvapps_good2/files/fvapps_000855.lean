@@ -1,5 +1,4 @@
 -- <vc-preamble>
-def Float.ofString! (s: String) : Float := (Float.ofString? s).get!
 -- </vc-preamble>
 
 -- <vc-helpers>
@@ -14,6 +13,8 @@ sorry
 -- </vc-definitions>
 
 -- <vc-theorems>
+def Float.ofString! (s: String) : Float := (Float.ofString? s).get!
+
 theorem calculate_donut_areas_length_match (radii : List Int) :
   (calculate_donut_areas radii).length = radii.length :=
 sorry

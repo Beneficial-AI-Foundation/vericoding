@@ -1,4 +1,49 @@
 vc-description: |-
+  /-
+  ### What is simplifying a square root?
+  
+  If you have a number, like 80, for example, you would start by finding the greatest perfect square divisible by 80. In this case, that's 16. Find the square root of 16, and multiply it by 80 / 16. Answer = 4 √5. 
+  
+  ##### The above example:
+  
+  ![simplify_roots_example.png](https://i.postimg.cc/gjv2NwCm/simplify-roots-example.png)
+  
+  ### Task:
+  
+  Your job is to write two functions, `simplify`, and `desimplify`, that simplify and desimplify square roots, respectively. (Desimplify isn't a word, but I couldn't come up with a better way to put it.) `simplify` will take an integer and return a string like "x sqrt y", and `desimplify` will take a string like "x sqrt y" and return an integer. For `simplify`, if a square root cannot be simplified, return "sqrt y". 
+  
+  _Do not modify the input._
+  
+  ### Some examples:
+  
+  ```python
+  simplify(1)  #=> "1"
+  simplify(2)  #=> "sqrt 2"
+  simplify(3)  #=> "sqrt 3"
+  simplify(8)  #=> "2 sqrt 2"
+  simplify(15) #=> "sqrt 15"
+  simplify(16) #=> "4"
+  simplify(18) #=> "3 sqrt 2"
+  simplify(20) #=> "2 sqrt 5"
+  simplify(24) #=> "2 sqrt 6"
+  simplify(32) #=> "4 sqrt 2"
+  
+  desimplify("1")        #=> 1
+  desimplify("sqrt 2")   #=> 2
+  desimplify("sqrt 3")   #=> 3
+  desimplify("2 sqrt 2") #=> 8
+  desimplify("sqrt 15")  #=> 15
+  desimplify("4")        #=> 16
+  desimplify("3 sqrt 2") #=> 18
+  desimplify("2 sqrt 5") #=> 20
+  desimplify("2 sqrt 6") #=> 24
+  desimplify("4 sqrt 2") #=> 32
+  ```
+  
+  Also check out my other creations — [Square Roots: Approximation](https://www.codewars.com/kata/square-roots-approximation), [Square and Cubic Factors](https://www.codewars.com/kata/square-and-cubic-factors), [Keep the Order](https://www.codewars.com/kata/keep-the-order), [Naming Files](https://www.codewars.com/kata/naming-files), [Elections: Weighted Average](https://www.codewars.com/kata/elections-weighted-average), [Identify Case](https://www.codewars.com/kata/identify-case), [Split Without Loss](https://www.codewars.com/kata/split-without-loss), [Adding Fractions](https://www.codewars.com/kata/adding-fractions),
+  [Random Integers](https://www.codewars.com/kata/random-integers), [Implement String#transpose](https://www.codewars.com/kata/implement-string-number-transpose), [Implement Array#transpose!](https://www.codewars.com/kata/implement-array-number-transpose), [Arrays and Procs #1](https://www.codewars.com/kata/arrays-and-procs-number-1), and [Arrays and Procs #2](https://www.codewars.com/kata/arrays-and-procs-number-2).
+  -/
+  
   /- Desimplifying a simplified number returns the original number -/
   
   -- Apps difficulty: introductory

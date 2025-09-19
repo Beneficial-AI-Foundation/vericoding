@@ -12,8 +12,7 @@ def compute_running_sum : Nat → Nat
   | x => if x < 10 then x
          else compute_running_sum (solve_single_digit_addition x)
 termination_by x => x
-decreasing_by simp_wf;
-sorry
+decreasing_by all_goals simp_wf; sorry
 -- </vc-definitions>
 
 -- <vc-theorems>

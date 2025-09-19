@@ -1,6 +1,18 @@
 -- <vc-preamble>
 def Point := Int × Int
 
+def Rectangle := List Point
+-- </vc-preamble>
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+-- <vc-definitions>
+def calculate_rectangle_characteristics (points : Rectangle) : Float × Float × Float × Float × Float :=
+  sorry
+-- </vc-definitions>
+
+-- <vc-theorems>
 def length (points : Rectangle) : Float :=
   let (l, _, _, _, _) := calculate_rectangle_characteristics points
   l
@@ -20,19 +32,7 @@ def perimeter (points : Rectangle) : Float :=
 def diagonal (points : Rectangle) : Float :=
   let (_, _, _, _, d) := calculate_rectangle_characteristics points
   d
--- </vc-preamble>
 
--- <vc-helpers>
--- </vc-helpers>
-
--- <vc-definitions>
-def Rectangle := List Point
-
-def calculate_rectangle_characteristics (points : Rectangle) : Float × Float × Float × Float × Float :=
-  sorry
--- </vc-definitions>
-
--- <vc-theorems>
 theorem length_positive (points : Rectangle) :
   length points > 0 :=
 sorry

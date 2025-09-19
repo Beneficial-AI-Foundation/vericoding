@@ -1,11 +1,4 @@
 -- <vc-preamble>
-def iterativeReplace (s : String) (n : Nat) : String :=
-  match n with
-  | 0 => s
-  | n + 1 =>
-    if containsSubstr s "797"
-    then iterativeReplace (s.replace "797" "77") n
-    else s
 -- </vc-preamble>
 
 -- <vc-helpers>
@@ -13,16 +6,24 @@ def iterativeReplace (s : String) (n : Nat) : String :=
 
 -- <vc-definitions>
 def seven_ate9 (s : String) : String :=
-  sorry
+sorry
 
 def countSubstr (s : String) (sub : String) : Nat :=
-  sorry
+sorry
 
 def containsSubstr (s : String) (sub : String) : Bool :=
-  sorry
+sorry
 -- </vc-definitions>
 
 -- <vc-theorems>
+def iterativeReplace (s : String) (n : Nat) : String :=
+  match n with
+  | 0 => s
+  | n + 1 =>
+    if containsSubstr s "797"
+    then iterativeReplace (s.replace "797" "77") n
+    else s
+
 theorem output_is_string {s : String} :
   s.all (fun c => c.isDigit) →
   (seven_ate9 s).all (fun c => c.isDigit) :=

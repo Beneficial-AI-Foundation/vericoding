@@ -1,9 +1,4 @@
 -- <vc-preamble>
-def countLetters (s : String) : Nat :=
-  s.data.filter isAlpha |>.length
-
-def countDigits (s : String) : Nat :=
-  s.data.filter isDigit |>.length
 -- </vc-preamble>
 
 -- <vc-helpers>
@@ -21,6 +16,12 @@ sorry
 -- </vc-definitions>
 
 -- <vc-theorems>
+def countLetters (s : String) : Nat :=
+  s.data.filter isAlpha |>.length
+
+def countDigits (s : String) : Nat :=
+  s.data.filter isDigit |>.length
+
 theorem reformat_empty_string (s : String) :
   let letters := s.data.filter isAlpha |>.length
   let digits := s.data.filter isDigit |>.length

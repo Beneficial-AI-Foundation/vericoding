@@ -1,5 +1,4 @@
 -- <vc-preamble>
-def isPalindrome (s : String) : Bool := s == reverse s
 -- </vc-preamble>
 
 -- <vc-helpers>
@@ -14,6 +13,8 @@ sorry
 -- </vc-definitions>
 
 -- <vc-theorems>
+def isPalindrome (s : String) : Bool := s == reverse s
+
 theorem palindrome_basic (s : String) :
   isPalindrome s → valid_palindrome s :=
 sorry

@@ -1,6 +1,4 @@
 -- <vc-preamble>
-def get_lines (n : Nat) : List String :=
-  (pattern n).split (· = '\n')
 -- </vc-preamble>
 
 -- <vc-helpers>
@@ -12,6 +10,9 @@ sorry
 -- </vc-definitions>
 
 -- <vc-theorems>
+def get_lines (n : Nat) : List String :=
+  (pattern n).split (· = '\n')
+
 theorem pattern_non_positive (n : Nat) (h : n = 0) :
   pattern n = "" :=
 sorry
