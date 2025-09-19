@@ -8,7 +8,7 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn accumulate(a: Vec<f64>) -> (result: Vec<f64>)
+fn accumulate(a: Vec<i8>) -> (result: Vec<i8>)
     ensures
         result.len() == a.len(),
         a.len() > 0 ==> result[0] == a[0],

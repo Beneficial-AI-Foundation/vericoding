@@ -8,12 +8,12 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn numpy_cos(x: Vec<i32>) -> (result: Vec<i32>)
+fn numpy_cos(x: Vec<i8>) -> (result: Vec<i8>)
     ensures
         result.len() == x.len(),
-        forall|i: int| 0 <= i < result.len() ==> {
-            -1 <= result[i] <= 1 &&
-            (x[i] == 0 ==> result[i] == 1)
+        forall|i: int| 0 <= i < result@.len() ==> {
+            -1 <= result@[i] as int <= 1 &&
+            (x@[i] as int == 0 ==> result@[i] as int == 1)
         }
 // </vc-spec>
 // <vc-code>

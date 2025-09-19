@@ -8,7 +8,7 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn argmin(a: Vec<i32>) -> (result: usize)
+fn argmin(a: Vec<i8>) -> (result: usize)
     requires a.len() > 0,
     ensures
         result < a.len(),

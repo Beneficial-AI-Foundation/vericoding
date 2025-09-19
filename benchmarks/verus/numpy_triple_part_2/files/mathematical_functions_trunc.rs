@@ -11,7 +11,7 @@ spec fn int_abs(x: int) -> int {
 // </vc-helpers>
 
 // <vc-spec>
-fn numpy_trunc(x: Vec<i32>) -> (result: Vec<i32>)
+fn numpy_trunc(x: Vec<i8>) -> (result: Vec<i8>)
     ensures
         result.len() == x.len(),
         forall|i: int| 0 <= i < result.len() ==> #[trigger] result[i] == x[i],

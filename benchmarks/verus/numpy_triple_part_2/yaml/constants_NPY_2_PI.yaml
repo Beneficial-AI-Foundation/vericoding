@@ -15,7 +15,7 @@ vc-spec: |-
       ensures
           result == 636619772,
           result > 636000000,
-          result < 637000000
+          result < 637000000,
 
 vc-code: |-
   {

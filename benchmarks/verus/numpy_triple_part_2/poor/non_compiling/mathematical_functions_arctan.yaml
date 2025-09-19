@@ -1,0 +1,49 @@
+vc-description: |-
+  Trigonometric inverse tangent, element-wise.
+  
+  The inverse of tan, so that if y = tan(x) then x = arctan(y).
+  
+  Computes the element-wise inverse tangent of a vector.
+  
+  Specification: arctan computes the inverse tangent of each element,
+  with comprehensive mathematical properties including range bounds,
+  monotonicity, and behavior at special values.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn arctan(x: Vec<i8>) -> (result: Vec<i8>)
+      requires x@.len() > 0,
+      ensures 
+          result@.len() == x@.len(),
+          forall|i: int| 0 <= i < result@.len() ==> {
+              /* Range constraint: arctan(x) ∈ (-π/2, π/2) - simplified for integer domain */
+              result@[i] as int >= -2 && result@[i] as int <= 2 &&
+              /* Sign property: arctan preserves sign */
+              ((x@[i] as int > 0) ==> (result@[i] as int >= 0)) &&
+              ((x@[i] as int < 0) ==> (result@[i] as int <= 0)) &&
+              ((x@[i] as int == 0) ==> (result@[i] as int == 0)) &&
+              /* Monotonicity property for specific cases */
+              ((x@[i] as int > 10) ==> (result@[i] as int >= 1)) &&
+              ((x@[i] as int < -10) ==> (result@[i] as int <= -1)) &&
+              /* Bounded function: |arctan(x)| ≤ 2 for integer approximation */
+              result@[i] as int >= -2 && result@[i] as int <= 2
+          },
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      unreached()
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {}

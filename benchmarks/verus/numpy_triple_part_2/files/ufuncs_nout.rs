@@ -17,11 +17,11 @@ struct UFunc {
 // </vc-helpers>
 
 // <vc-spec>
-fn nout(ufunc: UFunc) -> (result: nat)
+fn nout(ufunc: UFunc) -> (result: u8)
     requires ufunc.nout_val >= 1,
     ensures 
-        result == ufunc.nout_val,
-        result >= 1
+        result as nat == ufunc.nout_val,
+        result as nat >= 1
 // </vc-spec>
 // <vc-code>
 {

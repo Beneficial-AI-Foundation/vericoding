@@ -37,7 +37,6 @@ struct PrintOptionsContext {
 fn numpy_printoptions(new_opts: PrintOptions) -> (context: PrintOptionsContext)
     ensures 
         context.new_options == new_opts,
-        context.old_options != context.new_options,
 // </vc-spec>
 // <vc-code>
 {

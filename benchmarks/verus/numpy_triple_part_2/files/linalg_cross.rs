@@ -8,11 +8,11 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn numpy_linalg_cross(x1: [i32; 3], x2: [i32; 3]) -> (result: [i32; 3])
+fn numpy_linalg_cross(x1: [i8; 3], x2: [i8; 3]) -> (result: [i8; 3])
     ensures
-        result[0] == x1[1] * x2[2] - x1[2] * x2[1],
-        result[1] == x1[2] * x2[0] - x1[0] * x2[2],
-        result[2] == x1[0] * x2[1] - x1[1] * x2[0]
+        result[0] as int == x1[1] as int * x2[2] as int - x1[2] as int * x2[1] as int,
+        result[1] as int == x1[2] as int * x2[0] as int - x1[0] as int * x2[2] as int,
+        result[2] as int == x1[0] as int * x2[1] as int - x1[1] as int * x2[0] as int
 // </vc-spec>
 // <vc-code>
 {

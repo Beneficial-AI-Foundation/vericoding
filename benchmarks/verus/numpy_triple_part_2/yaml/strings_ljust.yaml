@@ -31,7 +31,7 @@ vc-preamble: |-
 vc-helpers: |-
 
 vc-spec: |-
-  fn ljust(a: Vec<String>, width: usize, fillchar: char) -> (result: Vec<String>)
+  fn ljust(a: Vec<String>, width: u8, fillchar: char) -> (result: Vec<String>)
       ensures
           result.len() == a.len(),
           forall|i: int| 0 <= i < a.len() ==> #[trigger] result[i]@.len() == if a[i]@.len() >= width as nat { a[i]@.len() } else { width as nat },

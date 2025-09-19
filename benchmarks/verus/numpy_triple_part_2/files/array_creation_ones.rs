@@ -8,12 +8,12 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn ones(n: usize) -> (result: Vec<i32>)
+fn ones(n: usize) -> (result: Vec<i8>)
     ensures
         result.len() == n,
-        forall|i: int| 0 <= i < n ==> result[i] == 1,
+        forall|i: int| 0 <= i < n ==> result[i] as int == 1,
         forall|i: int, j: int| 0 <= i < n && 0 <= j < n ==> result[i] == result[j],
-        forall|i: int| 0 <= i < n ==> result[i] > 0,
+        forall|i: int| 0 <= i < n ==> result[i] as int > 0,
 // </vc-spec>
 // <vc-code>
 {

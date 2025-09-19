@@ -8,9 +8,9 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn numpy_searchsorted(a: Vec<i32>, v: Vec<i32>) -> (result: Vec<usize>)
+fn numpy_searchsorted(a: Vec<i8>, v: Vec<i8>) -> (result: Vec<usize>)
     requires 
-        forall|i: int, j: int| 0 <= i < j < a.len() ==> a[i] <= a[j],
+        forall|i: int, j: int| 0 <= i < j < a.len() ==> a[i] as int <= a[j] as int,
     ensures 
         result.len() == v.len()
 // </vc-spec>

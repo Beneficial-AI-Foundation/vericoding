@@ -45,7 +45,7 @@ fn make_laguerre(coefficients: Vec<f32>) -> (result: Laguerre)
         result.coef@ == coefficients@,
         result.domain[0] == 0.0f32 && result.domain[1] == 1.0f32,
         result.window[0] == 0.0f32 && result.window[1] == 1.0f32,
-        forall|i: int| 0 <= i < coefficients.len() ==> result.coef[i] == coefficients[i]
+        forall|i: int| 0 <= i < coefficients@.len() ==> result.coef@[i] == coefficients@[i]
 // </vc-spec>
 // <vc-code>
 {

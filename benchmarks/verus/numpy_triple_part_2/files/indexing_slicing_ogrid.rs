@@ -8,17 +8,17 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn ogrid(start: i32, stop: i32, step: i32, n: usize) -> (result: Vec<i32>)
+fn ogrid(start: i8, stop: i8, step: i8, n: usize) -> (result: Vec<i8>)
     requires 
         step != 0,
     ensures
         result.len() == n,
-        forall|i: int| 0 <= i < n ==> result[i] == start + (i as i32) * step,
+        forall|i: int| 0 <= i < n ==> result@[i] == start as int + i * (step as int),
         forall|i: int| 0 <= i < n ==> 
             if step > 0 { 
-                start <= result[i] && result[i] < stop
+                (start as int) <= result@[i] && result@[i] < (stop as int)
             } else {
-                stop < result[i] && result[i] <= start
+                (stop as int) < result@[i] && result@[i] <= (start as int)
             },
 // </vc-spec>
 // <vc-code>

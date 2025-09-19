@@ -8,7 +8,7 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn nextafter(x1: Vec<i32>, x2: Vec<i32>) -> (result: Vec<i32>)
+fn nextafter(x1: Vec<i8>, x2: Vec<i8>) -> (result: Vec<i8>)
     requires x1.len() == x2.len(),
     ensures 
         result.len() == x1.len(),

@@ -19,10 +19,10 @@ pub struct UfuncSignature {
 
 // <vc-spec>
 fn parse_signature(sig: Vec<String>) -> (result: UfuncSignature)
-    requires sig.len() > 0,
+    requires sig@.len() > 0,
     ensures
-        result.inputs.len() > 0 || result.outputs.len() > 0,
-        result.inputs.len() + result.outputs.len() > 0
+        result.inputs@.len() > 0 || result.outputs@.len() > 0,
+        result.inputs@.len() + result.outputs@.len() > 0
 // </vc-spec>
 // <vc-code>
 {

@@ -8,10 +8,10 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn spacing(x: Vec<i32>) -> (result: Vec<i32>)
+fn spacing(x: Vec<i8>) -> (result: Vec<i8>)
     ensures
-        result.len() == x.len(),
-        forall|i: int| 0 <= i < x.len() ==> #[trigger] result[i] > 0
+        result@.len() == x@.len(),
+        forall|i: int| 0 <= i < x@.len() ==> #[trigger] result@[i] as int > 0
 // </vc-spec>
 // <vc-code>
 {

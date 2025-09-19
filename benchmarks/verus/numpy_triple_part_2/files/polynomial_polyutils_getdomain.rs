@@ -8,14 +8,14 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn getdomain(x: Vec<i32>) -> (result: Vec<i32>)
-    requires x.len() > 0,
+fn getdomain(x: Vec<i8>) -> (result: Vec<i8>)
+    requires x@.len() > 0,
     ensures
-        result.len() == 2,
-        result[0] <= result[1],
-        forall|i: int| 0 <= i < x.len() ==> result[0] <= x[i] && x[i] <= result[1],
-        exists|i: int| 0 <= i < x.len() && x[i] == result[0],
-        exists|j: int| 0 <= j < x.len() && x[j] == result[1],
+        result@.len() == 2,
+        result@[0] as int <= result@[1] as int,
+        forall|i: int| 0 <= i < x@.len() ==> result@[0] as int <= x@[i] as int && x@[i] as int <= result@[1] as int,
+        exists|i: int| 0 <= i < x@.len() && x@[i] as int == result@[0] as int,
+        exists|j: int| 0 <= j < x@.len() && x@[j] as int == result@[1] as int,
 // </vc-spec>
 // <vc-code>
 {

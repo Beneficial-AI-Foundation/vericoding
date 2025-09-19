@@ -69,7 +69,7 @@ spec fn can_represent_value(dt: NumpyDType, value: int) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn min_scalar_type(value: i64) -> (result: NumpyDType)
+fn min_scalar_type(value: i8) -> (result: NumpyDType)
     ensures
         can_represent_value(result, value as int),
         forall|dt: NumpyDType| dtype_size(dt) < dtype_size(result) ==> !can_represent_value(dt, value as int),

@@ -27,10 +27,10 @@ spec fn has_identity(op: OpType, id: int) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn ufunc_identity(op: OpType) -> (result: Option<int>)
+fn ufunc_identity(op: OpType) -> (result: Option<i8>)
     ensures
         match result {
-            Some(id) => has_identity(op, id),
+            Some(id) => has_identity(op, id as int),
             None => forall|id: int| !has_identity(op, id)
         }
 // </vc-spec>

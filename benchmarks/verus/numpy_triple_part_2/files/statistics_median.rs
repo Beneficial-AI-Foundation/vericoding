@@ -8,19 +8,19 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-spec fn is_sorted(a: Seq<i32>) -> bool {
+spec fn is_sorted(a: Seq<int>) -> bool {
     forall|i: int, j: int| 0 <= i < j < a.len() ==> a[i] <= a[j]
 }
 
-fn median(a: Vec<i32>) -> (result: i32)
+fn median(a: Vec<i8>) -> (result: i8)
     requires a.len() > 0,
     ensures 
-        exists|sorted: Seq<i32>| #[trigger] sorted.len() == a.len() &&
+        exists|sorted: Seq<int>| #[trigger] sorted.len() == a@.len() &&
             is_sorted(sorted) &&
             (if a.len() % 2 == 1 {
-                result == sorted[((a.len() - 1) / 2) as int]
+                result as int == sorted[((a.len() - 1) / 2) as int]
             } else {
-                result == (sorted[(a.len() / 2 - 1) as int] + sorted[(a.len() / 2) as int]) / 2
+                result as int == (sorted[(a.len() / 2 - 1) as int] + sorted[(a.len() / 2) as int]) / 2
             })
 // </vc-spec>
 // <vc-code>

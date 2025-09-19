@@ -15,8 +15,8 @@ vc-helpers: |-
 vc-spec: |-
   fn polyfromroots(roots: Vec<f64>) -> (result: Vec<f64>)
       ensures
-          result.len() == roots.len() + 1,
-          result[result.len() - 1] == 1.0
+          result@.len() == roots@.len() + 1,
+          result@[result@.len() - 1] == 1.0
 
 vc-code: |-
   {
