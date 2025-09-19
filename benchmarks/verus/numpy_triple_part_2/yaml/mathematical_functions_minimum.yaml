@@ -40,8 +40,8 @@ vc-spec: |-
       requires x1.len() == x2.len(),
       ensures 
           result.len() == x1.len(),
-          forall|i: int| 0 <= i < result.len() ==> 
-              (result[i] == x1[i] || result[i] == x2[i]),
+          forall|i: int| 0 <= i < result@.len() ==> 
+              (result@[i] == x1@[i] || result@[i] == x2@[i]),
 
 vc-code: |-
   {

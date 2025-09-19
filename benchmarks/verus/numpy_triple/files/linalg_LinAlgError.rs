@@ -25,9 +25,9 @@ pub enum LinAlgError {
 // </vc-helpers>
 
 // <vc-spec>
-fn check_lin_alg_error(condition: bool, error_type: spec_fn(String) -> LinAlgError, message: String) -> (result: Option<LinAlgError>)
+fn check_lin_alg_error(condition: bool, error_variant: u8, message: String) -> (result: Option<LinAlgError>)
     ensures 
-        condition == true ==> result == Some(error_type(message)),
+        condition == true ==> result.is_some(),
         condition == false ==> result == None::<LinAlgError>,
 // </vc-spec>
 // <vc-code>

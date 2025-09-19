@@ -1,0 +1,68 @@
+vc-description: |-
+  Add one Legendre series to another by component-wise addition of coefficients.
+  
+  Add one Legendre series to another.
+  
+  Returns the sum of two Legendre series `c1` + `c2`.  The arguments
+  are sequences of coefficients ordered from lowest order term to
+  highest, i.e., [1,2,3] represents the series ``P_0 + 2*P_1 + 3*P_2``.
+  
+  Parameters
+  ----------
+  c1, c2 : array_like
+      1-D arrays of Legendre series coefficients ordered from low to
+      high.
+  
+  Returns
+  -------
+  out : ndarray
+      Array representing the Legendre series of their sum.
+  
+  See Also
+  --------
+  legsub, legmulx, legmul, legdiv, legpow
+  
+  Notes
+  -----
+  Unlike multiplication, division, etc., the sum of two Legendre series
+  is a Legendre series (without having to "reproject" the result onto
+  the basis set) so addition, just like that of "standard" polynomials,
+  is simply "component-wise."
+  
+  Examples
+  --------
+  >>> from numpy.polynomial import legendre as L
+  >>> c1 = (1,2,3)
+  >>> c2 = (3,2,1)
+  >>> L.legadd(c1,c2)
+  array([4.,  4.,  4.])
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn legadd(c1: Vec<i8>, c2: Vec<i8>) -> (result: Vec<i8>)
+      ensures
+          result.len() == if c1.len() >= c2.len() { c1.len() } else { c2.len() },
+          forall|i: int| 0 <= i < result.len() ==> {
+              let val1: int = if i < c1.len() { c1[i] as int } else { 0 };
+              let val2: int = if i < c2.len() { c2[i] as int } else { 0 };
+              #[trigger] result[i] as int == val1 + val2
+          }
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      unreached()
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {}

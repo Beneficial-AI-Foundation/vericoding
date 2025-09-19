@@ -8,15 +8,15 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn hermegauss(deg: usize) -> (result: (Vec<i32>, Vec<i32>))
+fn hermegauss(deg: usize) -> (result: (Vec<i8>, Vec<i8>))
     requires deg > 0,
     ensures
         /* Points are ordered (sorted in ascending order) */
-        forall|i: int, j: int| 0 <= i < j < deg ==> #[trigger] result.0[i] < #[trigger] result.0[j],
+        forall|i: int, j: int| 0 <= i < j < deg ==> #[trigger] result.0@[i] < #[trigger] result.0@[j],
         /* Weights are positive */
-        forall|i: int| 0 <= i < deg ==> #[trigger] result.1[i] > 0,
+        forall|i: int| 0 <= i < deg ==> #[trigger] result.1@[i] > 0,
         /* Return tuple has correct lengths */
-        result.0.len() == deg && result.1.len() == deg,
+        result.0@.len() == deg && result.1@.len() == deg,
 // </vc-spec>
 // <vc-code>
 {

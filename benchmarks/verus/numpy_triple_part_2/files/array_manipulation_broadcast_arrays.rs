@@ -8,7 +8,7 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn broadcast_arrays(a: Vec<f32>, b: Vec<f32>) -> (result: (Vec<f32>, Vec<f32>))
+fn broadcast_arrays(a: Vec<i8>, b: Vec<i8>) -> (result: (Vec<i8>, Vec<i8>))
     requires 
         a.len() == 1 || b.len() == 1 || a.len() == b.len(),
         a.len() > 0,
@@ -23,14 +23,14 @@ fn broadcast_arrays(a: Vec<f32>, b: Vec<f32>) -> (result: (Vec<f32>, Vec<f32>))
             b_broadcast.len() == max_len &&
             
             /* First array broadcasting rules */
-            (a.len() == 1 ==> forall|i: int| 0 <= i < max_len ==> a_broadcast[i] == a[0]) &&
-            (b.len() == 1 && a.len() > 1 ==> forall|i: int| 0 <= i < a.len() ==> a_broadcast[i] == a[i]) &&
-            (a.len() == b.len() ==> forall|i: int| 0 <= i < a.len() ==> a_broadcast[i] == a[i]) &&
+            (a.len() == 1 ==> forall|i: int| 0 <= i < max_len as int ==> a_broadcast[i] == a[0]) &&
+            (b.len() == 1 && a.len() > 1 ==> forall|i: int| 0 <= i < a.len() as int ==> a_broadcast[i] == a[i]) &&
+            (a.len() == b.len() ==> forall|i: int| 0 <= i < a.len() as int ==> a_broadcast[i] == a[i]) &&
             
             /* Second array broadcasting rules */
-            (b.len() == 1 ==> forall|i: int| 0 <= i < max_len ==> b_broadcast[i] == b[0]) &&
-            (a.len() == 1 && b.len() > 1 ==> forall|i: int| 0 <= i < b.len() ==> b_broadcast[i] == b[i]) &&
-            (a.len() == b.len() ==> forall|i: int| 0 <= i < b.len() ==> b_broadcast[i] == b[i])
+            (b.len() == 1 ==> forall|i: int| 0 <= i < max_len as int ==> b_broadcast[i] == b[0]) &&
+            (a.len() == 1 && b.len() > 1 ==> forall|i: int| 0 <= i < b.len() as int ==> b_broadcast[i] == b[i]) &&
+            (a.len() == b.len() ==> forall|i: int| 0 <= i < b.len() as int ==> b_broadcast[i] == b[i])
         })
 // </vc-spec>
 // <vc-code>

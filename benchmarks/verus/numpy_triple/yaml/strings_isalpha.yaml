@@ -1,0 +1,71 @@
+vc-description: |-
+  numpy.strings.isalpha: Returns true for each element if all characters in the string are alphabetic and there is at least one character, false otherwise.
+
+  Tests whether all characters in each string are alphabetic letters.
+  A string is considered alphabetic if:
+  1. It contains at least one character
+  2. All characters are alphabetic (a-z, A-Z)
+
+  Empty strings return false.
+  Strings with numbers, symbols, or whitespace return false.
+
+  Specification: numpy.strings.isalpha returns a vector where each element indicates
+  whether the corresponding string element contains only alphabetic characters
+  and has at least one character.
+
+  Key properties:
+  1. Empty strings always return false
+  2. Non-empty strings return true iff all characters are alphabetic
+  3. Alphabetic characters are those satisfying Char.isAlpha (a-z, A-Z)
+  4. Strings with digits, whitespace, or symbols return false
+  5. The function is applied element-wise to each string in the vector
+
+  Mathematical properties:
+  - Monotonicity: removing non-alphabetic characters from a string cannot make isalpha false
+  - Compositionality: isalpha(s) = (s.length > 0) ∧ (∀ c ∈ s, Char.isAlpha c)
+  - Deterministic: same input always produces same output
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+vc-helpers: |-
+
+vc-spec: |-
+  spec fn is_alpha_char(c: char) -> bool {
+      ('a' <= c && c <= 'z') || ('A' <= c && c <= 'Z')
+  }
+
+  spec fn all_chars_alpha(s: Seq<char>) -> bool 
+      decreases s.len()
+  {
+      if s.len() == 0 {
+          true
+      } else {
+          is_alpha_char(s[0]) && all_chars_alpha(s.skip(1))
+      }
+  }
+
+  fn isalpha(a: Vec<String>) -> (result: Vec<bool>)
+      ensures 
+          result.len() == a.len(),
+          forall|i: int| 0 <= i < a.len() as int ==> 
+              result[i as int] == (a[i as int]@.len() > 0 && all_chars_alpha(a[i as int]@)),
+          forall|i: int| 0 <= i < a.len() as int ==> 
+              (a[i as int]@.len() == 0 ==> result[i as int] == false),
+          forall|i: int| 0 <= i < a.len() as int ==> 
+              (a[i as int]@.len() > 0 ==> (result[i as int] <==> all_chars_alpha(a[i as int]@))),
+          forall|i: int| 0 <= i < a.len() as int ==> 
+              (result[i as int] == true ==> a[i as int]@.len() > 0),
+          forall|i: int| 0 <= i < a.len() as int ==> 
+              (result[i as int] == true ==> all_chars_alpha(a[i as int]@))
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      unreached()
+      // impl-end
+  }
+vc-postamble: |-
+
+  }
+  fn main() {}

@@ -8,12 +8,12 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn vector_norm(x: Vec<i32>, p: i32) -> (result: i32)
-    requires p >= 0,
+fn vector_norm(x: Vec<i8>, p: i8) -> (result: i8)
+    requires p as int >= 0,
     ensures 
-        result >= 0,
-        x@.len() == 0 ==> result == 0,
-        result >= 0
+        result as int >= 0,
+        x@.len() == 0 ==> result as int == 0,
+        result as int >= 0
 // </vc-spec>
 // <vc-code>
 {

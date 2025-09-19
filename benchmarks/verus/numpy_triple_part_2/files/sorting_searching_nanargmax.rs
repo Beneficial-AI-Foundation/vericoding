@@ -8,13 +8,13 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn nanargmax(a: Vec<i32>) -> (idx: usize)
+fn nanargmax(a: Vec<i8>) -> (idx: usize)
     requires 
-        a.len() > 0,
+        a@.len() > 0,
     ensures 
-        idx < a.len(),
-        forall|j: int| 0 <= j < a.len() ==> a[j] <= a[idx as int],
-        forall|j: int| 0 <= j < a.len() && a[j] == a[idx as int] ==> (idx as int) <= j,
+        idx < a@.len(),
+        forall|j: int| 0 <= j < a@.len() ==> a@[j] <= a@[idx as int],
+        forall|j: int| 0 <= j < a@.len() && a@[j] == a@[idx as int] ==> (idx as int) <= j,
 // </vc-spec>
 // <vc-code>
 {

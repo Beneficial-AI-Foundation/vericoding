@@ -8,13 +8,13 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn hermcompanion(c: Vec<f32>) -> (result: Vec<Vec<f32>>)
+fn hermcompanion(c: Vec<i8>) -> (result: Vec<Vec<i8>>)
     requires 
-        c.len() >= 2,
-        c[c.len() - 1] != 0.0f32,
+        c@.len() >= 2,
+        c[c@.len() - 1] as int != 0,
     ensures
-        result.len() == c.len() - 1,
-        forall|i: int| 0 <= i < result.len() ==> result[i].len() == c.len() - 1,
+        result@.len() == c@.len() - 1,
+        forall|i: int| 0 <= i < result@.len() ==> result@[i].len() == c@.len() - 1,
 // </vc-spec>
 // <vc-code>
 {

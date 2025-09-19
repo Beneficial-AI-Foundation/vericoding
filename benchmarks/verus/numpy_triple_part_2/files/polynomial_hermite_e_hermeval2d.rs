@@ -20,7 +20,7 @@ spec fn hermite_basis(n: nat, t: int) -> int
     }
 }
 
-spec fn matrix_sum(c: Seq<Vec<i32>>, x: int, y: int) -> int {
+spec fn matrix_sum(c: Seq<Vec<i8>>, x: int, y: int) -> int {
     let n = c.len() as int;
     if n == 0 {
         0
@@ -30,7 +30,7 @@ spec fn matrix_sum(c: Seq<Vec<i32>>, x: int, y: int) -> int {
     }
 }
 
-spec fn matrix_sum_helper(c: Seq<Vec<i32>>, x: int, y: int, i: int, n: int, m: int) -> int
+spec fn matrix_sum_helper(c: Seq<Vec<i8>>, x: int, y: int, i: int, n: int, m: int) -> int
     decreases n - i
 {
     if i >= n {
@@ -40,7 +40,7 @@ spec fn matrix_sum_helper(c: Seq<Vec<i32>>, x: int, y: int, i: int, n: int, m: i
     }
 }
 
-spec fn row_sum_helper(row: Vec<i32>, x: int, y: int, i: int, j: int, m: int) -> int
+spec fn row_sum_helper(row: Vec<i8>, x: int, y: int, i: int, j: int, m: int) -> int
     decreases m - j
 {
     if j >= m {
@@ -51,7 +51,7 @@ spec fn row_sum_helper(row: Vec<i32>, x: int, y: int, i: int, j: int, m: int) ->
     }
 }
 
-fn hermeval2d(x: Vec<i32>, y: Vec<i32>, c: Vec<Vec<i32>>) -> (result: Vec<i32>)
+fn hermeval2d(x: Vec<i8>, y: Vec<i8>, c: Vec<Vec<i8>>) -> (result: Vec<i8>)
     requires
         x.len() == y.len(),
         x.len() > 0,

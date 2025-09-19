@@ -18,9 +18,9 @@ spec fn vec_product_int(a: Seq<i32>) -> int
     }
 }
 
-fn prod(a: Vec<i32>) -> (result: i32)
+fn prod(a: Vec<i8>) -> (result: i8)
     ensures 
-        result as int == vec_product_int(a@),
+        result as int == vec_product_int(a@.map(|i, x| x as i32)),
         a.len() == 0 ==> result == 1,
         (exists|i: int| 0 <= i < a.len() && a[i] == 0) ==> result == 0
 // </vc-spec>

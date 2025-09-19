@@ -8,8 +8,8 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn empty(n: usize) -> (result: Vec<f64>)
-    ensures result.len() == n
+fn empty(n: u8) -> (result: Vec<f64>)
+    ensures result.len() == n as usize
 // </vc-spec>
 // <vc-code>
 {

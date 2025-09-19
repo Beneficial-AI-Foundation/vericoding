@@ -27,18 +27,18 @@ vc-preamble: |-
 vc-helpers: |-
 
 vc-spec: |-
-  fn ifftn(a: Vec<Vec<i32>>) -> (result: Vec<Vec<i32>>)
+  fn ifftn(a: Vec<Vec<i8>>) -> (result: Vec<Vec<i8>>)
       requires 
           a.len() > 0,
           a.len() < usize::MAX,
-          forall|i: int| 0 <= i < a.len() ==> a[i as int].len() > 0,
-          forall|i: int| 0 <= i < a.len() ==> a[i as int].len() < usize::MAX,
-          forall|i: int, j: int| 0 <= i < a.len() && 0 <= j < a.len() ==> a[i as int].len() == a[j as int].len(),
+          forall|i: int| 0 <= i < a@.len() ==> a@[i].len() > 0,
+          forall|i: int| 0 <= i < a@.len() ==> a@[i].len() < usize::MAX,
+          forall|i: int, j: int| 0 <= i < a@.len() && 0 <= j < a@.len() ==> a@[i].len() == a@[j].len(),
       ensures 
-          result.len() == a.len(),
-          forall|i: int| 0 <= i < result.len() ==> result[i as int].len() == a[0].len(),
-          forall|i: int, j: int| #[trigger] result[i as int][j as int] == 0 || 
-              (0 <= i < result.len() && 0 <= j < result[i as int].len()),
+          result@.len() == a@.len(),
+          forall|i: int| 0 <= i < result@.len() ==> result@[i].len() == a@[0].len(),
+          forall|i: int, j: int| #[trigger] result@[i][j] == 0 || 
+              (0 <= i < result@.len() && 0 <= j < result@[i].len()),
 vc-code: |-
   {
       // impl-start

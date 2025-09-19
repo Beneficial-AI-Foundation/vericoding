@@ -11,7 +11,6 @@ verus! {
 fn hermpow(c: Vec<f64>, pow: usize, maxpower: usize) -> (result: Vec<f64>)
     requires 
         c.len() > 0,
-        maxpower >= 0,
     ensures
 
         result.len() <= maxpower + 1,

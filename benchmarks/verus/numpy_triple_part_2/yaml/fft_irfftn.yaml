@@ -47,13 +47,13 @@ vc-preamble: |-
 vc-helpers: |-
 
 vc-spec: |-
-  fn irfftn(a: Vec<Complex>, n: usize) -> (result: Vec<f32>)
+  fn irfftn(a: Vec<Complex>, n: u8) -> (result: Vec<f32>)
       requires 
           a.len() > 0,
           n > 0,
           a[0].im == 0.0f32,
       ensures
-          result.len() == n,
+          result.len() == n as nat,
 
 vc-code: |-
   {
