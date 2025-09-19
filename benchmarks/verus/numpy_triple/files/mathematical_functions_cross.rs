@@ -8,7 +8,7 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn cross(a: Vec<f32>, b: Vec<f32>) -> (result: Vec<f32>)
+fn cross(a: Vec<i8>, b: Vec<i8>) -> (result: Vec<i8>)
     requires 
         a.len() == 3,
         b.len() == 3,

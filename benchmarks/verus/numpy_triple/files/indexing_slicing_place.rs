@@ -24,7 +24,7 @@ fn place(arr: Vec<f32>, mask: Vec<bool>, vals: Vec<f32>) -> (result: Vec<f32>)
         vals.len() > 0,
     ensures 
         result.len() == arr.len(),
-        forall|i: int| 0 <= i < arr.len() ==> !mask[i] ==> result[i] == arr[i],
+        forall|i: int| 0 <= i < arr.len() ==> !mask@[i] ==> result@[i] == arr@[i],
 // </vc-spec>
 // <vc-code>
 {

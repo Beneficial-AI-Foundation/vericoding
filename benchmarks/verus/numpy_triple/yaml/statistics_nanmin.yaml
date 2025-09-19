@@ -1,0 +1,59 @@
+vc-description: |-
+  Returns the minimum value of all elements in a non-empty vector, ignoring NaN values.
+  When all elements are NaN, returns NaN.
+
+  Mathematical Properties:
+  - Ignores NaN values in the computation
+  - Returns the minimum of all non-NaN elements
+  - If all elements are NaN, returns NaN
+  - If at least one element is not NaN, returns the minimum non-NaN value
+  - For vectors with no NaN values, behaves identically to regular min
+
+  Specification: nanmin returns the minimum value in the vector, ignoring NaN values.
+
+  Mathematical properties:
+  1. If there exists at least one non-NaN element, the result is the minimum among non-NaN elements
+  2. If all elements are NaN, the result is NaN
+  3. The result is either a non-NaN element from the vector or NaN
+  4. For vectors without NaN values, nanmin behaves identically to regular min
+  5. NaN values are completely ignored during the minimum computation
+  6. Sanity check: result is either NaN or exists in the vector
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+vc-helpers: |-
+
+vc-spec: |-
+  spec fn all_nan(a: Seq<int>) -> bool 
+      decreases a.len()
+  {
+      false  /* integers can't be NaN */
+  }
+
+  spec fn has_non_nan(a: Seq<int>) -> bool 
+      decreases a.len()
+  {
+      a.len() > 0  /* all integers are non-NaN */
+  }
+
+  spec fn is_min_of_all(result: int, a: Seq<int>) -> bool {
+      exists|witness: int| 0 <= witness < a.len() &&
+          result == a[witness] &&
+          forall|j: int| 0 <= j < a.len() ==> result <= a[j]
+  }
+
+  fn nanmin(a: Vec<i8>) -> (result: i8)
+      requires a.len() > 0,
+      ensures is_min_of_all(result as int, a@.map(|i, x: i8| x as int))
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      unreached()
+      // impl-end
+  }
+vc-postamble: |-
+
+  }
+  fn main() {}

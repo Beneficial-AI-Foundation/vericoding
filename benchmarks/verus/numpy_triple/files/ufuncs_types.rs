@@ -66,11 +66,9 @@ spec fn format_type_signature(sig: TypeSignature) -> Seq<char> {
 fn types(ufunc_signatures: Vec<TypeSignature>) -> (result: Vec<String>)
     ensures 
         result.len() == ufunc_signatures.len(),
-        forall|i: int| 0 <= i < result.len() ==> {
-            let sig = ufunc_signatures[i];
-            sig.input_types.len() > 0 &&
-            result[i]@ == format_type_signature(sig)
-        }
+        forall|i: int| 0 <= i < result.len() ==> 
+            #[trigger] result[i]@ == format_type_signature(ufunc_signatures[i]) &&
+            ufunc_signatures[i].input_types.len() > 0
 // </vc-spec>
 // <vc-code>
 {
