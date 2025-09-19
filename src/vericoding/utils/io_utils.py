@@ -51,18 +51,19 @@ def save_iteration_code(
         logger.info(f"    💾 Saved {phase} code to: {debug_path}/{iteration_file_name}")
 
 
-def load_postamble_from_yaml(config: ProcessingConfig, lean_file_path: Path) -> str | None:
+def load_postamble_from_yaml(config: ProcessingConfig, lean_file_path: Path) -> str:
     """Load the postamble from the corresponding YAML file for unit test mode.
     
     Args:
-        config: Processing configuration
+        config: Processing configuration  
         lean_file_path: Path to the Lean file (relative to files_dir)
         
     Returns:
-        The postamble content if found, None otherwise
+        The postamble content (empty string if field is empty)
     """
     if config.language != 'lean' or not config.unit_test:
-        return None
+        print(f"Error: load_postamble_from_yaml called incorrectly - language={config.language}, unit_test={config.unit_test}")
+        sys.exit(1)
     
     # Convert from files/ directory to yaml/ directory
     yaml_file_path = lean_file_path.with_suffix('.yaml')
