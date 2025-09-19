@@ -71,15 +71,15 @@ vc-preamble: |-
 vc-helpers: |-
 
 vc-spec: |-
-  fn mod_exp_pow2(sx: Seq<char>, sy: Seq<char>, n: nat, sz: Seq<char>) -> (res: Seq<char>)
+  fn mod_exp_pow2(sx: Vec<char>, sy: Vec<char>, n: u8, sz: Vec<char>) -> (res: Vec<char>)
       requires 
-          valid_bit_string(sx) && valid_bit_string(sy) && valid_bit_string(sz) &&
-          (str2int(sy) == exp_int(2nat, n) || str2int(sy) == 0) &&
-          sy.len() == n + 1 &&
-          str2int(sz) > 1,
+          valid_bit_string(sx@) && valid_bit_string(sy@) && valid_bit_string(sz@) &&
+          (str2int(sy@) == exp_int(2nat, n as nat) || str2int(sy@) == 0) &&
+          sy@.len() == n as int + 1 &&
+          str2int(sz@) > 1,
       ensures 
-          valid_bit_string(res) &&
-          str2int(res) == exp_int(str2int(sx), str2int(sy)) % str2int(sz),
+          valid_bit_string(res@) &&
+          str2int(res@) == exp_int(str2int(sx@), str2int(sy@)) % str2int(sz@),
       decreases n,
 
 vc-code: |-

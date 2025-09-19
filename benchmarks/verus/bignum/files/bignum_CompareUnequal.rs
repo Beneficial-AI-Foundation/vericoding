@@ -23,18 +23,18 @@ spec fn valid_bit_string(s: Seq<char>) -> bool
 // </vc-helpers>
 
 // <vc-spec>
-fn compare_unequal(s1: Seq<char>, s2: Seq<char>) -> (res: i32)
+fn compare_unequal(s1: Vec<char>, s2: Vec<char>) -> (res: i32)
   requires 
-    valid_bit_string(s1) && valid_bit_string(s2),
-    s1.len() > 0,
-    s1.len() > 1 ==> s1[0] != '0',
-    s2.len() > 0,
-    s2.len() > 1 ==> s2[0] != '0',
-    s1.len() > s2.len()
+    valid_bit_string(s1@) && valid_bit_string(s2@),
+    s1@.len() > 0,
+    s1@.len() > 1 ==> s1@[0] != '0',
+    s2@.len() > 0,
+    s2@.len() > 1 ==> s2@[0] != '0',
+    s1@.len() > s2@.len()
   ensures 
-    str2int(s1) < str2int(s2) ==> res == -1,
-    str2int(s1) == str2int(s2) ==> res == 0,
-    str2int(s1) > str2int(s2) ==> res == 1
+    str2int(s1@) < str2int(s2@) ==> res == -1,
+    str2int(s1@) == str2int(s2@) ==> res == 0,
+    str2int(s1@) > str2int(s2@) ==> res == 1
 // </vc-spec>
 // <vc-code>
 {
