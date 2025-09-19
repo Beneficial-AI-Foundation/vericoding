@@ -27,6 +27,3 @@ theorem coins_are_positive {n: Nat} (h: 1 ≤ n ∧ n ≤ 17):
   ∀ x ∈ (get_coins_and_sum n).fst, 0 < x :=
 sorry
 -- </vc-theorems>
-
--- <vc-postamble>
--- </vc-postamble>
