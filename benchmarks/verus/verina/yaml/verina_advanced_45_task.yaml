@@ -32,16 +32,16 @@ vc-helpers: |-
 vc-spec: |-
   fn max_subarray_sum(xs: &Vec<i32>) -> (result: i32)
       ensures
-          xs.len() == 0 ==> result == 0,
-          xs.len() > 0 ==> (
+          xs@.len() == 0 ==> result == 0,
+          xs@.len() > 0 ==> (
               exists|start: int, len: int| 
-                  0 <= start < xs.len() && 
-                  1 <= len <= xs.len() - start &&
-                  result == spec_sum(xs, start, len) as i32
+                  0 <= start < xs@.len() && 
+                  1 <= len <= xs@.len() - start &&
+                  result as int == spec_sum(xs, start, len)
           ) &&
           (forall|start: int, len: int|
-              0 <= start < xs.len() && 
-              1 <= len <= xs.len() - start
+              0 <= start < xs@.len() && 
+              1 <= len <= xs@.len() - start
               ==> spec_sum(xs, start, len) <= result as int
           ),
 
@@ -54,4 +54,3 @@ vc-code: |-
 vc-postamble: |-
   }
   fn main() {}
-

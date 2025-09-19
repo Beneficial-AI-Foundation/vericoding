@@ -8,9 +8,9 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn is_divisible_by_11(n: i32) -> (result: bool)
+fn is_divisible_by_11(n: i8) -> (result: bool)
     ensures
-        result <==> (exists|k: int| #[trigger] (k * 11) == n),
+        result <==> (exists|k: int| #[trigger] (k * 11) == n as int),
 // </vc-spec>
 // <vc-code>
 {

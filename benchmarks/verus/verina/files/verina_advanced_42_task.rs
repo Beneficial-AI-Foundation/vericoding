@@ -8,11 +8,11 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn max_profit(prices: Seq<usize>) -> (result: usize)
+fn max_profit(prices: Vec<u8>) -> (result: u8)
     ensures
-        (result == 0 && prices.len() == 0) ||
-        (exists|i: int, j: int| 0 <= i < j < prices.len() && prices[j] >= prices[i] && prices[j] - prices[i] == result) ||
-        (forall|i: int, j: int| 0 <= i < j < prices.len() ==> prices[j] < prices[i]),
+        (result == 0 && prices@.len() == 0) ||
+        (exists|i: int, j: int| 0 <= i < j < prices@.len() && prices@[j] as nat >= prices@[i] as nat && prices@[j] as nat - prices@[i] as nat == result as nat) ||
+        (forall|i: int, j: int| 0 <= i < j < prices@.len() ==> (prices@[j] as nat) < (prices@[i] as nat)),
 // </vc-spec>
 // <vc-code>
 {

@@ -8,10 +8,10 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn double_quadruple(x: i32) -> (result: (i32, i32))
+fn double_quadruple(x: i8) -> (result: (i8, i8))
     ensures
-        result.0 == 2 * x,
-        result.1 == 2 * result.0,
+        result.0 as int == 2 * (x as int),
+        result.1 as int == 2 * (result.0 as int),
 // </vc-spec>
 // <vc-code>
 {

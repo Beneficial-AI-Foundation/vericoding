@@ -15,9 +15,9 @@ fn insert(oline: &Vec<char>, l: usize, nl: &Vec<char>, p: usize, at_pos: usize) 
         at_pos <= l,
     ensures
         result.len() == l + p,
-        forall|i: int| 0 <= i < p ==> #[trigger] result[at_pos + i] == nl[i],
-        forall|i: int| 0 <= i < at_pos ==> #[trigger] result[i] == oline[i],
-        forall|i: int| 0 <= i < (l - at_pos) ==> #[trigger] result[at_pos + p + i] == oline[at_pos + i],
+        forall|i: int| 0 <= i < p as int ==> #[trigger] result[at_pos as int + i] == nl[i],
+        forall|i: int| 0 <= i < at_pos as int ==> #[trigger] result[i] == oline[i],
+        forall|i: int| 0 <= i < (l as int - at_pos as int) ==> #[trigger] result[at_pos as int + p as int + i] == oline[at_pos as int + i],
 // </vc-spec>
 // <vc-code>
 {

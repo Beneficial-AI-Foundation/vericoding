@@ -8,10 +8,10 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn double_array_elements(s: &Vec<i32>) -> (result: Vec<i32>)
+fn double_array_elements(s: &Vec<i8>) -> (result: Vec<i8>)
     ensures
         result.len() == s.len(),
-        forall|i: int| 0 <= i < s.len() ==> #[trigger] result[i] == 2 * s[i],
+        forall|i: int| 0 <= i < s.len() ==> #[trigger] result[i] as int == 2 * s[i] as int,
 // </vc-spec>
 // <vc-code>
 {

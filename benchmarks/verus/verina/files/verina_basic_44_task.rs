@@ -12,9 +12,9 @@ spec fn is_odd(n: i32) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn is_odd_at_index_odd(a: &Vec<i32>) -> (result: bool)
+fn is_odd_at_index_odd(a: &Vec<i8>) -> (result: bool)
     ensures
-        result <==> (forall|i: int| 0 <= i < a.len() && i % 2 == 1 ==> is_odd(a[i as int])),
+        result <==> (forall|i: int| 0 <= i < a@.len() && i % 2 == 1 ==> is_odd(a@[i] as i32)),
 // </vc-spec>
 // <vc-code>
 {

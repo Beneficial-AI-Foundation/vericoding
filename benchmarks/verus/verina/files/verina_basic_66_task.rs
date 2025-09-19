@@ -8,9 +8,9 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn compute_is_even(x: int) -> (result: bool)
+fn compute_is_even(x: i8) -> (result: bool)
     ensures
-        result == true <==> #[trigger] (x % 2) == 0,
+        result == true <==> #[trigger] ((x as int) % 2) == 0,
 // </vc-spec>
 // <vc-code>
 {

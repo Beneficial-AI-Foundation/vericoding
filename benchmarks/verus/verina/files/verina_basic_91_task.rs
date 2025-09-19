@@ -8,7 +8,7 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn swap(x: i32, y: i32) -> (result: (i32, i32))
+fn swap(x: i8, y: i8) -> (result: (i8, i8))
     ensures
         result.0 == y,
         result.1 == x,

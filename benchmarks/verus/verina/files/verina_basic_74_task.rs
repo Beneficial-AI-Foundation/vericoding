@@ -12,11 +12,11 @@ spec fn max_array_precond(a: &Vec<i32>) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn max_array(a: &Vec<i32>) -> (result: i32)
-    requires max_array_precond(a),
+fn max_array(a: &Vec<i8>) -> (result: i8)
+    requires a@.len() > 0,
     ensures
-        forall|k: int| 0 <= k < a.len() ==> result >= a[k],
-        exists|k: int| 0 <= k < a.len() && result == a[k],
+        forall|k: int| 0 <= k < a@.len() ==> result as int >= a@[k] as int,
+        exists|k: int| 0 <= k < a@.len() && result as int == a@[k] as int,
 // </vc-spec>
 // <vc-code>
 {

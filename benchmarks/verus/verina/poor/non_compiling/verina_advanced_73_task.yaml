@@ -1,0 +1,34 @@
+vc-description: |-
+  This task requires writing a Verus method that finds the first missing natural number in an increasingly sorted list. The method should return the smallest natural number that is not in the list, ensuring that all natural numbers that are smaller is inside the list.
+  
+  -----Input-----
+  The input consists of a list of natural numbers sorted in increasing order:
+  l: The sorted list
+  
+  -----Output-----
+  The output is a natural number:
+  Returns the smallest natural number that is not in the list, which means all natural numbers that are smaller than the returned value should be inside the input list.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn smallest_missing(l: Vec<u8>) -> (result: u8)
+      requires forall|i: int, j: int| 0 <= i < j < l.len() ==> l[i] < l[j],
+      ensures
+          forall|i: int| 0 <= i < l@.len() ==> l@[i] as nat != result as nat,
+          forall|candidate: nat| candidate < result as nat ==> exists|i: int| 0 <= i < l@.len() && l@[i] as nat == candidate
+
+vc-code: |-
+  {
+      assume(false);
+      unreached()
+  }
+
+vc-postamble: |-
+  }
+  fn main() {}

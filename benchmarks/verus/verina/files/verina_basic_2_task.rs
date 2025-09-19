@@ -8,13 +8,13 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn find_smallest(s: &Vec<nat>) -> (result: Option<nat>)
+fn find_smallest(s: &Vec<u8>) -> (result: Option<u8>)
     ensures
         match result {
-            None => s.len() == 0,
-            Some(r) => s.len() > 0 && 
-                      (exists|i: int| 0 <= i < s.len() && s[i] == r) &&
-                      (forall|i: int| 0 <= i < s.len() ==> r <= s[i])
+            None => s@.len() == 0,
+            Some(r) => s@.len() > 0 && 
+                      (exists|i: int| 0 <= i < s@.len() && s@[i] == r as nat) &&
+                      (forall|i: int| 0 <= i < s@.len() ==> r as nat <= s@[i])
         },
 // </vc-spec>
 // <vc-code>

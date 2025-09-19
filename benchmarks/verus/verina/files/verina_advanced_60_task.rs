@@ -8,14 +8,14 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn partition_evens_odds(nums: &Vec<nat>) -> (result: (Vec<nat>, Vec<nat>))
+fn partition_evens_odds(nums: &Vec<u8>) -> (result: (Vec<u8>, Vec<u8>))
     requires true,
     ensures ({
         let evens = result.0;
         let odds = result.1;
-        &&& evens@ + odds@ == nums@.filter(|n: nat| n % 2 == 0) + nums@.filter(|n: nat| n % 2 == 1)
-        &&& forall|i: int| 0 <= i < evens.len() ==> evens[i] % 2 == 0
-        &&& forall|i: int| 0 <= i < odds.len() ==> odds[i] % 2 == 1
+        &&& evens@.map(|i, n| n as nat) + odds@.map(|i, n| n as nat) == nums@.map(|i, n| n as nat).filter(|n: nat| n % 2 == 0) + nums@.map(|i, n| n as nat).filter(|n: nat| n % 2 == 1)
+        &&& forall|i: int| 0 <= i < evens.len() ==> evens[i] as nat % 2 == 0
+        &&& forall|i: int| 0 <= i < odds.len() ==> odds[i] as nat % 2 == 1
     }),
 // </vc-spec>
 // <vc-code>

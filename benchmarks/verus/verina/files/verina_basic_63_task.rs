@@ -12,12 +12,12 @@ spec fn abs_diff(a: int, b: int) -> int {
 // </vc-helpers>
 
 // <vc-spec>
-fn has_close_elements(numbers: &Vec<i32>, threshold: i32) -> (result: bool)
+fn has_close_elements(numbers: &Vec<i8>, threshold: i8) -> (result: bool)
     requires threshold >= 0,
     ensures
         !result <==> (forall|i: int, j: int| 
-            0 <= i < numbers.len() && 0 <= j < numbers.len() && i != j ==> 
-            abs_diff(numbers[i] as int, numbers[j] as int) >= threshold as int),
+            0 <= i < numbers@.len() && 0 <= j < numbers@.len() && i != j ==> 
+            abs_diff(numbers@[i] as int, numbers@[j] as int) >= threshold as int),
 // </vc-spec>
 // <vc-code>
 {

@@ -8,9 +8,9 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn my_min(x: i32, y: i32) -> (result: i32)
+fn my_min(x: i8, y: i8) -> (result: i8)
     ensures
-        (x <= y ==> result == x) && (x > y ==> result == y),
+        (x as int <= y as int ==> result as int == x as int) && (x as int > y as int ==> result as int == y as int),
 // </vc-spec>
 // <vc-code>
 {
