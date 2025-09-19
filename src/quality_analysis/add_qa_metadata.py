@@ -593,21 +593,38 @@ class QAMetadataGenerator:
             return False, all_metadata
 
         # Check if this is a single benchmark or benchmarks root
-        jsonl_files = self.find_jsonl_files(benchmarks_root)
-        if jsonl_files:
-            # This directory contains JSONL files, treat as single benchmark
-            success, metadata = self.process_benchmark(benchmarks_root)
-            if success and metadata:
-                all_metadata[str(benchmarks_root)] = metadata
-            return success, all_metadata
+        # Special case: if this is the root "benchmarks" directory, skip the JSONL check
+        # and proceed to process subdirectories
+        if benchmarks_root.name != "benchmarks":
+            jsonl_files = self.find_jsonl_files(benchmarks_root)
+            if jsonl_files:
+                # This directory contains JSONL files, treat as single benchmark
+                success, metadata = self.process_benchmark(benchmarks_root)
+                if success and metadata:
+                    all_metadata[str(benchmarks_root)] = metadata
+                return success, all_metadata
 
-        # This is a benchmarks root, find all benchmark subdirectories
+        # Handle different input patterns:
+        # 1. benchmarks/verus -> process all benchmarks in verus language
+        # 2. benchmarks -> process all benchmarks in all languages
         benchmark_dirs = []
-        for lang_dir in benchmarks_root.iterdir():
-            if lang_dir.is_dir() and lang_dir.name in ["verus", "dafny", "lean"]:
-                for bench_dir in lang_dir.iterdir():
-                    if bench_dir.is_dir() and self.find_jsonl_files(bench_dir):
-                        benchmark_dirs.append(bench_dir)
+
+        # Check if this is a language directory (benchmarks/verus, benchmarks/dafny, benchmarks/lean)
+        if (
+            benchmarks_root.name in ["verus", "dafny", "lean"]
+            and benchmarks_root.parent.name == "benchmarks"
+        ):
+            # This is a language directory, find all benchmark subdirectories within it
+            for bench_dir in benchmarks_root.iterdir():
+                if bench_dir.is_dir() and self.find_jsonl_files(bench_dir):
+                    benchmark_dirs.append(bench_dir)
+        else:
+            # This is a benchmarks root, find all benchmark subdirectories in all languages
+            for lang_dir in benchmarks_root.iterdir():
+                if lang_dir.is_dir() and lang_dir.name in ["verus", "dafny", "lean"]:
+                    for bench_dir in lang_dir.iterdir():
+                        if bench_dir.is_dir() and self.find_jsonl_files(bench_dir):
+                            benchmark_dirs.append(bench_dir)
 
         if not benchmark_dirs:
             self.log(
