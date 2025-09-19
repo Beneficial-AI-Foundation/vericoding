@@ -8,10 +8,10 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn square(arr: Vec<i32>) -> (result: Vec<i32>)
+fn square(arr: Vec<i8>) -> (result: Vec<i8>)
     ensures
         result.len() == arr.len(),
-        forall|i: int| 0 <= i < arr.len() ==> result[i] == arr[i] * arr[i],
+        forall|i: int| 0 <= i < arr.len() ==> result[i] as int == arr[i] as int * arr[i] as int,
 // </vc-spec>
 // <vc-code>
 {

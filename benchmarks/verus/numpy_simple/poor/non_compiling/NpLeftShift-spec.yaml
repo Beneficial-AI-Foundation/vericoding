@@ -8,13 +8,15 @@ vc-preamble: |-
 vc-helpers: |-
 
 vc-spec: |-
-  fn bitwise_xor(a: Vec<u8>, b: Vec<u8>) -> (result: Vec<u8>)
+  spec fn shift_left_int(x: int, shift: nat) -> int;
+
+  fn left_shift(a: Vec<i8>, b: Vec<u8>) -> (result: Vec<i8>)
       requires 
           a.len() == b.len(),
-          a.len() > 0,
+          forall|i: int| 0 <= i < b.len() ==> b[i] as nat < 64
       ensures
           result.len() == a.len(),
-          forall|i: int| 0 <= i < a@.len() ==> result@[i] == a@[i] ^ b@[i],
+          forall|i: int| 0 <= i < result.len() ==> result[i] as int == shift_left_int(a[i] as int, b[i] as nat)
 
 vc-code: |-
   {
