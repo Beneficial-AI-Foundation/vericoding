@@ -125,6 +125,21 @@ Debug Examples:
         type=int,
         help="Maximum number of files to process (default: process all files)",
     )
+    parser.add_argument(
+        "--fix-types",
+        action="store_true",
+        help="Use specialized configuration for fixing Verus type mismatches (Seq<int> vs Vec<i32>)",
+    )
+    parser.add_argument(
+        "--fix-in-place",
+        action="store_true",
+        help="Fix Verus files in-place rather than translating between languages. Requires --fix-types.",
+    )
+    parser.add_argument(
+        "--fix-to-folder",
+        type=str,
+        help="Fix Verus files to a specific output folder (e.g., 'types_fixed') instead of in-place. Requires --fix-types.",
+    )
 
     # Debug options
     debug_group = parser.add_argument_group("Debug Options")
@@ -162,12 +177,26 @@ Debug Examples:
         print("Warning: --language flag is deprecated. Use --source-language instead.")
         args.source_language = args.language
 
-    # Validate language combination
-    if args.source_language == args.target_language:
-        print(
-            f"Error: Source and target languages cannot be the same ({args.source_language})"
-        )
+    # Special handling for --fix-in-place and --fix-to-folder
+    if args.fix_in_place and args.fix_to_folder:
+        print("Error: Cannot use both --fix-in-place and --fix-to-folder at the same time")
         sys.exit(1)
+    
+    if args.fix_in_place or args.fix_to_folder:
+        if not args.fix_types:
+            option = "--fix-in-place" if args.fix_in_place else "--fix-to-folder"
+            print(f"Error: {option} requires --fix-types to be enabled")
+            sys.exit(1)
+        # For fixes, we use verus -> verus translation
+        args.source_language = "verus"
+        args.target_language = "verus"
+    else:
+        # Validate language combination for normal translation
+        if args.source_language == args.target_language:
+            print(
+                f"Error: Source and target languages cannot be the same ({args.source_language})"
+            )
+            sys.exit(1)
 
     # For now, only support certain combinations
     supported_combinations = [
@@ -176,6 +205,7 @@ Debug Examples:
         ("lean", "verus"),
         ("verus", "dafny"),
         ("verus", "lean"),
+        ("verus", "verus"),  # Allow verus -> verus for in-place fixes
     ]
 
     if (args.source_language, args.target_language) not in supported_combinations:
@@ -196,6 +226,10 @@ Debug Examples:
             file_pattern = "*.dfy"
         elif args.source_language == "verus":
             file_pattern = "*.rs"
+    
+    # For fix-in-place mode, force *.rs pattern if not already set
+    if args.fix_in_place and args.file_pattern == "*.dfy":
+        file_pattern = "*.rs"
 
     print(f"Using benchmark: {args.benchmark} (split: {args.split})")
     print(f"Translation: {args.source_language} -> {args.target_language}")
@@ -227,6 +261,9 @@ Debug Examples:
             max_concurrent=args.max_concurrent,
             file_pattern=file_pattern,
             limit=args.limit,
+            fix_types=args.fix_types,
+            fix_in_place=args.fix_in_place,
+            fix_to_folder=args.fix_to_folder,
             # Debug options
             save_debug=args.save_debug,
             debug_dir=args.debug_dir,
