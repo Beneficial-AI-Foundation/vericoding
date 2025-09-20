@@ -50,19 +50,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval is_possible_divide [1, 2, 3, 3, 4, 4, 5, 6] 4
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval is_possible_divide [3, 2, 1, 2, 3, 4, 3, 4, 5, 9, 10, 11] 3
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in

@@ -39,19 +39,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'yes'
   -/
   #guard_msgs in
   #eval nth_char ["yoda", "best", "has"]
 
-  /-
+  /--
   info: ''
   -/
   #guard_msgs in
   #eval nth_char []
 
-  /-
+  /--
   info: 'Codewars'
   -/
   #guard_msgs in

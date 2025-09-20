@@ -74,43 +74,43 @@ vc-postamble: |-
   -- Apps difficulty: competition
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval is_finite_fraction 6 12 10
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval is_finite_fraction 4 3 10
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval is_finite_fraction 1 1 2
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval is_finite_fraction 9 36 2
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval is_finite_fraction 4 12 3
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval is_finite_fraction 3 5 4
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in

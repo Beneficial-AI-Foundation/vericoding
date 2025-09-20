@@ -50,19 +50,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 4
   -/
   #guard_msgs in
   #eval largest_component_size [4, 6, 15, 35]
 
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval largest_component_size [20, 50, 9, 63]
 
-  /-
+  /--
   info: 8
   -/
   #guard_msgs in

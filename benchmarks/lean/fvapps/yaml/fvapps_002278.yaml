@@ -96,19 +96,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: 1
   -/
   #guard_msgs in
   #eval min_changes_for_rgb_substring 5 2 "BGGGG"
 
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in
   #eval min_changes_for_rgb_substring 5 3 "RBRGR"
 
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in

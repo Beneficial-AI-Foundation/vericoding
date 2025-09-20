@@ -37,19 +37,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded
 
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in
   #eval find_jane 2
 
-  /-
+  /--
   info: 4
   -/
   #guard_msgs in
   #eval find_jane 10
 
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in

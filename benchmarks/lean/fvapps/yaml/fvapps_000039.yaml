@@ -83,19 +83,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval find_min_start_point 2 2 1 "BB"
 
-  /-
+  /--
   info: 1
   -/
   #guard_msgs in
   #eval find_min_start_point 1 1 1 "AB"
 
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in

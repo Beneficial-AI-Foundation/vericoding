@@ -55,19 +55,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 4
   -/
   #guard_msgs in
   #eval getLengthOfOptimalCompression "aaabcccd" 2
 
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval getLengthOfOptimalCompression "aabbaa" 2
 
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in

@@ -46,19 +46,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: '805'
   -/
   #guard_msgs in
   #eval lottery "wQ8Hy0y5m5oshQPeRCkG"
 
-  /-
+  /--
   info: 'One more run!'
   -/
   #guard_msgs in
   #eval lottery "ffaQtaRFKeGIIBIcSJtg"
 
-  /-
+  /--
   info: '5'
   -/
   #guard_msgs in

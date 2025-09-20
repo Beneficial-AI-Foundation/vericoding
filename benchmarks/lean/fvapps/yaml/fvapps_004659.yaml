@@ -41,19 +41,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded
 
-  /-
+  /--
   info: 4
   -/
   #guard_msgs in
   #eval count_char "fizzbuzz" "z"
 
-  /-
+  /--
   info: 5
   -/
   #guard_msgs in
   #eval count_char "Fancy fifth fly aloof" "f"
 
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in

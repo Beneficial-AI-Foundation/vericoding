@@ -58,19 +58,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded
 
-  /-
+  /--
   info: 5000
   -/
   #guard_msgs in
   #eval calculate_scrap [10] 90
 
-  /-
+  /--
   info: 3820
   -/
   #guard_msgs in
   #eval calculate_scrap [20, 10] 55
 
-  /-
+  /--
   info: 4500
   -/
   #guard_msgs in

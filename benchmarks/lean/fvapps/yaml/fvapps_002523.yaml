@@ -35,19 +35,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 4.99
   -/
   #guard_msgs in
   #eval michael_pays 4.99
 
-  /-
+  /--
   info: 10.0
   -/
   #guard_msgs in
   #eval michael_pays 15
 
-  /-
+  /--
   info: 70.0
   -/
   #guard_msgs in

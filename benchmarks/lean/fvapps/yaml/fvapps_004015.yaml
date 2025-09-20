@@ -59,19 +59,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'hello world.'
   -/
   #guard_msgs in
   #eval make_sentences ["hello", "world"]
 
-  /-
+  /--
   info: 'hello, my dear.'
   -/
   #guard_msgs in
   #eval make_sentences ["hello", ",", "my", "dear"]
 
-  /-
+  /--
   info: 'hello world.'
   -/
   #guard_msgs in

@@ -34,19 +34,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval is_palindrome "nope"
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval is_palindrome "Yay"
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in

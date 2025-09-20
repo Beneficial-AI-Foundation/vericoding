@@ -68,19 +68,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'Lucy'
   -/
   #guard_msgs in
   #eval find_winner [("Kouta", 1), ("Yuka", 1), ("Mayu", 3), ("Lucy", 2), ("Nana", 5)]
 
-  /-
+  /--
   info: 'Nobody wins.'
   -/
   #guard_msgs in
   #eval find_winner [("Lucy", 2), ("Nana", 2)]
 
-  /-
+  /--
   info: 'Bob'
   -/
   #guard_msgs in

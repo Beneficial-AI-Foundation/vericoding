@@ -45,19 +45,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'codewars'
   -/
   #guard_msgs in
   #eval truncate_string "codewars" 9
 
-  /-
+  /--
   info: 'code...'
   -/
   #guard_msgs in
   #eval truncate_string "codewars" 7
 
-  /-
+  /--
   info: 'co...'
   -/
   #guard_msgs in

@@ -44,19 +44,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: '***'
   -/
   #guard_msgs in
   #eval repeat_it "*" 3
 
-  /-
+  /--
   info: 'Not a string'
   -/
   #guard_msgs in
   #eval repeat_it 24 3
 
-  /-
+  /--
   info: ''
   -/
   #guard_msgs in

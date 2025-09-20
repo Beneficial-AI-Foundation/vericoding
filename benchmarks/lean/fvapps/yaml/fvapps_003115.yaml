@@ -45,19 +45,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'ivy'
   -/
   #guard_msgs in
   #eval missing [5, 0, 3] "I Love You"
 
-  /-
+  /--
   info: 'ear'
   -/
   #guard_msgs in
   #eval missing [7, 10, 1] "see you later"
 
-  /-
+  /--
   info: 'No mission today'
   -/
   #guard_msgs in

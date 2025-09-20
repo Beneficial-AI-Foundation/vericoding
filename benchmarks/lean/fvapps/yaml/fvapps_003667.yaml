@@ -43,19 +43,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'dvoxlnv slnv'
   -/
   #guard_msgs in
   #eval mirror "Welcome home"
 
-  /-
+  /--
   info: 'adllo'
   -/
   #guard_msgs in
   #eval mirror "hello" "abcdefgh"
 
-  /-
+  /--
   info: 'this is a secret'
   -/
   #guard_msgs in

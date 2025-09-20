@@ -71,19 +71,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: 7
   -/
   #guard_msgs in
   #eval find_lucky_count 7
 
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in
   #eval find_lucky_count 4
 
-  /-
+  /--
   info: 7
   -/
   #guard_msgs in

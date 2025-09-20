@@ -51,19 +51,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: {}
   -/
   #guard_msgs in
   #eval createDict [] []
 
-  /-
+  /--
   info: {'a': 1, 'b': None, 'c': None}
   -/
   #guard_msgs in
   #eval createDict ["a", "b", "c"] [1]
 
-  /-
+  /--
   info: {'a': 1, 'b': 2}
   -/
   #guard_msgs in

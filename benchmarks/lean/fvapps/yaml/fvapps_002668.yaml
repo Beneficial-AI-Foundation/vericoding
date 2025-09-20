@@ -81,19 +81,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: [21, 34, True]
   -/
   #guard_msgs in
   #eval productFib 714
 
-  /-
+  /--
   info: [34, 55, False]
   -/
   #guard_msgs in
   #eval productFib 800
 
-  /-
+  /--
   info: [0, 1, True]
   -/
   #guard_msgs in

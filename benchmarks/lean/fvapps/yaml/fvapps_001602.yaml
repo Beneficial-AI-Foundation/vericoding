@@ -49,19 +49,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 10
   -/
   #guard_msgs in
   #eval count_divisors 5
 
-  /-
+  /--
   info: 27
   -/
   #guard_msgs in
   #eval count_divisors 10
 
-  /-
+  /--
   info: 66
   -/
   #guard_msgs in

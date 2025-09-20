@@ -55,19 +55,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'left'
   -/
   #guard_msgs in
   #eval elevator 0 1 0
 
-  /-
+  /--
   info: 'right'
   -/
   #guard_msgs in
   #eval elevator 0 0 0
 
-  /-
+  /--
   info: 'left'
   -/
   #guard_msgs in

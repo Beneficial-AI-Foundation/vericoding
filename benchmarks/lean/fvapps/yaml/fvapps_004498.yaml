@@ -46,19 +46,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: ['Mallard', 'Hook Bill', 'Crested', 'Blue Swedish']
   -/
   #guard_msgs in
   #eval goose_filter ["Mallard", "Hook Bill", "African", "Crested", "Pilgrim", "Toulouse", "Blue Swedish"]
 
-  /-
+  /--
   info: ['Mallard', 'Barbary', 'Hook Bill', 'Blue Swedish', 'Crested']
   -/
   #guard_msgs in
   #eval goose_filter ["Mallard", "Barbary", "Hook Bill", "Blue Swedish", "Crested"]
 
-  /-
+  /--
   info: []
   -/
   #guard_msgs in

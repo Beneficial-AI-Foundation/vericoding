@@ -57,19 +57,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval check_subset ["1", "2", "3", "5", "6"] ["9", "8", "5", "6", "3", "2", "1", "4", "7"]
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval check_subset ["2"] ["3", "6", "5", "4", "1"]
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in

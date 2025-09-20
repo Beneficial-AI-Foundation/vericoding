@@ -53,31 +53,31 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded
 
-  /-
+  /--
   info: 282
   -/
   #guard_msgs in
   #eval calculate_1RM 135 20
 
-  /-
+  /--
   info: 253
   -/
   #guard_msgs in
   #eval calculate_1RM 200 8
 
-  /-
+  /--
   info: 289
   -/
   #guard_msgs in
   #eval calculate_1RM 270 2
 
-  /-
+  /--
   info: 360
   -/
   #guard_msgs in
   #eval calculate_1RM 360 1
 
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in

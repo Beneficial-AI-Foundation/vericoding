@@ -82,19 +82,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'impossible'
   -/
   #guard_msgs in
   #eval periodic_palindrome 3 1
 
-  /-
+  /--
   info: 'aba'
   -/
   #guard_msgs in
   #eval periodic_palindrome 3 3
 
-  /-
+  /--
   info: 'abaaba'
   -/
   #guard_msgs in

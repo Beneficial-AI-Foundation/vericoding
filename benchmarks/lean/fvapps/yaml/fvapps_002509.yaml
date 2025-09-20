@@ -51,19 +51,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: '45°'
   -/
   #guard_msgs in
   #eval find_angle_mbc 10 10
 
-  /-
+  /--
   info: '63°'
   -/
   #guard_msgs in
   #eval find_angle_mbc 20 10
 
-  /-
+  /--
   info: '27°'
   -/
   #guard_msgs in

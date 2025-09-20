@@ -44,19 +44,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 4
   -/
   #guard_msgs in
   #eval max_ball 15
 
-  /-
+  /--
   info: 7
   -/
   #guard_msgs in
   #eval max_ball 25
 
-  /-
+  /--
   info: 10
   -/
   #guard_msgs in

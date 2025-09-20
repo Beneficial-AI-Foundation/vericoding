@@ -80,19 +80,19 @@ vc-postamble: |-
   -- Apps difficulty: competition
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 6
   -/
   #guard_msgs in
   #eval solve_array_partition 1 [1, 4]
 
-  /-
+  /--
   info: 12
   -/
   #guard_msgs in
   #eval solve_array_partition 2 [2, 1, 2, 1]
 
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in

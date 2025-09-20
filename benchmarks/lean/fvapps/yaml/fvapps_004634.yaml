@@ -71,19 +71,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded
 
-  /-
+  /--
   info: 9
   -/
   #guard_msgs in
   #eval candles 5 2
 
-  /-
+  /--
   info: 1
   -/
   #guard_msgs in
   #eval candles 1 2
 
-  /-
+  /--
   info: 11
   -/
   #guard_msgs in

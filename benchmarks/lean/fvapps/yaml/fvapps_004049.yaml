@@ -34,19 +34,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'Hello, James!'
   -/
   #guard_msgs in
   #eval greet "James"
 
-  /-
+  /--
   info: 'Hello, Jane!'
   -/
   #guard_msgs in
   #eval greet "Jane"
 
-  /-
+  /--
   info: 'Hello, my love!'
   -/
   #guard_msgs in

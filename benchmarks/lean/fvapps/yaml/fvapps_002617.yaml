@@ -119,19 +119,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 6
   -/
   #guard_msgs in
   #eval make_sequences 6
 
-  /-
+  /--
   info: 14
   -/
   #guard_msgs in
   #eval make_sequences 10
 
-  /-
+  /--
   info: 1981471878
   -/
   #guard_msgs in

@@ -1,25 +1,25 @@
 vc-description: |-
   /-
   You are given $n$ strings $a_1, a_2, \ldots, a_n$: all of them have the same length $m$. The strings consist of lowercase English letters.
-
+  
   Find any string $s$ of length $m$ such that each of the given $n$ strings differs from $s$ in at most one position. Formally, for each given string $a_i$, there is no more than one position $j$ such that $a_i[j] \ne s[j]$.
-
+  
   Note that the desired string $s$ may be equal to one of the given strings $a_i$, or it may differ from all the given strings.
-
+  
   For example, if you have the strings abac and zbab, then the answer to the problem might be the string abab, which differs from the first only by the last character, and from the second only by the first.
-
+  
   -----Input-----
-
+  
   The first line contains an integer $t$ ($1 \le t \le 100$) — the number of test cases. Then $t$ test cases follow.
-
+  
   Each test case starts with a line containing two positive integers $n$ ($1 \le n \le 10$) and $m$ ($1 \le m \le 10$) — the number of strings and their length.
-
+  
   Then follow $n$ strings $a_i$, one per line. Each of them has length $m$ and consists of lowercase English letters.
-
+  
   -----Output-----
-
+  
   Print $t$ answers to the test cases. Each answer (if it exists) is a string of length $m$ consisting of lowercase English letters. If there are several answers, print any of them. If the answer does not exist, print "-1" ("minus one", without quotes).
-
+  
   -----Example-----
   Input
   5
@@ -40,34 +40,35 @@ vc-description: |-
   a
   b
   c
-
+  
   Output
   abab
   -1
   aaa
   ab
   z
-
+  
   -----Note-----
-
+  
   The first test case was explained in the statement.
-
+  
   In the second test case, the answer does not exist.
   -/
 
 vc-preamble: |-
-  def hammingDistance (s1 s2 : String) : Nat :=
-    sorry
 
-  def verifyResult (result : String) (strings : List String) : Bool :=
-    sorry
-
-  def findSimilarString (strings : List String) (n m : Nat) : String :=
-    sorry
-
-vc-helpers: |
+vc-helpers: |-
 
 vc-definitions: |-
+  def hammingDistance (s1 s2 : String) : Nat :=
+    sorry
+  
+  def verifyResult (result : String) (strings : List String) : Bool :=
+    sorry
+  
+  def findSimilarString (strings : List String) (n m : Nat) : String :=
+    sorry
+  
   def isLower (c : Char) : Bool :=
     sorry
 
@@ -80,35 +81,38 @@ vc-theorems: |-
       (result = "-1" ∨ result.length = m) ∧
       (result = "-1" ∨ ∀ c ∈ result.data, isLower c) ∧
       verifyResult result strings
-    := sorry
-
+    :=
+  sorry
+  
   theorem binary_strings_property {strings : List String} {n m : Nat}
     (h1 : strings.length = 2)
     (h2 : strings.head!.length = strings.tail!.head!.length)
     (h3 : ∀ s ∈ strings, ∀ c ∈ s.data, c = 'a' ∨ c = 'b')
     (result := findSimilarString strings n m) :
       verifyResult result strings
-    := sorry
-
+    :=
+  sorry
+  
   theorem small_inputs_property {strings : List String} {n m : Nat}
     (h1 : strings.length ≤ 3)
     (h2 : strings.length > 0)
     (h3 : ∀ s ∈ strings, s.length = strings.head!.length)
     (result := findSimilarString strings n m) :
       verifyResult result strings
-    := sorry
+    :=
+  sorry
 
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
-
-  /-
+  
+  /--
   info: '-1'
   -/
   #guard_msgs in
   #eval find_similar_string ["aaaa", "bbbb"] 2 4
-
-  /-
+  
+  /--
   info: 'aaa'
   -/
   #guard_msgs in

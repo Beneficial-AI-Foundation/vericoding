@@ -60,19 +60,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: 10
   -/
   #guard_msgs in
   #eval SumEvenFibonacci 8
 
-  /-
+  /--
   info: 60696
   -/
   #guard_msgs in
   #eval SumEvenFibonacci 111111
 
-  /-
+  /--
   info: 82790070
   -/
   #guard_msgs in

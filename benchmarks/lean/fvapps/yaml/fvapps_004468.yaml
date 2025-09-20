@@ -90,19 +90,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 219
   -/
   #guard_msgs in
   #eval evaluate "2*3*4*5+99"
 
-  /-
+  /--
   info: -12242013
   -/
   #guard_msgs in
   #eval evaluate "2*3*4*5+99*321-12312312"
 
-  /-
+  /--
   info: -18
   -/
   #guard_msgs in

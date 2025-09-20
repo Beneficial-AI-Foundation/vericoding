@@ -47,19 +47,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: 10
   -/
   #guard_msgs in
   #eval sum_no_duplicates [3, 4, 3, 6]
 
-  /-
+  /--
   info: 5
   -/
   #guard_msgs in
   #eval sum_no_duplicates [1, 1, 2, 3]
 
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in

@@ -52,19 +52,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in
   #eval spinning_rings 5 5
 
-  /-
+  /--
   info: 13
   -/
   #guard_msgs in
   #eval spinning_rings 2 10
 
-  /-
+  /--
   info: 23951671
   -/
   #guard_msgs in

@@ -45,19 +45,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'WH@T!!!! F*CK!!!! D@MN!!!! C@K*!!!!'
   -/
   #guard_msgs in
   #eval gordon "What feck damn cake"
 
-  /-
+  /--
   info: '@R*!!!! Y**!!!! ST*!!!! P*D!!!!'
   -/
   #guard_msgs in
   #eval gordon "are you stu pid"
 
-  /-
+  /--
   info: '*!!!! @M!!!! @!!!! CH*F!!!!'
   -/
   #guard_msgs in

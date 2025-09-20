@@ -26,19 +26,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in
   #eval lowercase_count "abc"
 
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in
   #eval lowercase_count "abcABC123"
 
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in

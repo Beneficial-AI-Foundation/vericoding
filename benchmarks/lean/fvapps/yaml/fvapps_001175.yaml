@@ -79,19 +79,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 9
   -/
   #guard_msgs in
   #eval count_possible_arrays [2, 3, 1]
 
-  /-
+  /--
   info: 4
   -/
   #guard_msgs in
   #eval count_possible_arrays [2, 2]
 
-  /-
+  /--
   info: 9
   -/
   #guard_msgs in

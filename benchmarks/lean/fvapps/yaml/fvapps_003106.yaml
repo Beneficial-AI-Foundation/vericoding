@@ -42,19 +42,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'Fail!'
   -/
   #guard_msgs in
   #eval well ["bad", "bad", "bad"]
 
-  /-
+  /--
   info: 'Publish!'
   -/
   #guard_msgs in
   #eval well ["good", "bad", "bad", "bad", "bad"]
 
-  /-
+  /--
   info: 'I smell a series!'
   -/
   #guard_msgs in

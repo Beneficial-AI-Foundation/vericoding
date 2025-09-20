@@ -61,25 +61,25 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: ['1']
   -/
   #guard_msgs in
   #eval solve_pattern 1
 
-  /-
+  /--
   info: ['12', '34']
   -/
   #guard_msgs in
   #eval solve_pattern 2
 
-  /-
+  /--
   info: ['123', '456', '789']
   -/
   #guard_msgs in
   #eval solve_pattern 3
 
-  /-
+  /--
   info: ['1234', '5678', '9101112', '13141516']
   -/
   #guard_msgs in

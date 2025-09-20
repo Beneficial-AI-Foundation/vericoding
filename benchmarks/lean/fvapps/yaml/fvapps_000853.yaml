@@ -67,19 +67,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'No'
   -/
   #guard_msgs in
   #eval can_catch_thief 0 1 1 1
 
-  /-
+  /--
   info: 'No'
   -/
   #guard_msgs in
   #eval can_catch_thief 1 4 1 5
 
-  /-
+  /--
   info: 'Yes'
   -/
   #guard_msgs in

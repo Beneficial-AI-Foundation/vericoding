@@ -56,19 +56,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'LL.RR.LLRRLL..'
   -/
   #guard_msgs in
   #eval push_dominoes ".L.R...LR..L.."
 
-  /-
+  /--
   info: 'RR.L'
   -/
   #guard_msgs in
   #eval push_dominoes "RR.L"
 
-  /-
+  /--
   info: '...'
   -/
   #guard_msgs in

@@ -56,19 +56,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in
   #eval find_needed_guards [True, True, False, True, False]
 
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval find_needed_guards [False, False, True, False, False]
 
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in

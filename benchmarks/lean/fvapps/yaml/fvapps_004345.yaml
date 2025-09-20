@@ -103,19 +103,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded
 
-  /-
+  /--
   info: 36
   -/
   #guard_msgs in
   #eval tv_remote "codewars"
 
-  /-
+  /--
   info: 16
   -/
   #guard_msgs in
   #eval tv_remote "does"
 
-  /-
+  /--
   info: 35
   -/
   #guard_msgs in

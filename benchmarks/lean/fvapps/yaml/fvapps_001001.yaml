@@ -81,19 +81,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded
 
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval calculate_particles 1 2
 
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval calculate_particles 2 1
 
-  /-
+  /--
   info: 6
   -/
   #guard_msgs in

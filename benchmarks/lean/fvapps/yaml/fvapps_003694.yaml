@@ -65,19 +65,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: {}
   -/
   #guard_msgs in
   #eval get_honor_path 11 2
 
-  /-
+  /--
   info: {}
   -/
   #guard_msgs in
   #eval get_honor_path 11 11
 
-  /-
+  /--
   info: {'1kyus': 4, '2kyus': 1}
   -/
   #guard_msgs in

@@ -63,13 +63,13 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: len(expected1)
   -/
   #guard_msgs in
   #eval len solve_mex_matrix(3, 3)
 
-  /-
+  /--
   info: len(expected2)
   -/
   #guard_msgs in

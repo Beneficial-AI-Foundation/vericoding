@@ -1,38 +1,39 @@
 vc-description: |-
   /-
   You're re-designing a blog and the blog's posts have the following format for showing the date and time a post was made: 
-
+  
   *Weekday* *Month* *Day*, *time*
   e.g., 
   Friday May 2, 7pm
-
+  
   You're running out of screen real estate, and on some pages you want to display a shorter format, *Weekday* *Month* *Day* that omits the time.
-
+  
   Write a function, shortenToDate, that takes the Website date/time in its original string format, and returns the shortened format.
-
+  
   Assume shortenToDate's input will always be a string, e.g. "Friday May 2, 7pm". Assume shortenToDate's output will be the shortened string, e.g., "Friday May 2".
   -/
 
 vc-preamble: |-
-  def StringMatches (pattern str : String) : Bool :=
-  sorry
 
-vc-helpers: |
+vc-helpers: |-
 
 vc-definitions: |-
+  def StringMatches (pattern str : String) : Bool :=
+  sorry
+  
   def shorten_to_date (s : String) : String :=
   sorry
 
 vc-theorems: |-
   theorem shorten_to_date_property (dateString : String) :
-    (dateString.contains ',' : Bool) ∧ 
+    (dateString.contains ',' : Bool) ∧
     (StringMatches "[A-Za-z]+ [A-Za-z]+ \\d+, \\d+(?:am|pm)" dateString) →
     let result := shorten_to_date dateString
     ¬(result.contains ',' : Bool) ∧
-    result = (dateString.splitOn ",").get! 0 ∧ 
+    result = (dateString.splitOn ",").get! 0 ∧
     result.length < dateString.length :=
   sorry
-
+  
   theorem shorten_to_date_requires_comma (s : String) :
     ¬((s.contains ',' : Bool) ∧ (s.splitOn ",").length = 2) →
     False :=
@@ -41,20 +42,20 @@ vc-theorems: |-
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
-
-  /-
+  
+  /--
   info: 'Friday May 2'
   -/
   #guard_msgs in
   #eval shorten_to_date "Friday May 2, 7pm"
-
-  /-
+  
+  /--
   info: 'Tuesday January 29'
   -/
   #guard_msgs in
   #eval shorten_to_date "Tuesday January 29, 10pm"
-
-  /-
+  
+  /--
   info: 'Wed September 1'
   -/
   #guard_msgs in

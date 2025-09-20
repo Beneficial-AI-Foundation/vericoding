@@ -104,19 +104,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval is_array_sharpenable 1 [248618]
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval is_array_sharpenable 3 [12, 10, 8]
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in

@@ -107,19 +107,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'yes yes'
   -/
   #guard_msgs in
   #eval solve_taxi_turns [[0, 0], [1, 1], [2, 1]]
 
-  /-
+  /--
   info: 'no yes'
   -/
   #guard_msgs in
   #eval solve_taxi_turns [[0, 0], [1, 0], [1, 1]]
 
-  /-
+  /--
   info: 'no no'
   -/
   #guard_msgs in

@@ -1,65 +1,79 @@
 vc-description: |-
   /-
   In English and programming, groups can be made using symbols such as `()` and `{}` that change meaning. However, these groups must be closed in the correct order to maintain correct syntax.
-
+  
   Your job in this kata will be to make a program that checks a string for correct grouping. For instance, the following groups are done correctly:
-
+  
   ```
   ({})
   [[]()]
   [{()}]
   ```
-
+  
   The next are done incorrectly:
   ```
   {(})
   ([]
   [])
   ```
-
+  
   A correct string cannot close groups in the wrong order, open a group but fail to close it, or close a group before it is opened.
-
+  
   Your function will take an input string that may contain any of the symbols `()`, `{}` or `[]` to create groups.
-
+  
   It should return `True` if the string is empty or otherwise grouped correctly, or `False` if it is grouped incorrectly.
   -/
 
 vc-preamble: |-
-  def group_check (s : String) : Bool := sorry
 
-  def isOpening (c : Char) : Bool := sorry
-
-  def isClosing (c : Char) : Bool := sorry
-  def matching (o c : Char) : Bool := sorry
-
-vc-helpers: |
+vc-helpers: |-
 
 vc-definitions: |-
-  def countOpening (s : String) : Nat := sorry
-  def countClosing (s : String) : Nat := sorry
+  def group_check (s : String) : Bool :=
+  sorry
+  
+  def isOpening (c : Char) : Bool :=
+  sorry
+  
+  def isClosing (c : Char) : Bool :=
+  sorry
+  
+  def matching (o c : Char) : Bool :=
+  sorry
+  
+  def countOpening (s : String) : Nat :=
+  sorry
+  
+  def countClosing (s : String) : Nat :=
+  sorry
 
 vc-theorems: |-
   theorem empty_string_valid :
-    group_check "" = true := sorry
-
+    group_check "" = true :=
+  sorry
+  
   theorem simple_pair_valid (o c : Char) :
     isOpening o → matching o c →
-    group_check (String.mk [o, c]) = true := sorry
-
+    group_check (String.mk [o, c]) = true :=
+  sorry
+  
   theorem valid_brackets_equal_counts {s : String} :
     group_check s = true →
-    countOpening s = countClosing s := sorry
-
+    countOpening s = countClosing s :=
+  sorry
+  
   theorem only_opening_invalid {s : String} :
     s ≠ "" →
     (∀ c ∈ s.data, isOpening c) →
-    group_check s = false := sorry
-
+    group_check s = false :=
+  sorry
+  
   theorem only_closing_invalid {s : String} :
     s ≠ "" →
     (∀ c ∈ s.data, isClosing c) →
-    group_check s = false := sorry
-
+    group_check s = false :=
+  sorry
+  
   theorem nested_brackets_valid {opens : List Char} :
     opens ≠ [] →
     (∀ c ∈ opens, isOpening c) →
@@ -68,25 +82,26 @@ vc-theorems: |-
       | '{' => '}'
       | '[' => ']'
       | _ => ' ')).reverse
-    group_check (String.mk (opens ++ closes)) = true := sorry
+    group_check (String.mk (opens ++ closes)) = true :=
+  sorry
 
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
-
-  /-
+  
+  /--
   info: True
   -/
   #guard_msgs in
   #eval group_check "({})"
-
-  /-
+  
+  /--
   info: True
   -/
   #guard_msgs in
   #eval group_check "[[]()]"
-
-  /-
+  
+  /--
   info: False
   -/
   #guard_msgs in

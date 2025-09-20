@@ -57,19 +57,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 153
   -/
   #guard_msgs in
   #eval switch_endian 153 8
 
-  /-
+  /--
   info: 4261740544
   -/
   #guard_msgs in
   #eval switch_endian 1534 32
 
-  /-
+  /--
   info: None
   -/
   #guard_msgs in

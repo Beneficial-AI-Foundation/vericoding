@@ -74,19 +74,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'Gug hgs g cgt'
   -/
   #guard_msgs in
   #eval encode "Ala has a cat" "gaderypoluki"
 
-  /-
+  /--
   info: 'Dkucr pu yhr ykbir'
   -/
   #guard_msgs in
   #eval encode "Dance on the table" "politykarenu"
 
-  /-
+  /--
   info: 'GBCE'
   -/
   #guard_msgs in

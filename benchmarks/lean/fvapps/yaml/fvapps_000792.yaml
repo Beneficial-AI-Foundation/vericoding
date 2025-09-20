@@ -81,19 +81,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: 5
   -/
   #guard_msgs in
   #eval min_grass_needed [5, -5]
 
-  /-
+  /--
   info: 5
   -/
   #guard_msgs in
   #eval min_grass_needed [-5, 5]
 
-  /-
+  /--
   info: 4
   -/
   #guard_msgs in

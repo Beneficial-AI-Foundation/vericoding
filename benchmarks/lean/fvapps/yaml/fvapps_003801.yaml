@@ -64,19 +64,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded
 
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in
   #eval finding_k [5, 2, 8]
 
-  /-
+  /--
   info: -1
   -/
   #guard_msgs in
   #eval finding_k [1, 1, 1]
 
-  /-
+  /--
   info: 90
   -/
   #guard_msgs in

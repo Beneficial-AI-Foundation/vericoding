@@ -57,19 +57,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval is_nice [2, 10, 9, 3]
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval is_nice [3, 4, 5, 7]
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in

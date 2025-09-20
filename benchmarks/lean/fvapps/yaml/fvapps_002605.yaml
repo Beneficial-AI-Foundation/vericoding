@@ -65,19 +65,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: {'Bike': '104.60 to go!'}
   -/
   #guard_msgs in
   #eval i_tri 36
 
-  /-
+  /--
   info: {'Swim': '138.60 to go!'}
   -/
   #guard_msgs in
   #eval i_tri 2
 
-  /-
+  /--
   info: "You're done! Stop running!"
   -/
   #guard_msgs in

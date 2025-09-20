@@ -56,19 +56,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'retsec'
   -/
   #guard_msgs in
   #eval reverse_by_center "secret"
 
-  /-
+  /--
   info: 'nteag'
   -/
   #guard_msgs in
   #eval reverse_by_center "agent"
 
-  /-
+  /--
   info: 'war'
   -/
   #guard_msgs in

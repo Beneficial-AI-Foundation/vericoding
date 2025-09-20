@@ -41,19 +41,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'hELLOwORLD'
   -/
   #guard_msgs in
   #eval swap "HelloWorld"
 
-  /-
+  /--
   info: 'cODEwARS'
   -/
   #guard_msgs in
   #eval swap "CodeWars"
 
-  /-
+  /--
   info: 'tHiS Is a L0ng SentENCE'
   -/
   #guard_msgs in

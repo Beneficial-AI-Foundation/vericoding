@@ -45,19 +45,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval validate_usr "asddsa"
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval validate_usr "____"
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in

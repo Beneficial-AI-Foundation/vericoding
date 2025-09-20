@@ -64,13 +64,13 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded
 
-  /-
+  /--
   info: 1
   -/
   #guard_msgs in
   #eval is_special_factorial_number 145
 
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in

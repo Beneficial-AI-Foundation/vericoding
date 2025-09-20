@@ -40,19 +40,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'Loser!'
   -/
   #guard_msgs in
   #eval bingo [["ABC", 65], ["HGR", 74], ["BYHT", 74]] 2
 
-  /-
+  /--
   info: 'Winner!'
   -/
   #guard_msgs in
   #eval bingo [["ABC", 65], ["HGR", 74], ["BYHT", 74]] 1
 
-  /-
+  /--
   info: 'Loser!'
   -/
   #guard_msgs in

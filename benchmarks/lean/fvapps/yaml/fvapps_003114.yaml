@@ -101,19 +101,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: [1, 0]
   -/
   #guard_msgs in
   #eval clonewars 0
 
-  /-
+  /--
   info: [1, 1]
   -/
   #guard_msgs in
   #eval clonewars 1
 
-  /-
+  /--
   info: [16, 57]
   -/
   #guard_msgs in

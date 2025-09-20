@@ -37,19 +37,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded
 
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in
   #eval anagram_counter []
 
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval anagram_counter ["dell", "ledl", "abc", "cba"]
 
-  /-
+  /--
   info: 7
   -/
   #guard_msgs in

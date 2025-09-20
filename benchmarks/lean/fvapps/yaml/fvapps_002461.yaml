@@ -54,19 +54,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'A\nC\nH\nK\nAC\nAH\nAK\nCH\nCK\nHK'
   -/
   #guard_msgs in
   #eval print_string_combinations "HACK" 2
 
-  /-
+  /--
   info: 'X\nY\nZ'
   -/
   #guard_msgs in
   #eval print_string_combinations "XYZ" 1
 
-  /-
+  /--
   info: 'A\nB\nC\nAB\nAC\nBC\nABC'
   -/
   #guard_msgs in

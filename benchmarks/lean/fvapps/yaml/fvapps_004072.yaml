@@ -129,19 +129,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'Balanced'
   -/
   #guard_msgs in
   #eval balanced_num 56239814
 
-  /-
+  /--
   info: 'Not Balanced'
   -/
   #guard_msgs in
   #eval balanced_num 295591
 
-  /-
+  /--
   info: 'Balanced'
   -/
   #guard_msgs in

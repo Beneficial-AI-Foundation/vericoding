@@ -42,19 +42,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: 6
   -/
   #guard_msgs in
   #eval mango 3 3
 
-  /-
+  /--
   info: 30
   -/
   #guard_msgs in
   #eval mango 9 5
 
-  /-
+  /--
   info: 8
   -/
   #guard_msgs in

@@ -41,21 +41,24 @@ vc-description: |-
   =====Output Format=====
   Output the desired logo.
   -/
+  
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded
 
 vc-preamble: |-
-  def generateLogo (thickness : Nat) : String := sorry
-  
   def countChar (s : String) (c : Char) : Nat :=
     s.data.filter (· = c) |>.length
   
   def splitLines (s : String) : List String :=
     s.splitOn "\n"
+  
+  def makeHString (n : Nat) : String :=
+    String.mk (List.replicate n 'H')
 
 vc-helpers: |-
 
 vc-definitions: |-
-  def makeHString (n : Nat) : String :=
-    String.mk (List.replicate n 'H')
+  def generateLogo (thickness : Nat) : String := sorry
 
 vc-theorems: |-
   theorem logo_lines_count (thickness : Nat) (h : thickness > 0) :
@@ -86,6 +89,4 @@ vc-theorems: |-
   sorry
 
 vc-postamble: |-
-  -- Apps difficulty: introductory
-  -- Assurance level: guarded
 

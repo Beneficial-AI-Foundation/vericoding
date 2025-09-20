@@ -64,19 +64,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'NO'
   -/
   #guard_msgs in
   #eval solve_string_tour "100"
 
-  /-
+  /--
   info: 'YES'
   -/
   #guard_msgs in
   #eval solve_string_tour "1000"
 
-  /-
+  /--
   info: 'YES'
   -/
   #guard_msgs in

@@ -53,19 +53,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded
 
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in
   #eval find_max_consecutive_ones [1, 1, 0, 1, 1, 1]
 
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval find_max_consecutive_ones [1, 0, 1, 1, 0, 1]
 
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in

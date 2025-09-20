@@ -78,19 +78,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: '167773121'
   -/
   #guard_msgs in
   #eval numberAndIPaddress "10.0.3.193"
 
-  /-
+  /--
   info: '10.3.3.193'
   -/
   #guard_msgs in
   #eval numberAndIPaddress "167969729"
 
-  /-
+  /--
   info: '0'
   -/
   #guard_msgs in

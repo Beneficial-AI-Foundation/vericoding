@@ -48,19 +48,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: 5
   -/
   #guard_msgs in
   #eval count_fibonacci_in_range 10 100
 
-  /-
+  /--
   info: 4
   -/
   #guard_msgs in
   #eval count_fibonacci_in_range 1234567890 9876543210
 
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in

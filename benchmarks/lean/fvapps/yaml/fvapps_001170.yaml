@@ -66,19 +66,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'ac'
   -/
   #guard_msgs in
   #eval remove_abc_pairs "aabcc"
 
-  /-
+  /--
   info: 'bc'
   -/
   #guard_msgs in
   #eval remove_abc_pairs "bababccc"
 
-  /-
+  /--
   info: ''
   -/
   #guard_msgs in

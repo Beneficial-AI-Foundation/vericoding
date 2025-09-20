@@ -76,19 +76,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: ['app', 'le', 'pe', 'ar', 'ban', 'ana']
   -/
   #guard_msgs in
   #eval cut_fruits ["apple", "pear", "banana"]
 
-  /-
+  /--
   info: ['app', 'le', 'pe', 'ar', 'ban', 'ana', 'bomb']
   -/
   #guard_msgs in
   #eval cut_fruits ["apple", "pear", "banana", "bomb"]
 
-  /-
+  /--
   info: []
   -/
   #guard_msgs in

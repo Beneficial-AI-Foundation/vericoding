@@ -45,37 +45,37 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: -110
   -/
   #guard_msgs in
   #eval minimum [-52, 56, 30, 29, -54, 0, -110]
 
-  /-
+  /--
   info: 56
   -/
   #guard_msgs in
   #eval maximum arr1
 
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in
   #eval minimum [42, 54, 65, 87, 0]
 
-  /-
+  /--
   info: 87
   -/
   #guard_msgs in
   #eval maximum arr2
 
-  /-
+  /--
   info: 9
   -/
   #guard_msgs in
   #eval minimum [9]
 
-  /-
+  /--
   info: 9
   -/
   #guard_msgs in

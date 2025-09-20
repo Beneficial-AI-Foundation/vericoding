@@ -74,19 +74,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval comp [121, 144, 19, 161, 19, 144, 19, 11] [121, 14641, 20736, 361, 25921, 361, 20736, 361]
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval comp [] [1]
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in

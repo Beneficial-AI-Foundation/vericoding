@@ -120,19 +120,19 @@ vc-postamble: |-
   -- Apps difficulty: competition
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval solve 5 3 [1, 2, 3, 4, 5] [3, 2, 5]
 
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in
   #eval solve 4 3 [4, 3, 2, 1] [4, 3, 1]
 
-  /-
+  /--
   info: 4
   -/
   #guard_msgs in

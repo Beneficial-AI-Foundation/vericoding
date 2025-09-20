@@ -100,19 +100,19 @@ vc-postamble: |-
   -- Apps difficulty: competition
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'YES'
   -/
   #guard_msgs in
   #eval can_unlock_phone "ya" ["ah", "oy", "to", "ha"]
 
-  /-
+  /--
   info: 'NO'
   -/
   #guard_msgs in
   #eval can_unlock_phone "hp" ["ht", "tp"]
 
-  /-
+  /--
   info: 'YES'
   -/
   #guard_msgs in

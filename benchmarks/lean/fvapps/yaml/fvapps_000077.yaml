@@ -160,19 +160,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded
 
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in
   #eval min_minutes_for_cross ["..*..", "..*..", "*****", "..*..", "..*.."]
 
-  /-
+  /--
   info: 4
   -/
   #guard_msgs in
   #eval min_minutes_for_cross [".....", "..*..", ".***.", "..*..", "....."]
 
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in

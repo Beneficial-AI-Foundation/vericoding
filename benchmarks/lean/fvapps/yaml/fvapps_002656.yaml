@@ -39,19 +39,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'the he_ e_q _qu qui uic ick ck_ k_r _re red'
   -/
   #guard_msgs in
   #eval trigrams "the quick red"
 
-  /-
+  /--
   info: ''
   -/
   #guard_msgs in
   #eval trigrams "Hi"
 
-  /-
+  /--
   info: 'abc bc_ c_d _de def'
   -/
   #guard_msgs in

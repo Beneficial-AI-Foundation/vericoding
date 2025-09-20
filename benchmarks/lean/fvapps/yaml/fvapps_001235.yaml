@@ -72,19 +72,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in
   #eval count_house_positions 2 4
 
-  /-
+  /--
   info: 10
   -/
   #guard_msgs in
   #eval count_house_positions 3 4
 
-  /-
+  /--
   info: 20
   -/
   #guard_msgs in

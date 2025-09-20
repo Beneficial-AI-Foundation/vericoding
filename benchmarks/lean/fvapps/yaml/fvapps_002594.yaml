@@ -71,19 +71,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'z'
   -/
   #guard_msgs in
   #eval missing_alphabets "abcdefghijklmnopqrstuvwxy"
 
-  /-
+  /--
   info: 'zz'
   -/
   #guard_msgs in
   #eval missing_alphabets "aabbccddeeffgghhiijjkkllmmnnooppqqrrssttuuvvwwxxyy"
 
-  /-
+  /--
   info: 'bfghijklmnpqtuvxyz'
   -/
   #guard_msgs in

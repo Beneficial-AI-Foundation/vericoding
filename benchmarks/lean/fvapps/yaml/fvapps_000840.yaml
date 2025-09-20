@@ -59,13 +59,13 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: 9
   -/
   #guard_msgs in
   #eval calculate_milk_share 3 3 3 [15, 8, 10]
 
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in

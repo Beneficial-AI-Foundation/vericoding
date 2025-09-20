@@ -47,19 +47,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval validate_hello "hello there"
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval validate_hello "Hola amigo"
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in

@@ -49,19 +49,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded
 
-  /-
+  /--
   info: (0, 2)
   -/
   #guard_msgs in
   #eval two_sum [1, 2, 3] 4
 
-  /-
+  /--
   info: (1, 2)
   -/
   #guard_msgs in
   #eval two_sum [1234, 5678, 9012] 14690
 
-  /-
+  /--
   info: (0, 1)
   -/
   #guard_msgs in

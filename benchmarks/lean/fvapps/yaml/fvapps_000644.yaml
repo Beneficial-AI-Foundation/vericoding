@@ -69,19 +69,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'arg'
   -/
   #guard_msgs in
   #eval solve 1 "rga"
 
-  /-
+  /--
   info: 'abc'
   -/
   #guard_msgs in
   #eval solve 2 "cab"
 
-  /-
+  /--
   info: 'cchefode'
   -/
   #guard_msgs in

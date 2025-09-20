@@ -26,14 +26,18 @@ vc-description: |-
   6
   7
   -/
+  
+  -- Apps difficulty: interview
+  -- Assurance level: guarded
 
 vc-preamble: |-
-  def sort_numbers (nums : List Int) : List String :=
-    sorry
 
 vc-helpers: |-
 
 vc-definitions: |-
+  def sort_numbers (nums : List Int) : List String :=
+    sorry
+  
   def isSorted (l : List Int) : Bool :=
     sorry
 
@@ -51,11 +55,9 @@ vc-theorems: |-
   theorem sort_numbers_bounds (nums : List Int) (h : nums ≠ []) :
     let result := sort_numbers nums
     let vals := result.map String.toInt!
-    vals.head! ≤ vals.getLast! ∧ 
+    vals.head! ≤ vals.getLast! ∧
     ∀ x ∈ vals, vals.head! ≤ x ∧ x ≤ vals.getLast! := by
     sorry
 
 vc-postamble: |-
-  -- Apps difficulty: interview
-  -- Assurance level: guarded
 

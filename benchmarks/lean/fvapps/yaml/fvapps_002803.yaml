@@ -96,19 +96,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval fortune 100000 1 2000 15 1
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval fortune 100000 1 9185 12 1
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in

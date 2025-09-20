@@ -45,19 +45,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'A'
   -/
   #guard_msgs in
   #eval runoff [["A", "B", "C"], ["A", "B", "C"], ["B", "C", "A"]]
 
-  /-
+  /--
   info: None
   -/
   #guard_msgs in
   #eval runoff [["A", "B", "C"], ["B", "C", "A"], ["C", "A", "B"]]
 
-  /-
+  /--
   info: 'A'
   -/
   #guard_msgs in

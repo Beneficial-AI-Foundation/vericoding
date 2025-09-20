@@ -1,27 +1,27 @@
 vc-description: |-
   /-
   Given a m x n matrix mat and an integer threshold. Return the maximum side-length of a square with a sum less than or equal to threshold or return 0 if there is no such square.
-
+  
   Example 1:
-
+  
   Input: mat = [[1,1,3,2,4,3,2],[1,1,3,2,4,3,2],[1,1,3,2,4,3,2]], threshold = 4
   Output: 2
   Explanation: The maximum side length of square with sum less than 4 is 2 as shown.
-
+  
   Example 2:
   Input: mat = [[2,2,2,2,2],[2,2,2,2,2],[2,2,2,2,2],[2,2,2,2,2],[2,2,2,2,2]], threshold = 1
   Output: 0
-
+  
   Example 3:
   Input: mat = [[1,1,1,1],[1,0,0,0],[1,0,0,0],[1,0,0,0]], threshold = 6
   Output: 3
-
+  
   Example 4:
   Input: mat = [[18,70],[61,1],[25,85],[14,40],[11,96],[97,96],[63,45]], threshold = 40184
   Output: 2
-
+  
   Constraints:
-
+  
   1 <= m, n <= 300
   m == mat.length
   n == mat[i].length
@@ -30,21 +30,22 @@ vc-description: |-
   -/
 
 vc-preamble: |-
-  def maxSideLength (mat: List (List Int)) (threshold: Int) : Int :=
-    sorry
 
-  def minElem (list: List Int) : Int :=
-    sorry
-
-  def sumList (list: List Int) : Int :=
-    sorry
-
-  def listSum (list: List Int) : Int :=
-    sorry
-
-vc-helpers: |
+vc-helpers: |-
 
 vc-definitions: |-
+  def maxSideLength (mat: List (List Int)) (threshold: Int) : Int :=
+    sorry
+  
+  def minElem (list: List Int) : Int :=
+    sorry
+  
+  def sumList (list: List Int) : Int :=
+    sorry
+  
+  def listSum (list: List Int) : Int :=
+    sorry
+  
   def floorSqrt (n: Int) : Int :=
     sorry
 
@@ -52,46 +53,51 @@ vc-theorems: |-
   theorem maxSideLength_bounds {mat : List (List Int)} {threshold : Int}
     (h1 : ∀ row ∈ mat, row.length = mat[0]!.length) :
     let result := maxSideLength mat threshold
-    0 ≤ result ∧ result ≤ min mat.length mat[0]!.length := sorry
-
+    0 ≤ result ∧ result ≤ min mat.length mat[0]!.length :=
+  sorry
+  
   theorem maxSideLength_low_threshold {mat : List (List Int)} {threshold : Int}
     (h1 : ∀ row ∈ mat, row.length = mat[0]!.length)
     (h2 : threshold < minElem (mat.map minElem)) :
-    maxSideLength mat threshold = 0 := sorry
-
+    maxSideLength mat threshold = 0 :=
+  sorry
+  
   theorem maxSideLength_high_threshold {mat : List (List Int)} {threshold : Int}
     (h1 : ∀ row ∈ mat, row.length = mat[0]!.length)
     (h2 : threshold ≥ listSum (mat.map sumList)) :
-    maxSideLength mat threshold = min mat.length mat[0]!.length := sorry
-
+    maxSideLength mat threshold = min mat.length mat[0]!.length :=
+  sorry
+  
   theorem maxSideLength_zero_matrix {mat : List (List Int)} {threshold : Int}
     (h1 : ∀ row ∈ mat, row.length = mat[0]!.length)
     (h2 : ∀ row ∈ mat, ∀ x ∈ row, x = 0)
     (h3 : threshold ≥ 0) :
-    maxSideLength mat threshold = min mat.length mat[0]!.length := sorry
-
+    maxSideLength mat threshold = min mat.length mat[0]!.length :=
+  sorry
+  
   theorem maxSideLength_ones_matrix {mat : List (List Int)} {threshold : Int}
     (h1 : ∀ row ∈ mat, row.length = mat[0]!.length)
     (h2 : ∀ row ∈ mat, ∀ x ∈ row, x = 1) :
-    maxSideLength mat threshold ≤ floorSqrt threshold := sorry
+    maxSideLength mat threshold ≤ floorSqrt threshold :=
+  sorry
 
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
-
-  /-
+  
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval maxSideLength [[1, 1, 3, 2, 4, 3, 2], [1, 1, 3, 2, 4, 3, 2], [1, 1, 3, 2, 4, 3, 2]] 4
-
-  /-
+  
+  /--
   info: 0
   -/
   #guard_msgs in
   #eval maxSideLength [[2, 2, 2, 2, 2], [2, 2, 2, 2, 2], [2, 2, 2, 2, 2], [2, 2, 2, 2, 2], [2, 2, 2, 2, 2]] 1
-
-  /-
+  
+  /--
   info: 3
   -/
   #guard_msgs in

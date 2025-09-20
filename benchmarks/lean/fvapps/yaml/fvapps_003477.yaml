@@ -40,19 +40,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'Escaped!'
   -/
   #guard_msgs in
   #eval cat_mouse "C....m"
 
-  /-
+  /--
   info: 'Caught!'
   -/
   #guard_msgs in
   #eval cat_mouse "C..m"
 
-  /-
+  /--
   info: 'Caught!'
   -/
   #guard_msgs in

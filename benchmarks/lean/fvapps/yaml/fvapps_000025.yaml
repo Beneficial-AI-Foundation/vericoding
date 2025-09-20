@@ -103,25 +103,25 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: n1
   -/
   #guard_msgs in
   #eval len vertices1
 
-  /-
+  /--
   info: n1 - 2
   -/
   #guard_msgs in
   #eval len cuts1
 
-  /-
+  /--
   info: n2
   -/
   #guard_msgs in
   #eval len vertices2
 
-  /-
+  /--
   info: n2 - 2
   -/
   #guard_msgs in

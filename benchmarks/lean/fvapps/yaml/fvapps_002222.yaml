@@ -77,13 +77,13 @@ vc-postamble: |-
   -- Apps difficulty: competition
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: expected
   -/
   #guard_msgs in
   #eval solve_string_transforms "BBBAAAABA" "BBBBA" [[7, 9, 2, 5], [7, 9, 1, 4], [1, 7, 2, 5], [1, 7, 2, 4]]
 
-  /-
+  /--
   info: expected
   -/
   #guard_msgs in

@@ -64,19 +64,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'This_Is_A_Unit_Test'
   -/
   #guard_msgs in
   #eval toUnderScore "ThisIsAUnitTest"
 
-  /-
+  /--
   info: 'Calculate_15_Plus_5_Equals_20'
   -/
   #guard_msgs in
   #eval toUnderScore "Calculate15Plus5Equals20"
 
-  /-
+  /--
   info: '_Underscore_Marked_Test_Name_'
   -/
   #guard_msgs in

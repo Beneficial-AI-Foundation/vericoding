@@ -76,19 +76,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded
 
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in
   #eval min_cost_vowel_transform "aeiou"
 
-  /-
+  /--
   info: 6
   -/
   #guard_msgs in
   #eval min_cost_vowel_transform "dbcc"
 
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in

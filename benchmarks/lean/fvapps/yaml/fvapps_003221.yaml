@@ -32,19 +32,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'google'
   -/
   #guard_msgs in
   #eval domain_name "http://google.com"
 
-  /-
+  /--
   info: 'zombie-bites'
   -/
   #guard_msgs in
   #eval domain_name "http://www.zombie-bites.com"
 
-  /-
+  /--
   info: 'icann'
   -/
   #guard_msgs in

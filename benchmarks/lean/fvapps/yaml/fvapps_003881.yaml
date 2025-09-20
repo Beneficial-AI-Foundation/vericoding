@@ -28,19 +28,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'take item'
   -/
   #guard_msgs in
   #eval main "take " "item"
 
-  /-
+  /--
   info: 'use sword'
   -/
   #guard_msgs in
   #eval main "use " "sword"
 
-  /-
+  /--
   info: 'open door'
   -/
   #guard_msgs in

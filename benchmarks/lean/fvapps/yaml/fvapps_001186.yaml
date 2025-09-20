@@ -65,19 +65,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded
 
-  /-
+  /--
   info: (2, 2)
   -/
   #guard_msgs in
   #eval find_missing_vertex 2 [(1, 1), (1, 2), (4, 6), (2, 1), (9, 6), (9, 3), (4, 3)]
 
-  /-
+  /--
   info: (1, 0)
   -/
   #guard_msgs in
   #eval find_missing_vertex 1 [(0, 0), (0, 1), (1, 1)]
 
-  /-
+  /--
   info: (10, 5)
   -/
   #guard_msgs in

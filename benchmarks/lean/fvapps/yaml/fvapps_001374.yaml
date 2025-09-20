@@ -72,19 +72,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 6
   -/
   #guard_msgs in
   #eval count_fenwick_accesses "001" "100" "011" 4
 
-  /-
+  /--
   info: 12
   -/
   #guard_msgs in
   #eval count_fenwick_accesses "1000" "1101" "100" 3
 
-  /-
+  /--
   info: 8
   -/
   #guard_msgs in

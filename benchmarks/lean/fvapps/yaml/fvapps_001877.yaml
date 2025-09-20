@@ -69,19 +69,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: expected1
   -/
   #guard_msgs in
   #eval process_queries [3, 1, 2, 1] 5
 
-  /-
+  /--
   info: expected2
   -/
   #guard_msgs in
   #eval process_queries [4, 1, 2, 2] 4
 
-  /-
+  /--
   info: expected3
   -/
   #guard_msgs in

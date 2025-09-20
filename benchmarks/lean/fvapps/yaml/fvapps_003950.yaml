@@ -35,19 +35,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: 97
   -/
   #guard_msgs in
   #eval uni_total "a"
 
-  /-
+  /--
   info: 291
   -/
   #guard_msgs in
   #eval uni_total "aaa"
 
-  /-
+  /--
   info: 2001
   -/
   #guard_msgs in

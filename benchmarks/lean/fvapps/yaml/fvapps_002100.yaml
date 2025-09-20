@@ -91,19 +91,19 @@ vc-postamble: |-
   -- Apps difficulty: competition
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 6
   -/
   #guard_msgs in
   #eval calculate_lcs_strings 3 3 "aaa"
 
-  /-
+  /--
   info: 11
   -/
   #guard_msgs in
   #eval calculate_lcs_strings 3 3 "aab"
 
-  /-
+  /--
   info: 789
   -/
   #guard_msgs in

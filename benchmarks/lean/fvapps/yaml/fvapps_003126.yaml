@@ -47,19 +47,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: 234
   -/
   #guard_msgs in
   #eval solve "1234" 1
 
-  /-
+  /--
   info: 34
   -/
   #guard_msgs in
   #eval solve "1234" 2
 
-  /-
+  /--
   info: 202
   -/
   #guard_msgs in

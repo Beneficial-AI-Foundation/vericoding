@@ -63,19 +63,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'SHANKY'
   -/
   #guard_msgs in
   #eval find_winner "google"
 
-  /-
+  /--
   info: 'PANDEY'
   -/
   #guard_msgs in
   #eval find_winner "breakraekb"
 
-  /-
+  /--
   info: 'ANKU'
   -/
   #guard_msgs in

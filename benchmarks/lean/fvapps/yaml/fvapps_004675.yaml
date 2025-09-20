@@ -53,19 +53,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'GO'
   -/
   #guard_msgs in
   #eval ride "COMETQ" "HVNGAT"
 
-  /-
+  /--
   info: 'STAY'
   -/
   #guard_msgs in
   #eval ride "ABSTAR" "USACO"
 
-  /-
+  /--
   info: 'GO'
   -/
   #guard_msgs in

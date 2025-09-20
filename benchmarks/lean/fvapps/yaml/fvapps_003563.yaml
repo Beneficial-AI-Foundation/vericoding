@@ -50,19 +50,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'TestCase'
   -/
   #guard_msgs in
   #eval camel_case "test case"
 
-  /-
+  /--
   info: 'CamelCaseMethod'
   -/
   #guard_msgs in
   #eval camel_case "camel case method"
 
-  /-
+  /--
   info: 'SayHello'
   -/
   #guard_msgs in

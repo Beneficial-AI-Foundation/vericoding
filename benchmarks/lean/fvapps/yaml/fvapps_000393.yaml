@@ -54,19 +54,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval has_increasing_triplet [1, 2, 3, 4, 5]
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval has_increasing_triplet [5, 4, 3, 2, 1]
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in

@@ -1,9 +1,9 @@
 vc-description: |-
   /-
   Create a function that takes a Number as its argument and returns a Chinese numeral string. You don't need to validate the input argument, it will always be a Number in the range `[-99999.999, 99999.999]`, rounded to 8 decimal places.
-
+  
   Simplified Chinese numerals have characters representing each number from 0 to 9 and additional numbers representing larger numbers like 10, 100, 1000, and 10000. 
-
+  
   ```
   0 líng 零
   1 yī 一
@@ -20,9 +20,9 @@ vc-description: |-
   1000 qiān 千
   10000 wàn 万
   ```
-
+  
   Multiple-digit numbers are constructed by first the digit value (1 to 9) and then the place multiplier (such as 10, 100, 1000), starting with the most significant digit. A special case is made for 10 - 19 where the leading digit value (yī 一) is dropped. Note that this special case is only made for the actual values 10 - 19, not any larger values.
-
+  
   ```
   10 十
   11 十一
@@ -32,9 +32,9 @@ vc-description: |-
   123 一百二十三
   24681 二万四千六百八十一
   ```
-
+  
   Trailing zeros are omitted, but interior zeros are grouped together and indicated by a single 零 character without giving the place multiplier.
-
+  
   ```
   10 十
   20 二十
@@ -43,64 +43,70 @@ vc-description: |-
   10004 一万零四
   10000 一万
   ```
-
+  
   Decimal numbers are constructed by first writing the whole number part, and then inserting a point (diǎn 点), followed by the decimal portion. The decimal portion is expressed using only the digits 0 to 9, without any positional characters and without grouping zeros.
-
+  
   ```
   0.1 零点一
   123.45 一百二十三点四五
   ```
-
+  
   Negative numbers are the same as other numbers, but add a 负 (fù) before the number.
-
+  
   For more information, please see http://en.wikipedia.org/wiki/Chinese_numerals.
   -/
 
 vc-preamble: |-
-  def to_chinese_numeral (n : Int) : String := sorry
-
   def DIGS : List String := ["零", "一", "二", "三", "四", "五", "六", "七", "八", "九"]
+  
+  def POWS : List String := ["", "十", "百", "千", "万"]
+  
+  def NEG : String := "负"
 
-vc-helpers: |
+vc-helpers: |-
 
 vc-definitions: |-
-  def POWS : List String := ["", "十", "百", "千", "万"]
-  def NEG : String := "负"
+  def to_chinese_numeral (n : Int) : String :=
+  sorry
 
 vc-theorems: |-
   theorem sign_property {n : Int} :
     n < 0 → (to_chinese_numeral n).startsWith NEG ∧
-    n ≥ 0 → ¬(to_chinese_numeral n).startsWith NEG := sorry
-
+    n ≥ 0 → ¬(to_chinese_numeral n).startsWith NEG :=
+  sorry
+  
   theorem char_validation {n : Int} :
     ∀ c : Char, c ∈ (to_chinese_numeral n).data →
-      c ∈ (NEG.data ++ (String.join DIGS).data ++ (String.join POWS).data) := sorry 
-
+      c ∈ (NEG.data ++ (String.join DIGS).data ++ (String.join POWS).data) :=
+  sorry
+  
   theorem single_digit {n : Int} (h1 : 1 ≤ n) (h2 : n ≤ 9) :
-    to_chinese_numeral n = DIGS[n.toNat - 1]! := sorry
-
+    to_chinese_numeral n = DIGS[n.toNat - 1]! :=
+  sorry
+  
   theorem teen_numbers {n : Int} (h1 : 10 ≤ n) (h2 : n ≤ 19) :
     (to_chinese_numeral n).startsWith "十" ∧
-    (n > 10 → ∃ c : Char, c ∈ (String.join DIGS).data ∧ 
-      (to_chinese_numeral n).data[1]? = some c) := sorry
+    (n > 10 → ∃ c : Char, c ∈ (String.join DIGS).data ∧
+      (to_chinese_numeral n).data[1]? = some c) :=
+  sorry
 
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
-
-  /-
+  
+  /--
   info: '一百二十三点四五'
   -/
   #guard_msgs in
   #eval to_chinese_numeral 123.45
-
-  /-
+  
+  /--
   info: '负一千零四'
   -/
   #guard_msgs in
   #eval to_chinese_numeral -1004
-
-  /-
+  
+  /--
   info: '一万零四点零零五'
   -/
   #guard_msgs in

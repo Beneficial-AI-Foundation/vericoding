@@ -42,19 +42,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: [True, []]
   -/
   #guard_msgs in
   #eval case_sensitive "codewars"
 
-  /-
+  /--
   info: [False, ['W', 'R']]
   -/
   #guard_msgs in
   #eval case_sensitive "codeWaRs"
 
-  /-
+  /--
   info: [True, []]
   -/
   #guard_msgs in

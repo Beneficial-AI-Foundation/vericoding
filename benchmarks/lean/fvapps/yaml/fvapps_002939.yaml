@@ -60,19 +60,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'monty'
   -/
   #guard_msgs in
   #eval denumerate [(4, "y"), (1, "o"), (3, "t"), (0, "m"), (2, "n")]
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval denumerate [1]
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in

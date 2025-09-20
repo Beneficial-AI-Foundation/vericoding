@@ -57,19 +57,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: 4
   -/
   #guard_msgs in
   #eval find_minimum_donation 3
 
-  /-
+  /--
   info: 8
   -/
   #guard_msgs in
   #eval find_minimum_donation 7
 
-  /-
+  /--
   info: 16
   -/
   #guard_msgs in

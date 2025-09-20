@@ -28,19 +28,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: 20
   -/
   #guard_msgs in
   #eval max_product [2, 1, 5, 0, 4, 3]
 
-  /-
+  /--
   info: 72
   -/
   #guard_msgs in
   #eval max_product [7, 8, 9]
 
-  /-
+  /--
   info: 104874
   -/
   #guard_msgs in

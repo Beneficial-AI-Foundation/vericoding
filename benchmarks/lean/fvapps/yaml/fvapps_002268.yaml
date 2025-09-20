@@ -101,13 +101,13 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: (2, 'LR')
   -/
   #guard_msgs in
   #eval solve "LRU"
 
-  /-
+  /--
   info: (0, '')
   -/
   #guard_msgs in

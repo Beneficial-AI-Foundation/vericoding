@@ -70,19 +70,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval valid_mountain_array [2, 1]
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval valid_mountain_array [3, 5, 5]
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in

@@ -77,19 +77,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: 1
   -/
   #guard_msgs in
   #eval find_smallest_k 4 [1, 0, 2, 3]
 
-  /-
+  /--
   info: 4
   -/
   #guard_msgs in
   #eval find_smallest_k 6 [10, 7, 14, 8, 3, 12]
 
-  /-
+  /--
   info: 1023
   -/
   #guard_msgs in

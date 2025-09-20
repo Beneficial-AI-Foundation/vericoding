@@ -76,19 +76,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'AAZMON'
   -/
   #guard_msgs in
   #eval improve_product_name "AZAMON" "APPLE"
 
-  /-
+  /--
   info: '---'
   -/
   #guard_msgs in
   #eval improve_product_name "AZAMON" "AAAAAAAAAAALIBABA"
 
-  /-
+  /--
   info: 'APPLE'
   -/
   #guard_msgs in

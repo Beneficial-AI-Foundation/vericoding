@@ -65,19 +65,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: 1
   -/
   #guard_msgs in
   #eval create_anagram "AABAA" "BBAAA"
 
-  /-
+  /--
   info: 4
   -/
   #guard_msgs in
   #eval create_anagram "OVGHK" "RPGUC"
 
-  /-
+  /--
   info: 1
   -/
   #guard_msgs in

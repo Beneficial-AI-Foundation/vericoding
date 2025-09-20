@@ -70,19 +70,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: 14
   -/
   #guard_msgs in
   #eval min_trades 2 1 5
 
-  /-
+  /--
   info: 33
   -/
   #guard_msgs in
   #eval min_trades 42 13 24
 
-  /-
+  /--
   info: 25
   -/
   #guard_msgs in

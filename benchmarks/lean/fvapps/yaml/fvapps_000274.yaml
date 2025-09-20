@@ -60,19 +60,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval can_convert_string "input" "ouput" 9
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval can_convert_string "abc" "bcd" 10
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in

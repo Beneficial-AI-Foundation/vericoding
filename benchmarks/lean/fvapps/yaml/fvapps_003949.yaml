@@ -44,19 +44,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 't'
   -/
   #guard_msgs in
   #eval first_non_repeating_letter "stress"
 
-  /-
+  /--
   info: 'T'
   -/
   #guard_msgs in
   #eval first_non_repeating_letter "sTreSS"
 
-  /-
+  /--
   info: ''
   -/
   #guard_msgs in

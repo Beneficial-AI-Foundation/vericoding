@@ -53,19 +53,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: ['shell', 'shell']
   -/
   #guard_msgs in
   #eval tacofy ""
 
-  /-
+  /--
   info: ['shell', 'beef', 'guacamole', 'lettuce', 'shell']
   -/
   #guard_msgs in
   #eval tacofy "ogl"
 
-  /-
+  /--
   info: ['shell', 'beef', 'tomato', 'lettuce', 'cheese', 'guacamole', 'salsa', 'shell']
   -/
   #guard_msgs in

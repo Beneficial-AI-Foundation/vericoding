@@ -27,25 +27,25 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval is_digit ""
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval is_digit "7"
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval is_digit "a"
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in

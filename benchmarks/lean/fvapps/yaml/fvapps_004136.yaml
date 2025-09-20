@@ -48,19 +48,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'iH mom'
   -/
   #guard_msgs in
   #eval reverse_words "Hi mom"
 
-  /-
+  /--
   info: ' A nuf elttil !egnellahc '
   -/
   #guard_msgs in
   #eval reverse_words " A fun little challenge! "
 
-  /-
+  /--
   info: 'woH won nworb woc'
   -/
   #guard_msgs in

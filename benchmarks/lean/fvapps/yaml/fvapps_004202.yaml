@@ -75,19 +75,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval logical_calc [True, True, False] "AND"
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval logical_calc [True, True, False] "OR"
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in

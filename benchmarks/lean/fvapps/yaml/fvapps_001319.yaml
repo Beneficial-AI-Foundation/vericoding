@@ -33,27 +33,31 @@ vc-description: |-
   If the cities 2 and 3 are connected by the high class road. All the places can be visited by paying a toll tax of 2Rs. 
   Hence expected Rs. that a tourist has to pay in toll tax will be (2 + 3 + 2) / 3 = 7 / 3 = 2.333333
   -/
+  
+  -- Apps difficulty: interview
+  -- Assurance level: guarded
 
 vc-preamble: |-
-  def solve_tourist_spots (n : Nat) (roads : List String) : Float :=
-  sorry
 
 vc-helpers: |-
 
 vc-definitions: |-
+  def solve_tourist_spots (n : Nat) (roads : List String) : Float :=
+  sorry
+  
   def isValidRoad : String → Bool :=
   sorry
 
 vc-theorems: |-
-  theorem solve_tourist_spots_output_is_float (n : Nat) (roads : List String) 
+  theorem solve_tourist_spots_output_is_float (n : Nat) (roads : List String)
       (h : n ≥ 2) (h2 : roads.length > 0) :
     ∃ (f : Float), solve_tourist_spots n roads = f :=
   sorry
   
-  theorem solve_tourist_spots_total_weight 
+  theorem solve_tourist_spots_total_weight
       {n : Nat} {roads : List String} {weights : List Float}
       (h : n ≥ 2)
-      (h2 : roads.length > 0) 
+      (h2 : roads.length > 0)
       (h3 : weights = roads.map (fun r => sorry)) :
     solve_tourist_spots n roads ≤ weights.foldl (. + .) 0.0 :=
   sorry
@@ -66,6 +70,4 @@ vc-theorems: |-
   sorry
 
 vc-postamble: |-
-  -- Apps difficulty: interview
-  -- Assurance level: guarded
 

@@ -34,19 +34,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in
   #eval first_unique_char "leetcode"
 
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval first_unique_char "loveleetcode"
 
-  /-
+  /--
   info: -1
   -/
   #guard_msgs in

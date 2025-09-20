@@ -66,19 +66,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 13
   -/
   #guard_msgs in
   #eval cut_log [0, 1, 5, 8, 9, 10] 5
 
-  /-
+  /--
   info: 22
   -/
   #guard_msgs in
   #eval cut_log [0, 1, 5, 8, 9, 10, 17, 17, 20] 8
 
-  /-
+  /--
   info: 12
   -/
   #guard_msgs in

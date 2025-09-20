@@ -78,19 +78,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'NO'
   -/
   #guard_msgs in
   #eval check_social_distancing 3 [1, 0, 1]
 
-  /-
+  /--
   info: 'YES'
   -/
   #guard_msgs in
   #eval check_social_distancing 7 [1, 0, 0, 0, 0, 0, 1]
 
-  /-
+  /--
   info: 'NO'
   -/
   #guard_msgs in

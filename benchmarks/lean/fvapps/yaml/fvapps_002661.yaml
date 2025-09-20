@@ -2,7 +2,7 @@ vc-description: |-
   /-
   Create a function which answers the question "Are you playing banjo?".  
   If your name starts with the letter "R" or lower case "r", you are playing banjo!
-
+  
   The function takes a name as its only argument, and returns one of the following strings:
   ```
   name + " plays banjo" 
@@ -12,12 +12,13 @@ vc-description: |-
   -/
 
 vc-preamble: |-
-  def String.hasSubstring (s1 s2 : String) : Bool :=
-    sorry
 
-vc-helpers: |
+vc-helpers: |-
 
 vc-definitions: |-
+  def String.hasSubstring (s1 s2 : String) : Bool :=
+    sorry
+  
   def areYouPlayingBanjo (name : String) : String :=
     sorry
 
@@ -28,12 +29,12 @@ vc-theorems: |-
     result.endsWith "banjo" ∧
     (result.hasSubstring " plays banjo" ∨ result.hasSubstring " does not play banjo") :=
   sorry
-
+  
   theorem starts_with_r_plays_banjo (name : String) (h1 : name.length > 0)
       (h2 : name.front = 'r' ∨ name.front = 'R') :
     (areYouPlayingBanjo name).hasSubstring " plays banjo" = true :=
   sorry
-
+  
   theorem not_r_does_not_play_banjo (name : String) (h1 : name.length > 0)
       (h2 : name.front ≠ 'r' ∧ name.front ≠ 'R') :
     (areYouPlayingBanjo name).hasSubstring " does not play banjo" = true :=
@@ -42,20 +43,20 @@ vc-theorems: |-
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
-
-  /-
+  
+  /--
   info: expected
   -/
   #guard_msgs in
   #eval areYouPlayingBanjo "Adam"
-
-  /-
+  
+  /--
   info: expected
   -/
   #guard_msgs in
   #eval areYouPlayingBanjo "Ringo"
-
-  /-
+  
+  /--
   info: expected
   -/
   #guard_msgs in

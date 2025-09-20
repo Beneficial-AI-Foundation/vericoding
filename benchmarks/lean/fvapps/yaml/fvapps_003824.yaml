@@ -93,19 +93,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: '10101100'
   -/
   #guard_msgs in
   #eval interpreter "*" "00101100"
 
-  /-
+  /--
   info: '01001100'
   -/
   #guard_msgs in
   #eval interpreter ">*>*" "00101100"
 
-  /-
+  /--
   info: '10101'
   -/
   #guard_msgs in

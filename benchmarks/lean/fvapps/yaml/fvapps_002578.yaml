@@ -30,19 +30,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: 4
   -/
   #guard_msgs in
   #eval dice_sum_outcomes 4 6 5
 
-  /-
+  /--
   info: 10
   -/
   #guard_msgs in
   #eval dice_sum_outcomes 3 6 6
 
-  /-
+  /--
   info: 27
   -/
   #guard_msgs in

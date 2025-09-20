@@ -51,19 +51,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'THIS IS A MESSAGE'
   -/
   #guard_msgs in
   #eval caeser "This is a message" 0
 
-  /-
+  /--
   info: 'OZG SJW QGM?'
   -/
   #guard_msgs in
   #eval caeser "who are you?" 18
 
-  /-
+  /--
   info: 'ORWJU XWN'
   -/
   #guard_msgs in

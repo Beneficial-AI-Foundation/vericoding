@@ -99,19 +99,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: expected
   -/
   #guard_msgs in
   #eval print_number 99 "$"
 
-  /-
+  /--
   info: expected
   -/
   #guard_msgs in
   #eval print_number 12345 "*"
 
-  /-
+  /--
   info: expected
   -/
   #guard_msgs in

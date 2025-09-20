@@ -3,30 +3,30 @@ vc-description: |-
   -----
   ARRAY AND DISTINCT ELEMENTS
   -----
-
+  
   Chef is multitalented but he mistakenly took part in 2 contest which will take place
   at the same time. So while chef is busy at one cooking contest, he wants you to
   take part in coding contest. Chef wants u to solve this program for him.
-
+  
   You have been given an array of size n. You have to calculate a subarray of size k
   with maximum sum having distinct elements same as original array.
-
+  
   -----Input Format-----
-
+  
   First line contains no. of test cases. Second line contains n and k. Third line
   contains array of n integers.
-
+  
   -----Output-----
-
+  
   Print maximum possible sum as stated in question
-
+  
   -----Example Text Case-----
   Input:
-
+  
   1
   10 6
   8 8 3 5 3 8 5 7 7 7
-
+  
   Output:
   37
   -/
@@ -34,63 +34,63 @@ vc-description: |-
 vc-preamble: |-
   def sum (l : List Nat) : Nat :=
     l.foldl (· + ·) 0
-
-  def find_max_distinct_subarray_sum (n k : Nat) (arr : List Nat) : Int :=
-    sorry
-
+  
   def allEqual (l : List Nat) : Prop :=
     ∀ x y, x ∈ l → y ∈ l → x = y
-
-vc-helpers: |
-
-vc-definitions: |-
+  
   def uniqueCount (l : List Nat) : Nat :=
     (l.eraseDups).length
 
-vc-theorems: |-
-  theorem max_distinct_subarray_sum_within_bounds 
-    {n k : Nat} {arr : List Nat} (h1 : k ≤ n) (h2 : n = arr.length) 
-    (h3 : ∀ x, x ∈ arr → 1 ≤ x ∧ x ≤ 100) :
-    let result := find_max_distinct_subarray_sum n k arr
-    result = -1 ∨ 
-    result ≤ (List.range (n - k + 1)).foldl (fun acc i => 
-      max acc (sum ((arr.take (i + k)).drop i))) 0 := 
+vc-helpers: |-
+
+vc-definitions: |-
+  def find_max_distinct_subarray_sum (n k : Nat) (arr : List Nat) : Int :=
     sorry
 
+vc-theorems: |-
+  theorem max_distinct_subarray_sum_within_bounds
+    {n k : Nat} {arr : List Nat} (h1 : k ≤ n) (h2 : n = arr.length)
+    (h3 : ∀ x, x ∈ arr → 1 ≤ x ∧ x ≤ 100) :
+    let result := find_max_distinct_subarray_sum n k arr
+    result = -1 ∨
+    result ≤ (List.range (n - k + 1)).foldl (fun acc i =>
+      max acc (sum ((arr.take (i + k)).drop i))) 0 :=
+  sorry
+  
   theorem identical_elements_sum_first_k
-    {n k : Nat} {arr : List Nat} 
+    {n k : Nat} {arr : List Nat}
     (h1 : k ≤ n) (h2 : n = arr.length)
     (h3 : allEqual arr) (h4 : ∀ x, x ∈ arr → x > 0) :
     find_max_distinct_subarray_sum n k arr = sum (arr.take k) :=
-    sorry 
-
+  sorry
+  
   theorem distinct_count_consistent
-    {n k : Nat} {arr : List Nat} 
+    {n k : Nat} {arr : List Nat}
     (h1 : k ≤ n) (h2 : n = arr.length) :
     let result := find_max_distinct_subarray_sum n k arr
     result = -1 ∨
     ∀ i, i + k ≤ n →
       sum ((arr.take (i + k)).drop i) = result →
       uniqueCount ((arr.take (i + k)).drop i) = uniqueCount arr :=
-    sorry
+  sorry
 
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded
-
-  /-
+  
+  /--
   info: 37
   -/
   #guard_msgs in
   #eval find_max_distinct_subarray_sum 10 6 [8, 8, 3, 5, 3, 8, 5, 7, 7, 7]
-
-  /-
+  
+  /--
   info: 6
   -/
   #guard_msgs in
   #eval find_max_distinct_subarray_sum 5 3 [1, 2, 1, 2, 3]
-
-  /-
+  
+  /--
   info: 10
   -/
   #guard_msgs in

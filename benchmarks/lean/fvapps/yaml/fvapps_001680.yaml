@@ -2,67 +2,72 @@ vc-description: |-
   /-
   A factorial (of a large number) will usually contain some trailing zeros.
   Your job is to make a function that calculates the number of trailing zeros, in any given base.
-
+  
   Factorial is defined like this:
   ```n! = 1 * 2 * 3 * 4 * ... * n-2 * n-1 * n```
-
+  
   Here's two examples to get you started:
-
+  
   ```python
   trailing_zeros(15, 10) == 3
   #15! = 1307674368000, which has 3 zeros at the end
-
+  
   trailing_zeros(7, 2) == 4
   #7! = 5030 = 0b1001110110000, which has 4 zeros at the end
   ```
-
+  
   Your code should be able to handle some very large numbers, so write some smart code.
-
+  
   Note: ```num``` will be a non-negative integer, ```base``` will be an integer larger or equal to two.
-
+  
   HINT: Should you not make any headway after trying a long time, you should try [this kata](https://www.codewars.com/kata/number-of-trailing-zeros-of-n) first.
   -/
 
 vc-preamble: |-
-  def isqrt (n : Nat) : Nat := sorry 
-
-  def isPrime (p : Nat) : Bool := sorry
-
   structure PrimeFactor where
     prime : Nat
     power : Nat
 
-vc-helpers: |
+vc-helpers: |-
 
 vc-definitions: |-
-  def factorize (n : Nat) : List PrimeFactor := sorry
-
-  theorem isqrt_upper_bound (n : Nat) (h : n > 0) : 
-    let r := isqrt n
-    r * r ≤ n := sorry
+  def isqrt (n : Nat) : Nat :=
+  sorry
+  
+  def isPrime (p : Nat) : Bool :=
+  sorry
+  
+  def factorize (n : Nat) : List PrimeFactor :=
+  sorry
 
 vc-theorems: |-
+  theorem isqrt_upper_bound (n : Nat) (h : n > 0) :
+    let r := isqrt n
+    r * r ≤ n :=
+  sorry
+  
   theorem isqrt_next_exceeds (n : Nat) (h : n > 0) :
-    let r := isqrt n 
-    (r + 1) * (r + 1) > n := sorry
+    let r := isqrt n
+    (r + 1) * (r + 1) > n :=
+  sorry
 
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
-
-  /-
+  
+  /--
   info: 3
   -/
   #guard_msgs in
   #eval trailing_zeros 15 10
-
-  /-
+  
+  /--
   info: 4
   -/
   #guard_msgs in
   #eval trailing_zeros 7 2
-
-  /-
+  
+  /--
   info: 7
   -/
   #guard_msgs in

@@ -65,19 +65,19 @@ vc-postamble: |-
   -- Apps difficulty: competition
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 2000
   -/
   #guard_msgs in
   #eval solve_time_game 3 1000 [0, 1000, 0] [(0, 0), (0, 1), (0, 3)]
 
-  /-
+  /--
   info: 1000
   -/
   #guard_msgs in
   #eval solve_time_game 3 1000 [0, 1000, 0] [(1, 0), (1, 1), (1, 2)]
 
-  /-
+  /--
   info: 169099
   -/
   #guard_msgs in

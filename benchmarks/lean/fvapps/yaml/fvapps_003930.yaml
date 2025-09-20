@@ -64,67 +64,67 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 50
   -/
   #guard_msgs in
   #eval points "55555"
 
-  /-
+  /--
   info: 50
   -/
   #guard_msgs in
   #eval points "44444"
 
-  /-
+  /--
   info: 40
   -/
   #guard_msgs in
   #eval points "44441"
 
-  /-
+  /--
   info: 40
   -/
   #guard_msgs in
   #eval points "33233"
 
-  /-
+  /--
   info: 30
   -/
   #guard_msgs in
   #eval points "12121"
 
-  /-
+  /--
   info: 30
   -/
   #guard_msgs in
   #eval points "44455"
 
-  /-
+  /--
   info: 20
   -/
   #guard_msgs in
   #eval points "12345"
 
-  /-
+  /--
   info: 20
   -/
   #guard_msgs in
   #eval points "23456"
 
-  /-
+  /--
   info: 20
   -/
   #guard_msgs in
   #eval points "34561"
 
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in
   #eval points "44421"
 
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in

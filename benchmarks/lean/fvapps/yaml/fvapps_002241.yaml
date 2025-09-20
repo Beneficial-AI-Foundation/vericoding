@@ -99,19 +99,19 @@ vc-postamble: |-
   -- Apps difficulty: competition
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'YES'
   -/
   #guard_msgs in
   #eval can_make_balanced 6 4 "100110"
 
-  /-
+  /--
   info: 'YES'
   -/
   #guard_msgs in
   #eval can_make_balanced 3 2 "1?1"
 
-  /-
+  /--
   info: 'NO'
   -/
   #guard_msgs in

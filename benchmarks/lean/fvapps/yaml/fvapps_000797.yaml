@@ -67,19 +67,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: 8
   -/
   #guard_msgs in
   #eval solve_array_xor 5 [8, 4, 1, 5, 0]
 
-  /-
+  /--
   info: 15
   -/
   #guard_msgs in
   #eval solve_array_xor 5 [1, 2, 4, 0, 8]
 
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in

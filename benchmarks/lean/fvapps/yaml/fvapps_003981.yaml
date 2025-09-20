@@ -58,19 +58,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'Thes is i tast!'
   -/
   #guard_msgs in
   #eval vowel_shift "This is a test!" 1
 
-  /-
+  /--
   info: ''
   -/
   #guard_msgs in
   #eval vowel_shift "" 0
 
-  /-
+  /--
   info: 'This as e tist!'
   -/
   #guard_msgs in

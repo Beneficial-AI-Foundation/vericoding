@@ -78,19 +78,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval lemonade_change [5, 5, 5, 10, 20]
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval lemonade_change [5, 5, 10]
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in

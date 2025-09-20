@@ -66,19 +66,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: '111'
   -/
   #guard_msgs in
   #eval correct 1 1 "111"
 
-  /-
+  /--
   info: '11111010001'
   -/
   #guard_msgs in
   #eval correct 2 3 "11011010001"
 
-  /-
+  /--
   info: '111'
   -/
   #guard_msgs in

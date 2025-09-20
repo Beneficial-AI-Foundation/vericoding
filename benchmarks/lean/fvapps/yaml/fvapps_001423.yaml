@@ -27,23 +27,26 @@ vc-description: |-
   Output:
   The antidote is found in 46.
   -/
-
-vc-preamble: |-
-  def find_anagram_positions (haystack : String) (needle : String) : String :=
-    sorry
   
   /- Helper function that converts a string to a sorted char array for anagram comparison -/
+  
+  -- Apps difficulty: interview
+  -- Assurance level: guarded_and_plausible
+
+vc-preamble: |-
+  def stringToSortedArray (s : String) : Array Char :=
+    (s.data.toArray).qsort (· ≤ ·)
 
 vc-helpers: |-
 
 vc-definitions: |-
-  def stringToSortedArray (s : String) : Array Char :=
-    (s.data.toArray).qsort (· ≤ ·)
+  def find_anagram_positions (haystack : String) (needle : String) : String :=
+    sorry
 
 vc-theorems: |-
   theorem output_format {s : String} :
     let result := find_anagram_positions s "test"
-    result.startsWith "The antidote is found in" ∧ 
+    result.startsWith "The antidote is found in" ∧
     result.endsWith "." :=
   sorry
   
@@ -53,6 +56,4 @@ vc-theorems: |-
   sorry
 
 vc-postamble: |-
-  -- Apps difficulty: interview
-  -- Assurance level: guarded_and_plausible
 

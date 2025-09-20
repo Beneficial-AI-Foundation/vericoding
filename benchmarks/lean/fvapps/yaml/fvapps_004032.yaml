@@ -57,19 +57,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'y/b*100'
   -/
   #guard_msgs in
   #eval solve "100*b/y"
 
-  /-
+  /--
   info: '30*d/c-b+a'
   -/
   #guard_msgs in
   #eval solve "a+b-c/d*30"
 
-  /-
+  /--
   info: '50+c/b*a'
   -/
   #guard_msgs in

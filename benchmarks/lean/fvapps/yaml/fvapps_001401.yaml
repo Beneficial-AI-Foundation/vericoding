@@ -69,19 +69,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'No 1'
   -/
   #guard_msgs in
   #eval solve_robot_cake_distribution 2 0
 
-  /-
+  /--
   info: 'Yes'
   -/
   #guard_msgs in
   #eval solve_robot_cake_distribution 2 1
 
-  /-
+  /--
   info: 'No 2'
   -/
   #guard_msgs in

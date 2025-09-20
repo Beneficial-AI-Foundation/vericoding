@@ -71,25 +71,25 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: []
   -/
   #guard_msgs in
   #eval distribute 10 0
 
-  /-
+  /--
   info: []
   -/
   #guard_msgs in
   #eval distribute 15 -5
 
-  /-
+  /--
   info: [0] * 10
   -/
   #guard_msgs in
   #eval distribute -5 10
 
-  /-
+  /--
   info: [2, 2, 2, 2, 2, 1, 1, 1, 1, 1]
   -/
   #guard_msgs in

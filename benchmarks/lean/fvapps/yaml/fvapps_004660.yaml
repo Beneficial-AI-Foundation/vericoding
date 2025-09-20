@@ -81,19 +81,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: [2645, 1162]
   -/
   #guard_msgs in
   #eval coffee_limits 1950 1 19
 
-  /-
+  /--
   info: [111, 0]
   -/
   #guard_msgs in
   #eval coffee_limits 1965 12 11
 
-  /-
+  /--
   info: [0, 11]
   -/
   #guard_msgs in

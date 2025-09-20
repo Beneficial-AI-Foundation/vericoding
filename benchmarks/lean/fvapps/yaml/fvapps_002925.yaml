@@ -2,78 +2,82 @@ vc-description: |-
   /-
   # Task
   Consider an array of integers `a`. Let `min(a)` be its minimal element, and let `avg(a)` be its mean.
-
+  
   Define the center of the array `a` as array `b` such that:
-
+  
   ```
   - b is formed from a by erasing some of its elements.
   - For each i, |b[i] - avg(a)| < min(a).
   - b has the maximum number of elements among all the arrays
     satisfying the above requirements.
   ```
-
+  
   Given an array of integers, return its center.
-
+  
   # Input/Output
-
+  
   `[input]` integer array `a`
-
+  
    Unsorted non-empty array of integers.
-
+  
   `2 ≤ a.length ≤ 50,`
-
+  
   `1 ≤ a[i] ≤ 350.`
-
+  
   `[output]` an integer array
-
+  
   # Example
-
+  
   For `a = [8, 3, 4, 5, 2, 8]`, the output should be `[4, 5]`.
-
+  
   Here `min(a) = 2, avg(a) = 5`.
-
+  
   For `a = [1, 3, 2, 1]`, the output should be `[1, 2, 1]`.
-
+  
   Here `min(a) = 1, avg(a) = 1.75`.
   -/
 
 vc-preamble: |-
-  def abs (n : Int) : Int := 
+  def abs (n : Int) : Int :=
     if n ≥ 0 then n else -n
 
-  def list_minimum (lst : List Int) : Int := sorry
-
-  def array_center (lst : List Int) : List Int := sorry
-
-  def mean (lst : List Int) : Int := sorry
-
-  theorem array_center_is_subset {lst : List Int} (h : lst ≠ []) : 
-    ∀ x, x ∈ array_center lst → x ∈ lst := sorry
-
-vc-helpers: |
+vc-helpers: |-
 
 vc-definitions: |-
-  def list_index_of (lst : List Int) (x : Int) : Nat := sorry
+  def list_minimum (lst : List Int) : Int :=
+  sorry
+  
+  def array_center (lst : List Int) : List Int :=
+  sorry
+  
+  def mean (lst : List Int) : Int :=
+  sorry
+  
+  def list_index_of (lst : List Int) (x : Int) : Nat :=
+  sorry
 
-vc-theorems: |
+vc-theorems: |-
+  theorem array_center_is_subset {lst : List Int} (h : lst ≠ []) :
+    ∀ x, x ∈ array_center lst → x ∈ lst :=
+  sorry
 
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
-
-  /-
+  
+  /--
   info: [4, 5]
   -/
   #guard_msgs in
   #eval array_center [8, 3, 4, 5, 2, 8]
-
-  /-
+  
+  /--
   info: [1, 2, 1]
   -/
   #guard_msgs in
   #eval array_center [1, 3, 2, 1]
-
-  /-
+  
+  /--
   info: [10, 11, 12, 13, 14]
   -/
   #guard_msgs in

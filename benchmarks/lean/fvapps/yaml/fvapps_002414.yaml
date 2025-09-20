@@ -49,19 +49,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 5
   -/
   #guard_msgs in
   #eval find_unsorted_subarray [2, 6, 4, 8, 10, 9, 15]
 
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in
   #eval find_unsorted_subarray [1, 2, 3, 4, 5]
 
-  /-
+  /--
   info: 5
   -/
   #guard_msgs in

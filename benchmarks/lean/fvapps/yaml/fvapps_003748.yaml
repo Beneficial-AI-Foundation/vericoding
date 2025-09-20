@@ -76,19 +76,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: [7, 294]
   -/
   #guard_msgs in
   #eval find_int_inrange 100 300
 
-  /-
+  /--
   info: [7, 294, 468]
   -/
   #guard_msgs in
   #eval find_int_inrange 100 500
 
-  /-
+  /--
   info: [7, 468, 834]
   -/
   #guard_msgs in

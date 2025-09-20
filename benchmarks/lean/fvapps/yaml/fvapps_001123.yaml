@@ -92,19 +92,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'mongooses'
   -/
   #guard_msgs in
   #eval determine_winner "sm"
 
-  /-
+  /--
   info: 'tie'
   -/
   #guard_msgs in
   #eval determine_winner "ssm"
 
-  /-
+  /--
   info: 'snakes'
   -/
   #guard_msgs in

@@ -2,9 +2,9 @@ vc-description: |-
   /-
   # Task
    Given a rectangular matrix containing only digits, calculate the number of different `2 × 2` squares in it.
-
+  
   # Example
-
+  
    For
   ```
   matrix = [[1, 2, 1],
@@ -14,79 +14,83 @@ vc-description: |-
             [2, 2, 1]]
   ```
   the output should be `6`.
-
+  
    Here are all 6 different 2 × 2 squares:
-
+  
    ```
    1 2
    2 2
-
+  
    2 1
    2 2
-
+  
    2 2
    2 2
-
+  
    2 2
    1 2
-
+  
    2 2
    2 3
-
+  
    2 3
    2 1
    ```
-
+  
   # Input/Output
-
+  
    - `[input]` 2D integer array `matrix`
-
+  
       Constraints: 
-
+  
       `1 ≤ matrix.length ≤ 100,`
-
+  
       `1 ≤ matrix[i].length ≤ 100,`
-
+  
       `0 ≤ matrix[i][j] ≤ 9.`
-
+  
    - `[output]` an integer
-
+  
       The number of different `2 × 2` squares in matrix.
   -/
+  
+  -- Number of different squares is always positive and has an upper bound
+  
+  -- A matrix filled with same value has exactly 1 unique square
+  
+  -- Rotating a matrix preserves number of unique squares
 
 vc-preamble: |-
   def Matrix := List (List Nat)
 
-  def different_squares : Matrix → Nat := sorry
-
-  def rotateMatrix (m : Matrix) : Matrix := sorry
-
-  def isValidMatrix (m : Matrix) : Bool := sorry
-
-vc-helpers: |
+vc-helpers: |-
 
 vc-definitions: |-
-  def isAllValue (m : Matrix) (v : Nat) : Bool := sorry
-
-  -- Number of different squares is always positive and has an upper bound
+  def different_squares : Matrix → Nat :=
+  sorry
+  
+  def rotateMatrix (m : Matrix) : Matrix :=
+  sorry
+  
+  def isValidMatrix (m : Matrix) : Bool :=
+  sorry
+  
+  def isAllValue (m : Matrix) (v : Nat) : Bool :=
+  sorry
 
 vc-theorems: |-
   theorem different_squares_bounds (m : Matrix) :
-    isValidMatrix m → 
-    1 ≤ different_squares m ∧ 
+    isValidMatrix m →
+    1 ≤ different_squares m ∧
     different_squares m ≤ (m.length - 1) * ((m.head!).length - 1) :=
   sorry
-
-  -- A matrix filled with same value has exactly 1 unique square
-
-  theorem same_value_matrix_one_square (m : Matrix) (v : Nat) : 
+  
+  theorem same_value_matrix_one_square (m : Matrix) (v : Nat) :
     isValidMatrix m →
     isAllValue m v →
     different_squares m = 1 :=
   sorry
-
-  -- Rotating a matrix preserves number of unique squares 
-
+  
   theorem different_squares_rotation_invariant (m : Matrix) :
     isValidMatrix m →
     different_squares m = different_squares (rotateMatrix m) :=
@@ -95,20 +99,20 @@ vc-theorems: |-
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded
-
-  /-
+  
+  /--
   info: 6
   -/
   #guard_msgs in
   #eval different_squares [[1, 2, 1], [2, 2, 2], [2, 2, 2], [1, 2, 3], [2, 2, 1]]
-
-  /-
+  
+  /--
   info: 1
   -/
   #guard_msgs in
   #eval different_squares [[1, 1], [1, 1]]
-
-  /-
+  
+  /--
   info: 1
   -/
   #guard_msgs in

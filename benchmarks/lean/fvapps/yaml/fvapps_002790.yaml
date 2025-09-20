@@ -33,19 +33,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded
 
-  /-
+  /--
   info: 1
   -/
   #guard_msgs in
   #eval count_cows 1
 
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval count_cows 3
 
-  /-
+  /--
   info: 4
   -/
   #guard_msgs in

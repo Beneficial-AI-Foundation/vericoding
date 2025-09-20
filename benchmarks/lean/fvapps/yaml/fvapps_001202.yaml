@@ -60,19 +60,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: ['1']
   -/
   #guard_msgs in
   #eval pattern_gen 1
 
-  /-
+  /--
   info: ['13', '57']
   -/
   #guard_msgs in
   #eval pattern_gen 2
 
-  /-
+  /--
   info: ['135', '7911', '131517']
   -/
   #guard_msgs in

@@ -86,19 +86,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval could_be "Carlos Ray Norris" "Carlos Ray Norris"
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval could_be "Carlos Ray Norris" "Carlos. Ray; Norris,"
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in

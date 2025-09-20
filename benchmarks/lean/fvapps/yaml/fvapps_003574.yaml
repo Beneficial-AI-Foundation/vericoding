@@ -46,19 +46,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: '001000000'
   -/
   #guard_msgs in
   #eval arbitrate "001000101" 9
 
-  /-
+  /--
   info: '000000100'
   -/
   #guard_msgs in
   #eval arbitrate "000000101" 9
 
-  /-
+  /--
   info: '0000'
   -/
   #guard_msgs in

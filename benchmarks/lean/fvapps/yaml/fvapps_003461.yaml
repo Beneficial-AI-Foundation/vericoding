@@ -1,49 +1,55 @@
 vc-description: |-
   /-
   Write a function that takes a string which has integers inside it separated by spaces, and your task is to convert each integer in the string into an integer and return their sum.
-
+  
   ### Example
   ```python
   summy("1 2 3")  ==> 6
   ```
-
+  
   Good luck!
   -/
 
 vc-preamble: |-
-  def summy (s : String) : Int := sorry
 
-  def sum (l : List Int) : Int := sorry
-
-vc-helpers: |
+vc-helpers: |-
 
 vc-definitions: |-
-  def stringToList (s : String) : List Int := sorry
-
-  theorem summy_matches_direct_sum (l : List Int) (h : l.length > 0) : 
-    summy (String.intercalate " " (List.map toString l)) = sum l := sorry
+  def summy (s : String) : Int :=
+  sorry
+  
+  def sum (l : List Int) : Int :=
+  sorry
+  
+  def stringToList (s : String) : List Int :=
+  sorry
 
 vc-theorems: |-
+  theorem summy_matches_direct_sum (l : List Int) (h : l.length > 0) :
+    summy (String.intercalate " " (List.map toString l)) = sum l :=
+  sorry
+  
   theorem summy_handles_whitespace (l : List Int) (h : l.length > 0) :
-    summy (String.intercalate "   " (List.map toString l)) = sum l := sorry
+    summy (String.intercalate "   " (List.map toString l)) = sum l :=
+  sorry
 
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded
-
-  /-
+  
+  /--
   info: 6
   -/
   #guard_msgs in
   #eval summy "1 2 3"
-
-  /-
+  
+  /--
   info: 20
   -/
   #guard_msgs in
   #eval summy "10 10"
-
-  /-
+  
+  /--
   info: 0
   -/
   #guard_msgs in

@@ -41,31 +41,31 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval signed_eight_bit_number "0"
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval signed_eight_bit_number "127"
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval signed_eight_bit_number "-128"
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval signed_eight_bit_number "128"
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in

@@ -41,19 +41,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: ''
   -/
   #guard_msgs in
   #eval interweave "" ""
 
-  /-
+  /--
   info: 'hello'
   -/
   #guard_msgs in
   #eval interweave "hlo" "el"
 
-  /-
+  /--
   info: 'hello'
   -/
   #guard_msgs in

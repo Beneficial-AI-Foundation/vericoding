@@ -93,19 +93,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'kill me now'
   -/
   #guard_msgs in
   #eval boredom {"tim": "change", "jim": "accounts", "randy": "canteen", "sandy": "change", "andy": "change", "katie": "IS", "laura": "change", "saajid": "IS", "alex": "trading", "john": "accounts", "mr": "finance"}
 
-  /-
+  /--
   info: 'i can handle this'
   -/
   #guard_msgs in
   #eval boredom {"tim": "IS", "jim": "finance", "randy": "pissing about", "sandy": "cleaning", "andy": "cleaning", "katie": "cleaning", "laura": "pissing about", "saajid": "regulation", "alex": "regulation", "john": "accounts", "mr": "canteen"}
 
-  /-
+  /--
   info: 'party time!!'
   -/
   #guard_msgs in

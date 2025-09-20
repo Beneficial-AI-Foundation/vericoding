@@ -55,19 +55,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval two_by_two []
 
-  /-
+  /--
   info: {}
   -/
   #guard_msgs in
   #eval two_by_two ["goat"]
 
-  /-
+  /--
   info: expected
   -/
   #guard_msgs in

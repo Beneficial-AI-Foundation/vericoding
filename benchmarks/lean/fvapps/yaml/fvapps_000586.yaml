@@ -63,19 +63,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'ba'
   -/
   #guard_msgs in
   #eval find_k_descending_pairs 1
 
-  /-
+  /--
   info: 'cba'
   -/
   #guard_msgs in
   #eval find_k_descending_pairs 2
 
-  /-
+  /--
   info: 'dcba'
   -/
   #guard_msgs in

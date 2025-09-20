@@ -36,19 +36,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded
 
-  /-
+  /--
   info: 1
   -/
   #guard_msgs in
   #eval power_mod 11 10 300
 
-  /-
+  /--
   info: 5
   -/
   #guard_msgs in
   #eval power_mod 5 100000000 19
 
-  /-
+  /--
   info: 26
   -/
   #guard_msgs in

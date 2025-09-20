@@ -20,34 +20,36 @@ vc-description: |-
   
   If you liked it, go for either the [previous kata](https://www.codewars.com/kata/string-subpattern-recognition-i/) or the [next kata](https://www.codewars.com/kata/string-subpattern-recognition-iii/) of the series!
   -/
+  
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded_and_plausible
 
 vc-preamble: |-
+
+vc-helpers: |-
+
+vc-definitions: |-
   def has_subpattern (s : String) : Bool :=
     sorry
   
   def gcd (a b : Nat) : Nat :=
     sorry
-
-vc-helpers: |-
-
-vc-definitions: |-
+  
   def reduce (f : Nat → Nat → Nat) (xs : List Nat) : Nat :=
     sorry
 
 vc-theorems: |-
   theorem single_char_string_property (s : String) :
     (s.length > 1 ∧ s.data.eraseDups.length = 1) → has_subpattern s
-    ∧ 
+    ∧
     (s.length = 1) → ¬has_subpattern s :=
-    sorry
+  sorry
   
   theorem repeat_property (s : String) :
     s.length ≥ 2 →
-    has_subpattern s → 
+    has_subpattern s →
     has_subpattern (s ++ s) ∧ has_subpattern (s ++ s ++ s) :=
-    sorry
+  sorry
 
 vc-postamble: |-
-  -- Apps difficulty: introductory
-  -- Assurance level: guarded_and_plausible
 

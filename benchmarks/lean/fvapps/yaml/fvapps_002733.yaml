@@ -55,31 +55,31 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval starts_with "hello world!" "hello"
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval starts_with "hello world!" "HELLO"
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval starts_with "nowai" "nowaisir"
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval starts_with "abc" ""
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in

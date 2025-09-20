@@ -97,31 +97,31 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'PaleGreen'
   -/
   #guard_msgs in
   #eval yellow_be_gone "lemonchiffon"
 
-  /-
+  /--
   info: 'ForestGreen'
   -/
   #guard_msgs in
   #eval yellow_be_gone "GOLD"
 
-  /-
+  /--
   info: 'LightGreen'
   -/
   #guard_msgs in
   #eval yellow_be_gone "pAlEgOlDeNrOd"
 
-  /-
+  /--
   info: '#0bb886'
   -/
   #guard_msgs in
   #eval yellow_be_gone "#b8860b"
 
-  /-
+  /--
   info: '#C71585'
   -/
   #guard_msgs in

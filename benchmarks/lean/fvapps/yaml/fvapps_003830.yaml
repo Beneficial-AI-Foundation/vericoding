@@ -63,19 +63,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'MTS'
   -/
   #guard_msgs in
   #eval detect_operator "80661111841"
 
-  /-
+  /--
   info: 'Kyivstar'
   -/
   #guard_msgs in
   #eval detect_operator "80671991111"
 
-  /-
+  /--
   info: 'no info'
   -/
   #guard_msgs in

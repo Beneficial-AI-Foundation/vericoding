@@ -46,19 +46,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: [2]
   -/
   #guard_msgs in
   #eval poly_add [1] [1]
 
-  /-
+  /--
   info: [2, 2]
   -/
   #guard_msgs in
   #eval poly_add [1, 2] [1]
 
-  /-
+  /--
   info: [5, 5, 5, 5]
   -/
   #guard_msgs in

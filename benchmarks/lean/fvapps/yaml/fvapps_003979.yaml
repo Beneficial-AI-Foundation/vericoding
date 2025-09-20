@@ -1,21 +1,21 @@
 vc-description: |-
   /-
   ### What is simplifying a square root?
-
+  
   If you have a number, like 80, for example, you would start by finding the greatest perfect square divisible by 80. In this case, that's 16. Find the square root of 16, and multiply it by 80 / 16. Answer = 4 √5. 
-
+  
   ##### The above example:
-
+  
   ![simplify_roots_example.png](https://i.postimg.cc/gjv2NwCm/simplify-roots-example.png)
-
+  
   ### Task:
-
+  
   Your job is to write two functions, `simplify`, and `desimplify`, that simplify and desimplify square roots, respectively. (Desimplify isn't a word, but I couldn't come up with a better way to put it.) `simplify` will take an integer and return a string like "x sqrt y", and `desimplify` will take a string like "x sqrt y" and return an integer. For `simplify`, if a square root cannot be simplified, return "sqrt y". 
-
+  
   _Do not modify the input._
-
+  
   ### Some examples:
-
+  
   ```python
   simplify(1)  #=> "1"
   simplify(2)  #=> "sqrt 2"
@@ -27,7 +27,7 @@ vc-description: |-
   simplify(20) #=> "2 sqrt 5"
   simplify(24) #=> "2 sqrt 6"
   simplify(32) #=> "4 sqrt 2"
-
+  
   desimplify("1")        #=> 1
   desimplify("sqrt 2")   #=> 2
   desimplify("sqrt 3")   #=> 3
@@ -39,89 +39,104 @@ vc-description: |-
   desimplify("2 sqrt 6") #=> 24
   desimplify("4 sqrt 2") #=> 32
   ```
-
+  
   Also check out my other creations — [Square Roots: Approximation](https://www.codewars.com/kata/square-roots-approximation), [Square and Cubic Factors](https://www.codewars.com/kata/square-and-cubic-factors), [Keep the Order](https://www.codewars.com/kata/keep-the-order), [Naming Files](https://www.codewars.com/kata/naming-files), [Elections: Weighted Average](https://www.codewars.com/kata/elections-weighted-average), [Identify Case](https://www.codewars.com/kata/identify-case), [Split Without Loss](https://www.codewars.com/kata/split-without-loss), [Adding Fractions](https://www.codewars.com/kata/adding-fractions),
   [Random Integers](https://www.codewars.com/kata/random-integers), [Implement String#transpose](https://www.codewars.com/kata/implement-string-number-transpose), [Implement Array#transpose!](https://www.codewars.com/kata/implement-array-number-transpose), [Arrays and Procs #1](https://www.codewars.com/kata/arrays-and-procs-number-1), and [Arrays and Procs #2](https://www.codewars.com/kata/arrays-and-procs-number-2).
   -/
+  
+  /- Desimplifying a simplified number returns the original number -/
+  
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded
+  
+  /- A simplified expression contains at most one sqrt -/
+  
+  /- A simplified expression with no sqrt is a single number -/
+  
+  /- A simplified expression with sqrt is in format "a sqrt b" or "sqrt b" -/
+  
+  /- Desimplifying returns a positive integer -/
 
 vc-preamble: |-
-  def simplify (n : Nat) : String := sorry
-  def desimplify (s : String) : Nat := sorry
 
-  def containsSqrt (s : String) : Bool := sorry
-  def countSqrt (s : String) : Nat := sorry
-
-vc-helpers: |
+vc-helpers: |-
 
 vc-definitions: |-
-  def isNumeric (s : String) : Bool := sorry
-  def splitByWhitespace (s : String) : List String := sorry
-
-  /- Desimplifying a simplified number returns the original number -/
+  def simplify (n : Nat) : String :=
+  sorry
+  
+  def desimplify (s : String) : Nat :=
+  sorry
+  
+  def containsSqrt (s : String) : Bool :=
+  sorry
+  
+  def countSqrt (s : String) : Nat :=
+  sorry
+  
+  def isNumeric (s : String) : Bool :=
+  sorry
+  
+  def splitByWhitespace (s : String) : List String :=
+  sorry
 
 vc-theorems: |-
   theorem simplify_desimplify_roundtrip (n : Nat) (h : n > 0) :
-    desimplify (simplify n) = n := sorry
-
-vc-postamble: |-
-  -- Apps difficulty: introductory
-  -- Assurance level: unguarded
-
-  /- A simplified expression contains at most one sqrt -/
-
+    desimplify (simplify n) = n :=
+  sorry
+  
   theorem simplify_sqrt_count (n : Nat) (h : n > 0) :
-    countSqrt (simplify n) ≤ 1 := sorry
-
-  /- A simplified expression with no sqrt is a single number -/
-
+    countSqrt (simplify n) ≤ 1 :=
+  sorry
+  
   theorem simplify_no_sqrt (n : Nat) (h : n > 0) :
-    ¬containsSqrt (simplify n) → isNumeric (simplify n).trim := sorry
-
-  /- A simplified expression with sqrt is in format "a sqrt b" or "sqrt b" -/
-
+    ¬containsSqrt (simplify n) → isNumeric (simplify n).trim :=
+  sorry
+  
   theorem simplify_with_sqrt (n : Nat) (h : n > 0) :
     let s := simplify n
     let parts := splitByWhitespace s
     containsSqrt s →
       (parts.length = 2 ∧ parts.get! 0 = "sqrt" ∧ isNumeric (parts.get! 1)) ∨
-      (parts.length = 3 ∧ isNumeric (parts.get! 0) ∧ parts.get! 1 = "sqrt" ∧ isNumeric (parts.get! 2)) := sorry
-
-  /- Desimplifying returns a positive integer -/
-
+      (parts.length = 3 ∧ isNumeric (parts.get! 0) ∧ parts.get! 1 = "sqrt" ∧ isNumeric (parts.get! 2)) :=
+  sorry
+  
   theorem desimplify_range (n : Nat) (h : n > 0) :
-    desimplify (simplify n) > 0 := sorry
+    desimplify (simplify n) > 0 :=
+  sorry
 
-  /-
+vc-postamble: |-
+  /--
   info: '1'
   -/
   #guard_msgs in
   #eval simplify 1
-
-  /-
+  
+  /--
   info: '2 sqrt 2'
   -/
   #guard_msgs in
   #eval simplify 8
-
-  /-
+  
+  /--
   info: '2 sqrt 5'
   -/
   #guard_msgs in
   #eval simplify 20
-
-  /-
+  
+  /--
   info: 1
   -/
   #guard_msgs in
   #eval desimplify "1"
-
-  /-
+  
+  /--
   info: 8
   -/
   #guard_msgs in
   #eval desimplify "2 sqrt 2"
-
-  /-
+  
+  /--
   info: 20
   -/
   #guard_msgs in

@@ -75,19 +75,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval is_long_pressed_name "alex" "aaleex"
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval is_long_pressed_name "saeed" "ssaaedd"
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in

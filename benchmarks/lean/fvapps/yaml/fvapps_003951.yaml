@@ -59,25 +59,25 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: '1-sum'
   -/
   #guard_msgs in
   #eval solve 3
 
-  /-
+  /--
   info: '3-altsum'
   -/
   #guard_msgs in
   #eval solve 7
 
-  /-
+  /--
   info: '1-altsum'
   -/
   #guard_msgs in
   #eval solve 11
 
-  /-
+  /--
   info: '3-sum'
   -/
   #guard_msgs in

@@ -62,19 +62,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'black'
   -/
   #guard_msgs in
   #eval hex_color ""
 
-  /-
+  /--
   info: 'red'
   -/
   #guard_msgs in
   #eval hex_color "255 000 000"
 
-  /-
+  /--
   info: 'yellow'
   -/
   #guard_msgs in

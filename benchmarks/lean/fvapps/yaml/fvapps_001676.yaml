@@ -83,31 +83,31 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: '2.0'
   -/
   #guard_msgs in
   #eval calculate "1+1"
 
-  /-
+  /--
   info: '5.0'
   -/
   #guard_msgs in
   #eval calculate "10$2"
 
-  /-
+  /--
   info: '4.5'
   -/
   #guard_msgs in
   #eval calculate "1.5*3"
 
-  /-
+  /--
   info: '81.0'
   -/
   #guard_msgs in
   #eval calculate "1000$2.5$5+5-5+6$6"
 
-  /-
+  /--
   info: '400: Bad request'
   -/
   #guard_msgs in

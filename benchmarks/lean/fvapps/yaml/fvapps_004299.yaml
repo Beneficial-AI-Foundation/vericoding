@@ -44,19 +44,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'You, Sort Already! hey me'
   -/
   #guard_msgs in
   #eval capitals_first "hey You, Sort me Already!"
 
-  /-
+  /--
   info: 'Does That Make sense to you?'
   -/
   #guard_msgs in
   #eval capitals_first "sense Does to That Make you?"
 
-  /-
+  /--
   info: 'Life Sometimes gets pretty'
   -/
   #guard_msgs in

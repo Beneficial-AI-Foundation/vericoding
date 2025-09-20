@@ -56,19 +56,19 @@ vc-postamble: |-
   -- Apps difficulty: competition
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval solve_perm_sort [5, 2, 1, 4, 3]
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval solve_perm_sort [3, 2, 4, 1]
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in

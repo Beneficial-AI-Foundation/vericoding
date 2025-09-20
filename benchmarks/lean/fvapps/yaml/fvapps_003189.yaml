@@ -1,81 +1,90 @@
 vc-description: |-
   /-
   # Kata Task
-
+  
   Given a list of random integers, return the Three Amigos.
-
+  
   These are 3 numbers that live next to each other in the list, and who have the **most** in common with each other by these rules:
   * lowest statistical range
   * same parity
-
+  
   # Notes
-
+  
   * The list will contain at least 3 numbers
   * If there is more than one answer then return the first one found (reading the list left to right)
   * If there is no answer (e.g. no 3 adjacent numbers with same parity) then return an empty list.
-
+  
   # Examples
-
+  
   * ex1
    * Input = ```[1, 2, 34, 2, 1, 5, 3, 5, 7, 234, 2, 1]```
    * Result = ```[5,3,5]```
-
+  
   * ex2
    * Input = ```[2, 4, 6, 8, 10, 2, 2, 2, 1, 1, 1, 5, 3]```
    * Result = ```[2,2,2]```
-
+  
   * ex3
    * Input = ```[2, 4, 5, 3, 6, 3, 1, 56, 7, 6, 3, 12]```
    * Result = ```[]```
   -/
 
 vc-preamble: |-
-  def threeAmigos (nums : List Int) : List Int := sorry
 
-  theorem threeAmigos_valid_size {nums : List Int} :
-    let result := threeAmigos nums
-    List.length result = 0 ∨ List.length result = 3 := sorry
-
-vc-helpers: |
+vc-helpers: |-
 
 vc-definitions: |-
-  def list_max (l : List Int) : Int := sorry
-  def list_min (l : List Int) : Int := sorry
+  def threeAmigos (nums : List Int) : List Int :=
+  sorry
+  
+  def list_max (l : List Int) : Int :=
+  sorry
+  
+  def list_min (l : List Int) : Int :=
+  sorry
 
 vc-theorems: |-
+  theorem threeAmigos_valid_size {nums : List Int} :
+    let result := threeAmigos nums
+    List.length result = 0 ∨ List.length result = 3 :=
+  sorry
+  
   theorem threeAmigos_consecutive {nums : List Int} (h : 3 ≤ List.length nums) :
     let result := threeAmigos nums
-    result = [] ∨ ∃ i, i + 2 < List.length nums ∧ 
-      result = [nums[i]!, nums[i+1]!, nums[i+2]!] := sorry
-
+    result = [] ∨ ∃ i, i + 2 < List.length nums ∧
+      result = [nums[i]!, nums[i+1]!, nums[i+2]!] :=
+  sorry
+  
   theorem threeAmigos_same_parity {nums : List Int} (h : 3 ≤ List.length nums) :
     let result := threeAmigos nums
-    result = [] ∨ (∀ x ∈ result, x % 2 = result[0]! % 2) := sorry
-
+    result = [] ∨ (∀ x ∈ result, x % 2 = result[0]! % 2) :=
+  sorry
+  
   theorem threeAmigos_minimal_range {nums : List Int} (h : 3 ≤ List.length nums) :
     let result := threeAmigos nums
     result = [] ∨
     (∀ i, i + 2 < List.length nums →
       (∀ j, j ∈ [nums[i]!, nums[i+1]!, nums[i+2]!] → j % 2 = nums[i]! % 2) →
-      (list_max result - list_min result) ≤ (nums[i+2]! - nums[i]!)) := sorry
+      (list_max result - list_min result) ≤ (nums[i+2]! - nums[i]!)) :=
+  sorry
 
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded
-
-  /-
+  
+  /--
   info: [5, 3, 5]
   -/
   #guard_msgs in
   #eval three_amigos [1, 2, 34, 2, 1, 5, 3, 5, 7, 234, 2, 1]
-
-  /-
+  
+  /--
   info: [2, 2, 2]
   -/
   #guard_msgs in
   #eval three_amigos [2, 4, 6, 8, 10, 2, 2, 2, 1, 1, 1, 5, 3]
-
-  /-
+  
+  /--
   info: []
   -/
   #guard_msgs in

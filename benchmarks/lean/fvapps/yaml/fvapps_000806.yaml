@@ -67,19 +67,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval compute_steady_tables 1 1
 
-  /-
+  /--
   info: 25
   -/
   #guard_msgs in
   #eval compute_steady_tables 2 2
 
-  /-
+  /--
   info: 273
   -/
   #guard_msgs in

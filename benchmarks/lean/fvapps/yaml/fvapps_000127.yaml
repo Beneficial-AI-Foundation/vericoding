@@ -44,19 +44,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 11
   -/
   #guard_msgs in
   #eval max_score_sightseeing_pair [8, 1, 5, 2, 6]
 
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval max_score_sightseeing_pair [1, 2]
 
-  /-
+  /--
   info: 9
   -/
   #guard_msgs in

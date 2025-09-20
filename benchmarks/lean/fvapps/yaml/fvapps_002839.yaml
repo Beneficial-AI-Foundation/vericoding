@@ -58,19 +58,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: []
   -/
   #guard_msgs in
   #eval segments 7 [[0, 7]]
 
-  /-
+  /--
   info: [0, 1, 2]
   -/
   #guard_msgs in
   #eval segments 2 []
 
-  /-
+  /--
   info: [0, 3, 4]
   -/
   #guard_msgs in

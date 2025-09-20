@@ -72,19 +72,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'NO'
   -/
   #guard_msgs in
   #eval check_unique_or_pairs [1, 2, 7]
 
-  /-
+  /--
   info: 'YES'
   -/
   #guard_msgs in
   #eval check_unique_or_pairs [1, 2]
 
-  /-
+  /--
   info: 'YES'
   -/
   #guard_msgs in

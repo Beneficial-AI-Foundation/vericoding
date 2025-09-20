@@ -47,19 +47,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'clubs'
   -/
   #guard_msgs in
   #eval define_suit "3C"
 
-  /-
+  /--
   info: 'spades'
   -/
   #guard_msgs in
   #eval define_suit "QS"
 
-  /-
+  /--
   info: 'hearts'
   -/
   #guard_msgs in

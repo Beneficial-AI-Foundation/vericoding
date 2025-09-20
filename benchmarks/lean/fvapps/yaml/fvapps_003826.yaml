@@ -55,31 +55,31 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'zzz'
   -/
   #guard_msgs in
   #eval contamination "abc" "z"
 
-  /-
+  /--
   info: ''
   -/
   #guard_msgs in
   #eval contamination "" "z"
 
-  /-
+  /--
   info: ''
   -/
   #guard_msgs in
   #eval contamination "abc" ""
 
-  /-
+  /--
   info: '&&&&&&&&'
   -/
   #guard_msgs in
   #eval contamination "_3ebzgh4" "&"
 
-  /-
+  /--
   info: '      '
   -/
   #guard_msgs in

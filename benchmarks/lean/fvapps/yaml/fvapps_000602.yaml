@@ -81,19 +81,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'CHEF'
   -/
   #guard_msgs in
   #eval determine_server 1 3 2
 
-  /-
+  /--
   info: 'COOK'
   -/
   #guard_msgs in
   #eval determine_server 0 3 2
 
-  /-
+  /--
   info: 'CHEF'
   -/
   #guard_msgs in

@@ -50,8 +50,15 @@ vc-description: |-
   
   In second example, there are 9 shortest paths: 1-3-6-2, 1-3-7-2, 1-3-8-2, 1-4-6-2, 1-4-7-2, 1-4-8-2, 1-5-6-2, 1-5-7-2, 1-5-8-2.
   -/
+  
+  -- Apps difficulty: competition
+  -- Assurance level: guarded
 
 vc-preamble: |-
+
+vc-helpers: |-
+
+vc-definitions: |-
   def Matrix := List (List Char)
   
   def is_valid_adjacency_matrix (m: Matrix) : Bool :=
@@ -59,15 +66,12 @@ vc-preamble: |-
   
   def is_symmetric (m: Matrix) : Bool :=
   sorry
-
-vc-helpers: |-
-
-vc-definitions: |-
+  
   def generate_graph (k: Nat) : Nat × Matrix :=
   sorry
 
 vc-theorems: |-
-  theorem generated_graph_is_valid (k: Nat) : 
+  theorem generated_graph_is_valid (k: Nat) :
     let (n, matrix) := generate_graph k;
     is_valid_adjacency_matrix matrix = true :=
   sorry
@@ -79,12 +83,10 @@ vc-theorems: |-
   
   theorem size_properties (k: Nat) :
     let (n, matrix) := generate_graph k;
-    n ≤ 4 * k ∧                              
-    matrix.length = n ∧                    
+    n ≤ 4 * k ∧
+    matrix.length = n ∧
     List.all matrix (fun row => row.length = n) :=
   sorry
 
 vc-postamble: |-
-  -- Apps difficulty: competition
-  -- Assurance level: guarded
 

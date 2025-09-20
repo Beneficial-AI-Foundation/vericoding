@@ -47,19 +47,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: [3, 3]
   -/
   #guard_msgs in
   #eval closestDivisors 8
 
-  /-
+  /--
   info: [5, 25]
   -/
   #guard_msgs in
   #eval closestDivisors 123
 
-  /-
+  /--
   info: sorted([25, 40])
   -/
   #guard_msgs in

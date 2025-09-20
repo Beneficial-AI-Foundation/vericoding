@@ -50,19 +50,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'abcdcba'
   -/
   #guard_msgs in
   #eval build_palindrome "abcdc"
 
-  /-
+  /--
   info: 'ababa'
   -/
   #guard_msgs in
   #eval build_palindrome "ababa"
 
-  /-
+  /--
   info: 'bacdcab'
   -/
   #guard_msgs in

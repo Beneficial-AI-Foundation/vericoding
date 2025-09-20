@@ -46,19 +46,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: '11000000000000000000000001'
   -/
   #guard_msgs in
   #eval change "a **&  bZ"
 
-  /-
+  /--
   info: '11101000000000000000000001'
   -/
   #guard_msgs in
   #eval change "Abc e  $$  z"
 
-  /-
+  /--
   info: '00000000000000000000000000'
   -/
   #guard_msgs in

@@ -92,13 +92,13 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in
   #eval min_uncompleted_tasks 4 2 2 [5, 7, 6, 1] [3, 3, 1, 1] [6, 3] [1, 4]
 
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in

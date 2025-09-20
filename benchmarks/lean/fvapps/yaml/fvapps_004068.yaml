@@ -53,19 +53,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: 18
   -/
   #guard_msgs in
   #eval century 1705
 
-  /-
+  /--
   info: 19
   -/
   #guard_msgs in
   #eval century 1900
 
-  /-
+  /--
   info: 1
   -/
   #guard_msgs in

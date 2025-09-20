@@ -82,19 +82,19 @@ vc-postamble: |-
   -- Apps difficulty: competition
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: [6, 4, 4, 3, 3, 2, 2, 1, 1, 1]
   -/
   #guard_msgs in
   #eval find_max_group_strengths 10 heights1.copy()
 
-  /-
+  /--
   info: [923264237, 524125987, 374288891]
   -/
   #guard_msgs in
   #eval find_max_group_strengths 3 heights2.copy()
 
-  /-
+  /--
   info: [585325539, 365329221, 365329221, 291882089, 291882089]
   -/
   #guard_msgs in

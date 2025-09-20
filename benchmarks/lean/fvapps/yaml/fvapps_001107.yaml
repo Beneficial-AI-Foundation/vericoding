@@ -68,19 +68,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: '2111'
   -/
   #guard_msgs in
   #eval solve_knight_steps 17
 
-  /-
+  /--
   info: '0'
   -/
   #guard_msgs in
   #eval solve_knight_steps 10
 
-  /-
+  /--
   info: '3'
   -/
   #guard_msgs in

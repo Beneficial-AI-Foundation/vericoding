@@ -1,25 +1,25 @@
 vc-description: |-
   /-
   Vova and Marina love offering puzzles to each other. Today Marina offered Vova to cope with the following task.
-
+  
   Vova has a non-directed graph consisting of n vertices and m edges without loops and multiple edges. Let's define the operation of contraction two vertices a and b that are not connected by an edge. As a result of this operation vertices a and b are deleted and instead of them a new vertex x is added into the graph, and also edges are drawn from it to all vertices that were connected with a or with b (specifically, if the vertex was connected with both a and b, then also exactly one edge is added from x to it). Thus, as a result of contraction again a non-directed graph is formed, it contains no loops nor multiple edges, and it contains (n - 1) vertices.
-
+  
   Vova must perform the contraction an arbitrary number of times to transform the given graph into a chain of the maximum length. A chain of length k (k ≥ 0) is a connected graph whose vertices can be numbered with integers from 1 to k + 1 so that the edges of the graph connect all pairs of vertices (i, i + 1) (1 ≤ i ≤ k) and only them. Specifically, the graph that consists of one vertex is a chain of length 0. The vertices that are formed as a result of the contraction are allowed to be used in the following operations of contraction.
-
+  
    [Image] The picture illustrates the contraction of two vertices marked by red. 
-
+  
   Help Vova cope with his girlfriend's task. Find the maximum length of the chain that can be obtained from the resulting graph or else determine that it is impossible to obtain the chain.
-
+  
   -----Input-----
-
+  
   The first line contains two integers n, m (1 ≤ n ≤ 1000, 0 ≤ m ≤ 100 000) — the number of vertices and the number of edges in the original graph.
-
+  
   Next m lines contain the descriptions of edges in the format a_{i}, b_{i} (1 ≤ a_{i}, b_{i} ≤ n, a_{i} ≠ b_{i}), which means that there is an edge between vertices a_{i} and b_{i}. It is guaranteed that there is at most one edge between each pair of vertexes.
-
+  
   -----Output-----
-
+  
   If it is impossible to obtain a chain from the given graph, print  - 1. Otherwise, print the maximum possible number of edges in the resulting chain.
-
+  
   -----Examples-----
   Input
   5 4
@@ -27,10 +27,10 @@ vc-description: |-
   2 3
   3 4
   3 5
-
+  
   Output
   3
-
+  
   Input
   4 6
   1 2
@@ -39,37 +39,42 @@ vc-description: |-
   3 4
   2 4
   1 4
-
+  
   Output
   -1
-
+  
   Input
   4 2
   1 3
   2 4
-
+  
   Output
   2
-
+  
   -----Note-----
-
+  
   In the first sample test you can contract vertices 4 and 5 and obtain a chain of length 3.
-
+  
   In the second sample test it is initially impossible to contract any pair of vertexes, so it is impossible to achieve the desired result.
-
+  
   In the third sample test you can contract vertices 1 and 2 and obtain a chain of length 2.
   -/
 
 vc-preamble: |-
-  def solve_max_chain_length (n m : Nat) (edges : List (Nat × Nat)) : Int := sorry
 
-  def to_adj_matrix (n : Nat) (edges : List (Nat × Nat)) : List (List Nat) := sorry
-
-vc-helpers: |
+vc-helpers: |-
 
 vc-definitions: |-
-  def is_bipartite (adj : List (List Nat)) (colors : List Int) (start n : Nat) : Bool := sorry
+  def solve_max_chain_length (n m : Nat) (edges : List (Nat × Nat)) : Int :=
+  sorry
+  
+  def to_adj_matrix (n : Nat) (edges : List (Nat × Nat)) : List (List Nat) :=
+  sorry
+  
+  def is_bipartite (adj : List (List Nat)) (colors : List Int) (start n : Nat) : Bool :=
+  sorry
 
+vc-theorems: |-
   theorem bipartite_property (n m : Nat) (edges : List (Nat × Nat)) :
     let result := solve_max_chain_length n m edges
     let adj := to_adj_matrix n edges
@@ -78,30 +83,31 @@ vc-definitions: |-
     colors.length = n →
     (∀ i < n, colors[i]! = -1 ∨ colors[i]! = 0 ∨ colors[i]! = 1) →
     ∀ start < n,
-    is_bipartite adj colors start n = true := sorry
-
-vc-theorems: |-
+    is_bipartite adj colors start n = true :=
+  sorry
+  
   theorem empty_graph_property (n m : Nat) (edges : List (Nat × Nat)) :
     m = 0 →
-    solve_max_chain_length n m edges = 0 := sorry
+    solve_max_chain_length n m edges = 0 :=
+  sorry
 
 vc-postamble: |-
   -- Apps difficulty: competition
   -- Assurance level: guarded
-
-  /-
+  
+  /--
   info: 3
   -/
   #guard_msgs in
   #eval solve_max_chain_length 5 4 [(1, 2), (2, 3), (3, 4), (3, 5)]
-
-  /-
+  
+  /--
   info: -1
   -/
   #guard_msgs in
   #eval solve_max_chain_length 4 6 [(1, 2), (2, 3), (1, 3), (3, 4), (2, 4), (1, 4)]
-
-  /-
+  
+  /--
   info: 2
   -/
   #guard_msgs in

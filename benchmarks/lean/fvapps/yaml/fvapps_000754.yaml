@@ -95,25 +95,25 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: '2 1'
   -/
   #guard_msgs in
   #eval find_smallest_good_perm 2
 
-  /-
+  /--
   info: '2 3 1'
   -/
   #guard_msgs in
   #eval find_smallest_good_perm 3
 
-  /-
+  /--
   info: '2 1 4 5 3'
   -/
   #guard_msgs in
   #eval find_smallest_good_perm 5
 
-  /-
+  /--
   info: '2 1 4 3 6 5'
   -/
   #guard_msgs in

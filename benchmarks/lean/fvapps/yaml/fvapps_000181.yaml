@@ -53,19 +53,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in
   #eval max_repeated_chars_with_swap "ababa"
 
-  /-
+  /--
   info: 6
   -/
   #guard_msgs in
   #eval max_repeated_chars_with_swap "aaabaaa"
 
-  /-
+  /--
   info: 4
   -/
   #guard_msgs in

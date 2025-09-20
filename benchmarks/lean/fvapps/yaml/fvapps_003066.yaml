@@ -58,19 +58,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded
 
-  /-
+  /--
   info: [2, 4]
   -/
   #guard_msgs in
   #eval find_all [6, 9, 3, 4, 3, 82, 11] 3
 
-  /-
+  /--
   info: []
   -/
   #guard_msgs in
   #eval find_all [6, 9, 3, 4, 3, 82, 11] 99
 
-  /-
+  /--
   info: [0, 1, 8]
   -/
   #guard_msgs in

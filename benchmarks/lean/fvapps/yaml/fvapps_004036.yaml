@@ -52,25 +52,25 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: '1.00'
   -/
   #guard_msgs in
   #eval series_sum 1
 
-  /-
+  /--
   info: '1.25'
   -/
   #guard_msgs in
   #eval series_sum 2
 
-  /-
+  /--
   info: '1.57'
   -/
   #guard_msgs in
   #eval series_sum 5
 
-  /-
+  /--
   info: '0.00'
   -/
   #guard_msgs in

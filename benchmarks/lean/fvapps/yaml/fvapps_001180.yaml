@@ -44,27 +44,29 @@ vc-description: |-
   
   Similarly for other strings as well.
   -/
+  
+  -- Apps difficulty: interview
+  -- Assurance level: guarded_and_plausible
 
 vc-preamble: |-
-  def find_anagram_pairs (s : String) : Nat :=
-    sorry
 
 vc-helpers: |-
 
 vc-definitions: |-
+  def find_anagram_pairs (s : String) : Nat :=
+    sorry
+  
   def reverseString (s : String) : String :=
     sorry
 
 vc-theorems: |-
   theorem find_anagram_pairs_nonneg (s : String) :
-    find_anagram_pairs s ≥ 0 := 
-    sorry
+    find_anagram_pairs s ≥ 0 :=
+  sorry
   
-  theorem find_anagram_pairs_empty_or_single (s : String) : 
+  theorem find_anagram_pairs_empty_or_single (s : String) :
     s.length ≤ 1 → find_anagram_pairs s = 0 :=
-    sorry
+  sorry
 
 vc-postamble: |-
-  -- Apps difficulty: interview
-  -- Assurance level: guarded_and_plausible
 

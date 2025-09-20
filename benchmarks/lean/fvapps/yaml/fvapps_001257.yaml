@@ -46,19 +46,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval largest_digit_rearrangement 2
 
-  /-
+  /--
   info: 221
   -/
   #guard_msgs in
   #eval largest_digit_rearrangement 212
 
-  /-
+  /--
   info: 4321
   -/
   #guard_msgs in

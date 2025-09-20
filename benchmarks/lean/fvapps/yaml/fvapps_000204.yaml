@@ -65,19 +65,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'Radiant'
   -/
   #guard_msgs in
   #eval predict_party_victory "RD"
 
-  /-
+  /--
   info: 'Dire'
   -/
   #guard_msgs in
   #eval predict_party_victory "RDD"
 
-  /-
+  /--
   info: 'Radiant'
   -/
   #guard_msgs in

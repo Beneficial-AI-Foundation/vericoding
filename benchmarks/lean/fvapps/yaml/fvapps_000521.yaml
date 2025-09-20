@@ -72,13 +72,13 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: 24
   -/
   #guard_msgs in
   #eval solve_queens 3 3 2 2
 
-  /-
+  /--
   info: 94
   -/
   #guard_msgs in

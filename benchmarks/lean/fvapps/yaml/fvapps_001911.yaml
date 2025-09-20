@@ -58,19 +58,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: [2, 4, 5, 6]
   -/
   #guard_msgs in
   #eval eventual_safe_nodes [[1, 2], [2, 3], [5], [0], [5], [], []]
 
-  /-
+  /--
   info: [0, 1, 2, 3, 4]
   -/
   #guard_msgs in
   #eval eventual_safe_nodes [[], [0, 2, 3, 4], [3], [4], []]
 
-  /-
+  /--
   info: [4]
   -/
   #guard_msgs in

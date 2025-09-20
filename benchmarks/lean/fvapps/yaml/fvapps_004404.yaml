@@ -119,19 +119,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: ''
   -/
   #guard_msgs in
   #eval center_of ""
 
-  /-
+  /--
   info: 'aba'
   -/
   #guard_msgs in
   #eval center_of "abc"
 
-  /-
+  /--
   info: 'aecea'
   -/
   #guard_msgs in

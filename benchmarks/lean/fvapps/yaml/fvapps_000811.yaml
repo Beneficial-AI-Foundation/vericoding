@@ -68,19 +68,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: (2, 1)
   -/
   #guard_msgs in
   #eval find_max_segment_scores 2 3 [1, 2]
 
-  /-
+  /--
   info: (4, 2)
   -/
   #guard_msgs in
   #eval find_max_segment_scores 3 5 [2, 4, 3]
 
-  /-
+  /--
   info: (2, 2)
   -/
   #guard_msgs in

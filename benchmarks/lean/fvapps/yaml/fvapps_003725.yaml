@@ -87,19 +87,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval is_john_lying 3 3 6
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval is_john_lying 4 5 10
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in

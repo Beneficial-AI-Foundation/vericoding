@@ -63,19 +63,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in
   #eval longest_common_subsequence "abcde" "ace"
 
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in
   #eval longest_common_subsequence "abc" "abc"
 
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in

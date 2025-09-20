@@ -59,19 +59,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'hIJKMNPQRSTUVWXYZeFGIJKMNPQRSTUVWXYZlMNPQRSTUVWXYZloPQRSTUVWXYZ'
   -/
   #guard_msgs in
   #eval insert_missing_letters "hello"
 
-  /-
+  /--
   info: 'pQRSTUVWYZiJKLMNOQRSTUVWYZxYZxaBCDEFGHJKLMNOQRSTUVWYZ'
   -/
   #guard_msgs in
   #eval insert_missing_letters "pixxa"
 
-  /-
+  /--
   info: 'z'
   -/
   #guard_msgs in

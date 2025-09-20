@@ -51,19 +51,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval judge_point24 [4, 1, 8, 7]
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval judge_point24 [1, 2, 1, 2]
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in

@@ -54,19 +54,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded
 
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval count_subarrays_with_sum [1, 1, 1] 2
 
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval count_subarrays_with_sum [1, 2, 3] 3
 
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in

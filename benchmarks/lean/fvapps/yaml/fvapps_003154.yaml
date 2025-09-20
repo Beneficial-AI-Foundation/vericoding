@@ -58,19 +58,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in
   #eval number_of_carries 543 3456
 
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval number_of_carries 1927 6426
 
-  /-
+  /--
   info: 4
   -/
   #guard_msgs in

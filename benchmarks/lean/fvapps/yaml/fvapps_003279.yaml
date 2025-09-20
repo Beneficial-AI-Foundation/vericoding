@@ -92,19 +92,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'Not !!'
   -/
   #guard_msgs in
   #eval disarium_number 1024
 
-  /-
+  /--
   info: 'Disarium !!'
   -/
   #guard_msgs in
   #eval disarium_number 1306
 
-  /-
+  /--
   info: 'Not !!'
   -/
   #guard_msgs in

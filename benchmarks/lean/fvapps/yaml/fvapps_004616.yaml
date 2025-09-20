@@ -39,19 +39,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded
 
-  /-
+  /--
   info: 7
   -/
   #guard_msgs in
   #eval next_prime 5
 
-  /-
+  /--
   info: 13
   -/
   #guard_msgs in
   #eval next_prime 12
 
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in

@@ -71,19 +71,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded
 
-  /-
+  /--
   info: 10
   -/
   #guard_msgs in
   #eval n_linear [2, 3] 5
 
-  /-
+  /--
   info: 64
   -/
   #guard_msgs in
   #eval n_linear [5, 7, 8] 10
 
-  /-
+  /--
   info: 46
   -/
   #guard_msgs in

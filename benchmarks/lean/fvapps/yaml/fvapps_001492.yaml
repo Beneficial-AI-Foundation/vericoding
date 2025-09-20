@@ -77,19 +77,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in
   #eval find_vaccine_days 1 2 1 3 14
 
-  /-
+  /--
   info: 9
   -/
   #guard_msgs in
   #eval find_vaccine_days 5 4 2 10 100
 
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in

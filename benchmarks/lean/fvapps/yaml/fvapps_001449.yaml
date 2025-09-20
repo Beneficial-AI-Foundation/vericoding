@@ -54,19 +54,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: 6
   -/
   #guard_msgs in
   #eval min_square_plots 10 15
 
-  /-
+  /--
   info: 6
   -/
   #guard_msgs in
   #eval min_square_plots 4 6
 
-  /-
+  /--
   info: 6
   -/
   #guard_msgs in

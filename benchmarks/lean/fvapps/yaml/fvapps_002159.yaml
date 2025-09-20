@@ -55,27 +55,29 @@ vc-description: |-
   
   It is impossible to remove more than $5$ elements, hence the weight is $5$.
   -/
+  
+  -- Apps difficulty: competition
+  -- Assurance level: unguarded
 
 vc-preamble: |-
-  def bitadd (idx : Nat) (val : Int) (bit : Array Int) : Array Int :=
-    sorry
 
 vc-helpers: |-
 
 vc-definitions: |-
+  def bitadd (idx : Nat) (val : Int) (bit : Array Int) : Array Int :=
+    sorry
+  
   def bitsum (idx : Nat) (bit : Array Int) : Int :=
     sorry
 
 vc-theorems: |-
-  theorem bitadd_inverse (idx : Nat) (val : Int) (bit : Array Int) : 
+  theorem bitadd_inverse (idx : Nat) (val : Int) (bit : Array Int) :
     bitsum idx (bitadd idx (-val) (bitadd idx val bit)) = bitsum idx bit :=
-    sorry
+  sorry
   
   theorem bitadd_retrieval (idx : Nat) (val : Int) (bit : Array Int) :
     bitsum idx (bitadd idx val bit) = bitsum idx bit + val :=
-    sorry
+  sorry
 
 vc-postamble: |-
-  -- Apps difficulty: competition
-  -- Assurance level: unguarded
 

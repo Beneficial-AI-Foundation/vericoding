@@ -82,19 +82,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'Chefirnemo'
   -/
   #guard_msgs in
   #eval solve_chefirnemo 2 2 1 2
 
-  /-
+  /--
   info: 'Chefirnemo'
   -/
   #guard_msgs in
   #eval solve_chefirnemo 11 10 5 9
 
-  /-
+  /--
   info: 'Pofik'
   -/
   #guard_msgs in

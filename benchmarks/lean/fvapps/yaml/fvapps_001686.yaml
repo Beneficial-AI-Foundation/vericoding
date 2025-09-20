@@ -73,25 +73,25 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: sorted(test1)
   -/
   #guard_msgs in
   #eval sorted a + b
 
-  /-
+  /--
   info: sorted(test2)
   -/
   #guard_msgs in
   #eval sorted a + b
 
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in
   #eval abs sum(a) - sum(b)
 
-  /-
+  /--
   info: sorted(test3)
   -/
   #guard_msgs in

@@ -58,19 +58,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'yzxyzx'
   -/
   #guard_msgs in
   #eval endless_string "xyz" -23 6
 
-  /-
+  /--
   info: 'xyzx'
   -/
   #guard_msgs in
   #eval endless_string "xyz" 0 4
 
-  /-
+  /--
   info: 'zxyz'
   -/
   #guard_msgs in

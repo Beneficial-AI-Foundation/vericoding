@@ -1,28 +1,28 @@
 vc-description: |-
   /-
   You are given a map of a server center, represented as a m * n integer matrix grid, where 1 means that on that cell there is a server and 0 means that it is no server. Two servers are said to communicate if they are on the same row or on the same column.
-
+  
   Return the number of servers that communicate with any other server.
-
+  
   Example 1:
-
+  
   Input: grid = [[1,0],[0,1]]
   Output: 0
   Explanation: No servers can communicate with others.
   Example 2:
-
+  
   Input: grid = [[1,0],[1,1]]
   Output: 3
   Explanation: All three servers can communicate with at least one other server.
-
+  
   Example 3:
-
+  
   Input: grid = [[1,1,0,0],[0,0,1,0],[0,0,1,0],[0,0,0,1]]
   Output: 4
   Explanation: The two servers in the first row can communicate with each other. The two servers in the third column can communicate with each other. The server at right bottom corner can't communicate with any other server.
-
+  
   Constraints:
-
+  
   m == grid.length
   n == grid[i].length
   1 <= m <= 250
@@ -31,59 +31,69 @@ vc-description: |-
   -/
 
 vc-preamble: |-
-  def countServers (grid : List (List Nat)) : Nat := sorry
 
-  def is_valid_grid (grid : List (List Nat)) : Bool := sorry
-
-vc-helpers: |
+vc-helpers: |-
 
 vc-definitions: |-
-  def count_ones (grid : List (List Nat)) : Nat := sorry
-
-  theorem countServers_non_negative (grid : List (List Nat)) :
-    is_valid_grid grid → countServers grid ≥ 0 := sorry
+  def countServers (grid : List (List Nat)) : Nat :=
+  sorry
+  
+  def is_valid_grid (grid : List (List Nat)) : Bool :=
+  sorry
+  
+  def count_ones (grid : List (List Nat)) : Nat :=
+  sorry
 
 vc-theorems: |-
+  theorem countServers_non_negative (grid : List (List Nat)) :
+    is_valid_grid grid → countServers grid ≥ 0 :=
+  sorry
+  
   theorem countServers_upper_bound (grid : List (List Nat)) :
-    is_valid_grid grid → countServers grid ≤ count_ones grid := sorry
-
+    is_valid_grid grid → countServers grid ≤ count_ones grid :=
+  sorry
+  
   theorem single_server_result (grid : List (List Nat)) :
-    is_valid_grid grid → count_ones grid = 1 → countServers grid = 0 := sorry
-
+    is_valid_grid grid → count_ones grid = 1 → countServers grid = 0 :=
+  sorry
+  
   theorem empty_grid_zero {m n : Nat} (grid : List (List Nat)) :
-    m > 0 → n > 0 → 
+    m > 0 → n > 0 →
     grid = List.replicate m (List.replicate n 0) →
-    countServers grid = 0 := sorry
-
+    countServers grid = 0 :=
+  sorry
+  
   theorem full_grid_count {n : Nat} (grid : List (List Nat)) :
     n ≥ 2 →
     grid = List.replicate n (List.replicate n 1) →
-    countServers grid = n * n := sorry
-
+    countServers grid = n * n :=
+  sorry
+  
   theorem diagonal_only_zero {n : Nat} (grid : List (List Nat)) :
     n ≥ 2 →
-    grid = List.map 
-      (fun i => List.map (fun j => if i = j then 1 else 0) (List.range n)) 
+    grid = List.map
+      (fun i => List.map (fun j => if i = j then 1 else 0) (List.range n))
       (List.range n) →
-    countServers grid = 0 := sorry
+    countServers grid = 0 :=
+  sorry
 
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
-
-  /-
+  
+  /--
   info: 0
   -/
   #guard_msgs in
   #eval countServers [[1, 0], [0, 1]]
-
-  /-
+  
+  /--
   info: 3
   -/
   #guard_msgs in
   #eval countServers [[1, 0], [1, 1]]
-
-  /-
+  
+  /--
   info: 4
   -/
   #guard_msgs in

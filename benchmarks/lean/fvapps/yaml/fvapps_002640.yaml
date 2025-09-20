@@ -76,19 +76,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded
 
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in
   #eval calculate_years 1000 0.05 0.18 1100
 
-  /-
+  /--
   info: 14
   -/
   #guard_msgs in
   #eval calculate_years 1000 0.01625 0.18 1200
 
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in

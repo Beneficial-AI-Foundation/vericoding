@@ -103,19 +103,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: expected1
   -/
   #guard_msgs in
   #eval array_leaders [1, 2, 3, 4, 0]
 
-  /-
+  /--
   info: expected2
   -/
   #guard_msgs in
   #eval array_leaders [16, 17, 4, 3, 5, 2]
 
-  /-
+  /--
   info: expected3
   -/
   #guard_msgs in

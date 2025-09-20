@@ -64,19 +64,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded
 
-  /-
+  /--
   info: 9
   -/
   #guard_msgs in
   #eval last_chair 10
 
-  /-
+  /--
   info: 4
   -/
   #guard_msgs in
   #eval last_chair 5
 
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in

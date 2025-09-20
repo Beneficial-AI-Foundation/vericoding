@@ -46,19 +46,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval find_longest_chain [[1, 2], [2, 3], [3, 4]]
 
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval find_longest_chain [[1, 5], [2, 3], [4, 6]]
 
-  /-
+  /--
   info: 4
   -/
   #guard_msgs in

@@ -49,19 +49,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'BANC'
   -/
   #guard_msgs in
   #eval min_window "ADOBECODEBANC" "ABC"
 
-  /-
+  /--
   info: 'A'
   -/
   #guard_msgs in
   #eval min_window "AAAA" "A"
 
-  /-
+  /--
   info: ''
   -/
   #guard_msgs in

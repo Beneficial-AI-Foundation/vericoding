@@ -45,19 +45,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval hamming_distance "100101" "101001"
 
-  /-
+  /--
   info: 4
   -/
   #guard_msgs in
   #eval hamming_distance "1010" "0101"
 
-  /-
+  /--
   info: 9
   -/
   #guard_msgs in

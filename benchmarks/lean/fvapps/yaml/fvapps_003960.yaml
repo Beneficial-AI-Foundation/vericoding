@@ -42,19 +42,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'That was close!'
   -/
   #guard_msgs in
   #eval cake 900 "abcdef"
 
-  /-
+  /--
   info: 'Fire!'
   -/
   #guard_msgs in
   #eval cake 56 "ifkhchlhfd"
 
-  /-
+  /--
   info: 'That was close!'
   -/
   #guard_msgs in

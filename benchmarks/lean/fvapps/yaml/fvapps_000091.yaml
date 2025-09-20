@@ -80,19 +80,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval are_strings_transformable "xabb" "aabx"
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval are_strings_transformable "technocup" "technocup"
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in

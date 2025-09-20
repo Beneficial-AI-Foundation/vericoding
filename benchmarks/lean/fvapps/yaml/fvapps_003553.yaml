@@ -66,19 +66,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: [['O']]
   -/
   #guard_msgs in
   #eval chess_board 1 1
 
-  /-
+  /--
   info: [['O', 'X'], ['X', 'O']]
   -/
   #guard_msgs in
   #eval chess_board 2 2
 
-  /-
+  /--
   info: expected
   -/
   #guard_msgs in

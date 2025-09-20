@@ -66,19 +66,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 7
   -/
   #guard_msgs in
   #eval find_next_magic_number 4
 
-  /-
+  /--
   info: 74
   -/
   #guard_msgs in
   #eval find_next_magic_number 47
 
-  /-
+  /--
   info: 444
   -/
   #guard_msgs in

@@ -33,19 +33,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'abcdtsrifabcd'
   -/
   #guard_msgs in
   #eval shorter_reverse_longer "first" "abcd"
 
-  /-
+  /--
   info: 'bauollehbau'
   -/
   #guard_msgs in
   #eval shorter_reverse_longer "hello" "bau"
 
-  /-
+  /--
   info: 'dcba'
   -/
   #guard_msgs in

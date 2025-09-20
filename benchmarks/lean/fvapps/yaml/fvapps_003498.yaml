@@ -40,13 +40,13 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'JACK'
   -/
   #guard_msgs in
   #eval read_out ["Jolly", "Amazing", "Courteous", "Keen"]
 
-  /-
+  /--
   info: 'MEG'
   -/
   #guard_msgs in

@@ -51,19 +51,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'No chickens yet!'
   -/
   #guard_msgs in
   #eval egged 0 5
 
-  /-
+  /--
   info: 900
   -/
   #guard_msgs in
   #eval egged 2 1
 
-  /-
+  /--
   info: 900
   -/
   #guard_msgs in

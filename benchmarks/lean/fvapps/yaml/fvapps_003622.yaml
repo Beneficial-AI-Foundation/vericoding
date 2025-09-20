@@ -36,19 +36,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'docdmkco'
   -/
   #guard_msgs in
   #eval move_ten "testcase"
 
-  /-
+  /--
   info: 'mynogkbc'
   -/
   #guard_msgs in
   #eval move_ten "codewars"
 
-  /-
+  /--
   info: 'goxoonkxyppsmonyq'
   -/
   #guard_msgs in

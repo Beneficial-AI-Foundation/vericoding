@@ -47,19 +47,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'held'
   -/
   #guard_msgs in
   #eval string_merge "hello" "world" "l"
 
-  /-
+  /--
   info: 'codinywhere'
   -/
   #guard_msgs in
   #eval string_merge "coding" "anywhere" "n"
 
-  /-
+  /--
   info: 'wondeople'
   -/
   #guard_msgs in

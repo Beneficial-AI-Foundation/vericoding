@@ -24,13 +24,13 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'Yes'
   -/
   #guard_msgs in
   #eval bool_to_word True
 
-  /-
+  /--
   info: 'No'
   -/
   #guard_msgs in

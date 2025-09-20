@@ -72,19 +72,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'H2O'
   -/
   #guard_msgs in
   #eval count_atoms "H2O"
 
-  /-
+  /--
   info: 'H2MgO2'
   -/
   #guard_msgs in
   #eval count_atoms "Mg(OH)2"
 
-  /-
+  /--
   info: 'K4N2O14S4'
   -/
   #guard_msgs in

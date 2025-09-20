@@ -43,19 +43,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 12.0
   -/
   #guard_msgs in
   #eval area 5 4
 
-  /-
+  /--
   info: 'Not a rectangle'
   -/
   #guard_msgs in
   #eval area 6 8
 
-  /-
+  /--
   info: 48.0
   -/
   #guard_msgs in

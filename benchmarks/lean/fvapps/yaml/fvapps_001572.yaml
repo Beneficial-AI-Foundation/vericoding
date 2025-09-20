@@ -72,19 +72,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 59
   -/
   #guard_msgs in
   #eval survivor [7, 11]
 
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in
   #eval survivor [1, 7, 15]
 
-  /-
+  /--
   info: -1
   -/
   #guard_msgs in

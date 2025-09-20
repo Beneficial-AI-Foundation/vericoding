@@ -80,19 +80,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval same_encryption "abc" "abc"
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval same_encryption "abc" "abd"
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in

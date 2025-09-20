@@ -47,55 +47,55 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval ipv4_address "127.0.0.1"
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval ipv4_address "0.0.0.0"
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval ipv4_address "255.255.255.255"
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval ipv4_address ""
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval ipv4_address "10.256.30.40"
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval ipv4_address "10.20.030.40"
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval ipv4_address "127.0.0.1 "
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval ipv4_address " 127.0.0.1"
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in

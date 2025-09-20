@@ -31,20 +31,23 @@ vc-description: |-
   For test $1$: There exists no odd number.
   For test $2$: The possible odd numbers can be $7$, $21$, $49$, $315$, …
   -/
+  
+  -- Apps difficulty: interview
+  -- Assurance level: guarded
 
 vc-preamble: |-
-  def can_find_odd_multiple (n : Nat) (arr : List Int) : Bool :=
-    sorry
+  def isEven (x : Int) : Bool :=
+    x % 2 == 0
 
 vc-helpers: |-
 
 vc-definitions: |-
-  def isEven (x : Int) : Bool :=
-    x % 2 == 0
+  def can_find_odd_multiple (n : Nat) (arr : List Int) : Bool :=
+    sorry
 
 vc-theorems: |-
-  theorem all_even_no_odd_multiple {n : Nat} {arr : List Int} :  
-    (∀ x ∈ arr, isEven x = true) → 
+  theorem all_even_no_odd_multiple {n : Nat} {arr : List Int} :
+    (∀ x ∈ arr, isEven x = true) →
     can_find_odd_multiple n arr = false :=
   sorry
   
@@ -62,6 +65,4 @@ vc-theorems: |-
   sorry
 
 vc-postamble: |-
-  -- Apps difficulty: interview
-  -- Assurance level: guarded
 

@@ -76,19 +76,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'prekrasnyy'
   -/
   #guard_msgs in
   #eval check_sequence 4 [1, 2, 3, 4]
 
-  /-
+  /--
   info: 'ne krasivo'
   -/
   #guard_msgs in
   #eval check_sequence 6 [1, 2, 3, 5, 1, 4]
 
-  /-
+  /--
   info: 'prekrasnyy'
   -/
   #guard_msgs in

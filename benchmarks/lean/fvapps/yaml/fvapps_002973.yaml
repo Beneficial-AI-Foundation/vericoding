@@ -43,19 +43,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: ['co', 'de', 'wa', 'rs']
   -/
   #guard_msgs in
   #eval string_chunk "codewars" 2
 
-  /-
+  /--
   info: []
   -/
   #guard_msgs in
   #eval string_chunk "hello" 0
 
-  /-
+  /--
   info: ['hi']
   -/
   #guard_msgs in

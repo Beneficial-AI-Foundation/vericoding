@@ -50,19 +50,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: 8
   -/
   #guard_msgs in
   #eval numTilePossibilities "AAB"
 
-  /-
+  /--
   info: 188
   -/
   #guard_msgs in
   #eval numTilePossibilities "AAABBC"
 
-  /-
+  /--
   info: 1
   -/
   #guard_msgs in

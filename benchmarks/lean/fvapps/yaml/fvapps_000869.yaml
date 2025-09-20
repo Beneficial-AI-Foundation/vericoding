@@ -112,49 +112,49 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: n1
   -/
   #guard_msgs in
   #eval len r1
 
-  /-
+  /--
   info: n1
   -/
   #guard_msgs in
   #eval len r2
 
-  /-
+  /--
   info: list(range(1, n1 + 1))
   -/
   #guard_msgs in
   #eval sorted r1
 
-  /-
+  /--
   info: list(range(1, n1 + 1))
   -/
   #guard_msgs in
   #eval sorted r2
 
-  /-
+  /--
   info: n2
   -/
   #guard_msgs in
   #eval len r3
 
-  /-
+  /--
   info: n2
   -/
   #guard_msgs in
   #eval len r4
 
-  /-
+  /--
   info: list(range(1, n2 + 1))
   -/
   #guard_msgs in
   #eval sorted r3
 
-  /-
+  /--
   info: list(range(1, n2 + 1))
   -/
   #guard_msgs in

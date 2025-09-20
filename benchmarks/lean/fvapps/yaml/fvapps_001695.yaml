@@ -41,19 +41,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 7
   -/
   #guard_msgs in
   #eval partitions 5
 
-  /-
+  /--
   info: 5
   -/
   #guard_msgs in
   #eval partitions 4
 
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in

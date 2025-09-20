@@ -57,19 +57,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'l'
   -/
   #guard_msgs in
   #eval longest_prefix "level"
 
-  /-
+  /--
   info: 'abab'
   -/
   #guard_msgs in
   #eval longest_prefix "ababab"
 
-  /-
+  /--
   info: 'leet'
   -/
   #guard_msgs in

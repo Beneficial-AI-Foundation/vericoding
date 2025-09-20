@@ -2,59 +2,67 @@ vc-description: |-
   /-
   # Task
    The year of `2013` is the first year after the old `1987` with only distinct digits.
-
+  
    Now your task is to solve the following problem: given a `year` number, find the minimum year number which is strictly larger than the given one and has only distinct digits.
-
+  
   # Input/Output
-
+  
    - `[input]` integer `year`
-
+  
    `1000 ≤ year ≤ 9000`
-
+  
    - `[output]` an integer
-
+  
     the minimum year number that is strictly larger than the input number `year` and all its digits are distinct.
   -/
 
 vc-preamble: |-
-  def toString (n : Nat) : List Nat := sorry
 
-  def distinctDigitYear (year : Nat) : Nat := sorry
-
-vc-helpers: |
+vc-helpers: |-
 
 vc-definitions: |-
-  def hasDistinctDigits (n : Nat) : Bool := sorry
-
-  theorem distinct_digit_year_greater_than_input (year : Nat)
-    (h : year ≥ 1000 ∧ year ≤ 9000) :
-    distinctDigitYear year > year := sorry
+  def toString (n : Nat) : List Nat :=
+  sorry
+  
+  def distinctDigitYear (year : Nat) : Nat :=
+  sorry
+  
+  def hasDistinctDigits (n : Nat) : Bool :=
+  sorry
 
 vc-theorems: |-
+  theorem distinct_digit_year_greater_than_input (year : Nat)
+    (h : year ≥ 1000 ∧ year ≤ 9000) :
+    distinctDigitYear year > year :=
+  sorry
+  
   theorem distinct_digit_year_has_four_digits (year : Nat)
     (h : year ≥ 1000 ∧ year ≤ 9000) :
-    distinctDigitYear year ≥ 1000 := sorry
-
-  theorem distinct_digit_year_has_distinct_digits (year : Nat) 
+    distinctDigitYear year ≥ 1000 :=
+  sorry
+  
+  theorem distinct_digit_year_has_distinct_digits (year : Nat)
     (h : year ≥ 1000 ∧ year ≤ 9000) :
-    hasDistinctDigits (distinctDigitYear year) = true := sorry
-
+    hasDistinctDigits (distinctDigitYear year) = true :=
+  sorry
+  
   theorem distinct_digit_year_is_minimal (year : Nat)
     (h : year ≥ 1000 ∧ year ≤ 9000) :
     ∀ y, year < y → y < distinctDigitYear year →
-      hasDistinctDigits y = false := sorry
+      hasDistinctDigits y = false :=
+  sorry
 
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded
-
-  /-
+  
+  /--
   info: 2013
   -/
   #guard_msgs in
   #eval distinct_digit_year 1987
-
-  /-
+  
+  /--
   info: 2014
   -/
   #guard_msgs in

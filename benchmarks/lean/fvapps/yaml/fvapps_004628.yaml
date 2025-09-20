@@ -37,19 +37,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: '123456'
   -/
   #guard_msgs in
   #eval digit_all "123abc456"
 
-  /-
+  /--
   info: ''
   -/
   #guard_msgs in
   #eval digit_all ""
 
-  /-
+  /--
   info: 'Invalid input !'
   -/
   #guard_msgs in

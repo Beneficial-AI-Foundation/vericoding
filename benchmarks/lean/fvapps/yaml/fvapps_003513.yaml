@@ -51,19 +51,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in
   #eval kooka_counter ""
 
-  /-
+  /--
   info: 1
   -/
   #guard_msgs in
   #eval kooka_counter "hahahahaha"
 
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in

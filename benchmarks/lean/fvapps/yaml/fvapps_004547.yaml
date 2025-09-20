@@ -60,19 +60,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: [['bar_', 'bar@bar.com']]
   -/
   #guard_msgs in
   #eval search_names [["foo", "foo@foo.com"], ["bar_", "bar@bar.com"]]
 
-  /-
+  /--
   info: [['foo_', 'foo@foo.com'], ['bar_', 'bar@bar.com']]
   -/
   #guard_msgs in
   #eval search_names [["foo_", "foo@foo.com"], ["bar_", "bar@bar.com"], ["baz", "baz@baz.com"]]
 
-  /-
+  /--
   info: []
   -/
   #guard_msgs in

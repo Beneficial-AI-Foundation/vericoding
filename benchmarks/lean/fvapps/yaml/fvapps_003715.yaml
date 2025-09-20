@@ -74,19 +74,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: ['$1.15', '$94.65']
   -/
   #guard_msgs in
   #eval solution "USD" [1.01, 83.29]
 
-  /-
+  /--
   info: ['96.32€', '563.47€']
   -/
   #guard_msgs in
   #eval solution "EUR" [109.45, 640.31]
 
-  /-
+  /--
   info: ['$0.00', '$0.00', '$0.00']
   -/
   #guard_msgs in

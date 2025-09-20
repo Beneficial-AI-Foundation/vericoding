@@ -99,19 +99,19 @@ vc-postamble: |-
   -- Apps difficulty: competition
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval solve_photo_problem 4 2 3 10 "wwhw"
 
-  /-
+  /--
   info: 4
   -/
   #guard_msgs in
   #eval solve_photo_problem 5 2 4 13 "hhwhh"
 
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in

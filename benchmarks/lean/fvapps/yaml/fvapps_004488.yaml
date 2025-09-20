@@ -63,19 +63,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded
 
-  /-
+  /--
   info: 4
   -/
   #guard_msgs in
   #eval duplicates [1, 2, 2, 20, 6, 20, 2, 6, 2]
 
-  /-
+  /--
   info: 1
   -/
   #guard_msgs in
   #eval duplicates [1000, 1000]
 
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in

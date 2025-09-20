@@ -66,19 +66,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'pot nicking'
   -/
   #guard_msgs in
   #eval spoonerize "not picking"
 
-  /-
+  /--
   info: 'bedding wells'
   -/
   #guard_msgs in
   #eval spoonerize "wedding bells"
 
-  /-
+  /--
   info: 'belly jeans'
   -/
   #guard_msgs in

@@ -82,19 +82,19 @@ vc-postamble: |-
   -- Apps difficulty: competition
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'perfect'
   -/
   #guard_msgs in
   #eval solve_isomorphic_trees 2 [1, 1, 1]
 
-  /-
+  /--
   info: case2
   -/
   #guard_msgs in
   #eval solve_isomorphic_trees 2 [1, 2, 2]
 
-  /-
+  /--
   info: case3
   -/
   #guard_msgs in

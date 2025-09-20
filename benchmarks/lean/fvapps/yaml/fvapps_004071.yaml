@@ -46,19 +46,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'hs s a string'
   -/
   #guard_msgs in
   #eval remove "this is a string" {"t": 1, "i": 2}
 
-  /-
+  /--
   info: 'hello world'
   -/
   #guard_msgs in
   #eval remove "hello world" {"x": 5, "i": 2}
 
-  /-
+  /--
   info: 'pples d bnns'
   -/
   #guard_msgs in

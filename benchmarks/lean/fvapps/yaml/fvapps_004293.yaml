@@ -69,19 +69,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: ['Ruby', 'Python']
   -/
   #guard_msgs in
   #eval my_languages {"Java": 10, "Ruby": 80, "Python": 65}
 
-  /-
+  /--
   info: ['Dutch', 'Greek', 'Hindi']
   -/
   #guard_msgs in
   #eval my_languages {"Hindi": 60, "Greek": 71, "Dutch": 93}
 
-  /-
+  /--
   info: []
   -/
   #guard_msgs in

@@ -69,19 +69,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'Bad'
   -/
   #guard_msgs in
   #eval classify_feedback "11111110"
 
-  /-
+  /--
   info: 'Good'
   -/
   #guard_msgs in
   #eval classify_feedback "10101010101010"
 
-  /-
+  /--
   info: 'Good'
   -/
   #guard_msgs in

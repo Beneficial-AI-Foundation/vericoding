@@ -49,19 +49,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval count_beautiful_arrangements 2
 
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in
   #eval count_beautiful_arrangements 3
 
-  /-
+  /--
   info: 8
   -/
   #guard_msgs in

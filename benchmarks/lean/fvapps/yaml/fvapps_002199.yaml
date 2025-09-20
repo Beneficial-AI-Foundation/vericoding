@@ -75,19 +75,19 @@ vc-postamble: |-
   -- Apps difficulty: competition
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 8
   -/
   #guard_msgs in
   #eval solve_marble_game 2 [0, 0]
 
-  /-
+  /--
   info: 96
   -/
   #guard_msgs in
   #eval solve_marble_game 5 [0, 1, 1, 0, 4]
 
-  /-
+  /--
   info: 730395550
   -/
   #guard_msgs in

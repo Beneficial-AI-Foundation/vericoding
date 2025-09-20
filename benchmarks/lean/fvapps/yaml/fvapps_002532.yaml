@@ -27,14 +27,18 @@ vc-description: |-
   ### Greater goal
   For extra honor try and make it as effective as possible. Discuss whats the most effective way of doing this. The fastest way i can do this is in *O(n^2)*. Can you do it quicker?
   -/
+  
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded_and_plausible
 
 vc-preamble: |-
-  def addsup (a1 a2 a3 : List Int) : List (Int × Int × Int) :=
-    sorry
 
 vc-helpers: |-
 
 vc-definitions: |-
+  def addsup (a1 a2 a3 : List Int) : List (Int × Int × Int) :=
+    sorry
+  
   def compare_arrays (arr1 arr2 : List (List Int)) : Bool :=
     sorry
 
@@ -42,9 +46,7 @@ vc-theorems: |-
   theorem addsup_empty_input
     (a1 a2 a3 : List Int)
     : (a1 = [] ∨ a2 = []) → addsup a1 a2 a3 = [] :=
-    sorry
+  sorry
 
 vc-postamble: |-
-  -- Apps difficulty: introductory
-  -- Assurance level: guarded_and_plausible
 

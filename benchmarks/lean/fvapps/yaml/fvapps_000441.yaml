@@ -74,19 +74,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval is_rational_equal "0.(52)" "0.5(25)"
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval is_rational_equal "0.1666(6)" "0.166(66)"
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in

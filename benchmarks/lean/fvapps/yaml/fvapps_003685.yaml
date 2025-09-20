@@ -1,20 +1,20 @@
 vc-description: |-
   /-
   The central dogma of molecular biology is that DNA is transcribed into RNA, which is then tranlsated into protein. RNA, like DNA, is a long strand of nucleic acids held together by a sugar backbone (ribose in this case). Each segment of three bases is called a codon. Molecular machines called ribosomes translate the RNA codons into amino acid chains, called polypeptides which are then folded into a protein. 
-
+  
   Protein sequences are easily visualized in much the same way that DNA and RNA are, as large strings of letters. An important thing to note is that the 'Stop' codons do not encode for a specific amino acid. Their only function is to stop translation of the protein, as such they are not incorporated into the polypeptide chain. 'Stop' codons should not be in the final protein sequence. To save a you a lot of unnecessary (and boring) typing the keys and values for your amino acid dictionary are provided.
-
+  
   Given a string of RNA, create a funciton which translates the RNA into its protein sequence. Note: the test cases will always produce a valid string.
-
+  
   ```python
   protein('UGCGAUGAAUGGGCUCGCUCC') returns 'CDEWARS'
   ```
-
+  
   Included as test cases is a real world example! The last example test case encodes for a protein called green fluorescent protein; once spliced into the genome of another organism, proteins like GFP allow biologists to visualize cellular processes!
-
+  
   Amino Acid Dictionary
   ----------------------
-
+  
   ```python
       # Phenylalanine
       'UUC':'F', 'UUU':'F',
@@ -62,19 +62,12 @@ vc-description: |-
   -/
 
 vc-preamble: |-
-  def validCodon (c : String) : Bool := sorry
-
-  def protein (rna : String) : String := sorry
-
   def isStopCodon (codon : String) : Bool :=
     codon = "UAA" || codon = "UAG" || codon = "UGA"
-
+  
   def charsToCodon (chars : List Char) : String :=
     String.mk chars
-
-vc-helpers: |
-
-vc-definitions: |-
+  
   def groupsOf3 (xs : List α) : List (List α) :=
     match xs with
     | [] => []
@@ -84,41 +77,53 @@ vc-definitions: |-
         | [] => [[x₁, x₂]]
         | x₃::xs₃ => [x₁, x₂, x₃]::(groupsOf3 xs₃)
 
+vc-helpers: |-
+
+vc-definitions: |-
+  def protein (rna : String) : String := sorry
+  
+  def validCodon (c : String) : Bool :=
+  sorry
+
 vc-theorems: |-
   theorem protein_length_le_input_div_3 {rna : String} (h : protein rna ≠ "") :
-    (protein rna).length ≤ rna.length / 3 := sorry
-
+    (protein rna).length ≤ rna.length / 3 :=
+  sorry
+  
   theorem protein_valid_acids {rna : String} (h : protein rna ≠ "") :
-    ∀ c, c ∈ (protein rna).data → 
-      c ∈ ['F', 'L', 'I', 'M', 'V', 'S', 'P', 'T', 'A', 'G', 'Y', 'C', 'H', 'N', 'K', 'D', 'E', 'Q', 'W', 'R', 'G'] := sorry
-
+    ∀ c, c ∈ (protein rna).data →
+      c ∈ ['F', 'L', 'I', 'M', 'V', 'S', 'P', 'T', 'A', 'G', 'Y', 'C', 'H', 'N', 'K', 'D', 'E', 'Q', 'W', 'R', 'G'] :=
+  sorry
+  
   theorem protein_stops_at_first_stop {rna : String} (h : protein rna ≠ "") :
     let codons := (rna.data.take (rna.length / 3 * 3)) |> groupsOf3 |>.map charsToCodon
     let firstStop := match List.findIdx? isStopCodon codons with
       | none => codons.length
       | some n => n
-    (protein rna).length ≤ firstStop := sorry
-
+    (protein rna).length ≤ firstStop :=
+  sorry
+  
   theorem protein_returns_string_length {rna : String} (h : ∀ c, c ∈ rna.data → c ∈ ['A', 'U', 'G', 'C']) :
-    protein rna ≠ "" → (protein rna).length ≤ rna.length / 3 := sorry
+    protein rna ≠ "" → (protein rna).length ≤ rna.length / 3 :=
+  sorry
 
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
-
-  /-
+  
+  /--
   info: 'M'
   -/
   #guard_msgs in
   #eval protein "AUGUGA"
-
-  /-
+  
+  /--
   info: 'CDEWARS'
   -/
   #guard_msgs in
   #eval protein "UGCGAUGAAUGGGCUCGCUCC"
-
-  /-
+  
+  /--
   info: 'MLQVHWKRRGKTS'
   -/
   #guard_msgs in

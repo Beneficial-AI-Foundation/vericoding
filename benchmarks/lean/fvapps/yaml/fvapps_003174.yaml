@@ -44,37 +44,37 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval sharkovsky 18 12
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval sharkovsky 3 9
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval sharkovsky 10 16
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval sharkovsky 1 22
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval sharkovsky 32 1024
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in

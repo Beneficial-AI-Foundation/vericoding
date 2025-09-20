@@ -49,19 +49,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: expected1
   -/
   #guard_msgs in
   #eval filter_homogenous [[1, 5, 4], ["a", 3, 5], ["b"], [], ["1", 2, 3]]
 
-  /-
+  /--
   info: expected2
   -/
   #guard_msgs in
   #eval filter_homogenous [[123, 234, 432], ["", "abc"], [""], ["", 1], ["", "1"], []]
 
-  /-
+  /--
   info: expected3
   -/
   #guard_msgs in

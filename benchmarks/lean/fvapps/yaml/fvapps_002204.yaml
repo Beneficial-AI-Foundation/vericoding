@@ -84,19 +84,19 @@ vc-postamble: |-
   -- Apps difficulty: competition
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 4
   -/
   #guard_msgs in
   #eval count_manhattan_compass_pairs *test1
 
-  /-
+  /--
   info: 4
   -/
   #guard_msgs in
   #eval count_manhattan_compass_pairs *test2
 
-  /-
+  /--
   info: 7
   -/
   #guard_msgs in

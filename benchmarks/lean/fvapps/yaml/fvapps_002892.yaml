@@ -14,8 +14,15 @@ vc-description: |-
   
   Write a function `print_nums(n1, n2, n3, ...)` that takes a variable number of arguments and returns the string to be printed out.
   -/
+  
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded_and_plausible
 
 vc-preamble: |-
+
+vc-helpers: |-
+
+vc-definitions: |-
   def List.max (l: List Nat) : Nat :=
     sorry
   
@@ -30,19 +37,14 @@ vc-preamble: |-
   
   def stringToNat (s: String) : Nat :=
     sorry
-
-vc-helpers: |-
-
-vc-definitions: |-
+  
   def print_nums (nums: List Nat) : String :=
     sorry
 
 vc-theorems: |-
   theorem print_nums_empty (nums: List Nat) :
     nums = [] → print_nums nums = "" :=
-    sorry
+  sorry
 
 vc-postamble: |-
-  -- Apps difficulty: introductory
-  -- Assurance level: guarded_and_plausible
 
