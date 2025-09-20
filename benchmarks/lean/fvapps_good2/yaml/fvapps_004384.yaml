@@ -1,0 +1,76 @@
+vc-description: |-
+  /-
+  You have been speeding on a motorway and a police car had to stop you. The policeman is a funny guy that likes to play games. Before issuing penalty charge notice he gives you a choice to change your penalty. 
+  
+  Your penalty charge is a combination of numbers like: speed of your car, speed limit in the area, speed of the police car chasing you, the number of police cars involved, etc.  So, your task is to combine the given numbers and make the penalty charge to be as small as possible.      
+  
+  For example, if  you are given numbers  ```[45, 30, 50, 1]``` your best choice is ```1304550```
+  
+  Examples:
+  ```Python
+  ['45', '30', '50', '1'] => '1304550'
+  
+  ['100', '10', '1'] => '100101'
+  
+  ['32', '3'] => '323'
+  ```
+  -/
+
+vc-preamble: |-
+  def stringIsAllDigits (s : String) : Bool :=
+    s.all Char.isDigit
+  
+  def listToSortedString (l : List Nat) : String :=
+    let strList := l.map toString
+    String.join strList
+
+vc-helpers: |-
+
+vc-definitions: |-
+  def penalty (nums : List Nat) : String := sorry
+
+vc-theorems: |-
+  theorem penalty_output_is_numeric (nums : List Nat) (h : nums ≠ []) :
+    let result := penalty nums
+    stringIsAllDigits result = true :=
+  sorry
+  
+  theorem penalty_preserves_digits (nums : List Nat) (h : nums ≠ []) :
+    let input_digits := String.join (List.map toString nums)
+    let result := penalty nums
+    input_digits.length = result.length :=
+  sorry
+  
+  theorem penalty_single_digits (nums : List Nat) (h₁ : nums ≠ [])
+    (h₂ : ∀ n ∈ nums, n ≤ 9) :
+    penalty nums = listToSortedString nums :=
+  sorry
+  
+  theorem penalty_self_consistent (nums₁ nums₂ : List Nat)
+    (h₁ : nums₁ ≠ []) (h₂ : nums₂ ≠ [])
+    (h₃ : nums₁ = nums₂) :
+    penalty nums₁ = penalty nums₂ :=
+  sorry
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded
+  
+  /--
+  info: '1304550'
+  -/
+  #guard_msgs in
+  #eval penalty ["45", "30", "50", "1"]
+  
+  /--
+  info: '100101'
+  -/
+  #guard_msgs in
+  #eval penalty ["100", "10", "1"]
+  
+  /--
+  info: '323'
+  -/
+  #guard_msgs in
+  #eval penalty ["32", "3"]
+
