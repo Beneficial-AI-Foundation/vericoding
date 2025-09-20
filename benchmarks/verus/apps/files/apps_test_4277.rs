@@ -15,7 +15,7 @@ spec fn minimum_cost(n: int, a: int, b: int) -> int {
     if train_cost_val < b { train_cost_val } else { b }
 }
 
-spec fn correct_result(input: Seq<char>, result: Seq<char>) -> bool {
+spec fn correct_result(input: Vec<i8>, result: Vec<i8>) -> bool {
     /* Implementation would require string parsing functions that are not available in this context */
     true
 }
@@ -25,7 +25,7 @@ spec fn correct_result(input: Seq<char>, result: Seq<char>) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(input: Seq<char>) -> (result: Seq<char>)
+fn solve(input: Vec<i8>) -> (result: Vec<i8>)
     requires input.len() > 0
     ensures correct_result(input, result)
 // </vc-spec>

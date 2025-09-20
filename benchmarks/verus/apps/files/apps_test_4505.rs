@@ -26,13 +26,13 @@ spec fn is_permutation_of_abc(input_chars: Seq<char>) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(s: Seq<char>) -> (result: Seq<char>)
+fn solve(s: Vec<char>) -> (result: Vec<char>)
     requires 
-        s.len() >= 3,
-        valid_input(s),
+        s@.len() >= 3,
+        valid_input(s@),
     ensures 
-        result == seq!['Y', 'e', 's', '\n'] || result == seq!['N', 'o', '\n'],
-        result == seq!['Y', 'e', 's', '\n'] <==> is_permutation_of_abc(get_input_chars(s)),
+        result@ == seq!['Y', 'e', 's', '\n'] || result@ == seq!['N', 'o', '\n'],
+        result@ == seq!['Y', 'e', 's', '\n'] <==> is_permutation_of_abc(get_input_chars(s@)),
 // </vc-spec>
 // <vc-code>
 {

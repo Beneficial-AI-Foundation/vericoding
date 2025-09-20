@@ -36,11 +36,11 @@ spec fn correct_result(k: int, result: int) -> bool
 // </vc-helpers>
 
 // <vc-spec>
-fn count_even_odd_pairs(k: int) -> (result: int)
+fn count_even_odd_pairs(k: i8) -> (result: i8)
     requires
-        valid_input(k),
+        valid_input(k as int),
     ensures
-        correct_result(k, result),
+        correct_result(k as int, result as int),
         result >= 0,
 // </vc-spec>
 // <vc-code>

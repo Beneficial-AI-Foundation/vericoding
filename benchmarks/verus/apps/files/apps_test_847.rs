@@ -17,7 +17,11 @@ spec fn abs(x: int) -> int {
 }
 
 spec fn valid_input(cards: Seq<int>, x: int) -> bool {
-    x > 0 && cards.len() >= 1 && forall|i: int| 0 <= i < cards.len() ==> -x <= cards[i] <= x
+    x > 0 && cards.len() >= 1 && forall|i: int| 0 <= i < cards.len() ==> #[trigger] cards[i] >= -x && #[trigger] cards[i] <= x
+}
+
+spec fn solve_result(cards: Seq<int>, x: int) -> int {
+    if sum(cards) == 0 { 0 } else { (abs(sum(cards)) + x - 1) / x }
 }
 // </vc-preamble>
 
@@ -25,17 +29,19 @@ spec fn valid_input(cards: Seq<int>, x: int) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(cards: Seq<int>, x: int) -> (result: int)
+fn solve(cards: Vec<i8>, x: i8) -> (result: i8)
     requires 
-        valid_input(cards, x)
+        valid_input(cards@.map(|i: int, v: i8| v as int), x as int),
     ensures 
-        result >= 0,
-        result == if sum(cards) == 0 { 0 } else { (abs(sum(cards)) + x - 1) / x }
+        result as int >= 0,
+        result as int == solve_result(cards@.map(|i: int, v: i8| v as int), x as int),
 // </vc-spec>
 // <vc-code>
 {
+    // impl-start
     assume(false);
     unreached()
+    // impl-end
 }
 // </vc-code>
 

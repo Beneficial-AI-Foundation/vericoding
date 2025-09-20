@@ -29,7 +29,7 @@ fn unravel_index(indices: Vec<usize>, shape: Vec<usize>) -> (result: Vec<Vec<usi
         forall|i: int, j: int| 0 <= i < result.len() && 0 <= j < shape.len() ==> 
             #[trigger] result[i][j] < shape[j],
         forall|i: int, j: int| 0 <= i < result.len() && 0 <= j < result.len() && i != j ==> 
-            (indices[i] != indices[j] ==> result[i] != result[j])
+            (indices[i] != indices[j] ==> result[i]@ != result[j]@)
 // </vc-spec>
 // <vc-code>
 {

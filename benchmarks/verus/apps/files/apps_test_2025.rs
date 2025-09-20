@@ -3,7 +3,7 @@ use vstd::prelude::*;
 
 verus! {
 spec fn is_composite(x: int) -> bool {
-    x >= 4 && exists|k: int| 2 <= k < x && x % k == 0
+    x >= 4 && exists|k: int| 2 <= k < x && #[trigger] (x % k) == 0
 }
 
 spec fn valid_input(queries: Seq<int>) -> bool {
@@ -35,9 +35,9 @@ spec fn valid_result(queries: Seq<int>, results: Seq<int>) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(queries: Seq<int>) -> (results: Seq<int>)
-    requires valid_input(queries)
-    ensures valid_result(queries, results)
+fn solve(queries: Vec<i8>) -> (results: Vec<i8>)
+    requires valid_input(queries@.map(|i, x: i8| x as int))
+    ensures valid_result(queries@.map(|i, x: i8| x as int), results@.map(|i, x: i8| x as int))
 // </vc-spec>
 // <vc-code>
 {

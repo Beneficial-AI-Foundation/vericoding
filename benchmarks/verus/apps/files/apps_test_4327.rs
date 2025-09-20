@@ -24,13 +24,13 @@ spec fn max_pies(a: int, p: int) -> int
 // </vc-helpers>
 
 // <vc-spec>
-fn calculate_max_pies(a: int, p: int) -> (pies: int)
+fn calculate_max_pies(a: i8, p: i8) -> (pies: i8)
     requires 
-        valid_input(a, p)
+        valid_input(a as int, p as int)
     ensures 
-        pies == max_pies(a, p) &&
+        pies as int == max_pies(a as int, p as int) &&
         pies >= 0 &&
-        pies == (a * 3 + p) / 2
+        pies as int == (a as int * 3 + p as int) / 2
 // </vc-spec>
 // <vc-code>
 {

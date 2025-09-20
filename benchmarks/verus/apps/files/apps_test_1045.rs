@@ -29,11 +29,11 @@ spec fn valid_pyramid_height(n: int, h: int) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: int) -> (result: int)
-    requires valid_input(n)
+fn solve(n: i8) -> (result: i8)
+    requires valid_input(n as int)
     ensures 
         result >= 1 &&
-        valid_pyramid_height(n, result)
+        valid_pyramid_height(n as int, result as int)
 // </vc-spec>
 // <vc-code>
 {

@@ -2,7 +2,6 @@
 use vstd::prelude::*;
 
 verus! {
-
 spec fn valid_input(input: Seq<char>) -> bool {
     input.len() > 0 && input[input.len() - 1] == '\n'
 }
@@ -18,17 +17,22 @@ spec fn valid_mole(mole: (int, int, int, int)) -> bool {
 }
 
 spec fn valid_regiment(moles: Seq<(int, int, int, int)>) -> bool {
-    moles.len() == 4 && forall|i: int| 0 <= i < 4 ==> valid_mole(moles[i])
+    moles.len() == 4 && forall|i: int| 0 <= i < 4 ==> #[trigger] valid_mole(moles[i])
 }
 
 spec fn rotate_point(x: int, y: int, center_x: int, center_y: int, times: nat) -> (int, int) {
     let dx = x - center_x;
     let dy = y - center_y;
     let rotations = times % 4;
-    if rotations == 0 { (x, y) }
-    else if rotations == 1 { (center_x - dy, center_y + dx) }
-    else if rotations == 2 { (center_x - dx, center_y - dy) }
-    else { (center_x + dy, center_y - dx) }
+    if rotations == 0 {
+        (x, y)
+    } else if rotations == 1 {
+        (center_x - dy, center_y + dx)
+    } else if rotations == 2 {
+        (center_x - dx, center_y - dy)
+    } else {
+        (center_x + dy, center_y - dx)
+    }
 }
 
 spec fn distance_squared(p1: (int, int), p2: (int, int)) -> nat {
@@ -44,8 +48,9 @@ spec fn distance_squared(p1: (int, int), p2: (int, int)) -> nat {
 spec fn is_square(points: Seq<(int, int)>) -> bool
     recommends points.len() == 4
 {
-    if points.len() != 4 { false }
-    else {
+    if points.len() != 4 {
+        false
+    } else {
         let p0 = points[0];
         let p1 = points[1];
         let p2 = points[2];
@@ -56,7 +61,7 @@ spec fn is_square(points: Seq<(int, int)>) -> bool
         let d12 = distance_squared(p1, p2);
         let d13 = distance_squared(p1, p3);
         let d23 = distance_squared(p2, p3);
-
+        
         d01 > 0 && (
             (d01 == d02 && d13 == d23 && d03 == d12 && d03 == 2 * d01) ||
             (d01 == d03 && d12 == d23 && d02 == d13 && d02 == 2 * d01) ||
@@ -76,8 +81,9 @@ spec fn can_form_square_with_moves(moles: Seq<(int, int, int, int)>, total_moves
 spec fn get_positions_after_moves(moles: Seq<(int, int, int, int)>, moves0: nat, moves1: nat, moves2: nat, moves3: nat) -> Seq<(int, int)>
     recommends moles.len() == 4
 {
-    if moles.len() != 4 { seq![] }
-    else {
+    if moles.len() != 4 {
+        seq![]
+    } else {
         let (x0, y0, a0, b0) = moles[0];
         let (x1, y1, a1, b1) = moles[1];
         let (x2, y2, a2, b2) = moles[2];
@@ -92,21 +98,19 @@ spec fn get_positions_after_moves(moles: Seq<(int, int, int, int)>, moves0: nat,
 }
 
 spec fn is_all_digits(s: Seq<char>) -> bool {
-    forall|i: int| 0 <= i < s.len() ==> '0' <= s[i] <= '9'
+    forall|i: int| 0 <= i < s.len() ==> #[trigger] s[i] >= '0' && #[trigger] s[i] <= '9'
 }
 
 spec fn string_to_nat(s: Seq<char>) -> nat
     recommends is_all_digits(s) && s.len() > 0
+    decreases s.len()
 {
-    if s.len() == 0 { 0 }
-    else if s.len() == 1 { 
-        let digit_val = (s[0] as int) - ('0' as int);
-        if digit_val >= 0 { digit_val as nat } else { 0 }
-    }
-    else { 
-        let last_digit = (s[s.len() - 1] as int) - ('0' as int);
-        let last_digit_nat = if last_digit >= 0 { last_digit as nat } else { 0 };
-        string_to_nat(s.drop_last()) * 10 + last_digit_nat
+    if s.len() == 0 || !is_all_digits(s) {
+        0
+    } else if s.len() == 1 {
+        ((s[0] as int) - ('0' as int)) as nat
+    } else {
+        string_to_nat(s.subrange(0, s.len() - 1)) * 10 + (((s[s.len() - 1] as int) - ('0' as int)) as nat)
     }
 }
 

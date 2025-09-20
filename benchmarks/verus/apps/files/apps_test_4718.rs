@@ -20,9 +20,9 @@ spec fn valid_output(input: Seq<char>, output: Seq<char>) -> bool
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(date_str: Seq<char>) -> (result: Seq<char>)
-    requires valid_input(date_str)
-    ensures valid_output(date_str, result)
+fn solve(date_str: Vec<char>) -> (result: Vec<char>)
+    requires valid_input(date_str@)
+    ensures valid_output(date_str@, result@)
 // </vc-spec>
 // <vc-code>
 {

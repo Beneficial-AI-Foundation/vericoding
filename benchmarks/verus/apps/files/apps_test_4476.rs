@@ -32,9 +32,9 @@ spec fn valid_output(input: Seq<(int, int)>, result: Seq<int>) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(input: Seq<(int, int)>) -> (result: Seq<int>)
-    requires valid_input(input)
-    ensures valid_output(input, result)
+fn solve(input: Vec<(i8, i8)>) -> (result: Vec<i8>)
+    requires valid_input(input@.map(|i, x: (i8, i8)| (x.0 as int, x.1 as int)))
+    ensures valid_output(input@.map(|i, x: (i8, i8)| (x.0 as int, x.1 as int)), result@.map(|i, x: i8| x as int))
 // </vc-spec>
 // <vc-code>
 {

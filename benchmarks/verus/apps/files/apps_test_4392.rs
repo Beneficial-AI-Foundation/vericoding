@@ -3,12 +3,18 @@ use vstd::prelude::*;
 
 verus! {
 
-spec fn valid_input(a: &[int], allowed_pos: &[bool]) -> bool {
+spec fn valid_input(a: Seq<int>, allowed_pos: Seq<bool>) -> bool {
     a.len() > 1 && allowed_pos.len() == a.len()
 }
 
-spec fn is_sorted(a: Seq<int>) -> bool {
-    a.len() <= 1 || forall|i: int| 0 <= i < a.len() - 1 ==> a[i] <= a[i + 1]
+spec fn is_sorted(a: Seq<int>) -> bool
+    decreases a.len()
+{
+    if a.len() <= 1 {
+        true
+    } else {
+        a[0] <= a[1] && is_sorted(a.subrange(1, a.len() as int))
+    }
 }
 
 spec fn can_reach_configuration(original: Seq<int>, target: Seq<int>, allowed: Seq<bool>) -> bool {
@@ -32,18 +38,17 @@ spec fn bubble_sort_seq(s: Seq<int>) -> Seq<int>
     if s.len() <= 1 {
         s
     } else {
-        bubble_sort_helper(s, s.len() as int)
+        bubble_sort_helper(s, s.len() as nat)
     }
 }
 
-spec fn bubble_sort_helper(s: Seq<int>, passes: int) -> Seq<int>
+spec fn bubble_sort_helper(s: Seq<int>, passes: nat) -> Seq<int>
     decreases passes
 {
-    if passes <= 0 {
+    if passes == 0 {
         s
     } else {
-        let after_pass = bubble_pass(s);
-        bubble_sort_helper(after_pass, passes - 1)
+        bubble_sort_helper(bubble_pass(s), (passes - 1) as nat)
     }
 }
 
@@ -57,14 +62,13 @@ spec fn bubble_pass(s: Seq<int>) -> Seq<int>
     }
 }
 
-spec fn bubble_pass_helper(s: Seq<int>, pos: int) -> Seq<int>
-    decreases s.len() - pos
+spec fn bubble_pass_helper(s: Seq<int>, pos: nat) -> Seq<int>
+    decreases if pos <= s.len() { s.len() - pos } else { 0 }
 {
-    if pos >= s.len() - 1 {
+    if pos >= s.len() || pos >= s.len() - 1 {
         s
-    } else if pos < s.len() - 1 && s[pos] > s[pos + 1] {
-        let swapped = s.update(pos, s[pos + 1]).update(pos + 1, s[pos]);
-        bubble_pass_helper(swapped, pos + 1)
+    } else if s[pos as int] > s[(pos + 1) as int] {
+        bubble_pass_helper(s.update(pos as int, s[(pos + 1) as int]).update((pos + 1) as int, s[pos as int]), pos + 1)
     } else {
         bubble_pass_helper(s, pos + 1)
     }
@@ -75,12 +79,12 @@ spec fn bubble_pass_helper(s: Seq<int>, pos: int) -> Seq<int>
 // </vc-helpers>
 
 // <vc-spec>
-fn can_sort(a: &mut [int], allowed_pos: &[bool]) -> (result: bool) 
+fn can_sort(a: &mut Vec<i8>, allowed_pos: &[bool]) -> (result: bool)
     requires 
-        valid_input(old(a), allowed_pos),
+        valid_input(old(a)@.map_values(|x: i8| x as int), allowed_pos@),
     ensures 
-        a@.to_multiset() == old(a)@.to_multiset(),
-        result == is_sorted(a@),
+        a@.map_values(|x: i8| x as int).to_multiset() == old(a)@.map_values(|x: i8| x as int).to_multiset(),
+        result == is_sorted(a@.map_values(|x: i8| x as int)),
 // </vc-spec>
 // <vc-code>
 {

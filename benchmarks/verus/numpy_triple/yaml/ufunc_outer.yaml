@@ -11,33 +11,44 @@ vc-description: |-
   - When op = (^), this becomes the power of all pairs
   
   The result has shape (m, n) where m is the length of A and n is the length of B.
-
+  
+  Specification: outer applies a binary operator to all pairs of elements
+  from two input vectors, producing a matrix result.
+  
+  Precondition: True (works for any two vectors and binary operation)
+  Postcondition:
+  - Result has dimensions m × n (outer dimensions of input vectors)
+  - Each element result[i][j] equals op(a[i], b[j])
+  - The result preserves the structure of the Cartesian product of the inputs
+  - All pairs (i,j) with i ∈ [0..m-1] and j ∈ [0..n-1] are covered exactly once
+  
+  Mathematical Properties:
+  - result[i][j] = op(a[i], b[j]) for all valid i, j
+  - The result matrix has the same number of rows as the first input vector
+  - The result matrix has the same number of columns as the second input vector
+  - For commutative operations: outer(op, a, b)[i][j] = outer(op, b, a)[j][i]
+  - For associative operations: outer preserves the algebraic structure
 vc-preamble: |-
   use vstd::prelude::*;
-  
-  verus! {
 
+  verus! {
 vc-helpers: |-
 
 vc-spec: |-
-  spec fn apply_binary_op(op_id: int, x: f64, y: f64) -> f64;
-  
-  fn outer(op_id: int, a: Vec<f64>, b: Vec<f64>) -> (result: Vec<Vec<f64>>)
+  fn outer(op: spec_fn(f64, f64) -> f64, a: Vec<f64>, b: Vec<f64>) -> (result: Vec<Vec<f64>>)
       ensures
           result.len() == a.len(),
           forall|i: int| 0 <= i < result.len() ==> result[i].len() == b.len(),
           forall|i: int, j: int| 0 <= i < a.len() && 0 <= j < b.len() ==> 
-              result[i][j] == apply_binary_op(op_id, a[i], b[j]),
-          forall|i: int, j: int| 0 <= i < a.len() && 0 <= j < b.len() ==>
-              exists|ai: f64, bj: f64| ai == a[i] && bj == b[j] && result[i][j] == apply_binary_op(op_id, ai, bj)
-
+              result[i][j] == op(a[i], b[j])
 vc-code: |-
   {
+      // impl-start
       assume(false);
       unreached()
+      // impl-end
   }
-
 vc-postamble: |-
+
   }
   fn main() {}
-

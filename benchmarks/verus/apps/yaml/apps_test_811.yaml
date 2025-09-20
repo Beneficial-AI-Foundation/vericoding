@@ -12,22 +12,27 @@ vc-preamble: |-
   }
   
   spec fn total_burning_hours(a: int, b: int) -> int
-    decreases a
+    decreases a via a_decreases
   {
-    if a == 0 { 0 }
+    if a <= 0 { 0 }
     else if a < b { a }
     else { a + total_burning_hours(a / b, b) }
+  }
+
+  #[verifier::decreases_by]
+  proof fn a_decreases(a: int, b: int) {
+    assume(false);
   }
 
 vc-helpers: |-
 
 vc-spec: |-
-  fn solve(a: int, b: int) -> (result: int)
+  fn solve(a: i8, b: i8) -> (result: i8)
     requires 
-        valid_input(a, b),
+      valid_input(a as int, b as int)
     ensures 
-        result >= a,
-        result == total_burning_hours(a, b),
+      result as int >= a as int,
+      result as int == total_burning_hours(a as int, b as int)
 
 vc-code: |-
   {

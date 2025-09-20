@@ -36,9 +36,9 @@ spec fn valid_output(n: nat, result: nat) -> bool
 // </vc-helpers>
 
 // <vc-spec>
-fn min_repunit_sum(n: nat) -> (result: nat)
-    requires valid_input(n)
-    ensures valid_output(n, result)
+fn min_repunit_sum(n: u8) -> (result: u8)
+    requires valid_input(n as nat)
+    ensures valid_output(n as nat, result as nat)
 // </vc-spec>
 // <vc-code>
 {

@@ -22,9 +22,9 @@ spec fn valid_result(result: int, n: int) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: int, k: int, s: Seq<char>) -> (result: int)
-    requires valid_input(n, k, s)
-    ensures valid_result(result, n)
+fn solve(n: i8, k: i8, s: Vec<char>) -> (result: i8)
+    requires valid_input(n as int, k as int, s@)
+    ensures valid_result(result as int, n as int)
 // </vc-spec>
 // <vc-code>
 {

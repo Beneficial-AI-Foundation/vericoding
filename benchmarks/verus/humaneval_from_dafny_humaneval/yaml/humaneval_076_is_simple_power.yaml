@@ -1,0 +1,35 @@
+vc-description: |-
+  function_signature: def is_simple_power(x: int, n: int) -> bool
+
+  Your task is to write a function that returns true if a number x is a simple power
+  of n and false in other cases. x is a simple power of n if n**int=x
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+  spec fn power(x: nat, y: nat) -> nat
+      decreases y
+  {
+      if y == 0 { 1 } else { x * power(x, (y - 1) as nat) }
+  }
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn is_simple_power(x: u8, n: i8) -> (ans: bool)
+      requires x > 0
+      ensures ans <==> exists|y: nat| n as int == power(x as nat, y) as int
+
+vc-code: |-
+  {
+      assume(false);
+      false
+  }
+
+vc-postamble: |-
+
+  }
+
+  fn main() {}

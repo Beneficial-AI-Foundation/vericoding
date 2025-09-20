@@ -41,7 +41,7 @@ fn flatten2(mat: &Matrix) -> (ret: Vec<i32>)
         ret.len() == mat.rows * mat.cols,
         forall|i: int, j: int| 
             0 <= i < mat.rows && 0 <= j < mat.cols ==> 
-            #[trigger] ret[(i * (mat.cols as int) + j) as int] == mat.get(i as usize, j as usize),
+            #[trigger] ret@[(i * (mat.cols as int) + j) as int] == mat.get(i as usize, j as usize),
 // </vc-spec>
 // <vc-code>
 {

@@ -1,0 +1,44 @@
+vc-description: |-
+  Natural logarithm of 10
+  
+  NPY_LOGE10 - C API Mathematical constants
+  Description: Natural logarithm of 10
+  Documentation: ln(10) = 2.302585092994045684017991454684364208
+  
+  Natural logarithm of 10 (ln(10))
+  
+  Specification: npy_loge10 is the natural logarithm of 10 with mathematical properties:
+  1. It is approximately 2.302585092994045684017991454684364208
+  2. It satisfies the property that e^(npy_loge10) = 10
+  3. It is the inverse of log10(e), meaning npy_loge10 * log10(e) = 1
+  4. It is useful for converting between natural and base-10 logarithms
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn npy_loge10() -> (result: i8)
+      ensures
+          /* Mathematical property: ln(10) is positive (since 10 > 1) */
+          result as int >= 0,
+          /* Mathematical property: ln(10) > ln(e) = 1 (since 10 > e) */  
+          result as int >= 1,
+          /* Mathematical property: ln(10) is between 2 and 3 */
+          2 <= result as int && result as int <= 3,
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      unreached()
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {}

@@ -8,21 +8,20 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn hermfromroots(roots: Vec<f64>) -> (coef: Vec<f64>)
+fn hermfromroots(roots: Vec<f32>) -> (coef: Vec<f32>)
     ensures
-        coef.len() == roots.len() + 1,
-        roots.len() > 0 ==> coef[roots.len() as int] != 0.0,
-        forall|i: int| 0 <= i < roots.len() ==> {
-
-            true
-        }
+        coef@.len() == roots@.len() + 1,
+        roots@.len() > 0 ==> coef@[roots@.len() as int] != 0.0f32
 // </vc-spec>
 // <vc-code>
 {
+    // impl-start
     assume(false);
     unreached()
+    // impl-end
 }
 // </vc-code>
+
 
 }
 fn main() {}

@@ -8,17 +8,18 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn empty(n: usize) -> (result: Vec<f32>)
-    ensures 
-        result.len() == n,
-        forall|i: int| 0 <= i < n ==> exists|v: f32| result[i] == v
+fn empty(n: u8) -> (result: Vec<f64>)
+    ensures result.len() == n as usize
 // </vc-spec>
 // <vc-code>
 {
+    // impl-start
     assume(false);
     unreached()
+    // impl-end
 }
 // </vc-code>
+
 
 }
 fn main() {}

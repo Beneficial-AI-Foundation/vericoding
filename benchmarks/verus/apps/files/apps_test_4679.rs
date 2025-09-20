@@ -19,8 +19,8 @@ spec fn valid_winner(winner: char) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(a: Seq<char>, b: Seq<char>, c: Seq<char>) -> (result: char)
-    requires valid_input(a, b, c)
+fn solve(a: Vec<char>, b: Vec<char>, c: Vec<char>) -> (result: char)
+    requires valid_input(a@, b@, c@)
     ensures valid_winner(result)
 // </vc-spec>
 // <vc-code>

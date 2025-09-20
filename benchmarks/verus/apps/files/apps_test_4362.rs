@@ -19,11 +19,11 @@ spec fn valid_output(result: Seq<char>) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(input: Seq<char>) -> (result: Seq<char>)
+fn solve(input: Vec<char>) -> (result: Vec<char>)
     ensures 
-        valid_output(result) &&
-        (all_lowercase(input) ==> result =~= seq!['a']) &&
-        ((input.len() == 0 || !all_lowercase(input)) ==> result =~= seq!['A'])
+        valid_output(result@) &&
+        (all_lowercase(input@) ==> result@ =~= seq!['a']) &&
+        ((input@.len() == 0 || !all_lowercase(input@)) ==> result@ =~= seq!['A'])
 // </vc-spec>
 // <vc-code>
 {

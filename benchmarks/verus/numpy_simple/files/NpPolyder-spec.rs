@@ -8,10 +8,10 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn polyder(poly: Vec<f32>, m: i32) -> (result: Vec<f32>)
+fn polyder(poly: Vec<i8>, m: i8) -> (result: Vec<i8>)
     requires 
         m > 0,
-        m <= poly.len() as i32,
+        m <= poly.len() as i8,
     ensures 
         result.len() == poly.len() - (m as usize),
 // </vc-spec>

@@ -35,11 +35,11 @@ spec fn reverse_move(pos: int, move_num: int) -> int {
 // </vc-helpers>
 
 // <vc-spec>
-fn shell_game(n: int, x: int) -> (result: int)
+fn shell_game(n: i32, x: i8) -> (result: i8)
     requires 
         n >= 1 && n <= 2000000000,
-        valid_position(x),
-    ensures valid_position(result),
+        valid_position(x as int),
+    ensures valid_position(result as int),
 // </vc-spec>
 // <vc-code>
 {

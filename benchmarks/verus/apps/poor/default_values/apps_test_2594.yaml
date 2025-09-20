@@ -1,0 +1,42 @@
+vc-description: |-
+  Given a rectangular park represented as an n×m grid of squares, find the minimum number 
+  of lanterns needed to light up all squares. Lanterns are placed on edges between squares,
+  and each lantern illuminates adjacent squares (up to 2 squares, or 1 if on boundary).
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+  spec fn valid_input(input: &str) -> bool {
+      true
+  }
+  
+  spec fn min_lanterns(n: int, m: int) -> int {
+      if n >= 1 && m >= 1 {
+          (n * m + 1) / 2
+      } else {
+          0
+      }
+  }
+  
+  spec fn valid_output(input: &str, output: Seq<int>) -> bool {
+      true
+  }
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn solve_lanterns() -> (result: bool)
+
+vc-code: |-
+  {
+      assume(false);
+      unreached()
+  }
+
+vc-postamble: |-
+
+  }
+
+  fn main() {}

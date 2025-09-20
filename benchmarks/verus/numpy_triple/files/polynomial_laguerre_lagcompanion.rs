@@ -8,7 +8,7 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn lagcompanion(c: Vec<f64>) -> (result: Vec<Vec<f64>>)
+fn lagcompanion(c: Vec<i8>) -> (result: Vec<Vec<i8>>)
     requires 
         c.len() >= 2,
     ensures 

@@ -19,7 +19,7 @@ spec fn correct_output(temp: int, output: Seq<char>) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(x: i32) -> (result: Vec<u8>)
+fn solve(x: i8) -> (result: Vec<u8>)
     requires valid_temperature(x as int)
     ensures correct_output(x as int, result@.map(|i: int, b: u8| b as char))
 // </vc-spec>

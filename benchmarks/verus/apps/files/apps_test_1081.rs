@@ -36,11 +36,11 @@ spec fn expected_result(n: int) -> bool
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: int) -> (result: bool)
+fn solve(n: i8) -> (result: bool)
 requires 
-    valid_input(n),
+    valid_input(n as int),
 ensures 
-    result == expected_result(n),
+    result == expected_result(n as int),
 // </vc-spec>
 // <vc-code>
 {

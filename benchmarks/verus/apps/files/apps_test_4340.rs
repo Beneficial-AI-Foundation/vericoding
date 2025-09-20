@@ -16,8 +16,8 @@ spec fn valid_transformation(input: Seq<int>, output: Seq<int>) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(a: Seq<int>) -> (result: Seq<int>)
-    ensures valid_transformation(a, result)
+fn solve(a: Vec<i8>) -> (result: Vec<i8>)
+    ensures valid_transformation(a@.map(|_i, x| x as int), result@.map(|_i, x| x as int))
 // </vc-spec>
 // <vc-code>
 {

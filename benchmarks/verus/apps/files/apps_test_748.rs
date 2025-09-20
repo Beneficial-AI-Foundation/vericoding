@@ -5,7 +5,7 @@ verus! {
 spec fn valid_input(n: int, numbers: Seq<int>) -> bool {
     n >= 3 && n % 3 == 0 &&
     numbers.len() == n &&
-    forall|i: int| 0 <= i < numbers.len() ==> 1 <= numbers[i] <= 7
+    forall|i: int| 0 <= i < numbers.len() ==> 1 <= #[trigger] numbers[i] && #[trigger] numbers[i] <= 7
 }
 
 spec fn valid_triplet(triplet: Seq<int>) -> bool {
@@ -18,7 +18,7 @@ spec fn valid_triplet(triplet: Seq<int>) -> bool {
 spec fn flatten_partition(result: Seq<Seq<int>>) -> Seq<int>
     decreases result.len()
 {
-    if result.len() == 0 {
+    if result.len() == 0 { 
         seq![]
     } else {
         result[0].add(flatten_partition(result.subrange(1, result.len() as int)))
@@ -27,7 +27,7 @@ spec fn flatten_partition(result: Seq<Seq<int>>) -> Seq<int>
 
 spec fn valid_partition(result: Seq<Seq<int>>, numbers: Seq<int>) -> bool {
     result.len() == numbers.len() / 3 &&
-    (forall|i: int| 0 <= i < result.len() ==> valid_triplet(result[i])) &&
+    (forall|i: int| 0 <= i < result.len() ==> valid_triplet(#[trigger] result[i])) &&
     numbers.to_multiset() == flatten_partition(result).to_multiset()
 }
 
@@ -40,9 +40,9 @@ spec fn no_partition_exists(result: Seq<Seq<int>>) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: int, numbers: Seq<int>) -> (result: Seq<Seq<int>>)
-    requires valid_input(n, numbers)
-    ensures no_partition_exists(result) || valid_partition(result, numbers)
+fn solve(n: i8, numbers: Vec<i8>) -> (result: Vec<Vec<i8>>)
+    requires valid_input(n as int, numbers@.map(|i: int, x: i8| x as int))
+    ensures no_partition_exists(result@.map(|i: int, v: Vec<i8>| v@.map(|j: int, x: i8| x as int))) || valid_partition(result@.map(|i: int, v: Vec<i8>| v@.map(|j: int, x: i8| x as int)), numbers@.map(|i: int, x: i8| x as int))
 // </vc-spec>
 // <vc-code>
 {
