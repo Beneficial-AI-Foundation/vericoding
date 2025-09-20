@@ -59,19 +59,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in
   #eval repeatedStringMatch "abcd" "cdabcdab"
 
-  /-
+  /--
   info: -1
   -/
   #guard_msgs in
   #eval repeatedStringMatch "abc" "xyz"
 
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in

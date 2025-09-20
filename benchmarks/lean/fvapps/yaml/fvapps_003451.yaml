@@ -41,19 +41,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: 775
   -/
   #guard_msgs in
   #eval gematria "love"
 
-  /-
+  /--
   info: 716
   -/
   #guard_msgs in
   #eval gematria "JAELS"
 
-  /-
+  /--
   info: 738
   -/
   #guard_msgs in

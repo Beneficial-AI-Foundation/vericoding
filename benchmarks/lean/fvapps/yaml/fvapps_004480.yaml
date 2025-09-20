@@ -31,19 +31,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: '$100000'
   -/
   #guard_msgs in
   #eval bonus_time 10000 True
 
-  /-
+  /--
   info: '$250000'
   -/
   #guard_msgs in
   #eval bonus_time 25000 True
 
-  /-
+  /--
   info: '$10000'
   -/
   #guard_msgs in

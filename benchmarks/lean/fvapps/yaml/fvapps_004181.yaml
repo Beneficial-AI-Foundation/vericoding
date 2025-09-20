@@ -86,19 +86,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 888
   -/
   #guard_msgs in
   #eval find 500 200
 
-  /-
+  /--
   info: 10003
   -/
   #guard_msgs in
   #eval find 10001 100
 
-  /-
+  /--
   info: 30046
   -/
   #guard_msgs in

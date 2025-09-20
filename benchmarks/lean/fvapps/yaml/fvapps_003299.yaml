@@ -55,37 +55,37 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 123
   -/
   #guard_msgs in
   #eval to_integer "123"
 
-  /-
+  /--
   info: -123
   -/
   #guard_msgs in
   #eval to_integer "-123"
 
-  /-
+  /--
   info: 123
   -/
   #guard_msgs in
   #eval to_integer "+123"
 
-  /-
+  /--
   info: 10
   -/
   #guard_msgs in
   #eval to_integer "0b1010"
 
-  /-
+  /--
   info: 291
   -/
   #guard_msgs in
   #eval to_integer "0x123"
 
-  /-
+  /--
   info: 83
   -/
   #guard_msgs in

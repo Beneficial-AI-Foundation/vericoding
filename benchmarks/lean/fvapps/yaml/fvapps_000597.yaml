@@ -102,19 +102,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 6
   -/
   #guard_msgs in
   #eval calculate_min_cost 4 [1, 2, 3, 4] 3 [[2, 1, 2], [2, 3, 4], [3, 1, 2, 3]]
 
-  /-
+  /--
   info: 4
   -/
   #guard_msgs in
   #eval calculate_min_cost 3 [1, 2, 3] 1 [[2, 1, 2]]
 
-  /-
+  /--
   info: 10
   -/
   #guard_msgs in

@@ -60,19 +60,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval is_subsequence "abc" "ahbgdc"
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval is_subsequence "axc" "ahbgdc"
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in

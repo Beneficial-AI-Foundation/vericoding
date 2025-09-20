@@ -46,23 +46,32 @@ vc-description: |-
   Calorie intake = 238 + 238 + 244 + 138 = 858
   ( 17km x 50 ) + ( 1km x 5 ) + ( 6km x 0.5 ) = 858.
   -/
+  
+  -- Apps difficulty: interview
+  -- Assurance level: guarded_and_plausible
 
 vc-preamble: |-
-  def isUpper (c : Char) : Bool := sorry
-  def isDigit (c : Char) : Bool := sorry
 
 vc-helpers: |-
 
 vc-definitions: |-
-  def isSpace (c : Char) : Bool := sorry
+  def isUpper (c : Char) : Bool :=
+  sorry
   
-  def count_elements (s : String) : Nat × Nat × Nat := sorry
+  def isDigit (c : Char) : Bool :=
+  sorry
+  
+  def isSpace (c : Char) : Bool :=
+  sorry
+  
+  def count_elements (s : String) : Nat × Nat × Nat :=
+  sorry
 
 vc-theorems: |-
   theorem count_elements_totals (s : String) :
     let (uppers, digits, spaces) := count_elements s
     let total := uppers + digits + spaces
-    total ≤ s.length := 
+    total ≤ s.length :=
   sorry
   
   theorem empty_string :
@@ -70,6 +79,4 @@ vc-theorems: |-
   sorry
 
 vc-postamble: |-
-  -- Apps difficulty: interview
-  -- Assurance level: guarded_and_plausible
 

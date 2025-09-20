@@ -30,19 +30,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: ['01101101', '01100001', '01101110']
   -/
   #guard_msgs in
   #eval word_to_bin "man"
 
-  /-
+  /--
   info: ['01100001']
   -/
   #guard_msgs in
   #eval word_to_bin "a"
 
-  /-
+  /--
   info: ['01000001', '01000010']
   -/
   #guard_msgs in

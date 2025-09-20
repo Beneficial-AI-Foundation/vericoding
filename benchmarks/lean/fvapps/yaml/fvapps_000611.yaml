@@ -123,19 +123,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval solve_magic_potions 1 1 1 1 [1] [2] [3]
 
-  /-
+  /--
   info: 4
   -/
   #guard_msgs in
   #eval solve_magic_potions 1 1 1 1 [2] [4] [6]
 
-  /-
+  /--
   info: 4
   -/
   #guard_msgs in

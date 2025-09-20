@@ -1,15 +1,15 @@
 vc-description: |-
   /-
   Chuck has lost count of how many asses he has kicked...
-
+  
   Chuck stopped counting at 100,000 because he prefers to kick things in the face instead of counting. That's just who he is.
-
+  
   To stop having to count like a mere mortal chuck developed his own special code using the hairs on his beard. You do not need to know the details of how it works, you simply need to know that the format is as follows: 'A8A8A8A8A8.-A%8.88.'
-
+  
   In Chuck's code, 'A' can be any capital letter and '8' can be any number 0-9 and any %, - or . symbols must not be changed.
-
+  
   Your task, to stop Chuck beating your ass with his little finger, is to use regex to verify if the number is a genuine Chuck score. If not it's probably some crap made up by his nemesis Bruce Lee. Return true if the provided count passes, and false if it does not.  
-
+  
   ```Javascript
   Example:
        'A8A8A8A8A8.-A%8.88.' <- don't forget final full stop :D\n
@@ -19,28 +19,34 @@ vc-description: |-
        'A2B8T1Q9W4.-F%5.3B.' == false; (last char should be number) 
        'A2B8T1Q9W4.£F&5.34.' == false; (symbol changed from - and %)
    ```
-
+  
   The pattern only needs to appear within the text. The full input can be longer, i.e. the pattern can be surrounded by other characters... Chuck loves to be surrounded!
-
+  
   Ready, steady, VERIFY!!
   -/
-
-vc-preamble: |
-
-vc-helpers: |
-
-vc-definitions: |-
-  def body_count (s : String) : Bool := sorry
-
+  
   /- Any string matching the pattern [A-Z][0-9] repeated 5 times, followed by
       .-[A-Z]%[0-9].[0-9][0-9]. should return true -/
+  
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded
+  
+  /- Any string not matching the pattern should return false -/
+
+vc-preamble: |-
+
+vc-helpers: |-
+
+vc-definitions: |-
+  def body_count (s : String) : Bool :=
+  sorry
 
 vc-theorems: |-
-  theorem valid_code_returns_true {code : String} 
-    (h : ∃ (a₁ a₂ a₃ a₄ a₅ : Char) (n₁ n₂ n₃ n₄ n₅ : Nat) (last_letter : Char) 
+  theorem valid_code_returns_true {code : String}
+    (h : ∃ (a₁ a₂ a₃ a₄ a₅ : Char) (n₁ n₂ n₃ n₄ n₅ : Nat) (last_letter : Char)
           (last_num dec₁ dec₂ : Nat),
       'A' ≤ a₁ ∧ a₁ ≤ 'Z' ∧
-      'A' ≤ a₂ ∧ a₂ ≤ 'Z' ∧ 
+      'A' ≤ a₂ ∧ a₂ ≤ 'Z' ∧
       'A' ≤ a₃ ∧ a₃ ≤ 'Z' ∧
       'A' ≤ a₄ ∧ a₄ ≤ 'Z' ∧
       'A' ≤ a₅ ∧ a₅ ≤ 'Z' ∧
@@ -53,22 +59,17 @@ vc-theorems: |-
                        a₃, Char.ofNat (n₃ + 48),
                        a₄, Char.ofNat (n₄ + 48),
                        a₅, Char.ofNat (n₅ + 48),
-                       '.', '-', last_letter, '%', 
+                       '.', '-', last_letter, '%',
                        Char.ofNat (last_num + 48), '.',
                        Char.ofNat (dec₁ + 48), Char.ofNat (dec₂ + 48), '.']) :
-    body_count code = true := sorry
-
-vc-postamble: |-
-  -- Apps difficulty: introductory
-  -- Assurance level: unguarded
-
-  /- Any string not matching the pattern should return false -/
-
+    body_count code = true :=
+  sorry
+  
   theorem invalid_code_returns_false {s : String}
     (h : ¬∃ (a₁ a₂ a₃ a₄ a₅ : Char) (n₁ n₂ n₃ n₄ n₅ : Nat) (last_letter : Char)
           (last_num dec₁ dec₂ : Nat),
       'A' ≤ a₁ ∧ a₁ ≤ 'Z' ∧
-      'A' ≤ a₂ ∧ a₂ ≤ 'Z' ∧ 
+      'A' ≤ a₂ ∧ a₂ ≤ 'Z' ∧
       'A' ≤ a₃ ∧ a₃ ≤ 'Z' ∧
       'A' ≤ a₄ ∧ a₄ ≤ 'Z' ∧
       'A' ≤ a₅ ∧ a₅ ≤ 'Z' ∧
@@ -81,24 +82,26 @@ vc-postamble: |-
                     a₃, Char.ofNat (n₃ + 48),
                     a₄, Char.ofNat (n₄ + 48),
                     a₅, Char.ofNat (n₅ + 48),
-                    '.', '-', last_letter, '%', 
+                    '.', '-', last_letter, '%',
                     Char.ofNat (last_num + 48), '.',
                     Char.ofNat (dec₁ + 48), Char.ofNat (dec₂ + 48), '.']) :
-    body_count s = false := sorry
+    body_count s = false :=
+  sorry
 
-  /-
+vc-postamble: |-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval body_count "A6C2E5Z9A4.-F%8.08."
-
-  /-
+  
+  /--
   info: True
   -/
   #guard_msgs in
   #eval body_count "PP P6A6T5F5S3.-Z%1.11.hgr"
-
-  /-
+  
+  /--
   info: False
   -/
   #guard_msgs in

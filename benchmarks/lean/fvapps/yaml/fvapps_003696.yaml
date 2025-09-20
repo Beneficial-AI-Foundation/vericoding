@@ -51,67 +51,67 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'A'
   -/
   #guard_msgs in
   #eval grader 0.95
 
-  /-
+  /--
   info: 'B'
   -/
   #guard_msgs in
   #eval grader 0.85
 
-  /-
+  /--
   info: 'C'
   -/
   #guard_msgs in
   #eval grader 0.75
 
-  /-
+  /--
   info: 'D'
   -/
   #guard_msgs in
   #eval grader 0.65
 
-  /-
+  /--
   info: 'A'
   -/
   #guard_msgs in
   #eval grader 1.0
 
-  /-
+  /--
   info: 'F'
   -/
   #guard_msgs in
   #eval grader 0.0
 
-  /-
+  /--
   info: 'F'
   -/
   #guard_msgs in
   #eval grader 1.1
 
-  /-
+  /--
   info: 'A'
   -/
   #guard_msgs in
   #eval grader 0.9
 
-  /-
+  /--
   info: 'B'
   -/
   #guard_msgs in
   #eval grader 0.8
 
-  /-
+  /--
   info: 'C'
   -/
   #guard_msgs in
   #eval grader 0.7
 
-  /-
+  /--
   info: 'D'
   -/
   #guard_msgs in

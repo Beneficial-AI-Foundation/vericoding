@@ -47,19 +47,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded
 
-  /-
+  /--
   info: 7
   -/
   #guard_msgs in
   #eval house_of_cards 1
 
-  /-
+  /--
   info: 15
   -/
   #guard_msgs in
   #eval house_of_cards 2
 
-  /-
+  /--
   info: 26
   -/
   #guard_msgs in

@@ -41,23 +41,31 @@ vc-description: |-
   - $K = 4$: The first hero will destroy the cells $[(1,1), (2,3)]$ and the second one will also destroy the cells $[(1,1), (2,3)]$.
   - $K = 5$ : The first hero will destroy the cell $(1,1)$ and the second one will also destroy the cell $(1,1)$.
   -/
+  
+  -- Apps difficulty: interview
+  -- Assurance level: guarded
 
 vc-preamble: |-
-  def solve (n m : Nat) : List Nat := sorry
-  
-  def cell_advance_hero1 (row col n m k : Nat) : (Nat × Nat) := sorry
 
 vc-helpers: |-
 
 vc-definitions: |-
-  def cell_advance_hero2 (row col n m k : Nat) : (Nat × Nat) := sorry
+  def solve (n m : Nat) : List Nat :=
+  sorry
   
-  def find_destroyed_cells (advance : Nat → Nat → Nat → Nat → Nat → (Nat × Nat)) (n m k : Nat) : List (Nat × Nat) := sorry
+  def cell_advance_hero1 (row col n m k : Nat) : (Nat × Nat) :=
+  sorry
+  
+  def cell_advance_hero2 (row col n m k : Nat) : (Nat × Nat) :=
+  sorry
+  
+  def find_destroyed_cells (advance : Nat → Nat → Nat → Nat → Nat → (Nat × Nat)) (n m k : Nat) : List (Nat × Nat) :=
+  sorry
 
 vc-theorems: |-
   theorem solve_output_range {n m : Nat} (h1 : n > 0) (h2 : m > 0) :
     let result := solve n m;
-    List.length result = n * m ∧ 
+    List.length result = n * m ∧
     ∀ x, x ∈ result → 1 ≤ x ∧ x ≤ n * m * 2 := by
     sorry
   
@@ -91,6 +99,4 @@ vc-theorems: |-
     sorry
 
 vc-postamble: |-
-  -- Apps difficulty: interview
-  -- Assurance level: guarded
 

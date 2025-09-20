@@ -40,19 +40,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: ['word', 'word']
   -/
   #guard_msgs in
   #eval filter_even_length_words ["word", "words", "word", "words"]
 
-  /-
+  /--
   info: []
   -/
   #guard_msgs in
   #eval filter_even_length_words ["Hello", "World"]
 
-  /-
+  /--
   info: ['Four']
   -/
   #guard_msgs in

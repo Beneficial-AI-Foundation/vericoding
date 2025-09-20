@@ -64,19 +64,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: 4
   -/
   #guard_msgs in
   #eval calc_valid_sequences 2 2
 
-  /-
+  /--
   info: 60
   -/
   #guard_msgs in
   #eval calc_valid_sequences 3 4
 
-  /-
+  /--
   info: 5
   -/
   #guard_msgs in

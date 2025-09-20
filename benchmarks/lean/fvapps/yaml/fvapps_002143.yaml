@@ -72,19 +72,19 @@ vc-postamble: |-
   -- Apps difficulty: competition
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in
   #eval solve_robot_exits 2 2 [2, 3] [1, 4]
 
-  /-
+  /--
   info: 8
   -/
   #guard_msgs in
   #eval solve_robot_exits 3 4 [2, 5, 10] [1, 3, 7, 13]
 
-  /-
+  /--
   info: 1
   -/
   #guard_msgs in

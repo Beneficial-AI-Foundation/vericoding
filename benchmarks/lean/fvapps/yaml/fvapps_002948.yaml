@@ -59,19 +59,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: [1]
   -/
   #guard_msgs in
   #eval locker_run 1
 
-  /-
+  /--
   info: [1, 4]
   -/
   #guard_msgs in
   #eval locker_run 5
 
-  /-
+  /--
   info: [1, 4, 9]
   -/
   #guard_msgs in

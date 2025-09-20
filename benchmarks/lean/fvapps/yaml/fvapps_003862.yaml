@@ -82,19 +82,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded
 
-  /-
+  /--
   info: 12
   -/
   #guard_msgs in
   #eval crossing_sum [[1, 1, 1, 1], [2, 2, 2, 2], [3, 3, 3, 3]] 1 3
 
-  /-
+  /--
   info: 9
   -/
   #guard_msgs in
   #eval crossing_sum [[1, 1], [3, 3], [1, 1], [2, 2]] 3 0
 
-  /-
+  /--
   info: 100
   -/
   #guard_msgs in

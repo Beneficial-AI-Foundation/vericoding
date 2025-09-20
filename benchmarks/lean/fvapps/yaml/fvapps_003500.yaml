@@ -55,19 +55,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval mn_lcm 1 2
 
-  /-
+  /--
   info: 6
   -/
   #guard_msgs in
   #eval mn_lcm 2 3
 
-  /-
+  /--
   info: 2520
   -/
   #guard_msgs in

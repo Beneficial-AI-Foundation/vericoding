@@ -49,19 +49,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: '60.00'
   -/
   #guard_msgs in
   #eval meeting_time 12 15 5
 
-  /-
+  /--
   info: '6.67'
   -/
   #guard_msgs in
   #eval meeting_time 12 -15 6
 
-  /-
+  /--
   info: '7.78'
   -/
   #guard_msgs in

@@ -47,19 +47,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'Green World Another'
   -/
   #guard_msgs in
   #eval longer "Another Green World"
 
-  /-
+  /--
   info: 'of on the Town edge Darkness'
   -/
   #guard_msgs in
   #eval longer "Darkness on the edge of Town"
 
-  /-
+  /--
   info: 'Hello hello'
   -/
   #guard_msgs in

@@ -69,19 +69,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 7
   -/
   #guard_msgs in
   #eval timed_reading 4 "The Fox asked the stork, "How is the soup?""
 
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in
   #eval timed_reading 3 "This play was good for us."
 
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in

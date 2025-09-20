@@ -56,61 +56,61 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval func_or True True
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval func_or True False
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval func_or False False
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval func_or 0 11
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval func_or None []
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval func_xor True True
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval func_xor True False
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval func_xor False False
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval func_xor 1 ""
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in

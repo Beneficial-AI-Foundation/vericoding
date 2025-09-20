@@ -45,19 +45,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: expected1
   -/
   #guard_msgs in
   #eval alphabet_position "The sunset sets at twelve o" clock."
 
-  /-
+  /--
   info: expected2
   -/
   #guard_msgs in
   #eval alphabet_position "-.-""
 
-  /-
+  /--
   info: expected3
   -/
   #guard_msgs in

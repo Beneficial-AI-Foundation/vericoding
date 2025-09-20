@@ -72,19 +72,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval min_ops_to_sort [3, 1, 6, 6, 3, 1, 1]
 
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in
   #eval min_ops_to_sort [1, 1, 4, 4, 4, 7, 8, 8]
 
-  /-
+  /--
   info: 1
   -/
   #guard_msgs in

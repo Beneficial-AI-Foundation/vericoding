@@ -28,19 +28,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 4.66
   -/
   #guard_msgs in
   #eval two_decimal_places 4.659725356
 
-  /-
+  /--
   info: 173735326.38
   -/
   #guard_msgs in
   #eval two_decimal_places 173735326.37837327
 
-  /-
+  /--
   info: 4.65
   -/
   #guard_msgs in

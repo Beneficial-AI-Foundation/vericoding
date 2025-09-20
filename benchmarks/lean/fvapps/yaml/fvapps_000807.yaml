@@ -78,19 +78,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded
 
-  /-
+  /--
   info: 6
   -/
   #guard_msgs in
   #eval count_subsequences 4 2 "abcb"
 
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval count_subsequences 7 1 "aayzbaa"
 
-  /-
+  /--
   info: 64197148392731290
   -/
   #guard_msgs in

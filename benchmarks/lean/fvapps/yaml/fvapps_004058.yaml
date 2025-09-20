@@ -76,19 +76,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded
 
-  /-
+  /--
   info: 1021
   -/
   #guard_msgs in
   #eval tankvol 40 120 3500
 
-  /-
+  /--
   info: 1750
   -/
   #guard_msgs in
   #eval tankvol 60 120 3500
 
-  /-
+  /--
   info: 2478
   -/
   #guard_msgs in

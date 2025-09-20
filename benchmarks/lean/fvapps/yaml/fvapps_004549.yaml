@@ -71,19 +71,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'AGEDYROPULIK'
   -/
   #guard_msgs in
   #eval encode "GADERYPOLUKI"
 
-  /-
+  /--
   info: 'Aed'
   -/
   #guard_msgs in
   #eval decode "Gde"
 
-  /-
+  /--
   info: test
   -/
   #guard_msgs in

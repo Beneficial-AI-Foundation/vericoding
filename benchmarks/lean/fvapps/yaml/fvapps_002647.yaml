@@ -55,19 +55,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 2.0
   -/
   #guard_msgs in
   #eval time 24 10 "Downstream 2"
 
-  /-
+  /--
   info: 2.0
   -/
   #guard_msgs in
   #eval time 24 14 "Upstream 2"
 
-  /-
+  /--
   info: 1.74
   -/
   #guard_msgs in

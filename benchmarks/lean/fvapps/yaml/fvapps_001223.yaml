@@ -85,19 +85,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'MasterChef'
   -/
   #guard_msgs in
   #eval solve_football_masterchef [(2, 2)]
 
-  /-
+  /--
   info: 'Football'
   -/
   #guard_msgs in
   #eval solve_football_masterchef [(2, 3), (3, 2)]
 
-  /-
+  /--
   info: 'Football'
   -/
   #guard_msgs in

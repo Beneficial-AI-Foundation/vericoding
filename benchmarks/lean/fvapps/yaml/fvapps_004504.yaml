@@ -41,19 +41,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'CW'
   -/
   #guard_msgs in
   #eval to_acronym "Code wars"
 
-  /-
+  /--
   info: 'HW'
   -/
   #guard_msgs in
   #eval to_acronym "Hello world"
 
-  /-
+  /--
   info: 'PIA'
   -/
   #guard_msgs in

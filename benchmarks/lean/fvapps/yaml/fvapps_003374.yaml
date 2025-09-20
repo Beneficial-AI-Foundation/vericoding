@@ -32,19 +32,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'Word'
   -/
   #guard_msgs in
   #eval capitalize_word "word"
 
-  /-
+  /--
   info: 'I'
   -/
   #guard_msgs in
   #eval capitalize_word "i"
 
-  /-
+  /--
   info: 'Glasswear'
   -/
   #guard_msgs in

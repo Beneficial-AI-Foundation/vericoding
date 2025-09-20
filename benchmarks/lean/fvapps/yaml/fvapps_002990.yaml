@@ -52,19 +52,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: 1
   -/
   #guard_msgs in
   #eval number_of_pairs ["red", "red"]
 
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in
   #eval number_of_pairs ["red", "green", "blue"]
 
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in

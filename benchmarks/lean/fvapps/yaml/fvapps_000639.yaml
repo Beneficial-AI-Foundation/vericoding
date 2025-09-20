@@ -80,19 +80,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 7
   -/
   #guard_msgs in
   #eval find_updown_length 7 [100, 1, 10, 3, 20, 25, 24]
 
-  /-
+  /--
   info: 6
   -/
   #guard_msgs in
   #eval find_updown_length 5 [3, 3, 2, 4, 1]
 
-  /-
+  /--
   info: 5
   -/
   #guard_msgs in

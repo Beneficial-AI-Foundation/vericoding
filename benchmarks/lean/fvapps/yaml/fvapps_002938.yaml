@@ -2,79 +2,89 @@ vc-description: |-
   /-
   The local transport authority is organizing an online picture contest.
   Participants must take pictures of transport means in an original way, and then post the picture on Instagram using a specific ```hashtag```.
-
+  
   The local transport authority needs your help. They want you to take out the ```hashtag``` from the posted message. Your task is to implement the function
-
+  
   ```python
   def omit_hashtag(message, hashtag):
   ```
-
+  
   ## Examples 
-
+  
   ```
   * ("Sunny day! #lta #vvv", "#lta") -> "Sunny day!  #vvv" (notice the double space)
   * ("#lta #picture_contest", "#lta") -> " #picture_contest"
   ```
-
+  
   ## Notes
-
+  
   * When multiple occurences of the hashtag are found, delete only the first one.
-
+  
   * In C, you should modify the ```message```, as the function returns a void type. In Python, you should return the answer.
-
+  
   * There can be erroneous messages where the hashtag isn't present. The message should in this case stay untouched.
-
+  
   * The hashtag only consists of alphanumeric characters.
   -/
 
 vc-preamble: |-
-  def omit_hashtag (message : String) (hashtag : String) : String := sorry 
 
-  def String.count (s t : String) : Nat := sorry
-
-vc-helpers: |
+vc-helpers: |-
 
 vc-definitions: |-
-  def String.containsSubstring (s t : String) : Bool := sorry
-
-  theorem omit_hashtag_length (message hashtag : String) : 
-    String.length (omit_hashtag message hashtag) ≤ String.length message := sorry
+  def omit_hashtag (message : String) (hashtag : String) : String :=
+  sorry
+  
+  def String.count (s t : String) : Nat :=
+  sorry
+  
+  def String.containsSubstring (s t : String) : Bool :=
+  sorry
 
 vc-theorems: |-
-  theorem omit_hashtag_unchanged (message hashtag : String) : 
-    ¬(String.containsSubstring message hashtag) → omit_hashtag message hashtag = message := sorry
-
-  theorem omit_hashtag_count (message hashtag : String) (h1 : hashtag ≠ "") 
-    (h2 : String.count message hashtag > 1) : 
-    String.count (omit_hashtag message hashtag) hashtag = String.count message hashtag - 1 := sorry
-
-  theorem omit_empty_hashtag (message : String) : 
-    omit_hashtag message "" = message := sorry
-
-  theorem omit_from_empty_message (hashtag : String) (h1 : hashtag ≠ "") : 
-    omit_hashtag "" hashtag = "" := sorry
-
-  theorem omit_hashtag_not_found (message hashtag : String) 
+  theorem omit_hashtag_length (message hashtag : String) :
+    String.length (omit_hashtag message hashtag) ≤ String.length message :=
+  sorry
+  
+  theorem omit_hashtag_unchanged (message hashtag : String) :
+    ¬(String.containsSubstring message hashtag) → omit_hashtag message hashtag = message :=
+  sorry
+  
+  theorem omit_hashtag_count (message hashtag : String) (h1 : hashtag ≠ "")
+    (h2 : String.count message hashtag > 1) :
+    String.count (omit_hashtag message hashtag) hashtag = String.count message hashtag - 1 :=
+  sorry
+  
+  theorem omit_empty_hashtag (message : String) :
+    omit_hashtag message "" = message :=
+  sorry
+  
+  theorem omit_from_empty_message (hashtag : String) (h1 : hashtag ≠ "") :
+    omit_hashtag "" hashtag = "" :=
+  sorry
+  
+  theorem omit_hashtag_not_found (message hashtag : String)
     (h1 : message ≠ "") (h2 : hashtag ≠ "") :
-    ¬(String.containsSubstring message hashtag) → omit_hashtag message hashtag = message := sorry
+    ¬(String.containsSubstring message hashtag) → omit_hashtag message hashtag = message :=
+  sorry
 
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
-
-  /-
+  
+  /--
   info: 'Sunny day!  #vvv'
   -/
   #guard_msgs in
   #eval omit_hashtag "Sunny day! #lta #vvv" "#lta"
-
-  /-
+  
+  /--
   info: ' #picture_contest'
   -/
   #guard_msgs in
   #eval omit_hashtag "#lta #picture_contest" "#lta"
-
-  /-
+  
+  /--
   info: ' #picture_contest #lta'
   -/
   #guard_msgs in

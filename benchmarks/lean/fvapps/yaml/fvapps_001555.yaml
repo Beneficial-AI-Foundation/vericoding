@@ -66,19 +66,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: expected1
   -/
   #guard_msgs in
   #eval strip_comments "apples, pears # and bananas\ngrapes\nbananas !apples" ["#", "!"]
 
-  /-
+  /--
   info: expected2
   -/
   #guard_msgs in
   #eval strip_comments "a #b\nc\nd $e f g" ["#", "$"]
 
-  /-
+  /--
   info: expected3
   -/
   #guard_msgs in

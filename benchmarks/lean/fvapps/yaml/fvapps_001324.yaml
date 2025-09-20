@@ -59,19 +59,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'A IS CLOSER'
   -/
   #guard_msgs in
   #eval find_closer_truck [3, -2, -5, -3]
 
-  /-
+  /--
   info: 'B IS CLOSER'
   -/
   #guard_msgs in
   #eval find_closer_truck [0, 6, 1, 2]
 
-  /-
+  /--
   info: 'B IS CLOSER'
   -/
   #guard_msgs in

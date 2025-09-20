@@ -34,19 +34,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'sexy'
   -/
   #guard_msgs in
   #eval make_string "sees eyes xray yoat"
 
-  /-
+  /--
   info: 'bean'
   -/
   #guard_msgs in
   #eval make_string "brown eyes are nice"
 
-  /-
+  /--
   info: 'cavn'
   -/
   #guard_msgs in

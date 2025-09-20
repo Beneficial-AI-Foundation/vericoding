@@ -43,16 +43,11 @@ vc-description: |-
   Node $4$ is at an even distance in the subtree of node $2$ so $A_4$ gets added to $A_2$ and $A_4$ becomes 0. Values of nodes after $2nd$ query: $6, 5, 7, 0$.
   Node $3$ is at an even distance in the subtree of node $1$ so $A_3$ gets added to $A_1$ and $A_3$ becomes 0. Values of nodes after $3rd$ query: $13, 5, 0, 0$.
   -/
+  
+  -- Apps difficulty: interview
+  -- Assurance level: guarded
 
 vc-preamble: |-
-  def find_sequence (arr : List Nat) : List Nat := sorry
-  
-  theorem find_sequence_non_negative (arr : List Nat) : 
-    ∀ x ∈ find_sequence arr, x ≥ 0 := sorry
-
-vc-helpers: |-
-
-vc-definitions: |-
   def countChanges (arr : List Nat) : Nat :=
     let indices := List.range (arr.length - 1)
     indices.foldl (fun acc i =>
@@ -62,25 +57,36 @@ vc-definitions: |-
         else acc
       else acc) 0
 
+vc-helpers: |-
+
+vc-definitions: |-
+  def find_sequence (arr : List Nat) : List Nat :=
+  sorry
+
 vc-theorems: |-
-  theorem find_sequence_trailing_zero (arr : List Nat) : 
-    arr.length > 0 → arr.getLast! = 0 → 
-    (find_sequence arr).getLast! = 0 := sorry
+  theorem find_sequence_non_negative (arr : List Nat) :
+    ∀ x ∈ find_sequence arr, x ≥ 0 :=
+  sorry
+  
+  theorem find_sequence_trailing_zero (arr : List Nat) :
+    arr.length > 0 → arr.getLast! = 0 →
+    (find_sequence arr).getLast! = 0 :=
+  sorry
   
   theorem find_sequence_run_lengths (arr : List Nat) (pos : Nat) (h : pos < arr.length) :
     let val := arr[pos]'h
     let run_length := (find_sequence arr).get! pos
     ∃ actual_count : Nat,
-      (∀ i, pos ≤ i ∧ i < pos + actual_count → 
+      (∀ i, pos ≤ i ∧ i < pos + actual_count →
         ∃ h' : i < arr.length, arr[i]'h' = val) ∧
       (val = 0 ∧ pos + actual_count = arr.length → run_length = 0) ∧
-      (¬(val = 0 ∧ pos + actual_count = arr.length) → run_length = actual_count) := sorry
+      (¬(val = 0 ∧ pos + actual_count = arr.length) → run_length = actual_count) :=
+  sorry
   
   theorem find_sequence_length (arr : List Nat) :
     arr.length > 0 →
-    (find_sequence arr).length = 1 + countChanges arr := sorry
+    (find_sequence arr).length = 1 + countChanges arr :=
+  sorry
 
 vc-postamble: |-
-  -- Apps difficulty: interview
-  -- Assurance level: guarded
 

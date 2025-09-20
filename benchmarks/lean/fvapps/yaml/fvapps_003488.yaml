@@ -38,19 +38,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval negation_value "!" False
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval negation_value "!" True
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in

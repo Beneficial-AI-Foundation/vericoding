@@ -97,19 +97,19 @@ vc-postamble: |-
   -- Apps difficulty: competition
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval find_max_tree_weight 4 [[1, 2, 1], [2, 3, 2], [3, 4, 3]] [0, 1, 1, 1, 1]
 
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in
   #eval find_max_tree_weight 4 [[1, 2, 1], [2, 3, 2], [3, 4, 3]] [0, 4, 4, 4, 4]
 
-  /-
+  /--
   info: 10000
   -/
   #guard_msgs in

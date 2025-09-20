@@ -84,13 +84,13 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in
   #eval find_min_zombie_moves 3 2 1
 
-  /-
+  /--
   info: -1
   -/
   #guard_msgs in

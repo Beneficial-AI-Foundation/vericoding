@@ -48,19 +48,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: (4, 1)
   -/
   #guard_msgs in
   #eval solve_subset_problem 5 2
 
-  /-
+  /--
   info: (6, 12)
   -/
   #guard_msgs in
   #eval solve_subset_problem 10 2
 
-  /-
+  /--
   info: (76, 49152)
   -/
   #guard_msgs in

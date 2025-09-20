@@ -58,19 +58,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: ['mee', 'aqq']
   -/
   #guard_msgs in
   #eval find_and_replace_pattern ["abc", "deq", "mee", "aqq", "dkd", "ccc"] "abb"
 
-  /-
+  /--
   info: ['aa', 'bb']
   -/
   #guard_msgs in
   #eval find_and_replace_pattern ["aa", "bb"] "cc"
 
-  /-
+  /--
   info: []
   -/
   #guard_msgs in

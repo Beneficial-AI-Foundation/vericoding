@@ -48,25 +48,25 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'mocha_missing!'
   -/
   #guard_msgs in
   #eval caffeineBuzz 1
 
-  /-
+  /--
   info: 'Java'
   -/
   #guard_msgs in
   #eval caffeineBuzz 3
 
-  /-
+  /--
   info: 'JavaScript'
   -/
   #guard_msgs in
   #eval caffeineBuzz 6
 
-  /-
+  /--
   info: 'CoffeeScript'
   -/
   #guard_msgs in

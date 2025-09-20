@@ -86,19 +86,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: expected1
   -/
   #guard_msgs in
   #eval justify "123 45 6" 7
 
-  /-
+  /--
   info: expected2
   -/
   #guard_msgs in
   #eval justify "test" 10
 
-  /-
+  /--
   info: expected3
   -/
   #guard_msgs in

@@ -46,19 +46,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'Y'
   -/
   #guard_msgs in
   #eval is_substring "techtrishna online event" "onlin"
 
-  /-
+  /--
   info: 'N'
   -/
   #guard_msgs in
   #eval is_substring "hello world" "xyz"
 
-  /-
+  /--
   info: 'Y'
   -/
   #guard_msgs in

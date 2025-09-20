@@ -60,19 +60,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: 12
   -/
   #guard_msgs in
   #eval solve_rubiks_cuboid 3 3 3
 
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in
   #eval solve_rubiks_cuboid 1 1 1
 
-  /-
+  /--
   info: 12
   -/
   #guard_msgs in

@@ -70,19 +70,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: None
   -/
   #guard_msgs in
   #eval mutually_exclusive *test1
 
-  /-
+  /--
   info: '0.30'
   -/
   #guard_msgs in
   #eval mutually_exclusive *test2
 
-  /-
+  /--
   info: '0.20'
   -/
   #guard_msgs in

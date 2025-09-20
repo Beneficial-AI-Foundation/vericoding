@@ -71,19 +71,19 @@ vc-postamble: |-
   -- Apps difficulty: competition
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'home'
   -/
   #guard_msgs in
   #eval determine_location 4 "SVO" ["SVO->CDG", "LHR->SVO", "SVO->LHR", "CDG->SVO"]
 
-  /-
+  /--
   info: 'contest'
   -/
   #guard_msgs in
   #eval determine_location 3 "SVO" ["SVO->HKT", "HKT->SVO", "SVO->RAP"]
 
-  /-
+  /--
   info: 'contest'
   -/
   #guard_msgs in

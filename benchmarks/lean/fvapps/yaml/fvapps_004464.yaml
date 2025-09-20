@@ -56,19 +56,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: [[1, 0, 1], [0, 1, 0], [1, 0, 1]]
   -/
   #guard_msgs in
   #eval x 3
 
-  /-
+  /--
   info: [[1, 0, 0, 1], [0, 1, 1, 0], [0, 1, 1, 0], [1, 0, 0, 1]]
   -/
   #guard_msgs in
   #eval x 4
 
-  /-
+  /--
   info: [[1, 0, 0, 0, 1], [0, 1, 0, 1, 0], [0, 0, 1, 0, 0], [0, 1, 0, 1, 0], [1, 0, 0, 0, 1]]
   -/
   #guard_msgs in

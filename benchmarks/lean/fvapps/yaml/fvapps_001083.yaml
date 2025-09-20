@@ -95,13 +95,13 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: 5
   -/
   #guard_msgs in
   #eval calc_virus_spread_days 4 5 2 1
 
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in

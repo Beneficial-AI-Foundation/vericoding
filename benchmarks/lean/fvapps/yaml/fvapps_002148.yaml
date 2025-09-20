@@ -77,37 +77,37 @@ vc-postamble: |-
   -- Apps difficulty: competition
   -- Assurance level: guarded
 
-  /-
+  /--
   info: 10
   -/
   #guard_msgs in
   #eval solve_division_pairs 10 4
 
-  /-
+  /--
   info: 4
   -/
   #guard_msgs in
   #eval solve_division_pairs 12 6
 
-  /-
+  /--
   info: 179
   -/
   #guard_msgs in
   #eval solve_division_pairs 179 822
 
-  /-
+  /--
   info: 1048576
   -/
   #guard_msgs in
   #eval solve_division_pairs 42034266112 80174
 
-  /-
+  /--
   info: 114141144
   -/
   #guard_msgs in
   #eval solve_division_pairs 228282288 228282288
 
-  /-
+  /--
   info: 1
   -/
   #guard_msgs in

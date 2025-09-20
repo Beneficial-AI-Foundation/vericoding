@@ -49,19 +49,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval whose_turn "b1;g1;b8;g8"
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval whose_turn "c3;g1;b8;g8"
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in

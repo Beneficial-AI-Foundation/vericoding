@@ -109,19 +109,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: '    o\noo\n  o\n   o'
   -/
   #guard_msgs in
   #eval mysterious_pattern 5 5
 
-  /-
+  /--
   info: '     o     o\noo  o oo  o\n  o     o\n   o     o'
   -/
   #guard_msgs in
   #eval mysterious_pattern 12 4
 
-  /-
+  /--
   info: 'o'
   -/
   #guard_msgs in

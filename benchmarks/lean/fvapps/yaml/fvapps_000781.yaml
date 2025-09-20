@@ -88,19 +88,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: -1
   -/
   #guard_msgs in
   #eval solve_sequence_swap 1 [1] [2]
 
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in
   #eval solve_sequence_swap 2 [1, 2] [2, 1]
 
-  /-
+  /--
   info: 1
   -/
   #guard_msgs in

@@ -67,19 +67,19 @@ vc-postamble: |-
   -- Apps difficulty: competition
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 1
   -/
   #guard_msgs in
   #eval len find_numbers(21)
 
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in
   #eval len find_numbers(20)
 
-  /-
+  /--
   info: 1
   -/
   #guard_msgs in

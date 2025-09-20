@@ -70,19 +70,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'Chef'
   -/
   #guard_msgs in
   #eval determine_winner 3 2 [5, 7, 1] [1, 2]
 
-  /-
+  /--
   info: 'Chef'
   -/
   #guard_msgs in
   #eval determine_winner 4 2 [1, 2, 3, 4] [1, 2]
 
-  /-
+  /--
   info: 'Garry'
   -/
   #guard_msgs in

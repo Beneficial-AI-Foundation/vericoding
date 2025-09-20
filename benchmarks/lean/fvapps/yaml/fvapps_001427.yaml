@@ -85,19 +85,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded
 
-  /-
+  /--
   info: 135
   -/
   #guard_msgs in
   #eval get_total_score [(2, 45), (9, 100), (8, 0), (2, 15), (8, 90)]
 
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in
   #eval get_total_score [(11, 1)]
 
-  /-
+  /--
   info: 260
   -/
   #guard_msgs in

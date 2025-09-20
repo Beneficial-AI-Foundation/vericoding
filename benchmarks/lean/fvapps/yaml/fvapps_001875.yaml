@@ -52,19 +52,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: sorted([sorted(g) for g in expected1])
   -/
   #guard_msgs in
   #eval sorted [sorted(g) for g in result1]
 
-  /-
+  /--
   info: sorted([sorted(g) for g in expected2])
   -/
   #guard_msgs in
   #eval sorted [sorted(g) for g in result2]
 
-  /-
+  /--
   info: sorted([sorted(g) for g in expected3])
   -/
   #guard_msgs in

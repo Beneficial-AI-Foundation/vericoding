@@ -26,14 +26,18 @@ vc-description: |-
   24
   120
   -/
+  
+  -- Apps difficulty: interview
+  -- Assurance level: guarded_and_plausible
 
 vc-preamble: |-
-  def factorial (n : Nat) : Nat :=
-    sorry
 
 vc-helpers: |-
 
 vc-definitions: |-
+  def factorial (n : Nat) : Nat :=
+    sorry
+  
   def calculate_factorials (nums : List Nat) : List Nat :=
     sorry
 
@@ -51,6 +55,4 @@ vc-theorems: |-
   sorry
 
 vc-postamble: |-
-  -- Apps difficulty: interview
-  -- Assurance level: guarded_and_plausible
 

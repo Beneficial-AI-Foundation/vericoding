@@ -1,29 +1,29 @@
 vc-description: |-
   /-
   Your task is to find the first element of an array that is not consecutive.
-
+  
   By not consecutive we mean not exactly 1 larger than the previous element of the array.
-
+  
   E.g. If we have an array `[1,2,3,4,6,7,8]` then `1` then `2` then `3` then `4` are all consecutive but `6` is not, so that's the first non-consecutive number.
-
+  
   ```if:c
   If a non consecutive number is found then return `true` and set the passed in pointer to the number found.
-
+  
   If the whole array is consecutive then return `false`.
   ```
   ```if-not:c
   If the whole array is consecutive then return `null`^(2).
   ```
   The array will always have at least `2` elements^(1) and all elements will be numbers. The numbers will also all be unique and in ascending order. The numbers could be positive or negative and the first non-consecutive could be either too!
-
+  
   If you like this Kata, maybe try this one next: https://www.codewars.com/kata/represent-array-of-numbers-as-ranges
-
+  
   ```if:c
   ^(1) Can you write a solution that will return `false` for both `[]` and `[ x ]` (an empty array and one with a single number) though? (This is an empty array and one with a single number and is not tested for, but you can write your own example test. )
   ```
   ```if-not:c
   ^(1) Can you write a solution that will return `null`^(2) for both `[]` and `[ x ]` though?  (This is an empty array and one with a single number and is not tested for, but you can write your own example test. )
-
+  
   ^(2)  
   Swift, Ruby and Crystal: `nil`  
   Haskell: `Nothing`  
@@ -34,39 +34,39 @@ vc-description: |-
   -/
 
 vc-preamble: |-
-  def firstNonConsecutive (arr : List Int) : Option Int :=
-    sorry
-
-vc-helpers: |
-
-vc-definitions: |-
   def abs (x : Int) : Int :=
     if x < 0 then -x else x
+
+vc-helpers: |-
+
+vc-definitions: |-
+  def firstNonConsecutive (arr : List Int) : Option Int :=
+    sorry
 
 vc-theorems: |-
   theorem empty_or_single_returns_none (arr : List Int) :
     arr.length ≤ 1 → firstNonConsecutive arr = none :=
   sorry
-
+  
   theorem consecutive_returns_none (arr : List Int) (h : arr.length ≥ 2) :
     (∀ i j, i + 1 = j → arr[i]? = some x → arr[j]? = some y → y = x + 1) →
     firstNonConsecutive arr = none :=
   sorry
-
-  theorem non_consecutive_returns_first_break (arr : List Int) (gap : Int) 
+  
+  theorem non_consecutive_returns_first_break (arr : List Int) (gap : Int)
       (h1 : arr.length ≥ 3) (h2 : (abs gap) > 1) :
     let pos := arr.length / 2
     let val := arr[pos]?
     match val with
-    | none => True  
-    | some x => 
+    | none => True
+    | some x =>
       let next := arr[pos+1]?
       match next with
       | none => True
       | some y => x + gap = y → firstNonConsecutive arr = some y
     :=
   sorry
-
+  
   theorem result_in_input (arr : List Int) :
     match firstNonConsecutive arr with
     | none => True
@@ -76,20 +76,20 @@ vc-theorems: |-
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
-
-  /-
+  
+  /--
   info: 6
   -/
   #guard_msgs in
   #eval first_non_consecutive [1, 2, 3, 4, 6, 7, 8]
-
-  /-
+  
+  /--
   info: None
   -/
   #guard_msgs in
   #eval first_non_consecutive [1, 2, 3, 4, 5, 6, 7, 8]
-
-  /-
+  
+  /--
   info: 0
   -/
   #guard_msgs in

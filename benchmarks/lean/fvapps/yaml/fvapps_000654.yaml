@@ -54,19 +54,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 5
   -/
   #guard_msgs in
   #eval count_santa_gifts 2 20 2 1
 
-  /-
+  /--
   info: 1
   -/
   #guard_msgs in
   #eval count_santa_gifts 1 5 2 1
 
-  /-
+  /--
   info: 1
   -/
   #guard_msgs in

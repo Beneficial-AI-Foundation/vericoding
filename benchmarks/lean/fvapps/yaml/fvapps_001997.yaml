@@ -79,19 +79,19 @@ vc-postamble: |-
   -- Apps difficulty: competition
   -- Assurance level: guarded
 
-  /-
+  /--
   info: 576
   -/
   #guard_msgs in
   #eval min_robot_energy 3 4 4 19 1 [42, 3, 99]
 
-  /-
+  /--
   info: 34
   -/
   #guard_msgs in
   #eval min_robot_energy 4 7 2 3 9 [1, 2, 3, 4]
 
-  /-
+  /--
   info: 20000
   -/
   #guard_msgs in

@@ -32,19 +32,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'aa[aa]bbcdeff[fffff]g'
   -/
   #guard_msgs in
   #eval string_parse "aaaabbcdefffffffg"
 
-  /-
+  /--
   info: 'Please enter a valid string'
   -/
   #guard_msgs in
   #eval string_parse 3
 
-  /-
+  /--
   info: 'aAAabbcdeFF[F]ff[ff]g'
   -/
   #guard_msgs in

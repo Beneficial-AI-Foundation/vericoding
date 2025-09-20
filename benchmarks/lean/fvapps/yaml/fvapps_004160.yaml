@@ -61,19 +61,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'ooooox'
   -/
   #guard_msgs in
   #eval fly_by "xxxxxx" "====T"
 
-  /-
+  /--
   info: 'oooxxxxxx'
   -/
   #guard_msgs in
   #eval fly_by "xxxxxxxxx" "==T"
 
-  /-
+  /--
   info: 'ooooooooooxxxxx'
   -/
   #guard_msgs in

@@ -66,19 +66,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: '5m'
   -/
   #guard_msgs in
   #eval meters 5
 
-  /-
+  /--
   info: '51.5km'
   -/
   #guard_msgs in
   #eval meters 51500
 
-  /-
+  /--
   info: '5Mm'
   -/
   #guard_msgs in

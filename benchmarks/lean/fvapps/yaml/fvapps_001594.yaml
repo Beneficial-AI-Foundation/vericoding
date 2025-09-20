@@ -43,19 +43,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded
 
-  /-
+  /--
   info: (1, 0)
   -/
   #guard_msgs in
   #eval fibfusc 0
 
-  /-
+  /--
   info: (0, 1)
   -/
   #guard_msgs in
   #eval fibfusc 1
 
-  /-
+  /--
   info: (-7, 13)
   -/
   #guard_msgs in

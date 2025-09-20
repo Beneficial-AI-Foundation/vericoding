@@ -32,42 +32,50 @@ vc-description: |-
   
   See Part 2 - [The Most Amicable of Numbers](http://www.codewars.com/kata/56b5ebaa26fd54188b000018)
   -/
+  
+  /- The kind function only outputs "abundant", "deficient", or "perfect" -/
+  
+  /- Properties of deficiently abundant amicable numbers output -/
+  
+  /- Symmetric property of amicable numbers -/
+  
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded
 
 vc-preamble: |-
-  def sumOfDivs (n : Nat) : Nat := sorry
-  
-  def kind (n : Nat) (sum : Nat) : String := sorry
 
 vc-helpers: |-
 
 vc-definitions: |-
-  def deficientlyAbundantAmicableNumbers (n1 n2 : Nat) : String := sorry
+  def sumOfDivs (n : Nat) : Nat :=
+  sorry
   
-  /- The kind function only outputs "abundant", "deficient", or "perfect" -/
+  def kind (n : Nat) (sum : Nat) : String :=
+  sorry
+  
+  def deficientlyAbundantAmicableNumbers (n1 n2 : Nat) : String :=
+  sorry
 
 vc-theorems: |-
-  theorem kind_outputs {n : Nat} (h : n > 0) : 
+  theorem kind_outputs {n : Nat} (h : n > 0) :
     let sum := sumOfDivs n
     let k := kind n sum
-    (k = "abundant" ∨ k = "deficient" ∨ k = "perfect") := sorry
-  
-  /- Properties of deficiently abundant amicable numbers output -/
+    (k = "abundant" ∨ k = "deficient" ∨ k = "perfect") :=
+  sorry
   
   theorem deficientlyabundant_properties {n1 n2 : Nat} (h1 : n1 > 0) (h2 : n2 > 0) :
-    let result := deficientlyAbundantAmicableNumbers n1 n2 
+    let result := deficientlyAbundantAmicableNumbers n1 n2
     let sum1 := sumOfDivs n1
     let sum2 := sumOfDivs n2
     let is_amicable := sum1 = n2 ∧ sum2 = n1 ∧ n1 ≠ n2
-    result.contains 'n' = !is_amicable := sorry
-  
-  /- Symmetric property of amicable numbers -/
+    result.contains 'n' = !is_amicable :=
+  sorry
   
   theorem symmetric_property {n1 n2 : Nat} (h1 : n1 > 0) (h2 : n2 > 0) :
     let result1 := deficientlyAbundantAmicableNumbers n1 n2
     let result2 := deficientlyAbundantAmicableNumbers n2 n1
-    result1.contains 'n' = result2.contains 'n' := sorry
+    result1.contains 'n' = result2.contains 'n' :=
+  sorry
 
 vc-postamble: |-
-  -- Apps difficulty: introductory
-  -- Assurance level: guarded
 

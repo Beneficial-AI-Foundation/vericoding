@@ -79,13 +79,13 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'xabza'
   -/
   #guard_msgs in
   #eval find_best_gift_string 3 3 ["xab", "a#z", "caa"]
 
-  /-
+  /--
   info: 'pvcbihjz'
   -/
   #guard_msgs in

@@ -72,19 +72,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval unique_paths_covering_all_squares [[1, 0, 0, 0], [0, 0, 0, 0], [0, 0, 2, -1]]
 
-  /-
+  /--
   info: 4
   -/
   #guard_msgs in
   #eval unique_paths_covering_all_squares [[1, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 2]]
 
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in

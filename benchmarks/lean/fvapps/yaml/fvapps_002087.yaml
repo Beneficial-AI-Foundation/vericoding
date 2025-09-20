@@ -97,19 +97,19 @@ vc-postamble: |-
   -- Apps difficulty: competition
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'fzfsirk'
   -/
   #guard_msgs in
   #eval find_company_name "tinkoff" "zscoder"
 
-  /-
+  /--
   info: 'xxxxxx'
   -/
   #guard_msgs in
   #eval find_company_name "xxxxxx" "xxxxxx"
 
-  /-
+  /--
   info: 'ioi'
   -/
   #guard_msgs in

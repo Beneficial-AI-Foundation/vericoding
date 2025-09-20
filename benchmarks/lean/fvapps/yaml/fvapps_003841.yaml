@@ -39,19 +39,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'ellohay'
   -/
   #guard_msgs in
   #eval pig_latin "hello"
 
-  /-
+  /--
   info: 'hi'
   -/
   #guard_msgs in
   #eval pig_latin "hi"
 
-  /-
+  /--
   info: 'orldway'
   -/
   #guard_msgs in

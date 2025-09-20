@@ -61,19 +61,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: expected1
   -/
   #guard_msgs in
   #eval group_cities ["Tokyo", "London", "Rome", "Donlon", "Kyoto", "Paris", "Okyot"]
 
-  /-
+  /--
   info: expected2
   -/
   #guard_msgs in
   #eval group_cities ["Rome", "Rome", "Rome", "Donlon", "London"]
 
-  /-
+  /--
   info: expected3
   -/
   #guard_msgs in

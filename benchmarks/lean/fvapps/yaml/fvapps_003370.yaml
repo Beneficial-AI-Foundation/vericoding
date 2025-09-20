@@ -46,19 +46,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval show_me "Francis"
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval show_me "Jean-Eluard"
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in

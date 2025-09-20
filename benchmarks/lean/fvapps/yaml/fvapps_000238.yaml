@@ -60,19 +60,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 7
   -/
   #guard_msgs in
   #eval max_equal_freq [2, 2, 1, 1, 5, 3, 3, 5]
 
-  /-
+  /--
   info: 5
   -/
   #guard_msgs in
   #eval max_equal_freq [1, 1, 1, 2, 2, 2]
 
-  /-
+  /--
   info: 13
   -/
   #guard_msgs in

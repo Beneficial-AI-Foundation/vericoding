@@ -56,25 +56,25 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in
   #eval hotpo 1
 
-  /-
+  /--
   info: 5
   -/
   #guard_msgs in
   #eval hotpo 5
 
-  /-
+  /--
   info: 8
   -/
   #guard_msgs in
   #eval hotpo 6
 
-  /-
+  /--
   info: 15
   -/
   #guard_msgs in

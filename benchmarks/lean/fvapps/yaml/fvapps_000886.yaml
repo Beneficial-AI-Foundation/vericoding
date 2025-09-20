@@ -63,19 +63,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 27
   -/
   #guard_msgs in
   #eval solve_golomb_squares 1 5
 
-  /-
+  /--
   info: 17
   -/
   #guard_msgs in
   #eval solve_golomb_squares 2 4
 
-  /-
+  /--
   info: 441
   -/
   #guard_msgs in

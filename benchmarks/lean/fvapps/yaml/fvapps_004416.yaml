@@ -58,19 +58,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: ['120', '150', '180']
   -/
   #guard_msgs in
   #eval is_divisible_by_6 "1*0"
 
-  /-
+  /--
   info: []
   -/
   #guard_msgs in
   #eval is_divisible_by_6 "*1"
 
-  /-
+  /--
   info: ['36', '66', '96']
   -/
   #guard_msgs in

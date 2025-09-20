@@ -83,43 +83,43 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval am_I_afraid "Monday" 12
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval am_I_afraid "Monday" 13
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval am_I_afraid "Friday" 4
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval am_I_afraid "Friday" 5
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval am_I_afraid "Sunday" 666
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval am_I_afraid "Sunday" -666
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in

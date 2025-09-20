@@ -46,19 +46,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval are_coprime 20 27
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval are_coprime 12 39
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in

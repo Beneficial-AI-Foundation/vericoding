@@ -62,25 +62,25 @@ vc-postamble: |-
   -- Apps difficulty: competition
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: 1
   -/
   #guard_msgs in
   #eval solve_wabbit 1 2 2 2
 
-  /-
+  /--
   info: 4
   -/
   #guard_msgs in
   #eval solve_wabbit 1 1 2 2
 
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in
   #eval solve_wabbit 69 69 69 69
 
-  /-
+  /--
   info: 262146
   -/
   #guard_msgs in

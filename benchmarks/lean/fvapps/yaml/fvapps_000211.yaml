@@ -2,69 +2,76 @@ vc-description: |-
   /-
   Given an array nums of positive integers. Your task is to select some subset of nums, multiply each element by an integer and add all these numbers. The array is said to be good if you can obtain a sum of 1 from the array by any possible subset and multiplicand.
   Return True if the array is good otherwise return False.
-
+  
   Example 1:
   Input: nums = [12,5,7,23]
   Output: true
   Explanation: Pick numbers 5 and 7.
   5*3 + 7*(-2) = 1
-
+  
   Example 2:
   Input: nums = [29,6,10]
   Output: true
   Explanation: Pick numbers 29, 6 and 10.
   29*1 + 6*(-3) + 10*(-1) = 1
-
+  
   Example 3:
   Input: nums = [3,6]
   Output: false
-
+  
   Constraints:
-
+  
   1 <= nums.length <= 10^5
   1 <= nums[i] <= 10^9
   -/
 
 vc-preamble: |-
-  def isGoodArray (nums : List Nat) : Bool := sorry
 
-  def gcd (a b : Nat) : Nat := sorry
-
-vc-helpers: |
+vc-helpers: |-
 
 vc-definitions: |-
-  def listGcd (nums : List Nat) : Nat := sorry
-
-  theorem good_array_gcd {nums : List Nat} (h : nums ≠ []) :
-    isGoodArray nums = true ↔ listGcd nums = 1
-    := sorry
+  def isGoodArray (nums : List Nat) : Bool :=
+  sorry
+  
+  def gcd (a b : Nat) : Nat :=
+  sorry
+  
+  def listGcd (nums : List Nat) : Nat :=
+  sorry
 
 vc-theorems: |-
-  theorem multiples_not_good {n : Nat} (h : n ≥ 2) : 
-    isGoodArray [n, 2*n, 3*n, 4*n] = false 
-    := sorry
-
+  theorem good_array_gcd {nums : List Nat} (h : nums ≠ []) :
+    isGoodArray nums = true ↔ listGcd nums = 1
+    :=
+  sorry
+  
+  theorem multiples_not_good {n : Nat} (h : n ≥ 2) :
+    isGoodArray [n, 2*n, 3*n, 4*n] = false
+    :=
+  sorry
+  
   theorem scale_makes_not_good {nums : List Nat} (h : nums ≠ []) :
     isGoodArray (nums.map (· * 2)) = false
-    := sorry
+    :=
+  sorry
 
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
-
-  /-
+  
+  /--
   info: True
   -/
   #guard_msgs in
   #eval isGoodArray #[12, 5, 7, 23]
-
-  /-
+  
+  /--
   info: True
   -/
   #guard_msgs in
   #eval isGoodArray #[29, 6, 10]
-
-  /-
+  
+  /--
   info: False
   -/
   #guard_msgs in

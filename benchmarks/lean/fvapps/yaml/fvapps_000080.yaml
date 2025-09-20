@@ -86,25 +86,25 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval can_strings_equal "aaa" "bbb" "ccc"
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval can_strings_equal "abc" "bca" "bca"
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval can_strings_equal "aabb" "bbaa" "baba"
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in

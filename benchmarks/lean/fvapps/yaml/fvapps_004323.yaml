@@ -71,19 +71,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval solve "adfa"
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval solve "bd"
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in

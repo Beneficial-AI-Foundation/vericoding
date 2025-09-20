@@ -70,19 +70,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: 20
   -/
   #guard_msgs in
   #eval bowling_score "11 11 11 11 11 11 11 11 11 11"
 
-  /-
+  /--
   info: 300
   -/
   #guard_msgs in
   #eval bowling_score "X X X X X X X X X XXX"
 
-  /-
+  /--
   info: 171
   -/
   #guard_msgs in

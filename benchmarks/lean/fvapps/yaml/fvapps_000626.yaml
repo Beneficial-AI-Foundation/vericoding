@@ -68,19 +68,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval solve_chocolate_distribution 3 2
 
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in
   #eval solve_chocolate_distribution 2 2
 
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in

@@ -48,19 +48,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'aba'
   -/
   #guard_msgs in
   #eval case_unification "Aba"
 
-  /-
+  /--
   info: 'ABA'
   -/
   #guard_msgs in
   #eval case_unification "ABa"
 
-  /-
+  /--
   info: 'asdervt'
   -/
   #guard_msgs in

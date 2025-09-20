@@ -101,13 +101,13 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in
   #eval len solve_bracket_sequence(n, k, s)
 
-  /-
+  /--
   info: 1
   -/
   #guard_msgs in

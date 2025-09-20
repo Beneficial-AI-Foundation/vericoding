@@ -88,19 +88,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 1808
   -/
   #guard_msgs in
   #eval xp_to_target_lvl 0 5
 
-  /-
+  /--
   info: 'Input is invalid.'
   -/
   #guard_msgs in
   #eval xp_to_target_lvl 31428 "47"
 
-  /-
+  /--
   info: 'You have already reached level 4.'
   -/
   #guard_msgs in

@@ -60,19 +60,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: 139
   -/
   #guard_msgs in
   #eval calculate_square_hash 1 4
 
-  /-
+  /--
   info: 40079781
   -/
   #guard_msgs in
   #eval calculate_square_hash 3 6
 
-  /-
+  /--
   info: 32745632
   -/
   #guard_msgs in

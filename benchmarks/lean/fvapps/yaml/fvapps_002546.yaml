@@ -114,19 +114,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'h1a1m1s1t1e1r1'
   -/
   #guard_msgs in
   #eval hamster_me "hamster" "hamster"
 
-  /-
+  /--
   info: 'h1e1h5m4m1e1'
   -/
   #guard_msgs in
   #eval hamster_me "hamster" "helpme"
 
-  /-
+  /--
   info: 'h1t8m1s1t1e1r1'
   -/
   #guard_msgs in

@@ -15,23 +15,26 @@ vc-description: |-
   7   -->  [] 
   ```
   -/
+  
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded_and_plausible
 
 vc-preamble: |-
-  def goldbach_partitions : Nat → List String := sorry
-  
-  def is_prime : Nat → Bool := sorry
+  def Nat.is_even (n : Nat) : Bool := n % 2 == 0
 
 vc-helpers: |-
 
 vc-definitions: |-
-  def Nat.is_even (n : Nat) : Bool := n % 2 == 0
+  def goldbach_partitions : Nat → List String :=
+  sorry
   
-  theorem goldbach_odd_numbers_empty (n : Nat) :
-    n % 2 = 1 → goldbach_partitions n = [] := sorry
+  def is_prime : Nat → Bool :=
+  sorry
 
 vc-theorems: |-
+  theorem goldbach_odd_numbers_empty (n : Nat) :
+    n % 2 = 1 → goldbach_partitions n = [] :=
+  sorry
 
 vc-postamble: |-
-  -- Apps difficulty: introductory
-  -- Assurance level: guarded_and_plausible
 

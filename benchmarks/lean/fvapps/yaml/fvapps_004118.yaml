@@ -62,19 +62,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: []
   -/
   #guard_msgs in
   #eval max_match ""
 
-  /-
+  /--
   info: ['happy', 'day']
   -/
   #guard_msgs in
   #eval max_match "happyday"
 
-  /-
+  /--
   info: ['the', 'cat', 'sat']
   -/
   #guard_msgs in

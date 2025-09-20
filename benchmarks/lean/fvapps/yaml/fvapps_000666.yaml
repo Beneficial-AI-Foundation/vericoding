@@ -68,19 +68,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'yes'
   -/
   #guard_msgs in
   #eval assess_lights 2 10 [(0, 0), (1, 0)]
 
-  /-
+  /--
   info: 'no'
   -/
   #guard_msgs in
   #eval assess_lights 2 10 [(1, 2), (1, 1)]
 
-  /-
+  /--
   info: 'yes'
   -/
   #guard_msgs in

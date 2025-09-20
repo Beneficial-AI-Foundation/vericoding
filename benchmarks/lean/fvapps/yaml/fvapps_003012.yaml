@@ -58,19 +58,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in
   #eval count_odd_pentaFib 0
 
-  /-
+  /--
   info: 1
   -/
   #guard_msgs in
   #eval count_odd_pentaFib 1
 
-  /-
+  /--
   info: 1
   -/
   #guard_msgs in

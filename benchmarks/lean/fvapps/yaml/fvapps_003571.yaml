@@ -91,19 +91,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'forfeit'
   -/
   #guard_msgs in
   #eval strange_coach ["michael", "jordan", "lebron", "james", "kobe", "bryant"]
 
-  /-
+  /--
   info: 'bk'
   -/
   #guard_msgs in
   #eval strange_coach ["babic", "keksic", "boric", "bukic", "sarmic", "balic", "kruzic", "hrenovkic", "beslic", "boksic", "krafnic", "pecivic", "klavirkovic", "kukumaric", "sunkic", "kolacic", "kovacic", "prijestolonasljednikovic"]
 
-  /-
+  /--
   info: 'b'
   -/
   #guard_msgs in

@@ -43,14 +43,18 @@ vc-description: |-
   
   The test suite is written so that your AI is expected to play 50 games and win every game it plays.
   -/
+  
+  -- Apps difficulty: interview
+  -- Assurance level: guarded
 
 vc-preamble: |-
-  def choose_move (gameState : List Nat) : Nat × Nat :=
-    sorry
 
 vc-helpers: |-
 
 vc-definitions: |-
+  def choose_move (gameState : List Nat) : Nat × Nat :=
+    sorry
+  
   def nimSum (xs : List Nat) : Nat :=
     sorry
 
@@ -58,7 +62,7 @@ vc-theorems: |-
   theorem choose_move_valid {gameState : List Nat} (h : gameState ≠ []) :
     let move := choose_move gameState
     let (pileIdx, straws) := move
-    pileIdx < gameState.length ∧ 
+    pileIdx < gameState.length ∧
     0 < straws ∧
     straws ≤ gameState[pileIdx]! :=
   sorry
@@ -79,6 +83,4 @@ vc-theorems: |-
   sorry
 
 vc-postamble: |-
-  -- Apps difficulty: interview
-  -- Assurance level: guarded
 

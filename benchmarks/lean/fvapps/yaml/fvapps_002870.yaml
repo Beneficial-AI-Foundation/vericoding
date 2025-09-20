@@ -59,19 +59,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval word_count "hello there"
 
-  /-
+  /--
   info: 4
   -/
   #guard_msgs in
   #eval word_count "Hello there, little user5453 374 ())$."
 
-  /-
+  /--
   info: 112
   -/
   #guard_msgs in

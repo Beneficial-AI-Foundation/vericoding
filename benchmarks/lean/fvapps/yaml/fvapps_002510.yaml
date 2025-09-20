@@ -72,19 +72,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 5
   -/
   #guard_msgs in
   #eval evaluate_expression "2 + 3"
 
-  /-
+  /--
   info: 5
   -/
   #guard_msgs in
   #eval evaluate_expression "len("hello")"
 
-  /-
+  /--
   info: 20
   -/
   #guard_msgs in

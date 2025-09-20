@@ -61,19 +61,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: ['o', 't']
   -/
   #guard_msgs in
   #eval modes "tomato"
 
-  /-
+  /--
   info: [3]
   -/
   #guard_msgs in
   #eval modes [1, 3, 3, 7]
 
-  /-
+  /--
   info: []
   -/
   #guard_msgs in

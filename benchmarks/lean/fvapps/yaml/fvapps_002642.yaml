@@ -51,31 +51,31 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'no one likes this'
   -/
   #guard_msgs in
   #eval likes []
 
-  /-
+  /--
   info: 'Peter likes this'
   -/
   #guard_msgs in
   #eval likes ["Peter"]
 
-  /-
+  /--
   info: 'Jacob and Alex like this'
   -/
   #guard_msgs in
   #eval likes ["Jacob", "Alex"]
 
-  /-
+  /--
   info: 'Max, John and Mark like this'
   -/
   #guard_msgs in
   #eval likes ["Max", "John", "Mark"]
 
-  /-
+  /--
   info: 'Alex, Jacob and 2 others like this'
   -/
   #guard_msgs in

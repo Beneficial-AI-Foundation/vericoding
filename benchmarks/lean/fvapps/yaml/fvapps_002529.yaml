@@ -62,19 +62,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: '--foo bar'
   -/
   #guard_msgs in
   #eval args_to_string [["foo", "bar"]]
 
-  /-
+  /--
   info: '-f bar'
   -/
   #guard_msgs in
   #eval args_to_string [["f", "bar"]]
 
-  /-
+  /--
   info: 'foo bar --baz qux -a plugh'
   -/
   #guard_msgs in

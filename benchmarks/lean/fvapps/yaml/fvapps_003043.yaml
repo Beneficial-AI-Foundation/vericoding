@@ -34,13 +34,13 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'Hello boss'
   -/
   #guard_msgs in
   #eval greet "Daniel" "Daniel"
 
-  /-
+  /--
   info: 'Hello guest'
   -/
   #guard_msgs in

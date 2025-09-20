@@ -32,19 +32,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval next closure_gen(2)
 
-  /-
+  /--
   info: 4
   -/
   #guard_msgs in
   #eval next g1
 
-  /-
+  /--
   info: 8
   -/
   #guard_msgs in

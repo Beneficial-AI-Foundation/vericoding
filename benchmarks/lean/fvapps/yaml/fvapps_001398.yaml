@@ -99,25 +99,25 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval count_balanced_substrings "47"
 
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval count_balanced_substrings "74"
 
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in
   #eval count_balanced_substrings "477"
 
-  /-
+  /--
   info: 23
   -/
   #guard_msgs in

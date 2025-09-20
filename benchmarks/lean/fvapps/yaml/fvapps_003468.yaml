@@ -105,19 +105,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: test1
   -/
   #guard_msgs in
   #eval my_crib 1
 
-  /-
+  /--
   info: test2
   -/
   #guard_msgs in
   #eval my_crib 2
 
-  /-
+  /--
   info: test3
   -/
   #guard_msgs in

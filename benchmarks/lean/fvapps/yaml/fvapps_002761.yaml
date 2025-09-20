@@ -63,31 +63,31 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in
   #eval psion_power_points 1 0
 
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in
   #eval psion_power_points 1 10
 
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval psion_power_points 1 11
 
-  /-
+  /--
   info: 4
   -/
   #guard_msgs in
   #eval psion_power_points 1 20
 
-  /-
+  /--
   info: 448
   -/
   #guard_msgs in

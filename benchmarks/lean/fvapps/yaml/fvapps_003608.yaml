@@ -32,19 +32,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: 100
   -/
   #guard_msgs in
   #eval words_to_marks "attitude"
 
-  /-
+  /--
   info: 75
   -/
   #guard_msgs in
   #eval words_to_marks "friends"
 
-  /-
+  /--
   info: 66
   -/
   #guard_msgs in

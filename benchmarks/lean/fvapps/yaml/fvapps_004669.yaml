@@ -12,22 +12,26 @@ vc-description: |-
   `resistor_parallel(20, 20)` will return `10.0`  
   `resistor_parallel(20, 20, 40)` will return `8.0`
   -/
+  
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded
 
 vc-preamble: |-
-  def resistor_parallel (r : List Float) : Float := sorry
-  
-  theorem parallel_resistance_positive {r : List Float} (h : ∀ x ∈ r, x > 0) : 
-    resistor_parallel r > 0 := 
-  sorry
+  def sum_list : List Float → Float
+    | [] => 0
+    | x::xs => x + sum_list xs
 
 vc-helpers: |-
 
 vc-definitions: |-
-  def sum_list : List Float → Float 
-    | [] => 0
-    | x::xs => x + sum_list xs
+  def resistor_parallel (r : List Float) : Float :=
+  sorry
 
 vc-theorems: |-
+  theorem parallel_resistance_positive {r : List Float} (h : ∀ x ∈ r, x > 0) :
+    resistor_parallel r > 0 :=
+  sorry
+  
   theorem single_resistor_identity {r : Float} (h : r > 0) :
     resistor_parallel [r] = r :=
   sorry
@@ -41,6 +45,4 @@ vc-theorems: |-
   sorry
 
 vc-postamble: |-
-  -- Apps difficulty: introductory
-  -- Assurance level: guarded
 

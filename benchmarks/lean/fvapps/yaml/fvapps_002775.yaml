@@ -48,19 +48,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: '10:15'
   -/
   #guard_msgs in
   #eval check_availability [["09:30", "10:15"], ["12:20", "15:50"]] "10:00"
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval check_availability [["09:30", "10:15"], ["12:20", "15:50"]] "11:00"
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in

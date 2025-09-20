@@ -59,19 +59,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval max_regions_after_v_roads 1
 
-  /-
+  /--
   info: 7
   -/
   #guard_msgs in
   #eval max_regions_after_v_roads 2
 
-  /-
+  /--
   info: 16
   -/
   #guard_msgs in

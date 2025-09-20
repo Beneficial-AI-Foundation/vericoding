@@ -145,19 +145,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: ['AUG UCG AGC GAU ACU UAG', 'Met Ser Ser Asp Thr Stop']
   -/
   #guard_msgs in
   #eval protein_synthesis "TACAGCTCGCTATGAATC"
 
-  /-
+  /--
   info: ['UGC AC', 'Cys']
   -/
   #guard_msgs in
   #eval protein_synthesis "ACGTG"
 
-  /-
+  /--
   info: ['AUG', 'Met']
   -/
   #guard_msgs in

@@ -57,19 +57,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: expected1
   -/
   #guard_msgs in
   #eval array_manip [8, 58, 71, 18, 31, 32, 63, 92, 43, 3, 91, 93, 25, 80, 28]
 
-  /-
+  /--
   info: expected2
   -/
   #guard_msgs in
   #eval array_manip [2, 4, 18, 16, 7, 3, 9, 13, 18, 10]
 
-  /-
+  /--
   info: expected3
   -/
   #guard_msgs in

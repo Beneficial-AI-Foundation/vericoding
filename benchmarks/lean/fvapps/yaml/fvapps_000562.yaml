@@ -98,19 +98,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: ['Yes', 'No']
   -/
   #guard_msgs in
   #eval can_read_words "act" ["cat", "dog"]
 
-  /-
+  /--
   info: ['Yes', 'No', 'Yes']
   -/
   #guard_msgs in
   #eval can_read_words "a" ["a", "b", "aa"]
 
-  /-
+  /--
   info: ['Yes', 'Yes', 'Yes', 'No']
   -/
   #guard_msgs in

@@ -54,19 +54,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: '1112111121311'
   -/
   #guard_msgs in
   #eval numericals "Hello, World!"
 
-  /-
+  /--
   info: '123456789101112'
   -/
   #guard_msgs in
   #eval numericals "aaaaaaaaaaaa"
 
-  /-
+  /--
   info: '11121122342'
   -/
   #guard_msgs in

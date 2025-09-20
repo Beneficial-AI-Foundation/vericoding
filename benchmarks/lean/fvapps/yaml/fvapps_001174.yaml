@@ -63,19 +63,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'NO'
   -/
   #guard_msgs in
   #eval check_ingredients 5 100 [11, 22, 33, 44, 55]
 
-  /-
+  /--
   info: 'YES'
   -/
   #guard_msgs in
   #eval check_ingredients 5 50 [10, 20, 30, 40, 50]
 
-  /-
+  /--
   info: 'YES'
   -/
   #guard_msgs in

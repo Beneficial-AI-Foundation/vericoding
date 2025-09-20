@@ -87,19 +87,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: '123'
   -/
   #guard_msgs in
   #eval decrypt "353"
 
-  /-
+  /--
   info: '738496'
   -/
   #guard_msgs in
   #eval decrypt "123456"
 
-  /-
+  /--
   info: 'impossible'
   -/
   #guard_msgs in

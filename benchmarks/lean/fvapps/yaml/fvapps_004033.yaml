@@ -28,19 +28,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'HELLO'
   -/
   #guard_msgs in
   #eval make_upper_case "hello"
 
-  /-
+  /--
   info: 'HELLO WORLD'
   -/
   #guard_msgs in
   #eval make_upper_case "hello world"
 
-  /-
+  /--
   info: 'HELLO WORLD !'
   -/
   #guard_msgs in

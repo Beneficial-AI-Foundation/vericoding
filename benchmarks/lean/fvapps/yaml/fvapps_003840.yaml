@@ -96,19 +96,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: '1337'
   -/
   #guard_msgs in
   #eval to_leet_speak "LEET"
 
-  /-
+  /--
   info: '(0D3W@R$'
   -/
   #guard_msgs in
   #eval to_leet_speak "CODEWARS"
 
-  /-
+  /--
   info: '#3110 W0R1D'
   -/
   #guard_msgs in

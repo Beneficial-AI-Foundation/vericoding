@@ -48,19 +48,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'Hardly any'
   -/
   #guard_msgs in
   #eval how_many_dalmatians 8
 
-  /-
+  /--
   info: 'More than a handful!'
   -/
   #guard_msgs in
   #eval how_many_dalmatians 26
 
-  /-
+  /--
   info: '101 DALMATIONS!!!'
   -/
   #guard_msgs in

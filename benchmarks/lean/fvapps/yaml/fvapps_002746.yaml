@@ -57,37 +57,37 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in
   #eval champernowne_digit 1
 
-  /-
+  /--
   info: 1
   -/
   #guard_msgs in
   #eval champernowne_digit 2
 
-  /-
+  /--
   info: 4
   -/
   #guard_msgs in
   #eval champernowne_digit 20
 
-  /-
+  /--
   info: 6
   -/
   #guard_msgs in
   #eval champernowne_digit 3678608
 
-  /-
+  /--
   info: 'nan'
   -/
   #guard_msgs in
   #eval str champernowne_digit(0)
 
-  /-
+  /--
   info: 'nan'
   -/
   #guard_msgs in

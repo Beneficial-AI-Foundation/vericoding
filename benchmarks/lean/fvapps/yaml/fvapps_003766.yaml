@@ -57,13 +57,13 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: ['abc:456', 'cde:123']
   -/
   #guard_msgs in
   #eval tail_swap ["abc:123", "cde:456"]
 
-  /-
+  /--
   info: ['a:xyz', '777:12345']
   -/
   #guard_msgs in

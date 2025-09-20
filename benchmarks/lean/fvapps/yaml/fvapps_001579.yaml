@@ -117,19 +117,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: s1
   -/
   #guard_msgs in
   #eval decode *encoded1
 
-  /-
+  /--
   info: s2
   -/
   #guard_msgs in
   #eval decode *encoded2
 
-  /-
+  /--
   info: s3
   -/
   #guard_msgs in

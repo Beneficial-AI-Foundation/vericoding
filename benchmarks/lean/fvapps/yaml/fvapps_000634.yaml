@@ -48,41 +48,49 @@ vc-description: |-
   -----Explanation:-----
   The laser has 150 energy. We can consume 100 energy and destroy the first crystal and gain 1 point. The remaining energy is 50, which is not enough to destroy the other crystal. We end the game here as we have the maximum possible points attainable.
   -/
+  
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded
 
 vc-preamble: |-
+
+vc-helpers: |-
+
+vc-definitions: |-
   def game (n : Nat) (health : List Nat) (laser_energy : Nat) : Nat :=
     sorry
   
   def listMin (l : List Nat) : Nat :=
     sorry
-
-vc-helpers: |-
-
-vc-definitions: |-
+  
   def listSum (l : List Nat) : Nat :=
     sorry
 
 vc-theorems: |-
   theorem game_result_non_negative (n : Nat) (health : List Nat) (laser_energy : Nat) :
-    game n health laser_energy ≥ 0 := sorry
+    game n health laser_energy ≥ 0 :=
+  sorry
   
   theorem game_result_bounded (n : Nat) (health : List Nat) (laser_energy : Nat) :
-    game n health laser_energy ≤ n := sorry
+    game n health laser_energy ≤ n :=
+  sorry
   
   theorem game_empty_list (laser_energy : Nat) :
-    game 0 [] laser_energy = 0 := sorry 
+    game 0 [] laser_energy = 0 :=
+  sorry
   
   theorem game_zero_energy (n : Nat) (health : List Nat) (h : health ≠ []) :
-    game n health 0 = 0 := sorry
+    game n health 0 = 0 :=
+  sorry
   
   theorem game_energy_threshold (n : Nat) (health : List Nat) (laser_energy : Nat)
     (h1 : health ≠ []) (h2 : laser_energy < listMin health) :
-    game n health laser_energy = 0 := sorry
+    game n health laser_energy = 0 :=
+  sorry
   
   theorem game_sufficient_energy (n : Nat) (health : List Nat) (h : health ≠ []) :
-    game n health (2 * listSum health) = n := sorry
+    game n health (2 * listSum health) = n :=
+  sorry
 
 vc-postamble: |-
-  -- Apps difficulty: interview
-  -- Assurance level: unguarded
 

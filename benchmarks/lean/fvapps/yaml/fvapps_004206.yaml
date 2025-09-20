@@ -37,19 +37,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'Who ate the last cookie? It was Zach!'
   -/
   #guard_msgs in
   #eval cookie "Ryan"
 
-  /-
+  /--
   info: 'Who ate the last cookie? It was Monica!'
   -/
   #guard_msgs in
   #eval cookie 2.3
 
-  /-
+  /--
   info: 'Who ate the last cookie? It was Monica!'
   -/
   #guard_msgs in

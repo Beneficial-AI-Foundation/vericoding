@@ -105,19 +105,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: k
   -/
   #guard_msgs in
   #eval len solve_salmon_game(n, k)
 
-  /-
+  /--
   info: k
   -/
   #guard_msgs in
   #eval len solve_salmon_game(n, k)
 
-  /-
+  /--
   info: k
   -/
   #guard_msgs in

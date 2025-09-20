@@ -93,19 +93,19 @@ vc-postamble: |-
   -- Apps difficulty: competition
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 7
   -/
   #guard_msgs in
   #eval solve_vasily_cards 4 [6, 3, 1, 2]
 
-  /-
+  /--
   info: 1
   -/
   #guard_msgs in
   #eval solve_vasily_cards 1 [1000]
 
-  /-
+  /--
   info: 7
   -/
   #guard_msgs in

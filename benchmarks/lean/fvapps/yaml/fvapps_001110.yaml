@@ -69,19 +69,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'yes'
   -/
   #guard_msgs in
   #eval can_order_team [1, 2, 3] [2, 3, 4] [2, 3, 5]
 
-  /-
+  /--
   info: 'no'
   -/
   #guard_msgs in
   #eval can_order_team [1, 2, 3] [2, 3, 4] [2, 3, 4]
 
-  /-
+  /--
   info: 'yes'
   -/
   #guard_msgs in

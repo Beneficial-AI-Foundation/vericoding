@@ -55,19 +55,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: '4'
   -/
   #guard_msgs in
   #eval find_slope [3, 6, 4, 10]
 
-  /-
+  /--
   info: '0'
   -/
   #guard_msgs in
   #eval find_slope [12, -18, -15, -18]
 
-  /-
+  /--
   info: 'undefined'
   -/
   #guard_msgs in

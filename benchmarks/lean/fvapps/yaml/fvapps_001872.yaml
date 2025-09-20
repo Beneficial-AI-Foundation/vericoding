@@ -71,19 +71,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'bacd'
   -/
   #guard_msgs in
   #eval smallest_string_with_swaps "dcab" [[0, 3], [1, 2]]
 
-  /-
+  /--
   info: 'abcd'
   -/
   #guard_msgs in
   #eval smallest_string_with_swaps "dcab" [[0, 3], [1, 2], [0, 2]]
 
-  /-
+  /--
   info: 'abc'
   -/
   #guard_msgs in

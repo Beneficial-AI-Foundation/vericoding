@@ -70,37 +70,38 @@ vc-description: |-
   
   Zombie Z1 can choose one of red, blue or green cars. Z2 can choose one of the remaining two colors (as its car's color can not be same as its parent car.). Z3 can also choose his car in two colors, (one of them could be color same as Z1, and other being the color which is not same as cars of both Z1 and Z2.). This way, there can be 12 different ways of selecting the cars.
   -/
+  
+  -- Apps difficulty: interview
+  -- Assurance level: guarded_and_plausible
 
 vc-preamble: |-
-  def solve_zombie_cars (n k : Nat) : Nat :=
-    sorry
+  def MOD : Nat := 1000000007
 
 vc-helpers: |-
 
 vc-definitions: |-
-  def MOD : Nat := 1000000007
-  
-  theorem solve_zombie_cars_output_range (n k : Nat) :
-    n ≥ 1 → k ≥ 1 → solve_zombie_cars n k < MOD :=
+  def solve_zombie_cars (n k : Nat) : Nat :=
     sorry
 
 vc-theorems: |-
+  theorem solve_zombie_cars_output_range (n k : Nat) :
+    n ≥ 1 → k ≥ 1 → solve_zombie_cars n k < MOD :=
+  sorry
+  
   theorem solve_zombie_cars_k_one (n k : Nat) :
     n ≥ 1 → k = 1 → solve_zombie_cars n k = if n = 1 then 1 else 0 :=
-    sorry
+  sorry
   
   theorem solve_zombie_cars_formula (n k : Nat) :
-    n ≥ 1 → k ≥ 1 → 
+    n ≥ 1 → k ≥ 1 →
     solve_zombie_cars n k = (k * (k-1)^(n-1)) % MOD :=
-    sorry
+  sorry
   
-  theorem solve_zombie_cars_known_values : 
+  theorem solve_zombie_cars_known_values :
     solve_zombie_cars 2 2 = 2 ∧
     solve_zombie_cars 3 3 = 12 ∧
     solve_zombie_cars 4 3 = 24 :=
-    sorry
+  sorry
 
 vc-postamble: |-
-  -- Apps difficulty: interview
-  -- Assurance level: guarded_and_plausible
 

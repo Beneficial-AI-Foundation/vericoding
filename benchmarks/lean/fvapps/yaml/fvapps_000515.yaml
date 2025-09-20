@@ -55,19 +55,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: '1/1'
   -/
   #guard_msgs in
   #eval calc_gcd_prob 1
 
-  /-
+  /--
   info: '3/4'
   -/
   #guard_msgs in
   #eval calc_gcd_prob 2
 
-  /-
+  /--
   info: '5/9'
   -/
   #guard_msgs in

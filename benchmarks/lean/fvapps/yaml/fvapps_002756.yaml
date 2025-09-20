@@ -42,19 +42,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 200.0
   -/
   #guard_msgs in
   #eval cost_of_carpet 3 5 4 10
 
-  /-
+  /--
   info: 'error'
   -/
   #guard_msgs in
   #eval cost_of_carpet 0 0 4 10
 
-  /-
+  /--
   info: 'error'
   -/
   #guard_msgs in

@@ -49,19 +49,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in
   #eval sequence_classifier [3, 5, 8, 1, 14, 3]
 
-  /-
+  /--
   info: 1
   -/
   #guard_msgs in
   #eval sequence_classifier [3, 5, 8, 9, 14, 23]
 
-  /-
+  /--
   info: 5
   -/
   #guard_msgs in

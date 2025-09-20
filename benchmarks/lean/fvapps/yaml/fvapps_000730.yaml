@@ -58,13 +58,13 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 9
   -/
   #guard_msgs in
   #eval min_cable_cost 4 [[0, 7, 8, 10], [7, 0, 4, 5], [8, 4, 0, 6], [10, 5, 6, 0]]
 
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in

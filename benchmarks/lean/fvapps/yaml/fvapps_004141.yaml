@@ -46,19 +46,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: 30
   -/
   #guard_msgs in
   #eval cost 45
 
-  /-
+  /--
   info: 30
   -/
   #guard_msgs in
   #eval cost 63
 
-  /-
+  /--
   info: 40
   -/
   #guard_msgs in

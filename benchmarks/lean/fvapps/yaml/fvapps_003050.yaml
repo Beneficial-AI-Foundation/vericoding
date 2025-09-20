@@ -74,19 +74,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded
 
-  /-
+  /--
   info: 23
   -/
   #guard_msgs in
   #eval find_unknown_number 2 3 2
 
-  /-
+  /--
   info: 52
   -/
   #guard_msgs in
   #eval find_unknown_number 1 2 3
 
-  /-
+  /--
   info: 105
   -/
   #guard_msgs in

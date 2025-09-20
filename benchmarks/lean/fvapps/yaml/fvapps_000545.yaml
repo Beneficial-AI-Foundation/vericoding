@@ -83,19 +83,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'Alice'
   -/
   #guard_msgs in
   #eval determine_winner 5 [3, 1, 3, 3, 4] [1, 6, 2, 5, 3]
 
-  /-
+  /--
   info: 'Bob'
   -/
   #guard_msgs in
   #eval determine_winner 5 [1, 6, 2, 5, 3] [3, 1, 3, 3, 4]
 
-  /-
+  /--
   info: 'Draw'
   -/
   #guard_msgs in

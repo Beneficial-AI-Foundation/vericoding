@@ -61,19 +61,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'ajav'
   -/
   #guard_msgs in
   #eval solve "java"
 
-  /-
+  /--
   info: 'edorur'
   -/
   #guard_msgs in
   #eval solve "oruder"
 
-  /-
+  /--
   info: 'failed'
   -/
   #guard_msgs in

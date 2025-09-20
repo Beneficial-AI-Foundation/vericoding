@@ -65,19 +65,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 5
   -/
   #guard_msgs in
   #eval hop_across [1, 2, 1, 2]
 
-  /-
+  /--
   info: 7
   -/
   #guard_msgs in
   #eval hop_across [2, 2, 3, 1, 1, 2, 1]
 
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in

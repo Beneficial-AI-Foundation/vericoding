@@ -48,31 +48,31 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded
 
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in
   #eval duplicate_count ""
 
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in
   #eval duplicate_count "abcde"
 
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval duplicate_count "aabbcde"
 
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval duplicate_count "aabBcde"
 
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in

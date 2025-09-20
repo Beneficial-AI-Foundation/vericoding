@@ -70,19 +70,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: sorted(expected1)
   -/
   #guard_msgs in
   #eval sorted remove_subfolders(folders1)
 
-  /-
+  /--
   info: sorted(expected2)
   -/
   #guard_msgs in
   #eval sorted remove_subfolders(folders2)
 
-  /-
+  /--
   info: sorted(expected3)
   -/
   #guard_msgs in

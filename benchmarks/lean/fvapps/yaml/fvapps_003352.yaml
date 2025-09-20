@@ -79,19 +79,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'secretinformation'
   -/
   #guard_msgs in
   #eval de_nico "crazy" "cseerntiofarmit on  "
 
-  /-
+  /--
   info: '1234567890'
   -/
   #guard_msgs in
   #eval de_nico "ba" "2143658709"
 
-  /-
+  /--
   info: 'key'
   -/
   #guard_msgs in

@@ -47,19 +47,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in
   #eval mobile_keyboard ""
 
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in
   #eval mobile_keyboard "123"
 
-  /-
+  /--
   info: 26
   -/
   #guard_msgs in

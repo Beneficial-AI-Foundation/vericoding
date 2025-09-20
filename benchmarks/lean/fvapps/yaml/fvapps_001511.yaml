@@ -88,19 +88,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'yes'
   -/
   #guard_msgs in
   #eval check_good_matrix 2 [[1, 1, 0], [1, 2, 1]]
 
-  /-
+  /--
   info: 'no'
   -/
   #guard_msgs in
   #eval check_good_matrix 2 [[1, 1, 0], [1, 2, 1], [2, 1, 0]]
 
-  /-
+  /--
   info: 'yes'
   -/
   #guard_msgs in

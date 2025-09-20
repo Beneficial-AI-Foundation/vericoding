@@ -220,19 +220,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'abcCdCeCECX'
   -/
   #guard_msgs in
   #eval traffic_jam "abcdeXghi" ["", "", "CCCCC", "", "EEEEEEEEEE", "FFFFFF", "", "", "IIIIII"]
 
-  /-
+  /--
   info: 'abcdefX'
   -/
   #guard_msgs in
   #eval traffic_jam "abcdefX" []
 
-  /-
+  /--
   info: 'abcdBeBfBgBhBiBCjCkClCmCX'
   -/
   #guard_msgs in

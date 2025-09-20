@@ -83,19 +83,19 @@ vc-postamble: |-
   -- Apps difficulty: competition
   -- Assurance level: guarded
 
-  /-
+  /--
   info: 15
   -/
   #guard_msgs in
   #eval split_carrots_min_time 3 6 [5, 3, 1]
 
-  /-
+  /--
   info: 91
   -/
   #guard_msgs in
   #eval split_carrots_min_time 1 4 [19]
 
-  /-
+  /--
   info: 333333333334
   -/
   #guard_msgs in

@@ -63,19 +63,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval can_sum_two_semiprimes 30
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval can_sum_two_semiprimes 45
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in

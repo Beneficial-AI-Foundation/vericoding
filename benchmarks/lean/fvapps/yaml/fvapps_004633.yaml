@@ -20,7 +20,7 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded
 
-  /-
+  /--
   info: 42
   -/
   #guard_msgs in

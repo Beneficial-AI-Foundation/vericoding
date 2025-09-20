@@ -51,19 +51,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: [1]
   -/
   #guard_msgs in
   #eval odd_row 1
 
-  /-
+  /--
   info: [3, 5]
   -/
   #guard_msgs in
   #eval odd_row 2
 
-  /-
+  /--
   info: [7, 9, 11]
   -/
   #guard_msgs in

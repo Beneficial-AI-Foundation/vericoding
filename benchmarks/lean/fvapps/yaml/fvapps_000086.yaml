@@ -59,19 +59,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: 6
   -/
   #guard_msgs in
   #eval count_ambiguous_pairs 6 7 4
 
-  /-
+  /--
   info: 9
   -/
   #guard_msgs in
   #eval count_ambiguous_pairs 10 7 12
 
-  /-
+  /--
   info: 5
   -/
   #guard_msgs in

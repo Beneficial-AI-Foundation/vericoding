@@ -40,19 +40,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: 11
   -/
   #guard_msgs in
   #eval largest_sum "72102450111111090"
 
-  /-
+  /--
   info: 15
   -/
   #guard_msgs in
   #eval largest_sum "123004560"
 
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in

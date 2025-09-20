@@ -79,19 +79,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: expected
   -/
   #guard_msgs in
   #eval mix "Are they here" "yes, they are here"
 
-  /-
+  /--
   info: expected
   -/
   #guard_msgs in
   #eval mix "looping is fun but dangerous" "less dangerous than coding"
 
-  /-
+  /--
   info: expected
   -/
   #guard_msgs in

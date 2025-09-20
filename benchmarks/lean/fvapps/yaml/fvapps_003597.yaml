@@ -55,19 +55,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded
 
-  /-
+  /--
   info: 4
   -/
   #guard_msgs in
   #eval solve [[1, 2], [4], [5, 6]]
 
-  /-
+  /--
   info: 4
   -/
   #guard_msgs in
   #eval solve [[1, 2], [4, 4], [5, 6, 6]]
 
-  /-
+  /--
   info: 72
   -/
   #guard_msgs in

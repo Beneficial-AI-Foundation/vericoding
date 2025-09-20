@@ -117,19 +117,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'yes'
   -/
   #guard_msgs in
   #eval can_ram_win [1, 2] [1, 3, 2] [2] [3, 2]
 
-  /-
+  /--
   info: 'no'
   -/
   #guard_msgs in
   #eval can_ram_win [1, 2] [1, 3, 2] [2] [3, 2, 4]
 
-  /-
+  /--
   info: 'yes'
   -/
   #guard_msgs in

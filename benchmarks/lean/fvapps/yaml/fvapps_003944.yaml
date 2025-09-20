@@ -54,19 +54,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: []
   -/
   #guard_msgs in
   #eval poly_multiply [] []
 
-  /-
+  /--
   info: []
   -/
   #guard_msgs in
   #eval poly_multiply [1, 2, 3] []
 
-  /-
+  /--
   info: [8, 26, 20]
   -/
   #guard_msgs in

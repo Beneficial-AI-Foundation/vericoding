@@ -39,19 +39,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'A'
   -/
   #guard_msgs in
   #eval which_note 1
 
-  /-
+  /--
   info: 'D'
   -/
   #guard_msgs in
   #eval which_note 42
 
-  /-
+  /--
   info: 'C'
   -/
   #guard_msgs in

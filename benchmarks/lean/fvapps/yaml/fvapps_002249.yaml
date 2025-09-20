@@ -62,19 +62,19 @@ vc-postamble: |-
   -- Apps difficulty: competition
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval count_multisets 4 2
 
-  /-
+  /--
   info: 687232272
   -/
   #guard_msgs in
   #eval count_multisets 2525 425
 
-  /-
+  /--
   info: 815951975
   -/
   #guard_msgs in

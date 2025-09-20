@@ -67,19 +67,19 @@ vc-postamble: |-
   -- Apps difficulty: competition
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 1
   -/
   #guard_msgs in
   #eval min_rooms_needed 2 ["0101010", "1010101"]
 
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in
   #eval min_rooms_needed 3 ["0101011", "0011001", "0110111"]
 
-  /-
+  /--
   info: 1
   -/
   #guard_msgs in

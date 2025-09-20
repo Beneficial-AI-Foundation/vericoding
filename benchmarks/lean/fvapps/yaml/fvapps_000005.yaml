@@ -105,19 +105,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval len find_permutations(test1)
 
-  /-
+  /--
   info: 1
   -/
   #guard_msgs in
   #eval len find_permutations(test2)
 
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in

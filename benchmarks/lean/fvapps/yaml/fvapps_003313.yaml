@@ -59,19 +59,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'aba'
   -/
   #guard_msgs in
   #eval substring "abacd"
 
-  /-
+  /--
   info: 'aaa'
   -/
   #guard_msgs in
   #eval substring "aaa"
 
-  /-
+  /--
   info: 'cddcd'
   -/
   #guard_msgs in

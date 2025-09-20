@@ -58,19 +58,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: 16
   -/
   #guard_msgs in
   #eval obtain_max_number [2, 4, 8, 1, 1, 15]
 
-  /-
+  /--
   info: 60
   -/
   #guard_msgs in
   #eval obtain_max_number [2, 4, 8, 1, 1, 30, 30, 15, 15, 7, 7]
 
-  /-
+  /--
   info: 128
   -/
   #guard_msgs in

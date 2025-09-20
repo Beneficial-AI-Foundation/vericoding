@@ -50,19 +50,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 42
   -/
   #guard_msgs in
   #eval fold_to 384000000
 
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in
   #eval fold_to 5e-05
 
-  /-
+  /--
   info: None
   -/
   #guard_msgs in

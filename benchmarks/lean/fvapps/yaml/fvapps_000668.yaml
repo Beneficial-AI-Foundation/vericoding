@@ -75,25 +75,25 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval is_good_permutation 1 [1]
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval is_good_permutation 2 [2, 1]
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval is_good_permutation 3 [3, 2, 1]
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in

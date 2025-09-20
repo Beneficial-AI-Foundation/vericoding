@@ -76,19 +76,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: expected
   -/
   #guard_msgs in
   #eval align_right "abc def" 10
 
-  /-
+  /--
   info: expected
   -/
   #guard_msgs in
   #eval align_right "I take up the whole line" 24
 
-  /-
+  /--
   info: expected
   -/
   #guard_msgs in

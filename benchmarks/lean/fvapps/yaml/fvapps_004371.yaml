@@ -73,19 +73,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: expected1
   -/
   #guard_msgs in
   #eval logistic_map 3 3 [0] [0]
 
-  /-
+  /--
   info: expected2
   -/
   #guard_msgs in
   #eval logistic_map 5 2 [0, 4] [0, 0]
 
-  /-
+  /--
   info: expected3
   -/
   #guard_msgs in

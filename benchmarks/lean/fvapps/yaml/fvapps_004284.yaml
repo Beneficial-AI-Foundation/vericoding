@@ -103,19 +103,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 321
   -/
   #guard_msgs in
   #eval max_number 213
 
-  /-
+  /--
   info: 9873
   -/
   #guard_msgs in
   #eval max_number 7389
 
-  /-
+  /--
   info: 977665
   -/
   #guard_msgs in

@@ -28,19 +28,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: ['This', 'string', 'is', 'splitsville']
   -/
   #guard_msgs in
   #eval splitSentence "This string is splitsville"
 
-  /-
+  /--
   info: ['something']
   -/
   #guard_msgs in
   #eval splitSentence "something"
 
-  /-
+  /--
   info: ['hello', 'world']
   -/
   #guard_msgs in

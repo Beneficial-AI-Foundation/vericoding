@@ -53,19 +53,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'Laval-Shado Valious'
   -/
   #guard_msgs in
   #eval identify_weapon "Laval"
 
-  /-
+  /--
   info: 'Crominus-Grandorius'
   -/
   #guard_msgs in
   #eval identify_weapon "Crominus"
 
-  /-
+  /--
   info: 'Not a character'
   -/
   #guard_msgs in

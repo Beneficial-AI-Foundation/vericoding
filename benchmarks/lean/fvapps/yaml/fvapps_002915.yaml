@@ -53,19 +53,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'tabtbvba'
   -/
   #guard_msgs in
   #eval vowel_back "testcase"
 
-  /-
+  /--
   info: 'bnaafvab'
   -/
   #guard_msgs in
   #eval vowel_back "codewars"
 
-  /-
+  /--
   info: 'agvvyuatabtqaaa'
   -/
   #guard_msgs in

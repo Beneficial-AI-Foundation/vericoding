@@ -80,19 +80,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval oddEvenJumps [10, 13, 12, 14, 15]
 
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in
   #eval oddEvenJumps [2, 3, 1, 1, 4]
 
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in

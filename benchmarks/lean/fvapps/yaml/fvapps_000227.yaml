@@ -51,19 +51,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in
   #eval find_first_missing_positive [1, 2, 0]
 
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval find_first_missing_positive [3, 4, -1, 1]
 
-  /-
+  /--
   info: 1
   -/
   #guard_msgs in

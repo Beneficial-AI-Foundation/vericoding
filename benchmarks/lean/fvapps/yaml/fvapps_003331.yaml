@@ -42,19 +42,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in
   #eval count_red_beads 0
 
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in
   #eval count_red_beads 1
 
-  /-
+  /--
   info: 4
   -/
   #guard_msgs in

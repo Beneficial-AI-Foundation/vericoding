@@ -68,19 +68,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: (-21, 42)
   -/
   #guard_msgs in
   #eval find_min_max_product [1, -2, -3, 4, 6, 7] 2
 
-  /-
+  /--
   info: (0, 12)
   -/
   #guard_msgs in
   #eval find_min_max_product [0, -1, -2, -3, -4] 2
 
-  /-
+  /--
   info: None
   -/
   #guard_msgs in

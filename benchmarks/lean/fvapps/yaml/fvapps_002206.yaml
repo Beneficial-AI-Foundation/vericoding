@@ -71,13 +71,13 @@ vc-postamble: |-
   -- Apps difficulty: competition
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: [10, 15, 16]
   -/
   #guard_msgs in
   #eval solve 3 3 [[3, 2, 4, 8], [2, 2, 5], [2, 6, 3]]
 
-  /-
+  /--
   info: [7, 8]
   -/
   #guard_msgs in

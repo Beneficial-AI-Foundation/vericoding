@@ -61,19 +61,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 4
   -/
   #guard_msgs in
   #eval longest_str_chain ["a", "b", "ba", "bca", "bda", "bdca"]
 
-  /-
+  /--
   info: 5
   -/
   #guard_msgs in
   #eval longest_str_chain ["xbc", "pcxbcf", "xb", "cxbc", "pcxbc"]
 
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in

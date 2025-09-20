@@ -57,19 +57,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded
 
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in
   #eval odd_one [2, 4, 6, 7, 10]
 
-  /-
+  /--
   info: 4
   -/
   #guard_msgs in
   #eval odd_one [2, 16, 98, 10, 13, 78]
 
-  /-
+  /--
   info: -1
   -/
   #guard_msgs in

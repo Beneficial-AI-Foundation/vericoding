@@ -95,19 +95,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval regions_by_slashes [" /", "/ "]
 
-  /-
+  /--
   info: 4
   -/
   #guard_msgs in
   #eval regions_by_slashes ["\\/", "/\\"]
 
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in

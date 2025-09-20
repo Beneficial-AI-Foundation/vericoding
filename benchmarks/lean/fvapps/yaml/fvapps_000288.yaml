@@ -79,19 +79,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval is_self_crossing [2, 1, 1, 2]
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval is_self_crossing [1, 2, 3, 4]
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in

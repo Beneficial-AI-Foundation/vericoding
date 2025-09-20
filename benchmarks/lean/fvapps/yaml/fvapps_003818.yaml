@@ -98,19 +98,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'Special!!'
   -/
   #guard_msgs in
   #eval special_number 2
 
-  /-
+  /--
   info: 'Special!!'
   -/
   #guard_msgs in
   #eval special_number 23
 
-  /-
+  /--
   info: 'NOT!!'
   -/
   #guard_msgs in

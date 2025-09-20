@@ -86,19 +86,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'l*****e@leetcode.com'
   -/
   #guard_msgs in
   #eval mask_pii "LeetCode@LeetCode.com"
 
-  /-
+  /--
   info: '***-***-7890'
   -/
   #guard_msgs in
   #eval mask_pii "1(234)567-890"
 
-  /-
+  /--
   info: '+**-***-***-5678'
   -/
   #guard_msgs in

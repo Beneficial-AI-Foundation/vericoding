@@ -58,19 +58,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 5
   -/
   #guard_msgs in
   #eval len find_triangles_with_incircle(2)
 
-  /-
+  /--
   info: 1
   -/
   #guard_msgs in
   #eval len find_triangles_with_incircle(1)
 
-  /-
+  /--
   info: 13
   -/
   #guard_msgs in

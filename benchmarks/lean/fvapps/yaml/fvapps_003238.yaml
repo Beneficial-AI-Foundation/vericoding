@@ -59,19 +59,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded
 
-  /-
+  /--
   info: 4
   -/
   #guard_msgs in
   #eval palindrome_chain_length 87
 
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in
   #eval palindrome_chain_length 1
 
-  /-
+  /--
   info: 24
   -/
   #guard_msgs in

@@ -65,19 +65,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'es'
   -/
   #guard_msgs in
   #eval get_middle "test"
 
-  /-
+  /--
   info: 't'
   -/
   #guard_msgs in
   #eval get_middle "testing"
 
-  /-
+  /--
   info: 'A'
   -/
   #guard_msgs in

@@ -39,13 +39,13 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: [5, 10, 15]
   -/
   #guard_msgs in
   #eval multiples 3 5
 
-  /-
+  /--
   info: [-1, -2, -3, -4, -5]
   -/
   #guard_msgs in

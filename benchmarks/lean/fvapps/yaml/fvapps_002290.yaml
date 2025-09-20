@@ -70,19 +70,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval word_pattern "abba" "dog cat cat dog"
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval word_pattern "abba" "dog cat cat fish"
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in

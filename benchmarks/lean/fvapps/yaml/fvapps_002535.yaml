@@ -44,19 +44,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: expected1
   -/
   #guard_msgs in
   #eval spacey ["kevin", "has", "no", "space"]
 
-  /-
+  /--
   info: expected2
   -/
   #guard_msgs in
   #eval spacey ["this", "cheese", "has", "no", "holes"]
 
-  /-
+  /--
   info: expected3
   -/
   #guard_msgs in

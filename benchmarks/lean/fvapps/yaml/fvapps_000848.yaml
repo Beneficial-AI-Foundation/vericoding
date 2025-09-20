@@ -75,19 +75,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'Win'
   -/
   #guard_msgs in
   #eval check_win 6 2 3 3
 
-  /-
+  /--
   info: 'Win'
   -/
   #guard_msgs in
   #eval check_win 10 2 3 4
 
-  /-
+  /--
   info: 'Lose'
   -/
   #guard_msgs in

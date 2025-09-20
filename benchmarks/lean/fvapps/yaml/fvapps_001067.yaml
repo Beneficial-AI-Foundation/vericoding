@@ -110,19 +110,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in
   #eval solve_phone_keypad "5"
 
-  /-
+  /--
   info: 12
   -/
   #guard_msgs in
   #eval solve_phone_keypad "72"
 
-  /-
+  /--
   info: 27
   -/
   #guard_msgs in

@@ -1,57 +1,58 @@
 vc-description: |-
   /-
   You would like to get the 'weight' of a name by getting the sum of the ascii values. However you believe that capital letters should be worth more than mere lowercase letters. Spaces, numbers, or any other character are worth 0.
-
+  
   Normally in ascii
-
+  
       a has a value of 97
       A has a value of 65
       ' ' has a value of 32
       0 has a value of 48
-
+  
   To find who has the 'weightier' name you will switch all the values so:
-
+  
       A will be 97
       a will be 65
       ' ' will be 0
       0 will be 0
       etc...
-
+  
   For example Joe will have a weight of 254, instead of 286 using normal ascii values.
   -/
 
 vc-preamble: |-
-  def get_weight (s : String) : Nat :=
-    sorry
 
-vc-helpers: |
+vc-helpers: |-
 
 vc-definitions: |-
+  def get_weight (s : String) : Nat :=
+    sorry
+  
   def swapcase (c : Char) : Nat :=
     sorry
 
 vc-theorems: |-
   theorem get_weight_nonnegative (s : String) :
     get_weight s ≥ 0 :=
-    sorry
+  sorry
 
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
-
-  /-
+  
+  /--
   info: 254
   -/
   #guard_msgs in
   #eval get_weight "Joe"
-
-  /-
+  
+  /--
   info: 1275
   -/
   #guard_msgs in
   #eval get_weight "George Washington"
-
-  /-
+  
+  /--
   info: 214
   -/
   #guard_msgs in

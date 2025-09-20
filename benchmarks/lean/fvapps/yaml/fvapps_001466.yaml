@@ -72,13 +72,13 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: [4, 1, 1]
   -/
   #guard_msgs in
   #eval solve_singing_championship [(10, 20), (13, 18), (15, 19)]
 
-  /-
+  /--
   info: [4, 2, 0]
   -/
   #guard_msgs in

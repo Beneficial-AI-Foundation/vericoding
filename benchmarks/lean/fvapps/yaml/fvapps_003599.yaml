@@ -65,19 +65,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in
   #eval slogans "glorytoukraine" "ukraineaineaine"
 
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in
   #eval slogans "programming" "ingmingmming"
 
-  /-
+  /--
   info: 13
   -/
   #guard_msgs in

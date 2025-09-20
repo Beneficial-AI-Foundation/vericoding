@@ -57,19 +57,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: (81, 2)
   -/
   #guard_msgs in
   #eval largest_power 90
 
-  /-
+  /--
   info: (64, 3)
   -/
   #guard_msgs in
   #eval largest_power 65
 
-  /-
+  /--
   info: (0, -1)
   -/
   #guard_msgs in

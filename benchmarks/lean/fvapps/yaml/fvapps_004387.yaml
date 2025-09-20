@@ -55,19 +55,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: '6957678787'
   -/
   #guard_msgs in
   #eval decode "4103432323"
 
-  /-
+  /--
   info: '6957672135'
   -/
   #guard_msgs in
   #eval decode "4103438970"
 
-  /-
+  /--
   info: '6956750342'
   -/
   #guard_msgs in

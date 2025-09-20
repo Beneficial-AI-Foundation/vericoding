@@ -64,19 +64,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in
   #eval number_of_arithmetic_slices [1, 2, 3, 4]
 
-  /-
+  /--
   info: 6
   -/
   #guard_msgs in
   #eval number_of_arithmetic_slices [1, 2, 3, 4, 5]
 
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in

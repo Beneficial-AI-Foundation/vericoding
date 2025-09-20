@@ -51,19 +51,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded
 
-  /-
+  /--
   info: 81
   -/
   #guard_msgs in
   #eval power_sumDigTerm 1
 
-  /-
+  /--
   info: 512
   -/
   #guard_msgs in
   #eval power_sumDigTerm 2
 
-  /-
+  /--
   info: 2401
   -/
   #guard_msgs in

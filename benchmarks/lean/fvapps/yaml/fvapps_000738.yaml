@@ -70,19 +70,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval is_clingy "AUXFC"
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval is_clingy "XBCDEF"
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in

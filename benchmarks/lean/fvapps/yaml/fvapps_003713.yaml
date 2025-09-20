@@ -77,19 +77,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: [['M: 37', 'B: 5', 'C: 4'], ['M: 100', 'B: 14', 'C: 11']]
   -/
   #guard_msgs in
   #eval howmuch 1 100
 
-  /-
+  /--
   info: [['M: 1045', 'B: 149', 'C: 116']]
   -/
   #guard_msgs in
   #eval howmuch 1000 1100
 
-  /-
+  /--
   info: [['M: 37', 'B: 5', 'C: 4'], ['M: 100', 'B: 14', 'C: 11'], ['M: 163', 'B: 23', 'C: 18']]
   -/
   #guard_msgs in

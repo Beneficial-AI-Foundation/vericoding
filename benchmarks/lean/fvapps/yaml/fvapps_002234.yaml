@@ -91,19 +91,19 @@ vc-postamble: |-
   -- Apps difficulty: competition
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'YES'
   -/
   #guard_msgs in
   #eval can_merge_for_permutation [2, 3, 1, 4]
 
-  /-
+  /--
   info: 'NO'
   -/
   #guard_msgs in
   #eval can_merge_for_permutation [3, 1, 2, 4]
 
-  /-
+  /--
   info: 'YES'
   -/
   #guard_msgs in

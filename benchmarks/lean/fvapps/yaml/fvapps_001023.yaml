@@ -61,19 +61,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 31
   -/
   #guard_msgs in
   #eval max_pizza_slices 5 10 [1, 2, 3, 4, 5]
 
-  /-
+  /--
   info: 6
   -/
   #guard_msgs in
   #eval max_pizza_slices 2 3 [1, 2]
 
-  /-
+  /--
   info: 8
   -/
   #guard_msgs in

@@ -46,19 +46,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: [3, 4, 1]
   -/
   #guard_msgs in
   #eval sum_arrays #[3, 2, 9] #[1, 2]
 
-  /-
+  /--
   info: [-3, 9, 6, 2]
   -/
   #guard_msgs in
   #eval sum_arrays #[3, 2, 6, 6] #[-7, 2, 2, 8]
 
-  /-
+  /--
   info: []
   -/
   #guard_msgs in

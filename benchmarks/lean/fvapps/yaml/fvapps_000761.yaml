@@ -72,19 +72,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'EVEN'
   -/
   #guard_msgs in
   #eval check_remainder_parity 4 4
 
-  /-
+  /--
   info: 'ODD'
   -/
   #guard_msgs in
   #eval check_remainder_parity 6 5
 
-  /-
+  /--
   info: 'ODD'
   -/
   #guard_msgs in

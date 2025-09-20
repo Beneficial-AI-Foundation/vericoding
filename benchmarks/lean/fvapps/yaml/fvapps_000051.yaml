@@ -78,31 +78,31 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval can_have_no_winner 3 0 0 0
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval can_have_no_winner 3 3 0 0
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval can_have_no_winner 6 4 1 0
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval can_have_no_winner 6 3 3 0
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in

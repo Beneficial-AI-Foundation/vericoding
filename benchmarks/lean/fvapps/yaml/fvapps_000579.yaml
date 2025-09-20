@@ -74,19 +74,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in
   #eval calculate_time_at_position 0 1
 
-  /-
+  /--
   info: 1
   -/
   #guard_msgs in
   #eval calculate_time_at_position 1 1
 
-  /-
+  /--
   info: 5
   -/
   #guard_msgs in

@@ -69,19 +69,19 @@ vc-postamble: |-
   -- Apps difficulty: competition
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in
   #eval xor_of_pairwise_sums 2 [1, 2]
 
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval xor_of_pairwise_sums 3 [1, 2, 3]
 
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in

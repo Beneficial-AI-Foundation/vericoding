@@ -46,19 +46,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: [[1, 2], [2, 4]]
   -/
   #guard_msgs in
   #eval multiplication_table 2 2
 
-  /-
+  /--
   info: [[1, 2, 3], [2, 4, 6], [3, 6, 9]]
   -/
   #guard_msgs in
   #eval multiplication_table 3 3
 
-  /-
+  /--
   info: [[1, 2, 3, 4, 5], [2, 4, 6, 8, 10]]
   -/
   #guard_msgs in

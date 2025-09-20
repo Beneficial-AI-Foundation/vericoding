@@ -41,19 +41,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'Venus'
   -/
   #guard_msgs in
   #eval get_planet_name 2
 
-  /-
+  /--
   info: 'Jupiter'
   -/
   #guard_msgs in
   #eval get_planet_name 5
 
-  /-
+  /--
   info: 'Earth'
   -/
   #guard_msgs in

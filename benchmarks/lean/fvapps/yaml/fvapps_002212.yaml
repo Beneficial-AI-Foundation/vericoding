@@ -93,13 +93,13 @@ vc-postamble: |-
   -- Apps difficulty: competition
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: [5, 12]
   -/
   #guard_msgs in
   #eval solve_f_max [8, 4, 1] [(2, 3), (1, 2)]
 
-  /-
+  /--
   info: [60, 30, 12, 3]
   -/
   #guard_msgs in

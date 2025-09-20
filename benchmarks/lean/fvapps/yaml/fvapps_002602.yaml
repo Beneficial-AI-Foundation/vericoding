@@ -133,19 +133,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'Jumping!!'
   -/
   #guard_msgs in
   #eval jumping_number 9
 
-  /-
+  /--
   info: 'Jumping!!'
   -/
   #guard_msgs in
   #eval jumping_number 23
 
-  /-
+  /--
   info: 'Not!!'
   -/
   #guard_msgs in

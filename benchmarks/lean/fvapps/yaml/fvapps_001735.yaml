@@ -1,7 +1,7 @@
 vc-description: |-
   /-
   Given an integer n, return a list of all simplified fractions between 0 and 1 (exclusive) such that the denominator is less-than-or-equal-to n. The fractions can be in any order.
-
+  
   Example 1:
   Input: n = 2
   Output: ["1/2"]
@@ -9,7 +9,7 @@ vc-description: |-
   Example 2:
   Input: n = 3
   Output: ["1/2","1/3","2/3"]
-
+  
   Example 3:
   Input: n = 4
   Output: ["1/2","1/3","1/4","2/3","3/4"]
@@ -17,60 +17,67 @@ vc-description: |-
   Example 4:
   Input: n = 1
   Output: []
-
+  
   Constraints:
-
+  
   1 <= n <= 100
   -/
 
 vc-preamble: |-
-  def gcd (a b : Nat) : Nat := sorry
-
-  def simplifiedFractions (n : Nat) : List String := sorry
-
   structure Fraction where
     num : Nat
     denom : Nat
 
-vc-helpers: |
+vc-helpers: |-
 
 vc-definitions: |-
-  def stringToFraction (s : String) : Fraction := sorry
-
-  theorem fractions_are_valid {n : Nat} (h : n > 0) :
-    ∀ frac, frac ∈ simplifiedFractions n → 
-      let f := stringToFraction frac
-      0 < f.num ∧ f.num < f.denom ∧ f.denom ≤ n ∧ gcd f.num f.denom = 1 := sorry
+  def gcd (a b : Nat) : Nat :=
+  sorry
+  
+  def simplifiedFractions (n : Nat) : List String :=
+  sorry
+  
+  def stringToFraction (s : String) : Fraction :=
+  sorry
 
 vc-theorems: |-
+  theorem fractions_are_valid {n : Nat} (h : n > 0) :
+    ∀ frac, frac ∈ simplifiedFractions n →
+      let f := stringToFraction frac
+      0 < f.num ∧ f.num < f.denom ∧ f.denom ≤ n ∧ gcd f.num f.denom = 1 :=
+  sorry
+  
   theorem fractions_are_unique {n : Nat} (h : n > 0) :
-    ∀ x y, x ∈ simplifiedFractions n → y ∈ simplifiedFractions n → 
-      x = y → stringToFraction x = stringToFraction y := sorry
-
+    ∀ x y, x ∈ simplifiedFractions n → y ∈ simplifiedFractions n →
+      x = y → stringToFraction x = stringToFraction y :=
+  sorry
+  
   theorem all_simplified_fractions_included {n : Nat} (h : n > 0) :
     ∀ i j : Nat, 1 ≤ i → i < j → j ≤ n → gcd i j = 1 →
-      ∃ frac, frac ∈ simplifiedFractions n ∧ stringToFraction frac = ⟨i, j⟩ := sorry
-
+      ∃ frac, frac ∈ simplifiedFractions n ∧ stringToFraction frac = ⟨i, j⟩ :=
+  sorry
+  
   theorem empty_for_n_less_than_2 :
-    simplifiedFractions 1 = [] := sorry
+    simplifiedFractions 1 = [] :=
+  sorry
 
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
-
-  /-
+  
+  /--
   info: ['1/2']
   -/
   #guard_msgs in
   #eval simplifiedFractions 2
-
-  /-
+  
+  /--
   info: ['1/2', '1/3', '2/3']
   -/
   #guard_msgs in
   #eval sorted simplifiedFractions(3)
-
-  /-
+  
+  /--
   info: ['1/2', '1/3', '1/4', '2/3', '3/4']
   -/
   #guard_msgs in

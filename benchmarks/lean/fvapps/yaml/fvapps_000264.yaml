@@ -56,19 +56,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval can_jump [2, 3, 1, 1, 4]
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval can_jump [3, 2, 1, 0, 4]
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in

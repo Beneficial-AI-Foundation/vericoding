@@ -54,19 +54,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: expected1
   -/
   #guard_msgs in
   #eval range_parser "1-10,14, 20-25:2"
 
-  /-
+  /--
   info: expected2
   -/
   #guard_msgs in
   #eval range_parser "5-10"
 
-  /-
+  /--
   info: expected3
   -/
   #guard_msgs in

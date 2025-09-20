@@ -111,13 +111,13 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 270
   -/
   #guard_msgs in
   #eval calculate_max_points 10 "..d.t.D..d" [10, 11, 12, 9, 8, 10, 11, 15]
 
-  /-
+  /--
   info: 35629632
   -/
   #guard_msgs in

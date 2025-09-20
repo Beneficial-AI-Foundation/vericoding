@@ -72,19 +72,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'EVOL'
   -/
   #guard_msgs in
   #eval to_lover_case "LOVE"
 
-  /-
+  /--
   info: 'ELEEV VVOEE!'
   -/
   #guard_msgs in
   #eval to_lover_case "Hello World!"
 
-  /-
+  /--
   info: 'OOOO,'
   -/
   #guard_msgs in

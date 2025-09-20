@@ -75,19 +75,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval isSolvable ["THIS", "IS", "TOO"] "FUNNY"
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval isSolvable ["SEND", "MORE"] "MONEY"
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in

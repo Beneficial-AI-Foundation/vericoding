@@ -58,19 +58,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: [4]
   -/
   #guard_msgs in
   #eval generate_perfect_array 1
 
-  /-
+  /--
   info: [4, 4]
   -/
   #guard_msgs in
   #eval generate_perfect_array 2
 
-  /-
+  /--
   info: [4, 4, 4, 4]
   -/
   #guard_msgs in

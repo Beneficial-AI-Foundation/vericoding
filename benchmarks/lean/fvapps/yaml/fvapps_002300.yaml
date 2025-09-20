@@ -48,19 +48,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'ca'
   -/
   #guard_msgs in
   #eval remove_duplicates "abbaca"
 
-  /-
+  /--
   info: ''
   -/
   #guard_msgs in
   #eval remove_duplicates "aaaaaa"
 
-  /-
+  /--
   info: ''
   -/
   #guard_msgs in

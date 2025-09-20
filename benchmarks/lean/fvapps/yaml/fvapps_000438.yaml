@@ -61,19 +61,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval check_subarray_sum [23, 2, 4, 6, 7] 6
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval check_subarray_sum [23, 2, 6, 4, 7] 6
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in

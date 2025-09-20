@@ -44,19 +44,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'I am not impressed by your performance.'
   -/
   #guard_msgs in
   #eval quote "George Saint Pierre"
 
-  /-
+  /--
   info: "I'd like to take this chance to apologize.. To absolutely NOBODY!"
   -/
   #guard_msgs in
   #eval quote "Conor McGregor"
 
-  /-
+  /--
   info: 'I am not impressed by your performance.'
   -/
   #guard_msgs in

@@ -61,19 +61,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval isBoomerang [[1, 1], [2, 3], [3, 2]]
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval isBoomerang [[1, 1], [2, 2], [3, 3]]
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in

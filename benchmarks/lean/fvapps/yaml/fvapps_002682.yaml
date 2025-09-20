@@ -56,19 +56,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: 190392490709135
   -/
   #guard_msgs in
   #eval fibonacci 70
 
-  /-
+  /--
   info: 1548008755920
   -/
   #guard_msgs in
   #eval fibonacci 60
 
-  /-
+  /--
   info: 12586269025
   -/
   #guard_msgs in

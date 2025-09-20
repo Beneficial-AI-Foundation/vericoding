@@ -63,19 +63,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'Yes'
   -/
   #guard_msgs in
   #eval can_chef_paint [1, 5, 5, 5]
 
-  /-
+  /--
   info: 'Yes'
   -/
   #guard_msgs in
   #eval can_chef_paint [1, 1, 1, 5]
 
-  /-
+  /--
   info: 'No'
   -/
   #guard_msgs in

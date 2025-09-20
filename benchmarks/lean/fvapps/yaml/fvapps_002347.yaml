@@ -1,9 +1,9 @@
 vc-description: |-
   /-
   Given a column title as appear in an Excel sheet, return its corresponding column number.
-
+  
   For example:
-
+  
       A -> 1
       B -> 2
       C -> 3
@@ -12,30 +12,31 @@ vc-description: |-
       AA -> 27
       AB -> 28 
       ...
-
+  
   Example 1:
-
+  
   Input: "A"
   Output: 1
-
+  
   Example 2:
-
+  
   Input: "AB"
   Output: 28
-
+  
   Example 3:
-
+  
   Input: "ZY"
   Output: 701
   -/
 
 vc-preamble: |-
-  def title_to_number (s : String) : Nat :=
-    sorry
 
-vc-helpers: |
+vc-helpers: |-
 
 vc-definitions: |-
+  def title_to_number (s : String) : Nat :=
+    sorry
+  
   def number_to_title (n : Nat) : String :=
     sorry
 
@@ -43,12 +44,12 @@ vc-theorems: |-
   theorem title_to_number_positive (title : String) :
     title_to_number title > 0 := by
     sorry
-
+  
   theorem title_to_number_monotone (title : String) :
-    (title.length > 1) → 
+    (title.length > 1) →
     title_to_number title > title_to_number (String.dropRight title 1) := by
     sorry
-
+  
   theorem title_to_number_roundtrip (n : Nat) :
     n > 0 → n ≤ 2^20 →
     title_to_number (number_to_title n) = n := by
@@ -57,20 +58,20 @@ vc-theorems: |-
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded
-
-  /-
+  
+  /--
   info: 1
   -/
   #guard_msgs in
   #eval title_to_number "A"
-
-  /-
+  
+  /--
   info: 28
   -/
   #guard_msgs in
   #eval title_to_number "AB"
-
-  /-
+  
+  /--
   info: 701
   -/
   #guard_msgs in

@@ -46,19 +46,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'Ännöüncïng thë Mäcböök Äïr Güïtär'
   -/
   #guard_msgs in
   #eval heavy_metal_umlauts "Announcing the Macbook Air Guitar"
 
-  /-
+  /--
   info: 'Fäcëböök'
   -/
   #guard_msgs in
   #eval heavy_metal_umlauts "Facebook"
 
-  /-
+  /--
   info: 'Mëtäl'
   -/
   #guard_msgs in

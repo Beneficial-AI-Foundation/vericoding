@@ -78,19 +78,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: [2, 2, 2, 3, 2, 2, 2]
   -/
   #guard_msgs in
   #eval pour_water [2, 1, 1, 2, 1, 2, 2] 4 3
 
-  /-
+  /--
   info: [2, 3, 3, 4]
   -/
   #guard_msgs in
   #eval pour_water [1, 2, 3, 4] 2 2
 
-  /-
+  /--
   info: [4, 4, 4]
   -/
   #guard_msgs in

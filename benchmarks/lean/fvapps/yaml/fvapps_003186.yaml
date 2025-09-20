@@ -43,19 +43,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: []
   -/
   #guard_msgs in
   #eval poly_subtract [] []
 
-  /-
+  /--
   info: [1, 2, 3, 4, 5, 6]
   -/
   #guard_msgs in
   #eval poly_subtract [1, 2, 3, 4, 5, 6] []
 
-  /-
+  /--
   info: [-1, -2, -3, -4, -5, -6]
   -/
   #guard_msgs in

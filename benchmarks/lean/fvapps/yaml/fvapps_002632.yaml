@@ -87,19 +87,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'body p'
   -/
   #guard_msgs in
   #eval compare "body p" "div"
 
-  /-
+  /--
   info: '.red'
   -/
   #guard_msgs in
   #eval compare ".red" "div"
 
-  /-
+  /--
   info: '#header'
   -/
   #guard_msgs in

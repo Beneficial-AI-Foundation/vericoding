@@ -46,19 +46,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 5
   -/
   #guard_msgs in
   #eval my_first_kata 3 5
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval my_first_kata "hello" 3
 
-  /-
+  /--
   info: 207
   -/
   #guard_msgs in

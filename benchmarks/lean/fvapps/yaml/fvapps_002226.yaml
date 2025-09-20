@@ -89,13 +89,13 @@ vc-postamble: |-
   -- Apps difficulty: competition
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: 4
   -/
   #guard_msgs in
   #eval count_valid_subsequences 5 3 [1, 5, 2, 4, 7] [7, 9, 6]
 
-  /-
+  /--
   info: 6
   -/
   #guard_msgs in

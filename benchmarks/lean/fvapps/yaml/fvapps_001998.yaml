@@ -88,19 +88,19 @@ vc-postamble: |-
   -- Apps difficulty: competition
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 1
   -/
   #guard_msgs in
   #eval min_seconds_to_destroy [1, 2, 1]
 
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in
   #eval min_seconds_to_destroy [1, 2, 3]
 
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in

@@ -106,19 +106,19 @@ vc-postamble: |-
   -- Apps difficulty: competition
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'YES'
   -/
   #guard_msgs in
   #eval check_subway_escape ["...AAAAA........", "s.BBB......CCCCC", "........DDDDD..."] 16 4
 
-  /-
+  /--
   info: 'NO'
   -/
   #guard_msgs in
   #eval check_subway_escape ["...AAAAA........", "s.BBB....CCCCC..", ".......DDDDD...."] 16 4
 
-  /-
+  /--
   info: 'YES'
   -/
   #guard_msgs in

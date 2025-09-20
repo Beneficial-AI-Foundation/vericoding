@@ -101,19 +101,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 6
   -/
   #guard_msgs in
   #eval combs_non_empty_boxes 4 3
 
-  /-
+  /--
   info: 1
   -/
   #guard_msgs in
   #eval combs_non_empty_boxes 4 4
 
-  /-
+  /--
   info: 'It cannot be possible!'
   -/
   #guard_msgs in

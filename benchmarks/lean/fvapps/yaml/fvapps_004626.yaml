@@ -58,19 +58,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: "You know what's actually really good? Nothing!"
   -/
   #guard_msgs in
   #eval actually_really_good []
 
-  /-
+  /--
   info: "You know what's actually really good? Peanut butter and more peanut butter."
   -/
   #guard_msgs in
   #eval actually_really_good ["Peanut butter"]
 
-  /-
+  /--
   info: "You know what's actually really good? Ice cream and ham."
   -/
   #guard_msgs in

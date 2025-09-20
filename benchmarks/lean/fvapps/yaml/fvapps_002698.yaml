@@ -46,19 +46,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: '1024x768'
   -/
   #guard_msgs in
   #eval find_screen_height 1024 "4:3"
 
-  /-
+  /--
   info: '1280x720'
   -/
   #guard_msgs in
   #eval find_screen_height 1280 "16:9"
 
-  /-
+  /--
   info: '3840x1080'
   -/
   #guard_msgs in

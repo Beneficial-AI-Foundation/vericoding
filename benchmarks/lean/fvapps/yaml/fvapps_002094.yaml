@@ -85,25 +85,25 @@ vc-postamble: |-
   -- Apps difficulty: competition
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'T'
   -/
   #guard_msgs in
   #eval solve_stone_game 1 [2]
 
-  /-
+  /--
   info: 'HL'
   -/
   #guard_msgs in
   #eval solve_stone_game 2 [1, 1]
 
-  /-
+  /--
   info: 'HL'
   -/
   #guard_msgs in
   #eval solve_stone_game 4 [2, 3, 1, 2]
 
-  /-
+  /--
   info: 'HL'
   -/
   #guard_msgs in

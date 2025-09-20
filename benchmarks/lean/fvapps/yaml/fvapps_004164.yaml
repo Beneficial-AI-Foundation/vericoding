@@ -62,19 +62,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded
 
-  /-
+  /--
   info: (11, 11)
   -/
   #guard_msgs in
   #eval men_still_standing []
 
-  /-
+  /--
   info: (10, 11)
   -/
   #guard_msgs in
   #eval men_still_standing ["A4Y", "A4Y"]
 
-  /-
+  /--
   info: (6, 11)
   -/
   #guard_msgs in

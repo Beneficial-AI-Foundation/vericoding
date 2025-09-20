@@ -77,19 +77,19 @@ vc-postamble: |-
   -- Apps difficulty: competition
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in
   #eval get_shortest_string_length "AAA"
 
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval get_shortest_string_length "BABA"
 
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in

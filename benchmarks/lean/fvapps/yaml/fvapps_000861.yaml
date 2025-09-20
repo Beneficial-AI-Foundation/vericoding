@@ -74,19 +74,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: (35, 41)
   -/
   #guard_msgs in
   #eval find_nearest_numbers 10 arr1.copy() 38
 
-  /-
+  /--
   info: (41, 56)
   -/
   #guard_msgs in
   #eval find_nearest_numbers 10 arr2.copy() 50
 
-  /-
+  /--
   info: (13, 23)
   -/
   #guard_msgs in

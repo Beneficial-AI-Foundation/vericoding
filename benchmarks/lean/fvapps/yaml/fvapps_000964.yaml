@@ -59,19 +59,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: ['YES', 'NO']
   -/
   #guard_msgs in
   #eval solve_supermarket [4, 5]
 
-  /-
+  /--
   info: ['YES']
   -/
   #guard_msgs in
   #eval solve_supermarket [9]
 
-  /-
+  /--
   info: ['NO', 'NO', 'NO']
   -/
   #guard_msgs in

@@ -42,19 +42,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 1.0
   -/
   #guard_msgs in
   #eval nth_person_gets_nth_seat 1
 
-  /-
+  /--
   info: 0.5
   -/
   #guard_msgs in
   #eval nth_person_gets_nth_seat 2
 
-  /-
+  /--
   info: 0.5
   -/
   #guard_msgs in

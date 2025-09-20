@@ -38,19 +38,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: 1
   -/
   #guard_msgs in
   #eval candies_to_buy 1
 
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval candies_to_buy 2
 
-  /-
+  /--
   info: 60
   -/
   #guard_msgs in

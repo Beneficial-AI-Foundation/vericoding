@@ -74,19 +74,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: expected1
   -/
   #guard_msgs in
   #eval order_weight "103 123 4444 99 2000"
 
-  /-
+  /--
   info: expected2
   -/
   #guard_msgs in
   #eval order_weight "56 65 74 100 99 68 86 180 90"
 
-  /-
+  /--
   info: expected3
   -/
   #guard_msgs in

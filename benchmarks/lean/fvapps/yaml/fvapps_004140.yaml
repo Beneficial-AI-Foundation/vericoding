@@ -43,19 +43,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: 16
   -/
   #guard_msgs in
   #eval area_or_perimeter 4 4
 
-  /-
+  /--
   info: 32
   -/
   #guard_msgs in
   #eval area_or_perimeter 6 10
 
-  /-
+  /--
   info: 9
   -/
   #guard_msgs in

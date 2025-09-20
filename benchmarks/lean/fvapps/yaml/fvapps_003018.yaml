@@ -30,19 +30,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 123
   -/
   #guard_msgs in
   #eval to_cents "$1.23"
 
-  /-
+  /--
   info: 9999
   -/
   #guard_msgs in
   #eval to_cents "$99.99"
 
-  /-
+  /--
   info: 1234567890
   -/
   #guard_msgs in

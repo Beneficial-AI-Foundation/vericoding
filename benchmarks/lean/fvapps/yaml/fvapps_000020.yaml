@@ -99,19 +99,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'YES'
   -/
   #guard_msgs in
   #eval check_restaurant_temps 0 [(5, 1, 2), (7, 3, 5), (10, -1, 0)]
 
-  /-
+  /--
   info: 'NO'
   -/
   #guard_msgs in
   #eval check_restaurant_temps 12 [(5, 7, 10), (10, 16, 20)]
 
-  /-
+  /--
   info: 'YES'
   -/
   #guard_msgs in

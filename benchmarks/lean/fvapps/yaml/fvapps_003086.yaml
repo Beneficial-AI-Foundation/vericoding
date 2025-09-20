@@ -70,19 +70,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: expected1
   -/
   #guard_msgs in
   #eval sort_by_height [-1, 150, 190, 170, -1, -1, 160, 180]
 
-  /-
+  /--
   info: expected2
   -/
   #guard_msgs in
   #eval sort_by_height [-1, -1, -1, -1, -1]
 
-  /-
+  /--
   info: expected3
   -/
   #guard_msgs in

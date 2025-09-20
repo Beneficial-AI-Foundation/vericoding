@@ -69,19 +69,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 9
   -/
   #guard_msgs in
   #eval count_substrings_ones "0110111"
 
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval count_substrings_ones "101"
 
-  /-
+  /--
   info: 21
   -/
   #guard_msgs in

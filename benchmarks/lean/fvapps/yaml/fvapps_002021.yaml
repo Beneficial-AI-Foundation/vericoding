@@ -86,19 +86,19 @@ vc-postamble: |-
   -- Apps difficulty: competition
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: (1, 0)
   -/
   #guard_msgs in
   #eval solve_inversions 4 arr1.copy()
 
-  /-
+  /--
   info: (4, 14)
   -/
   #guard_msgs in
   #eval solve_inversions 9 arr2.copy()
 
-  /-
+  /--
   info: (0, 8)
   -/
   #guard_msgs in

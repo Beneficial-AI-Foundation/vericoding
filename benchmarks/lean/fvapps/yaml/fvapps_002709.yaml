@@ -48,19 +48,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'Greetings, master KnoBe'
   -/
   #guard_msgs in
   #eval greet_jedi "Beyonce" "Knowles"
 
-  /-
+  /--
   info: 'Greetings, master DraGr'
   -/
   #guard_msgs in
   #eval greet_jedi "grae" "drake"
 
-  /-
+  /--
   info: 'Greetings, master AngCh'
   -/
   #guard_msgs in

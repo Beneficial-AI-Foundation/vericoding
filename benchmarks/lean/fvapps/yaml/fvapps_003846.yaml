@@ -43,19 +43,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: '5!'
   -/
   #guard_msgs in
   #eval reverse_factorial 120
 
-  /-
+  /--
   info: '10!'
   -/
   #guard_msgs in
   #eval reverse_factorial 3628800
 
-  /-
+  /--
   info: 'None'
   -/
   #guard_msgs in

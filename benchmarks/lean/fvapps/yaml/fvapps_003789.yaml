@@ -60,19 +60,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: '15-20'
   -/
   #guard_msgs in
   #eval dating_range 17
 
-  /-
+  /--
   info: '9-11'
   -/
   #guard_msgs in
   #eval dating_range 10
 
-  /-
+  /--
   info: '24-56'
   -/
   #guard_msgs in

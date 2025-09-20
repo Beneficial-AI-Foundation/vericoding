@@ -85,13 +85,13 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: ['a', 'b']
   -/
   #guard_msgs in
   #eval sort_posts [] [(1, 5, "a"), (2, 3, "b")]
 
-  /-
+  /--
   info: ['y', 'x']
   -/
   #guard_msgs in

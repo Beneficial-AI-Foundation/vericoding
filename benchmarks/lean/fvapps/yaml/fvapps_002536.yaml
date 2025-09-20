@@ -31,19 +31,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval zero_fuel 50 25 2
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval zero_fuel 60 30 3
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in

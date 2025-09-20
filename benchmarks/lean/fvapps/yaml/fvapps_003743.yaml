@@ -42,19 +42,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 20
   -/
   #guard_msgs in
   #eval sum_triangular_numbers 4
 
-  /-
+  /--
   info: 56
   -/
   #guard_msgs in
   #eval sum_triangular_numbers 6
 
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in

@@ -59,25 +59,25 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'b'
   -/
   #guard_msgs in
   #eval solution ["a", "b", "c"] 1 "d"
 
-  /-
+  /--
   info: 'd'
   -/
   #guard_msgs in
   #eval solution ["a", "b", "c"] 5 "d"
 
-  /-
+  /--
   info: 'c'
   -/
   #guard_msgs in
   #eval solution ["a", "b", "c"] -1 "d"
 
-  /-
+  /--
   info: 'd'
   -/
   #guard_msgs in

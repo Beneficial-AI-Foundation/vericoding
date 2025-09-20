@@ -58,19 +58,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: []
   -/
   #guard_msgs in
   #eval update_inventory [] []
 
-  /-
+  /--
   info: [(8, 'Apple')]
   -/
   #guard_msgs in
   #eval update_inventory [(5, "Apple")] [(3, "Apple")]
 
-  /-
+  /--
   info: [(25, 'HTC'), (5, 'LG'), (1000, 'Nokia'), (54, 'Samsung')]
   -/
   #guard_msgs in

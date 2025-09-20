@@ -32,19 +32,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'af1be2cd3'
   -/
   #guard_msgs in
   #eval char_concat "abcdef"
 
-  /-
+  /--
   info: 'Cs1or2da3eW4'
   -/
   #guard_msgs in
   #eval char_concat "CodeWars"
 
-  /-
+  /--
   info: '101292383474565'
   -/
   #guard_msgs in

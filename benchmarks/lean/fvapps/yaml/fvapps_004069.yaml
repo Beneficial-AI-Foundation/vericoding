@@ -47,19 +47,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: ''
   -/
   #guard_msgs in
   #eval string_clean ""
 
-  /-
+  /--
   info: ''
   -/
   #guard_msgs in
   #eval string_clean "123456789"
 
-  /-
+  /--
   info: 'This looks great!'
   -/
   #guard_msgs in

@@ -51,19 +51,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in
   #eval trump_detector "I will build a huge wall"
 
-  /-
+  /--
   info: 4
   -/
   #guard_msgs in
   #eval trump_detector "HUUUUUGEEEE WAAAAAALL"
 
-  /-
+  /--
   info: 1.56
   -/
   #guard_msgs in

@@ -48,19 +48,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval check_vowel "cat" 1
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval check_vowel "cat" 0
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
