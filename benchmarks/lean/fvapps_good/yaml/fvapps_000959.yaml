@@ -1,0 +1,116 @@
+vc-description: |-
+  /-
+  You are given a sequence of non-negative integers $A_1, A_2, \ldots, A_N$. At most once, you may choose a non-negative integer $X$ and for each valid $i$, change $A_i$ to $A_i \oplus X$ ($\oplus$ denotes bitwise XOR).
+  Find the minimum possible value of the sum of all elements of the resulting sequence.
+
+  -----Input-----
+  - The first line of the input contains a single integer $T$ denoting the number of test cases. The description of $T$ test cases follows.
+  - The first line of the input contains a single integer $N$.
+  - The second line contains $N$ space-separated integers $A_1, A_2, \ldots, A_N$.
+
+  -----Output-----
+  For each test case, print a single line containing one integer ― the minimum possible sum.
+
+  -----Constraints-----
+  - $1 \le T \le 1,000$
+  - $1 \le N \le 10^5$
+  - $1 \le A_i \le 10^9$ for each valid $i$
+  - the sum of $N$ over all test cases does not exceed $10^6$
+
+  -----Subtasks-----
+  Subtask #1 (50 points):
+  - $1 \le N \le 10^3$
+  - $1 \le A_i \le 10^3$ for each valid $i$
+  Subtask #2 (50 points): original constraints
+
+  -----Example Input-----
+  3
+  5
+  2 3 4 5 6
+  4
+  7 7 7 7
+  3
+  1 1 3
+
+  -----Example Output-----
+  14
+  0
+  2
+
+  -----Explanation-----
+  Example case 1: If we choose $X = 6$, the sequence becomes $(4, 5, 2, 3, 0)$.
+  Example case 2: We can choose $X = 7$ to make all elements of the resulting sequence equal to $0$.
+  Example case 3: We can choose $X = 1$. The sequence becomes $(0, 0, 2)$, with sum $2$.
+  -/
+
+vc-preamble: |-
+  def sum_list : List Nat → Nat 
+    | [] => 0
+    | x::xs => x + sum_list xs
+
+vc-helpers: |
+
+vc-definitions: |-
+  def min_sequence_sum (n : Nat) (a : List Nat) : Nat :=
+    sorry
+
+vc-theorems: |-
+  theorem min_sequence_sum_non_negative
+    (n : Nat) (a : List Nat) (h : a.length = n)
+    : min_sequence_sum n a ≥ 0 :=
+  sorry
+
+  theorem min_sequence_sum_upper_bound
+    (n : Nat) (a : List Nat) (h : a.length = n)
+    : min_sequence_sum n a ≤ sum_list a :=
+  sorry 
+
+  theorem min_sequence_sum_all_equal
+    (n : Nat) (a : List Nat) (h : a.length = n)
+    (h' : ∀ i j, i < n → j < n → a[i]? = a[j]?)
+    : min_sequence_sum n a = 0 :=
+  sorry
+
+  theorem min_sequence_sum_all_zeros
+    (n : Nat) (a : List Nat) (h : a.length = n)
+    (h' : ∀ i, i < n → a[i]? = some 0)
+    : min_sequence_sum n a = 0 :=
+  sorry
+
+  theorem min_sequence_sum_all_ones 
+    (n : Nat) (a : List Nat) (h : a.length = n)
+    (h' : ∀ i, i < n → a[i]? = some 1)
+    : min_sequence_sum n a = 0 :=
+  sorry
+
+  theorem min_sequence_sum_single_zero 
+    : min_sequence_sum 1 [0] = 0 :=
+  sorry
+
+  theorem min_sequence_sum_equal_large_nums
+    {x : Nat} (h : x = 2^31)
+    : min_sequence_sum 2 [x, x] = 0 :=
+  sorry
+
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded
+
+  /--
+  info: 14
+  -/
+  #guard_msgs in
+  #eval min_sequence_sum 5 [2, 3, 4, 5, 6]
+
+  /--
+  info: 0
+  -/
+  #guard_msgs in
+  #eval min_sequence_sum 4 [7, 7, 7, 7]
+
+  /--
+  info: 2
+  -/
+  #guard_msgs in
+  #eval min_sequence_sum 3 [1, 1, 3]
+

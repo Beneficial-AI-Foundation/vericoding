@@ -1,0 +1,74 @@
+vc-description: |-
+  /-
+  Bob is a theoretical coder - he doesn't write code, but comes up with theories, formulas and algorithm ideas. You are his secretary, and he has tasked you with writing the code for his newest project - a method for making the short form of a word. Write a function ```shortForm```(C# ```ShortForm```, Python ```short_form```) that takes a string and returns it converted into short form using the rule: Remove all vowels, except for those that are the first or last letter. Do not count 'y' as a vowel, and ignore case. Also note, the string given will not have any spaces; only one word, and only Roman letters. 
+  
+  Example:
+  ```
+  shortForm("assault");
+  short_form("assault")
+  ShortForm("assault");
+  // should return "asslt"
+  ```
+  
+  Also, FYI: I got all the words with no vowels from 
+  https://en.wikipedia.org/wiki/English_words_without_vowels
+  -/
+
+vc-preamble: |-
+  def isConsonant (c : Char) : Bool :=
+    c ∈ ['b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x', 'y', 'z']
+  
+  def isVowel (c : Char) : Bool :=
+    c.toLower ∈ ['a', 'e', 'i', 'o', 'u']
+
+vc-helpers: |-
+
+vc-definitions: |-
+  def short_form (s : String) : String :=
+    sorry
+
+vc-theorems: |-
+  theorem short_form_length {s : String} :
+    String.length (short_form s) ≤ String.length s :=
+  sorry
+  
+  theorem short_form_first_last {s : String} (h: String.length s > 0) :
+    (s.get! 0 = (short_form s).get! 0) ∧
+    (String.length s > 1 → s.get! (String.Pos.mk (s.length - 1)) = (short_form s).get! (String.Pos.mk ((short_form s).length - 1))) :=
+  sorry
+  
+  theorem short_form_consonants {s : String} (h : ∀ c, c ∈ s.data → isConsonant c) :
+    short_form s = s :=
+  sorry
+  
+  theorem short_form_case_preservation {s : String} :
+    ∀ c, c ∈ (short_form s).data → c ∈ s.data :=
+  sorry
+  
+  theorem short_form_middle_vowels_removed {s : String} :
+    ∀ i, 1 ≤ i → i < String.length (short_form s) - 1 →
+      ¬(isVowel ((short_form s).get! (String.Pos.mk i))) :=
+  sorry
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded
+  
+  /--
+  info: 'asslt'
+  -/
+  #guard_msgs in
+  #eval short_form "assault"
+  
+  /--
+  info: 'rhythm'
+  -/
+  #guard_msgs in
+  #eval short_form "rhythm"
+  
+  /--
+  info: 'InSNe'
+  -/
+  #guard_msgs in
+  #eval short_form "InSaNe"
+

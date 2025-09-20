@@ -44,7 +44,7 @@ vc-spec: |-
       ensures
           result.len() == a.len(),
           forall|i: int, j: int| 0 <= i < j < result.len() ==> result[i] as i32 <= result[j] as i32,
-          forall|x: i32| #[trigger] count_occurrences(result@.map(|i: int, val: i8| val as i32), x) == count_occurrences(a@.map(|i: int, val: i8| val as i32), x)
+          forall|x: i32| #[trigger] count_occurrences(result@.map(|_i: int, e: i8| e as i32), x) == count_occurrences(a@.map(|_i: int, e: i8| e as i32), x)
 
 vc-code: |-
   {

@@ -90,17 +90,17 @@ vc-spec: |-
       requires 
           formats.len() == names.len(),
           titles.is_some() ==> titles.unwrap().len() == names.len(),
-          forall|i: int| 0 <= i < formats.len() ==> is_valid_format(formats[i]),
+          forall|i: int| 0 <= i < formats.len() ==> is_valid_format(formats@[i]),
       ensures
           result.fields.len() == formats.len(),
-          forall|i: int| 0 <= i < result.fields.len() ==> result.fields[i].name == names[i],
+          forall|i: int| 0 <= i < result.fields.len() ==> result.fields@[i].name == names@[i],
           forall|i: int| 0 <= i < result.fields.len() ==> 
-              result.fields[i].format == parse_format_descriptor(formats[i]),
+              result.fields@[i].format == parse_format_descriptor(formats@[i]),
           match titles {
               Some(title_vec) => forall|i: int| 0 <= i < result.fields.len() ==> 
-                  result.fields[i].title == Some(title_vec[i]),
+                  result.fields@[i].title == Some(title_vec@[i]),
               None => forall|i: int| 0 <= i < result.fields.len() ==> 
-                  result.fields[i].title.is_none(),
+                  result.fields@[i].title.is_none(),
           },
           result.aligned == aligned,
 

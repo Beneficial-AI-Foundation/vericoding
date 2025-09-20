@@ -1,16 +1,16 @@
 vc-description: |-
   /-
   When we have a 2x2 square matrix we may have up to 24 different ones changing the positions of the elements.
-  
+
   We show some of them
   ```
   a  b   a  b    a  c    a  c   a  d    a  d    b  a    b  a
   c  d   d  c    d  b    b  d   b  c    c  b    c  d    d  c
   ```
   You may think to generate the remaining ones until completing the set of 24 matrices.
-  
+
   Given a certain matrix of numbers, that may be repeated or not, calculate the total number of possible matrices that may be generated, changing the position of the elements.
-  
+
   E.g:
   Case one
   ```
@@ -18,7 +18,7 @@ vc-description: |-
        [3,4,5]]   #a 2x3 rectangle matrix with number 3 twice
   ```     
   generates a set of ```360``` different matrices
-  
+
   Case two
   ```
   A = [[1,1,1], 
@@ -26,7 +26,7 @@ vc-description: |-
        [3,3,3]]
   ```
   generates a set of ```1260``` different matrices.
-  
+
   Case three
   ```
   A = [[1,2,3],
@@ -34,9 +34,9 @@ vc-description: |-
        [7,8,9]]
   ```     
   generates a set of ```362880``` different matrices
-  
+
   This kata is not meant to apply a brute force algorithm to try to count the total amount of marices.
-  
+
   Features of The Random Tests
   ``` 
   number of tests = 100
@@ -44,7 +44,7 @@ vc-description: |-
   2 ≤ n ≤ 9
   ``` 
   Enjoy it!
-  
+
   Available only in Python 2, Javascript and Ruby by the moment.
   -/
 
@@ -52,7 +52,7 @@ vc-preamble: |-
   def count_perms (matrix: List (List Nat)) : Nat :=
     sorry
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def factorial (n: Nat) : Nat :=
@@ -63,7 +63,7 @@ vc-definitions: |-
 vc-theorems: |-
   theorem count_perms_single_element :
     count_perms [[1]] = 1 := by sorry
-  
+
   theorem count_perms_dimensions_preserved {m n: Nat} (matrix: List (List Nat))
     (h1: matrix.length = m)
     (h2: ∀ row ∈ matrix, row.length = n) :
@@ -72,38 +72,38 @@ vc-theorems: |-
     0 < result ∧ 
     -- Result is bounded by factorial of total elements
     result ≤ factorial (m * n) := by sorry
-  
+
   theorem count_perms_all_same {m n: Nat}
     (h1: 0 < m) (h2: 0 < n) :
     let matrix := List.replicate m (List.replicate n 1)
     count_perms matrix = 1 := by sorry
-  
+
   theorem count_perms_all_different {m n: Nat}
     (h1: 0 < m) (h2: 0 < n) :
     let matrix := List.map (fun i => 
       List.map (fun j => i * n + j + 1) (List.range n)
     ) (List.range m)
     count_perms matrix = factorial (m * n) := by sorry
-  
-  /-
-  info: 360
-  -/
-  -- #guard_msgs in
-  -- #eval count_perms [[1, 2, 3], [3, 4, 5]]
-  
-  /-
-  info: 1260
-  -/
-  -- #guard_msgs in
-  -- #eval count_perms [[1, 1, 1], [2, 2, 3], [3, 3, 3]]
-  
-  /-
-  info: 362880
-  -/
-  -- #guard_msgs in
-  -- #eval count_perms [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
 
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded
+
+  /-
+  info: 360
+  -/
+  #guard_msgs in
+  #eval count_perms [[1, 2, 3], [3, 4, 5]]
+
+  /-
+  info: 1260
+  -/
+  #guard_msgs in
+  #eval count_perms [[1, 1, 1], [2, 2, 3], [3, 3, 3]]
+
+  /-
+  info: 362880
+  -/
+  #guard_msgs in
+  #eval count_perms [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
 

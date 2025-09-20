@@ -1,0 +1,61 @@
+vc-description: |-
+  /-
+  Complete the function to find the count of the most frequent item of an array. You can assume that input is an array of integers. For an empty array return `0`
+
+  ## Example
+  ```python
+  input array: [3, -1, -1, -1, 2, 3, -1, 3, -1, 2, 4, 9, 3]
+  ouptut: 5 
+  ```
+  The most frequent number in the array is `-1` and it occurs `5` times.
+  -/
+
+vc-preamble: |
+
+vc-helpers: |
+
+vc-definitions: |-
+  def most_frequent_item_count (lst : List Int) : Nat := sorry
+
+  theorem most_frequent_item_count_nonneg (lst : List Int) :
+    most_frequent_item_count lst ≥ 0 := sorry
+
+vc-theorems: |-
+  theorem most_frequent_item_count_bounded (lst : List Int) :
+    most_frequent_item_count lst ≤ lst.length := sorry
+
+  theorem most_frequent_item_count_upper_bound (lst : List Int) (x : Int) :
+    x ∈ lst → (lst.count x) ≤ most_frequent_item_count lst := sorry
+
+  theorem most_frequent_item_count_exists (lst : List Int) :
+    most_frequent_item_count lst > 0 →
+    ∃ x ∈ lst, lst.count x = most_frequent_item_count lst := sorry
+
+  theorem most_frequent_item_count_nonempty (lst : List Int) :
+    lst ≠ [] → most_frequent_item_count lst ≥ 1 := sorry
+
+  theorem most_frequent_item_count_empty :
+    most_frequent_item_count [] = 0 := sorry
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded_and_plausible
+
+  /--
+  info: 2
+  -/
+  #guard_msgs in
+  #eval most_frequent_item_count [3, -1, -1]
+
+  /--
+  info: 5
+  -/
+  #guard_msgs in
+  #eval most_frequent_item_count [3, -1, -1, -1, 2, 3, -1, 3, -1, 2, 4, 9, 3]
+
+  /--
+  info: 0
+  -/
+  #guard_msgs in
+  #eval most_frequent_item_count []
+

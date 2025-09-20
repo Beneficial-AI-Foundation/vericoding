@@ -1,0 +1,88 @@
+vc-description: |-
+  /-
+  Complete the function that takes two numbers as input, ```num``` and ```nth``` and return the `nth` digit of `num` (counting from right to left).
+
+  ## Note
+  - If ```num``` is negative, ignore its sign and treat it as a positive value
+  - If ```nth``` is not positive, return `-1`
+  - Keep in mind that `42 = 00042`. This means that ```findDigit(42, 5)``` would return `0`
+
+  ## Examples
+
+  ```
+  findDigit(5673, 4)     returns 5
+  findDigit(129, 2)      returns 2
+  findDigit(-2825, 3)    returns 8
+  findDigit(-456, 4)     returns 0
+  findDigit(0, 20)       returns 0
+  findDigit(65, 0)       returns -1
+  findDigit(24, -8)      returns -1
+  ```
+  -/
+
+vc-preamble: |
+
+vc-helpers: |
+
+vc-definitions: |-
+  def abs (n : Int) : Int := if n ≥ 0 then n else -n
+
+  def find_digit (num : Int) (nth : Int) : Int := sorry
+
+vc-theorems: |-
+  theorem negative_nth_returns_negative_one
+    (num nth : Int) (h : nth ≤ 0) :
+    find_digit num nth = -1 := sorry 
+
+  theorem returns_valid_digit 
+    (num nth : Int) (h : nth ≥ 1) :
+    -1 ≤ find_digit num nth ∧ find_digit num nth ≤ 9 := sorry
+
+  theorem result_matches_string_length
+    (num nth : Int) (h : nth ≥ 1) :
+    find_digit num nth = 0 ∨ 
+    (0 ≤ find_digit num nth ∧ find_digit num nth ≤ 9) := sorry
+
+  theorem single_digit_numbers
+    (num nth : Int) (h1 : 0 ≤ num) (h2 : num ≤ 9) (h3 : nth ≥ 1) :
+    if nth = 1
+    then find_digit num nth = num 
+    else find_digit num nth = 0 := sorry
+
+  theorem zero_number :
+    find_digit 0 1 = 0 ∧ find_digit 0 5 = 0 := sorry
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded
+
+  /--
+  info: 5
+  -/
+  #guard_msgs in
+  #eval find_digit 5673 4
+
+  /--
+  info: 8
+  -/
+  #guard_msgs in
+  #eval find_digit -2825 3
+
+  /--
+  info: 0
+  -/
+  #guard_msgs in
+  #eval find_digit 0 20
+
+  /--
+  info: -1
+  -/
+  #guard_msgs in
+  #eval find_digit 65 0
+
+  /--
+  info: 0
+  -/
+  #guard_msgs in
+  #eval find_digit -456 5
+

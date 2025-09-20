@@ -1,0 +1,84 @@
+vc-description: |-
+  /-
+  Chef has an array of N natural numbers. Cheffina challenges the chef to choose the two numbers from the array and following the condition as the area of the rectangle formed from the two numbers is maximum. Cheffina also asks the chef to choose two numbers different from the previous two to form the rectangle with a minimum area.
+  
+  -----Input:-----
+  - First-line will contain $T$, the number of test cases. Then the test cases follow. 
+  - Each test case contains a single line of input, $N$.
+  - N space-separated natural numbers. 
+  
+  -----Output:-----
+  For each test case, output in one line answers maximum and minimum area of a rectangle.
+  
+  -----Constraints-----
+  - $1 \leq T \leq 10$
+  - $4 \leq N \leq 10^5$
+  - $1 \leq arr[i] \leq 10^6$
+  
+  -----Sample Input:-----
+  1
+  5
+  4 2 1 5 3
+  
+  -----Sample Output:-----
+  20 2
+  -/
+
+vc-preamble: |-
+
+vc-helpers: |-
+
+vc-definitions: |-
+  def find_rectangle_areas (n : Nat) (numbers : List Nat) : Nat × Nat :=
+  sorry
+  
+  def maximumTwoProduct (l : List Nat) : Nat :=
+  sorry
+  
+  def minimumTwoProduct (l : List Nat) : Nat :=
+  sorry
+
+vc-theorems: |-
+  theorem find_rectangle_areas_ordering
+    (numbers : List Nat)
+    (h : numbers.length ≥ 2) :
+    let (max_area, min_area) := find_rectangle_areas numbers.length numbers
+    max_area ≥ min_area :=
+  sorry
+  
+  theorem find_rectangle_areas_minimal
+    (numbers : List Nat)
+    (h : numbers = [1, 1]) :
+    find_rectangle_areas 2 numbers = (1, 1) :=
+  sorry
+  
+  theorem find_rectangle_areas_preserves_input
+    (numbers : List Nat)
+    (h : numbers.length ≥ 2) :
+    let original := numbers
+    let _ := find_rectangle_areas numbers.length numbers
+    numbers = original :=
+  sorry
+
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: guarded_and_plausible
+  
+  /--
+  info: (20, 2)
+  -/
+  #guard_msgs in
+  #eval find_rectangle_areas 5 [4, 2, 1, 5, 3]
+  
+  /--
+  info: (12, 2)
+  -/
+  #guard_msgs in
+  #eval find_rectangle_areas 4 [1, 2, 3, 4]
+  
+  /--
+  info: (30, 2)
+  -/
+  #guard_msgs in
+  #eval find_rectangle_areas 6 [5, 4, 3, 2, 1, 6]
+

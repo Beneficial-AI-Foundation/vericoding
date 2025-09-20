@@ -8,7 +8,7 @@ vc-description: |-
   For the given grid your task is to find the sum of L(i, j) over all 1 <= i <= N and 1 <= j <= M.  
   The description of the grid is given as follows: In addition to N and M, you are given the number of 'W' cells (w) and the number of 'B' cells (b)
   and you are given the locations of these w + b cells.  (The other cells contain '.')
-  
+
   -----Constraints:-----
   For all testcases,
   - 1 <= N, M <= 10^6. 
@@ -19,44 +19,44 @@ vc-description: |-
   It is guaranteed that 1 <= N,M <= 2000
   Subtask 3: 60%
   No additional guarantees.
-  
+
   -----Input format:-----
   - There is only one line of input which contains 4 + 2w + 2b space separated integers. The first four integers are N, M, w and b. 
   - The next 2*w integers denote the cells which contains a 'W': x1 y1 x2 y2 .. xw yw. These denote that (xi,yi) contains 'W'.
   - The next 2*b integers denote the cells which contains a 'B': x1 y1 x2 y2 .. xb yb. These denote that (xi,yi) contains 'B'.
   - The cells which are not in the input have to be assumed to be '.' 
-  
+
   -----Output format:-----
   Output a single integer which is the sum of L(i,j) over all 1 <= i <= N and 1 <= j <= M.
-  
+
   -----Sample Input 1:-----
   4 4 5 2 1 3 2 1 3 2 3 3 4 3 1 4 2 3
-  
+
   -----Sample Output 1:-----
   22
-  
+
   -----Explanation:-----
   The grid is:
   . . W B
   W . B .
   . W W .
   . . W .
-  
+
   L(i,j) for each cell is:
   4 3 0 0
   0 2 0 1
   3 0 0 1
   4 3 0 1
-  
+
   Therefore, the total is 22.
-  
+
   -----Note:-----
   As the answer might be large, please use 64 bit integers (long long int in C/C++ and long in Java) instead of 32 bit int.
   -/
 
-vc-preamble: |-
+vc-preamble: |
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def solve_ray_grid (n m w b : Nat) (w_cells b_cells : List Nat) : Nat :=
@@ -66,34 +66,34 @@ vc-theorems: |-
   theorem empty_grid_sum {n m : Nat} (hn : 0 < n) (hm : 0 < m) : 
     solve_ray_grid n m 0 0 [] [] = n * m * (m + 1) / 2 :=
   sorry
-  
+
   theorem single_black_cell :
     solve_ray_grid 2 3 0 1 [] [1,2] = 9 :=
   sorry
-  
+
   theorem example_case :
     solve_ray_grid 4 4 5 2 [1,3,2,1,3,2,3,3,4,3] [1,4,2,3] = 22 :=
   sorry
-  
-  /-
-  info: 22
-  -/
-  -- #guard_msgs in
-  -- #eval solve_ray_grid 4 4 5 2 [1, 3, 2, 1, 3, 2, 3, 3, 4, 3] [1, 4, 2, 3]
-  
-  /-
-  info: 6
-  -/
-  -- #guard_msgs in
-  -- #eval solve_ray_grid 2 2 0 0 [] []
-  
-  /-
-  info: 9
-  -/
-  -- #guard_msgs in
-  -- #eval solve_ray_grid 2 3 0 1 [] [1, 2]
 
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
+
+  /-
+  info: 22
+  -/
+  #guard_msgs in
+  #eval solve_ray_grid 4 4 5 2 [1, 3, 2, 1, 3, 2, 3, 3, 4, 3] [1, 4, 2, 3]
+
+  /-
+  info: 6
+  -/
+  #guard_msgs in
+  #eval solve_ray_grid 2 2 0 0 [] []
+
+  /-
+  info: 9
+  -/
+  #guard_msgs in
+  #eval solve_ray_grid 2 3 0 1 [] [1, 2]
 

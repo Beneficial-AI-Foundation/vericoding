@@ -1,0 +1,80 @@
+vc-description: |-
+  /-
+  # Task
+   A robot is standing at the `(0, 0)` point of the Cartesian plane and is oriented towards the vertical (y) axis in the direction of increasing y values (in other words, he's facing up, or north). The robot executes several commands each of which is a single positive integer. When the robot is given a positive integer K it moves K squares forward and then turns 90 degrees clockwise.
+
+   The commands are such that both of the robot's coordinates stay non-negative.
+
+   Your task is to determine if there is a square that the robot visits at least twice after executing all the commands.
+
+  # Example
+
+   For `a = [4, 4, 3, 2, 2, 3]`, the output should be `true`.
+
+   The path of the robot looks like this:
+
+   ![](https://codefightsuserpics.s3.amazonaws.com/tasks/robotWalk/img/path.png?_tm=1486563151922)
+
+   The point `(4, 3)` is visited twice, so the answer is `true`.
+
+  # Input/Output
+
+   - `[input]` integer array a
+
+    An array of positive integers, each number representing a command.
+
+    Constraints:
+
+    `3 ≤ a.length ≤ 100`
+
+    `1 ≤ a[i] ≤ 10000`
+
+   - `[output]` a boolean value
+
+    `true` if there is a square that the robot visits at least twice, `false` otherwise.
+  -/
+
+vc-preamble: |
+
+vc-helpers: |
+
+vc-definitions: |-
+  def robot_walk (lst : List Int) : Bool :=
+    sorry
+
+vc-theorems: |-
+  theorem robot_walk_output_type (lst : List Int) (h : lst.length ≥ 3) :
+    robot_walk lst = true ∨ robot_walk lst = false :=
+  sorry
+
+  theorem robot_walk_deterministic (lst : List Int) (h : lst.length ≥ 3) :
+    robot_walk lst = robot_walk lst :=
+  sorry
+
+  theorem robot_walk_strictly_decreasing (lst : List Int) (h : lst.length ≥ 3)
+    (decrease : ∀ (i j : Fin lst.length), i < j → lst.get i > lst.get j) :
+    robot_walk lst = false :=
+  sorry
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval robot_walk [4, 4, 3, 2, 2, 3]
+
+  /--
+  info: False
+  -/
+  #guard_msgs in
+  #eval robot_walk [34241, 23434, 2341]
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval robot_walk [5, 5, 5, 5]
+

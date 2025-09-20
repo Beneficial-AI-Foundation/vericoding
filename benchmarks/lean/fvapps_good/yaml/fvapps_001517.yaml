@@ -1,0 +1,91 @@
+vc-description: |-
+  /-
+  A tennis tournament is about to take place with $N$ players participating in it.
+  Every player plays with every other player exactly once and there are no ties. That is, every match has a winner and a loser. 
+  With Naman's birthday approaching, he wants to make sure that each player wins the same number of matches so that nobody gets disheartened.  
+  Your task is to determine if such a scenario can take place and if yes find one such scenario.
+
+  -----Input:-----
+  - First line will contain $T$, number of testcases. Then the testcases follow. 
+  - Each testcase contains of a single integer $N$ denoting number of players.
+
+  -----Output:-----
+  - If it's impossible for everyone to win the same number of matches, print "NO" (without quotes).
+  - Otherwise print "YES" (without quotes) and then print $N$ lines , each line should consist of a string containing only 0s and 1s and should be of size $N$. 
+  - If the jth character in the ith line is 1 then it means in the match between $i$ and $j$ , $i$ wins. 
+  - You will get a WA if the output does not correspond to a valid tournament, or if the constraints are not satisfied.
+  - You will get also WA verdict if any 2 lines have contradicting results or if a player beats himself.
+
+  -----Constraints-----
+  - $1 \leq T \leq 100$
+  - $2 \leq N \leq 100$
+
+  -----Subtasks-----
+  - 10 points : $2 \leq N \leq 6$
+  - 90 points :  Original Constraints. 
+
+  -----Sample Input:-----
+  2
+  3
+  2
+
+  -----Sample Output:-----
+  YES
+  010
+  001
+  100
+  NO
+
+  -----Explanation:-----
+  One such scenario for $N$ = $3$ is when player $1$ beats player $2$, player $2$ to beats player $3$ and player $3$ beats player $1$. Here all players win exactly $1$ match.
+  -/
+
+vc-preamble: |
+
+vc-helpers: |
+
+vc-definitions: |-
+  def solveTennisTournament (n : Nat) : List String := sorry
+
+  theorem even_n_returns_no {n : Nat} (h : n > 0) (h2 : n % 2 = 0) :
+    solveTennisTournament n = ["NO"] := sorry
+
+vc-theorems: |-
+  theorem odd_n_first_element {n : Nat} (h : n > 0) (h2 : n % 2 = 1) :
+    (solveTennisTournament n).head? = some "YES" := sorry
+
+  theorem odd_n_length {n : Nat} (h : n > 0) (h2 : n % 2 = 1) :
+    (solveTennisTournament n).length = n + 1 := sorry
+
+  theorem odd_n_inner_row_length {n : Nat} (h : n > 0) (h2 : n % 2 = 1) :
+    ∀ row ∈ (solveTennisTournament n).tail, String.length row = n := sorry
+
+  theorem odd_n_valid_chars {n : Nat} (h : n > 0) (h2 : n % 2 = 1) :
+    ∀ row ∈ (solveTennisTournament n).tail, 
+    ∀ c ∈ String.toList row, c = '0' ∨ c = '1' := sorry
+
+  theorem odd_n_row_ones_count {n : Nat} (h : n > 0) (h2 : n % 2 = 1) :
+    ∀ row ∈ (solveTennisTournament n).tail,
+    let ones := (String.toList row).filter (· = '1')
+    ones.length = (n-1)/2 := sorry
+
+  theorem odd_n_col_ones_count {n : Nat} (h : n > 0) (h2 : n % 2 = 1) (j : Nat) (hj : j < n) :
+    let rows := (solveTennisTournament n).tail
+    let col := rows.map (λ row => String.get! row ⟨j⟩)
+    (col.filter (· = '1')).length = (n-1)/2 := sorry
+
+  theorem odd_n_no_self_play {n : Nat} (h : n > 0) (h2 : n % 2 = 1) (i : Nat) (hi : i < n) :
+    let rows := (solveTennisTournament n).tail
+    let row := rows.get! i
+    String.get! row ⟨i⟩ = '0' := sorry
+
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded
+
+  /--
+  info: 6
+  -/
+  #guard_msgs in
+  #eval len result3
+

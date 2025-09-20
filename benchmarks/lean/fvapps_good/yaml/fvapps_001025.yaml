@@ -1,0 +1,86 @@
+vc-description: |-
+  /-
+  Alice is a very brilliant student. He considers '4' and '7' as Magic numbers. The numbers containing only magic numbers are also magical. Given a magic number N ,he wants to know what could be the next magical number greater than the given number.
+
+  -----Input-----
+
+  First line of input contains number of test cases T. For each test case, there is exits only one line containing a magic number N. 
+
+  -----Output-----
+
+  For each test case,  output a single line containing the next greater magical number.
+
+  -----Constraints-----
+  1<=T<=1000
+  4<= N<=10^100
+
+  -----Example-----
+  Input:
+  2
+  4
+  47
+
+  Output:
+  7
+  74
+  -/
+
+vc-preamble: |
+
+vc-helpers: |
+
+vc-definitions: |-
+  def find_next_magic_number (n : Nat) : Nat :=
+    sorry
+
+vc-theorems: |-
+  theorem find_next_magic_number_4 :
+    find_next_magic_number 4 = 7 := by
+    sorry
+
+  theorem find_next_magic_number_77 :
+    find_next_magic_number 77 = 444 := by
+    sorry
+
+  theorem find_next_magic_number_47 :
+    find_next_magic_number 47 = 74 := by
+    sorry
+
+  theorem find_next_magic_number_444 :
+    find_next_magic_number 444 = 447 := by
+    sorry
+
+  theorem find_next_magic_number_447 :
+    find_next_magic_number 447 = 474 := by
+    sorry
+
+  theorem find_next_magic_number_474 :
+    find_next_magic_number 474 = 477 := by
+    sorry
+
+  theorem find_next_magic_number_477 :
+    find_next_magic_number 477 = 744 := by
+    sorry
+
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded
+
+  /--
+  info: 7
+  -/
+  #guard_msgs in
+  #eval find_next_magic_number 4
+
+  /--
+  info: 74
+  -/
+  #guard_msgs in
+  #eval find_next_magic_number 47
+
+  /--
+  info: 444
+  -/
+  #guard_msgs in
+  #eval find_next_magic_number 77
+

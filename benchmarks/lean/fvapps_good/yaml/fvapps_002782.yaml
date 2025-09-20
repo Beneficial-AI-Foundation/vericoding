@@ -1,0 +1,63 @@
+vc-description: |-
+  /-
+  Your dad doesn't really *get* punctuation, and he's always putting extra commas in when he posts. You can tolerate the run-on sentences, as he does actually talk like that, but those extra commas have to go!
+
+  Write a function called ```dadFilter``` that takes a string as argument and returns a string with the extraneous commas removed. The returned string should not end with a comma or any trailing whitespace.
+  -/
+
+vc-preamble: |
+
+vc-helpers: |
+
+vc-definitions: |-
+  def dad_filter (s : String) : String := sorry
+
+  def containsDoubleComma (s : String) : Bool := 
+    let rec check (chars : List Char) : Bool := 
+      match chars with
+      | [] => false
+      | [_] => false
+      | x :: y :: rest => 
+        if x == ',' && y == ',' then true
+        else check (y :: rest)
+    check s.data
+    termination_by check chars => chars.length
+
+vc-theorems: |-
+  theorem dad_filter_no_double_commas {s : String} {n : Nat} (h : n > 0 ∧ n ≤ 10) :
+    containsDoubleComma (dad_filter (s ++ String.mk (List.replicate n ','))) = false := sorry
+
+  theorem dad_filter_no_trailing_comma {s : String} :
+    ¬ String.endsWith (dad_filter s) "," := sorry
+
+  theorem dad_filter_no_trailing_space {s : String} :
+    ¬ String.endsWith (dad_filter s) " " := sorry
+
+  theorem dad_filter_preserves_noncomma_chars {s : String} :
+    (String.replace s "," "").trim = (String.replace (dad_filter s) "," "").trim := sorry
+
+  theorem dad_filter_idempotent {s : String} :
+    dad_filter (dad_filter s) = dad_filter s := sorry
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded
+
+  /--
+  info: 'all this, used to be trees'
+  -/
+  #guard_msgs in
+  #eval dad_filter "all this,,,, used to be trees,,,,,,"
+
+  /--
+  info: 'Luke, I am your father'
+  -/
+  #guard_msgs in
+  #eval dad_filter "Luke,,,,,,,,, I am your father,,,,,,,,,  "
+
+  /--
+  info: "Dead or alive, you're coming with me"
+  -/
+  #guard_msgs in
+  #eval dad_filter "Dead or alive,,,, you"re coming with me,,,   "
+

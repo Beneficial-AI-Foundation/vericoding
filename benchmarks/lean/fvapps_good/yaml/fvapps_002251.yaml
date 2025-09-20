@@ -1,0 +1,85 @@
+vc-description: |-
+  /-
+  Given positive integers N, K and M, solve the following problem for every integer x between 1 and N (inclusive):
+   - Find the number, modulo M, of non-empty multisets containing between 0 and K (inclusive) instances of each of the integers 1, 2, 3 \cdots, N such that the average of the elements is x.
+
+  -----Constraints-----
+   - 1 \leq N, K \leq 100
+   - 10^8 \leq M \leq 10^9 + 9
+   - M is prime.
+   - All values in input are integers.
+
+  -----Input-----
+  Input is given from Standard Input in the following format:
+  N K M
+
+  -----Output-----
+  Use the following format:
+  c_1
+  c_2
+  :
+  c_N
+
+  Here, c_x should be the number, modulo M, of multisets such that the average of the elements is x.
+
+  -----Sample Input-----
+  3 1 998244353
+
+  -----Sample Output-----
+  1
+  3
+  1
+
+  Consider non-empty multisets containing between 0 and 1 instance(s) of each of the integers between 1 and 3. Among them, there are:
+   - one multiset such that the average of the elements is k = 1: \{1\};
+   - three multisets such that the average of the elements is k = 2: \{2\}, \{1, 3\}, \{1, 2, 3\};
+   - one multiset such that the average of the elements is k = 3: \{3\}.
+  -/
+
+vc-preamble: |
+
+vc-helpers: |
+
+vc-definitions: |-
+  def solve_multiset_averages (N K M : Nat) : List Nat :=
+    sorry
+
+vc-theorems: |-
+  theorem common_moduli {N K : Nat} (h1 : N > 0) (h2 : K > 0) :
+    let primes := [998244353, 1000000007]
+    ∀ M ∈ primes,
+      ∀ x ∈ solve_multiset_averages N K M,
+        0 ≤ x ∧ x < M :=
+    sorry
+
+  theorem edge_case_n1 :
+    (solve_multiset_averages 1 1 (10^9 + 7)).length = 1 :=
+    sorry
+
+  theorem edge_case_min_input :
+    let result := solve_multiset_averages 1 1 2
+    result.length = 1 ∧ result.head! < 2 :=
+    sorry
+
+vc-postamble: |-
+  -- Apps difficulty: competition
+  -- Assurance level: guarded_and_plausible
+
+  /--
+  info: [1, 3, 1]
+  -/
+  #guard_msgs in
+  #eval solve_multiset_averages 3 1 998244353
+
+  /--
+  info: [2]
+  -/
+  #guard_msgs in
+  #eval solve_multiset_averages 1 2 1000000007
+
+  /--
+  info: [1, 1]
+  -/
+  #guard_msgs in
+  #eval solve_multiset_averages 2 1 905589253
+

@@ -27,7 +27,7 @@ spec fn is_finite(x: i32) -> bool {
 fn isposinf(x: Vec<i32>) -> (result: Vec<bool>)
     ensures
         result.len() == x.len(),
-        forall|i: int| 0 <= i < x@.len() ==> {
+        forall|i: int| 0 <= i < x.len() ==> {
             /* Primary property: result is true iff input is positive infinity */
             result[i] == is_pos_inf(x[i]) &&
             /* Sanity checks: finite values return false */

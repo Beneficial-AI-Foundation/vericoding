@@ -1,0 +1,67 @@
+vc-description: |-
+  /-
+  You want to build a standard house of cards, but you don't know how many cards you will need. Write a program which will count the minimal number of cards according to the number of floors you want to have. For example, if you want a one floor house, you will need 7 of them (two pairs of two cards on the base floor, one horizontal card and one pair to get the first floor). Here you can see which kind of house of cards I mean:
+  http://www.wikihow.com/Build-a-Tower-of-Cards
+
+  ## Note about floors:
+  This kata uses the British numbering system for building floors. If you want your house of cards to have a first floor, it needs a ground floor and then a first floor above that.
+
+  ### Details (Ruby & JavaScript & Python & R)
+  The input must be an integer greater than 0, for other input raise an error.
+
+  ### Details (Haskell)
+  The input must be an integer greater than 0, for other input return `Nothing`.
+  -/
+
+vc-preamble: |
+
+vc-helpers: |
+
+vc-definitions: |-
+  def house_of_cards (n : Int) : Int := sorry
+
+  -- Results should be positive integers and greater than 7n
+
+vc-theorems: |-
+  theorem house_of_cards_positive_integers {n : Int} (h : n > 0) : 
+    house_of_cards n ≥ 7 * n ∧ house_of_cards n > 0 := sorry
+
+  -- Function should fail for non-positive inputs
+
+  theorem house_of_cards_invalid_inputs {n : Int} (h : n ≤ 0) :
+    ¬ ∃ m, house_of_cards n = m := sorry 
+
+  -- Results should be strictly increasing
+
+  theorem house_of_cards_increasing {n : Int} (h : n > 1) :
+    house_of_cards n > house_of_cards (n-1) := sorry
+
+  -- Each floor adds more cards than the previous floor
+
+  theorem house_of_cards_acceleration {n₁ n₂ n₃ : Int} 
+    (h₁ : 0 < n₁) (h₂ : n₁ < n₂) (h₃ : n₂ < n₃) :
+    house_of_cards n₂ - house_of_cards n₁ < 
+    house_of_cards n₃ - house_of_cards n₂ := sorry
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded
+
+  /--
+  info: 7
+  -/
+  #guard_msgs in
+  #eval house_of_cards 1
+
+  /--
+  info: 15
+  -/
+  #guard_msgs in
+  #eval house_of_cards 2
+
+  /--
+  info: 26
+  -/
+  #guard_msgs in
+  #eval house_of_cards 3
+

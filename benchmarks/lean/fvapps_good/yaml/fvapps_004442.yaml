@@ -1,0 +1,100 @@
+vc-description: |-
+  /-
+  # Task
+   John loves encryption. He can encrypt any string by the following algorithm:
+  ```
+  take the first and the last letters of the word;
+  replace the letters between them with their number;
+  replace this number with the sum of it digits 
+            until a single digit is obtained.```
+  Given two strings(`s1` and `s2`), return `true` if their encryption is the same, or `false` otherwise.
+
+  # Example
+
+   For `s1 = "EbnhGfjklmjhgz" and s2 = "Eabcz"`, the result should be `true`.
+   ```
+   "EbnhGfjklmjhgz" --> "E12z" --> "E3z"
+   "Eabcz" --> "E3z"
+   Their encryption is the same.```
+
+  # Input/Output
+
+   - `[input]` string `s1`
+
+    The first string to be encrypted.
+
+    `s1.length >= 3`
+
+   - `[input]` string `s2`
+
+    The second string to be encrypted.
+
+    `s2.length >= 3`
+
+   - `[output]` a boolean value
+
+   `true` if encryption is the same, `false` otherwise.
+  -/
+
+vc-preamble: |
+
+vc-helpers: |
+
+vc-definitions: |-
+  def same_encryption (s1 s2 : String) : Bool := sorry
+
+  theorem same_encryption_reflexive 
+    (s : String) 
+    (h : s.length > 0) : 
+    same_encryption s s = true := sorry
+
+vc-theorems: |-
+  theorem same_encryption_symmetric
+    (s1 s2 : String)
+    (h1 : s1.length > 0)
+    (h2 : s2.length > 0) :
+    same_encryption s1 s2 = same_encryption s2 s1 := sorry
+
+  theorem same_encryption_transitive
+    (s1 s2 s3 : String)
+    (h1 : s1.length > 0)
+    (h2 : s2.length > 0)
+    (h3 : s3.length > 0)
+    (h4 : same_encryption s1 s2 = true)
+    (h5 : same_encryption s2 s3 = true) :
+    same_encryption s1 s3 = true := sorry
+
+  theorem same_encryption_first_last_only
+    (s1 s2 : String)
+    (h1 : s1.length > 1)
+    (h2 : s2.length > 1) :
+    let test_s1 := String.mk [s1.front] ++ String.mk (List.replicate (s1.length - 2) 'x') ++ String.mk [s1.back]
+    let test_s2 := String.mk [s2.front] ++ String.mk (List.replicate (s2.length - 2) 'y') ++ String.mk [s2.back]
+    same_encryption s1 s2 = same_encryption test_s1 test_s2 := sorry
+
+  theorem same_encryption_empty_raises 
+    (h : same_encryption "" "" = true ∨ same_encryption "" "" = false) :
+    False := sorry
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval same_encryption "abc" "abc"
+
+  /--
+  info: False
+  -/
+  #guard_msgs in
+  #eval same_encryption "abc" "abd"
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval same_encryption "fKhjuytrdfcdc" "flJc"
+

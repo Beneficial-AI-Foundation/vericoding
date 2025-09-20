@@ -1,0 +1,59 @@
+vc-description: |-
+  /-
+  Write a program to determine if a string contains only unique characters.
+  Return true if it does and false otherwise.
+
+  The string may contain any of the 128 ASCII characters.
+  Characters are case-sensitive, e.g. 'a' and 'A' are considered different characters.
+  -/
+
+vc-preamble: |
+
+vc-helpers: |
+
+vc-definitions: |-
+  def has_unique_chars (s : String) : Bool := sorry
+
+  theorem empty_string_has_unique_chars :
+    has_unique_chars "" = true := sorry
+
+vc-theorems: |-
+  theorem string_with_duplicates_not_unique (s : String) :
+    has_unique_chars (s ++ String.mk [s.get! 0]) = false := sorry
+
+  theorem len_eq_set_len_iff_unique (s : String) :
+    has_unique_chars s = (s.length = s.data.eraseDups.length) := sorry
+
+  theorem adding_new_char_preserves_uniqueness (s : String) (c : Char)
+    (h1 : has_unique_chars s = true) 
+    (h2 : ∀ x ∈ s.data, x ≠ c) :
+    has_unique_chars (String.push s c) = true := sorry
+
+  theorem concat_unique_strings (s1 s2 : String)
+    (h1 : has_unique_chars s1 = true)
+    (h2 : has_unique_chars s2 = true)
+    (h3 : ∀ x ∈ s1.data, ∀ y ∈ s2.data, x ≠ y) :
+    has_unique_chars (s1 ++ s2) = true := sorry
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded
+
+  /--
+  info: False
+  -/
+  #guard_msgs in
+  #eval has_unique_chars "  nAa"
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval has_unique_chars "abcdef"
+
+  /--
+  info: False
+  -/
+  #guard_msgs in
+  #eval has_unique_chars "++-"
+

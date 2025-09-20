@@ -1,0 +1,92 @@
+vc-description: |-
+  /-
+  Given an array of one's and zero's that represents a positive binary number convert the number to two's complement value.
+
+  Two's complement is the way most computers represent positive or negative integers. The most significant bit is negative. 
+
+  Examples:
+
+  -8 4 2 1 
+
+  [1,1,1,1] = -1
+
+  [1,0,0,0] = -8
+
+  [1,1,0,1] = -3
+
+  To get the two's complement negative notation of an integer, you take the number in binary. 
+
+  You then invert the digits, and add one to the result. 
+
+  For example:
+
+  [0,0,1,0] = 2 in base 10
+
+  [1,1,0,1] <- Flip the bits
+
+     Add 1
+
+  [1,1,1,0] = -2
+
+  However, the arrays can have varying lengths, not just limited to 4.
+  -/
+
+vc-preamble: |
+
+vc-helpers: |
+
+vc-definitions: |-
+  def positive_to_negative (binary : List Nat) : List Nat := sorry
+
+  theorem output_is_binary (binary : List Nat) 
+    (h : binary.all (fun x => x = 0 ∨ x = 1)) 
+    (h' : binary.length > 0) :
+    (positive_to_negative binary).all (fun x => x = 0 ∨ x = 1) ∧ 
+    (positive_to_negative binary).length = binary.length := sorry
+
+vc-theorems: |-
+  theorem all_zeros_unchanged (binary : List Nat)
+    (h : binary.all (fun x => x = 0))
+    (h' : binary.length > 0) :
+    positive_to_negative binary = binary := sorry
+
+  theorem flips_after_rightmost_one (binary : List Nat)
+    (h : binary.all (fun x => x = 0 ∨ x = 1))
+    (h' : binary.length > 0) :
+    match binary.findIdx? (· = 1) with
+    | none => positive_to_negative binary = binary
+    | some last_one_idx => 
+      (∀ i, i < last_one_idx → 
+        (positive_to_negative binary).get ⟨i, sorry⟩ = 1 - binary.get ⟨i, sorry⟩) ∧
+      (∀ i, last_one_idx < i → i < binary.length →
+        (positive_to_negative binary).get ⟨i, sorry⟩ = binary.get ⟨i, sorry⟩)
+    := sorry
+
+  theorem double_conversion_preserves_magnitude (binary : List Nat)
+    (h : binary.all (fun x => x = 0 ∨ x = 1))
+    (h' : binary.length ≥ 2)
+    (h'' : binary.head? = some 0) :
+    positive_to_negative (positive_to_negative binary) = binary := sorry
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded
+
+  /--
+  info: [0, 0, 0, 0]
+  -/
+  #guard_msgs in
+  #eval positive_to_negative [0, 0, 0, 0]
+
+  /--
+  info: [1, 1, 1, 0]
+  -/
+  #guard_msgs in
+  #eval positive_to_negative [0, 0, 1, 0]
+
+  /--
+  info: [1, 1, 0, 1]
+  -/
+  #guard_msgs in
+  #eval positive_to_negative [0, 0, 1, 1]
+

@@ -1,7 +1,7 @@
 vc-description: |-
   /-
   The [Floyd's triangle](https://en.wikipedia.org/wiki/Floyd%27s_triangle) is a right-angled triangular array of natural numbers listing them in order, in lines of increasing length, so a Floyds triangle of size 6 looks like:
-  
+
   ```
   1
   2  3
@@ -11,29 +11,29 @@ vc-description: |-
   16 17 18 19 20 21
       ...
   ```
-  
+
   In this kata you're given a number, and expected to return the line number it falls in, in the Floyd's triangle
-  
+
   ```python
   nth_floyd(3) # => 2 (i.e the number `3` falls in line 2 of the triangle)
   nth_floyd(17) # => 6
-  
+
   nth_floyd(22) # => 7
   nth_floyd(499502) # => 1000
   ```
-  
+
   ```python
   nth_floyd(n)
   ```
-  
+
   ## Constraints
-  
+
   ### 1 <= n <= 10^(9)
   -/
 
-vc-preamble: |-
+vc-preamble: |
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def nth_floyd (n : Nat) : Nat :=
@@ -42,46 +42,46 @@ vc-definitions: |-
 vc-theorems: |-
   theorem nth_floyd_is_positive (n : Nat) (h : n > 0) : nth_floyd n > 0 := 
     sorry
-  
+
   theorem nth_floyd_in_line_bounds (n : Nat) (h : n > 0) : 
     let result := nth_floyd n
     let line_start := 1 + (result-1)*result/2
     let line_end := line_start + result - 1
     line_start ≤ n ∧ n ≤ line_end :=
     sorry
-  
+
   theorem nth_floyd_same_line (line_num : Nat) (h : line_num > 0) (i : Nat) 
     (hi : i < line_num) :
     let start := 1 + (line_num-1)*line_num/2
     nth_floyd (start + i) = line_num :=
     sorry
-  
+
   theorem nth_floyd_small_cases : 
     nth_floyd 1 = 1 ∧ 
     nth_floyd 2 = 2 ∧
     nth_floyd 3 = 2 ∧ 
     nth_floyd 4 = 3 :=
     sorry
-  
-  /-
-  info: 2
-  -/
-  -- #guard_msgs in
-  -- #eval nth_floyd 3
-  
-  /-
-  info: 6
-  -/
-  -- #guard_msgs in
-  -- #eval nth_floyd 17
-  
-  /-
-  info: 1000
-  -/
-  -- #guard_msgs in
-  -- #eval nth_floyd 499502
 
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+
+  /-
+  info: 2
+  -/
+  #guard_msgs in
+  #eval nth_floyd 3
+
+  /-
+  info: 6
+  -/
+  #guard_msgs in
+  #eval nth_floyd 17
+
+  /-
+  info: 1000
+  -/
+  #guard_msgs in
+  #eval nth_floyd 499502
 

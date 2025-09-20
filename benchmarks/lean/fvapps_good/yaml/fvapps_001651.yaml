@@ -1,0 +1,70 @@
+vc-description: |-
+  /-
+  This is the simple version of [Fastest Code : Equal to 24](http://www.codewars.com/kata/574e890e296e412a0400149c). 
+
+  ## Task
+
+  A game I played when I was young: Draw 4 cards from playing cards, use ```+ - * / and ()``` to make the final results equal to 24.
+
+  You will coding in function ```equalTo24```. Function accept 4 parameters ```a b c d```(4 cards), value range is 1-13.
+
+  The result is a string such as ```"2*2*2*3"``` ,```(4+2)*(5-1)```; If it is not possible to calculate the 24, please return "It's not possible!"
+
+  All four cards are to be used, only use three or two cards are incorrect; Use a card twice or more is incorrect too.
+
+  You just need to return one correct solution, don't need to find out all the possibilities.
+
+  ## Examples
+  -/
+
+vc-preamble: |
+
+vc-helpers: |
+
+vc-definitions: |-
+  def equal_to_24 (a b c d : Int) : String := sorry
+
+  def isValidResult (result : String) : Bool := sorry
+
+vc-theorems: |-
+  theorem equal_to_24_valid_output 
+    (a b c d : Int) 
+    (h1 : 1 ≤ a ∧ a ≤ 13) 
+    (h2 : 1 ≤ b ∧ b ≤ 13)
+    (h3 : 1 ≤ c ∧ c ≤ 13)
+    (h4 : 1 ≤ d ∧ d ≤ 13) :
+    isValidResult (equal_to_24 a b c d) := sorry
+
+  theorem equal_numbers_valid_output
+    (n : Int)
+    (h : 1 ≤ n ∧ n ≤ 100) :
+    isValidResult (equal_to_24 n n n n) := sorry
+
+  theorem impossible_cases_zero :
+    equal_to_24 0 0 0 0 = "It's not possible!" := sorry
+
+  theorem impossible_cases_negative :
+    equal_to_24 (-1) (-1) (-1) (-1) = "It's not possible!" := sorry
+
+  theorem impossible_cases_large :
+    equal_to_24 1000 1000 1000 1000 = "It's not possible!" := sorry
+
+  theorem division_by_zero :
+    isValidResult (equal_to_24 0 1 2 3) := sorry
+
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded
+
+  /--
+  info: 24
+  -/
+  #guard_msgs in
+  #eval eval equal_to_24(7, 7, 4, 1)
+
+  /--
+  info: 24
+  -/
+  #guard_msgs in
+  #eval eval equal_to_24(4, 1, 8, 7)
+

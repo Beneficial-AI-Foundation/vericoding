@@ -1,0 +1,74 @@
+vc-description: |-
+  /-
+  You are given an input string.
+
+  For each symbol in the string if it's the first character occurrence, replace it with a '1', else replace it with the amount of times you've already seen it...
+
+  But will your code be **performant enough**?
+
+  ___
+
+  ## Examples:
+
+  ```
+  input   =  "Hello, World!"
+  result  =  "1112111121311"
+
+  input   =  "aaaaaaaaaaaa"
+  result  =  "123456789101112"
+  ```
+
+  There might be some non-ascii characters in the string.
+
+  ~~~if:java
+  Note: there will be no int domain overflow (character occurrences will be less than 2 billion).
+  ~~~
+  ~~~if:c
+  (this does not apply to the C language translation)
+  ~~~
+  -/
+
+vc-preamble: |
+
+vc-helpers: |
+
+vc-definitions: |-
+  def numericals (s : String) : String := sorry
+
+  theorem numericals_length_matches_input (s : String) :
+    String.length (numericals s) = String.length s := sorry
+
+vc-theorems: |-
+  theorem numericals_only_contains_digits (s : String) :
+    ∀ p : String.Pos, ((numericals s).get p).isDigit := sorry
+
+  theorem numericals_monotonic_repeated_chars (s : String) (c : Char) :
+    ∀ i j : String.Pos, i < j → 
+    (s.get i = c ∧ s.get j = c) → 
+    ((numericals s).get i).toNat ≤ ((numericals s).get j).toNat := sorry
+
+  theorem numericals_starts_with_one {s : String} (h : s ≠ "") :
+    ∃ p : String.Pos, (numericals s).get p = '1' := sorry
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded
+
+  /--
+  info: '1112111121311'
+  -/
+  #guard_msgs in
+  #eval numericals "Hello, World!"
+
+  /--
+  info: '123456789101112'
+  -/
+  #guard_msgs in
+  #eval numericals "aaaaaaaaaaaa"
+
+  /--
+  info: '11121122342'
+  -/
+  #guard_msgs in
+  #eval numericals "hello hello"
+

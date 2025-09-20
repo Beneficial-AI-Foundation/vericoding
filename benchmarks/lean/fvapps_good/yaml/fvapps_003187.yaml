@@ -1,0 +1,33 @@
+vc-description: |-
+  /-
+  Implement a function which convert the given boolean value into its string representation.
+  -/
+
+vc-preamble: |
+
+vc-helpers: |
+
+vc-definitions: |-
+  def booleanToString (b : Bool) : String := sorry
+
+  theorem booleanToString_is_str (b : Bool) : 
+    booleanToString b = toString b := by sorry
+
+vc-theorems: |
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded
+
+  /--
+  info: 'True'
+  -/
+  #guard_msgs in
+  #eval boolean_to_string True
+
+  /--
+  info: 'False'
+  -/
+  #guard_msgs in
+  #eval boolean_to_string False
+

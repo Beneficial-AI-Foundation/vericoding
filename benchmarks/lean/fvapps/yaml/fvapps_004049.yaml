@@ -1,13 +1,13 @@
 vc-description: |-
   /-
   Jenny has written a function that returns a greeting for a user. However, she's in love with Johnny, and would like to greet him slightly different. She added a special case to her function, but she made a mistake.
-  
+
   Can you help her?
   -/
 
-vc-preamble: |-
+vc-preamble: |
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def greet (name : String) : String :=
@@ -17,38 +17,38 @@ vc-theorems: |-
   theorem greet_special_case (name : String) :
     name = "Johnny" → greet name = "Hello, my love!" :=
     sorry
-  
+
   theorem greet_general_case (name : String) :
     name ≠ "Johnny" → greet name = "Hello, " ++ name ++ "!" :=
     sorry
-  
+
   theorem greet_starts_with_hello (name : String) :
     String.startsWith (greet name) "Hello" = true :=
     sorry
-  
+
   theorem greet_ends_with_exclamation (name : String) :
     String.endsWith (greet name) "!" = true :=
     sorry
-  
-  /-
-  info: 'Hello, James!'
-  -/
-  -- #guard_msgs in
-  -- #eval greet "James"
-  
-  /-
-  info: 'Hello, Jane!'
-  -/
-  -- #guard_msgs in
-  -- #eval greet "Jane"
-  
-  /-
-  info: 'Hello, my love!'
-  -/
-  -- #guard_msgs in
-  -- #eval greet "Johnny"
 
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+
+  /-
+  info: 'Hello, James!'
+  -/
+  #guard_msgs in
+  #eval greet "James"
+
+  /-
+  info: 'Hello, Jane!'
+  -/
+  #guard_msgs in
+  #eval greet "Jane"
+
+  /-
+  info: 'Hello, my love!'
+  -/
+  #guard_msgs in
+  #eval greet "Johnny"
 

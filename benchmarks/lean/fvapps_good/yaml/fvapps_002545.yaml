@@ -1,0 +1,93 @@
+vc-description: |-
+  /-
+  Imagine if there were no order of operations. Instead, you would do the problem from left to right. For example, the equation `$a +b  *c /d$` would become `$(((a+b)*c)//d)$` (`Math.floor(((a+b)*c)/d)` in JS). Return `None`/`null` (depending on your language) if the equation is `""`.
+
+  ### Task:
+
+  Given an equation with a random amount of spaces greater than or equal to zero between each number and operation, return the result without order of operations. Note that if two numbers are spaces apart, act as if they were one number: `1   3` = `13`. However, if given something `% 0` or something `/ 0`, return `None/null`.
+
+  More about order of operations: [here](https://en.wikipedia.org/wiki/Order_of_operations#:~:text=In%20the%20United%20States%2C%20the,Excuse%20My%20Dear%20Aunt%20Sally%22.)
+
+  ### Key:
+
+  - `^` represents `**`
+
+  ```if:python
+  - `/` represents `//` or `math.floor` because the result will always be an integer
+  ```
+
+  ```if:javascript
+  - `/` should always be rounded down(`Math.floor`) because the result will always be an integer
+  ```
+
+  ### Operations allowed: 
+   `+, -, * , /, ^, %`
+
+  ### Example:
+
+  `no_order(2 + 3 - 4 * 1 ^ 3) returns 1`
+
+  because:
+  ```
+    2 + 3 - 4 * 1 ^ 3
+  = 2 + 3 - 4 * 1 ^ 3
+  = 5 - 4 * 1 ^ 3
+  = 1 * 1 ^ 3
+  = 1 ^ 3
+  = 1
+  ```
+  -/
+
+vc-preamble: |
+
+vc-helpers: |
+
+vc-definitions: |-
+  def no_order (s : String) : Option Int := sorry
+
+  theorem no_order_returns_option_int (expr : String) :
+    match no_order expr with
+    | some n => True 
+    | none => True
+    := sorry
+
+vc-theorems: |-
+  theorem no_order_whitespace_is_none (spaces : String) 
+    (h : ∀ c ∈ spaces.data, c = ' ') :
+    no_order spaces = none := sorry
+
+  theorem no_order_none_input :
+    no_order "" = none := sorry
+
+  theorem no_order_division_by_zero :
+    no_order "5/0" = none ∧ 
+    no_order "10+5/0" = none := sorry
+
+  theorem no_order_invalid_exprs :
+    no_order "++" = none ∧
+    no_order "5++5" = none ∧
+    no_order "abc" = none ∧
+    no_order "" = none := sorry
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded
+
+  /--
+  info: 1
+  -/
+  #guard_msgs in
+  #eval no_order "2 + 3- 4*1   ^  3"
+
+  /--
+  info: 0
+  -/
+  #guard_msgs in
+  #eval no_order "7 *  3 - 3/  10  0"
+
+  /--
+  info: None
+  -/
+  #guard_msgs in
+  #eval no_order "6 9* 2+6 /  0"
+

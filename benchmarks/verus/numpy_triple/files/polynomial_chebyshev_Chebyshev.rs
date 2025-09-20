@@ -6,13 +6,13 @@ verus! {
 /* Structure representing a Chebyshev polynomial with coefficients and domain/window mapping */
 struct ChebyshevPoly {
     /* Coefficients of the Chebyshev polynomial in increasing degree order */
-    coef: Vec<i8>,
+    coef: Vec<i32>,
     /* Domain interval [domain_min, domain_max] */
-    domain_min: i8,
-    domain_max: i8,
+    domain_min: i32,
+    domain_max: i32,
     /* Window interval [window_min, window_max] */
-    window_min: i8,
-    window_max: i8,
+    window_min: i32,
+    window_max: i32,
 }
 // </vc-preamble>
 
@@ -24,13 +24,14 @@ fn chebyshev(coef: Vec<i8>) -> (result: ChebyshevPoly)
     requires coef.len() > 0,
     ensures
         /* Coefficients are preserved */
-        result.coef@ =~= coef@,
+        result.coef@.len() == coef@.len(),
+        forall|i: int| 0 <= i < coef@.len() ==> result.coef@[i] == coef@[i] as i32,
         /* Default domain is [-1, 1] */
-        result.domain_min as int == -1,
-        result.domain_max as int == 1,
+        result.domain_min == -1,
+        result.domain_max == 1,
         /* Default window is [-1, 1] */
-        result.window_min as int == -1,
-        result.window_max as int == 1,
+        result.window_min == -1,
+        result.window_max == 1,
         /* Domain interval is valid */
         result.domain_min < result.domain_max,
         /* Window interval is valid */

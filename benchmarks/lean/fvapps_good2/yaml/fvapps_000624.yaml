@@ -1,0 +1,72 @@
+vc-description: |-
+  /-
+  Ted$Ted$ loves prime numbers. One day he is playing a game called legendary$legendary$ with his girlfriend Robin$Robin$. Ted$Ted$ writes a number N$N$ on a table and the number is in the form of :
+  N = P1A1 *  P2A2 * ……….. * PnAn
+  Ted$Ted$ asks Robin$Robin$ to find the sum of all the numbers which are less than or equal to N$N$ and also contains all the primes whose minimum power in the number is given by an array B$B$.  
+  As Robin$Robin$ is bad with maths she asks your help to answer this question.
+  
+  -----Input:-----
+  - The first line of the input contains a single integer T$T$ denoting the number of test cases. The description of T$T$ test cases follows.  
+  - The first line of each test case contains a single integer n$n$, represents a number of distinct prime numbers.
+  - The second line of each test case contains n$n$ space separated distinct prime numbers which represents an array P$P$.
+  - The third line of each test case contains n$n$ space separated integers which represents an array A$A$.
+  - The fourth line of each test case contains n$n$ space separated integers which represents an array B$B$ 
+  
+  -----Output:-----
+  For each test case, output the Answer Modulo 109 + 7 in a single line.
+  
+  -----Constraints-----
+  - 1≤T≤3$1 \leq T \leq 3$
+  - 1≤n≤105$1 \leq n \leq 10^5$
+  - 2≤Pi≤106$2 \leq P_{i} \leq 10^6$
+  - 1≤Ai≤109$1 \leq A_{i} \leq 10^9$
+  - 0≤Bi≤Ai$0 \leq B_{i} \leq Ai$
+  
+  -----Sample Input:-----
+  1
+  3
+  2 3 5
+  2 1 2
+  1 1 1
+  
+  -----Sample Output:-----
+  540
+  
+  -----EXPLANATION:-----
+  22 * 31 * 52= 300 which is N over here. 
+  The four numbers less than or equal to 300 are 30, 60, 150 and 300.
+  
+  30 = 21 * 31 * 51 , 60 =  22 * 31 * 51, 150 =  21 * 31 * 52 and 300 =  22 * 31 * 52. 
+  In the 4 numbers, the minimum powers for 2, 3 and 5 are 1, 1 and 1 or more than them in every case.
+  -/
+
+vc-preamble: |-
+
+vc-helpers: |-
+
+vc-definitions: |-
+  def solve_legendary_prime_game (n: Nat) (p a b: List Nat) : Nat :=
+  sorry
+  
+  def is_prime (n: Nat) : Bool :=
+  sorry
+
+vc-theorems: |-
+  theorem single_prime_result_bounds (n: Nat) (h: n > 0) (h2: n ≤ 5):
+    let p := List.replicate n 2
+    let a := List.replicate n 1
+    let b := List.replicate n 1
+    let result := solve_legendary_prime_game n p a b
+    result > 0 ∧ result < (10^9 + 7) :=
+  sorry
+
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: guarded_and_plausible
+  
+  /--
+  info: 540
+  -/
+  #guard_msgs in
+  #eval solve_legendary_prime_game 3 [2, 3, 5] [2, 1, 2] [1, 1, 1]
+

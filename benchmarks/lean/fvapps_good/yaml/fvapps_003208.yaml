@@ -1,0 +1,79 @@
+vc-description: |-
+  /-
+  The squarefree part of a positive integer is the largest divisor of that integer which itself has no square factors (other than 1). For example, the squareefree part of 12 is 6, since the only larger divisor is 12, and 12 has a square factor (namely, 4).
+
+  Your challenge, should you choose to accept it, is to implement a `squareFreePart` function which accepts a number `n` and returns the squarefree part of `n`. 
+
+  In the case that `n = 1`, your function should return 1. Also, if the input doesn't make sense (e.g. if it is not a positive integer), the function should return `null/None`. 
+
+  Here are some examples:
+
+  ```python
+  square_free_part(2) # returns 2
+  square_free_part(4) # returns 2
+  square_free_part(24) # returns 6, since any larger divisor is divisible by 4, which is a square
+  square_free_part("hi") # returns None
+  square_free_part(0) # returns None
+  ```
+
+  Good luck!
+  -/
+
+vc-preamble: |
+
+vc-helpers: |
+
+vc-definitions: |-
+  def square_free_part (n : Int) : Option Int := sorry
+
+  def Real.toInt (x : Float) : Int := sorry
+
+vc-theorems: |-
+  theorem non_integer_returns_none (x : Float) : 
+    square_free_part (Real.toInt x) = none := by sorry
+
+  theorem non_positive_returns_none (x : Int) : 
+    x ≤ 0 → square_free_part x = none := by sorry
+
+  theorem result_divides_input (n : Int) :
+    n > 0 → 
+    match square_free_part n with
+    | some result => result ∣ n 
+    | none => True
+    := by sorry
+
+  theorem no_square_factors (n : Int) :
+    n > 0 →
+    match square_free_part n with
+    | some result => ∀ i : Int, i > 1 → ¬(i * i ∣ result)  
+    | none => True
+    := by sorry
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded
+
+  /--
+  info: 6
+  -/
+  #guard_msgs in
+  #eval square_free_part 24
+
+  /--
+  info: 1
+  -/
+  #guard_msgs in
+  #eval square_free_part 1
+
+  /--
+  info: 2
+  -/
+  #guard_msgs in
+  #eval square_free_part 4
+
+  /--
+  info: 10
+  -/
+  #guard_msgs in
+  #eval square_free_part 100
+

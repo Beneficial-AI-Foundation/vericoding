@@ -2,12 +2,12 @@ vc-description: |-
   /-
   We have a collection of rocks, each rock has a positive integer weight.
   Each turn, we choose any two rocks and smash them together.  Suppose the stones have weights x and y with x <= y.  The result of this smash is:
-  
+
   If x == y, both stones are totally destroyed;
   If x != y, the stone of weight x is totally destroyed, and the stone of weight y has new weight y-x.
-  
+
   At the end, there is at most 1 stone left.  Return the smallest possible weight of this stone (the weight is 0 if there are no stones left.)
-  
+
   Example 1:
   Input: [2,7,4,1,8,1]
   Output: 1
@@ -16,9 +16,9 @@ vc-description: |-
   we can combine 7 and 8 to get 1 so the array converts to [2,1,1,1] then,
   we can combine 2 and 1 to get 1 so the array converts to [1,1,1] then,
   we can combine 1 and 1 to get 0 so the array converts to [1] then that's the optimal value.
-  
+
   Note:
-  
+
   1 <= stones.length <= 30
   1 <= stones[i] <= 100
   -/
@@ -27,7 +27,7 @@ vc-preamble: |-
   def lastStoneWeightII (stones : List Nat) : Nat :=
     sorry
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def sum : List Nat → Nat
@@ -38,42 +38,42 @@ vc-theorems: |-
   theorem lastStoneWeight_nonNegative (stones : List Nat) :
     lastStoneWeightII stones ≥ 0 :=
   sorry
-  
+
   theorem lastStoneWeight_upperBound (stones : List Nat) :
     lastStoneWeightII stones ≤ sum stones :=
   sorry
-  
+
   theorem lastStoneWeight_identical_pairs (stones : List Nat) :
     stones.length = 2 → stones[0]! = stones[1]! → lastStoneWeightII stones = 0 :=
   sorry
-  
+
   theorem lastStoneWeight_single_stone (stones : List Nat) (x : Nat) :
     stones = [x] → lastStoneWeightII stones = x :=
   sorry
-  
+
   theorem lastStoneWeight_identical_values (stones : List Nat) (x : Nat) :
     (∀ i, i < stones.length → stones[i]! = x) → lastStoneWeightII stones ≤ x :=
   sorry
-  
-  /-
-  info: expected1
-  -/
-  -- #guard_msgs in
-  -- #eval lastStoneWeightII [2, 7, 4, 1, 8, 1]
-  
-  /-
-  info: expected2
-  -/
-  -- #guard_msgs in
-  -- #eval lastStoneWeightII [1, 1, 1]
-  
-  /-
-  info: expected3
-  -/
-  -- #guard_msgs in
-  -- #eval lastStoneWeightII [2, 2]
 
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
+
+  /-
+  info: expected1
+  -/
+  #guard_msgs in
+  #eval lastStoneWeightII [2, 7, 4, 1, 8, 1]
+
+  /-
+  info: expected2
+  -/
+  #guard_msgs in
+  #eval lastStoneWeightII [1, 1, 1]
+
+  /-
+  info: expected3
+  -/
+  #guard_msgs in
+  #eval lastStoneWeightII [2, 2]
 

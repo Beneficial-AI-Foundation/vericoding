@@ -5,90 +5,90 @@ vc-description: |-
   $ $
   This is a sample piece of text to illustrate this 
   problem.  If you are smart you will solve this right.
-  
+
   $ $
   The corresponding output would read as:
   $ $
   right this solve will you smart are you If problem
   this illustrate to text of piece sample a is This
-  
+
   $ $
   That is, the lines are printed in reverse order and in each line the words are printed in reverse order.
-  
+
   -----Input:-----
   The first line of input contains a single integer $N$, indicating the number of lines in the input. This is followed by $N$ lines of input text.
-  
+
   -----Output:-----
   $N$ lines of output text containing the input lines in reverse order and where each line contains the words in reverse order as illustrated above.
-  
+
   -----Constraints:-----
   - $1 \leq N \leq 10000$.
   - There are at most $80$ characters in each line
-  
+
   -----Sample input-----
   2
   This is a sample piece of text to illustrate this 
   problem.  If you are smart you will solve this right.
-  
+
   -----Sample output-----
   right this solve will you smart are you If problem
   this illustrate to text of piece sample a is This
   -/
 
-vc-preamble: |-
+vc-preamble: |
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def reverse_text (lines : List String) : List String := sorry
-  
+
   theorem reverse_text_lines_length_eq_input {lines : List String} : 
     List.length (reverse_text lines) = List.length lines := sorry
 
 vc-theorems: |-
   theorem reverse_text_all_alpha_or_space {lines : List String} :
     ∀ line ∈ reverse_text lines, ∀ c ∈ line.data, c.isAlpha ∨ c = ' ' := sorry
-  
+
   theorem reverse_text_word_all_alpha {lines : List String} :
     ∀ line ∈ reverse_text lines, ∀ word ∈ line.splitOn " ", 
       ∀ c ∈ word.data, c.isAlpha := sorry
-  
+
   theorem reverse_text_preserves_line_count {lines : List String} :
     ∀ input_line ∈ lines, ∃ output_line ∈ reverse_text lines,
       ∀ word ∈ output_line.splitOn " ", ∀ c ∈ word.data, c.isAlpha := sorry
-  
+
   theorem reverse_text_reverse_order {lines : List String} : 
     ∀ i, i < lines.length → 
       ∃ j, j < (reverse_text lines).length ∧ 
            j = lines.length - 1 - i ∧
            ∀ word ∈ ((reverse_text lines).get ⟨j, sorry⟩).splitOn " ",
              ∀ c ∈ word.data, c.isAlpha := sorry
-  
+
   theorem reverse_text_nonempty_line_count {lines : List String} :
     let result := reverse_text lines
     let result_lines := result.filter (fun l => l.trim ≠ "")
     let input_lines := lines.filter (fun l => ∃ c ∈ l.data, c.isAlpha)
     List.length result_lines = List.length input_lines := sorry
-  
-  /-
-  info: test1_expected
-  -/
-  -- #guard_msgs in
-  -- #eval reverse_text ["This is a sample piece of text to illustrate this", "problem.  If you are smart you will solve this right."]
-  
-  /-
-  info: test2_expected
-  -/
-  -- #guard_msgs in
-  -- #eval reverse_text ["Hello, world!"]
-  
-  /-
-  info: test3_expected
-  -/
-  -- #guard_msgs in
-  -- #eval reverse_text ["The quick brown", "fox jumps over", "the lazy dog."]
 
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
+
+  /-
+  info: test1_expected
+  -/
+  #guard_msgs in
+  #eval reverse_text ["This is a sample piece of text to illustrate this", "problem.  If you are smart you will solve this right."]
+
+  /-
+  info: test2_expected
+  -/
+  #guard_msgs in
+  #eval reverse_text ["Hello, world!"]
+
+  /-
+  info: test3_expected
+  -/
+  #guard_msgs in
+  #eval reverse_text ["The quick brown", "fox jumps over", "the lazy dog."]
 

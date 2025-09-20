@@ -3,13 +3,13 @@ vc-description: |-
   Write a function that takes a list of at least four elements as an argument and returns a list of the middle two or three elements in reverse order.
   -/
 
-vc-preamble: |-
+vc-preamble: |
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def reverseMiddle {α : Type} (xs : List α) : List α := sorry
-  
+
   theorem length_reverseMiddle {α : Type} (xs : List α) 
     (h : xs.length ≥ 4) :
     (reverseMiddle xs).length = xs.length - 2 * ((xs.length)/2 - 1) :=
@@ -22,27 +22,27 @@ vc-theorems: |-
       start = xs.length/2 - 1 ∧ 
       reverseMiddle xs = (xs.drop start).take (xs.length - 2*start) :=  
   sorry
-  
+
   theorem is_reversed_middle {α : Type} (xs : List α)
     (h : xs.length ≥ 4) :
     let start := xs.length/2 - 1
     let middle := (xs.drop start).take (xs.length - 2*start)
     reverseMiddle xs = middle.reverse :=
   sorry
-  
-  /-
-  info: [100, 3]
-  -/
-  -- #guard_msgs in
-  -- #eval reverse_middle [4, 3, 100, 1]
-  
-  /-
-  info: [{}, 'string', False]
-  -/
-  -- #guard_msgs in
-  -- #eval reverse_middle [1, False, "string", {}, 7.43]
 
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+
+  /-
+  info: [100, 3]
+  -/
+  #guard_msgs in
+  #eval reverse_middle [4, 3, 100, 1]
+
+  /-
+  info: [{}, 'string', False]
+  -/
+  #guard_msgs in
+  #eval reverse_middle [1, False, "string", {}, 7.43]
 

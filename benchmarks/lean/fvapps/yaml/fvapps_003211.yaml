@@ -3,27 +3,27 @@ vc-description: |-
   You have been recruited by an unknown organization for your cipher encrypting/decrypting skills.  
   Being new to the organization they decide to test your skills.  
   Your first test is to write an algorithm that encrypts the given string in the following steps.
-  
+
   1. The first step of the encryption is a standard ROT13 cipher.
   This is a special case of the caesar cipher where the letter is encrypted with its key that is thirteen letters down the alphabet,  
   i.e. `A => N, B => O, C => P, etc..`
-  
+
   1. Part two of the encryption is to take the ROT13 output and replace each letter with its exact opposite. `A => Z, B => Y, C => X`.  
   The return value of this should be the encrypted message.
-  
+
   Do not worry about capitalization or punctuation. All encrypted messages should be lower case and punctuation free.  
   As an example, the string `"welcome to our organization"` should return `"qibkyai ty ysv yvgmzenmteyz"`.
-  
+
   Good luck, and congratulations on the new position.
   -/
 
-vc-preamble: |-
+vc-preamble: |
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def encrypter (s : String) : String := sorry
-  
+
   theorem encrypter_reversible {s : String} 
     (h : ∀ c ∈ s.data, 97 ≤ c.val ∧ c.val ≤ 122) :
     encrypter (encrypter s) = s.toLower := sorry
@@ -33,34 +33,34 @@ vc-theorems: |-
     (h : ∀ c ∈ s.data, (97 ≤ c.val ∧ c.val ≤ 122) ∨ c = ' ') :
     (∀ i : String.Pos, s.get i = ' ' → (encrypter s).get i = ' ') ∧
     s.length = (encrypter s).length := sorry
-  
+
   theorem encrypter_output_charset {s : String}
     (h : ∀ c ∈ s.data, (97 ≤ c.val ∧ c.val ≤ 122) ∨ c = ' ') :
     ∀ c ∈ (encrypter s).data, (97 ≤ c.val ∧ c.val ≤ 122) ∨ c = ' ' := sorry
-  
+
   theorem encrypter_case_insensitive {s : String}
     (h : ∀ c ∈ s.data, 65 ≤ c.val ∧ c.val ≤ 122) :
     encrypter s.toLower = encrypter s.toUpper := sorry
-  
-  /-
-  info: 'man'
-  -/
-  -- #guard_msgs in
-  -- #eval encrypter "amz"
-  
-  /-
-  info: 'fibby'
-  -/
-  -- #guard_msgs in
-  -- #eval encrypter "hello"
-  
-  /-
-  info: 'qibkyai ty tfi yvgmzenmteyz'
-  -/
-  -- #guard_msgs in
-  -- #eval encrypter "welcome to the organization"
 
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+
+  /-
+  info: 'man'
+  -/
+  #guard_msgs in
+  #eval encrypter "amz"
+
+  /-
+  info: 'fibby'
+  -/
+  #guard_msgs in
+  #eval encrypter "hello"
+
+  /-
+  info: 'qibkyai ty tfi yvgmzenmteyz'
+  -/
+  #guard_msgs in
+  #eval encrypter "welcome to the organization"
 

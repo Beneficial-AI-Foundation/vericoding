@@ -1,0 +1,72 @@
+vc-description: |-
+  /-
+  Given 2 strings, your job is to find out if there is a substring that appears in both strings. You will return true if you find a substring that appears in both strings, or false if you do not. We only care about substrings that are longer than one letter long.
+
+  #Examples:
+
+  ````
+  *Example 1*
+  SubstringTest("Something","Fun"); //Returns false
+
+  *Example 2*
+  SubstringTest("Something","Home"); //Returns true
+  ````
+  In the above example, example 2 returns true because both of the inputs contain the substring "me". (so**ME**thing and ho**ME**)  
+  In example 1, the method will return false because something and fun contain no common substrings. (We do not count the 'n' as a substring in this Kata because it is only 1 character long)
+
+  #Rules:
+  Lowercase and uppercase letters are the same. So 'A' == 'a'.  
+  We only count substrings that are > 1 in length.  
+
+  #Input:
+  Two strings with both lower and upper cases.
+  #Output:
+  A boolean value determining if there is a common substring between the two inputs.
+  -/
+
+vc-preamble: |
+
+vc-helpers: |
+
+vc-definitions: |-
+  def substring_test (s1 s2 : String) : Bool := sorry
+
+  theorem substring_test_case_insensitive (s1 s2 : String) :
+    substring_test s1.toUpper s2.toLower = substring_test s1 s2 := sorry
+
+vc-theorems: |-
+  theorem substring_test_contains_exact (s1 s2 : String) :
+    s1.length ≥ 2 →
+    substring_test s1 (s2 ++ s1.take 2) = true := sorry
+
+  theorem substring_test_empty_or_single (s1 s2 : String) :
+    (s1.length ≤ 1 ∨ s2.length ≤ 1) →
+    substring_test s1 s2 = false := sorry
+
+  theorem substring_test_symmetric (s1 s2 : String) :
+    s1.length > 1 →
+    s2.length > 1 →
+    substring_test s1 s2 = substring_test s2 s1 := sorry
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval substring_test "Something" "Home"
+
+  /--
+  info: False
+  -/
+  #guard_msgs in
+  #eval substring_test "Something" "Fun"
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval substring_test "BANANA" "banana"
+

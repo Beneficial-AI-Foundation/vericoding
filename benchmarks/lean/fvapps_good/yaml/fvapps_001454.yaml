@@ -1,0 +1,89 @@
+vc-description: |-
+  /-
+  The chef is trying to decode some pattern problems, Chef wants your help to code it. Chef has one number K to form a new pattern. Help the chef to code this pattern problem.
+
+  -----Input:-----
+  - First-line will contain $T$, the number of test cases. Then the test cases follow. 
+  - Each test case contains a single line of input, one integer $K$. 
+
+  -----Output:-----
+  For each test case, output as the pattern.
+
+  -----Constraints-----
+  - $1 \leq T \leq 100$
+  - $1 \leq K \leq 100$
+
+  -----Sample Input:-----
+  4
+  1
+  2
+  3
+  4
+
+  -----Sample Output:-----
+  0
+  01
+  10
+  012
+  101
+  210
+  0123
+  1012
+  2101
+  3210
+
+  -----EXPLANATION:-----
+  No need, else pattern can be decode easily.
+  -/
+
+vc-preamble: |
+
+vc-helpers: |
+
+vc-definitions: |-
+  def generate_pattern (k : Nat) : List String := sorry
+
+  theorem pattern_basic_properties {k : Nat} (h : k > 0) (h2 : k ≤ 10) :
+    let result := generate_pattern k
+    List.length result = k ∧
+    (∀ s ∈ result, String.length s = k) ∧
+    (∀ row ∈ result, ∀ c ∈ row.data, '0' ≤ c ∧ c ≤ '9') ∧
+    (∀ row ∈ result, ∀ c ∈ row.data, (c.toNat - '0'.toNat) < k) ∧
+    List.Nodup result := sorry
+
+vc-theorems: |-
+  theorem pattern_first_row {k : Nat} (h : k > 0) (h2 : k ≤ 10) :
+    let result := generate_pattern k
+    if k = 1 then
+      result.head! = "0"
+    else
+      result.head! = String.mk (List.map (fun i => Char.ofNat (i + '0'.toNat)) (List.range k)) := sorry
+
+  theorem pattern_subsequent_rows {k : Nat} (h : k > 0) (h2 : k ≤ 10) :
+    k > 1 →
+    let result := generate_pattern k
+    ∀ i, 1 ≤ i → i < k →
+      (result.get! i).take 1 = String.mk [Char.ofNat (i + '0'.toNat)] := sorry
+
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded
+
+  /--
+  info: ['0']
+  -/
+  #guard_msgs in
+  #eval generate_pattern 1
+
+  /--
+  info: ['01', '10']
+  -/
+  #guard_msgs in
+  #eval generate_pattern 2
+
+  /--
+  info: ['012', '101', '210']
+  -/
+  #guard_msgs in
+  #eval generate_pattern 3
+

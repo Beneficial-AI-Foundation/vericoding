@@ -3,27 +3,27 @@ vc-description: |-
   The Tribonacci sequence Tn is defined as follows: 
   T0 = 0, T1 = 1, T2 = 1, and Tn+3 = Tn + Tn+1 + Tn+2 for n >= 0.
   Given n, return the value of Tn.
-  
+
   Example 1:
   Input: n = 4
   Output: 4
   Explanation:
   T_3 = 0 + 1 + 1 = 2
   T_4 = 1 + 1 + 2 = 4
-  
+
   Example 2:
   Input: n = 25
   Output: 1389537
-  
+
   Constraints:
-  
+
   0 <= n <= 37
   The answer is guaranteed to fit within a 32-bit integer, ie. answer <= 2^31 - 1.
   -/
 
-vc-preamble: |-
+vc-preamble: |
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def tribonacci (n : Int) : Int :=
@@ -33,34 +33,34 @@ vc-theorems: |-
   theorem tribonacci_base_zero :
     tribonacci 0 = 0 :=
     sorry
-  
+
   theorem tribonacci_base_one :
     tribonacci 1 = 1 :=
     sorry
-  
+
   theorem tribonacci_base_two :
     tribonacci 2 = 1 :=
     sorry
-  
-  /-
-  info: 4
-  -/
-  -- #guard_msgs in
-  -- #eval tribonacci 4
-  
-  /-
-  info: 1389537
-  -/
-  -- #guard_msgs in
-  -- #eval tribonacci 25
-  
-  /-
-  info: 0
-  -/
-  -- #guard_msgs in
-  -- #eval tribonacci 0
 
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
+
+  /-
+  info: 4
+  -/
+  #guard_msgs in
+  #eval tribonacci 4
+
+  /-
+  info: 1389537
+  -/
+  #guard_msgs in
+  #eval tribonacci 25
+
+  /-
+  info: 0
+  -/
+  #guard_msgs in
+  #eval tribonacci 0
 

@@ -15,28 +15,28 @@ fn chebadd(c1: Vec<i8>, c2: Vec<i8>) -> (result: Vec<i8>)
             if i < c1.len() && i < c2.len() {
                 result[i] as int == c1[i] as int + c2[i] as int
             } else if i < c1.len() {
-                result[i] as int == c1[i] as int
+                result[i] == c1[i]
             } else if i < c2.len() {
-                result[i] as int == c2[i] as int
+                result[i] == c2[i]
             } else {
-                result[i] as int == 0
+                result[i] == 0
             }
         },
-        forall|i: int| 0 <= i < c1@.len() ==> c1[i] != 0 ==> {
-            exists|j: int| 0 <= j < result@.len() && j == i && {
-                if i < c2@.len() {
+        forall|i: int| 0 <= i < c1.len() ==> c1[i] != 0 ==> {
+            exists|j: int| 0 <= j < result.len() && j == i && {
+                if i < c2.len() {
                     result[j] as int == c1[i] as int + c2[i] as int
                 } else {
-                    result[j] as int == c1[i] as int
+                    result[j] == c1[i]
                 }
             }
         },
-        forall|i: int| 0 <= i < c2@.len() ==> c2[i] != 0 ==> {
-            exists|j: int| 0 <= j < result@.len() && j == i && {
-                if i < c1@.len() {
+        forall|i: int| 0 <= i < c2.len() ==> c2[i] != 0 ==> {
+            exists|j: int| 0 <= j < result.len() && j == i && {
+                if i < c1.len() {
                     result[j] as int == c1[i] as int + c2[i] as int
                 } else {
-                    result[j] as int == c2[i] as int
+                    result[j] == c2[i]
                 }
             }
         }

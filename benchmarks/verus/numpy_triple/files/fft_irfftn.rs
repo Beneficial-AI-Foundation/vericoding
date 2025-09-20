@@ -28,7 +28,7 @@ fn irfftn(a: Vec<Complex>, n: u8) -> (result: Vec<f32>)
         n > 0,
         a[0].im == 0.0f32,
     ensures
-        result.len() == n as usize,
+        result.len() == n as nat,
 // </vc-spec>
 // <vc-code>
 {

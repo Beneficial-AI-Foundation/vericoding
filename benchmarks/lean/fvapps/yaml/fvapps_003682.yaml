@@ -1,65 +1,65 @@
 vc-description: |-
   /-
   Adapted from here, with less terrible instructions and a couple tweaks.
-  
+
   Two kangaroos are jumping on a line. They start out at different points on the line, and jump in the same direction at different speeds. Your task is to determine whether or not they'll ever land in the same spot at the same time (you'll just have to suspend disbelief for a moment and accept that two kangaroos, for the purpose of this kata, can occupy the same space at the same time :)
-  
+
   Your function is given four arguments `(kanga1, rate1, kanga2, rate2)`; the first kangaroo's starting point, the first kangaroo's speed, the second kangaroo's starting point, and the second kangaroo's speed.
-  
+
   Return `true` if the above conditions are met, else `false`. Starting location and speed may vary wildly. The first kangaroo will _usually_ start behind the second one and travel faster, but not always. Starting locations may be negative, but speeds will always be > 0.
-  
+
   **Example:**
   ![kangaroo](https://i.imgur.com/hXRgSVg.jpg)
-  
+
   **Other examples:**
-  
+
   Brute force solutions are possible (and not discouraged), but you'll save yourself a lot of waiting time if you don't go that route :)
-  
+
   Good luck!
   -/
 
-vc-preamble: |-
+vc-preamble: |
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def kangaroo (k1 r1 k2 r2 : Int) : Bool := sorry
-  
+
   theorem kangaroo_symmetric (k1 r1 k2 r2 : Int) : 
     kangaroo k1 r1 k2 r2 = kangaroo k2 r2 k1 r1 := sorry
 
 vc-theorems: |-
   theorem kangaroo_same_position_same_speed (k r : Int) :
     kangaroo k r k r = true := sorry
-  
+
   theorem kangaroo_different_position_same_speed (k1 k2 r : Int) :
     kangaroo k1 r k2 r = (k1 = k2) := sorry
-  
+
   theorem kangaroo_faster_behind (k1 k2 r1 r2 : Int) :
     (r1 > r2 ∧ k1 > k2) → kangaroo k1 r1 k2 r2 = false := sorry
-  
+
   theorem kangaroo_faster_behind_symmetric (k1 k2 r1 r2 : Int) :
     (r2 > r1 ∧ k2 > k1) → kangaroo k1 r1 k2 r2 = false := sorry
-  
-  /-
-  info: True
-  -/
-  -- #guard_msgs in
-  -- #eval kangaroo 0 3 4 2
-  
-  /-
-  info: False
-  -/
-  -- #guard_msgs in
-  -- #eval kangaroo 0 9 16 4
-  
-  /-
-  info: True
-  -/
-  -- #guard_msgs in
-  -- #eval kangaroo -1 3 0 2
 
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+
+  /-
+  info: True
+  -/
+  #guard_msgs in
+  #eval kangaroo 0 3 4 2
+
+  /-
+  info: False
+  -/
+  #guard_msgs in
+  #eval kangaroo 0 9 16 4
+
+  /-
+  info: True
+  -/
+  #guard_msgs in
+  #eval kangaroo -1 3 0 2
 

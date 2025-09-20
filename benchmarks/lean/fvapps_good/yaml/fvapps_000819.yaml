@@ -1,0 +1,92 @@
+vc-description: |-
+  /-
+  The chef is trying to solve some pattern problems, Chef wants your help to code it. Chef has one number K(odd) to form a new pattern. Help the chef to code this pattern problem.
+
+  -----Input:-----
+  - First-line will contain $T$, the number of test cases. Then the test cases follow. 
+  - Each test case contains a single line of input, one integer $K$. 
+
+  -----Output:-----
+  For each test case, output as the pattern.
+
+  -----Constraints-----
+  - $1 \leq T \leq 50$
+  - $1 \leq K \leq 50$
+
+  -----Sample Input:-----
+  4
+  1
+  3
+  5
+  7
+
+  -----Sample Output:-----
+  *
+  *
+  *
+  *
+  *
+  *
+  *
+  *
+  *
+  *
+  *
+  *
+  *
+  *
+  *
+  *
+
+  -----EXPLANATION:-----
+  No need, else pattern can be decode easily.
+  -/
+
+vc-preamble: |
+
+vc-helpers: |
+
+vc-definitions: |-
+  def pattern_generator (k : Nat) : List String := sorry
+
+  theorem pattern_length {k : Nat} (h : k > 0) :
+    (pattern_generator k).length = k := sorry
+
+vc-theorems: |-
+  theorem pattern_star_count {k : Nat} (h : k > 0) :
+    ∀ line ∈ pattern_generator k, (line.data.filter (· = '*')).length = 1 := sorry
+
+  theorem pattern_valid_chars {k : Nat} (h : k > 0) :
+    ∀ line ∈ pattern_generator k, ∀ c ∈ line.data, c = ' ' ∨ c = '*' := sorry
+
+  theorem pattern_ends_with_star {k : Nat} (h : k > 0) :
+    ∀ line ∈ pattern_generator k, line.endsWith "*" := sorry
+
+  theorem pattern_symmetry {k : Nat} (h : k > 0) :
+    ∀ i, i < k/2 → 
+      let lines := pattern_generator k
+      ((lines.get! i).data.filter (· = ' ')).length = i ∧
+      ((lines.get! (k - 1 - i)).data.filter (· = ' ')).length = i := sorry
+
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded
+
+  /--
+  info: ['*']
+  -/
+  #guard_msgs in
+  #eval pattern_generator 1
+
+  /--
+  info: ['*', ' *', '*']
+  -/
+  #guard_msgs in
+  #eval pattern_generator 3
+
+  /--
+  info: ['*', ' *', '  *', ' *', '*']
+  -/
+  #guard_msgs in
+  #eval pattern_generator 5
+

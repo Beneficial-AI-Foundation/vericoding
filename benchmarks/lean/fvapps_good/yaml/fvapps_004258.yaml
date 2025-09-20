@@ -1,0 +1,82 @@
+vc-description: |-
+  /-
+  You're looking through different hex codes, and having trouble telling the difference between  #000001  and  #100000 
+
+  We need a way to tell which is red, and which is blue!
+
+  That's where you create ```hex_color()```!
+
+  It should read an RGB input, and return whichever value (red, blue, or green) is of greatest concentration!
+
+  But, if multiple colors are of equal concentration, you should return their mix!
+
+  ```python
+  red + blue = magenta
+
+  green + red = yellow
+
+  blue + green = cyan
+
+  red + blue + green = white
+  ```
+
+  One last thing, if the string given is empty, or has all 0's, return black!
+
+  Examples:
+  ```python
+  hex_color('087 255 054') == 'green'
+  hex_color('181 181 170') == 'yellow'
+  hex_color('000 000 000') == 'black'
+  hex_color('001 001 001') == 'white'
+  ```
+  -/
+
+vc-preamble: |
+
+vc-helpers: |
+
+vc-definitions: |-
+  def hex_color (input : String) : String := sorry
+
+  theorem valid_color_output (input : String) :
+    hex_color input ∈ ["black", "red", "green", "blue", "magenta", "yellow", "cyan", "white"] := sorry
+
+vc-theorems: |-
+  theorem zero_values_black (r g b : Nat) :
+    r = 0 → g = 0 → b = 0 → hex_color s!"${r} ${g} ${b}" = "black" := sorry 
+
+  theorem equal_nonzero_white (n : Nat) :
+    n > 0 → hex_color s!"${n} ${n} ${n}" = "white" := sorry
+
+  theorem single_nonzero_primary (r g b : Nat) :
+    (r > 0 ∧ g = 0 ∧ b = 0) → hex_color s!"${r} ${g} ${b}" = "red"
+    ∧ (r = 0 ∧ g > 0 ∧ b = 0) → hex_color s!"${r} ${g} ${b}" = "green"
+    ∧ (r = 0 ∧ g = 0 ∧ b > 0) → hex_color s!"${r} ${g} ${b}" = "blue" := sorry
+
+  theorem two_equal_maxes_secondary (r g b : Nat) :
+    (r > 0 ∧ g > 0 ∧ b = 0 ∧ r = g) → hex_color s!"${r} ${g} ${b}" = "yellow"
+    ∧ (r > 0 ∧ g = 0 ∧ b > 0 ∧ r = b) → hex_color s!"${r} ${g} ${b}" = "magenta"
+    ∧ (r = 0 ∧ g > 0 ∧ b > 0 ∧ g = b) → hex_color s!"${r} ${g} ${b}" = "cyan" := sorry
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded
+
+  /--
+  info: 'black'
+  -/
+  #guard_msgs in
+  #eval hex_color ""
+
+  /--
+  info: 'red'
+  -/
+  #guard_msgs in
+  #eval hex_color "255 000 000"
+
+  /--
+  info: 'yellow'
+  -/
+  #guard_msgs in
+  #eval hex_color "100 100 050"
+

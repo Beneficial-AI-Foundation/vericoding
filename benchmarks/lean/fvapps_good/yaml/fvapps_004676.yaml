@@ -1,0 +1,165 @@
+vc-description: |-
+  /-
+  Our cells go through a process called protein synthesis to translate the instructions in DNA into an amino acid chain, or polypeptide.
+
+  Your job is to replicate this!
+
+  ---
+
+  **Step 1: Transcription**
+
+  Your input will be a string of DNA that looks like this:
+
+  `"TACAGCTCGCTATGAATC"`
+
+  You then must transcribe it to mRNA. Each letter, or base, gets transcribed.
+
+  ```T -> A
+  A -> U
+  G -> C
+  C -> G```
+
+  Also, you will split it into groups of three, or _codons_.
+
+  The above example would become:
+
+  `"AUG UCG AGC GAU ACU UAG"`
+
+  ---
+
+  **Step 2: Translation**
+
+  After you have the mRNA strand, you will turn it into an amino acid chain.
+
+  Each codon corresponds to an amino acid:
+
+  ```
+  Ala     GCU, GCC, GCA, GCG
+  Leu     UUA, UUG, CUU, CUC, CUA, CUG
+  Arg     CGU, CGC, CGA, CGG, AGA, AGG
+  Lys     AAA, AAG
+  Asn     AAU, AAC
+  Met     AUG
+  Asp     GAU, GAC
+  Phe     UUU, UUC
+  Cys     UGU, UGC
+  Pro     CCU, CCC, CCA, CCG
+  Gln     CAA, CAG
+  Ser     UCU, UCC, UCA, UCG, AGU, AGC
+  Glu     GAA, GAG
+  Thr     ACU, ACC, ACA, ACG
+  Gly     GGU, GGC, GGA, GGG
+  Trp     UGG
+  His     CAU, CAC
+  Tyr     UAU, UAC
+  Ile     AUU, AUC, AUA
+  Val     GUU, GUC, GUA, GUG
+  Stop   UAG, UGA, UAA```
+
+  Phew, that's a long list!
+
+  The above example would become:
+
+  `"Met Ser Ser Thr Asp Stop"`
+
+  Any additional sets of bases that aren't in a group of three aren't included. For example:
+
+  `"AUG C"`
+
+  would become
+
+  `"Met"`
+
+  ---
+
+  Anyway, your final output will be the mRNA sequence and the polypeptide.
+
+  Here are some examples:
+
+  *In:*
+
+  `"TACAGCTCGCTATGAATC"`
+
+  *Out:*
+
+  `["AUG UCG AGC GAU ACU UAG","Met Ser Ser Asp Thr Stop"]`
+
+  ---
+
+  *In:*
+
+  `"ACGTG"`
+
+  *Out:*
+
+  `["UGC AC","Cys"]`
+  -/
+
+vc-preamble: |
+
+vc-helpers: |
+
+vc-definitions: |-
+  def protein_synthesis (dna_str: String) : List String := sorry
+
+  def valid_aas : List String := ["Ala", "Arg", "Asn", "Asp", "Cys", "Gln", "Glu", "Gly", "His", "Ile",
+                                 "Leu", "Lys", "Met", "Phe", "Pro", "Ser", "Thr", "Trp", "Tyr", "Val", "Stop"]
+
+  theorem output_structure {dna_str : String} (h : ∀ c ∈ dna_str.data, c ∈ ['A', 'C', 'G', 'T']) :
+    let result := protein_synthesis dna_str
+    result.length = 2 ∧ 
+    (∀ c ∈ result[0]!.data, c ∈ ['A', 'U', 'C', 'G', ' ']) ∧
+    (∀ aa ∈ result[1]!.splitOn " ", aa ∈ valid_aas) := sorry
+
+vc-theorems: |-
+  theorem dna_to_rna_conversion {dna_str : String} (h : ∀ c ∈ dna_str.data, c ∈ ['A', 'C', 'G', 'T']) :
+    let result := protein_synthesis dna_str
+    let rna := (result[0]!.replace " " "").data
+    ∀ i, i < dna_str.length → 
+      match dna_str.data[i]! with
+      | 'A' => rna[i]! = 'U'
+      | 'T' => rna[i]! = 'A'  
+      | 'C' => rna[i]! = 'G'
+      | 'G' => rna[i]! = 'C'
+      | _ => True := sorry
+
+  theorem codon_spacing {dna_str : String} (h : ∀ c ∈ dna_str.data, c ∈ ['A', 'C', 'G', 'T']) :
+    let result := protein_synthesis dna_str
+    let rna_codons := result[0]!.splitOn " "
+    (∀ i, i < rna_codons.length - 1 → (rna_codons[i]!).length = 3) ∧ 
+    (rna_codons.length > 0 → 
+     1 ≤ (rna_codons[rna_codons.length - 1]!).length ∧ 
+     (rna_codons[rna_codons.length - 1]!).length ≤ 3) := sorry
+
+  theorem translation_consistency {dna_str : String} (h : ∀ c ∈ dna_str.data, c ∈ ['A', 'C', 'G', 'T']) :
+    let result := protein_synthesis dna_str
+    let rna_codons := result[0]!.splitOn " "
+    let aas := result[1]!.splitOn " "
+    ∀ i j, i < rna_codons.length → j < rna_codons.length →
+      rna_codons[i]!.length = 3 → 
+      rna_codons[j]!.length = 3 →
+      rna_codons[i]! = rna_codons[j]! → 
+      aas[i]! = aas[j]! := sorry
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded
+
+  /--
+  info: ['AUG UCG AGC GAU ACU UAG', 'Met Ser Ser Asp Thr Stop']
+  -/
+  #guard_msgs in
+  #eval protein_synthesis "TACAGCTCGCTATGAATC"
+
+  /--
+  info: ['UGC AC', 'Cys']
+  -/
+  #guard_msgs in
+  #eval protein_synthesis "ACGTG"
+
+  /--
+  info: ['AUG', 'Met']
+  -/
+  #guard_msgs in
+  #eval protein_synthesis "TAC"
+

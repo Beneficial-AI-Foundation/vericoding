@@ -1,0 +1,71 @@
+vc-description: |-
+  /-
+  In this Kata, you will be given two positive integers `a` and `b` and your task will be to apply the following operations:
+
+  ```
+  i) If a = 0 or b = 0, return [a,b]. Otherwise, go to step (ii);
+  ii) If a ≥ 2*b, set a = a - 2*b, and repeat step (i). Otherwise, go to step (iii);
+  iii) If b ≥ 2*a, set b = b - 2*a, and repeat step (i). Otherwise, return [a,b].
+  ```
+
+  `a` and `b` will both be lower than 10E8.
+
+  More examples in tests cases. Good luck!
+
+  Please also try [Simple time difference](https://www.codewars.com/kata/5b76a34ff71e5de9db0000f2)
+  -/
+
+vc-preamble: |
+
+vc-helpers: |
+
+vc-definitions: |-
+  def solve (a b : Nat) : Nat × Nat :=
+    sorry
+
+  #check solve
+
+vc-theorems: |-
+  theorem solve_returns_non_negative {a b : Nat} : 
+    let result := solve a b
+    result.1 ≥ 0 ∧ result.2 ≥ 0 := by 
+    sorry
+
+  theorem solve_reduces_max {a b : Nat} :
+    let result := solve a b 
+    max result.1 result.2 ≤ max a b := by
+    sorry 
+
+  theorem solve_final_state {a b : Nat} :
+    let result := solve a b
+    result.1 > 0 ∧ result.2 > 0 →
+    result.1 < 2 * result.2 ∧ result.2 < 2 * result.1 := by
+    sorry
+
+  theorem solve_zero_input {a b : Nat} :
+    a = 0 ∨ b = 0 →
+    solve a b = (a, b) := by
+    sorry
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded
+
+  /--
+  info: [6, 7]
+  -/
+  #guard_msgs in
+  #eval solve 6 19
+
+  /--
+  info: [0, 1]
+  -/
+  #guard_msgs in
+  #eval solve 2 1
+
+  /--
+  info: [7, 11]
+  -/
+  #guard_msgs in
+  #eval solve 7 11
+

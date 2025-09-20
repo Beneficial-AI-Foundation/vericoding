@@ -1,55 +1,89 @@
 vc-description: |-
   Evaluate a 2-D HermiteE series at points (x, y).
-  
+
   This function computes the bivariate HermiteE polynomial:
   p(x,y) = ∑_{i,j} c_{i,j} * He_i(x) * He_j(y)
-  
+
   where He_i and He_j are the HermiteE basis polynomials.
-  
+
+  Specification: hermeval2d evaluates a 2D HermiteE series at corresponding points.
+
   This function implements the mathematical formula:
   p(x,y) = ∑_{i,j} c_{i,j} * He_i(x) * He_j(y)
-  
+
   Key properties:
   1. Bivariate polynomial evaluation using HermiteE basis
   2. Mathematical correctness and linearity properties
   3. Point-wise evaluation for corresponding (x,y) pairs
-
 vc-preamble: |-
   use vstd::prelude::*;
-  
+
   verus! {
-  
-  spec fn hermite_e_basis(n: nat, x: int) -> int
+vc-helpers: |-
+
+vc-spec: |-
+  spec fn hermite_basis(n: nat, t: int) -> int
       decreases n
   {
       if n == 0 {
           1
       } else if n == 1 {
-          x
+          t
       } else {
-          x * hermite_e_basis((n-1) as nat, x) - (n-1) as int * hermite_e_basis((n-2) as nat, x)
+          t * hermite_basis((n - 1) as nat, t) - (n - 1) as int * hermite_basis((n - 2) as nat, t)
       }
   }
 
-vc-helpers: |-
+  spec fn matrix_sum(c: Seq<Vec<i8>>, x: int, y: int) -> int {
+      let n = c.len() as int;
+      if n == 0 {
+          0
+      } else {
+          let m = c[0].len() as int;
+          matrix_sum_helper(c, x, y, 0, n, m)
+      }
+  }
 
-vc-spec: |-
+  spec fn matrix_sum_helper(c: Seq<Vec<i8>>, x: int, y: int, i: int, n: int, m: int) -> int
+      decreases n - i
+  {
+      if i >= n {
+          0
+      } else {
+          row_sum_helper(c[i], x, y, i, 0, m) + matrix_sum_helper(c, x, y, i + 1, n, m)
+      }
+  }
+
+  spec fn row_sum_helper(row: Vec<i8>, x: int, y: int, i: int, j: int, m: int) -> int
+      decreases m - j
+  {
+      if j >= m {
+          0
+      } else {
+          (row[j] as int) * hermite_basis(i as nat, x) * hermite_basis(j as nat, y) + 
+          row_sum_helper(row, x, y, i, j + 1, m)
+      }
+  }
+
   fn hermeval2d(x: Vec<i8>, y: Vec<i8>, c: Vec<Vec<i8>>) -> (result: Vec<i8>)
-      requires 
+      requires
           x.len() == y.len(),
           x.len() > 0,
           c.len() > 0,
-          forall|i: int| 0 <= i < c.len() ==> c[i].len() > 0,
-      ensures 
+          forall|i: int| 0 <= i < c.len() ==> #[trigger] c[i].len() == c[0].len(),
+          c[0].len() > 0,
+      ensures
           result.len() == x.len(),
-          forall|k: int| 0 <= k < result.len() ==> #[trigger] hermite_e_basis(0nat, x[k] as int) == 1,
-
+          forall|k: int| 0 <= k < result.len() ==> 
+              result[k] as int == matrix_sum(c@, x[k] as int, y[k] as int),
 vc-code: |-
   {
+      // impl-start
       assume(false);
       unreached()
+      // impl-end
   }
-
 vc-postamble: |-
+
   }
   fn main() {}

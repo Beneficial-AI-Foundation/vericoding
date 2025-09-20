@@ -1,0 +1,70 @@
+vc-description: |-
+  /-
+  The chef is trying to solve some pattern problems, Chef wants your help to code it. Chef has one number K to form a new pattern. Help the chef to code this pattern problem.
+  
+  -----Input:-----
+  - First-line will contain $T$, the number of test cases. Then the test cases follow. 
+  - Each test case contains a single line of input, one integer $K$. 
+  
+  -----Output:-----
+  For each test case, output as the pattern.
+  
+  -----Constraints-----
+  - $1 \leq T \leq 100$
+  - $1 \leq K \leq 100$
+  
+  -----Sample Input:-----
+  5
+  1
+  2
+  3
+  4
+  5
+  
+  -----Sample Output:-----
+  *
+  *
+  **
+  *
+  **
+  ***
+  *
+  **
+  * *
+  ****
+  *
+  **
+  * *
+  *  *
+  *****
+  
+  -----EXPLANATION:-----
+  No need, else pattern can be decode easily.
+  -/
+
+vc-preamble: |-
+
+vc-helpers: |-
+
+vc-definitions: |-
+  def generate_pattern (k : Nat) : List String := sorry
+  
+  theorem pattern_length {k : Nat} (h : k > 0) :
+    List.length (generate_pattern k) = k := sorry
+
+vc-theorems: |-
+  theorem pattern_last_line {k : Nat} (h : k > 0) :
+    List.get! (generate_pattern k) (k - 1) = "*".append (String.join (List.replicate (k-1) "*")) := sorry
+  
+  theorem pattern_first_line {k : Nat} (h : k > 0) :
+    List.head! (generate_pattern k) = "*" := sorry
+  
+  theorem pattern_middle_lines {k : Nat} (h : k > 2) (i : Nat) (hi : i > 0 ∧ i < k - 1) :
+    let line := List.get! (generate_pattern k) i
+    line.length = i + 1 ∧
+    (∀ c ∈ line.data, c = '*' ∨ c = ' ') := sorry
+
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: guarded_and_plausible
+

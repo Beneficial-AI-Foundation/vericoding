@@ -1,0 +1,67 @@
+vc-description: |-
+  /-
+  Have a look at the following numbers.
+
+  ```
+   n | score
+  ---+-------
+   1 |  50
+   2 |  150
+   3 |  300
+   4 |  500
+   5 |  750
+  ```
+
+  Can you find a pattern in it? If so, then write a function `getScore(n)`/`get_score(n)`/`GetScore(n)` which returns the score for any positive number `n`:
+
+  ```c++
+  int getScore(1) = return 50;
+  int getScore(2) = return 150;
+  int getScore(3) = return 300;
+  int getScore(4) = return 500;
+  int getScore(5) = return 750;
+  ```
+  -/
+
+vc-preamble: |
+
+vc-helpers: |
+
+vc-definitions: |-
+  def get_score (n : Int) : Int := sorry
+
+  theorem get_score_returns_integer (n : Int) :
+    get_score n = get_score n := by sorry
+
+vc-theorems: |-
+  theorem get_score_non_negative (n : Int) (h : n ≥ 0) :
+    get_score n ≥ 0 := by sorry
+
+  theorem get_score_monotonic (a b : Int) (h1 : a ≥ 0) (h2 : b ≥ 0) (h3 : a < b) :
+    get_score a < get_score b := by sorry
+
+  theorem get_score_formula (n : Int) :
+    get_score n = n * (n + 1) * 25 := by sorry
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded
+
+  /--
+  info: 50
+  -/
+  #guard_msgs in
+  #eval get_score 1
+
+  /--
+  info: 150
+  -/
+  #guard_msgs in
+  #eval get_score 2
+
+  /--
+  info: 750
+  -/
+  #guard_msgs in
+  #eval get_score 5
+

@@ -1,0 +1,74 @@
+vc-description: |-
+  /-
+  Mutation is a genetic operator used to maintain genetic diversity from one generation of a population of genetic algorithm chromosomes to the next.
+
+  ![Mutation](http://i.imgur.com/HngmxNN.gif)
+
+  A mutation here may happen on zero or more positions in a chromosome. It is going to check every position and by a given probability it will decide if a mutation will occur.
+
+  A mutation is the change from `0` to `1` or from `1` to `0`.
+
+  ***Note:*** *Some tests are random. If you think your algorithm is correct but the result fails, trying again should work.*
+
+  # See other katas from this series
+
+    - [Genetic Algorithm Series - #1 Generate](http://www.codewars.com/kata/genetic-algorithm-series-number-1-generate)
+    - **Genetic Algorithm Series - #2 Mutation**
+    - [Genetic Algorithm Series - #3 Crossover](http://www.codewars.com/kata/genetic-algorithm-series-number-3-crossover)
+    - [Genetic Algorithm Series - #4 Get population and fitnesses](http://www.codewars.com/kata/genetic-algorithm-series-number-4-get-population-and-fitnesses)
+    - [Genetic Algorithm Series - #5 Roulette wheel selection](http://www.codewars.com/kata/genetic-algorithm-series-number-5-roulette-wheel-selection)
+  -/
+
+vc-preamble: |
+
+vc-helpers: |
+
+vc-definitions: |-
+  def mutate (chromosome : List Char) (p : Float) : List Char := sorry
+
+  theorem mutate_preserves_length (chromosome : List Char) (p : Float) 
+    (h1 : 0 ≤ p) (h2 : p ≤ 1) :
+    (mutate chromosome p).length = chromosome.length := sorry
+
+vc-theorems: |-
+  theorem mutate_valid_bits (chromosome : List Char) (p : Float)
+    (h1 : 0 ≤ p) (h2 : p ≤ 1)
+    (h3 : ∀ c, c ∈ chromosome → c = '0' ∨ c = '1') :
+    ∀ c, c ∈ (mutate chromosome p) → c = '0' ∨ c = '1' := sorry
+
+  theorem mutate_zero_prob (chromosome : List Char) :
+    mutate chromosome 0 = chromosome := sorry
+
+  theorem mutate_one_prob (chromosome : List Char)
+    (h : ∀ c, c ∈ chromosome → c = '0' ∨ c = '1') :
+    ∀ (c₁ : Char) (c₂ : Char), 
+      c₁ ∈ chromosome → 
+      c₂ ∈ (mutate chromosome 1) →
+      c₁ ≠ c₂ := sorry
+
+  theorem mutate_deterministic (chromosome : List Char) (p : Float)
+    (h1 : 0 ≤ p) (h2 : p ≤ 1) :
+    mutate chromosome p = mutate chromosome p := sorry
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded
+
+  /--
+  info: '0'
+  -/
+  #guard_msgs in
+  #eval mutate "0" 0
+
+  /--
+  info: '1'
+  -/
+  #guard_msgs in
+  #eval mutate "0" 1
+
+  /--
+  info: len(test)
+  -/
+  #guard_msgs in
+  #eval len mutate(test, 0.3)
+

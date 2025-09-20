@@ -15,10 +15,10 @@ vc-description: |-
   end of each round, the cumulative score for each player is calculated, and the leader and her current lead are found. Once
   all the rounds are over the player who had the maximum lead at the
   end of any round in the game is declared the winner.
-  
+
   Consider the following score sheet for a game with 5 rounds:
   RoundPlayer 1Player 2114082289134390110411210658890
-  
+
   The total scores of both players, the leader and the lead after
   each round for this game is given below:RoundPlayer 1Player 2LeaderLead114082Player 1582229216Player 1133319326Player 274431432Player 215519522Player 23
   Note that the above table contains the cumulative scores.
@@ -46,7 +46,7 @@ vc-description: |-
   90 110
   112 106
   88 90
-  
+
   Output:
   1 58
   -/
@@ -55,7 +55,7 @@ vc-preamble: |-
   def find_winner_and_max_lead (rounds : List (Nat × Nat)) : Nat × Nat :=
   sorry
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def get_max_leads (rounds : List (Nat × Nat)) : Nat × Nat :=
@@ -72,31 +72,31 @@ vc-theorems: |-
     let (winner, _) := find_winner_and_max_lead rounds
     winner = 1 ∨ winner = 2 := 
   sorry
-  
+
   theorem max_lead_nonnegative (rounds : List (Nat × Nat)) :
     let (_, maxLead) := find_winner_and_max_lead rounds
     maxLead ≥ 0 :=
   sorry
-  
-  /-
-  info: (1, 58)
-  -/
-  -- #guard_msgs in
-  -- #eval find_winner_and_max_lead [(140, 82), (89, 134), (90, 110), (112, 106), (88, 90)]
-  
-  /-
-  info: (1, 15)
-  -/
-  -- #guard_msgs in
-  -- #eval find_winner_and_max_lead [(10, 5), (20, 15), (30, 25)]
-  
-  /-
-  info: (2, 15)
-  -/
-  -- #guard_msgs in
-  -- #eval find_winner_and_max_lead [(5, 10), (15, 20), (25, 30)]
 
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
+
+  /-
+  info: (1, 58)
+  -/
+  #guard_msgs in
+  #eval find_winner_and_max_lead [(140, 82), (89, 134), (90, 110), (112, 106), (88, 90)]
+
+  /-
+  info: (1, 15)
+  -/
+  #guard_msgs in
+  #eval find_winner_and_max_lead [(10, 5), (20, 15), (30, 25)]
+
+  /-
+  info: (2, 15)
+  -/
+  #guard_msgs in
+  #eval find_winner_and_max_lead [(5, 10), (15, 20), (25, 30)]
 

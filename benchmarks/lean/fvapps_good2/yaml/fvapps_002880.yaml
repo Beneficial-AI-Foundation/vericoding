@@ -1,0 +1,79 @@
+vc-description: |-
+  /-
+  > In information theory and computer science, the Levenshtein distance is a string metric for measuring the difference between two sequences. Informally, the Levenshtein distance between two words is the minimum number of single-character edits (i.e. insertions, deletions or substitutions) required to change one word into the other.
+  
+  (http://en.wikipedia.org/wiki/Levenshtein_distance)
+  
+  Your task is to implement a function which calculates the Levenshtein distance for two arbitrary strings.
+  -/
+  
+  -- Non-negativity
+  
+  -- Identity
+  
+  -- Symmetry
+  
+  -- Triangle inequality
+  
+  -- Empty string
+
+vc-preamble: |-
+
+vc-helpers: |-
+
+vc-definitions: |-
+  def levenshtein (s1 s2 : String) : Nat :=
+    sorry
+  
+  def repeatChar (c : Char) (n : Nat) : String :=
+  sorry
+
+vc-theorems: |-
+  theorem levenshtein_nonneg (s1 s2 : String) :
+    levenshtein s1 s2 ≥ 0 :=
+  sorry
+  
+  theorem levenshtein_identity (s : String) :
+    levenshtein s s = 0 :=
+  sorry
+  
+  theorem levenshtein_symm (s1 s2 : String) :
+    levenshtein s1 s2 = levenshtein s2 s1 :=
+  sorry
+  
+  theorem levenshtein_triangle (s1 s2 s3 : String) :
+    levenshtein s1 s2 ≤ levenshtein s1 s3 + levenshtein s3 s2 :=
+  sorry
+  
+  theorem levenshtein_empty_string (s : String) :
+    levenshtein s "" = s.length :=
+  sorry
+  
+  theorem levenshtein_empty_string_rev (s : String) :
+    levenshtein "" s = s.length :=
+  sorry
+
+vc-postamble: |-
+  -- Repeated char prepending
+  
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded_and_plausible
+  
+  /--
+  info: 3
+  -/
+  #guard_msgs in
+  #eval levenshtein "kitten" "sitting"
+  
+  /--
+  info: 2
+  -/
+  #guard_msgs in
+  #eval levenshtein "book" "back"
+  
+  /--
+  info: 0
+  -/
+  #guard_msgs in
+  #eval levenshtein "peter" "peter"
+

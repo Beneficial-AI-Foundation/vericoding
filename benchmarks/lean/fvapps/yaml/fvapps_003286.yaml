@@ -22,18 +22,18 @@ vc-description: |-
   (p ⊻ q) ⊻ r = true
   Directions:
   For this kata, your task is to implement a function that performs a disjunction operation on 2 or more propositions.
-  
+
   Should take a boolean array as its first parameter and a single boolean as its second parameter, which, if true, should indicate that the disjunction should be exclusive as opposed to inclusive.
   Should return true or false.
   -/
 
-vc-preamble: |-
+vc-preamble: |
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def disjunction (operands: List Bool) (exclusive: Bool) : Bool := sorry
-  
+
   theorem disjunction_inclusive_or
     {operands: List Bool}
     (h: operands ≠ [])
@@ -44,29 +44,29 @@ vc-theorems: |-
     {operands: List Bool}
     (h: operands ≠ [])
     : disjunction operands true = ((List.countP (· = true) operands).mod 2 = 1) := sorry 
-  
+
   theorem disjunction_empty_error
     : ¬∃ (b: Bool), ∃ (res: Bool), disjunction [] b = res := sorry
-  
-  /-
-  info: True
-  -/
-  -- #guard_msgs in
-  -- #eval disjunction [False, True, False] False
-  
-  /-
-  info: True
-  -/
-  -- #guard_msgs in
-  -- #eval disjunction [False, True, True, True] True
-  
-  /-
-  info: False
-  -/
-  -- #guard_msgs in
-  -- #eval disjunction [True, True, True, True] True
 
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+
+  /-
+  info: True
+  -/
+  #guard_msgs in
+  #eval disjunction [False, True, False] False
+
+  /-
+  info: True
+  -/
+  #guard_msgs in
+  #eval disjunction [False, True, True, True] True
+
+  /-
+  info: False
+  -/
+  #guard_msgs in
+  #eval disjunction [True, True, True, True] True
 

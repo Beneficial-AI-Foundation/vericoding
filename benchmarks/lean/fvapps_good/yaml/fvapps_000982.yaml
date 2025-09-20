@@ -1,0 +1,74 @@
+vc-description: |-
+  /-
+  Navnit is a college student and there are $N$ students in his college .Students are numbered from $1$ to $N$.
+  You are given $M$ facts that "Student $A_i$ and $B_i$".The same fact can be given multiple times .If $A_i$ is a friend of $B_i$ ,then $B_i$ is also a friend of $A_i$ . If $A_i$ is a friend of $B_i$ and $B_i$ is a friend of $C_i$ then $A_i$ is also a friend of $C_i$.
+  Find number of ways in which two students can be selected in such a way that they are not friends. 
+
+  -----Input:-----
+  - First line will contain two integers $N$ and $M$. 
+  - Then $M$ lines follow. Each line contains two integers $A_i$ and $B_i$ denoting the students who are friends.
+
+  -----Output:-----
+  For each testcase, output the number of ways in which  two students can be selected in such a way that they are friends.
+
+  -----Constraints-----
+  - $2 \leq N \leq 200000$
+  - $0 \leq M \leq 200000$
+  - $1 \leq A_i,B_i \leq N$
+
+  -----Sample Input:-----
+  5 3
+  1 2                                                   
+  3 4
+  1 5
+
+  -----Sample Output:-----
+  6
+
+  -----EXPLANATION:-----
+  Groups of friend are $[1,2,5]$ and $[3,4]$.Hence the answer is  3 X 2 =6.
+  -/
+
+vc-preamble: |
+
+vc-helpers: |
+
+vc-definitions: |-
+  def count_non_friend_pairs (n m : Nat) (pairs : List (Nat × Nat)) : Nat :=
+    sorry
+
+vc-theorems: |-
+  theorem count_empty_pairs {n : Nat} (h1 : n > 0) (h2 : n ≤ 20) :
+    count_non_friend_pairs n 0 [] = n * (n-1) / 2 :=
+    sorry
+
+  theorem count_single_node :
+    count_non_friend_pairs 1 0 [] = 0 :=
+    sorry
+
+  theorem count_empty_graph {n : Nat} (h1 : n ≥ 2) (h2 : n ≤ 20) :
+    count_non_friend_pairs n 0 [] = n * (n-1) / 2 :=
+    sorry
+
+vc-postamble: |-
+  -- Apps difficulty: interview
+  -- Assurance level: guarded_and_plausible
+
+  /--
+  info: 6
+  -/
+  #guard_msgs in
+  #eval count_non_friend_pairs 5 3 [(1, 2), (3, 4), (1, 5)]
+
+  /--
+  info: 4
+  -/
+  #guard_msgs in
+  #eval count_non_friend_pairs 4 2 [(1, 2), (3, 4)]
+
+  /--
+  info: 3
+  -/
+  #guard_msgs in
+  #eval count_non_friend_pairs 3 0 []
+

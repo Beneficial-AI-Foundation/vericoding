@@ -34,9 +34,9 @@ vc-spec: |-
       ensures 
           result.len() == x1.len(),
           forall|i: int| 0 <= i < result.len() ==> 
-              (result@[i] == (x1@[i] as int > x2@[i] as int)) &&
-              (result@[i] == true ==> !(x2@[i] as int > x1@[i] as int)) &&
-              (result@[i] == true || result@[i] == false)
+              (result[i] == (x1[i] as int > x2[i] as int)) &&
+              (result[i] == true ==> !(x2[i] as int > x1[i] as int)) &&
+              (result[i] == true || result[i] == false)
 
 vc-code: |-
   {

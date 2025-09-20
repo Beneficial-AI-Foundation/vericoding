@@ -1,0 +1,85 @@
+vc-description: |-
+  /-
+  You are going to be given a word. Your job is to return the middle character of the word. If the word's length is odd, return the middle character. If the word's length is even, return the middle 2 characters.
+
+  #Examples:
+  ~~~if-not:bf
+  ```
+  Kata.getMiddle("test") should return "es"
+
+  Kata.getMiddle("testing") should return "t"
+
+  Kata.getMiddle("middle") should return "dd"
+
+  Kata.getMiddle("A") should return "A"
+
+  ```
+  ~~~
+  ~~~if:bf
+  ```
+  runBF("test\0") should return "es"
+
+  runBF("testing\0") should return "t"
+
+  runBF("middle\0") should return "dd"
+
+  runBF("A\0") should return "A"
+
+  ```
+  ~~~
+
+  #Input
+
+  A word (string) of length `0 < str < 1000` (In javascript you may get slightly more than 1000 in some test cases due to an error in the test cases). You do not need to test for this. This is only here to tell you that you do not need to worry about your solution timing out.
+
+  #Output
+
+  The middle character(s) of the word represented as a string.
+  -/
+
+vc-preamble: |
+
+vc-helpers: |
+
+vc-definitions: |-
+  def get_middle : String → String 
+  | s => sorry
+
+vc-theorems: |-
+  theorem middle_length_property (s : String) (h : s.length > 0) : 
+    let result := get_middle s
+    result.length = if s.length % 2 = 0 then 2 else 1 := 
+  sorry
+
+  theorem single_char_property (s : String) (h : s.length = 1) :
+    get_middle s = s :=
+  sorry
+
+  theorem middle_position_property (s : String) (h : s.length > 1) :
+    let result := get_middle s
+    let mid := (s.length - 1) / 2
+    ∃ pos : String.Pos, get_middle s = s.extract pos (⟨mid + result.length⟩) :=
+  sorry
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded
+
+  /--
+  info: 'es'
+  -/
+  #guard_msgs in
+  #eval get_middle "test"
+
+  /--
+  info: 't'
+  -/
+  #guard_msgs in
+  #eval get_middle "testing"
+
+  /--
+  info: 'A'
+  -/
+  #guard_msgs in
+  #eval get_middle "A"
+

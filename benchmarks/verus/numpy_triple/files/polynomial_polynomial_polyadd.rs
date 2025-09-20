@@ -15,11 +15,11 @@ fn polyadd(c1: Vec<i8>, c2: Vec<i8>) -> (result: Vec<i8>)
             if i < c1.len() && i < c2.len() {
                 result[i] as int == c1[i] as int + c2[i] as int
             } else if i < c1.len() && i >= c2.len() {
-                result[i] == c1[i]
+                result[i] as int == c1[i] as int
             } else if i >= c1.len() && i < c2.len() {
-                result[i] == c2[i]
+                result[i] as int == c2[i] as int
             } else {
-                result[i] == 0
+                result[i] as int == 0
             }
         }
 // </vc-spec>

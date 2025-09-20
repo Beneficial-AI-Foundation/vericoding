@@ -1,0 +1,79 @@
+vc-description: |-
+  /-
+  Implement a function, so it will produce a sentence out of the given parts.
+
+  Array of parts could contain:
+  - words;
+  - commas in the middle;
+  - multiple periods at the end.
+
+  Sentence making rules:
+  - there must always be a space between words;
+  - there must not be a space between a comma and word on the left;
+  - there must always be one and only one period at the end of a sentence.
+
+  **Example:**
+  -/
+
+vc-preamble: |
+
+vc-helpers: |
+
+vc-definitions: |-
+  def make_sentences (parts : List String) : String := sorry
+
+  def stringContains (s : String) (sub : String) : Bool :=
+    s.data.asString.contains sub.data[0]! -- simplified for example
+
+vc-theorems: |-
+  theorem make_sentences_ends_with_period
+    (parts : List String) 
+    (h : parts.length > 0) :
+    (make_sentences parts).endsWith "." := sorry
+
+  theorem make_sentences_single_period
+    (parts : List String)
+    (h : parts.length > 0) :
+    ((make_sentences parts).data.filter (· = '.') |>.length) = 1 := sorry
+
+  theorem make_sentences_no_trailing_space
+    (parts : List String)
+    (h : parts.length > 0) :
+    ¬((make_sentences parts).dropRight 1).endsWith " " := sorry
+
+  theorem make_sentences_comma_space
+    (parts : List String)
+    (h : parts.length > 0) :
+    ((make_sentences parts).data.contains ',') → 
+      ((make_sentences parts).data.take ((make_sentences parts).length - 1)).contains ' ' := sorry
+
+  theorem make_sentences_preserves_content
+    (parts : List String)
+    (h : parts.length > 0)
+    (part : String)
+    (h2 : part ∈ parts)
+    (h3 : part ≠ "," ∧ part ≠ ".") :
+    (stringContains (make_sentences parts) part) = true := sorry
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded
+
+  /--
+  info: 'hello world.'
+  -/
+  #guard_msgs in
+  #eval make_sentences ["hello", "world"]
+
+  /--
+  info: 'hello, my dear.'
+  -/
+  #guard_msgs in
+  #eval make_sentences ["hello", ",", "my", "dear"]
+
+  /--
+  info: 'hello world.'
+  -/
+  #guard_msgs in
+  #eval make_sentences ["hello", "world", ".", ".", "."]
+

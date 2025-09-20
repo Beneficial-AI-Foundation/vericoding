@@ -1,0 +1,126 @@
+vc-description: |-
+  /-
+  Imagine the following situations:
+  
+  - A truck loading cargo
+  - A shopper on a budget
+  - A thief stealing from a house using a large bag
+  - A child eating candy very quickly
+  
+  All of these are examples of ***The Knapsack Problem***, where there are more things that you ***want*** to take with you than you ***can*** take with you.
+  
+  The Problem
+  ===
+  
+  Given a container with a certain capacity and an assortment of discrete items with various sizes and values (and an infinite supply of each item), determine the combination of items that fits within the container and maximizes the value of the collection.
+  
+  However, **DO NOT** attempt to solve the problem **EXACTLY!** (we will do that in Part 2)
+  
+  The Simplification
+  ===
+  
+  Because the optimal collection of items is **MUCH** more difficult to determine than a nearly-optimal collection, this kata will only focus on one specific nearly-optimal solution: the greedy solution. The greedy solution is that which always adds an item to the collection if it has the highest value-to-size ratio.
+  
+  For example, if a "greedy thief" with a 10-Liter knapsack sees two types of items
+  
+  - a 6-Liter item worth $9 (1.5 $/L)
+  
+  - a 5-Liter item worth $5 (1.0 $/L)
+  
+  the thief will take 1 of the 6-Liter items instead of 2 of the 5-Liter items. Although this means the thief will only profit $9 instead of $10, the decision algorithm is much simpler. Maybe the thief is bad at math.
+  
+  Now, go be bad at math!
+  
+  The Kata
+  ===
+  
+  Write the function `knapsack` that takes two parameters, `capacity` and `items`, and returns a list of quantities.
+  
+  `capacity` will be a positive number
+  
+  `items` will be an array of arrays of positive numbers that gives the items' sizes and values in the form [[size 1, value 1], [size 2, value 2], ...]
+  
+  `knapsack` will return an array of integers that specifies the quantity of each item to take according to the greedy solution (the order of the quantities must match the order of `items`)
+  -/
+
+vc-preamble: |-
+  def sumList (xs : List Nat) : Nat :=
+    match xs with
+    | [] => 0
+    | h :: t => h + sumList t
+  
+  def zipWithIndex {α : Type} (l : List α) : List (Nat × α) :=
+    let rec aux (i : Nat) (xs : List α) : List (Nat × α) :=
+      match xs with
+      | [] => []
+      | h :: t => (i, h) :: aux (i+1) t
+    aux 0 l
+
+vc-helpers: |-
+
+vc-definitions: |-
+  def knapsack (capacity : Nat) (items : List (Nat × Nat)) : List Nat :=
+    sorry
+
+vc-theorems: |-
+  theorem knapsack_result_length_matches_input
+      (capacity : Nat) (items : List (Nat × Nat)) :
+      (knapsack capacity items).length = items.length :=
+  sorry
+  
+  theorem knapsack_result_nonnegative
+      (capacity : Nat) (items : List (Nat × Nat)) :
+      ∀ x ∈ knapsack capacity items, x ≥ 0 :=
+  sorry
+  
+  theorem knapsack_total_size_within_capacity
+      (capacity : Nat) (items : List (Nat × Nat)) :
+      let result := knapsack capacity items
+      let sizes := List.map (fun p => (items[p.1]!).1 * p.2) (zipWithIndex result)
+      sumList sizes ≤ capacity :=
+  sorry
+  
+  theorem knapsack_optimal_ratio
+      (capacity : Nat) (items : List (Nat × Nat)) (i : Nat) :
+      i < items.length →
+      let result := knapsack capacity items
+      let sizes := List.map (fun p => (items[p.1]!).1 * p.2) (zipWithIndex result)
+      let total_size := sumList sizes
+      let ratio := items[i]!.2 / items[i]!.1
+      items[i]!.1 + total_size ≤ capacity →
+      ∀ j < items.length,
+        items[j]!.2 / items[j]!.1 = 0 ∨ items[j]!.2 / items[j]!.1 < ratio :=
+  sorry
+  
+  theorem knapsack_zero_capacity
+      (items : List (Nat × Nat)) :
+      knapsack 0 items = List.replicate items.length 0 :=
+  sorry
+  
+  theorem knapsack_empty_items
+      (capacity : Nat) :
+      knapsack capacity [] = [] :=
+  sorry
+
+vc-postamble: |-
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded
+  
+  /--
+  info: [1, 0]
+  -/
+  #guard_msgs in
+  #eval knapsack 10 [[6, 9], [5, 5]]
+  
+  /--
+  info: [5, 0, 0]
+  -/
+  #guard_msgs in
+  #eval knapsack 10 [[2, 3], [3, 4], [4, 5]]
+  
+  /--
+  info: [0, 0]
+  -/
+  #guard_msgs in
+  #eval knapsack 5 [[10, 2], [12, 4]]
+
