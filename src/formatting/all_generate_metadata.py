@@ -116,7 +116,6 @@ def get_source_meta(benchmarks_dir: Path, save_path: Path = None) -> Dict[str, A
                     
                     # Get all files in the ZZZ folder
                     zzz_files = list(zzz_dir.iterdir())
-                    
                     for www_file in zzz_files:
                         if not www_file.is_file() or www_file.name.startswith('.'):
                             continue
@@ -126,13 +125,16 @@ def get_source_meta(benchmarks_dir: Path, save_path: Path = None) -> Dict[str, A
                         # Case 1: WWW is of the form UUU.yaml
                         uuu_name = www_file.stem  # Remove .yaml extension
                         
-                        Check if UUU is already in source_meta
+                        # Check if UUU is already in source_meta
                         if uuu_name in source_meta:
                             # Raise error if SM[UUU][XXX] starts with "yaml"
                             if source_meta[uuu_name][xxx_name].startswith("yaml"):
-                                raise ValueError(f"SM[{uuu_name}][{xxx_name}] starts with 'yaml', "
-                                                f"found: {source_meta[uuu_name][xxx_name]}")
-
+                                # raise ValueError(f"SM[{uuu_name}][{xxx_name}] starts with 'yaml' but file is poor; "
+                                
+                                if source_meta[uuu_name][xxx_name].startswith("yaml"):
+                                    raise ValueError(f"SM[{uuu_name}][{xxx_name}] starts with 'yaml' but file is poor; "
+                                            f"path: {www_file}, "
+                                            f"found: {source_meta[uuu_name][xxx_name]}")
                         else:
                             # Create entry SM[UUU] with empty strings for all languages
                             source_meta[uuu_name] = {
