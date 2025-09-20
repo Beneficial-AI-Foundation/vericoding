@@ -57,19 +57,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'aehiklmpsty-ekst-est'
   -/
   #guard_msgs in
   #eval blocks "heyitssampletestkk"
 
-  /-
+  /--
   info: ''
   -/
   #guard_msgs in
   #eval blocks ""
 
-  /-
+  /--
   info: 'xzAB12'
   -/
   #guard_msgs in

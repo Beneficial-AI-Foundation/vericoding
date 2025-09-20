@@ -136,13 +136,13 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'DCDDC'
   -/
   #guard_msgs in
   #eval solve_game 3 [1, 2, 3] [(">", 1, "D"), ("<", 2, "C"), ("=", 3, "D"), (">", 4, "C"), ("<", 5, "D")]
 
-  /-
+  /--
   info: 'DD'
   -/
   #guard_msgs in

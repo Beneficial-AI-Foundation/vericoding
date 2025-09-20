@@ -84,19 +84,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: 15
   -/
   #guard_msgs in
   #eval calculate_ski_time "NNN"
 
-  /-
+  /--
   info: 6
   -/
   #guard_msgs in
   #eval calculate_ski_time "NS"
 
-  /-
+  /--
   info: 25
   -/
   #guard_msgs in

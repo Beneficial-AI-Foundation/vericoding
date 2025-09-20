@@ -87,19 +87,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'nrtgSi'
   -/
   #guard_msgs in
   #eval string_func "String" 3
 
-  /-
+  /--
   info: 'iitkIl !e '
   -/
   #guard_msgs in
   #eval string_func "I like it!" 1234
 
-  /-
+  /--
   info: 'fonroisreinrddgdneyscou'
   -/
   #guard_msgs in

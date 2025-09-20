@@ -116,19 +116,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: test1_output
   -/
   #guard_msgs in
   #eval brainfuck_to_c "+++++[>++++.<-]"
 
-  /-
+  /--
   info: 'Error!'
   -/
   #guard_msgs in
   #eval brainfuck_to_c "[[]"
 
-  /-
+  /--
   info: ''
   -/
   #guard_msgs in

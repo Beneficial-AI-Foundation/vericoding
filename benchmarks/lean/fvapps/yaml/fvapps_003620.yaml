@@ -62,19 +62,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: '07:05:45'
   -/
   #guard_msgs in
   #eval get_military_time "07:05:45AM"
 
-  /-
+  /--
   info: '19:05:45'
   -/
   #guard_msgs in
   #eval get_military_time "07:05:45PM"
 
-  /-
+  /--
   info: '00:00:00'
   -/
   #guard_msgs in

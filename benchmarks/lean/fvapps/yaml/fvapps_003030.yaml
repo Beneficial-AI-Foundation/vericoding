@@ -65,19 +65,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded
 
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval basereduct 10
 
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in
   #eval basereduct 15
 
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in

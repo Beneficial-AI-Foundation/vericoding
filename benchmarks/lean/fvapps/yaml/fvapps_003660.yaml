@@ -49,19 +49,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval is_lock_ness_monster "Your girlscout cookies are ready to ship. Your total comes to tree fiddy"
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval is_lock_ness_monster "Yo, I heard you were on the lookout for Nessie. Let me know if you need assistance."
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in

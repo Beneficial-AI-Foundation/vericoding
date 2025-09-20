@@ -54,19 +54,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: '0000'
   -/
   #guard_msgs in
   #eval to24hourtime 12 0 "am"
 
-  /-
+  /--
   info: '0830'
   -/
   #guard_msgs in
   #eval to24hourtime 8 30 "am"
 
-  /-
+  /--
   info: '2030'
   -/
   #guard_msgs in

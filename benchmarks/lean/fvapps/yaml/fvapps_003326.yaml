@@ -63,19 +63,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: '      test'
   -/
   #guard_msgs in
   #eval super_pad "test" 10
 
-  /-
+  /--
   info: 'testnop'
   -/
   #guard_msgs in
   #eval super_pad "test" 7 ">nope"
 
-  /-
+  /--
   info: 'motestm'
   -/
   #guard_msgs in

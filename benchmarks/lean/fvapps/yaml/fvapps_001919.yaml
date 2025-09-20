@@ -71,19 +71,19 @@ vc-postamble: |-
   -- Apps difficulty: competition
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: '11'
   -/
   #guard_msgs in
   #eval find_max_binary_after_delete "101"
 
-  /-
+  /--
   info: '11010'
   -/
   #guard_msgs in
   #eval find_max_binary_after_delete "110010"
 
-  /-
+  /--
   info: '1000'
   -/
   #guard_msgs in

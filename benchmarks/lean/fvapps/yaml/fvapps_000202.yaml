@@ -44,19 +44,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval predict_the_winner [1, 5, 2]
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval predict_the_winner [1, 5, 233, 7]
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in

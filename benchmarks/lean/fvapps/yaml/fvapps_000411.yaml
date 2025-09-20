@@ -44,19 +44,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'bab'
   -/
   #guard_msgs in
   #eval last_substring "abab"
 
-  /-
+  /--
   info: 'tcode'
   -/
   #guard_msgs in
   #eval last_substring "leetcode"
 
-  /-
+  /--
   info: 'zzz'
   -/
   #guard_msgs in

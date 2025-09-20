@@ -47,19 +47,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'pizzas: 4, slices: 0'
   -/
   #guard_msgs in
   #eval how_many_pizzas 16
 
-  /-
+  /--
   info: 'pizzas: 2, slices: 2'
   -/
   #guard_msgs in
   #eval how_many_pizzas 12
 
-  /-
+  /--
   info: 'pizzas: 0, slices: 0'
   -/
   #guard_msgs in

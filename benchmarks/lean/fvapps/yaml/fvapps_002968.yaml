@@ -48,19 +48,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: 8
   -/
   #guard_msgs in
   #eval chess_triangle 2 3
 
-  /-
+  /--
   info: 48
   -/
   #guard_msgs in
   #eval chess_triangle 3 3
 
-  /-
+  /--
   info: 40
   -/
   #guard_msgs in

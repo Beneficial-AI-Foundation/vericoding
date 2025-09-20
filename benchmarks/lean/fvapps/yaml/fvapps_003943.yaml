@@ -45,19 +45,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval letter_check ["ab", "aaa"]
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval letter_check ["trances", "nectar"]
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in

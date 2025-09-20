@@ -90,19 +90,19 @@ vc-postamble: |-
   -- Apps difficulty: competition
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: 8
   -/
   #guard_msgs in
   #eval solve_order_book [("ADD", 1), ("ACCEPT", 1), ("ADD", 2), ("ACCEPT", 2), ("ADD", 3), ("ACCEPT", 3)]
 
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval solve_order_book [("ADD", 1), ("ADD", 2), ("ADD", 3), ("ACCEPT", 2)]
 
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in

@@ -60,19 +60,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval solve_arena_of_greed 5
 
-  /-
+  /--
   info: 4
   -/
   #guard_msgs in
   #eval solve_arena_of_greed 6
 
-  /-
+  /--
   info: 5
   -/
   #guard_msgs in

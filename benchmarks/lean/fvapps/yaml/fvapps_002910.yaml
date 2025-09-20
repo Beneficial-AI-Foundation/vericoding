@@ -62,19 +62,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded
 
-  /-
+  /--
   info: 6
   -/
   #guard_msgs in
   #eval mix_fruit ["banana", "mango", "avocado"]
 
-  /-
+  /--
   info: 8
   -/
   #guard_msgs in
   #eval mix_fruit ["melon", "Mango", "kiwi"]
 
-  /-
+  /--
   info: 6
   -/
   #guard_msgs in

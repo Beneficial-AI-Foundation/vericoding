@@ -38,21 +38,25 @@ vc-description: |-
   Cost(1) = minimum {70, 10, 15, 5, 1} = 1. 
   So, the cost of the path from 7 to the root is 70 + 10 + 10 + 5 + 1 = 96.
   -/
+  
+  -- Apps difficulty: interview
+  -- Assurance level: guarded
 
 vc-preamble: |-
-  def calculate_path_costs (n: Nat) (parents: List Nat) (values: List Nat) : List Nat :=
-    sorry
 
 vc-helpers: |-
 
 vc-definitions: |-
+  def calculate_path_costs (n: Nat) (parents: List Nat) (values: List Nat) : List Nat :=
+    sorry
+  
   def is_valid_tree (n: Nat) (parents: List Nat) : Bool :=
     sorry
 
 vc-theorems: |-
-  theorem output_length_matches_input 
+  theorem output_length_matches_input
     (n: Nat) (values: List Nat) (parents: List Nat) :
-    (n > 0) → 
+    (n > 0) →
     (n > values.length → True) →
     (parents = List.replicate (n-1) 1) →
     (calculate_path_costs n parents (values.take n)).length = n :=
@@ -73,6 +77,4 @@ vc-theorems: |-
   sorry
 
 vc-postamble: |-
-  -- Apps difficulty: interview
-  -- Assurance level: guarded
 

@@ -53,19 +53,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 6
   -/
   #guard_msgs in
   #eval find_longest_xor_subsequence 8 [1, 200, 3, 0, 400, 4, 1, 7]
 
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in
   #eval find_longest_xor_subsequence 4 [1, 2, 3, 4]
 
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in

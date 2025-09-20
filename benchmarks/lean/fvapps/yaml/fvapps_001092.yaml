@@ -73,19 +73,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval count_love_graphs 2 1
 
-  /-
+  /--
   info: 12
   -/
   #guard_msgs in
   #eval count_love_graphs 3 2
 
-  /-
+  /--
   info: 12
   -/
   #guard_msgs in

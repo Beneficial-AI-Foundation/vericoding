@@ -40,19 +40,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: ['Ryan', 'Mark']
   -/
   #guard_msgs in
   #eval friend ["Ryan", "Kieran", "Mark"]
 
-  /-
+  /--
   info: ['Ryan']
   -/
   #guard_msgs in
   #eval friend ["Ryan", "Jimmy", "123", "4", "Cool Man"]
 
-  /-
+  /--
   info: ['Love', 'Your', 'Face']
   -/
   #guard_msgs in

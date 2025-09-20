@@ -62,19 +62,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 1
   -/
   #guard_msgs in
   #eval calculate_sum 1 4
 
-  /-
+  /--
   info: 16
   -/
   #guard_msgs in
   #eval calculate_sum 4 10
 
-  /-
+  /--
   info: 4
   -/
   #guard_msgs in

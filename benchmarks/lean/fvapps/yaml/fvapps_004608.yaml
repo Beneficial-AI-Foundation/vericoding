@@ -74,37 +74,37 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval is_valid_coordinates "4, -3"
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval is_valid_coordinates "-23, 25"
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval is_valid_coordinates "24.53525235, 23.45235"
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval is_valid_coordinates "23.234, - 23.4234"
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval is_valid_coordinates "99.234, 12.324"
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in

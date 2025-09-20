@@ -51,19 +51,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded
 
-  /-
+  /--
   info: 7
   -/
   #guard_msgs in
   #eval distinct_subseq_count "abc"
 
-  /-
+  /--
   info: 6
   -/
   #guard_msgs in
   #eval distinct_subseq_count "aba"
 
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in

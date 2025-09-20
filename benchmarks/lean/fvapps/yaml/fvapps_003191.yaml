@@ -39,19 +39,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded
 
-  /-
+  /--
   info: 1
   -/
   #guard_msgs in
   #eval title_to_number "A"
 
-  /-
+  /--
   info: 26
   -/
   #guard_msgs in
   #eval title_to_number "Z"
 
-  /-
+  /--
   info: 27
   -/
   #guard_msgs in

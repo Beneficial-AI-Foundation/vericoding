@@ -54,19 +54,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'four'
   -/
   #guard_msgs in
   #eval name_that_number 4
 
-  /-
+  /--
   info: 'nineteen'
   -/
   #guard_msgs in
   #eval name_that_number 19
 
-  /-
+  /--
   info: 'ninety nine'
   -/
   #guard_msgs in

@@ -1,51 +1,57 @@
 vc-description: |-
   /-
   In this Kata, you will be given two numbers, n and k and your task will be to return the k-digit array that sums to n and has the maximum possible GCD.
-
+  
   For example, given `n = 12, k = 3`, there are a number of possible `3-digit` arrays that sum to `12`, such as `[1,2,9], [2,3,7], [2,4,6], ...` and so on. Of all the possibilities, the one with the highest GCD is `[2,4,6]`. Therefore, `solve(12,3) = [2,4,6]`.
-
+  
   Note also that digits cannot be repeated within the sub-array, so `[1,1,10]` is not a possibility. Lastly, if there is no such array, return an empty array.
-
+  
   More examples in the test cases.
-
+  
   Good luck!
   -/
 
 vc-preamble: |-
-  def solve (n k : Nat) : List Nat := sorry
 
-  def isStrictlyIncreasing (lst : List Nat) : Bool := sorry
-
-vc-helpers: |
+vc-helpers: |-
 
 vc-definitions: |-
-  def checkSum (n : Nat) (lst : List Nat) : Bool := sorry
-
-  theorem solve_large_k (n k : Nat) (h1 : n > 0) (h2 : k > n) :
-    (solve n k).length = 0 := sorry
+  def solve (n k : Nat) : List Nat :=
+  sorry
+  
+  def isStrictlyIncreasing (lst : List Nat) : Bool :=
+  sorry
+  
+  def checkSum (n : Nat) (lst : List Nat) : Bool :=
+  sorry
 
 vc-theorems: |-
+  theorem solve_large_k (n k : Nat) (h1 : n > 0) (h2 : k > n) :
+    (solve n k).length = 0 :=
+  sorry
+  
   theorem solve_k_equals_one (n : Nat) (h : n > 0) :
     let result := solve n 1
-    result.length > 0 → result = [n] := sorry
+    result.length > 0 → result = [n] :=
+  sorry
 
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
-
-  /-
+  
+  /--
   info: [2, 4, 6]
   -/
   #guard_msgs in
   #eval solve 12 3
-
-  /-
+  
+  /--
   info: [3, 6, 9]
   -/
   #guard_msgs in
   #eval solve 18 3
-
-  /-
+  
+  /--
   info: [2, 4, 6, 12]
   -/
   #guard_msgs in

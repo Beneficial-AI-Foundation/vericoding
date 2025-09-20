@@ -75,37 +75,37 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval is_audio "NothingElseMatters.mp3"
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval is_audio "DaftPunk.FLAC"
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval is_audio " Amon Tobin.alac"
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval is_image "sample.jpg"
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval is_image "MyPhoto123.png"
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in

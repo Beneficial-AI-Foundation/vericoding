@@ -70,19 +70,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 34
   -/
   #guard_msgs in
   #eval max_hexagon_beam 4 [2, 4, 6, 8]
 
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in
   #eval max_hexagon_beam 2 [1]
 
-  /-
+  /--
   info: 8
   -/
   #guard_msgs in

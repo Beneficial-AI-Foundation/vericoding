@@ -53,19 +53,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval is_alien_sorted ["hello", "leetcode"] "hlabcdefgijkmnopqrstuvwxyz"
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval is_alien_sorted ["word", "world", "row"] "worldabcefghijkmnpqstuvxyz"
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in

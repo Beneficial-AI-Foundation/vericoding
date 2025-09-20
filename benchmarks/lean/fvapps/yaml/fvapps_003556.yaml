@@ -47,19 +47,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: 22
   -/
   #guard_msgs in
   #eval next_pal 11
 
-  /-
+  /--
   info: 191
   -/
   #guard_msgs in
   #eval next_pal 188
 
-  /-
+  /--
   info: 202
   -/
   #guard_msgs in

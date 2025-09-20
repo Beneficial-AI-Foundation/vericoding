@@ -69,19 +69,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded
 
-  /-
+  /--
   info: 5
   -/
   #guard_msgs in
   #eval projection_area [[2]]
 
-  /-
+  /--
   info: 17
   -/
   #guard_msgs in
   #eval projection_area [[1, 2], [3, 4]]
 
-  /-
+  /--
   info: 8
   -/
   #guard_msgs in

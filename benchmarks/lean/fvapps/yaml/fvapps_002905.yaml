@@ -6,23 +6,28 @@ vc-description: |-
   
   For clarification, the bouncy numbers between `100` and `125` are: `101, 102, 103, 104, 105, 106, 107, 108, 109, 120, and 121`.
   -/
+  
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded_and_plausible
 
 vc-preamble: |-
-  def is_bouncy (n : Nat) : Bool := sorry
-  
-  def digits_sorted (n : Nat) : Bool := sorry
 
 vc-helpers: |-
 
 vc-definitions: |-
-  def digits_sorted_reverse (n : Nat) : Bool := sorry
+  def is_bouncy (n : Nat) : Bool :=
+  sorry
   
-  theorem small_numbers_not_bouncy (n : Nat) (h : n < 100) : 
-    ¬ is_bouncy n := sorry
+  def digits_sorted (n : Nat) : Bool :=
+  sorry
+  
+  def digits_sorted_reverse (n : Nat) : Bool :=
+  sorry
 
 vc-theorems: |-
+  theorem small_numbers_not_bouncy (n : Nat) (h : n < 100) :
+    ¬ is_bouncy n :=
+  sorry
 
 vc-postamble: |-
-  -- Apps difficulty: introductory
-  -- Assurance level: guarded_and_plausible
 

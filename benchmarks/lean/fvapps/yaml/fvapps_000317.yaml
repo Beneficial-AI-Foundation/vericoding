@@ -68,19 +68,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'PAHNAPLSIIGYIR'
   -/
   #guard_msgs in
   #eval convert_zigzag "PAYPALISHIRING" 3
 
-  /-
+  /--
   info: 'PINALSIGYAHRPI'
   -/
   #guard_msgs in
   #eval convert_zigzag s1 4
 
-  /-
+  /--
   info: 'AB'
   -/
   #guard_msgs in

@@ -59,19 +59,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: 6
   -/
   #guard_msgs in
   #eval solve_non_periodic_strings 3 176
 
-  /-
+  /--
   info: 12
   -/
   #guard_msgs in
   #eval solve_non_periodic_strings 4 100
 
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in

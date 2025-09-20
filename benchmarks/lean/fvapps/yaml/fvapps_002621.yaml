@@ -67,19 +67,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'hello world'
   -/
   #guard_msgs in
   #eval decode ".... . .-.. .-.. ---  .-- --- .-. .-.. -.."
 
-  /-
+  /--
   info: '1st and 2nd'
   -/
   #guard_msgs in
   #eval decode ".---- ... -  .- -. -..  ..--- -. -.."
 
-  /-
+  /--
   info: ''
   -/
   #guard_msgs in

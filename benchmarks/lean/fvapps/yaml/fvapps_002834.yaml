@@ -46,19 +46,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded
 
-  /-
+  /--
   info: 12
   -/
   #guard_msgs in
   #eval find_min_num 6
 
-  /-
+  /--
   info: 48
   -/
   #guard_msgs in
   #eval find_min_num 10
 
-  /-
+  /--
   info: 60
   -/
   #guard_msgs in

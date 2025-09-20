@@ -2,73 +2,80 @@ vc-description: |-
   /-
   Consider X as the  aleatory  variable that count the number of letters in a word. Write a function that, give in input an array of words (strings), calculate the  variance  of X.
   Max decimal of the variance : 4.
-
+  
   Some wiki: Variance ,
    Aleatory variable 
-
+  
   Example:
-
+  
   Consider "Hello" and "World":
-
+  
   X is { 5 } with P(X = 5) = 1 beacuse the two words has the same length.  
   So E[X] = 5 x 1 = 5 and the standard formula for variance is E[(X - u)^2] so  1 x (5-5)^2 = 0
   or you can calculate with the other formula E[X^2] - E[X]^2 = 5^2 x 1 - 5^2 = 0
-
+  
   Consider "Hi" and "World":
-
+  
   X is { 2, 5 } with P(X = 5) = 1/2 and P(X = 2) = 1/2.  
   So E[X] = 5 x 1/2 + 2 x 1/2 = 3.5 and the standard formula for variance is E[(X - u)^2] so  1/2 x (2-3.5)^2 + 1/2 x (5 - 3.5)^2 = 2.25
   or you can calculate with the other formula E[X^2] - E[X]^2 = (5^2 x 1/2 + 2^2 x 1/2) - 3.5^2 = 2.25
   -/
+  
+  /- Our variance function -/
+  
+  /- Our variance matches statistics.pvariance -/
+  
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded
+  
+  /- Words of same length have variance 0 -/
+  
+  /- Variance is always nonnegative -/
+  
+  /- Empty list raises error -/
 
 vc-preamble: |-
-  def pvariance (xs : List String) : Float := sorry
 
-  /- Our variance function -/
-
-vc-helpers: |
+vc-helpers: |-
 
 vc-definitions: |-
-  def variance (xs : List String) : Float := sorry
-
-  /- Our variance matches statistics.pvariance -/
+  def pvariance (xs : List String) : Float :=
+  sorry
+  
+  def variance (xs : List String) : Float :=
+  sorry
 
 vc-theorems: |-
   theorem variance_matches_pvariance (words : List String) (h : words ≠ []) :
-    variance words = pvariance words := sorry
+    variance words = pvariance words :=
+  sorry
+  
+  theorem same_length_zero_variance (words : List String) (h1 : words ≠ [])
+    (h2 : ∀ w ∈ words, w.length = 5) : variance words = 0 :=
+  sorry
+  
+  theorem variance_nonnegative (words : List String) (h : words.length ≥ 2) :
+    variance words ≥ 0 :=
+  sorry
+  
+  theorem empty_list_error :
+    variance [] = 0/0 :=
+  sorry
 
 vc-postamble: |-
-  -- Apps difficulty: introductory
-  -- Assurance level: unguarded
-
-  /- Words of same length have variance 0 -/
-
-  theorem same_length_zero_variance (words : List String) (h1 : words ≠ []) 
-    (h2 : ∀ w ∈ words, w.length = 5) : variance words = 0 := sorry
-
-  /- Variance is always nonnegative -/
-
-  theorem variance_nonnegative (words : List String) (h : words.length ≥ 2) :
-    variance words ≥ 0 := sorry
-
-  /- Empty list raises error -/
-
-  theorem empty_list_error : 
-    variance [] = 0/0 := sorry
-
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in
   #eval variance ["Hello", "world"]
-
-  /-
+  
+  /--
   info: 2.25
   -/
   #guard_msgs in
   #eval variance ["Hi", "world"]
-
-  /-
+  
+  /--
   info: 7.5556
   -/
   #guard_msgs in

@@ -51,19 +51,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval can_zebras_spit_at_each_other [[0, 1], [1, -1]]
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval can_zebras_spit_at_each_other [[0, 1], [2, -1]]
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in

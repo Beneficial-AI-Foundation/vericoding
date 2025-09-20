@@ -1,18 +1,18 @@
 vc-description: |-
   /-
   ## Task:
-
+  
   You have to write a function **pattern** which returns the following Pattern(See Examples) upto (2n-1) rows, where n is parameter.
-
+  
   ### Rules/Note:
   * If the Argument is 0 or a Negative Integer then it should return "" i.e. empty string.
   * All the lines in the pattern have same length i.e equal to the number of characters in the longest line.
   * Range of n is (-∞,100]
-
+  
   ## Examples:
-
+  
   pattern(5):
-
+  
           1    
          121   
         12321  
@@ -22,9 +22,9 @@ vc-description: |-
         12321  
          121   
           1    
-
+  
   pattern(10):
-
+  
                1         
               121        
              12321       
@@ -44,9 +44,9 @@ vc-description: |-
              12321       
               121        
                1         
-
+  
   pattern(15):
-
+  
                     1              
                    121             
                   12321            
@@ -76,9 +76,9 @@ vc-description: |-
                   12321            
                    121             
                     1              
-
+  
   pattern(20):
-
+  
                          1                   
                         121                  
                        12321                 
@@ -121,47 +121,51 @@ vc-description: |-
   -/
 
 vc-preamble: |-
-  def pattern (n : Int) : String := sorry
 
-  def lines (s : String) : List String := sorry
-
-vc-helpers: |
+vc-helpers: |-
 
 vc-definitions: |-
-  def reverseString (s : String) : String := sorry
-
-  theorem pattern_negative_or_zero (n : Int) : 
-    n ≤ 0 → pattern n = "" :=
+  def pattern (n : Int) : String :=
+  sorry
+  
+  def lines (s : String) : List String :=
+  sorry
+  
+  def reverseString (s : String) : String :=
   sorry
 
 vc-theorems: |-
+  theorem pattern_negative_or_zero (n : Int) :
+    n ≤ 0 → pattern n = "" :=
+  sorry
+  
   theorem pattern_num_lines (n : Int) :
     n > 0 → (lines (pattern n)).length = 2*n - 1 :=
   sorry
-
+  
   theorem pattern_symmetric_lines (n : Int) (i : Nat) :
-    n > 0 → i < n-1 → 
+    n > 0 → i < n-1 →
     (lines (pattern n)).get ⟨i, sorry⟩ = (lines (pattern n)).get ⟨n.toNat * 2 - 2 - i, sorry⟩ :=
   sorry
-
+  
   theorem pattern_middle_line_palindrome (n : Int) :
-    n > 0 → 
+    n > 0 →
     let middle := (lines (pattern n)).get ⟨(n-1).toNat, sorry⟩
     middle = reverseString middle :=
   sorry
-
+  
   theorem pattern_middle_line_length (n : Int) :
     n > 0 →
     let middle := (lines (pattern n)).get ⟨(n-1).toNat, sorry⟩
     middle.length = 2*n-1 :=
   sorry
-
+  
   theorem pattern_line_length (n : Int) (i : Nat) :
     n > 0 → i < n →
-    let line := (lines (pattern n)).get ⟨i, sorry⟩ 
+    let line := (lines (pattern n)).get ⟨i, sorry⟩
     line.length = 2*(i+1)-1 + 2*(n.toNat-(i+1)) :=
   sorry
-
+  
   theorem pattern_line_palindrome (n : Int) (i : Nat) :
     n > 0 → i < n →
     let line := (lines (pattern n)).get ⟨i, sorry⟩
@@ -171,20 +175,20 @@ vc-theorems: |-
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
-
-  /-
+  
+  /--
   info: '1'
   -/
   #guard_msgs in
   #eval pattern 1
-
-  /-
+  
+  /--
   info: '  1  \n 121 \n12321\n 121 \n  1  '
   -/
   #guard_msgs in
   #eval pattern 3
-
-  /-
+  
+  /--
   info: ''
   -/
   #guard_msgs in

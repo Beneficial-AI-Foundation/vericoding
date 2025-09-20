@@ -87,19 +87,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval solve_fence [2, 2, 3] [4, 1, 5]
 
-  /-
+  /--
   info: 9
   -/
   #guard_msgs in
   #eval solve_fence [2, 2, 2] [3, 10, 6]
 
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in

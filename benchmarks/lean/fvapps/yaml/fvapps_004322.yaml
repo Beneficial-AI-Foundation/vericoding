@@ -66,19 +66,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'no he is NOT'
   -/
   #guard_msgs in
   #eval answer "is khalkhoul dumb" ["no he is NOT", "i guess so"]
 
-  /-
+  /--
   info: 'my name is bob'
   -/
   #guard_msgs in
   #eval answer "what is your name" ["my name is bob", "i am 20 years old"]
 
-  /-
+  /--
   info: None
   -/
   #guard_msgs in

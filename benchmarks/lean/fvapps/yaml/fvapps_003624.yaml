@@ -45,19 +45,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: '1 7/11'
   -/
   #guard_msgs in
   #eval get_mixed_num "18/11"
 
-  /-
+  /--
   info: '2 3/5'
   -/
   #guard_msgs in
   #eval get_mixed_num "13/5"
 
-  /-
+  /--
   info: '7 5/10'
   -/
   #guard_msgs in

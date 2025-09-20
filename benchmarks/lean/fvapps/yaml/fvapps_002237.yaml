@@ -77,19 +77,19 @@ vc-postamble: |-
   -- Apps difficulty: competition
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 1
   -/
   #guard_msgs in
   #eval count_arrays 1 1000000000
 
-  /-
+  /--
   info: 11
   -/
   #guard_msgs in
   #eval count_arrays 4 9999997
 
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in

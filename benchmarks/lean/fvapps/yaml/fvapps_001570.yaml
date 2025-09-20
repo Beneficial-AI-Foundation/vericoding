@@ -45,19 +45,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in
   #eval proper_fractions 1
 
-  /-
+  /--
   info: 8
   -/
   #guard_msgs in
   #eval proper_fractions 15
 
-  /-
+  /--
   info: 20
   -/
   #guard_msgs in

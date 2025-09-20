@@ -61,19 +61,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded
 
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in
   #eval kth_factor 12 3
 
-  /-
+  /--
   info: 7
   -/
   #guard_msgs in
   #eval kth_factor 7 2
 
-  /-
+  /--
   info: -1
   -/
   #guard_msgs in

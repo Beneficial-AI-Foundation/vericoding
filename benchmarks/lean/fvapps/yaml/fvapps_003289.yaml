@@ -60,19 +60,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval valid_card "5457 6238 9823 4311"
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval valid_card "5457 6238 9323 4311"
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in

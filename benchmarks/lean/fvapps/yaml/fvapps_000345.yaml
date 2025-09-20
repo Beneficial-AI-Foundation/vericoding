@@ -58,19 +58,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded
 
-  /-
+  /--
   info: 34
   -/
   #guard_msgs in
   #eval dieSimulator 2 [1, 1, 2, 2, 2, 3]
 
-  /-
+  /--
   info: 30
   -/
   #guard_msgs in
   #eval dieSimulator 2 [1, 1, 1, 1, 1, 1]
 
-  /-
+  /--
   info: 181
   -/
   #guard_msgs in

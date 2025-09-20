@@ -63,19 +63,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 64
   -/
   #guard_msgs in
   #eval string_hash "a"
 
-  /-
+  /--
   info: -820
   -/
   #guard_msgs in
   #eval string_hash "ca"
 
-  /-
+  /--
   info: 1120
   -/
   #guard_msgs in

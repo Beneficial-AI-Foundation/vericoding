@@ -42,19 +42,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded
 
-  /-
+  /--
   info: -1
   -/
   #guard_msgs in
   #eval golf_score_calculator "443454444344544443" "353445334534445344"
 
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in
   #eval golf_score_calculator "123456123456123456" "123456123456123456"
 
-  /-
+  /--
   info: 1
   -/
   #guard_msgs in

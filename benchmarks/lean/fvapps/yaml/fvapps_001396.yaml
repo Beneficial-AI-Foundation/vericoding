@@ -81,19 +81,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'YES'
   -/
   #guard_msgs in
   #eval check_recipe_valid 6 [1, 1, 4, 2, 2, 2]
 
-  /-
+  /--
   info: 'NO'
   -/
   #guard_msgs in
   #eval check_recipe_valid 8 [1, 1, 4, 3, 4, 7, 7, 7]
 
-  /-
+  /--
   info: 'NO'
   -/
   #guard_msgs in

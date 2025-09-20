@@ -56,13 +56,13 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 24
   -/
   #guard_msgs in
   #eval eval equal_to_24(7, 7, 4, 1)
 
-  /-
+  /--
   info: 24
   -/
   #guard_msgs in

@@ -46,19 +46,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: expected1
   -/
   #guard_msgs in
   #eval meeting "Fred:Corwill;Wilfred:Corwill;Barney:Tornbull;Betty:Tornbull;Bjon:Tornbull;Raphael:Corwill;Alfred:Corwill"
 
-  /-
+  /--
   info: expected2
   -/
   #guard_msgs in
   #eval meeting "Alex:Gates;Bill:Gates;Steve:Jobs"
 
-  /-
+  /--
   info: expected3
   -/
   #guard_msgs in

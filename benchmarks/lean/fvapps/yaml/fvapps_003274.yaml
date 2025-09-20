@@ -79,25 +79,25 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'Needs review'
   -/
   #guard_msgs in
   #eval categorize_study 0.01 3
 
-  /-
+  /--
   info: 'Fine'
   -/
   #guard_msgs in
   #eval categorize_study 0.04 6
 
-  /-
+  /--
   info: 'Needs review'
   -/
   #guard_msgs in
   #eval categorize_study 0.0001 0
 
-  /-
+  /--
   info: 'Pants on fire'
   -/
   #guard_msgs in

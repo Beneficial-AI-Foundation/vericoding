@@ -75,19 +75,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: [960, 480, 60]
   -/
   #guard_msgs in
   #eval bin_mul 100 15
 
-  /-
+  /--
   info: []
   -/
   #guard_msgs in
   #eval bin_mul 15 0
 
-  /-
+  /--
   info: []
   -/
   #guard_msgs in

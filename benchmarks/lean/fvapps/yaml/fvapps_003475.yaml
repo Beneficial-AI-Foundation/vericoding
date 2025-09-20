@@ -34,25 +34,25 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval xor False False
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval xor True False
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval xor False True
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in

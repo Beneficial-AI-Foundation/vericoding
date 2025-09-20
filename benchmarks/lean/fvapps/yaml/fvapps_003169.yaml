@@ -40,19 +40,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded
 
-  /-
+  /--
   info: [3, 1]
   -/
   #guard_msgs in
   #eval reduce_fraction [60, 20]
 
-  /-
+  /--
   info: [2, 3]
   -/
   #guard_msgs in
   #eval reduce_fraction [80, 120]
 
-  /-
+  /--
   info: [3, 8]
   -/
   #guard_msgs in

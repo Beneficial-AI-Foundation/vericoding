@@ -113,19 +113,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'A'
   -/
   #guard_msgs in
   #eval get_column_title 1
 
-  /-
+  /--
   info: 'AZ'
   -/
   #guard_msgs in
   #eval get_column_title 52
 
-  /-
+  /--
   info: 'ZZ'
   -/
   #guard_msgs in

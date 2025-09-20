@@ -70,19 +70,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 5
   -/
   #guard_msgs in
   #eval how_many_bees [["b", "e", "e", ".", "b", "e", "e"], [".", "e", ".", ".", "e", ".", ".", " "], [".", "b", ".", ".", "e", "e", "b"]]
 
-  /-
+  /--
   info: 8
   -/
   #guard_msgs in
   #eval how_many_bees [["b", "e", "e", ".", "b", "e", "e"], ["e", ".", "e", ".", "e", ".", "e"], ["e", "e", "b", ".", "e", "e", "b"]]
 
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in

@@ -94,19 +94,19 @@ vc-postamble: |-
   -- Apps difficulty: competition
   -- Assurance level: guarded
 
-  /-
+  /--
   info: 11
   -/
   #guard_msgs in
   #eval min_fatigue 4 2 5 [1, 2, 5, 7]
 
-  /-
+  /--
   info: 84
   -/
   #guard_msgs in
   #eval min_fatigue 7 1 100 [40, 43, 45, 105, 108, 115, 124]
 
-  /-
+  /--
   info: 12
   -/
   #guard_msgs in

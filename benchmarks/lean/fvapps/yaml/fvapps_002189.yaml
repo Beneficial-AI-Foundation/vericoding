@@ -72,19 +72,19 @@ vc-postamble: |-
   -- Apps difficulty: competition
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 6
   -/
   #guard_msgs in
   #eval solve_max_rectangle 3 3 ["..#", "##.", ".#."]
 
-  /-
+  /--
   info: 16
   -/
   #guard_msgs in
   #eval solve_max_rectangle 4 4 ["....", "....", "....", "...."]
 
-  /-
+  /--
   info: 27
   -/
   #guard_msgs in

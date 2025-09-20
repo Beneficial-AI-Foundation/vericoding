@@ -48,19 +48,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: 123231312
   -/
   #guard_msgs in
   #eval solve_yalalovichik "123"
 
-  /-
+  /--
   info: 3443
   -/
   #guard_msgs in
   #eval solve_yalalovichik "34"
 
-  /-
+  /--
   info: 9
   -/
   #guard_msgs in

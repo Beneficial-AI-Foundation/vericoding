@@ -68,19 +68,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded
 
-  /-
+  /--
   info: 10
   -/
   #guard_msgs in
   #eval solve_xor_expression 6 12
 
-  /-
+  /--
   info: 13
   -/
   #guard_msgs in
   #eval solve_xor_expression 4 9
 
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in

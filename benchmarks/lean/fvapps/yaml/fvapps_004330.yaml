@@ -1,11 +1,11 @@
 vc-description: |-
   /-
   Assume `"#"` is like a backspace in string. This means that string `"a#bc#d"` actually is `"bd"`
-
+  
   Your task is to process a string with `"#"` symbols.
-
+  
   ## Examples
-
+  
   ```
   "abc#d##c"      ==>  "ac"
   "abc##d######"  ==>  ""
@@ -15,49 +15,55 @@ vc-description: |-
   -/
 
 vc-preamble: |-
-  def clean_string (s : String) : String := sorry
-
-  theorem clean_string_idempotent (s : String) :
-    clean_string (clean_string s) = clean_string s := sorry
-
-vc-helpers: |
-
-vc-definitions: |-
   def count_hashtags (s : String) : Nat :=
     s.foldl (fun acc c => if c = '#' then acc + 1 else acc) 0
 
+vc-helpers: |-
+
+vc-definitions: |-
+  def clean_string (s : String) : String :=
+  sorry
+
 vc-theorems: |-
+  theorem clean_string_idempotent (s : String) :
+    clean_string (clean_string s) = clean_string s :=
+  sorry
+  
   theorem clean_string_no_hashtags (s : String) :
-    ¬(String.contains (clean_string s) '#') := sorry 
-
-  theorem clean_string_append {s₁ s₂ : String} 
-    (h₁ : ¬(String.contains s₁ '#')) 
+    ¬(String.contains (clean_string s) '#') :=
+  sorry
+  
+  theorem clean_string_append {s₁ s₂ : String}
+    (h₁ : ¬(String.contains s₁ '#'))
     (h₂ : ¬(String.contains s₂ '#')) :
-    clean_string (s₁ ++ s₂) = clean_string s₁ ++ clean_string s₂ := sorry
-
+    clean_string (s₁ ++ s₂) = clean_string s₁ ++ clean_string s₂ :=
+  sorry
+  
   theorem clean_string_length (s : String) :
-    String.length (clean_string s) ≤ String.length s - count_hashtags s := sorry
-
+    String.length (clean_string s) ≤ String.length s - count_hashtags s :=
+  sorry
+  
   theorem clean_string_empty :
-    clean_string "" = "" := sorry
+    clean_string "" = "" :=
+  sorry
 
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
-
-  /-
+  
+  /--
   info: 'ac'
   -/
   #guard_msgs in
   #eval clean_string "abc#d##c"
-
-  /-
+  
+  /--
   info: ''
   -/
   #guard_msgs in
   #eval clean_string "#######"
-
-  /-
+  
+  /--
   info: 'jf'
   -/
   #guard_msgs in

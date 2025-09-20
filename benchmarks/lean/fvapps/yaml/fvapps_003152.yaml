@@ -45,19 +45,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded
 
-  /-
+  /--
   info: 18
   -/
   #guard_msgs in
   #eval how_many_light_sabers_do_you_own "Zach"
 
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in
   #eval how_many_light_sabers_do_you_own 
 
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in

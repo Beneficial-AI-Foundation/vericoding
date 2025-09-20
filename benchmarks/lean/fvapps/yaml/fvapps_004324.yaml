@@ -57,19 +57,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval snap flash_pile[:] turtle_pile[:]
 
-  /-
+  /--
   info: 6
   -/
   #guard_msgs in
   #eval snap flash_pile[:] turtle_pile[:]
 
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in

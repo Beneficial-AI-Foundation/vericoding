@@ -2,7 +2,7 @@ vc-description: |-
   /-
   Prior to having fancy iPhones, teenagers would wear out their thumbs sending SMS
   messages on candybar-shaped feature phones with 3x4 numeric keypads.
-
+  
       ------- ------- -------
       |     | | ABC | | DEF |
       |  1  | |  2  | |  3  |
@@ -19,76 +19,82 @@ vc-description: |-
       |     | |space| |     |
       |  *  | |  0  | |  #  |
       ------- ------- -------
-
+  
   Prior to the development of T9 (predictive text entry) systems, the method to
   type words was called "multi-tap" and involved pressing a button repeatedly to
   cycle through the possible values.
-
+  
   For example, to type a letter `"R"` you would press the `7` key three times (as
   the screen display for the current character cycles through `P->Q->R->S->7`).  A
   character is "locked in" once the user presses a different key or pauses for a
   short period of time (thus, no extra button presses are required beyond what is
   needed for each letter individually). The zero key handles spaces, with one press of the key producing a space and two presses producing a zero.
-
+  
   In order to send the message `"WHERE DO U WANT 2 MEET L8R"` a teen would have to
   actually do 47 button presses.  No wonder they abbreviated.
-
+  
   For this assignment, write a module that can calculate the amount of button
   presses required for any phrase. Punctuation can be ignored for this exercise. Likewise, you can assume the phone doesn't distinguish between upper/lowercase characters (but you should allow your module to accept input in either for convenience).
-
+  
   Hint: While it wouldn't take too long to hard code the amount of keypresses for
   all 26 letters by hand, try to avoid doing so! (Imagine you work at a phone
   manufacturer who might be testing out different keyboard layouts, and you want
   to be able to test new ones rapidly.)
   -/
-
-vc-preamble: |
-
-vc-helpers: |
-
-vc-definitions: |-
-  def BUTTONS : List String := sorry
-  def presses (s : String) : Nat := sorry
-
+  
   /- For any string made up of valid keypad characters, the number of presses
       should be at least the length of the string, and each character should
       be present in one of the buttons -/
+  
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded
+  
+  /- The number of presses required should be the same regardless of case -/
+  
+  /- For strings containing only numbers and spaces, the number of presses
+      should be at least the length of the string -/
+
+vc-preamble: |-
+
+vc-helpers: |-
+
+vc-definitions: |-
+  def BUTTONS : List String :=
+  sorry
+  
+  def presses (s : String) : Nat :=
+  sorry
 
 vc-theorems: |-
   theorem keypad_chars_valid (s : String) :
     (∀ c ∈ s.data, ∃ button ∈ BUTTONS, c ∈ button.data) →
-    presses s ≥ s.length := sorry
-
-vc-postamble: |-
-  -- Apps difficulty: introductory
-  -- Assurance level: guarded
-
-  /- The number of presses required should be the same regardless of case -/
-
+    presses s ≥ s.length :=
+  sorry
+  
   theorem case_insensitive (button : String) :
     button ∈ BUTTONS →
-    presses button.toUpper = presses button.toLower := sorry
-
-  /- For strings containing only numbers and spaces, the number of presses
-      should be at least the length of the string -/
-
+    presses button.toUpper = presses button.toLower :=
+  sorry
+  
   theorem numeric_and_space_presses (s : String) :
     (∀ c ∈ s.data, c ∈ [' ', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9']) →
-    presses s ≥ s.length := sorry
+    presses s ≥ s.length :=
+  sorry
 
-  /-
+vc-postamble: |-
+  /--
   info: 9
   -/
   #guard_msgs in
   #eval presses "LOL"
-
-  /-
+  
+  /--
   info: 13
   -/
   #guard_msgs in
   #eval presses "HOW R U"
-
-  /-
+  
+  /--
   info: 47
   -/
   #guard_msgs in

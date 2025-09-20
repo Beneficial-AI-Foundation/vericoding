@@ -37,16 +37,21 @@ vc-description: |-
   
   Initially facing north (`0`), at the first iteration the ant turns right (because it stands on a white square, `1`), flips the square and moves forward.
   -/
+  
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded
 
 vc-preamble: |-
-  def ant (grid : List (List Int)) (col : Int) (row : Int) (steps : Int)
-    (direction : Int := 0) : List (List Int) := sorry
+  def BLACK : Int := 1
+  
+  def WHITE : Int := 0
 
 vc-helpers: |-
 
 vc-definitions: |-
-  def BLACK : Int := 1
-  def WHITE : Int := 0
+  def ant (grid : List (List Int)) (col : Int) (row : Int) (steps : Int)
+    (direction : Int := 0) : List (List Int) :=
+  sorry
 
 vc-theorems: |-
   theorem ant_result_rectangular {grid : List (List Int)} {col row steps dir : Int}
@@ -75,11 +80,9 @@ vc-theorems: |-
   sorry
   
   theorem ant_zero_steps {grid : List (List Int)} {col row : Int}
-    (h1: 0 ≤ col) (h2: 0 ≤ row) : 
+    (h1: 0 ≤ col) (h2: 0 ≤ row) :
     ant grid col row 0 = grid :=
   sorry
 
 vc-postamble: |-
-  -- Apps difficulty: introductory
-  -- Assurance level: guarded
 

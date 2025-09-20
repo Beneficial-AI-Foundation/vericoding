@@ -55,19 +55,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: 511620149
   -/
   #guard_msgs in
   #eval solve_matrix_product 3 2
 
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval solve_matrix_product 1 2
 
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in

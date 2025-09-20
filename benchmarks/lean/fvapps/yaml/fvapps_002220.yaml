@@ -75,13 +75,13 @@ vc-postamble: |-
   -- Apps difficulty: competition
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 11
   -/
   #guard_msgs in
   #eval calc_max_happiness 3 4 [1, 4] [[2, 2, 5, 1], [1, 3, 3, 2], [2, 2, 5, 1]]
 
-  /-
+  /--
   info: 20
   -/
   #guard_msgs in

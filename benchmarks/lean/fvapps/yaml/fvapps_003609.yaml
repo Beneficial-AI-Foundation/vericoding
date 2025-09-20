@@ -31,19 +31,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'Keep at it until you get it'
   -/
   #guard_msgs in
   #eval hoop_count 6
 
-  /-
+  /--
   info: 'Great, now move on to tricks'
   -/
   #guard_msgs in
   #eval hoop_count 10
 
-  /-
+  /--
   info: 'Great, now move on to tricks'
   -/
   #guard_msgs in

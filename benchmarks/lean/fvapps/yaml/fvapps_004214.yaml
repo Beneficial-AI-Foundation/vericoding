@@ -75,19 +75,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval is_haiku "An old silent pond...\nA frog jumps into the pond,\nsplash! Silence again."
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval is_haiku "Autumn moonlight -\na worm digs silently\ninto the chestnut."
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in

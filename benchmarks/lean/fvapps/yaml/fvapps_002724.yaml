@@ -61,19 +61,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: [[4, 3, 1]]
   -/
   #guard_msgs in
   #eval leaderboard_climb [100, 90, 90, 80] [70, 80, 105]
 
-  /-
+  /--
   info: [[4, 4, 2, 1]]
   -/
   #guard_msgs in
   #eval leaderboard_climb [982, 490, 339, 180] [180, 250, 721, 2500]
 
-  /-
+  /--
   info: [[4, 4, 1, 1]]
   -/
   #guard_msgs in

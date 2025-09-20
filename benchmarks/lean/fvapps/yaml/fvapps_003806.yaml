@@ -89,19 +89,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: ''
   -/
   #guard_msgs in
   #eval encrypt "" "azyb"
 
-  /-
+  /--
   info: 'DRJIMN'
   -/
   #guard_msgs in
   #eval encrypt "hello" "hill"
 
-  /-
+  /--
   info: 'AAAAAAGACAGAYA'
   -/
   #guard_msgs in

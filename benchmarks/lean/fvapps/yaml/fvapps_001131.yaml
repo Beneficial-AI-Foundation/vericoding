@@ -69,19 +69,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: '10101'
   -/
   #guard_msgs in
   #eval can_traverse_distances 5 3 [12, 13, 18, 20, 27216]
 
-  /-
+  /--
   info: '110'
   -/
   #guard_msgs in
   #eval can_traverse_distances 3 2 [4, 6, 9]
 
-  /-
+  /--
   info: '1101'
   -/
   #guard_msgs in

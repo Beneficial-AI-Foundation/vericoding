@@ -34,19 +34,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: [0, 0, 0]
   -/
   #guard_msgs in
   #eval parse "ooo"
 
-  /-
+  /--
   info: [1, 2, 3]
   -/
   #guard_msgs in
   #eval parse "ioioio"
 
-  /-
+  /--
   info: [0, 1]
   -/
   #guard_msgs in

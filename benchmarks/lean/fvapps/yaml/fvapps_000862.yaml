@@ -82,19 +82,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'Yes'
   -/
   #guard_msgs in
   #eval solve_test_case 3 [0, 1, 1] [1, 1, 0]
 
-  /-
+  /--
   info: 'No'
   -/
   #guard_msgs in
   #eval solve_test_case 3 [0, 1, 5] [5, 1, 0]
 
-  /-
+  /--
   info: 'Yes'
   -/
   #guard_msgs in

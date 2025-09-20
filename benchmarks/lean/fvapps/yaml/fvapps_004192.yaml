@@ -79,19 +79,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 0.09
   -/
   #guard_msgs in
   #eval ball_probability *test1
 
-  /-
+  /--
   info: 0.1
   -/
   #guard_msgs in
   #eval ball_probability *test2
 
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in

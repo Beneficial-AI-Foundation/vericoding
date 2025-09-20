@@ -55,19 +55,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: '^(oWo)^'
   -/
   #guard_msgs in
   #eval draw_spider 1 1 "W" "o"
 
-  /-
+  /--
   info: '/\\((OOwOO))/\\'
   -/
   #guard_msgs in
   #eval draw_spider 2 2 "w" "O"
 
-  /-
+  /--
   info: '/╲(((0000w0000)))╱\\'
   -/
   #guard_msgs in

@@ -60,19 +60,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: '10.0 is above freezing temperature'
   -/
   #guard_msgs in
   #eval weather_info 50
 
-  /-
+  /--
   info: '-5.0 is freezing temperature'
   -/
   #guard_msgs in
   #eval weather_info 23
 
-  /-
+  /--
   info: '0.0 is freezing temperature'
   -/
   #guard_msgs in

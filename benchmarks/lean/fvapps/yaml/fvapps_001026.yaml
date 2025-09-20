@@ -47,19 +47,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: '1305'
   -/
   #guard_msgs in
   #eval find_original_password 3527
 
-  /-
+  /--
   info: '25047'
   -/
   #guard_msgs in
   #eval find_original_password 47269
 
-  /-
+  /--
   info: '222'
   -/
   #guard_msgs in

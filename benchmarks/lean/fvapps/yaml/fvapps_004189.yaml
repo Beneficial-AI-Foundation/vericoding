@@ -62,19 +62,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: [16, 27, 30, 60, 70, 72, 84]
   -/
   #guard_msgs in
   #eval mult_primefactor_sum 10 100
 
-  /-
+  /--
   info: [84, 105, 150]
   -/
   #guard_msgs in
   #eval mult_primefactor_sum 80 150
 
-  /-
+  /--
   info: [105, 150, 180]
   -/
   #guard_msgs in

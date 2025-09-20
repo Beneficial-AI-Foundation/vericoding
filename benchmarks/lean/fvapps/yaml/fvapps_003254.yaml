@@ -46,37 +46,37 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 1.0
   -/
   #guard_msgs in
   #eval tax_calculator 10
 
-  /-
+  /--
   info: 1.75
   -/
   #guard_msgs in
   #eval tax_calculator 21
 
-  /-
+  /--
   info: 2.35
   -/
   #guard_msgs in
   #eval tax_calculator 35
 
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in
   #eval tax_calculator 0
 
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in
   #eval tax_calculator -1
 
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in

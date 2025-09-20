@@ -36,19 +36,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in
   #eval iq_test "2 4 7 8 10"
 
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval iq_test "1 2 1 1"
 
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in

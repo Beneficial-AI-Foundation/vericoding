@@ -50,19 +50,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'igPay atinlay siay oolcay'
   -/
   #guard_msgs in
   #eval pig_it "Pig latin is cool"
 
-  /-
+  /--
   info: 'hisTay siay ymay tringsay'
   -/
   #guard_msgs in
   #eval pig_it "This is my string"
 
-  /-
+  /--
   info: 'elloHay orldway !'
   -/
   #guard_msgs in

@@ -59,19 +59,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in
   #eval bag_of_tokens_score [100] 50
 
-  /-
+  /--
   info: 1
   -/
   #guard_msgs in
   #eval bag_of_tokens_score [100, 200] 150
 
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in

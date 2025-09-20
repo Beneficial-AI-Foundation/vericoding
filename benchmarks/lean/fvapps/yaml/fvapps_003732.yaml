@@ -68,19 +68,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: expected
   -/
   #guard_msgs in
   #eval luxhouse [1, 2, 3, 1, 2]
 
-  /-
+  /--
   info: expected
   -/
   #guard_msgs in
   #eval luxhouse [3, 2, 1, 4]
 
-  /-
+  /--
   info: expected
   -/
   #guard_msgs in

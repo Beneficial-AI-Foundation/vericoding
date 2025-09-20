@@ -38,19 +38,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'as'
   -/
   #guard_msgs in
   #eval longest "asd"
 
-  /-
+  /--
   info: 'abcde'
   -/
   #guard_msgs in
   #eval longest "abcdeapbcdef"
 
-  /-
+  /--
   info: 'aaaabbbbctt'
   -/
   #guard_msgs in

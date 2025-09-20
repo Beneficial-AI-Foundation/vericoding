@@ -77,19 +77,19 @@ vc-postamble: |-
   -- Apps difficulty: competition
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: [1, 2]
   -/
   #guard_msgs in
   #eval sorted solve_permutation(n1, a1)
 
-  /-
+  /--
   info: list(range(1, n2 + 1))
   -/
   #guard_msgs in
   #eval sorted solve_permutation(n2, a2)
 
-  /-
+  /--
   info: list(range(1, n3 + 1))
   -/
   #guard_msgs in

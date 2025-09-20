@@ -21,19 +21,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: 180
   -/
   #guard_msgs in
   #eval angle 3
 
-  /-
+  /--
   info: 360
   -/
   #guard_msgs in
   #eval angle 4
 
-  /-
+  /--
   info: 540
   -/
   #guard_msgs in

@@ -56,19 +56,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 1
   -/
   #guard_msgs in
   #eval triple_double 451999277 41177722899
 
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in
   #eval triple_double 1222345 12345
 
-  /-
+  /--
   info: 1
   -/
   #guard_msgs in

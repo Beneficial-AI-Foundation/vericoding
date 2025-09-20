@@ -88,25 +88,25 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: round(0.8306737544381833, 7)
   -/
   #guard_msgs in
   #eval round 0 7
 
-  /-
+  /--
   info: round(0.620694691344071, 7)
   -/
   #guard_msgs in
   #eval round y 7
 
-  /-
+  /--
   info: 0.7071068
   -/
   #guard_msgs in
   #eval round x 7
 
-  /-
+  /--
   info: 0.7071068
   -/
   #guard_msgs in

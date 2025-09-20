@@ -1,23 +1,23 @@
 vc-description: |-
   /-
   There is a strange printer with the following two special requirements:
-
+  
   On each turn, the printer will print a solid rectangular pattern of a single color on the grid. This will cover up the existing colors in the rectangle.
   Once the printer has used a color for the above operation, the same color cannot be used again.
-
+  
   You are given a m x n matrix targetGrid, where targetGrid[row][col] is the color in the position (row, col) of the grid.
   Return true if it is possible to print the matrix targetGrid, otherwise, return false.
-
+  
   Example 1:
-
+  
   Input: targetGrid = [[1,1,1,1],[1,2,2,1],[1,2,2,1],[1,1,1,1]]
   Output: true
-
+  
   Example 2:
-
+  
   Input: targetGrid = [[1,1,1,1],[1,1,3,3],[1,1,3,4],[5,5,1,4]]
   Output: true
-
+  
   Example 3:
   Input: targetGrid = [[1,2,1],[2,1,2],[1,2,1]]
   Output: false
@@ -25,9 +25,9 @@ vc-description: |-
   Example 4:
   Input: targetGrid = [[1,1,1],[3,1,3]]
   Output: false
-
+  
   Constraints:
-
+  
   m == targetGrid.length
   n == targetGrid[i].length
   1 <= m, n <= 60
@@ -35,14 +35,16 @@ vc-description: |-
   -/
 
 vc-preamble: |-
-  def Grid := List (List Nat)
 
+vc-helpers: |-
+
+vc-definitions: |-
+  def Grid := List (List Nat)
+  
   def isPrintable (grid: Grid) : Bool :=
     sorry
 
-vc-helpers: |
-
-vc-definitions: |-
+vc-theorems: |-
   def isValidGrid (grid: Grid) : Bool :=
     match grid with
     | [] => false
@@ -52,30 +54,29 @@ vc-definitions: |-
       | _::_ =>
         let width := row.length
         rows.all (λ r => r.length = width)
-
-vc-theorems: |-
-  theorem grid_validity {grid: Grid} (h: isValidGrid grid) : 
+  
+  theorem grid_validity {grid: Grid} (h: isValidGrid grid) :
     ∃ (row: List Nat) (rows: List (List Nat)), grid = row::rows :=
   sorry
-
+  
   theorem printable_returns_bool (grid: Grid) :
     isPrintable grid = true ∨ isPrintable grid = false :=
   sorry
-
+  
   theorem single_color_printable {grid: Grid} (h1: isValidGrid grid)
-    (h2: ∀ (i j: Nat) (hi: i < grid.length) (hj: j < (grid.get ⟨i, hi⟩).length), 
+    (h2: ∀ (i j: Nat) (hi: i < grid.length) (hj: j < (grid.get ⟨i, hi⟩).length),
       (grid.get ⟨i, hi⟩).get ⟨j, hj⟩ = 1) :
     isPrintable grid = true :=
   sorry
-
+  
   theorem symmetric_grid_printable_rotation {grid: Grid} {n: Nat}
     (h1: isValidGrid grid)
     (h2: grid.length = n)
-    (h3: ∀ (i: Nat) (hi: i < grid.length), 
+    (h3: ∀ (i: Nat) (hi: i < grid.length),
       (grid.get ⟨i, hi⟩).length = n) :
     isPrintable grid = isPrintable (List.map List.reverse grid).reverse :=
   sorry
-
+  
   theorem known_cases :
     (isPrintable [[1,1], [1,1]] = true) ∧
     (isPrintable [[1]] = true) ∧
@@ -85,20 +86,20 @@ vc-theorems: |-
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
-
-  /-
+  
+  /--
   info: True
   -/
   #guard_msgs in
   #eval isPrintable [[1, 1, 1, 1], [1, 2, 2, 1], [1, 2, 2, 1], [1, 1, 1, 1]]
-
-  /-
+  
+  /--
   info: True
   -/
   #guard_msgs in
   #eval isPrintable [[1, 1, 1, 1], [1, 1, 3, 3], [1, 1, 3, 4], [5, 5, 1, 4]]
-
-  /-
+  
+  /--
   info: False
   -/
   #guard_msgs in

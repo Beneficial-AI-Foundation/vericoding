@@ -34,19 +34,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded
 
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval string_counter "Hello world" "o"
 
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval string_counter "testing" "t"
 
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in

@@ -68,19 +68,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded
 
-  /-
+  /--
   info: 5
   -/
   #guard_msgs in
   #eval find_paths 3 4 2 [[1, 1, 1, 1], [0, 1, 1, 1], [1, 1, 1, 1]]
 
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval find_paths 2 2 1 [[1, 1], [1, 1]]
 
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in

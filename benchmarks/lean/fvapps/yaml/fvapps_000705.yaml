@@ -28,30 +28,32 @@ vc-description: |-
   2 3 1
   NO
   -/
+  
+  -- Apps difficulty: interview
+  -- Assurance level: guarded_and_plausible
 
 vc-preamble: |-
+
+vc-helpers: |-
+
+vc-definitions: |-
   def solve_permutation (n : Nat) (k : Nat) (indices : List Nat) : (String × List Nat) :=
     sorry
   
   def is_valid_permutation (perm : List Nat) : Bool :=
     sorry
-
-vc-helpers: |-
-
-vc-definitions: |-
+  
   def check_indices_descending (perm indices : List Nat) : Bool :=
     sorry
 
 vc-theorems: |-
   theorem basic_case_1 :
     solve_permutation 1 1 [1] = ("YES", [1]) :=
-    sorry
+  sorry
   
-  theorem basic_case_2 : 
+  theorem basic_case_2 :
     solve_permutation 2 1 [1] = ("NO", []) :=
-    sorry
+  sorry
 
 vc-postamble: |-
-  -- Apps difficulty: interview
-  -- Assurance level: guarded_and_plausible
 

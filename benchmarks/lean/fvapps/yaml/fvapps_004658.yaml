@@ -57,19 +57,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 1300
   -/
   #guard_msgs in
   #eval martingale 1000 [1, 1, 0, 0, 1]
 
-  /-
+  /--
   info: 800
   -/
   #guard_msgs in
   #eval martingale 500 [1, 1, 1]
 
-  /-
+  /--
   info: -600
   -/
   #guard_msgs in

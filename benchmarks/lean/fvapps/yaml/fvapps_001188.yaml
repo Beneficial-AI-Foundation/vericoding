@@ -62,19 +62,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'Yes'
   -/
   #guard_msgs in
   #eval check_xor_sequence 5 [1, 0, 2, 3, 7]
 
-  /-
+  /--
   info: 'No'
   -/
   #guard_msgs in
   #eval check_xor_sequence 4 [1, 2, 3, 4]
 
-  /-
+  /--
   info: 'Yes'
   -/
   #guard_msgs in

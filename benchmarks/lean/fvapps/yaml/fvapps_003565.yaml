@@ -41,19 +41,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: ['fine', 'Hello', "I'm", 'there']
   -/
   #guard_msgs in
   #eval sortme ["Hello", "there", "I"m", "fine"]
 
-  /-
+  /--
   info: ['a', 'B', 'C', 'd']
   -/
   #guard_msgs in
   #eval sortme ["C", "d", "a", "B"]
 
-  /-
+  /--
   info: []
   -/
   #guard_msgs in

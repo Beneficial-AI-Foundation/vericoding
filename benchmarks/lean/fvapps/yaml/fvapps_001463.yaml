@@ -59,19 +59,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 1
   -/
   #guard_msgs in
   #eval check_sum_of_primes 12 2
 
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in
   #eval check_sum_of_primes 11 2
 
-  /-
+  /--
   info: 1
   -/
   #guard_msgs in

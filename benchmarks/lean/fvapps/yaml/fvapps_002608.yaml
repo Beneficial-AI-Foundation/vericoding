@@ -51,13 +51,13 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: 50
   -/
   #guard_msgs in
   #eval russian_peasant_multiplication 10 5
 
-  /-
+  /--
   info: 3150
   -/
   #guard_msgs in

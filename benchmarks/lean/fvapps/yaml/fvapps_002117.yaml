@@ -65,19 +65,19 @@ vc-postamble: |-
   -- Apps difficulty: competition
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: 7
   -/
   #guard_msgs in
   #eval solve_xorinacci 3 4 2
 
-  /-
+  /--
   info: 4
   -/
   #guard_msgs in
   #eval solve_xorinacci 4 5 0
 
-  /-
+  /--
   info: 76
   -/
   #guard_msgs in

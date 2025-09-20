@@ -56,19 +56,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: [21, 25, 63]
   -/
   #guard_msgs in
   #eval sflpf_data 10 100
 
-  /-
+  /--
   info: [26, 52, 78, 104, 130]
   -/
   #guard_msgs in
   #eval sflpf_data 15 150
 
-  /-
+  /--
   info: [998]
   -/
   #guard_msgs in

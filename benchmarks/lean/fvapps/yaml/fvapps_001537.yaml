@@ -90,19 +90,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in
   #eval solve_base_plans 2 ["10", "01"]
 
-  /-
+  /--
   info: 8
   -/
   #guard_msgs in
   #eval solve_base_plans 4 ["1000", "0010", "0100", "0001"]
 
-  /-
+  /--
   info: 6
   -/
   #guard_msgs in

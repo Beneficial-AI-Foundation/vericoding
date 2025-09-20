@@ -48,19 +48,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'BangBoom'
   -/
   #guard_msgs in
   #eval multiple 30
 
-  /-
+  /--
   info: 'Bang'
   -/
   #guard_msgs in
   #eval multiple 9
 
-  /-
+  /--
   info: 'Miss'
   -/
   #guard_msgs in

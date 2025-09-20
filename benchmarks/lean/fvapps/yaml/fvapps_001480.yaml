@@ -37,8 +37,15 @@ vc-description: |-
   -----EXPLANATION:-----
   Sample 1:  By destroying village $1$,  The fighters Naruto will be fighting at the same time will be from villages $[2, 4]$ and $[3, 5]$.  For this $W$ = $2$. No other choice can give lesser $W$. Hence $1$ is optimal choice.
   -/
+  
+  -- Apps difficulty: interview
+  -- Assurance level: guarded
 
 vc-preamble: |-
+
+vc-helpers: |-
+
+vc-definitions: |-
   def isValidTree (n : Nat) (edges : List (Nat × Nat)) : Bool :=
     sorry
   
@@ -47,18 +54,15 @@ vc-preamble: |-
   
   def getAdjList (n : Nat) (edges : List (Nat × Nat)) : List (List Nat) :=
     sorry
-
-vc-helpers: |-
-
-vc-definitions: |-
+  
   def componentSize (adj : List (List Nat)) (start visited : List Nat) : Nat :=
     sorry
 
 vc-theorems: |-
-  theorem find_optimal_attack_output_bounds {n : Nat} {edges : List (Nat × Nat)} 
+  theorem find_optimal_attack_output_bounds {n : Nat} {edges : List (Nat × Nat)}
     (h_valid : isValidTree n edges = true) :
     let (attack_node, max_subgraph) := findOptimalAttack n edges
-    1 ≤ attack_node ∧ attack_node ≤ n ∧ 
+    1 ≤ attack_node ∧ attack_node ≤ n ∧
     1 ≤ max_subgraph ∧ max_subgraph ≤ n-1 :=
   sorry
   
@@ -72,6 +76,4 @@ vc-theorems: |-
   sorry
 
 vc-postamble: |-
-  -- Apps difficulty: interview
-  -- Assurance level: guarded
 

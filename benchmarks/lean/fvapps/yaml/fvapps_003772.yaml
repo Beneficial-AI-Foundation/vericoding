@@ -48,19 +48,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'e'
   -/
   #guard_msgs in
   #eval find_missing_letter ["a", "b", "c", "d", "f"]
 
-  /-
+  /--
   info: 'P'
   -/
   #guard_msgs in
   #eval find_missing_letter ["O", "Q", "R", "S"]
 
-  /-
+  /--
   info: 'c'
   -/
   #guard_msgs in

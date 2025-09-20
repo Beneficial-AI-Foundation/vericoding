@@ -24,31 +24,31 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval is_letter ""
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval is_letter "a"
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval is_letter "X"
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval is_letter "7"
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in

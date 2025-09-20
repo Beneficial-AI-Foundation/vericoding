@@ -50,13 +50,13 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded
 
-  /-
+  /--
   info: 4
   -/
   #guard_msgs in
   #eval find_max_profit_transformations 9 77 69
 
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in

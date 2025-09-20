@@ -1,66 +1,70 @@
 vc-description: |-
   /-
   This function should take two string parameters: a person's name (`name`) and a quote of theirs (`quote`), and return a string attributing the quote to the person in the following format:
-
+  
   ```python
   '[name] said: "[quote]"'
   ```
-
+  
   For example, if `name` is `'Grae'` and `'quote'` is `'Practice makes perfect'` then your function should return the string
   ```python
   'Grae said: "Practice makes perfect"'
   ```
   Unfortunately, something is wrong with the instructions in the function body. Your job is to fix it so the function returns correctly formatted quotes.
-
+  
   Click the "Train" button to get started, and be careful with your quotation marks.
   -/
+  
+  /- Property: Output contains both inputs and format is consistent -/
+  
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded
+  
+  /- Property: Quotes appear in correct places only -/
+  
+  /- Property: Function is deterministic -/
 
-vc-preamble: |
+vc-preamble: |-
 
-vc-helpers: |
+vc-helpers: |-
 
 vc-definitions: |-
-  def quotable (name : String) (quote : String) : String := sorry
-
-  /- Property: Output contains both inputs and format is consistent -/
+  def quotable (name : String) (quote : String) : String :=
+  sorry
 
 vc-theorems: |-
   theorem quotable_format (name quote : String)
     (h1 : ¬ String.contains name '"')
     (h2 : ¬ String.contains quote '"') :
-    (quotable name quote).startsWith name ∧ 
+    (quotable name quote).startsWith name ∧
     (quotable name quote).endsWith ('"'.toString ++ quote ++ '"'.toString) ∧
-    String.contains (quotable name quote) ' ' := sorry
-
-vc-postamble: |-
-  -- Apps difficulty: introductory
-  -- Assurance level: unguarded
-
-  /- Property: Quotes appear in correct places only -/
-
+    String.contains (quotable name quote) ' ' :=
+  sorry
+  
   theorem quotable_quotes_placement (name quote : String)
     (h1 : ¬ String.contains name '"')
     (h2 : ¬ String.contains quote '"') :
-    ((quotable name quote).data.filter (· = '"')).length = 2 := sorry
-
-  /- Property: Function is deterministic -/
-
+    ((quotable name quote).data.filter (· = '"')).length = 2 :=
+  sorry
+  
   theorem quotable_deterministic (name quote : String) :
-    quotable name quote = quotable name quote := sorry
+    quotable name quote = quotable name quote :=
+  sorry
 
-  /-
+vc-postamble: |-
+  /--
   info: 'Grae said: "Practice makes perfect"'
   -/
   #guard_msgs in
   #eval quotable "Grae" "Practice makes perfect"
-
-  /-
+  
+  /--
   info: 'Alex said: "Python is great fun"'
   -/
   #guard_msgs in
   #eval quotable "Alex" "Python is great fun"
-
-  /-
+  
+  /--
   info: 'Bethany said: "Yes, way more fun than R"'
   -/
   #guard_msgs in

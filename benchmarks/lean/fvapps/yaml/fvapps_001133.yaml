@@ -6,43 +6,44 @@ vc-description: |-
   where s[1; x) is the substring from the 1st digit to (x-1)th digit of s, and s(x; n] is the substring from the (x+1)th digit to nth digit of s.
   For example, s = 747474 is a balanced string, because s[1; 4) = 747 has one 4 and s(4; 6] = 74 has one 7.
   Note that x can be 1 or n and s[1; 1) and s(n; n] denote an empty string.
-
+  
   In one turn Chef can choose any pair of consecutive digits and swap them.
   Find for Chef the total number of different balanced string that can be obtained from string s using any (even 0) number of turns.
   Print the result modulo 1000000007.
-
+  
   -----Input-----
-
+  
   The first line of the input contains one integer T, the number of test cases.
   Then T lines follow, each of which contains string s for the corresponding test.
-
+  
   -----Output-----
   T lines, each of which contains single integer - the answer for the corresponding test modulo 109+7.
-
+  
   -----Constraints-----
-
+  
   1 ≤ T ≤ 10
-
+  
   1 ≤ n ≤ 5000
-
+  
   -----Example-----
   Input:
   2
   47
   4477
-
+  
   Output:
   1
   4
   -/
 
 vc-preamble: |-
-  def solveBalancedDigits (s : String) : Nat :=
-    sorry
 
-vc-helpers: |
+vc-helpers: |-
 
 vc-definitions: |-
+  def solveBalancedDigits (s : String) : Nat :=
+    sorry
+  
   def makeBalancedString (m n : Nat) : String :=
     sorry
 
@@ -52,14 +53,14 @@ vc-theorems: |-
     let result := solveBalancedDigits s
     result ≥ 1 ∧ result < 10^9 + 7 :=
   sorry
-
-  theorem arbitrary_fours_and_sevens {m n : Nat} 
+  
+  theorem arbitrary_fours_and_sevens {m n : Nat}
     (h1 : m > 0) (h2 : m ≤ 50) (h3 : n > 0) (h4 : n ≤ 50) :
     let s := makeBalancedString m n
     let result := solveBalancedDigits s
     result ≥ 0 ∧ result < 10^9 + 7 :=
   sorry
-
+  
   theorem valid_string_bounds {s : String}
     (h : s.length > 0) (h2 : s.length ≤ 50)
     (h3 : ∀ c ∈ s.data, c = '4' ∨ c = '7') :
@@ -70,14 +71,14 @@ vc-theorems: |-
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded
-
-  /-
+  
+  /--
   info: 1
   -/
   #guard_msgs in
   #eval solve_balanced_digits "47"
-
-  /-
+  
+  /--
   info: 4
   -/
   #guard_msgs in

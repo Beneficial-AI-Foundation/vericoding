@@ -50,19 +50,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in
   #eval find_max_star_value #[8, 1, 28, 4, 2, 6, 7]
 
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in
   #eval find_max_star_value #[1, 2, 3]
 
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in

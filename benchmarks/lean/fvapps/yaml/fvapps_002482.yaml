@@ -51,26 +51,30 @@ vc-description: |-
   =====Output Format=====
   Print the desired value.
   -/
+  
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded
 
 vc-preamble: |-
-  def evaluatePolynomial (coeffs : List Float) (x : Float) : Float :=
-    sorry
 
 vc-helpers: |-
 
 vc-definitions: |-
+  def evaluatePolynomial (coeffs : List Float) (x : Float) : Float :=
+    sorry
+  
   def directPolynomial (coeffs : List Float) (x : Float) : Float :=
     sorry
 
 vc-theorems: |-
-  theorem polynomial_evaluation_matches_direct 
+  theorem polynomial_evaluation_matches_direct
     (coeffs : List Float) (x : Float)
     (h1 : coeffs.length ≥ 1)
     (h2 : coeffs.length ≤ 10)
     (h3 : ∀ c ∈ coeffs, -1000000 ≤ c ∧ c ≤ 1000000)
     (h4 : -100 ≤ x ∧ x ≤ 100) :
     evaluatePolynomial coeffs x - directPolynomial coeffs x ≤ 1e-10 * directPolynomial coeffs x :=
-  sorry 
+  sorry
   
   theorem polynomial_at_zero
     (coeffs : List Float)
@@ -81,6 +85,4 @@ vc-theorems: |-
   sorry
 
 vc-postamble: |-
-  -- Apps difficulty: introductory
-  -- Assurance level: guarded
 

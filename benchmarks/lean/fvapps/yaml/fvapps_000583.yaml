@@ -60,19 +60,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in
   #eval find_last_fibonacci_digit 9
 
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in
   #eval find_last_fibonacci_digit 1
 
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in

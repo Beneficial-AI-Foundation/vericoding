@@ -64,19 +64,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: 6
   -/
   #guard_msgs in
   #eval next_day_of_week 4 42
 
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval next_day_of_week 6 42
 
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in

@@ -54,19 +54,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval is_interleave "aabcc" "dbbca" "aadbbcbcac"
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval is_interleave "aabcc" "dbbca" "aadbbbaccc"
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in

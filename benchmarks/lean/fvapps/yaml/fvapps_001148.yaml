@@ -58,19 +58,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: '4 5 6'
   -/
   #guard_msgs in
   #eval find_killers 6 [0, 1, 1, 2, 2, 3]
 
-  /-
+  /--
   info: '2 3'
   -/
   #guard_msgs in
   #eval find_killers 3 [0, 1, 1]
 
-  /-
+  /--
   info: '3 4 5'
   -/
   #guard_msgs in

@@ -45,19 +45,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'ycarT'
   -/
   #guard_msgs in
   #eval reverse_string "Tracy"
 
-  /-
+  /--
   info: 'olleH'
   -/
   #guard_msgs in
   #eval reverse_string "Hello"
 
-  /-
+  /--
   info: 'nohtyP'
   -/
   #guard_msgs in

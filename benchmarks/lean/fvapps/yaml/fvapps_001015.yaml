@@ -79,19 +79,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'Bob'
   -/
   #guard_msgs in
   #eval determine_candy_game_winner 3 2
 
-  /-
+  /--
   info: 'Limak'
   -/
   #guard_msgs in
   #eval determine_candy_game_winner 4 2
 
-  /-
+  /--
   info: 'Bob'
   -/
   #guard_msgs in

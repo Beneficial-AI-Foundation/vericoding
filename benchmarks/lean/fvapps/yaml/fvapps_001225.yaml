@@ -85,37 +85,37 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded
 
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in
   #eval calculate_library_fees 0 0 0
 
-  /-
+  /--
   info: 9
   -/
   #guard_msgs in
   #eval calculate_library_fees 1 10 9
 
-  /-
+  /--
   info: 40
   -/
   #guard_msgs in
   #eval calculate_library_fees 2 100 20
 
-  /-
+  /--
   info: 30
   -/
   #guard_msgs in
   #eval calculate_library_fees 5 30 10
 
-  /-
+  /--
   info: 20
   -/
   #guard_msgs in
   #eval calculate_library_fees 10 50 2
 
-  /-
+  /--
   info: 15
   -/
   #guard_msgs in

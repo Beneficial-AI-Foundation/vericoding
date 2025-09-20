@@ -31,19 +31,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: '9'
   -/
   #guard_msgs in
   #eval sum_str "4" "5"
 
-  /-
+  /--
   info: '39'
   -/
   #guard_msgs in
   #eval sum_str "34" "5"
 
-  /-
+  /--
   info: '9'
   -/
   #guard_msgs in

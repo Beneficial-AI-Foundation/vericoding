@@ -55,19 +55,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 4
   -/
   #guard_msgs in
   #eval len generate_odd_char_string(4)
 
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval len generate_odd_char_string(2)
 
-  /-
+  /--
   info: 7
   -/
   #guard_msgs in
