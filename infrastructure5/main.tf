@@ -214,10 +214,10 @@ output "intern_server_public_ip" {
   value = aws_instance.intern_server.public_ip
 }
 
-# Second EC2 Instance - r8g.2xlarge
-resource "aws_instance" "intern_server_r8g" {
+# Second EC2 Instance - r8i.2xlarge
+resource "aws_instance" "intern_server2" {
   ami           = data.aws_ami.ubuntu.id
-  instance_type = "r8g.2xlarge"
+  instance_type = "r8i.2xlarge"
   
   subnet_id              = aws_subnet.intern_subnet.id
   vpc_security_group_ids = [aws_security_group.intern_sg.id]
@@ -243,14 +243,14 @@ resource "aws_instance" "intern_server_r8g" {
   EOF
   
   tags = {
-    Name = "intern-server-r8g"
+    Name = "intern-server2"
     Purpose = "intern-development"
   }
 }
 
-# Output the public IP for r8g instance
-output "intern_server_r8g_public_ip" {
-  value = aws_instance.intern_server_r8g.public_ip
+# Output the public IP for server2
+output "intern_server2_public_ip" {
+  value = aws_instance.intern_server2.public_ip
 }
 
 # Output SSH connection command
@@ -258,7 +258,7 @@ output "ssh_connection" {
   value = "ssh ubuntu@${aws_instance.intern_server.public_ip}"
 }
 
-# Output SSH connection command for r8g
-output "ssh_connection_r8g" {
-  value = "ssh ubuntu@${aws_instance.intern_server_r8g.public_ip}"
+# Output SSH connection command for server2
+output "ssh_connection_server2" {
+  value = "ssh ubuntu@${aws_instance.intern_server2.public_ip}"
 }
