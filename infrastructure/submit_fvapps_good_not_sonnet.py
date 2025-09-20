@@ -21,7 +21,6 @@ print(f"Using {NUM_SHARDS} shards per model")
 # Define models to test (from batch_experiments.py)
 models=[
     "claude-opus",
-    "claude-sonnet",
     "deepseek",
     "gemini",
     "gemini-flash",
