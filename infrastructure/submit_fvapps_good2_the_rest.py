@@ -22,7 +22,6 @@ print(f"Using {NUM_SHARDS} shards per model")
 models=[
     "claude-opus",
     "claude-sonnet",
-    "deepseek",
     "gemini",
     "gemini-flash",
     "glm",
