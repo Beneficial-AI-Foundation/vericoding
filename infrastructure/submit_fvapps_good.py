@@ -13,7 +13,7 @@ timestamp = datetime.now().strftime("%Y%m%d-%H%M%S")
 tag = f"{SHORTNAME}-{timestamp}"
 
 # Configuration
-NUM_SHARDS = 10
+NUM_SHARDS = 9
 
 print(f"Submitting experiments with tag: {tag}")
 print(f"Using {NUM_SHARDS} shards per model")
