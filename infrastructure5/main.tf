@@ -217,7 +217,7 @@ output "intern_server_public_ip" {
 # Second EC2 Instance - r8i.2xlarge
 resource "aws_instance" "intern_server2" {
   ami           = data.aws_ami.ubuntu.id
-  instance_type = "r8i.2xlarge"
+  instance_type = "r7i.2xlarge"
   
   subnet_id              = aws_subnet.intern_subnet.id
   vpc_security_group_ids = [aws_security_group.intern_sg.id]
