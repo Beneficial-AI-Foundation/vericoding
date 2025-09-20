@@ -214,7 +214,51 @@ output "intern_server_public_ip" {
   value = aws_instance.intern_server.public_ip
 }
 
+# Second EC2 Instance - r8g.2xlarge
+resource "aws_instance" "intern_server_r8g" {
+  ami           = data.aws_ami.ubuntu.id
+  instance_type = "r8g.2xlarge"
+  
+  subnet_id              = aws_subnet.intern_subnet.id
+  vpc_security_group_ids = [aws_security_group.intern_sg.id]
+  iam_instance_profile   = aws_iam_instance_profile.intern_instance_profile.name
+  
+  root_block_device {
+    volume_size = 100
+    volume_type = "gp3"
+  }
+  
+  user_data = <<-EOF
+    #!/bin/bash
+    apt-get update
+    apt-get install -y build-essential git curl
+    
+    # Add Theo's SSH public key to ubuntu user
+    mkdir -p /home/ubuntu/.ssh
+    echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC4IgPSH5Kkxy80bIHMjAEN6XovrP2NG/4ccZs8j8Ebdpe3rsE6CmLWohtbKGX6i8yJwQ5jCrrmKmnfx6feOkYaiUY2WLXQQR3hZ4j6GfN52LFzIXnwU84vf0YGSGbhWkrYFRHI16ccYn2IZhSTdxgHvgOehflr2VW7I60y6F8rNNJyfoYHTB/H0zQsoBlLcCLMrEbb5/KpOTIy6B+mn/5+fe74a9YNNJWnslqWI7AHMMzWx8UNzE+3kAY8zuApFe9FXnZNwL05N4l+Y8IzWMaZd7PGg6AUt2BLjx6bGJg8Ob3GogY/nMHxw05xMvYhD4lOz+jqjSUFJ6zQ9C3gWO2OwcIAiXS4kr/LIqwPIRNDxqFUFtU6CWMpUIJ323Yok0nMNwIylMoESFRwOqIFdt66kZyNCGRRAYEJKhp8j9Uqm9P3EncJDFvaw7X4hOYIk1hGWVFfOIfeKAYkIc9F7Qn6x45pYNiFaIj1nn4gamlCGYroAlzrRMLnmHN7YIynrw0= theo@lutfisk" >> /home/ubuntu/.ssh/authorized_keys
+    chown ubuntu:ubuntu /home/ubuntu/.ssh/authorized_keys
+    chmod 600 /home/ubuntu/.ssh/authorized_keys
+    
+    echo "R8G Server setup complete" > /var/log/user-data.log
+  EOF
+  
+  tags = {
+    Name = "intern-server-r8g"
+    Purpose = "intern-development"
+  }
+}
+
+# Output the public IP for r8g instance
+output "intern_server_r8g_public_ip" {
+  value = aws_instance.intern_server_r8g.public_ip
+}
+
 # Output SSH connection command
 output "ssh_connection" {
   value = "ssh ubuntu@${aws_instance.intern_server.public_ip}"
+}
+
+# Output SSH connection command for r8g
+output "ssh_connection_r8g" {
+  value = "ssh ubuntu@${aws_instance.intern_server_r8g.public_ip}"
 }
