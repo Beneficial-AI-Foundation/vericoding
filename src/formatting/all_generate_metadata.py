@@ -13,13 +13,20 @@ For each folder YYY of each folder XXX of `benchmarks`, this script:
 
 import os
 import sys
+import json
 from pathlib import Path
 from typing import Dict, Any
 
-def get_source_meta(benchmarks_dir: Path) -> Dict[str, Any]:
+def get_source_meta(benchmarks_dir: Path, save_path: Path = None) -> Dict[str, Any]:
     """Get metadata about files in the benchmarks directory."""
 
     # Initialize the main metadata object
+    if save_path and save_path.exists():
+        with open(save_path, 'r') as f:
+            source_meta = json.load(f)
+    else:
+        source_meta = {}
+
     source_meta: Dict[str, Any] = {}
     
     # Iterate through each XXX folder (lean, dafny, verus)
@@ -119,20 +126,20 @@ def get_source_meta(benchmarks_dir: Path) -> Dict[str, Any]:
                         # Case 1: WWW is of the form UUU.yaml
                         uuu_name = www_file.stem  # Remove .yaml extension
                         
-                        # Check if UUU is already in source_meta
-                        # if uuu_name in source_meta:
-                        #     # Raise error if SM[UUU][XXX] starts with "yaml"
-                        #     if source_meta[uuu_name][xxx_name].startswith("yaml"):
-                        #         raise ValueError(f"SM[{uuu_name}][{xxx_name}] starts with 'yaml', "
-                        #                         f"found: {source_meta[uuu_name][xxx_name]}")
+                        Check if UUU is already in source_meta
+                        if uuu_name in source_meta:
+                            # Raise error if SM[UUU][XXX] starts with "yaml"
+                            if source_meta[uuu_name][xxx_name].startswith("yaml"):
+                                raise ValueError(f"SM[{uuu_name}][{xxx_name}] starts with 'yaml', "
+                                                f"found: {source_meta[uuu_name][xxx_name]}")
 
-                        # else:
-                        #     # Create entry SM[UUU] with empty strings for all languages
-                        source_meta[uuu_name] = {
-                            "lean": "",
-                            "dafny": "",
-                            "verus": ""
-                        }
+                        else:
+                            # Create entry SM[UUU] with empty strings for all languages
+                            source_meta[uuu_name] = {
+                                "lean": "",
+                                "dafny": "",
+                                "verus": ""
+                            }
                         
                         # Set SM[UUU][XXX] to "poor/ZZZ"
                         source_meta[uuu_name][xxx_name] = f"poor/{zzz_name}"
@@ -143,6 +150,15 @@ def get_source_meta(benchmarks_dir: Path) -> Dict[str, Any]:
                         elif source_meta[uuu_name]["source"] != yyy_name:
                             raise ValueError(f"Inconsistent source for {uuu_name}. "
                                             f"Expected {source_meta[uuu_name]['source']}, found {yyy_name}")
+
+    print(f"\nTotal files processed: {len(source_meta)}")
+
+    source_meta = generate_ids(source_meta)
+    
+    if save_path:
+        with open(save_path, 'w') as f:
+            json.dump(source_meta, f, indent=2, sort_keys=True)
+        print(f"Metadata saved to: {save_path}")
 
     return source_meta
 
@@ -260,34 +276,14 @@ def validate_source_signatures(source_meta: Dict[str, Any]) -> None:
     else:
         print("\nAll files have consistent signatures for their sources.")
 
-def main():
-    """Main function to extract metadata from benchmarks directory."""
-    benchmarks_dir = Path("/home/shaowei/projects/vericoding/benchmarks")
-    
-    if not benchmarks_dir.exists():
-        raise FileNotFoundError(f"Benchmarks directory {benchmarks_dir} does not exist")
-    
-    source_meta = get_source_meta(benchmarks_dir)
-    
-    print(f"\nTotal files processed: {len(source_meta)}")
-    
-    # Optionally save to a file
-    import json
-    output_file = benchmarks_dir / "generated_metadata.json"
-    with open(output_file, 'w') as f:
-        json.dump(source_meta, f, indent=2, sort_keys=True)
-    
-    print(f"Metadata saved to: {output_file}")
+def print_summary_counts(source_meta: Dict[str, Any]) -> None:
+    """Print total counts of files by source and language type."""
 
-    # Validate that all entries for each source have consistent signatures
-    validate_source_signatures(source_meta)
-    
-    # Count files by source and language type
-    source_counts = count_files_by_source(source_meta)
-    
-    print("\nFile counts by source:")
-    print("=" * 50)
-    
+
+    not_novel = [('dafny', 'dafnybench'), ('dafny', 'humaneval'),
+                 ('verus', 'verified_cogen'), ('lean', 'verina'),
+                 ('lean', 'fvapps'), ('lean', 'clever')]
+
     # Initialize totals
     total = {}
     for novelty in ['all', 'novel']:
@@ -296,12 +292,13 @@ def main():
             total[novelty][lang] = {}
             for file_type in ['yaml', 'poor']:
                 total[novelty][lang][file_type] = 0
-
-    not_novel = [('dafny', 'dafnybench'), ('dafny', 'humaneval'),
-                 ('verus', 'verified_cogen'), ('lean', 'verina'),
-                 ('lean', 'fvapps'), ('lean', 'clever')]
+    
+    # Count files by source and language type
+    source_counts = count_files_by_source(source_meta)
        
     # Print counts for each source and accumulate totals
+    print("\nFile counts by source:")
+    print("=" * 50)
     for source, counts in sorted(source_counts.items()):
         print(f"Source: {source}")
         print(f"  Total files: {counts['total']}")
@@ -328,6 +325,7 @@ def main():
     print(f"Verus total (novel): {total['novel']['verus']['yaml'] + total['novel']['verus']['poor']} : {total['novel']['verus']['yaml']}")
     print("=" * 50)
 
+    # Print grand totals
     grand_total = {}
     for novelty in ['all', 'novel']:
         grand_total[novelty] = {}
@@ -340,6 +338,50 @@ def main():
     print(f"Grand total (novel): {grand_total['novel']['yaml'] + grand_total['novel']['poor']} : {grand_total['novel']['yaml']}")
     print("=" * 50)
 
+def generate_ids(source_meta: Dict[str, Any]) -> None:
+    """Generate IDs for the files in source_meta.
+    
+    For each source, sorts all files and assigns them four-digit zero-padded IDs
+    starting from 0000.
+    """
+    # Group files by source
+    files_by_source = {}
+    for filename, file_data in source_meta.items():
+        source = file_data.get("source")
+        if source is None:
+            raise ValueError(f"Source is None for {filename}")
+        if source not in files_by_source:
+            files_by_source[source] = []
+        files_by_source[source].append(filename)
+    
+    # Sort files within each source and assign IDs
+    for source, filenames in files_by_source.items():
+        # Sort filenames alphabetically
+        sorted_filenames = sorted(filenames)
+        
+        # Assign four-digit zero-padded IDs starting from 0000
+        for i, filename in enumerate(sorted_filenames):
+            file_id = f"{i:04d}"  # Four-digit zero-padded string
+            source_meta[filename]["id"] = file_id
+    
+    return source_meta
+
+
+def main():
+    """Main function to extract metadata from benchmarks directory."""
+    benchmarks_dir = Path("benchmarks")
+    
+    if not benchmarks_dir.exists():
+        raise FileNotFoundError(f"Benchmarks directory {benchmarks_dir} does not exist")
+    
+    # Get source metadata
+    source_meta = get_source_meta(benchmarks_dir, save_path=benchmarks_dir / "generated_metadata.json")
+
+    # Validate that all entries for each source have consistent signatures
+    validate_source_signatures(source_meta)
+    
+    # Print summary counts
+    print_summary_counts(source_meta)
 
 
 if __name__ == "__main__":
