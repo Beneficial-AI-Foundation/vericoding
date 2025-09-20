@@ -59,19 +59,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: '0101100'
   -/
   #guard_msgs in
   #eval parity_bit "01011001"
 
-  /-
+  /--
   info: '0011110 error'
   -/
   #guard_msgs in
   #eval parity_bit "00111100 00111101"
 
-  /-
+  /--
   info: 'error 0110000 0101011 error 0110001'
   -/
   #guard_msgs in

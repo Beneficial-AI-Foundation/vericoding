@@ -120,19 +120,19 @@ vc-postamble: |-
   -- Apps difficulty: competition
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: [1, 1, 1]
   -/
   #guard_msgs in
   #eval game_of_life ["000", "111", "000"] [(1, 1, 1), (2, 2, 2), (3, 3, 3)]
 
-  /-
+  /--
   info: [0, 0]
   -/
   #guard_msgs in
   #eval game_of_life ["01", "10", "01", "10", "01"] [(1, 1, 4), (5, 1, 4)]
 
-  /-
+  /--
   info: [1, 0, 1]
   -/
   #guard_msgs in

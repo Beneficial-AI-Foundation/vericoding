@@ -47,19 +47,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: '£7.80'
   -/
   #guard_msgs in
   #eval london_city_hacker [12, "Central", "Circle", 21]
 
-  /-
+  /--
   info: '£3.00'
   -/
   #guard_msgs in
   #eval london_city_hacker [386, 56, 1, 876]
 
-  /-
+  /--
   info: '£7.20'
   -/
   #guard_msgs in

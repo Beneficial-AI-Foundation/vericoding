@@ -52,19 +52,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: 6
   -/
   #guard_msgs in
   #eval prime_product 5
 
-  /-
+  /--
   info: 91
   -/
   #guard_msgs in
   #eval prime_product 20
 
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in

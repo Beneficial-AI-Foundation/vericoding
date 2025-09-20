@@ -56,19 +56,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: []
   -/
   #guard_msgs in
   #eval diff ["a", "b"] ["a", "b"]
 
-  /-
+  /--
   info: []
   -/
   #guard_msgs in
   #eval diff [] []
 
-  /-
+  /--
   info: ['a', 'e', 'g', 'j', 'k']
   -/
   #guard_msgs in

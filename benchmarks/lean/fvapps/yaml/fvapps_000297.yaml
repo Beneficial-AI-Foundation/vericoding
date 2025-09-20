@@ -78,19 +78,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded
 
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval numFriendRequests [16, 16]
 
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval numFriendRequests [16, 17, 18]
 
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in

@@ -1,55 +1,61 @@
 vc-description: |-
   /-
   Your goal is to implement the method **meanVsMedian** which accepts an *odd-length* array of integers and returns one of the following:
-
+  
   * 'mean' - in case **mean** value is **larger than** median value
   * 'median' - in case **median** value is **larger than** mean value
   * 'same' - in case both mean and median share the **same value**
-
+  
   Reminder: [Median](https://en.wikipedia.org/wiki/Median)
-
+  
   Array will always be valid (odd-length >= 3)
   -/
 
 vc-preamble: |-
-  def mean_vs_median (l : List Int) : String := sorry
 
-  def statistical_mean (l : List Int) : Float := sorry
-
-vc-helpers: |
+vc-helpers: |-
 
 vc-definitions: |-
-  def statistical_median (l : List Int) : Float := sorry
+  def mean_vs_median (l : List Int) : String :=
+  sorry
+  
+  def statistical_mean (l : List Int) : Float :=
+  sorry
+  
+  def statistical_median (l : List Int) : Float :=
+  sorry
 
+vc-theorems: |-
   theorem mean_vs_median_matches_statistics (l : List Int) (h : l ≠ []) :
     let mean := statistical_mean l
     let median := statistical_median l
-    mean_vs_median l = (if mean > median then "mean" 
+    mean_vs_median l = (if mean > median then "mean"
                        else if median > mean then "median"
-                       else "same") := sorry
-
-vc-theorems: |-
-  theorem identical_numbers_return_same (l : List Int) (h1 : l ≠ []) 
+                       else "same") :=
+  sorry
+  
+  theorem identical_numbers_return_same (l : List Int) (h1 : l ≠ [])
     (h2 : ∀ x ∈ l, x = 1) :
-    mean_vs_median l = "same" := sorry
+    mean_vs_median l = "same" :=
+  sorry
 
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
-
-  /-
+  
+  /--
   info: 'same'
   -/
   #guard_msgs in
   #eval mean_vs_median [1, 1, 1]
-
-  /-
+  
+  /--
   info: 'mean'
   -/
   #guard_msgs in
   #eval mean_vs_median [1, 2, 37]
-
-  /-
+  
+  /--
   info: 'median'
   -/
   #guard_msgs in

@@ -55,19 +55,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: [3, 4, 5]
   -/
   #guard_msgs in
   #eval pythagorean_triplet 60
 
-  /-
+  /--
   info: [5, 12, 13]
   -/
   #guard_msgs in
   #eval pythagorean_triplet 780
 
-  /-
+  /--
   info: [8, 15, 17]
   -/
   #guard_msgs in

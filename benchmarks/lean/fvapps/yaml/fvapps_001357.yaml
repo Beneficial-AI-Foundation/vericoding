@@ -81,19 +81,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded
 
-  /-
+  /--
   info: 8
   -/
   #guard_msgs in
   #eval solve_dog_strings "1111" "2211"
 
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in
   #eval solve_dog_strings "222" "111"
 
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in

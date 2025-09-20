@@ -77,19 +77,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in
   #eval can_complete_circuit [1, 2, 3, 4, 5] [3, 4, 5, 1, 2]
 
-  /-
+  /--
   info: -1
   -/
   #guard_msgs in
   #eval can_complete_circuit [2, 3, 4] [3, 4, 3]
 
-  /-
+  /--
   info: 4
   -/
   #guard_msgs in

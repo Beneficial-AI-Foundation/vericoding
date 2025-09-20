@@ -77,19 +77,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval min_transpose_ops #[[1, 2, 9, 13], [5, 6, 10, 14], [3, 7, 11, 15], [4, 8, 12, 16]]
 
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in
   #eval min_transpose_ops #[[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12], [13, 14, 15, 16]]
 
-  /-
+  /--
   info: 1
   -/
   #guard_msgs in

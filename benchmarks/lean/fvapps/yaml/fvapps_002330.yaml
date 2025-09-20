@@ -58,19 +58,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval detect_capital_use "USA"
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval detect_capital_use "FlaG"
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in

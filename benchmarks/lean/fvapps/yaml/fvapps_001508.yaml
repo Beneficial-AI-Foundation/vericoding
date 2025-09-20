@@ -42,19 +42,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded
 
-  /-
+  /--
   info: 34
   -/
   #guard_msgs in
   #eval reversed_sum "24" "1"
 
-  /-
+  /--
   info: 33
   -/
   #guard_msgs in
   #eval reversed_sum "11" "22"
 
-  /-
+  /--
   info: 579
   -/
   #guard_msgs in

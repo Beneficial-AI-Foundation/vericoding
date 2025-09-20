@@ -47,43 +47,43 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded
 
-  /-
+  /--
   info: -1
   -/
   #guard_msgs in
   #eval close_compare 4 5
 
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in
   #eval close_compare 5 5
 
-  /-
+  /--
   info: 1
   -/
   #guard_msgs in
   #eval close_compare 6 5
 
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in
   #eval close_compare 2 5 3
 
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in
   #eval close_compare 8 5 3
 
-  /-
+  /--
   info: 1
   -/
   #guard_msgs in
   #eval close_compare 8.1 5 3
 
-  /-
+  /--
   info: -1
   -/
   #guard_msgs in

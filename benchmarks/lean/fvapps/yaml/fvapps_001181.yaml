@@ -86,13 +86,13 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 16
   -/
   #guard_msgs in
   #eval solve_snake_parade 3 4 11 23 [10, 11, 30]
 
-  /-
+  /--
   info: 16
   -/
   #guard_msgs in

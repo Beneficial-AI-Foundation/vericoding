@@ -7,21 +7,21 @@ vc-description: |-
   first, Jenish can select any battery placed at position $i$ such that $(t \leq i \leq N-t+1)$ and add $a[i]$ to his energy (every battery can be used atmost once).
   Then both the tanks move one meter towards each other. If there are still any batteries present at positions where the tanks are heading, the battery gets destroyed. 
   At any moment if Jenish's total energy is greater than or equal to $X$, he destroys both the tanks and he escapes the cops. If by the end of $\lfloor \frac {(n+1)}{2}\rfloor^{th}$ second, he can't destroy the tanks, he himself gets destroyed. Find out if he can escape.
-
+  
   -----Input:-----
   - The first line consists of a single integer $T$, the number of test cases.
   - The first line of each test case contains two space separated integers which represents $N$ and $X$ for that test case respectively.
   - The second line of each test case contains $N$ space separated integers, $i^{th}$ of which represents $a[i]$.
-
+  
   -----Output:-----
   For each test case, print in a single line, $YES$ if Jenish can escape or $NO$ if he gets destroyed.
-
+  
   -----Constraints:-----
   - $1 \leq  X \leq 10^9$
   - $0 \leq a[i] \leq 10^6$
   - $ 1 \leq N \leq 10^5$
   - $\Sigma$ $N$ over all the test cases does not exceed $10^5$
-
+  
   -----Sample Input:-----
   3
   4 8
@@ -30,12 +30,12 @@ vc-description: |-
   3 1 2
   2 7
   5 5
-
+  
   -----Sample Output:-----
   YES
   YES
   NO
-
+  
   -----Explanation-----
   For test $1$, in the 1st second, first Jenish will select battery at index $1$ and then the tanks from either side will move one meter closer, thus destroying the battery at index $4$.Then, in the next second, Jenish will select battery at index $3$.Then,tanks will move one meter closer again to destroy the remaining battery at index $2$.But now, Jenish has a total energy of $9$ units which is more than enough to destroy the tanks.
   For test $2$, Jenish can use batteries at index $1$ and $2$ to get a total energy of $4$ units.
@@ -43,60 +43,60 @@ vc-description: |-
   -/
 
 vc-preamble: |-
-  def max : List Nat → Nat 
+  def max : List Nat → Nat
   | [] => 0
   | [x] => x
   | (x::xs) => Nat.max x (max xs)
 
-  def sum : List Nat → Nat 
-  | [] => 0
-  | (x::xs) => x + sum xs
-
-  def can_cyborg_escape (n : Nat) (target : Nat) (powers : List Nat) : Bool :=
-  sorry
-
-vc-helpers: |
+vc-helpers: |-
 
 vc-definitions: |-
+  def sum : List Nat → Nat
+  | [] => 0
+  | (x::xs) => x + sum xs
+  
+  def can_cyborg_escape (n : Nat) (target : Nat) (powers : List Nat) : Bool :=
+  sorry
+  
   def reverse : List Nat → List Nat :=
   sorry
 
 vc-theorems: |-
-  theorem target_less_than_max_always_possible 
+  theorem target_less_than_max_always_possible
     (powers : List Nat) (target : Nat) (h1 : powers ≠ []) :
     target ≤ max powers → can_cyborg_escape (powers.length) target powers = true := by
   sorry
-
+  
   theorem target_greater_than_sum_impossible
     (powers : List Nat) (extra : Nat) (h1 : powers ≠ []) :
     let target := sum powers + extra + 1
     can_cyborg_escape (powers.length) target powers = false := by
   sorry
-
+  
   theorem symmetric_input
     (powers : List Nat) (h1 : powers ≠ []) :
     let target := sum powers / 2
-    can_cyborg_escape (powers.length) target powers = 
+    can_cyborg_escape (powers.length) target powers =
       can_cyborg_escape (powers.length) target (reverse powers) := by
   sorry
 
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
-
-  /-
+  
+  /--
   info: True
   -/
   #guard_msgs in
   #eval can_cyborg_escape 4 8 [5, 1, 4, 2]
-
-  /-
+  
+  /--
   info: True
   -/
   #guard_msgs in
   #eval can_cyborg_escape 3 4 [3, 1, 2]
-
-  /-
+  
+  /--
   info: False
   -/
   #guard_msgs in

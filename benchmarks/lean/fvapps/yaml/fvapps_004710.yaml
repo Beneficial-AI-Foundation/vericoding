@@ -94,19 +94,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval word_problem [("a", "b")] "a" "b" 1
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval word_problem [("l", "de"), ("m", "col"), ("rr", "wakr"), ("akr", "ars")] "mrr" "codewars" 4
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in

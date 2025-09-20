@@ -45,19 +45,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded
 
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval number_of_routes 1 1
 
-  /-
+  /--
   info: 35
   -/
   #guard_msgs in
   #eval number_of_routes 3 4
 
-  /-
+  /--
   info: 462
   -/
   #guard_msgs in

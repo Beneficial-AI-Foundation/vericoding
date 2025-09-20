@@ -60,19 +60,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: 23
   -/
   #guard_msgs in
   #eval rectangle_rotation 6 4
 
-  /-
+  /--
   info: 65
   -/
   #guard_msgs in
   #eval rectangle_rotation 30 2
 
-  /-
+  /--
   info: 49
   -/
   #guard_msgs in

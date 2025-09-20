@@ -76,19 +76,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'NO'
   -/
   #guard_msgs in
   #eval check_cube_sides "blue yellow green orange black green".split()
 
-  /-
+  /--
   info: 'YES'
   -/
   #guard_msgs in
   #eval check_cube_sides "green yellow green orange black green".split()
 
-  /-
+  /--
   info: 'NO'
   -/
   #guard_msgs in

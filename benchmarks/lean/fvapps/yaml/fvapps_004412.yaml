@@ -56,19 +56,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'Philadelphia'
   -/
   #guard_msgs in
   #eval conference_picker [] ["Philadelphia", "Osaka", "Tokyo", "Melbourne"]
 
-  /-
+  /--
   info: 'No worthwhile conferences this year!'
   -/
   #guard_msgs in
   #eval conference_picker ["Rome"] ["Rome"]
 
-  /-
+  /--
   info: 'London'
   -/
   #guard_msgs in

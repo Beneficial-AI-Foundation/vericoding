@@ -63,19 +63,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded
 
-  /-
+  /--
   info: "Mine's a Pint!"
   -/
   #guard_msgs in
   #eval part ["Grouse", "Partridge", "Pheasant"]
 
-  /-
+  /--
   info: "Lynn, I've pierced my foot on a spike!!"
   -/
   #guard_msgs in
   #eval part ["Pheasant", "Goose", "Starling", "Robin"]
 
-  /-
+  /--
   info: "Mine's a Pint!!!!!"
   -/
   #guard_msgs in

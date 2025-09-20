@@ -51,19 +51,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: expected1
   -/
   #guard_msgs in
   #eval solve [2, 7, 5, 9, 100, 34, 32, 0] 3
 
-  /-
+  /--
   info: expected2
   -/
   #guard_msgs in
   #eval solve [] 2
 
-  /-
+  /--
   info: expected3
   -/
   #guard_msgs in

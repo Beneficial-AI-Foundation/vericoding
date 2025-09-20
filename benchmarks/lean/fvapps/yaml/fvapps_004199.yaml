@@ -49,19 +49,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: expected1
   -/
   #guard_msgs in
   #eval vowel_2_index "this is my string"
 
-  /-
+  /--
   info: expected2
   -/
   #guard_msgs in
   #eval vowel_2_index "Codewars is the best site in the world"
 
-  /-
+  /--
   info: expected3
   -/
   #guard_msgs in

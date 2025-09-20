@@ -70,55 +70,55 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'snake'
   -/
   #guard_msgs in
   #eval case_id "hello_world"
 
-  /-
+  /--
   info: 'snake'
   -/
   #guard_msgs in
   #eval case_id "hello_to_the_world"
 
-  /-
+  /--
   info: 'kebab'
   -/
   #guard_msgs in
   #eval case_id "hello-world"
 
-  /-
+  /--
   info: 'kebab'
   -/
   #guard_msgs in
   #eval case_id "hello-to-the-world"
 
-  /-
+  /--
   info: 'camel'
   -/
   #guard_msgs in
   #eval case_id "helloWorld"
 
-  /-
+  /--
   info: 'camel'
   -/
   #guard_msgs in
   #eval case_id "helloToTheWorld"
 
-  /-
+  /--
   info: 'none'
   -/
   #guard_msgs in
   #eval case_id "hello_World"
 
-  /-
+  /--
   info: 'none'
   -/
   #guard_msgs in
   #eval case_id "hello-World"
 
-  /-
+  /--
   info: 'none'
   -/
   #guard_msgs in

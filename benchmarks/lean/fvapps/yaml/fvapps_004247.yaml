@@ -26,19 +26,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded
 
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in
   #eval not_visible_cubes 0
 
-  /-
+  /--
   info: 8
   -/
   #guard_msgs in
   #eval not_visible_cubes 4
 
-  /-
+  /--
   info: 27
   -/
   #guard_msgs in

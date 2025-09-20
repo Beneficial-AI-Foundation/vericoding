@@ -53,13 +53,13 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: ['Invalid', 'Valid']
   -/
   #guard_msgs in
   #eval validate_uids ["B1CD102354", "B1CDEF2354"]
 
-  /-
+  /--
   info: ['Valid']
   -/
   #guard_msgs in

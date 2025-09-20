@@ -56,19 +56,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: 9
   -/
   #guard_msgs in
   #eval kConcatenationMaxSum [1, 2] 3
 
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval kConcatenationMaxSum [1, -2, 1] 5
 
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in

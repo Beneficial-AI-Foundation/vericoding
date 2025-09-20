@@ -5,26 +5,26 @@ vc-description: |-
   Please help Chef by creating a program to use it during the competitions. It should read the initial heights of the hill and should support two kinds of operations:
   Type 1: Given a two numbers: i and k, your program should output the index of the hill the participant is expected to finish if he starts from the i-th hill (as explained above).
   Type 2: Given three numbers: L, R, X, the heights of all the hills between L and R, both end points inclusive, should be increased by X (if X is negative then their height is decreased).
-
+  
   -----Input-----
   - First line contains two integers N and Q, denoting the number of hills and number of operations respectively.
   - Second line contains N space-separated integers A1, A2, ..., AN denoting the initial heights of the hills.
   - Each of the next Q lines describes an operation. If the first integer is equal to 1, it means that the operation is of Type 1, and it will be followed by two integers i and k. Otherwise the first number will be equal to 2, and it means that the operation is of Type 2, and so it will be followed by three integers L, R and X.
-
+  
   -----Output-----
   For each operation of Type 1, output the index of the hill in which the participant will finish.
-
+  
   -----Constraints-----
   - 1 ≤ N, Q ≤ 100,000
   - 1 ≤ Ai ≤ 1,000,000
   - 1 ≤ L ≤ R ≤ N
   - -1,000,000 ≤ X ≤ 1,000,000
   - 1 ≤ i, k ≤ N
-
+  
   -----Subtasks-----
   - Subtask 1 (20 points) : 1 ≤ N, Q ≤ 1,000 
   - Subtask 2 (80 points) : Original constraints
-
+  
   -----Example-----
   Input:
   5 3
@@ -32,11 +32,11 @@ vc-description: |-
   1 1 2
   2 3 4 -1
   1 1 2
-
+  
   Output:
   3
   4
-
+  
   -----Explanation-----
   The initial heights are (1, 2, 3, 4, 5). The first operation is of Type 1 and starts from Hill 1 and wants to jump twice. The first jump will be to Hill 2, and the second jump will be to Hill 3. Hence the output for this is 3.
   The second operation changes the heights to (1, 2, 2, 3, 5).
@@ -44,32 +44,32 @@ vc-description: |-
   -/
 
 vc-preamble: |-
-  def hill_jumping_competition (n : Nat) (heights : List Nat) (operations : List (List Nat)) : List Nat :=
-  sorry
-
-vc-helpers: |
-
-vc-definitions: |-
   def is_valid_operation (op : List Nat) : Bool :=
   match op with
-  | h::t => 
+  | h::t =>
     if h = 1 then t.length = 2 && List.head! t ≥ 1 && List.get! t 1 ≥ 1
     else if h = 2 then t.length = 3 && List.head! t ≥ 1 && List.get! t 1 ≥ List.head! t
     else false
   | [] => false
 
+vc-helpers: |-
+
+vc-definitions: |-
+  def hill_jumping_competition (n : Nat) (heights : List Nat) (operations : List (List Nat)) : List Nat :=
+  sorry
+
 vc-theorems: |-
   theorem hill_jumping_result_length (n : Nat) (heights : List Nat) (operations : List (List Nat)) :
     List.all operations is_valid_operation →
-    (hill_jumping_competition n heights operations).length = 
-      (List.filter (fun op => List.head! op = 1) operations).length := 
+    (hill_jumping_competition n heights operations).length =
+      (List.filter (fun op => List.head! op = 1) operations).length :=
   sorry
-
+  
   theorem hill_jumping_bounds (n : Nat) (heights : List Nat) (operations : List (List Nat)) :
     List.all operations is_valid_operation →
     List.all (hill_jumping_competition n heights operations) (fun x => x ≥ 1 ∧ x ≤ n) :=
   sorry
-
+  
   theorem hill_jumping_preserves_heights (n : Nat) (heights : List Nat) (operations : List (List Nat)) :
     List.all operations is_valid_operation →
     let original := heights
@@ -80,14 +80,14 @@ vc-theorems: |-
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded
-
-  /-
+  
+  /--
   info: [3, 4]
   -/
   #guard_msgs in
   #eval hill_jumping_competition 5 [1, 2, 3, 4, 5] [[1, 1, 2], [2, 3, 4, -1], [1, 1, 2]]
-
-  /-
+  
+  /--
   info: [2, 2]
   -/
   #guard_msgs in

@@ -19,13 +19,13 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'True'
   -/
   #guard_msgs in
   #eval boolean_to_string True
 
-  /-
+  /--
   info: 'False'
   -/
   #guard_msgs in

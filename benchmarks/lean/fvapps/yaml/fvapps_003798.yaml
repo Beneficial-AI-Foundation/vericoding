@@ -49,19 +49,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 't'
   -/
   #guard_msgs in
   #eval first_dup "tweet"
 
-  /-
+  /--
   info: ' '
   -/
   #guard_msgs in
   #eval first_dup "Ode to Joy"
 
-  /-
+  /--
   info: None
   -/
   #guard_msgs in

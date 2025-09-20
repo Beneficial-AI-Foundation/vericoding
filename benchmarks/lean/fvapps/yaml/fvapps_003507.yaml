@@ -47,19 +47,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 1219856746
   -/
   #guard_msgs in
   #eval triple_shiftian #[1, 1, 1] 25
 
-  /-
+  /--
   info: 2052198929
   -/
   #guard_msgs in
   #eval triple_shiftian #[1, 2, 3] 25
 
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in

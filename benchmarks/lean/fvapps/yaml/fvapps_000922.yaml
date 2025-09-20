@@ -41,19 +41,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: 123
   -/
   #guard_msgs in
   #eval find_next_repetition_free 99
 
-  /-
+  /--
   info: 891
   -/
   #guard_msgs in
   #eval find_next_repetition_free 881
 
-  /-
+  /--
   info: 134
   -/
   #guard_msgs in

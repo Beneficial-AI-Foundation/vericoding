@@ -39,19 +39,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 30
   -/
   #guard_msgs in
   #eval power_law [1, 120] [2, 60] 4
 
-  /-
+  /--
   info: 9
   -/
   #guard_msgs in
   #eval power_law [1, 81] [2, 27] 4
 
-  /-
+  /--
   info: 120
   -/
   #guard_msgs in

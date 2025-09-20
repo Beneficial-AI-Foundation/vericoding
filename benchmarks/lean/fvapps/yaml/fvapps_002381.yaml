@@ -63,19 +63,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval three_consecutive_odds [2, 6, 4, 1]
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval three_consecutive_odds [1, 2, 34, 3, 4, 5, 7, 23, 12]
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in

@@ -26,13 +26,13 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'secret_var'
   -/
   #guard_msgs in
   #eval find_variable_with_777 
 
-  /-
+  /--
   info: 'magic_number'
   -/
   #guard_msgs in

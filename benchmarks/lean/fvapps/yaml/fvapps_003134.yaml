@@ -57,19 +57,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: '20th'
   -/
   #guard_msgs in
   #eval what_century "1999"
 
-  /-
+  /--
   info: '21st'
   -/
   #guard_msgs in
   #eval what_century "2011"
 
-  /-
+  /--
   info: '20th'
   -/
   #guard_msgs in

@@ -1,11 +1,11 @@
 vc-description: |-
   /-
   # Introduction
-
+  
   The Condi (Consecutive Digraphs) cipher was introduced by G4EGG (Wilfred Higginson) in 2011. The cipher preserves word divisions, and is simple to describe and encode, but it's surprisingly difficult to crack. 
-
+  
   # Encoding Algorithm
-
+  
   The encoding steps are:
   - Start with an `initial key`, e.g. `cryptogram`
   - Form a `key`, remove the key duplicated letters except for the first occurrence
@@ -22,19 +22,19 @@ vc-description: |-
   - Encode the first letter of your `message` by moving 10 places to the right from the letter's position in the key alphabet. If the first letter were say `o` then the letter 10 places to the right in the `key alphabet` is `j`, so `o` would be encoded as `j`. If you move past the end of the key alphabet you wrap back to the beginning. For example if the first letter were `s` then counting 10 places would bring you around to `t`.
   - Use the position of the previous plaintext letter as the number of places to move to encode the next plaintext number. If you have just encoded an `o` (position 6) , and you now want to encode say `n`, then you move 6 places to the right from `n` which brings you to `x`.
   - Keep repeating the previous step until all letters are encoded.
-
+  
   Decoding is the reverse of encoding - you move to the left instead of to the right.
-
+  
   # Task
-
+  
   Create two functions - `encode`/`Encode` and `decode`/`Decode` which implement Condi cipher encoding and decoding.
-
+  
   # Inputs
-
+  
   - `message` - a string to encode/decode
   - `key` - a key consists of only lower case letters
   - `initShift` - a non-negative integer representing the initial shift
-
+  
   # Notes
   - Don't forget to remove the duplicated letters from the `key` except for the first occurrence 
   - Characters which do not exist in the `key alphabet` should be coppied to the output string exactly like they appear in the `message` string
@@ -42,27 +42,27 @@ vc-description: |-
   -/
 
 vc-preamble: |-
-  def encode (message : String) (key : String) (shift : Int) : String :=
-    sorry
-
-  def decode (message : String) (key : String) (shift : Int) : String :=
-    sorry
-
-vc-helpers: |
-
-vc-definitions: |-
   def LOWER : String :=
     "abcdefghijklmnopqrstuvwxyz"
 
+vc-helpers: |-
+
+vc-definitions: |-
+  def encode (message : String) (key : String) (shift : Int) : String :=
+    sorry
+  
+  def decode (message : String) (key : String) (shift : Int) : String :=
+    sorry
+
 vc-theorems: |-
-  theorem encode_decode_roundtrip 
+  theorem encode_decode_roundtrip
     {message key : String} {shift : Int}
     (h1 : ∀ c ∈ message.data, c.toString ∈ LOWER.data.map toString)
     (h2 : key.length > 0)
     (h3 : ∀ c ∈ key.data, c.toString ∈ LOWER.data.map toString) :
     decode (encode message key shift) key shift = message :=
   sorry
-
+  
   theorem non_alphabet_chars_unchanged
     {message key : String} {shift : Int}
     (h1 : key.length > 0)
@@ -75,26 +75,26 @@ vc-theorems: |-
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
-
-  /-
+  
+  /--
   info: 'jx'
   -/
   #guard_msgs in
   #eval encode "on" "cryptogram" 10
-
-  /-
+  
+  /--
   info: msg
   -/
   #guard_msgs in
   #eval decode "jx" key shift
-
-  /-
+  
+  /--
   info: msg
   -/
   #guard_msgs in
   #eval decode encode(msg, key, shift) "keyword" 5
-
-  /-
+  
+  /--
   info: msg
   -/
   #guard_msgs in

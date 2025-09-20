@@ -32,19 +32,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in
   #eval find_middle "s7d8jd9"
 
-  /-
+  /--
   info: 56
   -/
   #guard_msgs in
   #eval find_middle "s7d8j"
 
-  /-
+  /--
   info: -1
   -/
   #guard_msgs in

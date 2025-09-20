@@ -88,19 +88,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: 7
   -/
   #guard_msgs in
   #eval how_many_apples 2
 
-  /-
+  /--
   info: 3121
   -/
   #guard_msgs in
   #eval how_many_apples 5
 
-  /-
+  /--
   info: 25
   -/
   #guard_msgs in

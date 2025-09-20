@@ -90,19 +90,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'a'
   -/
   #guard_msgs in
   #eval decode_binary_string "0000"
 
-  /-
+  /--
   info: 'ap'
   -/
   #guard_msgs in
   #eval decode_binary_string "00001111"
 
-  /-
+  /--
   info: 'j'
   -/
   #guard_msgs in

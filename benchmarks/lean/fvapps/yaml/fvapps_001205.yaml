@@ -76,19 +76,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: '4'
   -/
   #guard_msgs in
   #eval find_count_bases_starting_with_1 6
 
-  /-
+  /--
   info: '0'
   -/
   #guard_msgs in
   #eval find_count_bases_starting_with_1 0
 
-  /-
+  /--
   info: 'INFINITY'
   -/
   #guard_msgs in

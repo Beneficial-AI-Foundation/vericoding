@@ -36,19 +36,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'oprn-nors-sron-nors'
   -/
   #guard_msgs in
   #eval sort_transform [111, 112, 113, 114, 115, 113, 114, 110]
 
-  /-
+  /--
   info: '3>c~-3>d~-~d>3-3>d~'
   -/
   #guard_msgs in
   #eval sort_transform [51, 62, 73, 84, 95, 100, 99, 126]
 
-  /-
+  /--
   info: 'Beoq-7Boq-qoB7-7Boq'
   -/
   #guard_msgs in

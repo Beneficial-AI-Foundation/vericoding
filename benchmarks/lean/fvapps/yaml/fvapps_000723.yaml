@@ -76,19 +76,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in
   #eval check_rocket_stability [10, 12, 4, 5, 3]
 
-  /-
+  /--
   info: 1
   -/
   #guard_msgs in
   #eval check_rocket_stability [0, 0, 0]
 
-  /-
+  /--
   info: 1
   -/
   #guard_msgs in

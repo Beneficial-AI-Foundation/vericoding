@@ -38,7 +38,7 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'Hello, World!'
   -/
   #guard_msgs in

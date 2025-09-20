@@ -70,19 +70,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded
 
-  /-
+  /--
   info: 9
   -/
   #guard_msgs in
   #eval solve_max_score 4 4
 
-  /-
+  /--
   info: 13
   -/
   #guard_msgs in
   #eval solve_max_score 3 4
 
-  /-
+  /--
   info: 27
   -/
   #guard_msgs in

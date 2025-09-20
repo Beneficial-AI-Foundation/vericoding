@@ -34,19 +34,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval convert_bits 31 14
 
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in
   #eval convert_bits 7 17
 
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in

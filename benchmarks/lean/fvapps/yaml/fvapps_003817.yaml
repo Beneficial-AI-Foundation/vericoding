@@ -48,19 +48,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'taxi'
   -/
   #guard_msgs in
   #eval high "man i need a taxi up to ubud"
 
-  /-
+  /--
   info: 'volcano'
   -/
   #guard_msgs in
   #eval high "what time are we climbing up the volcano"
 
-  /-
+  /--
   info: 'semynak'
   -/
   #guard_msgs in

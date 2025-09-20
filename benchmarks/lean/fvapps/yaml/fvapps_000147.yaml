@@ -59,19 +59,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'abcd'
   -/
   #guard_msgs in
   #eval remove_duplicates "abcd" 2
 
-  /-
+  /--
   info: 'aa'
   -/
   #guard_msgs in
   #eval remove_duplicates "deeedbbcccbdaa" 3
 
-  /-
+  /--
   info: 'ps'
   -/
   #guard_msgs in

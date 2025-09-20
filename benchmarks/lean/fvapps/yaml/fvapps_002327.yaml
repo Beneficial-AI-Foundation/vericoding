@@ -1,89 +1,97 @@
 vc-description: |-
   /-
   Implement strStr().
-
+  
   Return the index of the first occurrence of needle in haystack, or -1 if needle is not part of haystack.
-
+  
   Example 1:
-
+  
   Input: haystack = "hello", needle = "ll"
   Output: 2
-
+  
   Example 2:
-
+  
   Input: haystack = "aaaaa", needle = "bba"
   Output: -1
-
+  
   Clarification:
-
+  
   What should we return when needle is an empty string? This is a great question to ask during an interview.
-
+  
   For the purpose of this problem, we will return 0 when needle is an empty string. This is consistent to C's strstr() and Java's indexOf().
   -/
 
 vc-preamble: |-
-  def find_str (haystack : String) (needle : String) : Int :=
-    sorry
 
-  def containsString (haystack needle : String) : Bool :=
-    sorry
-
-  def stringSlice (s : String) (start : Int) (last : Int) : String :=
-    sorry
-
-vc-helpers: |
+vc-helpers: |-
 
 vc-definitions: |-
+  def find_str (haystack : String) (needle : String) : Int :=
+    sorry
+  
+  def containsString (haystack needle : String) : Bool :=
+    sorry
+  
+  def stringSlice (s : String) (start : Int) (last : Int) : String :=
+    sorry
+  
   def stringRepeat (s : String) (n : Nat) : String :=
     sorry
 
 vc-theorems: |-
   theorem empty_needle_returns_zero {haystack : String} :
-    find_str haystack "" = 0 := by sorry
-
+    find_str haystack "" = 0 := by
+  sorry
+  
   theorem empty_haystack_nonempty_needle_returns_minus_one {needle : String} (h : needle ≠ "") :
-    find_str "" needle = -1 := by sorry
-
-  theorem needle_not_found_returns_minus_one {haystack needle : String} 
+    find_str "" needle = -1 := by
+  sorry
+  
+  theorem needle_not_found_returns_minus_one {haystack needle : String}
     (h : containsString haystack needle = false) :
-    find_str haystack needle = -1 := by sorry
-
-  theorem result_is_valid_index {haystack needle : String} 
+    find_str haystack needle = -1 := by
+  sorry
+  
+  theorem result_is_valid_index {haystack needle : String}
     (h1 : needle ≠ "") (h2 : containsString haystack needle = true) :
     let r := find_str haystack needle;
-    0 ≤ r ∧ r < String.length haystack := by sorry
-
+    0 ≤ r ∧ r < String.length haystack := by
+  sorry
+  
   theorem result_points_to_needle {haystack needle : String}
     (h1 : needle ≠ "") (h2 : containsString haystack needle = true) :
     let r := find_str haystack needle;
-    (stringSlice haystack r (r + String.length needle)) = needle := by sorry
-
+    (stringSlice haystack r (r + String.length needle)) = needle := by
+  sorry
+  
   theorem no_earlier_occurrence {haystack needle : String}
     (h1 : needle ≠ "") (h2 : containsString haystack needle = true) :
     let r := find_str haystack needle;
-    containsString (stringSlice haystack 0 r) needle = false := by sorry
-
+    containsString (stringSlice haystack 0 r) needle = false := by
+  sorry
+  
   theorem repeated_needle_returns_zero {s : String} {n : Nat}
     (h1 : s ≠ "") (h2 : n > 0) :
-    find_str (stringRepeat s n) s = 0 := by sorry
+    find_str (stringRepeat s n) s = 0 := by
+  sorry
 
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded
-
-  /-
+  
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval find_str "hello" "ll"
-
-  /-
+  
+  /--
   info: -1
   -/
   #guard_msgs in
   #eval find_str "aaaaa" "bba"
-
-  /-
+  
+  /--
   info: 0
   -/
   #guard_msgs in

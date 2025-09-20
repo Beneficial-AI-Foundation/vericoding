@@ -42,19 +42,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'bshhk'
   -/
   #guard_msgs in
   #eval keyword_cipher "hello" "wednesday"
 
-  /-
+  /--
   info: 'wticljt dljt'
   -/
   #guard_msgs in
   #eval keyword_cipher "Welcome home" "secret"
 
-  /-
+  /--
   info: 'bshhk'
   -/
   #guard_msgs in

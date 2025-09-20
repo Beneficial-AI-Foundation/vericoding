@@ -92,19 +92,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'yes'
   -/
   #guard_msgs in
   #eval is_rainbow_array [1, 2, 3, 4, 4, 5, 6, 6, 6, 7, 6, 6, 6, 5, 4, 4, 3, 2, 1]
 
-  /-
+  /--
   info: 'no'
   -/
   #guard_msgs in
   #eval is_rainbow_array [1, 2, 3, 4, 5, 6, 7, 6, 5, 4, 3, 2, 1, 1]
 
-  /-
+  /--
   info: 'no'
   -/
   #guard_msgs in

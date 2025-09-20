@@ -48,19 +48,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: {'a': 13, 'b': 20, 'c': 36, 'd': 3}
   -/
   #guard_msgs in
   #eval combine {"a": 10, "b": 20, "c": 30} {"a": 3, "c": 6, "d": 3}
 
-  /-
+  /--
   info: {}
   -/
   #guard_msgs in
   #eval combine {} {}
 
-  /-
+  /--
   info: {'x': 3, 'y': 7, 'z': 5}
   -/
   #guard_msgs in

@@ -1,79 +1,87 @@
 vc-description: |-
   /-
   Let's assume that   v(n) is the largest prime number, that does not exceed n;
-
+  
    u(n) is the smallest prime number strictly greater than n. 
-
+  
   Find $\sum_{i = 2}^{n} \frac{1}{v(i) u(i)}$.
-
+  
   -----Input-----
-
+  
   The first line contains integer t (1 ≤ t ≤ 500) — the number of testscases. 
-
+  
   Each of the following t lines of the input contains integer n (2 ≤ n ≤ 10^9).
-
+  
   -----Output-----
-
+  
   Print t lines: the i-th of them must contain the answer to the i-th test as an irreducible fraction "p/q", where p, q are integers, q > 0.
-
+  
   -----Examples-----
   Input
   2
   2
   3
-
+  
   Output
   1/6
   7/30
   -/
 
 vc-preamble: |-
-  def gcd (a b : Int) : Int := sorry
 
-  def calc_fraction (n : Int) : Int × Int := sorry
-
-vc-helpers: |
+vc-helpers: |-
 
 vc-definitions: |-
-  def fraction_to_str (frac : Int × Int) : String := sorry
-
-  theorem calc_fraction_valid_output {n : Int} (h : n ≥ 2) : 
-    let (num, den) := calc_fraction n
-    den > 0 ∧ gcd num.natAbs den.natAbs = 1 := sorry
+  def gcd (a b : Int) : Int :=
+  sorry
+  
+  def calc_fraction (n : Int) : Int × Int :=
+  sorry
+  
+  def fraction_to_str (frac : Int × Int) : String :=
+  sorry
 
 vc-theorems: |-
+  theorem calc_fraction_valid_output {n : Int} (h : n ≥ 2) :
+    let (num, den) := calc_fraction n
+    den > 0 ∧ gcd num.natAbs den.natAbs = 1 :=
+  sorry
+  
   theorem fraction_to_str_format {n : Int} (h : n ≥ 2) :
     let frac := calc_fraction n
     let str := fraction_to_str frac
     ∃ num den : String,
-      str = num ++ "/" ++ den ∧ 
+      str = num ++ "/" ++ den ∧
       (frac.1 = String.toInt! num) ∧
-      (frac.2 = String.toInt! den) := sorry
-
+      (frac.2 = String.toInt! den) :=
+  sorry
+  
   theorem gcd_properties {a b : Int} (ha : a > 0) (hb : b > 0) :
     let g := gcd a b
-    g > 0 ∧ a % g = 0 ∧ b % g = 0 := sorry
-
+    g > 0 ∧ a % g = 0 ∧ b % g = 0 :=
+  sorry
+  
   theorem calc_fraction_two :
-    calc_fraction 2 = (1, 6) := sorry
+    calc_fraction 2 = (1, 6) :=
+  sorry
 
 vc-postamble: |-
   -- Apps difficulty: competition
   -- Assurance level: unguarded
-
-  /-
+  
+  /--
   info: '1/6'
   -/
   #guard_msgs in
   #eval fraction_to_str calc_fraction(2)
-
-  /-
+  
+  /--
   info: '7/30'
   -/
   #guard_msgs in
   #eval fraction_to_str calc_fraction(3)
-
-  /-
+  
+  /--
   info: '5/14'
   -/
   #guard_msgs in

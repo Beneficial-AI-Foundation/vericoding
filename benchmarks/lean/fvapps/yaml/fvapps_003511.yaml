@@ -37,25 +37,25 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: ' '
   -/
   #guard_msgs in
   #eval tiy_fizz_buzz " "
 
-  /-
+  /--
   info: 'Iron'
   -/
   #guard_msgs in
   #eval tiy_fizz_buzz "H"
 
-  /-
+  /--
   info: 'Iron Yard'
   -/
   #guard_msgs in
   #eval tiy_fizz_buzz "A"
 
-  /-
+  /--
   info: 'IronYardllYard IronIron YardIronIronIron!'
   -/
   #guard_msgs in

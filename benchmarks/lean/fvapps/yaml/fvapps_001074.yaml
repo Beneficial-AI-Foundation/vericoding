@@ -63,19 +63,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in
   #eval count_odd_button_sums 4 [3, 5, 3, 4]
 
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in
   #eval count_odd_button_sums 2 [5, 7]
 
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in

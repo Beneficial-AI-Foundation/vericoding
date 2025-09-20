@@ -79,19 +79,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: '((()))'
   -/
   #guard_msgs in
   #eval find_minimal_parentheses "()((()()))"
 
-  /-
+  /--
   info: '(())'
   -/
   #guard_msgs in
   #eval find_minimal_parentheses "(())"
 
-  /-
+  /--
   info: '(((())))'
   -/
   #guard_msgs in

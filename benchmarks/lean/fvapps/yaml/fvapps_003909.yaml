@@ -1,23 +1,23 @@
 vc-description: |-
   /-
   This is the simple version of Shortest Code series. If you need some challenges, please try the [challenge version](http://www.codewars.com/kata/56f928b19982cc7a14000c9d)
-
+  
   ## Task: 
-
+  
     Every uppercase letter is Father, The corresponding lowercase letters is the Son.
-
+  
     Give you a string ```s```, If the father and son both exist, keep them. If it is a separate existence, delete them. Return the result.
-
+  
     For example: 
-
+  
      ```sc("Aab")``` should return ```"Aa"```
-
+  
      ```sc("AabBc")``` should return ```"AabB"```
-
+  
      ```sc("AaaaAaab")``` should return ```"AaaaAaa"```(father can have a lot of son)
-
+  
      ```sc("aAAAaAAb")``` should return ```"aAAAaAA"```(son also can have a lot of father ;-)
-
+  
   ### Series:
    - [Bug in Apple](http://www.codewars.com/kata/56fe97b3cc08ca00e4000dc9)
    - [Father and Son](http://www.codewars.com/kata/56fe9a0c11086cd842000008)
@@ -44,54 +44,68 @@ vc-description: |-
   -/
 
 vc-preamble: |-
-  def IsUpper (c : Char) : Bool := sorry
-  def IsLower (c : Char) : Bool := sorry
 
-vc-helpers: |
+vc-helpers: |-
 
 vc-definitions: |-
-  def swapcase (c : Char) : Char := sorry
-  def sc (s : String) : String := sorry
+  def IsUpper (c : Char) : Bool :=
+  sorry
+  
+  def IsLower (c : Char) : Bool :=
+  sorry
+  
+  def swapcase (c : Char) : Char :=
+  sorry
+  
+  def sc (s : String) : String :=
+  sorry
 
 vc-theorems: |-
-  theorem sc_subset (s : String) : 
-    ∀ (c : Char), c ∈ (sc s).data → c ∈ s.data := sorry
-
+  theorem sc_subset (s : String) :
+    ∀ (c : Char), c ∈ (sc s).data → c ∈ s.data :=
+  sorry
+  
   theorem sc_length (s : String) :
-    (sc s).length ≤ s.length := sorry
-
+    (sc s).length ≤ s.length :=
+  sorry
+  
   theorem sc_swapcase_pairs (s : String) :
-    ∀ (c : Char), c ∈ (sc s).data → swapcase c ∈ (sc s).data := sorry
-
+    ∀ (c : Char), c ∈ (sc s).data → swapcase c ∈ (sc s).data :=
+  sorry
+  
   theorem sc_all_upper (s : String) :
-    (∀ (c : Char), c ∈ s.data → IsUpper c) → sc s = "" := sorry
-
+    (∀ (c : Char), c ∈ s.data → IsUpper c) → sc s = "" :=
+  sorry
+  
   theorem sc_all_lower (s : String) :
-    (∀ (c : Char), c ∈ s.data → IsLower c) → sc s = "" := sorry
-
+    (∀ (c : Char), c ∈ s.data → IsLower c) → sc s = "" :=
+  sorry
+  
   theorem sc_empty :
-    sc "" = "" := sorry
-
+    sc "" = "" :=
+  sorry
+  
   theorem sc_idempotent (s : String) :
-    sc (sc s) = sc s := sorry
+    sc (sc s) = sc s :=
+  sorry
 
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
-
-  /-
+  
+  /--
   info: 'Aa'
   -/
   #guard_msgs in
   #eval sc "Aab"
-
-  /-
+  
+  /--
   info: 'AabB'
   -/
   #guard_msgs in
   #eval sc "AabBc"
-
-  /-
+  
+  /--
   info: 'SONson'
   -/
   #guard_msgs in

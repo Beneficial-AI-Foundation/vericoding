@@ -35,19 +35,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: '12345'
   -/
   #guard_msgs in
   #eval sort_array "54321"
 
-  /-
+  /--
   info: '12345'
   -/
   #guard_msgs in
   #eval sort_array "34251"
 
-  /-
+  /--
   info: '11111'
   -/
   #guard_msgs in

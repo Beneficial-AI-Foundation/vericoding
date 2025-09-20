@@ -56,19 +56,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: '4'
   -/
   #guard_msgs in
   #eval derivative "4x+1"
 
-  /-
+  /--
   info: '-2x+3'
   -/
   #guard_msgs in
   #eval derivative "-x^2+3x+4"
 
-  /-
+  /--
   info: '2x+2'
   -/
   #guard_msgs in

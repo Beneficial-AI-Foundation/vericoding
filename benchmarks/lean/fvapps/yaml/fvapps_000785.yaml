@@ -74,19 +74,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 12
   -/
   #guard_msgs in
   #eval solve_street_food [(4, 6, 8), (2, 6, 6), (1, 4, 3)]
 
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in
   #eval solve_street_food [(7, 7, 4)]
 
-  /-
+  /--
   info: 25
   -/
   #guard_msgs in

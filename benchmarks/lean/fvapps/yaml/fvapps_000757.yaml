@@ -55,25 +55,25 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: [3, 3, 2]
   -/
   #guard_msgs in
   #eval solve_sequence 2
 
-  /-
+  /--
   info: [2, 8, 5, 1, 10]
   -/
   #guard_msgs in
   #eval solve_sequence 5
 
-  /-
+  /--
   info: [5, 4, 4, 10]
   -/
   #guard_msgs in
   #eval solve_sequence 13
 
-  /-
+  /--
   info: [1]
   -/
   #guard_msgs in

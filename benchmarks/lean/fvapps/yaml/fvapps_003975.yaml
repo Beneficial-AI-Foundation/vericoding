@@ -1,20 +1,20 @@
 vc-description: |-
   /-
   The number ```1331``` is the first positive perfect cube,  higher than ```1```, having all its digits odd (its cubic root is ```11```).
-
+  
   The next one is ```3375```.
-
+  
   In the interval [-5000, 5000] there are six pure odd digit perfect cubic numbers and are: ```[-3375,-1331, -1, 1, 1331, 3375]```
-
+  
   Give the numbers of this sequence that are in the range ```[a,b] ```(both values inclusive)
-
+  
   Examples:
   ``` python
   odd_dig_cubic(-5000, 5000) == [-3375,-1331, -1, 1, 1331, 3375] # the output should be sorted.
   odd_dig_cubic(0, 5000) == [1, 1331, 3375]
   odd_dig_cubic(-1, 5000) == [-1, 1, 1331, 3375]
   odd_dig_cubic(-5000, -2) == [-3375,-1331]
-
+  
   ```
   Features of the random tests for python:
   ```
@@ -23,25 +23,26 @@ vc-description: |-
   maximum value for b = 1e17
   ```
   You do not have to check the entries, ```a``` and ```b``` always integers and ```a < b``` 
-
+  
   Working well in Python 2 and Python 3.
   Translation into Ruby is coming soon.
   -/
-
-vc-preamble: |-
-  def odd_dig_cubic (a b : Int) : List Int :=
-    sorry
-
+  
   -- Helper function to check if a number's digits are all odd
-
-  def hasAllOddDigits (n : Int) : Bool :=
-    sorry
-
+  
   -- Helper function to check if a number is a perfect cube
 
-vc-helpers: |
+vc-preamble: |-
+
+vc-helpers: |-
 
 vc-definitions: |-
+  def odd_dig_cubic (a b : Int) : List Int :=
+    sorry
+  
+  def hasAllOddDigits (n : Int) : Bool :=
+    sorry
+  
   def isPerfectCube (n : Int) : Bool :=
     sorry
 
@@ -50,31 +51,31 @@ vc-theorems: |-
     let result := odd_dig_cubic a b
     ∀ i, i + 1 < result.length → result[i]! ≤ result[i+1]! :=
   sorry
-
+  
   theorem odd_dig_cubic_all_cubes (a b : Int) :
-    let result := odd_dig_cubic a b  
+    let result := odd_dig_cubic a b
     ∀ n ∈ result, isPerfectCube n :=
   sorry
-
+  
   theorem odd_dig_cubic_all_odd_digits (a b : Int) :
     let result := odd_dig_cubic a b
     ∀ n ∈ result, hasAllOddDigits n :=
   sorry
-
+  
   theorem odd_dig_cubic_in_range (a b : Int) :
     let result := odd_dig_cubic a b
     ∀ n ∈ result, min a b ≤ n ∧ n ≤ max a b :=
   sorry
-
+  
   theorem odd_dig_cubic_zero : odd_dig_cubic 0 0 = [] :=
   sorry
-
+  
   theorem odd_dig_cubic_one : odd_dig_cubic 1 1 = [1] :=
   sorry
-
+  
   theorem odd_dig_cubic_neg_one : odd_dig_cubic (-1) (-1) = [-1] :=
   sorry
-
+  
   theorem odd_dig_cubic_single_point (n : Int) :
     let result := odd_dig_cubic n n
     result ≠ [] → result.length = 1 ∧ result[0]! = n :=
@@ -83,20 +84,20 @@ vc-theorems: |-
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
-
-  /-
+  
+  /--
   info: [-3375, -1331, -1, 1, 1331, 3375]
   -/
   #guard_msgs in
   #eval odd_dig_cubic -5000 5000
-
-  /-
+  
+  /--
   info: [1, 1331, 3375]
   -/
   #guard_msgs in
   #eval odd_dig_cubic 0 5000
-
-  /-
+  
+  /--
   info: [-3375, -1331]
   -/
   #guard_msgs in

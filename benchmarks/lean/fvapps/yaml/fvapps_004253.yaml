@@ -1,81 +1,86 @@
 vc-description: |-
   /-
   Write a function that takes a single array as an argument (containing multiple strings and/or positive numbers and/or arrays), and returns one of four possible string values, depending on the ordering of the lengths of the elements in the input array:
-
+  
   Your function should return...
-
+  
   - “Increasing” - if the lengths of the elements increase from left to right (although it is possible that some neighbouring elements may also be equal in length)
   - “Decreasing” - if the lengths of the elements decrease from left to right (although it is possible that some neighbouring elements may also be equal in length)
   - “Unsorted” - if the lengths of the elements fluctuate from left to right
   - “Constant” - if all element's lengths are the same.
-
+  
   Numbers and Strings should be evaluated based on the number of characters or digits used to write them.
-
+  
   Arrays should be evaluated based on the number of elements counted directly in the parent array (but not the number of elements contained in any sub-arrays).
-
+  
   Happy coding! :)
   -/
 
 vc-preamble: |-
-  def lengthOf (α : Type) : α → Nat
-    | _ => sorry
-
-  def order_type {α : Type} (arr : List α) : String := sorry
-
-  def is_sorted_increasing (xs : List Nat) : Prop := 
+  def is_sorted_increasing (xs : List Nat) : Prop :=
     ∀ i j, i < j → j < xs.length → xs[i]! ≤ xs[j]!
-
-vc-helpers: |
-
-vc-definitions: |-
+  
   def is_sorted_decreasing (xs : List Nat) : Prop :=
     ∀ i j, i < j → j < xs.length → xs[i]! ≥ xs[j]!
 
+vc-helpers: |-
+
+vc-definitions: |-
+  def order_type {α : Type} (arr : List α) : String := sorry
+  
+  def lengthOf (α : Type) : α → Nat :=
+    sorry
+
 vc-theorems: |-
   theorem constant_length_elements {α : Type} [Inhabited α] (arr : List α) :
-    arr.length > 0 → 
+    arr.length > 0 →
     (∀ i j, i < arr.length → j < arr.length → lengthOf α (arr[i]!) = lengthOf α (arr[j]!)) →
-    order_type arr = "Constant" := sorry
-
+    order_type arr = "Constant" :=
+  sorry
+  
   theorem increasing_length_numbers (arr : List Nat) :
     arr.length > 0 →
     is_sorted_increasing (arr.map (λ x => lengthOf Nat x)) →
     (∃ i j, i < arr.length → j < arr.length → lengthOf Nat (arr[i]!) ≠ lengthOf Nat (arr[j]!)) →
-    order_type arr = "Increasing" := sorry
-
+    order_type arr = "Increasing" :=
+  sorry
+  
   theorem decreasing_length_lists (arr : List (List Nat)) :
     arr.length > 0 →
     is_sorted_decreasing (arr.map List.length) →
     (∃ i j, i < arr.length → j < arr.length → (arr[i]!).length ≠ (arr[j]!).length) →
-    order_type arr = "Decreasing" := sorry
-
+    order_type arr = "Decreasing" :=
+  sorry
+  
   theorem unsorted_mixed_types {α : Type} [Inhabited α] (arr : List α) :
     arr.length > 0 →
     ¬ is_sorted_increasing (arr.map (lengthOf α)) →
     ¬ is_sorted_decreasing (arr.map (lengthOf α)) →
     (∃ i j, i < arr.length → j < arr.length → lengthOf α (arr[i]!) ≠ lengthOf α (arr[j]!)) →
-    order_type arr = "Unsorted" := sorry
-
+    order_type arr = "Unsorted" :=
+  sorry
+  
   theorem empty_list {α : Type} :
-    order_type ([] : List α) = "Constant" := sorry
+    order_type ([] : List α) = "Constant" :=
+  sorry
 
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
-
-  /-
+  
+  /--
   info: 'Constant'
   -/
   #guard_msgs in
   #eval order_type [[1, "b", ["p"], 2]]
-
-  /-
+  
+  /--
   info: 'Increasing'
   -/
   #guard_msgs in
   #eval order_type [123, 1234, 12345, 123456]
-
-  /-
+  
+  /--
   info: 'Decreasing'
   -/
   #guard_msgs in

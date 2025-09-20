@@ -41,31 +41,31 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in
   #eval round_to_next5 0
 
-  /-
+  /--
   info: 5
   -/
   #guard_msgs in
   #eval round_to_next5 2
 
-  /-
+  /--
   info: 15
   -/
   #guard_msgs in
   #eval round_to_next5 12
 
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in
   #eval round_to_next5 -2
 
-  /-
+  /--
   info: -5
   -/
   #guard_msgs in

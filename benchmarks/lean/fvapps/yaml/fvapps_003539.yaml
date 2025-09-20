@@ -28,19 +28,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'empty'
   -/
   #guard_msgs in
   #eval describeList []
 
-  /-
+  /--
   info: 'singleton'
   -/
   #guard_msgs in
   #eval describeList [1]
 
-  /-
+  /--
   info: 'longer'
   -/
   #guard_msgs in

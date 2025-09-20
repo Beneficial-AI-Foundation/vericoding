@@ -67,37 +67,37 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: ''
   -/
   #guard_msgs in
   #eval dragon_curve "a"
 
-  /-
+  /--
   info: ''
   -/
   #guard_msgs in
   #eval dragon_curve 1.1
 
-  /-
+  /--
   info: ''
   -/
   #guard_msgs in
   #eval dragon_curve -1
 
-  /-
+  /--
   info: 'F'
   -/
   #guard_msgs in
   #eval dragon_curve 0
 
-  /-
+  /--
   info: 'FRFR'
   -/
   #guard_msgs in
   #eval dragon_curve 1
 
-  /-
+  /--
   info: 'FRFRRLFLFR'
   -/
   #guard_msgs in

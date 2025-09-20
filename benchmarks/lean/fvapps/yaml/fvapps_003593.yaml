@@ -87,19 +87,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'Sity sivilians'
   -/
   #guard_msgs in
   #eval siegfried 1 "City civilians"
 
-  /-
+  /--
   info: 'Met me at the sam plas at non'
   -/
   #guard_msgs in
   #eval siegfried 3 "Meet me at the same place at noon"
 
-  /-
+  /--
   info: 'Schmart und 99 ver husbund und vif'
   -/
   #guard_msgs in

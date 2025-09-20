@@ -93,13 +93,13 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: expected1
   -/
   #guard_msgs in
   #eval reverse_directions ["Begin on Road A", "Right on Road B", "Right on Road C", "Left on Road D"]
 
-  /-
+  /--
   info: expected2
   -/
   #guard_msgs in

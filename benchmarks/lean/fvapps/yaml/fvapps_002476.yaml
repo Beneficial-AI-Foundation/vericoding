@@ -61,19 +61,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: 24
   -/
   #guard_msgs in
   #eval array_sum_product [[1, 2], [3, 4]]
 
-  /-
+  /--
   info: 4
   -/
   #guard_msgs in
   #eval array_sum_product [[1, 1], [1, 1]]
 
-  /-
+  /--
   info: 15
   -/
   #guard_msgs in

@@ -49,19 +49,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval has_subpattern "a"
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval has_subpattern "aaaa"
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in

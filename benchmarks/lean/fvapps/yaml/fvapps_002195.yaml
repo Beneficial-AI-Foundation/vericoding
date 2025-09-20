@@ -59,19 +59,19 @@ vc-postamble: |-
   -- Apps difficulty: competition
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 1
   -/
   #guard_msgs in
   #eval solve_palindrome_swaps "eel"
 
-  /-
+  /--
   info: 4
   -/
   #guard_msgs in
   #eval solve_palindrome_swaps "ataatmma"
 
-  /-
+  /--
   info: -1
   -/
   #guard_msgs in

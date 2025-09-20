@@ -45,19 +45,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: 1
   -/
   #guard_msgs in
   #eval find_gcd_pair 3 4
 
-  /-
+  /--
   info: 6
   -/
   #guard_msgs in
   #eval find_gcd_pair 12 18
 
-  /-
+  /--
   info: 25
   -/
   #guard_msgs in

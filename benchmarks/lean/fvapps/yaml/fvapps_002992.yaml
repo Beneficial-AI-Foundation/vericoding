@@ -68,19 +68,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: test1_input
   -/
   #guard_msgs in
   #eval from_utf8_binary test1_result
 
-  /-
+  /--
   info: test2_input
   -/
   #guard_msgs in
   #eval from_utf8_binary test2_result
 
-  /-
+  /--
   info: test3_input
   -/
   #guard_msgs in

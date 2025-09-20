@@ -37,19 +37,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: 600
   -/
   #guard_msgs in
   #eval billboard "Jeong-Ho Aristotelis"
 
-  /-
+  /--
   info: 260
   -/
   #guard_msgs in
   #eval billboard "Hadufuns John" 20
 
-  /-
+  /--
   info: 270
   -/
   #guard_msgs in

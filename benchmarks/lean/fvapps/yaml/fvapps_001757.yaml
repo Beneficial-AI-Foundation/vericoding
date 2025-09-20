@@ -104,13 +104,13 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: [-1, -1, -1, -1]
   -/
   #guard_msgs in
   #eval avoid_flood [1, 2, 3, 4]
 
-  /-
+  /--
   info: []
   -/
   #guard_msgs in

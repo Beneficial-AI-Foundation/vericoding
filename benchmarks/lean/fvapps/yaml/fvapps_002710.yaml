@@ -54,19 +54,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded
 
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in
   #eval find [1, 2, 3] 5
 
-  /-
+  /--
   info: 5
   -/
   #guard_msgs in
   #eval find [3, 6, 9, 12] 12
 
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in

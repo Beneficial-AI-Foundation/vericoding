@@ -95,19 +95,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'SAFE'
   -/
   #guard_msgs in
   #eval check_bed_arrangement 4 [[1, 0, 1, 0], [0, 0, 0, 1], [0, 1, 0, 0], [1, 0, 0, 1]]
 
-  /-
+  /--
   info: 'UNSAFE'
   -/
   #guard_msgs in
   #eval check_bed_arrangement 4 [[1, 0, 1, 0], [0, 0, 0, 0], [1, 0, 1, 1], [0, 1, 0, 0]]
 
-  /-
+  /--
   info: 'SAFE'
   -/
   #guard_msgs in

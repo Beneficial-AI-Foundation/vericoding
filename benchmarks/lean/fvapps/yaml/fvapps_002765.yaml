@@ -52,19 +52,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'Jim'
   -/
   #guard_msgs in
   #eval nickname_generator "Jimmy"
 
-  /-
+  /--
   info: 'Saam'
   -/
   #guard_msgs in
   #eval nickname_generator "Saamy"
 
-  /-
+  /--
   info: 'Error: Name too short'
   -/
   #guard_msgs in

@@ -68,13 +68,13 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval can_serve_sugarcane 4 10 2 [2, 2, 3, 1]
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in

@@ -91,19 +91,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in
   #eval three_by_n 2
 
-  /-
+  /--
   info: 11
   -/
   #guard_msgs in
   #eval three_by_n 4
 
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in

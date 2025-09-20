@@ -44,19 +44,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval is_happy 19
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval is_happy 2
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in

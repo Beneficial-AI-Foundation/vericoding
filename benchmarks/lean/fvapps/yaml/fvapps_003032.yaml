@@ -85,13 +85,13 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'scout'
   -/
   #guard_msgs in
   #eval decode [20, 12, 18, 30, 21] 1939
 
-  /-
+  /--
   info: 'masterpiece'
   -/
   #guard_msgs in

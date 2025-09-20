@@ -70,19 +70,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'o'
   -/
   #guard_msgs in
   #eval decode_at_index "leet2code3" 10
 
-  /-
+  /--
   info: 'h'
   -/
   #guard_msgs in
   #eval decode_at_index "ha22" 5
 
-  /-
+  /--
   info: 'a'
   -/
   #guard_msgs in

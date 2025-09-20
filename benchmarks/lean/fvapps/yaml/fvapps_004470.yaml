@@ -46,19 +46,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'Apple Banana'
   -/
   #guard_msgs in
   #eval drop_cap "apple banana"
 
-  /-
+  /--
   info: 'One   Space'
   -/
   #guard_msgs in
   #eval drop_cap "one   space"
 
-  /-
+  /--
   info: '   Space Walk   '
   -/
   #guard_msgs in

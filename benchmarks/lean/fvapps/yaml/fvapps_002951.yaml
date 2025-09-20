@@ -33,19 +33,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: '1 sheep...2 sheep...3 sheep...'
   -/
   #guard_msgs in
   #eval count_sheep 3
 
-  /-
+  /--
   info: '1 sheep...'
   -/
   #guard_msgs in
   #eval count_sheep 1
 
-  /-
+  /--
   info: ''
   -/
   #guard_msgs in

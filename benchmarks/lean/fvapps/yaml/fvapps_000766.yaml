@@ -1,81 +1,81 @@
 vc-description: |-
   /-
   The chef was not happy with the binary number system, so he designed a new machine which is having 6 different states, i.e. in binary there is a total of 2 states as 0 and 1. Now, the chef is confused about how to correlate this machine to get an interaction with Integer numbers, when N(Integer number) is provided to the system, what will be the Nth number that system will return(in Integer form), help the chef to design this system.
-
+  
   -----Input:-----
   - First-line will contain $T$, the number of test cases. Then the test cases follow. 
   - Each test case contains a single line of input, $N$. 
-
+  
   -----Output:-----
   For each test case, output in a single line answer given by the system.
-
+  
   -----Constraints-----
   - $1 \leq T \leq 10^5$
   - $1 \leq N \leq 10^5$
-
+  
   -----Sample Input:-----
   2
   3
   5
-
+  
   -----Sample Output:-----
   7
   37
-
+  
   -----EXPLANATION:-----
   Initial numbers for system = [1, 6, 7, 36, 37, 42, 43, 216, …..
   For 1) 3rd Number for the system will be 7.
   For 2) 5th Number for the system will be 37.
   -/
+  
+  /- The function always returns positive integers -/
+  
+  -- Apps difficulty: interview
+  -- Assurance level: guarded
+  
+  /- The first 5 elements follow a specific pattern -/
+  
+  /- For odd positions after 3, each number is previous number plus 1 -/
 
-vc-preamble: |
+vc-preamble: |-
 
-vc-helpers: |
+vc-helpers: |-
 
 vc-definitions: |-
   def find_nth_number (n : Nat) : Nat :=
     sorry
 
-  /- The function always returns positive integers -/
-
 vc-theorems: |-
-  theorem find_nth_number_positive (n : Nat) (h : n > 0) : 
+  theorem find_nth_number_positive (n : Nat) (h : n > 0) :
     find_nth_number n > 0 :=
   sorry
-
-vc-postamble: |-
-  -- Apps difficulty: interview
-  -- Assurance level: guarded
-
-  /- The first 5 elements follow a specific pattern -/
-
+  
   theorem sequence_initial_pattern :
     find_nth_number 1 = 1 ∧
-    find_nth_number 2 = 6 ∧ 
+    find_nth_number 2 = 6 ∧
     find_nth_number 3 = 7 ∧
     find_nth_number 4 = 36 ∧
     find_nth_number 5 = 37 :=
   sorry
-
-  /- For odd positions after 3, each number is previous number plus 1 -/
-
+  
   theorem odd_index_increment (n : Nat) (h1 : n > 3) (h2 : n % 2 = 1) :
     find_nth_number n = find_nth_number (n-1) + 1 :=
   sorry
 
-  /-
+vc-postamble: |-
+  /--
   info: 7
   -/
   #guard_msgs in
   #eval find_nth_number 3
-
-  /-
+  
+  /--
   info: 37
   -/
   #guard_msgs in
   #eval find_nth_number 5
-
-  /-
+  
+  /--
   info: 1
   -/
   #guard_msgs in

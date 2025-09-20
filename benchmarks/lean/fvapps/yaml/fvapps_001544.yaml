@@ -101,19 +101,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'Impossible'
   -/
   #guard_msgs in
   #eval solve_chocolates 3 5 [4, 1, 2]
 
-  /-
+  /--
   info: 'Possible'
   -/
   #guard_msgs in
   #eval solve_chocolates 5 2 [4, 4, 3, 2, 2]
 
-  /-
+  /--
   info: 'Impossible'
   -/
   #guard_msgs in

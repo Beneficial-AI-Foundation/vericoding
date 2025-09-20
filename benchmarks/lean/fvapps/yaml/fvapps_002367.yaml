@@ -52,19 +52,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval can_place_flowers [1, 0, 0, 0, 1] 1
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval can_place_flowers [1, 0, 0, 0, 1] 2
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in

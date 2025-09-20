@@ -109,19 +109,19 @@ vc-postamble: |-
   -- Apps difficulty: competition
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: [100]
   -/
   #guard_msgs in
   #eval solve 1 1 [1] [1] [(1, 1, 100)]
 
-  /-
+  /--
   info: [-1]
   -/
   #guard_msgs in
   #eval solve 1 1 [1] [1] [(2, 1, 100)]
 
-  /-
+  /--
   info: [8, -1, 4]
   -/
   #guard_msgs in

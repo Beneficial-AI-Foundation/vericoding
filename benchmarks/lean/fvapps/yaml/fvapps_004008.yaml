@@ -1,76 +1,87 @@
 vc-description: |-
   /-
   Your program will receive an array of complex numbers represented as strings. Your task is to write the  `complexSum` function which have to return the sum as a string.
-
+  
   Complex numbers can be written in the form of `a+bi`, such as `2-3i` where `2` is the real part, `3` is the imaginary part, and `i` is the "imaginary unit". 
-
+  
   When you add two complex numbers, the real and the imaginary part needs to be added separately,so for example `2+3i + 5-i = (2+5)+(3i-i) = 7+2i`
-
+  
   Both the complex and the imaginary part can be 0, so `123`, `-2i` or `i` are also complex numbers.
-
+  
   Complex numbers must be returned in their shortest form, so e.g. `0+1*i` should be just `i`, and `10+0i` should be `10`. This is also how you will get them!
-
+  
   For simplicity, the coefficients will always be integers. If the array is empty, return `0`.
-
+  
   Have fun! :)
   -/
+  
+  -- Sum of complex numbers is equal to sum of separate numbers
+  
+  -- Sum of pure imaginary numbers has no real part
+  
+  -- Empty list sums to zero
+  
+  -- List of zeros sums to zero
 
 vc-preamble: |-
-  def complex_sum (arr : List String) : String := sorry
 
-  def complex_str (real imag : Int) : String := sorry
-
-  def real_part (s : String) : Int := sorry
-  def imag_part (s : String) : Int := sorry
-
-vc-helpers: |
+vc-helpers: |-
 
 vc-definitions: |-
-  def list_sum (l : List Int) : Int := sorry
-
-  -- Sum of complex numbers is equal to sum of separate numbers
+  def complex_sum (arr : List String) : String :=
+  sorry
+  
+  def complex_str (real imag : Int) : String :=
+  sorry
+  
+  def real_part (s : String) : Int :=
+  sorry
+  
+  def imag_part (s : String) : Int :=
+  sorry
+  
+  def list_sum (l : List Int) : Int :=
+  sorry
 
 vc-theorems: |-
-  theorem complex_sum_equals_separate_sums {arr : List String} : 
-    ∀ (real_sum imag_sum : Int), 
+  theorem complex_sum_equals_separate_sums {arr : List String} :
+    ∀ (real_sum imag_sum : Int),
     complex_sum arr = complex_str real_sum imag_sum →
-    real_sum = list_sum (arr.map real_part) ∧ 
-    imag_sum = list_sum (arr.map imag_part) := sorry
-
-  -- Sum of pure imaginary numbers has no real part
-
+    real_sum = list_sum (arr.map real_part) ∧
+    imag_sum = list_sum (arr.map imag_part) :=
+  sorry
+  
   theorem pure_imaginary_sum {arr : List String} :
     arr.all (λ s => s = "i") →
-    complex_sum arr = complex_str 0 arr.length := sorry
-
-  -- Empty list sums to zero
-
+    complex_sum arr = complex_str 0 arr.length :=
+  sorry
+  
   theorem empty_list_sums_to_zero :
-    complex_sum [] = "0" := sorry
-
-  -- List of zeros sums to zero 
-
+    complex_sum [] = "0" :=
+  sorry
+  
   theorem zeros_sum_to_zero {arr : List String} :
     arr.all (λ s => s = "0") →
-    complex_sum arr = "0" := sorry
+    complex_sum arr = "0" :=
+  sorry
 
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
-
-  /-
+  
+  /--
   info: '5+2i'
   -/
   #guard_msgs in
   #eval complex_sum ["2+3i", "3-i"]
-
-  /-
+  
+  /--
   info: '6i'
   -/
   #guard_msgs in
   #eval complex_sum ["i", "2i", "3i"]
-
-  /-
+  
+  /--
   info: '0'
   -/
   #guard_msgs in

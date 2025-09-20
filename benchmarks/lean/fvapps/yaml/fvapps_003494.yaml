@@ -53,25 +53,25 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: '0b1111010'
   -/
   #guard_msgs in
   #eval convert_num 122 "bin"
 
-  /-
+  /--
   info: 'Invalid number input'
   -/
   #guard_msgs in
   #eval convert_num "dog" "bin"
 
-  /-
+  /--
   info: '0x0'
   -/
   #guard_msgs in
   #eval convert_num 0 "hex"
 
-  /-
+  /--
   info: 'Invalid base input'
   -/
   #guard_msgs in

@@ -33,19 +33,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
 
-  /-
+  /--
   info: [6, 7, 11]
   -/
   #guard_msgs in
   #eval digits 156
 
-  /-
+  /--
   info: [9, 13, 17, 14, 6, 10, 7, 14, 11, 15]
   -/
   #guard_msgs in
   #eval digits 81596
 
-  /-
+  /--
   info: [11, 8, 5, 13, 10, 7]
   -/
   #guard_msgs in

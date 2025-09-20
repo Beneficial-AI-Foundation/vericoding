@@ -48,19 +48,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded
 
-  /-
+  /--
   info: 5
   -/
   #guard_msgs in
   #eval sum_first_last_digit 1234
 
-  /-
+  /--
   info: 5
   -/
   #guard_msgs in
   #eval sum_first_last_digit 124894
 
-  /-
+  /--
   info: 5
   -/
   #guard_msgs in

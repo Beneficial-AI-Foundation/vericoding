@@ -46,19 +46,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval check_three_and_two ["a", "a", "a", "b", "b"]
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval check_three_and_two ["a", "c", "a", "c", "b"]
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in

@@ -50,19 +50,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: '|~~~~~XX~2~~~~~|'
   -/
   #guard_msgs in
   #eval duck_shoot 6 0.41 "|~~~~~22~2~~~~~|"
 
-  /-
+  /--
   info: '|~~X~~~X2~2~~22~2~~~~2~~~|'
   -/
   #guard_msgs in
   #eval duck_shoot 4 0.64 "|~~2~~~22~2~~22~2~~~~2~~~|"
 
-  /-
+  /--
   info: '|~~~~~~~X~2~~~|'
   -/
   #guard_msgs in

@@ -40,19 +40,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'odd'
   -/
   #guard_msgs in
   #eval oddity 1
 
-  /-
+  /--
   info: 'odd'
   -/
   #guard_msgs in
   #eval oddity 16
 
-  /-
+  /--
   info: 'even'
   -/
   #guard_msgs in

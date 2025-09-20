@@ -70,19 +70,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 20
   -/
   #guard_msgs in
   #eval approx_root 400
 
-  /-
+  /--
   info: 20.02
   -/
   #guard_msgs in
   #eval approx_root 401
 
-  /-
+  /--
   info: 1.33
   -/
   #guard_msgs in

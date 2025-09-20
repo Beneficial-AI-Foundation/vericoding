@@ -37,19 +37,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'Leo finally won the oscar! Leo is happy'
   -/
   #guard_msgs in
   #eval leo 88
 
-  /-
+  /--
   info: 'When will you give Leo an Oscar?'
   -/
   #guard_msgs in
   #eval leo 87
 
-  /-
+  /--
   info: 'Not even for Wolf of wallstreet?!'
   -/
   #guard_msgs in

@@ -1,25 +1,25 @@
 vc-description: |-
   /-
   ### Background
-
+  
   I was reading a [book](http://www.amazon.co.uk/Things-Make-Do-Fourth-Dimension/dp/1846147646/) recently, "Things to Make and Do in the Fourth Dimension" by comedian and mathematician Matt Parker, and in the first chapter of the book Matt talks about problems he likes to solve in his head to take his mind off the fact that he is in his dentist's chair, we've all been there!
-
+  
   The problem he talks about relates to polydivisible numbers, and I thought a kata should be written on the subject as it's quite interesting. (Well it's interesting to me, so there!)
-
+  
   ### Polydivisib... huh what?
-
+  
   So what are they?
-
+  
   A polydivisible number is divisible in an unusual way. The first digit is cleanly divisible by `1`, the first two digits are cleanly divisible by `2`, the first three by `3` and so on.
-
+  
   The interesting thing about polydivisiblity is that it relates to the underlying number, but not the base it is written in, so if aliens came to Earth and used base `23` (`11` fingers on one hand and `12` on the other), no matter what squiggles they use to write numbers, they would find the same numbers polydivisible!
-
+  
   ### Polydivisibilty Example:
-
+  
   Let's do a worked example to clear up any questions ...
-
+  
   Starting wih the number `1,232` in base `10` then:
-
+  
   ```
    1232
    1    /1 = 1    Yay!
@@ -27,11 +27,11 @@ vc-description: |-
    123  /3 = 41   Yay!
    1232 /4 = 308  Yay!
   ```
-
+  
   Thus `1,232` is a polydivisible number in base `4` and above.
-
+  
   However starting wih the number `123,220` and using base `10` then:
-
+  
   ```
    123220
    1      /1 = 1            Yay!
@@ -41,11 +41,11 @@ vc-description: |-
    12322  /5 = 2464.4       Oh no, that's not a round number!
    123220 /6 = 220536.333r  Oh no, that's not a round number!
   ```
-
+  
   Thus `123,220` is not a polydivisible base 10 number, but what about in another base?
-
+  
   Again starting wih the number `123,220` and using base `6` then:
-
+  
   ```
    base 6   base 10
    1      = 1       -> 1     /1 = 1     Yay!
@@ -55,25 +55,25 @@ vc-description: |-
    12322  = 1850    -> 1850  /5 = 370   Yay!
    123220 = 11100   -> 11100 /6 = 1850  Yay!
   ```
-
+  
   Thus `123,220` is a polydivisible base `6` number (and a polydivisible base `10` number when converted to `11100` in base `10`).
-
+  
   ### Kata
-
+  
   In this kata you must implement two methods: `is_polydivisible(n, b)` and `get_polydivisible(n, b)`.
-
+  
   The first `is_polydivisible(n, b)` will return `True` if `n` is polydivisible in base `b` or `False` if not.
-
+  
   The second `get_polydivisible(n, b)` will return the `n`th polydivisible number using base `b`, the first polydivisible number is of course always `0`.
-
+  
   You can assume that all inputs are valid.
-
+  
   ```if:haskell
   All necessary arithmetic can be done in `Int` range.
   ```
-
+  
   ### Kata Examples:
-
+  
   ```python
       is_polydivisible("1232", 10)   # => True
       is_polydivisible("123220", 10) # => False
@@ -82,9 +82,9 @@ vc-description: |-
       get_polydivisible(22, 16)      # => "1A"
       get_polydivisible(42, 16)      # => "42"
   ```
-
+  
   #### A Note on Bases
-
+  
   The maximum base used is base `62`, and uses characters in the following order `[0-9][A-Z][a-z]` to denote its digits, base `n` will use the first `n` characters of this sequence.
   ```if-not:haskell
   A constant CHARS has been declared with this sequence for you.
@@ -92,14 +92,15 @@ vc-description: |-
   -/
 
 vc-preamble: |-
-  def CHARS := ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F']
 
-  def int_to_base_n (num : Nat) (base : Nat) : String :=
-  sorry
-
-vc-helpers: |
+vc-helpers: |-
 
 vc-definitions: |-
+  def CHARS := ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F']
+  
+  def int_to_base_n (num : Nat) (base : Nat) : String :=
+  sorry
+  
   def is_polydivisible (s : String) (base : Nat) : Bool :=
   sorry
 
@@ -107,13 +108,13 @@ vc-theorems: |-
   theorem single_digit_polydivisible {base : Nat} (h1 : base ≥ 2) (h2 : base ≤ CHARS.length) :
     ∀ (digit : Char), digit ∈ CHARS.take base → is_polydivisible digit.toString base :=
   sorry
-
-  theorem base_conversion_result_bool {base : Nat} (h1 : base ≥ 2) (h2 : base ≤ CHARS.length) 
+  
+  theorem base_conversion_result_bool {base : Nat} (h1 : base ≥ 2) (h2 : base ≤ CHARS.length)
     (decimal_num : Nat) :
     let base_n := int_to_base_n decimal_num base
     ∃ (b : Bool), is_polydivisible base_n base = b :=
   sorry
-
+  
   theorem zero_polydivisible {base : Nat} (h1 : base ≥ 2) (h2 : base ≤ CHARS.length) :
     is_polydivisible "0" base = true :=
   sorry
@@ -121,20 +122,20 @@ vc-theorems: |-
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
-
-  /-
+  
+  /--
   info: True
   -/
   #guard_msgs in
   #eval is_polydivisible "123" 10
-
-  /-
+  
+  /--
   info: False
   -/
   #guard_msgs in
   #eval is_polydivisible "1234" 10
-
-  /-
+  
+  /--
   info: True
   -/
   #guard_msgs in

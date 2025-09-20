@@ -97,37 +97,37 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: [11, 22, 33, 44]
   -/
   #guard_msgs in
   #eval palindrome 6 4
 
-  /-
+  /--
   info: [77]
   -/
   #guard_msgs in
   #eval palindrome 75 1
 
-  /-
+  /--
   info: [101, 111]
   -/
   #guard_msgs in
   #eval palindrome 101 2
 
-  /-
+  /--
   info: 'Not valid'
   -/
   #guard_msgs in
   #eval palindrome "ACCDDCCA" 3
 
-  /-
+  /--
   info: 'Not valid'
   -/
   #guard_msgs in
   #eval palindrome 773 "1551"
 
-  /-
+  /--
   info: 'Not valid'
   -/
   #guard_msgs in

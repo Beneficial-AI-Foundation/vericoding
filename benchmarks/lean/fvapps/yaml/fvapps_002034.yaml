@@ -72,19 +72,19 @@ vc-postamble: |-
   -- Apps difficulty: competition
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 1
   -/
   #guard_msgs in
   #eval solve_gcd_lcm 2 [1, 1]
 
-  /-
+  /--
   info: 40
   -/
   #guard_msgs in
   #eval solve_gcd_lcm 4 [10, 24, 40, 80]
 
-  /-
+  /--
   info: 54
   -/
   #guard_msgs in

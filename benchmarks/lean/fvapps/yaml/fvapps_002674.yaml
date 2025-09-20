@@ -68,13 +68,13 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: '0 0 00 0000 0 00'
   -/
   #guard_msgs in
   #eval send "C"
 
-  /-
+  /--
   info: '0 0 00 0000 0 000 00 0000 0 00'
   -/
   #guard_msgs in

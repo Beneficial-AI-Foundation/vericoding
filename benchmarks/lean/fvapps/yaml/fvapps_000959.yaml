@@ -96,19 +96,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 14
   -/
   #guard_msgs in
   #eval min_sequence_sum 5 [2, 3, 4, 5, 6]
 
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in
   #eval min_sequence_sum 4 [7, 7, 7, 7]
 
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in

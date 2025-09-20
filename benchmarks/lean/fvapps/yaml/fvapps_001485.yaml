@@ -64,19 +64,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'YES'
   -/
   #guard_msgs in
   #eval can_distribute_pizza 10 20
 
-  /-
+  /--
   info: 'NO'
   -/
   #guard_msgs in
   #eval can_distribute_pizza 12 5
 
-  /-
+  /--
   info: 'YES'
   -/
   #guard_msgs in

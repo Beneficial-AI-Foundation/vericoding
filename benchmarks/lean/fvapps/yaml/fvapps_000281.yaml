@@ -73,19 +73,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval flipLights 1 1
 
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in
   #eval flipLights 2 1
 
-  /-
+  /--
   info: 4
   -/
   #guard_msgs in

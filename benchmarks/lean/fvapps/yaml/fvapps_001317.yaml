@@ -83,25 +83,25 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 1
   -/
   #guard_msgs in
   #eval count_unique_strings "thing"
 
-  /-
+  /--
   info: 4
   -/
   #guard_msgs in
   #eval count_unique_strings "ggdffn"
 
-  /-
+  /--
   info: 3
   -/
   #guard_msgs in
   #eval count_unique_strings "fff"
 
-  /-
+  /--
   info: 0
   -/
   #guard_msgs in

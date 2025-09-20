@@ -51,19 +51,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval stone_game [5, 3, 4, 5]
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval stone_game [3, 7, 2, 3]
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in

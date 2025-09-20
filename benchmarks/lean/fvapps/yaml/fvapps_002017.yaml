@@ -99,19 +99,19 @@ vc-postamble: |-
   -- Apps difficulty: competition
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: expected
   -/
   #guard_msgs in
   #eval solve_killer_pairs ["ross", "rachel"] [["ross", "joey"], ["rachel", "phoebe"], ["phoebe", "monica"], ["monica", "chandler"]]
 
-  /-
+  /--
   info: expected
   -/
   #guard_msgs in
   #eval solve_killer_pairs ["icm", "codeforces"] [["codeforces", "technex"]]
 
-  /-
+  /--
   info: expected
   -/
   #guard_msgs in

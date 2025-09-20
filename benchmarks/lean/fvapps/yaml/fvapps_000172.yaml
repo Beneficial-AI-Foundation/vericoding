@@ -38,19 +38,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 2
   -/
   #guard_msgs in
   #eval find_integers_without_consecutive_ones 1
 
-  /-
+  /--
   info: 5
   -/
   #guard_msgs in
   #eval find_integers_without_consecutive_ones 5
 
-  /-
+  /--
   info: 8
   -/
   #guard_msgs in

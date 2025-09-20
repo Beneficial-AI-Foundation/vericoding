@@ -131,13 +131,13 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 328804
   -/
   #guard_msgs in
   #eval gta 7 123489 5 67
 
-  /-
+  /--
   info: 3836040
   -/
   #guard_msgs in

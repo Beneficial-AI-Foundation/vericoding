@@ -40,19 +40,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: ''
   -/
   #guard_msgs in
   #eval to_camel_case ""
 
-  /-
+  /--
   info: 'theStealthWarrior'
   -/
   #guard_msgs in
   #eval to_camel_case "the_stealth_warrior"
 
-  /-
+  /--
   info: 'TheStealthWarrior'
   -/
   #guard_msgs in

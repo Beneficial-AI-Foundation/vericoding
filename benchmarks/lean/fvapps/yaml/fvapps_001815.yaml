@@ -47,19 +47,19 @@ vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval xor_game [1, 1, 2]
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval xor_game [0, 1]
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in

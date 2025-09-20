@@ -32,19 +32,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'hello Niks!'
   -/
   #guard_msgs in
   #eval greet "Niks"
 
-  /-
+  /--
   info: None
   -/
   #guard_msgs in
   #eval greet ""
 
-  /-
+  /--
   info: None
   -/
   #guard_msgs in

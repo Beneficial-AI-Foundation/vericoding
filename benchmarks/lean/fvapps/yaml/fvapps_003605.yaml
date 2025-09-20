@@ -63,19 +63,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded
 
-  /-
+  /--
   info: [12, 12, 11, 13]
   -/
   #guard_msgs in
   #eval cards_and_pero "P01K02H03H04"
 
-  /-
+  /--
   info: [-1, -1, -1, -1]
   -/
   #guard_msgs in
   #eval cards_and_pero "H02H10P11H02"
 
-  /-
+  /--
   info: [12, 12, 12, 12]
   -/
   #guard_msgs in

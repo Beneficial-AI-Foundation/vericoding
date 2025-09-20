@@ -71,19 +71,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: True
   -/
   #guard_msgs in
   #eval is_mac_48_address "00-1B-63-84-45-E6"
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in
   #eval is_mac_48_address "Z1-1B-63-84-45-E6"
 
-  /-
+  /--
   info: False
   -/
   #guard_msgs in

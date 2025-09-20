@@ -88,19 +88,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'Gold'
   -/
   #guard_msgs in
   #eval membership 100000 1000000 100000 10000 1000
 
-  /-
+  /--
   info: 'Bronze'
   -/
   #guard_msgs in
   #eval membership 1001 1000000 100000 10000 1000
 
-  /-
+  /--
   info: 'Not a member'
   -/
   #guard_msgs in

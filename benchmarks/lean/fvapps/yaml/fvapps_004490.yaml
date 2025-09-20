@@ -38,19 +38,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'The Knife'
   -/
   #guard_msgs in
   #eval band_name_generator "knife"
 
-  /-
+  /--
   info: 'Tartart'
   -/
   #guard_msgs in
   #eval band_name_generator "tart"
 
-  /-
+  /--
   info: 'The Bed'
   -/
   #guard_msgs in

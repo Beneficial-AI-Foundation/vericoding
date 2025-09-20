@@ -65,19 +65,19 @@ vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
 
-  /-
+  /--
   info: 'Total land perimeter: 24'
   -/
   #guard_msgs in
   #eval land_perimeter ["XOOXO", "XOOXO", "OOOXO", "XXOXO", "OXOOO"]
 
-  /-
+  /--
   info: 'Total land perimeter: 18'
   -/
   #guard_msgs in
   #eval land_perimeter ["XOOO", "XOXO", "XOXO", "OOXX", "OOOO"]
 
-  /-
+  /--
   info: 'Total land perimeter: 4'
   -/
   #guard_msgs in
