@@ -120,18 +120,19 @@ def get_source_meta(benchmarks_dir: Path) -> Dict[str, Any]:
                         uuu_name = www_file.stem  # Remove .yaml extension
                         
                         # Check if UUU is already in source_meta
-                        if uuu_name in source_meta:
-                            # Raise error if SM[UUU][XXX] starts with "yaml"
-                            if source_meta[uuu_name][xxx_name].startswith("yaml"):
-                                raise ValueError(f"SM[{uuu_name}][{xxx_name}] starts with 'yaml', "
-                                                f"found: {source_meta[uuu_name][xxx_name]}")
-                        else:
-                            # Create entry SM[UUU] with empty strings for all languages
-                            source_meta[uuu_name] = {
-                                "lean": "",
-                                "dafny": "",
-                                "verus": ""
-                            }
+                        # if uuu_name in source_meta:
+                        #     # Raise error if SM[UUU][XXX] starts with "yaml"
+                        #     if source_meta[uuu_name][xxx_name].startswith("yaml"):
+                        #         raise ValueError(f"SM[{uuu_name}][{xxx_name}] starts with 'yaml', "
+                        #                         f"found: {source_meta[uuu_name][xxx_name]}")
+
+                        # else:
+                        #     # Create entry SM[UUU] with empty strings for all languages
+                        source_meta[uuu_name] = {
+                            "lean": "",
+                            "dafny": "",
+                            "verus": ""
+                        }
                         
                         # Set SM[UUU][XXX] to "poor/ZZZ"
                         source_meta[uuu_name][xxx_name] = f"poor/{zzz_name}"
@@ -286,14 +287,59 @@ def main():
     
     print("\nFile counts by source:")
     print("=" * 50)
+    
+    # Initialize totals
+    total = {}
+    for novelty in ['all', 'novel']:
+        total[novelty] = {}
+        for lang in ['lean', 'dafny', 'verus']:
+            total[novelty][lang] = {}
+            for file_type in ['yaml', 'poor']:
+                total[novelty][lang][file_type] = 0
+
+    not_novel = [('dafny', 'dafnybench'), ('dafny', 'humaneval'),
+                 ('verus', 'verified_cogen'), ('lean', 'verina'),
+                 ('lean', 'fvapps'), ('lean', 'clever')]
+       
+    # Print counts for each source and accumulate totals
     for source, counts in sorted(source_counts.items()):
         print(f"Source: {source}")
         print(f"  Total files: {counts['total']}")
-        print(f"  Lean files: {counts['lean']['yaml']} yaml files, {counts['lean']['poor']} poor files")
-        print(f"  Dafny files: {counts['dafny']['yaml']} yaml files, {counts['dafny']['poor']} poor files")
-        print(f"  Verus files: {counts['verus']['yaml']} yaml files, {counts['verus']['poor']} poor files")
+        print(f"  Lean files: {counts['lean']['yaml']+counts['lean']['poor']} : {counts['lean']['yaml']} ")
+        print(f"  Dafny files: {counts['dafny']['yaml']+counts['dafny']['poor']} : {counts['dafny']['yaml']} ")
+        print(f"  Verus files: {counts['verus']['yaml']+counts['verus']['poor']} : {counts['verus']['yaml']} ")
         print()
+        
+        # Accumulate totals
+        for lang in ['lean', 'dafny', 'verus']:
+            for file_type in ['yaml', 'poor']:
+                total['all'][lang][file_type] += counts[lang][file_type]
+                total['novel'][lang][file_type] += counts[lang][file_type] * (0 if (lang, source) in not_novel else 1)
     
+    # Print grand totals
+    print("=" * 50)
+    print("GRAND TOTALS")
+    print("=" * 50)
+    print(f"Lean total (all): {total['all']['lean']['yaml'] + total['all']['lean']['poor']} : {total['all']['lean']['yaml']}")
+    print(f"Lean total (novel): {total['novel']['lean']['yaml'] + total['novel']['lean']['poor']} : {total['novel']['lean']['yaml']}")
+    print(f"Dafny total (all): {total['all']['dafny']['yaml'] + total['all']['dafny']['poor']} : {total['all']['dafny']['yaml']}")
+    print(f"Dafny total (novel): {total['novel']['dafny']['yaml'] + total['novel']['dafny']['poor']} : {total['novel']['dafny']['yaml']}")
+    print(f"Verus total (all): {total['all']['verus']['yaml'] + total['all']['verus']['poor']} : {total['all']['verus']['yaml']}")
+    print(f"Verus total (novel): {total['novel']['verus']['yaml'] + total['novel']['verus']['poor']} : {total['novel']['verus']['yaml']}")
+    print("=" * 50)
+
+    grand_total = {}
+    for novelty in ['all', 'novel']:
+        grand_total[novelty] = {}
+        for file_type in ['yaml', 'poor']:
+            grand_total[novelty][file_type] = 0
+            for lang in ['lean', 'dafny', 'verus']:
+                grand_total[novelty][file_type] += total[novelty][lang][file_type]
+
+    print(f"Grand total (all):  {grand_total['all']['yaml'] + grand_total['all']['poor']} : {grand_total['all']['yaml']}")  
+    print(f"Grand total (novel): {grand_total['novel']['yaml'] + grand_total['novel']['poor']} : {grand_total['novel']['yaml']}")
+    print("=" * 50)
+
 
 
 if __name__ == "__main__":
