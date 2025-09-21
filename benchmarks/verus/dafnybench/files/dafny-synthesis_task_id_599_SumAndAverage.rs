@@ -8,9 +8,9 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn sum_and_average(n: i32) -> (res: (i32, i32))
-    requires n > 0
-    ensures res.0 == n * (n + 1) / 2 && res.1 * n == res.0
+fn sum_and_average(n: i8) -> (res: (i8, i8))
+    requires n as int > 0
+    ensures res.0 as int == n as int * (n as int + 1) / 2 && res.1 as int * n as int == res.0 as int
 // </vc-spec>
 // <vc-code>
 {

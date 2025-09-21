@@ -8,8 +8,8 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn compute_avg(a: int, b: int) -> (avg: int)
-    ensures avg == (a + b) / 2
+fn compute_avg(a: i8, b: i8) -> (avg: i8)
+    ensures avg as int == (a as int + b as int) / 2
 // </vc-spec>
 // <vc-code>
 {

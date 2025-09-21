@@ -26,9 +26,9 @@ spec fn is_prefix_sum_for(a: Seq<int>, c: Seq<int>) -> bool
 // </vc-helpers>
 
 // <vc-spec>
-fn queryFast(a: &[i32], c: &[i32], i: i32, j: i32) -> (r: i32)
-    requires a.len() + 1 == c.len() && c.len() > 0 && c@[0] == 0,
-        0 <= i <= j <= a.len(),
+fn queryFast(a: &Vec<i8>, c: &Vec<i8>, i: i8, j: i8) -> (r: i8)
+    requires a@.len() + 1 == c@.len() && c@.len() > 0 && c@[0] as int == 0,
+        0 <= i as int <= j as int <= a@.len(),
         is_prefix_sum_for(a@.map(|_i, x| x as int), c@.map(|_i, x| x as int))
     ensures r as int == sum(a@.map(|_i, x| x as int), i as int, j as int)
 // </vc-spec>

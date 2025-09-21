@@ -20,14 +20,14 @@ spec fn shift_minus_32(c: char) -> char {
 // </vc-helpers>
 
 // <vc-spec>
-fn to_uppercase(s: Seq<char>) -> (v: Seq<char>)
+fn to_uppercase(s: Vec<char>) -> (v: Vec<char>)
     ensures
-        v.len() == s.len(),
-        forall|i: int| 0 <= i < s.len() ==> 
-            if is_lower_case(s[i]) {
-                is_lower_upper_pair(s[i], v[i])
+        v@.len() == s@.len(),
+        forall|i: int| 0 <= i < s@.len() ==> 
+            if is_lower_case(s@[i]) {
+                is_lower_upper_pair(s@[i], v@[i])
             } else {
-                v[i] == s[i]
+                v@[i] == s@[i]
             }
 // </vc-spec>
 // <vc-code>

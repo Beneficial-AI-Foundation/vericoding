@@ -34,10 +34,10 @@ spec fn have_not_common_k_substring_pred(k: nat, str1: Seq<char>, str2: Seq<char
 // </vc-helpers>
 
 // <vc-spec>
-fn is_prefix(pre: Seq<char>, str: Seq<char>) -> (res: bool)
+fn is_prefix(pre: Vec<char>, str: Vec<char>) -> (res: bool)
     ensures
-        !res <==> is_not_prefix_pred(pre, str),
-        res <==> is_prefix_pred(pre, str),
+        !res <==> is_not_prefix_pred(pre@, str@),
+        res <==> is_prefix_pred(pre@, str@),
 // </vc-spec>
 // <vc-code>
 {

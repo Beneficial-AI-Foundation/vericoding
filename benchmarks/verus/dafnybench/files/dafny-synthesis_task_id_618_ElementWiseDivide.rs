@@ -8,13 +8,13 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn element_wise_divide(a: Seq<int>, b: Seq<int>) -> (result: Seq<int>)
+fn element_wise_divide(a: Vec<i8>, b: Vec<i8>) -> (result: Vec<i8>)
     requires 
-        a.len() == b.len(),
-        forall|i: int| 0 <= i < b.len() ==> b[i] != 0,
+        a@.len() == b@.len(),
+        forall|i: int| 0 <= i < b@.len() ==> b@[i] as int != 0,
     ensures 
-        result.len() == a.len(),
-        forall|i: int| 0 <= i < result.len() ==> result[i] == a[i] / b[i],
+        result@.len() == a@.len(),
+        forall|i: int| 0 <= i < result@.len() ==> result@[i] as int == a@[i] as int / b@[i] as int,
 // </vc-spec>
 // <vc-code>
 {

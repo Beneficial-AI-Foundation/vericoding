@@ -13,11 +13,11 @@ spec fn ordered(a: Seq<int>, left: int, right: int) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn selection_sort(a: &mut Vec<int>)
+fn selection_sort(a: &mut Vec<i8>)
     ensures 
-        ordered(a@, 0, a.len() as int),
+        ordered(a@.map(|i: int, x: i8| x as int), 0, a.len() as int),
         a.len() == old(a).len(),
-        a@.to_multiset() =~= old(a)@.to_multiset(),
+        a@.map(|i: int, x: i8| x as int).to_multiset() =~= old(a)@.map(|i: int, x: i8| x as int).to_multiset(),
 // </vc-spec>
 // <vc-code>
 {

@@ -14,12 +14,12 @@ spec fn sorted_seg(a: Seq<int>, i: int, j: int) -> bool
 // </vc-helpers>
 
 // <vc-spec>
-fn bubble_sort(a: &mut Vec<int>, c: usize, f: usize)
+fn bubble_sort(a: &mut Vec<i8>, c: usize, f: usize)
     requires 
         0 <= c <= f <= old(a).len(),
     ensures 
-        sorted_seg(a@, c as int, f as int),
-        a@.subrange(c as int, f as int).to_multiset() == old(a)@.subrange(c as int, f as int).to_multiset(),
+        sorted_seg(a@.map(|i, x: i8| x as int), c as int, f as int),
+        a@.subrange(c as int, f as int).map(|i, x: i8| x as int).to_multiset() == old(a)@.subrange(c as int, f as int).map(|i, x: i8| x as int).to_multiset(),
         a@.subrange(0, c as int) == old(a)@.subrange(0, c as int),
         a@.subrange(f as int, a@.len() as int) == old(a)@.subrange(f as int, old(a)@.len() as int),
 // </vc-spec>

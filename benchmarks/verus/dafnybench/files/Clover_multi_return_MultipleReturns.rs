@@ -8,7 +8,7 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn multiple_returns(x: int, y: int) -> (result: (int, int))
+fn multiple_returns(x: i8, y: i8) -> (result: (i8, i8))
     ensures 
         result.0 == x + y,
         result.1 == x - y,

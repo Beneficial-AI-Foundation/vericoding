@@ -8,14 +8,14 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn search_recursive(a: Seq<int>, i: int, j: int, x: int) -> (k: int)
+fn search_recursive(a: Vec<i8>, i: i8, j: i8, x: i8) -> (k: i8)
     requires 
-        0 <= i <= j <= a.len(),
-        forall|p: int, q: int| i <= p < q < j ==> a[p] >= a[q],
+        0 <= i <= j <= a@.len(),
+        forall|p: int, q: int| i as int <= p < q < j as int ==> a@[p] >= a@[q],
     ensures 
         i <= k <= j,
-        forall|r: int| i <= r < k ==> a[r] >= x,
-        forall|r: int| k <= r < j ==> a[r] < x,
+        forall|r: int| i as int <= r < k as int ==> a@[r] >= x as int,
+        forall|r: int| k as int <= r < j as int ==> a@[r] < x as int,
     decreases j - i
 // </vc-spec>
 // <vc-code>

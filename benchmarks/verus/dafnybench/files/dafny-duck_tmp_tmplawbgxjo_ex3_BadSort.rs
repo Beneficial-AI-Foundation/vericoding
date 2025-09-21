@@ -15,11 +15,11 @@ spec fn sortedbad(s: Seq<char>) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn bad_sort(a: Seq<char>) -> (b: Seq<char>)
+fn bad_sort(a: Vec<char>) -> (b: Vec<char>)
     requires 
         forall|i: int| 0 <= i < a.len() ==> a[i] == 'b' || a[i] == 'a' || a[i] == 'd',
     ensures 
-        sortedbad(b) && b.to_multiset() == a.to_multiset(),
+        sortedbad(b@) && b@.to_multiset() == a@.to_multiset(),
 // </vc-spec>
 // <vc-code>
 {

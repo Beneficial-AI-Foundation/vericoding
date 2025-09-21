@@ -8,10 +8,10 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn abs(x: int) -> (y: int)
+fn abs(x: i8) -> (y: i8)
     ensures 
-        x >= 0 ==> x == y,
-        x < 0 ==> x + y == 0,
+        x as int >= 0 ==> x as int == y as int,
+        (x as int) < 0 ==> (x as int) + (y as int) == 0,
 // </vc-spec>
 // <vc-code>
 {

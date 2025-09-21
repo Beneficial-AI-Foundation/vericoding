@@ -1,0 +1,36 @@
+vc-description: |-
+  // All elements in the output are either in a or b, but not in both or neither
+  
+  // The elements in the output are all different
+
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+  
+  spec fn in_array(a: &Vec<int>, x: int) -> bool {
+      exists|i: int| 0 <= i < a.len() && a[i] == x
+  }
+
+vc-helpers: |-
+  spec fn in_seq(a: Seq<int>, x: int) -> bool {
+      exists|i: int| 0 <= i < a.len() && a[i] == x
+  }
+
+vc-spec: |-
+  fn dissimilar_elements(a: &Vec<i8>, b: &Vec<i8>) -> (result: Vec<i8>)
+      ensures
+  
+          forall|x: int| result@.contains(x as i8) ==> (in_seq(a@.map(|i: int, v: i8| v as int), x) != in_seq(b@.map(|i: int, v: i8| v as int), x)),
+  
+          forall|i: int, j: int| 0 <= i < j < result.len() ==> result[i] != result[j],
+
+vc-code: |-
+  {
+      assume(false);
+      unreached()
+  }
+
+vc-postamble: |-
+  }
+  fn main() {}

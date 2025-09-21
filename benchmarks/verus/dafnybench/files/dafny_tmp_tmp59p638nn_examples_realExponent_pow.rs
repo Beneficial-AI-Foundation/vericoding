@@ -12,9 +12,9 @@ uninterp spec fn log(n: int, alpha: int) -> int;
 // </vc-helpers>
 
 // <vc-spec>
-fn pow(n: u32, alpha: i32) -> (product: i32)
+fn pow(n: u8, alpha: i8) -> (product: i8)
     requires n > 0 && alpha > 0
-    ensures product == power(n as int, alpha as int)
+    ensures product as int == power(n as int, alpha as int)
 // </vc-spec>
 // <vc-code>
 {

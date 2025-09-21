@@ -8,8 +8,8 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn compute_is_even(x: int) -> (is_even: bool)
-    ensures (x % 2 == 0) == is_even
+fn compute_is_even(x: i8) -> (is_even: bool)
+    ensures (x as int % 2 == 0) == is_even
 // </vc-spec>
 // <vc-code>
 {

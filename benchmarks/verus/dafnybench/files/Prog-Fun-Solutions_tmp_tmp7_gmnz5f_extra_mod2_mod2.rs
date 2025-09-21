@@ -15,7 +15,7 @@ spec fn f2(n: nat) -> nat
 // </vc-helpers>
 
 // <vc-spec>
-fn mod2(n: u32) -> (a: u32)
+fn mod2(n: u8) -> (a: u8)
     ensures a == f2(n as nat)
 // </vc-spec>
 // <vc-code>

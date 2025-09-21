@@ -21,11 +21,11 @@ spec fn sum_to(a: Seq<int>, start: int, end: int) -> int
 // </vc-helpers>
 
 // <vc-spec>
-fn sum_in_range(a: &[i32], start: usize, end: usize) -> (sum: i32)
+fn sum_in_range(a: &Vec<i8>, start: usize, end: usize) -> (sum: i8)
     requires 
         start <= end <= a.len(),
     ensures
-        sum == sum_to(a@.map(|i, v| v as int), start as int, end as int),
+        sum as int == sum_to(a@.map(|i, v| v as int), start as int, end as int),
 // </vc-spec>
 // <vc-code>
 {

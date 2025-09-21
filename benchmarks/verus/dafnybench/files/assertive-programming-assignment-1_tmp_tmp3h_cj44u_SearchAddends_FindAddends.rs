@@ -42,11 +42,11 @@ spec fn loop_inv(q: Seq<int>, x: int, i: nat, j: nat, sum: int) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn find_addends(q: Seq<int>, x: int) -> (result: (usize, usize))
-    requires sorted(q) && has_addends(q, x)
+fn find_addends(q: Vec<i8>, x: i8) -> (result: (usize, usize))
+    requires sorted(q@.map(|i, v| v as int)) && has_addends(q@.map(|i, v| v as int), x as int)
     ensures ({
         let (i, j) = result;
-        i < j < q.len() && q[i as int] + q[j as int] == x
+        i < j < q.len() && q@.map(|i, v| v as int)[i as int] + q@.map(|i, v| v as int)[j as int] == x as int
     })
 // </vc-spec>
 // <vc-code>

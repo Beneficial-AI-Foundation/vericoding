@@ -119,9 +119,9 @@ vc-preamble: |-
 vc-helpers: |-
 
 vc-spec: |-
-  fn euclid(m: int, n: int) -> (gcd: int)
-      requires m > 1 && n > 1 && m >= n
-      ensures gcd > 0 && gcd <= n && gcd <= m && m % gcd == 0 && n % gcd == 0
+  fn euclid(m: i8, n: i8) -> (gcd: i8)
+      requires m as int > 1 && n as int > 1 && m as int >= n as int
+      ensures gcd as int > 0 && gcd as int <= n as int && gcd as int <= m as int && m as int % gcd as int == 0 && n as int % gcd as int == 0
 
 vc-code: |-
   {
@@ -132,4 +132,3 @@ vc-code: |-
 vc-postamble: |-
   }
   fn main() {}
-

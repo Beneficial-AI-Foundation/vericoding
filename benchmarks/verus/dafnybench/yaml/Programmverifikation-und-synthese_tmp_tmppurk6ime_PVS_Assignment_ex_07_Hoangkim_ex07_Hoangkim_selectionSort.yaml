@@ -42,6 +42,11 @@ vc-helpers: |-
 
 vc-spec: |-
   fn selection_sort(a: &mut [i32])
+      requires
+          old(a).len() > 0,
+      ensures
+          a@.to_multiset() == old(a)@.to_multiset(),
+          sorted(a@),
 
 vc-code: |-
   {
@@ -52,4 +57,3 @@ vc-code: |-
 vc-postamble: |-
   }
   fn main() {}
-

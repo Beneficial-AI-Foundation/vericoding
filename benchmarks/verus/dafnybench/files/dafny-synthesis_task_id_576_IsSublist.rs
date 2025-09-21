@@ -8,9 +8,9 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn is_sublist(sub: Seq<int>, main: Seq<int>) -> (result: bool)
+fn is_sublist(sub: Vec<i8>, main: Vec<i8>) -> (result: bool)
     ensures
-        result == exists|i: int, j: int| 0 <= i <= main.len() - sub.len() && j == i + sub.len() && sub =~= #[trigger] main.subrange(i, j)
+        result == exists|i: int, j: int| 0 <= i <= main@.len() - sub@.len() && j == i + sub@.len() && sub@ =~= #[trigger] main@.subrange(i, j)
 // </vc-spec>
 // <vc-code>
 {

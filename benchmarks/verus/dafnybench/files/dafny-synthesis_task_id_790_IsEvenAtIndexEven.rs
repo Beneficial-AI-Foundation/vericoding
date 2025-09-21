@@ -12,8 +12,8 @@ spec fn is_even(n: int) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn is_even_at_index_even(lst: &Vec<i32>) -> (result: bool)
-    ensures result <==> (forall|i: int| 0 <= i < lst.len() ==> (is_even(i) ==> is_even(lst[i] as int)))
+fn is_even_at_index_even(lst: &Vec<i8>) -> (result: bool)
+    ensures result <==> (forall|i: int| 0 <= i < lst@.len() ==> (is_even(i) ==> is_even(lst[i] as int)))
 // </vc-spec>
 // <vc-code>
 {

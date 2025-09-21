@@ -56,14 +56,14 @@ spec fn nomultiples(u: Seq<nat>) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn BullsCows(s: Vec<u32>, u: Vec<u32>) -> (ret: (u32, u32))
+fn BullsCows(s: Vec<u8>, u: Vec<u8>) -> (ret: (u8, u8))
     requires 
         0 < u.len() == s.len() <= 10,
-        nomultiples(s@.map(|i, x: u32| x as nat)) && nomultiples(u@.map(|i, x: u32| x as nat))
+        nomultiples(s@.map(|i, x: u8| x as nat)) && nomultiples(u@.map(|i, x: u8| x as nat))
     ensures 
         ret.0 >= 0 && ret.1 >= 0,
-        ret.0 as nat == bullspec(s@.map(|i, x: u32| x as nat), u@.map(|i, x: u32| x as nat)),
-        ret.1 as nat == cowspec(s@.map(|i, x: u32| x as nat), u@.map(|i, x: u32| x as nat))
+        ret.0 as nat == bullspec(s@.map(|i, x: u8| x as nat), u@.map(|i, x: u8| x as nat)),
+        ret.1 as nat == cowspec(s@.map(|i, x: u8| x as nat), u@.map(|i, x: u8| x as nat))
 // </vc-spec>
 // <vc-code>
 {

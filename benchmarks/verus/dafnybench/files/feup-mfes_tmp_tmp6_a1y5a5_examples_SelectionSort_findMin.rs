@@ -15,10 +15,10 @@ pub open spec fn is_sorted(a: &[i32], from: usize, to: usize) -> bool {
 // <vc-spec>
 fn find_min(a: &mut [i32], from: usize, to: usize) -> (index: usize)
     requires 
-        0 <= from < to <= old(a).len(),
+        0 <= from < to <= old(a)@.len(),
     ensures
         from <= index < to,
-        forall|k: int| from <= k < to ==> old(a)[k] >= old(a)[index as int],
+        forall|k: int| from <= k < to ==> old(a)@[k] >= old(a)@[index as int],
 // </vc-spec>
 // <vc-code>
 {

@@ -1,0 +1,32 @@
+vc-description: |-
+  //Recursive binary search
+
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+  
+  spec fn sorted(s: Seq<int>) -> bool {
+      forall|u: int, w: int| 0 <= u < w < s.len() ==> s[u] <= s[w]
+  }
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn binary_search(v: &Vec<i8>, elem: i8) -> (p: i8)
+      requires sorted(v@.map_values(|val: i8| val as int)),
+      ensures ({
+          &&& -1 <= p as int && p as int < v.len() as int
+          &&& forall|u: int| 0 <= u <= p as int ==> v@[u] <= elem as int
+          &&& forall|w: int| p as int < w < v.len() ==> v@[w] > elem as int
+      }),
+
+vc-code: |-
+  {
+      assume(false);
+      unreached()
+  }
+
+vc-postamble: |-
+  }
+  fn main() {}

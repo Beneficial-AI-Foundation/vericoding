@@ -8,9 +8,9 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn pentagon_perimeter(side: i32) -> (perimeter: i32)
+fn pentagon_perimeter(side: i8) -> (perimeter: i8)
     requires side > 0
-    ensures perimeter == 5 * side
+    ensures perimeter as int == 5 * side as int
 // </vc-spec>
 // <vc-code>
 {

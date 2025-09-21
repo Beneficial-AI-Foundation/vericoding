@@ -8,11 +8,11 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn mfirst_cero(v: &[i32]) -> (i: usize)
+fn mfirst_cero(v: &Vec<i8>) -> (i: usize)
     ensures
         i <= v.len(),
-        forall|j: int| 0 <= j < i as int ==> v@[j] != 0,
-        i != v.len() ==> v@[i as int] == 0,
+        forall|j: int| 0 <= j < i as int ==> v@[j] as i8 != 0,
+        i != v.len() ==> v@[i as int] as i8 == 0,
 {
     assume(false);
     0

@@ -8,10 +8,10 @@ vc-preamble: |-
 vc-helpers: |-
 
 vc-spec: |-
-  fn difference(a: Seq<int>, b: Seq<int>) -> (diff: Seq<int>)
+  fn difference(a: Vec<i8>, b: Vec<i8>) -> (diff: Vec<i8>)
       ensures
-          forall|x: int| diff.contains(x) <==> (a.contains(x) && !b.contains(x)),
-          forall|i: int, j: int| 0 <= i < j < diff.len() ==> diff.index(i) != diff.index(j),
+          forall|x: i8| diff@.contains(x) <==> (a@.contains(x) && !b@.contains(x)),
+          forall|i: int, j: int| 0 <= i < j < diff@.len() ==> diff@.index(i) != diff@.index(j),
 
 vc-code: |-
   {
@@ -22,4 +22,3 @@ vc-code: |-
 vc-postamble: |-
   }
   fn main() {}
-

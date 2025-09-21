@@ -13,10 +13,10 @@ spec fn is_vowel(c: char) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn count_vowel_neighbors(s: &str) -> (count: usize)
+fn count_vowel_neighbors(s: &str) -> (count: u8)
     ensures 
-        count >= 0 &&
-        count == Set::new(|i: int| 1 <= i < s@.len() - 1 && 
+        count as int >= 0 &&
+        count as int == Set::new(|i: int| 1 <= i < s@.len() - 1 && 
                           is_vowel(s@[i-1]) && 
                           is_vowel(s@[i+1])).len(),
 // </vc-spec>

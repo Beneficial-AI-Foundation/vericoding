@@ -8,9 +8,9 @@ vc-preamble: |-
 vc-helpers: |-
 
 vc-spec: |-
-  fn array_split(a: Vec<i32>) -> (ret: (Vec<i32>, Vec<i32>))
+  fn array_split(a: Vec<i8>) -> (ret: (Vec<i8>, Vec<i8>))
       ensures
-          a@ == ret.0@ + ret.1@,
+          a@.map_values(|x: i8| x as int) == ret.0@.map_values(|x: i8| x as int) + ret.1@.map_values(|x: i8| x as int),
           a.len() == ret.0.len() + ret.1.len(),
           a.len() > 1 ==> a.len() > ret.0.len(),
           a.len() > 1 ==> a.len() > ret.1.len(),
@@ -24,4 +24,3 @@ vc-code: |-
 vc-postamble: |-
   }
   fn main() {}
-

@@ -43,11 +43,11 @@ spec fn inv_sub_set(b: Seq<int>, c: Seq<int>, d: Seq<int>, i: nat, j: nat) -> bo
 // </vc-helpers>
 
 // <vc-spec>
-fn merge_sort(a: Vec<int>) -> (b: Vec<int>)
+fn merge_sort(a: Vec<i8>) -> (b: Vec<i8>)
     ensures
         b.len() == a.len(),
-        sorted(b@),
-        a@.to_multiset() == b@.to_multiset(),
+        sorted(b@.map(|i: int, x: i8| x as int)),
+        a@.map(|i: int, x: i8| x as int).to_multiset() == b@.map(|i: int, x: i8| x as int).to_multiset(),
     decreases a.len()
 // </vc-spec>
 // <vc-code>

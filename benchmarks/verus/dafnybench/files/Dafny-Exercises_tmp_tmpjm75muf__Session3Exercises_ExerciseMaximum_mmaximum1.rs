@@ -8,11 +8,11 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn mmaximum1(v: &[i32]) -> (i: usize)
-    requires v.len() > 0,
+fn mmaximum1(v: &Vec<i8>) -> (i: usize)
+    requires v@.len() > 0,
     ensures 
-        0 <= i < v.len(),
-        forall|k: int| 0 <= k < v.len() ==> v[i as int] >= v[k],
+        0 <= i < v@.len(),
+        forall|k: int| 0 <= k < v@.len() ==> v[i as int] >= v[k],
 // </vc-spec>
 // <vc-code>
 {

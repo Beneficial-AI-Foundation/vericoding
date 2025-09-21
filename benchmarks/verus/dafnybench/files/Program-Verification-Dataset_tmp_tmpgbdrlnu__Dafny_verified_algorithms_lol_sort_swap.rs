@@ -19,14 +19,14 @@ spec fn sorted(a: Seq<int>) -> bool
 // </vc-helpers>
 
 // <vc-spec>
-fn swap(a: &mut Vec<int>, i: usize, j: usize)
+fn swap(a: &mut Vec<i8>, i: usize, j: usize)
     requires 
         i < old(a).len(),
         j < old(a).len(),
     ensures 
         a.len() == old(a).len(),
         a@ == old(a)@.update(i as int, old(a)@[j as int]).update(j as int, old(a)@[i as int]),
-        valid_permut(a@, old(a)@),
+        valid_permut(a@.map(|i, x| x as int), old(a)@.map(|i, x| x as int)),
 // </vc-spec>
 // <vc-code>
 {

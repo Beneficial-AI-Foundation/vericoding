@@ -12,8 +12,8 @@ spec fn positive(s: Seq<int>) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn mpositive(v: &[int]) -> (b: bool)
-    ensures b == positive(v@)
+fn mpositive(v: &Vec<i8>) -> (b: bool)
+    ensures b == positive(v@.map(|i: int, x: i8| x as int))
 // </vc-spec>
 // <vc-code>
 {

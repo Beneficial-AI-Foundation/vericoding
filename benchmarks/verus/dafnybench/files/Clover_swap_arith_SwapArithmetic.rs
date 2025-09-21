@@ -8,7 +8,7 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn swap_arithmetic(x: i32, y: i32) -> (res: (i32, i32))
+fn swap_arithmetic(x: i8, y: i8) -> (res: (i8, i8))
     ensures 
         res.0 == y && res.1 == x,
 // </vc-spec>

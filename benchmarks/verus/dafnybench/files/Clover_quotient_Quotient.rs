@@ -8,11 +8,11 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn quotient(x: nat, y: nat) -> (result: (int, int))
+fn quotient(x: u8, y: u8) -> (result: (i8, i8))
     requires y != 0
     ensures ({
         let (r, q) = result;
-        q * y + r == x && 0 <= r < y && 0 <= q
+        (q as int) * (y as int) + (r as int) == (x as int) && 0 <= (r as int) < (y as int) && 0 <= (q as int)
     })
 // </vc-spec>
 // <vc-code>

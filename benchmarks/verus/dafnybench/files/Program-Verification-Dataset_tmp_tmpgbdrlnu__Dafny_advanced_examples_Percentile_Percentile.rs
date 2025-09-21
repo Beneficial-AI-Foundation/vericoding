@@ -24,16 +24,16 @@ spec fn sum(a: Seq<int>) -> int {
 // </vc-helpers>
 
 // <vc-spec>
-fn percentile(p: int, a: &[int], total: int) -> (i: i32)
+fn percentile(p: i8, a: &[i8], total: i8) -> (i: i32)
     requires 
-        forall|idx: int| 0 <= idx < a.len() ==> a@[idx] > 0,
-        0 <= p <= 100,
-        total == sum(a@),
-        total > 0,
+        forall|idx: int| 0 <= idx < a.len() ==> a@[idx] as int > 0,
+        0 <= p as int <= 100,
+        total as int == sum(a@.map(|i: int, x: i8| x as int)),
+        total as int > 0,
     ensures 
         -1 <= i < a.len(),
-        sum_upto(a@, i as int) <= (p * total) / 100,
-        i as int + 1 < a.len() ==> sum_upto(a@, i as int + 1) > (p * total) / 100,
+        sum_upto(a@.map(|i: int, x: i8| x as int), i as int) <= (p as int * total as int) / 100,
+        i as int + 1 < a.len() ==> sum_upto(a@.map(|i: int, x: i8| x as int), i as int + 1) > (p as int * total as int) / 100,
 // </vc-spec>
 // <vc-code>
 {

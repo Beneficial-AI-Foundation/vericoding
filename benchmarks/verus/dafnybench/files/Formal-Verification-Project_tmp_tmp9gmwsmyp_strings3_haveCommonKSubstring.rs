@@ -58,9 +58,9 @@ spec fn have_not_common_k_substring_pred(k: nat, str1: Seq<char>, str2: Seq<char
 // </vc-helpers>
 
 // <vc-spec>
-fn have_common_k_substring(k: nat, str1: Seq<char>, str2: Seq<char>) -> (found: bool)
+fn have_common_k_substring(k: u8, str1: Vec<char>, str2: Vec<char>) -> (found: bool)
     ensures
-        found <==> have_common_k_substring_pred(k, str1, str2),
+        found <==> have_common_k_substring_pred(k as nat, str1@, str2@),
 // </vc-spec>
 // <vc-code>
 {

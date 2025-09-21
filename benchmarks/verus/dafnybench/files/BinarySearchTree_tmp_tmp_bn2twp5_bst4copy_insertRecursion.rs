@@ -62,12 +62,12 @@ impl Tree {
 // </vc-helpers>
 
 // <vc-spec>
-fn insert_recursion(tree: Tree, value: int) -> (res: Tree)
+fn insert_recursion(tree: Tree, value: i8) -> (res: Tree)
     requires binary_search_tree(tree)
     ensures 
         res != Tree::Empty ==> binary_search_tree(res),
-        forall|x: int| min_value(tree, x) && x < value ==> min_value(res, x),
-        forall|x: int| max_value(tree, x) && x > value ==> max_value(res, x)
+        forall|x: int| min_value(tree, x) && x < value as int ==> min_value(res, x),
+        forall|x: int| max_value(tree, x) && x > value as int ==> max_value(res, x)
     decreases tree
 // </vc-spec>
 // <vc-code>

@@ -8,14 +8,14 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn smallest_missing_number(s: Seq<int>) -> (v: int)
+fn smallest_missing_number(s: Vec<i8>) -> (v: i8)
     requires
-        forall|i: int, j: int| 0 <= i < j < s.len() ==> s[i] <= s[j],
-        forall|i: int| 0 <= i < s.len() ==> s[i] >= 0,
+        forall|i: int, j: int| 0 <= i < j < s@.len() ==> s@[i] <= s@[j],
+        forall|i: int| 0 <= i < s@.len() ==> s@[i] >= 0,
     ensures
-        0 <= v,
-        !s.contains(v),
-        (forall|k: int| 0 <= k < v ==> s.contains(k)),
+        0 <= v as int,
+        !s@.contains(v),
+        (forall|k: int| 0 <= k < v as int ==> #[trigger] s@.contains(k as i8)),
 // </vc-spec>
 // <vc-code>
 {

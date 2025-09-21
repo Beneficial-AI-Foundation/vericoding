@@ -8,13 +8,13 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn max(a: &[i32], b: &[i32], i: usize, j: usize) -> (m: i32)
+fn max(a: &Vec<i8>, b: &Vec<i8>, i: usize, j: usize) -> (m: i8)
     requires 
         i < a.len(),
         j < b.len(),
     ensures 
-        a[i as int] > b[j as int] ==> m == a[i as int],
-        a[i as int] <= b[j as int] ==> m == b[j as int],
+        a[i as int] as int > b[j as int] as int ==> m as int == a[i as int] as int,
+        a[i as int] as int <= b[j as int] as int ==> m as int == b[j as int] as int,
 // </vc-spec>
 // <vc-code>
 {

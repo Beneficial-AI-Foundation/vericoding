@@ -8,15 +8,15 @@ vc-preamble: |-
 vc-helpers: |-
 
 vc-spec: |-
-  fn insert(line: &mut Vec<char>, l: int, nl: &Vec<char>, p: int, at: int)
+  fn insert(line: &mut Vec<char>, l: i8, nl: &Vec<char>, p: i8, at: i8)
       requires 
-          0 <= l + p <= old(line).len(),
-          0 <= p <= nl.len(),
-          0 <= at <= l,
+          0 <= l as int + p as int <= old(line)@.len(),
+          0 <= p as int <= nl@.len(),
+          0 <= at as int <= l as int,
       ensures 
-          forall|i: int| (0 <= i < p) ==> line[at + i] == nl[i],
-          forall|i: int| (0 <= i < at) ==> line[i] == old(line)[i],
-          forall|i: int| (at + p <= i < l + p) ==> line[i] == old(line)[i - p],
+          forall|i: int| (0 <= i < p as int) ==> line@[at as int + i] == nl@[i],
+          forall|i: int| (0 <= i < at as int) ==> line@[i] == old(line)@[i],
+          forall|i: int| (at as int + p as int <= i < l as int + p as int) ==> line@[i] == old(line)@[i - p as int],
 
 vc-code: |-
   {
@@ -27,4 +27,3 @@ vc-code: |-
 vc-postamble: |-
   }
   fn main() {}
-

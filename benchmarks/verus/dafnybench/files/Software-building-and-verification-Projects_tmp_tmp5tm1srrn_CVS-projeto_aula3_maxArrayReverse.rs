@@ -39,8 +39,8 @@ spec fn sum(n: nat) -> nat
 fn maxArrayReverse(arr: &[i32]) -> (max: i32)
     requires arr.len() > 0
     ensures 
-        forall|i: int| 0 <= i < arr.len() ==> arr[i] <= max,
-        exists|x: int| 0 <= x < arr.len() && arr[x] == max
+        forall|i: int| 0 <= i < arr@.len() ==> arr@[i] <= max as int,
+        exists|x: int| 0 <= x < arr@.len() && arr@[x] == max as int
 // </vc-spec>
 // <vc-code>
 {

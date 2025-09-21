@@ -8,8 +8,8 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn triple(x: i32) -> (r: i32)
-  ensures r == 3 * x
+fn triple(x: i8) -> (r: i8)
+  ensures r as int == 3 * x as int
 // </vc-spec>
 // <vc-code>
 {

@@ -14,9 +14,9 @@ spec fn factorial(n: nat) -> nat
 // </vc-helpers>
 
 // <vc-spec>
-fn iterative_factorial(n: u32) -> (result: u32)
+fn iterative_factorial(n: u8) -> (result: u8)
     requires n < 13,
-    ensures result == factorial(n as nat)
+    ensures result as nat == factorial(n as nat)
 // </vc-spec>
 // <vc-code>
 {

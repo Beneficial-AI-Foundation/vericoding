@@ -1,0 +1,31 @@
+vc-description: |-
+  //Problem 01
+  
+  //problem02
+  
+  //a)
+
+vc-preamble: |-
+  use vstd::prelude::*;
+  
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn int_div(n: i8, d: i8) -> (result: (i8, i8))
+      requires n as int >= d as int && n as int >= 0 && d as int > 0,
+      ensures ({
+          let (q, r) = result;
+          (d as int * q as int) + r as int == n as int && 0 <= q as int <= n as int / 2 && 0 <= r as int < d as int
+      })
+
+vc-code: |-
+  {
+      assume(false);
+      unreached()
+  }
+
+vc-postamble: |-
+  }
+  fn main() {}

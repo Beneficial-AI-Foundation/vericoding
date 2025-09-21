@@ -8,7 +8,7 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn slope_search(a: &Vec<Vec<i32>>, key: i32) -> (result: (usize, usize))
+fn slope_search(a: &Vec<Vec<i8>>, key: i8) -> (result: (usize, usize))
   requires 
       a.len() > 0,
       forall|i: int| 0 <= i < a.len() ==> #[trigger] a@[i].len() == a@[0].len(),

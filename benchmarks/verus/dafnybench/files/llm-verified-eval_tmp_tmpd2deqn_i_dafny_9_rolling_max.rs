@@ -13,12 +13,12 @@ spec fn isMax(m: int, numbers: Seq<int>) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn rolling_max(numbers: Vec<int>) -> (result: Vec<int>)
+fn rolling_max(numbers: Vec<i8>) -> (result: Vec<i8>)
     requires
         numbers.len() > 0,
     ensures
         result.len() == numbers.len(),
-        forall|i: int| 0 < i < result.len() ==> isMax(result[i], numbers@.subrange(0, i + 1)),
+        forall|i: int| 0 < i < result.len() ==> isMax(result[i] as int, numbers@.map(|_index, x| x as int).subrange(0, i + 1)),
 // </vc-spec>
 // <vc-code>
 {

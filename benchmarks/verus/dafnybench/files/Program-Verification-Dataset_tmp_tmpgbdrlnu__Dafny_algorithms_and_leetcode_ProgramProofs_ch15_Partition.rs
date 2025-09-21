@@ -20,18 +20,18 @@ spec fn swap_frame(a_old: Seq<int>, a_new: Seq<int>, lo: int, hi: int) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn partition(a: &mut Vec<int>, lo: usize, hi: usize) -> (p: usize)
+fn partition(a: &mut Vec<i8>, lo: usize, hi: usize) -> (p: usize)
     requires
         0 <= lo < hi <= old(a).len(),
-        split_point(old(a)@, lo as int),
-        split_point(old(a)@, hi as int),
+        split_point(old(a)@.map(|i: int, x: i8| x as int), lo as int),
+        split_point(old(a)@.map(|i: int, x: i8| x as int), hi as int),
     ensures
         lo <= p < hi,
-        forall|i: int| lo <= i < p ==> a[i] < a[p as int],
-        forall|i: int| p <= i < hi ==> a[p as int] <= a[i],
-        split_point(a@, lo as int),
-        split_point(a@, hi as int),
-        swap_frame(old(a)@, a@, lo as int, hi as int),
+        forall|i: int| lo <= i < p ==> (a[i] as int) < (a[p as int] as int),
+        forall|i: int| p <= i < hi ==> (a[p as int] as int) <= (a[i] as int),
+        split_point(a@.map(|i: int, x: i8| x as int), lo as int),
+        split_point(a@.map(|i: int, x: i8| x as int), hi as int),
+        swap_frame(old(a)@.map(|i: int, x: i8| x as int), a@.map(|i: int, x: i8| x as int), lo as int, hi as int),
 // </vc-spec>
 // <vc-code>
 {

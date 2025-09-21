@@ -8,7 +8,7 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn single(x: &[i32], y: &[i32]) -> (b: Vec<i32>)
+fn single(x: &[i8], y: &[i8]) -> (b: Vec<i8>)
     requires 
         x.len() > 0,
         y.len() > 0,

@@ -75,17 +75,17 @@ fn insert_into_sorted(a: Vec<int>, limit: usize, key: int) -> (b: Vec<int>)
 // </vc-helpers>
 
 // <vc-spec>
-fn get_insert_index(a: &Vec<int>, limit: usize, x: int) -> (idx: usize)
+fn get_insert_index(a: &Vec<i8>, limit: usize, x: i8) -> (idx: usize)
 
     requires
-        !a@.contains(x),
+        !a@.map(|i, v: i8| v as int).contains(x as int),
         limit <= a.len(),
-        sorted_seq(a@.subrange(0, limit as int)),
+        sorted_seq(a@.map(|i, v: i8| v as int).subrange(0, limit as int)),
     ensures
         idx <= limit,
-        sorted_seq(a@.subrange(0, limit as int)),
-        idx > 0 ==> a@[idx as int - 1] < x,
-        idx < limit ==> x < a@[idx as int],
+        sorted_seq(a@.map(|i, v: i8| v as int).subrange(0, limit as int)),
+        idx > 0 ==> (a@[idx as int - 1] as int) < (x as int),
+        idx < limit ==> (x as int) < (a@[idx as int] as int),
 // </vc-spec>
 // <vc-code>
 {

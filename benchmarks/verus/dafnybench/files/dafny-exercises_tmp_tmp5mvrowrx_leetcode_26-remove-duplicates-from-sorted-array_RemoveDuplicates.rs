@@ -8,7 +8,7 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn remove_duplicates(nums: &mut Vec<i32>) -> (num_length: usize)
+fn remove_duplicates(nums: &mut Vec<i8>) -> (num_length: usize)
     requires
         forall|i: int, j: int| 0 <= i < j < old(nums).len() ==> old(nums)[i] <= old(nums)[j],
     ensures

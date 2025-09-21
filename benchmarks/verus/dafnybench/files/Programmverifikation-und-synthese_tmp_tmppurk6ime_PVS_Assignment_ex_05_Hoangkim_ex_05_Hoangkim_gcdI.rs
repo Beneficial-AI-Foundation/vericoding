@@ -29,9 +29,9 @@ spec fn gcd(m: nat, n: nat) -> nat
 // </vc-helpers>
 
 // <vc-spec>
-fn gcd_iterative(m: u32, n: u32) -> (g: u32)
+fn gcd_iterative(m: u8, n: u8) -> (g: u8)
     requires m > 0 && n > 0,
-    ensures g == gcd(m as nat, n as nat),
+    ensures g as nat == gcd(m as nat, n as nat),
 // </vc-spec>
 // <vc-code>
 {

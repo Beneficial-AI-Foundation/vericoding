@@ -41,13 +41,13 @@ spec fn bordered(s: Seq<Bases>) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn sorter(bases: Seq<Bases>) -> (sobases: Seq<Bases>)
+fn sorter(bases: Vec<Bases>) -> (sobases: Vec<Bases>)
     requires 
         0 < bases.len()
     ensures 
         sobases.len() == bases.len(),
-        bordered(sobases),
-        bases.to_multiset() == sobases.to_multiset()
+        bordered(sobases@),
+        bases@.to_multiset() == sobases@.to_multiset()
 // </vc-spec>
 // <vc-code>
 {

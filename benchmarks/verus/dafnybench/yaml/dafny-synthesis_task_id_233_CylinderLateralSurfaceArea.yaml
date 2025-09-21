@@ -8,11 +8,11 @@ vc-preamble: |-
 vc-helpers: |-
 
 vc-spec: |-
-  fn cylinder_lateral_surface_area(radius: u64, height: u64) -> (area: u64)
+  fn cylinder_lateral_surface_area(radius: u8, height: u8) -> (area: u8)
       requires 
           radius > 0,
           height > 0,
-      ensures area == 2 * radius * height * 314 / 100,
+      ensures area as nat == 2 * radius as nat * height as nat * 314 / 100,
 
 vc-code: |-
   {
@@ -23,4 +23,3 @@ vc-code: |-
 vc-postamble: |-
   }
   fn main() {}
-

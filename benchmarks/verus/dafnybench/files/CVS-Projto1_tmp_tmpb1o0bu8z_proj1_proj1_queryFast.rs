@@ -48,10 +48,10 @@ spec fn mem<T: PartialEq>(x: T, l: &List<T>) -> bool
 // </vc-helpers>
 
 // <vc-spec>
-fn query_fast(a: Seq<int>, c: Seq<int>, i: int, j: int) -> (r: int)
+fn query_fast(a: Vec<i8>, c: Vec<i8>, i: i8, j: i8) -> (r: i8)
     requires 
-        is_prefix_sum_for(a, c) && 0 <= i <= j <= a.len() < c.len()
-    ensures r == sum(a, i, j)
+        is_prefix_sum_for(a@.map(|_i: int, x: i8| x as int), c@.map(|_i: int, x: i8| x as int)) && 0 <= i as int <= j as int <= a.len() < c.len()
+    ensures r as int == sum(a@.map(|_i: int, x: i8| x as int), i as int, j as int)
 // </vc-spec>
 // <vc-code>
 {

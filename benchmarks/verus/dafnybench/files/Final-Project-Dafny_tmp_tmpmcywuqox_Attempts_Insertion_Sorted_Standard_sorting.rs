@@ -14,9 +14,9 @@ spec fn insertion_sorted(array: Seq<int>, left: int, right: int) -> bool
 // </vc-helpers>
 
 // <vc-spec>
-fn sorting(array: &mut Vec<int>)
+fn sorting(array: &mut Vec<i8>)
     requires old(array).len() > 1
-    ensures insertion_sorted(array@, 0, array@.len() as int)
+    ensures insertion_sorted(array@.map(|_i: int, x: i8| x as int), 0, array@.len() as int)
 // </vc-spec>
 // <vc-code>
 {

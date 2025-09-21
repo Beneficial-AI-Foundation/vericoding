@@ -8,7 +8,7 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn second_largest(a: &[i32]) -> (seclar: i32)
+fn second_largest(a: &[i8]) -> (seclar: i8)
     requires a.len() > 0
 // </vc-spec>
 // <vc-code>

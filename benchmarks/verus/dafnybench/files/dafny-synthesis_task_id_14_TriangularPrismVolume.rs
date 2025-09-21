@@ -8,12 +8,12 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn triangular_prism_volume(base: u32, height: u32, length: u32) -> (volume: u32)
+fn triangular_prism_volume(base: u8, height: u8, length: u8) -> (volume: u8)
     requires 
         base > 0,
         height > 0,
         length > 0,
-    ensures volume == (base * height * length) / 2,
+    ensures volume as nat == (base as nat * height as nat * length as nat) / 2,
 // </vc-spec>
 // <vc-code>
 {

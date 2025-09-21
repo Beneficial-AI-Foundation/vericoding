@@ -8,9 +8,9 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn IntDiv(m: i32, n: i32) -> (ret: (i32, i32))
-    requires n > 0
-    ensures m == n * ret.0 + ret.1 && 0 <= ret.1 < n
+fn IntDiv(m: i8, n: i8) -> (ret: (i8, i8))
+    requires n as int > 0
+    ensures m as int == (n as int) * (ret.0 as int) + (ret.1 as int) && 0 <= ret.1 as int && (ret.1 as int) < (n as int)
 // </vc-spec>
 // <vc-code>
 {
