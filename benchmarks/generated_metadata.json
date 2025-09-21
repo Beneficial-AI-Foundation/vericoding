@@ -4081,7 +4081,7 @@
     "verus": "poor/default_values"
   },
   "apps_test_1014": {
-    "dafny": "",
+    "dafny": "yaml",
     "id": "0009",
     "lean": "yaml",
     "source": "apps",
@@ -4144,7 +4144,7 @@
     "verus": "yaml"
   },
   "apps_test_1044": {
-    "dafny": "",
+    "dafny": "yaml",
     "id": "0018",
     "lean": "yaml",
     "source": "apps",
@@ -4333,7 +4333,7 @@
     "verus": "yaml"
   },
   "apps_test_1125": {
-    "dafny": "",
+    "dafny": "yaml",
     "id": "0045",
     "lean": "yaml",
     "source": "apps",
@@ -4368,7 +4368,7 @@
     "verus": "yaml"
   },
   "apps_test_114": {
-    "dafny": "",
+    "dafny": "yaml",
     "id": "0050",
     "lean": "yaml",
     "source": "apps",
@@ -4424,7 +4424,7 @@
     "verus": "yaml"
   },
   "apps_test_1177": {
-    "dafny": "",
+    "dafny": "yaml",
     "id": "0058",
     "lean": "yaml",
     "source": "apps",
@@ -4445,7 +4445,7 @@
     "verus": "yaml"
   },
   "apps_test_1209": {
-    "dafny": "",
+    "dafny": "yaml",
     "id": "0061",
     "lean": "yaml",
     "source": "apps",
@@ -4627,7 +4627,7 @@
     "verus": "yaml"
   },
   "apps_test_1329": {
-    "dafny": "",
+    "dafny": "yaml",
     "id": "0087",
     "lean": "yaml",
     "source": "apps",
@@ -4669,7 +4669,7 @@
     "verus": "yaml"
   },
   "apps_test_1354": {
-    "dafny": "",
+    "dafny": "yaml",
     "id": "0093",
     "lean": "yaml",
     "source": "apps",
@@ -4708,7 +4708,7 @@
     "id": "0098",
     "lean": "yaml",
     "source": "apps",
-    "verus": ""
+    "verus": "poor/non_verifying"
   },
   "apps_test_1394": {
     "dafny": "yaml",
@@ -4988,7 +4988,7 @@
     "id": "0138",
     "lean": "yaml",
     "source": "apps",
-    "verus": ""
+    "verus": "poor/non_verifying"
   },
   "apps_test_1634": {
     "dafny": "yaml",
@@ -5145,7 +5145,7 @@
     "verus": "yaml"
   },
   "apps_test_1745": {
-    "dafny": "",
+    "dafny": "yaml",
     "id": "0161",
     "lean": "yaml",
     "source": "apps",
@@ -5264,7 +5264,7 @@
     "verus": "yaml"
   },
   "apps_test_1835": {
-    "dafny": "",
+    "dafny": "yaml",
     "id": "0178",
     "lean": "yaml",
     "source": "apps",
@@ -5369,7 +5369,7 @@
     "verus": "yaml"
   },
   "apps_test_1912": {
-    "dafny": "",
+    "dafny": "yaml",
     "id": "0193",
     "lean": "yaml",
     "source": "apps",
@@ -5439,7 +5439,7 @@
     "verus": "yaml"
   },
   "apps_test_1966": {
-    "dafny": "",
+    "dafny": "yaml",
     "id": "0203",
     "lean": "yaml",
     "source": "apps",
@@ -5450,10 +5450,10 @@
     "id": "0204",
     "lean": "yaml",
     "source": "apps",
-    "verus": ""
+    "verus": "poor/non_verifying"
   },
   "apps_test_1972": {
-    "dafny": "",
+    "dafny": "yaml",
     "id": "0205",
     "lean": "yaml",
     "source": "apps",
@@ -5467,14 +5467,14 @@
     "verus": "yaml"
   },
   "apps_test_1980": {
-    "dafny": "",
+    "dafny": "yaml",
     "id": "0207",
     "lean": "yaml",
     "source": "apps",
     "verus": "poor/default_values"
   },
   "apps_test_1984": {
-    "dafny": "",
+    "dafny": "yaml",
     "id": "0208",
     "lean": "yaml",
     "source": "apps",
@@ -5642,7 +5642,7 @@
     "verus": "yaml"
   },
   "apps_test_2168": {
-    "dafny": "",
+    "dafny": "yaml",
     "id": "0232",
     "lean": "yaml",
     "source": "apps",
@@ -5681,7 +5681,7 @@
     "id": "0237",
     "lean": "yaml",
     "source": "apps",
-    "verus": ""
+    "verus": "poor/non_verifying"
   },
   "apps_test_22": {
     "dafny": "yaml",
@@ -5740,7 +5740,7 @@
     "verus": "poor/non_compiling"
   },
   "apps_test_2252": {
-    "dafny": "",
+    "dafny": "yaml",
     "id": "0246",
     "lean": "yaml",
     "source": "apps",
@@ -5859,7 +5859,7 @@
     "verus": "yaml"
   },
   "apps_test_2362": {
-    "dafny": "",
+    "dafny": "yaml",
     "id": "0263",
     "lean": "yaml",
     "source": "apps",
@@ -5908,7 +5908,7 @@
     "verus": "yaml"
   },
   "apps_test_2411": {
-    "dafny": "",
+    "dafny": "yaml",
     "id": "0270",
     "lean": "yaml",
     "source": "apps",
@@ -5929,7 +5929,7 @@
     "verus": "yaml"
   },
   "apps_test_2431": {
-    "dafny": "",
+    "dafny": "yaml",
     "id": "0273",
     "lean": "yaml",
     "source": "apps",
@@ -5968,10 +5968,10 @@
     "id": "0278",
     "lean": "yaml",
     "source": "apps",
-    "verus": ""
+    "verus": "poor/non_verifying"
   },
   "apps_test_2447": {
-    "dafny": "",
+    "dafny": "yaml",
     "id": "0279",
     "lean": "yaml",
     "source": "apps",
@@ -6076,11 +6076,11 @@
     "verus": "yaml"
   },
   "apps_test_2553": {
-    "dafny": "",
+    "dafny": "yaml",
     "id": "0294",
     "lean": "yaml",
     "source": "apps",
-    "verus": ""
+    "verus": "poor/non_verifying"
   },
   "apps_test_2556": {
     "dafny": "yaml",
@@ -6153,14 +6153,14 @@
     "verus": "poor/non_compiling"
   },
   "apps_test_2621": {
-    "dafny": "",
+    "dafny": "yaml",
     "id": "0305",
     "lean": "yaml",
     "source": "apps",
     "verus": "poor/default_values"
   },
   "apps_test_2622": {
-    "dafny": "",
+    "dafny": "yaml",
     "id": "0306",
     "lean": "yaml",
     "source": "apps",
@@ -6209,7 +6209,7 @@
     "verus": "yaml"
   },
   "apps_test_2647": {
-    "dafny": "",
+    "dafny": "yaml",
     "id": "0313",
     "lean": "yaml",
     "source": "apps",
@@ -6237,7 +6237,7 @@
     "verus": "yaml"
   },
   "apps_test_287": {
-    "dafny": "",
+    "dafny": "yaml",
     "id": "0317",
     "lean": "yaml",
     "source": "apps",
@@ -6248,7 +6248,7 @@
     "id": "0318",
     "lean": "yaml",
     "source": "apps",
-    "verus": ""
+    "verus": "poor/non_verifying"
   },
   "apps_test_291": {
     "dafny": "yaml",
@@ -6272,7 +6272,7 @@
     "verus": "yaml"
   },
   "apps_test_302": {
-    "dafny": "",
+    "dafny": "yaml",
     "id": "0322",
     "lean": "yaml",
     "source": "apps",
@@ -6342,7 +6342,7 @@
     "verus": "yaml"
   },
   "apps_test_4147": {
-    "dafny": "",
+    "dafny": "yaml",
     "id": "0332",
     "lean": "yaml",
     "source": "apps",
@@ -6524,7 +6524,7 @@
     "verus": "yaml"
   },
   "apps_test_4229": {
-    "dafny": "",
+    "dafny": "yaml",
     "id": "0358",
     "lean": "yaml",
     "source": "apps",
@@ -6755,7 +6755,7 @@
     "verus": "poor/non_compiling"
   },
   "apps_test_4308": {
-    "dafny": "",
+    "dafny": "yaml",
     "id": "0391",
     "lean": "yaml",
     "source": "apps",
@@ -6843,7 +6843,7 @@
     "id": "0403",
     "lean": "yaml",
     "source": "apps",
-    "verus": ""
+    "verus": "poor/non_verifying"
   },
   "apps_test_4337": {
     "dafny": "yaml",
@@ -7928,7 +7928,7 @@
     "id": "0558",
     "lean": "yaml",
     "source": "apps",
-    "verus": ""
+    "verus": "poor/non_verifying"
   },
   "apps_test_505": {
     "dafny": "yaml",
@@ -7994,7 +7994,7 @@
     "verus": "yaml"
   },
   "apps_test_540": {
-    "dafny": "",
+    "dafny": "yaml",
     "id": "0568",
     "lean": "yaml",
     "source": "apps",
@@ -8015,7 +8015,7 @@
     "verus": "yaml"
   },
   "apps_test_553": {
-    "dafny": "",
+    "dafny": "yaml",
     "id": "0571",
     "lean": "yaml",
     "source": "apps",
@@ -8078,7 +8078,7 @@
     "verus": "yaml"
   },
   "apps_test_604": {
-    "dafny": "",
+    "dafny": "yaml",
     "id": "0580",
     "lean": "yaml",
     "source": "apps",
@@ -8141,7 +8141,7 @@
     "verus": "yaml"
   },
   "apps_test_631": {
-    "dafny": "",
+    "dafny": "yaml",
     "id": "0589",
     "lean": "yaml",
     "source": "apps",
@@ -8257,7 +8257,7 @@
     "id": "0605",
     "lean": "yaml",
     "source": "apps",
-    "verus": ""
+    "verus": "poor/non_verifying"
   },
   "apps_test_703": {
     "dafny": "yaml",
@@ -8589,7 +8589,7 @@
     "verus": "yaml"
   },
   "apps_test_901": {
-    "dafny": "",
+    "dafny": "yaml",
     "id": "0653",
     "lean": "yaml",
     "source": "apps",
@@ -8750,7 +8750,7 @@
     "verus": "yaml"
   },
   "apps_test_992": {
-    "dafny": "",
+    "dafny": "yaml",
     "id": "0676",
     "lean": "yaml",
     "source": "apps",
@@ -48360,7 +48360,7 @@
     "id": "0000",
     "lean": "",
     "source": "humaneval",
-    "verus": "poor/non_compiling"
+    "verus": "yaml"
   },
   "humaneval_001_separate-paren-groups": {
     "dafny": "yaml",
@@ -48395,7 +48395,7 @@
     "id": "0005",
     "lean": "",
     "source": "humaneval",
-    "verus": "poor/non_compiling"
+    "verus": "yaml"
   },
   "humaneval_006": {
     "dafny": "yaml",
@@ -48409,7 +48409,7 @@
     "id": "0007",
     "lean": "",
     "source": "humaneval",
-    "verus": "poor/non_compiling"
+    "verus": "yaml"
   },
   "humaneval_008": {
     "dafny": "yaml",
@@ -48486,7 +48486,7 @@
     "id": "0018",
     "lean": "",
     "source": "humaneval",
-    "verus": "poor/non_compiling"
+    "verus": "yaml"
   },
   "humaneval_022": {
     "dafny": "yaml",
@@ -48500,14 +48500,14 @@
     "id": "0020",
     "lean": "",
     "source": "humaneval",
-    "verus": "poor/non_compiling"
+    "verus": "yaml"
   },
   "humaneval_024_largest-divisor": {
     "dafny": "yaml",
     "id": "0021",
     "lean": "",
     "source": "humaneval",
-    "verus": "poor/non_compiling"
+    "verus": "yaml"
   },
   "humaneval_025": {
     "dafny": "yaml",
@@ -48528,7 +48528,7 @@
     "id": "0024",
     "lean": "",
     "source": "humaneval",
-    "verus": "poor/non_compiling"
+    "verus": "yaml"
   },
   "humaneval_027": {
     "dafny": "yaml",
@@ -48703,7 +48703,7 @@
     "id": "0049",
     "lean": "",
     "source": "humaneval",
-    "verus": "poor/non_compiling"
+    "verus": "yaml"
   },
   "humaneval_048": {
     "dafny": "yaml",
@@ -48745,7 +48745,7 @@
     "id": "0055",
     "lean": "",
     "source": "humaneval",
-    "verus": "poor/non_compiling"
+    "verus": "yaml"
   },
   "humaneval_053": {
     "dafny": "yaml",
@@ -48829,7 +48829,7 @@
     "id": "0067",
     "lean": "",
     "source": "humaneval",
-    "verus": "poor/non_compiling"
+    "verus": "yaml"
   },
   "humaneval_066": {
     "dafny": "yaml",
@@ -48850,7 +48850,7 @@
     "id": "0070",
     "lean": "",
     "source": "humaneval",
-    "verus": "poor/non_compiling"
+    "verus": "yaml"
   },
   "humaneval_069": {
     "dafny": "yaml",
@@ -48878,7 +48878,7 @@
     "id": "0074",
     "lean": "",
     "source": "humaneval",
-    "verus": "poor/non_compiling"
+    "verus": "yaml"
   },
   "humaneval_074": {
     "dafny": "yaml",
@@ -48906,7 +48906,7 @@
     "id": "0078",
     "lean": "",
     "source": "humaneval",
-    "verus": "poor/non_compiling"
+    "verus": "yaml"
   },
   "humaneval_077_iscube__is_cube": {
     "dafny": "yaml",
@@ -49006,492 +49006,499 @@
     "source": "humaneval",
     "verus": "yaml"
   },
-  "humaneval_092": {
-    "dafny": "yaml",
+  "humaneval_091": {
+    "dafny": "poor/timeout",
     "id": "0093",
     "lean": "",
     "source": "humaneval",
-    "verus": "yaml"
+    "verus": ""
   },
-  "humaneval_093": {
+  "humaneval_092": {
     "dafny": "yaml",
     "id": "0094",
     "lean": "",
     "source": "humaneval",
     "verus": "yaml"
   },
-  "humaneval_094": {
+  "humaneval_093": {
     "dafny": "yaml",
     "id": "0095",
+    "lean": "",
+    "source": "humaneval",
+    "verus": "yaml"
+  },
+  "humaneval_094": {
+    "dafny": "yaml",
+    "id": "0096",
     "lean": "",
     "source": "humaneval",
     "verus": ""
   },
   "humaneval_095_check_dict_case": {
     "dafny": "yaml",
-    "id": "0096",
+    "id": "0097",
     "lean": "",
     "source": "humaneval",
     "verus": "yaml"
   },
   "humaneval_096": {
     "dafny": "yaml",
-    "id": "0097",
+    "id": "0098",
     "lean": "",
     "source": "humaneval",
     "verus": "yaml"
   },
   "humaneval_097": {
     "dafny": "yaml",
-    "id": "0098",
+    "id": "0099",
     "lean": "",
     "source": "humaneval",
     "verus": "yaml"
   },
   "humaneval_098_count_upper": {
     "dafny": "yaml",
-    "id": "0099",
+    "id": "0100",
     "lean": "",
     "source": "humaneval",
     "verus": "yaml"
   },
   "humaneval_100": {
     "dafny": "yaml",
-    "id": "0100",
+    "id": "0101",
     "lean": "",
     "source": "humaneval",
     "verus": "yaml"
   },
   "humaneval_102": {
     "dafny": "yaml",
-    "id": "0101",
+    "id": "0102",
     "lean": "",
     "source": "humaneval",
     "verus": "yaml"
   },
   "humaneval_103": {
     "dafny": "yaml",
-    "id": "0102",
-    "lean": "",
-    "source": "humaneval",
-    "verus": "poor/non_compiling"
-  },
-  "humaneval_104_unique_digits": {
-    "dafny": "yaml",
     "id": "0103",
     "lean": "",
     "source": "humaneval",
     "verus": "yaml"
   },
-  "humaneval_105_by_length__SortReverseAndName": {
+  "humaneval_104_unique_digits": {
     "dafny": "yaml",
     "id": "0104",
     "lean": "",
     "source": "humaneval",
     "verus": "yaml"
   },
-  "humaneval_105_by_length__SortSeq": {
+  "humaneval_105_by_length__SortReverseAndName": {
     "dafny": "yaml",
     "id": "0105",
     "lean": "",
     "source": "humaneval",
     "verus": "yaml"
   },
-  "humaneval_105_by_length__reverse": {
+  "humaneval_105_by_length__SortSeq": {
     "dafny": "yaml",
     "id": "0106",
     "lean": "",
     "source": "humaneval",
     "verus": "yaml"
   },
-  "humaneval_106": {
+  "humaneval_105_by_length__reverse": {
     "dafny": "yaml",
     "id": "0107",
     "lean": "",
     "source": "humaneval",
     "verus": "yaml"
   },
-  "humaneval_107": {
+  "humaneval_106": {
     "dafny": "yaml",
     "id": "0108",
     "lean": "",
     "source": "humaneval",
     "verus": "yaml"
   },
-  "humaneval_108": {
+  "humaneval_107": {
     "dafny": "yaml",
     "id": "0109",
     "lean": "",
     "source": "humaneval",
     "verus": "yaml"
   },
-  "humaneval_109": {
+  "humaneval_108": {
     "dafny": "yaml",
     "id": "0110",
     "lean": "",
     "source": "humaneval",
-    "verus": "poor/non_compiling"
+    "verus": "yaml"
   },
-  "humaneval_110": {
+  "humaneval_109": {
     "dafny": "yaml",
     "id": "0111",
     "lean": "",
     "source": "humaneval",
     "verus": "yaml"
   },
-  "humaneval_111_histogram": {
+  "humaneval_110": {
     "dafny": "yaml",
     "id": "0112",
     "lean": "",
     "source": "humaneval",
     "verus": "yaml"
   },
-  "humaneval_112": {
+  "humaneval_111_histogram": {
     "dafny": "yaml",
     "id": "0113",
     "lean": "",
     "source": "humaneval",
     "verus": "yaml"
   },
-  "humaneval_113": {
+  "humaneval_112": {
     "dafny": "yaml",
     "id": "0114",
     "lean": "",
     "source": "humaneval",
-    "verus": "poor/non_compiling"
+    "verus": "yaml"
   },
-  "humaneval_114_minSubArraySum": {
+  "humaneval_113": {
     "dafny": "yaml",
     "id": "0115",
     "lean": "",
     "source": "humaneval",
-    "verus": "poor/non_compiling"
+    "verus": "yaml"
   },
-  "humaneval_115": {
+  "humaneval_114_minSubArraySum": {
     "dafny": "yaml",
     "id": "0116",
     "lean": "",
     "source": "humaneval",
     "verus": "yaml"
   },
-  "humaneval_116_sort_array": {
+  "humaneval_115": {
     "dafny": "yaml",
     "id": "0117",
     "lean": "",
     "source": "humaneval",
     "verus": "yaml"
   },
-  "humaneval_118_get_closest_vowel": {
+  "humaneval_116_sort_array": {
     "dafny": "yaml",
     "id": "0118",
     "lean": "",
     "source": "humaneval",
     "verus": "yaml"
   },
-  "humaneval_119": {
+  "humaneval_118_get_closest_vowel": {
     "dafny": "yaml",
     "id": "0119",
     "lean": "",
     "source": "humaneval",
     "verus": "yaml"
   },
-  "humaneval_120_maximum__SortSeq": {
+  "humaneval_119": {
     "dafny": "yaml",
     "id": "0120",
     "lean": "",
     "source": "humaneval",
     "verus": "yaml"
   },
-  "humaneval_120_maximum__maximum": {
+  "humaneval_120_maximum__SortSeq": {
     "dafny": "yaml",
     "id": "0121",
     "lean": "",
     "source": "humaneval",
     "verus": "yaml"
   },
-  "humaneval_121": {
+  "humaneval_120_maximum__maximum": {
     "dafny": "yaml",
     "id": "0122",
     "lean": "",
     "source": "humaneval",
     "verus": "yaml"
   },
-  "humaneval_122": {
+  "humaneval_121": {
     "dafny": "yaml",
     "id": "0123",
     "lean": "",
     "source": "humaneval",
     "verus": "yaml"
   },
-  "humaneval_123_get_odd_collatz__get_odd_collatz": {
+  "humaneval_122": {
     "dafny": "yaml",
     "id": "0124",
     "lean": "",
     "source": "humaneval",
     "verus": "yaml"
   },
-  "humaneval_123_get_odd_collatz__get_odd_collatz_unsorted": {
+  "humaneval_123_get_odd_collatz__get_odd_collatz": {
     "dafny": "yaml",
     "id": "0125",
     "lean": "",
     "source": "humaneval",
     "verus": "yaml"
   },
-  "humaneval_123_get_odd_collatz__next_odd_collatz_iter": {
+  "humaneval_123_get_odd_collatz__get_odd_collatz_unsorted": {
     "dafny": "yaml",
     "id": "0126",
     "lean": "",
     "source": "humaneval",
     "verus": "yaml"
   },
-  "humaneval_124": {
+  "humaneval_123_get_odd_collatz__next_odd_collatz_iter": {
     "dafny": "yaml",
     "id": "0127",
     "lean": "",
     "source": "humaneval",
     "verus": "yaml"
   },
-  "humaneval_125": {
+  "humaneval_124": {
     "dafny": "yaml",
     "id": "0128",
     "lean": "",
     "source": "humaneval",
     "verus": "yaml"
   },
-  "humaneval_126": {
+  "humaneval_125": {
     "dafny": "yaml",
     "id": "0129",
     "lean": "",
     "source": "humaneval",
     "verus": "yaml"
   },
-  "humaneval_127_intersection": {
+  "humaneval_126": {
     "dafny": "yaml",
     "id": "0130",
     "lean": "",
     "source": "humaneval",
     "verus": "yaml"
   },
-  "humaneval_128": {
+  "humaneval_127_intersection": {
     "dafny": "yaml",
     "id": "0131",
     "lean": "",
     "source": "humaneval",
-    "verus": "poor/non_compiling"
+    "verus": "yaml"
   },
-  "humaneval_130_tri": {
+  "humaneval_128": {
     "dafny": "yaml",
     "id": "0132",
     "lean": "",
     "source": "humaneval",
     "verus": "yaml"
   },
-  "humaneval_132_is_nested": {
+  "humaneval_130_tri": {
     "dafny": "yaml",
     "id": "0133",
     "lean": "",
     "source": "humaneval",
     "verus": "yaml"
   },
-  "humaneval_133_sum_squares": {
+  "humaneval_132_is_nested": {
     "dafny": "yaml",
     "id": "0134",
     "lean": "",
     "source": "humaneval",
     "verus": "yaml"
   },
-  "humaneval_134": {
+  "humaneval_133_sum_squares": {
     "dafny": "yaml",
     "id": "0135",
     "lean": "",
     "source": "humaneval",
     "verus": "yaml"
   },
-  "humaneval_135": {
+  "humaneval_134": {
     "dafny": "yaml",
     "id": "0136",
     "lean": "",
     "source": "humaneval",
-    "verus": "poor/non_compiling"
+    "verus": "yaml"
   },
-  "humaneval_136_largest_smallest_integers": {
+  "humaneval_135": {
     "dafny": "yaml",
     "id": "0137",
     "lean": "",
     "source": "humaneval",
     "verus": "yaml"
   },
-  "humaneval_137": {
+  "humaneval_136_largest_smallest_integers": {
     "dafny": "yaml",
     "id": "0138",
     "lean": "",
     "source": "humaneval",
     "verus": "yaml"
   },
-  "humaneval_138": {
+  "humaneval_137": {
     "dafny": "yaml",
     "id": "0139",
     "lean": "",
     "source": "humaneval",
     "verus": "yaml"
   },
-  "humaneval_139": {
+  "humaneval_138": {
     "dafny": "yaml",
     "id": "0140",
     "lean": "",
     "source": "humaneval",
     "verus": "yaml"
   },
-  "humaneval_140": {
-    "dafny": "",
+  "humaneval_139": {
+    "dafny": "yaml",
     "id": "0141",
     "lean": "",
     "source": "humaneval",
-    "verus": "poor/default_values"
+    "verus": "yaml"
   },
-  "humaneval_142": {
-    "dafny": "yaml",
+  "humaneval_140": {
+    "dafny": "poor/timeout",
     "id": "0142",
     "lean": "",
     "source": "humaneval",
     "verus": "yaml"
   },
-  "humaneval_144": {
+  "humaneval_142": {
     "dafny": "yaml",
     "id": "0143",
     "lean": "",
     "source": "humaneval",
     "verus": "yaml"
   },
-  "humaneval_145_order_by_points": {
+  "humaneval_144": {
     "dafny": "yaml",
     "id": "0144",
     "lean": "",
     "source": "humaneval",
     "verus": "yaml"
   },
-  "humaneval_146": {
+  "humaneval_145_order_by_points": {
     "dafny": "yaml",
     "id": "0145",
     "lean": "",
     "source": "humaneval",
-    "verus": "poor/default_values"
+    "verus": "yaml"
   },
-  "humaneval_147": {
+  "humaneval_146": {
     "dafny": "yaml",
     "id": "0146",
     "lean": "",
     "source": "humaneval",
     "verus": "yaml"
   },
-  "humaneval_148_bf": {
+  "humaneval_147": {
     "dafny": "yaml",
     "id": "0147",
     "lean": "",
     "source": "humaneval",
-    "verus": "poor/non_compiling"
+    "verus": "yaml"
   },
-  "humaneval_149_sorted_list_sum__sort_lengths": {
+  "humaneval_148_bf": {
     "dafny": "yaml",
     "id": "0148",
     "lean": "",
     "source": "humaneval",
     "verus": "yaml"
   },
-  "humaneval_149_sorted_list_sum__sort_strings": {
+  "humaneval_149_sorted_list_sum__sort_lengths": {
     "dafny": "yaml",
     "id": "0149",
     "lean": "",
     "source": "humaneval",
     "verus": "yaml"
   },
-  "humaneval_149_sorted_list_sum__sorted_list_sum": {
+  "humaneval_149_sorted_list_sum__sort_strings": {
     "dafny": "yaml",
     "id": "0150",
     "lean": "",
     "source": "humaneval",
     "verus": "yaml"
   },
-  "humaneval_150_x_or_y": {
+  "humaneval_149_sorted_list_sum__sorted_list_sum": {
     "dafny": "yaml",
     "id": "0151",
     "lean": "",
     "source": "humaneval",
     "verus": "yaml"
   },
-  "humaneval_151": {
+  "humaneval_150_x_or_y": {
     "dafny": "yaml",
     "id": "0152",
     "lean": "",
     "source": "humaneval",
     "verus": "yaml"
   },
-  "humaneval_152": {
+  "humaneval_151": {
     "dafny": "yaml",
     "id": "0153",
     "lean": "",
     "source": "humaneval",
     "verus": "yaml"
   },
-  "humaneval_153": {
+  "humaneval_152": {
     "dafny": "yaml",
     "id": "0154",
     "lean": "",
     "source": "humaneval",
     "verus": "yaml"
   },
-  "humaneval_154_cycpattern_check": {
+  "humaneval_153": {
     "dafny": "yaml",
     "id": "0155",
     "lean": "",
     "source": "humaneval",
-    "verus": "poor/non_compiling"
+    "verus": "yaml"
   },
-  "humaneval_155": {
+  "humaneval_154_cycpattern_check": {
     "dafny": "yaml",
     "id": "0156",
     "lean": "",
     "source": "humaneval",
     "verus": "yaml"
   },
-  "humaneval_157": {
+  "humaneval_155": {
     "dafny": "yaml",
     "id": "0157",
     "lean": "",
     "source": "humaneval",
     "verus": "yaml"
   },
-  "humaneval_158_find_max": {
+  "humaneval_157": {
     "dafny": "yaml",
     "id": "0158",
     "lean": "",
     "source": "humaneval",
-    "verus": "poor/non_compiling"
+    "verus": "yaml"
   },
-  "humaneval_159": {
+  "humaneval_158_find_max": {
     "dafny": "yaml",
     "id": "0159",
     "lean": "",
     "source": "humaneval",
     "verus": "yaml"
   },
-  "humaneval_161": {
+  "humaneval_159": {
     "dafny": "yaml",
     "id": "0160",
     "lean": "",
     "source": "humaneval",
     "verus": "yaml"
   },
-  "humaneval_162": {
+  "humaneval_161": {
     "dafny": "yaml",
     "id": "0161",
     "lean": "",
     "source": "humaneval",
     "verus": "yaml"
   },
-  "humaneval_163_generate_integers__generate_integers": {
-    "dafny": "",
+  "humaneval_162": {
+    "dafny": "yaml",
     "id": "0162",
+    "lean": "",
+    "source": "humaneval",
+    "verus": "yaml"
+  },
+  "humaneval_163_generate_integers__generate_integers": {
+    "dafny": "yaml",
+    "id": "0163",
     "lean": "",
     "source": "humaneval",
     "verus": "yaml"

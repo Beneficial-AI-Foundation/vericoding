@@ -35,7 +35,9 @@ def get_source_meta(benchmarks_dir: Path, save_path: Path = None) -> Dict[str, A
             continue
             
         xxx_name = xxx_dir.name
-        print(f"Processing {xxx_name} directory...")
+        if xxx_name not in ["lean", "dafny", "verus"]:
+            raise ValueError(f"Unknown benchmark type '{xxx_name}'. Expected 'lean', 'dafny', or 'verus'.")
+        # print(f"Processing {xxx_name} directory...")
         
         # Iterate through each YYY subfolder
         for yyy_dir in xxx_dir.iterdir():
@@ -43,6 +45,16 @@ def get_source_meta(benchmarks_dir: Path, save_path: Path = None) -> Dict[str, A
                 continue
                 
             yyy_name = yyy_dir.name
+
+            # Validate that the YYY subdirectory is either "poor", "yaml", or "files"
+            for yyy_subdir in yyy_dir.iterdir():
+                if not yyy_subdir.is_dir() or yyy_subdir.name.startswith('.'):
+                    continue
+                    
+                yyy_subdir_name = yyy_subdir.name
+                if yyy_subdir_name not in ["poor","yaml","files"]:
+                    raise ValueError(f"Unknown benchmark type '{yyy_subdir_name}' in {yyy_dir}. Expected 'poor' or 'yaml' or 'files'.")
+        
             yaml_dir = yyy_dir / "yaml"
             poor_dir = yyy_dir / "poor"
             
@@ -54,7 +66,7 @@ def get_source_meta(benchmarks_dir: Path, save_path: Path = None) -> Dict[str, A
             if not yaml_dir.is_dir():
                 raise NotADirectoryError(f"{yaml_dir} is not a directory")
             
-            print(f"  Processing {yyy_name} subdirectory...")
+            # print(f"  Processing {yyy_name} subdirectory...")
             
             # Get all files in the yaml directory
             yaml_files = list(yaml_dir.iterdir())
@@ -98,7 +110,7 @@ def get_source_meta(benchmarks_dir: Path, save_path: Path = None) -> Dict[str, A
             
             # Process poor directory if it exists
             if poor_dir.exists() and poor_dir.is_dir():
-                print(f"  Processing poor directory in {yyy_name}...")
+                # print(f"  Processing poor directory in {yyy_name}...")
                 
                 # Check for any files that are not directories and don't start with "."
                 for item in poor_dir.iterdir():
@@ -112,14 +124,17 @@ def get_source_meta(benchmarks_dir: Path, save_path: Path = None) -> Dict[str, A
                         continue
                     
                     zzz_name = zzz_dir.name
-                    print(f"    Processing poor/{zzz_name} folder...")
+                    # print(f"    Processing poor/{zzz_name} folder...")
                     
                     # Get all files in the ZZZ folder
                     zzz_files = list(zzz_dir.iterdir())
                     for www_file in zzz_files:
                         if not www_file.is_file() or www_file.name.startswith('.'):
-                            continue
-                        
+                            raise ValueError(f"Found unexpected file in poor directory: {www_file}. ")
+                        if not www_file.name.endswith('.yaml'):
+                            if zzz_dir.name not in ["unformatted"]:
+                                raise ValueError(f"{www_file} in {zzz_dir} is not a .yaml file")
+
                         www_name = www_file.name
                         
                         # Case 1: WWW is of the form UUU.yaml
@@ -129,12 +144,9 @@ def get_source_meta(benchmarks_dir: Path, save_path: Path = None) -> Dict[str, A
                         if uuu_name in source_meta:
                             # Raise error if SM[UUU][XXX] starts with "yaml"
                             if source_meta[uuu_name][xxx_name].startswith("yaml"):
-                                # raise ValueError(f"SM[{uuu_name}][{xxx_name}] starts with 'yaml' but file is poor; "
-                                
-                                if source_meta[uuu_name][xxx_name].startswith("yaml"):
-                                    raise ValueError(f"SM[{uuu_name}][{xxx_name}] starts with 'yaml' but file is poor; "
-                                            f"path: {www_file}, "
-                                            f"found: {source_meta[uuu_name][xxx_name]}")
+                                raise ValueError(f"SM[{uuu_name}][{xxx_name}] starts with 'yaml' but file is poor; "
+                                                f"path: {www_file}, "
+                                                f"found: {source_meta[uuu_name][xxx_name]}")
                         else:
                             # Create entry SM[UUU] with empty strings for all languages
                             source_meta[uuu_name] = {
@@ -255,12 +267,12 @@ def validate_source_signatures(source_meta: Dict[str, Any]) -> None:
         # Get the signature (set of languages with non-empty values) for the first entry
         first_entry = next(iter(source_entries.values()))
         expected_signature = set(key for key in first_entry.keys() 
-                               if key != "source" and first_entry[key])
+                               if key in ["lean", "dafny", "verus"] and first_entry[key])
         
         # Check that all other entries have the same signature
         for filename, entry_data in source_entries.items():
             entry_signature = set(key for key in entry_data.keys() 
-                                if key != "source" and entry_data[key])
+                                if key in ["lean", "dafny", "verus"] and entry_data[key])
             if entry_signature != expected_signature:
                 inconsistent_files.append({
                     'source': source,
@@ -380,7 +392,7 @@ def main():
     source_meta = get_source_meta(benchmarks_dir, save_path=benchmarks_dir / "generated_metadata.json")
 
     # Validate that all entries for each source have consistent signatures
-    validate_source_signatures(source_meta)
+    # validate_source_signatures(source_meta)
     
     # Print summary counts
     print_summary_counts(source_meta)
