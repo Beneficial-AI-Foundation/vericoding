@@ -36,6 +36,4 @@ vc-theorems: |-
     sorry
 
 vc-postamble: |-
-  -- Test cases and examples
-  def main : IO Unit := pure ()
 

@@ -22,6 +22,4 @@ vc-theorems: |-
     sorry
 
 vc-postamble: |-
-  def main : IO Unit := do
-    return ()
 
