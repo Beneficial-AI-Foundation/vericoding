@@ -35,9 +35,12 @@ def check_insufficient_credits(run):
     for file in files:
         if file.name == 'output.log':
             # Download and read the log file
-            content = file.download(replace=True).read()
-            if isinstance(content, bytes):
-                content = content.decode('utf-8', errors='ignore')
+            downloaded_file = file.download(replace=True)
+            with open(downloaded_file.name, 'r', encoding='utf-8', errors='ignore') as f:
+                content = f.read()
+            
+            # Clean up the downloaded file immediately
+            os.remove(downloaded_file.name)
             
             return "Insufficient credits" in content
     else:
