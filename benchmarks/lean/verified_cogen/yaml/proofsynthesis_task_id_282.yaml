@@ -24,6 +24,4 @@ vc-theorems: |-
     sorry
 
 vc-postamble: |-
-  def main : IO Unit := 
-    IO.println "Element-wise subtract implementation"
 
