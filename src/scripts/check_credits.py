@@ -25,7 +25,7 @@ DATASET_MAPPING = {
 
 def extract_dataset(config, debug=False):
     """Extract dataset from config folder."""
-    return config.get('folder', 'N/A')
+    return config.get('files_dir', 'N/A')
 
 def check_insufficient_credits(run):
     """Check if run logs contain 'Insufficient credits' phrase."""
