@@ -24,5 +24,3 @@ theorem twoWaySort_spec_satisfied (a : Array Bool) (h_precond : twoWaySort_preco
     twoWaySort_postcond a (twoWaySort a h_precond) h_precond := by
   sorry
 -- </vc-theorems>
-
-def main : IO Unit := return ()

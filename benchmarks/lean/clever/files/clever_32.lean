@@ -37,6 +37,3 @@ theorem correctness
 := by
   sorry
 -- </vc-theorems>
-
--- #test implementation [1, 2] = -0.5
--- #test implementation [-6, 11, -6, 1] = 1.0

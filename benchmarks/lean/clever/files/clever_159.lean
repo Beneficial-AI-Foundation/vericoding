@@ -36,8 +36,3 @@ theorem correctness
 : problem_spec implementation a b c := by
   sorry
 -- </vc-theorems>
-
--- #test implementation 5 6 10 = [11, 4]
--- #test implementation 4 8 9 = [12, 1]
--- #test implementation 1 10 10 = [11, 0]
--- #test implementation 2 11 5 = [7, 0]

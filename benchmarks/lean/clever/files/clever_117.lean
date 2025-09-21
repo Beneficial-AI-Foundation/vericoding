@@ -51,9 +51,3 @@ theorem correctness
 := by
   sorry
 -- </vc-theorems>
-
--- #test implementation "Mary had a little lamb" 4 = ["little"]
--- #test implementation "Mary had a little lamb" 3 = ["Mary", "lamb"]
--- #test implementation "simple white space" 2 = []
--- #test implementation "Hello world" 4 = ["world"]
--- #test implementation "Uncle sam" 3 = ["Uncle"]

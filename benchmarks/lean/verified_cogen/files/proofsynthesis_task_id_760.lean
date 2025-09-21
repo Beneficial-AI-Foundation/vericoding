@@ -20,5 +20,3 @@ theorem hasOnlyOneDistinctElement_spec_satisfied (arr: Array Int) (h_precond : h
     hasOnlyOneDistinctElement_postcond (arr) (hasOnlyOneDistinctElement (arr) h_precond) h_precond := by
   sorry
 -- </vc-theorems>
-
-#check hasOnlyOneDistinctElement

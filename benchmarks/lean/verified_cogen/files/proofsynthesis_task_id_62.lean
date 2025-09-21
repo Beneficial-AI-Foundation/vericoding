@@ -21,5 +21,3 @@ theorem smallestNum_spec_satisfied (nums : Array Int) (h_precond : smallestNum_p
     smallestNum_postcond nums (smallestNum nums h_precond) h_precond := by
   sorry
 -- </vc-theorems>
-
-#check smallestNum_spec_satisfied

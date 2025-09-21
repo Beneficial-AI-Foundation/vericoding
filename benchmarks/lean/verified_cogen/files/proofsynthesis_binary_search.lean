@@ -21,7 +21,3 @@ theorem binarySearch_spec_satisfied (v : Array Nat) (k : Nat) (h_precond : binar
     binarySearch_postcond v k (binarySearch v k h_precond) h_precond := by
   sorry
 -- </vc-theorems>
-
-#check binarySearch
-#check binarySearch_precond
-#check binarySearch_postcond

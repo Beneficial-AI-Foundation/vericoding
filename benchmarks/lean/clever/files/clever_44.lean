@@ -37,7 +37,3 @@ theorem correctness
 := by
   sorry
 -- </vc-theorems>
-
--- #test implementation 8 3 = '22'
--- #test implementation 8 2 = '1000'
--- #test implementation 7 2 = '111'

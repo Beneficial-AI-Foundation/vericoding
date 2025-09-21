@@ -27,6 +27,3 @@ theorem countTrue_spec_satisfied (arr : Array Bool) (h_precond : countTrue_preco
     countTrue_postcond arr (countTrue arr h_precond) h_precond := by
   sorry
 -- </vc-theorems>
-
-/- Main function -/
-def main : IO Unit := return ()

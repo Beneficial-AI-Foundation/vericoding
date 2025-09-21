@@ -35,5 +35,3 @@ theorem sum_spec_satisfied (arr : Array Int) (h_precond : sum_precond arr) :
     sum_postcond arr (sum arr h_precond) h_precond := by
   sorry
 -- </vc-theorems>
-
-/- Test cases and examples can be added here -/

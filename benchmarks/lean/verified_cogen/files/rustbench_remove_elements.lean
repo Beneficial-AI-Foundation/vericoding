@@ -27,5 +27,3 @@ theorem removeElements_spec_satisfied (a : Array Int) (b : Array Int) (h_precond
     removeElements_postcond a b (removeElements a b h_precond) h_precond := by
   sorry
 -- </vc-theorems>
-
-def main : IO Unit := return ()

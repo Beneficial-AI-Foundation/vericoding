@@ -40,5 +40,3 @@ theorem correctness
 := by
   sorry
 -- </vc-theorems>
-
--- #test implementation "Hello" = "hELLO"

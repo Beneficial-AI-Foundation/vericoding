@@ -41,9 +41,3 @@ theorem correctness
 : problem_spec implementation date := by
   sorry
 -- </vc-theorems>
-
--- #test implementation "03-11-2000" = true
--- #test implementation "15-01-2012" = false
--- #test implementation "04-0-2040" = false
--- #test implementation "06-04-2020" = true
--- #test implementation "06/04/2020" = false

@@ -38,6 +38,3 @@ theorem correctness
 : problem_spec implementation numbers threshold  := by
   sorry
 -- </vc-theorems>
-
--- #test implementation ([1, 2, 3]: List Rat) 0.5 = false
--- #test implementation ([1, 2.8, 3, 4, 5, 2]: List Rat) 0.3 = true

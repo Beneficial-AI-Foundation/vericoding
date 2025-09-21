@@ -38,13 +38,3 @@ theorem correctness
 := by
   sorry
 -- </vc-theorems>
-
--- #test implementation 3 4 5 = 6.00
--- #test implementation 1 2 10 = -1
--- #test implementation 4 8 5 = 8.18
--- #test implementation 2 2 2 = 1.73
--- #test implementation 1 2 3 = -1
--- #test implementation 10 5 7 = 16.25
--- #test implementation 2 6 3 = -1
--- #test implementation 1 1 1 =  0.43
--- #test implementation 2 2 10 = -1

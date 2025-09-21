@@ -28,5 +28,3 @@ theorem twoSum_spec_satisfied (nums : Array Int) (target : Int) (h_precond : two
     twoSum_postcond nums target (twoSum nums target h_precond) h_precond := by
   sorry
 -- </vc-theorems>
-
-def main : IO Unit := return ()

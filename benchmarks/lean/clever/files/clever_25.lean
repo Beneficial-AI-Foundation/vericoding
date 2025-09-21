@@ -34,7 +34,3 @@ theorem correctness
 := by
   sorry
 -- </vc-theorems>
-
--- #test implementation 8 = [2, 2, 2]
--- #test implementation 25 = [5, 5]
--- #test implementation 70 = [2, 5, 7]

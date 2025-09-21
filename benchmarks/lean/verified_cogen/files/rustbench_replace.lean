@@ -23,5 +23,3 @@ theorem replace_spec_satisfied (a_old : Array Int) (x : Int) (y : Int) (h_precon
     replace_postcond a_old x y (replace a_old x y h_precond) h_precond := by
   sorry
 -- </vc-theorems>
-
-def main : IO Unit := return ()

@@ -36,7 +36,3 @@ theorem correctness
 := by
   sorry
 -- </vc-theorems>
-
--- #test implementation ["a", "b", "c"] = some "a"
--- #test implementation ["a", "bb", "ccc"] = some "ccc"
--- #test implementation [] = none

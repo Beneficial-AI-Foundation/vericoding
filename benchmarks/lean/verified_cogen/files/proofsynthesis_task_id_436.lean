@@ -20,5 +20,3 @@ theorem findNegativeNumbers_spec_satisfied (arr: Array Int) (h_precond : findNeg
     findNegativeNumbers_postcond arr (findNegativeNumbers arr h_precond) h_precond := by
   sorry
 -- </vc-theorems>
-
-def main : IO Unit := pure ()

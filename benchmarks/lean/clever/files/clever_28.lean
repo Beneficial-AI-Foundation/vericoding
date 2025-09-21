@@ -38,6 +38,3 @@ theorem correctness
 := by
   sorry
 -- </vc-theorems>
-
--- #test implementation [] = ""
--- #test implementation ["a", "b", "c"] = "abc"

@@ -21,5 +21,3 @@ theorem replaceChars_spec_satisfied (s: Array Char) (old: Char) (new: Char) (h_p
     replaceChars_postcond s old new (replaceChars s old new h_precond) h_precond := by
   sorry
 -- </vc-theorems>
-
-def main : IO Unit := return ()

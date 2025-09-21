@@ -31,5 +31,3 @@ theorem correctness
 := by
   sorry
 -- </vc-theorems>
-
--- #test implementation 15 = 5

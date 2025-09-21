@@ -37,6 +37,3 @@ theorem correctness
 : problem_spec implementation nums := by
   sorry
 -- </vc-theorems>
-
--- #test implementation [15, -73, 14, -15] = 1
--- #test implementation [33, -2, -3, 45, 21, 109] = 2

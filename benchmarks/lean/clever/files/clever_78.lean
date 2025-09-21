@@ -46,11 +46,3 @@ theorem correctness
 := by
   sorry
 -- </vc-theorems>
-
--- #test implementation "AB" = 1
--- #test implementation "1077E" = 2
--- #test implementation "ABED1A33" = 4
--- #test implementation "2020" = 2
--- #test implementation "123456789ABCDEF0" = 6
--- #test implementation "112233445566778899AABBCCDDEEFF00" = 12
--- #test implementation "" = 0

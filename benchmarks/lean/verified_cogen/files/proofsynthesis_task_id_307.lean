@@ -22,5 +22,3 @@ theorem listDeepClone_spec_satisfied (arr: Array Nat) (h_precond : listDeepClone
     listDeepClone_postcond (arr) (listDeepClone (arr) h_precond) h_precond := by
   sorry
 -- </vc-theorems>
-
-def main : IO Unit := return ()

@@ -57,6 +57,3 @@ theorem correctness
 : problem_spec implementation nums := by
   sorry
 -- </vc-theorems>
-
--- #test implementation [1, 11, -1, -11, -12] = [-1, -11, 1, -12, 11]
--- #test implementation [] = []

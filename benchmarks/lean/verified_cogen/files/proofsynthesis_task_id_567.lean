@@ -21,5 +21,3 @@ theorem isSorted_spec_satisfied (arr: Array Int) (h_precond : isSorted_precond (
     isSorted_postcond (arr) (isSorted (arr) h_precond) h_precond := by
   sorry
 -- </vc-theorems>
-
-def main : IO Unit := return ()

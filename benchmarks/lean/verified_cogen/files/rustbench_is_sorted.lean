@@ -22,5 +22,3 @@ theorem isSorted_spec_satisfied (lst : Array Int) (h_precond : isSorted_precond 
     isSorted_postcond lst (isSorted lst h_precond) h_precond := by
   sorry
 -- </vc-theorems>
-
-/- Test cases can be added here -/

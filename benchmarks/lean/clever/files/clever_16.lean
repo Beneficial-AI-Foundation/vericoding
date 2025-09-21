@@ -34,6 +34,3 @@ theorem correctness
 := by
   sorry
 -- </vc-theorems>
-
--- #test implementation "xyzXYZ" = 3
--- #test implementation "Jerry" = 4

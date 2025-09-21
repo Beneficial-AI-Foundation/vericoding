@@ -23,5 +23,3 @@ theorem intersperse_spec_satisfied (numbers: Array Int) (delim: Int) (h_precond 
     intersperse_postcond numbers delim (intersperse numbers delim h_precond) h_precond := by
   sorry
 -- </vc-theorems>
-
-def main : IO Unit := return ()

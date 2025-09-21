@@ -42,8 +42,3 @@ theorem correctness
 : problem_spec implementation text := by
   sorry
 -- </vc-theorems>
-
--- #test implementation "Example" = "Example"
--- #test implementation "Example 1" = "Example_1"
--- #test implementation " Example 2" = "_Example_2"
--- #test implementation " Example   3" = "_Example-3"

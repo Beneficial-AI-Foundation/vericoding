@@ -27,5 +27,3 @@ theorem binarySearchRecursive_spec_satisfied (v : Array Int) (elem : Int) (c : N
     binarySearchRecursive_postcond v elem c f (binarySearchRecursive v elem c f h_precond) h_precond := by
   sorry
 -- </vc-theorems>
-
-def main : IO Unit := pure ()

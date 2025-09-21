@@ -38,5 +38,3 @@ theorem correctness
 : problem_spec implementation arr k := by
   sorry
 -- </vc-theorems>
-
--- #test implementation ([111, 21, 3, 4000, 5, 6, 7, 8, 9]: List Int) 4 = 24

@@ -42,7 +42,3 @@ theorem correctness
 := by
   sorry
 -- </vc-theorems>
-
--- #test implementation "Hi" = "Hi"
--- #test implementation "hello" = "ehllo"
--- #test implementation "Hello World!!!" = "Hello !!!Wdlor"

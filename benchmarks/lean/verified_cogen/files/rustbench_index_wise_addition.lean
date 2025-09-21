@@ -27,5 +27,3 @@ theorem indexWiseAddition_spec_satisfied (a : Array (Array Int)) (b : Array (Arr
     indexWiseAddition_postcond a b (indexWiseAddition a b h_precond) h_precond := by
   sorry
 -- </vc-theorems>
-
-/- Test cases and examples can be added here -/

@@ -40,6 +40,3 @@ theorem correctness
 : problem_spec implementation sentence := by
   sorry
 -- </vc-theorems>
-
--- #test implementation "This is a test" = "is"
--- #test implementation "lets go for swimming" = "go for"

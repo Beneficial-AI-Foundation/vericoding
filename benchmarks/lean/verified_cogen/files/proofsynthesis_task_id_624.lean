@@ -39,6 +39,3 @@ theorem toUppercase_spec_satisfied (str1 : Array Char) (h_precond : toUppercase_
     toUppercase_postcond str1 (toUppercase str1 h_precond) h_precond := by
   sorry
 -- </vc-theorems>
-
-def main : IO Unit := do
-  return ()
