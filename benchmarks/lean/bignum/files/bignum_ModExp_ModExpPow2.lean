@@ -1,0 +1,37 @@
+-- <vc-preamble>
+def ValidBitString (s : String) : Prop :=
+  ∀ {i c}, s.get? i = some c → (c = '0' ∨ c = '1')
+
+def Str2Int (s : String) : Nat :=
+  s.data.foldl (fun acc ch => 2 * acc + (if ch = '1' then 1 else 0)) 0
+
+def Exp_int (x y : Nat) : Nat :=
+  if y = 0 then 1 else x * Exp_int x (y - 1)
+
+def ModExpPow2 (sx sy : String) (n : Nat) (sz : String) : String :=
+  sorry
+
+axiom ModExpPow2_spec (sx sy : String) (n : Nat) (sz : String)
+  (hx : ValidBitString sx) (hy : ValidBitString sy) (hz : ValidBitString sz)
+  (hsy_pow2 : Str2Int sy = Exp_int 2 n ∨ Str2Int sy = 0)
+  (hsy_len : sy.length = n + 1)
+  (hsz_gt1 : Str2Int sz > 1) :
+  ValidBitString (ModExpPow2 sx sy n sz) ∧
+  Str2Int (ModExpPow2 sx sy n sz) = Exp_int (Str2Int sx) (Str2Int sy) % Str2Int sz
+-- </vc-preamble>
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+-- <vc-definitions>
+def ModExp (sx sy sz : String) : String :=
+  sorry
+-- </vc-definitions>
+
+-- <vc-theorems>
+theorem ModExp_spec (sx sy sz : String) (hx : ValidBitString sx) (hy : ValidBitString sy) (hz : ValidBitString sz)
+  (hsy_pos : sy.length > 0) (hsz_gt1 : Str2Int sz > 1) :
+  ValidBitString (ModExp sx sy sz) ∧
+  Str2Int (ModExp sx sy sz) = Exp_int (Str2Int sx) (Str2Int sy) % Str2Int sz := by
+  sorry
+-- </vc-theorems>

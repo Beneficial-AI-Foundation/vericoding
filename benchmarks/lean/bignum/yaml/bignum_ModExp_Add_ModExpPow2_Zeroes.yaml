@@ -3,8 +3,6 @@ vc-description: |-
   Implement the function according to the Lean specification.
 
 vc-preamble: |-
-  namespace BignumLean
-  
   def ValidBitString (s : String) : Prop :=
     ∀ {i c}, s.get? i = some c → (c = '0' ∨ c = '1')
   
@@ -17,11 +15,11 @@ vc-preamble: |-
   def AllZero (s : String) : Prop :=
     ∀ i, s.get? i = some '0'
   
-  def Add (s1 s2 : String) : String :=
+  def Add_ (s1 s2 : String) : String :=
     sorry
   
   axiom Add_spec (s1 s2 : String) (h1 : ValidBitString s1) (h2 : ValidBitString s2) :
-    ValidBitString (Add s1 s2) ∧ Str2Int (Add s1 s2) = Str2Int s1 + Str2Int s2
+    ValidBitString (Add_ s1 s2) ∧ Str2Int (Add_ s1 s2) = Str2Int s1 + Str2Int s2
   
   def ModExpPow2 (sx sy : String) (n : Nat) (sz : String) : String :=
     sorry
@@ -55,5 +53,5 @@ vc-theorems: |-
     sorry
 
 vc-postamble: |-
-  end BignumLean
+
 

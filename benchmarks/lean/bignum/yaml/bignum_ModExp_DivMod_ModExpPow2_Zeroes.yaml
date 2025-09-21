@@ -3,8 +3,6 @@ vc-description: |-
   Implement the function according to the Lean specification.
 
 vc-preamble: |-
-  namespace BignumLean
-  
   def ValidBitString (s : String) : Prop :=
     ∀ {i c}, s.get? i = some c → (c = '0' ∨ c = '1')
   
@@ -58,5 +56,5 @@ vc-theorems: |-
     sorry
 
 vc-postamble: |-
-  end BignumLean
+
 
