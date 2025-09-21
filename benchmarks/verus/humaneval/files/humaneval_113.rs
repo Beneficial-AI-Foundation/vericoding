@@ -65,8 +65,9 @@ fn int_to_string(n: u32) -> (s: Vec<char>)
 // <vc-spec>
 fn odd_count(lst: Vec<Vec<char>>) -> (result: Vec<Vec<char>>)
     requires forall|i: int| #![auto] 0 <= i < lst.len() ==> is_all_digits(lst[i as int]@),
-    ensures result.len() == lst.len(),
-    ensures forall|i: int| #![auto] 0 <= i < result.len() ==> result[i as int]@ == format_message(count_odd_digits(lst[i as int]@))
+    ensures 
+        result.len() == lst.len(),
+        forall|i: int| #![auto] 0 <= i < result.len() ==> result[i as int]@ == format_message(count_odd_digits(lst[i as int]@))
 // </vc-spec>
 // <vc-code>
 {

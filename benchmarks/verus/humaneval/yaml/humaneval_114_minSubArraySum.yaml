@@ -26,9 +26,10 @@ vc-preamble: |-
 vc-helpers: |-
 
 vc-spec: |-
-  fn min_sub_array_sum(a: Vec<i8>) -> (s: i8)
-    ensures forall|p: int, q: int| 0 <= p <= q <= a@.len() ==> sum(a@.map(|i, x| x as int), p, q) >= s as int &&
-            (exists|k: int, m: int| #[trigger] sum(a@.map(|i, x| x as int), k, m) && 0 <= k <= m <= a@.len() && s as int == sum(a@.map(|i, x| x as int), k, m))
+  fn min_sub_array_sum(a: Vec<int>) -> (s: int)
+    ensures 
+      forall|p: int, q: int| 0 <= p <= q <= a@.len() ==> sum(a@, p, q) >= s as int,
+      exists|k: int, m: int| 0 <= k <= m <= a@.len() && s as int == sum(a@, k, m)
 
 vc-code: |-
   {
