@@ -96,7 +96,7 @@ def get_runtime_data(tag, project="vericoding", entity=None, debug=False):
             print(f"Output tokens: {run.summary.get('llm/total_output_tokens', 'Not found')}", file=sys.stderr)
             print("-" * 50, file=sys.stderr)
         
-        llm_provider = config.get('llm_provider', '')
+        llm_provider = config.get('llm_provider', '') or config.get('llm', '')
         language = config.get('language', '')
         
         # Skip non-Lean runs
