@@ -38,5 +38,3 @@ theorem correctness
 := by
   sorry
 -- </vc-theorems>
-
--- #test implementation "o o| .| o| o| .| .| .| .| o o" = [4, 2, 1, 2, 2, 1, 1, 1, 1, 4, 4]

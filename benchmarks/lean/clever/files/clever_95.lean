@@ -38,9 +38,3 @@ theorem correctness
 := by
   sorry
 -- </vc-theorems>
-
--- #test implementation (Std.HashMap.ofList [("a", "apple"), ("b", "banana")]) = true
--- #test implementation (Std.HashMap.ofList [("a", "apple"), ("A", "banana"), ("B", "banana")]) = false
--- #test implementation (Std.HashMap.ofList [("a", "apple"), ("b", "banana"), ("a", "apple")]) = false
--- #test implementation (Std.HashMap.ofList [("Name", "John"), ("Age", "36"), ("City", "Houston")]) = false
--- #test implementation (Std.HashMap.ofList [("STATE", "NC"), ("ZIP", "12345")]) = true

@@ -25,5 +25,3 @@ theorem replaceBlanksWithChars_spec_satisfied (str1 : Array Char) (ch : Char) (h
     replaceBlanksWithChars_postcond str1 ch (replaceBlanksWithChars str1 ch h_precond) h_precond := by
   sorry
 -- </vc-theorems>
-
-def main : IO Unit := return ()

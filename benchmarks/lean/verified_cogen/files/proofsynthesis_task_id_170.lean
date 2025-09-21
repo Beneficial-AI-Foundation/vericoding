@@ -28,5 +28,3 @@ theorem sumRangeList_spec_satisfied (arr : Array Int) (start : Nat) (endVal : Na
     sumRangeList_postcond arr start endVal (sumRangeList arr start endVal h_precond) h_precond := by
   sorry
 -- </vc-theorems>
-
-def main : IO Unit := pure ()

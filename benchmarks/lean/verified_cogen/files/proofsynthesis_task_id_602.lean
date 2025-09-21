@@ -36,6 +36,3 @@ theorem firstRepeatedChar_spec_satisfied (str1 : Array Char) (h_precond : firstR
     firstRepeatedChar_postcond str1 (firstRepeatedChar str1 h_precond) h_precond := by
   sorry
 -- </vc-theorems>
-
--- Test cases and examples
-def main : IO Unit := pure ()

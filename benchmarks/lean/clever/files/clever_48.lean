@@ -43,8 +43,3 @@ theorem correctness
 := by
   sorry
 -- </vc-theorems>
-
--- #test implementation "" = true
--- #test implementation "aba" = true
--- #test implementation "aaaaa" = true
--- #test implementation "zbcd" = false

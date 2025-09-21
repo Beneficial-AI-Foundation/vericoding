@@ -21,6 +21,3 @@ theorem maxArray_spec_satisfied (nums : Array Int) (h_precond : maxArray_precond
     maxArray_postcond nums (maxArray nums h_precond) h_precond := by
   sorry
 -- </vc-theorems>
-
-def main : IO Unit := do
-  return ()

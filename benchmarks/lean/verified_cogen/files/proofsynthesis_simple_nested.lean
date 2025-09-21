@@ -24,5 +24,3 @@ theorem simpleNested_spec_satisfied (a : Array Int) (b : Array Int) (N : Int) (h
     simpleNested_postcond (a) (b) (N) (simpleNested (a) (b) (N) h_precond) h_precond := by
   sorry
 -- </vc-theorems>
-
-def main : IO Unit := return ()

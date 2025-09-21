@@ -37,12 +37,3 @@ theorem correctness
 : problem_spec implementation lst := by
   sorry
 -- </vc-theorems>
-
--- #test implementation [5] = true
--- #test implementation [1, 2, 3, 4, 5] = true
--- #test implementation [1, 3, 2, 4, 5] = false
--- #test implementation [1, 2, 3, 4, 5, 6] = true
--- #test implementation [1, 2, 3, 4, 5, 6, 7] = true
--- #test implementation [1, 3, 2, 4, 5, 6, 7] = false
--- #test implementation [1, 2, 2, 3, 3, 4] = true
--- #test implementation [1, 2, 2, 2, 3, 4] = false

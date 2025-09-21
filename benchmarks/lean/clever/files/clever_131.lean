@@ -43,7 +43,3 @@ theorem correctness
 : problem_spec implementation n := by
   sorry
 -- </vc-theorems>
-
--- #test implementation 1 = 1
--- #test implementation 4 = 0
--- #test implementation 235 = 15

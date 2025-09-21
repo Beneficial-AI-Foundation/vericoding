@@ -35,8 +35,3 @@ theorem correctness
 : problem_spec implementation txt := by
   sorry
 -- </vc-theorems>
-
--- #test implementation "apple pie" = false
--- #test implementation "apple pi e" = true
--- #test implementation "apple pi e " = false
--- #test implementation "" = false

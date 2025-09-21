@@ -43,6 +43,3 @@ theorem correctness
 := by
   sorry
 -- </vc-theorems>
-
--- #test implementation "test" = "TGST"
--- #test implementation "This is a message" = "tHKS KS C MGSSCGG"

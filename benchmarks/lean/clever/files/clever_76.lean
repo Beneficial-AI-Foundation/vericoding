@@ -31,14 +31,3 @@ theorem correctness
 := by
   sorry
 -- </vc-theorems>
-
--- #test implementation 16 2 = True
--- #test implementation 143214 16 = False
--- #test implementation 4 2 = True
--- #test implementation 9 3 = True
--- #test implementation 16 4 = True
--- #test implementation 24 2 = False
--- #test implementation 128 4 = False
--- #test implementation 12 6 = False
--- #test implementation 1 1 = True
--- #test implementation 1 12 = True

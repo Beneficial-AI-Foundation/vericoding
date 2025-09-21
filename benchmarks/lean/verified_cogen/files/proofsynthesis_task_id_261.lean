@@ -24,6 +24,3 @@ theorem elementWiseDivision_spec_satisfied (arr1 : Array UInt32) (arr2 : Array U
     elementWiseDivision_postcond arr1 arr2 (elementWiseDivision arr1 arr2 h_precond) h_precond := by
   sorry
 -- </vc-theorems>
-
-def main : IO Unit := do
-  return ()

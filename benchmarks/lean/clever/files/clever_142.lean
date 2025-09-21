@@ -35,7 +35,3 @@ theorem correctness
 : problem_spec implementation lst := by
   sorry
 -- </vc-theorems>
-
--- #test implementation [1, 2, 3] = 6
--- #test implementation [] = 0
--- #test implementation [-1, -5, 2, -1, -5] = -126

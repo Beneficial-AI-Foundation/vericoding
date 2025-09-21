@@ -62,5 +62,3 @@ theorem correctness
 := by
   sorry
 -- </vc-theorems>
-
--- #test implementation "three one five" = "one three five"

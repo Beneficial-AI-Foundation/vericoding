@@ -39,15 +39,3 @@ theorem correctness
 := by
   sorry
 -- </vc-theorems>
-
--- #test implementation 1 5 = some "0b11"
--- #test implementation 7 13 = some "0b1010"
--- #test implementation 964 977 = some "0b1111001010"
--- #test implementation 996 997 = some "0b1111100100"
--- #test implementation 185 546 = some "0b101101110"
--- #test implementation 362 496 = some "0b110101101"
--- #test implementation 350 902 = some "0b1001110010"
--- #test implementation 197 233 = some "0b11010111"
--- #test implementation 7 5 = none
--- #test implementation 5 1 = none
--- #test implementation 5 5 = some "0b101"

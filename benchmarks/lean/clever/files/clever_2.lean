@@ -34,5 +34,3 @@ theorem correctness
 : problem_spec implementation number := by
   sorry
 -- </vc-theorems>
-
--- #test implementation 3.5 = 0.5

@@ -36,10 +36,3 @@ theorem correctness
 := by
   sorry
 -- </vc-theorems>
-
--- #test implementation "" = 0
--- #test implementation "abAB" = 131
--- #test implementation "abcCd" = 67
--- #test implementation "helloE" = 69
--- #test implementation "woArBld" = 131
--- #test implementation "aAaaaXa" = 153

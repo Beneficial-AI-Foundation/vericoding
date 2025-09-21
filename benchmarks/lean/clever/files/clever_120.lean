@@ -43,6 +43,3 @@ theorem correctness
 : problem_spec implementation arr k  := by
   sorry
 -- </vc-theorems>
-
--- #test implementation [2, 4, 3, 1] 3 = [2, 3, 4]
--- #test implementation [2, 4, 3, 1] 0 = []

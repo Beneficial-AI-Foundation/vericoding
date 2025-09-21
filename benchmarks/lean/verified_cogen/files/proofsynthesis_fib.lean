@@ -32,5 +32,3 @@ theorem fibonacci_spec_satisfied (n: Nat) (h_precond : fibonacci_precond n) :
     fibonacci_postcond n (fibonacci n h_precond) h_precond := by
   sorry
 -- </vc-theorems>
-
-def main : IO Unit := pure ()

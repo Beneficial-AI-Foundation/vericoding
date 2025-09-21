@@ -32,9 +32,3 @@ theorem correctness
 : problem_spec implementation lst := by
   sorry
 -- </vc-theorems>
-
--- #test implementation [1, 2, 3] = 14
--- #test implementation [1, 4, 9] = 98
--- #test implementation [1, 3, 5, 7] = 84
--- #test implementation [1.4, 4.2, 0] = 29
--- #test implementation [-2.4, 1, 1] = 6

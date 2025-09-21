@@ -27,5 +27,3 @@ theorem rotateRight_spec_satisfied (list : Array UInt32) (n : Nat) (h_precond : 
     rotateRight_postcond list n (rotateRight list n h_precond) h_precond := by
   sorry
 -- </vc-theorems>
-
-def main : IO Unit := return ()

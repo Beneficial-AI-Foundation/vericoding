@@ -49,8 +49,3 @@ theorem correctness
 := by
   sorry
 -- </vc-theorems>
-
--- #test implementation "yogurt" = "u"
--- #test implementation "FULL" = "U"
--- #test implementation "quick" = "i"
--- #test implementation "ab" = ""

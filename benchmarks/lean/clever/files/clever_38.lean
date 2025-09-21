@@ -38,7 +38,3 @@ theorem correctness
 : problem_spec implementation s := by
   sorry
 -- </vc-theorems>
-
--- #test implementation "abcdef" = "bcaefd"
--- #test implementation "abcde" = "bcade"
--- #test implementation "ab" = "ab"

@@ -50,8 +50,3 @@ theorem correctness
 : problem_spec implementation brackets := by
   sorry
 -- </vc-theorems>
-
--- #test implementation "<" = false
--- #test implementation "<>" = true
--- #test implementation "<<><>>" = true
--- #test implementation "><<>" = false

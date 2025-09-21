@@ -39,6 +39,3 @@ theorem correctness
 : problem_spec implementation lst := by
   sorry
 -- </vc-theorems>
-
--- #test implementation ["aa", "a", "aaa"] = ["aa"]
--- #test implementation ["ab", "a", "aaa", "cd"] = ["ab", "cd"]

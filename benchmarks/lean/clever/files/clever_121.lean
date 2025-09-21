@@ -38,7 +38,3 @@ theorem correctness
 : problem_spec implementation lst := by
   sorry
 -- </vc-theorems>
-
--- #test implementation ([5, 8, 7, 1]: List Int) = 12
--- #test implementation ([3, 3, 3, 3, 3]: List Int) = 9
--- #test implementation ([30, 13, 24, 321]: List Int) = 0

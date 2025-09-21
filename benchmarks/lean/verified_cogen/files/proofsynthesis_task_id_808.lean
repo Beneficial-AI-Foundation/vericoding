@@ -20,5 +20,3 @@ theorem containsK_spec_satisfied (arr: Array Int) (k: Int) (h_precond : contains
     containsK_postcond (arr) (k) (containsK (arr) (k) h_precond) h_precond := by
   sorry
 -- </vc-theorems>
-
-#check containsK

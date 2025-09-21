@@ -39,6 +39,3 @@ theorem correctness
 := by
   sorry
 -- </vc-theorems>
-
--- #test implementation "abcde" = 2
--- #test implementation "ACEDY" = 3

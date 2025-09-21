@@ -31,7 +31,3 @@ theorem maxSegmentSum_spec_satisfied (a : Array Int) (s : Nat) (t : Nat) (h_prec
     maxSegmentSum_postcond a s t (maxSegmentSum a s t h_precond) h_precond := by
   sorry
 -- </vc-theorems>
-
-/- Main function for testing -/
-def main : IO Unit :=
-  IO.println "Max segment sum implementation"

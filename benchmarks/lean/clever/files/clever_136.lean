@@ -37,7 +37,3 @@ theorem correctness
 : problem_spec implementation lst := by
   sorry
 -- </vc-theorems>
-
--- #test implementation [2, 4, 1, 3, 5, 7] = (none, some 1)
--- #test implementation [] = (none, none)
--- #test implementation [0] = (none, none)

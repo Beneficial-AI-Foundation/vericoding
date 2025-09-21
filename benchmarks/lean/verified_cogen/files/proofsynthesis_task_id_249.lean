@@ -22,5 +22,3 @@ theorem intersection_spec_satisfied (arr1: Array Int) (arr2: Array Int) (h_preco
     intersection_postcond (arr1) (arr2) (intersection (arr1) (arr2) h_precond) h_precond := by
   sorry
 -- </vc-theorems>
-
-def main : IO Unit := IO.println "Intersection function defined"

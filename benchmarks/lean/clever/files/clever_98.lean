@@ -38,7 +38,3 @@ theorem correctness
 := by
   sorry
 -- </vc-theorems>
-
--- #test implementation "aBCdEf" = 1
--- #test implementation "abcdefg" = 0
--- #test implementation "dBBE" = 0
