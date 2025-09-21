@@ -55,9 +55,7 @@ def get_template(suffix: str, add_postamble: bool = False) -> list[str]:
         template = [('vc-preamble','// <vc-preamble>','// </vc-preamble>'), ('\n',None,None), 
                 ('vc-helpers','// <vc-helpers>','// </vc-helpers>'), ('\n',None,None),
                 ('vc-spec','// <vc-spec>','// </vc-spec>'), 
-                ('vc-code','// <vc-code>','// </vc-code>')]
-        if add_postamble:
-            template.extend([('\n',None,None), ('vc-postamble',None,None)])
+                ('vc-code','// <vc-code>','// </vc-code>'), ('\n',None,None), ('vc-postamble',None,None)]
         return template
     else:
         raise ValueError(f"Unsupported suffix: {suffix}")
