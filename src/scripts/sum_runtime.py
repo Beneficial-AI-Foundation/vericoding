@@ -140,15 +140,23 @@ def get_runtime_data(tag, project="vericoding", entity=None, debug=False):
         # Map model name
         model_name = MODEL_MAPPING.get(llm_provider, llm_provider)
         
-        # Store runtime data
-        runtime_data[model_name][dataset] = {
-            'runtime_seconds': runtime_seconds,
-            'runtime_minutes': runtime_seconds / 60.0,
-            'runtime_hours': runtime_seconds / 3600.0,
-            'input_tokens': input_tokens,
-            'output_tokens': output_tokens,
-            'cost_usd': cost
-        }
+        # Store runtime data (sum if already exists)
+        if dataset not in runtime_data[model_name]:
+            runtime_data[model_name][dataset] = {
+                'runtime_seconds': 0,
+                'input_tokens': 0,
+                'output_tokens': 0,
+                'cost_usd': 0
+            }
+        
+        runtime_data[model_name][dataset]['runtime_seconds'] += runtime_seconds
+        runtime_data[model_name][dataset]['input_tokens'] += input_tokens
+        runtime_data[model_name][dataset]['output_tokens'] += output_tokens
+        runtime_data[model_name][dataset]['cost_usd'] += cost
+        
+        # Update derived values
+        runtime_data[model_name][dataset]['runtime_minutes'] = runtime_data[model_name][dataset]['runtime_seconds'] / 60.0
+        runtime_data[model_name][dataset]['runtime_hours'] = runtime_data[model_name][dataset]['runtime_seconds'] / 3600.0
         
         total_runtime += runtime_seconds
         total_cost += cost
