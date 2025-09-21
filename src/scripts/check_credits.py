@@ -24,24 +24,8 @@ DATASET_MAPPING = {
 }
 
 def extract_dataset(config, debug=False):
-    """Extract dataset name from config paths."""
-    folder = config.get('folder', '')
-    files_dir = config.get('files_dir', '')
-    dataset_path = config.get('dataset_path', '')
-    spec_folder = config.get('spec_folder', '')
-    
-    # Combine all possible paths
-    all_paths = f"{folder} {files_dir} {dataset_path} {spec_folder}".strip()
-    
-    # Extract dataset name from any available path
-    for ds_key, ds_name in DATASET_MAPPING.items():
-        if ds_key in all_paths:
-            return ds_name
-    
-    if debug:
-        print(f"Warning: Could not determine dataset from paths: {all_paths}", file=sys.stderr)
-    
-    return "unknown"
+    """Extract dataset from config folder."""
+    return config.get('folder', 'N/A')
 
 def check_insufficient_credits(run):
     """Check if run logs contain 'Insufficient credits' phrase."""
@@ -148,7 +132,7 @@ def print_credit_report(results):
         if status_results:
             print(f"\n--- {status} CREDITS ---")
             for result in status_results:
-                print(f"{result['model']:<20} | {result['dataset']:<15} | shard:{result['shard']:<5} | {result['run_name']}")
+                print(f"{result['model']:<20} | {result['dataset']:<40} | shard:{result['shard']:<5} | {result['run_name']}")
 
 def main():
     parser = argparse.ArgumentParser(description="Check W&B runs for credit status")
