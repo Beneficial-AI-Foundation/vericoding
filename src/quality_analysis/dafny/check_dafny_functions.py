@@ -504,12 +504,19 @@ Examples:
             if len(files_with_placeholders) > 10:
                 print(f"  ... and {len(files_with_placeholders) - 10} more")
 
-    return {
+    result = {
         "files_with_defaults": files_with_defaults,
         "files_with_placeholders": files_with_placeholders,
         "files_with_proper_specs": files_with_proper_specs,
         "statistics": total_categories,
     }
+    
+    # Output JSON if requested
+    if args.output == "json":
+        import json
+        print(json.dumps(result, indent=2))
+    
+    return result
 
 
 if __name__ == "__main__":

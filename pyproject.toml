@@ -26,6 +26,9 @@ dependencies = [
     "pytest>=8.4.1",
     "matplotlib>=3.10.6",
     "natsort>=8.4.0",
+    "sentence-transformers>=5.1.1",
+    "scikit-learn>=1.7.2",
+    "faiss-cpu>=1.12.0",
 ]
 
 [project.optional-dependencies]

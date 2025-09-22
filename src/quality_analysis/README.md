@@ -1,93 +1,115 @@
 # Quality Analysis Tools
 
-Code quality analysis for Verus, Dafny, and Lean benchmarks.
+Code quality analysis for Verus, Dafny, and Lean benchmarks with dual-level scoring.
 
-## Structure
+## Overview
+
+Generates **two types** of quality analysis:
+1. **Benchmark-level metadata**: Overall quality scores in separate `.metadata.json` files  
+2. **Per-entry scoring**: Individual quality scores in enhanced `_with_entry_qa.jsonl` files
+
+## Output Structure
 
 ```
-quality_analysis/
-├── add_qa_metadata.py         # Main tool: adds QA metadata to JSONL files
-├── analyze_all.py             # Run all analysis tools
-├── *_similarity.py            # Similarity detection tools
-├── config/                    # Configuration files
-│   ├── qa_config.yaml         # Default configuration
-│   ├── fast_config.yaml       # Fast/lenient settings
-│   └── high_quality_config.yaml # Strict settings
-├── verus/                     # Verus analysis tools
-├── dafny/                     # Dafny analysis tools
-└── lean/                      # Lean analysis tools
+benchmarks/verus/humaneval/
+├── verus_humaneval.jsonl                    # Original entries (unchanged)
+├── verus_humaneval.metadata.json            # Benchmark-level metadata
+├── verus_humaneval_with_entry_qa.jsonl      # Enhanced with per-entry scores
+└── yaml/, files/                            # Source files
 ```
 
 ## Usage
 
-### Generate QA Metadata
+### Generate Quality Analysis
 ```bash
-# Basic usage
-python3 add_qa_metadata.py benchmarks/verus/numpy_triple
+# Process single benchmark - generates BOTH metadata and enhanced JSONL
+python3 add_qa_metadata.py benchmarks/verus/humaneval
 
-# With output
+# Process all benchmarks
+python3 add_qa_metadata.py benchmarks
+
+# Show summary
 python3 add_qa_metadata.py --output-metadata summary benchmarks
-
-# Custom configuration
-python3 add_qa_metadata.py --config config/fast_config.yaml benchmarks
 ```
 
-### Programmatic Usage
+### Programmatic Access
 ```python
-from add_qa_metadata import get_qa_metadata
+from add_qa_metadata import load_benchmark_with_metadata, get_benchmark_quality_score
 
-metadata = get_qa_metadata("benchmarks/verus/numpy_triple")
-print(f"Score: {metadata['score']}")
+# Load entries with per-entry scores
+entries, metadata = load_benchmark_with_metadata("benchmarks/verus/humaneval/verus_humaneval.jsonl")
+
+# Get benchmark quality score
+score = get_benchmark_quality_score("benchmarks/verus/humaneval/verus_humaneval.jsonl")
 ```
 
 ## Quality Scoring
 
-Score = max(0, base_score - penalties)
+**Mathematically consistent dual-level scoring:**
 
-**Base Score Modes:**
-- `fixed`: Constant 100
-- `proportional`: entries × 0.5 (default, capped 50-500)
-- `logarithmic`: 50 × log(entries + 1)
+### Benchmark-Level Formula
+```
+final_score = base_score × (1 - penalty_fraction)
+penalty_fraction = Σ(weight_i × proportion_i)
+proportion_i = issue_count_i / total_entries
+```
 
-**Penalties (default):**
-- Verus: specs_defaults×5 + exec_bodies×12 + ghost_types×0.5 + duplicates×2
-- Dafny: func_defaults×5 + method_bodies×12 + duplicates×2  
-- Lean: sorry×12 + duplicates×2
+### Per-Entry Formula  
+```
+individual_score = 1 - Σ(weight_i × p_i)
+p_i = 1 if entry has issue_i, else 0
+```
+
+**Consistency**: `Σ(individual_scores) = benchmark_score`
+
+### Quality Factors & Weights
+- **Verus**: specs with defaults (30%), exec bodies (50%), ghost types (5%), near-duplicates (15%)
+- **Dafny**: func defaults (40%), method bodies (45%), near-duplicates (15%)  
+- **Lean**: sorry usage (85%), near-duplicates (15%)
+
+### Example Per-Entry Output
+```json
+{
+  "id": "VH0000",
+  "source_id": "humaneval_000",
+  "qa_entry_metadata": {
+    "issues": {
+      "specs_with_default_values": 1,
+      "execs_with_bodies": 0,
+      "execs_with_ghost_types": 0,
+      "near_duplicates": 1
+    },
+    "individual_score": 0.55  // 1 - (0.30×1 + 0.15×1) = 0.55
+  }
+}
+```
+
+## Dependencies
+
+**Required for near-duplicate detection:**
+```bash
+uv add sentence-transformers scikit-learn faiss-cpu
+```
 
 ## Configuration
 
-Edit `config/qa_config.yaml` to adjust:
-- Base score calculation mode
-- Penalty weights per issue type
-- Similarity detection settings
-- Performance parameters
+Edit `config/qa_config.yaml` to adjust weights, similarity thresholds, and performance settings.
 
-**Presets:**
-- `config/fast_config.yaml`: Lenient penalties for development
-- `config/high_quality_config.yaml`: Strict penalties for production
-
-## Individual Tools
-
-### Verus
-- `check_spec_functions.py`: Find default values in spec functions
-- `check_verus_functions.py`: Find implementations in exec functions
-- `check_verus_types.py`: Find ghost types in exec functions
-
-### Dafny
-- `check_dafny_functions.py`: Find default values in functions/predicates
-- `check_dafny_methods.py`: Find implementations in methods
-- `check_dafny_yaml.py`: Analyze YAML files
-
-### Lean
-- `check_lean_definitions.py`: Find sorry usage in definitions
-
-All tools support:
-- Single files: `script.py path/to/file.ext`
-- Directories: `script.py path/to/directory/`
-- JSON output: `--output json`
-- Quiet mode: `--quiet`
-
-## Run All Tools
-```bash
-python3 analyze_all.py benchmarks
+**Key settings:**
+```yaml
+scoring:
+  verus:
+    weights:                                    # Must sum to 1.0
+      specs_with_default_values_weight: 0.30   # 30%
+      execs_with_bodies_weight: 0.30           # 30% 
+      execs_with_ghost_types_weight: 0.25      # 25%
+      near_duplicates_weight: 0.15             # 15%
 ```
+
+## Individual Analysis Tools
+
+- **Verus**: `check_spec_functions.py`, `check_verus_functions.py`, `check_verus_types.py`
+- **Dafny**: `check_dafny_functions.py`, `check_dafny_methods.py`  
+- **Lean**: `check_lean_definitions.py`
+
+All support single files, directories, JSON output (`--output json`), and quiet mode (`--quiet`).
