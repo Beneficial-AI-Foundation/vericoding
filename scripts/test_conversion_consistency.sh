@@ -71,7 +71,7 @@ main() {
     local temp_yaml="$temp_dir/yaml"
     cp -r "$yaml_dir" "$temp_yaml"
     
-    if uv run src/convert_from_yaml.py "$temp_yaml" --suffix jsonl >/dev/null 2>&1; then
+    if uv run src/convert_from_yaml.py "$temp_yaml" --suffix jsonl --source "$benchmark_name" --language "$lang_name" >/dev/null 2>&1; then
         local generated_jsonl="${lang_name}_${benchmark_name}.jsonl"
         
         if [[ -f "$generated_jsonl" ]]; then
