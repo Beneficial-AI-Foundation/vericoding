@@ -62,7 +62,7 @@ def main() -> None:
         allRuns = json.loads(f.read())
 
     with open(CSV, 'w', newline='') as outcsv:
-        writer = csv.DictWriter(outcsv, fieldnames=FIELDNAMES, delimiter=";")
+        writer = csv.DictWriter(outcsv, fieldnames=FIELDNAMES)
         writer.writeheader()
     
     noResults = []
@@ -135,7 +135,7 @@ def main() -> None:
                             entries.append(entry)
 
                         with open(CSV, 'a', newline='') as outcsv:
-                            writer = csv.DictWriter(outcsv, fieldnames=FIELDNAMES, delimiter=";")
+                            writer = csv.DictWriter(outcsv, fieldnames=FIELDNAMES)
                             for e in entries:
                                 pass
                                 writer.writerow(e)
