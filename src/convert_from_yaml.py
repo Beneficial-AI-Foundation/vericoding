@@ -17,6 +17,9 @@ sources_ref = {'dafnybench': 'D', 'humaneval': 'H', 'verified_cogen': 'J', 'veri
             
 languages_ref = {'lean': 'L', 'dafny': 'D', 'verus': 'V'}
 
+source_meta_filename = "tasks_metadata.json"
+source_meta_path = Path("benchmarks") / source_meta_filename
+
 def get_vericoding_id(source: str, language: str, task: str, source_meta: Dict[str, Any]) -> str:
     """Get the Vericoding ID for a given source, language, and task."""
 
@@ -89,7 +92,7 @@ def convert_spec_to_file(spec: dict, output_path: Path, use_all_keys: bool = Fal
     
     if use_all_keys:
         # Create template from all keys in spec (except 'id') with newlines between them
-        keys = [key for key in spec.keys() if key != 'id']
+        keys = [key for key in spec.keys() if key not in ['id', 'source', 'source_id', 'language']]
         template = []
         for i, key in enumerate(keys):
             template.append((key, None, None))
@@ -142,22 +145,39 @@ def convert_yaml_to_json(yaml_path: Path, output_path: Path) -> None:
     print(f"Converted {yaml_path} -> {output_path}")
 
 
-def convert_yaml_to_jsonl(yaml_path: Path, output_path: Path = None) -> None:
+def convert_yaml_to_jsonl(yaml_path: Path, source: str = None, language: str = None, source_meta: Path = None, jsonl_path: Path = None) -> None:
     """Convert all YAML files in a directory to a single JSONL file."""
     
+    if source is None:
+        source = yaml_path.parent.name
+
+    if language is None:
+        language = yaml_path.parent.parent.name
+
     if not yaml_path.is_dir():
         raise ValueError(f"{yaml_path} is not a directory")
     
+    if source_meta is None:
+        source_meta = source_meta_path
+
+    if not source_meta.is_file():
+        raise ValueError(f"{source_meta} is not a file")
+
+    with open(source_meta, 'r') as f:
+        source_meta = json.load(f)
+
     # Find all .yaml files in the directory (recursively)
-    yaml_files = natsorted(list(yaml_path.glob("**/*.yaml")))
-    
+    yaml_files = list(yaml_path.glob("**/*.yaml"))
+    yaml_files_id = [{'id': get_vericoding_id(source, language, yaml_file.stem, source_meta), 
+                    'path': yaml_file} for yaml_file in yaml_files]
+    yaml_files_id = natsorted(yaml_files_id, key=lambda x: x['id'])
+
     if not yaml_files:
         print(f"No .yaml files found in {yaml_path}")
         return
     
     # Create output path in parent directory with .jsonl suffix
-    if output_path is None:
-        output_path = yaml_path.parent / f"{yaml_path.name}.jsonl"
+    output_path = yaml_path.parent / f"{language}_{source}.jsonl"
     
     processed_count = 0
     skipped_count = 0
@@ -165,7 +185,9 @@ def convert_yaml_to_jsonl(yaml_path: Path, output_path: Path = None) -> None:
     with open(output_path, 'w') as f:
         yaml_parser = YAML()
         yaml_parser.preserve_quotes = True  # Preserve original formatting
-        for yaml_file in yaml_files:
+        for yaml_file_id in yaml_files_id:
+            id = yaml_file_id['id']
+            yaml_file = yaml_file_id['path']
             try:
                 # Load the YAML spec
                 spec = yaml_parser.load(yaml_file)
@@ -177,7 +199,7 @@ def convert_yaml_to_jsonl(yaml_path: Path, output_path: Path = None) -> None:
                     continue
                 
                 # Create a new dictionary with id field first
-                new_spec = {'id': yaml_file.stem}
+                new_spec = {'id': id, 'language': language, 'source': source, 'source_id': yaml_file.stem}
                 new_spec.update(spec)
                 
                 # Write as JSON line
@@ -289,11 +311,11 @@ def convert_jsonl_to_dir(suffix: str, jsonl_path: Path, output_path: Path = None
                 spec = json.loads(line)
                 
                 # Check if id field exists
-                if 'id' not in spec:
+                if 'source_id' not in spec:
                     print(f"Warning: Line {line_num} missing 'id' field, skipping")
                     continue
                 
-                file_id = spec['id']
+                file_id = spec['source_id']
                 
                 if suffix in ['lean', 'dfy', 'rs']:
                     # Reconstruct directory structure from the file_id (which contains relative path)
@@ -380,9 +402,8 @@ def process_bench(bench_dir: Path, suffix: str = None, use_all_keys: bool = Fals
     print(f"Processing {bench_dir} with suffix '{bench_suffix}'...")
     
     # 1. Convert all YAML files to JSONL using custom naming: XXX_YYY.jsonl
-    jsonl_filename = f"{level1_name}_{level2_name}.jsonl"
-    jsonl_path = bench_dir / jsonl_filename
-    convert_yaml_to_jsonl(yaml_dir, jsonl_path)
+    jsonl_path = bench_dir / f"{level1_name}_{level2_name}.jsonl"
+    convert_yaml_to_jsonl(yaml_dir, language=level1_name, source=level2_name, jsonl_path=jsonl_path)
     
     # 2. Convert JSONL to individual files in 'files' folder (only if JSONL was created)
     if jsonl_path.exists():
@@ -860,7 +881,6 @@ def print_summary_counts(source_meta: Dict[str, Any]) -> None:
     print(f"Grand total (novel): {grand_total['novel']['yaml'] + grand_total['novel']['poor']} : {grand_total['novel']['yaml']}")
     print("=" * 50)
 
-
     # randomly pick a source, a language, and a task, and print the Vericoding ID
     # import random
     # for _ in range(10):
@@ -924,7 +944,7 @@ def generate_metadata(benchmarks_dir: Path) -> None:
         raise FileNotFoundError(f"Benchmarks directory {benchmarks_dir} does not exist")
     
     # Get source metadata
-    source_meta = get_source_meta(benchmarks_dir, save_path=benchmarks_dir / "tasks_metadata.json")
+    source_meta = get_source_meta(benchmarks_dir, save_path=source_meta_path)
 
     # Validate that all entries for each source have consistent signatures
     # validate_source_signatures(source_meta)
