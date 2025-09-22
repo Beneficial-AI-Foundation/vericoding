@@ -138,10 +138,10 @@ def test_lean_code_with_lake(code, test_name="test", project_root=None, debug=Fa
         with open(test_file, "w") as f:
             f.write(full_code)
         
-        # Run lake env to check the Lean code syntax and type-checking
+        # Run lake lean to check the Lean code syntax and type-checking
         try:
             result = subprocess.run(
-                ["lake", "env", "lean", str(test_file)],
+                ["lake", "lean", str(test_file)],
                 cwd=project_root,
                 capture_output=True,
                 text=True,
@@ -151,7 +151,7 @@ def test_lean_code_with_lake(code, test_name="test", project_root=None, debug=Fa
             success = result.returncode == 0
             
             if debug:
-                print(f"Lake env result for {test_name}:", file=sys.stderr)
+                print(f"Lake lean result for {test_name}:", file=sys.stderr)
                 print(f"Return code: {result.returncode}", file=sys.stderr)
                 if result.stdout:
                     print(f"STDOUT: {result.stdout}", file=sys.stderr)
