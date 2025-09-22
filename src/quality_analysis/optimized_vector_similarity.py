@@ -361,24 +361,29 @@ class OptimizedVectorSimilarity:
         Returns:
             Dict with 'examples' (first few file paths) and 'total_count'
         """
-        if not hasattr(self, "index") or self.index is None:
+        if not hasattr(self, "faiss_index") or self.faiss_index is None:
             return {"examples": [], "total_count": 0}
 
         similar_groups = self.find_similar_files_fast(similarity_threshold)
 
-        # Flatten all similar files (excluding the first file in each group as it's the "original")
+        # Format groups for QA metadata (preserve group structure)
+        examples = []
         all_duplicates = []
+        
         for group in similar_groups:
             if len(group) > 1:
-                # Add all files in the group as potential duplicates
-                all_duplicates.extend([str(f) for f in group])
-
-        # Remove duplicates and sort for consistency
-        unique_duplicates = sorted(list(set(all_duplicates)))
+                # Create example group with similarity info
+                group_files = [str(f) for f in group]
+                examples.append({
+                    "files": group_files,
+                    "similarity": 0.9  # Placeholder - could compute actual similarity
+                })
+                # Also track all duplicate files
+                all_duplicates.extend(group_files)
 
         return {
-            "examples": unique_duplicates[:max_examples],
-            "total_count": len(unique_duplicates),
+            "examples": examples[:max_examples],
+            "total_count": len(set(all_duplicates)),  # Unique files that are duplicates
         }
 
 
@@ -472,9 +477,15 @@ def get_near_duplicates_for_benchmark(
 
     Returns:
         Dict with 'examples' and 'total_count' for QA metadata
+        
+    Raises:
+        ImportError: If required vector similarity libraries are not installed
     """
     if not VECTOR_AVAILABLE:
-        return {"examples": [], "total_count": 0}
+        raise ImportError(
+            "Vector similarity libraries not available. Install with: "
+            "uv add sentence-transformers scikit-learn faiss-cpu"
+        )
 
     yaml_files = list(Path(directory).rglob("*.yaml"))
 
