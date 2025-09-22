@@ -1,0 +1,78 @@
+{
+  "benchmark_info": {
+    "name": "lean_verified_cogen",
+    "language": "lean",
+    "source": "unknown",
+    "entry_count": 172,
+    "benchmark_path": "benchmarks/lean/verified_cogen"
+  },
+  "qa_metadata": {
+    "definitions_with_sorry": [],
+    "score": 82.925,
+    "near_duplicates": {
+      "examples": [
+        {
+          "files": [
+            "benchmarks/lean/verified_cogen/yaml/rustbench_max_dafny_lsp.yaml",
+            "benchmarks/lean/verified_cogen/yaml/rustbench_arithmetic_weird.yaml",
+            "benchmarks/lean/verified_cogen/yaml/proofsynthesis_task_id_808.yaml",
+            "benchmarks/lean/verified_cogen/yaml/proofsynthesis_task_id_424.yaml",
+            "benchmarks/lean/verified_cogen/yaml/rustbench_is_non_prime.yaml",
+            "benchmarks/lean/verified_cogen/yaml/proofsynthesis_task_id_588.yaml",
+            "benchmarks/lean/verified_cogen/yaml/proofsynthesis_trigger.yaml",
+            "benchmarks/lean/verified_cogen/yaml/proofsynthesis_sina2.yaml",
+            "benchmarks/lean/verified_cogen/yaml/proofsynthesis_task_id_230.yaml",
+            "benchmarks/lean/verified_cogen/yaml/proofsynthesis_task_id_472.yaml",
+            "benchmarks/lean/verified_cogen/yaml/proofsynthesis_task_id_764.yaml",
+            "benchmarks/lean/verified_cogen/yaml/proofsynthesis_task_id_755.yaml",
+            "benchmarks/lean/verified_cogen/yaml/rustbench_unique_better.yaml",
+            "benchmarks/lean/verified_cogen/yaml/proofsynthesis_task_id_69.yaml",
+            "benchmarks/lean/verified_cogen/yaml/proofsynthesis_task_id_261.yaml",
+            "benchmarks/lean/verified_cogen/yaml/rustbench_smallest_missing_number.yaml",
+            "benchmarks/lean/verified_cogen/yaml/proofsynthesis_task_id_578.yaml",
+            "benchmarks/lean/verified_cogen/yaml/proofsynthesis_task_id_733.yaml",
+            "benchmarks/lean/verified_cogen/yaml/proofsynthesis_task_id_426.yaml",
+            "benchmarks/lean/verified_cogen/yaml/proofsynthesis_task_id_576.yaml",
+            "benchmarks/lean/verified_cogen/yaml/proofsynthesis_res1o.yaml"
+          ],
+          "similarity": 0.9
+        },
+        {
+          "files": [
+            "benchmarks/lean/verified_cogen/yaml/proofsynthesis_ms1.yaml",
+            "benchmarks/lean/verified_cogen/yaml/proofsynthesis_sina3.yaml"
+          ],
+          "similarity": 0.9
+        },
+        {
+          "files": [
+            "benchmarks/lean/verified_cogen/yaml/proofsynthesis_ms3.yaml",
+            "benchmarks/lean/verified_cogen/yaml/proofsynthesis_s3lif.yaml"
+          ],
+          "similarity": 0.9
+        },
+        {
+          "files": [
+            "benchmarks/lean/verified_cogen/yaml/proofsynthesis_s52if.yaml",
+            "benchmarks/lean/verified_cogen/yaml/proofsynthesis_sina5.yaml",
+            "benchmarks/lean/verified_cogen/yaml/proofsynthesis_cell_2_sum.yaml"
+          ],
+          "similarity": 0.9
+        },
+        {
+          "files": [
+            "benchmarks/lean/verified_cogen/yaml/proofsynthesis_s4lif.yaml",
+            "benchmarks/lean/verified_cogen/yaml/proofsynthesis_s5if.yaml",
+            "benchmarks/lean/verified_cogen/yaml/proofsynthesis_s4if.yaml"
+          ],
+          "similarity": 0.9
+        }
+      ],
+      "total_count": 41
+    },
+    "base_score": 86
+  },
+  "generated_at": "2025-09-23T00:20:55.179579",
+  "config_version": "2.0",
+  "format_version": "separate_metadata_v1"
+}

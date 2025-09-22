@@ -1,0 +1,67 @@
+{
+  "benchmark_info": {
+    "name": "verus_numpy_triple",
+    "language": "verus",
+    "source": "unknown",
+    "entry_count": 581,
+    "benchmark_path": "benchmarks/verus/numpy_triple"
+  },
+  "qa_metadata": {
+    "specs_with_default_values": [
+      "benchmarks/verus/numpy_triple/yaml/strings_multiply.yaml"
+    ],
+    "execs_with_bodies": [],
+    "execs_with_ghost_types": [
+      "benchmarks/verus/numpy_triple/yaml/ufuncs_types.yaml",
+      "benchmarks/verus/numpy_triple/yaml/ufuncs_signature.yaml",
+      "benchmarks/verus/numpy_triple/yaml/io_operations_printoptions.yaml",
+      "benchmarks/verus/numpy_triple/yaml/io_operations_get_printoptions.yaml",
+      "benchmarks/verus/numpy_triple/yaml/bitwise_operations_bitwise_count.yaml"
+    ],
+    "score": 281.789156626506,
+    "near_duplicates": {
+      "examples": [
+        {
+          "files": [
+            "benchmarks/verus/numpy_triple/yaml/mathematical_functions_fmin.yaml",
+            "benchmarks/verus/numpy_triple/yaml/mathematical_functions_fmax.yaml"
+          ],
+          "similarity": 0.9
+        },
+        {
+          "files": [
+            "benchmarks/verus/numpy_triple/yaml/polynomial_hermite_hermfit.yaml",
+            "benchmarks/verus/numpy_triple/yaml/polynomial_hermite_e_hermefit.yaml"
+          ],
+          "similarity": 0.9
+        },
+        {
+          "files": [
+            "benchmarks/verus/numpy_triple/yaml/strings_split.yaml",
+            "benchmarks/verus/numpy_triple/yaml/strings_rsplit.yaml"
+          ],
+          "similarity": 0.9
+        },
+        {
+          "files": [
+            "benchmarks/verus/numpy_triple/yaml/mathematical_functions_signbit.yaml",
+            "benchmarks/verus/numpy_triple/yaml/mathematical_functions_sign.yaml"
+          ],
+          "similarity": 0.9
+        },
+        {
+          "files": [
+            "benchmarks/verus/numpy_triple/yaml/fft_rfftfreq.yaml",
+            "benchmarks/verus/numpy_triple/yaml/fft_fftfreq.yaml"
+          ],
+          "similarity": 0.9
+        }
+      ],
+      "total_count": 96
+    },
+    "base_score": 290
+  },
+  "generated_at": "2025-09-23T00:16:38.468194",
+  "config_version": "2.0",
+  "format_version": "separate_metadata_v1"
+}

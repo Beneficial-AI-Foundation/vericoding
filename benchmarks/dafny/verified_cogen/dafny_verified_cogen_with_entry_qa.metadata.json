@@ -1,0 +1,81 @@
+{
+  "benchmark_info": {
+    "name": "dafny_verified_cogen_with_entry_qa",
+    "language": "dafny",
+    "source": "unknown",
+    "entry_count": 172,
+    "benchmark_path": "benchmarks/dafny/verified_cogen"
+  },
+  "qa_metadata": {
+    "functions_with_default_values": [],
+    "methods_with_bodies": [],
+    "score": 79.475,
+    "near_duplicates": {
+      "examples": [
+        {
+          "files": [
+            "benchmarks/dafny/verified_cogen/yaml/proofsynthesis_filter_v2.yaml",
+            "benchmarks/dafny/verified_cogen/yaml/proofsynthesis_filter.yaml"
+          ],
+          "similarity": 0.9
+        },
+        {
+          "files": [
+            "benchmarks/dafny/verified_cogen/yaml/proofsynthesis_res1o.yaml",
+            "benchmarks/dafny/verified_cogen/yaml/proofsynthesis_res1.yaml",
+            "benchmarks/dafny/verified_cogen/yaml/proofsynthesis_res2o.yaml",
+            "benchmarks/dafny/verified_cogen/yaml/proofsynthesis_s1lif.yaml",
+            "benchmarks/dafny/verified_cogen/yaml/proofsynthesis_brs2.yaml",
+            "benchmarks/dafny/verified_cogen/yaml/proofsynthesis_conda.yaml",
+            "benchmarks/dafny/verified_cogen/yaml/proofsynthesis_s2if.yaml",
+            "benchmarks/dafny/verified_cogen/yaml/proofsynthesis_brs1.yaml",
+            "benchmarks/dafny/verified_cogen/yaml/proofsynthesis_brs4.yaml",
+            "benchmarks/dafny/verified_cogen/yaml/proofsynthesis_brs3.yaml",
+            "benchmarks/dafny/verified_cogen/yaml/proofsynthesis_s4if.yaml",
+            "benchmarks/dafny/verified_cogen/yaml/proofsynthesis_s3lif.yaml",
+            "benchmarks/dafny/verified_cogen/yaml/proofsynthesis_s3if.yaml",
+            "benchmarks/dafny/verified_cogen/yaml/proofsynthesis_ms2.yaml",
+            "benchmarks/dafny/verified_cogen/yaml/proofsynthesis_s5if.yaml",
+            "benchmarks/dafny/verified_cogen/yaml/proofsynthesis_s42if.yaml",
+            "benchmarks/dafny/verified_cogen/yaml/proofsynthesis_s1if.yaml",
+            "benchmarks/dafny/verified_cogen/yaml/proofsynthesis_s12if.yaml",
+            "benchmarks/dafny/verified_cogen/yaml/proofsynthesis_s32if.yaml",
+            "benchmarks/dafny/verified_cogen/yaml/proofsynthesis_s52if.yaml",
+            "benchmarks/dafny/verified_cogen/yaml/proofsynthesis_s4lif.yaml"
+          ],
+          "similarity": 0.9
+        },
+        {
+          "files": [
+            "benchmarks/dafny/verified_cogen/yaml/proofsynthesis_task_id_576.yaml",
+            "benchmarks/dafny/verified_cogen/yaml/proofsynthesis_task_id_576_v2.yaml",
+            "benchmarks/dafny/verified_cogen/yaml/proofsynthesis_task_id_69.yaml"
+          ],
+          "similarity": 0.9
+        },
+        {
+          "files": [
+            "benchmarks/dafny/verified_cogen/yaml/proofsynthesis_ms1.yaml",
+            "benchmarks/dafny/verified_cogen/yaml/proofsynthesis_ms3.yaml",
+            "benchmarks/dafny/verified_cogen/yaml/proofsynthesis_s22if.yaml",
+            "benchmarks/dafny/verified_cogen/yaml/proofsynthesis_s2lif.yaml"
+          ],
+          "similarity": 0.9
+        },
+        {
+          "files": [
+            "benchmarks/dafny/verified_cogen/yaml/proofsynthesis_map.yaml",
+            "benchmarks/dafny/verified_cogen/yaml/proofsynthesis_condm.yaml",
+            "benchmarks/dafny/verified_cogen/yaml/proofsynthesis_filter_weak.yaml"
+          ],
+          "similarity": 0.9
+        }
+      ],
+      "total_count": 87
+    },
+    "base_score": 86
+  },
+  "generated_at": "2025-09-23T00:09:48.271639",
+  "config_version": "2.0",
+  "format_version": "separate_metadata_v1"
+}

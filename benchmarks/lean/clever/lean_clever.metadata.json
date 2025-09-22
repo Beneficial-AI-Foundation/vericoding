@@ -1,0 +1,57 @@
+{
+  "benchmark_info": {
+    "name": "lean_clever",
+    "language": "lean",
+    "source": "unknown",
+    "entry_count": 161,
+    "benchmark_path": "benchmarks/lean/clever"
+  },
+  "qa_metadata": {
+    "definitions_with_sorry": [],
+    "score": 78.06211180124224,
+    "near_duplicates": {
+      "examples": [
+        {
+          "files": [
+            "benchmarks/lean/clever/yaml/clever_40.yaml",
+            "benchmarks/lean/clever/yaml/clever_43.yaml"
+          ],
+          "similarity": 0.9
+        },
+        {
+          "files": [
+            "benchmarks/lean/clever/yaml/clever_37.yaml",
+            "benchmarks/lean/clever/yaml/clever_33.yaml"
+          ],
+          "similarity": 0.9
+        },
+        {
+          "files": [
+            "benchmarks/lean/clever/yaml/clever_63.yaml",
+            "benchmarks/lean/clever/yaml/clever_46.yaml"
+          ],
+          "similarity": 0.9
+        },
+        {
+          "files": [
+            "benchmarks/lean/clever/yaml/clever_129.yaml",
+            "benchmarks/lean/clever/yaml/clever_101.yaml"
+          ],
+          "similarity": 0.9
+        },
+        {
+          "files": [
+            "benchmarks/lean/clever/yaml/clever_64.yaml",
+            "benchmarks/lean/clever/yaml/clever_51.yaml"
+          ],
+          "similarity": 0.9
+        }
+      ],
+      "total_count": 26
+    },
+    "base_score": 80
+  },
+  "generated_at": "2025-09-23T00:20:47.055926",
+  "config_version": "2.0",
+  "format_version": "separate_metadata_v1"
+}

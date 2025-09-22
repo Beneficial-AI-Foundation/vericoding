@@ -1,0 +1,61 @@
+{
+  "benchmark_info": {
+    "name": "lean_verina",
+    "language": "lean",
+    "source": "unknown",
+    "entry_count": 189,
+    "benchmark_path": "benchmarks/lean/verina"
+  },
+  "qa_metadata": {
+    "definitions_with_sorry": [],
+    "score": 90.34444444444445,
+    "near_duplicates": {
+      "examples": [
+        {
+          "files": [
+            "benchmarks/lean/verina/yaml/verina_basic_2_task.yaml",
+            "benchmarks/lean/verina/yaml/verina_basic_40_task.yaml",
+            "benchmarks/lean/verina/yaml/verina_basic_8_task.yaml"
+          ],
+          "similarity": 0.9
+        },
+        {
+          "files": [
+            "benchmarks/lean/verina/yaml/verina_advanced_35_task.yaml",
+            "benchmarks/lean/verina/yaml/verina_advanced_37_task.yaml",
+            "benchmarks/lean/verina/yaml/verina_advanced_36_task.yaml",
+            "benchmarks/lean/verina/yaml/verina_advanced_11_task.yaml"
+          ],
+          "similarity": 0.9
+        },
+        {
+          "files": [
+            "benchmarks/lean/verina/yaml/verina_basic_31_task.yaml",
+            "benchmarks/lean/verina/yaml/verina_basic_17_task.yaml"
+          ],
+          "similarity": 0.9
+        },
+        {
+          "files": [
+            "benchmarks/lean/verina/yaml/verina_advanced_32_task.yaml",
+            "benchmarks/lean/verina/yaml/verina_advanced_33_task.yaml",
+            "benchmarks/lean/verina/yaml/verina_advanced_31_task.yaml"
+          ],
+          "similarity": 0.9
+        },
+        {
+          "files": [
+            "benchmarks/lean/verina/yaml/verina_advanced_49_task.yaml",
+            "benchmarks/lean/verina/yaml/verina_advanced_51_task.yaml"
+          ],
+          "similarity": 0.9
+        }
+      ],
+      "total_count": 49
+    },
+    "base_score": 94
+  },
+  "generated_at": "2025-09-23T00:20:35.140258",
+  "config_version": "2.0",
+  "format_version": "separate_metadata_v1"
+}

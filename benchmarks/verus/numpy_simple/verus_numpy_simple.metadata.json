@@ -1,0 +1,67 @@
+{
+  "benchmark_info": {
+    "name": "verus_numpy_simple",
+    "language": "verus",
+    "source": "unknown",
+    "entry_count": 58,
+    "benchmark_path": "benchmarks/verus/numpy_simple"
+  },
+  "qa_metadata": {
+    "specs_with_default_values": [],
+    "execs_with_bodies": [],
+    "execs_with_ghost_types": [],
+    "score": 47.672413793103445,
+    "near_duplicates": {
+      "examples": [
+        {
+          "files": [
+            "benchmarks/verus/numpy_simple/yaml/NpGreater-spec.yaml",
+            "benchmarks/verus/numpy_simple/yaml/NpGreaterEqual-spec.yaml",
+            "benchmarks/verus/numpy_simple/yaml/NpLessEqual-spec.yaml",
+            "benchmarks/verus/numpy_simple/yaml/NpNotEqual-spec.yaml",
+            "benchmarks/verus/numpy_simple/yaml/NpBitwiseAnd-spec.yaml",
+            "benchmarks/verus/numpy_simple/yaml/NpAdd-spec.yaml",
+            "benchmarks/verus/numpy_simple/yaml/NpMax-spec.yaml",
+            "benchmarks/verus/numpy_simple/yaml/NpBitwiseOr-spec.yaml",
+            "benchmarks/verus/numpy_simple/yaml/NpSign-spec.yaml",
+            "benchmarks/verus/numpy_simple/yaml/NpSubtract-spec.yaml"
+          ],
+          "similarity": 0.9
+        },
+        {
+          "files": [
+            "benchmarks/verus/numpy_simple/yaml/NpEqual-spec.yaml",
+            "benchmarks/verus/numpy_simple/yaml/NpLess-spec.yaml"
+          ],
+          "similarity": 0.9
+        },
+        {
+          "files": [
+            "benchmarks/verus/numpy_simple/yaml/NpLeftShift-spec.yaml",
+            "benchmarks/verus/numpy_simple/yaml/NpRightShift-spec.yaml"
+          ],
+          "similarity": 0.9
+        },
+        {
+          "files": [
+            "benchmarks/verus/numpy_simple/yaml/NpFlatten-spec.yaml",
+            "benchmarks/verus/numpy_simple/yaml/NpRavel-spec.yaml"
+          ],
+          "similarity": 0.9
+        },
+        {
+          "files": [
+            "benchmarks/verus/numpy_simple/yaml/NpSquare-spec.yaml",
+            "benchmarks/verus/numpy_simple/yaml/NpCopy-spec.yaml"
+          ],
+          "similarity": 0.9
+        }
+      ],
+      "total_count": 18
+    },
+    "base_score": 50
+  },
+  "generated_at": "2025-09-23T00:19:12.746232",
+  "config_version": "2.0",
+  "format_version": "separate_metadata_v1"
+}
