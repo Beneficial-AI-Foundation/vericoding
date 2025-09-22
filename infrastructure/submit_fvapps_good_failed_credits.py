@@ -27,7 +27,9 @@ failed_jobs = [
     # gpt - all 9 shards failed
     ("gpt", [1, 2, 3, 4, 5, 6, 7, 8, 9]),
     # gpt-mini - all 9 shards failed
-    ("gpt-mini", [1, 2, 3, 4, 5, 6, 7, 8, 9])
+    ("gpt-mini", [1, 2, 3, 4, 5, 6, 7, 8, 9]),
+    # claude-sonnet - shard 5 failed
+    ("claude-sonnet", [5])
 ]
 
 # Region configurations
