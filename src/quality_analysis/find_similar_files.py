@@ -527,7 +527,7 @@ Examples:
 
     parser.add_argument(
         "--dir",
-        default="/home/lacra/git_repos/baif/vericoding/benchmarks",
+        default="vericoding/benchmarks",
         help="Directory to analyze (default: %(default)s)",
     )
     parser.add_argument(
