@@ -8,7 +8,7 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn match_strings(s: &str, p: &str) -> (result: bool)
+fn match_strings(s: &Vec<u8>, p: &Vec<u8>) -> (result: bool)
     requires s@.len() == p@.len(),
     ensures
         result == (forall|n: int| 0 <= n < s@.len() ==> 

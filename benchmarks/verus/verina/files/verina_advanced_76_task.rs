@@ -9,12 +9,12 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn top_k_frequent(nums: &Vec<i32>, k: usize) -> (result: Vec<i32>)
+fn top_k_frequent(nums: &Vec<i8>, k: usize) -> (result: Vec<i8>)
     requires 
         k <= nums@.to_set().len(),
     ensures
         result.len() == k,
-        forall|x: i32| result@.contains(x) ==> nums@.contains(x),
+        forall|x: i8| result@.contains(x) ==> nums@.contains(x),
         result@.no_duplicates(),
 // </vc-spec>
 // <vc-code>

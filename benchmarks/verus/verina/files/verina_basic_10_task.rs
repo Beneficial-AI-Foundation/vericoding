@@ -8,9 +8,9 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn is_greater(n: i32, a: &Vec<i32>) -> (result: bool)
+fn is_greater(n: i8, a: &Vec<i8>) -> (result: bool)
     requires a.len() > 0,
-    ensures result == (forall|i: int| 0 <= i < a.len() ==> n > a[i]),
+    ensures result == (forall|i: int| 0 <= i < a.len() ==> n as int > a[i] as int),
 // </vc-spec>
 // <vc-code>
 {

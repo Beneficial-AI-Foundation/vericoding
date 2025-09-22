@@ -8,12 +8,12 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn solution(nums: Vec<u32>) -> (result: u32)
+fn solution(nums: Vec<u8>) -> (result: u8)
     requires
         1 <= nums.len() <= 100,
-        forall|i: int| 0 <= i < nums.len() ==> #[trigger] nums[i] >= 1 && #[trigger] nums[i] <= 100,
+        forall|i: int| 0 <= i < nums.len() ==> #[trigger] nums[i] as nat >= 1 && #[trigger] nums[i] as nat <= 100,
     ensures
-        result >= 0,
+        result as nat >= 0,
 // </vc-spec>
 // <vc-code>
 {

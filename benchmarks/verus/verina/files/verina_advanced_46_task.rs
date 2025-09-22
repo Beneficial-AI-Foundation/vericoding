@@ -8,15 +8,9 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn max_subarray_sum(numbers: &Vec<i32>) -> (result: i32)
+fn max_subarray_sum(numbers: &Vec<i8>) -> (result: i8)
     ensures
         result >= 0,
-        forall|start: usize, end: usize| {
-            start <= end && end <= numbers.len()
-        } ==> {
-            let mut subarray_sum: i32 = 0;
-            subarray_sum <= result
-        },
 // </vc-spec>
 // <vc-code>
 {

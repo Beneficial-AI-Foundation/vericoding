@@ -8,8 +8,8 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn remove_duplicates(nums: &Vec<i32>) -> (result: usize)
-    requires forall|i: int, j: int| 0 <= i < j < nums.len() ==> nums[i] <= nums[j],
+fn remove_duplicates(nums: &Vec<i8>) -> (result: usize)
+    requires forall|i: int, j: int| 0 <= i < j < nums.len() ==> nums[i] as int <= nums[j] as int,
     ensures result <= nums.len(),
 // </vc-spec>
 // <vc-code>

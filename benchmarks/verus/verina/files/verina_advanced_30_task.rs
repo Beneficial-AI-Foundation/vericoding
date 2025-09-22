@@ -8,7 +8,7 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn longest_increasing_streak(nums: &Vec<i32>) -> (result: usize)
+fn longest_increasing_streak(nums: &Vec<i8>) -> (result: usize)
     ensures
         (nums.len() == 0 ==> result == 0),
         result <= nums.len(),

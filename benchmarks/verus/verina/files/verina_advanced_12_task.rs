@@ -8,14 +8,14 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn first_duplicate(lst: &Seq<i32>) -> (result: i32)
+fn first_duplicate(lst: &Vec<i8>) -> (result: i8)
     ensures
 
-        (result == -1 ==> forall|i: int, j: int| 0 <= i < j < lst.len() ==> lst[i] != lst[j]) &&
+        (result == -1 ==> forall|i: int, j: int| 0 <= i < j < lst@.len() ==> lst@[i] != lst@[j]) &&
 
         (result != -1 ==> 
-            exists|i: int, j: int| 0 <= i < j < lst.len() && lst[i] == lst[j] && lst[i] == result &&
-            forall|k: int, l: int| 0 <= k < l < lst.len() && lst[k] == lst[l] && l <= i ==> k >= i
+            exists|i: int, j: int| 0 <= i < j < lst@.len() && lst@[i] == lst@[j] && lst@[i] as i8 == result &&
+            forall|k: int, l: int| 0 <= k < l < lst@.len() && lst@[k] == lst@[l] && l <= i ==> k >= i
         ),
 // </vc-spec>
 // <vc-code>

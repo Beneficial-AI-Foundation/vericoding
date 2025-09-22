@@ -8,10 +8,10 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn last_digit(n: nat) -> (result: nat)
+fn last_digit(n: u8) -> (result: u8)
     ensures
         result < 10,
-        result == n % 10,
+        result as nat == n as nat % 10,
 // </vc-spec>
 // <vc-code>
 {

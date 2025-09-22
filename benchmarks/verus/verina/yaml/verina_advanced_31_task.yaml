@@ -42,11 +42,11 @@ vc-spec: |-
           exists|subseq: Seq<i32>| 
               is_subsequence_of(subseq, xs@) && 
               is_strictly_increasing(subseq) && 
-              subseq.len() == result,
+              subseq.len() == result as int,
   
           forall|subseq: Seq<i32>| 
               (is_subsequence_of(subseq, xs@) && is_strictly_increasing(subseq)) 
-              ==> subseq.len() <= result,
+              ==> subseq.len() <= result as int,
 
 vc-code: |-
   {
@@ -57,4 +57,3 @@ vc-code: |-
 vc-postamble: |-
   }
   fn main() {}
-

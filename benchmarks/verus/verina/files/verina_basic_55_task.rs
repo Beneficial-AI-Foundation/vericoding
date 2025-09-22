@@ -8,9 +8,9 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn compare(a: i32, b: i32) -> (result: bool)
+fn compare(a: i8, b: i8) -> (result: bool)
     ensures
-        (a == b ==> result == true) && (a != b ==> result == false),
+        (a as int == b as int ==> result == true) && (a as int != b as int ==> result == false),
 // </vc-spec>
 // <vc-code>
 {

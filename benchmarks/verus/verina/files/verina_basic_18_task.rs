@@ -8,8 +8,8 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn sum_of_digits(n: nat) -> (result: nat)
-    ensures result >= 0
+fn sum_of_digits(n: u8) -> (result: u8)
+    ensures result as nat >= 0
 // </vc-spec>
 // <vc-code>
 {

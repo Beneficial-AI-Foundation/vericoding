@@ -8,10 +8,10 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn multiple_returns(x: i32, y: i32) -> (result: (i32, i32))
+fn multiple_returns(x: i8, y: i8) -> (result: (i8, i8))
     ensures
-        result.0 == x + y,
-        result.1 + y == x,
+        result.0 as int == x as int + y as int,
+        result.1 as int + y as int == x as int,
 // </vc-spec>
 // <vc-code>
 {

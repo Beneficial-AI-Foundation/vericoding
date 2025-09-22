@@ -12,7 +12,7 @@ spec fn is_perfect_square(n: nat) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn is_perfect_square_fn(n: u64) -> (result: bool)
+fn is_perfect_square_fn(n: u8) -> (result: bool)
     ensures result <==> is_perfect_square(n as nat),
 // </vc-spec>
 // <vc-code>

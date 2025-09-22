@@ -12,11 +12,9 @@ spec fn is_digit(c: char) -> bool {
     '0' <= c && c <= '9'  
 }
 
-proof fn run_length_encoder_property(input: String, result: String)
-    requires
-
+fn run_length_encoder(input: String) -> (result: String)
+    ensures
         input@ == Seq::<char>::empty() <==> result@ == Seq::<char>::empty(),
-
         (result@.len() > 0 ==> (
             forall|i: int| 0 <= i < result@.len() ==> 
                 (i % 2 == 0 ==> !is_digit(result@[i])) &&
@@ -25,7 +23,8 @@ proof fn run_length_encoder_property(input: String, result: String)
 // </vc-spec>
 // <vc-code>
 {
-    assume(false);      
+    assume(false);
+    unreached()
 }
 // </vc-code>
 

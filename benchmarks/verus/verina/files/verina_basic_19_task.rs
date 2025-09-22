@@ -8,9 +8,9 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn is_sorted(a: &Vec<i32>) -> (result: bool)
+fn is_sorted(a: &Vec<i8>) -> (result: bool)
     ensures
-        result == (forall|i: int| 0 <= i < a.len() - 1 ==> #[trigger] a[i] <= a[i + 1]),
+        result == (forall|i: int| 0 <= i < a@.len() - 1 ==> #[trigger] a@[i] <= a@[i + 1]),
 // </vc-spec>
 // <vc-code>
 {

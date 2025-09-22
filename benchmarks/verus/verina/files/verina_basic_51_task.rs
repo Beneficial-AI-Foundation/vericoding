@@ -12,12 +12,13 @@ spec fn binary_search_precond(a: &Vec<i32>, key: i32) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn binary_search(a: &Vec<i32>, key: i32) -> (result: usize)
-    requires binary_search_precond(a, key),
+fn binary_search(a: &Vec<i8>, key: i8) -> (result: usize)
+    requires 
+        forall|i: int, j: int| 0 <= i <= j < a@.len() ==> a@[i] as i32 <= a@[j] as i32,
     ensures
-        result <= a.len(),
-        forall|i: int| 0 <= i < result ==> a[i] < key,
-        forall|i: int| result <= i < a.len() ==> a[i] >= key,
+        result <= a@.len(),
+        forall|i: int| 0 <= i < result ==> a@[i] < key,
+        forall|i: int| result <= i < a@.len() ==> a@[i] >= key,
 // </vc-spec>
 // <vc-code>
 {
