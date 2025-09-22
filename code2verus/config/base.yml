@@ -1,7 +1,7 @@
 # Base configuration shared across all translations
 config:
   verus_path: "verus"
-  dafny_path: "/home/lacra/git_repos/dafny/Binaries/Dafny"
+  dafny_path: "dafny"
   lean_path: "lean"  # Add lean path for verification
   #model: "anthropic:claude-sonnet-4-20250514"
   model: "openrouter:anthropic/claude-sonnet-4"

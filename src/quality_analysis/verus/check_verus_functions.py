@@ -270,7 +270,7 @@ Examples:
     parser.add_argument(
         "path",
         nargs="?",
-        default="/home/lacra/git_repos/baif/vericoding/benchmarks/verus",
+        default="vericoding/benchmarks/verus",
         help="Rust file or directory to check (default: %(default)s)",
     )
     parser.add_argument(
