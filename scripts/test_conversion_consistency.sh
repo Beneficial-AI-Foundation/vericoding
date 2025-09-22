@@ -80,7 +80,7 @@ main() {
     cp -r "$yaml_dir" "$temp_yaml"
     
     if uv run src/convert_from_yaml.py "$temp_yaml" --suffix jsonl --source "$benchmark_name" --language "$lang_name" --source-meta "$metadata_file" >/dev/null 2>&1; then
-        local generated_jsonl="${lang_name}_${benchmark_name}.jsonl"
+        local generated_jsonl="$temp_dir/${lang_name}_${benchmark_name}.jsonl"
         
         if [[ -f "$generated_jsonl" ]]; then
             if ! diff -q "$generated_jsonl" "$jsonl_file" >/dev/null 2>&1; then
@@ -90,7 +90,7 @@ main() {
                 log_info "✓ JSONL file matches YAML conversion"
             fi
         else
-            log_error "Failed to generate JSONL file for $benchmark_name in $lang_name"
+            log_error "Failed to generate JSONL file"
             failed=true
         fi
     else
