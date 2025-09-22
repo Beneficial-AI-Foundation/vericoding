@@ -40,4 +40,4 @@ jobs:
       uses: astral-sh/setup-uv@v6
 
     - name: Run conversion consistency tests
-      run: scripts/test_conversion_consistency.sh ${{ matrix.type }} ${{ matrix.path }}
+      run: scripts/test_conversion_consistency.sh ${{ matrix.type }} ${{ matrix.path }} benchmarks/tasks_metadata.json
