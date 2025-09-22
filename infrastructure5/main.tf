@@ -262,3 +262,173 @@ output "ssh_connection" {
 output "ssh_connection_server2" {
   value = "ssh ubuntu@${aws_instance.intern_server2.public_ip}"
 }
+
+# Third EC2 Instance - r7i.2xlarge
+resource "aws_instance" "intern_server3" {
+  ami           = data.aws_ami.ubuntu.id
+  instance_type = "r7i.2xlarge"
+  
+  subnet_id              = aws_subnet.intern_subnet.id
+  vpc_security_group_ids = [aws_security_group.intern_sg.id]
+  iam_instance_profile   = aws_iam_instance_profile.intern_instance_profile.name
+  
+  root_block_device {
+    volume_size = 100
+    volume_type = "gp3"
+  }
+  
+  user_data = <<-EOF
+    #!/bin/bash
+    apt-get update
+    apt-get install -y build-essential git curl
+    
+    # Add Theo's SSH public key to ubuntu user
+    mkdir -p /home/ubuntu/.ssh
+    echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC4IgPSH5Kkxy80bIHMjAEN6XovrP2NG/4ccZs8j8Ebdpe3rsE6CmLWohtbKGX6i8yJwQ5jCrrmKmnfx6feOkYaiUY2WLXQQR3hZ4j6GfN52LFzIXnwU84vf0YGSGbhWkrYFRHI16ccYn2IZhSTdxgHvgOehflr2VW7I60y6F8rNNJyfoYHTB/H0zQsoBlLcCLMrEbb5/KpOTIy6B+mn/5+fe74a9YNNJWnslqWI7AHMMzWx8UNzE+3kAY8zuApFe9FXnZNwL05N4l+Y8IzWMaZd7PGg6AUt2BLjx6bGJg8Ob3GogY/nMHxw05xMvYhD4lOz+jqjSUFJ6zQ9C3gWO2OwcIAiXS4kr/LIqwPIRNDxqFUFtU6CWMpUIJ323Yok0nMNwIylMoESFRwOqIFdt66kZyNCGRRAYEJKhp8j9Uqm9P3EncJDFvaw7X4hOYIk1hGWVFfOIfeKAYkIc9F7Qn6x45pYNiFaIj1nn4gamlCGYroAlzrRMLnmHN7YIynrw0= theo@lutfisk" >> /home/ubuntu/.ssh/authorized_keys
+    chown ubuntu:ubuntu /home/ubuntu/.ssh/authorized_keys
+    chmod 600 /home/ubuntu/.ssh/authorized_keys
+    
+    echo "Server3 setup complete" > /var/log/user-data.log
+  EOF
+  
+  tags = {
+    Name = "intern-server3"
+    Purpose = "intern-development"
+  }
+}
+
+# Fourth EC2 Instance - r7i.2xlarge
+resource "aws_instance" "intern_server4" {
+  ami           = data.aws_ami.ubuntu.id
+  instance_type = "r7i.2xlarge"
+  
+  subnet_id              = aws_subnet.intern_subnet.id
+  vpc_security_group_ids = [aws_security_group.intern_sg.id]
+  iam_instance_profile   = aws_iam_instance_profile.intern_instance_profile.name
+  
+  root_block_device {
+    volume_size = 100
+    volume_type = "gp3"
+  }
+  
+  user_data = <<-EOF
+    #!/bin/bash
+    apt-get update
+    apt-get install -y build-essential git curl
+    
+    # Add Theo's SSH public key to ubuntu user
+    mkdir -p /home/ubuntu/.ssh
+    echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC4IgPSH5Kkxy80bIHMjAEN6XovrP2NG/4ccZs8j8Ebdpe3rsE6CmLWohtbKGX6i8yJwQ5jCrrmKmnfx6feOkYaiUY2WLXQQR3hZ4j6GfN52LFzIXnwU84vf0YGSGbhWkrYFRHI16ccYn2IZhSTdxgHvgOehflr2VW7I60y6F8rNNJyfoYHTB/H0zQsoBlLcCLMrEbb5/KpOTIy6B+mn/5+fe74a9YNNJWnslqWI7AHMMzWx8UNzE+3kAY8zuApFe9FXnZNwL05N4l+Y8IzWMaZd7PGg6AUt2BLjx6bGJg8Ob3GogY/nMHxw05xMvYhD4lOz+jqjSUFJ6zQ9C3gWO2OwcIAiXS4kr/LIqwPIRNDxqFUFtU6CWMpUIJ323Yok0nMNwIylMoESFRwOqIFdt66kZyNCGRRAYEJKhp8j9Uqm9P3EncJDFvaw7X4hOYIk1hGWVFfOIfeKAYkIc9F7Qn6x45pYNiFaIj1nn4gamlCGYroAlzrRMLnmHN7YIynrw0= theo@lutfisk" >> /home/ubuntu/.ssh/authorized_keys
+    chown ubuntu:ubuntu /home/ubuntu/.ssh/authorized_keys
+    chmod 600 /home/ubuntu/.ssh/authorized_keys
+    
+    echo "Server4 setup complete" > /var/log/user-data.log
+  EOF
+  
+  tags = {
+    Name = "intern-server4"
+    Purpose = "intern-development"
+  }
+}
+
+# Fifth EC2 Instance - r7i.2xlarge
+resource "aws_instance" "intern_server5" {
+  ami           = data.aws_ami.ubuntu.id
+  instance_type = "r7i.2xlarge"
+  
+  subnet_id              = aws_subnet.intern_subnet.id
+  vpc_security_group_ids = [aws_security_group.intern_sg.id]
+  iam_instance_profile   = aws_iam_instance_profile.intern_instance_profile.name
+  
+  root_block_device {
+    volume_size = 100
+    volume_type = "gp3"
+  }
+  
+  user_data = <<-EOF
+    #!/bin/bash
+    apt-get update
+    apt-get install -y build-essential git curl
+    
+    # Add Theo's SSH public key to ubuntu user
+    mkdir -p /home/ubuntu/.ssh
+    echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC4IgPSH5Kkxy80bIHMjAEN6XovrP2NG/4ccZs8j8Ebdpe3rsE6CmLWohtbKGX6i8yJwQ5jCrrmKmnfx6feOkYaiUY2WLXQQR3hZ4j6GfN52LFzIXnwU84vf0YGSGbhWkrYFRHI16ccYn2IZhSTdxgHvgOehflr2VW7I60y6F8rNNJyfoYHTB/H0zQsoBlLcCLMrEbb5/KpOTIy6B+mn/5+fe74a9YNNJWnslqWI7AHMMzWx8UNzE+3kAY8zuApFe9FXnZNwL05N4l+Y8IzWMaZd7PGg6AUt2BLjx6bGJg8Ob3GogY/nMHxw05xMvYhD4lOz+jqjSUFJ6zQ9C3gWO2OwcIAiXS4kr/LIqwPIRNDxqFUFtU6CWMpUIJ323Yok0nMNwIylMoESFRwOqIFdt66kZyNCGRRAYEJKhp8j9Uqm9P3EncJDFvaw7X4hOYIk1hGWVFfOIfeKAYkIc9F7Qn6x45pYNiFaIj1nn4gamlCGYroAlzrRMLnmHN7YIynrw0= theo@lutfisk" >> /home/ubuntu/.ssh/authorized_keys
+    chown ubuntu:ubuntu /home/ubuntu/.ssh/authorized_keys
+    chmod 600 /home/ubuntu/.ssh/authorized_keys
+    
+    echo "Server5 setup complete" > /var/log/user-data.log
+  EOF
+  
+  tags = {
+    Name = "intern-server5"
+    Purpose = "intern-development"
+  }
+}
+
+# Sixth EC2 Instance - r7i.2xlarge
+resource "aws_instance" "intern_server6" {
+  ami           = data.aws_ami.ubuntu.id
+  instance_type = "r7i.2xlarge"
+  
+  subnet_id              = aws_subnet.intern_subnet.id
+  vpc_security_group_ids = [aws_security_group.intern_sg.id]
+  iam_instance_profile   = aws_iam_instance_profile.intern_instance_profile.name
+  
+  root_block_device {
+    volume_size = 100
+    volume_type = "gp3"
+  }
+  
+  user_data = <<-EOF
+    #!/bin/bash
+    apt-get update
+    apt-get install -y build-essential git curl
+    
+    # Add Theo's SSH public key to ubuntu user
+    mkdir -p /home/ubuntu/.ssh
+    echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC4IgPSH5Kkxy80bIHMjAEN6XovrP2NG/4ccZs8j8Ebdpe3rsE6CmLWohtbKGX6i8yJwQ5jCrrmKmnfx6feOkYaiUY2WLXQQR3hZ4j6GfN52LFzIXnwU84vf0YGSGbhWkrYFRHI16ccYn2IZhSTdxgHvgOehflr2VW7I60y6F8rNNJyfoYHTB/H0zQsoBlLcCLMrEbb5/KpOTIy6B+mn/5+fe74a9YNNJWnslqWI7AHMMzWx8UNzE+3kAY8zuApFe9FXnZNwL05N4l+Y8IzWMaZd7PGg6AUt2BLjx6bGJg8Ob3GogY/nMHxw05xMvYhD4lOz+jqjSUFJ6zQ9C3gWO2OwcIAiXS4kr/LIqwPIRNDxqFUFtU6CWMpUIJ323Yok0nMNwIylMoESFRwOqIFdt66kZyNCGRRAYEJKhp8j9Uqm9P3EncJDFvaw7X4hOYIk1hGWVFfOIfeKAYkIc9F7Qn6x45pYNiFaIj1nn4gamlCGYroAlzrRMLnmHN7YIynrw0= theo@lutfisk" >> /home/ubuntu/.ssh/authorized_keys
+    chown ubuntu:ubuntu /home/ubuntu/.ssh/authorized_keys
+    chmod 600 /home/ubuntu/.ssh/authorized_keys
+    
+    echo "Server6 setup complete" > /var/log/user-data.log
+  EOF
+  
+  tags = {
+    Name = "intern-server6"
+    Purpose = "intern-development"
+  }
+}
+
+# Output the public IPs for all new servers
+output "intern_server3_public_ip" {
+  value = aws_instance.intern_server3.public_ip
+}
+
+output "intern_server4_public_ip" {
+  value = aws_instance.intern_server4.public_ip
+}
+
+output "intern_server5_public_ip" {
+  value = aws_instance.intern_server5.public_ip
+}
+
+output "intern_server6_public_ip" {
+  value = aws_instance.intern_server6.public_ip
+}
+
+# SSH connection commands for new servers
+output "ssh_connection_server3" {
+  value = "ssh ubuntu@${aws_instance.intern_server3.public_ip}"
+}
+
+output "ssh_connection_server4" {
+  value = "ssh ubuntu@${aws_instance.intern_server4.public_ip}"
+}
+
+output "ssh_connection_server5" {
+  value = "ssh ubuntu@${aws_instance.intern_server5.public_ip}"
+}
+
+output "ssh_connection_server6" {
+  value = "ssh ubuntu@${aws_instance.intern_server6.public_ip}"
+}
