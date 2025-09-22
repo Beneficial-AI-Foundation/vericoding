@@ -25,25 +25,4 @@ sorry
 theorem max_match_edge_case (s : String) :
   s = "onthemat" → max_match s = ["on", "the", "mat"] :=
 sorry
-
-/-
-info: []
--/
--- #guard_msgs in
--- #eval max_match ""
-
-/-
-info: ['happy', 'day']
--/
--- #guard_msgs in
--- #eval max_match "happyday"
-
-/-
-info: ['the', 'cat', 'sat']
--/
--- #guard_msgs in
--- #eval max_match "thecatsat"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

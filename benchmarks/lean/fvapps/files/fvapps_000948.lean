@@ -30,6 +30,3 @@ theorem encode_reflection_property (s : String) (i : Nat)
 theorem encode_output_lowercase (s : String) (i : Nat) (h : i < (encode_message s).length) :
   ((encode_message s).data[i]'h).isLower = true := sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

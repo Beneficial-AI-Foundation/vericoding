@@ -52,6 +52,3 @@ theorem correctness
 := by
   sorry
 -- </vc-theorems>
-
--- #test implementation "10" = some 10
--- #test implementation "15.3" = some 15

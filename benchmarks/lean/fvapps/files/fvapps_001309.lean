@@ -21,6 +21,3 @@ theorem base_cases_theorem :
 theorem invalid_high_inputs_theorem (n: Nat) (h: n > 1000) :
   solve_pancake_stacks n = 0 := sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

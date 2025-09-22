@@ -29,25 +29,4 @@ theorem vampire_digit_preservation (x y : Int) (h₁ : x ≠ 0) (h₂ : y ≠ 0)
 theorem vampire_positive_length (x y : Int) (h₁ : x > 0) (h₂ : y > 0) :
   vampire_test x y → (vampireToString (x * y)).length = 
     (vampireToString x).length + (vampireToString y).length := sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval vampire_test 6 21
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval vampire_test 10 11
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval vampire_test 15 93
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

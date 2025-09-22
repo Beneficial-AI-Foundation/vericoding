@@ -36,25 +36,4 @@ theorem how_many_times_equal_prices
   (h : price > 0) :
   how_many_times price price = 1 :=
   sorry
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval how_many_times 40 15
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval how_many_times 30 10
-
-/-
-info: 6
--/
--- #guard_msgs in
--- #eval how_many_times 80 15
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

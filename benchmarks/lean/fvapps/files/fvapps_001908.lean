@@ -24,25 +24,4 @@ theorem only_line_comments_removed {source : List String} :
 theorem output_lines_not_empty {source : List String} :
   let result := remove_comments source
   ∀ line ∈ result, line.trim ≠ "" := by sorry
-
-/-
-info: expected1
--/
--- #guard_msgs in
--- #eval remove_comments ["/*Test program */", "int main()", "{ ", "  // variable declaration ", "int a, b, c;", "/* This is a test", "   multiline  ", "   comment for ", "   testing */", "a = b + c;", "}"]
-
-/-
-info: expected2
--/
--- #guard_msgs in
--- #eval remove_comments ["a/*comment", "line", "more_comment*/b"]
-
-/-
-info: expected3
--/
--- #guard_msgs in
--- #eval remove_comments ["void func(int k) {", "// this function does nothing /*", "   k = k*2/4;", "   k = k/2;*/", "}"]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

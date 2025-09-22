@@ -45,7 +45,3 @@ theorem correctness
 : problem_spec implementation planet1 planet2 := by
   sorry
 -- </vc-theorems>
-
--- #test implementation "Jupiter" "Neptune" = ["Saturn", "Uranus"]
--- #test implementation "Earth" "Mercury" = ["Venus"]
--- #test implementation "Mercury" "Uranus" = ["Venus", "Earth", "Mars", "Jupiter", "Saturn"]

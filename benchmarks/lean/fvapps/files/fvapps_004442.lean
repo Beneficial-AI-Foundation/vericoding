@@ -40,25 +40,4 @@ theorem same_encryption_first_last_only
 theorem same_encryption_empty_raises 
   (h : same_encryption "" "" = true ∨ same_encryption "" "" = false) :
   False := sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval same_encryption "abc" "abc"
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval same_encryption "abc" "abd"
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval same_encryption "fKhjuytrdfcdc" "flJc"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

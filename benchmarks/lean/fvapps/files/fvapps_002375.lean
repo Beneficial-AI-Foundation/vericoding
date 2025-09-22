@@ -26,25 +26,4 @@ theorem single_swap_property {s : String} (h : s.length ≥ 2) :
   let chars := s.data
   let swapped := String.mk (chars.set 0 (chars.get! 1) |>.set 1 (chars.get! 0))
   buddy_strings s swapped := sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval buddy_strings "ab" "ba"
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval buddy_strings "ab" "ab"
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval buddy_strings "aa" "aa"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

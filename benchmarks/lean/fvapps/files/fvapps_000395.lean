@@ -15,6 +15,3 @@ theorem new21Game_bounds (N K W : Nat) (h : K ≤ N + 1) :
   let result := new21Game N K W
   0 ≤ result ∧ result ≤ 1 := sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

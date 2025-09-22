@@ -18,25 +18,4 @@ theorem root_level_file_or_dir
   else 
     lengthLongestPath name = 0 :=
 sorry
-
-/-
-info: 20
--/
--- #guard_msgs in
--- #eval lengthLongestPath "dir\n\tsubdir1\n\tsubdir2\n\t\tfile.ext"
-
-/-
-info: 32
--/
--- #guard_msgs in
--- #eval lengthLongestPath "dir\n\tsubdir1\n\t\tfile1.ext\n\t\tsubsubdir1\n\tsubdir2\n\t\tsubsubdir2\n\t\t\tfile2.ext"
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval lengthLongestPath ""
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

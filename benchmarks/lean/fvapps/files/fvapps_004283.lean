@@ -26,25 +26,4 @@ theorem wally_word_boundaries
   {p s : String} :
   wheres_wally (String.append (String.append p "Wall") s) = -1 ∧ 
   wheres_wally (String.append (String.append p "Wallys") s) = -1 := sorry
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval wheres_wally "Wally"
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval wheres_wally "Hi Wally."
-
-/-
-info: -1
--/
--- #guard_msgs in
--- #eval wheres_wally "Where"s Waldo"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

@@ -38,25 +38,4 @@ theorem vampire_numbers_increasing {n₁ n₂: Nat}
 theorem vampire_undefined_outside_range (n: Nat) (h: n ≥ 156):
   ¬∃ m: Nat, vampire_number n = m :=
   sorry
-
-/-
-info: 105210
--/
--- #guard_msgs in
--- #eval vampire_number 10
-
-/-
-info: 336960
--/
--- #guard_msgs in
--- #eval vampire_number 100
-
-/-
-info: 939658
--/
--- #guard_msgs in
--- #eval vampire_number 155
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

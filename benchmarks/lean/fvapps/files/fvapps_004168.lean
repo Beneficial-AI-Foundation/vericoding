@@ -31,25 +31,4 @@ theorem elevator_distance_all_zero (n : Nat)
 
 theorem elevator_distance_up_down : 
   elevator_distance [1, -1] = 2 := sorry
-
-/-
-info: 9
--/
--- #guard_msgs in
--- #eval elevator_distance [5, 2, 8]
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval elevator_distance [1, 2, 3]
-
-/-
-info: 18
--/
--- #guard_msgs in
--- #eval elevator_distance [7, 1, 7, 1]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

@@ -25,25 +25,4 @@ theorem solution_is_sorted (nums : List Int) :
   isSorted (solution nums) = true := sorry
 
 theorem solution_empty : solution [] = [] := sorry
-
-/-
-info: [1, 2, 3, 5, 10]
--/
--- #guard_msgs in
--- #eval solution [1, 2, 3, 10, 5]
-
-/-
-info: []
--/
--- #guard_msgs in
--- #eval solution []
-
-/-
-info: []
--/
--- #guard_msgs in
--- #eval solution None
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

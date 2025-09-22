@@ -20,6 +20,3 @@ theorem calculate_min_toggles_case_format
   have h3 : i < (calculate_min_toggles nums).length := by rw [calculate_min_toggles_correct_length nums h]; exact h2
   String.startsWith ((calculate_min_toggles nums)[i]'h3) (s!"Case {i+1}: ") := sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

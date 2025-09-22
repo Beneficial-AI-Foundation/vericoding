@@ -32,6 +32,3 @@ theorem cthulhu_code_symmetric (i k s a_i b_i : Int)
   let result2 := calculate_cthulhu_code i k s b_i a_i 
   Float.abs (result1 - result2) < 0.01 := sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

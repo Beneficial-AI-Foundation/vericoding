@@ -25,25 +25,4 @@ theorem specific_case_1 : solve_array_partition 1 [1, 4] = 6 := sorry
 theorem specific_case_2 : solve_array_partition 2 [2, 1, 2, 1] = 12 := sorry
 
 theorem specific_case_3 : solve_array_partition 3 [2, 2, 2, 2, 2, 2] = 0 := sorry
-
-/-
-info: 6
--/
--- #guard_msgs in
--- #eval solve_array_partition 1 [1, 4]
-
-/-
-info: 12
--/
--- #guard_msgs in
--- #eval solve_array_partition 2 [2, 1, 2, 1]
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval solve_array_partition 3 [2, 2, 2, 2, 2, 2]
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: unguarded

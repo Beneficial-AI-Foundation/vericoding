@@ -35,25 +35,4 @@ theorem strip_comments_single_char_markers (text : String) (markers : List Strin
           text.data[j]? = m.data[0]?)
     | none, _ => true
     | _, none => true) := sorry
-
-/-
-info: expected1
--/
--- #guard_msgs in
--- #eval strip_comments "apples, pears # and bananas\ngrapes\nbananas !apples" ["#", "!"]
-
-/-
-info: expected2
--/
--- #guard_msgs in
--- #eval strip_comments "a #b\nc\nd $e f g" ["#", "$"]
-
-/-
-info: expected3
--/
--- #guard_msgs in
--- #eval strip_comments "" ["#", "!"]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

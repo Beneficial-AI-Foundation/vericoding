@@ -25,6 +25,3 @@ theorem ex_euler_precision (n : Nat) (h : n > 0) :
 theorem ex_euler_invalid :
   ∀ n : Int, n ≤ 0 → ex_euler n = 0 := sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

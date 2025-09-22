@@ -30,25 +30,4 @@ theorem known_cases :
   canMergeForPermutation [3, 1, 2, 4] = "NO" ∧
   canMergeForPermutation [3, 2, 6, 1, 5, 7, 8, 4] = "YES" :=
 sorry
-
-/-
-info: 'YES'
--/
--- #guard_msgs in
--- #eval can_merge_for_permutation [2, 3, 1, 4]
-
-/-
-info: 'NO'
--/
--- #guard_msgs in
--- #eval can_merge_for_permutation [3, 1, 2, 4]
-
-/-
-info: 'YES'
--/
--- #guard_msgs in
--- #eval can_merge_for_permutation [3, 2, 6, 1, 5, 7, 8, 4]
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: unguarded

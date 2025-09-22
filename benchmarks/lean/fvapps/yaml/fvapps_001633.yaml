@@ -16,58 +16,64 @@ vc-description: |-
   -/
 
 vc-preamble: |-
-  def identify_distribution (samples : List Int) : String :=
-    sorry
+  def isValidDistribution (s : String) : Bool :=
+    s = "uniform" || s = "poisson"
 
 vc-helpers: |-
 
 vc-definitions: |-
-  def isValidDistribution (s : String) : Bool :=
-    s = "uniform" || s = "poisson"
+  def identify_distribution (samples : List Int) : String :=
+    sorry
 
 vc-theorems: |-
-  theorem identify_distribution_valid (samples : List Int) 
+  theorem identify_distribution_valid (samples : List Int)
     (h : samples.length ≥ 2) :
-    isValidDistribution (identify_distribution samples) := sorry
+    isValidDistribution (identify_distribution samples) :=
+  sorry
   
   theorem identify_distribution_deterministic (samples : List Int) :
-    identify_distribution samples = identify_distribution samples := sorry
+    identify_distribution samples = identify_distribution samples :=
+  sorry
   
   theorem identify_distribution_uniform (samples : List Int) :
-    samples.length ≥ 2 → identify_distribution samples = "uniform" := sorry
+    samples.length ≥ 2 → identify_distribution samples = "uniform" :=
+  sorry
   
-  theorem identify_distribution_poisson (samples : List Int) : 
-    samples.length ≥ 2 → identify_distribution samples = "poisson" := sorry
+  theorem identify_distribution_poisson (samples : List Int) :
+    samples.length ≥ 2 → identify_distribution samples = "poisson" :=
+  sorry
   
-  theorem identify_distribution_scale_invariant (samples : List Int) 
+  theorem identify_distribution_scale_invariant (samples : List Int)
     (scale : Int) (h : scale ≠ 0) :
-    identify_distribution samples = 
-    identify_distribution (samples.map (· * scale)) := sorry
+    identify_distribution samples =
+    identify_distribution (samples.map (· * scale)) :=
+  sorry
   
   theorem identify_distribution_order_invariant (samples₁ samples₂ : List Int)
-    (h : samples₁.length = samples₂.length) 
+    (h : samples₁.length = samples₂.length)
     (h2 : ∀ x, x ∈ samples₁ ↔ x ∈ samples₂) :
-    identify_distribution samples₁ = identify_distribution samples₂ := sorry
-  
-  /-
-  info: 'poisson'
-  -/
-  -- #guard_msgs in
-  -- #eval identify_distribution [1, 2, 3, 2, 1]
-  
-  /-
-  info: 'poisson'
-  -/
-  -- #guard_msgs in
-  -- #eval identify_distribution [10, 8, 9, 8, 12]
-  
-  /-
-  info: 'poisson'
-  -/
-  -- #guard_msgs in
-  -- #eval identify_distribution [-5, -4, -3, -4, -5]
+    identify_distribution samples₁ = identify_distribution samples₂ :=
+  sorry
 
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
+  
+  /--
+  info: 'poisson'
+  -/
+  #guard_msgs in
+  #eval identify_distribution [1, 2, 3, 2, 1]
+  
+  /--
+  info: 'poisson'
+  -/
+  #guard_msgs in
+  #eval identify_distribution [10, 8, 9, 8, 12]
+  
+  /--
+  info: 'poisson'
+  -/
+  #guard_msgs in
+  #eval identify_distribution [-5, -4, -3, -4, -5]
 

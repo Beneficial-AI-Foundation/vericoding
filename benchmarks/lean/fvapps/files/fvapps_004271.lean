@@ -25,31 +25,4 @@ theorem matrix_has_zeros_off_diagonal (n : Nat) (h : n ≤ 100) :
 
 theorem empty_matrix :
   get_matrix 0 = [] := sorry
-
-/-
-info: []
--/
--- #guard_msgs in
--- #eval get_matrix 0
-
-/-
-info: [[1]]
--/
--- #guard_msgs in
--- #eval get_matrix 1
-
-/-
-info: [[1, 0], [0, 1]]
--/
--- #guard_msgs in
--- #eval get_matrix 2
-
-/-
-info: [[1, 0, 0], [0, 1, 0], [0, 0, 1]]
--/
--- #guard_msgs in
--- #eval get_matrix 3
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

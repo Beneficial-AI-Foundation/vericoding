@@ -49,19 +49,4 @@ theorem search_plan_validity (coords : List Coordinates) (h : coords.length ≥ 
     1 ≤ x2 ∧ x2 ≤ 1000 ∧
     1 ≤ y2 ∧ y2 ≤ 2 :=
 sorry
-
-/-
-info: N
--/
--- #guard_msgs in
--- #eval len []
-
-/-
-info: N
--/
--- #guard_msgs in
--- #eval len coords
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

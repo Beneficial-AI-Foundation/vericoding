@@ -24,25 +24,4 @@ theorem permutation_symmetry {xs : List Nat} :
 theorem identity_permutation {n : Nat} :
   let xs := List.range n
   is_ambiguous_permutation xs = true := sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval is_ambiguous_permutation [1, 4, 3, 2]
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval is_ambiguous_permutation [2, 3, 4, 5, 1]
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval is_ambiguous_permutation [1]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

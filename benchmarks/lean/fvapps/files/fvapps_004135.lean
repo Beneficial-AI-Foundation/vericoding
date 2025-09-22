@@ -20,25 +20,4 @@ theorem get_score_monotonic (a b : Int) (h1 : a ≥ 0) (h2 : b ≥ 0) (h3 : a < 
 
 theorem get_score_formula (n : Int) :
   get_score n = n * (n + 1) * 25 := by sorry
-
-/-
-info: 50
--/
--- #guard_msgs in
--- #eval get_score 1
-
-/-
-info: 150
--/
--- #guard_msgs in
--- #eval get_score 2
-
-/-
-info: 750
--/
--- #guard_msgs in
--- #eval get_score 5
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

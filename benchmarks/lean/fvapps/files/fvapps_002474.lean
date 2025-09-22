@@ -18,6 +18,3 @@ theorem format_numbers_equal_line_lengths (n : Nat)
   (((format_numbers n).splitOn "\n")[j]!).length :=
 sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

@@ -18,25 +18,4 @@ theorem exceeding_size_gives_zero (times: List String)
 theorem wrap_around_case :
   find_min_time_difference ["23:59", "00:00"] = 1 :=
   sorry
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval find_min_time_difference ["23:59", "00:00"]
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval find_min_time_difference ["00:00", "23:59", "00:00"]
-
-/-
-info: 61
--/
--- #guard_msgs in
--- #eval find_min_time_difference ["01:01", "02:02", "03:03"]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

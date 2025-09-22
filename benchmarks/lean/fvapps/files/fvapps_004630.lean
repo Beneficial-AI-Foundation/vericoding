@@ -33,19 +33,4 @@ theorem multiple_attributes :
   result.contains 'b' ∧
   result.contains 'c' ∧
   result.endsWith "a, b and c." := sorry
-
-/-
-info: "Hi, I'm one of those Vehicles! Have a look at my engine, seats and wheels."
--/
--- #guard_msgs in
--- #eval show_me Vehicle(2, 4, "gas")
-
-/-
-info: "Hi, I'm one of those Pets! Have a look at my name."
--/
--- #guard_msgs in
--- #eval show_me Pet("Rover")
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

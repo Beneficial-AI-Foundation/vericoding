@@ -27,25 +27,4 @@ theorem disjoint_arrays {A B : List Nat} (h1 : A.length > 0) (h2 : B.length > 0)
   (h3 : ∀ x ∈ B, ∀ y ∈ A, x ≠ y) :
   find_max_repeated_subarray A B = 0 :=
   sorry
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval find_max_repeated_subarray [1, 2, 3, 2, 1] [3, 2, 1, 4, 7]
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval find_max_repeated_subarray [1, 2, 3] [4, 5, 6]
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval find_max_repeated_subarray [1, 1, 1] [1, 1, 1]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

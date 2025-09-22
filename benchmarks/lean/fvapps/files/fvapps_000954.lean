@@ -34,6 +34,3 @@ theorem known_pattern {height : Nat} {s : String}
   find_char_frequency height s [("1", 'A'), ("2", 'B'), ("3", 'C')] = [1, 1, 1] :=
 sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

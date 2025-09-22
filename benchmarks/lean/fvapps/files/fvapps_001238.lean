@@ -29,25 +29,4 @@ theorem calculate_sum_consecutive (n : Nat)
   (h : 1 ≤ n ∧ n ≤ 100) :
   calculate_sum n (n + 1) = (n + (n &&& (n + 1))) % 1000000007 :=
   sorry
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval calculate_sum 1 4
-
-/-
-info: 16
--/
--- #guard_msgs in
--- #eval calculate_sum 4 10
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval calculate_sum 2 5
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

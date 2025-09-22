@@ -27,25 +27,4 @@ sorry
 theorem small_numbers_not_ramanujan (n : Nat) :
   n > 0 → n < 100 → n ≠ 1729 → has_two_cube_sums n = false :=
 sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval has_two_cube_sums 1729
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval has_two_cube_sums 42
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval has_two_cube_sums 4104
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

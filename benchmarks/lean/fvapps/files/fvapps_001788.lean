@@ -32,25 +32,4 @@ theorem brace_expansion_nested_braces (expr : String) :
 
 theorem brace_expansion_empty_braces :
   braceExpansionII "{}" = [""] := sorry
-
-/-
-info: ['ac', 'ad', 'ae', 'bc', 'bd', 'be']
--/
--- #guard_msgs in
--- #eval braceExpansionII "{a,b}{c,{d,e}}"
-
-/-
-info: ['a', 'ab', 'ac', 'z']
--/
--- #guard_msgs in
--- #eval braceExpansionII "{{a,z},a{b,c},{ab,z}}"
-
-/-
-info: ['abdfg', 'abdfh', 'abefg', 'abefh', 'acdfg', 'acdfh', 'acefg', 'acefh']
--/
--- #guard_msgs in
--- #eval braceExpansionII "a{b,c}{d,e}f{g,h}"
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

@@ -29,25 +29,4 @@ theorem solve_output_natural {n : Nat} {edges : List Edge}
   let (mn, mx) := solve n edges
   Nat.zero ≤ mn ∧ Nat.zero ≤ mx :=
   sorry
-
-/-
-info: (1, 4)
--/
--- #guard_msgs in
--- #eval solve 6 [(1, 3), (2, 3), (3, 4), (4, 5), (5, 6)]
-
-/-
-info: (3, 3)
--/
--- #guard_msgs in
--- #eval solve 6 [(1, 3), (2, 3), (3, 4), (4, 5), (4, 6)]
-
-/-
-info: (1, 6)
--/
--- #guard_msgs in
--- #eval solve 7 [(1, 2), (2, 7), (3, 4), (4, 7), (5, 6), (6, 7)]
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: guarded

@@ -23,25 +23,4 @@ theorem spinning_rings_edge_cases :
   spinning_rings 1 1 = 1 ∧
   (spinning_rings 1 2 = 1 ∨ spinning_rings 1 2 = 2 ∨ spinning_rings 1 2 = 3) :=
 sorry
-
-/-
-info: 5
--/
--- #guard_msgs in
--- #eval spinning_rings 2 3
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval spinning_rings 3 2
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval spinning_rings 1 1
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

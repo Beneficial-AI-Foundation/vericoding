@@ -24,6 +24,3 @@ theorem expanded_form_trailing_zeros_1 :
 theorem expanded_form_trailing_zeros_2 :
   expanded_form 0.001 = "1/1000" := sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

@@ -35,25 +35,4 @@ theorem count_even_sum_pairs_bounds (a b : Nat)
   (h1 : a > 0) (h2 : b > 0) (h3 : a ≤ 1000) (h4 : b ≤ 1000) :
   count_even_sum_pairs a b ≤ a * b :=
 sorry
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval count_even_sum_pairs 1 1
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval count_even_sum_pairs 2 3
-
-/-
-info: 12
--/
--- #guard_msgs in
--- #eval count_even_sum_pairs 4 6
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

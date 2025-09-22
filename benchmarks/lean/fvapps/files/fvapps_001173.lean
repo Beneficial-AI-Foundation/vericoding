@@ -37,25 +37,4 @@ theorem leading_zero_property
   ∀ mapping : Char → Nat,
     (∀ c ∈ firstChars, mapping c ≠ 0) :=
 sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval isSolvable ["THIS", "IS", "TOO"] "FUNNY"
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval isSolvable ["SEND", "MORE"] "MONEY"
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval isSolvable ["AB", "CD"] "EF"
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

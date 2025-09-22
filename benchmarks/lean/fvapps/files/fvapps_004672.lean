@@ -50,25 +50,4 @@ theorem ipToInt32_roundtrip_d (a b c d: Nat)
   let result := ipToInt32 ip
   d = result &&& 255 :=
 sorry
-
-/-
-info: 2149583361
--/
--- #guard_msgs in
--- #eval ip_to_int32 "128.32.10.1"
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval ip_to_int32 "0.0.0.0"
-
-/-
-info: 4294967295
--/
--- #guard_msgs in
--- #eval ip_to_int32 "255.255.255.255"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

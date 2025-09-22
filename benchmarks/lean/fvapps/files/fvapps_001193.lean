@@ -21,25 +21,4 @@ theorem matches_manual_calculation
 theorem negative_input_undefined
   (n : Int) :
   n < 0 → last_two_digits_of_5powern n.toNat = last_two_digits_of_5powern 0 := sorry
-
-/-
-info: 25
--/
--- #guard_msgs in
--- #eval last_two_digits_of_5powern 2
-
-/-
-info: 25
--/
--- #guard_msgs in
--- #eval last_two_digits_of_5powern 3
-
-/-
-info: 25
--/
--- #guard_msgs in
--- #eval last_two_digits_of_5powern 4
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

@@ -42,6 +42,3 @@ theorem single_digit_not_increase (h : 9 ≥ 1) :
   (solve_min_value 9 1).1 ≤ 9 :=
 sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

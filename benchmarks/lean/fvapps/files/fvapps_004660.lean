@@ -22,25 +22,4 @@ theorem limit_output_bounds {h c : Int} (h1 : h ≥ 0) (h2 : c ≥ 0) :
 
 theorem limit_deterministic {h c : Int} :
     limit h c = limit h c := sorry
-
-/-
-info: [2645, 1162]
--/
--- #guard_msgs in
--- #eval coffee_limits 1950 1 19
-
-/-
-info: [111, 0]
--/
--- #guard_msgs in
--- #eval coffee_limits 1965 12 11
-
-/-
-info: [0, 11]
--/
--- #guard_msgs in
--- #eval coffee_limits 1964 11 28
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

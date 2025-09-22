@@ -19,25 +19,4 @@ theorem unlucky_days_nonneg (year: Nat) (h: year ≥ 1583):
 
 theorem unlucky_days_400_year_cycle (year: Nat) (h: year ≥ 1583) (i: Nat):
   unlucky_days (year + i) = unlucky_days (year + i + 400) := sorry
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval unlucky_days 2015
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval unlucky_days 1986
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval unlucky_days 1634
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

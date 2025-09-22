@@ -25,19 +25,4 @@ theorem fibonacci_sum_zero_k (n : Nat) :
 
 theorem fibonacci_sum_negative_n_error (n : Int) (k : Nat) :
   n < 0 → fibonacci_sum (Int.toNat n) k = 0 := sorry
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval fibonacci_sum 1 1
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval fibonacci_sum 1 2
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

@@ -26,25 +26,4 @@ theorem valid_rna_chars (dna: DNA) (i: String.Pos) :
 
 theorem idempotent (rna: RNA) (h: ∀ i: String.Pos, rna.get i ∈ ['G','C','U']) :
   dna_to_rna rna = rna := sorry
-
-/-
-info: 'GCAU'
--/
--- #guard_msgs in
--- #eval dna_to_rna "GCAT"
-
-/-
-info: ''
--/
--- #guard_msgs in
--- #eval dna_to_rna ""
-
-/-
-info: 'GACCGCCGCC'
--/
--- #guard_msgs in
--- #eval dna_to_rna "GACCGCCGCC"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

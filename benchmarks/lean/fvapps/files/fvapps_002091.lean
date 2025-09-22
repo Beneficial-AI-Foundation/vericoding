@@ -35,25 +35,4 @@ theorem edge_cases :
   (solve_tree_splitting 2 [0] [0,1] ≥ 0) ∧
   (solve_tree_splitting 3 [0,0] [1,1,1] ≥ 0) ∧
   (solve_tree_splitting 3 [0,0] [0,0,0] ≥ 0) := sorry
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval solve_tree_splitting 3 [0, 0] [0, 1, 1]
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval solve_tree_splitting 6 [0, 1, 1, 0, 4] [1, 1, 0, 0, 1, 0]
-
-/-
-info: 27
--/
--- #guard_msgs in
--- #eval solve_tree_splitting 10 [0, 1, 2, 1, 4, 4, 4, 0, 8] [0, 0, 0, 1, 0, 1, 1, 0, 0, 1]
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: unguarded

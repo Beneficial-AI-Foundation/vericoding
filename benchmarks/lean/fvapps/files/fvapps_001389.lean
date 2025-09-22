@@ -32,25 +32,4 @@ theorem find_max_cost_order_invariant {n : Nat} {arr₁ arr₂ arr₃ : List Int
   (h7 : arr₃.toArray = arr₁.toArray) :
   find_max_cost n arr₁ = find_max_cost n arr₂ ∧ 
   find_max_cost n arr₂ = find_max_cost n arr₃ := sorry
-
-/-
-info: 7
--/
--- #guard_msgs in
--- #eval find_max_cost 2 #[7, 12]
-
-/-
-info: 5
--/
--- #guard_msgs in
--- #eval find_max_cost 3 #[5, 8, 10]
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval find_max_cost 4 #[3, 7, 11, 15]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

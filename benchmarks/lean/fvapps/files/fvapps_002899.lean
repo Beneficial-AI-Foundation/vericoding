@@ -30,25 +30,4 @@ theorem all_alpha_chars_converted (s : String) (word : String) :
 
 theorem case_insensitive (s : String) :
   to_nato s.toLower = to_nato s.toUpper := sorry
-
-/-
-info: 'India Foxtrot Yankee Oscar Uniform Charlie Alfa November Romeo Echo Alfa Delta'
--/
--- #guard_msgs in
--- #eval to_nato "If you can read"
-
-/-
-info: 'Delta India Delta November Oscar Tango Sierra Echo Echo Tango Hotel Alfa Tango Charlie Oscar Mike India November Golf'
--/
--- #guard_msgs in
--- #eval to_nato "Did not see that coming"
-
-/-
-info: 'India Foxtrot , Yankee Oscar Uniform Charlie Alfa November Romeo Echo Alfa Delta ?'
--/
--- #guard_msgs in
--- #eval to_nato "If, you can read?"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

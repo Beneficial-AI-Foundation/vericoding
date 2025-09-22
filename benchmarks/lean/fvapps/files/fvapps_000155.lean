@@ -38,25 +38,4 @@ theorem edge_cases (s : String) :
   isMatch s "*" = true ∧
   isMatch s "**" = true ∧
   isMatch s "" = (s = "") := sorry
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval is_match "aa" "a"
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval is_match "aa" "*"
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval is_match "adceb" "*a*b"
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

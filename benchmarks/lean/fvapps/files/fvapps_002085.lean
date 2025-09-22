@@ -44,25 +44,4 @@ theorem count_door_opens_no_clients
   let result := count_door_opens n 0 a d []
   result ≤ n ∧ result > 0 :=
 sorry
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval count_door_opens 1 1 3 4 [7]
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval count_door_opens 4 3 4 2 [7, 9, 11]
-
-/-
-info: 6
--/
--- #guard_msgs in
--- #eval count_door_opens 10 10 51 69 [154, 170, 170, 183, 251, 337, 412, 426, 445, 452]
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: unguarded

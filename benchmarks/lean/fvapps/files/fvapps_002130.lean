@@ -43,6 +43,3 @@ theorem max_trip_sizes_degree_bound
         (List.replicate n 0)))) :=
 sorry
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: guarded

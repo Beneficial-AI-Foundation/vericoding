@@ -37,25 +37,4 @@ theorem survivor_coprime_pair (n : Nat) :
   n ≥ 2 →
   let result := survivor [n, n+1]
   result ≥ 0 ∧ result < n * (n+1) := sorry
-
-/-
-info: 59
--/
--- #guard_msgs in
--- #eval survivor [7, 11]
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval survivor [1, 7, 15]
-
-/-
-info: -1
--/
--- #guard_msgs in
--- #eval survivor [2, 10]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

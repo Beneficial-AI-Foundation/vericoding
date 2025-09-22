@@ -27,25 +27,4 @@ theorem case_preservation (s : String) (i : String.Pos) :
 theorem non_alpha_unchanged (s : String) (i : String.Pos) :
   let encoded := encode s
   ¬(s.get i).isAlpha → s.get i = encoded.get i := sorry
-
-/-
-info: 'AGEDYROPULIK'
--/
--- #guard_msgs in
--- #eval encode "GADERYPOLUKI"
-
-/-
-info: 'Aed'
--/
--- #guard_msgs in
--- #eval decode "Gde"
-
-/-
-info: test
--/
--- #guard_msgs in
--- #eval decode encode(test)
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

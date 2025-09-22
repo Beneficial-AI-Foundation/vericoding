@@ -24,25 +24,4 @@ theorem balloon_game_k_one
 theorem balloon_game_single_color
   (count k : Nat) (h : k > 1) :
   solve_balloon_game count 0 0 k = min count (k-1) + 1 := sorry
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval solve_balloon_game 3 3 3 1
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval solve_balloon_game 3 3 3 2
-
-/-
-info: 7
--/
--- #guard_msgs in
--- #eval solve_balloon_game 10 5 2 3
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

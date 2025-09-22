@@ -44,25 +44,4 @@ theorem equal_size_opposite_direction_collision
   (size : Int) :
   asteroidCollision [size, -size] = [] :=
 sorry
-
-/-
-info: [5, 10]
--/
--- #guard_msgs in
--- #eval asteroidCollision [5, 10, -5]
-
-/-
-info: []
--/
--- #guard_msgs in
--- #eval asteroidCollision [8, -8]
-
-/-
-info: [-2, -1, 1, 2]
--/
--- #guard_msgs in
--- #eval asteroidCollision [-2, -1, 1, 2]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

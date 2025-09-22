@@ -35,25 +35,4 @@ theorem pattern_mapping_consistency (pattern word : String) :
   ∀ (i j : String.Pos), 
     (word.get i = word.get j ↔ pattern.get i = pattern.get j) := by
   sorry
-
-/-
-info: ['mee', 'aqq']
--/
--- #guard_msgs in
--- #eval find_and_replace_pattern ["abc", "deq", "mee", "aqq", "dkd", "ccc"] "abb"
-
-/-
-info: ['aa', 'bb']
--/
--- #guard_msgs in
--- #eval find_and_replace_pattern ["aa", "bb"] "cc"
-
-/-
-info: []
--/
--- #guard_msgs in
--- #eval find_and_replace_pattern ["ccc"] "abb"
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

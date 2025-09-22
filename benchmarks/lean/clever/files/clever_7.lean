@@ -36,6 +36,3 @@ theorem correctness
 := by
   sorry
 -- </vc-theorems>
-
--- #test implementation [] "a" = []
--- #test implementation ["abc", "bacd", "cde", "array"] "a" = ["abc", "bacd", "array"]

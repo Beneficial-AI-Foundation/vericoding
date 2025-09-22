@@ -31,25 +31,4 @@ theorem valid_tree_is_connected (n : Nat) (edges : List (Nat × Nat)) :
     (∃ p1, path.head? = some p1 ∧ p1.1 = 1) ∧ 
     (∃ p2, path.getLast? = some p2 ∧ p2.2 = v) := by
   sorry
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval can_minimize_tree 6 [(1, 2), (2, 3), (2, 4), (4, 5), (1, 6)]
-
-/-
-info: -1
--/
--- #guard_msgs in
--- #eval can_minimize_tree 7 [(1, 2), (1, 3), (3, 4), (1, 5), (5, 6), (6, 7)]
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval can_minimize_tree 2 [(1, 2)]
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: guarded

@@ -1,36 +1,36 @@
 vc-description: |-
   /-
   Little Petya often visits his grandmother in the countryside. The grandmother has a large vertical garden, which can be represented as a set of `n` rectangles of varying height. Due to the newest irrigation system we can create artificial rain above them.
-  
+
   Creating artificial rain is an expensive operation. That's why we limit ourselves to creating the artificial rain only above one section. The water will then flow to the neighbouring sections but only if each of their heights does not exceed the height of the previous watered section.
-  
+
   ___
-  
+
   ## Example:
-  
+
   Let's say there's a garden consisting of 5 rectangular sections of heights `4, 2, 3, 3, 2`.
-  
+
   Creating the artificial rain over the left-most section is inefficient as the water **WILL FLOW DOWN** to the section with the height of `2`, but it **WILL NOT FLOW UP** to the section with the height of `3` from there. Only 2 sections will be covered: `4, 2`.
-  
+
   The most optimal choice will be either of the sections with the height of `3` because the water will flow to its neighbours covering 4 sections altogether: `2, 3, 3, 2`. You can see this process in the following illustration:
-  
+
   ___
-  
+
   As Petya is keen on programming, he decided to find such section that if we create artificial rain above it, the number of watered sections will be maximal.
-  
+
   ## Output:
   The maximal number of watered sections if we create artificial rain above exactly one section.
-  
+
   **Note: performance will be tested.**
   -/
 
-vc-preamble: |-
+vc-preamble: |
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def artificial_rain (garden: List Nat) : Nat := sorry
-  
+
   theorem artificial_rain_length_invariant {garden: List Nat} (h: garden ≠ []) :
     1 ≤ artificial_rain garden ∧ artificial_rain garden ≤ garden.length := sorry
 
@@ -38,10 +38,10 @@ vc-theorems: |-
   theorem artificial_rain_identical_values {garden: List Nat} (h: garden.length ≥ 2) 
     (h2: ∀ (i j: Nat) (hi: i < garden.length) (hj: j < garden.length), garden.get ⟨i, hi⟩ = garden.get ⟨j, hj⟩) :
     artificial_rain garden = garden.length := sorry
-  
+
   theorem artificial_rain_single_peak_singleton {garden: List Nat} (h: garden.length = 1) :
     artificial_rain garden = 1 := sorry
-  
+
   theorem artificial_rain_single_peak {garden: List Nat} (h: garden.length > 1)
     (peak_idx: Nat) (h2: peak_idx < garden.length)
     (h3: ∀ (i: Nat) (hi: i < garden.length) (hip: i < peak_idx) (hi1: i + 1 < garden.length), 
@@ -49,36 +49,36 @@ vc-theorems: |-
     (h4: ∀ (i: Nat) (hi: i < garden.length) (hip: peak_idx ≤ i) (hi1: i + 1 < garden.length), 
       garden.get ⟨i, hi⟩ ≥ garden.get ⟨i + 1, hi1⟩) :
     artificial_rain garden ≥ peak_idx + 1 := sorry
-  
+
   theorem artificial_rain_monotonic_increasing {garden: List Nat} (h: garden.length ≥ 2)
     (h2: ∀ (i: Nat) (hi: i < garden.length) (hi1: i + 1 < garden.length), 
       garden.get ⟨i, hi⟩ ≤ garden.get ⟨i + 1, hi1⟩) :
     artificial_rain garden = garden.length := sorry
-  
+
   theorem artificial_rain_monotonic_decreasing {garden: List Nat} (h: garden.length ≥ 2)
     (h2: ∀ (i: Nat) (hi: i < garden.length) (hi1: i + 1 < garden.length), 
       garden.get ⟨i, hi⟩ ≥ garden.get ⟨i + 1, hi1⟩) :
     artificial_rain garden = garden.length := sorry
-  
-  /-
-  info: 4
-  -/
-  -- #guard_msgs in
-  -- #eval artificial_rain [4, 2, 3, 3, 2]
-  
-  /-
-  info: 5
-  -/
-  -- #guard_msgs in
-  -- #eval artificial_rain [1, 2, 3, 4, 5]
-  
-  /-
-  info: 5
-  -/
-  -- #guard_msgs in
-  -- #eval artificial_rain [1, 2, 2, 2, 1]
 
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+
+  /--
+  info: 4
+  -/
+  #guard_msgs in
+  #eval artificial_rain [4, 2, 3, 3, 2]
+
+  /--
+  info: 5
+  -/
+  #guard_msgs in
+  #eval artificial_rain [1, 2, 3, 4, 5]
+
+  /--
+  info: 5
+  -/
+  #guard_msgs in
+  #eval artificial_rain [1, 2, 2, 2, 1]
 

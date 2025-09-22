@@ -23,6 +23,3 @@ theorem is_pandigital_valid_range (n : Nat) :
   is_pandigital n = true →
   ∀ d, d ∈ digits n → 1 ≤ d ∧ d ≤ 9 := sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

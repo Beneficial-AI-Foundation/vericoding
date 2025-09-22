@@ -39,6 +39,3 @@ theorem xor_property {nums: List Nat} (h1: nums.length > 0)
      xor_result = nums[i]?) :=
   sorry
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: guarded

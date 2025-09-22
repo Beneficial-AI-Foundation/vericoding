@@ -26,6 +26,3 @@ theorem scramble_message_fixed_abcdefgh :
   scramble_message 3 "abcdefgh" = "aecgbfdh" :=
 sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

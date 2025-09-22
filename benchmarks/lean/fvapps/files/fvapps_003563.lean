@@ -24,25 +24,4 @@ theorem camel_case_single_word (s : String) (h : s ≠ "") :
 theorem camel_case_only_spaces (s : String) 
   (h : ∀ (i : String.Pos), s.get i = ' ') :
   camel_case s = "" := sorry
-
-/-
-info: 'TestCase'
--/
--- #guard_msgs in
--- #eval camel_case "test case"
-
-/-
-info: 'CamelCaseMethod'
--/
--- #guard_msgs in
--- #eval camel_case "camel case method"
-
-/-
-info: 'SayHello'
--/
--- #guard_msgs in
--- #eval camel_case "say hello "
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

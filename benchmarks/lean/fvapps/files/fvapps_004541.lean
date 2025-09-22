@@ -50,25 +50,4 @@ sorry
 theorem roast_legacy_case_insensitive (s : String) :
   roast_legacy (s.toLower) = roast_legacy (s.toUpper) :=
 sorry
-
-/-
-info: 'Burn baby burn disco inferno 1100 points earned in this roasting and 2 complaints resolved!'
--/
--- #guard_msgs in
--- #eval roast_legacy "We have COBOL and fax systems that are slow! and expensive!"
-
-/-
-info: 'These guys are already DevOps and in the Cloud and the business is happy!'
--/
--- #guard_msgs in
--- #eval roast_legacy "Everything is modern and cloud native"
-
-/-
-info: 'Burn baby burn disco inferno 550 points earned in this roasting and 1 complaints resolved!'
--/
--- #guard_msgs in
--- #eval roast_legacy "Our MonoLithic system is Down! and we use ThickClient"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

@@ -42,19 +42,4 @@ theorem reverse_directions_flips_turns {directions : List Direction} {d : Direct
 theorem reverse_directions_single :
   reverse_directions ["Begin on Road A"] = ["Begin on Road A"]
   := sorry
-
-/-
-info: expected1
--/
--- #guard_msgs in
--- #eval reverse_directions ["Begin on Road A", "Right on Road B", "Right on Road C", "Left on Road D"]
-
-/-
-info: expected2
--/
--- #guard_msgs in
--- #eval reverse_directions ["Begin on Old Madras Road", "Left on Domlur Flyover", "Left on 100 Feet Road", "Right on Sarjapur Road", "Right on Hosur Road", "Right on Ganapathi Temple Road"]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

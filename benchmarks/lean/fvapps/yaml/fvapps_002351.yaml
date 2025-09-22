@@ -2,41 +2,41 @@ vc-description: |-
   /-
   Given a square matrix mat, return the sum of the matrix diagonals.
   Only include the sum of all the elements on the primary diagonal and all the elements on the secondary diagonal that are not part of the primary diagonal.
-  
+
   Example 1:
-  
+
   Input: mat = [[1,2,3],
                 [4,5,6],
                 [7,8,9]]
   Output: 25
   Explanation: Diagonals sum: 1 + 5 + 9 + 3 + 7 = 25
   Notice that element mat[1][1] = 5 is counted only once.
-  
+
   Example 2:
   Input: mat = [[1,1,1,1],
                 [1,1,1,1],
                 [1,1,1,1],
                 [1,1,1,1]]
   Output: 8
-  
+
   Example 3:
   Input: mat = [[5]]
   Output: 5
-  
+
   Constraints:
-  
+
   n == mat.length == mat[i].length
   1 <= n <= 100
   1 <= mat[i][j] <= 100
   -/
 
-vc-preamble: |-
+vc-preamble: |
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def diagonalSum (matrix: List (List Int)) : Int := sorry
-  
+
   -- Main property: sum equals primary + secondary diagonal (except where they intersect)
 
 vc-theorems: |-
@@ -48,40 +48,40 @@ vc-theorems: |-
       (if matrix.length % 2 = 1 
        then (matrix.get! (matrix.length / 2)).get! (matrix.length / 2)
        else 0) := sorry
-  
+
   -- Single element matrix case
-  
+
   theorem diagonal_sum_single_element {matrix: List (List Int)} 
     (h1: matrix.length = 1) (h2: (matrix.head!).length = 1) :
     diagonalSum matrix = (matrix.head!).head! := sorry
-  
+
   -- Symmetry property
-  
+
   theorem diagonal_sum_symmetric {matrix symMatrix: List (List Int)} 
     (h1: matrix.length = symMatrix.length)
     (h2: ∀ i j, i < matrix.length → j < matrix.length →
       (symMatrix.get! i).get! j = (matrix.get! i).get! j) :
     diagonalSum matrix = diagonalSum symMatrix := sorry
-  
-  /-
-  info: 25
-  -/
-  -- #guard_msgs in
-  -- #eval diagonal_sum [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
-  
-  /-
-  info: 8
-  -/
-  -- #guard_msgs in
-  -- #eval diagonal_sum [[1, 1, 1, 1], [1, 1, 1, 1], [1, 1, 1, 1], [1, 1, 1, 1]]
-  
-  /-
-  info: 5
-  -/
-  -- #guard_msgs in
-  -- #eval diagonal_sum [[5]]
 
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded
+
+  /--
+  info: 25
+  -/
+  #guard_msgs in
+  #eval diagonal_sum [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+
+  /--
+  info: 8
+  -/
+  #guard_msgs in
+  #eval diagonal_sum [[1, 1, 1, 1], [1, 1, 1, 1], [1, 1, 1, 1], [1, 1, 1, 1]]
+
+  /--
+  info: 5
+  -/
+  #guard_msgs in
+  #eval diagonal_sum [[5]]
 

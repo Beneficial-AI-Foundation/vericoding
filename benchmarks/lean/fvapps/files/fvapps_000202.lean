@@ -17,25 +17,4 @@ theorem equal_elements_wins (nums : List Int) (h1 : nums.length ≥ 2)
 
 theorem reversed_same_result (nums : List Int) (h : nums ≠ []) :
   predict_the_winner nums = predict_the_winner nums.reverse := sorry
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval predict_the_winner [1, 5, 2]
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval predict_the_winner [1, 5, 233, 7]
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval predict_the_winner []
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

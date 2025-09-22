@@ -31,25 +31,4 @@ theorem empty_string_balanced :
 theorem non_bracket_chars (s : String) :
   (∀ c, c ∈ s.data → c ∉ ['(', ')', '[', ']', '{', '}']) →
   braces_status s = true := sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval braces_status "[()]"
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval braces_status "([)]"
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval braces_status "()[]{}()"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

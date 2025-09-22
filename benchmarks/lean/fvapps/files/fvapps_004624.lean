@@ -28,6 +28,3 @@ theorem waveSort_small_arrays (arr : List Int) :
   arr.length ≤ 1 →
   waveSort arr = arr := sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

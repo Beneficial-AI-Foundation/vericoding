@@ -28,6 +28,3 @@ theorem single_receipt_maintains_minimum (n person : Nat) (amount : Int)
   let result := solve_money_events_multi n balances events
   List.get! result (person - 1) ≥ amount := sorry
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: guarded

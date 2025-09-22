@@ -24,6 +24,3 @@ theorem n_closest_pairs_bounds (upperLim : Nat) (k : Nat)
      m ≤ upperLim ∧ n > 0 ∧ m > n) :=
 sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

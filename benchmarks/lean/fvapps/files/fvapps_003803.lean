@@ -14,25 +14,4 @@ theorem digits_average_result_in_range (n : Nat) (h : n > 0) :
 -- <vc-theorems>
 theorem single_digit_unchanged (n : Nat) (h1 : n > 0) (h2 : n ≤ 9) :
   digits_average n = n := sorry
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval digits_average 246
-
-/-
-info: 9
--/
--- #guard_msgs in
--- #eval digits_average 89
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval digits_average 3700
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

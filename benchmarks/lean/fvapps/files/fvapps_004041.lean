@@ -24,25 +24,4 @@ theorem length_increases_by_apparently (s : String) :
 theorem empty_input_unchanged (s : String) :
   s = "" ∨ s = " " ∨ s = "  " →
   apparently s = s := sorry
-
-/-
-info: expected1
--/
--- #guard_msgs in
--- #eval apparently "It was great and I"ve never been on live television before but sometimes I don"t watch this."
-
-/-
-info: expected2
--/
--- #guard_msgs in
--- #eval apparently "but apparently"
-
-/-
-info: expected3
--/
--- #guard_msgs in
--- #eval apparently "but and apparently apparently apparently apparently"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

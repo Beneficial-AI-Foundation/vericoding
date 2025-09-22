@@ -20,25 +20,4 @@ theorem one_always_factor {base : Nat} :
 
 theorem self_is_factor {base : Nat} (h : base > 0) :
   check_for_factor base base = true := sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval check_for_factor 10 2
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval check_for_factor 9 2
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval check_for_factor 24612 3
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

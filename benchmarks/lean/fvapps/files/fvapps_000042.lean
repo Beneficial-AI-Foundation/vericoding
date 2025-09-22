@@ -21,25 +21,4 @@ theorem power_two_string_bounds (n : Nat) :
   let s := String.mk ('1'::List.replicate n '0')
   solve_binary_substrings s ≥ 1 ∧
   solve_binary_substrings s ≤ n + 1 := sorry
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval solve_binary_substrings "0110"
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval solve_binary_substrings "0101"
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval solve_binary_substrings "00001000"
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

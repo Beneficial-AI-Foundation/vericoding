@@ -5,91 +5,91 @@ vc-description: |-
   After that Cheffina came and read what chef wrote in the problem statement, for having some fun Cheffina made some changes in the problem statement as.
   New problem statement: N can be obtained as the sum of Kth power of unique +ve integers in multiple ways, find total number ways?
   But, the chef is now confused, how to solve a new problem statement, help the chef to solve this new problem statement.
-  
+
   -----Input:-----
   - First-line will contain $T$, the number of test cases. Then the test cases follow. 
   - Each test case contains a single line of input, two integers $N, K$. 
-  
+
   -----Output:-----
   For each test case, output in a single line answer to the problem statement.
-  
+
   -----Constraints-----
   - $1 \leq T \leq 10$
   - $1 \leq N \leq 1000$
   - $1 \leq K \leq 6$
-  
+
   -----Sample Input:-----
   2
   4 1
   38 2
-  
+
   -----Sample Output:-----
   2
   1
-  
+
   -----EXPLANATION:-----
   For 1) 4 can be obtained by as [ 4^1 ], [1^1, 3^1], [2^1, 2^1]. (here ^ stands for power)
   But here [2^1, 2^1] is not the valid way because it is not made up of unique +ve integers. 
   For 2) 38 can be obtained in the way which is [2^2, 3^2, 5^2] = 4 + 9 + 25
   -/
 
-vc-preamble: |-
+vc-preamble: |
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def count_sum_of_powers (N : Nat) (K : Nat) : Nat :=
     sorry
-  
+
   -- Basic properties
 
 vc-theorems: |-
   theorem count_sum_of_powers_non_negative (N K : Nat) : 
     count_sum_of_powers N K ≥ 0 :=
     sorry
-  
+
   theorem count_sum_of_powers_zero_for_small_N (N K : Nat) (h1 : K > 0) (h2 : N > 0) (h3 : N < 1^K) :
     count_sum_of_powers N K = 0 :=
     sorry
-  
+
   theorem count_sum_of_powers_zero_case (K : Nat) :
     count_sum_of_powers 0 K = 1 :=
     sorry
-  
+
   -- Square sums properties
-  
+
   theorem count_sum_squares_zero_for_impossible (N : Nat) 
     (h : N = 2 ∨ N = 3 ∨ N = 6 ∨ N = 7 ∨ N = 8 ∨ N = 11 ∨ N = 12 ∨ N = 15) :
     count_sum_of_powers N 2 = 0 :=
     sorry
-  
+
   theorem count_sum_squares_perfect_square (N : Nat) (h : ∃ k, N = k * k) :
     count_sum_of_powers N 2 ≥ 1 :=
     sorry
-  
+
   -- Small input properties
-  
+
   theorem count_sum_powers_small_N (N K : Nat) (h : N < 2^K) :
     count_sum_of_powers N K ≤ 1 :=
     sorry
-  
+
   theorem count_sum_powers_one_first_power :
     count_sum_of_powers 1 1 = 1 :=
     sorry
-  
-  /-
-  info: 2
-  -/
-  -- #guard_msgs in
-  -- #eval count_sum_of_powers 4 1
-  
-  /-
-  info: 1
-  -/
-  -- #guard_msgs in
-  -- #eval count_sum_of_powers 38 2
 
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
+
+  /--
+  info: 2
+  -/
+  #guard_msgs in
+  #eval count_sum_of_powers 4 1
+
+  /--
+  info: 1
+  -/
+  #guard_msgs in
+  #eval count_sum_of_powers 38 2
 

@@ -36,10 +36,3 @@ theorem correctness
 : problem_spec implementation a b := by
   sorry
 -- </vc-theorems>
-
--- #test implementation "abcd" "abd" = False
--- #test implementation "hello" "ell" = True
--- #test implementation "whassup" "psus" = False
--- #test implementation "abab" "baa" = True
--- #test implementation "efef" "eeff" = False
--- #test implementation "himenss" "simen" = True

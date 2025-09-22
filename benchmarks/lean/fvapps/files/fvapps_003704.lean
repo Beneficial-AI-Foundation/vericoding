@@ -47,25 +47,4 @@ theorem duty_free_zero_inputs_error2
   (price : Int) (holiday_cost : Int) :
   duty_free price 0 holiday_cost = 0 :=
 sorry
-
-/-
-info: 166
--/
--- #guard_msgs in
--- #eval duty_free 12 50 1000
-
-/-
-info: 294
--/
--- #guard_msgs in
--- #eval duty_free 17 10 500
-
-/-
-info: 357
--/
--- #guard_msgs in
--- #eval duty_free 24 35 3000
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

@@ -1,15 +1,16 @@
 -- <vc-preamble>
-def is_valid_encoding (s : String) : Bool :=
-  sorry
-
-def count_decodings (s : String) : Nat :=
-  sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
+def is_valid_encoding (s : String) : Bool :=
+  sorry
+
+def count_decodings (s : String) : Nat :=
+  sorry
+
 def num_decodings (s : String) : Nat :=
   sorry
 -- </vc-definitions>
@@ -17,42 +18,21 @@ def num_decodings (s : String) : Nat :=
 -- <vc-theorems>
 theorem valid_strings (s : String) :
   is_valid_encoding s → num_decodings s = count_decodings s :=
-  sorry
+sorry
 
 theorem invalid_strings (s : String) :
   ¬is_valid_encoding s → num_decodings s = 0 :=
-  sorry
+sorry
 
 theorem empty_string :
   num_decodings "" = 0 :=
-  sorry
+sorry
 
 theorem starting_zero (s : String) :
   s.length > 0 → s.front = '0' → num_decodings s = 0 :=
-  sorry
+sorry
 
 theorem short_valid_numbers (s : String) :
   is_valid_encoding s → s.length ≤ 6 → num_decodings s = count_decodings s :=
-  sorry
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval num_decodings "12"
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval num_decodings "226"
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval num_decodings "06"
+sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

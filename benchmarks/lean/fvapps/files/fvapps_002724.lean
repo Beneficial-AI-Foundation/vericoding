@@ -36,25 +36,4 @@ theorem leaderboard_climb_monotonic
 theorem leaderboard_climb_duplicate_invariant
   (scores: List Nat) (kara: List Nat) (h: scores.length > 0) (h2: kara.length > 0) :
   leaderboard_climb scores kara = leaderboard_climb (scores ++ scores) kara := sorry
-
-/-
-info: [[4, 3, 1]]
--/
--- #guard_msgs in
--- #eval leaderboard_climb [100, 90, 90, 80] [70, 80, 105]
-
-/-
-info: [[4, 4, 2, 1]]
--/
--- #guard_msgs in
--- #eval leaderboard_climb [982, 490, 339, 180] [180, 250, 721, 2500]
-
-/-
-info: [[4, 4, 1, 1]]
--/
--- #guard_msgs in
--- #eval leaderboard_climb [1079, 490, 339, 180] [180, 250, 1200, 1980]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

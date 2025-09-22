@@ -24,25 +24,4 @@ theorem calc_gcd_prob_probability_range (n : Nat)
     let num := String.toNat! (nums.get! 0) 
     let denom := String.toNat! (nums.get! 1)
     num / denom ≥ 0 ∧ num / denom ≤ 1 := sorry
-
-/-
-info: '1/1'
--/
--- #guard_msgs in
--- #eval calc_gcd_prob 1
-
-/-
-info: '3/4'
--/
--- #guard_msgs in
--- #eval calc_gcd_prob 2
-
-/-
-info: '5/9'
--/
--- #guard_msgs in
--- #eval calc_gcd_prob 3
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

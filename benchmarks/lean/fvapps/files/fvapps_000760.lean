@@ -50,6 +50,3 @@ theorem single_concentration_is_max
   : min_poison_concentration 1 concentrations = maximum concentrations := by
   sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

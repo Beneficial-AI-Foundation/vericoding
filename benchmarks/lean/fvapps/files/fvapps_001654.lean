@@ -52,6 +52,3 @@ theorem from_roman_valid_output (s : String)
     c = 'I' ∨ c = 'V' ∨ c = 'X' ∨ c = 'L' ∨ c = 'C' ∨ c = 'D' ∨ c = 'M') :
   1 ≤ from_roman s ∧ from_roman s ≤ 3999 := sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

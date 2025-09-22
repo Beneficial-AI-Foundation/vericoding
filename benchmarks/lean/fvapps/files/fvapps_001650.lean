@@ -29,25 +29,4 @@ theorem justify_edge_cases:
   (justify "" 5 = "") ∧
   (justify "a" 1 = "a") ∧ 
   (justify "a b" 3 = "a b") := sorry
-
-/-
-info: expected1
--/
--- #guard_msgs in
--- #eval justify "123 45 6" 7
-
-/-
-info: expected2
--/
--- #guard_msgs in
--- #eval justify "test" 10
-
-/-
-info: expected3
--/
--- #guard_msgs in
--- #eval justify "123 456" 10
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

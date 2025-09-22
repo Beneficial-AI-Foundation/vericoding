@@ -32,25 +32,4 @@ sorry
 theorem compare_powers_transitive_negative (x y z : PowerPair) :
   compare_powers x y = -1 → compare_powers y z = -1 → compare_powers x z = -1 :=
 sorry
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval compare_powers [2, 10] [2, 15]
-
-/-
-info: -1
--/
--- #guard_msgs in
--- #eval compare_powers [3, 9] [5, 6]
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval compare_powers [2, 10] [2, 10]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

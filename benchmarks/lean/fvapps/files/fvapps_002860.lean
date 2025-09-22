@@ -27,25 +27,4 @@ theorem sort_array_same_chars (s : String) :
 
 theorem sort_array_empty :
   sort_array "" = "" := sorry
-
-/-
-info: '12345'
--/
--- #guard_msgs in
--- #eval sort_array "54321"
-
-/-
-info: '12345'
--/
--- #guard_msgs in
--- #eval sort_array "34251"
-
-/-
-info: '11111'
--/
--- #guard_msgs in
--- #eval sort_array "11111"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

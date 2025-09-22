@@ -26,19 +26,4 @@ theorem ipsubnet2list_properties {a b c d : Nat} {mask : Nat}
 theorem ipsubnet2list_invalid_input (s : String) :
   ¬is_valid_ip_network s → 
   ipsubnet2list s = none := sorry
-
-/-
-info: ['192.168.1.0', '192.168.1.1']
--/
--- #guard_msgs in
--- #eval ipsubnet2list "192.168.1.0/31"
-
-/-
-info: ['195.20.15.0', '195.20.15.1', '195.20.15.2', '195.20.15.3', '195.20.15.4', '195.20.15.5', '195.20.15.6', '195.20.15.7', '195.20.15.8', '195.20.15.9', '195.20.15.10', '195.20.15.11', '195.20.15.12', '195.20.15.13', '195.20.15.14', '195.20.15.15']
--/
--- #guard_msgs in
--- #eval ipsubnet2list "195.20.15.0/28"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

@@ -2,33 +2,33 @@ vc-description: |-
   /-
   Pushkar is very good in Number Theory. He takes two numbers $A\ and\ B$ and declares them a Pushkar Pair. Pushkar Pair has a property that $A$ has a $Modular\ Inverse$ modulo $B$.  
   He asks you to tell him the largest number $L$ that divides both of them.  
-  
+
   -----Input:-----
   - First line will contain $T$, number of testcases. Then the testcases follow. 
   - Each testcase contains of a single line of input, two integers $A, B$. 
-  
+
   -----Output:-----
   For each testcase, output in a single line the integer $L$.
-  
+
   -----Constraints-----
   - $1 \leq T \leq 1000$
   - $2 \leq A,B \leq 10^4$
-  
+
   -----Sample Input:-----
   1
   3 4
-  
+
   -----Sample Output:-----
   1
   -/
 
-vc-preamble: |-
+vc-preamble: |
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def find_gcd_pair (a b : Nat) : Nat := sorry
-  
+
   theorem gcd_positive (a b : Nat) (h1 : a > 0) (h2 : b > 0) : 
     let gcd := find_gcd_pair a b
     gcd > 0 ∧ a % gcd = 0 ∧ b % gcd = 0 := sorry
@@ -37,29 +37,29 @@ vc-theorems: |-
   theorem gcd_is_maximal (a b : Nat) (h1 : a > 0) (h2 : b > 0) :
     let gcd := find_gcd_pair a b
     ∀ d, d > gcd → d ≤ min a b → ¬(a % d = 0 ∧ b % d = 0) := sorry
-  
+
   theorem gcd_same_number (n : Nat) (h : n > 0) :
     find_gcd_pair n n = n := sorry
-  
-  /-
-  info: 1
-  -/
-  -- #guard_msgs in
-  -- #eval find_gcd_pair 3 4
-  
-  /-
-  info: 6
-  -/
-  -- #guard_msgs in
-  -- #eval find_gcd_pair 12 18
-  
-  /-
-  info: 25
-  -/
-  -- #guard_msgs in
-  -- #eval find_gcd_pair 100 25
 
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
+
+  /--
+  info: 1
+  -/
+  #guard_msgs in
+  #eval find_gcd_pair 3 4
+
+  /--
+  info: 6
+  -/
+  #guard_msgs in
+  #eval find_gcd_pair 12 18
+
+  /--
+  info: 25
+  -/
+  #guard_msgs in
+  #eval find_gcd_pair 100 25
 

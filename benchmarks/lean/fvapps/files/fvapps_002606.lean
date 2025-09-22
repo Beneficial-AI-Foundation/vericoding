@@ -29,25 +29,4 @@ theorem cube_odd_non_empty (xs : List Int)
                 |>.map (fun x => x * x * x)
                 |>.foldl (· + ·) 0 : Int)
   := sorry
-
-/-
-info: 28
--/
--- #guard_msgs in
--- #eval cube_odd [1, 2, 3, 4]
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval cube_odd [-3, -2, 2, 3]
-
-/-
-info: None
--/
--- #guard_msgs in
--- #eval cube_odd ["a", 12, 9, "z", 42]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

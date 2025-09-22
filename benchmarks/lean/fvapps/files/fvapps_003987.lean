@@ -31,25 +31,4 @@ theorem three_details_base_one : three_details 1 = 0 := sorry
 theorem three_details_base_two : three_details 2 = 0 := sorry
 
 theorem three_details_base_three : three_details 3 = 1 := sorry
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval three_details 3
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval three_details 6
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval three_details 4
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

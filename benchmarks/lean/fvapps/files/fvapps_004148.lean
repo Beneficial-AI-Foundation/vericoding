@@ -30,25 +30,4 @@ theorem valid_ids_return_some : ∀ (id : Int),
 
 theorem valid_ids_match_planets : ∀ (id : Int),
   (1 ≤ id ∧ id ≤ 8) → getPlanetName id = validPlanets id := by sorry
-
-/-
-info: 'Venus'
--/
--- #guard_msgs in
--- #eval get_planet_name 2
-
-/-
-info: 'Jupiter'
--/
--- #guard_msgs in
--- #eval get_planet_name 5
-
-/-
-info: 'Earth'
--/
--- #guard_msgs in
--- #eval get_planet_name 3
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

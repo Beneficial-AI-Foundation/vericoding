@@ -30,25 +30,4 @@ theorem product_fib_boolean_correctness
   (isExact → a * b = n) ∧ 
   (¬isExact → a * b > n) ∧
   (¬isExact → ∃ k, fib k = a ∧ fib (k-1) * fib k < n) := sorry
-
-/-
-info: [21, 34, True]
--/
--- #guard_msgs in
--- #eval productFib 714
-
-/-
-info: [34, 55, False]
--/
--- #guard_msgs in
--- #eval productFib 800
-
-/-
-info: [0, 1, True]
--/
--- #guard_msgs in
--- #eval productFib 0
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

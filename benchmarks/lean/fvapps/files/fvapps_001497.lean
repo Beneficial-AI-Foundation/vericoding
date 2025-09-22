@@ -29,25 +29,4 @@ theorem min_remaining_stones_symmetric (n1 n2 m : Nat) :
 theorem min_remaining_stones_equal_piles_even (n m : Nat) (h : m > 0) :
   min_remaining_stones n n m % 2 = 0 :=
   sorry
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval min_remaining_stones 1 1 1
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval min_remaining_stones 1 2 1
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval min_remaining_stones 4 5 2
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

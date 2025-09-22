@@ -31,25 +31,4 @@ sorry
 theorem min_cost_single_middle_cut (n : Nat) (h : n > 2) :
   min_cost n [n / 2] = n :=
 sorry
-
-/-
-info: 16
--/
--- #guard_msgs in
--- #eval min_cost 7 [1, 3, 4, 5]
-
-/-
-info: 22
--/
--- #guard_msgs in
--- #eval min_cost 9 [5, 6, 1, 4, 2]
-
-/-
-info: 16
--/
--- #guard_msgs in
--- #eval min_cost 7 [1, 3, 4, 5, 0, 7]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

@@ -29,25 +29,4 @@ theorem edge_cases :
   can_stack_cubes [1, 1] = "Yes" ∧ 
   can_stack_cubes [2, 1] = "Yes" ∧
   can_stack_cubes [1, 2, 1] = "No" := sorry
-
-/-
-info: 'Yes'
--/
--- #guard_msgs in
--- #eval can_stack_cubes [4, 3, 2, 1, 3, 4]
-
-/-
-info: 'No'
--/
--- #guard_msgs in
--- #eval can_stack_cubes [1, 3, 2]
-
-/-
-info: 'Yes'
--/
--- #guard_msgs in
--- #eval can_stack_cubes [5, 4, 3, 2, 1]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

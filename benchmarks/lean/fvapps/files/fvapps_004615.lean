@@ -17,37 +17,4 @@ theorem roundToNext5_not_less_than_input (n: Int) :
 
 theorem roundToNext5_is_minimum (n: Int) :
   ∀ x, x < roundToNext5 n → (x % 5 ≠ 0 ∨ x < n) := sorry
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval round_to_next5 0
-
-/-
-info: 5
--/
--- #guard_msgs in
--- #eval round_to_next5 2
-
-/-
-info: 15
--/
--- #guard_msgs in
--- #eval round_to_next5 12
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval round_to_next5 -2
-
-/-
-info: -5
--/
--- #guard_msgs in
--- #eval round_to_next5 -5
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

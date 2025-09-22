@@ -40,25 +40,4 @@ theorem input_preservation :
   ∀ (matrix : List (List Int)),
   let result := reverseOnDiagonals matrix
   matrix = matrix := sorry
-
-/-
-info: expected1
--/
--- #guard_msgs in
--- #eval reverse_on_diagonals [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
-
-/-
-info: expected2
--/
--- #guard_msgs in
--- #eval reverse_on_diagonals [[239]]
-
-/-
-info: expected3
--/
--- #guard_msgs in
--- #eval reverse_on_diagonals [[1, 10], [100, 1000]]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

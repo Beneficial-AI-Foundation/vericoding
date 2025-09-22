@@ -28,6 +28,3 @@ theorem add_numbers_div_zero_fails {n1 : Int} :
   ¬∃ (result : Int), add_numbers_between_strings n1 0 true = result :=
   sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

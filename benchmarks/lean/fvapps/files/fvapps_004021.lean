@@ -1,58 +1,47 @@
 -- <vc-preamble>
-def find_average (numbers : List Float) : Float := sorry
-
-def sum (l : List Float) : Float := sorry
-
-def minimum? (l : List Float) : Option Float := sorry
-
-def maximum? (l : List Float) : Option Float := sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
-def sumInt (l : List Int) : Int := sorry
+def find_average (numbers : List Float) : Float :=
+sorry
 
-theorem integer_list_average (numbers : List Int) :
-  find_average (numbers.map Float.ofInt) = 
-    match numbers with
-    | [] => 0
-    | _  => Float.ofInt (sumInt numbers) / Float.ofInt numbers.length := sorry
+def sum (l : List Float) : Float :=
+sorry
+
+def minimum? (l : List Float) : Option Float :=
+sorry
+
+def maximum? (l : List Float) : Option Float :=
+sorry
+
+def sumInt (l : List Int) : Int :=
+sorry
 -- </vc-definitions>
 
 -- <vc-theorems>
-theorem empty_list_average :
-  find_average [] = 0 := sorry
+theorem integer_list_average (numbers : List Int) :
+  find_average (numbers.map Float.ofInt) =
+    match numbers with
+    | [] => 0
+    | _  => Float.ofInt (sumInt numbers) / Float.ofInt numbers.length :=
+sorry
 
-theorem average_between_min_max (numbers : List Float) (h : numbers ≠ []) : 
+theorem empty_list_average :
+  find_average [] = 0 :=
+sorry
+
+theorem average_between_min_max (numbers : List Float) (h : numbers ≠ []) :
   match minimum? numbers, maximum? numbers with
   | some min, some max => min ≤ find_average numbers ∧ find_average numbers ≤ max
-  | _, _ => True := sorry
+  | _, _ => True :=
+sorry
 
-theorem average_times_length_equals_sum (numbers : List Float) : 
+theorem average_times_length_equals_sum (numbers : List Float) :
   match numbers with
   | [] => find_average numbers = 0
-  | _  => find_average numbers * (Float.ofNat numbers.length) = sum numbers := sorry
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval find_average [1, 2, 3]
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval find_average []
-
-/-
-info: 2.5
--/
--- #guard_msgs in
--- #eval find_average [1.5, 2.5, 3.5]
+  | _  => find_average numbers * (Float.ofNat numbers.length) = sum numbers :=
+sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

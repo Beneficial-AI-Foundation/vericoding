@@ -14,7 +14,7 @@ fn herm2poly(c: Vec<i8>) -> (result: Vec<i8>)
         result.len() == c.len(),
         /* Sanity checks */
         c.len() == 1 ==> result@ == c@,
-        c.len() == 2 ==> result[0] as int == c[0] as int && result[1] as int == 2 * c[1] as int,
+        c.len() == 2 ==> result[0] == c[0] && result[1] as int == 2 * c[1] as int,
         /* Example from documentation: herm2poly([1, 2.75, 0.5, 0.375]) approximated with integers */
         (c.len() == 4 && c[0] as int == 1 && c[1] as int == 3 && c[2] as int == 1 && c[3] as int == 0) ==>
             (result[0] as int == 0 && result[1] as int == 1 && result[2] as int == 2 && result[3] as int == 3)

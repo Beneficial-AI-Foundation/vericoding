@@ -28,25 +28,4 @@ theorem empty_string :
 theorem non_letters_unchanged (s : String) :
   (∀ c ∈ s.data, ¬ c.isAlpha) →
   remove_duplicates s = s := sorry
-
-/-
-info: 'ca'
--/
--- #guard_msgs in
--- #eval remove_duplicates "abbaca"
-
-/-
-info: ''
--/
--- #guard_msgs in
--- #eval remove_duplicates "aaaaaa"
-
-/-
-info: ''
--/
--- #guard_msgs in
--- #eval remove_duplicates "abba"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

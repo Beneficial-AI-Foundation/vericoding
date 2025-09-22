@@ -24,25 +24,4 @@ theorem nth_ugly_monotonic {n : Int} (h₁ : n > 1) :
     x > y := sorry
 
 theorem nth_ugly_one : nth_ugly_number 1 = some 1 := sorry
-
-/-
-info: 12
--/
--- #guard_msgs in
--- #eval nth_ugly_number 10
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval nth_ugly_number 1
-
-/-
-info: 8
--/
--- #guard_msgs in
--- #eval nth_ugly_number 7
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

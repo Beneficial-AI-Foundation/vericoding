@@ -32,25 +32,4 @@ theorem concat_size (s₁ s₂ : String) :
   lengthOfLongestSubstring (s₁ ++ s₂) ≥ 
     max (lengthOfLongestSubstring s₁) (lengthOfLongestSubstring s₂) := by
   sorry
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval lengthOfLongestSubstring "abcabcbb"
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval lengthOfLongestSubstring "bbbbb"
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval lengthOfLongestSubstring "pwwkew"
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

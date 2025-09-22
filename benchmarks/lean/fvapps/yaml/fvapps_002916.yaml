@@ -1,13 +1,13 @@
 vc-description: |-
   /-
   Your start-up's BA has told marketing that your website has a large audience in Scandinavia and surrounding countries. Marketing thinks it would be great to welcome visitors to the site in their own language. Luckily you already use an API that detects the user's location, so this is an easy win. 
-  
+
   ### The Task
   - Think of a way to store the languages as a database (eg an object). The languages are listed below so you can copy and paste!
   - Write a 'welcome' function that takes a parameter 'language' (always a string), and returns a greeting - if you have it in your database. It should default to English if the language is not in the database, or in the event of an invalid input.
-  
+
   ### The Database
-  
+
   ```python
   'english': 'Welcome',
   'czech': 'Vitejte',
@@ -46,7 +46,7 @@ vc-description: |-
   swedish: "Valkommen",
   welsh: "Croeso"
   ```
-  
+
   Possible invalid inputs include:
   ~~~~
   IP_ADDRESS_INVALID - not a valid ipv4 or ipv6 ip address
@@ -62,7 +62,7 @@ vc-preamble: |-
       "polish", "spanish", "swedish", "welsh"
   ]
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def greet (language : String) : String :=
@@ -75,43 +75,43 @@ vc-theorems: |-
     (result ≠ "") ∧ 
     (result ≠ "Welcome" ∨ language = "english") :=
   sorry
-  
+
   theorem invalid_input_returns_welcome (language : String) 
     (h : language ∉ VALID_LANGUAGES) :
     greet language = "Welcome" :=
   sorry
-  
-  /-
-  info: 'Welcome'
-  -/
-  -- #guard_msgs in
-  -- #eval greet "english"
-  
-  /-
-  info: 'Welkom'
-  -/
-  -- #guard_msgs in
-  -- #eval greet "dutch"
-  
-  /-
-  info: 'Welcome'
-  -/
-  -- #guard_msgs in
-  -- #eval greet "IP_ADDRESS_INVALID"
-  
-  /-
-  info: 'Welcome'
-  -/
-  -- #guard_msgs in
-  -- #eval greet ""
-  
-  /-
-  info: 'Welcome'
-  -/
-  -- #guard_msgs in
-  -- #eval greet 2
 
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+
+  /--
+  info: 'Welcome'
+  -/
+  #guard_msgs in
+  #eval greet "english"
+
+  /--
+  info: 'Welkom'
+  -/
+  #guard_msgs in
+  #eval greet "dutch"
+
+  /--
+  info: 'Welcome'
+  -/
+  #guard_msgs in
+  #eval greet "IP_ADDRESS_INVALID"
+
+  /--
+  info: 'Welcome'
+  -/
+  #guard_msgs in
+  #eval greet ""
+
+  /--
+  info: 'Welcome'
+  -/
+  #guard_msgs in
+  #eval greet 2
 

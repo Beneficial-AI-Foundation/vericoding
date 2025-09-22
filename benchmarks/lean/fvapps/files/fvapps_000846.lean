@@ -22,6 +22,3 @@ theorem single_digit_requires_no_deletions (s : String) :
   s.length = 1 → min_deletes_for_pure_string s = 0 :=
   sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

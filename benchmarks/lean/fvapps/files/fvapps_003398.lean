@@ -20,31 +20,4 @@ theorem is_digit_non_digits_false (s : String) :
 
 theorem is_digit_multiple_digits_false (s : String) :
   s.length > 1 → (∀ c ∈ s.toList, c.isDigit) → ¬is_digit s := sorry
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval is_digit ""
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval is_digit "7"
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval is_digit "a"
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval is_digit "14"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

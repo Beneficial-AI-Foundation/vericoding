@@ -33,25 +33,4 @@ theorem alternating_strings_property
   (hs : s = String.mk (List.map (fun i => if i % 2 = 0 then 'a' else 'b') (List.range n))) :
   calculate_lcs_strings n m s > 0 :=
 sorry
-
-/-
-info: 6
--/
--- #guard_msgs in
--- #eval calculate_lcs_strings 3 3 "aaa"
-
-/-
-info: 11
--/
--- #guard_msgs in
--- #eval calculate_lcs_strings 3 3 "aab"
-
-/-
-info: 789
--/
--- #guard_msgs in
--- #eval calculate_lcs_strings 10 9 "abacadefgh"
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: unguarded

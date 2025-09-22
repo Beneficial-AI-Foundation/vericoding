@@ -24,25 +24,4 @@ theorem minimum_hops_property (n : Nat) (x : Nat) (favorite_nums : List Nat)
   (h1 : n > 0) (h2 : x > 0) (h3 : favorite_nums.length > 0) (h4 : x ∉ favorite_nums) :
   solve_rabbit_hops n x favorite_nums ≥ 2 := by
   sorry
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval solve_rabbit_hops 2 4 [1, 3]
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval solve_rabbit_hops 3 12 [3, 4, 5]
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval solve_rabbit_hops 1 5 [5]
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: guarded

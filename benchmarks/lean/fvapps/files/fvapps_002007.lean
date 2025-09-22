@@ -39,25 +39,4 @@ theorem find_max_tree_weight_multiple_edges
   (h_uses : use_counts = [0, 1, 1, 1]) :
   find_max_tree_weight 3 edges use_counts = 1 :=
   sorry
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval find_max_tree_weight 4 [[1, 2, 1], [2, 3, 2], [3, 4, 3]] [0, 1, 1, 1, 1]
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval find_max_tree_weight 4 [[1, 2, 1], [2, 3, 2], [3, 4, 3]] [0, 4, 4, 4, 4]
-
-/-
-info: 10000
--/
--- #guard_msgs in
--- #eval find_max_tree_weight 2 [[1, 2, 10000]] [0, 1, 1]
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: unguarded

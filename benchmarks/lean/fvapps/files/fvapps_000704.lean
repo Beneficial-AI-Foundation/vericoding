@@ -53,25 +53,4 @@ theorem derivative_ordering (terms : List (Int × Nat)) (i j : Nat) :
   i < j → i < exponents.length → j < exponents.length →
   String.toNat! (exponents[i]!) ≥ String.toNat! (exponents[j]!) :=
 sorry
-
-/-
-info: '2x^1'
--/
--- #guard_msgs in
--- #eval differentiate_polynomial [[1, 2]]
-
-/-
-info: '3x^2 + 1'
--/
--- #guard_msgs in
--- #eval differentiate_polynomial [[1, 3], [1, 1], [1, 0]]
-
-/-
-info: '0'
--/
--- #guard_msgs in
--- #eval differentiate_polynomial [[5, 0]]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

@@ -35,25 +35,4 @@ sorry
 theorem basic_case :
   diamond 3 = some " *\n***\n *\n" :=
 sorry
-
-/-
-info: expected1
--/
--- #guard_msgs in
--- #eval diamond 3
-
-/-
-info: None
--/
--- #guard_msgs in
--- #eval diamond 0
-
-/-
-info: None
--/
--- #guard_msgs in
--- #eval diamond -1
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

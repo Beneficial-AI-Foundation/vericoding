@@ -23,25 +23,4 @@ theorem show_me_invalid_chars {s : String} :
   s.length > 0 →
   (∃ c ∈ s.data, ¬(c.isUpper ∨ c.isLower)) →
   show_me s = false := sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval show_me "Francis"
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval show_me "Jean-Eluard"
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval show_me "Le Mec"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

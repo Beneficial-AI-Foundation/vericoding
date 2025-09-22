@@ -21,25 +21,4 @@ theorem edge_case_one : shortest_sum_subsequence 1 0 [1] = 1 := sorry
 theorem edge_case_two : shortest_sum_subsequence 2 5 [2, 2] = -1 := sorry
 
 theorem edge_case_three : shortest_sum_subsequence 3 3 [1, 1, 1] = 3 := sorry
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval shortest_sum_subsequence 5 5 [1, 2, 3, 1, -5]
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval shortest_sum_subsequence 5 1 [1, 2, 3, 1, -5]
-
-/-
-info: -1
--/
--- #guard_msgs in
--- #eval shortest_sum_subsequence 3 10 [1, 2, 3]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

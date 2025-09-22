@@ -25,25 +25,4 @@ theorem toothpick_doubles {n : Nat} (h : n > 0) :
 theorem toothpick_zero :
   toothpick 0 = 0 :=
   sorry
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval toothpick 0
-
-/-
-info: 7
--/
--- #guard_msgs in
--- #eval toothpick 3
-
-/-
-info: 171
--/
--- #guard_msgs in
--- #eval toothpick 16
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

@@ -22,19 +22,4 @@ theorem max_profit_insufficient_funds (dollars cents cost : Nat) :
   dollars * 100 + cents < cost →
   find_max_profit_transformations dollars cents cost = 0 := by
   sorry
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval find_max_profit_transformations 9 77 69
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval find_max_profit_transformations 98 99 69
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

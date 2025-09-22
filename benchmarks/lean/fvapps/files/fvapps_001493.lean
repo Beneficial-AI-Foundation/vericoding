@@ -41,6 +41,3 @@ theorem minimum_element_preserved (arr : Array Nat) (min : Nat) :
     | none => False)
   := sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

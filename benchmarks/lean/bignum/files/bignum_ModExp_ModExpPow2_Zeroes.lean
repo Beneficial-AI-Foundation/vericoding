@@ -1,6 +1,4 @@
 -- <vc-preamble>
-namespace BignumLean
-
 def ValidBitString (s : String) : Prop :=
   ∀ {i c}, s.get? i = some c → (c = '0' ∨ c = '1')
 
@@ -47,5 +45,3 @@ theorem ModExp_spec (sx sy sz : String) (hx : ValidBitString sx) (hy : ValidBitS
   Str2Int (ModExp sx sy sz) = Exp_int (Str2Int sx) (Str2Int sy) % Str2Int sz := by
   sorry
 -- </vc-theorems>
-
-end BignumLean

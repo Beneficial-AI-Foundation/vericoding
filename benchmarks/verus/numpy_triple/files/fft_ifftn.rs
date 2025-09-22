@@ -21,8 +21,8 @@ pub open spec fn int_sum(n: nat, f: spec_fn(int) -> int) -> int
 // <vc-spec>
 fn ifftn(a: Vec<Vec<i8>>) -> (result: Vec<Vec<i8>>)
     requires 
-        a@.len() > 0,
-        a@.len() < usize::MAX,
+        a.len() > 0,
+        a.len() < usize::MAX,
         forall|i: int| 0 <= i < a@.len() ==> a@[i].len() > 0,
         forall|i: int| 0 <= i < a@.len() ==> a@[i].len() < usize::MAX,
         forall|i: int, j: int| 0 <= i < a@.len() && 0 <= j < a@.len() ==> a@[i].len() == a@[j].len(),

@@ -46,25 +46,4 @@ theorem vasily_cards_all_same {n v: Nat}
   (h2: v ≥ 1) :
   solve_vasily_cards n (List.replicate n v) = n := by
   sorry
-
-/-
-info: 7
--/
--- #guard_msgs in
--- #eval solve_vasily_cards 4 [6, 3, 1, 2]
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval solve_vasily_cards 1 [1000]
-
-/-
-info: 7
--/
--- #guard_msgs in
--- #eval solve_vasily_cards 7 [3, 3, 3, 3, 3, 3, 3]
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: unguarded

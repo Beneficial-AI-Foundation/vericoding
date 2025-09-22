@@ -24,25 +24,4 @@ theorem climb_length_logarithmic {n : Nat} (h : n > 0) :
 
 theorem climb_invalid_input (n : Nat) :
   n = 0 → climb n = [] := sorry
-
-/-
-info: [1]
--/
--- #guard_msgs in
--- #eval climb 1
-
-/-
-info: [1, 3, 6, 12, 25, 50, 100]
--/
--- #guard_msgs in
--- #eval climb 100
-
-/-
-info: [1, 3, 6, 13, 26, 53, 106, 212, 424, 848, 1697, 3395, 6790, 13580, 27160, 54321]
--/
--- #guard_msgs in
--- #eval climb 54321
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

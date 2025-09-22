@@ -20,25 +20,4 @@ theorem identical_values_sum (n : Nat) (h : n > 0) :
 theorem zero_matrix_sum (n : Nat) (h : n > 0) :
   let matrix := List.replicate n (List.replicate 4 0)
   solve_matrix_shifts n 4 matrix = 0 := sorry
-
-/-
-info: 12
--/
--- #guard_msgs in
--- #eval solve_matrix_shifts 2 3 [[2, 5, 7], [4, 2, 4]]
-
-/-
-info: 29
--/
--- #guard_msgs in
--- #eval solve_matrix_shifts 3 6 [[4, 1, 5, 2, 10, 4], [8, 6, 6, 4, 9, 10], [5, 4, 9, 5, 8, 7]]
-
-/-
-info: 7
--/
--- #guard_msgs in
--- #eval solve_matrix_shifts 4 2 [[1, 1], [2, 1], [1, 2], [2, 2]]
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: guarded

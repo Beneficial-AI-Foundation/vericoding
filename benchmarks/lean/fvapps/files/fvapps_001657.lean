@@ -35,6 +35,3 @@ theorem result_properties {aliens : List (List Int)} {pos : Int × Int} {result 
   (∀ i < result.length - 1, result[i]! < result[i+1]!) ∧ 
   (∀ x ∈ result, x ≥ 0) := sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

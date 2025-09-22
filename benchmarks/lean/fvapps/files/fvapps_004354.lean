@@ -1,52 +1,41 @@
 -- <vc-preamble>
-def perms (s : String) : Nat := sorry
-
-def listPerms (l : List α) : List (List α) := sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
-def listToString (l : List Char) : String := sorry
+def perms (s : String) : Nat :=
+sorry
 
-def numUnique (xs : List String) : Nat := sorry
+def listPerms (l : List α) : List (List α) :=
+sorry
+
+def listToString (l : List Char) : String :=
+sorry
+
+def numUnique (xs : List String) : Nat :=
+sorry
 -- </vc-definitions>
 
 -- <vc-theorems>
-theorem perms_matches_unique_perms_int {n : Nat} : 
-  perms (toString n) = numUnique ((listPerms (toString n).data).map listToString) := sorry
+theorem perms_matches_unique_perms_int {n : Nat} :
+  perms (toString n) = numUnique ((listPerms (toString n).data).map listToString) :=
+sorry
 
 theorem perms_matches_unique_perms_str {s : String} :
-  perms s = numUnique ((listPerms s.data).map listToString) := sorry
+  perms s = numUnique ((listPerms s.data).map listToString) :=
+sorry
 
 theorem perms_order_invariant {n : Nat} :
-  perms (toString n) = perms (toString n) := sorry
+  perms (toString n) = perms (toString n) :=
+sorry
 
 theorem perms_positive_int {s : String} (h : s.length > 0) :
-  perms s > 0 := sorry
+  perms s > 0 :=
+sorry
 
 theorem perms_single_char {c : Char} :
-  perms (String.mk [c]) = 1 := sorry
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval perms 2
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval perms 25
-
-/-
-info: 6
--/
--- #guard_msgs in
--- #eval perms "abc"
+  perms (String.mk [c]) = 1 :=
+sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

@@ -60,25 +60,4 @@ theorem magic_potions_single_elements
   let max_val := max (max (list_max r) (list_max g)) (list_max b)
   solve_magic_potions 1 1 1 M r g b ≤ max_val ∧ 
   solve_magic_potions 1 1 1 M r g b ≥ max_val / (2^M) := sorry
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval solve_magic_potions 1 1 1 1 [1] [2] [3]
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval solve_magic_potions 1 1 1 1 [2] [4] [6]
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval solve_magic_potions 3 2 2 2 [1, 2, 3] [2, 4] [6, 8]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

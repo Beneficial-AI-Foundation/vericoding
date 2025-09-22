@@ -1,12 +1,13 @@
 -- <vc-preamble>
-def IsPowerOfTwo (n : Nat) : Bool :=
-  sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
+def IsPowerOfTwo (n : Nat) : Bool :=
+  sorry
+
 def validateRhythm (meter : List Nat) (score : String) : String :=
   sorry
 -- </vc-definitions>
@@ -15,9 +16,7 @@ def validateRhythm (meter : List Nat) (score : String) : String :=
 theorem validate_rhythm_result_options (meter : List Nat) (score : String) :
   let result := validateRhythm meter score;
   result = "Valid rhythm" ∨ result = "Valid rhythm with anacrusis" ∨ result = "Invalid rhythm" :=
-  sorry
-
-/- For valid rhythms, internal bars should sum to the correct total -/
+sorry
 
 theorem validate_rhythm_valid_bars_sum (meter : List Nat) (score : String)
   (h1 : meter.length = 2) (h2 : meter[0]! > 0) (h3 : meter[1]! > 0)
@@ -27,35 +26,12 @@ theorem validate_rhythm_valid_bars_sum (meter : List Nat) (score : String)
   ∀ bar ∈ bars.tail.dropLast, bar ≠ "" →
   ∃ barSum target : Nat,
     barSum = target ∧ target = meter[0]! / meter[1]! :=
-  sorry
-
-/- Invalid meter denominators result in invalid rhythms -/
+sorry
 
 theorem validate_rhythm_invalid_meter_denom (meter : List Nat)
   (h1 : meter.length = 2)
   (h2 : meter[1]! > 0)
   (h3 : ¬(IsPowerOfTwo meter[1]!)) :
   validateRhythm meter "4|4" = "Invalid rhythm" :=
-  sorry
-
-/-
-info: 'Invalid rhythm'
--/
--- #guard_msgs in
--- #eval validate_rhythm [4, 4] "4444|8484842|888"
-
-/-
-info: 'Valid rhythm with anacrusis'
--/
--- #guard_msgs in
--- #eval validate_rhythm [2, 4] "4|44|88"
-
-/-
-info: 'Valid rhythm'
--/
--- #guard_msgs in
--- #eval validate_rhythm [2, 2] "22|22|22"
+sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

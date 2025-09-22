@@ -26,25 +26,4 @@ theorem result_bounds {n a b : Nat}
   (hn2 : n ≤ 100) (ha2 : a ≤ 100) (hb2 : b ≤ 100) :
   0 ≤ nthMagicalNumber n a b ∧ nthMagicalNumber n a b < MOD := by
   sorry
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval nth_magical_number 1 2 3
-
-/-
-info: 6
--/
--- #guard_msgs in
--- #eval nth_magical_number 4 2 3
-
-/-
-info: 10
--/
--- #guard_msgs in
--- #eval nth_magical_number 5 2 4
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

@@ -25,25 +25,4 @@ sorry
 theorem small_nMax {nMax k: Nat} (h1: nMax ≤ 1000) (h2: k ≥ 0) (h3: k ≤ 100) :
   search_permMult nMax k = 0 :=
 sorry
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval search_permMult 10000 7
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval search_permMult 5000 7
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval search_permMult 10000 4
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

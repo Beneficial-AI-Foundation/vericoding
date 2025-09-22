@@ -55,25 +55,4 @@ theorem search_edge_cases_pair_rotated :
 theorem search_edge_cases_triple :
   search [1, 2, 3] 2 = 1 :=
   sorry
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval search [4, 5, 6, 7, 0, 1, 2] 0
-
-/-
-info: -1
--/
--- #guard_msgs in
--- #eval search [4, 5, 6, 7, 0, 1, 2] 3
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval search [1] 1
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

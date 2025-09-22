@@ -27,6 +27,3 @@ theorem covfefe_append_without_coverage (s : String) :
   ¬s.contains '❟' → -- placeholder since Lean doesn't have good string search
   covfefe s = s ++ " covfefe" := by sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

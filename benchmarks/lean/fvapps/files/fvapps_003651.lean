@@ -29,19 +29,4 @@ theorem product_negative_parity (nums : List Int) (h : ∀ x ∈ nums, x < 0) :
 theorem product_commutative (nums : List Int) (h : nums.length ≥ 2) :
   product nums = product nums.reverse
   := sorry
-
-/-
-info: 540
--/
--- #guard_msgs in
--- #eval product [5, 4, 1, 3, 9]
-
-/-
-info: -672
--/
--- #guard_msgs in
--- #eval product [-2, 6, 7, 8]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

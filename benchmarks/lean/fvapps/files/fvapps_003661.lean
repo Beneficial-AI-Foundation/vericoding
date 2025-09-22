@@ -20,25 +20,4 @@ theorem solve_zero :
 
 theorem solve_monotonic (x : Nat) (h : x ≤ 499999) : 
   solve 0 x ≤ solve 0 (x + 1) := sorry
-
-/-
-info: 8
--/
--- #guard_msgs in
--- #eval solve 0 10
-
-/-
-info: 1080
--/
--- #guard_msgs in
--- #eval solve 2 200
-
-/-
-info: 48132
--/
--- #guard_msgs in
--- #eval solve 200 2000
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

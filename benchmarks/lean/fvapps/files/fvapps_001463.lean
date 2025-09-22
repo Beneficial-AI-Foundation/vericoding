@@ -31,25 +31,4 @@ theorem check_sum_of_primes_k1 (n : Nat)
 theorem check_sum_of_primes_k2_even (n : Nat)
   (h1 : n ≥ 4) (h2 : n ≤ 1000) (h3 : n % 2 = 0) :
   check_sum_of_primes n 2 = 1 := sorry
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval check_sum_of_primes 12 2
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval check_sum_of_primes 11 2
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval check_sum_of_primes 15 3
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

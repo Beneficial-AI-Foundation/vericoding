@@ -30,25 +30,4 @@ theorem min_moves_specific_cases :
   min_moves_to_exit 3 = 3 ∧
   min_moves_to_exit 4 = 16 ∧
   min_moves_to_exit 7 = 7 := sorry
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval min_moves_to_exit 1
-
-/-
-info: 8
--/
--- #guard_msgs in
--- #eval min_moves_to_exit 2
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval min_moves_to_exit 3
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

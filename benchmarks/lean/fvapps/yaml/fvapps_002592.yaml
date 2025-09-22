@@ -18,6 +18,10 @@ vc-description: |-
   -/
 
 vc-preamble: |-
+
+vc-helpers: |-
+
+vc-definitions: |-
   def gimme (arr : List Float) : Nat :=
     sorry
   
@@ -26,10 +30,7 @@ vc-preamble: |-
   
   def sortInt (xs : List Int) : List Int :=
     sorry
-
-vc-helpers: |-
-
-vc-definitions: |-
+  
   def gimmeInt (arr : List Int) : Nat :=
     sorry
 
@@ -61,26 +62,26 @@ vc-theorems: |-
     let _ := gimme arr
     arr = original :=
   sorry
-  
-  /-
-  info: 0
-  -/
-  -- #guard_msgs in
-  -- #eval gimme [2, 3, 1]
-  
-  /-
-  info: 1
-  -/
-  -- #guard_msgs in
-  -- #eval gimme [5, 10, 14]
-  
-  /-
-  info: 0
-  -/
-  -- #guard_msgs in
-  -- #eval gimme [-0.41, -23, 4]
 
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+  
+  /--
+  info: 0
+  -/
+  #guard_msgs in
+  #eval gimme [2, 3, 1]
+  
+  /--
+  info: 1
+  -/
+  #guard_msgs in
+  #eval gimme [5, 10, 14]
+  
+  /--
+  info: 0
+  -/
+  #guard_msgs in
+  #eval gimme [-0.41, -23, 4]
 

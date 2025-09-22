@@ -32,25 +32,4 @@ theorem sister_symmetry (family : FamilyList) (a b : String) :
 theorem aunt_niece_symmetry (family : FamilyList) (a b : String) :
   relations family (a, b) = some "Aunt" →
   relations family (b, a) = some "Niece" := sorry
-
-/-
-info: 'Grandmother'
--/
--- #guard_msgs in
--- #eval relations [("Enid", "Susan"), ("Susan", "Deborah"), ("Enid", "Dianne")] ("Deborah", "Enid")
-
-/-
-info: 'Sister'
--/
--- #guard_msgs in
--- #eval relations [("Sarah", "Emily"), ("Sarah", "Kate")] ("Emily", "Kate")
-
-/-
-info: 'Aunt'
--/
--- #guard_msgs in
--- #eval relations [("Mary", "Sarah"), ("Sarah", "Emily"), ("Mary", "Jane")] ("Emily", "Jane")
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

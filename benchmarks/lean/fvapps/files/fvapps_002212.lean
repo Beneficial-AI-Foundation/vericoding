@@ -33,19 +33,4 @@ theorem solve_f_max_single_element {a : List Nat} :
     let queries := List.map (fun i => (i+1, i+1)) (List.range a.length)
     solve_f_max a queries = a :=
   sorry
-
-/-
-info: [5, 12]
--/
--- #guard_msgs in
--- #eval solve_f_max [8, 4, 1] [(2, 3), (1, 2)]
-
-/-
-info: [60, 30, 12, 3]
--/
--- #guard_msgs in
--- #eval solve_f_max [1, 2, 4, 8, 16, 32] [(1, 6), (2, 5), (3, 4), (1, 2)]
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: unguarded

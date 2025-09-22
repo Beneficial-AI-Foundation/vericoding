@@ -31,25 +31,4 @@ theorem adjacent_points_blocked {source : Point}
     (blocked := [(x+1,y), (x-1,y), (x,y+1), (x,y-1)])
     (target := (x+2, y+2)) :
   is_escape_possible blocked source target = false := sorry
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval is_escape_possible [[0, 1], [1, 0]] [0, 0] [0, 2]
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval is_escape_possible [] [0, 0] [999999, 999999]
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval is_escape_possible [[10, 9], [9, 10], [10, 11], [11, 10]] [0, 0] [10, 10]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

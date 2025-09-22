@@ -36,25 +36,4 @@ theorem identical_temps_implies_yes
   (h2 : n ≤ 100) :
   let cities := List.replicate n 1
   can_visit_cities n 0 cities = "YES" := sorry
-
-/-
-info: 'YES'
--/
--- #guard_msgs in
--- #eval can_visit_cities *test1
-
-/-
-info: 'NO'
--/
--- #guard_msgs in
--- #eval can_visit_cities *test2
-
-/-
-info: 'NO'
--/
--- #guard_msgs in
--- #eval can_visit_cities *test3
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

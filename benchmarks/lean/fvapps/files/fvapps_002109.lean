@@ -28,25 +28,4 @@ theorem single_query_matches_full (grid : List String) (queries : List (Nat × N
   (GameOfLife grid [queries.get i]).get ⟨0, by rw [h₁]; exact Nat.zero_lt_one⟩ = 
   (GameOfLife grid queries).get ⟨i.val, by rw [h₂]; exact i.isLt⟩ :=
 sorry
-
-/-
-info: [1, 1, 1]
--/
--- #guard_msgs in
--- #eval game_of_life ["000", "111", "000"] [(1, 1, 1), (2, 2, 2), (3, 3, 3)]
-
-/-
-info: [0, 0]
--/
--- #guard_msgs in
--- #eval game_of_life ["01", "10", "01", "10", "01"] [(1, 1, 4), (5, 1, 4)]
-
-/-
-info: [1, 0, 1]
--/
--- #guard_msgs in
--- #eval game_of_life ["01011", "10110", "01101", "11010", "10101"] [(1, 1, 4), (1, 2, 3), (5, 5, 3)]
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: unguarded

@@ -22,25 +22,4 @@ theorem arbitrate_single_one_count (n i : Nat) (h1 : 0 < n) (h2 : i < n) :
 theorem arbitrate_all_ones (n : Nat) (h : 0 < n) :
   arbitrate (String.mk (List.replicate n '1')) n = 
   String.mk ('1' :: List.replicate (n - 1) '0') := sorry
-
-/-
-info: '001000000'
--/
--- #guard_msgs in
--- #eval arbitrate "001000101" 9
-
-/-
-info: '000000100'
--/
--- #guard_msgs in
--- #eval arbitrate "000000101" 9
-
-/-
-info: '0000'
--/
--- #guard_msgs in
--- #eval arbitrate "0000" 4
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

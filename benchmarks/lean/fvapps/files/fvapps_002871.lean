@@ -29,25 +29,4 @@ sorry
 theorem strCount_all_same (s : String) (letter : Char) :
   s.length > 0 → (∀ c ∈ s.data, c = letter) → strCount s letter = s.length :=
 sorry
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval str_count "hello" "l"
-
-/-
-info: 5
--/
--- #guard_msgs in
--- #eval str_count "ggggg" "g"
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval str_count "hello world" "o"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

@@ -33,25 +33,4 @@ theorem invalid_sequences_monotone {stones : List Nat} (i : Nat)
   (h1 : i + 1 < stones.length)
   (h2 : stones[i]! ≥ stones[i+1]!) :
   can_cross stones = false := sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval can_cross [0, 1, 3, 5, 6, 8, 12, 17]
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval can_cross [0, 1, 2, 3, 4, 8, 9, 11]
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval can_cross [0, 1, 3, 4, 5, 7, 9, 10, 12]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

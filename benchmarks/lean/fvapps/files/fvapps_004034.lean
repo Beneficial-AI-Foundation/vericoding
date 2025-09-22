@@ -35,25 +35,4 @@ theorem single_letter_z :
 theorem single_letter_a :
   insert_missing_letters "a" = "aBCDEFGHIJKLMNOPQRSTUVWXYZ" :=
   sorry
-
-/-
-info: 'hIJKMNPQRSTUVWXYZeFGIJKMNPQRSTUVWXYZlMNPQRSTUVWXYZloPQRSTUVWXYZ'
--/
--- #guard_msgs in
--- #eval insert_missing_letters "hello"
-
-/-
-info: 'pQRSTUVWYZiJKLMNOQRSTUVWYZxYZxaBCDEFGHJKLMNOQRSTUVWYZ'
--/
--- #guard_msgs in
--- #eval insert_missing_letters "pixxa"
-
-/-
-info: 'z'
--/
--- #guard_msgs in
--- #eval insert_missing_letters "z"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

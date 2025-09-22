@@ -1,18 +1,18 @@
 -- <vc-preamble>
-def calculate_string_weight (s : String) : Nat :=
-  sorry
+def string_reverse (s : String) : String :=
+  ⟨s.data.reverse⟩
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
-def string_reverse (s : String) : String := 
-  ⟨s.data.reverse⟩
+def calculate_string_weight (s : String) : Nat :=
+  sorry
 -- </vc-definitions>
 
 -- <vc-theorems>
-theorem length_weight_relationship {s : String} 
+theorem length_weight_relationship {s : String}
   (h : ∀ c ∈ s.data, 'A' ≤ c ∧ c ≤ 'Z') :
   s.length ≤ calculate_string_weight s ∧ calculate_string_weight s ≤ 27 * s.length :=
 sorry
@@ -39,19 +39,4 @@ sorry
 theorem z_weight_2 :
   calculate_string_weight "Z" = 2 :=
 sorry
-
-/-
-info: 27
--/
--- #guard_msgs in
--- #eval calculate_string_weight "A"
-
-/-
-info: 65
--/
--- #guard_msgs in
--- #eval calculate_string_weight "AND"
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

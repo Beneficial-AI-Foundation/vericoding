@@ -24,19 +24,23 @@ vc-description: |-
   26  =>  false
   ```
   -/
+  
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded_and_plausible
 
 vc-preamble: |-
-  def is_square (n : Int) : Bool :=
-  sorry
 
 vc-helpers: |-
 
 vc-definitions: |-
+  def is_square (n : Int) : Bool :=
+  sorry
+  
   def Int.sqrt (n : Int) : Int :=
   sorry
 
 vc-theorems: |-
-  theorem is_square_properties_1 {n : Int} : 
+  theorem is_square_properties_1 {n : Int} :
     is_square n = true → n ≥ 0 :=
   sorry
   
@@ -45,6 +49,4 @@ vc-theorems: |-
   sorry
 
 vc-postamble: |-
-  -- Apps difficulty: introductory
-  -- Assurance level: guarded_and_plausible
 

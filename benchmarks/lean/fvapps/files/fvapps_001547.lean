@@ -20,25 +20,4 @@ theorem solve_nice_integers_non_negative (a b : Nat)
 theorem solve_nice_integers_base_case :
   solve_nice_integers 1 1 = 0 :=
   sorry
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval solve_nice_integers 1 1
-
-/-
-info: 8
--/
--- #guard_msgs in
--- #eval solve_nice_integers 2 2
-
-/-
-info: 247750000
--/
--- #guard_msgs in
--- #eval solve_nice_integers 1000 1000
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

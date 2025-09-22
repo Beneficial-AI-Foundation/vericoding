@@ -33,25 +33,4 @@ theorem adjacent_product_error_empty :
 theorem adjacent_product_error_singleton (x : Int) :
   ¬∃ (result : Int), adjacentElementProduct [x] = result :=
   sorry
-
-/-
-info: 6
--/
--- #guard_msgs in
--- #eval adjacent_element_product [1, 2, 3]
-
-/-
-info: 50
--/
--- #guard_msgs in
--- #eval adjacent_element_product [9, 5, 10, 2, 24, -1, -48]
-
-/-
-info: -14
--/
--- #guard_msgs in
--- #eval adjacent_element_product [-23, 4, -5, 99, -27, 329, -2, 7, -921]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

@@ -42,7 +42,3 @@ theorem correctness
 : problem_spec implementation words := by
   sorry
 -- </vc-theorems>
-
--- #test implementation ["name", "of", "string"]= "string"
--- #test implementation ["name", "enam", "game"] = "enam"
--- #test implementation ["aaaaaaa", "bb" ,"cc"] = "aaaaaaa"

@@ -42,6 +42,3 @@ theorem zombieShootout_ran_out_ammo (zombies ammo : Int) (distance : Float)
   (zombieShootout zombies ammo distance).endsWith "ran out of ammo." ∧
   containsStr (zombieShootout zombies ammo distance) (toString ammo) := sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

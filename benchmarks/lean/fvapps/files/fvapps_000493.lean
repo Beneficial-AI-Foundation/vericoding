@@ -32,25 +32,4 @@ theorem reverse_parentheses_identity_no_parens
 theorem reverse_parentheses_empty_string :
   reverse_parentheses "" = "" :=
   sorry
-
-/-
-info: 'dcba'
--/
--- #guard_msgs in
--- #eval reverse_parentheses "(abcd)"
-
-/-
-info: 'iloveu'
--/
--- #guard_msgs in
--- #eval reverse_parentheses "(u(love)i)"
-
-/-
-info: 'apmnolkjihgfedcbq'
--/
--- #guard_msgs in
--- #eval reverse_parentheses "a(bcdefghijkl(mno)p)q"
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

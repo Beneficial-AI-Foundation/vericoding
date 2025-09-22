@@ -33,25 +33,4 @@ theorem missing_truth_task_loses (tr_list dr_list ts_list ds_list : List Int)
   (x : Int) (h : ts_list ≠ []) (h2 : ∀ t ∈ ts_list, t < x) :
   can_ram_win tr_list dr_list (ts_list ++ [x]) ds_list = "no" :=
 sorry
-
-/-
-info: 'yes'
--/
--- #guard_msgs in
--- #eval can_ram_win [1, 2] [1, 3, 2] [2] [3, 2]
-
-/-
-info: 'no'
--/
--- #guard_msgs in
--- #eval can_ram_win [1, 2] [1, 3, 2] [2] [3, 2, 4]
-
-/-
-info: 'yes'
--/
--- #guard_msgs in
--- #eval can_ram_win [3, 2, 5] [2, 100] [2] [100]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

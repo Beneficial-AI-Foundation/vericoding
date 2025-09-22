@@ -25,15 +25,15 @@ spec fn all_chars_alpha(s: Seq<char>) -> bool
 fn isalpha(a: Vec<String>) -> (result: Vec<bool>)
     ensures 
         result.len() == a.len(),
-        forall|i: int| 0 <= i < a.len() as int ==> 
+        forall|i: int| 0 <= i < a.len() ==> 
             result[i as int] == (a[i as int]@.len() > 0 && all_chars_alpha(a[i as int]@)),
-        forall|i: int| 0 <= i < a.len() as int ==> 
+        forall|i: int| 0 <= i < a.len() ==> 
             (a[i as int]@.len() == 0 ==> result[i as int] == false),
-        forall|i: int| 0 <= i < a.len() as int ==> 
+        forall|i: int| 0 <= i < a.len() ==> 
             (a[i as int]@.len() > 0 ==> (result[i as int] <==> all_chars_alpha(a[i as int]@))),
-        forall|i: int| 0 <= i < a.len() as int ==> 
+        forall|i: int| 0 <= i < a.len() ==> 
             (result[i as int] == true ==> a[i as int]@.len() > 0),
-        forall|i: int| 0 <= i < a.len() as int ==> 
+        forall|i: int| 0 <= i < a.len() ==> 
             (result[i as int] == true ==> all_chars_alpha(a[i as int]@))
 // </vc-spec>
 // <vc-code>

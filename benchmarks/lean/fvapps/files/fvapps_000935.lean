@@ -23,19 +23,4 @@ theorem find_min_zombie_moves_no_solution
   (h u d : Nat) (h_pos : h > 0) (u_pos : u > 0) (d_pos : d > 0) :
   let result := find_min_zombie_moves h u d
   result = -1 → h % Nat.gcd u d ≠ 0 := sorry
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval find_min_zombie_moves 3 2 1
-
-/-
-info: -1
--/
--- #guard_msgs in
--- #eval find_min_zombie_moves 3 2 2
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

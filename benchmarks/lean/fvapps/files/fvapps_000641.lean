@@ -33,19 +33,4 @@ theorem non_special_factorials (n : Int) :
   n ≠ 40585 →
   is_special_factorial_number n = 0 := by
   sorry
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval is_special_factorial_number 145
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval is_special_factorial_number 123
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

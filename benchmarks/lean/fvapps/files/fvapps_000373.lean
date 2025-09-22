@@ -35,19 +35,4 @@ theorem peak_in_middle {nums : List Int} {idx : Nat}
 
 theorem empty_array :
   find_peak_element [] = -1 := sorry
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval find_peak_element [1, 2, 3, 1]
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval find_peak_element [1]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

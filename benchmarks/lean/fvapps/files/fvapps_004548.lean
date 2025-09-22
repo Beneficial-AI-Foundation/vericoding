@@ -29,25 +29,4 @@ theorem equalize_consecutive_diffs (arr : List Int) (h : arr.length > 0) :
   ∀ i, i < arr.length - 1 →
     String.toInt! (result.get! (i+1)) - String.toInt! (result.get! i) = 
     arr.get! (i+1) - arr.get! i := sorry
-
-/-
-info: expected1
--/
--- #guard_msgs in
--- #eval equalize [10, 20, 25, 0]
-
-/-
-info: expected2
--/
--- #guard_msgs in
--- #eval equalize [0, 5, 10, -5]
-
-/-
-info: expected3
--/
--- #guard_msgs in
--- #eval equalize [-10, 0, 10, 20]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

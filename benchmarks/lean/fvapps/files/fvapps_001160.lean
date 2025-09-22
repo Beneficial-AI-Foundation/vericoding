@@ -28,25 +28,4 @@ theorem no_identical_pairs_valid {s : String} :
   (∀ i, i < s.length → i % 2 = 0 → i + 1 < s.length → s.get ⟨i⟩ ≠ s.get ⟨i + 1⟩) →
   check_log_validity s = "yes" :=
 sorry
-
-/-
-info: 'yes'
--/
--- #guard_msgs in
--- #eval check_log_validity "AB"
-
-/-
-info: 'yes'
--/
--- #guard_msgs in
--- #eval check_log_validity "ABBA"
-
-/-
-info: 'no'
--/
--- #guard_msgs in
--- #eval check_log_validity "AA"
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

@@ -29,25 +29,4 @@ theorem max_friendships_duplicate_invariant (friend_days : List Int) (h : friend
 theorem max_friendships_new_element_bound (friend_days : List Int) (new_day : Int) (h : friend_days ≠ []) :
   max_friendships (friend_days ++ [new_day]) ≤ max_friendships friend_days + 1 :=
   sorry
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval max_friendships [3, 2]
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval max_friendships [1, 1]
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval max_friendships [4, 4, 5, 5, 5]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

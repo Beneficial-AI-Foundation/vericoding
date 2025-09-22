@@ -26,25 +26,4 @@ theorem listOfNumsInBounds_all_included (start : Nat) (end_ : Nat) (n : Nat) :
   start ≤ n →
   n ≤ end_ →
   n ∈ (listOfNumsInBounds start end_) := sorry
-
-/-
-info: 'We have this much circle: 3'
--/
--- #guard_msgs in
--- #eval sum_circles 2
-
-/-
-info: 'We have this much circle: 23'
--/
--- #guard_msgs in
--- #eval sum_circles 2 3 4
-
-/-
-info: 'We have this much circle: 2040'
--/
--- #guard_msgs in
--- #eval sum_circles 48 7 8 9 10
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

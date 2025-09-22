@@ -20,25 +20,4 @@ theorem digitize_reconstruction (n : Nat) :
   String.toNat! (String.intercalate "" (List.map toString digits)) = n := sorry
 
 theorem digitize_zero : digitize 0 = [0] := sorry
-
-/-
-info: [1, 2, 3]
--/
--- #guard_msgs in
--- #eval digitize 123
-
-/-
-info: [1]
--/
--- #guard_msgs in
--- #eval digitize 1
-
-/-
-info: [8, 6, 7, 5, 3, 0, 9]
--/
--- #guard_msgs in
--- #eval digitize 8675309
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

@@ -21,6 +21,3 @@ theorem repeater_length (s : String) (n : Nat) (h : s.length > 0) :
 theorem repeater_zero_empty_result (s : String) :
   ∃ (p : String), repeater s 0 = p ++ "\"\"" := sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

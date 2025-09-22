@@ -36,25 +36,4 @@ theorem duplicate_elements_superset_left (xs ys : List Int) :
 theorem duplicate_elements_superset_right (xs ys : List Int) :
   duplicate_elements xs ys →
   duplicate_elements xs (ys ++ ys) := sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval duplicate_elements [1, 2, 3] [3, 4, 5]
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval duplicate_elements [1, 2, 3] [4, 5, 6]
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval duplicate_elements [] []
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

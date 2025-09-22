@@ -26,6 +26,3 @@ theorem count_feelings_exact_match
   : count_feelings feeling [feeling] = "1 feeling." :=
   sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

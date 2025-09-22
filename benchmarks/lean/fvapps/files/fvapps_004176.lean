@@ -19,25 +19,4 @@ theorem tram_stops_limit (stops : Nat) (descending : List Nat) (onboarding : Lis
   (h6 : ∀ n ∈ onboarding, n ≥ 0) :
   tram stops descending onboarding = tram (stops + 1) descending onboarding :=
 sorry
-
-/-
-info: 6
--/
--- #guard_msgs in
--- #eval tram 4 [0, 2, 4, 4] [3, 5, 2, 0]
-
-/-
-info: 6
--/
--- #guard_msgs in
--- #eval tram 2 [0, 2, 4, 4] [3, 5, 2, 0]
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval tram 1 [0, 2, 4, 4] [3, 5, 2, 0]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

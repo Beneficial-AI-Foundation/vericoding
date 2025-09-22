@@ -35,25 +35,4 @@ theorem single_char_identity {s : String} {n : Nat}
   (h1 : s.length = 1) (h2 : n > 0) (h3 : n < 4) :
   convert_zigzag s n = s := 
 sorry
-
-/-
-info: 'PAHNAPLSIIGYIR'
--/
--- #guard_msgs in
--- #eval convert_zigzag "PAYPALISHIRING" 3
-
-/-
-info: 'PINALSIGYAHRPI'
--/
--- #guard_msgs in
--- #eval convert_zigzag s1 4
-
-/-
-info: 'AB'
--/
--- #guard_msgs in
--- #eval convert_zigzag "AB" 1
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

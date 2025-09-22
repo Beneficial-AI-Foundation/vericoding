@@ -21,25 +21,4 @@ theorem valid_hollow_construction {n left right : Int} {zeros : List Int} :
   n ≥ 3 → left ≠ 0 → right ≠ 0 → 
   zeros.all (λ x => x = 0) → zeros.length = n →
   is_hollow ([left] ++ zeros ++ [right]) := sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval is_hollow [-1, 0, 0, 0, 3]
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval is_hollow [1, 0, 0, 0, 0]
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval is_hollow [2, 4, 0, 0, 0, 1, 3]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

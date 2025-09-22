@@ -23,25 +23,4 @@ theorem find_min_step_empty_hand_nonempty_board
 
 theorem find_min_step_empty_empty : 
   find_min_step "" "" = 0 := sorry
-
-/-
-info: -1
--/
--- #guard_msgs in
--- #eval find_min_step "WRRBBW" "RB"
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval find_min_step "WWRRBBWW" "WRBRW"
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval find_min_step "G" "GGGGG"
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

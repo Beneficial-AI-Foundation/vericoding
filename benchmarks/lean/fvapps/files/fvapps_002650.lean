@@ -45,25 +45,4 @@ theorem get_grade_F (s1 s2 s3 : Int) (h1 : 0 ≤ s1 ∧ s1 ≤ 100)
     (avg : (s1 + s2 + s3) / 3 < 60) :
   get_grade s1 s2 s3 = 'F' :=
   sorry
-
-/-
-info: 'A'
--/
--- #guard_msgs in
--- #eval get_grade 95 90 93
-
-/-
-info: 'C'
--/
--- #guard_msgs in
--- #eval get_grade 70 70 70
-
-/-
-info: 'F'
--/
--- #guard_msgs in
--- #eval get_grade 44 55 52
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

@@ -19,6 +19,3 @@ theorem identical_points_result_near_zero (n : Nat) (hn : n ≥ 5)
   (points : List (Nat × Nat)) (hpoints : points = [(n/2, n/2), (n/2, n/2)]) :
   solve_paper_folding 4 2 n n "UDLR" points ≤ 1e-6 := sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

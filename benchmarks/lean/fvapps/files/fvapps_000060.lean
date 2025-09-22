@@ -25,25 +25,4 @@ theorem xor_commutative (a b : Nat) :
 theorem xor_associative (a b c : Nat) :
   solve_xor_expression (solve_xor_expression a b) c = solve_xor_expression a (solve_xor_expression b c) := by
   sorry
-
-/-
-info: 10
--/
--- #guard_msgs in
--- #eval solve_xor_expression 6 12
-
-/-
-info: 13
--/
--- #guard_msgs in
--- #eval solve_xor_expression 4 9
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval solve_xor_expression 1 1
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

@@ -1,12 +1,13 @@
 -- <vc-preamble>
-def is_palindrome (s : String) : Bool :=
-  sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
+def is_palindrome (s : String) : Bool :=
+  sorry
+
 def solve_palindrome_cuts (s : String) : Option Nat :=
   sorry
 -- </vc-definitions>
@@ -39,7 +40,7 @@ theorem result_preserves_length
 sorry
 
 theorem repeated_char_impossible
-  (c : Char) 
+  (c : Char)
   (n : Nat)
   (h : n > 0) :
   solve_palindrome_cuts (String.mk (List.replicate n c)) = none :=
@@ -50,25 +51,4 @@ theorem short_strings_impossible
   (h : s.length ≤ 2) :
   solve_palindrome_cuts s = none :=
 sorry
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval solve_palindrome_cuts "nolon"
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval solve_palindrome_cuts "otto"
-
-/-
-info: 'Impossible'
--/
--- #guard_msgs in
--- #eval solve_palindrome_cuts "qqqq"
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: unguarded

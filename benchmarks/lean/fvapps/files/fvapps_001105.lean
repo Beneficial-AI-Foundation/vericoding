@@ -22,25 +22,4 @@ theorem even_number_property (n: Nat) (h: n ≥ 2) :
 
 theorem one_returns_two :
   find_minimum_sum_pair 1 = 2 := sorry
-
-/-
-info: 1929
--/
--- #guard_msgs in
--- #eval find_minimum_sum_pair 852140
-
-/-
-info: 7
--/
--- #guard_msgs in
--- #eval find_minimum_sum_pair 12
-
-/-
-info: 18
--/
--- #guard_msgs in
--- #eval find_minimum_sum_pair 17
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

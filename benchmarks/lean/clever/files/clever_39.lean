@@ -35,9 +35,3 @@ theorem correctness
 := by
   sorry
 -- </vc-theorems>
-
--- #test implementation 1 = 2
--- #test implementation 2 = 3
--- #test implementation 3 = 5
--- #test implementation 4 = 13
--- #test implementation 5 = 89

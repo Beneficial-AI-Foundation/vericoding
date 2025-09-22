@@ -29,25 +29,4 @@ theorem factors_lists_contain_valid_factors (n : Nat) (h : n > 0) :
 theorem cube_factors_subset_of_square_factors (n : Nat) (h : n > 0) :
   let (sq, cb) := factors n
   ∀ x ∈ cb, x ∈ sq := sorry
-
-/-
-info: [[2, 4], [2]]
--/
--- #guard_msgs in
--- #eval factors 16
-
-/-
-info: [[3, 9], [3]]
--/
--- #guard_msgs in
--- #eval factors 81
-
-/-
-info: [[2, 5, 10], []]
--/
--- #guard_msgs in
--- #eval factors 100
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

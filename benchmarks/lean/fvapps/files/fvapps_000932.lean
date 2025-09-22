@@ -27,25 +27,4 @@ theorem increasing_values (k : Nat) (h : 0 < k) (h2 : k ≤ 10) :
     let binary_nums := row.map (fun s => String.toNat! s)
     ∀ i, i + 1 < binary_nums.length →
       binary_nums[i]! < binary_nums[i+1]! := sorry
-
-/-
-info: ['1']
--/
--- #guard_msgs in
--- #eval generate_binary_pattern 1
-
-/-
-info: ['1 10', '11 100']
--/
--- #guard_msgs in
--- #eval generate_binary_pattern 2
-
-/-
-info: ['1 10 11', '100 101 110', '111 1000 1001']
--/
--- #guard_msgs in
--- #eval generate_binary_pattern 3
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

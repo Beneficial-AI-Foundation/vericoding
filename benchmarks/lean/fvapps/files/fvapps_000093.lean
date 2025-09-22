@@ -24,6 +24,3 @@ theorem solve_color_array_length_matches_input
   (solve_color_array n t arr).length = arr.length :=
   sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

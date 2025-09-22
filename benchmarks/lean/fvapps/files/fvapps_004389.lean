@@ -36,6 +36,3 @@ theorem octahedron_size_properties {size : Nat} (h1 : size ≥ 3) (h2 : size ≤
   ((result.get! (size-1)).get! (size-1)).get! 0 = 0 ∧
   ((result.get! (size-1)).get! (size-1)).get! (size-1) = 0 := sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

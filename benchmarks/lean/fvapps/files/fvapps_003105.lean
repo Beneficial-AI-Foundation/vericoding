@@ -16,25 +16,4 @@ theorem result_is_sum_of_mods {a b : Int} (h1 : b ≠ 0) (h2 : a ≠ 0) :
 
 theorem invalid_string_input {a : String} {b : Int} :
   string_kata a b = .inr false := sorry
-
-/-
-info: 5
--/
--- #guard_msgs in
--- #eval my_first_kata 3 5
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval my_first_kata "hello" 3
-
-/-
-info: 207
--/
--- #guard_msgs in
--- #eval my_first_kata 314 107
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

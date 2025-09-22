@@ -29,25 +29,4 @@ theorem length_mismatch (n: Nat) (counts: List Nat) :
   List.length counts ≠ n →
   let result := solve_magic_jackets n counts
   result = -1 ∨ result = 0 ∨ result = n ∨ result = 1 := sorry
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval solve_magic_jackets 4 [3, 2, 2, 2]
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval solve_magic_jackets 2 [0, 0]
-
-/-
-info: -1
--/
--- #guard_msgs in
--- #eval solve_magic_jackets 3 [2, 1, 0]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

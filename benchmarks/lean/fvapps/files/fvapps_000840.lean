@@ -25,19 +25,4 @@ theorem milk_share_extension (N M K : Nat) (A : List Nat)
 theorem milk_share_zero_array (N M K : Nat)
         (h1 : N > 0) (h2 : M > 0) (h3 : K > 0) :
   calculate_milk_share N M K (List.replicate N 0) = 0 := sorry
-
-/-
-info: 9
--/
--- #guard_msgs in
--- #eval calculate_milk_share 3 3 3 [15, 8, 10]
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval calculate_milk_share 2 2 2 [5, 3]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

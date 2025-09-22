@@ -22,37 +22,4 @@ theorem multi_digits_theorem {nums : List Nat} (h : ∀ n ∈ nums, n ≤ 9) :
   let scrambled := String.mk (List.reverse combined.data)
   original_number scrambled = 
     String.join (List.map (fun n => String.mk [Char.ofNat (n + 48)]) nums) := sorry
-
-/-
-info: '1'
--/
--- #guard_msgs in
--- #eval original_number "ONE"
-
-/-
-info: '1'
--/
--- #guard_msgs in
--- #eval original_number "OEN"
-
-/-
-info: '12'
--/
--- #guard_msgs in
--- #eval original_number "ONETWO"
-
-/-
-info: '12'
--/
--- #guard_msgs in
--- #eval original_number "OONETW"
-
-/-
-info: '123'
--/
--- #guard_msgs in
--- #eval original_number "TTONWOHREEE"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

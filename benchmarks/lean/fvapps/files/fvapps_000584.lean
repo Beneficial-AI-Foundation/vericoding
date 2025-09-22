@@ -29,25 +29,4 @@ theorem maxStadiumEvents_non_overlapping (events : List (Nat × Nat)) (h : event
 
 theorem maxStadiumEvents_all_overlapping (events : List (Nat × Nat)) (h : events.length ≥ 2) :
   maxStadiumEvents (List.map (fun e => (0, e.2)) events) = 1 := sorry
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval max_stadium_events [(2, 5), (9, 7), (15, 6), (9, 3)]
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval max_stadium_events [(1, 5)]
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval max_stadium_events [(1, 2), (4, 2), (7, 2)]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

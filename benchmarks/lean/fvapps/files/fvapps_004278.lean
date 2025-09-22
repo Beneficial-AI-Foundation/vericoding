@@ -29,25 +29,4 @@ theorem num_obj_preserves_input {nums nums_copy: List Nat} :
   (nums.all (· ≤ 127)) →
   nums_copy = nums →
   nums_copy = nums := sorry
-
-/-
-info: expected1
--/
--- #guard_msgs in
--- #eval num_obj [118, 117, 120]
-
-/-
-info: expected2
--/
--- #guard_msgs in
--- #eval num_obj [101, 121, 110]
-
-/-
-info: expected3
--/
--- #guard_msgs in
--- #eval num_obj [100, 100, 116]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

@@ -30,25 +30,4 @@ theorem longest_palindrome_repeated_char
 
 theorem longest_palindrome_single_space :
   longest_palindrome " " = 1 := sorry
-
-/-
-info: 7
--/
--- #guard_msgs in
--- #eval longest_palindrome "abccccdd"
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval longest_palindrome "ccc"
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval longest_palindrome "Aa"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

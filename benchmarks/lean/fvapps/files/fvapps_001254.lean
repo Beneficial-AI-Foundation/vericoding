@@ -29,25 +29,4 @@ theorem count_faster_batmobiles_single_slower
 theorem count_faster_batmobiles_single_faster  
   (speeds : List Nat) (h : speeds = [1, 2]) :
   count_faster_batmobiles 1 speeds = 1 := sorry
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval count_faster_batmobiles 4 [1, 2, 3, 4, 5]
-
-/-
-info: 5
--/
--- #guard_msgs in
--- #eval count_faster_batmobiles 5 [1, 10, 100, 1000, 10000, 100000]
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval count_faster_batmobiles 3 [5, 5, 5, 6]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

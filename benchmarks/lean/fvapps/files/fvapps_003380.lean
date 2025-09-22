@@ -28,25 +28,4 @@ theorem stringy_only_ones_and_zeros {n : Int} (h : n > 0) (h2 : n ≤ 500) (i : 
 theorem stringy_empty : stringy 0 = "" := sorry
 
 theorem stringy_negative {n : Int} (h : n < 0) : stringy n = "" := sorry
-
-/-
-info: '101'
--/
--- #guard_msgs in
--- #eval stringy 3
-
-/-
-info: '10101'
--/
--- #guard_msgs in
--- #eval stringy 5
-
-/-
-info: '101010101010'
--/
--- #guard_msgs in
--- #eval stringy 12
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

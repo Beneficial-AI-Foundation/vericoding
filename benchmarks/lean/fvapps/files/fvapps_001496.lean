@@ -22,25 +22,4 @@ theorem classify_quotes_regular (quote : String) :
 
 theorem classify_quotes_all_not (n : Nat) (h : n > 0) :
   classify_quotes (String.join (List.replicate n "not" |>.intersperse " ")) = "Real Fancy" := sorry
-
-/-
-info: 'Real Fancy'
--/
--- #guard_msgs in
--- #eval classify_quotes "i do not have any fancy quotes"
-
-/-
-info: 'regularly fancy'
--/
--- #guard_msgs in
--- #eval classify_quotes "when nothing goes right go left"
-
-/-
-info: 'Real Fancy'
--/
--- #guard_msgs in
--- #eval classify_quotes "this is not fancy at all"
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

@@ -41,25 +41,4 @@ theorem single_value {w h val : Nat} (grid : List (List Nat))
 
 theorem max_path_viable (grid : List (List Nat)) :
   get_maximum_gold grid ≤ sumOfLists grid := sorry
-
-/-
-info: 24
--/
--- #guard_msgs in
--- #eval get_maximum_gold [[0, 6, 0], [5, 8, 7], [0, 9, 0]]
-
-/-
-info: 28
--/
--- #guard_msgs in
--- #eval get_maximum_gold [[1, 0, 7], [2, 0, 6], [3, 4, 5], [0, 3, 0], [9, 0, 20]]
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval get_maximum_gold [[1, 1], [1, 1]]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

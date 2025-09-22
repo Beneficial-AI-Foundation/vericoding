@@ -32,25 +32,4 @@ theorem solve_training_camp_zero_topics_two (n : Nat) :
 
 theorem solve_training_camp_zero_topics_many (n : Nat) :
   n > 2 → solve_training_camp n 0 = n - 3 := sorry
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval solve_training_camp 2 1
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval solve_training_camp 3 2
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval solve_training_camp 1 5
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

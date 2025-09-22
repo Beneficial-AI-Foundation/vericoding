@@ -1,31 +1,31 @@
 vc-description: |-
   /-
   A category page displays a set number of products per page, with pagination at the bottom allowing the user to move from page to page.
-  
+
   Given that you know the page you are on, how many products are in the category in total, and how many products are on any given page, how would you output a simple string showing which products you are viewing..
-  
+
   examples
-  
+
   In a category of 30 products with 10 products per page, on page 1 you would see 
-  
+
   'Showing 1 to 10 of 30 Products.'
-  
+
   In a category of 26 products with 10 products per page, on page 3 you would see
-  
+
   'Showing 21 to 26 of 26 Products.'
-  
+
   In a category of 8 products with 10 products per page, on page 1 you would see
-  
+
   'Showing 1 to 8 of 8 Products.'
   -/
 
-vc-preamble: |-
+vc-preamble: |
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def pagination_text (pageNumber pageSize totalProducts : Nat) : String := sorry
-  
+
   theorem pagination_format
       {pageNumber pageSize totalProducts : Nat}
       (h1 : pageNumber ≥ 1)
@@ -63,7 +63,7 @@ vc-theorems: |-
       ∧ total = totalProducts
       ∧ first = pageSize * (pageNumber - 1) + 1
       ∧ last ≤ first + pageSize - 1 := sorry
-  
+
   theorem pagination_bounds
       {pageNumber pageSize totalProducts : Nat}
       (h1 : pageNumber ≥ 1)
@@ -74,26 +74,26 @@ vc-theorems: |-
       (h6 : totalProducts ≤ 10000) :
       ∃ first last : Nat,
       last ≤ totalProducts := sorry
-  
-  /-
-  info: 'Showing 1 to 10 of 30 Products.'
-  -/
-  -- #guard_msgs in
-  -- #eval pagination_text 1 10 30
-  
-  /-
-  info: 'Showing 21 to 26 of 26 Products.'
-  -/
-  -- #guard_msgs in
-  -- #eval pagination_text 3 10 26
-  
-  /-
-  info: 'Showing 1 to 8 of 8 Products.'
-  -/
-  -- #guard_msgs in
-  -- #eval pagination_text 1 10 8
 
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+
+  /--
+  info: 'Showing 1 to 10 of 30 Products.'
+  -/
+  #guard_msgs in
+  #eval pagination_text 1 10 30
+
+  /--
+  info: 'Showing 21 to 26 of 26 Products.'
+  -/
+  #guard_msgs in
+  #eval pagination_text 3 10 26
+
+  /--
+  info: 'Showing 1 to 8 of 8 Products.'
+  -/
+  #guard_msgs in
+  #eval pagination_text 1 10 8
 

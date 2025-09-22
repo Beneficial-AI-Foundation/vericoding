@@ -1,15 +1,16 @@
 -- <vc-preamble>
-def sum_ints (xs : List Int) : Int :=
-  sorry
-
-def range (n : Int) : List Int :=
-  sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
+def sum_ints (xs : List Int) : Int :=
+  sorry
+
+def range (n : Int) : List Int :=
+  sorry
+
 def arithmetic_sequence_sum (a r n : Int) : Int :=
   sorry
 -- </vc-definitions>
@@ -20,36 +21,15 @@ theorem arithmetic_sequence_properties
   (h : n > 0) :
   let sum := arithmetic_sequence_sum a r n
   let manual_sum := sum_ints (range n |>.map (fun i => a + r * i))
-  (sum = manual_sum) ∧ 
+  (sum = manual_sum) ∧
   (arithmetic_sequence_sum a r 1 = a) ∧
   (n > 1 → sum = arithmetic_sequence_sum a r (n-1) + (a + (n-1)*r)) :=
-  sorry
+sorry
 
 theorem sequence_symmetry
   (a r n : Int)
   (h : n > 0) :
   let last := a + (n-1)*r
   arithmetic_sequence_sum a r n = arithmetic_sequence_sum last (-r) n :=
-  sorry
-
-/-
-info: 440
--/
--- #guard_msgs in
--- #eval arithmetic_sequence_sum 3 2 20
-
-/-
-info: 110
--/
--- #guard_msgs in
--- #eval arithmetic_sequence_sum 2 2 10
-
-/-
-info: -80
--/
--- #guard_msgs in
--- #eval arithmetic_sequence_sum 1 -2 10
+sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

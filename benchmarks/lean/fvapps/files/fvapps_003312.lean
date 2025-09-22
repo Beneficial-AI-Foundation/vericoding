@@ -39,25 +39,4 @@ theorem array_manip_no_greater_elements (arr : List Int) (h : arr ≠ []) :
     have h1 : i.val < result.length := by rw [array_manip_length]; exact i.isLt
     (∀ j, i.val < j ∧ j < arr.length → arr.get ⟨j, by sorry⟩ ≤ arr.get i) →
     result.get ⟨i.val, h1⟩ = -1 := sorry
-
-/-
-info: expected1
--/
--- #guard_msgs in
--- #eval array_manip [8, 58, 71, 18, 31, 32, 63, 92, 43, 3, 91, 93, 25, 80, 28]
-
-/-
-info: expected2
--/
--- #guard_msgs in
--- #eval array_manip [2, 4, 18, 16, 7, 3, 9, 13, 18, 10]
-
-/-
-info: expected3
--/
--- #guard_msgs in
--- #eval array_manip [1, 2, 3]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

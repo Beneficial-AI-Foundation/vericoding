@@ -1,21 +1,21 @@
 -- <vc-preamble>
-def countOnes (n : Nat) : Nat :=
-  sorry
-
-def circularPermutation (n : Nat) (start : Nat) : List Nat :=
-  sorry
+def listContains (l : List Nat) (n : Nat) : Prop :=
+  n ∈ l
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
-def listContains (l : List Nat) (n : Nat) : Prop :=
-  n ∈ l
+def countOnes (n : Nat) : Nat :=
+  sorry
+
+def circularPermutation (n : Nat) (start : Nat) : List Nat :=
+  sorry
 -- </vc-definitions>
 
 -- <vc-theorems>
-theorem circularPermutation_length (n : Nat) (start : Nat) 
+theorem circularPermutation_length (n : Nat) (start : Nat)
   (h : start < 2^n) :
   (circularPermutation n start).length = 2^n :=
 sorry
@@ -44,25 +44,4 @@ theorem circularPermutation_invalid_start (n : Nat) (start : Nat)
   (h : start ≥ 2^n) :
   circularPermutation n start = [] :=
 sorry
-
-/-
-info: [3, 2, 0, 1]
--/
--- #guard_msgs in
--- #eval circular_permutation 2 3
-
-/-
-info: [2, 6, 7, 5, 4, 0, 1, 3]
--/
--- #guard_msgs in
--- #eval circular_permutation 3 2
-
-/-
-info: [0, 1]
--/
--- #guard_msgs in
--- #eval circular_permutation 1 0
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

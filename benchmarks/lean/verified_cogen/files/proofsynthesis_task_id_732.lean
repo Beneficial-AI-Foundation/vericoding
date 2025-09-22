@@ -33,6 +33,3 @@ theorem replaceWithColon_spec_satisfied (str1 : Array Char) (h_precond : replace
     replaceWithColon_postcond (str1) (replaceWithColon (str1) h_precond) h_precond := by
   sorry
 -- </vc-theorems>
-
-/- Test cases and examples -/
-def main : IO Unit := return ()

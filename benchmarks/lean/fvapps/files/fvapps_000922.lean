@@ -18,25 +18,4 @@ theorem find_next_repetition_free_properties {n : Nat} (h : n > 0 ∧ n ≤ 1000
 -- <vc-theorems>
 theorem find_next_repetition_free_above_max {n : Nat} (h : n ≥ 987654321) :
   find_next_repetition_free n = 0 := sorry
-
-/-
-info: 123
--/
--- #guard_msgs in
--- #eval find_next_repetition_free 99
-
-/-
-info: 891
--/
--- #guard_msgs in
--- #eval find_next_repetition_free 881
-
-/-
-info: 134
--/
--- #guard_msgs in
--- #eval find_next_repetition_free 133
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

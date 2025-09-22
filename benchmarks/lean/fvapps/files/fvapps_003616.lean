@@ -38,6 +38,3 @@ theorem charCheck_spaces_consistency
   let result_no_spaces := charCheck text text.length false
   result_with_spaces.2.replace " " "" = result_no_spaces.2 := sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

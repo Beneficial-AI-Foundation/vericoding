@@ -26,25 +26,4 @@ theorem between_bounds {a b : Int} (h : a ≤ b) :
 theorem between_all_integers {a b : Int} (h : a ≤ b) :
   ∀ x, x ∈ between a b → x = x :=
   sorry
-
-/-
-info: [1, 2, 3, 4]
--/
--- #guard_msgs in
--- #eval between 1 4
-
-/-
-info: [-2, -1, 0, 1, 2]
--/
--- #guard_msgs in
--- #eval between -2 2
-
-/-
-info: [-1, 0, 1]
--/
--- #guard_msgs in
--- #eval between -1 1
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

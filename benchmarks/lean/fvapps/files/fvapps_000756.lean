@@ -39,19 +39,4 @@ theorem solve_candies_fails_invalid
   (h_k : given_candies.length = K) :
   (x < N ∨ (∃ c, c ∈ given_candies ∧ x < c) ∨ N < K) →
   solve_candies N K x D given_candies = -1 := sorry
-
-/-
-info: 12
--/
--- #guard_msgs in
--- #eval solve_candies 4 3 5 3 [2, 1, 5]
-
-/-
-info: -1
--/
--- #guard_msgs in
--- #eval solve_candies 3 2 8 2 [3, 8]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

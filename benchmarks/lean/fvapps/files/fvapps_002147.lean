@@ -31,6 +31,3 @@ theorem line_graph_expected (n : Nat) :
   Float.abs (solve_tree_game n edges - expected) < 0.000001 :=
   sorry
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: guarded

@@ -40,25 +40,4 @@ theorem valid_match_exists (password : String) (words : List String) :
     words[j]!.length ≥ 1 ∧
     String.mk [words[i]!.data[1]!, words[j]!.data[0]!] = password) :=
 sorry
-
-/-
-info: 'YES'
--/
--- #guard_msgs in
--- #eval can_unlock_phone "ya" ["ah", "oy", "to", "ha"]
-
-/-
-info: 'NO'
--/
--- #guard_msgs in
--- #eval can_unlock_phone "hp" ["ht", "tp"]
-
-/-
-info: 'YES'
--/
--- #guard_msgs in
--- #eval can_unlock_phone "ah" ["ha"]
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: unguarded

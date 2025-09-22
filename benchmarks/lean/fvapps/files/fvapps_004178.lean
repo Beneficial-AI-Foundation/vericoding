@@ -35,6 +35,3 @@ theorem symmetry {x y : Int} (hx : x ≥ 10) (hy : y ≥ 10)
   (h : checkValidNoonorizePair x y = true) :
   noonerize [x, y] = noonerize [y, x] := sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

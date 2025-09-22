@@ -1,6 +1,4 @@
 -- <vc-preamble>
-namespace BignumLean
-
 def ValidBitString (s : String) : Prop :=
   ∀ {i c}, s.get? i = some c → (c = '0' ∨ c = '1')
 
@@ -12,14 +10,12 @@ def Str2Int (s : String) : Nat :=
 -- </vc-helpers>
 
 -- <vc-definitions>
-def Sub (s1 s2 : String) : String :=
+def Sub_ (s1 s2 : String) : String :=
   sorry
 -- </vc-definitions>
 
 -- <vc-theorems>
 theorem Sub_spec (s1 s2 : String) (h1 : ValidBitString s1) (h2 : ValidBitString s2) (h_ge : Str2Int s1 ≥ Str2Int s2) :
-  ValidBitString (Sub s1 s2) ∧ Str2Int (Sub s1 s2) = Str2Int s1 - Str2Int s2 := by
+  ValidBitString (Sub_ s1 s2) ∧ Str2Int (Sub_ s1 s2) = Str2Int s1 - Str2Int s2 := by
   sorry
 -- </vc-theorems>
-
-end BignumLean

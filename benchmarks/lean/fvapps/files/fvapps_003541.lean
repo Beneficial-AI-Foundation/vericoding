@@ -24,6 +24,3 @@ theorem capitalize_second_equals_first (s : String) :
 theorem capitalize_empty_string :
   capitalize "" = ["", ""] := by sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

@@ -20,25 +20,4 @@ theorem diff_linear (p : List Int) :
 
 theorem double_diff_quadratic (p : List Int) :
   p.length = 3 → diff (diff p) = [2 * p.get! 0] := sorry
-
-/-
-info: []
--/
--- #guard_msgs in
--- #eval diff []
-
-/-
-info: [1]
--/
--- #guard_msgs in
--- #eval diff [1, 1]
-
-/-
-info: [6, 2, 0]
--/
--- #guard_msgs in
--- #eval diff [2, 1, 0, 0]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

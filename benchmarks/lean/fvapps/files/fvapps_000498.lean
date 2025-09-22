@@ -28,6 +28,3 @@ theorem solve_square_valid_colors (result : List Nat) (u v c : Nat)
   (u,v,c) ∈ [(1,2,1), (2,3,2), (3,4,1), (4,1,2)] →
   (result.get ⟨u-1, h1⟩ = c) ≠ (result.get ⟨v-1, h2⟩ = c) := sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

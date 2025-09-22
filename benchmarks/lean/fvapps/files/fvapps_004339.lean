@@ -21,25 +21,4 @@ theorem example_case_single :
 theorem example_case_multiple :
   calc_jumps_in_60_secs [12, 23, 45] = 51 :=
   sorry
-
-/-
-info: 60
--/
--- #guard_msgs in
--- #eval calc_jumps_in_60_secs []
-
-/-
-info: 51
--/
--- #guard_msgs in
--- #eval calc_jumps_in_60_secs [12, 23, 45]
-
-/-
-info: 57
--/
--- #guard_msgs in
--- #eval calc_jumps_in_60_secs [17]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

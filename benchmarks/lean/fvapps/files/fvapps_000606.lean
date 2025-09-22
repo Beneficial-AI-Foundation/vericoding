@@ -1,12 +1,13 @@
 -- <vc-preamble>
-def sort_numbers (nums : List Int) : List String :=
-  sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
+def sort_numbers (nums : List Int) : List String :=
+  sorry
+
 def isSorted (l : List Int) : Bool :=
   sorry
 -- </vc-definitions>
@@ -25,10 +26,7 @@ theorem sort_numbers_idempotent_list (nums : List Int) :
 theorem sort_numbers_bounds (nums : List Int) (h : nums ≠ []) :
   let result := sort_numbers nums
   let vals := result.map String.toInt!
-  vals.head! ≤ vals.getLast! ∧ 
+  vals.head! ≤ vals.getLast! ∧
   ∀ x ∈ vals, vals.head! ≤ x ∧ x ≤ vals.getLast! := by
   sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

@@ -24,44 +24,51 @@ vc-description: |-
   -/
 
 vc-preamble: |-
-  def min_flips (a b c : Nat) : Nat := sorry
-  
-  def count_ones (n : Nat) : Nat := sorry
 
 vc-helpers: |-
 
 vc-definitions: |-
-  def bitwise_or (a b : Nat) : Nat := sorry
+  def min_flips (a b c : Nat) : Nat :=
+  sorry
   
-  theorem min_flips_non_negative (a b c : Nat) :
-    min_flips a b c ≥ 0 := sorry
+  def count_ones (n : Nat) : Nat :=
+  sorry
+  
+  def bitwise_or (a b : Nat) : Nat :=
+  sorry
 
 vc-theorems: |-
+  theorem min_flips_non_negative (a b c : Nat) :
+    min_flips a b c ≥ 0 :=
+  sorry
+  
   theorem min_flips_identity_left (c : Nat) :
-    min_flips c 0 c = 0 := sorry
+    min_flips c 0 c = 0 :=
+  sorry
   
   theorem min_flips_identity_right (c : Nat) :
-    min_flips 0 c c = 0 := sorry
-  
-  /-
-  info: 3
-  -/
-  -- #guard_msgs in
-  -- #eval min_flips 2 6 5
-  
-  /-
-  info: 1
-  -/
-  -- #guard_msgs in
-  -- #eval min_flips 4 2 7
-  
-  /-
-  info: 0
-  -/
-  -- #guard_msgs in
-  -- #eval min_flips 1 2 3
+    min_flips 0 c c = 0 :=
+  sorry
 
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
+  
+  /--
+  info: 3
+  -/
+  #guard_msgs in
+  #eval min_flips 2 6 5
+  
+  /--
+  info: 1
+  -/
+  #guard_msgs in
+  #eval min_flips 4 2 7
+  
+  /--
+  info: 0
+  -/
+  #guard_msgs in
+  #eval min_flips 1 2 3
 

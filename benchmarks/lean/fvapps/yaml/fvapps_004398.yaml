@@ -1,25 +1,25 @@
 vc-description: |-
   /-
   This kata is the second part of a series: [Neighbourhood kata collection](https://www.codewars.com/collections/5b2f4db591c746349d0000ce). If this one is to easy you can try out the harder Katas.;)
-  
+
   ___
   The neighbourhood of a cell (in a matrix) are cells that are near to it. There are two popular types:
   - The [Moore neighborhood](https://en.wikipedia.org/wiki/Moore_neighborhood) are eight cells which surround a given cell.
   - The [Von Neumann neighborhood](https://en.wikipedia.org/wiki/Von_Neumann_neighborhood) are four cells which share a border with the given cell.
-  
+
   ___
-  
+
   # Task
   Given a neighbourhood type (`"moore"` or `"von_neumann"`), a 2D matrix (a list of lists) and a pair of coordinates, return the list of neighbours of the given cell.
-  
+
   Notes:
   - The order of the elements in the output list is not important. 
   - If the input indexes are outside the matrix, return an empty list.
   - If the the matrix is empty, return an empty list.
   - Order of the indices: The first index should be applied for the outer/first matrix layer. The last index for the most inner/last layer. `coordinates = (m, n)` should be apllied like `mat[m][n]`
-  
+
   ___
-  
+
   ## Examples
   ```
   \ n   0    1    2    3    4
@@ -30,7 +30,7 @@ vc-description: |-
   3  | 15 | 16 | 17 | 18 | 19 |
   4  | 20 | 21 | 22 | 23 | 24 |
      --------------------------
-  
+
   get_neighborhood("moore", mat, (1,1)) == [0, 1, 2, 5, 7, 10, 11, 12]
   get_neighborhood("moore", mat, (0,0)) == [1, 6, 5]
   get_neighborhood("moore", mat, (4,2)) == [21, 16, 17, 18, 23]
@@ -39,22 +39,22 @@ vc-description: |-
   get_neighborhood("von_neumann", mat, (4,2)) == [21, 17, 23]
   ```
   ___
-  
+
   Translations are appreciated.^^
-  
+
   If you like chess take a look at [Chess Aesthetics](https://www.codewars.com/kata/5b574980578c6a6bac0000dc)
-  
+
   If you like puzzles and take a look at [Rubik's cube](https://www.codewars.com/kata/5b3bec086be5d8893000002e)
   -/
 
-vc-preamble: |-
+vc-preamble: |
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def get_neighbourhood (typ : String) (arr : List (List Int)) (coords : Int × Int) : List Int :=
     sorry
-  
+
   -- For non-empty valid arrays, moore neighborhood should have at most 8 neighbors
 
 vc-theorems: |-
@@ -65,9 +65,9 @@ vc-theorems: |-
     (h2 : y < (arr[x]'h1).length) :
     (get_neighbourhood "moore" arr (x,y)).length ≤ 8 :=
   sorry
-  
+
   -- For non-empty valid arrays, von Neumann neighborhood should have at most 4 neighbors
-  
+
   theorem von_neumann_neighborhood_size
     (arr : List (List Int))
     (x y : Nat)
@@ -75,25 +75,25 @@ vc-theorems: |-
     (h2 : y < (arr[x]'h1).length) :
     (get_neighbourhood "von_neumann" arr (x,y)).length ≤ 4 :=
   sorry
-  
+
   -- Empty array should return empty result
-  
+
   theorem empty_array_empty_result
     (typ : String)
     (coords : Int × Int) :
     get_neighbourhood typ [] coords = [] :=
   sorry
-  
+
   -- Array with empty inner list should return empty result
-  
+
   theorem empty_inner_list_empty_result
     (typ : String)
     (coords : Int × Int) :
     get_neighbourhood typ [[]] coords = [] :=
   sorry
-  
+
   -- Invalid coordinates should return empty result
-  
+
   theorem invalid_coords_empty_result
     (arr : List (List Int))
     (typ : String)
@@ -101,20 +101,20 @@ vc-theorems: |-
     (h : ¬(x < arr.length ∧ (arr[x]?.getD (List.nil)).length > y)) :
     get_neighbourhood typ arr (x,y) = [] :=
   sorry
-  
-  /-
-  info: sorted([0, 1, 2, 5, 7, 10, 11, 12])
-  -/
-  -- #guard_msgs in
-  -- #eval sorted get_neighbourhood("moore", matrix1, (1, 1))
-  
-  /-
-  info: sorted([1, 5])
-  -/
-  -- #guard_msgs in
-  -- #eval sorted get_neighbourhood("von_neumann", matrix2, (0, 0))
 
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+
+  /--
+  info: sorted([0, 1, 2, 5, 7, 10, 11, 12])
+  -/
+  #guard_msgs in
+  #eval sorted get_neighbourhood("moore", matrix1, (1, 1))
+
+  /--
+  info: sorted([1, 5])
+  -/
+  #guard_msgs in
+  #eval sorted get_neighbourhood("von_neumann", matrix2, (0, 0))
 

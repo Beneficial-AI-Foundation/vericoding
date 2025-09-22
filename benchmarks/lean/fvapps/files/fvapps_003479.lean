@@ -17,6 +17,3 @@ theorem empty_or_space_chars_is_whitespace (s: String)
   (h: s = "" ∨ (∀ c ∈ s.data, c = ' ' ∨ c = '\t' ∨ c = '\n' ∨ c = '\r')) :
   isWhitespace s = true := sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

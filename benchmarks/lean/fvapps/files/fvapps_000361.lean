@@ -21,25 +21,4 @@ theorem all_evens_max_component {nums : List Nat} (h : nums.all (fun n => n % 2 
 
 theorem single_prime_component_one (p : Nat) :
   largest_component_size [p] = 1 := sorry
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval largest_component_size [4, 6, 15, 35]
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval largest_component_size [20, 50, 9, 63]
-
-/-
-info: 8
--/
--- #guard_msgs in
--- #eval largest_component_size [2, 3, 6, 7, 4, 12, 21, 39]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

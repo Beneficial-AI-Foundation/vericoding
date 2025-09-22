@@ -32,6 +32,3 @@ theorem find_initial_numbers_positive_case (divisor iterations : Int)
   let (a, b) := find_initial_numbers divisor iterations
   a ≥ divisor ∧ b ≥ divisor := sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

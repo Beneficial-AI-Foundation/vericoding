@@ -24,25 +24,4 @@ theorem trigrams_no_spaces_in_grams (s : String) :
   let res := trigrams s
   let grams := stringToGrams res
   ∀ g ∈ grams, ¬ g.contains ' ' := sorry
-
-/-
-info: 'the he_ e_q _qu qui uic ick ck_ k_r _re red'
--/
--- #guard_msgs in
--- #eval trigrams "the quick red"
-
-/-
-info: ''
--/
--- #guard_msgs in
--- #eval trigrams "Hi"
-
-/-
-info: 'abc bc_ c_d _de def'
--/
--- #guard_msgs in
--- #eval trigrams "abc def"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

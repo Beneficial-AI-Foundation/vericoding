@@ -28,25 +28,4 @@ sorry
 theorem partitions_strictly_increasing {n₁ n₂ : Nat} (h₁ : n₁ > 0) (h₂ : n₂ > n₁) :
   partitions n₂ > partitions n₁ :=
 sorry
-
-/-
-info: 7
--/
--- #guard_msgs in
--- #eval partitions 5
-
-/-
-info: 5
--/
--- #guard_msgs in
--- #eval partitions 4
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval partitions 3
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

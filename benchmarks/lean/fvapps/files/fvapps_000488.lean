@@ -37,25 +37,4 @@ theorem min_number_operations_sum_differences (nums : List Nat) (h : nums.length
     (List.range (nums.length-1)).foldr 
       (fun i acc => acc + max (nums[i+1]! - nums[i]!) 0) 0 := by
   sorry
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval min_number_operations [1, 2, 3, 2, 1]
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval min_number_operations [3, 1, 1, 2]
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval min_number_operations [1, 1, 1, 1]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

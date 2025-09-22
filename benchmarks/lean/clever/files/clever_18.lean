@@ -41,9 +41,3 @@ theorem correctness
 := by
   sorry
 -- </vc-theorems>
-
--- #test implementation "aaa" "a" = 3
--- #test implementation "aaaa" "aa" = 3
--- #test implementation "" "a" = 0
--- #test implementation "a" "" = 1
--- #test implementation "a" "a" = 1

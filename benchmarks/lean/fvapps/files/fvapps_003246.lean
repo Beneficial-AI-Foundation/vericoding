@@ -42,25 +42,4 @@ theorem cut_ropes_min_decrease (arr : List Nat)
   (h : arr.length ≥ 2) :
   let result := cut_the_ropes arr
   ∀ i, i + 1 < result.length → result[i]! - result[i+1]! ≥ 1 := sorry
-
-/-
-info: expected1
--/
--- #guard_msgs in
--- #eval cut_the_ropes [3, 3, 2, 9, 7]
-
-/-
-info: expected2
--/
--- #guard_msgs in
--- #eval cut_the_ropes [1, 2, 3, 4, 3, 3, 2, 1]
-
-/-
-info: expected3
--/
--- #guard_msgs in
--- #eval cut_the_ropes [9, 9, 9, 9, 7]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

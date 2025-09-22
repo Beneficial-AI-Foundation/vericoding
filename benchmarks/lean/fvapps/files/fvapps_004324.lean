@@ -22,25 +22,4 @@ theorem snap_empty_piles :
   snap [] [] = 0 ∧ 
   (∀ c, isCard c → snap [c] [] = 0) ∧
   (∀ c, isCard c → snap [] [c] = 0) := sorry
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval snap flash_pile[:] turtle_pile[:]
-
-/-
-info: 6
--/
--- #guard_msgs in
--- #eval snap flash_pile[:] turtle_pile[:]
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval snap flash_pile[:] turtle_pile[:]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

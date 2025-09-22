@@ -28,5 +28,3 @@ theorem hasCloseElements_spec_satisfied (numbers : Array Int) (threshold : Int) 
     hasCloseElements_postcond numbers threshold (hasCloseElements numbers threshold h_precond) h_precond := by
   sorry
 -- </vc-theorems>
-
-def main : IO Unit := return ()

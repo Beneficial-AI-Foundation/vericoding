@@ -40,15 +40,16 @@ vc-preamble: |-
   | [_] => true
   | x :: y :: xs => x ≤ y ∧ sorted (y :: xs)
   
-  def pancakeSort : List Nat → List Nat
-  | xs => sorry
+  def applyFlips : List Nat → List Nat → List Nat
+  | xs, [] => xs
+  | xs, k::ks => applyFlips ((xs.take k).reverse ++ xs.drop k) ks
 
 vc-helpers: |-
 
 vc-definitions: |-
-  def applyFlips : List Nat → List Nat → List Nat
-  | xs, [] => xs
-  | xs, k::ks => applyFlips ((xs.take k).reverse ++ xs.drop k) ks
+  def pancakeSort : List Nat → List Nat
+  | xs =>
+  sorry
 
 vc-theorems: |-
   theorem pancakeSort_produces_valid_flips (arr : List Nat) :
@@ -67,14 +68,14 @@ vc-theorems: |-
     arr = arr.reverse →
     (applyFlips arr (pancakeSort arr)).sorted :=
   sorry
-  
-  /-
-  info: 0
-  -/
-  -- #guard_msgs in
-  -- #eval len pancake_sort(arr2)
 
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
+  
+  /--
+  info: 0
+  -/
+  #guard_msgs in
+  #eval len pancake_sort(arr2)
 

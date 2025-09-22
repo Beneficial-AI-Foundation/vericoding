@@ -1,12 +1,13 @@
 -- <vc-preamble>
-def sumOfDivisors (n : Int) : Int :=
-  sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
+def sumOfDivisors (n : Int) : Int :=
+  sorry
+
 def abundant (n : Int) : Option (List (List Int)) :=
   sorry
 -- </vc-definitions>
@@ -14,14 +15,14 @@ def abundant (n : Int) : Option (List (List Int)) :=
 -- <vc-theorems>
 theorem abundant_output_structure
   (h : Int)
-  (h_ge : h ≥ 12)  -- 12 is smallest abundant number
+  (h_ge : h ≥ 12)
   (h_le : h ≤ 1000)
   (result : List (List Int))
   (h_result : abundant h = some result) :
-  result.length = 2 ∧ 
-  ∀ sublist ∈ result, sublist.length = 1 ∧ 
+  result.length = 2 ∧
+  ∀ sublist ∈ result, sublist.length = 1 ∧
   ∀ sublist ∈ result, ∀ x ∈ sublist, x ≥ 0 :=
-  sorry
+sorry
 
 theorem abundant_properties
   (h : Int)
@@ -31,12 +32,9 @@ theorem abundant_properties
   (h_result : abundant h = some result)
   (n : Int := (result.get! 0).get! 0)
   (diff : Int := (result.get! 1).get! 0) :
-  n ≤ h ∧ 
+  n ≤ h ∧
   n > 0 ∧
   sumOfDivisors n > n ∧
   sumOfDivisors n - n = diff :=
-  sorry
+sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

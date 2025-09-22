@@ -32,25 +32,4 @@ theorem solve_permutation_edge_case_2 :
 
 theorem solve_permutation_edge_case_3 :
   (solve_permutation 3 [[0, 2, 2], [1, 0, 1], [1, 1, 0]]).sort = [1, 2, 3] := sorry
-
-/-
-info: [1, 2]
--/
--- #guard_msgs in
--- #eval sorted solve_permutation(n1, a1)
-
-/-
-info: list(range(1, n2 + 1))
--/
--- #guard_msgs in
--- #eval sorted solve_permutation(n2, a2)
-
-/-
-info: list(range(1, n3 + 1))
--/
--- #guard_msgs in
--- #eval sorted solve_permutation(n3, a3)
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: unguarded

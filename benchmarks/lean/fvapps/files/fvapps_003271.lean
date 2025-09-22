@@ -21,25 +21,4 @@ theorem approx_root_bounds (n : Nat) (h : n ≤ 1000000) :
 
 theorem approx_root_precision (n : Nat) (h : n ≤ 1000000) :
   (approx_root n - approx_root n).abs < 0.00001 := sorry
-
-/-
-info: 20
--/
--- #guard_msgs in
--- #eval approx_root 400
-
-/-
-info: 20.02
--/
--- #guard_msgs in
--- #eval approx_root 401
-
-/-
-info: 1.33
--/
--- #guard_msgs in
--- #eval approx_root 2
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

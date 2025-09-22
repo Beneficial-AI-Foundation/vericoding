@@ -24,25 +24,4 @@ theorem hofstadter_recurrence (n : Nat) (h : n ≥ 3) :
 
 theorem hofstadter_deterministic (n : Nat) (h : n > 0) :
   ∀ x y, hofstadter_Q n = x → hofstadter_Q n = y → x = y := sorry
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval hofstadter_Q 1
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval hofstadter_Q 3
-
-/-
-info: 5
--/
--- #guard_msgs in
--- #eval hofstadter_Q 7
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

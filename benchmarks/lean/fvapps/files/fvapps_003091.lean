@@ -17,37 +17,4 @@ theorem letter_matches_ascii (s : String) (h: s.length = 1):
 
 theorem letters_are_letters :
   ∀ c : Char, c.isAlpha → is_letter c.toString := sorry
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval is_letter ""
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval is_letter "a"
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval is_letter "X"
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval is_letter "7"
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval is_letter "ab"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

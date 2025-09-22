@@ -1,12 +1,13 @@
 -- <vc-preamble>
-def calc_max_moves (n : Nat) : Nat :=
-  sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
+def calc_max_moves (n : Nat) : Nat :=
+  sorry
+
 def isqrt (n : Nat) : Nat :=
   sorry
 -- </vc-definitions>
@@ -14,30 +15,9 @@ def isqrt (n : Nat) : Nat :=
 -- <vc-theorems>
 theorem calc_max_moves_non_negative (x : Nat) :
   calc_max_moves x ≥ 0 :=
-  sorry
+sorry
 
 theorem calc_max_moves_monotonic (x : Nat) :
   x > 0 → calc_max_moves x ≥ calc_max_moves (x-1) :=
-  sorry
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval calc_max_moves 3
-
-/-
-info: 5
--/
--- #guard_msgs in
--- #eval calc_max_moves 8
-
-/-
-info: 6
--/
--- #guard_msgs in
--- #eval calc_max_moves 9
+sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

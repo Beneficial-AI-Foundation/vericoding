@@ -29,10 +29,10 @@ vc-helpers: |
 
 vc-spec: |-
   fn fmax(x: Vec<f32>, y: Vec<f32>) -> (result: Vec<f32>)
-      requires x.len() == y.len(),
+      requires x@.len() == y@.len(),
       ensures 
-          result.len() == x.len(),
-          forall|i: int| 0 <= i < result.len() as int ==> {
+          result@.len() == x@.len(),
+          forall|i: int| 0 <= i < result@.len() ==> {
               /* Core NaN handling behavior */
               (!is_nan(x@[i]) && !is_nan(y@[i])) ==> 
                   (result@[i] == float_max(x@[i], y@[i])) &&

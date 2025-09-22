@@ -28,37 +28,4 @@ theorem pattern_output_structure :
   (∀ i : Nat, i < lines.length → 
     let line := lines[i]!
     String.toNat! (toString (line.get! 0)) = line.length) := sorry
-
-/-
-info: '1'
--/
--- #guard_msgs in
--- #eval pattern 1
-
-/-
-info: '1\n22'
--/
--- #guard_msgs in
--- #eval pattern 2
-
-/-
-info: '1\n22\n333\n4444\n55555'
--/
--- #guard_msgs in
--- #eval pattern 5
-
-/-
-info: ''
--/
--- #guard_msgs in
--- #eval pattern 0
-
-/-
-info: ''
--/
--- #guard_msgs in
--- #eval pattern -1
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

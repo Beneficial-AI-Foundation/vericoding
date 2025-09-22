@@ -27,25 +27,4 @@ theorem ties_return_first (numbers : List Int)
   let maxLen := (toString result).length 
   numbers.find? (fun x => (toString x).length = maxLen) = some result :=
   sorry
-
-/-
-info: 100
--/
--- #guard_msgs in
--- #eval find_longest [1, 10, 100]
-
-/-
-info: 9000
--/
--- #guard_msgs in
--- #eval find_longest [9000, 8, 800]
-
-/-
-info: 900
--/
--- #guard_msgs in
--- #eval find_longest [8, 900, 500]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

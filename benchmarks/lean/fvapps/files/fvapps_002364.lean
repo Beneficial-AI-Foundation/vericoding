@@ -27,25 +27,4 @@ theorem judge_circle_balanced (n : Nat) (s : String) :
   -- Assuming s consists of n U's, n D's, n L's, and n R's in some order
   (s.length = 4 * n) → judge_circle s = true :=
 sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval judge_circle "UD"
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval judge_circle "LL"
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval judge_circle "URDL"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

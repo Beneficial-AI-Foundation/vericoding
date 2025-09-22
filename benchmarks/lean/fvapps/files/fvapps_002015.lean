@@ -1,17 +1,18 @@
 -- <vc-preamble>
-def Card := Nat 
+def Card := Nat
+
 def Pile := List Card
-
-def Game := List (Nat × Pile)
-
-def listSum (l : List Nat) : Nat :=
-  sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
+def Game := List (Nat × Pile)
+
+def listSum (l : List Nat) : Nat :=
+  sorry
+
 def solve_card_game (g : Game) : Nat × Nat :=
   sorry
 -- </vc-definitions>
@@ -36,25 +37,4 @@ theorem first_pile_split_correctly (g : Game) (h : g ≠ []) :
   let (a, b) := solve_card_game g
   a + b = first_sum + rest_sum :=
 sorry
-
-/-
-info: (101, 10)
--/
--- #guard_msgs in
--- #eval solve_card_game [[1, 100], [2, 1, 10]]
-
-/-
-info: (30, 15)
--/
--- #guard_msgs in
--- #eval solve_card_game [[9, 2, 8, 6, 5, 9, 4, 7, 1, 3]]
-
-/-
-info: (18, 18)
--/
--- #guard_msgs in
--- #eval solve_card_game [[3, 1, 3, 2], [3, 5, 4, 6], [2, 8, 7]]
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: unguarded

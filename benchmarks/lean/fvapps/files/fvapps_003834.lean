@@ -25,25 +25,4 @@ theorem sort_my_string_splits_odd_indexed (s : String) (h : s.length > 1) :
   let parts := result.split (fun x => decide (x = ' '))
   parts.length > 1 → 
   (parts.get? 1).isSome := sorry
-
-/-
-info: 'CdWr oeas'
--/
--- #guard_msgs in
--- #eval sort_my_string "CodeWars"
-
-/-
-info: 'ACE BDF'
--/
--- #guard_msgs in
--- #eval sort_my_string "ABCDEF"
-
-/-
-info: 'Wleclgltihuebredrf ofsheesenasnegrof'
--/
--- #guard_msgs in
--- #eval sort_my_string "Wolfeschlegelsteinhausenbergerdorff"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

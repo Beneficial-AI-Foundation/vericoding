@@ -38,25 +38,4 @@ theorem eventual_safe_nodes_singleton_empty :
 
 theorem eventual_safe_nodes_singleton_self_loop :
   eventual_safe_nodes [[0]] = [] := sorry
-
-/-
-info: [2, 4, 5, 6]
--/
--- #guard_msgs in
--- #eval eventual_safe_nodes [[1, 2], [2, 3], [5], [0], [5], [], []]
-
-/-
-info: [0, 1, 2, 3, 4]
--/
--- #guard_msgs in
--- #eval eventual_safe_nodes [[], [0, 2, 3, 4], [3], [4], []]
-
-/-
-info: [4]
--/
--- #guard_msgs in
--- #eval eventual_safe_nodes [[1, 2, 3, 4], [1, 2], [3, 4], [0, 4], []]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

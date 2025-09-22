@@ -31,25 +31,4 @@ theorem binary_array (nums : List Int) (h1 : nums.length ≥ 2)
   let result := find_special_integer nums
   result = 0 ∨ result = 1 := by
 sorry
-
-/-
-info: 6
--/
--- #guard_msgs in
--- #eval find_special_integer [1, 2, 2, 6, 6, 6, 6, 7, 10]
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval find_special_integer [1, 1, 1, 2, 3]
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval find_special_integer [1, 1]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

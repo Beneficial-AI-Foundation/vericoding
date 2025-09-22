@@ -35,25 +35,4 @@ theorem single_position_reachable
   {t: String} :
   check_reachable t [(1, 1, 1)] = ["Yes"] :=
 sorry
-
-/-
-info: ['Yes', 'Yes', 'No']
--/
--- #guard_msgs in
--- #eval check_reachable "11011" [(1, 3, 3), (1, 4, 2), (1, 2, 3)]
-
-/-
-info: ['Yes']
--/
--- #guard_msgs in
--- #eval check_reachable "0" [(1, 1, 1)]
-
-/-
-info: ['Yes', 'Yes', 'No']
--/
--- #guard_msgs in
--- #eval check_reachable "010" [(1, 3, 1), (1, 3, 1), (3, 2, 1)]
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: unguarded

@@ -22,17 +22,20 @@ fn polyval3d(
         forall|i: int, j: int| 0 <= i < c@.len() && 0 <= j < c@[i].len() ==> c@[i][j].len() > 0,
     ensures 
         result@.len() == x@.len(),
-        forall|p: int| 0 <= p < x@.len() ==> 
+        forall|p: int| 0 <= p < result@.len() ==> 
             #[trigger] result@[p] == result@[p] &&
             (c@.len() == 1 && c@[0].len() == 1 && c@[0][0].len() == 1 ==> 
              result@[p] == c@[0][0][0])
 // </vc-spec>
 // <vc-code>
 {
+    // impl-start
     assume(false);
     unreached()
+    // impl-end
 }
 // </vc-code>
+
 
 }
 fn main() {}

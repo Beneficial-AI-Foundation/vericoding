@@ -62,25 +62,4 @@ theorem calculate_min_cost_monotonicity
   let m := 1
   calculate_min_cost n arr m offers ≤ sum arr :=
   sorry
-
-/-
-info: 6
--/
--- #guard_msgs in
--- #eval calculate_min_cost 4 [1, 2, 3, 4] 3 [[2, 1, 2], [2, 3, 4], [3, 1, 2, 3]]
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval calculate_min_cost 3 [1, 2, 3] 1 [[2, 1, 2]]
-
-/-
-info: 10
--/
--- #guard_msgs in
--- #eval calculate_min_cost 2 [5, 10] 1 [[2, 1, 2]]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

@@ -15,11 +15,11 @@ fn polysub(c1: Vec<i8>, c2: Vec<i8>) -> (result: Vec<i8>)
             if i < c1.len() && i < c2.len() {
                 result[i] as int == c1[i] as int - c2[i] as int
             } else if i < c1.len() && i >= c2.len() {
-                result[i] as int == c1[i] as int
+                result[i] == c1[i]
             } else if i >= c1.len() && i < c2.len() {
                 result[i] as int == 0 - c2[i] as int
             } else {
-                result[i] as int == 0
+                result[i] == 0
             }
         }
 // </vc-spec>

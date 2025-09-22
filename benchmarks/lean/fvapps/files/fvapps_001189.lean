@@ -22,6 +22,3 @@ theorem calc_digit_sums_order_independent {nums1 nums2 : List Nat} :
   List.Perm nums1 nums2 →
   List.Perm (calc_digit_sums nums1) (calc_digit_sums nums2) := sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

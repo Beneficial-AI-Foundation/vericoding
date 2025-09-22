@@ -33,25 +33,4 @@ theorem decode_empty_string :
 
 theorem decode_singleton_space :
   decode " " = " " := sorry
-
-/-
-info: 'hello world'
--/
--- #guard_msgs in
--- #eval decode ".... . .-.. .-.. ---  .-- --- .-. .-.. -.."
-
-/-
-info: '1st and 2nd'
--/
--- #guard_msgs in
--- #eval decode ".---- ... -  .- -. -..  ..--- -. -.."
-
-/-
-info: ''
--/
--- #guard_msgs in
--- #eval decode ""
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

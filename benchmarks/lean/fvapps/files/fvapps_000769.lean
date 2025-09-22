@@ -18,6 +18,3 @@ theorem solve_n_cube_base_case {m : Nat} (hm : m ≥ 2) (hm2 : m ≤ 5) :
   solve_n_cube m 2 = 1 :=
 sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

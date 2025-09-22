@@ -19,6 +19,3 @@ theorem celsius_to_romer_conversion_formula (celsius : Float)
   let expected := (celsius * 21 / 40) + 7.5
   (romer - expected).abs < 0.0000000001 := by sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

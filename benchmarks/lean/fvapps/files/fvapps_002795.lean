@@ -1,12 +1,13 @@
 -- <vc-preamble>
-def sqrt (n : Nat) : Nat :=
-  sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
+def sqrt (n : Nat) : Nat :=
+  sorry
+
 def num_of_open_lockers (n : Nat) : Nat :=
   sorry
 -- </vc-definitions>
@@ -32,28 +33,7 @@ theorem num_open_lockers_zero :
   num_of_open_lockers 0 = 0 :=
 sorry
 
-theorem num_open_lockers_one : 
+theorem num_open_lockers_one :
   num_of_open_lockers 1 = 1 :=
 sorry
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval num_of_open_lockers 0
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval num_of_open_lockers 4
-
-/-
-info: 22
--/
--- #guard_msgs in
--- #eval num_of_open_lockers 500
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

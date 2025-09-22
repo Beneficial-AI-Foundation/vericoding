@@ -19,25 +19,4 @@ theorem no_exclaim_question (s : String)
 
 theorem result_only_valid_chars (s : String) :
   ∀ c ∈ (find s).data, c = '!' ∨ c = '?' := sorry
-
-/-
-info: ''
--/
--- #guard_msgs in
--- #eval find "!!"
-
-/-
-info: '!??'
--/
--- #guard_msgs in
--- #eval find "!??"
-
-/-
-info: '!!???'
--/
--- #guard_msgs in
--- #eval find "!!???!????"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

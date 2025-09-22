@@ -34,31 +34,4 @@ theorem caesar_empty_and_whitespace_1 :
 
 theorem caesar_empty_and_whitespace_2 :
   caesar_crypto_encode " \t\n" 1 = "" := sorry
-
-/-
-info: 'eBIIL TLOIA!'
--/
--- #guard_msgs in
--- #eval caesar_crypto_encode "Hello world!" 127
-
-/-
-info: ''
--/
--- #guard_msgs in
--- #eval caesar_crypto_encode "" 10
-
-/-
-info: ''
--/
--- #guard_msgs in
--- #eval caesar_crypto_encode "   " 10
-
-/-
-info: 'Hello world!'
--/
--- #guard_msgs in
--- #eval caesar_crypto_encode "Hello world!" 0
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

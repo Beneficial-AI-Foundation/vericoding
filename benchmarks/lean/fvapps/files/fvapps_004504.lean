@@ -23,25 +23,4 @@ theorem to_acronym_empty_input (s: String)
   (h: s.trim = "") : 
   to_acronym s = ""
 := sorry
-
-/-
-info: 'CW'
--/
--- #guard_msgs in
--- #eval to_acronym "Code wars"
-
-/-
-info: 'HW'
--/
--- #guard_msgs in
--- #eval to_acronym "Hello world"
-
-/-
-info: 'PIA'
--/
--- #guard_msgs in
--- #eval to_acronym "Python is awesome"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

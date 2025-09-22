@@ -34,25 +34,4 @@ theorem num_to_ip_conversion
 theorem zero_conversions :
   numberAndIPaddress "0.0.0.0" = "0" ∧
   numberAndIPaddress "0" = "0.0.0.0" := sorry
-
-/-
-info: '167773121'
--/
--- #guard_msgs in
--- #eval numberAndIPaddress "10.0.3.193"
-
-/-
-info: '10.3.3.193'
--/
--- #guard_msgs in
--- #eval numberAndIPaddress "167969729"
-
-/-
-info: '0'
--/
--- #guard_msgs in
--- #eval numberAndIPaddress "0.0.0.0"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

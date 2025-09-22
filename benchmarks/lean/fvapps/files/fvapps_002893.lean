@@ -30,25 +30,4 @@ theorem palindrome_stays_after_rotation (s : String) :
   solve s = true →
   let rotated := (s.drop 1) ++ (s.take 1)
   solve rotated = true := sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval solve "4455"
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval solve "zazcbaabc"
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval solve "aaab"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

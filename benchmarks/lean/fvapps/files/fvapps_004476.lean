@@ -28,25 +28,4 @@ theorem prime_divisibility {n : Nat} (h : n ≥ 2) (h2 : n ≤ 100) :
 
 theorem composite_divisibility {n : Nat} (h : n ≥ 2) (h2 : n ≤ 100) :
   prime n = false → ∃ i : Nat, 2 ≤ i ∧ i < n ∧ n % i = 0 := sorry
-
-/-
-info: [97, 101]
--/
--- #guard_msgs in
--- #eval prime_bef_aft 100
-
-/-
-info: [89, 101]
--/
--- #guard_msgs in
--- #eval prime_bef_aft 97
-
-/-
-info: [97, 103]
--/
--- #guard_msgs in
--- #eval prime_bef_aft 101
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

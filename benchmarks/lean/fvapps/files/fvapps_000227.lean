@@ -25,25 +25,4 @@ theorem find_first_missing_positive_continuity
     let result := find_first_missing_positive xs
     ∀ i : Int, 1 ≤ i ∧ i < result → i ∈ xs :=
   sorry
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval find_first_missing_positive [1, 2, 0]
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval find_first_missing_positive [3, 4, -1, 1]
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval find_first_missing_positive [7, 8, 9, 11, 12]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

@@ -56,25 +56,4 @@ theorem difference_bound {n : Nat} (h : n > 1) :
   let diff := count_numbers_with_repeated_digits n - count_numbers_with_repeated_digits (n-1)
   diff ≤ 1 :=
   sorry
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval count_numbers_with_repeated_digits 20
-
-/-
-info: 10
--/
--- #guard_msgs in
--- #eval count_numbers_with_repeated_digits 100
-
-/-
-info: 262
--/
--- #guard_msgs in
--- #eval count_numbers_with_repeated_digits 1000
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

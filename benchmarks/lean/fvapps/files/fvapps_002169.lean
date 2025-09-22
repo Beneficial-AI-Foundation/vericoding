@@ -27,25 +27,4 @@ theorem solve_city_division_bounds :
   edges.length = m →
   solve_city_division n m edges ≥ -1 :=
 sorry
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval solve_city_division 5 5 [(1, 2), (1, 3), (3, 4), (3, 5), (4, 5)]
-
-/-
-info: -1
--/
--- #guard_msgs in
--- #eval solve_city_division 5 1 [(1, 2)]
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval solve_city_division 4 3 [(1, 2), (1, 3), (2, 3)]
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: guarded_and_plausible

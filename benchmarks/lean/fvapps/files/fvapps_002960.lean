@@ -22,25 +22,4 @@ theorem divisible_by_400_is_leap {year : Int} (h : year % 400 = 0) :
 
 theorem divisible_by_4_not_100_is_leap {year : Int} (h1 : year % 4 = 0) (h2 : year % 100 ≠ 0) :
   yearDays year = s!"{year} has 366 days" := sorry
-
-/-
-info: '2000 has 366 days'
--/
--- #guard_msgs in
--- #eval year_days 2000
-
-/-
-info: '1974 has 365 days'
--/
--- #guard_msgs in
--- #eval year_days 1974
-
-/-
-info: '-64 has 366 days'
--/
--- #guard_msgs in
--- #eval year_days -64
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

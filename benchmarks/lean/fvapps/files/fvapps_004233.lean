@@ -36,25 +36,4 @@ theorem print_number_middle_structure (n : Nat) (c : Char) :
 
 theorem print_number_char_independence (n : Nat) :
   (print_number n '*').replace (String.mk ['*']) "#" = print_number n '#' := sorry
-
-/-
-info: expected
--/
--- #guard_msgs in
--- #eval print_number 99 "$"
-
-/-
-info: expected
--/
--- #guard_msgs in
--- #eval print_number 12345 "*"
-
-/-
-info: expected
--/
--- #guard_msgs in
--- #eval print_number 67890 "@"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

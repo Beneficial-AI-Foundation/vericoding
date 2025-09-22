@@ -1,15 +1,16 @@
 -- <vc-preamble>
-def factorial (n : Nat) : Nat :=
-  sorry
-
-def countTrailingZeroes (n : Nat) : Nat := 
-  sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
+def factorial (n : Nat) : Nat :=
+  sorry
+
+def countTrailingZeroes (n : Nat) : Nat :=
+  sorry
+
 def countActualZeros (n : Nat) : Nat :=
   sorry
 -- </vc-definitions>
@@ -34,25 +35,4 @@ theorem count_zero :
 theorem count_one :
   countTrailingZeroes 1 = 0 := by
   sorry
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval count_trailing_zeroes 3
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval count_trailing_zeroes 5
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval count_trailing_zeroes 10
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

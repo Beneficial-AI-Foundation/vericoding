@@ -45,6 +45,3 @@ theorem find_borrowed_books_length
   (find_borrowed_books n books k positions).length = k :=
 sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

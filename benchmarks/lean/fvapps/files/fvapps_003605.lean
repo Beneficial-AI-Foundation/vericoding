@@ -23,25 +23,4 @@ theorem cardsAndPero_duplicate_card :
 
 theorem cardsAndPero_all_suits :
   cardsAndPero "P01K02H03T04" = [12,12,12,12] := sorry
-
-/-
-info: [12, 12, 11, 13]
--/
--- #guard_msgs in
--- #eval cards_and_pero "P01K02H03H04"
-
-/-
-info: [-1, -1, -1, -1]
--/
--- #guard_msgs in
--- #eval cards_and_pero "H02H10P11H02"
-
-/-
-info: [12, 12, 12, 12]
--/
--- #guard_msgs in
--- #eval cards_and_pero "P10K10H10T01"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

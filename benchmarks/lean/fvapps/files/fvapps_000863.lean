@@ -36,6 +36,3 @@ theorem pattern_equals_keyword_bound (keyword : String) (queries : List Nat)
   r ≤ q / keyword.length + 1 :=
   sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

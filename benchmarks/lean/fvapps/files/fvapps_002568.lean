@@ -30,25 +30,4 @@ theorem zero_lines_zero_score (arr : List Nat)
 theorem score_deterministic (arr : List Nat)
   (h : ∀ x ∈ arr, x ≤ 4) :
   get_score arr = get_score arr := sorry
-
-/-
-info: 1640
--/
--- #guard_msgs in
--- #eval get_score [0, 1, 2, 3, 4]
-
-/-
-info: 620
--/
--- #guard_msgs in
--- #eval get_score [0, 1, 1, 3, 0, 2, 1, 2]
-
-/-
-info: 3300
--/
--- #guard_msgs in
--- #eval get_score [2, 0, 4, 2, 2, 3, 0, 0, 3, 3]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

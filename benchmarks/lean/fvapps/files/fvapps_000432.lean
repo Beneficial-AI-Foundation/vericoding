@@ -32,25 +32,4 @@ theorem result_is_minimal (grid : List (List Nat))
   (h3 : ∀ row ∈ grid, row.length = grid.length)
   (h4 : minSwaps grid ≥ 0) :
   minSwaps grid ≤ (grid.length * (grid.length - 1)) / 2 := sorry
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval minSwaps [[0, 0, 1], [1, 1, 0], [1, 0, 0]]
-
-/-
-info: -1
--/
--- #guard_msgs in
--- #eval minSwaps [[0, 1, 1, 0], [0, 1, 1, 0], [0, 1, 1, 0], [0, 1, 1, 0]]
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval minSwaps [[1, 0, 0], [1, 1, 0], [1, 1, 1]]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

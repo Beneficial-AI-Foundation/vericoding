@@ -29,25 +29,4 @@ theorem exact_multiple_works {n m : Nat} (h1 : n > 0) (h2 : m > 1) :
 theorem non_divisible_fails {n k offset : Nat} 
   (h1 : n > 1) (h2 : offset > 0) (h3 : offset < n) :
   canDistributePizza n (n * k + offset) = "NO" := sorry
-
-/-
-info: 'YES'
--/
--- #guard_msgs in
--- #eval can_distribute_pizza 10 20
-
-/-
-info: 'NO'
--/
--- #guard_msgs in
--- #eval can_distribute_pizza 12 5
-
-/-
-info: 'YES'
--/
--- #guard_msgs in
--- #eval can_distribute_pizza 4 8
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

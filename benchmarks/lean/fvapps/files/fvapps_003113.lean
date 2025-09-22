@@ -27,25 +27,4 @@ theorem solve_empty : solve "" = 0 := sorry
 
 theorem solve_single (c : Char) :
   solve (String.mk [c]) = 0 := sorry
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval solve "abcd"
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval solve "abcda"
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval solve "abcdabc"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

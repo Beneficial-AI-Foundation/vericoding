@@ -32,25 +32,4 @@ theorem merge_arrays_self_idempotent (a : List Int) (h : isSorted a) :
 theorem merge_arrays_empty_identity (a : List Int) (h : isSorted a) :
   mergeArrays a [] = (a.toArray.qsort (· ≤ ·)).toList ∧ 
   mergeArrays [] a = (a.toArray.qsort (· ≤ ·)).toList := sorry
-
-/-
-info: [1, 2, 3, 4, 5, 6]
--/
--- #guard_msgs in
--- #eval merge_arrays #[1, 3, 5] #[2, 4, 6]
-
-/-
-info: [2, 4, 6, 8]
--/
--- #guard_msgs in
--- #eval merge_arrays #[2, 4, 8] #[2, 4, 6]
-
-/-
-info: [1, 2, 3]
--/
--- #guard_msgs in
--- #eval merge_arrays #[1, 2, 3] #[]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

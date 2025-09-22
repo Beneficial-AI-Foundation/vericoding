@@ -23,6 +23,3 @@ theorem matrix_multiply_identity (n : Nat) (A : List (List Int)) :
   let I := List.replicate n (List.replicate n 0) -- identity matrix
   matrix_multiply n A I = A := sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

@@ -28,5 +28,3 @@ theorem rollingMax_spec_satisfied (numbers : Array Int) (h_precond : rollingMax_
     rollingMax_postcond numbers (rollingMax numbers h_precond) h_precond := by
   sorry
 -- </vc-theorems>
-
-def main : IO Unit := pure ()

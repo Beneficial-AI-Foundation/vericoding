@@ -33,25 +33,4 @@ sorry
 theorem perfect_square_pairs_zero_zero :
   find_perfect_square_pairs 0 0 = 0 :=
 sorry
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval find_perfect_square_pairs 4 4
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval find_perfect_square_pairs 2 2
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval find_perfect_square_pairs 5 5
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

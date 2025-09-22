@@ -22,25 +22,4 @@ theorem string_expansion_fixed_cases :
   (string_expansion "3D2a5d2f" = "DDDaadddddff") ∧
   (string_expansion "0d0a" = "") ∧
   (string_expansion "" = "") := sorry
-
-/-
-info: 'DDDaadddddff'
--/
--- #guard_msgs in
--- #eval string_expansion "3D2a5d2f"
-
-/-
-info: 'aaabbbccc'
--/
--- #guard_msgs in
--- #eval string_expansion "3abc"
-
-/-
-info: ''
--/
--- #guard_msgs in
--- #eval string_expansion ""
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

@@ -23,25 +23,4 @@ theorem countNumbersWithUniqueDigits_zero :
 
 theorem countNumbersWithUniqueDigits_one :
   countNumbersWithUniqueDigits 1 = 10 := sorry
-
-/-
-info: 91
--/
--- #guard_msgs in
--- #eval count_numbers_with_unique_digits 2
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval count_numbers_with_unique_digits 0
-
-/-
-info: 10
--/
--- #guard_msgs in
--- #eval count_numbers_with_unique_digits 1
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

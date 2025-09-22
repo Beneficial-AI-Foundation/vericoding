@@ -39,6 +39,3 @@ theorem correctness
 := by
   sorry
 -- </vc-theorems>
-
--- #test implementation [1, 4, 3, 34, 653, 2, 5] [5, 7, 1, 5, 9, 653, 121] = [1, 5, 653]
--- #test implementation [5, 3, 2, 8] [3, 2] = [2, 3]

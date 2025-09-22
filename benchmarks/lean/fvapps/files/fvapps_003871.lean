@@ -27,25 +27,4 @@ theorem reverse_properties {arr : List Int} (h : arr.length ≥ 2) :
   (forward = 2 → backward = 4) ∧
   (forward = 5 → backward = 5) :=
 sorry
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval sequence_classifier [3, 5, 8, 1, 14, 3]
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval sequence_classifier [3, 5, 8, 9, 14, 23]
-
-/-
-info: 5
--/
--- #guard_msgs in
--- #eval sequence_classifier [8, 8, 8, 8, 8, 8]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

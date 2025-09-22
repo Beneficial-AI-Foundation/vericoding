@@ -22,6 +22,3 @@ theorem basic_acronym_replacement :
     result = (acronym_buster "EOD").toLower ∧ 
     (∀ c ∈ "the end of the day".data, result.contains c) := by sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

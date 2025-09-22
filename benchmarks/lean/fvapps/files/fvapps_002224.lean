@@ -29,6 +29,3 @@ theorem first_value_at_most_n (n m : Nat) (lr_pairs : List (Nat × Nat)) :
 theorem empty_input_produces_zeros (m : Nat) :
   solve_train_souvenirs 0 m [] = List.replicate m 0 := sorry
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: guarded

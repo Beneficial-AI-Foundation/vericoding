@@ -17,6 +17,3 @@ theorem rangoli_edge_cases (n: Nat) (h: n = 1 ∨ n = 26):
   result.length > 0 ∧
   (result.data.filter (· = '\n')).length = 2*n-2 := sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

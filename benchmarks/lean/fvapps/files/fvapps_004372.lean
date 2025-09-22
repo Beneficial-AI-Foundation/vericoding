@@ -21,25 +21,4 @@ theorem single_digit_fixed_point (n : Nat) :
 theorem single_digit_identity (n : Nat) (h : n ≤ 9) :
   single_digit n = n :=
   sorry
-
-/-
-info: 5
--/
--- #guard_msgs in
--- #eval single_digit 5
-
-/-
-info: 8
--/
--- #guard_msgs in
--- #eval single_digit 999
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval single_digit 1234444123
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

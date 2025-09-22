@@ -36,6 +36,3 @@ theorem max_moves
             pos.get ⟨1⟩ ∈ ['1', '2', '3', '4', '5', '6', '7', '8']) :
   (possible_positions pos).length ≤ 8 := sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

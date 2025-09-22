@@ -23,25 +23,4 @@ theorem find_mult10_SF_positive (n : Nat)
 
 theorem find_mult10_SF_first_value :
   find_mult10_SF 1 = 60 := sorry
-
-/-
-info: 60
--/
--- #guard_msgs in
--- #eval find_mult10_SF 1
-
-/-
-info: 70080
--/
--- #guard_msgs in
--- #eval find_mult10_SF 2
-
-/-
-info: 90700800
--/
--- #guard_msgs in
--- #eval find_mult10_SF 3
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

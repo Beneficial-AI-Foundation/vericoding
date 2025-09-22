@@ -17,13 +17,4 @@ theorem hello_world_is_string (s : String := hello_world) :
 
 theorem hello_world_non_empty :
   hello_world.length > 0 := by sorry
-
-/-
-info: 'Hello, World!'
--/
--- #guard_msgs in
--- #eval hello_world
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

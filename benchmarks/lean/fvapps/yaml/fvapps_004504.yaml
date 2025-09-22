@@ -1,22 +1,22 @@
 vc-description: |-
   /-
   Write function toAcronym which takes a string and make an acronym of it.
-  
+
   Rule of making acronym in this kata:
-  
+
   1. split string to words by space char
   2. take every first letter from word in given string
   3. uppercase it
   4. join them toghether
-  
+
   Eg:
-  
+
   Code wars -> C, w -> C W -> CW
   -/
 
-vc-preamble: |-
+vc-preamble: |
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def to_acronym (s: String) : String :=
@@ -31,31 +31,31 @@ vc-theorems: |-
     (∀ c ∈ acronym.data, c.isUpper) ∧                 -- All chars uppercase
     acronym.data = words.map (λ w => w.front.toUpper) -- First letters match
   := sorry
-  
+
   theorem to_acronym_empty_input (s: String)
     (h: s.trim = "") : 
     to_acronym s = ""
   := sorry
-  
-  /-
-  info: 'CW'
-  -/
-  -- #guard_msgs in
-  -- #eval to_acronym "Code wars"
-  
-  /-
-  info: 'HW'
-  -/
-  -- #guard_msgs in
-  -- #eval to_acronym "Hello world"
-  
-  /-
-  info: 'PIA'
-  -/
-  -- #guard_msgs in
-  -- #eval to_acronym "Python is awesome"
 
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+
+  /--
+  info: 'CW'
+  -/
+  #guard_msgs in
+  #eval to_acronym "Code wars"
+
+  /--
+  info: 'HW'
+  -/
+  #guard_msgs in
+  #eval to_acronym "Hello world"
+
+  /--
+  info: 'PIA'
+  -/
+  #guard_msgs in
+  #eval to_acronym "Python is awesome"
 

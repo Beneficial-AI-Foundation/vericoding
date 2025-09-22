@@ -51,25 +51,4 @@ theorem minimal_cases :
   -- Two nodes 
   solve_max_railway_bids 2 [5,10] [(1,2)] = 10 :=
 sorry
-
-/-
-info: 90
--/
--- #guard_msgs in
--- #eval solve_max_railway_bids 6 [10, 20, 25, 40, 30, 30] [(4, 5), (1, 3), (3, 4), (2, 3), (6, 4)]
-
-/-
-info: 40
--/
--- #guard_msgs in
--- #eval solve_max_railway_bids 3 [10, 20, 30] [(1, 2), (2, 3)]
-
-/-
-info: 30
--/
--- #guard_msgs in
--- #eval solve_max_railway_bids 4 [5, 10, 15, 20] [(1, 2), (2, 3), (3, 4)]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

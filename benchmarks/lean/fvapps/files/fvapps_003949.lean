@@ -31,25 +31,4 @@ theorem returns_first_nonrepeating {s result : String} :
   ∃ idx, String.get s idx = String.get result 0 ∧
          (∀ i < idx, ∃ j ≠ i, 
            String.get (String.toLower s) i = String.get (String.toLower s) j) := sorry
-
-/-
-info: 't'
--/
--- #guard_msgs in
--- #eval first_non_repeating_letter "stress"
-
-/-
-info: 'T'
--/
--- #guard_msgs in
--- #eval first_non_repeating_letter "sTreSS"
-
-/-
-info: ''
--/
--- #guard_msgs in
--- #eval first_non_repeating_letter "abba"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

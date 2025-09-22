@@ -24,25 +24,4 @@ theorem solve_polynomial_counts_single_deterministic
   (h : n ≤ 1000000000) :
   (solve_polynomial_counts [n]).head! = (solve_polynomial_counts [n]).head! :=
   sorry
-
-/-
-info: [2, 4]
--/
--- #guard_msgs in
--- #eval solve_polynomial_counts [2, 4]
-
-/-
-info: [9]
--/
--- #guard_msgs in
--- #eval solve_polynomial_counts [9]
-
-/-
-info: [4, 1, 9, 2, 9]
--/
--- #guard_msgs in
--- #eval solve_polynomial_counts [4, 1, 8, 3, 9]
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: guarded_and_plausible

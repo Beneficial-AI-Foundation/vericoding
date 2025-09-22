@@ -23,25 +23,4 @@ theorem all_same_char {s : String} (h1 : s.length > 0)
 theorem length_property {s : String} (h : s.length > 0) :
   distinctSubseqCount s ≥ s.length :=
   sorry
-
-/-
-info: 7
--/
--- #guard_msgs in
--- #eval distinct_subseq_count "abc"
-
-/-
-info: 6
--/
--- #guard_msgs in
--- #eval distinct_subseq_count "aba"
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval distinct_subseq_count "aaa"
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

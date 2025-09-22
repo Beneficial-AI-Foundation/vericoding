@@ -23,25 +23,4 @@ theorem solution_eq_reverse (s : String) :
 
 theorem solution_empty : 
   solution "" = "" := sorry
-
-/-
-info: 'dlrow'
--/
--- #guard_msgs in
--- #eval solution "world"
-
-/-
-info: 'olleh'
--/
--- #guard_msgs in
--- #eval solution "hello"
-
-/-
-info: ''
--/
--- #guard_msgs in
--- #eval solution ""
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

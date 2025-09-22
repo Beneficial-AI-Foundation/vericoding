@@ -27,25 +27,4 @@ theorem non_matching_fighter_raises (invalid_name : String) :
   invalid_name.toLower ∉ VALID_FIGHTERS →
   ∀ result, ¬(quote invalid_name = result) := 
 sorry
-
-/-
-info: 'I am not impressed by your performance.'
--/
--- #guard_msgs in
--- #eval quote "George Saint Pierre"
-
-/-
-info: "I'd like to take this chance to apologize.. To absolutely NOBODY!"
--/
--- #guard_msgs in
--- #eval quote "Conor McGregor"
-
-/-
-info: 'I am not impressed by your performance.'
--/
--- #guard_msgs in
--- #eval quote "george saint pierre"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

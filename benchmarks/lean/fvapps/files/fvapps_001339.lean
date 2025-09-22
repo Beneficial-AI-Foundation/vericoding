@@ -21,6 +21,3 @@ theorem expected_picks_simple_cases :
   (calculate_expected_picks 1 1 - 1.5).abs < 0.000001 ∧ 
   (calculate_expected_picks 2 2 - 3.3333333333).abs < 0.000001 := sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

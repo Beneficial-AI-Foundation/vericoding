@@ -17,25 +17,4 @@ theorem target_less_than_start_always_false {sx sy tx ty : Nat} :
 
 theorem no_valid_moves_if_too_far {sx sy tx ty : Nat} :
   (sx > tx ∧ sy > ty) → can_transform_point sx sy tx ty = false := sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval can_transform_point 1 1 3 5
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval can_transform_point 1 1 2 2
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval can_transform_point 1 1 1 1
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

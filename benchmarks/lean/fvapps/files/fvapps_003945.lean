@@ -32,37 +32,4 @@ theorem custom_limit {sent limit : Int}
 
 theorem zero_emails :
   get_percentage 0 = "No e-mails sent" := sorry
-
-/-
-info: '10%'
--/
--- #guard_msgs in
--- #eval get_percentage 101 1000
-
-/-
-info: '51%'
--/
--- #guard_msgs in
--- #eval get_percentage 256 500
-
-/-
-info: '25%'
--/
--- #guard_msgs in
--- #eval get_percentage 259
-
-/-
-info: 'No e-mails sent'
--/
--- #guard_msgs in
--- #eval get_percentage 0
-
-/-
-info: 'Daily limit is reached'
--/
--- #guard_msgs in
--- #eval get_percentage 1000 1000
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

@@ -42,6 +42,3 @@ theorem numerical_stability (n l : Nat) (flags flags_perturbed : List Nat)
   solve_cars_meeting n l flags - solve_cars_meeting n l flags_perturbed ≤ 1 :=
   sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

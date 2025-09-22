@@ -31,25 +31,4 @@ theorem steady_tables_ge_cols (n m : Nat) (h1 : n > 0) (h2 : m > 0) :
 theorem steady_tables_square (n : Nat) (h : n > 0) :
   compute_steady_tables n n ≥ n * n :=
   sorry
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval compute_steady_tables 1 1
-
-/-
-info: 25
--/
--- #guard_msgs in
--- #eval compute_steady_tables 2 2
-
-/-
-info: 273
--/
--- #guard_msgs in
--- #eval compute_steady_tables 2 3
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

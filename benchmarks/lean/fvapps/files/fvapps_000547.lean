@@ -30,6 +30,3 @@ theorem perfect_board_max_size {n m : Nat} (h1 : n > 0) (h2 : m > 0) :
     String.mk (List.range m |>.map (fun j => if (i + j) % 2 = 0 then '0' else '1')))
   (max_chess_subboard n m board [0]).head! = min n m := sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

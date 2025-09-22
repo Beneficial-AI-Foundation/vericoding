@@ -42,6 +42,3 @@ theorem cost_by_drink_type (sequence : List DrinkType) :
   calculate_milk_tea_cost sequence ≤ (m_count * 3) + (l_count * 4) :=
 sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

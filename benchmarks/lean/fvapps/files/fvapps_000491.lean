@@ -40,25 +40,4 @@ theorem graph_binary_adjacency {graph : List (List Nat)}
     : ∀ i j, i < List.length graph → j < List.length graph →
       (List.get! graph i).get! j ≤ 1 :=
   sorry
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval min_malware_spread [[1, 1, 0], [1, 1, 0], [0, 0, 1]] [0, 1]
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval min_malware_spread [[1, 0, 0], [0, 1, 0], [0, 0, 1]] [0, 2]
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval min_malware_spread [[1, 1, 1], [1, 1, 1], [1, 1, 1]] [1, 2]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

@@ -37,25 +37,4 @@ theorem check_sequence_single_element (n : Nat) (arr : List Int) :
   n > 0 → arr.length = 1 →
   check_sequence n arr = "prekrasnyy" :=
 sorry
-
-/-
-info: 'prekrasnyy'
--/
--- #guard_msgs in
--- #eval check_sequence 4 [1, 2, 3, 4]
-
-/-
-info: 'ne krasivo'
--/
--- #guard_msgs in
--- #eval check_sequence 6 [1, 2, 3, 5, 1, 4]
-
-/-
-info: 'prekrasnyy'
--/
--- #guard_msgs in
--- #eval check_sequence 1 [1]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

@@ -36,25 +36,4 @@ theorem micro_world_edge_cases_empty (k : Nat) :
 theorem micro_world_edge_cases_singleton (n k : Nat) :
   micro_world [n] k = 1 :=
   sorry
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval micro_world [101, 53, 42, 102, 101, 55, 54] 1
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval micro_world [20, 15, 10, 15, 20, 25] 5
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval micro_world [5, 3, 1, 5] 1
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

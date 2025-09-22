@@ -23,25 +23,4 @@ theorem range_bounds (lists : List (List Int))
   (∃ l ∈ lists, ∃ x ∈ l, x = result.1) ∧
   (∃ l ∈ lists, ∃ x ∈ l, x = result.2) := by
   sorry
-
-/-
-info: [20, 24]
--/
--- #guard_msgs in
--- #eval find_smallest_range [[4, 10, 15, 24, 26], [0, 9, 12, 20], [5, 18, 22, 30]]
-
-/-
-info: [1, 1]
--/
--- #guard_msgs in
--- #eval find_smallest_range [[1, 2, 3], [1, 2, 3], [1, 2, 3]]
-
-/-
-info: [10, 11]
--/
--- #guard_msgs in
--- #eval find_smallest_range [[10, 10], [11, 11]]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

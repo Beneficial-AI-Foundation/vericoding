@@ -25,25 +25,4 @@ theorem constant_term (n : Int) (h : n ≠ 0) :
 
 theorem linear_term (n : Int) (h : n ≠ 0) :
   get_derivative s!"{n}x" = toString n := sorry
-
-/-
-info: '9x^2'
--/
--- #guard_msgs in
--- #eval get_derivative "3x^3"
-
-/-
-info: '-3x^-2'
--/
--- #guard_msgs in
--- #eval get_derivative "3x^-1"
-
-/-
-info: '-30x^9'
--/
--- #guard_msgs in
--- #eval get_derivative "-3x^10"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

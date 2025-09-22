@@ -19,6 +19,3 @@ theorem centroid_order_invariant (a b c : Prod Float Float) :
   bar_triang a b c = bar_triang c a b :=
 sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

@@ -31,19 +31,4 @@ theorem solve_checkpoints_identical_points {n c x y : Int} {count : Nat}
 theorem solve_checkpoints_empty {n c : Int}
   (hn : n > 0) (hc : c > 0) :
   solve_checkpoints n c [] = (0, 0) := sorry
-
-/-
-info: (2, 2)
--/
--- #guard_msgs in
--- #eval solve_checkpoints 3 1 [(1, 1), (1, 0), (3, 2)]
-
-/-
-info: (1, 2)
--/
--- #guard_msgs in
--- #eval solve_checkpoints 2 1 [(0, 0), (2, 2)]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

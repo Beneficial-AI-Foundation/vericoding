@@ -25,6 +25,3 @@ theorem idempotent (lines : List String) (h : lines ≠ []) :
   let second := modify_operators (first.splitOn "\n")
   first = second := sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

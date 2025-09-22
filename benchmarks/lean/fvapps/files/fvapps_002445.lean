@@ -1,19 +1,19 @@
 -- <vc-preamble>
-def generateLogo (thickness : Nat) : String := sorry
-
 def countChar (s : String) (c : Char) : Nat :=
   s.data.filter (· = c) |>.length
 
 def splitLines (s : String) : List String :=
   s.splitOn "\n"
+
+def makeHString (n : Nat) : String :=
+  String.mk (List.replicate n 'H')
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
-def makeHString (n : Nat) : String :=
-  String.mk (List.replicate n 'H')
+def generateLogo (thickness : Nat) : String := sorry
 -- </vc-definitions>
 
 -- <vc-theorems>
@@ -44,6 +44,3 @@ theorem logo_middle_section_solid (thickness : Nat) (h : thickness > 0) :
   ∀ line ∈ middleSection, ∀ i ∈ line.data.take (5 * thickness), i = 'H' :=
 sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

@@ -27,6 +27,3 @@ theorem count_pal_monotonic (n : Nat) (h : n > 0 ∧ n ≤ 4) :
   (count_pal n).get! 1 ≤ (count_pal (n+1)).get! 1 :=
 sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

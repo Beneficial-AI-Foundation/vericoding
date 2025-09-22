@@ -46,25 +46,4 @@ theorem translation_consistency {dna_str : String} (h : ∀ c ∈ dna_str.data, 
     rna_codons[j]!.length = 3 →
     rna_codons[i]! = rna_codons[j]! → 
     aas[i]! = aas[j]! := sorry
-
-/-
-info: ['AUG UCG AGC GAU ACU UAG', 'Met Ser Ser Asp Thr Stop']
--/
--- #guard_msgs in
--- #eval protein_synthesis "TACAGCTCGCTATGAATC"
-
-/-
-info: ['UGC AC', 'Cys']
--/
--- #guard_msgs in
--- #eval protein_synthesis "ACGTG"
-
-/-
-info: ['AUG', 'Met']
--/
--- #guard_msgs in
--- #eval protein_synthesis "TAC"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

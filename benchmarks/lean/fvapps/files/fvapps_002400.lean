@@ -29,25 +29,4 @@ theorem k_larger_than_list {nums : List Int} {k : Nat}
   (h : k ≥ nums.length) :
   containsNearbyDuplicate nums k = 
     (∃ i j, i < nums.length ∧ j < nums.length ∧ i ≠ j ∧ nums[i]! = nums[j]!) := sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval contains_nearby_duplicate [1, 2, 3, 1] 3
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval contains_nearby_duplicate [1, 0, 1, 1] 1
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval contains_nearby_duplicate [1, 2, 3, 1, 2, 3] 2
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

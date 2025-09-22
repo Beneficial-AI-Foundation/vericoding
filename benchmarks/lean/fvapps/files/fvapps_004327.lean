@@ -27,25 +27,4 @@ theorem pillow_minimal_case :
 
 theorem pillow_empty_strings :
   pillow ["", ""] = false := sorry
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval pillow ["abc", "def"]
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval pillow ["n", "B"]
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval pillow ["inECnBMAA/u", "ABAaIUOUx/M"]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

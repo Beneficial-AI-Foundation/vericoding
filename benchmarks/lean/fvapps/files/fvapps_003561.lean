@@ -17,19 +17,4 @@ theorem bool_to_word_returns_yes_or_no (b : Bool) :
 
 theorem bool_to_word_matches_input (b : Bool) :
   bool_to_word b = if b then "Yes" else "No" := sorry
-
-/-
-info: 'Yes'
--/
--- #guard_msgs in
--- #eval bool_to_word True
-
-/-
-info: 'No'
--/
--- #guard_msgs in
--- #eval bool_to_word False
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

@@ -35,25 +35,4 @@ theorem update_inventory_empty :
 theorem update_inventory_empty_plus_list (stock: List (Nat × String)) :
   List.update_inventory stock [] = List.update_inventory [] stock :=
   sorry
-
-/-
-info: []
--/
--- #guard_msgs in
--- #eval update_inventory [] []
-
-/-
-info: [(8, 'Apple')]
--/
--- #guard_msgs in
--- #eval update_inventory [(5, "Apple")] [(3, "Apple")]
-
-/-
-info: [(25, 'HTC'), (5, 'LG'), (1000, 'Nokia'), (54, 'Samsung')]
--/
--- #guard_msgs in
--- #eval update_inventory [(25, "HTC"), (1000, "Nokia"), (50, "Samsung")] [(5, "LG"), (4, "Samsung")]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

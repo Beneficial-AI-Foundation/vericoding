@@ -25,25 +25,4 @@ theorem greet_starts_with_hello (name : String) :
 theorem greet_ends_with_exclamation (name : String) :
   String.endsWith (greet name) "!" = true :=
   sorry
-
-/-
-info: 'Hello, James!'
--/
--- #guard_msgs in
--- #eval greet "James"
-
-/-
-info: 'Hello, Jane!'
--/
--- #guard_msgs in
--- #eval greet "Jane"
-
-/-
-info: 'Hello, my love!'
--/
--- #guard_msgs in
--- #eval greet "Johnny"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

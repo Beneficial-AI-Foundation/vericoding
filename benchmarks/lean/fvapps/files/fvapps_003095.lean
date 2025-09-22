@@ -50,6 +50,3 @@ theorem sum_pow_dig_seq_power_one
     ∀ x, List.elem x result.2.1 → x < 10 :=
   sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

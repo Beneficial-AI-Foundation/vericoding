@@ -39,25 +39,4 @@ theorem logistic_map_single_point (width height : Nat) :
   result.get? 0 >>= (·.get? 0) = some (some 0) ∧
   ∀ y < height, ∀ x < width,
     result.get? y >>= (·.get? x) = some (some (x + y)) := sorry
-
-/-
-info: expected1
--/
--- #guard_msgs in
--- #eval logistic_map 3 3 [0] [0]
-
-/-
-info: expected2
--/
--- #guard_msgs in
--- #eval logistic_map 5 2 [0, 4] [0, 0]
-
-/-
-info: expected3
--/
--- #guard_msgs in
--- #eval logistic_map 2 2 [] []
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

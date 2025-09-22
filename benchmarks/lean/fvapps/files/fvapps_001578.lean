@@ -21,25 +21,4 @@ theorem productsum_positive (n: Nat) (h: n ≥ 2) :
 theorem productsum_increases (n: Nat) (h: n ≥ 2) :
   productsum (n + 1) > productsum n :=
   sorry
-
-/-
-info: 10
--/
--- #guard_msgs in
--- #eval productsum 3
-
-/-
-info: 30
--/
--- #guard_msgs in
--- #eval productsum 6
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval productsum 2
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

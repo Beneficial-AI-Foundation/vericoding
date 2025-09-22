@@ -30,25 +30,4 @@ theorem can_construct_count_preservation (note magazine : String) (c : Char) :
 theorem can_construct_magazine_extension (note magazine extension : String) :
   can_construct note magazine = true →
   can_construct note (magazine ++ extension) = true := sorry
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval can_construct "a" "b"
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval can_construct "aa" "ab"
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval can_construct "aa" "aab"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

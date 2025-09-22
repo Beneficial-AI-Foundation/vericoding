@@ -20,25 +20,4 @@ theorem even_lengths_all_ones {n : Nat} (h : n ≥ 4) (h₂ : n ≤ 100) (h₃ :
 
 theorem result_is_positive {n : Nat} (h : n ≥ 3) (h₂ : n ≤ 100) :
   find_max_display n > 0 := sorry
-
-/-
-info: 7
--/
--- #guard_msgs in
--- #eval find_max_display 3
-
-/-
-info: 11
--/
--- #guard_msgs in
--- #eval find_max_display 4
-
-/-
-info: 71
--/
--- #guard_msgs in
--- #eval find_max_display 5
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

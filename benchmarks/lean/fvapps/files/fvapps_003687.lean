@@ -26,25 +26,4 @@ theorem alternating_pattern {s : String} (h : s.length > 0) :
       pos.byteIdx = i.val → pos'.byteIdx = i.val + 1 →
       isVowel (result.get pos) ≠ isVowel (result.get pos') :=
   sorry
-
-/-
-info: 'ajav'
--/
--- #guard_msgs in
--- #eval solve "java"
-
-/-
-info: 'edorur'
--/
--- #guard_msgs in
--- #eval solve "oruder"
-
-/-
-info: 'failed'
--/
--- #guard_msgs in
--- #eval solve "codewars"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

@@ -24,25 +24,4 @@ theorem larger_k_correct (n k x : Nat)
   let result := solveXorArray n k x
   (List.length result = n) ∧ 
   (arrayXor result = x) := sorry
-
-/-
-info: [4, 4, 4, 4, 4]
--/
--- #guard_msgs in
--- #eval solve_xor_array 5 1 4
-
-/-
-info: [3, 7, 3, 7, 3]
--/
--- #guard_msgs in
--- #eval solve_xor_array 5 2 4
-
-/-
-info: [11, 6, 9, 11, 6]
--/
--- #guard_msgs in
--- #eval solve_xor_array 5 3 4
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

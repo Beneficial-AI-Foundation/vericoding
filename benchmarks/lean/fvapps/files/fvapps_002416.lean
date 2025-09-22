@@ -38,25 +38,4 @@ theorem maxScore_alternating_pattern (n: Nat) (h: n ≥ 1) :
 theorem maxScore_min_length_strings (s: String) (h₁: s.length = 2)
   (h₂: ∀ c ∈ s.data, c = '0' ∨ c = '1') :
   0 ≤ maxScore s ∧ maxScore s ≤ 2 := sorry
-
-/-
-info: 5
--/
--- #guard_msgs in
--- #eval max_score "011101"
-
-/-
-info: 5
--/
--- #guard_msgs in
--- #eval max_score "00111"
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval max_score "1111"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

@@ -21,25 +21,4 @@ theorem reversed_sum_logic (s1 s2 : StringNum) :
 
 theorem reversed_sum_symmetric (s1 s2 : StringNum) :
   reversed_sum s1 s2 = reversed_sum s2 s1 := sorry
-
-/-
-info: 34
--/
--- #guard_msgs in
--- #eval reversed_sum "24" "1"
-
-/-
-info: 33
--/
--- #guard_msgs in
--- #eval reversed_sum "11" "22"
-
-/-
-info: 579
--/
--- #guard_msgs in
--- #eval reversed_sum "123" "456"
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

@@ -22,25 +22,4 @@ theorem min_rooms_empty (n : Nat) (schedules : List String) :
 theorem min_rooms_full_day (n : Nat) (schedules : List String) (day : Nat) (h : day < 7) :
   (schedules.all (fun sch => sch.data[day]? = some '1')) →
   minRoomsNeeded n schedules = n := sorry
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval min_rooms_needed 2 ["0101010", "1010101"]
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval min_rooms_needed 3 ["0101011", "0011001", "0110111"]
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval min_rooms_needed 1 ["1111111"]
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: unguarded

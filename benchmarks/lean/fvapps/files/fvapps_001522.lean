@@ -29,25 +29,4 @@ theorem check_unique_or_pairs_deterministic {arr : List Nat} :
 
 theorem check_unique_or_pairs_order_invariant {arr : List Nat} :
   check_unique_or_pairs arr = check_unique_or_pairs arr.reverse := sorry
-
-/-
-info: 'NO'
--/
--- #guard_msgs in
--- #eval check_unique_or_pairs [1, 2, 7]
-
-/-
-info: 'YES'
--/
--- #guard_msgs in
--- #eval check_unique_or_pairs [1, 2]
-
-/-
-info: 'YES'
--/
--- #guard_msgs in
--- #eval check_unique_or_pairs [6, 5, 8]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

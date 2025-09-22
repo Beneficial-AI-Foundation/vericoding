@@ -24,6 +24,3 @@ theorem greet_ends_with : ∀ (name : String),
 theorem greet_length : ∀ (name : String),
   (greet name).length = "Hello, ".length + name.length + " how are you doing today?".length := sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

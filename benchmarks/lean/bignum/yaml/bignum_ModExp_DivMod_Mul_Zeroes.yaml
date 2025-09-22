@@ -3,8 +3,6 @@ vc-description: |-
   Implement the function according to the Lean specification.
 
 vc-preamble: |-
-  namespace BignumLean
-  
   def ValidBitString (s : String) : Prop :=
     ∀ {i c}, s.get? i = some c → (c = '0' ∨ c = '1')
   
@@ -26,11 +24,11 @@ vc-preamble: |-
     Str2Int quotient = Str2Int dividend / Str2Int divisor ∧
     Str2Int remainder = Str2Int dividend % Str2Int divisor
   
-  def Mul (s1 s2 : String) : String :=
+  def Mul_ (s1 s2 : String) : String :=
     sorry
   
   axiom Mul_spec (s1 s2 : String) (h1 : ValidBitString s1) (h2 : ValidBitString s2) :
-    ValidBitString (Mul s1 s2) ∧ Str2Int (Mul s1 s2) = Str2Int s1 * Str2Int s2
+    ValidBitString (Mul_ s1 s2) ∧ Str2Int (Mul_ s1 s2) = Str2Int s1 * Str2Int s2
   
   def Zeros (n : Nat) : String :=
     sorry
@@ -53,5 +51,5 @@ vc-theorems: |-
     sorry
 
 vc-postamble: |-
-  end BignumLean
+
 

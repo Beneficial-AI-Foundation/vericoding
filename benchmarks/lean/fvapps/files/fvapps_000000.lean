@@ -1,12 +1,13 @@
 -- <vc-preamble>
-def solve (n : Nat) (words : List String) : List Int :=
-  sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
+def solve (n : Nat) (words : List String) : List Int :=
+  sorry
+
 def abs (n : Nat) : Nat :=
   sorry
 -- </vc-definitions>
@@ -30,25 +31,4 @@ theorem solve_minimal_flips (n : Nat) (words : List String) :
   let min_flips := (abs (zeros_to_ones - ones_to_zeros)) / 2
   result[0]! = min_flips :=
 sorry
-
-/-
-info: [1, 3]
--/
--- #guard_msgs in
--- #eval solve 4 ["0001", "1000", "0011", "0111"]
-
-/-
-info: [-1]
--/
--- #guard_msgs in
--- #eval solve 3 ["010", "101", "0"]
-
-/-
-info: [0]
--/
--- #guard_msgs in
--- #eval solve 2 ["00000", "00001"]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

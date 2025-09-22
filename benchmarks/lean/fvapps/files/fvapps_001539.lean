@@ -32,19 +32,4 @@ theorem symmetric_results {x y : Nat} :
 theorem same_input_tie {x : Nat} :
   let (result, diff) := solve_jumping_game x x
   result = 0 ∧ diff = 0 := sorry
-
-/-
-info: (0, 0)
--/
--- #guard_msgs in
--- #eval solve_jumping_game 4 5
-
-/-
-info: (1, 1)
--/
--- #guard_msgs in
--- #eval solve_jumping_game 3 5
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

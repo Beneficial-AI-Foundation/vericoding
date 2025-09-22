@@ -31,25 +31,4 @@ theorem mult_primefactor_sum_divisible (a b x : Nat)
 theorem mult_primefactor_sum_not_equal (a b x : Nat)
   (h : x ∈ mult_primefactor_sum a b) :
   factorize_add x ≠ x := sorry
-
-/-
-info: [16, 27, 30, 60, 70, 72, 84]
--/
--- #guard_msgs in
--- #eval mult_primefactor_sum 10 100
-
-/-
-info: [84, 105, 150]
--/
--- #guard_msgs in
--- #eval mult_primefactor_sum 80 150
-
-/-
-info: [105, 150, 180]
--/
--- #guard_msgs in
--- #eval mult_primefactor_sum 90 200
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

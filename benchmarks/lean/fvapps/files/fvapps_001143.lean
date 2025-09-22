@@ -32,6 +32,3 @@ theorem find_interesting_numbers_complete (m : Nat) (h : 0 < m) (h2 : m ≤ 100)
     (a * m) % (a - m) = 0 → 
     a ∈ find_interesting_numbers m := sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

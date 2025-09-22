@@ -19,25 +19,4 @@ theorem poly_subtract_self (p : List Int) :
 
 theorem poly_subtract_empty (p : List Int) :
   poly_subtract p [] = p := sorry
-
-/-
-info: []
--/
--- #guard_msgs in
--- #eval poly_subtract [] []
-
-/-
-info: [1, 2, 3, 4, 5, 6]
--/
--- #guard_msgs in
--- #eval poly_subtract [1, 2, 3, 4, 5, 6] []
-
-/-
-info: [-1, -2, -3, -4, -5, -6]
--/
--- #guard_msgs in
--- #eval poly_subtract [] [1, 2, 3, 4, 5, 6]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

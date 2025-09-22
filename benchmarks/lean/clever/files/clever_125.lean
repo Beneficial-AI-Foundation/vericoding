@@ -52,6 +52,3 @@ theorem correctness
 : problem_spec implementation grid k := by
   sorry
 -- </vc-theorems>
-
--- #test implementation [[1,2,3], [4,5,6], [7,8,9]] 3 = [1,2,3]
--- #test implementation [[5,9,3], [4,1,6], [7,8,2]] 1 = [1]

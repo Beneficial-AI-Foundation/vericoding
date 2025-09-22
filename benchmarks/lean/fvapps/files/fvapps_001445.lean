@@ -16,25 +16,4 @@ theorem result_valid (n : Nat) :
 theorem equal_positions_catchable (n : Nat) : 
   let h := n * n + 1
   min_moves_to_catch h n n ≠ -1 := sorry
-
-/-
-info: 6
--/
--- #guard_msgs in
--- #eval min_moves_to_catch 101 10 10
-
-/-
-info: -1
--/
--- #guard_msgs in
--- #eval min_moves_to_catch 11 3 3
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval min_moves_to_catch 21 5 5
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

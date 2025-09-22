@@ -25,25 +25,4 @@ theorem max_pizza_slices_max_bound (m n: Nat) (cuts: List Nat) (h1: m > 0) (h2: 
 theorem single_pizza_formula (n cuts: Nat) (h1: cuts ≤ n) :
   maxPizzaSlices 1 n [cuts] = 1 + (cuts * (cuts + 1)) / 2 :=
   sorry
-
-/-
-info: 31
--/
--- #guard_msgs in
--- #eval max_pizza_slices 5 10 [1, 2, 3, 4, 5]
-
-/-
-info: 6
--/
--- #guard_msgs in
--- #eval max_pizza_slices 2 3 [1, 2]
-
-/-
-info: 8
--/
--- #guard_msgs in
--- #eval max_pizza_slices 3 4 [2, 1, 1]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

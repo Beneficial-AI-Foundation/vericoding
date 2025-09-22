@@ -1,12 +1,13 @@
 -- <vc-preamble>
-def is_prime (n : Nat) : Bool :=
-  sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
+def is_prime (n : Nat) : Bool :=
+  sorry
+
 def check_land_split (x y : Nat) : String :=
   sorry
 -- </vc-definitions>
@@ -16,39 +17,18 @@ theorem is_prime_properties (n : Nat) (h : n ≤ 1000) :
   (n < 2 → is_prime n = false) ∧
   (is_prime n = true → n ≥ 2) ∧
   (is_prime n = true → ∀ i : Nat, 2 ≤ i → i ≤ 100 → ¬(n % i = 0)) :=
-  sorry
+sorry
 
 theorem check_land_split_properties (x y : Nat) (h₁ : x ≤ 100) (h₂ : y ≤ 100) (h₃ : y ≤ x) :
   (check_land_split x y = "YES" ∨ check_land_split x y = "NO") ∧
   (check_land_split x y = "NO" ↔ is_prime (x*x - y*y)) :=
-  sorry
+sorry
 
 theorem check_land_split_equal_sides (x : Nat) (h : x ≤ 100) :
   check_land_split x x = "YES" :=
-  sorry
+sorry
 
 theorem check_land_split_zero_inner (x : Nat) (h : x ≤ 100) :
   check_land_split x 0 = "NO" ↔ is_prime (x*x) :=
-  sorry
-
-/-
-info: 'YES'
--/
--- #guard_msgs in
--- #eval check_land_split 7 5
-
-/-
-info: 'NO'
--/
--- #guard_msgs in
--- #eval check_land_split 6 5
-
-/-
-info: 'YES'
--/
--- #guard_msgs in
--- #eval check_land_split 10 8
+sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

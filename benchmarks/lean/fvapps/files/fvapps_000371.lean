@@ -35,25 +35,4 @@ theorem invalid_ipv6_when_parts_too_long
     (∃ p ∈ parts, p.length > 4) ∧
     ip = String.intercalate ":" parts) :
   validate_ip_address ip = "Neither" := sorry
-
-/-
-info: 'IPv4'
--/
--- #guard_msgs in
--- #eval validate_ip_address "172.16.254.1"
-
-/-
-info: 'IPv6'
--/
--- #guard_msgs in
--- #eval validate_ip_address "2001:0db8:85a3:0:0:8A2E:0370:7334"
-
-/-
-info: 'Neither'
--/
--- #guard_msgs in
--- #eval validate_ip_address "256.256.256.256"
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

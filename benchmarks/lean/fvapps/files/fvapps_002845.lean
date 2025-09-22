@@ -27,25 +27,4 @@ theorem poly_add_coeff (p1 p2 : List Int) (i : Nat) (h1 : i < p1.length) (h2 : i
 
 theorem poly_add_zeros (p : List Int) :
   poly_add p (List.replicate p.length 0) = p := sorry
-
-/-
-info: [2]
--/
--- #guard_msgs in
--- #eval poly_add [1] [1]
-
-/-
-info: [2, 2]
--/
--- #guard_msgs in
--- #eval poly_add [1, 2] [1]
-
-/-
-info: [5, 5, 5, 5]
--/
--- #guard_msgs in
--- #eval poly_add [1, 2, 3, 4] [4, 3, 2, 1]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

@@ -39,25 +39,4 @@ theorem solve_minimum_cost_odd_to_zero
   (h1 : solve_minimum_cost 1 1 1 0 0 0 = 2) :
   solve_minimum_cost 1 1 1 0 0 0 = 2 :=
 sorry
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval solve_minimum_cost 1 1 1 2 2 2
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval solve_minimum_cost 1 2 3 2 4 2
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval solve_minimum_cost 0 0 0 2 2 0
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

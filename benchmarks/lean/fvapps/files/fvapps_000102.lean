@@ -1,23 +1,23 @@
 -- <vc-preamble>
-def solve_game (n m : Nat) (grid : List (List Nat)) : String :=
-  sorry
-
 def countEmptyRows (grid : List (List Nat)) : Nat :=
   (grid.filter (fun row => row.all (fun x => x = 0))).length
--- </vc-preamble>
 
--- <vc-helpers>
--- </vc-helpers>
-
--- <vc-definitions>
 def countEmptyCols (n m : Nat) (grid : List (List Nat)) : Nat :=
-  let isEmptyCol (j : Nat) := (List.range n).all (fun i => 
+  let isEmptyCol (j : Nat) := (List.range n).all (fun i =>
     match grid.get? i with
     | none => true
     | some row => match row.get? j with
       | none => true
       | some x => x = 0)
   (List.range m).filter isEmptyCol |>.length
+-- </vc-preamble>
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+-- <vc-definitions>
+def solve_game (n m : Nat) (grid : List (List Nat)) : String :=
+  sorry
 -- </vc-definitions>
 
 -- <vc-theorems>
@@ -47,25 +47,4 @@ theorem no_empty_lines (n m : Nat) (h1 : n > 0) (h2 : m > 0) :
   let grid := List.replicate n (List.replicate m 1)
   solve_game n m grid = "Vivek" :=
 sorry
-
-/-
-info: 'Vivek'
--/
--- #guard_msgs in
--- #eval solve_game 2 2 [[0, 0], [0, 0]]
-
-/-
-info: 'Ashish'
--/
--- #guard_msgs in
--- #eval solve_game 2 2 [[0, 0], [0, 1]]
-
-/-
-info: 'Vivek'
--/
--- #guard_msgs in
--- #eval solve_game 2 3 [[1, 0, 1], [1, 1, 0]]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

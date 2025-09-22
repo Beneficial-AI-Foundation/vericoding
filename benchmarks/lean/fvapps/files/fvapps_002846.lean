@@ -32,37 +32,4 @@ theorem single_digit_numbers
 
 theorem zero_number :
   find_digit 0 1 = 0 ∧ find_digit 0 5 = 0 := sorry
-
-/-
-info: 5
--/
--- #guard_msgs in
--- #eval find_digit 5673 4
-
-/-
-info: 8
--/
--- #guard_msgs in
--- #eval find_digit -2825 3
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval find_digit 0 20
-
-/-
-info: -1
--/
--- #guard_msgs in
--- #eval find_digit 65 0
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval find_digit -456 5
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

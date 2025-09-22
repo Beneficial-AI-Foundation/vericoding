@@ -32,25 +32,4 @@ theorem solve_max_rectangle_alternating_pattern {n : Nat} (nge2 : n ≥ 2) :
   let grid := List.range n |>.map (λ i =>
     List.range n |>.map (λ j => if (i + j) % 2 = 0 then '#' else '.') |>.asString)
   solve_max_rectangle n n grid ≥ n := sorry
-
-/-
-info: 6
--/
--- #guard_msgs in
--- #eval solve_max_rectangle 3 3 ["..#", "##.", ".#."]
-
-/-
-info: 16
--/
--- #guard_msgs in
--- #eval solve_max_rectangle 4 4 ["....", "....", "....", "...."]
-
-/-
-info: 27
--/
--- #guard_msgs in
--- #eval solve_max_rectangle 10 8 ["##...#.#", "##...#.#", "..###.#.", "#.##.#.#", ".#..#.#.", "..##.#.#", "##.#.#..", "...#.#..", "###.#.##", "###..###"]
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: unguarded

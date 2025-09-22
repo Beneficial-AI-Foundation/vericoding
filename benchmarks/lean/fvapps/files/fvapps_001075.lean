@@ -21,6 +21,3 @@ theorem pattern_total_digits (n : Nat) (h : n > 0) :
   (generate_pattern n).foldl (fun acc row => acc + String.length row) 0 ≥ n :=
 sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

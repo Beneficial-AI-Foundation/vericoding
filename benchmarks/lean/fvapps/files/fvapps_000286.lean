@@ -1,18 +1,19 @@
 -- <vc-preamble>
-def least_interval (tasks : List Char) (n : Nat) : Nat :=
-  sorry
-
-def countFrequencies (tasks : List Char) : List Nat :=
-  sorry 
-
-def maxFrequency (tasks : List Char) : Nat :=
-  sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
+def least_interval (tasks : List Char) (n : Nat) : Nat :=
+  sorry
+
+def countFrequencies (tasks : List Char) : List Nat :=
+  sorry
+
+def maxFrequency (tasks : List Char) : Nat :=
+  sorry
+
 def maxFrequencyCount (tasks : List Char) : Nat :=
   sorry
 -- </vc-definitions>
@@ -33,25 +34,4 @@ sorry
 theorem least_interval_upper_bound (tasks : List Char) (n : Nat) (h : tasks ≠ []) :
   least_interval tasks n ≤ tasks.length * (n + 1) :=
 sorry
-
-/-
-info: 8
--/
--- #guard_msgs in
--- #eval least_interval ["A", "A", "A", "B", "B", "B"] 2
-
-/-
-info: 5
--/
--- #guard_msgs in
--- #eval least_interval ["A", "A", "A"] 1
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval least_interval ["A", "B", "C", "D"] 0
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

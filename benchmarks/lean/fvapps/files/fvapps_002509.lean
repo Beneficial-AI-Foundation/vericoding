@@ -23,25 +23,4 @@ theorem equal_sides_angle (x : Float)
 theorem symmetric_inputs (x : Float)
   (h1 : x > 0) :
   find_angle_mbc x x = 45 := sorry
-
-/-
-info: '45°'
--/
--- #guard_msgs in
--- #eval find_angle_mbc 10 10
-
-/-
-info: '63°'
--/
--- #guard_msgs in
--- #eval find_angle_mbc 20 10
-
-/-
-info: '27°'
--/
--- #guard_msgs in
--- #eval find_angle_mbc 10 20
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

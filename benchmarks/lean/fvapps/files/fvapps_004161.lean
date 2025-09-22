@@ -33,37 +33,4 @@ theorem hex_color_format {hex : String}
        c.isDigit ∨ ('a' ≤ c ∧ c ≤ 'f') ∨ ('A' ≤ c ∧ c ≤ 'F')) :
   let result := yellow_be_gone hex
   result.startsWith "#" ∧ result.length = 7 := sorry
-
-/-
-info: 'PaleGreen'
--/
--- #guard_msgs in
--- #eval yellow_be_gone "lemonchiffon"
-
-/-
-info: 'ForestGreen'
--/
--- #guard_msgs in
--- #eval yellow_be_gone "GOLD"
-
-/-
-info: 'LightGreen'
--/
--- #guard_msgs in
--- #eval yellow_be_gone "pAlEgOlDeNrOd"
-
-/-
-info: '#0bb886'
--/
--- #guard_msgs in
--- #eval yellow_be_gone "#b8860b"
-
-/-
-info: '#C71585'
--/
--- #guard_msgs in
--- #eval yellow_be_gone "#C71585"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

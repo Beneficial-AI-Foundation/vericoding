@@ -23,25 +23,4 @@ theorem halfway_rounds_up (x : Int) :
 
 theorem result_within_5 (x : Int) :
   abs (x - closestMultiple10 x) ≤ 5 := sorry
-
-/-
-info: 20
--/
--- #guard_msgs in
--- #eval closest_multiple_10 22
-
-/-
-info: 30
--/
--- #guard_msgs in
--- #eval closest_multiple_10 25
-
-/-
-info: 40
--/
--- #guard_msgs in
--- #eval closest_multiple_10 37
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

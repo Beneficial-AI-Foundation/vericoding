@@ -27,25 +27,4 @@ theorem alternating_digits (k : Nat) (h: k > 0) :
 theorem first_digit_one (k : Nat) (h: k > 0) :
   let pattern := (generate_pattern k).head!
   (pattern.data.get ⟨0, by sorry⟩) = '1' := sorry
-
-/-
-info: ['1']
--/
--- #guard_msgs in
--- #eval generate_pattern 1
-
-/-
-info: ['10', '10']
--/
--- #guard_msgs in
--- #eval generate_pattern 2
-
-/-
-info: ['101', '101', '101']
--/
--- #guard_msgs in
--- #eval generate_pattern 3
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

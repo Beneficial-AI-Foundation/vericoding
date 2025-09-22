@@ -22,6 +22,3 @@ theorem kebabize_length_upper_bound (s : String) :
   let num_letters : Nat := (s.data.filter Char.isAlpha).length;
   (kebabize s).length ≤ num_letters + num_capitals := sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

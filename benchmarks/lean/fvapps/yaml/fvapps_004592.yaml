@@ -50,59 +50,71 @@ vc-description: |-
   -/
 
 vc-preamble: |-
-  def john (n : Nat) : List Nat := sorry
-  def ann (n : Nat) : List Nat := sorry
 
 vc-helpers: |-
 
 vc-definitions: |-
-  def sum_john (n : Nat) : Nat := sorry
-  def sum_ann (n : Nat) : Nat := sorry
+  def john (n : Nat) : List Nat :=
+  sorry
+  
+  def ann (n : Nat) : List Nat :=
+  sorry
+  
+  def sum_john (n : Nat) : Nat :=
+  sorry
+  
+  def sum_ann (n : Nat) : Nat :=
+  sorry
 
 vc-theorems: |-
-  theorem sequences_start_correctly {n : Nat} (h : n > 0) : 
-    (john n).get ⟨0, sorry⟩ = 0 ∧ (ann n).get ⟨0, sorry⟩ = 1 := sorry
+  theorem sequences_start_correctly {n : Nat} (h : n > 0) :
+    (john n).get ⟨0, sorry⟩ = 0 ∧ (ann n).get ⟨0, sorry⟩ = 1 :=
+  sorry
   
   theorem sequence_lengths {n : Nat} (h : n > 0) :
-    (john n).length = n ∧ (ann n).length = n := sorry
+    (john n).length = n ∧ (ann n).length = n :=
+  sorry
   
   theorem sequences_nonnegative {n : Nat} (h : n > 0) :
-    (∀ x ∈ john n, x ≥ 0) ∧ (∀ x ∈ ann n, x ≥ 0) := sorry
+    (∀ x ∈ john n, x ≥ 0) ∧ (∀ x ∈ ann n, x ≥ 0) :=
+  sorry
   
   theorem sum_functions_match {n : Nat} (h : n > 0) :
-    sum_john n = ((john n).foldl (· + ·) 0) ∧ 
-    sum_ann n = ((ann n).foldl (· + ·) 0) := sorry
+    sum_john n = ((john n).foldl (· + ·) 0) ∧
+    sum_ann n = ((ann n).foldl (· + ·) 0) :=
+  sorry
   
   theorem sequence_relationship {n : Nat} (h : n > 0) :
-    ∀ i : Nat, i < n → i > 0 → 
+    ∀ i : Nat, i < n → i > 0 →
       ((john n).get ⟨i, sorry⟩ = i - (ann n).get ⟨(john n).get ⟨i-1, sorry⟩, sorry⟩) ∧
-      ((ann n).get ⟨i, sorry⟩ = i - (john n).get ⟨(ann n).get ⟨i-1, sorry⟩, sorry⟩) := sorry
-  
-  /-
-  info: [0, 0, 1, 2, 2, 3, 4, 4, 5, 6, 6]
-  -/
-  -- #guard_msgs in
-  -- #eval john 11
-  
-  /-
-  info: [1, 1, 2, 2, 3, 3]
-  -/
-  -- #guard_msgs in
-  -- #eval ann 6
-  
-  /-
-  info: 1720
-  -/
-  -- #guard_msgs in
-  -- #eval sum_john 75
-  
-  /-
-  info: 6930
-  -/
-  -- #guard_msgs in
-  -- #eval sum_ann 150
+      ((ann n).get ⟨i, sorry⟩ = i - (john n).get ⟨(ann n).get ⟨i-1, sorry⟩, sorry⟩) :=
+  sorry
 
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+  
+  /--
+  info: [0, 0, 1, 2, 2, 3, 4, 4, 5, 6, 6]
+  -/
+  #guard_msgs in
+  #eval john 11
+  
+  /--
+  info: [1, 1, 2, 2, 3, 3]
+  -/
+  #guard_msgs in
+  #eval ann 6
+  
+  /--
+  info: 1720
+  -/
+  #guard_msgs in
+  #eval sum_john 75
+  
+  /--
+  info: 6930
+  -/
+  #guard_msgs in
+  #eval sum_ann 150
 

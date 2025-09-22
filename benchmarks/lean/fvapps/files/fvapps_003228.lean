@@ -26,6 +26,3 @@ theorem grille_empty_input (code : Nat) :
 theorem grille_zero_code (message : String) :
   grille message 0 = "" := sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

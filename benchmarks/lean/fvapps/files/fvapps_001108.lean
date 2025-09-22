@@ -25,25 +25,4 @@ theorem max_chopstick_pairs_permutation_invariant (n : Nat) (d : Nat) (lengths1 
 theorem max_chopstick_pairs_monotone_d (n : Nat) (d : Nat) (lengths : List Nat)
   (hn : n ≥ 2) (hlen : lengths.length = n) (hd : d > 0) :
   max_chopstick_pairs n d lengths ≥ max_chopstick_pairs n (d-1) lengths := sorry
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval max_chopstick_pairs 5 2 [1, 3, 3, 9, 4]
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval max_chopstick_pairs 3 1 [1, 2, 4]
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval max_chopstick_pairs 4 0 [1, 1, 2, 2]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

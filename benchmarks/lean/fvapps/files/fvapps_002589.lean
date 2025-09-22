@@ -23,25 +23,4 @@ theorem empty_string :
 
 theorem only_hash :
   remove_url_anchor "#" = "" := sorry
-
-/-
-info: 'www.codewars.com'
--/
--- #guard_msgs in
--- #eval remove_url_anchor "www.codewars.com#about"
-
-/-
-info: 'www.codewars.com/katas/?page=1'
--/
--- #guard_msgs in
--- #eval remove_url_anchor "www.codewars.com/katas/?page=1#about"
-
-/-
-info: 'www.codewars.com/katas/'
--/
--- #guard_msgs in
--- #eval remove_url_anchor "www.codewars.com/katas/"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

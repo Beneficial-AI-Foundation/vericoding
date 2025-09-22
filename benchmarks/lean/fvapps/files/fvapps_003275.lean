@@ -1,4 +1,10 @@
 -- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+-- <vc-definitions>
 def String.count (s : String) (c : Char) : Nat :=
   sorry
 
@@ -8,17 +14,8 @@ def String.strip (s : String) : String :=
 def array (s : String) : Option String :=
   sorry
 
-/- Helper functions -/
--- </vc-preamble>
-
--- <vc-helpers>
--- </vc-helpers>
-
--- <vc-definitions>
 def joinWithSpaces (xs : List String) : String :=
   sorry
-
-/- Main theorems that match property tests -/
 -- </vc-definitions>
 
 -- <vc-theorems>
@@ -31,37 +28,4 @@ theorem array_processes_middle_elements (s : String) :
   s.count ',' ≥ 2 →
   array s = some (joinWithSpaces (List.map String.strip (List.drop 1 (List.take (List.length (String.splitOn "," s) - 1) (String.splitOn "," s))))) :=
 sorry
-
-/-
-info: None
--/
--- #guard_msgs in
--- #eval array ""
-
-/-
-info: None
--/
--- #guard_msgs in
--- #eval array "1"
-
-/-
-info: None
--/
--- #guard_msgs in
--- #eval array "1,2"
-
-/-
-info: '2'
--/
--- #guard_msgs in
--- #eval array "1,2,3"
-
-/-
-info: '2 3'
--/
--- #guard_msgs in
--- #eval array "1,2,3,4"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

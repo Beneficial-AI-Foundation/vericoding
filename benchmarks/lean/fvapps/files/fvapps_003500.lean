@@ -25,25 +25,4 @@ theorem lcm_known_values :
 
 theorem mn_lcm_order_invariant {m n : Nat} :
   mn_lcm m n = mn_lcm n m := sorry
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval mn_lcm 1 2
-
-/-
-info: 6
--/
--- #guard_msgs in
--- #eval mn_lcm 2 3
-
-/-
-info: 2520
--/
--- #guard_msgs in
--- #eval mn_lcm 1 10
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

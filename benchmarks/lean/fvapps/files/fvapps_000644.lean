@@ -33,25 +33,4 @@ theorem solve_general_lexmin (l : Nat) (s : String) (hl : l ≥ 2) (hs : s.lengt
 theorem solve_single_char (c : Char) (h : 'a' ≤ c ∧ c ≤ 'z') :
   solve 1 (String.mk [c]) = String.mk [c] ∧ 
   solve 2 (String.mk [c]) = String.mk [c] := sorry
-
-/-
-info: 'arg'
--/
--- #guard_msgs in
--- #eval solve 1 "rga"
-
-/-
-info: 'abc'
--/
--- #guard_msgs in
--- #eval solve 2 "cab"
-
-/-
-info: 'cchefode'
--/
--- #guard_msgs in
--- #eval solve 4 "codechef"
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

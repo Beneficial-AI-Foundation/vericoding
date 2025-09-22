@@ -15,6 +15,3 @@ theorem large_inputs_succeed (d : Int) : d ≥ 5 → d ≤ 1000 → (solve_equat
 
 theorem non_positive_inputs_succeed (d : Int) : d ≤ 0 → d ≥ -1000 → (solve_equation d).1 = true := sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

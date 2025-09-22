@@ -38,6 +38,3 @@ theorem find_word_indices_correctness {n m : Nat} {group_a group_b : List String
     else
       result[i]! = "-1" := sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

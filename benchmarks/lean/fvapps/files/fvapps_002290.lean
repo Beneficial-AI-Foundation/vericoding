@@ -38,25 +38,4 @@ theorem bijection
   word_pattern pattern (String.intercalate " " mapped) = 
   (uniquePatternChars.length = uniqueMappedWords.length) :=
   sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval word_pattern "abba" "dog cat cat dog"
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval word_pattern "abba" "dog cat cat fish"
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval word_pattern "aaaa" "dog cat cat dog"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

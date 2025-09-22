@@ -21,25 +21,4 @@ theorem count_vowels_case_insensitive (s : String) :
 theorem count_vowels_empty :
   count_vowels "" = some 0 := by
   sorry
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval count_vowels "abcdefg"
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval count_vowels "aAbcdeEfg"
-
-/-
-info: None
--/
--- #guard_msgs in
--- #eval count_vowels 12
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

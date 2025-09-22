@@ -37,6 +37,3 @@ theorem keep_all {α : Type} (lst : List α) :
   inverse_slice lst lst.length lst.length = lst :=
   sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

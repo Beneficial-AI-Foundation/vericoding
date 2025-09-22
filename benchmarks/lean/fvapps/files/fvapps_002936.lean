@@ -27,25 +27,4 @@ theorem dashatize_preserves_number {n : Int} :
 
 theorem dashatize_none :
   dashatize none = "None" := sorry
-
-/-
-info: '2-7-4'
--/
--- #guard_msgs in
--- #eval dashatize 274
-
-/-
-info: '5-3-1-1'
--/
--- #guard_msgs in
--- #eval dashatize 5311
-
-/-
-info: '86-3-20'
--/
--- #guard_msgs in
--- #eval dashatize 86320
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

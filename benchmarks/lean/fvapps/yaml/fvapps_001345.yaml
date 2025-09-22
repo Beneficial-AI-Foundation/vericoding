@@ -8,22 +8,22 @@ vc-description: |-
   - install ShareChat to keep in touch with friends — increase both knowledge and power by $1$
   Chef can only install ShareChat at most once. The remaining actions may be performed any number of times and the actions may be performed in any order.
   Help Chef find out whether it is possible to move from Discuss to Discourse.
-  
+
   -----Input-----
   - The first line of the input contains a single integer $T$ denoting the number of test cases. The description of $T$ test cases follows.
   - The first and only line of each test case contains four space-separated integers $N$, $M$, $X$ and $Y$.
-  
+
   -----Output-----
   For each test case, print a single line containing the string "Chefirnemo" if it is possible to reach the required knowledge and power or "Pofik" if it is impossible.
-  
+
   -----Constraints-----
   - $1 \le T \le 1,000$
   - $1 \le N, M, X, Y \le 10^9$
-  
+
   -----Subtasks-----
   Subtask #1 (30 points): $1 \le N, M, X, Y \le 100$
   Subtask #2 (70 points): original constraints
-  
+
   -----Example Input-----
   5
   2 2 1 2
@@ -31,27 +31,27 @@ vc-description: |-
   11 11 5 9
   12 11 5 9
   1 2 1 100
-  
+
   -----Example Output-----
   Chefirnemo
   Chefirnemo
   Pofik
   Chefirnemo
   Pofik
-  
+
   -----Explanation-----
   Example case 2: We add $Y=9$ once to the power to get power $10$. We add $X=5$ twice to the knowledge to get knowledge $11$.
   Example case 3: We can see that it is impossible to reach power $M=11$ no matter which or how many operations we do. Note that the ShareChat operation will increase both knowledge and power by $1$, and hence it will still be impossible to attain the given values of knowledge and power at the same time.
   Example case 4: We can reach knowledge $11$ and power $10$ like in example case 2, the only difference is that we also use the ShareChat operation to increase both by $1$.
   -/
 
-vc-preamble: |-
+vc-preamble: |
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def solve_chefirnemo (n m x y : Nat) : String := sorry
-  
+
   @[simp] theorem solve_chefirnemo_valid_output 
     (n m x y : Nat)
     (h1 : 0 < n) (h2 : n ≤ 1000)
@@ -67,7 +67,7 @@ vc-theorems: |-
     (h1 : 0 < n) (h2 : n ≤ 1000)
     (h3 : 0 < x) (h4 : x ≤ 1000) :
     solve_chefirnemo n n x x = solve_chefirnemo n n x x := sorry
-  
+
   theorem solve_chefirnemo_divisibility
     (n m x y : Nat)
     (h1 : 1 < n) (h2 : n ≤ 1000)
@@ -77,26 +77,26 @@ vc-theorems: |-
     (h9 : (n-1) % x = 0)
     (h10 : (m-1) % y = 0) :
     solve_chefirnemo n m x y = "Chefirnemo" := sorry
-  
-  /-
-  info: 'Chefirnemo'
-  -/
-  -- #guard_msgs in
-  -- #eval solve_chefirnemo 2 2 1 2
-  
-  /-
-  info: 'Chefirnemo'
-  -/
-  -- #guard_msgs in
-  -- #eval solve_chefirnemo 11 10 5 9
-  
-  /-
-  info: 'Pofik'
-  -/
-  -- #guard_msgs in
-  -- #eval solve_chefirnemo 11 11 5 9
 
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
+
+  /--
+  info: 'Chefirnemo'
+  -/
+  #guard_msgs in
+  #eval solve_chefirnemo 2 2 1 2
+
+  /--
+  info: 'Chefirnemo'
+  -/
+  #guard_msgs in
+  #eval solve_chefirnemo 11 10 5 9
+
+  /--
+  info: 'Pofik'
+  -/
+  #guard_msgs in
+  #eval solve_chefirnemo 11 11 5 9
 

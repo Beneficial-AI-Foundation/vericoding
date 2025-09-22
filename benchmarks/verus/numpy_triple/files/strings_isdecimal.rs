@@ -25,7 +25,7 @@ spec fn all_chars_decimal(s: Seq<char>) -> bool
 fn isdecimal(a: Vec<String>) -> (result: Vec<bool>)
     ensures 
         result.len() == a.len(),
-        forall|i: int| 0 <= i < a.len() as int ==> {
+        forall|i: int| 0 <= i < a.len() ==> {
             &&& (result[i] == true <==> (a[i]@.len() > 0 && all_chars_decimal(a[i]@)))
             &&& (a[i]@ == Seq::<char>::empty() ==> result[i] == false)
         }

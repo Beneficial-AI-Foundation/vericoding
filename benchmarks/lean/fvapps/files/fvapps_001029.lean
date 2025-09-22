@@ -1,12 +1,13 @@
 -- <vc-preamble>
-def value (a b : Nat) (op : String) : Nat :=
-  sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
+def value (a b : Nat) (op : String) : Nat :=
+  sorry
+
 def solve_expression (expr : String) : Nat :=
   sorry
 -- </vc-definitions>
@@ -20,32 +21,11 @@ theorem value_nonnegativity {a b : Nat} {op : String} (h : op = "&" ∨ op = "|"
   value a b op ≥ 0 := by
   sorry
 
-theorem solve_expr_type {expr : String} : 
+theorem solve_expr_type {expr : String} :
   ∃ (n : Nat), solve_expression expr = n := by
   sorry
 
 theorem solve_expr_nonneg {expr : String} :
   solve_expression expr ≥ 0 := by
   sorry
-
-/-
-info: 43
--/
--- #guard_msgs in
--- #eval solve_expression "3^40|10^2"
-
-/-
-info: 95
--/
--- #guard_msgs in
--- #eval solve_expression "92^95|56&2&3"
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval solve_expression "1&2|3"
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

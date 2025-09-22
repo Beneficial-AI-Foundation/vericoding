@@ -25,25 +25,4 @@ theorem solve_k1_equals_maxsum (arr : List Int) (h : arr ≠ []) :
 
 theorem solve_concatenation (arr : List Int) (h : arr ≠ []) :
   solve arr 2 ≥ max_sum (arr ++ arr) := sorry
-
-/-
-info: 9
--/
--- #guard_msgs in
--- #eval solve [1, 2] 3
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval solve [1, -2, 1] 2
-
-/-
-info: -1
--/
--- #guard_msgs in
--- #eval solve [-1, -2, -3] 4
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

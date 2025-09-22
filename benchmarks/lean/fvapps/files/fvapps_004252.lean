@@ -26,25 +26,4 @@ theorem repeat_it_non_string_float (x : Float) (n : Nat) :
 
 theorem repeat_it_non_string_list {α : Type} [ToString α] (xs : List α) (n : Nat) :
   repeat_it (toString xs) n = "Not a string" := sorry
-
-/-
-info: '***'
--/
--- #guard_msgs in
--- #eval repeat_it "*" 3
-
-/-
-info: 'Not a string'
--/
--- #guard_msgs in
--- #eval repeat_it 24 3
-
-/-
-info: ''
--/
--- #guard_msgs in
--- #eval repeat_it "Hello" 0
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

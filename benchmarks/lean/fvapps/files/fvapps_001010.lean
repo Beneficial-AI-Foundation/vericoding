@@ -22,6 +22,3 @@ theorem value_is_maximum {stones : List Int} (h : stones.length > 0) :
   ∀ i j, 0 ≤ i → i ≤ j → j < stones.length → 
     val ≥ (List.range (j - i + 1)).foldl (fun acc k => acc * stones[i + k]!) 1 := sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

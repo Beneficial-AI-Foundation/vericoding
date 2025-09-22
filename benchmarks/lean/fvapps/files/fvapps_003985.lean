@@ -28,37 +28,4 @@ theorem palindrome_returns_self (n : Int)
   (h1 : 10 ≤ n ∧ n ≤ 10000)
   (h2 : isPalindrome (toString n)) :
   findNearestPalindrome n = toString n := sorry
-
-/-
-info: 11
--/
--- #guard_msgs in
--- #eval find_nearest_palindrome 8
-
-/-
-info: 282
--/
--- #guard_msgs in
--- #eval find_nearest_palindrome 281
-
-/-
-info: 1001
--/
--- #guard_msgs in
--- #eval find_nearest_palindrome 1029
-
-/-
-info: 1221
--/
--- #guard_msgs in
--- #eval find_nearest_palindrome 1221
-
-/-
-info: 'Not valid'
--/
--- #guard_msgs in
--- #eval find_nearest_palindrome "1221"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

@@ -58,76 +58,85 @@ vc-description: |-
   
   I have created other katas. Have a look if you like coding and challenges.
   -/
+  
+  -- Empty inputs theorem
+  
+  -- Visible characters theorem
 
 vc-preamble: |-
-  def watch_pyramid_from_the_side (chars : Option String) : Option String := sorry
-  def watch_pyramid_from_above (chars : Option String) : Option String := sorry
 
 vc-helpers: |-
 
 vc-definitions: |-
-  def count_visible_characters_of_the_pyramid (chars : Option String) : Int := sorry
-  def count_all_characters_of_the_pyramid (chars : Option String) : Int := sorry
+  def watch_pyramid_from_the_side (chars : Option String) : Option String :=
+  sorry
   
-  -- Empty inputs theorem
+  def watch_pyramid_from_above (chars : Option String) : Option String :=
+  sorry
+  
+  def count_visible_characters_of_the_pyramid (chars : Option String) : Int :=
+  sorry
+  
+  def count_all_characters_of_the_pyramid (chars : Option String) : Int :=
+  sorry
 
 vc-theorems: |-
-  theorem empty_inputs {chars : Option String} : 
+  theorem empty_inputs {chars : Option String} :
     chars = none ∨ chars = some "" →
-    watch_pyramid_from_the_side chars = chars ∧ 
+    watch_pyramid_from_the_side chars = chars ∧
     watch_pyramid_from_above chars = chars ∧
     count_visible_characters_of_the_pyramid chars = -1 ∧
-    count_all_characters_of_the_pyramid chars = -1 := sorry
-  
-  -- Visible characters theorem 
+    count_all_characters_of_the_pyramid chars = -1 :=
+  sorry
   
   theorem count_visible_chars {s : String} (h : s.length > 0) :
-    count_visible_characters_of_the_pyramid (some s) = 
-      (2 * s.length - 1) * (2 * s.length - 1) := sorry
-  
-  /-
-  info: None
-  -/
-  -- #guard_msgs in
-  -- #eval watch_pyramid_from_the_side None
-  
-  /-
-  info: ''
-  -/
-  -- #guard_msgs in
-  -- #eval watch_pyramid_from_the_side ""
-  
-  /-
-  info: -1
-  -/
-  -- #guard_msgs in
-  -- #eval count_visible_characters_of_the_pyramid None
-  
-  /-
-  info: expected_side
-  -/
-  -- #guard_msgs in
-  -- #eval watch_pyramid_from_the_side "abc"
-  
-  /-
-  info: expected_above
-  -/
-  -- #guard_msgs in
-  -- #eval watch_pyramid_from_above test_str
-  
-  /-
-  info: 25
-  -/
-  -- #guard_msgs in
-  -- #eval count_visible_characters_of_the_pyramid test_str
-  
-  /-
-  info: 35
-  -/
-  -- #guard_msgs in
-  -- #eval count_all_characters_of_the_pyramid test_str
+    count_visible_characters_of_the_pyramid (some s) =
+      (2 * s.length - 1) * (2 * s.length - 1) :=
+  sorry
 
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+  
+  /--
+  info: None
+  -/
+  #guard_msgs in
+  #eval watch_pyramid_from_the_side None
+  
+  /--
+  info: ''
+  -/
+  #guard_msgs in
+  #eval watch_pyramid_from_the_side ""
+  
+  /--
+  info: -1
+  -/
+  #guard_msgs in
+  #eval count_visible_characters_of_the_pyramid None
+  
+  /--
+  info: expected_side
+  -/
+  #guard_msgs in
+  #eval watch_pyramid_from_the_side "abc"
+  
+  /--
+  info: expected_above
+  -/
+  #guard_msgs in
+  #eval watch_pyramid_from_above test_str
+  
+  /--
+  info: 25
+  -/
+  #guard_msgs in
+  #eval count_visible_characters_of_the_pyramid test_str
+  
+  /--
+  info: 35
+  -/
+  #guard_msgs in
+  #eval count_all_characters_of_the_pyramid test_str
 

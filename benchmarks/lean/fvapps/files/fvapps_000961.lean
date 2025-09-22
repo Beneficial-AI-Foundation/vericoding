@@ -30,25 +30,4 @@ theorem larger_flagstone_fewer_tiles (n m a1 a2 : Nat)
 theorem minimal_coverage (n m a : Nat) (h1 : n > 0) (h2 : m > 0) (h3 : a > 0) :
   calculate_flagstones n m a * (a * a) ≥ n * m :=
   sorry
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval calculate_flagstones 6 6 4
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval calculate_flagstones 1 1 1
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval calculate_flagstones 7 7 4
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

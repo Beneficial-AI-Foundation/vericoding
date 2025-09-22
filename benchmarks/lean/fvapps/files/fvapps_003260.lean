@@ -34,25 +34,4 @@ theorem replace_zero_padding (arr : List Nat)
     replace_zero padded = replace_zero arr + 1 ∨
     replace_zero padded = 0 ∨
     replace_zero padded = arr.length + 1 := sorry
-
-/-
-info: 10
--/
--- #guard_msgs in
--- #eval replace_zero [1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 0, 1, 1]
-
-/-
-info: 5
--/
--- #guard_msgs in
--- #eval replace_zero [1, 1, 0, 1, 1, 0, 1, 1]
-
-/-
-info: 6
--/
--- #guard_msgs in
--- #eval replace_zero [1, 1, 1, 0, 1, 1, 0, 1, 1, 1]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

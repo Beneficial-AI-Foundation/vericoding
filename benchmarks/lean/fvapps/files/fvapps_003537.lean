@@ -27,25 +27,4 @@ theorem sort_array_preserves_odd_count (arr : List Int) :
   let result := sort_array arr
   (arr.filter (fun x => x % 2 ≠ 0)).length = 
   (result.filter (fun x => x % 2 ≠ 0)).length := sorry
-
-/-
-info: expected1
--/
--- #guard_msgs in
--- #eval sort_array [5, 3, 2, 8, 1, 4]
-
-/-
-info: expected2
--/
--- #guard_msgs in
--- #eval sort_array [2, 22, 37, 11, 4, 1, 5, 0]
-
-/-
-info: expected3
--/
--- #guard_msgs in
--- #eval sort_array [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

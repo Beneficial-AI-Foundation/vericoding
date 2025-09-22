@@ -19,25 +19,4 @@ theorem smash_length (words : List String) :
 
 theorem smash_nonempty_space_count {words : List String} (h : words ≠ []) :
   smash words = smash words := by sorry
-
-/-
-info: ''
--/
--- #guard_msgs in
--- #eval smash []
-
-/-
-info: 'hello'
--/
--- #guard_msgs in
--- #eval smash ["hello"]
-
-/-
-info: 'hello amazing world'
--/
--- #guard_msgs in
--- #eval smash ["hello", "amazing", "world"]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

@@ -28,6 +28,3 @@ theorem predict_exact_points
   let m : Datamining := {points := points}
   abs (predict m x0 - y0) < 0.000001 := sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

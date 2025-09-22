@@ -45,6 +45,3 @@ theorem no_measurements_unchanged
   (h2 : ¬text.containsStr "tsp") :
   convert_recipe text = text := sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

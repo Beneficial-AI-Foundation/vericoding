@@ -34,31 +34,4 @@ theorem high_p_values_fail
   (p_value: Float)
   (h1: 0.15 ≤ p_value) (h2: p_value ≤ 1) :
   categorize_study p_value 6 = "Pants on fire" := sorry
-
-/-
-info: 'Needs review'
--/
--- #guard_msgs in
--- #eval categorize_study 0.01 3
-
-/-
-info: 'Fine'
--/
--- #guard_msgs in
--- #eval categorize_study 0.04 6
-
-/-
-info: 'Needs review'
--/
--- #guard_msgs in
--- #eval categorize_study 0.0001 0
-
-/-
-info: 'Pants on fire'
--/
--- #guard_msgs in
--- #eval categorize_study 0.012 0
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

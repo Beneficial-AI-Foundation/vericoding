@@ -1,4 +1,10 @@
 -- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+-- <vc-definitions>
 def average (l : List Int) : Int :=
   sorry
 
@@ -7,12 +13,7 @@ def list_min (l : List Int) : Int :=
 
 def list_max (l : List Int) : Int :=
   sorry
--- </vc-preamble>
 
--- <vc-helpers>
--- </vc-helpers>
-
--- <vc-definitions>
 def list_sum (l : List Int) : Int :=
   sorry
 -- </vc-definitions>
@@ -39,6 +40,3 @@ theorem average_empty :
   average [] = 0 ∧ False := by
   sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

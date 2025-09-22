@@ -31,25 +31,4 @@ theorem evenNumbers_large_n (arr : List Int) :
   let n := arr.length + 1
   let result := evenNumbers arr n
   result = arr.filter (fun x => x % 2 = 0) := sorry
-
-/-
-info: [4, 6, 8]
--/
--- #guard_msgs in
--- #eval even_numbers [1, 2, 3, 4, 5, 6, 7, 8, 9] 3
-
-/-
-info: [-8, 26]
--/
--- #guard_msgs in
--- #eval even_numbers [-22, 5, 3, 11, 26, -6, -7, -8, -9, -8, 26] 2
-
-/-
-info: [6]
--/
--- #guard_msgs in
--- #eval even_numbers [6, -25, 3, 7, 5, 5, 7, -3, 23] 1
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

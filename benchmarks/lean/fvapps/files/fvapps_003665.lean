@@ -21,25 +21,4 @@ theorem apples_increases (n: Nat) (h: n ≥ 2) :
 theorem minimum_case :
   how_many_apples 2 = 7 :=
   sorry
-
-/-
-info: 7
--/
--- #guard_msgs in
--- #eval how_many_apples 2
-
-/-
-info: 3121
--/
--- #guard_msgs in
--- #eval how_many_apples 5
-
-/-
-info: 25
--/
--- #guard_msgs in
--- #eval how_many_apples 3
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

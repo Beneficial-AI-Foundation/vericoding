@@ -21,6 +21,3 @@ theorem valid_colors {n m : Nat}
     (k > 0) ∧
     (∀ row ∈ arr, ∀ c ∈ row, 1 ≤ c ∧ c ≤ k) := sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

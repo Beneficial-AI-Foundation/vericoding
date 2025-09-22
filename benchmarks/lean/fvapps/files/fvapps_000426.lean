@@ -21,25 +21,4 @@ theorem min_days_optimal_step (n : Nat) (h : n > 1) (h₂ : n ≤ 100) :
 theorem min_days_base_cases :
   min_days_to_eat_oranges 0 = 0 ∧ 
   min_days_to_eat_oranges 1 = 1 := sorry
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval min_days_to_eat_oranges 10
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval min_days_to_eat_oranges 6
-
-/-
-info: 6
--/
--- #guard_msgs in
--- #eval min_days_to_eat_oranges 56
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

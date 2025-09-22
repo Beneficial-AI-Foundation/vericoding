@@ -30,31 +30,4 @@ theorem list_bounds {α : Type} [Inhabited α] (items : List α) (default : α)
   solution items (-items.length - 1) default = default ∧
   solution items (items.length - 1) default = items.getLast h ∧
   solution items (-items.length) default = items.head! := sorry
-
-/-
-info: 'b'
--/
--- #guard_msgs in
--- #eval solution ["a", "b", "c"] 1 "d"
-
-/-
-info: 'd'
--/
--- #guard_msgs in
--- #eval solution ["a", "b", "c"] 5 "d"
-
-/-
-info: 'c'
--/
--- #guard_msgs in
--- #eval solution ["a", "b", "c"] -1 "d"
-
-/-
-info: 'd'
--/
--- #guard_msgs in
--- #eval solution ["a", "b", "c"] -5 "d"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

@@ -17,25 +17,4 @@ theorem single_char_pattern : ∀ (c : Char) (text : String),
 
 theorem empty_text : ∀ (pattern : String),
   pattern.length > 1 → solve pattern "" = 0 := sorry
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval solve "zaz" "zazapulz"
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval solve "rat" "ratatoulie"
-
-/-
-info: 7
--/
--- #guard_msgs in
--- #eval solve "kata" "katakatak"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

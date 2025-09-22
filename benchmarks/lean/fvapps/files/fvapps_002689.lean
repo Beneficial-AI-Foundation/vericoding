@@ -22,25 +22,4 @@ theorem switch_it_up_consistent {n : Nat} (h : n < 10) :
 
 theorem switch_it_up_injective {n1 n2 : Nat} (h1 : n1 < 10) (h2 : n2 < 10) :
   n1 ≠ n2 → switch_it_up n1 ≠ switch_it_up n2 := sorry
-
-/-
-info: 'Zero'
--/
--- #guard_msgs in
--- #eval switch_it_up 0
-
-/-
-info: 'Five'
--/
--- #guard_msgs in
--- #eval switch_it_up 5
-
-/-
-info: 'Nine'
--/
--- #guard_msgs in
--- #eval switch_it_up 9
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

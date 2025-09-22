@@ -34,25 +34,4 @@ theorem reverse_invariant {arr : List Nat} (h : arr ≠ []) :
   find_max_army_strength arr.length arr = 
   find_max_army_strength arr.length arr.reverse := by
   sorry
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval find_max_army_strength 3 [1, 3, 2]
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval find_max_army_strength 2 [1, 2]
-
-/-
-info: 9
--/
--- #guard_msgs in
--- #eval find_max_army_strength 7 [1, 2, 5, 4, 3, 6, 7]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

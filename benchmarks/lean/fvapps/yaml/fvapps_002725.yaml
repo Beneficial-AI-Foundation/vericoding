@@ -39,58 +39,66 @@ vc-description: |-
   -/
 
 vc-preamble: |-
-  def String.substringExists (s : String) (sub : String) : Bool := sorry
-  
-  def alan_annoying_kid (phrase : String) : String := sorry
 
 vc-helpers: |-
 
 vc-definitions: |-
-  def String.getWords (s : String) : List String := sorry
+  def String.substringExists (s : String) (sub : String) : Bool :=
+  sorry
   
+  def alan_annoying_kid (phrase : String) : String :=
+  sorry
+  
+  def String.getWords (s : String) : List String :=
+  sorry
+
+vc-theorems: |-
   theorem alan_preserves_verb (phrase : String) (verb : String)
     (h₁ : phrase.startsWith "Today I")
     (h₂ : verb ∈ phrase.getWords) :
-    verb ∈ (alan_annoying_kid phrase).getWords := sorry
-
-vc-theorems: |-
-  theorem alan_response_structure (phrase : String) (h₁ : phrase.startsWith "Today I") : 
+    verb ∈ (alan_annoying_kid phrase).getWords :=
+  sorry
+  
+  theorem alan_response_structure (phrase : String) (h₁ : phrase.startsWith "Today I") :
     let response := alan_annoying_kid phrase
-    response.startsWith "I don't think you" ∧ 
+    response.startsWith "I don't think you" ∧
     response.endsWith "!" ∧
-    response.substringExists "today" := sorry
+    response.substringExists "today" :=
+  sorry
   
   theorem alan_response_negation_negative (phrase : String) (h₁ : phrase.startsWith "Today I didn't") :
     let response := alan_annoying_kid phrase
-    response.substringExists "I think you did" ∧ 
-    response.substringExists "it!" := sorry
+    response.substringExists "I think you did" ∧
+    response.substringExists "it!" :=
+  sorry
   
-  theorem alan_response_negation_positive (phrase : String) 
+  theorem alan_response_negation_positive (phrase : String)
     (h₁ : phrase.startsWith "Today I")
     (h₂ : ¬phrase.substringExists "didn't") :
     let response := alan_annoying_kid phrase
     response.substringExists "I think you didn't" ∧
-    response.substringExists "at all!" := sorry
-  
-  /-
-  info: expected1
-  -/
-  -- #guard_msgs in
-  -- #eval alan_annoying_kid "Today I played football."
-  
-  /-
-  info: expected2
-  -/
-  -- #guard_msgs in
-  -- #eval alan_annoying_kid "Today I didn"t play football."
-  
-  /-
-  info: expected3
-  -/
-  -- #guard_msgs in
-  -- #eval alan_annoying_kid "Today I cleaned the kitchen."
+    response.substringExists "at all!" :=
+  sorry
 
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+  
+  /--
+  info: expected1
+  -/
+  #guard_msgs in
+  #eval alan_annoying_kid "Today I played football."
+  
+  /--
+  info: expected2
+  -/
+  #guard_msgs in
+  #eval alan_annoying_kid "Today I didn"t play football."
+  
+  /--
+  info: expected3
+  -/
+  #guard_msgs in
+  #eval alan_annoying_kid "Today I cleaned the kitchen."
 

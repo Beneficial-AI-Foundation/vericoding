@@ -18,25 +18,4 @@ theorem triangle_inequality {a b c : Int} :
 
 theorem equilateral_triangle {side : Int} :
   side > 0 → is_triangle side side side = true := sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval is_triangle 1 2 2
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval is_triangle 7 2 2
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval is_triangle 0 2 3
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

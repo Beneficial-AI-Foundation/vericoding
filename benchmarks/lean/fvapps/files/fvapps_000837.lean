@@ -15,6 +15,3 @@ theorem find_kth_highest_non_negative (n k : Nat) :
   find_kth_highest_bt_number n k ≥ 0 :=
 sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

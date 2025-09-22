@@ -37,25 +37,4 @@ theorem meters_special_values :
   meters 1000 = "1km" ∧ 
   meters 1000000 = "1Mm" :=
 sorry
-
-/-
-info: '5m'
--/
--- #guard_msgs in
--- #eval meters 5
-
-/-
-info: '51.5km'
--/
--- #guard_msgs in
--- #eval meters 51500
-
-/-
-info: '5Mm'
--/
--- #guard_msgs in
--- #eval meters 5000000
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

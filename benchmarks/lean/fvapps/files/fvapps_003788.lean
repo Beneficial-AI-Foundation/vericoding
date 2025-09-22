@@ -24,25 +24,4 @@ theorem nbr_of_laps_equal_distance (x y : Nat)
 theorem nbr_of_laps_same_length (x : Nat)
   (h : x > 0) :
   nbr_of_laps x x = (1, 1) := sorry
-
-/-
-info: (3, 5)
--/
--- #guard_msgs in
--- #eval nbr_of_laps 5 3
-
-/-
-info: (3, 2)
--/
--- #guard_msgs in
--- #eval nbr_of_laps 4 6
-
-/-
-info: (1, 1)
--/
--- #guard_msgs in
--- #eval nbr_of_laps 5 5
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

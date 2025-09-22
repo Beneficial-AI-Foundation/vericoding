@@ -45,25 +45,4 @@ theorem find_min_time_monotonic_tracks (n m : Nat) (heads tracks : List Nat)
   (h5 : ∀ t ∈ tracks, t < new_track) :
   find_min_time n (m+1) heads (tracks ++ [new_track]) ≥
   find_min_time n m heads tracks := sorry
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval find_min_time 3 4 [2, 5, 6] [1, 3, 6, 8]
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval find_min_time 3 3 [1, 2, 3] [1, 2, 3]
-
-/-
-info: 81
--/
--- #guard_msgs in
--- #eval find_min_time 1 2 [165] [142, 200]
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: guarded

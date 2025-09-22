@@ -27,25 +27,4 @@ theorem missing_alphabets_only_non_max (s : String) (h : s.length > 0) :
   ∃ max_input_count : Nat, 
     (∀ c, c.isLower → counts_for_char s c ≤ max_input_count) ∧
     (∀ c ∈ result.data, counts_for_char s c < max_input_count) := sorry
-
-/-
-info: 'z'
--/
--- #guard_msgs in
--- #eval missing_alphabets "abcdefghijklmnopqrstuvwxy"
-
-/-
-info: 'zz'
--/
--- #guard_msgs in
--- #eval missing_alphabets "aabbccddeeffgghhiijjkkllmmnnooppqqrrssttuuvvwwxxyy"
-
-/-
-info: 'bfghijklmnpqtuvxyz'
--/
--- #guard_msgs in
--- #eval missing_alphabets "codewars"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

@@ -38,6 +38,3 @@ theorem print_pattern_symmetry {n : Nat} (h : n > 0) :
   (∀ row ∈ result, row = List.reverse row) ∧
   result = List.reverse result := sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

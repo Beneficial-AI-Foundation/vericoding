@@ -32,25 +32,4 @@ theorem find_permutation_equivalent (arr₁ arr₂ : List Nat) (target : Nat)
   (h4 : ∀ x, List.count x arr₁ = List.count x arr₂) :
   find arr₁ target = find arr₂ target :=
 sorry
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval find [1, 2, 3] 5
-
-/-
-info: 5
--/
--- #guard_msgs in
--- #eval find [3, 6, 9, 12] 12
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval find [1, 4, 5, 8] 8
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

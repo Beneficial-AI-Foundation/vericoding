@@ -31,25 +31,4 @@ theorem equal_freq_three_chars_not_dynamic (s : String) (h1 : s.length ≥ 6)
     (h3 : (s.data.filter (· = 'a')).length = (s.data.filter (· = 'b')).length)
     (h4 : (s.data.filter (· = 'b')).length = (s.data.filter (· = 'c')).length) :
   is_dynamic_string s = "Not" := sorry
-
-/-
-info: 'Dynamic'
--/
--- #guard_msgs in
--- #eval is_dynamic_string "aaaabccc"
-
-/-
-info: 'Not'
--/
--- #guard_msgs in
--- #eval is_dynamic_string "aabbcc"
-
-/-
-info: 'Dynamic'
--/
--- #guard_msgs in
--- #eval is_dynamic_string "ppppmmnnoooopp"
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

@@ -35,25 +35,4 @@ theorem all_wrong (tests : List Nat) (r w o : Int)
   (h : ∀ x ∈ tests, x = 2) :
   score_test tests r w o = tests.length * (-w) :=
   sorry
-
-/-
-info: 9
--/
--- #guard_msgs in
--- #eval score_test [0, 0, 0, 0, 2, 1, 0] 2 0 1
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval score_test [0, 1, 0, 0, 2, 1, 0, 2, 2, 1] 3 -1 2
-
-/-
-info: 70
--/
--- #guard_msgs in
--- #eval score_test [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0] 5 -1 2
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

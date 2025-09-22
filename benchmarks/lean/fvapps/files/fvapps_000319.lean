@@ -1,15 +1,16 @@
 -- <vc-preamble>
-def find132pattern (nums : List Int) : Bool :=
-  sorry
-
-def has_132_pattern_brute_force (nums : List Int) : Bool :=
-  sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
+def find132pattern (nums : List Int) : Bool :=
+  sorry
+
+def has_132_pattern_brute_force (nums : List Int) : Bool :=
+  sorry
+
 def isSorted (nums : List Int) (cmp : Int → Int → Bool) : Bool :=
   sorry
 -- </vc-definitions>
@@ -17,42 +18,21 @@ def isSorted (nums : List Int) (cmp : Int → Int → Bool) : Bool :=
 -- <vc-theorems>
 theorem find132pattern_matches_bruteforce {nums : List Int} :
   find132pattern nums = has_132_pattern_brute_force nums :=
-  sorry
+sorry
 
 theorem short_sequences_return_false {nums : List Int} :
   List.length nums ≤ 2 → find132pattern nums = false :=
-  sorry
+sorry
 
 theorem monotonic_increasing_no_pattern {nums : List Int} :
   isSorted nums (fun x y => x ≤ y) → find132pattern nums = false :=
-  sorry 
+sorry
 
 theorem monotonic_decreasing_no_pattern {nums : List Int} :
   isSorted nums (fun x y => x ≥ y) → find132pattern nums = false :=
-  sorry
+sorry
 
 theorem same_elements_no_pattern {nums : List Int} {x : Int} :
   nums.length ≥ 3 → nums = List.replicate nums.length x → find132pattern nums = false :=
-  sorry
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval find132pattern [1, 2, 3, 4]
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval find132pattern [3, 1, 4, 2]
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval find132pattern [-1, 3, 2, 0]
+sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

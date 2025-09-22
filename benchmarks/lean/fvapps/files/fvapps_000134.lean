@@ -27,25 +27,4 @@ theorem diagonal_grid_theorem (n : Nat) :
 
 theorem example_case_theorem :
   maxIncreaseKeepingSkyline [[1,2], [2,1]] = 2 := sorry
-
-/-
-info: 35
--/
--- #guard_msgs in
--- #eval maxIncreaseKeepingSkyline [[3, 0, 8, 4], [2, 4, 5, 7], [9, 2, 6, 3], [0, 3, 1, 0]]
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval maxIncreaseKeepingSkyline [[5]]
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval maxIncreaseKeepingSkyline [[1, 2], [2, 1]]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

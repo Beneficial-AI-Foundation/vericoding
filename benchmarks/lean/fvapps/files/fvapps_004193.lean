@@ -36,25 +36,4 @@ theorem result_bounded_above (a b c : Nat)
 theorem result_equal_inputs (x : Nat)
   (h : 1 ≤ x ∧ x ≤ 10) :
   expression_matter x x x = max (x*x*x) (max (3*x) (2*x*x)) := sorry
-
-/-
-info: 9
--/
--- #guard_msgs in
--- #eval expression_matter 1 2 3
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval expression_matter 1 1 1
-
-/-
-info: 18
--/
--- #guard_msgs in
--- #eval expression_matter 9 1 1
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

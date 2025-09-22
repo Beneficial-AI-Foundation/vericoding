@@ -25,25 +25,4 @@ theorem size_three_good_iff_pattern (s : String) (h : s.length = 3) :
 
 theorem short_string_is_bad (s : String) (h : s.length < 3) :
   classify_feedback s = "Bad" := sorry
-
-/-
-info: 'Bad'
--/
--- #guard_msgs in
--- #eval classify_feedback "11111110"
-
-/-
-info: 'Good'
--/
--- #guard_msgs in
--- #eval classify_feedback "10101010101010"
-
-/-
-info: 'Good'
--/
--- #guard_msgs in
--- #eval classify_feedback "00010"
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

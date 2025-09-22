@@ -35,25 +35,4 @@ sorry
 theorem periodic_behavior_mod (n : Nat) :
   lastFibDigit n = lastFibDigit (n % 60) :=
 sorry
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval last_fib_digit 1
-
-/-
-info: 6
--/
--- #guard_msgs in
--- #eval last_fib_digit 21
-
-/-
-info: 5
--/
--- #guard_msgs in
--- #eval last_fib_digit 1000
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

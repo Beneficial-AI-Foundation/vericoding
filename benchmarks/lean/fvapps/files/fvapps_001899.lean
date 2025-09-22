@@ -25,25 +25,4 @@ theorem triangle_impossible :
 theorem simple_chain_possible :
   possible_bipartition 4 [[1,2], [2,3], [3,4]] = true := by
   sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval possible_bipartition 4 [[1, 2], [1, 3], [2, 4]]
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval possible_bipartition 3 [[1, 2], [1, 3], [2, 3]]
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval possible_bipartition 5 [[1, 2], [2, 3], [3, 4], [4, 5], [1, 5]]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

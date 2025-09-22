@@ -1,15 +1,16 @@
 -- <vc-preamble>
-def almost_everywhere_zero (n : Nat) (k : Nat) : Nat :=
-  sorry
-
-def comb (n : Nat) (k : Nat) : Nat :=
-  sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
+def almost_everywhere_zero (n : Nat) (k : Nat) : Nat :=
+  sorry
+
+def comb (n : Nat) (k : Nat) : Nat :=
+  sorry
+
 def num_digits (n : Nat) : Nat :=
   sorry
 -- </vc-definitions>
@@ -38,25 +39,4 @@ sorry
 theorem aez_single_nonzero (n : Nat) (h : n > 0) :
   almost_everywhere_zero n 1 ≥ num_digits n :=
 sorry
-
-/-
-info: 19
--/
--- #guard_msgs in
--- #eval almost_everywhere_zero 100 1
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval almost_everywhere_zero 11 2
-
-/-
-info: 9
--/
--- #guard_msgs in
--- #eval almost_everywhere_zero 20 2
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

@@ -36,25 +36,4 @@ theorem find_vaccine_days_identical_schedules
   (h1 : d > 0) (h2 : v > 0) (h3 : p > 0) :
   find_vaccine_days d v d v p = find_vaccine_days d (2*v) (d+100) 0 p :=
   sorry
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval find_vaccine_days 1 2 1 3 14
-
-/-
-info: 9
--/
--- #guard_msgs in
--- #eval find_vaccine_days 5 4 2 10 100
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval find_vaccine_days 1 1 1 1 5
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

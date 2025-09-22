@@ -19,6 +19,3 @@ theorem invalid_numbers_return_no_seat (n : Nat) (l : Char)
   (h2 : l ∈ ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'K']) :
   plane_seat (toString n ++ toString l) = "No Seat!!" := sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

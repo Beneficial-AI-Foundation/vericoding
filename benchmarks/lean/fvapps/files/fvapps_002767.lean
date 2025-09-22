@@ -40,25 +40,4 @@ theorem minimal_case :
 
 theorem monotonic_first_value (n : Nat) (h : n > 1) (h2 : n ≤ 20) :
   (combs_non_empty_boxesII (n-1)).get! 0 < (combs_non_empty_boxesII n).get! 0 := sorry
-
-/-
-info: [15, 7, 2]
--/
--- #guard_msgs in
--- #eval combs_non_empty_boxesII 4
-
-/-
-info: [5, 3, 2]
--/
--- #guard_msgs in
--- #eval combs_non_empty_boxesII 3
-
-/-
-info: [2, 1, 2]
--/
--- #guard_msgs in
--- #eval combs_non_empty_boxesII 2
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

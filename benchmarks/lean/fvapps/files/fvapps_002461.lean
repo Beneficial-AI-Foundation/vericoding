@@ -19,25 +19,4 @@ theorem test_k_equals_one {s : String} (h : s ≠ "") :
 theorem test_dedupe_properties {s : String} (h₁ : s.all Char.isUpper) (h₂ : s.length ≤ 5) (h₃ : s ≠ "") :
   let deduped := dedupe_sort_string s
   deduped.data = deduped.data.eraseDups := sorry
-
-/-
-info: 'A\nC\nH\nK\nAC\nAH\nAK\nCH\nCK\nHK'
--/
--- #guard_msgs in
--- #eval print_string_combinations "HACK" 2
-
-/-
-info: 'X\nY\nZ'
--/
--- #guard_msgs in
--- #eval print_string_combinations "XYZ" 1
-
-/-
-info: 'A\nB\nC\nAB\nAC\nBC\nABC'
--/
--- #guard_msgs in
--- #eval print_string_combinations "ABC" 3
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

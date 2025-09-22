@@ -1,17 +1,15 @@
 -- <vc-preamble>
-def solveDie (n : Nat) (nums : List Nat) : List Nat :=
-  sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
-def isValidConfig (config : List Nat) : Bool :=
+def solveDie (n : Nat) (nums : List Nat) : List Nat :=
   sorry
 
-/- If solveDie returns [0], it indicates no valid configuration exists.
-    Otherwise, returns a valid die configuration that works with the input sequence. -/
+def isValidConfig (config : List Nat) : Bool :=
+  sorry
 -- </vc-definitions>
 
 -- <vc-theorems>
@@ -21,16 +19,10 @@ theorem die_configuration_theorem (n : Nat) (nums : List Nat) :
     ∀ i : Nat, i + 1 < n →
       nums[i]! ≠ nums[i+1]! ∧
       nums[i+1]! ≠ result[nums[i]! - 1]! :=
-  sorry
-
-/- If there are adjacent equal numbers in the input sequence,
-    no valid die configuration exists -/
+sorry
 
 theorem adjacent_same_numbers_theorem (n : Nat) (nums : List Nat) :
   (∃ i : Nat, i + 1 < n ∧ nums[i]! = nums[i+1]!) →
   solveDie n nums = [0] :=
-  sorry
+sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

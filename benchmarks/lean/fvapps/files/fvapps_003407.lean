@@ -1,12 +1,13 @@
 -- <vc-preamble>
-def greatest (x y n : Nat) : Nat :=
-  sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
+def greatest (x y n : Nat) : Nat :=
+  sorry
+
 def smallest (x y n : Nat) : Nat :=
   sorry
 -- </vc-definitions>
@@ -16,50 +17,11 @@ theorem divisible_by_inputs {x y n : Nat} (hx : x > 0) (hy : y > 0) :
   let g := greatest x y (max x y * 2)
   let s := smallest x y (max x y * 2)
   g % x = 0 ∧ g % y = 0 ∧ s % x = 0 ∧ s % y = 0 :=
-  sorry
+sorry
 
 theorem bounds {x y n : Nat} (hx : x > 0) (hy : y > 0) (hn : n > 0) :
   let g := greatest x y n
-  let s := smallest x y n  
+  let s := smallest x y n
   g < n ∧ s > n ∧ s > g :=
-  sorry
-
-/-
-info: 18
--/
--- #guard_msgs in
--- #eval greatest 2 3 20
-
-/-
-info: 24
--/
--- #guard_msgs in
--- #eval smallest 2 3 20
-
-/-
-info: 90
--/
--- #guard_msgs in
--- #eval greatest 5 15 100
-
-/-
-info: 105
--/
--- #guard_msgs in
--- #eval smallest 5 15 100
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval greatest 123 456 789
-
-/-
-info: 18696
--/
--- #guard_msgs in
--- #eval smallest 123 456 789
+sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

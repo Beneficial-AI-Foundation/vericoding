@@ -25,25 +25,4 @@ theorem result_length_bounded {n : Nat} {seq : List Nat} (h : seq.length > 0) :
   let result := solve n seq
   result.length ≤ seq.length :=
 sorry
-
-/-
-info: [1, 2]
--/
--- #guard_msgs in
--- #eval solve 2 [1, 1, 2, 2]
-
-/-
-info: [1, 3, 4, 2]
--/
--- #guard_msgs in
--- #eval solve 4 [1, 3, 1, 4, 3, 4, 2, 2]
-
-/-
-info: [1, 2, 3]
--/
--- #guard_msgs in
--- #eval solve 3 [1, 2, 3, 1, 2, 3]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

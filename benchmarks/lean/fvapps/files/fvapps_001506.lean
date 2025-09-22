@@ -32,25 +32,4 @@ theorem unique_elements {n : Int}
   (h : n > 0) :
   let numbers := (arrange_tiles n).split (· = ' ') |>.map String.toInt!
   numbers.eraseDups = numbers := sorry
-
-/-
-info: '1'
--/
--- #guard_msgs in
--- #eval arrange_tiles 1
-
-/-
-info: '2 3'
--/
--- #guard_msgs in
--- #eval arrange_tiles 2
-
-/-
-info: '3 4 2'
--/
--- #guard_msgs in
--- #eval arrange_tiles 3
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

@@ -32,6 +32,3 @@ theorem basic_properties_valid_results {arr : List Int} {queries : List Int}
   ∀ x ∈ result, x = -1 ∨ x ≥ 0 :=
   sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

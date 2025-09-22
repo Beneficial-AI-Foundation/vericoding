@@ -20,25 +20,4 @@ theorem broken_calc_greater_case {start target : Nat} (h : start > target) :
 
 theorem broken_calc_bounds :
   broken_calc 1 (10^9) ≥ 0 ∧ broken_calc (10^9) 1 = 10^9 - 1 := sorry
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval broken_calc 2 3
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval broken_calc 5 8
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval broken_calc 3 10
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

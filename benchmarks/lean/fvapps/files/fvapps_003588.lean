@@ -24,25 +24,4 @@ sorry
 theorem past_midnight :
   past 0 0 0 = 0 :=
 sorry
-
-/-
-info: 61000
--/
--- #guard_msgs in
--- #eval past 0 1 1
-
-/-
-info: 3661000
--/
--- #guard_msgs in
--- #eval past 1 1 1
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval past 0 0 0
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

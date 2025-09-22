@@ -20,25 +20,4 @@ theorem unemployed_no_alarm (vacation : Bool) :
 
 theorem vacation_no_alarm (employed : Bool) :
   set_alarm employed true = false := sorry
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval set_alarm True True
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval set_alarm False True
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval set_alarm True False
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

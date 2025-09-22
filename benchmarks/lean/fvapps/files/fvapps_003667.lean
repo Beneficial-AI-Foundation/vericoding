@@ -23,25 +23,4 @@ theorem mirror_preserves_non_mapped_chars :
 
 theorem basic_mirror :
   mirror "abcxyz" = "zyxcba" := sorry
-
-/-
-info: 'dvoxlnv slnv'
--/
--- #guard_msgs in
--- #eval mirror "Welcome home"
-
-/-
-info: 'adllo'
--/
--- #guard_msgs in
--- #eval mirror "hello" "abcdefgh"
-
-/-
-info: 'this is a secret'
--/
--- #guard_msgs in
--- #eval mirror "gsrh rh z hvxivg"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

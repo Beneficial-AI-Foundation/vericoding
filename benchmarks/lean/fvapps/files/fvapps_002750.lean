@@ -21,25 +21,4 @@ theorem count_ways_k_one {n : Nat} (h : n ≥ 1) :
 theorem count_ways_k_geq_n {n k : Nat} (h1 : n ≥ 1) (h2 : k ≥ n) :
   count_ways n k = count_ways n n :=
   sorry
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval count_ways 1 3
-
-/-
-info: 13
--/
--- #guard_msgs in
--- #eval count_ways 5 3
-
-/-
-info: 492
--/
--- #guard_msgs in
--- #eval count_ways 10 6
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

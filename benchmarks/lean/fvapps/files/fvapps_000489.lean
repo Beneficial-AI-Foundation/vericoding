@@ -24,25 +24,4 @@ theorem calculate_multiplication (a b : Int)
 theorem calculate_division (a b : Int)
   (h₁ : 1 ≤ a ∧ a ≤ 50) (h₂ : 1 ≤ b ∧ b ≤ 50) :
   calculate (toString a ++ "/" ++ toString b) = some (a / b) := sorry
-
-/-
-info: 7
--/
--- #guard_msgs in
--- #eval calculate "3+2*2"
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval calculate " 3/2 "
-
-/-
-info: 5
--/
--- #guard_msgs in
--- #eval calculate " 3+5 / 2 "
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

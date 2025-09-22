@@ -33,25 +33,4 @@ theorem gaps_in_sequence_property (l : List (Int × Char)) :
 
 theorem non_list_inputs_return_none :
   denumerate [] = none := sorry
-
-/-
-info: 'monty'
--/
--- #guard_msgs in
--- #eval denumerate [(4, "y"), (1, "o"), (3, "t"), (0, "m"), (2, "n")]
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval denumerate [1]
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval denumerate [(0, "a"), (2, "b")]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

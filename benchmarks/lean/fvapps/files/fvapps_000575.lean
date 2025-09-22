@@ -19,25 +19,4 @@ theorem matches_input_except_last (n : Nat) :
 
 theorem last_digit_in_range (n : Nat) :
   0 ≤ find_jojo_aadhar n % 10 ∧ find_jojo_aadhar n % 10 ≤ 9 := sorry
-
-/-
-info: 37
--/
--- #guard_msgs in
--- #eval find_jojo_aadhar 3
-
-/-
-info: 109
--/
--- #guard_msgs in
--- #eval find_jojo_aadhar 10
-
-/-
-info: 424
--/
--- #guard_msgs in
--- #eval find_jojo_aadhar 42
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

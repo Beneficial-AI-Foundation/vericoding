@@ -39,19 +39,4 @@ theorem hyperrectangularity_non_rectangular
   (arr : List (List Nat))
   (h : arr = [[1,2], [1]])
   : hyperrectangularity_properties arr = none := sorry
-
-/-
-info: (0,)
--/
--- #guard_msgs in
--- #eval hyperrectangularity_properties []
-
-/-
-info: (3, 3)
--/
--- #guard_msgs in
--- #eval hyperrectangularity_properties [[0, 1, 2], [3, 4, 5], [6, 7, 8]]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

@@ -1,18 +1,19 @@
 -- <vc-preamble>
-def circularly_sorted (xs : List Int) : Bool :=
-  sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
+def circularly_sorted (xs : List Int) : Bool :=
+  sorry
+
 def isSorted (xs : List Int) : Bool :=
   sorry
 -- </vc-definitions>
 
 -- <vc-theorems>
-theorem sorted_is_circular {xs : List Int} (h : xs.length > 0) : 
+theorem sorted_is_circular {xs : List Int} (h : xs.length > 0) :
   isSorted xs → circularly_sorted xs = true :=
 sorry
 
@@ -32,25 +33,4 @@ theorem unsorted_not_circular {xs : List Int} (h : xs.length > 1)
   (not_sorted : ∀ i, i < xs.length → ¬(isSorted (List.drop i xs ++ List.take i xs))) :
   circularly_sorted xs = false :=
 sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval circularly_sorted [2, 3, 4, 5, 0, 1]
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval circularly_sorted [1, 2, 3, 4, 5]
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval circularly_sorted [4, 1, 2, 5]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

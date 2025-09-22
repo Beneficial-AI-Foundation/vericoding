@@ -46,6 +46,3 @@ theorem single_nonzero (N : Nat) (h : 0 < N) (h2 : N ≤ 4) :
   (result.get? 0).isSome → 1 ≤ result.get! 0 :=
 sorry
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: guarded

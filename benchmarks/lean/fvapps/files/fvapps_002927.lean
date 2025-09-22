@@ -32,6 +32,3 @@ theorem who_is_paying_short_strings (name : String) (h : name.length ≤ 2) :
   result.length = 1 ∧
   result.head! = name := sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

@@ -1,23 +1,24 @@
 -- <vc-preamble>
-def DAYS : List String := ["saturday", "sunday", "monday", "tuesday", "wednesday", "thursday", "friday"]
-
-def indexOfDay (day: String) : Nat :=
-sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
+def DAYS : List String := ["saturday", "sunday", "monday", "tuesday", "wednesday", "thursday", "friday"]
+
+def indexOfDay (day: String) : Nat :=
+sorry
+
 def solveCompetitionDuration (startDay endDay: String) (l r: Nat) : String ⊕ Nat :=
 sorry
 -- </vc-definitions>
 
 -- <vc-theorems>
-theorem competition_duration_impossible {startDay endDay: String} {l r: Nat} 
+theorem competition_duration_impossible {startDay endDay: String} {l r: Nat}
   (h1: l ≤ r)
   (h2: solveCompetitionDuration startDay endDay l r = Sum.inl "impossible") :
-  ∀ x, l ≤ x → x ≤ r → 
+  ∀ x, l ≤ x → x ≤ r →
     x % 7 ≠ ((indexOfDay endDay - indexOfDay startDay + 8) % 7) :=
 sorry
 
@@ -38,30 +39,9 @@ theorem competition_duration_specific {startDay endDay: String} {l r n: Nat}
   n + 7 > r :=
 sorry
 
-theorem same_day_property {day: String} 
+theorem same_day_property {day: String}
   (h: day ∈ DAYS) :
   solveCompetitionDuration day day 1 20 = Sum.inr 7 ∨
   solveCompetitionDuration day day 1 20 = Sum.inl "many" :=
 sorry
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval solve_competition_duration "saturday" "sunday" 2 4
-
-/-
-info: 'many'
--/
--- #guard_msgs in
--- #eval solve_competition_duration "monday" "wednesday" 1 20
-
-/-
-info: 'impossible'
--/
--- #guard_msgs in
--- #eval solve_competition_duration "saturday" "sunday" 3 5
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

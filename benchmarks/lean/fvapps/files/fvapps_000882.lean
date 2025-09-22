@@ -1,12 +1,13 @@
 -- <vc-preamble>
-def check_valid_snake_procession (report : String) : String :=
-sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
+def check_valid_snake_procession (report : String) : String :=
+sorry
+
 def is_valid_segment (s₁ s₂ : Char) : Bool :=
 sorry
 -- </vc-definitions>
@@ -33,25 +34,4 @@ theorem running_count_bounds_if_valid (report : String) (n : Nat) :
   let count := h_count - t_count
   count ≥ 0 ∧ count ≤ 1 :=
 sorry
-
-/-
-info: 'Valid'
--/
--- #guard_msgs in
--- #eval check_valid_snake_procession "..H..T...HTH....T."
-
-/-
-info: 'Invalid'
--/
--- #guard_msgs in
--- #eval check_valid_snake_procession "H..H..T..T"
-
-/-
-info: 'Valid'
--/
--- #guard_msgs in
--- #eval check_valid_snake_procession "HT"
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

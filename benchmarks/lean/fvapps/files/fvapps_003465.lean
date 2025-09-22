@@ -1,15 +1,16 @@
 -- <vc-preamble>
-def seqR : String → Bool 
-  | _ => sorry
-
-def seqB : String → Bool
-  | _ => sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
+def seqR : String → Bool :=
+  sorry
+
+def seqB : String → Bool :=
+  sorry
+
 def button_sequences (r : String) (b : String) : String :=
   sorry
 -- </vc-definitions>
@@ -32,25 +33,4 @@ theorem button_sequences_all_zeros_blue (s : String) (h : s.length > 0) :
   let zeros := String.mk (List.replicate s.length '0')
   ∀ c, c ∈ (button_sequences zeros s).toList → c = 'B' :=
 sorry
-
-/-
-info: 'RBRB'
--/
--- #guard_msgs in
--- #eval button_sequences "10011010" "10110111"
-
-/-
-info: 'RB'
--/
--- #guard_msgs in
--- #eval button_sequences "01001000" "01011100"
-
-/-
-info: 'RBRBRBRB'
--/
--- #guard_msgs in
--- #eval button_sequences "10101010" "01010101"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

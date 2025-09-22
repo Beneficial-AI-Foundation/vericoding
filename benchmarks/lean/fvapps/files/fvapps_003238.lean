@@ -36,25 +36,4 @@ theorem palindrome_chain_length_eleven :
 
 theorem palindrome_chain_length_ten :
   palindrome_chain_length 10 = 1 := by sorry
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval palindrome_chain_length 87
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval palindrome_chain_length 1
-
-/-
-info: 24
--/
--- #guard_msgs in
--- #eval palindrome_chain_length 89
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

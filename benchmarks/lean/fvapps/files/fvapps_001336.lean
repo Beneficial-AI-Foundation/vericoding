@@ -32,25 +32,4 @@ theorem multisets_simple_coefficients {target : Nat}
   let result := calculate_multisets #[1,0,0,0] target 
   result > 0 ∧ result < MOD := by
   sorry
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval calculate_multisets #[1, 0, 0, 0] 1
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval calculate_multisets #[1, 0, 0, 0] 3
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval calculate_multisets #[0, 1, 0, 0] 2
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

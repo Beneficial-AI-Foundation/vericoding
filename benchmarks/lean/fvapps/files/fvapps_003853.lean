@@ -30,25 +30,4 @@ theorem evenator_properties (words : List String) :
 theorem evenator_empty_and_whitespace (s : String) 
   (h : ∀ c ∈ s.data, ¬c.isAlpha ∧ ¬c.isDigit) :
   evenator s = "" := sorry
-
-/-
-info: 'II gott aa hole in 11'
--/
--- #guard_msgs in
--- #eval evenator "I got a hole in 1!"
-
-/-
-info: 'hi howw aree youu Byee'
--/
--- #guard_msgs in
--- #eval evenator test2
-
-/-
-info: 'underr thee seAA'
--/
--- #guard_msgs in
--- #eval evenator test3
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

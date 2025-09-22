@@ -29,25 +29,4 @@ theorem sort_reindeer_idempotent (names: List String) :
 
 theorem sort_reindeer_empty : 
   sort_reindeer [] = [] := sorry
-
-/-
-info: expected1
--/
--- #guard_msgs in
--- #eval sort_reindeer ["Dasher Tonoyan", "Dancer Moore", "Prancer Chua"]
-
-/-
-info: expected2
--/
--- #guard_msgs in
--- #eval sort_reindeer []
-
-/-
-info: expected3
--/
--- #guard_msgs in
--- #eval sort_reindeer ["Kenjiro Mori", "Susumu Mori", "Akira Mori"]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

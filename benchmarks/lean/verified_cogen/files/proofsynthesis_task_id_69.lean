@@ -22,6 +22,3 @@ theorem isSubList_spec_satisfied (main : Array Int) (sub : Array Int) (h_precond
     isSubList_postcond main sub (isSubList main sub h_precond) h_precond := by
   sorry
 -- </vc-theorems>
-
-def main : IO Unit := do
-  return ()

@@ -25,25 +25,4 @@ theorem overlapping_pairs_property (pairs : List (Int × Int)) (first : Int × I
 theorem non_overlapping_sequence_length (n : Nat) :
   let pairs := List.map (fun i => (Int.ofNat (2 * i), Int.ofNat (2 * i + 1))) (List.range n)
   find_longest_chain pairs = n := sorry
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval find_longest_chain [[1, 2], [2, 3], [3, 4]]
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval find_longest_chain [[1, 5], [2, 3], [4, 6]]
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval find_longest_chain [[1, 2], [7, 8], [3, 4], [5, 6]]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

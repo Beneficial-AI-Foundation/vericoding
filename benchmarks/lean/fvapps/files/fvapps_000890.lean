@@ -24,25 +24,4 @@ theorem find_min_cake_cost_symmetric (n m : Nat)
   (hn : n > 0) (hm : m > 0) :
   find_min_cake_cost n m = find_min_cake_cost m n :=
   sorry
-
-/-
-info: 6
--/
--- #guard_msgs in
--- #eval find_min_cake_cost 2 3
-
-/-
-info: 12
--/
--- #guard_msgs in
--- #eval find_min_cake_cost 4 6
-
-/-
-info: 35
--/
--- #guard_msgs in
--- #eval find_min_cake_cost 5 7
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

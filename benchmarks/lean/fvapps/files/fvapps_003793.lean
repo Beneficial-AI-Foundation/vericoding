@@ -38,25 +38,4 @@ theorem cup_volume_cylinder_case
   (h1 : d > 1)
   (h2 : h > 1) :
   cup_volume d d h = pi * (d * d) * h / 4 := sorry
-
-/-
-info: 0.79
--/
--- #guard_msgs in
--- #eval cup_volume 1 1 1
-
-/-
-info: 638.79
--/
--- #guard_msgs in
--- #eval cup_volume 10 8 10
-
-/-
-info: 1858.51
--/
--- #guard_msgs in
--- #eval cup_volume 5 12 31
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

@@ -1,15 +1,16 @@
 -- <vc-preamble>
-def isLeapYear (year : Int) : Bool :=
-  sorry
-
-def isValidDate (year month day : Int) : Bool :=
-  sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
+def isLeapYear (year : Int) : Bool :=
+  sorry
+
+def isValidDate (year month day : Int) : Bool :=
+  sorry
+
 def countCorrectPills (dateStr : String) : Int :=
   sorry
 -- </vc-definitions>
@@ -48,25 +49,4 @@ theorem thirtyone_day_months_count (year month day : Int) :
   let result := countCorrectPills s!"{year}:{month}:{day}"
   result ≥ 1 :=
 sorry
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval count_correct_pills "2019:03:31"
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval count_correct_pills "2020:02:28"
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval count_correct_pills "2000:12:31"
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

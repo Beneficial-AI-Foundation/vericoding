@@ -25,25 +25,4 @@ theorem symmetric_distance (x y : Int) (h : 0 ≤ x ∧ 0 ≤ y) :
   findCloserTruck coords1 = findCloserTruck coords2 ∧
   findCloserTruck coords2 = findCloserTruck coords3 ∧
   findCloserTruck coords3 = findCloserTruck coords4 := sorry
-
-/-
-info: 'A IS CLOSER'
--/
--- #guard_msgs in
--- #eval find_closer_truck [3, -2, -5, -3]
-
-/-
-info: 'B IS CLOSER'
--/
--- #guard_msgs in
--- #eval find_closer_truck [0, 6, 1, 2]
-
-/-
-info: 'B IS CLOSER'
--/
--- #guard_msgs in
--- #eval find_closer_truck [-7, 8, 4, -1]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

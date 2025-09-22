@@ -24,25 +24,4 @@ theorem between_extremes_nonnegative (nums : List Int) (h : nums ≠ []) :
 theorem between_extremes_singleton (n : Int) :
   between_extremes [n] = 0 :=
   sorry
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval between_extremes [1, 1]
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval between_extremes [1, -1]
-
-/-
-info: 42
--/
--- #guard_msgs in
--- #eval between_extremes [21, 34, 54, 43, 26, 12]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

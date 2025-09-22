@@ -23,6 +23,3 @@ theorem solve_repeated_stones {N : Nat} {stones : List Nat} :
     stones[i]! = stones[j]! →
     (solve N stones)[j]! = 0 := sorry
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: guarded

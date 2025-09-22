@@ -31,25 +31,4 @@ sorry
 theorem adjacent_start_end_one_path :
   unique_paths_covering_all_squares [[1,2]] = 1 :=
 sorry
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval unique_paths_covering_all_squares [[1, 0, 0, 0], [0, 0, 0, 0], [0, 0, 2, -1]]
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval unique_paths_covering_all_squares [[1, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 2]]
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval unique_paths_covering_all_squares [[0, 1], [2, 0]]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

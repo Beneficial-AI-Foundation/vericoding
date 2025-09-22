@@ -20,25 +20,4 @@ theorem symmetric_subscribers_upper_bound
 theorem symmetric_subscribers_identical_lists
   (nums : List Int) :
   symmetric_subscribers nums nums = 0 := sorry
-
-/-
-info: 8
--/
--- #guard_msgs in
--- #eval symmetric_subscribers [1, 2, 3, 4, 5, 6, 7, 8, 9] [10, 1, 2, 3, 11, 21, 55, 6, 8]
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval symmetric_subscribers [1, 2, 3] [3, 4, 5]
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval symmetric_subscribers [1, 2] [3, 4]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

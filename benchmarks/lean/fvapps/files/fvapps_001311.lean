@@ -33,6 +33,3 @@ theorem min_remove_empty_string :
   ∀ k, min_remove_for_kgood "" k = 0 :=
 sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

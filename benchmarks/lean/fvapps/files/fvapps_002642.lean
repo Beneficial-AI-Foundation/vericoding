@@ -32,37 +32,4 @@ theorem likes_four_plus_case (names : List String) (h : names.length ≥ 4) :
 
 theorem likes_others_count_correct (names : List String) (h : names.length ≥ 4) :
   ∃ pre post : String, likes names = pre ++ toString (names.length - 2) ++ post := by sorry
-
-/-
-info: 'no one likes this'
--/
--- #guard_msgs in
--- #eval likes []
-
-/-
-info: 'Peter likes this'
--/
--- #guard_msgs in
--- #eval likes ["Peter"]
-
-/-
-info: 'Jacob and Alex like this'
--/
--- #guard_msgs in
--- #eval likes ["Jacob", "Alex"]
-
-/-
-info: 'Max, John and Mark like this'
--/
--- #guard_msgs in
--- #eval likes ["Max", "John", "Mark"]
-
-/-
-info: 'Alex, Jacob and 2 others like this'
--/
--- #guard_msgs in
--- #eval likes ["Alex", "Jacob", "Mark", "Max"]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

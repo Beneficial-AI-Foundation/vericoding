@@ -28,31 +28,4 @@ theorem is_prime_even (n : Int) (h1 : n > 2) (h2 : n % 2 = 0) :
 
 theorem is_prime_deterministic (n : Int) :
   is_prime n = is_prime n := sorry
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval is_prime 0
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval is_prime 2
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval is_prime 73
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval is_prime -1
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

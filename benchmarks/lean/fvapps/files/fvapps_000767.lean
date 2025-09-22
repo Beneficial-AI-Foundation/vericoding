@@ -36,25 +36,4 @@ theorem no_movement_needed (s : String) :
   (s.toList.dropWhile (· = '1')).isEmpty →
   solve_moving_soldiers s = 0 :=
 sorry
-
-/-
-info: 8
--/
--- #guard_msgs in
--- #eval solve_moving_soldiers "10100"
-
-/-
-info: 10
--/
--- #guard_msgs in
--- #eval solve_moving_soldiers "1100001"
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval solve_moving_soldiers "000000000111"
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

@@ -23,25 +23,4 @@ theorem kangaroo_faster_behind (k1 k2 r1 r2 : Int) :
 
 theorem kangaroo_faster_behind_symmetric (k1 k2 r1 r2 : Int) :
   (r2 > r1 ∧ k2 > k1) → kangaroo k1 r1 k2 r2 = false := sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval kangaroo 0 3 4 2
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval kangaroo 0 9 16 4
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval kangaroo -1 3 0 2
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

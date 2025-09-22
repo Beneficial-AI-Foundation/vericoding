@@ -34,25 +34,4 @@ theorem better_than_average_edge_cases2 :
 theorem better_than_average_edge_cases3 :
   better_than_average [0] 1 = true :=
   sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval better_than_average [2, 3] 5
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval better_than_average [100, 40, 34, 57, 29, 72, 57, 88] 75
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval better_than_average [12, 23, 34, 45, 56, 67, 78, 89, 90] 69
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

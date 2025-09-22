@@ -25,6 +25,3 @@ theorem pete_talk_respects_ok_words {s : String} {okWords : List String}
     (h2 : word.toLower ∈ s.toLower.split (· = ' ')) :
     word.toLower ∈ (peteTalk s okWords).toLower.split (· = ' ') := sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

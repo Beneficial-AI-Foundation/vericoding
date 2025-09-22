@@ -22,6 +22,3 @@ theorem count_pairs_bounds (arr : List Nat) :
   0 ≤ count_pairs arr ∧ count_pairs arr ≤ (arr.length * (arr.length - 1)) / 2 :=
 sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

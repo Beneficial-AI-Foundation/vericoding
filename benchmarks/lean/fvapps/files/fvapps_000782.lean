@@ -25,19 +25,4 @@ theorem count_set_bits_or_bound : ∀ a b : Nat,
 
 theorem count_set_bits_and_bound : ∀ a b : Nat,
   count_set_bits (a &&& b) ≤ min (count_set_bits a) (count_set_bits b) := sorry
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval ways_to_shuffle 1 2 3
-
-/-
-info: 56
--/
--- #guard_msgs in
--- #eval ways_to_shuffle 369 428 797
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

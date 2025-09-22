@@ -22,25 +22,4 @@ theorem special_number_when_digits_le_five (n : Nat) :
 
 theorem non_special_number_when_digit_gt_five (n : Nat) :
   (∃ d, d ∈ digits n ∧ d > 5) → special_number n = "NOT!!" := sorry
-
-/-
-info: 'Special!!'
--/
--- #guard_msgs in
--- #eval special_number 2
-
-/-
-info: 'Special!!'
--/
--- #guard_msgs in
--- #eval special_number 23
-
-/-
-info: 'NOT!!'
--/
--- #guard_msgs in
--- #eval special_number 79
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

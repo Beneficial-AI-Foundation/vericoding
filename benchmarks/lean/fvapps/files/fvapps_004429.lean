@@ -24,6 +24,3 @@ theorem iter_pi_decimal_places {ε : Float} (h : ε > 0) (h2 : ε ≤ 0.1) :
   let result := iter_pi ε
   result.get! 1 = result.get! 1 := sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

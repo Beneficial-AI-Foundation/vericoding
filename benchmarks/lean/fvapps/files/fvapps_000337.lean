@@ -25,25 +25,4 @@ theorem k_zero_or_negative_fails {nums: List Int} {k: Int}
 theorem result_invariant_under_even_multiplication {nums: List Int} {k: Int}
   (h1: ∀ x ∈ nums, 1 ≤ x ∧ x ≤ 100) (h2: 1 ≤ k ∧ k ≤ 100) :
   number_of_subarrays nums k = number_of_subarrays (nums.map (λ x => if x % 2 = 0 then x * 2 else x)) k := sorry
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval number_of_subarrays [1, 1, 2, 1, 1] 3
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval number_of_subarrays [2, 4, 6] 1
-
-/-
-info: 16
--/
--- #guard_msgs in
--- #eval number_of_subarrays [2, 2, 2, 1, 2, 2, 1, 2, 2, 2] 2
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

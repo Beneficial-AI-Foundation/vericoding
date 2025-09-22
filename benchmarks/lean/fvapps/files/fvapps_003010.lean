@@ -29,25 +29,4 @@ theorem twos_difference_complete (lst : List Int) :
 
 theorem twos_difference_empty (lst : List Int) :
   lst = [] → twos_difference lst = [] := sorry
-
-/-
-info: [(1, 3), (2, 4)]
--/
--- #guard_msgs in
--- #eval twos_difference [1, 2, 3, 4]
-
-/-
-info: [(1, 3), (3, 5), (4, 6)]
--/
--- #guard_msgs in
--- #eval twos_difference [4, 3, 1, 5, 6]
-
-/-
-info: []
--/
--- #guard_msgs in
--- #eval twos_difference []
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

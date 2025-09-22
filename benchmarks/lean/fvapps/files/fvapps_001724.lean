@@ -16,25 +16,4 @@ theorem solution_size (n : Nat) (h : n ≥ 4) :
 
 theorem queens_in_bounds (n : Nat) (h : n ≥ 4) :
   ∀ x ∈ nQueen n, 0 ≤ x ∧ x < n := sorry
-
-/-
-info: [0]
--/
--- #guard_msgs in
--- #eval nQueen 1
-
-/-
-info: [1, 3, 0, 2]
--/
--- #guard_msgs in
--- #eval nQueen 4
-
-/-
-info: []
--/
--- #guard_msgs in
--- #eval nQueen 2
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

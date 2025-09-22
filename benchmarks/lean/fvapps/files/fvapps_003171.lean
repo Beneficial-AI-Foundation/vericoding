@@ -26,6 +26,3 @@ theorem single_digit_identity (n : Nat) :
   n < 10 → getSumOfDigits n = n :=
   sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

@@ -17,25 +17,4 @@ theorem split_sentence_nonempty_parts (s : String) :
 
 theorem split_sentence_no_whitespace (s : String) :
   ∀ part ∈ splitSentence s, ' ' ∉ part.data := sorry
-
-/-
-info: ['This', 'string', 'is', 'splitsville']
--/
--- #guard_msgs in
--- #eval splitSentence "This string is splitsville"
-
-/-
-info: ['something']
--/
--- #guard_msgs in
--- #eval splitSentence "something"
-
-/-
-info: ['hello', 'world']
--/
--- #guard_msgs in
--- #eval splitSentence "hello world"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

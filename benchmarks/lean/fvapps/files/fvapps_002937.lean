@@ -38,25 +38,4 @@ theorem find_2nd_largest_ordering
   | none => True
   | some x => (arr.eraseDups.filter (fun y => y > x)).length = 1
   := sorry
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval find_2nd_largest [1, 2, 3]
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval find_2nd_largest [1, "a", "2", 3, 3, 4, 5, "b"]
-
-/-
-info: 3333333333333333333334
--/
--- #guard_msgs in
--- #eval find_2nd_largest [1, "a", "2", 3, 3, 3333333333333333333334, 544444444444444444444444444444, "b"]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

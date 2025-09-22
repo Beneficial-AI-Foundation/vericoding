@@ -20,25 +20,4 @@ theorem lovefunc_same_number (x : Int) :
 
 theorem lovefunc_consecutive (x : Int) :
   lovefunc x (x + 1) = true := sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval lovefunc 1 4
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval lovefunc 2 2
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval lovefunc 0 1
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

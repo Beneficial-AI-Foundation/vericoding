@@ -34,25 +34,4 @@ theorem blocks_sorted_within_block (s : String) :
     (c₁.isDigit && !c₂.isDigit) || 
     (!c₁.isDigit && c₁.isUpper && !c₂.isUpper) ||
     (!c₁.isDigit && !c₂.isDigit && !c₁.isUpper && !c₂.isUpper && c₁ ≤ c₂) := sorry
-
-/-
-info: 'aehiklmpsty-ekst-est'
--/
--- #guard_msgs in
--- #eval blocks "heyitssampletestkk"
-
-/-
-info: ''
--/
--- #guard_msgs in
--- #eval blocks ""
-
-/-
-info: 'xzAB12'
--/
--- #guard_msgs in
--- #eval blocks "21AxBz"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

@@ -32,6 +32,3 @@ theorem create_arrays_distinctness {dims : List Nat}
   zeros ≠ ones :=
 sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

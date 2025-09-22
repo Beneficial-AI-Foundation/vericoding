@@ -1,6 +1,4 @@
 -- <vc-preamble>
-namespace BignumLean
-
 def ValidBitString (s : String) : Prop :=
   ∀ {i c}, s.get? i = some c → (c = '0' ∨ c = '1')
 
@@ -15,11 +13,11 @@ axiom Compare_spec (s1 s2 : String) (h1 : ValidBitString s1) (h2 : ValidBitStrin
   (Str2Int s1 = Str2Int s2 → Compare s1 s2 = 0) ∧
   (Str2Int s1 > Str2Int s2 → Compare s1 s2 = 1)
 
-def Sub (s1 s2 : String) : String :=
+def Sub_ (s1 s2 : String) : String :=
   sorry
 
 axiom Sub_spec (s1 s2 : String) (h1 : ValidBitString s1) (h2 : ValidBitString s2) :
-  ValidBitString (Sub s1 s2) ∧ Str2Int (Sub s1 s2) + Str2Int s2 = Str2Int s1
+  ValidBitString (Sub_ s1 s2) ∧ Str2Int (Sub_ s1 s2) + Str2Int s2 = Str2Int s1
 -- </vc-preamble>
 
 -- <vc-helpers>
@@ -37,5 +35,3 @@ theorem DivMod_spec (s1 s2 : String) (h1 : ValidBitString s1) (h2 : ValidBitStri
   ValidBitString q ∧ ValidBitString r ∧ Str2Int s1 = Str2Int q * Str2Int s2 + Str2Int r := by
   sorry
 -- </vc-theorems>
-
-end BignumLean

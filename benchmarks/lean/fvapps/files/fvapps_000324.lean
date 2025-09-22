@@ -32,25 +32,4 @@ theorem min_jumps_identical_elements (n : Nat) (h : n ≥ 2) :
 theorem min_jumps_adjacent_reachable {arr : List Int} (h : arr.length ≥ 2)
   (h2 : ∀ i, i < arr.length - 1 → arr[i]! = arr[i+1]!) :
   min_jumps arr ≤ arr.length - 1 := sorry
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval min_jumps [100, -23, -23, 404, 100, 23, 23, 23, 3, 404]
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval min_jumps [7]
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval min_jumps [7, 6, 9, 6, 9, 6, 9, 7]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

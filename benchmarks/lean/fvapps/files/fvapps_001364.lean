@@ -1,55 +1,45 @@
 -- <vc-preamble>
-def can_make_palindrome (s : String) : Bool := sorry
-def process_test_case (s : String) : String := sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
-def reverse (s : String) : String := sorry
+def can_make_palindrome (s : String) : Bool :=
+sorry
 
-theorem palindrome_stays_true {s : String} :
-  s = reverse s → can_make_palindrome s = true := sorry
+def process_test_case (s : String) : String :=
+sorry
+
+def reverse (s : String) : String :=
+sorry
 -- </vc-definitions>
 
 -- <vc-theorems>
+theorem palindrome_stays_true {s : String} :
+  s = reverse s → can_make_palindrome s = true :=
+sorry
+
 theorem single_char_is_palindrome {s : String} :
-  s.length = 1 → can_make_palindrome s = true := sorry
+  s.length = 1 → can_make_palindrome s = true :=
+sorry
 
 theorem reverse_preserves_palindrome {s : String} :
-  can_make_palindrome s = can_make_palindrome (reverse s) := sorry
+  can_make_palindrome s = can_make_palindrome (reverse s) :=
+sorry
 
-theorem process_returns_yes_no {s : String} 
+theorem process_returns_yes_no {s : String}
   (h : s.length > 0) :
-  process_test_case s = "YES" ∨ process_test_case s = "NO" := sorry
+  process_test_case s = "YES" ∨ process_test_case s = "NO" :=
+sorry
 
 theorem process_matches_can_make {s : String} :
-  (process_test_case s = "YES") = can_make_palindrome s := sorry
+  (process_test_case s = "YES") = can_make_palindrome s :=
+sorry
 
 theorem basic_palindrome_cases :
-  can_make_palindrome "a" ∧ 
+  can_make_palindrome "a" ∧
   can_make_palindrome "aa" ∧
-  can_make_palindrome "aba" := sorry
-
-/-
-info: 'YES'
--/
--- #guard_msgs in
--- #eval process_test_case "aaa"
-
-/-
-info: 'NO'
--/
--- #guard_msgs in
--- #eval process_test_case "abc"
-
-/-
-info: 'YES'
--/
--- #guard_msgs in
--- #eval process_test_case "abdbca"
+  can_make_palindrome "aba" :=
+sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

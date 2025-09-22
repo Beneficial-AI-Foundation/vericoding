@@ -29,25 +29,4 @@ theorem capitals_first_basic_patterns {s : String}
     j < ((capitals_first s).split (· = ' ')).length ∧
     (∀ w ∈ ((capitals_first s).split (· = ' '))[i]?, ∀ c ∈ w.get? 0, c.isUpper) ∧
     (∀ w ∈ ((capitals_first s).split (· = ' '))[j]?, ∀ c ∈ w.get? 0, c.isLower) := sorry
-
-/-
-info: 'You, Sort Already! hey me'
--/
--- #guard_msgs in
--- #eval capitals_first "hey You, Sort me Already!"
-
-/-
-info: 'Does That Make sense to you?'
--/
--- #guard_msgs in
--- #eval capitals_first "sense Does to That Make you?"
-
-/-
-info: 'Life Sometimes gets pretty'
--/
--- #guard_msgs in
--- #eval capitals_first "Life gets Sometimes pretty !Hard"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

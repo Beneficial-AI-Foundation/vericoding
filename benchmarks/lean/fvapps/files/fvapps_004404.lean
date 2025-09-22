@@ -30,25 +30,4 @@ theorem small_alphabet (s : List Char) (h : s ≠ [])
   (h2 : ∀ c, c ∈ s → c = 'a' ∨ c = 'b') :
   ∀ c, c ∈ center_of s → c = 'a' ∨ c = 'b' :=
 sorry
-
-/-
-info: ''
--/
--- #guard_msgs in
--- #eval center_of ""
-
-/-
-info: 'aba'
--/
--- #guard_msgs in
--- #eval center_of "abc"
-
-/-
-info: 'aecea'
--/
--- #guard_msgs in
--- #eval center_of "abcde"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

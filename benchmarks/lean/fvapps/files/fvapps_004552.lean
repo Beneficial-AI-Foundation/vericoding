@@ -32,25 +32,4 @@ theorem nth_floyd_small_cases :
   nth_floyd 3 = 2 ∧ 
   nth_floyd 4 = 3 :=
   sorry
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval nth_floyd 3
-
-/-
-info: 6
--/
--- #guard_msgs in
--- #eval nth_floyd 17
-
-/-
-info: 1000
--/
--- #guard_msgs in
--- #eval nth_floyd 499502
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

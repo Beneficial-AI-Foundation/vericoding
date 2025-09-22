@@ -24,6 +24,3 @@ theorem even_length_even_occurrences_palindrome (s : String) :
 theorem single_char_palindrome_permutable (c : Char) :
   permute_a_palindrome (String.singleton c) = true := sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

@@ -1,21 +1,13 @@
 -- <vc-preamble>
-def souls (character : String) (build : List Nat) : String :=
-  sorry
-
 def isValidCharacter (c : String) : Bool :=
   match c with
-  | "warrior" | "knight" | "wanderer" | "thief" | "bandit" 
+  | "warrior" | "knight" | "wanderer" | "thief" | "bandit"
   | "hunter" | "sorcerer" | "pyromancer" | "cleric" | "deprived" => true
   | _ => false
 
 def isValidBuild (b : List Nat) : Bool :=
   b.length = 8 && b.all (fun x => x ≥ 1 && x ≤ 99)
--- </vc-preamble>
 
--- <vc-helpers>
--- </vc-helpers>
-
--- <vc-definitions>
 def baseStats (c : String) : List Nat :=
   match c with
   | "warrior" => [11, 8, 12, 13, 13, 11, 9, 9]
@@ -29,6 +21,14 @@ def baseStats (c : String) : List Nat :=
   | "cleric" => [11, 11, 9, 12, 8, 11, 8, 14]
   | "deprived" => [11, 11, 11, 11, 11, 11, 11, 11]
   | _ => []
+-- </vc-preamble>
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+-- <vc-definitions>
+def souls (character : String) (build : List Nat) : String :=
+  sorry
 -- </vc-definitions>
 
 -- <vc-theorems>
@@ -38,10 +38,10 @@ theorem souls_returns_valid_string
     (hb : isValidBuild b = true) :
     let result := souls c b
     result.startsWith s!"Starting as a {c}" ∧
-    ("level" ∈ result.splitOn " ") ∧ 
+    ("level" ∈ result.splitOn " ") ∧
     ("will require" ∈ result.splitOn " ") ∧
     result.endsWith "souls." :=
-  sorry
+sorry
 
 theorem souls_returns_non_negative_souls
     {c : String} {b : List Nat}
@@ -50,33 +50,12 @@ theorem souls_returns_non_negative_souls
     let result := souls c b
     let soulsNeeded := result.splitOn "require " |>.get! 1 |>.splitOn " souls" |>.get! 0 |>.toNat!
     soulsNeeded ≥ 0 :=
-  sorry
+sorry
 
 theorem zero_change_requires_zero_souls
     {c : String}
     (hc : isValidCharacter c = true) :
     let result := souls c (baseStats c)
     result.endsWith "will require 0 souls." :=
-  sorry
-
-/-
-info: 'Starting as a deprived, level 6 will require 0 souls.'
--/
--- #guard_msgs in
--- #eval souls "deprived" [11, 11, 11, 11, 11, 11, 11, 11]
-
-/-
-info: 'Starting as a pyromancer, level 2 will require 673 souls.'
--/
--- #guard_msgs in
--- #eval souls "pyromancer" [10, 12, 11, 12, 9, 12, 11, 8]
-
-/-
-info: 'Starting as a pyromancer, level 12 will require 8348 souls.'
--/
--- #guard_msgs in
--- #eval souls "pyromancer" [16, 12, 11, 12, 9, 12, 13, 10]
+sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

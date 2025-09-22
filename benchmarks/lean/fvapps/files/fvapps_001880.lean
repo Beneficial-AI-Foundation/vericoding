@@ -1,12 +1,13 @@
 -- <vc-preamble>
-def shoppingOffers (price : List Int) (special : List (List Int)) (needs : List Int) : Int :=
-  sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
+def shoppingOffers (price : List Int) (special : List (List Int)) (needs : List Int) : Int :=
+  sorry
+
 def isValidInput (price : List Int) (special : List (List Int)) (needs : List Int) : Bool :=
   sorry
 -- </vc-definitions>
@@ -37,25 +38,4 @@ theorem shoppingOffers_no_special_equals_list_price
   (h_valid : isValidInput price [] needs) :
   shoppingOffers price [] needs = (List.zip price needs).foldl (fun acc (p, n) => acc + p * n) 0 :=
 sorry
-
-/-
-info: 14
--/
--- #guard_msgs in
--- #eval shoppingOffers [2, 5] [[3, 0, 5], [1, 2, 10]] [3, 2]
-
-/-
-info: 11
--/
--- #guard_msgs in
--- #eval shoppingOffers [2, 3, 4] [[1, 1, 0, 4], [2, 2, 1, 9]] [1, 2, 1]
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval shoppingOffers [1, 1, 1] [[1, 1, 0, 3], [2, 2, 1, 5]] [1, 1, 1]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

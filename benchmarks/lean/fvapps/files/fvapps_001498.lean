@@ -63,6 +63,3 @@ theorem single_cell_volumes (rows cols : Nat) (grid : List (List Nat)) (h : rows
     result.length > 0 ∧
     result[0]! = normalized_grid[i]![j]! := sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

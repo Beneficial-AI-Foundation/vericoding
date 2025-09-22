@@ -43,19 +43,4 @@ theorem snake_parade_order_invariant
   ∀ perm : List Nat, perm.length = starting_positions.length →
   solve_snake_parade n l a b starting_positions =
   solve_snake_parade n l a b perm := sorry
-
-/-
-info: 16
--/
--- #guard_msgs in
--- #eval solve_snake_parade 3 4 11 23 [10, 11, 30]
-
-/-
-info: 16
--/
--- #guard_msgs in
--- #eval solve_snake_parade 3 4 11 40 [10, 11, 30]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

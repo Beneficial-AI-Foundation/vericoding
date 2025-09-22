@@ -1,76 +1,76 @@
 vc-description: |-
   /-
   The factorial of a number, `n!`, is defined for whole numbers as the product of all integers from `1` to `n`. 
-  
+
   For example, `5!` is `5 * 4 * 3 * 2 * 1 = 120`
-  
+
   Most factorial implementations use a recursive function to determine the value of `factorial(n)`. However, this blows up the stack for large values of `n` - most systems cannot handle stack depths much greater than 2000 levels.
-  
+
   Write an implementation to calculate the factorial of arbitrarily large numbers, *without recursion.*
-  
+
   # Rules
-  
+
   * `n < 0` should return `nil`/  `None`
   * `n = 0` should return `1`
   * `n > 0` should return `n!`
-  
+
   # Note
-  
+
   Codewars limits the amount of data it will send back and forth, which may introduce a false ceiling for how high of a value of `n` it will accept. All tests use values less than this limit.
   -/
 
-vc-preamble: |-
+vc-preamble: |
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def factorial : Int → Option Int
     | n => sorry
-  
+
   -- Basic factorial properties
 
 vc-theorems: |-
   theorem factorial_negative {n : Int} : 
     n < 0 → factorial n = none := sorry
-  
+
   theorem factorial_zero : 
     factorial 0 = some 1 := sorry
-  
+
   theorem factorial_multiplicative {n : Int} : 
     n > 0 → factorial n = some (n * (factorial (n-1)).get!) := sorry
-  
+
   theorem factorial_positive {n : Int} :
     n ≥ 0 → (factorial n).isSome ∧ (factorial n).get! > 0 := sorry
-  
+
   -- Recurrence relation
-  
+
   theorem factorial_recurrence {n : Int} :
     n > 0 → factorial n = some (n * (factorial (n-1)).get!) := sorry
-  
+
   -- Monotonicity
-  
+
   theorem factorial_increasing {n : Int} :
     n > 1 → (factorial n).get! > (factorial (n-1)).get! := sorry
-  
-  /-
-  info: 120
-  -/
-  -- #guard_msgs in
-  -- #eval factorial 5
-  
-  /-
-  info: 1
-  -/
-  -- #guard_msgs in
-  -- #eval factorial 0
-  
-  /-
-  info: None
-  -/
-  -- #guard_msgs in
-  -- #eval factorial -5
 
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+
+  /--
+  info: 120
+  -/
+  #guard_msgs in
+  #eval factorial 5
+
+  /--
+  info: 1
+  -/
+  #guard_msgs in
+  #eval factorial 0
+
+  /--
+  info: None
+  -/
+  #guard_msgs in
+  #eval factorial -5
 

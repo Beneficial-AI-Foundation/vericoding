@@ -1,6 +1,4 @@
 -- <vc-preamble>
-namespace BignumLean
-
 def ValidBitString (s : String) : Prop :=
   ∀ {i c}, s.get? i = some c → (c = '0' ∨ c = '1')
 
@@ -24,5 +22,3 @@ theorem NormalizeBitString_spec (s : String) :
   (ValidBitString s → Str2Int s = Str2Int (NormalizeBitString s)) := by
   sorry
 -- </vc-theorems>
-
-end BignumLean

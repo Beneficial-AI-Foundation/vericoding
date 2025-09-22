@@ -30,6 +30,3 @@ theorem crashes_monotonic_with_time {N K t : Nat} {directions positions : List N
   (count_crashes N K directions positions [t]).head! ≥ 
   (count_crashes N K directions positions [t-1]).head! := sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

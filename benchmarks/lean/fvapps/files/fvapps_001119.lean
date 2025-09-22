@@ -43,6 +43,3 @@ theorem corner_hearts_symmetry
   Float.abs (result1 - result2) < 1e-10 :=
 sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

@@ -36,6 +36,3 @@ theorem roll_dice_monotonicity
     (h7: threshold < rolls * sides) :
     roll_dice rolls sides threshold ≥ roll_dice rolls sides (threshold + 1) := sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

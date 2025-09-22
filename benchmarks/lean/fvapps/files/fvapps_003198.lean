@@ -28,25 +28,4 @@ sorry
 theorem deterministic (n d : Nat) (h1 : n ≥ 1) (h2 : n ≤ 1000) (h3 : d ≥ 1) (h4 : d ≤ 10) :
   L n d = L n d :=
 sorry
-
-/-
-info: '0'
--/
--- #guard_msgs in
--- #eval L 1 1
-
-/-
-info: '02431'
--/
--- #guard_msgs in
--- #eval L 12 5
-
-/-
-info: '1325460'
--/
--- #guard_msgs in
--- #eval L 1000 7
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

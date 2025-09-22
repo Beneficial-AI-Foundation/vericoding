@@ -39,25 +39,4 @@ theorem concatenation_self_count (s₁ s₂ : String) :
   let t := s₁ ++ s₂
   count_distinct_subsequences t t = 1 :=
   sorry
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval count_distinct_subsequences "rabbbit" "rabbit"
-
-/-
-info: 5
--/
--- #guard_msgs in
--- #eval count_distinct_subsequences "babgbag" "bag"
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval count_distinct_subsequences "abc" "abc"
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

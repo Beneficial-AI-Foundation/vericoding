@@ -29,25 +29,4 @@ theorem kontti_vowel_words (s : String)
   ∀ word ∈ String.split result (· = ' '),
     (∃ i, i < word.data.length ∧ word.data[i]? = some '-') ∧
     (∃ i : Nat, i + 4 ≤ word.length ∧ word.data.drop i = "ntti".data) := sorry
-
-/-
-info: 'komppu-lantti'
--/
--- #guard_msgs in
--- #eval kontti "lamppu"
-
-/-
-info: 'kolly-sintti kome-gantti'
--/
--- #guard_msgs in
--- #eval kontti "silly game"
-
-/-
-info: 'koz-xyntti komppu-lantti'
--/
--- #guard_msgs in
--- #eval kontti "xyz lamppu"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

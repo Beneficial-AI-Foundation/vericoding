@@ -1,0 +1,21 @@
+---
+vc-description: |-
+  Return a sequence of ones with the same length as the input sequence.
+  This is equivalent to numpy.ones_like which creates a new sequence
+  filled with ones, having the same size as the input sequence.
+vc-preamble: |-
+  // Method that creates a sequence of ones with the same length as input
+vc-helpers: |-
+  
+vc-spec: |-
+  method OnesLike<T>(a: seq<T>, one: T) returns (result: seq<T>)
+    // Postcondition: result has same length as input
+    ensures |result| == |a|
+    // Postcondition: every element in result is the "one" value
+    ensures forall i :: 0 <= i < |result| ==> result[i] == one
+vc-code: |-
+  {
+    assume {:axiom} false;
+  }
+vc-postamble: |-
+  

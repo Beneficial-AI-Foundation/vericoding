@@ -16,25 +16,4 @@ theorem sufficient_friends (n : Nat) (h : n ≥ 2) :
 
 theorem friends_monotone (n : Nat) (h : n ≥ 2) :
   friends n ≥ friends (n-1) := sorry
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval friends 0
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval friends 1
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval friends 4
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

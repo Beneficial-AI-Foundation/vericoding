@@ -55,6 +55,3 @@ theorem occurrence_count_correct (arr : List Int) (key : Int) (queries : List Na
     (result.get! i).1 = ((arr.drop (queries.get! i)).filter (· = key)).length :=
 sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

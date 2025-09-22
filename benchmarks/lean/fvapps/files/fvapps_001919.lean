@@ -33,25 +33,4 @@ theorem edge_cases :
   find_max_binary_after_delete "0" = "0" ∧
   find_max_binary_after_delete "1" = "0" ∧
   find_max_binary_after_delete "00" = "0" := sorry
-
-/-
-info: '11'
--/
--- #guard_msgs in
--- #eval find_max_binary_after_delete "101"
-
-/-
-info: '11010'
--/
--- #guard_msgs in
--- #eval find_max_binary_after_delete "110010"
-
-/-
-info: '1000'
--/
--- #guard_msgs in
--- #eval find_max_binary_after_delete "10000"
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: unguarded

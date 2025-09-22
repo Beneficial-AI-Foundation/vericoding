@@ -19,25 +19,4 @@ theorem actually_really_good_empty_list :
 
 theorem actually_really_good_handles_duplicates (food : String) :
   actually_really_good [food, food] = actually_really_good [food] := sorry
-
-/-
-info: "You know what's actually really good? Nothing!"
--/
--- #guard_msgs in
--- #eval actually_really_good []
-
-/-
-info: "You know what's actually really good? Peanut butter and more peanut butter."
--/
--- #guard_msgs in
--- #eval actually_really_good ["Peanut butter"]
-
-/-
-info: "You know what's actually really good? Ice cream and ham."
--/
--- #guard_msgs in
--- #eval actually_really_good ["Ice cream", "Ham"]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

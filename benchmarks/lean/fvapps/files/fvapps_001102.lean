@@ -15,6 +15,3 @@ theorem single_valid_mapping_returns_yes_or_no (n : Nat)
 
 -- <vc-theorems>
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

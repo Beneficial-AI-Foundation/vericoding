@@ -28,6 +28,3 @@ theorem are_equally_strong_transitive (a1 a2 b1 b2 : Int) :
   are_equally_strong a1 a2 b1 b2 → are_equally_strong b1 b2 b1 b2 →
   are_equally_strong a1 a2 b1 b2 := sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

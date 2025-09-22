@@ -28,25 +28,4 @@ theorem total_visible_strictly_increasing (topNum : Nat) (numSides : Nat)
 theorem total_visible_equal_sides_special_case (n : Nat)
     (h : 0 < n) :
   totalAmountVisible n n = (n * (n + 1)) / 2 - 1 := sorry
-
-/-
-info: 19
--/
--- #guard_msgs in
--- #eval totalAmountVisible 5 6
-
-/-
-info: 208
--/
--- #guard_msgs in
--- #eval totalAmountVisible 19 20
-
-/-
-info: 48
--/
--- #guard_msgs in
--- #eval totalAmountVisible 4 10
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

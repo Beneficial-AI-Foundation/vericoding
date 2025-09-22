@@ -46,25 +46,4 @@ theorem all_same_char (n : Nat) (s : String) :
   (∀ c, c ∈ s.data → c = 'R') →
   min_changes_for_rgb_substring n 3 s > 0 :=
   sorry
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval min_changes_for_rgb_substring 5 2 "BGGGG"
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval min_changes_for_rgb_substring 5 3 "RBRGR"
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval min_changes_for_rgb_substring 5 5 "BBBRR"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

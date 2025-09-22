@@ -40,57 +40,65 @@ vc-description: |-
   -/
 
 vc-preamble: |-
-  def highlight (s : String) : String := sorry 
-  
-  def colorFor (c : Char) : String := sorry
 
 vc-helpers: |-
 
 vc-definitions: |-
-  def String.count (s : String) (sub : String) : Nat := sorry
+  def highlight (s : String) : String :=
+  sorry
   
-  theorem letter_get_correct_colors (c : Char) (h: c ∈ ['F', 'L', 'R']): 
-    let color := 
-      match c with
-      | 'F' => "pink"
-      | 'L' => "red" 
-      | 'R' => "green"
-      | _ => ""
-    colorFor c = color 
-    := sorry
+  def colorFor (c : Char) : String :=
+  sorry
+  
+  def String.count (s : String) (sub : String) : Nat :=
+  sorry
 
 vc-theorems: |-
+  theorem letter_get_correct_colors (c : Char) (h: c ∈ ['F', 'L', 'R']):
+    let color :=
+      match c with
+      | 'F' => "pink"
+      | 'L' => "red"
+      | 'R' => "green"
+      | _ => ""
+    colorFor c = color
+    :=
+  sorry
+  
   theorem numbers_get_orange (c : Char) (h : c.isDigit) :
-    colorFor c = "orange" := sorry
+    colorFor c = "orange" :=
+  sorry
   
   theorem consecutive_chars_single_span (s : String) (h: s.all (· = s.get! 0)) :
-    (highlight s).count "<span" = 1 := sorry
+    (highlight s).count "<span" = 1 :=
+  sorry
   
   theorem highlight_maintains_content (s : String) :
-    let stripped := (highlight s).replace "<span" "" |>.replace "</span" "" |>.replace "style=\"color: pink\"" "" 
+    let stripped := (highlight s).replace "<span" "" |>.replace "</span" "" |>.replace "style=\"color: pink\"" ""
                      |>.replace "style=\"color: red\"" "" |>.replace "style=\"color: green\"" ""
                      |>.replace "style=\"color: orange\"" ""
-    stripped = s := sorry
-  
-  /-
-  info: expected1
-  -/
-  -- #guard_msgs in
-  -- #eval highlight "F3RF5LF7"
-  
-  /-
-  info: expected2
-  -/
-  -- #guard_msgs in
-  -- #eval highlight "FFFR345F2LL"
-  
-  /-
-  info: expected3
-  -/
-  -- #guard_msgs in
-  -- #eval highlight "FF(LF6(RF3)2)3"
+    stripped = s :=
+  sorry
 
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+  
+  /--
+  info: expected1
+  -/
+  #guard_msgs in
+  #eval highlight "F3RF5LF7"
+  
+  /--
+  info: expected2
+  -/
+  #guard_msgs in
+  #eval highlight "FFFR345F2LL"
+  
+  /--
+  info: expected3
+  -/
+  #guard_msgs in
+  #eval highlight "FF(LF6(RF3)2)3"
 

@@ -44,25 +44,4 @@ theorem numWays_single_step :
 theorem numWays_two_steps_min_array :
   numWays 2 1 = 1 :=
   sorry
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval numWays 3 2
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval numWays 2 4
-
-/-
-info: 8
--/
--- #guard_msgs in
--- #eval numWays 4 2
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

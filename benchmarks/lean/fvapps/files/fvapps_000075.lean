@@ -20,19 +20,4 @@ theorem multiples_of_4_are_beautiful (n : Nat) :
 
 theorem non_multiples_of_4_not_beautiful (n : Nat) :
   n > 0 → n % 4 ≠ 0 → check_polygon_beauty n = false := sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval check_polygon_beauty 8
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval check_polygon_beauty 7
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

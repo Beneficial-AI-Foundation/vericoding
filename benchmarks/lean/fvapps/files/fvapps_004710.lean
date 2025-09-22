@@ -31,25 +31,4 @@ theorem word_problem_impossible_match (rules : List (String × String)) (from_st
 theorem word_problem_single_rule (from_str to_str : String) :
   word_problem [(from_str, to_str)] from_str to_str 1 = true :=
   sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval word_problem [("a", "b")] "a" "b" 1
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval word_problem [("l", "de"), ("m", "col"), ("rr", "wakr"), ("akr", "ars")] "mrr" "codewars" 4
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval word_problem [("a", "b"), ("b", "c")] "a" "d" 2
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

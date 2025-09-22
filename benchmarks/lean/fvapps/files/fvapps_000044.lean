@@ -27,25 +27,4 @@ theorem solve_seats_no_indulging (n : Nat) (h : n > 0) (h2 : n ≤ 20) :
 
 theorem solve_seats_positive (n : Nat) (h : n > 0) (h2 : n ≤ 100) :
   ∀ x ∈ solve_seats n, x > 0 := sorry
-
-/-
-info: [6, 8]
--/
--- #guard_msgs in
--- #eval sorted solve_seats(2)
-
-/-
-info: [8, 10, 12]
--/
--- #guard_msgs in
--- #eval sorted solve_seats(3)
-
-/-
-info: [10, 12, 14, 16]
--/
--- #guard_msgs in
--- #eval sorted solve_seats(4)
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

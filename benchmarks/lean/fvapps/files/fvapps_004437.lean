@@ -48,25 +48,4 @@ theorem solve_all_numbers : ∀ s : String,
   (result[1]! = 0) ∧
   (result[2]! = s.length) ∧
   (result[3]! = 0) := sorry
-
-/-
-info: [1, 18, 3, 2]
--/
--- #guard_msgs in
--- #eval solve "Codewars@codewars123.com"
-
-/-
-info: [7, 6, 3, 2]
--/
--- #guard_msgs in
--- #eval solve "bgA5<1d-tOwUZTS8yQ"
-
-/-
-info: [9, 9, 6, 9]
--/
--- #guard_msgs in
--- #eval solve "P*K4%>mQUDaG$h=cx2?.Czt7!Zn16p@5H"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

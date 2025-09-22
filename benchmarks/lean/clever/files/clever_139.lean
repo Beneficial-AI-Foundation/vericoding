@@ -33,5 +33,3 @@ theorem correctness
 : problem_spec implementation n := by
   sorry
 -- </vc-theorems>
-
--- #test implementation 4 = 288

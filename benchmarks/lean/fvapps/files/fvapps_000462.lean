@@ -36,25 +36,4 @@ theorem symmetric_jumps {arr : Array Nat} {start : Nat} :
   can_reach arr start = true →
   let zero_pos := (arr.findIdx? (· = 0)).get!
   can_reach arr zero_pos = true := sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval can_reach #[4, 2, 3, 0, 3, 1, 2] 5
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval can_reach #[4, 2, 3, 0, 3, 1, 2] 0
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval can_reach #[3, 0, 2, 1, 2] 2
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

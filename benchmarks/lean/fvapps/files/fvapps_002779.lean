@@ -29,37 +29,4 @@ theorem pattern_lines_start_with_same_digit {n : Int} (h : n > 0) :
   let lines := (pattern n).lines
   ∀ i : Nat, i + 1 < lines.length → 
     lines[i]!.get! 0 = lines[i + 1]!.get! 0 := sorry
-
-/-
-info: '1'
--/
--- #guard_msgs in
--- #eval pattern 1
-
-/-
-info: '2\n21'
--/
--- #guard_msgs in
--- #eval pattern 2
-
-/-
-info: expected
--/
--- #guard_msgs in
--- #eval pattern 4
-
-/-
-info: ''
--/
--- #guard_msgs in
--- #eval pattern 0
-
-/-
-info: ''
--/
--- #guard_msgs in
--- #eval pattern -1
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

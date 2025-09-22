@@ -29,25 +29,4 @@ theorem count_prime_pairs_nonnegative {n : Int} (h : n ≥ 0) :
 theorem count_prime_pairs_small_numbers {n : Int} (h1 : n ≥ 0) (h2 : n ≤ 10) :
   count_prime_pairs n ≤ n/2 := by
   sorry
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval count_prime_pairs 2
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval count_prime_pairs 7
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval count_prime_pairs 11
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

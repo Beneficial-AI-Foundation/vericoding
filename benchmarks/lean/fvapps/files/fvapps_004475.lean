@@ -34,25 +34,4 @@ theorem numbers_of_letters_first_element
   (n : Nat) (h : n ≤ 999) :
   numbers_of_letters n ≠ [] → 
   (numbers_of_letters n).head! = convert_digit_to_word n := sorry
-
-/-
-info: ['one', 'three', 'five', 'four']
--/
--- #guard_msgs in
--- #eval numbers_of_letters 1
-
-/-
-info: ['onetwo', 'six', 'three', 'five', 'four']
--/
--- #guard_msgs in
--- #eval numbers_of_letters 12
-
-/-
-info: ['nineninenine', 'onetwo', 'six', 'three', 'five', 'four']
--/
--- #guard_msgs in
--- #eval numbers_of_letters 999
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

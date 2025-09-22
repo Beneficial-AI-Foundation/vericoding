@@ -42,25 +42,4 @@ theorem single_problem_edge_case :
 theorem two_problems_case :
   solve_jem_laziness 2 5 1 = 8 :=
   sorry
-
-/-
-info: 45
--/
--- #guard_msgs in
--- #eval solve_jem_laziness 9 1 2
-
-/-
-info: 131351258112
--/
--- #guard_msgs in
--- #eval solve_jem_laziness 123456 123456 123456
-
-/-
-info: 10
--/
--- #guard_msgs in
--- #eval solve_jem_laziness 4 1 1
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

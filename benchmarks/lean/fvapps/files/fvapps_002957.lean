@@ -29,25 +29,4 @@ theorem number_format_valid_commas (n : Int) :
 theorem number_format_roundtrip (n : Int) :
   let result := number_format n
   String.toInt! (result.replace "," "") = n := sorry
-
-/-
-info: '100,000'
--/
--- #guard_msgs in
--- #eval number_format 100000
-
-/-
-info: '5,678,545'
--/
--- #guard_msgs in
--- #eval number_format 5678545
-
-/-
-info: '-420,902'
--/
--- #guard_msgs in
--- #eval number_format -420902
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

@@ -15,6 +15,3 @@ theorem check_integers (lst : List Int) (x : Int) :
 theorem check_strings (lst : List String) (x : String) :
   check lst x = lst.contains x := sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

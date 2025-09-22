@@ -39,25 +39,4 @@ theorem detect_operator_substring : ∀ (n n_modified : String),
   (∀ i : Nat, i ≥ 4 ∧ i < n_modified.length → n_modified.data.get! i = '0') →
   detect_operator n = detect_operator n_modified :=
 sorry
-
-/-
-info: 'MTS'
--/
--- #guard_msgs in
--- #eval detect_operator "80661111841"
-
-/-
-info: 'Kyivstar'
--/
--- #guard_msgs in
--- #eval detect_operator "80671991111"
-
-/-
-info: 'no info'
--/
--- #guard_msgs in
--- #eval detect_operator "80111551111"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

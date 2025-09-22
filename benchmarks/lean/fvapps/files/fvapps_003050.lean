@@ -23,25 +23,4 @@ theorem find_unknown_number_modulo (x y z : Nat) (h1 : x ≤ 1000) (h2 : y ≤ 1
 theorem find_unknown_number_zeros :
   find_unknown_number 0 0 0 = 105 := by
   sorry
-
-/-
-info: 23
--/
--- #guard_msgs in
--- #eval find_unknown_number 2 3 2
-
-/-
-info: 52
--/
--- #guard_msgs in
--- #eval find_unknown_number 1 2 3
-
-/-
-info: 105
--/
--- #guard_msgs in
--- #eval find_unknown_number 0 0 0
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

@@ -26,6 +26,3 @@ theorem ellipse_circle_case (r : Float)
   let expected := 2 * (3.14159 : Float) * r
   (perim - expected).abs ≤ 0.2 * expected := sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

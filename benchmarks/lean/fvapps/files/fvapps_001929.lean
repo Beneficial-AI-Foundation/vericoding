@@ -32,6 +32,3 @@ theorem symmetry {x1 y1 x2 y2 k : Nat}
   find_car_numbers (min y1 y2) (min x1 x2) (max y1 y2) (max x1 x2) k :=
   sorry
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: guarded

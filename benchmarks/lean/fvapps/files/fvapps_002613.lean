@@ -30,25 +30,4 @@ theorem check_vowel_all_vowels {s : String} {i : Int} :
   (∀ c ∈ s.data, c.isVowel) →
   0 ≤ i → i < s.length →
   check_vowel s i = true := sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval check_vowel "cat" 1
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval check_vowel "cat" 0
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval check_vowel "Amanda" 0
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

@@ -17,6 +17,3 @@ theorem solve_all_ones (n K : Nat) :
   let arr := List.replicate n 1
   solve n K arr = 1 := by sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

@@ -18,6 +18,3 @@ theorem without_last_preserves_order {α : Type} (xs : List α) (h : xs ≠ []) 
 theorem without_last_not_eq_self {α : Type} (xs : List α) (h : xs ≠ []) :
   without_last xs ≠ xs := sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

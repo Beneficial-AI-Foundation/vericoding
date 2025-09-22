@@ -46,6 +46,3 @@ theorem difference_in_ages_same_values
   result.2.2 = 0 :=
 sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

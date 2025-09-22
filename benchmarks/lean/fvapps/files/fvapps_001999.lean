@@ -49,6 +49,3 @@ theorem optimize_op_ordering {cmds : List Command} :
      i < j) := by
   sorry
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: guarded

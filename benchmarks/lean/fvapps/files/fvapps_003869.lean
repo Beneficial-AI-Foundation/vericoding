@@ -23,25 +23,4 @@ theorem array_of_empty_lists {α : Type} (arr : List (List α))
   (h : ∀ l ∈ arr, l.length = 0) :  
   arr_check arr = true :=
 sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval arr_check [[]]
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval arr_check [[1], [2], [3]]
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval arr_check ["A", "R", "R", "A", "Y"]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

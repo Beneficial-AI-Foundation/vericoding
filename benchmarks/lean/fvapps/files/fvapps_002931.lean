@@ -29,25 +29,4 @@ theorem combine_with_empty {d : List (String × Int)} :
 
 theorem combine_associative {d1 d2 d3 : List (String × Int)} :
   combine (combine d1 d2) d3 = combine d1 (combine d2 d3) := sorry
-
-/-
-info: {'a': 13, 'b': 20, 'c': 36, 'd': 3}
--/
--- #guard_msgs in
--- #eval combine {"a": 10, "b": 20, "c": 30} {"a": 3, "c": 6, "d": 3}
-
-/-
-info: {}
--/
--- #guard_msgs in
--- #eval combine {} {}
-
-/-
-info: {'x': 3, 'y': 7, 'z': 5}
--/
--- #guard_msgs in
--- #eval combine {"x": 1} {"x": 2, "y": 3} {"y": 4, "z": 5}
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

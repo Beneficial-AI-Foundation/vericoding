@@ -1,22 +1,22 @@
 -- <vc-preamble>
-def solve_test (n : Nat) (numbers : List Nat) : Nat :=
-  sorry
+def MOD := 998244353
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
-def MOD := 998244353
+def solve_test (n : Nat) (numbers : List Nat) : Nat :=
+  sorry
+-- </vc-definitions>
 
+-- <vc-theorems>
 theorem solve_test_within_mod_bounds
   (n : Nat) (numbers : List Nat) (h1 : numbers.length = n) (h2 : n ≥ 1) (h3 : n ≤ 9)
   (h4 : ∀ x ∈ numbers, 1 ≤ x ∧ x ≤ 10^9) :
   0 ≤ solve_test n numbers ∧ solve_test n numbers < MOD :=
 sorry
--- </vc-definitions>
 
--- <vc-theorems>
 theorem solve_test_order_independent
   (n : Nat) (numbers : List Nat) (h1 : numbers.length = n) (h2 : n ≥ 1) (h3 : n ≤ 9)
   (h4 : ∀ x ∈ numbers, 1 ≤ x ∧ x ≤ 10^9) :
@@ -28,31 +28,4 @@ theorem solve_test_large_identical_numbers
   (numbers : List Nat) (h4 : numbers = List.replicate n v) :
   0 ≤ solve_test n numbers ∧ solve_test n numbers < MOD :=
 sorry
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval solve_test 2 [1, 1]
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval solve_test 3 [1, 31, 12]
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval solve_test 3 [12345, 67, 84]
-
-/-
-info: 31680
--/
--- #guard_msgs in
--- #eval solve_test 9 [1, 2, 3, 4, 5, 6, 7, 8, 9]
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: unguarded

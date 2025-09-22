@@ -26,25 +26,4 @@ theorem replacement_vs_no_replacement {bag : List String} {target : List String}
   (h2 : bag.length ≥ 2)
   (h3 : target[0]! = target[1]!) :
   ball_probability bag target true ≥ ball_probability bag target false := sorry
-
-/-
-info: 0.09
--/
--- #guard_msgs in
--- #eval ball_probability *test1
-
-/-
-info: 0.1
--/
--- #guard_msgs in
--- #eval ball_probability *test2
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval ball_probability *test3
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

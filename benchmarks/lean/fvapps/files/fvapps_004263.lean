@@ -37,25 +37,4 @@ theorem double_conversion_preserves_magnitude (binary : List Nat)
   (h' : binary.length ≥ 2)
   (h'' : binary.head? = some 0) :
   positive_to_negative (positive_to_negative binary) = binary := sorry
-
-/-
-info: [0, 0, 0, 0]
--/
--- #guard_msgs in
--- #eval positive_to_negative [0, 0, 0, 0]
-
-/-
-info: [1, 1, 1, 0]
--/
--- #guard_msgs in
--- #eval positive_to_negative [0, 0, 1, 0]
-
-/-
-info: [1, 1, 0, 1]
--/
--- #guard_msgs in
--- #eval positive_to_negative [0, 0, 1, 1]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

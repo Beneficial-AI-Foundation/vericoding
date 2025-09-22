@@ -24,8 +24,8 @@ vc-spec: |-
       requires a.len() > 0,
       ensures 
           result < a.len(),
-          forall|j: int| 0 <= j < a@.len() ==> a[result as int] <= a[j],
-          forall|j: int| 0 <= j < a@.len() && a[j] == a[result as int] ==> (result as int) <= j,
+          forall|j: int| 0 <= j < a@.len() ==> a@[result as int] <= a@[j],
+          forall|j: int| 0 <= j < a@.len() && a@[j] == a@[result as int] ==> (result as int) <= j,
 vc-code: |-
   {
       // impl-start

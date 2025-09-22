@@ -20,25 +20,4 @@ theorem minimum_bullets_failure {dragons : Int} (hd : dragons > 0) :
 
 theorem negative_bullets {bullets dragons : Int} (hb : bullets < 0) (hd : dragons ≥ 0) :
   hero bullets dragons = false := sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval hero 10 5
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval hero 7 4
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval hero 4 5
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

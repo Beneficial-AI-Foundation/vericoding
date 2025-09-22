@@ -45,25 +45,4 @@ theorem max_chocolates_zero_budget (n : Nat) (prices : List Nat)
   (h2 : ∀ x ∈ prices, 0 < x) :
   max_chocolates n 0 prices = 0 :=
   sorry
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval max_chocolates 7 50 [1, 12, 5, 111, 200, 1000, 10]
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval max_chocolates 4 7 [1, 2, 3, 4]
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval max_chocolates 3 10 [5, 5, 5]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

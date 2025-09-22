@@ -37,25 +37,4 @@ theorem non_negative_result_property (nums : List Int) (k : Int) :
 theorem reverse_invariant_property (nums : List Int) (k : Int) :
   countSubarraysWithSum nums k = countSubarraysWithSum (List.reverse nums) k := by
   sorry
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval count_subarrays_with_sum [1, 1, 1] 2
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval count_subarrays_with_sum [1, 2, 3] 3
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval count_subarrays_with_sum [1, -1, 0] 0
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

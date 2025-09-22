@@ -29,25 +29,4 @@ theorem reindeer_is_nat (presents : Nat) (h : presents ≤ 180) :
 theorem reindeer_max_eight (presents : Nat) (h : presents ≤ 180) :
   reindeer presents ≤ 8 :=
   sorry
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval reindeer 0
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval reindeer 31
-
-/-
-info: 8
--/
--- #guard_msgs in
--- #eval reindeer 180
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

@@ -1,0 +1,43 @@
+# Example Custom Configuration
+# This shows how to customize QA metadata generation parameters
+
+# Similarity Analysis Configuration
+similarity:
+  threshold: 0.90          # More strict similarity threshold
+  embedding_focus: "balanced"  # Different embedding focus
+  max_examples: 3          # Fewer examples
+  cache_dir: ".custom_cache"  # Custom cache directory
+  batch_size: 16           # Smaller batch size
+
+# Scoring System Configuration - More lenient scoring
+scoring:
+  base_score: 100
+  
+  # Verus - reduced penalties for experimentation
+  verus:
+    specs_with_default_values_penalty: 10    # Reduced from 15
+    execs_with_bodies_penalty: 15           # Reduced from 20
+    execs_with_ghost_types_penalty: 2       # Minimal impact (reduced from 10)
+    near_duplicates_penalty: 3              # Reduced from 5
+  
+  # Dafny - more strict penalties
+  dafny:
+    functions_with_default_values_penalty: 20  # Increased from 15
+    methods_with_bodies_penalty: 25           # Increased from 20
+    near_duplicates_penalty: 8                # Increased from 5
+  
+  # Lean - balanced penalties
+  lean:
+    definitions_with_sorry_penalty: 15        # Reduced from 20
+    near_duplicates_penalty: 5               # Same as default
+
+# Quality Analysis Script Configuration
+qa_scripts:
+  script_timeout: 600      # Longer timeout for complex benchmarks
+  include_problematic_dirs: true  # Include problematic directories
+  output_format: "json"
+
+# Logging Configuration
+logging:
+  level: "debug"           # More verbose logging
+  show_progress: true

@@ -26,19 +26,4 @@ theorem empty_lists :
 theorem empty_with_nonempty (xs : List Int) :
   (xs = [] → vector_affinity xs xs = 1.0) ∧
   (xs ≠ [] → vector_affinity xs [] = 0.0 ∧ vector_affinity [] xs = 0.0) := sorry
-
-/-
-info: 1.0
--/
--- #guard_msgs in
--- #eval vector_affinity [1, 2, 3] [1, 2, 3]
-
-/-
-info: 1.0
--/
--- #guard_msgs in
--- #eval vector_affinity [] []
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

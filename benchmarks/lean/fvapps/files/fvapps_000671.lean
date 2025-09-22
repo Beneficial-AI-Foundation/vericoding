@@ -35,25 +35,4 @@ theorem min_speeches_large_values_zero
   (n k : Nat)
   (h : k ≤ n) :
   min_speeches n k 1 (List.replicate n 1000) = 0 := sorry
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval min_speeches 6 2 5 [1, 1, 1, 1, 1, 1]
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval min_speeches 5 2 4 [1, 1, 1, 1, 1]
-
-/-
-info: -1
--/
--- #guard_msgs in
--- #eval min_speeches 4 2 3 [0, 1, 1, 0]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

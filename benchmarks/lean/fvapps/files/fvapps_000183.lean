@@ -49,25 +49,4 @@ theorem impossible_costs_give_zero
   (h1 : costs.length = 9)
   (h2 : ∀ x ∈ costs, x ≥ 1000) :
   largest_number costs 100 = "0" := sorry
-
-/-
-info: '7772'
--/
--- #guard_msgs in
--- #eval largest_number [4, 3, 2, 5, 6, 7, 2, 5, 5] 9
-
-/-
-info: '85'
--/
--- #guard_msgs in
--- #eval largest_number [7, 6, 5, 5, 5, 6, 8, 7, 8] 12
-
-/-
-info: '0'
--/
--- #guard_msgs in
--- #eval largest_number [2, 4, 6, 2, 4, 6, 4, 4, 4] 5
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

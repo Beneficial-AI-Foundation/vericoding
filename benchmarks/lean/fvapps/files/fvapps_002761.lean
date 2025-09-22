@@ -31,37 +31,4 @@ theorem higher_level_more_points (level intel : Nat) :
   level < 20 →
   psion_power_points (level + 1) intel ≥ psion_power_points level intel :=
   sorry
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval psion_power_points 1 0
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval psion_power_points 1 10
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval psion_power_points 1 11
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval psion_power_points 1 20
-
-/-
-info: 448
--/
--- #guard_msgs in
--- #eval psion_power_points 21 30
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

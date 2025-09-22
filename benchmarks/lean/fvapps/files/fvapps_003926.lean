@@ -25,25 +25,4 @@ theorem long_rental_discount {days : Int} (h : days ≥ 7) :
 
 theorem medium_rental_discount {days : Int} (h1 : days ≥ 3) (h2 : days ≤ 6) :
   rental_car_cost days = days * 40 - 20 := sorry
-
-/-
-info: 80
--/
--- #guard_msgs in
--- #eval rental_car_cost 2
-
-/-
-info: 180
--/
--- #guard_msgs in
--- #eval rental_car_cost 5
-
-/-
-info: 350
--/
--- #guard_msgs in
--- #eval rental_car_cost 10
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

@@ -35,6 +35,3 @@ theorem invalid_date_format_invalid_string
     : ∀ n, get_calendar_week date_str ≠ n :=
   sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

@@ -33,25 +33,4 @@ theorem consecutive_ones_property {nums : List Nat} {k : Nat} {i : Nat}
   (h5 : nums.get ⟨i+1, sorry⟩ = 1) :
   k_length_apart nums k = false :=
 sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval k_length_apart [1, 0, 0, 0, 1, 0, 0, 1] 2
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval k_length_apart [1, 0, 0, 1, 0, 1] 2
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval k_length_apart [0, 1, 0, 1] 1
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

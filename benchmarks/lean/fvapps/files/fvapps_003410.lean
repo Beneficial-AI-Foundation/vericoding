@@ -46,25 +46,4 @@ theorem threshold_ordering (platinum gold silver bronze : Nat)
   (h_platinum : platinum ≥ 1000000) (h_platinum_max : platinum ≤ 10000000)
   (h_gold : gold ≥ 100000) (h_silver : silver ≥ 10000) (h_bronze : bronze ≥ 1000) :
   platinum > gold ∧ gold > silver ∧ silver > bronze := sorry
-
-/-
-info: 'Gold'
--/
--- #guard_msgs in
--- #eval membership 100000 1000000 100000 10000 1000
-
-/-
-info: 'Bronze'
--/
--- #guard_msgs in
--- #eval membership 1001 1000000 100000 10000 1000
-
-/-
-info: 'Not a member'
--/
--- #guard_msgs in
--- #eval membership 998 1000000 100000 10000 1000
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

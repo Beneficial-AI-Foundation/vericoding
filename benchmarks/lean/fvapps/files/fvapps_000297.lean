@@ -44,25 +44,4 @@ theorem requests_symmetric
   (h: ∀ x ∈ ages, 1 ≤ x ∧ x ≤ 120) :
   numFriendRequests ages = numFriendRequests ages.reverse :=
 sorry
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval numFriendRequests [16, 16]
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval numFriendRequests [16, 17, 18]
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval numFriendRequests [20, 30, 100, 110, 120]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

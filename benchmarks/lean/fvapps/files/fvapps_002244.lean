@@ -20,6 +20,3 @@ theorem count_3uniform_hypertrees_base_cases :
   count_3uniform_hypertrees 2 = 0 :=
   sorry
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: guarded_and_plausible

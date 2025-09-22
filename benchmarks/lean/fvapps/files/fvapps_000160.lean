@@ -34,25 +34,4 @@ theorem subsequence_maintains_order {s t : String} :
   s ≠ reversed →
   is_subsequence s t = true →
   is_subsequence reversed t = false := sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval is_subsequence "abc" "ahbgdc"
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval is_subsequence "axc" "ahbgdc"
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval is_subsequence "" "ahbgdc"
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

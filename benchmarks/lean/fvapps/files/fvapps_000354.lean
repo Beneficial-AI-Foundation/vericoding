@@ -31,25 +31,4 @@ theorem input_unchanged {grid : List (List Nat)} (h1: grid ≠ []) (h2: grid.hea
 theorem result_non_negative {grid : List (List Nat)} (h1: grid ≠ []) (h2: grid.head! ≠ [])
   (h3: ∀ x ∈ grid, ∀ y ∈ x, y ≤ 1) :
   num_enclaves grid ≥ 0 := sorry
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval num_enclaves [[0, 0, 0, 0], [1, 0, 1, 0], [0, 1, 1, 0], [0, 0, 0, 0]]
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval num_enclaves [[0, 1, 1, 0], [0, 0, 1, 0], [0, 0, 1, 0], [0, 0, 0, 0]]
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval num_enclaves [[0, 0, 0, 1], [0, 1, 1, 0], [0, 1, 0, 0]]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

@@ -29,25 +29,4 @@ theorem result_is_symmetric {s1 s2 : String} :
 theorem result_is_nonnegative {s1 s2 : String} :
   s1.length = s2.length → count_correct_characters s1 s2 ≥ 0 := 
   sorry
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval count_correct_characters "dog" "car"
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval count_correct_characters "dog" "cog"
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval count_correct_characters "dog" "dog"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

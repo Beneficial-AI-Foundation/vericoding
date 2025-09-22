@@ -39,25 +39,4 @@ theorem xp_progression_monotonic
     xp_to_target_lvl 0 target_lvl = Sum.inr y ∧
     y > x :=
   sorry
-
-/-
-info: 1808
--/
--- #guard_msgs in
--- #eval xp_to_target_lvl 0 5
-
-/-
-info: 'Input is invalid.'
--/
--- #guard_msgs in
--- #eval xp_to_target_lvl 31428 "47"
-
-/-
-info: 'You have already reached level 4.'
--/
--- #guard_msgs in
--- #eval xp_to_target_lvl 2017 4
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

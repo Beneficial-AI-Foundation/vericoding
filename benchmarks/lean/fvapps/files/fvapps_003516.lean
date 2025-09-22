@@ -17,6 +17,3 @@ theorem order_non_negative (pizzas salads appetizers : Nat) :
 theorem adding_pizzas_increases_time (pizzas : Nat) :
   order (pizzas + 1) 0 0 ≥ order pizzas 0 0 := sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

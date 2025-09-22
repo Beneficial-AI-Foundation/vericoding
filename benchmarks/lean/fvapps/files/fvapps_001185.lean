@@ -31,25 +31,4 @@ theorem all_same_color_returns_yes {α : Type} [DecidableEq α] [Inhabited α]
   (colors : List α) (h : colors.length = 6)
   (h_same : ∀ i j, i < colors.length → j < colors.length → colors[i]! = colors[j]!) :
   check_cube_sides colors = "YES" := sorry
-
-/-
-info: 'NO'
--/
--- #guard_msgs in
--- #eval check_cube_sides "blue yellow green orange black green".split()
-
-/-
-info: 'YES'
--/
--- #guard_msgs in
--- #eval check_cube_sides "green yellow green orange black green".split()
-
-/-
-info: 'NO'
--/
--- #guard_msgs in
--- #eval check_cube_sides "red red red blue yellow orange".split()
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

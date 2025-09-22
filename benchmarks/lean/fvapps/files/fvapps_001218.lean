@@ -13,6 +13,3 @@ theorem valid_ring_topology_length (n : Nat) (h : n > 0) (h2 : n ≤ 100) :
 
 -- <vc-theorems>
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

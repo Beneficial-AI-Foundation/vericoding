@@ -32,25 +32,4 @@ theorem different_endpoints_true (s: String) (queries: List (Nat × Nat)) :
     l ≤ s.length → r ≤ s.length →
     l > 0 → r > 0 →
     s.get ⟨l-1⟩ ≠ s.get ⟨r-1⟩ → result.get! i = true := sorry
-
-/-
-info: [True, False, True]
--/
--- #guard_msgs in
--- #eval has_irreducible_anagram "aaaaa" [(1, 1), (2, 4), (5, 5)]
-
-/-
-info: [False, True, True, True, False, False]
--/
--- #guard_msgs in
--- #eval has_irreducible_anagram "aabbbbbbc" [(1, 2), (2, 4), (2, 2), (1, 9), (5, 7), (3, 5)]
-
-/-
-info: [True]
--/
--- #guard_msgs in
--- #eval has_irreducible_anagram "f" [(1, 1)]
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: unguarded

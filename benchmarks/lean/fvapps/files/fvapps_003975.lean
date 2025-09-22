@@ -1,19 +1,16 @@
 -- <vc-preamble>
-def odd_dig_cubic (a b : Int) : List Int :=
-  sorry
-
--- Helper function to check if a number's digits are all odd
-
-def hasAllOddDigits (n : Int) : Bool :=
-  sorry
-
--- Helper function to check if a number is a perfect cube
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
+def odd_dig_cubic (a b : Int) : List Int :=
+  sorry
+
+def hasAllOddDigits (n : Int) : Bool :=
+  sorry
+
 def isPerfectCube (n : Int) : Bool :=
   sorry
 -- </vc-definitions>
@@ -25,7 +22,7 @@ theorem odd_dig_cubic_sorted (a b : Int) :
 sorry
 
 theorem odd_dig_cubic_all_cubes (a b : Int) :
-  let result := odd_dig_cubic a b  
+  let result := odd_dig_cubic a b
   ∀ n ∈ result, isPerfectCube n :=
 sorry
 
@@ -52,25 +49,4 @@ theorem odd_dig_cubic_single_point (n : Int) :
   let result := odd_dig_cubic n n
   result ≠ [] → result.length = 1 ∧ result[0]! = n :=
 sorry
-
-/-
-info: [-3375, -1331, -1, 1, 1331, 3375]
--/
--- #guard_msgs in
--- #eval odd_dig_cubic -5000 5000
-
-/-
-info: [1, 1331, 3375]
--/
--- #guard_msgs in
--- #eval odd_dig_cubic 0 5000
-
-/-
-info: [-3375, -1331]
--/
--- #guard_msgs in
--- #eval odd_dig_cubic -5000 -2
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

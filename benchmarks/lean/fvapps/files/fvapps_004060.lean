@@ -20,13 +20,4 @@ theorem add_associative (s1 s2 s3 : String) :
 
 theorem add_positive (s1 s2 : String) :
   add s1 s2 ≥ 0 := sorry
-
-/-
-info: 195
--/
--- #guard_msgs in
--- #eval add "a" "b"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

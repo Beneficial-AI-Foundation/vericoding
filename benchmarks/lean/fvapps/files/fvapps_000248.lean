@@ -29,25 +29,4 @@ theorem all_zeros_theorem (n: Nat) (ranges: List Nat)
   (h: n ≥ 1) (h2: n ≤ 100) (h3: ranges.length = n+1)
   (h4: ranges.all (fun x => x = 0)):
   minTaps n ranges = -1 := sorry
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval minTaps 5 [3, 4, 1, 1, 0, 0]
-
-/-
-info: -1
--/
--- #guard_msgs in
--- #eval minTaps 3 [0, 0, 0, 0]
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval minTaps 7 [1, 2, 1, 0, 2, 1, 0, 1]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

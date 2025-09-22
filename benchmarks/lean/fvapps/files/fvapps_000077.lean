@@ -48,25 +48,4 @@ theorem all_dots_minutes {grid : Grid} :
   ) (List.range n)
   min_minutes_for_cross all_dots_grid = n + m - 1 :=
 sorry
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval min_minutes_for_cross ["..*..", "..*..", "*****", "..*..", "..*.."]
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval min_minutes_for_cross [".....", "..*..", ".***.", "..*..", "....."]
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval min_minutes_for_cross ["*.**", "....", "*.**", "*.**"]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

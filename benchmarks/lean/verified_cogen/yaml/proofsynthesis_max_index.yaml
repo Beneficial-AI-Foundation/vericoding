@@ -22,5 +22,4 @@ vc-theorems: |-
     sorry
 
 vc-postamble: |-
-  def main : IO Unit := pure ()
 

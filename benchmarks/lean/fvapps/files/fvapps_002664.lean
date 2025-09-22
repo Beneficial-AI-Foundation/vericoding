@@ -34,6 +34,3 @@ theorem pattern_line_numbers {n : Int} (hn : 1 ≤ n ∧ n ≤ 9) :
     let num_char := Char.ofNat ((i + 1) % 10 + '0'.toNat)
     (lines.get! i).contains num_char := sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

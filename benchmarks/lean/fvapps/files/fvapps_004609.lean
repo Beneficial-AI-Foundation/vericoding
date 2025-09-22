@@ -20,31 +20,4 @@ theorem hello_empty_is_world:
 
 theorem hello_empty_string:
   hello (some "") = "Hello, World!" := sorry
-
-/-
-info: 'Hello, World!'
--/
--- #guard_msgs in
--- #eval hello 
-
-/-
-info: 'Hello, World!'
--/
--- #guard_msgs in
--- #eval hello ""
-
-/-
-info: 'Hello, Alice!'
--/
--- #guard_msgs in
--- #eval hello "alice"
-
-/-
-info: 'Hello, John!'
--/
--- #guard_msgs in
--- #eval hello "jOHN"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

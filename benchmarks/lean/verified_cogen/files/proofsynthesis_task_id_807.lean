@@ -28,6 +28,3 @@ theorem findFirstOdd_spec_satisfied (arr : Array UInt32) (h_precond : findFirstO
     findFirstOdd_postcond arr (findFirstOdd arr h_precond) h_precond := by
   sorry
 -- </vc-theorems>
-
-def main : IO Unit := do
-  return ()

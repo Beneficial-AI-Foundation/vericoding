@@ -39,6 +39,3 @@ theorem wheat_from_chaff_all_neg
 theorem wheat_from_chaff_empty :
     wheat_from_chaff [] = [] := sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

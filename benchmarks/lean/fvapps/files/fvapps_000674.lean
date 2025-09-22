@@ -1,12 +1,13 @@
 -- <vc-preamble>
-def factorial (n : Nat) : Nat :=
-  sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
+def factorial (n : Nat) : Nat :=
+  sorry
+
 def calculate_factorials (nums : List Nat) : List Nat :=
   sorry
 -- </vc-definitions>
@@ -24,6 +25,3 @@ theorem factorial_one :
   calculate_factorials [1] = [1] :=
 sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

@@ -45,6 +45,3 @@ theorem count_different_arrays_monotone_K
   count_different_arrays N M (K-1) A :=
 sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

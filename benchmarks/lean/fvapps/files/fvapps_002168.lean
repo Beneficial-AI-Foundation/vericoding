@@ -27,6 +27,3 @@ theorem consistent_result (n: Nat) (p: List Nat) (h1: 2 ≤ n) :
   is_valid_parent_array n p →
   solve_graph_assignment n p = solve_graph_assignment n p := sorry
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: unguarded

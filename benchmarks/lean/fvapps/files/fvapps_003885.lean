@@ -38,25 +38,4 @@ theorem only_opening_parens
 
 theorem empty_string_valid :
   valid_parentheses "" = true := sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval valid_parentheses "hi(hi)"
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval valid_parentheses "((())()())"
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval valid_parentheses "hi(hi))("
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

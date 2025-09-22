@@ -21,25 +21,4 @@ theorem is_divisible_by_6_sorted {s : String} (h : s.length > 0) (h' : s.length 
 
 theorem is_divisible_by_6_no_leading_zeros {s : String} (h : s.length > 0) (h' : s.length ≤ 10000) :
   ∀ x ∈ is_divisible_by_6 s, ¬String.startsWith x "0" := sorry
-
-/-
-info: ['120', '150', '180']
--/
--- #guard_msgs in
--- #eval is_divisible_by_6 "1*0"
-
-/-
-info: []
--/
--- #guard_msgs in
--- #eval is_divisible_by_6 "*1"
-
-/-
-info: ['36', '66', '96']
--/
--- #guard_msgs in
--- #eval is_divisible_by_6 "*6"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

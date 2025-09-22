@@ -33,25 +33,4 @@ theorem character_replacement_monotonic
   s ≠ "" →
   character_replacement s k ≤ character_replacement s (k + 1) :=
   sorry
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval character_replacement "ABAB" 2
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval character_replacement "AABABBA" 1
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval character_replacement "" 2
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

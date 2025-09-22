@@ -33,12 +33,3 @@ theorem correctness
 := by
   sorry
 -- </vc-theorems>
-
--- #test implementation 12 15 = 14
--- #test implementation 13 12 = -1
--- #test implementation 33 12354 = 12354
--- #test implementation 5234 5233 = -1
--- #test implementation 6 29 = 28
--- #test implementation 27 10 = (-1)
--- #test implementation 7 7 = -1
--- #test implementation 546 546 = 546

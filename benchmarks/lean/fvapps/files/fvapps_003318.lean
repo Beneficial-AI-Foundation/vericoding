@@ -24,25 +24,4 @@ theorem isPP_perfect_powers {base exp : Nat}
     isPP (base ^ exp) = some (b, e) ∧
     b ^ e = base ^ exp
   := sorry
-
-/-
-info: [2, 2]
--/
--- #guard_msgs in
--- #eval isPP 4
-
-/-
-info: [3, 2]
--/
--- #guard_msgs in
--- #eval isPP 9
-
-/-
-info: None
--/
--- #guard_msgs in
--- #eval isPP 5
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

@@ -1,12 +1,13 @@
 -- <vc-preamble>
-def count_peaks (window : List Nat) : Nat :=
-  sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
+def count_peaks (window : List Nat) : Nat :=
+  sorry
+
 def solve_door_peaks (n k : Nat) (arr : List Nat) : Nat × Nat :=
   sorry
 -- </vc-definitions>
@@ -23,7 +24,7 @@ sorry
 
 theorem position_in_range {n k : Nat} {arr : List Nat}
   (h1 : n ≥ 3)
-  (h2 : k ≥ 3) 
+  (h2 : k ≥ 3)
   (h3 : k ≤ n)
   (h4 : arr.length = n) :
   let (_, pos) := solve_door_peaks n k arr
@@ -39,25 +40,4 @@ theorem peaks_match_window {n k : Nat} {arr : List Nat}
   let window := arr.take k
   count_peaks window = peaks - 1 :=
 sorry
-
-/-
-info: (3, 2)
--/
--- #guard_msgs in
--- #eval solve_door_peaks 8 6 [1, 2, 4, 1, 2, 4, 1, 2]
-
-/-
-info: (2, 2)
--/
--- #guard_msgs in
--- #eval solve_door_peaks 5 3 [3, 2, 3, 2, 1]
-
-/-
-info: (2, 1)
--/
--- #guard_msgs in
--- #eval solve_door_peaks 10 4 [4, 3, 4, 3, 2, 3, 2, 1, 0, 1]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

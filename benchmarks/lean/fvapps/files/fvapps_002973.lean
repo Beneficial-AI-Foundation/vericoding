@@ -23,25 +23,4 @@ theorem string_chunk_invalid_n (s : String) (n : Nat) :
 
 theorem string_chunk_reconstructs_original (s : String) (n : Nat) (h : n > 0) :
   String.join (string_chunk s n) = s := sorry
-
-/-
-info: ['co', 'de', 'wa', 'rs']
--/
--- #guard_msgs in
--- #eval string_chunk "codewars" 2
-
-/-
-info: []
--/
--- #guard_msgs in
--- #eval string_chunk "hello" 0
-
-/-
-info: ['hi']
--/
--- #guard_msgs in
--- #eval string_chunk "hi" 5
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

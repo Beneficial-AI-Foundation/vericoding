@@ -63,25 +63,4 @@ theorem solve_edge_case_two_two {a b : List Nat}
     let result := solve 2 2 a b
     0 ≤ result ∧ result < MOD :=
   sorry
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval solve 5 3 [1, 2, 3, 4, 5] [3, 2, 5]
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval solve 4 3 [4, 3, 2, 1] [4, 3, 1]
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval solve 7 4 [1, 4, 7, 3, 6, 2, 5] [3, 2, 4, 5]
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: unguarded

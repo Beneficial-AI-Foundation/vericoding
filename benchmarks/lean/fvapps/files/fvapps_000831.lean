@@ -29,6 +29,3 @@ theorem adjacent_elements_differ (k : Nat) (h : k > 0) :
   (∀ i : Fin k, ∀ j : Fin (k-1), pattern[i.val]![j.val]! ≠ pattern[i.val]![(j.val+1)]!) ∧
   (∀ i : Fin (k-1), ∀ j : Fin k, pattern[i.val]![j.val]! ≠ pattern[i.val+1]![j.val]!) := sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

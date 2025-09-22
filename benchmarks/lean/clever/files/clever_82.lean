@@ -34,8 +34,3 @@ theorem correctness
 := by
   sorry
 -- </vc-theorems>
-
--- #test implementation "Hello" = True
--- #test implementation "abcdcba" = True
--- #test implementation "kittens" = True
--- #test implementation "orange" = False

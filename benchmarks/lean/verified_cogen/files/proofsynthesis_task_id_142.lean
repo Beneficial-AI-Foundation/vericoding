@@ -30,5 +30,3 @@ theorem count_identical_position_spec_satisfied (arr1: Array Int) (arr2: Array I
     count_identical_position_postcond arr1 arr2 arr3 (count_identical_position arr1 arr2 arr3 h_precond) h_precond := by
   sorry
 -- </vc-theorems>
-
-def main : IO Unit := IO.println "Hello World!"

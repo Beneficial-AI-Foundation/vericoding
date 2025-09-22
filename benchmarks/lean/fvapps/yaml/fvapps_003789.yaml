@@ -1,21 +1,21 @@
 vc-description: |-
   /-
   Everybody knows the classic ["half your age plus seven"](https://en.wikipedia.org/wiki/Age_disparity_in_sexual_relationships#The_.22half-your-age-plus-seven.22_rule) dating rule that a lot of people follow (including myself). It's the 'recommended' age range in which to date someone. 
-  
+
   ```minimum age <= your age <= maximum age```
   #Task
-  
+
   Given an integer (1 <= n <= 100) representing a person's age, return their minimum and maximum age range.
-  
+
   This equation doesn't work when the age <= 14, so use this equation instead:
   ```
   min = age - 0.10 * age
   max = age + 0.10 * age
   ```
   You should floor all your answers so that an integer is given instead of a float (which doesn't represent age). ```Return your answer in the form [min]-[max]```
-  
+
   ##Examples:
-  
+
   ```
   age = 27   =>   20-40
   age = 5    =>   4-5
@@ -23,13 +23,13 @@ vc-description: |-
   ```
   -/
 
-vc-preamble: |-
+vc-preamble: |
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def dating_range (age : Int) : String := sorry
-  
+
   theorem dating_range_child (age : Int) (h : 1 ≤ age ∧ age ≤ 14) : 
     let result := dating_range age
     let min_age := (result.splitOn "-").head!.toInt!
@@ -46,7 +46,7 @@ vc-theorems: |-
     min_age = age/2 + 7 ∧
     max_age = (age-7) * 2 ∧
     min_age ≤ age ∧ age ≤ max_age := sorry
-  
+
   theorem dating_range_format (age : Int) (h : 1 ≤ age ∧ age ≤ 100) :
     let result := dating_range age
     let parts := result.splitOn "-"
@@ -55,26 +55,26 @@ vc-theorems: |-
     let min_age := parts.head!.toInt!
     let max_age := parts.getLast!.toInt!
     min_age ≤ max_age := sorry
-  
-  /-
-  info: '15-20'
-  -/
-  -- #guard_msgs in
-  -- #eval dating_range 17
-  
-  /-
-  info: '9-11'
-  -/
-  -- #guard_msgs in
-  -- #eval dating_range 10
-  
-  /-
-  info: '24-56'
-  -/
-  -- #guard_msgs in
-  -- #eval dating_range 35
 
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+
+  /--
+  info: '15-20'
+  -/
+  #guard_msgs in
+  #eval dating_range 17
+
+  /--
+  info: '9-11'
+  -/
+  #guard_msgs in
+  #eval dating_range 10
+
+  /--
+  info: '24-56'
+  -/
+  #guard_msgs in
+  #eval dating_range 35
 

@@ -1,6 +1,4 @@
 -- <vc-preamble>
-def min_supw_time (n : Nat) (days : List Nat) : Nat := sorry
-
 def list_min (l : List Nat) : Nat :=
   match l with
   | [] => 0
@@ -10,37 +8,25 @@ def list_sum (l : List Nat) : Nat :=
   match l with
   | [] => 0
   | x::xs => x + list_sum xs
+
+def list_take_last (n : Nat) (l : List Nat) : List Nat :=
+  match n, l with
+  | 0, _ => []
+  | _, [] => []
+  | n+1, x::xs => x :: list_take_last n xs
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
-def list_take_last (n : Nat) (l : List Nat) : List Nat :=
-  match n, l with
-  | 0, _ => []
-  | _, [] => []
-  | n+1, x::xs => x :: list_take_last n xs
+def min_supw_time (n : Nat) (days : List Nat) : Nat := sorry
 -- </vc-definitions>
 
 -- <vc-theorems>
 theorem min_supw_time_monotonic (n : Nat) (days : List Nat) (i : Nat) (x : Nat)
   (h1 : n = days.length) (h2 : n ≥ 3) (h3 : i < n) :
   let days' := List.set days i (days[i] + x)
-  min_supw_time n days' ≥ min_supw_time n days := sorry
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval min_supw_time 10 [3, 2, 1, 1, 2, 3, 1, 3, 2, 1]
-
-/-
-info: 5
--/
--- #guard_msgs in
--- #eval min_supw_time 8 [3, 2, 3, 2, 3, 5, 1, 3]
+  min_supw_time n days' ≥ min_supw_time n days :=
+sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

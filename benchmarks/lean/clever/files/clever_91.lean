@@ -40,6 +40,3 @@ theorem correctness
 := by
   sorry
 -- </vc-theorems>
-
--- #test implementation "Hello world" = 0
--- #test implementation "The sky is blue. The sun is shining. I love this weather" = 1

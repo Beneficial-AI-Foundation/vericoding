@@ -41,25 +41,4 @@ theorem min_hamming_distance_all_ones
   (h2 : ops = [(1, N)])
   : min_hamming_distance N (List.replicate N 1) Q ops ≤ N/2 :=
 sorry
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval min_hamming_distance 3 [1, 0, 1] 1 [(1, 3)]
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval min_hamming_distance 3 [1, 0, 1] 2 [(1, 1), (3, 3)]
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval min_hamming_distance 5 [0, 1, 0, 1, 0] 1 [(1, 5)]
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: unguarded

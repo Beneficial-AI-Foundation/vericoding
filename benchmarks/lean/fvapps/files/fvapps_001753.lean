@@ -45,19 +45,4 @@ theorem symmetry
     let mirror_j := n - 1 - j
     (0 ≤ mirror_i ∧ mirror_i < m ∧ 0 ≤ mirror_j ∧ mirror_j < n) →
     Int.natAbs (result[i]![j]! - result[mirror_i]![mirror_j]!) ≤ totalAbsSum := sorry
-
-/-
-info: expected1
--/
--- #guard_msgs in
--- #eval matrix_block_sum [[1, 2, 3], [4, 5, 6], [7, 8, 9]] 1
-
-/-
-info: expected2
--/
--- #guard_msgs in
--- #eval matrix_block_sum [[1, 2, 3], [4, 5, 6], [7, 8, 9]] 2
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

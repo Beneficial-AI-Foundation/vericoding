@@ -19,5 +19,3 @@ theorem hasCommonElement_spec_satisfied (list1: Array Int) (list2: Array Int) :
     hasCommonElement_postcond (list1) (list2) (hasCommonElement (list1) (list2)) := by
   sorry
 -- </vc-theorems>
-
-def main : IO Unit := return ()

@@ -38,5 +38,3 @@ theorem correctness
 : problem_spec implementation n := by
   sorry
 -- </vc-theorems>
-
--- #test implementation 3 = [1, 3, 2, 8]

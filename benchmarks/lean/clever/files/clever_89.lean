@@ -37,8 +37,3 @@ theorem correctness
 := by
   sorry
 -- </vc-theorems>
-
--- #test implementation "hi" = "lm"
--- #test implementation "asdfghjkl" = "ewhjklnop"
--- #test implementation "gf" = "kj"
--- #test implementation "et" = "ix"

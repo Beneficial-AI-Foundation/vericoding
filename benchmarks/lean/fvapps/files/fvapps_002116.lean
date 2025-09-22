@@ -21,25 +21,4 @@ sorry
 theorem find_array_element_bijective {n : Nat} (hn : n > 1) :
   ∀ y : Nat, 1 ≤ y ∧ y ≤ n → ∃ x : Nat, 1 ≤ x ∧ x ≤ n ∧ find_array_element n x = y :=
 sorry
-
-/-
-info: expected[i]
--/
--- #guard_msgs in
--- #eval find_array_element 4 queries[i]
-
-/-
-info: expected[i]
--/
--- #guard_msgs in
--- #eval find_array_element 13 queries[i]
-
-/-
-info: expected[i]
--/
--- #guard_msgs in
--- #eval find_array_element 3 queries[i]
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: unguarded

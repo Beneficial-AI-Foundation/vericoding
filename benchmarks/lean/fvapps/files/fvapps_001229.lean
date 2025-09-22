@@ -30,6 +30,3 @@ theorem find_ab_pairs_property_4_odd (x : Nat) (h1 : x > 0) (h2 : x % 2 = 1):
   a = x / 2 ∧ b = x - a :=
   sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

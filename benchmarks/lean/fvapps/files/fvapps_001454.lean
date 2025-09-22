@@ -29,25 +29,4 @@ theorem pattern_subsequent_rows {k : Nat} (h : k > 0) (h2 : k ≤ 10) :
   let result := generate_pattern k
   ∀ i, 1 ≤ i → i < k →
     (result.get! i).take 1 = String.mk [Char.ofNat (i + '0'.toNat)] := sorry
-
-/-
-info: ['0']
--/
--- #guard_msgs in
--- #eval generate_pattern 1
-
-/-
-info: ['01', '10']
--/
--- #guard_msgs in
--- #eval generate_pattern 2
-
-/-
-info: ['012', '101', '210']
--/
--- #guard_msgs in
--- #eval generate_pattern 3
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

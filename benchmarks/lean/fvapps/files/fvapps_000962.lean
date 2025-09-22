@@ -30,6 +30,3 @@ theorem solve_dishes_second_nonneg (n k q : Nat)
   (range_params : Nat × Nat × Nat × Nat × Nat × Nat × Nat × Nat) :
   (solve_dishes n k q array_params range_params).2 ≥ 0 := sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

@@ -34,25 +34,4 @@ theorem args_to_string_parts_exist {args : List (String ⊕ (List String))}
   let parts := (argsToString args).splitOn " " 
   parts ≠ [] :=
 sorry
-
-/-
-info: '--foo bar'
--/
--- #guard_msgs in
--- #eval args_to_string [["foo", "bar"]]
-
-/-
-info: '-f bar'
--/
--- #guard_msgs in
--- #eval args_to_string [["f", "bar"]]
-
-/-
-info: 'foo bar --baz qux -a plugh'
--/
--- #guard_msgs in
--- #eval args_to_string [["foo"], "bar", ["baz", "qux"], ["a", "plugh"]]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

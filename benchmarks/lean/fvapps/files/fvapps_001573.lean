@@ -27,25 +27,4 @@ theorem snail_pattern_correct {α : Type} (arr : List (List α)) :
 
 theorem snail_empty_list {α : Type} (arr : List (List α)) :
   arr = [] ∨ arr.head! = [] → snail arr = [] := sorry
-
-/-
-info: []
--/
--- #guard_msgs in
--- #eval snail [[]]
-
-/-
-info: [1]
--/
--- #guard_msgs in
--- #eval snail [[1]]
-
-/-
-info: [1, 2, 3, 6, 9, 8, 7, 4, 5]
--/
--- #guard_msgs in
--- #eval snail [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

@@ -49,6 +49,3 @@ theorem single_query_gives_single_result
   (h4 : result = solve_chef_cities N friendliness [[2,R]]) :
   result.length = 1 := sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

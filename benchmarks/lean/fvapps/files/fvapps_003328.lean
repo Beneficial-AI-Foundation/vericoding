@@ -26,25 +26,4 @@ theorem delete_nth_empty {lst: List Int} {max_e: Nat} :
 
 theorem delete_nth_preserves_first {lst: List Int} {max_e: Nat} :
   max_e > 0 → ∀ x, x ∈ lst → x ∈ delete_nth lst max_e := sorry
-
-/-
-info: [20, 37, 21]
--/
--- #guard_msgs in
--- #eval delete_nth [20, 37, 20, 21] 1
-
-/-
-info: [1, 1, 3, 3, 7, 2, 2, 2]
--/
--- #guard_msgs in
--- #eval delete_nth [1, 1, 3, 3, 7, 2, 2, 2, 2] 3
-
-/-
-info: []
--/
--- #guard_msgs in
--- #eval delete_nth [] 5
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

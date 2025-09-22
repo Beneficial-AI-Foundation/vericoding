@@ -41,25 +41,4 @@ theorem zero_withdrawal_succeeds (f0 : Int) (p : Float) (n : Int) (i : Float)
   (h3 : n > 0 ∧ n ≤ 50)
   (h4 : 0 ≤ i ∧ i ≤ 100) :
   fortune f0 p 0 n i = true := sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval fortune 100000 1 2000 15 1
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval fortune 100000 1 9185 12 1
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval fortune 100000 1 10000 10 1
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

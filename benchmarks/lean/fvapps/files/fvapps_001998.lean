@@ -37,25 +37,4 @@ theorem min_seconds_all_different (n : Nat) (colors : List Nat)
   (h2 : ∀ i j, i < n → j < n → i ≠ j → colors[i]! ≠ colors[j]!) :
   min_seconds_to_destroy colors = n :=
   sorry
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval min_seconds_to_destroy [1, 2, 1]
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval min_seconds_to_destroy [1, 2, 3]
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval min_seconds_to_destroy [1, 4, 4, 2, 3, 2, 1]
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: unguarded

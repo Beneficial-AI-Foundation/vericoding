@@ -25,25 +25,4 @@ theorem seven_order_invariant (n1 n2 : Nat) :
   (seven n1).1 = (seven n2).1 → 
     (n1 ≤ n2 → (seven n1).2 ≤ (seven n2).2) ∧
     (n1 ≥ n2 → (seven n1).2 ≥ (seven n2).2) := sorry
-
-/-
-info: [35, 1]
--/
--- #guard_msgs in
--- #eval seven 371
-
-/-
-info: [7, 2]
--/
--- #guard_msgs in
--- #eval seven 1603
-
-/-
-info: [28, 7]
--/
--- #guard_msgs in
--- #eval seven 477557101
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

@@ -36,6 +36,3 @@ theorem optimal_coins_edge_cases :
     optimalNumberOfCoins 1 [1] = some 1 ∧
     optimalNumberOfCoins 1 [2] = none := sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

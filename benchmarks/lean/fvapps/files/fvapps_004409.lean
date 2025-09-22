@@ -31,25 +31,4 @@ theorem pattern_properties (n : Int) (h : n > 0) :
   -- Same digit pattern on each line when stripped
   (∀ line ∈ lines, ∀ (i : Fin lines.length), line.trim = lines[i].trim) :=
   sorry
-
-/-
-info: '  123\n 123 \n123  '
--/
--- #guard_msgs in
--- #eval pattern 3
-
-/-
-info: '    12345\n   12345 \n  12345  \n 12345   \n12345    '
--/
--- #guard_msgs in
--- #eval pattern 5
-
-/-
-info: ''
--/
--- #guard_msgs in
--- #eval pattern -3
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

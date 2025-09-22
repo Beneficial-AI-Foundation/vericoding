@@ -26,25 +26,4 @@ theorem generate_pattern_row_format {k : Nat} {i : Nat} (h : i > 0) (h2 : i ≤ 
 
 theorem generate_pattern_empty :
   generatePattern 0 = ["0"] := sorry
-
-/-
-info: ['0', '*1', '**2']
--/
--- #guard_msgs in
--- #eval generate_pattern 2
-
-/-
-info: ['0', '*1', '**2', '***3']
--/
--- #guard_msgs in
--- #eval generate_pattern 3
-
-/-
-info: ['0', '*1', '**2', '***3', '****4']
--/
--- #guard_msgs in
--- #eval generate_pattern 4
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

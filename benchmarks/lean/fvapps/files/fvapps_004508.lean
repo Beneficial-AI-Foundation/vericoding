@@ -19,19 +19,4 @@ theorem wrong_value
   (h1 : name.length > 0)
   (h2 : val ≠ 777) :
   ¬ (∃ x : String, find_variable_with_777 = x) := sorry
-
-/-
-info: 'secret_var'
--/
--- #guard_msgs in
--- #eval find_variable_with_777 
-
-/-
-info: 'magic_number'
--/
--- #guard_msgs in
--- #eval find_variable_with_777
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

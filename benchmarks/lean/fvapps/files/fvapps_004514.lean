@@ -24,25 +24,4 @@ theorem encryptor_preserves_non_letters (key : Int) (message : String) :
 
 theorem encryptor_identity_keys (message : String) :
   encryptor 0 message = message ∧ encryptor 26 message = message := sorry
-
-/-
-info: 'Dbftbs Djqifs'
--/
--- #guard_msgs in
--- #eval encryptor 1 "Caesar Cipher"
-
-/-
-info: 'Bzdrzq Bhogdq'
--/
--- #guard_msgs in
--- #eval encryptor -1 "Caesar Cipher"
-
-/-
-info: 'Khoor, Zruog 123!'
--/
--- #guard_msgs in
--- #eval encryptor 3 "Hello, World 123!"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

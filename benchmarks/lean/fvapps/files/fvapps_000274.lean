@@ -24,25 +24,4 @@ theorem identical_strings
   {s : String}
   {k : Nat} :
   can_convert_string s s k = true := sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval can_convert_string "input" "ouput" 9
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval can_convert_string "abc" "bcd" 10
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval can_convert_string "aab" "bbb" 27
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

@@ -54,47 +54,54 @@ vc-description: |-
   
    $a_{7} = a_{6} + minDigit(a_{6}) \cdot maxDigit(a_{6}) = 588 + \min (5, 8, 8) \cdot \max (5, 8, 8) = 588 + 5 \cdot 8 = 628$
   -/
+  
+  -- Result is always non-negative
+  
+  -- k=1 returns original number
+  
+  -- k>1 implies result >= input
 
 vc-preamble: |-
-  def calc_seq (a k : Nat) : Nat :=
-    sorry
 
 vc-helpers: |-
 
 vc-definitions: |-
+  def calc_seq (a k : Nat) : Nat :=
+    sorry
+  
   def hasZeroDigit (n : Nat) : Bool :=
     sorry
 
 vc-theorems: |-
   theorem calc_seq_basic_properties {a k : Nat} (ha : a > 0) (hk : k > 0) :
     let result := calc_seq a k
-    -- Result is always non-negative
-    result ≥ 0 ∧ 
-    -- k=1 returns original number
+  
+    result ≥ 0 ∧
+  
     calc_seq a 1 = a ∧
-    -- k>1 implies result >= input
+  
     (k > 1 → result ≥ a) :=
-    sorry
-  
-  /-
-  info: 42
-  -/
-  -- #guard_msgs in
-  -- #eval calc_seq 1 4
-  
-  /-
-  info: 487
-  -/
-  -- #guard_msgs in
-  -- #eval calc_seq 487 1
-  
-  /-
-  info: 628
-  -/
-  -- #guard_msgs in
-  -- #eval calc_seq 487 7
+  sorry
 
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
+  
+  /--
+  info: 42
+  -/
+  #guard_msgs in
+  #eval calc_seq 1 4
+  
+  /--
+  info: 487
+  -/
+  #guard_msgs in
+  #eval calc_seq 487 1
+  
+  /--
+  info: 628
+  -/
+  #guard_msgs in
+  #eval calc_seq 487 7
 

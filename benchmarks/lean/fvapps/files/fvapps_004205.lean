@@ -20,25 +20,4 @@ theorem s2n_increasing_m (m n : Nat) :
 
 theorem s2n_base_cases :
   (S2N 0 0 = 1) ∧ (S2N 1 0 = 2) ∧ (S2N 0 1 = 1) := sorry
-
-/-
-info: 20
--/
--- #guard_msgs in
--- #eval S2N 2 3
-
-/-
-info: 434
--/
--- #guard_msgs in
--- #eval S2N 3 5
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval S2N 1 1
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

@@ -31,25 +31,4 @@ sorry
 theorem single_element_result {n u d : Nat} :
   findRightmostHill n u d [n] = 1 :=
 sorry
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval find_rightmost_hill 5 3 2 [2, 5, 2, 6, 3]
-
-/-
-info: 5
--/
--- #guard_msgs in
--- #eval find_rightmost_hill 5 2 3 [4, 4, 4, 4, 4]
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval find_rightmost_hill 5 2 7 [1, 4, 3, 2, 1]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

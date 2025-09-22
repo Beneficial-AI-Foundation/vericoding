@@ -19,25 +19,4 @@ theorem narcissistic_sum_property {n : Nat} (h : is_narcissistic n = true) :
 
 theorem non_narcissistic_sum_property {n : Nat} (h : is_narcissistic n = false) :
   poweredDigitsSum n ≠ n := sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval is_narcissistic 153
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval is_narcissistic 370
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval is_narcissistic 407
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

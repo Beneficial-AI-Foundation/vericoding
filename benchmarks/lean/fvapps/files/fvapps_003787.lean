@@ -27,25 +27,4 @@ theorem solve_bounded_by_length (arr : List Int) :
   -arr.length ≤ solve (arr.map Sum.inl) ∧ 
   solve (arr.map Sum.inl) ≤ arr.length :=
 sorry
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval solve [0, 1, 2, 3]
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval solve [0, 1, 2, 3, "a", "b"]
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval solve [13, 6, 8, 15, 4, 8, 13]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

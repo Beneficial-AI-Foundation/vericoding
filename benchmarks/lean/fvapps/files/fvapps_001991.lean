@@ -30,31 +30,4 @@ theorem solve_example_2 :
 
 theorem solve_example_3 :
   solve 6 99 [-1, -1, -1, -1, -1, -1] = [0, 6, 5, 4, 3, 2, 1] := sorry
-
-/-
-info: N
--/
--- #guard_msgs in
--- #eval len a
-
-/-
-info: [6, 5, 4, 0, 0, 0]
--/
--- #guard_msgs in
--- #eval solve 5 3 [1, 2, 3, 4, 5]
-
-/-
-info: [1, 2, 0]
--/
--- #guard_msgs in
--- #eval solve 2 6 [-5, 9]
-
-/-
-info: [0, 6, 5, 4, 3, 2, 1]
--/
--- #guard_msgs in
--- #eval solve 6 99 [-1, -1, -1, -1, -1, -1]
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: unguarded

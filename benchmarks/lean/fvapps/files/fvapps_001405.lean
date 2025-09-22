@@ -19,6 +19,3 @@ theorem solveXorPairs_known_cases_4 : solveXorPairs 10 17 = 79 := sorry
 
 theorem solveXorPairs_known_cases_5 : solveXorPairs 100 159 = 7485 := sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

@@ -17,6 +17,3 @@ theorem dot_correct_dimensions (n m : Nat)
   (lines.length = 2 * m + 1) ∧ 
   (∀ line ∈ lines, line.length = 4 * n + 1) := sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

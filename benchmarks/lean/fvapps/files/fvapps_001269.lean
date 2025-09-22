@@ -57,19 +57,4 @@ theorem solve_game_edge_cases
   ]
   (solve_game n arr edge_queries).length = 6 :=
   sorry
-
-/-
-info: 'DCDDC'
--/
--- #guard_msgs in
--- #eval solve_game 3 [1, 2, 3] [(">", 1, "D"), ("<", 2, "C"), ("=", 3, "D"), (">", 4, "C"), ("<", 5, "D")]
-
-/-
-info: 'DD'
--/
--- #guard_msgs in
--- #eval solve_game 2 [1, 2] [("=", 1, "D"), ("=", 2, "C")]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

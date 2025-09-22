@@ -38,25 +38,4 @@ theorem downstream_faster_than_upstream
   (h3 : speed > 0) :
   time distance boat_speed ("Downstream " ++ toString speed) < 
   time distance boat_speed ("Upstream " ++ toString speed) := sorry
-
-/-
-info: 2.0
--/
--- #guard_msgs in
--- #eval time 24 10 "Downstream 2"
-
-/-
-info: 2.0
--/
--- #guard_msgs in
--- #eval time 24 14 "Upstream 2"
-
-/-
-info: 1.74
--/
--- #guard_msgs in
--- #eval time 54 28 "Downstream 3"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

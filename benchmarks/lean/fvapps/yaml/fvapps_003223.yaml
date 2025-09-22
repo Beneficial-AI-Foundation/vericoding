@@ -9,18 +9,20 @@ vc-description: |-
   flatten('a', ['b', 2], 3, None, [[4], ['c']]) # returns ['a', 'b', 2, 3, None, 4, 'c']
   ```
   -/
+  
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded
 
 vc-preamble: |-
-  def flatten {α : Type} : List (List α) → List α 
-    | [] => sorry
-    | x :: xs => sorry
 
 vc-helpers: |-
 
 vc-definitions: |-
-  def isNestedList {α : Type} : List (List α) → Bool
-    | [] => sorry
-    | x :: xs => sorry
+  def flatten {α : Type} : List (List α) → List α :=
+    sorry
+  
+  def isNestedList {α : Type} : List (List α) → Bool :=
+    sorry
 
 vc-theorems: |-
   theorem flatten_preserves_elements {α : Type} (lst : List (List α)) (inner : List α) :
@@ -36,12 +38,10 @@ vc-theorems: |-
     List.length (flatten [lst]) = List.length lst :=
   sorry
   
-  theorem flatten_nested_ints (lst : List (List Int)) (n : Int) : 
+  theorem flatten_nested_ints (lst : List (List Int)) (n : Int) :
     n ∈ (flatten lst) →
     ∃ inner : List Int, inner ∈ lst ∧ n ∈ inner :=
   sorry
 
 vc-postamble: |-
-  -- Apps difficulty: introductory
-  -- Assurance level: guarded
 

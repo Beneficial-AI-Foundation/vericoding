@@ -21,25 +21,4 @@ theorem buy_newspaper_valid_chars
   (h1 : s2.length > 0)
   (h2 : ∀ c, c ∈ s2.data → c ∈ s1.data) :
   buy_newspaper s1 s2 ≥ 0 := sorry
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval buy_newspaper "abc" "bcac"
-
-/-
-info: -1
--/
--- #guard_msgs in
--- #eval buy_newspaper "abc" "xyz"
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval buy_newspaper "abc" "abcabc"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

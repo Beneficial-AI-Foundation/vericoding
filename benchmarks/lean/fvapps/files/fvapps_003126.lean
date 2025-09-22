@@ -28,25 +28,4 @@ theorem solve_returns_largest (num_str : String) (k : Nat)
   ∀ i, i + partition_size ≤ num_str.length →
     let substr := (num_str.take (i + partition_size)).drop i
     result ≥ substr.toNat! := sorry
-
-/-
-info: 234
--/
--- #guard_msgs in
--- #eval solve "1234" 1
-
-/-
-info: 34
--/
--- #guard_msgs in
--- #eval solve "1234" 2
-
-/-
-info: 202
--/
--- #guard_msgs in
--- #eval solve "2020" 1
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

@@ -29,25 +29,4 @@ theorem mystery_numbers_in_range (n : Int)
 theorem mystery_invalid_input (n : Int)
   (h : n ≤ 0) :
   mystery n = [] := sorry
-
-/-
-info: [1, 3]
--/
--- #guard_msgs in
--- #eval mystery 6
-
-/-
-info: [1, 7]
--/
--- #guard_msgs in
--- #eval mystery 7
-
-/-
-info: [1, 3, 9]
--/
--- #guard_msgs in
--- #eval mystery 9
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

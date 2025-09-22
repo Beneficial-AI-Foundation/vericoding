@@ -36,25 +36,4 @@ theorem artificial_rain_monotonic_decreasing {garden: List Nat} (h: garden.lengt
   (h2: ∀ (i: Nat) (hi: i < garden.length) (hi1: i + 1 < garden.length), 
     garden.get ⟨i, hi⟩ ≥ garden.get ⟨i + 1, hi1⟩) :
   artificial_rain garden = garden.length := sorry
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval artificial_rain [4, 2, 3, 3, 2]
-
-/-
-info: 5
--/
--- #guard_msgs in
--- #eval artificial_rain [1, 2, 3, 4, 5]
-
-/-
-info: 5
--/
--- #guard_msgs in
--- #eval artificial_rain [1, 2, 2, 2, 1]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

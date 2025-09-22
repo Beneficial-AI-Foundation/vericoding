@@ -21,31 +21,4 @@ theorem valid_input_produces_uppercase_first_letters (words : List String) :
   (∀ w ∈ words, w.length > 0 ∧ (∀ c ∈ w.data, c.isAlpha)) →
   make_acronym (" ".intercalate words) = 
     String.mk (words.map (λ w => w.data.head!.toUpper)) := sorry
-
-/-
-info: 'MAS'
--/
--- #guard_msgs in
--- #eval make_acronym "My aunt sally"
-
-/-
-info: 'Not a string'
--/
--- #guard_msgs in
--- #eval make_acronym [1, 2, 3]
-
-/-
-info: 'Not letters'
--/
--- #guard_msgs in
--- #eval make_acronym "a42"
-
-/-
-info: ''
--/
--- #guard_msgs in
--- #eval make_acronym ""
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

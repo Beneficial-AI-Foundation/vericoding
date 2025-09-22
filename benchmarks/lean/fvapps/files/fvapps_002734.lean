@@ -30,25 +30,4 @@ theorem coin_empty :
 
 theorem coin_negative (n : Int) :
   n < 0 → coin (Int.toNat n) = [] := sorry
-
-/-
-info: ['H', 'T']
--/
--- #guard_msgs in
--- #eval coin 1
-
-/-
-info: ['HH', 'HT', 'TH', 'TT']
--/
--- #guard_msgs in
--- #eval coin 2
-
-/-
-info: ['HHH', 'HHT', 'HTH', 'HTT', 'THH', 'THT', 'TTH', 'TTT']
--/
--- #guard_msgs in
--- #eval coin 3
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

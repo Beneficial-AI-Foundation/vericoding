@@ -25,13 +25,4 @@ theorem non_overlapping_intervals_share_colors : ∀ (intervals : List Interval)
   let result := color_intervals intervals
   2 ≥ List.length (List.eraseDups result.data)
   := sorry
-
-/-
-info: '100'
--/
--- #guard_msgs in
--- #eval color_intervals [(3, 7), (2, 5), (6, 9)]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

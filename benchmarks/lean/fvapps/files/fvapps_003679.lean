@@ -29,25 +29,4 @@ sorry
 theorem sort_twisted37_idempotent {arr : List Int} :
   sort_twisted37 (sort_twisted37 arr) = sort_twisted37 arr :=
 sorry
-
-/-
-info: expected1
--/
--- #guard_msgs in
--- #eval sort_twisted37 [1, 2, 3, 4, 5, 6, 7, 8, 9]
-
-/-
-info: expected2
--/
--- #guard_msgs in
--- #eval sort_twisted37 [12, 13, 14]
-
-/-
-info: expected3
--/
--- #guard_msgs in
--- #eval sort_twisted37 [9, 2, 4, 7, 3]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

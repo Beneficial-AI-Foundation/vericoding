@@ -33,25 +33,4 @@ theorem xorOperation_edge_case_zero :
 theorem xorOperation_edge_case_one :
   xorOperation 1 5 = 5 :=
   sorry
-
-/-
-info: 8
--/
--- #guard_msgs in
--- #eval xor_operation 5 0
-
-/-
-info: 8
--/
--- #guard_msgs in
--- #eval xor_operation 4 3
-
-/-
-info: 7
--/
--- #guard_msgs in
--- #eval xor_operation 1 7
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

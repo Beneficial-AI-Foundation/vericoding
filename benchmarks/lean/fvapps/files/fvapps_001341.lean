@@ -21,6 +21,3 @@ theorem calc_sum_associative (x y : Int) :
 theorem calc_sum_inverse (x : Int) :
   calc_sum x (-x) = 0 := sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

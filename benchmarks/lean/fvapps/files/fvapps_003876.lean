@@ -21,25 +21,4 @@ theorem get_char_invalid_neg {i : Int} (h : i < 0) :
 theorem get_char_invalid_large {i : Int} (h : i > 1114111) : 
   ¬(∃ c : Char, get_char i = c) := 
   sorry
-
-/-
-info: 'A'
--/
--- #guard_msgs in
--- #eval get_char 65
-
-/-
-info: '!'
--/
--- #guard_msgs in
--- #eval get_char 33
-
-/-
-info: '%'
--/
--- #guard_msgs in
--- #eval get_char 37
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

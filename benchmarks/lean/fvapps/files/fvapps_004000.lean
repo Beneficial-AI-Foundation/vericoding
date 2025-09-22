@@ -29,6 +29,3 @@ theorem maxlen_equal_inputs (x : Float)
   (h : x > 0) :
   maxlen x x = x / 2 := sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

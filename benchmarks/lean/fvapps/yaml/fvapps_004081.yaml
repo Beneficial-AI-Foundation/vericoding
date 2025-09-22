@@ -3,52 +3,52 @@ vc-description: |-
   My friend John and I are members of the "Fat to Fit Club (FFC)". John is worried because
   each month a list with the weights of members is published and each month he is the last on the list
   which means he is the heaviest. 
-  
+
   I am the one who establishes the list so I told him:
   "Don't worry any more, I will modify the order of the list".
   It was decided to attribute a "weight" to numbers. The weight of a number will be from now on
   the sum of its digits. 
-  
+
   For example `99` will have "weight" `18`, `100` will have "weight"
   `1` so in the list `100` will come before `99`.
   Given a string with the weights of FFC members in normal order can you give this string ordered by "weights" of these numbers?
-  
+
   # Example:
-  
+
   `"56 65 74 100 99 68 86 180 90"` ordered by numbers weights becomes: 
   `"100 180 90 56 65 74 68 86 99"`
-  
+
   When two numbers have the same "weight", let us class them as if they were strings (alphabetical ordering) and not numbers:
   `100` is before `180` because its "weight" (1) is less than the one of `180` (9)
   and `180` is before `90` since, having the same "weight" (9),  it comes before as a *string*.
-  
+
   All numbers in the list are positive numbers and the list can be empty.
-  
+
   # Notes
-  
+
   - it may happen that the input string have leading, trailing whitespaces and more than a unique whitespace between two consecutive numbers
   - Don't modify the input
   - For C: The result is freed.
   -/
 
-vc-preamble: |-
+vc-preamble: |
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def calcWeight (s : String) : Nat := sorry 
-  
+
   def orderWeight (s : String) : String := sorry
 
 vc-theorems: |-
   theorem empty_input_gives_empty_output : orderWeight "" = "" := sorry
-  
+
   theorem output_has_same_elements (s : String) :
     s ≠ "" → 
     let input := s.split (· = ' ') |>.toArray
     let output := (orderWeight s).split (· = ' ') |>.toArray
     input.qsort (· ≤ ·) = output.qsort (· ≤ ·) := sorry
-  
+
   theorem weights_are_ordered (s : String) (i : Nat) :
     s ≠ "" →
     let result := (orderWeight s).split (· = ' ')
@@ -56,7 +56,7 @@ vc-theorems: |-
     let w1 := calcWeight (result.get! i)
     let w2 := calcWeight (result.get! (i+1))
     w1 ≤ w2 := sorry
-  
+
   theorem equal_weights_ordered_lexicographically (s : String) (i : Nat) :
     s ≠ "" →
     let result := (orderWeight s).split (· = ' ')
@@ -64,31 +64,31 @@ vc-theorems: |-
     let w1 := calcWeight (result.get! i)
     let w2 := calcWeight (result.get! (i+1))
     w1 = w2 → result.get! i ≤ result.get! (i+1) := sorry
-  
+
   theorem output_contains_only_digits (s : String) :
     s ≠ "" →
     let result := orderWeight s
     ∀ c ∈ result.data, c.isDigit ∨ c = ' ' := sorry
-  
-  /-
-  info: expected1
-  -/
-  -- #guard_msgs in
-  -- #eval order_weight "103 123 4444 99 2000"
-  
-  /-
-  info: expected2
-  -/
-  -- #guard_msgs in
-  -- #eval order_weight "56 65 74 100 99 68 86 180 90"
-  
-  /-
-  info: expected3
-  -/
-  -- #guard_msgs in
-  -- #eval order_weight ""
 
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+
+  /--
+  info: expected1
+  -/
+  #guard_msgs in
+  #eval order_weight "103 123 4444 99 2000"
+
+  /--
+  info: expected2
+  -/
+  #guard_msgs in
+  #eval order_weight "56 65 74 100 99 68 86 180 90"
+
+  /--
+  info: expected3
+  -/
+  #guard_msgs in
+  #eval order_weight ""
 

@@ -32,25 +32,4 @@ theorem output_modulo {n : Nat} {grid : List String}
 theorem idempotency {n : Nat} {grid : List String}
   (h1 : n ≥ 3) :
   count_brown_regions n grid = count_brown_regions n grid := sorry
-
-/-
-info: 6
--/
--- #guard_msgs in
--- #eval count_brown_regions 3 ["01000010", "11000001", "00000000", "00011000", "00011000", "00010100", "00001000", "00000000"]
-
-/-
-info: 22
--/
--- #guard_msgs in
--- #eval count_brown_regions 4 ["01000010", "11000001", "00000000", "00011000", "00011000", "00010100", "00001000", "00000000"]
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval count_brown_regions 1000000000 ["11111111", "11111111", "11111111", "11111111", "11111111", "11111111", "11111111", "11111111"]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

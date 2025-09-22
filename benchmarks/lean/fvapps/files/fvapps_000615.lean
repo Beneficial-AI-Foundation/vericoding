@@ -43,6 +43,3 @@ theorem mixed_string
 theorem special_case :
   process_string "C0D3C43F" = 3943 := by sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

@@ -27,25 +27,4 @@ theorem single_mine_cost_with_gap (a b : Nat) :
 
 theorem new_activation_cheaper :
   min_cost_clear_mines 2 3 "101" = 4 := sorry
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval min_cost_clear_mines 1 1 "01000010"
-
-/-
-info: 6
--/
--- #guard_msgs in
--- #eval min_cost_clear_mines 5 1 "01101110"
-
-/-
-info: 5
--/
--- #guard_msgs in
--- #eval min_cost_clear_mines 3 2 "1011"
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

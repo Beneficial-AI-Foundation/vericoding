@@ -43,6 +43,3 @@ theorem make_2d_list_square {head : Int} {size : Nat}
   result.length = (result.get! 0).length :=
 sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

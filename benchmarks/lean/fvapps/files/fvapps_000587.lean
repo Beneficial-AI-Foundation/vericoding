@@ -35,25 +35,4 @@ theorem arbitrary_grid_stability (grid : List (List Nat)) :
   let cols := (List.get! grid 0).length
   check_grid_stability grid rows cols = "Stable" ∨
   check_grid_stability grid rows cols = "Unstable" := sorry
-
-/-
-info: 'Stable'
--/
--- #guard_msgs in
--- #eval check_grid_stability [[1, 2, 1], [2, 3, 2], [1, 2, 1]] 3 3
-
-/-
-info: 'Unstable'
--/
--- #guard_msgs in
--- #eval check_grid_stability [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 4, 0]] 3 4
-
-/-
-info: 'Unstable'
--/
--- #guard_msgs in
--- #eval check_grid_stability [[1, 1, 1], [1, 4, 1], [1, 1, 1]] 3 3
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

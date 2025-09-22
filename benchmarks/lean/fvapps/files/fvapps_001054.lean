@@ -35,6 +35,3 @@ theorem solve_division_bounds (m : Nat) (p : Float)
   let (chef, other) := solve_division m p
   chef ≤ total_money ∧ other ≤ total_money := sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

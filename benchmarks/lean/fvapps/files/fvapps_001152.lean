@@ -37,13 +37,4 @@ theorem solve_powers_of_two {N : Nat}
   let A := List.range N |>.map (λ x => 2^x)
   (solve N A).length = N - 1 := by
   sorry
-
-/-
-info: [3, 1, 1, 0]
--/
--- #guard_msgs in
--- #eval solve 5 [3, 6, 4, 5, 9]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

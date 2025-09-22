@@ -26,25 +26,4 @@ theorem filter_words_preserves_word_count (s : String) :
 
 theorem filter_words_empty_produces_empty (s : String) 
   (h : s = "" ∨ s = " " ∨ s = "  ") : filter_words s = "" := sorry
-
-/-
-info: 'Hello world!'
--/
--- #guard_msgs in
--- #eval filter_words "HELLO world!"
-
-/-
-info: 'This will not pass'
--/
--- #guard_msgs in
--- #eval filter_words "This    will    not    pass "
-
-/-
-info: 'Now this is a very exciting test!'
--/
--- #guard_msgs in
--- #eval filter_words "NOW THIS is a VERY EXCITING test!"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

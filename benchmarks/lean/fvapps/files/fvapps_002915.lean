@@ -30,25 +30,4 @@ theorem vowel_back_consistent_mapping (s : String)
   ∀ i j, i < s.length → j < s.length → 
   s.data[i]? = s.data[j]? → 
   (vowel_back s).data[i]? = (vowel_back s).data[j]? := sorry
-
-/-
-info: 'tabtbvba'
--/
--- #guard_msgs in
--- #eval vowel_back "testcase"
-
-/-
-info: 'bnaafvab'
--/
--- #guard_msgs in
--- #eval vowel_back "codewars"
-
-/-
-info: 'agvvyuatabtqaaa'
--/
--- #guard_msgs in
--- #eval vowel_back "exampletesthere"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

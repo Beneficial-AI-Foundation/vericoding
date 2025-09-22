@@ -23,25 +23,4 @@ theorem box_capacity_monotonic_height (l w h : Nat) :
 
 theorem box_capacity_small_dim (w h : Nat) :
   box_capacity 1 w h = 0 := sorry
-
-/-
-info: 13824
--/
--- #guard_msgs in
--- #eval box_capacity 32 64 16
-
-/-
-info: 3375
--/
--- #guard_msgs in
--- #eval box_capacity 20 20 20
-
-/-
-info: 27000
--/
--- #guard_msgs in
--- #eval box_capacity 80 40 20
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

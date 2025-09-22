@@ -35,25 +35,4 @@ theorem mixed_terms_count_only_alan_terms (alan_arr other_arr : List String) :
   (∀ x ∈ other_arr, ¬isAlanTerm x) →
   countChar (part (alan_arr ++ other_arr)) '!' = alan_arr.length :=
 sorry
-
-/-
-info: "Mine's a Pint!"
--/
--- #guard_msgs in
--- #eval part ["Grouse", "Partridge", "Pheasant"]
-
-/-
-info: "Lynn, I've pierced my foot on a spike!!"
--/
--- #guard_msgs in
--- #eval part ["Pheasant", "Goose", "Starling", "Robin"]
-
-/-
-info: "Mine's a Pint!!!!!"
--/
--- #guard_msgs in
--- #eval part ["Partridge", "PearTree", "Chat", "Dan", "Toblerone"]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

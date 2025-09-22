@@ -16,25 +16,4 @@ theorem note_is_valid (n : Nat) (h : n > 0) :
 
 theorem note_wraps_after_88 (n : Nat) (h : n > 0) :
   which_note n = which_note (n + 88) := sorry
-
-/-
-info: 'A'
--/
--- #guard_msgs in
--- #eval which_note 1
-
-/-
-info: 'D'
--/
--- #guard_msgs in
--- #eval which_note 42
-
-/-
-info: 'C'
--/
--- #guard_msgs in
--- #eval which_note 92
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

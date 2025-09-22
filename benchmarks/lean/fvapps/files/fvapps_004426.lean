@@ -23,25 +23,4 @@ theorem result_appears_least (numbers : List Int) (h : numbers.length ≥ 3):
   let result := find_the_missing_tree input_list
   ∀ n ∈ input_list, (input_list.count result) ≤ (input_list.count n) :=
 sorry
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval find_the_missing_tree [1, 2, 2, 3, 3]
-
-/-
-info: 8
--/
--- #guard_msgs in
--- #eval find_the_missing_tree [2, 2, 2, 56, 56, 56, 8, 8]
-
-/-
-info: 64
--/
--- #guard_msgs in
--- #eval find_the_missing_tree [34, 76, 12, 99, 64, 99, 76, 12, 34]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

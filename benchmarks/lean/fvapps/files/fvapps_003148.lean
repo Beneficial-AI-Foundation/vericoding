@@ -23,25 +23,4 @@ theorem identical_words_property (word : String) (n : Nat) :
 
 theorem empty_list_property :
   anagram_counter [] = 0 := by sorry
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval anagram_counter []
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval anagram_counter ["dell", "ledl", "abc", "cba"]
-
-/-
-info: 7
--/
--- #guard_msgs in
--- #eval anagram_counter ["dell", "ledl", "abc", "cba", "bca", "bac"]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

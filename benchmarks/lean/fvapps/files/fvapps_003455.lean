@@ -48,25 +48,4 @@ theorem boredom_threshold_high (staff : List (String × String))
   let total := getTotalScore staff
   total ≥ 100 → boredom staff = "party time!!" :=
   sorry
-
-/-
-info: 'kill me now'
--/
--- #guard_msgs in
--- #eval boredom {"tim": "change", "jim": "accounts", "randy": "canteen", "sandy": "change", "andy": "change", "katie": "IS", "laura": "change", "saajid": "IS", "alex": "trading", "john": "accounts", "mr": "finance"}
-
-/-
-info: 'i can handle this'
--/
--- #guard_msgs in
--- #eval boredom {"tim": "IS", "jim": "finance", "randy": "pissing about", "sandy": "cleaning", "andy": "cleaning", "katie": "cleaning", "laura": "pissing about", "saajid": "regulation", "alex": "regulation", "john": "accounts", "mr": "canteen"}
-
-/-
-info: 'party time!!'
--/
--- #guard_msgs in
--- #eval boredom {"tim": "accounts", "jim": "accounts", "randy": "pissing about", "sandy": "finance", "andy": "change", "katie": "IS", "laura": "IS", "saajid": "canteen", "alex": "pissing about", "john": "retail", "mr": "pissing about"}
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

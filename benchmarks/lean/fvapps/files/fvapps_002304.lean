@@ -18,25 +18,4 @@ theorem non_perfect_squares {n : Nat} :
 theorem sqrt_integers {n : Nat} :
   is_perfect_square n = 
   (∃ m : Nat, m * m = n) := sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval is_perfect_square 16
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval is_perfect_square 14
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval is_perfect_square 25
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

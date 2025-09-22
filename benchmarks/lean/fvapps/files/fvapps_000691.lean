@@ -22,6 +22,3 @@ theorem maxval_bounded (arr : List Int) (h : arr.length ≥ 4) :
   let maxPossible := 2 * max (maxVal - minVal) (maxVal + minVal)
   maxval arr ≤ maxPossible ∧ maxval arr ≥ -maxPossible := by sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

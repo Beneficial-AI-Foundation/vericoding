@@ -23,6 +23,3 @@ theorem symmetry_properties {n : Nat} (h : n = 7 ∨ n = 8) :
     lines[i]! = String.mk (List.reverse lines[i]!.data) ∧ 
     lines[i]! = lines[lines.length - 1 - i]!) := sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

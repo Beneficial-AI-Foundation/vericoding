@@ -27,25 +27,4 @@ theorem single_char_case {s : String} {k : Int} :
 theorem all_same_char {s : String} {k : Int} :
   s.length > 0 → (∀ (i : Nat), i < s.length → s.data[i]? = s.data[0]?) →
   (can_construct_palindromes s k ↔ k ≥ s.length % 2) := sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval can_construct_palindromes "annabelle" 2
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval can_construct_palindromes "leetcode" 3
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval can_construct_palindromes "yzyzyzyzyzyzyzy" 2
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

@@ -21,25 +21,4 @@ theorem pipe_burst_temp_div_three (m : Nat) (tc th : Int) :
 
 theorem pipe_no_burst_equal_temps (m : Nat) (t : Int) :
   will_pipe_burst m t t = "No" := sorry
-
-/-
-info: 'Yes'
--/
--- #guard_msgs in
--- #eval will_pipe_burst 4 5 10
-
-/-
-info: 'No'
--/
--- #guard_msgs in
--- #eval will_pipe_burst 2 2 5
-
-/-
-info: 'Yes'
--/
--- #guard_msgs in
--- #eval will_pipe_burst 1 1 7
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

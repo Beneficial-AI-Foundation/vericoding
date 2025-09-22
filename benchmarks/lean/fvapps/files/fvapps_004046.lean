@@ -31,25 +31,4 @@ theorem next_num_zero_is_one :
 
 theorem next_num_small_numbers (i : Nat) (h : i > 0) (h2 : i < 10) :
   next_num (i-1) = some i := sorry
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval next_num 0
-
-/-
-info: 1236
--/
--- #guard_msgs in
--- #eval next_num 1234
-
-/-
-info: None
--/
--- #guard_msgs in
--- #eval next_num 3608528850368400786036725
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

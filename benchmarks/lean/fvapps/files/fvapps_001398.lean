@@ -48,31 +48,4 @@ theorem consecutive_sevens_reduce (s : String) :
       (0, 0)
   count_balanced_substrings s = total - consecutive_reduction.1 :=
   sorry
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval count_balanced_substrings "47"
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval count_balanced_substrings "74"
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval count_balanced_substrings "477"
-
-/-
-info: 23
--/
--- #guard_msgs in
--- #eval count_balanced_substrings "4747477"
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

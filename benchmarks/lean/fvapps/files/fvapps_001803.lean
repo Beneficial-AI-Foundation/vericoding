@@ -28,6 +28,3 @@ theorem prison_endpoint_cells
   result.get ⟨7, sorry⟩ = 0 :=
 sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

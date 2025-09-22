@@ -22,25 +22,4 @@ theorem happy_g_single_g_unhappy (s : String) (pos : Nat) :
   ¬ s.contains 'g' →
   pos ≤ s.length →
   ¬ happy_g (s.push 'g') := sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval happy_g "gg0gg3gg0gg"
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval happy_g "gog"
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval happy_g "gggggggggg"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

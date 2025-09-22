@@ -32,25 +32,4 @@ theorem histogram_bin_counts (lst : List Nat) (width : Nat) (h : width > 0) :
   ∀ bin_idx < List.length (histogram lst width),
     (histogram lst width).get ⟨bin_idx, by sorry⟩ =
       List.length (List.filter (fun x => x / width = bin_idx) lst) := sorry
-
-/-
-info: [1, 3, 1, 1, 0, 0, 1]
--/
--- #guard_msgs in
--- #eval histogram [1, 1, 0, 1, 3, 2, 6] 1
-
-/-
-info: [4, 2, 0, 1]
--/
--- #guard_msgs in
--- #eval histogram test1 2
-
-/-
-info: []
--/
--- #guard_msgs in
--- #eval histogram [] 1
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

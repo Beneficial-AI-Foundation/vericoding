@@ -21,25 +21,4 @@ theorem capitalize_word_idempotent (word : String) (h : word.length > 0) :
 
 theorem capitalize_word_empty :
   capitalize_word "" = "" := sorry
-
-/-
-info: 'Word'
--/
--- #guard_msgs in
--- #eval capitalize_word "word"
-
-/-
-info: 'I'
--/
--- #guard_msgs in
--- #eval capitalize_word "i"
-
-/-
-info: 'Glasswear'
--/
--- #guard_msgs in
--- #eval capitalize_word "glasswear"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

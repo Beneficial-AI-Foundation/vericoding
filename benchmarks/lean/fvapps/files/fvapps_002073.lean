@@ -40,25 +40,4 @@ theorem solve_graph_paths_symmetric_last_zero
   let values := (result.splitOn " ").map String.toNat!
   values.getLast! = 0 :=
 sorry
-
-/-
-info: '0'
--/
--- #guard_msgs in
--- #eval solve_graph_paths 1 [[0]] [1]
-
-/-
-info: '9 0'
--/
--- #guard_msgs in
--- #eval solve_graph_paths 2 [[0, 5], [4, 0]] [1, 2]
-
-/-
-info: '17 23 404 0'
--/
--- #guard_msgs in
--- #eval solve_graph_paths 4 [[0, 3, 1, 1], [6, 0, 400, 1], [2, 4, 0, 1], [1, 1, 1, 0]] [4, 1, 2, 3]
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: unguarded

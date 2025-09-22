@@ -36,6 +36,3 @@ theorem grid_immutability {n : Nat} {grid : List (List Int)}
   grid = original :=
 sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

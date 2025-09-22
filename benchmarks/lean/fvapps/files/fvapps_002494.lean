@@ -18,6 +18,3 @@ theorem float_div_eq_quotient {a b : Int} (h : b ≠ 0) :
 theorem zero_div_is_none (a : Int) :
   integer_and_float_division a 0 = none := sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

@@ -17,6 +17,3 @@ theorem scoreboard_points_descending
 
 -- <vc-theorems>
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

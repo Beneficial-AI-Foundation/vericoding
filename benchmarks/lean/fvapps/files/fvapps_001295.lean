@@ -26,25 +26,4 @@ theorem duplicate_elements (n : Nat) (arr : List Nat) :
   let all_ones := List.replicate n 1
   let result := solve_subsequence_removal n all_ones
   result ≥ 0 ∧ result ≤ n * (n+1) / 2 := sorry
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval solve_subsequence_removal 3 [1, 1, 2]
-
-/-
-info: 7
--/
--- #guard_msgs in
--- #eval solve_subsequence_removal 4 [2, 4, 3, 5]
-
-/-
-info: 14
--/
--- #guard_msgs in
--- #eval solve_subsequence_removal 5 [1, 2, 3, 4, 5]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

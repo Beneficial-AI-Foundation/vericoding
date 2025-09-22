@@ -24,25 +24,4 @@ theorem odd_heavy_characterization (lst : List Int) :
   (∀ e ∈ lst, e % 2 = 0 → 
    ∀ o ∈ lst, o % 2 ≠ 0 → o > e) :=
 sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval is_odd_heavy [0, 2, 19, 4, 4]
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval is_odd_heavy [0, 0, 0, 0]
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval is_odd_heavy [-1, -2, 21]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

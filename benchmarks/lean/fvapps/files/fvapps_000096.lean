@@ -27,25 +27,4 @@ theorem improve_maintains_chars (s c : String) :
 
 theorem improve_all_same_returns_self (s : String) (h : ∀ c ∈ s.data, c = 'A') :
   improve_product_name s (s ++ "Z") = s := sorry
-
-/-
-info: 'AAZMON'
--/
--- #guard_msgs in
--- #eval improve_product_name "AZAMON" "APPLE"
-
-/-
-info: '---'
--/
--- #guard_msgs in
--- #eval improve_product_name "AZAMON" "AAAAAAAAAAALIBABA"
-
-/-
-info: 'APPLE'
--/
--- #guard_msgs in
--- #eval improve_product_name "APPLE" "BANANA"
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

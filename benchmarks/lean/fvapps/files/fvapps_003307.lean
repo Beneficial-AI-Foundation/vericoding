@@ -27,25 +27,4 @@ theorem time_convert_properties {minutes : Int}
     (time_convert minutes = toString hours ++ ":" ++ toString mins) ∧
     hours * 60 + mins = minutes ∧
     mins < 60 := sorry
-
-/-
-info: '00:00'
--/
--- #guard_msgs in
--- #eval time_convert 0
-
-/-
-info: '01:18'
--/
--- #guard_msgs in
--- #eval time_convert 78
-
-/-
-info: '16:10'
--/
--- #guard_msgs in
--- #eval time_convert 970
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

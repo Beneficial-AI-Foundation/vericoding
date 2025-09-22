@@ -1,17 +1,17 @@
 -- <vc-preamble>
-def List.noDuplicates (path : List Char) : Prop := 
+def List.noDuplicates (path : List Char) : Prop :=
   ∀ (x : Char), (List.count x path) ≤ 1
 
 def List.isSorted (xs : List (List Char)) : Prop :=
-  ∀ i j, i < j → j < xs.length → (xs.get ⟨i, by sorry⟩) ≤ (xs.get ⟨j, by sorry⟩)
+  ∀ i j (h1 : i < j) (h2 : j < xs.length), (xs.get ⟨i, Nat.lt_trans h1 h2⟩) ≤ (xs.get ⟨j, h2⟩)
+
+def Topology := Char → Char → Option Nat
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
-def Topology := Char → Char → Option Nat
-
 def shortestPath (G : Topology) (s e : Char) : List (List Char) :=
 sorry
 -- </vc-definitions>
@@ -19,7 +19,7 @@ sorry
 -- <vc-theorems>
 theorem shortestPath_valid_paths {G : Topology} {s e : Char}
   (path : List Char) (h : path ∈ shortestPath G s e) :
-    path.head? = some s ∧ 
+    path.head? = some s ∧
     path.getLast? = some e ∧
     path.noDuplicates :=
 sorry
@@ -44,25 +44,4 @@ theorem shortestPath_disconnected {G : Topology} {s e : Char}
   (h_disconnected : ∀ c, (G s c).isNone) :
   shortestPath G s e = [] :=
 sorry
-
-/-
-info: [['a', 'c', 'f'], ['a', 'e', 'f']]
--/
--- #guard_msgs in
--- #eval shortestPath {"a": {"b": 10, "c": 20, "e": 20}, "b": {"a": 10, "d": 20}, "c": {"a": 10, "f": 20}, "d": {"b": 10, "e": 20, "g": 20}, "e": {"a": 10, "d": 20, "f": 20}, "f": {"c": 10, "e": 20, "h": 20}, "g": {"d": 10, "h": 20}, "h": {"g": 10, "f": 20}} "a" "f"
-
-/-
-info: [['a', 'e']]
--/
--- #guard_msgs in
--- #eval shortestPath topology1 "a" "e"
-
-/-
-info: [['a', 'c']]
--/
--- #guard_msgs in
--- #eval shortestPath {"a": {"b": 10, "c": 20}, "b": {"a": 10, "c": 20}, "c": {"a": 10, "b": 20}} "a" "c"
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

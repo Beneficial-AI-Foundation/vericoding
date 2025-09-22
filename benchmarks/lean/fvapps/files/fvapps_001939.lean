@@ -35,6 +35,3 @@ theorem length_matches_probability_list {n : Nat} {probs : List Float}
   ∃ score : Float, compute_expected_score n probs = score :=
 sorry
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: guarded

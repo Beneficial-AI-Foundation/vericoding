@@ -56,25 +56,4 @@ theorem pagination_bounds
     (h6 : totalProducts ≤ 10000) :
     ∃ first last : Nat,
     last ≤ totalProducts := sorry
-
-/-
-info: 'Showing 1 to 10 of 30 Products.'
--/
--- #guard_msgs in
--- #eval pagination_text 1 10 30
-
-/-
-info: 'Showing 21 to 26 of 26 Products.'
--/
--- #guard_msgs in
--- #eval pagination_text 3 10 26
-
-/-
-info: 'Showing 1 to 8 of 8 Products.'
--/
--- #guard_msgs in
--- #eval pagination_text 1 10 8
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

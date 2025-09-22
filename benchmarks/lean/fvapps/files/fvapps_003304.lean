@@ -31,6 +31,3 @@ theorem get_char_count_mixed :
   get_char_count "mississippi" = [(4, ['i', 's']), (2, ['p']), (1, ['m'])] :=
   sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

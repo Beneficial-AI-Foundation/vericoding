@@ -28,19 +28,4 @@ theorem valid_output_format {n m : Nat} {roads : List (Nat × Nat)} {x y : Nat}
   (solve_delivery_problem n m roads [(x,y)]).head! = "YO" ∨ 
   (solve_delivery_problem n m roads [(x,y)]).head! = "NO" :=
   sorry
-
-/-
-info: ['YO', 'NO', 'YO']
--/
--- #guard_msgs in
--- #eval solve_delivery_problem 4 2 [(0, 1), (1, 2)] [(0, 2), (0, 3), (2, 1)]
-
-/-
-info: ['YO']
--/
--- #guard_msgs in
--- #eval solve_delivery_problem 3 2 [(0, 1), (1, 2)] [(0, 2)]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

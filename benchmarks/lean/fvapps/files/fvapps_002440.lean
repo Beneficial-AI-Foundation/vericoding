@@ -31,25 +31,4 @@ theorem disjoint_sets_not_subset {α} [BEq α] (set_a set_b : List α)
   (h3 : ¬List.isEmpty set_a)
   (h4 : ∀ x, x ∈ set_a → x ∉ set_b) :
   check_subset set_a set_b = false := sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval check_subset ["1", "2", "3", "5", "6"] ["9", "8", "5", "6", "3", "2", "1", "4", "7"]
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval check_subset ["2"] ["3", "6", "5", "4", "1"]
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval check_subset ["9", "8", "2"] ["1", "2", "3", "5", "6", "8", "9"]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

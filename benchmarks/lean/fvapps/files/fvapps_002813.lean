@@ -37,25 +37,4 @@ theorem exact_match_returns_correct_drink
   ∃ drink, (get_drink_by_profession profession = drink ∧
            (profession, drink) ∈ known_professions) :=
 sorry
-
-/-
-info: 'Patron Tequila'
--/
--- #guard_msgs in
--- #eval get_drink_by_profession "jabrOni"
-
-/-
-info: 'Your tax dollars'
--/
--- #guard_msgs in
--- #eval get_drink_by_profession "pOLiTiCIaN"
-
-/-
-info: 'Beer'
--/
--- #guard_msgs in
--- #eval get_drink_by_profession "pundit"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

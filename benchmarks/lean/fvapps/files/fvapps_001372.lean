@@ -21,25 +21,4 @@ theorem find_uncle_johny_position_smaller_count
   let smaller_count := (nums.filter (· < target)).length
   find_uncle_johny_position n nums k = smaller_count + 1 :=
 sorry
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval find_uncle_johny_position 4 [1, 3, 4, 2] 2
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval find_uncle_johny_position 5 [1, 2, 3, 9, 4] 5
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval find_uncle_johny_position 5 [1, 2, 3, 9, 4] 1
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

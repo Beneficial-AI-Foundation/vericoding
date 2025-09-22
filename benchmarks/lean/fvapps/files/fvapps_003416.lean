@@ -29,25 +29,4 @@ theorem rle_decode_matches_input (s : String) :
 
 theorem rle_empty_string :
   run_length_encoding "" = [] := sorry
-
-/-
-info: []
--/
--- #guard_msgs in
--- #eval run_length_encoding ""
-
-/-
-info: [[1, 'a'], [1, 'b'], [1, 'c']]
--/
--- #guard_msgs in
--- #eval run_length_encoding "abc"
-
-/-
-info: [[34, 'a'], [3, 'b']]
--/
--- #guard_msgs in
--- #eval run_length_encoding "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbb"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

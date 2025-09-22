@@ -51,25 +51,4 @@ theorem fibonacci_subsequence_exists {A : List Nat} :
     isFibonacciSeq subseq = true ∧
     ∀ x, x ∈ subseq → x ∈ A :=
   sorry
-
-/-
-info: 5
--/
--- #guard_msgs in
--- #eval lenLongestFibSubseq [1, 2, 3, 4, 5, 6, 7, 8]
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval lenLongestFibSubseq [1, 3, 7, 11, 12, 14, 18]
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval lenLongestFibSubseq [1, 2, 4, 8]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

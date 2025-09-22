@@ -31,25 +31,4 @@ theorem edge_cases :
   convertToExcelTitle 26 = "Z" ∧ 
   convertToExcelTitle 27 = "AA" :=
 sorry
-
-/-
-info: 'A'
--/
--- #guard_msgs in
--- #eval convert_to_excel_title 1
-
-/-
-info: 'AB'
--/
--- #guard_msgs in
--- #eval convert_to_excel_title 28
-
-/-
-info: 'ZY'
--/
--- #guard_msgs in
--- #eval convert_to_excel_title 701
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

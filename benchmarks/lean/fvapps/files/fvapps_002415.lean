@@ -17,25 +17,4 @@ theorem arrange_coins_valid_input (n: Nat) (h: n ≥ 1) :
 -- <vc-theorems>
 theorem arrange_coins_monotonic (n: Nat) (h: n ≥ 1) :
   arrangeCoins (n + 1) ≥ arrangeCoins n := sorry
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval arrange_coins 5
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval arrange_coins 8
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval arrange_coins 1
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

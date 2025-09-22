@@ -31,25 +31,4 @@ theorem lottery_all_digits_input (s : String) :
     let result := lottery s
     result.all Char.isDigit ∧ 
     result.toList.length = (dedup result.toList).length := by sorry
-
-/-
-info: '805'
--/
--- #guard_msgs in
--- #eval lottery "wQ8Hy0y5m5oshQPeRCkG"
-
-/-
-info: 'One more run!'
--/
--- #guard_msgs in
--- #eval lottery "ffaQtaRFKeGIIBIcSJtg"
-
-/-
-info: '5'
--/
--- #guard_msgs in
--- #eval lottery "555"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

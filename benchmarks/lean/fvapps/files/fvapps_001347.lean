@@ -40,25 +40,4 @@ sorry
 theorem repeated_chars (c : Char) (n : Nat) :
   n > 0 → longest_distinct_subsequence (String.mk (List.replicate n c)) = 1 :=
 sorry
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval longest_distinct_subsequence "abc"
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval longest_distinct_subsequence "aba"
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval longest_distinct_subsequence "aabbcc"
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

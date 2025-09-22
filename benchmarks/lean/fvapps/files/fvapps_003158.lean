@@ -27,25 +27,4 @@ theorem cypher_maps_chars_correctly (s : String) :
 theorem cypher_preserves_unmapped (s : String) (c : Char) :
   c ∉ ['I', 'R', 'E', 'A', 'S', 'G', 'T', 'B', 'l', 'z', 'e', 'a', 's', 'b', 't', 'g', 'o', 'O'] →
   (c ∈ s.data → c ∈ (cypher s).data) := sorry
-
-/-
-info: 'H3110 W0r1d'
--/
--- #guard_msgs in
--- #eval cypher "Hello World"
-
-/-
-info: '1 4m y0ur f47h3r'
--/
--- #guard_msgs in
--- #eval cypher "I am your father"
-
-/-
-info: '1 d0 n07 kn0w wh47 3153 1 c4n 7357. 83 c001. 600d 1uck'
--/
--- #guard_msgs in
--- #eval cypher "I do not know what else I can test. Be cool. Good luck"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

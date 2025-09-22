@@ -1,15 +1,16 @@
 -- <vc-preamble>
-def Float.toDegrees (x : Float) : Float :=
-  sorry
-
-def Int.toFloat (x : Int) : Float :=
-  sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
+def Float.toDegrees (x : Float) : Float :=
+  sorry
+
+def Int.toFloat (x : Int) : Float :=
+  sorry
+
 def missing_angle (h a o : Float) : Int :=
   sorry
 -- </vc-definitions>
@@ -29,7 +30,7 @@ sorry
 
 theorem missing_angle_with_missing_adj (h o : Float) :
   h > 0 ∧ o > 0 →
-  let angle := missing_angle h 0 o  
+  let angle := missing_angle h 0 o
   (Int.toFloat angle - Float.toDegrees ((o/h).asin)).abs ≤ 1 :=
 sorry
 
@@ -49,25 +50,4 @@ theorem missing_angle_invalid_triangle (h a : Float) :
   a > h →
   ¬∃angle, missing_angle h a 0 = angle :=
 sorry
-
-/-
-info: 37
--/
--- #guard_msgs in
--- #eval missing_angle 0 400 300
-
-/-
-info: 37
--/
--- #guard_msgs in
--- #eval missing_angle 5 4 0
-
-/-
-info: 39
--/
--- #guard_msgs in
--- #eval missing_angle 8 0 5
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

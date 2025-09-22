@@ -18,6 +18,3 @@ theorem max_pool_area_positive {r : Nat} (h : r > 0) :
 theorem max_pool_area_zero_iff {r : Nat} :
   max_pool_area r = 0 ↔ r = 0 := sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

@@ -1,12 +1,13 @@
 -- <vc-preamble>
-def isAlpha (c : Char) : Bool :=
-  sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
+def isAlpha (c : Char) : Bool :=
+  sorry
+
 def reverse_letter (s : String) : String :=
   sorry
 -- </vc-definitions>
@@ -26,7 +27,7 @@ theorem reverse_letter_idempotent (s : String) :
 
 theorem reverse_letter_preserves_case (s : String) :
   ∃ (perm : List Char → List Char),
-    (reverse_letter s).data.map Char.toLower = 
+    (reverse_letter s).data.map Char.toLower =
     (String.mk (s.toList.filter isAlpha)).data.map Char.toLower := by
   sorry
 
@@ -35,6 +36,3 @@ theorem reverse_letter_empty_no_letters (s : String) :
   reverse_letter s = "" := by
   sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

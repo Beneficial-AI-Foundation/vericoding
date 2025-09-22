@@ -40,25 +40,4 @@ theorem amazon_check_mate_bounds
     0 ≤ result.get ⟨i, h2⟩ ∧
     result.get ⟨i, h2⟩ ≤ 64 :=
   sorry
-
-/-
-info: [5, 21, 0, 29]
--/
--- #guard_msgs in
--- #eval amazon_check_mate "d3" "e4"
-
-/-
-info: [0, 29, 1, 29]
--/
--- #guard_msgs in
--- #eval amazon_check_mate "a1" "g5"
-
-/-
-info: [1, 32, 1, 23]
--/
--- #guard_msgs in
--- #eval amazon_check_mate "a3" "e4"
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

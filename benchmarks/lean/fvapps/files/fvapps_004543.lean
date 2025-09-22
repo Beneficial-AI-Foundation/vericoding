@@ -36,25 +36,4 @@ theorem two_sum_different_indices
   let result := two_sum numbers target
   result.map (fun ij => ij.fst ≠ ij.snd) = some true :=
 sorry
-
-/-
-info: (0, 2)
--/
--- #guard_msgs in
--- #eval two_sum [1, 2, 3] 4
-
-/-
-info: (1, 2)
--/
--- #guard_msgs in
--- #eval two_sum [1234, 5678, 9012] 14690
-
-/-
-info: (0, 1)
--/
--- #guard_msgs in
--- #eval two_sum [2, 2, 3] 4
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

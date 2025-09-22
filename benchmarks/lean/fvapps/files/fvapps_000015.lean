@@ -23,25 +23,4 @@ theorem max_window_size_square_symmetry (n : Nat) (hn1 : n > 0) (hn2 : n ≤ 100
     max_window_size n n 0 1 = max_window_size n n 1 0 ∧
     max_window_size n n (n/2) (n/2) = max_window_size n n (n/2) (n/2) :=
   sorry
-
-/-
-info: 56
--/
--- #guard_msgs in
--- #eval max_window_size 8 8 0 0
-
-/-
-info: 6
--/
--- #guard_msgs in
--- #eval max_window_size 1 10 0 3
-
-/-
-info: 442
--/
--- #guard_msgs in
--- #eval max_window_size 17 31 10 4
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

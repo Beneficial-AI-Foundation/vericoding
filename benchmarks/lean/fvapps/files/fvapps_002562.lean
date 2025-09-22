@@ -27,25 +27,4 @@ theorem pair_of_shoes_symmetry (shoes : List LRShoe) :
   let swapped := shoes.map (fun s => (1 - s.1, s.2))
   pair_of_shoes shoes = pair_of_shoes swapped
   := by sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval pair_of_shoes [[0, 21], [1, 23], [1, 21], [0, 23]]
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval pair_of_shoes [[0, 21], [1, 23], [1, 21], [1, 23]]
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval pair_of_shoes [[0, 23], [1, 21], [1, 23], [0, 21], [1, 22], [0, 22]]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

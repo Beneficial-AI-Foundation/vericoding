@@ -24,37 +24,4 @@ theorem first_digit_property (n : Nat) :
    s.get 0 = '8' ∨
    s.get 0 = '9') →
   zipvalidate s = false := sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval zipvalidate "142784"
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval zipvalidate "642784"
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval zipvalidate "111"
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval zipvalidate "555555"
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval zipvalidate "@68345"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

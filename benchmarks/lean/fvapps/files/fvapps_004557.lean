@@ -1,20 +1,20 @@
 -- <vc-preamble>
-def spread {α β : Type u} (f : α → β) (args : List α) : β :=
-  sorry
+def sum (xs : List Nat) : Nat :=
+  match xs with
+  | [] => 0
+  | h :: t => h + sum t
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
-def sum (xs : List Nat) : Nat :=
-  match xs with
-  | [] => 0
-  | h :: t => h + sum t
+def spread {α β : Type u} (f : α → β) (args : List α) : β :=
+  sorry
 -- </vc-definitions>
 
 -- <vc-theorems>
-theorem spread_matches_direct_call {α β : Type u} (f : α → β) (x : α) : 
+theorem spread_matches_direct_call {α β : Type u} (f : α → β) (x : α) :
   spread f [x] = f x :=
 sorry
 
@@ -37,25 +37,4 @@ sorry
 theorem spread_too_many_args_fails :
   ¬(∃ (res:Nat), spread (fun x:Nat => x) [1, 2] = res) :=
 sorry
-
-/-
-info: 5
--/
--- #guard_msgs in
--- #eval spread lambda x, y: x + y [2, 3]
-
-/-
-info: 'abc'
--/
--- #guard_msgs in
--- #eval spread lambda x, y, z: x + y + z ["a", "b", "c"]
-
-/-
-info: 42
--/
--- #guard_msgs in
--- #eval spread lambda: 42 []
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

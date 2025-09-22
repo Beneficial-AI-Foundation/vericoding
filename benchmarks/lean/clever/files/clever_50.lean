@@ -41,7 +41,3 @@ theorem correctness
 := by
   sorry
 -- </vc-theorems>
-
--- #test implementation "abc" = "fgh"
--- #test implementation "xyz" = "cde"
--- #test implementation "aaa" = "fff"

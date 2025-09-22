@@ -31,6 +31,3 @@ theorem find_min_weakness_shift_invariant (sequence : List Int) (offset : Int)
   (h : sequence.length ≥ 2) :
   findMinWeakness sequence = findMinWeakness (sequence.map (· + offset)) := sorry
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: guarded

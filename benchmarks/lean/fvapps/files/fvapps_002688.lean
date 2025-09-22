@@ -17,31 +17,4 @@ theorem pyramid_row_length {n : Nat} {i : Nat} :
 
 theorem pyramid_all_ones {n : Nat} : 
   ∀ row ∈ pyramid n, ∀ x ∈ row, x = 1 := sorry
-
-/-
-info: []
--/
--- #guard_msgs in
--- #eval pyramid 0
-
-/-
-info: [[1]]
--/
--- #guard_msgs in
--- #eval pyramid 1
-
-/-
-info: [[1], [1, 1]]
--/
--- #guard_msgs in
--- #eval pyramid 2
-
-/-
-info: [[1], [1, 1], [1, 1, 1]]
--/
--- #guard_msgs in
--- #eval pyramid 3
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

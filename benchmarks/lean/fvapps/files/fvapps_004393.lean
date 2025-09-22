@@ -39,25 +39,4 @@ theorem int_diff_identical (arr : List Int) (n : Int) (x : Int) :
   n > 0 →
   arr.all (· = x) →
   int_diff arr n = 0 := sorry
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval int_diff [1, 1, 5, 6, 9, 16, 27] 4
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval int_diff [1, 1, 3, 3] 2
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval int_diff [4, 8, 12, 12, 3, 6, 2] 6
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

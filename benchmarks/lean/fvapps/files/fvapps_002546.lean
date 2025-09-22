@@ -32,25 +32,4 @@ theorem hamster_single_char_code (message : String) :
   let result := hamster_me "a" message
   ∀ c ∈ result.data,
     c = 'a' ∨ ('0'.toNat ≤ c.toNat ∧ c.toNat ≤ '9'.toNat) := sorry
-
-/-
-info: 'h1a1m1s1t1e1r1'
--/
--- #guard_msgs in
--- #eval hamster_me "hamster" "hamster"
-
-/-
-info: 'h1e1h5m4m1e1'
--/
--- #guard_msgs in
--- #eval hamster_me "hamster" "helpme"
-
-/-
-info: 'h1t8m1s1t1e1r1'
--/
--- #guard_msgs in
--- #eval hamster_me "hmster" "hamster"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

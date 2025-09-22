@@ -51,25 +51,4 @@ theorem last_value_positive
   (h3 : ∀ x ∈ heights, x > 0 ∧ x ≤ 10^9) :
   (find_max_group_strengths n heights)[heights.length - 1]! > 0 :=
 sorry
-
-/-
-info: [6, 4, 4, 3, 3, 2, 2, 1, 1, 1]
--/
--- #guard_msgs in
--- #eval find_max_group_strengths 10 heights1.copy()
-
-/-
-info: [923264237, 524125987, 374288891]
--/
--- #guard_msgs in
--- #eval find_max_group_strengths 3 heights2.copy()
-
-/-
-info: [585325539, 365329221, 365329221, 291882089, 291882089]
--/
--- #guard_msgs in
--- #eval find_max_group_strengths 5 heights3.copy()
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: unguarded

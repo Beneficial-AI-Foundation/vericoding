@@ -32,25 +32,4 @@ theorem middle_lines_format {k : Nat} (h : k % 2 = 1) :
     line.data.head? = some '*' ∧ 
     line.data.getLast? = some '*' ∧
     (∀ c ∈ (line.data.drop 1).dropLast, c = ' ') := sorry
-
-/-
-info: ['*']
--/
--- #guard_msgs in
--- #eval generate_pattern 1
-
-/-
-info: ['*', '**', '*']
--/
--- #guard_msgs in
--- #eval generate_pattern 3
-
-/-
-info: ['*', '**', '* *', '**', '*']
--/
--- #guard_msgs in
--- #eval generate_pattern 5
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

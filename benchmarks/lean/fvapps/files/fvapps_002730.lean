@@ -38,25 +38,4 @@ theorem sequential_is_nice_negative :
 theorem sequential_is_nice_descending :
   is_nice [10, 9, 8] :=
   sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval is_nice [2, 10, 9, 3]
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval is_nice [3, 4, 5, 7]
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval is_nice [0, -1, 1]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

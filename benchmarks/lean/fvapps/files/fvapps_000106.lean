@@ -33,25 +33,4 @@ theorem all_zeros_not_sharpenable {n : Nat} {arr : List Int}
   (h2 : arr = List.replicate n 0) :
   is_array_sharpenable n arr = false :=
 sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval is_array_sharpenable 1 [248618]
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval is_array_sharpenable 3 [12, 10, 8]
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval is_array_sharpenable 4 [0, 1, 1, 0]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

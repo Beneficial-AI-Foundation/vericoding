@@ -52,6 +52,3 @@ theorem good_evil_different_keys (text: String) :
 theorem empty_string_good_fairy :
   diamonds_and_toads "" "good" = [("ruby", 0), ("crystal", 0)] := sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

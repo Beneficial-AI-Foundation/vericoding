@@ -34,25 +34,4 @@ theorem output_preserves_min_char_counts
   let oleg_result := (result.data.filter (· ∈ oleg.data)).length
   let igor_result := (result.data.filter (· ∈ igor.data)).length
   oleg_result ≥ oleg_turns ∧ igor_result ≥ igor_turns := sorry
-
-/-
-info: 'fzfsirk'
--/
--- #guard_msgs in
--- #eval find_company_name "tinkoff" "zscoder"
-
-/-
-info: 'xxxxxx'
--/
--- #guard_msgs in
--- #eval find_company_name "xxxxxx" "xxxxxx"
-
-/-
-info: 'ioi'
--/
--- #guard_msgs in
--- #eval find_company_name "ioi" "imo"
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: unguarded

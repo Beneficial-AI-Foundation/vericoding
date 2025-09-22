@@ -26,25 +26,4 @@ theorem solve_base_cases_nonzero {n k : Nat} {edges : List (Nat × Nat)}
   (h1 : (n = 1 ∧ k = 1) ∨ (n = 2 ∧ k = 1) ∨ (n = 2 ∧ k = 2)) :
   solve n k edges > 0 :=
 sorry
-
-/-
-info: 6
--/
--- #guard_msgs in
--- #eval solve 3 2 [[1, 2], [2, 3]]
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval solve 3 1 [[1, 2], [2, 3]]
-
-/-
-info: 39
--/
--- #guard_msgs in
--- #eval solve 4 3 [[1, 2], [2, 3], [2, 4]]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

@@ -37,25 +37,4 @@ theorem roof_fix_singleton_space :
 
 theorem roof_fix_double_space :
   roof_fix [' ', ' '] ['_', '_'] = true := sorry
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval roof_fix "  l   f l k djmi k" "___\\_____//_____/_"
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval roof_fix "    ikm il  h  llmmc   a i" "__\\_______________________"
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval roof_fix "   h c " "__/____"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

@@ -20,25 +20,4 @@ theorem sequence_grows_monotonically {n: Nat} (h: n > 1) :
   (somethingAcci n).1 ≥ (somethingAcci (n-1)).1 ∧ 
   (somethingAcci n).2 ≥ (somethingAcci (n-1)).2 :=
   sorry
-
-/-
-info: (10, 8)
--/
--- #guard_msgs in
--- #eval something_acci 5
-
-/-
-info: (11, 14)
--/
--- #guard_msgs in
--- #eval something_acci 10
-
-/-
-info: (12, 25)
--/
--- #guard_msgs in
--- #eval something_acci 20
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

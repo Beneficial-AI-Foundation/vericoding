@@ -24,25 +24,4 @@ theorem no_parens_unchanged (s : String)
   (h : ∀ c ∈ s.data, c ≠ '(' ∧ c ≠ ')') :
   reverse_in_parentheses s = s := by
   sorry
-
-/-
-info: 'h(le)lo'
--/
--- #guard_msgs in
--- #eval reverse_in_parentheses "h(el)lo"
-
-/-
-info: 'a (b c (d e))'
--/
--- #guard_msgs in
--- #eval reverse_in_parentheses "a ((d e) c b)"
-
-/-
-info: 'one (ruof (three) owt)'
--/
--- #guard_msgs in
--- #eval reverse_in_parentheses "one (two (three) four)"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

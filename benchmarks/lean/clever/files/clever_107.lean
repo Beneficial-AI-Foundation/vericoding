@@ -45,11 +45,3 @@ theorem correctness
 := by
   sorry
 -- </vc-theorems>
-
--- #test implementation 123 = (8, 13)
--- #test implementation 12 = (4, 6)
--- #test implementation 3 = (1, 2)
--- #test implementation 63 = (6, 8)
--- #test implementation 25 = (5, 6)
--- #test implementation 19 = (4, 6)
--- #test implementation 9 = (4, 5)

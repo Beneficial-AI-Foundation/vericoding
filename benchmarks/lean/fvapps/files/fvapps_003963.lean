@@ -30,31 +30,4 @@ theorem game_fraction_in_range {n: Nat} :
                   then result[0]! / result[1]!
                   else result[0]!
   0 ≤ fraction ∧ fraction ≤ n * n := sorry
-
-/-
-info: [0]
--/
--- #guard_msgs in
--- #eval game 0
-
-/-
-info: [1, 2]
--/
--- #guard_msgs in
--- #eval game 1
-
-/-
-info: [32]
--/
--- #guard_msgs in
--- #eval game 8
-
-/-
-info: [10201, 2]
--/
--- #guard_msgs in
--- #eval game 101
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

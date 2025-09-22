@@ -20,6 +20,3 @@ theorem fib_digits_total_count {n : Nat} (h : n ≥ 10) :
   let counts := Array.map Prod.fst pairs
   (Array.size counts > 0) := sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

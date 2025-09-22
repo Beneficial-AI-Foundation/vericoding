@@ -29,6 +29,3 @@ theorem increasing_widths {k : Nat} (h : k > 0) :
     (List.get! (generate_pattern k) (2*i)).length < (List.get! (generate_pattern k) (2*i + 2)).length :=
   sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

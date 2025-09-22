@@ -35,25 +35,4 @@ theorem modes_not_min_count {α : Type} [Ord α] [BEq α] [LE α] (xs : List α)
 
 theorem modes_string_length (s : String) (h : s.length > 0) :
   ∀ (x : Char), x ∈ modes s.data → true := sorry
-
-/-
-info: ['o', 't']
--/
--- #guard_msgs in
--- #eval modes "tomato"
-
-/-
-info: [3]
--/
--- #guard_msgs in
--- #eval modes [1, 3, 3, 7]
-
-/-
-info: []
--/
--- #guard_msgs in
--- #eval modes "redder"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

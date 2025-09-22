@@ -24,25 +24,4 @@ theorem substring_test_symmetric (s1 s2 : String) :
   s1.length > 1 →
   s2.length > 1 →
   substring_test s1 s2 = substring_test s2 s1 := sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval substring_test "Something" "Home"
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval substring_test "Something" "Fun"
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval substring_test "BANANA" "banana"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

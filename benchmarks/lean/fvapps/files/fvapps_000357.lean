@@ -25,25 +25,4 @@ theorem singleton_strings_k_gt_one (s : String) (k : Nat)
   (h1 : s.length = 1) (h2 : k > 1) :
   longest_substring_with_k_occurrences s k = 0 :=
   sorry
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval longest_substring_with_k_occurrences "aaabb" 3
-
-/-
-info: 5
--/
--- #guard_msgs in
--- #eval longest_substring_with_k_occurrences "ababbc" 2
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval longest_substring_with_k_occurrences "abcdef" 2
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

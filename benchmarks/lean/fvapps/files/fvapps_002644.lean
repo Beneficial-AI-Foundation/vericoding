@@ -29,25 +29,4 @@ theorem solve_with_leading_letters₁ :
 
 theorem solve_with_leading_letters₂ :
   solve "a2(b)" = "abb" := sorry
-
-/-
-info: 'ababab'
--/
--- #guard_msgs in
--- #eval solve "3(ab)"
-
-/-
-info: 'abbbabbb'
--/
--- #guard_msgs in
--- #eval solve "2(a3(b))"
-
-/-
-info: 'kabaccbaccbacc'
--/
--- #guard_msgs in
--- #eval solve "k(a3(b(a2(c))))"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

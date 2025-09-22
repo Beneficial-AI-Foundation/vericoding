@@ -32,37 +32,4 @@ theorem reflexive (name : String) :
 theorem case_sensitive :
   ¬could_be "Carlos Ray" "carlos ray" := by
   sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval could_be "Carlos Ray Norris" "Carlos Ray Norris"
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval could_be "Carlos Ray Norris" "Carlos Ray"
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval could_be "" "C"
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval could_be "Carlos Ray Norris" " "
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval could_be "Carlos Ray Norris" "carlos"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

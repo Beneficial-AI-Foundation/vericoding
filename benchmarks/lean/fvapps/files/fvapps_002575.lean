@@ -23,25 +23,4 @@ theorem yes_no_small_lists {α : Type} [Inhabited α] (arr : List α) :
 
 theorem yes_no_homogeneous_type {α : Type} (arr : List α) :
   List.length (yes_no arr) = List.length arr := sorry
-
-/-
-info: expected1
--/
--- #guard_msgs in
--- #eval yes_no [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-
-/-
-info: expected2
--/
--- #guard_msgs in
--- #eval yes_no ["this", "code", "is", "right", "the"]
-
-/-
-info: expected3
--/
--- #guard_msgs in
--- #eval yes_no ["a", "b"]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

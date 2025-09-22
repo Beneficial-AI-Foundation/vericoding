@@ -51,25 +51,4 @@ theorem min_fatigue_scale_invariant
   (h5 : ∀ (i j : Fin x.length), i.val < j.val → x.get i < x.get j) :
   min_fatigue n (a * s) (b * s) x = s * min_fatigue n a b x :=
 sorry
-
-/-
-info: 11
--/
--- #guard_msgs in
--- #eval min_fatigue 4 2 5 [1, 2, 5, 7]
-
-/-
-info: 84
--/
--- #guard_msgs in
--- #eval min_fatigue 7 1 100 [40, 43, 45, 105, 108, 115, 124]
-
-/-
-info: 12
--/
--- #guard_msgs in
--- #eval min_fatigue 7 1 2 [24, 35, 40, 68, 72, 99, 103]
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: guarded

@@ -29,25 +29,4 @@ theorem mirrored_nums_balanced (d1 d2 : Nat) :
   d2 < 10 →
   balanced_num (d1 * 100 + d2 * 10 + d1) = "Balanced" ∧ 
   balanced_num (d1 * 1000 + d2 * 100 + d2 * 10 + d1) = "Balanced" := sorry
-
-/-
-info: 'Balanced'
--/
--- #guard_msgs in
--- #eval balanced_num 56239814
-
-/-
-info: 'Not Balanced'
--/
--- #guard_msgs in
--- #eval balanced_num 295591
-
-/-
-info: 'Balanced'
--/
--- #guard_msgs in
--- #eval balanced_num 959
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

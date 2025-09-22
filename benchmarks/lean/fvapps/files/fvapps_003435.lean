@@ -32,25 +32,4 @@ theorem edge_cases :
   validate_usr "" = false ∧
   validate_usr "abc" = false ∧
   validate_usr "aaaaaaaaaaaaaaaaa" = false := sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval validate_usr "asddsa"
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval validate_usr "____"
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval validate_usr "Hass"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

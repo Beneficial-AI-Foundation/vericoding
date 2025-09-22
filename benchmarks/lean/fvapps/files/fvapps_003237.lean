@@ -21,25 +21,4 @@ theorem m_less_than_input (n : Nat) : n > 0 → m n ≤ n := sorry
 theorem f_base_case : f 0 = 1 := sorry
 
 theorem m_base_case : m 0 = 0 := sorry
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval f 0
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval f 5
-
-/-
-info: 6
--/
--- #guard_msgs in
--- #eval f 10
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

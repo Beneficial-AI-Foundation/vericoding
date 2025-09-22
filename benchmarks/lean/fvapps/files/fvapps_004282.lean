@@ -27,6 +27,3 @@ theorem odd_one_out_complete (s : String) :
   let result := odd_one_out s
   result.length = (s.data.filter (fun c => (s.data.count c) % 2 = 1)).length := by sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

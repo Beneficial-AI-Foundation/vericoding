@@ -55,19 +55,4 @@ theorem invalid_coords_empty_result
   (h : ¬(x < arr.length ∧ (arr[x]?.getD (List.nil)).length > y)) :
   get_neighbourhood typ arr (x,y) = [] :=
 sorry
-
-/-
-info: sorted([0, 1, 2, 5, 7, 10, 11, 12])
--/
--- #guard_msgs in
--- #eval sorted get_neighbourhood("moore", matrix1, (1, 1))
-
-/-
-info: sorted([1, 5])
--/
--- #guard_msgs in
--- #eval sorted get_neighbourhood("von_neumann", matrix2, (0, 0))
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

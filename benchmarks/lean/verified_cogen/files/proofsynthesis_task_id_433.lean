@@ -21,5 +21,3 @@ theorem isGreater_spec_satisfied (arr: Array Int) (number: Int) (h_precond : isG
     isGreater_postcond arr number (isGreater arr number h_precond) h_precond := by
   sorry
 -- </vc-theorems>
-
-#check isGreater

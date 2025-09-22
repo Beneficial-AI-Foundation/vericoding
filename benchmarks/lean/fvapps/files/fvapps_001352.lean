@@ -31,25 +31,4 @@ theorem decode_string_226 :
 
 theorem decode_string_eleven :
   decode_string "11" = 2 := sorry
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval decode_string "12"
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval decode_string "226"
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval decode_string "123"
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

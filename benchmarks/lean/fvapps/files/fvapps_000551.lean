@@ -31,25 +31,4 @@ theorem check_palindrome_possible_common_char
   (∃ c, c ∈ s1.data ∧ c ∈ s2.data) →
   check_palindrome_possible s1 s2 = "Yes" :=
 sorry
-
-/-
-info: 'Yes'
--/
--- #guard_msgs in
--- #eval check_palindrome_possible "abc" "abc"
-
-/-
-info: 'No'
--/
--- #guard_msgs in
--- #eval check_palindrome_possible "a" "b"
-
-/-
-info: 'Yes'
--/
--- #guard_msgs in
--- #eval check_palindrome_possible "abba" "baab"
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

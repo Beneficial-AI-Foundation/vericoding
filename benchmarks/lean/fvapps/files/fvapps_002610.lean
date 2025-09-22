@@ -29,25 +29,4 @@ theorem sumAverage_type (lists : List (List Int))
   (h : ∀ l ∈ lists, l.length > 0) :
   sumAverage lists = sumAverage lists :=
   sorry
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval sum_average [[1, 2, 2, 1], [2, 2, 2, 1]]
-
-/-
-info: 44
--/
--- #guard_msgs in
--- #eval sum_average [[3, 4, 1, 3, 5, 1, 4], [21, 54, 33, 21, 76]]
-
-/-
-info: -6
--/
--- #guard_msgs in
--- #eval sum_average [[-4, 3, -8, -2], [2, 9, 1, -5], [-7, -2, -6, -4]]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

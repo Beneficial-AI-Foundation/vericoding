@@ -22,25 +22,4 @@ theorem min_hits_needed_two_hits (s w1 w2 w3 : Nat) :
   s > 0 → w1 > 0 → w2 > 0 → w3 > 0 →
   (s ≥ w1 + w2 ∨ s ≥ w2 + w3) →
   min_hits_needed s w1 w2 w3 ≤ 2 := sorry
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval min_hits_needed 3 1 2 2
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval min_hits_needed 2 1 1 1
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval min_hits_needed 3 2 2 1
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

@@ -38,25 +38,4 @@ theorem min_cost_truncation
   let result := min_cost_to_match_strings n s1_pad s2_pad
   0 ≤ result ∧ result ≤ n :=
 sorry
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval min_cost_to_match_strings 3 "100" "001"
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval min_cost_to_match_strings 4 "0101" "0011"
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval min_cost_to_match_strings 4 "1000" "0001"
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: guarded_and_plausible

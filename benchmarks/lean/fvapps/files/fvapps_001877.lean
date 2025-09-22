@@ -33,25 +33,4 @@ theorem repeated_query_front_position
 theorem single_query_one_returns_zero
   (m : Nat) (h : m > 0)
   : process_queries [1] m = [0] := sorry
-
-/-
-info: expected1
--/
--- #guard_msgs in
--- #eval process_queries [3, 1, 2, 1] 5
-
-/-
-info: expected2
--/
--- #guard_msgs in
--- #eval process_queries [4, 1, 2, 2] 4
-
-/-
-info: expected3
--/
--- #guard_msgs in
--- #eval process_queries [7, 5, 5, 8, 3] 8
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

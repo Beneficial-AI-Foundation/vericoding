@@ -1,27 +1,27 @@
 -- <vc-preamble>
-def solveBinaryNames (name : String) : Nat :=
-  sorry
-
 def MOD := 1000000007
 
-theorem binary_names_result_range
-  (name : String)
-  (h : ∃ c ∈ name.data, c.isAlpha) :
-  0 ≤ solveBinaryNames name ∧ solveBinaryNames name < MOD :=
-sorry
+def isVowel (c : Char) : Bool :=
+  match c.toLower with
+  | 'a' | 'e' | 'i' | 'o' | 'u' => true
+  | _ => false
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
-def isVowel (c : Char) : Bool :=
-  match c.toLower with
-  | 'a' | 'e' | 'i' | 'o' | 'u' => true
-  | _ => false
+def solveBinaryNames (name : String) : Nat :=
+  sorry
 -- </vc-definitions>
 
 -- <vc-theorems>
+theorem binary_names_result_range
+  (name : String)
+  (h : ∃ c ∈ name.data, c.isAlpha) :
+  0 ≤ solveBinaryNames name ∧ solveBinaryNames name < MOD :=
+sorry
+
 theorem only_letters_matter
   (name : String)
   (h : ∃ c ∈ name.data, c.isAlpha) :
@@ -41,13 +41,4 @@ theorem all_consonants_one
   (h₂ : ∀ c ∈ name.data, c.isAlpha ∧ ¬isVowel c) :
   solveBinaryNames name = ((2 ^ name.length - 1) % MOD) :=
 sorry
-
-/-
-info: 173
--/
--- #guard_msgs in
--- #eval solve_binary_names "codechef"
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

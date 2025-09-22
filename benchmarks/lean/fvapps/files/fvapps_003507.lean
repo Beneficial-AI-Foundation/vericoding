@@ -28,25 +28,4 @@ theorem tripleShiftian_matrix_formula {T : List Int} (h : T.length = 3) (n : Nat
       if n < 3 
       then T.get ⟨n, by sorry⟩  
       else sorry := sorry
-
-/-
-info: 1219856746
--/
--- #guard_msgs in
--- #eval triple_shiftian #[1, 1, 1] 25
-
-/-
-info: 2052198929
--/
--- #guard_msgs in
--- #eval triple_shiftian #[1, 2, 3] 25
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval triple_shiftian #[6, 7, 2] 2
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

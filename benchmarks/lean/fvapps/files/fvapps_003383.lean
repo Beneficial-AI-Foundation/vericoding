@@ -21,25 +21,4 @@ theorem leo_after_win (oscar : Int) (h: oscar ≥ 89) :
 theorem leo_edge_cases :
   leo 86 = "Not even for Wolf of wallstreet?!" ∧
   leo 88 = "Leo finally won the oscar! Leo is happy" := sorry
-
-/-
-info: 'Leo finally won the oscar! Leo is happy'
--/
--- #guard_msgs in
--- #eval leo 88
-
-/-
-info: 'When will you give Leo an Oscar?'
--/
--- #guard_msgs in
--- #eval leo 87
-
-/-
-info: 'Not even for Wolf of wallstreet?!'
--/
--- #guard_msgs in
--- #eval leo 86
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

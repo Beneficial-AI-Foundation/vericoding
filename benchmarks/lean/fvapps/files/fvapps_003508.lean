@@ -25,25 +25,4 @@ theorem single_repeat_gives_zero (s : String) (c : Char) :
 theorem short_strings_give_zero (s : String) :
   s.length ≤ 3 → count_big_groups s = 0 :=
   sorry
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval count_big_groups "ccccoodeffffiiighhhhhhhhhhttttttts"
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval count_big_groups "soooooldieeeeeer"
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval count_big_groups "gztxxxxxggggggggggggsssssssbbbbbeeeeeeehhhmmmmmmmitttttttlllllhkppppp"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

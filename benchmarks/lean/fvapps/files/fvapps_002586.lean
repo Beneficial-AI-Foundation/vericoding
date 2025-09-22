@@ -1,28 +1,28 @@
 -- <vc-preamble>
-def add (xs : List Int) : Int := sorry
-
 structure WeightedSum where
-  index : Nat 
+  index : Nat
   value : Int
   deriving Repr
+
+def makeWeightedSum (xs : List Int) : Int := match xs with
+  | [] => 0
+  | x::xs => x + makeWeightedSum xs
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
-def makeWeightedSum (xs : List Int) : Int := match xs with
-  | [] => 0
-  | x::xs => x + makeWeightedSum xs
+def add (xs : List Int) : Int :=
+sorry
 -- </vc-definitions>
 
 -- <vc-theorems>
-theorem add_weighted_sum (xs : List Int) (h : xs ≠ []) : 
-  ∃ n, add xs = n := sorry
+theorem add_weighted_sum (xs : List Int) (h : xs ≠ []) :
+  ∃ n, add xs = n :=
+sorry
 
-theorem add_single_number (x : Int) : 
-  add [x] = x := sorry
+theorem add_single_number (x : Int) :
+  add [x] = x :=
+sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

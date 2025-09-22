@@ -1,12 +1,13 @@
 -- <vc-preamble>
-def solveBalancedDigits (s : String) : Nat :=
-  sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
+def solveBalancedDigits (s : String) : Nat :=
+  sorry
+
 def makeBalancedString (m n : Nat) : String :=
   sorry
 -- </vc-definitions>
@@ -18,7 +19,7 @@ theorem equal_fours_and_sevens {n : Nat} (h : n > 0) (h2 : n ≤ 50) :
   result ≥ 1 ∧ result < 10^9 + 7 :=
 sorry
 
-theorem arbitrary_fours_and_sevens {m n : Nat} 
+theorem arbitrary_fours_and_sevens {m n : Nat}
   (h1 : m > 0) (h2 : m ≤ 50) (h3 : n > 0) (h4 : n ≤ 50) :
   let s := makeBalancedString m n
   let result := solveBalancedDigits s
@@ -31,19 +32,4 @@ theorem valid_string_bounds {s : String}
   let result := solveBalancedDigits s
   result ≥ 0 ∧ result < 10^9 + 7 :=
 sorry
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval solve_balanced_digits "47"
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval solve_balanced_digits "4477"
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

@@ -19,25 +19,4 @@ theorem zach_has_18 :
 
 theorem empty_name_zero :
   how_many_light_sabers_do_you_own none = 0 := by sorry
-
-/-
-info: 18
--/
--- #guard_msgs in
--- #eval how_many_light_sabers_do_you_own "Zach"
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval how_many_light_sabers_do_you_own 
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval how_many_light_sabers_do_you_own "Adam"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

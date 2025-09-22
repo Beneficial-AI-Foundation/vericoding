@@ -32,25 +32,4 @@ theorem right_movement :
 
 theorem right_left_movement :
   poohbear ">+<N" = "0" := sorry
-
-/-
-info: 'Hello World!'
--/
--- #guard_msgs in
--- #eval poohbear "LQTcQAP>pQBBTAI-PA-PPL+P<BVPAL+T+P>PL+PBLPBP<DLLLT+P"
-
-/-
-info: '!]oo'
--/
--- #guard_msgs in
--- #eval poohbear "LLQT+P >LLLc+QIT-P AAAP P"
-
-/-
-info: '10'
--/
--- #guard_msgs in
--- #eval poohbear "++W-NE"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

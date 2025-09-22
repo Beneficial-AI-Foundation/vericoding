@@ -29,6 +29,3 @@ theorem single_factor (n : Nat) (h : n ≥ 1) (h2 : n ≤ 100) :
 theorem prime_factors (p : Nat) (h : p ∈ [2,3,5,7,11,13,17,19,23,29,31,37,41,43,47]) :
   (prod_int_partII p 2).2.1 = 0 := sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

@@ -35,25 +35,4 @@ theorem delayed_crossing_occurs (moves: List Int)
   (h_nonneg: ∀ x ∈ moves, x ≥ 0)
   (h_cross: moves[5]! ≥ moves[3]! ∧ moves[4]! = moves[2]!) :
   isSelfCrossing moves := sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval is_self_crossing [2, 1, 1, 2]
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval is_self_crossing [1, 2, 3, 4]
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval is_self_crossing [1, 1, 1, 1]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

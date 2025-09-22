@@ -21,25 +21,4 @@ theorem larger_n_has_more_zeros (n : Int) :
 
 theorem small_numbers_have_zero_count (n : Int) :
   n ≤ 8 → count_zeros_n_double_fact n = 0 := sorry
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval count_zeros_n_double_fact 8
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval count_zeros_n_double_fact 30
-
-/-
-info: 62
--/
--- #guard_msgs in
--- #eval count_zeros_n_double_fact 500
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

@@ -21,25 +21,4 @@ theorem keyword_cipher_lowercase (text : String) (keyword : String) :
 theorem keyword_cipher_preserves_spaces (text : String) (keyword : String) (i : String.Pos) :
   text.get i = ' ' →
   (keyword_cipher text keyword).get i = ' ' := sorry
-
-/-
-info: 'bshhk'
--/
--- #guard_msgs in
--- #eval keyword_cipher "hello" "wednesday"
-
-/-
-info: 'wticljt dljt'
--/
--- #guard_msgs in
--- #eval keyword_cipher "Welcome home" "secret"
-
-/-
-info: 'bshhk'
--/
--- #guard_msgs in
--- #eval keyword_cipher "HELLO" "wednesday"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

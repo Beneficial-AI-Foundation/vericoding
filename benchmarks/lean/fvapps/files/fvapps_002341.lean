@@ -1,12 +1,13 @@
 -- <vc-preamble>
-def backspace_compare (s1: String) (s2: String) : Bool :=
-  sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
+def backspace_compare (s1: String) (s2: String) : Bool :=
+  sorry
+
 def normalize_backspace (s: String) : String :=
   sorry
 -- </vc-definitions>
@@ -14,34 +15,16 @@ def normalize_backspace (s: String) : String :=
 -- <vc-theorems>
 theorem backspace_compare_matches_naive (s1 s2: String) :
   backspace_compare s1 s2 = (normalize_backspace s1 = normalize_backspace s2) :=
-by sorry
+by
+sorry
 
 theorem self_compare (s: String) :
   backspace_compare s s = true :=
-by sorry
+by
+sorry
 
 theorem symmetric (s1 s2: String) :
   backspace_compare s1 s2 = backspace_compare s2 s1 :=
-by sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval backspace_compare "ab#c" "ad#c"
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval backspace_compare "ab##" "c#d#"
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval backspace_compare "a#c" "b"
+by
+sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

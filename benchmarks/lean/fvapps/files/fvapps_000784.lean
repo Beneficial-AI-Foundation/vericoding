@@ -35,6 +35,3 @@ theorem single_soldier_case {F : Nat}
   let (result, pos, shield) := solve_bitland_survival 2 [F-1] F
   result = "possible" ∧ pos = some 1 ∧ shield = some F := sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

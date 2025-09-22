@@ -3,7 +3,7 @@ vc-description: |-
   Given an array of integers nums and an integer target.
   Return the number of non-empty subsequences of nums such that the sum of the minimum and maximum element on it is less or equal than target.
   Since the answer may be too large, return it modulo 10^9 + 7.
-  
+
   Example 1:
   Input: nums = [3,5,6,7], target = 9
   Output: 4
@@ -12,7 +12,7 @@ vc-description: |-
   [3,5] -> (3 + 5 <= 9)
   [3,5,6] -> (3 + 6 <= 9)
   [3,6] -> (3 + 6 <= 9)
-  
+
   Example 2:
   Input: nums = [3,3,6,8], target = 10
   Output: 6
@@ -23,26 +23,26 @@ vc-description: |-
   Output: 61
   Explanation: There are 63 non-empty subsequences, two of them don't satisfy the condition ([6,7], [7]).
   Number of valid subsequences (63 - 2 = 61).
-  
+
   Example 4:
   Input: nums = [5,2,4,1,7,6,8], target = 16
   Output: 127
   Explanation: All non-empty subset satisfy the condition (2^7 - 1) = 127
-  
+
   Constraints:
-  
+
   1 <= nums.length <= 10^5
   1 <= nums[i] <= 10^6
   1 <= target <= 10^6
   -/
 
-vc-preamble: |-
+vc-preamble: |
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def numSubseq (nums : List Nat) (target : Nat) : Nat := sorry
-  
+
   def minimum (l : List Nat) : Option Nat := sorry
 
 vc-theorems: |-
@@ -51,37 +51,37 @@ vc-theorems: |-
     nums.length ≥ 1 →
     ∀ x ∈ nums, x ≥ 1 ∧ x ≤ 1000 →
     numSubseq nums target ≥ 0 := sorry
-  
+
   theorem numSubseq_modulo_bound (nums : List Nat) (target : Nat) :
     target ≥ 2 →
     nums.length ≥ 1 →
     ∀ x ∈ nums, x ≥ 1 ∧ x ≤ 1000 →
     numSubseq nums target < 10^9 + 7 := sorry
-  
+
   theorem numSubseq_single_element (x : Nat) :
     x ≥ 1 →
     x ≤ 100 →
     numSubseq [x] (x * 3) = if x * 2 ≤ x * 3 then 1 else 0 := sorry
-  
-  /-
-  info: 4
-  -/
-  -- #guard_msgs in
-  -- #eval numSubseq [3, 5, 6, 7] 9
-  
-  /-
-  info: 6
-  -/
-  -- #guard_msgs in
-  -- #eval numSubseq [3, 3, 6, 8] 10
-  
-  /-
-  info: 61
-  -/
-  -- #guard_msgs in
-  -- #eval numSubseq [2, 3, 3, 4, 6, 7] 12
 
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
+
+  /--
+  info: 4
+  -/
+  #guard_msgs in
+  #eval numSubseq [3, 5, 6, 7] 9
+
+  /--
+  info: 6
+  -/
+  #guard_msgs in
+  #eval numSubseq [3, 3, 6, 8] 10
+
+  /--
+  info: 61
+  -/
+  #guard_msgs in
+  #eval numSubseq [2, 3, 3, 4, 6, 7] 12
 

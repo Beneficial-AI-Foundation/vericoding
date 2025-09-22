@@ -1,15 +1,16 @@
 -- <vc-preamble>
-def count_beautiful_subarrays (n k : Nat) (arr : List Nat) : Nat :=
-  sorry
-
-def is_valid_array (arr : List Nat) (n : Nat) : Bool :=
-  sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
+def count_beautiful_subarrays (n k : Nat) (arr : List Nat) : Nat :=
+  sorry
+
+def is_valid_array (arr : List Nat) (n : Nat) : Bool :=
+  sorry
+
 def list_sorted (arr : List Nat) : List Nat :=
   sorry
 -- </vc-definitions>
@@ -40,25 +41,4 @@ theorem minimal_case (k : Nat) :
   1 ≤ k ∧ k ≤ 10 →
   count_beautiful_subarrays 1 k [1] = 1 :=
 sorry
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval count_beautiful_subarrays 3 3 [1, 2, 3]
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval count_beautiful_subarrays 1 1 [1]
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval count_beautiful_subarrays 2 2 [2, 1]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

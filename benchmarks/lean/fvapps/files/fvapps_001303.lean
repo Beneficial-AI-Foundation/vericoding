@@ -32,6 +32,3 @@ theorem single_query_bounds (N : Nat) (A : List Nat)
   result.length = 1 ∧ 
   (∀ x ∈ result, x < MOD) := sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

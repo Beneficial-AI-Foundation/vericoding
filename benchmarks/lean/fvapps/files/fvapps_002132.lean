@@ -30,25 +30,4 @@ theorem no_matching_shirts_result
   let result := solve_tshirts n p f b m bc
   ∀ x ∈ result, x = -1 :=
 sorry
-
-/-
-info: [200, 400, 300, 500, 911, -1]
--/
--- #guard_msgs in
--- #eval solve_tshirts 5 [300, 200, 400, 500, 911] [1, 2, 1, 2, 3] [2, 1, 3, 2, 1] 6 [2, 3, 1, 2, 1, 1]
-
-/-
-info: [1, 1000000000]
--/
--- #guard_msgs in
--- #eval solve_tshirts 2 [1000000000, 1] [1, 1] [1, 2] 2 [2, 1]
-
-/-
-info: [529469903]
--/
--- #guard_msgs in
--- #eval solve_tshirts 1 [529469903] [1] [3] 1 [3]
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: unguarded

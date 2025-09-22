@@ -34,25 +34,4 @@ theorem first_dup_valid_chars {s : String} :
   | none => True
   | some c => True
   := sorry
-
-/-
-info: 't'
--/
--- #guard_msgs in
--- #eval first_dup "tweet"
-
-/-
-info: ' '
--/
--- #guard_msgs in
--- #eval first_dup "Ode to Joy"
-
-/-
-info: None
--/
--- #guard_msgs in
--- #eval first_dup "bar"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

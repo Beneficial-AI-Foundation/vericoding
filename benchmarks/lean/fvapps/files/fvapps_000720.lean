@@ -40,6 +40,3 @@ theorem distance_triangle_inequality (moves : List String) :
   resultNum ≤ total_distance := by
   sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

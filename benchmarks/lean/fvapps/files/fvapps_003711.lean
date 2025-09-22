@@ -35,25 +35,4 @@ theorem keith_sequence_contains_n
 theorem keith_number_deterministic
   (n : Int) (h : 0 ≤ n) :
   is_keith_number n = is_keith_number n := sorry
-
-/-
-info: 5
--/
--- #guard_msgs in
--- #eval is_keith_number 197
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval is_keith_number 196
-
-/-
-info: 8
--/
--- #guard_msgs in
--- #eval is_keith_number 742
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

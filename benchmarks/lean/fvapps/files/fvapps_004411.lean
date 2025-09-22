@@ -1,4 +1,12 @@
 -- <vc-preamble>
+def isSorted (as : List Nat) : Prop :=
+  ∀ i j, i < j → j < as.length → as[i]! ≤ as[j]!
+-- </vc-preamble>
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+-- <vc-definitions>
 def order (sentence : String) : String :=
   sorry
 
@@ -7,22 +15,14 @@ def splitString (s : String) (sep : Char) : List String :=
 
 def findNumber (s : String) : Option Nat :=
   sorry
--- </vc-preamble>
-
--- <vc-helpers>
--- </vc-helpers>
-
--- <vc-definitions>
-def isSorted (as : List Nat) : Prop :=
-  ∀ i j, i < j → j < as.length → as[i]! ≤ as[j]!
 -- </vc-definitions>
 
 -- <vc-theorems>
 theorem order_preserves_empty_string :
   order "" = "" :=
-sorry 
+sorry
 
-theorem order_sorts_by_numbers {sentence : String} {words : List String} : 
+theorem order_sorts_by_numbers {sentence : String} {words : List String} :
   words = splitString sentence ' ' →
   let resultWords := splitString (order sentence) ' '
   let numbers := resultWords.filterMap findNumber
@@ -32,7 +32,7 @@ sorry
 theorem order_preserves_words {sentence : String} {words : List String} :
   words = splitString sentence ' ' →
   let resultWords := splitString (order sentence) ' '
-  words.eraseDups = resultWords.eraseDups ∧ 
+  words.eraseDups = resultWords.eraseDups ∧
   words.length = resultWords.length :=
 sorry
 
@@ -45,25 +45,4 @@ theorem order_all_properties {sentence : String} {words : List String} :
   words.eraseDups = resultWords.eraseDups ∧
   words.length = resultWords.length :=
 sorry
-
-/-
-info: expected1
--/
--- #guard_msgs in
--- #eval order "is2 Thi1s T4est 3a"
-
-/-
-info: expected2
--/
--- #guard_msgs in
--- #eval order "4of Fo1r pe6ople g3ood th5e the2"
-
-/-
-info: expected3
--/
--- #guard_msgs in
--- #eval order ""
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

@@ -20,25 +20,4 @@ theorem pattern_gen_all_digits {k : Nat} (h : k > 0) :
   ∀ j < ((pattern_gen k).get! i).data.length,
   let c := ((pattern_gen k).get! i).data.get! j;
   c.isDigit := sorry
-
-/-
-info: ['1']
--/
--- #guard_msgs in
--- #eval pattern_gen 1
-
-/-
-info: ['13', '57']
--/
--- #guard_msgs in
--- #eval pattern_gen 2
-
-/-
-info: ['135', '7911', '131517']
--/
--- #guard_msgs in
--- #eval pattern_gen 3
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

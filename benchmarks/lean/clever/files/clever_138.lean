@@ -37,7 +37,3 @@ theorem correctness
 : problem_spec implementation n := by
   sorry
 -- </vc-theorems>
-
--- #test implementation 4 = false
--- #test implementation 6 = false
--- #test implementation 8 = true

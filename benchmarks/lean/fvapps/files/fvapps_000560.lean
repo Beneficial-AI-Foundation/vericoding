@@ -30,31 +30,4 @@ theorem single_equals :
 theorem multiple_equals :
   find_min_valid_sequence "===" = 1 :=
   sorry
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval find_min_valid_sequence "<<<"
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval find_min_valid_sequence "<><"
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval find_min_valid_sequence "<=>"
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval find_min_valid_sequence "<=<"
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

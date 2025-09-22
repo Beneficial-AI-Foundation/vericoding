@@ -21,25 +21,4 @@ theorem divisible_count_step (x y k : Nat) (h : k > 0) (h2 : (y + 1) % k = 0) :
 theorem divisible_count_periodic (x k : Nat) (h : k > 0) :
   divisible_count x (x + k - 1) k = divisible_count (x + k) (x + 2*k - 1) k :=
   sorry
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval divisible_count 6 11 2
-
-/-
-info: 20
--/
--- #guard_msgs in
--- #eval divisible_count 11 345 17
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval divisible_count 0 1 7
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

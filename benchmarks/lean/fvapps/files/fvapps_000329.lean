@@ -19,25 +19,4 @@ theorem findGoodStrings_evil_prefix :
 
 theorem findGoodStrings_full_range :
   findGoodStrings 1 "a" "z" "zz" = 26 := sorry
-
-/-
-info: 51
--/
--- #guard_msgs in
--- #eval findGoodStrings 2 "aa" "da" "b"
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval findGoodStrings 8 "leetcode" "leetgoes" "leet"
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval findGoodStrings 2 "gx" "gz" "x"
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

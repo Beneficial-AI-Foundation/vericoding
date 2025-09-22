@@ -28,19 +28,4 @@ theorem basic_case_1 :
 
 theorem basic_case_2 :
   solve_tree_coloring 7 [(3,6), (1,2), (3,1), (7,4), (5,7), (1,4)] = "Fennec" := sorry
-
-/-
-info: 'Fennec'
--/
--- #guard_msgs in
--- #eval solve_tree_coloring 7 [(3, 6), (1, 2), (3, 1), (7, 4), (5, 7), (1, 4)]
-
-/-
-info: 'Snuke'
--/
--- #guard_msgs in
--- #eval solve_tree_coloring 4 [(1, 4), (4, 2), (2, 3)]
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: unguarded

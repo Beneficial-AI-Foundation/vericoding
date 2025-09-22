@@ -29,6 +29,3 @@ theorem men_from_boys_no_duplicates {arr : List Int} (h : arr ≠ []) :
 theorem men_from_boys_length_unique {arr : List Int} (h : arr ≠ []) :
   ∀ x, x ∈ men_from_boys arr → (men_from_boys arr).countP (· = x) = 1 := sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

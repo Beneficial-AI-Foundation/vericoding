@@ -29,6 +29,3 @@ theorem return_sum_matches_indices {n : Nat} {arr : List Int} (h : arr.length > 
   (indices ≠ [] → k = indices.length) ∧
   (indices = [] → sum_val = 0 ∧ k = 0) := sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

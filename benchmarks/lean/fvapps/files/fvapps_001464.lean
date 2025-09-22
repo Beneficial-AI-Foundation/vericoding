@@ -25,25 +25,4 @@ sorry
 theorem power_2_input_unchanged (x : Nat) (h : x > 0) (h2 : (x &&& (x - 1)) = 0) :
   find_minimum_donation x = x :=
 sorry
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval find_minimum_donation 3
-
-/-
-info: 8
--/
--- #guard_msgs in
--- #eval find_minimum_donation 7
-
-/-
-info: 16
--/
--- #guard_msgs in
--- #eval find_minimum_donation 15
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

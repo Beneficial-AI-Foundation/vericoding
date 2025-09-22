@@ -27,25 +27,4 @@ theorem find_min_pair_sum_errors_empty :
 theorem find_min_pair_sum_errors_single (x : Int) :
   find_min_pair_sum 1 [x] = find_min_pair_sum 1 [x] → False :=
   sorry
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval find_min_pair_sum 4 [5, 1, 3, 4]
-
-/-
-info: 5
--/
--- #guard_msgs in
--- #eval find_min_pair_sum 5 [10, 2, 3, 8, 5]
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval find_min_pair_sum 3 [1000000, 1, 2]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

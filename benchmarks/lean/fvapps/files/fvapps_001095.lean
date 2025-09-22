@@ -25,25 +25,4 @@ theorem known_sequence_values :
   solve_colored_parentheses 1 = 1 ∧
   solve_colored_parentheses 2 = 6 ∧
   solve_colored_parentheses 3 = 90 := sorry
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval solve_colored_parentheses 1
-
-/-
-info: 6
--/
--- #guard_msgs in
--- #eval solve_colored_parentheses 2
-
-/-
-info: 90
--/
--- #guard_msgs in
--- #eval solve_colored_parentheses 3
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

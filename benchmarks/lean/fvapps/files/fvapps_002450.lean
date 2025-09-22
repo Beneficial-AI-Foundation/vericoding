@@ -25,6 +25,3 @@ theorem mutate_single_char
   {c : Char} :
   mutate_string "a" 0 c = String.mk [c] := sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

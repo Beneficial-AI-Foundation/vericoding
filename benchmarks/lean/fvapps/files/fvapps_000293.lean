@@ -26,6 +26,3 @@ theorem power_requires_fewer_ops
   (h3 : power ≥ 2) (h4 : power ≤ 5) :
   least_ops_express_target x (x^power) ≤ least_ops_express_target x (x^power + 1) := sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

@@ -24,25 +24,4 @@ theorem known_factorials :
   reverse_factorial 1 = "1!" ∧
   reverse_factorial 2 = "2!" ∧
   reverse_factorial 6 = "3!" := sorry
-
-/-
-info: '5!'
--/
--- #guard_msgs in
--- #eval reverse_factorial 120
-
-/-
-info: '10!'
--/
--- #guard_msgs in
--- #eval reverse_factorial 3628800
-
-/-
-info: 'None'
--/
--- #guard_msgs in
--- #eval reverse_factorial 150
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

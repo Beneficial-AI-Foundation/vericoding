@@ -1,0 +1,22 @@
+---
+vc-description: |-
+  Dafny specification for numpy.all functionality.
+  Tests whether all array elements evaluate to True (are non-zero).
+  
+  Note: This specification uses mathematical reals rather than IEEE 754 floats.
+  In the actual numpy implementation, NaN and infinities evaluate to True,
+  but this cannot be precisely modeled in Dafny's real type.
+vc-preamble: |-
+  // Test whether all elements in a sequence are non-zero
+vc-helpers: |-
+  
+vc-spec: |-
+  method All(a: seq<real>) returns (result: bool)
+      // The result is true if and only if all elements are non-zero
+      ensures result == (forall i :: 0 <= i < |a| ==> a[i] != 0.0)
+vc-code: |-
+  {
+    assume {:axiom} false;
+  }
+vc-postamble: |-
+  

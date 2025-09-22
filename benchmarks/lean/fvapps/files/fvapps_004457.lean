@@ -20,25 +20,4 @@ theorem zeros_less_than_input (n : Nat) :
 
 theorem zeros_small_inputs :
   zeros 0 = 0 ∧ zeros 1 = 0 ∧ zeros 4 = 0 := sorry
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval zeros 0
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval zeros 6
-
-/-
-info: 7
--/
--- #guard_msgs in
--- #eval zeros 30
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

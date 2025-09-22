@@ -21,25 +21,4 @@ theorem odd_row_sequential_differences (n : Nat) (h : n > 0) :
 
 theorem odd_row_first_element (n : Nat) (h : n > 0) :
   (odd_row n).head? = some (n * (n-1) + 1) := sorry
-
-/-
-info: [1]
--/
--- #guard_msgs in
--- #eval odd_row 1
-
-/-
-info: [3, 5]
--/
--- #guard_msgs in
--- #eval odd_row 2
-
-/-
-info: [7, 9, 11]
--/
--- #guard_msgs in
--- #eval odd_row 3
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

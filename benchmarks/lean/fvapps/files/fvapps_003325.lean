@@ -27,25 +27,4 @@ theorem powermod_multiplicative (b e m : Nat)
   (h1 : b ≥ 1) (h2 : e ≥ 1) (h3 : m ≥ 2) :
   (powerMod b e m * powerMod b (e + 1) m) % m = powerMod b (e + e + 1) m :=
   sorry
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval power_mod 11 10 300
-
-/-
-info: 5
--/
--- #guard_msgs in
--- #eval power_mod 5 100000000 19
-
-/-
-info: 26
--/
--- #guard_msgs in
--- #eval power_mod 9 193125 37
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

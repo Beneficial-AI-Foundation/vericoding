@@ -38,25 +38,4 @@ sorry
 theorem many_ones_then_zeros_pattern (n : Nat) (h : n > 0) :
   count_inscribed_circles (String.mk ((List.replicate n '1') ++ (List.replicate n '0'))) = n :=
 sorry
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval count_inscribed_circles "1110"
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval count_inscribed_circles "0010"
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval count_inscribed_circles "1001000"
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

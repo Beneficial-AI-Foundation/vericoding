@@ -25,25 +25,4 @@ theorem count_love_graphs_small_values :
   count_love_graphs 2 1 = 2 ∧ 
   count_love_graphs 3 1 = 6 ∧ 
   count_love_graphs 2 2 = 2 := sorry
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval count_love_graphs 2 1
-
-/-
-info: 12
--/
--- #guard_msgs in
--- #eval count_love_graphs 3 2
-
-/-
-info: 12
--/
--- #guard_msgs in
--- #eval count_love_graphs 4 1
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

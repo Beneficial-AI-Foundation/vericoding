@@ -30,25 +30,4 @@ theorem sortme_empty_list :
 
 theorem sortme_idempotent (words : List String) :
   sortme (sortme words) = sortme words := sorry
-
-/-
-info: ['fine', 'Hello', "I'm", 'there']
--/
--- #guard_msgs in
--- #eval sortme ["Hello", "there", "I"m", "fine"]
-
-/-
-info: ['a', 'B', 'C', 'd']
--/
--- #guard_msgs in
--- #eval sortme ["C", "d", "a", "B"]
-
-/-
-info: []
--/
--- #guard_msgs in
--- #eval sortme []
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

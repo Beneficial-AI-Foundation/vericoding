@@ -36,25 +36,4 @@ theorem ladder_length_zero_when_different_lengths
   (begin_word end_word : String) (word_list : List String) :
   begin_word.length ≠ end_word.length →
   ladder_length begin_word end_word word_list = 0 := sorry
-
-/-
-info: 5
--/
--- #guard_msgs in
--- #eval ladder_length "hit" "cog" ["hot", "dot", "dog", "lot", "log", "cog"]
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval ladder_length "hit" "cog" ["hot", "dot", "dog", "lot", "log"]
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval ladder_length "dog" "cog" ["cog"]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

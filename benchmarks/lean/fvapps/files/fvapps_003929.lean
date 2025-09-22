@@ -29,6 +29,3 @@ theorem solve_multiple_matches :
   solve ["wkskkkkkk", "fokoo", "wkskk", "uizzzz", "fokooff", "wkskkkk", "uizzzzzzz"] = [5, 7, 9] :=
   sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

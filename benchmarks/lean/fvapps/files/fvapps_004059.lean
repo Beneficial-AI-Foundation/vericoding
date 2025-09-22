@@ -1,37 +1,41 @@
 -- <vc-preamble>
-def hungry_seven (arr : List Nat) : List Nat := sorry
-
-def is_valid_result (input : List Nat) (result : List Nat) : Bool := sorry
-
-def has_89_pattern (arr : List Nat) : Bool := sorry
-
-def has_seven (arr : List Nat) : Bool := sorry
+def count_val (n : Nat) (xs : List Nat) : Nat :=
+  List.length (List.filter (· = n) xs)
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
-def count_val (n : Nat) (xs : List Nat) : Nat :=
-  List.length (List.filter (· = n) xs)
+def has_seven (arr : List Nat) : Bool := sorry
+
+def hungry_seven (arr : List Nat) : List Nat :=
+sorry
+
+def is_valid_result (input : List Nat) (result : List Nat) : Bool :=
+sorry
+
+def has_89_pattern (arr : List Nat) : Bool :=
+sorry
 -- </vc-definitions>
 
 -- <vc-theorems>
-theorem hungry_seven_properties (arr : List Nat) 
+theorem hungry_seven_properties (arr : List Nat)
   (h1 : ∀ x ∈ arr, x = 7 ∨ x = 8 ∨ x = 9)
   : let result := hungry_seven arr
-    -- Result maintains same length
+
     (result.length = arr.length) ∧
-    -- Result only contains 7,8,9
-    (∀ x ∈ result, x = 7 ∨ x = 8 ∨ x = 9) ∧ 
-    -- Counts are preserved 
+
+    (∀ x ∈ result, x = 7 ∨ x = 8 ∨ x = 9) ∧
+
     (count_val 7 arr = count_val 7 result) ∧
     (count_val 8 arr = count_val 8 result) ∧
     (count_val 9 arr = count_val 9 result) ∧
-    -- Result is stable
+
     (hungry_seven result = result) ∧
-    -- If no 7s or no 89 pattern, result unchanged
-    ((!has_seven arr ∨ !has_89_pattern arr) → result = arr) := sorry
+
+    ((!has_seven arr ∨ !has_89_pattern arr) → result = arr) :=
+sorry
 
 theorem no_seven_before_89_pattern (arr : List Nat)
   (h1 : arr.length ≥ 2)
@@ -39,8 +43,6 @@ theorem no_seven_before_89_pattern (arr : List Nat)
   let result := hungry_seven arr
   ∀ i < result.length - 1,
     result[i]? = some 7 →
-    ¬(result[i+1]? = some 8 ∧ result[i+2]? = some 9) := sorry
+    ¬(result[i+1]? = some 8 ∧ result[i+2]? = some 9) :=
+sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

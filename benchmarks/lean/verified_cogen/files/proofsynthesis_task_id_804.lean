@@ -25,5 +25,3 @@ theorem isProductEven_spec_satisfied (arr: Array Nat) (h_precond : isProductEven
     isProductEven_postcond (arr) (isProductEven (arr) h_precond) h_precond := by
   sorry
 -- </vc-theorems>
-
-def main : IO Unit := return ()

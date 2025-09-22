@@ -14,6 +14,3 @@ theorem execute_basic_functionality :
   execute "F1" = "**" :=
 sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

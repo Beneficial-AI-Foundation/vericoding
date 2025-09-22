@@ -38,25 +38,4 @@ theorem find_thief_same_minute_second
   let times := hours.map (fun h => valid_time_str h 30 30)
   let result := find_thief_with_watch times
   1 ≤ result ∧ result ≤ times.length := sorry
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval find_thief_with_watch ["12:28:26", "07:26:04", "11:23:17"]
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval find_thief_with_watch ["07:43:25", "06:23:34"]
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval find_thief_with_watch ["12:00:00"]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

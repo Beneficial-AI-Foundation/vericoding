@@ -1,6 +1,4 @@
 -- <vc-preamble>
-namespace BignumLean
-
 def ValidBitString (s : String) : Prop :=
   ∀ {i c}, s.get? i = some c → (c = '0' ∨ c = '1')
 
@@ -32,5 +30,3 @@ theorem CompareUnequal_spec
     (Str2Int s1 > Str2Int s2 → CompareUnequal s1 s2 = 1) := by
   sorry
 -- </vc-theorems>
-
-end BignumLean

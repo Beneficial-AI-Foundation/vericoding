@@ -28,25 +28,4 @@ theorem solve_equal_piles (n : Nat) :
 
 theorem solve_two_equal_piles (n m : Nat) :
   solve_candies n n m = min (n + n) (min (n + m) ((2 * n + m) / 2)) := sorry
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval solve_candies 1 1 1
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval solve_candies 1 2 1
-
-/-
-info: 10
--/
--- #guard_msgs in
--- #eval solve_candies 7 4 10
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

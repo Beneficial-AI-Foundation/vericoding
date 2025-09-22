@@ -28,25 +28,4 @@ theorem shortest_arrang_uniqueness (n : Nat) (h : n ≥ 3) :
 
 theorem powers_of_two_give_empty (n : Nat) :
   (∃ k, n = 2^k) → shortest_arrang n = List.nil := sorry
-
-/-
-info: [5, 4, 3, 2]
--/
--- #guard_msgs in
--- #eval shortest_arrang 14
-
-/-
-info: [-1]
--/
--- #guard_msgs in
--- #eval shortest_arrang 16
-
-/-
-info: [33, 32]
--/
--- #guard_msgs in
--- #eval shortest_arrang 65
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

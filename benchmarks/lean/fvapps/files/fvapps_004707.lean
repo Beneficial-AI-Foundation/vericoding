@@ -20,6 +20,3 @@ theorem mutate_identical_strings (s : String) (h : s.length > 0) :
 
 -- <vc-theorems>
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

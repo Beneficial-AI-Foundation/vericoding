@@ -26,25 +26,4 @@ theorem all_same_number_gives_full_length
   (n : Nat) (h1 : 1 ≤ n) (h2 : n ≤ 100) :
   let arr := List.replicate n 1
   find_max_three_block_palindrome n arr = n := sorry
-
-/-
-info: 7
--/
--- #guard_msgs in
--- #eval find_max_three_block_palindrome 8 [1, 1, 2, 2, 3, 2, 1, 1]
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval find_max_three_block_palindrome 4 [1, 10, 10, 1]
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval find_max_three_block_palindrome 3 [1, 1, 1]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

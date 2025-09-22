@@ -21,25 +21,4 @@ theorem odd_count_half_input (n : Nat) :
 theorem odd_count_consecutive_diff (n : Nat) :
   odd_count (n + 1) - odd_count n ≤ 1 :=
   sorry
-
-/-
-info: 7
--/
--- #guard_msgs in
--- #eval odd_count 15
-
-/-
-info: 7511
--/
--- #guard_msgs in
--- #eval odd_count 15023
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval odd_count 8
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

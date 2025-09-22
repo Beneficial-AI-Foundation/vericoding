@@ -40,25 +40,4 @@ theorem vowel_indices_unique (s : String) (i j : Nat) :
   j ∈ vowel_indices s →
   i = j ∨ i ≠ j :=
 sorry
-
-/-
-info: []
--/
--- #guard_msgs in
--- #eval vowel_indices "mmm"
-
-/-
-info: [2, 4]
--/
--- #guard_msgs in
--- #eval vowel_indices "super"
-
-/-
-info: [1, 2, 4, 6]
--/
--- #guard_msgs in
--- #eval vowel_indices "YoMama"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

@@ -30,6 +30,3 @@ theorem moves_to_stamp_impossible_cases_2 :
 theorem moves_to_stamp_impossible_cases_3 :
   moves_to_stamp "abc" "abcd" = [] := sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

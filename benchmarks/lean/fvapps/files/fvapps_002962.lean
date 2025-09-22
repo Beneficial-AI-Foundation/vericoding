@@ -45,6 +45,3 @@ theorem impossible_combinations
   cal_n_bug n (n*8) n = [-1, -1, -1] :=
 sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

@@ -38,25 +38,4 @@ theorem converter_default_base_is_pi {n : Float} {decimals : Nat}
 theorem converter_base_2_is_binary {n : Nat}
   (h : n ≤ 1000) :
   ∀ c ∈ (converter (intToFloat n) 0 2).data, c = '0' ∨ c = '1' := sorry
-
-/-
-info: '103'
--/
--- #guard_msgs in
--- #eval converter 13
-
-/-
-info: '103.010'
--/
--- #guard_msgs in
--- #eval converter 13 3
-
-/-
-info: '-1101'
--/
--- #guard_msgs in
--- #eval converter -13 0 2
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

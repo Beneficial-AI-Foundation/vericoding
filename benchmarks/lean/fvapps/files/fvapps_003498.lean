@@ -31,19 +31,4 @@ theorem read_out_preserves_lowercase (words : List String)
 
 theorem read_out_empty_list :
   read_out [] = "" := sorry
-
-/-
-info: 'JACK'
--/
--- #guard_msgs in
--- #eval read_out ["Jolly", "Amazing", "Courteous", "Keen"]
-
-/-
-info: 'MEG'
--/
--- #guard_msgs in
--- #eval read_out ["Marvelous", "Excellent", "Gifted"]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

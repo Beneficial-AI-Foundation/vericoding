@@ -26,25 +26,4 @@ theorem clean_mean_basic_test2 :
 
 theorem clean_mean_basic_test3 :
   clean_mean [1, 1, 2, 2, 3, 3] 2.0 = 2.0 := sorry
-
-/-
-info: 5.5
--/
--- #guard_msgs in
--- #eval clean_mean [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 100] 3
-
-/-
-info: 3.0
--/
--- #guard_msgs in
--- #eval clean_mean [1, 2, 3, 4, 5] 3
-
-/-
-info: 2.0
--/
--- #guard_msgs in
--- #eval clean_mean [1, 2, 3] 2
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

@@ -41,7 +41,3 @@ theorem correctness
 := by
   sorry
 -- </vc-theorems>
-
--- #test implementation "abcde" "ae" = ("bcd", False)
--- #test implementation "abcdef" "b" = ("acdef", False)
--- #test implementation "abcdedcba" "ab" = ("cdedc", True)

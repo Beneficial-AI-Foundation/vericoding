@@ -30,25 +30,4 @@ theorem solve_chocolates_permutation_invariant (n x : Nat) (arr₁ arr₂ : List
   (h1 : n > 0) (h2 : x > 0) (h3 : arr₁.length > 0) 
   (h4 : List.Perm arr₁ arr₂) :
   solve_chocolates n x arr₁ = solve_chocolates n x arr₂ := sorry
-
-/-
-info: 'Impossible'
--/
--- #guard_msgs in
--- #eval solve_chocolates 3 5 [4, 1, 2]
-
-/-
-info: 'Possible'
--/
--- #guard_msgs in
--- #eval solve_chocolates 5 2 [4, 4, 3, 2, 2]
-
-/-
-info: 'Impossible'
--/
--- #guard_msgs in
--- #eval solve_chocolates 5 1 [4, 2, 3, 1, 1]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

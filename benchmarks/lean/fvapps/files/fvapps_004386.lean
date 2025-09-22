@@ -30,25 +30,4 @@ theorem createDict_null_elements (keys : List String) (values : List Int)
 theorem createDict_all_ints (keys : List String) (values : List Int)
   (h₁: keys.length ≤ 3) (h₂: 4 ≤ values.length) :
   ∀ x ∈ (createDict keys values).map Prod.snd, ∃ (n : Int), x = some n := sorry
-
-/-
-info: {}
--/
--- #guard_msgs in
--- #eval createDict [] []
-
-/-
-info: {'a': 1, 'b': None, 'c': None}
--/
--- #guard_msgs in
--- #eval createDict ["a", "b", "c"] [1]
-
-/-
-info: {'a': 1, 'b': 2}
--/
--- #guard_msgs in
--- #eval createDict ["a", "b"] [1, 2, 3, 4]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

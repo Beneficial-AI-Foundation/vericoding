@@ -24,25 +24,4 @@ theorem say_hello_ends_with_name {name : String} (h : name.length > 0) :
 theorem say_hello_length {name : String} (h : name.length > 0) :
   let greeting := sayHello name
   String.length greeting = String.length "Hello, " + String.length name := sorry
-
-/-
-info: 'Hello, Mr. Spock'
--/
--- #guard_msgs in
--- #eval say_hello "Mr. Spock"
-
-/-
-info: 'Hello, Captain Kirk'
--/
--- #guard_msgs in
--- #eval say_hello "Captain Kirk"
-
-/-
-info: 'Hello, Dr. McCoy'
--/
--- #guard_msgs in
--- #eval say_hello "Dr. McCoy"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

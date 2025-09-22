@@ -21,25 +21,4 @@ theorem product_zero_if_missing_char (s : String) :
   let no_excl := s.replace "!" ""
   let no_quest := s.replace "?" "" 
   product no_excl = 0 ∧ product no_quest = 0 := sorry
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval product ""
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval product "!"
-
-/-
-info: 8
--/
--- #guard_msgs in
--- #eval product "!!??!!"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

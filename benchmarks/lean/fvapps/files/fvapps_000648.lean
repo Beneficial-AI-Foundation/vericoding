@@ -21,25 +21,4 @@ theorem solve_latest_bus_identical_buses
     let result := solve_latest_bus 5 d (List.replicate 5 bus)
     result ≤ d ∧ result % bus = 0 :=
 sorry
-
-/-
-info: 6
--/
--- #guard_msgs in
--- #eval solve_latest_bus 3 10 [3, 7, 2]
-
-/-
-info: 99
--/
--- #guard_msgs in
--- #eval solve_latest_bus 4 100 [11, 10, 5, 50]
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval solve_latest_bus 1 1 [1]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

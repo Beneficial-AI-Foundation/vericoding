@@ -36,25 +36,4 @@ theorem maxJumps_single_element :
 theorem maxJumps_two_elements :
   maxJumps [1, 2] 1 = 2 :=
   sorry
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval maxJumps [6, 4, 14, 6, 8, 13, 9, 7, 10, 6, 12] 2
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval maxJumps [3, 3, 3, 3, 3] 3
-
-/-
-info: 7
--/
--- #guard_msgs in
--- #eval maxJumps [7, 6, 5, 4, 3, 2, 1] 1
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

@@ -32,25 +32,4 @@ theorem word_break_prefix_property
   (s : String) (word_dict : List String) (h1 : word_dict.length > 0) :
   word_break s word_dict = true →
   ∀ w ∈ word_dict, s.startsWith w → word_break w word_dict = true := sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval word_break "leetcode" ["leet", "code"]
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval word_break "applepenapple" ["apple", "pen"]
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval word_break "catsandog" ["cats", "dog", "sand", "and", "cat"]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

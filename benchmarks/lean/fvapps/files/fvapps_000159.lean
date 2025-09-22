@@ -32,25 +32,4 @@ theorem lcs_substring (s1 s2 s3 : String) :
   longest_common_subsequence (s1 ++ s2) s3 ≥ longest_common_subsequence s1 s3 ∧
   longest_common_subsequence (s1 ++ s2) s3 ≥ longest_common_subsequence s2 s3 :=
   sorry
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval longest_common_subsequence "abcde" "ace"
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval longest_common_subsequence "abc" "abc"
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval longest_common_subsequence "abc" "def"
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

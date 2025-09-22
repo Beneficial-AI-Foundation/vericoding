@@ -22,6 +22,3 @@ theorem count_enemies_killed_bound (s : String) :
   count_enemies_killed s ≤ s.length := 
   sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

@@ -21,5 +21,3 @@ theorem anyValueExists_spec_satisfied (arr1: Array Int) (arr2: Array Int) (h_pre
     anyValueExists_postcond arr1 arr2 (anyValueExists arr1 arr2 h_precond) h_precond := by
   sorry
 -- </vc-theorems>
-
-#check anyValueExists

@@ -19,6 +19,10 @@ vc-description: |-
   -/
 
 vc-preamble: |-
+
+vc-helpers: |-
+
+vc-definitions: |-
   def html_end_tag_by_start_tag (start_tag: String) : String :=
     sorry
   
@@ -30,51 +34,48 @@ vc-preamble: |-
   
   def is_valid_attr_name_char (c: Char) : Bool :=
     sorry
-
-vc-helpers: |-
-
-vc-definitions: |-
+  
   def is_valid_attr_value_char (c: Char) : Bool :=
     sorry
 
 vc-theorems: |-
   theorem html_end_tag_starts_with_close : ∀ (start_tag : String),
     (html_end_tag_by_start_tag start_tag).startsWith "</" = true :=
-    sorry
+  sorry
   
   theorem html_end_tag_ends_with_angle : ∀ (start_tag : String),
     (html_end_tag_by_start_tag start_tag).endsWith ">" = true :=
-    sorry
+  sorry
   
   theorem html_end_tag_matches_start : ∀ (start_tag : String),
     let start_name := (start_tag.drop 1).splitOn " " |>.head!.dropRight 1
     let end_name := (html_end_tag_by_start_tag start_tag).drop 2 |>.dropRight 1
     start_name = end_name :=
-    sorry
+  sorry
   
   theorem html_end_tag_no_attributes : ∀ (start_tag : String),
     ¬(html_end_tag_by_start_tag start_tag).contains ' ' :=
-    sorry
-  
-  /-
-  info: '</i>'
-  -/
-  -- #guard_msgs in
-  -- #eval html_end_tag_by_start_tag "<i>"
-  
-  /-
-  info: '</button>'
-  -/
-  -- #guard_msgs in
-  -- #eval html_end_tag_by_start_tag "<button type="button" disabled>"
-  
-  /-
-  info: '</div>'
-  -/
-  -- #guard_msgs in
-  -- #eval html_end_tag_by_start_tag "<div class="main" id="content" style="width:100px">"
+  sorry
 
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+  
+  /--
+  info: '</i>'
+  -/
+  #guard_msgs in
+  #eval html_end_tag_by_start_tag "<i>"
+  
+  /--
+  info: '</button>'
+  -/
+  #guard_msgs in
+  #eval html_end_tag_by_start_tag "<button type="button" disabled>"
+  
+  /--
+  info: '</div>'
+  -/
+  #guard_msgs in
+  #eval html_end_tag_by_start_tag "<div class="main" id="content" style="width:100px">"
 

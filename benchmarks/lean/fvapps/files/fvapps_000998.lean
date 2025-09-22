@@ -30,6 +30,3 @@ theorem all_completed {n : Nat} :
   let (chef, assistant) := solve_kitchen_cleanup n n completed
   chef = "" ∧ assistant = "" := sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

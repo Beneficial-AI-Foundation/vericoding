@@ -1,12 +1,13 @@
 -- <vc-preamble>
-def looseChange (coins: List Nat) (amount: Nat) : Int :=
-  sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
+def looseChange (coins: List Nat) (amount: Nat) : Int :=
+  sorry
+
 def listMin (l: List Nat) : Nat :=
   sorry
 -- </vc-definitions>
@@ -14,21 +15,25 @@ def listMin (l: List Nat) : Nat :=
 -- <vc-theorems>
 theorem looseChange_result_bound (coins: List Nat) (amount: Nat) :
   coins.length > 0 → let result := looseChange coins amount
-  result ≥ -1 := by sorry
+  result ≥ -1 := by
+sorry
 
 theorem looseChange_zero (coins: List Nat) :
-  coins.length > 0 → looseChange coins 0 = 0 := by sorry
+  coins.length > 0 → looseChange coins 0 = 0 := by
+sorry
 
 theorem looseChange_small_amount (coins: List Nat) (amount: Nat) :
   coins.length > 0 →
   amount > 0 →
   amount < listMin coins →
-  looseChange coins amount = -1 := by sorry
+  looseChange coins amount = -1 := by
+sorry
 
 theorem looseChange_bounded_by_amount (coins: List Nat) (amount: Nat) :
   coins.length > 0 →
   looseChange coins amount ≠ -1 →
-  looseChange coins amount ≤ amount := by sorry
+  looseChange coins amount ≤ amount := by
+sorry
 
 theorem looseChange_optimal (coins: List Nat) (amount: Nat) :
   coins.length > 0 →
@@ -36,26 +41,6 @@ theorem looseChange_optimal (coins: List Nat) (amount: Nat) :
   result ≠ -1 →
   ∀ (c : Nat),
   c ∈ coins →
-  ¬∃ (n : Nat), n > result ∧ n * c = amount := by sorry
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval loose_change [1, 5, 10, 25] 37
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval loose_change [1, 3, 4] 6
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval loose_change [25, 5, 10, 1, 21] 63
+  ¬∃ (n : Nat), n > result ∧ n * c = amount := by
+sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

@@ -1,12 +1,13 @@
 -- <vc-preamble>
-def sha256_cracker (h: String) (chars: String) : Option String :=
-  sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
+def sha256_cracker (h: String) (chars: String) : Option String :=
+  sorry
+
 def sha256 (s: String) : String :=
   sorry
 -- </vc-definitions>
@@ -17,7 +18,7 @@ theorem found_string_matches_hash
   (h = sha256 s) →
   (chars = s.toList.toString) →
   (sha256_cracker h chars = some result) →
-  (sha256 result = h) ∧ 
+  (sha256 result = h) ∧
   (∀ c, c ∈ result.data → c ∈ chars.data) :=
 sorry
 
@@ -34,19 +35,4 @@ theorem empty_chars_returns_none
   (h = sha256 s) →
   sha256_cracker h "" = none :=
 sorry
-
-/-
-info: 'GoOutside'
--/
--- #guard_msgs in
--- #eval sha256_cracker "b8c49d81cb795985c007d78379e98613a4dfc824381be472238dbd2f974e37ae" "deGioOstu"
-
-/-
-info: 'code'
--/
--- #guard_msgs in
--- #eval sha256_cracker "5694d08a2e53ffcae0c3103e5ad6f6076abd960eb1f8a56577040bc1028f702b" "cdeo"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

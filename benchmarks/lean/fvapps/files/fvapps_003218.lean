@@ -38,25 +38,4 @@ theorem get_column_title_single_letter :
 theorem get_column_title_monotonic :
   ∀ n : Int, n > 0 →
   get_column_title n < get_column_title (n + 1) := sorry
-
-/-
-info: 'A'
--/
--- #guard_msgs in
--- #eval get_column_title 1
-
-/-
-info: 'AZ'
--/
--- #guard_msgs in
--- #eval get_column_title 52
-
-/-
-info: 'ZZ'
--/
--- #guard_msgs in
--- #eval get_column_title 702
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

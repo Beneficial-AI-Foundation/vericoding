@@ -32,25 +32,4 @@ theorem diff_has_largest_diff (arr : List String) (result : String) :
     let diff_val := abs (nums[0]! - nums[1]!)
     diff_val ≤ result_diff
   := sorry
-
-/-
-info: '000-18888'
--/
--- #guard_msgs in
--- #eval diff ["43-45", "1021-55", "000-18888", "92-34", "76-32", "99-1", "1020-54"]
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval diff ["33-33", "77-77"]
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval diff []
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

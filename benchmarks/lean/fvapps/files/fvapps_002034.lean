@@ -23,25 +23,4 @@ sorry
 theorem solve_gcd_lcm_ones (n : Nat) (h1: n ≥ 2) (h2: n ≤ 5) :
   solve_gcd_lcm n (List.replicate n 1) = 1 :=
 sorry
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval solve_gcd_lcm 2 [1, 1]
-
-/-
-info: 40
--/
--- #guard_msgs in
--- #eval solve_gcd_lcm 4 [10, 24, 40, 80]
-
-/-
-info: 54
--/
--- #guard_msgs in
--- #eval solve_gcd_lcm 10 [540, 648, 810, 648, 720, 540, 594, 864, 972, 648]
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: unguarded

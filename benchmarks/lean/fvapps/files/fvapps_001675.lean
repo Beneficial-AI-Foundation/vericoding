@@ -28,25 +28,4 @@ theorem fusc_odd (n : Nat) :
 
 theorem fusc_consecutive_coprime (n : Nat) :
   Nat.gcd (fusc n) (fusc (n + 1)) = 1 := sorry
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval fusc 0
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval fusc 1
-
-/-
-info: 21
--/
--- #guard_msgs in
--- #eval fusc 85
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

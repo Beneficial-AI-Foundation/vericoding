@@ -33,25 +33,4 @@ theorem valid_numbers_return_yes {n : Nat}
   (h3 : (n / 7) % 2 ≠ 1) :
   solve_dice_tower [n] = ["YES"] :=
 sorry
-
-/-
-info: ['YES', 'YES', 'YES', 'NO']
--/
--- #guard_msgs in
--- #eval solve_dice_tower [29, 34, 19, 38]
-
-/-
-info: ['NO', 'NO', 'NO']
--/
--- #guard_msgs in
--- #eval solve_dice_tower [7, 14, 21]
-
-/-
-info: ['YES', 'YES', 'YES']
--/
--- #guard_msgs in
--- #eval solve_dice_tower [16, 29, 34]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

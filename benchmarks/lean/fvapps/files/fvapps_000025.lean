@@ -32,31 +32,4 @@ theorem polygon_cut_fan_triangulation {n : Nat}
   let triangles := List.range (n-2) |> List.map (fun i => (1, i+2, i+3))
   let (vertices, cuts) := polygon_cut n triangles
   (vertices.length = n) ∧ (cuts.length = n-2) ∧ vertices.head? = some 1 := sorry
-
-/-
-info: n1
--/
--- #guard_msgs in
--- #eval len vertices1
-
-/-
-info: n1 - 2
--/
--- #guard_msgs in
--- #eval len cuts1
-
-/-
-info: n2
--/
--- #guard_msgs in
--- #eval len vertices2
-
-/-
-info: n2 - 2
--/
--- #guard_msgs in
--- #eval len cuts2
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

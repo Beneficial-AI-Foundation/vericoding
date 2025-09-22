@@ -28,25 +28,4 @@ theorem reverseWords_reverses_words_individually (s : String) :
   ∀ (i : Fin orig_words.length), 
     orig_words[i]! = String.mk (List.reverse (result_words[i]!).data) :=
 sorry
-
-/-
-info: 'iH mom'
--/
--- #guard_msgs in
--- #eval reverse_words "Hi mom"
-
-/-
-info: ' A nuf elttil !egnellahc '
--/
--- #guard_msgs in
--- #eval reverse_words " A fun little challenge! "
-
-/-
-info: 'woH won nworb woc'
--/
--- #guard_msgs in
--- #eval reverse_words "How now brown cow"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

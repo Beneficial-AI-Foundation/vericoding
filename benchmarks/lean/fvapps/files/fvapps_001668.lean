@@ -27,25 +27,4 @@ theorem preserves_input (voters : List (List Char)) :
   let original := voters
   let _ := runoff voters
   voters = original := sorry
-
-/-
-info: 'A'
--/
--- #guard_msgs in
--- #eval runoff [["A", "B", "C"], ["A", "B", "C"], ["B", "C", "A"]]
-
-/-
-info: None
--/
--- #guard_msgs in
--- #eval runoff [["A", "B", "C"], ["B", "C", "A"], ["C", "A", "B"]]
-
-/-
-info: 'A'
--/
--- #guard_msgs in
--- #eval runoff [["A", "B", "C", "D"], ["A", "B", "C", "D"], ["B", "A", "C", "D"], ["C", "D", "A", "B"]]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

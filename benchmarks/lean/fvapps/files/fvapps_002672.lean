@@ -1,12 +1,13 @@
 -- <vc-preamble>
-def digitize (n : Nat) : List Nat :=
-  sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
+def digitize (n : Nat) : List Nat :=
+  sorry
+
 def digitsToNat (digits : List Nat) : Nat :=
   sorry
 -- </vc-definitions>
@@ -25,32 +26,11 @@ theorem digitize_reconstruction {n : Nat} :
   sorry
 
 theorem digitize_preserves_digits {n : Nat} :
-  List.map (fun d => toString d) (digitize n) = 
+  List.map (fun d => toString d) (digitize n) =
   (toString n).toList.map toString := by
   sorry
 
 theorem digitize_zero :
   digitize 0 = [0] := by
   sorry
-
-/-
-info: [1, 3, 2, 5, 3]
--/
--- #guard_msgs in
--- #eval digitize 35231
-
-/-
-info: [7, 5, 3, 2, 8, 5, 3, 2]
--/
--- #guard_msgs in
--- #eval digitize 23582357
-
-/-
-info: [8, 3, 7, 4, 6, 7, 4, 8, 9]
--/
--- #guard_msgs in
--- #eval digitize 984764738
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

@@ -24,25 +24,4 @@ theorem single_tile_case {s : String} (h : s.length = 1) :
 theorem permutations_exceed_unique {s : String} (h : s.length ≥ 2) (h2 : s.length ≤ 7) :
   numTilePossibilities s ≥ s.data.eraseDups.length :=
   sorry
-
-/-
-info: 8
--/
--- #guard_msgs in
--- #eval numTilePossibilities "AAB"
-
-/-
-info: 188
--/
--- #guard_msgs in
--- #eval numTilePossibilities "AAABBC"
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval numTilePossibilities "V"
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

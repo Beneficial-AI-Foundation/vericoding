@@ -36,6 +36,3 @@ theorem positive_result {n : Nat} (h : n ≥ 10) :
 theorem small_n_reasonable :
   1.9 ≤ simpson 10 ∧ simpson 10 ≤ 2.1 := sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

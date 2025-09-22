@@ -39,6 +39,3 @@ theorem tree_special_path_cost_constraint (n nsp : Nat) (queries : List (Nat × 
     ≤ 2 * (queries[i]'hi).2.2 := by
   sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

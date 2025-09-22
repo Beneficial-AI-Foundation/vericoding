@@ -41,25 +41,4 @@ theorem max_money_stolen_fails_k_negative
   (h2 : k < 0) :
   ¬∃ x, max_money_stolen n money (Int.toNat k) = x :=
   sorry
-
-/-
-info: 12
--/
--- #guard_msgs in
--- #eval max_money_stolen 7 [1, 2, 3, 4, 5, 6, 1] 3
-
-/-
-info: 5
--/
--- #guard_msgs in
--- #eval max_money_stolen 1 [5] 1
-
-/-
-info: 6
--/
--- #guard_msgs in
--- #eval max_money_stolen 3 [1, 2, 3] 3
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

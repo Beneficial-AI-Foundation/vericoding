@@ -27,25 +27,4 @@ theorem check_exam_imperfect_score {arr1 arr2 : List Char}
   (h : arr1.length = arr2.length) (h2 : arr1 ≠ arr2) :
   check_exam arr1 arr2 < 4 * arr1.length :=
   sorry
-
-/-
-info: 6
--/
--- #guard_msgs in
--- #eval check_exam ["a", "a", "b", "b"] ["a", "c", "b", "d"]
-
-/-
-info: 7
--/
--- #guard_msgs in
--- #eval check_exam ["a", "a", "c", "b"] ["a", "a", "b", ""]
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval check_exam ["b", "c", "b", "a"] ["", "a", "a", "c"]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

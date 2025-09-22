@@ -32,25 +32,4 @@ theorem merge_with_empty_left (arr : List Int) :
 
 theorem merge_with_empty_right (arr : List Int) :
   merge_arrays [] arr = merge_arrays arr arr := sorry
-
-/-
-info: [1, 2, 3, 4, 5, 6, 7, 8]
--/
--- #guard_msgs in
--- #eval merge_arrays [1, 2, 3, 4] [5, 6, 7, 8]
-
-/-
-info: [-201, -73, -4, 73, 105]
--/
--- #guard_msgs in
--- #eval merge_arrays [105, 73, -4, -73, -201] [-201, -73, -4, 73, 105]
-
-/-
-info: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
--/
--- #guard_msgs in
--- #eval merge_arrays [10, 8, 6, 4, 2] [9, 7, 5, 3, 1]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

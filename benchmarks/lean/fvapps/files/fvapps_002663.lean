@@ -23,25 +23,4 @@ theorem beasts_impossible_ratios {n : Int} (h : n > 0) :
   beasts n 0 = none ∧ 
   beasts (6*n) n = none ∧
   beasts n n = none := sorry
-
-/-
-info: [24, 15]
--/
--- #guard_msgs in
--- #eval beasts 123 39
-
-/-
-info: 'No solutions'
--/
--- #guard_msgs in
--- #eval beasts -1 -1
-
-/-
-info: [0, 0]
--/
--- #guard_msgs in
--- #eval beasts 0 0
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

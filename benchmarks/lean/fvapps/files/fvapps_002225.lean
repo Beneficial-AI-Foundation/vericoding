@@ -34,19 +34,4 @@ theorem sum_bounds (n : Nat) (weights : WeightList) :
   let results := process_weight_queries n weights queries
   results = ["No"] :=
   sorry
-
-/-
-info: expected1
--/
--- #guard_msgs in
--- #eval process_weight_queries 5 [1, 2, 3, 5, 6] [[3, 2, 3, 3], [3, 2, 3, 4], [3, 2, 3, 5], [2, 2, 5], [3, 2, 4, 8], [1, 2, 1], [3, 2, 4, 8], [2, 1, 4], [3, 2, 4, 3], [3, 1, 5, 7]]
-
-/-
-info: expected2
--/
--- #guard_msgs in
--- #eval process_weight_queries 3 [2013, 2015, 2017] [[3, 1, 3, 4030], [1, 1, 111], [3, 1, 3, 4030], [3, 1, 2, 111]]
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: unguarded

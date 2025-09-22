@@ -32,25 +32,4 @@ theorem can_take_bath_equal_rates :
     t1 ≤ t3 → t3 ≤ t2 →
     can_take_bath v t1 v t2 v t3 = true :=
 sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval can_take_bath 5 10 5 20 8 15
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval can_take_bath 5 10 5 20 1 30
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval can_take_bath 5 10 5 20 5 20
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

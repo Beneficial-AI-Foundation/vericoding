@@ -1,12 +1,13 @@
 -- <vc-preamble>
-def String.hasSubstring (s1 s2 : String) : Bool :=
-  sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
+def String.hasSubstring (s1 s2 : String) : Bool :=
+  sorry
+
 def areYouPlayingBanjo (name : String) : String :=
   sorry
 -- </vc-definitions>
@@ -28,25 +29,4 @@ theorem not_r_does_not_play_banjo (name : String) (h1 : name.length > 0)
     (h2 : name.front ≠ 'r' ∧ name.front ≠ 'R') :
   (areYouPlayingBanjo name).hasSubstring " does not play banjo" = true :=
 sorry
-
-/-
-info: expected
--/
--- #guard_msgs in
--- #eval areYouPlayingBanjo "Adam"
-
-/-
-info: expected
--/
--- #guard_msgs in
--- #eval areYouPlayingBanjo "Ringo"
-
-/-
-info: expected
--/
--- #guard_msgs in
--- #eval areYouPlayingBanjo "rolf"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

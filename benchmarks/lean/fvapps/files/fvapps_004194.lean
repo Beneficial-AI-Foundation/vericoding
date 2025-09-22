@@ -29,25 +29,4 @@ sorry
 theorem mango_single_quantity : ∀ (price : Nat),
   mango 1 price = price :=
 sorry
-
-/-
-info: 6
--/
--- #guard_msgs in
--- #eval mango 3 3
-
-/-
-info: 30
--/
--- #guard_msgs in
--- #eval mango 9 5
-
-/-
-info: 8
--/
--- #guard_msgs in
--- #eval mango 6 2
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

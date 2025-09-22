@@ -32,25 +32,4 @@ theorem count_subsequences_repeated_chars (s : String) (n : Nat) :
   let repeated := String.join (List.replicate n s)
   count_subsequences s repeated ≥ 1 :=
   sorry
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval count_subsequences "happy birthday" "appyh appy birth day"
-
-/-
-info: 2048
--/
--- #guard_msgs in
--- #eval count_subsequences "happy birthday" "hhaappyy bbiirrtthhddaayy"
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval count_subsequences "happy birthday" "happy holidays"
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

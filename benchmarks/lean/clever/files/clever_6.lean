@@ -130,5 +130,3 @@ theorem correctness
 := by
   sorry
 -- </vc-theorems>
-
--- #test implementation "(()()) ((())) () ((())()())" = [2, 3, 1, 3]

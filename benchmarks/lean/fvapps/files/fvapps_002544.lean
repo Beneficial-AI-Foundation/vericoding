@@ -26,25 +26,4 @@ theorem tv_remote_spaces (spaces : String) :
   (∀ c ∈ spaces.data, c = ' ') → 
   spaces.length > 0 → 
   tv_remote spaces ≥ spaces.length := sorry
-
-/-
-info: 49
--/
--- #guard_msgs in
--- #eval tv_remote "Code Wars"
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval tv_remote ""
-
-/-
-info: 5
--/
--- #guard_msgs in
--- #eval tv_remote "   "
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

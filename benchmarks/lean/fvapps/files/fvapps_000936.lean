@@ -28,25 +28,4 @@ theorem zero_students_case (n : Nat) :
 theorem perfect_division (n k : Nat) (h : k > 0) :
   let (candies_per_student, remaining) := solve_candy_distribution (n * k) k
   candies_per_student = n ∧ remaining = 0 := sorry
-
-/-
-info: (5, 0)
--/
--- #guard_msgs in
--- #eval solve_candy_distribution 10 2
-
-/-
-info: (33, 1)
--/
--- #guard_msgs in
--- #eval solve_candy_distribution 100 3
-
-/-
-info: (0, 7)
--/
--- #guard_msgs in
--- #eval solve_candy_distribution 7 0
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

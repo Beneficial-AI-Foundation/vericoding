@@ -24,25 +24,4 @@ theorem position_result_format (c : Char)
   (position c).startsWith "Position of alphabet: " ∧
   (let num := (position c).dropWhile (· ≠ ':')
    num.all Char.isDigit) := sorry
-
-/-
-info: 'Position of alphabet: 1'
--/
--- #guard_msgs in
--- #eval position "a"
-
-/-
-info: 'Position of alphabet: 26'
--/
--- #guard_msgs in
--- #eval position "z"
-
-/-
-info: 'Position of alphabet: 5'
--/
--- #guard_msgs in
--- #eval position "E"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

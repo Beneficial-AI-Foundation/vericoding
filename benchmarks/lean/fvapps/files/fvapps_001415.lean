@@ -36,6 +36,3 @@ theorem empty_range_properties
   find_divisible_numbers start (start - 1) divisor = (0, 0) :=
   sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

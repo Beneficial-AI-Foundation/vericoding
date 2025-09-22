@@ -23,25 +23,4 @@ theorem non_leap_year (year : Int) (h : year > 0) (h4 : year % 4 ≠ 0) :
 
 theorem nonpositive_years (year : Int) (h : year ≤ 0) :
   isLeap year = true ∨ isLeap year = false := sorry
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval is_leap 1990
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval is_leap 2000
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval is_leap 1900
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

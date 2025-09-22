@@ -37,25 +37,4 @@ theorem decode_output_type {s : String} (h : s ≠ "") :
   let (encoded, idx) := encode s
   let decoded := decode encoded idx
   decoded.length = s.length := sorry
-
-/-
-info: s1
--/
--- #guard_msgs in
--- #eval decode *encoded1
-
-/-
-info: s2
--/
--- #guard_msgs in
--- #eval decode *encoded2
-
-/-
-info: s3
--/
--- #guard_msgs in
--- #eval decode *encoded3
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

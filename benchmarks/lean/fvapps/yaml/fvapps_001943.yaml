@@ -55,12 +55,13 @@ vc-description: |-
   -/
 
 vc-preamble: |-
-  def is_palindrome (s : String) : Bool :=
-    sorry
 
 vc-helpers: |-
 
 vc-definitions: |-
+  def is_palindrome (s : String) : Bool :=
+    sorry
+  
   def solve_palindrome_cuts (s : String) : Option Nat :=
     sorry
 
@@ -92,7 +93,7 @@ vc-theorems: |-
   sorry
   
   theorem repeated_char_impossible
-    (c : Char) 
+    (c : Char)
     (n : Nat)
     (h : n > 0) :
     solve_palindrome_cuts (String.mk (List.replicate n c)) = none :=
@@ -103,26 +104,26 @@ vc-theorems: |-
     (h : s.length ≤ 2) :
     solve_palindrome_cuts s = none :=
   sorry
-  
-  /-
-  info: 2
-  -/
-  -- #guard_msgs in
-  -- #eval solve_palindrome_cuts "nolon"
-  
-  /-
-  info: 1
-  -/
-  -- #guard_msgs in
-  -- #eval solve_palindrome_cuts "otto"
-  
-  /-
-  info: 'Impossible'
-  -/
-  -- #guard_msgs in
-  -- #eval solve_palindrome_cuts "qqqq"
 
 vc-postamble: |-
   -- Apps difficulty: competition
   -- Assurance level: unguarded
+  
+  /--
+  info: 2
+  -/
+  #guard_msgs in
+  #eval solve_palindrome_cuts "nolon"
+  
+  /--
+  info: 1
+  -/
+  #guard_msgs in
+  #eval solve_palindrome_cuts "otto"
+  
+  /--
+  info: 'Impossible'
+  -/
+  #guard_msgs in
+  #eval solve_palindrome_cuts "qqqq"
 

@@ -21,25 +21,4 @@ sorry
 theorem count_triplets_append_zero (arr: List Nat) :
   count_triplets (arr ++ [0]) ≥ count_triplets arr :=
 sorry
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval count_triplets [2, 3, 1, 6, 7]
-
-/-
-info: 10
--/
--- #guard_msgs in
--- #eval count_triplets [1, 1, 1, 1, 1]
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval count_triplets [1, 3, 5, 7, 9]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

@@ -18,6 +18,3 @@ theorem distribution_result_type_ranges
   result.1 ≥ 0 ∧ result.2 ≥ 0 :=
 sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

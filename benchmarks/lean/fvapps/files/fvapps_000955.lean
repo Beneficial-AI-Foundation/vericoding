@@ -29,25 +29,4 @@ theorem count_even_odd_pairs_only_odd :
 
 theorem count_even_odd_pairs_alternating :
   count_even_odd_pairs [2,1,4,3,6,5] = 6 := sorry
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval count_even_odd_pairs [1, 2, 1, 3]
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval count_even_odd_pairs [5, 4, 1, 2, 3]
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval count_even_odd_pairs [2, 4, 6, 1]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

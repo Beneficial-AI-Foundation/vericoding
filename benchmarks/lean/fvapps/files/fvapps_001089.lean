@@ -23,25 +23,4 @@ theorem max_regions_known_values :
   max_regions_after_v_roads 2 = 7 ∧
   max_regions_after_v_roads 3 = 16 :=
 sorry
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval max_regions_after_v_roads 1
-
-/-
-info: 7
--/
--- #guard_msgs in
--- #eval max_regions_after_v_roads 2
-
-/-
-info: 16
--/
--- #guard_msgs in
--- #eval max_regions_after_v_roads 3
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

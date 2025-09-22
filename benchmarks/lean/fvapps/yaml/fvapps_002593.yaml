@@ -15,29 +15,34 @@ vc-description: |-
   
   Note: 9 digits so 3 squared (3x3 perfect square). 3 digits on each line.
   -/
+  
+  -- represents number with k*k ones
 
 vc-preamble: |-
-  def squareIt (n : Nat) : String := sorry
-  
-  def isPerfectSquare (n : Nat) : Bool := sorry
-  
-  def hasEqualRows (s : String) : Bool := sorry
-  
-  def isqrt (n : Nat) : Nat := sorry
+  def splitLines (s : String) : List String :=
+    String.splitOn s "\n"
 
 vc-helpers: |-
 
 vc-definitions: |-
-  def splitLines (s : String) : List String := 
-    String.splitOn s "\n"
+  def isqrt (n : Nat) : Nat := sorry
+  
+  def squareIt (n : Nat) : String :=
+  sorry
+  
+  def isPerfectSquare (n : Nat) : Bool :=
+  sorry
+  
+  def hasEqualRows (s : String) : Bool :=
+  sorry
 
 vc-theorems: |-
-  theorem square_it_properties (n : Nat) : 
+  theorem square_it_properties (n : Nat) :
     n ≤ 10^12 →
     let digits := toString n
     if isPerfectSquare (digits.length) then
       let result := squareIt n
-      result ≠ "Not a perfect square!" ∧ 
+      result ≠ "Not a perfect square!" ∧
       hasEqualRows result ∧
       let sideLength := isqrt (digits.length)
       (splitLines result).length = sideLength ∧
@@ -45,39 +50,41 @@ vc-theorems: |-
       String.join (splitLines result) = digits
     else
       squareIt n = "Not a perfect square!"
-    := sorry
+    :=
+  sorry
   
   theorem square_it_repeating_ones (n : Nat) (k : Nat) :
     k ≥ 1 →
     k ≤ 4 →
-    n = (10^(k*k) - 1)/9 →  -- represents number with k*k ones
+    n = (10^(k*k) - 1)/9 →
     let result := squareIt n
     result ≠ "Not a perfect square!" ∧
     let rows := splitLines result
     ∀ row ∈ rows, match rows.head? with
-                  | none => True 
+                  | none => True
                   | some first => row = first
-    := sorry
-  
-  /-
-  info: '12\n12'
-  -/
-  -- #guard_msgs in
-  -- #eval square_it 1212
-  
-  /-
-  info: '123\n123\n123'
-  -/
-  -- #guard_msgs in
-  -- #eval square_it 123123123
-  
-  /-
-  info: 'Not a perfect square!'
-  -/
-  -- #guard_msgs in
-  -- #eval square_it 12345
+    :=
+  sorry
 
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+  
+  /--
+  info: '12\n12'
+  -/
+  #guard_msgs in
+  #eval square_it 1212
+  
+  /--
+  info: '123\n123\n123'
+  -/
+  #guard_msgs in
+  #eval square_it 123123123
+  
+  /--
+  info: 'Not a perfect square!'
+  -/
+  #guard_msgs in
+  #eval square_it 12345
 

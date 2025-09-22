@@ -1,15 +1,16 @@
 -- <vc-preamble>
-def findLongest (s : String) : Nat :=
-  sorry
-
-def isValidParens (s : String) : Bool :=
-  sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
+def findLongest (s : String) : Nat :=
+  sorry
+
+def isValidParens (s : String) : Bool :=
+  sorry
+
 def substringFromTo (s : String) (i j : Nat) : String :=
   sorry
 -- </vc-definitions>
@@ -17,7 +18,7 @@ def substringFromTo (s : String) (i j : Nat) : String :=
 -- <vc-theorems>
 theorem findLongest_valid (s : String) :
   let result := findLongest s
-  result ≤ s.length ∧ 
+  result ≤ s.length ∧
   result % 2 = 0 :=
 sorry
 
@@ -33,7 +34,7 @@ theorem findLongest_exists (s : String) :
   result > 0 →
   ∃ i j, i < s.length ∧ j ≤ s.length ∧ j > i ∧
     let substr := substringFromTo s i j
-    substr.length = result ∧ 
+    substr.length = result ∧
     isValidParens substr :=
 sorry
 
@@ -48,25 +49,4 @@ theorem findLongest_unmatched_surround (n : Nat) :
   let s := ")" ++ balanced ++ "("
   findLongest s = 2 * n :=
 sorry
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval find_longest ")()"
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval find_longest "((()"
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval find_longest "())(()))"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

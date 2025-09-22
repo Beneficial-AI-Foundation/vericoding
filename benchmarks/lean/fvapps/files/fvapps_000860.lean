@@ -21,25 +21,4 @@ theorem solve_matches_count (n : Nat) :
 
 theorem power_two_zeros (i : Nat) (h : i > 0) :
   countZerosInBinary (2^i) = i := sorry
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval solve_test_case 2
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval solve_test_case 4
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval solve_test_case 8
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

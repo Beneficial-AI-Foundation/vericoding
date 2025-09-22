@@ -1,43 +1,28 @@
 -- <vc-preamble>
-def is_in_middle (s : String) : Bool := sorry
-
-theorem empty_or_short_string (s : String) :
-  s.length ≤ 3 → is_in_middle s = false := sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
-def containsSubstring (s₁ s₂ : String) : Bool := sorry
+def is_in_middle (s : String) : Bool :=
+sorry
 
-theorem without_abc (s : String) :
-  containsSubstring s "abc" = false → is_in_middle s = false := sorry
+def containsSubstring (s₁ s₂ : String) : Bool :=
+sorry
 -- </vc-definitions>
 
 -- <vc-theorems>
-theorem equal_padding (n : Nat) : 
+theorem empty_or_short_string (s : String) :
+  s.length ≤ 3 → is_in_middle s = false :=
+sorry
+
+theorem without_abc (s : String) :
+  containsSubstring s "abc" = false → is_in_middle s = false :=
+sorry
+
+theorem equal_padding (n : Nat) :
   let s := String.mk (List.replicate n 'A') ++ "abc" ++ String.mk (List.replicate n 'A')
-  is_in_middle s = true := sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval is_in_middle "AAabcBB"
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval is_in_middle "AabcBBB"
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval is_in_middle ""
+  is_in_middle s = true :=
+sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

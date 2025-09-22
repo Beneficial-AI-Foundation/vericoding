@@ -44,25 +44,4 @@ theorem nextLetter_wraps_z (s : String) (pos : String.Pos) (h : pos.1 < s.length
 theorem nextLetter_wraps_Z (s : String) (pos : String.Pos) (h : pos.1 < s.length) :
   s.get! pos = 'Z' →
   (nextLetter s).get! pos = 'A' := sorry
-
-/-
-info: 'Ifmmp'
--/
--- #guard_msgs in
--- #eval next_letter "Hello"
-
-/-
-info: 'Xibu jt zpvs obnf?'
--/
--- #guard_msgs in
--- #eval next_letter "What is your name?"
-
-/-
-info: 'aPp'
--/
--- #guard_msgs in
--- #eval next_letter "zOo"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

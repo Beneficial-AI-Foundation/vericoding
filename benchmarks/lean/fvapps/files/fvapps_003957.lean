@@ -1,14 +1,16 @@
 -- <vc-preamble>
-def ant (grid : List (List Int)) (col : Int) (row : Int) (steps : Int)
-  (direction : Int := 0) : List (List Int) := sorry
+def BLACK : Int := 1
+
+def WHITE : Int := 0
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
-def BLACK : Int := 1
-def WHITE : Int := 0
+def ant (grid : List (List Int)) (col : Int) (row : Int) (steps : Int)
+  (direction : Int := 0) : List (List Int) :=
+sorry
 -- </vc-definitions>
 
 -- <vc-theorems>
@@ -38,10 +40,7 @@ theorem ant_preserves_input {grid : List (List Int)} {col row steps dir : Int}
 sorry
 
 theorem ant_zero_steps {grid : List (List Int)} {col row : Int}
-  (h1: 0 ≤ col) (h2: 0 ≤ row) : 
+  (h1: 0 ≤ col) (h2: 0 ≤ row) :
   ant grid col row 0 = grid :=
 sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

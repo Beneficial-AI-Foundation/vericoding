@@ -32,6 +32,3 @@ theorem winner_game_empty_graph :
   winner_game 1 [] = [['B']] :=
 sorry
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: guarded

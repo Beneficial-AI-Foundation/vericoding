@@ -25,25 +25,4 @@ theorem match_zero_usefulness (usefulness : List Nat) (months : Nat) :
 
 theorem match_max_usefulness (usefulness : List Nat) :
   matchFn (List.replicate usefulness.length 100) 0 = "Match!" := sorry
-
-/-
-info: 'Match!'
--/
--- #guard_msgs in
--- #eval match [26, 23, 19] 3
-
-/-
-info: 'No match!'
--/
--- #guard_msgs in
--- #eval match [15, 24, 12] 4
-
-/-
-info: 'Match!'
--/
--- #guard_msgs in
--- #eval match [8, 11, 4] 10
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

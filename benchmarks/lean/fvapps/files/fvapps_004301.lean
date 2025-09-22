@@ -25,25 +25,4 @@ theorem single_char_invariant (s : String) :
 
 theorem first_char_movement (s : String) (h : s.length > 1) :
   (reverse_fun s).get 0 ≠ s.get 0 := sorry
-
-/-
-info: '201'
--/
--- #guard_msgs in
--- #eval reverse_fun "012"
-
-/-
-info: '504132'
--/
--- #guard_msgs in
--- #eval reverse_fun "012345"
-
-/-
-info: 'oHlel'
--/
--- #guard_msgs in
--- #eval reverse_fun "Hello"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

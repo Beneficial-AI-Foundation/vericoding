@@ -18,25 +18,4 @@ theorem repeated_chars_not_isogram (s : String) :
 theorem all_unique_chars_is_isogram (s : String) :
   let unique_chars := String.mk (List.eraseDups s.data)
   is_isogram unique_chars := sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval is_isogram "Dermatoglyphics"
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval is_isogram "moOse"
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval is_isogram ""
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

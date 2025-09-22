@@ -24,25 +24,4 @@ theorem non_zero_divisible_by_self
   {n : Int} (h : n ≠ 0) :
   is_divisible n n 1 ∧ is_divisible n 1 n :=
   sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval is_divisible 12 3 4
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval is_divisible 100 5 3
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval is_divisible 17 1 17
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

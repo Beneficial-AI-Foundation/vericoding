@@ -38,25 +38,4 @@ theorem max_difference (n : Nat) (h : 2 ≤ n ∧ n ≤ 9) :
   let digit_at := fun x i => ((toString x).data.get! i).toNat
   ∀ x ∈ result, ∀ i < n-1,
     absDiff (digit_at x i) (digit_at x (i+1)) = 9 := sorry
-
-/-
-info: [181, 292, 707, 818, 929]
--/
--- #guard_msgs in
--- #eval nums_same_consec_diff 3 7
-
-/-
-info: [10, 12, 21, 23, 32, 34, 43, 45, 54, 56, 65, 67, 76, 78, 87, 89, 98]
--/
--- #guard_msgs in
--- #eval nums_same_consec_diff 2 1
-
-/-
-info: [11, 22, 33, 44, 55, 66, 77, 88, 99]
--/
--- #guard_msgs in
--- #eval nums_same_consec_diff 2 0
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

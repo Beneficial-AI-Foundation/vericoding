@@ -25,25 +25,4 @@ theorem result_is_nonnegative {s1 s2 : String} (h1 : s1.length > 0) (h2 : s2.len
 theorem empty_second_string {s : String} (h : s.length > 0) :
   solve s "" = s.length :=
   sorry
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval solve "xyz" "yxz"
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval solve "abcxyz" "ayxz"
-
-/-
-info: 5
--/
--- #guard_msgs in
--- #eval solve "aabcdefg" "fbd"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

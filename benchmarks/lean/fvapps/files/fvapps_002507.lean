@@ -39,25 +39,4 @@ theorem repeated_substring
   (h₃ : n ≤ 10) :
   count_substring (String.append s (String.append s s)) s ≥ 2 :=
 sorry
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval count_substring "ABCDCDC" "CDC"
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval count_substring "Hello hello HELLO" "hello"
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval count_substring "WoWoWo" "Wo"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

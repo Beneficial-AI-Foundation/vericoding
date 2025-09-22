@@ -21,5 +21,3 @@ theorem removeKthElement_spec_satisfied (list : Array Int) (k : Nat) (h_precond 
     removeKthElement_postcond list k (removeKthElement list k h_precond) h_precond := by
   sorry
 -- </vc-theorems>
-
-def main : IO Unit := pure ()

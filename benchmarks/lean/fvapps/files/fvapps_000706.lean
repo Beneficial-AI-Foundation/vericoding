@@ -33,25 +33,4 @@ theorem find_min_operations_zero_changes
   (h5 : ∀ (i j : Fin arr.length), i ≠ j → arr.get i ≠ arr.get j) :
   find_min_operations n 2 2 arr = 0 :=
 sorry
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval find_min_operations 5 3 2 [1, 3, 1, 2, 1]
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval find_min_operations 5 3 3 [7, 7, 7, 7, 7]
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval find_min_operations 5 3 3 [7, 7, 7, 8, 8]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

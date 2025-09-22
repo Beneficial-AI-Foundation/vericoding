@@ -21,25 +21,4 @@ theorem zero_pieces_cost_nothing (n m k : Nat)
   (hk_zero : k = 0) :
   find_min_chocolate_break_cost n m k = 0 :=
 sorry
-
-/-
-info: 5
--/
--- #guard_msgs in
--- #eval find_min_chocolate_break_cost 2 2 1
-
-/-
-info: 5
--/
--- #guard_msgs in
--- #eval find_min_chocolate_break_cost 2 2 3
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval find_min_chocolate_break_cost 2 2 4
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

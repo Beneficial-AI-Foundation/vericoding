@@ -39,6 +39,3 @@ theorem determine_winner_even (n : Nat) (numbers : List Nat)
     (h5 : ¬numbers.isEmpty) (h6 : numbers.length ≤ 100) :
     determine_winner n numbers = "Alice" ∨ determine_winner n numbers = "Bob" := sorry
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: guarded

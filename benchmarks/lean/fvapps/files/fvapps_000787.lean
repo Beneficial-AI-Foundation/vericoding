@@ -44,19 +44,4 @@ theorem identical_queries {n : Nat} {arr : List Int}
   let result := solve_max_subarray_query n arr queries
   ∀ x y, x ∈ result → y ∈ result → x = y :=
 sorry
-
-/-
-info: [4, 3]
--/
--- #guard_msgs in
--- #eval solve_max_subarray_query 4 [3, 1, 2, 4] [1, 5]
-
-/-
-info: [3, 3, 3]
--/
--- #guard_msgs in
--- #eval solve_max_subarray_query 3 [1, 2, 3] [1, 2, 3]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

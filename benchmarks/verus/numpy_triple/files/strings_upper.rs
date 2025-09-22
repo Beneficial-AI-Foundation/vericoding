@@ -15,8 +15,8 @@ fn upper(a: Vec<String>) -> (result: Vec<String>)
     ensures
         result.len() == a.len(),
         forall|i: int| 0 <= i < a.len() as int ==>
-            result[i]@ == string_to_upper(a[i]@) &&
-            result[i]@.len() == a[i]@.len()
+            result@[i]@ == string_to_upper(a@[i]@) &&
+            result@[i]@.len() == a@[i]@.len()
 // </vc-spec>
 // <vc-code>
 {

@@ -37,25 +37,4 @@ theorem single_element_zero_increase :
 
 theorem single_element_zero_decrease :
   can_transform_array 1 [0] [-1] = false := sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval can_transform_array 3 [1, -1, 0] [1, 1, -2]
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval can_transform_array 3 [0, 1, 1] [0, 2, 2]
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval can_transform_array 5 [0, 1, -1, 1, -1] [1, 1, -1, 1, -1]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

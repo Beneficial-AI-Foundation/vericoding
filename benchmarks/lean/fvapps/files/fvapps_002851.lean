@@ -29,25 +29,4 @@ theorem hex_word_sum_empty :
 theorem hex_word_sum_invalid_chars (s : String) :
   (∀ c ∈ s.toList, c ∉ ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F', 'O', 'S']) →
   hexWordSum s = 0 := by sorry
-
-/-
-info: 14613198
--/
--- #guard_msgs in
--- #eval hex_word_sum "DEFACE"
-
-/-
-info: 23294
--/
--- #guard_msgs in
--- #eval hex_word_sum "SAFE"
-
-/-
-info: 49374
--/
--- #guard_msgs in
--- #eval hex_word_sum "CODE"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

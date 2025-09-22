@@ -28,19 +28,4 @@ theorem triangle_inequality {point : List Float} (h : point.length > 0) :
   let midpoint := point.map (fun x => x / 2)
   distance origin point ≤ distance origin midpoint + distance midpoint point :=
 sorry
-
-/-
-info: -1
--/
--- #guard_msgs in
--- #eval distance [] []
-
-/-
-info: -1
--/
--- #guard_msgs in
--- #eval distance [1] [1, 1, 1, 1, 1]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

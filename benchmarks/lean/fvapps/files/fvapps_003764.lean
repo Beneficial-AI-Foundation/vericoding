@@ -26,25 +26,4 @@ sorry
 theorem solution_concatenation (s1 s2 : String) :
   s2 ≠ "" → solution (s1 ++ s2) s2 ≥ solution s1 s2 :=
 sorry
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval solution "abcdeb" "b"
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval solution "ccddeeccddeecc" "cc"
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval solution "abab" "a"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

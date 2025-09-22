@@ -18,12 +18,13 @@ vc-description: |-
   -/
 
 vc-preamble: |-
-  def countOnes (n : Nat) : Nat :=
-    sorry
 
 vc-helpers: |-
 
 vc-definitions: |-
+  def countOnes (n : Nat) : Nat :=
+    sorry
+  
   def shared_bits (a b : Nat) : Bool :=
     sorry
 
@@ -48,26 +49,26 @@ vc-theorems: |-
     {p1 p2 : Nat} (h1 : ∃ k1, p1 = 2^k1) (h2 : ∃ k2, p2 = 2^k2) :
     shared_bits p1 p2 = false := by
     sorry
-  
-  /-
-  info: False
-  -/
-  -- #guard_msgs in
-  -- #eval shared_bits 1 2
-  
-  /-
-  info: False
-  -/
-  -- #guard_msgs in
-  -- #eval shared_bits 7 10
-  
-  /-
-  info: True
-  -/
-  -- #guard_msgs in
-  -- #eval shared_bits 7 15
 
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+  
+  /--
+  info: False
+  -/
+  #guard_msgs in
+  #eval shared_bits 1 2
+  
+  /--
+  info: False
+  -/
+  #guard_msgs in
+  #eval shared_bits 7 10
+  
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval shared_bits 7 15
 

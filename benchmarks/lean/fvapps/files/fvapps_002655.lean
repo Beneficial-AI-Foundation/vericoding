@@ -34,25 +34,4 @@ sorry
 theorem dup_output_length (strings : List String) (h : strings ≠ []) (h2 : ∀ s ∈ strings, s.length > 0) :
   ∀ s ∈ dup strings, s.length ≤ List.foldl (fun acc x => max acc x.length) 0 strings :=
 sorry
-
-/-
-info: expected1
--/
--- #guard_msgs in
--- #eval dup ["abracadabra", "allottee", "assessee"]
-
-/-
-info: expected2
--/
--- #guard_msgs in
--- #eval dup ["kelless", "keenness"]
-
-/-
-info: expected3
--/
--- #guard_msgs in
--- #eval dup ["ccooddddddewwwaaaaarrrrsssss"]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

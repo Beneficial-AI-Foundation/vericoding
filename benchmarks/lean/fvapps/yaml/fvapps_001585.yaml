@@ -26,15 +26,16 @@ vc-description: |-
   -/
 
 vc-preamble: |-
+
+vc-helpers: |-
+
+vc-definitions: |-
   def almost_everywhere_zero (n : Nat) (k : Nat) : Nat :=
     sorry
   
   def comb (n : Nat) (k : Nat) : Nat :=
     sorry
-
-vc-helpers: |-
-
-vc-definitions: |-
+  
   def num_digits (n : Nat) : Nat :=
     sorry
 
@@ -62,26 +63,26 @@ vc-theorems: |-
   theorem aez_single_nonzero (n : Nat) (h : n > 0) :
     almost_everywhere_zero n 1 ≥ num_digits n :=
   sorry
-  
-  /-
-  info: 19
-  -/
-  -- #guard_msgs in
-  -- #eval almost_everywhere_zero 100 1
-  
-  /-
-  info: 1
-  -/
-  -- #guard_msgs in
-  -- #eval almost_everywhere_zero 11 2
-  
-  /-
-  info: 9
-  -/
-  -- #guard_msgs in
-  -- #eval almost_everywhere_zero 20 2
 
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
+  
+  /--
+  info: 19
+  -/
+  #guard_msgs in
+  #eval almost_everywhere_zero 100 1
+  
+  /--
+  info: 1
+  -/
+  #guard_msgs in
+  #eval almost_everywhere_zero 11 2
+  
+  /--
+  info: 9
+  -/
+  #guard_msgs in
+  #eval almost_everywhere_zero 20 2
 

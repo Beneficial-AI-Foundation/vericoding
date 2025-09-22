@@ -20,25 +20,4 @@ theorem divide_by_self (n a : Int) (h : a ≠ 0) :
 
 theorem divide_by_zero_error (n : Int) :
   is_divide_by n 0 1 = false ∧ is_divide_by n 1 0 = false := sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval is_divide_by -12 2 -6
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval is_divide_by 45 1 6
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval is_divide_by 15 -5 3
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

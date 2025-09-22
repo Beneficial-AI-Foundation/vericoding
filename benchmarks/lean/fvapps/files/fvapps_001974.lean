@@ -25,6 +25,3 @@ theorem impossible_cases (n a : Nat)
   (h : n < a) :
   solve_group_division n a a 1 1 = 0 := sorry
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: guarded

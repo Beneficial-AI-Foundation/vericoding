@@ -29,25 +29,4 @@ theorem test_decrypt_basic_properties (n : Nat)
   (∀ c ∈ result.data, '0' ≤ c ∧ c ≤ '9') ∧ 
   result.data.length > 0 ∧
   (result.data.length > 0 → result.data[0]! ≠ '0') := sorry
-
-/-
-info: '123'
--/
--- #guard_msgs in
--- #eval decrypt "353"
-
-/-
-info: '738496'
--/
--- #guard_msgs in
--- #eval decrypt "123456"
-
-/-
-info: 'impossible'
--/
--- #guard_msgs in
--- #eval decrypt "4334"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

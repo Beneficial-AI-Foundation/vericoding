@@ -27,25 +27,4 @@ theorem rocks_single_digit
   (h1 : n > 0)
   (h2 : n ≤ 9) :
   rocks n = n := sorry
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval rocks 1
-
-/-
-info: 17
--/
--- #guard_msgs in
--- #eval rocks 13
-
-/-
-info: 192
--/
--- #guard_msgs in
--- #eval rocks 100
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

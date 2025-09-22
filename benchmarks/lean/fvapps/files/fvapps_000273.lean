@@ -28,25 +28,4 @@ theorem palindrome_partition_single
 theorem palindrome_partition_individual_chars
   (s : String) (h: s.length > 0) :
   palindrome_partition s s.length = 0 := sorry
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval palindrome_partition "abc" 2
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval palindrome_partition "aabbc" 3
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval palindrome_partition "leetcode" 8
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

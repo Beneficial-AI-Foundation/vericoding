@@ -17,25 +17,4 @@ theorem two_elements (arr : List Nat) (h : arr.length = 2) :
 
 theorem monotonicity (arr : List Nat) (n : Nat) (h : n = arr.length) (h2 : n > 1) :
   maximize_weighted_sum n arr ≥ maximize_weighted_sum (n-1) (arr.take (n-1)) := sorry
-
-/-
-info: 30
--/
--- #guard_msgs in
--- #eval maximize_weighted_sum 4 [2, 1, 4, 3]
-
-/-
-info: 39
--/
--- #guard_msgs in
--- #eval maximize_weighted_sum 4 [7, 6, 3, 2]
-
-/-
-info: 11
--/
--- #guard_msgs in
--- #eval maximize_weighted_sum 3 [3, 2, 1]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

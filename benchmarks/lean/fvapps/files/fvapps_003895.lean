@@ -1,14 +1,14 @@
 -- <vc-preamble>
-def sumEvenNumbers (l : List Int) : Int :=
-  sorry
+def listSum (l : List Int) : Int :=
+  l.foldl (· + ·) 0
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
-def listSum (l : List Int) : Int :=
-  l.foldl (· + ·) 0
+def sumEvenNumbers (l : List Int) : Int :=
+  sorry
 -- </vc-definitions>
 
 -- <vc-theorems>
@@ -28,25 +28,4 @@ theorem sum_even_numbers_idempotent (l : List Int) :
 theorem sum_even_numbers_empty :
   sumEvenNumbers [] = 0 := by
   sorry
-
-/-
-info: 30
--/
--- #guard_msgs in
--- #eval sum_even_numbers [4, 3, 1, 2, 5, 10, 6, 7, 9, 8]
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval sum_even_numbers []
-
-/-
-info: 14
--/
--- #guard_msgs in
--- #eval sum_even_numbers [-16, -32, 20, 21, 41, 42]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

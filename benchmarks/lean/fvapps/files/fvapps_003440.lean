@@ -45,25 +45,4 @@ theorem sort_arrays_identical_lists
   (result := sortArrays arr arr) :
   result.1 = result.2 :=
   sorry
-
-/-
-info: [[4, 5, 3, 2, 1], [9, 8, 7, 5, 6]]
--/
--- #guard_msgs in
--- #eval sort_arrays #[5, 4, 3, 2, 1] #[6, 5, 7, 8, 9]
-
-/-
-info: [[2, 1, 3, 4, 5], [6, 5, 7, 8, 9]]
--/
--- #guard_msgs in
--- #eval sort_arrays #[2, 1, 3, 4, 5] #[5, 6, 7, 8, 9]
-
-/-
-info: [[5, 5, 2, 6, 9, 6], [4, 3, 1, 6, 8, 7]]
--/
--- #guard_msgs in
--- #eval sort_arrays #[5, 6, 9, 2, 6, 5] #[3, 6, 7, 4, 8, 1]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

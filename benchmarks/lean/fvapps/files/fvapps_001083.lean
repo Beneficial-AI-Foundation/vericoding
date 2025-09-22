@@ -31,19 +31,4 @@ theorem virus_spread_corner_symmetry
   let results := corners.map (fun p => calc_virus_spread_days row col p.1 p.2)
   ∀ (x y : Nat), x ∈ results → y ∈ results → x = y :=
   sorry
-
-/-
-info: 5
--/
--- #guard_msgs in
--- #eval calc_virus_spread_days 4 5 2 1
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval calc_virus_spread_days 3 4 1 1
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

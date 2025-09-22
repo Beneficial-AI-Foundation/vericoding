@@ -1,43 +1,43 @@
 vc-description: |-
   /-
   The objective is to return all pairs of integers from a given array of integers that have a difference of 2.
-  
+
   The result array should be sorted in ascending order of values.
-  
+
   Assume there are no duplicate integers in the array. The order of the integers in the input array should not matter.
-  
+
   ## Examples
   ~~~if-not:python
   ```
   [1, 2, 3, 4]  should return [[1, 3], [2, 4]]
-  
+
   [4, 1, 2, 3]  should also return [[1, 3], [2, 4]]
-  
+
   [1, 23, 3, 4, 7] should return [[1, 3]]
-  
+
   [4, 3, 1, 5, 6] should return [[1, 3], [3, 5], [4, 6]]
   ```
   ~~~
   ~~~if:python
   ```
   [1, 2, 3, 4]  should return [(1, 3), (2, 4)]
-  
+
   [4, 1, 2, 3]  should also return [(1, 3), (2, 4)]
-  
+
   [1, 23, 3, 4, 7] should return [(1, 3)]
-  
+
   [4, 3, 1, 5, 6] should return [(1, 3), (3, 5), (4, 6)]
   ```
   ~~~
   -/
 
-vc-preamble: |-
+vc-preamble: |
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def twos_difference (lst : List Int) : List (Int × Int) := sorry
-  
+
   theorem twos_difference_ordered (lst : List Int) :
     let result := twos_difference lst
     ∀ i j, i < j → i < (result.length) → j < (result.length) → 
@@ -47,38 +47,38 @@ vc-theorems: |-
   theorem twos_difference_pairs (lst : List Int) :
     let result := twos_difference lst
     ∀ p ∈ result, p.2 - p.1 = 2 := sorry
-  
+
   theorem twos_difference_valid_elements (lst : List Int) :
     let result := twos_difference lst
     ∀ p ∈ result, p.1 ∈ lst ∧ p.2 ∈ lst := sorry
-  
+
   theorem twos_difference_complete (lst : List Int) :
     let result := twos_difference lst
     ∀ x y, x ∈ lst → y ∈ lst → y - x = 2 →
     ∃ p ∈ result, p.1 = x ∧ p.2 = y := sorry
-  
+
   theorem twos_difference_empty (lst : List Int) :
     lst = [] → twos_difference lst = [] := sorry
-  
-  /-
-  info: [(1, 3), (2, 4)]
-  -/
-  -- #guard_msgs in
-  -- #eval twos_difference [1, 2, 3, 4]
-  
-  /-
-  info: [(1, 3), (3, 5), (4, 6)]
-  -/
-  -- #guard_msgs in
-  -- #eval twos_difference [4, 3, 1, 5, 6]
-  
-  /-
-  info: []
-  -/
-  -- #guard_msgs in
-  -- #eval twos_difference []
 
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
+
+  /--
+  info: [(1, 3), (2, 4)]
+  -/
+  #guard_msgs in
+  #eval twos_difference [1, 2, 3, 4]
+
+  /--
+  info: [(1, 3), (3, 5), (4, 6)]
+  -/
+  #guard_msgs in
+  #eval twos_difference [4, 3, 1, 5, 6]
+
+  /--
+  info: []
+  -/
+  #guard_msgs in
+  #eval twos_difference []
 

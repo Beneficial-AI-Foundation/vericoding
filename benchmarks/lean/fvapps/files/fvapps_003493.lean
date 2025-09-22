@@ -29,25 +29,4 @@ theorem factorial_negative {n : Int} (h : n < 0) :
 theorem factorial_zero :
   factorial 0 = some 1 :=
   sorry
-
-/-
-info: None
--/
--- #guard_msgs in
--- #eval factorial -1
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval factorial 0
-
-/-
-info: 120
--/
--- #guard_msgs in
--- #eval factorial 5
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

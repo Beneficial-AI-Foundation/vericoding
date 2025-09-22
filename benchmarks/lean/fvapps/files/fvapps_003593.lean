@@ -31,25 +31,4 @@ theorem siegfried_c_replacement (text : String)
   let result := siegfried 1 text
   (∀ c ∈ result.data, c.toLower ≠ 'c') ∧
   (∃ c ∈ result.data, c.toLower = 'k') := sorry
-
-/-
-info: 'Sity sivilians'
--/
--- #guard_msgs in
--- #eval siegfried 1 "City civilians"
-
-/-
-info: 'Met me at the sam plas at non'
--/
--- #guard_msgs in
--- #eval siegfried 3 "Meet me at the same place at noon"
-
-/-
-info: 'Schmart und 99 ver husbund und vif'
--/
--- #guard_msgs in
--- #eval siegfried 5 "Smart and 99 were husband and wife"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

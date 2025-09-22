@@ -1,12 +1,13 @@
 -- <vc-preamble>
-def is_valid_tree (n : Nat) (parents : List Nat) : Bool :=
-  sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
+def is_valid_tree (n : Nat) (parents : List Nat) : Bool :=
+  sorry
+
 def solve_tree_values (n : Nat) (parents : List Nat) (sums : List Int) : Int :=
   sorry
 -- </vc-definitions>
@@ -14,19 +15,19 @@ def solve_tree_values (n : Nat) (parents : List Nat) (sums : List Int) : Int :=
 -- <vc-theorems>
 theorem single_node_tree (n : Int) (h : n > 0) :
   solve_tree_values 1 [] [n] = n :=
-  sorry
+sorry
 
 theorem star_tree_valid (n : Nat) (parents : List Nat) (values : List Int)
   (h1 : n ≥ 2)
   (h2 : parents.length = n - 1)
-  (h3 : ∀ p ∈ parents, p = 1)  
+  (h3 : ∀ p ∈ parents, p = 1)
   (h4 : values.length = n)
   (h5 : is_valid_tree n parents = true) :
   let result := solve_tree_values n parents values
   if ∃ v ∈ values, v < 0
-  then result ≥ -1 
+  then result ≥ -1
   else result ≥ values.get! 0 :=
-  sorry
+sorry
 
 theorem path_tree_valid (n : Nat) (parents : List Nat) (values : List Int)
   (h1 : n ≥ 2)
@@ -38,26 +39,5 @@ theorem path_tree_valid (n : Nat) (parents : List Nat) (values : List Int)
   if ∃ v ∈ values, v < 0
   then result ≥ -1
   else result ≥ values.get! 0 :=
-  sorry
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval solve_tree_values 5 [1, 1, 1, 1] [1, -1, -1, -1, -1]
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval solve_tree_values 5 [1, 2, 3, 1] [1, -1, 2, -1, -1]
-
-/-
-info: -1
--/
--- #guard_msgs in
--- #eval solve_tree_values 3 [1, 2] [2, -1, 1]
+sorry
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: unguarded

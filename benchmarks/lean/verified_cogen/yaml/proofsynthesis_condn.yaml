@@ -22,8 +22,4 @@ vc-theorems: |-
     sorry
 
 vc-postamble: |-
-  /- Example usage:
-  def main : IO Unit := do
-    pure ()
-  -/
 

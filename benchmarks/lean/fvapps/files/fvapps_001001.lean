@@ -35,25 +35,4 @@ theorem factorial_case (n : Nat) :
 theorem multiplication_property (n x : Nat) :
   calculate_particles n x = (calculate_particles n 1 * x) % MOD := by
   sorry
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval calculate_particles 1 2
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval calculate_particles 2 1
-
-/-
-info: 6
--/
--- #guard_msgs in
--- #eval calculate_particles 3 1
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

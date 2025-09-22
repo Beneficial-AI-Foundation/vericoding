@@ -23,25 +23,4 @@ theorem string_counter_nonnegative (s : String) (c : Char) :
 
 theorem string_counter_absent_char (s : String) (c : Char) :
   s.data.all (· ≠ c) → string_counter s c = 0 := sorry
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval string_counter "Hello world" "o"
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval string_counter "testing" "t"
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval string_counter "aaa" "b"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

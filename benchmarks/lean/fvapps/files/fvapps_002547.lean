@@ -26,25 +26,4 @@ theorem race_satisfies_distance_equation {v1 v2 g : Nat}
   (h : v2 > v1) (result : Nat × Nat × Nat) :
   race v1 v2 g = some result →
   (result.1 * 3600 + result.2.1 * 60 + result.2.2) * (v2 - v1) = g * 3600 := sorry
-
-/-
-info: [0, 32, 18]
--/
--- #guard_msgs in
--- #eval race 720 850 70
-
-/-
-info: [3, 21, 49]
--/
--- #guard_msgs in
--- #eval race 80 91 37
-
-/-
-info: None
--/
--- #guard_msgs in
--- #eval race 820 81 550
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

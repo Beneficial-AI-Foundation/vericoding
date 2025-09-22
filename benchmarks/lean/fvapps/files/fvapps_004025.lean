@@ -26,25 +26,4 @@ theorem odd_empty_string : odd "" = 0 := sorry
 theorem odd_no_pattern (s : String) :
   s.data.all (fun c => c = 'x') →
   odd s = 0 := sorry
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval odd "oudddbo"
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval odd "ooudddbd"
-
-/-
-info: 6
--/
--- #guard_msgs in
--- #eval odd "qoddoldfoodgodnooofostorodrnvdmddddeidfoi"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

@@ -25,25 +25,4 @@ theorem count_fenwick_deterministic (l1 l2 l3: String) (n: Nat) :
 
 theorem count_fenwick_all_zeros (n: Nat) :
   count_fenwick_accesses "0" "0" "0" n = 0 := sorry
-
-/-
-info: 6
--/
--- #guard_msgs in
--- #eval count_fenwick_accesses "001" "100" "011" 4
-
-/-
-info: 12
--/
--- #guard_msgs in
--- #eval count_fenwick_accesses "1000" "1101" "100" 3
-
-/-
-info: 8
--/
--- #guard_msgs in
--- #eval count_fenwick_accesses "1010" "001" "101" 4
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

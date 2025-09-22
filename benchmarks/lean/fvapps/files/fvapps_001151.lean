@@ -22,6 +22,3 @@ theorem exact_matches_returned {words : List String} (w : String) :
   w ∈ words → w ∈ find_correct_spellings words words :=
   sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

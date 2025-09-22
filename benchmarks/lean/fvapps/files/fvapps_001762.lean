@@ -64,19 +64,4 @@ theorem display_table_min_size (orders : List (String × String × String)) :
   (display_table orders).length ≥ 2 ∧
   ∀ row ∈ display_table orders, row.length ≥ 2 :=
   sorry
-
-/-
-info: expected1
--/
--- #guard_msgs in
--- #eval display_table [["David", "3", "Ceviche"], ["Corina", "10", "Beef Burrito"], ["David", "3", "Fried Chicken"], ["Carla", "5", "Water"], ["Carla", "5", "Ceviche"], ["Rous", "3", "Ceviche"]]
-
-/-
-info: expected2
--/
--- #guard_msgs in
--- #eval display_table [["Laura", "2", "Bean Burrito"], ["Jhon", "2", "Beef Burrito"], ["Melissa", "2", "Soda"]]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

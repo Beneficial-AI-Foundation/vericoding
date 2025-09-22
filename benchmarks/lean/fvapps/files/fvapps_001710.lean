@@ -32,6 +32,3 @@ theorem prod_partitions_properties (n : Nat) :
   | none => False
   := sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

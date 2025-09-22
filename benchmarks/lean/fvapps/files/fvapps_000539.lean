@@ -17,6 +17,3 @@ theorem solve_outputs_are_digits (n: Nat) (k: Nat)
     (∀ c ∈ first.data, '0' ≤ c ∧ c ≤ '9') ∧
     (∀ c ∈ last.data, '0' ≤ c ∧ c ≤ '9') := sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

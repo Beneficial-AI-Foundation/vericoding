@@ -30,25 +30,4 @@ theorem divide_sign_positive (dividend divisor : Int) (h : dividend * divisor > 
 theorem divide_sign_negative (dividend divisor : Int) 
   (h1 : dividend * divisor < 0) (h2 : divide dividend divisor ≠ MAX_INT) :
   divide dividend divisor ≤ 0 := sorry
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval divide 10 3
-
-/-
-info: -2
--/
--- #guard_msgs in
--- #eval divide 7 -3
-
-/-
-info: 2147483647
--/
--- #guard_msgs in
--- #eval divide -2147483648 -1
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

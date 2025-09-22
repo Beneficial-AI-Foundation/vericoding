@@ -28,25 +28,4 @@ theorem string_letter_count_correct_counts (s : String) (c : Char) :
 theorem string_letter_count_sorted (s : String) :
   let letters := (string_letter_count s).data.filter Char.isAlpha
   List.Pairwise (· ≤ ·) letters := by sorry
-
-/-
-info: expected1
--/
--- #guard_msgs in
--- #eval string_letter_count "The quick brown fox jumps over the lazy dog."
-
-/-
-info: expected2
--/
--- #guard_msgs in
--- #eval string_letter_count "This is a test sentence."
-
-/-
-info: expected3
--/
--- #guard_msgs in
--- #eval string_letter_count ""
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

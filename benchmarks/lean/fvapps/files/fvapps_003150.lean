@@ -23,25 +23,4 @@ theorem divisibility_property (a b : Nat) (h₁ : a > 0) (h₂ : b > 0) :
 
 theorem power_relationship (n : Nat) (h : n > 0) :
   solve n (n * n) = true := sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval solve 2 256
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval solve 15 12
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval solve 9 243
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

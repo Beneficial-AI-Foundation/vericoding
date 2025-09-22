@@ -16,25 +16,4 @@ theorem decimal_places_precision (n : Float)
 theorem decimal_places_bound (n : Float)  
   (h : ¬ n.isNaN ∧ ¬ n.isInf ∧ -1e10 ≤ n ∧ n ≤ 1e10) :
   ∃ k : Int, twoDecimalPlaces n = Float.ofInt k / 100 := sorry
-
-/-
-info: 4.66
--/
--- #guard_msgs in
--- #eval two_decimal_places 4.659725356
-
-/-
-info: 173735326.38
--/
--- #guard_msgs in
--- #eval two_decimal_places 173735326.37837327
-
-/-
-info: 4.65
--/
--- #guard_msgs in
--- #eval two_decimal_places 4.653725356
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

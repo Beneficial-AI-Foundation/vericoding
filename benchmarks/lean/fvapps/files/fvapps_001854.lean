@@ -34,25 +34,4 @@ theorem reflexive_property {s1 s2 : List Char} :
   can_transform s1 s2 = true →
   (can_transform s2 s1 = true → s1 = s2) := by
   sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval can_transform "RXXLRXRXL" "XRLXXRRLX"
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval can_transform "X" "L"
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval can_transform "XXXXXLXXXX" "LXXXXXXXXX"
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

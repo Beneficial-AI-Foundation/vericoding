@@ -27,6 +27,3 @@ theorem looper_evenly_spaced {start stop : Float} {number : Nat} (h : number > 2
 theorem looper_single_point {start stop : Float} :
   looper start stop 1 = [start] := sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

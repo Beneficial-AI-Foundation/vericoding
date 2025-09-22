@@ -39,25 +39,4 @@ theorem deterministic
   (h1 : k.length = 3)
   (h2 : ∀ c ∈ k.data, '0' <= c ∧ c <= '9') :
   solve_restaurant_device k n = solve_restaurant_device k n := sorry
-
-/-
-info: 27
--/
--- #guard_msgs in
--- #eval solve_restaurant_device "123" 5
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval solve_restaurant_device "111" 5
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval solve_restaurant_device "123" 4
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

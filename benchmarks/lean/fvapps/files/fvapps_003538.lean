@@ -30,25 +30,4 @@ theorem no_small_triplets {n : Nat} (h : n < 60) :
 theorem minimum_triplet :
     pythagoreanTriplet 60 = some (3, 4, 5) :=
   sorry
-
-/-
-info: [3, 4, 5]
--/
--- #guard_msgs in
--- #eval pythagorean_triplet 60
-
-/-
-info: [5, 12, 13]
--/
--- #guard_msgs in
--- #eval pythagorean_triplet 780
-
-/-
-info: [8, 15, 17]
--/
--- #guard_msgs in
--- #eval pythagorean_triplet 2040
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

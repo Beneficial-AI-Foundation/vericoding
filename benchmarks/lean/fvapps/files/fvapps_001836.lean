@@ -26,25 +26,4 @@ theorem single_na :
 
 theorem single_h :
   count_atoms "H" = "H" := sorry
-
-/-
-info: 'H2O'
--/
--- #guard_msgs in
--- #eval count_atoms "H2O"
-
-/-
-info: 'H2MgO2'
--/
--- #guard_msgs in
--- #eval count_atoms "Mg(OH)2"
-
-/-
-info: 'K4N2O14S4'
--/
--- #guard_msgs in
--- #eval count_atoms "K4(ON(SO3)2)2"
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

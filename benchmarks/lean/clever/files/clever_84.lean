@@ -34,7 +34,3 @@ theorem correctness
 := by
   sorry
 -- </vc-theorems>
-
--- #test implementation 1000 = "1"
--- #test implementation 150 = "110"
--- #test implementation 147 = "1100"

@@ -56,25 +56,4 @@ theorem coordinate_parts_format
   (String.length lat_min_sec[0]! = 2 ∧ String.length lon_min_sec[0]! = 2) ∧
   (String.length lat_min_sec[1]! = 7 ∧ String.length lon_min_sec[1]! = 7) :=
 sorry
-
-/-
-info: ('035*01\'58.781"N', '033*14\'01.519"E')
--/
--- #guard_msgs in
--- #eval convert_to_dms "35.03299485527936" "33.233755230903625"
-
-/-
-info: ('037*06\'41.096"S', '012*17\'03.541"W')
--/
--- #guard_msgs in
--- #eval convert_to_dms "-37.111415669561595" "-12.284317023586482"
-
-/-
-info: ('019*36\'53.975"N', '155*28\'55.841"W')
--/
--- #guard_msgs in
--- #eval convert_to_dms "19.61499312350978" "-155.48217818140984"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

@@ -33,8 +33,3 @@ theorem correctness
 := by
   sorry
 -- </vc-theorems>
-
--- #test implementation 5 2 7 = true
--- #test implementation 3 2 2 = false
--- #test implementation 3 (-2) 1 = true
--- #test implementation 3.6 (-2.2) 2 = false

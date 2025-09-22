@@ -1,25 +1,23 @@
 -- <vc-preamble>
-def Point := Float × Float
-
-def calc_expected_area (n: Nat) (vertices: List Point) : Float :=
-  sorry
-
 def list_max (xs : List Float) : Float :=
   match xs with
   | [] => 0
   | x::xs => xs.foldl max x
 
-/- Helper function to get the minimum value from a list -/
+def list_min (xs : List Float) : Float :=
+  match xs with
+  | [] => 0
+  | x::xs => xs.foldl min x
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
-def list_min (xs : List Float) : Float :=
-  match xs with
-  | [] => 0
-  | x::xs => xs.foldl min x
+def Point := Float × Float
+
+def calc_expected_area (n: Nat) (vertices: List Point) : Float :=
+  sorry
 -- </vc-definitions>
 
 -- <vc-theorems>
@@ -28,8 +26,6 @@ theorem area_is_non_negative {n: Nat} {vertices: List Point} :
   calc_expected_area n vertices ≥ 0 :=
 sorry
 
-/- Helper function to get the maximum value from a list -/
-
 theorem area_smaller_than_bounding_box {n: Nat} {vertices: List Point} :
   vertices.length = n → n ≥ 3 →
   let xs := vertices.map (·.1)
@@ -37,7 +33,7 @@ theorem area_smaller_than_bounding_box {n: Nat} {vertices: List Point} :
   calc_expected_area n vertices ≤ (list_max xs - list_min xs) * (list_max ys - list_min ys) + 1e-10 :=
 sorry
 
-theorem area_invariant_under_translation {n: Nat} {vertices: List Point} 
+theorem area_invariant_under_translation {n: Nat} {vertices: List Point}
   {dx dy: Float} :
   vertices.length = n → n ≥ 3 →
   let translated := vertices.map (fun (x, y) => (x + dx, y + dy))
@@ -50,6 +46,3 @@ theorem area_scales_quadratically {n: Nat} {vertices: List Point} :
   (calc_expected_area n scaled - 4 * calc_expected_area n vertices).abs < 1e-10 :=
 sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

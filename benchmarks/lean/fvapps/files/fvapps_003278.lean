@@ -19,25 +19,4 @@ theorem candies_to_buy_properties (n : Nat) (h : n > 0 ∧ n ≤ 20) :
 
 -- <vc-theorems>
 theorem candies_to_buy_minimum : candies_to_buy 1 = 1 := sorry
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval candies_to_buy 1
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval candies_to_buy 2
-
-/-
-info: 60
--/
--- #guard_msgs in
--- #eval candies_to_buy 5
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

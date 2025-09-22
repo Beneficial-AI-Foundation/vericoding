@@ -31,25 +31,4 @@ theorem longer_sequences_greater_than_m (n m : Nat)
     (h1 : n > 1) (h2 : m > 1) (h3 : n ≤ 100) (h4 : m ≤ 100) :
   calc_valid_sequences n m > m :=
 sorry
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval calc_valid_sequences 2 2
-
-/-
-info: 60
--/
--- #guard_msgs in
--- #eval calc_valid_sequences 3 4
-
-/-
-info: 5
--/
--- #guard_msgs in
--- #eval calc_valid_sequences 1 5
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

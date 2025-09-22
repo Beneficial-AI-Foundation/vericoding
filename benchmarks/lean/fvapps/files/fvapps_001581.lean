@@ -24,19 +24,4 @@ theorem gta_specific_case1 :
 
 theorem gta_specific_case2 :
   gta 8 12348 47 = 3836040 := by sorry
-
-/-
-info: 328804
--/
--- #guard_msgs in
--- #eval gta 7 123489 5 67
-
-/-
-info: 3836040
--/
--- #guard_msgs in
--- #eval gta 8 12348 47 3639
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

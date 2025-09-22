@@ -35,25 +35,4 @@ theorem is_lock_ness_monster_whitespace (s : String)
   (h : s = " " ∨ s = "\n" ∨ s = "\t") :
   is_lock_ness_monster s = false :=
 sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval is_lock_ness_monster "Your girlscout cookies are ready to ship. Your total comes to tree fiddy"
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval is_lock_ness_monster "Yo, I heard you were on the lookout for Nessie. Let me know if you need assistance."
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval is_lock_ness_monster "I"m from Scottland. I moved here to be with my family sir. Please, $3.50 would go a long way"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

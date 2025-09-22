@@ -28,25 +28,4 @@ theorem group_cities_empty :
 
 theorem group_cities_duplicates :
   (group_cities ["Rome", "Rome", "Rome"]).length = 1 := by sorry
-
-/-
-info: expected1
--/
--- #guard_msgs in
--- #eval group_cities ["Tokyo", "London", "Rome", "Donlon", "Kyoto", "Paris", "Okyot"]
-
-/-
-info: expected2
--/
--- #guard_msgs in
--- #eval group_cities ["Rome", "Rome", "Rome", "Donlon", "London"]
-
-/-
-info: expected3
--/
--- #guard_msgs in
--- #eval group_cities []
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

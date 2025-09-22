@@ -7,8 +7,6 @@
 -- <vc-definitions>
 def min_ops_for_self_destruct (s : String) : Int :=
   sorry
-
-/- If the input string length is odd, min_ops_for_self_destruct returns -1 -/
 -- </vc-definitions>
 
 -- <vc-theorems>
@@ -16,21 +14,15 @@ theorem odd_length_returns_negative (s : String) :
   String.length s % 2 = 1 → min_ops_for_self_destruct s = -1 := by
   sorry
 
-/- If the input string contains only 0s or only 1s, min_ops_for_self_destruct returns -1 -/
-
 theorem all_ones_or_zeroes_returns_negative (s : String) :
-  (∀c ∈ s.data, c = '0') ∨ (∀c ∈ s.data, c = '1') → 
+  (∀c ∈ s.data, c = '0') ∨ (∀c ∈ s.data, c = '1') →
   min_ops_for_self_destruct s = -1 := by
   sorry
-
-/- If min_ops_for_self_destruct returns a non-negative result, it is bounded by half the string length -/
 
 theorem result_bounds (s : String) :
   min_ops_for_self_destruct s ≠ -1 →
   0 ≤ min_ops_for_self_destruct s ∧ min_ops_for_self_destruct s ≤ String.length s / 2 := by
   sorry
-
-/- For balanced strings with equal counts of 0s and 1s and even length, min_ops_for_self_destruct returns 0 -/
 
 theorem balanced_strings_need_zero_ops (s : String) :
   String.length s % 2 = 0 →
@@ -38,32 +30,9 @@ theorem balanced_strings_need_zero_ops (s : String) :
   min_ops_for_self_destruct s = 0 := by
   sorry
 
-/- The result equals half the absolute difference between counts of 0s and 1s when not -1 -/
-
 theorem operations_count (s : String) :
   min_ops_for_self_destruct s ≠ -1 →
-  min_ops_for_self_destruct s = 
+  min_ops_for_self_destruct s =
     (Int.natAbs ((s.data.filter (· = '0')).length - (s.data.filter (· = '1')).length)) / 2 := by
   sorry
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval min_ops_for_self_destruct "001101"
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval min_ops_for_self_destruct "1101"
-
-/-
-info: -1
--/
--- #guard_msgs in
--- #eval min_ops_for_self_destruct "110"
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

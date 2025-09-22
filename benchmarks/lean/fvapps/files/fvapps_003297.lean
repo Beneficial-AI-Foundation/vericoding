@@ -27,25 +27,4 @@ theorem doubles_pair (s : String) (h : s.length = 2) :
 
 theorem doubles_length_parity (s : String) :
   (s.length - (doubles s).length) % 2 = 0 := sorry
-
-/-
-info: 'ab'
--/
--- #guard_msgs in
--- #eval doubles "abbbzz"
-
-/-
-info: 'aca'
--/
--- #guard_msgs in
--- #eval doubles "abbcccdddda"
-
-/-
-info: ''
--/
--- #guard_msgs in
--- #eval doubles "abba"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

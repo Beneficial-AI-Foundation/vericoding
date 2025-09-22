@@ -20,25 +20,4 @@ theorem increment_or_decrement_distance (n : Int) :
 
 theorem increment_or_decrement_not_idempotent (n : Int) :
   increment_or_decrement (increment_or_decrement n) ≠ increment_or_decrement n := sorry
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval increment_or_decrement 5
-
-/-
-info: 9
--/
--- #guard_msgs in
--- #eval increment_or_decrement 8
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval increment_or_decrement 3
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

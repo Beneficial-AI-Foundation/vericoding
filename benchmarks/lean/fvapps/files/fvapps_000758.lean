@@ -25,6 +25,3 @@ theorem cone_hemisphere_volume_formula (r1 h1 r2 h2 : Float) :
   let hemisphere_vol := 2 * pi * r1 * r1 * r1 / 3
   Float.abs (vol1 - (cone_vol + hemisphere_vol)) < 0.000001 := sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

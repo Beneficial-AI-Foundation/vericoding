@@ -36,25 +36,4 @@ theorem last_elem_contains_all (words : List String)
   (h : words ≠ []) 
   (h1 : spacey words ≠ []) :
   (spacey words).getLast h1 = String.join words := sorry
-
-/-
-info: expected1
--/
--- #guard_msgs in
--- #eval spacey ["kevin", "has", "no", "space"]
-
-/-
-info: expected2
--/
--- #guard_msgs in
--- #eval spacey ["this", "cheese", "has", "no", "holes"]
-
-/-
-info: expected3
--/
--- #guard_msgs in
--- #eval spacey ["i", "have", "no", "space"]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

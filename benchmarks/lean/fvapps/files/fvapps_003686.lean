@@ -17,25 +17,4 @@ sorry
 theorem sort_by_value_and_index_length {arr : List Int} (h : arr ≠ []) :
   (sort_by_value_and_index arr).length = arr.length :=
 sorry
-
-/-
-info: [1, 2, 3, 4, 5]
--/
--- #guard_msgs in
--- #eval sort_by_value_and_index [1, 2, 3, 4, 5]
-
-/-
-info: [2, 3, 4, 23, 5]
--/
--- #guard_msgs in
--- #eval sort_by_value_and_index [23, 2, 3, 4, 5]
-
-/-
-info: [1, 9, 5, 3, 4]
--/
--- #guard_msgs in
--- #eval sort_by_value_and_index [9, 5, 1, 4, 3]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

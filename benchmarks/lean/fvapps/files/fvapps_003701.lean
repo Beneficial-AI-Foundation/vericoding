@@ -31,25 +31,4 @@ theorem solve_specific_examples :
   solve 4 2 = 2 ∧
   solve 20 8 = 17 := by
   sorry
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval solve 4 1
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval solve 4 2
-
-/-
-info: 17
--/
--- #guard_msgs in
--- #eval solve 20 8
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

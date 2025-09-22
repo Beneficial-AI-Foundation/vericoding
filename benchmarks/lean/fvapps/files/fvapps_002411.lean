@@ -20,25 +20,4 @@ theorem getSum_associative (a b c : Int) :
 
 theorem getSum_negation (a : Int) :
   getSum a (-a) = 0 := sorry
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval getSum 1 2
-
-/-
-info: 5
--/
--- #guard_msgs in
--- #eval getSum 5 0
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval getSum -2 3
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

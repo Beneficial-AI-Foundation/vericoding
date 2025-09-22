@@ -38,25 +38,4 @@ theorem swap_chars_applied (words : List String) (h : ∀ w ∈ words, w.length 
     firstChar ∈ ['a', 'i', 'e', 'o'] →
     pass.data[i]! = SWAP firstChar :=
   sorry
-
-/-
-info: 'Gml0gmd'
--/
--- #guard_msgs in
--- #eval make_password "Give me liberty or give me death"
-
-/-
-info: 'KCaC0'
--/
--- #guard_msgs in
--- #eval make_password "Keep Calm and Carry On"
-
-/-
-info: '505'
--/
--- #guard_msgs in
--- #eval make_password "Save Our Souls"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

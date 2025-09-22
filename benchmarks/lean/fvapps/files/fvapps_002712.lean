@@ -29,25 +29,4 @@ theorem gordon_length {s : String} (h : s ≠ "") :
 theorem gordon_parts_nonempty {s : String} (h : s ≠ "") :
   let parts := (gordon s).dropRight 4
   ∀ p ∈ parts.split (· = '!'), p ≠ "" := sorry
-
-/-
-info: 'WH@T!!!! F*CK!!!! D@MN!!!! C@K*!!!!'
--/
--- #guard_msgs in
--- #eval gordon "What feck damn cake"
-
-/-
-info: '@R*!!!! Y**!!!! ST*!!!! P*D!!!!'
--/
--- #guard_msgs in
--- #eval gordon "are you stu pid"
-
-/-
-info: '*!!!! @M!!!! @!!!! CH*F!!!!'
--/
--- #guard_msgs in
--- #eval gordon "i am a chef"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

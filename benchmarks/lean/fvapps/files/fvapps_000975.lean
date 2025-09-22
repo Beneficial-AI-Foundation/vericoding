@@ -35,6 +35,3 @@ theorem solve_path_queries_valid_queries {N : Nat} {queries : List (Char × Nat 
   True :=
   sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

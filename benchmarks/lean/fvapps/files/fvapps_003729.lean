@@ -29,25 +29,4 @@ theorem reverse_no_trailing_whitespace (s : String) :
 
 theorem reverse_empty_stays_empty (s : String) :
   s.trim = "" → reverse s = "" := sorry
-
-/-
-info: 'this at expert an am I'
--/
--- #guard_msgs in
--- #eval reverse "I am an expert at this"
-
-/-
-info: 'easy so is This'
--/
--- #guard_msgs in
--- #eval reverse "This is so easy"
-
-/-
-info: 'cares one no'
--/
--- #guard_msgs in
--- #eval reverse "no one cares"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

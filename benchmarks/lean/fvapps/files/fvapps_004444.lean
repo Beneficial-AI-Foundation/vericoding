@@ -20,37 +20,4 @@ theorem not_list_property [Inhabited α] (x : α) :
 
 theorem empty_array_property :
   is_int_array ([] : List Int) = true := sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval is_int_array []
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval is_int_array [1, 2, 3, 4]
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval is_int_array [1.0, 2.0, 3.0001]
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval is_int_array None
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval is_int_array ""
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

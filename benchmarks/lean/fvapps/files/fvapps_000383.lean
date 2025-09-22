@@ -1,51 +1,39 @@
 -- <vc-preamble>
-def find_nth_ugly_number (n a b c : Nat) : Nat := sorry
-
-def gcd (a b : Nat) : Nat := sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
-def count_divisible (num a b c : Nat) : Nat := sorry
+def find_nth_ugly_number (n a b c : Nat) : Nat :=
+sorry
 
-theorem ugly_number_divisible (n a b c : Nat) (h1 : n > 0) (h2 : a > 0) (h3 : b > 0) (h4 : c > 0) :
-  let result := find_nth_ugly_number n a b c
-  result % a = 0 ∨ result % b = 0 ∨ result % c = 0 := sorry
+def gcd (a b : Nat) : Nat :=
+sorry
+
+def count_divisible (num a b c : Nat) : Nat :=
+sorry
 -- </vc-definitions>
 
 -- <vc-theorems>
+theorem ugly_number_divisible (n a b c : Nat) (h1 : n > 0) (h2 : a > 0) (h3 : b > 0) (h4 : c > 0) :
+  let result := find_nth_ugly_number n a b c
+  result % a = 0 ∨ result % b = 0 ∨ result % c = 0 :=
+sorry
+
 theorem ugly_number_positive (n a b c : Nat) (h1 : n > 0) (h2 : a > 0) (h3 : b > 0) (h4 : c > 0) :
-  find_nth_ugly_number n a b c > 0 := sorry
+  find_nth_ugly_number n a b c > 0 :=
+sorry
 
 theorem ugly_number_min_bound (n a b c : Nat) (h1 : n > 0) (h2 : a > 0) (h3 : b > 0) (h4 : c > 0) :
-  find_nth_ugly_number n a b c ≥ min a (min b c) := sorry
+  find_nth_ugly_number n a b c ≥ min a (min b c) :=
+sorry
 
 theorem ugly_number_max_bound (n a b c : Nat) (h1 : n > 0) (h2 : a > 0) (h3 : b > 0) (h4 : c > 0) :
-  find_nth_ugly_number n a b c ≤ n * min a (min b c) := sorry
+  find_nth_ugly_number n a b c ≤ n * min a (min b c) :=
+sorry
 
 theorem ugly_number_equal_divisors (a : Nat) (h : a > 0) :
-  find_nth_ugly_number 1 a a a = a := sorry
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval find_nth_ugly_number 3 2 3 5
-
-/-
-info: 6
--/
--- #guard_msgs in
--- #eval find_nth_ugly_number 4 2 3 4
-
-/-
-info: 10
--/
--- #guard_msgs in
--- #eval find_nth_ugly_number 5 2 11 13
+  find_nth_ugly_number 1 a a a = a :=
+sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

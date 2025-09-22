@@ -34,25 +34,4 @@ theorem dad_filter_preserves_noncomma_chars {s : String} :
 
 theorem dad_filter_idempotent {s : String} :
   dad_filter (dad_filter s) = dad_filter s := sorry
-
-/-
-info: 'all this, used to be trees'
--/
--- #guard_msgs in
--- #eval dad_filter "all this,,,, used to be trees,,,,,,"
-
-/-
-info: 'Luke, I am your father'
--/
--- #guard_msgs in
--- #eval dad_filter "Luke,,,,,,,,, I am your father,,,,,,,,,  "
-
-/-
-info: "Dead or alive, you're coming with me"
--/
--- #guard_msgs in
--- #eval dad_filter "Dead or alive,,,, you"re coming with me,,,   "
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

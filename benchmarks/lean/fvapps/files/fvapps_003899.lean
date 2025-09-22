@@ -24,19 +24,4 @@ sorry
 theorem penultimate_singleton_is_none {α : Type} (x : α) :
   penultimate [x] = none :=
 sorry
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval penultimate [1, 2, 3, 4]
-
-/-
-info: 'l'
--/
--- #guard_msgs in
--- #eval penultimate "hello"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

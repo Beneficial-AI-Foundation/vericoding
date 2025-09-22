@@ -23,6 +23,3 @@ theorem solve_minimal_goodness_sorted_invariant {n h : Nat} {a sorted_a : List N
   (hn : n ≥ 3) : (solve_minimal_goodness n h a).1 = 
                   (solve_minimal_goodness n h sorted_a).1 := sorry
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: guarded

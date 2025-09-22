@@ -17,25 +17,4 @@ theorem formula_floats (x : Float) :
 
 theorem non_numeric_error (x : String ⊕ ByteArray ⊕ List Int) : 
   problem x = Sum.inr "Error" := sorry
-
-/-
-info: 'Error'
--/
--- #guard_msgs in
--- #eval problem "hello"
-
-/-
-info: 56
--/
--- #guard_msgs in
--- #eval problem 1
-
-/-
-info: 6
--/
--- #guard_msgs in
--- #eval problem 0
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

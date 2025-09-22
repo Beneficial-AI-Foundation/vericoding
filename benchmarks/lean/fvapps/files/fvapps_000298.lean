@@ -26,25 +26,4 @@ theorem doubled_string (text: String)
   (h: text.length > 0) :
   distinctEchoSubstrings (text ++ text) ≥ 1 :=
   sorry
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval distinct_echo_substrings "abcabcabc"
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval distinct_echo_substrings "leetcodeleetcode"
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval distinct_echo_substrings "aaa"
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

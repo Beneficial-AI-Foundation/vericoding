@@ -28,25 +28,4 @@ theorem find_array_non_empty {α : Type} (arr1 : List α) (arr2 : List Nat) (h1 
     i ∈ arr2 → 
     x = arr1.get ⟨i, h⟩ →
     x ∈ find_array arr1 arr2 := sorry
-
-/-
-info: ['a', 'a']
--/
--- #guard_msgs in
--- #eval find_array ["a", "a", "a", "a", "a"] [2, 4]
-
-/-
-info: [1, 1, 1]
--/
--- #guard_msgs in
--- #eval find_array [0, 1, 5, 2, 1, 8, 9, 1, 5] [1, 4, 7]
-
-/-
-info: []
--/
--- #guard_msgs in
--- #eval find_array [] [2]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

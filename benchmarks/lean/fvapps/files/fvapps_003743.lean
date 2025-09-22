@@ -20,25 +20,4 @@ theorem sum_triangular_positive_properties {n : Int}
 
 theorem sum_triangular_increasing {n : Int}
   (h : n > 1) : sumTriangularNumbers n > sumTriangularNumbers (n-1) := sorry
-
-/-
-info: 20
--/
--- #guard_msgs in
--- #eval sum_triangular_numbers 4
-
-/-
-info: 56
--/
--- #guard_msgs in
--- #eval sum_triangular_numbers 6
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval sum_triangular_numbers -3
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

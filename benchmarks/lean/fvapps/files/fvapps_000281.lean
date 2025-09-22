@@ -38,25 +38,4 @@ theorem monotonic_n (n m : Nat) :
   n > 1 →
   flipLights (n-1) m ≤ flipLights n m :=
 sorry
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval flipLights 1 1
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval flipLights 2 1
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval flipLights 3 1
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

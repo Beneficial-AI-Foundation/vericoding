@@ -35,19 +35,4 @@ theorem min_uncompleted_tasks_no_buttons (N : Nat) (A B : List Nat)
   min_uncompleted_tasks N 0 0 A B [] [] = 
   (List.zip A B).foldl (fun acc p => acc + max 0 (p.1 - p.2)) 0 :=
   sorry
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval min_uncompleted_tasks 4 2 2 [5, 7, 6, 1] [3, 3, 1, 1] [6, 3] [1, 4]
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval min_uncompleted_tasks 2 1 1 [5, 3] [2, 1] [2] [1]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

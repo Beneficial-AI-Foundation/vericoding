@@ -27,6 +27,3 @@ theorem make_non_decreasing_specific_case3
   (h : arr = [0, 7, 3, 1, 3, 7, 7]) :
   (make_non_decreasing arr).2.length ≤ 14 := sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

@@ -48,25 +48,4 @@ theorem eval_rpn_complex_1 :
 
 theorem eval_rpn_complex_2 :
   eval_rpn ["4", "13", "5", "/", "+"] = 6 := by sorry
-
-/-
-info: 9
--/
--- #guard_msgs in
--- #eval eval_rpn ["2", "1", "+", "3", "*"]
-
-/-
-info: 6
--/
--- #guard_msgs in
--- #eval eval_rpn ["4", "13", "5", "/", "+"]
-
-/-
-info: 22
--/
--- #guard_msgs in
--- #eval eval_rpn ["10", "6", "9", "3", "+", "-11", "*", "/", "*", "17", "+", "5", "+"]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

@@ -39,25 +39,4 @@ theorem boomerang_duplicate_points
   (h2: ∀ p ∈ points, p.length = 2)
   (h3: points.get! 0 = points.get! 1) :
   isBoomerang points = false := sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval isBoomerang [[1, 1], [2, 3], [3, 2]]
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval isBoomerang [[1, 1], [2, 2], [3, 3]]
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval isBoomerang [[0, 0], [1, 1], [1, 0]]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

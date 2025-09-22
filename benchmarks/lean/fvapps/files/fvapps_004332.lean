@@ -1,16 +1,15 @@
 -- <vc-preamble>
-def max_consec_zeros (n: String) : String :=
-  sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
-def toWord (n: Nat) : String :=
+def max_consec_zeros (n: String) : String :=
   sorry
 
--- Property 1: Function should work for any valid positive integer string input
+def toWord (n: Nat) : String :=
+  sorry
 -- </vc-definitions>
 
 -- <vc-theorems>
@@ -20,36 +19,11 @@ theorem max_consec_zeros_valid_input {n: String} (h: ∃ (k: Nat), k > 0 ∧ k �
                   "Ten", "Eleven", "Twelve", "Thirteen"] ∧ result = word :=
 sorry
 
--- Property 2: Powers of 2 should have n-1 consecutive zeros
-
 theorem powers_of_two_zeros {n: Nat} (h: n > 0 ∧ n ≤ 12) :
   max_consec_zeros (toString (2^n)) = toWord (n-1) :=
 sorry
 
--- Property 3: Result should be same for equivalent decimal values
-
 theorem equivalent_decimal_values {n: Nat} (h: n > 0 ∧ n ≤ 10000) :
   max_consec_zeros (toString n) = max_consec_zeros (toString (n : Nat)) :=
 sorry
-
-/-
-info: 'Two'
--/
--- #guard_msgs in
--- #eval max_consec_zeros "9"
-
-/-
-info: 'Three'
--/
--- #guard_msgs in
--- #eval max_consec_zeros "550"
-
-/-
-info: 'Eight'
--/
--- #guard_msgs in
--- #eval max_consec_zeros "256"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

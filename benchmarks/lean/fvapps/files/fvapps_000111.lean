@@ -20,25 +20,4 @@ theorem min_button_presses_symmetric (a b : Int) :
 
 theorem min_button_presses_sufficient (a b : Int) :
   min_button_presses a b * 5 ≥ (if a ≥ b then a - b else b - a) := sorry
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval min_button_presses 4 0
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval min_button_presses 5 14
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval min_button_presses 3 9
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

@@ -22,25 +22,4 @@ theorem closestDivisors_finds_minimum_difference (n : Nat) (h : n > 0) :
   ∀ pair : Nat × Nat,
     pair ∈ find_divisors (n + 1) ∨ pair ∈ find_divisors (n + 2) →
     diff ≤ pair.2 - pair.1 := sorry
-
-/-
-info: [3, 3]
--/
--- #guard_msgs in
--- #eval closestDivisors 8
-
-/-
-info: [5, 25]
--/
--- #guard_msgs in
--- #eval closestDivisors 123
-
-/-
-info: sorted([25, 40])
--/
--- #guard_msgs in
--- #eval sorted closestDivisors(999)
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

@@ -27,25 +27,4 @@ theorem result_is_valid (n : Nat) (h : n > 0) (perm : List Nat):
   solve_permutation n perm = "Petr" ∨ 
   solve_permutation n perm = "Um_nik" := by
   sorry
-
-/-
-info: 'Petr'
--/
--- #guard_msgs in
--- #eval solve_permutation 5 [2, 4, 5, 1, 3]
-
-/-
-info: 'Um_nik'
--/
--- #guard_msgs in
--- #eval solve_permutation 3 [2, 3, 1]
-
-/-
-info: 'Petr'
--/
--- #guard_msgs in
--- #eval solve_permutation 4 [4, 3, 2, 1]
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: unguarded

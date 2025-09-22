@@ -53,6 +53,3 @@ theorem all_close_brackets_no_matches
   let result := solveBracketSequence s queries
   ∀ r ∈ result, r = -1 := sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

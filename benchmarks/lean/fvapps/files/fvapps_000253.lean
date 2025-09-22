@@ -22,6 +22,3 @@ theorem maxProbability_symmetry (n : Nat) (edges : List (List Nat)) (probs : Lis
   (s t : Nat) :
   (maxProbability n edges probs s t - maxProbability n edges probs t s).abs < 1e-10 := sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

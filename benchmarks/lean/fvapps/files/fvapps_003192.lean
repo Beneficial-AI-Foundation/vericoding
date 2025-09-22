@@ -28,25 +28,4 @@ theorem all_laxatives (n : Nat) (a : Nat)
 theorem one_shot :
   get_chance 1 1 1 = 0 ∧ get_chance 1 0 1 = 1 :=
   sorry
-
-/-
-info: 0.5
--/
--- #guard_msgs in
--- #eval get_chance 2 1 1
-
-/-
-info: 0.25
--/
--- #guard_msgs in
--- #eval get_chance 4 1 3
-
-/-
-info: 0.33
--/
--- #guard_msgs in
--- #eval get_chance 100 10 10
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

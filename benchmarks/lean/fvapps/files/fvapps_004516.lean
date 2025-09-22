@@ -39,6 +39,3 @@ theorem count_find_num_edge_cases_2 :
 theorem count_find_num_edge_cases_3 :
   count_find_num [2, 3] 5 = none := sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

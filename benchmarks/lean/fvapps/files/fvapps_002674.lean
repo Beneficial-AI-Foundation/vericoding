@@ -29,19 +29,4 @@ theorem receive_handles_valid_format {s : String}
   (h : s.length > 0) 
   (h₂ : ∀ c ∈ s.data, c = '0' ∨ c = ' ') :
   (receive s).length > 0 := sorry
-
-/-
-info: '0 0 00 0000 0 00'
--/
--- #guard_msgs in
--- #eval send "C"
-
-/-
-info: '0 0 00 0000 0 000 00 0000 0 00'
--/
--- #guard_msgs in
--- #eval send "CC"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

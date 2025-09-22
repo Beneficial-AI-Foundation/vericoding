@@ -44,25 +44,4 @@ theorem encrypt_message_length (s : String) (h : s.length > 0) (h₂ : ∀ c ∈
 theorem encrypt_message_empty :
   encrypt_message "" = ""
   := sorry
-
-/-
-info: 'i2n2f1o2r1m1a1t1'
--/
--- #guard_msgs in
--- #eval encrypt_message "information"
-
-/-
-info: 'a2b2c1d1f1'
--/
--- #guard_msgs in
--- #eval encrypt_message "abcdabf"
-
-/-
-info: 'a3'
--/
--- #guard_msgs in
--- #eval encrypt_message "aaa"
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

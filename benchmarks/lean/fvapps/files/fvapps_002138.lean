@@ -1,12 +1,13 @@
 -- <vc-preamble>
-def get_max_popcount (l r : Nat) : Nat :=
-  sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
+def get_max_popcount (l r : Nat) : Nat :=
+  sorry
+
 def popcount (n : Nat) : Nat :=
   sorry
 -- </vc-definitions>
@@ -26,25 +27,4 @@ sorry
 theorem consecutive_numbers (x : Nat) :
   popcount (get_max_popcount x (x + 1)) ≥ popcount x :=
 sorry
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval get_max_popcount 1 2
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval get_max_popcount 2 4
-
-/-
-info: 7
--/
--- #guard_msgs in
--- #eval get_max_popcount 1 10
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: guarded

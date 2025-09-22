@@ -32,25 +32,4 @@ sorry
 theorem mirror_reflection_both_odd (n : Nat) (hn : n > 0) :
   mirrorReflection (2*n-1) (2*n-1) = 1 :=
 sorry
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval mirrorReflection 2 1
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval mirrorReflection 4 2
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval mirrorReflection 5 5
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

@@ -31,37 +31,4 @@ theorem no_winner_values_bounds (n k d1 d2 : Nat) :
 theorem no_winner_zero_differences (n k : Nat) :
   k % 3 = 0 → k ≤ n → can_have_no_winner n k 0 0 = true :=
   sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval can_have_no_winner 3 0 0 0
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval can_have_no_winner 3 3 0 0
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval can_have_no_winner 6 4 1 0
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval can_have_no_winner 6 3 3 0
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval can_have_no_winner 3 3 3 2
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

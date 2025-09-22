@@ -31,25 +31,4 @@ theorem avg_array_non_negative (arrays : List (List Int))
   (h2 : ∀ arr ∈ arrays, arr.length = arrays[0]!.length)
   (h3 : ∀ arr ∈ arrays, ∀ x ∈ arr, x ≥ 0) :
   ∀ x ∈ avgArray arrays, x ≥ 0 := sorry
-
-/-
-info: expected1
--/
--- #guard_msgs in
--- #eval avg_array #[[1, 2, 3, 4], [5, 6, 7, 8]]
-
-/-
-info: expected2
--/
--- #guard_msgs in
--- #eval avg_array #[[2, 5, 4, 3, 19], [2, 5, 6, 7, 10]]
-
-/-
-info: expected3
--/
--- #guard_msgs in
--- #eval avg_array #[[2, 5, -4, 3, -19], [-2, -5, 6, 7, 10]]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

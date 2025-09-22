@@ -26,6 +26,3 @@ theorem invalid_k_returns_minus_one {n k : Nat} (h1 : n > 0) :
   k > factorial (n-1) * n →
   solve_good_permutations n k = [0] := sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

@@ -24,6 +24,3 @@ theorem double_reverse_is_identity (s : String) (h : s.length > 0) :
 theorem reverse_words_empty :
     reverseWords "" = "" := sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

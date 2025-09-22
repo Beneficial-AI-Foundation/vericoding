@@ -1,4 +1,10 @@
 -- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+-- <vc-definitions>
 def min_increment_for_unique (nums : List Int) : Nat :=
   sorry
 
@@ -7,12 +13,7 @@ def sorted (l : List Int) : List Int :=
 
 def makeUnique (nums : List Int) : List Int :=
   sorry
--- </vc-preamble>
 
--- <vc-helpers>
--- </vc-helpers>
-
--- <vc-definitions>
 def sumList (l : List Int) : Int :=
   sorry
 -- </vc-definitions>
@@ -20,44 +21,23 @@ def sumList (l : List Int) : Int :=
 -- <vc-theorems>
 theorem min_increment_nonneg (nums : List Int) :
   min_increment_for_unique nums ≥ 0 :=
-  sorry
+sorry
 
 theorem min_increment_empty (nums : List Int) :
   nums = [] → min_increment_for_unique nums = 0 :=
-  sorry
+sorry
 
-theorem min_increment_single (nums : List Int) (x : Int) : 
+theorem min_increment_single (nums : List Int) (x : Int) :
   nums = [x] → min_increment_for_unique nums = 0 :=
-  sorry
+sorry
 
 theorem min_increment_sort_invariant (nums : List Int) :
   min_increment_for_unique nums = min_increment_for_unique (sorted nums) :=
-  sorry
+sorry
 
 theorem min_increment_makes_unique (nums : List Int) :
   let result := sorted nums
   let incremented := makeUnique result
   min_increment_for_unique nums = (sumList incremented - sumList result) :=
-  sorry
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval min_increment_for_unique [1, 2, 2]
-
-/-
-info: 6
--/
--- #guard_msgs in
--- #eval min_increment_for_unique [3, 2, 1, 2, 1, 7]
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval min_increment_for_unique []
+sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

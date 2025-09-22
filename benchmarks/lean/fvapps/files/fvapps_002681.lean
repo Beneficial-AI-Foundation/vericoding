@@ -33,25 +33,4 @@ theorem all_same_chars (s : String) :
   String.length s ≥ 2 →
   (∀ i j : String.Pos, s.get i = s.get j) →
   duplicate_encode s = String.mk (List.replicate (String.length s) ')') := sorry
-
-/-
-info: '((('
--/
--- #guard_msgs in
--- #eval duplicate_encode "din"
-
-/-
-info: '()()()'
--/
--- #guard_msgs in
--- #eval duplicate_encode "recede"
-
-/-
-info: ')())())'
--/
--- #guard_msgs in
--- #eval duplicate_encode "Success"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

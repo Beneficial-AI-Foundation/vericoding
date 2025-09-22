@@ -30,25 +30,4 @@ theorem hollow_triangle_symmetric_hashes (height : Nat) (h : height > 0) (i : Na
 
 theorem hollow_triangle_minimal (height : Nat) (h : height = 1) :
   hollow_triangle height = ["#"] := sorry
-
-/-
-info: expected1
--/
--- #guard_msgs in
--- #eval hollow_triangle 6
-
-/-
-info: expected2
--/
--- #guard_msgs in
--- #eval hollow_triangle 9
-
-/-
-info: expected3
--/
--- #guard_msgs in
--- #eval hollow_triangle 3
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

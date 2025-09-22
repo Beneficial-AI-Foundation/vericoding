@@ -27,25 +27,4 @@ theorem substring_implies_sequence (text name : String) :
 theorem concatenation_property (text1 text2 name : String) :
   name_in_str text1 name ∨ name_in_str text2 name →
   name_in_str (text1 ++ text2) name = true := sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval name_in_str "Across the rivers" "chris"
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval name_in_str "Next to a lake" "chris"
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval name_in_str "A crew that boards the ship" "chris"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

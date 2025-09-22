@@ -25,6 +25,3 @@ theorem normalize_empty {α : Type} :
 theorem normalize_singleton_empty {α : Type} :
   normalize [Sum.inl ([] : List α)] = [Sum.inl []] := sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

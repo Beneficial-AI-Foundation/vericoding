@@ -25,25 +25,4 @@ theorem to_camel_case_first_word_preserved
 
 theorem to_camel_case_empty_input :
   toCamelCase (some "") = "" ∧ toCamelCase none = "" := sorry
-
-/-
-info: ''
--/
--- #guard_msgs in
--- #eval to_camel_case ""
-
-/-
-info: 'theStealthWarrior'
--/
--- #guard_msgs in
--- #eval to_camel_case "the_stealth_warrior"
-
-/-
-info: 'TheStealthWarrior'
--/
--- #guard_msgs in
--- #eval to_camel_case "The-Stealth-Warrior"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

@@ -21,25 +21,4 @@ theorem calculator_division_by_zero (x y : Float) (op : String) :
 theorem calculator_invalid_operator (x y : Float) (op : String) :
   (op ≠ "+" ∧ op ≠ "-" ∧ op ≠ "*" ∧ op ≠ "/") →
   calculator x y op = Sum.inr "unknown value" := sorry
-
-/-
-info: 8
--/
--- #guard_msgs in
--- #eval calculator 6 2 "+"
-
-/-
-info: 25
--/
--- #guard_msgs in
--- #eval calculator 5 5 "*"
-
-/-
-info: 'unknown value'
--/
--- #guard_msgs in
--- #eval calculator 6 2 "&"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

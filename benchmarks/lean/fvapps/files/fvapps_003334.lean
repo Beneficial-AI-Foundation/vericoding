@@ -31,25 +31,4 @@ theorem common_difference_property (start diff: Int) (length: Nat)
   validate_sequence seq = true →
   let diffs := (List.range (length - 1)).map (fun i => seq.get! (i+1) - seq.get! i)
   ∀ i, i < diffs.length → diffs.get! i = diffs.get! 0 := sorry
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval validate_sequence [1, 2, 3, 4, 5, 8, 7, 8, 9]
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval validate_sequence [1, 2, 3, 4, 5, 6, 7, 8, 9]
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval validate_sequence [1, 3, 5, 7, 9, 11, 13, 15]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

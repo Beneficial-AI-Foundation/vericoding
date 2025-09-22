@@ -33,25 +33,4 @@ theorem min_unattractiveness_all_same :
 theorem min_unattractiveness_all_ones {n : Nat} (h : n > 0) : 
   min_unattractiveness n (List.replicate n 1) (List.range (n-1) |>.map (λ i => [i+1, i+2])) = 0 := by
   sorry
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval min_unattractiveness 3 [0, 1, 1] [[1, 2], [1, 3]]
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval min_unattractiveness 3 [0, 1, 2] [[1, 2], [1, 3]]
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval min_unattractiveness 4 [2, 2, 2, 2] [[1, 2], [1, 3], [3, 4]]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

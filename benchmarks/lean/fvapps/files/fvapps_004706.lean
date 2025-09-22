@@ -30,25 +30,4 @@ theorem ends_with_last_n_chars (s : String) (n : Nat) :
   n ≤ s.length →
   stringEndsWith s (s.drop (s.length - n)) = true := by
   sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval string_ends_with "abc" "bc"
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval string_ends_with "abc" "d"
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval string_ends_with "samurai" "ai"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

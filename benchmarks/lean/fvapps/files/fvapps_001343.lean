@@ -30,6 +30,3 @@ theorem edge_cases :
   count_tomato_patches 1 = 1 ∧ count_tomato_patches 2 = 5 :=
   sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

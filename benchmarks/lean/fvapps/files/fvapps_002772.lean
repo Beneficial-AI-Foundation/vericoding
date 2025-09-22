@@ -44,25 +44,4 @@ sorry
 theorem find_multiples_same_limit {n : Nat} :
   find_multiples n n = [n] :=
 sorry
-
-/-
-info: [5, 10, 15, 20, 25]
--/
--- #guard_msgs in
--- #eval find_multiples 5 25
-
-/-
-info: [1, 2]
--/
--- #guard_msgs in
--- #eval find_multiples 1 2
-
-/-
-info: [4, 8, 12, 16, 20, 24]
--/
--- #guard_msgs in
--- #eval find_multiples 4 27
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

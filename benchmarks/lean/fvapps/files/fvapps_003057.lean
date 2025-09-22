@@ -26,25 +26,4 @@ theorem higher_card_more_visits :
   0.1 ≤ perc → perc ≤ 0.99 →
   movie card1 ticket perc ≤ movie card2 ticket perc
   := by sorry
-
-/-
-info: 43
--/
--- #guard_msgs in
--- #eval movie 500 15 0.9
-
-/-
-info: 24
--/
--- #guard_msgs in
--- #eval movie 100 10 0.95
-
-/-
-info: 21
--/
--- #guard_msgs in
--- #eval movie 250 20 0.9
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

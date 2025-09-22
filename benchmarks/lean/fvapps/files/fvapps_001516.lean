@@ -35,25 +35,4 @@ theorem max_wealth_disparity_finite (n : Nat) (wealth : List Int) (managers : Li
   (h7 : managers[1] = -1) : 
   -200 ≤ find_max_wealth_disparity n wealth managers ∧ 
   find_max_wealth_disparity n wealth managers ≤ 200 := sorry
-
-/-
-info: 6
--/
--- #guard_msgs in
--- #eval find_max_wealth_disparity 4 [5, 10, 6, 12] [2, -1, 4, 2]
-
-/-
-info: 8
--/
--- #guard_msgs in
--- #eval find_max_wealth_disparity 3 [5, 10, 2] [2, -1, 2]
-
-/-
-info: 25
--/
--- #guard_msgs in
--- #eval find_max_wealth_disparity 3 [-5, 10, -15] [2, -1, 2]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

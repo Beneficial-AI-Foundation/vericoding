@@ -29,25 +29,4 @@ theorem length_two_returns_valid_str (n : Nat) (arr : List String) :
 theorem special_cases :
   solve_lis 4 ["1", "2", "2", "1"] = "1531" ∧
   solve_lis 7 ["1", "2", "2", "1", "3", "2", "4"] = "1730418" := sorry
-
-/-
-info: '7'
--/
--- #guard_msgs in
--- #eval solve_lis 1 ["1"]
-
-/-
-info: '36'
--/
--- #guard_msgs in
--- #eval solve_lis 2 ["1", "2"]
-
-/-
-info: '1531'
--/
--- #guard_msgs in
--- #eval solve_lis 4 ["1", "2", "2", "1"]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

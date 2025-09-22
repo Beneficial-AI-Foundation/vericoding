@@ -31,25 +31,4 @@ theorem decipher_edge_cases :
   decipher "97" = "a" ∧
   decipher "122" = "z" ∧
   decipher "" = "" := sorry
-
-/-
-info: 'easy'
--/
--- #guard_msgs in
--- #eval decipher "10197115121"
-
-/-
-info: 'b'
--/
--- #guard_msgs in
--- #eval decipher "98"
-
-/-
-info: 'z'
--/
--- #guard_msgs in
--- #eval decipher "122"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

@@ -21,25 +21,4 @@ theorem owl_pic_uppercase (s : String) :
   let result := owl_pic s
   let leftSide := (result.splitOn "''0v0''")[0]!
   leftSide.toUpper = leftSide := sorry
-
-/-
-info: "XW''0v0''WX"
--/
--- #guard_msgs in
--- #eval owl_pic "xwe"
-
-/-
-info: "UAW8Y8T''0v0''T8Y8WAU"
--/
--- #guard_msgs in
--- #eval owl_pic "kuawd6r8q27y87t93r76352475437"
-
-/-
-info: "XWWXO''0v0''OXWWX"
--/
--- #guard_msgs in
--- #eval owl_pic "xweWXo"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

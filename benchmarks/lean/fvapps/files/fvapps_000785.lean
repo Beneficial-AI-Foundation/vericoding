@@ -32,25 +32,4 @@ theorem solve_street_food_zero_people :
 
 theorem solve_street_food_zero_price :
   solve_street_food [(1, 100, 0)] = 0 := by sorry
-
-/-
-info: 12
--/
--- #guard_msgs in
--- #eval solve_street_food [(4, 6, 8), (2, 6, 6), (1, 4, 3)]
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval solve_street_food [(7, 7, 4)]
-
-/-
-info: 25
--/
--- #guard_msgs in
--- #eval solve_street_food [(1, 10, 5), (2, 15, 4)]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

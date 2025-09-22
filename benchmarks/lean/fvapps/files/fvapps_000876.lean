@@ -45,6 +45,3 @@ theorem solve_perm_edge_case
   (h : N > 0) :
   solve_permutation N 1 1 (List.replicate N 1) = List.range' N N := sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

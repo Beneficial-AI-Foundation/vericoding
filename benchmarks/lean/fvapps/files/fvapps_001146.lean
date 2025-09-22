@@ -33,6 +33,3 @@ theorem unprinted_reduces_sum (num_pages : Nat) (unprinted : List Nat)
   (h2 : unprinted ≠ []) :
   calculate_expected_sum num_pages unprinted 0 ≤ calculate_expected_sum num_pages [] 0 := sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

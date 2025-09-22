@@ -27,25 +27,4 @@ theorem non_leap_year_others (year : Nat) (h : year > 0)
 theorem four_year_cycle (year : Nat) (h : year > 0) (h2 : year % 100 ≠ 0) :
   let next_leap := year + (4 - year % 4)
   is_leap_year next_leap = true ∧ next_leap % 4 = 0 := sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval is_leap_year 1984
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval is_leap_year 2000
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval is_leap_year 1234
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

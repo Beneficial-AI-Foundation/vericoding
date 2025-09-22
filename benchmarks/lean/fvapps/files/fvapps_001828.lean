@@ -31,25 +31,4 @@ theorem bounds_3x3 (grid : List (List Nat))
   let result := largest1BorderedSquare grid
   let maxPossible := (min grid.length (grid.head?.getD []).length) ^ 2
   0 ≤ result ∧ result ≤ maxPossible := sorry
-
-/-
-info: 9
--/
--- #guard_msgs in
--- #eval largest1BorderedSquare [[1, 1, 1], [1, 0, 1], [1, 1, 1]]
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval largest1BorderedSquare [[1, 1, 0, 0]]
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval largest1BorderedSquare [[0, 0], [0, 0]]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

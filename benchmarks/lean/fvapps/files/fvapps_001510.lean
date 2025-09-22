@@ -16,6 +16,3 @@ theorem oneByTwoByOne_case {val1 val2 : Nat} (h1 : val1 ≤ 100) (h2 : val2 ≤ 
   let result := compute_matrix_a 1 2 1 [[val1], [val2]]
   result.length = 2 ∧ result.get! 0 = toString val1 := sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

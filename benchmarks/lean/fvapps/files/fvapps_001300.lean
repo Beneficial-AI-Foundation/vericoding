@@ -39,19 +39,4 @@ theorem sort_posts_order_preserved
     special_friends.contains (posts[j].1) →
     (posts[i].2.1 ≥ posts[j].2.1) :=
 sorry
-
-/-
-info: ['a', 'b']
--/
--- #guard_msgs in
--- #eval sort_posts [] [(1, 5, "a"), (2, 3, "b")]
-
-/-
-info: ['y', 'x']
--/
--- #guard_msgs in
--- #eval sort_posts [1, 2] [(1, 1, "x"), (2, 2, "y")]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

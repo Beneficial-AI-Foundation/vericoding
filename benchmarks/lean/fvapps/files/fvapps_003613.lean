@@ -39,6 +39,3 @@ theorem values_nonnegative (h w : Nat) (input : List Nat) (row : List Nat) (x : 
 theorem single_row :
   black_and_white 1 10 [10] = [[10, 0]] := sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

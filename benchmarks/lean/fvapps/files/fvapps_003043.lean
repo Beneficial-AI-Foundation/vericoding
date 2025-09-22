@@ -18,19 +18,4 @@ theorem greet_returns_hello_boss_when_name_matches_owner (name owner : String) :
 
 theorem greet_returns_hello_guest_when_name_differs (name owner : String) :
   name ≠ owner → greet name owner = "Hello guest" := sorry
-
-/-
-info: 'Hello boss'
--/
--- #guard_msgs in
--- #eval greet "Daniel" "Daniel"
-
-/-
-info: 'Hello guest'
--/
--- #guard_msgs in
--- #eval greet "Greg" "Daniel"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

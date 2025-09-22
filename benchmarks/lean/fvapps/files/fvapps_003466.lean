@@ -19,25 +19,4 @@ theorem tops_result_pattern (s : String) :
   (∀ c, c ∈ (tops s).data.take 2 → c ∈ s.data) ∧ 
   (∀ c, c ∈ ((tops s).data.drop 2).take 3 → c ∈ s.data) ∧
   (∀ c, c ∈ ((tops s).data.drop 5).take 4 → c ∈ s.data) := by sorry
-
-/-
-info: ''
--/
--- #guard_msgs in
--- #eval tops ""
-
-/-
-info: 'cd'
--/
--- #guard_msgs in
--- #eval tops "abcde"
-
-/-
-info: 'TUABCDElmnoabc34'
--/
--- #guard_msgs in
--- #eval tops "123456789abcdefghijklmnopqrstuwyxvzABCDEFGHIJKLMNOPQRSTU"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

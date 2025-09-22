@@ -24,46 +24,53 @@ vc-description: |-
   -/
 
 vc-preamble: |-
-  def per (n : Nat) : List Nat := sorry
-  
-  def productOfDigits (n : Nat) : Nat := sorry
 
 vc-helpers: |-
 
 vc-definitions: |-
-  def digitsOfNat (n : Nat) : List Nat := sorry
+  def per (n : Nat) : List Nat :=
+  sorry
   
-  theorem per_empty_for_single_digit (n : Nat) : 
-    n < 10 → per n = [] := sorry
+  def productOfDigits (n : Nat) : Nat :=
+  sorry
+  
+  def digitsOfNat (n : Nat) : List Nat :=
+  sorry
 
 vc-theorems: |-
+  theorem per_empty_for_single_digit (n : Nat) :
+    n < 10 → per n = [] :=
+  sorry
+  
   theorem per_decreasing {n : Nat} {result : List Nat} :
     result = per n →
     ∀ i, ∀ h : i < result.length - 1,
-    result.get ⟨i, sorry⟩ ≥ result.get ⟨i+1, sorry⟩ := sorry
+    result.get ⟨i, sorry⟩ ≥ result.get ⟨i+1, sorry⟩ :=
+  sorry
   
   theorem per_bounded_length (n : Nat) :
-    (per n).length ≤ 100 := sorry
-  
-  /-
-  info: []
-  -/
-  -- #guard_msgs in
-  -- #eval per 1
-  
-  /-
-  info: [54, 20, 0]
-  -/
-  -- #guard_msgs in
-  -- #eval per 69
-  
-  /-
-  info: [4996238671872, 438939648, 4478976, 338688, 27648, 2688, 768, 336, 54, 20, 0]
-  -/
-  -- #guard_msgs in
-  -- #eval per 277777788888899
+    (per n).length ≤ 100 :=
+  sorry
 
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
+  
+  /--
+  info: []
+  -/
+  #guard_msgs in
+  #eval per 1
+  
+  /--
+  info: [54, 20, 0]
+  -/
+  #guard_msgs in
+  #eval per 69
+  
+  /--
+  info: [4996238671872, 438939648, 4478976, 338688, 27648, 2688, 768, 336, 54, 20, 0]
+  -/
+  #guard_msgs in
+  #eval per 277777788888899
 

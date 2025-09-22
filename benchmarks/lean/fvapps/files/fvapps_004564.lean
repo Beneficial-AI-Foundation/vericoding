@@ -33,25 +33,4 @@ sorry
 theorem get_min_max_empty :
   get_min_max [] = (none, none) :=
 sorry
-
-/-
-info: (1, 3)
--/
--- #guard_msgs in
--- #eval get_min_max [1, 2, 3]
-
-/-
-info: (10, 10)
--/
--- #guard_msgs in
--- #eval get_min_max [10]
-
-/-
-info: (None, None)
--/
--- #guard_msgs in
--- #eval get_min_max []
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

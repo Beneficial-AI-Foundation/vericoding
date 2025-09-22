@@ -25,6 +25,3 @@ theorem calculate_powers_types (a b m : Nat) :
   let result := calculate_powers a b m
   result.1 ≥ 0 ∧ result.2 ≥ 0 := sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

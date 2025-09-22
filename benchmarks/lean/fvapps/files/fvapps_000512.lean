@@ -34,25 +34,4 @@ theorem solve_remainder_largest
   let next := solve_remainder a b c + a
   next > c ∨ next % a ≠ b :=
 sorry
-
-/-
-info: 9
--/
--- #guard_msgs in
--- #eval solve_remainder 7 2 10
-
-/-
-info: 8
--/
--- #guard_msgs in
--- #eval solve_remainder 5 3 12
-
-/-
-info: 95
--/
--- #guard_msgs in
--- #eval solve_remainder 10 5 100
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

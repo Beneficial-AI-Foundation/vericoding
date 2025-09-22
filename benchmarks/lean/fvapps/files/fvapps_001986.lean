@@ -43,25 +43,4 @@ theorem solve_fish_weights_single_comparison
   (n k : Nat) :
   solve_fish_weights 1 1 k [2] [1] = "YES" ∧
   solve_fish_weights 1 1 k [1] [2] = "NO" := sorry
-
-/-
-info: 'YES'
--/
--- #guard_msgs in
--- #eval solve_fish_weights 3 3 3 [2, 2, 2] [1, 1, 3]
-
-/-
-info: 'NO'
--/
--- #guard_msgs in
--- #eval solve_fish_weights 4 7 9 [5, 2, 7, 3] [3, 5, 2, 7, 3, 8, 7]
-
-/-
-info: 'YES'
--/
--- #guard_msgs in
--- #eval solve_fish_weights 1 1 1000000000 [502700350] [502700349]
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: unguarded

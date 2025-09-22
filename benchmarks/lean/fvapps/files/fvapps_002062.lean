@@ -16,25 +16,4 @@ theorem square_grid_symmetry {n : Nat} (h : n ≥ 3) (h2 : n ≤ 10) :
 theorem minimal_grid :
   let grid := List.replicate 3 (List.replicate 3 0)
   solve_workout_paths 3 3 grid = 0 := sorry
-
-/-
-info: 800
--/
--- #guard_msgs in
--- #eval solve_workout_paths 3 3 [[100, 100, 100], [100, 1, 100], [100, 100, 100]]
-
-/-
-info: 16
--/
--- #guard_msgs in
--- #eval solve_workout_paths 3 3 [[3, 1, 2], [3, 2, 0], [2, 3, 2]]
-
-/-
-info: 501
--/
--- #guard_msgs in
--- #eval solve_workout_paths 3 3 [[100, 0, 100], [1, 100, 100], [0, 100, 100]]
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: guarded_and_plausible

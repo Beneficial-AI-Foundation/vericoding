@@ -28,25 +28,4 @@ theorem phone_number_type (numbers: List Nat)
   (h2: ∀ n ∈ numbers, n ≤ 9) :
   let result := create_phone_number numbers;
   result.data.length > 0 := sorry
-
-/-
-info: '(123) 456-7890'
--/
--- #guard_msgs in
--- #eval create_phone_number [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
-
-/-
-info: '(111) 111-1111'
--/
--- #guard_msgs in
--- #eval create_phone_number [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
-
-/-
-info: '(000) 000-0000'
--/
--- #guard_msgs in
--- #eval create_phone_number [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

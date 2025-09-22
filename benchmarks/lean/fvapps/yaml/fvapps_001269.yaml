@@ -6,27 +6,27 @@ vc-description: |-
   -  > K : They are allowed to choose numbers having values strictly greater than K only.
   -  < K : They are allowed to choose numbers having values strictly less than K only.
   -  = K : They are allowed to choose numbers having values equal to K only.
-  
+
   Given M constraints and who goes first, you have to tell the outcome of each game. Print 'D' if Devu wins otherwise print 'C' without quotes.
   Note that M games are independent, that is, they'll rewrite numbers by using array A after each game. (This is the task for the loser of the previous game!)
-  
+
   -----Input -----
   First line of input contains two space separated integers N and M denoting the size of array A and number of game played by them. Next line of input contains N space-separated integers denoting elements of array A. Each of the next M lines of input contains three space-separated parameters describing a game. First two parameter are a character C ∈ {<, >, =} and an integer K denoting the constraint for that game. The last parameter is a character X ∈ {D, C} denoting the player who will start the game. 
-  
+
   ----- Output -----
   Output consists of a single line containing a string of length M made up from characters D and C only, where ith character in the string denotes the outcome of the ith game.
-  
+
   ----- Constraints: -----
   - 1 ≤ N, M ≤ 106
   - 1 ≤ Ai, K ≤ 109 
   - X ∈ {D, C}
   - C ∈ {<, >, =}
-  
+
   -----Subtasks: -----
   - Subtask 1 : 1 ≤ N, M ≤ 104 : ( 20 pts )
   - Subtask 2 : 1 ≤ N, M ≤ 105 : ( 30 pts )
   - Subtask 3 : 1 ≤ N, M ≤ 106 : ( 50 pts )
-  
+
   -----Example:-----
   Input:
   3 5
@@ -36,38 +36,38 @@ vc-description: |-
   = 3 D
   > 4 C
   < 5 D
-  
+
   Output:
   DCDDC
-  
+
   -----Explanation: -----
   Subarray List :
   - [1]
-  
+
   - [2]
-  
+
   - [3]
-  
+
   - [1,2]
-  
+
   - [2,3]
-  
+
   - [1,2,3]
-  
+
   Numbers on the paper after replacement :
-  
+
   - [1]
-  
+
   - [2]
-  
+
   - [3]
-  
+
   - [2]
-  
+
   - [3]
-  
+
   - [3]
-  
+
   Game 1 : There are only 5 numbers > 1 in the list.
   Game 2 : There is only 1 number < 2 in the list.
   Game 3 : There are only 3 numbers = 3 in the list.
@@ -75,9 +75,9 @@ vc-description: |-
   Game 5 : There are 6 numbers < 5 in the list.
   -/
 
-vc-preamble: |-
+vc-preamble: |
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def solve_game (n : Nat) (arr : List Nat) (queries : List (Char × Nat × Char)) : List Char :=
@@ -90,7 +90,7 @@ vc-theorems: |-
     (queries : List (Char × Nat × Char)) :
     (solve_game n arr queries).length = queries.length :=
     sorry
-  
+
   theorem solve_game_result_valid_chars
     (n : Nat)
     (arr : List Nat)
@@ -100,7 +100,7 @@ vc-theorems: |-
     (solve_game n arr queries).get ⟨i,h⟩ = 'C' ∨
     (solve_game n arr queries).get ⟨i,h⟩ = 'D' :=
     sorry
-  
+
   theorem solve_game_consistent_results
     (n : Nat)
     (arr : List Nat)
@@ -113,7 +113,7 @@ vc-theorems: |-
     (h2 : j < (solve_game n arr queries).length) :
     (solve_game n arr queries).get ⟨i,h1⟩ = (solve_game n arr queries).get ⟨j,h2⟩ :=
     sorry
-  
+
   theorem solve_game_edge_cases
     (n : Nat)
     (arr : List Nat)
@@ -131,20 +131,20 @@ vc-theorems: |-
     ]
     (solve_game n arr edge_queries).length = 6 :=
     sorry
-  
-  /-
-  info: 'DCDDC'
-  -/
-  -- #guard_msgs in
-  -- #eval solve_game 3 [1, 2, 3] [(">", 1, "D"), ("<", 2, "C"), ("=", 3, "D"), (">", 4, "C"), ("<", 5, "D")]
-  
-  /-
-  info: 'DD'
-  -/
-  -- #guard_msgs in
-  -- #eval solve_game 2 [1, 2] [("=", 1, "D"), ("=", 2, "C")]
 
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
+
+  /--
+  info: 'DCDDC'
+  -/
+  #guard_msgs in
+  #eval solve_game 3 [1, 2, 3] [(">", 1, "D"), ("<", 2, "C"), ("=", 3, "D"), (">", 4, "C"), ("<", 5, "D")]
+
+  /--
+  info: 'DD'
+  -/
+  #guard_msgs in
+  #eval solve_game 2 [1, 2] [("=", 1, "D"), ("=", 2, "C")]
 

@@ -23,25 +23,4 @@ theorem test_invalid_formats (amount: String)
 theorem test_empty_string :
   to_cents "" = none :=
   sorry
-
-/-
-info: 123
--/
--- #guard_msgs in
--- #eval to_cents "$1.23"
-
-/-
-info: 9999
--/
--- #guard_msgs in
--- #eval to_cents "$99.99"
-
-/-
-info: 1234567890
--/
--- #guard_msgs in
--- #eval to_cents "$12345678.90"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

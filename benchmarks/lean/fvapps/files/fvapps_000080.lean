@@ -21,31 +21,4 @@ theorem argument_order {s1 s2 : String}
   (h1 : s1.length > 0) (h2 : s2.length > 0)
   (h3 : s1.length = s2.length) :
   can_strings_equal s1 s2 s1 = can_strings_equal s2 s1 s1 := sorry
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval can_strings_equal "aaa" "bbb" "ccc"
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval can_strings_equal "abc" "bca" "bca"
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval can_strings_equal "aabb" "bbaa" "baba"
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval can_strings_equal "imi" "mii" "iim"
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

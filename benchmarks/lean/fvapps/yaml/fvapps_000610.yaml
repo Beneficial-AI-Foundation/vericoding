@@ -39,22 +39,27 @@ vc-description: |-
   -/
 
 vc-preamble: |-
-  def gameWinner (config : String) : String := sorry
-  
-  theorem gameWinner_returns_valid_player (config : String) :
-    (gameWinner config = "Chef" ∨ gameWinner config = "Aleksa") := 
-  sorry
 
 vc-helpers: |-
 
 vc-definitions: |-
-  def countBlacksBeforeWhite (s : String) : Nat := sorry
-  def countBlacksAfterWhite (s : String) : Nat := sorry
+  def gameWinner (config : String) : String :=
+  sorry
+  
+  def countBlacksBeforeWhite (s : String) : Nat :=
+  sorry
+  
+  def countBlacksAfterWhite (s : String) : Nat :=
+  sorry
 
 vc-theorems: |-
+  theorem gameWinner_returns_valid_player (config : String) :
+    (gameWinner config = "Chef" ∨ gameWinner config = "Aleksa") :=
+  sorry
+  
   theorem chef_wins_equal_blacks (config : String)
     (h : countBlacksBeforeWhite config = countBlacksAfterWhite config) :
-    gameWinner config = "Chef" := 
+    gameWinner config = "Chef" :=
   sorry
   
   theorem aleksa_wins_unequal_blacks (config : String)
@@ -66,26 +71,26 @@ vc-theorems: |-
     (h : config = "W") :
     gameWinner config = "Chef" :=
   sorry
-  
-  /-
-  info: 'Chef'
-  -/
-  -- #guard_msgs in
-  -- #eval game_winner "W"
-  
-  /-
-  info: 'Aleksa'
-  -/
-  -- #guard_msgs in
-  -- #eval game_winner "BW"
-  
-  /-
-  info: 'Aleksa'
-  -/
-  -- #guard_msgs in
-  -- #eval game_winner "BWBB"
 
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
+  
+  /--
+  info: 'Chef'
+  -/
+  #guard_msgs in
+  #eval game_winner "W"
+  
+  /--
+  info: 'Aleksa'
+  -/
+  #guard_msgs in
+  #eval game_winner "BW"
+  
+  /--
+  info: 'Aleksa'
+  -/
+  #guard_msgs in
+  #eval game_winner "BWBB"
 

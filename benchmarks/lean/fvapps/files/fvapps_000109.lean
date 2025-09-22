@@ -42,6 +42,3 @@ theorem compress_larger_3x3_checkerboard (grid : List String) :
   grid = ["101", "010", "101"] → compress_image 3 3 grid = 4 :=
 sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

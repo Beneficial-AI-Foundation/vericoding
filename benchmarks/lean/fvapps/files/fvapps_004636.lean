@@ -1,27 +1,35 @@
 -- <vc-preamble>
-def toString (n : Int) (d : Int) : String := sorry
-def toDecimal (n : Int) (d : Int) : Float := sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
-def intToFloat (i : Int) : Float := sorry
-def stringToFloat (s : String) : Float := sorry
+def toString (n : Int) (d : Int) : String :=
+sorry
+
+def toDecimal (n : Int) (d : Int) : Float :=
+sorry
+
+def intToFloat (i : Int) : Float :=
+sorry
+
+def stringToFloat (s : String) : Float :=
+sorry
 -- </vc-definitions>
 
 -- <vc-theorems>
 theorem sign_property (n d : Int) (h : d ≠ 0) :
   let s := toString n d
-  (n * d < 0 → s.startsWith "-") ∧ 
-  (n * d > 0 → ¬s.startsWith "-") := sorry
+  (n * d < 0 → s.startsWith "-") ∧
+  (n * d > 0 → ¬s.startsWith "-") :=
+sorry
 
 theorem format_property (n d : Int) (h : d ≠ 0) :
   let s := toString n d
   let parts := (s.dropWhile (·=='-')).splitOn " "
   match parts with
-  | [p] => 
+  | [p] =>
     if p.any (·=='/') then
       let nums := p.splitOn "/"
       nums.length = 2 ∧
@@ -36,14 +44,16 @@ theorem format_property (n d : Int) (h : d ≠ 0) :
     fracParts[0]!.all Char.isDigit ∧
     fracParts[1]!.all Char.isDigit ∧
     fracParts[0]!.toNat! < fracParts[1]!.toNat!
-  | _ => False := sorry
+  | _ => False :=
+sorry
 
 theorem decimal_conversion (n d : Int) (h : d ≠ 0) :
-  toDecimal n d = (intToFloat n / intToFloat d) := sorry
+  toDecimal n d = (intToFloat n / intToFloat d) :=
+sorry
 
 theorem string_matches_value (n d : Int) (h : d ≠ 0) :
   let s := toString n d
-  let val := 
+  let val :=
     if s.any (·==' ') then
       let parts := (s.dropWhile (·=='-')).splitOn " "
       let whole := intToFloat parts[0]!.toInt!
@@ -56,8 +66,6 @@ theorem string_matches_value (n d : Int) (h : d ≠ 0) :
       (intToFloat parts[0]!.toInt!) / (intToFloat parts[1]!.toInt!)
     else
       stringToFloat s
-  toDecimal n d = (if s.startsWith "-" then -val else val) := sorry
+  toDecimal n d = (if s.startsWith "-" then -val else val) :=
+sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

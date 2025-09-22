@@ -8,12 +8,6 @@ vc-description: |-
   -/
 
 vc-preamble: |-
-  def scf (nums : List Nat) : Nat :=
-    sorry
-
-vc-helpers: |-
-
-vc-definitions: |-
   def listMin (xs : List Nat) : Nat :=
     match xs with
     | [] => 0
@@ -27,6 +21,12 @@ vc-definitions: |-
       else find (k + 1)
     find 2
 
+vc-helpers: |-
+
+vc-definitions: |-
+  def scf (nums : List Nat) : Nat :=
+    sorry
+
 vc-theorems: |-
   theorem scf_basic_properties (nums : List Nat) :
     let result := scf nums
@@ -34,36 +34,36 @@ vc-theorems: |-
     (nums = [] → result = 1) ∧
     (∀ n ∈ nums, n % result = 0) ∧
     (result > 1 → ¬ ∃ k, 2 ≤ k ∧ k < result ∧ ∀ n ∈ nums, n % k = 0) :=
-    sorry
+  sorry
   
   theorem scf_identical_numbers (n : Nat) (h : n ≥ 2) :
     let nums := List.replicate 5 n
     scf nums = minFactor n :=
-    sorry
+  sorry
   
   theorem scf_nonpositive_inputs (nums : List Nat) (h : ∀ n ∈ nums, n = 0) :
     scf nums = 1 :=
-    sorry
-  
-  /-
-  info: 2
-  -/
-  -- #guard_msgs in
-  -- #eval scf [200, 30, 18, 8, 64, 34]
-  
-  /-
-  info: 3
-  -/
-  -- #guard_msgs in
-  -- #eval scf [21, 45, 51, 27, 33]
-  
-  /-
-  info: 1
-  -/
-  -- #guard_msgs in
-  -- #eval scf []
+  sorry
 
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+  
+  /--
+  info: 2
+  -/
+  #guard_msgs in
+  #eval scf [200, 30, 18, 8, 64, 34]
+  
+  /--
+  info: 3
+  -/
+  #guard_msgs in
+  #eval scf [21, 45, 51, 27, 33]
+  
+  /--
+  info: 1
+  -/
+  #guard_msgs in
+  #eval scf []
 

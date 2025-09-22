@@ -21,25 +21,4 @@ theorem checkchoose_bounds (n x : Int) (h : n ≥ 1) (h2 : n ≤ 20) (h3 : x ≥
 
 theorem checkchoose_impossible_m (m n : Int) (h : m ≤ 0) (h2 : n ≥ 1) (h3 : n ≤ 20) :
   checkchoose m n = -1 := sorry
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval checkchoose 6 4
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval checkchoose 35 7
-
-/-
-info: -1
--/
--- #guard_msgs in
--- #eval checkchoose 4 2
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

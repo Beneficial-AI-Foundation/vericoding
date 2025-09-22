@@ -29,104 +29,111 @@ vc-description: |-
       Gp2=1    Gp4=5     Gp6=12        Gp8=22                    //All the Pentagonal Numbers are Generalised
                Gp1=0     Gp3=2         Gp5=7             Gp7=15  //Total Number of dots inside the outermost Pentagon
   -/
-
-vc-preamble: |-
-  def p_num (n : Int) : Bool := sorry
-  def g_p_num (n : Int) : Bool := sorry
-  
-  def s_p_num (n : Int) : Bool := sorry
   
   /- Helper function for pentagonal numbers -/
   
+  /- Helper function for generalized pentagonal numbers -/
+
+vc-preamble: |-
   def pen (n : Int) : Int := (3*n*n - n) / 2
   
-  /- Helper function for generalized pentagonal numbers -/
+  def gen_pen (n : Int) : Int :=
+    if n >= 0 then (3*n*n - n) / 2 else (3*n*n + n) / 2
 
 vc-helpers: |-
 
 vc-definitions: |-
-  def gen_pen (n : Int) : Int :=
-    if n >= 0 then (3*n*n - n) / 2 else (3*n*n + n) / 2
+  def p_num (n : Int) : Bool :=
+  sorry
+  
+  def g_p_num (n : Int) : Bool :=
+  sorry
+  
+  def s_p_num (n : Int) : Bool :=
+  sorry
 
 vc-theorems: |-
-  theorem g_p_num_for_gen_pen (n : Int) : g_p_num (gen_pen n) = true := sorry
+  theorem g_p_num_for_gen_pen (n : Int) : g_p_num (gen_pen n) = true :=
+  sorry
   
-  theorem s_p_num_is_square_of_pentagonal_number {n : Int} (h : s_p_num n = true) : 
-    ∃ k : Int, 
-      k * k = n ∧ 
+  theorem s_p_num_is_square_of_pentagonal_number {n : Int} (h : s_p_num n = true) :
+    ∃ k : Int,
+      k * k = n ∧
       p_num k = true ∧
-      g_p_num n = true := sorry
+      g_p_num n = true :=
+  sorry
   
-  theorem non_square_not_s_p_num {n : Int} (h : ¬∃ k : Int, k * k = n) : 
-    s_p_num n = false := sorry
-  
-  /-
-  info: False
-  -/
-  -- #guard_msgs in
-  -- #eval p_num 0
-  
-  /-
-  info: True
-  -/
-  -- #guard_msgs in
-  -- #eval p_num 1
-  
-  /-
-  info: True
-  -/
-  -- #guard_msgs in
-  -- #eval p_num 5
-  
-  /-
-  info: False
-  -/
-  -- #guard_msgs in
-  -- #eval p_num 100
-  
-  /-
-  info: True
-  -/
-  -- #guard_msgs in
-  -- #eval g_p_num 0
-  
-  /-
-  info: True
-  -/
-  -- #guard_msgs in
-  -- #eval g_p_num 1
-  
-  /-
-  info: True
-  -/
-  -- #guard_msgs in
-  -- #eval g_p_num 2
-  
-  /-
-  info: True
-  -/
-  -- #guard_msgs in
-  -- #eval g_p_num 5
-  
-  /-
-  info: True
-  -/
-  -- #guard_msgs in
-  -- #eval s_p_num 1
-  
-  /-
-  info: True
-  -/
-  -- #guard_msgs in
-  -- #eval s_p_num 9801
-  
-  /-
-  info: False
-  -/
-  -- #guard_msgs in
-  -- #eval s_p_num 100
+  theorem non_square_not_s_p_num {n : Int} (h : ¬∃ k : Int, k * k = n) :
+    s_p_num n = false :=
+  sorry
 
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+  
+  /--
+  info: False
+  -/
+  #guard_msgs in
+  #eval p_num 0
+  
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval p_num 1
+  
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval p_num 5
+  
+  /--
+  info: False
+  -/
+  #guard_msgs in
+  #eval p_num 100
+  
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval g_p_num 0
+  
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval g_p_num 1
+  
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval g_p_num 2
+  
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval g_p_num 5
+  
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval s_p_num 1
+  
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval s_p_num 9801
+  
+  /--
+  info: False
+  -/
+  #guard_msgs in
+  #eval s_p_num 100
 

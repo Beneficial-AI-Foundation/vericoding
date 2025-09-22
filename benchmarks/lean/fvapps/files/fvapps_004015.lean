@@ -40,25 +40,4 @@ theorem make_sentences_preserves_content
   (h2 : part ∈ parts)
   (h3 : part ≠ "," ∧ part ≠ ".") :
   (stringContains (make_sentences parts) part) = true := sorry
-
-/-
-info: 'hello world.'
--/
--- #guard_msgs in
--- #eval make_sentences ["hello", "world"]
-
-/-
-info: 'hello, my dear.'
--/
--- #guard_msgs in
--- #eval make_sentences ["hello", ",", "my", "dear"]
-
-/-
-info: 'hello world.'
--/
--- #guard_msgs in
--- #eval make_sentences ["hello", "world", ".", ".", "."]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

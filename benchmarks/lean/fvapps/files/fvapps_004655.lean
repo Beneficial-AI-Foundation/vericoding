@@ -28,6 +28,3 @@ theorem sort_last {α : Type} [Ord α] [LE α] (xs : List α) (h₁ : xs ≠ [])
 theorem sort_singleton {α : Type} [Ord α] (x : α) :
   sort [x] = [x] := sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

@@ -21,25 +21,4 @@ sorry
 theorem count_binary_sequences_base_cases :
   count_binary_sequences 1 = 1 ∧ count_binary_sequences 2 = 2 :=
 sorry
-
-/-
-info: 5
--/
--- #guard_msgs in
--- #eval count_binary_sequences 4
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval count_binary_sequences 1
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval count_binary_sequences 2
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

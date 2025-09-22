@@ -33,6 +33,3 @@ theorem solve_valid_coords (N : Nat) (coords : List (Nat × Nat))
   solve N coords < MOD ∧ solve N coords ≥ 0 :=
   sorry
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: guarded

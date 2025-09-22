@@ -23,25 +23,4 @@ theorem power_sum_with_zero_right (a b c : Nat) :
 
 theorem power_sum_with_zero_mid (a b c : Nat) :
   calculate_power_sum a 0 c b = 1 + c^b := sorry
-
-/-
-info: 4710194409608608369201743232
--/
--- #guard_msgs in
--- #eval calculate_power_sum 9 29 7 27
-
-/-
-info: 17
--/
--- #guard_msgs in
--- #eval calculate_power_sum 2 3 3 2
-
-/-
-info: 50
--/
--- #guard_msgs in
--- #eval calculate_power_sum 5 2 5 2
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

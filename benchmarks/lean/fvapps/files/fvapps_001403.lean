@@ -26,6 +26,3 @@ theorem process_toffee_queries_accumulative
   results.getLast! = type1_queries.length := by
   sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

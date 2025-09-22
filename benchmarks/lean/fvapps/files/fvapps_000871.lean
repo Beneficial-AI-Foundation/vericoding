@@ -45,25 +45,4 @@ theorem reaches_target_segments
   ∃ i ≤ ops.length,
   List.foldl apply_operation (List.head segments h₁) (ops.take i) = target :=
 sorry
-
-/-
-info: [9, 'R+L+R+L+R+L+R+L+R+']
--/
--- #guard_msgs in
--- #eval solve [[-1, 0], [0, 1], [3, 5]]
-
-/-
-info: [0, '']
--/
--- #guard_msgs in
--- #eval solve [[0, 1]]
-
-/-
-info: [1, 'R+']
--/
--- #guard_msgs in
--- #eval solve [[-2, -1], [-2, -1], [-2, 0]]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

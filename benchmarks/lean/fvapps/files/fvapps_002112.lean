@@ -29,25 +29,4 @@ sorry
 theorem min_sad_guests_edge_cases_3 :
   min_sad_guests 3 2 [(1,2), (2,3)] = 0 :=
 sorry
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval min_sad_guests 5 4 [(1, 2), (4, 3), (1, 4), (3, 4)]
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval min_sad_guests 6 5 [(2, 3), (2, 1), (3, 4), (6, 5), (4, 5)]
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval min_sad_guests 2 1 [(1, 2)]
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: guarded_and_plausible

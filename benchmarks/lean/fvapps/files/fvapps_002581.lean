@@ -32,25 +32,4 @@ theorem default_is_air (s : String) :
   s ≠ "slime" →
   s ≠ "I don't know" →
   bucket_of s = "air" := sorry
-
-/-
-info: 'water'
--/
--- #guard_msgs in
--- #eval bucket_of "water"
-
-/-
-info: 'sludge'
--/
--- #guard_msgs in
--- #eval bucket_of "slime water"
-
-/-
-info: 'air'
--/
--- #guard_msgs in
--- #eval bucket_of "just saying something"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

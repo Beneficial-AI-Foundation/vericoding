@@ -27,25 +27,4 @@ theorem consistent_mapping (s : String) (i j : String.Pos) :
   isAlpha (s.get i) →
   s.get i = s.get j →
   (toLoverCase s).get i = (toLoverCase s).get j := sorry
-
-/-
-info: 'EVOL'
--/
--- #guard_msgs in
--- #eval to_lover_case "LOVE"
-
-/-
-info: 'ELEEV VVOEE!'
--/
--- #guard_msgs in
--- #eval to_lover_case "Hello World!"
-
-/-
-info: 'OOOO,'
--/
--- #guard_msgs in
--- #eval to_lover_case "jrvz,"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

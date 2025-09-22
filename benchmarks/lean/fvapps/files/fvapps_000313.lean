@@ -7,54 +7,25 @@
 -- <vc-definitions>
 def checkIfCanBreak (s1 s2 : String) : Bool :=
   sorry
-
-/- If two strings are compared with checkIfCanBreak, they must have same length -/
 -- </vc-definitions>
 
 -- <vc-theorems>
 theorem check_if_can_break_same_length (s1 s2 : String) :
   checkIfCanBreak s1 s2 → String.length s1 = String.length s2 :=
-  sorry
-
-/- A string can always break itself -/
+sorry
 
 theorem check_if_can_break_reflexive (s : String) :
   checkIfCanBreak s s = true :=
-  sorry
-
-/- The break relationship is symmetric -/
+sorry
 
 theorem check_if_can_break_symmetric (s1 s2 : String) :
   checkIfCanBreak s1 s2 = checkIfCanBreak s2 s1 :=
-  sorry
+sorry
 
-/- A sorted string can always break its unsorted version -/ 
-
-theorem sorted_string_breaks_unsorted (s sorted : String) 
+theorem sorted_string_breaks_unsorted (s sorted : String)
   (h : ∀ i j : String.Pos, i < j → sorted.get i ≤ sorted.get j)
   (h2 : sorted.length = s.length)
   (h3 : ∀ c, c ∈ sorted.data ↔ c ∈ s.data) :
   checkIfCanBreak sorted s = true :=
-  sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval check_if_can_break "abc" "xya"
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval check_if_can_break "abe" "acd"
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval check_if_can_break "leetcodee" "interview"
+sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

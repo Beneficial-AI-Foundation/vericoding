@@ -22,25 +22,4 @@ theorem abundant_number_true_implies_sum_greater (n : Nat) :
 
 theorem abundant_number_false_implies_sum_leq (n : Nat) :
   abundant_number n = false → divisors_sum n ≤ n := sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval abundant_number 12
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval abundant_number 37
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval abundant_number 120
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

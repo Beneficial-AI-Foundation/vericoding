@@ -24,25 +24,4 @@ theorem balanced_parens_pretty (n: Nat) :
   let s := String.mk (List.replicate n '(' ++ List.replicate n ')')
   count_pretty_substrings s ≥ 1 := 
   sorry
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval count_pretty_substrings "((?))"
-
-/-
-info: 7
--/
--- #guard_msgs in
--- #eval count_pretty_substrings "??()??"
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval count_pretty_substrings "??"
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: guarded_and_plausible

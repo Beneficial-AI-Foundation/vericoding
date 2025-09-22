@@ -16,25 +16,4 @@ theorem plant_doubling_edge_cases :
   plant_doubling 1 = 1 ∧
   plant_doubling 2 = 1 ∧  
   plant_doubling 3 = 2 := sorry
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval plant_doubling 5
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval plant_doubling 8
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval plant_doubling 1
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

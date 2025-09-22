@@ -39,6 +39,3 @@ theorem ipv4_parser_reconstruction
     netOctets.get! i = (ipOctets.octets.get! i &&& maskOctets.octets.get! i) ∧
     hostOctets.get! i = (ipOctets.octets.get! i &&& ((255 : Nat) - (maskOctets.octets.get! i))) := sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

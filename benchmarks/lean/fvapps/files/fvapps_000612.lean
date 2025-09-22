@@ -39,19 +39,4 @@ theorem linear_tree_bounds (n k : Nat) (classes : List Nat) (links : List (Nat �
   links = [(1,2), (2,3), (3,4)] →
   let result := solveSparrowProblem n k classes links
   result ≥ 0 ∧ result ≤ n := sorry
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval solve_sparrow_problem 5 3 [1, 1, 2, 2, 3] [(1, 2), (1, 3), (2, 4), (2, 5)]
-
-/-
-info: -1
--/
--- #guard_msgs in
--- #eval solve_sparrow_problem 5 5 [1, 1, 2, 2, 3] [(1, 2), (1, 3), (2, 4), (2, 5)]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

@@ -17,25 +17,4 @@ theorem positive_sum_equals_positive_filter_sum (xs : List Int) :
 
 theorem positive_sum_unchanged_remove_negative (xs : List Int) :
   positive_sum xs = positive_sum (xs.filter (fun x => x ≥ 0)) := sorry
-
-/-
-info: 15
--/
--- #guard_msgs in
--- #eval positive_sum [1, 2, 3, 4, 5]
-
-/-
-info: 13
--/
--- #guard_msgs in
--- #eval positive_sum [1, -2, 3, 4, 5]
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval positive_sum []
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

@@ -27,25 +27,4 @@ theorem eraseOverlapIntervals_single_interval
   (h : i.1 ≤ i.2) :
   eraseOverlapIntervals [i] = 0 :=
   sorry
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval eraseOverlapIntervals [[1, 2], [2, 3], [3, 4], [1, 3]]
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval eraseOverlapIntervals [[1, 2], [1, 2], [1, 2]]
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval eraseOverlapIntervals [[1, 2], [2, 3]]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

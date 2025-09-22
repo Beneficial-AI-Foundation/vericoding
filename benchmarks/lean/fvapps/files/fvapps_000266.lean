@@ -23,25 +23,4 @@ theorem racecar_optimal_for_power2minus1 (target : Nat) :
 theorem racecar_consistent (target : Nat) :
   target > 0 →
   racecar target = racecar target := sorry
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval racecar 3
-
-/-
-info: 5
--/
--- #guard_msgs in
--- #eval racecar 6
-
-/-
-info: 5
--/
--- #guard_msgs in
--- #eval racecar 4
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

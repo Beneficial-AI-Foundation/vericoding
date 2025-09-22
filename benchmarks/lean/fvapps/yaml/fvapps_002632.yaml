@@ -1,39 +1,39 @@
 vc-description: |-
   /-
   Cascading Style Sheets (CSS) is a style sheet language used for describing the look and formatting of a document written in a markup language. A style sheet consists of a list of rules. Each rule or rule-set consists of one or more selectors, and a declaration block. Selector describes which element it matches.
-  
+
   Sometimes element is matched to multiple selectors. In this case, element inherits multiple styles, from each rule it matches. Rules can override each other. To solve this problem, each selector has it's own 'specificity' - e.g. weight. The selector with greater specificity overrides the other selector.
-  
+
   Your task is to calculate the weights of two selectors and determine which of them will beat the other one.
-  
+
   ```python
   compare("body p", "div") # returns "body p"
   compare(".class", "#id") # returns "#id"
   compare("div.big", ".small") # returns "div.big"
   compare(".big", ".small") # returns ".small" (because it appears later)
   ```
-  
+
   For simplicity, all selectors in test cases are CSS1-compatible, test cases don't include pseudoclasses, pseudoelements, attribute selectors, etc. Below is an explanation on how to weight two selectors. You can read more about specificity here.
-  
+
   The simplest selector type is ``tagname`` selector. It writes as a simple  alphanumeric identifier: eg ``body``, ``div``, ``h1``, etc. It has the least weight. If selectors have multiple elements - the selector with more elements win. For example, ``body p`` beats ``div``, because it refers to 2 (nested) elements rather than 1.
-  
+
   Another simple selector is ``.class`` selector. It begins with dot and refer to element with specific ``class`` attribute. Class selectors can also be applied to tagname selectors, so ``div.red`` refer to ```` element. They can be grouped, for example, ``.red.striped``. Class selector beats tagname selector.
-  
+
   The most weighted selector type in stylesheet is ``#id`` selector. It begins with hash sign and refer to element with specific ``id`` attribute. It can also be standalone, or applied to an element. Id selector beats both selector types.
-  
+
   And the least weighted selector is ``*``, which has no specificity and can be beat by any other selector.
-  
+
   Selectors can be combined, for example, ``body #menu ul li.active`` refers to ``li`` element with ``class="active"``, placed inside ``ul`` element, placed inside element width ``id="menu"``, placed inside ``body``.
-  
+
   Specificity calculation is simple. 
-  
+
   Selector with more #id selectors wins
   If both are same, the winner is selector with more .class selectors
   If both are same, selector with more elements wins
   If all of above values are same, the winner is selector that appear last
-  
+
   For example, let's represent the number of ``#id`` , ``.class``, ``tagname`` selectors as array (in order from worst to best):
-  
+
   SelectorSpecificity (#id,.class,tagname)
   *0, 0, 0
   span0, 0, 1
@@ -50,14 +50,14 @@ vc-description: |-
   #foo div#bar.red .none2, 2, 1
   -/
 
-vc-preamble: |-
+vc-preamble: |
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def myCompare (a b : String) : String := sorry 
   def specificity (s : String) : Nat × Nat × Nat := sorry
-  
+
   instance : LT (Nat × Nat × Nat) where
     lt x y := x.1 < y.1 ∨ (x.1 = y.1 ∧ (x.2.1 < y.2.1 ∨ (x.2.1 = y.2.1 ∧ x.2.2 < y.2.2)))
 
@@ -65,43 +65,43 @@ vc-theorems: |-
   theorem compare_returns_input (a b : String) :
     let res := myCompare a b;
     (res = a ∨ res = b) := sorry
-  
+
   theorem compare_reflexive (s : String) :
     myCompare s s = s := sorry
-  
+
   theorem specificity_ordering (a b : String) :
     myCompare a b = a → 
     ¬(specificity a < specificity b) := sorry
-  
+
   theorem id_beats_class : 
     (specificity "#x").1 > (specificity ".x").1 := sorry
-  
+
   theorem class_beats_tag :
     (specificity ".x").2.1 > (specificity "x").2.1 := sorry
-  
+
   theorem specificity_output_format (s : String) :
     let spec := specificity s;
     spec.1 ≥ 0 ∧ spec.2.1 ≥ 0 ∧ spec.2.2 ≥ 0 := sorry
-  
-  /-
-  info: 'body p'
-  -/
-  -- #guard_msgs in
-  -- #eval compare "body p" "div"
-  
-  /-
-  info: '.red'
-  -/
-  -- #guard_msgs in
-  -- #eval compare ".red" "div"
-  
-  /-
-  info: '#header'
-  -/
-  -- #guard_msgs in
-  -- #eval compare "#header" ".main"
 
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+
+  /--
+  info: 'body p'
+  -/
+  #guard_msgs in
+  #eval compare "body p" "div"
+
+  /--
+  info: '.red'
+  -/
+  #guard_msgs in
+  #eval compare ".red" "div"
+
+  /--
+  info: '#header'
+  -/
+  #guard_msgs in
+  #eval compare "#header" ".main"
 

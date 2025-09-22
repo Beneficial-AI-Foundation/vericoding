@@ -30,5 +30,3 @@ theorem test1_spec_satisfied (nums : Array Nat) (old_nums : Array Nat) (h_precon
     test1_postcond (test1 nums h_precond) old_nums h_precond := by
   sorry
 -- </vc-theorems>
-
-def main : IO Unit := return ()

@@ -37,6 +37,3 @@ theorem max_value_bounded {n : Nat} (h : n > 0)
   let result := find_hardness_of_ordering n positions
   ∀ i, i < result.length → result.get ⟨i, sorry⟩ ≤ n := sorry
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: guarded

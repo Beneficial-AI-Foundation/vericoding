@@ -34,6 +34,3 @@ theorem rearrange_caps_two_elems {a b : Nat} :
     then none
     else some [b, a] := sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

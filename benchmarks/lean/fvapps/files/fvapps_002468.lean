@@ -40,6 +40,3 @@ theorem convert_to_3x3_array_too_many_numbers (numbers: List Int)
   | .ok _ => False
   | .error _ => True := sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

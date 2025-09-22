@@ -38,30 +38,30 @@ vc-description: |-
   -/
 
 vc-preamble: |-
-  def maxSizeSlices (slices: List Nat) : Nat :=
-  sorry
-  
-  def sumList : List Nat → Nat 
+  def sumList : List Nat → Nat
     | [] => 0
     | x::xs => x + sumList xs
+
+vc-helpers: |-
+
+vc-definitions: |-
+  def maxSizeSlices (slices: List Nat) : Nat :=
+  sorry
   
   def maxList : List Nat → Nat
     | [] => 0
     | [x] => x
     | x::xs => Nat.max x (maxList xs)
-
-vc-helpers: |-
-
-vc-definitions: |-
+  
   def sortList : List Nat → List Nat :=
   sorry
 
 vc-theorems: |-
-  theorem max_size_bounds {slices : List Nat} 
-    (h1: slices.length ≥ 3) 
+  theorem max_size_bounds {slices : List Nat}
+    (h1: slices.length ≥ 3)
     (h2: ∀ x ∈ slices, x ≥ 1 ∧ x ≤ 100) :
     let result := maxSizeSlices slices
-    result > 0 ∧ 
+    result > 0 ∧
     result ≤ sumList slices ∧
     result ≥ maxList slices :=
   sorry
@@ -78,26 +78,26 @@ vc-theorems: |-
     (h2: ∀ x ∈ slices, x ≥ 1 ∧ x ≤ 100) :
     maxSizeSlices slices = maxList slices :=
   sorry
-  
-  /-
-  info: 10
-  -/
-  -- #guard_msgs in
-  -- #eval maxSizeSlices [1, 2, 3, 4, 5, 6]
-  
-  /-
-  info: 16
-  -/
-  -- #guard_msgs in
-  -- #eval maxSizeSlices [8, 9, 8, 6, 1, 1]
-  
-  /-
-  info: 21
-  -/
-  -- #guard_msgs in
-  -- #eval maxSizeSlices [4, 1, 2, 5, 8, 3, 1, 9, 7]
 
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
+  
+  /--
+  info: 10
+  -/
+  #guard_msgs in
+  #eval maxSizeSlices [1, 2, 3, 4, 5, 6]
+  
+  /--
+  info: 16
+  -/
+  #guard_msgs in
+  #eval maxSizeSlices [8, 9, 8, 6, 1, 1]
+  
+  /--
+  info: 21
+  -/
+  #guard_msgs in
+  #eval maxSizeSlices [4, 1, 2, 5, 8, 3, 1, 9, 7]
 

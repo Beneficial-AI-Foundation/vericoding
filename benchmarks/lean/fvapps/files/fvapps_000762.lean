@@ -21,25 +21,4 @@ theorem solve_xorgon_empty_array (n k : Nat) (arr : List Nat)
 theorem solve_xorgon_result_bounded (n k : Nat) (arr : List Nat)
   (h : arr.length > 0) :
   solve_xorgon n k arr ≤ arr.length := sorry
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval solve_xorgon 7 5 [1, 0, 0, 1, 1, 1, 1]
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval solve_xorgon 4 3 [1, 1, 0, 0]
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval solve_xorgon 3 3 [0, 0, 0]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

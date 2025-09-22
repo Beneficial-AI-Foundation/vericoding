@@ -32,25 +32,4 @@ theorem known_disarium_numbers :
   disarium_number 175 = "Disarium !!" ∧
   disarium_number 518 = "Disarium !!" ∧
   disarium_number 598 = "Disarium !!" := sorry
-
-/-
-info: 'Not !!'
--/
--- #guard_msgs in
--- #eval disarium_number 1024
-
-/-
-info: 'Disarium !!'
--/
--- #guard_msgs in
--- #eval disarium_number 1306
-
-/-
-info: 'Not !!'
--/
--- #guard_msgs in
--- #eval disarium_number 1999
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

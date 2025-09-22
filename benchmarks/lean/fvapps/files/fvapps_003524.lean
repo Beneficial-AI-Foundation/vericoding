@@ -24,25 +24,4 @@ theorem slope_same_point {p : Point} :
 
 theorem slope_vertical {p1 p2 : Point} :
   p1.1 = p2.1 → get_slope p1 p2 = none := sorry
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval get_slope [1, 1] [2, 2]
-
-/-
-info: None
--/
--- #guard_msgs in
--- #eval get_slope [1, 1] [1, 2]
-
-/-
-info: -1
--/
--- #guard_msgs in
--- #eval get_slope [11, 1] [1, 11]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

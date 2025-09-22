@@ -29,25 +29,4 @@ theorem binary_pyramid_value_preservation (m n : Nat) :
 theorem binary_pyramid_zero : binary_pyramid 0 0 = "0" := sorry
 
 theorem binary_pyramid_one : binary_pyramid 1 1 = "1" := sorry
-
-/-
-info: '1111010'
--/
--- #guard_msgs in
--- #eval binary_pyramid 1 4
-
-/-
-info: '101001101'
--/
--- #guard_msgs in
--- #eval binary_pyramid 1 6
-
-/-
-info: '0'
--/
--- #guard_msgs in
--- #eval binary_pyramid 0 0
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

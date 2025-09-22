@@ -22,25 +22,4 @@ theorem fusc_base_cases :
 
 theorem fusc_monotonic_bound (n : Nat) :
   fusc n ≤ n := sorry
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval fusc 0
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval fusc 1
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval fusc 10
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

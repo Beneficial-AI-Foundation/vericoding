@@ -37,25 +37,4 @@ theorem edge_cases_4 :
 theorem ascending_coords (n : Nat) (h : 0 < n) (h2 : n ≤ 10) :
   min_photo_area n (List.map Int.ofNat (List.range (2*n))) ≥ 0 := by
   sorry
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval min_photo_area 4 [4, 1, 3, 2, 3, 2, 1, 3]
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval min_photo_area 3 [5, 8, 5, 5, 7, 5]
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval min_photo_area 1 [1, 1]
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: guarded

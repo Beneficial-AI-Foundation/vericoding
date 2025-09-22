@@ -1,12 +1,13 @@
 -- <vc-preamble>
-def execute (cmd : String) : String :=
-  sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
+def execute (cmd : String) : String :=
+  sorry
+
 def isValidOutput (result : String) : Bool :=
   sorry
 -- </vc-definitions>
@@ -36,25 +37,4 @@ theorem straight_line_is_continuous (cmd : String)
   let result := execute cmd
   (result.data.filter (· = '*')).length = cmd.length + 1 := by
   sorry
-
-/-
-info: '*'
--/
--- #guard_msgs in
--- #eval execute ""
-
-/-
-info: '******'
--/
--- #guard_msgs in
--- #eval execute "FFFFF"
-
-/-
-info: '    ****\r\n    *  *\r\n    *  *\r\n********\r\n    *   \r\n    *   '
--/
--- #guard_msgs in
--- #eval execute "LFFFFFRFFFRFFFRFFFFFFF"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

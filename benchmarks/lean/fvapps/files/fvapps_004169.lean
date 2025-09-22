@@ -33,25 +33,4 @@ sorry
 theorem fold_cube_known_invalid
   : fold_cube [1, 7, 6, 17, 12, 16] = false :=
 sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval fold_cube test1.copy()
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval fold_cube test2.copy()
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval fold_cube test3.copy()
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

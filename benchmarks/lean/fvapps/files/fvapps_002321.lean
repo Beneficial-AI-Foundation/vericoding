@@ -1,64 +1,56 @@
 -- <vc-preamble>
-def isUppercase (c : Char) : Bool := sorry
-def toCharList (s : String) : List Char := sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
-def removeDashes (s : String) : String := sorry
-def licenseKeyFormatting (s : String) (k : Nat) : String := sorry
+def isUppercase (c : Char) : Bool :=
+sorry
+
+def toCharList (s : String) : List Char :=
+sorry
+
+def removeDashes (s : String) : String :=
+sorry
+
+def licenseKeyFormatting (s : String) (k : Nat) : String :=
+sorry
 -- </vc-definitions>
 
 -- <vc-theorems>
-theorem license_key_uppercase (s : String) (k : Nat) : 
-  ∀ c ∈ toCharList (licenseKeyFormatting s k), isUppercase c = true 
-  := sorry
+theorem license_key_uppercase (s : String) (k : Nat) :
+  ∀ c ∈ toCharList (licenseKeyFormatting s k), isUppercase c = true
+  :=
+sorry
 
 theorem license_key_same_length (s : String) (k : Nat) :
-  String.length (removeDashes (licenseKeyFormatting s k)) = 
+  String.length (removeDashes (licenseKeyFormatting s k)) =
   String.length (removeDashes s)
-  := sorry
+  :=
+sorry
 
 theorem license_key_group_sizes (s : String) (k : Nat) :
   let result := licenseKeyFormatting s k
   let groups := String.splitOn result "-"
-  groups.length ≤ 1 ∨ 
+  groups.length ≤ 1 ∨
   (∀ g ∈ groups.tail, String.length g = k) ∧ String.length groups.head! ≤ k
-  := sorry
+  :=
+sorry
 
 theorem license_key_empty (k : Nat) :
   licenseKeyFormatting "" k = ""
-  := sorry
+  :=
+sorry
 
 theorem license_key_single_dash (k : Nat) :
   licenseKeyFormatting "-" k = ""
-  := sorry
+  :=
+sorry
 
 theorem license_key_no_dashes (s : String) (k : Nat) :
-  (∀ c ∈ toCharList s, c ≠ '-') → 
+  (∀ c ∈ toCharList s, c ≠ '-') →
   removeDashes (licenseKeyFormatting s k) = String.mk (List.map Char.toUpper (toCharList s))
-  := sorry
-
-/-
-info: '5F3Z-2E9W'
--/
--- #guard_msgs in
--- #eval license_key_formatting "5F3Z-2e-9-w" 4
-
-/-
-info: '2-5G-3J'
--/
--- #guard_msgs in
--- #eval license_key_formatting "2-5g-3-J" 2
-
-/-
-info: 'A-B-C'
--/
--- #guard_msgs in
--- #eval license_key_formatting "a-b-c" 1
+  :=
+sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

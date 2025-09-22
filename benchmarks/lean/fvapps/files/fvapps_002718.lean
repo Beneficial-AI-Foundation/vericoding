@@ -24,25 +24,4 @@ sorry
 theorem single_bit_no_gap (n : Nat):
   gap (1 <<< n) = 0 :=
 sorry
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval gap 9
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval gap 529
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval gap 15
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

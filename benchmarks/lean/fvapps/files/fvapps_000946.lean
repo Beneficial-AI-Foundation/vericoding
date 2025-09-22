@@ -22,6 +22,3 @@ theorem full_ineligible_is_zero
     calc_scholarships n r n 0 x_arr [] = 0 :=
   sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

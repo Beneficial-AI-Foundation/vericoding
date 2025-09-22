@@ -33,25 +33,4 @@ theorem nb_dig_edge_cases :
   nb_dig 0 1 = 0 ∧
   nb_dig 0 0 = 1 :=
   sorry
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval nb_dig 10 1
-
-/-
-info: 11
--/
--- #guard_msgs in
--- #eval nb_dig 25 1
-
-/-
-info: 4700
--/
--- #guard_msgs in
--- #eval nb_dig 5750 0
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

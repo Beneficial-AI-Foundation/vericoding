@@ -27,25 +27,4 @@ theorem round_to_five_empty :
 
 theorem round_to_five_exact_multiples (n : Float) :
   round_to_five [n * 5] = [n * 5] := sorry
-
-/-
-info: [0, 5, 85, 45, 10, 10]
--/
--- #guard_msgs in
--- #eval round_to_five [1, 5, 87, 45, 8, 8]
-
-/-
-info: [5, 55, 10, 15]
--/
--- #guard_msgs in
--- #eval round_to_five [3, 56.2, 11, 13]
-
-/-
-info: [25, 545, 80]
--/
--- #guard_msgs in
--- #eval round_to_five [22.5, 544.9, 77.5]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

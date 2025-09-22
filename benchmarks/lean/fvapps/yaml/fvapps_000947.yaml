@@ -1,45 +1,45 @@
 vc-description: |-
   /-
   Zonal Computing Olympiad 2012, 26 Nov 2011
-  
+
   We consider sequences of opening and closing brackets with two types of brackets, () and [].  A bracket sequence is well-bracketed if we can pair up each opening bracket with a matching closing bracket in the usual sense.  For instance, the sequences (), [] ([]) and []([]) are well-bracketed, while (, ()], (], )( and [(]) are not well-bracketed.  In the last case, each opening bracket has a matching closing bracket and vice versa, but the intervals spanned by the different types of brackets intersect each other instead of being contained one within the other.
-  
+
   The alternating depth of a well-bracketed sequence tells us the maximum number of times we switch between the two types of brackets when we have inner matched brackets enclosed within outer matched brackets.  For instance, the alternating depth of (), [[[]]] and ()[][] is 1, the alternating depth of [()] and ()([]) is 2, the alternating depth of ([()]) and [()][(([]))] is 3, and so on.
-  
+
   Given a well-bracketed sequence, we are interested in computing three quantities.
   - The alternating depth of the sequence.
   - The maximum number of symbols between any pair of matched brackets of the type ( and ), including both the outer brackets.
   - The maximum number of symbols between any pair of matched brackets of the type [ and ], including both the outer brackets.
-  
+
   For instance, the alternating depth of (([]))[[[()]]] is 2, the maximum number of symbols between a matched pair () is 6 and the maximum number of symbols between a matched pair [] is 8.
-  
+
   -----Input format-----
   The input consists of two lines.  The first line is a single integer N, the length of the bracket sequence. Positions in the sequence are numbered 1,2,…,N. The second line is a sequence of N space-separated integers that encode the bracket expression as follows: 1 denotes an opening bracket (, 2 denotes a closing bracket ), 3 denotes an opening bracket [ and 4 denotes a closing bracket ].  Nothing other than 1, 2, 3 or 4 appears in the second line of input and the corresponding expression is guaranteed to be well-bracketed.
-  
+
   -----Output format-----
   Your program should print 3 space-separated integers in a line, denoting the three quantities asked for in the following order: alternating depth, length of the maximum sequence between matching () brackets and length of the maximum sequence between matching [] brackets.  
-  
+
   -----Testdata-----
   You may assume that 2 ≤ N ≤ 105.  In 30% of the test cases, 2 ≤ N ≤ 103.
-  
+
   - Subtask 1 (30 marks)
   - Subtask 2 (70 marks)
-  
+
   -----Sample Input-----
   14
   1 1 3 4 2 2 3 3 3 1 2 4 4 4
-  
+
   -----Sample Output-----
   2 6 8
   -/
 
-vc-preamble: |-
+vc-preamble: |
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def solve_brackets (n : Nat) (brackets : List Nat) : Nat × Nat × Nat := sorry
-  
+
   theorem output_props (n : Nat) (brackets : List Nat) :
     let (depth, depth1, depth3) := solve_brackets n brackets
     -- Basic type properties (implied by return type)
@@ -51,46 +51,46 @@ vc-theorems: |-
     let (depth, depth1, depth3) := solve_brackets n brackets
     depth ≤ n ∧ depth1 ≤ n ∧ depth3 ≤ n :=
   sorry
-  
+
   theorem non_empty_depth (n : Nat) (brackets : List Nat) :
     n > 0 →
     let (depth, depth1, depth3) := solve_brackets n brackets
     max depth (max depth1 depth3) > 0 :=
   sorry
-  
+
   theorem empty_case :
     solve_brackets 0 [] = (0, 0, 0) :=
   sorry
-  
+
   theorem type1_pair :
     let (depth, depth1, depth3) := solve_brackets 2 [1, 2]
     depth1 > 0 :=
   sorry
-  
+
   theorem type3_pair : 
     let (depth, depth3, depth3') := solve_brackets 2 [3, 4]
     depth3 > 0 :=
   sorry
-  
-  /-
-  info: (2, 6, 8)
-  -/
-  -- #guard_msgs in
-  -- #eval solve_brackets *test1
-  
-  /-
-  info: (2, 4, 2)
-  -/
-  -- #guard_msgs in
-  -- #eval solve_brackets *test2
-  
-  /-
-  info: (1, 2, 2)
-  -/
-  -- #guard_msgs in
-  -- #eval solve_brackets *test3
 
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
+
+  /--
+  info: (2, 6, 8)
+  -/
+  #guard_msgs in
+  #eval solve_brackets *test1
+
+  /--
+  info: (2, 4, 2)
+  -/
+  #guard_msgs in
+  #eval solve_brackets *test2
+
+  /--
+  info: (1, 2, 2)
+  -/
+  #guard_msgs in
+  #eval solve_brackets *test3
 

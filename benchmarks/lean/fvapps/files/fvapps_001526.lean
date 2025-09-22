@@ -43,25 +43,4 @@ theorem diagonal_manhattan_distance
   (h6 : sx ≤ 100) (h7 : sy ≤ 100) (h8 : ex ≤ 100) (h9 : ey ≤ 100)
   (h10 : sx ≠ ex) (h11 : sy ≠ ey) :
   min_moves_to_cheese n sx sy ex ey 1 1 = abs (sx - ex) + abs (sy - ey) := sorry
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval min_moves_to_cheese 2 1 1 2 2 1 2
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval min_moves_to_cheese 3 1 1 1 3 1 2
-
-/-
-info: 5
--/
--- #guard_msgs in
--- #eval min_moves_to_cheese 4 1 1 4 1 2 1
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

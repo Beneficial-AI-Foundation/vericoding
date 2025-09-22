@@ -1,15 +1,15 @@
 -- <vc-preamble>
-def lastStoneWeightII (stones : List Nat) : Nat :=
-  sorry
+def sum : List Nat → Nat
+  | [] => 0
+  | x::xs => x + sum xs
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
-def sum : List Nat → Nat
-  | [] => 0
-  | x::xs => x + sum xs
+def lastStoneWeightII (stones : List Nat) : Nat :=
+  sorry
 -- </vc-definitions>
 
 -- <vc-theorems>
@@ -32,25 +32,4 @@ sorry
 theorem lastStoneWeight_identical_values (stones : List Nat) (x : Nat) :
   (∀ i, i < stones.length → stones[i]! = x) → lastStoneWeightII stones ≤ x :=
 sorry
-
-/-
-info: expected1
--/
--- #guard_msgs in
--- #eval lastStoneWeightII [2, 7, 4, 1, 8, 1]
-
-/-
-info: expected2
--/
--- #guard_msgs in
--- #eval lastStoneWeightII [1, 1, 1]
-
-/-
-info: expected3
--/
--- #guard_msgs in
--- #eval lastStoneWeightII [2, 2]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

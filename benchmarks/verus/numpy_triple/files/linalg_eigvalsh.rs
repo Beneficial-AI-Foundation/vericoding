@@ -19,11 +19,11 @@ fn eigvalsh(a: Vec<Vec<i8>>) -> (eigenvals: Vec<i8>)
         forall|i: int, j: int| 0 <= i < j < eigenvals.len() ==> eigenvals[i] <= eigenvals[j],
         /* Identity matrix has all eigenvalues equal to 1 */
         (forall|i: int, j: int| 0 <= i < a.len() && 0 <= j < a.len() ==> 
-            a[i][j] as int == (if i == j { 1int } else { 0int })) ==> 
-            (forall|i: int| 0 <= i < eigenvals.len() ==> eigenvals[i] as int == 1int),
+            a[i][j] == (if i == j { 1i8 } else { 0i8 })) ==> 
+            (forall|i: int| 0 <= i < eigenvals.len() ==> eigenvals[i] == 1i8),
         /* Zero matrix has all eigenvalues equal to 0 */
-        (forall|i: int, j: int| 0 <= i < a.len() && 0 <= j < a.len() ==> a[i][j] as int == 0int) ==> 
-            (forall|i: int| 0 <= i < eigenvals.len() ==> eigenvals[i] as int == 0int)
+        (forall|i: int, j: int| 0 <= i < a.len() && 0 <= j < a.len() ==> a[i][j] == 0i8) ==> 
+            (forall|i: int| 0 <= i < eigenvals.len() ==> eigenvals[i] == 0i8)
 // </vc-spec>
 // <vc-code>
 {

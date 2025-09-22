@@ -24,25 +24,4 @@ theorem duplicate_handling {points : List (Int × Int)} :
 theorem order_invariance {points : List (Int × Int)}
     (h : points.length ≥ 3) :
     count_rect_triang points = count_rect_triang points.reverse := by sorry
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval count_rect_triang [[1, 2], [3, 3], [4, 1], [1, 1], [4, -1]]
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval count_rect_triang [[1, 2], [4, -1], [3, 3], [4, -1], [4, 1], [1, 1], [4, -1], [4, -1], [3, 3], [1, 2]]
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval count_rect_triang [[0, 0], [1, 1], [2, 2]]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

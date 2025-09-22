@@ -32,25 +32,4 @@ theorem longestPalindrome_parity_even (s : String) :
   (¬∃ c, counts c % 2 = 1) →
   longestPalindrome s > 0 →
   longestPalindrome s % 2 = 0 := sorry
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval longest_palindrome "A"
-
-/-
-info: 6
--/
--- #guard_msgs in
--- #eval longest_palindrome "Hannah"
-
-/-
-info: 13
--/
--- #guard_msgs in
--- #eval longest_palindrome "xyz__a_/b0110//a_zyx"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

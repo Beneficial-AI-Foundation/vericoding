@@ -35,25 +35,4 @@ theorem extreme_walking_speeds (n m : Nat) (speeds : List Nat) (h: speeds.length
     (Nat.sub (max m n) (min m n)*speeds.get! 0 + speeds.get! 1 + speeds.get! 2 + (n-1)*speeds.get! 0 + speeds.get! 1) 
     ((n-1)*speeds.get! 3) :=
   sorry
-
-/-
-info: 12
--/
--- #guard_msgs in
--- #eval shortest_time 5 6 [1, 2, 3, 10]
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval shortest_time 1 6 [1, 2, 3, 10]
-
-/-
-info: 20
--/
--- #guard_msgs in
--- #eval shortest_time 5 4 [2, 3, 4, 5]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

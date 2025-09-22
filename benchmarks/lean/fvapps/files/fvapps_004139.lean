@@ -28,25 +28,4 @@ theorem any_below_five_makes_false :
   ∀ (archers : List Int),
     (∃ x ∈ archers, x < 5) →
     archers_ready archers = false := sorry
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval archers_ready []
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval archers_ready [5, 6, 7, 8]
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval archers_ready [1, 2, 3, 4, 5, 6, 7, 8]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

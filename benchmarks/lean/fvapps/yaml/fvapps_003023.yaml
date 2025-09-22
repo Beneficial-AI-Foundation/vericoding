@@ -1,19 +1,19 @@
 vc-description: |-
   /-
   ## If/else syntax debug
-  
+
   While making a game, your partner, Greg, decided to create a function to check if the user is still alive called `checkAlive`/`CheckAlive`/`check_alive`. Unfortunately, Greg made some errors while creating the function.
-  
+
   `checkAlive`/`CheckAlive`/`check_alive` should return true if the player's health is greater than 0 or false if it is 0 or below. 
-  
+
   ```if-not:csharp
   The function receives one parameter `health` which will always be a whole number between -10 and 10.
   ```
   -/
 
-vc-preamble: |-
+vc-preamble: |
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def check_alive (health : Int) : Bool :=
@@ -23,30 +23,30 @@ vc-theorems: |-
   theorem check_alive_returns_bool (health : Int) :
     check_alive health = true ∨ check_alive health = false :=
     sorry
-  
+
   theorem check_alive_positive_health (health : Int) :
     check_alive health ↔ health > 0 :=
     sorry
-  
-  /-
-  info: True
-  -/
-  -- #guard_msgs in
-  -- #eval check_alive 5
-  
-  /-
-  info: False
-  -/
-  -- #guard_msgs in
-  -- #eval check_alive 0
-  
-  /-
-  info: False
-  -/
-  -- #guard_msgs in
-  -- #eval check_alive -5
 
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval check_alive 5
+
+  /--
+  info: False
+  -/
+  #guard_msgs in
+  #eval check_alive 0
+
+  /--
+  info: False
+  -/
+  #guard_msgs in
+  #eval check_alive -5
 

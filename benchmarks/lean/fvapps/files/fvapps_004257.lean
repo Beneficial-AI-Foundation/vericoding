@@ -40,25 +40,4 @@ theorem solve_with_empty (s : String) :
   solve s "" = s ∧
   solve "" s = s
   := sorry
-
-/-
-info: 'ybzc'
--/
--- #guard_msgs in
--- #eval solve "xyab" "xzca"
-
-/-
-info: 'ybbzc'
--/
--- #guard_msgs in
--- #eval solve "xyabb" "xzca"
-
-/-
-info: 'abcdxyz'
--/
--- #guard_msgs in
--- #eval solve "abcd" "xyz"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

@@ -26,25 +26,4 @@ theorem shared_chars_implies_transformable (s t : String)
   (h1 : s.length > 0 ∧ t.length > 0)
   (h2 : ∃ c, c ∈ s.data ∧ c ∈ t.data) :
   are_strings_transformable s t = true := sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval are_strings_transformable "xabb" "aabx"
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval are_strings_transformable "technocup" "technocup"
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval are_strings_transformable "a" "z"
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

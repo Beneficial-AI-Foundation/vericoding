@@ -35,25 +35,4 @@ sorry
 theorem full_coverage {m : Nat} (h : m ≤ 100) :
   segments m [(0,m)] = [] :=
 sorry
-
-/-
-info: []
--/
--- #guard_msgs in
--- #eval segments 7 [[0, 7]]
-
-/-
-info: [0, 1, 2]
--/
--- #guard_msgs in
--- #eval segments 2 []
-
-/-
-info: [0, 3, 4]
--/
--- #guard_msgs in
--- #eval segments 5 [[2, 2], [1, 2], [5, 5]]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

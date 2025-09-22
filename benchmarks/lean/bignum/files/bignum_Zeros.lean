@@ -1,6 +1,4 @@
 -- <vc-preamble>
-namespace BignumLean
-
 def AllZero (s : String) : Prop :=
   s.length = 0 ∨ ∀ i, s.get? i = some '0'
 
@@ -25,5 +23,3 @@ theorem Zeros_spec (n : Nat) :
   s.length = n ∧ ValidBitString s ∧ Str2Int s = 0 ∧ AllZero s := by
   sorry
 -- </vc-theorems>
-
-end BignumLean

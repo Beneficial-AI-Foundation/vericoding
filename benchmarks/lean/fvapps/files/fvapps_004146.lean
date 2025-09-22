@@ -18,25 +18,4 @@ theorem count_is_nonnegative {arr : List String} :
 
 theorem count_bounded_by_length {arr : List String} :
   countSmileys arr ≤ arr.length := sorry
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval count_smileys []
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval count_smileys [":D", ":~)", ";~D", ":)"]
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval count_smileys [";]", ":[", ";*", ":$", ";-D"]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

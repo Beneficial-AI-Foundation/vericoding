@@ -22,31 +22,4 @@ theorem generate_hashtag_capitalization :
   generate_hashtag "hello World" = some "#HelloWorld" ∧
   generate_hashtag "HELLO WORLD" = some "#HelloWorld" ∧
   generate_hashtag "hELLo wORLd" = some "#HelloWorld" := sorry
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval generate_hashtag ""
-
-/-
-info: '#HelloWorld'
--/
--- #guard_msgs in
--- #eval generate_hashtag "hello world"
-
-/-
-info: '#HelloWorld'
--/
--- #guard_msgs in
--- #eval generate_hashtag "   hello     world   "
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval generate_hashtag "x" * 140
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

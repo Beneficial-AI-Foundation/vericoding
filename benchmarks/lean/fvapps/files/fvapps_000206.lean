@@ -35,25 +35,4 @@ theorem scaling_invariance (nums : List Int) (k t scale : Int) :
   containsNearbyAlmostDuplicate nums k t = 
   containsNearbyAlmostDuplicate (nums.map (· * scale)) k (t * scale) :=
   sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval contains_nearby_almost_duplicate [1, 2, 3, 1] 3 0
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval contains_nearby_almost_duplicate [1, 0, 1, 1] 1 2
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval contains_nearby_almost_duplicate [1, 5, 9, 1, 5, 9] 2 3
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

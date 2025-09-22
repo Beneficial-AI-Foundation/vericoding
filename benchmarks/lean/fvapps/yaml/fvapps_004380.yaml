@@ -13,21 +13,25 @@ vc-description: |-
   
   **Note**: You can take a look to my others bio-info kata [here](http://www.codewars.com/users/nbeck/authored)
   -/
+  
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded_and_plausible
 
 vc-preamble: |-
-  def gc_content (s : String) : Float := sorry
-  
-  theorem gc_content_bounded (s : String) :
-    0.0 ≤ gc_content s ∧ gc_content s ≤ 100.0 := sorry
 
 vc-helpers: |-
 
 vc-definitions: |-
-  def count (s : String) (c : String) : Nat := sorry
+  def gc_content (s : String) : Float :=
+  sorry
+  
+  def count (s : String) (c : String) : Nat :=
+  sorry
 
 vc-theorems: |-
+  theorem gc_content_bounded (s : String) :
+    0.0 ≤ gc_content s ∧ gc_content s ≤ 100.0 :=
+  sorry
 
 vc-postamble: |-
-  -- Apps difficulty: introductory
-  -- Assurance level: guarded_and_plausible
 

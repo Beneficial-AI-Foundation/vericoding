@@ -1,15 +1,15 @@
 -- <vc-preamble>
-def solve_dominos (n : Nat) (arr : List Nat) : Nat :=
-  sorry
+def list_sum : List Nat → Nat
+  | [] => 0
+  | (h :: t) => h + list_sum t
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
-def list_sum : List Nat → Nat  
-  | [] => 0
-  | (h :: t) => h + list_sum t
+def solve_dominos (n : Nat) (arr : List Nat) : Nat :=
+  sorry
 -- </vc-definitions>
 
 -- <vc-theorems>
@@ -25,29 +25,8 @@ theorem solve_dominos_single_column (h : Nat) :
   solve_dominos 1 [h] = h / 2 := by
   sorry
 
-theorem solve_dominos_unit_heights (n : Nat) (arr : List Nat) 
+theorem solve_dominos_unit_heights (n : Nat) (arr : List Nat)
   (h : ∀ x ∈ arr, x = 1) :
   solve_dominos n arr = arr.length / 2 := by
   sorry
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval solve_dominos 5 [3, 2, 2, 2, 1]
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval solve_dominos 5 [1, 1, 1, 1, 1]
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval solve_dominos 3 [3, 3, 3]
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: unguarded

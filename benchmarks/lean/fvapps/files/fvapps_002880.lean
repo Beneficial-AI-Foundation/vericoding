@@ -1,14 +1,13 @@
 -- <vc-preamble>
-def levenshtein (s1 s2 : String) : Nat :=
-  sorry
-
--- Non-negativity
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
+def levenshtein (s1 s2 : String) : Nat :=
+  sorry
+
 def repeatChar (c : Char) (n : Nat) : String :=
 sorry
 -- </vc-definitions>
@@ -18,25 +17,17 @@ theorem levenshtein_nonneg (s1 s2 : String) :
   levenshtein s1 s2 ≥ 0 :=
 sorry
 
--- Identity
-
-theorem levenshtein_identity (s : String) :  
+theorem levenshtein_identity (s : String) :
   levenshtein s s = 0 :=
 sorry
-
--- Symmetry 
 
 theorem levenshtein_symm (s1 s2 : String) :
   levenshtein s1 s2 = levenshtein s2 s1 :=
 sorry
 
--- Triangle inequality
-
 theorem levenshtein_triangle (s1 s2 s3 : String) :
   levenshtein s1 s2 ≤ levenshtein s1 s3 + levenshtein s3 s2 :=
 sorry
-
--- Empty string
 
 theorem levenshtein_empty_string (s : String) :
   levenshtein s "" = s.length :=
@@ -45,27 +36,4 @@ sorry
 theorem levenshtein_empty_string_rev (s : String) :
   levenshtein "" s = s.length :=
 sorry
-
--- Repeated char prepending
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval levenshtein "kitten" "sitting"
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval levenshtein "book" "back"
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval levenshtein "peter" "peter"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

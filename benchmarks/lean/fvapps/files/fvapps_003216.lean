@@ -32,25 +32,4 @@ theorem lucas_lehmer_large (n : Nat) :
 
 theorem lucas_lehmer_non_positive (n : Int) :
   n ≤ 0 → lucas_lehmer n.natAbs = false := sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval lucas_lehmer 2
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval lucas_lehmer 4
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval lucas_lehmer 7
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

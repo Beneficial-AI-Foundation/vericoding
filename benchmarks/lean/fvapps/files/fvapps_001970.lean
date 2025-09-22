@@ -20,25 +20,4 @@ theorem count_min_steps_empty :
 
 theorem count_min_steps_ab :
   count_min_steps "ab" = 1 := sorry
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval count_min_steps "ab"
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval count_min_steps "aab"
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval count_min_steps "abbaa"
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: guarded_and_plausible

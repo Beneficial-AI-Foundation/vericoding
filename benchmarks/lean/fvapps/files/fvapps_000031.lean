@@ -45,25 +45,4 @@ theorem north_direction_time :
 theorem north_south_time : 
   calculate_ski_time "NS" = 6 :=
   sorry
-
-/-
-info: 15
--/
--- #guard_msgs in
--- #eval calculate_ski_time "NNN"
-
-/-
-info: 6
--/
--- #guard_msgs in
--- #eval calculate_ski_time "NS"
-
-/-
-info: 25
--/
--- #guard_msgs in
--- #eval calculate_ski_time "NWNWS"
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

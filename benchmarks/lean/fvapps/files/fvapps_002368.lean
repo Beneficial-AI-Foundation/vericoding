@@ -29,25 +29,4 @@ theorem uniqueOccurrences_reverse (arr : List Int) :
 theorem uniqueOccurrences_double (arr : List Int) :
   uniqueOccurrences arr = uniqueOccurrences (arr ++ arr) := by
   sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval unique_occurrences [1, 2, 2, 1, 1, 3]
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval unique_occurrences [1, 2]
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval unique_occurrences [-3, 0, 1, -3, 1, 1, 1, -3, 10, 0]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

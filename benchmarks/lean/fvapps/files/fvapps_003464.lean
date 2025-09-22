@@ -17,25 +17,4 @@ theorem square_positive_integers (n : Int) (h : n ≥ 1) (h2 : n ≤ 20) :
 theorem square_invalid_inputs (n : Int) (h : n ≤ 0) :
   ¬∃ (result : Int), square n = result :=
   sorry
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval square 1
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval square 3
-
-/-
-info: 32768
--/
--- #guard_msgs in
--- #eval square 16
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

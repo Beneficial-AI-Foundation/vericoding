@@ -24,25 +24,4 @@ theorem pattern_rows_nonempty (k : Nat) (h : 0 < k ∧ k ≤ 10) :
 theorem pattern_base_cases :
   generate_pattern 1 = ["2"] ∧
   generate_pattern 2 = ["24", "68"] := sorry
-
-/-
-info: ['2']
--/
--- #guard_msgs in
--- #eval generate_pattern 1
-
-/-
-info: ['24', '68']
--/
--- #guard_msgs in
--- #eval generate_pattern 2
-
-/-
-info: ['246', '81012', '141618']
--/
--- #guard_msgs in
--- #eval generate_pattern 3
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

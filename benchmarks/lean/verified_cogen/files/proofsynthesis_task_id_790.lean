@@ -20,5 +20,3 @@ theorem isEvenAtEvenIndex_spec_satisfied (arr: Array Nat) (h_precond : isEvenAtE
     isEvenAtEvenIndex_postcond (arr) (isEvenAtEvenIndex (arr) h_precond) h_precond := by
   sorry
 -- </vc-theorems>
-
-def main : IO Unit := return ()

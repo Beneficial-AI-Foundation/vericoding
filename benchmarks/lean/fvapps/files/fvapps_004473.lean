@@ -23,25 +23,4 @@ theorem remove_vowels_preserves_nonvowels (s : String) :
 
 theorem remove_vowels_identity (s : String) :
   (∀ c ∈ s.data, ¬isVowel c) → remove_vowels s = s := sorry
-
-/-
-info: 'drk'
--/
--- #guard_msgs in
--- #eval remove_vowels "drake"
-
-/-
-info: 'schlrstm'
--/
--- #guard_msgs in
--- #eval remove_vowels "scholarstem"
-
-/-
-info: 'hgh fvs!'
--/
--- #guard_msgs in
--- #eval remove_vowels "high fives!"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

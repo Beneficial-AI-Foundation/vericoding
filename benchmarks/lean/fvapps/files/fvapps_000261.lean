@@ -29,25 +29,4 @@ theorem base_neg2_zero :
 theorem base_neg2_length (n : Int) (h : n > 0) :
   let binary_length := String.length (base_neg2 n)
   binary_length ≤ String.length (toString n) + 2 := sorry
-
-/-
-info: '110'
--/
--- #guard_msgs in
--- #eval base_neg2 2
-
-/-
-info: '111'
--/
--- #guard_msgs in
--- #eval base_neg2 3
-
-/-
-info: '100'
--/
--- #guard_msgs in
--- #eval base_neg2 4
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

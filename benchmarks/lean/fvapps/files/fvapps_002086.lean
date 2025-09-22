@@ -36,25 +36,4 @@ theorem array_length_error {n : Nat} {arr : List Nat}
   (h : arr.length < n) :
   min_requests_to_add n arr = min_requests_to_add arr.length arr :=
 sorry
-
-/-
-info: 6
--/
--- #guard_msgs in
--- #eval min_requests_to_add 5 [1, 4, 3, 2, 5]
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval min_requests_to_add 5 [1, 2, 2, 2, 1]
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval min_requests_to_add 7 [10, 20, 40, 50, 70, 90, 30]
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: unguarded

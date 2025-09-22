@@ -21,25 +21,4 @@ theorem solve_QC_parity_single (n : Nat) (h : n > 0) :
 theorem solve_QC_parity_full (n : Nat) (h : n > 0) :
   solve_QC_parity n n = 1 :=
   sorry
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval solve_QC_parity 4 2
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval solve_QC_parity 5 2
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval solve_QC_parity 6 3
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

@@ -40,25 +40,4 @@ theorem closest_is_minimum_absolute (lst : List Int) (h : lst ≠ []) :
               | none => False
               | some m => abs x = m
   := sorry
-
-/-
-info: -1
--/
--- #guard_msgs in
--- #eval closest [2, 4, -1, -3]
-
-/-
-info: None
--/
--- #guard_msgs in
--- #eval closest [5, 2, -2]
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval closest [13, 0, -6]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

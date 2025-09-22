@@ -25,25 +25,4 @@ theorem two_by_two_boards (boards: List Board)
   (h: boards.length ≥ 1)
   (h2: ∀ b ∈ boards, b.1 = 2 ∧ b.2 = 2) :
   solve_football_masterchef boards = (if boards.length % 2 = 0 then "Football" else "MasterChef") := sorry
-
-/-
-info: 'MasterChef'
--/
--- #guard_msgs in
--- #eval solve_football_masterchef [(2, 2)]
-
-/-
-info: 'Football'
--/
--- #guard_msgs in
--- #eval solve_football_masterchef [(2, 3), (3, 2)]
-
-/-
-info: 'Football'
--/
--- #guard_msgs in
--- #eval solve_football_masterchef [(4, 4)]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

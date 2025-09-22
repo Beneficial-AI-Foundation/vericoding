@@ -17,25 +17,4 @@ theorem output_range (x : Int) :
 
 theorem periodic_property (x n : Int) : 
   mod256_without_mod x = mod256_without_mod (x + n * 256) := sorry
-
-/-
-info: 254
--/
--- #guard_msgs in
--- #eval mod256_without_mod 254
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval mod256_without_mod 256
-
-/-
-info: 254
--/
--- #guard_msgs in
--- #eval mod256_without_mod -258
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

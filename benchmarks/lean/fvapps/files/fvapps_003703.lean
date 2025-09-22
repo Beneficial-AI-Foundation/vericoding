@@ -33,6 +33,3 @@ theorem result_dash_positions (guess : String) (target : String) :
   data[3]! = '-' ∧ 
   data[7]! = '-' := sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

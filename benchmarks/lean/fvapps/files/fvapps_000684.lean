@@ -37,6 +37,3 @@ theorem all_zeros (arr : List Int)
     (h2 : ∀ x ∈ arr, x = 0) :
     ∀ x ∈ consecutiveSum arr, x = "0" := sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

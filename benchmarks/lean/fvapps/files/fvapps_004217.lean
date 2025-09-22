@@ -47,6 +47,3 @@ theorem solution_alternating (stones : String)
     stones.data[i]! ≠ stones.data[i-1]!) :
   solution stones = 0 := sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

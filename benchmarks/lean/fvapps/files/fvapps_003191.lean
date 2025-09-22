@@ -19,25 +19,4 @@ theorem title_to_number_recursive (s : String) (c : Char)
   (h1 : s.all (fun c => 'A' ≤ c ∧ c ≤ 'Z')) 
   (h2 : 'A' ≤ c ∧ c ≤ 'Z') :
   titleToNumber (s.push c) = titleToNumber s * 26 + (c.toNat - 'A'.toNat + 1) := sorry
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval title_to_number "A"
-
-/-
-info: 26
--/
--- #guard_msgs in
--- #eval title_to_number "Z"
-
-/-
-info: 27
--/
--- #guard_msgs in
--- #eval title_to_number "AA"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

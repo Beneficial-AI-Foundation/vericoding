@@ -30,25 +30,4 @@ theorem projection_area_sum_of_views {n : Nat} (grid : List (List Nat))
 
 theorem projection_area_single_cube (h : Nat) :
   projectionArea [[h]] = 2 * h + 1 := sorry
-
-/-
-info: 5
--/
--- #guard_msgs in
--- #eval projection_area [[2]]
-
-/-
-info: 17
--/
--- #guard_msgs in
--- #eval projection_area [[1, 2], [3, 4]]
-
-/-
-info: 8
--/
--- #guard_msgs in
--- #eval projection_area [[1, 0], [0, 2]]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

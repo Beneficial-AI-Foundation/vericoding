@@ -19,25 +19,4 @@ theorem proper_fractions_bounds (n: Nat) (h: n ≥ 2) :
 
 theorem proper_fractions_one :
   proper_fractions 1 = 0 := sorry
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval proper_fractions 1
-
-/-
-info: 8
--/
--- #guard_msgs in
--- #eval proper_fractions 15
-
-/-
-info: 20
--/
--- #guard_msgs in
--- #eval proper_fractions 25
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

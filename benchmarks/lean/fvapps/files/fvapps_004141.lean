@@ -22,25 +22,4 @@ theorem cost_negative_zero (mins: Int) :
 
 theorem cost_stepwise_increase (mins: Nat) (h: 66 ≤ mins) :
   cost (mins - 1) ≤ cost mins ∧ cost mins - cost (mins - 1) ≤ 10 := sorry
-
-/-
-info: 30
--/
--- #guard_msgs in
--- #eval cost 45
-
-/-
-info: 30
--/
--- #guard_msgs in
--- #eval cost 63
-
-/-
-info: 40
--/
--- #guard_msgs in
--- #eval cost 84
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

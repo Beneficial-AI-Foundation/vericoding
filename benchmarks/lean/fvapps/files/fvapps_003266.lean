@@ -35,25 +35,4 @@ theorem powers_are_sorted (n: Nat) (h: n > 0) :
 
 theorem powers_are_unique (n: Nat) (h: n > 0) :
   (powers n).length = countUnique (powers n) := sorry
-
-/-
-info: [4]
--/
--- #guard_msgs in
--- #eval powers 4
-
-/-
-info: [2, 4]
--/
--- #guard_msgs in
--- #eval powers 6
-
-/-
-info: [2, 4, 8]
--/
--- #guard_msgs in
--- #eval powers 14
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

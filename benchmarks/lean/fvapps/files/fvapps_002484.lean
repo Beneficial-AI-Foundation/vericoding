@@ -17,6 +17,3 @@ theorem split_numbers_dot_separated (nums : List Nat) (h : nums.length > 0) :
   split_numbers (String.intercalate "." (nums.map toString)) = 
   nums.map toString := sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

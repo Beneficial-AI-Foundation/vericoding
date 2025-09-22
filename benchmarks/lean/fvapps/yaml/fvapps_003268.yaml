@@ -17,58 +17,64 @@ vc-description: |-
   -/
 
 vc-preamble: |-
-  def code_for_same_protein (seq1 : String) (seq2 : String) : Bool := sorry
-  
-  theorem identical_sequences_match
-    (seq : String) :
-    code_for_same_protein seq seq = true := sorry
-
-vc-helpers: |-
-
-vc-definitions: |-
   def repeat_str (s : String) (n : Nat) : String :=
   match n with
   | 0 => ""
   | n+1 => s ++ repeat_str s n
 
+vc-helpers: |-
+
+vc-definitions: |-
+  def code_for_same_protein (seq1 : String) (seq2 : String) : Bool :=
+  sorry
+
 vc-theorems: |-
+  theorem identical_sequences_match
+    (seq : String) :
+    code_for_same_protein seq seq = true :=
+  sorry
+  
   theorem different_length_no_match
     (n : Nat) :
-    code_for_same_protein (repeat_str "ATG" n) (repeat_str "ATG" (n + 1)) = false := sorry
+    code_for_same_protein (repeat_str "ATG" n) (repeat_str "ATG" (n + 1)) = false :=
+  sorry
   
   theorem different_length_sequences_no_match
     (seq1 seq2 : String) :
     seq1.length ≠ seq2.length →
-    code_for_same_protein seq1 seq2 = false := sorry 
+    code_for_same_protein seq1 seq2 = false :=
+  sorry
   
   theorem code_for_same_protein_reflexive
     (seq : String) :
-    code_for_same_protein seq seq = true := sorry
+    code_for_same_protein seq seq = true :=
+  sorry
   
   theorem code_for_same_protein_symmetric
     (seq1 seq2 : String) :
     code_for_same_protein seq1 seq2 = true →
-    code_for_same_protein seq2 seq1 = true := sorry
-  
-  /-
-  info: True
-  -/
-  -- #guard_msgs in
-  -- #eval code_for_same_protein "ATGTCGTCAATTTAA" "ATGTCGTCAATTTAA"
-  
-  /-
-  info: True
-  -/
-  -- #guard_msgs in
-  -- #eval code_for_same_protein "ATGTTTTAA" "ATGTTCTAA"
-  
-  /-
-  info: False
-  -/
-  -- #guard_msgs in
-  -- #eval code_for_same_protein "ATGTTTTAA" "ATGATATAA"
+    code_for_same_protein seq2 seq1 = true :=
+  sorry
 
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+  
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval code_for_same_protein "ATGTCGTCAATTTAA" "ATGTCGTCAATTTAA"
+  
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval code_for_same_protein "ATGTTTTAA" "ATGTTCTAA"
+  
+  /--
+  info: False
+  -/
+  #guard_msgs in
+  #eval code_for_same_protein "ATGTTTTAA" "ATGATATAA"
 

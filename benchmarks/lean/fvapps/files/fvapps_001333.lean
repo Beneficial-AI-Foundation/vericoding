@@ -14,13 +14,4 @@ theorem same_costs_divisible (N K1 K2 cost : Nat)
   (h1 : N > 0) (h2 : K1 > 0) (h3 : K2 > 0) (h4 : cost > 0) :
   (calculate_packing_cost N K1 K2 cost cost cost cost) % cost = 0 :=
   sorry
-
-/-
-info: 8
--/
--- #guard_msgs in
--- #eval calculate_packing_cost 4 1 4 2 2 2 2
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

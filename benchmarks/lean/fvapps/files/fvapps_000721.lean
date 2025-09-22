@@ -21,6 +21,3 @@ theorem max_perimeter_bound {n m : Nat} {plants : List (Nat × Nat)}
   (h1 : n > 0) (h2 : m > 0) :
   (calculate_min_fences n m plants) ≤ 4 * plants.length := sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

@@ -27,25 +27,4 @@ theorem valid_result_implies_complete_circuit {gas cost : List Nat} (h: gas.leng
 
 theorem identical_gas_cost {values : List Nat} (h: values.length > 0) :
   can_complete_circuit values values = 0 := sorry
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval can_complete_circuit [1, 2, 3, 4, 5] [3, 4, 5, 1, 2]
-
-/-
-info: -1
--/
--- #guard_msgs in
--- #eval can_complete_circuit [2, 3, 4] [3, 4, 3]
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval can_complete_circuit [5, 1, 2, 3, 4] [4, 4, 1, 5, 1]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

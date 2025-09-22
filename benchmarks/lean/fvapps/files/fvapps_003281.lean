@@ -46,25 +46,4 @@ sorry
 theorem final_grade_low_both (exam projects : Int) :
   exam ≤ 50 ∧ projects ≤ 1 → final_grade exam projects = 0 :=
 sorry
-
-/-
-info: 100
--/
--- #guard_msgs in
--- #eval final_grade 100 12
-
-/-
-info: 90
--/
--- #guard_msgs in
--- #eval final_grade 85 5
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval final_grade 55 0
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

@@ -20,25 +20,4 @@ sorry
 theorem all_permuted_increases (n : Nat) :
   n > 2 → all_permuted n > all_permuted (n-1) :=
 sorry
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval all_permuted 1
-
-/-
-info: 9
--/
--- #guard_msgs in
--- #eval all_permuted 4
-
-/-
-info: 97581073836835777732377428235481
--/
--- #guard_msgs in
--- #eval all_permuted 30
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

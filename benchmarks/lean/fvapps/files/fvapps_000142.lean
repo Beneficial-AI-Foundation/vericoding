@@ -21,25 +21,4 @@ theorem min_steps_small_numbers :
   min_steps 1 = 0 ∧ 
   min_steps 2 = 2 ∧
   min_steps 4 = 4 := sorry
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval min_steps 3
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval min_steps 1
-
-/-
-info: 6
--/
--- #guard_msgs in
--- #eval min_steps 9
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

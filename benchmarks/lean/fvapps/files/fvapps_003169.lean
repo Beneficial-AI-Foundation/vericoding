@@ -23,25 +23,4 @@ theorem reduce_fraction_is_lowest_terms (p : Int × Int) (h : p.2 ≠ 0) :
 
 theorem reduce_fraction_zero (n : Int) (h : n ≠ 0) :
   reduce_fraction (0, n) = (0, 1) := sorry
-
-/-
-info: [3, 1]
--/
--- #guard_msgs in
--- #eval reduce_fraction [60, 20]
-
-/-
-info: [2, 3]
--/
--- #guard_msgs in
--- #eval reduce_fraction [80, 120]
-
-/-
-info: [3, 8]
--/
--- #guard_msgs in
--- #eval reduce_fraction [45, 120]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

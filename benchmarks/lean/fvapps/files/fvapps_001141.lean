@@ -26,25 +26,4 @@ theorem solve_pool_shots_cycle
 theorem solve_pool_shots_equal_pos
   (N K pos : Nat) (h : pos ≤ N) :
   solve_pool_shots N K pos pos = (N, N) := sorry
-
-/-
-info: (5, 5)
--/
--- #guard_msgs in
--- #eval solve_pool_shots 5 5 4 4
-
-/-
-info: (3, 5)
--/
--- #guard_msgs in
--- #eval solve_pool_shots 5 2 3 1
-
-/-
-info: (6, 10)
--/
--- #guard_msgs in
--- #eval solve_pool_shots 10 1 3 7
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

@@ -38,25 +38,4 @@ theorem impossible_leg_counts
   (h_heads_bound : heads ≤ 1000) : 
   animals heads (2*heads - 1) = none :=
 sorry
-
-/-
-info: (44, 28)
--/
--- #guard_msgs in
--- #eval animals 72 200
-
-/-
-info: (0, 0)
--/
--- #guard_msgs in
--- #eval animals 0 0
-
-/-
-info: 'No solutions'
--/
--- #guard_msgs in
--- #eval animals 25 555
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

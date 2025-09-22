@@ -15,6 +15,3 @@ theorem output_is_subset_of_input (s : String) (h : s.length > 0) :
 theorem output_has_no_duplicates (s : String) (h : s.length > 0) :
   ∀ c, (remove_duplicate_letters s).data.count c ≤ 1 := sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

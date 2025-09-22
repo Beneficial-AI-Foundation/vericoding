@@ -1,37 +1,33 @@
 -- <vc-preamble>
-def collatz_steps (n : Nat) (s : String) : Nat :=
-  sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
-def get_steps (n : Nat) (len : Nat) : String := 
+def collatz_steps (n : Nat) (s : String) : Nat :=
   sorry
 
-/- Base case properties -/
+def get_steps (n : Nat) (len : Nat) : String :=
+  sorry
 -- </vc-definitions>
 
 -- <vc-theorems>
-theorem collatz_steps_D : collatz_steps 1 "D" = 2 := sorry
-theorem collatz_steps_U : collatz_steps 1 "U" = 1 := sorry
+theorem collatz_steps_D : collatz_steps 1 "D" = 2 :=
+sorry
 
-/- Main invariant properties for any input -/
+theorem collatz_steps_U : collatz_steps 1 "U" = 1 :=
+sorry
 
 theorem collatz_steps_geq_input {n : Nat} {s : String} (h : n > 0) :
-  collatz_steps n s ≥ n := sorry
-
-/- Minimal result property -/
+  collatz_steps n s ≥ n :=
+sorry
 
 theorem collatz_steps_minimal {n : Nat} {s : String} (h : n > 0) (h2 : collatz_steps n s > 1) :
-  ∀ m, m < collatz_steps n s → ¬(get_steps m (String.length s)).startsWith s := sorry
-
-/- Helper lemma to relate get_steps to collatz_steps -/
+  ∀ m, m < collatz_steps n s → ¬(get_steps m (String.length s)).startsWith s :=
+sorry
 
 theorem get_steps_matches {n : Nat} {s : String} (h : n > 0) :
-  (get_steps (collatz_steps n s) (String.length s)).startsWith s := sorry
+  (get_steps (collatz_steps n s) (String.length s)).startsWith s :=
+sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

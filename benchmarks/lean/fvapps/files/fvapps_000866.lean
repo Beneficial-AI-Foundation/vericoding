@@ -50,6 +50,3 @@ theorem symmetry {n : Nat} {queries : List Int} :
     queries[i]! + queries[j]! = 2*mid → result[i]! = result[j]! :=
   sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

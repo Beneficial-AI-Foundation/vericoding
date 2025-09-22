@@ -36,6 +36,3 @@ theorem same_position_zero_time
   Float.abs (solveTennis n bounds pos vel pos) < 1e-8 :=
   sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

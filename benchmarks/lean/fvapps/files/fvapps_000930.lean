@@ -34,6 +34,3 @@ theorem first_line_centered (k : Nat) (h : k > 2):
   String.mk (List.replicate (k-1) ' ' ++ '*' :: List.replicate (k-1) ' ') :=
 sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

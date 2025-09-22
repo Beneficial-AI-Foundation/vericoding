@@ -2,17 +2,17 @@ vc-description: |-
   /-
   # Task
    IONU Satellite Imaging, Inc. records and stores very large images using run length encoding. You are to write a program that reads a compressed image, finds the edges in the image, as described below, and outputs another compressed image of the detected edges.
-  
+
    A simple edge detection algorithm sets an output pixel's value to be the maximum absolute value of the differences between it and all its surrounding pixels in the input image. Consider the input image below:
-  
+
    ![](http://media.openjudge.cn/images/1009_1.jpg)
-  
+
    The upper left pixel in the output image is the maximum of the values |15-15|,|15-100|, and |15-100|, which is 85. The pixel in the 4th row, 2nd column is computed as the maximum of |175-100|, |175-100|, |175-100|, |175-175|, |175-25|, |175-175|,|175-175|, and |175-25|, which is 150.
-  
+
    Images contain 2 to 1,000,000,000 (10^9) pixels. All images are encoded using run length encoding (RLE). This is a sequence of pairs, containing pixel value (0-255) and run length (1-10^9). Input images have at most 1,000 of these pairs. Successive pairs have different pixel values. All lines in an image contain the same number of pixels.
-  
+
    For the iamge as the example above, the RLE encoding string is `"7 15 4 100 15 25 2 175 2 25 5 175 2 25 5"`
-  
+
    ```
    Each image starts with the width, in pixels(means the first number 7)
    This is followed by the RLE pairs(two number is a pair).
@@ -25,40 +25,40 @@ vc-description: |-
    175 2        ...........LIKE......................
    25 5         ..........ABOVE......................
    ```
-  
+
    Your task is to calculate the result by using the edge detection algorithm above. Returns a encoding string in the same format as the input string.
-  
+
   # Exaple
-  
+
    `Please see examples in the example test block.`
-  
+
   # Input/Output
-  
+
    - `[input]` string `image`
-  
+
    A RLE string of image.
-  
+
    - `[output]` a string
-  
+
    A RLE string calculate by using the edge detection algorithm.
   -/
 
-vc-preamble: |-
+vc-preamble: |
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def edge_detection (s : String) : String := sorry
-  
+
   def pixel_at (s : String) (x y : Nat) : Nat := sorry
 
 vc-theorems: |-
   theorem single_value_image_no_edges (val : Nat) (h : val > 0) (h2 : val ≤ 5) :
     edge_detection s!"1 {val} 1" = "1 0 1" := sorry
-  
+
   theorem uniform_square_no_edges (size : Nat) (h : size > 0) (h2 : size ≤ 10) :
     edge_detection s!"{size} 5 {size * size}" = s!"{size} 0 {size * size}" := sorry
-  
+
   theorem alternating_pixels_edge_value 
     (size val1 val2 : Nat)
     (h1 : size > 0) (h2 : size ≤ 4)
@@ -69,20 +69,20 @@ vc-theorems: |-
     let output := edge_detection input
     ∀ i j, i < size → j < size →
       pixel_at output i j = diff := sorry
-  
-  /-
-  info: '1 0 1'
-  -/
-  -- #guard_msgs in
-  -- #eval edge_detection "1 5 1"
-  
-  /-
-  info: '2 9 4'
-  -/
-  -- #guard_msgs in
-  -- #eval edge_detection "2 1 2 10 2"
 
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
+
+  /--
+  info: '1 0 1'
+  -/
+  #guard_msgs in
+  #eval edge_detection "1 5 1"
+
+  /--
+  info: '2 9 4'
+  -/
+  #guard_msgs in
+  #eval edge_detection "2 1 2 10 2"
 

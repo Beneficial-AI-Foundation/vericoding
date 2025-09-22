@@ -25,6 +25,3 @@ theorem zero_array_maps_to_zeros (n : Nat)
   let result := solve_scarf_xor n zeros
   ∀ x ∈ result, x = 0 := sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

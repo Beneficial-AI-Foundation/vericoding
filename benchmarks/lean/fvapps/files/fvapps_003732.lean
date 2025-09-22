@@ -22,25 +22,4 @@ theorem luxhouse_identical_heights {h n : Nat} (len : n > 0) :
   let houses := List.replicate n h
   ∀ i, i < n - 1 → (luxhouse houses).get ⟨i, sorry⟩ = 1 ∧ 
       (luxhouse houses).getLast! = 0 := sorry
-
-/-
-info: expected
--/
--- #guard_msgs in
--- #eval luxhouse [1, 2, 3, 1, 2]
-
-/-
-info: expected
--/
--- #guard_msgs in
--- #eval luxhouse [3, 2, 1, 4]
-
-/-
-info: expected
--/
--- #guard_msgs in
--- #eval luxhouse [1, 1, 1]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

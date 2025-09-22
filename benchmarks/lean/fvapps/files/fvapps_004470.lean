@@ -26,25 +26,4 @@ theorem uppercase_words (s : String)
   (h₁ : s.length ≥ 3)
   (h₂ : ∀ c ∈ s.data, 65 ≤ c.toNat ∧ c.toNat ≤ 90) :
   drop_cap s = s.toLower.capitalize := by sorry
-
-/-
-info: 'Apple Banana'
--/
--- #guard_msgs in
--- #eval drop_cap "apple banana"
-
-/-
-info: 'One   Space'
--/
--- #guard_msgs in
--- #eval drop_cap "one   space"
-
-/-
-info: '   Space Walk   '
--/
--- #guard_msgs in
--- #eval drop_cap "   space WALK   "
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

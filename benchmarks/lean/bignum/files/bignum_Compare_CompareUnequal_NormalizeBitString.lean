@@ -1,6 +1,4 @@
 -- <vc-preamble>
-namespace BignumLean
-
 def ValidBitString (s : String) : Prop :=
   ∀ {i c}, s.get? i = some c → (c = '0' ∨ c = '1')
 
@@ -49,5 +47,3 @@ theorem Compare_spec (s1 s2 : String) (h1 : ValidBitString s1) (h2 : ValidBitStr
   (Str2Int s1 > Str2Int s2 → Compare s1 s2 = 1) := by
   sorry
 -- </vc-theorems>
-
-end BignumLean

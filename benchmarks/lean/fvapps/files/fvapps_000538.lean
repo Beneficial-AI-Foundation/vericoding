@@ -25,19 +25,4 @@ theorem min_operations_identity (x y z : Int) :
 
 theorem min_operations_symmetry (p q r a b c : Int) :
   min_operations p q r a b c = min_operations r q p c b a := sorry
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval min_operations 3 5 7 6 5 10
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval min_operations 8 6 3 9 7 8
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

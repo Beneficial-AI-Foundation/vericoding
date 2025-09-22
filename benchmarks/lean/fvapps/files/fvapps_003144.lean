@@ -24,25 +24,4 @@ theorem parity_bit_even_parity {input : String} {in_byte out_byte : String}
    ((in_byte.toList.filter (λ c => c = '1')).length % 2 = 1 → 
     out_byte = "error")) :=
   sorry
-
-/-
-info: '0101100'
--/
--- #guard_msgs in
--- #eval parity_bit "01011001"
-
-/-
-info: '0011110 error'
--/
--- #guard_msgs in
--- #eval parity_bit "00111100 00111101"
-
-/-
-info: 'error 0110000 0101011 error 0110001'
--/
--- #guard_msgs in
--- #eval parity_bit "01101110 01100000 01010110 10001111 01100011"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

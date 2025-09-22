@@ -19,6 +19,3 @@ theorem min_square_size_monotonic {n₁ n₂ : Nat} (h₁ : n₁ ≥ 2) (h₂ : 
 theorem min_square_size_two :
   min_square_size 2 - 1 < 1e-10 ∧ min_square_size 2 - 1 > -1e-10 := sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

@@ -49,6 +49,3 @@ theorem solve_full_array {arr : List Nat} {m : Nat} :
   result = expected :=
 sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

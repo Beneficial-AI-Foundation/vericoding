@@ -21,25 +21,4 @@ sorry
 theorem find_longest_harmonious_subsequence_empty (nums : List Int) :
   nums = [] → find_longest_harmonious_subsequence nums = 0 :=
 sorry
-
-/-
-info: 5
--/
--- #guard_msgs in
--- #eval find_longest_harmonious_subsequence [1, 3, 2, 2, 5, 2, 3, 7]
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval find_longest_harmonious_subsequence [1, 2, 3, 4]
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval find_longest_harmonious_subsequence [1, 1, 1, 1]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

@@ -40,7 +40,3 @@ theorem correctness
 : problem_spec implementation x n := by
   sorry
 -- </vc-theorems>
-
--- #test implementation "1/5" "5/1" = True
--- #test implementation "1/6" "2/1" = False
--- #test implementation "7/10" "10/2" = False

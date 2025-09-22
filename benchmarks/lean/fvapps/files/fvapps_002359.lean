@@ -18,25 +18,4 @@ theorem sqrt_plus_one_squared_over (x : Nat) :
 
 theorem sqrt_round_trip (x : Nat) : 
   x ≤ 1000 → sqrt (x * x) = x := sorry
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval sqrt 4
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval sqrt 8
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval sqrt 0
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

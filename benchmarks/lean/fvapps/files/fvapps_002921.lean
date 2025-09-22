@@ -28,25 +28,4 @@ theorem growing_plant_meets_height
   let result := growing_plant up_speed down_speed desired_height
   up_speed * result - down_speed * (result - 1) ≥ desired_height :=
 sorry
-
-/-
-info: 10
--/
--- #guard_msgs in
--- #eval growing_plant 100 10 910
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval growing_plant 10 9 4
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval growing_plant 5 2 6
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

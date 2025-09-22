@@ -48,6 +48,3 @@ theorem empty_grid (n : Nat)
   result.head? = some 0 :=
 sorry
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: guarded

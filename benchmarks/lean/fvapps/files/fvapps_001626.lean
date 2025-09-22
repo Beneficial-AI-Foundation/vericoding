@@ -25,19 +25,4 @@ theorem lexicographically_minimal {n m : Nat} {strings : List String}
   (h : find_best_gift_string n m strings ≠ "") :
   String.get! (find_best_gift_string n m strings) 0 = 
     String.get! (List.head! strings) 0 := sorry
-
-/-
-info: 'xabza'
--/
--- #guard_msgs in
--- #eval find_best_gift_string 3 3 ["xab", "a#z", "caa"]
-
-/-
-info: 'pvcbihjz'
--/
--- #guard_msgs in
--- #eval find_best_gift_string 5 4 ["pyqs", "vcot", "qbiu", "lihj", "uvmz"]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

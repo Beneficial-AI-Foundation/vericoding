@@ -28,19 +28,4 @@ theorem ocean_separation (s : String) :
   clean_lands.length > 0 →
   infected_lands.length > 0 →
   0 < infected s ∧ infected s < 100 := sorry
-
-/-
-info: 100.0
--/
--- #guard_msgs in
--- #eval infected "01000"
-
-/-
-info: 0.0
--/
--- #guard_msgs in
--- #eval infected "XXXXX"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

@@ -28,25 +28,4 @@ theorem range_parser_invalid_special_char₁ :
   s = " " ∨ s = "," ∨ s = ":" ∨ s = "-" →
   ¬∃ (lst : List Nat), range_parser s = lst :=
   sorry
-
-/-
-info: expected1
--/
--- #guard_msgs in
--- #eval range_parser "1-10,14, 20-25:2"
-
-/-
-info: expected2
--/
--- #guard_msgs in
--- #eval range_parser "5-10"
-
-/-
-info: expected3
--/
--- #guard_msgs in
--- #eval range_parser "2"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

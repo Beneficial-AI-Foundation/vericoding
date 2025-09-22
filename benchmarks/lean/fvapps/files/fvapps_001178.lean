@@ -27,6 +27,3 @@ theorem solve_phones_invalid_k (N : Nat) (prices : List Nat)
   let result := solve_phones N 1 prices brands [query]
   result = [-1] := sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

@@ -34,25 +34,4 @@ theorem meeting_all_O {rooms : List Char} :
   (∀ x ∈ rooms, x = 'O') →
   meeting rooms = Sum.inr 0
   := sorry
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval meeting ["X", "O", "X"]
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval meeting ["O", "X", "X", "X", "X"]
-
-/-
-info: 'None available!'
--/
--- #guard_msgs in
--- #eval meeting ["X"]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

@@ -42,25 +42,4 @@ theorem find_transition_point_all_zeros (n : Nat) :
   n > 0 →
   find_transition_point n (List.replicate n 0) = none :=
   sorry
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval find_transition_point 5 [0, 1, 0, 0, 1]
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval find_transition_point 3 [1, 0, 1]
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval find_transition_point 4 [0, 0, 0, 1]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

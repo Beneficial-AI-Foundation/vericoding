@@ -26,6 +26,3 @@ theorem empty_inputs :
   find_highest_priority_recipe ["recipe"] [1] [] = [] :=
   sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

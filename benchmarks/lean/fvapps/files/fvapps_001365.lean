@@ -18,6 +18,3 @@ theorem balanced_partition_sizes (stones : String) :
   (hans.length ≤ chewie.length + 1) ∧ (chewie.length ≤ hans.length + 1)
   := sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

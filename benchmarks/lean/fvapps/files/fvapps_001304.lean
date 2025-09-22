@@ -37,25 +37,4 @@ theorem arrange_array_too_large {n : Nat} {arr : List Nat}
   (h2 : ∀ x ∈ arr, n ≤ x) :
   ∀ x ∈ arrange_array n arr, x = 0 :=
   sorry
-
-/-
-info: [0, 1]
--/
--- #guard_msgs in
--- #eval arrange_array 2 [1, 1]
-
-/-
-info: [0, 1, 2, 0]
--/
--- #guard_msgs in
--- #eval arrange_array 4 [1, 1, 2, 1]
-
-/-
-info: [0, 1, 2, 3, 4]
--/
--- #guard_msgs in
--- #eval arrange_array 5 [1, 2, 3, 4, 2]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

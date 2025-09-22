@@ -14,6 +14,3 @@ theorem empty_associations_gives_unknown (filenames : List String) :
   determine_media_types [] filenames = List.replicate filenames.length "unknown" := 
 sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

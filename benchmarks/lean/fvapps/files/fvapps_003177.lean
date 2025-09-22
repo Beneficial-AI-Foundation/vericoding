@@ -45,6 +45,3 @@ theorem multiples_of_ten_are_even (n : Int) :
   (numberProperty n).get! 2 = true → 
   (numberProperty n).get! 1 = true := sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

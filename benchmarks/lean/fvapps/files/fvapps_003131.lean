@@ -21,25 +21,4 @@ theorem rule30_zero_step (initial : List Nat) :
 theorem rule30_growth (initial : List Nat) (n : Nat) :
   n > 0 → List.length (rule30 initial n) = List.length initial + 2*n :=
   sorry
-
-/-
-info: [1, 1, 1]
--/
--- #guard_msgs in
--- #eval rule30 [1] 1
-
-/-
-info: [1, 1, 0, 0, 1]
--/
--- #guard_msgs in
--- #eval rule30 [1] 2
-
-/-
-info: [1, 1, 1]
--/
--- #guard_msgs in
--- #eval rule30 [1, 1, 1] 0
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

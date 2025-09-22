@@ -34,25 +34,4 @@ theorem email_masking
   (email : String)
   (h : email = "LeetCode@LeetCode.com") :
   mask_pii email = "l*****e@leetcode.com" := sorry
-
-/-
-info: 'l*****e@leetcode.com'
--/
--- #guard_msgs in
--- #eval mask_pii "LeetCode@LeetCode.com"
-
-/-
-info: '***-***-7890'
--/
--- #guard_msgs in
--- #eval mask_pii "1(234)567-890"
-
-/-
-info: '+**-***-***-5678'
--/
--- #guard_msgs in
--- #eval mask_pii "86-(10)12345678"
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

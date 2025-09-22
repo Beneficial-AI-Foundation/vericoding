@@ -18,6 +18,3 @@ theorem reverse_negative {s : String} (h: s = "-1.5 2.5 -3.5") :
 theorem reverse_single {s : String} (h: s = "42") :
   reverse_float_array s = [42.0] := sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

@@ -26,6 +26,3 @@ theorem diagonal_idempotence (n k : Nat) (a l r : List Int)
   (h5 : ∀ i, i < n → l.get! i = i) (h6 : ∀ i, i < n → r.get! i = i + 1) :
   solve_matrix_power n k a l r = solve_matrix_power n 1 a l r := sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

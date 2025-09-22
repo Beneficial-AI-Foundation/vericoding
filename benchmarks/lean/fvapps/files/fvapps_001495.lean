@@ -1,49 +1,37 @@
 -- <vc-preamble>
-def solve_sequence (a b n : Nat) : Nat := sorry
-
-def bitXor (a b : Nat) : Nat := sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
-def bitNot (a : Nat) : Nat := sorry
+def solve_sequence (a b n : Nat) : Nat :=
+sorry
 
-def bitLength (n : Nat) : Nat := sorry
+def bitXor (a b : Nat) : Nat :=
+sorry
+
+def bitNot (a : Nat) : Nat :=
+sorry
+
+def bitLength (n : Nat) : Nat :=
+sorry
 -- </vc-definitions>
 
 -- <vc-theorems>
 theorem solve_sequence_nonnegative (a b n : Nat) :
-  n > 0 → n ≤ 3 → solve_sequence a b n ≥ 0 := sorry
+  n > 0 → n ≤ 3 → solve_sequence a b n ≥ 0 :=
+sorry
 
 theorem solve_sequence_first (a b : Nat) :
-  solve_sequence a b 1 = a := sorry
+  solve_sequence a b 1 = a :=
+sorry
 
 theorem solve_sequence_second (a b : Nat) :
-  solve_sequence a b 2 = b := sorry
+  solve_sequence a b 2 = b :=
+sorry
 
 theorem solve_sequence_symmetric (a b : Nat) :
-  solve_sequence a b 3 = solve_sequence b a 3 := sorry
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval solve_sequence 3 4 2
-
-/-
-info: 7
--/
--- #guard_msgs in
--- #eval solve_sequence 3 4 3
-
-/-
-info: 12
--/
--- #guard_msgs in
--- #eval solve_sequence 10 12 2
+  solve_sequence a b 3 = solve_sequence b a 3 :=
+sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

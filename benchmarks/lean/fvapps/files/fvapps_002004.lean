@@ -15,6 +15,3 @@ theorem binary_arrangement_valid_elements {num_ones num_zeros : Nat}
   ∀ x ∈ solve_binary_arrangement input, x = 0 ∨ x = 1 :=
   sorry
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: guarded_and_plausible

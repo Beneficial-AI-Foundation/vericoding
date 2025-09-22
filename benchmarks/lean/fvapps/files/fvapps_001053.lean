@@ -31,25 +31,4 @@ theorem disconnected_invalid (n : Nat) (h : n ≥ 3) :
       List.range (n-3) |>.map (fun i => (i+3, i+4))
     else [])
   is_tree n edges = "NO" := sorry
-
-/-
-info: 'YES'
--/
--- #guard_msgs in
--- #eval is_tree 3 [(1, 2), (2, 3)]
-
-/-
-info: 'NO'
--/
--- #guard_msgs in
--- #eval is_tree 3 [(1, 2), (2, 3), (1, 3)]
-
-/-
-info: 'NO'
--/
--- #guard_msgs in
--- #eval is_tree 4 [(1, 2), (3, 4)]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

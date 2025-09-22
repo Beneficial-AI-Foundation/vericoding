@@ -32,25 +32,4 @@ theorem bears_captures_all_pairs (n : Nat) (s : String)
                        (p.1 = '8' ∧ p.2 = 'B'))
     |>.length
   numPairs = countValidPairs := sorry
-
-/-
-info: ['B8B8B8', False]
--/
--- #guard_msgs in
--- #eval bears 7 "8j8mBliB8gimjB8B8jlB"
-
-/-
-info: ['8BB8B8B88B', True]
--/
--- #guard_msgs in
--- #eval bears 3 "88Bifk8hB8BB8BBBB888chl8BhBfd"
-
-/-
-info: ['8BB88B', True]
--/
--- #guard_msgs in
--- #eval bears 1 "j8BmB88B88gkBBlf8hg8888lbe88"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

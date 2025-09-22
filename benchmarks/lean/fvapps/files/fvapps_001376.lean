@@ -25,19 +25,4 @@ theorem result_changes_bounded {N M : Nat} {coords : List (Nat × Nat)} {path : 
 theorem empty_path {N M : Nat} :
   solve_puppy_path N M [(0,0)] [] = [] := by
   sorry
-
-/-
-info: [4, 6, 6]
--/
--- #guard_msgs in
--- #eval solve_puppy_path 2 3 [(1, 2), (0, 1)] "RDL"
-
-/-
-info: [1, 2]
--/
--- #guard_msgs in
--- #eval solve_puppy_path 1 2 [(1, 1)] "RD"
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

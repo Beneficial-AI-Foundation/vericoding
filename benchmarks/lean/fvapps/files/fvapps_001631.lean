@@ -56,25 +56,4 @@ theorem estimate_population_sort_independent
   (h2 : isSorted sorted_surveys = true)
   : estimate_population surveys = estimate_population sorted_surveys := by
   sorry
-
-/-
-info: 5
--/
--- #guard_msgs in
--- #eval estimate_population [4, 5, 5, 5, 6, 6]
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval estimate_population [2, 3, 4, 5, 6, 7]
-
-/-
-info: 5
--/
--- #guard_msgs in
--- #eval estimate_population [3, 4, 4, 5, 5, 5, 5, 6, 6, 7]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

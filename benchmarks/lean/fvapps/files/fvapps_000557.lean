@@ -32,25 +32,4 @@ theorem min_fruit_diff_equal_fruits (fruit gold : Nat) :
 theorem min_fruit_diff_no_gold (apples oranges : Nat) :
   min_fruit_diff apples oranges 0 = (if apples ≥ oranges then apples - oranges else oranges - apples) :=
   sorry
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval min_fruit_diff 3 4 1
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval min_fruit_diff 5 2 1
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval min_fruit_diff 3 4 3
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

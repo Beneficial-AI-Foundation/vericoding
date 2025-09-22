@@ -28,25 +28,4 @@ theorem result_is_non_negative
   (A B : List Int) 
   (h : A.length = B.length) :
   minSwapsToIncreasing A B ≥ 0 := sorry
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval min_swaps_to_increasing [1, 3, 5, 4] [1, 2, 3, 7]
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval min_swaps_to_increasing [1, 2, 3] [4, 5, 6]
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval min_swaps_to_increasing [2] [1]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

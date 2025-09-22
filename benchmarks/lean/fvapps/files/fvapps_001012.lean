@@ -16,6 +16,3 @@ theorem check_repeated_word {word : String} {count : Nat} (h : count > 0) :
   check_forgotten_words dictionary phrases = "YES" :=
   sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

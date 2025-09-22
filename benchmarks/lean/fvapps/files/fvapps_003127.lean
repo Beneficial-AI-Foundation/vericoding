@@ -3,32 +3,32 @@ def DnaBases : List Char := ['A', 'C', 'G', 'T']
 
 def isValidDnaChar (c : Char) : Bool :=
   match DnaBases.find? (· == c) with
-  | some _ => true 
+  | some _ => true
   | none => false
 
 def isValidDnaString (s : String) : Bool :=
   match s.data.find? (fun c => !isValidDnaChar c) with
   | some _ => false
-  | none => true 
-
-def motif_locator (sequence motif : String) : List Nat :=
-sorry
+  | none => true
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
+def motif_locator (sequence motif : String) : List Nat :=
+sorry
+
 def substring (s : String) (start len : Nat) : String :=
 sorry
 -- </vc-definitions>
 
 -- <vc-theorems>
 theorem motif_positions_valid (sequence motif : String)
-  (h1 : isValidDnaString sequence) 
+  (h1 : isValidDnaString sequence)
   (h2 : isValidDnaString motif) :
   let positions := motif_locator sequence motif
-  (∀ p ∈ positions, 0 < p ∧ p ≤ sequence.length) ∧ 
+  (∀ p ∈ positions, 0 < p ∧ p ≤ sequence.length) ∧
   (∀ p ∈ positions, substring sequence (p-1) motif.length = motif) :=
 sorry
 
@@ -48,25 +48,4 @@ sorry
 theorem motif_longer_than_seq :
   motif_locator "ACG" "ACGT" = [] :=
 sorry
-
-/-
-info: [3, 9]
--/
--- #guard_msgs in
--- #eval motif_locator "TTCCGGAACC" "CC"
-
-/-
-info: [1, 9]
--/
--- #guard_msgs in
--- #eval motif_locator "ACGTTACAACGTTAG" "ACGT"
-
-/-
-info: []
--/
--- #guard_msgs in
--- #eval motif_locator "ACGTACGTACGT" "AAA"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

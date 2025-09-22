@@ -31,25 +31,4 @@ theorem three_points_valid_result {n x y : Nat}
   (h3 : x ≤ 99) (h4 : y ≤ 99) :
   (assess_lights 3 n [(0,0), (x % n, y % n), (n-1,n-1)] = "yes") ∨
   (assess_lights 3 n [(0,0), (x % n, y % n), (n-1,n-1)] = "no") := sorry
-
-/-
-info: 'yes'
--/
--- #guard_msgs in
--- #eval assess_lights 2 10 [(0, 0), (1, 0)]
-
-/-
-info: 'no'
--/
--- #guard_msgs in
--- #eval assess_lights 2 10 [(1, 2), (1, 1)]
-
-/-
-info: 'yes'
--/
--- #guard_msgs in
--- #eval assess_lights 3 5 [(0, 0), (4, 2), (2, 4)]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

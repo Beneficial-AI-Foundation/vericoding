@@ -20,25 +20,4 @@ theorem result_is_sorted (arr : List Int) :
   i < (find_missing_numbers arr).length →
   j < (find_missing_numbers arr).length →
   (find_missing_numbers arr)[i]! ≤ (find_missing_numbers arr)[j]! := sorry
-
-/-
-info: [-1, 0, 2, 3]
--/
--- #guard_msgs in
--- #eval find_missing_numbers [-3, -2, 1, 4]
-
-/-
-info: []
--/
--- #guard_msgs in
--- #eval find_missing_numbers [-1, 0, 1, 2, 3, 4]
-
-/-
-info: [-3, -2, -1, 0, 1, 2, 3]
--/
--- #guard_msgs in
--- #eval find_missing_numbers [-4, 4]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

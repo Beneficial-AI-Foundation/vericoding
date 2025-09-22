@@ -19,6 +19,3 @@ theorem positions_cycle (n rep : Nat) (h : 1 ≤ rep ∧ rep ≤ 3) :
   get_positions n = get_positions (n + 27 * rep) :=
   sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

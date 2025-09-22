@@ -28,25 +28,4 @@ theorem survivor_is_consistent (n : Nat) :
 
 theorem exists_survivor_up_to_n (n : Nat) :
   n > 0 → ∃ k : Nat, k ≤ n ∧ k > 0 ∧ survivor k = true := by sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval survivor 1
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval survivor 5
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval survivor 13
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

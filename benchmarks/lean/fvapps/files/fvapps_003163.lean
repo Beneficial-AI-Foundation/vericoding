@@ -33,25 +33,4 @@ theorem caeser_zero_uppercases
   (message : String) :
   caeser message 0 = 
     String.map (fun c => if c.isAlpha then c.toUpper else c) message := sorry
-
-/-
-info: 'THIS IS A MESSAGE'
--/
--- #guard_msgs in
--- #eval caeser "This is a message" 0
-
-/-
-info: 'OZG SJW QGM?'
--/
--- #guard_msgs in
--- #eval caeser "who are you?" 18
-
-/-
-info: 'ORWJU XWN'
--/
--- #guard_msgs in
--- #eval caeser "final one" 9
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

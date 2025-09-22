@@ -33,6 +33,3 @@ theorem single_element_no_bits_unreachable :
   check_reachability 1 1 arr [(1,1)] = ["Fou"] :=
 sorry
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: guarded

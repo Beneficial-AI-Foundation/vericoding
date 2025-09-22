@@ -19,6 +19,3 @@ theorem calculate_series_sum_increasing {n: Nat} (h: n > 1) :
 theorem calculate_series_sum_known_values :
   calculate_series_sum 1 = 1 ∧ calculate_series_sum 3 = 45 := sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

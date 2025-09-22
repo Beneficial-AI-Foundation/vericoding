@@ -59,6 +59,3 @@ theorem color_2_grey_is_average {colors: List (List (List (List Nat)))}
   let total := List.get! original 0 + List.get! original 1 + List.get! original 2
   List.get! grey_pixel 0 = (total + 2) / 3 := sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

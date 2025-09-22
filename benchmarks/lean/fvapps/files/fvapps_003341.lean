@@ -34,31 +34,4 @@ theorem diagonal_line_collinear (start step1 step2 : Int) :
   let pts := [(start,start), (start+step1,start+step1), (start+step2,start+step2)]
   on_line pts = true :=
   sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval on_line []
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval on_line [(1, 1)]
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval on_line [(1, 2), (7, 4), (22, 9)]
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval on_line [(1, 2), (-3, -14), (22, 9)]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

@@ -33,25 +33,4 @@ theorem remaining_chars_unchanged (s : String) :
         then remove_all (s'.replace "abc" "") fuel'
         else s'
     remove_all s n := sorry
-
-/-
-info: 'ac'
--/
--- #guard_msgs in
--- #eval remove_abc_pairs "aabcc"
-
-/-
-info: 'bc'
--/
--- #guard_msgs in
--- #eval remove_abc_pairs "bababccc"
-
-/-
-info: ''
--/
--- #guard_msgs in
--- #eval remove_abc_pairs "abcabcabc"
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

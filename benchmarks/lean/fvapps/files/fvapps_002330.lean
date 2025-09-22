@@ -30,25 +30,4 @@ theorem mixed_case_invalid (s : String) :
   ¬(∀ c ∈ s.data, isUppercase c) →
   ¬(isTitle s) →
   detect_capital_use s = false := sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval detect_capital_use "USA"
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval detect_capital_use "FlaG"
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval detect_capital_use "Google"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

@@ -28,25 +28,4 @@ theorem head_smash_nonempty_properties {arr : List String} (h : arr ≠ []) :
          orig = transformed ∨ (orig = 'O' ∧ transformed = ' ')))
   | Sum.inr _ => False
   := sorry
-
-/-
-info: expected1
--/
--- #guard_msgs in
--- #eval head_smash ["*****************************************", "**  _O_   *   _O_   *   _O_   *   _O_  **", "** /(.)J  *  C(.)J  *  /(.)J  *  C(.)J **", "** _| |_  *  _| |_  *  _( )_  *  _( )_ *"]
-
-/-
-info: 'Gym is empty'
--/
--- #guard_msgs in
--- #eval head_smash []
-
-/-
-info: "This isn't the gym!!"
--/
--- #guard_msgs in
--- #eval head_smash 876
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

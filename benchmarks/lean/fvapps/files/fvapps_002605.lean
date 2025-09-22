@@ -41,25 +41,4 @@ theorem i_tri_run_phase_normal (distance : Float) :
 theorem i_tri_run_phase_near_end (distance : Float) :
   TOTAL_DIST - 10 ≤ distance → distance < TOTAL_DIST →
   i_tri distance = Sum.inr ("Run", "Nearly there!") := sorry
-
-/-
-info: {'Bike': '104.60 to go!'}
--/
--- #guard_msgs in
--- #eval i_tri 36
-
-/-
-info: {'Swim': '138.60 to go!'}
--/
--- #guard_msgs in
--- #eval i_tri 2
-
-/-
-info: "You're done! Stop running!"
--/
--- #guard_msgs in
--- #eval i_tri 151
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

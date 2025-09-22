@@ -29,31 +29,4 @@ theorem distribution_properties {m n : Int} (h₁: m ≥ 0) (h₂: n > 0) :
      result.get ⟨j, by sorry⟩ - result.get ⟨i, by sorry⟩ ≤ 1)) ∧
   (∀ i, i < result.length - 1 → 
     result.get ⟨i, by sorry⟩ ≥ result.get ⟨i+1, by sorry⟩) := sorry
-
-/-
-info: []
--/
--- #guard_msgs in
--- #eval distribute 10 0
-
-/-
-info: []
--/
--- #guard_msgs in
--- #eval distribute 15 -5
-
-/-
-info: [0] * 10
--/
--- #guard_msgs in
--- #eval distribute -5 10
-
-/-
-info: [2, 2, 2, 2, 2, 1, 1, 1, 1, 1]
--/
--- #guard_msgs in
--- #eval distribute 15 10
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

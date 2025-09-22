@@ -30,25 +30,4 @@ theorem spider_leg_prefixes {leg_size : Nat} {body_size : Nat} {mouth : Char} {e
   | 4 => result.startsWith "╱╲"
   | _ => True
   := sorry
-
-/-
-info: '^(oWo)^'
--/
--- #guard_msgs in
--- #eval draw_spider 1 1 "W" "o"
-
-/-
-info: '/\\((OOwOO))/\\'
--/
--- #guard_msgs in
--- #eval draw_spider 2 2 "w" "O"
-
-/-
-info: '/╲(((0000w0000)))╱\\'
--/
--- #guard_msgs in
--- #eval draw_spider 3 3 "w" "0"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

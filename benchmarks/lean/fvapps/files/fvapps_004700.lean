@@ -40,25 +40,4 @@ theorem merge_empty
   (k : α) :
   merge ([] : List (Map α β)) k = none :=
 sorry
-
-/-
-info: expected1
--/
--- #guard_msgs in
--- #eval merge {"A": 1, "B": 2} {"A": 3}
-
-/-
-info: expected2
--/
--- #guard_msgs in
--- #eval merge {"A": 1, "B": 2} {"A": 1, "B": 3}
-
-/-
-info: expected3
--/
--- #guard_msgs in
--- #eval merge {"A": 1} {}
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

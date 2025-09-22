@@ -1,53 +1,39 @@
 -- <vc-preamble>
-def opposite (x : Int) : Int := sorry
-
-theorem double_negative_int (x : Int) :
-  opposite (opposite x) = x := sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
-def opposite_real (x : Float) : Float := sorry 
+def opposite (x : Int) : Int :=
+sorry
 
-theorem double_negative_real (x : Float) :
-  opposite_real (opposite_real x) = x := sorry
+def opposite_real (x : Float) : Float :=
+sorry
 -- </vc-definitions>
 
 -- <vc-theorems>
+theorem double_negative_int (x : Int) :
+  opposite (opposite x) = x :=
+sorry
+
+theorem double_negative_real (x : Float) :
+  opposite_real (opposite_real x) = x :=
+sorry
+
 theorem zero_is_self_opposite :
-  opposite 0 = 0 := sorry
+  opposite 0 = 0 :=
+sorry
 
 theorem nonzero_not_self_opposite (x : Int) :
-  x ≠ 0 → opposite x ≠ x := sorry
+  x ≠ 0 → opposite x ≠ x :=
+sorry
 
 theorem sum_with_opposite_int (x : Int) :
-  x + opposite x = 0 := sorry
-
-/- Same theorems for real numbers -/
+  x + opposite x = 0 :=
+sorry
 
 theorem sum_with_opposite_real (x : Float) :
-  x + opposite_real x = 0 := sorry
-
-/-
-info: -1
--/
--- #guard_msgs in
--- #eval opposite 1
-
-/-
-info: 34
--/
--- #guard_msgs in
--- #eval opposite -34
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval opposite 0
+  x + opposite_real x = 0 :=
+sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

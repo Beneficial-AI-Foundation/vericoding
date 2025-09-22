@@ -1,12 +1,13 @@
 -- <vc-preamble>
-def contains_permutation (s1 s2 : String) : Bool :=
-  sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
+def contains_permutation (s1 s2 : String) : Bool :=
+  sorry
+
 def IsPermutation (s1 s2 : String) : Prop :=
   sorry
 -- </vc-definitions>
@@ -22,7 +23,7 @@ sorry
 
 theorem contains_permutation_self {s : String} :
   contains_permutation s s = true :=
-sorry 
+sorry
 
 theorem contains_permutation_concat {s : String} :
   contains_permutation s (s ++ s) = true :=
@@ -36,25 +37,4 @@ sorry
 theorem contains_permutation_single_char {c : Char} {s : String} :
   contains_permutation (String.mk [c]) s = String.contains s c :=
 sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval contains_permutation "ab" "eidbaooo"
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval contains_permutation "ab" "eidboaoo"
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval contains_permutation "hello" "ooolleoabceh"
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

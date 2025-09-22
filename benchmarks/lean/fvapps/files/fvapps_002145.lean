@@ -28,25 +28,4 @@ theorem larger_array_case :
   solve_array_operations 4 3 6 [1,2,3,4] [(1,2,1), (2,3,2), (3,4,4)] 
     [(1,2), (1,3), (2,3), (1,2), (1,3), (2,3)] = [5,18,31,20] :=
 sorry
-
-/-
-info: [9, 18, 17]
--/
--- #guard_msgs in
--- #eval solve_array_operations 3 3 3 [1, 2, 3] [(1, 2, 1), (1, 3, 2), (2, 3, 4)] [(1, 2), (1, 3), (2, 3)]
-
-/-
-info: [2]
--/
--- #guard_msgs in
--- #eval solve_array_operations 1 1 1 [1] [(1, 1, 1)] [(1, 1)]
-
-/-
-info: [5, 18, 31, 20]
--/
--- #guard_msgs in
--- #eval solve_array_operations 4 3 6 [1, 2, 3, 4] [(1, 2, 1), (2, 3, 2), (3, 4, 4)] [(1, 2), (1, 3), (2, 3), (1, 2), (1, 3), (2, 3)]
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: unguarded

@@ -26,25 +26,4 @@ theorem binary_to_string_roundtrip
   let binary_again := String.join (result.data.map (fun c => 
     String.mk [c]))
   binary = binary_again := sorry
-
-/-
-info: ''
--/
--- #guard_msgs in
--- #eval binary_to_string ""
-
-/-
-info: 'Hello'
--/
--- #guard_msgs in
--- #eval binary_to_string "0100100001100101011011000110110001101111"
-
-/-
-info: '1011'
--/
--- #guard_msgs in
--- #eval binary_to_string "00110001001100000011000100110001"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

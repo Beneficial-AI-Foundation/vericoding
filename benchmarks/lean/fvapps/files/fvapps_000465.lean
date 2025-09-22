@@ -1,15 +1,16 @@
 -- <vc-preamble>
-def range_sum (nums : List Nat) (n : Nat) (left right : Nat) : Nat :=
-  sorry
-
-def partialSums (nums : List Nat) (n : Nat) : List Nat :=
-  sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
+def range_sum (nums : List Nat) (n : Nat) (left right : Nat) : Nat :=
+  sorry
+
+def partialSums (nums : List Nat) (n : Nat) : List Nat :=
+  sorry
+
 def listMin (l : List Nat) : Nat :=
   sorry
 -- </vc-definitions>
@@ -27,7 +28,7 @@ sorry
 
 theorem range_sum_monotonic {nums : List Nat} {n left right : Nat}
   (h1 : nums.length = n)
-  (h2 : !nums.isEmpty) 
+  (h2 : !nums.isEmpty)
   (h3 : left < right)
   (h4 : right ≤ n) :
   range_sum nums n left (right-1) ≤ range_sum nums n left right :=
@@ -55,25 +56,4 @@ theorem range_sum_first_element {nums : List Nat} {n : Nat}
   (h2 : !nums.isEmpty) :
   range_sum nums n 1 1 = listMin nums :=
 sorry
-
-/-
-info: 13
--/
--- #guard_msgs in
--- #eval range_sum [1, 2, 3, 4] 4 1 5
-
-/-
-info: 6
--/
--- #guard_msgs in
--- #eval range_sum [1, 2, 3, 4] 4 3 4
-
-/-
-info: 50
--/
--- #guard_msgs in
--- #eval range_sum [1, 2, 3, 4] 4 1 10
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

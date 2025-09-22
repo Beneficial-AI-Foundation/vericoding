@@ -31,25 +31,4 @@ theorem known_valid_case1 :
 
 theorem known_valid_case2 :
   can_build_pyramid "XY" ["XYZ"] = true := sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval can_build_pyramid "XYZ" ["XYD", "YZE", "DEA", "FFF"]
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval can_build_pyramid "XXYX" ["XXX", "XXY", "XYX", "XYY", "YXZ"]
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval can_build_pyramid "ABC" ["ABC", "BCD", "CDE", "DEF"]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

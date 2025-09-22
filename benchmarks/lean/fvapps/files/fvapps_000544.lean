@@ -41,25 +41,4 @@ theorem same_points_is_none (x y : Int) :
 theorem coords_in_bounds (coords : List (List Int)) :
   solveTaxiTurns coords ≠ none →
   ∀ point ∈ coords, ∀ coord ∈ point, 0 ≤ coord ∧ coord ≤ 50 := sorry
-
-/-
-info: 'yes yes'
--/
--- #guard_msgs in
--- #eval solve_taxi_turns [[0, 0], [1, 1], [2, 1]]
-
-/-
-info: 'no yes'
--/
--- #guard_msgs in
--- #eval solve_taxi_turns [[0, 0], [1, 0], [1, 1]]
-
-/-
-info: 'no no'
--/
--- #guard_msgs in
--- #eval solve_taxi_turns [[0, 0], [1, 0], [1, 1], [2, 1], [2, 2], [3, 2]]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

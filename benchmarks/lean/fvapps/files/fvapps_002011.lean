@@ -41,6 +41,3 @@ theorem contains_only_zeros_and_ones (k : Nat) (h : k > 0) :
   let (size, matrix) := generateGraphWithTriangleCycles k
   ∀ row ∈ matrix, ∀ c ∈ row.data, c = '0' ∨ c = '1' := sorry
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: guarded

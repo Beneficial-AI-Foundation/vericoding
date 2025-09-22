@@ -20,25 +20,4 @@ theorem cut_log_zero (prices : List Nat) :
 
 theorem cut_log_single_unit (prices : List Nat) :
   prices ≠ [] → prices.length > 1 → cut_log prices 1 = prices[1]! := sorry
-
-/-
-info: 13
--/
--- #guard_msgs in
--- #eval cut_log [0, 1, 5, 8, 9, 10] 5
-
-/-
-info: 22
--/
--- #guard_msgs in
--- #eval cut_log [0, 1, 5, 8, 9, 10, 17, 17, 20] 8
-
-/-
-info: 12
--/
--- #guard_msgs in
--- #eval cut_log [0, 3, 5, 8, 9, 10, 17, 17, 20] 4
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

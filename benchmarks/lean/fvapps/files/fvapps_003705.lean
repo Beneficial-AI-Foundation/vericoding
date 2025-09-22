@@ -66,25 +66,4 @@ theorem validate_correct_pattern (message : String) :
     digits6.all Char.isDigit ∧
     digits7.all Char.isDigit :=
 sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval validate "MDZHB 85 596 KLASA 81 00 02 91"
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval validate "MDZHV 60 130 VATRUKH 58 89 54 54"
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval validate "MDZHB 12 733 EDIN ENIE 67 79 66 32"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

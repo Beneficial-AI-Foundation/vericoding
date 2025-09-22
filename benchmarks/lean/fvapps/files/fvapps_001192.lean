@@ -19,25 +19,4 @@ theorem small_inputs_always_win {n : Nat} (h : n > 0) (h2 : n ≤ 100) :
 
 theorem large_inputs_always_lose {n : Nat} (h : n ≥ 10^7) (h2 : n ≤ 10^8) :
   solve_prodigy n = "lose" := sorry
-
-/-
-info: 'win 6'
--/
--- #guard_msgs in
--- #eval solve_prodigy 3
-
-/-
-info: 'win 12'
--/
--- #guard_msgs in
--- #eval solve_prodigy 5
-
-/-
-info: 'lose'
--/
--- #guard_msgs in
--- #eval solve_prodigy 12345678
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

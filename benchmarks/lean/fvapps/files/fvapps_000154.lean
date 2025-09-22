@@ -1,12 +1,13 @@
 -- <vc-preamble>
-def isSubsequence (s₁ s₂ : String) : Bool :=
-sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
+def isSubsequence (s₁ s₂ : String) : Bool :=
+sorry
+
 def shortestCommonSupersequence (s₁ s₂ : String) : String :=
 sorry
 -- </vc-definitions>
@@ -22,7 +23,7 @@ theorem scs_same_string (s : String) :
 sorry
 
 theorem scs_length_bounds (s₁ s₂ : String) :
-  let result := shortestCommonSupersequence s₁ s₂ 
+  let result := shortestCommonSupersequence s₁ s₂
   result.length ≥ max s₁.length s₂.length ∧
   result.length ≤ s₁.length + s₂.length :=
 sorry
@@ -31,25 +32,4 @@ theorem scs_empty_string (s : String) :
   shortestCommonSupersequence "" s = s ∧
   shortestCommonSupersequence s "" = s :=
 sorry
-
-/-
-info: 'cabac'
--/
--- #guard_msgs in
--- #eval shortest_common_supersequence "abac" "cab"
-
-/-
-info: 6
--/
--- #guard_msgs in
--- #eval len shortest_common_supersequence("abc", "def")
-
-/-
-info: 'aaaaa'
--/
--- #guard_msgs in
--- #eval shortest_common_supersequence "aaaaa" "aa"
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

@@ -36,25 +36,4 @@ theorem lemonade_change_empty :
 
 theorem lemonade_change_all_fives (n : Nat) :
   lemonade_change (List.replicate n 5) = true := sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval lemonade_change [5, 5, 5, 10, 20]
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval lemonade_change [5, 5, 10]
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval lemonade_change [5, 5, 10, 10, 20]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

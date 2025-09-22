@@ -29,25 +29,4 @@ theorem decipher_word_first_char {word : String}
 
 theorem decipher_this_total (s : String) :
   ∃ result, decipher_this s = result := sorry
-
-/-
-info: 'Hello good day'
--/
--- #guard_msgs in
--- #eval decipher_this "72olle 103doo 100ya"
-
-/-
-info: 'Ready set go'
--/
--- #guard_msgs in
--- #eval decipher_this "82yade 115te 103o"
-
-/-
-info: 'Thank you Piotr'
--/
--- #guard_msgs in
--- #eval decipher_this "84kanh 121uo 80roti"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

@@ -20,25 +20,4 @@ theorem super_size_idempotent {n : Nat} :
 
 theorem super_size_same_length {n : Nat} :
   (toString n).length = (toString (super_size n)).length := sorry
-
-/-
-info: 654321
--/
--- #guard_msgs in
--- #eval super_size 123456
-
-/-
-info: 510
--/
--- #guard_msgs in
--- #eval super_size 105
-
-/-
-info: 21
--/
--- #guard_msgs in
--- #eval super_size 12
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

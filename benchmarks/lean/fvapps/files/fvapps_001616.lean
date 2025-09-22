@@ -31,6 +31,3 @@ theorem zero_b_equals_max_a {n: Nat} {a: List Int}
   max_special_segment_sum n a b ≥ a.foldl max 0 :=
 sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

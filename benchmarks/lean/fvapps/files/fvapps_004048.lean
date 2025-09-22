@@ -17,25 +17,4 @@ theorem odd_ball_property (base : List (Sum Nat String)) (insert_pos : Nat) (h :
 
 theorem odd_ball_no_odd {α} [BEq α] (xs : List (Sum α String)) (h : ¬xs.contains (Sum.inr "odd")) :
   odd_ball xs = false := sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval odd_ball ["even", 4, "even", 7, "even", 55, "even", 6, "even", 10, "odd", 3, "even"]
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval odd_ball test2
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval odd_ball test3
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

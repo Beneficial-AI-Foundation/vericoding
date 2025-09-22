@@ -23,25 +23,4 @@ theorem print_pattern_zero :
 
 theorem print_pattern_one :
   print_pattern 1 = ["1"] := sorry
-
-/-
-info: expected1
--/
--- #guard_msgs in
--- #eval print_pattern 2
-
-/-
-info: expected2
--/
--- #guard_msgs in
--- #eval print_pattern 3
-
-/-
-info: expected3
--/
--- #guard_msgs in
--- #eval print_pattern 4
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

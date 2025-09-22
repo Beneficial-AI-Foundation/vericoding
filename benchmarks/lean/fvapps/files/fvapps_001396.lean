@@ -41,25 +41,4 @@ theorem discontinuous_ingredient_invalid (n : Nat) (lst : List Nat) (x : Nat) :
   let discontinuous := lst ++ [x]
   (∀ i j : Nat, i < j → j < lst.length → lst[i]! = lst[j]! → i + 1 = j) →
   check_recipe_valid (lst.length + 1) discontinuous = "NO" := sorry
-
-/-
-info: 'YES'
--/
--- #guard_msgs in
--- #eval check_recipe_valid 6 [1, 1, 4, 2, 2, 2]
-
-/-
-info: 'NO'
--/
--- #guard_msgs in
--- #eval check_recipe_valid 8 [1, 1, 4, 3, 4, 7, 7, 7]
-
-/-
-info: 'NO'
--/
--- #guard_msgs in
--- #eval check_recipe_valid 8 [1, 7, 7, 3, 3, 4, 4, 4]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

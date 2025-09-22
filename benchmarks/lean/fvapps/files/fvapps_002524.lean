@@ -29,25 +29,4 @@ theorem duck_shoot_hits_bounded (ammo : Nat) (aim : Float) (ducks : String) :
 theorem duck_shoot_hits_match_remaining (ammo : Nat) (aim : Float) (ducks : String) :
   ducks.data.countP (· = '2') - (duck_shoot ammo aim ducks).data.countP (· = '2') = 
   (duck_shoot ammo aim ducks).data.countP (· = 'X') := sorry
-
-/-
-info: '|~~~~~XX~2~~~~~|'
--/
--- #guard_msgs in
--- #eval duck_shoot 6 0.41 "|~~~~~22~2~~~~~|"
-
-/-
-info: '|~~X~~~X2~2~~22~2~~~~2~~~|'
--/
--- #guard_msgs in
--- #eval duck_shoot 4 0.64 "|~~2~~~22~2~~22~2~~~~2~~~|"
-
-/-
-info: '|~~~~~~~X~2~~~|'
--/
--- #guard_msgs in
--- #eval duck_shoot 9 0.22 "|~~~~~~~2~2~~~|"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

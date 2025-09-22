@@ -27,6 +27,3 @@ theorem k_must_be_positive (n : Nat) :
   ∀ k : Nat, k = 0 → find_kth_point n k = find_kth_point n k → False := by
   sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

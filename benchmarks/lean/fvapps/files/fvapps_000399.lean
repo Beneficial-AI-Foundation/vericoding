@@ -28,25 +28,4 @@ theorem kconcat_monotone_positive (arr : List Int) (k : Nat) :
   k > 1 →
   (arr.foldl (· + ·) 0 > 0) →
   kConcatenationMaxSum arr k ≥ kConcatenationMaxSum arr (k-1) := sorry
-
-/-
-info: 9
--/
--- #guard_msgs in
--- #eval kConcatenationMaxSum [1, 2] 3
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval kConcatenationMaxSum [1, -2, 1] 5
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval kConcatenationMaxSum [-1, -2] 7
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

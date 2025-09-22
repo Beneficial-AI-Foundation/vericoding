@@ -22,25 +22,4 @@ theorem swap_changes_ascii_letters (s : String)
 
 theorem swap_preserves_length (s : String) :
   (swap s).length = s.length := sorry
-
-/-
-info: 'hELLOwORLD'
--/
--- #guard_msgs in
--- #eval swap "HelloWorld"
-
-/-
-info: 'cODEwARS'
--/
--- #guard_msgs in
--- #eval swap "CodeWars"
-
-/-
-info: 'tHiS Is a L0ng SentENCE'
--/
--- #guard_msgs in
--- #eval swap "ThIs iS A l0NG sENTence"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

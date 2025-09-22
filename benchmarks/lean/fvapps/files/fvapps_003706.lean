@@ -28,25 +28,4 @@ sorry
 theorem odd_ending_gives_empty {d: Char} (h: d ∈ ['1', '3', '5', '7', '9']) : 
   is_divisible_by_6 ("*" ++ toString d) = [] :=
 sorry
-
-/-
-info: ['12', '42', '72']
--/
--- #guard_msgs in
--- #eval is_divisible_by_6 "*2"
-
-/-
-info: []
--/
--- #guard_msgs in
--- #eval is_divisible_by_6 "*21"
-
-/-
-info: ['024', '120', '126', '222', '228', '324', '420', '426', '522', '528', '624', '720', '726', '822', '828', '924']
--/
--- #guard_msgs in
--- #eval is_divisible_by_6 "*2*"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

@@ -17,25 +17,4 @@ theorem find_num_unique {n : Nat} (h : n > 0) :
 
 theorem find_num_upper_bound (n : Nat) (h : n > 0) :
   find_num n < 10000 := sorry
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval find_num 1
-
-/-
-info: 5
--/
--- #guard_msgs in
--- #eval find_num 5
-
-/-
-info: 22
--/
--- #guard_msgs in
--- #eval find_num 11
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

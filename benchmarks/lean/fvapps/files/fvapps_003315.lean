@@ -28,25 +28,4 @@ theorem pigLatin_word_list_transform {words : List String}
   words.length > 0 →
   (String.join words).splitOn " " = 
     words.map (λ w => (w.drop 1) ++ (w.take 1) ++ "ay") := sorry
-
-/-
-info: 'igPay atinlay siay oolcay'
--/
--- #guard_msgs in
--- #eval pig_it "Pig latin is cool"
-
-/-
-info: 'hisTay siay ymay tringsay'
--/
--- #guard_msgs in
--- #eval pig_it "This is my string"
-
-/-
-info: 'elloHay orldway !'
--/
--- #guard_msgs in
--- #eval pig_it "Hello world !"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

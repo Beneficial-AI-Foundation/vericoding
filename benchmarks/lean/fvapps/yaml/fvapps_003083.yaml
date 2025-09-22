@@ -16,45 +16,48 @@ vc-description: |-
   
   ![Paperboy](http://mametesters.org/file_download.php?file_id=1016&type=bug)
   -/
+  
+  /- Ensures cheapest_quote returns a non-negative float -/
+  
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded
+  
+  /- Ensures cheapest_quote is strictly monotonically increasing -/
 
 vc-preamble: |-
 
 vc-helpers: |-
 
 vc-definitions: |-
-  def cheapest_quote (n : Nat) : Float := sorry
-  
-  /- Ensures cheapest_quote returns a non-negative float -/
+  def cheapest_quote (n : Nat) : Float :=
+  sorry
 
 vc-theorems: |-
   theorem cheapest_quote_non_negative (n : Nat) :
     let result := cheapest_quote n
-    result ≥ 0 := sorry
-  
-  /- Ensures cheapest_quote is strictly monotonically increasing -/
+    result ≥ 0 :=
+  sorry
   
   theorem cheapest_quote_monotonic (n : Nat) : n > 0 →
-    cheapest_quote n > cheapest_quote (n-1) := sorry
-  
-  /-
-  info: 3.95
-  -/
-  -- #guard_msgs in
-  -- #eval cheapest_quote 41
-  
-  /-
-  info: 2.52
-  -/
-  -- #guard_msgs in
-  -- #eval cheapest_quote 26
-  
-  /-
-  info: 48.06
-  -/
-  -- #guard_msgs in
-  -- #eval cheapest_quote 499
+    cheapest_quote n > cheapest_quote (n-1) :=
+  sorry
 
 vc-postamble: |-
-  -- Apps difficulty: introductory
-  -- Assurance level: unguarded
+  /--
+  info: 3.95
+  -/
+  #guard_msgs in
+  #eval cheapest_quote 41
+  
+  /--
+  info: 2.52
+  -/
+  #guard_msgs in
+  #eval cheapest_quote 26
+  
+  /--
+  info: 48.06
+  -/
+  #guard_msgs in
+  #eval cheapest_quote 499
 

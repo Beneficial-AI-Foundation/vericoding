@@ -20,25 +20,4 @@ theorem count_vowel_permutation_base_one :
 
 theorem count_vowel_permutation_base_two :
   count_vowel_permutation 2 = 10 := sorry
-
-/-
-info: 5
--/
--- #guard_msgs in
--- #eval count_vowel_permutation 1
-
-/-
-info: 10
--/
--- #guard_msgs in
--- #eval count_vowel_permutation 2
-
-/-
-info: 68
--/
--- #guard_msgs in
--- #eval count_vowel_permutation 5
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

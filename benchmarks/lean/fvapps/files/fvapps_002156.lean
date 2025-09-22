@@ -36,25 +36,4 @@ theorem visit_cells_1x1 :
 theorem visit_cells_2x1 :
   visit_cells 2 1 = [(1, 1), (2, 1)] ∨ 
   visit_cells 2 1 = [(2, 1), (1, 1)] := sorry
-
-/-
-info: [(1, 1), (2, 3), (1, 2), (2, 2), (1, 3), (2, 1)]
--/
--- #guard_msgs in
--- #eval visit_cells 2 3
-
-/-
-info: [(1, 1)]
--/
--- #guard_msgs in
--- #eval visit_cells 1 1
-
-/-
-info: expected
--/
--- #guard_msgs in
--- #eval visit_cells 3 3
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: unguarded

@@ -36,25 +36,4 @@ theorem trafficJam_single_char
   (h3: sides = [""]) :
   (trafficJam road sides).length ≥ 2 ∧
   ∃ i, (trafficJam road sides).get i = 'X' := sorry
-
-/-
-info: 'abcCdCeCECX'
--/
--- #guard_msgs in
--- #eval traffic_jam "abcdeXghi" ["", "", "CCCCC", "", "EEEEEEEEEE", "FFFFFF", "", "", "IIIIII"]
-
-/-
-info: 'abcdefX'
--/
--- #guard_msgs in
--- #eval traffic_jam "abcdefX" []
-
-/-
-info: 'abcdBeBfBgBhBiBCjCkClCmCX'
--/
--- #guard_msgs in
--- #eval traffic_jam "abcdefghijklmX" ["", "", "", "BBBBBB", "", "", "", "", "CCCCC"]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

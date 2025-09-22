@@ -41,19 +41,4 @@ theorem equal_ratings_ranking (N M : Nat) (initial_ratings : List Nat)
     let result := solve_chess_tournament N M initial_ratings rating_changes
     0 ≤ result ∧ result ≤ N :=
   sorry
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval solve_chess_tournament 3 3 [2500, 2500, 2520] [[10, -5, -20], [10, 15, 20], [-15, 17, 13]]
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval solve_chess_tournament 2 3 [2125, 2098] [[-20, 10, -10], [10, 10, -20]]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

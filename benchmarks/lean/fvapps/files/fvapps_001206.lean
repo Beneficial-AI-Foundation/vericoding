@@ -27,6 +27,3 @@ theorem reverse_list_index {α : Type} (xs : List α) (i : Nat) (h : i < xs.leng
   xs.get ⟨xs.length - 1 - i, sorry⟩ :=
   sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

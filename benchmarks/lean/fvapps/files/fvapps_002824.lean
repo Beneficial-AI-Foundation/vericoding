@@ -24,25 +24,4 @@ theorem middle_position_property (s : String) (h : s.length > 1) :
   let mid := (s.length - 1) / 2
   ∃ pos : String.Pos, get_middle s = s.extract pos (⟨mid + result.length⟩) :=
 sorry
-
-/-
-info: 'es'
--/
--- #guard_msgs in
--- #eval get_middle "test"
-
-/-
-info: 't'
--/
--- #guard_msgs in
--- #eval get_middle "testing"
-
-/-
-info: 'A'
--/
--- #guard_msgs in
--- #eval get_middle "A"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

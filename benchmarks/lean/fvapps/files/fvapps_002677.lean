@@ -26,25 +26,4 @@ theorem isTriangular_known_values :
   isTriangular 28 = true ∧
   isTriangular 36 = true ∧
   isTriangular 45 = true := sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval is_triangular 1
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval is_triangular 6
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval is_triangular 7
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

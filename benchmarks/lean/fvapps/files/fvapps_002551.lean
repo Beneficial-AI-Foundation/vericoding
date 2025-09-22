@@ -15,6 +15,3 @@ theorem ordering_beers_zero :
 theorem ordering_beers_one :
   ordering_beers 1 = "Jedno piwo poprosze" := sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

@@ -29,19 +29,4 @@ theorem doubled_distances_decrease_happiness (N M : Nat) (distances : List Nat) 
   (doubled_distances : List Nat)
   (h : doubled_distances = distances.map (· * 2)) :
   calc_max_happiness N M doubled_distances deliciousness ≤ calc_max_happiness N M distances deliciousness := sorry
-
-/-
-info: 11
--/
--- #guard_msgs in
--- #eval calc_max_happiness 3 4 [1, 4] [[2, 2, 5, 1], [1, 3, 3, 2], [2, 2, 5, 1]]
-
-/-
-info: 20
--/
--- #guard_msgs in
--- #eval calc_max_happiness 5 3 [1, 2, 3, 4] [[10, 1, 1], [1, 1, 1], [1, 10, 1], [1, 1, 1], [1, 1, 10]]
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: unguarded

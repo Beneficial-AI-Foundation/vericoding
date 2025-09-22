@@ -32,25 +32,4 @@ theorem calc_max_sweetness_step_two (k : Nat) :
 
 theorem calc_max_sweetness_step_three (k : Nat) :
   calc_max_sweetness 3 k - calc_max_sweetness 2 k = k := sorry
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval calc_max_sweetness 1 2
-
-/-
-info: 6
--/
--- #guard_msgs in
--- #eval calc_max_sweetness 4 3
-
-/-
-info: 10
--/
--- #guard_msgs in
--- #eval calc_max_sweetness 3 5
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

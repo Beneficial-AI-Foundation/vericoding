@@ -1,15 +1,16 @@
 -- <vc-preamble>
-def gcd (a b : Nat) : Nat :=
-  sorry
-
-def hasDPCProperties (n : Nat) (s : String) : Bool :=
-  sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
+def gcd (a b : Nat) : Nat :=
+  sorry
+
+def hasDPCProperties (n : Nat) (s : String) : Bool :=
+  sorry
+
 def dpcSequence (s : String) : Int :=
   sorry
 -- </vc-definitions>
@@ -17,43 +18,22 @@ def dpcSequence (s : String) : Int :=
 -- <vc-theorems>
 theorem dpc_satisfies_properties (s : String) (h : s.length > 0 ∧ s.length ≤ 30) :
   let result := dpcSequence s
-  result = -1 ∨ (∃ n : Nat, result = n ∧ hasDPCProperties n s) := 
-  sorry
+  result = -1 ∨ (∃ n : Nat, result = n ∧ hasDPCProperties n s) :=
+sorry
 
 theorem dpc_is_minimal (s : String) (h : s.length > 0 ∧ s.length ≤ 30) :
   let result := dpcSequence s
   result ≠ -1 → ∀ n : Nat, n < result.toNat → ¬hasDPCProperties n s :=
-  sorry
+sorry
 
 theorem dpc_result_bounds (s : String) (h : s.length > 0 ∧ s.length ≤ 30) :
   let result := dpcSequence s
   result = -1 ∨ (1 ≤ result ∧ result ≤ 1000000000) :=
-  sorry
+sorry
 
-theorem all_divisible_has_solution (s : String) 
+theorem all_divisible_has_solution (s : String)
   (h1 : s.length > 0 ∧ s.length ≤ 10)
   (h2 : ∀ c ∈ s.data, c = 'D') :
   dpcSequence s ≠ -1 :=
-  sorry
-
-/-
-info: 20
--/
--- #guard_msgs in
--- #eval dpc_sequence "DDPDD"
-
-/-
-info: -1
--/
--- #guard_msgs in
--- #eval dpc_sequence "DPCPDPPPDCPDPDPC"
-
-/-
-info: 15782844
--/
--- #guard_msgs in
--- #eval dpc_sequence "DDDDPDDCCCDDPDCCPCDCDDPCPCCDDCD"
+sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

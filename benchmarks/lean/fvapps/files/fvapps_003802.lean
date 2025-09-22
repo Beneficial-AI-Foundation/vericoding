@@ -24,25 +24,4 @@ theorem string_to_int_list_empty_cases :
   string_to_int_list "," = [] ∧
   string_to_int_list ",,,," = [] :=
 sorry
-
-/-
-info: [1, 2, 3, 4, 5]
--/
--- #guard_msgs in
--- #eval string_to_int_list "1,2,3,4,5"
-
-/-
-info: [1, 2, 3, 4, 5]
--/
--- #guard_msgs in
--- #eval string_to_int_list "1,2,3,,,4,,5,,,"
-
-/-
-info: []
--/
--- #guard_msgs in
--- #eval string_to_int_list ",,,,,,,,"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

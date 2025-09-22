@@ -22,6 +22,3 @@ theorem vowels_removed
     let vowels := "aeiou".data
     ∀ c ∈ result.data, c ∉ vowels := sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

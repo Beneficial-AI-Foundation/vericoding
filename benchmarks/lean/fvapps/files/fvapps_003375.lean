@@ -25,19 +25,4 @@ theorem chromosome_check_XX :
   (chromosome_check "XX").contains 'e' ∧ 
   (chromosome_check "XX").contains 'r' :=
 sorry
-
-/-
-info: "Congratulations! You're going to have a son."
--/
--- #guard_msgs in
--- #eval chromosome_check "XY"
-
-/-
-info: "Congratulations! You're going to have a daughter."
--/
--- #guard_msgs in
--- #eval chromosome_check "XX"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

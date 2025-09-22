@@ -21,25 +21,4 @@ theorem word_to_bin_roundtrip {s : String} (h : s.length > 0) :
   let binList := word_to_bin s
   let decoded := binList.map (fun x => String.toNat! x)
   String.mk (decoded.map Char.ofNat) = s := sorry
-
-/-
-info: ['01101101', '01100001', '01101110']
--/
--- #guard_msgs in
--- #eval word_to_bin "man"
-
-/-
-info: ['01100001']
--/
--- #guard_msgs in
--- #eval word_to_bin "a"
-
-/-
-info: ['01000001', '01000010']
--/
--- #guard_msgs in
--- #eval word_to_bin "AB"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

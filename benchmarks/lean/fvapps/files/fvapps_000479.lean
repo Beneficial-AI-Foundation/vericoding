@@ -42,25 +42,4 @@ theorem canVisitAllRooms_single_room :
 
 theorem canVisitAllRooms_self_ref :
   canVisitAllRooms [[0]] = true := sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval can_visit_all_rooms [[1], [2], [3], []]
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval can_visit_all_rooms [[1, 3], [3, 0, 1], [2], [0]]
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval can_visit_all_rooms [[1], [2], [3], [], [], []]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

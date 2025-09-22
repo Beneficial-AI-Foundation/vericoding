@@ -39,25 +39,4 @@ sorry
 theorem is_balanced_contest_perfect_case (p : Nat) (h : p ≥ 10) (h2 : p ≤ 10000) :
   is_balanced_contest 3 p [p/10, p/10, p/2] = "yes" :=
 sorry
-
-/-
-info: 'yes'
--/
--- #guard_msgs in
--- #eval is_balanced_contest 3 100 [10, 1, 100]
-
-/-
-info: 'no'
--/
--- #guard_msgs in
--- #eval is_balanced_contest 3 100 [11, 1, 100]
-
-/-
-info: 'no'
--/
--- #guard_msgs in
--- #eval is_balanced_contest 4 100 [50, 50, 50, 50]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

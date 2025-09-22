@@ -25,25 +25,4 @@ theorem add_binary_with_zero
   add_binary n 0 = toString (Nat.toDigits 2 n) ∧
   add_binary 0 n = toString (Nat.toDigits 2 n) :=
   sorry
-
-/-
-info: '10'
--/
--- #guard_msgs in
--- #eval add_binary 1 1
-
-/-
-info: '111111'
--/
--- #guard_msgs in
--- #eval add_binary 51 12
-
-/-
-info: '1000000000001'
--/
--- #guard_msgs in
--- #eval add_binary 4096 1
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

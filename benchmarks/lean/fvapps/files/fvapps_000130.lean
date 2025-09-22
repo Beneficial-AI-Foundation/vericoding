@@ -41,19 +41,4 @@ theorem consecutive_days_cost
   (h3 : ∀ c ∈ costs, c ≥ 1 ∧ c ≤ 1000) :
   minCostTickets days costs = min (costs[0]! * 7) (min costs[1]! costs[2]!) :=
   sorry
-
-/-
-info: 11
--/
--- #guard_msgs in
--- #eval min_cost_tickets [1, 4, 6, 7, 8, 20] [2, 7, 15]
-
-/-
-info: 17
--/
--- #guard_msgs in
--- #eval min_cost_tickets [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 30, 31] [2, 7, 15]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

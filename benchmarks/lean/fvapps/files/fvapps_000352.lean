@@ -20,25 +20,4 @@ theorem lower_bound {n m : Nat} (hn : n > 0) (hm : m > 0) :
 
 theorem upper_bound {n m : Nat} (hn : n > 0) (hm : m > 0) :
   tileRectangle n m ≤ n * m := sorry
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval tile_rectangle 2 3
-
-/-
-info: 5
--/
--- #guard_msgs in
--- #eval tile_rectangle 5 8
-
-/-
-info: 6
--/
--- #guard_msgs in
--- #eval tile_rectangle 11 13
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

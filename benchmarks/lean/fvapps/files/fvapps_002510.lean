@@ -40,25 +40,4 @@ sorry
 theorem undefined_variable_raises_error :
   evaluate_expression "undefined_var" = 0 :=
 sorry
-
-/-
-info: 5
--/
--- #guard_msgs in
--- #eval evaluate_expression "2 + 3"
-
-/-
-info: 5
--/
--- #guard_msgs in
--- #eval evaluate_expression "len("hello")"
-
-/-
-info: 20
--/
--- #guard_msgs in
--- #eval evaluate_expression "x * 2" {"x": 10}
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

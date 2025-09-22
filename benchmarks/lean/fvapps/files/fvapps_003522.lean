@@ -16,25 +16,4 @@ theorem simple_multiplication_even (n : Int)
 theorem simple_multiplication_odd (n : Int)
   (h : n % 2 = 1) :
   simple_multiplication n = n * 9 := sorry
-
-/-
-info: 16
--/
--- #guard_msgs in
--- #eval simple_multiplication 2
-
-/-
-info: 9
--/
--- #guard_msgs in
--- #eval simple_multiplication 1
-
-/-
-info: 64
--/
--- #guard_msgs in
--- #eval simple_multiplication 8
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

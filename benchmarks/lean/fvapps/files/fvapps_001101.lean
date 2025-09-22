@@ -29,25 +29,4 @@ theorem valid_positions {n : Nat} (positions : List Nat) :
   List.length positions = n →
   ∀ i, i < n → (positions.get ⟨i, sorry⟩ = 0 ∨ positions.get ⟨i, sorry⟩ ≤ i) :=
 sorry
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval min_steps_to_arrange 1 [0]
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval min_steps_to_arrange 3 [0, 0, 0]
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval min_steps_to_arrange 5 [0, 1, 2, 1, 4]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

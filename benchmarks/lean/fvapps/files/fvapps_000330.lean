@@ -25,25 +25,4 @@ theorem num_triplets_empty_first (nums2 : List Nat) :
 theorem num_triplets_empty_second (nums1 : List Nat) :
   num_triplets nums1 [] = 0 :=
   sorry
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval num_triplets [7, 4] [5, 2, 8, 9]
-
-/-
-info: 9
--/
--- #guard_msgs in
--- #eval num_triplets [1, 1] [1, 1, 1]
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval num_triplets [7, 7, 8, 3] [1, 2, 9, 7]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

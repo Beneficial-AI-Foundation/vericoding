@@ -33,6 +33,3 @@ theorem solve_relative_ranks {n : Nat} {wealths : List Nat}
     wealths[i]! > wealths[i-1]! → ranks[i]! ≤ ranks[i-1]! + 1 :=
   sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

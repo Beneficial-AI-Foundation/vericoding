@@ -31,25 +31,4 @@ theorem index_matches_value [Inhabited Int] (arr : List Int) :
   let result := find_in_array arr (fun x i => x.toNat = i)
   result ≠ -1 → arr[result.toNat]!.toNat = result.toNat ∧
   result = -1 → ∀ (i : Nat), i < arr.length → arr[i]!.toNat ≠ i := sorry
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval find_in_array [1, 3, 5, 6, 7] lambda value, index: value % 2 == 0
-
-/-
-info: -1
--/
--- #guard_msgs in
--- #eval find_in_array [1, 2, 3, 4, 5] lambda value, index: value == 10
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval find_in_array [5, 4, 2, 3, 4] lambda value, index: value == index
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

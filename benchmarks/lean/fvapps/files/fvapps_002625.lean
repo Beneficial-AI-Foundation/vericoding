@@ -18,6 +18,3 @@ theorem decode_known_case2 :
 theorem decode_known_case3 :
   decode 120108105118105109119101112109107108120981001010101098102105108109114104125115121118105125105119981000 = "thereisalight, 1194, behindyoureyes, 8" := sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

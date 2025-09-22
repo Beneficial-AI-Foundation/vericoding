@@ -28,25 +28,4 @@ theorem identical_elements_theorem (arr : List Nat) (k : Nat)
     (h3 : k ≤ 10)
     (h4 : ∀ x ∈ arr, x = 1) :
   arrayEqualization arr k = 0 := sorry
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval array_equalization [1, 2, 2, 1, 2, 1, 2, 2, 2, 1, 1, 1] 2
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval array_equalization [5, 2, 3, 5, 2, 2, 3, 5, 1, 2, 5, 1, 2, 5, 3] 7
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval array_equalization [1, 2, 2, 1, 1, 1, 2, 2, 2, 1, 1, 1] 9
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

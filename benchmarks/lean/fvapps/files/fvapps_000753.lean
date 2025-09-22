@@ -25,25 +25,4 @@ sorry
 theorem count_exp_pal_single_char (c : Char) :
   count_exponential_palindromes (String.singleton c) = 1 :=
 sorry
-
-/-
-info: 9
--/
--- #guard_msgs in
--- #eval count_exponential_palindromes "11010"
-
-/-
-info: 18
--/
--- #guard_msgs in
--- #eval count_exponential_palindromes "101001011"
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval count_exponential_palindromes "110"
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

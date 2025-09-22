@@ -37,6 +37,3 @@ theorem correctness
 : problem_spec implementation numbers threshold  := by
   sorry
 -- </vc-theorems>
-
--- #test implementation ([1, 2, 4, 10]: List Int) 100 = true
--- #test implementation ([1, 20, 4, 10]: List Int) 5 = false

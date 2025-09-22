@@ -43,6 +43,3 @@ theorem cost_increases :
     (val ≠ -1 ∧ (i,j) ≠ (0,0)) → val > 0 :=
   sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

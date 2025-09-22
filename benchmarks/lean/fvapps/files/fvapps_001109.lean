@@ -26,25 +26,4 @@ theorem result_bounded_by_length (s : String) :
 
 theorem repeated_chars_palindrome (c : Char) (n : Nat) :
   min_chars_to_palindrome (String.mk (List.replicate n c)) = 0 := sorry
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval min_chars_to_palindrome "a"
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval min_chars_to_palindrome "abbbcbddd"
-
-/-
-info: 5
--/
--- #guard_msgs in
--- #eval min_chars_to_palindrome "abcdef"
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

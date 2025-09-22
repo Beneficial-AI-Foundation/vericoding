@@ -37,25 +37,4 @@ theorem photo_problem_zero_time
   (h7: orientations = String.mk (List.replicate n 'w')) :
   let result := solve_photo_problem n a b 0 orientations
   result = 0 ∨ result = 1 := sorry
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval solve_photo_problem 4 2 3 10 "wwhw"
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval solve_photo_problem 5 2 4 13 "hhwhh"
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval solve_photo_problem 3 1 100 10 "whw"
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: unguarded

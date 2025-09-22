@@ -27,25 +27,4 @@ theorem count_special_permutations_two_is_zero :
 theorem count_special_permutations_positive_for_n_gt_two (n : Nat) (h : n > 2) :
   count_special_permutations n > 0 :=
   sorry
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval count_special_permutations 2
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval count_special_permutations 3
-
-/-
-info: 6
--/
--- #guard_msgs in
--- #eval count_special_permutations 4
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

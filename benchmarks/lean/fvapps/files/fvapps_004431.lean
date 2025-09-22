@@ -41,25 +41,4 @@ theorem self_descriptive_first_digit
     (h1 : (natToDigits n).get! 0 ≠ 0)
     (h2 : (natToDigits n).get! 0 > (natToDigits n).length - 1) :
     self_descriptive n = false := sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval self_descriptive 21200
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval self_descriptive 3211000
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval self_descriptive 21230
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

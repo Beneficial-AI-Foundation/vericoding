@@ -30,19 +30,4 @@ theorem count_paths_weight_order_invariant
   (h : edges_rev = edges) :
   count_shortest_paths n edges = count_shortest_paths n edges_rev :=
   sorry
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval count_shortest_paths 3 [(1, 2, 3), (2, 3, 6), (1, 3, 7)]
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval count_shortest_paths 3 [(1, 2, 3), (2, 3, 6), (1, 3, 9)]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

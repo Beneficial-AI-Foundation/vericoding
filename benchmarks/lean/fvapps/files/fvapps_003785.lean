@@ -30,25 +30,4 @@ sorry
 theorem highest_rank_order_independent {arr : List Int} (h : arr ≠ []) :
   highest_rank arr = highest_rank (List.reverse arr) :=
 sorry
-
-/-
-info: 12
--/
--- #guard_msgs in
--- #eval highest_rank [12, 10, 8, 12, 7, 6, 4, 10, 12]
-
-/-
-info: 12
--/
--- #guard_msgs in
--- #eval highest_rank [12, 10, 8, 12, 7, 6, 4, 10, 12, 10]
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval highest_rank [12, 10, 8, 8, 3, 3, 3, 3, 2, 4, 10, 12, 10]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

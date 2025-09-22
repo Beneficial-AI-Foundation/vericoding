@@ -26,25 +26,4 @@ theorem parity_constraint {x y extra_steps : Int} (h : extra_steps ≥ 0) :
     is_john_lying x y steps = (steps ≥ min_steps)
   else
     ¬(is_john_lying x y steps) := sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval is_john_lying 3 3 6
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval is_john_lying 4 5 10
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval is_john_lying -5 -5 10
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

@@ -22,6 +22,3 @@ theorem count_smaller_sorted {nums : List Int} (h : nums ≠ []) :
 theorem count_smaller_duplicates {nums : List Int} (h : nums ≠ []) :
   (count_smaller (nums ++ nums)).length = 2 * nums.length := sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

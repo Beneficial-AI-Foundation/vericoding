@@ -32,25 +32,4 @@ theorem max_spending_upper_bound (initial_burles : Nat)
   (h : initial_burles > 0) :
   max_spending initial_burles ≤ initial_burles * 10 / 9 + 10 := by
   sorry
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval max_spending 1
-
-/-
-info: 11
--/
--- #guard_msgs in
--- #eval max_spending 10
-
-/-
-info: 21
--/
--- #guard_msgs in
--- #eval max_spending 19
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

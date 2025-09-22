@@ -40,6 +40,3 @@ theorem correctness
 : problem_spec implementation file_name := by
   sorry
 -- </vc-theorems>
-
--- #test implementation "example.txt" = "Yes"
--- #test implementation "1example.dll" = "No"

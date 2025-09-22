@@ -42,6 +42,3 @@ theorem find_below_average_students_sorted_marks
     marks1 ≤ marks2
   ) result := sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

@@ -30,25 +30,4 @@ theorem decode_at_index_first_letter {s: String}
   (h3: (s.data.filter Char.isAlpha) ≠ [])
   : decode_at_index s 1 = String.mk [(s.data.filter Char.isAlpha).head!] :=
   sorry
-
-/-
-info: 'o'
--/
--- #guard_msgs in
--- #eval decode_at_index "leet2code3" 10
-
-/-
-info: 'h'
--/
--- #guard_msgs in
--- #eval decode_at_index "ha22" 5
-
-/-
-info: 'a'
--/
--- #guard_msgs in
--- #eval decode_at_index "a2345678999999999999999" 1
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

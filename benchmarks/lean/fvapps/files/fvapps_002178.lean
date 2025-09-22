@@ -1,12 +1,13 @@
 -- <vc-preamble>
-def countEmptyParabolas (points : List (Int × Int)) : Nat :=
-  sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
+def countEmptyParabolas (points : List (Int × Int)) : Nat :=
+  sorry
+
 def makeParabolaPoints (a h k : Int) (n : Nat) : List (Int × Int) :=
   sorry
 -- </vc-definitions>
@@ -29,32 +30,11 @@ theorem countEmptyParabolas_duplicate_x_values (points : List (Int × Int)) :
   let deduped := points.foldl (fun acc (x, y) =>
     match acc.find? (fun (x', _) => x' = x) with
     | none => acc ++ [(x, y)]
-    | some (x', y') => 
-      if y > y' 
+    | some (x', y') =>
+      if y > y'
       then acc.map (fun (x'', y'') => if x'' = x then (x, y) else (x'', y''))
       else acc
     ) []
   countEmptyParabolas points = countEmptyParabolas deduped := by
   sorry
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval count_empty_parabolas [(-1, 0), (0, 2), (1, 0)]
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval count_empty_parabolas [(1, 0), (1, -1), (0, -1), (-1, 0), (-1, -1)]
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval count_empty_parabolas [(-751115, -925948)]
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: guarded

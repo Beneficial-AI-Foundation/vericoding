@@ -22,25 +22,4 @@ theorem same_string_property (s : String) (h : s.length > 0) :
 theorem return_value_bounds (s1 s2 : String) (h1 : s1.length > 0) (h2 : s2.length > 0) :
   let result := find_longest_uncommon_subsequence s1 s2
   result = -1 ∨ result ≥ max s1.length s2.length := sorry
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval find_longest_uncommon_subsequence "aba" "cdc"
-
-/-
-info: -1
--/
--- #guard_msgs in
--- #eval find_longest_uncommon_subsequence "aaa" "aaa"
-
-/-
-info: -1
--/
--- #guard_msgs in
--- #eval find_longest_uncommon_subsequence "aefawf" "aefawf"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

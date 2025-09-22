@@ -36,25 +36,4 @@ theorem cooking_time_zero :
 
 theorem cooking_time_same_power :
   cooking_time "800W" 5 30 "800W" = "5 minutes 30 seconds" := sorry
-
-/-
-info: '3 minutes 15 seconds'
--/
--- #guard_msgs in
--- #eval cooking_time "600W" 4 20 "800W"
-
-/-
-info: '2 minutes 0 seconds'
--/
--- #guard_msgs in
--- #eval cooking_time "800W" 3 0 "1200W"
-
-/-
-info: '17 minutes 30 seconds'
--/
--- #guard_msgs in
--- #eval cooking_time "100W" 8 45 "50W"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

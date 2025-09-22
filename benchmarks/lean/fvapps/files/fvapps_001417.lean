@@ -1,15 +1,16 @@
 -- <vc-preamble>
-def Nat.toHexString (n: Nat) : String :=
-  sorry
-
-def String.trimLeftZeros (s: String) : String :=
-  sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
+def Nat.toHexString (n: Nat) : String :=
+  sorry
+
+def String.trimLeftZeros (s: String) : String :=
+  sorry
+
 def hexToDecimal (l: List String) : List Nat :=
   sorry
 -- </vc-definitions>
@@ -20,7 +21,7 @@ theorem hex_to_decimal_length (l: List String) :
   sorry
 
 theorem hex_to_decimal_non_negative (l: List String) (i: Nat) (h: i < (hexToDecimal l).length) :
-  (hexToDecimal l).get ⟨i, h⟩ ≥ 0 := by 
+  (hexToDecimal l).get ⟨i, h⟩ ≥ 0 := by
   sorry
 
 theorem hex_to_decimal_roundtrip (l: List String) :
@@ -32,28 +33,7 @@ theorem hex_to_decimal_roundtrip (l: List String) :
 
 theorem hex_to_decimal_increasing (l: List String) (i: Nat) (h₁: i < l.length) (h₂: i < (hexToDecimal l).length) :
   let num := l.get ⟨i, h₁⟩
-  num.length > 1 → 
+  num.length > 1 →
   (hexToDecimal l).get ⟨i, h₂⟩ > 0 := by
   sorry
-
-/-
-info: [10]
--/
--- #guard_msgs in
--- #eval hex_to_decimal ["A"]
-
-/-
-info: [6691]
--/
--- #guard_msgs in
--- #eval hex_to_decimal ["1A23"]
-
-/-
-info: [10, 6691, 11306]
--/
--- #guard_msgs in
--- #eval hex_to_decimal ["A", "1A23", "2C2A"]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

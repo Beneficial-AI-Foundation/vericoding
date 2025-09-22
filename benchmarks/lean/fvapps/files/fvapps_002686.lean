@@ -24,6 +24,3 @@ theorem encode_idempotent {s : String} :
   encode (encode s) = encode s ↔ 
   ∀ w ∈ s.words, w.length ≤ 2 := sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

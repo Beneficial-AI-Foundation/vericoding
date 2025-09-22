@@ -23,25 +23,4 @@ theorem mix_identical_strings (s : String) (result : String) (h : result = mix s
 
 theorem mix_no_lowercase (s : String) (h : ∀ c ∈ s.data, ¬c.isLower) :
   mix s s = "" := sorry
-
-/-
-info: expected
--/
--- #guard_msgs in
--- #eval mix "Are they here" "yes, they are here"
-
-/-
-info: expected
--/
--- #guard_msgs in
--- #eval mix "looping is fun but dangerous" "less dangerous than coding"
-
-/-
-info: expected
--/
--- #guard_msgs in
--- #eval mix "codewars" "codewars"
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

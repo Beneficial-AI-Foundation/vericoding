@@ -22,31 +22,4 @@ theorem decreasing_sequence_invalid (n : Nat) :
   n ≥ 3 → 
   let arr := List.reverse (List.range' 1 n)
   is_good_permutation n arr = false := sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval is_good_permutation 1 [1]
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval is_good_permutation 2 [2, 1]
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval is_good_permutation 3 [3, 2, 1]
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval is_good_permutation 4 [1, 3, 2, 4]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

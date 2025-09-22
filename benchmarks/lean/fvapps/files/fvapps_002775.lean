@@ -16,25 +16,4 @@ theorem empty_schedule_always_available
   (time := s!"{h}:{m}") :
   check_availability [] time = true := by
   sorry
-
-/-
-info: '10:15'
--/
--- #guard_msgs in
--- #eval check_availability [["09:30", "10:15"], ["12:20", "15:50"]] "10:00"
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval check_availability [["09:30", "10:15"], ["12:20", "15:50"]] "11:00"
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval check_availability [] "10:15"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

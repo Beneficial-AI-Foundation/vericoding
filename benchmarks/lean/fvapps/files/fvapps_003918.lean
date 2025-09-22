@@ -41,25 +41,4 @@ theorem increasing_load_increases_water
 
 theorem known_value_test :
   how_much_water 50 15 29 = Sum.inl 189.87 := sorry
-
-/-
-info: 'Too much clothes'
--/
--- #guard_msgs in
--- #eval how_much_water 10 10 21
-
-/-
-info: 'Not enough clothes'
--/
--- #guard_msgs in
--- #eval how_much_water 10 10 2
-
-/-
-info: 189.87
--/
--- #guard_msgs in
--- #eval how_much_water 50 15 29
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

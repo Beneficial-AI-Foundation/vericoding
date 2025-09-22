@@ -29,31 +29,4 @@ theorem max_perfect_teams_total_specialists (c m x : Nat) :
 theorem max_perfect_teams_is_maximal (c m x : Nat) :
   max_perfect_teams c m x = min (min c m) ((c + m + x) / 3) :=
   sorry
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval max_perfect_teams 1 1 1
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval max_perfect_teams 3 6 0
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval max_perfect_teams 0 0 0
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval max_perfect_teams 0 1 1
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

@@ -27,6 +27,3 @@ theorem find_min_fx_positive_inputs (b c : Float) :
 theorem find_min_fx_known_value :
   Float.abs (find_min_fx 2 2 - 5.8831725615) < 0.000001 := by sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

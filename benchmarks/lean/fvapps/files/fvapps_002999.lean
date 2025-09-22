@@ -25,25 +25,4 @@ theorem fit_in_constraints {a b m n : Nat} :
   fit_in a b m n → 
   max a b ≤ min m n ∧ 
   a + b ≤ max m n := sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval fit_in 1 2 3 2
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval fit_in 1 2 2 1
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval fit_in 3 2 3 2
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

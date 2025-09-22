@@ -28,25 +28,4 @@ theorem concat_unique_strings (s1 s2 : String)
   (h2 : has_unique_chars s2 = true)
   (h3 : ∀ x ∈ s1.data, ∀ y ∈ s2.data, x ≠ y) :
   has_unique_chars (s1 ++ s2) = true := sorry
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval has_unique_chars "  nAa"
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval has_unique_chars "abcdef"
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval has_unique_chars "++-"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

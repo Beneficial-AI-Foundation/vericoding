@@ -24,6 +24,3 @@ theorem unique_elements_same_elements {xs ys : List Int} (h: xs.length ≥ 2) :
 theorem unique_elements_valid {xs : List Int} (h: xs.length ≥ 2) :
   validate_solution (rearrange_barcodes xs) = true := sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

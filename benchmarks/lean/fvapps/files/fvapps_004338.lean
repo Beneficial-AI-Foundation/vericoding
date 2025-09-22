@@ -36,25 +36,4 @@ theorem pattern_all_digits {n : Int} (h : n > 0) :
 theorem first_row_matches_input {n : Int} (h1 : n > 0) (h2 : n ≤ 9) :
   let first := ((pattern n).split fun c ↦ c = '\n').get! 0
   ∀ c ∈ first.data, c.toString.toNat! = n := sorry
-
-/-
-info: '333\n322\n321'
--/
--- #guard_msgs in
--- #eval pattern 3
-
-/-
-info: ''
--/
--- #guard_msgs in
--- #eval pattern 0
-
-/-
-info: expected
--/
--- #guard_msgs in
--- #eval pattern 7
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

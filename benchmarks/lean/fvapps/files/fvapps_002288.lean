@@ -31,19 +31,4 @@ theorem directed_edges_count {n m : Nat} {edges : List (Nat × Nat × Nat)}
   let lines := split_lines result
   lines.head! = "YES" →
   lines.length = m + 1 := sorry
-
-/-
-info: 'YES\n1 3'
--/
--- #guard_msgs in
--- #eval solve_graph_direction 3 1 [[0, 1, 3]]
-
-/-
-info: 'NO'
--/
--- #guard_msgs in
--- #eval solve_graph_direction 4 5 [[1, 4, 1], [1, 1, 3], [0, 1, 2], [1, 2, 4], [1, 3, 2]]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

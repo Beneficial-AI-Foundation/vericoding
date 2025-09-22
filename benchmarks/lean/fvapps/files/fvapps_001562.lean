@@ -29,25 +29,4 @@ theorem n_linear_strictly_increasing (multipliers : List Nat)
   (h2 : ∀ x ∈ multipliers, x ≥ 2) :
   ∀ i, i < 2 → n_linear multipliers (i+1) < n_linear multipliers (i+2) :=
 sorry
-
-/-
-info: 10
--/
--- #guard_msgs in
--- #eval n_linear [2, 3] 5
-
-/-
-info: 64
--/
--- #guard_msgs in
--- #eval n_linear [5, 7, 8] 10
-
-/-
-info: 46
--/
--- #guard_msgs in
--- #eval n_linear [2, 3, 4, 5] 33
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

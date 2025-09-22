@@ -31,25 +31,4 @@ theorem monotonic_increasing_has_triplet (nums : List Int)
 theorem short_lists_have_no_triplet (nums : List Int) (h : nums.length < 3) :
   ¬(has_increasing_triplet nums) :=
   sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval has_increasing_triplet [1, 2, 3, 4, 5]
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval has_increasing_triplet [5, 4, 3, 2, 1]
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval has_increasing_triplet [2, 1, 5, 0, 4, 6]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

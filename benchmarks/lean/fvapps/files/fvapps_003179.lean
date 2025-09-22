@@ -1,22 +1,26 @@
 -- <vc-preamble>
-def sqrt (n : Nat) : Nat := sorry
-
-def isPrime (n : Nat) : Bool := sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
-def gap (g m n : Nat) : Option (Nat × Nat) := sorry
+def sqrt (n : Nat) : Nat :=
+sorry
 
-theorem prime_divisibility {n : Nat} (h : n ≥ 2) :
-  isPrime n = true →
-  ∀ i : Nat, 2 ≤ i → i ≤ sqrt n → n % i ≠ 0 :=
+def isPrime (n : Nat) : Bool :=
+sorry
+
+def gap (g m n : Nat) : Option (Nat × Nat) :=
 sorry
 -- </vc-definitions>
 
 -- <vc-theorems>
+theorem prime_divisibility {n : Nat} (h : n ≥ 2) :
+  isPrime n = true →
+  ∀ i : Nat, 2 ≤ i → i ≤ sqrt n → n % i ≠ 0 :=
+sorry
+
 theorem composite_divisibility {n : Nat} (h : n ≥ 2) :
   isPrime n = false →
   (∃ i : Nat, 2 ≤ i ∧ i ≤ sqrt n ∧ n % i = 0) ∨ n < 2 :=
@@ -31,25 +35,4 @@ theorem gap_result_valid {g m n : Nat} (hm : m ≥ 2) (hn : n ≥ 2) :
   m ≤ p₁ ∧ p₁ ≤ p₂ ∧ p₂ ≤ n ∧
   ∀ x : Nat, p₁ < x → x < p₂ → isPrime x = false :=
 sorry
-
-/-
-info: [3, 5]
--/
--- #guard_msgs in
--- #eval gap 2 3 10
-
-/-
-info: None
--/
--- #guard_msgs in
--- #eval gap 6 100 110
-
-/-
-info: [163, 167]
--/
--- #guard_msgs in
--- #eval gap 4 130 200
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

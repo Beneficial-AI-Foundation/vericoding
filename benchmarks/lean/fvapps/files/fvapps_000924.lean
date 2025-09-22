@@ -37,25 +37,4 @@ theorem non_vowels_positive_cost (s : String) :
   (∀ c ∈ s.data, ¬isVowel c) →
   minCostVowelTransform s > 0 :=
 sorry
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval min_cost_vowel_transform "aeiou"
-
-/-
-info: 6
--/
--- #guard_msgs in
--- #eval min_cost_vowel_transform "dbcc"
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval min_cost_vowel_transform "bc"
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

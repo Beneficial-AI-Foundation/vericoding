@@ -25,25 +25,4 @@ theorem ride_transitive {s1 s2 s3 : String} :
 theorem ride_output_format {s1 s2 : String} :
   ride s1 s2 = "GO" ∨ ride s1 s2 = "STAY" := by
   sorry
-
-/-
-info: 'GO'
--/
--- #guard_msgs in
--- #eval ride "COMETQ" "HVNGAT"
-
-/-
-info: 'STAY'
--/
--- #guard_msgs in
--- #eval ride "ABSTAR" "USACO"
-
-/-
-info: 'GO'
--/
--- #guard_msgs in
--- #eval ride "USACO" "USACO"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

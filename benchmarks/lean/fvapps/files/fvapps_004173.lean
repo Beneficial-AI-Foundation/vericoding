@@ -40,25 +40,4 @@ theorem output_in_valid_range
   switch_endian n bits = some result → 
   0 ≤ result ∧ result < 2^bits :=
 sorry
-
-/-
-info: 153
--/
--- #guard_msgs in
--- #eval switch_endian 153 8
-
-/-
-info: 4261740544
--/
--- #guard_msgs in
--- #eval switch_endian 1534 32
-
-/-
-info: None
--/
--- #guard_msgs in
--- #eval switch_endian 256 8
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

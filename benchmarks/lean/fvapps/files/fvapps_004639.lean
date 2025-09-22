@@ -33,25 +33,4 @@ theorem mutations_single_item_lists :
 theorem mutations_same_words :
   mutations (List.replicate 5 "test") (List.replicate 5 "test") "test" 0 = 0 ∨ 
   mutations (List.replicate 5 "test") (List.replicate 5 "test") "test" 0 = 1 := sorry
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval mutations ["plat", "rend", "bear", "soar", "mare", "pare", "flap", "neat", "clan", "pore"] ["boar", "clap", "farm", "lend", "near", "peat", "pure", "more", "plan", "soap"] "send" 0
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval mutations alice bob "flip" 1
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval mutations alice bob "maze" 0
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

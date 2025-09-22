@@ -27,25 +27,4 @@ theorem recaman_zero :
 theorem recaman_one :
   recaman 1 = 1 :=
   sorry
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval recaman 2
-
-/-
-info: 6
--/
--- #guard_msgs in
--- #eval recaman 3
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval recaman 4
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

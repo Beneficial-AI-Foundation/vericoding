@@ -1,21 +1,21 @@
 -- <vc-preamble>
-def count_inversions (lst : List Int) : Nat :=
-  sorry
-
 def isSorted (l : List Int) : Prop :=
   ∀ i j, i < j → j < l.length → l[i]! ≤ l[j]!
--- </vc-preamble>
 
--- <vc-helpers>
--- </vc-helpers>
-
--- <vc-definitions>
 def swap (l : List Int) (i j : Nat) (h1 : i < l.length) (h2 : j < l.length) : List Int :=
   let arr := l.toArray
   let tmp := arr[i]!
   let arr := arr.set! i arr[j]!
   let arr := arr.set! j tmp
   arr.toList
+-- </vc-preamble>
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+-- <vc-definitions>
+def count_inversions (lst : List Int) : Nat :=
+  sorry
 -- </vc-definitions>
 
 -- <vc-theorems>
@@ -40,37 +40,4 @@ theorem single_swap_one_inversion {lst : List Int} (h1 : isSorted lst) (h2 : lst
 theorem count_always_non_negative (lst : List Int) :
   count_inversions lst ≥ 0 := by
   sorry
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval count_inversions #[]
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval count_inversions #[1, 2, 3]
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval count_inversions #[2, 1, 3]
-
-/-
-info: 15
--/
--- #guard_msgs in
--- #eval count_inversions #[6, 5, 4, 3, 2, 1]
-
-/-
-info: 30
--/
--- #guard_msgs in
--- #eval count_inversions #[6, 5, 4, 3, 3, 3, 3, 2, 1]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

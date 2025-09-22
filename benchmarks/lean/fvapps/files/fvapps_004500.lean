@@ -22,25 +22,4 @@ theorem complement_edge_cases :
   bitwiseComplement 0 = 1 ∧ 
   bitwiseComplement 1 = 0 ∧
   bitwiseComplement 2 = 1 := sorry
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval bitwiseComplement 5
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval bitwiseComplement 7
-
-/-
-info: 5
--/
--- #guard_msgs in
--- #eval bitwiseComplement 10
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

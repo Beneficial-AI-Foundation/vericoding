@@ -47,6 +47,15 @@ vc-description: |-
   Example case 2: 
   Sum is 3+5=8.
   -/
+  
+  /- Output is always within valid mod range -/
+  
+  -- Apps difficulty: interview
+  -- Assurance level: guarded
+  
+  /- Function is deterministic for same input -/
+  
+  /- First values are monotonically increasing -/
 
 vc-preamble: |-
 
@@ -57,45 +66,36 @@ vc-definitions: |-
   
   def solve_prime_sum (n: Nat) : Nat :=
     sorry
-  
-  /- Output is always within valid mod range -/
 
 vc-theorems: |-
   theorem solve_prime_sum_output_range (n: Nat) :
     solve_prime_sum n < MOD :=
-    sorry
+  sorry
   
-  /- Function is deterministic for same input -/
-  
-  theorem solve_prime_sum_deterministic (n: Nat) : 
+  theorem solve_prime_sum_deterministic (n: Nat) :
     solve_prime_sum n = solve_prime_sum n :=
-    sorry 
-  
-  /- First values are monotonically increasing -/
+  sorry
   
   theorem solve_prime_sum_monotone_init :
     solve_prime_sum 1 < solve_prime_sum 2 :=
-    sorry
-  
-  /-
-  info: 3
-  -/
-  -- #guard_msgs in
-  -- #eval solve_prime_sum 1
-  
-  /-
-  info: 8
-  -/
-  -- #guard_msgs in
-  -- #eval solve_prime_sum 2
-  
-  /-
-  info: 19
-  -/
-  -- #guard_msgs in
-  -- #eval solve_prime_sum 3
+  sorry
 
 vc-postamble: |-
-  -- Apps difficulty: interview
-  -- Assurance level: guarded
+  /--
+  info: 3
+  -/
+  #guard_msgs in
+  #eval solve_prime_sum 1
+  
+  /--
+  info: 8
+  -/
+  #guard_msgs in
+  #eval solve_prime_sum 2
+  
+  /--
+  info: 19
+  -/
+  #guard_msgs in
+  #eval solve_prime_sum 3
 

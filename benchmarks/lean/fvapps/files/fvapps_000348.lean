@@ -31,25 +31,4 @@ theorem max_dist_gap_bound (seats : List Nat) (i j : Nat)
 theorem max_dist_symmetry (seats : List Nat)
   (h : ∃ x ∈ seats, x = 1) :
   max_dist_to_closest seats = max_dist_to_closest seats.reverse := sorry
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval max_dist_to_closest [1, 0, 0, 0, 1, 0, 1]
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval max_dist_to_closest [1, 0, 0, 0]
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval max_dist_to_closest [0, 1]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

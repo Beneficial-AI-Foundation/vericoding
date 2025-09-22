@@ -27,25 +27,4 @@ theorem distinct_maintains_membership {α} [BEq α] (xs : List α) :
 
 theorem distinct_length {α} [BEq α] (xs : List α) :
   List.length (distinct xs) ≤ List.length xs := by sorry
-
-/-
-info: [1]
--/
--- #guard_msgs in
--- #eval distinct [1]
-
-/-
-info: [1, 2]
--/
--- #guard_msgs in
--- #eval distinct [1, 2]
-
-/-
-info: [1, 2, 3, 4, 5]
--/
--- #guard_msgs in
--- #eval distinct [1, 1, 1, 2, 3, 4, 5]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

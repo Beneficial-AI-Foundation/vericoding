@@ -28,25 +28,4 @@ theorem length_preserved {n : Nat} {xs : List Nat} :
 
 theorem input_length_matches {n : Nat} {perm : List Nat} :
   can_generate_permutation n perm → perm.length = n := sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval can_generate_permutation 5 [2, 3, 4, 5, 1]
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval can_generate_permutation 3 [1, 3, 2]
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval can_generate_permutation 4 [4, 2, 3, 1]
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: unguarded

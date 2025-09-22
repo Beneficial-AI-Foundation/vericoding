@@ -22,25 +22,4 @@ theorem happy_numbers_specific_values :
   13 ∈ happy_numbers 100 ∧
   19 ∈ happy_numbers 100 ∧
   4 ∉ happy_numbers 100 := sorry
-
-/-
-info: [1, 7, 10]
--/
--- #guard_msgs in
--- #eval happy_numbers 10
-
-/-
-info: [1, 7, 10, 13, 19, 23, 28, 31, 32, 44, 49]
--/
--- #guard_msgs in
--- #eval happy_numbers 50
-
-/-
-info: [1, 7, 10, 13, 19, 23, 28, 31, 32, 44, 49, 68, 70, 79, 82, 86, 91, 94, 97, 100]
--/
--- #guard_msgs in
--- #eval happy_numbers 100
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

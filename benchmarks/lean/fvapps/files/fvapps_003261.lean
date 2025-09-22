@@ -21,25 +21,4 @@ theorem bin_mul_zero_empty (n : Nat) :
 
 theorem bin_mul_commutative (m n : Nat) :
   bin_mul m n = bin_mul n m := sorry
-
-/-
-info: [960, 480, 60]
--/
--- #guard_msgs in
--- #eval bin_mul 100 15
-
-/-
-info: []
--/
--- #guard_msgs in
--- #eval bin_mul 15 0
-
-/-
-info: []
--/
--- #guard_msgs in
--- #eval bin_mul 0 0
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

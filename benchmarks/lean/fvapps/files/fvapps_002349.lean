@@ -17,25 +17,4 @@ theorem countPrimes_monotonic (x : Int) :
 
 theorem countPrimes_less_than_input (x : Int) :
   x ≥ 2 → countPrimes x < x := sorry
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval countPrimes 10
-
-/-
-info: 8
--/
--- #guard_msgs in
--- #eval countPrimes 20
-
-/-
-info: 25
--/
--- #guard_msgs in
--- #eval countPrimes 100
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

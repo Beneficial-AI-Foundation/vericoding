@@ -31,19 +31,4 @@ theorem single_element_subarrays {nums : List Nat} (h : nums ≠ []) (h_bin : �
   (ones_count : Nat) (h_ones : ones_count = List.sum nums) (h_pos : ones_count > 0) :
   num_subarrays_with_sum nums 1 ≥ ones_count :=
   sorry
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval num_subarrays_with_sum [1, 0, 1, 0, 1] 2
-
-/-
-info: 15
--/
--- #guard_msgs in
--- #eval num_subarrays_with_sum [0, 0, 0, 0, 0] 0
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

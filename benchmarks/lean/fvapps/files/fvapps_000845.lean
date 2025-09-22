@@ -26,25 +26,4 @@ theorem substring_of_concatenation_left (s1 s2 : String) :
 
 theorem substring_of_concatenation_right (s1 s2 : String) :
   is_substring (s1 ++ s2) s2 = "Y" := sorry
-
-/-
-info: 'Y'
--/
--- #guard_msgs in
--- #eval is_substring "techtrishna online event" "onlin"
-
-/-
-info: 'N'
--/
--- #guard_msgs in
--- #eval is_substring "hello world" "xyz"
-
-/-
-info: 'Y'
--/
--- #guard_msgs in
--- #eval is_substring "python3" "thon"
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

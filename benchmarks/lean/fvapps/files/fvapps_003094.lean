@@ -38,25 +38,4 @@ theorem only_duplicates_unique_chars
   (∀ c, countChar s c ≤ 1) →
   only_duplicates s = "" :=
 sorry
-
-/-
-info: 'cceee'
--/
--- #guard_msgs in
--- #eval only_duplicates "abccdefee"
-
-/-
-info: 'll'
--/
--- #guard_msgs in
--- #eval only_duplicates "hello"
-
-/-
-info: 'ondersndoders'
--/
--- #guard_msgs in
--- #eval only_duplicates "foundersandcoders"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

@@ -19,6 +19,3 @@ theorem arrange_words_preserves_word_count (text : String) (h : text ≠ "") :
   let result := arrange_words text
   (result.split (· = ' ')).length = (text.split (· = ' ')).length := sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

@@ -1,4 +1,10 @@
 -- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+-- <vc-definitions>
 def List.size {α} : List α → Nat
   | [] => 0
   | _::xs => 1 + xs.size
@@ -11,12 +17,7 @@ def count_positive_prefixes (seq : List Int) : Nat :=
 
 def sumList (xs : List Int) : Int :=
   sorry
--- </vc-preamble>
 
--- <vc-helpers>
--- </vc-helpers>
-
--- <vc-definitions>
 def Int.abs (i : Int) : Nat :=
   sorry
 -- </vc-definitions>
@@ -24,35 +25,26 @@ def Int.abs (i : Int) : Nat :=
 -- <vc-theorems>
 theorem sequence_length (n k : Nat) (h1 : n > 0) (h2 : k ≤ 100) :
   (sequence_generator n k).size = n :=
-  sorry
+sorry
 
 theorem sequence_elements (n k : Nat) (h1 : n > 0) (h2 : k ≤ 100) (h3 : i < n) :
   let seq := sequence_generator n k
   ∀ i : Nat, i < n → Int.abs (seq.get ⟨i, sorry⟩) = i + 1 :=
-  sorry
+sorry
 
 theorem positive_prefix_count (n k : Nat) (h1 : n > 0) (h2 : k ≤ 100) :
   count_positive_prefixes (sequence_generator n k) ≤ min k n :=
-  sorry
+sorry
 
 theorem all_positive_case (n : Nat) (h : n > 0) :
   let seq := sequence_generator n n
   (∀ i : Nat, i < n → seq.get ⟨i, sorry⟩ > 0) ∧
   seq = List.map (Int.ofNat ∘ Nat.succ) (List.range n) :=
-  sorry
+sorry
 
 theorem all_negative_case (n : Nat) (h : n > 0) :
   let seq := sequence_generator n 0
   (∀ i : Nat, i < n → seq.get ⟨i, sorry⟩ < 0) ∧
   seq = List.map (fun i => -Int.ofNat (i + 1)) (List.range n) :=
-  sorry
-
-/-
-info: [1, 2, 3]
--/
--- #guard_msgs in
--- #eval sequence_generator 3 3
+sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

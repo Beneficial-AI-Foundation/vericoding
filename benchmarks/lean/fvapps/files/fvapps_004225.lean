@@ -48,25 +48,4 @@ theorem output_format_colons
   isValidTimeFormat s →
   ∀ t, timeCorrect (some s) = some t →
   t.data.get! 2 = ':' ∧ t.data.get! 5 = ':' := sorry
-
-/-
-info: '09:10:01'
--/
--- #guard_msgs in
--- #eval time_correct "09:10:01"
-
-/-
-info: '20:40:39'
--/
--- #guard_msgs in
--- #eval time_correct "19:99:99"
-
-/-
-info: '00:01:01'
--/
--- #guard_msgs in
--- #eval time_correct "24:01:01"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

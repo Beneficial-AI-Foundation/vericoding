@@ -5,57 +5,27 @@
 -- </vc-helpers>
 
 -- <vc-definitions>
-def hydrate (s : String) : String := sorry 
-
-/- For a single digit input, the function hydrate returns a string with the 
-    same number of glasses of water, and uses "glass" for 1 and "glasses" otherwise -/
+def hydrate (s : String) : String :=
+sorry
 -- </vc-definitions>
 
 -- <vc-theorems>
-theorem hydrate_single_digit {n : Nat} (h : n ≤ 9) : 
-  hydrate s!"{n} drinks" = 
-    s!"{n} {if n = 1 then "glass" else "glasses"} of water" := 
-  sorry
+theorem hydrate_single_digit {n : Nat} (h : n ≤ 9) :
+  hydrate s!"{n} drinks" =
+    s!"{n} {if n = 1 then "glass" else "glasses"} of water" :=
+sorry
 
-/- For a list of single digit numbers, hydrate returns a string with the sum of 
-    the numbers as glasses of water -/
-
-theorem hydrate_multiple_digits {nums : List Nat} (h : ∀ n ∈ nums, n ≤ 9) : 
+theorem hydrate_multiple_digits {nums : List Nat} (h : ∀ n ∈ nums, n ≤ 9) :
   let sum := nums.foldl (· + ·) 0
-  hydrate (String.intercalate " " (nums.map toString)) = 
-    s!"{sum} {if sum = 1 then "glass" else "glasses"} of water" := 
-  sorry
+  hydrate (String.intercalate " " (nums.map toString)) =
+    s!"{sum} {if sum = 1 then "glass" else "glasses"} of water" :=
+sorry
 
-/- For any string containing only letters and spaces, hydrate returns "0 glasses of water" -/
+theorem hydrate_no_numbers {s : String}
+  (h : ∀ c ∈ s.data, c = ' ' ∨ ('a' ≤ c ∧ c ≤ 'z')) :
+  hydrate s = "0 glasses of water" :=
+sorry
 
-theorem hydrate_no_numbers {s : String} 
-  (h : ∀ c ∈ s.data, c = ' ' ∨ ('a' ≤ c ∧ c ≤ 'z')) : 
-  hydrate s = "0 glasses of water" := 
-  sorry
-
-/- For an empty string, hydrate returns "0 glasses of water" -/
-
-theorem hydrate_empty : hydrate "" = "0 glasses of water" := 
-  sorry
-
-/-
-info: '1 glass of water'
--/
--- #guard_msgs in
--- #eval hydrate "1 beer"
-
-/-
-info: '3 glasses of water'
--/
--- #guard_msgs in
--- #eval hydrate "2 glasses of wine and 1 shot"
-
-/-
-info: '10 glasses of water'
--/
--- #guard_msgs in
--- #eval hydrate "1 shot, 5 beers, 2 shots, 1 glass of wine, 1 beer"
+theorem hydrate_empty : hydrate "" = "0 glasses of water" :=
+sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

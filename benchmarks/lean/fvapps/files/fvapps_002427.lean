@@ -18,25 +18,4 @@ theorem empty_or_single_is_zero (nums : List Int) :
 theorem all_same_values (nums : List Int) (n : Nat) (x : Int) :
   nums = List.replicate n x → n ≥ 2 →
   numIdenticalPairs nums = n * (n-1) / 2 := sorry
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval numIdenticalPairs [1, 2, 3, 1, 1, 3]
-
-/-
-info: 6
--/
--- #guard_msgs in
--- #eval numIdenticalPairs [1, 1, 1, 1]
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval numIdenticalPairs [1, 2, 3]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

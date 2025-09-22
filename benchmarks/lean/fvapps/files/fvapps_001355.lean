@@ -1,12 +1,13 @@
 -- <vc-preamble>
-def solve_xor_parity (n m : Nat) (arr queries : List Nat) : List String :=
-  sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
+def solve_xor_parity (n m : Nat) (arr queries : List Nat) : List String :=
+  sorry
+
 def popCount (n : Nat) : Nat :=
   sorry
 -- </vc-definitions>
@@ -16,17 +17,17 @@ theorem solve_xor_parity_output_format {n m : Nat} {arr queries : List Nat}
     (h1 : arr.length > 0) (h2 : queries.length > 0)
     (h3 : arr.length = n) (h4 : queries.length = m) :
     let result := solve_xor_parity n m arr queries
-    result.length = queries.length ∧ 
+    result.length = queries.length ∧
     ∀ r ∈ result,
       ∃ evens odds : Nat,
         r = toString evens ++ " " ++ toString odds ∧
         evens + odds = arr.length :=
-  sorry
+sorry
 
 theorem solve_xor_parity_idempotent {n : Nat} {arr : List Nat} {query : Nat}
     (h : arr.length > 0) (h2 : arr.length = n) :
     solve_xor_parity n 1 arr [query] = solve_xor_parity n 1 arr [query] :=
-  sorry
+sorry
 
 theorem solve_xor_parity_singleton {x query : Nat} :
     let result := solve_xor_parity 1 1 [x] [query]
@@ -37,26 +38,5 @@ theorem solve_xor_parity_singleton {x query : Nat} :
     (if (popCount (x.xor query)) % 2 = 0
      then evens = 1 ∧ odds = 0
      else evens = 0 ∧ odds = 1) :=
-  sorry
-
-/-
-info: ['2 4']
--/
--- #guard_msgs in
--- #eval solve_xor_parity 6 1 [4, 2, 15, 9, 8, 8] [3]
-
-/-
-info: ['0 2']
--/
--- #guard_msgs in
--- #eval solve_xor_parity 2 1 [1, 2] [3]
-
-/-
-info: ['0 1']
--/
--- #guard_msgs in
--- #eval solve_xor_parity 1 1 [5] [7]
+sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

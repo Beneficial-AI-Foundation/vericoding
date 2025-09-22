@@ -28,25 +28,4 @@ theorem solve_laddu_power_edge_cases :
   (solve_laddu_power 4 6 = 3) ∧
   (solve_laddu_power 3 9 = 2) :=
   sorry
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval solve_laddu_power 2 2
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval solve_laddu_power 4 6
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval solve_laddu_power 3 9
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

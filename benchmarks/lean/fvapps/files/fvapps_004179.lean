@@ -14,25 +14,4 @@ theorem count_sixes_non_negative (n : Nat) (h : n > 0) :
 -- <vc-theorems>
 theorem count_sixes_monotonic (n : Nat) (h : n > 1) :
   count_sixes n ≥ count_sixes (n-1) := sorry
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval count_sixes 10
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval count_sixes 2
-
-/-
-info: 30
--/
--- #guard_msgs in
--- #eval count_sixes 100
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

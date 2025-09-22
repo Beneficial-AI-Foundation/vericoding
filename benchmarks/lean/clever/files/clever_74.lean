@@ -39,13 +39,3 @@ theorem correctness
 := by
   sorry
 -- </vc-theorems>
-
--- #test implementation [] [] = []
--- #test implementation ["hi", "admin"] ["hi", "hi"] = ["hi", "hi"]
--- #test implementation ["hi", "admin"] ["hi", "hi", "admin", "project"] = ["hi", "admin"]
--- #test implementation ["4"] ["1", "2", "3", "4", "5"] = ["4"]
--- #test implementation ["hi", "admin"] ["hI", "Hi"] = ["hI", "Hi"]
--- #test implementation ["hi", "admin"] ["hI", "hi", "hi"] = ["hI", "hi", "hi"]
--- #test implementation ["hi", "admin"] ["hI", "hi", "hii"] = ["hi", "admin"]
--- #test implementation [] ["this"] = []
--- #test implementation ["this"] [] == []

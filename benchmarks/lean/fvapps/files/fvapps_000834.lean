@@ -42,25 +42,4 @@ theorem single_word_multiple_labels
   let results := solve_spam_dataset cases
   results.length = cases.length ∧
   (List.zipWith (λ result (n, _, labels) => result ≤ labels.length) results test_data).all id := sorry
-
-/-
-info: [2]
--/
--- #guard_msgs in
--- #eval solve_spam_dataset [test1]
-
-/-
-info: [6]
--/
--- #guard_msgs in
--- #eval solve_spam_dataset [test2]
-
-/-
-info: [3]
--/
--- #guard_msgs in
--- #eval solve_spam_dataset [test3]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

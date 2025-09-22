@@ -35,25 +35,4 @@ theorem solve_random_generator_edge_cases :
   solve_random_generator 2 1 = -1 ∧
   solve_random_generator 10 1 = -1 :=
 sorry
-
-/-
-info: 5
--/
--- #guard_msgs in
--- #eval solve_random_generator 1 5
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval solve_random_generator 2 2
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval solve_random_generator 3 5
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

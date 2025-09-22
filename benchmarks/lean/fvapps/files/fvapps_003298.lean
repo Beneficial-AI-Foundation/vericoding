@@ -21,25 +21,4 @@ theorem pattern_line_structure {n : Nat} {i : Nat} (h₁ : n > 0) (h₂ : i > 1)
   line.startsWith "1" ∧ 
   line.endsWith (toString i) ∧
   line.length = i + (if i > 2 then i-2 else 0) := sorry
-
-/-
-info: expected1
--/
--- #guard_msgs in
--- #eval pattern 3
-
-/-
-info: expected2
--/
--- #guard_msgs in
--- #eval pattern 5
-
-/-
-info: expected3
--/
--- #guard_msgs in
--- #eval pattern 7
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

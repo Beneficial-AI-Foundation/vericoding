@@ -26,25 +26,4 @@ theorem primes_except_2_3_5_not_ugly {p : Int}
   (h5 : ∀ m : Int, 2 ≤ m → m < p → p % m ≠ 0) :
   is_ugly p = false :=
   sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval is_ugly 6
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval is_ugly 8
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval is_ugly 14
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

@@ -1,4 +1,10 @@
 -- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+-- <vc-definitions>
 def get_a_down_arrow_of (n : Nat) : String :=
 sorry
 
@@ -7,12 +13,7 @@ sorry
 
 def String.padLeft (n : Nat) (c : Char) (s : String) : String :=
 sorry
--- </vc-preamble>
 
--- <vc-helpers>
--- </vc-helpers>
-
--- <vc-definitions>
 def charToNat (c : Char) : Nat :=
 sorry
 -- </vc-definitions>
@@ -27,7 +28,7 @@ theorem arrow_leading_spaces (n : Nat) (h : 0 < n ∧ n ≤ 9) (i : Nat) (h2 : i
   let line := lines[i]!
   (∃ rest : String, line = String.padLeft i ' ' rest) ∧
   line.trim ≠ "" :=
-sorry 
+sorry
 
 theorem arrow_decreasing_widths (n : Nat) (h : 0 < n ∧ n ≤ 9) (i : Nat) (h2 : i < n - 1) :
   let lines := (get_a_down_arrow_of n).lines
@@ -45,11 +46,8 @@ theorem arrow_sequential_digits (n : Nat) (h : 0 < n ∧ n ≤ 9) (i : Nat) (h2 
   let lines := (get_a_down_arrow_of n).lines
   let digits := lines[i]!.data.filter Char.isDigit
   (∀ d ∈ digits, 0 < charToNat d ∧ charToNat d < 10) ∧
-  (digits.length > 1 → 
-    ∀ j < digits.length/2 - 1, 
+  (digits.length > 1 →
+    ∀ j < digits.length/2 - 1,
       charToNat digits[j+1]! - charToNat digits[j]! = 1) :=
 sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

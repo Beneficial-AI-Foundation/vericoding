@@ -26,25 +26,4 @@ theorem next_perfect_square_is_smallest (n: Int) (h: n ≥ 0) :
 
 theorem next_perfect_square_of_perfect_square (n: Int) (h: n ≥ 0) :
   next_perfect_square (n * n) = (n + 1) * (n + 1) := sorry
-
-/-
-info: 9
--/
--- #guard_msgs in
--- #eval next_perfect_square 6
-
-/-
-info: 49
--/
--- #guard_msgs in
--- #eval next_perfect_square 36
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval next_perfect_square -5
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

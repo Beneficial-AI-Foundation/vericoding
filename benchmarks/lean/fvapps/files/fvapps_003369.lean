@@ -74,25 +74,4 @@ theorem update_score_failed_contract
     have h := update_score_preserves_length score trump alone tricks h1 h2 h3 h4 h5
     rw [h]
     exact i.2⟩ > score.get i := sorry
-
-/-
-info: [2, 8]
--/
--- #guard_msgs in
--- #eval update_score [0, 8] 1 False [1, 1, 1, 1, 1]
-
-/-
-info: [6, 8]
--/
--- #guard_msgs in
--- #eval update_score [2, 8] 1 True [1, 1, 1, 1, 1]
-
-/-
-info: [9, 2]
--/
--- #guard_msgs in
--- #eval update_score [7, 2] 2 False [1, 2, 2, 1, 1]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

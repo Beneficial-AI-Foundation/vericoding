@@ -1,0 +1,58 @@
+vc-description: |-
+  Process queries on an array of 500,000 integers initially set to zero.
+  Type 1 queries add a value to a specific position.
+  Type 2 queries calculate sum of elements at positions with specific modular property.
+
+vc-preamble: |-
+  predicate validInput(input: string)
+  {
+      |input| > 0 && input[|input|-1] == '\n'
+  }
+  
+  predicate validOutput(output: string, input: string)
+  {
+      |output| > 0 && output[|output|-1] == '\n'
+  }
+  
+  predicate correctIncrementalQueryProcessing(input: string, output: string)
+  {
+      true
+  }
+  
+  function splitLinesFunc(input: string): seq<string>
+  {
+      if |input| == 0 then [] else ["1", "query1"]
+  }
+  
+  predicate isValidInteger(s: string)
+  {
+      |s| > 0
+  }
+  
+  function countType2Queries(queries: seq<string>): nat
+  {
+      0
+  }
+  
+  function intToString(x: int): string
+  {
+      "1"
+  }
+
+vc-helpers: |-
+
+vc-spec: |-
+  method solve(input: string) returns (output: string)
+      requires |input| > 0
+      requires validInput(input)
+      ensures validOutput(output, input)
+      ensures |output| > 0 && output[|output|-1] == '\n'
+      ensures correctIncrementalQueryProcessing(input, output)
+
+vc-code: |-
+  {
+    assume {:axiom} false;
+  }
+
+vc-postamble: |-
+

@@ -30,25 +30,4 @@ theorem shift_composition {s : String} (h : s ≠ "") (n1 n2 : Int)
     | none => True
     | some s2 => s2 = (vowel_shift (some s) (n1 + n2)).get!
   := sorry
-
-/-
-info: 'Thes is i tast!'
--/
--- #guard_msgs in
--- #eval vowel_shift "This is a test!" 1
-
-/-
-info: ''
--/
--- #guard_msgs in
--- #eval vowel_shift "" 0
-
-/-
-info: 'This as e tist!'
--/
--- #guard_msgs in
--- #eval vowel_shift "This is a test!" -1
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

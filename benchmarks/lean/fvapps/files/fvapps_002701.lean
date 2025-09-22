@@ -26,25 +26,4 @@ theorem count_adjacent_pairs_case_insensitive (s : String) :
   count_adjacent_pairs s = count_adjacent_pairs (s.toUpper) ∧
   count_adjacent_pairs s = count_adjacent_pairs (s.toLower) :=
   sorry
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval count_adjacent_pairs ""
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval count_adjacent_pairs "dog DOG cat"
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval count_adjacent_pairs "cat cat dog dog cat cat"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

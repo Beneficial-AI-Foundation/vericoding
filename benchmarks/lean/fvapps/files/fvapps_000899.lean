@@ -52,6 +52,3 @@ theorem solve_teams_one_lazy
   (h3 : ∀ x ∈ choices.tail, x = 1) :
   solve_teams n choices = 1.0 := sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

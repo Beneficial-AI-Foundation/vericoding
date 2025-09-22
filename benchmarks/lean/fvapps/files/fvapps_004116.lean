@@ -32,25 +32,4 @@ theorem solve_zero_input {a b : Nat} :
   a = 0 ∨ b = 0 →
   solve a b = (a, b) := by
   sorry
-
-/-
-info: [6, 7]
--/
--- #guard_msgs in
--- #eval solve 6 19
-
-/-
-info: [0, 1]
--/
--- #guard_msgs in
--- #eval solve 2 1
-
-/-
-info: [7, 11]
--/
--- #guard_msgs in
--- #eval solve 7 11
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

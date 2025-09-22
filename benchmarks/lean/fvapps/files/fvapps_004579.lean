@@ -31,25 +31,4 @@ theorem mutate_one_prob (chromosome : List Char)
 theorem mutate_deterministic (chromosome : List Char) (p : Float)
   (h1 : 0 ≤ p) (h2 : p ≤ 1) :
   mutate chromosome p = mutate chromosome p := sorry
-
-/-
-info: '0'
--/
--- #guard_msgs in
--- #eval mutate "0" 0
-
-/-
-info: '1'
--/
--- #guard_msgs in
--- #eval mutate "0" 1
-
-/-
-info: len(test)
--/
--- #guard_msgs in
--- #eval len mutate(test, 0.3)
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

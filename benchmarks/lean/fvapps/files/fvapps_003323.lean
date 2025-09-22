@@ -21,25 +21,4 @@ theorem all_same_has_duplicates {α : Type} [BEq α] (x : α) (n : Nat) :
 
 theorem order_independent {α : Type} [BEq α] (xs : List α) :
   solution xs = solution xs.reverse := by sorry
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval solution 1 2 3
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval solution 1 2 3 2
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval solution "a" "b" "c" "c"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

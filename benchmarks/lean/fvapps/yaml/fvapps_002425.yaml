@@ -6,38 +6,38 @@ vc-description: |-
   A projection is like a shadow, that maps our 3 dimensional figure to a 2 dimensional plane. 
   Here, we are viewing the "shadow" when looking at the cubes from the top, the front, and the side.
   Return the total area of all three projections.
-  
+
   Example 1:
   Input: [[2]]
   Output: 5
-  
+
   Example 2:
   Input: [[1,2],[3,4]]
   Output: 17
   Explanation: 
   Here are the three projections ("shadows") of the shape made with each axis-aligned plane.
-  
+
   Example 3:
   Input: [[1,0],[0,2]]
   Output: 8
-  
+
   Example 4:
   Input: [[1,1,1],[1,0,1],[1,1,1]]
   Output: 14
-  
+
   Example 5:
   Input: [[2,2,2],[2,1,2],[2,2,2]]
   Output: 21
-  
+
   Note:
-  
+
   1 <= grid.length = grid[0].length <= 50
   0 <= grid[i][j] <= 50
   -/
 
-vc-preamble: |-
+vc-preamble: |
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def projectionArea (grid : List (List Nat)) : Nat :=
@@ -46,7 +46,7 @@ vc-definitions: |-
 vc-theorems: |-
   theorem projection_area_nonnegative (grid : List (List Nat)) :
     projectionArea grid ≥ 0 := sorry
-  
+
   theorem projection_area_sum_of_views {n : Nat} (grid : List (List Nat)) 
     (h1 : grid.length = n) 
     (h2 : ∀ row ∈ grid, row.length = n) :
@@ -61,29 +61,29 @@ vc-theorems: |-
       +
       -- Side view (max of each row)
       (List.foldl (λ acc row => acc + (List.foldl Nat.max 0 row)) 0 grid) := sorry
-  
+
   theorem projection_area_single_cube (h : Nat) :
     projectionArea [[h]] = 2 * h + 1 := sorry
-  
-  /-
-  info: 5
-  -/
-  -- #guard_msgs in
-  -- #eval projection_area [[2]]
-  
-  /-
-  info: 17
-  -/
-  -- #guard_msgs in
-  -- #eval projection_area [[1, 2], [3, 4]]
-  
-  /-
-  info: 8
-  -/
-  -- #guard_msgs in
-  -- #eval projection_area [[1, 0], [0, 2]]
 
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded
+
+  /--
+  info: 5
+  -/
+  #guard_msgs in
+  #eval projection_area [[2]]
+
+  /--
+  info: 17
+  -/
+  #guard_msgs in
+  #eval projection_area [[1, 2], [3, 4]]
+
+  /--
+  info: 8
+  -/
+  #guard_msgs in
+  #eval projection_area [[1, 0], [0, 2]]
 

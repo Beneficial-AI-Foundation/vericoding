@@ -37,25 +37,4 @@ theorem find_next_magic_number_474 :
 theorem find_next_magic_number_477 :
   find_next_magic_number 477 = 744 := by
   sorry
-
-/-
-info: 7
--/
--- #guard_msgs in
--- #eval find_next_magic_number 4
-
-/-
-info: 74
--/
--- #guard_msgs in
--- #eval find_next_magic_number 47
-
-/-
-info: 444
--/
--- #guard_msgs in
--- #eval find_next_magic_number 77
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

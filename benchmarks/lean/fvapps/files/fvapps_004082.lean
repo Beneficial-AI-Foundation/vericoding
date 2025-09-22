@@ -27,25 +27,4 @@ theorem coordinates_zero_angle (radius : Float) :
   let (x, y) := coordinates 0 radius
   x = radius ∧ y = 0 :=
   sorry
-
-/-
-info: (0.0, 1.0)
--/
--- #guard_msgs in
--- #eval coordinates 90 1
-
-/-
-info: (0.7071067812, 0.7071067812)
--/
--- #guard_msgs in
--- #eval coordinates 45 1
-
-/-
-info: (9848.0775301221, 1736.4817766693)
--/
--- #guard_msgs in
--- #eval coordinates 1090 10000
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

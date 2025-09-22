@@ -42,7 +42,3 @@ theorem correctness
 : problem_spec implementation interval1 interval2 := by
   sorry
 -- </vc-theorems>
-
--- #test implementation (1, 2) (2, 3) = "NO"
--- #test implementation (-1, 1) (0, 4) = "NO"
--- #test implementation (-3, -1) (-5, 5) = "YES"

@@ -27,25 +27,4 @@ theorem min_days_all_different {n : Nat} {sweets : List Nat} :
   sweets.length = n →
   (∀ i j, i < sweets.length → j < sweets.length → i ≠ j → sweets[i]! ≠ sweets[j]!) →
   min_days_to_eat_sweets n sweets = n := sorry
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval min_days_to_eat_sweets 3 [1, 2, 2]
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval min_days_to_eat_sweets 5 [1, 1, 2, 2, 3]
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval min_days_to_eat_sweets 4 [1, 1, 1, 1]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

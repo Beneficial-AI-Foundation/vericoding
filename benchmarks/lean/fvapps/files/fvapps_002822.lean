@@ -25,25 +25,4 @@ theorem calculate_properties (n1 n2 : Nat) (op : String)
     then n1 + n2
     else n1 - n2 := by
   sorry
-
-/-
-info: 44
--/
--- #guard_msgs in
--- #eval calculate "Panda has 48 apples and loses 4"
-
-/-
-info: 40
--/
--- #guard_msgs in
--- #eval calculate "Jerry has 34 apples and gains 6"
-
-/-
-info: 35
--/
--- #guard_msgs in
--- #eval calculate "Tom has 20 apples and gains 15"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

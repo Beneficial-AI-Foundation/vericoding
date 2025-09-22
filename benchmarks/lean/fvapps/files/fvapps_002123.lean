@@ -26,6 +26,3 @@ theorem append_only_sequence_elements
     result[i]! ∈ stage_vals.take (j + 1) := by
   sorry
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: guarded

@@ -26,25 +26,4 @@ theorem catch_thief_translation_invariant (x y k n offset : Nat) (h : k > 0) (h'
 
 theorem catch_thief_same_position (x k n : Nat) (h : k > 0) (h' : n > 0) :
   can_catch_thief x x k n = "Yes" := sorry
-
-/-
-info: 'No'
--/
--- #guard_msgs in
--- #eval can_catch_thief 0 1 1 1
-
-/-
-info: 'No'
--/
--- #guard_msgs in
--- #eval can_catch_thief 1 4 1 5
-
-/-
-info: 'Yes'
--/
--- #guard_msgs in
--- #eval can_catch_thief 4 2 1 7
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

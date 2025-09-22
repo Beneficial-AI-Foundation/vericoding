@@ -31,25 +31,4 @@ theorem can_first_player_win_ordering_invariant (pairs permuted : List (Nat × N
   (h2 : 1 ≤ pairs.length ∧ pairs.length ≤ 10)
   (h3 : ∃ perm : List (Nat × Nat) → List (Nat × Nat), perm pairs = permuted) :
   can_first_player_win pairs = can_first_player_win permuted := sorry
-
-/-
-info: 'NO'
--/
--- #guard_msgs in
--- #eval can_first_player_win [(2, 3)]
-
-/-
-info: 'NO'
--/
--- #guard_msgs in
--- #eval can_first_player_win [(4, 5), (5, 6)]
-
-/-
-info: 'YES'
--/
--- #guard_msgs in
--- #eval can_first_player_win [(2, 3), (3, 5)]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

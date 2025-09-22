@@ -14,6 +14,3 @@ sorry
 
 -- <vc-theorems>
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

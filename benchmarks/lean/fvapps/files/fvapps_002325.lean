@@ -21,25 +21,4 @@ theorem min_length_requirement {arr : List Int} {m k : Nat} :
 
 theorem repeated_list_pattern {arr : List Int} (h : arr.length > 0) :
   contains_pattern (arr ++ arr ++ arr) arr.length 3 = true := sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval contains_pattern [1, 2, 4, 4, 4, 4] 1 3
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval contains_pattern [1, 2, 3, 1, 2] 2 2
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval contains_pattern [2, 2, 2, 2] 2 3
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

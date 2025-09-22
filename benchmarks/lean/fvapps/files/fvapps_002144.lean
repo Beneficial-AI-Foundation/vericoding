@@ -39,25 +39,4 @@ theorem solve_rectangles_input_format
   (h2 : left < right) :
   solve_rectangles 1 [[left, right]] ≥ 0 :=
   sorry
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval solve_rectangles 3 [[1, 3], [5, 7], [1, 3]]
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval solve_rectangles 3 [[2, 5], [4, 6], [1, 4]]
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval solve_rectangles 1 [[1, 400]]
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: unguarded

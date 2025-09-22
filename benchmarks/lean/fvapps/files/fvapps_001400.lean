@@ -30,19 +30,4 @@ theorem parallel_edges :
   let result := direct_graph 2 2 [(1,2), (1,2)]
   List.length result = 2 ∧
   (∀ x, x ∈ result → x = 0 ∨ x = 1) := sorry
-
-/-
-info: [0, 0, 1, 1]
--/
--- #guard_msgs in
--- #eval direct_graph 4 4 [[1, 2], [1, 3], [2, 4], [3, 4]]
-
-/-
-info: [-1]
--/
--- #guard_msgs in
--- #eval direct_graph 3 3 [[1, 2], [2, 3], [1, 3]]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

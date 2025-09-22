@@ -28,25 +28,4 @@ theorem count_targets_shift_one (lst : List Int) :
   lst ≠ [] →
   count_targets 1 lst = 
     ((lst.zip (lst.drop 1)).filter (fun p => p.1 = p.2)).length := sorry
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval count_targets 1 [1, 1, 1, 1, 1]
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval count_targets 2 [1, 2, 1, 2, 1]
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval count_targets 1 []
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

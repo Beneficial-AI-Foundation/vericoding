@@ -23,6 +23,3 @@ theorem knight_or_knave_arithmetic (a b : Int) :
   let expr := toString a ++ "+" ++ toString b ++ "==" ++ toString (a + b)
   knight_or_knave expr = "Knight!" := sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

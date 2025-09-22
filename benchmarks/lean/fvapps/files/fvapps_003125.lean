@@ -20,25 +20,4 @@ theorem mouth_size_case_insensitive (animal : String) :
 
 theorem mouth_size_whitespace_invariant (animal : String) :
   mouth_size animal = mouth_size (animal.trim) := sorry
-
-/-
-info: 'wide'
--/
--- #guard_msgs in
--- #eval mouth_size "toucan"
-
-/-
-info: 'wide'
--/
--- #guard_msgs in
--- #eval mouth_size "ant bear"
-
-/-
-info: 'small'
--/
--- #guard_msgs in
--- #eval mouth_size "alligator"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

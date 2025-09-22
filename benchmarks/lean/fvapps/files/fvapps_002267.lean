@@ -1,47 +1,26 @@
 -- <vc-preamble>
-def minimum_operations (arr : List Int) : Nat :=
-  sorry
-
 def isSorted (arr : List Int) : Prop :=
   ∀ i j, i < j → j < arr.length → arr[i]! ≤ arr[j]!
+
+def isStrictlySorted (arr : List Int) : Prop :=
+  ∀ i j, i < j → j < arr.length → arr[i]! < arr[j]!
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
-def isStrictlySorted (arr : List Int) : Prop :=
-  ∀ i j, i < j → j < arr.length → arr[i]! < arr[j]!
+def minimum_operations (arr : List Int) : Nat :=
+  sorry
 -- </vc-definitions>
 
 -- <vc-theorems>
 theorem output_bounds (arr : List Int) (h : arr ≠ []) :
   0 ≤ minimum_operations arr ∧ minimum_operations arr ≤ arr.length :=
-  sorry 
+sorry
 
-theorem sorted_unique_needs_zero {arr : List Int} (h1 : arr ≠ []) 
+theorem sorted_unique_needs_zero {arr : List Int} (h1 : arr ≠ [])
   (h2 : isStrictlySorted arr) :
   minimum_operations arr = 0 :=
-  sorry
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval minimum_operations [4, 7, 2, 3, 9]
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval minimum_operations [3, 5, 8, 1, 7]
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval minimum_operations [1, 4, 5, 7, 12]
+sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

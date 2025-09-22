@@ -37,6 +37,3 @@ theorem solve_ones_first_power {N K : Nat}
   let num_pairs := (N * (N-1)) / 2;
   (solve N K (List.replicate N 1)).get! 0 = (num_pairs * 2) % MOD := sorry
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: guarded

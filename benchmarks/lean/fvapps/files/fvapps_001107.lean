@@ -35,25 +35,4 @@ theorem result_follows_binary_tree_pattern {n : Nat} (h : n > 0) (h2 : n % 2 = 1
       else 
         pos) 3
   final_pos = n := sorry
-
-/-
-info: '2111'
--/
--- #guard_msgs in
--- #eval solve_knight_steps 17
-
-/-
-info: '0'
--/
--- #guard_msgs in
--- #eval solve_knight_steps 10
-
-/-
-info: '3'
--/
--- #guard_msgs in
--- #eval solve_knight_steps 3
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

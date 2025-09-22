@@ -42,25 +42,4 @@ theorem min_awkwardness_two_diff (s : String)
 theorem min_awkwardness_valid_chars (s : String) :
   (∀ (i : String.Pos), s.get i = 'b' ∨ s.get i = 'g') → 
   min_awkwardness s ≥ 0 := sorry
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval min_awkwardness "gb"
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval min_awkwardness "bgg"
-
-/-
-info: 6
--/
--- #guard_msgs in
--- #eval min_awkwardness "bbgg"
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

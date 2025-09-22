@@ -21,6 +21,3 @@ theorem abs_spec_satisfied (x : Int) (h_precond : abs_precond x) :
     abs_postcond x (abs x h_precond) h_precond := by
   sorry
 -- </vc-theorems>
-
-#check abs
-#check abs_spec_satisfied

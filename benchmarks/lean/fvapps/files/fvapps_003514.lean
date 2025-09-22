@@ -31,25 +31,4 @@ theorem lcm_associative (a b c : Nat) : a > 0 → b > 0 → c > 0 →
 theorem lcm_minimum_bound {n : Nat} (nums : List Nat) :
   (∀ x ∈ nums, x > 0) → n ∈ nums → lcm nums ≥ n := by
   sorry
-
-/-
-info: 10
--/
--- #guard_msgs in
--- #eval lcm 2 5
-
-/-
-info: 12
--/
--- #guard_msgs in
--- #eval lcm 2 3 4
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval lcm
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

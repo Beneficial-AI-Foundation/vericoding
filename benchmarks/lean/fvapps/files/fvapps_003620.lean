@@ -46,25 +46,4 @@ theorem military_time_edge_cases :
   getMilitaryTime "12:00:00AM" = "00:00:00" ∧
   getMilitaryTime "12:00:00PM" = "12:00:00" ∧ 
   getMilitaryTime "11:59:59PM" = "23:59:59" := sorry
-
-/-
-info: '07:05:45'
--/
--- #guard_msgs in
--- #eval get_military_time "07:05:45AM"
-
-/-
-info: '19:05:45'
--/
--- #guard_msgs in
--- #eval get_military_time "07:05:45PM"
-
-/-
-info: '00:00:00'
--/
--- #guard_msgs in
--- #eval get_military_time "12:00:00AM"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

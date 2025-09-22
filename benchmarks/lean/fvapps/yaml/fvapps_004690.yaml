@@ -3,70 +3,70 @@ vc-description: |-
   ----
   Vampire Numbers
   ----
-  
+
   Our loose definition of [Vampire Numbers](http://en.wikipedia.org/wiki/Vampire_number) can be described as follows:
-  
+
   ```python
   6 * 21 = 126
   # 6 and 21 would be valid 'fangs' for a vampire number as the 
   # digits 6, 1, and 2 are present in both the product and multiplicands
-  
+
   10 * 11 = 110
   # 110 is not a vampire number since there are three 1's in the
   # multiplicands, but only two 1's in the product
   ```
-  
+
   Create a function that can receive two 'fangs' and determine if the product of the two is a valid vampire number.
   -/
 
 vc-preamble: |-
   def abs (x : Int) : Int := if x < 0 then -x else x
-  
+
   structure VampireString where
     digits : List Char
     length : Nat
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def vampireToString (x : Int) : VampireString := sorry
-  
+
   def vampire_test (x y : Int) : Bool := sorry
 
 vc-theorems: |-
   theorem vampire_commutative (x y : Int) (h₁ : x ≠ 0) (h₂ : y ≠ 0) :
     vampire_test x y = vampire_test y x := sorry
-  
+
   theorem vampire_self_multiply (x : Int) (h : x ≠ 0) :  
     vampire_test x x = vampire_test x x := sorry
-  
+
   theorem vampire_digit_preservation (x y : Int) (h₁ : x ≠ 0) (h₂ : y ≠ 0) :
     vampire_test x y → (vampireToString (abs (x * y))).digits = 
       (vampireToString (abs x)).digits ++ (vampireToString (abs y)).digits := sorry
-  
+
   theorem vampire_positive_length (x y : Int) (h₁ : x > 0) (h₂ : y > 0) :
     vampire_test x y → (vampireToString (x * y)).length = 
       (vampireToString x).length + (vampireToString y).length := sorry
-  
-  /-
-  info: True
-  -/
-  -- #guard_msgs in
-  -- #eval vampire_test 6 21
-  
-  /-
-  info: False
-  -/
-  -- #guard_msgs in
-  -- #eval vampire_test 10 11
-  
-  /-
-  info: True
-  -/
-  -- #guard_msgs in
-  -- #eval vampire_test 15 93
 
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval vampire_test 6 21
+
+  /--
+  info: False
+  -/
+  #guard_msgs in
+  #eval vampire_test 10 11
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval vampire_test 15 93
 

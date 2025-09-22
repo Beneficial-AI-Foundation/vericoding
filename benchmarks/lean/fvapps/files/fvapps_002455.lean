@@ -30,6 +30,3 @@ theorem wrap_text_basic (text : String) (width : Nat) :
   let lines := (wrap_text text width).split (· = '\n')
   ∀ line ∈ lines, line.length ≤ width := sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

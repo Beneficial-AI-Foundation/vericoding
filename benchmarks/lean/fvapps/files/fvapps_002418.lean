@@ -20,25 +20,4 @@ theorem find_lucky_is_max (arr : List Nat) (n : Nat) :
   n ∈ arr → 
   (arr.countP (· = n)) = n →
   n ≤ (find_lucky arr).toNat := sorry
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval find_lucky [2, 2, 3, 4]
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval find_lucky [1, 2, 2, 3, 3, 3]
-
-/-
-info: -1
--/
--- #guard_msgs in
--- #eval find_lucky [2, 2, 2, 3, 3]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

@@ -41,24 +41,26 @@ def spec_to_string(spec: dict, template: list[str]) -> str:
     # Join with newlines
     return '\n'.join(parts)
 
-def get_template(suffix: str) -> list[str]:
+def get_template(suffix: str, add_postamble: bool = False) -> list[str]:
     """Get template for the output file."""
     if suffix == 'lean':
-        return [('vc-preamble','-- <vc-preamble>','-- </vc-preamble>'), ('\n',None,None), 
+        template = [('vc-preamble','-- <vc-preamble>','-- </vc-preamble>'), ('\n',None,None), 
                 ('vc-helpers','-- <vc-helpers>','-- </vc-helpers>'), ('\n',None,None),
                 ('vc-definitions','-- <vc-definitions>','-- </vc-definitions>'), ('\n',None,None), 
-                ('vc-theorems','-- <vc-theorems>','-- </vc-theorems>'), ('\n',None,None), 
-                ('vc-postamble',None,None)]
+                ('vc-theorems','-- <vc-theorems>','-- </vc-theorems>')]
+        if add_postamble:
+            template.extend([('\n',None,None), ('vc-postamble',None,None)])
+        return template
     elif suffix == 'dfy' or suffix == 'rs':
-        return [('vc-preamble','// <vc-preamble>','// </vc-preamble>'), ('\n',None,None), 
+        template = [('vc-preamble','// <vc-preamble>','// </vc-preamble>'), ('\n',None,None), 
                 ('vc-helpers','// <vc-helpers>','// </vc-helpers>'), ('\n',None,None),
                 ('vc-spec','// <vc-spec>','// </vc-spec>'), 
-                ('vc-code','// <vc-code>','// </vc-code>'), ('\n',None,None), 
-                ('vc-postamble',None,None)]
+                ('vc-code','// <vc-code>','// </vc-code>'), ('\n',None,None), ('vc-postamble',None,None)]
+        return template
     else:
         raise ValueError(f"Unsupported suffix: {suffix}")
 
-def convert_spec_to_file(spec: dict, output_path: Path, use_all_keys: bool = False) -> None:
+def convert_spec_to_file(spec: dict, output_path: Path, use_all_keys: bool = False, add_postamble: bool = False) -> None:
     """Convert spec dictionary to target file format by concatenating sections.
     
     Args:
@@ -66,6 +68,7 @@ def convert_spec_to_file(spec: dict, output_path: Path, use_all_keys: bool = Fal
         output_path: Path to the output file
         use_all_keys: If True, use all keys from spec (except 'id') as template with newlines between them.
                       If False, use the standard template based on file suffix.
+        add_postamble: If True, include vc-postamble in the template (default: omit for Lean, include for others).
     """
     
     if use_all_keys:
@@ -77,7 +80,7 @@ def convert_spec_to_file(spec: dict, output_path: Path, use_all_keys: bool = Fal
             if i < len(keys) - 1:  # Add newline between keys, but not after the last one
                 template.append(('\n', None, None))
     else:
-        template = get_template(output_path.suffix[1:])
+        template = get_template(output_path.suffix[1:], add_postamble)
 
     # Defensive sanitization for Lean descriptions to avoid unterminated comments
     if output_path.suffix == '.lean' and 'vc-description' in spec:
@@ -92,20 +95,21 @@ def convert_spec_to_file(spec: dict, output_path: Path, use_all_keys: bool = Fal
     # print(f"Converted spec -> {output_path}")
 
 
-def convert_yaml_to_file(yaml_path: Path, output_path: Path, use_all_keys: bool = False) -> None:
+def convert_yaml_to_file(yaml_path: Path, output_path: Path, use_all_keys: bool = False, add_postamble: bool = False) -> None:
     """Convert YAML spec to target file format by concatenating sections.
     
     Args:
         yaml_path: Path to the input YAML file
         output_path: Path to the output file
         use_all_keys: If True, use all keys from spec (except id) as template with newlines between them.
+        add_postamble: If True, include vc-postamble in the template (default: omit for Lean, include for others).
     """
     
     yaml = YAML()
     yaml.preserve_quotes = True  # Preserve original formatting
     spec = yaml.load(yaml_path)
     
-    convert_spec_to_file(spec, output_path, use_all_keys)
+    convert_spec_to_file(spec, output_path, use_all_keys, add_postamble)
     print(f"Converted {yaml_path} -> {output_path}")
 
 
@@ -175,7 +179,7 @@ def convert_yaml_to_jsonl(yaml_path: Path, output_path: Path = None) -> None:
         print(f"Skipped {skipped_count} files that were not valid YAML")
 
 
-def convert_yaml_to_dir(suffix: str, yaml_path: Path, output_path: Path = None, use_all_keys: bool = False) -> None:
+def convert_yaml_to_dir(suffix: str, yaml_path: Path, output_path: Path = None, use_all_keys: bool = False, add_postamble: bool = False) -> None:
     """Convert all YAML files in a directory to a new directory with specified suffix.
     
     Args:
@@ -183,6 +187,7 @@ def convert_yaml_to_dir(suffix: str, yaml_path: Path, output_path: Path = None, 
         yaml_path: Path to the input YAML directory
         output_path: Output directory path (optional)
         use_all_keys: If True, use all keys from spec (except id) as template with newlines between them.
+        add_postamble: If True, include vc-postamble in the template (default: omit for Lean, include for others).
     """
     
     if not yaml_path.is_dir():
@@ -213,7 +218,7 @@ def convert_yaml_to_dir(suffix: str, yaml_path: Path, output_path: Path = None, 
             output_file = output_dir / relative_path.with_suffix(f'.{suffix}')
             # Ensure the output directory exists
             output_file.parent.mkdir(parents=True, exist_ok=True)
-            convert_yaml_to_file(yaml_file, output_file, use_all_keys)  
+            convert_yaml_to_file(yaml_file, output_file, use_all_keys, add_postamble)  
 
     elif suffix == 'json':
         for yaml_file in yaml_files:
@@ -230,7 +235,7 @@ def convert_yaml_to_dir(suffix: str, yaml_path: Path, output_path: Path = None, 
     print(f"Converted {len(yaml_files)} YAML files to {output_dir}")
 
 
-def convert_jsonl_to_dir(suffix: str, jsonl_path: Path, output_path: Path = None, use_all_keys: bool = False) -> None:
+def convert_jsonl_to_dir(suffix: str, jsonl_path: Path, output_path: Path = None, use_all_keys: bool = False, add_postamble: bool = False) -> None:
     """Convert all entries in a JSONL file to individual files with specified suffix.
     
     Args:
@@ -238,6 +243,7 @@ def convert_jsonl_to_dir(suffix: str, jsonl_path: Path, output_path: Path = None
         jsonl_path: Path to the JSONL file
         output_path: Output directory path (optional)
         use_all_keys: If True, use all keys from spec (except id) as template with newlines between them.
+        add_postamble: If True, include vc-postamble in the template (default: omit for Lean, include for others).
     """
     
     if not jsonl_path.is_file():
@@ -278,7 +284,7 @@ def convert_jsonl_to_dir(suffix: str, jsonl_path: Path, output_path: Path = None
                     output_file = output_dir / f"{file_id}.{suffix}"
                     # Ensure the output directory exists
                     output_file.parent.mkdir(parents=True, exist_ok=True)
-                    convert_spec_to_file(spec, output_file, use_all_keys)
+                    convert_spec_to_file(spec, output_file, use_all_keys, add_postamble)
                 
                 elif suffix == 'json':
                     # Reconstruct directory structure from the file_id (which contains relative path)
@@ -303,7 +309,7 @@ def convert_jsonl_to_dir(suffix: str, jsonl_path: Path, output_path: Path = None
         print(f"Converted {processed_count} entries from {jsonl_path} to {output_dir}")
 
 
-def process_bench(bench_dir: Path, suffix: str = None, use_all_keys: bool = False) -> None:
+def process_bench(bench_dir: Path, suffix: str = None, use_all_keys: bool = False, add_postamble: bool = False) -> None:
     """Process a single benchmark directory to convert YAML files.
     
     Args:
@@ -311,6 +317,7 @@ def process_bench(bench_dir: Path, suffix: str = None, use_all_keys: bool = Fals
         suffix: File suffix for the output files (e.g., 'dfy', 'lean', 'rs'). 
                 If None, auto-detects from parent directory structure.
         use_all_keys: If True, use all keys from spec (except id) as template with newlines between them.
+        add_postamble: If True, include vc-postamble in the template (default: omit for Lean, include for others).
     
     Creates:
         1. A JSONL file in the benchmark directory with naming pattern: XXX_YYY.jsonl
@@ -364,12 +371,12 @@ def process_bench(bench_dir: Path, suffix: str = None, use_all_keys: bool = Fals
     # 2. Convert JSONL to individual files in 'files' folder (only if JSONL was created)
     if jsonl_path.exists():
         files_dir = bench_dir / "files"
-        convert_jsonl_to_dir(bench_suffix, jsonl_path, files_dir, use_all_keys)
+        convert_jsonl_to_dir(bench_suffix, jsonl_path, files_dir, use_all_keys, add_postamble)
     else:
         print(f"No JSONL file created, skipping file conversion for {bench_dir}")
 
 
-def process_benchmarks(benchmarks_dir: Path, suffix: str = None, use_all_keys: bool = False) -> None:
+def process_benchmarks(benchmarks_dir: Path, suffix: str = None, use_all_keys: bool = False, add_postamble: bool = False) -> None:
     """Process benchmark directories to convert YAML files.
     
     For each level-2 subfolder of benchmarks/XXX/YYY:
@@ -382,6 +389,7 @@ def process_benchmarks(benchmarks_dir: Path, suffix: str = None, use_all_keys: b
         benchmarks_dir: Path to the benchmarks directory
         suffix: File suffix for the output files (optional, auto-detected if None)
         use_all_keys: If True, use all keys from spec (except id) as template with newlines between them.
+        add_postamble: If True, include vc-postamble in the template (default: omit for Lean, include for others).
     """
     
     if not benchmarks_dir.exists():
@@ -423,7 +431,7 @@ def process_benchmarks(benchmarks_dir: Path, suffix: str = None, use_all_keys: b
             dir_suffix = suffix
         
         # Use the new process_bench function
-        process_bench(level2_dir, dir_suffix, use_all_keys)
+        process_bench(level2_dir, dir_suffix, use_all_keys, add_postamble)
         processed_count += 1
     
     print(f"Processed {processed_count} benchmark directories")
@@ -520,17 +528,19 @@ def main():
                        help='Process a single benchmark directory. Takes a benchmark directory (should contain a yaml subdirectory). Suffix is auto-detected from parent directory if not provided via --suffix')
     parser.add_argument('--use-all-keys', action='store_true',
                        help='Use all keys from spec (except id) as template with newlines between them, instead of predefined templates')
+    parser.add_argument('--add-postamble', action='store_true',
+                       help='Include vc-postamble in the template output (default: omit for Lean, include for others)')
     
     args = parser.parse_args()
     
     # Handle benchmarks processing
     if args.benchmarks is not None:
-        process_benchmarks(args.benchmarks, args.suffix, args.use_all_keys)
+        process_benchmarks(args.benchmarks, args.suffix, args.use_all_keys, args.add_postamble)
         return
     
     # Handle single benchmark processing
     if args.bench is not None:
-        process_bench(args.bench, args.suffix, args.use_all_keys)
+        process_bench(args.bench, args.suffix, args.use_all_keys, args.add_postamble)
         return
     
     # For non-benchmarks processing, yaml_file is required
@@ -563,7 +573,7 @@ def main():
         if args.suffix == 'jsonl':
             print("Error: --dir option is not available for jsonl suffix (use without --dir for JSONL)")
             return
-        convert_yaml_to_dir(args.suffix, args.yaml_file, use_all_keys=args.use_all_keys)
+        convert_yaml_to_dir(args.suffix, args.yaml_file, use_all_keys=args.use_all_keys, add_postamble=args.add_postamble)
     elif args.suffix == 'json':
         output_path = args.yaml_file.with_suffix(f'.{args.suffix}')
         convert_yaml_to_json(args.yaml_file, output_path)
@@ -571,7 +581,7 @@ def main():
         convert_yaml_to_jsonl(args.yaml_file)
     else:
         output_path = args.yaml_file.with_suffix(f'.{args.suffix}')
-        convert_yaml_to_file(args.yaml_file, output_path, args.use_all_keys)
+        convert_yaml_to_file(args.yaml_file, output_path, args.use_all_keys, args.add_postamble)
 
 
 if __name__ == '__main__':

@@ -31,31 +31,4 @@ theorem goto_invalid_level_type (level : String) (button : String)
 theorem goto_invalid_button_type (level : Int) (button : Int)
   (h : 0 ≤ level ∧ level ≤ 3) :
   goto level "" = 0 := sorry
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval goto 0 "2"
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval goto 2 "4"
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval goto 4 "2"
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval goto [] "2"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

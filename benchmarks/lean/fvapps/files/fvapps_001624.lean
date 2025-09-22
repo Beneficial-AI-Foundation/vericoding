@@ -47,25 +47,4 @@ theorem special_case_k4_cycle {n : Nat} {edges : List (Nat × Nat)}
       ∃ v1 v2, (v1, v2) ∈ edges ∧ 
       vertices.get? i = some v1 ∧ 
       vertices.get? (i+1) = some v2 := sorry
-
-/-
-info: k
--/
--- #guard_msgs in
--- #eval len solve_salmon_game(n, k)
-
-/-
-info: k
--/
--- #guard_msgs in
--- #eval len solve_salmon_game(n, k)
-
-/-
-info: k
--/
--- #guard_msgs in
--- #eval len solve_salmon_game(n, k)
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

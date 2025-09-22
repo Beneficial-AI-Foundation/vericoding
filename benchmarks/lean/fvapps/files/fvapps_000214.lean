@@ -30,25 +30,4 @@ theorem orderlyQueue_k_one_rotation {s : String} (h : s.length > 0) :
 theorem orderlyQueue_k_one_minimal {s : String} (h : s.length > 0) :
   ∀ i, i < s.length → 
     orderlyQueue s 1 ≤ String.mk ((s.data.drop i) ++ (s.data.take i)) := sorry
-
-/-
-info: 'acb'
--/
--- #guard_msgs in
--- #eval orderlyQueue "cba" 1
-
-/-
-info: 'aaabc'
--/
--- #guard_msgs in
--- #eval orderlyQueue "baaca" 3
-
-/-
-info: 'abcd'
--/
--- #guard_msgs in
--- #eval orderlyQueue "abcd" 2
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

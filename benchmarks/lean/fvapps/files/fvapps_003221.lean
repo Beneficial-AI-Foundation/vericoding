@@ -20,25 +20,4 @@ theorem domain_name_no_protocols (domain tld : String) :
   domain_name url ≠ "http" ∧
   domain_name url ≠ "https" ∧
   ¬(domain_name url).contains '.' := sorry
-
-/-
-info: 'google'
--/
--- #guard_msgs in
--- #eval domain_name "http://google.com"
-
-/-
-info: 'zombie-bites'
--/
--- #guard_msgs in
--- #eval domain_name "http://www.zombie-bites.com"
-
-/-
-info: 'icann'
--/
--- #guard_msgs in
--- #eval domain_name "icann.org"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

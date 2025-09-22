@@ -29,6 +29,3 @@ theorem find_max_gcd_dist_condition {n k : Int} (hn : n > 0) (hk : k > 0)
   (k * (k + 1)) / 2 ≤ n :=
   sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

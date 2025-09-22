@@ -25,7 +25,4 @@ vc-theorems: |-
     sorry
 
 vc-postamble: |-
-  /- Main function for testing -/
-  def main : IO Unit := do
-    pure ()
 

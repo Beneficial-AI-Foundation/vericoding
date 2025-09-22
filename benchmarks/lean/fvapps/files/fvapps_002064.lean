@@ -25,25 +25,4 @@ sorry
 theorem output_size_bounded (numbers: List Nat) :
   List.length (min_max_generating_set numbers) ≤ List.length numbers :=
 sorry
-
-/-
-info: {1, 2, 3, 4, 5}
--/
--- #guard_msgs in
--- #eval set min_max_generating_set(input1)
-
-/-
-info: {1, 3, 7, 12, 13, 14}
--/
--- #guard_msgs in
--- #eval set min_max_generating_set(input2)
-
-/-
-info: {1, 2, 3, 4, 5, 6}
--/
--- #guard_msgs in
--- #eval set min_max_generating_set(input3)
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: unguarded

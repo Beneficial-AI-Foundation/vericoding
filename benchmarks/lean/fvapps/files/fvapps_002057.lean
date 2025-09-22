@@ -26,6 +26,3 @@ theorem single_number_gives_one_component (n : Nat)
   let number := (2^n) - 1;
   count_connected_components n [number] = 1 := sorry
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: guarded

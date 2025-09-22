@@ -49,25 +49,4 @@ theorem empty_string_cases_2 : isMatch "" "a*" = true := by sorry
 @[simp] 
 
 theorem empty_string_cases_3 : isMatch "a" "" = false := by sorry
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval is_match "aa" "a"
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval is_match "aa" "a*"
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval is_match "ab" ".*"
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

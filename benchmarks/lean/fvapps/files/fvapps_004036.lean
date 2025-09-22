@@ -25,31 +25,4 @@ theorem series_sum_zero : series_sum 0 = "0.00" := sorry
 
 theorem series_sum_negative (n : Int) :
   n < 0 → series_sum n = "0.00" := sorry
-
-/-
-info: '1.00'
--/
--- #guard_msgs in
--- #eval series_sum 1
-
-/-
-info: '1.25'
--/
--- #guard_msgs in
--- #eval series_sum 2
-
-/-
-info: '1.57'
--/
--- #guard_msgs in
--- #eval series_sum 5
-
-/-
-info: '0.00'
--/
--- #guard_msgs in
--- #eval series_sum 0
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

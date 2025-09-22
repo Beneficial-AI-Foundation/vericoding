@@ -27,19 +27,4 @@ theorem findItinerary_uses_all_tickets (tickets: List Ticket) :
   let result := findItinerary tickets
   let pairs := List.zip (result.take (result.length - 1)) (result.drop 1)
   pairs = tickets := sorry
-
-/-
-info: expected1
--/
--- #guard_msgs in
--- #eval findItinerary [["MUC", "LHR"], ["JFK", "MUC"], ["SFO", "SJC"], ["LHR", "SFO"]]
-
-/-
-info: expected2
--/
--- #guard_msgs in
--- #eval findItinerary [["JFK", "SFO"], ["JFK", "ATL"], ["SFO", "ATL"], ["ATL", "JFK"], ["ATL", "SFO"]]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

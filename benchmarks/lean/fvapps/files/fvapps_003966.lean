@@ -28,25 +28,4 @@ sorry
 theorem greatest_distance_repeated_element (x : Int) :
   greatest_distance [x, x, x] = 2 :=
 sorry
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval greatest_distance [9, 7, 1, 2, 3, 7, 0, -1, -2]
-
-/-
-info: 6
--/
--- #guard_msgs in
--- #eval greatest_distance [0, 7, 0, 2, 3, 7, 0, -1, -2]
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval greatest_distance [1, 2, 3, 4]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

@@ -37,25 +37,4 @@ theorem edge_case_2048 : min_menus_for_price 2048 = 1 := sorry
 theorem edge_case_4096 : min_menus_for_price 4096 = 2 := sorry
 
 theorem edge_case_2047 : min_menus_for_price 2047 = 11 := sorry
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval min_menus_for_price 10
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval min_menus_for_price 256
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval min_menus_for_price 4096
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

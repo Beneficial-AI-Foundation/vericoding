@@ -5,43 +5,20 @@
 -- </vc-helpers>
 
 -- <vc-definitions>
-def check_DNA (s1 s2 : String) : Bool := sorry
-
-/- The function check_DNA is symmetric: gives same result regardless of argument order -/
+def check_DNA (s1 s2 : String) : Bool :=
+sorry
 -- </vc-definitions>
 
 -- <vc-theorems>
 theorem check_DNA_symmetric (s1 s2 : String) :
-  check_DNA s1 s2 = check_DNA s2 s1 := sorry
-
-/- Empty sequence matches any sequence -/
+  check_DNA s1 s2 = check_DNA s2 s1 :=
+sorry
 
 theorem check_DNA_empty (s : String) :
-  check_DNA s "" = true ∧ check_DNA "" s = true := sorry
-
-/- Known complementary sequences match -/
+  check_DNA s "" = true ∧ check_DNA "" s = true :=
+sorry
 
 theorem check_DNA_basic_complement :
-  check_DNA "ATGCTACG" "CGTAGCAT" = true := sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval check_DNA "ATGCTACG" "CGTAGCAT"
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval check_DNA "GCTAGCACCCATTAGGAGATAC" "CTCCTAATGGGTG"
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval check_DNA "ATGCTACG" "CGTAGCAA"
+  check_DNA "ATGCTACG" "CGTAGCAT" = true :=
+sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

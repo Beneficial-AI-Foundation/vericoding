@@ -27,25 +27,4 @@ theorem three_nodes_mixed_nonneg :
 
 theorem four_nodes_alternating_nonneg :
   solve_cat_coloring 4 [(1,2), (2,3), (3,4)] "WBWB" ≥ 0 := by sorry
-
-/-
-info: 5
--/
--- #guard_msgs in
--- #eval solve_cat_coloring 5 [(1, 2), (2, 3), (2, 4), (4, 5)] "WBBWW"
-
-/-
-info: 7
--/
--- #guard_msgs in
--- #eval solve_cat_coloring 6 [(3, 1), (4, 5), (2, 6), (6, 1), (3, 4)] "WWBWBB"
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval solve_cat_coloring 1 [] "B"
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: unguarded

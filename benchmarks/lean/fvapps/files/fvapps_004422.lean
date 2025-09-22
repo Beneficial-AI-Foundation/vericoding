@@ -33,6 +33,3 @@ theorem rank_two_equal_weights (n : String) (m : String) (h : n ≠ m) :
   (rank (n ++ "," ++ m) [1, 1] 1 = m) :=
   sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded
