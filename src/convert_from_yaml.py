@@ -6,6 +6,21 @@ import shutil
 from pathlib import Path
 from ruamel.yaml import YAML, YAMLError
 from typing import Dict, Any
+from natsort import natsort, natsorted
+
+not_novel = [('dafny', 'dafnybench'), ('dafny', 'humaneval'),
+            ('verus', 'verified_cogen'), ('lean', 'verina'),
+            ('lean', 'fvapps'), ('lean', 'clever')]
+
+sources_ref = {'dafnybench': 'D', 'humaneval': 'H', 'verified_cogen': 'J', 'verina': 'V', 'fvapps': 'F', 
+            'clever': 'C', 'numpy_simple': 'S', 'numpy_triple': 'T', 'apps': 'A', 'bignum': 'B'}
+            
+languages_ref = {'lean': 'L', 'dafny': 'D', 'verus': 'V'}
+
+def get_vericoding_id(source: str, language: str, task: str, source_meta: Dict[str, Any]) -> str:
+    """Get the Vericoding ID for a given source, language, and task."""
+
+    return f"{languages_ref[language]}{sources_ref[source]}{source_meta[task]['id']}"
 
 def _sanitize_lean_description(text: str) -> str:
     """Sanitize description text before embedding in a Lean block comment.
@@ -134,7 +149,7 @@ def convert_yaml_to_jsonl(yaml_path: Path, output_path: Path = None) -> None:
         raise ValueError(f"{yaml_path} is not a directory")
     
     # Find all .yaml files in the directory (recursively)
-    yaml_files = sorted(list(yaml_path.glob("**/*.yaml")))
+    yaml_files = natsorted(list(yaml_path.glob("**/*.yaml")))
     
     if not yaml_files:
         print(f"No .yaml files found in {yaml_path}")
@@ -789,11 +804,6 @@ def validate_source_signatures(source_meta: Dict[str, Any]) -> None:
 def print_summary_counts(source_meta: Dict[str, Any]) -> None:
     """Print total counts of files by source and language type."""
 
-
-    not_novel = [('dafny', 'dafnybench'), ('dafny', 'humaneval'),
-                 ('verus', 'verified_cogen'), ('lean', 'verina'),
-                 ('lean', 'fvapps'), ('lean', 'clever')]
-
     # Initialize totals
     total = {}
     for novelty in ['all', 'novel']:
@@ -812,12 +822,14 @@ def print_summary_counts(source_meta: Dict[str, Any]) -> None:
     for source, counts in sorted(source_counts.items()):
         print(f"Source: {source}")
         print(f"  Total files: {counts['total']}")
-        print(f"  Lean files: {counts['lean']['yaml']+counts['lean']['poor']} : {counts['lean']['yaml']} ")
         print(f"  Dafny files: {counts['dafny']['yaml']+counts['dafny']['poor']} : {counts['dafny']['yaml']} ")
         print(f"  Verus files: {counts['verus']['yaml']+counts['verus']['poor']} : {counts['verus']['yaml']} ")
+        print(f"  Lean files: {counts['lean']['yaml']+counts['lean']['poor']} : {counts['lean']['yaml']} ")
+        print(f"  Subtotals: {counts['lean']['yaml']+counts['dafny']['yaml']+counts['verus']['yaml'] \
+                             +counts['lean']['poor']+counts['dafny']['poor']+counts['verus']['poor']} : {counts['lean']['yaml']+counts['dafny']['yaml']+counts['verus']['yaml']} ")
         print()
         
-        # Accumulate totals
+        # Accumulate totals 
         for lang in ['lean', 'dafny', 'verus']:
             for file_type in ['yaml', 'poor']:
                 total['all'][lang][file_type] += counts[lang][file_type]
@@ -827,12 +839,12 @@ def print_summary_counts(source_meta: Dict[str, Any]) -> None:
     print("=" * 50)
     print("GRAND TOTALS")
     print("=" * 50)
-    print(f"Lean total (all): {total['all']['lean']['yaml'] + total['all']['lean']['poor']} : {total['all']['lean']['yaml']}")
-    print(f"Lean total (novel): {total['novel']['lean']['yaml'] + total['novel']['lean']['poor']} : {total['novel']['lean']['yaml']}")
     print(f"Dafny total (all): {total['all']['dafny']['yaml'] + total['all']['dafny']['poor']} : {total['all']['dafny']['yaml']}")
-    print(f"Dafny total (novel): {total['novel']['dafny']['yaml'] + total['novel']['dafny']['poor']} : {total['novel']['dafny']['yaml']}")
     print(f"Verus total (all): {total['all']['verus']['yaml'] + total['all']['verus']['poor']} : {total['all']['verus']['yaml']}")
+    print(f"Lean total (all): {total['all']['lean']['yaml'] + total['all']['lean']['poor']} : {total['all']['lean']['yaml']}")
+    print(f"Dafny total (novel): {total['novel']['dafny']['yaml'] + total['novel']['dafny']['poor']} : {total['novel']['dafny']['yaml']}")
     print(f"Verus total (novel): {total['novel']['verus']['yaml'] + total['novel']['verus']['poor']} : {total['novel']['verus']['yaml']}")
+    print(f"Lean total (novel): {total['novel']['lean']['yaml'] + total['novel']['lean']['poor']} : {total['novel']['lean']['yaml']}")
     print("=" * 50)
 
     # Print grand totals
@@ -847,6 +859,29 @@ def print_summary_counts(source_meta: Dict[str, Any]) -> None:
     print(f"Grand total (all):  {grand_total['all']['yaml'] + grand_total['all']['poor']} : {grand_total['all']['yaml']}")  
     print(f"Grand total (novel): {grand_total['novel']['yaml'] + grand_total['novel']['poor']} : {grand_total['novel']['yaml']}")
     print("=" * 50)
+
+
+    # randomly pick a source, a language, and a task, and print the Vericoding ID
+    # import random
+    # for _ in range(10):
+    #     language = random.choice(list(languages_ref.keys()))
+    #     task = random.choice(list(source_meta.keys()))
+    #     source = source_meta[task]['source']
+    #     print(f"Vericoding ID: {get_vericoding_id(source, language, task, source_meta)}")
+    #     print(f"Source: {source}")
+    #     print(f"Language: {language}")
+    #     print(f"Task: {task}")
+    #     print()
+
+    # print all verina tasks
+    # for task in source_meta.keys():
+    #     if source_meta[task]['source'] == 'verina':
+    #         print(f"Task: {task} id: {source_meta[task]['id']}")
+
+    # # print all clever tasks
+    # for task in source_meta.keys():
+    #     if source_meta[task]['source'] == 'clever':
+    #         print(f"Task: {task} id: {source_meta[task]['id']}")
 
 def generate_ids(source_meta: Dict[str, Any]) -> None:
     """Generate IDs for the files in source_meta.
@@ -867,7 +902,7 @@ def generate_ids(source_meta: Dict[str, Any]) -> None:
     # Sort files within each source and assign IDs
     for source, filenames in files_by_source.items():
         # Sort filenames alphabetically
-        sorted_filenames = sorted(filenames)
+        sorted_filenames = natsorted(filenames)
         
         # Assign four-digit zero-padded IDs starting from 0000
         for i, filename in enumerate(sorted_filenames):
