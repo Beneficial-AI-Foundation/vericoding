@@ -1,0 +1,25 @@
+{
+  "benchmark_info": {
+    "name": "lean_apps",
+    "language": "lean",
+    "source": "unknown",
+    "entry_count": 676,
+    "benchmark_path": "benchmarks/lean/apps"
+  },
+  "qa_metadata": {
+    "definitions_with_sorry": [
+      "benchmarks/lean/apps/yaml/apps_test_235.yaml",
+      "benchmarks/lean/apps/yaml/apps_test_1007.yaml",
+      "benchmarks/lean/apps/yaml/apps_test_1046.yaml"
+    ],
+    "score": 336.725,
+    "near_duplicates": {
+      "examples": [],
+      "total_count": 0
+    },
+    "base_score": 338
+  },
+  "generated_at": "2025-09-23T00:22:11.273877",
+  "config_version": "2.0",
+  "format_version": "separate_metadata_v1"
+}

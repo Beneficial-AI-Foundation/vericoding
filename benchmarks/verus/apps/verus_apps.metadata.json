@@ -1,0 +1,64 @@
+{
+  "benchmark_info": {
+    "name": "verus_apps",
+    "language": "verus",
+    "source": "unknown",
+    "entry_count": 536,
+    "benchmark_path": "benchmarks/verus/apps"
+  },
+  "qa_metadata": {
+    "specs_with_default_values": [
+      "benchmarks/verus/apps/yaml/apps_test_66.yaml",
+      "benchmarks/verus/apps/yaml/apps_test_967.yaml",
+      "benchmarks/verus/apps/yaml/apps_test_604.yaml",
+      "benchmarks/verus/apps/yaml/apps_test_302.yaml"
+    ],
+    "execs_with_bodies": [],
+    "execs_with_ghost_types": [],
+    "score": 266.34999999999997,
+    "near_duplicates": {
+      "examples": [
+        {
+          "files": [
+            "benchmarks/verus/apps/yaml/apps_test_4167.yaml",
+            "benchmarks/verus/apps/yaml/apps_test_4363.yaml"
+          ],
+          "similarity": 0.9
+        },
+        {
+          "files": [
+            "benchmarks/verus/apps/yaml/apps_test_1643.yaml",
+            "benchmarks/verus/apps/yaml/apps_test_1598.yaml"
+          ],
+          "similarity": 0.9
+        },
+        {
+          "files": [
+            "benchmarks/verus/apps/yaml/apps_test_4701.yaml",
+            "benchmarks/verus/apps/yaml/apps_test_4295.yaml"
+          ],
+          "similarity": 0.9
+        },
+        {
+          "files": [
+            "benchmarks/verus/apps/yaml/apps_test_470.yaml",
+            "benchmarks/verus/apps/yaml/apps_test_847.yaml"
+          ],
+          "similarity": 0.9
+        },
+        {
+          "files": [
+            "benchmarks/verus/apps/yaml/apps_test_4332.yaml",
+            "benchmarks/verus/apps/yaml/apps_test_4539.yaml"
+          ],
+          "similarity": 0.9
+        }
+      ],
+      "total_count": 14
+    },
+    "base_score": 268
+  },
+  "generated_at": "2025-09-23T00:19:33.165436",
+  "config_version": "2.0",
+  "format_version": "separate_metadata_v1"
+}
