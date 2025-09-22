@@ -28,8 +28,8 @@ from clone_verified_cogen_rs import (
     read_rust_files, 
     filter_duplicates
 )
-from rust_to_yaml_converter import rust_to_yaml
-from verus_validation import (
+from verus.rust_to_yaml_converter import rust_to_yaml
+from verus.verus_validation import (
     find_verus_executable, 
     validate_yaml_with_verus,
 )
