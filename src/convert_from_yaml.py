@@ -977,6 +977,8 @@ def main():
                        help='Source identifier for JSONL conversion (used when suffix is jsonl)')
     parser.add_argument('--language', type=str,
                        help='Language identifier for JSONL conversion (used when suffix is jsonl)')
+    parser.add_argument('--source-meta', type=Path,
+                       help='Path to source metadata file for JSONL conversion (used when suffix is jsonl)')
     
     args = parser.parse_args()
     
@@ -1030,7 +1032,7 @@ def main():
         output_path = args.yaml_file.with_suffix(f'.{args.suffix}')
         convert_yaml_to_json(args.yaml_file, output_path)
     elif args.suffix == 'jsonl':
-        convert_yaml_to_jsonl(args.yaml_file, source=args.source, language=args.language)
+        convert_yaml_to_jsonl(args.yaml_file, source=args.source, language=args.language, source_meta=args.source_meta)
     else:
         output_path = args.yaml_file.with_suffix(f'.{args.suffix}')
         convert_yaml_to_file(args.yaml_file, output_path, args.use_all_keys, args.add_postamble)
