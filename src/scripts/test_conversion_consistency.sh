@@ -2,7 +2,7 @@
 
 # Test script for conversion consistency 
 # Usage: ./test_conversion_consistency.sh <type> <path> <meta>
-# Example: ./test_conversion_consistency.sh dfy benchmarks/dafny/dafnybench benchmarks/tasks_metadata.json
+# Example: ./test_conversion_consistency.sh dfy benchmarks/dafny/dafnybench benchmarks/tasks_metadata.jsonl
 
 set -e
 
@@ -20,7 +20,7 @@ main() {
         log_error "Usage: $0 <type> <path> <meta>"
         log_error "  type: dfy, lean, or rs"
         log_error "  path: path to benchmark directory (e.g., benchmarks/dafny/dafnybench)"
-        log_error "  meta: path to tasks_metadata.json file (e.g., benchmarks/tasks_metadata.json)"
+        log_error "  meta: path to tasks_metadata.jsonl file (e.g., benchmarks/tasks_metadata.jsonl)"
         exit 1
     fi
     
