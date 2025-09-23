@@ -1,6 +1,6 @@
 {
   "benchmark_info": {
-    "name": "dafny_dafnybench_with_entry_qa",
+    "name": "dafny_dafnybench",
     "language": "dafny",
     "source": "unknown",
     "entry_count": 443,
@@ -13,7 +13,7 @@
       "benchmarks/dafny/dafnybench/yaml/assertive-programming-assignment-1_tmp_tmp3h_cj44u_ProdAndCount_ProdAndCount.yaml"
     ],
     "methods_with_bodies": [],
-    "score": 206.40801354401808,
+    "score": 93.39729119638827,
     "near_duplicates": {
       "examples": [
         {
@@ -60,7 +60,7 @@
     },
     "base_score": 221
   },
-  "generated_at": "2025-09-23T00:12:09.541713",
+  "generated_at": "2025-09-23T18:01:24.411091",
   "config_version": "2.0",
   "format_version": "separate_metadata_v1"
 }

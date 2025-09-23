@@ -12,13 +12,13 @@
     ],
     "execs_with_bodies": [],
     "execs_with_ghost_types": [
-      "benchmarks/verus/numpy_triple/yaml/ufuncs_types.yaml",
-      "benchmarks/verus/numpy_triple/yaml/ufuncs_signature.yaml",
       "benchmarks/verus/numpy_triple/yaml/io_operations_printoptions.yaml",
+      "benchmarks/verus/numpy_triple/yaml/ufuncs_types.yaml",
       "benchmarks/verus/numpy_triple/yaml/io_operations_get_printoptions.yaml",
+      "benchmarks/verus/numpy_triple/yaml/ufuncs_signature.yaml",
       "benchmarks/verus/numpy_triple/yaml/bitwise_operations_bitwise_count.yaml"
     ],
-    "score": 281.789156626506,
+    "score": 97.25473321858864,
     "near_duplicates": {
       "examples": [
         {
@@ -61,7 +61,7 @@
     },
     "base_score": 290
   },
-  "generated_at": "2025-09-23T00:16:38.468194",
+  "generated_at": "2025-09-23T18:02:27.502652",
   "config_version": "2.0",
   "format_version": "separate_metadata_v1"
 }
