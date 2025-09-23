@@ -63,8 +63,6 @@ vc-preamble: |-
   def DynamicConnectivity.root (dc : DynamicConnectivity) (p : Nat) : Nat := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def DynamicConnectivity.union (dc : DynamicConnectivity) (p q : Nat) : DynamicConnectivity := sorry

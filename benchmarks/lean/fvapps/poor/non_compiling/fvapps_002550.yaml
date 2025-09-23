@@ -32,8 +32,6 @@ vc-preamble: |-
     size : Nat
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def split_the_bill (bill : BillDict) : BillDict :=

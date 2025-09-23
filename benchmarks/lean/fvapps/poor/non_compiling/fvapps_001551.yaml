@@ -51,8 +51,6 @@ vc-preamble: |-
     intervals.map normalizeInterval
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def sumLengths (intervals: List (Int × Int)) : Int :=

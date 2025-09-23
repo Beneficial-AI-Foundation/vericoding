@@ -45,8 +45,6 @@ vc-preamble: |-
   | x::xs => max x (max_list xs)
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def find_max_coins (n k : Nat) (arr : List Int) : Int :=

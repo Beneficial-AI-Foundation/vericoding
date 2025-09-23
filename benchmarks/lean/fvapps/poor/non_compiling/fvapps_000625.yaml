@@ -36,8 +36,6 @@ vc-preamble: |-
   | (h :: t) => h + sum t
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def can_share_candies (n_friends : Nat) (candies : List Nat) : String := sorry

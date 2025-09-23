@@ -13,8 +13,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def locate {α : Type u} [BEq α] : NestedList α → α → Bool := 

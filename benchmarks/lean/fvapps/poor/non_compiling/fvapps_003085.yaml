@@ -15,8 +15,6 @@ vc-preamble: |-
     xs.foldl (fun acc x => if x = a then acc + 1 else acc) 0
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def majority : List α → Option α := sorry

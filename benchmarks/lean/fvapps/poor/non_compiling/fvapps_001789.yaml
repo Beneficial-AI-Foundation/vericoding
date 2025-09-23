@@ -67,8 +67,6 @@ vc-preamble: |-
     c = '#' ∨ c = '.' ∨ c = 'S' ∨ c = 'B' ∨ c = 'T'
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def isValidGrid (grid: Grid) : Prop := sorry

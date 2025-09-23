@@ -26,8 +26,6 @@ vc-preamble: |-
     | (h::t) => h + sum t
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def count_word_occurrences (words : List String) : WordCountResult :=

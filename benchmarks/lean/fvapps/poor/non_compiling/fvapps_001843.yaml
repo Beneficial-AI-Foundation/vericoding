@@ -38,8 +38,6 @@ vc-preamble: |-
     if n < 0 then -n else n
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def splitStr (s : String) : List String := sorry

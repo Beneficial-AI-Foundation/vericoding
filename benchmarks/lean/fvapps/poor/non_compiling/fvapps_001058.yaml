@@ -49,8 +49,6 @@ vc-preamble: |-
   | x::xs => x::xs -- stub implementation to avoid termination issues
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def calculate_min_score (n k e m : Nat) (other_scores : List (List Nat)) (sergey_scores : List Nat) : Nat ⊕ Unit :=

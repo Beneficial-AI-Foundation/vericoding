@@ -31,8 +31,6 @@ vc-preamble: |-
   def log (base n : Nat) : Nat := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def smallest_good_base (n : String) : String :=

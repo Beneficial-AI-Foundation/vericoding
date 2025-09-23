@@ -60,8 +60,6 @@ vc-preamble: |-
   def death (t : ThroneInheritance) (name : String) : ThroneInheritance := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def getInheritanceOrder (t : ThroneInheritance) : List String := sorry

@@ -137,8 +137,6 @@ vc-preamble: |-
   /- Each row in the result bag has the same width -/
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def IsConnected (grid : List (List Nat)) (i j i' j' : Nat) : Prop := sorry

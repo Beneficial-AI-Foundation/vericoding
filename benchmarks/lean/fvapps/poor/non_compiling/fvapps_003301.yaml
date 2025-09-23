@@ -25,8 +25,6 @@ vc-preamble: |-
   /- Helper function to find first index of character in string -/
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def String.findFirstIndex (s : String) (c : Char) : Nat :=

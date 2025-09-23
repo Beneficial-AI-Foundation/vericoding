@@ -48,8 +48,6 @@ vc-preamble: |-
     | x::xs => x + xs.sum
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def solve_coloring (n : Nat) (m : Nat) (lengths : List Nat) : Option (List Nat) := sorry

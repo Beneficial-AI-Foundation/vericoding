@@ -30,8 +30,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def create_linked_list (values : List Int) : ListNode := sorry

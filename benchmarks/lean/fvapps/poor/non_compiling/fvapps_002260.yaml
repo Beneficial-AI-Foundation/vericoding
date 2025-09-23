@@ -76,8 +76,6 @@ vc-preamble: |-
     | x :: xs => x + sum xs
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def solveCandyBox (n : Nat) (types : List (Nat × Nat)) (flags : List Nat) : Nat × Nat := sorry

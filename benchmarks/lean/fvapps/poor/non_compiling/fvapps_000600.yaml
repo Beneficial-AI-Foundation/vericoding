@@ -54,8 +54,6 @@ vc-preamble: |-
     | x :: y :: xs => x > y && is_strictly_decreasing (y :: xs)
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def sorted_shares (shares: List Share) : List Share :=

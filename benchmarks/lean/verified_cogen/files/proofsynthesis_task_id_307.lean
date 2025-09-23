@@ -1,5 +1,4 @@
 -- <vc-preamble>
--- <vc-preamble>
 @[reducible, simp]
 def listDeepClone_precond (arr : Array Nat) := 
   True

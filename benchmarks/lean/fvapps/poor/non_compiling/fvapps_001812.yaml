@@ -29,8 +29,6 @@ vc-preamble: |-
   def passAll (xs: List (Nat × Nat)) (q: Nat × Nat) : Bool := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def reconstruct (points: List Nat) (n: Nat) : List (List String) := sorry 

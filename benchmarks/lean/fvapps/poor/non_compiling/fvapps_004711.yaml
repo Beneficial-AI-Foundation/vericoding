@@ -43,8 +43,6 @@ vc-preamble: |-
     result = s!"<{repr t}>{content}</{repr t}>" := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def HtmlGen.comment (content : String) : String := sorry

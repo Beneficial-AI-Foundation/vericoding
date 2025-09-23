@@ -17,8 +17,6 @@ vc-preamble: |-
     xs.foldl (· + ·) 0
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def luck_check (s : String) : Option Bool := sorry

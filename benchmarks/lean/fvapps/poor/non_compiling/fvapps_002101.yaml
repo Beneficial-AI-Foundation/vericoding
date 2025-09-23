@@ -47,8 +47,6 @@ vc-preamble: |-
   /- Function that finds a palindrome supersequence of a given string -/
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def find_palindrome_supersequence (s : String) : String := sorry

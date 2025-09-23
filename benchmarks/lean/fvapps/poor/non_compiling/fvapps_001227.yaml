@@ -44,8 +44,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def build_two_towers (n : Nat) (k : Nat) (heights : List Nat) : Int := sorry

@@ -65,8 +65,6 @@ vc-preamble: |-
     | (h::t) => h + sum t
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def solve_min_cost_trip (n m a b c : Nat) (prices : List Nat) (edges : List (Nat × Nat)) : Nat :=

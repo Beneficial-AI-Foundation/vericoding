@@ -62,8 +62,6 @@ vc-preamble: |-
     | h :: t => h + List.sum t
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def queue_time (customers : List Nat) (n : Nat) : Nat :=

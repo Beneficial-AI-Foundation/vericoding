@@ -54,8 +54,6 @@ vc-preamble: |-
   -- Define helper function to check if first element of each row is 1
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def allFirstOne (m : BinaryMatrix) : Bool :=

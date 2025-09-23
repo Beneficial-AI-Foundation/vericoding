@@ -40,8 +40,6 @@ vc-preamble: |-
   def empty : Simplexer := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def scan : String → Token := sorry

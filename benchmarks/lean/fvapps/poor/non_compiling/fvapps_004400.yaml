@@ -23,8 +23,6 @@ vc-preamble: |-
     | (x::xs) => x + sum xs
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def get_section_id (scroll : Int) (sizes : List Int) : Int :=

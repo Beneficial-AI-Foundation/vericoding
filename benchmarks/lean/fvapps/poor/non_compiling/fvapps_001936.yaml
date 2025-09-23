@@ -51,8 +51,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def find_vertex_covers (n m : Nat) (edges : List (Nat × Nat)) : Option VertexCover := 

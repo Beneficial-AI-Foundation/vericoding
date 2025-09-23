@@ -58,8 +58,6 @@ vc-preamble: |-
     Float.sqrt (dx * dx + dy * dy)
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def solve_min_distance (n : Nat) (points : List Point) : Float :=

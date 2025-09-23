@@ -37,8 +37,6 @@ vc-preamble: |-
   def get_leaves_at_depth (node : TreeNode) (target_depth : Int) (current_depth : Int := 0) : List TreeNode := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def find_node (node target : TreeNode) : Bool := sorry

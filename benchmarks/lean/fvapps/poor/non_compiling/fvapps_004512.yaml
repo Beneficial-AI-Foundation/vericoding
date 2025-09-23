@@ -58,8 +58,6 @@ vc-preamble: |-
   def User.add_cash (u : User) (amt : Nat) : String × User := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def User.check (u1 : User) (u2 : User) (amt : Nat) : Option (String × User × User) := sorry

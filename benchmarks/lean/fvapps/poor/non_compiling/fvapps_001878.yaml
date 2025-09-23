@@ -42,8 +42,6 @@ vc-preamble: |-
   def BrowserHistory.visit (self : BrowserHistory) (url : String) : BrowserHistory := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def BrowserHistory.back (self : BrowserHistory) (steps : Nat) : (BrowserHistory × String) := sorry

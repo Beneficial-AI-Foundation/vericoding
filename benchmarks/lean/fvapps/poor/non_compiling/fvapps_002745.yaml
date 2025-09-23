@@ -78,8 +78,6 @@ vc-preamble: |-
     sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def splitOnStr (s : String) (sep : String) : List String :=

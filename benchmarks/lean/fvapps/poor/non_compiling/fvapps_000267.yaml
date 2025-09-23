@@ -43,8 +43,6 @@ vc-preamble: |-
                   else max 1 (maxEqualSeq (y::xs))
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def longestSubarray (nums : List Int) (limit : Nat) : Nat := sorry

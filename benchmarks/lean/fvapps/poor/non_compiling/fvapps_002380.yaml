@@ -29,8 +29,6 @@ vc-preamble: |-
     day ≥ 1 ∧ day ≤ 31 ∧ month ≥ 1 ∧ month ≤ 12
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def isLeapYear (year : Nat) : Prop :=

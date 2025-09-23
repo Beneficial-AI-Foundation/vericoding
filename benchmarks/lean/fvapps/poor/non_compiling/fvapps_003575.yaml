@@ -18,8 +18,6 @@ vc-preamble: |-
     highest_age [] [] = none := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def total_age_for_name (persons : List Person) (name : String) : Nat :=

@@ -44,8 +44,6 @@ vc-preamble: |-
     dim_cols := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def identity_matrix (n : Nat) : Matrix Int n where

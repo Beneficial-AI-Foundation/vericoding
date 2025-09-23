@@ -20,8 +20,6 @@ vc-preamble: |-
   def isVowel (c : Char) : Bool := c ∈ VOWELS
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def is_alt (s : String) : Bool := sorry

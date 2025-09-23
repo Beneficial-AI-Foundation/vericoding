@@ -46,8 +46,6 @@ vc-preamble: |-
   | x :: xs => x + List.sum xs
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def solve_max_subsequence (n : Nat) (k : Nat) (arr : List Nat) : Nat :=

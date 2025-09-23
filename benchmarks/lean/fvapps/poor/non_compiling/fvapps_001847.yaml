@@ -46,8 +46,6 @@ vc-preamble: |-
     | _ => false
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def getInteger (ni : NestedInteger) : Int :=

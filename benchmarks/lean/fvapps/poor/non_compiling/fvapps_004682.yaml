@@ -15,8 +15,6 @@ vc-preamble: |-
   def daysUntilChristmas (d : Date) : Nat := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def addDays (d : Date) (n : Nat) : Date := sorry

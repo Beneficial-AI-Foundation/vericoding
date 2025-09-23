@@ -48,8 +48,6 @@ vc-preamble: |-
     | x :: xs => x + List.sum xs
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def find_pile_numbers (n : Nat) (pile_sizes : List Nat) (m : Nat) (labels : List Nat) : List Nat :=

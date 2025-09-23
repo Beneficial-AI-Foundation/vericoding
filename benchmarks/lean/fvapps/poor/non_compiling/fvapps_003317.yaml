@@ -20,8 +20,6 @@ vc-preamble: |-
     | .rect (w, h) => w * h
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def sort_by_area (seq : List AreaElement) : List AreaElement :=

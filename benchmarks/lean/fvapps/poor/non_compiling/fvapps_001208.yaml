@@ -98,8 +98,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def solve_travel_routes (cities : List String) (roads : List (String × String × Int)) 

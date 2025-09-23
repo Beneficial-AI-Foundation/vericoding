@@ -37,8 +37,6 @@ vc-preamble: |-
   def is_leaf : TreeNode → Bool := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def path_sum : TreeNode → Int := sorry

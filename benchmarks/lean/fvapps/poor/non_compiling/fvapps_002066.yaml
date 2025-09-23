@@ -67,8 +67,6 @@ vc-preamble: |-
     | x :: xs => x + sum xs
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def List.sort (lt : α → α → Bool) (l : List α) : List α := sorry

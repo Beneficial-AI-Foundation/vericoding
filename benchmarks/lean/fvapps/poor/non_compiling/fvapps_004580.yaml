@@ -45,8 +45,6 @@ vc-preamble: |-
     ls.foldl (· + ·) 0
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def choose_best_sum (t : Int) (k : Nat) (ls : List Int) : Option Int :=

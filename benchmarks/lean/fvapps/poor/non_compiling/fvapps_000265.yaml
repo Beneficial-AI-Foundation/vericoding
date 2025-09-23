@@ -65,8 +65,6 @@ vc-preamble: |-
     initial_boxes : List Nat
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def maxCandies (status : List Bool) (candies : List Nat) (keys : List (List Nat))

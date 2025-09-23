@@ -50,8 +50,6 @@ vc-preamble: |-
     | (x::xs) => x + List.sum xs
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def split_all_even_numbers (numbers: List Nat) (split_type: Nat) : List Nat :=

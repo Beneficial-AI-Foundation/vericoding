@@ -68,8 +68,6 @@ vc-preamble: |-
     ∀ x ∈ l, x ≥ 0
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def isMonotonicFrom (l : List Nat) (start : Nat) : Prop :=

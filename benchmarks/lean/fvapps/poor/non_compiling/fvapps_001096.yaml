@@ -35,8 +35,6 @@ vc-preamble: |-
     sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def min_wire_cost (n : Nat) (wire_lengths : List Nat) : Nat × Nat :=

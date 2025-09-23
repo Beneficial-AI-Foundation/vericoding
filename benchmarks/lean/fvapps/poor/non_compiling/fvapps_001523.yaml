@@ -68,8 +68,6 @@ vc-preamble: |-
       List.LocalNodup (x::xs)
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def words (s : String) : List String :=

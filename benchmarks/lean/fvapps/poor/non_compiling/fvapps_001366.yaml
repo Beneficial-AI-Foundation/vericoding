@@ -47,8 +47,6 @@ vc-preamble: |-
     xs.foldl (fun count y => if x = y then count + 1 else count) 0
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def unique (xs : List Nat) : List Nat :=

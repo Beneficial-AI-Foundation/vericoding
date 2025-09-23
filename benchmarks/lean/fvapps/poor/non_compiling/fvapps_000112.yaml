@@ -56,8 +56,6 @@ vc-preamble: |-
     | x::xs => List.foldl (fun acc y => max acc y) x xs
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def solve_dungeon_game (monsters : List Nat) (heroes : List Hero) : Nat := sorry

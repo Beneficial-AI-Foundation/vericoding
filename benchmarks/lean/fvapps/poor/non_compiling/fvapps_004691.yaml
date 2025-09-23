@@ -16,8 +16,6 @@ vc-preamble: |-
     | Node.cons _ next => 1 + length next
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def count {α : Type} [BEq α] : Node α → α → Nat 
