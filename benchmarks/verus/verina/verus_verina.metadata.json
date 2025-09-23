@@ -10,26 +10,26 @@
     "specs_with_default_values": [],
     "execs_with_bodies": [],
     "execs_with_ghost_types": [
-      "benchmarks/verus/verina/yaml/verina_basic_26_task.yaml",
-      "benchmarks/verus/verina/yaml/verina_advanced_50_task.yaml",
-      "benchmarks/verus/verina/yaml/verina_advanced_73_task.yaml",
       "benchmarks/verus/verina/yaml/verina_basic_18_task.yaml",
-      "benchmarks/verus/verina/yaml/verina_basic_28_task.yaml",
-      "benchmarks/verus/verina/yaml/verina_basic_11_task.yaml",
-      "benchmarks/verus/verina/yaml/verina_advanced_64_task.yaml",
-      "benchmarks/verus/verina/yaml/verina_basic_43_task.yaml",
-      "benchmarks/verus/verina/yaml/verina_basic_88_task.yaml",
-      "benchmarks/verus/verina/yaml/verina_basic_66_task.yaml",
-      "benchmarks/verus/verina/yaml/verina_advanced_35_task.yaml",
       "benchmarks/verus/verina/yaml/verina_advanced_60_task.yaml",
-      "benchmarks/verus/verina/yaml/verina_basic_86_task.yaml",
-      "benchmarks/verus/verina/yaml/verina_basic_2_task.yaml",
+      "benchmarks/verus/verina/yaml/verina_basic_77_task.yaml",
+      "benchmarks/verus/verina/yaml/verina_advanced_50_task.yaml",
       "benchmarks/verus/verina/yaml/verina_advanced_12_task.yaml",
+      "benchmarks/verus/verina/yaml/verina_basic_43_task.yaml",
+      "benchmarks/verus/verina/yaml/verina_basic_86_task.yaml",
+      "benchmarks/verus/verina/yaml/verina_basic_66_task.yaml",
+      "benchmarks/verus/verina/yaml/verina_basic_26_task.yaml",
+      "benchmarks/verus/verina/yaml/verina_basic_11_task.yaml",
+      "benchmarks/verus/verina/yaml/verina_basic_88_task.yaml",
+      "benchmarks/verus/verina/yaml/verina_basic_28_task.yaml",
+      "benchmarks/verus/verina/yaml/verina_advanced_35_task.yaml",
       "benchmarks/verus/verina/yaml/verina_advanced_10_task.yaml",
       "benchmarks/verus/verina/yaml/verina_advanced_14_task.yaml",
-      "benchmarks/verus/verina/yaml/verina_basic_77_task.yaml"
+      "benchmarks/verus/verina/yaml/verina_advanced_73_task.yaml",
+      "benchmarks/verus/verina/yaml/verina_advanced_64_task.yaml",
+      "benchmarks/verus/verina/yaml/verina_basic_2_task.yaml"
     ],
-    "score": 72.45,
+    "score": 94.03846153846153,
     "near_duplicates": {
       "examples": [
         {
@@ -72,7 +72,7 @@
     },
     "base_score": 78
   },
-  "generated_at": "2025-09-23T00:15:42.524978",
+  "generated_at": "2025-09-23T18:02:02.628779",
   "config_version": "2.0",
   "format_version": "separate_metadata_v1"
 }

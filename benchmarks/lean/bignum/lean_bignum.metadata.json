@@ -58,7 +58,7 @@
       "benchmarks/lean/bignum/yaml/bignum_ModExp_Add_ModExpPow2_Mul_Zeroes.yaml",
       "benchmarks/lean/bignum/yaml/bignum_ModExp_ModExpPow2_Zeroes.yaml"
     ],
-    "score": 9.153225806451616,
+    "score": 18.30645161290323,
     "near_duplicates": {
       "examples": [
         {
@@ -142,7 +142,7 @@
     },
     "base_score": 50
   },
-  "generated_at": "2025-09-23T00:22:00.753278",
+  "generated_at": "2025-09-23T18:04:02.177145",
   "config_version": "2.0",
   "format_version": "separate_metadata_v1"
 }

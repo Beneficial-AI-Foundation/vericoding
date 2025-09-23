@@ -15,7 +15,7 @@
       "benchmarks/dafny/numpy_triple/yaml/polynomial_legendre_legder.yaml"
     ],
     "methods_with_bodies": [],
-    "score": 33.939393939393945,
+    "score": 96.48424543946932,
     "near_duplicates": {
       "examples": [
         {
@@ -57,9 +57,9 @@
       ],
       "total_count": 128
     },
-    "base_score": 50
+    "base_score": 301
   },
-  "generated_at": "2025-09-23T00:10:12.166716",
+  "generated_at": "2025-09-23T18:01:12.579537",
   "config_version": "2.0",
   "format_version": "separate_metadata_v1"
 }
