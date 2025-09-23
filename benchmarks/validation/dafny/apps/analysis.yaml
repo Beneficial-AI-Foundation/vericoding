@@ -1,6 +1,6 @@
 benchmark: apps
 language: dafny
-is-transpiled: true
+is-transpiled: false
 checking-successes: true
 files-sampled:
 - file: 152_apps_test_1836_impl_grok-code.dfy
