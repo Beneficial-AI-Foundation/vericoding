@@ -1,0 +1,115 @@
+# Base configuration shared across all translations
+config:
+  verus_path: "verus"
+  dafny_path: "dafny"
+  lean_path: "lean"  # Add lean path for verification
+  #model: "anthropic:claude-sonnet-4-20250514"
+  model: "openrouter:anthropic/claude-sonnet-4"
+  artifacts_dir: "artifacts"
+  max_translation_iterations: 6
+  max_retries: 1                                                                                      
+  
+  # OpenRouter models (alternative to direct provider APIs)
+  # To use OpenRouter models, set OPENROUTER_API_KEY environment variable
+  # and change the model to one of these:
+  #
+  # OpenRouter Claude models:
+  # model: "openrouter:anthropic/claude-sonnet-4"
+  # model: "openrouter:anthropic/claude-opus-4.1"
+  #
+  # OpenRouter GPT models:
+  # model: "openrouter:openai/gpt-5"
+  # model: "openrouter:openai/gpt-5-mini"
+  # model: "openrouter:openai/o1-preview"
+  #
+  # OpenRouter other models:
+  # model: "openrouter:deepseek/deepseek-chat-v3.1"
+  # model: "openrouter:google/gemini-2.5-pro"
+  # model: "openrouter:google/gemini-2.5-flash"
+  # model: "openrouter:x-ai/grok-4"
+  # model: "openrouter:mistralai/mistral-medium-3.1"
+  # model: "openrouter:qwen/qwen3-coder-30b-a3b-instruct"
+  
+  forbidden_yaml_fields:
+    - "vc-implementation"
+    - "vc-signature"
+    - "vc-condition"
+    - "vc-proof"
+
+  # Code validation rules to enforce quality and correctness
+  code_validation_rules:
+    verus:
+      # Enforce that spec functions cannot have arbitrary() as body
+      - rule_type: "forbidden_pattern"
+        pattern: "spec fn .+\\{[\\s\\n]*arbitrary\\(\\)[\\s\\n]*\\}"
+        description: "spec fn functions cannot have arbitrary() as their body - spec functions must provide actual specifications"
+        severity: "error"
+      # Enforce that spec functions should not be empty
+      - rule_type: "forbidden_pattern"
+        pattern: "spec fn .+\\{[\\s\\n]*\\}"
+        description: "spec fn functions should not be empty - they must provide meaningful specifications"
+        severity: "warning"
+    dafny:
+      # Similar rules for Dafny functions
+      - rule_type: "forbidden_pattern"
+        pattern: "function .+\\{[\\s\\n]*\\}"
+        description: "Dafny functions should not be empty - they must provide meaningful specifications"
+        severity: "warning"
+    lean:
+      # Enforce that ensures clauses generate postconditions
+      - rule_type: "requires_pattern"
+        source_pattern: "ensures\\s+"
+        target_pattern: "def\\s+\\w+_postcond.*: Prop :="
+        description: "Every Dafny ensures clause MUST generate a corresponding Lean solve_postcond definition"
+        severity: "error"
+      # Forbid empty vc-theorems when source has ensures
+      - rule_type: "forbidden_pattern_with_condition"
+        condition_pattern: "ensures\\s+"
+        forbidden_pattern: "-- <vc-theorems>[\\s\\n]*-- </vc-theorems>"
+        description: "vc-theorems section MUST NOT be empty when Dafny method has ensures clauses"
+        severity: "error"
+      # Require solve_postcond to have explicit Prop type
+      - rule_type: "required_pattern"
+        pattern: "def\\s+\\w+_postcond.*: Prop"
+        description: "postcond definitions MUST have explicit : Prop type annotation"
+        severity: "error"
+
+# Error feedback templates
+error_templates:
+  yaml_syntax_error: |
+    The generated YAML has syntax errors: {error}
+
+    Please fix the YAML syntax issues and generate valid YAML. Common issues:
+    - Make sure field names end with colons (:)
+    - Check indentation (use spaces, not tabs)
+    - Ensure all string values containing special characters are properly quoted
+    - Use the |- syntax for multi-line strings
+
+    Here's the original {source_language} code again:
+
+    ```{source_language_lower}
+    {source_code}
+    ```
+
+    {additional_prompt}
+  
+  verification_error: |
+    The previous translation failed verification. Here are the specific errors:
+
+    Verification Error: {verification_error}
+
+    Verification Output: {verification_output}
+
+    Please fix the Verus code to address these verification errors. Pay special attention to:
+    - Syntax errors (missing semicolons, incorrect brackets, etc.)
+    - Type mismatches
+    - Incorrect function signatures
+    - Missing imports or module declarations
+
+    Here's the original {source_language} code again:
+
+    ```{source_language_lower}
+    {source_code}
+    ```
+
+    {additional_prompt}

@@ -1,0 +1,21 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+.env
+.envrc
+
+.ruff_cache/
+# Virtual environments
+.venv
+
+.direnv/
+
+verus-x86-linux/
+
+# artifacts/
+uv.lock
