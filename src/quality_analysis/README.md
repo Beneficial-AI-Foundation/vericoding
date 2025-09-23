@@ -45,27 +45,47 @@ score = get_benchmark_quality_score("benchmarks/verus/humaneval/verus_humaneval.
 
 ## Quality Scoring
 
-**Mathematically consistent dual-level scoring:**
+**Normalized scoring for cross-benchmark comparison:**
 
-### Benchmark-Level Formula
+### Benchmark-Level Formula (NEW)
 ```
-final_score = base_score × (1 - penalty_fraction)
+final_score = 100 × (1 - penalty_fraction)  [0-100 scale]
 penalty_fraction = Σ(weight_i × proportion_i)
 proportion_i = issue_count_i / total_entries
 ```
 
+**Score Interpretation:**
+- **90-100**: Excellent quality (minimal issues)
+- **70-89**: Good quality (some issues)  
+- **50-69**: Moderate quality (notable issues)
+- **30-49**: Poor quality (significant issues)
+- **0-29**: Very poor quality (critical issues)
+
 ### Per-Entry Formula  
 ```
-individual_score = 1 - Σ(weight_i × p_i)
+individual_score = 1 - Σ(weight_i × p_i)  [0-1 scale]
 p_i = 1 if entry has issue_i, else 0
 ```
 
-**Consistency**: `Σ(individual_scores) = benchmark_score`
+**Key Benefits:**
+- **Cross-benchmark comparable**: Same scale regardless of benchmark size
+- **Size-independent**: 100 entries vs 1000 entries both use 0-100 scale
+- **Intuitive**: Percentage-like scoring that's easy to interpret
 
 ### Quality Factors & Weights
 - **Verus**: specs with defaults (30%), exec bodies (50%), ghost types (5%), near-duplicates (15%)
 - **Dafny**: func defaults (40%), method bodies (45%), near-duplicates (15%)  
 - **Lean**: sorry usage (85%), near-duplicates (15%)
+
+### Real Examples (with normalized scoring)
+```
+dafny_bignum (62 entries):     85.2/100 - Good quality, high duplication penalty
+lean_bignum (62 entries):     18.3/100 - Poor quality, many sorry definitions  
+verus_apps (536 entries):     99.4/100 - Excellent quality, minimal issues
+lean_apps (676 entries):      99.6/100 - Excellent quality, very few issues
+```
+
+**Note**: All scores directly comparable regardless of benchmark size!
 
 ### Example Per-Entry Output
 ```json
@@ -98,6 +118,8 @@ Edit `config/qa_config.yaml` to adjust weights, similarity thresholds, and perfo
 **Key settings:**
 ```yaml
 scoring:
+  use_normalized_quality: true              # Enable 0-100 scale scoring
+  
   verus:
     weights:                                    # Must sum to 1.0
       specs_with_default_values_weight: 0.30   # 30%
