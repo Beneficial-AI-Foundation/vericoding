@@ -612,46 +612,63 @@ def flatten_task_with_entry_qa(task: Dict[str, Any]) -> Dict[str, Any]:
         'source': task['source'],
         'source-id': task['source_id'],
         'source-notes': "",
+        'vc-description': "",
+        'vc-preamble': "",
+        'vc-helpers': "",
     }
-    if 'vc-description' in task:
-        new_task.update({'vc-description': task['vc-description']})
-    if 'vc-preamble' in task:
-        new_task.update({'vc-preamble': task['vc-preamble']})
-    if 'vc-helpers' in task:
-        new_task.update({'vc-helpers': task['vc-helpers']})
-    if 'vc-spec' in task:
-        new_task.update({'vc-spec': task['vc-spec']})
-    if 'vc-code' in task:
-        new_task.update({'vc-code': task['vc-code']})
-    if 'vc-definitions' in task:
-        new_task.update({'vc-definitions': task['vc-definitions']})
-    if 'vc-theorems' in task:
-        new_task.update({'vc-theorems': task['vc-theorems']})
 
-    new_task.update({'vc-postamble': task['vc-postamble']})
-    new_task.update({'qa-issue': 0})
-    new_task.update({'qa-issue-type': ''})
-
-    if task['language'] == 'dafny':
+    if task['language'] in ['dafny', 'verus']:
         new_task.update({
-            'qa-functions-with-default-values': 0,
-            'qa-methods-with-bodies': 0,
-        })
-    elif task['language'] == 'verus':
-        new_task.update({
-            'qa-specs-with-default-values': 0,
-            'qa-execs-with-bodies': 0,
-            'qa-execs-with-ghost-types': 0,
+            'vc-spec': "",
+            'vc-code': "",
         })
     elif task['language'] == 'lean':
         new_task.update({
-            'qa-definitions-with-sorry': 0,
+            'vc-definitions': "",
+            'vc-theorems': "",
+        })
+
+    new_task.update({'vc-postamble': ""})
+    new_task.update({'qa-issue': 0})
+    new_task.update({'qa-issue-type': ""})
+
+    if task['language'] == 'dafny':
+        new_task.update({
+            'qa-functions-with-default-values': -1,
+            'qa-methods-with-bodies': -1,
+        })
+    elif task['language'] == 'verus':
+        new_task.update({
+            'qa-specs-with-default-values': -1,
+            'qa-execs-with-bodies': -1,
+            'qa-execs-with-ghost-types': -1,
+        })
+    elif task['language'] == 'lean':
+        new_task.update({
+            'qa-definitions-with-sorry': -1,
         })
 
     new_task.update({
-        'qa-near-duplicate-group': '',
-        'qa-score': 0,
+        'qa-near-duplicate-group': "",
+        'qa-score': -1,
     }) 
+
+    if 'vc-description' in task:
+        new_task['vc-description'] = task['vc-description']
+    if 'vc-preamble' in task:
+        new_task['vc-preamble'] = task['vc-preamble']
+    if 'vc-helpers' in task:
+        new_task['vc-helpers'] = task['vc-helpers']
+    if 'vc-spec' in task:
+        new_task['vc-spec'] = task['vc-spec']
+    if 'vc-code' in task:
+        new_task['vc-code'] = task['vc-code']
+    if 'vc-definitions' in task:
+        new_task['vc-definitions'] = task['vc-definitions']
+    if 'vc-theorems' in task:
+        new_task['vc-theorems'] = task['vc-theorems']
+    if 'vc-postamble' in task:
+        new_task['vc-postamble'] = task['vc-postamble']
 
     if 'qa_entry_metadata' in task:
         issues = task['qa_entry_metadata']['issues']
@@ -704,6 +721,7 @@ def process_language_tasks(benchmarks_dir: Path) -> None:
         # get all subdirectories in language_dir
         source_dirs = list(language_dir.iterdir())
         source_dirs = [source_dir for source_dir in source_dirs if source_dir.is_dir()]
+        source_dirs = sorted(source_dirs, key=lambda x: sources_ref[x.name])
 
         # generate language tasks file
         output_tasks = benchmarks_dir / f"{language}_tasks.jsonl"
@@ -776,7 +794,7 @@ def process_language_tasks(benchmarks_dir: Path) -> None:
                     print(f"Issues file {issues_file} does not exist")
                 else:
                     with open(issues_file, 'r') as g:
-                        issues = [json.loads(line) for line in g]
+                        issues = [flatten_task_with_entry_qa(json.loads(line)) for line in g]
                     for issue in issues:
                         json.dump(issue, f, ensure_ascii=False)
                         f.write('\n')
