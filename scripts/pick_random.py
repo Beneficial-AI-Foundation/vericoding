@@ -22,7 +22,9 @@ def main() -> None:
         "dafnybench",
         "humaneval",
         "verified-cogen",
-        "verina"
+        "verina",
+        "numpy_simple",
+        "numpy_triple"
         ],
         help="Benchmark name")
     p.set_defaults(_successes=True)

@@ -1,0 +1,25 @@
+benchmark: bignum
+language: verus
+is-transpiled: true
+checking-successes: true
+files-sampled:
+- file: 4_bignum_Compare_CompareUnequal_NormalizeBitString_impl_claude-opus.rs
+  llm: claude-opus
+  issues-with-spec: 'None, unmodified'
+  issues-with-implementation: '!!! Task function absent from implementation, implemented another function !!!'
+- file: 8_bignums_Sub_NormalizeBitstring_impl_claude-sonnet.rs
+  llm: claude-sonnet
+  issues-with-spec: '!!! Superimposes spec function and preamble function !!!'
+  issues-with-implementation: 'None'
+- file: 8_bignums_Sub_NormalizeBitstring_impl_claude-opus.rs
+  llm: claude-opus
+  issues-with-spec: '!!! Superimposes spec function and preamble function !!!. Same underlying file as above.'
+  issues-with-implementation: 'None'
+- file: 6_bignum_ModExp_Add_DivMod_Mul_Zeroes_impl_claude-opus.rs
+  llm: claude-opus
+  issues-with-spec: 'None, unmodified'
+  issues-with-implementation: '!!! Task function absent from implementation, specification trivialized !!!'
+- file: 1_bignum_Add_NormalizeBitString_impl_claude-sonnet.rs
+  llm: claude-sonnet
+  issues-with-spec: 'None, unmodified'
+  issues-with-implementation: '!!! Task function absent from implementation, implemented another function !!!'

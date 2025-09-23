@@ -1,6 +1,6 @@
 benchmark: verified-cogen
 language: dafny
-is-transpiled: false
+is-transpiled: true
 checking-successes: true
 files-sampled:
 - file: 65_proofsynthesis_task_id_261_impl_gemini.dfy
