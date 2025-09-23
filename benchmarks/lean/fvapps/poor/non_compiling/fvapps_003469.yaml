@@ -85,8 +85,6 @@ vc-preamble: |-
     le := Rat.le
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def decompose (f : Rat) : List Rat := sorry

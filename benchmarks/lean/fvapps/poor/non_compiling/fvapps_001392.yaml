@@ -47,8 +47,6 @@ vc-preamble: |-
   /- Helper function to get character from string at position -/
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def getChar? (s : String) (i : Nat) : Option Char :=

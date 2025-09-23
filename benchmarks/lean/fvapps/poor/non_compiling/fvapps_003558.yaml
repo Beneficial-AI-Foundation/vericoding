@@ -38,8 +38,6 @@ vc-preamble: |-
   def List.sum (l : List Nat) : Nat := l.foldl (· + ·) 0
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def six_column_encryption (msg : String) : String := sorry

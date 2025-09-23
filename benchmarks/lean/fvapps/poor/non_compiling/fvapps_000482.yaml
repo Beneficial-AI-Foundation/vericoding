@@ -38,8 +38,6 @@ vc-preamble: |-
     sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def find_target_sum_ways (nums : List Nat) (target : Int) : Nat :=

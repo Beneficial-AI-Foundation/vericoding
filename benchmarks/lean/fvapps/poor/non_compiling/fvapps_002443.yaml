@@ -52,8 +52,6 @@ vc-preamble: |-
   def vec_transpose (m : Vec (Vec Int)) : Vec (Vec Int) := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def vec_zip_with {α β γ : Type} (f : α → β → γ) : Vec α → Vec β → Vec γ := sorry

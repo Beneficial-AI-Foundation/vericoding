@@ -26,8 +26,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def processes (start : String) (destination : String) (procs : List Process) : List String :=

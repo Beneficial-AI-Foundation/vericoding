@@ -42,8 +42,6 @@ vc-preamble: |-
     | x :: xs => x + List.sumFloat xs
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def min_sum_after_division (n : Nat) (x : Nat) (arr : List Int) : Float := sorry

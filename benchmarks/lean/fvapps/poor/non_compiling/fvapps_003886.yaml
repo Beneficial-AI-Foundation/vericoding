@@ -77,8 +77,6 @@ vc-preamble: |-
     (reverse_list xs).length = xs.length := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def List.sum : List Int → Int

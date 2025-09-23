@@ -55,8 +55,6 @@ vc-preamble: |-
     | x :: y :: rest => x ≤ y && isSorted (y :: rest)
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def count (x : Int) (l : List Int) : Nat :=

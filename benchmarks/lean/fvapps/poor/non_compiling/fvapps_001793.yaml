@@ -32,8 +32,6 @@ vc-preamble: |-
   def depth_never_skips (s : String) : Bool := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def toArray {α : Type} [Inhabited α] (t : BinTree α) : Array (Option α) := sorry 

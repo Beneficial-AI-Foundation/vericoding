@@ -43,8 +43,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def checkAlgorithmTermination (s : String) (ranges : List (Nat × Nat)) : List Answer := sorry

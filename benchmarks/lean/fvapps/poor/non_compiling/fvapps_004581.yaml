@@ -26,8 +26,6 @@ vc-preamble: |-
     | (y::ys) => y ++ getAllNumbers' ys
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def sortNestedNumbers (nested: List (List (List Int))) : List (List (List Int)) :=

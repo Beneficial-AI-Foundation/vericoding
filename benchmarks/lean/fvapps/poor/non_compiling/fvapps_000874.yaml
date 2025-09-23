@@ -51,8 +51,6 @@ vc-preamble: |-
     | (x::xs) => max x (xs.maximum)
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def solve_candy_sharing (n : Nat) (arr : List Nat) : Nat :=

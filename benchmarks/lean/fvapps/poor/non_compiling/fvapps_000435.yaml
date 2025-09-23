@@ -35,8 +35,6 @@ vc-preamble: |-
     min_difference nums = 0 := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def isSorted (nums : List Int) : Bool := sorry

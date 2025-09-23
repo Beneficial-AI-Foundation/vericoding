@@ -68,8 +68,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def advice (agents : List Pos) (n : Nat) : List Pos :=

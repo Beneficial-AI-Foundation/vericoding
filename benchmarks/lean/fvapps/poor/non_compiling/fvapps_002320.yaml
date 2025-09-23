@@ -49,8 +49,6 @@ vc-preamble: |-
     | x::xs => x + List.sum xs
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def cal_points (ops : List String) : Int := sorry

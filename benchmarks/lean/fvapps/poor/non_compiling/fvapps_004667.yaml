@@ -28,8 +28,6 @@ vc-preamble: |-
     | (x :: xs) => x + sum xs
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def house_numbers_sum (nums : List Nat) : Nat := sorry

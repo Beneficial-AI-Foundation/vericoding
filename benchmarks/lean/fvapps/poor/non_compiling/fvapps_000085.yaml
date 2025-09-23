@@ -59,8 +59,6 @@ vc-preamble: |-
   | x::xs => x + (sum xs)
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def solve_alternating_array (n: Nat) (arr: List Nat) : Nat × List Nat := sorry

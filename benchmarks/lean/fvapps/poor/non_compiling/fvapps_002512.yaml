@@ -17,8 +17,6 @@ vc-preamble: |-
   def absTimeDiffInSeconds (t1 t2 : DateTime) : Nat := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def timeDifference (ts1 ts2 : String) : Nat := sorry

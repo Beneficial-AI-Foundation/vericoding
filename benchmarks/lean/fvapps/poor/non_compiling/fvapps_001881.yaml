@@ -61,8 +61,6 @@ vc-preamble: |-
     | some _ => sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def get_tree_height : Option TreeNode → Nat → Nat

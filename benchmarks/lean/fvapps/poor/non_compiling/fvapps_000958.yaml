@@ -36,8 +36,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def race_winner (finish : Float) (distance_to_bolt : Float) (tiger_acceleration : Float) (bolt_speed : Float) : String := sorry

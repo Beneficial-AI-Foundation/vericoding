@@ -83,8 +83,6 @@ vc-preamble: |-
     sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def adfgx_decrypt (ciphertext : String) (square : String) : String :=

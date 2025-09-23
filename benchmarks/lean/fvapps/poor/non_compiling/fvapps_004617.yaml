@@ -34,8 +34,6 @@ vc-preamble: |-
     ∀ x, x ∈ l₁ → x ∈ l₂
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def known_guests (invitations: List (Int × List Int)) : List Int :=

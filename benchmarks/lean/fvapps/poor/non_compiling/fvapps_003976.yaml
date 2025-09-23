@@ -20,8 +20,6 @@ vc-preamble: |-
   def joinVersion (v : Version) : String := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def nextVersion (v : String) : String := sorry

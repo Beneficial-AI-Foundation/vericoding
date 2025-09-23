@@ -48,8 +48,6 @@ vc-preamble: |-
   def isValidAdjacencyMatrix (matrix : List (List Nat)) : Bool := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def dfs (graph : List (List Nat)) (node : Nat) (visited : List Nat) : List Nat := sorry

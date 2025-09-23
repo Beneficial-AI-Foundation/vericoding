@@ -47,8 +47,6 @@ vc-preamble: |-
     | x::xs => x + sum xs
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def ship_within_days (weights : List Nat) (days : Nat) : Nat := sorry

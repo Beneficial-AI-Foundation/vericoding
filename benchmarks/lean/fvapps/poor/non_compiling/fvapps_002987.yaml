@@ -62,8 +62,6 @@ vc-preamble: |-
     sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def combine_fruits (fruits : List Nat) : Nat :=

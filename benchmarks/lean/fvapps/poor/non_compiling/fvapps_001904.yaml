@@ -32,8 +32,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def shortestAlternatingPaths (n : Nat) (redEdges blueEdges : List Edge) : List Int :=

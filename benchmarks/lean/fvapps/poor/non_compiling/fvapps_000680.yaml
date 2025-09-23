@@ -60,8 +60,6 @@ vc-preamble: |-
     | (x::xs) => x + sum xs
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def solve_division3_contests (N K D : Nat) (A : List Nat) : Nat := sorry

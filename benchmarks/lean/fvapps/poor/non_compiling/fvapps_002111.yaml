@@ -52,8 +52,6 @@ vc-preamble: |-
     cmds.length > 0 → (check_servers_alive cmds).length = 2 := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def isLive (total: Nat) (failures: Nat) : Bool :=

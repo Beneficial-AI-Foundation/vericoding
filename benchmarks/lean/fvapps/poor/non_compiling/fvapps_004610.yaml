@@ -57,8 +57,6 @@ vc-preamble: |-
   def Partner := LoveLanguage → Response
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def love_language (p : Partner) (weeks : Nat) : LoveLanguage := sorry

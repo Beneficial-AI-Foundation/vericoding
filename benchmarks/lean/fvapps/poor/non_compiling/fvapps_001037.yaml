@@ -83,8 +83,6 @@ vc-preamble: |-
     if n ≥ 0 then n else -n
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def Animal.will_collide : Animal → Animal → Option Float := sorry

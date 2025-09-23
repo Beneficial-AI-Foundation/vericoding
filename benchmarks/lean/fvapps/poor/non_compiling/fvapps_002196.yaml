@@ -68,8 +68,6 @@ vc-preamble: |-
   def DSU.leader (dsu : DSU n) (a : Nat) : Nat := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def solve_game (n m : Nat) (required gain : Array Int) (edges : Array (Nat × Nat)) : Int := sorry

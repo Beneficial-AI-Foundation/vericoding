@@ -43,8 +43,6 @@ vc-preamble: |-
     sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def longest_zigzag {α : Type} (t : Tree α) : Nat :=

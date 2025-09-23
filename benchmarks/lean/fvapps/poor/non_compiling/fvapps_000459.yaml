@@ -38,8 +38,6 @@ vc-preamble: |-
   -- Predicate for valid list input
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def is_valid_list (n : Nat) (lst : List Int) : Bool :=

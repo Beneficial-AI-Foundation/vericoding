@@ -61,8 +61,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def fight (r1 r2 : Robot) (t : Tactics) : String :=

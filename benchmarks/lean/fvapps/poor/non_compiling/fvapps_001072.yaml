@@ -43,8 +43,6 @@ vc-preamble: |-
   | x::xs => x + xs.sum
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def count_eligible_students (N M K : Nat) (student_data : List (List Nat)) : Nat :=

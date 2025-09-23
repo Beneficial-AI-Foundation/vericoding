@@ -52,8 +52,6 @@ vc-preamble: |-
       (v_times w_times : List Nat) : Nat := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def maxsize : Nat := 4294967295 -- Using max u32 as stand-in for sys.maxsize

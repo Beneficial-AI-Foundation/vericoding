@@ -22,8 +22,6 @@ vc-preamble: |-
   def build_tree {α : Type} (vals : List α) : Tree α := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def get_postorder {α : Type} (t : Tree α) : List α := sorry

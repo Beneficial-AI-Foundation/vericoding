@@ -17,8 +17,6 @@ vc-preamble: |-
     | x::xs => x + sum xs
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def beggars (values : List Int) (n : Nat) : List Int := sorry

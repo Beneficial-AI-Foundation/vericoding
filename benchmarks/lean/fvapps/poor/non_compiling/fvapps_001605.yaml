@@ -33,8 +33,6 @@ vc-preamble: |-
     | h::t => h + sum t
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def solution (nums: List Nat) : Nat :=
