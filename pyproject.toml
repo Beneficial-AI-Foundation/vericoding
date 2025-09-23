@@ -1,8 +1,8 @@
 [project]
-#name = "vericoding-lean"
-name = "vericoding"
+#name = "vericoder"
+name = "vericoder"
 version = "0.1.0"
-description = "Lean 4 verification experiment framework"
+description = "verified program synthesis"
 authors = [
     { name = "Anonymous Author", email = "anonymous@example.com" }
 ]
