@@ -29,7 +29,7 @@ similarity:
   use_gpu: false           # Whether to use GPU acceleration (requires CUDA)
 
 # Scoring System Configuration
-# Higher penalties = more impact on score (lower final score)
+# Uses normalized weights that sum to 1.0 for principled quality assessment
 scoring:
   # Base score configuration
   base_score_mode: "proportional"  # Options: "fixed", "proportional", "logarithmic"
@@ -45,23 +45,45 @@ scoring:
   # Logarithmic mode: base_score = log_multiplier * log(entries + 1)
   logarithmic_multiplier: 50            # Multiplier for log scaling
   
-  # Verus-specific penalties (optimized for proportional base scoring)
+  # Quality scoring approach for cross-benchmark comparison
+  use_normalized_quality: true  # Enable normalized scoring for comparable results across benchmarks
+  
+  # Normalized scoring: final_score = 100 × (1 - penalty_fraction)
+  # - Score represents average quality per entry on 0-100 scale
+  # - Directly comparable across benchmarks of any size
+  # - 100 = perfect quality, 0 = all entries have quality issues
+  
+  # Original scoring: final_score = base_score × (1 - penalty_fraction)
+  # - Larger benchmarks get higher absolute scores
+  # - Not directly comparable across different benchmark sizes
+  
+  # Simplified normalized weight approach: weights sum to 1.0, applied to direct proportions
+  # Formula: penalty_fraction = Σ(weight_i × proportion_i)
+  # Where:   proportion_i = count_i / total_entries
+  
+  # Verus-specific normalized weights (sum to 1.0)
   verus:
-    specs_with_default_values_penalty: 5    # Penalty per spec with default values (reduced for better balance)
-    execs_with_bodies_penalty: 12           # Penalty per executable with implementation (moderate penalty)
-    execs_with_ghost_types_penalty: 0.5     # Penalty per executable with mathematical types (minimal impact)
-    near_duplicates_penalty: 2              # Penalty per near-duplicate file (reduced)
+    weights:
+      specs_with_default_values_weight: 0.30    # 30% - Missing specifications
+      execs_with_bodies_weight: 0.30            # 30% - Implementation artifacts (most critical)
+      execs_with_ghost_types_weight: 0.25       # 25% - Type issues (minor)
+      near_duplicates_weight: 0.15              # 15% - Diversity issues
+    # Validation: 0.30 + 0.30 + 0.25 + 0.15 = 1.00 ✓
   
-  # Dafny-specific penalties (optimized for proportional base scoring)
+  # Dafny-specific normalized weights (sum to 1.0)
   dafny:
-    functions_with_default_values_penalty: 5   # Penalty per function with default values (reduced for balance)
-    methods_with_bodies_penalty: 12           # Penalty per method with implementation (moderate penalty)
-    near_duplicates_penalty: 2                # Penalty per near-duplicate file (reduced)
+    weights:
+      functions_with_default_values_weight: 0.40  # 40% - Missing function specs
+      methods_with_bodies_weight: 0.45            # 45% - Implementation artifacts (most critical)
+      near_duplicates_weight: 0.15                # 15% - Diversity issues
+    # Validation: 0.40 + 0.45 + 0.15 = 1.00 ✓
   
-  # Lean-specific penalties (optimized for proportional base scoring)
+  # Lean-specific normalized weights (sum to 1.0)
   lean:
-    definitions_with_sorry_penalty: 12        # Penalty per definition using sorry (reduced for balance)
-    near_duplicates_penalty: 2               # Penalty per near-duplicate file (reduced)
+    weights:
+      definitions_with_sorry_weight: 0.85        # 85% - Sorry placeholders (most critical in Lean)
+      near_duplicates_weight: 0.15              # 15% - Diversity issues
+    # Validation: 0.85 + 0.15 = 1.00 ✓
 
 # Quality Analysis Script Configuration
 qa_scripts:

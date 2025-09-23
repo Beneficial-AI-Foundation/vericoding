@@ -90,44 +90,58 @@ def extract_lean_definitions(
     definitions = []
 
     if is_yaml:
-        # For YAML files, extract from vc-preamble section
-        vc_preamble_match = re.search(
-            r"vc-preamble:\s*\|-?\s*\n(.*?)(?=\nvc-|$)", content, re.DOTALL
-        )
-        if vc_preamble_match:
-            lean_content = vc_preamble_match.group(1)
-            # Adjust line numbers to account for YAML structure
-            preamble_start_line = content[: vc_preamble_match.start()].count("\n") + 1
-        else:
+        # For YAML files, extract from multiple sections
+        sections_to_check = ["vc-preamble"]
+        all_lean_content = []
+        
+        for section in sections_to_check:
+            section_match = re.search(
+                rf"{section}:\s*\|-?\s*\n(.*?)(?=\nvc-|$)", content, re.DOTALL
+            )
+            if section_match:
+                section_content = section_match.group(1)
+                section_start_line = content[: section_match.start()].count("\n") + 1
+                all_lean_content.append((section_content, section_start_line))
+        
+        if not all_lean_content:
             return definitions
+        
+        # Process each section
+        for lean_content, preamble_start_line in all_lean_content:
+            definitions.extend(extract_definitions_from_content(lean_content, preamble_start_line))
+        
+        return definitions
     else:
         # For .lean files, use the entire content
         lean_content = content
         preamble_start_line = 0
+        return extract_definitions_from_content(lean_content, preamble_start_line)
 
+
+def extract_definitions_from_content(lean_content: str, preamble_start_line: int) -> List[Tuple[str, str, int, str]]:
+    """Extract definitions from Lean content."""
+    definitions = []
+    
     # Patterns to match Lean definitions, theorems, lemmas, etc.
+    # Updated patterns to handle complex type signatures and multiline bodies
     lean_patterns = [
-        r"(def)\s+(\w+)[^:]*:=([^/\n]*(?:/-- [^\n]*\n[^/\n]*)*)",
-        r"(theorem)\s+(\w+)[^:]*:([^:=]*):=([^/\n]*(?:/-- [^\n]*\n[^/\n]*)*)",
-        r"(lemma)\s+(\w+)[^:]*:([^:=]*):=([^/\n]*(?:/-- [^\n]*\n[^/\n]*)*)",
-        r"(instance)\s+(\w*)\s*[^:]*:([^:=]*):=([^/\n]*(?:/-- [^\n]*\n[^/\n]*)*)",
+        # def name ... := body
+        r"(def)\s+(\w+).*?:=\s*(.*?)(?=\n\s*(?:def|theorem|lemma|instance|\Z))",
+        # theorem name : type := proof  
+        r"(theorem)\s+(\w+).*?:.*?:=\s*(.*?)(?=\n\s*(?:def|theorem|lemma|instance|\Z))",
+        # lemma name : type := proof
+        r"(lemma)\s+(\w+).*?:.*?:=\s*(.*?)(?=\n\s*(?:def|theorem|lemma|instance|\Z))",
+        # instance [name] : type := body
+        r"(instance)\s+(?:(\w+)\s+)?.*?:.*?:=\s*(.*?)(?=\n\s*(?:def|theorem|lemma|instance|\Z))",
     ]
 
     for pattern in lean_patterns:
-        for match in re.finditer(pattern, lean_content, re.MULTILINE):
+        for match in re.finditer(pattern, lean_content, re.MULTILINE | re.DOTALL):
             def_type = match.group(1)
             def_name = match.group(2) if match.group(2) else f"anonymous_{def_type}"
-
-            if def_type in ["theorem", "lemma"]:
-                # For theorems/lemmas, the body is the proof
-                body = (
-                    match.group(4).strip()
-                    if len(match.groups()) >= 4
-                    else match.group(3).strip()
-                )
-            else:
-                # For definitions/instances, the body is after :=
-                body = match.group(3).strip() if len(match.groups()) >= 3 else ""
+            
+            # The body is always in the last group for our new patterns
+            body = match.group(3).strip() if len(match.groups()) >= 3 else ""
 
             line_number = (
                 preamble_start_line + lean_content[: match.start()].count("\n") + 1
@@ -203,11 +217,27 @@ def analyze_lean_definition(body: str, def_type: str = "") -> Tuple[str, bool]:
 
     Returns:
         tuple: (category, is_problematic)
+        
+    Note: Sorry in theorems/lemmas is acceptable (proofs can be incomplete),
+          but sorry in definitions is problematic (definitions should be complete).
     """
+    # Check if this is a theorem or lemma (proofs can use sorry acceptably)
+    is_proof = def_type.lower() in ["theorem", "lemma"]
+    
     if has_sorry(body):
-        return ("uses_sorry", True)
+        if is_proof:
+            # Sorry in proofs is acceptable - theorems can have incomplete proofs
+            return ("uses_sorry", False)
+        else:
+            # Sorry in definitions is problematic - definitions should be complete
+            return ("uses_sorry", True)
     elif is_placeholder(body):
-        return ("placeholder", True)
+        if is_proof:
+            # Empty/placeholder proofs are acceptable
+            return ("placeholder", False)
+        else:
+            # Empty/placeholder definitions are problematic
+            return ("placeholder", True)
     else:
         return ("proper_implementation", False)
 
@@ -309,8 +339,8 @@ Examples:
 
     if is_single_file:
         # Single file mode
-        if not check_path.endswith(".lean"):
-            print(f"Error: {check_path} is not a Lean file")
+        if not (check_path.endswith(".lean") or check_path.endswith(".yaml")):
+            print(f"Error: {check_path} is not a Lean or YAML file")
             return
 
         lean_files = [Path(check_path)]
@@ -468,12 +498,19 @@ Examples:
             if len(files_with_placeholders) > 10:
                 print(f"  ... and {len(files_with_placeholders) - 10} more")
 
-    return {
+    result = {
         "files_with_sorry": files_with_sorry,
         "files_with_placeholders": files_with_placeholders,
         "files_with_proper_impls": files_with_proper_impls,
         "statistics": total_categories,
     }
+    
+    # Output JSON if requested
+    if args.output == "json":
+        import json
+        print(json.dumps(result, indent=2))
+    
+    return result
 
 
 if __name__ == "__main__":

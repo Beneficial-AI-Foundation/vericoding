@@ -1,56 +1,110 @@
 #!/usr/bin/env python3
 """
-Add quality analysis metadata to benchmark JSONL files.
+Generate quality analysis metadata for benchmark JSONL files.
 
-This script analyzes benchmark directories and adds QA metadata to each entry
-in the corresponding JSONL file. The metadata includes quality metrics specific
-to each language (Verus, Dafny, Lean) based on specification quality and similarity analysis.
-It can also return the metadata directly for programmatic use.
+This script analyzes benchmark directories and generates TWO types of quality analysis:
 
-For specifications, we expect:
-- Verus: assume(false); unreached() in executable functions, meaningful spec functions
-- Dafny: assume {:axiom} false in methods, meaningful function/predicate specifications
-- Lean: proper implementations without sorry
-- All languages: minimal near-duplicate content for diversity
+1. **BENCHMARK-LEVEL METADATA**: Separate .metadata.json files with overall quality metrics
+2. **PER-ENTRY SCORING**: Enhanced JSONL files with individual quality scores for each entry
+
+DUAL OUTPUT STRUCTURE:
+    benchmarks/verus/humaneval/
+    ├── verus_humaneval.jsonl                    # Original entries (unchanged)
+    ├── verus_humaneval.metadata.json            # Benchmark-level metadata
+    ├── verus_humaneval_with_entry_qa.jsonl      # Enhanced with per-entry scores
+    └── yaml/, files/                            # Source files
+
+SCORING METHODOLOGY:
+Uses normalized scoring for cross-benchmark comparison where quality issues are 
+weighted by relative importance (weights sum to 1.0).
+
+**BENCHMARK-LEVEL FORMULA (NORMALIZED):**
+    final_score = 100 × (1 - penalty_fraction)  [0-100 scale, comparable across benchmarks]
+    penalty_fraction = Σ(weight_i × proportion_i)
+    proportion_i = issue_count_i / total_entries
+    
+**EXAMPLE SCORES:**
+    - 100: Perfect quality (no issues)
+    - 80: Good quality (20% penalty from issues)
+    - 50: Moderate quality (50% penalty from issues)
+    - 0: Poor quality (all entries have critical issues)
+
+**PER-ENTRY FORMULA:**
+    individual_score = 1 - Σ(weight_i × p_i)  [0-1 scale per entry]
+    p_i = 1 if entry has issue_i, else 0 (binary penalty per entry)
+
+QUALITY FACTORS ANALYZED:
+- **Verus**: specs with defaults (30%), exec bodies (50%), ghost types (5%), near-duplicates (15%)
+- **Dafny**: func defaults (40%), method bodies (45%), near-duplicates (15%)  
+- **Lean**: sorry usage (85%), near-duplicates (15%)
+- **All languages**: Vector similarity analysis for near-duplicate detection
+
+EXAMPLE PER-ENTRY OUTPUT:
+    {
+      "id": "VH0000",
+      "source_id": "humaneval_000",
+      ... (original entry data) ...
+      "qa_entry_metadata": {
+        "issues": {
+          "specs_with_default_values": 1,
+          "execs_with_bodies": 0,
+          "execs_with_ghost_types": 0,
+          "near_duplicates": 1
+        },
+        "individual_score": 0.55  // 1 - (0.30×1 + 0.15×1) = 0.55
+      }
+    }
+
+DEPENDENCIES:
+- Required for near-duplicate detection: sentence-transformers, scikit-learn, faiss-cpu
+- Install with: uv add sentence-transformers scikit-learn faiss-cpu
 
 Usage:
-    # Command line usage
+    # Command line usage - generates/overwrites metadata files AND enhanced JSONL
     python3 add_qa_metadata.py benchmarks                    # Process all benchmarks
     python3 add_qa_metadata.py benchmarks/verus/apps        # Process specific benchmark
     python3 add_qa_metadata.py --config custom_config.yaml  # Use custom configuration
     python3 add_qa_metadata.py --output-metadata summary benchmarks  # Show metadata summary
-    python3 add_qa_metadata.py --output-metadata json benchmarks     # Output full JSON
 
     # Programmatic usage
-    from add_qa_metadata import get_qa_metadata, get_all_qa_metadata
+    from add_qa_metadata import load_benchmark_with_metadata, get_benchmark_quality_score
 
-    # Get metadata for single benchmark
-    metadata = get_qa_metadata("benchmarks/verus/numpy_triple")
-
-    # Get metadata for all benchmarks
-    all_metadata = get_all_qa_metadata("benchmarks")
+    # Load entries with metadata
+    entries, metadata = load_benchmark_with_metadata("benchmarks/verus/humaneval/verus_humaneval.jsonl")
+    
+    # Get benchmark quality score
+    score = get_benchmark_quality_score("benchmarks/verus/humaneval/verus_humaneval.jsonl")
+    
+    # List all benchmarks with metadata
+    from add_qa_metadata import list_benchmarks_with_metadata
+    benchmarks = list_benchmarks_with_metadata("benchmarks")
 """
 
 import argparse
 import json
+import re
 import subprocess
 import sys
+from datetime import datetime
 from pathlib import Path
 from typing import Dict, List, Optional, Tuple, Any
 import yaml
 
 # Import similarity analysis
 try:
-    from optimized_vector_similarity import get_near_duplicates_for_benchmark
-
-    SIMILARITY_AVAILABLE = True
+    from .optimized_vector_similarity import get_near_duplicates_for_benchmark
 except ImportError:
-    SIMILARITY_AVAILABLE = False
+    # Fallback for when run as script
+    import sys
+    import os
+    sys.path.append(os.path.dirname(__file__))
+    from optimized_vector_similarity import get_near_duplicates_for_benchmark
 
 
 class QAMetadataGenerator:
-    def __init__(self, quiet: bool = False, config_path: Optional[Path] = None):
+    def __init__(self, quiet: bool = False, config_path: Optional[Path] = None, metadata_only: bool = False):
         self.quiet = quiet
+        self.metadata_only = metadata_only
         self.script_dir = Path(__file__).parent
         self.config = self.load_config(config_path)
 
@@ -145,16 +199,19 @@ class QAMetadataGenerator:
         return None
 
     def find_jsonl_files(self, benchmark_path: Path) -> List[Path]:
-        """Find JSONL files in benchmark directory."""
+        """Find original JSONL files in benchmark directory (excluding processed files)."""
         jsonl_files = list(benchmark_path.glob("*.jsonl"))
 
-        # Filter out files that already have QA metadata
+        # Filter out files that are processed versions 
+        # We want to process only the original base files
         original_files = [
-            f for f in jsonl_files if not f.name.endswith("_with_qa_metadata.jsonl")
+            f for f in jsonl_files 
+            if not f.name.endswith("_with_qa_metadata.jsonl") 
+            and not f.name.endswith("_with_entry_qa.jsonl")
         ]
 
         if not original_files:
-            self.log(f"No JSONL files found in {benchmark_path}")
+            self.log(f"No original JSONL files found in {benchmark_path}")
 
         return original_files
 
@@ -183,8 +240,12 @@ class QAMetadataGenerator:
             if result.stdout.strip():
                 try:
                     return json.loads(result.stdout)
-                except json.JSONDecodeError:
+                except json.JSONDecodeError as e:
                     self.log(f"Warning: Could not parse JSON output from {script_name}")
+                    self.log(f"  JSON error: {e}")
+                    self.log(f"  Raw output: {result.stdout[:200]}...")
+                    if result.stderr:
+                        self.log(f"  Stderr: {result.stderr[:200]}...")
                     return {}
             else:
                 return {}
@@ -220,12 +281,6 @@ class QAMetadataGenerator:
 
     def generate_similarity_metadata(self, benchmark_path: Path) -> Dict[str, Any]:
         """Generate similarity metadata for near duplicates."""
-        if not SIMILARITY_AVAILABLE:
-            self.log(
-                "Warning: Similarity analysis not available (missing dependencies)"
-            )
-            return {"examples": [], "total_count": 0}
-
         try:
             # Look for YAML files in the benchmark
             yaml_dir = benchmark_path / "yaml"
@@ -246,6 +301,13 @@ class QAMetadataGenerator:
 
             return similarity_data
 
+        except ImportError as e:
+            # Re-raise ImportError with clear context about what's missing
+            raise ImportError(
+                f"Similarity analysis dependencies missing: {e}\n"
+                f"This is required for near-duplicate detection in quality analysis.\n"
+                f"Install with: uv add sentence-transformers scikit-learn faiss-cpu"
+            ) from e
         except Exception as e:
             self.log(f"Warning: Could not generate similarity metadata: {e}")
             return {"examples": [], "total_count": 0}
@@ -300,35 +362,34 @@ class QAMetadataGenerator:
             similarity_data = self.generate_similarity_metadata(benchmark_path)
             metadata["near_duplicates"] = similarity_data
 
-            # Calculate score using config values and dynamic base score
-            scoring_config = self.config["scoring"]
-            verus_config = scoring_config["verus"]
-
-            specs_penalty = (
-                len(metadata["specs_with_default_values"])
-                * verus_config["specs_with_default_values_penalty"]
-            )
-            bodies_penalty = (
-                len(metadata["execs_with_bodies"])
-                * verus_config["execs_with_bodies_penalty"]
-            )
-            types_penalty = (
-                len(metadata["execs_with_ghost_types"])
-                * verus_config["execs_with_ghost_types_penalty"]
-            )
-            similarity_penalty = (
-                similarity_data["total_count"] * verus_config["near_duplicates_penalty"]
-            )
-
+            # Calculate score using normalized weights approach
             base_score = self.get_base_score_for_benchmark(benchmark_path)
             metadata["base_score"] = base_score
-            metadata["score"] = max(
-                0,
-                base_score
-                - specs_penalty
-                - bodies_penalty
-                - types_penalty
-                - similarity_penalty,
+            
+            # Get entry count for normalization
+            jsonl_files = list(benchmark_path.glob("*.jsonl"))
+            entry_count = 1  # Fallback
+            if jsonl_files:
+                try:
+                    with open(jsonl_files[0], "r", encoding="utf-8") as f:
+                        entry_count = sum(1 for line in f if line.strip())
+                except Exception:
+                    entry_count = 1
+            
+            # Prepare issue counts and weights for normalized scoring
+            issue_counts = {
+                "specs_with_default_values": len(metadata["specs_with_default_values"]),
+                "execs_with_bodies": len(metadata["execs_with_bodies"]),
+                "execs_with_ghost_types": len(metadata["execs_with_ghost_types"]),
+                "near_duplicates": similarity_data["total_count"]
+            }
+            
+            scoring_config = self.config["scoring"]
+            weights = scoring_config["verus"]["weights"]
+            
+            # Calculate normalized score
+            metadata["score"] = self.calculate_normalized_score(
+                base_score, issue_counts, weights, entry_count
             )
 
         except Exception as e:
@@ -371,26 +432,33 @@ class QAMetadataGenerator:
             similarity_data = self.generate_similarity_metadata(benchmark_path)
             metadata["near_duplicates"] = similarity_data
 
-            # Calculate score using config values and dynamic base score
-            scoring_config = self.config["scoring"]
-            dafny_config = scoring_config["dafny"]
-
-            func_penalty = (
-                len(metadata["functions_with_default_values"])
-                * dafny_config["functions_with_default_values_penalty"]
-            )
-            method_penalty = (
-                len(metadata["methods_with_bodies"])
-                * dafny_config["methods_with_bodies_penalty"]
-            )
-            similarity_penalty = (
-                similarity_data["total_count"] * dafny_config["near_duplicates_penalty"]
-            )
-
+            # Calculate score using normalized weights approach
             base_score = self.get_base_score_for_benchmark(benchmark_path)
             metadata["base_score"] = base_score
-            metadata["score"] = max(
-                0, base_score - func_penalty - method_penalty - similarity_penalty
+            
+            # Get entry count for normalization
+            jsonl_files = list(benchmark_path.glob("*.jsonl"))
+            entry_count = 1  # Fallback
+            if jsonl_files:
+                try:
+                    with open(jsonl_files[0], "r", encoding="utf-8") as f:
+                        entry_count = sum(1 for line in f if line.strip())
+                except Exception:
+                    entry_count = 1
+            
+            # Prepare issue counts and weights for normalized scoring
+            issue_counts = {
+                "functions_with_default_values": len(metadata["functions_with_default_values"]),
+                "methods_with_bodies": len(metadata["methods_with_bodies"]),
+                "near_duplicates": similarity_data["total_count"]
+            }
+            
+            scoring_config = self.config["scoring"]
+            weights = scoring_config["dafny"]["weights"]
+            
+            # Calculate normalized score
+            metadata["score"] = self.calculate_normalized_score(
+                base_score, issue_counts, weights, entry_count
             )
 
         except Exception as e:
@@ -418,21 +486,33 @@ class QAMetadataGenerator:
             similarity_data = self.generate_similarity_metadata(benchmark_path)
             metadata["near_duplicates"] = similarity_data
 
-            # Calculate score using config values and dynamic base score
-            scoring_config = self.config["scoring"]
-            lean_config = scoring_config["lean"]
-
-            sorry_penalty = (
-                len(metadata["definitions_with_sorry"])
-                * lean_config["definitions_with_sorry_penalty"]
-            )
-            similarity_penalty = (
-                similarity_data["total_count"] * lean_config["near_duplicates_penalty"]
-            )
-
+            # Calculate score using normalized weights approach
             base_score = self.get_base_score_for_benchmark(benchmark_path)
             metadata["base_score"] = base_score
-            metadata["score"] = max(0, base_score - sorry_penalty - similarity_penalty)
+            
+            # Get entry count for normalization
+            jsonl_files = list(benchmark_path.glob("*.jsonl"))
+            entry_count = 1  # Fallback
+            if jsonl_files:
+                try:
+                    with open(jsonl_files[0], "r", encoding="utf-8") as f:
+                        entry_count = sum(1 for line in f if line.strip())
+                except Exception:
+                    entry_count = 1
+            
+            # Prepare issue counts and weights for normalized scoring
+            issue_counts = {
+                "definitions_with_sorry": len(metadata["definitions_with_sorry"]),
+                "near_duplicates": similarity_data["total_count"]
+            }
+            
+            scoring_config = self.config["scoring"]
+            weights = scoring_config["lean"]["weights"]
+            
+            # Calculate normalized score
+            metadata["score"] = self.calculate_normalized_score(
+                base_score, issue_counts, weights, entry_count
+            )
 
         except Exception as e:
             self.log(f"Error generating Lean metadata: {e}")
@@ -493,13 +573,304 @@ class QAMetadataGenerator:
             self.log(f"Error getting base score for benchmark: {e}")
             return 100  # Fallback to default
 
-    def process_jsonl_file(
+    def calculate_normalized_score(
+        self, 
+        base_score: int, 
+        issue_counts: Dict[str, int], 
+        weights: Dict[str, float],
+        entry_count: int
+    ) -> float:
+        """
+        Calculate quality score using normalized per-entry approach for cross-benchmark comparison.
+        
+        Two scoring modes:
+        1. Original: final_score = base_score × (1 - penalty_fraction) [size-dependent]
+        2. Normalized: final_score = 100 × (1 - penalty_fraction) [size-independent]
+        
+        Where: penalty_fraction = Σ(weight_i × proportion_i)
+               proportion_i = count_i / total_entries
+        
+        Args:
+            base_score: Base score from dataset size (used in original mode)
+            issue_counts: Dictionary mapping issue types to counts
+            weights: Dictionary mapping issue types to normalized weights (sum to 1.0)
+            entry_count: Number of entries in benchmark
+            
+        Returns:
+            Final quality score - normalized for cross-benchmark comparison
+        """
+        try:
+            # Calculate penalty fraction using direct proportions
+            penalty_fraction = 0.0
+            
+            # Avoid division by zero
+            if entry_count == 0:
+                return 100.0  # Perfect score for empty benchmarks
+            
+            for issue_type, count in issue_counts.items():
+                if count == 0:
+                    continue
+                    
+                # Find corresponding weight
+                weight_key = f"{issue_type}_weight"
+                
+                if weight_key in weights:
+                    weight = weights[weight_key]
+                    proportion = count / entry_count
+                    penalty_fraction += weight * proportion
+            
+            # Use normalized scoring mode for cross-benchmark comparison
+            # Score represents average quality per entry on 0-100 scale
+            scoring_config = self.config["scoring"]
+            use_normalized = scoring_config.get("use_normalized_quality", True)
+            
+            if use_normalized:
+                # Normalized mode: 100 × (1 - penalty_fraction)
+                # This gives comparable scores across benchmarks of any size
+                final_score = 100.0 * (1.0 - penalty_fraction)
+            else:
+                # Original mode: base_score × (1 - penalty_fraction)
+                # This preserves the old behavior where larger benchmarks get higher scores
+                final_score = base_score * (1.0 - penalty_fraction)
+            
+            # Ensure score doesn't go negative (safety check)
+            final_score = max(0.0, final_score)
+            
+            return final_score
+            
+        except Exception as e:
+            self.log(f"Error calculating normalized score: {e}")
+            # Fallback to simple base score
+            return float(base_score)
+
+    def analyze_single_entry(
+        self, entry: Dict, benchmark_path: Path, language: str, near_duplicate_files: set = None
+    ) -> Dict[str, Any]:
+        """Analyze a single JSONL entry for quality issues."""
+        source_id = entry.get("source_id", "")
+        
+        # Find the corresponding files
+        yaml_file = benchmark_path / "yaml" / f"{source_id}.yaml"
+        files_dir = benchmark_path / "files" 
+        
+        # Find the actual source file based on language
+        if language == "lean":
+            source_file = files_dir / f"{source_id}.lean"
+        elif language == "verus":
+            source_file = files_dir / f"{source_id}.rs"
+        elif language == "dafny":
+            source_file = files_dir / f"{source_id}.dfy"
+        else:
+            source_file = None
+        
+        # Initialize entry metadata
+        entry_qa = {
+            "issues": {},
+            "individual_score": 1.0
+        }
+        
+        # Find files to analyze for this entry
+        files_to_check = []
+        if yaml_file.exists():
+            files_to_check.append(("yaml", str(yaml_file)))
+        if source_file and source_file.exists():
+            files_to_check.append(("source", str(source_file)))
+        
+        # Analyze files based on language
+        if language == "lean":
+            entry_qa["issues"] = self.analyze_lean_entry_files(files_to_check)
+        elif language == "verus":
+            entry_qa["issues"] = self.analyze_verus_entry_files(files_to_check)
+        elif language == "dafny":
+            entry_qa["issues"] = self.analyze_dafny_entry_files(files_to_check)
+        
+        # Add near-duplicate analysis for this entry
+        entry_qa["issues"]["near_duplicates"] = self.check_entry_for_near_duplicates(
+            entry, benchmark_path, near_duplicate_files
+        )
+        
+        # Calculate individual score using the same formula as benchmark-level
+        # but with per-entry issue counts
+        weights = self.config["scoring"][language]["weights"]
+        entry_qa["individual_score"] = self.calculate_entry_score(entry_qa["issues"], weights)
+        
+        return entry_qa
+        
+    def calculate_entry_score(self, issues: Dict[str, int], weights: Dict[str, float]) -> float:
+        """Calculate quality score for a single entry using 1 - Σ(weight_i × p_i) formula."""
+        penalty = 0.0
+        
+        for issue_type, count in issues.items():
+            weight_key = f"{issue_type}_weight"
+            if weight_key in weights and count > 0:
+                # For individual entries, p_i is simply the count (since it's per-entry)
+                # We can scale this or normalize it based on the specific issue type
+                weight = weights[weight_key]
+                
+                # For binary issues (has issue or not), p_i = 1 if issue exists
+                # For count-based issues, we could use the actual count
+                p_i = min(1.0, count)  # Cap at 1.0 for now (binary approach)
+                penalty += weight * p_i
+        
+        # Ensure score doesn't go below 0
+        return max(0.0, 1.0 - penalty)
+
+    def analyze_lean_entry_files(self, files_to_check: List[Tuple[str, str]]) -> Dict[str, int]:
+        """Analyze Lean files for a single entry."""
+        issues = {
+            "definitions_with_sorry": 0,
+            "near_duplicates": 0,  # Will be filled by caller
+        }
+        
+        for file_type, file_path in files_to_check:
+            # Use our existing QA script to analyze the file
+            try:
+                if file_path.endswith('.lean'):
+                    result = self.run_qa_script("lean/check_lean_definitions.py", Path(file_path))
+                    # Parse the result to count issues
+                    if isinstance(result, dict) and "files_with_sorry" in result:
+                        if file_path in result.get("files_with_sorry", []):
+                            issues["definitions_with_sorry"] += 1
+                elif file_path.endswith('.yaml'):
+                    # For YAML files, extract and analyze content
+                    issues["definitions_with_sorry"] += self.count_sorry_in_yaml(file_path)
+            except Exception as e:
+                self.log(f"Warning: Could not analyze {file_path}: {e}")
+        
+        return issues
+    
+    def analyze_verus_entry_files(self, files_to_check: List[Tuple[str, str]]) -> Dict[str, int]:
+        """Analyze Verus files for a single entry."""
+        issues = {
+            "specs_with_default_values": 0,
+            "execs_with_bodies": 0,
+            "execs_with_ghost_types": 0,
+            "near_duplicates": 0,  # Will be filled by caller
+        }
+        
+        for file_type, file_path in files_to_check:
+            try:
+                if file_path.endswith('.rs'):
+                    # Check for implementations in exec functions
+                    result = self.run_qa_script("verus/check_verus_functions.py", Path(file_path))
+                    if isinstance(result, dict) and "files_with_implementations" in result:
+                        if file_path in result.get("files_with_implementations", []):
+                            issues["execs_with_bodies"] += 1
+                    
+                    # Check for ghost types
+                    result = self.run_qa_script("verus/check_verus_types.py", Path(file_path))
+                    if isinstance(result, dict) and "files_with_issues" in result:
+                        if file_path in result.get("files_with_issues", []):
+                            issues["execs_with_ghost_types"] += 1
+                
+                elif file_path.endswith('.yaml'):
+                    # Check spec functions in YAML
+                    result = self.run_qa_script("verus/check_spec_functions.py", Path(file_path))
+                    if isinstance(result, dict) and "files_with_defaults" in result:
+                        if file_path in result.get("files_with_defaults", []):
+                            issues["specs_with_default_values"] += 1
+            except Exception as e:
+                self.log(f"Warning: Could not analyze {file_path}: {e}")
+        
+        return issues
+    
+    def analyze_dafny_entry_files(self, files_to_check: List[Tuple[str, str]]) -> Dict[str, int]:
+        """Analyze Dafny files for a single entry."""
+        issues = {
+            "functions_with_default_values": 0,
+            "methods_with_bodies": 0,
+            "near_duplicates": 0,  # Will be filled by caller
+        }
+        
+        for file_type, file_path in files_to_check:
+            try:
+                if file_path.endswith('.yaml'):
+                    # Both functions and methods are analyzed from YAML files
+                    # Check functions in YAML
+                    func_result = self.run_qa_script("dafny/check_dafny_functions.py", Path(file_path))
+                    if isinstance(func_result, dict) and "files_with_defaults" in func_result:
+                        if file_path in func_result.get("files_with_defaults", []):
+                            issues["functions_with_default_values"] += 1
+                    
+                    # Check methods in YAML  
+                    method_result = self.run_qa_script("dafny/check_dafny_methods.py", Path(file_path))
+                    if isinstance(method_result, dict) and "files_with_implementations" in method_result:
+                        if file_path in method_result.get("files_with_implementations", []):
+                            issues["methods_with_bodies"] += 1
+                
+                # Skip .dfy files - they don't contain the spec information we need
+                # The YAML files contain the specifications we're analyzing
+                
+            except Exception as e:
+                self.log(f"Warning: Could not analyze {file_path}: {e}")
+        
+        return issues
+    
+    def count_sorry_in_yaml(self, yaml_path: str) -> int:
+        """Count sorry occurrences in YAML file content."""
+        try:
+            with open(yaml_path, 'r', encoding='utf-8') as f:
+                content = f.read()
+            
+            # Look for sorry in various sections
+            sorry_count = 0
+            sections = ["vc-definitions", "vc-theorems", "vc-preamble"]
+            
+            for section in sections:
+                section_match = re.search(
+                    rf"{section}:\s*(?:\|-?\s*\n)?(.*?)(?=\n\w+:|$)", 
+                    content, re.DOTALL
+                )
+                if section_match:
+                    section_content = section_match.group(1)
+                    # Count occurrences of sorry (as standalone word)
+                    sorry_matches = re.findall(r'\bsorry\b', section_content)
+                    sorry_count += len(sorry_matches)
+            
+            return 1 if sorry_count > 0 else 0  # Binary: has sorry or not
+        except Exception as e:
+            self.log(f"Warning: Could not analyze YAML {yaml_path}: {e}")
+            return 0
+
+    def extract_near_duplicate_files(self, similarity_data: Dict[str, Any]) -> set:
+        """Extract set of files that are identified as near-duplicates."""
+        near_duplicate_files = set()
+        
+        if "examples" in similarity_data:
+            for example in similarity_data["examples"]:
+                # Add all files in each duplicate group
+                if "files" in example:
+                    for file_path in example["files"]:
+                        # Extract just the filename from the path
+                        filename = Path(file_path).name
+                        near_duplicate_files.add(filename)
+        
+        return near_duplicate_files
+
+    def check_entry_for_near_duplicates(
+        self, entry: Dict, benchmark_path: Path, near_duplicate_files: set = None
+    ) -> int:
+        """Check if this entry's files are identified as near-duplicates."""
+        if near_duplicate_files is None:
+            return 0
+        
+        source_id = entry.get("source_id", "")
+        
+        # Check if this entry's YAML file is in the near-duplicates set
+        yaml_filename = f"{source_id}.yaml"
+        
+        if yaml_filename in near_duplicate_files:
+            return 1
+        
+        return 0
+
+    def create_metadata_file(
         self, jsonl_path: Path, benchmark_path: Path, language: str
     ) -> Tuple[bool, Optional[Dict]]:
-        """Process a single JSONL file and add QA metadata."""
-        output_path = jsonl_path.parent / f"{jsonl_path.stem}_with_qa_metadata.jsonl"
+        """Create a separate metadata file for the benchmark."""
+        metadata_path = jsonl_path.parent / f"{jsonl_path.stem}.metadata.json"
 
-        self.log(f"Processing {jsonl_path.name} -> {output_path.name}")
+        self.log(f"Generating metadata for {jsonl_path.name} -> {metadata_path.name}")
 
         try:
             # Generate language-specific metadata
@@ -513,10 +884,60 @@ class QAMetadataGenerator:
                 self.log(f"Unsupported language: {language}")
                 return False, None
 
-            # Process JSONL file
+            # Count entries in JSONL file
+            entry_count = 0
+            try:
+                with open(jsonl_path, "r", encoding="utf-8") as f:
+                    entry_count = sum(1 for line in f if line.strip())
+            except Exception as e:
+                self.log(f"Warning: Could not count entries in {jsonl_path}: {e}")
+                entry_count = 0
+
+            # Create comprehensive metadata structure
+            metadata = {
+                "benchmark_info": {
+                    "name": jsonl_path.stem,
+                    "language": language,
+                    "source": qa_metadata.get("source", "unknown"),
+                    "entry_count": entry_count,
+                    "benchmark_path": str(benchmark_path)
+                },
+                "qa_metadata": qa_metadata,
+                "generated_at": datetime.now().isoformat(),
+                "config_version": "2.0",
+                "format_version": "separate_metadata_v1"
+            }
+
+            # Write metadata file
+            with open(metadata_path, "w", encoding="utf-8") as f:
+                json.dump(metadata, f, indent=2, ensure_ascii=False)
+
+            self.log(f"✅ Created {metadata_path}")
+            return True, qa_metadata
+
+        except Exception as e:
+            self.log(f"❌ Error creating metadata file: {e}")
+            return False, None
+
+    def create_enhanced_jsonl_file(
+        self, jsonl_path: Path, benchmark_path: Path, language: str
+    ) -> Tuple[bool, Optional[Dict]]:
+        """Create enhanced JSONL file with per-entry QA metadata."""
+        enhanced_path = jsonl_path.parent / f"{jsonl_path.stem}_with_entry_qa.jsonl"
+
+        self.log(f"Creating enhanced JSONL: {jsonl_path.name} -> {enhanced_path.name}")
+
+        # Pre-compute near-duplicates for the entire benchmark
+        self.log("Computing near-duplicates for benchmark...")
+        similarity_data = self.generate_similarity_metadata(benchmark_path)
+        near_duplicate_files = self.extract_near_duplicate_files(similarity_data)
+        self.log(f"Found {len(near_duplicate_files)} near-duplicate files")
+
+        try:
+            entries_processed = 0
             with (
                 open(jsonl_path, "r", encoding="utf-8") as infile,
-                open(output_path, "w", encoding="utf-8") as outfile,
+                open(enhanced_path, "w", encoding="utf-8") as outfile,
             ):
                 for line_num, line in enumerate(infile, 1):
                     line = line.strip()
@@ -525,8 +946,22 @@ class QAMetadataGenerator:
 
                     try:
                         entry = json.loads(line)
-                        entry["qa_metadata"] = qa_metadata
-                        outfile.write(json.dumps(entry) + "\n")
+                        
+                        # Analyze this specific entry
+                        entry_qa = self.analyze_single_entry(
+                            entry, benchmark_path, language, near_duplicate_files
+                        )
+                        
+                        # Add per-entry QA metadata
+                        entry["qa_entry_metadata"] = entry_qa
+                        
+                        # Write enhanced entry
+                        outfile.write(json.dumps(entry, ensure_ascii=False) + "\n")
+                        entries_processed += 1
+                        
+                        # Log progress for large files
+                        if entries_processed % 100 == 0:
+                            self.log(f"  Processed {entries_processed} entries...")
 
                     except json.JSONDecodeError as e:
                         self.log(
@@ -534,11 +969,12 @@ class QAMetadataGenerator:
                         )
                         continue
 
-            self.log(f"✅ Created {output_path}")
-            return True, qa_metadata
+            self.log(f"✅ Created enhanced JSONL with {entries_processed} entries: {enhanced_path}")
+            
+            return True, {"entries_processed": entries_processed}
 
         except Exception as e:
-            self.log(f"❌ Error processing {jsonl_path}: {e}")
+            self.log(f"❌ Error creating enhanced JSONL file: {e}")
             return False, None
 
     def process_benchmark(self, benchmark_path: Path) -> Tuple[bool, Optional[Dict]]:
@@ -564,21 +1000,31 @@ class QAMetadataGenerator:
         if not jsonl_files:
             return False, None
 
-        # Process each JSONL file
+        # Create benchmark metadata and optionally enhanced JSONL files
         success_count = 0
         qa_metadata = None
         for jsonl_file in jsonl_files:
-            success, metadata = self.process_jsonl_file(
+            # Create benchmark-level metadata file
+            success_meta, metadata = self.create_metadata_file(
                 jsonl_file, benchmark_path, language
             )
-            if success:
+            
+            # Conditionally create enhanced JSONL with per-entry QA metadata
+            success_jsonl = True  # Default to success if skipping
+            if not self.metadata_only:
+                success_jsonl, _ = self.create_enhanced_jsonl_file(
+                    jsonl_file, benchmark_path, language
+                )
+            
+            if success_meta and success_jsonl:
                 success_count += 1
                 qa_metadata = (
                     metadata  # Store the metadata (same for all files in benchmark)
                 )
 
+        operation_desc = "metadata only" if self.metadata_only else "metadata and enhanced JSONL"
         self.log(
-            f"Processed {success_count}/{len(jsonl_files)} JSONL files in {benchmark_path}"
+            f"Created {operation_desc} for {success_count}/{len(jsonl_files)} files in {benchmark_path}"
         )
         return success_count > 0, qa_metadata
 
@@ -717,21 +1163,118 @@ def get_all_qa_metadata(
     return all_metadata if success else {}
 
 
+def load_benchmark_with_metadata(benchmark_jsonl_path: str) -> Tuple[List[Dict], Optional[Dict]]:
+    """
+    Load a benchmark JSONL file along with its metadata.
+    
+    Args:
+        benchmark_jsonl_path: Path to the benchmark JSONL file
+        
+    Returns:
+        Tuple of (entries_list, metadata_dict) or (entries_list, None) if no metadata
+    """
+    jsonl_path = Path(benchmark_jsonl_path)
+    metadata_path = jsonl_path.parent / f"{jsonl_path.stem}.metadata.json"
+    
+    # Load entries
+    entries = []
+    try:
+        with open(jsonl_path, "r", encoding="utf-8") as f:
+            for line in f:
+                line = line.strip()
+                if line:
+                    entries.append(json.loads(line))
+    except Exception as e:
+        print(f"Error loading JSONL file {jsonl_path}: {e}")
+        return [], None
+    
+    # Load metadata if exists
+    metadata = None
+    if metadata_path.exists():
+        try:
+            with open(metadata_path, "r", encoding="utf-8") as f:
+                metadata = json.load(f)
+        except Exception as e:
+            print(f"Warning: Could not load metadata from {metadata_path}: {e}")
+    
+    return entries, metadata
+
+
+def get_benchmark_quality_score(benchmark_jsonl_path: str) -> Optional[float]:
+    """
+    Get the quality score for a benchmark.
+    
+    Args:
+        benchmark_jsonl_path: Path to the benchmark JSONL file
+        
+    Returns:
+        Quality score or None if not available
+    """
+    _, metadata = load_benchmark_with_metadata(benchmark_jsonl_path)
+    if metadata and "qa_metadata" in metadata:
+        return metadata["qa_metadata"].get("score")
+    return None
+
+
+def list_benchmarks_with_metadata(benchmarks_root: str) -> List[Dict[str, str]]:
+    """
+    List all benchmarks that have metadata files.
+    
+    Args:
+        benchmarks_root: Path to benchmarks root directory
+        
+    Returns:
+        List of dictionaries with benchmark info
+    """
+    benchmarks_path = Path(benchmarks_root)
+    benchmark_info = []
+    
+    for metadata_file in benchmarks_path.rglob("*.metadata.json"):
+        # Extract base name by removing .metadata.json suffix
+        base_name = metadata_file.name.replace(".metadata.json", "")
+        jsonl_file = metadata_file.parent / f"{base_name}.jsonl"
+        if jsonl_file.exists():
+            try:
+                with open(metadata_file, "r", encoding="utf-8") as f:
+                    metadata = json.load(f)
+                    
+                benchmark_info.append({
+                    "jsonl_path": str(jsonl_file),
+                    "metadata_path": str(metadata_file),
+                    "language": metadata.get("benchmark_info", {}).get("language", "unknown"),
+                    "name": metadata.get("benchmark_info", {}).get("name", "unknown"),
+                    "score": metadata.get("qa_metadata", {}).get("score", 0),
+                    "entry_count": metadata.get("benchmark_info", {}).get("entry_count", 0)
+                })
+            except Exception as e:
+                print(f"Warning: Could not read metadata from {metadata_file}: {e}")
+    
+    return sorted(benchmark_info, key=lambda x: (x["language"], x["name"]))
+
+
 def main():
     parser = argparse.ArgumentParser(
-        description="Add quality analysis metadata to benchmark JSONL files",
+        description="Generate quality analysis metadata and per-entry scoring for benchmark JSONL files",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Examples:
-  python3 add_qa_metadata.py benchmarks                    # Process all benchmarks
-  python3 add_qa_metadata.py benchmarks/verus/apps        # Process specific benchmark
-  python3 add_qa_metadata.py benchmarks/dafny/humaneval   # Process Dafny benchmark
+  python3 add_qa_metadata.py benchmarks                    # Generate metadata for all benchmarks
+  python3 add_qa_metadata.py benchmarks/verus/apps        # Generate metadata for specific benchmark
+  python3 add_qa_metadata.py benchmarks/dafny/humaneval   # Generate metadata for Dafny benchmark
   python3 add_qa_metadata.py --quiet benchmarks           # Minimal output
   python3 add_qa_metadata.py --config custom.yaml benchmarks  # Use custom config
   
   # Output metadata in different formats
   python3 add_qa_metadata.py --output-metadata summary benchmarks    # Brief summary
   python3 add_qa_metadata.py --output-metadata json benchmarks       # Full JSON output
+  
+  # Metadata-only mode (skip enhanced JSONL generation)
+  python3 add_qa_metadata.py --metadata-only benchmarks              # Only regenerate *.metadata.json
+
+  # Output files generated/overwritten:
+  #   Original:     benchmarks/verus/humaneval/verus_humaneval.jsonl (unchanged)
+  #   Benchmark:    benchmarks/verus/humaneval/verus_humaneval.metadata.json  
+  #   Per-entry:    benchmarks/verus/humaneval/verus_humaneval_with_entry_qa.jsonl
         """,
     )
 
@@ -752,11 +1295,16 @@ Examples:
         default="none",
         help="Output format for metadata (none: no output, json: full JSON, summary: brief summary)",
     )
+    parser.add_argument(
+        "--metadata-only",
+        action="store_true",
+        help="Generate only *.metadata.json files, skip *_with_entry_qa.jsonl generation",
+    )
 
     args = parser.parse_args()
 
     # Create generator and process benchmarks
-    generator = QAMetadataGenerator(quiet=args.quiet, config_path=args.config)
+    generator = QAMetadataGenerator(quiet=args.quiet, config_path=args.config, metadata_only=args.metadata_only)
     benchmark_path = Path(args.benchmark_path)
 
     success, all_metadata = generator.process_benchmarks_directory(benchmark_path)
