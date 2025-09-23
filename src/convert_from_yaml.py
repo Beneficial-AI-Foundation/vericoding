@@ -153,7 +153,10 @@ def convert_yaml_to_jsonl(yaml_path: Path, source: str = None, language: str = N
 
     # load jsonl file as a list of dictionaries
     with open(source_meta_path, 'r') as f:
-        source_meta = [json.loads(line) for line in f] 
+        source_meta = {}
+        for line in f:
+            lineobj = json.loads(line)
+            source_meta[lineobj['source_id']] = lineobj
 
     # Find all .yaml files in the directory (recursively)
     yaml_files = list(yaml_path.glob("**/*.yaml"))
@@ -224,7 +227,10 @@ def convert_poor_to_jsonl(poor_path: Path, source: str = None, language: str = N
         raise ValueError(f"{source_meta_path} is not a file")
 
     with open(source_meta_path, 'r') as f:
-        source_meta = [json.loads(line) for line in f] 
+        source_meta = {}
+        for line in f:
+            lineobj = json.loads(line)
+            source_meta[lineobj['source_id']] = lineobj
 
     # find all subdirectories in poor_path
     poor_dirs = list(poor_path.glob("**/*"))
@@ -1446,7 +1452,7 @@ def main():
         output_path = args.yaml_file.with_suffix(f'.{args.suffix}')
         convert_yaml_to_json(args.yaml_file, output_path)
     elif args.suffix == 'jsonl':
-        convert_yaml_to_jsonl(args.yaml_file, source=args.source, language=args.language, source_meta=args.source_meta)
+        convert_yaml_to_jsonl(args.yaml_file, source=args.source, language=args.language, source_meta_path=args.source_meta)
     else:
         output_path = args.yaml_file.with_suffix(f'.{args.suffix}')
         convert_yaml_to_file(args.yaml_file, output_path, args.add_postamble)
