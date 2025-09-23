@@ -11,7 +11,7 @@ The `benchmarks` folder contains our three benchmarks in Dafny, Verus and Lean.
 
 * There are two files `lean_tasks.jsonl` and `lean_issues.jsonl` which contain each task as a JSON line. The task is decomposed into different components, such as the preamble, spec and code. We also provide additional metadata from our quality analysis. This data is also available as CSV files.
 
-* The `README.md` file lists the original sources used in constructing these benchmarks, with download links. The `tasks_metadata.json` provides a dictionary between our Vericoding IDs and the source IDs of each task.
+* The `README.md` file lists the original sources used in constructing these benchmarks, with download links. The `tasks_metadata.jsonl` provides a dictionary between our Vericoding IDs and the source IDs of each task.
 
 ## Source code
 
