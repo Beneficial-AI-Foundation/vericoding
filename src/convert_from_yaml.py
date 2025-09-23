@@ -764,70 +764,25 @@ def process_language_tasks(benchmarks_dir: Path) -> None:
                 for task in tasks.values():
                     json.dump(task, f, ensure_ascii=False)
                     f.write('\n')
+        print(f"Wrote tasks file {output_tasks}")
 
-
-
-            
         # generate language issues file
-        # output_issues = language_dir / f"{language}_issues.jsonl"
-        # with open(output_issues, 'w') as f:
+        output_issues = benchmarks_dir / f"{language}_issues.jsonl"
+        with open(output_issues, 'w') as f:
 
-        #     for source_dir in source_dirs:
-        #         issues_file = source_dir / f"{language}_{source_dir.name}_poor.jsonl"
-        #         if not issues_file.exists():
-        #             raise FileNotFoundError(f"Issues file {issues_file} does not exist")
-        #         with open(issues_file, 'r') as f:
-        #             issues = [json.loads(line) for line in f]
-            
-        #     for task in tasks:
-        #         issue = next((issue for issue in issues if issue['id'] == task['id']), None)
-        #         if issue is not None:
-        #             task['issue'] = issue
-        #             json.dump(task, f, ensure_ascii=False)
-        #             f.write('\n')
+            for source_dir in source_dirs:
+                issues_file = source_dir / f"{language}_{source_dir.name}_poor.jsonl"
+                if not issues_file.exists():
+                    print(f"Issues file {issues_file} does not exist")
+                else:
+                    with open(issues_file, 'r') as g:
+                        issues = [json.loads(line) for line in g]
+                    for issue in issues:
+                        json.dump(issue, f, ensure_ascii=False)
+                        f.write('\n')
+        print(f"Wrote issues file {output_issues}")
 
-
-    # Find all level-2 subdirectories (benchmarks/XXX/YYY)
-
-
-
-
-
-
-
-    level2_dirs = []
-    for level1_dir in benchmarks_dir.iterdir():
-        if level1_dir.is_dir():
-            for level2_dir in level1_dir.iterdir():
-                if level2_dir.is_dir():
-                    yaml_dir = level2_dir / "yaml"
-                    if yaml_dir.exists():
-                        level2_dirs.append(level2_dir)
-    
-    if not level2_dirs:
-        print(f"No level-2 subdirectories found in {benchmarks_dir}")
-        return
-    
-    processed_count = 0
-    
-    for level2_dir in level2_dirs:
-
-        # Determine suffix based on level-1 directory name (XXX)
-        level1_name = level2_dir.parent.name
-        if level1_name == "dafny":
-            dir_suffix = "dfy"
-        elif level1_name == "lean":
-            dir_suffix = "lean"
-        elif level1_name == "verus":
-            dir_suffix = "rs"
-        else:
-            raise ValueError(f"Unknown benchmark type '{level1_name}'. Expected 'dafny', 'lean', or 'verus'")
-        
-        # Use the new process_bench function
-        process_bench(level2_dir, dir_suffix)
-        processed_count += 1
-    
-    print(f"Processed {processed_count} benchmark directories")
+    print("Generated tasks and issues files for all languages")
 
 
 def process_benchmarks(benchmarks_dir: Path, suffix: str = None, add_postamble: bool = False) -> None:
