@@ -41,6 +41,26 @@ MODEL_MAPPING = {
     'grok-code': 'grok-code'
 }
 
+def check_insufficient_credits(run):
+    """Check if run logs contain 'Insufficient credits' phrase."""
+    # Get the log file from the run
+    files = run.files()
+    
+    for file in files:
+        if file.name == 'output.log':
+            # Download and read the log file
+            downloaded_file = file.download(replace=True)
+            with open(downloaded_file.name, 'r', encoding='utf-8', errors='ignore') as f:
+                content = f.read()
+            
+            # Clean up the downloaded file immediately
+            os.remove(downloaded_file.name)
+            
+            return "Insufficient credits" in content
+    else:
+        # No output.log found - crash the script
+        raise FileNotFoundError(f"No output.log found for run {run.name}")
+
 def get_wandb_results_for_tags(tags, project="vericoding", entity=None, debug=False):
     """Fetch results from W&B for multiple tags."""
     api = wandb.Api()
@@ -78,6 +98,12 @@ def get_wandb_results_for_tags(tags, project="vericoding", entity=None, debug=Fa
         
         # Skip non-Lean runs
         if language != 'lean':
+            continue
+        
+        # Check for insufficient credits and skip those runs
+        print(f"Checking credits for {run.name}...", file=sys.stderr)
+        if check_insufficient_credits(run):
+            print(f"Skipping run {run.name} - insufficient credits", file=sys.stderr)
             continue
         
         # Check if this run has results
