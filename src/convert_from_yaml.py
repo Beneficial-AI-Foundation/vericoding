@@ -17,8 +17,8 @@ sources_ref = {'dafnybench': 'D', 'humaneval': 'H', 'verified_cogen': 'J', 'veri
             
 languages_ref = {'lean': 'L', 'dafny': 'D', 'verus': 'V'}
 
-source_meta_filename = "tasks_metadata.json"
-source_meta_path = Path("benchmarks") / source_meta_filename
+source_meta_filename = "tasks_metadata.jsonl"
+source_meta_default_path = Path("benchmarks") / source_meta_filename
 
 def get_vericoding_id(source: str, language: str, task: str, source_meta: Dict[str, Any]) -> str:
     """Get the Vericoding ID for a given source, language, and task."""
@@ -133,7 +133,7 @@ def convert_yaml_to_json(yaml_path: Path, output_path: Path) -> None:
     print(f"Converted {yaml_path} -> {output_path}")
 
 
-def convert_yaml_to_jsonl(yaml_path: Path, source: str = None, language: str = None, source_meta: Path = None, jsonl_path: Path = None) -> None:
+def convert_yaml_to_jsonl(yaml_path: Path, source: str = None, language: str = None, source_meta_path: Path = None, jsonl_path: Path = None) -> None:
     """Convert all YAML files in a directory to a single JSONL file."""
     
     if source is None:
@@ -145,14 +145,15 @@ def convert_yaml_to_jsonl(yaml_path: Path, source: str = None, language: str = N
     if not yaml_path.is_dir():
         raise ValueError(f"{yaml_path} is not a directory")
     
-    if source_meta is None:
-        source_meta = source_meta_path
+    if source_meta_path is None:
+        source_meta_path = source_meta_default_path
 
-    if not source_meta.is_file():
-        raise ValueError(f"{source_meta} is not a file")
+    if not source_meta_path.is_file():
+        raise ValueError(f"{source_meta_path} is not a file")
 
-    with open(source_meta, 'r') as f:
-        source_meta = json.load(f)
+    # load jsonl file as a list of dictionaries
+    with open(source_meta_path, 'r') as f:
+        source_meta = [json.loads(line) for line in f] 
 
     # Find all .yaml files in the directory (recursively)
     yaml_files = list(yaml_path.glob("**/*.yaml"))
@@ -204,7 +205,7 @@ def convert_yaml_to_jsonl(yaml_path: Path, source: str = None, language: str = N
     if skipped_count > 0:
         print(f"Skipped {skipped_count} files that were not valid YAML")
 
-def convert_poor_to_jsonl(poor_path: Path, source: str = None, language: str = None, source_meta: Path = None, jsonl_path: Path = None) -> None:
+def convert_poor_to_jsonl(poor_path: Path, source: str = None, language: str = None, source_meta_path: Path = None, jsonl_path: Path = None) -> None:
     """Convert all POOR files in a directory to a single JSONL file."""
     
     if source is None:
@@ -216,14 +217,14 @@ def convert_poor_to_jsonl(poor_path: Path, source: str = None, language: str = N
     if not poor_path.is_dir():
         raise ValueError(f"{poor_path} is not a directory")
     
-    if source_meta is None:
-        source_meta = source_meta_path
+    if source_meta_path is None:
+        source_meta_path = source_meta_default_path
 
-    if not source_meta.is_file():
-        raise ValueError(f"{source_meta} is not a file")
+    if not source_meta_path.is_file():
+        raise ValueError(f"{source_meta_path} is not a file")
 
-    with open(source_meta, 'r') as f:
-        source_meta = json.load(f)
+    with open(source_meta_path, 'r') as f:
+        source_meta = [json.loads(line) for line in f] 
 
     # find all subdirectories in poor_path
     poor_dirs = list(poor_path.glob("**/*"))
@@ -973,7 +974,7 @@ def get_source_meta(benchmarks_dir: Path, save_path: Path = None) -> Dict[str, A
                     continue
                     
                 yyy_subdir_name = yyy_subdir.name
-                if yyy_subdir_name not in ["poor","yaml","files"]:
+                if yyy_subdir_name not in ["poor","yaml","files","issues"]:
                     raise ValueError(f"Unknown benchmark type '{yyy_subdir_name}' in {yyy_dir}. Expected 'poor' or 'yaml' or 'files'.")
         
             yaml_dir = yyy_dir / "yaml"
@@ -1090,9 +1091,13 @@ def get_source_meta(benchmarks_dir: Path, save_path: Path = None) -> Dict[str, A
 
     source_meta = generate_ids(source_meta)
     
+    # save as jsonl file
     if save_path:
         with open(save_path, 'w') as f:
-            json.dump(source_meta, f, indent=2, sort_keys=True)
+            for key, value in source_meta.items():
+                json.dump({'id': value['id'], 'source': value['source'], 'source_id': key, 
+                    'dafny': value['dafny'], 'lean': value['lean'], 'verus': value['verus']}, f, ensure_ascii=False)
+                f.write('\n')
         print(f"Metadata saved to: {save_path}")
 
     return source_meta
@@ -1333,7 +1338,7 @@ def generate_metadata(benchmarks_dir: Path) -> None:
         raise FileNotFoundError(f"Benchmarks directory {benchmarks_dir} does not exist")
     
     # Get source metadata
-    source_meta = get_source_meta(benchmarks_dir, save_path=source_meta_path)
+    source_meta = get_source_meta(benchmarks_dir, save_path=source_meta_default_path)
 
     # Validate that all entries for each source have consistent signatures
     # validate_source_signatures(source_meta)
