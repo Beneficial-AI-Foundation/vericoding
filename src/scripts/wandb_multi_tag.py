@@ -42,7 +42,7 @@ MODEL_MAPPING = {
 }
 
 def check_insufficient_credits(run):
-    """Check if run logs contain 'Insufficient credits' phrase."""
+    """Check if run logs contain 'Insufficient credits' phrase. Returns None if no log file."""
     # Get the log file from the run
     files = run.files()
     
@@ -58,8 +58,8 @@ def check_insufficient_credits(run):
             
             return "Insufficient credits" in content
     else:
-        # No output.log found - crash the script
-        raise FileNotFoundError(f"No output.log found for run {run.name}")
+        # No output.log found - return None to indicate we should skip this run
+        return None
 
 def get_wandb_results_for_tags(tags, project="vericoding", entity=None, debug=False):
     """Fetch results from W&B for multiple tags."""
@@ -102,7 +102,11 @@ def get_wandb_results_for_tags(tags, project="vericoding", entity=None, debug=Fa
         
         # Check for insufficient credits and skip those runs
         print(f"Checking credits for {run.name}...", file=sys.stderr)
-        if check_insufficient_credits(run):
+        credit_check = check_insufficient_credits(run)
+        if credit_check is None:
+            print(f"Skipping run {run.name} - no output.log found", file=sys.stderr)
+            continue
+        elif credit_check:
             print(f"Skipping run {run.name} - insufficient credits", file=sys.stderr)
             continue
         
