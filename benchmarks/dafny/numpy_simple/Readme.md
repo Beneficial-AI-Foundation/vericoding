@@ -1,3 +1,0 @@
-yaml files generated with `code2verus --benchmark ../benchmarks/verus/numpy_simple/yaml/ --source-language verus --target-language dafny --file-pattern "*.yaml" --max-concurrent 10 --save-debug --debug-report --debug-summary > out_dafny_numpy_simple_17_09_10_12.txt`.txt where code2verus is from #181.
-
-The verus files were generated with `uv run src/convert_from_yaml.py --bench benchmarks/dafny/numpy_simple --suffix dfy`.
