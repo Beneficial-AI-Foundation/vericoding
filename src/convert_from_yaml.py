@@ -604,6 +604,232 @@ def process_all_poor(benchmarks_dir: Path, suffix: str = None, add_postamble: bo
     
     print(f"Processed {processed_count} benchmark directories with poor folder")
 
+def flatten_task_with_entry_qa(task: Dict[str, Any]) -> Dict[str, Any]:
+    """Flatten a task with entry qa."""
+    new_task = {
+        'id': task['id'],
+        'language': task['language'],
+        'source': task['source'],
+        'source-id': task['source_id'],
+        'source-notes': "",
+    }
+    if 'vc-description' in task:
+        new_task.update({'vc-description': task['vc-description']})
+    if 'vc-preamble' in task:
+        new_task.update({'vc-preamble': task['vc-preamble']})
+    if 'vc-helpers' in task:
+        new_task.update({'vc-helpers': task['vc-helpers']})
+    if 'vc-spec' in task:
+        new_task.update({'vc-spec': task['vc-spec']})
+    if 'vc-code' in task:
+        new_task.update({'vc-code': task['vc-code']})
+    if 'vc-definitions' in task:
+        new_task.update({'vc-definitions': task['vc-definitions']})
+    if 'vc-theorems' in task:
+        new_task.update({'vc-theorems': task['vc-theorems']})
+
+    new_task.update({'vc-postamble': task['vc-postamble']})
+    new_task.update({'qa-issue': 0})
+    new_task.update({'qa-issue-type': ''})
+
+    if task['language'] == 'dafny':
+        new_task.update({
+            'qa-functions-with-default-values': 0,
+            'qa-methods-with-bodies': 0,
+        })
+    elif task['language'] == 'verus':
+        new_task.update({
+            'qa-specs-with-default-values': 0,
+            'qa-execs-with-bodies': 0,
+            'qa-execs-with-ghost-types': 0,
+        })
+    elif task['language'] == 'lean':
+        new_task.update({
+            'qa-definitions-with-sorry': 0,
+        })
+
+    new_task.update({
+        'qa-near-duplicate-group': '',
+        'qa-score': 0,
+    }) 
+
+    if 'qa_entry_metadata' in task:
+        issues = task['qa_entry_metadata']['issues']
+        if "functions_with_default_values" in issues:
+            new_task['qa-functions-with-default-values'] = issues['functions_with_default_values']
+        if "methods_with_bodies" in issues:
+            new_task['qa-methods-with-bodies'] = issues['methods_with_bodies']
+        if "specs-with-default-values" in issues:
+            new_task['qa-specs-with-default-values'] = issues['specs-with-default-values']
+        if "execs-with-bodies" in issues:
+            new_task['qa-execs-with-bodies'] = issues['execs-with-bodies']
+        if "execs-with-ghost-types" in issues:
+            new_task['qa-execs-with-ghost-types'] = issues['execs-with-ghost-types']
+        if "definitions-with-sorry" in issues:
+            new_task['qa-definitions-with-sorry'] = issues['definitions-with-sorry']
+        new_task['qa-score'] = task['qa_entry_metadata']['individual_score']
+
+    return new_task
+
+
+
+def process_language_tasks(benchmarks_dir: Path) -> None:
+    """Process benchmark directories to convert YAML files.
+    
+    For each level-2 subfolder of benchmarks/XXX/YYY:
+    1. Look for a 'yaml' folder
+    2. If it exists, convert YAML files to files with the appropriate suffix in 'files' folder
+       (suffix determined by XXX: dafny->dfy, lean->lean, verus->rs)
+    3. Convert all YAML files to a JSONL file using custom naming: XXX_YYY.jsonl
+    
+    Args:
+        benchmarks_dir: Path to the benchmarks directory
+        suffix: File suffix for the output files (optional, auto-detected if None)
+        add_postamble: If True, include vc-postamble in the template (default: omit for Lean, include for others).
+    """
+    
+    if not benchmarks_dir.exists():
+        raise FileNotFoundError(f"Benchmarks directory {benchmarks_dir} does not exist")
+    
+    if not benchmarks_dir.is_dir():
+        raise ValueError(f"{benchmarks_dir} is not a directory")
+    
+    for language in ["dafny", "lean", "verus"]:
+        language_dir = benchmarks_dir / language
+        if not language_dir.exists():
+            raise FileNotFoundError(f"Language directory {language_dir} does not exist")
+        if not language_dir.is_dir():
+            raise ValueError(f"{language_dir} is not a directory")
+        
+        # get all subdirectories in language_dir
+        source_dirs = list(language_dir.iterdir())
+        source_dirs = [source_dir for source_dir in source_dirs if source_dir.is_dir()]
+
+        # generate language tasks file
+        output_tasks = benchmarks_dir / f"{language}_tasks.jsonl"
+        with open(output_tasks, 'w') as f:
+
+            for source_dir in source_dirs:
+                source = source_dir.name
+                no_qa_file = source_dir / f"{language}_{source}.jsonl"
+                qa_one_file = source_dir / f"{language}_{source}_with_entry_qa.jsonl"
+                qa_all_file = source_dir / f"{language}_{source}.metadata.json"
+                if not qa_one_file.exists():
+                    if no_qa_file.exists():
+                        qa_one_file = no_qa_file
+                    else:
+                        raise FileNotFoundError(f"Files {qa_one_file} and {no_qa_file} does not exist")
+
+                # check if no_qa_file and qa_one_file have the same lines
+                with open(no_qa_file, 'r') as g:
+                    no_qa_lines = [json.loads(line) for line in g]
+                with open(qa_one_file, 'r') as g:
+                    qa_one_lines = [json.loads(line) for line in g]
+                for dict1, dict2 in zip(no_qa_lines, qa_one_lines):
+                    for key in dict1:
+                        if dict1[key] != dict2[key]:
+                            dict2[key] = dict1[key]
+                            print(f"WARNING: In files {no_qa_file} and {qa_one_file}, {key} is different. Replacing with value from {no_qa_file}.")
+                            # raise ValueError(f"Files {no_qa_file} and {qa_one_file} have different lines:\n{dict1[key]} \n{dict2[key]}")
+
+                # write qa_one_file to file
+                with open(qa_one_file, 'w') as g:
+                    for dict in qa_one_lines:
+                        json.dump(dict, g, ensure_ascii=False)
+                        g.write('\n')
+
+                # read tasks file as jsonl into a list of dictionaries
+                tasks = {}
+                with open(qa_one_file, 'r') as g:
+                    for line in g:
+                        task = flatten_task_with_entry_qa(json.loads(line))
+                        tasks[task['source-id']] = task
+            
+                if not qa_all_file.exists():
+                    print(f"QA file {qa_all_file} does not exist")
+                else:
+                    # read qa_all_file as json into a dictionary
+                    with open(qa_all_file, 'r') as g:
+                        qa_all_dict = json.load(g)
+
+                    # get duplicate tasks and assign group IDs
+                    duplicates = qa_all_dict['qa_metadata']['near_duplicates']['examples']
+                    for idx, dup_grp in enumerate(duplicates):
+                        # make group_id 4 characters long
+                        group_id = f"Dup{languages_ref[language]}{sources_ref[source]}{idx:02d}"
+                        for file in dup_grp['files']:
+                            tasks[Path(file).stem]['qa-near-duplicate-group'] = group_id
+
+                # write tasks to file
+                for task in tasks.values():
+                    json.dump(task, f, ensure_ascii=False)
+                    f.write('\n')
+
+
+
+            
+        # generate language issues file
+        # output_issues = language_dir / f"{language}_issues.jsonl"
+        # with open(output_issues, 'w') as f:
+
+        #     for source_dir in source_dirs:
+        #         issues_file = source_dir / f"{language}_{source_dir.name}_poor.jsonl"
+        #         if not issues_file.exists():
+        #             raise FileNotFoundError(f"Issues file {issues_file} does not exist")
+        #         with open(issues_file, 'r') as f:
+        #             issues = [json.loads(line) for line in f]
+            
+        #     for task in tasks:
+        #         issue = next((issue for issue in issues if issue['id'] == task['id']), None)
+        #         if issue is not None:
+        #             task['issue'] = issue
+        #             json.dump(task, f, ensure_ascii=False)
+        #             f.write('\n')
+
+
+    # Find all level-2 subdirectories (benchmarks/XXX/YYY)
+
+
+
+
+
+
+
+    level2_dirs = []
+    for level1_dir in benchmarks_dir.iterdir():
+        if level1_dir.is_dir():
+            for level2_dir in level1_dir.iterdir():
+                if level2_dir.is_dir():
+                    yaml_dir = level2_dir / "yaml"
+                    if yaml_dir.exists():
+                        level2_dirs.append(level2_dir)
+    
+    if not level2_dirs:
+        print(f"No level-2 subdirectories found in {benchmarks_dir}")
+        return
+    
+    processed_count = 0
+    
+    for level2_dir in level2_dirs:
+
+        # Determine suffix based on level-1 directory name (XXX)
+        level1_name = level2_dir.parent.name
+        if level1_name == "dafny":
+            dir_suffix = "dfy"
+        elif level1_name == "lean":
+            dir_suffix = "lean"
+        elif level1_name == "verus":
+            dir_suffix = "rs"
+        else:
+            raise ValueError(f"Unknown benchmark type '{level1_name}'. Expected 'dafny', 'lean', or 'verus'")
+        
+        # Use the new process_bench function
+        process_bench(level2_dir, dir_suffix)
+        processed_count += 1
+    
+    print(f"Processed {processed_count} benchmark directories")
+
+
 def process_benchmarks(benchmarks_dir: Path, suffix: str = None, add_postamble: bool = False) -> None:
     """Process benchmark directories to convert YAML files.
     
@@ -1172,12 +1398,19 @@ def main():
                        help='Language identifier for JSONL conversion (used when suffix is jsonl)')
     parser.add_argument('--source-meta', type=Path,
                        help='Path to source metadata file for JSONL conversion (used when suffix is jsonl)')
+    parser.add_argument('--language-tasks', type=Path, metavar='BENCHMARKS_DIR',
+                       help='Process language tasks. For each language directory, generate language tasks file from QA files')
     
     args = parser.parse_args()
     
     # Handle metadata generation
     if args.metadata is not None:
         generate_metadata(args.metadata)
+        return
+    
+    # Handle language tasks processing
+    if args.language_tasks is not None:
+        process_language_tasks(args.language_tasks)
         return
     
     # Handle benchmarks processing
