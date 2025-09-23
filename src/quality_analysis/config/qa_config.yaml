@@ -45,10 +45,21 @@ scoring:
   # Logarithmic mode: base_score = log_multiplier * log(entries + 1)
   logarithmic_multiplier: 50            # Multiplier for log scaling
   
+  # Quality scoring approach for cross-benchmark comparison
+  use_normalized_quality: true  # Enable normalized scoring for comparable results across benchmarks
+  
+  # Normalized scoring: final_score = 100 × (1 - penalty_fraction)
+  # - Score represents average quality per entry on 0-100 scale
+  # - Directly comparable across benchmarks of any size
+  # - 100 = perfect quality, 0 = all entries have quality issues
+  
+  # Original scoring: final_score = base_score × (1 - penalty_fraction)
+  # - Larger benchmarks get higher absolute scores
+  # - Not directly comparable across different benchmark sizes
+  
   # Simplified normalized weight approach: weights sum to 1.0, applied to direct proportions
   # Formula: penalty_fraction = Σ(weight_i × proportion_i)
   # Where:   proportion_i = count_i / total_entries
-  # Final score: base_score × (1 - penalty_fraction)
   
   # Verus-specific normalized weights (sum to 1.0)
   verus:

@@ -15,16 +15,22 @@ DUAL OUTPUT STRUCTURE:
     └── yaml/, files/                            # Source files
 
 SCORING METHODOLOGY:
-Both benchmark and per-entry scoring use the same normalized weight approach where 
-quality issues are weighted by relative importance (weights sum to 1.0).
+Uses normalized scoring for cross-benchmark comparison where quality issues are 
+weighted by relative importance (weights sum to 1.0).
 
-**BENCHMARK-LEVEL FORMULA:**
-    final_score = base_score × (1 - penalty_fraction)
+**BENCHMARK-LEVEL FORMULA (NORMALIZED):**
+    final_score = 100 × (1 - penalty_fraction)  [0-100 scale, comparable across benchmarks]
     penalty_fraction = Σ(weight_i × proportion_i)
     proportion_i = issue_count_i / total_entries
+    
+**EXAMPLE SCORES:**
+    - 100: Perfect quality (no issues)
+    - 80: Good quality (20% penalty from issues)
+    - 50: Moderate quality (50% penalty from issues)
+    - 0: Poor quality (all entries have critical issues)
 
 **PER-ENTRY FORMULA:**
-    individual_score = 1 - Σ(weight_i × p_i)
+    individual_score = 1 - Σ(weight_i × p_i)  [0-1 scale per entry]
     p_i = 1 if entry has issue_i, else 0 (binary penalty per entry)
 
 QUALITY FACTORS ANALYZED:
@@ -54,7 +60,7 @@ DEPENDENCIES:
 - Install with: uv add sentence-transformers scikit-learn faiss-cpu
 
 Usage:
-    # Command line usage - generates BOTH metadata files AND enhanced JSONL
+    # Command line usage - generates/overwrites metadata files AND enhanced JSONL
     python3 add_qa_metadata.py benchmarks                    # Process all benchmarks
     python3 add_qa_metadata.py benchmarks/verus/apps        # Process specific benchmark
     python3 add_qa_metadata.py --config custom_config.yaml  # Use custom configuration
@@ -96,8 +102,9 @@ except ImportError:
 
 
 class QAMetadataGenerator:
-    def __init__(self, quiet: bool = False, config_path: Optional[Path] = None):
+    def __init__(self, quiet: bool = False, config_path: Optional[Path] = None, metadata_only: bool = False):
         self.quiet = quiet
+        self.metadata_only = metadata_only
         self.script_dir = Path(__file__).parent
         self.config = self.load_config(config_path)
 
@@ -195,10 +202,12 @@ class QAMetadataGenerator:
         """Find original JSONL files in benchmark directory (excluding processed files)."""
         jsonl_files = list(benchmark_path.glob("*.jsonl"))
 
-        # Filter out files that are processed versions (_with_qa_metadata.jsonl)
-        # We want to process the original files and create separate .metadata.json files
+        # Filter out files that are processed versions 
+        # We want to process only the original base files
         original_files = [
-            f for f in jsonl_files if not f.name.endswith("_with_qa_metadata.jsonl")
+            f for f in jsonl_files 
+            if not f.name.endswith("_with_qa_metadata.jsonl") 
+            and not f.name.endswith("_with_entry_qa.jsonl")
         ]
 
         if not original_files:
@@ -572,20 +581,23 @@ class QAMetadataGenerator:
         entry_count: int
     ) -> float:
         """
-        Calculate quality score using simplified normalized weights approach.
+        Calculate quality score using normalized per-entry approach for cross-benchmark comparison.
         
-        Formula: final_score = base_score × (1 - penalty_fraction)
-        Where:   penalty_fraction = Σ(weight_i × proportion_i)
-                 proportion_i = count_i / total_entries
+        Two scoring modes:
+        1. Original: final_score = base_score × (1 - penalty_fraction) [size-dependent]
+        2. Normalized: final_score = 100 × (1 - penalty_fraction) [size-independent]
+        
+        Where: penalty_fraction = Σ(weight_i × proportion_i)
+               proportion_i = count_i / total_entries
         
         Args:
-            base_score: Base score from dataset size
+            base_score: Base score from dataset size (used in original mode)
             issue_counts: Dictionary mapping issue types to counts
             weights: Dictionary mapping issue types to normalized weights (sum to 1.0)
             entry_count: Number of entries in benchmark
             
         Returns:
-            Final quality score using simplified normalized approach
+            Final quality score - normalized for cross-benchmark comparison
         """
         try:
             # Calculate penalty fraction using direct proportions
@@ -593,7 +605,7 @@ class QAMetadataGenerator:
             
             # Avoid division by zero
             if entry_count == 0:
-                return float(base_score)
+                return 100.0  # Perfect score for empty benchmarks
             
             for issue_type, count in issue_counts.items():
                 if count == 0:
@@ -607,9 +619,19 @@ class QAMetadataGenerator:
                     proportion = count / entry_count
                     penalty_fraction += weight * proportion
             
-            # Calculate final score: base_score × (1 - penalty_fraction)
-            # Note: No need to cap penalty_fraction since proportions are naturally bounded
-            final_score = base_score * (1.0 - penalty_fraction)
+            # Use normalized scoring mode for cross-benchmark comparison
+            # Score represents average quality per entry on 0-100 scale
+            scoring_config = self.config["scoring"]
+            use_normalized = scoring_config.get("use_normalized_quality", True)
+            
+            if use_normalized:
+                # Normalized mode: 100 × (1 - penalty_fraction)
+                # This gives comparable scores across benchmarks of any size
+                final_score = 100.0 * (1.0 - penalty_fraction)
+            else:
+                # Original mode: base_score × (1 - penalty_fraction)
+                # This preserves the old behavior where larger benchmarks get higher scores
+                final_score = base_score * (1.0 - penalty_fraction)
             
             # Ensure score doesn't go negative (safety check)
             final_score = max(0.0, final_score)
@@ -978,7 +1000,7 @@ class QAMetadataGenerator:
         if not jsonl_files:
             return False, None
 
-        # Create both benchmark metadata and enhanced JSONL files
+        # Create benchmark metadata and optionally enhanced JSONL files
         success_count = 0
         qa_metadata = None
         for jsonl_file in jsonl_files:
@@ -987,10 +1009,12 @@ class QAMetadataGenerator:
                 jsonl_file, benchmark_path, language
             )
             
-            # Create enhanced JSONL with per-entry QA metadata
-            success_jsonl, _ = self.create_enhanced_jsonl_file(
-                jsonl_file, benchmark_path, language
-            )
+            # Conditionally create enhanced JSONL with per-entry QA metadata
+            success_jsonl = True  # Default to success if skipping
+            if not self.metadata_only:
+                success_jsonl, _ = self.create_enhanced_jsonl_file(
+                    jsonl_file, benchmark_path, language
+                )
             
             if success_meta and success_jsonl:
                 success_count += 1
@@ -998,8 +1022,9 @@ class QAMetadataGenerator:
                     metadata  # Store the metadata (same for all files in benchmark)
                 )
 
+        operation_desc = "metadata only" if self.metadata_only else "metadata and enhanced JSONL"
         self.log(
-            f"Created metadata and enhanced JSONL for {success_count}/{len(jsonl_files)} files in {benchmark_path}"
+            f"Created {operation_desc} for {success_count}/{len(jsonl_files)} files in {benchmark_path}"
         )
         return success_count > 0, qa_metadata
 
@@ -1242,8 +1267,11 @@ Examples:
   # Output metadata in different formats
   python3 add_qa_metadata.py --output-metadata summary benchmarks    # Brief summary
   python3 add_qa_metadata.py --output-metadata json benchmarks       # Full JSON output
+  
+  # Metadata-only mode (skip enhanced JSONL generation)
+  python3 add_qa_metadata.py --metadata-only benchmarks              # Only regenerate *.metadata.json
 
-  # Dual output files generated:
+  # Output files generated/overwritten:
   #   Original:     benchmarks/verus/humaneval/verus_humaneval.jsonl (unchanged)
   #   Benchmark:    benchmarks/verus/humaneval/verus_humaneval.metadata.json  
   #   Per-entry:    benchmarks/verus/humaneval/verus_humaneval_with_entry_qa.jsonl
@@ -1267,11 +1295,16 @@ Examples:
         default="none",
         help="Output format for metadata (none: no output, json: full JSON, summary: brief summary)",
     )
+    parser.add_argument(
+        "--metadata-only",
+        action="store_true",
+        help="Generate only *.metadata.json files, skip *_with_entry_qa.jsonl generation",
+    )
 
     args = parser.parse_args()
 
     # Create generator and process benchmarks
-    generator = QAMetadataGenerator(quiet=args.quiet, config_path=args.config)
+    generator = QAMetadataGenerator(quiet=args.quiet, config_path=args.config, metadata_only=args.metadata_only)
     benchmark_path = Path(args.benchmark_path)
 
     success, all_metadata = generator.process_benchmarks_directory(benchmark_path)
