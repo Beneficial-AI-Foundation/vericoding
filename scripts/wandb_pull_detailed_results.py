@@ -78,21 +78,24 @@ def main() -> None:
         api = wandb.Api()
         run_path = f"{entity}/{project}/{run_id}"
         print(f"Fetching run: {run_path} ...")
-        run = api.run(run_path)
+        try:
+            run = api.run(run_path)
 
-        name = ""
-        for f in run.files():
-            if "detailed_results" in f.name:
-                name = f.name
-                f.download(root = out_root, replace=args.overwrite, exist_ok=True)
-        
-        
-        if len(name) == 0:
-            print(f"No detailed results table found for {run_id}")
-        else:
-            os.rename(out_root / name, out_root / RESULTS_TABLE)
-            os.rmdir(out_root / "media" / "table")
-            os.rmdir(out_root / "media")
+            name = ""
+            for f in run.files():
+                if "detailed_results" in f.name:
+                    name = f.name
+                    f.download(root = out_root, replace=args.overwrite, exist_ok=True)
+            
+            
+            if len(name) == 0:
+                print(f"No detailed results table found for {run_id}")
+            else:
+                os.rename(out_root / name, out_root / RESULTS_TABLE)
+                os.rmdir(out_root / "media" / "table")
+                os.rmdir(out_root / "media")
+        except Exception:
+            print(f"WandB retrieval of {run_id} failed.")
     
     else:
         print(f"Results already saved for {run_id}")
