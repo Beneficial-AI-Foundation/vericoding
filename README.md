@@ -15,7 +15,11 @@ The `benchmarks` folder contains our three benchmarks in Dafny, Verus and Lean.
 
 ## Experiments
 
-The experiments folder contains `vericoding_results_v1.csv` which is a list of the outcomes of all 55397 experiments involving vericoding tasks across different models.
+The experiments folder contains the outcomes of our vericoding experiments on the benchmarks.
+
+* The file `vericoding_results_v1.csv` which is a list of the outcomes of all 55397 experiments involving vericoding tasks across different models.
+
+* The folder `inspection` contains our manual inspection reports on the successful runs.
 
 ## Source code
 

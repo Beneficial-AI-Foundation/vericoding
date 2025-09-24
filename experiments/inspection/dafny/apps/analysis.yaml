@@ -1,0 +1,25 @@
+benchmark: apps
+language: dafny
+is-transpiled: false
+checking-successes: true
+files-sampled:
+- file: 152_apps_test_1836_impl_grok-code.dfy
+  llm: grok-code
+  issues-with-spec: 'None, unmodified. However, the specification permits a trivial solution, likely unintended.'
+  issues-with-implementation: 'None, finds the trivial solution'
+- file: 347_apps_test_4390_impl_deepseek.dfy
+  llm: deepseek
+  issues-with-spec: 'None, unmodified'
+  issues-with-implementation: 'None'
+- file: 448_apps_test_4722_impl_gpt-mini.dfy
+  llm: gpt-mini
+  issues-with-spec: 'None, unmodified'
+  issues-with-implementation: 'None'
+- file: 48_apps_test_116_impl_gemini-flash.dfy
+  llm: gemini-flash
+  issues-with-spec: 'None, unmodified'
+  issues-with-implementation: 'None'
+- file: 248_apps_test_2594_impl_claude-sonnet.dfy
+  llm: claude-sonnet
+  issues-with-spec: 'Does not define a |solve| method, |assume {:axiom} false| is just a floating code block'
+  issues-with-implementation: 'None? Defines a |ProcessTestCases| in the absence of a |solve|'

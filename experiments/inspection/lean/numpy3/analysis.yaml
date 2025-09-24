@@ -1,0 +1,25 @@
+benchmark: numpy3
+language: lean
+is-transpiled: false
+checking-successes: true
+files-sampled:
+- file: sorting_searching_bincount.lean
+  llm: claude-sonnet-4
+  issues-with-spec: None
+  issues-with-implementation: None
+- file: array_manipulation_shape.lean
+  llm: gpt-5-mini
+  issues-with-spec: None
+  issues-with-implementation: None
+- file: ufuncs_nout.lean
+  llm: gemini-2.5-flash
+  issues-with-spec: None
+  issues-with-implementation: None
+- file: io_operations_fromfile.lean
+  llm: claude-opus-4.1
+  issues-with-spec: None
+  issues-with-implementation: None
+- file: mathematical_functions_log10.lean
+  llm: claude-sonnet-4
+  issues-with-spec: spec can be used as implementation
+  issues-with-implementation: None
