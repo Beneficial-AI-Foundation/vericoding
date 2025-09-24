@@ -1,169 +1,169 @@
-{"source_id": "humaneval_000.yaml", "source_notes": "translated directly from HumanEval Python source"}
-{"source_id": "humaneval_001_separate-paren-groups.yaml", "source_notes": "jetbrains/verified_cogen"}
-{"source_id": "humaneval_002.yaml", "source_notes": "translated directly from HumanEval Python source"}
-{"source_id": "humaneval_003.yaml", "source_notes": "translated directly from HumanEval Python source"}
-{"source_id": "humaneval_004.yaml", "source_notes": "translated directly from HumanEval Python source"}
-{"source_id": "humaneval_005.yaml", "source_notes": "translated directly from HumanEval Python source"}
-{"source_id": "humaneval_006.yaml", "source_notes": "translated directly from HumanEval Python source"}
-{"source_id": "humaneval_007.yaml", "source_notes": "translated directly from HumanEval Python source"}
-{"source_id": "humaneval_008.yaml", "source_notes": "translated directly from HumanEval Python source"}
-{"source_id": "humaneval_009.yaml", "source_notes": "translated directly from HumanEval Python source"}
-{"source_id": "humaneval_010_is_palindrome__make_palindrome.yaml", "source_notes": "jetbrains/verified_cogen"}
-{"source_id": "humaneval_010_is_palindrome__reverse.yaml", "source_notes": "jetbrains/verified_cogen"}
-{"source_id": "humaneval_011.yaml", "source_notes": "translated directly from HumanEval Python source"}
-{"source_id": "humaneval_012.yaml", "source_notes": "translated directly from HumanEval Python source"}
-{"source_id": "humaneval_013.yaml", "source_notes": "translated directly from HumanEval Python source"}
-{"source_id": "humaneval_014.yaml", "source_notes": "translated directly from HumanEval Python source"}
-{"source_id": "humaneval_016.yaml", "source_notes": "translated directly from HumanEval Python source"}
-{"source_id": "humaneval_018_how_many_times.yaml", "source_notes": "jetbrains/verified_cogen"}
-{"source_id": "humaneval_020.yaml", "source_notes": "translated directly from HumanEval Python source"}
-{"source_id": "humaneval_021_rescale_to_unit.yaml", "source_notes": "jetbrains/verified_cogen"}
-{"source_id": "humaneval_022.yaml", "source_notes": "translated directly from HumanEval Python source"}
-{"source_id": "humaneval_023.yaml", "source_notes": "translated directly from HumanEval Python source"}
-{"source_id": "humaneval_024_largest-divisor.yaml", "source_notes": "jetbrains/verified_cogen"}
-{"source_id": "humaneval_025.yaml", "source_notes": "translated directly from HumanEval Python source"}
-{"source_id": "humaneval_026_remove_duplicates__count.yaml", "source_notes": "jetbrains/verified_cogen"}
-{"source_id": "humaneval_026_remove_duplicates__remove_duplicates.yaml", "source_notes": "jetbrains/verified_cogen"}
-{"source_id": "humaneval_027.yaml", "source_notes": "translated directly from HumanEval Python source"}
-{"source_id": "humaneval_028.yaml", "source_notes": "translated directly from HumanEval Python source"}
-{"source_id": "humaneval_029_filter_by_prefix.yaml", "source_notes": "jetbrains/verified_cogen"}
-{"source_id": "humaneval_030.yaml", "source_notes": "translated directly from HumanEval Python source"}
-{"source_id": "humaneval_031.yaml", "source_notes": "translated directly from HumanEval Python source"}
-{"source_id": "humaneval_033_sort_third__SortSeqPred.yaml", "source_notes": "jetbrains/verified_cogen"}
-{"source_id": "humaneval_033_sort_third__sort_third.yaml", "source_notes": "jetbrains/verified_cogen"}
-{"source_id": "humaneval_034_unique__SortSeq.yaml", "source_notes": "jetbrains/verified_cogen"}
-{"source_id": "humaneval_034_unique__unique.yaml", "source_notes": "jetbrains/verified_cogen"}
-{"source_id": "humaneval_034_unique__uniqueSorted.yaml", "source_notes": "jetbrains/verified_cogen"}
-{"source_id": "humaneval_035.yaml", "source_notes": "translated directly from HumanEval Python source"}
-{"source_id": "humaneval_036_fizz_buzz__count7.yaml", "source_notes": "jetbrains/verified_cogen"}
-{"source_id": "humaneval_036_fizz_buzz__fizz_buzz.yaml", "source_notes": "jetbrains/verified_cogen"}
-{"source_id": "humaneval_037_sort_even__SortSeqPred.yaml", "source_notes": "jetbrains/verified_cogen"}
-{"source_id": "humaneval_037_sort_even__sorted_even.yaml", "source_notes": "jetbrains/verified_cogen"}
-{"source_id": "humaneval_038_encode_cyclic__decode_cyclic.yaml", "source_notes": "jetbrains/verified_cogen"}
-{"source_id": "humaneval_038_encode_cyclic__encode_cyclic.yaml", "source_notes": "jetbrains/verified_cogen"}
-{"source_id": "humaneval_040.yaml", "source_notes": "translated directly from HumanEval Python source"}
-{"source_id": "humaneval_041.yaml", "source_notes": "translated directly from HumanEval Python source"}
-{"source_id": "humaneval_042.yaml", "source_notes": "translated directly from HumanEval Python source"}
-{"source_id": "humaneval_043.yaml", "source_notes": "translated directly from HumanEval Python source"}
-{"source_id": "humaneval_044.yaml", "source_notes": "translated directly from HumanEval Python source"}
-{"source_id": "humaneval_045.yaml", "source_notes": "translated directly from HumanEval Python source"}
-{"source_id": "humaneval_046.yaml", "source_notes": "translated directly from HumanEval Python source"}
-{"source_id": "humaneval_047.yaml", "source_notes": "translated directly from HumanEval Python source"}
-{"source_id": "humaneval_048.yaml", "source_notes": "translated directly from HumanEval Python source"}
-{"source_id": "humaneval_049.yaml", "source_notes": "translated directly from HumanEval Python source"}
-{"source_id": "humaneval_050_encode_shift__decode_shift.yaml", "source_notes": "jetbrains/verified_cogen"}
-{"source_id": "humaneval_050_encode_shift__encode_shift.yaml", "source_notes": "jetbrains/verified_cogen"}
-{"source_id": "humaneval_051.yaml", "source_notes": "translated directly from HumanEval Python source"}
-{"source_id": "humaneval_052.yaml", "source_notes": "translated directly from HumanEval Python source"}
-{"source_id": "humaneval_053.yaml", "source_notes": "translated directly from HumanEval Python source"}
-{"source_id": "humaneval_054.yaml", "source_notes": "translated directly from HumanEval Python source"}
-{"source_id": "humaneval_055.yaml", "source_notes": "translated directly from HumanEval Python source"}
-{"source_id": "humaneval_056.yaml", "source_notes": "translated directly from HumanEval Python source"}
-{"source_id": "humaneval_057.yaml", "source_notes": "translated directly from HumanEval Python source"}
-{"source_id": "humaneval_058_common.yaml", "source_notes": "jetbrains/verified_cogen"}
-{"source_id": "humaneval_059.yaml", "source_notes": "translated directly from HumanEval Python source"}
-{"source_id": "humaneval_060.yaml", "source_notes": "translated directly from HumanEval Python source"}
-{"source_id": "humaneval_062.yaml", "source_notes": "translated directly from HumanEval Python source"}
-{"source_id": "humaneval_063.yaml", "source_notes": "translated directly from HumanEval Python source"}
-{"source_id": "humaneval_064_vowels_count.yaml", "source_notes": "jetbrains/verified_cogen"}
-{"source_id": "humaneval_065.yaml", "source_notes": "translated directly from HumanEval Python source"}
-{"source_id": "humaneval_066.yaml", "source_notes": "translated directly from HumanEval Python source"}
-{"source_id": "humaneval_067.yaml", "source_notes": "translated directly from HumanEval Python source"}
-{"source_id": "humaneval_068.yaml", "source_notes": "translated directly from HumanEval Python source"}
-{"source_id": "humaneval_069.yaml", "source_notes": "translated directly from HumanEval Python source"}
-{"source_id": "humaneval_070_strange_sort_list__SortSeq.yaml", "source_notes": "jetbrains/verified_cogen"}
-{"source_id": "humaneval_070_strange_sort_list__strange_sort_list.yaml", "source_notes": "jetbrains/verified_cogen"}
-{"source_id": "humaneval_070_strange_sort_list__strange_sort_list_helper.yaml", "source_notes": "jetbrains/verified_cogen"}
-{"source_id": "humaneval_072.yaml", "source_notes": "translated directly from HumanEval Python source"}
-{"source_id": "humaneval_073.yaml", "source_notes": "translated directly from HumanEval Python source"}
-{"source_id": "humaneval_074.yaml", "source_notes": "translated directly from HumanEval Python source"}
-{"source_id": "humaneval_075.yaml", "source_notes": "translated directly from HumanEval Python source"}
-{"source_id": "humaneval_076_is_simple_power.yaml", "source_notes": "jetbrains/verified_cogen"}
-{"source_id": "humaneval_077_iscube__cube_root.yaml", "source_notes": "jetbrains/verified_cogen"}
-{"source_id": "humaneval_077_iscube__is_cube.yaml", "source_notes": "jetbrains/verified_cogen"}
-{"source_id": "humaneval_078.yaml", "source_notes": "translated directly from HumanEval Python source"}
-{"source_id": "humaneval_079_decimal_to_binary.yaml", "source_notes": "jetbrains/verified_cogen"}
-{"source_id": "humaneval_080.yaml", "source_notes": "translated directly from HumanEval Python source"}
-{"source_id": "humaneval_081.yaml", "source_notes": "translated directly from HumanEval Python source"}
-{"source_id": "humaneval_082.yaml", "source_notes": "translated directly from HumanEval Python source"}
-{"source_id": "humaneval_083.yaml", "source_notes": "translated directly from HumanEval Python source"}
-{"source_id": "humaneval_084_solve.yaml", "source_notes": "jetbrains/verified_cogen"}
-{"source_id": "humaneval_085_add.yaml", "source_notes": "jetbrains/verified_cogen"}
-{"source_id": "humaneval_087_get_row__SortSeq.yaml", "source_notes": "jetbrains/verified_cogen"}
-{"source_id": "humaneval_087_get_row__get_row.yaml", "source_notes": "jetbrains/verified_cogen"}
-{"source_id": "humaneval_088.yaml", "source_notes": "translated directly from HumanEval Python source"}
-{"source_id": "humaneval_089.yaml", "source_notes": "translated directly from HumanEval Python source"}
-{"source_id": "humaneval_090_next_smallest.yaml", "source_notes": "jetbrains/verified_cogen"}
-{"source_id": "humaneval_091.yaml", "source_notes": "translated directly from HumanEval Python source"}
-{"source_id": "humaneval_092.yaml", "source_notes": "translated directly from HumanEval Python source"}
-{"source_id": "humaneval_093.yaml", "source_notes": "translated directly from HumanEval Python source"}
-{"source_id": "humaneval_094.yaml", "source_notes": "translated directly from HumanEval Python source"}
-{"source_id": "humaneval_095_check_dict_case.yaml", "source_notes": "jetbrains/verified_cogen"}
-{"source_id": "humaneval_096.yaml", "source_notes": "translated directly from HumanEval Python source"}
-{"source_id": "humaneval_097.yaml", "source_notes": "translated directly from HumanEval Python source"}
-{"source_id": "humaneval_098_count_upper.yaml", "source_notes": "jetbrains/verified_cogen"}
-{"source_id": "humaneval_100.yaml", "source_notes": "translated directly from HumanEval Python source"}
-{"source_id": "humaneval_102.yaml", "source_notes": "translated directly from HumanEval Python source"}
-{"source_id": "humaneval_103.yaml", "source_notes": "translated directly from HumanEval Python source"}
-{"source_id": "humaneval_104_unique_digits.yaml", "source_notes": "jetbrains/verified_cogen"}
-{"source_id": "humaneval_105_by_length__SortReverseAndName.yaml", "source_notes": "jetbrains/verified_cogen"}
-{"source_id": "humaneval_105_by_length__SortSeq.yaml", "source_notes": "jetbrains/verified_cogen"}
-{"source_id": "humaneval_105_by_length__reverse.yaml", "source_notes": "jetbrains/verified_cogen"}
-{"source_id": "humaneval_106.yaml", "source_notes": "translated directly from HumanEval Python source"}
-{"source_id": "humaneval_107.yaml", "source_notes": "translated directly from HumanEval Python source"}
-{"source_id": "humaneval_108.yaml", "source_notes": "translated directly from HumanEval Python source"}
-{"source_id": "humaneval_109.yaml", "source_notes": "translated directly from HumanEval Python source"}
-{"source_id": "humaneval_110.yaml", "source_notes": "translated directly from HumanEval Python source"}
-{"source_id": "humaneval_111_histogram.yaml", "source_notes": "jetbrains/verified_cogen"}
-{"source_id": "humaneval_112.yaml", "source_notes": "translated directly from HumanEval Python source"}
-{"source_id": "humaneval_113.yaml", "source_notes": "translated directly from HumanEval Python source"}
-{"source_id": "humaneval_114_minSubArraySum.yaml", "source_notes": "jetbrains/verified_cogen"}
-{"source_id": "humaneval_115.yaml", "source_notes": "translated directly from HumanEval Python source"}
-{"source_id": "humaneval_116_sort_array.yaml", "source_notes": "jetbrains/verified_cogen"}
-{"source_id": "humaneval_118_get_closest_vowel.yaml", "source_notes": "jetbrains/verified_cogen"}
-{"source_id": "humaneval_119.yaml", "source_notes": "translated directly from HumanEval Python source"}
-{"source_id": "humaneval_120_maximum__SortSeq.yaml", "source_notes": "jetbrains/verified_cogen"}
-{"source_id": "humaneval_120_maximum__maximum.yaml", "source_notes": "jetbrains/verified_cogen"}
-{"source_id": "humaneval_121.yaml", "source_notes": "translated directly from HumanEval Python source"}
-{"source_id": "humaneval_122.yaml", "source_notes": "translated directly from HumanEval Python source"}
-{"source_id": "humaneval_123_get_odd_collatz__get_odd_collatz.yaml", "source_notes": "jetbrains/verified_cogen"}
-{"source_id": "humaneval_123_get_odd_collatz__get_odd_collatz_unsorted.yaml", "source_notes": "jetbrains/verified_cogen"}
-{"source_id": "humaneval_123_get_odd_collatz__next_odd_collatz_iter.yaml", "source_notes": "jetbrains/verified_cogen"}
-{"source_id": "humaneval_124.yaml", "source_notes": "translated directly from HumanEval Python source"}
-{"source_id": "humaneval_125.yaml", "source_notes": "translated directly from HumanEval Python source"}
-{"source_id": "humaneval_126.yaml", "source_notes": "translated directly from HumanEval Python source"}
-{"source_id": "humaneval_127_intersection.yaml", "source_notes": "jetbrains/verified_cogen"}
-{"source_id": "humaneval_128.yaml", "source_notes": "translated directly from HumanEval Python source"}
-{"source_id": "humaneval_130_tri.yaml", "source_notes": "jetbrains/verified_cogen"}
-{"source_id": "humaneval_132_is_nested.yaml", "source_notes": "jetbrains/verified_cogen"}
-{"source_id": "humaneval_133_sum_squares.yaml", "source_notes": "jetbrains/verified_cogen"}
-{"source_id": "humaneval_134.yaml", "source_notes": "translated directly from HumanEval Python source"}
-{"source_id": "humaneval_135.yaml", "source_notes": "translated directly from HumanEval Python source"}
-{"source_id": "humaneval_136_largest_smallest_integers.yaml", "source_notes": "jetbrains/verified_cogen"}
-{"source_id": "humaneval_137.yaml", "source_notes": "translated directly from HumanEval Python source"}
-{"source_id": "humaneval_138.yaml", "source_notes": "translated directly from HumanEval Python source"}
-{"source_id": "humaneval_139.yaml", "source_notes": "translated directly from HumanEval Python source"}
-{"source_id": "humaneval_140.yaml", "source_notes": "translated directly from HumanEval Python source"}
-{"source_id": "humaneval_142.yaml", "source_notes": "translated directly from HumanEval Python source"}
-{"source_id": "humaneval_144.yaml", "source_notes": "translated directly from HumanEval Python source"}
-{"source_id": "humaneval_145_order_by_points.yaml", "source_notes": "jetbrains/verified_cogen"}
-{"source_id": "humaneval_146.yaml", "source_notes": "translated directly from HumanEval Python source"}
-{"source_id": "humaneval_147.yaml", "source_notes": "translated directly from HumanEval Python source"}
-{"source_id": "humaneval_148_bf.yaml", "source_notes": "jetbrains/verified_cogen"}
-{"source_id": "humaneval_149_sorted_list_sum__sort_lengths.yaml", "source_notes": "jetbrains/verified_cogen"}
-{"source_id": "humaneval_149_sorted_list_sum__sort_strings.yaml", "source_notes": "jetbrains/verified_cogen"}
-{"source_id": "humaneval_149_sorted_list_sum__sorted_list_sum.yaml", "source_notes": "jetbrains/verified_cogen"}
-{"source_id": "humaneval_150_x_or_y.yaml", "source_notes": "jetbrains/verified_cogen"}
-{"source_id": "humaneval_151.yaml", "source_notes": "translated directly from HumanEval Python source"}
-{"source_id": "humaneval_152.yaml", "source_notes": "translated directly from HumanEval Python source"}
-{"source_id": "humaneval_153.yaml", "source_notes": "translated directly from HumanEval Python source"}
-{"source_id": "humaneval_154_cycpattern_check.yaml", "source_notes": "jetbrains/verified_cogen"}
-{"source_id": "humaneval_155.yaml", "source_notes": "translated directly from HumanEval Python source"}
-{"source_id": "humaneval_157.yaml", "source_notes": "translated directly from HumanEval Python source"}
-{"source_id": "humaneval_158_find_max.yaml", "source_notes": "jetbrains/verified_cogen"}
-{"source_id": "humaneval_159.yaml", "source_notes": "translated directly from HumanEval Python source"}
-{"source_id": "humaneval_161.yaml", "source_notes": "translated directly from HumanEval Python source"}
-{"source_id": "humaneval_162.yaml", "source_notes": "translated directly from HumanEval Python source"}
-{"source_id": "humaneval_163_generate_integers__generate_integers.yaml", "source_notes": "jetbrains/verified_cogen"}
-{"source_id": "humaneval_163_generate_integers__max.yaml", "source_notes": "jetbrains/verified_cogen"}
-{"source_id": "humaneval_163_generate_integers__min.yaml", "source_notes": "jetbrains/verified_cogen"}
+{"source_id": "humaneval_000", "source_notes": "translated directly from HumanEval Python source"}
+{"source_id": "humaneval_001_separate-paren-groups", "source_notes": "jetbrains/verified_cogen"}
+{"source_id": "humaneval_002", "source_notes": "translated directly from HumanEval Python source"}
+{"source_id": "humaneval_003", "source_notes": "translated directly from HumanEval Python source"}
+{"source_id": "humaneval_004", "source_notes": "translated directly from HumanEval Python source"}
+{"source_id": "humaneval_005", "source_notes": "translated directly from HumanEval Python source"}
+{"source_id": "humaneval_006", "source_notes": "translated directly from HumanEval Python source"}
+{"source_id": "humaneval_007", "source_notes": "translated directly from HumanEval Python source"}
+{"source_id": "humaneval_008", "source_notes": "translated directly from HumanEval Python source"}
+{"source_id": "humaneval_009", "source_notes": "translated directly from HumanEval Python source"}
+{"source_id": "humaneval_010_is_palindrome__make_palindrome", "source_notes": "jetbrains/verified_cogen"}
+{"source_id": "humaneval_010_is_palindrome__reverse", "source_notes": "jetbrains/verified_cogen"}
+{"source_id": "humaneval_011", "source_notes": "translated directly from HumanEval Python source"}
+{"source_id": "humaneval_012", "source_notes": "translated directly from HumanEval Python source"}
+{"source_id": "humaneval_013", "source_notes": "translated directly from HumanEval Python source"}
+{"source_id": "humaneval_014", "source_notes": "translated directly from HumanEval Python source"}
+{"source_id": "humaneval_016", "source_notes": "translated directly from HumanEval Python source"}
+{"source_id": "humaneval_018_how_many_times", "source_notes": "jetbrains/verified_cogen"}
+{"source_id": "humaneval_020", "source_notes": "translated directly from HumanEval Python source"}
+{"source_id": "humaneval_021_rescale_to_unit", "source_notes": "jetbrains/verified_cogen"}
+{"source_id": "humaneval_022", "source_notes": "translated directly from HumanEval Python source"}
+{"source_id": "humaneval_023", "source_notes": "translated directly from HumanEval Python source"}
+{"source_id": "humaneval_024_largest-divisor", "source_notes": "jetbrains/verified_cogen"}
+{"source_id": "humaneval_025", "source_notes": "translated directly from HumanEval Python source"}
+{"source_id": "humaneval_026_remove_duplicates__count", "source_notes": "jetbrains/verified_cogen"}
+{"source_id": "humaneval_026_remove_duplicates__remove_duplicates", "source_notes": "jetbrains/verified_cogen"}
+{"source_id": "humaneval_027", "source_notes": "translated directly from HumanEval Python source"}
+{"source_id": "humaneval_028", "source_notes": "translated directly from HumanEval Python source"}
+{"source_id": "humaneval_029_filter_by_prefix", "source_notes": "jetbrains/verified_cogen"}
+{"source_id": "humaneval_030", "source_notes": "translated directly from HumanEval Python source"}
+{"source_id": "humaneval_031", "source_notes": "translated directly from HumanEval Python source"}
+{"source_id": "humaneval_033_sort_third__SortSeqPred", "source_notes": "jetbrains/verified_cogen"}
+{"source_id": "humaneval_033_sort_third__sort_third", "source_notes": "jetbrains/verified_cogen"}
+{"source_id": "humaneval_034_unique__SortSeq", "source_notes": "jetbrains/verified_cogen"}
+{"source_id": "humaneval_034_unique__unique", "source_notes": "jetbrains/verified_cogen"}
+{"source_id": "humaneval_034_unique__uniqueSorted", "source_notes": "jetbrains/verified_cogen"}
+{"source_id": "humaneval_035", "source_notes": "translated directly from HumanEval Python source"}
+{"source_id": "humaneval_036_fizz_buzz__count7", "source_notes": "jetbrains/verified_cogen"}
+{"source_id": "humaneval_036_fizz_buzz__fizz_buzz", "source_notes": "jetbrains/verified_cogen"}
+{"source_id": "humaneval_037_sort_even__SortSeqPred", "source_notes": "jetbrains/verified_cogen"}
+{"source_id": "humaneval_037_sort_even__sorted_even", "source_notes": "jetbrains/verified_cogen"}
+{"source_id": "humaneval_038_encode_cyclic__decode_cyclic", "source_notes": "jetbrains/verified_cogen"}
+{"source_id": "humaneval_038_encode_cyclic__encode_cyclic", "source_notes": "jetbrains/verified_cogen"}
+{"source_id": "humaneval_040", "source_notes": "translated directly from HumanEval Python source"}
+{"source_id": "humaneval_041", "source_notes": "translated directly from HumanEval Python source"}
+{"source_id": "humaneval_042", "source_notes": "translated directly from HumanEval Python source"}
+{"source_id": "humaneval_043", "source_notes": "translated directly from HumanEval Python source"}
+{"source_id": "humaneval_044", "source_notes": "translated directly from HumanEval Python source"}
+{"source_id": "humaneval_045", "source_notes": "translated directly from HumanEval Python source"}
+{"source_id": "humaneval_046", "source_notes": "translated directly from HumanEval Python source"}
+{"source_id": "humaneval_047", "source_notes": "translated directly from HumanEval Python source"}
+{"source_id": "humaneval_048", "source_notes": "translated directly from HumanEval Python source"}
+{"source_id": "humaneval_049", "source_notes": "translated directly from HumanEval Python source"}
+{"source_id": "humaneval_050_encode_shift__decode_shift", "source_notes": "jetbrains/verified_cogen"}
+{"source_id": "humaneval_050_encode_shift__encode_shift", "source_notes": "jetbrains/verified_cogen"}
+{"source_id": "humaneval_051", "source_notes": "translated directly from HumanEval Python source"}
+{"source_id": "humaneval_052", "source_notes": "translated directly from HumanEval Python source"}
+{"source_id": "humaneval_053", "source_notes": "translated directly from HumanEval Python source"}
+{"source_id": "humaneval_054", "source_notes": "translated directly from HumanEval Python source"}
+{"source_id": "humaneval_055", "source_notes": "translated directly from HumanEval Python source"}
+{"source_id": "humaneval_056", "source_notes": "translated directly from HumanEval Python source"}
+{"source_id": "humaneval_057", "source_notes": "translated directly from HumanEval Python source"}
+{"source_id": "humaneval_058_common", "source_notes": "jetbrains/verified_cogen"}
+{"source_id": "humaneval_059", "source_notes": "translated directly from HumanEval Python source"}
+{"source_id": "humaneval_060", "source_notes": "translated directly from HumanEval Python source"}
+{"source_id": "humaneval_062", "source_notes": "translated directly from HumanEval Python source"}
+{"source_id": "humaneval_063", "source_notes": "translated directly from HumanEval Python source"}
+{"source_id": "humaneval_064_vowels_count", "source_notes": "jetbrains/verified_cogen"}
+{"source_id": "humaneval_065", "source_notes": "translated directly from HumanEval Python source"}
+{"source_id": "humaneval_066", "source_notes": "translated directly from HumanEval Python source"}
+{"source_id": "humaneval_067", "source_notes": "translated directly from HumanEval Python source"}
+{"source_id": "humaneval_068", "source_notes": "translated directly from HumanEval Python source"}
+{"source_id": "humaneval_069", "source_notes": "translated directly from HumanEval Python source"}
+{"source_id": "humaneval_070_strange_sort_list__SortSeq", "source_notes": "jetbrains/verified_cogen"}
+{"source_id": "humaneval_070_strange_sort_list__strange_sort_list", "source_notes": "jetbrains/verified_cogen"}
+{"source_id": "humaneval_070_strange_sort_list__strange_sort_list_helper", "source_notes": "jetbrains/verified_cogen"}
+{"source_id": "humaneval_072", "source_notes": "translated directly from HumanEval Python source"}
+{"source_id": "humaneval_073", "source_notes": "translated directly from HumanEval Python source"}
+{"source_id": "humaneval_074", "source_notes": "translated directly from HumanEval Python source"}
+{"source_id": "humaneval_075", "source_notes": "translated directly from HumanEval Python source"}
+{"source_id": "humaneval_076_is_simple_power", "source_notes": "jetbrains/verified_cogen"}
+{"source_id": "humaneval_077_iscube__cube_root", "source_notes": "jetbrains/verified_cogen"}
+{"source_id": "humaneval_077_iscube__is_cube", "source_notes": "jetbrains/verified_cogen"}
+{"source_id": "humaneval_078", "source_notes": "translated directly from HumanEval Python source"}
+{"source_id": "humaneval_079_decimal_to_binary", "source_notes": "jetbrains/verified_cogen"}
+{"source_id": "humaneval_080", "source_notes": "translated directly from HumanEval Python source"}
+{"source_id": "humaneval_081", "source_notes": "translated directly from HumanEval Python source"}
+{"source_id": "humaneval_082", "source_notes": "translated directly from HumanEval Python source"}
+{"source_id": "humaneval_083", "source_notes": "translated directly from HumanEval Python source"}
+{"source_id": "humaneval_084_solve", "source_notes": "jetbrains/verified_cogen"}
+{"source_id": "humaneval_085_add", "source_notes": "jetbrains/verified_cogen"}
+{"source_id": "humaneval_087_get_row__SortSeq", "source_notes": "jetbrains/verified_cogen"}
+{"source_id": "humaneval_087_get_row__get_row", "source_notes": "jetbrains/verified_cogen"}
+{"source_id": "humaneval_088", "source_notes": "translated directly from HumanEval Python source"}
+{"source_id": "humaneval_089", "source_notes": "translated directly from HumanEval Python source"}
+{"source_id": "humaneval_090_next_smallest", "source_notes": "jetbrains/verified_cogen"}
+{"source_id": "humaneval_091", "source_notes": "translated directly from HumanEval Python source"}
+{"source_id": "humaneval_092", "source_notes": "translated directly from HumanEval Python source"}
+{"source_id": "humaneval_093", "source_notes": "translated directly from HumanEval Python source"}
+{"source_id": "humaneval_094", "source_notes": "translated directly from HumanEval Python source"}
+{"source_id": "humaneval_095_check_dict_case", "source_notes": "jetbrains/verified_cogen"}
+{"source_id": "humaneval_096", "source_notes": "translated directly from HumanEval Python source"}
+{"source_id": "humaneval_097", "source_notes": "translated directly from HumanEval Python source"}
+{"source_id": "humaneval_098_count_upper", "source_notes": "jetbrains/verified_cogen"}
+{"source_id": "humaneval_100", "source_notes": "translated directly from HumanEval Python source"}
+{"source_id": "humaneval_102", "source_notes": "translated directly from HumanEval Python source"}
+{"source_id": "humaneval_103", "source_notes": "translated directly from HumanEval Python source"}
+{"source_id": "humaneval_104_unique_digits", "source_notes": "jetbrains/verified_cogen"}
+{"source_id": "humaneval_105_by_length__SortReverseAndName", "source_notes": "jetbrains/verified_cogen"}
+{"source_id": "humaneval_105_by_length__SortSeq", "source_notes": "jetbrains/verified_cogen"}
+{"source_id": "humaneval_105_by_length__reverse", "source_notes": "jetbrains/verified_cogen"}
+{"source_id": "humaneval_106", "source_notes": "translated directly from HumanEval Python source"}
+{"source_id": "humaneval_107", "source_notes": "translated directly from HumanEval Python source"}
+{"source_id": "humaneval_108", "source_notes": "translated directly from HumanEval Python source"}
+{"source_id": "humaneval_109", "source_notes": "translated directly from HumanEval Python source"}
+{"source_id": "humaneval_110", "source_notes": "translated directly from HumanEval Python source"}
+{"source_id": "humaneval_111_histogram", "source_notes": "jetbrains/verified_cogen"}
+{"source_id": "humaneval_112", "source_notes": "translated directly from HumanEval Python source"}
+{"source_id": "humaneval_113", "source_notes": "translated directly from HumanEval Python source"}
+{"source_id": "humaneval_114_minSubArraySum", "source_notes": "jetbrains/verified_cogen"}
+{"source_id": "humaneval_115", "source_notes": "translated directly from HumanEval Python source"}
+{"source_id": "humaneval_116_sort_array", "source_notes": "jetbrains/verified_cogen"}
+{"source_id": "humaneval_118_get_closest_vowel", "source_notes": "jetbrains/verified_cogen"}
+{"source_id": "humaneval_119", "source_notes": "translated directly from HumanEval Python source"}
+{"source_id": "humaneval_120_maximum__SortSeq", "source_notes": "jetbrains/verified_cogen"}
+{"source_id": "humaneval_120_maximum__maximum", "source_notes": "jetbrains/verified_cogen"}
+{"source_id": "humaneval_121", "source_notes": "translated directly from HumanEval Python source"}
+{"source_id": "humaneval_122", "source_notes": "translated directly from HumanEval Python source"}
+{"source_id": "humaneval_123_get_odd_collatz__get_odd_collatz", "source_notes": "jetbrains/verified_cogen"}
+{"source_id": "humaneval_123_get_odd_collatz__get_odd_collatz_unsorted", "source_notes": "jetbrains/verified_cogen"}
+{"source_id": "humaneval_123_get_odd_collatz__next_odd_collatz_iter", "source_notes": "jetbrains/verified_cogen"}
+{"source_id": "humaneval_124", "source_notes": "translated directly from HumanEval Python source"}
+{"source_id": "humaneval_125", "source_notes": "translated directly from HumanEval Python source"}
+{"source_id": "humaneval_126", "source_notes": "translated directly from HumanEval Python source"}
+{"source_id": "humaneval_127_intersection", "source_notes": "jetbrains/verified_cogen"}
+{"source_id": "humaneval_128", "source_notes": "translated directly from HumanEval Python source"}
+{"source_id": "humaneval_130_tri", "source_notes": "jetbrains/verified_cogen"}
+{"source_id": "humaneval_132_is_nested", "source_notes": "jetbrains/verified_cogen"}
+{"source_id": "humaneval_133_sum_squares", "source_notes": "jetbrains/verified_cogen"}
+{"source_id": "humaneval_134", "source_notes": "translated directly from HumanEval Python source"}
+{"source_id": "humaneval_135", "source_notes": "translated directly from HumanEval Python source"}
+{"source_id": "humaneval_136_largest_smallest_integers", "source_notes": "jetbrains/verified_cogen"}
+{"source_id": "humaneval_137", "source_notes": "translated directly from HumanEval Python source"}
+{"source_id": "humaneval_138", "source_notes": "translated directly from HumanEval Python source"}
+{"source_id": "humaneval_139", "source_notes": "translated directly from HumanEval Python source"}
+{"source_id": "humaneval_140", "source_notes": "translated directly from HumanEval Python source"}
+{"source_id": "humaneval_142", "source_notes": "translated directly from HumanEval Python source"}
+{"source_id": "humaneval_144", "source_notes": "translated directly from HumanEval Python source"}
+{"source_id": "humaneval_145_order_by_points", "source_notes": "jetbrains/verified_cogen"}
+{"source_id": "humaneval_146", "source_notes": "translated directly from HumanEval Python source"}
+{"source_id": "humaneval_147", "source_notes": "translated directly from HumanEval Python source"}
+{"source_id": "humaneval_148_bf", "source_notes": "jetbrains/verified_cogen"}
+{"source_id": "humaneval_149_sorted_list_sum__sort_lengths", "source_notes": "jetbrains/verified_cogen"}
+{"source_id": "humaneval_149_sorted_list_sum__sort_strings", "source_notes": "jetbrains/verified_cogen"}
+{"source_id": "humaneval_149_sorted_list_sum__sorted_list_sum", "source_notes": "jetbrains/verified_cogen"}
+{"source_id": "humaneval_150_x_or_y", "source_notes": "jetbrains/verified_cogen"}
+{"source_id": "humaneval_151", "source_notes": "translated directly from HumanEval Python source"}
+{"source_id": "humaneval_152", "source_notes": "translated directly from HumanEval Python source"}
+{"source_id": "humaneval_153", "source_notes": "translated directly from HumanEval Python source"}
+{"source_id": "humaneval_154_cycpattern_check", "source_notes": "jetbrains/verified_cogen"}
+{"source_id": "humaneval_155", "source_notes": "translated directly from HumanEval Python source"}
+{"source_id": "humaneval_157", "source_notes": "translated directly from HumanEval Python source"}
+{"source_id": "humaneval_158_find_max", "source_notes": "jetbrains/verified_cogen"}
+{"source_id": "humaneval_159", "source_notes": "translated directly from HumanEval Python source"}
+{"source_id": "humaneval_161", "source_notes": "translated directly from HumanEval Python source"}
+{"source_id": "humaneval_162", "source_notes": "translated directly from HumanEval Python source"}
+{"source_id": "humaneval_163_generate_integers__generate_integers", "source_notes": "jetbrains/verified_cogen"}
+{"source_id": "humaneval_163_generate_integers__max", "source_notes": "jetbrains/verified_cogen"}
+{"source_id": "humaneval_163_generate_integers__min", "source_notes": "jetbrains/verified_cogen"}
