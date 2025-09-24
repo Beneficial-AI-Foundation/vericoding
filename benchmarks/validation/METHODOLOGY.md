@@ -13,3 +13,8 @@ We can automate step 1, by calling
 uv run scripts/pick_random.py --lang <LANG> --bench <BENCH> --n <N>
 ```
 from the repo root.
+
+For the lean runs the output files weren't located in the same way so the script couldn't be used. Instead, repeating 5 times for each bench:
+- randomly choose an llm with at least one success
+- Open the wandb page, navigate to table 3, filter for success, randomly choose one of these files
+- copy the output file to lean-enabled IDE and check
