@@ -1,6 +1,6 @@
 # Code2Verus
 
-A generalized verification language translator that supports bidirectional translation between verification languages using AI models. Originally extended from [Quinn's tool](https://github.com/Beneficial-AI-Foundation/dafny2verus), now supports multiple translation directions including the new capability to translate from [Verus](https://verus-lang.github.io/verus/guide/overview.html) back to other verification languages.
+A generalized verification language translator that supports bidirectional translation between verification languages using AI models. Originally extended from an earlier Dafny-to-Verus translator, it now supports multiple translation directions including the new capability to translate from [Verus](https://verus-lang.github.io/verus/guide/overview.html) back to other verification languages.
 
 ## Overview
 
@@ -16,7 +16,7 @@ Code2Verus uses large language models to automatically translate verification co
   - **Verus → Dafny** (NEW!)
   - Framework ready for additional combinations (Lean ↔ Dafny, Verus ↔ Lean)
 
-### Features inherited from Quinn's dafny2verus
+### Features inherited from the original dafny2verus
 
 - **Parallel processing**: Concurrent translation with configurable limits
 - **Success tracking**: Tracks successful translations to avoid reprocessing
@@ -246,7 +246,7 @@ The `config.yml` file contains:
 
 The project includes specialized guidance files for Claude AI:
 
-- **`CLAUDE_DAFNY.md`**: Provides Claude with context about Dafny-to-Verus translation patterns, common idioms, and best practices (inherited from Quinn's dafny2verus)
+- **`CLAUDE_DAFNY.md`**: Provides Claude with context about Dafny-to-Verus translation patterns, common idioms, and best practices (inherited from the original dafny2verus project)
 - **`CLAUDE_LEAN.md`**: Contains Lean-specific translation guidance for Claude
 
 These files are part of the AI-assisted development workflow and help maintain consistency in translations when using Claude for code assistance.
