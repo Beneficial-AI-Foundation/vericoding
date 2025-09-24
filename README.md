@@ -11,7 +11,15 @@ The `benchmarks` folder contains our three benchmarks in Dafny, Verus and Lean.
 
 * There are two files `lean_tasks.jsonl` and `lean_issues.jsonl` which contain each task as a JSON line. The task is decomposed into different components, such as the preamble, spec and code. We also provide additional metadata from our quality analysis. This data is also available as CSV files.
 
-* The `README.md` file lists the original sources used in constructing these benchmarks, with download links. The `tasks_metadata.jsonl` provides a dictionary between our Vericoding IDs and the source IDs of each task.
+* The `README.md` file lists the original sources used in constructing these benchmarks, with download links. The `vericoding_benchmark_v1.csv` provides a list of Vericoding IDs and the source IDs for all 12,504 tasks. The information is also available in JSONL format: `verucoding_benchmark_v1.jsonl`.
+
+## Experiments
+
+The experiments folder contains the outcomes of our vericoding experiments on the benchmarks.
+
+* The file `vericoding_results_v1.csv` which is a list of the outcomes of all 55397 experiments involving vericoding tasks across different models.
+
+* The folder `inspection` contains our manual inspection reports on the successful runs.
 
 ## Source code
 

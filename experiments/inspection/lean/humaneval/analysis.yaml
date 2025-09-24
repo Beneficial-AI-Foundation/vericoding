@@ -1,0 +1,27 @@
+benchmark: humaneval
+language: lean
+is-transpiled: false
+checking-successes: true
+files-sampled:
+- file: HumanEval_54.lean
+  llm: gemini-2.5-pro
+  issues-with-spec: None
+  issues-with-implementation: None
+- file: HumanEval_46.lean
+  llm: gpt-5
+  issues-with-spec: Weakish – NL spec says “write a function to efficiently compute
+    the n-th element of the fib4 number sequence. Do not use recursion.” but spec
+    theorem doesn’t require this
+  issues-with-implementation: Fine but functions which weren’t required were added
+- file: HumanEval_63.lean
+  llm: claude-sonnet-4
+  issues-with-spec: None
+  issues-with-implementation: Fine but functions which weren’t required were added
+- file: HumanEval_53.lean
+  llm: claude-opus-4.1
+  issues-with-spec: None
+  issues-with-implementation: None
+- file: HumanEval_45.lean
+  llm: gpt-5
+  issues-with-spec: None
+  issues-with-implementation: None

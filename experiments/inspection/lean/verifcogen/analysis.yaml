@@ -1,0 +1,25 @@
+benchmark: verifcogen
+language: lean
+is-transpiled: false
+checking-successes: true
+files-sampled:
+- file: rustbench_arithmetic_weird.lean
+  llm: gpt-5
+  issues-with-spec: spec matches original, no NL spec
+  issues-with-implementation: None
+- file: proofsynthesis_task_id_798.lean
+  llm: 'glm-4.5 '
+  issues-with-spec: spec can be used as implementation
+  issues-with-implementation: None
+- file: proofsynthesis_task_id_554.lean
+  llm: gpt-5
+  issues-with-spec: None
+  issues-with-implementation: None
+- file: proofsynthesis_task_id_170.lean
+  llm: gpt-5-mini
+  issues-with-spec: spec can be used as implementation
+  issues-with-implementation: None
+- file: proofsynthesis_task_id_554.lean
+  llm: claude-opus-4.1
+  issues-with-spec: spec can be used as implementation
+  issues-with-implementation: None

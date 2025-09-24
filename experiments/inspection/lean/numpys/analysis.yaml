@@ -1,0 +1,25 @@
+benchmark: numpys
+language: lean
+is-transpiled: false
+checking-successes: true
+files-sampled:
+- file: NpRightShift-spec.lean
+  llm: gpt-5-mini
+  issues-with-spec: None
+  issues-with-implementation: None
+- file: NpSign-spec.lean
+  llm: claude-sonnet-4
+  issues-with-spec: None
+  issues-with-implementation: None
+- file: NpEqual-spec.lean
+  llm: 'glm-4.5 '
+  issues-with-spec: None
+  issues-with-implementation: None
+- file: NpFloorDivide-spec.lean
+  llm: 'glm-4.5 '
+  issues-with-spec: None
+  issues-with-implementation: None
+- file: NpMultiply-spec.lean
+  llm: gpt-5
+  issues-with-spec: None
+  issues-with-implementation: None
