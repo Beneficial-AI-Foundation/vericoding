@@ -33,25 +33,4 @@ theorem factorial_recurrence {n : Int} :
 
 theorem factorial_increasing {n : Int} :
   n > 1 → (factorial n).get! > (factorial (n-1)).get! := sorry
-
-/-
-info: 120
--/
--- #guard_msgs in
--- #eval factorial 5
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval factorial 0
-
-/-
-info: None
--/
--- #guard_msgs in
--- #eval factorial -5
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

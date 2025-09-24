@@ -29,25 +29,4 @@ theorem solution_validity (eq result : String) :
    ∃ x:Int, result = s!"x={x}" ∧ 
    -- The solution x satisfies the original equation
    sorry) := sorry
-
-/-
-info: 'x=2'
--/
--- #guard_msgs in
--- #eval solve_equation "x+5-3+x=6+x-2"
-
-/-
-info: 'Infinite solutions'
--/
--- #guard_msgs in
--- #eval solve_equation "x=x"
-
-/-
-info: 'x=0'
--/
--- #guard_msgs in
--- #eval solve_equation "2x=x"
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

@@ -25,25 +25,4 @@ theorem five_by_2n_deterministic (n : Nat) :
 theorem five_by_2n_sequential (n : Nat) :
   n > 0 → True :=
   sorry
-
-/-
-info: 8
--/
--- #guard_msgs in
--- #eval five_by_2n 1
-
-/-
-info: 95
--/
--- #guard_msgs in
--- #eval five_by_2n 2
-
-/-
-info: 1183
--/
--- #guard_msgs in
--- #eval five_by_2n 3
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

@@ -25,25 +25,4 @@ theorem zero_threshold (n : Nat) (ingredients : List Nat) (h : ingredients ≠ [
 theorem single_ingredient (n : Nat) (x : Nat) (ingredient : Nat) :
   check_ingredients n x [ingredient] = if ingredient ≥ x then "YES" else "NO" :=
   sorry
-
-/-
-info: 'NO'
--/
--- #guard_msgs in
--- #eval check_ingredients 5 100 [11, 22, 33, 44, 55]
-
-/-
-info: 'YES'
--/
--- #guard_msgs in
--- #eval check_ingredients 5 50 [10, 20, 30, 40, 50]
-
-/-
-info: 'YES'
--/
--- #guard_msgs in
--- #eval check_ingredients 5 45 [12, 24, 36, 48, 60]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

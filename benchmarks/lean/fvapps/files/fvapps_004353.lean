@@ -45,25 +45,4 @@ theorem bishop_diagonal_bounds {sq1 sq2 : Square} :
     (Char.toNat sq.file - Char.toNat 'a') ≤ 7 ∧
     0 ≤ (Char.toNat sq.rank - Char.toNat '1') ∧
     (Char.toNat sq.rank - Char.toNat '1') ≤ 7 := sorry
-
-/-
-info: ['c8', 'h3']
--/
--- #guard_msgs in
--- #eval bishop_diagonal "d7" "f5"
-
-/-
-info: ['b5', 'd8']
--/
--- #guard_msgs in
--- #eval bishop_diagonal "d8" "b5"
-
-/-
-info: ['a1', 'h8']
--/
--- #guard_msgs in
--- #eval bishop_diagonal "a1" "h8"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

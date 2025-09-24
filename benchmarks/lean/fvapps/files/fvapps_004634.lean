@@ -29,25 +29,4 @@ theorem candles_edge_case_min :
 theorem candles_no_new_possible (n m : Nat)
   (h1 : n ≥ 1) (h2 : m > n) :
   candles n m = n := by sorry
-
-/-
-info: 9
--/
--- #guard_msgs in
--- #eval candles 5 2
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval candles 1 2
-
-/-
-info: 11
--/
--- #guard_msgs in
--- #eval candles 8 3
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

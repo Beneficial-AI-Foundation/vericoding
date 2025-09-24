@@ -34,6 +34,3 @@ theorem translation_invariance (points : List (List Int)) (dx dy : Int) :
   min_cost_connect_points points = 
     min_cost_connect_points (points.map (fun p => [p.get! 0 + dx, p.get! 1 + dy])) := sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

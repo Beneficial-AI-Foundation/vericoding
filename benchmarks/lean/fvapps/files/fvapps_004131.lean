@@ -23,25 +23,4 @@ theorem colorful_iff_unique_products (n : Nat) (h : n > 0) (h2 : n < 10000) :
 theorem repeated_digits_not_colorful (n : Nat) (h : n > 0) (h2 : n < 10000)
   (h3 : (toString n).data.length > ((toString n).data.eraseDups).length) :
   colorful n = false := sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval colorful 5
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval colorful 263
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval colorful 236
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

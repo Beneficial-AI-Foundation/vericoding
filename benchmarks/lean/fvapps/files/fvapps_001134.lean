@@ -24,6 +24,3 @@ theorem count_ands_case_insensitive (s : String) :
 theorem count_ands_empty :
   count_ands "" = 0 := sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

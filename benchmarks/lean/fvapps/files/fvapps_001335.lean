@@ -24,6 +24,3 @@ theorem solve_grid_probability_symmetry (n m : Nat)
 theorem solve_grid_probability_one_one :
   (solve_grid_probability 1 1 - 1).abs < 0.000001 := sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

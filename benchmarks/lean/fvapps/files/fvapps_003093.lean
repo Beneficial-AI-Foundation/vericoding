@@ -22,25 +22,4 @@ theorem any_odd_zero :
 
 theorem any_odd_agreement {x : Nat} :
   any_odd x = (x &&& pattern ≠ 0) := sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval any_odd 2
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval any_odd 5
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval any_odd 170
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

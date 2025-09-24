@@ -37,13 +37,4 @@ theorem count_good_triplets_permutation_invariant (nums nums' : List Nat) :
   List.Perm nums nums' →
   count_good_triplets nums = count_good_triplets nums' :=
 sorry
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval count_good_triplets [1, 1, 2, 3]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

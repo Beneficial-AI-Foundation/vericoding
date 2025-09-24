@@ -25,31 +25,4 @@ theorem convergents_known_results :
 theorem convergents_digits_only (n : Nat) (h : n > 0) :
   ∃ k, convergents_of_e n < 10^k :=
   sorry
-
-/-
-info: 17
--/
--- #guard_msgs in
--- #eval convergents_of_e 10
-
-/-
-info: 125
--/
--- #guard_msgs in
--- #eval convergents_of_e 57
-
-/-
-info: 298
--/
--- #guard_msgs in
--- #eval convergents_of_e 125
-
-/-
-info: 938
--/
--- #guard_msgs in
--- #eval convergents_of_e 298
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

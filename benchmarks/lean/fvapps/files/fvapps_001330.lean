@@ -29,25 +29,4 @@ theorem solve_base_case_one :
 theorem solve_base_case_two :
   solve 2 = 1 :=
   sorry
-
-/-
-info: 21
--/
--- #guard_msgs in
--- #eval solve 7
-
-/-
-info: 36
--/
--- #guard_msgs in
--- #eval solve 9
-
-/-
-info: 10
--/
--- #guard_msgs in
--- #eval solve 5
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

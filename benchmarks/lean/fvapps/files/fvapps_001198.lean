@@ -32,25 +32,4 @@ theorem determine_winner_single_stone_parity
   (n : Nat) (stones : List Nat) 
   (h₁ : stones = List.replicate n 1) :
   determine_winner n 1 stones = (if n % 2 = 1 then "Jesse" else "Walter") := sorry
-
-/-
-info: 'Jesse'
--/
--- #guard_msgs in
--- #eval determine_winner 5 3 [4, 4, 4, 3, 4]
-
-/-
-info: 'Walter'
--/
--- #guard_msgs in
--- #eval determine_winner 7 4 [3, 3, 1, 1, 1, 2, 4]
-
-/-
-info: 'Jesse'
--/
--- #guard_msgs in
--- #eval determine_winner 4 2 [1, 2, 3, 4]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

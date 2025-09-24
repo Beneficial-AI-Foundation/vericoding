@@ -38,25 +38,4 @@ theorem maxSatisfied_single_element {customers : List Nat}
   (maxSatisfied customers grumpy_zeros 1 = sum customers
   ∧ maxSatisfied customers grumpy_ones 1 ≥ minimum customers) := by
   sorry
-
-/-
-info: 16
--/
--- #guard_msgs in
--- #eval maxSatisfied [1, 0, 1, 2, 1, 1, 7, 5] [0, 1, 0, 1, 0, 1, 0, 1] 3
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval maxSatisfied [1] [0] 1
-
-/-
-info: 6
--/
--- #guard_msgs in
--- #eval maxSatisfied [2, 4, 1, 4, 1] [1, 1, 1, 1, 1] 2
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

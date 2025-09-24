@@ -23,6 +23,3 @@ theorem count_robots_invalid_input (strings : List String) :
   count_robots strings = ["0 robots functioning automatik", "0 robots dancing mechanik"] :=
 sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

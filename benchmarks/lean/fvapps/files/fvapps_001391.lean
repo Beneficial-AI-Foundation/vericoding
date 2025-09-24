@@ -22,25 +22,4 @@ theorem solve_cake_baking_specific_cases :
   solve_cake_baking 2 = 3 ∧ 
   solve_cake_baking 4 = 4 ∧ 
   solve_cake_baking 10 = 7 := sorry
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval solve_cake_baking 2
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval solve_cake_baking 4
-
-/-
-info: 7
--/
--- #guard_msgs in
--- #eval solve_cake_baking 10
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

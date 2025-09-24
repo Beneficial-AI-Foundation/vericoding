@@ -26,8 +26,7 @@ fn mk_legendre(
     symbol: String
 ) -> (result: Legendre)
     ensures
-        result.coef.len() == coef.len(),
-        forall|i: int| 0 <= i < coef.len() ==> result.coef[i] == coef[i],
+        result.coef@ == coef@,
         result.domain == domain,
         result.window == window,
         result.symbol == symbol,

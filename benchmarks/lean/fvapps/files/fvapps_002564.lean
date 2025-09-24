@@ -25,25 +25,4 @@ theorem length_difference_equals_uppercase_count (s : String) :
 theorem lowercase_unchanged (s : String) :
   s.data.all (fun c => !c.isUpper) →
   solution s = s := sorry
-
-/-
-info: 'hello World'
--/
--- #guard_msgs in
--- #eval solution "helloWorld"
-
-/-
-info: 'camel Case'
--/
--- #guard_msgs in
--- #eval solution "camelCase"
-
-/-
-info: 'break Camel Case'
--/
--- #guard_msgs in
--- #eval solution "breakCamelCase"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

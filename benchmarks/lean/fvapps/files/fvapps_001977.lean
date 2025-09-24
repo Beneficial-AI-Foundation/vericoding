@@ -22,25 +22,4 @@ theorem sorted_positions_same_result {n : Nat} (h : n ≥ 2) (h2 : n % 2 = 0)
   (h5 : ∀ x, x ∈ positions1 ↔ x ∈ positions2) :
   find_minimum_distance n positions1 = find_minimum_distance n positions2 :=
 sorry
-
-/-
-info: 7
--/
--- #guard_msgs in
--- #eval find_minimum_distance 6 [0, 1, 3, 7, 15, 31]
-
-/-
-info: 36
--/
--- #guard_msgs in
--- #eval find_minimum_distance 2 [73, 37]
-
-/-
-info: 500000000
--/
--- #guard_msgs in
--- #eval find_minimum_distance 4 [0, 500000000, 500000001, 1000000000]
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: guarded

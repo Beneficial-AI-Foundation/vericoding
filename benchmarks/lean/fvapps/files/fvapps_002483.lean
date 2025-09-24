@@ -1,12 +1,13 @@
 -- <vc-preamble>
-def get_top_three_chars (s : String) : String :=
-  sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
+def get_top_three_chars (s : String) : String :=
+  sorry
+
 def String.count (s : String) (c : String) : Nat :=
   sorry
 -- </vc-definitions>
@@ -28,7 +29,7 @@ theorem get_top_three_chars_valid_format (s : String)
     (parts1.get! 1).toNat! ≥ (parts2.get! 1).toNat!) ∧
   (let chars := lines.map (λ l => (l.splitOn " ").get! 0);
    chars.eraseDups = chars) :=
-  sorry
+sorry
 
 theorem get_top_three_chars_alphabetical_tiebreak (s : String)
   (h : s.length ≥ 2)
@@ -43,8 +44,5 @@ theorem get_top_three_chars_alphabetical_tiebreak (s : String)
     let char1 := parts1.get! 0;
     let char2 := parts2.get! 0;
     count1 = count2 → char1 > char2 :=
-  sorry
+sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

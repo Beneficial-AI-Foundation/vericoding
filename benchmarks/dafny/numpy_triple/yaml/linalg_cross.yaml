@@ -1,0 +1,33 @@
+---
+vc-description: |-
+  Implementation of numpy.linalg.cross: Return the cross product of 3-element vectors.
+  Computes the cross product of two 3-element vectors following the right-hand rule convention.
+  For 3D vectors a = [a₀, a₁, a₂] and b = [b₀, b₁, b₂], the cross product is:
+  a × b = [a₁b₂ - a₂b₁, a₂b₀ - a₀b₂, a₀b₁ - a₁b₀]
+vc-preamble: |-
+  // Type definition for 3D vectors
+  type Vector3D = seq<real>
+  
+  // Predicate to ensure a sequence represents a valid 3D vector
+  predicate IsValidVector3D(v: Vector3D)
+  {
+      |v| == 3
+  }
+  
+  // Cross product method that computes the cross product of two 3D vectors
+vc-helpers: |-
+  
+vc-spec: |-
+  method CrossProduct(x1: Vector3D, x2: Vector3D) returns (result: Vector3D)
+      requires IsValidVector3D(x1)
+      requires IsValidVector3D(x2)
+      ensures IsValidVector3D(result)
+      ensures result[0] == x1[1] * x2[2] - x1[2] * x2[1]
+      ensures result[1] == x1[2] * x2[0] - x1[0] * x2[2]
+      ensures result[2] == x1[0] * x2[1] - x1[1] * x2[0]
+vc-code: |-
+  {
+    assume {:axiom} false;
+  }
+vc-postamble: |-
+  

@@ -21,25 +21,4 @@ theorem output_is_valid_number (n: Nat) (h: n > 0) :
   res.get 0 ≠ '0' ∧
   res.data.all (fun c => c.isDigit)
   := by sorry
-
-/-
-info: 129
--/
--- #guard_msgs in
--- #eval find_largest_nice_number 132
-
-/-
-info: 999
--/
--- #guard_msgs in
--- #eval find_largest_nice_number 999
-
-/-
-info: 499
--/
--- #guard_msgs in
--- #eval find_largest_nice_number 543
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

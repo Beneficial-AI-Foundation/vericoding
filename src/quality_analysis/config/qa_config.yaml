@@ -1,0 +1,105 @@
+# Quality Analysis Configuration
+# This file contains all configurable parameters for QA metadata generation
+
+# Similarity Analysis Configuration - Optimized Vector Embeddings
+similarity:
+  # Similarity detection method: uses optimized vector embeddings with FAISS indexing
+  method: "optimized_vector"   # Uses OptimizedVectorSimilarity class
+  
+  # Similarity threshold for near-duplicate detection (0.0-1.0)
+  # Higher values = more strict (fewer matches), lower = more lenient (more matches)
+  threshold: 0.85
+  
+  # Embedding focus determines what aspects of YAML files to compare
+  # - "semantic": Focus on problem description and specification meaning
+  # - "structural": Focus on code structure and helper functions  
+  # - "balanced": Combine description, spec, and structural elements
+  embedding_focus: "semantic"
+  
+  # SentenceTransformer model for generating embeddings
+  # "all-MiniLM-L6-v2": Fast, lightweight, good quality (default)
+  # "all-mpnet-base-v2": Higher quality but slower
+  # "paraphrase-multilingual-MiniLM-L12-v2": For multilingual content
+  embedding_model: "all-MiniLM-L6-v2"
+  
+  # Performance and caching settings
+  max_examples: 5          # Maximum number of example files to return in results
+  cache_dir: ".vector_cache"  # Directory for caching embeddings (speeds up repeated runs)
+  batch_size: 32           # Batch size for embedding generation (higher = faster but more memory)
+  use_gpu: false           # Whether to use GPU acceleration (requires CUDA)
+
+# Scoring System Configuration
+# Uses normalized weights that sum to 1.0 for principled quality assessment
+scoring:
+  # Base score configuration
+  base_score_mode: "proportional"  # Options: "fixed", "proportional", "logarithmic"
+  
+  # Fixed mode: constant base score regardless of benchmark size
+  fixed_base_score: 100
+  
+  # Proportional mode: base_score = min(max_score, entries * points_per_entry)
+  proportional_points_per_entry: 0.5    # Points per JSONL entry
+  proportional_max_score: 500           # Maximum possible base score
+  proportional_min_score: 50            # Minimum base score for small benchmarks
+  
+  # Logarithmic mode: base_score = log_multiplier * log(entries + 1)
+  logarithmic_multiplier: 50            # Multiplier for log scaling
+  
+  # Quality scoring approach for cross-benchmark comparison
+  use_normalized_quality: true  # Enable normalized scoring for comparable results across benchmarks
+  
+  # Normalized scoring: final_score = 100 × (1 - penalty_fraction)
+  # - Score represents average quality per entry on 0-100 scale
+  # - Directly comparable across benchmarks of any size
+  # - 100 = perfect quality, 0 = all entries have quality issues
+  
+  # Original scoring: final_score = base_score × (1 - penalty_fraction)
+  # - Larger benchmarks get higher absolute scores
+  # - Not directly comparable across different benchmark sizes
+  
+  # Simplified normalized weight approach: weights sum to 1.0, applied to direct proportions
+  # Formula: penalty_fraction = Σ(weight_i × proportion_i)
+  # Where:   proportion_i = count_i / total_entries
+  
+  # Verus-specific normalized weights (sum to 1.0)
+  verus:
+    weights:
+      specs_with_default_values_weight: 0.30    # 30% - Missing specifications
+      execs_with_bodies_weight: 0.30            # 30% - Implementation artifacts (most critical)
+      execs_with_ghost_types_weight: 0.25       # 25% - Type issues (minor)
+      near_duplicates_weight: 0.15              # 15% - Diversity issues
+    # Validation: 0.30 + 0.30 + 0.25 + 0.15 = 1.00 ✓
+  
+  # Dafny-specific normalized weights (sum to 1.0)
+  dafny:
+    weights:
+      functions_with_default_values_weight: 0.40  # 40% - Missing function specs
+      methods_with_bodies_weight: 0.45            # 45% - Implementation artifacts (most critical)
+      near_duplicates_weight: 0.15                # 15% - Diversity issues
+    # Validation: 0.40 + 0.45 + 0.15 = 1.00 ✓
+  
+  # Lean-specific normalized weights (sum to 1.0)
+  lean:
+    weights:
+      definitions_with_sorry_weight: 0.85        # 85% - Sorry placeholders (most critical in Lean)
+      near_duplicates_weight: 0.15              # 15% - Diversity issues
+    # Validation: 0.85 + 0.15 = 1.00 ✓
+
+# Quality Analysis Script Configuration
+qa_scripts:
+  # Timeout for running individual QA scripts (seconds)
+  script_timeout: 300
+  
+  # Whether to include problematic directories by default
+  include_problematic_dirs: false
+  
+  # Output format for QA scripts
+  output_format: "json"
+
+# Logging Configuration
+logging:
+  # Log level: "debug", "info", "warning", "error"
+  level: "info"
+  
+  # Whether to show progress bars
+  show_progress: true

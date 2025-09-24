@@ -20,14 +20,15 @@ vc-description: |-
   -/
 
 vc-preamble: |-
-  def NUMBER_WORDS : List String := ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"]
-  
-  def uncollapse (s : String) : String :=
-    sorry
 
 vc-helpers: |-
 
 vc-definitions: |-
+  def NUMBER_WORDS : List String := ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"]
+  
+  def uncollapse (s : String) : String :=
+    sorry
+  
   def isSubstring (pattern : String) (s : String) : Bool :=
     sorry
 
@@ -51,26 +52,26 @@ vc-theorems: |-
     (h : ∀ word ∈ NUMBER_WORDS, isSubstring word s = false) :
     uncollapse s = "" :=
   sorry
-  
-  /-
-  info: 'three'
-  -/
-  -- #guard_msgs in
-  -- #eval uncollapse "three"
-  
-  /-
-  info: 'eight six'
-  -/
-  -- #guard_msgs in
-  -- #eval uncollapse "eightsix"
-  
-  /-
-  info: 'five four seven'
-  -/
-  -- #guard_msgs in
-  -- #eval uncollapse "fivefourseven"
 
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+  
+  /--
+  info: 'three'
+  -/
+  #guard_msgs in
+  #eval uncollapse "three"
+  
+  /--
+  info: 'eight six'
+  -/
+  #guard_msgs in
+  #eval uncollapse "eightsix"
+  
+  /--
+  info: 'five four seven'
+  -/
+  #guard_msgs in
+  #eval uncollapse "fivefourseven"
 

@@ -33,25 +33,4 @@ theorem solve_initial_sequence (n : Nat) :
 
 theorem solve_strictly_increasing {n : Nat} :
   n > 0 → solve n > solve (n-1) := sorry
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval solve 1
-
-/-
-info: 83
--/
--- #guard_msgs in
--- #eval solve 6
-
-/-
-info: 489999753
--/
--- #guard_msgs in
--- #eval solve 10000000
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

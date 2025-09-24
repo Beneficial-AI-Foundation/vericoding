@@ -38,25 +38,4 @@ theorem edge_case_fifteen :
   bumps nStr15 = "Woohoo!" ∧
   bumps nStr16 = "Car Dead" :=
 sorry
-
-/-
-info: 'Woohoo!'
--/
--- #guard_msgs in
--- #eval bumps "n"
-
-/-
-info: 'Car Dead'
--/
--- #guard_msgs in
--- #eval bumps "_nnnnnnn_n__n______nn__nn_nnn"
-
-/-
-info: 'Woohoo!'
--/
--- #guard_msgs in
--- #eval bumps "______n___n_"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

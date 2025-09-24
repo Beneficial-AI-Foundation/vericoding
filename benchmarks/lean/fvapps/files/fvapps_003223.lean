@@ -1,16 +1,15 @@
 -- <vc-preamble>
-def flatten {α : Type} : List (List α) → List α 
-  | [] => sorry
-  | x :: xs => sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
-def isNestedList {α : Type} : List (List α) → Bool
-  | [] => sorry
-  | x :: xs => sorry
+def flatten {α : Type} : List (List α) → List α :=
+  sorry
+
+def isNestedList {α : Type} : List (List α) → Bool :=
+  sorry
 -- </vc-definitions>
 
 -- <vc-theorems>
@@ -27,11 +26,8 @@ theorem flatten_length_simple {α : Type} (lst : List α) :
   List.length (flatten [lst]) = List.length lst :=
 sorry
 
-theorem flatten_nested_ints (lst : List (List Int)) (n : Int) : 
+theorem flatten_nested_ints (lst : List (List Int)) (n : Int) :
   n ∈ (flatten lst) →
   ∃ inner : List Int, inner ∈ lst ∧ n ∈ inner :=
 sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

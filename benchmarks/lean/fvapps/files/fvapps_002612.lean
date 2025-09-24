@@ -23,25 +23,4 @@ theorem tower_base_zero :
 
 theorem tower_base_one :
   tower_of_hanoi 1 = 1 := sorry
-
-/-
-info: 15
--/
--- #guard_msgs in
--- #eval tower_of_hanoi 4
-
-/-
-info: 31
--/
--- #guard_msgs in
--- #eval tower_of_hanoi 5
-
-/-
-info: 1023
--/
--- #guard_msgs in
--- #eval tower_of_hanoi 10
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

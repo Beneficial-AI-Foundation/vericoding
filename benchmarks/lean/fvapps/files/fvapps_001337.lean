@@ -37,25 +37,4 @@ theorem tax_brackets (income : Int) :
   (income > 1500000 →
     calculate_net_income income ≥ income - (income - 1500000) * 3 / 10 - 200000 - 1) :=
 sorry
-
-/-
-info: 577500
--/
--- #guard_msgs in
--- #eval calculate_net_income 600000
-
-/-
-info: 250000
--/
--- #guard_msgs in
--- #eval calculate_net_income 250000
-
-/-
-info: 925000
--/
--- #guard_msgs in
--- #eval calculate_net_income 1000000
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

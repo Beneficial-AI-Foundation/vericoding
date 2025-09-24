@@ -28,25 +28,4 @@ theorem can_make_equal_symmetric (s t : String) (h₁ : s.length > 0) (h₂ : t.
   s.length = t.length →
   can_make_equal s t = can_make_equal t s :=
 sorry
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval can_make_equal "abcd" "abdc"
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval can_make_equal "ababa" "baaba"
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval can_make_equal "abcd" "badc"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

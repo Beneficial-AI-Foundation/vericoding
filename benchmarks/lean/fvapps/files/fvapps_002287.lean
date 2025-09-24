@@ -28,6 +28,3 @@ theorem valid_permutation_result (n: Nat) (top bottom: List Nat) (h1: n > 0) :
   top.eraseDups.length = n ∧
   bottom.eraseDups.length = n := sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

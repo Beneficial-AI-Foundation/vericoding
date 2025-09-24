@@ -36,8 +36,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def calculate_profit_loss (investment : Nat) (changes : List Int) : String :=

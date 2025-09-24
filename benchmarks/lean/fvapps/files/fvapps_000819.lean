@@ -26,25 +26,4 @@ theorem pattern_symmetry {k : Nat} (h : k > 0) :
     let lines := pattern_generator k
     ((lines.get! i).data.filter (· = ' ')).length = i ∧
     ((lines.get! (k - 1 - i)).data.filter (· = ' ')).length = i := sorry
-
-/-
-info: ['*']
--/
--- #guard_msgs in
--- #eval pattern_generator 1
-
-/-
-info: ['*', ' *', '*']
--/
--- #guard_msgs in
--- #eval pattern_generator 3
-
-/-
-info: ['*', ' *', '  *', ' *', '*']
--/
--- #guard_msgs in
--- #eval pattern_generator 5
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

@@ -1,13 +1,15 @@
 -- <vc-preamble>
-def String.toFloat (s : String) : Option Float := sorry
-
-def List.sort (l : List Float) (lt : Float → Float → Bool) : List Float := sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
+def String.toFloat (s : String) : Option Float :=
+sorry
+
+def List.sort (l : List Float) (lt : Float → Float → Bool) : List Float := sorry
+
 def search (budget : Float) (prices : List Float) : String :=
   sorry
 -- </vc-definitions>
@@ -16,7 +18,7 @@ def search (budget : Float) (prices : List Float) : String :=
 theorem search_sorted (budget : Float) (prices : List Float)
   (h1 : budget ≥ 0) (h2 : budget ≤ 1000)
   (h3 : ∀ x ∈ prices, x ≥ 0 ∧ x ≤ 1000)
-  (h4 : prices ≠ []) : 
+  (h4 : prices ≠ []) :
   let result := search budget prices
   let nums := (result.splitOn ",").filterMap String.toFloat
   ∀ i, i < nums.length - 1 → nums[i]! ≤ nums[i+1]! :=
@@ -46,25 +48,4 @@ theorem search_zero_budget (prices : List Float)
   let eligible := List.sort (prices.filter (·≤ 0)) (·≤·)
   search 0 prices = String.intercalate "," (eligible.map toString) :=
 sorry
-
-/-
-info: '1,2,2'
--/
--- #guard_msgs in
--- #eval search 3 [6, 1, 2, 9, 2]
-
-/-
-info: '3,7,7,9,14'
--/
--- #guard_msgs in
--- #eval search 14 [7, 3, 23, 9, 14, 20, 7]
-
-/-
-info: '0,1,2.7,5.5'
--/
--- #guard_msgs in
--- #eval search 24 [2.7, 0, 100.9, 1, 5.5]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

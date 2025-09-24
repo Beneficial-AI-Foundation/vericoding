@@ -40,19 +40,4 @@ theorem min_road_cost_formula
   min_road_cost n populations ≤ min * (total - min) ∧
   min_road_cost n populations ≤ max * (total - max) :=
 sorry
-
-/-
-info: 50
--/
--- #guard_msgs in
--- #eval min_road_cost 2 [5, 10]
-
-/-
-info: 266
--/
--- #guard_msgs in
--- #eval min_road_cost 4 [15, 10, 7, 13]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

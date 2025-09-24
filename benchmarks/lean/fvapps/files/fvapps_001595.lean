@@ -33,25 +33,4 @@ theorem basic_addition_unknown :
 
 theorem basic_negative :
   solve_runes "-?=-?" = 0 := sorry
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval solve_runes "123?45*?=?"
-
-/-
-info: -1
--/
--- #guard_msgs in
--- #eval solve_runes "??+??=??"
-
-/-
-info: 8
--/
--- #guard_msgs in
--- #eval solve_runes "-?56373--9216=-?47157"
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

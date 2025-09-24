@@ -25,25 +25,4 @@ theorem boundary_case {n l : Nat} (hn : n > 0) (hl : l > 0) (hln : l ≤ n) :
   let (alt_min, alt_max) := solve_array_sum n l (l+1)
   alt_max - alt_min ≥ max_sum - min_sum
   := sorry
-
-/-
-info: (5, 7)
--/
--- #guard_msgs in
--- #eval solve_array_sum 4 2 2
-
-/-
-info: (5, 31)
--/
--- #guard_msgs in
--- #eval solve_array_sum 5 1 5
-
-/-
-info: (3, 7)
--/
--- #guard_msgs in
--- #eval solve_array_sum 3 1 3
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

@@ -18,25 +18,4 @@ theorem basereduct_properties {n : Nat} (h : n > 0) :
 -- <vc-theorems>
 theorem basereduct_two_digits {n : Nat} (h1 : n ≥ 10) (h2 : n ≤ 100) :
   basereduct n > -1 := by sorry
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval basereduct 10
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval basereduct 15
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval basereduct 5312
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

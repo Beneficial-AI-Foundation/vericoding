@@ -35,6 +35,3 @@ theorem or_arrays_empty_right (arr : List Nat) :
 theorem or_arrays_empty_left (arr : List Nat) :
   orArrays [] arr 0 = arr := sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

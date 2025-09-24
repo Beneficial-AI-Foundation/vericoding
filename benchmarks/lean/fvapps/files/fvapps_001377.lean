@@ -33,25 +33,4 @@ theorem solve_pipernet_zero_contributions
   (n : Nat)
   (h1 : 0 < n ∧ n ≤ 100) :
   solve_pipernet n 10 15 5 10 100 (List.replicate n 0) = Sum.inr "RIP" := sorry
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval solve_pipernet 3 10 15 5 10 100 [12, 15, 18]
-
-/-
-info: 'RIP'
--/
--- #guard_msgs in
--- #eval solve_pipernet 3 10 15 5 10 100 [5, 5, 10]
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval solve_pipernet 4 40 80 30 30 100 [100, 100, 100, 100]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

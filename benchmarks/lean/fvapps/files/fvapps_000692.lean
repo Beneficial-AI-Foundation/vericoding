@@ -15,6 +15,3 @@ theorem solve_multi_wildcard : solve "a???" = 6 := sorry
 
 theorem solve_all_wildcards : solve "????" = 4 := sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

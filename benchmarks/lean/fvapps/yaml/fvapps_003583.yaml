@@ -1,31 +1,31 @@
 vc-description: |-
   /-
   Define a function that takes one integer argument and returns logical value `true` or `false` depending on if the integer is a prime.
-  
+
   Per Wikipedia, a prime number (or a prime) is a natural number greater than 1 that has no positive divisors other than 1 and itself.
-  
+
   ## Requirements
-  
+
   * You can assume you will be given an integer input.
   * You can not assume that the integer will be only positive. You may be given negative numbers as well (or `0`).
   * **NOTE on performance**: There are no fancy optimizations required, but still *the* most trivial solutions might time out. Numbers go up to 2^31 (or similar, depends on language version). Looping all the way up to `n`, or `n/2`, will be too slow.
-  
+
   ## Example
   ```nasm    
   mov edi, 1
   call is_prime    ; EAX <- 0 (false)
-  
+
   mov edi, 2
   call is_prime    ; EAX <- 1 (true)
-  
+
   mov edi, -1
   call is_prime    ; EAX <- 0 (false)
   ```
   -/
 
-vc-preamble: |-
+vc-preamble: |
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def even_odd (n : Nat) : Nat × Nat := sorry
@@ -34,48 +34,48 @@ vc-definitions: |-
 vc-theorems: |-
   theorem even_odd_basic :
     even_odd 1 = (0, 1) ∧ even_odd 2 = (1, 1) := sorry
-  
+
   theorem even_odd_properties (n : Nat) (h : n > 0) :
     let (s, d) := even_odd n
     s ≥ 0 ∧ d % 2 = 1 ∧ n = d * (2 ^ s) := sorry
-  
+
   theorem is_prime_properties_one_and_less (n : Int) (h : n ≤ 1) :
     is_prime n = false := sorry
-  
+
   theorem is_prime_two :
     is_prime 2 = true := sorry
-  
+
   theorem is_prime_even (n : Int) (h1 : n > 2) (h2 : n % 2 = 0) :
     is_prime n = false := sorry
-  
+
   theorem is_prime_deterministic (n : Int) :
     is_prime n = is_prime n := sorry
-  
-  /-
-  info: False
-  -/
-  -- #guard_msgs in
-  -- #eval is_prime 0
-  
-  /-
-  info: True
-  -/
-  -- #guard_msgs in
-  -- #eval is_prime 2
-  
-  /-
-  info: True
-  -/
-  -- #guard_msgs in
-  -- #eval is_prime 73
-  
-  /-
-  info: False
-  -/
-  -- #guard_msgs in
-  -- #eval is_prime -1
 
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+
+  /--
+  info: False
+  -/
+  #guard_msgs in
+  #eval is_prime 0
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval is_prime 2
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval is_prime 73
+
+  /--
+  info: False
+  -/
+  #guard_msgs in
+  #eval is_prime -1
 

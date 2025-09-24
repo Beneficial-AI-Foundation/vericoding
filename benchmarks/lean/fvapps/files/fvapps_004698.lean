@@ -31,25 +31,4 @@ theorem predict_sums_to_hundred (candidates : List String) (polls : List (List F
 theorem predict_rounded (candidates : List String) (polls : List (List Float × Float)) (p : String × Float) :
   p ∈ predict candidates polls →
   Float.abs (p.2 * 10 - Float.round (p.2 * 10)) < 1e-10 := sorry
-
-/-
-info: expected
--/
--- #guard_msgs in
--- #eval predict ["A", "B", "C"] [[[20, 30, 50], 1.0], [[40, 40, 20], 0.5], [[50, 40, 10], 2.0]]
-
-/-
-info: expected2
--/
--- #guard_msgs in
--- #eval predict candidates [[[30, 30, 40], 1.0], [[20, 40, 40], 1.0]]
-
-/-
-info: expected3
--/
--- #guard_msgs in
--- #eval predict candidates [[[45, 35, 20], 1.0]]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

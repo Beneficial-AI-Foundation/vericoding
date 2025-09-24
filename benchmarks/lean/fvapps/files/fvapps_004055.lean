@@ -25,25 +25,4 @@ theorem diagonal_identity_matrix_property (n : Nat) :
 theorem diagonal_simple_cases :
   diagonal [[5]] = "Draw!" ∧
   diagonal [[2,1],[1,3]] = "Principal Diagonal win!" := by sorry
-
-/-
-info: 'Secondary Diagonal win!'
--/
--- #guard_msgs in
--- #eval diagonal [[2, 2, 2], [4, 2, 6], [8, 8, 2]]
-
-/-
-info: 'Draw!'
--/
--- #guard_msgs in
--- #eval diagonal [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
-
-/-
-info: 'Principal Diagonal win!'
--/
--- #guard_msgs in
--- #eval diagonal [[7, 2, 2], [4, 2, 6], [1, 8, 1]]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

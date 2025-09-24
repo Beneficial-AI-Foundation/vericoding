@@ -56,8 +56,6 @@ vc-preamble: |-
   /- Gets tweet counts per frequency -/
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def TweetCounts.getTweetCountsPerFrequency (tc : TweetCounts) (freq : String) (name : String) (startTime : Int) (endTime : Int) : List Int :=

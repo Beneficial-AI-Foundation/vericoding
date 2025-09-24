@@ -22,25 +22,4 @@ theorem empty_string_treated_as_zero (empty : Option String) :
 theorem invalid_inputs_raise (s : String) : 
   ¬s.trim.isEmpty → ¬(isValidInt s) →
   (∀ (t : String), sum_str s t = "error" ∧ sum_str t s = "error") := sorry
-
-/-
-info: '9'
--/
--- #guard_msgs in
--- #eval sum_str "4" "5"
-
-/-
-info: '39'
--/
--- #guard_msgs in
--- #eval sum_str "34" "5"
-
-/-
-info: '9'
--/
--- #guard_msgs in
--- #eval sum_str "9" ""
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

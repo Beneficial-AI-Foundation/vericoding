@@ -62,8 +62,6 @@ vc-preamble: |-
   sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def tree_shrinking_probabilities (n : Nat) (edges : List (Nat × Nat)) : List Float :=

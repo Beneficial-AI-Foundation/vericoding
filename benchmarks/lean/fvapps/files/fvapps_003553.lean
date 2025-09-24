@@ -30,25 +30,4 @@ theorem chess_board_alternating (rows cols: Nat)
 theorem chess_board_square_diagonals (size: Nat) (h: 0 < size) :
   let board := chess_board size size
   ∀ i < size, (board.get! i).get! i = (board.get! 0).get! 0 := sorry
-
-/-
-info: [['O']]
--/
--- #guard_msgs in
--- #eval chess_board 1 1
-
-/-
-info: [['O', 'X'], ['X', 'O']]
--/
--- #guard_msgs in
--- #eval chess_board 2 2
-
-/-
-info: expected
--/
--- #guard_msgs in
--- #eval chess_board 3 4
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

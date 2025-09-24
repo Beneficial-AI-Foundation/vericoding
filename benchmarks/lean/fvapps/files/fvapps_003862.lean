@@ -40,25 +40,4 @@ theorem one_by_one_matrix_crossing_sum
   (h_size : matrix.length = 1 ∧ (matrix.get! 0).length = 1) :
   crossing_sum matrix 0 0 = (matrix.get! 0).get! 0 :=
 sorry
-
-/-
-info: 12
--/
--- #guard_msgs in
--- #eval crossing_sum [[1, 1, 1, 1], [2, 2, 2, 2], [3, 3, 3, 3]] 1 3
-
-/-
-info: 9
--/
--- #guard_msgs in
--- #eval crossing_sum [[1, 1], [3, 3], [1, 1], [2, 2]] 3 0
-
-/-
-info: 100
--/
--- #guard_msgs in
--- #eval crossing_sum [[100]] 0 0
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

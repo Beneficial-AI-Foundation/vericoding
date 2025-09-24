@@ -42,25 +42,4 @@ theorem find_max_height_visits_monotone {n : Nat} {heights : List Nat}
     heights
   find_max_height_visits (n + 1) (heights ++ [max_freq_height]) ≥ result :=
 sorry
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval find_max_height_visits 5 [2, 2, 1, 2, 4]
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval find_max_height_visits n2 heights2
-
-/-
-info: 5
--/
--- #guard_msgs in
--- #eval find_max_height_visits n3 heights3
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

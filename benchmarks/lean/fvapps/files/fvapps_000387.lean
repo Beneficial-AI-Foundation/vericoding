@@ -25,25 +25,4 @@ theorem count_digit_one_nonnegative (n : Nat) :
 
 theorem count_digit_one_zero :
   count_digit_one 0 = 0 := sorry
-
-/-
-info: expected
--/
--- #guard_msgs in
--- #eval count_digit_one 13
-
-/-
-info: expected
--/
--- #guard_msgs in
--- #eval count_digit_one 20
-
-/-
-info: expected
--/
--- #guard_msgs in
--- #eval count_digit_one 100
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

@@ -20,25 +20,4 @@ theorem solution_result_length (a b : String) :
 
 theorem solution_empty_string (s : String) :
   solution "" s = s ∧ solution s "" = s := sorry
-
-/-
-info: '1221'
--/
--- #guard_msgs in
--- #eval solution "1" "22"
-
-/-
-info: '1221'
--/
--- #guard_msgs in
--- #eval solution "22" "1"
-
-/-
-info: 'xyz'
--/
--- #guard_msgs in
--- #eval solution "" "xyz"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

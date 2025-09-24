@@ -18,25 +18,4 @@ theorem known_true_values (n : Int) (h : n > 0) :
 
 theorem output_is_deterministic (n : Int) :
   is_prime_happy n = is_prime_happy n := sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval is_prime_happy 5
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval is_prime_happy 8
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval is_prime_happy 25
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

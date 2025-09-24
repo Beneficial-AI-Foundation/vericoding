@@ -36,25 +36,4 @@ theorem combination_sum4_order_independent
     (h2 : target > 0)
     (h3 : ∀ n, n ∈ nums₁ ↔ n ∈ nums₂) :
   combination_sum4 nums₁ target = combination_sum4 nums₂ target := sorry
-
-/-
-info: 7
--/
--- #guard_msgs in
--- #eval combination_sum4 [1, 2, 3] 4
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval combination_sum4 [1, 2] 3
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval combination_sum4 [2] 2
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

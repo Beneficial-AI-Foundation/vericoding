@@ -41,25 +41,4 @@ sorry
 theorem validate_code_float (f : Float) :
   validate_code f = String.startsWith (toString f) "123" :=
 sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval validate_code 123
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval validate_code 8
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval validate_code 321
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

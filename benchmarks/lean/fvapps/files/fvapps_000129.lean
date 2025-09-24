@@ -38,25 +38,4 @@ theorem add_identity (x : Int) :
   evaluate_lisp s!"(add {x} 0)" = x ∧
   evaluate_lisp s!"(add 0 {x})" = x := by
   sorry
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval evaluate_lisp "(add 1 2)"
-
-/-
-info: 15
--/
--- #guard_msgs in
--- #eval evaluate_lisp "(mult 3 (add 2 3))"
-
-/-
-info: 14
--/
--- #guard_msgs in
--- #eval evaluate_lisp "(let x 2 (mult x (let x 3 y 4 (add x y))))"
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

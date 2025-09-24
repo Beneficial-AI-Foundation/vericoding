@@ -28,6 +28,3 @@ theorem compute_table_scores_min_element {n: Nat} {first_row: List Int} (h: n > 
 theorem compute_table_scores_max_element {n: Nat} {first_row: List Int} (h: n > 0):
   List.foldl max 0 (compute_table_scores n first_row) ≤ max_list first_row + n := sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

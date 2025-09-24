@@ -35,25 +35,4 @@ theorem solve_valid_for_dimensions (n m : Nat) :
   let queries := List.map (fun i => (1, min n (i+1), i+1)) (List.range 3)
   (solve n m dishes pupils queries).length > 0 :=
 sorry
-
-/-
-info: [100]
--/
--- #guard_msgs in
--- #eval solve 1 1 [1] [1] [(1, 1, 100)]
-
-/-
-info: [-1]
--/
--- #guard_msgs in
--- #eval solve 1 1 [1] [1] [(2, 1, 100)]
-
-/-
-info: [8, -1, 4]
--/
--- #guard_msgs in
--- #eval solve 4 6 [1, 8, 2, 4] [3, 3, 6, 1, 5, 2] [(1, 1, 1), (2, 5, 10), (1, 1, 6)]
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: unguarded

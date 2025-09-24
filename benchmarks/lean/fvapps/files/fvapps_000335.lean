@@ -41,25 +41,4 @@ theorem min_deletion_size_reverse_sorted_str :
 theorem min_deletion_size_complex_case :
   min_deletion_size ["babca", "bbazb"] = 3 :=
   sorry
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval min_deletion_size ["babca", "bbazb"]
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval min_deletion_size ["edcba"]
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval min_deletion_size ["ghi", "def", "abc"]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

@@ -25,25 +25,4 @@ theorem is_happy_known_unhappy :
 
 theorem is_happy_deterministic (n m : Nat) :
   n = m → is_happy n = is_happy m := sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval is_happy 19
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval is_happy 2
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval is_happy 100
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

@@ -7,8 +7,6 @@
 -- <vc-definitions>
 def allocate_stadium_games (n m k : Nat) (games : List (Nat × Nat)) : List Nat :=
   sorry
-
-/- For a valid allocation, the number of games per stadium for each team differs by at most 2 -/
 -- </vc-definitions>
 
 -- <vc-theorems>
@@ -22,48 +20,21 @@ theorem stadium_balance {n k : Nat} {games : List (Nat × Nat)} {allocation : Li
     ∀ s1 s2, s1 ≤ k → s2 ≤ k →
       Nat.sub ((games.zip allocation).filter (λ p => (p.1.1 = t ∨ p.1.2 = t) ∧ p.2 = s1) |>.length)
               ((games.zip allocation).filter (λ p => (p.1.1 = t ∨ p.1.2 = t) ∧ p.2 = s2) |>.length) ≤ 2 :=
-  sorry
-
-/- The allocation list has the same length as the input game list -/
+sorry
 
 theorem allocation_length_eq_games {n k : Nat} {games : List (Nat × Nat)}
   (h1 : n ≥ 2)
   (h2 : k ≥ 1) :
   (allocate_stadium_games n games.length k games).length = games.length :=
-  sorry
-
-/- Empty game list produces empty allocation -/
+sorry
 
 theorem empty_games_empty_allocation {n k : Nat}
   (h1 : n ≥ 2)
   (h2 : k ≥ 1) :
   allocate_stadium_games n 0 k [] = [] :=
-  sorry
-
-/- Basic case works: two teams, one game, one stadium -/
+sorry
 
 theorem minimum_viable_case :
   allocate_stadium_games 2 1 1 [(1, 2)] = [1] :=
-  sorry
-
-/-
-info: m
--/
--- #guard_msgs in
--- #eval len allocate_stadium_games(n, m, k, games)
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval len allocate_stadium_games(n, m, k, games)
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval len allocate_stadium_games(n, m, k, games)
+sorry
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: unguarded

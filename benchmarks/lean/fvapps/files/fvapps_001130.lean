@@ -28,6 +28,3 @@ theorem calculate_flames_identical_names (name : String) :
   calculate_flames name name = calculate_flames "a" "a" :=
 sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

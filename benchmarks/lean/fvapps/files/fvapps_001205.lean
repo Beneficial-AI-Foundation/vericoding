@@ -30,25 +30,4 @@ theorem result_is_valid_string (n: Int) (h: n ≥ 2) (h': n ≤ 1000) :
 
 theorem base_2_property (n: Int) (h: n ≥ 2) (h': n ≤ 100) :
   (find_count_bases_starting_with_1 n).toNat! ≥ 1 := sorry
-
-/-
-info: '4'
--/
--- #guard_msgs in
--- #eval find_count_bases_starting_with_1 6
-
-/-
-info: '0'
--/
--- #guard_msgs in
--- #eval find_count_bases_starting_with_1 0
-
-/-
-info: 'INFINITY'
--/
--- #guard_msgs in
--- #eval find_count_bases_starting_with_1 1
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

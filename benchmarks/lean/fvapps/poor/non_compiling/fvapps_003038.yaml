@@ -140,8 +140,6 @@ vc-preamble: |-
     sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def SUFFIXES : Char × List String :=

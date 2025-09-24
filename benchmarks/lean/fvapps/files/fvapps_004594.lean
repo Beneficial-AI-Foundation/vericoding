@@ -38,25 +38,4 @@ theorem amidakuji_no_swaps
   (h2 : ∀ row ∈ ladder, ∀ c ∈ row, c = '0') :
   amidakuji ladder = List.range ((ladder.head!).length + 1) :=
   sorry
-
-/-
-info: [4, 2, 0, 5, 3, 6, 1]
--/
--- #guard_msgs in
--- #eval amidakuji ["001001", "010000", "100100", "001000", "100101", "010010", "101001", "010100"]
-
-/-
-info: [1, 0, 2]
--/
--- #guard_msgs in
--- #eval amidakuji ["10"]
-
-/-
-info: [0, 1, 2, 3]
--/
--- #guard_msgs in
--- #eval amidakuji ["000"]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

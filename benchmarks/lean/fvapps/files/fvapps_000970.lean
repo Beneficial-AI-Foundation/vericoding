@@ -31,6 +31,3 @@ theorem format_multiple_patterns_matches {cases : List Nat} (h : cases ≠ [])
   k ∈ cases →
   (format_multiple_patterns cases).take k = generate_pattern k := sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

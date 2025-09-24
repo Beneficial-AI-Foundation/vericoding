@@ -33,25 +33,4 @@ theorem result_is_lex_minimal (s : String) (pairs : List (List Nat)) :
   let result := smallest_string_with_swaps s pairs
   result.data[i]! ≤ result.data[j]! :=
   sorry
-
-/-
-info: 'bacd'
--/
--- #guard_msgs in
--- #eval smallest_string_with_swaps "dcab" [[0, 3], [1, 2]]
-
-/-
-info: 'abcd'
--/
--- #guard_msgs in
--- #eval smallest_string_with_swaps "dcab" [[0, 3], [1, 2], [0, 2]]
-
-/-
-info: 'abc'
--/
--- #guard_msgs in
--- #eval smallest_string_with_swaps "cba" [[0, 1], [1, 2]]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

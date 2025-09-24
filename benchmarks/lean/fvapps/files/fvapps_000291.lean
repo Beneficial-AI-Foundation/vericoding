@@ -23,25 +23,4 @@ theorem multiply_commutative {a b : String} :
 
 theorem multiply_associative {a b c : String} :
   multiply (multiply a b) c = multiply a (multiply b c) := sorry
-
-/-
-info: '6'
--/
--- #guard_msgs in
--- #eval multiply "2" "3"
-
-/-
-info: '56088'
--/
--- #guard_msgs in
--- #eval multiply "123" "456"
-
-/-
-info: '0'
--/
--- #guard_msgs in
--- #eval multiply "0" "0"
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

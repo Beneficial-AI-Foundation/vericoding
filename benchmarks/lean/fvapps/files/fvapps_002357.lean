@@ -33,25 +33,4 @@ theorem no_absences_rule (s : String) :
   (∀ c ∈ s.data, c = 'P' ∨ c = 'L') →
   (¬(s.data = [] ++ ['L', 'L', 'L'] ++ (List.drop 3 s.data))) ↔
   check_student_record s = true := sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval check_student_record "PPALLP"
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval check_student_record "PPALLL"
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval check_student_record "PPALLP"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

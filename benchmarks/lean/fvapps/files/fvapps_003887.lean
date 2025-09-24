@@ -1,24 +1,25 @@
 -- <vc-preamble>
-def isUpperCase (c : Char) : Bool :=
-  sorry
-
-def toLetterIndex (c : Char) : Nat :=
-  sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
+def isUpperCase (c : Char) : Bool :=
+  sorry
+
+def toLetterIndex (c : Char) : Nat :=
+  sorry
+
 def new_numeral_system (letter : Char) : List String :=
   sorry
 -- </vc-definitions>
 
 -- <vc-theorems>
-theorem correct_format {letter : Char} : 
-  ∀ s ∈ new_numeral_system letter, 
-    s.length = 5 ∧ s.data.get ⟨1, sorry⟩ = ' ' ∧ 
-    s.data.get ⟨2, sorry⟩ = '+' ∧ 
+theorem correct_format {letter : Char} :
+  ∀ s ∈ new_numeral_system letter,
+    s.length = 5 ∧ s.data.get ⟨1, sorry⟩ = ' ' ∧
+    s.data.get ⟨2, sorry⟩ = '+' ∧
     s.data.get ⟨3, sorry⟩ = ' ' := by
   sorry
 
@@ -26,9 +27,9 @@ theorem valid_letters {letter : Char} :
   ∀ s ∈ new_numeral_system letter,
     let first := s.data.get ⟨0, sorry⟩
     let last := s.data.get ⟨4, sorry⟩
-    isUpperCase first ∧ 
+    isUpperCase first ∧
     isUpperCase last ∧
-    first ≤ letter ∧ 
+    first ≤ letter ∧
     last ≤ letter := by
   sorry
 
@@ -52,6 +53,3 @@ theorem middle_pair_equal {letter : Char} :
     middle.data.get ⟨0, sorry⟩ = middle.data.get ⟨4, sorry⟩ := by
   sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

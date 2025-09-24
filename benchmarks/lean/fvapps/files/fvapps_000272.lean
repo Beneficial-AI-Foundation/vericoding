@@ -32,25 +32,4 @@ theorem first_permutation (n : Nat) (h1 : n ≥ 1) (h2 : n ≤ 9) :
 theorem last_permutation (n : Nat) (h1 : n ≥ 1) (h2 : n ≤ 9) :
   get_permutation n (factorial n) = 
     String.mk (List.range n |>.map (fun i => Char.ofNat (n - i + 48))) := sorry
-
-/-
-info: '213'
--/
--- #guard_msgs in
--- #eval get_permutation 3 3
-
-/-
-info: '2314'
--/
--- #guard_msgs in
--- #eval get_permutation 4 9
-
-/-
-info: '21'
--/
--- #guard_msgs in
--- #eval get_permutation 2 2
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

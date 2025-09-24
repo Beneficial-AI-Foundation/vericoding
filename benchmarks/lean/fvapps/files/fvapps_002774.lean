@@ -23,25 +23,4 @@ theorem array_diff_empty_b (a : List Int) :
 
 theorem array_diff_identical_lists (a : List Int) :
   array_diff a a = [] := sorry
-
-/-
-info: [2]
--/
--- #guard_msgs in
--- #eval array_diff [1, 2] [1]
-
-/-
-info: [2, 2]
--/
--- #guard_msgs in
--- #eval array_diff [1, 2, 2] [1]
-
-/-
-info: [1]
--/
--- #guard_msgs in
--- #eval array_diff [1, 2, 2] [2]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

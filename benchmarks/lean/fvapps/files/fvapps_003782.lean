@@ -24,25 +24,4 @@ theorem spin_words_preserves_length (word : String) :
 
 theorem spin_words_empty : 
   spinWords "" = "" := sorry
-
-/-
-info: 'emocleW'
--/
--- #guard_msgs in
--- #eval spin_words "Welcome"
-
-/-
-info: 'Hey wollef sroirraw'
--/
--- #guard_msgs in
--- #eval spin_words "Hey fellow warriors"
-
-/-
-info: 'This ecnetnes is a ecnetnes'
--/
--- #guard_msgs in
--- #eval spin_words "This sentence is a sentence"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

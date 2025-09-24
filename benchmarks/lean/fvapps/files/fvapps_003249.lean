@@ -41,25 +41,4 @@ theorem minimal_case : mysterious_pattern 1 1 = "o" := sorry
 
 theorem idempotent {m n : Nat} (h₁ : 0 < m) (h₂ : 0 < n) :
   mysterious_pattern m n = mysterious_pattern m n := sorry
-
-/-
-info: '    o\noo\n  o\n   o'
--/
--- #guard_msgs in
--- #eval mysterious_pattern 5 5
-
-/-
-info: '     o     o\noo  o oo  o\n  o     o\n   o     o'
--/
--- #guard_msgs in
--- #eval mysterious_pattern 12 4
-
-/-
-info: 'o'
--/
--- #guard_msgs in
--- #eval mysterious_pattern 1 1
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

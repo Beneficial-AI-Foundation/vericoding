@@ -24,8 +24,8 @@ struct HermiteEPoly {
 fn hermite_e(coef: Vec<f32>) -> (result: HermiteEPoly)
     ensures
 
-        result.coef.len() == coef.len(),
-        forall|i: int| 0 <= i < coef.len() ==> result.coef[i] == coef[i],
+        result.coef@.len() == coef@.len(),
+        forall|i: int| 0 <= i < coef@.len() ==> result.coef@[i] == coef@[i],
 
         result.domain_min == -1.0f32,
         result.domain_max == 1.0f32,

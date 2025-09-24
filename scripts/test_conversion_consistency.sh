@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Test script for conversion consistency 
-# Usage: ./test_conversion_consistency.sh <type> <path>
-# Example: ./test_conversion_consistency.sh dfy benchmarks/dafny/dafnybench
+# Usage: ./test_conversion_consistency.sh <type> <path> <meta>
+# Example: ./test_conversion_consistency.sh dfy benchmarks/dafny/dafnybench benchmarks/tasks_metadata.jsonl
 
 set -e
 
@@ -16,15 +16,17 @@ log_error() { echo -e "${RED}[ERROR]${NC} $1"; }
 
 main() {
     # Parse arguments
-    if [[ $# -ne 2 ]]; then
-        log_error "Usage: $0 <type> <path>"
+    if [[ $# -ne 3 ]]; then
+        log_error "Usage: $0 <type> <path> <meta>"
         log_error "  type: dfy, lean, or rs"
         log_error "  path: path to benchmark directory (e.g., benchmarks/dafny/dafnybench)"
+        log_error "  meta: path to tasks_metadata.jsonl file (e.g., benchmarks/tasks_metadata.jsonl)"
         exit 1
     fi
     
     local file_type="$1"
     local benchmark_path="$2"
+    local metadata_file="$3"
     
     # Validate file type
     case "$file_type" in
@@ -34,6 +36,12 @@ main() {
             exit 1
             ;;
     esac
+    
+    # Validate metadata file exists
+    if [[ ! -f "$metadata_file" ]]; then
+        log_error "Metadata file not found: $metadata_file"
+        exit 1
+    fi
     
     log_info "Testing conversion consistency for $benchmark_path (.$file_type files)..."
     
@@ -71,8 +79,8 @@ main() {
     local temp_yaml="$temp_dir/yaml"
     cp -r "$yaml_dir" "$temp_yaml"
     
-    if uv run src/convert_from_yaml.py "$temp_yaml" --suffix jsonl >/dev/null 2>&1; then
-        local generated_jsonl="$temp_yaml.jsonl"
+    if uv run src/convert_from_yaml.py "$temp_yaml" --suffix jsonl --source "$benchmark_name" --language "$lang_name" --source-meta "$metadata_file" >/dev/null 2>&1; then
+        local generated_jsonl="$temp_dir/${lang_name}_${benchmark_name}.jsonl"
         
         if [[ -f "$generated_jsonl" ]]; then
             if ! diff -q "$generated_jsonl" "$jsonl_file" >/dev/null 2>&1; then

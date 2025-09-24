@@ -34,25 +34,4 @@ theorem invalid_inputs_negative (d l : Float) (h1 : d < 0) :
 theorem invalid_inputs_nan (d l : Float) (h1 : Float.isNaN d ∨ Float.isNaN l) :
   let result := area d l
   result = Sum.inr "Not a rectangle" := sorry
-
-/-
-info: 12.0
--/
--- #guard_msgs in
--- #eval area 5 4
-
-/-
-info: 'Not a rectangle'
--/
--- #guard_msgs in
--- #eval area 6 8
-
-/-
-info: 48.0
--/
--- #guard_msgs in
--- #eval area 10 6
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

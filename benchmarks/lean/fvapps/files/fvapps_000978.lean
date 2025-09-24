@@ -33,25 +33,4 @@ theorem subsequence_count_permutation_invariant (arr arr_perm : List Nat)
 theorem all_ones_subsequence_count (arr : List Nat) 
   (h₁ : arr ≠ []) (h₂ : ∀ x ∈ arr, x = 1) :
   count_valid_subsequences arr = 2^(arr.length) - 1 := sorry
-
-/-
-info: 11
--/
--- #guard_msgs in
--- #eval count_valid_subsequences [2, 3, 5, 7]
-
-/-
-info: 7
--/
--- #guard_msgs in
--- #eval count_valid_subsequences [3, 4, 8, 16]
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval count_valid_subsequences [6, 10, 15]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

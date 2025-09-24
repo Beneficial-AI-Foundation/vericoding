@@ -20,25 +20,4 @@ theorem solve_empty_range (x : Nat) (hx : x ≤ 1000000) :
 theorem solve_monotonicity (x y z : Nat) 
   (hxy : x ≤ y) (hyz : y ≤ z) (hxz : x ≤ z) :
   solve x y ≤ solve x z := sorry
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval solve 0 10
-
-/-
-info: 5
--/
--- #guard_msgs in
--- #eval solve 0 15
-
-/-
-info: 8
--/
--- #guard_msgs in
--- #eval solve 100 1000
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

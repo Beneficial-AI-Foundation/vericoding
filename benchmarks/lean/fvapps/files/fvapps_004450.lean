@@ -24,6 +24,3 @@ theorem double_reverse_equals_original (s : String) (h : s ≠ "") :
 theorem reverse_maintains_character_counts (s : String) (h : s ≠ "") (c : Char) :
   (s.data.countP (· = c)) = ((esrever s).data.countP (· = c)) := sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

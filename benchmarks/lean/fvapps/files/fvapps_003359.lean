@@ -30,25 +30,4 @@ theorem owned_cat_and_dog_formula (cat_years dog_years : Nat) :
   let result := owned_cat_and_dog cat_years dog_years
   result[0]! = 2 + (cat_years - 24) / 4 ∧ result[1]! = 2 + (dog_years - 24) / 5
 := sorry
-
-/-
-info: [0, 0]
--/
--- #guard_msgs in
--- #eval owned_cat_and_dog 9 7
-
-/-
-info: [2, 2]
--/
--- #guard_msgs in
--- #eval owned_cat_and_dog 24 24
-
-/-
-info: [10, 10]
--/
--- #guard_msgs in
--- #eval owned_cat_and_dog 56 64
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

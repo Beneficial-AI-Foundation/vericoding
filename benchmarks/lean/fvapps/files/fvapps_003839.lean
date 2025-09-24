@@ -24,25 +24,4 @@ theorem zero_scrap_is_base (rates: List Float) (n: Nat) (h: ∀ r ∈ rates, r =
 theorem empty_rates_is_base (n: Nat) :
   calculate_scrap [] n = n * 50 :=
   sorry
-
-/-
-info: 5000
--/
--- #guard_msgs in
--- #eval calculate_scrap [10] 90
-
-/-
-info: 3820
--/
--- #guard_msgs in
--- #eval calculate_scrap [20, 10] 55
-
-/-
-info: 4500
--/
--- #guard_msgs in
--- #eval calculate_scrap [0, 0, 0] 90
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

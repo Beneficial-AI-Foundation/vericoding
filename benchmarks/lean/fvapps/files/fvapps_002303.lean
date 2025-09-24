@@ -1,14 +1,14 @@
 -- <vc-preamble>
-def searchInsert (nums : List Int) (target : Int) : Nat :=
-  sorry
+def isSorted (l : List Int) : Prop :=
+  ∀ i j, i < j → j < l.length → l[i]! ≤ l[j]!
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
-def isSorted (l : List Int) : Prop :=
-  ∀ i j, i < j → j < l.length → l[i]! ≤ l[j]!
+def searchInsert (nums : List Int) (target : Int) : Nat :=
+  sorry
 -- </vc-definitions>
 
 -- <vc-theorems>
@@ -18,15 +18,15 @@ theorem searchInsert_valid_index
     (h2 : isSorted nums) :
     let result := searchInsert nums target
     0 ≤ result ∧ result ≤ nums.length :=
-  sorry
+sorry
 
-theorem searchInsert_left_smaller 
+theorem searchInsert_left_smaller
     {nums : List Int} {target : Int}
     (h1 : List.length nums > 0)
     (h2 : isSorted nums) :
     let result := searchInsert nums target
     ∀ i, i < result → nums[i]! < target :=
-  sorry
+sorry
 
 theorem searchInsert_right_greater_eq
     {nums : List Int} {target : Int}
@@ -34,7 +34,7 @@ theorem searchInsert_right_greater_eq
     (h2 : isSorted nums) :
     let result := searchInsert nums target
     ∀ i, result ≤ i → i < nums.length → nums[i]! ≥ target :=
-  sorry
+sorry
 
 theorem searchInsert_maintains_order
     {nums : List Int} {target : Int}
@@ -43,7 +43,7 @@ theorem searchInsert_maintains_order
     let result := searchInsert nums target
     let inserted := (nums.take result).append (target :: nums.drop result)
     isSorted inserted :=
-  sorry
+sorry
 
 theorem searchInsert_identity
     {nums : List Int}
@@ -51,26 +51,5 @@ theorem searchInsert_identity
     (h2 : isSorted nums)
     {i : Nat} (h3 : i < nums.length) :
     searchInsert nums nums[i]! = List.findIdx (· = nums[i]!) nums :=
-  sorry
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval search_insert [1, 3, 5, 6] 5
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval search_insert [1, 3, 5, 6] 2
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval search_insert [1, 3, 5, 6] 7
+sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

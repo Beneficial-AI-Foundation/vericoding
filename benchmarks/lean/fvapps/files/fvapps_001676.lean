@@ -34,37 +34,4 @@ theorem simple_cases :
   calculate "1.5*2" = "3.0" ∧
   calculate "10+5" = "15.0" ∧
   calculate "10-5" = "5.0" := sorry
-
-/-
-info: '2.0'
--/
--- #guard_msgs in
--- #eval calculate "1+1"
-
-/-
-info: '5.0'
--/
--- #guard_msgs in
--- #eval calculate "10$2"
-
-/-
-info: '4.5'
--/
--- #guard_msgs in
--- #eval calculate "1.5*3"
-
-/-
-info: '81.0'
--/
--- #guard_msgs in
--- #eval calculate "1000$2.5$5+5-5+6$6"
-
-/-
-info: '400: Bad request'
--/
--- #guard_msgs in
--- #eval calculate "10-9p"
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

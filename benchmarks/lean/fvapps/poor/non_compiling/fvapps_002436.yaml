@@ -78,8 +78,6 @@ vc-preamble: |-
   def process_set_commands (elements : List Int) (commands : List String) : Int := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def pop_element_from_set (s : SetInt) : SetInt := sorry

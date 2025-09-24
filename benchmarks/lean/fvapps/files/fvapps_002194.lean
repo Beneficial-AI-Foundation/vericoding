@@ -26,25 +26,4 @@ theorem solve_is_total_minus_one_b (n : Nat) (pairs : List (Nat × Nat)) :
 theorem solve_identical_pairs (n : Nat) (val : Nat) :
   let pairs := List.replicate n (val, val)
   solve n pairs = 0 := sorry
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval solve 2 [(1, 2), (3, 2)]
-
-/-
-info: 9
--/
--- #guard_msgs in
--- #eval solve 3 [(8, 3), (0, 1), (4, 8)]
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval solve 1 [(1, 1)]
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: guarded_and_plausible

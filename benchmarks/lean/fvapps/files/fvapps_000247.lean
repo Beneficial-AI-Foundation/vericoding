@@ -22,25 +22,4 @@ theorem clumsy_bounds_larger (n : Nat) (h : n ≥ 3) (h2 : n ≤ 100) :
 
 theorem clumsy_monotonic_small (n : Nat) (h : n ≤ 4) (h2 : n ≥ 1) :
   ∀ i, 1 ≤ i → i < n → clumsy i ≤ clumsy (i+1) := sorry
-
-/-
-info: 7
--/
--- #guard_msgs in
--- #eval clumsy 4
-
-/-
-info: 12
--/
--- #guard_msgs in
--- #eval clumsy 10
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval clumsy 1
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

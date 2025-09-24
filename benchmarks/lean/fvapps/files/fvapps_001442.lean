@@ -29,25 +29,4 @@ theorem min_boxes_powers_two (size : Nat) :
   let boxes := List.map (fun i => 2^i) (List.range size)
   min_boxes_remaining boxes size = size/2 + size%2 := by
   sorry
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval min_boxes_remaining 5 boxes1.copy()
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval min_boxes_remaining 3 boxes2.copy()
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval min_boxes_remaining 4 boxes3.copy()
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

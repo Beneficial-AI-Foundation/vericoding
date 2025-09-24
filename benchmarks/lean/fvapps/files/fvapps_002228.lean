@@ -31,6 +31,3 @@ theorem first_few_values :
   find_nth_element 3 = 3 ∧
   find_nth_element 4 = 4 := sorry
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: guarded

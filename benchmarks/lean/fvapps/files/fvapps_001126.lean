@@ -35,19 +35,4 @@ theorem sort_problems_single_problem
 theorem sort_problems_minimal_case :
   sort_problems_by_difficulty 1 1 [[1], [1]] = [1]
   := sorry
-
-/-
-info: [2, 1, 3]
--/
--- #guard_msgs in
--- #eval sort_problems_by_difficulty 3 3 [[16, 24, 60], [498, 861, 589], [14, 24, 62], [72, 557, 819], [16, 15, 69], [435, 779, 232]]
-
-/-
-info: [1, 2]
--/
--- #guard_msgs in
--- #eval sort_problems_by_difficulty 2 2 [[10, 20], [100, 50], [15, 25], [200, 150]]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

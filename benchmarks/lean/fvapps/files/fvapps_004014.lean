@@ -20,25 +20,4 @@ theorem num_blocks_all_layers (w l h : Nat) (hw : w > 0) (hl : l > 0) (hh : h > 
 
 theorem num_blocks_symmetric (w l h : Nat) :
   num_blocks w l h = num_blocks l w h := sorry
-
-/-
-info: 5
--/
--- #guard_msgs in
--- #eval num_blocks 1 1 2
-
-/-
-info: 47
--/
--- #guard_msgs in
--- #eval num_blocks 2 4 3
-
-/-
-info: 83540
--/
--- #guard_msgs in
--- #eval num_blocks 20 30 40
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

@@ -17,15 +17,15 @@ spec fn extract_diagonal(lines: Seq<Seq<char>>) -> Seq<char>
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(lines: Seq<Seq<char>>) -> (result: Seq<char>)
-    requires valid_input(lines)
+fn solve(lines: Vec<Vec<char>>) -> (result: Vec<char>)
+    requires valid_input(lines@.map(|i: int, v: Vec<char>| v@))
     ensures 
-        result.len() == 4 &&
-        result[0] == lines[0][0] &&
-        result[1] == lines[1][1] &&
-        result[2] == lines[2][2] &&
-        result[3] == '\n' &&
-        result == extract_diagonal(lines).push('\n')
+        result@.len() == 4 &&
+        result@[0] == lines@[0]@[0] &&
+        result@[1] == lines@[1]@[1] &&
+        result@[2] == lines@[2]@[2] &&
+        result@[3] == '\n' &&
+        result@ == extract_diagonal(lines@.map(|i: int, v: Vec<char>| v@)).push('\n')
 // </vc-spec>
 // <vc-code>
 {

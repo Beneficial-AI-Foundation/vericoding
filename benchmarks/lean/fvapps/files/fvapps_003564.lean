@@ -16,25 +16,4 @@ theorem prime_positive_factors (n : Nat) (h : n ≥ 2) :
 
 theorem nonpositive_not_prime (n : Nat) :
   n ≤ 1 → is_prime n = false := sorry
-
-/-
-info: 6
--/
--- #guard_msgs in
--- #eval prime_product 5
-
-/-
-info: 91
--/
--- #guard_msgs in
--- #eval prime_product 20
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval prime_product 11
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

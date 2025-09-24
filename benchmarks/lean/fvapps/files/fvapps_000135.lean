@@ -27,25 +27,4 @@ theorem minimum_one_bit_operations_known_cases :
 theorem minimum_one_bit_operations_deterministic (n: Nat) (h: n < 2^16) :
   minimum_one_bit_operations n = minimum_one_bit_operations n :=
   sorry
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval minimum_one_bit_operations 0
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval minimum_one_bit_operations 3
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval minimum_one_bit_operations 6
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

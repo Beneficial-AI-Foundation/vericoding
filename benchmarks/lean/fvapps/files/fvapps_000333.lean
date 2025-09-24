@@ -37,25 +37,4 @@ theorem count_battleships_neighbors {b: List (List Char)} {i j: Nat}
 
 theorem count_battleships_single {b: List (List Char)} 
   (h1: b = [['X']]) : count_battleships b = 1 := sorry
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval count_battleships [["X", ".", ".", "."], [".", ".", ".", "."], [".", ".", ".", "."]]
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval count_battleships [["X", ".", ".", "X"], [".", ".", ".", "X"], [".", ".", ".", "X"]]
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval count_battleships []
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

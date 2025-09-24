@@ -1,0 +1,77 @@
+{
+  "benchmark_info": {
+    "name": "verus_humaneval",
+    "language": "verus",
+    "source": "unknown",
+    "entry_count": 161,
+    "benchmark_path": "benchmarks/verus/humaneval"
+  },
+  "qa_metadata": {
+    "specs_with_default_values": [
+      "benchmarks/verus/humaneval/yaml/humaneval_108.yaml",
+      "benchmarks/verus/humaneval/yaml/humaneval_023.yaml",
+      "benchmarks/verus/humaneval/yaml/humaneval_042.yaml",
+      "benchmarks/verus/humaneval/yaml/humaneval_140.yaml",
+      "benchmarks/verus/humaneval/yaml/humaneval_130_tri.yaml",
+      "benchmarks/verus/humaneval/yaml/humaneval_053.yaml",
+      "benchmarks/verus/humaneval/yaml/humaneval_137.yaml",
+      "benchmarks/verus/humaneval/yaml/humaneval_146.yaml",
+      "benchmarks/verus/humaneval/yaml/humaneval_092.yaml",
+      "benchmarks/verus/humaneval/yaml/humaneval_000.yaml"
+    ],
+    "execs_with_bodies": [],
+    "execs_with_ghost_types": [
+      "benchmarks/verus/humaneval/yaml/humaneval_114_minSubArraySum.yaml",
+      "benchmarks/verus/humaneval/yaml/humaneval_146.yaml",
+      "benchmarks/verus/humaneval/yaml/humaneval_047.yaml",
+      "benchmarks/verus/humaneval/yaml/humaneval_103.yaml"
+    ],
+    "score": 95.93167701863354,
+    "near_duplicates": {
+      "examples": [
+        {
+          "files": [
+            "benchmarks/verus/humaneval/yaml/humaneval_033_sort_third__SortSeqPred.yaml",
+            "benchmarks/verus/humaneval/yaml/humaneval_037_sort_even__SortSeqPred.yaml",
+            "benchmarks/verus/humaneval/yaml/humaneval_149_sorted_list_sum__sort_lengths.yaml",
+            "benchmarks/verus/humaneval/yaml/humaneval_034_unique__SortSeq.yaml",
+            "benchmarks/verus/humaneval/yaml/humaneval_105_by_length__SortSeq.yaml",
+            "benchmarks/verus/humaneval/yaml/humaneval_087_get_row__SortSeq.yaml",
+            "benchmarks/verus/humaneval/yaml/humaneval_120_maximum__SortSeq.yaml",
+            "benchmarks/verus/humaneval/yaml/humaneval_033_sort_third__sort_third.yaml",
+            "benchmarks/verus/humaneval/yaml/humaneval_070_strange_sort_list__strange_sort_list_helper.yaml",
+            "benchmarks/verus/humaneval/yaml/humaneval_037_sort_even__sorted_even.yaml",
+            "benchmarks/verus/humaneval/yaml/humaneval_149_sorted_list_sum__sorted_list_sum.yaml"
+          ],
+          "similarity": 0.9
+        },
+        {
+          "files": [
+            "benchmarks/verus/humaneval/yaml/humaneval_120_maximum__maximum.yaml",
+            "benchmarks/verus/humaneval/yaml/humaneval_034_unique__unique.yaml"
+          ],
+          "similarity": 0.9
+        },
+        {
+          "files": [
+            "benchmarks/verus/humaneval/yaml/humaneval_050_encode_shift__decode_shift.yaml",
+            "benchmarks/verus/humaneval/yaml/humaneval_050_encode_shift__encode_shift.yaml"
+          ],
+          "similarity": 0.9
+        },
+        {
+          "files": [
+            "benchmarks/verus/humaneval/yaml/humaneval_038_encode_cyclic__decode_cyclic.yaml",
+            "benchmarks/verus/humaneval/yaml/humaneval_038_encode_cyclic__encode_cyclic.yaml"
+          ],
+          "similarity": 0.9
+        }
+      ],
+      "total_count": 17
+    },
+    "base_score": 80
+  },
+  "generated_at": "2025-09-23T18:02:49.895253",
+  "config_version": "2.0",
+  "format_version": "separate_metadata_v1"
+}

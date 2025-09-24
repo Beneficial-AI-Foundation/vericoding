@@ -26,6 +26,3 @@ theorem extract_hex_invalid :
   extract_valid_hex_colors "invalid" = [] :=
   sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

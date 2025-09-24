@@ -33,25 +33,4 @@ theorem solve_chefirnemo_divisibility
   (h9 : (n-1) % x = 0)
   (h10 : (m-1) % y = 0) :
   solve_chefirnemo n m x y = "Chefirnemo" := sorry
-
-/-
-info: 'Chefirnemo'
--/
--- #guard_msgs in
--- #eval solve_chefirnemo 2 2 1 2
-
-/-
-info: 'Chefirnemo'
--/
--- #guard_msgs in
--- #eval solve_chefirnemo 11 10 5 9
-
-/-
-info: 'Pofik'
--/
--- #guard_msgs in
--- #eval solve_chefirnemo 11 11 5 9
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

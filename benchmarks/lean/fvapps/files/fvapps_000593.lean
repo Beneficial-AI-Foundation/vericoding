@@ -33,25 +33,4 @@ theorem check_social_distancing_edge_cases :
   (check_social_distancing 1 [0] = "YES") ∧
   (check_social_distancing 1 [1] = "YES") ∧
   (check_social_distancing 2 [1,1] = "NO") := sorry
-
-/-
-info: 'NO'
--/
--- #guard_msgs in
--- #eval check_social_distancing 3 [1, 0, 1]
-
-/-
-info: 'YES'
--/
--- #guard_msgs in
--- #eval check_social_distancing 7 [1, 0, 0, 0, 0, 0, 1]
-
-/-
-info: 'NO'
--/
--- #guard_msgs in
--- #eval check_social_distancing 11 [0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 1]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

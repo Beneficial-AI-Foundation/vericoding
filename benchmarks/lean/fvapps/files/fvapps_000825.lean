@@ -37,25 +37,4 @@ theorem harry_biscuits_equal_exchange :
 theorem harry_biscuits_no_profitable_exchange (K : Nat) :
   harry_biscuits K 5 7 = K + 1 :=
   sorry
-
-/-
-info: 7
--/
--- #guard_msgs in
--- #eval harry_biscuits 4 2 6
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval harry_biscuits 3 3 4
-
-/-
-info: 6
--/
--- #guard_msgs in
--- #eval harry_biscuits 5 2 3
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

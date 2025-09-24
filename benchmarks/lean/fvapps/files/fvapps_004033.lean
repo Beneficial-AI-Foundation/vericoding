@@ -17,25 +17,4 @@ theorem make_upper_case_is_upper (s : String) :
 
 theorem make_upper_case_upper_lower_chain (s : String) :
   String.toUpper (String.toLower (make_upper_case s)) = make_upper_case s := sorry
-
-/-
-info: 'HELLO'
--/
--- #guard_msgs in
--- #eval make_upper_case "hello"
-
-/-
-info: 'HELLO WORLD'
--/
--- #guard_msgs in
--- #eval make_upper_case "hello world"
-
-/-
-info: 'HELLO WORLD !'
--/
--- #guard_msgs in
--- #eval make_upper_case "heLlO wORLd !"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

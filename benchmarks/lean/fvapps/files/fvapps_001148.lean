@@ -21,25 +21,4 @@ theorem chain_structure (n : Nat) (h : n ≥ 2) :
   let result := find_killers n reports
   n ∈ result :=
 sorry
-
-/-
-info: '4 5 6'
--/
--- #guard_msgs in
--- #eval find_killers 6 [0, 1, 1, 2, 2, 3]
-
-/-
-info: '2 3'
--/
--- #guard_msgs in
--- #eval find_killers 3 [0, 1, 1]
-
-/-
-info: '3 4 5'
--/
--- #guard_msgs in
--- #eval find_killers 5 [0, 1, 2, 1, 2]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

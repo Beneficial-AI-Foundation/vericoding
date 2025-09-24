@@ -17,6 +17,3 @@ theorem x_correct_dimensions {n: Nat} (h: n > 0):
   lines.length = n ∧ 
   lines.all (fun line => line.length = n) := sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

@@ -29,6 +29,3 @@ theorem domino_reaction_valid_chars (s : String) :
 theorem domino_reaction_idempotent (s : String) :
   domino_reaction (domino_reaction s) = domino_reaction s := sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

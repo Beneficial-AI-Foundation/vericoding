@@ -20,25 +20,4 @@ theorem arithmetic_wrapping (n : Nat) :
                (List.replicate n '-') ++ ['*', '&'])
   interpreter tape = "\u0000" :=
 sorry
-
-/-
-info: '\x00'
--/
--- #guard_msgs in
--- #eval interpreter "\\h*&"
-
-/-
-info: '\x00'
--/
--- #guard_msgs in
--- #eval interpreter "+-*&"
-
-/-
-info: '\x01'
--/
--- #guard_msgs in
--- #eval interpreter "+*&"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

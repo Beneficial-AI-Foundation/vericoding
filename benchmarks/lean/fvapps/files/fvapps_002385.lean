@@ -32,6 +32,3 @@ theorem k_equals_one (s : String):
 theorem empty_string (k : Nat):
   reverse_str "" k = "" := sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

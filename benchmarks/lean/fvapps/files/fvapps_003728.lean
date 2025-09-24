@@ -25,25 +25,4 @@ theorem billboard_general {name : String} :
   let result := billboard name
   (result ≥ 0) ∧
   (name.length * 30 = result) := sorry
-
-/-
-info: 600
--/
--- #guard_msgs in
--- #eval billboard "Jeong-Ho Aristotelis"
-
-/-
-info: 260
--/
--- #guard_msgs in
--- #eval billboard "Hadufuns John" 20
-
-/-
-info: 270
--/
--- #guard_msgs in
--- #eval billboard "Paolo Oli"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

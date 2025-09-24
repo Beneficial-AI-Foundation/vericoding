@@ -17,19 +17,4 @@ theorem solve_min_swaps_known_cases_2 :
 
 theorem solve_min_swaps_known_cases_3 :
   solve_min_swaps 3 3 [3, 2, 1] = -1 := sorry
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval solve_min_swaps 5 2 [3, 4, 5, 2, 1]
-
-/-
-info: -1
--/
--- #guard_msgs in
--- #eval solve_min_swaps 5 2 [4, 3, 2, 1, 5]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

@@ -39,25 +39,4 @@ theorem longest_word_maximal
   (hValidWord : ∀ c, c ∈ testWord.data → (testWord.data.count c) ≤ (letters.data.count c)) :
   testWord.length ≤ (Option.get! (longest_word letters)).head!.length :=
 sorry
-
-/-
-info: None
--/
--- #guard_msgs in
--- #eval longest_word ""
-
-/-
-info: None
--/
--- #guard_msgs in
--- #eval longest_word "MKMKMKMKM"
-
-/-
-info: ['PALMED', 'VALVED', 'VAMPED']
--/
--- #guard_msgs in
--- #eval longest_word "DVAVPALEM"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

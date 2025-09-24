@@ -27,6 +27,3 @@ theorem count_books_correct_count {books queries : List String} :
     count = List.length (List.filter (fun book => book.startsWith query) books) :=
   sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

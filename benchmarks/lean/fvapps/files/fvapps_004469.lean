@@ -17,25 +17,4 @@ theorem greet_ends_with_exclamation (name : String) (h : name.length > 0) :
 
 theorem greet_contains_capitalized_name (name : String) (h : name.length > 0) :
   ((greet name).drop "Hello ".length).dropRight 1 = name.capitalize := sorry
-
-/-
-info: 'Hello Riley!'
--/
--- #guard_msgs in
--- #eval greet "riley"
-
-/-
-info: 'Hello Molly!'
--/
--- #guard_msgs in
--- #eval greet "molly"
-
-/-
-info: 'Hello Billy!'
--/
--- #guard_msgs in
--- #eval greet "BILLY"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

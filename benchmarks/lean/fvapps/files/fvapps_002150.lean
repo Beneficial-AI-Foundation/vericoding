@@ -28,6 +28,3 @@ theorem laser_sensors_square_grid {n : Nat}
   : (solve_laser_sensors n n 4 sensor_list).length = 4 :=
 sorry
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: guarded

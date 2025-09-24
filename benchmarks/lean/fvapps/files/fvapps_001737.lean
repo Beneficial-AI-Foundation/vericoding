@@ -37,25 +37,4 @@ theorem reciprocal_products {nums : List Int} {i j : Fin nums.length}
     contradiction)
   result.get ⟨i, by rw [h3]; exact i.isLt⟩ * nums.get i = 
   result.get ⟨j, by rw [h3]; exact j.isLt⟩ * nums.get j := sorry
-
-/-
-info: [24, 12, 8, 6]
--/
--- #guard_msgs in
--- #eval product_except_self #[1, 2, 3, 4]
-
-/-
-info: [60, 40, 30, 24]
--/
--- #guard_msgs in
--- #eval product_except_self #[2, 3, 4, 5]
-
-/-
-info: [1, 1, 1, 1]
--/
--- #guard_msgs in
--- #eval product_except_self #[1, 1, 1, 1]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

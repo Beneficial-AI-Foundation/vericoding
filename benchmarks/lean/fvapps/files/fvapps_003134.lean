@@ -40,25 +40,4 @@ theorem what_century_suffix_rules {year : String}
     | 3 => result.endsWith "rd"
     | _ => result.endsWith "th"
   ) := sorry
-
-/-
-info: '20th'
--/
--- #guard_msgs in
--- #eval what_century "1999"
-
-/-
-info: '21st'
--/
--- #guard_msgs in
--- #eval what_century "2011"
-
-/-
-info: '20th'
--/
--- #guard_msgs in
--- #eval what_century "2000"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

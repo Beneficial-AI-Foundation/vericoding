@@ -23,25 +23,4 @@ theorem double_inversion_cancels (s : String) :
   let j := s.length 
   let ops := [[0, i, j], [0, i, j], [1, 1]]
   binary_simulation s ops = [s.get 0] := sorry
-
-/-
-info: ['0', '1', '1', '0']
--/
--- #guard_msgs in
--- #eval binary_simulation "0011001100" [["I", 1, 10], ["I", 2, 7], ["Q", 2], ["Q", 1], ["Q", 7], ["Q", 5]]
-
-/-
-info: ['0', '0', '0', '1']
--/
--- #guard_msgs in
--- #eval binary_simulation "1011110111" [["I", 1, 10], ["I", 2, 7], ["Q", 2], ["Q", 1], ["Q", 7], ["Q", 5]]
-
-/-
-info: ['1']
--/
--- #guard_msgs in
--- #eval binary_simulation "0000000000" [["I", 1, 10], ["Q", 2]]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

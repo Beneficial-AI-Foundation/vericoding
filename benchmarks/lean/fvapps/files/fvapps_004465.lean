@@ -17,25 +17,4 @@ theorem sort_array_preserves_elements {arr : List Int} :
 
 theorem sort_array_empty :
   sort_array [] = [] := sorry
-
-/-
-info: [1, 3, 8, 4, 5, 2]
--/
--- #guard_msgs in
--- #eval sort_array [5, 3, 2, 8, 1, 4]
-
-/-
-info: [22, 4, 1, 5, 2, 11, 37, 0]
--/
--- #guard_msgs in
--- #eval sort_array [2, 22, 37, 11, 4, 1, 5, 0]
-
-/-
-info: []
--/
--- #guard_msgs in
--- #eval sort_array []
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

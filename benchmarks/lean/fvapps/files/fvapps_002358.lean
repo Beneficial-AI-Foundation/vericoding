@@ -31,19 +31,4 @@ theorem modify_string_preserves_non_question {s : String} {i : Nat} :
   i < s.length →
   s.data[i]! ≠ '?' → 
   (modify_string s).data[i]! = s.data[i]! := sorry
-
-/-
-info: 'azs'
--/
--- #guard_msgs in
--- #eval modify_string "?zs"
-
-/-
-info: len('j?qg??b')
--/
--- #guard_msgs in
--- #eval len modify_string("j?qg??b")
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

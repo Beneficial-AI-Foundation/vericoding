@@ -24,31 +24,4 @@ theorem solve_brackets_single_close :
 
 def repeat_char (c : Char) (n : Nat) : String :=
   sorry
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval solve_brackets ")("
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval solve_brackets "()()"
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval solve_brackets "())()()("
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval solve_brackets ")))((((())"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

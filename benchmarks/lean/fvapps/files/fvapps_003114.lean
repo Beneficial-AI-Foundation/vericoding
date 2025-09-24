@@ -27,25 +27,4 @@ theorem clonewars_growth (n : Int) (h : 1 ≤ n ∧ n ≤ 10) :
 theorem clonewars_base_cases :
   clonewars 0 = [1, 0] ∧
   clonewars 1 = [1, 1] := sorry
-
-/-
-info: [1, 0]
--/
--- #guard_msgs in
--- #eval clonewars 0
-
-/-
-info: [1, 1]
--/
--- #guard_msgs in
--- #eval clonewars 1
-
-/-
-info: [16, 57]
--/
--- #guard_msgs in
--- #eval clonewars 5
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

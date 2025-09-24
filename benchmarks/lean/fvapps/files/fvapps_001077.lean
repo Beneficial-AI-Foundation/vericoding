@@ -15,6 +15,3 @@ theorem total_pairs_formula {n : Nat} (h1: n ≥ 2) :
   total_pairs > 0 ∧ total_pairs = total_pairs :=
   sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

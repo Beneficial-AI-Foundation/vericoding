@@ -39,25 +39,4 @@ theorem perm_primes_valid_bounds (n_max k_perms : Nat) :
    ∧ result.get! 1 ≤ result.get! 2
    ∧ result.get! 1 < n_max
    ∧ result.get! 2 < n_max) := sorry
-
-/-
-info: [3, 149, 379]
--/
--- #guard_msgs in
--- #eval permutational_primes 1000 3
-
-/-
-info: [9, 113, 389]
--/
--- #guard_msgs in
--- #eval permutational_primes 1000 2
-
-/-
-info: [34, 13, 797]
--/
--- #guard_msgs in
--- #eval permutational_primes 1000 1
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

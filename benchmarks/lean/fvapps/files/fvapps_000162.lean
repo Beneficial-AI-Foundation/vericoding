@@ -32,25 +32,4 @@ theorem no_longer_valid_word {s : String} {dict : List String} :
 theorem no_lexically_smaller_valid_word {s : String} {dict : List String} :
   let result := find_longest_word s dict
   ∀ w ∈ dict, w.length = result.length ∧ w < result → isSubsequence w s = false := sorry
-
-/-
-info: 'apple'
--/
--- #guard_msgs in
--- #eval find_longest_word "abpcplea" ["ale", "apple", "monkey", "plea"]
-
-/-
-info: 'a'
--/
--- #guard_msgs in
--- #eval find_longest_word "abpcplea" ["a", "b", "c"]
-
-/-
-info: 'aaa'
--/
--- #guard_msgs in
--- #eval find_longest_word "aaa" ["aaa", "aa", "a"]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

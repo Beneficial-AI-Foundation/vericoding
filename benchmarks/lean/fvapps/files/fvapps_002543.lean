@@ -22,25 +22,4 @@ sorry
 theorem single_island_needs_no_guards (islands : List Bool) :
   islands.length = 1 → find_needed_guards islands = 0 :=
 sorry
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval find_needed_guards [True, True, False, True, False]
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval find_needed_guards [False, False, True, False, False]
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval find_needed_guards [False, False, False, False, False]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

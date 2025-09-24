@@ -33,25 +33,4 @@ theorem flatten_properties {α : Type u} (lst : List (List α ⊕ α)) :
   -- Property 3: Length is sum of atomic elements and nested lengths
   flattened.length = atomic_elements.length + nested_lengths.foldl (·+·) 0 :=
   sorry
-
-/-
-info: [1, 2, 3, 4]
--/
--- #guard_msgs in
--- #eval flatten_me [1, [2, 3], 4]
-
-/-
-info: ['a', 'b', 'c', 'd']
--/
--- #guard_msgs in
--- #eval flatten_me [["a", "b"], "c", ["d"]]
-
-/-
-info: ['!', '?']
--/
--- #guard_msgs in
--- #eval flatten_me ["!", "?"]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

@@ -1,35 +1,35 @@
 vc-description: |-
   /-
   An onion array is an array that satisfies the following condition for all values of `j` and `k`:
-  
+
   If all of the following are `true`:
-  
+
   * `j >= 0`
   * `k >= 0`
   * `j + k = array.length - 1`
   * `j != k`
-  
+
   then:
-  
+
   * `a[j] + a[k] <= 10`
-  
+
   ### Examples:
-  
+
   ```
   [1, 2, 19, 4, 5]   =>  true  (as 1+5 <= 10 and 2+4 <= 10)
   [1, 2, 19, 4, 10]  =>  false (as 1+10 > 10)
   ```
-  
+
   Write a function named `isOnionArray`/`IsOnionArray`/`is_onion_array()` that returns `true` if its argument is an onion array and returns `false` if it is not.
-  
+
   ~~~if:php
   Your solution should at least be moderately efficient.  Make sure you don't do any unnecessary looping ;)
   ~~~
   -/
 
-vc-preamble: |-
+vc-preamble: |
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def is_onion_array : List Int → Bool :=
@@ -39,37 +39,37 @@ vc-theorems: |-
   theorem onion_array_valid {arr : List Int} 
     (h : ∃ xs, arr = xs ++ List.replicate (xs.length % 2) 0 ++ (xs.map (fun x => 10 - x)).reverse) : 
     is_onion_array arr = true := sorry
-  
+
   theorem empty_single_onion {arr : List Int} (h : arr.length ≤ 1) : 
     is_onion_array arr = true := sorry 
-  
+
   theorem large_nums_not_onion {arr : List Int} 
     (h1 : arr.length ≥ 2) 
     (h2 : ∀ x ∈ arr, x > 10) : 
     is_onion_array arr = false := sorry
-  
+
   theorem onion_symmetric {arr : List Int} :
     is_onion_array arr = is_onion_array arr.reverse := sorry
-  
-  /-
-  info: True
-  -/
-  -- #guard_msgs in
-  -- #eval is_onion_array [6, 0, 4]
-  
-  /-
-  info: False
-  -/
-  -- #guard_msgs in
-  -- #eval is_onion_array [1, 1, 15, 10, -1]
-  
-  /-
-  info: True
-  -/
-  -- #guard_msgs in
-  -- #eval is_onion_array [1, 2, 19, 4, 5]
 
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval is_onion_array [6, 0, 4]
+
+  /--
+  info: False
+  -/
+  #guard_msgs in
+  #eval is_onion_array [1, 1, 15, 10, -1]
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval is_onion_array [1, 2, 19, 4, 5]
 

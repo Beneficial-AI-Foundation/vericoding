@@ -23,25 +23,4 @@ theorem min_time_tasks_two_elements_commutative (a b : Nat) :
 theorem min_time_tasks_two_elements_bounds (a b : Nat) 
   (h1 : a > 0) (h2 : b > 0) (h3 : a ≤ 100) (h4 : b ≤ 100) :
   min_time_tasks 2 [a, b] < 10007 ∧ min_time_tasks 2 [a, b] ≥ 0 := sorry
-
-/-
-info: 6
--/
--- #guard_msgs in
--- #eval min_time_tasks 2 [1, 3]
-
-/-
-info: 10
--/
--- #guard_msgs in
--- #eval min_time_tasks 3 [1, 2, 3]
-
-/-
-info: 20
--/
--- #guard_msgs in
--- #eval min_time_tasks 4 [1, 2, 3, 4]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

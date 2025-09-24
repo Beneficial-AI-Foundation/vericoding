@@ -31,25 +31,4 @@ theorem integrate_coef_correct_when_not_divisible
   ∃ s : String,
     integrate coef exp = s ∧ 
     s.startsWith (toString ((coef / (exp + 1)).toNat)) := sorry
-
-/-
-info: '1x^3'
--/
--- #guard_msgs in
--- #eval integrate 3 2
-
-/-
-info: '2x^6'
--/
--- #guard_msgs in
--- #eval integrate 12 5
-
-/-
-info: '30x^3'
--/
--- #guard_msgs in
--- #eval integrate 90 2
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

@@ -29,25 +29,4 @@ theorem edge_cases_bounds :
   let result := solve_chocolate_distribution n k
   result ≥ 0 ∧ result ≤ 2*n-1
   := sorry
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval solve_chocolate_distribution 3 2
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval solve_chocolate_distribution 2 2
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval solve_chocolate_distribution 3 4
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

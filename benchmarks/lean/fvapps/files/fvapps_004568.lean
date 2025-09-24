@@ -41,25 +41,4 @@ theorem nested_composition (x : Int) :
   let g := (fun x => x * 2)
   let h := (fun x => x - 3)
   compose (compose f g) h x = f (g (h x)) := sorry
-
-/-
-info: 7
--/
--- #guard_msgs in
--- #eval fn 3
-
-/-
-info: 'HELLO!'
--/
--- #guard_msgs in
--- #eval fn "hello"
-
-/-
-info: 6
--/
--- #guard_msgs in
--- #eval fn 1 2 3
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

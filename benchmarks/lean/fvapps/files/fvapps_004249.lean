@@ -31,25 +31,4 @@ theorem cut_fruits_non_fruits (non_fruits : List String)
 
 theorem cut_fruits_empty :
   cut_fruits [] = [] := sorry
-
-/-
-info: ['app', 'le', 'pe', 'ar', 'ban', 'ana']
--/
--- #guard_msgs in
--- #eval cut_fruits ["apple", "pear", "banana"]
-
-/-
-info: ['app', 'le', 'pe', 'ar', 'ban', 'ana', 'bomb']
--/
--- #guard_msgs in
--- #eval cut_fruits ["apple", "pear", "banana", "bomb"]
-
-/-
-info: []
--/
--- #guard_msgs in
--- #eval cut_fruits []
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

@@ -29,25 +29,4 @@ theorem duplicate_scores_invalid (n : Nat) (base_score : Nat)
   let dup_val := scores.get! ((n/4)-1)
   let scores_with_dup := scores.take (n/4) ++ [dup_val] ++ scores.drop (n/4 + 1)
   solve_grading_thresholds n scores_with_dup = "-1" := sorry
-
-/-
-info: '60 75 90'
--/
--- #guard_msgs in
--- #eval solve_grading_thresholds 4 #[90, 25, 60, 75]
-
-/-
-info: '1 2 3'
--/
--- #guard_msgs in
--- #eval solve_grading_thresholds 4 #[0, 1, 2, 3]
-
-/-
-info: '-1'
--/
--- #guard_msgs in
--- #eval solve_grading_thresholds 4 #[30, 30, 40, 50]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

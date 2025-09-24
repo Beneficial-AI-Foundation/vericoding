@@ -19,6 +19,3 @@ theorem count_zero_x (a: List Int) (t: Int) (h: a.length > 0) :
 theorem count_nonzero_x (a: List Int) (t: Int) (x: Int) (h1: a.length > 0) (h2: x ≠ 0) :
   count a t x = (a.filter (fun v => (t - v) % x = 0)).length := sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

@@ -26,25 +26,4 @@ theorem quadratic_polynomial :
 
 theorem negative_quadratic :
   is_polynomial_equal (-1) 1 "x**2" = true := sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval is_polynomial_equal 1 4 "x**3 + x**2 + x + 1"
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval is_polynomial_equal 2 20 "x**3 + x**2 + x + 1"
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval is_polynomial_equal 0 1 "x**3 + x**2 + x + 1"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

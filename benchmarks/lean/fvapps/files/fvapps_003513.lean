@@ -28,25 +28,4 @@ theorem kooka_counter_alternating_laughs (n: Nat) (h: n > 0) :
   let upperLaugh := String.join (List.replicate n "Ha")
   kooka_counter (lowerLaugh ++ upperLaugh) = 2 :=
 sorry
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval kooka_counter ""
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval kooka_counter "hahahahaha"
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval kooka_counter "hahahahahaHaHaHa"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

@@ -31,6 +31,3 @@ theorem too_large_wall_returns_resignation {x y : Int} (h1: x > 0) (h2: y > 0) :
   x * y > 10000 →
   build_a_wall x y = some "Naah, too much...here's my resignation." := sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

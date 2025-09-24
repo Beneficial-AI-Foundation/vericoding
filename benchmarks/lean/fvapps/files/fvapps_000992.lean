@@ -37,25 +37,4 @@ theorem pattern_generator_single (k : Nat) (h : k = 1) :
 theorem pattern_generator_two (k : Nat) (h : k = 2) :
   (pattern_generator k).length = 2 ∧
   (pattern_generator k).head! = "1" := sorry
-
-/-
-info: ['1']
--/
--- #guard_msgs in
--- #eval pattern_generator 1
-
-/-
-info: ['1', '23']
--/
--- #guard_msgs in
--- #eval pattern_generator 2
-
-/-
-info: ['1', '23', '456']
--/
--- #guard_msgs in
--- #eval pattern_generator 3
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

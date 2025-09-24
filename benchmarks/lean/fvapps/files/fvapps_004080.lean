@@ -97,25 +97,4 @@ theorem unlock_uppercase_x : unlock "X" = "9" := sorry
 
 theorem unlock_uppercase_y : unlock "Y" = "9" := sorry
 theorem unlock_uppercase_z : unlock "Z" = "9" := sorry
-
-/-
-info: '66542'
--/
--- #guard_msgs in
--- #eval unlock "Nokia"
-
-/-
-info: '82588'
--/
--- #guard_msgs in
--- #eval unlock "Valut"
-
-/-
-info: '864538'
--/
--- #guard_msgs in
--- #eval unlock "toilet"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

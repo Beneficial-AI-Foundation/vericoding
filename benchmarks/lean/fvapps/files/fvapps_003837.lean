@@ -1,15 +1,16 @@
 -- <vc-preamble>
-def strLen (s : String) : Nat :=
-  sorry
-
-def stringSuffix (s : String) : Nat :=
-  sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
+def strLen (s : String) : Nat :=
+  sorry
+
+def stringSuffix (s : String) : Nat :=
+  sorry
+
 def isRepeatedChar (s : String) : Bool :=
   sorry
 -- </vc-definitions>
@@ -38,25 +39,4 @@ sorry
 theorem string_suffix_slice (s : String) (i : Nat) :
   i < strLen s → stringSuffix (s.drop i) ≤ stringSuffix s :=
 sorry
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval string_suffix "abc"
-
-/-
-info: 11
--/
--- #guard_msgs in
--- #eval string_suffix "ababaa"
-
-/-
-info: 10
--/
--- #guard_msgs in
--- #eval string_suffix "aaaa"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

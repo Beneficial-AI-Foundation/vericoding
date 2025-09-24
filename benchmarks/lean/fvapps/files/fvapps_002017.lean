@@ -47,25 +47,4 @@ theorem solve_killer_pairs_state_transitions
     initial
   (solve_killer_pairs initial murders)[i+1]! = s!"{current.1} {current.2}" :=
   sorry
-
-/-
-info: expected
--/
--- #guard_msgs in
--- #eval solve_killer_pairs ["ross", "rachel"] [["ross", "joey"], ["rachel", "phoebe"], ["phoebe", "monica"], ["monica", "chandler"]]
-
-/-
-info: expected
--/
--- #guard_msgs in
--- #eval solve_killer_pairs ["icm", "codeforces"] [["codeforces", "technex"]]
-
-/-
-info: expected
--/
--- #guard_msgs in
--- #eval solve_killer_pairs ["a", "b"] [["a", "c"], ["b", "d"], ["d", "e"]]
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: unguarded

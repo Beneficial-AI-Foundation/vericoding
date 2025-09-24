@@ -24,25 +24,4 @@ theorem knight_rescue_odd_diff_parity (N : List Nat) (x y : Nat)
 theorem knight_rescue_same_position (N : List Nat) (x : Nat) 
   (h : N.length > 0) :
   knight_rescue N x x = true := sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval knight_rescue [2] 2 1
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval knight_rescue [1] 10 10
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval knight_rescue [1] 1 0
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

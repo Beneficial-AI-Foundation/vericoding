@@ -23,19 +23,4 @@ theorem multiples_sign_preservation {m : Nat} {n : Int} (h1 : m ≤ 1000) (h2 : 
   (n < 0 → ∀ x ∈ multiples m n, x < 0) ∧
   (n > 0 → ∀ x ∈ multiples m n, x > 0) ∧
   (n = 0 → ∀ x ∈ multiples m n, x = 0) := sorry
-
-/-
-info: [5, 10, 15]
--/
--- #guard_msgs in
--- #eval multiples 3 5
-
-/-
-info: [-1, -2, -3, -4, -5]
--/
--- #guard_msgs in
--- #eval multiples 5 -1
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

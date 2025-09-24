@@ -32,25 +32,4 @@ theorem min_operations_cost_two_ones :
 theorem min_operations_cost_same_numbers :
   min_operations_cost 3 [5, 5, 5] = 10 :=
   sorry
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval min_operations_cost 2 [3, 4]
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval min_operations_cost 3 [4, 2, 5]
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval min_operations_cost 4 [1, 5, 2, 4]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

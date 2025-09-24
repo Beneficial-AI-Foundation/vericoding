@@ -39,25 +39,4 @@ theorem trivial_cases :
   (is_valid_serialization "#") ∧
   (¬ is_valid_serialization "1") :=
 sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval is_valid_serialization "9,3,4,#,#,1,#,#,2,#,6,#,#"
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval is_valid_serialization "1,#"
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval is_valid_serialization "9,#,#,1"
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

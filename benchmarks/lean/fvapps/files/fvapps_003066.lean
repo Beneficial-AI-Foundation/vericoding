@@ -41,25 +41,4 @@ theorem find_all_present {xs : List Int} {n : Int} :
   n ∈ xs →
   find_all xs n ≠ [] := by
   sorry
-
-/-
-info: [2, 4]
--/
--- #guard_msgs in
--- #eval find_all [6, 9, 3, 4, 3, 82, 11] 3
-
-/-
-info: []
--/
--- #guard_msgs in
--- #eval find_all [6, 9, 3, 4, 3, 82, 11] 99
-
-/-
-info: [0, 1, 8]
--/
--- #guard_msgs in
--- #eval find_all [20, 20, 10, 13, 15, 2, 7, 2, 20] 20
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

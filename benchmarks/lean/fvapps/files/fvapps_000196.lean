@@ -20,6 +20,3 @@ theorem find_min_fibonacci_log_bound (k : Nat) (h : k > 0) :
 theorem find_min_fibonacci_small_numbers (k : Nat) (h1 : k > 0) (h2 : k ≤ 10) :
   find_min_fibonacci_numbers k ≤ 3 := sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

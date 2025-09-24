@@ -29,6 +29,3 @@ theorem pattern_dimensions {n : Int} (h : n > 0) (h2 : n ≤ 50) :
   -- Each row at least n chars
   (∀ row ∈ rows, row.length ≥ n.toNat) := sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

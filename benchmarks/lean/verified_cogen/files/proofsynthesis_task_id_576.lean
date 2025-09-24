@@ -21,5 +21,3 @@ theorem isSubArray_spec_satisfied (main : Array Int) (sub : Array Int) (h_precon
     isSubArray_postcond main sub (isSubArray main sub h_precond) h_precond := by
   sorry
 -- </vc-theorems>
-
-def main : IO Unit := pure ()

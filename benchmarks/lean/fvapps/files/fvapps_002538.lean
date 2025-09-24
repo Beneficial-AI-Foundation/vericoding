@@ -53,25 +53,4 @@ theorem distance_property (s : String) (jump_dist : Nat)
 theorem missing_chars (s : String) :
   ¬(s.contains 'C' ∧ s.contains 'D' ∧ s.contains 'm') →
   cat_mouse s 5 = "boring without all three" := sorry
-
-/-
-info: 'Caught!'
--/
--- #guard_msgs in
--- #eval cat_mouse "..D.....C.m" 2
-
-/-
-info: 'Escaped!'
--/
--- #guard_msgs in
--- #eval cat_mouse "............C.............D..m..." 8
-
-/-
-info: 'Protected!'
--/
--- #guard_msgs in
--- #eval cat_mouse ".CD......m." 10
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

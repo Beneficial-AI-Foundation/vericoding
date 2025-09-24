@@ -24,25 +24,4 @@ theorem feast_first_last_only (beast dish : String)
   let modifiedDish := String.mk [beast.front] ++ String.mk [beast.back]
   feast beast modifiedDish = true :=
 sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval feast "great blue heron" "garlic naan"
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval feast "chickadee" "chocolate cake"
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval feast "cat" "yogurt"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

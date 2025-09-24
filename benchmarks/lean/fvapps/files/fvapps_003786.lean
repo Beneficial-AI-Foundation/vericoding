@@ -32,25 +32,4 @@ theorem known_happy_numbers :
 
 theorem happy_number_terminates (n : Nat) :
   n > 0 → ∃ result, is_happy n = result := sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval is_happy 1
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval is_happy 7
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval is_happy 16
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

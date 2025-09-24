@@ -16,9 +16,7 @@ vc-description: |-
   -/
 
 vc-preamble: |-
-  def expanded_form (n : Nat) : String := sorry
-  
-  def list_sum (xs : List Nat) : Nat := 
+  def list_sum (xs : List Nat) : Nat :=
     match xs with
     | [] => 0
     | x :: rest => x + list_sum rest
@@ -26,51 +24,60 @@ vc-preamble: |-
 vc-helpers: |-
 
 vc-definitions: |-
-  def string_to_nat (s : String) : Nat := sorry
+  def expanded_form (n : Nat) : String := sorry
   
-  def list_sorted_desc (xs : List Nat) : Bool := sorry
+  def string_to_nat (s : String) : Nat :=
+  sorry
+  
+  def list_sorted_desc (xs : List Nat) : Bool :=
+  sorry
 
 vc-theorems: |-
-  theorem expanded_form_sum_equals_input (n : Nat) (h : 0 < n) (h2 : n ≤ 1000000) : 
+  theorem expanded_form_sum_equals_input (n : Nat) (h : 0 < n) (h2 : n ≤ 1000000) :
     let parts := (expanded_form n).split (· = '+')
-    list_sum (parts.map string_to_nat) = n := sorry
+    list_sum (parts.map string_to_nat) = n :=
+  sorry
   
   theorem expanded_form_divisible_by_powers_of_ten (n : Nat) (h : 0 < n) (h2 : n ≤ 1000000) :
     let parts := (expanded_form n).split (· = '+')
     ∀ (i : Nat) (p : String), i < parts.length → p ∈ parts →
-    string_to_nat p % (10^i) = 0 := sorry
+    string_to_nat p % (10^i) = 0 :=
+  sorry
   
   theorem expanded_form_no_leading_zeros (n : Nat) (h : 0 < n) :
     let parts := (expanded_form n).split (· = '+')
-    ∀ p ∈ parts, ¬(p.get? 0 = some '0') := sorry
+    ∀ p ∈ parts, ¬(p.get? 0 = some '0') :=
+  sorry
   
   theorem expanded_form_descending_order (n : Nat) (h : 0 < n) :
     let parts := (expanded_form n).split (· = '+')
     let nums := parts.map string_to_nat
-    list_sorted_desc nums = true := sorry
+    list_sorted_desc nums = true :=
+  sorry
   
   theorem expanded_form_single_digit (n : Nat) (h : 0 < n) (h2 : n < 10) :
-    expanded_form n = toString n := sorry
-  
-  /-
-  info: '2'
-  -/
-  -- #guard_msgs in
-  -- #eval expanded_form 2
-  
-  /-
-  info: '40 + 2'
-  -/
-  -- #guard_msgs in
-  -- #eval expanded_form 42
-  
-  /-
-  info: '70000 + 300 + 4'
-  -/
-  -- #guard_msgs in
-  -- #eval expanded_form 70304
+    expanded_form n = toString n :=
+  sorry
 
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+  
+  /--
+  info: '2'
+  -/
+  #guard_msgs in
+  #eval expanded_form 2
+  
+  /--
+  info: '40 + 2'
+  -/
+  #guard_msgs in
+  #eval expanded_form 42
+  
+  /--
+  info: '70000 + 300 + 4'
+  -/
+  #guard_msgs in
+  #eval expanded_form 70304
 

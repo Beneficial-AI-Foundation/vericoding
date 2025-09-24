@@ -29,6 +29,3 @@ theorem angle_is_minimal
   (h2 : minutes ≤ 59) :
   angle_between_hands hour minutes ≤ 180 := sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

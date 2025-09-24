@@ -20,25 +20,4 @@ theorem dish_distribution_equals_min_plus_one (v w : Nat) :
 
 theorem dish_distribution_symmetry (v w : Nat) :
   solve_dish_distribution v w = solve_dish_distribution w v := sorry
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval solve_dish_distribution 3 3
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval solve_dish_distribution 5 3
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval solve_dish_distribution 2 4
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

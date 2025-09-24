@@ -23,6 +23,3 @@ theorem pattern_middle_lines {k : Nat} (h : k > 2) (i : Nat) (hi : i > 0 ∧ i <
   line.length = i + 1 ∧
   (∀ c ∈ line.data, c = '*' ∨ c = ' ') := sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

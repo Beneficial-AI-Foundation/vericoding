@@ -25,5 +25,3 @@ theorem stringXor_spec_satisfied (a: Array Char) (b: Array Char) (h_precond : st
     stringXor_postcond a b (stringXor a b h_precond) h_precond := by
   sorry
 -- </vc-theorems>
-
-def main : IO Unit := pure ()

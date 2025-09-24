@@ -29,25 +29,4 @@ theorem alan_with_incomplete_subset
   {subset : List String} (h : subset.length ≤ 3) 
   (h2 : ∀ x ∈ subset, x ∈ REQUIRED_STATIONS) :
   alan subset = "No, seriously, run. You will miss it." := sorry
-
-/-
-info: 'Smell my cheese you mother!'
--/
--- #guard_msgs in
--- #eval alan ["Norwich", "Rejection", "Disappointment", "Backstabbing Central", "Shattered Dreams Parkway", "London"]
-
-/-
-info: 'No, seriously, run. You will miss it.'
--/
--- #guard_msgs in
--- #eval alan ["London", "Norwich"]
-
-/-
-info: 'Smell my cheese you mother!'
--/
--- #guard_msgs in
--- #eval alan ["Norwich", "Rejection", "Disappointment", "Backstabbing Central", "Shattered Dreams Parkway"]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

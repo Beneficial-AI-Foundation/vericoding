@@ -23,25 +23,4 @@ theorem multiply_distributive (x y z : Int) :
 theorem multiply_identity_left (x : Int) : multiply 1 x = x := sorry
 
 theorem multiply_zero_left (x : Int) : multiply 0 x = 0 := sorry
-
-/-
-info: 6
--/
--- #guard_msgs in
--- #eval multiply 2 3
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval multiply 0 5
-
-/-
-info: -8
--/
--- #guard_msgs in
--- #eval multiply -2 4
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

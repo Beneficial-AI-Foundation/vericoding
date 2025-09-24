@@ -34,63 +34,66 @@ vc-description: |-
         As for special characters like apostrophes or dashes, they count as normal characters, 
         so e.g 'sand-colored' must be transformed to 'deroloc-dnas'.
   -/
+  
+  /- The output of spin_solve is always a string -/
+  
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded
+  
+  /- Properties of single word transformations -/
+  
+  /- Punctuation is preserved at the end of words -/
+  
+  /- The number of spaces is preserved in the output -/
 
 vc-preamble: |-
+  def countChar (s : String) (c : Char) : Nat :=
+    s.foldl (fun acc x => if x = c then acc + 1 else acc) 0
 
 vc-helpers: |-
 
 vc-definitions: |-
   def spin_solve (s : String) : String := sorry
-  
-  def countChar (s : String) (c : Char) : Nat := 
-    s.foldl (fun acc x => if x = c then acc + 1 else acc) 0
-  
-  /- The output of spin_solve is always a string -/
 
 vc-theorems: |-
   theorem output_is_string (s : String) :
-    ∃ (result : String), spin_solve s = result := sorry
-  
-  /- Properties of single word transformations -/
+    ∃ (result : String), spin_solve s = result :=
+  sorry
   
   theorem single_word_properties (word : String) :
     word ≠ "" →
-    (word.length > 6 ∨ (countChar word.toLower 't' > 1) → 
+    (word.length > 6 ∨ (countChar word.toLower 't' > 1) →
       spin_solve word = String.join (word.data.reverse.map toString)) ∧
     (word.length = 2 → spin_solve word = word.toUpper) ∧
-    (word.length = 1 → spin_solve word = "0") := sorry
-  
-  /- Punctuation is preserved at the end of words -/
+    (word.length = 1 → spin_solve word = "0") :=
+  sorry
   
   theorem punctuation_preservation (word : String) (punct : Char) :
     word ≠ "" →
     punct ∈ ['.', '!', '?', ',', ':', ';'] →
-    (spin_solve (word.push punct)).back = punct := sorry
-  
-  /- The number of spaces is preserved in the output -/
+    (spin_solve (word.push punct)).back = punct :=
+  sorry
   
   theorem space_preservation (sentence : String) :
-    countChar sentence ' ' = countChar (spin_solve sentence) ' ' := sorry
-  
-  /-
-  info: 'emocleW.'
-  -/
-  -- #guard_msgs in
-  -- #eval spin_solve "Welcome."
-  
-  /-
-  info: 'MOTHER, PLEASE, HELP, ME.'
-  -/
-  -- #guard_msgs in
-  -- #eval spin_solve "Mother, please, help, me."
-  
-  /-
-  info: 'IF 0 man does not keep pace with his snoinapmoc, spahrep IT IS esuaceb HE hears 0 tnereffid remmurd.'
-  -/
-  -- #guard_msgs in
-  -- #eval spin_solve "If a man does not keep pace with his companions, perhaps it is because he hears a different drummer."
+    countChar sentence ' ' = countChar (spin_solve sentence) ' ' :=
+  sorry
 
 vc-postamble: |-
-  -- Apps difficulty: introductory
-  -- Assurance level: unguarded
+  /--
+  info: 'emocleW.'
+  -/
+  #guard_msgs in
+  #eval spin_solve "Welcome."
+  
+  /--
+  info: 'MOTHER, PLEASE, HELP, ME.'
+  -/
+  #guard_msgs in
+  #eval spin_solve "Mother, please, help, me."
+  
+  /--
+  info: 'IF 0 man does not keep pace with his snoinapmoc, spahrep IT IS esuaceb HE hears 0 tnereffid remmurd.'
+  -/
+  #guard_msgs in
+  #eval spin_solve "If a man does not keep pace with his companions, perhaps it is because he hears a different drummer."
 

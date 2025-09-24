@@ -24,6 +24,3 @@ theorem one_very_large_period
   calculate_audience_meetings days x x 1000000000 = 0 :=
   sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

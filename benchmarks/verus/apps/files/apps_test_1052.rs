@@ -39,9 +39,9 @@ spec fn sum_binomial_derangement(n: int, k: int, i: int) -> int
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: int, k: int) -> (result: int)
-    requires valid_input(n, k)
-    ensures result == factorial(n) - sum_binomial_derangement(n, k, 0)
+fn solve(n: i8, k: i8) -> (result: i8)
+    requires valid_input(n as int, k as int)
+    ensures result as int == factorial(n as int) - sum_binomial_derangement(n as int, k as int, 0)
 // </vc-spec>
 // <vc-code>
 {

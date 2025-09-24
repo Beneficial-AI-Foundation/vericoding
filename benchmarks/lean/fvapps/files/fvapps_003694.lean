@@ -23,25 +23,4 @@ theorem honor_path_optimal {honor target : Int} (h: target > honor) :
   | none => False
   | some (kyus1, kyus2) => kyus2 ≤ 1 ∧ kyus1 ≥ 0
   := sorry
-
-/-
-info: {}
--/
--- #guard_msgs in
--- #eval get_honor_path 11 2
-
-/-
-info: {}
--/
--- #guard_msgs in
--- #eval get_honor_path 11 11
-
-/-
-info: {'1kyus': 4, '2kyus': 1}
--/
--- #guard_msgs in
--- #eval get_honor_path 2 11
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

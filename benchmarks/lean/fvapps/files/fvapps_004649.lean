@@ -29,25 +29,4 @@ sorry
 theorem only_one_main (bs : List Bool) :
   only_one bs = (count_true bs = 1) :=
 sorry
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval only_one 
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval only_one True False False
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval only_one True False False True
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

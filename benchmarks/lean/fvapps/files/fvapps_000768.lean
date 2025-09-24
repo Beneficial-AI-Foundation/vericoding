@@ -18,25 +18,4 @@ theorem sum_first_last_digit_in_range (n : Nat) (h : n > 0) :
 theorem single_digit_sum_is_double (n : Nat) (h1 : n > 0) (h2 : n ≤ 9) :
   sumFirstLastDigit n = n + n
   := sorry
-
-/-
-info: 5
--/
--- #guard_msgs in
--- #eval sum_first_last_digit 1234
-
-/-
-info: 5
--/
--- #guard_msgs in
--- #eval sum_first_last_digit 124894
-
-/-
-info: 5
--/
--- #guard_msgs in
--- #eval sum_first_last_digit 242323
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

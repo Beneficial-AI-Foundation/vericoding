@@ -29,25 +29,4 @@ theorem all_same_digits_converge (n d : Nat)
 theorem single_digit_converge (n : Nat)
   (h : n ≥ 1 ∧ n ≤ 9) :
   self_converge n = -1 := sorry
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval self_converge 4321
-
-/-
-info: 7
--/
--- #guard_msgs in
--- #eval self_converge 211
-
-/-
-info: 9
--/
--- #guard_msgs in
--- #eval self_converge 90900
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

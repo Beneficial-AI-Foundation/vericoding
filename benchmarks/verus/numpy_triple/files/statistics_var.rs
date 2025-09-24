@@ -33,7 +33,7 @@ spec fn squared_deviations_sum(a: Seq<int>, mean: int) -> int
     }
 }
 
-fn var(a: Vec<i32>, ddof: usize) -> (result: i32)
+fn var(a: Vec<i8>, ddof: usize) -> (result: i8)
     requires 
         a.len() > 0,
         ddof < a.len(),

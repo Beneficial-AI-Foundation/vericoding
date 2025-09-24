@@ -37,25 +37,4 @@ theorem min_value_equals_sorted_unique (digits : List Nat) :
   min_value digits = 
     String.toNat! (String.join (List.map Nat.repr (List.eraseDups digits))) :=
   sorry
-
-/-
-info: 13
--/
--- #guard_msgs in
--- #eval min_value [1, 3, 1]
-
-/-
-info: 579
--/
--- #guard_msgs in
--- #eval min_value [5, 7, 5, 9, 7]
-
-/-
-info: 134679
--/
--- #guard_msgs in
--- #eval min_value [1, 9, 3, 1, 7, 4, 6, 6, 7]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

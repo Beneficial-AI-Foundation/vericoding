@@ -25,25 +25,4 @@ theorem every_default_start {α : Type} (lst : List α) (n: Nat) :
 theorem every_one_full_slice {α : Type} (lst : List α) (start: Nat)
   (h: 0 < lst.length) :
   every lst 1 start = lst.drop start := sorry
-
-/-
-info: [1, 3, 5]
--/
--- #guard_msgs in
--- #eval every [1, 2, 3, 4, 5] 2
-
-/-
-info: [2, 4]
--/
--- #guard_msgs in
--- #eval every [1, 2, 3, 4, 5] 2 1
-
-/-
-info: [1, 2, 3]
--/
--- #guard_msgs in
--- #eval every [1, 2, 3]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

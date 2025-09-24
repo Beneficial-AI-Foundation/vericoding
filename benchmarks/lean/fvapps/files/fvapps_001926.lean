@@ -28,25 +28,4 @@ theorem find_numbers_known_cases :
   find_numbers 21 = [15] ∧
   find_numbers 20 = [] ∧
   find_numbers 39 = [33] := sorry
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval len find_numbers(21)
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval len find_numbers(20)
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval len find_numbers(39)
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: unguarded

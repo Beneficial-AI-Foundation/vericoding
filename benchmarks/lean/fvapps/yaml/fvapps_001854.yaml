@@ -1,9 +1,9 @@
 vc-description: |-
   /-
   In a string composed of 'L', 'R', and 'X' characters, like "RXXLRXRXL", a move consists of either replacing one occurrence of "XL" with "LX", or replacing one occurrence of "RX" with "XR". Given the starting string start and the ending string end, return True if and only if there exists a sequence of moves to transform one string to the other.
-  
+
   Example:
-  
+
   Input: start = "RXXLRXRXL", end = "XRLXXRRLX"
   Output: True
   Explanation:
@@ -13,16 +13,16 @@ vc-description: |-
   XRLXRXRXL ->
   XRLXXRRXL ->
   XRLXXRRLX
-  
+
   Note:
-  
+
          1 <= len(start) = len(end) <= 10000.
          Both start and end will only consist of characters in {'L', 'R', 'X'}.
   -/
 
-vc-preamble: |-
+vc-preamble: |
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def can_transform (s1 s2 : List Char) : Bool := 
@@ -32,47 +32,47 @@ vc-theorems: |-
   theorem string_length_property {s1 s2 : List Char} :
     can_transform s1 s2 = true → s1.length = s2.length := by
     sorry
-  
+
   theorem non_x_order_preserved {s1 s2 : List Char} :
     can_transform s1 s2 = true → 
     (s1.filterMap (fun c => if c = 'X' then none else some c)) = 
     (s2.filterMap (fun c => if c = 'X' then none else some c)) := by
     sorry
-  
+
   theorem l_moves_left_only {s1 s2 : List Char} :
     can_transform s1 s2 = true →
     ∀ i j, (s1.get! i = 'L' ∧ s2.get! j = 'L') → i ≥ j := by
     sorry
-  
+
   theorem r_moves_right_only {s1 s2 : List Char} :
     can_transform s1 s2 = true →
     ∀ i j, (s1.get! i = 'R' ∧ s2.get! j = 'R') → i ≤ j := by
     sorry
-  
+
   theorem reflexive_property {s1 s2 : List Char} :
     can_transform s1 s2 = true →
     (can_transform s2 s1 = true → s1 = s2) := by
     sorry
-  
-  /-
-  info: True
-  -/
-  -- #guard_msgs in
-  -- #eval can_transform "RXXLRXRXL" "XRLXXRRLX"
-  
-  /-
-  info: False
-  -/
-  -- #guard_msgs in
-  -- #eval can_transform "X" "L"
-  
-  /-
-  info: True
-  -/
-  -- #guard_msgs in
-  -- #eval can_transform "XXXXXLXXXX" "LXXXXXXXXX"
 
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval can_transform "RXXLRXRXL" "XRLXXRRLX"
+
+  /--
+  info: False
+  -/
+  #guard_msgs in
+  #eval can_transform "X" "L"
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval can_transform "XXXXXLXXXX" "LXXXXXXXXX"
 

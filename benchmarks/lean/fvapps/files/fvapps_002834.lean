@@ -21,25 +21,4 @@ theorem div_num_small_cases_1 : div_num 1 = 1 := sorry
 theorem div_num_small_cases_2 : div_num 2 = 2 := sorry 
 
 theorem div_num_small_cases_4 : div_num 4 = 3 := sorry
-
-/-
-info: 12
--/
--- #guard_msgs in
--- #eval find_min_num 6
-
-/-
-info: 48
--/
--- #guard_msgs in
--- #eval find_min_num 10
-
-/-
-info: 60
--/
--- #guard_msgs in
--- #eval find_min_num 12
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

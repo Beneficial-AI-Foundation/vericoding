@@ -25,25 +25,4 @@ theorem pattern_stars_increment (n : Nat) (h : n > 0) (i : Fin n) :
 theorem pattern_stars_prefix (n : Nat) (h : n > 0) (i : Fin n) :
   let len_eq := pattern_length n h
   ((generate_pattern n).get ⟨i.val, by rw [len_eq]; exact i.isLt⟩).startsWith (String.mk (List.replicate i.val '*')) := sorry
-
-/-
-info: ['1']
--/
--- #guard_msgs in
--- #eval generate_pattern 1
-
-/-
-info: ['21', '*1']
--/
--- #guard_msgs in
--- #eval generate_pattern 2
-
-/-
-info: ['4321', '*321', '**21', '***1']
--/
--- #guard_msgs in
--- #eval generate_pattern 4
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

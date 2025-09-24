@@ -27,25 +27,4 @@ sorry
 theorem powers_of_two (n : Nat) (h : n > 0) :
   shortest_steps_to_num (2^n) = n :=
 sorry
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval shortest_steps_to_num 3
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval shortest_steps_to_num 16
-
-/-
-info: 8
--/
--- #guard_msgs in
--- #eval shortest_steps_to_num 100
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

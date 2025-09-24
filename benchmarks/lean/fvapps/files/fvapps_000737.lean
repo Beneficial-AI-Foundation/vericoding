@@ -1,12 +1,13 @@
 -- <vc-preamble>
-def isPrime (n : Nat) : Bool :=
-  sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
+def isPrime (n : Nat) : Bool :=
+  sorry
+
 def find_min_potatoes (x y : Nat) : Nat :=
   sorry
 -- </vc-definitions>
@@ -28,25 +29,4 @@ theorem find_min_potatoes_reasonable_bounds
   (x y : Nat) (h1 : x > 0) (h2 : y > 0) (h3 : x ≤ 100) (h4 : y ≤ 100) :
   find_min_potatoes x y ≤ x + y := by
   sorry
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval find_min_potatoes 1 3
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval find_min_potatoes 4 3
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval find_min_potatoes 1 1
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

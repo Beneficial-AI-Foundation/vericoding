@@ -28,25 +28,4 @@ sorry
 theorem base_empty_sequence :
   base_finder [] = 0 :=
 sorry
-
-/-
-info: 10
--/
--- #guard_msgs in
--- #eval base_finder ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
-
-/-
-info: 7
--/
--- #guard_msgs in
--- #eval base_finder ["1", "2", "3", "4", "5", "6", "10", "11", "12", "13"]
-
-/-
-info: 6
--/
--- #guard_msgs in
--- #eval base_finder ["301", "302", "303", "304", "305", "310", "311", "312", "313", "314"]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

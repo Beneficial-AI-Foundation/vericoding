@@ -20,25 +20,4 @@ theorem solution_padding (n : Nat) (h : n ≤ 99999) :
   let padded := (solution n).takeRight 5
   padded.length = 5 ∧
   padded.toNat? = some n := sorry
-
-/-
-info: 'Value is 00005'
--/
--- #guard_msgs in
--- #eval solution 5
-
-/-
-info: 'Value is 01234'
--/
--- #guard_msgs in
--- #eval solution 1234
-
-/-
-info: 'Value is 00089'
--/
--- #guard_msgs in
--- #eval solution 89
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

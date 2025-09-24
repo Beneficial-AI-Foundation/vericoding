@@ -15,6 +15,3 @@ theorem valid_chars {k : Nat} :
 
 -- <vc-theorems>
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

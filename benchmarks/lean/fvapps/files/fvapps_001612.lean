@@ -33,25 +33,4 @@ theorem two_by_two_matrix_path_sum (matrix: List (List Int))
 theorem zero_matrix_path_sum (n: Nat) (h: 2 ≤ n ∧ n ≤ 5):
   let matrix := List.replicate n (List.replicate n 0)
   min_falling_path_sum matrix = 0 := sorry
-
-/-
-info: 13
--/
--- #guard_msgs in
--- #eval min_falling_path_sum [[2, 1, 3], [6, 5, 4], [7, 8, 9]]
-
-/-
-info: -59
--/
--- #guard_msgs in
--- #eval min_falling_path_sum arr2
-
-/-
-info: -36
--/
--- #guard_msgs in
--- #eval min_falling_path_sum arr3
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

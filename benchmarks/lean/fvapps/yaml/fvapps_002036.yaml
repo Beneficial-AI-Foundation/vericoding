@@ -34,12 +34,13 @@ vc-description: |-
   -/
 
 vc-preamble: |-
-  def min_lost_milk (n: Nat) (cows: List Nat) : Nat :=
-  sorry
 
 vc-helpers: |-
 
 vc-definitions: |-
+  def min_lost_milk (n: Nat) (cows: List Nat) : Nat :=
+  sorry
+  
   def count_facing (cows: List Nat) (dir: Nat) : Nat :=
   sorry
 
@@ -51,26 +52,26 @@ vc-theorems: |-
   theorem min_lost_milk_length (n: Nat) (cows: List Nat) :
     cows.length = n → True :=
   sorry
-  
-  /-
-  info: 1
-  -/
-  -- #guard_msgs in
-  -- #eval min_lost_milk 4 [0, 0, 1, 0]
-  
-  /-
-  info: 3
-  -/
-  -- #guard_msgs in
-  -- #eval min_lost_milk 5 [1, 0, 1, 0, 1]
-  
-  /-
-  info: 1
-  -/
-  -- #guard_msgs in
-  -- #eval min_lost_milk 2 [1, 0]
 
 vc-postamble: |-
   -- Apps difficulty: competition
   -- Assurance level: guarded_and_plausible
+  
+  /--
+  info: 1
+  -/
+  #guard_msgs in
+  #eval min_lost_milk 4 [0, 0, 1, 0]
+  
+  /--
+  info: 3
+  -/
+  #guard_msgs in
+  #eval min_lost_milk 5 [1, 0, 1, 0, 1]
+  
+  /--
+  info: 1
+  -/
+  #guard_msgs in
+  #eval min_lost_milk 2 [1, 0]
 

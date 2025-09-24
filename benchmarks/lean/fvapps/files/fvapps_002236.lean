@@ -23,25 +23,4 @@ theorem all_zeros_after_first {n : Nat} {first : Nat} (h : first > 0) :
   let zeros := List.replicate (n-1) 0
   let arr := first :: zeros
   can_zero_array n arr = true := sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval can_zero_array 3 [1, 2, 1]
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval can_zero_array 5 [11, 7, 9, 6, 8]
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval can_zero_array 5 [1, 3, 1, 3, 1]
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: unguarded

@@ -37,17 +37,18 @@ vc-description: |-
   -/
 
 vc-preamble: |-
-  def solve_tree_trimming (n : Nat) (parents : List Nat) : Nat :=
-    sorry
 
 vc-helpers: |-
 
 vc-definitions: |-
+  def solve_tree_trimming (n : Nat) (parents : List Nat) : Nat :=
+    sorry
+  
   def is_valid_tree (n : Nat) (parents : List Nat) : Bool :=
     sorry
 
 vc-theorems: |-
-  theorem tree_trimming_bounds {n : Nat} {parents : List Nat} 
+  theorem tree_trimming_bounds {n : Nat} {parents : List Nat}
     (h1 : n ≥ 2) (h2 : is_valid_tree n parents = true) :
     let result := solve_tree_trimming n parents
     1 ≤ result ∧ result ≤ n :=
@@ -58,7 +59,7 @@ vc-theorems: |-
     solve_tree_trimming n parents = n :=
   sorry
   
-  theorem line_tree_bounds {n : Nat} 
+  theorem line_tree_bounds {n : Nat}
     (h : n ≥ 2) :
     let parents := List.range (n-1)
     let result := solve_tree_trimming n parents
@@ -68,23 +69,23 @@ vc-theorems: |-
   theorem star_tree_bounds {n : Nat}
     (h : n ≥ 2) :
     let parents := List.replicate (n-1) 1
-    let result := solve_tree_trimming n parents  
+    let result := solve_tree_trimming n parents
     1 ≤ result ∧ result ≤ n :=
   sorry
-  
-  /-
-  info: 4
-  -/
-  -- #guard_msgs in
-  -- #eval solve_tree_trimming 13 [1, 1, 1, 1, 1, 4, 3, 4, 4, 3, 4, 3]
-  
-  /-
-  info: 3
-  -/
-  -- #guard_msgs in
-  -- #eval solve_tree_trimming 3 [1, 1]
 
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
+  
+  /--
+  info: 4
+  -/
+  #guard_msgs in
+  #eval solve_tree_trimming 13 [1, 1, 1, 1, 1, 4, 3, 4, 4, 3, 4, 3]
+  
+  /--
+  info: 3
+  -/
+  #guard_msgs in
+  #eval solve_tree_trimming 3 [1, 1]
 

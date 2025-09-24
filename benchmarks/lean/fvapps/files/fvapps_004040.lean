@@ -30,25 +30,4 @@ theorem tip_rounding_consistency (price : Int) (h₁ : price ≥ 0) (h₂ : pric
   let rounded_up := calc_tip (price + (10 - price % 10)) 0
   let actual := calc_tip price 0
   actual = rounded_down ∨ actual = rounded_up := sorry
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval calc_tip 24 1
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval calc_tip 25 0
-
-/-
-info: 6
--/
--- #guard_msgs in
--- #eval calc_tip 144 -1
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

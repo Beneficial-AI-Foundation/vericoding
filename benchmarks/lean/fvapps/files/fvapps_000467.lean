@@ -23,25 +23,4 @@ theorem find_kth_bit_specific_cases :
   find_kth_bit 3 1 = '0' ∧ 
   find_kth_bit 4 11 = '1' ∧
   find_kth_bit 1 1 = '0' := sorry
-
-/-
-info: '0'
--/
--- #guard_msgs in
--- #eval find_kth_bit 3 1
-
-/-
-info: '1'
--/
--- #guard_msgs in
--- #eval find_kth_bit 4 11
-
-/-
-info: '0'
--/
--- #guard_msgs in
--- #eval find_kth_bit 1 1
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

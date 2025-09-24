@@ -34,25 +34,4 @@ theorem goals_geq_champions (laliga copa champions : Int)
   (h1 : laliga ≥ 0) (h2 : copa ≥ 0) (h3 : champions ≥ 0) :
   goals laliga copa champions ≥ champions :=
   sorry
-
-/-
-info: 17
--/
--- #guard_msgs in
--- #eval goals 5 10 2
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval goals 0 0 0
-
-/-
-info: 58
--/
--- #guard_msgs in
--- #eval goals 43 10 5
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

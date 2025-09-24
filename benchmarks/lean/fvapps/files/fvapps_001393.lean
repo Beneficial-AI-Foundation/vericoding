@@ -39,25 +39,4 @@ theorem append_one_increases {n : Nat} {skills : List Nat}
   count_dog_soccer_results n skills < 
   count_dog_soccer_results (n+1) (skills ++ [1]) :=
   sorry
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval count_dog_soccer_results 4 [1, 1, 1, 1]
-
-/-
-info: 5
--/
--- #guard_msgs in
--- #eval count_dog_soccer_results 3 [2, 2, 2]
-
-/-
-info: 6
--/
--- #guard_msgs in
--- #eval count_dog_soccer_results 4 [1, 2, 1, 1]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

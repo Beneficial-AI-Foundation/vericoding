@@ -34,25 +34,4 @@ theorem empty_list :
 
 theorem whitespace_handling :
   validate_credit_cards [" 4123456789123456 "] = ["Valid"] := sorry
-
-/-
-info: ['Valid', 'Valid', 'Invalid']
--/
--- #guard_msgs in
--- #eval validate_credit_cards ["4123456789123456", "5123-4567-8912-3456", "61234-567-8912-3456"]
-
-/-
-info: ['Valid', 'Invalid', 'Invalid']
--/
--- #guard_msgs in
--- #eval validate_credit_cards ["4123356789123456", "5133-3367-8912-3456", "5123 - 3567 - 8912 - 3456"]
-
-/-
-info: ['Valid', 'Valid', 'Invalid']
--/
--- #guard_msgs in
--- #eval validate_credit_cards ["4424424424442444", "5122-2368-7954-3214", "0525362587961578"]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

@@ -26,25 +26,4 @@ theorem xorinacci_xor_with_zero (x : Nat) :
 
 theorem xorinacci_zero_xor (x : Nat) :
   solve_xorinacci 0 x 2 = x := sorry
-
-/-
-info: 7
--/
--- #guard_msgs in
--- #eval solve_xorinacci 3 4 2
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval solve_xorinacci 4 5 0
-
-/-
-info: 76
--/
--- #guard_msgs in
--- #eval solve_xorinacci 325 265 1231232
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: guarded_and_plausible

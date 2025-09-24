@@ -54,6 +54,3 @@ theorem can_frogs_communicate_symmetric
   can_frogs_communicate n k coords pairs = 
   can_frogs_communicate n k coords reverse_pairs := sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

@@ -29,6 +29,3 @@ theorem split_hoverboard_even_case (n : Nat) (h : n ≥ 2) (h2 : n % 2 = 0) :
   let (_, squares) := split_hoverboard n
   ∀ x, x ∈ squares → x = n/2 := sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

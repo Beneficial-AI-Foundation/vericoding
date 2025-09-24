@@ -22,19 +22,4 @@ sorry
 theorem solve_string_transforms_returns_yes_no (S : List Char) (T : List Char) (queries : List (Nat × Nat × Nat × Nat)) :
   (solve_string_transforms S T queries).all (fun r => r = "YES" ∨ r = "NO") :=
 sorry
-
-/-
-info: expected
--/
--- #guard_msgs in
--- #eval solve_string_transforms "BBBAAAABA" "BBBBA" [[7, 9, 2, 5], [7, 9, 1, 4], [1, 7, 2, 5], [1, 7, 2, 4]]
-
-/-
-info: expected
--/
--- #guard_msgs in
--- #eval solve_string_transforms "AAAAABBBBAAABBBBAAAA" "BBBBAAABBBBBBAAAAABB" [[2, 15, 2, 13], [2, 13, 6, 16], [1, 13, 2, 20]]
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: unguarded

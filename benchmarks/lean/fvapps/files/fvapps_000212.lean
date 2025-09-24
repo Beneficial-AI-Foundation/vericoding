@@ -20,25 +20,4 @@ theorem min_frogs_upper_bound (n_frogs n_times: Nat) (s: String) :
   s = String.join (List.replicate (n_frogs * n_times) "croak") →
   min_number_of_frogs s ≤ n_frogs
   := sorry
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval min_number_of_frogs "croakcroak"
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval min_number_of_frogs "crcoakroak"
-
-/-
-info: -1
--/
--- #guard_msgs in
--- #eval min_number_of_frogs "croakcrook"
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

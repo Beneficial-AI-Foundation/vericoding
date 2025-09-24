@@ -45,6 +45,3 @@ theorem min_processing_time_sort_invariant {n k : Nat} {contrasts : List Nat}
   min_processing_time n k contrasts = min_processing_time n k sorted_contrasts :=
 sorry
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: guarded

@@ -21,25 +21,4 @@ theorem calc_max_second_screen_energy_constraint
   let energy_left := n - b * button_presses
   energy_left ≥ 0 :=
   sorry
-
-/-
-info: 12
--/
--- #guard_msgs in
--- #eval calc_max_second_screen 10 2
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval calc_max_second_screen 8 5
-
-/-
-info: 9
--/
--- #guard_msgs in
--- #eval calc_max_second_screen 6 1
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

@@ -29,25 +29,4 @@ theorem result_length_bounds
   (nums : List Int) 
   (h : nums.length ≥ 3) :
   0 ≤ find_unsorted_subarray nums ∧ find_unsorted_subarray nums ≤ nums.length := sorry
-
-/-
-info: 5
--/
--- #guard_msgs in
--- #eval find_unsorted_subarray [2, 6, 4, 8, 10, 9, 15]
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval find_unsorted_subarray [1, 2, 3, 4, 5]
-
-/-
-info: 5
--/
--- #guard_msgs in
--- #eval find_unsorted_subarray [5, 4, 3, 2, 1]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

@@ -39,6 +39,3 @@ theorem get_minimum_value_identical_string (s : String) :
   get_mininum_value s s = s.length :=
 sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

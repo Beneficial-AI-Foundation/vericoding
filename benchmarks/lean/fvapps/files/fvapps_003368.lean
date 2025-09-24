@@ -34,25 +34,4 @@ theorem array_previous_less_strictly_decreasing (arr : List Int) (h : arr ≠ []
   (h_decreasing : ∀ i j, i < j → j < arr.length → arr[i]! > arr[j]!) :
   array_previous_less arr = List.replicate arr.length (-1) :=
   sorry
-
-/-
-info: [-1, 3, -1, 2, 4]
--/
--- #guard_msgs in
--- #eval array_previous_less [3, 5, 2, 4, 5]
-
-/-
-info: [-1, -1, -1, 1, 3, 4, 4, 1]
--/
--- #guard_msgs in
--- #eval array_previous_less [2, 2, 1, 3, 4, 5, 5, 3]
-
-/-
-info: [-1, -1, -1]
--/
--- #guard_msgs in
--- #eval array_previous_less [3, 2, 1]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

@@ -22,8 +22,6 @@ vc-preamble: |-
   def treeToArray (t : TreeNode) : List Int := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def delNodes (root : Option TreeNode) (to_delete : List Int) : List TreeNode := sorry

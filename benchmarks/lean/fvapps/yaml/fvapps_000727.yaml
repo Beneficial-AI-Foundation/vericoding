@@ -37,23 +37,24 @@ vc-description: |-
   -/
 
 vc-preamble: |-
-  def minArraySize (height : Nat) : Nat := (2 ^ height) - 1
-  
-  def calcMaxProduct (height : Nat) (values : List Nat) : Nat :=
-  sorry
 
 vc-helpers: |-
 
 vc-definitions: |-
+  def minArraySize (height : Nat) : Nat := (2 ^ height) - 1
+  
+  def calcMaxProduct (height : Nat) (values : List Nat) : Nat :=
+  sorry
+  
   def treeProduct (values : List Nat) (height : Nat) : Nat :=
   sorry
 
 vc-theorems: |-
-  theorem calc_max_product_zero_height (values : List Nat) : 
+  theorem calc_max_product_zero_height (values : List Nat) :
     calcMaxProduct 0 values = 0 := by
     sorry
   
-  theorem calc_max_product_bounds {height : Nat} {values : List Nat} 
+  theorem calc_max_product_bounds {height : Nat} {values : List Nat}
     (h1 : height > 0)
     (h2 : values.length ≥ minArraySize height) :
     0 ≤ calcMaxProduct height values ∧ calcMaxProduct height values < 1000000007 := by
@@ -70,20 +71,20 @@ vc-theorems: |-
   theorem min_array_size_valid (height : Nat) :
     minArraySize height = 2^height - 1 := by
     sorry
-  
-  /-
-  info: 3
-  -/
-  -- #guard_msgs in
-  -- #eval calc_max_product 2 #[1, 2, 3]
-  
-  /-
-  info: 105
-  -/
-  -- #guard_msgs in
-  -- #eval calc_max_product 3 #[3, 1, 5, 2, 6, 4, 7]
 
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded
+  
+  /--
+  info: 3
+  -/
+  #guard_msgs in
+  #eval calc_max_product 2 #[1, 2, 3]
+  
+  /--
+  info: 105
+  -/
+  #guard_msgs in
+  #eval calc_max_product 3 #[3, 1, 5, 2, 6, 4, 7]
 

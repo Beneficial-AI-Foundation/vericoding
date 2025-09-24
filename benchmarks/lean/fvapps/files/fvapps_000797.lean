@@ -26,25 +26,4 @@ theorem even_duplicates_zero (x : Nat) :
 
 theorem odd_duplicates_self (x : Nat) :
   solve_array_xor 3 [x, x, x] = x := sorry
-
-/-
-info: 8
--/
--- #guard_msgs in
--- #eval solve_array_xor 5 [8, 4, 1, 5, 0]
-
-/-
-info: 15
--/
--- #guard_msgs in
--- #eval solve_array_xor 5 [1, 2, 4, 0, 8]
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval solve_array_xor 2 [10, 10]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

@@ -37,25 +37,4 @@ theorem result_properties_theorem (grid : List (List Int))
     (grid.length = 1 ∧ grid.head!.length = 1 →
       result = if grid.head!.head! ≥ 0 then grid.head!.head! else -1)
   ) := sorry
-
-/-
-info: -1
--/
--- #guard_msgs in
--- #eval maxProductPath [[-1, -2, -3], [-2, -3, -3], [-3, -3, -2]]
-
-/-
-info: 8
--/
--- #guard_msgs in
--- #eval maxProductPath [[1, -2, 1], [1, -2, 1], [3, -4, 1]]
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval maxProductPath [[1, 3], [0, -4]]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

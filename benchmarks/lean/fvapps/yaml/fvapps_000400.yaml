@@ -46,24 +46,25 @@ vc-description: |-
   -/
 
 vc-preamble: |-
-  def get_power (x : Int) : Int :=
-    sorry
 
 vc-helpers: |-
 
 vc-definitions: |-
+  def get_power (x : Int) : Int :=
+    sorry
+  
   def getKth (lo hi k : Int) : Int :=
     sorry
 
 vc-theorems: |-
-  theorem get_power_always_terminates (x : Int) 
+  theorem get_power_always_terminates (x : Int)
     (h : x ≥ 1) :
     get_power x ≥ 0 :=
   sorry
   
   theorem getKth_input_validation (lo hi k : Int)
     (h1 : lo ≥ 1)
-    (h2 : hi ≥ 1) 
+    (h2 : hi ≥ 1)
     (h3 : lo ≤ hi)
     (h4 : k ≥ 1)
     (h5 : k ≤ hi - lo + 1) :
@@ -81,7 +82,7 @@ vc-theorems: |-
     (h7 : k2 ≤ hi - lo + 1)
     (h8 : k1 < k2) :
     get_power (getKth lo hi k1) < get_power (getKth lo hi k2) ∨
-    (get_power (getKth lo hi k1) = get_power (getKth lo hi k2) ∧ 
+    (get_power (getKth lo hi k1) = get_power (getKth lo hi k2) ∧
      getKth lo hi k1 ≤ getKth lo hi k2) :=
   sorry
   
@@ -89,26 +90,26 @@ vc-theorems: |-
     (h : x ≥ 1) :
     getKth x x 1 = x :=
   sorry
-  
-  /-
-  info: 13
-  -/
-  -- #guard_msgs in
-  -- #eval getKth 12 15 2
-  
-  /-
-  info: 7
-  -/
-  -- #guard_msgs in
-  -- #eval getKth 7 11 4
-  
-  /-
-  info: 1
-  -/
-  -- #guard_msgs in
-  -- #eval getKth 1 1 1
 
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded
+  
+  /--
+  info: 13
+  -/
+  #guard_msgs in
+  #eval getKth 12 15 2
+  
+  /--
+  info: 7
+  -/
+  #guard_msgs in
+  #eval getKth 7 11 4
+  
+  /--
+  info: 1
+  -/
+  #guard_msgs in
+  #eval getKth 1 1 1
 

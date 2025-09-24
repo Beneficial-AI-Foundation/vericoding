@@ -26,6 +26,3 @@ theorem compression_length_k_one (n : Nat) (h : n > 0) :
   (calculate_compression_length n 1 - 2).abs < 0.01 :=
   sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

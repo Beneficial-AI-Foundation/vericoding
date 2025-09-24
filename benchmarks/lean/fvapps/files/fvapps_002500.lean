@@ -32,6 +32,3 @@ theorem intersection_with_self {initial : List Nat} :
   process_set_operations initial [] = process_set_operations initial [("intersection_update", initial)] :=
   sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

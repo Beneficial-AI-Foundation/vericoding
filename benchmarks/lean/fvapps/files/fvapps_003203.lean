@@ -32,37 +32,4 @@ theorem no_whitespace_suffix {x : Int}
 theorem no_whitespace_both {x : Int}
   (h : -128 ≤ x ∧ x ≤ 127) :
   signed_eight_bit_number (" " ++ toString x ++ " ") = false := sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval signed_eight_bit_number "0"
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval signed_eight_bit_number "127"
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval signed_eight_bit_number "-128"
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval signed_eight_bit_number "128"
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval signed_eight_bit_number " 1"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

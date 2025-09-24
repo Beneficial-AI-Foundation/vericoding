@@ -23,25 +23,4 @@ theorem reciprocal_spitting
   (h3 : pos1 + dist1 = pos2)
   (h4 : pos2 + dist2 = pos1) :
   canZebrasSpatAtEachOther positions = true := sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval can_zebras_spit_at_each_other [[0, 1], [1, -1]]
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval can_zebras_spit_at_each_other [[0, 1], [2, -1]]
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval can_zebras_spit_at_each_other [[0, 2], [1, 1], [2, -2]]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

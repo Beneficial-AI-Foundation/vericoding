@@ -36,25 +36,4 @@ theorem solve_race_same_position_same_speed (x1 x3 : Int) (v1 : Int)
   (h3 : -1000 ≤ x3 ∧ x3 ≤ 1000) :
   solve_race x1 x1 x3 v1 v1 = "Draw" :=
   sorry
-
-/-
-info: 'Kefa'
--/
--- #guard_msgs in
--- #eval solve_race 1 3 2 1 2
-
-/-
-info: 'Chef'
--/
--- #guard_msgs in
--- #eval solve_race 1 5 2 1 2
-
-/-
-info: 'Draw'
--/
--- #guard_msgs in
--- #eval solve_race 1 5 3 2 2
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

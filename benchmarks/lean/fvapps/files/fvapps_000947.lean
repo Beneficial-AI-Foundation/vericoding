@@ -39,25 +39,4 @@ theorem type3_pair :
   let (depth, depth3, depth3') := solve_brackets 2 [3, 4]
   depth3 > 0 :=
 sorry
-
-/-
-info: (2, 6, 8)
--/
--- #guard_msgs in
--- #eval solve_brackets *test1
-
-/-
-info: (2, 4, 2)
--/
--- #guard_msgs in
--- #eval solve_brackets *test2
-
-/-
-info: (1, 2, 2)
--/
--- #guard_msgs in
--- #eval solve_brackets *test3
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

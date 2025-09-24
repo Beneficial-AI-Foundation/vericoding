@@ -31,6 +31,3 @@ theorem pyramid_last_line_underscores {n : Nat} (h : n > 1) :
   let lastLine := lines.get! (n-1)
   lastLine.contains '_' := sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

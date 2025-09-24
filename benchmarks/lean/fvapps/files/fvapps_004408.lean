@@ -25,25 +25,4 @@ theorem canIPlay_same_start_finish (now start : Nat) :
 theorem canIPlay_window_contains_start 
   (start window : Nat) (h : 0 < window) (h2 : window < 24) :
   canIPlay start start ((start + window) % 24) := sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval can_i_play 13 10 15
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval can_i_play 15 8 12
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval can_i_play 0 22 1
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

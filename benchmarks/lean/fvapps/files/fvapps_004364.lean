@@ -15,25 +15,4 @@ theorem finance_non_negative (n : Nat) :
 -- <vc-theorems>
 theorem finance_strictly_increasing {n : Nat} (h : n > 0) :
   finance n > finance (n - 1) := sorry
-
-/-
-info: 105
--/
--- #guard_msgs in
--- #eval finance 5
-
-/-
-info: 168
--/
--- #guard_msgs in
--- #eval finance 6
-
-/-
-info: 360
--/
--- #guard_msgs in
--- #eval finance 8
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

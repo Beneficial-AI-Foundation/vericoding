@@ -1,15 +1,16 @@
 -- <vc-preamble>
-def isEven (x : Int) : Bool :=
-  sorry
-
-def isFloat (x : Float) : Bool :=
-  sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
+def isEven (x : Int) : Bool :=
+  sorry
+
+def isFloat (x : Float) : Bool :=
+  sorry
+
 def isEvenFloat (x : Float) : Bool :=
   sorry
 -- </vc-definitions>
@@ -30,25 +31,4 @@ sorry
 theorem non_integer_float_not_even (x : Float) :
   ¬isFloat x → isEvenFloat x = false :=
 sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval is_even 2
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval is_even 1
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval is_even 0.5
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

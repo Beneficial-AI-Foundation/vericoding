@@ -45,19 +45,4 @@ theorem single_query_properties
   -- Result is positive
   (∀ x ∈ result, x > 0) :=
 sorry
-
-/-
-info: [17, 22, 20, 20]
--/
--- #guard_msgs in
--- #eval solve_roasting_club 5 4 [7, 12, 10, 1]
-
-/-
-info: [7, 7]
--/
--- #guard_msgs in
--- #eval solve_roasting_club 3 2 [4, 2]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

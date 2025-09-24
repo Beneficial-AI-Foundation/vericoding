@@ -3,9 +3,9 @@ vc-description: |-
   Write function describeList which returns "empty" if the list is empty or "singleton" if it contains only one element or "longer"" if more.
   -/
 
-vc-preamble: |-
+vc-preamble: |
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def describeList (lst : List Int) : String :=
@@ -19,30 +19,30 @@ vc-theorems: |-
     | _ => "longer"
     :=
     sorry
-  
+
   theorem output_is_valid_string (lst : List Int) :
     describeList lst ∈ ["empty", "singleton", "longer"] :=
     sorry
-  
-  /-
-  info: 'empty'
-  -/
-  -- #guard_msgs in
-  -- #eval describeList []
-  
-  /-
-  info: 'singleton'
-  -/
-  -- #guard_msgs in
-  -- #eval describeList [1]
-  
-  /-
-  info: 'longer'
-  -/
-  -- #guard_msgs in
-  -- #eval describeList [1, 2, 3]
 
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+
+  /--
+  info: 'empty'
+  -/
+  #guard_msgs in
+  #eval describeList []
+
+  /--
+  info: 'singleton'
+  -/
+  #guard_msgs in
+  #eval describeList [1]
+
+  /--
+  info: 'longer'
+  -/
+  #guard_msgs in
+  #eval describeList [1, 2, 3]
 

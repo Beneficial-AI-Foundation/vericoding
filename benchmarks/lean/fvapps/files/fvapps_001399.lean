@@ -28,6 +28,3 @@ theorem rearrange_array_idempotent {n : Nat} {arr : List Int}
   let result2 := rearrange_array n result1
   result1 = result2 := sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

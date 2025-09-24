@@ -36,25 +36,4 @@ theorem find_first_repeated_char_alphanumeric (s : String) :
 theorem find_first_repeated_char_with_repeats (s : String) :
   (∃ (i : Fin s.length), i.val + 1 < s.length ∧ s.data[i.val]? = s.data[i.val + 1]?) →
   find_first_repeated_char s ≠ "-1" := sorry
-
-/-
-info: '1'
--/
--- #guard_msgs in
--- #eval find_first_repeated_char "12345678910111213141516171820212223"
-
-/-
-info: '-1'
--/
--- #guard_msgs in
--- #eval find_first_repeated_char "abcde"
-
-/-
-info: 'a'
--/
--- #guard_msgs in
--- #eval find_first_repeated_char "aabbccdd"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

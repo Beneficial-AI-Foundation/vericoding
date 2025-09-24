@@ -23,25 +23,4 @@ theorem count_black_cells_1x1 :
 
 theorem count_black_cells_symmetry (n m : Nat) (hn : n > 0) (hm : m > 0) :
   count_black_cells n m = count_black_cells m n := sorry
-
-/-
-info: 6
--/
--- #guard_msgs in
--- #eval count_black_cells 3 4
-
-/-
-info: 7
--/
--- #guard_msgs in
--- #eval count_black_cells 3 3
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval count_black_cells 1 1
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

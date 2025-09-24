@@ -21,25 +21,4 @@ theorem square_up_pattern (n: Nat) (h: n > 0) :
     ∀ j < n, 
       (j < (n-(i+1)) → List.get! row j = 0) ∧ 
       (j ≥ (n-(i+1)) → List.get! row j = i+1-(j-(n-(i+1)))) := sorry
-
-/-
-info: [0, 0, 1, 0, 2, 1, 3, 2, 1]
--/
--- #guard_msgs in
--- #eval square_up 3
-
-/-
-info: [0, 1, 2, 1]
--/
--- #guard_msgs in
--- #eval square_up 2
-
-/-
-info: [0, 0, 0, 1, 0, 0, 2, 1, 0, 3, 2, 1, 4, 3, 2, 1]
--/
--- #guard_msgs in
--- #eval square_up 4
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

@@ -23,25 +23,4 @@ theorem disjoint_similarity (xs ys : List Int) :
 
 theorem empty_list_similarity (xs : List Int) :
   similarity xs [] = 0 ∧ similarity [] xs = 0 ∧ similarity [] [] = 0 := sorry
-
-/-
-info: 1.0
--/
--- #guard_msgs in
--- #eval similarity [1, 2, 3] [1, 2, 3]
-
-/-
-info: 0.0
--/
--- #guard_msgs in
--- #eval similarity [1, 2, 3] [4, 5, 6]
-
-/-
-info: 0.5
--/
--- #guard_msgs in
--- #eval similarity [1, 2, 4, 6, 7] [2, 3, 4, 7]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

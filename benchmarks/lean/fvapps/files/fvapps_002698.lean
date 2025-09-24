@@ -36,25 +36,4 @@ theorem find_screen_height_ratio_valid (width : Nat) (ratio : String)
   let a := (ratio.splitOn ":" |>.head!).toNat?.get!
   let b := (ratio.splitOn ":" |>.getLast!).toNat?.get!
   h = width / a * b := sorry
-
-/-
-info: '1024x768'
--/
--- #guard_msgs in
--- #eval find_screen_height 1024 "4:3"
-
-/-
-info: '1280x720'
--/
--- #guard_msgs in
--- #eval find_screen_height 1280 "16:9"
-
-/-
-info: '3840x1080'
--/
--- #guard_msgs in
--- #eval find_screen_height 3840 "32:9"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

@@ -21,25 +21,4 @@ sorry
 theorem count_at_least_length {arr : List Int} (h : arr.length ≥ 2) :
   count_nondecreasing_subarrays arr ≥ arr.length :=
 sorry
-
-/-
-info: 6
--/
--- #guard_msgs in
--- #eval count_nondecreasing_subarrays [1, 4, 2, 3]
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval count_nondecreasing_subarrays [5]
-
-/-
-info: 10
--/
--- #guard_msgs in
--- #eval count_nondecreasing_subarrays [1, 2, 3, 4]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

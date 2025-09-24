@@ -1,20 +1,20 @@
 -- <vc-preamble>
-def chessBishopDream (boardSize: List Int) (initPos: List Int) (initDir: List Int) (k: Nat) : List Int :=
-  sorry
+def inRange (x: Int) (lower: Int) (upper: Int) : Prop :=
+  lower ≤ x ∧ x < upper
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
-def inRange (x: Int) (lower: Int) (upper: Int) : Prop :=
-  lower ≤ x ∧ x < upper
+def chessBishopDream (boardSize: List Int) (initPos: List Int) (initDir: List Int) (k: Nat) : List Int :=
+  sorry
 -- </vc-definitions>
 
 -- <vc-theorems>
 theorem bishop_within_boundaries
   (boardSize: List Int)
-  (initPos: List Int) 
+  (initPos: List Int)
   (initDir: List Int)
   (k: Nat)
   (h1: boardSize.length = 2)
@@ -40,7 +40,7 @@ theorem bishop_periodic
   (h5: ∀ x ∈ initPos, 0 ≤ x ∧ x ≤ 100)
   (h6: ∀ x ∈ initDir, x = -1 ∨ x = 1) :
   let period := (4 * boardSize[0]! * boardSize[1]!).toNat
-  chessBishopDream boardSize initPos initDir period = 
+  chessBishopDream boardSize initPos initDir period =
   chessBishopDream boardSize initPos initDir 0 :=
 sorry
 
@@ -60,25 +60,4 @@ theorem bishop_reflection
   List.length result = 2 ∧
   (∀ i < 2, result[i]! ≤ boardSize[i]!) :=
 sorry
-
-/-
-info: [0, 1]
--/
--- #guard_msgs in
--- #eval chess_bishop_dream [3, 7] [1, 2] [-1, 1] 13
-
-/-
-info: [0, 1]
--/
--- #guard_msgs in
--- #eval chess_bishop_dream [1, 2] [0, 0] [1, 1] 6
-
-/-
-info: [1, 0]
--/
--- #guard_msgs in
--- #eval chess_bishop_dream [2, 2] [1, 0] [1, 1] 12
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

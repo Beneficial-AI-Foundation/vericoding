@@ -30,37 +30,4 @@ theorem validate_pin_abs_number (n : Int) :
 
 theorem validate_pin_non_numeric_chars (pin : String) :
   (∀ c ∈ pin.data, ¬c.isDigit) → validatePin pin = false := sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval validate_pin "1234"
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval validate_pin "12345"
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval validate_pin "a234"
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval validate_pin "123456"
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval validate_pin "-1234"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

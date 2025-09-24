@@ -20,25 +20,4 @@ theorem limak_much_larger_valid_winner (n : Nat)
   determine_candy_game_winner (n * 10) n = "Limak" ∨
   determine_candy_game_winner (n * 10) n = "Bob" :=
   sorry
-
-/-
-info: 'Bob'
--/
--- #guard_msgs in
--- #eval determine_candy_game_winner 3 2
-
-/-
-info: 'Limak'
--/
--- #guard_msgs in
--- #eval determine_candy_game_winner 4 2
-
-/-
-info: 'Bob'
--/
--- #guard_msgs in
--- #eval determine_candy_game_winner 9 12
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

@@ -18,19 +18,4 @@ theorem volume_respects_scaling {length width height scale : Float}
   (h1 : length > 0) (h2 : width > 0) (h3 : height > 0) (h4 : scale = 2):
   get_volume_of_cuboid (scale * length) (scale * width) (scale * height) = 
   get_volume_of_cuboid length width height * (scale * scale * scale) := sorry
-
-/-
-info: 60
--/
--- #guard_msgs in
--- #eval get_volume_of_cuboid 2 5 6
-
-/-
-info: 94.5
--/
--- #guard_msgs in
--- #eval get_volume_of_cuboid 6.3 3 5
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

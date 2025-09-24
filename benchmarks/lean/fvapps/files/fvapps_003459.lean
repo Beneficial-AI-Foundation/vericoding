@@ -24,25 +24,4 @@ theorem fixed_points_perms_zero_case :
 theorem fixed_points_perms_recurrence (n k : Nat) :
   0 < k → k < n → 
   fixed_points_perms n k = fixed_points_perms (n-1) (k-1) * n / k := sorry
-
-/-
-info: 8
--/
--- #guard_msgs in
--- #eval fixed_points_perms 4 1
-
-/-
-info: 6
--/
--- #guard_msgs in
--- #eval fixed_points_perms 4 2
-
-/-
-info: 9
--/
--- #guard_msgs in
--- #eval fixed_points_perms 4 0
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

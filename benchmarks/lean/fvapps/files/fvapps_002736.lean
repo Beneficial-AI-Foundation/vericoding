@@ -23,25 +23,4 @@ theorem invalid_string (s : String)
 theorem arbitrary_string (s : String) :
   (my_parse_int s = Sum.inl "NaN") ∨ 
   (my_parse_int s = Sum.inr (String.toInt! (String.trim s))) := sorry
-
-/-
-info: 9
--/
--- #guard_msgs in
--- #eval my_parse_int "9"
-
-/-
-info: 9
--/
--- #guard_msgs in
--- #eval my_parse_int "  9  "
-
-/-
-info: 'NaN'
--/
--- #guard_msgs in
--- #eval my_parse_int "5 friends"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

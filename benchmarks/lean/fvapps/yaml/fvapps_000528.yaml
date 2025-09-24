@@ -14,9 +14,9 @@ vc-description: |-
   For each test case, print the number of squares that conform to the definition in the	problem statement.
   Constraints
   1 ≤ T ≤ 50
-  
+
   1 ≤ N, M ≤ 50
-  
+
   Sample input
   3
   2 2
@@ -31,25 +31,25 @@ vc-description: |-
   aabb
   bbaa
   bbaa
-  
+
   Sample output
   0
   1
   4
-  
+
   Explanation
   In the first case the only avaliable square does not conform to the definition in the problem statement because 'a' and 'A' describes different colors.
   In the second case, you can select the 4 a's at the corners of the garden.
   In the third case, you can only make four squares, from the four 2x2 segments	that are of the same color.
   -/
 
-vc-preamble: |-
+vc-preamble: |
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def Grid := List (List Char)
-  
+
   def count_colored_squares (grid: Grid) : Nat :=
     sorry
 
@@ -58,32 +58,32 @@ vc-theorems: |-
     (h: grid.length ≥ 2) : 
     count_colored_squares grid ≥ 0 :=
     sorry
-  
+
   theorem count_colored_squares_upper_bound (grid: Grid)
     (h: grid.length ≥ 2) :
     let n := grid.length
     count_colored_squares grid ≤ (n-1) * (n-1) * 4 :=
     sorry
-  
-  /-
-  info: 0
-  -/
-  -- #guard_msgs in
-  -- #eval count_colored_squares [["a", "a"], ["a", "A"]]
-  
-  /-
-  info: 1
-  -/
-  -- #guard_msgs in
-  -- #eval count_colored_squares [["a", "b", "a"], ["b", "a", "b"], ["a", "b", "a"]]
-  
-  /-
-  info: 4
-  -/
-  -- #guard_msgs in
-  -- #eval count_colored_squares [["a", "a", "b", "b"], ["a", "a", "b", "b"], ["b", "b", "a", "a"], ["b", "b", "a", "a"]]
 
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
+
+  /--
+  info: 0
+  -/
+  #guard_msgs in
+  #eval count_colored_squares [["a", "a"], ["a", "A"]]
+
+  /--
+  info: 1
+  -/
+  #guard_msgs in
+  #eval count_colored_squares [["a", "b", "a"], ["b", "a", "b"], ["a", "b", "a"]]
+
+  /--
+  info: 4
+  -/
+  #guard_msgs in
+  #eval count_colored_squares [["a", "a", "b", "b"], ["a", "a", "b", "b"], ["b", "b", "a", "a"], ["b", "b", "a", "a"]]
 

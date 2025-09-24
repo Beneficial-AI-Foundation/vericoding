@@ -36,25 +36,4 @@ theorem fold_to_zero :
 
 theorem fold_to_zero_custom_thickness :
   fold_to 0 0.1 = some 0 := sorry
-
-/-
-info: 42
--/
--- #guard_msgs in
--- #eval fold_to 384000000
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval fold_to 5e-05
-
-/-
-info: None
--/
--- #guard_msgs in
--- #eval fold_to -1
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

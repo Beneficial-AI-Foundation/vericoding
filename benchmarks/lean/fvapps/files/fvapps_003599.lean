@@ -31,25 +31,4 @@ sorry
 theorem slogans_empty_repeat (pattern : String) :
   slogans pattern (String.join (List.replicate 0 pattern)) ≥ 0 :=
 sorry
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval slogans "glorytoukraine" "ukraineaineaine"
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval slogans "programming" "ingmingmming"
-
-/-
-info: 13
--/
--- #guard_msgs in
--- #eval slogans "dhgusdlifons" "lifonsssdlifonsgusdlifonssnsdlifonsslifonsifonsdlifonsfonsifons"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

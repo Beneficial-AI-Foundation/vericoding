@@ -2,53 +2,53 @@ vc-description: |-
   /-
   # Task
    You're standing at the top left corner of an `n × m` grid and facing towards the `right`. 
-  
+
    Then you start walking one square at a time in the direction you are facing. 
-  
+
    If you reach the border of the grid or if the next square you are about to visit has already been visited, you turn right. 
-  
+
    You stop when all the squares in the grid are visited. What direction will you be facing when you stop?
-  
+
    You can see the example of your long walk in the image below. The numbers denote the order in which you visit the cells.
-  
+
    ![](https://i.gyazo.com/2fc5884d2c227a0ddeca503e6a0261be.png)
-  
+
    Given two integers n and m, denoting the number of rows and columns respectively, find out the direction you will be facing at the end. 
-  
+
    Output `"L"` for left, `"R"` for right, `"U"` for up, and `"D"` for down.
-  
+
   # Example:
-  
+
    For `n = 3, m = 3`, the output should be `"R"`.
-  
+
    This example refers to the picture given in the description. At the end of your walk you will be standing in the middle of the grid facing right.
-  
+
   # Input/Output
-  
+
    - `[input]` integer `n`
-  
+
    number of rows.
-  
+
    `1 <= n <= 1000`
-  
+
    - `[input]` integer `m`
-  
+
    number of columns.
-  
+
    `1 <= m <= 1000`
-  
+
    - `[output]` a string
-  
+
    The final direction.
   -/
 
-vc-preamble: |-
+vc-preamble: |
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def Direction := String
-  
+
   def direction_in_grid (n m : Nat) : Direction :=
     sorry
 
@@ -59,35 +59,35 @@ vc-theorems: |-
     direction_in_grid n m = "L" ∨ 
     direction_in_grid n m = "R" :=
     sorry
-  
+
   theorem equal_dimensions_pattern {n : Nat} (h1 : n > 0) (h2 : n ≤ 1000) :
     direction_in_grid n n = (if n % 2 = 0 then "L" else "R") :=
     sorry
-  
+
   theorem dimension_comparison_consistency {n m : Nat} (h1 : n > 0) (h2 : m > 0) (h3 : n ≤ 1000) (h4 : m ≤ 1000) :
     (m ≥ n → direction_in_grid n m = "L" ∨ direction_in_grid n m = "R") ∧
     (m < n → direction_in_grid n m = "U" ∨ direction_in_grid n m = "D") :=
     sorry
-  
-  /-
-  info: 'R'
-  -/
-  -- #guard_msgs in
-  -- #eval direction_in_grid 3 3
-  
-  /-
-  info: 'L'
-  -/
-  -- #guard_msgs in
-  -- #eval direction_in_grid 2 4
-  
-  /-
-  info: 'U'
-  -/
-  -- #guard_msgs in
-  -- #eval direction_in_grid 4 2
 
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+
+  /--
+  info: 'R'
+  -/
+  #guard_msgs in
+  #eval direction_in_grid 3 3
+
+  /--
+  info: 'L'
+  -/
+  #guard_msgs in
+  #eval direction_in_grid 2 4
+
+  /--
+  info: 'U'
+  -/
+  #guard_msgs in
+  #eval direction_in_grid 4 2
 

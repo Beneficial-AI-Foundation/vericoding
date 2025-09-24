@@ -46,6 +46,3 @@ theorem process_array_queries_dot_product
     b.foldl (fun (acc2 : Int) (y : Int) => (acc2 + ((x * y) % MOD)) % MOD) acc) 0) :=
   sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

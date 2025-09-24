@@ -21,25 +21,4 @@ sorry
 theorem double_every_other_singleton (x : Int) :
   double_every_other [x] = [x] :=
 sorry
-
-/-
-info: [1, 4, 3, 8, 5]
--/
--- #guard_msgs in
--- #eval double_every_other [1, 2, 3, 4, 5]
-
-/-
-info: [1, 38, 6, 4, 12, -6]
--/
--- #guard_msgs in
--- #eval double_every_other [1, 19, 6, 2, 12, -3]
-
-/-
-info: [-1000, 3306, 210, 0, 1]
--/
--- #guard_msgs in
--- #eval double_every_other [-1000, 1653, 210, 0, 1]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

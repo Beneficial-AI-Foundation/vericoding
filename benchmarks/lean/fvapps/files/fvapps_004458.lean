@@ -24,25 +24,4 @@ theorem lucas_negative (n : Int) :
 
 theorem lucas_symmetry (n : Int) :
   n < 0 → lucasnum n = (if n % 2 = 0 then 1 else -1) * lucasnum (-n) := sorry
-
-/-
-info: 123
--/
--- #guard_msgs in
--- #eval lucasnum -10
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval lucasnum 0
-
-/-
-info: 11
--/
--- #guard_msgs in
--- #eval lucasnum 5
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

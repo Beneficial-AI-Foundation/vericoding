@@ -34,25 +34,4 @@ theorem symmetry (n : Nat) (h: n > 0) :
   (∀ i j, i < n → j < n → List.get! (List.get! result i) j = 
               List.get! (List.get! result j) i) :=
 sorry
-
-/-
-info: [[1, 0, 1], [0, 1, 0], [1, 0, 1]]
--/
--- #guard_msgs in
--- #eval x 3
-
-/-
-info: [[1, 0, 0, 1], [0, 1, 1, 0], [0, 1, 1, 0], [1, 0, 0, 1]]
--/
--- #guard_msgs in
--- #eval x 4
-
-/-
-info: [[1, 0, 0, 0, 1], [0, 1, 0, 1, 0], [0, 0, 1, 0, 0], [0, 1, 0, 1, 0], [1, 0, 0, 0, 1]]
--/
--- #guard_msgs in
--- #eval x 5
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

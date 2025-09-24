@@ -39,25 +39,4 @@ theorem faster_initial_speed_faster (d_tot slope : Float)
   (h3 : temps 20 slope d_tot ≠ -1)
   (h4 : temps 30 slope d_tot ≠ -1) :
   temps 30 slope d_tot ≤ temps 20 slope d_tot := by sorry
-
-/-
-info: 114
--/
--- #guard_msgs in
--- #eval temps 30 5 30
-
-/-
-info: -1
--/
--- #guard_msgs in
--- #eval temps 30 20 30
-
-/-
-info: 110
--/
--- #guard_msgs in
--- #eval temps 30 8 20
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

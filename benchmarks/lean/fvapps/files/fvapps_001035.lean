@@ -30,25 +30,4 @@ theorem solve_classroom_shuffle_small_grids :
   solve_classroom_shuffle 1 2 = "YES" ∧
   solve_classroom_shuffle 2 1 = "YES" :=
 sorry
-
-/-
-info: 'NO'
--/
--- #guard_msgs in
--- #eval solve_classroom_shuffle 3 3
-
-/-
-info: 'YES'
--/
--- #guard_msgs in
--- #eval solve_classroom_shuffle 4 4
-
-/-
-info: 'YES'
--/
--- #guard_msgs in
--- #eval solve_classroom_shuffle 5 4
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

@@ -1,18 +1,19 @@
 -- <vc-preamble>
-def isInertial (arr : List Int) : Bool := sorry
-
 def maximum? : List Int → Option Int
   | [] => none
   | x::xs => some (xs.foldl max x)
+
+def minimum? : List Int → Option Int
+  | [] => none
+  | x::xs => some (xs.foldl min x)
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
-def minimum? : List Int → Option Int
-  | [] => none
-  | x::xs => some (xs.foldl min x)
+def isInertial (arr : List Int) : Bool :=
+sorry
 -- </vc-definitions>
 
 -- <vc-theorems>
@@ -55,25 +56,4 @@ theorem odds_vs_evens
 theorem single_element
   : ∀ (n : Int), isInertial [n] = false := by
   sorry
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval is_inertial []
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval is_inertial [581, -384, 140, -287]
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval is_inertial [11, 4, 20, 9, 2, 8]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

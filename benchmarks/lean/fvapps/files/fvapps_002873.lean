@@ -49,25 +49,4 @@ theorem two_highest_empty_input :
 
 theorem two_highest_single_element (x : Int) :
   two_highest [x] = some [x] := sorry
-
-/-
-info: []
--/
--- #guard_msgs in
--- #eval two_highest []
-
-/-
-info: [15]
--/
--- #guard_msgs in
--- #eval two_highest [15]
-
-/-
-info: [20, 17]
--/
--- #guard_msgs in
--- #eval two_highest [15, 20, 20, 17]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

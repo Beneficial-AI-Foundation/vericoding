@@ -29,25 +29,4 @@ theorem equal_boys_girls (n : Nat) (h : n > 0) :
 theorem minimum_case :
   calculate_roses 1 1 = 2 :=
   sorry
-
-/-
-info: 8
--/
--- #guard_msgs in
--- #eval calculate_roses 2 3
-
-/-
-info: 10
--/
--- #guard_msgs in
--- #eval calculate_roses 3 3
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval calculate_roses 1 1
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

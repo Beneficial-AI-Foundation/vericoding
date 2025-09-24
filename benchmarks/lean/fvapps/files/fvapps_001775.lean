@@ -34,25 +34,4 @@ theorem result_range (clips : List (List Nat)) (T : Nat) :
 theorem positive_result_bound (clips : List (List Nat)) (T : Nat) :
   videoStitching clips T > 0 → videoStitching clips T ≤ clips.length :=
   sorry
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval video_stitching [[0, 2], [4, 6], [8, 10], [1, 9], [1, 5], [5, 9]] 10
-
-/-
-info: -1
--/
--- #guard_msgs in
--- #eval video_stitching [[0, 1], [1, 2]] 5
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval video_stitching [[0, 4], [2, 8]] 5
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

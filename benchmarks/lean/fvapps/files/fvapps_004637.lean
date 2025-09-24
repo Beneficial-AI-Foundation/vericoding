@@ -35,6 +35,3 @@ theorem sumArrays_element_bound {arrays : List (List Int)} {shift : Nat}
     -x ≤ arrays.foldl (λ sum arr => sum + (arr.foldl (λ m x => max m x) 0)) 0 :=
   sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

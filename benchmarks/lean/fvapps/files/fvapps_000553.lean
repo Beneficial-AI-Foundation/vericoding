@@ -25,6 +25,3 @@ theorem small_invalid_case :
   solve_triple_tree_decomposition 3 [(1,2), (2,3)] = 
     ["NO"] := sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

@@ -28,37 +28,4 @@ theorem duplicateCount_empty_and_unique (text : String) :
 theorem duplicateCount_repeated_char (c : Char) :
   duplicateCount (String.mk [c, c]) = 1 := by
   sorry
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval duplicate_count ""
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval duplicate_count "abcde"
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval duplicate_count "aabbcde"
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval duplicate_count "aabBcde"
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval duplicate_count "Indivisibilities"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

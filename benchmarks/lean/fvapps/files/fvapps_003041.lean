@@ -25,6 +25,3 @@ theorem thirt_deterministic (n : Int) : n > 0 → n ≤ 100 → thirt n = thirt 
 theorem thirt_nonzero_for_small (n : Int) : n > 0 → n ≤ 100 → thirt n > 0 :=
   sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

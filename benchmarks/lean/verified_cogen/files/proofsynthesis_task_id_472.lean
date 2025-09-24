@@ -21,5 +21,3 @@ theorem containsConsecutiveNumbers_spec_satisfied (arr : Array Int) (h_precond :
     containsConsecutiveNumbers_postcond arr (containsConsecutiveNumbers arr h_precond) h_precond := by
   sorry
 -- </vc-theorems>
-
-#check containsConsecutiveNumbers

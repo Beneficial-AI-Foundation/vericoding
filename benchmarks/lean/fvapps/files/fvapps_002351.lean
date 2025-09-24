@@ -33,25 +33,4 @@ theorem diagonal_sum_symmetric {matrix symMatrix: List (List Int)}
   (h2: ∀ i j, i < matrix.length → j < matrix.length →
     (symMatrix.get! i).get! j = (matrix.get! i).get! j) :
   diagonalSum matrix = diagonalSum symMatrix := sorry
-
-/-
-info: 25
--/
--- #guard_msgs in
--- #eval diagonal_sum [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
-
-/-
-info: 8
--/
--- #guard_msgs in
--- #eval diagonal_sum [[1, 1, 1, 1], [1, 1, 1, 1], [1, 1, 1, 1], [1, 1, 1, 1]]
-
-/-
-info: 5
--/
--- #guard_msgs in
--- #eval diagonal_sum [[5]]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

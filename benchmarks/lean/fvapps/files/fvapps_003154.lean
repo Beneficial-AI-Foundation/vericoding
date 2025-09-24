@@ -24,25 +24,4 @@ theorem single_digit_no_carry {d1 d2 : Nat} :
 
 theorem identical_numbers (x : Nat) :
   number_of_carries x x = number_of_carries x x := sorry
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval number_of_carries 543 3456
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval number_of_carries 1927 6426
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval number_of_carries 9999 1
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

@@ -28,25 +28,4 @@ theorem scoreboard_output_valid (s : String) :
   let result := scoreboard s
   ∀ x ∈ result, 0 ≤ x ∧ x ≤ 9 :=
   sorry
-
-/-
-info: [4, 0]
--/
--- #guard_msgs in
--- #eval scoreboard "The score is four nil"
-
-/-
-info: [2, 3]
--/
--- #guard_msgs in
--- #eval scoreboard "new score: two three"
-
-/-
-info: [2, 0]
--/
--- #guard_msgs in
--- #eval scoreboard "Arsenal just conceded another goal, two nil"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

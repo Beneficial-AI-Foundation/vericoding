@@ -18,6 +18,3 @@ theorem solve_dolls_output_length (n m : Nat)
   (hn : 0 < n ∧ n ≤ 10) (hm : m ≤ 4) :
   List.length (solve_dolls n m (List.replicate n 0)) = m + 1 := sorry
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: guarded

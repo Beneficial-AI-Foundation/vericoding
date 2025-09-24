@@ -22,25 +22,4 @@ theorem riemann_trapezoidal_linear_function (n : Nat) :
     let f := fun x => x
     (riemann_trapezoidal f n 0 1 - 0.5).abs < 0.1 :=
   sorry
-
-/-
-info: 0.5
--/
--- #guard_msgs in
--- #eval riemann_trapezoidal lambda x: x 1 0 1
-
-/-
-info: 2.0
--/
--- #guard_msgs in
--- #eval riemann_trapezoidal lambda x: 1 1 0 2
-
-/-
-info: 2.0
--/
--- #guard_msgs in
--- #eval riemann_trapezoidal lambda x: x 2 0 2
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

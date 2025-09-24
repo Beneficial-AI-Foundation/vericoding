@@ -39,25 +39,4 @@ theorem result_within_bounds (total conservative reformist : Nat)
   (h1 : conservative + reformist ≤ total) :
   let result := pass_the_bill total conservative reformist
   result = -1 ∨ result = 0 ∨ (result > 0 ∧ result ≤ total) := sorry
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval pass_the_bill 8 3 3
-
-/-
-info: -1
--/
--- #guard_msgs in
--- #eval pass_the_bill 13 4 7
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval pass_the_bill 7 4 3
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

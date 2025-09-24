@@ -38,25 +38,4 @@ theorem solve_bill_queries_whole_array
   solve_bill_queries (bills.length) 1 bills [(1, bills.length)] = 
     [bills.foldl (fun acc x => acc + x) 0 % (10^9)] :=
 sorry
-
-/-
-info: [5, 21, 26]
--/
--- #guard_msgs in
--- #eval solve_bill_queries 8 3 [1, 2, 3, 4, 5, 6, 7, 8] [(2, 3), (1, 6), (5, 8)]
-
-/-
-info: [6, 14]
--/
--- #guard_msgs in
--- #eval solve_bill_queries 5 2 [1, 2, 3, 4, 5] [(1, 3), (2, 5)]
-
-/-
-info: [60]
--/
--- #guard_msgs in
--- #eval solve_bill_queries 3 1 [10, 20, 30] [(1, 3)]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

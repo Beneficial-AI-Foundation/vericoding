@@ -43,8 +43,6 @@ vc-preamble: |-
   def Pong.game_over (game : Pong) : Bool := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def Int.abs (i : Int) : Int := sorry

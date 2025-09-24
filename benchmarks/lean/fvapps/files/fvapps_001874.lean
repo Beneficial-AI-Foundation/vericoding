@@ -39,25 +39,4 @@ theorem shortest_path_empty_grid (rows cols : Nat)
   (h₂ : cols > 0) :
   let empty_grid := List.replicate rows (List.replicate cols 0);
   shortest_path empty_grid 0 = rows + cols - 2 := sorry
-
-/-
-info: 6
--/
--- #guard_msgs in
--- #eval shortest_path [[0, 0, 0], [1, 1, 0], [0, 0, 0], [0, 1, 1], [0, 0, 0]] 1
-
-/-
-info: -1
--/
--- #guard_msgs in
--- #eval shortest_path [[0, 1, 1], [1, 1, 1], [1, 0, 0]] 1
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval shortest_path [[0, 0], [0, 0]] 1
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

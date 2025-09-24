@@ -24,6 +24,3 @@ theorem even_steps_special_case {steps m : Nat} (h1 : steps > 1) (h2 : m > 0)
   (h3 : steps % 2 = 0) (h4 : steps ≥ m) (h5 : (steps / 2) % m = 0) :
   numberOfSteps steps m = steps / 2 := sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

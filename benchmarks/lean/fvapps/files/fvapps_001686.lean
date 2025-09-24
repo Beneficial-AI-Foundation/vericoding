@@ -44,31 +44,4 @@ theorem splitlist_equal_elements (nums : List Int)
   | none => true
   | some (a, b) => listSum a = listSum b
   := by sorry
-
-/-
-info: sorted(test1)
--/
--- #guard_msgs in
--- #eval sorted a + b
-
-/-
-info: sorted(test2)
--/
--- #guard_msgs in
--- #eval sorted a + b
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval abs sum(a) - sum(b)
-
-/-
-info: sorted(test3)
--/
--- #guard_msgs in
--- #eval sorted a + b
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

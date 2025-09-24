@@ -24,25 +24,4 @@ theorem original_test_case_1 :
 
 theorem original_test_case_2 :  
   count_haiku_sequences 4 5 7 5 = 34 := sorry
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval count_haiku_sequences 3 5 7 5
-
-/-
-info: 34
--/
--- #guard_msgs in
--- #eval count_haiku_sequences 4 5 7 5
-
-/-
-info: 863912418
--/
--- #guard_msgs in
--- #eval count_haiku_sequences 37 4 2 3
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: unguarded

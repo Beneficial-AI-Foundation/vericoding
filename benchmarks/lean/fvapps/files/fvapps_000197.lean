@@ -32,25 +32,4 @@ theorem num_unique_bst_known_values :
   num_unique_bst 5 = 42 ∧
   num_unique_bst 6 = 132 ∧
   num_unique_bst 7 = 429 := sorry
-
-/-
-info: 5
--/
--- #guard_msgs in
--- #eval num_unique_bst 3
-
-/-
-info: 14
--/
--- #guard_msgs in
--- #eval num_unique_bst 4
-
-/-
-info: 42
--/
--- #guard_msgs in
--- #eval num_unique_bst 5
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

@@ -29,25 +29,4 @@ theorem diagonal_monotone_n (n p : Nat) :
 theorem diagonal_positive_small_values (n p : Nat) :
   p ≤ n → diagonal n p > 0 :=
   sorry
-
-/-
-info: 5985
--/
--- #guard_msgs in
--- #eval diagonal 20 3
-
-/-
-info: 20349
--/
--- #guard_msgs in
--- #eval diagonal 20 4
-
-/-
-info: 101
--/
--- #guard_msgs in
--- #eval diagonal 100 0
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

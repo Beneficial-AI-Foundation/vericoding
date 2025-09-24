@@ -39,25 +39,4 @@ theorem name_that_number_two_digits {n : Nat} (h₁ : n ≥ 20) (h₂ : n ≤ 99
     ¬ result.contains ' '
   else
     (result.split (· = ' ')).length = 2 := sorry
-
-/-
-info: 'four'
--/
--- #guard_msgs in
--- #eval name_that_number 4
-
-/-
-info: 'nineteen'
--/
--- #guard_msgs in
--- #eval name_that_number 19
-
-/-
-info: 'ninety nine'
--/
--- #guard_msgs in
--- #eval name_that_number 99
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

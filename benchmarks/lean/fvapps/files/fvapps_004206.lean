@@ -21,25 +21,4 @@ theorem cookie_on_int (i : Int) :
 theorem cookie_on_other {α : Type} (x : α) 
   (h1 : α ≠ String) (h2 : α ≠ Float) (h3 : α ≠ Int) :
   cookie x = "Who ate the last cookie? It was the dog!" := sorry
-
-/-
-info: 'Who ate the last cookie? It was Zach!'
--/
--- #guard_msgs in
--- #eval cookie "Ryan"
-
-/-
-info: 'Who ate the last cookie? It was Monica!'
--/
--- #guard_msgs in
--- #eval cookie 2.3
-
-/-
-info: 'Who ate the last cookie? It was Monica!'
--/
--- #guard_msgs in
--- #eval cookie 26
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

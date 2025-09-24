@@ -26,25 +26,4 @@ theorem remove_empty_unchanged (text : String) :
 theorem remove_repeated_char (n : Nat) (what : Char → Nat) :
   remove (String.mk (List.replicate n 'a')) what = 
     String.mk (List.replicate (max 0 (n - what 'a')) 'a') := sorry
-
-/-
-info: 'hs s a string'
--/
--- #guard_msgs in
--- #eval remove "this is a string" {"t": 1, "i": 2}
-
-/-
-info: 'hello world'
--/
--- #guard_msgs in
--- #eval remove "hello world" {"x": 5, "i": 2}
-
-/-
-info: 'pples d bnns'
--/
--- #guard_msgs in
--- #eval remove "apples and bananas" {"a": 50, "n": 1}
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

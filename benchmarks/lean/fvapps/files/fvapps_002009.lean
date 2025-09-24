@@ -26,25 +26,4 @@ theorem find_perm_edge_cases :
 
 theorem find_perm_three_two :
   count_differences (find_permutation 3 2) = 2 := sorry
-
-/-
-info: [1, 3, 2]
--/
--- #guard_msgs in
--- #eval find_permutation 3 2
-
-/-
-info: [1, 2, 3]
--/
--- #guard_msgs in
--- #eval find_permutation 3 1
-
-/-
-info: [1, 3, 2, 4, 5]
--/
--- #guard_msgs in
--- #eval find_permutation 5 2
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: unguarded

@@ -31,25 +31,4 @@ theorem find_nearest_numbers_basic_properties
   (smaller ≠ -1 → smaller < target) ∧
   (greater ≠ -1 → greater > target) :=
 sorry
-
-/-
-info: (35, 41)
--/
--- #guard_msgs in
--- #eval find_nearest_numbers 10 arr1.copy() 38
-
-/-
-info: (41, 56)
--/
--- #guard_msgs in
--- #eval find_nearest_numbers 10 arr2.copy() 50
-
-/-
-info: (13, 23)
--/
--- #guard_msgs in
--- #eval find_nearest_numbers 10 arr3.copy() 15
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

@@ -37,25 +37,4 @@ theorem proc_arr_all_same (n : Nat) :
   List.head! result = 1 ∧ 
   List.get! result 1 = List.get! result 2 :=
   sorry
-
-/-
-info: [60, 122233, 332221]
--/
--- #guard_msgs in
--- #eval proc_arr ["1", "2", "2", "3", "2", "3"]
-
-/-
-info: [3360, 1112335, 53321110]
--/
--- #guard_msgs in
--- #eval proc_arr ["1", "2", "3", "0", "5", "1", "1", "3"]
-
-/-
-info: [60, 111223, 322111]
--/
--- #guard_msgs in
--- #eval proc_arr ["1", "1", "1", "2", "2", "3"]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

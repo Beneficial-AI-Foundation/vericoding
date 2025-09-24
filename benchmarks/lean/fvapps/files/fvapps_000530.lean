@@ -35,25 +35,4 @@ theorem consistent_mapping {s : String}
   (h₁: ∀ c ∈ s.data, c = '0' ∨ c = '1')
   (h₂: s.length = 4) :
   decode_binary_string s = decode_binary_string s := sorry
-
-/-
-info: 'a'
--/
--- #guard_msgs in
--- #eval decode_binary_string "0000"
-
-/-
-info: 'ap'
--/
--- #guard_msgs in
--- #eval decode_binary_string "00001111"
-
-/-
-info: 'j'
--/
--- #guard_msgs in
--- #eval decode_binary_string "1001"
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

@@ -25,25 +25,4 @@ theorem filter_list_removes_all_strings (lst : List String) :
 
 theorem filter_list_maintains_order (lst : List Int) :
   filter_list lst = lst := sorry
-
-/-
-info: [1, 2]
--/
--- #guard_msgs in
--- #eval filter_list [1, 2, "a", "b"]
-
-/-
-info: [1, 0, 15]
--/
--- #guard_msgs in
--- #eval filter_list [1, "a", "b", 0, 15]
-
-/-
-info: [1, 2, 123]
--/
--- #guard_msgs in
--- #eval filter_list [1, 2, "aasf", "1", "123", 123]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

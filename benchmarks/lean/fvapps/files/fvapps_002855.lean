@@ -20,31 +20,4 @@ theorem argsCount_with_kwargs (map : List (String × Nat)) :
 
 theorem argsCount_mixed_total {α : Type} (args : List α) (kwargs : List (String × α)) :
   argsCount args + argsCount kwargs = args.length + kwargs.length := by sorry
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval args_count 1
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval args_count 1 2 3
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval args_count 
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval args_count 1 2
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

@@ -30,6 +30,3 @@ theorem count_github_shades_unique_values {contributions: List Nat} (h: contribu
   let nums := result.map (fun x => (x.splitOn ": ").head!.toNat!)
   ∀ i j, i < nums.length → j < nums.length → i ≠ j → nums[i]! ≠ nums[j]! := sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

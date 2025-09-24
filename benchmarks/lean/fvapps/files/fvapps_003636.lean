@@ -23,6 +23,3 @@ theorem small_primes {p k : Nat}
   (h5 : isPrime p) :
   chain_arith_deriv p k = Sum.inl s!"{p} is a prime number" := sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

@@ -32,6 +32,3 @@ theorem process_list_commands_invalid_fails
   process_list_commands commands = [] :=
 sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

@@ -29,25 +29,4 @@ theorem invalid_short (grid : List Nat) :
   grid = [1,2,3] →
   solve_prime_grid_puzzle grid = -1 :=
 sorry
-
-/-
-info: 6
--/
--- #guard_msgs in
--- #eval solve_prime_grid_puzzle [7, 3, 2, 4, 1, 5, 6, 8, 9]
-
-/-
-info: -1
--/
--- #guard_msgs in
--- #eval solve_prime_grid_puzzle [9, 8, 5, 2, 4, 1, 3, 7, 6]
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval solve_prime_grid_puzzle [1, 2, 3, 4, 5, 6, 7, 8, 9]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

@@ -26,25 +26,4 @@ theorem commutative {x y z : Nat} :
 
 theorem gcd_property {x y z : Nat} (hx : x > 0) (hy : y > 0) :
   can_measure_water x y z → z % gcd x y = 0 := sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval can_measure_water 3 5 4
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval can_measure_water 2 6 5
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval can_measure_water 4 6 8
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

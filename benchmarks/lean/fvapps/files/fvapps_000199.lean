@@ -20,25 +20,4 @@ theorem unique_paths_single_row (n : Nat) (h : n > 0) :
 
 theorem unique_paths_single_col (n : Nat) (h : n > 0) :
   unique_paths n 1 = 1 := sorry
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval unique_paths 3 2
-
-/-
-info: 28
--/
--- #guard_msgs in
--- #eval unique_paths 7 3
-
-/-
-info: 28
--/
--- #guard_msgs in
--- #eval unique_paths 3 7
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

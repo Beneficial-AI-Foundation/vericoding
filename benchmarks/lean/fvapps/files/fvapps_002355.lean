@@ -23,25 +23,4 @@ theorem identical_pairs_increase_count
   (first : List Nat)
   (h2 : first ∈ dominoes) :
   numEquivDominoPairs (dominoes ++ [first]) ≥ numEquivDominoPairs dominoes := sorry
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval numEquivDominoPairs [[1, 2], [2, 1], [3, 4], [5, 6]]
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval numEquivDominoPairs [[1, 2], [2, 1], [3, 4], [5, 6], [], []]
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval numEquivDominoPairs [[1, 1], [2, 2], [1, 1], [2, 2]]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

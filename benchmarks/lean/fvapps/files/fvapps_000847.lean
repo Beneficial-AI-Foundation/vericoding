@@ -1,18 +1,18 @@
 -- <vc-preamble>
-def solve_ant_grid (R C : Nat) (grid : List String) : Nat :=
-  sorry
-
 def is_direction (c : Char) : Bool :=
   c = 'U' || c = 'D' || c = 'L' || c = 'R'
-
-def make_empty_string (n : Nat) (c : Char) : String :=
-  sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
+def solve_ant_grid (R C : Nat) (grid : List String) : Nat :=
+  sorry
+
+def make_empty_string (n : Nat) (c : Char) : String :=
+  sorry
+
 def count_directions (grid : List String) : Nat :=
   sorry
 -- </vc-definitions>
@@ -57,25 +57,4 @@ theorem single_ant_top_left_zero (R C : Nat) (ant : Char)
   let grid := first_row :: rest_rows;
   solve_ant_grid R C grid = 0 :=
 sorry
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval solve_ant_grid 3 3 ["R--", "---", "--U"]
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval solve_ant_grid 1 4 ["-R-L"]
-
-/-
-info: 6
--/
--- #guard_msgs in
--- #eval solve_ant_grid 3 3 ["-D-", "R-L", "-U-"]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

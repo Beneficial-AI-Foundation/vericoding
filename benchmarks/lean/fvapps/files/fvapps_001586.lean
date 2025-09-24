@@ -18,31 +18,4 @@ theorem b91_encode_decode_hello_world :
 
 theorem b91_encode_decode_inverse (s : String) :
   b91decode (b91encode s) = s := sorry
-
-/-
-info: 'test'
--/
--- #guard_msgs in
--- #eval b91decode "fPNKd"
-
-/-
-info: 'Hello World!'
--/
--- #guard_msgs in
--- #eval b91decode ">OwJh>Io0Tv!8PE"
-
-/-
-info: 'fPNKd'
--/
--- #guard_msgs in
--- #eval b91encode "test"
-
-/-
-info: '>OwJh>Io0Tv!8PE'
--/
--- #guard_msgs in
--- #eval b91encode "Hello World!"
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

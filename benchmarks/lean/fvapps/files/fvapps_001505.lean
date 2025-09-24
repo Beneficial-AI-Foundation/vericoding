@@ -21,6 +21,3 @@ theorem symmetry (N K: Nat) (h1: N > 0) (h2: K > 0) :
   let A2 := List.replicate N 2
   count_possible_arrays N K A1 = count_possible_arrays N K A2 := sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

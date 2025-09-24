@@ -46,25 +46,4 @@ theorem max_freq_binary_string
   let result := max_freq s 2 window_size window_size
   result ≤ s.length - window_size + 1 :=
 sorry
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval max_freq "aababcaab" 2 3 4
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval max_freq "aaaa" 1 3 3
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval max_freq "aabcabcab" 2 2 3
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

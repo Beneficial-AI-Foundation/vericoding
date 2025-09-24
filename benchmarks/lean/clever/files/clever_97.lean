@@ -36,8 +36,3 @@ theorem correctness
 := by
   sorry
 -- </vc-theorems>
-
--- #test implementation 148 412 = 16
--- #test implementation 19 28 = 72
--- #test implementation 2020 1851 = 0
--- #test implementation 14 -15 = 20

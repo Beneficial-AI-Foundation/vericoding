@@ -37,6 +37,3 @@ theorem find_path_and_nest_reflexive {lst : List Int}
   (h : lst ≠ []) :
   find_path_and_nest lst (lst.head?.get!) = ([0], 1) := sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

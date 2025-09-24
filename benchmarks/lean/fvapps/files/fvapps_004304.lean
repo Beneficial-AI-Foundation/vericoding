@@ -23,6 +23,3 @@ theorem array_operations_input_preservation (arr : List Int) (k : Nat) :
   let original := arr
   array_operations arr k = array_operations original k := sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

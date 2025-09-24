@@ -30,25 +30,4 @@ theorem count_repeats_monotonic_on_duplication (s : String) (h : s.length > 0) :
   let doubled := String.join (s.data.map (fun c => String.mk [c, c]))
   count_repeats doubled ≥ count_repeats s :=
   sorry
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval count_repeats "abcdefg"
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval count_repeats "aabbcc"
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval count_repeats "@*$##^^^*)*"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

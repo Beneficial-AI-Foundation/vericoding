@@ -37,13 +37,4 @@ theorem all_paths_same_length (begin_word end_word : String) (word_list : List S
   let result := find_word_ladders begin_word end_word word_list
   result ≠ [] → ∃ n : Nat, ∀ path ∈ result, path.length = n := by
   sorry
-
-/-
-info: sorted(expected1)
--/
--- #guard_msgs in
--- #eval sorted find_word_ladders(begin1, end1, wordList1)
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

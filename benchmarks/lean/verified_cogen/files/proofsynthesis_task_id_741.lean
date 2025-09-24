@@ -21,7 +21,3 @@ theorem allCharactersSame_spec_satisfied (charArr: Array Char) (h_precond : allC
     allCharactersSame_postcond (charArr) (allCharactersSame (charArr) h_precond) h_precond := by
   sorry
 -- </vc-theorems>
-
-/-
-fn main() {}
--/

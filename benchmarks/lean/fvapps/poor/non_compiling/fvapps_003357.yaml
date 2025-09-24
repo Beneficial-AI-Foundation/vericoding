@@ -26,8 +26,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def norm_index_test {α : Type} [Inhabited α] (s : List α) (i : Int) : Option α := sorry 

@@ -27,25 +27,4 @@ theorem isolated_vertices (n : Nat) (h : n > 0) :
 
 theorem cycle_one_market (n : Nat) (h : n ≥ 2) :
   count_markets n n (List.range n |>.map (λ i => (i, (i+1) % n))) = 1 := sorry
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval count_markets 5 3 [[0, 1], [2, 3], [3, 4]]
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval count_markets 3 0 []
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval count_markets 4 3 [[0, 1], [1, 2], [2, 3]]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

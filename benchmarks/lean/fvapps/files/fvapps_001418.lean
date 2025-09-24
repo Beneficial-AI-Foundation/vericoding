@@ -29,25 +29,4 @@ theorem alternating_chars_pattern_count {s : String} :
          s.data[i+1]! ≠ s.data[i]!
       then acc + 1
       else acc) 0 := sorry
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval solve_test_case "a"
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval solve_test_case "abba"
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval solve_test_case "aaa"
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

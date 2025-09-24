@@ -23,5 +23,3 @@ theorem elementWiseDivide_spec_satisfied (arr1: Array Nat) (arr2: Array Nat) (h_
     elementWiseDivide_postcond arr1 arr2 (elementWiseDivide arr1 arr2 h_precond) h_precond := by
   sorry
 -- </vc-theorems>
-
-def main : IO Unit := return ()

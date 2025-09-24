@@ -21,8 +21,6 @@ vc-preamble: |-
   def toBinary (n : Nat) : String := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def toOctal (n : Nat) : String := sorry

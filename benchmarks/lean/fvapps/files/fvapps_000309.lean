@@ -24,25 +24,4 @@ theorem all_decreasing_sequence_one_perm (s : String) :
 theorem all_increasing_sequence_one_perm (s : String) :
   (∀ c ∈ s.data, c = 'I') → 
   num_perms_di_sequence s = 1 := sorry
-
-/-
-info: 5
--/
--- #guard_msgs in
--- #eval num_perms_di_sequence "DID"
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval num_perms_di_sequence "D"
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval num_perms_di_sequence "III"
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

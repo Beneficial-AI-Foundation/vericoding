@@ -25,25 +25,4 @@ theorem min_square_plots_double_dims (length width : Nat) (h1 : length > 0) (h2 
 theorem min_square_plots_equal_dims (n : Nat) (h : n > 0) :
   min_square_plots n n = 1 :=
   sorry
-
-/-
-info: 6
--/
--- #guard_msgs in
--- #eval min_square_plots 10 15
-
-/-
-info: 6
--/
--- #guard_msgs in
--- #eval min_square_plots 4 6
-
-/-
-info: 6
--/
--- #guard_msgs in
--- #eval min_square_plots 100 150
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

@@ -31,25 +31,4 @@ theorem solve_minion_queries_all_evens :
 
 theorem solve_minion_queries_adjacent_pairs :
   solve_minion_queries 4 [1,2,3,4] [(1,2), (2,3), (3,4)] = ["EVEN", "EVEN", "EVEN"] := sorry
-
-/-
-info: ['ODD', 'EVEN', 'EVEN']
--/
--- #guard_msgs in
--- #eval solve_minion_queries 5 [1, 3, 2, 4, 5] [(1, 2), (1, 5), (3, 4)]
-
-/-
-info: ['ODD']
--/
--- #guard_msgs in
--- #eval solve_minion_queries 3 [1, 3, 5] [(1, 3)]
-
-/-
-info: ['EVEN', 'EVEN']
--/
--- #guard_msgs in
--- #eval solve_minion_queries 4 [2, 4, 6, 8] [(1, 2), (2, 4)]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

@@ -26,25 +26,4 @@ theorem triple_double_no_triple (n1 n2 : Nat) :
   (∀ d : Nat, 0 ≤ d → d ≤ 9 → ¬ ∃ p : Nat, n1 = d * p) →
   triple_double n1 n2 = 0 :=
   sorry
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval triple_double 451999277 41177722899
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval triple_double 1222345 12345
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval triple_double 666789 12345667
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

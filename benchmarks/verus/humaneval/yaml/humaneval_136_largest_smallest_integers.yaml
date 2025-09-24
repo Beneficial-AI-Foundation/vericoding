@@ -1,0 +1,34 @@
+vc-description: |-
+  function_signature: def largest_smallest_integers(lst: List[int]) -> Tuple[ Optional[Int], Optional[Int] ]
+
+  Create a function that returns a tuple (a, b), where 'a' is the largest of negative
+  integers, and 'b' is the smallest of positive integers in a list. If there is
+  no negative or positive integers, return them as None.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+  spec fn get_value(o: Option<int>) -> int
+      recommends o.is_Some()
+  {
+      o.get_Some_0()
+  }
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn largest_smallest_integers(arr: Vec<i8>) -> (result: (Option<i8>, Option<i8>))
+
+vc-code: |-
+  {
+      assume(false);
+      (Option::None, Option::None)
+  }
+
+vc-postamble: |-
+
+  }
+
+  fn main() {}

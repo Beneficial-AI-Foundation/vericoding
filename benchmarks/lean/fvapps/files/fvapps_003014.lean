@@ -31,25 +31,4 @@ theorem piece_representation_correct:
   let lines := (result.splitOn "\n").take 8
   ('♔' ∈ lines[0]!.data) ∧ 
   ('♚' ∈ lines[7]!.data) := sorry
-
-/-
-info: expected1
--/
--- #guard_msgs in
--- #eval parse_fen "8/8/8/8/8/8/8/8 w - -"
-
-/-
-info: expected2
--/
--- #guard_msgs in
--- #eval parse_fen "k7/8/8/8/8/8/8/7K w - -"
-
-/-
-info: expected3
--/
--- #guard_msgs in
--- #eval parse_fen "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

@@ -29,25 +29,4 @@ theorem special_array_all_large {nums : List Nat} :
   (∀ x ∈ nums, x > nums.length) →
   nums.length > 0 →
   special_array nums = nums.length := sorry
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval special_array [3, 5]
-
-/-
-info: -1
--/
--- #guard_msgs in
--- #eval special_array [0, 0]
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval special_array [0, 4, 3, 0, 4]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

@@ -38,25 +38,4 @@ theorem find_max_good_subtree_single_edge :
 theorem find_max_good_subtree_triangle_plus_edge :
     find_max_good_subtree 4 [(1, 2), (2, 3), (3, 1), (2, 4)] = 4 :=
   sorry
-
-/-
-info: 8
--/
--- #guard_msgs in
--- #eval find_max_good_subtree 10 [[1, 2], [1, 3], [1, 4], [2, 5], [2, 6], [3, 7], [3, 8], [4, 9], [4, 10]]
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval find_max_good_subtree 3 [[1, 2], [2, 3]]
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval find_max_good_subtree 4 [[1, 2], [1, 3], [1, 4]]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

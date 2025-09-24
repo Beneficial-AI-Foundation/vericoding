@@ -23,25 +23,4 @@ theorem zero_roots
   (h2: zeros.length ≤ 10)
   (h3: ∀ x ∈ zeros, x = 0) :
   polynomialize zeros = s!"x^{zeros.length} = 0" := sorry
-
-/-
-info: 'x = 0'
--/
--- #guard_msgs in
--- #eval polynomialize [0]
-
-/-
-info: 'x^2 = 0'
--/
--- #guard_msgs in
--- #eval polynomialize [0, 0]
-
-/-
-info: 'x^3 + 5x^2 + 6x = 0'
--/
--- #guard_msgs in
--- #eval polynomialize [0, -2, -3]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

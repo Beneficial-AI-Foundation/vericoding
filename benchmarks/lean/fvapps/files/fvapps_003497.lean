@@ -22,25 +22,4 @@ theorem zero_vector_orthogonal {v : List Int} :
 theorem orthogonality_symmetric {v1 v2 : List Int} 
   (h : v1.length = v2.length) :
   is_orthogonal v1 v2 = is_orthogonal v2 v1 := sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval is_orthogonal [1, -2] [2, 1]
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval is_orthogonal [1, 2, 3] [0, -3, 2]
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval is_orthogonal [1, 1, 1] [2, 5, 7]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

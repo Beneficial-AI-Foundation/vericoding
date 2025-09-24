@@ -29,25 +29,4 @@ theorem letter_check_true_implies_chars_exist
 theorem letter_check_self_subset
   (s : String) :
   letter_check [s, s] = true := sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval letter_check ["ab", "aaa"]
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval letter_check ["trances", "nectar"]
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval letter_check ["parses", "parsecs"]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

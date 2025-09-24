@@ -28,25 +28,4 @@ theorem size_bound (grid: Grid) (h: grid.length ≥ 2) :
   let n := grid.length
   result = -1 ∨ result < n * n :=
 sorry
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval min_cost_to_valid_path [[1, 1, 1, 1], [2, 2, 2, 2], [1, 1, 1, 1], [2, 2, 2, 2]]
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval min_cost_to_valid_path [[1, 1, 3], [3, 2, 2], [1, 1, 4]]
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval min_cost_to_valid_path [[1, 2], [4, 3]]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

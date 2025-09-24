@@ -19,25 +19,4 @@ theorem mult_triangle_odd_formula (n : Nat) (h : n ≥ 1) (h₂ : n ≤ 10) :
   let result := mult_triangle n
   result[2]! = ((n + 1) / 2) ^ 4
 := sorry
-
-/-
-info: [1, 0, 1]
--/
--- #guard_msgs in
--- #eval mult_triangle 1
-
-/-
-info: [225, 144, 81]
--/
--- #guard_msgs in
--- #eval mult_triangle 5
-
-/-
-info: [3025, 2400, 625]
--/
--- #guard_msgs in
--- #eval mult_triangle 10
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

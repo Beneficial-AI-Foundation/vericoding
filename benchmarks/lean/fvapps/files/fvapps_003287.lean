@@ -33,25 +33,4 @@ sorry
 theorem sum_times_tables_positive {tables : List Int} {val : Int} :
   (∀ x ∈ tables, x > 0) → val > 0 → sum_times_tables tables 1 val ≥ 0 :=
 sorry
-
-/-
-info: 30
--/
--- #guard_msgs in
--- #eval sum_times_tables [2, 3] 1 3
-
-/-
-info: 9
--/
--- #guard_msgs in
--- #eval sum_times_tables [1, 3, 5] 1 1
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval sum_times_tables [-2, 2] -1 3
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

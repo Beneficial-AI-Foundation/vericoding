@@ -31,25 +31,4 @@ theorem string_merge_invalid (s1 s2 : String) (c : Char)
   (h2 : s2.length > 0)
   (h3 : ¬s1.contains c ∨ ¬s2.contains c) :
   ∃ (err : StringMergeError), string_merge s1 s2 c = err.msg := sorry
-
-/-
-info: 'held'
--/
--- #guard_msgs in
--- #eval string_merge "hello" "world" "l"
-
-/-
-info: 'codinywhere'
--/
--- #guard_msgs in
--- #eval string_merge "coding" "anywhere" "n"
-
-/-
-info: 'wondeople'
--/
--- #guard_msgs in
--- #eval string_merge "wonderful" "people" "e"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

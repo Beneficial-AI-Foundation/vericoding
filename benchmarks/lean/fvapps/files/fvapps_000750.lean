@@ -19,25 +19,4 @@ theorem gcd_is_maximal (a b : Nat) (h1 : a > 0) (h2 : b > 0) :
 
 theorem gcd_same_number (n : Nat) (h : n > 0) :
   find_gcd_pair n n = n := sorry
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval find_gcd_pair 3 4
-
-/-
-info: 6
--/
--- #guard_msgs in
--- #eval find_gcd_pair 12 18
-
-/-
-info: 25
--/
--- #guard_msgs in
--- #eval find_gcd_pair 100 25
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

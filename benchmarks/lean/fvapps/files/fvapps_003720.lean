@@ -42,25 +42,4 @@ theorem baby_count_invalid_chars (s : String) :
   (∀ c ∈ s.data, c ≠ 'a' ∧ c ≠ 'b' ∧ c ≠ 'y') →
   baby_count s = Sum.inr "Where's the baby?!"
   := sorry
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval baby_count "baby"
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval baby_count "baby baby baby"
-
-/-
-info: "Where's the baby?!"
--/
--- #guard_msgs in
--- #eval baby_count "none here"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

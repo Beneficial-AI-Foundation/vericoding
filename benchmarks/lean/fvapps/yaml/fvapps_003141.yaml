@@ -17,18 +17,19 @@ vc-description: |-
   -/
 
 vc-preamble: |-
-  def isInertial (arr : List Int) : Bool := sorry
-  
   def maximum? : List Int → Option Int
     | [] => none
     | x::xs => some (xs.foldl max x)
+  
+  def minimum? : List Int → Option Int
+    | [] => none
+    | x::xs => some (xs.foldl min x)
 
 vc-helpers: |-
 
 vc-definitions: |-
-  def minimum? : List Int → Option Int
-    | [] => none
-    | x::xs => some (xs.foldl min x)
+  def isInertial (arr : List Int) : Bool :=
+  sorry
 
 vc-theorems: |-
   theorem empty_array
@@ -70,26 +71,26 @@ vc-theorems: |-
   theorem single_element
     : ∀ (n : Int), isInertial [n] = false := by
     sorry
-  
-  /-
-  info: False
-  -/
-  -- #guard_msgs in
-  -- #eval is_inertial []
-  
-  /-
-  info: False
-  -/
-  -- #guard_msgs in
-  -- #eval is_inertial [581, -384, 140, -287]
-  
-  /-
-  info: True
-  -/
-  -- #guard_msgs in
-  -- #eval is_inertial [11, 4, 20, 9, 2, 8]
 
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+  
+  /--
+  info: False
+  -/
+  #guard_msgs in
+  #eval is_inertial []
+  
+  /--
+  info: False
+  -/
+  #guard_msgs in
+  #eval is_inertial [581, -384, 140, -287]
+  
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval is_inertial [11, 4, 20, 9, 2, 8]
 

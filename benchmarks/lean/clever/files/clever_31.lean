@@ -32,11 +32,3 @@ theorem correctness
 := by
   sorry
 -- </vc-theorems>
-
--- #test implementation 6 = false
--- #test implementation 101 = true
--- #test implementation 11 = true
--- #test implementation 13441 = true
--- #test implementation 61 = true
--- #test implementation 4 = false
--- #test implementation 1 = false

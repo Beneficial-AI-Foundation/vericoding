@@ -30,6 +30,3 @@ theorem sequence_bounds
      List.all result (fun x => m ≤ x ∧ x ≤ M) = true ∧ 
      sum result = s) := sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

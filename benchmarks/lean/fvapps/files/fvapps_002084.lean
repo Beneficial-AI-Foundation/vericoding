@@ -35,25 +35,4 @@ theorem count_max_banknotes_start_irrelevant
   count_max_banknotes start g1 g2 notes = 
   count_max_banknotes (start + 1) g1 g2 notes :=
 sorry
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval count_max_banknotes 5 3 7 [4, 7, 5, 5, 3, 6, 2, 8]
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval count_max_banknotes 6 5 7 [1, 5, 7, 92, 3]
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval count_max_banknotes 3 2 4 [3]
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: guarded_and_plausible

@@ -33,6 +33,3 @@ theorem result_scale_invariant
   if result₁ ≥ result₂ then result₁ - result₂ ≤ 1 else result₂ - result₁ ≤ 1 :=
 sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

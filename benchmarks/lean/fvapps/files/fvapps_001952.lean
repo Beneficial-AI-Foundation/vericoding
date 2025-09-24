@@ -37,6 +37,3 @@ theorem solve_quantifiers_edge_cases_two :
 theorem solve_quantifiers_edge_cases_three :
   solve_quantifiers 3 2 [(1,2), (2,3)] = .inl (3, "AAA") := sorry
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: guarded

@@ -1,43 +1,43 @@
 vc-description: |-
   /-
   This is the simple version of Shortest Code series. If you need some challenges, please try the [challenge version](http://www.codewars.com/kata/570f45fab29c705d330004e3)
-  
+
   ## Task:
-  
+
   There is a rectangular land and we need to plant trees on the edges of that land.
-  
+
   I will give you three parameters:
-  
+
   ```width``` and ```length```, two integers > 1 that represents the land's width and length;
-  
+
   ```gaps```, an integer >= 0, that is the distance between two trees.
-  
+
   Return how many trees have to be planted, if you can't achieve a symmetrical layout(see Example 3) then return 0. 
-  
+
   ### Example: 
-  
+
   ```
-  
+
       Example1:
       width=3, length=3, gaps=1       o - o
       we can plant 4 trees            -   -
       sc(3,3,1)=4                     o - o
-  
+
       Example2:
       width=3, length=3, gaps=3       o - -
       we can plant 2 trees            -   -
       sc(3,3,3)=2                     - - o
-  
+
       Example3:
       width=3, length=3, gaps=2       o - -
       if we plant 2 trees, some       x   o
       gaps of two trees will >2       x x x
-  
+
       if we plant 3 trees, some       o - -
       gaps of two trees will <2       x   o
       so we can not finish it         o - -
       sc(3,3,2)=0                         
-  
+
       Example4:
       width=7, length=7, gaps=3       o - - - o - -
       we can plant 6 trees            -           -
@@ -46,23 +46,23 @@ vc-description: |-
                                       o           -
                                       -           -
                                       - - o - - - o
-  
+
       some corner case:
-  
+
       Example5:
       width=3, length=3, gaps=0       o o o
       we can plant 8 trees            o   o
       sc(3,3,0)=8                     o o o
-  
+
       Example6:
       width=3, length=3, gaps=10      o 1 2
       in this case, the max gaps      1   3
       of two trees is 3               2 3 o
       gaps=10 can not finished
       so sc(3,3,10)=0
-  
+
   ```
-  
+
   ### Series:
    - [Bug in Apple](http://www.codewars.com/kata/56fe97b3cc08ca00e4000dc9)
    - [Father and Son](http://www.codewars.com/kata/56fe9a0c11086cd842000008)
@@ -88,13 +88,13 @@ vc-description: |-
    - [Waiting for a Bus](http://www.codewars.com/kata/57070eff924f343280000015)
   -/
 
-vc-preamble: |-
+vc-preamble: |
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def sc (width length gaps : Nat) : Nat := sorry
-  
+
   theorem sc_non_negative
     (width length gaps : Nat)
     (h1 : width > 0)
@@ -110,7 +110,7 @@ vc-theorems: |-
     (h3 : gaps > 0)
     (h4 : gaps > 2*width + 2*length - 4) :
     sc width length gaps = 0 := sorry
-  
+
   theorem sc_perimeter_relation
     (width length gaps : Nat)
     (h1 : width > 0)
@@ -118,37 +118,37 @@ vc-theorems: |-
     (h3 : gaps > 0)
     (h4 : sc width length gaps > 0) :
     (gaps + 1) * sc width length gaps = 2*width + 2*length - 4 := sorry
-  
+
   theorem sc_square_identity 
     (size : Nat)
     (h : size > 0) :
     sc size size 1 = sc size size 1 := sorry
-  
+
   theorem sc_symmetry
     (width length : Nat)
     (h1 : width > 0)
     (h2 : length > 0) :
     sc width length 1 = sc length width 1 := sorry
-  
-  /-
-  info: 4
-  -/
-  -- #guard_msgs in
-  -- #eval sc 3 3 1
-  
-  /-
-  info: 2
-  -/
-  -- #guard_msgs in
-  -- #eval sc 3 3 3
-  
-  /-
-  info: 0
-  -/
-  -- #guard_msgs in
-  -- #eval sc 3 3 2
 
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
+
+  /--
+  info: 4
+  -/
+  #guard_msgs in
+  #eval sc 3 3 1
+
+  /--
+  info: 2
+  -/
+  #guard_msgs in
+  #eval sc 3 3 3
+
+  /--
+  info: 0
+  -/
+  #guard_msgs in
+  #eval sc 3 3 2
 

@@ -25,25 +25,4 @@ theorem count_zeros_case_insensitive (c: Char) :
 
 theorem count_zeros_parentheses :
   count_zeros "()" = 1 := sorry
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval count_zeros ""
-
-/-
-info: 6
--/
--- #guard_msgs in
--- #eval count_zeros "0oO0oO"
-
-/-
-info: 8
--/
--- #guard_msgs in
--- #eval count_zeros "abcdefghijklmnopqrstuvwxyz"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

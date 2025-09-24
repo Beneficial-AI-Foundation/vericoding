@@ -1,60 +1,60 @@
 vc-description: |-
   /-
   Given an integer `n` return `"odd"` if the number of its divisors is odd. Otherwise return `"even"`.
-  
+
   **Note**: big inputs will be tested.
-  
+
   ## Examples:
-  
+
   All prime numbers have exactly two divisors (hence `"even"`).
-  
+
   For `n = 12` the divisors are `[1, 2, 3, 4, 6, 12]` – `"even"`.
-  
+
   For `n = 4` the divisors are `[1, 2, 4]` – `"odd"`.
   -/
 
-vc-preamble: |-
+vc-preamble: |
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def oddity (n : Nat) : String := sorry
-  
+
   theorem oddity_returns_valid_value (n : Nat) (h : n > 0) :
     oddity n = "odd" ∨ oddity n = "even" := sorry
 
 vc-theorems: |-
   theorem oddity_perfect_square_iff_odd (n : Nat) (h : n > 0) :
     (∃ k, n = k * k) ↔ oddity n = "odd" := sorry
-  
+
   theorem oddity_one :
     oddity 1 = "odd" := sorry
-  
+
   theorem oddity_two :
     oddity 2 = "even" := sorry
-  
+
   theorem oddity_four :
     oddity 4 = "odd" := sorry
-  
-  /-
-  info: 'odd'
-  -/
-  -- #guard_msgs in
-  -- #eval oddity 1
-  
-  /-
-  info: 'odd'
-  -/
-  -- #guard_msgs in
-  -- #eval oddity 16
-  
-  /-
-  info: 'even'
-  -/
-  -- #guard_msgs in
-  -- #eval oddity 27
 
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+
+  /--
+  info: 'odd'
+  -/
+  #guard_msgs in
+  #eval oddity 1
+
+  /--
+  info: 'odd'
+  -/
+  #guard_msgs in
+  #eval oddity 16
+
+  /--
+  info: 'even'
+  -/
+  #guard_msgs in
+  #eval oddity 27
 

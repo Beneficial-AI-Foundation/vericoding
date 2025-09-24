@@ -29,25 +29,4 @@ theorem fish_sorted_same_result (s1 s2 : String) (h: s1.data = s2.data) :
 theorem fish_empty_string :
   fish "" = 1 := by
   sorry
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval fish ""
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval fish "1111"
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval fish "111122223333"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

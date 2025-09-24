@@ -47,19 +47,4 @@ theorem custom_special_cards
   | none => True
   | some n => n ≥ 0 ∧ n < hands.length
   := by sorry
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval who_wins_beggar_thy_neighbour ["9C", "JC", "2H", "QC"] ["TD", "JH", "6H", "9S"]
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval who_wins_beggar_thy_neighbour ["KC", "2H"] ["AC", "3H"]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

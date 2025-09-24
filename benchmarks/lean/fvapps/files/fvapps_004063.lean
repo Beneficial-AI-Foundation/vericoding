@@ -22,6 +22,3 @@ theorem solve_returns_input_if_prime (n : Int) (h1 : n ≥ 2) (h2 : isPrime n = 
 theorem solve_handles_small_numbers (n : Int) (h : n ≤ 1) :
   solve n = 2 ∧ isPrime (solve n) = true := sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

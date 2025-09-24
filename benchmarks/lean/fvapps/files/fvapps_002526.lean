@@ -21,25 +21,4 @@ theorem make_string_words_property (h : ∀ w ∈ words, w.length > 0) :
 
 theorem make_string_only_spaces (h : ∀ c ∈ spaces.data, c = ' ') :
   make_string spaces = [] := sorry
-
-/-
-info: 'sexy'
--/
--- #guard_msgs in
--- #eval make_string "sees eyes xray yoat"
-
-/-
-info: 'bean'
--/
--- #guard_msgs in
--- #eval make_string "brown eyes are nice"
-
-/-
-info: 'cavn'
--/
--- #guard_msgs in
--- #eval make_string "cars are very nice"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

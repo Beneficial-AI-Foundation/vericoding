@@ -23,6 +23,3 @@ theorem all_students_same_multiplier (n m k : Nat)
   calculate_mean_scores n 1 [(1, n, k)] = 10 * k := by
   sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

@@ -25,25 +25,4 @@ theorem solve_empty_list :
 theorem solve_single_list (lst : List Int) :
   solve [lst] = (lst.eraseDups).length := by
   sorry
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval solve [[1, 2], [4], [5, 6]]
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval solve [[1, 2], [4, 4], [5, 6, 6]]
-
-/-
-info: 72
--/
--- #guard_msgs in
--- #eval solve [[1, 2, 3], [3, 4, 6, 6, 7], [8, 9, 10, 12, 5, 6]]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

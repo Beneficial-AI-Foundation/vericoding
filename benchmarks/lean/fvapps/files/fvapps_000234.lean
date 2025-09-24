@@ -47,25 +47,4 @@ theorem maxprofit_constant {prices: List Nat} (h: prices ≠ [])
   (hconst: ∀ i j, i < prices.length → j < prices.length → prices[i]! = prices[j]!) :
   maxProfit prices = 0 :=
   sorry
-
-/-
-info: 6
--/
--- #guard_msgs in
--- #eval maxProfit [3, 3, 5, 0, 0, 3, 1, 4]
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval maxProfit [1, 2, 3, 4, 5]
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval maxProfit [7, 6, 4, 3, 1]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

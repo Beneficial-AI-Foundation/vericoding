@@ -36,25 +36,4 @@ theorem travel_malformed_input (badInput : String) :
   let result := travel badInput "ST 12345"
   result = "ST 12345:/" ∨
   (result.startsWith "ST 12345:" ∧ result.contains '/') := by sorry
-
-/-
-info: 'OH 43071:Main Street St. Louisville,Main Long Road St. Louisville/123,432'
--/
--- #guard_msgs in
--- #eval travel "123 Main Street St. Louisville OH 43071,432 Main Long Road St. Louisville OH 43071,786 High Street Pollocksville NY 56432" "OH 43071"
-
-/-
-info: 'NY 56432:High Street Pollocksville/786'
--/
--- #guard_msgs in
--- #eval travel r "NY 56432"
-
-/-
-info: 'NY 5643:/'
--/
--- #guard_msgs in
--- #eval travel r "NY 5643"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

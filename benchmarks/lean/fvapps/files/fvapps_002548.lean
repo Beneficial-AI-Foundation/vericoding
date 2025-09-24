@@ -41,25 +41,4 @@ theorem bouncing_ball_previous_height
   let previous_height := Float.ofInt initial * Float.pow proportion (Float.ofInt result - 1)
   previous_height > 1 :=
   sorry
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval bouncing_ball 4 0.5
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval bouncing_ball 30 0.3
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval bouncing_ball 10 0.1
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

@@ -1,14 +1,14 @@
 -- <vc-preamble>
-def find_robot_position (t : Nat) : Int × Int :=
-  sorry
+def manhattan_distance (x y : Int) : Nat :=
+  Int.natAbs x + Int.natAbs y
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
-def manhattan_distance (x y : Int) : Nat :=
-  Int.natAbs x + Int.natAbs y
+def find_robot_position (t : Nat) : Int × Int :=
+  sorry
 -- </vc-definitions>
 
 -- <vc-theorems>
@@ -24,25 +24,4 @@ sorry
 theorem first_position_is_up :
   find_robot_position 1 = (0, 1) :=
 sorry
-
-/-
-info: (0, 1)
--/
--- #guard_msgs in
--- #eval find_robot_position 1
-
-/-
-info: (-1, 1)
--/
--- #guard_msgs in
--- #eval find_robot_position 2
-
-/-
-info: (2, 4)
--/
--- #guard_msgs in
--- #eval find_robot_position 50
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

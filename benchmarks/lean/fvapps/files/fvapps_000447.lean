@@ -35,25 +35,4 @@ theorem coin_change_min_coin {coins : List Nat}
   (h2 : ∀ x ∈ coins, x > 0 ∧ x ≤ 20)
   (h3 : list_min coins > 1) :
   coin_change coins (list_min coins - 1) = -1 := sorry
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval coin_change [1, 2, 5] 11
-
-/-
-info: -1
--/
--- #guard_msgs in
--- #eval coin_change [2] 3
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval coin_change [1] 0
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

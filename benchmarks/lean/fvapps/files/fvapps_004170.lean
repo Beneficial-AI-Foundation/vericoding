@@ -1,21 +1,21 @@
 -- <vc-preamble>
-def minimum_steps (arr : List Nat) (n : Nat) : Option Nat :=
-  sorry
-
-def List.sort (l : List Nat) : List Nat :=
-  sorry
+def sumList (l : List Nat) : Nat :=
+  l.foldl (·+·) 0
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
-def sumList (l : List Nat) : Nat :=
-  l.foldl (·+·) 0
+def minimum_steps (arr : List Nat) (n : Nat) : Option Nat :=
+  sorry
+
+def List.sort (l : List Nat) : List Nat :=
+  sorry
 -- </vc-definitions>
 
 -- <vc-theorems>
-theorem minimum_steps_nonnegative (arr : List Nat) (n : Nat) 
+theorem minimum_steps_nonnegative (arr : List Nat) (n : Nat)
   (h : minimum_steps arr n ≠ none) :
   ∀ result, minimum_steps arr n = some result → result ≥ 0 :=
 sorry
@@ -48,25 +48,4 @@ sorry
 theorem minimum_steps_first_element_sufficient (x y z : Nat) :
   minimum_steps [x, y, z] y = some 0 :=
 sorry
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval minimum_steps [4, 6, 3] 7
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval minimum_steps [10, 9, 9, 8] 17
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval minimum_steps [8, 9, 10, 4, 2] 23
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

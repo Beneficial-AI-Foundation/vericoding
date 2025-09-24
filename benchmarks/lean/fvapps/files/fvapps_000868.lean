@@ -36,25 +36,4 @@ theorem max_special_sum_exists (n k s : Nat) (arr : List Nat) (h₁ : n > 0) (h�
 theorem max_special_sum_single (k s : Nat) (h₁ : k > 0) (h₂ : s > 0) :
   let arr := [2]
   max_special_sum 1 k s arr = 2 * (k - (fac 2).eraseDups.length * s) := sorry
-
-/-
-info: 138
--/
--- #guard_msgs in
--- #eval max_special_sum 4 10 2 [14, 2, 7, 15]
-
-/-
-info: 27
--/
--- #guard_msgs in
--- #eval max_special_sum 3 5 1 [2, 3, 4]
-
-/-
-info: 45
--/
--- #guard_msgs in
--- #eval max_special_sum 2 8 3 [6, 9]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

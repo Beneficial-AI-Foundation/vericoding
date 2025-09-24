@@ -1,25 +1,26 @@
 -- <vc-preamble>
-def solve_sequence (n : Nat) (comp_str : String) : (List Nat × List Nat) :=
-  sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
+def solve_sequence (n : Nat) (comp_str : String) : (List Nat × List Nat) :=
+  sorry
+
 def verifySequenceMatchesComparisons (seq : List Nat) (comps : List Char) : Bool :=
   sorry
 -- </vc-definitions>
 
 -- <vc-theorems>
-theorem sequence_length_matches_comparisons 
+theorem sequence_length_matches_comparisons
   {n : Nat} {comp_str : String} :
   let (min_seq, max_seq) := solve_sequence n comp_str
   n = comp_str.length + 1 →
   min_seq.length = n ∧ max_seq.length = n :=
 sorry
 
-theorem sequences_follow_comparisons 
+theorem sequences_follow_comparisons
   {n : Nat} {comp_str : String} :
   let (min_seq, max_seq) := solve_sequence n comp_str
   n = comp_str.length + 1 →
@@ -35,24 +36,9 @@ theorem sequences_use_consecutive_integers
                (k ∈ max_seq ↔ k ≤ n ∧ k > 0) :=
 sorry
 
-theorem single_value_edge_case 
+theorem single_value_edge_case
   {n : Nat} :
   n = 1 →
   solve_sequence n "" = ([1], [1]) :=
 sorry
-
-/-
-info: set(range(1, 6))
--/
--- #guard_msgs in
--- #eval set min3
-
-/-
-info: set(range(1, 6))
--/
--- #guard_msgs in
--- #eval set max3
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

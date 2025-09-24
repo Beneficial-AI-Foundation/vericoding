@@ -41,19 +41,19 @@ vc-description: |-
   -/
 
 vc-preamble: |-
-  def numRollsToTarget (d f t : Nat) : Nat :=
-    sorry
+  def M := 1000000007
 
 vc-helpers: |-
 
 vc-definitions: |-
-  def M := 1000000007
-  
+  def numRollsToTarget (d f t : Nat) : Nat :=
+    sorry
+
+vc-theorems: |-
   theorem impossible_target (d f t : Nat) :
     (t < d ∨ t > d*f) → numRollsToTarget d f t = 0 :=
   sorry
-
-vc-theorems: |-
+  
   theorem single_die_possible (f t : Nat) :
     1 ≤ t ∧ t ≤ f → numRollsToTarget 1 f t = 1 :=
   sorry
@@ -65,26 +65,26 @@ vc-theorems: |-
   theorem above_max_target (d f : Nat) :
     numRollsToTarget d f (d*f+1) = 0 :=
   sorry
-  
-  /-
-  info: 1
-  -/
-  -- #guard_msgs in
-  -- #eval numRollsToTarget 1 6 3
-  
-  /-
-  info: 6
-  -/
-  -- #guard_msgs in
-  -- #eval numRollsToTarget 2 6 7
-  
-  /-
-  info: 1
-  -/
-  -- #guard_msgs in
-  -- #eval numRollsToTarget 2 5 10
 
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
+  
+  /--
+  info: 1
+  -/
+  #guard_msgs in
+  #eval numRollsToTarget 1 6 3
+  
+  /--
+  info: 6
+  -/
+  #guard_msgs in
+  #eval numRollsToTarget 2 6 7
+  
+  /--
+  info: 1
+  -/
+  #guard_msgs in
+  #eval numRollsToTarget 2 5 10
 

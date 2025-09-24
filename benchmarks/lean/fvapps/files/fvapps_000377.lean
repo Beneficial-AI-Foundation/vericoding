@@ -31,25 +31,4 @@ theorem rank_teams_single_team {votes : List String}
   (h : ∀ v ∈ votes, v = "A") :
   rank_teams votes = "A" :=
 sorry
-
-/-
-info: 'ACB'
--/
--- #guard_msgs in
--- #eval rank_teams ["ABC", "ACB", "ABC", "ACB", "ACB"]
-
-/-
-info: 'XWYZ'
--/
--- #guard_msgs in
--- #eval rank_teams ["WXYZ", "XYZW"]
-
-/-
-info: 'ZMNAGUEDSJYLBOPHRQICWFXTVK'
--/
--- #guard_msgs in
--- #eval rank_teams ["ZMNAGUEDSJYLBOPHRQICWFXTVK"]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

@@ -56,6 +56,3 @@ theorem factorsRange_reversed_inputs
   {n m : Nat} (h : n > m)
   : factorsRange n m = [] := sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

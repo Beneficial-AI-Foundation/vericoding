@@ -17,6 +17,3 @@ theorem make_negative_is_nonpositive (n : Int) :
 theorem make_negative_idempotent (n : Int) (h : n ≤ 0) :
   make_negative (make_negative n) = make_negative n := sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

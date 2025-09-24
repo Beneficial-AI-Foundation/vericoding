@@ -24,25 +24,4 @@ theorem digits_product_product_matches (n : Nat) :
   let result := digits_product n
   result ≠ -1 →
   stringToDigitProduct (toString result.toNat) = n := by sorry
-
-/-
-info: 26
--/
--- #guard_msgs in
--- #eval digits_product 12
-
-/-
-info: -1
--/
--- #guard_msgs in
--- #eval digits_product 19
-
-/-
-info: 2559
--/
--- #guard_msgs in
--- #eval digits_product 450
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

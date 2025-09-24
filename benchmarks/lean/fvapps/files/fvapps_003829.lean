@@ -36,25 +36,4 @@ theorem days_represented_permutation_invariant {trips₁ trips₂ : List (Nat ×
   trips₁.length = trips₂.length →
   days_represented trips₁ = days_represented trips₂ :=
   sorry
-
-/-
-info: 17
--/
--- #guard_msgs in
--- #eval days_represented [[10, 15], [25, 35]]
-
-/-
-info: 24
--/
--- #guard_msgs in
--- #eval days_represented [[2, 8], [220, 229], [10, 16]]
-
-/-
-info: 8
--/
--- #guard_msgs in
--- #eval days_represented [[10, 17]]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

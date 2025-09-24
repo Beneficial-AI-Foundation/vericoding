@@ -15,6 +15,3 @@ theorem merge_sorted_arrays_case1 :
 theorem merge_sorted_arrays_case2 :
   merge_sorted_arrays [1, 2, 3] [4, 5, 6] = [1, 2, 3, 4, 5, 6] := sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

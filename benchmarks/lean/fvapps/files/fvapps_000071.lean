@@ -52,19 +52,4 @@ theorem edge_case_k_equals_unique
   solve_beautiful_array 1 k a ≠ []
   :=
 sorry
-
-/-
-info: n1 * k1
--/
--- #guard_msgs in
--- #eval len result1
-
-/-
-info: n3 * k3
--/
--- #guard_msgs in
--- #eval len result3
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

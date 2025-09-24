@@ -27,6 +27,3 @@ theorem solve_boxes_impossible_same_values :
   solve_boxes 2 [1,1] [[1],[1]] = (false, none, none)
   := sorry
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: unguarded

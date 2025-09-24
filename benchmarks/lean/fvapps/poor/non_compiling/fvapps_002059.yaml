@@ -43,8 +43,6 @@ vc-preamble: |-
     xs.foldl (· + ·) 0
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def solve_christmas_boxes (n: Nat) (boxes: List Nat) : Int :=

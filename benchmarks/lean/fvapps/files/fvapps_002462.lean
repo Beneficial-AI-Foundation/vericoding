@@ -25,6 +25,3 @@ theorem eye_matrix_off_diagonal_zeros {n m : Nat} (h1 : n > 0) (h2 : m > 0)
 theorem eye_matrix_invalid_input {n m : Int} :
   n < 0 ∨ m < 0 → generate_eye_matrix n.natAbs m.natAbs = λ i j => 0 := sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

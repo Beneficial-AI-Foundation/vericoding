@@ -25,25 +25,4 @@ theorem encrypter_output_charset {s : String}
 theorem encrypter_case_insensitive {s : String}
   (h : ∀ c ∈ s.data, 65 ≤ c.val ∧ c.val ≤ 122) :
   encrypter s.toLower = encrypter s.toUpper := sorry
-
-/-
-info: 'man'
--/
--- #guard_msgs in
--- #eval encrypter "amz"
-
-/-
-info: 'fibby'
--/
--- #guard_msgs in
--- #eval encrypter "hello"
-
-/-
-info: 'qibkyai ty tfi yvgmzenmteyz'
--/
--- #guard_msgs in
--- #eval encrypter "welcome to the organization"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

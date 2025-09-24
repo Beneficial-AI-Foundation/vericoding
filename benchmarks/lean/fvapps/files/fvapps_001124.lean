@@ -18,25 +18,4 @@ theorem find_lucky_count_seven :
 
 theorem find_lucky_count_fourteen :
   find_lucky_count 14 = 14 := sorry
-
-/-
-info: 7
--/
--- #guard_msgs in
--- #eval find_lucky_count 7
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval find_lucky_count 4
-
-/-
-info: 7
--/
--- #guard_msgs in
--- #eval find_lucky_count 15
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

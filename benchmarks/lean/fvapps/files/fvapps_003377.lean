@@ -29,6 +29,3 @@ theorem around_fib_string_properties (n : Nat) (h : n ≤ 100) :
     String.any result (· == ';') ∧
     String.any result (· == 'f') := sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

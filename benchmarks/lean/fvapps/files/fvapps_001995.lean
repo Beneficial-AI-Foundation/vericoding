@@ -40,25 +40,4 @@ theorem solve_binary_string_concat_all_ones
   (h2 : strings.length ≤ 5)
   (h3 : ∀ s ∈ strings, s = "1") :
   solve_binary_string_concat strings [(1,2)] = [0] := sorry
-
-/-
-info: [1, 2, 0]
--/
--- #guard_msgs in
--- #eval solve_binary_string_concat ["01", "10", "101", "11111", "0"] [(1, 2), (6, 5), (4, 4)]
-
-/-
-info: [1, 1, 1, 2, 1, 2]
--/
--- #guard_msgs in
--- #eval solve_binary_string_concat ["01", "1", "0011", "0", "01"] [(5, 5), (3, 2), (4, 2), (6, 7), (5, 1), (9, 7)]
-
-/-
-info: [1]
--/
--- #guard_msgs in
--- #eval solve_binary_string_concat ["0", "1"] [(1, 2)]
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: unguarded

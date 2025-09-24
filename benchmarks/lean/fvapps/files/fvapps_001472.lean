@@ -31,6 +31,3 @@ theorem result_is_maximal_differences (s : String) (h : s.length > 0) :
   let result := solveBinaryConversion s target
   result.1 = true ∧ result.2 = max zeros_to_ones ones_to_zeros := sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

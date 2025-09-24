@@ -22,25 +22,4 @@ theorem empty_range_is_zero (start finish : Nat) :
 
 theorem singleton_range_classy (n : Nat) :
   countClassyIntegers n n = (if isClassyNumber n then 1 else 0) := sorry
-
-/-
-info: 1000
--/
--- #guard_msgs in
--- #eval count_classy_integers 1 1000
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval count_classy_integers 1024 1024
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval count_classy_integers 999999 1000001
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

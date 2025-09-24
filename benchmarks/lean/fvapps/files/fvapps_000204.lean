@@ -30,25 +30,4 @@ theorem predict_party_victory_deterministic (senate : String) :
 theorem predict_party_victory_repeating_pattern (n : Nat) :
   n > 0 →
   predict_party_victory (String.join (List.replicate n "RD")) = predict_party_victory "RD" := sorry
-
-/-
-info: 'Radiant'
--/
--- #guard_msgs in
--- #eval predict_party_victory "RD"
-
-/-
-info: 'Dire'
--/
--- #guard_msgs in
--- #eval predict_party_victory "RDD"
-
-/-
-info: 'Radiant'
--/
--- #guard_msgs in
--- #eval predict_party_victory "RRDDD"
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

@@ -26,25 +26,4 @@ theorem count_no_meet_paths_edge_reversal (N M S T : Nat) (edges : List (Nat × 
   count_no_meet_paths N M S T edges = 
   count_no_meet_paths N M S T (edges.map (fun (e : Nat × Nat × Nat) => (e.2.1, e.1, e.2.2))) :=
 sorry
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval count_no_meet_paths 
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval count_no_meet_paths 
-
-/-
-info: 6
--/
--- #guard_msgs in
--- #eval count_no_meet_paths
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: unguarded

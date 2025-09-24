@@ -35,25 +35,4 @@ theorem solution_properties :
         acc + juices[pos]! - distances[pos]!)
       0
     i < juices.length - 1 → remainingJuice ≥ 0 := sorry
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval find_starting_juice_shop [1, 10, 3] [5, 3, 4]
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval find_starting_juice_shop [5, 2, 3] [4, 3, 2]
-
-/-
-info: -1
--/
--- #guard_msgs in
--- #eval find_starting_juice_shop [1, 2, 3] [4, 5, 6]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

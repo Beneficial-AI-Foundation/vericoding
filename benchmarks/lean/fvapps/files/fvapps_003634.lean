@@ -14,6 +14,3 @@ theorem calculate_time_known_value :
     (calculate_time 1000 500 - 2.6).abs < 0.01 :=
     sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

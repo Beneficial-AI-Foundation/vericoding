@@ -22,25 +22,4 @@ theorem routes_monotonic {n : Int} (h1 : n > 1) :
 
 theorem routes_initial_values :
   routes 1 = 2 ∧ routes 2 = 6 ∧ routes 3 = 20 := sorry
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval routes 1
-
-/-
-info: 6
--/
--- #guard_msgs in
--- #eval routes 2
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval routes -100
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

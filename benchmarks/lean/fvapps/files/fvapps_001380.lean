@@ -21,19 +21,4 @@ theorem solve_sokka_journey_minimum_input :
 
 theorem solve_sokka_journey_three_input :
   solve_sokka_journey 3 = 333333336 := sorry
-
-/-
-info: 200000002
--/
--- #guard_msgs in
--- #eval solve_sokka_journey 5
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval solve_sokka_journey 2
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

@@ -36,25 +36,4 @@ theorem two_char_string_returns_full (s : String) :
   s ≠ "" →
   (∀ c ∈ s.data, c = 'a' ∨ c = 'b') →
   substring s = s := sorry
-
-/-
-info: 'aba'
--/
--- #guard_msgs in
--- #eval substring "abacd"
-
-/-
-info: 'aaa'
--/
--- #guard_msgs in
--- #eval substring "aaa"
-
-/-
-info: 'cddcd'
--/
--- #guard_msgs in
--- #eval substring "abacddcd"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

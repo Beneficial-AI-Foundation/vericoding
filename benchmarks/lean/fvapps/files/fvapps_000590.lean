@@ -28,25 +28,4 @@ theorem result_always_valid (n : Nat) (arr : List Nat)
   (h₃ : n ≥ 2) :
   let result := max_gcd_subarrays n arr
   result = -1 ∨ result > 0 := sorry
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval max_gcd_subarrays 3 [2, 2, 3]
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval max_gcd_subarrays 4 [2, 3, 3, 2]
-
-/-
-info: -1
--/
--- #guard_msgs in
--- #eval max_gcd_subarrays 2 [4, 6]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

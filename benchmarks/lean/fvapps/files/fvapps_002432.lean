@@ -41,25 +41,4 @@ theorem closing_only_invalid (s: String) :
   s.length > 0 →
   is_valid_parentheses s = false :=
   sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval is_valid_parentheses "()"
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval is_valid_parentheses "()[]{}"
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval is_valid_parentheses "(]"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

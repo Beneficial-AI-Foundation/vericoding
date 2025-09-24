@@ -31,6 +31,3 @@ theorem edge_case_two_zeros (n : Nat) (s : String) :
   let (a, b) := solve_ternary_xor n s
   validate_ternary_solution n s a b = true := sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

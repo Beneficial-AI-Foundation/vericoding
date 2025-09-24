@@ -23,25 +23,4 @@ theorem check_similar_dishes_common_elements
   let common := (dish1.filter (fun x => dish2.contains x)).length
   check_similar_dishes dish1 dish2 = 
     if common ≥ 2 then "similar" else "dissimilar" := sorry
-
-/-
-info: 'similar'
--/
--- #guard_msgs in
--- #eval check_similar_dishes ["eggs", "sugar", "flour", "salt"] ["sugar", "eggs", "milk", "flour"]
-
-/-
-info: 'similar'
--/
--- #guard_msgs in
--- #eval check_similar_dishes ["aa", "ab", "ac", "ad"] ["ac", "ad", "ae", "af"]
-
-/-
-info: 'dissimilar'
--/
--- #guard_msgs in
--- #eval check_similar_dishes ["cookies", "sugar", "grass", "lemon"] ["lemon", "meat", "chili", "wood"]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

@@ -40,6 +40,3 @@ theorem composite_sums (n k : Nat)
     power_sum > n ^ k ∧ factor_sum > n * k :=
   sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

@@ -24,6 +24,3 @@ theorem subtractive_pairs_less :
   solution "CD" < solution "DC" ∧
   solution "CM" < solution "MC" := sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

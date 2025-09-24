@@ -42,31 +42,4 @@ theorem triangle_type_range (a b c : Int) :
   triangle_type a b c = 2 ∨ 
   triangle_type a b c = 3 :=
 sorry
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval triangle_type 2 4 6
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval triangle_type 8 5 7
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval triangle_type 3 4 5
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval triangle_type 7 12 8
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

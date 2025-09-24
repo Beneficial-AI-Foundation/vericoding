@@ -26,37 +26,4 @@ theorem invalid_input_returns_welcome (language : String)
   (h : language ∉ VALID_LANGUAGES) :
   greet language = "Welcome" :=
 sorry
-
-/-
-info: 'Welcome'
--/
--- #guard_msgs in
--- #eval greet "english"
-
-/-
-info: 'Welkom'
--/
--- #guard_msgs in
--- #eval greet "dutch"
-
-/-
-info: 'Welcome'
--/
--- #guard_msgs in
--- #eval greet "IP_ADDRESS_INVALID"
-
-/-
-info: 'Welcome'
--/
--- #guard_msgs in
--- #eval greet ""
-
-/-
-info: 'Welcome'
--/
--- #guard_msgs in
--- #eval greet 2
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

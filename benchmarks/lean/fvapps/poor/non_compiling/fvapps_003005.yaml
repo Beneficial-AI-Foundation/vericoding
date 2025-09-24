@@ -23,8 +23,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def compare (s1 s2 : String) : Bool := sorry

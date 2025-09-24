@@ -40,7 +40,3 @@ theorem correctness
 : problem_spec implementation a b := by
   sorry
 -- </vc-theorems>
-
--- #test implementation 2 8 = [2, 4, 6, 8]
--- #test implementation 8 2 = [2, 4, 6, 8]
--- #test implementation 10 14 = [10, 12, 14]

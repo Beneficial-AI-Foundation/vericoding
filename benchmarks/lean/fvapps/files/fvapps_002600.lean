@@ -35,25 +35,4 @@ theorem last_preserves_duplicates (s : String)
   (h : ∀ c ∈ s.data, isWordChar c) :
   ∀ w ∈ s.split (· = ' '),
     (s.split (· = ' ')).count w = (last s).count w := sorry
-
-/-
-info: ['a', 'need', 'ubud', 'i', 'taxi', 'man', 'to', 'up']
--/
--- #guard_msgs in
--- #eval last "man i need a taxi up to ubud"
-
-/-
-info: ['take', 'me', 'semynak', 'to']
--/
--- #guard_msgs in
--- #eval last "take me to semynak"
-
-/-
-info: ['massage', 'massage', 'massage', 'yes', 'yes']
--/
--- #guard_msgs in
--- #eval last "massage yes massage yes massage"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

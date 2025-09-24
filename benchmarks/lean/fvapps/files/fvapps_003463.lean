@@ -29,25 +29,4 @@ theorem solve_empty :
 
 theorem solve_single (n : Nat) :
   solve [n] = some [n] := sorry
-
-/-
-info: [9, 3, 6, 12, 4, 8]
--/
--- #guard_msgs in
--- #eval solve [12, 3, 9, 4, 6, 8]
-
-/-
-info: [2, 4]
--/
--- #guard_msgs in
--- #eval solve test2
-
-/-
-info: [279, 558, 1116, 2232, 744, 1488]
--/
--- #guard_msgs in
--- #eval solve test3
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

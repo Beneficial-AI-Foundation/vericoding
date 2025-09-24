@@ -1,0 +1,36 @@
+vc-description: |-
+  This verification task implements an algorithm to find the largest prime factor of a composite integer n (where n > 1 and n is not prime). The algorithm uses trial division, first removing all factors of 2, then checking odd factors up to the square root of the remaining number.
+
+  The implementation must ensure that the returned result is indeed a prime number, divides n, and is the largest such prime factor among all factors of n.
+
+vc-preamble: |-
+  
+  predicate is_prime(n: int)
+  {
+      n > 1 && forall k :: 2 <= k < n ==> n % k != 0
+  }
+  
+  function power_of_2_factor(n: int, current: int): int
+      requires n > 0 && current > 0
+      decreases current
+  {
+      if current % 2 != 0 then 1
+      else 2 * power_of_2_factor(n, current / 2)
+  }
+
+vc-helpers: |-
+
+vc-spec: |-
+  method largest_prime_factor(n: int) returns (result: int)
+      requires n > 1
+      requires !is_prime(n)
+      ensures result > 1
+      ensures n % result == 0
+      ensures forall k :: k > result && n % k == 0 ==> !is_prime(k)
+      ensures is_prime(result)
+
+vc-code: |-
+  {
+      assume {:axiom} false;
+    }
+vc-postamble: |-

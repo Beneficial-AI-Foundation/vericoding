@@ -166,7 +166,3 @@ theorem correctness
 : problem_spec implementation num := by
   sorry
 -- </vc-theorems>
-
--- #test implementation 19 = "xix"
--- #test implementation 152 = "clii"
--- #test implementation 426 = "cdxxvi"

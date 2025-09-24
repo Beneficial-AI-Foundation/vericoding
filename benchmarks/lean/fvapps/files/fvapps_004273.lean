@@ -29,25 +29,4 @@ theorem endless_string_start_period
   (length : Int)
   (h : length > 0) :
   endlessString s start length = endlessString s (start + s.length) length := sorry
-
-/-
-info: 'yzxyzx'
--/
--- #guard_msgs in
--- #eval endless_string "xyz" -23 6
-
-/-
-info: 'xyzx'
--/
--- #guard_msgs in
--- #eval endless_string "xyz" 0 4
-
-/-
-info: 'zxyz'
--/
--- #guard_msgs in
--- #eval endless_string "xyz" -4 -4
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

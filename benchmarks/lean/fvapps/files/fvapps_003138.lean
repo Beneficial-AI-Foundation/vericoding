@@ -21,25 +21,4 @@ theorem evenFib_monotonic (n : Int) (h : n > 0) : evenFib n ≥ evenFib (n-1) :=
 
 theorem evenFib_even (n : Int) (h : n > 0) : evenFib n % 2 = 0 :=
   sorry
-
-/-
-info: 10
--/
--- #guard_msgs in
--- #eval even_fib 10
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval even_fib 0
-
-/-
-info: 44
--/
--- #guard_msgs in
--- #eval even_fib 100
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

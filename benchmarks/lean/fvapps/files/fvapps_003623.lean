@@ -21,6 +21,3 @@ theorem split_with_pipe_returns_nonempty_segments
   let result := split_without_loss text "|"
   ∀ segment ∈ result, segment.length > 0 := sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

@@ -29,37 +29,4 @@ theorem self_prefix (s : String) :
 theorem prefix_matches_slice (s pre : String) :
   startsWith s pre = (if pre.length = 0 then true else s.take pre.length = pre) :=
   sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval starts_with "hello world!" "hello"
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval starts_with "hello world!" "HELLO"
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval starts_with "nowai" "nowaisir"
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval starts_with "abc" ""
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval starts_with "" "abc"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

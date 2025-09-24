@@ -34,25 +34,4 @@ theorem palindrome_subsequence_alternating (n : Nat) (h : n > 0) (h2 : n ≤ 100
   let arr := List.range n |>.map (fun i => (i % 2) + 1)
   (find_max_palindrome_subsequence n arr ≥ n/2 + n%2) :=
 sorry
-
-/-
-info: 7
--/
--- #guard_msgs in
--- #eval find_max_palindrome_subsequence 8 [1, 1, 2, 2, 3, 2, 1, 1]
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval find_max_palindrome_subsequence 3 [1, 3, 3]
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval find_max_palindrome_subsequence 4 [1, 10, 10, 1]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

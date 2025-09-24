@@ -29,25 +29,4 @@ theorem all_zeros (arr : List Int) (h : arr.length ≥ 2) (h2 : ∀ x ∈ arr, x
   (∀ x ∈ result, x = 0) ∧
   result.length = arr.length - 1 :=
   sorry
-
-/-
-info: [-6, 32, 25]
--/
--- #guard_msgs in
--- #eval multiple_of_index [22, -6, 32, 82, 9, 25]
-
-/-
-info: [-1, 10]
--/
--- #guard_msgs in
--- #eval multiple_of_index test2
-
-/-
-info: [-85, 72, 0, 68]
--/
--- #guard_msgs in
--- #eval multiple_of_index test3
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

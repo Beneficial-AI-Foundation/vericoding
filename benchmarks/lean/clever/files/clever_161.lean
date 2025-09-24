@@ -40,7 +40,3 @@ theorem correctness
 : problem_spec implementation s := by
   sorry
 -- </vc-theorems>
-
--- #test implementation "1234" = "4321"
--- #test implementation "ab" = "AB"
--- #test implementation "#a@C" = "#A@c"

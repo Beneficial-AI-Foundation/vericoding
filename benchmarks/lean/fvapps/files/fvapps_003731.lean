@@ -1,15 +1,16 @@
 -- <vc-preamble>
-def build_or_buy (hand : String) : List String := sorry
-
 def ValidResources := "bwsog"
+
+def countChar (s : List Char) (c : Char) : Nat :=
+  s.filter (· = c) |>.length
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
-def countChar (s : List Char) (c : Char) : Nat :=
-  s.filter (· = c) |>.length
+def build_or_buy (hand : String) : List String :=
+sorry
 -- </vc-definitions>
 
 -- <vc-theorems>
@@ -58,25 +59,4 @@ theorem result_consistency (hand : String) :
   hand.data.all (· ∈ ValidResources.data) →
   build_or_buy hand = build_or_buy hand := by
   sorry
-
-/-
-info: ['road']
--/
--- #guard_msgs in
--- #eval build_or_buy "bwoo"
-
-/-
-info: []
--/
--- #guard_msgs in
--- #eval build_or_buy ""
-
-/-
-info: ['city']
--/
--- #guard_msgs in
--- #eval build_or_buy "ogogoogogo"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

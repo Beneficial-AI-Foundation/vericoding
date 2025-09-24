@@ -37,25 +37,4 @@ theorem invalid_chars (s1 s2 s3 : String) (c : Char) :
   c ∉ s2.data →
   is_interleave s1 s2 s3 = false :=
 sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval is_interleave "aabcc" "dbbca" "aadbbcbcac"
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval is_interleave "aabcc" "dbbca" "aadbbbaccc"
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval is_interleave "abc" "def" "abcdef"
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

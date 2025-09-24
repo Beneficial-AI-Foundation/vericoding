@@ -1,15 +1,15 @@
 vc-description: |-
   /-
   # Background
-  
+
   My TV remote control has arrow buttons and an `OK` button.
-  
+
   I can use these to move a "cursor" on a logical screen keyboard to type words...
-  
+
   # Keyboard
-  
+
   The screen "keyboard" layout looks like this
-  
+
     #tvkb {
       width : 400px;
       border: 5px solid gray; border-collapse: collapse;
@@ -20,28 +20,28 @@ vc-description: |-
       text-align : center;
       border: 3px solid gray; border-collapse: collapse;
     }
-  
+
   abcde123
   fghij456
   klmno789
   pqrst.@0
   uvwxyz_/
   aASP
-  
+
   * `aA` is the SHIFT key. Pressing this key toggles alpha characters between UPPERCASE and lowercase
   * `SP` is the space character
   * The other blank keys in the bottom row have no function
-  
+
   # Kata task
-  
+
   How many button presses on my remote are required to type the given `words`?
-  
+
   ## Hint
-  
+
   This Kata is an extension of the earlier ones in this series. You should complete those first.
-  
+
   ## Notes
-  
+
   * The cursor always starts on the letter `a` (top left)
   * The alpha characters are initially lowercase (as shown above)
   * Remember to also press `OK` to "accept" each letter
@@ -50,11 +50,11 @@ vc-description: |-
   * Although the blank keys have no function, you may navigate through them if you want to
   * Spaces may occur anywhere in the `words` string
   * Do not press the SHIFT key until you need to. For example, with the word `e.Z`, the SHIFT change happens **after** the `.` is pressed (not before)
-  
+
   # Example
-  
+
   words = `Code Wars`
-  
+
   * C => `a`-`aA`-OK-`A`-`B`-`C`-OK = 6
   * o => `C`-`B`-`A`-`aA`-OK-`u`-`v`-`w`-`x`-`y`-`t`-`o`-OK = 12
   * d => `o`-`j`-`e`-`d`-OK = 4
@@ -64,12 +64,12 @@ vc-description: |-
   * a => `W`-`V`-`U`-`aA`-OK-`a`-OK = 6
   * r => `a`-`f`-`k`-`p`-`q`-`r`-OK = 6
   * s => `r`-`s`-OK = 2
-  
+
   Answer = 6 + 12 + 4 + 2 + 5 + 6 + 6 + 6 + 2 = 49
-  
+
   *Good Luck!
   DM.*
-  
+
   Series
   * TV Remote
   * TV Remote (shift and space)
@@ -77,51 +77,51 @@ vc-description: |-
   * TV Remote (symbols)
   -/
 
-vc-preamble: |-
+vc-preamble: |
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def tv_remote (s : String) : Nat := sorry
-  
+
   theorem tv_remote_non_negative (word : String) : 
     tv_remote word ≥ 0 := sorry
 
 vc-theorems: |-
   theorem tv_remote_greater_than_length (word : String) : 
     tv_remote word ≥ word.length := sorry 
-  
+
   theorem tv_remote_empty_zero : 
     tv_remote "" = 0 := sorry
-  
+
   theorem tv_remote_case_sensitive (word : String) : 
     (∃ c ∈ word.data, c.isAlpha) → 
     tv_remote (word.map Char.toUpper) ≠ tv_remote (word.map Char.toLower) := sorry
-  
+
   theorem tv_remote_spaces (spaces : String) : 
     (∀ c ∈ spaces.data, c = ' ') → 
     spaces.length > 0 → 
     tv_remote spaces ≥ spaces.length := sorry
-  
-  /-
-  info: 49
-  -/
-  -- #guard_msgs in
-  -- #eval tv_remote "Code Wars"
-  
-  /-
-  info: 0
-  -/
-  -- #guard_msgs in
-  -- #eval tv_remote ""
-  
-  /-
-  info: 5
-  -/
-  -- #guard_msgs in
-  -- #eval tv_remote "   "
 
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+
+  /--
+  info: 49
+  -/
+  #guard_msgs in
+  #eval tv_remote "Code Wars"
+
+  /--
+  info: 0
+  -/
+  #guard_msgs in
+  #eval tv_remote ""
+
+  /--
+  info: 5
+  -/
+  #guard_msgs in
+  #eval tv_remote "   "
 

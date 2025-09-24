@@ -33,25 +33,4 @@ theorem dating_range_format (age : Int) (h : 1 ≤ age ∧ age ≤ 100) :
   let min_age := parts.head!.toInt!
   let max_age := parts.getLast!.toInt!
   min_age ≤ max_age := sorry
-
-/-
-info: '15-20'
--/
--- #guard_msgs in
--- #eval dating_range 17
-
-/-
-info: '9-11'
--/
--- #guard_msgs in
--- #eval dating_range 10
-
-/-
-info: '24-56'
--/
--- #guard_msgs in
--- #eval dating_range 35
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

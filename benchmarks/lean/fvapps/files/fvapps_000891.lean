@@ -1,12 +1,13 @@
 -- <vc-preamble>
-def solve_min_pairs (n : Nat) (k : Int) (arr : List Int) : Int × Nat :=
-  sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
+def solve_min_pairs (n : Nat) (k : Int) (arr : List Int) : Int × Nat :=
+  sorry
+
 def count_pairs_with_diff (arr : List Int) (k : Int) (min_diff : Int) : Nat :=
   sorry
 -- </vc-definitions>
@@ -18,7 +19,7 @@ theorem solve_min_pairs_nonneg_diff (n : Nat) (k : Int) (arr : List Int)
   min_diff ≥ 0 := by
   sorry
 
-theorem solve_min_pairs_positive_count (n : Nat) (k : Int) (arr : List Int) 
+theorem solve_min_pairs_positive_count (n : Nat) (k : Int) (arr : List Int)
   (h1: n ≥ 2) (h2: arr.length = n) :
   let (_, count) := solve_min_pairs n k arr
   count > 0 := by
@@ -39,29 +40,8 @@ theorem solve_min_pairs_minimal (n : Nat) (k : Int) (arr : List Int)
   sorry
 
 theorem solve_min_pairs_permutation_invariant (n : Nat) (k : Int) (arr1 arr2 : List Int)
-  (h1: n ≥ 2) (h2: arr1.length = n) (h3: arr2.length = n) 
+  (h1: n ≥ 2) (h2: arr1.length = n) (h3: arr2.length = n)
   (h4: arr2.Perm arr1) :
   solve_min_pairs n k arr1 = solve_min_pairs n k arr2 := by
   sorry
-
-/-
-info: (1, 4)
--/
--- #guard_msgs in
--- #eval solve_min_pairs 4 9 [4, 4, 2, 6]
-
-/-
-info: (2, 1)
--/
--- #guard_msgs in
--- #eval solve_min_pairs 2 10 [3, 5]
-
-/-
-info: (4, 3)
--/
--- #guard_msgs in
--- #eval solve_min_pairs 3 12 [4, 4, 4]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

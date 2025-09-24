@@ -24,25 +24,4 @@ theorem double_check_case_insensitive {s : String}
 theorem double_check_single_char {s : String}
   (h : s.length = 1) :
   double_check s = false := sorry
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval double_check "abca"
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval double_check "aabc"
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval double_check "a 11 c d"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

@@ -31,25 +31,4 @@ theorem polish_chars_translated_correctly (s : String) (i : Nat) (h : i < s.leng
 
 theorem idempotent (s : String) :
   correct_polish_letters (correct_polish_letters s) = correct_polish_letters s := sorry
-
-/-
-info: 'Jedrzej Bladzinski'
--/
--- #guard_msgs in
--- #eval correct_polish_letters "Jędrzej Błądziński"
-
-/-
-info: 'Lech Walesa'
--/
--- #guard_msgs in
--- #eval correct_polish_letters "Lech Wałęsa"
-
-/-
-info: 'Zazolc gesla jazn'
--/
--- #guard_msgs in
--- #eval correct_polish_letters "Zażółć gęślą jaźń"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

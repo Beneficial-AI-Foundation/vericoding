@@ -49,5 +49,3 @@ theorem correctness
 : problem_spec implementation class_name extensions := by
   sorry
 -- </vc-theorems>
-
--- #test implementation 'my_class', ['AA', 'Be', 'CC'] = 'my_class.AA'

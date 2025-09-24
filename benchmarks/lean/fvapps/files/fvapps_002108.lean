@@ -24,25 +24,4 @@ theorem find_shortest_path_basic_single_edge :
 
 theorem find_shortest_path_basic_disconnected :
   find_shortest_path 3 [(1,2)] = 536870912 := sorry
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval find_shortest_path 4 [(1, 2), (2, 3), (3, 4), (4, 1)]
-
-/-
-info: 10
--/
--- #guard_msgs in
--- #eval find_shortest_path 4 [(2, 1), (2, 3), (4, 3)]
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval find_shortest_path 2 [(2, 1)]
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: guarded_and_plausible

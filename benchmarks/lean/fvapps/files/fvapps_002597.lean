@@ -30,25 +30,4 @@ theorem successful_case_has_change (bills : List Nat) (i : Nat) :
 theorem invalid_bills_error (bills : List Nat) :
   (∃ x ∈ bills, x ≠ 25 ∧ x ≠ 50 ∧ x ≠ 100) →
   tickets bills = "NO" := sorry
-
-/-
-info: 'YES'
--/
--- #guard_msgs in
--- #eval tickets [25, 25, 50]
-
-/-
-info: 'NO'
--/
--- #guard_msgs in
--- #eval tickets [25, 100]
-
-/-
-info: 'NO'
--/
--- #guard_msgs in
--- #eval tickets [25, 25, 50, 50, 100]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

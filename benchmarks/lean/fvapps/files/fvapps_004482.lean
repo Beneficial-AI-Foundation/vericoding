@@ -37,25 +37,4 @@ theorem bee_count_composition (hive : List (List Char))
   (∀ xs, pattern_count xs = how_many_bees [xs]) →
   how_many_bees hive ≥ 0 :=
 sorry
-
-/-
-info: 5
--/
--- #guard_msgs in
--- #eval how_many_bees [["b", "e", "e", ".", "b", "e", "e"], [".", "e", ".", ".", "e", ".", ".", " "], [".", "b", ".", ".", "e", "e", "b"]]
-
-/-
-info: 8
--/
--- #guard_msgs in
--- #eval how_many_bees [["b", "e", "e", ".", "b", "e", "e"], ["e", ".", "e", ".", "e", ".", "e"], ["e", "e", "b", ".", "e", "e", "b"]]
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval how_many_bees None
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

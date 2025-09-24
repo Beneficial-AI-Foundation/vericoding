@@ -57,6 +57,3 @@ theorem correctness
 := by
   sorry
 -- </vc-theorems>
-
--- #test implementation ['()(', ')'] = "Yes"
--- #test implementation [')', ')'] = "No"

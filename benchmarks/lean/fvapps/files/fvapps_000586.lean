@@ -39,25 +39,4 @@ theorem valid_chars (k : Nat) (k_pos : k > 0) :
   let result := findKDescendingPairs k
   ∀ c ∈ result, 97 ≤ c.toNat ∧ c.toNat ≤ 122 := 
 sorry
-
-/-
-info: 'ba'
--/
--- #guard_msgs in
--- #eval find_k_descending_pairs 1
-
-/-
-info: 'cba'
--/
--- #guard_msgs in
--- #eval find_k_descending_pairs 2
-
-/-
-info: 'dcba'
--/
--- #guard_msgs in
--- #eval find_k_descending_pairs 3
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

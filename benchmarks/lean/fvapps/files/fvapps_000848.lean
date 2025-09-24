@@ -38,25 +38,4 @@ theorem check_win_k_too_large
   (n a b : Nat)
   (h1 : 0 < n) (h2 : a ≤ n) (h3 : b ≤ n) (h4 : 0 < a) (h5 : 0 < b) :
   check_win n a b (n + 1) = "Lose" := sorry
-
-/-
-info: 'Win'
--/
--- #guard_msgs in
--- #eval check_win 6 2 3 3
-
-/-
-info: 'Win'
--/
--- #guard_msgs in
--- #eval check_win 10 2 3 4
-
-/-
-info: 'Lose'
--/
--- #guard_msgs in
--- #eval check_win 5 2 2 3
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

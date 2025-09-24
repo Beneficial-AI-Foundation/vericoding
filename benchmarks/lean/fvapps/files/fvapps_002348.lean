@@ -39,25 +39,4 @@ theorem valid_mountain {arr : List Int} {n peak_idx : Nat}
   (h5 : ∀ i j, peak_idx < i → i < j → j < n → arr.get! i > arr.get! j)
   (h6 : ∀ i j, i ≠ j → i < n → j < n → arr.get! i ≠ arr.get! j) :
   valid_mountain_array arr = true := sorry
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval valid_mountain_array [2, 1]
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval valid_mountain_array [3, 5, 5]
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval valid_mountain_array [0, 3, 2, 1]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

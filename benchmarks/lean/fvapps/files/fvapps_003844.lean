@@ -23,25 +23,4 @@ theorem underscore_only_strings (s : String) :
 
 theorem underscore_idempotent (s : String) :
   toUnderScore (toUnderScore s) = toUnderScore s := sorry
-
-/-
-info: 'This_Is_A_Unit_Test'
--/
--- #guard_msgs in
--- #eval toUnderScore "ThisIsAUnitTest"
-
-/-
-info: 'Calculate_15_Plus_5_Equals_20'
--/
--- #guard_msgs in
--- #eval toUnderScore "Calculate15Plus5Equals20"
-
-/-
-info: '_Underscore_Marked_Test_Name_'
--/
--- #guard_msgs in
--- #eval toUnderScore "_UnderscoreMarked_Test_Name_"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

@@ -55,25 +55,4 @@ theorem strange_coach_output_string
   (players : List String) :
   strange_coach players = "forfeit" ∨
   (∀ c ∈ (strange_coach players).toList, c.isAlpha) := sorry
-
-/-
-info: 'forfeit'
--/
--- #guard_msgs in
--- #eval strange_coach ["michael", "jordan", "lebron", "james", "kobe", "bryant"]
-
-/-
-info: 'bk'
--/
--- #guard_msgs in
--- #eval strange_coach ["babic", "keksic", "boric", "bukic", "sarmic", "balic", "kruzic", "hrenovkic", "beslic", "boksic", "krafnic", "pecivic", "klavirkovic", "kukumaric", "sunkic", "kolacic", "kovacic", "prijestolonasljednikovic"]
-
-/-
-info: 'b'
--/
--- #guard_msgs in
--- #eval strange_coach ["jgztazpytubijfsmjz", "bokvgratzzdibku", "qineboilzoqdqivc", "bfctyltibtkbxq", "vioxcuhqhikxeqwekqkjo", "nrvsdhttr", "eiaoajuwxpwmyliqikzcchid", "bxrwawgor", "gbsqaxotzmblxttj", "kwchrcaconuwaivhvnyf", "neiemapiica", "bppao", "bxujiwivsjfbqrzygpdgkyz", "jnzrhhmcgcpffflpzwmqib", "jhozlevckrrwimdmyzc", "bomojotkqqditelsk", "ywmbheywzfyqjjs", "snwrclyjkbspysjftcmyak", "eelrsgkuhu", "dnyzsvqjjuqoc"]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

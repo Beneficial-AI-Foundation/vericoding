@@ -1,54 +1,54 @@
 vc-description: |-
   /-
   In this Kata, you will count the number of times the first string occurs in the second. 
-  
+
   ```Haskell
   solve("zaz","zazapulz") = 4 because they are ZAZapulz, ZAzapulZ, ZazApulZ, zaZApulZ
   ```
-  
+
   More examples in test cases. 
-  
+
   Good luck!
-  
+
   Please also try [Simple time difference](https://www.codewars.com/kata/5b76a34ff71e5de9db0000f2)
   -/
 
-vc-preamble: |-
+vc-preamble: |
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def solve (pattern text : String) : Nat := sorry
-  
+
   theorem pattern_in_text : ∀ (pattern : String) (extra : String), 
     pattern.length > 0 → solve pattern (pattern ++ extra) ≥ 1 := sorry
 
 vc-theorems: |-
   theorem single_char_pattern : ∀ (c : Char) (text : String),
     solve (String.mk [c]) text = (text.data.filter (· = c)).length := sorry
-  
+
   theorem empty_text : ∀ (pattern : String),
     pattern.length > 1 → solve pattern "" = 0 := sorry
-  
-  /-
-  info: 4
-  -/
-  -- #guard_msgs in
-  -- #eval solve "zaz" "zazapulz"
-  
-  /-
-  info: 3
-  -/
-  -- #guard_msgs in
-  -- #eval solve "rat" "ratatoulie"
-  
-  /-
-  info: 7
-  -/
-  -- #guard_msgs in
-  -- #eval solve "kata" "katakatak"
 
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
+
+  /--
+  info: 4
+  -/
+  #guard_msgs in
+  #eval solve "zaz" "zazapulz"
+
+  /--
+  info: 3
+  -/
+  #guard_msgs in
+  #eval solve "rat" "ratatoulie"
+
+  /--
+  info: 7
+  -/
+  #guard_msgs in
+  #eval solve "kata" "katakatak"
 

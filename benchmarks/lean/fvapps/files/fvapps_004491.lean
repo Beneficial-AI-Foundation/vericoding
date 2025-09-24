@@ -1,7 +1,4 @@
 -- <vc-preamble>
-def group_groceries (input : String) : String :=
-  sorry
-
 inductive Category where
   | fruit : Category
   | meat : Category
@@ -14,60 +11,42 @@ structure GroceryItem where
   name : String
 deriving Repr
 
-def isValidCategoryName (name : String) : Bool :=  
-  sorry
+def length4 (s : List α) : Prop := s.length = 4
+
+inductive isSorted : List String → Prop where
+  | nil : isSorted []
+  | single : (x : String) → isSorted [x]
+  | cons : (x y : String) → (rest : List String) →
+          x <= y → isSorted (y::rest) → isSorted (x::y::rest)
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
-def length4 (s : List α) : Prop := s.length = 4
+def group_groceries (input : String) : String :=
+  sorry
 
-inductive isSorted : List String → Prop where
-  | nil : isSorted []
-  | single : (x : String) → isSorted [x] 
-  | cons : (x y : String) → (rest : List String) → 
-          x <= y → isSorted (y::rest) → isSorted (x::y::rest)
+def isValidCategoryName (name : String) : Bool :=
+  sorry
 -- </vc-definitions>
 
 -- <vc-theorems>
-theorem group_groceries_produces_four_lines (input : String) : 
+theorem group_groceries_produces_four_lines (input : String) :
   length4 ((group_groceries input).splitOn "\n") :=
-  sorry
+sorry
 
 theorem group_groceries_uses_expected_categories (input : String) :
   let lines := (group_groceries input).splitOn "\n"
   lines[0]!.startsWith "fruit:" ∧
-  lines[1]!.startsWith "meat:" ∧ 
+  lines[1]!.startsWith "meat:" ∧
   lines[2]!.startsWith "other:" ∧
   lines[3]!.startsWith "vegetable:" :=
-  sorry
+sorry
 
 theorem group_groceries_items_sorted (input : String) (i : Nat) :
   let lines := (group_groceries input).splitOn "\n"
   let items := (lines[i]!.splitOn ":")[1]!.splitOn ","
   items.length > 0 → isSorted items :=
-  sorry
-
-/-
-info: expected1
--/
--- #guard_msgs in
--- #eval group_groceries "fruit_banana,vegetable_carrot,meat_chicken,drink_juice"
-
-/-
-info: expected2
--/
--- #guard_msgs in
--- #eval group_groceries "fruit_banana,vegetable_carrot,fruit_apple,canned_sardines,drink_juice,fruit_orange"
-
-/-
-info: expected3
--/
--- #guard_msgs in
--- #eval group_groceries "fruit_orange"
+sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

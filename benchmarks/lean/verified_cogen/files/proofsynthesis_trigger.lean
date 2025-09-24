@@ -25,5 +25,3 @@ theorem getElementCheckProperty_spec_satisfied (arr : Array Nat) (i : Nat) (h_pr
     getElementCheckProperty_postcond arr i (getElementCheckProperty arr i h_precond) h_precond := by
   sorry
 -- </vc-theorems>
-
-/- Example usage and test cases would go here -/

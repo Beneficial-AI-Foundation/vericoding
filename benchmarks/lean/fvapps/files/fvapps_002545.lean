@@ -31,25 +31,4 @@ theorem no_order_invalid_exprs :
   no_order "5++5" = none ∧
   no_order "abc" = none ∧
   no_order "" = none := sorry
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval no_order "2 + 3- 4*1   ^  3"
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval no_order "7 *  3 - 3/  10  0"
-
-/-
-info: None
--/
--- #guard_msgs in
--- #eval no_order "6 9* 2+6 /  0"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

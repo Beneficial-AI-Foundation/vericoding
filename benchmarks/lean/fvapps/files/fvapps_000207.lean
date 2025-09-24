@@ -18,6 +18,3 @@ theorem maxUniqueSplit_aa :
 theorem maxUniqueSplit_aba :
   maxUniqueSplit "aba" = 2 := sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

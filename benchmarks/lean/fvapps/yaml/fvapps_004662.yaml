@@ -44,24 +44,15 @@ vc-description: |-
   * [Help Suzuki rake his garden!](https://www.codewars.com/kata/571c1e847beb0a8f8900153d)
   * [How many stairs will Suzuki climb in 20 years?](https://www.codewars.com/kata/56fc55cd1f5a93d68a001d4e)
   -/
-
-vc-preamble: |-
-
-vc-helpers: |-
-
-vc-definitions: |-
-  def lineup_students (input : String) : List String := sorry
   
   /-
     lineupStudentsLengthPreserved:
     For any list of students, the length of the output list
     equals the length of the input list
   -/
-
-vc-theorems: |-
-  theorem lineupStudentsLengthPreserved (input : String) (names : List String) :
-    names = lineup_students input → 
-    (lineup_students input).length = names.length := sorry
+  
+  -- Apps difficulty: introductory
+  -- Assurance level: unguarded
   
   /-
     lineupStudentsSorted:
@@ -70,56 +61,71 @@ vc-theorems: |-
     otherwise the first is longer than the second
   -/
   
-  theorem lineupStudentsSorted {result : List String} (i : Nat) (h : i + 1 < result.length) :
-    let a := result[i]!
-    let b := result[i+1]!
-    (a.length = b.length → a ≥ b) ∧
-    (a.length ≠ b.length → a.length > b.length) := sorry 
-  
   /-
     lineupStudentsPreservesElements:
     The output list contains exactly the same elements as the input
   -/
-  
-  theorem lineupStudentsPreservesElements (input : String) (names : List String) :
-    names = lineup_students input → 
-    ∀ x, (x ∈ names ↔ x ∈ lineup_students input) := sorry
   
   /-
     lineupStudentsSingleElement:
     A single name returns a singleton list with that name
   -/
   
-  theorem lineupStudentsSingleElement (name : String) :
-    lineup_students name = [name] := sorry
-  
   /-
     lineupStudentsEmpty:
     An empty string input returns an empty list
   -/
+
+vc-preamble: |-
+
+vc-helpers: |-
+
+vc-definitions: |-
+  def lineup_students (input : String) : List String :=
+  sorry
+
+vc-theorems: |-
+  theorem lineupStudentsLengthPreserved (input : String) (names : List String) :
+    names = lineup_students input →
+    (lineup_students input).length = names.length :=
+  sorry
+  
+  theorem lineupStudentsSorted {result : List String} (i : Nat) (h : i + 1 < result.length) :
+    let a := result[i]!
+    let b := result[i+1]!
+    (a.length = b.length → a ≥ b) ∧
+    (a.length ≠ b.length → a.length > b.length) :=
+  sorry
+  
+  theorem lineupStudentsPreservesElements (input : String) (names : List String) :
+    names = lineup_students input →
+    ∀ x, (x ∈ names ↔ x ∈ lineup_students input) :=
+  sorry
+  
+  theorem lineupStudentsSingleElement (name : String) :
+    lineup_students name = [name] :=
+  sorry
   
   theorem lineupStudentsEmpty :
-    lineup_students "" = [] := sorry
-  
-  /-
-  info: expected1
-  -/
-  -- #guard_msgs in
-  -- #eval lineup_students "Tadashi Takahiro Takao Takashi Takayuki Takehiko Takeo Takeshi Takeshi"
-  
-  /-
-  info: expected2
-  -/
-  -- #guard_msgs in
-  -- #eval lineup_students "xxa xxb xxc xxd xa xb xc xd"
-  
-  /-
-  info: expected3
-  -/
-  -- #guard_msgs in
-  -- #eval lineup_students "aaa bbb ccc"
+    lineup_students "" = [] :=
+  sorry
 
 vc-postamble: |-
-  -- Apps difficulty: introductory
-  -- Assurance level: unguarded
+  /--
+  info: expected1
+  -/
+  #guard_msgs in
+  #eval lineup_students "Tadashi Takahiro Takao Takashi Takayuki Takehiko Takeo Takeshi Takeshi"
+  
+  /--
+  info: expected2
+  -/
+  #guard_msgs in
+  #eval lineup_students "xxa xxb xxc xxd xa xb xc xd"
+  
+  /--
+  info: expected3
+  -/
+  #guard_msgs in
+  #eval lineup_students "aaa bbb ccc"
 

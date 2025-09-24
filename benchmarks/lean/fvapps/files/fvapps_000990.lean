@@ -22,6 +22,3 @@ theorem three_identity
   find_sequence nums.length nums = nums :=
 sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

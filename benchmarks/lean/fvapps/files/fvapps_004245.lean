@@ -38,25 +38,4 @@ theorem elements_sum_nonempty
                    | none => 0
       | none => 0) 0
   := sorry
-
-/-
-info: 16
--/
--- #guard_msgs in
--- #eval elements_sum [[3, 2, 1, 0], [4, 6, 5, 3, 2], [9, 8, 7, 4]]
-
-/-
-info: 15
--/
--- #guard_msgs in
--- #eval elements_sum [[3], [4, 6, 5, 3, 2], [9, 8, 7, 4]]
-
-/-
-info: 7
--/
--- #guard_msgs in
--- #eval elements_sum [[3, 2, 1, 0], [4, 6, 5, 3, 2], []]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

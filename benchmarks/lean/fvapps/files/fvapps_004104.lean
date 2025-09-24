@@ -36,31 +36,4 @@ theorem pigLatin_invalid_input
 
 theorem pigLatin_empty_input :
   pigLatin "" = none := sorry
-
-/-
-info: 'ellohay'
--/
--- #guard_msgs in
--- #eval pig_latin "Hello"
-
-/-
-info: 'ccccay'
--/
--- #guard_msgs in
--- #eval pig_latin "CCCC"
-
-/-
-info: None
--/
--- #guard_msgs in
--- #eval pig_latin "tes3t5"
-
-/-
-info: 'ayway'
--/
--- #guard_msgs in
--- #eval pig_latin "ay"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

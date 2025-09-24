@@ -19,25 +19,4 @@ theorem sort_by_name_permutation (arr : List Nat) :
 
 theorem sort_by_name_idempotent (arr : List Nat) :
   sort_by_name (sort_by_name arr) = sort_by_name arr := sorry
-
-/-
-info: [4, 1, 3, 2]
--/
--- #guard_msgs in
--- #eval sort_by_name [1, 2, 3, 4]
-
-/-
-info: []
--/
--- #guard_msgs in
--- #eval sort_by_name []
-
-/-
-info: [8, 8, 9, 9, 10, 10]
--/
--- #guard_msgs in
--- #eval sort_by_name [8, 8, 9, 9, 10, 10]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

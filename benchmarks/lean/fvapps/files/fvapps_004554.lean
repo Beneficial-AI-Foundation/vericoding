@@ -20,25 +20,4 @@ theorem case_insensitive (s : String) :
 
 theorem palindrome_reverse_property (s : String) :
   is_palindrome s = (s.toLower = (s.toLower).reverse) := sorry
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval is_palindrome "nope"
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval is_palindrome "Yay"
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval is_palindrome "racecar"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

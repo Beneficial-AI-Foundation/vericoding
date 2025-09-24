@@ -33,25 +33,4 @@ theorem similar_monsters_same_killing_method_werewolf_shapeshifter :
   let shapeshifterResult := bob "shapeshifter"
   werewolfResult.startsWith "Silver knife" ∧
   shapeshifterResult.startsWith "Silver knife" := by sorry
-
-/-
-info: 'Behead it with a machete, idjits!'
--/
--- #guard_msgs in
--- #eval bob "vampire"
-
-/-
-info: 'It depends on which one it is, idjits!'
--/
--- #guard_msgs in
--- #eval bob "pagan god"
-
-/-
-info: 'I have friggin no idea yet, idjits!'
--/
--- #guard_msgs in
--- #eval bob "werepuppy"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

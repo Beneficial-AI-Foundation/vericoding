@@ -84,8 +84,6 @@ vc-preamble: |-
     | Frame.mk n => n ≠ 0
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def translate_with_frame : DNA → List Frame → List Protein := sorry

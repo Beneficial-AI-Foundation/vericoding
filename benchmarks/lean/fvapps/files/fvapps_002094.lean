@@ -44,31 +44,4 @@ theorem solve_stone_game_equal_stones_even (n : Nat) :
 theorem solve_stone_game_equal_stones_odd (n : Nat) :
   n % 2 ≠ 0 →
   solve_stone_game n (List.replicate n 1) = "T" := sorry
-
-/-
-info: 'T'
--/
--- #guard_msgs in
--- #eval solve_stone_game 1 [2]
-
-/-
-info: 'HL'
--/
--- #guard_msgs in
--- #eval solve_stone_game 2 [1, 1]
-
-/-
-info: 'HL'
--/
--- #guard_msgs in
--- #eval solve_stone_game 4 [2, 3, 1, 2]
-
-/-
-info: 'HL'
--/
--- #guard_msgs in
--- #eval solve_stone_game 3 [2, 1, 1]
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: unguarded

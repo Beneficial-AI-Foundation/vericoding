@@ -1,18 +1,19 @@
 -- <vc-preamble>
-def penaltyShots (shots: Nat) (scores: List Nat) : Nat :=
-sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
+def penaltyShots (shots: Nat) (scores: List Nat) : Nat :=
+sorry
+
 def abs (n: Int) : Nat :=
 sorry
 -- </vc-definitions>
 
 -- <vc-theorems>
-theorem penalty_shots_score_range {shots score1 score2: Nat} 
+theorem penalty_shots_score_range {shots score1 score2: Nat}
   (h1: score1 ≤ shots) (h2: score2 ≤ shots)
   (h3: shots ≤ 20) (h4: score1 ≤ 20) (h5: score2 ≤ 20)
   (h6: abs (Int.subNatNat score1 score2) ≤ (if shots > 4 then 2 else 5 - shots + 1)) :
@@ -33,25 +34,4 @@ theorem penalty_shots_regular_rounds {shots score1 score2: Nat}
   let result := penaltyShots shots [score1, score2]
   0 ≤ result ∧ result ≤ (5 - shots + 1) :=
 sorry
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval penaltyShots 2 [1, 2]
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval penaltyShots 10 [10, 10]
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval penaltyShots 5 [5, 5]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

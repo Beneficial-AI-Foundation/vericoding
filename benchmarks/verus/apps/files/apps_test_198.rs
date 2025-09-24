@@ -23,13 +23,13 @@ spec fn valid_input(n: int) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: int) -> (result: int)
-    requires valid_input(n)
+fn solve(n: i8) -> (result: i8)
+    requires valid_input(n as int)
     ensures 
-        result == count_valid_rectangles(n) &&
-        (n % 2 == 1 ==> result == 0) &&
-        (n % 2 == 0 && n % 4 == 2 ==> result == n / 4) &&
-        (n % 2 == 0 && n % 4 == 0 ==> result == n / 4 - 1)
+        result as int == count_valid_rectangles(n as int) &&
+        (n as int % 2 == 1 ==> result as int == 0) &&
+        (n as int % 2 == 0 && n as int % 4 == 2 ==> result as int == n as int / 4) &&
+        (n as int % 2 == 0 && n as int % 4 == 0 ==> result as int == n as int / 4 - 1)
 // </vc-spec>
 // <vc-code>
 {

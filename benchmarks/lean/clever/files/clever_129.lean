@@ -47,7 +47,3 @@ theorem correctness
 : problem_spec implementation text := by
   sorry
 -- </vc-theorems>
-
--- #test implementation "Hello world!" = (some ["Hello", "world!"], none)
--- #test implementation "Hello,world!" = (some ["Hello", "world!"], none)
--- #test implementation "abcdef" = (none, some 3)

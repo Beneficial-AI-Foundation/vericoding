@@ -19,25 +19,4 @@ theorem numFactoredBinaryTrees_prime_numbers :
 
 theorem numFactoredBinaryTrees_perfect_squares :
   numFactoredBinaryTrees #[2, 4] > 2 := sorry
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval numFactoredBinaryTrees #[2, 4]
-
-/-
-info: 7
--/
--- #guard_msgs in
--- #eval numFactoredBinaryTrees #[2, 4, 5, 10]
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval numFactoredBinaryTrees #[2, 3]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

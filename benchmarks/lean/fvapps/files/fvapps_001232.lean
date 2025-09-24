@@ -36,6 +36,3 @@ theorem single_soldier_linear {n pos : Nat}
     v = if i ≥ pos then i - pos else pos - i :=
   sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

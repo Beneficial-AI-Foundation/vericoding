@@ -32,25 +32,4 @@ theorem power_of_two_not_alternating (n : Nat) :
 theorem alternating_bits_consistent (n : Nat) :
   let result := has_alternating_bits n
   has_alternating_bits n = result := sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval has_alternating_bits 5
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval has_alternating_bits 7
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval has_alternating_bits 10
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

@@ -28,25 +28,4 @@ theorem commutative {l w : Nat} (h1 : l > 0) (h2 : w > 0)
     (h3 : l ≤ 1000) (h4 : w ≤ 1000) :
   area_or_perimeter l w = area_or_perimeter w l :=
 sorry
-
-/-
-info: 16
--/
--- #guard_msgs in
--- #eval area_or_perimeter 4 4
-
-/-
-info: 32
--/
--- #guard_msgs in
--- #eval area_or_perimeter 6 10
-
-/-
-info: 9
--/
--- #guard_msgs in
--- #eval area_or_perimeter 3 3
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

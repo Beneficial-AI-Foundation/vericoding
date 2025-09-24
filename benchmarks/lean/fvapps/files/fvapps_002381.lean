@@ -41,25 +41,4 @@ theorem all_evens_returns_false {arr : List Int}
   (h : ∀ x ∈ arr, isEven x) :
   threeConsecutiveOdds arr = false :=
 sorry
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval three_consecutive_odds [2, 6, 4, 1]
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval three_consecutive_odds [1, 2, 34, 3, 4, 5, 7, 23, 12]
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval three_consecutive_odds [1, 3, 5, 2]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

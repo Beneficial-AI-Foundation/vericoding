@@ -28,15 +28,16 @@ vc-description: |-
   -/
 
 vc-preamble: |-
+
+vc-helpers: |-
+
+vc-definitions: |-
   def find_k_diff_pairs (nums : List Int) (k : Int) : Int :=
     sorry
   
   def countOccurrences (nums : List Int) (x : Int) : Nat :=
     sorry
-
-vc-helpers: |-
-
-vc-definitions: |-
+  
   def dedup (nums : List Int) : List Int :=
     sorry
 
@@ -60,26 +61,26 @@ vc-theorems: |-
     let subset := nums.take (nums.length / 2)
     find_k_diff_pairs subset k ≤ find_k_diff_pairs nums k :=
   sorry
-  
-  /-
-  info: 2
-  -/
-  -- #guard_msgs in
-  -- #eval find_k_diff_pairs [3, 1, 4, 1, 5] 2
-  
-  /-
-  info: 4
-  -/
-  -- #guard_msgs in
-  -- #eval find_k_diff_pairs [1, 2, 3, 4, 5] 1
-  
-  /-
-  info: 1
-  -/
-  -- #guard_msgs in
-  -- #eval find_k_diff_pairs [1, 3, 1, 5, 4] 0
 
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
+  
+  /--
+  info: 2
+  -/
+  #guard_msgs in
+  #eval find_k_diff_pairs [3, 1, 4, 1, 5] 2
+  
+  /--
+  info: 4
+  -/
+  #guard_msgs in
+  #eval find_k_diff_pairs [1, 2, 3, 4, 5] 1
+  
+  /--
+  info: 1
+  -/
+  #guard_msgs in
+  #eval find_k_diff_pairs [1, 3, 1, 5, 4] 0
 

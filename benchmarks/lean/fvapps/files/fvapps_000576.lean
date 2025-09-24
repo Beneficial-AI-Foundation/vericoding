@@ -32,25 +32,4 @@ sorry
 theorem dict_order_invariant : 
   solve_string_game "abcd" ["ab", "cd"] = solve_string_game "abcd" ["cd", "ab"] :=
 sorry
-
-/-
-info: 'Tracy'
--/
--- #guard_msgs in
--- #eval solve_string_game "codechef" ["code", "chef"]
-
-/-
-info: 'Tracy'
--/
--- #guard_msgs in
--- #eval solve_string_game "foo" ["bar"]
-
-/-
-info: 'Teddy'
--/
--- #guard_msgs in
--- #eval solve_string_game "mississippi" ["ssissi", "mippi", "mi", "ppi"]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

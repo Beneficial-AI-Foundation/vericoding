@@ -37,6 +37,3 @@ theorem recipe_scores_order_invariant (recipes: List String) (perm: List String)
   | _, _ => False
   := sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

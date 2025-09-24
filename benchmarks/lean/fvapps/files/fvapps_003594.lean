@@ -21,6 +21,3 @@ theorem obfuscate_reversible (email : String) :
 theorem obfuscate_empty :
   obfuscate "" = "" := sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

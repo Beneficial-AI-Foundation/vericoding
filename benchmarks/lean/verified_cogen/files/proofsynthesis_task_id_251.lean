@@ -23,5 +23,3 @@ theorem insertBeforeEach_spec_satisfied (arr : Array Int) (elem : Int) (h_precon
     insertBeforeEach_postcond (arr) (elem) (insertBeforeEach (arr) (elem) h_precond) h_precond := by
   sorry
 -- </vc-theorems>
-
-def main : IO Unit := pure ()

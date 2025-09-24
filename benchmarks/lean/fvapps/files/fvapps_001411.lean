@@ -33,25 +33,4 @@ theorem determine_college_substring_behavior (s1 s2: String) :
 theorem process_test_cases_valid_output (cases: List String) :
   ∀ r ∈ process_test_cases cases,
     r = "Both" ∨ r = "GCETTB" ∨ r = "GCETTS" ∨ r = "Others" := sorry
-
-/-
-info: expected1
--/
--- #guard_msgs in
--- #eval process_test_cases ["Government clg Berhampore", "SeRaMporE textile college", "Girls college Kolkata"]
-
-/-
-info: expected2
--/
--- #guard_msgs in
--- #eval process_test_cases ["Berhampore Serampore"]
-
-/-
-info: expected3
--/
--- #guard_msgs in
--- #eval process_test_cases ["random college"]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

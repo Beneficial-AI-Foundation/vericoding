@@ -20,6 +20,3 @@ theorem solve_basic_case_2 :
 theorem solve_repeated_number :
   solve_longest_segment 4 3 [2, 4, 4, 2] = 4 := sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

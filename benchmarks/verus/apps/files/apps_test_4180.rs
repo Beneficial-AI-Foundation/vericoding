@@ -21,11 +21,11 @@ spec fn correct_change(n: int) -> int
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: int) -> (change: int)
-    requires valid_input(n)
+fn solve(n: i8) -> (change: i8)
+    requires valid_input(n as int)
     ensures 
-        valid_change(change) &&
-        change == correct_change(n)
+        valid_change(change as int) &&
+        change as int == correct_change(n as int)
 // </vc-spec>
 // <vc-code>
 {

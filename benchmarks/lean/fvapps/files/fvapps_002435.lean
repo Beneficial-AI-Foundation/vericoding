@@ -29,25 +29,4 @@ theorem longest_word_is_maximal (words : List String)
       ∃ i, 1 ≤ i ∧ i < word.length ∧
       (∀ w ∈ words, word.take i ≠ w)) :=
 sorry
-
-/-
-info: 'world'
--/
--- #guard_msgs in
--- #eval longest_word ["w", "wo", "wor", "worl", "world"]
-
-/-
-info: 'apple'
--/
--- #guard_msgs in
--- #eval longest_word ["a", "banana", "app", "appl", "ap", "apply", "apple"]
-
-/-
-info: 'a'
--/
--- #guard_msgs in
--- #eval longest_word ["a", "b", "c"]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

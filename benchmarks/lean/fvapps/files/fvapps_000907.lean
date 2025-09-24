@@ -41,6 +41,3 @@ theorem same_position_invalid (col row : Char)
     let move := s!"{col}{row}-{col}{row}"
     is_valid_knight_move move = "No" := sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

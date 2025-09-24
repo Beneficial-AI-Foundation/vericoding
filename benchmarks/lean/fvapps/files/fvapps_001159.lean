@@ -34,31 +34,4 @@ sorry
 theorem min_coins_min_inputs :
   min_coins 1 1 = 1 ∧ min_coins 1 2 = 1 :=
 sorry
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval min_coins 2 2
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval min_coins 1 14
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval min_coins 30 10
-
-/-
-info: 9
--/
--- #guard_msgs in
--- #eval min_coins 31 4
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

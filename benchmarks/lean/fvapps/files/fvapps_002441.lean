@@ -25,25 +25,4 @@ theorem single_fraction_unchanged
 theorem empty_list_error
   (h: ¬∃ (x: Int × Nat), product [] = x):
   True := sorry
-
-/-
-info: (5, 8)
--/
--- #guard_msgs in
--- #eval product [(1, 2), (3, 4), (10, 6)]
-
-/-
-info: (1, 1)
--/
--- #guard_msgs in
--- #eval product [(1, 1)]
-
-/-
-info: (1, 1)
--/
--- #guard_msgs in
--- #eval product [(2, 3), (3, 2)]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

@@ -25,25 +25,4 @@ theorem output_is_nested (s: String) :
   let n := result.length
   (∀ (i: Nat), i < n/2 → ∃ (p: String.Pos), result.get p = '(') ∧
   (∀ (i: Nat), n/2 ≤ i ∧ i < n → ∃ (p: String.Pos), result.get p = ')') := sorry
-
-/-
-info: '((()))'
--/
--- #guard_msgs in
--- #eval find_minimal_parentheses "()((()()))"
-
-/-
-info: '(())'
--/
--- #guard_msgs in
--- #eval find_minimal_parentheses "(())"
-
-/-
-info: '(((())))'
--/
--- #guard_msgs in
--- #eval find_minimal_parentheses "(((())))"
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

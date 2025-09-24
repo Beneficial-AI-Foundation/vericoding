@@ -1,27 +1,28 @@
 -- <vc-preamble>
-def sqrt (n: Nat) : Nat :=
-sorry
-
-def isPerfectSquare (n: Nat) : Bool :=
-  match n with
-  | 0 => true 
-  | n + 1 => 
-    let sq := sqrt n
-    sq * sq = n
-
-def numSquarefulPerms (A: List Nat) : Nat :=
-sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
+def sqrt (n: Nat) : Nat :=
+sorry
+
+def numSquarefulPerms (A: List Nat) : Nat :=
+sorry
+
 def factorial (n: Nat) : Nat :=
 sorry
 -- </vc-definitions>
 
 -- <vc-theorems>
+def isPerfectSquare (n: Nat) : Bool :=
+  match n with
+  | 0 => true
+  | n + 1 =>
+    let sq := sqrt n
+    sq * sq = n
+
 theorem output_bounds
   (A: List Nat)
   (h1: ∀ x ∈ A, 1 ≤ x ∧ x ≤ 100) :
@@ -29,7 +30,7 @@ theorem output_bounds
   0 ≤ result ∧ result ≤ factorial A.length :=
 sorry
 
-theorem valid_permutations 
+theorem valid_permutations
   (A: List Nat)
   (h1: A.length ≥ 2)
   (h2: ∀ x ∈ A, 1 ≤ x ∧ x ≤ 100)
@@ -39,11 +40,11 @@ sorry
 
 theorem identical_elements
   (A: List Nat)
-  (h1: A.length > 0) 
+  (h1: A.length > 0)
   (h2: ∀ x ∈ A, 1 ≤ x ∧ x ≤ 100)
   (x: Nat)
   (h3: x = A[0]!) :
-  numSquarefulPerms (List.replicate A.length x) = 0 ∨ 
+  numSquarefulPerms (List.replicate A.length x) = 0 ∨
   numSquarefulPerms (List.replicate A.length x) = 1 :=
 sorry
 
@@ -53,25 +54,4 @@ theorem sorting_invariance
   (h2: ∀ x ∈ A, 1 ≤ x ∧ x ≤ 100) :
   numSquarefulPerms A = numSquarefulPerms (List.reverse A) :=
 sorry
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval numSquarefulPerms [1, 17, 8]
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval numSquarefulPerms [2, 2, 2]
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval numSquarefulPerms [1, 1]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

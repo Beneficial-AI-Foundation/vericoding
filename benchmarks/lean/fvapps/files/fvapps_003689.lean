@@ -26,25 +26,4 @@ theorem values_edge_cases :
 theorem values_small_range (n : Nat) :
   n > 0 → n ≤ 1000 → values n ≥ 0 :=
   sorry
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval values 100
-
-/-
-info: 11
--/
--- #guard_msgs in
--- #eval values 1000
-
-/-
-info: 30
--/
--- #guard_msgs in
--- #eval values 100000
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

@@ -12,18 +12,4 @@ theorem booleanToString_is_str (b : Bool) :
 -- </vc-definitions>
 
 -- <vc-theorems>
-/-
-info: 'True'
--/
--- #guard_msgs in
--- #eval boolean_to_string True
-
-/-
-info: 'False'
--/
--- #guard_msgs in
--- #eval boolean_to_string False
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

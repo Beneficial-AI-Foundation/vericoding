@@ -1,15 +1,16 @@
 -- <vc-preamble>
-def sumOfSquares (l : List Int) : Int :=
-  sorry
-
-def sumOfCubes (l : List Int) : Int :=
-  sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
+def sumOfSquares (l : List Int) : Int :=
+  sorry
+
+def sumOfCubes (l : List Int) : Int :=
+  sorry
+
 def array_madness (a b : List Int) : Bool :=
   sorry
 -- </vc-definitions>
@@ -17,7 +18,7 @@ def array_madness (a b : List Int) : Bool :=
 -- <vc-theorems>
 theorem array_madness_correct (a b : List Int) (h1 : a.length > 0) (h2 : b.length > 0) :
   array_madness a b = (sumOfSquares a > sumOfCubes b) :=
-  sorry
+sorry
 
 theorem small_numbers_property
     (a b : List Int)
@@ -27,26 +28,5 @@ theorem small_numbers_property
     (hb : ∀ x ∈ b, 1 ≤ x ∧ x ≤ 10)
     (h : sumOfSquares a ≤ sumOfCubes b) :
   array_madness a b = false :=
-  sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval array_madness [4, 5, 6] [1, 2, 3]
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval array_madness [1, 2] [2, 3]
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval array_madness [5, 6, 7] [1, 1, 1]
+sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

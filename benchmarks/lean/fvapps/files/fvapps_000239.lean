@@ -44,25 +44,4 @@ theorem flipgame_two_different_numbers (n1 n2 : Nat) :
   n2 > 0 →
   flipgame [n1] [n2] = min n1 n2 :=
 sorry
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval flipgame [1, 2, 4, 4, 7] [1, 3, 4, 1, 3]
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval flipgame [1, 1] [1, 1]
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval flipgame [1, 2] [2, 1]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

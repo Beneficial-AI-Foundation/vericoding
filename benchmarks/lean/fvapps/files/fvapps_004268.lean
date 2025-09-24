@@ -33,6 +33,3 @@ theorem tribonacci_monotonic (signature : List Int) (i : Nat) :
   i ≥ 3 → i < (tribonacci signature 10).length - 1 →
   (tribonacci signature 10).get! i ≤ (tribonacci signature 10).get! (i+1) := sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

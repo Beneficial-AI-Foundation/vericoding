@@ -30,25 +30,4 @@ theorem poisoned_duration_properties
 theorem duration_monotonicity
   (time_series : List Int) :
   find_poisoned_duration time_series 1 ≤ find_poisoned_duration time_series 2 := sorry
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval find_poisoned_duration [1, 4] 2
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval find_poisoned_duration [1, 2] 2
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval find_poisoned_duration [] 5
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

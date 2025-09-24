@@ -27,25 +27,4 @@ theorem all_letters_simple_reverse (s : String) :
 
 theorem no_letters_unchanged (s : String) :
   (∀ c ∈ s.data, ¬(isAlpha c)) → reverseOnlyLetters s = s := sorry
-
-/-
-info: 'dc-ba'
--/
--- #guard_msgs in
--- #eval reverse_only_letters "ab-cd"
-
-/-
-info: 'j-Ih-gfE-dCba'
--/
--- #guard_msgs in
--- #eval reverse_only_letters "a-bC-dEf-ghIj"
-
-/-
-info: 'Qedo1ct-eeLg=ntse-T!'
--/
--- #guard_msgs in
--- #eval reverse_only_letters "Test1ng-Leet=code-Q!"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

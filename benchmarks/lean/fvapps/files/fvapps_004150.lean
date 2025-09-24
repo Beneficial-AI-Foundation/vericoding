@@ -37,25 +37,4 @@ theorem find_spaceship_single_dot :
 
 theorem find_spaceship_single_x :
   find_spaceship "X" = Sum.inr (0, 0) := sorry
-
-/-
-info: [7, 2]
--/
--- #guard_msgs in
--- #eval find_spaceship "..........\n..........\n.......X..\n..........\n.........."
-
-/-
-info: [0, 0]
--/
--- #guard_msgs in
--- #eval find_spaceship ".......\nX......."
-
-/-
-info: 'Spaceship lost forever.'
--/
--- #guard_msgs in
--- #eval find_spaceship "........................"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

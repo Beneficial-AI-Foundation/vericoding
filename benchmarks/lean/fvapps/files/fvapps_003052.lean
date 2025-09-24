@@ -23,25 +23,4 @@ theorem divide_positive_cases (weight : Int) (h1 : weight > 2) (h2 : weight % 2 
 
 theorem divide_negative_cases (weight : Int) (h : weight ≤ 2 ∨ weight % 2 ≠ 0) :
   divide weight = false := sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval divide 4
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval divide 2
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval divide 5
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

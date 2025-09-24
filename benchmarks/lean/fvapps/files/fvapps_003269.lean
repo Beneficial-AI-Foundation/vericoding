@@ -26,25 +26,4 @@ theorem output_differs_by_at_most_one_bit
   let result := correct m n bits
   let diffs := (List.zip bits.data result.data).filter (fun p => p.1 ≠ p.2)
   diffs.length ≤ 1 := sorry
-
-/-
-info: '111'
--/
--- #guard_msgs in
--- #eval correct 1 1 "111"
-
-/-
-info: '11111010001'
--/
--- #guard_msgs in
--- #eval correct 2 3 "11011010001"
-
-/-
-info: '111'
--/
--- #guard_msgs in
--- #eval correct 1 1 "110"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

@@ -48,6 +48,3 @@ theorem same_points_full_intersection
   (calculate_square_intersection a 0 1 1 1 - a*a).abs < 0.001 :=
 sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

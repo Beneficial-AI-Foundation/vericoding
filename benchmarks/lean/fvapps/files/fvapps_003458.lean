@@ -39,25 +39,4 @@ theorem diff_symmetric {α} (a b : List α) :
 theorem diff_identity {α} (xs : List α) :
   List.diff xs xs = []
   := sorry
-
-/-
-info: []
--/
--- #guard_msgs in
--- #eval diff ["a", "b"] ["a", "b"]
-
-/-
-info: []
--/
--- #guard_msgs in
--- #eval diff [] []
-
-/-
-info: ['a', 'e', 'g', 'j', 'k']
--/
--- #guard_msgs in
--- #eval diff ["a", "a", "t", "e", "f", "i", "j"] ["t", "g", "g", "i", "k", "f"]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

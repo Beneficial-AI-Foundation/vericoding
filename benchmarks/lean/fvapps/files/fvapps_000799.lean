@@ -26,25 +26,4 @@ theorem can_complete_task_with_one (n : Nat) (h : n > 0) :
 
 theorem can_complete_task_same_number (n : Nat) (h : n > 0) :
     can_complete_task n n = (if n = 1 then "YES" else "NO") := sorry
-
-/-
-info: 'YES'
--/
--- #guard_msgs in
--- #eval can_complete_task 1 2
-
-/-
-info: 'YES'
--/
--- #guard_msgs in
--- #eval can_complete_task 2 3
-
-/-
-info: 'NO'
--/
--- #guard_msgs in
--- #eval can_complete_task 4 6
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

@@ -37,6 +37,3 @@ theorem find_max_repeating_sorted {arr : List Int} (h : arr ≠ []) (h2 : arr.so
   let head := arr.head h
   (arr.filter (· = head)).length = count → val = head := sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

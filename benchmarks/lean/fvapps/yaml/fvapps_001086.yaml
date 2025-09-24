@@ -1,27 +1,27 @@
 vc-description: |-
   /-
   Chef has decided to start home delivery from his restaurant. He hopes that he will get a lot of orders for delivery, however there is a concern. He doesn't have enough work forces for all the deliveries.  For this he has came up with an idea - he will group together all those orders which have to be delivered in nearby areas. 
-  
+
   In particular, he has identified certain bidirectional roads which he calls as fast roads. They are short and usually traffic free, so the fast travel is possible along these roads. His plan is that he will send orders to locations A and B together if and only if it is possible to travel between A and B using only fast roads. Your task is, given the configuration of fast roads, identify which orders are to be sent together.
-  
+
   -----Input-----
   First line of input contains an integer T, the number of test cases. Then T test cases follow. First line of each test case contains two space separated integers N and M, denoting number of locations and the number of fast roads. Then M lines follow each containing two space separated integers A and B, denoting that there is a fast road between locations A and B. Assume that locations are indexed by numbers from 0 to N-1. 
-  
+
   Next line contains an integer Q denoting the number of queries. Each of the next Q lines contain two integers X and Y. For each query you have to find out if orders meant for locations X and Y are to be sent together or not.
-  
+
   Note that there might be multiple fast roads between same pair of locations, also there might be a fast road that links a location to itself.
-  
+
   -----Output-----
   For each test case print Q lines - one for each query. Output "YO" if the orders are to be 
   delivered together and "NO" otherwise (quotes for clarity).
-  
+
   -----Constraints-----
   1 ≤ T ≤ 100
   1 ≤ N ≤ 100
   1 ≤ M ≤ 1000
   0 ≤ A, B, X, Y ≤ N-1
   1 ≤ Q ≤ 3000
-  
+
   -----Example-----
   Input:
   1
@@ -32,19 +32,19 @@ vc-description: |-
   0 2
   0 3
   2 1
-  
+
   Output:
   YO
   NO
   YO
-  
+
   -----Warning!-----
   There are large input and output files in this problem. Make sure you use fast enough I/O methods.
   -/
 
-vc-preamble: |-
+vc-preamble: |
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def solve_delivery_problem (n m : Nat) (roads : List (Nat × Nat)) (deliveries : List (Nat × Nat)) : List String :=
@@ -54,35 +54,35 @@ vc-theorems: |-
   theorem delivery_reflexive {n m : Nat} {roads : List (Nat × Nat)} {i : Nat} (h : i < n) :
     (solve_delivery_problem n m roads [(i,i)]).head! = "YO" :=
     sorry
-  
+
   theorem delivery_symmetric {n m : Nat} {roads : List (Nat × Nat)} {x y : Nat} 
     (hx : x < n) (hy : y < n) :
     solve_delivery_problem n m roads [(x,y)] = solve_delivery_problem n m roads [(y,x)] :=
     sorry
-  
+
   theorem empty_roads_only_self_reachable {n : Nat} {i j : Nat} (hi : i < n) (hj : j < n) :
     solve_delivery_problem n 0 [] [(i,j)] = ["YO"] ↔ i = j :=
     sorry
-  
+
   theorem valid_output_format {n m : Nat} {roads : List (Nat × Nat)} {x y : Nat} 
     (hx : x < n) (hy : y < n) :
     (solve_delivery_problem n m roads [(x,y)]).head! = "YO" ∨ 
     (solve_delivery_problem n m roads [(x,y)]).head! = "NO" :=
     sorry
-  
-  /-
-  info: ['YO', 'NO', 'YO']
-  -/
-  -- #guard_msgs in
-  -- #eval solve_delivery_problem 4 2 [(0, 1), (1, 2)] [(0, 2), (0, 3), (2, 1)]
-  
-  /-
-  info: ['YO']
-  -/
-  -- #guard_msgs in
-  -- #eval solve_delivery_problem 3 2 [(0, 1), (1, 2)] [(0, 2)]
 
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
+
+  /--
+  info: ['YO', 'NO', 'YO']
+  -/
+  #guard_msgs in
+  #eval solve_delivery_problem 4 2 [(0, 1), (1, 2)] [(0, 2), (0, 3), (2, 1)]
+
+  /--
+  info: ['YO']
+  -/
+  #guard_msgs in
+  #eval solve_delivery_problem 3 2 [(0, 1), (1, 2)] [(0, 2)]
 

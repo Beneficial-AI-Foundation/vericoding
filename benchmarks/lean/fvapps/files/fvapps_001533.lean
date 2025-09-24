@@ -44,25 +44,4 @@ theorem can_form_army_boundary_1 :
 
 theorem can_form_army_boundary_2 :
   can_form_army 100 100 100 = "Yes" := sorry
-
-/-
-info: 'Yes'
--/
--- #guard_msgs in
--- #eval can_form_army 1 2 1
-
-/-
-info: 'No'
--/
--- #guard_msgs in
--- #eval can_form_army 1 1 3
-
-/-
-info: 'Yes'
--/
--- #guard_msgs in
--- #eval can_form_army 2 2 2
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

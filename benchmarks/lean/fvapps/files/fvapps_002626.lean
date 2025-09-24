@@ -29,25 +29,4 @@ theorem interleave_empty_left {α : Type} :
 
 theorem interleave_empty_right {α : Type} :
   interleave [] ([] : List α) = [] := by sorry
-
-/-
-info: [1, 'c', 2, 'd', 3, 'e']
--/
--- #guard_msgs in
--- #eval interleave [1, 2, 3] ["c", "d", "e"]
-
-/-
-info: [1, 4, 2, 5, 3, None]
--/
--- #guard_msgs in
--- #eval interleave [1, 2, 3] [4, 5]
-
-/-
-info: [1, 4, 7, 2, 5, 8, 3, 6, 9]
--/
--- #guard_msgs in
--- #eval interleave [1, 2, 3] [4, 5, 6] [7, 8, 9]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

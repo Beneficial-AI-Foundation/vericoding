@@ -34,25 +34,4 @@ sorry
 theorem insert_dash_reversible : ∀ n : Nat,
   (String.toNat! ((insert_dash n).replace "-" "")) = n :=
 sorry
-
-/-
-info: '4547-9-3'
--/
--- #guard_msgs in
--- #eval insert_dash 454793
-
-/-
-info: '123456'
--/
--- #guard_msgs in
--- #eval insert_dash 123456
-
-/-
-info: '1-3-5-7-9'
--/
--- #guard_msgs in
--- #eval insert_dash 13579
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

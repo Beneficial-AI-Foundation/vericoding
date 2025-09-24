@@ -23,25 +23,4 @@ theorem geometric_sequence_correct {a r n : Int} (h : n > 0) (hr : r ≠ 0) :
 -- <vc-theorems>
 theorem single_term_sequence {a r : Int} (hr : r ≠ 0) :
   geometric_sequence_elements a r 1 = toString a := sorry
-
-/-
-info: '2, 6, 18, 54, 162'
--/
--- #guard_msgs in
--- #eval geometric_sequence_elements 2 3 5
-
-/-
-info: '2, 4, 8, 16, 32, 64, 128, 256, 512, 1024'
--/
--- #guard_msgs in
--- #eval geometric_sequence_elements 2 2 10
-
-/-
-info: '1, -2, 4, -8, 16, -32, 64, -128, 256, -512'
--/
--- #guard_msgs in
--- #eval geometric_sequence_elements 1 -2 10
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

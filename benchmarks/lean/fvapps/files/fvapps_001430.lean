@@ -24,25 +24,4 @@ theorem robbery_prob_consistent (n : Nat) (h : n > 0) :
 
 theorem robbery_prob_monotonic (n : Nat) (h : n > 1) :
   (calc_robbery_probability (n-1)).2 ≤ (calc_robbery_probability n).2 := sorry
-
-/-
-info: (1, 1)
--/
--- #guard_msgs in
--- #eval calc_robbery_probability 1
-
-/-
-info: (1, 10)
--/
--- #guard_msgs in
--- #eval calc_robbery_probability 2
-
-/-
-info: (1, 10)
--/
--- #guard_msgs in
--- #eval calc_robbery_probability 3
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

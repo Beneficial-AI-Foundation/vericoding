@@ -23,25 +23,4 @@ theorem solve_arena_upper_bound (n: Nat) (h: n > 0):
 
 theorem solve_arena_base_cases:
   solve_arena_of_greed 1 = 1 ∧ solve_arena_of_greed 2 = 1 := sorry
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval solve_arena_of_greed 5
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval solve_arena_of_greed 6
-
-/-
-info: 5
--/
--- #guard_msgs in
--- #eval solve_arena_of_greed 8
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

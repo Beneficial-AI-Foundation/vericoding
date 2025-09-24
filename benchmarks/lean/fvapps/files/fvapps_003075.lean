@@ -1,12 +1,13 @@
 -- <vc-preamble>
-def my_crib (n : Nat) : String :=
-  sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
+def my_crib (n : Nat) : String :=
+  sorry
+
 def splitLines (s : String) : List String :=
   sorry
 -- </vc-definitions>
@@ -40,25 +41,4 @@ theorem crib_bottom_line {n : Nat} (h : 1 ≤ n ∧ n ≤ 10) :
   let lines := splitLines (my_crib n)
   ∀ last_line, lines.getLast? = some last_line → last_line.contains '_' :=
 sorry
-
-/-
-info: expected1
--/
--- #guard_msgs in
--- #eval my_crib 1
-
-/-
-info: expected2
--/
--- #guard_msgs in
--- #eval my_crib 2
-
-/-
-info: expected3
--/
--- #guard_msgs in
--- #eval my_crib 3
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

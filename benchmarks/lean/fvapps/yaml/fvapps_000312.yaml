@@ -39,57 +39,64 @@ vc-description: |-
   -/
 
 vc-preamble: |-
-  def minOperations (nums : List Nat) : Nat := sorry
-  
-  theorem minOperations_nonnegative (nums : List Nat) : 
-    minOperations nums ≥ 0 := sorry
+  def maxList : List Nat → Nat
+    | [] => 0
+    | (x::xs) => max x (maxList xs)
 
 vc-helpers: |-
 
 vc-definitions: |-
-  def maxList : List Nat → Nat 
-    | [] => 0
-    | (x::xs) => max x (maxList xs)
+  def minOperations (nums : List Nat) : Nat :=
+  sorry
 
 vc-theorems: |-
+  theorem minOperations_nonnegative (nums : List Nat) :
+    minOperations nums ≥ 0 :=
+  sorry
+  
   theorem minOperations_at_least_nonzero_count (nums : List Nat) :
-    minOperations nums ≥ (nums.filter (λ x => x > 0)).length := sorry
+    minOperations nums ≥ (nums.filter (λ x => x > 0)).length :=
+  sorry
   
   theorem minOperations_at_least_max_bits (nums : List Nat) :
-    nums.length > 0 → nums ≠ [] → 
-    minOperations nums ≥ (String.length (toString (maxList nums))).pred := sorry
+    nums.length > 0 → nums ≠ [] →
+    minOperations nums ≥ (String.length (toString (maxList nums))).pred :=
+  sorry
   
   theorem minOperations_all_zeros (nums : List Nat) :
-    (∀ x ∈ nums, x = 0) → minOperations nums = 0 := sorry
+    (∀ x ∈ nums, x = 0) → minOperations nums = 0 :=
+  sorry
   
   theorem minOperations_nonzero_lower_bound (nums : List Nat) :
-    (∀ x ∈ nums, x > 0) → minOperations nums ≥ nums.length := sorry
+    (∀ x ∈ nums, x > 0) → minOperations nums ≥ nums.length :=
+  sorry
   
   theorem minOperations_powers_two_bound (nums : List Nat) (max : Nat) :
-    nums.length > 0 → 
+    nums.length > 0 →
     (∀ x ∈ nums, ∃ n, x = 2^n) →
     max = maxList nums →
-    minOperations nums ≤ (String.length (toString max)) + nums.length := sorry
-  
-  /-
-  info: 5
-  -/
-  -- #guard_msgs in
-  -- #eval minOperations [1, 5]
-  
-  /-
-  info: 3
-  -/
-  -- #guard_msgs in
-  -- #eval minOperations [2, 2]
-  
-  /-
-  info: 6
-  -/
-  -- #guard_msgs in
-  -- #eval minOperations [4, 2, 5]
+    minOperations nums ≤ (String.length (toString max)) + nums.length :=
+  sorry
 
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
+  
+  /--
+  info: 5
+  -/
+  #guard_msgs in
+  #eval minOperations [1, 5]
+  
+  /--
+  info: 3
+  -/
+  #guard_msgs in
+  #eval minOperations [2, 2]
+  
+  /--
+  info: 6
+  -/
+  #guard_msgs in
+  #eval minOperations [4, 2, 5]
 

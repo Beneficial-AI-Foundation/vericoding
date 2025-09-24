@@ -30,25 +30,4 @@ theorem permutation_invariant (points points' : Points) :
   points.length = points'.length →
   (∀ p, List.elem p points ↔ List.elem p points') →
   countEqualDistances points = countEqualDistances points' := sorry
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval count_equal_distances [[1, 1], [7, 5], [1, 5]]
-
-/-
-info: 11
--/
--- #guard_msgs in
--- #eval count_equal_distances [[0, 0], [0, 1], [0, 2], [-1, 1], [0, 1], [1, 1]]
-
-/-
-info: 33
--/
--- #guard_msgs in
--- #eval count_equal_distances [[46, -55], [46, 45], [46, 45], [83, -55], [46, 45], [83, -55], [46, 45], [83, 45], [83, 45], [46, -55]]
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: guarded

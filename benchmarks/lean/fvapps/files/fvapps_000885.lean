@@ -43,19 +43,4 @@ theorem calculate_scale_plays_invalid
   (h : scale_type ≠ C ∧ scale_type ≠ TS) :
   ¬∃ (result : Nat), calculate_scale_plays scale_type octaves = result :=
 sorry
-
-/-
-info: 13
--/
--- #guard_msgs in
--- #eval calculate_scale_plays "C" 2
-
-/-
-info: 21
--/
--- #guard_msgs in
--- #eval calculate_scale_plays "TS" 2
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

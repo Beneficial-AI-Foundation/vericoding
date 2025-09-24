@@ -35,6 +35,3 @@ theorem all_negative_one_has_solution (n : Nat) (h : n % 2 = 0) :
     ∀ x ∈ roads, x = 1) :=
 sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

@@ -39,6 +39,3 @@ theorem bhima_winning_positions :
   get_winner 9 = "Bhima" :=
   sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

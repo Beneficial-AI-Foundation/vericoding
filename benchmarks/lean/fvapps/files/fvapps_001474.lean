@@ -29,25 +29,4 @@ theorem calc_layer_sum_same_digits (d : Nat) :
 theorem calc_layer_sum_order_indep :
   calc_layer_sum 2 [1, 2] = calc_layer_sum 2 [2, 1] :=
   sorry
-
-/-
-info: 2220
--/
--- #guard_msgs in
--- #eval calc_layer_sum 3 [2, 3, 5]
-
-/-
-info: 33
--/
--- #guard_msgs in
--- #eval calc_layer_sum 2 [1, 2]
-
-/-
-info: 5
--/
--- #guard_msgs in
--- #eval calc_layer_sum 1 [5]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

@@ -15,6 +15,3 @@ theorem ulam_sequence_length {u v n: Nat} (h: u < v):
 theorem ulam_sequence_deterministic {u v n: Nat} (h: u < v):
   ulam_sequence u v n = ulam_sequence u v n := sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

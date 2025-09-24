@@ -30,6 +30,3 @@ theorem half_life_exact_halving (n0 : Float) (num_halvings : Int)
   let n := n0 * (Float.pow 0.5 (Float.ofInt num_halvings))
   half_life n0 n num_halvings = 1.0 := sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

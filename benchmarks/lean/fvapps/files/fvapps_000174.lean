@@ -32,25 +32,4 @@ theorem min_window_single_char {s t : String} (h1 : t.length = 1) :
 theorem min_window_length_bounds {s t : String} :
   (min_window s t).length ≤ s.length ∧ 
   (min_window s t ≠ "" → (min_window s t).length ≥ t.data.eraseDups.length) := sorry
-
-/-
-info: 'BANC'
--/
--- #guard_msgs in
--- #eval min_window "ADOBECODEBANC" "ABC"
-
-/-
-info: 'A'
--/
--- #guard_msgs in
--- #eval min_window "AAAA" "A"
-
-/-
-info: ''
--/
--- #guard_msgs in
--- #eval min_window "ABCD" "XY"
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

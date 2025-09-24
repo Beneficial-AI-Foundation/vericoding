@@ -44,25 +44,4 @@ theorem fly_by_minimal_drone {lamps : String}
   let result := fly_by lamps "T"
   result.get! 0 = 'o' ∧ 
   result.drop 1 = lamps.drop 1 := sorry
-
-/-
-info: 'ooooox'
--/
--- #guard_msgs in
--- #eval fly_by "xxxxxx" "====T"
-
-/-
-info: 'oooxxxxxx'
--/
--- #guard_msgs in
--- #eval fly_by "xxxxxxxxx" "==T"
-
-/-
-info: 'ooooooooooxxxxx'
--/
--- #guard_msgs in
--- #eval fly_by "xxxxxxxxxxxxxxx" "=========T"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

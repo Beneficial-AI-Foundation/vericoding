@@ -23,25 +23,4 @@ theorem nthterm_linear
 theorem nthterm_additive 
   (first n1 n2 c : Int) (h1 : n1 ≥ 0) (h2 : n2 ≥ 0) :
   nthterm first (n1 + n2) c = nthterm (nthterm first n1 c) n2 c := sorry
-
-/-
-info: 7
--/
--- #guard_msgs in
--- #eval nthterm 1 2 3
-
-/-
-info: 8
--/
--- #guard_msgs in
--- #eval nthterm 2 3 2
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval nthterm 0 4 1
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

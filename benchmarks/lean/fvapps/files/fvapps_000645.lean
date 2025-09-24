@@ -24,25 +24,4 @@ sorry
 theorem symmetric_case (n : Nat) (h : n > 0) :
   solve_ipl_rooms n n 1 = solve_ipl_rooms n n 1 :=
 sorry
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval solve_ipl_rooms 2 1 4
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval solve_ipl_rooms 2 4 4
-
-/-
-info: 10
--/
--- #guard_msgs in
--- #eval solve_ipl_rooms 2 5 4
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

@@ -49,25 +49,4 @@ theorem impossible_words_zero_score (words: List Word) (letters: List Letter) (s
   (h2: ∃ w ∈ words, ∃ c ∈ w.data, c ≠ 'x')
   (h3: scores.length = 26) :
   max_score_words words letters scores = 0 := sorry
-
-/-
-info: 23
--/
--- #guard_msgs in
--- #eval max_score_words ["dog", "cat", "dad", "good"] ["a", "a", "c", "d", "d", "d", "g", "o", "o"] [1, 0, 9, 5, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-
-/-
-info: 27
--/
--- #guard_msgs in
--- #eval max_score_words ["xxxz", "ax", "bx", "cx"] ["z", "a", "b", "c", "x", "x", "x"] [4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 0, 10]
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval max_score_words ["leetcode"] ["l", "e", "t", "c", "o", "d"] [0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

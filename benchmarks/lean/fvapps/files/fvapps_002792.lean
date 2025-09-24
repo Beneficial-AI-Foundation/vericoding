@@ -25,25 +25,4 @@ theorem solve_div_one {nums : List Int} :
 
 theorem solve_empty {div : Int} (h : div > 0) :
   solve [] div = [] := sorry
-
-/-
-info: expected1
--/
--- #guard_msgs in
--- #eval solve [2, 7, 5, 9, 100, 34, 32, 0] 3
-
-/-
-info: expected2
--/
--- #guard_msgs in
--- #eval solve [] 2
-
-/-
-info: expected3
--/
--- #guard_msgs in
--- #eval solve [1000, 999, 998, 997] 5
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

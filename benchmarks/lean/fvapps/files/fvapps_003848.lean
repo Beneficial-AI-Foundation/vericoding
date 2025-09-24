@@ -29,25 +29,4 @@ theorem pattern_valid_properties {n : Int} (h : n > 0) :
   -- Top half equals reversed bottom half
   (lines.take n.toNat = (lines.drop (n-1).toNat).reverse)
   := sorry
-
-/-
-info: expected
--/
--- #guard_msgs in
--- #eval pattern 3
-
-/-
-info: ''
--/
--- #guard_msgs in
--- #eval pattern 0
-
-/-
-info: expected
--/
--- #guard_msgs in
--- #eval pattern 2
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

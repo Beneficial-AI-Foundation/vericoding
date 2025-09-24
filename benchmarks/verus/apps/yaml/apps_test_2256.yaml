@@ -29,11 +29,11 @@ vc-preamble: |-
 vc-helpers: |
 
 vc-spec: |-
-  fn solve_rival_distance(n: int, x: int, a: int, b: int) -> (result: int)
+  fn solve_rival_distance(n: i8, x: i8, a: i8, b: i8) -> (result: i8)
       requires
-          valid_input(n, x, a, b),
+          valid_input(n as int, x as int, a as int, b as int),
       ensures
-          valid_result(n, x, a, b, result),
+          valid_result(n as int, x as int, a as int, b as int, result as int),
           result >= 0,
 
 vc-code: |-

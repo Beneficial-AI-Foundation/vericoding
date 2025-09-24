@@ -47,6 +47,3 @@ theorem expected_sweetness_order_invariant
     compute_expected_sweetness n candies - compute_expected_sweetness n candies.reverse < ε ∧
     compute_expected_sweetness n candies.reverse - compute_expected_sweetness n candies < ε := sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

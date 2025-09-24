@@ -30,25 +30,4 @@ theorem divisors_perfect_square (n : Nat) (h : ∃ m : Nat, n = m * m) :
 
 theorem divisors_one :
   divisors 1 = 1 := sorry
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval divisors 4
-
-/-
-info: 6
--/
--- #guard_msgs in
--- #eval divisors 12
-
-/-
-info: 8
--/
--- #guard_msgs in
--- #eval divisors 30
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

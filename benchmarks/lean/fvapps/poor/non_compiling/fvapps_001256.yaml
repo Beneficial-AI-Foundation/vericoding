@@ -42,8 +42,6 @@ vc-preamble: |-
     sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def max_gcd_partition_sum (n k : Nat) (arr : List Nat) : Nat :=

@@ -25,25 +25,4 @@ theorem define_suit_invalid (card : String)
   (h : ∃ rank, rank ∈ valid_ranks ∧ card = rank ++ "X") :
   ¬∃ result, define_suit card = result :=
   sorry
-
-/-
-info: 'clubs'
--/
--- #guard_msgs in
--- #eval define_suit "3C"
-
-/-
-info: 'spades'
--/
--- #guard_msgs in
--- #eval define_suit "QS"
-
-/-
-info: 'hearts'
--/
--- #guard_msgs in
--- #eval define_suit "JH"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

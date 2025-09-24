@@ -25,19 +25,4 @@ theorem queens_basic_properties {n m x y : Nat}
   (0 ≤ result) ∧ 
   (result % 2 = 0) ∧
   (result ≤ total) := sorry
-
-/-
-info: 24
--/
--- #guard_msgs in
--- #eval solve_queens 3 3 2 2
-
-/-
-info: 94
--/
--- #guard_msgs in
--- #eval solve_queens 4 4 2 3
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

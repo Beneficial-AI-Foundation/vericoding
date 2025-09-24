@@ -17,6 +17,3 @@ theorem special_cases_invalid (s : String) :
   s = "inf" ∨ s = "-inf" ∨ s = "nan" ∨ s = "1e5" ∨ s = "1.2.3" →
   check_float s = false := sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

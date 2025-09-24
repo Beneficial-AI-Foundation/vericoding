@@ -22,25 +22,4 @@ theorem alice_wins_2x_speed
   (n a b da db : Nat) (edges : List (Nat × Nat)) :
   2 * da ≥ db →
   solve_tree_tag n a b da db edges = "Alice" := sorry
-
-/-
-info: 'Alice'
--/
--- #guard_msgs in
--- #eval solve_tree_tag 4 3 2 1 2 [(1, 2), (1, 3), (1, 4)]
-
-/-
-info: 'Bob'
--/
--- #guard_msgs in
--- #eval solve_tree_tag 6 6 1 2 5 [(1, 2), (6, 5), (2, 3), (3, 4), (4, 5)]
-
-/-
-info: 'Alice'
--/
--- #guard_msgs in
--- #eval solve_tree_tag 5 5 4 3 4 [(1, 2), (4, 1), (5, 1), (5, 3)]
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: unguarded

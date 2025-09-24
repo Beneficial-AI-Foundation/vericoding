@@ -43,6 +43,3 @@ theorem find_a_b_order {numbers : List Int} (h : numbers.length ≥ 2) :
           numbers.get? j = some y :=
   sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

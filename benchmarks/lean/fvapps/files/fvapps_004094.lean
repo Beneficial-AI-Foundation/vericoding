@@ -27,6 +27,3 @@ theorem hot_singles_empty_second {α} [BEq α] (arr : List α) :
 theorem hot_singles_same_array {α} [BEq α] (arr : List α) :
   hot_singles arr arr = [] := sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

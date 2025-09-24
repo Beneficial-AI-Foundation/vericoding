@@ -1,14 +1,15 @@
 -- <vc-preamble>
-def MOD := 1000000007
-
-def List.sort (l: List Nat) : List Nat :=
-  sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
+def MOD := 1000000007
+
+def List.sort (l: List Nat) : List Nat :=
+  sorry
+
 def solve_minimized_workload (n: Nat) (p: Nat) (workloads: List Nat) : Nat :=
   sorry
 -- </vc-definitions>
@@ -34,7 +35,7 @@ theorem workload_sort_invariant (n p: Nat) (workloads: List Nat)
   (h1: n > 0) (h2: n ≤ 100) (h3: p > 0) (h4: p ≤ 10)
   (h5: ∀ w ∈ workloads, w ≥ 0 ∧ w ≤ 1000)
   (h6: workloads.length > 0) (h7: workloads.length ≤ 100) :
-  solve_minimized_workload n p workloads = 
+  solve_minimized_workload n p workloads =
   solve_minimized_workload n p (List.sort workloads) :=
 sorry
 
@@ -46,25 +47,4 @@ theorem workload_length_matches_n (p: Nat) (workloads: List Nat)
   let result := solve_minimized_workload n p workloads
   0 ≤ result ∧ result < MOD :=
 sorry
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval solve_minimized_workload 5 2 [2, 3, 4, 4, 3]
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval solve_minimized_workload 3 1 [2, 10, 1000]
-
-/-
-info: 146981438
--/
--- #guard_msgs in
--- #eval solve_minimized_workload 4 5 [0, 1, 1, 100]
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: unguarded

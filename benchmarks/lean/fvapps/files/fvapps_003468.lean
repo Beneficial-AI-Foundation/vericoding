@@ -70,25 +70,4 @@ theorem crib_symmetry (n : Nat) (h : 0 < n)
       if c = '\\' then '/' 
       else if c = '/' then '\\'
       else c)) := sorry
-
-/-
-info: test1
--/
--- #guard_msgs in
--- #eval my_crib 1
-
-/-
-info: test2
--/
--- #guard_msgs in
--- #eval my_crib 2
-
-/-
-info: test3
--/
--- #guard_msgs in
--- #eval my_crib 3
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

@@ -19,6 +19,3 @@ theorem known_case_2 :
   let points := [(1.0,1.0), (2.0,2.0), (2.0,1.0), (3.0,3.0)]
   Float.abs (calculate_triangle_area_sum points - 2.0) < 0.01 := sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

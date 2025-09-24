@@ -70,6 +70,3 @@ theorem zero_rate_returns_principal
   (result.get ⟨1, by simp [h5]⟩ = principal) :=
 sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

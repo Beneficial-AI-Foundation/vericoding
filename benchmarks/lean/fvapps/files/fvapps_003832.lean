@@ -26,6 +26,3 @@ theorem transform_digit_range {n : Nat} {b : Nat} (h1 : n ≥ 1) (h2 : 2 ≤ b) 
   :=
   sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

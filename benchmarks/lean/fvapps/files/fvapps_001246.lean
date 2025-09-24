@@ -31,25 +31,4 @@ theorem digit_count_ranges
   (10 ≤ n ∧ n < 100 → count_digits n = "2") ∧
   (100 ≤ n ∧ n < 1000 → count_digits n = "3") ∧
   (1000 ≤ n → count_digits n = "More than 3 digits") := sorry
-
-/-
-info: '1'
--/
--- #guard_msgs in
--- #eval count_digits 9
-
-/-
-info: '2'
--/
--- #guard_msgs in
--- #eval count_digits 42
-
-/-
-info: 'More than 3 digits'
--/
--- #guard_msgs in
--- #eval count_digits 12345
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

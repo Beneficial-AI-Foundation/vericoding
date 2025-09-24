@@ -17,6 +17,3 @@ theorem m_zero_zero :
 theorem zero_one :
   guess_it 0 1 = [] := sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

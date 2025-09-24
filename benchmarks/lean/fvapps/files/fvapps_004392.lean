@@ -26,25 +26,4 @@ theorem power_of_two_bitwise (n : Nat) :
 
 theorem power_of_two_zero :
   power_of_two 0 = false := sorry
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval power_of_two 0
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval power_of_two 1
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval power_of_two 536870912
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

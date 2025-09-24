@@ -33,25 +33,4 @@ sorry
 theorem count_ways_odd (n : Nat) (h₁ : n > 0) (h₂ : n % 2 = 1) :
   count_ways_to_climb n = (n-1)/2 + 1 :=
 sorry
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval count_ways_to_climb 3
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval count_ways_to_climb 4
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval count_ways_to_climb 5
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

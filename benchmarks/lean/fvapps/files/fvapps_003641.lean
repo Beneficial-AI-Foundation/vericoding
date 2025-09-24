@@ -21,25 +21,4 @@ theorem specific_case_2 :
 
 theorem specific_case_3 :
   find_discounted "0 0" = "0" := sorry
-
-/-
-info: '15 60 75'
--/
--- #guard_msgs in
--- #eval find_discounted "15 20 60 75 80 100"
-
-/-
-info: '9 9 12 15'
--/
--- #guard_msgs in
--- #eval find_discounted "9 9 12 12 12 15 16 20"
-
-/-
-info: '0'
--/
--- #guard_msgs in
--- #eval find_discounted "0 0"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

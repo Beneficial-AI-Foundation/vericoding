@@ -63,63 +63,68 @@ vc-description: |-
   
   So, the maximum difference between any adjacent elements is $3$.
   -/
+  
+  /- Properties for all-negative-ones case -/
+  
+  -- Apps difficulty: interview
+  -- Assurance level: unguarded
+  
+  /- Main property about adjacent differences being bounded by result -/
+  
+  /- Property about the x value working for -1 positions -/
+  
+  /- Property about result types and non-negativity -/
 
 vc-preamble: |-
 
 vc-helpers: |-
 
 vc-definitions: |-
-  def solve_array_differences (n : Nat) (arr : List Int) : Int × Int := sorry
-  
-  /- Properties for all-negative-ones case -/
+  def solve_array_differences (n : Nat) (arr : List Int) : Int × Int :=
+  sorry
 
 vc-theorems: |-
-  theorem all_neg_ones_result {n : Nat} {arr : List Int} 
+  theorem all_neg_ones_result {n : Nat} {arr : List Int}
     (h : ∀ x ∈ arr, x = -1) :
-    solve_array_differences n arr = (0, 0) := sorry
-  
-  /- Main property about adjacent differences being bounded by result -/
+    solve_array_differences n arr = (0, 0) :=
+  sorry
   
   theorem adjacent_differences_bounded {n : Nat} {arr : List Int} :
     let (ans, x) := solve_array_differences n arr
     ∀ i < arr.length - 1,
-      arr[i]! ≠ -1 → arr[i+1]! ≠ -1 → 
-      (arr[i]! - arr[i+1]!).natAbs ≤ ans := sorry
-  
-  /- Property about the x value working for -1 positions -/
+      arr[i]! ≠ -1 → arr[i+1]! ≠ -1 →
+      (arr[i]! - arr[i+1]!).natAbs ≤ ans :=
+  sorry
   
   theorem x_value_maintains_bound {n : Nat} {arr : List Int} :
     let (ans, x) := solve_array_differences n arr
     ∀ i < arr.length,
       arr[i]! = -1 →
       (i > 0 → arr[i-1]! ≠ -1 → (arr[i-1]! - x).natAbs ≤ ans) ∧
-      (i < arr.length - 1 → arr[i+1]! ≠ -1 → (x - arr[i+1]!).natAbs ≤ ans) := sorry
-  
-  /- Property about result types and non-negativity -/
+      (i < arr.length - 1 → arr[i+1]! ≠ -1 → (x - arr[i+1]!).natAbs ≤ ans) :=
+  sorry
   
   theorem result_properties {n : Nat} {arr : List Int} :
     let (ans, x) := solve_array_differences n arr
-    ans ≥ 0 := sorry
-  
-  /-
-  info: (1, 11)
-  -/
-  -- #guard_msgs in
-  -- #eval solve_array_differences 5 [-1, 10, -1, 12, -1]
-  
-  /-
-  info: (0, 0)
-  -/
-  -- #guard_msgs in
-  -- #eval solve_array_differences 2 [-1, -1]
-  
-  /-
-  info: (1, 2)
-  -/
-  -- #guard_msgs in
-  -- #eval solve_array_differences 4 [1, -1, 3, -1]
+    ans ≥ 0 :=
+  sorry
 
 vc-postamble: |-
-  -- Apps difficulty: interview
-  -- Assurance level: unguarded
+  /--
+  info: (1, 11)
+  -/
+  #guard_msgs in
+  #eval solve_array_differences 5 [-1, 10, -1, 12, -1]
+  
+  /--
+  info: (0, 0)
+  -/
+  #guard_msgs in
+  #eval solve_array_differences 2 [-1, -1]
+  
+  /--
+  info: (1, 2)
+  -/
+  #guard_msgs in
+  #eval solve_array_differences 4 [1, -1, 3, -1]
 

@@ -23,25 +23,4 @@ theorem am_i_wilson_non_wilson_primes (n : Int) :
 
 theorem am_i_wilson_negative (n : Int) :
   n < 0 → am_i_wilson n = false := by sorry
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval am_i_wilson 0
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval am_i_wilson 5
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval am_i_wilson 13
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

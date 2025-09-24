@@ -104,8 +104,6 @@ vc-preamble: |-
   def Graph.graph_2_list {n : Nat} (g : Graph n) (graph : List (String × List (String × Nat))) : List (Nat × Nat × Nat) := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def Graph.list_2_graph {n : Nat} (g : Graph n) (lst : List (Nat × Nat × Nat)) : List (String × List (String × Nat)) := sorry

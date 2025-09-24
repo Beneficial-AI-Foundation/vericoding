@@ -23,12 +23,12 @@ spec fn abs_spec(x: int) -> int {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(a: int, b: int) -> (result: String)
+fn solve(a: i8, b: i8) -> (result: String)
     requires 
-        valid_input(a, b)
+        valid_input(a as int, b as int)
     ensures 
         valid_output(result) &&
-        ((result@ == "YES"@) <==> interval_exists(a, b))
+        ((result@ == "YES"@) <==> interval_exists(a as int, b as int))
 // </vc-spec>
 // <vc-code>
 {

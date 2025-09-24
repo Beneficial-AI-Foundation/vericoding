@@ -14,25 +14,4 @@ theorem solve_preserves_length (s : String) :
 -- <vc-theorems>
 theorem solve_preserves_spaces (s : String) (i : String.Pos) :
   (s.get i = ' ') = ((solve s).get i = ' ') := sorry
-
-/-
-info: 'srawedoc'
--/
--- #guard_msgs in
--- #eval solve "codewars"
-
-/-
-info: 'edoc ruoy'
--/
--- #guard_msgs in
--- #eval solve "your code"
-
-/-
-info: 'skco redo cruoy'
--/
--- #guard_msgs in
--- #eval solve "your code rocks"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

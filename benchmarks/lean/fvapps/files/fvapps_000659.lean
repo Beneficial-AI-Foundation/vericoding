@@ -32,25 +32,4 @@ theorem spread_deterministic (n : Nat) (arr : List Nat)
 
 theorem minimal_valid_array (n : Nat) 
   : solve_snackdown_spread n (List.replicate n 1) ≤ n := sorry
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval solve_snackdown_spread 7 [2, 1, 1, 5, 5, 5, 5]
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval solve_snackdown_spread 5 [5, 1, 3, 2, 1]
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval solve_snackdown_spread 3 [2, 1, 1]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

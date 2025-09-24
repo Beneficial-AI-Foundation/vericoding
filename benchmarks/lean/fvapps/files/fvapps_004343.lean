@@ -20,25 +20,4 @@ theorem invert_involution (xs : List Int) :
 
 theorem invert_empty : 
   invert [] = [] := sorry
-
-/-
-info: [-1, -2, -3, -4, -5]
--/
--- #guard_msgs in
--- #eval invert [1, 2, 3, 4, 5]
-
-/-
-info: [-1, 2, -3, 4, -5]
--/
--- #guard_msgs in
--- #eval invert [1, -2, 3, -4, 5]
-
-/-
-info: []
--/
--- #guard_msgs in
--- #eval invert []
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

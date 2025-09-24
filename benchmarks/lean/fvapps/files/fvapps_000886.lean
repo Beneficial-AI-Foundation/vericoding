@@ -20,25 +20,4 @@ theorem golomb_single_element_consistency {n : Nat} :
 theorem golomb_range_additivity {n : Nat} :
   (solve_golomb_squares 1 (n+1) - solve_golomb_squares 1 n) % MOD = 
     solve_golomb_squares (n+1) (n+1) := sorry
-
-/-
-info: 27
--/
--- #guard_msgs in
--- #eval solve_golomb_squares 1 5
-
-/-
-info: 17
--/
--- #guard_msgs in
--- #eval solve_golomb_squares 2 4
-
-/-
-info: 441
--/
--- #guard_msgs in
--- #eval solve_golomb_squares 100 100
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

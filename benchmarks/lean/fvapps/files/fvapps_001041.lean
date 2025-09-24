@@ -35,25 +35,4 @@ theorem count_window_frames_duplicates_bound {n : Nat} {logs : List Int}
   (h2 : ∀ x ∈ logs, 1 ≤ x ∧ x ≤ 3) :
   count_window_frames n logs ≤ (logs.length - (logs.eraseDups).length) / 2 := 
   sorry
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval count_window_frames 4 [1, 2, 1, 2]
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval count_window_frames 8 [1, 2, 1, 3, 4, 1, 5, 6]
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval count_window_frames 6 [1, 1, 2, 2, 3, 3]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

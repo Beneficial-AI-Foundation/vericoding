@@ -27,25 +27,4 @@ theorem strictly_increasing_teams_can_be_ordered (t : List Nat) :
   let t2 := t.map (· + 1)
   let t3 := t2.map (· + 1)
   can_order_team t t2 t3 = "yes" := sorry
-
-/-
-info: 'yes'
--/
--- #guard_msgs in
--- #eval can_order_team [1, 2, 3] [2, 3, 4] [2, 3, 5]
-
-/-
-info: 'no'
--/
--- #guard_msgs in
--- #eval can_order_team [1, 2, 3] [2, 3, 4] [2, 3, 4]
-
-/-
-info: 'yes'
--/
--- #guard_msgs in
--- #eval can_order_team [5, 6, 5] [1, 2, 3] [2, 3, 4]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

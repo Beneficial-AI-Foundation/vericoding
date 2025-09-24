@@ -1,65 +1,45 @@
 -- <vc-preamble>
-def phi (n : Nat) : Nat :=
-  sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
+def phi (n : Nat) : Nat :=
+  sorry
+
 def solve_passcode (a m : Nat) : Nat :=
   sorry
 -- </vc-definitions>
 
 -- <vc-theorems>
 theorem phi_positive (n : Nat) (h : n > 0) : phi n > 0 :=
-  sorry
+sorry
 
 theorem phi_upper_bound (n : Nat) : phi n ≤ n :=
-  sorry
+sorry
 
 theorem phi_one : phi 1 = 1 :=
-  sorry
+sorry
 
-theorem solve_passcode_positive (a m : Nat) (h₁ : a > 0) (h₂ : m > 0) : 
+theorem solve_passcode_positive (a m : Nat) (h₁ : a > 0) (h₂ : m > 0) :
   solve_passcode a m > 0 :=
-  sorry
+sorry
 
 theorem solve_passcode_upper_bound (a m : Nat) (h₁ : a > 0) (h₂ : m > 0) :
   solve_passcode a m ≤ m :=
-  sorry
+sorry
 
 theorem solve_passcode_one (a : Nat) (h : a > 0) :
   solve_passcode a 1 = 1 :=
-  sorry
+sorry
 
-theorem solve_passcode_coprime (a m : Nat) (h₁ : a > 0) (h₂ : m > 0) 
+theorem solve_passcode_coprime (a m : Nat) (h₁ : a > 0) (h₂ : m > 0)
   (h₃ : Nat.gcd a m = 1) :
   solve_passcode a m = phi m :=
-  sorry
+sorry
 
 theorem solve_passcode_gcd (a m : Nat) (h₁ : a > 0) (h₂ : m > 0) :
   solve_passcode a m = phi (m / Nat.gcd a m) :=
-  sorry
-
-/-
-info: 6
--/
--- #guard_msgs in
--- #eval solve_passcode 4 9
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval solve_passcode 5 10
-
-/-
-info: 9999999966
--/
--- #guard_msgs in
--- #eval solve_passcode 42 9999999967
+sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

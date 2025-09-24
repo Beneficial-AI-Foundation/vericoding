@@ -22,6 +22,3 @@ theorem randomCase_changes_some_chars (s : String)
 theorem randomCase_only_changes_case (s : String) (i : String.Pos) :
   (s.get i).toLower = ((randomCase s).get i).toLower := sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

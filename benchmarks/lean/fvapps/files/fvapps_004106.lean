@@ -24,25 +24,4 @@ theorem idempotent (s : String) :
 theorem no_vowels_in_result (s : String) :
   ∀ c ∈ String.toList (heavy_metal_umlauts s),
   c ∉ ['A', 'E', 'I', 'O', 'U', 'Y', 'a', 'e', 'i', 'o', 'u', 'y'] := sorry
-
-/-
-info: 'Ännöüncïng thë Mäcböök Äïr Güïtär'
--/
--- #guard_msgs in
--- #eval heavy_metal_umlauts "Announcing the Macbook Air Guitar"
-
-/-
-info: 'Fäcëböök'
--/
--- #guard_msgs in
--- #eval heavy_metal_umlauts "Facebook"
-
-/-
-info: 'Mëtäl'
--/
--- #guard_msgs in
--- #eval heavy_metal_umlauts "Metal"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

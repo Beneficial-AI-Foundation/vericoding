@@ -29,25 +29,4 @@ theorem only_evens_result (nums: List Nat) :
 
 theorem symmetry_property (nums: List Nat) :
   bits_battle nums = bits_battle nums.reverse := sorry
-
-/-
-info: 'odds win'
--/
--- #guard_msgs in
--- #eval bits_battle [5, 3, 14]
-
-/-
-info: 'evens win'
--/
--- #guard_msgs in
--- #eval bits_battle [3, 8, 22, 15, 78]
-
-/-
-info: 'tie'
--/
--- #guard_msgs in
--- #eval bits_battle []
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

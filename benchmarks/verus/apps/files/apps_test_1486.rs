@@ -55,9 +55,9 @@ spec fn valid_output(cities: Seq<int>, min_distances: Seq<int>, max_distances: S
 // </vc-helpers>
 
 // <vc-spec>
-fn calculate_distances(cities: Seq<int>) -> (result: (Seq<int>, Seq<int>))
-  requires valid_input(cities)
-  ensures valid_output(cities, result.0, result.1)
+fn calculate_distances(cities: Vec<i8>) -> (result: (Vec<i8>, Vec<i8>))
+  requires valid_input(cities@.map(|i, v: i8| v as int))
+  ensures valid_output(cities@.map(|i, v: i8| v as int), result.0@.map(|i, v: i8| v as int), result.1@.map(|i, v: i8| v as int))
 // </vc-spec>
 // <vc-code>
 {

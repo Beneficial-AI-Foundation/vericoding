@@ -42,25 +42,4 @@ theorem deletion_property
   let deleted := s.data.take i ++ s.data.drop (i+1)
   is_long_pressed_name s (String.mk deleted) = false :=
 sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval is_long_pressed_name "alex" "aaleex"
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval is_long_pressed_name "saeed" "ssaaedd"
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval is_long_pressed_name "leelee" "lleeelee"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

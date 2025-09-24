@@ -31,25 +31,4 @@ theorem ant_bridge_no_gaps
     (ants : String) (n : Nat) :
     ant_bridge ants (String.mk (List.replicate n '-')) = ants :=
   sorry
-
-/-
-info: 'GFEDCBA'
--/
--- #guard_msgs in
--- #eval ant_bridge "GFEDCBA" "-----------------------"
-
-/-
-info: 'EDCBAGF'
--/
--- #guard_msgs in
--- #eval ant_bridge "GFEDCBA" "------------...-----------"
-
-/-
-info: 'CBA'
--/
--- #guard_msgs in
--- #eval ant_bridge "CBA" "--.--.---"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

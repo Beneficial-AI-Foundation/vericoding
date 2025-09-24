@@ -34,25 +34,4 @@ theorem output_bounds {n m : Nat} (h : m ≤ n) :
 
 theorem monotonic_in_m {n m₁ m₂ : Nat} (h₁ : m₁ ≤ m₂) (h₂ : m₂ ≤ n) :
   max_substring_value n m₁ ≤ max_substring_value n m₂ := sorry
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval max_substring_value 3 1
-
-/-
-info: 5
--/
--- #guard_msgs in
--- #eval max_substring_value 3 2
-
-/-
-info: 12
--/
--- #guard_msgs in
--- #eval max_substring_value 5 2
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

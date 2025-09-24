@@ -35,25 +35,4 @@ theorem single_customer_response (initial_temp : Int) (t : Nat) (l h : Int) :
   (¬(h < temp_range_low ∨ temp_range_high < l) → 
     check_restaurant_temps initial_temp customer_info = "YES") :=
   sorry
-
-/-
-info: 'YES'
--/
--- #guard_msgs in
--- #eval check_restaurant_temps 0 [(5, 1, 2), (7, 3, 5), (10, -1, 0)]
-
-/-
-info: 'NO'
--/
--- #guard_msgs in
--- #eval check_restaurant_temps 12 [(5, 7, 10), (10, 16, 20)]
-
-/-
-info: 'YES'
--/
--- #guard_msgs in
--- #eval check_restaurant_temps -100 [(100, 0, 0), (100, -50, 50), (200, 100, 100)]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

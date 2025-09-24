@@ -31,6 +31,3 @@ theorem earnings_increase_with_days
   can_mia_save_300 days min_wage highest_tip (shifts.take days) :=
   sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

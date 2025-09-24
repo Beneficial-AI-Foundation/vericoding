@@ -40,25 +40,4 @@ theorem solve_panipuri_speed_single_customer_time_two :
 
 theorem solve_panipuri_speed_equal_times :
     solve_panipuri_speed 3 [2, 2, 2] = 2 := by sorry
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval solve_panipuri_speed 4 [2, 4, 6, 3]
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval solve_panipuri_speed 5 [2, 3, 4, 6, 5]
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval solve_panipuri_speed 3 [1, 2, 1]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

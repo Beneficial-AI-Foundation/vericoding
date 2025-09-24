@@ -33,6 +33,3 @@ theorem same_point_returns_start_time
     = start_time :=
   sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

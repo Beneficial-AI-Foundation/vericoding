@@ -25,25 +25,4 @@ theorem result_changes_with_perturbation {arr : List Int} (h : arr.length ≥ 3)
   let mid := arr.length / 2
   let arr_perturbed := arr.set mid (arr[mid]! + 1000)
   fix_progression arr ≤ fix_progression arr_perturbed := sorry
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval fix_progression [1, 2, 3]
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval fix_progression [1, 3, 0, 7, 9]
-
-/-
-info: 5
--/
--- #guard_msgs in
--- #eval fix_progression [1, 10, 2, 12, 3, 14, 4, 16, 5]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

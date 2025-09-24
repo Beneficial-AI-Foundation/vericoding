@@ -35,13 +35,4 @@ theorem find_winner_known_cases_twelve :
 
 theorem find_winner_known_cases_sixteen :
   find_winner 16 = "Grinch" := sorry
-
-/-
-info: expected1[i]
--/
--- #guard_msgs in
--- #eval find_winner test1[i]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

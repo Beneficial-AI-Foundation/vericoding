@@ -21,25 +21,4 @@ theorem process_data_positive_output
   (h4 : ∀ l ∈ data, l[0]! > l[1]!)
   (h5 : data ≠ []) :
   process_data data > 0 := sorry
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval process_data [[2, 5], [3, 4], [8, 7]]
-
-/-
-info: 28
--/
--- #guard_msgs in
--- #eval process_data [[2, 9], [2, 4], [7, 5]]
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval process_data [[5, 4], [6, 4]]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

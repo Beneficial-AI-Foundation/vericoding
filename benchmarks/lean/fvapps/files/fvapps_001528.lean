@@ -29,25 +29,4 @@ theorem zero_pair_equals_nonzero {x : Nat} :
   let (min1, max1) := count_chef_entries x 0
   let (min2, max2) := count_chef_entries 0 x
   (min1 = max1 ∧ min1 = x) ∧ (min2 = max2 ∧ min2 = x) := sorry
-
-/-
-info: (19, 36)
--/
--- #guard_msgs in
--- #eval count_chef_entries 19 17
-
-/-
-info: (5, 7)
--/
--- #guard_msgs in
--- #eval count_chef_entries 5 2
-
-/-
-info: (10, 10)
--/
--- #guard_msgs in
--- #eval count_chef_entries 0 10
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

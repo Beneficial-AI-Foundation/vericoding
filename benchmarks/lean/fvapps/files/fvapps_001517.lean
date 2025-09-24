@@ -39,13 +39,4 @@ theorem odd_n_no_self_play {n : Nat} (h : n > 0) (h2 : n % 2 = 1) (i : Nat) (hi 
   let rows := (solveTennisTournament n).tail
   let row := rows.get! i
   String.get! row ⟨i⟩ = '0' := sorry
-
-/-
-info: 6
--/
--- #guard_msgs in
--- #eval len result3
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

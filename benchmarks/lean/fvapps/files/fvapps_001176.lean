@@ -21,25 +21,4 @@ sorry
 theorem calculate_salary_greater_than_n (x n : Nat) (h : x > n) :
   calculate_salary x n = 0 :=
 sorry
-
-/-
-info: 18
--/
--- #guard_msgs in
--- #eval calculate_salary 3 10
-
-/-
-info: 30
--/
--- #guard_msgs in
--- #eval calculate_salary 2 10
-
-/-
-info: 50
--/
--- #guard_msgs in
--- #eval calculate_salary 5 20
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

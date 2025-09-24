@@ -37,9 +37,9 @@ spec fn can_place_all(a: Seq<int>, b: Seq<int>, n: int) -> bool
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(a: Seq<int>, b: Seq<int>, n: int) -> (result: String)
-    requires valid_input(a, b, n)
-    ensures result@ == (if can_place_all(a, b, n) { "YES"@ } else { "NO"@ })
+fn solve(a: Vec<i8>, b: Vec<i8>, n: i8) -> (result: String)
+    requires valid_input(a@.map(|i: int, x: i8| x as int), b@.map(|i: int, x: i8| x as int), n as int)
+    ensures result@ == (if can_place_all(a@.map(|i: int, x: i8| x as int), b@.map(|i: int, x: i8| x as int), n as int) { "YES"@ } else { "NO"@ })
 // </vc-spec>
 // <vc-code>
 {

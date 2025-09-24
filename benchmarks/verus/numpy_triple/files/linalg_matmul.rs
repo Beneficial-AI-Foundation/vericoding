@@ -8,7 +8,7 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn matmul(A: Vec<Vec<f32>>, B: Vec<Vec<f32>>) -> (result: Vec<Vec<f32>>)
+fn matmul(A: Vec<Vec<i8>>, B: Vec<Vec<i8>>) -> (result: Vec<Vec<i8>>)
     requires
         A.len() > 0,
         B.len() > 0,

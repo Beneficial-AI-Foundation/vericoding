@@ -28,6 +28,3 @@ theorem lcm_identity (n : Nat) :
 theorem gcf_identity (n : Nat) :
   findGreatestCommonFactor [n] = n := sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

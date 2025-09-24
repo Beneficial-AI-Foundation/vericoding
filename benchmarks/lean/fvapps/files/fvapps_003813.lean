@@ -30,6 +30,3 @@ theorem max_multiple_zero_invalid (bound: Nat)
     : maxMultiple 0 bound = 0 :=
   sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

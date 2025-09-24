@@ -4,32 +4,32 @@ vc-description: |-
   In that house there is an elevator.
   You can program this elevator to go up or down,
   depending on what button the user touches inside the elevator.
-  
+
   Valid levels must be only these numbers: `0,1,2,3`
-  
+
   Valid buttons must be only these strings: `'0','1','2','3'` 
-  
+
   Possible return values are these numbers: `-3,-2,-1,0,1,2,3`
-  
+
   If the elevator is on the ground floor(0th level) 
   and the user touches button '2'
   the elevator must go 2 levels up,
   so our function must return 2.
-  
+
   If the elevator is on the 3rd level
   and the user touches button '0'
   the elevator must go 3 levels down, so our function must return -3.
-  
+
   If the elevator is on the 2nd level,
   and the user touches button '2'
   the elevator must remain on the same level,
   so we return 0.
-  
+
   We cannot endanger the lives of our passengers, 
   so if we get erronous inputs, 
   our elevator must remain on the same level.
   So for example:
-  
+
   - `goto(2,'4')` must return 0, because there is no button '4' in the elevator.
   - `goto(4,'0')` must return 0, because there is no level 4.
   - `goto(3,undefined)` must return 0.
@@ -38,13 +38,13 @@ vc-description: |-
   - `goto(3,{})` must return 0 because the type of the input button is object instead of a string.
   -/
 
-vc-preamble: |-
+vc-preamble: |
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def goto (level : Int) (button : String) : Int := sorry
-  
+
   theorem goto_valid_inputs (level : Int) (button : String) 
     (h1 : 0 ≤ level ∧ level ≤ 3) 
     (h2 : button = "0" ∨ button = "1" ∨ button = "2" ∨ button = "3") : 
@@ -55,45 +55,45 @@ vc-theorems: |-
     (h1 : level < 0 ∨ level > 3)
     (h2 : button = "0" ∨ button = "1" ∨ button = "2" ∨ button = "3") :
     goto level button = 0 := sorry
-  
+
   theorem goto_invalid_button (level : Int) (button : String)
     (h1 : 0 ≤ level ∧ level ≤ 3)
     (h2 : button ≠ "0" ∧ button ≠ "1" ∧ button ≠ "2" ∧ button ≠ "3") :
     goto level button = 0 := sorry
-  
+
   theorem goto_invalid_level_type (level : String) (button : String)
     (h : button = "0" ∨ button = "1" ∨ button = "2" ∨ button = "3") : 
     goto 0 button = 0 := sorry
-  
+
   theorem goto_invalid_button_type (level : Int) (button : Int)
     (h : 0 ≤ level ∧ level ≤ 3) :
     goto level "" = 0 := sorry
-  
-  /-
-  info: 2
-  -/
-  -- #guard_msgs in
-  -- #eval goto 0 "2"
-  
-  /-
-  info: 0
-  -/
-  -- #guard_msgs in
-  -- #eval goto 2 "4"
-  
-  /-
-  info: 0
-  -/
-  -- #guard_msgs in
-  -- #eval goto 4 "2"
-  
-  /-
-  info: 0
-  -/
-  -- #guard_msgs in
-  -- #eval goto [] "2"
 
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+
+  /--
+  info: 2
+  -/
+  #guard_msgs in
+  #eval goto 0 "2"
+
+  /--
+  info: 0
+  -/
+  #guard_msgs in
+  #eval goto 2 "4"
+
+  /--
+  info: 0
+  -/
+  #guard_msgs in
+  #eval goto 4 "2"
+
+  /--
+  info: 0
+  -/
+  #guard_msgs in
+  #eval goto [] "2"
 

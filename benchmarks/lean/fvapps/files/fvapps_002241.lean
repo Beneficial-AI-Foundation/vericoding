@@ -31,25 +31,4 @@ theorem can_make_balanced_all_questions (n k : Nat) (pattern : String) :
   k % 2 = 0 →
   can_make_balanced n k pattern = "YES" :=
   sorry
-
-/-
-info: 'YES'
--/
--- #guard_msgs in
--- #eval can_make_balanced 6 4 "100110"
-
-/-
-info: 'YES'
--/
--- #guard_msgs in
--- #eval can_make_balanced 3 2 "1?1"
-
-/-
-info: 'NO'
--/
--- #guard_msgs in
--- #eval can_make_balanced 3 2 "1?0"
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: unguarded

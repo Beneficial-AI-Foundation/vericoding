@@ -29,25 +29,4 @@ theorem min_gap_constant
   (plants := List.range n |>.map (fun i => 100 - i * gap)) :
   min_hours_equal_plants n plants = gap :=
 sorry
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval min_hours_equal_plants 3 [8, 4, 2]
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval min_hours_equal_plants 4 [10, 7, 4, 1]
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval min_hours_equal_plants 5 [20, 15, 10, 5, 1]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

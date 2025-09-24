@@ -44,25 +44,4 @@ theorem all_integers
   ∀ slice ∈ series_slices digits n,
     ∀ d ∈ slice, d ≤ 9 :=
   sorry
-
-/-
-info: [[0, 1], [1, 2], [2, 3], [3, 4]]
--/
--- #guard_msgs in
--- #eval series_slices "01234" 2
-
-/-
-info: [[0, 1, 2, 3], [1, 2, 3, 4]]
--/
--- #guard_msgs in
--- #eval series_slices "01234" 4
-
-/-
-info: [[0, 1, 2, 3, 4]]
--/
--- #guard_msgs in
--- #eval series_slices "01234" 5
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

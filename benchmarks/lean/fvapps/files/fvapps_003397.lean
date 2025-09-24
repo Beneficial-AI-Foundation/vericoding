@@ -39,6 +39,3 @@ theorem sea_sick_all_flat (s : String)
     (h_size : s.length > 0) :
   sea_sick s = "No Problem" := sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

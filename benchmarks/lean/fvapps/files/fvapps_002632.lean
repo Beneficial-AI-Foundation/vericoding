@@ -33,25 +33,4 @@ theorem class_beats_tag :
 theorem specificity_output_format (s : String) :
   let spec := specificity s;
   spec.1 ≥ 0 ∧ spec.2.1 ≥ 0 ∧ spec.2.2 ≥ 0 := sorry
-
-/-
-info: 'body p'
--/
--- #guard_msgs in
--- #eval compare "body p" "div"
-
-/-
-info: '.red'
--/
--- #guard_msgs in
--- #eval compare ".red" "div"
-
-/-
-info: '#header'
--/
--- #guard_msgs in
--- #eval compare "#header" ".main"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

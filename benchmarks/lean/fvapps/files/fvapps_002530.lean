@@ -38,25 +38,4 @@ theorem case_sensitivity
   (h1 : text.length > 0)
   (h2 : text.data.all (λ c => 'A' ≤ c ∧ c ≤ 'Z')) :
   find_codwars ("CODWARS.com/" ++ text) = false := sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval find_codwars "codwars.com"
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval find_codwars "https://www.codwars.com/kata"
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval find_codwars "codwars.comp"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

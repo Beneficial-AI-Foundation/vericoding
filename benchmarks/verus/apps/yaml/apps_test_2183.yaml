@@ -25,12 +25,12 @@ vc-preamble: |-
 vc-helpers: |
 
 vc-spec: |-
-  fn solve(a: int, b: int) -> (result: int)
+  fn solve(a: i8, b: i8) -> (result: i8)
       requires 
-          valid_brother_numbers(a, b)
+          valid_brother_numbers(a as int, b as int)
       ensures 
-          is_valid_result(a, b, result) &&
-          result == late_brother(a, b)
+          is_valid_result(a as int, b as int, result as int) &&
+          result as int == late_brother(a as int, b as int)
 
 vc-code: |-
   {

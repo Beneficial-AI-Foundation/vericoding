@@ -28,25 +28,4 @@ theorem all_zeros (n : Nat) :
   let zeros := List.replicate n (String.mk (List.replicate n '0'))
   solve_base_plans n zeros = 0 :=
   sorry
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval solve_base_plans 2 ["10", "01"]
-
-/-
-info: 8
--/
--- #guard_msgs in
--- #eval solve_base_plans 4 ["1000", "0010", "0100", "0001"]
-
-/-
-info: 6
--/
--- #guard_msgs in
--- #eval solve_base_plans 3 ["100", "010", "001"]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

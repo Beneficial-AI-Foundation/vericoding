@@ -33,25 +33,4 @@ theorem edge_cases :
     find_max_votes 1 1 1 [[5]] = 5 ∧
     find_max_votes 2 2 1 [[1,2],[3,4]] = 4 := by
   sorry
-
-/-
-info: 22
--/
--- #guard_msgs in
--- #eval find_max_votes 4 4 3 [[1, 4, 5, 7], [2, 3, 8, 6], [1, 4, 8, 9], [5, 1, 5, 6]]
-
-/-
-info: 7
--/
--- #guard_msgs in
--- #eval find_max_votes 2 2 2 [[1, 2], [3, 4]]
-
-/-
-info: 17
--/
--- #guard_msgs in
--- #eval find_max_votes 3 3 2 [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

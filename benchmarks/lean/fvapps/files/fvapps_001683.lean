@@ -24,25 +24,4 @@ theorem input_digit_in_possibilities (d : Char) (h : is_digit d) :
 theorem no_duplicates (pin : String) (h : ∀ c ∈ pin.data, is_digit c) :
   let results := get_pins pin
   ∀ x ∈ results, ∀ y ∈ results, x = y → x.data = y.data := sorry
-
-/-
-info: set(['2', '4', '5', '6', '8'])
--/
--- #guard_msgs in
--- #eval set get_pins("5")
-
-/-
-info: set(['11', '12', '14', '21', '22', '24', '41', '42', '44'])
--/
--- #guard_msgs in
--- #eval set get_pins("11")
-
-/-
-info: set(['0', '8'])
--/
--- #guard_msgs in
--- #eval set get_pins("0")
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

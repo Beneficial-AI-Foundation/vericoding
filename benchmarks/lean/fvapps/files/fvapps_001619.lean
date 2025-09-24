@@ -25,19 +25,4 @@ theorem singleton_matrix :
 theorem non_negative_values {n m : Nat} (h1 : n > 0) (h2 : m > 0) :
   let result := solve_mex_matrix n m
   ∀ row ∈ result, ∀ x ∈ row, x ≥ 0 := sorry
-
-/-
-info: len(expected1)
--/
--- #guard_msgs in
--- #eval len solve_mex_matrix(3, 3)
-
-/-
-info: len(expected2)
--/
--- #guard_msgs in
--- #eval len solve_mex_matrix(4, 2)
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

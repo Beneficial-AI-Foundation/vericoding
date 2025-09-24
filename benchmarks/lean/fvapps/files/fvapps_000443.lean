@@ -35,25 +35,4 @@ theorem min_cost_single_house_colored :
 
 theorem min_cost_impossible_target :
   minCost [0,0] [[1,1], [1,1]] 2 2 3 = -1 := sorry
-
-/-
-info: 9
--/
--- #guard_msgs in
--- #eval min_cost [0, 0, 0, 0, 0] [[1, 10], [10, 1], [10, 1], [1, 10], [5, 1]] 5 2 3
-
-/-
-info: 11
--/
--- #guard_msgs in
--- #eval min_cost [0, 2, 1, 2, 0] [[1, 10], [10, 1], [10, 1], [1, 10], [5, 1]] 5 2 3
-
-/-
-info: -1
--/
--- #guard_msgs in
--- #eval min_cost [3, 1, 2, 3] [[1, 1, 1], [1, 1, 1], [1, 1, 1], [1, 1, 1]] 4 3 3
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

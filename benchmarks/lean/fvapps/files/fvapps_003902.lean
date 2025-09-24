@@ -22,25 +22,4 @@ theorem find_outlier_odd_list (integers : List Int)
   let result := find_outlier integers
   result % 2 = 0 ∧
   ∀ x ∈ integers, x ≠ result → x % 2 ≠ 0 := sorry
-
-/-
-info: 11
--/
--- #guard_msgs in
--- #eval find_outlier [2, 4, 0, 100, 4, 11, 2602, 36]
-
-/-
-info: 160
--/
--- #guard_msgs in
--- #eval find_outlier [160, 3, 1719, 19, 11, 13, -21]
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval find_outlier [1, 1, 0]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

@@ -92,8 +92,6 @@ vc-preamble: |-
     sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def findPForHalf (nodes : List Node) : Float :=

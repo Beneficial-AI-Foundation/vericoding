@@ -30,25 +30,4 @@ theorem vertex_coverage {n : Nat} (h : n ≥ 3) :
 theorem small_cases_cycle_lengths {n : Nat} (h : n ∈ [3,4,5]) :
   ∀ cycle ∈ solve_cycles n,
   List.length cycle = 3 ∨ List.length cycle = 4 := sorry
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval len solve_cycles(3)
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval len solve_cycles(4)
-
-/-
-info: 6
--/
--- #guard_msgs in
--- #eval len solve_cycles(5)
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: unguarded

@@ -40,25 +40,4 @@ theorem travel_invalid_speed
   (h1: totalTime > 0) (h2: runTime > 0) (h3: restTime ≥ 0) (h4: speed ≤ 0) :
   travel totalTime runTime restTime speed = 0 :=
 sorry
-
-/-
-info: 1120
--/
--- #guard_msgs in
--- #eval travel 1000 10 127 14
-
-/-
-info: 10000
--/
--- #guard_msgs in
--- #eval travel 1000 10 0 10
-
-/-
-info: 450
--/
--- #guard_msgs in
--- #eval travel 25 50 120 18
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

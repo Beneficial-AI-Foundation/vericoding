@@ -30,25 +30,4 @@ sorry
 theorem symmetric_solution (nums: List Nat) :
   moves_to_make_zigzag nums = moves_to_make_zigzag nums.reverse :=
 sorry
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval moves_to_make_zigzag [1, 2, 3]
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval moves_to_make_zigzag [9, 6, 1, 6, 2]
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval moves_to_make_zigzag [1]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

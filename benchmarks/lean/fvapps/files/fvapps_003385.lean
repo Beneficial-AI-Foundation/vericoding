@@ -30,25 +30,4 @@ theorem edge_cases :
   isLucky "12345" = false ∧
   isLucky "1234567" = false ∧
   isLucky "abcdef" = false := sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval is_lucky "123321"
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval is_lucky "12341234"
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval is_lucky "000000"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

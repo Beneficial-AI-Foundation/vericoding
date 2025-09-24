@@ -23,25 +23,4 @@ theorem no_overlapping_groups (groupSizes : List Nat)
     ∀ g2 ∈ result,
       g1 ≠ g2 →
       ∀ i ∈ g1, i ∉ g2 := sorry
-
-/-
-info: sorted([sorted(g) for g in expected1])
--/
--- #guard_msgs in
--- #eval sorted [sorted(g) for g in result1]
-
-/-
-info: sorted([sorted(g) for g in expected2])
--/
--- #guard_msgs in
--- #eval sorted [sorted(g) for g in result2]
-
-/-
-info: sorted([sorted(g) for g in expected3])
--/
--- #guard_msgs in
--- #eval sorted [sorted(g) for g in result3]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

@@ -36,25 +36,4 @@ theorem sequence_sum_order_invariant (first diff left delta : Nat)
   left = right → 
     solve_sequence_sum first diff left right = 
     solve_sequence_sum first diff right left := sorry
-
-/-
-info: 6
--/
--- #guard_msgs in
--- #eval solve_sequence_sum 1 1 1 3
-
-/-
-info: 12
--/
--- #guard_msgs in
--- #eval solve_sequence_sum 14 7 2 4
-
-/-
-info: 10
--/
--- #guard_msgs in
--- #eval solve_sequence_sum 1 0 1 10
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

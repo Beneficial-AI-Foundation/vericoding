@@ -2,25 +2,25 @@ vc-description: |-
   /-
   # Task
    Mirko has been moving up in the world of basketball. He started as a mere spectator, but has already reached the coveted position of the national team coach!
-  
+
    Mirco is now facing a difficult task: selecting five primary players for the upcoming match against Tajikistan. Since Mirko is incredibly lazy, he doesn't bother remembering players' names, let alone their actual skills. That's why he has settled on selecting five players who share the same first letter of their surnames, so that he can remember them easier. If there are no five players sharing the first letter of their surnames, Mirko will simply forfeit the game!
-  
+
    Your task is to find the first letters Mirko's players' surnames can begin with(In alphabetical order), or return `"forfeit"` if Mirko can't gather a team.
-  
+
   # Input/Output
-  
+
    - `[input]` string array `players`
-  
+
     Array of players' surnames, consisting only of lowercase English letters.
-  
+
    - `[output]` a string
-  
+
     A **sorted** string of possible first letters, or "forfeit" if it's impossible to gather a team.
-  
+
   # Example
-  
+
   For `players = ["michael","jordan","lebron","james","kobe","bryant"]`, the output should be `"forfeit"`.
-  
+
    For
    ```
    players = ["babic","keksic","boric","bukic",
@@ -32,13 +32,13 @@ vc-description: |-
   the output should be "bk".
   -/
 
-vc-preamble: |-
+vc-preamble: |
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def strange_coach (players : List String) : String := sorry
-  
+
   theorem strange_coach_sorted
     (players : List String)
     (h : strange_coach players ≠ "forfeit")
@@ -57,55 +57,55 @@ vc-theorems: |-
     (hj : j < (strange_coach players).length)
     (hij : i < j) :
     (strange_coach players).data[i] ≠ (strange_coach players).data[j] := sorry
-  
+
   theorem strange_coach_forfeit_condition
     (players : List String) :
     strange_coach players = "forfeit" ↔
       ∀ c, (players.filter (λ p => p.get 0 = c)).length < 5 := sorry
-  
+
   theorem strange_coach_letter_condition
     (players : List String)
     (h : strange_coach players ≠ "forfeit")
     (c : Char) :
     c ∈ (strange_coach players).toList →
       (players.filter (λ p => p.get 0 = c)).length ≥ 5 := sorry
-  
+
   theorem strange_coach_complete
     (players : List String)
     (h : strange_coach players ≠ "forfeit")
     (c : Char) :
     (players.filter (λ p => p.get 0 = c)).length ≥ 5 →
       c ∈ (strange_coach players).toList := sorry
-  
+
   theorem strange_coach_output_nonempty
     (players : List String)
     (h : players ≠ []) :
     strange_coach players ≠ "" := sorry
-  
+
   theorem strange_coach_output_string
     (players : List String) :
     strange_coach players = "forfeit" ∨
     (∀ c ∈ (strange_coach players).toList, c.isAlpha) := sorry
-  
-  /-
-  info: 'forfeit'
-  -/
-  -- #guard_msgs in
-  -- #eval strange_coach ["michael", "jordan", "lebron", "james", "kobe", "bryant"]
-  
-  /-
-  info: 'bk'
-  -/
-  -- #guard_msgs in
-  -- #eval strange_coach ["babic", "keksic", "boric", "bukic", "sarmic", "balic", "kruzic", "hrenovkic", "beslic", "boksic", "krafnic", "pecivic", "klavirkovic", "kukumaric", "sunkic", "kolacic", "kovacic", "prijestolonasljednikovic"]
-  
-  /-
-  info: 'b'
-  -/
-  -- #guard_msgs in
-  -- #eval strange_coach ["jgztazpytubijfsmjz", "bokvgratzzdibku", "qineboilzoqdqivc", "bfctyltibtkbxq", "vioxcuhqhikxeqwekqkjo", "nrvsdhttr", "eiaoajuwxpwmyliqikzcchid", "bxrwawgor", "gbsqaxotzmblxttj", "kwchrcaconuwaivhvnyf", "neiemapiica", "bppao", "bxujiwivsjfbqrzygpdgkyz", "jnzrhhmcgcpffflpzwmqib", "jhozlevckrrwimdmyzc", "bomojotkqqditelsk", "ywmbheywzfyqjjs", "snwrclyjkbspysjftcmyak", "eelrsgkuhu", "dnyzsvqjjuqoc"]
 
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+
+  /--
+  info: 'forfeit'
+  -/
+  #guard_msgs in
+  #eval strange_coach ["michael", "jordan", "lebron", "james", "kobe", "bryant"]
+
+  /--
+  info: 'bk'
+  -/
+  #guard_msgs in
+  #eval strange_coach ["babic", "keksic", "boric", "bukic", "sarmic", "balic", "kruzic", "hrenovkic", "beslic", "boksic", "krafnic", "pecivic", "klavirkovic", "kukumaric", "sunkic", "kolacic", "kovacic", "prijestolonasljednikovic"]
+
+  /--
+  info: 'b'
+  -/
+  #guard_msgs in
+  #eval strange_coach ["jgztazpytubijfsmjz", "bokvgratzzdibku", "qineboilzoqdqivc", "bfctyltibtkbxq", "vioxcuhqhikxeqwekqkjo", "nrvsdhttr", "eiaoajuwxpwmyliqikzcchid", "bxrwawgor", "gbsqaxotzmblxttj", "kwchrcaconuwaivhvnyf", "neiemapiica", "bppao", "bxujiwivsjfbqrzygpdgkyz", "jnzrhhmcgcpffflpzwmqib", "jhozlevckrrwimdmyzc", "bomojotkqqditelsk", "ywmbheywzfyqjjs", "snwrclyjkbspysjftcmyak", "eelrsgkuhu", "dnyzsvqjjuqoc"]
 

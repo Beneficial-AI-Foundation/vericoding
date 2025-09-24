@@ -53,8 +53,6 @@ vc-preamble: |-
     | (_::xs) => 1 + xs.size
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def computeProduct {α} (xs : List α) (ys : List β) : List (α × β) :=

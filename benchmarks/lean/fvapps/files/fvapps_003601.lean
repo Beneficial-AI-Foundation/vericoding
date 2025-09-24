@@ -1,7 +1,5 @@
 -- <vc-preamble>
-def nth_smallest (arr : List Int) (n : Nat) : Option Int := sorry
-
-def contains (xs : List Int) (x : Int) : Bool := 
+def contains (xs : List Int) (x : Int) : Bool :=
   xs.foldl (fun acc y => acc || y == x) false
 
 def countLessThan (xs : List Int) (x : Int) : Nat :=
@@ -14,16 +12,18 @@ def minimum (xs : List Int) : Option Int :=
   xs.foldl (fun acc x => match acc with
     | none => some x
     | some m => some (min x m)) none
+
+def maximum (xs : List Int) : Option Int :=
+  xs.foldl (fun acc x => match acc with
+    | none => some x
+    | some m => some (max x m)) none
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
-def maximum (xs : List Int) : Option Int :=
-  xs.foldl (fun acc x => match acc with
-    | none => some x
-    | some m => some (max x m)) none
+def nth_smallest (arr : List Int) (n : Nat) : Option Int := sorry
 -- </vc-definitions>
 
 -- <vc-theorems>
@@ -31,38 +31,21 @@ theorem nth_smallest_properties {arr : List Int} {n : Nat} (h : n ≥ 1) :
   match nth_smallest arr n with
   | none => n > (uniqueList arr).length
   | some result =>
-    (n ≤ (uniqueList arr).length) ∧ 
-    contains arr result ∧ 
+    (n ≤ (uniqueList arr).length) ∧
+    contains arr result ∧
     countLessThan (uniqueList arr) result = n-1
-  := sorry
+  :=
+sorry
 
 theorem nth_smallest_first {arr : List Int} (h : arr ≠ []) :
-  nth_smallest arr 1 = minimum (uniqueList arr) := sorry
+  nth_smallest arr 1 = minimum (uniqueList arr) :=
+sorry
 
-theorem nth_smallest_last_valid {arr : List Int} (h : arr ≠ []) : 
-  nth_smallest arr (uniqueList arr).length = maximum (uniqueList arr) := sorry
+theorem nth_smallest_last_valid {arr : List Int} (h : arr ≠ []) :
+  nth_smallest arr (uniqueList arr).length = maximum (uniqueList arr) :=
+sorry
 
 theorem nth_smallest_empty :
-  nth_smallest [] 1 = none := sorry
-
-/-
-info: 34
--/
--- #guard_msgs in
--- #eval nth_smallest [14, 12, 46, 34, 334] 3
-
-/-
-info: 4000
--/
--- #guard_msgs in
--- #eval nth_smallest [4000] 1
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval nth_smallest [14, 12, 46, 0, 334] 1
+  nth_smallest [] 1 = none :=
+sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

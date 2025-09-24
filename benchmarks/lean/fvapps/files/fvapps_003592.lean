@@ -38,25 +38,4 @@ theorem empty_length
   (d : Nat) :
   generate_diagonal d 0 = [] :=
   sorry
-
-/-
-info: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
--/
--- #guard_msgs in
--- #eval generate_diagonal 0 10
-
-/-
-info: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
--/
--- #guard_msgs in
--- #eval generate_diagonal 1 10
-
-/-
-info: [1, 101, 5151, 176851, 4598126, 96560646]
--/
--- #guard_msgs in
--- #eval generate_diagonal 100 6
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

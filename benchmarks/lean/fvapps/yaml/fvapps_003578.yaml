@@ -97,12 +97,13 @@ vc-description: |-
   -/
 
 vc-preamble: |-
-  def execute (cmd : String) : String :=
-    sorry
 
 vc-helpers: |-
 
 vc-definitions: |-
+  def execute (cmd : String) : String :=
+    sorry
+  
   def isValidOutput (result : String) : Bool :=
     sorry
 
@@ -131,26 +132,26 @@ vc-theorems: |-
     let result := execute cmd
     (result.data.filter (· = '*')).length = cmd.length + 1 := by
     sorry
-  
-  /-
-  info: '*'
-  -/
-  -- #guard_msgs in
-  -- #eval execute ""
-  
-  /-
-  info: '******'
-  -/
-  -- #guard_msgs in
-  -- #eval execute "FFFFF"
-  
-  /-
-  info: '    ****\r\n    *  *\r\n    *  *\r\n********\r\n    *   \r\n    *   '
-  -/
-  -- #guard_msgs in
-  -- #eval execute "LFFFFFRFFFRFFFRFFFFFFF"
 
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+  
+  /--
+  info: '*'
+  -/
+  #guard_msgs in
+  #eval execute ""
+  
+  /--
+  info: '******'
+  -/
+  #guard_msgs in
+  #eval execute "FFFFF"
+  
+  /--
+  info: '    ****\r\n    *  *\r\n    *  *\r\n********\r\n    *   \r\n    *   '
+  -/
+  #guard_msgs in
+  #eval execute "LFFFFFRFFFRFFFRFFFFFFF"
 

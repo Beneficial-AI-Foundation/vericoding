@@ -48,25 +48,4 @@ theorem opposite_moves_require_space
   (h3 : ((countChar commands 'R') - (countChar commands 'L')) ≥ m ∨ 
         ((countChar commands 'U') - (countChar commands 'D')) ≥ n) :
   solve_robot_safety n m commands = "unsafe" := sorry
-
-/-
-info: 'unsafe'
--/
--- #guard_msgs in
--- #eval solve_robot_safety 1 1 "R"
-
-/-
-info: 'safe'
--/
--- #guard_msgs in
--- #eval solve_robot_safety 2 3 "LLRU"
-
-/-
-info: 'unsafe'
--/
--- #guard_msgs in
--- #eval solve_robot_safety 3 2 "LLRU"
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

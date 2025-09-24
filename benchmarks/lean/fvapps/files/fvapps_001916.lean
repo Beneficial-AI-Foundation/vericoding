@@ -37,25 +37,4 @@ theorem output_bounds {X d : Nat} (h1 : 0 < X) (h2 : X ≤ 10^5)
     (∀ x ∈ result, 0 < x ∧ x < 10^18) ∧ 
     result.length ≤ 10000
   := sorry
-
-/-
-info: 6
--/
--- #guard_msgs in
--- #eval len solve_pikachu_array(10, 5)
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval len solve_pikachu_array(4, 2)
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval len solve_pikachu_array(1, 1)
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: unguarded

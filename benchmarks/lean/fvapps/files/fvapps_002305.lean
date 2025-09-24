@@ -31,25 +31,4 @@ sorry
 theorem convert_to_base7_single_digit (x : Int) :
   0 ≤ x → x ≤ 6 → convert_to_base7 x = toString x :=
 sorry
-
-/-
-info: '202'
--/
--- #guard_msgs in
--- #eval convert_to_base7 100
-
-/-
-info: '-10'
--/
--- #guard_msgs in
--- #eval convert_to_base7 -7
-
-/-
-info: '16'
--/
--- #guard_msgs in
--- #eval convert_to_base7 13
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

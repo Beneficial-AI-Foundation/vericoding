@@ -31,25 +31,4 @@ theorem string_clean_only_letters (s : String) :
 theorem string_clean_only_digits (s : String) :
   (∀ c ∈ s.data, c.isDigit) →
   string_clean s = "" := sorry
-
-/-
-info: ''
--/
--- #guard_msgs in
--- #eval string_clean ""
-
-/-
-info: ''
--/
--- #guard_msgs in
--- #eval string_clean "123456789"
-
-/-
-info: 'This looks great!'
--/
--- #guard_msgs in
--- #eval string_clean "This looks5 grea8t!"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

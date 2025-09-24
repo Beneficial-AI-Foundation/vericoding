@@ -39,25 +39,4 @@ theorem winner_identical_decks (deck : List String)
   (h2 : deck ≠ []) :
   winner deck deck = "Tie" :=
 sorry
-
-/-
-info: 'Steve wins 2 to 1'
--/
--- #guard_msgs in
--- #eval winner ["A", "7", "8"] ["K", "5", "9"]
-
-/-
-info: 'Tie'
--/
--- #guard_msgs in
--- #eval winner ["T"] ["T"]
-
-/-
-info: 'Steve wins 1 to 0'
--/
--- #guard_msgs in
--- #eval winner ["T", "9"] ["T", "8"]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

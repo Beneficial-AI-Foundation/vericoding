@@ -35,19 +35,4 @@ theorem impossible_cases_large :
 
 theorem division_by_zero :
   isValidResult (equal_to_24 0 1 2 3) := sorry
-
-/-
-info: 24
--/
--- #guard_msgs in
--- #eval eval equal_to_24(7, 7, 4, 1)
-
-/-
-info: 24
--/
--- #guard_msgs in
--- #eval eval equal_to_24(4, 1, 8, 7)
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

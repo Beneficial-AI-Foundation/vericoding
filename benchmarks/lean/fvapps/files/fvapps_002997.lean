@@ -19,25 +19,4 @@ theorem below_threshold (points : Int) :
 theorem above_threshold (points : Int) :
   points ≥ 100 → 
   playerRankUp points = Sum.inr "Well done! You have advanced to the qualifying stage. Win 2 out of your next 3 games to rank up." := sorry
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval playerRankUp 45
-
-/-
-info: 'Well done! You have advanced to the qualifying stage. Win 2 out of your next 3 games to rank up.'
--/
--- #guard_msgs in
--- #eval playerRankUp 100
-
-/-
-info: 'Well done! You have advanced to the qualifying stage. Win 2 out of your next 3 games to rank up.'
--/
--- #guard_msgs in
--- #eval playerRankUp 105
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

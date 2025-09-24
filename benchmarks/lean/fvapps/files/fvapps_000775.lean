@@ -27,25 +27,4 @@ theorem impossible_single_bowler (n : Nat) (h : n ≥ 2) :
 
 theorem capacity_constraint (n k l : Nat) (h1 : n > 0) (h2 : k > 0) (h3 : l > 0) :
   k * l < n → assign_bowlers n k l = List.nil := sorry
-
-/-
-info: [1, 2, 3, 1]
--/
--- #guard_msgs in
--- #eval assign_bowlers 4 3 2
-
-/-
-info: -1
--/
--- #guard_msgs in
--- #eval assign_bowlers 5 4 1
-
-/-
-info: [1, 2, 3]
--/
--- #guard_msgs in
--- #eval assign_bowlers 3 3 1
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

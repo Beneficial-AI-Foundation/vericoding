@@ -40,6 +40,3 @@ theorem find_boy_strengths_no_twos
       by rw [find_boy_strengths_length girls n h]; exact i.isLt
     (find_boy_strengths n girls)[i.val]'h3 = girls[i].xor 2 := sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

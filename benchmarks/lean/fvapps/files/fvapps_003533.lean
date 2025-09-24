@@ -25,37 +25,4 @@ theorem count_is_bounded (lst : List Int) :
 theorem reversing_list_same_count (lst : List Int) :
   catch_sign_change lst = catch_sign_change lst.reverse :=
   sorry
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval catch_sign_change [-7, -7, 7, 0]
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval catch_sign_change [-1, 2, 2, 2, 2, -8, -1]
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval catch_sign_change []
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval catch_sign_change [0]
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval catch_sign_change [-1, -2, -3]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

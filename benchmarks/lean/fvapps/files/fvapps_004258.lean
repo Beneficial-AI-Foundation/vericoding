@@ -27,25 +27,4 @@ theorem two_equal_maxes_secondary (r g b : Nat) :
   (r > 0 ∧ g > 0 ∧ b = 0 ∧ r = g) → hex_color s!"${r} ${g} ${b}" = "yellow"
   ∧ (r > 0 ∧ g = 0 ∧ b > 0 ∧ r = b) → hex_color s!"${r} ${g} ${b}" = "magenta"
   ∧ (r = 0 ∧ g > 0 ∧ b > 0 ∧ g = b) → hex_color s!"${r} ${g} ${b}" = "cyan" := sorry
-
-/-
-info: 'black'
--/
--- #guard_msgs in
--- #eval hex_color ""
-
-/-
-info: 'red'
--/
--- #guard_msgs in
--- #eval hex_color "255 000 000"
-
-/-
-info: 'yellow'
--/
--- #guard_msgs in
--- #eval hex_color "100 100 050"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

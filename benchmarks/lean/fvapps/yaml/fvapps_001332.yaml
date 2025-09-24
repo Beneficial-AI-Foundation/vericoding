@@ -2,36 +2,36 @@ vc-description: |-
   /-
   Chef has an array of N integers. He wants to play a special game. In this game he needs to make all the integers in the array greater than or equal to 0. 
   Chef can use two types of operations. The first type is to  increase all the integers of the given array by 1, but it costs X coins. The operation of the second type is to add 1 to only one integer of the given array and to use this operation you need to pay 1 coin. You need to calculate the minimal cost to win this game (to make all integers greater than or equal to 0)  
-  
+
   -----Input-----
-  
+
   The first line of the input contains an integer N denoting the number of elements in the given array. The second line contains N space-separated integers A1, A2, ..., AN denoting the given array. The third line contains number X - cost of the first type operation. 
-  
+
   -----Output-----
   For each test case, output a single line containing minimal cost required to make all the integers greater than or equal to zero.
-  
+
   -----Constraints-----
-  
+
   - 1 ≤ N ≤ 105
   - -109 ≤ Ai ≤  109 
   - 0 ≤ X  ≤ 109
-  
+
   -----Example-----
   Input:
   3
   -1 -2 -3
   2
-  
+
   Output:
   5
-  
+
   -----Explanation-----
   Example case 1: Use the first type operation twice and the second type once.
   -/
 
-vc-preamble: |-
+vc-preamble: |
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def find_min_cost (n: Nat) (arr: List Int) (x: Nat) : Nat :=
@@ -41,26 +41,26 @@ vc-theorems: |-
   theorem find_min_cost_nonnegative (n: Nat) (arr: List Int) (x: Nat) :
     find_min_cost n arr x ≥ 0 :=
     sorry
-  
-  /-
-  info: 5
-  -/
-  -- #guard_msgs in
-  -- #eval find_min_cost 3 [-1, -2, -3] 2
-  
-  /-
-  info: 3
-  -/
-  -- #guard_msgs in
-  -- #eval find_min_cost 4 [-1, 0, 2, -3] 1
-  
-  /-
-  info: 0
-  -/
-  -- #guard_msgs in
-  -- #eval find_min_cost 2 [1, 2] 5
 
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
+
+  /--
+  info: 5
+  -/
+  #guard_msgs in
+  #eval find_min_cost 3 [-1, -2, -3] 2
+
+  /--
+  info: 3
+  -/
+  #guard_msgs in
+  #eval find_min_cost 4 [-1, 0, 2, -3] 1
+
+  /--
+  info: 0
+  -/
+  #guard_msgs in
+  #eval find_min_cost 2 [1, 2] 5
 

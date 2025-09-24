@@ -43,25 +43,4 @@ theorem determine_server_point_split (total k : Nat) (h : k > 0) :
 theorem determine_server_point_split_one (total k : Nat) (h : k > 0) (h2 : total > 0) :
   determine_server total 0 k = determine_server (total-1) 1 k :=
   sorry
-
-/-
-info: 'CHEF'
--/
--- #guard_msgs in
--- #eval determine_server 1 3 2
-
-/-
-info: 'COOK'
--/
--- #guard_msgs in
--- #eval determine_server 0 3 2
-
-/-
-info: 'CHEF'
--/
--- #guard_msgs in
--- #eval determine_server 34 55 2
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

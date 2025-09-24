@@ -23,6 +23,3 @@ theorem identical_values_path_length
 
 -- <vc-theorems>
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

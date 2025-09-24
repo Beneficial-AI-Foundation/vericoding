@@ -34,25 +34,4 @@ theorem count_substrings_ones_all_ones
   (h : s.data = List.replicate n '1') :
   count_substrings_ones s = (n * (n + 1) / 2) % 1000000007 :=
 sorry
-
-/-
-info: 9
--/
--- #guard_msgs in
--- #eval count_substrings_ones "0110111"
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval count_substrings_ones "101"
-
-/-
-info: 21
--/
--- #guard_msgs in
--- #eval count_substrings_ones "111111"
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

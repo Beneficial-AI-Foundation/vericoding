@@ -34,6 +34,3 @@ theorem already_valid_tree
   changes = 0 ∧ result = A
   := sorry
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: guarded

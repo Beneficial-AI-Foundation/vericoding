@@ -5,34 +5,34 @@ vc-description: |-
   - Elements $M_{i, N-i+1}, M_{i, N-i+2}, \ldots, M_{i, N}$ are removed.
   - Let's denote the product of all $2i-1$ elements removed in this step by $p_i$. Each of the remaining elements of the matrix (those which have not been removed yet) is multiplied by $p_i$.
   Find the sum $p_1 + p_2 + p_3 + \ldots + p_N$. Since this number could be very large, compute it modulo $10^9+7$.
-  
+
   -----Input-----
   - The first line of the input contains a single integer $T$ denoting the number of test cases. The description of $T$ test cases follows.
   - The first and only line of each test case contains two space-separated integers $N$ and $A$.
-  
+
   -----Output-----
   For each test case, print a single line containing one integer ― the sum of products at each step modulo $10^9+7$.
-  
+
   -----Constraints-----
   - $1 \le T \le 250$
   - $1 \le N \le 10^5$
   - $0 \le A \le 10^9$
   - the sum of $N$ over all test cases does not exceed $10^5$
-  
+
   -----Example Input-----
   1
   3 2
-  
+
   -----Example Output-----
   511620149
-  
+
   -----Explanation-----
   Example case 1:
   -/
 
-vc-preamble: |-
+vc-preamble: |
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def solve_matrix_product (n : Nat) (a : Nat) : Nat :=
@@ -42,34 +42,34 @@ vc-theorems: |-
   theorem solve_matrix_product_bounds (n : Nat) (a : Nat) :
     n ≥ 1 → 0 ≤ solve_matrix_product n a ∧ solve_matrix_product n a < 10^9+7 :=
   sorry
-  
+
   theorem solve_matrix_product_zero (n : Nat) :
     n ≥ 1 → solve_matrix_product n 0 = 0 := 
   sorry
-  
+
   theorem solve_matrix_product_single_step (a : Nat) :
     solve_matrix_product 1 a = a % (10^9+7) :=
   sorry
-  
-  /-
-  info: 511620149
-  -/
-  -- #guard_msgs in
-  -- #eval solve_matrix_product 3 2
-  
-  /-
-  info: 2
-  -/
-  -- #guard_msgs in
-  -- #eval solve_matrix_product 1 2
-  
-  /-
-  info: 0
-  -/
-  -- #guard_msgs in
-  -- #eval solve_matrix_product 5 0
 
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
+
+  /--
+  info: 511620149
+  -/
+  #guard_msgs in
+  #eval solve_matrix_product 3 2
+
+  /--
+  info: 2
+  -/
+  #guard_msgs in
+  #eval solve_matrix_product 1 2
+
+  /--
+  info: 0
+  -/
+  #guard_msgs in
+  #eval solve_matrix_product 5 0
 

@@ -30,31 +30,4 @@ theorem solve_jumps_single_gap (n : Nat) (h : n > 0) :
   let passage := "#" ++ String.mk (List.replicate n '.') ++ "#"
   solve_jumps passage = 1 :=
   sorry
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval solve_jumps "####"
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval solve_jumps "##.#..#"
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval solve_jumps "##..#.#"
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval solve_jumps "##.#....#"
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

@@ -29,25 +29,4 @@ theorem string_structure (n : Nat) (h : 0 < n) (h2 : n ≤ 1000) :
   (n = 1 → generate_odd_char_string n = "a") ∧
   (n % 2 = 0 → generate_odd_char_string n = String.mk (List.replicate (n-1) 'a' ++ ['b'])) ∧
   (n ≠ 1 ∧ n % 2 = 1 → generate_odd_char_string n = String.mk (List.replicate (n-2) 'a' ++ ['b', 'c'])) := sorry
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval len generate_odd_char_string(4)
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval len generate_odd_char_string(2)
-
-/-
-info: 7
--/
--- #guard_msgs in
--- #eval len generate_odd_char_string(7)
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

@@ -33,25 +33,4 @@ theorem determine_winner_scale_invariant (n : Nat) (alice bob : List Nat) (k : N
 
 theorem determine_winner_identical_lists (n : Nat) (x : Nat) :
   n ≥ 2 → determine_winner n (List.replicate n x) (List.replicate n x) = "Draw" := sorry
-
-/-
-info: 'Alice'
--/
--- #guard_msgs in
--- #eval determine_winner 5 [3, 1, 3, 3, 4] [1, 6, 2, 5, 3]
-
-/-
-info: 'Bob'
--/
--- #guard_msgs in
--- #eval determine_winner 5 [1, 6, 2, 5, 3] [3, 1, 3, 3, 4]
-
-/-
-info: 'Draw'
--/
--- #guard_msgs in
--- #eval determine_winner 3 [4, 1, 3] [2, 2, 7]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

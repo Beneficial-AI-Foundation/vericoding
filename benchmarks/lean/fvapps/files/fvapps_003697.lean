@@ -27,6 +27,3 @@ theorem divisors_properties (n : Nat) (h : n ≥ 2) :
     ∀ i : Nat, 2 ≤ i → i ≤ sqrt n → n % i ≠ 0
   := sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

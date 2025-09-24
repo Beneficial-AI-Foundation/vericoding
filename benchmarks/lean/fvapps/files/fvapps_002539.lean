@@ -28,6 +28,3 @@ theorem invalid_texture_error (color: String) (texture: String)
   (colorProbability color texture).isNaN :=
 sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

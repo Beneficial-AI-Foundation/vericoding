@@ -21,31 +21,4 @@ theorem has_equal_subsequences_unique_no {s: String} :
 
 theorem has_equal_subsequences_empty_or_single_no (s: String) :
   s.length ≤ 1 → has_equal_subsequences s = "no" := sorry
-
-/-
-info: 'no'
--/
--- #guard_msgs in
--- #eval has_equal_subsequences "likecs"
-
-/-
-info: 'yes'
--/
--- #guard_msgs in
--- #eval has_equal_subsequences "venivedivici"
-
-/-
-info: 'no'
--/
--- #guard_msgs in
--- #eval has_equal_subsequences "bhuvan"
-
-/-
-info: 'yes'
--/
--- #guard_msgs in
--- #eval has_equal_subsequences "codechef"
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

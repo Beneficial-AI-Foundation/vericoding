@@ -36,25 +36,4 @@ theorem get_ages_negative_diff
   (h : diff_ages < 0) :
   get_ages sum_ages diff_ages = none :=
 sorry
-
-/-
-info: (14, 10)
--/
--- #guard_msgs in
--- #eval get_ages 24 4
-
-/-
-info: (38.5, 24.5)
--/
--- #guard_msgs in
--- #eval get_ages 63 14
-
-/-
-info: None
--/
--- #guard_msgs in
--- #eval get_ages 63 -14
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

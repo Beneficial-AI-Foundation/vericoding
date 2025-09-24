@@ -22,6 +22,3 @@ theorem grid_size_one :
 theorem grid_size_two :
   find_all_points 2 = [(0,0), (0,1), (1,0), (1,1)] := sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

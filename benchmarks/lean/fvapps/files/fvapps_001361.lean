@@ -1,15 +1,16 @@
 -- <vc-preamble>
-def decryptPassword (rules : List (Char × Char)) (encrypted : String) : String :=
-  sorry
-
-def stringToNat (s : String) : Nat :=
-  sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
+def decryptPassword (rules : List (Char × Char)) (encrypted : String) : String :=
+  sorry
+
+def stringToNat (s : String) : Nat :=
+  sorry
+
 def replaceChar (s : String) (oldChar newChar : Char) : String :=
   sorry
 -- </vc-definitions>
@@ -19,20 +20,23 @@ theorem zero_rules_preserve_number {num : Nat} (h : num ≤ 1000000) :
   let encrypted := toString num
   let decrypted := decryptPassword [] encrypted
   stringToNat decrypted = num
-  := sorry
+  :=
+sorry
 
 theorem zero_rules_no_leading_zeros {num : Nat} (h : num ≤ 1000000) (h2 : num ≠ 0) :
-  let encrypted := toString num  
+  let encrypted := toString num
   let decrypted := decryptPassword [] encrypted
   ¬(decrypted.get 0 = '0')
-  := sorry
+  :=
+sorry
 
 theorem zero_rules_single_zero :
   decryptPassword [] "0" = "0"
-  := sorry
+  :=
+sorry
 
-theorem simple_substitutions_preserve_number 
-  {rules : List (Char × Char)} 
+theorem simple_substitutions_preserve_number
+  {rules : List (Char × Char)}
   {num : Nat}
   (h1 : num ≤ 1000000)
   (h2 : ∀ r1 r2, r1 ∈ rules → r2 ∈ rules → r1.1 = r2.1 → r1 = r2)
@@ -43,26 +47,6 @@ theorem simple_substitutions_preserve_number
   let encrypted := rules.foldl (fun acc r => replaceChar acc r.2 r.1) numStr
   let decrypted := decryptPassword rules encrypted
   stringToNat decrypted = num
-  := sorry
-
-/-
-info: '3'
--/
--- #guard_msgs in
--- #eval decrypt_password [("5", "3"), ("3", "1")] "5"
-
-/-
-info: '1800'
--/
--- #guard_msgs in
--- #eval decrypt_password [] "01800.00"
-
-/-
-info: '321.33098'
--/
--- #guard_msgs in
--- #eval decrypt_password [("x", "0"), ("d", "3"), ("#", ".")] "0xd21#dd098x"
+  :=
+sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

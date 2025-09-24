@@ -23,25 +23,4 @@ theorem duplicate_array_increases_subarrays (arr : List Int) :
   let doubled := arr ++ arr 
   findSubarraySum doubled ≥ findSubarraySum arr :=
   sorry
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval findSubarraySum [1, 3, -4, 2, 2, -2]
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval findSubarraySum [0]
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval findSubarraySum [1, -1]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

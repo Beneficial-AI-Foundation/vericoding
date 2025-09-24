@@ -22,25 +22,4 @@ theorem numericals_monotonic_repeated_chars (s : String) (c : Char) :
 
 theorem numericals_starts_with_one {s : String} (h : s ≠ "") :
   ∃ p : String.Pos, (numericals s).get p = '1' := sorry
-
-/-
-info: '1112111121311'
--/
--- #guard_msgs in
--- #eval numericals "Hello, World!"
-
-/-
-info: '123456789101112'
--/
--- #guard_msgs in
--- #eval numericals "aaaaaaaaaaaa"
-
-/-
-info: '11121122342'
--/
--- #guard_msgs in
--- #eval numericals "hello hello"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

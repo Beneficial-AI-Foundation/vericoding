@@ -27,19 +27,4 @@ theorem reverse_order_takes_longer {n : Nat} {stack : List Nat}
   (h5 : stack.Nodup) :
   min_time_to_send_presents n n stack stack.reverse ≥ min_time_to_send_presents n n stack stack :=
 sorry
-
-/-
-info: 5
--/
--- #guard_msgs in
--- #eval min_time_to_send_presents 3 3 [3, 1, 2] [3, 2, 1]
-
-/-
-info: 8
--/
--- #guard_msgs in
--- #eval min_time_to_send_presents 7 2 [2, 1, 7, 3, 4, 5, 6] [3, 1]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

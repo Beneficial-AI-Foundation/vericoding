@@ -28,19 +28,4 @@ theorem validate_uids_known_cases :
   validate_uids ["B1CDEF2354"] = ["Valid"] ∧
   validate_uids ["12345abcdeF"] = ["Invalid"] ∧
   validate_uids ["abcdefghij"] = ["Invalid"] := sorry
-
-/-
-info: ['Invalid', 'Valid']
--/
--- #guard_msgs in
--- #eval validate_uids ["B1CD102354", "B1CDEF2354"]
-
-/-
-info: ['Valid']
--/
--- #guard_msgs in
--- #eval validate_uids ["B1CDEF2354"]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

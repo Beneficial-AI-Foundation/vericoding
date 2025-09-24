@@ -40,25 +40,4 @@ theorem left_padding
 theorem default_space_padding
   (s : String) (w : Nat) :
   super_pad s w = super_pad s w " " := sorry
-
-/-
-info: '      test'
--/
--- #guard_msgs in
--- #eval super_pad "test" 10
-
-/-
-info: 'testnop'
--/
--- #guard_msgs in
--- #eval super_pad "test" 7 ">nope"
-
-/-
-info: 'motestm'
--/
--- #guard_msgs in
--- #eval super_pad "test" 7 "^more complex"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

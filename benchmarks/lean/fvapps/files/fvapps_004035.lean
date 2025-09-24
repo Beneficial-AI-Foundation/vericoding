@@ -23,25 +23,4 @@ theorem over_365_people (n : Int) (h : n ≥ 366) :
 
 theorem decimal_places_bound (n : Int) (h1 : 2 ≤ n) (h2 : n ≤ 365) :
   ∃ k : Float, k = calculate_probability n ∧ k * 100 = Float.round (k * 100) := sorry
-
-/-
-info: 0.03
--/
--- #guard_msgs in
--- #eval calculate_probability 5
-
-/-
-info: 0.25
--/
--- #guard_msgs in
--- #eval calculate_probability 15
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval calculate_probability 1
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

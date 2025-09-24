@@ -21,25 +21,4 @@ theorem shorter_reverse_longer_empty_left (s : String) :
 
 theorem shorter_reverse_longer_empty_right (s : String) :
   shorter_reverse_longer s "" = reverse s := sorry
-
-/-
-info: 'abcdtsrifabcd'
--/
--- #guard_msgs in
--- #eval shorter_reverse_longer "first" "abcd"
-
-/-
-info: 'bauollehbau'
--/
--- #guard_msgs in
--- #eval shorter_reverse_longer "hello" "bau"
-
-/-
-info: 'dcba'
--/
--- #guard_msgs in
--- #eval shorter_reverse_longer "" "abcd"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

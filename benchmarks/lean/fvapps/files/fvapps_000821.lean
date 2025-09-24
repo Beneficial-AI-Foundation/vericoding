@@ -41,6 +41,3 @@ theorem line_endpoints {k: Nat} (h: k ≥ 2) (h2: k ≤ 100) :
   last.startsWith (toString k) ∧
   last.endsWith (toString k) := sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

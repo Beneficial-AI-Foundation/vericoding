@@ -38,25 +38,4 @@ theorem alternating_pattern {n : Nat}
   let result := count_heads_after_operations n 1 coins
   0 ≤ result ∧ result ≤ n - 1 :=
 sorry
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval count_heads_after_operations 5 3 "H T T H T"
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval count_heads_after_operations 7 4 "H H T T T H H"
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval count_heads_after_operations 6 1 "T H T H T T"
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

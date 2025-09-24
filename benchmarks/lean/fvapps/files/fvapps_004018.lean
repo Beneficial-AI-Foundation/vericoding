@@ -27,25 +27,4 @@ sorry
 theorem maintains_order (words : List String) :
   filterEvenLengthWords words = words.filter evenLength :=
 sorry
-
-/-
-info: ['word', 'word']
--/
--- #guard_msgs in
--- #eval filter_even_length_words ["word", "words", "word", "words"]
-
-/-
-info: []
--/
--- #guard_msgs in
--- #eval filter_even_length_words ["Hello", "World"]
-
-/-
-info: ['Four']
--/
--- #guard_msgs in
--- #eval filter_even_length_words ["One", "Two", "Three", "Four"]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

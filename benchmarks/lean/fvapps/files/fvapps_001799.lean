@@ -34,25 +34,4 @@ theorem pour_water_water_trapped {heights : List Nat} {V K : Nat}
   ((pour_water heights V K).get ⟨i-1, sorry⟩ ≥ (pour_water heights V K).get ⟨i, sorry⟩) ∨
   ((pour_water heights V K).get ⟨i+1, sorry⟩ ≥ (pour_water heights V K).get ⟨i, sorry⟩) :=
   sorry
-
-/-
-info: [2, 2, 2, 3, 2, 2, 2]
--/
--- #guard_msgs in
--- #eval pour_water [2, 1, 1, 2, 1, 2, 2] 4 3
-
-/-
-info: [2, 3, 3, 4]
--/
--- #guard_msgs in
--- #eval pour_water [1, 2, 3, 4] 2 2
-
-/-
-info: [4, 4, 4]
--/
--- #guard_msgs in
--- #eval pour_water [3, 1, 3] 5 1
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

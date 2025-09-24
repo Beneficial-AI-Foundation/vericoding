@@ -43,25 +43,4 @@ theorem my_languages_empty_below_threshold (results : TestMap String Nat)
 theorem my_languages_all_included_above_threshold (results : TestMap String Nat)
     (h : ∀ p ∈ results.toList, p.2 ≥ 60) :
   (my_languages results).length = results.toList.length := sorry
-
-/-
-info: ['Ruby', 'Python']
--/
--- #guard_msgs in
--- #eval my_languages {"Java": 10, "Ruby": 80, "Python": 65}
-
-/-
-info: ['Dutch', 'Greek', 'Hindi']
--/
--- #guard_msgs in
--- #eval my_languages {"Hindi": 60, "Greek": 71, "Dutch": 93}
-
-/-
-info: []
--/
--- #guard_msgs in
--- #eval my_languages {"C++": 50, "ASM": 10, "Haskell": 20}
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

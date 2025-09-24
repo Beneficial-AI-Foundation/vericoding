@@ -29,25 +29,4 @@ theorem n_eq_one_result_zero {k : Nat} {values : List Int} {brackets : List Nat}
   (h2 : brackets.length = 1) :
   solve_well_bracketed_sum 1 k values brackets = 0 :=
   sorry
-
-/-
-info: 13
--/
--- #guard_msgs in
--- #eval solve_well_bracketed_sum 6 3 [4, 5, -2, 1, 1, 6] [1, 3, 4, 2, 5, 6]
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval solve_well_bracketed_sum 1 1 [1] [1]
-
-/-
-info: 8
--/
--- #guard_msgs in
--- #eval solve_well_bracketed_sum 2 1 [5, 3] [1, 2]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

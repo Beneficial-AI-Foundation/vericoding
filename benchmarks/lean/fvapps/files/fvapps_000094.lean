@@ -34,25 +34,4 @@ theorem solve_uneven_digit_not_divisible (n: Nat) (h: n > 1) (d: Char) :
   d ∈ (toString (solve_uneven_digit n).natAbs).data →
   ¬((solve_uneven_digit n).natAbs % (d.toNat - 48) = 0) := by
   sorry
-
-/-
-info: -1
--/
--- #guard_msgs in
--- #eval solve_uneven_digit 1
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval len str(result)
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval len str(result)
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

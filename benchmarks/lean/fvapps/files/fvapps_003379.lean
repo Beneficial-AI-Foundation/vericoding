@@ -23,25 +23,4 @@ theorem distance_away_from_center (n : Nat) :
 
 theorem distance_triangle_inequality (n : Nat) :
   n > 1 → distance n ≤ distance (n-1) + 1 ∧ distance n ≤ distance (n+1) + 1 := sorry
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval distance 1
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval distance 5
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval distance 25
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

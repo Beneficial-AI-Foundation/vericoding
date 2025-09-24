@@ -32,25 +32,4 @@ theorem calculate_total_tip_component (subtotal tax tip : Float)
   (h3 : 0 ≤ tax) (h4 : tax ≤ 100)
   (h5 : 0 ≤ tip) (h6 : tip ≤ 100) :
   (calculate_total subtotal tax tip - (calculate_total subtotal tax 0 + (subtotal * tip/100))).abs < 0.01 := sorry
-
-/-
-info: 60.0
--/
--- #guard_msgs in
--- #eval calculate_total 50 10 10
-
-/-
-info: 110.0
--/
--- #guard_msgs in
--- #eval calculate_total 100 5 5
-
-/-
-info: 24.0
--/
--- #guard_msgs in
--- #eval calculate_total 20 8 12
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

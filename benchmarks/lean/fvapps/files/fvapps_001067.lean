@@ -36,25 +36,4 @@ theorem solve_phone_keypad_regression_72 :
 
 theorem solve_phone_keypad_regression_234 :
   solve_phone_keypad "234" = 27 := sorry
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval solve_phone_keypad "5"
-
-/-
-info: 12
--/
--- #guard_msgs in
--- #eval solve_phone_keypad "72"
-
-/-
-info: 27
--/
--- #guard_msgs in
--- #eval solve_phone_keypad "234"
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

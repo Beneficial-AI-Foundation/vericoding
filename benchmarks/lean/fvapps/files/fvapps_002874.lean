@@ -27,25 +27,4 @@ theorem best_match_max_zamalek (al_ahly: List Nat) (zamalek: List Nat)
   ∀ i, i < al_ahly.length → 
     al_ahly[i]! - zamalek[i]! = diff → 
     zamalek[i]! ≤ zamalek[result]! := sorry
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval best_match [6, 4] [1, 2]
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval best_match [1, 2, 3, 4, 5] [0, 1, 2, 3, 4]
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval best_match [3, 4, 3] [1, 1, 2]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

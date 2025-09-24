@@ -26,25 +26,4 @@ theorem build_palindrome_minimal (s : String) (h : s.length > 0) :
 
 theorem build_palindrome_idempotent (s : String) (h₁ : s.length > 0) (h₂ : is_palindrome s) :
   build_palindrome s = s := sorry
-
-/-
-info: 'abcdcba'
--/
--- #guard_msgs in
--- #eval build_palindrome "abcdc"
-
-/-
-info: 'abababa'
--/
--- #guard_msgs in
--- #eval build_palindrome "ababab"
-
-/-
-info: 'abcba'
--/
--- #guard_msgs in
--- #eval build_palindrome "abc"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

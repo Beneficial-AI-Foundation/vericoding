@@ -38,8 +38,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def weighBalls (scales : MockScales) (left right : List Nat) : Weigh := sorry

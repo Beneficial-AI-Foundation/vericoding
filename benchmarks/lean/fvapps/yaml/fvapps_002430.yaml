@@ -34,6 +34,10 @@ vc-description: |-
   -/
 
 vc-preamble: |-
+
+vc-helpers: |-
+
+vc-definitions: |-
   def countSpaces (s : String) : Nat :=
     sorry
   
@@ -42,10 +46,7 @@ vc-preamble: |-
   
   def startsWith (s : String) (c : Char) : Bool :=
     sorry
-
-vc-helpers: |-
-
-vc-definitions: |-
+  
   def reorderSpaces (s : String) : String :=
     sorry
 
@@ -61,26 +62,26 @@ vc-theorems: |-
   theorem reorderSpaces_no_leading_spaces (s : String) :
     ¬startsWith (reorderSpaces s) ' ' := by
     sorry
-  
-  /-
-  info: 'this   is   a   sentence'
-  -/
-  -- #guard_msgs in
-  -- #eval reorder_spaces "  this   is  a sentence "
-  
-  /-
-  info: 'practice   makes   perfect '
-  -/
-  -- #guard_msgs in
-  -- #eval reorder_spaces " practice   makes   perfect"
-  
-  /-
-  info: 'a'
-  -/
-  -- #guard_msgs in
-  -- #eval reorder_spaces "a"
 
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+  
+  /--
+  info: 'this   is   a   sentence'
+  -/
+  #guard_msgs in
+  #eval reorder_spaces "  this   is  a sentence "
+  
+  /--
+  info: 'practice   makes   perfect '
+  -/
+  #guard_msgs in
+  #eval reorder_spaces " practice   makes   perfect"
+  
+  /--
+  info: 'a'
+  -/
+  #guard_msgs in
+  #eval reorder_spaces "a"
 

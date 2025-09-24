@@ -24,8 +24,6 @@ vc-preamble: |-
   def calculate_to_int (s : String) : Int := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def calculate (n1 n2 : String) (op : Op) : String := sorry

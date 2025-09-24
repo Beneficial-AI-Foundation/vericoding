@@ -1,39 +1,39 @@
 vc-description: |-
   /-
   You are given a sequence a1, a2, ..., aN. Find the smallest possible value of ai + aj, where 1 ≤ i < j ≤ N.
-  
+
   -----Input-----
   The first line of the input contains an integer T denoting the number of test cases. The description of T test cases follows. 
   The first line of each description consists of a single integer N.
   The second line of each description contains N space separated integers - a1, a2, ..., aN respectively.
-  
+
   -----Output-----
   For each test case, output a single line containing a single integer - the smallest possible sum for the corresponding test case.
-  
+
   -----Constraints-----
-  
+
   - T = 105, N = 2 : 13 points.
   - T = 105, 2 ≤ N ≤ 10 : 16 points.
   - T = 1000, 2 ≤ N ≤ 100 : 31 points.
   - T = 10, 2 ≤ N ≤ 105 : 40 points.
   - 1 ≤ ai ≤ 106
-  
+
   -----Example-----
   Input:
   1
   4
   5 1 3 4
-  
+
   Output:
   4
-  
+
   -----Explanation-----
   Here we pick a2 and a3. Their sum equals to 1 + 3 = 4.
   -/
 
-vc-preamble: |-
+vc-preamble: |
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def find_min_pair_sum (n : Nat) (nums : List Int) : Int :=
@@ -44,39 +44,39 @@ vc-theorems: |-
     (h : nums.length = n) (h2 : n ≥ 2) :
     ∃ i j : Nat, i < n ∧ j < n ∧ i < j :=
     sorry
-  
+
   theorem find_min_pair_sum_is_minimal {n : Nat} {nums : List Int} {i j : Nat}
     (h : nums.length = n) (h2 : n ≥ 2) (h3 : i < n) (h4 : j < n) (h5 : i < j) :
     ∃ a b : Int, a + b = find_min_pair_sum n nums ∧ a + b ≤ nums.get ⟨i, by {rw [h]; exact h3}⟩ + nums.get ⟨j, by {rw [h]; exact h4}⟩ :=
     sorry
-  
+
   theorem find_min_pair_sum_errors_empty :
     ∀ l : List Int, l.length = 0 → find_min_pair_sum 0 l = find_min_pair_sum 0 l → False :=
     sorry
-  
+
   theorem find_min_pair_sum_errors_single (x : Int) :
     find_min_pair_sum 1 [x] = find_min_pair_sum 1 [x] → False :=
     sorry
-  
-  /-
-  info: 4
-  -/
-  -- #guard_msgs in
-  -- #eval find_min_pair_sum 4 [5, 1, 3, 4]
-  
-  /-
-  info: 5
-  -/
-  -- #guard_msgs in
-  -- #eval find_min_pair_sum 5 [10, 2, 3, 8, 5]
-  
-  /-
-  info: 3
-  -/
-  -- #guard_msgs in
-  -- #eval find_min_pair_sum 3 [1000000, 1, 2]
 
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded
+
+  /--
+  info: 4
+  -/
+  #guard_msgs in
+  #eval find_min_pair_sum 4 [5, 1, 3, 4]
+
+  /--
+  info: 5
+  -/
+  #guard_msgs in
+  #eval find_min_pair_sum 5 [10, 2, 3, 8, 5]
+
+  /--
+  info: 3
+  -/
+  #guard_msgs in
+  #eval find_min_pair_sum 3 [1000000, 1, 2]
 

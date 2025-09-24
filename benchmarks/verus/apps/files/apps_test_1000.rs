@@ -21,9 +21,9 @@ spec fn min_cost(n: int, v: int) -> int {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: int, v: int) -> (result: int)
-    requires valid_input(n, v)
-    ensures result == min_cost(n, v)
+fn solve(n: i8, v: i8) -> (result: i8)
+    requires valid_input(n as int, v as int)
+    ensures result as int == min_cost(n as int, v as int)
 // </vc-spec>
 // <vc-code>
 {

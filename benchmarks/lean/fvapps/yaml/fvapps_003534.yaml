@@ -2,8 +2,15 @@ vc-description: |-
   /-
   Create a function that returns the average of an array of numbers ("scores"), rounded to the nearest whole number. You are not allowed to use any loops (including for, for/in, while, and do/while loops).
   -/
+  
+  -- Apps difficulty: introductory
+  -- Assurance level: guarded
 
 vc-preamble: |-
+
+vc-helpers: |-
+
+vc-definitions: |-
   def average (l : List Int) : Int :=
     sorry
   
@@ -12,10 +19,7 @@ vc-preamble: |-
   
   def list_max (l : List Int) : Int :=
     sorry
-
-vc-helpers: |-
-
-vc-definitions: |-
+  
   def list_sum (l : List Int) : Int :=
     sorry
 
@@ -42,6 +46,4 @@ vc-theorems: |-
     sorry
 
 vc-postamble: |-
-  -- Apps difficulty: introductory
-  -- Assurance level: guarded
 

@@ -20,19 +20,4 @@ theorem get_member_since_unknown_users (username : String) :
 theorem get_member_since_known_values :
   get_member_since "dpleshkov" = "Jul 2016" ∧
   get_member_since "jhoffner" = "Oct 2012" := sorry
-
-/-
-info: 'Jul 2016'
--/
--- #guard_msgs in
--- #eval get_member_since "dpleshkov"
-
-/-
-info: 'Oct 2012'
--/
--- #guard_msgs in
--- #eval get_member_since "jhoffner"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

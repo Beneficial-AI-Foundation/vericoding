@@ -44,25 +44,4 @@ theorem no_pattern_returns_vlad {s : String}
 
 theorem case_insensitive (s1 s2 : String) (h : s1.toLower = s2.toLower) :
   meme_sorting s1 = meme_sorting s2 := sorry
-
-/-
-info: 'Roma'
--/
--- #guard_msgs in
--- #eval meme_sorting "This is programmer meme ecause it has bug"
-
-/-
-info: 'Danik'
--/
--- #guard_msgs in
--- #eval meme_sorting "This is edsigner meme cause it has key word"
-
-/-
-info: 'Vlad'
--/
--- #guard_msgs in
--- #eval meme_sorting "This is meme"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

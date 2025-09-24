@@ -21,8 +21,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def swap_head_tail (lst : List α) : List α := sorry

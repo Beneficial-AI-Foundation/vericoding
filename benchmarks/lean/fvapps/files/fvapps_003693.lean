@@ -29,25 +29,4 @@ theorem area_code_empty_parens :
 theorem area_code_nested_parens :
   area_code "(123(456)789)" = "123(456" := by
   sorry
-
-/-
-info: '555'
--/
--- #guard_msgs in
--- #eval area_code "The supplier"s phone number is (555) 867-5309"
-
-/-
-info: '123'
--/
--- #guard_msgs in
--- #eval area_code "Grae"s cell number used to be (123) 456-7890"
-
-/-
-info: '124'
--/
--- #guard_msgs in
--- #eval area_code "The 102nd district court"s fax line is (124) 816-3264"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

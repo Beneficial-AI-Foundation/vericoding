@@ -38,25 +38,4 @@ theorem repeated_list_profit_geq {prices : List Nat}
   max_stock_profit_with_cooldown (prices ++ prices) ≥ 
   max_stock_profit_with_cooldown prices :=
   sorry
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval max_stock_profit_with_cooldown [1, 2, 3, 0, 2]
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval max_stock_profit_with_cooldown [1]
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval max_stock_profit_with_cooldown [2, 1, 4]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

@@ -20,25 +20,4 @@ theorem edge_positions (pos : String) :
 
 theorem center_max_moves :
   chess_knight "d4" = 8 ∧ chess_knight "e4" = 8 := sorry
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval chess_knight "a1"
-
-/-
-info: 6
--/
--- #guard_msgs in
--- #eval chess_knight "c2"
-
-/-
-info: 8
--/
--- #guard_msgs in
--- #eval chess_knight "d4"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

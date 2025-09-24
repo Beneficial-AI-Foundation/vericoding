@@ -23,25 +23,4 @@ theorem ten_and_two_returns_210 :
 
 theorem multiple_numbers_returns_largest_possible :
   largest_number [3, 30, 34, 5, 9] = "9534330" := sorry
-
-/-
-info: '210'
--/
--- #guard_msgs in
--- #eval largest_number [10, 2]
-
-/-
-info: '9534330'
--/
--- #guard_msgs in
--- #eval largest_number [3, 30, 34, 5, 9]
-
-/-
-info: '0'
--/
--- #guard_msgs in
--- #eval largest_number [0, 0]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

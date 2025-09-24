@@ -27,25 +27,4 @@ sorry
 theorem solve_perfect_squares {n : Nat} :
   ∀ x, n = 2 * (x * x) → solve n = 2 * x :=
 sorry
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval solve 16
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval solve 4
-
-/-
-info: 8
--/
--- #guard_msgs in
--- #eval solve 36
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

@@ -29,25 +29,4 @@ theorem how_many_pizzas_math (n: Nat) (h: n ≤ 1000) :
   let actual_pizzas := (result.splitOn ", ").get! 0 |>.splitOn ": " |>.get! 1 |>.toNat!
   let actual_slices := (result.splitOn ": ").get! 2 |>.toNat!
   actual_pizzas = expected_pizzas ∧ actual_slices = expected_slices := sorry
-
-/-
-info: 'pizzas: 4, slices: 0'
--/
--- #guard_msgs in
--- #eval how_many_pizzas 16
-
-/-
-info: 'pizzas: 2, slices: 2'
--/
--- #guard_msgs in
--- #eval how_many_pizzas 12
-
-/-
-info: 'pizzas: 0, slices: 0'
--/
--- #guard_msgs in
--- #eval how_many_pizzas 0
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

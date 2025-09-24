@@ -42,25 +42,4 @@ theorem blocked_path_impossible
 
 theorem minimal_grid_escape_possible :
   check_subway_escape ["...", "s..", "..."] 3 1 = "YES" := sorry
-
-/-
-info: 'YES'
--/
--- #guard_msgs in
--- #eval check_subway_escape ["...AAAAA........", "s.BBB......CCCCC", "........DDDDD..."] 16 4
-
-/-
-info: 'NO'
--/
--- #guard_msgs in
--- #eval check_subway_escape ["...AAAAA........", "s.BBB....CCCCC..", ".......DDDDD...."] 16 4
-
-/-
-info: 'YES'
--/
--- #guard_msgs in
--- #eval check_subway_escape ["s.ZZ......", ".....AAABB", ".YYYYYY..."] 10 4
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: unguarded

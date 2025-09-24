@@ -35,25 +35,4 @@ theorem sum_even_fibonacci_two :
 theorem sum_even_fibonacci_negative (n : Int) :
   n < 0 → SumEvenFibonacci n = 0 :=
   sorry
-
-/-
-info: 10
--/
--- #guard_msgs in
--- #eval SumEvenFibonacci 8
-
-/-
-info: 60696
--/
--- #guard_msgs in
--- #eval SumEvenFibonacci 111111
-
-/-
-info: 82790070
--/
--- #guard_msgs in
--- #eval SumEvenFibonacci 144100000
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

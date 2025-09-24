@@ -20,25 +20,4 @@ theorem small_n_returns_b (n: Int) (h: n ≤ 2) :
 
 theorem three_marbles_returns_a :
   solve_marbles_game 3 = "A" := sorry
-
-/-
-info: 'B'
--/
--- #guard_msgs in
--- #eval solve_marbles_game 1
-
-/-
-info: 'A'
--/
--- #guard_msgs in
--- #eval solve_marbles_game 3
-
-/-
-info: 'B'
--/
--- #guard_msgs in
--- #eval solve_marbles_game 7
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

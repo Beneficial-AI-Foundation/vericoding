@@ -27,6 +27,3 @@ theorem known_cases :
   solve_permutation 2 [[1,2]] = some [1,2]
   := sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

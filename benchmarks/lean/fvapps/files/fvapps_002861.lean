@@ -24,25 +24,4 @@ theorem pairs_modification_invariant {nums : List Int} (h : nums.length ≥ 2)
 theorem pairs_bounded {nums : List Int} (h : nums.length ≥ 2)
   (h_bounds : ∀ x ∈ nums, -1000 ≤ x ∧ x ≤ 1000) :
   0 ≤ pairs nums ∧ pairs nums ≤ nums.length / 2 := sorry
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval pairs [1, 2, 5, 8, -4, -3, 7, 6, 5]
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval pairs [21, 20, 22, 40, 39, -56, 30, -55, 95, 94]
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval pairs [-55, -56, -7, -6, 56, 55, 63, 62]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

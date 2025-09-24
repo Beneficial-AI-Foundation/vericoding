@@ -27,6 +27,3 @@ theorem dimension_order_invariant (length breadth : Nat)
   (h1 : length > 0) (h2 : breadth > 0) (h3 : length ≤ 100) (h4 : breadth ≤ 100) :
   solve_cake_sharing 1 length breadth = solve_cake_sharing 1 breadth length := sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

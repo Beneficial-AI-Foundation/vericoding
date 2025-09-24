@@ -32,25 +32,4 @@ theorem correct_tail_empty_tail (x : String) :
 
 theorem correct_tail_empty_body (x : String) :
   correctTail "" x = false := sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval correct_tail "Fox" "x"
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval correct_tail "Rhino" "o"
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval correct_tail "Badger" "s"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

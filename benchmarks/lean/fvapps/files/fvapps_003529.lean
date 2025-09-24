@@ -39,25 +39,4 @@ theorem covered_pawns_edge_files {rank : Char} :
   (coveredPawns [String.mk ['a', rank]] = 0) ∧
   (coveredPawns [String.mk ['h', rank]] = 0) :=
 sorry
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval covered_pawns ["f7", "b1", "h1", "c7", "h7"]
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval covered_pawns ["e5", "b2", "b4", "g4", "a1", "a5"]
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval covered_pawns ["a2", "b1", "c2"]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

@@ -41,25 +41,4 @@ theorem unique_date_all_invalid
   (h2 : 32 ≤ b ∧ b ≤ 99)
   (h3 : 32 ≤ c ∧ c ≤ 99) :
   unique_date a b c = "invalid" := sorry
-
-/-
-info: '77/12/13'
--/
--- #guard_msgs in
--- #eval unique_date 13 12 77
-
-/-
-info: 'ambiguous'
--/
--- #guard_msgs in
--- #eval unique_date 1 2 3
-
-/-
-info: 'invalid'
--/
--- #guard_msgs in
--- #eval unique_date 50 40 60
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

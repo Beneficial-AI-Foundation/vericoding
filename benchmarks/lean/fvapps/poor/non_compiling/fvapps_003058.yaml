@@ -66,8 +66,6 @@ vc-preamble: |-
     sumFracts [] = none := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def addFractions (f1 f2 : Fraction) : Fraction := sorry

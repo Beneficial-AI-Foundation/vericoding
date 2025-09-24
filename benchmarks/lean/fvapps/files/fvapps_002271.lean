@@ -1,4 +1,10 @@
 -- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+-- <vc-definitions>
 def hammingDistance (s1 s2 : String) : Nat :=
   sorry
 
@@ -7,12 +13,7 @@ def verifyResult (result : String) (strings : List String) : Bool :=
 
 def findSimilarString (strings : List String) (n m : Nat) : String :=
   sorry
--- </vc-preamble>
 
--- <vc-helpers>
--- </vc-helpers>
-
--- <vc-definitions>
 def isLower (c : Char) : Bool :=
   sorry
 -- </vc-definitions>
@@ -26,7 +27,8 @@ theorem find_similar_string_properties {strings : List String} {n m : Nat}
     (result = "-1" ∨ result.length = m) ∧
     (result = "-1" ∨ ∀ c ∈ result.data, isLower c) ∧
     verifyResult result strings
-  := sorry
+  :=
+sorry
 
 theorem binary_strings_property {strings : List String} {n m : Nat}
   (h1 : strings.length = 2)
@@ -34,7 +36,8 @@ theorem binary_strings_property {strings : List String} {n m : Nat}
   (h3 : ∀ s ∈ strings, ∀ c ∈ s.data, c = 'a' ∨ c = 'b')
   (result := findSimilarString strings n m) :
     verifyResult result strings
-  := sorry
+  :=
+sorry
 
 theorem small_inputs_property {strings : List String} {n m : Nat}
   (h1 : strings.length ≤ 3)
@@ -42,20 +45,6 @@ theorem small_inputs_property {strings : List String} {n m : Nat}
   (h3 : ∀ s ∈ strings, s.length = strings.head!.length)
   (result := findSimilarString strings n m) :
     verifyResult result strings
-  := sorry
-
-/-
-info: '-1'
--/
--- #guard_msgs in
--- #eval find_similar_string ["aaaa", "bbbb"] 2 4
-
-/-
-info: 'aaa'
--/
--- #guard_msgs in
--- #eval find_similar_string ["baa", "aaa", "aab"] 3 3
+  :=
+sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

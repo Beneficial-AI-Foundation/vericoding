@@ -30,25 +30,4 @@ theorem playlists_impossible_cases_one :
 
 theorem playlists_impossible_cases_two :
   num_music_playlists 2 4 2 = 0 := sorry
-
-/-
-info: 6
--/
--- #guard_msgs in
--- #eval num_music_playlists 3 3 1
-
-/-
-info: 6
--/
--- #guard_msgs in
--- #eval num_music_playlists 2 3 0
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval num_music_playlists 2 3 1
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

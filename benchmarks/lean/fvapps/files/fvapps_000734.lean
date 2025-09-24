@@ -19,25 +19,4 @@ sorry
 theorem find_max_bouquet_zeros :
   find_max_bouquet 0 0 0 0 0 0 0 0 0 = 0 :=
 sorry
-
-/-
-info: 7
--/
--- #guard_msgs in
--- #eval find_max_bouquet 1 2 3 3 2 1 1 3 4
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval find_max_bouquet 0 0 0 0 0 0 0 0 0
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval find_max_bouquet 1 1 1 1 1 1 1 1 1
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

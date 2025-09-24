@@ -25,25 +25,4 @@ theorem single_number (n a d : Nat) (h₁ : n > 0) (h₂ : a > 0) (h₃ : d > 0)
   let result := count_santa_gifts n n a d
   result = 0 ∨ result = 1 :=
 sorry
-
-/-
-info: 5
--/
--- #guard_msgs in
--- #eval count_santa_gifts 2 20 2 1
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval count_santa_gifts 1 5 2 1
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval count_santa_gifts 3 7 2 1
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

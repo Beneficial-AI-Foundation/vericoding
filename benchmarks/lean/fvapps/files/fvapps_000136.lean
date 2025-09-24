@@ -21,25 +21,4 @@ theorem getMaxLen_all_zeros {nums : List Int} (h : ∀ x ∈ nums, x = 0) :
 
 theorem getMaxLen_zeros_only (n : Nat) : 
   getMaxLen (List.replicate n 0) = 0 := sorry
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval getMaxLen [1, -2, -3, 4]
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval getMaxLen [0, 1, -2, -3, -4]
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval getMaxLen [-1, -2, -3, 0, 1]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

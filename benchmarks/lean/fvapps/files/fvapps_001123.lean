@@ -51,25 +51,4 @@ theorem determine_winner_adjacent_valid (sequence : String) :
    determine_winner sequence = "snakes" ∨ 
    determine_winner sequence = "tie") :=
 sorry
-
-/-
-info: 'mongooses'
--/
--- #guard_msgs in
--- #eval determine_winner "sm"
-
-/-
-info: 'tie'
--/
--- #guard_msgs in
--- #eval determine_winner "ssm"
-
-/-
-info: 'snakes'
--/
--- #guard_msgs in
--- #eval determine_winner "ssmmmssss"
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

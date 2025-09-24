@@ -18,6 +18,3 @@ theorem small_case_three :
 theorem small_case_five :
   count_special_numbers 5 = (1, 20) := sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

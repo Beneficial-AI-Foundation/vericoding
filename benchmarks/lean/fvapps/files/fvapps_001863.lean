@@ -30,25 +30,4 @@ theorem identical_rows_give_count
   (identical := List.replicate matrix.length (matrix[0]'(by sorry))) :
   max_equal_rows_after_flips identical = matrix.length :=
 sorry
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval max_equal_rows_after_flips [[0, 1], [1, 1]]
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval max_equal_rows_after_flips [[0, 1], [1, 0]]
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval max_equal_rows_after_flips [[0, 0, 0], [0, 0, 1], [1, 1, 0]]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

@@ -1,12 +1,13 @@
 -- <vc-preamble>
-def isSorted (l : List Int) : Bool :=
-  sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
+def isSorted (l : List Int) : Bool :=
+  sorry
+
 def k_smallest_pairs (nums1 nums2 : List Int) (k : Nat) : List (Int × Int) :=
   sorry
 -- </vc-definitions>
@@ -46,6 +47,3 @@ theorem k_smallest_pairs_all_combinations (nums1 nums2 : List Int)
   ∀ x ∈ nums1, ∀ y ∈ nums2, ∃ pair ∈ result, pair = (x, y) :=
 sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

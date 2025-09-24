@@ -23,6 +23,3 @@ theorem triple_trouble_equal_inputs {s : String} {i : Nat} :
          result.data.get? (3 * i + 2) = some c :=
 sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

@@ -28,6 +28,3 @@ theorem find_maximum_xor_all_zeros (nums : List Nat) (h : nums ≠ [])
   (h₂ : ∀ x ∈ nums, x = 0) :
   find_maximum_xor nums = 0 := sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

@@ -1,15 +1,16 @@
 -- <vc-preamble>
-def find_min_m (n : Nat) (nums : List Nat) : Int :=
-sorry
-
-def hasAllOnes (n : Nat) : Bool :=
-sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
+def find_min_m (n : Nat) (nums : List Nat) : Int :=
+sorry
+
+def hasAllOnes (n : Nat) : Bool :=
+sorry
+
 def hasPowerOfTwo (n : Int) (pos : Nat) : Bool :=
 sorry
 -- </vc-definitions>
@@ -31,25 +32,4 @@ theorem result_is_power_of_two_sum (nums : List Nat) (i : Nat) :
   hasPowerOfTwo result i = true →
   ∃ k, result = 2^k :=
 sorry
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval find_min_m 1 [5]
-
-/-
-info: -1
--/
--- #guard_msgs in
--- #eval find_min_m 1 [7]
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval find_min_m 1 [10]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

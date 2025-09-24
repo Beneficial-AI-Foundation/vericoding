@@ -143,10 +143,3 @@ theorem correctness
 : problem_spec implementation string := by
   sorry
 -- </vc-theorems>
-
--- #test implementation "(())" = true
--- #test implementation "()))))))((((()" = false
--- #test implementation "()()" = false
--- #test implementation "()" = false
--- #test implementation "(()())" = true
--- #test implementation "(())((" = true

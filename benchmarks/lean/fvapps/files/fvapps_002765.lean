@@ -30,25 +30,4 @@ theorem nickname_prefix (name : String)
 theorem short_name_error (name : String)
   (h : name.length ≤ 3) :
   nicknameGenerator name = "Error: Name too short" := sorry
-
-/-
-info: 'Jim'
--/
--- #guard_msgs in
--- #eval nickname_generator "Jimmy"
-
-/-
-info: 'Saam'
--/
--- #guard_msgs in
--- #eval nickname_generator "Saamy"
-
-/-
-info: 'Error: Name too short'
--/
--- #guard_msgs in
--- #eval nickname_generator "Sam"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

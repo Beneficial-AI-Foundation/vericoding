@@ -24,25 +24,4 @@ theorem original_list_unchanged {golds : List Nat} (h : golds ≠ []) :
   let _ := distribution_of golds
   golds = original := by
   sorry
-
-/-
-info: [14, 15]
--/
--- #guard_msgs in
--- #eval distribution_of [4, 2, 9, 5, 2, 7]
-
-/-
-info: [12, 1001]
--/
--- #guard_msgs in
--- #eval distribution_of [10, 1000, 2, 1]
-
-/-
-info: [6, 3]
--/
--- #guard_msgs in
--- #eval distribution_of [5, 3, 1]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

@@ -48,25 +48,4 @@ theorem spoonerize_invalid_one_word (s : String) :
 
 theorem spoonerize_invalid_too_many (s : String) :
   (s.split (· == ' ')).length > 2 → spoonerize s = "" := sorry
-
-/-
-info: 'pot nicking'
--/
--- #guard_msgs in
--- #eval spoonerize "not picking"
-
-/-
-info: 'bedding wells'
--/
--- #guard_msgs in
--- #eval spoonerize "wedding bells"
-
-/-
-info: 'belly jeans'
--/
--- #guard_msgs in
--- #eval spoonerize "jelly beans"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

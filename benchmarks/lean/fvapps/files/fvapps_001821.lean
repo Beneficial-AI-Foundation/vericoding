@@ -25,25 +25,4 @@ theorem largest_island_dimensions (grid : List (List Nat)) :
 
 theorem largest_island_singleton :
   largest_island [[0]] = 1 ∧ largest_island [[1]] = 1 := by sorry
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval largest_island [[1, 0], [0, 1]]
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval largest_island [[1, 1], [1, 0]]
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval largest_island [[1, 1], [1, 1]]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

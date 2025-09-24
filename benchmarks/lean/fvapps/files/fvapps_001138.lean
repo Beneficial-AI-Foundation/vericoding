@@ -23,25 +23,4 @@ theorem pascal_triangle (n k : Nat) :
 
 theorem ones_property (n : Nat) : 
   n > 0 → choose_team n 0 = 1 ∧ choose_team n n = 1 := by sorry
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval choose_team 2 1
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval choose_team 3 3
-
-/-
-info: 252
--/
--- #guard_msgs in
--- #eval choose_team 10 5
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

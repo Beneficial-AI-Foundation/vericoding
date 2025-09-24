@@ -1,47 +1,47 @@
 vc-description: |-
   /-
   Given two positive integers n and k, the binary string  Sn is formed as follows:
-  
+
   S1 = "0"
   Si = Si-1 + "1" + reverse(invert(Si-1)) for i > 1
-  
+
   Where + denotes the concatenation operation, reverse(x) returns the reversed string x, and invert(x) inverts all the bits in x (0 changes to 1 and 1 changes to 0).
   For example, the first 4 strings in the above sequence are:
-  
+
   S1 = "0"
   S2 = "011"
   S3 = "0111001"
   S4 = "011100110110001"
-  
+
   Return the kth bit in Sn. It is guaranteed that k is valid for the given n.
-  
+
   Example 1:
   Input: n = 3, k = 1
   Output: "0"
   Explanation: S3 is "0111001". The first bit is "0".
-  
+
   Example 2:
   Input: n = 4, k = 11
   Output: "1"
   Explanation: S4 is "011100110110001". The 11th bit is "1".
-  
+
   Example 3:
   Input: n = 1, k = 1
   Output: "0"
-  
+
   Example 4:
   Input: n = 2, k = 3
   Output: "1"
-  
+
   Constraints:
-  
+
   1 <= n <= 20
   1 <= k <= 2n - 1
   -/
 
-vc-preamble: |-
+vc-preamble: |
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def find_kth_bit (n : Nat) (k : Nat) : Char := 
@@ -50,37 +50,37 @@ vc-definitions: |-
 vc-theorems: |-
   theorem find_kth_bit_valid_output (n : Nat) (k : Nat) (h1 : n > 0) (h2 : k > 0) (h3 : k ≤ 2^n - 1) : 
     find_kth_bit n k = '0' ∨ find_kth_bit n k = '1' := sorry
-  
+
   theorem find_kth_bit_first_is_zero (n : Nat) (h : n > 0) :
     find_kth_bit n 1 = '0' := sorry
-  
+
   theorem find_kth_bit_middle_is_one (n : Nat) (h : n > 1) :
     find_kth_bit n ((2^n - 1)/2 + 1) = '1' := sorry
-  
+
   theorem find_kth_bit_specific_cases :
     find_kth_bit 3 1 = '0' ∧ 
     find_kth_bit 4 11 = '1' ∧
     find_kth_bit 1 1 = '0' := sorry
-  
-  /-
-  info: '0'
-  -/
-  -- #guard_msgs in
-  -- #eval find_kth_bit 3 1
-  
-  /-
-  info: '1'
-  -/
-  -- #guard_msgs in
-  -- #eval find_kth_bit 4 11
-  
-  /-
-  info: '0'
-  -/
-  -- #guard_msgs in
-  -- #eval find_kth_bit 1 1
 
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
+
+  /--
+  info: '0'
+  -/
+  #guard_msgs in
+  #eval find_kth_bit 3 1
+
+  /--
+  info: '1'
+  -/
+  #guard_msgs in
+  #eval find_kth_bit 4 11
+
+  /--
+  info: '0'
+  -/
+  #guard_msgs in
+  #eval find_kth_bit 1 1
 

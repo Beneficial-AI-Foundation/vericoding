@@ -23,25 +23,4 @@ theorem uni_total_additivity (s1 s2 : String) :
 
 theorem uni_total_sum_chars (s : String) :
   uni_total s = s.data.foldr (fun c acc => c.toNat + acc) 0 := sorry
-
-/-
-info: 97
--/
--- #guard_msgs in
--- #eval uni_total "a"
-
-/-
-info: 291
--/
--- #guard_msgs in
--- #eval uni_total "aaa"
-
-/-
-info: 2001
--/
--- #guard_msgs in
--- #eval uni_total "Mary had a little lamb"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

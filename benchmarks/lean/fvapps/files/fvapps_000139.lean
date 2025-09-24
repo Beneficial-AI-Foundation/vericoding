@@ -1,4 +1,10 @@
 -- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+-- <vc-definitions>
 def numRescueBoats (people : List Nat) (limit : Nat) : Nat :=
   sorry
 
@@ -7,12 +13,7 @@ def listMax (l : List Nat) : Nat :=
 
 def listMin (l : List Nat) : Nat :=
   sorry
--- </vc-preamble>
 
--- <vc-helpers>
--- </vc-helpers>
-
--- <vc-definitions>
 def listSort (l : List Nat) : List Nat :=
   sorry
 -- </vc-definitions>
@@ -38,29 +39,8 @@ theorem single_person_per_boat (weights : List Nat) (h : weights ≠ []) :
   numRescueBoats weights min_limit = weights.length := by
   sorry
 
-theorem sorted_same_result (people : List Nat) (limit : Nat) 
+theorem sorted_same_result (people : List Nat) (limit : Nat)
     (h1 : people.length ≥ 2) (h2 : ∀ x ∈ people, x ≤ 100) (h3 : limit ≤ 100) :
   numRescueBoats people limit = numRescueBoats (listSort people) limit := by
   sorry
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval numRescueBoats [1, 2] 3
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval numRescueBoats [3, 2, 2, 1] 3
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval numRescueBoats [3, 5, 3, 4] 5
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

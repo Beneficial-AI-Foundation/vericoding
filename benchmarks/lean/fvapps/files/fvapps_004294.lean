@@ -25,25 +25,4 @@ theorem truncateString_prefix_long (s : String) (n : Nat) :
 theorem truncateString_prefix_short (s : String) (n : Nat) :
   n ≤ 3 → s.length > n →
   (truncateString s n).dropRight 3 = s.take n := sorry
-
-/-
-info: 'codewars'
--/
--- #guard_msgs in
--- #eval truncate_string "codewars" 9
-
-/-
-info: 'code...'
--/
--- #guard_msgs in
--- #eval truncate_string "codewars" 7
-
-/-
-info: 'co...'
--/
--- #guard_msgs in
--- #eval truncate_string "codewars" 2
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

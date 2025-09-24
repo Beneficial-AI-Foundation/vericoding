@@ -28,25 +28,4 @@ theorem bees_upper_bound {grid : Grid} (h : grid ≠ []) :
 theorem reverse_grid_equiv (grid : Grid) :
   let reversed := grid.map (fun s => ⟨s.data.reverse⟩)
   how_many_bees grid = how_many_bees reversed := sorry
-
-/-
-info: 5
--/
--- #guard_msgs in
--- #eval how_many_bees ["bee.bee", ".e..e..", ".b..eeb"]
-
-/-
-info: 7
--/
--- #guard_msgs in
--- #eval how_many_bees ["beee..", "eeb.e.", "ebee.b"]
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval how_many_bees []
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

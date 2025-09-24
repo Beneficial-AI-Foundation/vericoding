@@ -1,40 +1,24 @@
 -- <vc-preamble>
-def kth_smallest_in_sorted_matrix (matrix : List (List Int)) (k : Nat) : Int := sorry
-
-def is_sorted (row : List Int) : Bool := sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
-def is_matrix_sorted (matrix : List (List Int)) : Bool := sorry
+def kth_smallest_in_sorted_matrix (matrix : List (List Int)) (k : Nat) : Int :=
+sorry
 
-theorem empty_rows_handled_raises
-  (matrix : List (List Int))
-  (h1 : matrix = [] ∨ ¬∃row ∈ matrix, row ≠ []) :
-  ∀k, k ≠ 0 → kth_smallest_in_sorted_matrix matrix k = default := sorry
+def is_sorted (row : List Int) : Bool :=
+sorry
+
+def is_matrix_sorted (matrix : List (List Int)) : Bool :=
+sorry
 -- </vc-definitions>
 
 -- <vc-theorems>
-/-
-info: 13
--/
--- #guard_msgs in
--- #eval kth_smallest_in_sorted_matrix [[1, 5, 9], [10, 11, 13], [12, 13, 15]] 8
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval kth_smallest_in_sorted_matrix [[1, 2], [3, 4]] 3
-
-/-
-info: 13
--/
--- #guard_msgs in
--- #eval kth_smallest_in_sorted_matrix [[1, 5, 9], [10, 11, 13], [12, 13, 15], [], []] 8
+theorem empty_rows_handled_raises
+  (matrix : List (List Int))
+  (h1 : matrix = [] ∨ ¬∃row ∈ matrix, row ≠ []) :
+  ∀k, k ≠ 0 → kth_smallest_in_sorted_matrix matrix k = default :=
+sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

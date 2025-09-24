@@ -23,25 +23,4 @@ theorem winner_is_valid (players : List (String × Int)) :
   let player_names := List.map Prod.fst players
   result = "Nobody wins." ∨ result ∈ player_names
   := sorry
-
-/-
-info: 'Lucy'
--/
--- #guard_msgs in
--- #eval find_winner [("Kouta", 1), ("Yuka", 1), ("Mayu", 3), ("Lucy", 2), ("Nana", 5)]
-
-/-
-info: 'Nobody wins.'
--/
--- #guard_msgs in
--- #eval find_winner [("Lucy", 2), ("Nana", 2)]
-
-/-
-info: 'Bob'
--/
--- #guard_msgs in
--- #eval find_winner [("Bob", 1), ("Alice", 2), ("Eve", 3), ("Carol", 2)]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

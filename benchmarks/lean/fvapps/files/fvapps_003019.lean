@@ -1,33 +1,40 @@
 -- <vc-preamble>
-def palindrome (n : Int) : String := sorry 
-
-def isNumericPalindrome (n : Int) : Bool := sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
-def contains (haystack : String) (needle : String) : Bool := sorry
+def palindrome (n : Int) : String :=
+sorry
 
-def stringToInt (s : String) : Option Int := sorry
+def isNumericPalindrome (n : Int) : Bool :=
+sorry
+
+def contains (haystack : String) (needle : String) : Bool :=
+sorry
+
+def stringToInt (s : String) : Option Int :=
+sorry
 -- </vc-definitions>
 
 -- <vc-theorems>
-theorem invalid_input_negative (n : Int) : 
+theorem invalid_input_negative (n : Int) :
   n < 0 → palindrome n = "Not valid"
-  := sorry
+  :=
+sorry
 
 theorem valid_input_contains_palindromes (n : Int) :
   n ≥ 0 → palindrome n ≠ "Not valid" →
   let result := palindrome n
   let numStr := toString n
-  ∀ p ∈ result.split (· = ','), 
-    (∃ s : String, s = p ∧ contains numStr s ∧ 
+  ∀ p ∈ result.split (· = ','),
+    (∃ s : String, s = p ∧ contains numStr s ∧
       match stringToInt s with
       | some i => isNumericPalindrome i
       | none => false)
-  := sorry
+  :=
+sorry
 
 theorem valid_input_sorted_results (n : Int) :
   n ≥ 0 → palindrome n ≠ "Not valid" →
@@ -37,39 +44,21 @@ theorem valid_input_sorted_results (n : Int) :
     match stringToInt (nums.get! i), stringToInt (nums.get! j) with
     | some x, some y => x ≤ y
     | _, _ => true
-  := sorry
+  :=
+sorry
 
 theorem no_palindromes_when_none_exist (n : Int) (numStr : String := toString n) :
   n ≥ 0 →
-  (∀ s : String, contains numStr s → 
+  (∀ s : String, contains numStr s →
     match stringToInt s with
     | some i => ¬isNumericPalindrome i
     | none => true) →
   palindrome n = "No palindromes found"
-  := sorry
+  :=
+sorry
 
 theorem invalid_input_float (f : Float) :
   palindrome 0 = "Not valid"
-  := sorry
-
-/-
-info: [22, 212, 343, 22122]
--/
--- #guard_msgs in
--- #eval palindrome 34322122
-
-/-
-info: 'No palindromes found'
--/
--- #guard_msgs in
--- #eval palindrome 1294
-
-/-
-info: 'Not valid'
--/
--- #guard_msgs in
--- #eval palindrome -123
+  :=
+sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

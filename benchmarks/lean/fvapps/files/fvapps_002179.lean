@@ -1,65 +1,59 @@
 -- <vc-preamble>
-def gcd (a b : Nat) : Nat := sorry
-
-theorem gcd_positive (a b : Nat) : a > 0 → b > 0 → gcd a b > 0 := sorry
-
-def checkNumbersFriends (a b : Nat) : Bool := sorry
-
-theorem not_self_friends (a : Nat) : a > 0 → 
-  checkNumbersFriends a a = false := sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
-def countLonelyNumbers (n : Nat) : Nat := sorry
+def gcd (a b : Nat) : Nat :=
+sorry
 
-theorem lonely_numbers_bounds (n : Nat) : n > 0 →
-  countLonelyNumbers n ≤ n := sorry
+def checkNumbersFriends (a b : Nat) : Bool :=
+sorry
+
+def countLonelyNumbers (n : Nat) : Nat :=
+sorry
+
+def isTriangle (a b c : Nat) : Bool :=
+sorry
+
+def solveTestCases (nums : List Nat) : List Nat :=
+sorry
 -- </vc-definitions>
 
 -- <vc-theorems>
-theorem gcd_divides (a b : Nat) : a > 0 → b > 0 → 
-  a % (gcd a b) = 0 ∧ b % (gcd a b) = 0 := sorry 
+theorem gcd_positive (a b : Nat) : a > 0 → b > 0 → gcd a b > 0 :=
+sorry
 
-theorem gcd_symmetric (a b : Nat) : a > 0 → b > 0 → gcd a b = gcd b a := sorry
+theorem not_self_friends (a : Nat) : a > 0 →
+  checkNumbersFriends a a = false :=
+sorry
 
-def isTriangle (a b c : Nat) : Bool := sorry
+theorem lonely_numbers_bounds (n : Nat) : n > 0 →
+  countLonelyNumbers n ≤ n :=
+sorry
+
+theorem gcd_divides (a b : Nat) : a > 0 → b > 0 →
+  a % (gcd a b) = 0 ∧ b % (gcd a b) = 0 :=
+sorry
+
+theorem gcd_symmetric (a b : Nat) : a > 0 → b > 0 → gcd a b = gcd b a :=
+sorry
 
 theorem triangle_inequality (a b c : Nat) : a > 0 → b > 0 → c > 0 →
-  isTriangle a b c = true → 
-    a + b > c ∧ b + c > a ∧ a + c > b := sorry
+  isTriangle a b c = true →
+    a + b > c ∧ b + c > a ∧ a + c > b :=
+sorry
 
 theorem triangle_symmetric (a b c : Nat) : a > 0 → b > 0 → c > 0 →
-  isTriangle a b c = isTriangle b c a ∧ 
-  isTriangle b c a = isTriangle c a b := sorry
+  isTriangle a b c = isTriangle b c a ∧
+  isTriangle b c a = isTriangle c a b :=
+sorry
 
 theorem friends_symmetric (a b : Nat) : a > 0 → b > 0 →
-  checkNumbersFriends a b = checkNumbersFriends b a := sorry
+  checkNumbersFriends a b = checkNumbersFriends b a :=
+sorry
 
-theorem one_is_lonely : countLonelyNumbers 1 = 1 := sorry
-
-def solveTestCases (nums : List Nat) : List Nat := sorry
-
-/-
-info: [1, 3, 3]
--/
--- #guard_msgs in
--- #eval solve_test_cases [1, 5, 10]
-
-/-
-info: [1]
--/
--- #guard_msgs in
--- #eval solve_test_cases [1]
-
-/-
-info: [3, 7]
--/
--- #guard_msgs in
--- #eval solve_test_cases [10, 20]
+theorem one_is_lonely : countLonelyNumbers 1 = 1 :=
+sorry
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: guarded_and_plausible

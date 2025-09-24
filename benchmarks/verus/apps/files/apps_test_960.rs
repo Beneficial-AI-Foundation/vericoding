@@ -15,13 +15,13 @@ spec fn satisfies_constraint(x: int, n: int, k: int) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: int, k: int) -> (result: int)
+fn solve(n: i8, k: i8) -> (result: i8)
     requires 
-        valid_input(n, k)
+        valid_input(n as int, k as int)
     ensures 
         result > 0,
-        satisfies_constraint(result, n, k),
-        forall|x: int| x > 0 && (x / k) * (x % k) == n ==> result <= x
+        satisfies_constraint(result as int, n as int, k as int),
+        forall|x: int| #[trigger] satisfies_constraint(x, n as int, k as int) ==> result as int <= x
 // </vc-spec>
 // <vc-code>
 {

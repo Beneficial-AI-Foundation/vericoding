@@ -16,25 +16,4 @@ theorem power_law_examples :
   power_law [1, 120] [2, 60] 4 = 30 ∧
   power_law [1, 81] [2, 27] 4 = 9 ∧
   power_law [4, 30] [2, 60] 1 = 120 := sorry
-
-/-
-info: 30
--/
--- #guard_msgs in
--- #eval power_law [1, 120] [2, 60] 4
-
-/-
-info: 9
--/
--- #guard_msgs in
--- #eval power_law [1, 81] [2, 27] 4
-
-/-
-info: 120
--/
--- #guard_msgs in
--- #eval power_law [4, 30] [2, 60] 1
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

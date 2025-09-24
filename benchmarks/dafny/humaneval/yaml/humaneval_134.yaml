@@ -1,0 +1,26 @@
+vc-description: |-
+  This verification task involves implementing a method to determine if the last character of a string is an alphabetical character that stands alone (not part of a word). A "word" is defined as a group of characters separated by spaces. The method should return true if the last character is a letter AND is not part of a word, false otherwise. A standalone letter is either the entire string (single character) or a letter preceded by a space.
+
+vc-preamble: |-
+  
+  predicate IsAlpha(c: char)
+  {
+      ('a' <= c <= 'z') || ('A' <= c <= 'Z')
+  }
+  
+  predicate ValidLastCharIsStandaloneLetter(txt: string)
+  {
+      |txt| > 0 && IsAlpha(txt[|txt| - 1]) && (|txt| == 1 || txt[|txt| - 2] == ' ')
+  }
+
+vc-helpers: |-
+
+vc-spec: |-
+  method check_if_last_char_is_a_letter(txt: string) returns (result: bool)
+      ensures result == ValidLastCharIsStandaloneLetter(txt)
+
+vc-code: |-
+  {
+      assume {:axiom} false;
+    }
+vc-postamble: |-

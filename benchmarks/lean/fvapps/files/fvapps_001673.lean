@@ -37,25 +37,4 @@ theorem output_sorted (n : Int) (h : n > 0) (h' : n ≤ 10) :
 
 theorem result_uniqueness (n : Int) (h : n > 0) (h' : n ≤ 10) :
   List.Nodup (combos n) := sorry
-
-/-
-info: [[1]]
--/
--- #guard_msgs in
--- #eval combos 1
-
-/-
-info: sorted([[1, 1], [2]])
--/
--- #guard_msgs in
--- #eval sorted combos(2)
-
-/-
-info: sorted([[1, 1, 1], [1, 2], [3]])
--/
--- #guard_msgs in
--- #eval sorted combos(3)
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

@@ -52,6 +52,3 @@ theorem same_gas_equivalent (m M V T : Float)
   (h7 : T > -50) (h8 : T < 200) :
   calculate_pressure m m M M V T = calculate_pressure (2*m) 0 M M V T := sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

@@ -27,25 +27,4 @@ theorem xor_with_zero (n : Nat) (arr : List Nat)
 theorem symmetry_property (n : Nat) (arr : List Nat)
   (h1 : arr.length = n) (h2 : n ≥ 2) :
   countFunnyPairs n arr = countFunnyPairs n arr.reverse := sorry
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval count_funny_pairs 5 [1, 2, 3, 4, 5]
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval count_funny_pairs 6 [3, 2, 2, 3, 7, 6]
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval count_funny_pairs 3 [42, 4, 2]
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: unguarded

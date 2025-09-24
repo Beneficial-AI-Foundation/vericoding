@@ -1,12 +1,13 @@
 -- <vc-preamble>
-def songDecoder (s : String) : String :=
-sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
+def songDecoder (s : String) : String :=
+sorry
+
 def isSubstring (sub str : String) : Bool :=
 sorry
 -- </vc-definitions>
@@ -30,30 +31,9 @@ sorry
 
 theorem output_properties (s : String) :
   let result := songDecoder s
-  String.length result ≥ 0 ∧ 
+  String.length result ≥ 0 ∧
   ¬isSubstring "  " result ∧
-  ¬result.startsWith " " ∧ 
+  ¬result.startsWith " " ∧
   ¬result.endsWith " " :=
 sorry
-
-/-
-info: 'WE ARE THE CHAMPIONS MY FRIEND'
--/
--- #guard_msgs in
--- #eval song_decoder "WUBWEWUBAREWUBWUBTHEWUBCHAMPIONSWUBMYWUBFRIENDWUB"
-
-/-
-info: 'A B C'
--/
--- #guard_msgs in
--- #eval song_decoder "AWUBBWUBC"
-
-/-
-info: 'O IPVCQAFWY Q XHDKCPYKCTWWY V FZ'
--/
--- #guard_msgs in
--- #eval song_decoder "WUBWUBOWUBWUBWUBIPVCQAFWYWUBWUBWUBQWUBWUBWUBXHDKCPYKCTWWYWUBWUBWUBVWUBWUBWUBFZWUBWUB"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

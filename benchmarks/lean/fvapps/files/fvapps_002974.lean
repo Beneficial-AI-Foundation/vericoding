@@ -45,25 +45,4 @@ theorem invalid_separators (mac : String) (sep : Char)
     mac = String.mk [h1, h2, '-', h3, h4, '-', h5, h6, '-', 
                     h7, h8, '-', h9, h10, '-', h11, h12]) :
   ¬is_mac_48_address (mac.replace "-" (String.mk [sep])) := sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval is_mac_48_address "00-1B-63-84-45-E6"
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval is_mac_48_address "Z1-1B-63-84-45-E6"
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval is_mac_48_address "not a MAC-48 address"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

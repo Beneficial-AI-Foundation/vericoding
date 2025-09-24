@@ -19,6 +19,3 @@ theorem christmas_box_top_bottom_match {n : Nat} :
   n > 1 → 
   List.head! (christmas_box n) = List.getLast! (christmas_box n) := sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

@@ -40,25 +40,4 @@ theorem fire_fury_valid_result {s : String} :
   (containsSubstring s "FIRE" ∨ containsSubstring s "FURY") →
   ¬(fire_and_fury s = "Fake tweet.") ∧
   ((fire_and_fury s).endsWith "furious." ∨ (fire_and_fury s).endsWith "fired!") := sorry
-
-/-
-info: 'I am furious. You and you are fired!'
--/
--- #guard_msgs in
--- #eval fire_and_fury "FURYYYFIREYYFIRE"
-
-/-
-info: 'You are fired! I am really furious. You are fired!'
--/
--- #guard_msgs in
--- #eval fire_and_fury "FIREYYFURYYFURYYFURRYFIRE"
-
-/-
-info: 'Fake tweet.'
--/
--- #guard_msgs in
--- #eval fire_and_fury "FYRYFIRUFIRUFURE"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

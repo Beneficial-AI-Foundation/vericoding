@@ -42,19 +42,4 @@ theorem tail_swap_involution (s1 s2 : String)
   (h1 : s1.contains ':')
   (h2 : s2.contains ':') :
   tail_swap (tail_swap [s1, s2]) = [s1, s2] := sorry
-
-/-
-info: ['abc:456', 'cde:123']
--/
--- #guard_msgs in
--- #eval tail_swap ["abc:123", "cde:456"]
-
-/-
-info: ['a:xyz', '777:12345']
--/
--- #guard_msgs in
--- #eval tail_swap ["a:12345", "777:xyz"]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

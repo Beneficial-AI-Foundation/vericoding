@@ -25,25 +25,4 @@ theorem first_last_swap (s : String) (h : s.length > 0) :
 
 theorem reverse_preserves_chars (s : String) (c : Char) :
   s.contains c ↔ (reverseString s).contains c := sorry
-
-/-
-info: 'ycarT'
--/
--- #guard_msgs in
--- #eval reverse_string "Tracy"
-
-/-
-info: 'olleH'
--/
--- #guard_msgs in
--- #eval reverse_string "Hello"
-
-/-
-info: 'nohtyP'
--/
--- #guard_msgs in
--- #eval reverse_string "Python"
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

@@ -1,12 +1,13 @@
 -- <vc-preamble>
-def solve_frog_jumps (s : String) : Nat :=
-  sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
+def solve_frog_jumps (s : String) : Nat :=
+  sorry
+
 def String.reverse (s : String) : String :=
   sorry
 -- </vc-definitions>
@@ -14,34 +15,13 @@ def String.reverse (s : String) : String :=
 -- <vc-theorems>
 theorem frog_jumps_positive_bound (s : String) :
   solve_frog_jumps s ≥ 1 :=
-  sorry
+sorry
 
 theorem frog_jumps_upper_bound (s : String) :
   solve_frog_jumps s ≤ s.length + 2 :=
-  sorry
+sorry
 
 theorem frog_jumps_consecutive_r (s : String) :
   solve_frog_jumps s = solve_frog_jumps (s.replace "R" "RR") :=
-  sorry
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval solve_frog_jumps "LRLRRLL"
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval solve_frog_jumps "L"
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval solve_frog_jumps "LLR"
+sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

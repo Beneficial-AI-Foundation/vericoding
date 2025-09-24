@@ -32,25 +32,4 @@ theorem count_substring_min_n :
   count_substring_appearances 1 ["a"] = [1] ∧
   count_substring_appearances 1 ["aa"] = [0] :=
   sorry
-
-/-
-info: [1]
--/
--- #guard_msgs in
--- #eval count_substring_appearances 2 ["aa"]
-
-/-
-info: [52]
--/
--- #guard_msgs in
--- #eval count_substring_appearances 2 ["d"]
-
-/-
-info: [443568031, 71288256, 41317270]
--/
--- #guard_msgs in
--- #eval count_substring_appearances 12 ["cdmn", "qweewef", "qs"]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

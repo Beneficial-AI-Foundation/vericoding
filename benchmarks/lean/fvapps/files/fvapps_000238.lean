@@ -30,25 +30,4 @@ theorem max_equal_freq_handles_single_value {n: Nat} (k: Nat) :
   let nums := List.replicate k n
   max_equal_freq nums = nums.length :=
   sorry
-
-/-
-info: 7
--/
--- #guard_msgs in
--- #eval max_equal_freq [2, 2, 1, 1, 5, 3, 3, 5]
-
-/-
-info: 5
--/
--- #guard_msgs in
--- #eval max_equal_freq [1, 1, 1, 2, 2, 2]
-
-/-
-info: 13
--/
--- #guard_msgs in
--- #eval max_equal_freq [1, 1, 1, 2, 2, 2, 3, 3, 3, 4, 4, 4, 5]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

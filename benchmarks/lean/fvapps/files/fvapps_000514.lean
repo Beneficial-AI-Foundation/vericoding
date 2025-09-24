@@ -29,25 +29,4 @@ theorem shots_always_positive (n l: Nat) (hn: n > 0) (hl: l > 0):
 theorem shots_less_than_length (n l: Nat) (hn: n > 0) (hl: l > 0):
   min_shots_to_find_x n l ≤ l := by
   sorry
-
-/-
-info: 10
--/
--- #guard_msgs in
--- #eval min_shots_to_find_x 1 10
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval min_shots_to_find_x 2 10
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval min_shots_to_find_x 3 16
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

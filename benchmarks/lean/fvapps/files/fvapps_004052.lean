@@ -22,31 +22,4 @@ theorem pattern_examples :
   pattern (-1) = "" ∧
   pattern 4 = "1\n333" ∧
   pattern 5 = "1\n333\n55555" := sorry
-
-/-
-info: '1\n333'
--/
--- #guard_msgs in
--- #eval pattern 4
-
-/-
-info: '1\n333\n55555'
--/
--- #guard_msgs in
--- #eval pattern 5
-
-/-
-info: ''
--/
--- #guard_msgs in
--- #eval pattern 0
-
-/-
-info: ''
--/
--- #guard_msgs in
--- #eval pattern -5
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

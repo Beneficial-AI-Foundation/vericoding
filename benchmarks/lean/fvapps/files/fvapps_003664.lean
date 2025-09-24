@@ -34,25 +34,4 @@ theorem all_odd_returns_first_index (arr : List Int) :
   (∀ x ∈ arr, x % 2 = 1) → 
   odd_one arr = 0 :=
   sorry
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval odd_one [2, 4, 6, 7, 10]
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval odd_one [2, 16, 98, 10, 13, 78]
-
-/-
-info: -1
--/
--- #guard_msgs in
--- #eval odd_one [2, 4, 6, 8]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

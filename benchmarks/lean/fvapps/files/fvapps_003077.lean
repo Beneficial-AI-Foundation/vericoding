@@ -36,25 +36,4 @@ sorry
 theorem get_users_ids_no_hash (s : String) (x : String) :
   x ∈ get_users_ids s → ∀ i, x.get? i ≠ some '#' :=
 sorry
-
-/-
-info: ['12345']
--/
--- #guard_msgs in
--- #eval get_users_ids "uid12345"
-
-/-
-info: ['doublehashtag']
--/
--- #guard_msgs in
--- #eval get_users_ids "uid##doublehashtag"
-
-/-
-info: ['12 ab', '', 'mixedchars']
--/
--- #guard_msgs in
--- #eval get_users_ids "uid12 ab, uid#, uidMiXeDcHaRs"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

@@ -25,25 +25,4 @@ theorem case_sensitive_uppercase_only (s : String) :
   res.1 = false ∧ 
   (∀ c ∈ s.data, (c.toString) ∈ res.2) ∧
   (∀ x ∈ res.2, ∃ c ∈ s.data, x = c.toString) := sorry
-
-/-
-info: [True, []]
--/
--- #guard_msgs in
--- #eval case_sensitive "codewars"
-
-/-
-info: [False, ['W', 'R']]
--/
--- #guard_msgs in
--- #eval case_sensitive "codeWaRs"
-
-/-
-info: [True, []]
--/
--- #guard_msgs in
--- #eval case_sensitive ""
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

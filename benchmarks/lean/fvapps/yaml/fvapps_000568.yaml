@@ -3,52 +3,52 @@ vc-description: |-
   Given a binary string $S$ consisting of only 1’s and 0’s where 1 represents a Square and 0 represents a Circle. The diameter of the circle and the side of the square must be any integer (obviously > 0) . You will have to perfectly inscribe (as shown in the example below) the respective geometric figure at $S$$i+1$ inside of $S$$i$ where $i$ $\epsilon$ $[0,N-2]$, if it is possible. Note that, it will not be possible to inscribe if the dimension of the geometric figure you are perfectly inscribing is not an integer and you will discard the rest of the string. Find the maximum number of circles we can inscribe in a square according to the given string.  
   For a given binary string there can be only one geometric figure and this figure is concentric.  
   For example : the string 1100 can be represented as the figure below, the first two squares have the same side length and the next two circles have the same diameter.  
-  
+
   Another example : the string 0001 can be represented as the one given below
   Again here, we have 3 circles of the same diameter and one square inscribed in them.  
-  
+
   -----Input:-----
   The first line contains $N$, the number of strings
-  
+
   Then each of the next $N$ lines contains a binary string $S$.  
-  
+
   -----Output:-----
   The $N$ lines of output should have $N$ integers in separate lines, the maximum number of circles we can inscribe in a square according to the given string $S$ .  
-  
+
   -----Constraints-----
   - 1 $\leq$ $N$ $\leq$ 103
   - 1 $\leq$ length of string $S$ $\leq$ 104
-  
+
   -----Sample Input:-----
   3
-  
+
   1110
-  
+
   0010
-  
+
   1001000  
-  
+
   -----Sample Output:-----
   1
-  
+
   0
-  
+
   2  
-  
+
   -----Explanation:-----
   In  the first case, we can inscribe the string 1110 as :  three squares of side length 4 units (on top of each other) and then  we can inscribe one circle of diameter 4 units.
   The answer is 1 since, there is 1 circle inscribed in a square.
-  
+
   In the second case 0010, Let the first two circles be of some diameter 10, we can see that we cannot inscribe another square of any integer dimension inside them.
-  
+
   So, the answer is 0.
-  
+
   In the third case 1001000, we can take the first square of size 10, then inscribe two circles of diameter 5, then we cannot inscribe another square in this since, it will not be of any possible integer dimension and we discard the rest of the string.
   -/
 
-vc-preamble: |-
+vc-preamble: |
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def count_inscribed_circles (s : String) : Nat :=
@@ -58,51 +58,51 @@ vc-theorems: |-
   theorem count_inscribed_circles_non_negative (s : String) :
     count_inscribed_circles s ≥ 0 :=
   sorry
-  
+
   theorem no_leading_ones_implies_zero (s : String) :
     (∀ c ∈ s.data, c ≠ '1') ∨ (s.length > 0 ∧ s.data.get? 0 = some '0') →
     count_inscribed_circles s = 0 :=
   sorry 
-  
+
   theorem result_bounded_by_zeros_after_first_one (s : String) 
     (h1 : s.length > 0) (h2 : ∃ i < s.length, s.data.get? i = some '1') :
     let first_one := (s.data.findIdx (· = '1'))
     let zeros_after := (s.data.drop first_one).filter (· = '0') |>.length
     count_inscribed_circles s ≤ zeros_after :=
   sorry
-  
+
   theorem all_ones_gives_zero (s : String) :
     (∀ c ∈ s.data, c = '1') →
     count_inscribed_circles s = 0 :=
   sorry
-  
+
   theorem ones_then_zeros_pattern (n : Nat) (h : n > 0) :
     count_inscribed_circles (String.mk ((List.replicate 1 '1') ++ (List.replicate n '0'))) = n :=
   sorry
-  
+
   theorem many_ones_then_zeros_pattern (n : Nat) (h : n > 0) :
     count_inscribed_circles (String.mk ((List.replicate n '1') ++ (List.replicate n '0'))) = n :=
   sorry
-  
-  /-
-  info: 1
-  -/
-  -- #guard_msgs in
-  -- #eval count_inscribed_circles "1110"
-  
-  /-
-  info: 0
-  -/
-  -- #guard_msgs in
-  -- #eval count_inscribed_circles "0010"
-  
-  /-
-  info: 2
-  -/
-  -- #guard_msgs in
-  -- #eval count_inscribed_circles "1001000"
 
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
+
+  /--
+  info: 1
+  -/
+  #guard_msgs in
+  #eval count_inscribed_circles "1110"
+
+  /--
+  info: 0
+  -/
+  #guard_msgs in
+  #eval count_inscribed_circles "0010"
+
+  /--
+  info: 2
+  -/
+  #guard_msgs in
+  #eval count_inscribed_circles "1001000"
 

@@ -1,12 +1,13 @@
 -- <vc-preamble>
-def find_max_components (n: Nat) (edges: List (Nat × Nat)) : Nat :=
-  sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
+def find_max_components (n: Nat) (edges: List (Nat × Nat)) : Nat :=
+  sorry
+
 def is_tree (n: Nat) (edges: List (Nat × Nat)) : Bool :=
   sorry
 -- </vc-definitions>
@@ -16,25 +17,4 @@ theorem line_graph_components {n: Nat} (h: n ≥ 2) :
   let edges := List.range (n-1) |>.map (λi => (i+1, i+2))
   find_max_components n edges = 1 :=
 sorry
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval find_max_components 7 [(1, 2), (1, 3), (2, 4), (2, 5), (3, 6), (3, 7)]
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval find_max_components 3 [(1, 2), (2, 3)]
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval find_max_components 4 [(1, 2), (1, 3), (1, 4)]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

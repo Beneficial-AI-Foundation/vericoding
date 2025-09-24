@@ -24,25 +24,4 @@ theorem double_transpose_identity {α : Type} (m : List (List α))
   (h1 : m.length > 0) (h2 : (m[0]!).length > 0)
   (h3 : ∀ i < m.length, (m[i]!).length = (m[0]!).length) :
   List.transpose (List.transpose m) = m := by sorry
-
-/-
-info: [[]]
--/
--- #guard_msgs in
--- #eval transpose [[]]
-
-/-
-info: [[1]]
--/
--- #guard_msgs in
--- #eval transpose [[1]]
-
-/-
-info: expected
--/
--- #guard_msgs in
--- #eval transpose [[1, 2, 3], [4, 5, 6]]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

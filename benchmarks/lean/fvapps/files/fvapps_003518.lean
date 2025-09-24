@@ -29,25 +29,4 @@ theorem heron_symmetric (a b c : Float)
 theorem heron_equilateral (side : Float)
   (h : side > 0) :
   heron side side side = (side * side * Float.sqrt 3) / 4 := sorry
-
-/-
-info: 6.0
--/
--- #guard_msgs in
--- #eval heron 3 4 5
-
-/-
-info: 24.0
--/
--- #guard_msgs in
--- #eval heron 6 8 10
-
-/-
-info: 10.83
--/
--- #guard_msgs in
--- #eval heron 5 5 5
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

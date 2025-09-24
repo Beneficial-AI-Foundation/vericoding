@@ -42,6 +42,3 @@ theorem equal_J_single_value (B : Float) (J : Nat) :
   Float.abs (List.get! result 0 - B * (Float.ofNat (J * (J + 1)))) < 1e-10 :=
 sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

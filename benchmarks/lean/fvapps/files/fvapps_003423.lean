@@ -24,25 +24,4 @@ theorem large_nums_not_onion {arr : List Int}
 
 theorem onion_symmetric {arr : List Int} :
   is_onion_array arr = is_onion_array arr.reverse := sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval is_onion_array [6, 0, 4]
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval is_onion_array [1, 1, 15, 10, -1]
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval is_onion_array [1, 2, 19, 4, 5]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

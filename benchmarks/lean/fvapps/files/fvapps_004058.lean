@@ -43,25 +43,4 @@ theorem tankvol_empty
   (vt_pos : vt ≥ 1)
   (vt_bound : vt ≤ 1000000) :
   tankvol 0 d vt = 0 := sorry
-
-/-
-info: 1021
--/
--- #guard_msgs in
--- #eval tankvol 40 120 3500
-
-/-
-info: 1750
--/
--- #guard_msgs in
--- #eval tankvol 60 120 3500
-
-/-
-info: 2478
--/
--- #guard_msgs in
--- #eval tankvol 80 120 3500
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

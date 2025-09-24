@@ -35,25 +35,4 @@ theorem first_candy_at_bottom_right {r c : Nat} (hr : r > 0) (hc : c > 0) :
 theorem last_candy_level_one_if_fits {n r c : Nat} (hr : r > 0) (hc : c > 0) :
   n ≤ r * c →
   (get_candy_position n r c n)[0]! = 1 := by sorry
-
-/-
-info: [1, 0, 1]
--/
--- #guard_msgs in
--- #eval get_candy_position 6 2 2 3
-
-/-
-info: [2, 1, 1]
--/
--- #guard_msgs in
--- #eval get_candy_position 6 2 2 5
-
-/-
-info: [-1, -1, -1]
--/
--- #guard_msgs in
--- #eval get_candy_position 6 2 2 7
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

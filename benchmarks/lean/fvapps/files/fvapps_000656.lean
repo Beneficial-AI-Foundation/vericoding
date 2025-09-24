@@ -23,25 +23,4 @@ theorem length_matches_input {n : Nat} (h : n ≠ 1 ∧ isPowerOfTwo n = false) 
 theorem permutation_elements {n : Nat} (h : n ≠ 1 ∧ isPowerOfTwo n = false) (i : Nat) (hi : i < n) :
   ∃ j, j < (solve_beautiful_permutation n).length ∧ 
        (solve_beautiful_permutation n).get ⟨j, by sorry⟩ = i + 1 := sorry
-
-/-
-info: [-1]
--/
--- #guard_msgs in
--- #eval solve_beautiful_permutation 4
-
-/-
-info: [2, 3, 1]
--/
--- #guard_msgs in
--- #eval solve_beautiful_permutation 3
-
-/-
-info: [2, 3, 1, 5, 4]
--/
--- #guard_msgs in
--- #eval solve_beautiful_permutation 5
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

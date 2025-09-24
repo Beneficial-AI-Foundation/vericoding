@@ -33,6 +33,3 @@ theorem format_output_valid {groups : List (List Nat)} :
   result.length = groups.length + 1 ∧
   result.head! = toString groups.length := sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

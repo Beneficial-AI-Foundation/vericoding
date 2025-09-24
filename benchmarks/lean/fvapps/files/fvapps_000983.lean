@@ -36,25 +36,4 @@ theorem permutation_property (s s' : String) :
   (∀ c : Char, c ∈ s.data ↔ c ∈ s'.data) →
   solve_magical_power s = solve_magical_power s' :=
   sorry
-
-/-
-info: 65536
--/
--- #guard_msgs in
--- #eval solve_magical_power "35566"
-
-/-
-info: -1
--/
--- #guard_msgs in
--- #eval solve_magical_power "31"
-
-/-
-info: 256
--/
--- #guard_msgs in
--- #eval solve_magical_power "256"
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

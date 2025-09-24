@@ -37,6 +37,3 @@ theorem check_snake_segments_vertical_overlap
   check_snake_segments x y x (y+5) x (y+3) x (y+8) = "yes" :=
 sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

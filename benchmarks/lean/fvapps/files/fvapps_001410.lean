@@ -32,6 +32,3 @@ theorem find_left_fraction_reduced {a b n : Nat}
     k > 1 →
     ¬(k ∣ num ∧ k ∣ den) := sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

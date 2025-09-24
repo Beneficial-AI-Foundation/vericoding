@@ -21,25 +21,4 @@ theorem package_size_bounded {n : Nat} (h : n > 0) :
 theorem package_size_maximizes_leftovers {n : Nat} (h : n > 0) :
   ∀ k : Nat, k > 0 → k < solve_packaging n → 
     n % k ≤ n % (solve_packaging n) := sorry
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval solve_packaging 2
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval solve_packaging 5
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval solve_packaging 7
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

@@ -29,25 +29,4 @@ theorem consonants_not_clingy (s : String)
 theorem single_char_not_clingy (c : Char) 
   (h : c.isUpper) :
   is_clingy c.toString = false := sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval is_clingy "AUXFC"
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval is_clingy "XBCDEF"
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval is_clingy "AEIOU"
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

@@ -45,25 +45,4 @@ theorem same_amount_returns_zero (principal interest tax : Float)
   (h5 : principal ≥ 100) (h6 : principal ≤ 10000) :
   calculate_years principal interest tax principal = 0 :=
   sorry
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval calculate_years 1000 0.05 0.18 1100
-
-/-
-info: 14
--/
--- #guard_msgs in
--- #eval calculate_years 1000 0.01625 0.18 1200
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval calculate_years 1000 0.05 0.18 1000
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

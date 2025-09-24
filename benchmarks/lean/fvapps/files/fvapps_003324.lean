@@ -30,6 +30,3 @@ theorem sum_dig_pow_sorted (a b : Nat) (h : a ≤ b) :
 theorem sum_dig_pow_single (n : Nat) :
   sum_dig_pow n n = if dig_pow n = n then [n] else [] := sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

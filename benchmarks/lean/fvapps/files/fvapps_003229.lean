@@ -42,25 +42,4 @@ theorem solve_constant_sequence {arr : List Int}
   (h3 : ∀ (i j : Fin arr.length), arr.get i = arr.get j) :
   solve arr = 0 :=
 sorry
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval solve [1, 1, 3, 5, 6, 5]
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval solve [2, 1, 2]
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval solve [1, 2, 3]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

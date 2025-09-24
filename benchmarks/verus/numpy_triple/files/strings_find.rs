@@ -27,20 +27,20 @@ fn find(a: Vec<String>, sub: Vec<String>, start: Vec<i32>, end_pos: Vec<i32>) ->
         forall|i: int| 0 <= i < result.len() ==> {
 
             (result[i] == -1 <==> 
-                forall|pos: int| start[i] <= pos && pos <= end_pos[i] && pos + sub[i]@.len() <= a[i]@.len() ==>
+                forall|pos: int| start[i] as int <= pos && pos <= end_pos[i] as int && pos + sub[i]@.len() <= a[i]@.len() ==>
                     !find_substring_at(a[i]@, sub[i]@, pos)) &&
 
             (result[i] >= 0 ==> 
-                start[i] <= result[i] && 
-                result[i] <= end_pos[i] &&
-                result[i] + sub[i]@.len() <= a[i]@.len() &&
+                start[i] as int <= result[i] as int && 
+                result[i] as int <= end_pos[i] as int &&
+                result[i] as int + sub[i]@.len() <= a[i]@.len() &&
                 find_substring_at(a[i]@, sub[i]@, result[i] as int) &&
-                forall|pos: int| start[i] <= pos && pos < result[i] ==> 
+                forall|pos: int| start[i] as int <= pos && pos < result[i] as int ==> 
                     !find_substring_at(a[i]@, sub[i]@, pos)) &&
 
             (sub[i]@.len() == 0 ==> result[i] == start[i]) &&
 
-            (start[i] + sub[i]@.len() > a[i]@.len() ==> result[i] == -1) &&
+            (start[i] as int + sub[i]@.len() > a[i]@.len() ==> result[i] == -1) &&
 
             (start[i] > end_pos[i] ==> result[i] == -1)
         }

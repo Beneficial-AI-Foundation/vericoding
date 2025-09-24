@@ -21,6 +21,3 @@ theorem reverse_length_leq (n : Nat) :
 theorem reverse_single_digit (n : Nat) :
   n ≤ 9 → reverse n = n := sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

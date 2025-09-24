@@ -21,25 +21,4 @@ theorem split_in_parts_no_change_when_long_enough {s : String}
   split_in_parts s s.length = s ∧ 
   split_in_parts s (s.length + 1) = s :=
   sorry
-
-/-
-info: 'sup erc ali fra gil ist ice xpi ali doc iou s'
--/
--- #guard_msgs in
--- #eval split_in_parts "supercalifragilisticexpialidocious" 3
-
-/-
-info: 'H e l l o K a t a'
--/
--- #guard_msgs in
--- #eval split_in_parts "HelloKata" 1
-
-/-
-info: 'HelloKata'
--/
--- #guard_msgs in
--- #eval split_in_parts "HelloKata" 9
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

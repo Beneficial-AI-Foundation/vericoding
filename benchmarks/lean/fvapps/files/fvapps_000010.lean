@@ -31,6 +31,3 @@ theorem is_subsequence {arr : List Int} (h : arr.length ≥ 2) :
   IsSubsequence result arr :=
   sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

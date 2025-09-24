@@ -40,25 +40,4 @@ theorem tops_output_order {s : String} (h : s.length ≥ 10) :
 
 theorem tops_deterministic {s : String} :
   tops s = tops s := by sorry
-
-/-
-info: ''
--/
--- #guard_msgs in
--- #eval tops ""
-
-/-
-info: '2'
--/
--- #guard_msgs in
--- #eval tops "12"
-
-/-
-info: '3pgb'
--/
--- #guard_msgs in
--- #eval tops "abcdefghijklmnopqrstuvwxyz12345"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

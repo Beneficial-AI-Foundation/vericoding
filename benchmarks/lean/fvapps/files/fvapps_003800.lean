@@ -30,25 +30,4 @@ theorem invalid_operator (op : String) (x y : Float) :
   op ≠ "+" → op ≠ "-" → op ≠ "*" → op ≠ "/" →
   (basic_op op x y).isNaN :=
   sorry
-
-/-
-info: 11
--/
--- #guard_msgs in
--- #eval basic_op "+" 4 7
-
-/-
-info: -3
--/
--- #guard_msgs in
--- #eval basic_op "-" 15 18
-
-/-
-info: 25
--/
--- #guard_msgs in
--- #eval basic_op "*" 5 5
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

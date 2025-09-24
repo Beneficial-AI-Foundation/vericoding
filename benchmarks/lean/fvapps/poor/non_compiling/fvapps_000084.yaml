@@ -41,8 +41,6 @@ vc-preamble: |-
   def is_binary (s : BinaryString) : Prop := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def matches_at_index (s₁ s₂ : BinaryString) (x i : Nat) : Prop := sorry

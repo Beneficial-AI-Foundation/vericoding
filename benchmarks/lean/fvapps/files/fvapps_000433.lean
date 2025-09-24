@@ -27,25 +27,4 @@ theorem num_teams_strictly_monotone {rating : List Int} (h₁ : rating.length �
 theorem num_teams_all_equal {rating : List Int} (h : rating.length ≥ 3) :
   (∀ x ∈ rating, x = rating[0]!) → 
   num_teams rating = 0 := by sorry
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval num_teams [2, 5, 3, 4, 1]
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval num_teams [2, 1, 3]
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval num_teams [1, 2, 3, 4]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

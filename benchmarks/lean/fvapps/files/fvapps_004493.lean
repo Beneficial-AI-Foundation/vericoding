@@ -20,25 +20,4 @@ theorem repeat_str_zero (s : String) :
 
 theorem repeat_str_one (s : String) :
   repeat_str 1 s = s := sorry
-
-/-
-info: 'aaaa'
--/
--- #guard_msgs in
--- #eval repeat_str 4 "a"
-
-/-
-info: 'hello hello hello '
--/
--- #guard_msgs in
--- #eval repeat_str 3 "hello "
-
-/-
-info: 'abcabc'
--/
--- #guard_msgs in
--- #eval repeat_str 2 "abc"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

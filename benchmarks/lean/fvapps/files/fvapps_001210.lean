@@ -1,24 +1,24 @@
 -- <vc-preamble>
-def solve_virus_spread (N : Nat) (init_pop : String) (D : Nat) (isolations : List Nat) : Nat :=
-  sorry
+def countOnes (s : String) : Nat :=
+  s.data.filter (· = '1') |>.length
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
-def countOnes (s : String) : Nat :=
-  s.data.filter (· = '1') |>.length
+def solve_virus_spread (N : Nat) (init_pop : String) (D : Nat) (isolations : List Nat) : Nat :=
+  sorry
 -- </vc-definitions>
 
 -- <vc-theorems>
 theorem solve_virus_spread_type (N : Nat) (init_pop : String) (D : Nat) (isolations : List Nat) :
-  Nat.le 0 (solve_virus_spread N init_pop D isolations) ∧ 
+  Nat.le 0 (solve_virus_spread N init_pop D isolations) ∧
   Nat.le (solve_virus_spread N init_pop D isolations) N :=
 sorry
 
 theorem solve_virus_spread_no_infected (N : Nat) (init_pop : String) (D : Nat) (isolations : List Nat) :
-  (∀ c, c ∈ init_pop.data → c ≠ '1') → 
+  (∀ c, c ∈ init_pop.data → c ≠ '1') →
   solve_virus_spread N init_pop D isolations = 0 :=
 sorry
 
@@ -30,19 +30,4 @@ sorry
 theorem solve_virus_spread_monotonic (N : Nat) (init_pop : String) (D : Nat) (isolations : List Nat) :
   Nat.le (countOnes init_pop) (solve_virus_spread N init_pop D isolations) :=
 sorry
-
-/-
-info: 6
--/
--- #guard_msgs in
--- #eval solve_virus_spread 9 "000010000" 3 [2, 5, 8]
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval solve_virus_spread 5 "00001" 1 [5]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

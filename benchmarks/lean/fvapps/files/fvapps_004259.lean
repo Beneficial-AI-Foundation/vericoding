@@ -23,25 +23,4 @@ theorem last_digit_base_cases :
   get_last_digit 1 = 1 ∧
   get_last_digit 2 = 1 :=
   sorry
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval get_last_digit 15
-
-/-
-info: 5
--/
--- #guard_msgs in
--- #eval get_last_digit 193150
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval get_last_digit 300
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

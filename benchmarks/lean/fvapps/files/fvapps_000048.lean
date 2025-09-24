@@ -29,25 +29,4 @@ theorem min_trades_positive {x y k : Nat} (hx : x ≥ 2) (hy : y ≥ 1) (hk : k 
 
 theorem min_trades_nat {x y k : Nat} (hx : x ≥ 2) (hy : y ≥ 1) (hk : k ≥ 1) :
   min_trades x y k = ↑(min_trades x y k) := sorry
-
-/-
-info: 14
--/
--- #guard_msgs in
--- #eval min_trades 2 1 5
-
-/-
-info: 33
--/
--- #guard_msgs in
--- #eval min_trades 42 13 24
-
-/-
-info: 25
--/
--- #guard_msgs in
--- #eval min_trades 12 11 12
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

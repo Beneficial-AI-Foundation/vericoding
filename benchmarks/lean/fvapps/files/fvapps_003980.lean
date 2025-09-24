@@ -22,25 +22,4 @@ theorem squares_basic_values :
   squares 2 1 = [2] ∧
   squares 1 5 = [1, 1, 1, 1, 1] ∧ 
   squares (-2) 2 = [-2, 4] := sorry
-
-/-
-info: [2, 4, 16, 256, 65536]
--/
--- #guard_msgs in
--- #eval squares 2 5
-
-/-
-info: [3, 9, 81]
--/
--- #guard_msgs in
--- #eval squares 3 3
-
-/-
-info: []
--/
--- #guard_msgs in
--- #eval squares 2 0
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

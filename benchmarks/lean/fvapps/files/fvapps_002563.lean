@@ -25,25 +25,4 @@ theorem prime_string_palindrome {s : String}
   (h2 : ∀ (i : Nat), i < s.length → 
     s.data[i]! = s.data[s.length - 1 - i]!) :
   prime_string (s ++ s) = false := sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval prime_string "abac"
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval prime_string "abab"
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval prime_string "aaaa"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

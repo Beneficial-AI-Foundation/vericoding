@@ -34,25 +34,4 @@ theorem empty_words {puzzles: List String}
   (h2: ∀ p ∈ puzzles, p.length = 7)
   : ∀ x ∈ (find_num_valid_words [] puzzles), x = 0 := by
   sorry
-
-/-
-info: expected1
--/
--- #guard_msgs in
--- #eval find_num_valid_words ["aaaa", "asas", "able", "ability", "actt", "actor", "access"] ["aboveyz", "abrodyz", "abslute", "absoryz", "actresz", "gaswxyz"]
-
-/-
-info: expected2
--/
--- #guard_msgs in
--- #eval find_num_valid_words ["apple", "pleas", "please"] ["aelwxyz", "aelpxyz", "aelpsxy", "saelpxy"]
-
-/-
-info: expected3
--/
--- #guard_msgs in
--- #eval find_num_valid_words ["a"] ["abcdefg"]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

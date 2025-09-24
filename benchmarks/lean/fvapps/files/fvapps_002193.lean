@@ -26,25 +26,4 @@ theorem solve_colored_balls_identical_pairs (n : Nat) :
 theorem solve_colored_balls_edge_case :
   solve_colored_balls 2 [[1,1], [1000000000,1000000000]] = 
   (1000000000-1) * (1000000000-1) := sorry
-
-/-
-info: 15
--/
--- #guard_msgs in
--- #eval solve_colored_balls 3 [[1, 2], [3, 4], [5, 6]]
-
-/-
-info: 380
--/
--- #guard_msgs in
--- #eval solve_colored_balls 3 [[1010, 10], [1000, 1], [20, 1020]]
-
-/-
-info: 999999998000000001
--/
--- #guard_msgs in
--- #eval solve_colored_balls 2 [[1, 1], [1000000000, 1000000000]]
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: unguarded

@@ -35,6 +35,3 @@ theorem solve_camera_angles_symmetry {n : Nat}
   solve_camera_angles n cameras 0 1 =
   solve_camera_angles n (cameras.map (·* -1)) 0 1 := sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

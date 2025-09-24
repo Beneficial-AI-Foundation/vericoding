@@ -84,8 +84,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def solve_exam_problems (n : Nat) (T : Nat) (a : Nat) (b : Nat) (tasks : Tasks) (total_a total_b : Nat) : Nat :=

@@ -45,6 +45,3 @@ theorem identical_wheel_gives_ones
   solve_wheel_of_fortune n (List.replicate n 1) [1] = [1] :=
   sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

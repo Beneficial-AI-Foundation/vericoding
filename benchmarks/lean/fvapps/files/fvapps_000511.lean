@@ -37,6 +37,3 @@ theorem solve_game_permutation_invariant {n k : Nat} {arr1 arr2 : List Nat}
   solve_game n k arr1 = solve_game n k arr2 :=
 sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

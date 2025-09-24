@@ -38,25 +38,4 @@ theorem say_hello_structure (names: List String) (city state: String)
    String.substringExists result "! Welcome to " ∧
    result.endsWith (", " ++ state ++ "!")) :=
   sorry
-
-/-
-info: 'Hello, John Smith! Welcome to Phoenix, Arizona!'
--/
--- #guard_msgs in
--- #eval say_hello ["John", "Smith"] "Phoenix" "Arizona"
-
-/-
-info: 'Hello, Franklin Delano Roosevelt! Welcome to Chicago, Illinois!'
--/
--- #guard_msgs in
--- #eval say_hello ["Franklin", "Delano", "Roosevelt"] "Chicago" "Illinois"
-
-/-
-info: 'Hello, Marlo Stanfield! Welcome to Baltimore, Maryland!'
--/
--- #guard_msgs in
--- #eval say_hello ["Marlo", "Stanfield"] "Baltimore" "Maryland"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

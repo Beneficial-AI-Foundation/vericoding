@@ -43,25 +43,4 @@ theorem overskilled_workers_result
   (hlen : difficulty.length = profit.length)
   : max_profit_assignment difficulty profit worker = worker.length * (List.foldl max 0 profit) :=
   sorry
-
-/-
-info: 100
--/
--- #guard_msgs in
--- #eval max_profit_assignment [2, 4, 6, 8, 10] [10, 20, 30, 40, 50] [4, 5, 6, 7]
-
-/-
-info: 30
--/
--- #guard_msgs in
--- #eval max_profit_assignment [1, 2, 3] [10, 20, 30] [1, 2]
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval max_profit_assignment [5] [100] [1, 2, 3]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

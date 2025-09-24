@@ -29,25 +29,4 @@ theorem single_codepoint_roundtrip (n : Nat) (h : n ≤ 0x10FFFF) :
 theorem empty_strings :
   to_utf8_binary "" = "" ∧
   from_utf8_binary "" = "" := sorry
-
-/-
-info: test1_input
--/
--- #guard_msgs in
--- #eval from_utf8_binary test1_result
-
-/-
-info: test2_input
--/
--- #guard_msgs in
--- #eval from_utf8_binary test2_result
-
-/-
-info: test3_input
--/
--- #guard_msgs in
--- #eval from_utf8_binary test3_result
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

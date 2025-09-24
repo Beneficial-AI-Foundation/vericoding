@@ -25,25 +25,4 @@ theorem get_size_surface_area_greater_than_faces (w h d : Nat) (h1: w > 0) (h2: 
   (get_size w h d).1 > w*h ∧ 
   (get_size w h d).1 > h*d ∧
   (get_size w h d).1 > w*d := sorry
-
-/-
-info: [88, 48]
--/
--- #guard_msgs in
--- #eval get_size 4 2 6
-
-/-
-info: [6, 1]
--/
--- #guard_msgs in
--- #eval get_size 1 1 1
-
-/-
-info: [600, 1000]
--/
--- #guard_msgs in
--- #eval get_size 10 10 10
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

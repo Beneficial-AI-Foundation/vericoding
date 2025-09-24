@@ -28,25 +28,4 @@ theorem preserves_pattern {s mapped : String} (h1 : s.length > 0) (h2 : s.length
   (∀ (i j : Fin s.length), s.data[i]! = s.data[j]! ↔ mapped.data[i]! = mapped.data[j]!) →
   isomorph s mapped = true :=
 sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval isomorph "ESTATE" "DUELED"
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval isomorph "AB" "CC"
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval isomorph "RAMBUNCTIOUSLY" "THERMODYNAMICS"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

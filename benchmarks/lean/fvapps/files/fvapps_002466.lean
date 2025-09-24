@@ -26,6 +26,3 @@ theorem greet_person_ends_with_python (firstname lastname : String) :
 theorem greet_person_exact_format (firstname lastname : String) :
   greetPerson firstname lastname = s!"Hello {firstname} {lastname}! You just delved into python." := sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

@@ -66,48 +66,52 @@ vc-description: |-
   -/
 
 vc-preamble: |-
-  def count_valid_permutations (n : Nat) (edges : List (Nat × Nat)) : Nat := sorry
-  
-  def is_valid_tree (n : Nat) (edges : List (Nat × Nat)) : Bool := sorry
+  def factorial : Nat → Nat
+    | 0 => 1
+    | n + 1 => (n + 1) * factorial n
 
 vc-helpers: |-
 
 vc-definitions: |-
-  def factorial : Nat → Nat 
-    | 0 => 1
-    | n + 1 => (n + 1) * factorial n
+  def count_valid_permutations (n : Nat) (edges : List (Nat × Nat)) : Nat :=
+  sorry
+  
+  def is_valid_tree (n : Nat) (edges : List (Nat × Nat)) : Bool :=
+  sorry
 
 vc-theorems: |-
-  theorem valid_tree_construction (n : Nat) (edges : List (Nat × Nat)) 
+  theorem valid_tree_construction (n : Nat) (edges : List (Nat × Nat))
     (h1 : is_valid_tree n edges) :
     let result := count_valid_permutations n edges
-    ∃ (k : Nat), result = k ∧ 
-      k > 0 ∧ 
-      k ≤ n * factorial n := sorry
+    ∃ (k : Nat), result = k ∧
+      k > 0 ∧
+      k ≤ n * factorial n :=
+  sorry
   
   theorem mod_result (n : Nat) (edges : List (Nat × Nat)) :
     let result := count_valid_permutations n edges
-    result < 998244353 := sorry
-  
-  /-
-  info: 16
-  -/
-  -- #guard_msgs in
-  -- #eval count_valid_permutations 4 [(1, 2), (1, 3), (2, 4)]
-  
-  /-
-  info: 24
-  -/
-  -- #guard_msgs in
-  -- #eval count_valid_permutations n [(1, 2), (1, 3), (1, 4)]
-  
-  /-
-  info: 144
-  -/
-  -- #guard_msgs in
-  -- #eval count_valid_permutations 6 [(2, 1), (3, 2), (4, 1), (5, 4), (1, 6)]
+    result < 998244353 :=
+  sorry
 
 vc-postamble: |-
   -- Apps difficulty: competition
   -- Assurance level: unguarded
+  
+  /--
+  info: 16
+  -/
+  #guard_msgs in
+  #eval count_valid_permutations 4 [(1, 2), (1, 3), (2, 4)]
+  
+  /--
+  info: 24
+  -/
+  #guard_msgs in
+  #eval count_valid_permutations n [(1, 2), (1, 3), (1, 4)]
+  
+  /--
+  info: 144
+  -/
+  #guard_msgs in
+  #eval count_valid_permutations 6 [(2, 1), (3, 2), (4, 1), (5, 4), (1, 6)]
 

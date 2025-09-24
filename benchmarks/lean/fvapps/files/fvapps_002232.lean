@@ -14,6 +14,3 @@ theorem solve_beautiful_contest_identical_scores {n : Nat} {x : Nat}
 
 -- <vc-theorems>
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: guarded_and_plausible

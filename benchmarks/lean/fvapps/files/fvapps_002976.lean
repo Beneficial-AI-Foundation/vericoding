@@ -22,25 +22,4 @@ theorem pattern_preserved_by_repetition (s : String) :
 theorem pattern_length_divides_string_length (s : String) :
   s.length > 0 → has_subpattern s → 
   ∃ i : Nat, i > 0 ∧ i ≤ s.length ∧ s.length % i = 0 := sorry
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval has_subpattern "a"
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval has_subpattern "aaaa"
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval has_subpattern "abababab"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

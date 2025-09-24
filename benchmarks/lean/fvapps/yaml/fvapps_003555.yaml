@@ -42,20 +42,20 @@ vc-description: |-
   -/
 
 vc-preamble: |-
+  def LOWER : String :=
+    "abcdefghijklmnopqrstuvwxyz"
+
+vc-helpers: |-
+
+vc-definitions: |-
   def encode (message : String) (key : String) (shift : Int) : String :=
     sorry
   
   def decode (message : String) (key : String) (shift : Int) : String :=
     sorry
 
-vc-helpers: |-
-
-vc-definitions: |-
-  def LOWER : String :=
-    "abcdefghijklmnopqrstuvwxyz"
-
 vc-theorems: |-
-  theorem encode_decode_roundtrip 
+  theorem encode_decode_roundtrip
     {message key : String} {shift : Int}
     (h1 : ∀ c ∈ message.data, c.toString ∈ LOWER.data.map toString)
     (h2 : key.length > 0)
@@ -71,32 +71,32 @@ vc-theorems: |-
       (message.data.get ⟨i, h3⟩) ∉ LOWER.data →
       (encode message key shift).data.get ⟨i, sorry⟩ = message.data.get ⟨i, h3⟩ :=
   sorry
-  
-  /-
-  info: 'jx'
-  -/
-  -- #guard_msgs in
-  -- #eval encode "on" "cryptogram" 10
-  
-  /-
-  info: msg
-  -/
-  -- #guard_msgs in
-  -- #eval decode "jx" key shift
-  
-  /-
-  info: msg
-  -/
-  -- #guard_msgs in
-  -- #eval decode encode(msg, key, shift) "keyword" 5
-  
-  /-
-  info: msg
-  -/
-  -- #guard_msgs in
-  -- #eval decode encode(msg, key, shift) "secret" 7
 
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+  
+  /--
+  info: 'jx'
+  -/
+  #guard_msgs in
+  #eval encode "on" "cryptogram" 10
+  
+  /--
+  info: msg
+  -/
+  #guard_msgs in
+  #eval decode "jx" key shift
+  
+  /--
+  info: msg
+  -/
+  #guard_msgs in
+  #eval decode encode(msg, key, shift) "keyword" 5
+  
+  /--
+  info: msg
+  -/
+  #guard_msgs in
+  #eval decode encode(msg, key, shift) "secret" 7
 

@@ -25,6 +25,3 @@ theorem compare_tournaments_zero_probability (f r : Nat) :
   compare_tournaments f f r r r r 0 0 0 0 = "BOTH" :=
 sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

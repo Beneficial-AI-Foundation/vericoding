@@ -24,25 +24,4 @@ theorem last_tuple_property {α : Type} (a b c d : α) :
 
 theorem last_single_property {α : Type} (x : α) :
   last x = x := sorry
-
-/-
-info: 5
--/
--- #guard_msgs in
--- #eval last [1, 2, 3, 4, 5]
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval last 1 2 3 4
-
-/-
-info: 'z'
--/
--- #guard_msgs in
--- #eval last "xyz"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

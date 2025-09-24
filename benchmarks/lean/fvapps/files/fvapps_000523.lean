@@ -38,6 +38,3 @@ theorem total_variation_symmetry {n k : Nat} {sequence : List Int} :
   total_variation_count n k sequence = total_variation_count n k sequence.reverse :=
 sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

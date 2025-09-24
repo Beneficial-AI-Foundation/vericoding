@@ -35,25 +35,4 @@ theorem reverse_text_nonempty_line_count {lines : List String} :
   let result_lines := result.filter (fun l => l.trim ≠ "")
   let input_lines := lines.filter (fun l => ∃ c ∈ l.data, c.isAlpha)
   List.length result_lines = List.length input_lines := sorry
-
-/-
-info: test1_expected
--/
--- #guard_msgs in
--- #eval reverse_text ["This is a sample piece of text to illustrate this", "problem.  If you are smart you will solve this right."]
-
-/-
-info: test2_expected
--/
--- #guard_msgs in
--- #eval reverse_text ["Hello, world!"]
-
-/-
-info: test3_expected
--/
--- #guard_msgs in
--- #eval reverse_text ["The quick brown", "fox jumps over", "the lazy dog."]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

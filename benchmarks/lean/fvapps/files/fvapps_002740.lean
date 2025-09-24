@@ -26,25 +26,4 @@ theorem basic_case_hyphen_match :
 
 theorem basic_case_hyphen_mismatch :
   could_be "John-Smith" "John Smith" = false := sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval could_be "Carlos Ray Norris" "Carlos Ray Norris"
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval could_be "Carlos Ray Norris" "Carlos. Ray; Norris,"
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval could_be "Carlos-Ray Norris" "Carlos Ray Norris"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

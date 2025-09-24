@@ -25,25 +25,4 @@ theorem count_squares_base_cases :
 theorem count_squares_min_bound (n : Nat) (h : n > 0) :
   count_squares n ≥ n * n :=
   sorry
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval count_squares 1
-
-/-
-info: 5
--/
--- #guard_msgs in
--- #eval count_squares 2
-
-/-
-info: 14
--/
--- #guard_msgs in
--- #eval count_squares 3
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

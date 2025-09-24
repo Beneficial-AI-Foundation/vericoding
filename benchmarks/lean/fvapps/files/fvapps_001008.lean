@@ -31,25 +31,4 @@ theorem parity_cleaning_rounds (x y : Int) :
   (y < x → (diff % 2 = 0 → result = 1) ∧
            (diff % 2 ≠ 0 → result = 2)) :=
   sorry
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval calc_min_cleaning_rounds 0 5
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval calc_min_cleaning_rounds 4 -5
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval calc_min_cleaning_rounds 0 10000001
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

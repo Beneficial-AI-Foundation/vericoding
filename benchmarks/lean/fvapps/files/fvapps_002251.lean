@@ -25,25 +25,4 @@ theorem edge_case_min_input :
   let result := solve_multiset_averages 1 1 2
   result.length = 1 ∧ result.head! < 2 :=
   sorry
-
-/-
-info: [1, 3, 1]
--/
--- #guard_msgs in
--- #eval solve_multiset_averages 3 1 998244353
-
-/-
-info: [2]
--/
--- #guard_msgs in
--- #eval solve_multiset_averages 1 2 1000000007
-
-/-
-info: [1, 1]
--/
--- #guard_msgs in
--- #eval solve_multiset_averages 2 1 905589253
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: guarded_and_plausible

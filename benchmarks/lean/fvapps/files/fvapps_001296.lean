@@ -38,25 +38,4 @@ theorem solve_covac_single_country
   {x : Nat} (h : 0 < x) :
   solve_covac 1 x [x] = 1 :=
   sorry
-
-/-
-info: 5
--/
--- #guard_msgs in
--- #eval solve_covac 5 5 [1, 2, 3, 4, 5]
-
-/-
-info: 9
--/
--- #guard_msgs in
--- #eval solve_covac 5 1 [40, 30, 20, 10, 50]
-
-/-
-info: 6
--/
--- #guard_msgs in
--- #eval solve_covac 3 10 [20, 1, 110]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

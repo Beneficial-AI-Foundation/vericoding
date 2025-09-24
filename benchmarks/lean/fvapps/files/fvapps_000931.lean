@@ -41,25 +41,4 @@ theorem max_abs_sum_pairs_zero_array (n : Nat) :
   n ≥ 2 → n % 2 = 0 →
   max_abs_sum_pairs n (List.replicate n 0) = 0 := by
   sorry
-
-/-
-info: 9
--/
--- #guard_msgs in
--- #eval max_abs_sum_pairs 4 [1, -3, 2, -3]
-
-/-
-info: 10
--/
--- #guard_msgs in
--- #eval max_abs_sum_pairs 2 [5, -5]
-
-/-
-info: 12
--/
--- #guard_msgs in
--- #eval max_abs_sum_pairs 6 [1, 2, 3, -1, -2, -3]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

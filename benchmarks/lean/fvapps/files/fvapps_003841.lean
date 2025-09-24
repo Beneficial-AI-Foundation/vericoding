@@ -22,25 +22,4 @@ theorem pig_latin_short_words (word : String)
 
 theorem pig_latin_empty 
   : pig_latin "" = "" := sorry
-
-/-
-info: 'ellohay'
--/
--- #guard_msgs in
--- #eval pig_latin "hello"
-
-/-
-info: 'hi'
--/
--- #guard_msgs in
--- #eval pig_latin "hi"
-
-/-
-info: 'orldway'
--/
--- #guard_msgs in
--- #eval pig_latin "world"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

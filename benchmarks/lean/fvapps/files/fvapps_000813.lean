@@ -34,31 +34,4 @@ theorem count_stars_full_region (grid : List (List Nat))
   (h2 : ∀ row ∈ grid, row.length = 3) :
   count_stars_in_region grid 1 1 3 3 = grid.foldl (λ acc row => acc + row.foldl (λ x y => x + y) 0) 0 :=
   sorry
-
-/-
-info: 10
--/
--- #guard_msgs in
--- #eval count_stars_in_region [[10, 10, 10], [10, 10, 10], [10, 10, 10]] 1 1 1 1
-
-/-
-info: 90
--/
--- #guard_msgs in
--- #eval count_stars_in_region grid 1 1 3 3
-
-/-
-info: 60
--/
--- #guard_msgs in
--- #eval count_stars_in_region grid 2 1 3 3
-
-/-
-info: 30
--/
--- #guard_msgs in
--- #eval count_stars_in_region grid 3 1 3 3
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

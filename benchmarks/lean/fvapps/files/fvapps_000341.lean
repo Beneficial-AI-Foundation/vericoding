@@ -38,25 +38,4 @@ theorem edge_cases :
   subarraysWithKDistinct [1, 1] 1 = 3 ∧
   subarraysWithKDistinct [1, 2, 3] 3 = 1 :=
   sorry
-
-/-
-info: 7
--/
--- #guard_msgs in
--- #eval subarraysWithKDistinct [1, 2, 1, 2, 3] 2
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval subarraysWithKDistinct [1, 2, 1, 3, 4] 3
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval subarraysWithKDistinct [1, 2, 3] 2
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

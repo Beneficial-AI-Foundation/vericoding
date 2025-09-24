@@ -3,8 +3,6 @@ vc-description: |-
   Implement the function according to the Lean specification.
 
 vc-preamble: |-
-  namespace BignumLean
-  
   def AllZero (s : String) : Prop :=
     s.length = 0 ∨ ∀ i, s.get? i = some '0'
   
@@ -27,5 +25,5 @@ vc-theorems: |-
     sorry
 
 vc-postamble: |-
-  end BignumLean
+
 

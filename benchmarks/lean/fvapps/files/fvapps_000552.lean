@@ -23,25 +23,4 @@ theorem can_chef_paint_array_bounds {arr : List Int}
   can_chef_paint arr = "Yes" → 
   ∃ i, i ≥ 1 ∧ i < arr.length - 1 ∧ 
     arr[i-1]! = arr[i]! ∧ arr[i]! = arr[i+1]! := sorry
-
-/-
-info: 'Yes'
--/
--- #guard_msgs in
--- #eval can_chef_paint [1, 5, 5, 5]
-
-/-
-info: 'Yes'
--/
--- #guard_msgs in
--- #eval can_chef_paint [1, 1, 1, 5]
-
-/-
-info: 'No'
--/
--- #guard_msgs in
--- #eval can_chef_paint [5, 5, 2]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

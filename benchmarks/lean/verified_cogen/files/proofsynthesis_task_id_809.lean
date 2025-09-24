@@ -21,5 +21,3 @@ theorem isSmaller_spec_satisfied (arr1: Array Int) (arr2: Array Int) (h_precond 
     isSmaller_postcond (arr1) (arr2) (isSmaller (arr1) (arr2) h_precond) h_precond := by
   sorry
 -- </vc-theorems>
-
-/- Test cases can be added here -/

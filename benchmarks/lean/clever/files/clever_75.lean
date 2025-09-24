@@ -32,14 +32,3 @@ theorem correctness
 := by
   sorry
 -- </vc-theorems>
-
--- #test implementation 5 = False
--- #test implementation 30 = True
--- #test implementation 8 = True
--- #test implementation 10 = False
--- #test implementation 125 = True
--- #test implementation (3 * 5 * 7) = True
--- #test implementation (3 * 6 * 7) = False
--- #test implementation (9 * 9 * 9) = False
--- #test implementation (11 * 9 * 9) = False
--- #test implementation (11*13*7) = True

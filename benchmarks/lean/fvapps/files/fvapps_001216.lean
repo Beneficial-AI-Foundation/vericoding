@@ -16,25 +16,4 @@ theorem count_pretty_numbers_non_negative (l r : Nat) :
 
 theorem count_pretty_numbers_bounded (l r : Nat) :
   count_pretty_numbers l r ≤ (max l r - min l r + 1) := sorry
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval count_pretty_numbers 1 10
-
-/-
-info: 8
--/
--- #guard_msgs in
--- #eval count_pretty_numbers 11 33
-
-/-
-info: 30
--/
--- #guard_msgs in
--- #eval count_pretty_numbers 1 100
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

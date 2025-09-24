@@ -24,6 +24,3 @@ theorem smallestListLength_spec_satisfied (list : Array (Array Int)) (h_precond 
     smallestListLength_postcond list (smallestListLength list h_precond) h_precond := by
   sorry
 -- </vc-theorems>
-
-def main : IO Unit := 
-  pure ()

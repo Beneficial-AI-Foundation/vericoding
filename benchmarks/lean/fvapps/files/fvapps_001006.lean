@@ -24,25 +24,4 @@ theorem empty_board_loses_1 :
 
 theorem empty_board_loses (n : Nat) (h : n > 0) :
   can_ada_win (String.mk (List.replicate n '.')) = "No" := sorry
-
-/-
-info: 'Yes'
--/
--- #guard_msgs in
--- #eval can_ada_win "..P.P"
-
-/-
-info: 'No'
--/
--- #guard_msgs in
--- #eval can_ada_win ".PP"
-
-/-
-info: 'Yes'
--/
--- #guard_msgs in
--- #eval can_ada_win ".P.P"
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

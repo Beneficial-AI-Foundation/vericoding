@@ -3,8 +3,6 @@ vc-description: |-
   Implement the function according to the Lean specification.
 
 vc-preamble: |-
-  namespace BignumLean
-  
   def Exp_int (x y : Nat) : Nat :=
     if y = 0 then 1 else x * Exp_int x (y - 1)
   
@@ -26,5 +24,5 @@ vc-theorems: |-
     sorry
 
 vc-postamble: |-
-  end BignumLean
+
 

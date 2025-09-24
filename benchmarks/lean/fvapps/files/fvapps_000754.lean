@@ -39,31 +39,4 @@ theorem good_perm_basic_properties (n: Nat) (h: n > 0) (h2: n ≤ 100) :
   (n > 1 → nums.get! 0 = 2) ∧
   (n = 1 → result = "1") :=
   sorry
-
-/-
-info: '2 1'
--/
--- #guard_msgs in
--- #eval find_smallest_good_perm 2
-
-/-
-info: '2 3 1'
--/
--- #guard_msgs in
--- #eval find_smallest_good_perm 3
-
-/-
-info: '2 1 4 5 3'
--/
--- #guard_msgs in
--- #eval find_smallest_good_perm 5
-
-/-
-info: '2 1 4 3 6 5'
--/
--- #guard_msgs in
--- #eval find_smallest_good_perm 6
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

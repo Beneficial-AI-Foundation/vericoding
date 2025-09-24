@@ -2,33 +2,33 @@ vc-description: |-
   /-
   Chef wants you to distribute candies among $N$ kids who are sitting in a circle. However, he wants to make some kids jealous of others. Thus, he wants you to distribute candies in such a way that there is a difference of at least $K$ candies between two adjacent kids. 
   Given the value of $N$ and $K$, you need to find the minimum number of candies you need to satisfy the given conditions, such that, each kid gets at least one candy.
-  
+
   -----Input:-----
   - First line will contain $T$, the number of testcases. Then the testcases follow. 
   - The only line of each testcase contains two space-separated integers $N$ and $K$. 
-  
+
   -----Output:-----
   For each test case, print a single line containing one integer ― the number of candies you need.
-  
+
   -----Constraints-----
   - $1 \leq T \leq  10^6$
   - $2 \leq  N \leq  10^3$
   - $0 \leq  K \leq 10^4$ 
-  
+
   -----Sample Input:-----
   1 
   2 1
-  
+
   -----Sample Output:-----
   3
-  
+
   -----EXPLANATION:-----
   The minimum number of candies required is $3$. One kid needs to have $1$ candy and the other needs to have $2$ candy to have a difference of $1$ candy between them.
   -/
 
-vc-preamble: |-
+vc-preamble: |
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def min_candies_required (n k : Nat) : Nat :=
@@ -38,46 +38,46 @@ vc-theorems: |-
   theorem min_candies_at_least_n (n k : Nat) (h1: n > 0) (h2: k ≤ 1000) : 
     min_candies_required n k ≥ n :=
   sorry
-  
+
   theorem min_candies_at_least_half_times_k (n k : Nat) (h1: n > 0) (h2: k ≤ 1000) :
     min_candies_required n k ≥ (n/2) * k :=
   sorry
-  
+
   theorem min_candies_increases_with_k (n k : Nat) (h1: n > 1) (h2: k > 0) (h3: k ≤ 1000) :
     min_candies_required n k > min_candies_required n (k-1) :=
   sorry
-  
+
   theorem min_candies_increases_with_n (n k : Nat) (h1: n > 1) (h2: k ≤ 1000) :
     min_candies_required n k ≥ min_candies_required (n-1) k :=
   sorry
-  
+
   theorem min_candies_zero_diff (n : Nat) (h: n > 0) :
     min_candies_required n 0 = n :=
   sorry
-  
+
   theorem min_candies_odd_greater (n k : Nat) (h1: n > 1) (h2: n % 2 = 1) (h3: k ≤ 1000) :
     min_candies_required n k > min_candies_required (n-1) k :=
   sorry
-  
-  /-
-  info: 3
-  -/
-  -- #guard_msgs in
-  -- #eval min_candies_required 2 1
-  
-  /-
-  info: 5
-  -/
-  -- #guard_msgs in
-  -- #eval min_candies_required 3 2
-  
-  /-
-  info: 4
-  -/
-  -- #guard_msgs in
-  -- #eval min_candies_required 4 0
 
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
+
+  /--
+  info: 3
+  -/
+  #guard_msgs in
+  #eval min_candies_required 2 1
+
+  /--
+  info: 5
+  -/
+  #guard_msgs in
+  #eval min_candies_required 3 2
+
+  /--
+  info: 4
+  -/
+  #guard_msgs in
+  #eval min_candies_required 4 0
 

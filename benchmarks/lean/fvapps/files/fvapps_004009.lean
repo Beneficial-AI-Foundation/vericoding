@@ -29,25 +29,4 @@ theorem palindrome_output_non_negative {x : Int} (h : x ≥ 0) :
 theorem palindrome_detects_basic {x : Int} (h : x = 1221) :
   palindrome x > 0 :=
   sorry
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval palindrome 2
-
-/-
-info: 5
--/
--- #guard_msgs in
--- #eval palindrome 141221001
-
-/-
-info: 'Not valid'
--/
--- #guard_msgs in
--- #eval palindrome "1551"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

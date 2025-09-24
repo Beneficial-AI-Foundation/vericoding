@@ -50,25 +50,4 @@ theorem hour_conversion_24hr
   (h_split: (result.splitOn ":").map String.toNat! = [hours, minutes]):
   (hours = 360 ∨ hours = (h % 12) * 30) ∧
   (minutes = 360 ∨ minutes = m * 6) := sorry
-
-/-
-info: '30:6'
--/
--- #guard_msgs in
--- #eval clock_degree "01:01"
-
-/-
-info: '360:360'
--/
--- #guard_msgs in
--- #eval clock_degree "00:00"
-
-/-
-info: 'Check your time !'
--/
--- #guard_msgs in
--- #eval clock_degree "24:00"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

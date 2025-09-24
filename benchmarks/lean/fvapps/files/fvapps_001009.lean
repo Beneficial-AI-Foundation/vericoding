@@ -28,25 +28,4 @@ theorem results_only_yes_or_no (s : String) (queries : List (Nat × Nat)) :
   (∀ q ∈ queries, q.1 < q.2 ∧ q.2 ≤ s.length) →
   ∀ r ∈ solve_rich_substrings s queries, r = "YES" ∨ r = "NO" :=
   sorry
-
-/-
-info: ['NO', 'YES']
--/
--- #guard_msgs in
--- #eval solve_rich_substrings "helloworld" [[1, 3], [1, 10]]
-
-/-
-info: ['YES']
--/
--- #guard_msgs in
--- #eval solve_rich_substrings "aaa" [[1, 3]]
-
-/-
-info: ['NO']
--/
--- #guard_msgs in
--- #eval solve_rich_substrings "abc" [[1, 3]]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

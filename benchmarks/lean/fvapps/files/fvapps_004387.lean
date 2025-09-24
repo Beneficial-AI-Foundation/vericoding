@@ -30,25 +30,4 @@ theorem decode_consistent_mapping (s : String)
   ∀ (i j : String.Pos), i.1 < j.1 → j.1 < s.length → 
     s.get i = s.get j → 
     (decode s).get i = (decode s).get j := sorry
-
-/-
-info: '6957678787'
--/
--- #guard_msgs in
--- #eval decode "4103432323"
-
-/-
-info: '6957672135'
--/
--- #guard_msgs in
--- #eval decode "4103438970"
-
-/-
-info: '6956750342'
--/
--- #guard_msgs in
--- #eval decode "4104305768"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

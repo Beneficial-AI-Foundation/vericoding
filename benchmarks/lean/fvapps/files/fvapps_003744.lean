@@ -26,25 +26,4 @@ theorem decipher_perfect_squares (n : Nat) (h : n > 0) (h2 : n ≤ 10) :
   let s := String.mk (List.replicate (n*n) 'x')
   (decipher_message s).length = n*n ∧
   (decipher_message s).data.all (· = 'x') := sorry
-
-/-
-info: expected1
--/
--- #guard_msgs in
--- #eval decipher_message "ArNran u rstm5twob  e ePb"
-
-/-
-info: expected2
--/
--- #guard_msgs in
--- #eval decipher_message "92287a76 585a2y0"
-
-/-
-info: expected3
--/
--- #guard_msgs in
--- #eval decipher_message "796820 2 "
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

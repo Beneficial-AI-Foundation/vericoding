@@ -20,25 +20,4 @@ theorem duplicates_result_has_no_duplicates {α : Type u} [BEq α] (arr : List �
 
 theorem duplicates_empty_for_unique {α : Type u} [BEq α] (arr : List α) :
   (∀ x ∈ arr, arr.count x = 1) → duplicates arr = [] := sorry
-
-/-
-info: [4, 3, 1]
--/
--- #guard_msgs in
--- #eval duplicates [1, 2, 4, 4, 3, 3, 1, 5, 3, "5"]
-
-/-
-info: []
--/
--- #guard_msgs in
--- #eval duplicates [0, 1, 2, 3, 4, 5]
-
-/-
-info: [1, 4]
--/
--- #guard_msgs in
--- #eval duplicates [1, 1, 2, 3, 4, 5, 4]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

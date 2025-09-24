@@ -1,31 +1,31 @@
 vc-description: |-
   /-
   You drop a ball from a given height. After each bounce, the ball returns to some fixed proportion of its previous height. If the ball bounces to height 1 or less, we consider it to have stopped bouncing. Return the number of bounces it takes for the ball to stop moving.
-  
+
   ```
   bouncingBall(initialHeight, bouncingProportion)
-  
+
   boucingBall(4, 0.5)
   After first bounce, ball bounces to height 2
   After second bounce, ball bounces to height 1
   Therefore answer is 2 bounces
-  
+
   boucingBall(30, 0.3)
   After first bounce, ball bounces to height 9
   After second bounce, ball bounces to height 2.7
   After third bounce, ball bounces to height 0.81
   Therefore answer is 3 bounces
-  
+
   ```
-  
+
   Initial height is an integer in range [2,1000]
-  
+
   Bouncing Proportion is a decimal in range [0, 1)
   -/
 
-vc-preamble: |-
+vc-preamble: |
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def bouncing_ball (initial : Int) (proportion : Float) : Int :=
@@ -38,14 +38,14 @@ vc-theorems: |-
     (h3 : proportion > 0.001) (h4 : proportion < 0.999) :
     bouncing_ball initial proportion > 0 :=
     sorry
-  
+
   theorem bouncing_ball_is_int
     (initial : Int) (proportion : Float)
     (h1 : initial ≥ 2) (h2 : initial ≤ 1000) 
     (h3 : proportion > 0.001) (h4 : proportion < 0.999) :
     ∃ n : Int, bouncing_ball initial proportion = n :=
     sorry
-  
+
   theorem bouncing_ball_final_height
     (initial : Int) (proportion : Float)
     (h1 : initial ≥ 2) (h2 : initial ≤ 1000)
@@ -54,7 +54,7 @@ vc-theorems: |-
     let final_height := Float.ofInt initial * Float.pow proportion (Float.ofInt result)
     final_height ≤ 1 :=
     sorry
-  
+
   theorem bouncing_ball_previous_height
     (initial : Int) (proportion : Float)
     (h1 : initial ≥ 2) (h2 : initial ≤ 1000)
@@ -63,26 +63,26 @@ vc-theorems: |-
     let previous_height := Float.ofInt initial * Float.pow proportion (Float.ofInt result - 1)
     previous_height > 1 :=
     sorry
-  
-  /-
-  info: 2
-  -/
-  -- #guard_msgs in
-  -- #eval bouncing_ball 4 0.5
-  
-  /-
-  info: 3
-  -/
-  -- #guard_msgs in
-  -- #eval bouncing_ball 30 0.3
-  
-  /-
-  info: 1
-  -/
-  -- #guard_msgs in
-  -- #eval bouncing_ball 10 0.1
 
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded
+
+  /--
+  info: 2
+  -/
+  #guard_msgs in
+  #eval bouncing_ball 4 0.5
+
+  /--
+  info: 3
+  -/
+  #guard_msgs in
+  #eval bouncing_ball 30 0.3
+
+  /--
+  info: 1
+  -/
+  #guard_msgs in
+  #eval bouncing_ball 10 0.1
 

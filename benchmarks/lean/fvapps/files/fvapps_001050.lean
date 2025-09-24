@@ -15,25 +15,4 @@ theorem output_bounds (s : String) :
 -- <vc-theorems>
 theorem empty_string :
   min_ops_to_zeros "" = 0 := sorry
-
-/-
-info: 6
--/
--- #guard_msgs in
--- #eval min_ops_to_zeros "01001001"
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval min_ops_to_zeros "0"
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval min_ops_to_zeros "11"
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

@@ -31,6 +31,3 @@ theorem single_letter_strings_deterministic (n k : Nat) (strings : List String)
   (h6 : ∀ s ∈ strings, s.length = 1) :
   solve_string_game n k strings = "First" ∨ solve_string_game n k strings = "Second" := sorry
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: guarded

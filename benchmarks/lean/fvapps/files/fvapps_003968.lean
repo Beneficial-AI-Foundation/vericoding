@@ -42,25 +42,4 @@ theorem sc_symmetry
   (h1 : width > 0)
   (h2 : length > 0) :
   sc width length 1 = sc length width 1 := sorry
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval sc 3 3 1
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval sc 3 3 3
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval sc 3 3 2
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

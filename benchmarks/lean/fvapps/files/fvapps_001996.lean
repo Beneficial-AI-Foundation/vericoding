@@ -16,6 +16,3 @@ theorem solve_deque_ops_empty_queries
 
 -- <vc-theorems>
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: guarded_and_plausible

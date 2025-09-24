@@ -28,54 +28,54 @@ vc-description: |-
   -/
 
 vc-preamble: |-
-  def longestArithSeqLength (arr : List Int) : Nat :=
-    sorry
-
-vc-helpers: |-
-
-vc-definitions: |-
   def countMaxOccurrences (arr : List Int) : Nat :=
     let counts := arr.map (λ x => arr.count x)
     counts.foldl Nat.max 0
 
+vc-helpers: |-
+
+vc-definitions: |-
+  def longestArithSeqLength (arr : List Int) : Nat :=
+    sorry
+
 vc-theorems: |-
   theorem min_length_at_least_two {arr : List Int} (h : arr.length ≥ 1) :
     longestArithSeqLength arr ≥ 2 :=
-    sorry
+  sorry
   
   theorem dupes_counted_properly {arr : List Int} (h : arr.length ≥ 2) :
     longestArithSeqLength arr ≥ countMaxOccurrences arr :=
-    sorry
+  sorry
   
   theorem arithmetic_sequence_preserved {arr : List Int} (h₁ : arr.length ≥ 3) (h₂ : arr.length ≤ 10) :
     let diff := arr[1]! - arr[0]!
     let arithSeq := (List.range arr.length).map (λ i => arr[0]! + diff * (Int.ofNat i))
     longestArithSeqLength arithSeq = arithSeq.length :=
-    sorry
+  sorry
   
   theorem reverse_same_result {arr : List Int} (h : arr.length ≥ 2) :
     longestArithSeqLength arr = longestArithSeqLength arr.reverse :=
-    sorry
-  
-  /-
-  info: 4
-  -/
-  -- #guard_msgs in
-  -- #eval longestArithSeqLength [3, 6, 9, 12]
-  
-  /-
-  info: 3
-  -/
-  -- #guard_msgs in
-  -- #eval longestArithSeqLength [9, 4, 7, 2, 10]
-  
-  /-
-  info: 4
-  -/
-  -- #guard_msgs in
-  -- #eval longestArithSeqLength [20, 1, 15, 3, 10, 5, 8]
+  sorry
 
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
+  
+  /--
+  info: 4
+  -/
+  #guard_msgs in
+  #eval longestArithSeqLength [3, 6, 9, 12]
+  
+  /--
+  info: 3
+  -/
+  #guard_msgs in
+  #eval longestArithSeqLength [9, 4, 7, 2, 10]
+  
+  /--
+  info: 4
+  -/
+  #guard_msgs in
+  #eval longestArithSeqLength [20, 1, 15, 3, 10, 5, 8]
 

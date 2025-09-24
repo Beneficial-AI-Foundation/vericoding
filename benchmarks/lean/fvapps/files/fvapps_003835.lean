@@ -17,31 +17,4 @@ theorem points_greater_than_minimum (r : Nat) :
 
 theorem points_base_cases :
   points 0 = 1 ∧ points 1 = 5 := sorry
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval points 0
-
-/-
-info: 5
--/
--- #guard_msgs in
--- #eval points 1
-
-/-
-info: 13
--/
--- #guard_msgs in
--- #eval points 2
-
-/-
-info: 29
--/
--- #guard_msgs in
--- #eval points 3
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

@@ -30,25 +30,4 @@ theorem locker_run_monotone (n₁ n₂ : Nat) :
 
 theorem locker_run_subset (n₁ n₂ : Nat) :
   ∀ x ∈ lockerRun n₁, x ∈ lockerRun (n₁ + n₂) := sorry
-
-/-
-info: [1]
--/
--- #guard_msgs in
--- #eval locker_run 1
-
-/-
-info: [1, 4]
--/
--- #guard_msgs in
--- #eval locker_run 5
-
-/-
-info: [1, 4, 9]
--/
--- #guard_msgs in
--- #eval locker_run 10
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

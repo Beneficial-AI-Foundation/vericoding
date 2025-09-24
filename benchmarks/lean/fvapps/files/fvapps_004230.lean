@@ -25,25 +25,4 @@ theorem output_matches_input_letters (s : String) :
 theorem only_letters_full_conversion {s : String} (h₁ : s.length > 0) 
   (h₂ : s.data.all Char.isAlpha) : 
   ((alphabetPosition s).split (· = ' ')).length = s.length := sorry
-
-/-
-info: expected1
--/
--- #guard_msgs in
--- #eval alphabet_position "The sunset sets at twelve o" clock."
-
-/-
-info: expected2
--/
--- #guard_msgs in
--- #eval alphabet_position "-.-""
-
-/-
-info: expected3
--/
--- #guard_msgs in
--- #eval alphabet_position "aBc"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

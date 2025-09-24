@@ -1,4 +1,10 @@
 -- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+-- <vc-definitions>
 def isPalindrome (s : String) : Bool :=
   sorry
 
@@ -10,12 +16,7 @@ def longest_palindrome (s : String) : String :=
 
 def reverseString (s : String) : String :=
   sorry
--- </vc-preamble>
 
--- <vc-helpers>
--- </vc-helpers>
-
--- <vc-definitions>
 def substring (s : String) (i j : Nat) : String :=
   sorry
 -- </vc-definitions>
@@ -24,7 +25,8 @@ def substring (s : String) (i j : Nat) : String :=
 theorem output_is_palindrome {s : String} :
   let result := longest_palindrome s
   result = "" ∨ (result = reverseString result ∧ isSubstring result s)
-  := by sorry
+  := by
+sorry
 
 theorem output_is_maximum_length {s : String} :
   let result := longest_palindrome s
@@ -32,37 +34,19 @@ theorem output_is_maximum_length {s : String} :
     let substr := substring s i j
     substr = reverseString substr →
     substr.length ≤ result.length
-  := by sorry
+  := by
+sorry
 
 theorem empty_and_single_char_inputs {s : String} :
   (s = "" → longest_palindrome s = "") ∧
   (s.length = 1 → longest_palindrome s = s)
-  := by sorry
+  := by
+sorry
 
 theorem palindrome_input_returns_itself {s : String} :
   s ≠ "" →
   s = reverseString s →
   longest_palindrome s = s
-  := by sorry
-
-/-
-info: 'bab'
--/
--- #guard_msgs in
--- #eval longest_palindrome "babad"
-
-/-
-info: 'abababa'
--/
--- #guard_msgs in
--- #eval longest_palindrome "abababa"
-
-/-
-info: 'bb'
--/
--- #guard_msgs in
--- #eval longest_palindrome "cbbd"
+  := by
+sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

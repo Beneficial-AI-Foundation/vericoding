@@ -32,25 +32,4 @@ theorem can_make_square_known_case2 :
 
 theorem can_make_square_known_case3 :
   can_make_square 3 3 1 3 = false := sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval can_make_square 2 3 3 1
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval can_make_square 3 2 1 3
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval can_make_square 3 3 1 3
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

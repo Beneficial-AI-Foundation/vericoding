@@ -38,6 +38,3 @@ theorem single_wildcard_operation_theorem {n m : Nat} {const : String}
   (∀ c ∈ min_val.data, c = '0' ∨ c = '1') ∧
   (∀ c ∈ max_val.data, c = '0' ∨ c = '1') := sorry
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: unguarded

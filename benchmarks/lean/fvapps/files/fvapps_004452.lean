@@ -34,25 +34,4 @@ theorem split_exp_zero :
   split_exp "0" = [] ∧
   split_exp "0.0" = [] ∧
   split_exp "00.00" = [] := sorry
-
-/-
-info: ['7000000', '900000', '70000', '500', '20', '1', '.5', '.05', '.004', '.0004']
--/
--- #guard_msgs in
--- #eval split_exp "7970521.5544"
-
-/-
-info: ['7000000', '400000', '90000', '6000', '300', '10', '4']
--/
--- #guard_msgs in
--- #eval split_exp "7496314"
-
-/-
-info: []
--/
--- #guard_msgs in
--- #eval split_exp "0"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

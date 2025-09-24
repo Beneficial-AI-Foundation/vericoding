@@ -1,9 +1,9 @@
 vc-description: |-
   /-
   Your task in this Kata is to emulate text justification in monospace font. You will be given a single-lined text and the expected justification width. The longest word will never be greater than this width.
-  
+
   Here are the rules:
-  
+
     * Use spaces to fill in the gaps between words.
     * Each line should contain as many words as possible.
     * Use '\n' to separate lines.
@@ -14,9 +14,9 @@ vc-description: |-
     * Last line should not be justified, use only one space between words.
     * Last line should not contain '\n'
     * Strings with one word do not need gaps ('somelongword\n').
-  
+
   Example with width=30:
-  
+
   ```
   Lorem  ipsum  dolor  sit amet,
   consectetur  adipiscing  elit.
@@ -47,19 +47,19 @@ vc-description: |-
   lacus,   ut   elementum  justo
   nulla et dolor.
   ```
-  
+
   Also you can always take a look at how justification works in your text editor or directly in HTML (css: text-align: justify).
-  
+
   Have fun :)
   -/
 
-vc-preamble: |-
+vc-preamble: |
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def justify (text: String) (width : Nat) : String := sorry
-  
+
   -- Property 2: Input words are preserved in order
 
 vc-theorems: |-
@@ -69,38 +69,38 @@ vc-theorems: |-
     let output_text := justify text width
     let output_words := (output_text.split (· = ' ')).filter (· ≠ "")
     input_words = output_words := sorry
-  
+
   -- Property 3: Empty input returns empty output  
-  
+
   theorem justify_empty (width: Nat):
     justify "" width = "" := sorry
-  
+
   -- Edge cases
-  
+
   theorem justify_edge_cases:
     (justify "" 5 = "") ∧
     (justify "a" 1 = "a") ∧ 
     (justify "a b" 3 = "a b") := sorry
-  
-  /-
-  info: expected1
-  -/
-  -- #guard_msgs in
-  -- #eval justify "123 45 6" 7
-  
-  /-
-  info: expected2
-  -/
-  -- #guard_msgs in
-  -- #eval justify "test" 10
-  
-  /-
-  info: expected3
-  -/
-  -- #guard_msgs in
-  -- #eval justify "123 456" 10
 
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
+
+  /--
+  info: expected1
+  -/
+  #guard_msgs in
+  #eval justify "123 45 6" 7
+
+  /--
+  info: expected2
+  -/
+  #guard_msgs in
+  #eval justify "test" 10
+
+  /--
+  info: expected3
+  -/
+  #guard_msgs in
+  #eval justify "123 456" 10
 

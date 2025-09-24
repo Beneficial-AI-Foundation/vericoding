@@ -20,25 +20,4 @@ theorem even_numbers_are_splittable {n : Nat} (h : n % 2 = 0) :
 
 theorem odd_numbers_are_not_splittable {n : Nat} (h : n % 2 ≠ 0) :
   can_split_dosas_evenly n = "NO" := sorry
-
-/-
-info: 'YES'
--/
--- #guard_msgs in
--- #eval can_split_dosas_evenly 16
-
-/-
-info: 'NO'
--/
--- #guard_msgs in
--- #eval can_split_dosas_evenly 27
-
-/-
-info: 'YES'
--/
--- #guard_msgs in
--- #eval can_split_dosas_evenly 100
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

@@ -38,25 +38,4 @@ theorem elapsedSeconds_identity
   (dt : DateTime) :
   elapsedSeconds dt dt = 0 :=
   sorry
-
-/-
-info: 3600
--/
--- #guard_msgs in
--- #eval elapsed_seconds datetime(2020, 1, 1, 0, 0, 0) datetime(2020, 1, 1, 1, 0, 0)
-
-/-
-info: 60
--/
--- #guard_msgs in
--- #eval elapsed_seconds datetime(2020, 1, 1, 0, 0, 0) datetime(2020, 1, 1, 0, 1, 0)
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval elapsed_seconds datetime(2020, 1, 1, 0, 0, 0) datetime(2020, 1, 1, 0, 0, 1)
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

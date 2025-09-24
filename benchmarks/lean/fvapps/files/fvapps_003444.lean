@@ -25,25 +25,4 @@ theorem bingo_zero_always_wins (ticket : List (String × Nat)) :
 theorem bingo_impossible_win (ticket : List (String × Nat)) :
   ticket.length > 0 → ticket.length ≤ 10 →
   isWinner ticket (ticket.length + 1) = "Loser!" := sorry
-
-/-
-info: 'Loser!'
--/
--- #guard_msgs in
--- #eval bingo [["ABC", 65], ["HGR", 74], ["BYHT", 74]] 2
-
-/-
-info: 'Winner!'
--/
--- #guard_msgs in
--- #eval bingo [["ABC", 65], ["HGR", 74], ["BYHT", 74]] 1
-
-/-
-info: 'Loser!'
--/
--- #guard_msgs in
--- #eval bingo [["HGTYRE", 74], ["BE", 66], ["JKTY", 74]] 3
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

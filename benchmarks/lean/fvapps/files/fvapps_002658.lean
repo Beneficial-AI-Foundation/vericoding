@@ -17,25 +17,4 @@ theorem group_size_known_cases :
   (group_size 1 6 = 3) ∧ 
   (group_size 3 10 = 5) ∧ 
   (group_size 5 7 = 6) := sorry
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval group_size 1 6
-
-/-
-info: 5
--/
--- #guard_msgs in
--- #eval group_size 3 10
-
-/-
-info: 6
--/
--- #guard_msgs in
--- #eval group_size 5 7
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

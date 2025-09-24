@@ -44,8 +44,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def solve_periodic_sequence (n: Nat) (sequence: List Int) : String := sorry

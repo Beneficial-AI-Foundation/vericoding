@@ -23,25 +23,4 @@ theorem valid_subset_parity (n k : Nat) (h1 : n > 0) (h2 : k ≤ n) :
 
 theorem valid_subset_result (n k : Nat) (h1 : n > 0) (h2 : k ≤ n) :
   subsets_parity n k = "ODD" ∨ subsets_parity n k = "EVEN" := sorry
-
-/-
-info: 'ODD'
--/
--- #guard_msgs in
--- #eval subsets_parity 3 2
-
-/-
-info: 'EVEN'
--/
--- #guard_msgs in
--- #eval subsets_parity 2 1
-
-/-
-info: 'EVEN'
--/
--- #guard_msgs in
--- #eval subsets_parity 20 10
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

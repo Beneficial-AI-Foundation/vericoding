@@ -32,6 +32,3 @@ theorem split_and_add_length_decreases {numbers : List Int} (n : Nat) :
   numbers.length ≥ 2 →
   (split_and_add numbers 1).length ≤ numbers.length := sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

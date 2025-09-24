@@ -1,58 +1,42 @@
 -- <vc-preamble>
-def isBalanced (s : String) : Bool := sorry
-def balancedParens (n : Nat) : List String := sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
-def catalan (n : Nat) : Nat := sorry
+def isBalanced (s : String) : Bool :=
+sorry
 
-theorem balanced_parens_output_is_balanced (n : Nat) (h : n ≤ 5) :
-  ∀ s ∈ balancedParens n, isBalanced s = true := sorry
+def balancedParens (n : Nat) : List String :=
+sorry
+
+def catalan (n : Nat) : Nat :=
+sorry
 -- </vc-definitions>
 
 -- <vc-theorems>
-theorem balanced_parens_length (n : Nat) (h : n ≤ 5) : 
-  ∀ s ∈ balancedParens n, s.length = 2 * n := sorry
+theorem balanced_parens_output_is_balanced (n : Nat) (h : n ≤ 5) :
+  ∀ s ∈ balancedParens n, isBalanced s = true :=
+sorry
+
+theorem balanced_parens_length (n : Nat) (h : n ≤ 5) :
+  ∀ s ∈ balancedParens n, s.length = 2 * n :=
+sorry
 
 theorem balanced_parens_unique (n : Nat) (h : n ≤ 5) :
-  (balancedParens n).Nodup := sorry
+  (balancedParens n).Nodup :=
+sorry
 
 theorem balanced_parens_only_parens (n : Nat) (h : n ≤ 5) :
-  ∀ s ∈ balancedParens n, ∀ c ∈ s.toList, c = '(' ∨ c = ')' := sorry
+  ∀ s ∈ balancedParens n, ∀ c ∈ s.toList, c = '(' ∨ c = ')' :=
+sorry
 
 theorem balanced_parens_catalan (n : Nat) (h : n ≤ 5) :
-  (balancedParens n).length = catalan n := sorry
+  (balancedParens n).length = catalan n :=
+sorry
 
 theorem balanced_parens_non_negative (n : Int) :
-  n ≥ 0 → ∃ (l : List String), l = balancedParens n.toNat := sorry
-
-/-
-info: ['']
--/
--- #guard_msgs in
--- #eval balanced_parens 0
-
-/-
-info: ['()']
--/
--- #guard_msgs in
--- #eval balanced_parens 1
-
-/-
-info: ['(())', '()()']
--/
--- #guard_msgs in
--- #eval balanced_parens 2
-
-/-
-info: ['((()))', '(()())', '(())()', '()(())', '()()()']
--/
--- #guard_msgs in
--- #eval balanced_parens 3
+  n ≥ 0 → ∃ (l : List String), l = balancedParens n.toNat :=
+sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

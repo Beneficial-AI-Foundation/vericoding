@@ -49,25 +49,4 @@ theorem min_sequence_sum_equal_large_nums
   {x : Nat} (h : x = 2^31)
   : min_sequence_sum 2 [x, x] = 0 :=
 sorry
-
-/-
-info: 14
--/
--- #guard_msgs in
--- #eval min_sequence_sum 5 [2, 3, 4, 5, 6]
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval min_sequence_sum 4 [7, 7, 7, 7]
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval min_sequence_sum 3 [1, 1, 3]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

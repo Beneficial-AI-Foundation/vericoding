@@ -28,25 +28,4 @@ theorem swapCase_preserves_empty (s : String)
 theorem swapCase_preserves_whitespace (s : String)
   (h : ∀ c ∈ s.data, c.isWhitespace) :
   swapCase s = s := sorry
-
-/-
-info: 'wWW.hACKERrANK.COM'
--/
--- #guard_msgs in
--- #eval swap_case "Www.HackerRank.com"
-
-/-
-info: 'pYTHONIST 2'
--/
--- #guard_msgs in
--- #eval swap_case "Pythonist 2"
-
-/-
-info: 'hACKERrANK.COM PRESENTS "pYTHONIST 2".'
--/
--- #guard_msgs in
--- #eval swap_case "HackerRank.com presents "Pythonist 2"."
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

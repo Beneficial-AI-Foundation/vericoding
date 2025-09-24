@@ -17,6 +17,3 @@ theorem harmon_point_cross_ratio (xA xB xC : Float) :
   let xD := harmon_pointTrip xA xB xC
   ∀ ε, ε > 0 → ((xA - xC) * (xB - xD)) / ((xA - xD) * (xB - xC)) + 1 < ε := sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

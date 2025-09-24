@@ -52,25 +52,4 @@ theorem solve_free_time_edge_cases :
   solve_free_time 1 5 [10] = 3 ∧
   solve_free_time 2 3 [3,3] = 2 :=
 sorry
-
-/-
-info: 6
--/
--- #guard_msgs in
--- #eval solve_free_time 6 5 [10, 5, 5, 3, 2, 1]
-
-/-
-info: 101
--/
--- #guard_msgs in
--- #eval solve_free_time 1 1 [100]
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval solve_free_time 3 2 [1, 1, 1]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

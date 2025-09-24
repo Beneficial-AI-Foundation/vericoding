@@ -20,25 +20,4 @@ theorem can_win_nim_losing_position (n : Nat) :
 
 theorem can_win_nim_winning_position (n : Nat) :
   n % 4 ≠ 0 → can_win_nim n = true := sorry
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval can_win_nim 4
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval can_win_nim 1
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval can_win_nim 2
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

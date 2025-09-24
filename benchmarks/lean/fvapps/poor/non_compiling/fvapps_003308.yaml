@@ -34,8 +34,6 @@ vc-preamble: |-
     | Liquid.O => 0.8
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def separate_liquids (glass: List (List Liquid)) : List (List Liquid) := sorry

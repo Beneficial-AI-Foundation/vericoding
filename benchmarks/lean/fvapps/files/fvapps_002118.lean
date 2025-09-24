@@ -28,25 +28,4 @@ theorem solve_star_properties (n : Nat) (parents : List Nat)
     List.length result = n ∧
     -- All elements are natural numbers
     ∀ x ∈ result, x ≥ 0 := sorry
-
-/-
-info: [4, 3, 3]
--/
--- #guard_msgs in
--- #eval solve 3 [1, 1]
-
-/-
-info: [5, 8, 9, 8, 5]
--/
--- #guard_msgs in
--- #eval solve 5 [1, 2, 3, 4]
-
-/-
-info: [2, 2]
--/
--- #guard_msgs in
--- #eval solve 2 [1]
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: unguarded

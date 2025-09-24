@@ -38,25 +38,4 @@ theorem whitespace_invariant {expr : String}
 
 theorem multiplication_by_one {x : Nat} :
   calculate s!"{x}*1" = some (x.toFloat) := sorry
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval calculate "1 + 1"
-
-/-
-info: 42
--/
--- #guard_msgs in
--- #eval calculate "18 + 4*6"
-
-/-
-info: 5.2
--/
--- #guard_msgs in
--- #eval calculate "5 + 1 / 5"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

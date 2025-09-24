@@ -1,42 +1,42 @@
 -- <vc-preamble>
-def knapsack (capacity : Nat) (items : List (Nat × Nat)) : List Nat :=
-  sorry
-
 def sumList (xs : List Nat) : Nat :=
   match xs with
   | [] => 0
   | h :: t => h + sumList t
--- </vc-preamble>
 
--- <vc-helpers>
--- </vc-helpers>
-
--- <vc-definitions>
 def zipWithIndex {α : Type} (l : List α) : List (Nat × α) :=
   let rec aux (i : Nat) (xs : List α) : List (Nat × α) :=
     match xs with
     | [] => []
     | h :: t => (i, h) :: aux (i+1) t
   aux 0 l
+-- </vc-preamble>
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+-- <vc-definitions>
+def knapsack (capacity : Nat) (items : List (Nat × Nat)) : List Nat :=
+  sorry
 -- </vc-definitions>
 
 -- <vc-theorems>
 theorem knapsack_result_length_matches_input
     (capacity : Nat) (items : List (Nat × Nat)) :
     (knapsack capacity items).length = items.length :=
-  sorry
+sorry
 
 theorem knapsack_result_nonnegative
     (capacity : Nat) (items : List (Nat × Nat)) :
     ∀ x ∈ knapsack capacity items, x ≥ 0 :=
-  sorry
+sorry
 
-theorem knapsack_total_size_within_capacity 
+theorem knapsack_total_size_within_capacity
     (capacity : Nat) (items : List (Nat × Nat)) :
     let result := knapsack capacity items
     let sizes := List.map (fun p => (items[p.1]!).1 * p.2) (zipWithIndex result)
     sumList sizes ≤ capacity :=
-  sorry
+sorry
 
 theorem knapsack_optimal_ratio
     (capacity : Nat) (items : List (Nat × Nat)) (i : Nat) :
@@ -48,36 +48,15 @@ theorem knapsack_optimal_ratio
     items[i]!.1 + total_size ≤ capacity →
     ∀ j < items.length,
       items[j]!.2 / items[j]!.1 = 0 ∨ items[j]!.2 / items[j]!.1 < ratio :=
-  sorry
+sorry
 
 theorem knapsack_zero_capacity
     (items : List (Nat × Nat)) :
     knapsack 0 items = List.replicate items.length 0 :=
-  sorry
+sorry
 
 theorem knapsack_empty_items
     (capacity : Nat) :
     knapsack capacity [] = [] :=
-  sorry
-
-/-
-info: [1, 0]
--/
--- #guard_msgs in
--- #eval knapsack 10 [[6, 9], [5, 5]]
-
-/-
-info: [5, 0, 0]
--/
--- #guard_msgs in
--- #eval knapsack 10 [[2, 3], [3, 4], [4, 5]]
-
-/-
-info: [0, 0]
--/
--- #guard_msgs in
--- #eval knapsack 5 [[10, 2], [12, 4]]
+sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

@@ -29,25 +29,4 @@ theorem mul_power_perfect_square :
 theorem mul_power_perfect_cube :
   mul_power 8 3 = 1 ∧ mul_power 27 3 = 1
   := by sorry
-
-/-
-info: 10
--/
--- #guard_msgs in
--- #eval mul_power 100 3
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval mul_power 36 2
-
-/-
-info: 18
--/
--- #guard_msgs in
--- #eval mul_power 72 4
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

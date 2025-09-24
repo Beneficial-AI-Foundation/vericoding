@@ -37,25 +37,4 @@ theorem tv_remote_repeat_chars (c : Char) (n : Nat) :
 theorem tv_remote_substring_cost (s : String) (h : s.length ≥ 2) :
   tv_remote (String.dropRight s 1) < tv_remote s := by
   sorry
-
-/-
-info: 36
--/
--- #guard_msgs in
--- #eval tv_remote "codewars"
-
-/-
-info: 16
--/
--- #guard_msgs in
--- #eval tv_remote "does"
-
-/-
-info: 35
--/
--- #guard_msgs in
--- #eval tv_remote "mississippi"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

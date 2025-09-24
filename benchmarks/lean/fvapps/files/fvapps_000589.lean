@@ -50,25 +50,4 @@ theorem x0_invariant
   (hX0_1 : 0 ≤ X0_1 ∧ X0_1 ≤ 100)
   (hX0_2 : 0 ≤ X0_2 ∧ X0_2 ≤ 100) :
   solve_impact_points N K M X0_1 = solve_impact_points N K M X0_2 := sorry
-
-/-
-info: 'no'
--/
--- #guard_msgs in
--- #eval solve_impact_points 4 3 10 10
-
-/-
-info: 'yes'
--/
--- #guard_msgs in
--- #eval solve_impact_points 2 3 10 10
-
-/-
-info: 'yes'
--/
--- #guard_msgs in
--- #eval solve_impact_points 1 3 3 0
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

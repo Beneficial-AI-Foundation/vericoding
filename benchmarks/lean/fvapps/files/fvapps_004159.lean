@@ -35,31 +35,4 @@ theorem empty_string (target : String) :
   (target = "snake" ∨ target = "kebab" ∨ target = "camel") →
   change_case "" target = some "" :=
   sorry
-
-/-
-info: 'snake_case'
--/
--- #guard_msgs in
--- #eval change_case "snakeCase" "snake"
-
-/-
-info: 'someLispName'
--/
--- #guard_msgs in
--- #eval change_case "some-lisp-name" "camel"
-
-/-
-info: 'map-to-all'
--/
--- #guard_msgs in
--- #eval change_case "map_to_all" "kebab"
-
-/-
-info: ''
--/
--- #guard_msgs in
--- #eval change_case "" "camel"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

@@ -1,24 +1,25 @@
 -- <vc-preamble>
-def to_hex (n : Int) : String := sorry
-
-/- Helper function to convert hex string to number (just for theorem statements) -/
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
-def hexToNat (s : String) : Nat := sorry
+def to_hex (n : Int) : String :=
+sorry
 
-theorem to_hex_positive_integers (n : Nat) (h : n < 2^32) : 
-  let result := to_hex n
-  (hexToNat result = n) ∧ 
-  (result.length ≤ 8) ∧
-  (∀ c ∈ result.data, c ∈ ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f']) := 
+def hexToNat (s : String) : Nat :=
 sorry
 -- </vc-definitions>
 
 -- <vc-theorems>
+theorem to_hex_positive_integers (n : Nat) (h : n < 2^32) :
+  let result := to_hex n
+  (hexToNat result = n) ∧
+  (result.length ≤ 8) ∧
+  (∀ c ∈ result.data, c ∈ ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f']) :=
+sorry
+
 theorem to_hex_negative_integers (n : Int) (h1 : -(2^31) ≤ n) (h2 : n < 0) :
   let result := to_hex n
   (result.length = 8) ∧
@@ -31,30 +32,11 @@ theorem to_hex_negative_integers (n : Int) (h1 : -(2^31) ≤ n) (h2 : n < 0) :
 sorry
 
 theorem to_hex_zero :
-  to_hex 0 = "0" := sorry
+  to_hex 0 = "0" :=
+sorry
 
 theorem to_hex_length (n : Int) :
   let result := to_hex n
-  1 ≤ result.length ∧ result.length ≤ 8 := sorry
-
-/-
-info: '1a'
--/
--- #guard_msgs in
--- #eval to_hex 26
-
-/-
-info: 'ffffffff'
--/
--- #guard_msgs in
--- #eval to_hex -1
-
-/-
-info: '0'
--/
--- #guard_msgs in
--- #eval to_hex 0
+  1 ≤ result.length ∧ result.length ≤ 8 :=
+sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

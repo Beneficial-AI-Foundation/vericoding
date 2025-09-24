@@ -31,25 +31,4 @@ theorem min_skip_points_edge_cases_two :
 
 theorem min_skip_points_edge_case_all_zeros :
   min_skip_points 5 [0, 0, 0, 0, 0] = 0 := sorry
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval min_skip_points 8 [1, 0, 1, 1, 0, 1, 1, 1]
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval min_skip_points 5 [1, 1, 1, 1, 0]
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval min_skip_points 1 [0]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

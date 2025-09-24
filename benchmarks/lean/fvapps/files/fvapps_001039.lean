@@ -26,25 +26,4 @@ theorem min_length_xd_sequence_min_length (n : Nat) :
   let x_shorter := (shorter.data.filter (· = 'X')).length
   let d_shorter := (shorter.data.filter (· = 'D')).length
   x_shorter * d_shorter < n := sorry
-
-/-
-info: 'XXXDDD'
--/
--- #guard_msgs in
--- #eval min_length_xd_sequence 9
-
-/-
-info: 'XXDD'
--/
--- #guard_msgs in
--- #eval min_length_xd_sequence 4
-
-/-
-info: 'XD'
--/
--- #guard_msgs in
--- #eval min_length_xd_sequence 1
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

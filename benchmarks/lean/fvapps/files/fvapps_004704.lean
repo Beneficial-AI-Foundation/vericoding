@@ -16,25 +16,4 @@ theorem square_is_multiplication (x : Int) : square x = x * x := sorry
 theorem square_symmetric (x : Int) : square (-x) = square x := sorry
 
 theorem square_monotonic (x : Int) (h : x ≥ 0) : square (x + 1) > square x ∨ x = 0 := sorry
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval square 2
-
-/-
-info: 16
--/
--- #guard_msgs in
--- #eval square 4
-
-/-
-info: 9
--/
--- #guard_msgs in
--- #eval square -3
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

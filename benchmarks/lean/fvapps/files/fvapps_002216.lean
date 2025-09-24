@@ -51,6 +51,3 @@ theorem solveContestRating_remaining_valid
   remaining.length + result.length = n :=
   sorry
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: guarded

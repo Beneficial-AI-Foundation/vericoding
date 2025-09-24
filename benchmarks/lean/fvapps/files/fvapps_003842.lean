@@ -17,25 +17,4 @@ theorem monkey_count_first {n : Nat} (h : n > 0) :
 
 theorem monkey_count_last {n : Nat} (h : n > 0) :
   (monkey_count n).getLast! = n := sorry
-
-/-
-info: [1, 2, 3, 4, 5]
--/
--- #guard_msgs in
--- #eval monkey_count 5
-
-/-
-info: [1]
--/
--- #guard_msgs in
--- #eval monkey_count 1
-
-/-
-info: [1, 2, 3]
--/
--- #guard_msgs in
--- #eval monkey_count 3
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

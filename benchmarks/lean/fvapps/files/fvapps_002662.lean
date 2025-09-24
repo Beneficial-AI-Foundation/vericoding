@@ -27,25 +27,4 @@ theorem mobile_keyboard_valid_chars (s : String) :
                       'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 
                       'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']) →
   mobile_keyboard s ≥ 0 := sorry
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval mobile_keyboard ""
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval mobile_keyboard "123"
-
-/-
-info: 26
--/
--- #guard_msgs in
--- #eval mobile_keyboard "codewars"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

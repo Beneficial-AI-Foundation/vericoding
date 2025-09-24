@@ -36,6 +36,3 @@ theorem puzzle_tiles_odd_pattern {w h : Nat} {i : Nat} :
   (remaining_lines[i+1]!).endsWith "_)" = true ∧
   (remaining_lines[i+2]!).endsWith "_|" = true := sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

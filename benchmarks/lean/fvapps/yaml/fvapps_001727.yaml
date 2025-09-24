@@ -21,24 +21,32 @@ vc-description: |-
   In **C**, the initial dimensions of the GoL universe is passed into your function *by reference* via the pointers `rowptr` and `colptr`.  When expanding/contracting the GoL universe, please keep track of the dimensions of the modified grid through these two variables.
   ~~~
   -/
+  
+  -- Apps difficulty: interview
+  -- Assurance level: guarded_and_plausible
 
 vc-preamble: |-
-  def trim : List (List Nat) → List (List Nat) := sorry
-  def next_gen : List (List Nat) → List (List Nat) := sorry
 
 vc-helpers: |-
 
 vc-definitions: |-
-  def get_generation : List (List Nat) → Nat → List (List Nat) := sorry
+  def trim : List (List Nat) → List (List Nat) :=
+  sorry
   
-  theorem static_block_pattern :
-    next_gen [[1,1], [1,1]] = [[1,1], [1,1]] := sorry
+  def next_gen : List (List Nat) → List (List Nat) :=
+  sorry
+  
+  def get_generation : List (List Nat) → Nat → List (List Nat) :=
+  sorry
 
 vc-theorems: |-
+  theorem static_block_pattern :
+    next_gen [[1,1], [1,1]] = [[1,1], [1,1]] :=
+  sorry
+  
   theorem empty_grid_static :
-    next_gen [[]] = [[]] := sorry
+    next_gen [[]] = [[]] :=
+  sorry
 
 vc-postamble: |-
-  -- Apps difficulty: interview
-  -- Assurance level: guarded_and_plausible
 

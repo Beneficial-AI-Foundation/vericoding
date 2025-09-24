@@ -37,25 +37,4 @@ theorem solve_maze_path_odd_cells (n m : Nat) :
 theorem solve_maze_path_square (n : Nat) :
   n > 0 →
   solve_maze_path n n = "Yes" ↔ (n > 1 ∧ (n * n) % 2 = 0) := sorry
-
-/-
-info: 'Yes'
--/
--- #guard_msgs in
--- #eval solve_maze_path 2 2
-
-/-
-info: 'Yes'
--/
--- #guard_msgs in
--- #eval solve_maze_path 2 3
-
-/-
-info: 'No'
--/
--- #guard_msgs in
--- #eval solve_maze_path 1 3
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

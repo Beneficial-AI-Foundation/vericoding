@@ -24,25 +24,4 @@ theorem find_missing_letter_consecutive {chars : List Char}
     (h₃ : ∀ (i : Nat), i + 1 < chars.length → 
           Char.toNat (chars.get! i) + 1 = Char.toNat (chars.get! (i + 1))) :
     find_missing_letter chars = none := sorry
-
-/-
-info: 'e'
--/
--- #guard_msgs in
--- #eval find_missing_letter ["a", "b", "c", "d", "f"]
-
-/-
-info: 'P'
--/
--- #guard_msgs in
--- #eval find_missing_letter ["O", "Q", "R", "S"]
-
-/-
-info: 'c'
--/
--- #guard_msgs in
--- #eval find_missing_letter ["b", "d"]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

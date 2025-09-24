@@ -43,25 +43,4 @@ theorem db_sort_mixed_strings_sorted [LE String] [Inhabited String] (arr : List 
 
 theorem db_sort_preserves_elements (arr : List (Int ⊕ String)) :
   List.length (db_sort arr) = List.length arr := sorry
-
-/-
-info: [2, 3, 4, 5, 6]
--/
--- #guard_msgs in
--- #eval db_sort [6, 2, 3, 4, 5]
-
-/-
-info: [0, 2, 2, 'Apple', 'Banana', 'Mango', 'Orange']
--/
--- #guard_msgs in
--- #eval db_sort ["Banana", "Orange", "Apple", "Mango", 0, 2, 2]
-
-/-
-info: [1, 1, 1, 1, 1, 1, 2, 2, 3, '1', '2', 'three']
--/
--- #guard_msgs in
--- #eval db_sort [1, 1, 1, 1, 1, 2, "1", "2", "three", 1, 2, 3]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

@@ -62,8 +62,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def solve_hotel_path (hotels : List Nat) (L : Nat) (queries : List (Nat × Nat)) : List Nat :=

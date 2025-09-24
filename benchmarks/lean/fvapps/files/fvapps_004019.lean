@@ -37,25 +37,4 @@ theorem sequence_sum_equal_bounds
   (h1 : p > 0) :
   sequenceSum s s p = s :=
 sorry
-
-/-
-info: 12
--/
--- #guard_msgs in
--- #eval sequence_sum 2 6 2
-
-/-
-info: 15
--/
--- #guard_msgs in
--- #eval sequence_sum 1 5 1
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval sequence_sum 16 15 3
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

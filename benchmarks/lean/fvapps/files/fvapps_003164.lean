@@ -37,25 +37,4 @@ theorem case_sensitivity_lower (s : String) :
 theorem case_sensitivity_upper (s : String) :
   longest_palindrome s.toUpper ≥ longest_palindrome s :=
   sorry
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval longest_palindrome "aab"
-
-/-
-info: 7
--/
--- #guard_msgs in
--- #eval longest_palindrome "I like racecars that go fast"
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval longest_palindrome ""
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

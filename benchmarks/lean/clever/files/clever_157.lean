@@ -35,7 +35,3 @@ theorem correctness
 : problem_spec implementation a b c := by
   sorry
 -- </vc-theorems>
-
--- #test implementation ([1, 2, 2, -4]: List Int) = (-9: Int)
--- #test implementation ([0, 1]: List Int) = (0: Int)
--- #test implementation ([]: List Int) = none

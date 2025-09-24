@@ -27,25 +27,4 @@ theorem dimension_comparison_consistency {n m : Nat} (h1 : n > 0) (h2 : m > 0) (
   (m ≥ n → direction_in_grid n m = "L" ∨ direction_in_grid n m = "R") ∧
   (m < n → direction_in_grid n m = "U" ∨ direction_in_grid n m = "D") :=
   sorry
-
-/-
-info: 'R'
--/
--- #guard_msgs in
--- #eval direction_in_grid 3 3
-
-/-
-info: 'L'
--/
--- #guard_msgs in
--- #eval direction_in_grid 2 4
-
-/-
-info: 'U'
--/
--- #guard_msgs in
--- #eval direction_in_grid 4 2
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

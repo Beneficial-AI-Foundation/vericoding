@@ -54,6 +54,3 @@ theorem solve_array_destroy_max_bound
   result.length = n ∧
   ∀ x ∈ result, x ≤ list_sum nums := sorry
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: guarded

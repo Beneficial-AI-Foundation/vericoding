@@ -29,25 +29,4 @@ theorem solve_teleport_game_symmetric_teleport (val : Int) :
     solve_teleport_game 2 2 1 1 1 tel_pairs board
   ]
   ∀ x y, x ∈ results → y ∈ results → x = y := sorry
-
-/-
-info: 188
--/
--- #guard_msgs in
--- #eval solve_teleport_game 5 5 2 2 2 list(zip(tx, ty)) [[10, 11, 62, 14, 15], [57, 23, 34, 75, 21], [17, 12, 14, 11, 53], [84, 61, 24, 85, 22], [43, 89, 14, 15, 43]]
-
-/-
-info: 24
--/
--- #guard_msgs in
--- #eval solve_teleport_game 3 3 2 0 0 list(zip(tx, ty)) [[9, 8, 7], [5, 6, 4], [1, 3, 2]]
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval solve_teleport_game 2 2 1 1 1 list(zip(tx, ty)) [[5, 6], [8, 3]]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

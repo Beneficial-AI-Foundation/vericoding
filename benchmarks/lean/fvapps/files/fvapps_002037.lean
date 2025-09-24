@@ -41,25 +41,4 @@ theorem solve_toy_train_self_loops {n : Nat}
   ∀ i j, i ∈ List.range result.length → j ∈ List.range result.length →
     result[i]! = result[j]! :=
 sorry
-
-/-
-info: [10, 9, 10, 10, 9]
--/
--- #guard_msgs in
--- #eval solve_toy_train 5 [(2, 4), (5, 1), (2, 3), (3, 4), (4, 1), (5, 3), (3, 5)]
-
-/-
-info: [5, 6]
--/
--- #guard_msgs in
--- #eval solve_toy_train 2 [(1, 2), (1, 2), (1, 2)]
-
-/-
-info: [8, 7, 6, 8, 7]
--/
--- #guard_msgs in
--- #eval solve_toy_train 5 [(2, 4), (5, 4), (3, 2)]
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: guarded_and_plausible

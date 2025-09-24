@@ -29,25 +29,4 @@ theorem change_all_lowercase (s : String) (h : ∀ c ∈ s.data, 'a' ≤ c ∧ c
     if c ∈ s.data 
     then (result.data.get! i) = '1'
     else True := sorry
-
-/-
-info: '11000000000000000000000001'
--/
--- #guard_msgs in
--- #eval change "a **&  bZ"
-
-/-
-info: '11101000000000000000000001'
--/
--- #guard_msgs in
--- #eval change "Abc e  $$  z"
-
-/-
-info: '00000000000000000000000000'
--/
--- #guard_msgs in
--- #eval change ""
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

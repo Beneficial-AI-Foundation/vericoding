@@ -1,14 +1,15 @@
 -- <vc-preamble>
-def NUMBER_WORDS : List String := ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"]
-
-def uncollapse (s : String) : String :=
-  sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
+def NUMBER_WORDS : List String := ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"]
+
+def uncollapse (s : String) : String :=
+  sorry
+
 def isSubstring (pattern : String) (s : String) : Bool :=
   sorry
 -- </vc-definitions>
@@ -33,25 +34,4 @@ theorem uncollapse_invalid_input (s : String)
   (h : ∀ word ∈ NUMBER_WORDS, isSubstring word s = false) :
   uncollapse s = "" :=
 sorry
-
-/-
-info: 'three'
--/
--- #guard_msgs in
--- #eval uncollapse "three"
-
-/-
-info: 'eight six'
--/
--- #guard_msgs in
--- #eval uncollapse "eightsix"
-
-/-
-info: 'five four seven'
--/
--- #guard_msgs in
--- #eval uncollapse "fivefourseven"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

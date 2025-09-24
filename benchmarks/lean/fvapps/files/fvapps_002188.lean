@@ -1,4 +1,10 @@
 -- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+-- <vc-definitions>
 def find_shortest_non_subsequence (s : String) : String :=
   sorry
 
@@ -10,12 +16,7 @@ def generate_strings (length : Nat) : List String :=
 
 def all_chars_in_range (s : String) : Bool :=
   sorry
--- </vc-preamble>
 
--- <vc-helpers>
--- </vc-helpers>
-
--- <vc-definitions>
 def all_lower (s : String) : Bool :=
   sorry
 -- </vc-definitions>
@@ -28,35 +29,14 @@ theorem result_is_valid_string (s : String) :
 
 theorem result_is_minimal (s : String) :
   let result := find_shortest_non_subsequence s
-  ∀ n : Nat, n < result.length → 
+  ∀ n : Nat, n < result.length →
   ∀ possible : String, possible.length = n →
   is_subsequence possible s := by
   sorry
 
 theorem result_for_all_letters {s : String} :
   s.length = 26 →
-  (∀ c : Char, c.isLower → s.contains c) → 
+  (∀ c : Char, c.isLower → s.contains c) →
   find_shortest_non_subsequence s = "aa" := by
   sorry
-
-/-
-info: 'b'
--/
--- #guard_msgs in
--- #eval find_shortest_non_subsequence "atcoderregularcontest"
-
-/-
-info: 'aa'
--/
--- #guard_msgs in
--- #eval find_shortest_non_subsequence "abcdefghijklmnopqrstuvwxyz"
-
-/-
-info: 'aca'
--/
--- #guard_msgs in
--- #eval find_shortest_non_subsequence "frqnvhydscshfcgdemurlfrutcpzhopfotpifgepnqjxupnskapziurswqazdwnwbgdhyktfyhqqxpoidfhjdakoxraiedxskywuepzfniuyskxiyjpjlxuqnfgmnjcvtlpnclfkpervxmdbvrbrdn"
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: unguarded

@@ -8,7 +8,7 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-spec fn shares_memory(a: Vec<f32>, b: Vec<f32>) -> bool
+spec fn shares_memory(a: Vec<i8>, b: Vec<i8>) -> bool
 {
 
     true &&
@@ -20,7 +20,7 @@ spec fn shares_memory(a: Vec<f32>, b: Vec<f32>) -> bool
     true
 }
 
-fn shares_memory_fn(a: Vec<f32>, b: Vec<f32>) -> (result: bool)
+fn shares_memory_fn(a: Vec<i8>, b: Vec<i8>) -> (result: bool)
     ensures
 
         (result == true || result == false) &&

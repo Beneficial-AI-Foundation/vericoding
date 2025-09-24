@@ -37,25 +37,4 @@ theorem duplicates_concatenation (arr1 arr2 : List Int) :
 theorem duplicates_perm (arr1 arr2 : List Int) :
   List.Perm arr1 arr2 → duplicates arr1 = duplicates arr2 := by
   sorry
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval duplicates [1, 2, 2, 20, 6, 20, 2, 6, 2]
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval duplicates [1000, 1000]
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval duplicates []
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

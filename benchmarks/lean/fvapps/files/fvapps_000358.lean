@@ -30,25 +30,4 @@ theorem minimalCaseFindsOne :
 
 theorem findsInLargerList :
   findDuplicate [1, 2, 3, 4, 5, 6, 7, 8, 9, 5] = some 5 := by sorry
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval find_duplicate [1, 3, 4, 2, 2]
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval find_duplicate [3, 1, 3, 4, 2]
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval find_duplicate [2, 2, 2, 2, 2]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

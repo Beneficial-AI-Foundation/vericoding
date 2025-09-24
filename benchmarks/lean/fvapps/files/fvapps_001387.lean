@@ -33,25 +33,4 @@ sorry
 theorem known_case_two :
   solve_prime_factors_pairs [4, 8] = 1 :=
 sorry
-
-/-
-info: 6
--/
--- #guard_msgs in
--- #eval solve_prime_factors_pairs [2, 30, 2, 4, 3]
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval solve_prime_factors_pairs [2, 4]
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval solve_prime_factors_pairs [4, 8]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

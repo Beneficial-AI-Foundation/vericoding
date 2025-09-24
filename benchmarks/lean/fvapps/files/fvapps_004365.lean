@@ -29,25 +29,4 @@ sorry
 theorem egged_first_year (year : Nat) :
   year > 0 → egged year 1 = Sum.inr 900 :=
 sorry
-
-/-
-info: 'No chickens yet!'
--/
--- #guard_msgs in
--- #eval egged 0 5
-
-/-
-info: 900
--/
--- #guard_msgs in
--- #eval egged 2 1
-
-/-
-info: 900
--/
--- #guard_msgs in
--- #eval egged 1 15
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

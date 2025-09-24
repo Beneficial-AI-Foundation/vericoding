@@ -38,25 +38,4 @@ theorem increment_string_just_digits (digits : List Nat)
   let num := String.mk (digits.map Char.ofNat)
   String.length (increment_string num) ≥ String.length num ∧
   String.toNat! (increment_string num) = String.toNat! num + 1 := sorry
-
-/-
-info: 'foo1'
--/
--- #guard_msgs in
--- #eval increment_string "foo"
-
-/-
-info: 'foobar002'
--/
--- #guard_msgs in
--- #eval increment_string "foobar001"
-
-/-
-info: 'foobar100'
--/
--- #guard_msgs in
--- #eval increment_string "foobar99"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

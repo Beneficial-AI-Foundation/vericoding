@@ -90,12 +90,17 @@ spec fn is_minimal_solution(n: int, original_edges: Seq<(int, int)>, num_edges_t
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(input: &str) -> (output: &str)
+fn solve(n: i8, edges: Vec<(i8, i8)>) -> (num_edges_to_add: i8)
+    requires n >= 2,
+             edges.len() == (n - 1) as nat,
+             forall|i: int| 0 <= i < edges.len() ==> 1 <= edges[i].0 <= n && 1 <= edges[i].1 <= n && edges[i].0 != edges[i].1
+    ensures valid_input(n as int, edges@.map_values(|e: (i8, i8)| (e.0 as int, e.1 as int))) ==> is_minimal_solution(n as int, edges@.map_values(|e: (i8, i8)| (e.0 as int, e.1 as int)), num_edges_to_add as int),
+            all_vertices_within_distance2(n as int, edges@.map_values(|e: (i8, i8)| (e.0 as int, e.1 as int))) ==> num_edges_to_add >= 0
 // </vc-spec>
 // <vc-code>
 {
     assume(false);
-    ""
+    0
 }
 // </vc-code>
 

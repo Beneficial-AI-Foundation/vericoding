@@ -25,25 +25,4 @@ theorem count_odd_pentaFib_first_terms (n : Nat) (h : n ≤ 5) :
     | _ => 0
   :=
   sorry
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval count_odd_pentaFib 0
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval count_odd_pentaFib 1
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval count_odd_pentaFib 2
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

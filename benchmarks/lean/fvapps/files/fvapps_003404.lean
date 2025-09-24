@@ -35,25 +35,4 @@ theorem nextNumb_minimal (n : Nat)
 theorem nextNumb_too_large (n : Nat)
   (h : n ≥ 9876543210) :
   ∃ msg : String, nextNumb n = Sum.inr msg := sorry
-
-/-
-info: 15
--/
--- #guard_msgs in
--- #eval next_numb 12
-
-/-
-info: 105
--/
--- #guard_msgs in
--- #eval next_numb 99
-
-/-
-info: 1023459
--/
--- #guard_msgs in
--- #eval next_numb 999999
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

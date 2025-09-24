@@ -19,25 +19,4 @@ theorem basic_negation (value : Bool) :
 
 theorem empty_negation (value : Bool) : 
   negation_value "" value = value := sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval negation_value "!" False
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval negation_value "!" True
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval negation_value "!!!" []
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

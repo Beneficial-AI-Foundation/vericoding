@@ -26,25 +26,4 @@ sorry
 theorem fisHex_case_insensitive {s : String} :
   fisHex s.toLower = fisHex s.toUpper :=
 sorry
-
-/-
-info: 12
--/
--- #guard_msgs in
--- #eval fisHex "redlionfish"
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval fisHex "Aeneus corydoras"
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval fisHex "blowfish"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

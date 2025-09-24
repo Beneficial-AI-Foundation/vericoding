@@ -29,25 +29,4 @@ theorem jumping_specific_case2 :
 theorem jumping_specific_case3 :
   jumping [0, -1, -2, -3, -4] 3 = 0 :=
   sorry
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval jumping [0, 3, 0, 1, -3] 3
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval jumping [0, -1, -2, -3, -4] 4
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval jumping [0, -1, -2, -3, -4] 3
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

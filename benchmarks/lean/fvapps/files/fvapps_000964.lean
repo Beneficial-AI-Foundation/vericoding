@@ -33,25 +33,4 @@ theorem solve_supermarket_perfect_squares
 theorem solve_supermarket_non_perfect_squares
   (non_squares : List Nat := [5, 6, 7, 8, 10, 11, 12, 13, 14, 15]) :
   solve_supermarket non_squares = List.replicate non_squares.length "NO" := sorry
-
-/-
-info: ['YES', 'NO']
--/
--- #guard_msgs in
--- #eval solve_supermarket [4, 5]
-
-/-
-info: ['YES']
--/
--- #guard_msgs in
--- #eval solve_supermarket [9]
-
-/-
-info: ['NO', 'NO', 'NO']
--/
--- #guard_msgs in
--- #eval solve_supermarket [6, 8, 10]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

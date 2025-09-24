@@ -33,25 +33,4 @@ theorem letterFrequency_total_count
   let result := letterFrequency s
   List.foldl (λ acc pair => acc + pair.snd) 0 result = 
   List.length (s.data.filter isAlpha) := sorry
-
-/-
-info: expected1
--/
--- #guard_msgs in
--- #eval letter_frequency "aaAabb dddDD hhcc"
-
-/-
-info: expected2
--/
--- #guard_msgs in
--- #eval letter_frequency "Hello! 123 World."
-
-/-
-info: expected3
--/
--- #guard_msgs in
--- #eval letter_frequency ""
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

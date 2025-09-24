@@ -21,25 +21,4 @@ theorem valid_probabilities_sum_correctly :
   mutuallyExclusive [(1, 0.2), (2, 0.2), (3, 0.2), (4, 0.2), (5, 0.2)] 1 2 = some "0.40" ∧
   mutuallyExclusive [(1, 0.3), (2, 0.3), (3, 0.4)] 1 2 = some "0.60" :=
 sorry
-
-/-
-info: None
--/
--- #guard_msgs in
--- #eval mutually_exclusive *test1
-
-/-
-info: '0.30'
--/
--- #guard_msgs in
--- #eval mutually_exclusive *test2
-
-/-
-info: '0.20'
--/
--- #guard_msgs in
--- #eval mutually_exclusive *test3
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

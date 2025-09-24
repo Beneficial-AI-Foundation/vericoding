@@ -31,6 +31,3 @@ theorem array_mash_empty {α : Type u} :
   array_mash ([] : List α) ([] : List α) = [] :=
 sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

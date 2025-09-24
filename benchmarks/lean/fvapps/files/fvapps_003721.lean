@@ -30,25 +30,4 @@ theorem shuffled_array_invalid {arr : List Int}
 
 theorem shuffled_array_single {x : Int} :
   shuffled_array [x] = [] := sorry
-
-/-
-info: [1, 2, 3, 6]
--/
--- #guard_msgs in
--- #eval shuffled_array [1, 12, 3, 6, 2]
-
-/-
-info: [-5, -3, 2, 7]
--/
--- #guard_msgs in
--- #eval shuffled_array [1, -3, -5, 7, 2]
-
-/-
-info: [-3]
--/
--- #guard_msgs in
--- #eval shuffled_array [-3, -3]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

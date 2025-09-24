@@ -29,25 +29,4 @@ theorem same_color_gives_k_one (n: Nat) (colors: List Nat) (c: Nat)
   let uniform_colors := List.replicate n c
   find_min_k_infinite_path n perm uniform_colors = 1 :=
 sorry
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval find_min_k_infinite_path 4 [1, 3, 4, 2] [1, 2, 2, 3]
-
-/-
-info: 5
--/
--- #guard_msgs in
--- #eval find_min_k_infinite_path 5 [2, 3, 4, 5, 1] [1, 2, 3, 4, 5]
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval find_min_k_infinite_path 8 [7, 4, 5, 6, 1, 8, 3, 2] [5, 3, 6, 4, 7, 5, 8, 4]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

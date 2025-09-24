@@ -37,44 +37,54 @@ vc-description: |-
   
   It can be proved that there is no solution in the second example.
   -/
+  
+  -- Parse result into nums
+  
+  -- Parse result into nums
 
 vc-preamble: |-
-  def solve_circle_arrangement (n : Nat) : String :=
-    sorry
 
 vc-helpers: |-
 
 vc-definitions: |-
+  def solve_circle_arrangement (n : Nat) : String :=
+    sorry
+  
   def validate_arrangement (n : Nat) (result : String) : Bool :=
     sorry
 
 vc-theorems: |-
   theorem solve_returns_string {n : Nat} :
     ∃ s : String, solve_circle_arrangement n = s
-    := sorry
+    :=
+  sorry
   
   theorem solve_starts_with_yes_or_is_no {n : Nat} :
-    let result := solve_circle_arrangement n 
+    let result := solve_circle_arrangement n
     result.startsWith "YES\n" ∨ result = "NO"
-    := sorry
+    :=
+  sorry
   
   theorem result_validates {n : Nat} :
-    validate_arrangement n (solve_circle_arrangement n) = true 
-    := sorry
+    validate_arrangement n (solve_circle_arrangement n) = true
+    :=
+  sorry
   
   theorem validates_checks_length {n : Nat} {result : String} :
     result ≠ "NO" → validate_arrangement n result = true →
     ∃ nums : List Nat,
-      -- Parse result into nums
+  
       nums.length = 2 * n
-    := sorry
+    :=
+  sorry
   
   theorem validates_checks_unique_nums {n : Nat} {result : String} :
     result ≠ "NO" → validate_arrangement n result = true →
     ∃ nums : List Nat,
-      -- Parse result into nums
+  
       nums = List.range (2 * n)
-    := sorry
+    :=
+  sorry
   
   theorem validates_checks_consecutive_sums {n : Nat} {result : String} :
     result ≠ "NO" → validate_arrangement n result = true →
@@ -83,27 +93,28 @@ vc-theorems: |-
       ∃ sums : List Nat,
         ∃ maxSum minSum : Nat,
           maxSum - minSum ≤ 1
-    := sorry
-  
-  /-
-  info: 'YES\n2 3 6 1 4 5'
-  -/
-  -- #guard_msgs in
-  -- #eval solve_circle_arrangement 3
-  
-  /-
-  info: 'NO'
-  -/
-  -- #guard_msgs in
-  -- #eval solve_circle_arrangement 4
-  
-  /-
-  info: 'YES\n2 1'
-  -/
-  -- #guard_msgs in
-  -- #eval solve_circle_arrangement 1
+    :=
+  sorry
 
 vc-postamble: |-
   -- Apps difficulty: competition
   -- Assurance level: unguarded
+  
+  /--
+  info: 'YES\n2 3 6 1 4 5'
+  -/
+  #guard_msgs in
+  #eval solve_circle_arrangement 3
+  
+  /--
+  info: 'NO'
+  -/
+  #guard_msgs in
+  #eval solve_circle_arrangement 4
+  
+  /--
+  info: 'YES\n2 1'
+  -/
+  #guard_msgs in
+  #eval solve_circle_arrangement 1
 

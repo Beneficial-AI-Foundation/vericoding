@@ -40,25 +40,4 @@ theorem longest_str_chain_decreasing
   (chain := List.range word.length |>.map (fun i => word.take (word.length - i))) :
   longest_str_chain chain = word.length ∨ longest_str_chain chain = 1 :=
 sorry
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval longest_str_chain ["a", "b", "ba", "bca", "bda", "bdca"]
-
-/-
-info: 5
--/
--- #guard_msgs in
--- #eval longest_str_chain ["xbc", "pcxbcf", "xb", "cxbc", "pcxbc"]
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval longest_str_chain ["a", "b", "ab", "bac"]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

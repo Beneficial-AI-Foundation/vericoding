@@ -36,25 +36,4 @@ theorem sequence_immutability
   solve_sequence_swap a.length a b = solve_sequence_swap a.length a b ∧
   a = a_copy ∧ b = b_copy :=
 sorry
-
-/-
-info: -1
--/
--- #guard_msgs in
--- #eval solve_sequence_swap 1 [1] [2]
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval solve_sequence_swap 2 [1, 2] [2, 1]
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval solve_sequence_swap 2 [1, 1] [2, 2]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

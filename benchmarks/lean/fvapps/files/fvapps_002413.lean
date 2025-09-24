@@ -32,25 +32,4 @@ theorem complementary_pairs (n: Nat) :
   let times := List.replicate n 20 ++ List.replicate n 40 
   num_pairs_divisible_by_60 times = n * n :=
 sorry
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval num_pairs_divisible_by_60 [30, 20, 150, 100, 40]
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval num_pairs_divisible_by_60 [60, 60, 60]
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval num_pairs_divisible_by_60 [20, 40]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

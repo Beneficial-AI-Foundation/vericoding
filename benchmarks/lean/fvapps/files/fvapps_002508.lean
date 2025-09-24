@@ -49,6 +49,3 @@ theorem calculate_student_averages_consistency
   ∀ i < n_students, ∃ result ∈ calculate_student_averages n_students n_subjects subject_marks, 
     Float.abs (result - marks[i % marks.length]'(Nat.mod_lt _ h3)) ≤ 1e-9 := sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

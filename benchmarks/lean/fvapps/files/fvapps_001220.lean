@@ -44,19 +44,4 @@ theorem count_sum_powers_small_N (N K : Nat) (h : N < 2^K) :
 theorem count_sum_powers_one_first_power :
   count_sum_of_powers 1 1 = 1 :=
   sorry
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval count_sum_of_powers 4 1
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval count_sum_of_powers 38 2
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

@@ -17,25 +17,4 @@ theorem tournament_result_bounded (n k: Nat) (teams: List Nat) :
 
 theorem empty_tournament_zero_games (n: Nat) :
   solve_tournament_max_games n 0 [] = 0 := sorry
-
-/-
-info: 6
--/
--- #guard_msgs in
--- #eval solve_tournament_max_games 3 1 [6]
-
-/-
-info: 11
--/
--- #guard_msgs in
--- #eval solve_tournament_max_games 3 3 [1, 7, 8]
-
-/-
-info: 14
--/
--- #guard_msgs in
--- #eval solve_tournament_max_games 3 4 [1, 3, 5, 7]
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: unguarded

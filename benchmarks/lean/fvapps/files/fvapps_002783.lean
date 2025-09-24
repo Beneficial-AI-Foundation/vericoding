@@ -23,25 +23,4 @@ theorem multiplication_property (n m k : Int) :
 
 theorem zero_coprime (n : Int) :
   are_coprime n 0 = (n.natAbs = 1) := sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval are_coprime 20 27
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval are_coprime 12 39
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval are_coprime 64 27
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

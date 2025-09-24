@@ -24,25 +24,4 @@ theorem determine_location_parity_simple (n : Nat) :
   determine_location n "ABC" [] = 
     if n % 2 = 1 then "contest" else "home" :=
   sorry
-
-/-
-info: 'home'
--/
--- #guard_msgs in
--- #eval determine_location 4 "SVO" ["SVO->CDG", "LHR->SVO", "SVO->LHR", "CDG->SVO"]
-
-/-
-info: 'contest'
--/
--- #guard_msgs in
--- #eval determine_location 3 "SVO" ["SVO->HKT", "HKT->SVO", "SVO->RAP"]
-
-/-
-info: 'contest'
--/
--- #guard_msgs in
--- #eval determine_location 1 "ESJ" ["ESJ->TSJ"]
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: unguarded

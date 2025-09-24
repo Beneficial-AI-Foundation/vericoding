@@ -7,7 +7,7 @@ import yaml
 from pathlib import Path
 import sys
 sys.path.append('..')
-from rust_to_yaml_converter import rust_to_yaml, parse_rust_file
+from verus.rust_to_yaml_converter import rust_to_yaml, parse_rust_file
 
 
 def load_yaml_sections(yaml_path: Path) -> dict:

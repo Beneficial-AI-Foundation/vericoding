@@ -27,31 +27,4 @@ theorem max_distance_single_obstacle
 theorem max_distance_two_adjacent_obstacles
   : max_distance 2 10 2 [5,6] [1,2] = 6 :=
   sorry
-
-/-
-info: 10
--/
--- #guard_msgs in
--- #eval max_distance 2 10 20 [4, 7] [1, 2]
-
-/-
-info: 13
--/
--- #guard_msgs in
--- #eval max_distance 4 15 20 [4, 6, 9, 13] [1, 2, 2, 1]
-
-/-
-info: 10
--/
--- #guard_msgs in
--- #eval max_distance 5 10 1 [1, 3, 5, 7, 9] [1, 2, 1, 2, 1]
-
-/-
-info: 5
--/
--- #guard_msgs in
--- #eval max_distance 2 10 2 [4, 5] [1, 2]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

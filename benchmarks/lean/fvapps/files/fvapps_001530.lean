@@ -23,25 +23,4 @@ theorem result_count_r1 (r : Nat) :
 
 theorem result_count_r2 (r : Nat) :
   r = 2 → List.length (find_triangles_with_incircle r) = 5 := sorry
-
-/-
-info: 5
--/
--- #guard_msgs in
--- #eval len find_triangles_with_incircle(2)
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval len find_triangles_with_incircle(1)
-
-/-
-info: 13
--/
--- #guard_msgs in
--- #eval len find_triangles_with_incircle(3)
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

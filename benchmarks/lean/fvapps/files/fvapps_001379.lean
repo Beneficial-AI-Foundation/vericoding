@@ -33,25 +33,4 @@ sorry
 theorem min_candies_odd_greater (n k : Nat) (h1: n > 1) (h2: n % 2 = 1) (h3: k ≤ 1000) :
   min_candies_required n k > min_candies_required (n-1) k :=
 sorry
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval min_candies_required 2 1
-
-/-
-info: 5
--/
--- #guard_msgs in
--- #eval min_candies_required 3 2
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval min_candies_required 4 0
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

@@ -16,25 +16,4 @@ theorem zero_dimensions :
 -- <vc-theorems>
 theorem tiny_boards :
   ∀ n m, n < 2 → m < 2 → chess_triangle n m = 0 := sorry
-
-/-
-info: 8
--/
--- #guard_msgs in
--- #eval chess_triangle 2 3
-
-/-
-info: 48
--/
--- #guard_msgs in
--- #eval chess_triangle 3 3
-
-/-
-info: 40
--/
--- #guard_msgs in
--- #eval chess_triangle 5 2
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

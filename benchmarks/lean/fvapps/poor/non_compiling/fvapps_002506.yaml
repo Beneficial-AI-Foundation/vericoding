@@ -41,8 +41,6 @@ vc-preamble: |-
   def zeroMatrix (n : Nat) : Matrix n Float := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def calculateMatrixDeterminant {n : Nat} (matrix : Matrix n Float) : Float := sorry

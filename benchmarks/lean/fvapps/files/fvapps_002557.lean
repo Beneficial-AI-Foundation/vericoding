@@ -28,25 +28,4 @@ sorry
 theorem balanced_parens_give_empty_string_2 :
   remove_parentheses "((()))" = "" :=
 sorry
-
-/-
-info: 'exampleexample'
--/
--- #guard_msgs in
--- #eval remove_parentheses "example(unwanted thing)example"
-
-/-
-info: 'a'
--/
--- #guard_msgs in
--- #eval remove_parentheses "a(b(c))"
-
-/-
-info: '  '
--/
--- #guard_msgs in
--- #eval remove_parentheses "(first group) (second group) (third group)"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

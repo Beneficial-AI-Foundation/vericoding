@@ -35,19 +35,4 @@ theorem identical_segments_count_as_one (segments : SegmentList) (h : segments â
 theorem function_is_deterministic (segments : SegmentList) :
   count_non_intersecting_segments segments = count_non_intersecting_segments segments :=
   sorry
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval count_non_intersecting_segments [[1, 5], [2, 3], [3, 6], [4, 6], [5, 6], [5, 7], [7, 9], [8, 10]]
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval count_non_intersecting_segments arr2
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

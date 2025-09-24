@@ -1,12 +1,13 @@
 -- <vc-preamble>
-def compute_lipschitz_sums (arr : List Nat) (queries : List (Nat × Nat)) : List Nat :=
-sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
+def compute_lipschitz_sums (arr : List Nat) (queries : List (Nat × Nat)) : List Nat :=
+sorry
+
 def sort (l : List Nat) : List Nat :=
 sorry
 -- </vc-definitions>
@@ -15,7 +16,7 @@ sorry
 theorem array_properties {arr : List Nat} (h: arr.length ≥ 2)
   (hb: ∀ x, x ∈ arr → x ≤ 10^8) :
   let result := compute_lipschitz_sums arr [(1, arr.length)]
-  result.length = 1 ∧ 
+  result.length = 1 ∧
   ∀ x, x ∈ result → x ≥ 0 :=
 sorry
 
@@ -33,7 +34,7 @@ theorem query_bounds_valid {arr : List Nat} {queries : List (Nat × Nat)}
   results.length = queries.length :=
 sorry
 
-theorem monotonic_increasing_minimal {arr : List Nat} 
+theorem monotonic_increasing_minimal {arr : List Nat}
   (h: arr.length ≥ 2)
   (hb: ∀ x, x ∈ arr → x ≤ 10) :
   let sorted := sort arr
@@ -41,25 +42,4 @@ theorem monotonic_increasing_minimal {arr : List Nat}
   let sorted_sum := (compute_lipschitz_sums sorted [(1, arr.length)]).head!
   sorted_sum ≤ orig_sum :=
 sorry
-
-/-
-info: [17, 82, 23, 210]
--/
--- #guard_msgs in
--- #eval compute_lipschitz_sums [1, 5, 2, 9, 1, 3, 4, 2, 1, 7] [(2, 4), (3, 8), (7, 10), (1, 9)]
-
-/-
-info: [2, 0, 22, 59, 16, 8]
--/
--- #guard_msgs in
--- #eval compute_lipschitz_sums [5, 7, 7, 4, 6, 6, 2] [(1, 2), (2, 3), (2, 6), (1, 7), (4, 7), (3, 5)]
-
-/-
-info: [100000000, 100000000]
--/
--- #guard_msgs in
--- #eval compute_lipschitz_sums [100000000, 0] [(1, 2), (1, 2)]
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: guarded

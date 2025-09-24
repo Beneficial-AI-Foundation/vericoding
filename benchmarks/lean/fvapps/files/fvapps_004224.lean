@@ -33,25 +33,4 @@ theorem megaMind_bounds {hp dps shots regen : Nat} :
   regen ≤ 1000 →
   True :=
   sorry
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval mega_mind 13 4 3 1
-
-/-
-info: -1
--/
--- #guard_msgs in
--- #eval mega_mind 13 4 3 50
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval mega_mind 12 4 3 2
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

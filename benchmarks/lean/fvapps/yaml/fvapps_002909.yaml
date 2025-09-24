@@ -24,66 +24,78 @@ vc-description: |-
   Numerical Palindrome #4
   Numerical Palindrome #5
   -/
+  
+  -- dummy definition to make type checker happy
+  
+  -- dummy definition
 
 vc-preamble: |-
-  def palindrome (x : Int) : Bool ⊕ String := sorry
-  
-  def isDigitPalindrome (s : String) : Bool :=
-    s = s.push '0' -- dummy definition to make type checker happy
 
 vc-helpers: |-
 
 vc-definitions: |-
-  def reverseInt (n : Int) : Int := 0 -- dummy definition
+  def palindrome (x : Int) : Bool ⊕ String := 
+    sorry
   
-  theorem palindrome_output_type (x : Int) :
-    x > 0 → Sum.casesOn (palindrome x) (fun _ => True) (fun _ => True) := sorry
+  def isDigitPalindrome (s : String) : Bool :=
+    sorry
+  
+  def reverseInt (n : Int) : Int := 
+    sorry
 
 vc-theorems: |-
+  theorem palindrome_output_type (x : Int) :
+    x > 0 → Sum.casesOn (palindrome x) (fun _ => True) (fun _ => True) :=
+  sorry
+  
   theorem palindrome_correctness (x : Int) :
     x > 0 → match palindrome x with
     | .inl true => isDigitPalindrome (toString x) = true
     | .inl false => isDigitPalindrome (toString x) = false
     | .inr _ => False
-    := sorry
+    :=
+  sorry
   
   theorem palindrome_negative_invalid (x : Int) :
-    x ≤ 0 → palindrome x = .inr "Not valid" := sorry
+    x ≤ 0 → palindrome x = .inr "Not valid" :=
+  sorry
   
   theorem single_digit_palindrome (x : Int) :
-    x > 0 → x < 10 → (palindrome x) = .inl true := sorry
+    x > 0 → x < 10 → (palindrome x) = .inl true :=
+  sorry
   
   theorem palindrome_concat_property (x : Int) :
     x > 0 →
     let xStr := toString x
     let palindromeNum := x * (10 ^ (String.length xStr)) + reverseInt x
-    palindrome palindromeNum = .inl true := sorry
-  
-  /-
-  info: True
-  -/
-  -- #guard_msgs in
-  -- #eval palindrome 1221
-  
-  /-
-  info: False
-  -/
-  -- #guard_msgs in
-  -- #eval palindrome 123456
-  
-  /-
-  info: 'Not valid'
-  -/
-  -- #guard_msgs in
-  -- #eval palindrome "1221"
-  
-  /-
-  info: 'Not valid'
-  -/
-  -- #guard_msgs in
-  -- #eval palindrome -450
+    palindrome palindromeNum = .inl true :=
+  sorry
 
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+  
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval palindrome 1221
+  
+  /--
+  info: False
+  -/
+  #guard_msgs in
+  #eval palindrome 123456
+  
+  /--
+  info: 'Not valid'
+  -/
+  #guard_msgs in
+  #eval palindrome "1221"
+  
+  /--
+  info: 'Not valid'
+  -/
+  #guard_msgs in
+  #eval palindrome -450
 

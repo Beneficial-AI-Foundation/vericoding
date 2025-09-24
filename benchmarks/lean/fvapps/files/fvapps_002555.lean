@@ -22,25 +22,4 @@ theorem sequence_convergence (n : Nat)
   (h : n > 0) :
   let final := repeat_sequence_len n
   final = 1 ∨ final = 89 := by sorry
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval repeat_sequence_len 1
-
-/-
-info: 8
--/
--- #guard_msgs in
--- #eval repeat_sequence_len 85
-
-/-
-info: 8
--/
--- #guard_msgs in
--- #eval repeat_sequence_len 810
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

@@ -36,6 +36,3 @@ theorem identity_properties
   let result := calculate_expected_inversions n moves_raw.length perm moves
   moves = [] → result.abs < 0.000001 := sorry
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: guarded

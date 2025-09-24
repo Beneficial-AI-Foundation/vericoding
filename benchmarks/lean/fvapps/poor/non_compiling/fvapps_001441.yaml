@@ -95,8 +95,6 @@ vc-preamble: |-
   | Arrangement.mk s => s.length
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def absDiff (a b : Nat) : Nat :=

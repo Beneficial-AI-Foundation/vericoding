@@ -34,25 +34,4 @@ theorem find_max_consecutive_ones_edge_cases (nums: List Nat) :
 
 theorem find_max_consecutive_ones_all_zeros (nums: List Nat) :
   (∀ x ∈ nums, x = 0) → find_max_consecutive_ones nums = 0 := sorry
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval find_max_consecutive_ones [1, 1, 0, 1, 1, 1]
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval find_max_consecutive_ones [1, 0, 1, 1, 0, 1]
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval find_max_consecutive_ones []
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

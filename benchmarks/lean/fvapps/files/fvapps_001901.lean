@@ -43,25 +43,4 @@ theorem single_row_search :
 
 theorem single_column_search :
   search_matrix [[1],[2],[3]] 2 = true := by sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval search_matrix [[1, 4, 7, 11, 15], [2, 5, 8, 12, 19], [3, 6, 9, 16, 22], [10, 13, 14, 17, 24], [18, 21, 23, 26, 30]] 5
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval search_matrix matrix1 20
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval search_matrix matrix1 15
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

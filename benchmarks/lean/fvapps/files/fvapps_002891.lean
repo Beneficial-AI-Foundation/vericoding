@@ -31,25 +31,4 @@ theorem trace_empty_matrix :
 theorem trace_empty_row :
   trace [[]] = none :=
   sorry
-
-/-
-info: 15
--/
--- #guard_msgs in
--- #eval trace [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
-
-/-
-info: None
--/
--- #guard_msgs in
--- #eval trace []
-
-/-
-info: None
--/
--- #guard_msgs in
--- #eval trace [[1, 2], [1, 2], [1, 2]]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

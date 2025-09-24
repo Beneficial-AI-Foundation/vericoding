@@ -25,25 +25,4 @@ theorem monotonic_bonus (bonus price: Int) (h1: bonus ≥ 0) (h2: price > 0) :
 theorem monotonic_price (bonus price: Int) (h1: bonus ≥ 0) (h2: price > 0) :
   beeramid bonus (2 * price) ≤ beeramid bonus price :=
   sorry
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval beeramid 9 2
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval beeramid 21 1.5
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval beeramid -1 4
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

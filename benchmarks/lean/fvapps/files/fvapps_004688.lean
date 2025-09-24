@@ -26,6 +26,3 @@ theorem relatively_prime_empty (n : Nat) :
 theorem relatively_prime_one (n : Nat) :
   relativePrime n [1] = [1] := sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

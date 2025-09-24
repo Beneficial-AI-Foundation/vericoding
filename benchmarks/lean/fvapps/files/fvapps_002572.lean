@@ -23,25 +23,4 @@ theorem generate_integers_property (m n : Int)
 theorem generate_integers_same_number (n : Int) :
   generate_integers n n = [n] :=
   sorry
-
-/-
-info: [2, 3, 4, 5]
--/
--- #guard_msgs in
--- #eval generate_integers 2 5
-
-/-
-info: [0, 1, 2, 3]
--/
--- #guard_msgs in
--- #eval generate_integers 0 3
-
-/-
-info: [10]
--/
--- #guard_msgs in
--- #eval generate_integers 10 10
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

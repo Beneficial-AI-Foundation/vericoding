@@ -1,15 +1,16 @@
 -- <vc-preamble>
-def HQ9 (s : String) : Option String :=
-  sorry
-
-def contains (haystack needle : String) : Bool :=
-  sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
+def HQ9 (s : String) : Option String :=
+  sorry
+
+def contains (haystack needle : String) : Bool :=
+  sorry
+
 def count (haystack needle : String) : Nat :=
   sorry
 -- </vc-definitions>
@@ -17,15 +18,15 @@ def count (haystack needle : String) : Nat :=
 -- <vc-theorems>
 theorem hq9_invalid_none :
   HQ9 "" = none ∧ HQ9 " " = none :=
-  sorry
+sorry
 
 theorem h_returns_hello :
   HQ9 "H" = some "Hello World!" :=
-  sorry
+sorry
 
 theorem q_returns_q :
   HQ9 "Q" = some "Q" :=
-  sorry
+sorry
 
 theorem nine_returns_song (result : String) :
   HQ9 "9" = some result →
@@ -34,31 +35,10 @@ theorem nine_returns_song (result : String) :
   contains (String.toLower result) "no more bottles of beer" = true ∧
   count result "of beer" ≥ 190 ∧
   count result "\n" ≥ 99 :=
-  sorry
+sorry
 
 theorem non_hq9_returns_none (s : String) :
   s ≠ "H" → s ≠ "Q" → s ≠ "9" →
   HQ9 s = none :=
-  sorry
-
-/-
-info: None
--/
--- #guard_msgs in
--- #eval HQ9 "X"
-
-/-
-info: 'Hello World!'
--/
--- #guard_msgs in
--- #eval HQ9 "H"
-
-/-
-info: 'Q'
--/
--- #guard_msgs in
--- #eval HQ9 "Q"
+sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

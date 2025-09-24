@@ -28,25 +28,4 @@ theorem max_profit_days_edge_cases :
   solve_max_profit_days 2 = (2, 1) ∧ 
   solve_max_profit_days 3 = (3, 2) ∧
   solve_max_profit_days 4 = (4, 2) := sorry
-
-/-
-info: (4, 3)
--/
--- #guard_msgs in
--- #eval solve_max_profit_days 5
-
-/-
-info: (5, 3)
--/
--- #guard_msgs in
--- #eval solve_max_profit_days 8
-
-/-
-info: (5, 4)
--/
--- #guard_msgs in
--- #eval solve_max_profit_days 9
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

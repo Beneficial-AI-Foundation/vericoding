@@ -29,25 +29,4 @@ theorem encoded_output_valid_base64
          'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
          'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',
          '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '+', '/', '='] := sorry
-
-/-
-info: 'http://yahoo.com'
--/
--- #guard_msgs in
--- #eval adFly_decoder "O=T0ZToPdRHJRmwdcOz1oGvTL22lFzkRZhih5GsbezSw9kndbvyR50wYawHIAF/SdhT1"
-
-/-
-info: 'http://google.com'
--/
--- #guard_msgs in
--- #eval adFly_decoder "N=z0dDoMdyHIRmwac1zMolvWLz2RFmkMZiiZ5HsZeySw9kndbvyR50wYawHIAF/SdhT1"
-
-/-
-info: 'Invalid'
--/
--- #guard_msgs in
--- #eval adFly_decoder "lololol"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

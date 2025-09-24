@@ -36,6 +36,3 @@ theorem correctness
 : problem_spec implementation arr := by
   sorry
 -- </vc-theorems>
-
--- #test implementation [1, 2, 4, 3, 5] = 3
--- #test implementation [1, 2, 3] = -1

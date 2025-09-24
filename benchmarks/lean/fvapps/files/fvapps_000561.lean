@@ -33,6 +33,3 @@ theorem result_less_than_2_pow_n (words: List String) :
     (count_valid_subsequences words).get! i < 2^(words.get! i).length :=
   sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

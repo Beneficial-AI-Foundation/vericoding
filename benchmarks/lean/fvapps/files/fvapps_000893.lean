@@ -31,19 +31,4 @@ theorem min_operations_case_4 :
 
 theorem min_operations_case_11 :
   min_operations 11 [2, 2, 2, 10, 2, 10, 1, 1, 5, 3, 5] = 3 := sorry
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval min_operations 4 [1, 1, 2, 1]
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval min_operations 11 [2, 2, 2, 10, 2, 10, 1, 1, 5, 3, 5]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

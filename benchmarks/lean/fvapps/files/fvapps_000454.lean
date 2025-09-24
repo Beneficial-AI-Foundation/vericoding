@@ -25,25 +25,4 @@ theorem minOperations_upper_bound (n : Nat) :
 theorem minOperations_approximates_nsquare_div_4 (n : Nat) (d : Float) :
   d = Float.abs (Float.ofNat (minOperations n) - Float.ofNat (n * n) / 4) →
   d < 1 := sorry
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval min_operations 3
-
-/-
-info: 9
--/
--- #guard_msgs in
--- #eval min_operations 6
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval min_operations 1
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

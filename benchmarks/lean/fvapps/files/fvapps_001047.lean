@@ -26,25 +26,4 @@ theorem alternating_code_odd_indices {s : String} {i : Nat} :
 theorem alternating_code_two_chars {s : String} :
   String.length s = 2 → 
   isAlternatingCode s = (charAt s 0 ≠ charAt s 1) := sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval is_alternating_code "ABABAB"
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval is_alternating_code "ABC"
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval is_alternating_code "AA"
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

@@ -16,6 +16,3 @@ theorem find_highest_digit_bounds (n : Nat) :
 theorem single_digit_case (n : Nat) :
   n ≤ 9 → find_highest_digit n = n := sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

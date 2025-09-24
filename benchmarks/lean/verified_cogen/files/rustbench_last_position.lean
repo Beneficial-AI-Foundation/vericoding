@@ -23,5 +23,3 @@ theorem lastPosition_spec_satisfied (a: Array Int) (elem: Int) (h_precond : last
     lastPosition_postcond a elem (lastPosition a elem h_precond) h_precond := by
   sorry
 -- </vc-theorems>
-
-def main : IO Unit := return ()

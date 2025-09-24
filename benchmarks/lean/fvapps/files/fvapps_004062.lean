@@ -35,25 +35,4 @@ theorem horizontal_line_slope {x1 y : Int}
   (bound2 : -1000 ≤ y ∧ y ≤ 1000) :
   find_slope [x1, y, x1 + 10, y] = "0" :=
 sorry
-
-/-
-info: '4'
--/
--- #guard_msgs in
--- #eval find_slope [3, 6, 4, 10]
-
-/-
-info: '0'
--/
--- #guard_msgs in
--- #eval find_slope [12, -18, -15, -18]
-
-/-
-info: 'undefined'
--/
--- #guard_msgs in
--- #eval find_slope [17, -3, 17, 8]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

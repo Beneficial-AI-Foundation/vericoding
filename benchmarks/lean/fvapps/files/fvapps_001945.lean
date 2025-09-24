@@ -21,25 +21,4 @@ theorem minimal_graph_shortest_path {x y: Nat} {edges: List (Nat × Nat)}
   (h1: edges = [(1,2)])
   : find_shortest_path 2 x y edges = x ∨ find_shortest_path 2 x y edges = y := by
   sorry
-
-/-
-info: 9
--/
--- #guard_msgs in
--- #eval find_shortest_path 5 2 3 [(1, 2), (1, 3), (3, 4), (5, 3)]
-
-/-
-info: 8
--/
--- #guard_msgs in
--- #eval find_shortest_path 5 3 2 [(1, 2), (1, 3), (3, 4), (5, 3)]
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval find_shortest_path 2 3 4 [(1, 2)]
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: guarded

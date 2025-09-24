@@ -55,8 +55,6 @@ vc-preamble: |-
     getEndpoint path = getEndpoint (simplify path) := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def isValidDir (d : Dir) : Bool := sorry

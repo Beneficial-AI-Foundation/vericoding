@@ -3,18 +3,18 @@ vc-description: |-
   The number 81 has a special property, a certain power of the sum of its digits is equal to 81 (nine squared). Eighty one (81), is the first number in having this property (not considering numbers of one digit). 
   The next one, is 512.
   Let's see both cases with the details
-  
+
   8 + 1 = 9 and 9^(2) = 81
-  
+
   512 = 5 + 1 + 2 = 8 and 8^(3) = 512
-  
+
   We need to make a function, ```power_sumDigTerm()```, that receives a number ```n``` and may output the ```n-th term``` of this sequence of numbers.
   The cases we presented above means that
-  
+
   power_sumDigTerm(1) == 81
-  
+
   power_sumDigTerm(2) == 512
-  
+
   Happy coding!
   -/
 
@@ -22,50 +22,50 @@ vc-preamble: |-
   def toDigits (n : Nat) : List Nat :=
     if n < 10 then [n]
     else (n % 10) :: toDigits (n / 10)
-  
+
   def sum_list : List Nat → Nat 
     | [] => 0
     | (h :: t) => h + sum_list t
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def power_sumDigTerm : Nat → Nat := sorry
-  
+
   -- Property that the sequence is strictly increasing
 
 vc-theorems: |-
   theorem power_sumDigTerm_increasing {n : Nat} : 
     n > 0 → power_sumDigTerm n < power_sumDigTerm (n + 1) := sorry
-  
+
   -- Property that each term is a perfect power with base equal to the sum of its digits
-  
+
   theorem power_sumDigTerm_perfect_power {n : Nat} (h : n > 0) :
     ∃ base power : Nat, 
       base ≥ 2 ∧ 
       power ≥ 2 ∧ 
       power_sumDigTerm n = base ^ power ∧
       base = sum_list (toDigits (power_sumDigTerm n)) := sorry
-  
-  /-
-  info: 81
-  -/
-  -- #guard_msgs in
-  -- #eval power_sumDigTerm 1
-  
-  /-
-  info: 512
-  -/
-  -- #guard_msgs in
-  -- #eval power_sumDigTerm 2
-  
-  /-
-  info: 2401
-  -/
-  -- #guard_msgs in
-  -- #eval power_sumDigTerm 3
 
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded
+
+  /--
+  info: 81
+  -/
+  #guard_msgs in
+  #eval power_sumDigTerm 1
+
+  /--
+  info: 512
+  -/
+  #guard_msgs in
+  #eval power_sumDigTerm 2
+
+  /--
+  info: 2401
+  -/
+  #guard_msgs in
+  #eval power_sumDigTerm 3
 

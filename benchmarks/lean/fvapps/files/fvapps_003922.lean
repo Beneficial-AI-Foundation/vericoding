@@ -1,51 +1,36 @@
 -- <vc-preamble>
-def solve (s : String) : Bool := sorry
-
-def countOccurrences (c : Char) (s : String) : Nat := sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
-def allCountsEqual (s : String) : Bool := sorry 
+def solve (s : String) : Bool :=
+sorry
 
-theorem solve_exists_char_removal 
-  {s : String} 
-  (h1 : solve s = true)
-  (h2 : s.length ≥ 2) :
-  ∃ c : Char, c ∈ s.data ∧ 
-  allCountsEqual (s.replace (String.mk [c]) "") = true := sorry
+def countOccurrences (c : Char) (s : String) : Nat :=
+sorry
+
+def allCountsEqual (s : String) : Bool :=
+sorry
 -- </vc-definitions>
 
 -- <vc-theorems>
-theorem solve_equal_counts_after_removal 
+theorem solve_exists_char_removal
+  {s : String}
+  (h1 : solve s = true)
+  (h2 : s.length ≥ 2) :
+  ∃ c : Char, c ∈ s.data ∧
+  allCountsEqual (s.replace (String.mk [c]) "") = true :=
+sorry
+
+theorem solve_equal_counts_after_removal
   {s : String}
   (h1 : solve s = true)
   (h2 : s.length ≥ 2) :
   ∃ c : Char, c ∈ s.data ∧
   let s' := s.replace (String.mk [c]) ""
-  (∀ c₁ c₂, c₁ ∈ s'.data → c₂ ∈ s'.data → 
-    countOccurrences c₁ s' = countOccurrences c₂ s') := sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval solve "aaaa"
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval solve "abba"
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval solve "abbba"
+  (∀ c₁ c₂, c₁ ∈ s'.data → c₂ ∈ s'.data →
+    countOccurrences c₁ s' = countOccurrences c₂ s') :=
+sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

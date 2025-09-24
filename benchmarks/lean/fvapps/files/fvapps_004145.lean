@@ -20,25 +20,4 @@ sorry
 theorem lost_sheep_empty_lists (total : Nat) :
   lost_sheep [] [] total = total :=
 sorry
-
-/-
-info: 5
--/
--- #guard_msgs in
--- #eval lost_sheep [1, 2] [3, 4] 15
-
-/-
-info: 6
--/
--- #guard_msgs in
--- #eval lost_sheep [3, 1, 2] [4, 5] 21
-
-/-
-info: 10
--/
--- #guard_msgs in
--- #eval lost_sheep [5, 1, 4] [5, 4] 29
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

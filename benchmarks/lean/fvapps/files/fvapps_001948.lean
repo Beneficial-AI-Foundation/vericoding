@@ -32,25 +32,4 @@ theorem output_arrays_same_length {h : Nat} {a : List Nat} :
   let w := lines[1]!.splitOn " "
   let q := lines[2]!.splitOn " "
   w.length = q.length := sorry
-
-/-
-info: 'perfect'
--/
--- #guard_msgs in
--- #eval solve_isomorphic_trees 2 [1, 1, 1]
-
-/-
-info: case2
--/
--- #guard_msgs in
--- #eval solve_isomorphic_trees 2 [1, 2, 2]
-
-/-
-info: case3
--/
--- #guard_msgs in
--- #eval solve_isomorphic_trees 2 [1, 3, 2]
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: unguarded

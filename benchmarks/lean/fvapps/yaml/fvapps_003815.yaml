@@ -48,15 +48,16 @@ vc-description: |-
   -/
 
 vc-preamble: |-
+
+vc-helpers: |-
+
+vc-definitions: |-
   def elections_winners (votes: List Nat) (k: Nat) : Nat :=
     sorry
   
   def list_maximum (l: List Nat) (h: l.length > 0) : Nat :=
     sorry
-
-vc-helpers: |-
-
-vc-definitions: |-
+  
   def list_minimum (l: List Nat) (h: l.length > 0) : Nat :=
     sorry
 
@@ -65,33 +66,33 @@ vc-theorems: |-
     (votes: List Nat) (k: Nat) (h: votes.length > 0) :
     let result := elections_winners votes k
     0 ≤ result ∧ result ≤ votes.length :=
-    sorry
+  sorry
   
-  theorem elections_winners_k_zero_result 
+  theorem elections_winners_k_zero_result
     (votes: List Nat) (h: votes.length > 0) :
     let result := elections_winners votes 0
     result = 0 ∨ result = 1 :=
-    sorry
-  
-  /-
-  info: 2
-  -/
-  -- #guard_msgs in
-  -- #eval elections_winners [2, 3, 5, 2] 3
-  
-  /-
-  info: 0
-  -/
-  -- #guard_msgs in
-  -- #eval elections_winners [1, 3, 3, 1, 1] 0
-  
-  /-
-  info: 2
-  -/
-  -- #guard_msgs in
-  -- #eval elections_winners [3, 1, 1, 3, 1] 2
+  sorry
 
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
+  
+  /--
+  info: 2
+  -/
+  #guard_msgs in
+  #eval elections_winners [2, 3, 5, 2] 3
+  
+  /--
+  info: 0
+  -/
+  #guard_msgs in
+  #eval elections_winners [1, 3, 3, 1, 1] 0
+  
+  /--
+  info: 2
+  -/
+  #guard_msgs in
+  #eval elections_winners [3, 1, 1, 3, 1] 2
 

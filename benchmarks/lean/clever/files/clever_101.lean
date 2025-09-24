@@ -35,10 +35,3 @@ theorem correctness
 := by
   sorry
 -- </vc-theorems>
-
--- #test implementation "Hi, my name is John" = ["Hi", "my", "name", "is", "John"]
--- #test implementation "One, two, three, four, five, six" = ["One", "two", "three", "four", "five", "six"]
--- #test implementation "Hi, my name" = ["Hi", "my", "name"]
--- #test implementation "One,, two, three, four, five, six," = ["One", "two", "three", "four", "five", "six"]
--- #test implementation "" = []
--- #test implementation "ahmed     , gamal" = ["ahmed", "gamal"]

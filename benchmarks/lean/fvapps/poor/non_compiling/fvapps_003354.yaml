@@ -49,8 +49,6 @@ vc-preamble: |-
     | .coke => 7
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def string_to_menu_item? (s: String) : Option MenuItem := sorry

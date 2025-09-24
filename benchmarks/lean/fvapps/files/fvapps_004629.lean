@@ -29,19 +29,4 @@ theorem common_ratio_four_three :
 
 theorem common_ratio_one_one :
   calculate_ratio 1 1 = "1:1" := sorry
-
-/-
-info: '16:9'
--/
--- #guard_msgs in
--- #eval calculate_ratio 1920 1080
-
-/-
-info: '4:3'
--/
--- #guard_msgs in
--- #eval calculate_ratio 800 600
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

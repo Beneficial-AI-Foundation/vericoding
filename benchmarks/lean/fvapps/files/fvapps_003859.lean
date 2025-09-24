@@ -1,15 +1,16 @@
 -- <vc-preamble>
-def containsThree (n : Int) : Bool := 
-  sorry
-
-def magicSum (nums : List Int) : Int := 
-  sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
+def containsThree (n : Int) : Bool :=
+  sorry
+
+def magicSum (nums : List Int) : Int :=
+  sorry
+
 def sumList (nums : List Int) : Int :=
   sorry
 -- </vc-definitions>
@@ -21,7 +22,7 @@ theorem magic_sum_filtering_contributing (nums : List Int) :
   sorry
 
 theorem magic_sum_filtering_non_contributing (nums : List Int) :
-  let non_contributing := nums.filter (fun x => x % 2 = 0 ∨ ¬containsThree x) 
+  let non_contributing := nums.filter (fun x => x % 2 = 0 ∨ ¬containsThree x)
   magicSum non_contributing = 0 := by
   sorry
 
@@ -45,25 +46,4 @@ theorem magic_sum_valid_sum (nums : List Int) :
 theorem magic_sum_all_invalid (nums : List Int) :
   (∀ x ∈ nums, x % 2 = 0 ∨ ¬containsThree x) → magicSum nums = 0 := by
   sorry
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval magic_sum [3]
-
-/-
-info: 16
--/
--- #guard_msgs in
--- #eval magic_sum [3, 13]
-
-/-
-info: 16
--/
--- #guard_msgs in
--- #eval magic_sum [3, 12, 5, 8, 30, 13]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

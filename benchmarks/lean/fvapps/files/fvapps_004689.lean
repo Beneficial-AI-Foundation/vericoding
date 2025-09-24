@@ -57,6 +57,3 @@ theorem tower_builder_consistent_floor_rows
   (h₆ : row₂ ∈ List.drop (floor * height) (List.take ((floor + 1) * height) (towerBuilder n width height))) :
   row₁ = row₂ := sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

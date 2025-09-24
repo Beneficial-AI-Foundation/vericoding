@@ -29,25 +29,4 @@ theorem odd_or_even_concatenation (nums1 nums2 : List Int)
     then "even" 
     else "odd" :=
   sorry
-
-/-
-info: 'odd'
--/
--- #guard_msgs in
--- #eval odd_or_even [0, 1, 2]
-
-/-
-info: 'even'
--/
--- #guard_msgs in
--- #eval odd_or_even [0, 1, 3]
-
-/-
-info: 'even'
--/
--- #guard_msgs in
--- #eval odd_or_even [1023, 1, 2]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

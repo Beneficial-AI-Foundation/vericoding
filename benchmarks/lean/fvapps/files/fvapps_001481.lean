@@ -31,6 +31,3 @@ theorem basic_cases :
   (find_arithmetic_sequence 5 [-10, -5, 0, 5, 10] = [-10, -5, 0, 5, 10]) ∧
   (find_arithmetic_sequence 4 [2, 2, 2, 10] = [2, 2, 2, 2]) := sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

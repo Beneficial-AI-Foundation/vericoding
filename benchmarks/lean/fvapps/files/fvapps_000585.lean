@@ -34,6 +34,3 @@ theorem process_text_preserves_words (text : String) (h : text.length > 0) :
   inputWords = outputWords :=
   sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

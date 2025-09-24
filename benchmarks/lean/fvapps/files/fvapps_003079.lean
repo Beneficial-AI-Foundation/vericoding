@@ -20,25 +20,4 @@ theorem true_binary_elements_are_ones {n : Nat} (h : n % 2 = 1) :
 
 theorem true_binary_length {n : Nat} (h : n % 2 = 1) :
   List.length (true_binary n) = Nat.log2 n := sorry
-
-/-
-info: [1, 1, 1, -1, -1]
--/
--- #guard_msgs in
--- #eval true_binary 25
-
-/-
-info: [1, 1, -1, 1, 1, 1]
--/
--- #guard_msgs in
--- #eval true_binary 47
-
-/-
-info: [1]
--/
--- #guard_msgs in
--- #eval true_binary 1
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

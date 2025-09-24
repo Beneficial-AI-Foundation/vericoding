@@ -1,12 +1,13 @@
 -- <vc-preamble>
-def hammingDistance (x y : Nat) : Nat :=
-  sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
+def hammingDistance (x y : Nat) : Nat :=
+  sorry
+
 def bitLength (n : Nat) : Nat :=
   sorry
 -- </vc-definitions>
@@ -27,25 +28,4 @@ sorry
 theorem hamming_distance_upper_bound (x y : Nat) :
   hammingDistance x y ≤ max (bitLength x) (bitLength y) :=
 sorry
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval hamming_distance 1 4
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval hamming_distance 3 1
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval hamming_distance 0 7
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

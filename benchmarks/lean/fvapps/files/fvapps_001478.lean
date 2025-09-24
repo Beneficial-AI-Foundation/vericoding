@@ -34,6 +34,3 @@ theorem triangle_path :
   find_shortest_distance 3 3 2 [1,3] [(1,2,1), (2,3,1), (1,3,3)] = 2 :=
 sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

@@ -26,25 +26,4 @@ theorem single_partition_count (t : Nat) :
 
 theorem single_partition_forbidden (t : Nat) (h : t > 1) :
   part_const t 1 t = 0 := sorry
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval part_const 10 3 2
-
-/-
-info: 8
--/
--- #guard_msgs in
--- #eval part_const 10 3 0
-
-/-
-info: 15
--/
--- #guard_msgs in
--- #eval part_const 15 5 3
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

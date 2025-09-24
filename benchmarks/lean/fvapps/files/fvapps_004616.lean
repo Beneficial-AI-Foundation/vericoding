@@ -21,25 +21,4 @@ theorem no_primes_between (n : Int) :
 
 theorem prime_returns_self {n : Int} (h : n ≥ 2) (h2 : is_prime n = true) : 
   next_prime (n - 1) = n := sorry
-
-/-
-info: 7
--/
--- #guard_msgs in
--- #eval next_prime 5
-
-/-
-info: 13
--/
--- #guard_msgs in
--- #eval next_prime 12
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval next_prime 0
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

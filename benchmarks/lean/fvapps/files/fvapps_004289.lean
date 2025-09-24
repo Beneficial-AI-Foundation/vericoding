@@ -1,23 +1,24 @@
 -- <vc-preamble>
-def permutation_average (n : Int) : Int := 
-  sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
-def permutation_average_str (s : String) : Int := 
+def permutation_average (n : Int) : Int :=
+  sorry
+
+def permutation_average_str (s : String) : Int :=
   sorry
 -- </vc-definitions>
 
 -- <vc-theorems>
-theorem permutation_average_returns_integer (n : Int) 
-  (h : 0 ≤ n ∧ n ≤ 999) : 
+theorem permutation_average_returns_integer (n : Int)
+  (h : 0 ≤ n ∧ n ≤ 999) :
   ∃ i : Int, permutation_average n = i := by
   sorry
 
-theorem string_int_equivalent (n : Int) 
+theorem string_int_equivalent (n : Int)
   (h : 0 ≤ n ∧ n ≤ 999) :
   permutation_average n = permutation_average_str (toString n) := by
   sorry
@@ -25,31 +26,10 @@ theorem string_int_equivalent (n : Int)
 theorem leading_zeros_valid (n : Int)
   (h : 0 ≤ n ∧ n ≤ 99) :
   ∃ i : Int, permutation_average_str ("0" ++ toString n) = i := by
-  sorry 
+  sorry
 
 theorem result_within_bounds (n : Int)
   (h : 10 ≤ n ∧ n ≤ 999) :
   permutation_average n ≥ 0 ∧ permutation_average n ≤ n := by
   sorry
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval permutation_average 2
-
-/-
-info: 38
--/
--- #guard_msgs in
--- #eval permutation_average 25
-
-/-
-info: 629
--/
--- #guard_msgs in
--- #eval permutation_average 737
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

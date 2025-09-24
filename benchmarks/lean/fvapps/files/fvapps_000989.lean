@@ -55,25 +55,4 @@ theorem solve_always_wins_with_k_zero
   (h5 : ∃ x ∈ arr, x > 0) :
   solve n 0 arr = 1 :=
 sorry
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval solve 2 1 [1, 0]
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval solve 3 5 [0, 1, 0]
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval solve 4 2 [1, 1, 0, 1]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

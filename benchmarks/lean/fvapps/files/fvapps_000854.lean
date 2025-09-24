@@ -29,6 +29,3 @@ theorem calculate_team_strength_consecutive (x y : Nat)
 theorem calculate_team_strength_equal_inputs (y : Nat) (h: y > 0) :
   calculate_team_strength y y = y % 10 := sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

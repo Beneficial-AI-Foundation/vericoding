@@ -30,6 +30,3 @@ theorem triangular_range_empty_negative (start stop : Int) :
   stop < 0 → triangular_range start stop = [] :=
 sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

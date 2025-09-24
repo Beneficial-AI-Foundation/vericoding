@@ -22,37 +22,4 @@ sorry
 theorem result_is_boolean (n : Nat) :
   n ≥ 1 → consecutive_ducks n = true ∨ consecutive_ducks n = false :=
 sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval consecutive_ducks 10
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval consecutive_ducks 8
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval consecutive_ducks 57
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval consecutive_ducks 69
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval consecutive_ducks 1024
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

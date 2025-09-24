@@ -34,6 +34,3 @@ theorem encode_uri_terminates (strings : List String)
   encode_uri (strings ++ ["#"]) :=
 sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

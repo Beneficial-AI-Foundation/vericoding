@@ -43,25 +43,4 @@ theorem basic_properties
   -- Adjacent elements are ordered
   ∧ (∀ i, i < result.length - 1 → result[i]! ≤ result[i+1]!) :=
 sorry
-
-/-
-info: ['Berry', 'Harry']
--/
--- #guard_msgs in
--- #eval find_second_lowest_students [["Harry", 37.21], ["Berry", 37.21], ["Tina", 37.2], ["Akriti", 41], ["Harsh", 39]]
-
-/-
-info: ['alpha', 'beta']
--/
--- #guard_msgs in
--- #eval find_second_lowest_students [["chi", 20.0], ["beta", 50.0], ["alpha", 50.0]]
-
-/-
-info: ['B', 'C']
--/
--- #guard_msgs in
--- #eval find_second_lowest_students [["A", 10.0], ["B", 20.0], ["C", 20.0]]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

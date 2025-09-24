@@ -22,25 +22,4 @@ theorem solveMaxScore_equal_inputs (n : Nat) :
   else 
     solveMaxScore n n = (n-d)*(n-d) + (n-d)*(n-n) + (n-n)*(n-n) := by
   sorry
-
-/-
-info: 9
--/
--- #guard_msgs in
--- #eval solve_max_score 4 4
-
-/-
-info: 13
--/
--- #guard_msgs in
--- #eval solve_max_score 3 4
-
-/-
-info: 27
--/
--- #guard_msgs in
--- #eval solve_max_score 2 3
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

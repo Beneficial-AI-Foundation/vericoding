@@ -21,25 +21,4 @@ theorem create_array_increasing (n : Nat) (i j : Nat)
   have hi' : i < (create_array n).size := by rw [create_array_length]; exact hi
   have hj' : j < (create_array n).size := by rw [create_array_length]; exact hj
   (create_array n)[i]'hi' < (create_array n)[j]'hj' := sorry
-
-/-
-info: [1]
--/
--- #guard_msgs in
--- #eval create_array 1
-
-/-
-info: [1, 2, 3]
--/
--- #guard_msgs in
--- #eval create_array 3
-
-/-
-info: [1, 2, 3, 4, 5]
--/
--- #guard_msgs in
--- #eval create_array 5
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

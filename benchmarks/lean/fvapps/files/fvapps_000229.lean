@@ -34,25 +34,4 @@ theorem quotes_irrelevant
   (h: quoted = grid.map (fun row => "\"" ++ row ++ "\""))
   : regions_by_slashes grid = regions_by_slashes quoted :=
   sorry
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval regions_by_slashes [" /", "/ "]
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval regions_by_slashes ["\\/", "/\\"]
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval regions_by_slashes ["//", "/ "]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

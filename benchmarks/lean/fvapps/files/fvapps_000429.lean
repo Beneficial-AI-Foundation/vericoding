@@ -32,25 +32,4 @@ theorem pair_turbulence {arr : List Int} (h : arr.length ≥ 2) :
   let second := arr.get ⟨1, by exact h⟩
   max_turbulence_size [first, second] = if first = second then 1 else 2 :=
   sorry
-
-/-
-info: 5
--/
--- #guard_msgs in
--- #eval max_turbulence_size [9, 4, 2, 10, 7, 8, 8, 1, 9]
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval max_turbulence_size [4, 8, 12, 16]
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval max_turbulence_size [100]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

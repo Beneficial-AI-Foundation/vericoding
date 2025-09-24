@@ -25,25 +25,4 @@ theorem solve_problems_full_T (A B C N : Nat)
   (h1 : A = 1) (h2 : B = 2) (h3 : C = 3) (h4 : N = 5) :
   solve_problems A B C N 5 = 5 :=
   sorry
-
-/-
-info: 7
--/
--- #guard_msgs in
--- #eval solve_problems 1 2 3 3 1
-
-/-
-info: 6
--/
--- #guard_msgs in
--- #eval solve_problems 2 2 2 3 1
-
-/-
-info: 29
--/
--- #guard_msgs in
--- #eval solve_problems 5 7 5 5 3
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

@@ -36,7 +36,3 @@ theorem correctness
 := by
   sorry
 -- </vc-theorems>
-
--- #test implementation "" = ""
--- #test implementation "cat" = "catac"
--- #test implementation "cata" = "catac"

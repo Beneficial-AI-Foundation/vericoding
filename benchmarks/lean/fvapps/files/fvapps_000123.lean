@@ -1,12 +1,13 @@
 -- <vc-preamble>
-def super_pow (base : Int) (exponent_digits : List Int) : Int :=
-  sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
+def super_pow (base : Int) (exponent_digits : List Int) : Int :=
+  sorry
+
 def pow_mod (base exp m : Int) : Int :=
   sorry
 -- </vc-definitions>
@@ -21,7 +22,7 @@ theorem super_pow_range (base : Int) (exp_digits : List Int)
   0 ≤ result ∧ result < 1337 :=
 sorry
 
-theorem super_pow_small_exp (base : Int) (exp_digit : Int) 
+theorem super_pow_small_exp (base : Int) (exp_digit : Int)
   (h1 : base > 0)
   (h2 : 0 ≤ exp_digit)
   (h3 : exp_digit < 5) :
@@ -39,25 +40,4 @@ theorem super_pow_one (base : Int) (exp_digits : List Int)
   (h3 : ∀ d ∈ exp_digits, 0 ≤ d ∧ d ≤ 9) :
   super_pow 1 exp_digits = 1 :=
 sorry
-
-/-
-info: 8
--/
--- #guard_msgs in
--- #eval super_pow 2 [3]
-
-/-
-info: 1024
--/
--- #guard_msgs in
--- #eval super_pow 2 [1, 0]
-
-/-
-info: 9
--/
--- #guard_msgs in
--- #eval super_pow 3 [2]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

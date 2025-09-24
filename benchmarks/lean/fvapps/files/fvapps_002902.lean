@@ -31,25 +31,4 @@ theorem sum_of_n_signs (n : Int) (i : Nat)
 
 theorem sum_of_n_zero : 
   sum_of_n 0 = [0] := sorry
-
-/-
-info: [0, 1, 3, 6]
--/
--- #guard_msgs in
--- #eval sum_of_n 3
-
-/-
-info: [0, -1, -3, -6, -10]
--/
--- #guard_msgs in
--- #eval sum_of_n -4
-
-/-
-info: [0]
--/
--- #guard_msgs in
--- #eval sum_of_n 0
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

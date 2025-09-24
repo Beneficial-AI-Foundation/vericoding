@@ -25,8 +25,8 @@ spec fn is_divisible_by_digit_sum(n: int) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: int) -> (result: &'static str)
-  requires valid_input(n)
+fn solve(n: i8) -> (result: &'static str)
+  requires valid_input(n as int)
 // </vc-spec>
 // <vc-code>
 {

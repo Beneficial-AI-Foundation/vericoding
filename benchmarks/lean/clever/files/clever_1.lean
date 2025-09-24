@@ -127,5 +127,3 @@ theorem correctness
 : problem_spec implementation paren_string := by
   sorry
 -- </vc-theorems>
-
--- #test implementation "( ) (( )) (( )( ))" = ["()", "(())", "(()())"]

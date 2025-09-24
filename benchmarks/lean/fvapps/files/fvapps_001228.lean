@@ -39,6 +39,3 @@ theorem monotonic_counts {nums : List Nat} (h : nums.length > 0) :
     | _, _ => True
   := sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

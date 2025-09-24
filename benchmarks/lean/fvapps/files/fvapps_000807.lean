@@ -27,25 +27,4 @@ theorem empty_k_gives_zero (s : List Char) :
 
 theorem empty_string_gives_zero (n k : Nat) :
   count_subsequences n k [] = 0 := sorry
-
-/-
-info: 6
--/
--- #guard_msgs in
--- #eval count_subsequences 4 2 "abcb"
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval count_subsequences 7 1 "aayzbaa"
-
-/-
-info: 64197148392731290
--/
--- #guard_msgs in
--- #eval count_subsequences 12 80123123 "abzbabzbazab"
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

@@ -201,6 +201,8 @@ def find_spec_files(config: ProcessingConfig) -> list[str]:
                                     break
                     else:
                         files.append(file_path)
+        # Sort for deterministic ordering across runs
+        files.sort()
         return files
     except Exception as e:
         print(f"Error reading directory {config.files_dir}: {e}")

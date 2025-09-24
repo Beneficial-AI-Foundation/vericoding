@@ -18,8 +18,6 @@ vc-preamble: |-
   def linkedListToArray : ListNode → List Int := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def sortList : ListNode → ListNode := sorry

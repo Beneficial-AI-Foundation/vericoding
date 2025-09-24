@@ -24,25 +24,4 @@ theorem count_valid_triangles_k_equals_l (L : Int) :
 theorem count_valid_triangles_monotonic (L k1 k2 : Int) :
   L ≥ 1 → k1 ≤ k2 → k2 ≤ L →
   count_valid_triangles L k1 ≥ count_valid_triangles L k2 := sorry
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval count_valid_triangles 4 3
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval count_valid_triangles 4 4
-
-/-
-info: 10
--/
--- #guard_msgs in
--- #eval count_valid_triangles 5 2
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

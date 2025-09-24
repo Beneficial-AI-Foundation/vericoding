@@ -39,25 +39,4 @@ theorem no_subfolders_in_result (folders : List String) :
   p2 ∈ remove_subfolders folders →
   p1 ≠ p2 → ¬(p2.startsWith (p1 ++ "/")) :=
 sorry
-
-/-
-info: sorted(expected1)
--/
--- #guard_msgs in
--- #eval sorted remove_subfolders(folders1)
-
-/-
-info: sorted(expected2)
--/
--- #guard_msgs in
--- #eval sorted remove_subfolders(folders2)
-
-/-
-info: sorted(expected3)
--/
--- #guard_msgs in
--- #eval sorted remove_subfolders(folders3)
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

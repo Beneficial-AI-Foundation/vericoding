@@ -31,25 +31,4 @@ theorem longest_subarray_concatenation {arr1 arr2 : List Nat}
   result ≥ longest_subarray_ones_after_delete arr1 ∧
   result ≥ longest_subarray_ones_after_delete arr2 :=
 sorry
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval longest_subarray_ones_after_delete [1, 1, 0, 1]
-
-/-
-info: 5
--/
--- #guard_msgs in
--- #eval longest_subarray_ones_after_delete [0, 1, 1, 1, 0, 1, 1, 0, 1]
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval longest_subarray_ones_after_delete [1, 1, 1]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

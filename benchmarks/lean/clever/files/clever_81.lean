@@ -58,5 +58,3 @@ theorem correctness
 := by
   sorry
 -- </vc-theorems>
-
--- #test implementation [4.0, 3, 1.7, 2, 3.5] = ['A+', 'B', 'C-', 'C', 'A-']

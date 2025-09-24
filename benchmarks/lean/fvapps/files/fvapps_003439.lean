@@ -17,25 +17,4 @@ theorem non_key_chars_unchanged (message : String) (key : String) (i : String.Po
 
 theorem consistent_encoding (message key : String) :
   encode message key = encode message key := sorry
-
-/-
-info: 'Gug hgs g cgt'
--/
--- #guard_msgs in
--- #eval encode "Ala has a cat" "gaderypoluki"
-
-/-
-info: 'Dkucr pu yhr ykbir'
--/
--- #guard_msgs in
--- #eval encode "Dance on the table" "politykarenu"
-
-/-
-info: 'GBCE'
--/
--- #guard_msgs in
--- #eval encode "ABCD" "gaderypoluki"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

@@ -24,25 +24,4 @@ theorem reverseWords_empty_string :
 
 theorem reverseWords_multiple_spaces :
   reverseWords "a  b  c" = "c  b  a" := sorry
-
-/-
-info: 'world! hello'
--/
--- #guard_msgs in
--- #eval reverseWords "hello world!"
-
-/-
-info: 'battle no requires which that is victory greatest The'
--/
--- #guard_msgs in
--- #eval reverseWords "The greatest victory is that which requires no battle"
-
-/-
-info: 'abc'
--/
--- #guard_msgs in
--- #eval reverseWords "abc"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

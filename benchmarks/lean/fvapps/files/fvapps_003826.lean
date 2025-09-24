@@ -34,37 +34,4 @@ theorem contamination_empty_text
   (char : String) :
   contamination "" char = "" :=
 sorry
-
-/-
-info: 'zzz'
--/
--- #guard_msgs in
--- #eval contamination "abc" "z"
-
-/-
-info: ''
--/
--- #guard_msgs in
--- #eval contamination "" "z"
-
-/-
-info: ''
--/
--- #guard_msgs in
--- #eval contamination "abc" ""
-
-/-
-info: '&&&&&&&&'
--/
--- #guard_msgs in
--- #eval contamination "_3ebzgh4" "&"
-
-/-
-info: '      '
--/
--- #guard_msgs in
--- #eval contamination "//case" " "
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

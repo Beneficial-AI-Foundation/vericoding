@@ -34,6 +34,3 @@ theorem square_sum_monotonic_nonneg (xs : List Int) (n : Int) :
   (∀ x ∈ xs, x ≥ 0) → n ≥ 0 → square_sum (n::xs) ≥ square_sum xs :=
   sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

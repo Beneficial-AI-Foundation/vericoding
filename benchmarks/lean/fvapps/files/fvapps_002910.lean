@@ -45,25 +45,4 @@ theorem other_fruits_price (fruits : List String)
   (h2 : ∀ f ∈ fruits, f = "kiwi") :
   mix_fruit fruits = 9 :=
   sorry
-
-/-
-info: 6
--/
--- #guard_msgs in
--- #eval mix_fruit ["banana", "mango", "avocado"]
-
-/-
-info: 8
--/
--- #guard_msgs in
--- #eval mix_fruit ["melon", "Mango", "kiwi"]
-
-/-
-info: 6
--/
--- #guard_msgs in
--- #eval mix_fruit ["watermelon", "Orange", "grapes"]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

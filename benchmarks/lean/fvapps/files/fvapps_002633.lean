@@ -31,25 +31,4 @@ theorem large_sum_is_false {n r : Int}
   (h_digits : digitSum = sorry) :
   checkConcatenatedSum n r = false :=
   sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval check_concatenated_sum 2997 3
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval check_concatenated_sum -198 2
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval check_concatenated_sum 198 0
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

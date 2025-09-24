@@ -21,62 +21,71 @@ vc-description: |-
   -/
 
 vc-preamble: |-
-  def height (n m : Nat) : Nat := sorry
-  
   def TestEmulator := Nat × Nat × Nat
 
 vc-helpers: |-
 
 vc-definitions: |-
-  def solve (e : TestEmulator) : Nat := sorry 
+  def height (n m : Nat) : Nat :=
+  sorry
   
-  theorem height_nonnegative (n m : Nat) :
-    height n m ≥ 0 := sorry
+  def solve (e : TestEmulator) : Nat :=
+  sorry
 
 vc-theorems: |-
-  theorem height_when_n_geq_m (n m : Nat) :
-    n ≥ m → height n m = 2^m - 1 := sorry
+  theorem height_nonnegative (n m : Nat) :
+    height n m ≥ 0 :=
+  sorry
   
-  theorem solve_bounded_by_break_floor (eggs drops break_floor : Nat) : 
+  theorem height_when_n_geq_m (n m : Nat) :
+    n ≥ m → height n m = 2^m - 1 :=
+  sorry
+  
+  theorem solve_bounded_by_break_floor (eggs drops break_floor : Nat) :
     eggs > 0 → drops > 0 → break_floor > 0 →
-    solve (eggs, drops, break_floor) ≤ break_floor := sorry
+    solve (eggs, drops, break_floor) ≤ break_floor :=
+  sorry
   
   theorem solve_positive (eggs drops break_floor : Nat) :
     eggs > 0 → drops > 0 → break_floor > 0 →
-    solve (eggs, drops, break_floor) > 0 := sorry
+    solve (eggs, drops, break_floor) > 0 :=
+  sorry
   
   theorem solve_respects_constraints (eggs drops break_floor : Nat) :
     eggs > 0 → drops > 0 → break_floor > 0 →
     let e := (eggs, drops, break_floor)
-    solve e ≤ eggs ∧ solve e ≤ drops := sorry
+    solve e ≤ eggs ∧ solve e ≤ drops :=
+  sorry
   
   theorem emulator_below_break_point (eggs drops break_floor : Nat) :
     eggs > 0 → drops > 0 → break_floor > 1 →
-    solve (eggs, drops - 1, break_floor - 1) = 0 := sorry
+    solve (eggs, drops - 1, break_floor - 1) = 0 :=
+  sorry
   
   theorem emulator_at_break_point (eggs drops break_floor : Nat) :
     eggs > 0 → drops > 1 → break_floor > 0 →
-    solve (eggs - 1, drops - 2, break_floor) > 0 := sorry
-  
-  /-
-  info: 5
-  -/
-  -- #guard_msgs in
-  -- #eval solve TestEmulator(1, 10, 5)
-  
-  /-
-  info: 20
-  -/
-  -- #guard_msgs in
-  -- #eval solve TestEmulator(2, 10, 20)
-  
-  /-
-  info: 55
-  -/
-  -- #guard_msgs in
-  -- #eval solve TestEmulator(3, 14, 55)
+    solve (eggs - 1, drops - 2, break_floor) > 0 :=
+  sorry
 
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
+  
+  /--
+  info: 5
+  -/
+  #guard_msgs in
+  #eval solve TestEmulator(1, 10, 5)
+  
+  /--
+  info: 20
+  -/
+  #guard_msgs in
+  #eval solve TestEmulator(2, 10, 20)
+  
+  /--
+  info: 55
+  -/
+  #guard_msgs in
+  #eval solve TestEmulator(3, 14, 55)
 

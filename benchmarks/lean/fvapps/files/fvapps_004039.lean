@@ -22,25 +22,4 @@ theorem robot_walk_strictly_decreasing (lst : List Int) (h : lst.length ≥ 3)
   (decrease : ∀ (i j : Fin lst.length), i < j → lst.get i > lst.get j) :
   robot_walk lst = false :=
 sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval robot_walk [4, 4, 3, 2, 2, 3]
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval robot_walk [34241, 23434, 2341]
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval robot_walk [5, 5, 5, 5]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

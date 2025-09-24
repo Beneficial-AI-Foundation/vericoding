@@ -3,9 +3,9 @@ use vstd::prelude::*;
 
 verus! {
 spec fn power(base: int, exp: int) -> int
-  decreases exp
+  decreases exp when exp >= 0
 {
-  if exp == 0 { 1 } else { base * power(base, exp - 1) }
+  if exp <= 0 { 1 } else { base * power(base, exp - 1) }
 }
 
 spec fn valid_input(n: int, k: int) -> bool
@@ -15,7 +15,7 @@ spec fn valid_input(n: int, k: int) -> bool
 
 spec fn painting_ways(n: int, k: int) -> int
 {
-  k * power(k - 1, n - 1)
+  if valid_input(n, k) { k * power(k - 1, n - 1) } else { 0 }
 }
 // </vc-preamble>
 
@@ -23,11 +23,12 @@ spec fn painting_ways(n: int, k: int) -> int
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(n: int, k: int) -> (result: int)
-  requires valid_input(n, k)
+fn solve(n: i8, k: i8) -> (result: i8)
+  requires 
+    valid_input(n as int, k as int)
   ensures 
-      result == painting_ways(n, k) &&
-      result > 0
+    result as int == painting_ways(n as int, k as int),
+    result > 0
 // </vc-spec>
 // <vc-code>
 {

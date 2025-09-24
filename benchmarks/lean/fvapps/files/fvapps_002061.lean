@@ -33,25 +33,4 @@ theorem solve_orbs_edge_cases_one_large :
 
 theorem solve_orbs_edge_cases_two :
   solve_orbs 2 [1, 2] = [2, 2] := sorry
-
-/-
-info: [1]
--/
--- #guard_msgs in
--- #eval solve_orbs 1 [1]
-
-/-
-info: [2, 2]
--/
--- #guard_msgs in
--- #eval solve_orbs 2 [1, 2]
-
-/-
-info: [3, 3, 3, 3, 3]
--/
--- #guard_msgs in
--- #eval solve_orbs 3 [1, 4, 20, 50, 300]
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: unguarded

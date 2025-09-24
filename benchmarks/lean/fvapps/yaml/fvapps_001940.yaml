@@ -47,16 +47,17 @@ vc-description: |-
   -/
 
 vc-preamble: |-
+
+vc-helpers: |-
+
+vc-definitions: |-
   def find_min_questions (n : Nat) : List Nat :=
     sorry
   
   def isPrime (n : Nat) : Bool :=
     sorry
-
-vc-helpers: |-
-
-vc-definitions: |-
-  def isPrimePower (n : Nat) : Bool := 
+  
+  def isPrimePower (n : Nat) : Bool :=
     sorry
 
 vc-theorems: |-
@@ -66,7 +67,7 @@ vc-theorems: |-
   
   theorem find_min_questions_ordering (n : Nat) :
     ∀ (l : List Nat), l = find_min_questions n →
-      ∀ i, i + 1 < l.length → 
+      ∀ i, i + 1 < l.length →
         l.get! i > l.get! (i + 1) →
         isPrime (l.get! (i + 1)) := by
     sorry
@@ -84,26 +85,26 @@ vc-theorems: |-
   theorem find_min_questions_prime_powers (n : Nat) :
     ∀ x ∈ find_min_questions n, isPrimePower x := by
     sorry
-  
-  /-
-  info: 3
-  -/
-  -- #guard_msgs in
-  -- #eval len find_min_questions(4)
-  
-  /-
-  info: 4
-  -/
-  -- #guard_msgs in
-  -- #eval len find_min_questions(6)
-  
-  /-
-  info: 0
-  -/
-  -- #guard_msgs in
-  -- #eval len find_min_questions(1)
 
 vc-postamble: |-
   -- Apps difficulty: competition
   -- Assurance level: unguarded
+  
+  /--
+  info: 3
+  -/
+  #guard_msgs in
+  #eval len find_min_questions(4)
+  
+  /--
+  info: 4
+  -/
+  #guard_msgs in
+  #eval len find_min_questions(6)
+  
+  /--
+  info: 0
+  -/
+  #guard_msgs in
+  #eval len find_min_questions(1)
 

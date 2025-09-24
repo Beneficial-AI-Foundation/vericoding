@@ -29,6 +29,3 @@ theorem toLowercase_spec_satisfied (str1: Array Char) (h_precond : toLowercase_p
     toLowercase_postcond (str1) (toLowercase (str1) h_precond) h_precond := by
   sorry
 -- </vc-theorems>
-
-#check toLowercase
-#check toLowercase_spec_satisfied

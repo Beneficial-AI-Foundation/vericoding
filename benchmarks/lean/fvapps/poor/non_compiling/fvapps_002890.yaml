@@ -49,8 +49,6 @@ vc-preamble: |-
   def List.maximum (l : List Nat) : Nat := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def candies (arr : List Nat) : Int := sorry

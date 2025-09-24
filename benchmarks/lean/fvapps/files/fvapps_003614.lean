@@ -26,25 +26,4 @@ theorem smaller_count_correct (arr : List Int) (h : arr ≠ []) :
 theorem smaller_maximum_constraint (arr : List Int) (h : arr ≠ []) :
   ∀ i, i < List.length arr →
     List.get! (smaller arr) i ≤ List.length arr - i - 1 := sorry
-
-/-
-info: [4, 3, 2, 1, 0]
--/
--- #guard_msgs in
--- #eval smaller [5, 4, 3, 2, 1]
-
-/-
-info: [1, 1, 0]
--/
--- #guard_msgs in
--- #eval smaller [1, 2, 0]
-
-/-
-info: [0, 0, 0]
--/
--- #guard_msgs in
--- #eval smaller [1, 2, 3]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

@@ -30,37 +30,4 @@ theorem adults_drink_whisky
   {age : Int}
   (h : age ≥ 21) :
   people_with_age_drink age = "drink whisky" := sorry
-
-/-
-info: 'drink toddy'
--/
--- #guard_msgs in
--- #eval people_with_age_drink 13
-
-/-
-info: 'drink coke'
--/
--- #guard_msgs in
--- #eval people_with_age_drink 17
-
-/-
-info: 'drink beer'
--/
--- #guard_msgs in
--- #eval people_with_age_drink 18
-
-/-
-info: 'drink beer'
--/
--- #guard_msgs in
--- #eval people_with_age_drink 20
-
-/-
-info: 'drink whisky'
--/
--- #guard_msgs in
--- #eval people_with_age_drink 21
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

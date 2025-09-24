@@ -1,12 +1,13 @@
 -- <vc-preamble>
-def find_min_troops_to_ruin (s: String) : Nat :=
-sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
+def find_min_troops_to_ruin (s: String) : Nat :=
+sorry
+
 def isPalindrome (s: String) : Bool :=
 sorry
 -- </vc-definitions>
@@ -28,25 +29,4 @@ sorry
 theorem non_palindrome_troops (s: String) :
   s ≠ "" ∧ ¬isPalindrome s → find_min_troops_to_ruin s = 2 :=
 sorry
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval find_min_troops_to_ruin "abbabaab"
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval find_min_troops_to_ruin "abba"
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval find_min_troops_to_ruin "ab"
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

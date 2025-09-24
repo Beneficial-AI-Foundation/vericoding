@@ -34,19 +34,4 @@ theorem words_properly_scrambled (words : List String) (text : String) (res : St
   mix_words text = some res →
   let result_words := res.split (· = ' ')
   words.length = result_words.length := sorry
-
-/-
-info: len(test1)
--/
--- #guard_msgs in
--- #eval len mix_words(test1)
-
-/-
-info: sorted(mixed[1:-1])
--/
--- #guard_msgs in
--- #eval sorted orig[1:-1]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

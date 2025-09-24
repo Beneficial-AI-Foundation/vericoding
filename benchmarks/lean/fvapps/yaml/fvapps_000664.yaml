@@ -2,59 +2,59 @@ vc-description: |-
   /-
   -----Problem Statement-----
   Write a program that accepts a number, n, and outputs the same.
-  
+
   -----Input-----
   The only line contains a single integer. 
-  
+
   -----Output-----
   Output the answer in a single line.
-  
+
   -----Constraints-----
   - 0 ≤ n ≤ 105
-  
+
   -----Sample Input-----
   123
-  
+
   -----Sample Output-----
   123
   -/
 
-vc-preamble: |-
+vc-preamble: |
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def return_number (n : Int) : Int := sorry
-  
+
   theorem return_number_returns_input (n : Int) : 
     return_number n = n := sorry
 
 vc-theorems: |-
   theorem return_number_nonneg (n : Int) (h : n ≥ 0) : 
     return_number n ≥ 0 ∧ return_number n = n := sorry
-  
+
   theorem return_number_nonpos (n : Int) (h : n ≤ 0) :
     return_number n ≤ 0 ∧ return_number n = n := sorry
-  
-  /-
-  info: 123
-  -/
-  -- #guard_msgs in
-  -- #eval return_number 123
-  
-  /-
-  info: 0
-  -/
-  -- #guard_msgs in
-  -- #eval return_number 0
-  
-  /-
-  info: 99999
-  -/
-  -- #guard_msgs in
-  -- #eval return_number 99999
 
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
+
+  /--
+  info: 123
+  -/
+  #guard_msgs in
+  #eval return_number 123
+
+  /--
+  info: 0
+  -/
+  #guard_msgs in
+  #eval return_number 0
+
+  /--
+  info: 99999
+  -/
+  #guard_msgs in
+  #eval return_number 99999
 

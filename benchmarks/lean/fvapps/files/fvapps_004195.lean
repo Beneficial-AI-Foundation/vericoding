@@ -30,25 +30,4 @@ theorem isMultiple_div_by_one {a n : Nat} (h1 : 0 < a) (h2 : a ≤ 1000)
 theorem isMultiple_zero {b n : Nat} (h1 : 0 < b) (h2 : b ≤ 1000) 
     (h3 : 0 < n) (h4 : n ≤ 9) :
   isMultiple 0 b n = false := sorry
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval isMultiple 5 2 3
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval isMultiple 5 3 4
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval isMultiple 5 4 3
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

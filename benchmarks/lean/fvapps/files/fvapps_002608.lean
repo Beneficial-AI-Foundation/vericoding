@@ -24,19 +24,4 @@ theorem russian_peasant_small_nums_1 :
 
 theorem russian_peasant_small_nums_2 :
   russian_peasant_multiplication 5 4 = 20 := sorry
-
-/-
-info: 50
--/
--- #guard_msgs in
--- #eval russian_peasant_multiplication 10 5
-
-/-
-info: 3150
--/
--- #guard_msgs in
--- #eval russian_peasant_multiplication 175 18
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

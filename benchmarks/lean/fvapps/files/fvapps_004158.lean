@@ -38,25 +38,4 @@ theorem sum_no_duplicates_all_duplicates (nums : List Int) :
   nums.length > 1 →
   sum_no_duplicates (nums ++ nums) = 0 :=
 sorry
-
-/-
-info: 10
--/
--- #guard_msgs in
--- #eval sum_no_duplicates [3, 4, 3, 6]
-
-/-
-info: 5
--/
--- #guard_msgs in
--- #eval sum_no_duplicates [1, 1, 2, 3]
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval sum_no_duplicates []
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

@@ -32,25 +32,4 @@ theorem all_cities_visited_returns_no_conferences (cities : List String) :
 theorem single_new_city_is_returned (visited : List String) (new_city : String)
   (h : new_city ∉ visited) :
   conference_picker visited [new_city] = new_city := sorry
-
-/-
-info: 'Philadelphia'
--/
--- #guard_msgs in
--- #eval conference_picker [] ["Philadelphia", "Osaka", "Tokyo", "Melbourne"]
-
-/-
-info: 'No worthwhile conferences this year!'
--/
--- #guard_msgs in
--- #eval conference_picker ["Rome"] ["Rome"]
-
-/-
-info: 'London'
--/
--- #guard_msgs in
--- #eval conference_picker ["Milan"] ["London"]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

@@ -33,25 +33,4 @@ theorem edge_case_same_number_12 :
 
 theorem edge_case_same_number_10 :
   sequentialDigits 10 10 = [] := sorry
-
-/-
-info: [123, 234]
--/
--- #guard_msgs in
--- #eval sequential_digits 100 300
-
-/-
-info: [1234, 2345, 3456, 4567, 5678, 6789, 12345]
--/
--- #guard_msgs in
--- #eval sequential_digits 1000 13000
-
-/-
-info: [12, 23, 34, 45, 56, 67, 78, 89]
--/
--- #guard_msgs in
--- #eval sequential_digits 10 100
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

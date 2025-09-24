@@ -21,25 +21,4 @@ theorem alt_or_eq_any {l : List Bool} (h : l ≠ []) :
 
 theorem alt_or_type {l : List Bool} (h : l ≠ []) :
   (alt_or l).isSome := by sorry
-
-/-
-info: None
--/
--- #guard_msgs in
--- #eval alt_or []
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval alt_or [False]
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval alt_or [False, True, False]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

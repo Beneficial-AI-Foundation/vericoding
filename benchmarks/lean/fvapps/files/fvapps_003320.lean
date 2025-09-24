@@ -43,25 +43,4 @@ theorem am_pm_difference {hour : Nat} {minute : Nat}
   if hour = 12
   then pm_time - am_time = 1200
   else pm_time - am_time = 1200 ∨ am_time - pm_time = 1200 := sorry
-
-/-
-info: '0000'
--/
--- #guard_msgs in
--- #eval to24hourtime 12 0 "am"
-
-/-
-info: '0830'
--/
--- #guard_msgs in
--- #eval to24hourtime 8 30 "am"
-
-/-
-info: '2030'
--/
--- #guard_msgs in
--- #eval to24hourtime 8 30 "pm"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

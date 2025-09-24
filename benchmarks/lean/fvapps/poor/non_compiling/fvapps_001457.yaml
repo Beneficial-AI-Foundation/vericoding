@@ -33,8 +33,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def determine_winner (rows cols : Nat) : Player := sorry

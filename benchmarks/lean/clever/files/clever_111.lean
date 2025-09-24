@@ -40,9 +40,3 @@ theorem correctness
 := by
   sorry
 -- </vc-theorems>
-
--- #test implementation 'a b c' = {'a': 1, 'b': 1, 'c': 1}
--- #test implementation 'a b b a' = {'a': 2, 'b': 2}
--- #test implementation 'a b c a b' = {'a': 2, 'b': 2}
--- #test implementation 'b b b b a' = {'b': 4}
--- #test implementation '' = {}

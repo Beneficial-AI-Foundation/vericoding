@@ -43,25 +43,4 @@ theorem solve_edge_chars_za (s : String) :
   s.data.get ⟨0, sorry⟩ = 'z' →
   s.data.get ⟨s.length - 1, sorry⟩ = 'a' →
   solve s = false := sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval solve "adfa"
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval solve "bd"
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval solve "abzy"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

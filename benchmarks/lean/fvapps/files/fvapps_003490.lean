@@ -28,25 +28,4 @@ theorem filter_homogenous_int_arrays (arrays : List (List Int)) :
   let result := filter_homogenous arrays
   (∀ arr, arr ∈ result → arr ≠ []) ∧
   (∀ arr, arr ∈ result → arr ∈ arrays) := sorry
-
-/-
-info: expected1
--/
--- #guard_msgs in
--- #eval filter_homogenous [[1, 5, 4], ["a", 3, 5], ["b"], [], ["1", 2, 3]]
-
-/-
-info: expected2
--/
--- #guard_msgs in
--- #eval filter_homogenous [[123, 234, 432], ["", "abc"], [""], ["", 1], ["", "1"], []]
-
-/-
-info: expected3
--/
--- #guard_msgs in
--- #eval filter_homogenous [[1, 2, 3], ["1", "2", "3"], ["1", 2, 3]]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

@@ -27,6 +27,3 @@ theorem solve_tree_colors_line_graph_same_color {n : Nat} {colors : List Nat}
   solve_tree_colors n (List.range (n-1) |>.map (fun i => (i+1, i+2))) colors = 1 :=
 sorry
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: guarded

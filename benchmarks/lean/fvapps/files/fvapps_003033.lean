@@ -27,25 +27,4 @@ theorem large_numbers_get_lots (n: Int) :
 
 theorem exactly_101 :
   how_many_dalmatians 101 = "101 DALMATIONS!!!" := sorry
-
-/-
-info: 'Hardly any'
--/
--- #guard_msgs in
--- #eval how_many_dalmatians 8
-
-/-
-info: 'More than a handful!'
--/
--- #guard_msgs in
--- #eval how_many_dalmatians 26
-
-/-
-info: '101 DALMATIONS!!!'
--/
--- #guard_msgs in
--- #eval how_many_dalmatians 101
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

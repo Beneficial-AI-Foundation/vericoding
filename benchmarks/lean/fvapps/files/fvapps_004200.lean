@@ -24,25 +24,4 @@ theorem decode_with_spacing {s : String} (n : Nat)
   let spaced := String.mk (List.replicate n ' ' ++ s.data ++ List.replicate n ' ')
   (decode spaced).length = spaced.length ∧ 
   (decode spaced).trim = decode s := sorry
-
-/-
-info: 'hi'
--/
--- #guard_msgs in
--- #eval decode "sr"
-
-/-
-info: 'hello'
--/
--- #guard_msgs in
--- #eval decode "svool"
-
-/-
-info: 'i hope nobody decodes this message'
--/
--- #guard_msgs in
--- #eval decode "r slkv mlylwb wvxlwvh gsrh nvhhztv"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

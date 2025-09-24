@@ -26,6 +26,3 @@ theorem find_min_workers_basic_cases :
   find_min_workers 2 3 = 4 ∧ find_min_workers 2 6 = 5
   := sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

@@ -19,57 +19,57 @@ vc-description: |-
   [[2, 5], [35, 38], [55, 58], [62, 65], [74, 77], [82, 85], [91, 94]]
   ```
   Let's name, diff, the difference between two integers, next and prev, (diff = next - prev) and nMax, an upper bound of the range.
-  
+
   We need a special function, count_pairsInt(), that receives two arguments, diff and nMax and outputs the amount of pairs of integers that fulfill this property, all of them being smaller (not smaller or equal) than nMax.
-  
+
   Let's see it more clearly with examples.
   ```python
   count_pairsInt(1, 50) -----> 8 (See case above)
   count_pairsInt(3, 100) -----> 7 (See case above)
   ```
-  
+
   Happy coding!!!
   -/
 
-vc-preamble: |-
+vc-preamble: |
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def count_pairs_int (d : Nat) (m : Nat) : Nat := sorry
-  
+
   theorem count_pairs_int_non_negative (d m : Nat) (h : d > 0) (h2 : m > 1) :
     (count_pairs_int d m) ≥ 0 := sorry
 
 vc-theorems: |-
   theorem count_pairs_int_zero_when_d_large (d m : Nat) (h : d > 0) (h2 : m > 1) (h3 : d ≥ m-1) :
     count_pairs_int d m = 0 := sorry
-  
+
   theorem count_pairs_int_upper_bound (d m : Nat) (h : d > 0) (h2 : m > 1) :
     count_pairs_int d m ≤ max 0 (m-d-1) := sorry
-  
+
   theorem count_pairs_int_small_m (d : Nat) (h : d > 0) :
     count_pairs_int d (d+1) = 0 ∧ count_pairs_int d d = 0 := sorry
-  
-  /-
-  info: 8
-  -/
-  -- #guard_msgs in
-  -- #eval count_pairs_int 1 50
-  
-  /-
-  info: 7
-  -/
-  -- #guard_msgs in
-  -- #eval count_pairs_int 3 100
-  
-  /-
-  info: 86
-  -/
-  -- #guard_msgs in
-  -- #eval count_pairs_int 6 350
 
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
+
+  /--
+  info: 8
+  -/
+  #guard_msgs in
+  #eval count_pairs_int 1 50
+
+  /--
+  info: 7
+  -/
+  #guard_msgs in
+  #eval count_pairs_int 3 100
+
+  /--
+  info: 86
+  -/
+  #guard_msgs in
+  #eval count_pairs_int 6 350
 

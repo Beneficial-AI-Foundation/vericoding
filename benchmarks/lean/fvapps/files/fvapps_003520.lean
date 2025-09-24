@@ -20,25 +20,4 @@ theorem sorter_case_insensitive_sorted (texts : List String) (i : Nat) :
   String.toLower ((sorter texts).get! i) ≤ String.toLower ((sorter texts).get! (i+1)) := sorry
 
 theorem sorter_empty : sorter [] = [] := sorry
-
-/-
-info: expected1
--/
--- #guard_msgs in
--- #eval sorter ["Algebra", "History", "Geometry", "English"]
-
-/-
-info: expected2
--/
--- #guard_msgs in
--- #eval sorter ["Algebra", "history", "Geometry", "english"]
-
-/-
-info: expected3
--/
--- #guard_msgs in
--- #eval sorter ["Alg#bra", "$istory", "Geom^try", "**english"]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

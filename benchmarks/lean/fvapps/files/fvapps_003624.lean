@@ -28,25 +28,4 @@ theorem whole_numbers {n: Nat} (h: 0 < n) (h2: n ≤ 100) :
 theorem edge_cases :
   (get_mixed_num "1/1" = "1 0/1") ∧ 
   (get_mixed_num "0/1" = "0 0/1") := sorry
-
-/-
-info: '1 7/11'
--/
--- #guard_msgs in
--- #eval get_mixed_num "18/11"
-
-/-
-info: '2 3/5'
--/
--- #guard_msgs in
--- #eval get_mixed_num "13/5"
-
-/-
-info: '7 5/10'
--/
--- #guard_msgs in
--- #eval get_mixed_num "75/10"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

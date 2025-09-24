@@ -18,25 +18,4 @@ sorry
 theorem find_smallest_xor_m_invalid_inputs (n : Int) :
   n ≤ 0 → find_smallest_xor_m n.toNat = -1 :=
 sorry
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval find_smallest_xor_m 3
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval find_smallest_xor_m 1
-
-/-
-info: -1
--/
--- #guard_msgs in
--- #eval find_smallest_xor_m 4
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

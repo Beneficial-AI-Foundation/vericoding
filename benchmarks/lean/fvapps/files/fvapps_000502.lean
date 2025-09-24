@@ -28,6 +28,3 @@ theorem single_value_paths {n : Nat} :
   ∀ x ∈ find_longest_increasing_paths n values edges, x = 1 :=
 sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

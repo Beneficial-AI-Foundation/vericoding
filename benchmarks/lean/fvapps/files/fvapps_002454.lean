@@ -1,24 +1,24 @@
 -- <vc-preamble>
-def parse_html (s : String) : String :=
-  sorry
-
-def is_lowercase_letter (c : Char) : Bool :=
-  sorry
+def split_lines (s : String) : List String :=
+  s.splitOn "\n"
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
-def split_lines (s : String) : List String :=
-  s.splitOn "\n"
+def parse_html (s : String) : String :=
+  sorry
+
+def is_lowercase_letter (c : Char) : Bool :=
+  sorry
 -- </vc-definitions>
 
 -- <vc-theorems>
-theorem single_tag_parse {tag : String} 
+theorem single_tag_parse {tag : String}
   (h : ∀ c, c ∈ tag.data → is_lowercase_letter c) :
   parse_html s!"<{tag}>" = tag :=
-  sorry
+sorry
 
 theorem tag_with_attrs_parse {tag : String} {attrs : List (String × String)}
   (h1 : ∀ c, c ∈ tag.data → is_lowercase_letter c)
@@ -28,7 +28,7 @@ theorem tag_with_attrs_parse {tag : String} {attrs : List (String × String)}
   let result := split_lines (parse_html html)
   result[0]! = tag ∧
   (∀ i k v, attrs[i]! = (k,v) → result[i+1]! = s!"-> {k} > {v}") :=
-  sorry
+sorry
 
 theorem multiple_tags_parse {tags : List String} {attrs_list : List (List (String × String))}
   (h1 : tags.length > 0)
@@ -45,13 +45,10 @@ theorem multiple_tags_parse {tags : List String} {attrs_list : List (List (Strin
     result[i]! = tags[i]! ∧
     ∀ j k v, attrs_list[i]![j]! = (k,v) →
       result[i + j + 1]! = s!"-> {k} > {v}" :=
-  sorry
+sorry
 
 theorem self_closing_tag_parse {tag : String}
   (h : ∀ c, c ∈ tag.data → is_lowercase_letter c) :
   parse_html s!"<{tag}/>" = tag :=
-  sorry
+sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

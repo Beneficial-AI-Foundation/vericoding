@@ -22,6 +22,3 @@ theorem star_tree_properties {n : Nat} (h1 : n ≥ 3) :
     let queries := [(1, 1, a, b)]
     (solve_tree_distance_queries n 1 edges queries).head! = 2 := sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

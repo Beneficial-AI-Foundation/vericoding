@@ -1,12 +1,13 @@
 -- <vc-preamble>
-def is_possible (a b : String) : Bool :=
-  sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
+def is_possible (a b : String) : Bool :=
+  sorry
+
 def count_ones (s : String) : Nat :=
   sorry
 -- </vc-definitions>
@@ -32,28 +33,7 @@ sorry
 
 theorem length_invariant (s ones : String) :
   (∀ c ∈ ones.data, c = '1') →
-  is_possible s ones ↔ 
+  is_possible s ones ↔
   ones.length ≤ ((count_ones s + 1) / 2) * 2 :=
 sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval is_possible "01011" "0110"
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval is_possible "0011" "1110"
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval is_possible "1" "0"
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: unguarded

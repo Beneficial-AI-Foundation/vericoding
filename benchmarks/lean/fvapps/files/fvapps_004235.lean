@@ -1,29 +1,37 @@
 -- <vc-preamble>
-def splitString (s : String) (sep : String) : List String := sorry
-def containsString (s : String) (sub : String) : Bool := sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
-def startsWithString (s : String) (pre : String) : Bool := sorry
+def splitString (s : String) (sep : String) : List String :=
+sorry
 
-def simplify (n : Nat) : String := sorry
+def containsString (s : String) (sub : String) : Bool :=
+sorry
+
+def startsWithString (s : String) (pre : String) : Bool :=
+sorry
+
+def simplify (n : Nat) : String :=
+sorry
 -- </vc-definitions>
 
 -- <vc-theorems>
-theorem simplify_zero : 
-  simplify 0 = "" := sorry
+theorem simplify_zero :
+  simplify 0 = "" :=
+sorry
 
 theorem simplify_format_valid (n : Nat) (h : n > 0) :
   let terms := splitString (simplify n) "+"
-  terms.length > 0 := sorry
+  terms.length > 0 :=
+sorry
 
 theorem simplify_terms_valid (n : Nat) (h : n > 0) :
   let terms := splitString (simplify n) "+"
-  ∀ t ∈ terms, 
-    (containsString t "*" ∧ 
+  ∀ t ∈ terms,
+    (containsString t "*" ∧
      let parts := splitString t "*"
      parts.length = 2 ∧
      let digit := parts[0]!
@@ -35,42 +43,24 @@ theorem simplify_terms_valid (n : Nat) (h : n > 0) :
     (¬containsString t "*" ∧
      t.all Char.isDigit ∧
      let termNum := t.toNat!
-     1 ≤ termNum ∧ termNum ≤ 9) := sorry
+     1 ≤ termNum ∧ termNum ≤ 9) :=
+sorry
 
 theorem simplify_sums_to_input (n : Nat) :
   let terms := splitString (simplify n) "+"
   terms.foldl
-    (fun acc t => 
-      if containsString t "*" then 
+    (fun acc t =>
+      if containsString t "*" then
         let parts := splitString t "*"
         acc + parts[0]!.toNat! * parts[1]!.toNat!
       else
         acc + t.toNat!)
     0
-  = n := sorry
+  = n :=
+sorry
 
 theorem simplify_no_leading_zeros (n : Nat) (h : n > 0) :
   let terms := splitString (simplify n) "+"
-  ∀ t ∈ terms, ¬startsWithString t "0" := sorry
-
-/-
-info: '5*10+6'
--/
--- #guard_msgs in
--- #eval simplify 56
-
-/-
-info: '9*100+9*10+9'
--/
--- #guard_msgs in
--- #eval simplify 999
-
-/-
-info: '1*10000+4'
--/
--- #guard_msgs in
--- #eval simplify 10004
+  ∀ t ∈ terms, ¬startsWithString t "0" :=
+sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

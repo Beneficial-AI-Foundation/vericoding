@@ -16,6 +16,3 @@ theorem dangerous_triples_empty_inputs
   (h : n > 0) :
   count_dangerous_triples n [] [] = [0] := sorry
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: guarded_and_plausible

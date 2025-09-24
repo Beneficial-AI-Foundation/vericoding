@@ -16,6 +16,3 @@ sorry
 theorem last_man_standing_small_cases_3 : last_man_standing 3 = 2 :=
 sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

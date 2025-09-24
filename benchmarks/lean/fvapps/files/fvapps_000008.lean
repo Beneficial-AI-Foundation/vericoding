@@ -24,25 +24,4 @@ theorem all_wins {n k : Nat} :
   n > 0 → 
   let games := String.mk (List.replicate n 'W')
   calculate_max_score n k games = 2 * n - 1 := sorry
-
-/-
-info: 7
--/
--- #guard_msgs in
--- #eval calculate_max_score 5 2 "WLWLL"
-
-/-
-info: 11
--/
--- #guard_msgs in
--- #eval calculate_max_score 6 5 "LLLWWL"
-
-/-
-info: 6
--/
--- #guard_msgs in
--- #eval calculate_max_score 7 1 "LWLWLWL"
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

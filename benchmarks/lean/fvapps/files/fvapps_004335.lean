@@ -19,25 +19,4 @@ theorem smallest_integer_not_in_matrix (matrix : List (List Int)) :
 theorem negative_numbers_ignored (matrix : List (List Int)) :
   smallest_integer matrix = 
   smallest_integer (List.map (λ row => List.map (λ x => if x ≥ 0 then x else -1) row) matrix) := sorry
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval smallest_integer [[0, 2], [5, 1]]
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval smallest_integer [[1, 2], [3, 4]]
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval smallest_integer [[-1, -1], [-1, -1]]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

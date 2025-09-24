@@ -26,25 +26,4 @@ theorem sum_multiples_decimal_bracket (n : Nat) :
 
 theorem sum_multiples_edge_cases :
   sum_multiples_of_ten 0 = 0 ∧ sum_multiples_of_ten 9 = 0 := sorry
-
-/-
-info: 10
--/
--- #guard_msgs in
--- #eval sum_multiples_of_ten 10
-
-/-
-info: 30
--/
--- #guard_msgs in
--- #eval sum_multiples_of_ten 20
-
-/-
-info: 550
--/
--- #guard_msgs in
--- #eval sum_multiples_of_ten 100
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

@@ -26,25 +26,4 @@ theorem all_low_scores_get_f (scores : List Nat) (h : scores ≠ []) :
   (∀ x ∈ scores, x = 50) →
   calculate_grade scores = 'F' :=
 sorry
-
-/-
-info: 'A'
--/
--- #guard_msgs in
--- #eval calculate_grade [92, 94, 99]
-
-/-
-info: 'C'
--/
--- #guard_msgs in
--- #eval calculate_grade [50, 60, 70, 80, 90]
-
-/-
-info: 'F'
--/
--- #guard_msgs in
--- #eval calculate_grade [50, 55]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

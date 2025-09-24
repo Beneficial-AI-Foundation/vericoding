@@ -33,6 +33,3 @@ theorem reconstruct_queue_size_bounds
   (people : List (Nat × Nat)) :
   1 ≤ List.length people ∧ List.length people ≤ 20 := sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

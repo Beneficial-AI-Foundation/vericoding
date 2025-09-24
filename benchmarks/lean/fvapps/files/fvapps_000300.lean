@@ -24,6 +24,3 @@ theorem symmetric_servings (n : Nat) (h : n ≤ 1000) :
 theorem boundary_value :
   (soup_servings 0 - 0.5).abs < 0.000001 := sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

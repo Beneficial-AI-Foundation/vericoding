@@ -26,25 +26,4 @@ theorem single_value_array_needs_zero_ops {n m : Nat} {x : Nat}
   (hm : m > 0) :
   min_ops_to_make_nondecreasing 1 m [x % m] = 0 :=
 sorry
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval min_ops_to_make_nondecreasing 5 3 [0, 0, 0, 1, 2]
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval min_ops_to_make_nondecreasing 5 7 [0, 6, 1, 3, 2]
-
-/-
-info: 6
--/
--- #guard_msgs in
--- #eval min_ops_to_make_nondecreasing 10 10 [5, 0, 5, 9, 4, 6, 4, 5, 0, 0]
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: guarded_and_plausible

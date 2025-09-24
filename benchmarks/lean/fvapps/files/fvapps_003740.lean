@@ -40,25 +40,4 @@ theorem find_children_symmetry (list1 list2 : List String) :
 theorem find_children_empty (names : List String) :
   find_children names [] = [] ∧
   find_children [] names = [] := sorry
-
-/-
-info: ['Jason', 'Jordan']
--/
--- #guard_msgs in
--- #eval find_children ["Jason", "Jackson", "Jordan", "Johnny"] ["Jason", "Jordan", "Jennifer"]
-
-/-
-info: ['JJ', 'Jason']
--/
--- #guard_msgs in
--- #eval find_children ["Jason", "Jackson", "Johnson", "JJ"] ["Jason", "James", "JJ"]
-
-/-
-info: ['JAsoN', 'jASon']
--/
--- #guard_msgs in
--- #eval find_children ["jASon", "JAsoN", "JaSON", "jasON"] ["JasoN", "jASOn", "JAsoN", "jASon", "JASON"]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

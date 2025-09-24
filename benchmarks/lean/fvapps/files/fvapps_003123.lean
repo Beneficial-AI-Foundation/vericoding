@@ -28,25 +28,4 @@ theorem trump_detector_rounding (text : String) :
 
 theorem trump_detector_empty :
   trump_detector "" = 0 := sorry
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval trump_detector "I will build a huge wall"
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval trump_detector "HUUUUUGEEEE WAAAAAALL"
-
-/-
-info: 1.56
--/
--- #guard_msgs in
--- #eval trump_detector "listen migrants: IIII KIIIDD YOOOUUU NOOOOOOTTT"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

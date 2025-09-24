@@ -38,25 +38,4 @@ theorem single_string
   {n : Nat}
   (hn : 1 ≤ n ∧ n ≤ 10)
   : smallest_lexicographic_string n 1 (List.replicate n "z") = strRepeat "z" n := sorry
-
-/-
-info: 'axxcxxdxx'
--/
--- #guard_msgs in
--- #eval smallest_lexicographic_string 3 3 ["dxx", "axx", "cxx"]
-
-/-
-info: 'aaab'
--/
--- #guard_msgs in
--- #eval smallest_lexicographic_string 2 2 ["ab", "aa"]
-
-/-
-info: 'abcd'
--/
--- #guard_msgs in
--- #eval smallest_lexicographic_string 4 1 ["d", "b", "c", "a"]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

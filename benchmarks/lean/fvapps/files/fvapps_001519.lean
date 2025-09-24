@@ -26,25 +26,4 @@ theorem increases_with_size (m n o : Nat) :
   solve_rubiks_cuboid (m + 1) n o ≥ solve_rubiks_cuboid m n o ∧
   solve_rubiks_cuboid m (n + 1) o ≥ solve_rubiks_cuboid m n o ∧
   solve_rubiks_cuboid m n (o + 1) ≥ solve_rubiks_cuboid m n o := sorry
-
-/-
-info: 12
--/
--- #guard_msgs in
--- #eval solve_rubiks_cuboid 3 3 3
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval solve_rubiks_cuboid 1 1 1
-
-/-
-info: 12
--/
--- #guard_msgs in
--- #eval solve_rubiks_cuboid 4 3 2
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

@@ -20,25 +20,4 @@ theorem ipsBetween_symmetry
   (ip1 ip2 : String)
   (h : ipsBetween ip1 ip2 > 0) : 
   ipsBetween ip2 ip1 = -(ipsBetween ip1 ip2) := by sorry
-
-/-
-info: 50
--/
--- #guard_msgs in
--- #eval ips_between "10.0.0.0" "10.0.0.50"
-
-/-
-info: 246
--/
--- #guard_msgs in
--- #eval ips_between "20.0.0.10" "20.0.1.0"
-
-/-
-info: 256
--/
--- #guard_msgs in
--- #eval ips_between "160.0.0.0" "160.0.1.0"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

@@ -32,25 +32,4 @@ theorem find_short_single_word (s : String) (h : ¬ s.contains ' ') :
 
 theorem find_short_two_words (s₁ s₂ : String) :
   find_short (s₁ ++ " " ++ s₂) = min s₁.length s₂.length := by sorry
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval find_short "bitcoin take over the world maybe who knows perhaps"
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval find_short "i want to travel the world writing code one day"
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval find_short "Lets all go on holiday somewhere very cold"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

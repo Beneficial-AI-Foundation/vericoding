@@ -33,25 +33,4 @@ theorem gcdMatrix_multiples {a b : List Nat} (ha : List.length a = 1)
 
 theorem gcdMatrix_coprime : gcdMatrix [2,3,5,7] [11,13,17,19] = 1 :=
   sorry
-
-/-
-info: 1.444
--/
--- #guard_msgs in
--- #eval gcd_matrix [1, 2, 3] [4, 5, 6]
-
-/-
-info: 5.0
--/
--- #guard_msgs in
--- #eval gcd_matrix [5, 5, 5] [10, 10, 10]
-
-/-
-info: 2.0
--/
--- #guard_msgs in
--- #eval gcd_matrix [4, 7, 2, 10, 99, 4] [55, 32, 1, 344, 35234, 3]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

@@ -29,25 +29,4 @@ theorem consonants_only_unchanged {s : String} :
 theorem punctuation_unchanged {s : String} :
   (∀ c ∈ s.data, c = ' ' ∨ c = '.' ∨ c = ',' ∨ c = '!' ∨ c = '?') →
   vowel_2_index s = s := sorry
-
-/-
-info: expected1
--/
--- #guard_msgs in
--- #eval vowel_2_index "this is my string"
-
-/-
-info: expected2
--/
--- #guard_msgs in
--- #eval vowel_2_index "Codewars is the best site in the world"
-
-/-
-info: expected3
--/
--- #guard_msgs in
--- #eval vowel_2_index ""
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

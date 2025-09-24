@@ -35,31 +35,4 @@ sorry
 theorem uniq_all_identical {α} [BEq α] (lst : List α) (x : α) (h : lst.length > 0) (h2 : ∀ y ∈ lst, y = x) :
   (uniq lst).length = 1 :=
 sorry
-
-/-
-info: ['a', 'b', 'c', 'a', 'b', 'c']
--/
--- #guard_msgs in
--- #eval uniq ["a", "a", "b", "b", "c", "a", "b", "c", "c"]
-
-/-
-info: ['a', 'b', 'c']
--/
--- #guard_msgs in
--- #eval uniq ["a", "a", "a", "b", "b", "b", "c", "c", "c"]
-
-/-
-info: []
--/
--- #guard_msgs in
--- #eval uniq []
-
-/-
-info: [None, 'a']
--/
--- #guard_msgs in
--- #eval uniq [None, "a", "a"]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

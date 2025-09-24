@@ -22,25 +22,4 @@ theorem count_possible_arrays_fixed_cases :
   count_possible_arrays [2,2] = 4 ∧
   count_possible_arrays [2,3,1] = 9 ∧ 
   count_possible_arrays [1,2,3] = 9 := sorry
-
-/-
-info: 9
--/
--- #guard_msgs in
--- #eval count_possible_arrays [2, 3, 1]
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval count_possible_arrays [2, 2]
-
-/-
-info: 9
--/
--- #guard_msgs in
--- #eval count_possible_arrays [1, 2, 3]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

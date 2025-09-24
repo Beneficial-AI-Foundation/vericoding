@@ -1,12 +1,13 @@
 -- <vc-preamble>
-def make_palindrome_triangle (n: Nat) : String :=
-  sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
+def make_palindrome_triangle (n: Nat) : String :=
+  sorry
+
 def split_lines (s: String) : List String :=
   sorry
 -- </vc-definitions>
@@ -44,25 +45,4 @@ theorem palindrome_triangle_middle_increment {n: Nat} (h: 0 < n) (h2: n ≤ 9):
     let mid := line.length / 2
     ∀ j, j < mid → line.data[j]! = Char.ofNat ((j + 1) + '0'.toNat) :=
 sorry
-
-/-
-info: '1\n121\n12321'
--/
--- #guard_msgs in
--- #eval make_palindrome_triangle 3
-
-/-
-info: '1\n121\n12321\n1234321\n123454321'
--/
--- #guard_msgs in
--- #eval make_palindrome_triangle 5
-
-/-
-info: '1'
--/
--- #guard_msgs in
--- #eval make_palindrome_triangle 1
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

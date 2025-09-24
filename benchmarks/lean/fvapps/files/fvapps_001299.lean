@@ -34,25 +34,4 @@ theorem count_weighted_integers_zero_weight
   (n: Nat)
   (h1: n ≥ 2) (h2: n ≤ 100) :
   count_weighted_integers n 0 = (((10 ^ (n-2)) % MOD) * 9) % MOD := sorry
-
-/-
-info: 6
--/
--- #guard_msgs in
--- #eval count_weighted_integers 2 3
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval count_weighted_integers 2 10
-
-/-
-info: 80
--/
--- #guard_msgs in
--- #eval count_weighted_integers 3 -2
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

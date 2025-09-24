@@ -31,25 +31,4 @@ theorem counts_two_and_three_implies_true {α : Type} [BEq α] (list : List α) 
 theorem type_agnostic {α : Type} (list : List α) : 
   check_three_and_two list = true ∨ check_three_and_two list = false :=
   sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval check_three_and_two ["a", "a", "a", "b", "b"]
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval check_three_and_two ["a", "c", "a", "c", "b"]
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval check_three_and_two ["a", "a", "a", "a", "a"]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

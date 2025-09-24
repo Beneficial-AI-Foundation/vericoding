@@ -28,31 +28,4 @@ theorem base_case :
 theorem result_smaller_than_input {n : Int} (h : n > 0) :
   let result := max_collatz_length n
   result[0]! > 0 ∧ result[0]! ≤ n := sorry
-
-/-
-info: []
--/
--- #guard_msgs in
--- #eval max_collatz_length 0
-
-/-
-info: [1, 1]
--/
--- #guard_msgs in
--- #eval max_collatz_length 1
-
-/-
-info: [3, 8]
--/
--- #guard_msgs in
--- #eval max_collatz_length 4
-
-/-
-info: [27, 112]
--/
--- #guard_msgs in
--- #eval max_collatz_length 30
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

@@ -25,25 +25,4 @@ theorem empty_list_property :
 
 theorem all_zeros_property (n : Nat) :
   can_reorder_doubled (List.replicate n 0) = true := sorry
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval can_reorder_doubled [3, 1, 3, 6]
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval can_reorder_doubled [4, -2, 2, -4]
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval can_reorder_doubled [1, 2, 4, 16, 8, 4]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

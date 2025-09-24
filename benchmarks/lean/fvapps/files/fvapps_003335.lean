@@ -1,46 +1,32 @@
 -- <vc-preamble>
-def isValidKey (k : String) : Bool :=
-  sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
+def isValidKey (k : String) : Bool :=
+  sorry
+
 def encode (text key : String) : String :=
   sorry
 -- </vc-definitions>
 
 -- <vc-theorems>
 theorem encode_preserves_non_letters (text key : String) :
-  isValidKey key → ∀ i, ¬(text.get! i).isAlpha → 
+  isValidKey key → ∀ i, ¬(text.get! i).isAlpha →
   (encode text key).get! i = text.get! i :=
-  sorry
+sorry
 
 theorem encode_preserves_case (text key : String) :
-  isValidKey key → ∀ i, 
+  isValidKey key → ∀ i,
   let c := text.get! i
   let e := (encode text key).get! i
   c.isAlpha → (c.isUpper = e.isUpper) :=
-  sorry
+sorry
 
 theorem encode_duplicate_key_chars (text key : String) :
-  isValidKey key → 
+  isValidKey key →
   encode text key = encode text (String.mk (key.data.eraseDups)) :=
-  sorry
-
-/-
-info: 'ihrbfj'
--/
--- #guard_msgs in
--- #eval encode "cipher" "cipher"
-
-/-
-info: 'ihrbfj'
--/
--- #guard_msgs in
--- #eval encode "cipher" "cccciiiiippphheeeeerrrrr"
+sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

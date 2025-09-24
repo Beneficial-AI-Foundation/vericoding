@@ -1,4 +1,10 @@
 -- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+-- <vc-definitions>
 def gimme (arr : List Float) : Nat :=
   sorry
 
@@ -7,12 +13,7 @@ def sort (xs : List Float) : List Float :=
 
 def sortInt (xs : List Int) : List Int :=
   sorry
--- </vc-preamble>
 
--- <vc-helpers>
--- </vc-helpers>
-
--- <vc-definitions>
 def gimmeInt (arr : List Int) : Nat :=
   sorry
 -- </vc-definitions>
@@ -45,25 +46,4 @@ theorem gimme_preserves_input {arr : List Float} (h : arr.length = 3) :
   let _ := gimme arr
   arr = original :=
 sorry
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval gimme [2, 3, 1]
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval gimme [5, 10, 14]
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval gimme [-0.41, -23, 4]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

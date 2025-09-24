@@ -25,25 +25,4 @@ theorem friend_handles_empty_strings (names: List String) :
   (∀ n ∈ result, String.length n = 4) ∧
   (∀ n ∈ result, n ∈ names) := by
   sorry
-
-/-
-info: ['Ryan', 'Mark']
--/
--- #guard_msgs in
--- #eval friend ["Ryan", "Kieran", "Mark"]
-
-/-
-info: ['Ryan']
--/
--- #guard_msgs in
--- #eval friend ["Ryan", "Jimmy", "123", "4", "Cool Man"]
-
-/-
-info: ['Love', 'Your', 'Face']
--/
--- #guard_msgs in
--- #eval friend ["Love", "Your", "Face", "1"]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

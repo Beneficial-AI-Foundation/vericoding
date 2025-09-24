@@ -28,25 +28,4 @@ sorry
 theorem solve_tree_weights_self_edge_condition {n : Nat} :
   solve_tree_weights 3 [(1,2), (1,3)] [(1,1,1)] = 0 :=
 sorry
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval solve_tree_weights 3 [(1, 2), (1, 3)] [(1, 2, 0), (1, 3, 0)]
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval solve_tree_weights 3 [(1, 2), (2, 3)] []
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval solve_tree_weights 3 [(1, 2), (2, 3)] [(1, 2, 1)]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

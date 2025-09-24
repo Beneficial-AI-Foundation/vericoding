@@ -26,6 +26,3 @@ theorem unread_count_bounded (n: Nat) (events: List (Nat × Nat))
   (h2: ∀ e ∈ events, e.1 = 1 ∧ 1 ≤ e.2 ∧ e.2 ≤ 100) :
   ∀ count ∈ solve_thor_notifications n events, 0 ≤ count ∧ count ≤ events.length := sorry
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: guarded

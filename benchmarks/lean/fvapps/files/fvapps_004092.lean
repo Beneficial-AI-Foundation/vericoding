@@ -32,25 +32,4 @@ sorry
 theorem reverseByCenter_empty :
   reverseByCenter "" = "" :=
 sorry
-
-/-
-info: 'retsec'
--/
--- #guard_msgs in
--- #eval reverse_by_center "secret"
-
-/-
-info: 'nteag'
--/
--- #guard_msgs in
--- #eval reverse_by_center "agent"
-
-/-
-info: 'war'
--/
--- #guard_msgs in
--- #eval reverse_by_center "raw"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

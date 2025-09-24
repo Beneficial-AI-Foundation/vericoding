@@ -39,25 +39,4 @@ theorem rake_garden_basic_cases :
   rake_garden "rock rock rock" = "rock rock rock" ∧ 
   rake_garden "gravel gravel" = "gravel gravel" ∧
   rake_garden "anything else" = "gravel gravel" := sorry
-
-/-
-info: expected1
--/
--- #guard_msgs in
--- #eval rake_garden "slug spider rock gravel"
-
-/-
-info: expected2
--/
--- #guard_msgs in
--- #eval rake_garden "gravel gravel rock moss ant gravel spider"
-
-/-
-info: expected3
--/
--- #guard_msgs in
--- #eval rake_garden "rock rock rock"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

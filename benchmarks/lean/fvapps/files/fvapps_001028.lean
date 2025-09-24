@@ -30,6 +30,3 @@ theorem one_edge_case {n : Nat} :
   find_alternating_substrings n "1" = 0 :=
   sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

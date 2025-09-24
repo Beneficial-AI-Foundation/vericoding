@@ -31,25 +31,4 @@ sorry
 theorem single_char_zero (c : Char) :
   solve_palindrome_swaps (String.mk [c]) = 0 :=
 sorry
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval solve_palindrome_swaps "eel"
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval solve_palindrome_swaps "ataatmma"
-
-/-
-info: -1
--/
--- #guard_msgs in
--- #eval solve_palindrome_swaps "snuke"
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: unguarded

@@ -31,25 +31,4 @@ theorem no_pythagorean_triples {x y : Nat} (h1 : x > 0) (h2 : y > 0) (z : Nat)
 
 theorem symmetric {x y : Nat} (h1 : x > 0) (h2 : y > 0) :
   side_len x y = side_len y x := sorry
-
-/-
-info: [1]
--/
--- #guard_msgs in
--- #eval side_len 1 1
-
-/-
-info: [2, 3, 4, 6]
--/
--- #guard_msgs in
--- #eval side_len 3 4
-
-/-
-info: [3, 4, 5, 6, 7, 8, 9]
--/
--- #guard_msgs in
--- #eval side_len 4 6
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

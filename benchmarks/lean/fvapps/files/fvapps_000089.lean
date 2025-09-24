@@ -39,25 +39,4 @@ theorem rearrange_array_descending
   let res_j : Fin (rearrange_array n arr can).length := ⟨j, by rw [rearrange_array_length n arr can h1 h2]; exact h4⟩
   can.get can_i = false → can.get can_j = false →
   (rearrange_array n arr can).get res_i ≥ (rearrange_array n arr can).get res_j := sorry
-
-/-
-info: [3, 2, 1]
--/
--- #guard_msgs in
--- #eval rearrange_array 3 [1, 3, 2] [0, 0, 0]
-
-/-
-info: [2, -3, 4, -1]
--/
--- #guard_msgs in
--- #eval rearrange_array 4 [2, -3, 4, -1] [1, 1, 1, 1]
-
-/-
-info: [-8, 4, 1, -2, 4, 7, -6]
--/
--- #guard_msgs in
--- #eval rearrange_array 7 [-8, 4, -2, -6, 4, 7, 1] [1, 0, 0, 0, 1, 1, 0]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

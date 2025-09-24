@@ -29,25 +29,4 @@ theorem get_folder_names_original_preserved
     let gen := out[i]'h'
     (∀ (j : Nat) (hj : j < i), names[j]'(Nat.lt_trans hj h) ≠ orig) →
     (orig = gen ∨ ∃ n : Nat, gen = orig ++ "(" ++ n.repr ++ ")") := sorry
-
-/-
-info: ['pes', 'fifa', 'gta', 'pes(2019)']
--/
--- #guard_msgs in
--- #eval get_folder_names ["pes", "fifa", "gta", "pes(2019)"]
-
-/-
-info: ['gta', 'gta(1)', 'gta(2)', 'avalon']
--/
--- #guard_msgs in
--- #eval get_folder_names ["gta", "gta(1)", "gta", "avalon"]
-
-/-
-info: ['kaido', 'kaido(1)', 'kaido(2)', 'kaido(1)(1)']
--/
--- #guard_msgs in
--- #eval get_folder_names ["kaido", "kaido(1)", "kaido", "kaido(1)"]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

@@ -28,25 +28,4 @@ theorem trim_last_row {beard : List (List String)} (h1 : beard.length ≥ 2)
 theorem trim_idempotent {beard : List (List String)} (h1 : beard.length ≥ 2)
   (h2 : ∀ row ∈ beard, ∀ c ∈ row, c = "|") :
   trim (trim beard) = trim beard := sorry
-
-/-
-info: expected1
--/
--- #guard_msgs in
--- #eval trim [["J", "|"], ["J", "|"], ["...", "|"]]
-
-/-
-info: expected2
--/
--- #guard_msgs in
--- #eval trim [["J", "|", "J"], ["J", "|", "|"], ["...", "|", "J"]]
-
-/-
-info: expected3
--/
--- #guard_msgs in
--- #eval trim [["J", "|", "J", "J"], ["J", "|", "|", "J"], ["...", "|", "J", "|"]]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

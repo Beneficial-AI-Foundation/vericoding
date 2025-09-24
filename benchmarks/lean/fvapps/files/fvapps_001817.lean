@@ -33,25 +33,4 @@ theorem xorQueries_adjacent_ranges {arr : List Nat} {i : Nat}
   let r2 := (xorQueries arr [(i+1,i+1)]).head!
   let combined := (xorQueries arr [(i,i+1)]).head!
   Nat.xor r1 r2 = combined := sorry
-
-/-
-info: [2, 7, 14, 8]
--/
--- #guard_msgs in
--- #eval xor_queries [1, 3, 4, 8] [[0, 1], [1, 2], [0, 3], [3, 3]]
-
-/-
-info: [8, 0, 4, 4]
--/
--- #guard_msgs in
--- #eval xor_queries [4, 8, 2, 10] [[2, 3], [1, 3], [0, 0], [0, 3]]
-
-/-
-info: [1, 3, 1]
--/
--- #guard_msgs in
--- #eval xor_queries [1, 2, 3] [[0, 0], [0, 1], [1, 2]]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

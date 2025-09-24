@@ -27,25 +27,4 @@ theorem check_guest_assignment_unique_positions {n: Nat} {moves: List Int}
   ∀ i j, i < n → j < n → i ≠ j →
     (moves[i]! + i) % n ≠ (moves[j]! + j) % n :=
 sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval check_guest_assignment 1 [14]
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval check_guest_assignment 2 [1, -1]
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval check_guest_assignment 3 [3, 2, 1]
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: unguarded

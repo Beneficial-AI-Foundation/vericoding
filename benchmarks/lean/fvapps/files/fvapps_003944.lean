@@ -33,25 +33,4 @@ theorem poly_multiply_empty (poly : List Int) :
   poly_multiply poly [] = [] ∧
   poly_multiply [] poly = [] :=
   sorry
-
-/-
-info: []
--/
--- #guard_msgs in
--- #eval poly_multiply [] []
-
-/-
-info: []
--/
--- #guard_msgs in
--- #eval poly_multiply [1, 2, 3] []
-
-/-
-info: [8, 26, 20]
--/
--- #guard_msgs in
--- #eval poly_multiply [2, 4] [4, 5]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

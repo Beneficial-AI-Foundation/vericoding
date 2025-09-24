@@ -30,6 +30,3 @@ theorem first_number_preserved (nums: List Nat) :
   nums ≠ [] →
   (optimalDivision nums).startsWith (toString nums[0]!) := sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

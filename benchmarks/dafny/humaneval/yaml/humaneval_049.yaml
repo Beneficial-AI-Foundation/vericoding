@@ -1,0 +1,24 @@
+vc-description: |-
+  This verification task involves implementing efficient modular exponentiation to compute 2^n mod p. The method should use binary exponentiation (repeated squaring) for optimal O(log n) time complexity, maintaining appropriate loop invariants to prove correctness.
+
+vc-preamble: |-
+  
+  function power(base: int, exp: nat): int
+  {
+      if exp == 0 then 1
+      else base * power(base, exp - 1)
+  }
+
+vc-helpers: |-
+
+vc-spec: |-
+  method modp(n: int, p: int) returns (result: int)
+      requires n >= 0 && p > 0
+      ensures result >= 0 && result < p
+      ensures result == power(2, n) % p
+
+vc-code: |-
+  {
+      assume {:axiom} false;
+    }
+vc-postamble: |-

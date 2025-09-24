@@ -1,9 +1,5 @@
 -- <vc-preamble>
-def check_root (s : String) : String := sorry
-
-def sqrt (n : Nat) : Nat := sorry
-
-def is_consecutive (a b c d : Int) : Bool := 
+def is_consecutive (a b c d : Int) : Bool :=
   b = a + 1 ∧ c = b + 1 ∧ d = c + 1
 -- </vc-preamble>
 
@@ -11,48 +7,30 @@ def is_consecutive (a b c d : Int) : Bool :=
 -- </vc-helpers>
 
 -- <vc-definitions>
-def countChar (s : String) (c : Char) : Nat := sorry
+def sqrt (n : Nat) : Nat := sorry
 
-theorem invalid_input (s : String) 
-  (h : s.isEmpty ∨ 
-       (countChar s ',' ≠ 3) ∨ 
-       ¬(s.split (fun x => x = ',') |>.all (fun n => n.all (fun c => c.isDigit ∨ c = '-')))) :
-  check_root s = "incorrect input" := sorry
+def check_root (s : String) : String :=
+sorry
+
+def countChar (s : String) (c : Char) : Nat :=
+sorry
 -- </vc-definitions>
 
 -- <vc-theorems>
+theorem invalid_input (s : String)
+  (h : s.isEmpty ∨
+       (countChar s ',' ≠ 3) ∨
+       ¬(s.split (fun x => x = ',') |>.all (fun n => n.all (fun c => c.isDigit ∨ c = '-')))) :
+  check_root s = "incorrect input" :=
+sorry
+
 theorem consecutive_valid {a b c d : Int} (h : is_consecutive a b c d) :
-  check_root s!"{a},{b},{c},{d}" = 
+  check_root s!"{a},{b},{c},{d}" =
     let prod := a * b * c * d + 1
-    s!"{prod}, {sqrt prod.toNat}" := sorry
+    s!"{prod}, {sqrt prod.toNat}" :=
+sorry
 
 theorem non_consecutive {a b c d : Int} (h : ¬is_consecutive a b c d) :
-  check_root s!"{a},{b},{c},{d}" = "not consecutive" := sorry
-
-/-
-info: '25, 5'
--/
--- #guard_msgs in
--- #eval check_root "1,2,3,4"
-
-/-
-info: '25, 5'
--/
--- #guard_msgs in
--- #eval check_root "-4,-3,-2,-1"
-
-/-
-info: 'incorrect input'
--/
--- #guard_msgs in
--- #eval check_root "1,2,3"
-
-/-
-info: 'not consecutive'
--/
--- #guard_msgs in
--- #eval check_root "1,3,5,7"
+  check_root s!"{a},{b},{c},{d}" = "not consecutive" :=
+sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

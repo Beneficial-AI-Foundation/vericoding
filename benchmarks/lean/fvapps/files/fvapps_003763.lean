@@ -26,25 +26,4 @@ theorem powerof4_nonpositive_false (n : Int) :
 
 theorem powerof4_other_types_false (x : Unit ⊕ List Nat ⊕ Array Nat) :
   powerof4 x = false := sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval powerof4 4
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval powerof4 40
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval powerof4 "pippi"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

@@ -40,25 +40,4 @@ theorem diagonal_beds_safe {n : Nat} (h : 2 ≤ n) (h2 : n ≤ 10) :
   let grid := List.replicate n (List.replicate n 0)
   check_bed_arrangement n grid = "SAFE" :=
 sorry
-
-/-
-info: 'SAFE'
--/
--- #guard_msgs in
--- #eval check_bed_arrangement 4 [[1, 0, 1, 0], [0, 0, 0, 1], [0, 1, 0, 0], [1, 0, 0, 1]]
-
-/-
-info: 'UNSAFE'
--/
--- #guard_msgs in
--- #eval check_bed_arrangement 4 [[1, 0, 1, 0], [0, 0, 0, 0], [1, 0, 1, 1], [0, 1, 0, 0]]
-
-/-
-info: 'SAFE'
--/
--- #guard_msgs in
--- #eval check_bed_arrangement 2 [[1, 0], [0, 1]]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

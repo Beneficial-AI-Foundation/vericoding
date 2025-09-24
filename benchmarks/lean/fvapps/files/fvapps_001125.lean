@@ -36,25 +36,4 @@ theorem find_max_improvement_monotonic (games : List Nat) :
       result = .inl imp → 
       subresult = .inl subImp →
       subImp ≤ imp := sorry
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval find_max_improvement [3, 7, 1, 4, 2, 4]
-
-/-
-info: 'UNFIT'
--/
--- #guard_msgs in
--- #eval find_max_improvement [5, 4, 3, 2, 1]
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval find_max_improvement [4, 3, 2, 2, 3]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

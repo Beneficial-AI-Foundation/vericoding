@@ -18,25 +18,4 @@ theorem eq_sum_powdig_increasing_range {hmax : Nat} (h : hmax ≥ 1) :
 
 theorem eq_sum_powdig_known_values :
   153 ∈ eq_sum_powdig 153 3 ∧ 370 ∈ eq_sum_powdig 370 3 := sorry
-
-/-
-info: []
--/
--- #guard_msgs in
--- #eval eq_sum_powdig 100 2
-
-/-
-info: [153]
--/
--- #guard_msgs in
--- #eval eq_sum_powdig 200 3
-
-/-
-info: [153, 370]
--/
--- #guard_msgs in
--- #eval eq_sum_powdig 370 3
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

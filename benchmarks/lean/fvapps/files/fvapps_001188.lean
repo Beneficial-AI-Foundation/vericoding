@@ -33,25 +33,4 @@ theorem xor_pattern_valid
   (seq : List Nat)
   (h3 : seq = [base, base^^^1, base^^^2, base^^^3] ++ List.replicate (n-4) 0) :
   check_xor_sequence n seq = "Yes" := sorry
-
-/-
-info: 'Yes'
--/
--- #guard_msgs in
--- #eval check_xor_sequence 5 [1, 0, 2, 3, 7]
-
-/-
-info: 'No'
--/
--- #guard_msgs in
--- #eval check_xor_sequence 4 [1, 2, 3, 4]
-
-/-
-info: 'Yes'
--/
--- #guard_msgs in
--- #eval check_xor_sequence 68 [1] * 68
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

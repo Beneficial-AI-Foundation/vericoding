@@ -22,25 +22,4 @@ theorem next_pal_is_minimal (n: Nat) (h: n ≤ 10^6) :
 
 theorem next_pal_idempotent (n: Nat) (h: n ≤ 10^6) :
   next_pal (next_pal n) > next_pal n := sorry
-
-/-
-info: 22
--/
--- #guard_msgs in
--- #eval next_pal 11
-
-/-
-info: 191
--/
--- #guard_msgs in
--- #eval next_pal 188
-
-/-
-info: 202
--/
--- #guard_msgs in
--- #eval next_pal 191
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

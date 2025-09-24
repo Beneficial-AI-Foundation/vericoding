@@ -43,19 +43,4 @@ theorem avoid_flood_all_rain {rains : List Nat}
     avoid_flood rains = List.replicate rains.length (-1)) ∧
   (∃ i j : Fin rains.length, i.val ≠ j.val ∧ rains[i] = rains[j] → 
     avoid_flood rains = []) := sorry
-
-/-
-info: [-1, -1, -1, -1]
--/
--- #guard_msgs in
--- #eval avoid_flood [1, 2, 3, 4]
-
-/-
-info: []
--/
--- #guard_msgs in
--- #eval avoid_flood [1, 2, 0, 1, 2]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

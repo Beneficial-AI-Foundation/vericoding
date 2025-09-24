@@ -24,6 +24,3 @@ theorem validate_sixteen_digit_length {n : Nat} (h : 1000000000000000 ≤ n ∧ 
 theorem validate_string_digit_consistency {n : Nat} {s : String} (h : toString n = s) :
   validate n = validate (toString n |> String.toNat!) := sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

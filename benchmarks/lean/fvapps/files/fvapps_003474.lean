@@ -35,6 +35,3 @@ theorem find_part_max_prod_parts_valid (n : Nat) (h : n > 0) (h2 : n ≤ 1000) :
     (∀ x ∈ parts, x = 2 ∨ x = 3 ∨ x = 4) ∧ 
     ((parts.filter (· = 4)).length ≤ 1)) := sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

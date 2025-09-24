@@ -23,19 +23,4 @@ theorem getsum_positive (n : Nat) (h : n > 0) :
 theorem getsum_invalid_input (n : Nat) :
   n = 0 → getsum n = 0 :=
   sorry
-
-/-
-info: 9
--/
--- #guard_msgs in
--- #eval getsum 1
-
-/-
-info: 99
--/
--- #guard_msgs in
--- #eval getsum 2
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

@@ -23,25 +23,4 @@ theorem oddity_two :
 
 theorem oddity_four :
   oddity 4 = "odd" := sorry
-
-/-
-info: 'odd'
--/
--- #guard_msgs in
--- #eval oddity 1
-
-/-
-info: 'odd'
--/
--- #guard_msgs in
--- #eval oddity 16
-
-/-
-info: 'even'
--/
--- #guard_msgs in
--- #eval oddity 27
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

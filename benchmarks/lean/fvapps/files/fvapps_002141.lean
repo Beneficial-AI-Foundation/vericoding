@@ -23,25 +23,4 @@ theorem single_child_distribution (C : Nat) :
 
 theorem zero_candies_distribution :
   solve_candy_distribution 2 0 [1,1] [1,1] = 1 := sorry
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval solve_candy_distribution 2 3 [1, 1] [1, 1]
-
-/-
-info: 14
--/
--- #guard_msgs in
--- #eval solve_candy_distribution 1 2 [1] [3]
-
-/-
-info: 66
--/
--- #guard_msgs in
--- #eval solve_candy_distribution 2 3 [1, 1] [2, 2]
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: unguarded

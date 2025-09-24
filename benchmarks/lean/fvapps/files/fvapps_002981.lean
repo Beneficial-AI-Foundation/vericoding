@@ -35,25 +35,4 @@ theorem meeting_time_scaling (ta tb : Float) (r : Float)
     meetingTime ta tb r = toString x ∧ 
     meetingTime (2*ta) (2*tb) r = toString y ∧
     Float.abs (y - 2*x) < 0.1 := sorry
-
-/-
-info: '60.00'
--/
--- #guard_msgs in
--- #eval meeting_time 12 15 5
-
-/-
-info: '6.67'
--/
--- #guard_msgs in
--- #eval meeting_time 12 -15 6
-
-/-
-info: '7.78'
--/
--- #guard_msgs in
--- #eval meeting_time -14 -5 5
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

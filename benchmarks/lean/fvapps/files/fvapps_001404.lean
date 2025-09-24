@@ -63,6 +63,3 @@ theorem analyze_grade_periods_correct_calc
       (List.range (r-l))] :=
 sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

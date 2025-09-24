@@ -23,25 +23,4 @@ theorem wrong_syllable_pattern
 
 theorem correct_syllable_pattern :
   is_haiku (make_line 5 ++ "\n" ++ make_line 7 ++ "\n" ++ make_line 5) = true := sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval is_haiku "An old silent pond...\nA frog jumps into the pond,\nsplash! Silence again."
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval is_haiku "Autumn moonlight -\na worm digs silently\ninto the chestnut."
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval is_haiku "My code is cool, right?\nJava # Pyhton ; Ruby // Go:\nI know them all, yay! ;-)"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

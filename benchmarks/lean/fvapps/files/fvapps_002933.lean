@@ -30,25 +30,4 @@ theorem unflatten_all_small (arr : List Nat) :
 
 theorem unflatten_single_large (n : Nat) :
   n ≥ 3 → unflatten [n] = [Sum.inl [n]] := sorry
-
-/-
-info: [[3, 5, 2], 1]
--/
--- #guard_msgs in
--- #eval unflatten [3, 5, 2, 1]
-
-/-
-info: [1, [4, 5, 2, 1], 2, [4, 5, 2, 6], 2, [3, 3]]
--/
--- #guard_msgs in
--- #eval unflatten [1, 4, 5, 2, 1, 2, 4, 5, 2, 6, 2, 3, 3]
-
-/-
-info: [[99, 1, 1, 1]]
--/
--- #guard_msgs in
--- #eval unflatten [99, 1, 1, 1]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

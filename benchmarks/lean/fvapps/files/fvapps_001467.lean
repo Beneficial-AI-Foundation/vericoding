@@ -35,25 +35,4 @@ theorem binary_alphabet_with_hashes
   (h : ∀ c ∈ s.toList, c = 'a' ∨ c = 'b') :
   solve_w_string (s ++ "###") ≤ (s ++ "###").length :=
 sorry
-
-/-
-info: 16
--/
--- #guard_msgs in
--- #eval solve_w_string "aaaaa#bb#cc#dddd"
-
-/-
-info: 10
--/
--- #guard_msgs in
--- #eval solve_w_string test2
-
-/-
-info: 11
--/
--- #guard_msgs in
--- #eval solve_w_string test3
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

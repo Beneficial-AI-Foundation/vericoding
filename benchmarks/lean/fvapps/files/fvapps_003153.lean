@@ -35,25 +35,4 @@ sorry
 theorem greek_l33t_idempotent (s : String) :
   greek_l33t (greek_l33t s) = greek_l33t s :=
 sorry
-
-/-
-info: 'cθδεωαπs'
--/
--- #guard_msgs in
--- #eval greek_l33t "codewars"
-
-/-
-info: 'κατα'
--/
--- #guard_msgs in
--- #eval greek_l33t "kata"
-
-/-
-info: 'κμmιτε'
--/
--- #guard_msgs in
--- #eval greek_l33t "kumite"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

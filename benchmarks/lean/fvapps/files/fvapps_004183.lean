@@ -29,25 +29,4 @@ theorem compare_versions_transitive :
 theorem compare_versions_padding :
   compareVersions v (v ++ ".0") = true ∧ compareVersions (v ++ ".0") v = true := by
   sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval compare_versions "11" "10"
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval compare_versions "10.4.6" "10.4"
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval compare_versions "10.4" "10.10"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

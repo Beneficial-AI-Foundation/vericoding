@@ -21,25 +21,4 @@ sorry
 theorem single_char_properties (s : String) (c : Char) (h : s = String.mk [c]) :
   solve s = (Char.toNat 'Z' - Char.toNat c) :=
 sorry
-
-/-
-info: 5
--/
--- #guard_msgs in
--- #eval solve "XYZ"
-
-/-
-info: 16174
--/
--- #guard_msgs in
--- #eval solve "ABC"
-
-/-
-info: 25
--/
--- #guard_msgs in
--- #eval solve "ZAZ"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

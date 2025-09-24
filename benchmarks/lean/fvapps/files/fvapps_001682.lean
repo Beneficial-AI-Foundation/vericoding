@@ -37,6 +37,3 @@ theorem identical_armies_properties
     winner_id = -1 ∨ winner_id = 0 :=
   sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

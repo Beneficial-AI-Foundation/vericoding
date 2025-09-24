@@ -25,6 +25,3 @@ theorem valid_subset_sizes {N : Nat} {queries : List (Nat × Nat)}
         results.get ⟨i, h'⟩ ≥ 0 :=
 sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

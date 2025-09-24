@@ -29,25 +29,4 @@ theorem hamming_distance_identity (a : String) :
 theorem hamming_distance_counts_differences (a b : String) (h : a.length = b.length) :
   hamming_distance a b = ((String.toList a).zip (String.toList b)).countP (fun (x, y) => x ≠ y) :=
   sorry
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval hamming_distance "100101" "101001"
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval hamming_distance "1010" "0101"
-
-/-
-info: 9
--/
--- #guard_msgs in
--- #eval hamming_distance "100101011011010010010" "101100010110010110101"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

@@ -35,25 +35,4 @@ theorem count_nice_sequence_swaps_small_values
   (h₂ : 1 ≤ sequence.length ∧ sequence.length ≤ 10) :
   ∃ (result : Nat), count_nice_sequence_swaps n sequence = result ∧ result ≥ 0 :=
   sorry
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval count_nice_sequence_swaps 5 [2, 8, 4, 7, 7]
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval count_nice_sequence_swaps 4 [200, 150, 100, 50]
-
-/-
-info: 8
--/
--- #guard_msgs in
--- #eval count_nice_sequence_swaps 10 [3, 2, 1, 4, 1, 4, 1, 4, 1, 4]
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: unguarded

@@ -27,9 +27,9 @@ spec fn valid_output(test_cases: Seq<(int, int)>, results: Seq<int>) -> bool
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(test_cases: Seq<(int, int)>) -> (results: Seq<int>)
-    requires valid_input(test_cases)
-    ensures valid_output(test_cases, results)
+fn solve(test_cases: Vec<(i8, i8)>) -> (results: Vec<i8>)
+    requires valid_input(test_cases@.map(|i, pair: (i8, i8)| (pair.0 as int, pair.1 as int)))
+    ensures valid_output(test_cases@.map(|i, pair: (i8, i8)| (pair.0 as int, pair.1 as int)), results@.map(|i, x: i8| x as int))
 // </vc-spec>
 // <vc-code>
 {

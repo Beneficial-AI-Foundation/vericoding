@@ -27,6 +27,3 @@ theorem womens_age_even_20_odd_21 (n : Nat) (h : n ≥ 2) :
   let val := String.toNat! ((womens_age n).split (· == ' ') |>.get! 3)
   (n % 2 = 0 → val = 20) ∧ (n % 2 = 1 → val = 21) := sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

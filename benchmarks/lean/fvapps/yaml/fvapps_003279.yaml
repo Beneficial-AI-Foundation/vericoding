@@ -1,77 +1,77 @@
 vc-description: |-
   /-
   # Definition
-  
+
   **_Disarium number_** is the number that *The sum of its digits powered with their respective positions is equal to the number itself*.
-  
+
   ____
-  
+
   # Task
-  
+
   **_Given_** a number, **_Find if it is Disarium or not_** . 
   ____
-  
+
   # Warm-up (Highly recommended)
-  
+
   # [Playing With Numbers Series](https://www.codewars.com/collections/playing-with-numbers)
   ___
-  
+
   # Notes 
-  
+
   * **_Number_** *passed is always*  **_Positive_** .
   * **_Return_** *the result as* **_String_**
   ___
-  
+
   # Input >> Output Examples
-  
+
   ```
   disariumNumber(89) ==> return "Disarium !!"
   ```
   ## **_Explanation_**:
-  
+
   * Since , **_8^(1) + 9^(2) = 89_** , thus *output* is `"Disarium !!"`
   ___
-  
+
   ```
   disariumNumber(564) ==> return "Not !!"
   ```
   ## **_Explanation_**:
-  
+
   Since , **_5^(1) + 6^(2) + 4^(3) = 105 != 564_** ,  thus *output* is `"Not !!"`
-  
+
   ___
   ___
   ___
-  
+
   # [Playing with Numbers Series](https://www.codewars.com/collections/playing-with-numbers)
-  
+
   # [Playing With Lists/Arrays Series](https://www.codewars.com/collections/playing-with-lists-slash-arrays)
-  
+
   # [For More Enjoyable Katas](http://www.codewars.com/users/MrZizoScream/authored)
   ___
-  
+
   ## ALL translations are welcomed
-  
+
   ## Enjoy Learning !!
   # Zizou
   -/
 
-vc-preamble: |-
+vc-preamble: |
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def disarium_number (n : Nat) : String := sorry
-  
+
   def digitSum (n : Nat) : Nat := sorry
 
 vc-theorems: |-
   theorem disarium_output_format (n : Nat) (h : n > 0 ∧ n ≤ 10000) :
     (disarium_number n = "Disarium !!") ∨ (disarium_number n = "Not !!") := sorry
-  
+
   theorem disarium_property (n : Nat) (h : n > 0 ∧ n ≤ 10000) :
     disarium_number n = "Disarium !!" ↔ digitSum n = n := sorry
-  
+
   theorem known_disarium_numbers :
     disarium_number 1 = "Disarium !!" ∧
     disarium_number 2 = "Disarium !!" ∧
@@ -87,26 +87,26 @@ vc-theorems: |-
     disarium_number 175 = "Disarium !!" ∧
     disarium_number 518 = "Disarium !!" ∧
     disarium_number 598 = "Disarium !!" := sorry
-  
-  /-
-  info: 'Not !!'
-  -/
-  -- #guard_msgs in
-  -- #eval disarium_number 1024
-  
-  /-
-  info: 'Disarium !!'
-  -/
-  -- #guard_msgs in
-  -- #eval disarium_number 1306
-  
-  /-
-  info: 'Not !!'
-  -/
-  -- #guard_msgs in
-  -- #eval disarium_number 1999
 
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+
+  /--
+  info: 'Not !!'
+  -/
+  #guard_msgs in
+  #eval disarium_number 1024
+
+  /--
+  info: 'Disarium !!'
+  -/
+  #guard_msgs in
+  #eval disarium_number 1306
+
+  /--
+  info: 'Not !!'
+  -/
+  #guard_msgs in
+  #eval disarium_number 1999
 

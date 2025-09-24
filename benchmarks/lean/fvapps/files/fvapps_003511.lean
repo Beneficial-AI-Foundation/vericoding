@@ -23,31 +23,4 @@ theorem uppercase_becomes_iron (s : String) (c : Char) :
 theorem vowels_become_yard (s : String) (c : Char) :
   c ∈ s.data → c.toLower ∈ ['a', 'e', 'i', 'o', 'u'] → 
   isSubstringOf "Yard" (tiy_fizz_buzz s) = true := sorry
-
-/-
-info: ' '
--/
--- #guard_msgs in
--- #eval tiy_fizz_buzz " "
-
-/-
-info: 'Iron'
--/
--- #guard_msgs in
--- #eval tiy_fizz_buzz "H"
-
-/-
-info: 'Iron Yard'
--/
--- #guard_msgs in
--- #eval tiy_fizz_buzz "A"
-
-/-
-info: 'IronYardllYard IronIron YardIronIronIron!'
--/
--- #guard_msgs in
--- #eval tiy_fizz_buzz "Hello WORLD!"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

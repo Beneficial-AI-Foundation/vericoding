@@ -33,25 +33,4 @@ theorem all_bus_journey_calculation {buses : List Unit} :
 theorem all_tube_journey_calculation {tubes : List Unit} :
   london_city_hacker (tubes.map Sum.inr) = 
   toString ("£" ++ toString (Float.ofNat tubes.length * 2.40)) := sorry
-
-/-
-info: '£7.80'
--/
--- #guard_msgs in
--- #eval london_city_hacker [12, "Central", "Circle", 21]
-
-/-
-info: '£3.00'
--/
--- #guard_msgs in
--- #eval london_city_hacker [386, 56, 1, 876]
-
-/-
-info: '£7.20'
--/
--- #guard_msgs in
--- #eval london_city_hacker ["Northern", "Central", "Circle"]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

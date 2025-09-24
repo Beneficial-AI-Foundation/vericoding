@@ -21,25 +21,4 @@ theorem sorted_list_valid {n : List Int} :
 
 theorem three_descending_not_fixable :
   check_possibility [3, 2, 1] = false := sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval check_possibility [4, 2, 3]
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval check_possibility [4, 2, 1]
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval check_possibility [1, 2, 3]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

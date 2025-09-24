@@ -25,25 +25,4 @@ theorem array_nesting_simple_cases :
   arrayNesting [1, 0] ≤ 2 ∧
   arrayNesting [0, 1] ≤ 2 :=
   sorry
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval arrayNesting [5, 4, 0, 3, 1, 6, 2]
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval arrayNesting [0, 1, 2]
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval arrayNesting [1, 2, 0]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

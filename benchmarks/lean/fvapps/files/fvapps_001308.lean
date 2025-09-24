@@ -38,19 +38,4 @@ theorem array_transform_sequential {n : Nat}
   ∀ i, i < n → arr[i]! ≤ n →
     (solve_array_transform n arr)[i]! = arr[i]! + arr[arr[i]! - 1]! :=
 sorry
-
-/-
-info: expected1
--/
--- #guard_msgs in
--- #eval solve_array_transform 5 [2, 4, 5, 7, 9]
-
-/-
-info: expected2
--/
--- #guard_msgs in
--- #eval solve_array_transform 4 [5, 4, 2, 3]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

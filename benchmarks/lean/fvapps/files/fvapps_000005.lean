@@ -42,25 +42,4 @@ theorem valid_splits {arr : List Int}
     (List.Nodup right) ∧
     (∀ x ∈ right, 1 ≤ x ∧ x ≤ pair.2) :=
   sorry
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval len find_permutations(test1)
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval len find_permutations(test2)
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval len find_permutations(test3)
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

@@ -47,25 +47,4 @@ theorem fibs_fizz_buzz_rules {n : Nat} (i : Nat) (h : i < n) :
   | Sum.inr k => fibonacci % 3 ≠ 0 ∧ fibonacci % 5 ≠ 0 ∧ k = fibonacci
 :=
 sorry
-
-/-
-info: [1, 1, 2, 'Fizz', 'Buzz']
--/
--- #guard_msgs in
--- #eval fibs_fizz_buzz 5
-
-/-
-info: [1]
--/
--- #guard_msgs in
--- #eval fibs_fizz_buzz 1
-
-/-
-info: [1, 1, 2, 'Fizz', 'Buzz', 8, 13, 'Fizz', 34, 'Buzz', 89, 'Fizz', 233, 377, 'Buzz', 'Fizz', 1597, 2584, 4181, 'FizzBuzz']
--/
--- #guard_msgs in
--- #eval fibs_fizz_buzz 20
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

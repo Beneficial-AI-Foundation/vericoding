@@ -35,13 +35,4 @@ sorry
 theorem count_shortest_paths_known_case :
   count_shortest_paths 3 3 1 1 1 2 = 5 :=
 sorry
-
-/-
-info: 5
--/
--- #guard_msgs in
--- #eval count_shortest_paths 3 3 1 1 1 2
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

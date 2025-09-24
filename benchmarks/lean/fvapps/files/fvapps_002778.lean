@@ -32,6 +32,3 @@ theorem nb_months_same_price_zero (price saving : Int) (loss : Float)
   (h1 : price > 0) (h2 : saving > 0) (h3 : loss > 0) :
   nbMonths price price saving loss = (0, 0) := sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

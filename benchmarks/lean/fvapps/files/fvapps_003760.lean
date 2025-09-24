@@ -30,25 +30,4 @@ theorem house_of_cards_acceleration {n₁ n₂ n₃ : Int}
   (h₁ : 0 < n₁) (h₂ : n₁ < n₂) (h₃ : n₂ < n₃) :
   house_of_cards n₂ - house_of_cards n₁ < 
   house_of_cards n₃ - house_of_cards n₂ := sorry
-
-/-
-info: 7
--/
--- #guard_msgs in
--- #eval house_of_cards 1
-
-/-
-info: 15
--/
--- #guard_msgs in
--- #eval house_of_cards 2
-
-/-
-info: 26
--/
--- #guard_msgs in
--- #eval house_of_cards 3
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

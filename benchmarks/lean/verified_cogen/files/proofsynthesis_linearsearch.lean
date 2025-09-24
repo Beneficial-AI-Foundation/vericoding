@@ -24,6 +24,3 @@ theorem linearSearch_spec_satisfied (nums : Array Int) (target : Int) (h_precond
     linearSearch_postcond nums target (linearSearch nums target h_precond) h_precond := by
   sorry
 -- </vc-theorems>
-
-def main : IO Unit := do
-  return ()

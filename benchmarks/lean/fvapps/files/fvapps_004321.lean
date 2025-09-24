@@ -23,25 +23,4 @@ theorem ones_complement_flips_bits (s: String) (i: String.Pos) :
 
 theorem ones_complement_empty :
   ones_complement "" = "" := sorry
-
-/-
-info: '1'
--/
--- #guard_msgs in
--- #eval ones_complement "0"
-
-/-
-info: '0'
--/
--- #guard_msgs in
--- #eval ones_complement "1"
-
-/-
-info: '0010'
--/
--- #guard_msgs in
--- #eval ones_complement "1101"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

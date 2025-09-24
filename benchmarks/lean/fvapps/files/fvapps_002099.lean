@@ -17,25 +17,4 @@ theorem permutation_result_bounded (n : Nat) (arr : List Nat) :
 
 theorem single_element_zero (x : Nat) :
   solve_permutation 1 [x] = 0 := sorry
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval solve_permutation 7 [10, 1, 1, 1, 5, 5, 3]
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval solve_permutation 5 [1, 1, 1, 1, 1]
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval solve_permutation 6 [300000000, 200000000, 300000000, 200000000, 1000000000, 300000000]
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: guarded_and_plausible

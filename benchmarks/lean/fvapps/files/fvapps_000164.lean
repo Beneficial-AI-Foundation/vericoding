@@ -29,25 +29,4 @@ theorem super_egg_drop_linear_search :
 
 theorem super_egg_drop_multiple_eggs_efficient :
   super_egg_drop 2 10 < 10 := sorry
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval super_egg_drop 1 2
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval super_egg_drop 2 6
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval super_egg_drop 3 14
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

@@ -28,25 +28,4 @@ theorem digit_shifted_5 (d : Char) (h : d.isDigit) :
 
 theorem other_chars_unchanged (c : Char) (h₁ : ¬c.isAlpha) (h₂ : ¬c.isDigit) :
   ROT135 c.toString = c.toString := by sorry
-
-/-
-info: expected1
--/
--- #guard_msgs in
--- #eval ROT135 "The quick brown fox jumps over the 2 lazy dogs"
-
-/-
-info: test1
--/
--- #guard_msgs in
--- #eval ROT135 expected1
-
-/-
-info: expected3
--/
--- #guard_msgs in
--- #eval ROT135 "1234567890"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

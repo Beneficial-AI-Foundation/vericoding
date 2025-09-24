@@ -40,6 +40,3 @@ theorem edge_cases {num_flavors : Nat} {costs : List Nat} {weight num_required :
   solve_ice_cream num_flavors costs weight num_required = none
   := sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

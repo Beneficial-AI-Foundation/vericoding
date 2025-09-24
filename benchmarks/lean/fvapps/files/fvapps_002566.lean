@@ -49,6 +49,3 @@ theorem thousands (n : Nat) (h1 : 1000 ≤ n) (h2 : n ≤ 999999) :
 
 theorem zero : number2words 0 = "zero" := sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

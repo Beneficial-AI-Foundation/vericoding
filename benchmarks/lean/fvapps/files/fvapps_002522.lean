@@ -28,25 +28,4 @@ theorem bingo_missing_required_loses
   (numbers : List Int)
   (h : ∀ n ∈ numbers, n ≠ 2 ∧ n ≠ 9 ∧ n ≠ 14 ∧ n ≠ 7 ∧ n ≠ 15) :
   bingo numbers = "LOSE" := sorry
-
-/-
-info: 'LOSE'
--/
--- #guard_msgs in
--- #eval bingo [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-
-/-
-info: 'LOSE'
--/
--- #guard_msgs in
--- #eval bingo [20, 12, 23, 14, 6, 22, 12, 17, 2, 26]
-
-/-
-info: 'WIN'
--/
--- #guard_msgs in
--- #eval bingo [1, 2, 3, 7, 5, 14, 7, 15, 9, 10]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

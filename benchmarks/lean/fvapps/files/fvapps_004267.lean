@@ -30,25 +30,4 @@ theorem chars_preserved (s : String) (h : s.length > 0) :
   ∃ (perm : String.Pos → String.Pos),
     ∀ pos : String.Pos, (inside_out_word s).get pos = s.get (perm pos) :=
 sorry
-
-/-
-info: expected1
--/
--- #guard_msgs in
--- #eval inside_out "man i need a taxi up to ubud"
-
-/-
-info: expected2
--/
--- #guard_msgs in
--- #eval inside_out "take me to semynak"
-
-/-
-info: expected3
--/
--- #guard_msgs in
--- #eval inside_out "massage yes massage"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

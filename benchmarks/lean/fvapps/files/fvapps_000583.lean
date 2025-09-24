@@ -20,25 +20,4 @@ theorem find_last_fib_digit_specific_values :
   find_last_fibonacci_digit 4 = 2 ∧
   find_last_fibonacci_digit 8 = 3 :=
 sorry
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval find_last_fibonacci_digit 9
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval find_last_fibonacci_digit 1
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval find_last_fibonacci_digit 10
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

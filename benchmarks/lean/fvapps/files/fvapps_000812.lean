@@ -1,15 +1,16 @@
 -- <vc-preamble>
-def count_interesting_subsequences (n k : Nat) (a : List Nat) : Nat :=
-  sorry
-
-def isSorted (l : List Nat) : Bool :=
-  sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
+def count_interesting_subsequences (n k : Nat) (a : List Nat) : Nat :=
+  sorry
+
+def isSorted (l : List Nat) : Bool :=
+  sorry
+
 def sortList (l : List Nat) : List Nat :=
   sorry
 -- </vc-definitions>
@@ -19,14 +20,14 @@ theorem count_interesting_subsequences_properties (n k : Nat) (a : List Nat)
     (h1 : n > 0) (h2 : k > 0) (h3 : List.length a > 0) :
     k ≤ List.length a →
     0 ≤ count_interesting_subsequences n k a :=
-  sorry
+sorry
 
 theorem sorted_input_equivalence (a : List Nat)
     (h1 : List.length a ≥ 2) :
     let k := List.length a / 2
-    count_interesting_subsequences (List.length a) k (sortList a) = 
+    count_interesting_subsequences (List.length a) k (sortList a) =
     count_interesting_subsequences (List.length a) k a :=
-  sorry
+sorry
 
 theorem kth_element_boundary (a : List Nat)
     (h1 : List.length a ≥ 2) (h2 : List.length a ≤ 10) :
@@ -35,26 +36,5 @@ theorem kth_element_boundary (a : List Nat)
     k > 0 →
     k ≤ List.length a →
     ∃ x, List.elem x a ∧ x = List.get! sorted (k-1) :=
-  sorry
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval count_interesting_subsequences 4 2 [1, 2, 3, 4]
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval count_interesting_subsequences 3 2 [2, 2, 2]
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval count_interesting_subsequences 5 3 [1, 1, 2, 2, 3]
+sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

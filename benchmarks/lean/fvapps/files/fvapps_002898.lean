@@ -15,6 +15,3 @@ theorem lcs_empty_string
   (x y : String) :
   lcs "" y = "" ∧ lcs x "" = "" := sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

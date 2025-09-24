@@ -40,8 +40,6 @@ vc-preamble: |-
     sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def manual_rotate (m : Matrix) : Matrix :=

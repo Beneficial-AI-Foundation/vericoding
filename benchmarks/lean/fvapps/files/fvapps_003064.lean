@@ -1,15 +1,16 @@
 -- <vc-preamble>
-def generate_sierpinski_sequence (n : Nat) : List Nat :=
-  sorry
-
-def find_closest_value (m : Nat) : Nat := 
-  sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
+def generate_sierpinski_sequence (n : Nat) : List Nat :=
+  sorry
+
+def find_closest_value (m : Nat) : Nat :=
+  sorry
+
 def abs (n : Nat) : Nat :=
   sorry
 -- </vc-definitions>
@@ -28,35 +29,8 @@ sorry
 theorem closest_value_properties {m : Nat} (h : 0 < m) (h2 : m ≤ 10000) :
   let closest := find_closest_value m
   let seq := generate_sierpinski_sequence (m * 2)
-  (closest ∈ seq) ∧ 
+  (closest ∈ seq) ∧
   (∀ x ∈ seq, abs (closest - m) ≤ abs (x - m)) ∧
   (∀ x ∈ seq, abs (x - m) = abs (closest - m) → x > m → closest ≥ x) :=
 sorry
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval find_closest_value 1
-
-/-
-info: 5074
--/
--- #guard_msgs in
--- #eval find_closest_value 5000
-
-/-
-info: 14313
--/
--- #guard_msgs in
--- #eval find_closest_value 14313
-
-/-
-info: 18720
--/
--- #guard_msgs in
--- #eval find_closest_value 18332
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

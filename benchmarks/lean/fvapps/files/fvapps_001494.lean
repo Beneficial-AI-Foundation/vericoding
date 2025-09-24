@@ -37,6 +37,3 @@ theorem pattern_triangle_row_lengths_monotone (k : Nat) :
 theorem pattern_triangle_zero :
   pattern_triangle 0 = ["0"] := sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

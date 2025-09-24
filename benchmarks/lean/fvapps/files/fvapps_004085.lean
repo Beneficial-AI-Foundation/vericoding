@@ -22,25 +22,4 @@ theorem replace_uses_valid_chars {s : String}
 theorem replace_groups_monotonic {s : String}
   (h : ∀ c ∈ s.data, c = '!' ∨ c = '?') :
   countGroups (replace s) ≤ countGroups s := sorry
-
-/-
-info: '  ?  ?  ?!!?!!!  !!!  !!!  '
--/
--- #guard_msgs in
--- #eval replace "!!?!!?!!?!!?!!!??!!!??!!!??"
-
-/-
-info: '  !  !  !??!???  ???  ???  '
--/
--- #guard_msgs in
--- #eval replace "??!??!??!??!???!!???!!???!!"
-
-/-
-info: '?  ?  ?  ?!!!  !!!  !!!  !!!??!!!??'
--/
--- #guard_msgs in
--- #eval replace "?!!?!!?!!?!!!??!!!??!!!??!!!??!!!??"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

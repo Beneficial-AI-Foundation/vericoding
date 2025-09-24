@@ -26,9 +26,9 @@ spec fn compute_sum(w: int, h: int, k: int) -> int
 // </vc-helpers>
 
 // <vc-spec>
-fn gild_cells(w: int, h: int, k: int) -> (result: int)
-    requires valid_input(w, h, k)
-    ensures result == compute_sum(w, h, k)
+fn gild_cells(w: i8, h: i8, k: i8) -> (result: i8)
+    requires valid_input(w as int, h as int, k as int)
+    ensures result as int == compute_sum(w as int, h as int, k as int)
 // </vc-spec>
 // <vc-code>
 {

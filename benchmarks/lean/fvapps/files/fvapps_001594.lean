@@ -22,25 +22,4 @@ theorem fibfusc_base_cases :
 
 theorem fibfusc_growth : ∀ n : Nat,
   n > 4 → (let (_, y) := fibfusc n; y > 13 ∨ y < -13) := by sorry
-
-/-
-info: (1, 0)
--/
--- #guard_msgs in
--- #eval fibfusc 0
-
-/-
-info: (0, 1)
--/
--- #guard_msgs in
--- #eval fibfusc 1
-
-/-
-info: (-7, 13)
--/
--- #guard_msgs in
--- #eval fibfusc 4
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

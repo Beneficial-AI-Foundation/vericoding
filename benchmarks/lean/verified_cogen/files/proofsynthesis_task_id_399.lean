@@ -22,5 +22,3 @@ theorem bitWiseXor_spec_satisfied (arr1: Array UInt32) (arr2: Array UInt32) (h_p
     bitWiseXor_postcond (arr1) (arr2) (bitWiseXor (arr1) (arr2) h_precond) h_precond := by
   sorry
 -- </vc-theorems>
-
-def main : IO Unit := return ()

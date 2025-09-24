@@ -36,25 +36,4 @@ theorem single_char_strings_pair_with_each_other (n : Nat) :
   let a_strings := List.replicate n "a"
   count_palindrome_pairs a_strings = n * (n - 1) / 2 :=
   sorry
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval count_palindrome_pairs ["aa", "bb", "cd"]
-
-/-
-info: 6
--/
--- #guard_msgs in
--- #eval count_palindrome_pairs ["aab", "abcac", "dffe", "ed", "aa", "aade"]
-
-/-
-info: 5
--/
--- #guard_msgs in
--- #eval count_palindrome_pairs ["iw", "ix", "udb", "bg", "oi", "uo", "jsm", "um", "s", "quy", "qo", "bxct", "ng", "rmr", "nu", "ps", "io", "kh", "w", "k"]
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: guarded_and_plausible

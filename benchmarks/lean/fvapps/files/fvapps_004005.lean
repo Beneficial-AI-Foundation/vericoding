@@ -35,6 +35,3 @@ theorem singleNumber (n : Int) :
     if String.contains (toString (Int.natAbs n)) '5' then 0 else 1 := by
   sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

@@ -27,25 +27,4 @@ theorem symmetric_entries_zero_valid (n : Nat) (h : n ≥ 2) :
 
 theorem symmetric_entries_one_invalid (n : Nat) (h : n ≥ 2) :
   checkGoodMatrix n [(1, 2, 1), (2, 1, 0)] = "no" := sorry
-
-/-
-info: 'yes'
--/
--- #guard_msgs in
--- #eval check_good_matrix 2 [[1, 1, 0], [1, 2, 1]]
-
-/-
-info: 'no'
--/
--- #guard_msgs in
--- #eval check_good_matrix 2 [[1, 1, 0], [1, 2, 1], [2, 1, 0]]
-
-/-
-info: 'yes'
--/
--- #guard_msgs in
--- #eval check_good_matrix 3 [[2, 2, 0], [2, 3, 1]]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

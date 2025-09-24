@@ -34,25 +34,4 @@ theorem cls_becomes_class (tag val: String)
   (h1: tag ≠ "")
   (h2: val ≠ "") :
   html tag [] [("cls", val)] = s!"<{tag} class=\"{val}\" />" := sorry
-
-/-
-info: '<br />'
--/
--- #guard_msgs in
--- #eval html "br"
-
-/-
-info: '<title>Webpage Title</title>'
--/
--- #guard_msgs in
--- #eval html "title" "Webpage Title"
-
-/-
-info: '<p class="text" id="para">Hello</p>\n<p class="text" id="para">World</p>'
--/
--- #guard_msgs in
--- #eval html "p" "Hello" "World"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

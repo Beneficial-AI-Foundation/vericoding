@@ -41,6 +41,3 @@ theorem arithmetic_operations_positive
   prod_val ≥ min a b
   := sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

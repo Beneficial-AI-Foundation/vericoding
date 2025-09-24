@@ -1,46 +1,46 @@
 vc-description: |-
   /-
   Given two words (beginWord and endWord), and a dictionary's word list, find all shortest transformation sequence(s) from beginWord to endWord, such that:
-  
+
          Only one letter can be changed at a time
          Each transformed word must exist in the word list. Note that beginWord is not a transformed word.
-  
+
   Note:
-  
+
          Return an empty list if there is no such transformation sequence.
          All words have the same length.
          All words contain only lowercase alphabetic characters.
          You may assume no duplicates in the word list.
          You may assume beginWord and endWord are non-empty and are not the same.
-  
+
   Example 1:
-  
+
   Input:
   beginWord = "hit",
   endWord = "cog",
   wordList = ["hot","dot","dog","lot","log","cog"]
-  
+
   Output:
   [
     ["hit","hot","dot","dog","cog"],
     ["hit","hot","lot","log","cog"]
   ]
-  
+
   Example 2:
-  
+
   Input:
   beginWord = "hit"
   endWord = "cog"
   wordList = ["hot","dot","dog","lot","log"]
-  
+
   Output: []
-  
+
   Explanation: The endWord "cog" is not in wordList, therefore no possible transformation.
   -/
 
-vc-preamble: |-
+vc-preamble: |
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def find_word_ladders (begin_word end_word : String) (word_list : List String) : List (List String) :=
@@ -50,7 +50,7 @@ vc-theorems: |-
   theorem result_is_list (begin_word end_word : String) (word_list : List String) :
     ∃ result, find_word_ladders begin_word end_word word_list = result := by
     sorry
-  
+
   theorem valid_path_properties (begin_word end_word : String) (word_list : List String) :
     ∀ path ∈ find_word_ladders begin_word end_word word_list,
       path.head? = some begin_word ∧ 
@@ -65,23 +65,23 @@ vc-theorems: |-
         diffs.length = 1) ∧
       (∀ w ∈ path.tail, w ∈ word_list) := by
     sorry
-  
+
   theorem empty_result_when_end_not_in_wordlist (begin_word end_word : String) (word_list : List String) :
     end_word ∉ word_list → find_word_ladders begin_word end_word word_list = [] := by
     sorry
-  
+
   theorem all_paths_same_length (begin_word end_word : String) (word_list : List String) :
     let result := find_word_ladders begin_word end_word word_list
     result ≠ [] → ∃ n : Nat, ∀ path ∈ result, path.length = n := by
     sorry
-  
-  /-
-  info: sorted(expected1)
-  -/
-  -- #guard_msgs in
-  -- #eval sorted find_word_ladders(begin1, end1, wordList1)
 
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
+
+  /--
+  info: sorted(expected1)
+  -/
+  #guard_msgs in
+  #eval sorted find_word_ladders(begin1, end1, wordList1)
 

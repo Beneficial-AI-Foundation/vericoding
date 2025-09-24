@@ -51,6 +51,3 @@ theorem no_comments (code : String) :
      (code.data[i]! = '*' ∧ code.data[i+1]! = '/') ∨
      (code.data[i]! = '-' ∧ code.data[i+1]! = '-'))) := sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

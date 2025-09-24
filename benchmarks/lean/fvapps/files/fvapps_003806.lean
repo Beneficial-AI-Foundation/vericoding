@@ -47,25 +47,4 @@ theorem non_alpha_stripped {key: String}
   ∀ text: String,
   (∀ c ∈ text.data, c.isDigit ∨ c = ' ' ∨ c = '.' ∨ c = ',' ∨ c = '!' ∨ c = '?') →
   encrypt text key = "" := sorry
-
-/-
-info: ''
--/
--- #guard_msgs in
--- #eval encrypt "" "azyb"
-
-/-
-info: 'DRJIMN'
--/
--- #guard_msgs in
--- #eval encrypt "hello" "hill"
-
-/-
-info: 'AAAAAAGACAGAYA'
--/
--- #guard_msgs in
--- #eval encrypt "This is a good day" "bbaa"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

@@ -27,25 +27,4 @@ theorem small_primes_cases :
 
 theorem modulo_property (n : Nat) (h : n ≥ 2) :
   last_digit_prime_sum n = last_digit_prime_sum n % 10 := sorry
-
-/-
-info: 7
--/
--- #guard_msgs in
--- #eval last_digit_prime_sum 10
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval last_digit_prime_sum 5
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval last_digit_prime_sum 100
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

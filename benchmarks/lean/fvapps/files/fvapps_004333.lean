@@ -35,25 +35,4 @@ theorem over_the_road_examples :
   over_the_road 3 3 = 4 ∧ 
   over_the_road 2 3 = 5 :=
   sorry
-
-/-
-info: 6
--/
--- #guard_msgs in
--- #eval over_the_road 1 3
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval over_the_road 3 3
-
-/-
-info: 5
--/
--- #guard_msgs in
--- #eval over_the_road 2 3
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

@@ -40,25 +40,4 @@ theorem find_string_indices_first_char (s : String)
   (h : s.length > 0) :
   let result := find_string_indices s (String.mk [s.get 0])
   result ≠ [] → result[0]!.1 = 0 := sorry
-
-/-
-info: [(0, 1), (1, 2), (4, 5)]
--/
--- #guard_msgs in
--- #eval find_string_indices "aaadaa" "aa"
-
-/-
-info: [(-1, -1)]
--/
--- #guard_msgs in
--- #eval find_string_indices "hello" "xyz"
-
-/-
-info: [(1, 3), (3, 5)]
--/
--- #guard_msgs in
--- #eval find_string_indices "banana" "ana"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

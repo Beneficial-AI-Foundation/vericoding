@@ -1,12 +1,13 @@
 -- <vc-preamble>
-def String.sumAscii (s : String) : Nat :=
-sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
+def String.sumAscii (s : String) : Nat :=
+sorry
+
 def highest_value (a b : String) : String :=
 sorry
 -- </vc-definitions>
@@ -14,42 +15,26 @@ sorry
 -- <vc-theorems>
 theorem highest_value_is_input (a b : String) :
   let result := highest_value a b
-  result = a ∨ result = b := sorry
+  result = a ∨ result = b :=
+sorry
 
 theorem highest_value_maximizes_sum (a b : String) :
   let result := highest_value a b
-  String.sumAscii result ≥ String.sumAscii (if result = a then b else a) := sorry
+  String.sumAscii result ≥ String.sumAscii (if result = a then b else a) :=
+sorry
 
 theorem highest_value_equal_sums (a b : String) :
   String.sumAscii a = String.sumAscii b →
-  highest_value a b = a := sorry
+  highest_value a b = a :=
+sorry
 
 theorem highest_value_identical (s : String) :
-  highest_value s s = s := sorry
+  highest_value s s = s :=
+sorry
 
 theorem highest_value_nonempty (a b : String) :
   a.length > 0 →
   b.length > 0 →
-  (highest_value a b).length > 0 := sorry
-
-/-
-info: 'KkLlMmNnOoPp4567'
--/
--- #guard_msgs in
--- #eval highest_value "AaBbCcXxYyZz0189" "KkLlMmNnOoPp4567"
-
-/-
-info: 'ABcd'
--/
--- #guard_msgs in
--- #eval highest_value "ABcd" "0123"
-
-/-
-info: "{}[]@~'#:;"
--/
--- #guard_msgs in
--- #eval highest_value "!"?$%^&*()" "{}[]@~"#:;"
+  (highest_value a b).length > 0 :=
+sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

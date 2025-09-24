@@ -29,25 +29,4 @@ theorem vaporcode_empty :
 
 theorem vaporcode_roundtrip (s : String) :
   ((vaporcode s).replace " " "").toUpper = (s.replace " " "").toUpper := sorry
-
-/-
-info: expected1
--/
--- #guard_msgs in
--- #eval vaporcode "Lets go to the movies"
-
-/-
-info: expected2
--/
--- #guard_msgs in
--- #eval vaporcode "Why isn"t my code working?"
-
-/-
-info: expected3
--/
--- #guard_msgs in
--- #eval vaporcode "Hello World"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

@@ -22,31 +22,4 @@ theorem invalid_base (n : Int) (b : Base) :
 
 theorem invalid_number_type (s : String) (b : Base) :
   convert_num 0 b = "Invalid number input" := sorry
-
-/-
-info: '0b1111010'
--/
--- #guard_msgs in
--- #eval convert_num 122 "bin"
-
-/-
-info: 'Invalid number input'
--/
--- #guard_msgs in
--- #eval convert_num "dog" "bin"
-
-/-
-info: '0x0'
--/
--- #guard_msgs in
--- #eval convert_num 0 "hex"
-
-/-
-info: 'Invalid base input'
--/
--- #guard_msgs in
--- #eval convert_num 123 "lol"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

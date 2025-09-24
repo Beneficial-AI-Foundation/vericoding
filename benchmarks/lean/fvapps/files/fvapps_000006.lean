@@ -43,19 +43,4 @@ theorem ski_resort_input_bounds
   tracks.length = m ∧
   -- all tracks are valid
   (∀ t ∈ tracks, valid_track n t) := by sorry
-
-/-
-info: [3, 4]
--/
--- #guard_msgs in
--- #eval sorted res1[0][1]
-
-/-
-info: [4, 5, 6, 7]
--/
--- #guard_msgs in
--- #eval sorted res2[0][1]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

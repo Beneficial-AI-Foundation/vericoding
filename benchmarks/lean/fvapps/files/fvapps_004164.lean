@@ -40,25 +40,4 @@ theorem valid_range {cards : List String} :
   let (a, b) := men_still_standing cards
   0 ≤ a ∧ a ≤ 11 ∧ 0 ≤ b ∧ b ≤ 11 :=
 sorry
-
-/-
-info: (11, 11)
--/
--- #guard_msgs in
--- #eval men_still_standing []
-
-/-
-info: (10, 11)
--/
--- #guard_msgs in
--- #eval men_still_standing ["A4Y", "A4Y"]
-
-/-
-info: (6, 11)
--/
--- #guard_msgs in
--- #eval men_still_standing ["A4R", "A2R", "A3R", "A6R", "A8R", "A10R", "A11R"]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

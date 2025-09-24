@@ -42,6 +42,3 @@ theorem update_query_changes_height (n : Nat) (mountains : List Nat) (new_height
     solve_mountain_queries n new_mountains queries2 :=
   sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

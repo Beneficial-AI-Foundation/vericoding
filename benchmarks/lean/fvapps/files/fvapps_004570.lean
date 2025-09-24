@@ -30,25 +30,4 @@ theorem solved_reduces_char_set_odd (s : String) :
 
 theorem solved_idempotent (s : String) :
   solved (solved s) = solved s := sorry
-
-/-
-info: 'abcd'
--/
--- #guard_msgs in
--- #eval solved "abcd"
-
-/-
-info: 'abde'
--/
--- #guard_msgs in
--- #eval solved "bacde"
-
-/-
-info: 'abcd'
--/
--- #guard_msgs in
--- #eval solved "dcba"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

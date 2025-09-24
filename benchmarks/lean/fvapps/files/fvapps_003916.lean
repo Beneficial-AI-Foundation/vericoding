@@ -38,25 +38,4 @@ theorem queue_out_of_bounds
   (h2 : queuers.length ≤ pos)
   (h3 : ∀ x ∈ queuers, 0 < x) :
   queue queuers pos = none := sorry
-
-/-
-info: expected
--/
--- #guard_msgs in
--- #eval queue [2, 5, 3, 6, 4] 0
-
-/-
-info: expected
--/
--- #guard_msgs in
--- #eval queue [2, 5, 3, 6, 4] 2
-
-/-
-info: expected
--/
--- #guard_msgs in
--- #eval queue [2, 5, 3, 6, 4] 4
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

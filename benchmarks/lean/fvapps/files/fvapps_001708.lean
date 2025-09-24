@@ -32,25 +32,4 @@ theorem key_length_bounds {text : String} {key_length : Nat}
   let result := get_key_length text key_length
   1 ≤ result ∧ result ≤ min key_length text.length :=
 sorry
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval get_key_length "ABCABCABCABC" 5
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval get_key_length "AAAAA" 3
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval get_key_length "XYXYXYXY" 4
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

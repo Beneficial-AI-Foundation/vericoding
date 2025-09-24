@@ -23,25 +23,4 @@ theorem min_time_small_inputs_1 :
 
 theorem min_time_small_inputs_2 :
   min_time_to_eat_bananas 2 = 2 := sorry
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval min_time_to_eat_bananas 2
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval min_time_to_eat_bananas 4
-
-/-
-info: 5
--/
--- #guard_msgs in
--- #eval min_time_to_eat_bananas 7
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

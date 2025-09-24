@@ -30,6 +30,3 @@ theorem hyphen_join_basic_properties (s : String)
   (s.trim ≠ "" → ((∃ c ∈ result.data, c = '-') ∨ (s.splitOn " ").length = 1)) :=
 sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

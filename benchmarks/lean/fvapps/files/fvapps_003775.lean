@@ -33,25 +33,4 @@ sorry
 theorem match_arrays_self {α : Type} [DecidableEq α] (arr : List α) :
   match_arrays arr arr = arr.length :=
 sorry
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval match_arrays ["Perl", "Closure", "JavaScript"] ["Go", "C++", "Erlang"]
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval match_arrays ["Erlang", "JavaScript"] ["Go", "C++", "Python"]
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval match_arrays [True, 3, 9, 11, 15] [True, 3, 11]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

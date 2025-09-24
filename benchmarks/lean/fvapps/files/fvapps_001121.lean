@@ -29,25 +29,4 @@ theorem two_chars_result {s: String} (h1: s.length ≥ 2)
 
 theorem reverse_preserves_pandey {s: String} :
   find_winner s = "PANDEY" → find_winner (String.mk s.data.reverse) = "PANDEY" := sorry
-
-/-
-info: 'SHANKY'
--/
--- #guard_msgs in
--- #eval find_winner "google"
-
-/-
-info: 'PANDEY'
--/
--- #guard_msgs in
--- #eval find_winner "breakraekb"
-
-/-
-info: 'ANKU'
--/
--- #guard_msgs in
--- #eval find_winner "aman"
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

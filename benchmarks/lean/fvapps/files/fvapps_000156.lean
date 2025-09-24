@@ -21,25 +21,4 @@ theorem constrained_max_subset_sum_independence (nums : List Int) (k : Nat)
     (h : nums.length > k + 1) (hk : k > 0) :
     let nums_modified := (nums.take (k+1)).append (List.replicate (nums.length - k - 1) (-1000))
     constrained_max_subset_sum (nums.take (k+1)) k = constrained_max_subset_sum nums_modified k := sorry
-
-/-
-info: 37
--/
--- #guard_msgs in
--- #eval constrained_max_subset_sum [10, 2, -10, 5, 20] 2
-
-/-
-info: -1
--/
--- #guard_msgs in
--- #eval constrained_max_subset_sum [-1, -2, -3] 1
-
-/-
-info: 23
--/
--- #guard_msgs in
--- #eval constrained_max_subset_sum [10, -2, -10, -5, 20] 2
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

@@ -29,25 +29,4 @@ theorem powerset_elements_are_lists {α : Type} (l : List α) :
 theorem powerset_subsets {α : Type} [BEq α] (l : List α) :
   ∀ subset ∈ powerset l, ∀ x ∈ subset, x ∈ l := by
   sorry
-
-/-
-info: [[], [2], [1], [1, 2]]
--/
--- #guard_msgs in
--- #eval powerset [1, 2]
-
-/-
-info: [[], [3], [2], [2, 3], [1], [1, 3], [1, 2], [1, 2, 3]]
--/
--- #guard_msgs in
--- #eval powerset [1, 2, 3]
-
-/-
-info: [[], [1]]
--/
--- #guard_msgs in
--- #eval powerset [1]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

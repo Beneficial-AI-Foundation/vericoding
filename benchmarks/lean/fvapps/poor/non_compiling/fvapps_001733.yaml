@@ -46,8 +46,6 @@ vc-preamble: |-
     default := Nat.zero
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def watched_videos_by_friends (watchedVideos : WatchedVideos) 

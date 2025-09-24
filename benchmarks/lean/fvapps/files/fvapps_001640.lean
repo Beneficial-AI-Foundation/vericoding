@@ -39,25 +39,4 @@ theorem output_format (s : String) :
      line.trimRight.endsWith "{" ∨
      line.trimRight.endsWith "}") ∧
     (line.length - (line.trim).length) % 2 = 0 := sorry
-
-/-
-info: test1_output
--/
--- #guard_msgs in
--- #eval brainfuck_to_c "+++++[>++++.<-]"
-
-/-
-info: 'Error!'
--/
--- #guard_msgs in
--- #eval brainfuck_to_c "[[]"
-
-/-
-info: ''
--/
--- #guard_msgs in
--- #eval brainfuck_to_c "+-><[]"
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

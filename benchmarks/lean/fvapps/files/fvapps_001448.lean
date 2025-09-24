@@ -26,25 +26,4 @@ theorem empty_chars_check {s : String}
   (h : s.length > 0) :
   check_string_chars s s.length "" = 0 :=
 sorry
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval check_string_chars "abcd" 4 "a b c d"
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval check_string_chars "aabbbcccdddd" 4 "a b c d"
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval check_string_chars "acd" 3 "a b d"
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

@@ -21,25 +21,4 @@ theorem validate_hello_with_valid_greeting (greeting : String) (extra : String)
 
 theorem validate_hello_empty_or_whitespace (s : String) :
   s.trim = "" → validate_hello s = false := sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval validate_hello "hello there"
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval validate_hello "Hola amigo"
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval validate_hello "namaste"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

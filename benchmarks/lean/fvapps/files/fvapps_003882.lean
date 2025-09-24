@@ -25,25 +25,4 @@ theorem find_a_recurrence {lst : List Int} (n : Int)
     10 * find_a lst (n-2) + 
     6 * find_a lst (n-3) - 
     find_a lst (n-4) := sorry
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval find_a [1, 2, 3, 4] 2
-
-/-
-info: 200
--/
--- #guard_msgs in
--- #eval find_a [38, 200, -18, 45] 1
-
-/-
-info: 20
--/
--- #guard_msgs in
--- #eval find_a [1, 0, 0, 1] 5
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

@@ -25,25 +25,4 @@ theorem max_score_equal_values (values: List Nat) :
 theorem max_score_two_ones (values: List Nat) :
   values = [1,1] → max_score_sightseeing_pair values = 1 :=
   sorry
-
-/-
-info: 11
--/
--- #guard_msgs in
--- #eval max_score_sightseeing_pair [8, 1, 5, 2, 6]
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval max_score_sightseeing_pair [1, 2]
-
-/-
-info: 9
--/
--- #guard_msgs in
--- #eval max_score_sightseeing_pair [5, 5, 5, 5]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

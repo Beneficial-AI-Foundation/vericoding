@@ -40,25 +40,4 @@ theorem fenwick_valid_update_bounds (u v : Nat) (k : Int) (n : Nat) :
   ∀ (m : Nat) (c : Int) (ops : List String),
   let results := fenwick_operations n m c ops
   results ≠ [] := sorry
-
-/-
-info: [0, 1, 2]
--/
--- #guard_msgs in
--- #eval fenwick_operations 7 5 0 ["Q 7", "S 1 7 1", "Q 3", "S 1 3 1", "Q 3"]
-
-/-
-info: [1, 3]
--/
--- #guard_msgs in
--- #eval fenwick_operations 3 3 1 ["Q 1", "S 1 2 2", "Q 2"]
-
-/-
-info: [2, 3]
--/
--- #guard_msgs in
--- #eval fenwick_operations 5 4 0 ["S 1 3 2", "Q 2", "S 2 4 1", "Q 3"]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

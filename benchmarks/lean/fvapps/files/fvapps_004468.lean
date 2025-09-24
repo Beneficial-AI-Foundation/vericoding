@@ -41,25 +41,4 @@ theorem evaluate_specific_mixed :
 theorem evaluate_division_by_zero_error :
   ∀ (result : Int), evaluate "1/0" ≠ result :=
   sorry
-
-/-
-info: 219
--/
--- #guard_msgs in
--- #eval evaluate "2*3*4*5+99"
-
-/-
-info: -12242013
--/
--- #guard_msgs in
--- #eval evaluate "2*3*4*5+99*321-12312312"
-
-/-
-info: -18
--/
--- #guard_msgs in
--- #eval evaluate "1-2*2/2*2-1*7+3"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

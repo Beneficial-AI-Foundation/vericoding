@@ -22,25 +22,4 @@ theorem find_uniq_returns_unique (numbers : List Float) (unique_num : Float) (ba
 theorem find_uniq_basic (common unique : Float)
     (h : common ≠ unique) :
     find_uniq [common, common, unique, common, common] = unique := sorry
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval find_uniq [1, 1, 1, 2, 1, 1]
-
-/-
-info: 0.55
--/
--- #guard_msgs in
--- #eval find_uniq [0, 0, 0.55, 0, 0]
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval find_uniq [4, 4, 4, 3, 4, 4, 4, 4]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

@@ -17,25 +17,4 @@ theorem closure_is_ordered (s: List Nat) (h: s.length > 0) (h₂: ∀ x, x ∈ s
 theorem minimal_closure (n: Nat) (h: 2 ≤ n ∧ n ≤ 3) :
   let res := closure_gen [n]
   res.get! 0 = n ∧ res.get! 1 = n * n := sorry
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval next closure_gen(2)
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval next g1
-
-/-
-info: 8
--/
--- #guard_msgs in
--- #eval next g1
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

@@ -31,25 +31,4 @@ theorem camelize_preserves_word_starts (s : String) (word_start_indices : List N
     ∃ j < (camelize s).length,
       Char.toLower ((camelize s).data.get! j) = 
       Char.toLower (s.data.get! i) := sorry
-
-/-
-info: 'ExampleName'
--/
--- #guard_msgs in
--- #eval camelize "example name"
-
-/-
-info: 'YourNameHere'
--/
--- #guard_msgs in
--- #eval camelize "your-NaMe-here"
-
-/-
-info: 'TestingAbc'
--/
--- #guard_msgs in
--- #eval camelize "testing ABC"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

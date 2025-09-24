@@ -23,25 +23,4 @@ theorem digit_all_output_is_subsequence (s : String) :
   ∃ l : List Nat, 
     (∀ i j, i < j → i < l.length → j < l.length → l[i]! < l[j]!) ∧ 
     (result.data = l.map (fun i => s.data[i]!)) := sorry
-
-/-
-info: '123456'
--/
--- #guard_msgs in
--- #eval digit_all "123abc456"
-
-/-
-info: ''
--/
--- #guard_msgs in
--- #eval digit_all ""
-
-/-
-info: 'Invalid input !'
--/
--- #guard_msgs in
--- #eval digit_all 123
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

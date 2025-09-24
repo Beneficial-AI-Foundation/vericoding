@@ -4,7 +4,7 @@ vc-description: |-
   We repeatedly make k duplicate removals on s until we no longer can.
   Return the final string after all such duplicate removals have been made.
   It is guaranteed that the answer is unique.
-  
+
   Example 1:
   Input: s = "abcd", k = 2
   Output: "abcd"
@@ -19,61 +19,61 @@ vc-description: |-
   Example 3:
   Input: s = "pbbcggttciiippooaais", k = 2
   Output: "ps"
-  
+
   Constraints:
-  
+
   1 <= s.length <= 10^5
   2 <= k <= 10^4
   s only contains lower case English letters.
   -/
 
-vc-preamble: |-
+vc-preamble: |
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def removeDuplicates (s : String) (k : Nat) : String := sorry
-  
+
   theorem result_length_le_input (s : String) (k : Nat) : 
     (removeDuplicates s k).length ≤ s.length := sorry
 
 vc-theorems: |-
   theorem result_chars_from_input (s : String) (k : Nat) (c : Char) :
     c ∈ (removeDuplicates s k).data → c ∈ s.data := sorry
-  
+
   theorem result_idempotent (s : String) (k : Nat) :
     removeDuplicates (removeDuplicates s k) k = removeDuplicates s k := sorry
-  
+
   theorem empty_string_identity (k : Nat) :
     removeDuplicates "" k = "" := sorry
-  
+
   theorem k_one_no_consecutive_dupes (s : String) :
     let result := removeDuplicates s 1
     ∀ n m : Nat, n + 1 = m → m < result.length → 
       result.data[n]? ≠ result.data[m]? := sorry 
-  
+
   theorem k_gt_length_identity (s : String) (k : Nat) :
     k > s.length → removeDuplicates s k = s := sorry
-  
-  /-
-  info: 'abcd'
-  -/
-  -- #guard_msgs in
-  -- #eval remove_duplicates "abcd" 2
-  
-  /-
-  info: 'aa'
-  -/
-  -- #guard_msgs in
-  -- #eval remove_duplicates "deeedbbcccbdaa" 3
-  
-  /-
-  info: 'ps'
-  -/
-  -- #guard_msgs in
-  -- #eval remove_duplicates "pbbcggttciiippooaais" 2
 
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
+
+  /--
+  info: 'abcd'
+  -/
+  #guard_msgs in
+  #eval remove_duplicates "abcd" 2
+
+  /--
+  info: 'aa'
+  -/
+  #guard_msgs in
+  #eval remove_duplicates "deeedbbcccbdaa" 3
+
+  /--
+  info: 'ps'
+  -/
+  #guard_msgs in
+  #eval remove_duplicates "pbbcggttciiippooaais" 2
 

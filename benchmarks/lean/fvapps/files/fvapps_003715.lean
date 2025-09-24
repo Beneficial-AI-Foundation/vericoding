@@ -46,25 +46,4 @@ theorem solution_conversion_inverse (toCurrency : String) (value : Float) :
   let finalValue := stringToFloat ((secondConversion[0]!.replace "$" "").replace "€" "")
   let originalValue := stringToFloat ((originalAmount.replace "$" "").replace "€" "")
   (finalValue - originalValue) < 0.01 := sorry
-
-/-
-info: ['$1.15', '$94.65']
--/
--- #guard_msgs in
--- #eval solution "USD" [1.01, 83.29]
-
-/-
-info: ['96.32€', '563.47€']
--/
--- #guard_msgs in
--- #eval solution "EUR" [109.45, 640.31]
-
-/-
-info: ['$0.00', '$0.00', '$0.00']
--/
--- #guard_msgs in
--- #eval solution "USD" [0, 0, 0]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

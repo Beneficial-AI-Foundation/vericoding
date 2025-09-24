@@ -37,13 +37,4 @@ theorem solve_engineer_groups_single_wall (N M W K R : Nat) (walls rooms : List 
   rooms = [[1,1,10,20], [1,2,15,25]] →
   solve_engineer_groups N M W K R walls rooms ≥ 0 :=
 sorry
-
-/-
-info: 48
--/
--- #guard_msgs in
--- #eval solve_engineer_groups 2 4 5 5 3 [[1, 2, 1, 3], [1, 2, 2, 2], [1, 3, 2, 3], [1, 4, 2, 4], [2, 1, 2, 2]] [[1, 1, 30, 12], [1, 3, 10, 15], [2, 3, 11, 22]]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

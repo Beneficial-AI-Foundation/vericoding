@@ -30,25 +30,4 @@ theorem compound_array_empty_list {α : Type} [DecidableEq α] (a : List α) :
 
 theorem compound_array_empty_both {α : Type} [DecidableEq α] :
   compound_array ([] : List α) [] = [] := sorry
-
-/-
-info: [1, 9, 2, 8, 3, 7, 4, 6, 5, 6]
--/
--- #guard_msgs in
--- #eval compound_array [1, 2, 3, 4, 5, 6] [9, 8, 7, 6]
-
-/-
-info: [11, 21, 12, 22, 23, 24]
--/
--- #guard_msgs in
--- #eval compound_array [11, 12] [21, 22, 23, 24]
-
-/-
-info: []
--/
--- #guard_msgs in
--- #eval compound_array [] []
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

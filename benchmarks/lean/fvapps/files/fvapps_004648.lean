@@ -30,25 +30,4 @@ theorem collatz_follows_rules (n : Nat) (i : Nat) :
   if cur % 2 = 0 
   then next = cur / 2
   else next = 3 * cur + 1 := sorry
-
-/-
-info: '4->2->1'
--/
--- #guard_msgs in
--- #eval collatz 4
-
-/-
-info: '3->10->5->16->8->4->2->1'
--/
--- #guard_msgs in
--- #eval collatz 3
-
-/-
-info: '6->3->10->5->16->8->4->2->1'
--/
--- #guard_msgs in
--- #eval collatz 6
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

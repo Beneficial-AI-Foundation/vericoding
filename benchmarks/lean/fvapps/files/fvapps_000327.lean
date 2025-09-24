@@ -35,25 +35,4 @@ theorem empty_string_steps :
   min_steps_to_anagram "a" "" = 0 ∧
   min_steps_to_anagram "" "a" = 1 :=
   sorry
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval min_steps_to_anagram "bab" "aba"
-
-/-
-info: 5
--/
--- #guard_msgs in
--- #eval min_steps_to_anagram "leetcode" "practice"
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval min_steps_to_anagram "anagram" "mangaar"
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

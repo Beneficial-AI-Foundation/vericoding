@@ -31,25 +31,4 @@ theorem logical_calc_associative {lst : List Bool} (op : String)
   let left := logical_calc (lst.take mid) op
   let right := logical_calc (lst.drop mid) op
   logical_calc [left, right] op = logical_calc lst op := sorry
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval logical_calc [True, True, False] "AND"
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval logical_calc [True, True, False] "OR"
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval logical_calc [True, True, False] "XOR"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

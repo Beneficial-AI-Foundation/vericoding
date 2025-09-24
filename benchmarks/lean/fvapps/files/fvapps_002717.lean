@@ -29,25 +29,4 @@ theorem power_sumDigTerm_perfect_power {n : Nat} (h : n > 0) :
     power ≥ 2 ∧ 
     power_sumDigTerm n = base ^ power ∧
     base = sum_list (toDigits (power_sumDigTerm n)) := sorry
-
-/-
-info: 81
--/
--- #guard_msgs in
--- #eval power_sumDigTerm 1
-
-/-
-info: 512
--/
--- #guard_msgs in
--- #eval power_sumDigTerm 2
-
-/-
-info: 2401
--/
--- #guard_msgs in
--- #eval power_sumDigTerm 3
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

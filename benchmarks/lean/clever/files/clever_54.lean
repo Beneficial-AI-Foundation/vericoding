@@ -32,10 +32,3 @@ theorem correctness
 : problem_spec implementation s0 s1  := by
   sorry
 -- </vc-theorems>
-
--- #test implementation 'eabcdzzzz' 'dddzzzzzzzddeddabc' = true
--- #test implementation 'abcd' 'dddddddabc' = true
--- #test implementation 'dddddddabc' 'abcd' = true
--- #test implementation 'eabcd' 'dddddddabc' = false
--- #test implementation 'abcd' 'dddddddabce' = false
--- #test implementation 'eabcdzzzz' 'dddzzzzzzzddddabc' = false

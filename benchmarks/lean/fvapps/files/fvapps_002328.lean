@@ -23,25 +23,4 @@ theorem climbStairs_negative_undefined (n : Int) (h : n < 0) :
 
 theorem climbStairs_strictly_increasing (n : Int) (h : n ≥ 2) :
   climbStairs n > climbStairs (n-1) := sorry
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval climb_stairs 2
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval climb_stairs 3
-
-/-
-info: 5
--/
--- #guard_msgs in
--- #eval climb_stairs 4
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

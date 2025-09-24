@@ -36,25 +36,4 @@ theorem max_profit_increasing {prices : List Nat} {i j : Nat}
   (h_last : prices.length - 1 < prices.length)
   (h_zero : 0 < prices.length) :
   max_profit prices = prices[prices.length-1]'h_last - prices[0]'h_zero := sorry
-
-/-
-info: 5
--/
--- #guard_msgs in
--- #eval max_profit [7, 1, 5, 3, 6, 4]
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval max_profit [7, 6, 4, 3, 1]
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval max_profit [2, 4, 1]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

@@ -41,25 +41,4 @@ sorry
 theorem century_boundaries_201 :
   century 201 = 3 :=
 sorry
-
-/-
-info: 18
--/
--- #guard_msgs in
--- #eval century 1705
-
-/-
-info: 19
--/
--- #guard_msgs in
--- #eval century 1900
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval century 89
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

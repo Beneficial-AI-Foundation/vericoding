@@ -24,13 +24,4 @@ theorem basic_commands_return_nonempty (cmd : String) :
 
 theorem invalid_command_returns_empty :
   get_output "thiscommanddoesnotexist" = "" := sorry
-
-/-
-info: 'hello world\n'
--/
--- #guard_msgs in
--- #eval get_output "echo "hello world""
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

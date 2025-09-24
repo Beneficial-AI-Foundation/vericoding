@@ -38,8 +38,3 @@ theorem correctness
 : problem_spec implementation numbers := by
   sorry
 -- </vc-theorems>
-
--- #test implementation ([1, 3, 2, 0]: List Rat) = (10: Int)
--- #test implementation ([-1, -2, 0]: List Int) = (0: Int)
--- #test implementation ([9, -2]: List Int) = 81
--- #test implementation ([0]: List Int) = 0

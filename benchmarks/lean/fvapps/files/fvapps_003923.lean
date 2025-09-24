@@ -20,31 +20,4 @@ theorem cake_slice_formula (n : Nat) :
 
 theorem cake_slice_bounded_growth (n : Nat) (h : n > 0) :
   cake_slice n ≤ cake_slice (n-1) + n := sorry
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval cake_slice 0
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval cake_slice 1
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval cake_slice 2
-
-/-
-info: 7
--/
--- #guard_msgs in
--- #eval cake_slice 3
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

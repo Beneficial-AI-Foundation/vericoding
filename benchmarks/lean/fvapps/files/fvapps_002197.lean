@@ -37,25 +37,4 @@ theorem result_bounded_by_input_size {N T : Nat} {A : List Nat}
   (h3 : ∀ x ∈ A, 1 ≤ x ∧ x ≤ 1000)
   (h4 : 2 ≤ N ∧ N ≤ 100) :
   solve N T A ≤ N := sorry
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval solve 3 2 [100, 50, 200]
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval solve 5 8 [50, 30, 40, 10, 20]
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval solve 10 100 [7, 10, 4, 5, 9, 3, 6, 8, 2, 1]
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: unguarded

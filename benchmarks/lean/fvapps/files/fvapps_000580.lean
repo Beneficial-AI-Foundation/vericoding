@@ -27,13 +27,4 @@ sorry
 theorem restaurant_area_zero_height {points : List (Int × Int)} :
   calculate_restaurant_area ((points.map (fun p => (p.1, 0)))) = 0 :=
 sorry
-
-/-
-info: 27
--/
--- #guard_msgs in
--- #eval calculate_restaurant_area [(1, 1), (2, 2), (3, 3), (4, 4), (5, 5)]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

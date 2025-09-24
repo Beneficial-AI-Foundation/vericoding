@@ -21,5 +21,3 @@ theorem myfun_spec_satisfied (a: Array Int) (sum: Array Int) (N: Int) (h_precond
     myfun_postcond (a) (sum) (N) h_precond := by
   sorry
 -- </vc-theorems>
-
-def main : IO Unit := pure ()

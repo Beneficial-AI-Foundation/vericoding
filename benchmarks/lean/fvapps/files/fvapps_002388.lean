@@ -19,25 +19,4 @@ theorem result_eq_manual_sum (arr : List Int) :
 
 theorem positive_input_positive_output (arr : List Int) :
   (∀ x ∈ arr, x > 0) → sumOddLengthSubarrays arr > 0 := sorry
-
-/-
-info: 58
--/
--- #guard_msgs in
--- #eval sum_odd_length_subarrays [1, 4, 2, 5, 3]
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval sum_odd_length_subarrays [1, 2]
-
-/-
-info: 66
--/
--- #guard_msgs in
--- #eval sum_odd_length_subarrays [10, 11, 12]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

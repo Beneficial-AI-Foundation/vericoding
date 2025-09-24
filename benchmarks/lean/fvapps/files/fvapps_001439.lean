@@ -30,6 +30,3 @@ theorem same_number_possible {n : Int} (hn : n > 0) :
 theorem zero_division {n : Int} (hn : n > 0) :
   can_make_proportion 0 n 0 (2*n) = "Possible" := sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

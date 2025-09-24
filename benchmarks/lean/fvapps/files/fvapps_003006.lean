@@ -32,25 +32,4 @@ theorem triangular_sum_known_triang :
   triangular_sum 28 = true ∧
   triangular_sum 36 = true ∧
   triangular_sum 45 = true := sorry
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval triangular_sum 6
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval triangular_sum 45
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval triangular_sum 136
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

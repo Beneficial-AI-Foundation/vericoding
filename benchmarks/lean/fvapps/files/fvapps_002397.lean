@@ -33,25 +33,4 @@ theorem digit_boundaries_valid_1000 (offset : Nat) (h : offset ≤ 9) :
 
 theorem find_nth_digit_deterministic (n : Nat) (h : n > 0) :
   find_nth_digit n = find_nth_digit n := sorry
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval find_nth_digit 3
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval find_nth_digit 11
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval find_nth_digit 1000
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

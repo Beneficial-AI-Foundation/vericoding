@@ -27,25 +27,4 @@ theorem starting_mark_rounding (height : Float) :
 theorem starting_mark_edge_cases :
   starting_mark 1.52 = 9.45 ∧
   starting_mark 1.83 = 10.67 := sorry
-
-/-
-info: 9.45
--/
--- #guard_msgs in
--- #eval starting_mark 1.52
-
-/-
-info: 10.67
--/
--- #guard_msgs in
--- #eval starting_mark 1.83
-
-/-
-info: 10.36
--/
--- #guard_msgs in
--- #eval starting_mark 1.75
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

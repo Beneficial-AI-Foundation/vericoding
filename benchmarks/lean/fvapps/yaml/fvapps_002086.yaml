@@ -1,59 +1,59 @@
 vc-description: |-
   /-
   Polycarp plans to conduct a load testing of its new project Fakebook. He already agreed with his friends that at certain points in time they will send requests to Fakebook. The load testing will last n minutes and in the i-th minute friends will send a_{i} requests.
-  
+
   Polycarp plans to test Fakebook under a special kind of load. In case the information about Fakebook gets into the mass media, Polycarp hopes for a monotone increase of the load, followed by a monotone decrease of the interest to the service. Polycarp wants to test this form of load.
-  
+
   Your task is to determine how many requests Polycarp must add so that before some moment the load on the server strictly increases and after that moment strictly decreases. Both the increasing part and the decreasing part can be empty (i. e. absent). The decrease should immediately follow the increase. In particular, the load with two equal neigbouring values is unacceptable.
-  
+
   For example, if the load is described with one of the arrays [1, 2, 8, 4, 3], [1, 3, 5] or [10], then such load satisfies Polycarp (in each of the cases there is an increasing part, immediately followed with a decreasing part). If the load is described with one of the arrays [1, 2, 2, 1], [2, 1, 2] or [10, 10], then such load does not satisfy Polycarp.
-  
+
   Help Polycarp to make the minimum number of additional requests, so that the resulting load satisfies Polycarp. He can make any number of additional requests at any minute from 1 to n.
-  
+
   -----Input-----
-  
+
   The first line contains a single integer n (1 ≤ n ≤ 100 000) — the duration of the load testing.
-  
+
   The second line contains n integers a_1, a_2, ..., a_{n} (1 ≤ a_{i} ≤ 10^9), where a_{i} is the number of requests from friends in the i-th minute of the load testing.
-  
+
   -----Output-----
-  
+
   Print the minimum number of additional requests from Polycarp that would make the load strictly increasing in the beginning and then strictly decreasing afterwards.
-  
+
   -----Examples-----
   Input
   5
   1 4 3 2 5
-  
+
   Output
   6
-  
+
   Input
   5
   1 2 2 2 1
-  
+
   Output
   1
-  
+
   Input
   7
   10 20 40 50 70 90 30
-  
+
   Output
   0
-  
+
   -----Note-----
-  
+
   In the first example Polycarp must make two additional requests in the third minute and four additional requests in the fourth minute. So the resulting load will look like: [1, 4, 5, 6, 5]. In total, Polycarp will make 6 additional requests.
-  
+
   In the second example it is enough to make one additional request in the third minute, so the answer is 1.
-  
+
   In the third example the load already satisfies all conditions described in the statement, so the answer is 0.
   -/
 
-vc-preamble: |-
+vc-preamble: |
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def min_requests_to_add (n : Nat) (arr : List Nat) : Nat :=
@@ -63,49 +63,49 @@ vc-theorems: |-
   theorem single_element_no_changes (n : Nat) (h : n > 0) :
     min_requests_to_add 1 [n] = 0 :=
   sorry
-  
+
   theorem sorted_array_no_changes {n : Nat} {arr : List Nat} 
     (h1 : arr.length = n)
     (h2 : n ≥ 2)
     (h3 : ∀ i j, i < j → j < arr.length → arr[i]! < arr[j]!) :
     min_requests_to_add n arr = 0 :=
   sorry
-  
+
   theorem result_non_negative {n : Nat} {arr : List Nat}
     (h1 : arr.length = n)
     (h2 : n ≥ 2) :
     min_requests_to_add n arr ≥ 0 :=
   sorry
-  
+
   theorem array_length_matches_n {n : Nat} {arr : List Nat}
     (h : arr.length = n) :
     min_requests_to_add n arr = min_requests_to_add (arr.length) arr :=
   sorry
-  
+
   theorem array_length_error {n : Nat} {arr : List Nat}
     (h : arr.length < n) :
     min_requests_to_add n arr = min_requests_to_add arr.length arr :=
   sorry
-  
-  /-
-  info: 6
-  -/
-  -- #guard_msgs in
-  -- #eval min_requests_to_add 5 [1, 4, 3, 2, 5]
-  
-  /-
-  info: 1
-  -/
-  -- #guard_msgs in
-  -- #eval min_requests_to_add 5 [1, 2, 2, 2, 1]
-  
-  /-
-  info: 0
-  -/
-  -- #guard_msgs in
-  -- #eval min_requests_to_add 7 [10, 20, 40, 50, 70, 90, 30]
 
 vc-postamble: |-
   -- Apps difficulty: competition
   -- Assurance level: unguarded
+
+  /--
+  info: 6
+  -/
+  #guard_msgs in
+  #eval min_requests_to_add 5 [1, 4, 3, 2, 5]
+
+  /--
+  info: 1
+  -/
+  #guard_msgs in
+  #eval min_requests_to_add 5 [1, 2, 2, 2, 1]
+
+  /--
+  info: 0
+  -/
+  #guard_msgs in
+  #eval min_requests_to_add 7 [10, 20, 40, 50, 70, 90, 30]
 

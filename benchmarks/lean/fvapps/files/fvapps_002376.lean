@@ -17,25 +17,4 @@ theorem up_directory_at_root (logs : List String) :
 
 theorem current_directory_neutral (logs : List String) :
   min_operations logs = min_operations (logs ++ ["./"])  := sorry
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval min_operations ["d1/", "d2/", "../", "d21/", "./"]
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval min_operations ["d1/", "d2/", "./", "d3/", "../", "d31/"]
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval min_operations ["d1/", "../", "../", "../"]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

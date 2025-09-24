@@ -25,25 +25,4 @@ theorem move_ten_idempotent (s : String) :
 
 theorem move_ten_homomorphic (s₁ s₂ : String) :
   move_ten (s₁ ++ s₂) = move_ten s₁ ++ move_ten s₂ := sorry
-
-/-
-info: 'docdmkco'
--/
--- #guard_msgs in
--- #eval move_ten "testcase"
-
-/-
-info: 'mynogkbc'
--/
--- #guard_msgs in
--- #eval move_ten "codewars"
-
-/-
-info: 'goxoonkxyppsmonyq'
--/
--- #guard_msgs in
--- #eval move_ten "weneedanofficedog"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

@@ -26,19 +26,4 @@ theorem permutation_sorted {s: String} {k: Nat} {h: k ≤ String.length s}:
 
 theorem single_char_permutation {s: String} {h: String.length s = 1}:
   get_permutations s 1 = s := sorry
-
-/-
-info: expected1
--/
--- #guard_msgs in
--- #eval get_permutations "HACK 2" 2
-
-/-
-info: expected2
--/
--- #guard_msgs in
--- #eval get_permutations "ABC 2" 2
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

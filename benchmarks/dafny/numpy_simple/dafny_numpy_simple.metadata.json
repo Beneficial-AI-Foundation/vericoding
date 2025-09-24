@@ -1,0 +1,61 @@
+{
+  "benchmark_info": {
+    "name": "dafny_numpy_simple",
+    "language": "dafny",
+    "source": "unknown",
+    "entry_count": 58,
+    "benchmark_path": "benchmarks/dafny/numpy_simple"
+  },
+  "qa_metadata": {
+    "functions_with_default_values": [],
+    "methods_with_bodies": [],
+    "score": 96.12068965517241,
+    "near_duplicates": {
+      "examples": [
+        {
+          "files": [
+            "benchmarks/dafny/numpy_simple/yaml/NpGreater-spec.yaml",
+            "benchmarks/dafny/numpy_simple/yaml/NpGreaterEqual-spec.yaml",
+            "benchmarks/dafny/numpy_simple/yaml/NpLessEqual-spec.yaml",
+            "benchmarks/dafny/numpy_simple/yaml/NpNotEqual-spec.yaml"
+          ],
+          "similarity": 0.9
+        },
+        {
+          "files": [
+            "benchmarks/dafny/numpy_simple/yaml/NpBitwiseOr-spec.yaml",
+            "benchmarks/dafny/numpy_simple/yaml/NpBitwiseXor-spec.yaml",
+            "benchmarks/dafny/numpy_simple/yaml/NpBitwiseAnd-spec.yaml"
+          ],
+          "similarity": 0.9
+        },
+        {
+          "files": [
+            "benchmarks/dafny/numpy_simple/yaml/NpEqual-spec.yaml",
+            "benchmarks/dafny/numpy_simple/yaml/NpLess-spec.yaml"
+          ],
+          "similarity": 0.9
+        },
+        {
+          "files": [
+            "benchmarks/dafny/numpy_simple/yaml/NpLeftShift-spec.yaml",
+            "benchmarks/dafny/numpy_simple/yaml/NpRightShift-spec.yaml"
+          ],
+          "similarity": 0.9
+        },
+        {
+          "files": [
+            "benchmarks/dafny/numpy_simple/yaml/NpFlatten-spec.yaml",
+            "benchmarks/dafny/numpy_simple/yaml/NpRavel-spec.yaml"
+          ],
+          "similarity": 0.9
+        }
+      ],
+      "total_count": 15
+    },
+    "base_score": 50
+  },
+  "generated_at": "2025-09-23T18:01:37.423814",
+  "config_version": "2.0",
+  "format_version": "separate_metadata_v1"
+}

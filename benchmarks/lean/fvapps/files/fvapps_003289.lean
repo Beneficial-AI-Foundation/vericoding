@@ -35,25 +35,4 @@ theorem invalid_card_remains_invalid {digits : List Nat}
   ¬valid_card (String.join [(card.take 4), " ", (card.drop 4).take 4, " ",
                            (card.drop 8).take 4, " ", (card.drop 12).take 4]) :=
 sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval valid_card "5457 6238 9823 4311"
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval valid_card "5457 6238 9323 4311"
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval valid_card "2222 2222 2222 2224"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

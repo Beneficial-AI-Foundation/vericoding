@@ -22,6 +22,3 @@ theorem odd_k_is_finite (k : Int) (h1 : k > 0) (h2 : k % 2 = 1) (nb : Nat) :
 theorem series_2_is_pi_squared_div_6 : 
   (series 2 0 - π^2/6).abs < 1e-10 := sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

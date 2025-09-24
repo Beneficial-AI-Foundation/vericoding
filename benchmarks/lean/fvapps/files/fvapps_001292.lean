@@ -37,6 +37,3 @@ theorem invalid_input_errors
     False := by
   sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

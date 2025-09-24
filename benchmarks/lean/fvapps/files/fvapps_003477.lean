@@ -27,25 +27,4 @@ theorem catMouse_dots_caught (s : String)
 theorem catMouse_edge_cases : 
     (catMouse "Cm" = "Caught!") ∧ 
     (catMouse "C....m" = "Escaped!") := sorry
-
-/-
-info: 'Escaped!'
--/
--- #guard_msgs in
--- #eval cat_mouse "C....m"
-
-/-
-info: 'Caught!'
--/
--- #guard_msgs in
--- #eval cat_mouse "C..m"
-
-/-
-info: 'Caught!'
--/
--- #guard_msgs in
--- #eval cat_mouse "C.m"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

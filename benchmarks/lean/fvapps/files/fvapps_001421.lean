@@ -24,25 +24,4 @@ theorem can_slice_cake_equal_pieces (r c : Nat) (h1 : r > 0) (h2 : c > 0)
 theorem can_slice_cake_piece_exceeds_area (r c m k j : Nat) (h1 : r > 0) (h2 : c > 0)
     (h3 : m > r * c ∨ k > r * c ∨ j > r * c) :
   can_slice_cake r c m k j = "No" := sorry
-
-/-
-info: 'Yes'
--/
--- #guard_msgs in
--- #eval can_slice_cake 4 5 10 4 6
-
-/-
-info: 'Yes'
--/
--- #guard_msgs in
--- #eval can_slice_cake 4 5 6 10 4
-
-/-
-info: 'No'
--/
--- #guard_msgs in
--- #eval can_slice_cake 2 2 2 2 2
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

@@ -49,6 +49,3 @@ theorem basic_data_handling :
   String.isInfixOf ">>> Data" (parse_html_code input) ∧
   String.isInfixOf "Hello World" (parse_html_code input) := sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

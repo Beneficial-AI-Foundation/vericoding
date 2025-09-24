@@ -1,12 +1,13 @@
 -- <vc-preamble>
-def encrypt (text : Option String) (n : Int) : Option String :=
-  sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
+def encrypt (text : Option String) (n : Int) : Option String :=
+  sorry
+
 def decrypt (text : Option String) (n : Int) : Option String :=
   sorry
 -- </vc-definitions>
@@ -14,60 +15,21 @@ def decrypt (text : Option String) (n : Int) : Option String :=
 -- <vc-theorems>
 theorem encrypt_decrypt_roundtrip {text : String} {n : Int} (h1 : text.length > 0) (h2 : n > 0) (h3 : n ≤ 10) :
   decrypt (encrypt (some text) n) n = some text :=
-  sorry
+sorry
 
 theorem encrypt_edge_cases {text : Option String} {n : Int} (h1 : text = none ∨ text = some "") (h2 : n > 0) (h3 : n ≤ 10) :
   encrypt text n = text :=
-  sorry
+sorry
 
 theorem encrypt_invalid_n {text : String} {n : Int} (h1 : text.length > 0) (h2 : n ≤ 0) :
   encrypt (some text) n = some text :=
-  sorry
+sorry
 
 theorem encrypt_length_preserved {text : String} {n : Int} (h1 : text.length > 0) (h2 : n > 0) (h3 : n ≤ 10) :
   (encrypt (some text) n).map String.length = some text.length :=
-  sorry
+sorry
 
 theorem encrypt_char_preservation {text : String} {n : Int} (h1 : text.length > 0) (h2 : n > 0) (h3 : n ≤ 10) :
   (encrypt (some text) n).map (fun s => s.data.toArray.qsort (· ≤ ·)) = some (text.data.toArray.qsort (· ≤ ·)) :=
-  sorry
-
-/-
-info: 'hsi  etTi sats!'
--/
--- #guard_msgs in
--- #eval encrypt "This is a test!" 1
-
-/-
-info: 'This is a test!'
--/
--- #guard_msgs in
--- #eval decrypt "hsi  etTi sats!" 1
-
-/-
-info: 's eT ashi tist!'
--/
--- #guard_msgs in
--- #eval encrypt "This is a test!" 2
-
-/-
-info: 'This is a test!'
--/
--- #guard_msgs in
--- #eval decrypt "s eT ashi tist!" 2
-
-/-
-info: ''
--/
--- #guard_msgs in
--- #eval encrypt "" 1
-
-/-
-info: None
--/
--- #guard_msgs in
--- #eval decrypt None 1
+sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

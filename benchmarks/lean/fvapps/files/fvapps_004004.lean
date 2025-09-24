@@ -34,25 +34,4 @@ theorem comp_empty_arrays :
   comp [] [1] = false ∧
   comp [1] [] = false
   := sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval comp [121, 144, 19, 161, 19, 144, 19, 11] [121, 14641, 20736, 361, 25921, 361, 20736, 361]
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval comp [] [1]
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval comp None [1, 2, 3]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

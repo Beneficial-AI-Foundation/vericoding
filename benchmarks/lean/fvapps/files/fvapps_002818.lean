@@ -33,25 +33,4 @@ theorem divisible_by_length (numbers : List Int) (divisor : Int)
 theorem divisible_by_one (numbers : List Int) :
   divisible_by numbers 1 = numbers := by
   sorry
-
-/-
-info: [2, 4, 6]
--/
--- #guard_msgs in
--- #eval divisible_by [1, 2, 3, 4, 5, 6] 2
-
-/-
-info: [3, 6]
--/
--- #guard_msgs in
--- #eval divisible_by [1, 2, 3, 4, 5, 6] 3
-
-/-
-info: []
--/
--- #guard_msgs in
--- #eval divisible_by [1, 3, 5] 2
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

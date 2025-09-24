@@ -26,25 +26,4 @@ theorem square_grid_nonzero (n : Nat) (h : n ≥ 2) :
 
 theorem square_grid_monotone (n : Nat) (h : n ≥ 2) :
   count_house_positions (n+1) (n+1) > count_house_positions n n := sorry
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval count_house_positions 2 4
-
-/-
-info: 10
--/
--- #guard_msgs in
--- #eval count_house_positions 3 4
-
-/-
-info: 20
--/
--- #guard_msgs in
--- #eval count_house_positions 4 4
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

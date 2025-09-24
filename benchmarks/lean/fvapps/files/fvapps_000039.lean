@@ -27,25 +27,4 @@ theorem AB_start_point :
 
 theorem long_string_start_point :
   find_min_start_point (3 : Nat) (2 : Nat) (8 : Nat) "AABBBBAABB" = (3 : Nat) := sorry
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval find_min_start_point 2 2 1 "BB"
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval find_min_start_point 1 1 1 "AB"
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval find_min_start_point 3 2 8 "AABBBBAABB"
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

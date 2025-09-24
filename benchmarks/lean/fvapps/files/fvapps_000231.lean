@@ -37,25 +37,4 @@ theorem constant_sequence_count (nums : List Int) (n : Nat) (val : Int)
   (h3 : ∀ i, i < n → nums[i]! = val) :
   numberOfArithmeticSlices nums = (n - 2) * (n - 1) / 2 := by
   sorry
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval number_of_arithmetic_slices [1, 2, 3, 4]
-
-/-
-info: 6
--/
--- #guard_msgs in
--- #eval number_of_arithmetic_slices [1, 2, 3, 4, 5]
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval number_of_arithmetic_slices [1, 1, 2, 5, 7]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

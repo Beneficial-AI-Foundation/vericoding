@@ -17,25 +17,4 @@ theorem solve_symmetric_ab (ax ay bx b_y cx c_y : Int) :
 
 theorem solve_symmetric_bc (ax ay bx b_y cx c_y : Int) :
   solve ax ay bx b_y cx c_y = solve ax ay cx c_y bx b_y := sorry
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval solve 3 2 2 2 2 1
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval solve 0 0 1 0 0 1
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval solve 1 0 0 1 1 1
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: guarded_and_plausible

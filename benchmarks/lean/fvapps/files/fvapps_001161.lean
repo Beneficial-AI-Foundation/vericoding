@@ -54,6 +54,3 @@ theorem solve_mercury_leak_power_bounds
   let res := solve_mercury_leak grid h w queries
   res[0]! = 0 ∧ res[1]! ≤ h * w := sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

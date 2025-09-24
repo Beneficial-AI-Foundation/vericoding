@@ -36,6 +36,3 @@ theorem transform_number_bounds {n : Nat} {a : String}
   (∀ x ∈ (List.map (λ c => c.toNat - '0'.toNat) a.data), 0 ≤ x ∧ x ≤ 9) :=
   sorry
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: guarded

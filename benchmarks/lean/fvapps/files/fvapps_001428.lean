@@ -32,25 +32,4 @@ theorem find_nearest_cabs_equidistant {n m : Nat} {trips : List (List Int)} :
   trips ≠ [] →
   List.head! result = 1 :=
 sorry
-
-/-
-info: [1, 1]
--/
--- #guard_msgs in
--- #eval find_nearest_cabs 3 2 [[1, 3], [3, 2], [3, 5]] [[2, 3, 3, 4], [5, 3, 4, 1]]
-
-/-
-info: [1]
--/
--- #guard_msgs in
--- #eval find_nearest_cabs 1 1 [[0, 0]] [[1, 1, 2, 2]]
-
-/-
-info: [1]
--/
--- #guard_msgs in
--- #eval find_nearest_cabs 2 1 [[1, 1], [1, 1]] [[2, 2, 3, 3]]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

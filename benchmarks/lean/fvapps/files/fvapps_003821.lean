@@ -36,25 +36,4 @@ theorem riders_meets_minimum {stations: List Nat} {lost: Nat}
       if new_total > 100 then (d, riders + 1)
       else (new_total, riders)) (0, 1)
   riders stations lost ≥ min_riders.2 := sorry
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval riders [43, 23, 40, 13] 4
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval riders [18, 15] 2
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval riders [50, 50] 2
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

@@ -49,13 +49,4 @@ theorem max_loaves_indices_are_valid (k : Float)
   (cuts.get ⟨1, h1'⟩).1 = 0 ∧
   (cuts.get ⟨2, h2'⟩).1 = 1 :=
   sorry
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval len instr
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: unguarded

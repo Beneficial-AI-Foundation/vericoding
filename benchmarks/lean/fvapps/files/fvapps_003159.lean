@@ -25,25 +25,4 @@ sorry
 theorem odometer_zero :
   faulty_odometer 0 = 0 :=
 sorry
-
-/-
-info: 12
--/
--- #guard_msgs in
--- #eval faulty_odometer 13
-
-/-
-info: 13
--/
--- #guard_msgs in
--- #eval faulty_odometer 15
-
-/-
-info: 1462
--/
--- #guard_msgs in
--- #eval faulty_odometer 2005
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

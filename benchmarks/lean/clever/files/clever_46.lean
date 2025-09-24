@@ -51,7 +51,3 @@ theorem correctness
 := by
   sorry
 -- </vc-theorems>
-
--- #test implementation 5 = 4
--- #test implementation 6 = 8
--- #test implementation 7 = 14

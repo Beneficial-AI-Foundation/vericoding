@@ -51,25 +51,4 @@ theorem solve_lamps_basic_properties
    (∀ x ∈ result, x ≥ 0) ∧
    ∀ i j, i < j → j < result.length → result.get! i ≤ result.get! j) :=
 sorry
-
-/-
-info: expected1
--/
--- #guard_msgs in
--- #eval solve_lamps 7 3 [0, 0, 1, 1, 1, 0, 0] [[1, 4, 6], [3, 4, 7], [2, 3]]
-
-/-
-info: expected2
--/
--- #guard_msgs in
--- #eval solve_lamps 8 6 [0, 0, 1, 1, 0, 0, 1, 1] [[1, 3, 8], [1, 2, 5, 6, 7], [6, 8], [3, 5], [4, 7], [2]]
-
-/-
-info: expected3
--/
--- #guard_msgs in
--- #eval solve_lamps 5 3 [0, 0, 0, 1, 1] [[1, 2, 3], [4], [3, 4, 5]]
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: unguarded

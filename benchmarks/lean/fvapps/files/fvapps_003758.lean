@@ -30,25 +30,4 @@ theorem basic_properties_alignment (text : String) (width : Nat) :
   width ≥ 10 →
   ∀ line ∈ (align_right text width).split (· = '\n'),
     !line.startsWith line.trim ∨ line.trim = line := sorry
-
-/-
-info: expected
--/
--- #guard_msgs in
--- #eval align_right "abc def" 10
-
-/-
-info: expected
--/
--- #guard_msgs in
--- #eval align_right "I take up the whole line" 24
-
-/-
-info: expected
--/
--- #guard_msgs in
--- #eval align_right "Two lines, I am" 10
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

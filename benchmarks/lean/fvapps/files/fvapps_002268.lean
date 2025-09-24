@@ -37,19 +37,4 @@ theorem solve_empty_conditions (s : String) :
   let d := s.data.count 'D'
   (min l r = 0 ∧ min u d = 0 → result = (0, "")) ∧
   (¬(min l r = 0 ∧ min u d = 0) → result.1 > 0) := sorry
-
-/-
-info: (2, 'LR')
--/
--- #guard_msgs in
--- #eval solve "LRU"
-
-/-
-info: (0, '')
--/
--- #guard_msgs in
--- #eval solve "LLL"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

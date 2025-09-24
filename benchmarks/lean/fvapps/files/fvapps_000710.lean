@@ -1,5 +1,11 @@
 -- <vc-preamble>
 def Matrix := List (List Int)
+-- </vc-preamble>
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+-- <vc-definitions>
 def StrMatrix := List String
 
 def solve_matrix_moves (n m : Nat) (matrix : StrMatrix) : Matrix :=
@@ -7,12 +13,7 @@ def solve_matrix_moves (n m : Nat) (matrix : StrMatrix) : Matrix :=
 
 def replicate_zeros (n : Nat) (m : Nat) : List String :=
   sorry
--- </vc-preamble>
 
--- <vc-helpers>
--- </vc-helpers>
-
--- <vc-definitions>
 def create_matrix_with_one (n m : Nat) : StrMatrix :=
   sorry
 -- </vc-definitions>
@@ -21,14 +22,14 @@ def create_matrix_with_one (n m : Nat) : StrMatrix :=
 theorem matrix_dimensions {n m : Nat} (h1 : 0 < n) (h2 : 0 < m) :
   let matrix := replicate_zeros n m
   let result := solve_matrix_moves n m matrix
-  result.length = n ∧ 
+  result.length = n ∧
   ∀ (row : List Int), List.elem row result → row.length = m :=
 sorry
 
 theorem matrix_all_zeros {n m : Nat} (h1 : 0 < n) (h2 : 0 < m) :
   let matrix := replicate_zeros n m
   let result := solve_matrix_moves n m matrix
-  ∀ (row : List Int), List.elem row result → 
+  ∀ (row : List Int), List.elem row result →
   ∀ (x : Int), List.elem x row → x = -1 :=
 sorry
 
@@ -42,6 +43,3 @@ theorem single_one {n m : Nat} (h1 : 0 < n) (h2 : 0 < m) :
   (∀ k, k < n → k ≠ i → (List.get! result k |>.get! j) = 1) :=
 sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

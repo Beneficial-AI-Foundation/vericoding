@@ -20,25 +20,4 @@ theorem fib_rabbits_bound (n : Nat) (b : Nat) (h1 : b > 0) (h2 : n > 1) :
 
 theorem fib_rabbits_zero (b : Nat) (h : b > 0) :
   fib_rabbits 0 b = 0 := sorry
-
-/-
-info: 19
--/
--- #guard_msgs in
--- #eval fib_rabbits 5 3
-
-/-
-info: 40
--/
--- #guard_msgs in
--- #eval fib_rabbits 6 3
-
-/-
-info: 201
--/
--- #guard_msgs in
--- #eval fib_rabbits 4 100
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

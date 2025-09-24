@@ -32,6 +32,3 @@ theorem mark_spot_odd_numbers {n : Nat} (h1 : n ≥ 1) (h2 : n ≤ 99) (h3 : n %
            (lines.get! i).data.get k = 'X')) :=
 sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

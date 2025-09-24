@@ -33,25 +33,4 @@ sorry
 theorem max_doggo_paths_six :
   max_doggo_paths 6 = 3 :=
 sorry
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval max_doggo_paths 4
-
-/-
-info: 6
--/
--- #guard_msgs in
--- #eval max_doggo_paths 10
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval max_doggo_paths 1
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

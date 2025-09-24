@@ -22,25 +22,4 @@ theorem sillycase_first_half (s : String) (h : s.length > 0) :
 theorem sillycase_second_half (s : String) (h : s.length > 0) :
   let half := (s.length + 1) / 2;
   String.toUpper (String.drop (s.sillycase) half) = String.toUpper (String.drop s half) := sorry
-
-/-
-info: 'fooBAR'
--/
--- #guard_msgs in
--- #eval sillycase "foobar"
-
-/-
-info: 'briAN'
--/
--- #guard_msgs in
--- #eval sillycase "brian"
-
-/-
-info: 'javasCRIPT'
--/
--- #guard_msgs in
--- #eval sillycase "jAvASCript"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

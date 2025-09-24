@@ -22,25 +22,4 @@ theorem base_cases :
 theorem sequence_monotonic (n : Nat) :
   n ≥ 4 →
   find_sequence_value n ≥ find_sequence_value (n-1) := sorry
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval find_sequence_value 0
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval find_sequence_value 3
-
-/-
-info: 5
--/
--- #guard_msgs in
--- #eval find_sequence_value 10
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

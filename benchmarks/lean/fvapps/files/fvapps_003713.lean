@@ -34,25 +34,4 @@ theorem howmuch_identical_inputs {x : Int} (h : -1000 ≤ x ∧ x ≤ 1000) :
   let result := howmuch x x
   ∀ item ∈ result,
     ((item.get! 0).drop 3 |>.toInt!) = x := sorry
-
-/-
-info: [['M: 37', 'B: 5', 'C: 4'], ['M: 100', 'B: 14', 'C: 11']]
--/
--- #guard_msgs in
--- #eval howmuch 1 100
-
-/-
-info: [['M: 1045', 'B: 149', 'C: 116']]
--/
--- #guard_msgs in
--- #eval howmuch 1000 1100
-
-/-
-info: [['M: 37', 'B: 5', 'C: 4'], ['M: 100', 'B: 14', 'C: 11'], ['M: 163', 'B: 23', 'C: 18']]
--/
--- #guard_msgs in
--- #eval howmuch 0 200
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

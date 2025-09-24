@@ -36,6 +36,3 @@ theorem single_row
   result.get! 0 = m - 1 :=
 sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

@@ -25,5 +25,3 @@ theorem mcontained_spec_satisfied (v : Array Int) (w : Array Int) (n : Nat) (m :
     mcontained_postcond v w n m (mcontained v w n m h_precond) h_precond := by
   sorry
 -- </vc-theorems>
-
-/- Test cases can be added here -/

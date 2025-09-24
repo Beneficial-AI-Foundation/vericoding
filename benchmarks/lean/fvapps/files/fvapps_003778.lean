@@ -37,25 +37,4 @@ theorem xbonacci_nonnegative (signature : List Int) (n : Nat) :
   signature.all (· ≥ 0) →
   (xbonacci signature n).all (· ≥ 0) :=
   sorry
-
-/-
-info: [0, 1, 1, 2, 3, 5, 8, 13, 21, 34]
--/
--- #guard_msgs in
--- #eval xbonacci [0, 1] 10
-
-/-
-info: [0, 0, 0, 0, 1, 1, 2, 4, 8, 16]
--/
--- #guard_msgs in
--- #eval xbonacci [0, 0, 0, 0, 1] 10
-
-/-
-info: []
--/
--- #guard_msgs in
--- #eval xbonacci [1, 2, 3] 0
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

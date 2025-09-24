@@ -50,6 +50,3 @@ theorem blocked_cells_marked (n m : Nat) (h1 : n ≥ 2) (h2 : m ≥ 2) :
   List.head! (String.split (List.get! result 1) (· = ' ')) = "X" :=
 sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

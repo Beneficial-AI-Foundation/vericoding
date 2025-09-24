@@ -30,25 +30,4 @@ theorem dieSimulator_monotonic (n: Nat) (strict loose: List Nat)
   (h4: ∀ i ∈ loose, i = 15) :
   dieSimulator n strict ≤ dieSimulator n loose :=
   sorry
-
-/-
-info: 34
--/
--- #guard_msgs in
--- #eval dieSimulator 2 [1, 1, 2, 2, 2, 3]
-
-/-
-info: 30
--/
--- #guard_msgs in
--- #eval dieSimulator 2 [1, 1, 1, 1, 1, 1]
-
-/-
-info: 181
--/
--- #guard_msgs in
--- #eval dieSimulator 3 [1, 1, 1, 2, 2, 3]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

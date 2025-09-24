@@ -23,25 +23,4 @@ theorem solve_case_insensitive
   (words : List String) (h : words ≠ []) :
   solve words = solve (List.map String.toUpper words) ∧
   solve words = solve (List.map String.toLower words) := sorry
-
-/-
-info: [4, 3, 1]
--/
--- #guard_msgs in
--- #eval solve ["abode", "ABc", "xyzD"]
-
-/-
-info: [4, 3, 0]
--/
--- #guard_msgs in
--- #eval solve ["abide", "ABc", "xyz"]
-
-/-
-info: [1, 3, 1, 3]
--/
--- #guard_msgs in
--- #eval solve ["encode", "abc", "xyzD", "ABmD"]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

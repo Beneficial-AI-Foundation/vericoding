@@ -8,21 +8,21 @@ vc-description: |-
   Then, moving book $3$ to position $3$, he gets
   12345123451 \quad 2 \quad 3 \quad 4 \quad 5
   Your task is to write a program to help Indraneel determine the minimum number of moves that are necessary to sort his book shelf.
-  
+
   -----Input:-----
   The first line of the input will contain a single integer $N$ indicating the number of books in Indraneel's library. This is followed by a line containing a permutation of $1, 2, ..., N$ indicating the intial state of Indraneel's book-shelf.
-  
+
   -----Output:-----
   A single integer indicating the minimum number of moves necessary to sort Indraneel's book-shelf.
-  
+
   -----Constraints:-----
   - $1 \leq N \leq 200000$.
   - You may also assume that in $50 \%$ of the inputs, $1 \leq N \leq 5000$.
-  
+
   -----Sample Input-----
   5
   2 1 4 5 3 
-  
+
   -----Sample Output-----
   2
   -/
@@ -30,14 +30,14 @@ vc-description: |-
 vc-preamble: |-
   def IsSorted (l : List Int) : Prop :=
     ∀ i j, i < j → j < l.length → l[i]! ≤ l[j]!
-  
+
   def IsReverseSorted (l : List Int) : Prop :=
     ∀ i j, i < j → j < l.length → l[i]! ≥ l[j]!
-  
+
   def Nodup (l : List Int) : Prop :=
     ∀ i j, i < j → j < l.length → l[i]! ≠ l[j]!
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def min_moves_to_sort (n : Nat) (arr : List Int) : Nat :=
@@ -47,26 +47,26 @@ vc-theorems: |-
   theorem moves_less_than_length {n : Nat} {arr : List Int} (h : n = arr.length) :
     min_moves_to_sort n arr ≤ n :=
     sorry
-  
-  /-
-  info: 2
-  -/
-  -- #guard_msgs in
-  -- #eval min_moves_to_sort 5 [2, 1, 4, 5, 3]
-  
-  /-
-  info: 0
-  -/
-  -- #guard_msgs in
-  -- #eval min_moves_to_sort 3 [1, 2, 3]
-  
-  /-
-  info: 3
-  -/
-  -- #guard_msgs in
-  -- #eval min_moves_to_sort 4 [4, 3, 2, 1]
 
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
+
+  /--
+  info: 2
+  -/
+  #guard_msgs in
+  #eval min_moves_to_sort 5 [2, 1, 4, 5, 3]
+
+  /--
+  info: 0
+  -/
+  #guard_msgs in
+  #eval min_moves_to_sort 3 [1, 2, 3]
+
+  /--
+  info: 3
+  -/
+  #guard_msgs in
+  #eval min_moves_to_sort 4 [4, 3, 2, 1]
 

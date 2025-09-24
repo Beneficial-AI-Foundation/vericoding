@@ -39,6 +39,3 @@ theorem correctness
 := by
   sorry
 -- </vc-theorems>
-
--- #test implementation (12 : Int) (1 : Int) = "21"
--- #test implementation (12 : Int) (2 : Int) = "12"

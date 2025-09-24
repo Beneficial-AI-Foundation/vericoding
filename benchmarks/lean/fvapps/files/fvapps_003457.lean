@@ -27,25 +27,4 @@ theorem add_all_larger_than_pairwise (lst: List Nat) (h: lst.length ≥ 2) :
 theorem add_all_singleton (lst: List Nat) (h: lst.length = 1) :
   add_all lst = 0 :=
   sorry
-
-/-
-info: 9
--/
--- #guard_msgs in
--- #eval add_all [1, 2, 3]
-
-/-
-info: 19
--/
--- #guard_msgs in
--- #eval add_all [1, 2, 3, 4]
-
-/-
-info: 33
--/
--- #guard_msgs in
--- #eval add_all [1, 2, 3, 4, 5]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

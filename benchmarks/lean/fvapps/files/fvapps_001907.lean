@@ -56,25 +56,4 @@ theorem more_fuel_more_routes
   (h5 : fuel1 ≤ fuel2) :
   count_routes locations start finish fuel1 ≤ 
   count_routes locations start finish fuel2 := sorry
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval count_routes [2, 3, 6, 8, 4] 1 3 5
-
-/-
-info: 5
--/
--- #guard_msgs in
--- #eval count_routes [4, 3, 1] 1 0 6
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval count_routes [5, 2, 1] 0 2 3
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

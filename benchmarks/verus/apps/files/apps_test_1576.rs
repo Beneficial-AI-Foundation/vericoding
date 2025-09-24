@@ -11,9 +11,9 @@ spec fn valid_input(t: Seq<char>) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(t: Seq<char>) -> (result: Seq<char>)
-    requires valid_input(t)
-    ensures result.len() == t.len()
+fn solve(t: Vec<char>) -> (result: Vec<char>)
+    requires valid_input(t@)
+    ensures result@.len() == t@.len()
 // </vc-spec>
 // <vc-code>
 {

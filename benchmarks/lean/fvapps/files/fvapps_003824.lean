@@ -35,25 +35,4 @@ theorem pointer_bounds (code tape: String)
   (h: ∀ c, c ∈ tape.data → c = '0' ∨ c = '1') :
   (interpreter code tape).length = tape.length :=
   sorry
-
-/-
-info: '10101100'
--/
--- #guard_msgs in
--- #eval interpreter "*" "00101100"
-
-/-
-info: '01001100'
--/
--- #guard_msgs in
--- #eval interpreter ">*>*" "00101100"
-
-/-
-info: '10101'
--/
--- #guard_msgs in
--- #eval interpreter "[>[*>*>*>]>]" "10110"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

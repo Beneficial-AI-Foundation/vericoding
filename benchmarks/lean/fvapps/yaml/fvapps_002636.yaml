@@ -7,13 +7,13 @@ vc-description: |-
   Concatenate all of the obtained numbers.
   ```
   Given a ciphered string, return the initial one if it is known that it consists only of lowercase letters.
-  
+
    Note: here the character's code means its `decimal ASCII code`, the numerical representation of a character used by most modern programming languages.
-  
+
   # Example
-  
+
    For `cipher = "10197115121"`, the output should be `"easy"`.
-  
+
    Explanation: 
    ```
    charCode('e') = 101, 
@@ -22,21 +22,21 @@ vc-description: |-
    charCode('y') = 121.
   ```
   # Input/Output
-  
+
    - `[input]` string `cipher`
-  
+
      A non-empty string which is guaranteed to be a cipher for some other string of lowercase letters.
-  
+
    - `[output]` a string
   -/
 
-vc-preamble: |-
+vc-preamble: |
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def decipher (s : String) : String := sorry 
-  
+
   theorem decipher_produces_lowercase (codes : List String) 
     (h : ∀ c ∈ codes, ∃ n : Nat, n ≥ 97 ∧ n ≤ 122 ∧ c = toString n) :
     ∀ c ∈ (decipher (String.join codes)).data, c ≥ 'a' ∧ c ≤ 'z' := sorry
@@ -45,41 +45,41 @@ vc-theorems: |-
   theorem decipher_preserves_length (codes : List String)
     (h : ∀ c ∈ codes, ∃ n : Nat, n ≥ 97 ∧ n ≤ 122 ∧ c = toString n) :
     (decipher (String.join codes)).length = codes.length := sorry 
-  
+
   theorem decipher_maps_to_original_codes (codes : List String)
     (h : ∀ c ∈ codes, ∃ n : Nat, n ≥ 97 ∧ n ≤ 122 ∧ c = toString n)
     (i : Fin codes.length) :
     let result := decipher (String.join codes)
     Char.toNat ((result.data.get ⟨i.val, by sorry⟩)) = String.toNat! (codes.get i) := sorry
-  
+
   theorem decipher_round_trip (text : String)
     (h : ∀ c ∈ text.data, c ≥ 'a' ∧ c ≤ 'z') :
     decipher (String.join (text.data.map (fun c => toString (Char.toNat c)))) = text := sorry
-  
+
   theorem decipher_edge_cases :
     decipher "97" = "a" ∧
     decipher "122" = "z" ∧
     decipher "" = "" := sorry
-  
-  /-
-  info: 'easy'
-  -/
-  -- #guard_msgs in
-  -- #eval decipher "10197115121"
-  
-  /-
-  info: 'b'
-  -/
-  -- #guard_msgs in
-  -- #eval decipher "98"
-  
-  /-
-  info: 'z'
-  -/
-  -- #guard_msgs in
-  -- #eval decipher "122"
 
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+
+  /--
+  info: 'easy'
+  -/
+  #guard_msgs in
+  #eval decipher "10197115121"
+
+  /--
+  info: 'b'
+  -/
+  #guard_msgs in
+  #eval decipher "98"
+
+  /--
+  info: 'z'
+  -/
+  #guard_msgs in
+  #eval decipher "122"
 

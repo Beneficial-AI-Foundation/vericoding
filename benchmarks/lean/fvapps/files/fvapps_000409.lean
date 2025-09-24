@@ -22,25 +22,4 @@ theorem bulb_switch_negative (n : Int) (h : n < 0) :
 theorem bulb_switch_zero :
   bulbSwitch 0 = 0 :=
   sorry
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval bulb_switch 3
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval bulb_switch 0
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval bulb_switch 4
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

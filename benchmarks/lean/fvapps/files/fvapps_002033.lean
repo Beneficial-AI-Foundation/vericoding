@@ -37,6 +37,3 @@ theorem single_dancer_edge_cases {w h : Nat} (hw : w ≥ 2) (hh : h ≥ 2) :
   result₁ = [(1, h)] ∧ 
   result₂ = [(w, 1)] := sorry
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: guarded

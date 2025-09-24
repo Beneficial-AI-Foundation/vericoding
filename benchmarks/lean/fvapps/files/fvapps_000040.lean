@@ -20,25 +20,4 @@ theorem min_ops_all_same {arr : List Nat} :
 
 theorem min_ops_single_elem {arr : List Nat} :
   List.length arr = 1 → min_ops_to_sort arr = 0 := sorry
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval min_ops_to_sort [3, 1, 6, 6, 3, 1, 1]
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval min_ops_to_sort [1, 1, 4, 4, 4, 7, 8, 8]
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval min_ops_to_sort [4, 2, 5, 2, 6, 2, 7]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

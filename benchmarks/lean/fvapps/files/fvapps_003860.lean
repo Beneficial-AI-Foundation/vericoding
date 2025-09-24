@@ -1,40 +1,23 @@
 -- <vc-preamble>
-def next_happy_year (year : Nat) : Nat := sorry
-
--- Helper functions
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
-def number_to_digits (n : Nat) : List Nat := sorry 
-def count_unique (l : List Nat) : Nat := sorry
+def next_happy_year (year : Nat) : Nat :=
+sorry
+
+def number_to_digits (n : Nat) : List Nat :=
+sorry
+
+def count_unique (l : List Nat) : Nat :=
+sorry
 -- </vc-definitions>
 
 -- <vc-theorems>
-theorem next_happy_year_increases (year : Nat) 
+theorem next_happy_year_increases (year : Nat)
   (h : year ≥ 1000 ∧ year ≤ 8999) :
-  next_happy_year year > year := sorry
-
-/-
-info: 1023
--/
--- #guard_msgs in
--- #eval next_happy_year 1001
-
-/-
-info: 7801
--/
--- #guard_msgs in
--- #eval next_happy_year 7712
-
-/-
-info: 9012
--/
--- #guard_msgs in
--- #eval next_happy_year 8999
+  next_happy_year year > year :=
+sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

@@ -30,6 +30,3 @@ theorem cupcakes_zero_cases (n : Nat) :
   calculate_cupcakes 0 0 = 0 :=
   sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

@@ -1,0 +1,38 @@
+vc-description: |-
+  function_signature: def max_fill_count(grid : list[list[int]], capacity : int) -> int
+
+  Please write a function that sorts an array of non-negative integers according to
+  number of ones in their binary representation in ascending order. For similar number
+  of ones, sort based on decimal value.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+  spec fn popcount(n: nat) -> nat
+      decreases n
+  {
+      if n == 0 { 0 } else { popcount(n / 2) + n % 2 }
+  }
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn sort_array(s: Vec<u8>) -> (sorted: Vec<u8>)
+      ensures 
+          forall|i: int, j: int| 0 <= i < j < sorted@.len() ==> popcount(sorted@[i] as nat) <= popcount(sorted@[j] as nat)
+              && sorted@.len() == s@.len()
+              && s@.to_multiset() == sorted@.to_multiset()
+
+vc-code: |-
+  {
+      assume(false);
+      unreached()
+  }
+
+vc-postamble: |-
+
+  }
+
+  fn main() {}

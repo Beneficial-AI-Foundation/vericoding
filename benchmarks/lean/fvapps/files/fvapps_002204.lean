@@ -36,25 +36,4 @@ theorem symmetry_property
   (h8 : points.Nodup) :
   count_manhattan_compass_pairs n a b points = count_manhattan_compass_pairs n b a points :=
 sorry
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval count_manhattan_compass_pairs *test1
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval count_manhattan_compass_pairs *test2
-
-/-
-info: 7
--/
--- #guard_msgs in
--- #eval count_manhattan_compass_pairs *test3
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: unguarded

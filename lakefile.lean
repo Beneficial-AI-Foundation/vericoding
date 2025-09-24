@@ -24,15 +24,6 @@ This project contains formal specifications and verifications ported from variou
 particularly Dafny benchmarks and NumPy specifications.
 -/
 
--- not required any longer?
--- lean_lib BenchmarksGenerated where
---   globs := #[.andSubmodules `BenchmarksGenerated]
---   srcDir := "lean"
-
--- not required any longer?
--- lean_lib DafnyBenchSpecs where
---   globs := #[.andSubmodules `DafnyBenchSpecs]
-
 -- vericoder.py puts files here
 lean_lib Generated where
   globs := #[.andSubmodules `Generated]
@@ -50,11 +41,12 @@ lean_lib Benchmarks where
     -- Include all subdirectories (including vericoder_* dirs)
     .andSubmodules `apps,
     .andSubmodules `bignum,
+    .andSubmodules `clever,
     .andSubmodules `dafnybench,
-    .andSubmodules `humaneval,
-    .andSubmodules `humaneval_clever,
+    .andSubmodules `fvapps,
     .andSubmodules `numpy_simple,
     .andSubmodules `numpy_triple,
+    .andSubmodules `verified_cogen,
     .andSubmodules `verina,
   ]
   srcDir := "benchmarks/lean"

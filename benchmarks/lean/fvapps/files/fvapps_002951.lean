@@ -23,25 +23,4 @@ theorem count_sheep_zero :
 
 theorem count_sheep_negative {n: Int} (h: n < 0) :
   count_sheep n = "" := sorry
-
-/-
-info: '1 sheep...2 sheep...3 sheep...'
--/
--- #guard_msgs in
--- #eval count_sheep 3
-
-/-
-info: '1 sheep...'
--/
--- #guard_msgs in
--- #eval count_sheep 1
-
-/-
-info: ''
--/
--- #guard_msgs in
--- #eval count_sheep 0
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

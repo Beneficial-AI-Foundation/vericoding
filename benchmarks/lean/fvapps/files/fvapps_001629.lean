@@ -16,18 +16,4 @@ theorem testcase_properties (n : Nat) (balloons : List (Nat × Nat))
 -- </vc-definitions>
 
 -- <vc-theorems>
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval len b1
-
-/-
-info: 302
--/
--- #guard_msgs in
--- #eval len b2
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

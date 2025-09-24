@@ -36,25 +36,4 @@ sorry
 theorem multiple_modulo_equivalence (x y : Int) :
   x % 3 = y % 3 → x % 5 = y % 5 → multiple x = multiple y :=
 sorry
-
-/-
-info: 'BangBoom'
--/
--- #guard_msgs in
--- #eval multiple 30
-
-/-
-info: 'Bang'
--/
--- #guard_msgs in
--- #eval multiple 9
-
-/-
-info: 'Miss'
--/
--- #guard_msgs in
--- #eval multiple 98
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

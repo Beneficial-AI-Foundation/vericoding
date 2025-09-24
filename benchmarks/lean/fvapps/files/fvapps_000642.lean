@@ -41,6 +41,3 @@ theorem large_tolerance_all_yes {scale tolerance : Int} {numbers : List Int}
   (h1 : tolerance ≥ 100) (h2 : ∀ n ∈ numbers, n ≥ 0) :
   ∀ x ∈ check_sqrt_accuracy scale tolerance numbers, x = "yes" := sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

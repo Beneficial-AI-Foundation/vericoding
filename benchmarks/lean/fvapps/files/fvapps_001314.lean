@@ -36,25 +36,4 @@ sorry
 theorem solve_sequence_case3 :
   solve_sequence 4 [1, 2, 1, 2] = [1, 2, -1, 2] :=
 sorry
-
-/-
-info: [4, 3, -1, 2]
--/
--- #guard_msgs in
--- #eval solve_sequence 4 [4, 3, 1, 2]
-
-/-
-info: [-1, 2, 2, -1, 3, -1]
--/
--- #guard_msgs in
--- #eval solve_sequence 6 [1, 2, 2, 1, 3, 1]
-
-/-
-info: [1, 2, -1, 2]
--/
--- #guard_msgs in
--- #eval solve_sequence 4 [1, 2, 1, 2]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

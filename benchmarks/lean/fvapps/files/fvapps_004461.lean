@@ -29,25 +29,4 @@ theorem preserved_characters (s : String) (h : s.length > 0) :
   let result := buildPalindrome s
   ∀ c : Char, 
     result.data.count c ≥ s.data.count c := sorry
-
-/-
-info: 'abcdcba'
--/
--- #guard_msgs in
--- #eval build_palindrome "abcdc"
-
-/-
-info: 'ababa'
--/
--- #guard_msgs in
--- #eval build_palindrome "ababa"
-
-/-
-info: 'bacdcab'
--/
--- #guard_msgs in
--- #eval build_palindrome "cdcab"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

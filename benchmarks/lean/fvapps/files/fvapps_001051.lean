@@ -38,25 +38,4 @@ theorem simple_path_one_word_length_two :
   let m2 := m1 -- TODO: Add 1 at position [1][2]
   count_words m2 'b' 2 = 1 :=
 sorry
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval count_words [[0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]] + [[0] * 26 for _ in range(23)] "c" 3
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval count_words test_matrix "b" 2
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval count_words [[0] * 26 for _ in range(26)] "a" 2
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

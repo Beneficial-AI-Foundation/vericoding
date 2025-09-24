@@ -17,25 +17,4 @@ theorem non_first_person_prob (n : Nat) (h : n > 1) :
 
 theorem first_person_prob :
   nth_person_gets_nth_seat 1 = 1.0 := sorry
-
-/-
-info: 1.0
--/
--- #guard_msgs in
--- #eval nth_person_gets_nth_seat 1
-
-/-
-info: 0.5
--/
--- #guard_msgs in
--- #eval nth_person_gets_nth_seat 2
-
-/-
-info: 0.5
--/
--- #guard_msgs in
--- #eval nth_person_gets_nth_seat 100
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

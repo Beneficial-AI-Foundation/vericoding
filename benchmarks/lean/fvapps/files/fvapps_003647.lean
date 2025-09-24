@@ -35,6 +35,3 @@ theorem words_are_permutations
   (hw2: w2 ∈ get_words input)
   : ∃ (perm: List Char), w2.data = perm ∧ perm.length = w1.data.length := sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

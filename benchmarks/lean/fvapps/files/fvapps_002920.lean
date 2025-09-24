@@ -19,6 +19,3 @@ theorem increasing_numbers_base_cases :
   increasing_numbers 1 = 10 ∧ 
   increasing_numbers 2 = 55 := sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

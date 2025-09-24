@@ -33,25 +33,4 @@ theorem sorted_array_zero_inversions (n : Nat) (arr sorted : List Nat) :
   let (inv, _) := solve_inversions n sorted
   inv = 0 :=
   sorry
-
-/-
-info: (1, 0)
--/
--- #guard_msgs in
--- #eval solve_inversions 4 arr1.copy()
-
-/-
-info: (4, 14)
--/
--- #guard_msgs in
--- #eval solve_inversions 9 arr2.copy()
-
-/-
-info: (0, 8)
--/
--- #guard_msgs in
--- #eval solve_inversions 3 arr3.copy()
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: unguarded

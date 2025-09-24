@@ -33,8 +33,6 @@ vc-preamble: |-
   def sorted (l : List Nat) : Bool := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def distinct (l : List Nat) : Bool := sorry

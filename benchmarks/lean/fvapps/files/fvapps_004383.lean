@@ -18,6 +18,3 @@ theorem sxore_output_pattern (n : Nat) :
   (n % 4 = 2 → sxore n = n + 1) ∧
   (n % 4 = 3 → sxore n = 0) := sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

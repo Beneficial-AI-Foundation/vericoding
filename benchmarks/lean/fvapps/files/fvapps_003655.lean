@@ -23,25 +23,4 @@ theorem spacify_chars_preserved (s : String) :
 theorem spacify_spaces_between (s : String) (h : s.length > 1) :
   ∀ i, i < (spacify s).length → 
   i % 2 = 1 → ((spacify s).data.get ⟨i, by sorry⟩) = ' ' := sorry
-
-/-
-info: ''
--/
--- #guard_msgs in
--- #eval spacify ""
-
-/-
-info: 'a'
--/
--- #guard_msgs in
--- #eval spacify "a"
-
-/-
-info: 'P i p p i'
--/
--- #guard_msgs in
--- #eval spacify "Pippi"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

@@ -41,25 +41,4 @@ theorem find_max_consecutive_jars_sort_invariant (chocolates : List Nat)
     let k := 2 * (List.foldl Nat.max 0 chocolates) 
     find_max_consecutive_jars n k chocolates =
     find_max_consecutive_jars n k chocolates := sorry
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval find_max_consecutive_jars 6 5 [1, 3, 3, 1, 1, 5]
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval find_max_consecutive_jars 4 6 [2, 3, 2, 1]
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval find_max_consecutive_jars 5 4 [1, 2, 2, 1, 3]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

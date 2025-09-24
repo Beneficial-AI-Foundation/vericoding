@@ -66,6 +66,3 @@ theorem find_array_empty_ops (n : Nat)
   ∀ i : Fin arr.get!.length, arr.get!.get i = 10^9 :=
 sorry
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: guarded

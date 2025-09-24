@@ -32,25 +32,4 @@ theorem max_performance_min_case :
 theorem max_performance_k_one (n : Nat) (speeds : List Nat) (efficiencies : List Nat)
   (h1 : speeds = [2,1,3]) (h2 : efficiencies = [3,2,1]) (h3 : n = 3) :
   max_performance n speeds efficiencies 1 = 6 := sorry
-
-/-
-info: 60
--/
--- #guard_msgs in
--- #eval max_performance 6 [2, 10, 3, 1, 5, 8] [5, 4, 3, 9, 7, 2] 2
-
-/-
-info: 68
--/
--- #guard_msgs in
--- #eval max_performance 6 [2, 10, 3, 1, 5, 8] [5, 4, 3, 9, 7, 2] 3
-
-/-
-info: 72
--/
--- #guard_msgs in
--- #eval max_performance 6 [2, 10, 3, 1, 5, 8] [5, 4, 3, 9, 7, 2] 4
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

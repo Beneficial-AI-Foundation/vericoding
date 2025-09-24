@@ -38,25 +38,4 @@ theorem sort_by_height_no_trees {a : List Int} :
   ∀ i j, i < j → j < List.length a → 
     (sort_by_height a).get ⟨i, sorry⟩ ≤ (sort_by_height a).get ⟨j, sorry⟩ :=
   sorry
-
-/-
-info: expected1
--/
--- #guard_msgs in
--- #eval sort_by_height [-1, 150, 190, 170, -1, -1, 160, 180]
-
-/-
-info: expected2
--/
--- #guard_msgs in
--- #eval sort_by_height [-1, -1, -1, -1, -1]
-
-/-
-info: expected3
--/
--- #guard_msgs in
--- #eval sort_by_height [4, 2, 9, 11, 2, 16]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

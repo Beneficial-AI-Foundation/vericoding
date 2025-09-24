@@ -29,25 +29,4 @@ theorem count_country_codes_empty :
 
 theorem count_country_codes_single_char :
   ∀ c : Char, count_country_codes (String.mk [c]) = 0 := sorry
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval count_country_codes "INBY"
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval count_country_codes "BYBY"
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval count_country_codes "ABCD"
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

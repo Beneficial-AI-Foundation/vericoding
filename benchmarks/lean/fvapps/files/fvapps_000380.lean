@@ -28,25 +28,4 @@ sorry
 theorem large_inputs_return_bool (n : Nat) (h₁ : n ≥ 1000) (h₂ : n ≤ 10000) :
   ∃ b : Bool, can_alice_win_stones n = b :=
 sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval can_alice_win_stones 1
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval can_alice_win_stones 2
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval can_alice_win_stones 4
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

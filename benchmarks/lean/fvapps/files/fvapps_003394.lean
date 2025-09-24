@@ -23,25 +23,4 @@ theorem paperwork_zero_nonpositive_n (n m : Int) :
 
 theorem paperwork_zero_nonpositive_m (n m : Int) :
   m ≤ 0 → paperwork n m = 0 := sorry
-
-/-
-info: 25
--/
--- #guard_msgs in
--- #eval paperwork 5 5
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval paperwork 5 -5
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval paperwork 5 0
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

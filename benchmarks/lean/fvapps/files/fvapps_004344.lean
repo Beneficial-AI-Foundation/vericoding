@@ -33,25 +33,4 @@ theorem find_nth_digit_cycle (a b i : Nat)
     (h1 : a ≤ 9) (h2 : b ≤ 9) :
     find_nth_digit a b (20 + i) = find_nth_digit a b (40 + i) :=
   sorry
-
-/-
-info: 5
--/
--- #guard_msgs in
--- #eval find_nth_digit 7 8 9
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval find_nth_digit 0 0 1000000
-
-/-
-info: 8
--/
--- #guard_msgs in
--- #eval find_nth_digit 1 2 4
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

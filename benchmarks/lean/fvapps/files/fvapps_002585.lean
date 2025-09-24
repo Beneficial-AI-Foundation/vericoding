@@ -35,25 +35,4 @@ sorry
 theorem timed_reading_negative_length :
   timed_reading (-1) "hello" = 0 :=
 sorry
-
-/-
-info: 7
--/
--- #guard_msgs in
--- #eval timed_reading 4 "The Fox asked the stork, "How is the soup?""
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval timed_reading 3 "This play was good for us."
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval timed_reading 1 "Oh!"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

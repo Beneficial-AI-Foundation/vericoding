@@ -37,25 +37,4 @@ theorem find_max_modulo_empty_error :
 
 theorem find_max_modulo_zero_error (arr : List Nat) :
   arr = [0] → find_max_modulo arr = 0 := sorry
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval find_max_modulo [1, 2]
-
-/-
-info: 5
--/
--- #guard_msgs in
--- #eval find_max_modulo [5, 2, 7, 3]
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval find_max_modulo [100]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

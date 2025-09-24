@@ -45,25 +45,4 @@ theorem single_answer_behavior (q : String) (info : String) :
   let shares_words := ∃ w ∈ qwords, w ∈ iwords
   answer q [info] = if shares_words then some info else none
   := by sorry
-
-/-
-info: 'no he is NOT'
--/
--- #guard_msgs in
--- #eval answer "is khalkhoul dumb" ["no he is NOT", "i guess so"]
-
-/-
-info: 'my name is bob'
--/
--- #guard_msgs in
--- #eval answer "what is your name" ["my name is bob", "i am 20 years old"]
-
-/-
-info: None
--/
--- #guard_msgs in
--- #eval answer "abc def ghi" ["xyz 123", "foo bar"]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

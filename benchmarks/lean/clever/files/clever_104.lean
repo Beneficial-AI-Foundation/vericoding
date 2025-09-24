@@ -34,8 +34,3 @@ theorem correctness
 := by
   sorry
 -- </vc-theorems>
-
--- #test implementation [15, 33, 1422, 1] = [1, 15, 33]
--- #test implementation [152, 323, 1422, 10] = []
--- #test implementation [12345, 2033, 111, 151] = [111, 151]
--- #test implementation [135, 103, 31] = [31, 135]

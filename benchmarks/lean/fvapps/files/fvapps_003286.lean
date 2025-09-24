@@ -21,25 +21,4 @@ theorem disjunction_exclusive_or
 
 theorem disjunction_empty_error
   : ¬∃ (b: Bool), ∃ (res: Bool), disjunction [] b = res := sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval disjunction [False, True, False] False
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval disjunction [False, True, True, True] True
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval disjunction [True, True, True, True] True
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

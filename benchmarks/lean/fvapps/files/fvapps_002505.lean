@@ -14,6 +14,3 @@ def parseResult (s : String) : List (List Int) := sorry
 theorem sort_by_attribute_empty_error (k : Nat) :
   sort_by_attribute [] k = "" := sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

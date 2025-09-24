@@ -24,25 +24,4 @@ theorem sflpf_data_sum_property (val nmax : Nat) (h1 : val ≥ 2) (h2 : nmax ≥
   ∀ n ∈ sflpf_data val nmax, 
     List.length (primef n) > 1 ∧ 
     List.head! (primef n) + List.getLast! (primef n) = val := sorry
-
-/-
-info: [21, 25, 63]
--/
--- #guard_msgs in
--- #eval sflpf_data 10 100
-
-/-
-info: [26, 52, 78, 104, 130]
--/
--- #guard_msgs in
--- #eval sflpf_data 15 150
-
-/-
-info: [998]
--/
--- #guard_msgs in
--- #eval sflpf_data 501 1000
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

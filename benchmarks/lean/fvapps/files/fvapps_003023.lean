@@ -17,25 +17,4 @@ theorem check_alive_returns_bool (health : Int) :
 theorem check_alive_positive_health (health : Int) :
   check_alive health ↔ health > 0 :=
   sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval check_alive 5
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval check_alive 0
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval check_alive -5
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

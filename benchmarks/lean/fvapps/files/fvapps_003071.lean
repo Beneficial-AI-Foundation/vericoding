@@ -22,25 +22,4 @@ theorem already_lower_stays_lower (s : String)
   (h1 : s.length > 0) 
   (h2 : ∀ c ∈ s.data, c.isLower) :
   case_unification s = s.toLower := sorry
-
-/-
-info: 'aba'
--/
--- #guard_msgs in
--- #eval case_unification "Aba"
-
-/-
-info: 'ABA'
--/
--- #guard_msgs in
--- #eval case_unification "ABa"
-
-/-
-info: 'asdervt'
--/
--- #guard_msgs in
--- #eval case_unification "asdERvT"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

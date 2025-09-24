@@ -45,6 +45,3 @@ theorem alternating_elements_preserve_length
   (sum_consecutives xs).length = xs.length :=
 sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

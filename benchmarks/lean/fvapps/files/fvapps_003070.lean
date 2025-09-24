@@ -23,6 +23,3 @@ theorem basic_properties {keys : List String} (h : keys ≠ []) :
   (∀ k ∈ result_list, k.startsWith "'" ∧ k.endsWith "'") ∧
   result_list ≠ [] := sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

@@ -21,19 +21,4 @@ theorem edge_cases (N M : Nat) (hN : 2 ≤ N) (hN' : N ≤ 3) (hM : 2 ≤ M) (hM
 theorem given_cases : 
   find_kth_word 2 5 17 [[7,9], [13,18], [10,12], [4,18], [3,9]] = "aaaba" ∧
   find_kth_word 1 1 1 [[5]] = "a" := sorry
-
-/-
-info: 'aaaba'
--/
--- #guard_msgs in
--- #eval find_kth_word 2 5 17 [[7, 9], [13, 18], [10, 12], [4, 18], [3, 9]]
-
-/-
-info: 'a'
--/
--- #guard_msgs in
--- #eval find_kth_word 1 1 1 [[5]]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

@@ -62,8 +62,6 @@ vc-preamble: |-
     | x::xs => Nat.min x (minimum xs)
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def solve_party_weights (n m w : Nat) (weights beauties : List Nat) 

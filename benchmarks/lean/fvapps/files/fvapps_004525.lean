@@ -33,25 +33,4 @@ theorem weather_info_above_freezing {temp : Float} (h : temp > 32) :
 
 theorem weather_info_freezing {temp : Float} (h : temp < 32) :
   ∃ s₁ s₂ : String, weather_info temp = s₁ ++ "freezing temperature" ++ s₂ := sorry
-
-/-
-info: '10.0 is above freezing temperature'
--/
--- #guard_msgs in
--- #eval weather_info 50
-
-/-
-info: '-5.0 is freezing temperature'
--/
--- #guard_msgs in
--- #eval weather_info 23
-
-/-
-info: '0.0 is freezing temperature'
--/
--- #guard_msgs in
--- #eval weather_info 32
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

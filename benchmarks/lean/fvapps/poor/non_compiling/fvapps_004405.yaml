@@ -49,8 +49,6 @@ vc-preamble: |-
     count a := List.length (List.filter (fun x => x == a) l)
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def sort_by_perfsq (arr : List Nat) : List Nat := sorry

@@ -26,25 +26,4 @@ theorem two_distinct_elements (arr : List Nat) (h : arr.length = 2) :
 
 theorem identical_pair_sum (x : Nat) :
   xor_of_pairwise_sums 2 [x, x] = 2 * x := sorry
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval xor_of_pairwise_sums 2 [1, 2]
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval xor_of_pairwise_sums 3 [1, 2, 3]
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval xor_of_pairwise_sums 2 [1, 1]
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: unguarded

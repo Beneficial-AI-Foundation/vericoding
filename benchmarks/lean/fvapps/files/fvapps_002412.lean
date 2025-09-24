@@ -29,25 +29,4 @@ theorem different_prefix_shortens {strs : List String} (h₁ : strs ≠ [])
 
 theorem substring_of_first {strs : List String} (h : strs ≠ []) :
   longest_common_prefix strs = (List.get! strs 0).take (longest_common_prefix strs).length := sorry
-
-/-
-info: 'fl'
--/
--- #guard_msgs in
--- #eval longest_common_prefix ["flower", "flow", "flight"]
-
-/-
-info: ''
--/
--- #guard_msgs in
--- #eval longest_common_prefix ["dog", "racecar", "car"]
-
-/-
-info: 'inters'
--/
--- #guard_msgs in
--- #eval longest_common_prefix ["interspecies", "interstellar", "interstate"]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

@@ -27,25 +27,4 @@ theorem all_zeros_array (flowerbed : List Nat) :
   let max_flowers := (flowerbed.length + 1) / 2
   can_place_flowers flowerbed max_flowers = true
   := sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval can_place_flowers [1, 0, 0, 0, 1] 1
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval can_place_flowers [1, 0, 0, 0, 1] 2
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval can_place_flowers [0, 0, 1, 0, 0] 1
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

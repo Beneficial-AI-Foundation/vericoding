@@ -22,25 +22,4 @@ theorem count_beautiful_powers_ten :
   count_beautiful_numbers 99 = 18 ∧ 
   count_beautiful_numbers 999 = 27 ∧
   count_beautiful_numbers 9999 = 36 := sorry
-
-/-
-info: 10
--/
--- #guard_msgs in
--- #eval count_beautiful_numbers 18
-
-/-
-info: 9
--/
--- #guard_msgs in
--- #eval count_beautiful_numbers 9
-
-/-
-info: 45
--/
--- #guard_msgs in
--- #eval count_beautiful_numbers 100500
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

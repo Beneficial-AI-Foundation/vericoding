@@ -34,25 +34,4 @@ theorem modulo_property (N : Nat) (h : N ≥ 1) (h2 : N ≤ 100) :
   let parents := List.range N
   let result := solve_marble_game N parents
   0 ≤ result ∧ result < 10^9 + 7 := sorry
-
-/-
-info: 8
--/
--- #guard_msgs in
--- #eval solve_marble_game 2 [0, 0]
-
-/-
-info: 96
--/
--- #guard_msgs in
--- #eval solve_marble_game 5 [0, 1, 1, 0, 4]
-
-/-
-info: 730395550
--/
--- #guard_msgs in
--- #eval solve_marble_game 31 [0, 1, 0, 2, 4, 0, 4, 1, 6, 4, 3, 9, 7, 3, 7, 2, 15, 6, 12, 10, 12, 16, 5, 3, 20, 1, 25, 20, 23, 24, 23]
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: unguarded

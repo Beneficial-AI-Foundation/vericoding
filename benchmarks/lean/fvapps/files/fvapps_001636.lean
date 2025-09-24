@@ -19,6 +19,3 @@ theorem doubles_convergence {n : Nat} (hn : n > 0) :
   ∀ i : Nat, i + 1 < n → 
     doubles 1 (i + 2) - doubles 1 (i + 1) < doubles 1 (i + 1) - doubles 1 i := sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

@@ -37,6 +37,3 @@ theorem opposite_pair_gives_yes (x : Int) :
 theorem all_positive_sequence_gives_no (x : Int) (h : x > 0) :
   can_get_zero_sum_subset x (x+1) (x+2) (x+3) = "No" := sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

@@ -21,25 +21,4 @@ theorem longest_length_bounded (s : String) :
 
 theorem nonempty_input_nonempty_output (s : String) (h : s.length > 0) :
   (longest s).length > 0 := sorry
-
-/-
-info: 'as'
--/
--- #guard_msgs in
--- #eval longest "asd"
-
-/-
-info: 'abcde'
--/
--- #guard_msgs in
--- #eval longest "abcdeapbcdef"
-
-/-
-info: 'aaaabbbbctt'
--/
--- #guard_msgs in
--- #eval longest "asdfaaaabbbbcttavvfffffdf"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

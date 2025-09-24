@@ -21,5 +21,3 @@ theorem splitAndAppend_spec_satisfied (list: Array Int) (n: Nat) (h_precond : sp
     splitAndAppend_postcond (list) (n) (splitAndAppend (list) (n) h_precond) h_precond := by
   sorry
 -- </vc-theorems>
-
-def main : IO Unit := return ()

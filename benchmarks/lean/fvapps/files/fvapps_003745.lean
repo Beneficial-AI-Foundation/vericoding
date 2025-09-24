@@ -23,25 +23,4 @@ theorem interweave_all_spaces :
 
 theorem interweave_basic_case :
   interweave ['a', 'b', 'c'] ['d', 'e', 'f'] = ['a', 'd', 'b', 'e', 'c', 'f'] := sorry
-
-/-
-info: ''
--/
--- #guard_msgs in
--- #eval interweave "" ""
-
-/-
-info: 'hello'
--/
--- #guard_msgs in
--- #eval interweave "hlo" "el"
-
-/-
-info: 'hello'
--/
--- #guard_msgs in
--- #eval interweave "h3lo" "el4"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

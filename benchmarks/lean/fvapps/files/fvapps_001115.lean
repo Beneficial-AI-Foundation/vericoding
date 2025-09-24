@@ -36,25 +36,4 @@ theorem result_mod_property {n m q k : Nat} (h1 : 1 ≤ n) (h2 : n ≤ 100000)
                                           (h7 : 1 ≤ k) (h8 : k ≤ 100000) :
   solve_transformations n m q k = solve_transformations n m q k % MOD := by
   sorry
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval solve_transformations 1 1 1 1
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval solve_transformations 2 2 1 1
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval solve_transformations 2 3 1 1
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

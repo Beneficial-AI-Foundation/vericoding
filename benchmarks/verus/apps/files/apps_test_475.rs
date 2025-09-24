@@ -42,7 +42,7 @@ spec fn expected_result(n: nat, m: nat, k: nat) -> nat {
 
 // <vc-spec>
 fn solve(n: u64, m: u64, k: u64) -> (result: u64)
-    requires n >= 1 && m >= 1 && k >= 0 && k <= n - 1
+    requires n as nat >= 1 && m as nat >= 1 && k as nat >= 0 && k as nat <= n as nat - 1
     ensures result < 998244353
 // </vc-spec>
 // <vc-code>

@@ -35,8 +35,3 @@ theorem correctness
 := by
   sorry
 -- </vc-theorems>
-
--- #test implementation 0 = "db0db"
--- #test implementation 32 = "db100000db"
--- #test implementation 103 = "db1100111db"
--- #test implementation 15 = "db1111db"

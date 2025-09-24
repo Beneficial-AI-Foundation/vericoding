@@ -28,25 +28,4 @@ theorem largest_power_is_maximal (n: Nat) (h: n ≥ 5) :
   let result := largest_power n
   ∀ base exp : Nat, base ≥ 2 → exp ≥ 2 →
   base ^ exp < n → base ^ exp ≤ result.1 := sorry
-
-/-
-info: (81, 2)
--/
--- #guard_msgs in
--- #eval largest_power 90
-
-/-
-info: (64, 3)
--/
--- #guard_msgs in
--- #eval largest_power 65
-
-/-
-info: (0, -1)
--/
--- #guard_msgs in
--- #eval largest_power 1
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

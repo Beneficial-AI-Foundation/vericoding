@@ -42,25 +42,4 @@ theorem invalid_second_number {test_cases : List String}
   let results := process_divisions test_cases
   results.length = test_cases.length ∧
   ∀ r ∈ results, (r.startsWith "Error Code:") := sorry
-
-/-
-info: ['Error Code: integer division or modulo by zero']
--/
--- #guard_msgs in
--- #eval process_divisions ["1 0"]
-
-/-
-info: ["Error Code: invalid literal for int() with base 10: '$'"]
--/
--- #guard_msgs in
--- #eval process_divisions ["2 $"]
-
-/-
-info: ['3']
--/
--- #guard_msgs in
--- #eval process_divisions ["3 1"]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

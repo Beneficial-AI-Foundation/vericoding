@@ -31,25 +31,4 @@ sorry
 theorem solve_edge_cases_two_same (x : Int) :
   solve [x, x] = [x] :=
 sorry
-
-/-
-info: [4, 6, 3]
--/
--- #guard_msgs in
--- #eval solve [3, 4, 4, 3, 6, 3]
-
-/-
-info: [1, 2, 3]
--/
--- #guard_msgs in
--- #eval solve [1, 2, 1, 2, 1, 2, 3]
-
-/-
-info: [4, 5, 2, 1]
--/
--- #guard_msgs in
--- #eval solve [1, 1, 4, 5, 1, 2, 1]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

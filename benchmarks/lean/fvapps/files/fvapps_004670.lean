@@ -35,31 +35,4 @@ theorem crusoe_symmetry (d ang : Float)
   let (x2, y2) := crusoe 1 d (ang + 180) 1.0 1.0
   x1 = -x2 ∧ y1 = -y2 := 
 sorry
-
-/-
-info: round(0.8306737544381833, 7)
--/
--- #guard_msgs in
--- #eval round 0 7
-
-/-
-info: round(0.620694691344071, 7)
--/
--- #guard_msgs in
--- #eval round y 7
-
-/-
-info: 0.7071068
--/
--- #guard_msgs in
--- #eval round x 7
-
-/-
-info: 0.7071068
--/
--- #guard_msgs in
--- #eval round y 7
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

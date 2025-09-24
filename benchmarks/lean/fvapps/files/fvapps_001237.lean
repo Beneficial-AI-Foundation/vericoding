@@ -31,25 +31,4 @@ theorem non_palindrome (arr : List Int) (h : arr ≠ []) :
   let first := arr.head!
   let new_val := if first < 7 then first + 1 else first - 1
   is_rainbow_array (arr ++ [new_val]) = "no" := sorry
-
-/-
-info: 'yes'
--/
--- #guard_msgs in
--- #eval is_rainbow_array [1, 2, 3, 4, 4, 5, 6, 6, 6, 7, 6, 6, 6, 5, 4, 4, 3, 2, 1]
-
-/-
-info: 'no'
--/
--- #guard_msgs in
--- #eval is_rainbow_array [1, 2, 3, 4, 5, 6, 7, 6, 5, 4, 3, 2, 1, 1]
-
-/-
-info: 'no'
--/
--- #guard_msgs in
--- #eval is_rainbow_array [1, 2, 3, 4, 5, 6, 8, 6, 5, 4, 3, 2, 1]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

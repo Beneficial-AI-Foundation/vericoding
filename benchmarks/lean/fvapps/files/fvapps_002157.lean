@@ -17,25 +17,4 @@ theorem result_bounds {s1 s2 : String} :
   solve_string_transformation s1 s2 ≠ -1 →
   0 ≤ solve_string_transformation s1 s2 ∧ 
   solve_string_transformation s1 s2 ≤ s1.length := sorry
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval solve_string_transformation "aab" "bcc"
-
-/-
-info: -1
--/
--- #guard_msgs in
--- #eval solve_string_transformation "cabc" "abcb"
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval solve_string_transformation "aabd" "cccd"
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: guarded_and_plausible

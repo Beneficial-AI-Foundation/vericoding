@@ -26,19 +26,4 @@ theorem decode_key_zero_equiv {code : List Nat}
   (h1 : ∀ x ∈ code, 1 ≤ x ∧ x ≤ 26)
   (h2 : code.length > 0) :
   decode code 0 = decode code 10000 := sorry
-
-/-
-info: 'scout'
--/
--- #guard_msgs in
--- #eval decode [20, 12, 18, 30, 21] 1939
-
-/-
-info: 'masterpiece'
--/
--- #guard_msgs in
--- #eval decode [14, 10, 22, 29, 6, 27, 19, 18, 6, 12, 8] 1939
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

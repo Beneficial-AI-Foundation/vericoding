@@ -27,6 +27,3 @@ theorem primes_ap_valid_progression {lower upper : Nat} (h : lower ≤ upper) :
   let result := primes_a_p lower upper
   ∀ seq ∈ result, is_valid_ap seq lower upper = true := sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

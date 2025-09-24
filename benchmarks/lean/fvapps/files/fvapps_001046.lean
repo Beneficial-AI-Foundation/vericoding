@@ -28,25 +28,4 @@ theorem count_fours_matches_digit {nums : List Nat} (i : Nat) (h : i < nums.leng
 theorem count_fours_empty :
   count_fours [] = [] :=
   sorry
-
-/-
-info: expected1
--/
--- #guard_msgs in
--- #eval count_fours [447474, 228, 6664, 40, 81]
-
-/-
-info: expected2
--/
--- #guard_msgs in
--- #eval count_fours [4444, 1234, 5678]
-
-/-
-info: expected3
--/
--- #guard_msgs in
--- #eval count_fours [0, 4, 44, 444]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

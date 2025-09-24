@@ -27,19 +27,4 @@ theorem is_reversed_middle {α : Type} (xs : List α)
   let middle := (xs.drop start).take (xs.length - 2*start)
   reverseMiddle xs = middle.reverse :=
 sorry
-
-/-
-info: [100, 3]
--/
--- #guard_msgs in
--- #eval reverse_middle [4, 3, 100, 1]
-
-/-
-info: [{}, 'string', False]
--/
--- #guard_msgs in
--- #eval reverse_middle [1, False, "string", {}, 7.43]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

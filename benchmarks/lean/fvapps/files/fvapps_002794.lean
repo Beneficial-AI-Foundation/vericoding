@@ -28,31 +28,4 @@ theorem vowels_are_true_property {v : String} :
 
 theorem multiple_chars_are_false {s : String} :
   s.length ≥ 2 → ¬is_vowel s := sorry
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval is_vowel ""
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval is_vowel "a"
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval is_vowel "E"
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval is_vowel "z"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

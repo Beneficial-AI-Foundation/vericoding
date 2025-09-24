@@ -25,25 +25,4 @@ sorry
 theorem solve_series_formula {n : Nat} (h : n ≥ 2) :
   solve_series n = ((n - 2 + 1) * (2 * (n - 2) + 3) * (n - 2 + 2)) / 6 :=
 sorry
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval solve_series 1
-
-/-
-info: 91
--/
--- #guard_msgs in
--- #eval solve_series 7
-
-/-
-info: 140
--/
--- #guard_msgs in
--- #eval solve_series 8
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

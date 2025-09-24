@@ -45,25 +45,4 @@ theorem jump_descending :
 theorem jump_mixed_sequence :
   jump [4, 1, 1, 3, 1, 1, 1] = 2 :=
   sorry
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval jump [2, 3, 1, 1, 4]
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval jump [1, 2, 3]
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval jump [1]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

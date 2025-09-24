@@ -33,25 +33,4 @@ theorem solve_idempotent {a b : Nat} :
 theorem solve_known_case :
   solve 1 100 = 6 :=
   sorry
-
-/-
-info: 6
--/
--- #guard_msgs in
--- #eval solve 1 100
-
-/-
-info: 36
--/
--- #guard_msgs in
--- #eval solve 1 200
-
-/-
-info: 1104
--/
--- #guard_msgs in
--- #eval solve 200 1000
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

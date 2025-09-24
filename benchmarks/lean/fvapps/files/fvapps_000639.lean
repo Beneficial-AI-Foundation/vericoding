@@ -33,25 +33,4 @@ theorem find_updown_length_binary {n : Nat} {arr : List Int}
     (h_binary : ∀ x ∈ arr, x = 1 ∨ x = 2) :
   find_updown_length n arr ≥ (n + 1) / 2 :=
 sorry
-
-/-
-info: 7
--/
--- #guard_msgs in
--- #eval find_updown_length 7 [100, 1, 10, 3, 20, 25, 24]
-
-/-
-info: 6
--/
--- #guard_msgs in
--- #eval find_updown_length 5 [3, 3, 2, 4, 1]
-
-/-
-info: 5
--/
--- #guard_msgs in
--- #eval find_updown_length 4 [1, 2, 1, 3]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

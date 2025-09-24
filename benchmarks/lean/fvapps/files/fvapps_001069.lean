@@ -1,4 +1,10 @@
 -- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
+-- </vc-helpers>
+
+-- <vc-definitions>
 def min_cooking_time (n: Nat) (times: List Nat) : Nat :=
   sorry
 
@@ -7,18 +13,13 @@ def list_maximum (l: List Nat) : Nat :=
 
 def list_sorted_take (l: List Nat) (n: Nat) : List Nat :=
   sorry
--- </vc-preamble>
 
--- <vc-helpers>
--- </vc-helpers>
-
--- <vc-definitions>
 def list_sum (l: List Nat) : Nat :=
   sorry
 -- </vc-definitions>
 
 -- <vc-theorems>
-theorem min_cooking_time_lower_bound_half_sum {n: Nat} {times: List Nat} 
+theorem min_cooking_time_lower_bound_half_sum {n: Nat} {times: List Nat}
   (h1: 1 ≤ n) (h2: n ≤ 100) (h3: times.length ≥ 1) :
   let usedTimes := list_sorted_take times (min n times.length)
   min_cooking_time n times ≥ (list_sum usedTimes) / 2 := by
@@ -43,25 +44,4 @@ theorem min_cooking_time_equal_times {n: Nat} (h1: 1 ≤ n) (h2: n ≤ 100) :
 theorem min_cooking_time_single_item {times: List Nat} (h: times.length ≥ 1) :
   min_cooking_time 1 times = list_maximum times := by
   sorry
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval min_cooking_time 3 [2, 2, 2]
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval min_cooking_time 3 [1, 2, 3]
-
-/-
-info: 7
--/
--- #guard_msgs in
--- #eval min_cooking_time 4 [2, 3, 4, 5]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

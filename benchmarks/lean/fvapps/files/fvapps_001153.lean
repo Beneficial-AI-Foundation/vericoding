@@ -29,13 +29,4 @@ theorem solve_robot_capacity_empty_schedule
   (h2 : 1 ≤ y ∧ y ≤ 10) :
   solve_robot_capacity n y [] = 1 :=
 sorry
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval solve_robot_capacity 5 4 [[0, 3], [1, 2], [4, 4], [0, 4]]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

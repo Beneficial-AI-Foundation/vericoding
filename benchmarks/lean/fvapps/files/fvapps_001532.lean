@@ -19,6 +19,3 @@ theorem average_bounds {nums : List Int} (h : ∀ n ∈ nums, n ≥ 0) :
   let avg := (solve_weighted_sum (nums ++ [-1])).2
   avg = 0 ∨ avg ≥ 0 := sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

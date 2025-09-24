@@ -30,25 +30,4 @@ theorem flipping_game_basic_cases :
   flipping_game [0,0] = 2 ∧
   flipping_game [1,0,0] = 3 := by
   sorry
-
-/-
-info: 5
--/
--- #guard_msgs in
--- #eval flipping_game [1, 0, 0, 1, 0, 0]
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval flipping_game [1, 0, 0, 1]
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval flipping_game [1]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

@@ -27,19 +27,4 @@ theorem alternating_pixels_edge_value
   let output := edge_detection input
   ∀ i j, i < size → j < size →
     pixel_at output i j = diff := sorry
-
-/-
-info: '1 0 1'
--/
--- #guard_msgs in
--- #eval edge_detection "1 5 1"
-
-/-
-info: '2 9 4'
--/
--- #guard_msgs in
--- #eval edge_detection "2 1 2 10 2"
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

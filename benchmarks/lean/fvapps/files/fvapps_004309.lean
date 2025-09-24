@@ -14,6 +14,3 @@ instance : LE (Char × Bool) where
 -- <vc-theorems>
 theorem find_children_empty : find_children "" = "" := sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

@@ -22,6 +22,3 @@ theorem solve_fingerprint_reverses {n : Nat} {p : List Nat} (h : n ≥ 2) :
   solve_fingerprint n p = p.reverse :=
   sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

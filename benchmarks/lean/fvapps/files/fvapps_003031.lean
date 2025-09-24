@@ -24,6 +24,3 @@ theorem solve_subsegment (a b c : Nat) (h1: a ≤ b) (h2: b ≤ c) :
 theorem solve_monotonic_range (s e ext : Nat) (h: s ≤ e) :
   solve s e ≤ solve s (e + ext) := sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

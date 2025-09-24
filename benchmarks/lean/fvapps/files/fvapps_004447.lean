@@ -23,25 +23,4 @@ theorem pay_cheese_payment_bounds (wheels : List Nat) (h : wheels.length = 5) :
 
 theorem pay_cheese_zero (wheels : List Nat) (h : wheels.length = 5) :
   wheels.foldl (· + ·) 0 = 0 → pay_cheese wheels = "£0" := sorry
-
-/-
-info: '£1260'
--/
--- #guard_msgs in
--- #eval pay_cheese [750, 750, 750, 750, 600]
-
-/-
-info: '£1015'
--/
--- #guard_msgs in
--- #eval pay_cheese [574, 574, 574, 574, 574]
-
-/-
-info: '£0'
--/
--- #guard_msgs in
--- #eval pay_cheese [0, 0, 0, 0, 0]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

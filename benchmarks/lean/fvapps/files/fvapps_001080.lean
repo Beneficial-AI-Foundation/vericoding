@@ -27,6 +27,3 @@ theorem cooking_challenge_output_natural
   (combos : List (Nat × Nat))
   : ∀ x ∈ cooking_challenge n m q challenges combos, ∃ k : Nat, x = k := sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

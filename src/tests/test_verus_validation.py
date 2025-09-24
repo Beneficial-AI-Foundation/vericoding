@@ -15,7 +15,7 @@ from pathlib import Path
 
 # Import shared validation functionality
 sys.path.append(str(Path(__file__).parent.parent))
-from verus_validation import (
+from verus.verus_validation import (
     find_verus_executable, 
     check_syntax_with_verus,
     create_yaml_without_helpers,

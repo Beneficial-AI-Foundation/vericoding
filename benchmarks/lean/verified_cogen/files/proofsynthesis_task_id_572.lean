@@ -28,5 +28,3 @@ theorem removeDuplicates_spec_satisfied (arr : Array Int) (h_precond : removeDup
     removeDuplicates_postcond (arr) (removeDuplicates (arr) h_precond) h_precond := by
   sorry
 -- </vc-theorems>
-
-#check removeDuplicates

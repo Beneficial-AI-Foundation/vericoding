@@ -33,25 +33,4 @@ theorem negative_or_zero_angles (x : Int) (h : x ≤ 0) :
   is_valid_triangle 90 x 90 = "NO" ∧
   is_valid_triangle 90 90 x = "NO" :=
   sorry
-
-/-
-info: 'YES'
--/
--- #guard_msgs in
--- #eval is_valid_triangle 40 40 100
-
-/-
-info: 'YES'
--/
--- #guard_msgs in
--- #eval is_valid_triangle 45 45 90
-
-/-
-info: 'NO'
--/
--- #guard_msgs in
--- #eval is_valid_triangle 180 1 1
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

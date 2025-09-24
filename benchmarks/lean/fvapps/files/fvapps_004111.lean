@@ -1,43 +1,26 @@
 -- <vc-preamble>
-def mem_alloc (banks : List Nat) : Nat := sorry
-
-theorem mem_alloc_positive (banks : List Nat) (h : banks.length = 16) :
-  mem_alloc banks > 0 := sorry
+def list_sum (xs : List Nat) : Nat :=
+  xs.foldl (· + ·) 0
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
-def list_sum (xs : List Nat) : Nat :=
-  xs.foldl (· + ·) 0
+def mem_alloc (banks : List Nat) : Nat :=
+sorry
 -- </vc-definitions>
 
 -- <vc-theorems>
+theorem mem_alloc_positive (banks : List Nat) (h : banks.length = 16) :
+  mem_alloc banks > 0 :=
+sorry
+
 theorem mem_alloc_preserves_input (banks : List Nat) (h : banks.length = 16) :
-  mem_alloc banks = mem_alloc banks := sorry
+  mem_alloc banks = mem_alloc banks :=
+sorry
 
 theorem mem_alloc_deterministic (banks : List Nat) (h : banks.length = 16) :
-  mem_alloc banks = mem_alloc banks := sorry
-
-/-
-info: 70
--/
--- #guard_msgs in
--- #eval mem_alloc [5, 1, 10, 0, 1, 7, 13, 14, 3, 12, 8, 10, 7, 12, 0, 600]
-
-/-
-info: 316
--/
--- #guard_msgs in
--- #eval mem_alloc [53, 21, 10, 0, 1, 7, 13, 14, 3, 12, 8, 10, 7, 12, 0, 60]
-
-/-
-info: 826
--/
--- #guard_msgs in
--- #eval mem_alloc [14, 21, 10, 0, 1, 7, 0, 14, 3, 12, 8, 10, 17, 12, 0, 19]
+  mem_alloc banks = mem_alloc banks :=
+sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

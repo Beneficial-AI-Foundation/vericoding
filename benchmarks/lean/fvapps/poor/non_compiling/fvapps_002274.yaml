@@ -64,8 +64,6 @@ vc-preamble: |-
     xs.foldl (· + ·) 0
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def find_max_robots_and_black_cells (n m : Nat) (colors directions : List String) : Nat × Nat := sorry

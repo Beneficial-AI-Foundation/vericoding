@@ -33,25 +33,4 @@ theorem identify_weapon_invalid_character (character : String)
        character ≠ "Tormak" ∧
        character ≠ "LiElla") :
   identify_weapon character = "Not a character" := sorry
-
-/-
-info: 'Laval-Shado Valious'
--/
--- #guard_msgs in
--- #eval identify_weapon "Laval"
-
-/-
-info: 'Crominus-Grandorius'
--/
--- #guard_msgs in
--- #eval identify_weapon "Crominus"
-
-/-
-info: 'Not a character'
--/
--- #guard_msgs in
--- #eval identify_weapon "G"loona"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

@@ -39,31 +39,4 @@ theorem reverse_twice_identity {dna : String}
 theorem case_insensitive {dna : String}
   (h : ∀ c ∈ dna.data, c.toLower = 'a' ∨ c.toLower = 't' ∨ c.toLower = 'c' ∨ c.toLower = 'g') :
   reverse_complement dna = reverse_complement dna.toUpper := sorry
-
-/-
-info: 'TTCCGGAA'
--/
--- #guard_msgs in
--- #eval reverse_complement "TTCCGGAA"
-
-/-
-info: 'TACAGTCAGTC'
--/
--- #guard_msgs in
--- #eval reverse_complement "GACTGACTGTA"
-
-/-
-info: ''
--/
--- #guard_msgs in
--- #eval reverse_complement ""
-
-/-
-info: 'Invalid sequence'
--/
--- #guard_msgs in
--- #eval reverse_complement "XYZ"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

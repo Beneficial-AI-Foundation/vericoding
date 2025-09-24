@@ -1,13 +1,13 @@
 vc-description: |-
   /-
   Complete the function `power_of_two`/`powerOfTwo` (or equivalent, depending on your language) that determines if a given non-negative integer is a [power of two](https://en.wikipedia.org/wiki/Power_of_two).  From the corresponding Wikipedia entry:
-  
+
   > *a power of two is a number of the form 2^(n) where **n** is an integer, i.e. the result of exponentiation with number two as the base and integer **n** as the exponent.*
-  
+
   You may assume the input is always valid.
-  
+
   ## Examples
-  
+
   ~~~if-not:nasm
   ```python
   power_of_two(1024) ==> True
@@ -29,17 +29,17 @@ vc-description: |-
   call power_of_two    ; returns false
   ```
   ~~~
-  
+
   Beware of certain edge cases - for example, `1` is a power of `2` since `2^0 = 1` and `0` is not a power of `2`.
   -/
 
-vc-preamble: |-
+vc-preamble: |
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def power_of_two (n : Nat) : Bool := sorry
-  
+
   theorem power_of_two_positive (n : Nat) :
     power_of_two n = true → n > 0 := sorry
 
@@ -47,37 +47,37 @@ vc-theorems: |-
   theorem power_of_two_div_two (n : Nat) :
     power_of_two n = true →
     ∃ k, n = 2^k := sorry
-  
+
   theorem power_of_two_single_bit (n : Nat) :
     power_of_two n = true →
     ∃ k, (n = 2^k ∧ ∀ m, n = 2^m → m = k) := sorry
-  
+
   theorem power_of_two_bitwise (n : Nat) :
     n > 0 →
     power_of_two n = true ↔ n &&& (n - 1) = 0 := sorry
-  
+
   theorem power_of_two_zero :
     power_of_two 0 = false := sorry
-  
-  /-
-  info: False
-  -/
-  -- #guard_msgs in
-  -- #eval power_of_two 0
-  
-  /-
-  info: True
-  -/
-  -- #guard_msgs in
-  -- #eval power_of_two 1
-  
-  /-
-  info: True
-  -/
-  -- #guard_msgs in
-  -- #eval power_of_two 536870912
 
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+
+  /--
+  info: False
+  -/
+  #guard_msgs in
+  #eval power_of_two 0
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval power_of_two 1
+
+  /--
+  info: True
+  -/
+  #guard_msgs in
+  #eval power_of_two 536870912
 

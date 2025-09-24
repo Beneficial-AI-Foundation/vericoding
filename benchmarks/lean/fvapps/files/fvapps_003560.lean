@@ -30,25 +30,4 @@ theorem count_letters_and_digits_only_alphanumeric (s : String)
 theorem count_letters_and_digits_only_special (s : String)
   (h : ∀ c ∈ s.data, String.isAlphaNum c = false) :
   countLettersAndDigits s = 0 := sorry
-
-/-
-info: 7
--/
--- #guard_msgs in
--- #eval count_letters_and_digits "n!!ice!!123"
-
-/-
-info: 8
--/
--- #guard_msgs in
--- #eval count_letters_and_digits "de?=?=tttes!!t"
-
-/-
-info: 10
--/
--- #guard_msgs in
--- #eval count_letters_and_digits "u_n_d_e_r__S_C_O_R_E"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

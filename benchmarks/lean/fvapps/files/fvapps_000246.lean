@@ -40,6 +40,3 @@ theorem min_cost_to_hire_workers_unit_cost
 theorem min_cost_to_hire_workers_equal_ratio :
   Float.abs (min_cost_to_hire_workers [1, 2, 3] [2, 4, 6] 2 - 6) < 1e-5 := sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

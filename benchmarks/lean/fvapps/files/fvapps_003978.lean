@@ -22,25 +22,4 @@ theorem known_small_values :
 
 theorem sum_is_positive (n : Nat) (h : n ≥ 2) :
   summation_of_primes n > 0 := sorry
-
-/-
-info: 17
--/
--- #guard_msgs in
--- #eval summation_of_primes 10
-
-/-
-info: 77
--/
--- #guard_msgs in
--- #eval summation_of_primes 20
-
-/-
-info: 1060
--/
--- #guard_msgs in
--- #eval summation_of_primes 100
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

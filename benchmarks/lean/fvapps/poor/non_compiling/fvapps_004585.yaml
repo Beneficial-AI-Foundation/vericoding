@@ -16,8 +16,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def my_very_own_split (s : String) (delimiter : String) : List String :=

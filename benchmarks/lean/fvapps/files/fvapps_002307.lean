@@ -45,25 +45,4 @@ theorem periodic_property (s : String) (n : Nat)
   let b := String.join (List.replicate n s)
   repeatedStringMatch s b ≤ n :=
   sorry
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval repeatedStringMatch "abcd" "cdabcdab"
-
-/-
-info: -1
--/
--- #guard_msgs in
--- #eval repeatedStringMatch "abc" "xyz"
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval repeatedStringMatch "abc" "abcabc"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

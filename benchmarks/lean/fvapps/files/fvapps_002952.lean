@@ -41,25 +41,4 @@ sorry
 theorem valid_range_upper_bound (n k : Nat) :
   1 < k → k ≤ n → combs_non_empty_boxes n k ≤ k^n :=
 sorry
-
-/-
-info: 6
--/
--- #guard_msgs in
--- #eval combs_non_empty_boxes 4 3
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval combs_non_empty_boxes 4 4
-
-/-
-info: 'It cannot be possible!'
--/
--- #guard_msgs in
--- #eval combs_non_empty_boxes 4 5
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

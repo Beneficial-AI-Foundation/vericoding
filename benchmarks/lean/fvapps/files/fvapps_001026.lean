@@ -23,25 +23,4 @@ theorem portal_pass_specific_cases :
 
 theorem portal_pass_returns_string (portalPass : Nat) :
   (find_original_password portalPass).data.all (fun c => c.isDigit) := sorry
-
-/-
-info: '1305'
--/
--- #guard_msgs in
--- #eval find_original_password 3527
-
-/-
-info: '25047'
--/
--- #guard_msgs in
--- #eval find_original_password 47269
-
-/-
-info: '222'
--/
--- #guard_msgs in
--- #eval find_original_password 444
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

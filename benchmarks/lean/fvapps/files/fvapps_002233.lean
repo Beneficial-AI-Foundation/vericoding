@@ -33,6 +33,3 @@ theorem length_constraints {n : Nat} {a b : String}
   ∀ x ∈ (result.tail), 1 ≤ x ∧ x ≤ n :=
   sorry
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: guarded

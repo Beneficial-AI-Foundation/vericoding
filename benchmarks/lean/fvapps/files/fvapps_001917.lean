@@ -29,6 +29,3 @@ theorem repeated_string_properties (s : String) (t : String)
 theorem single_char :
   solve_cyclic_shift_game "a" = 0 := sorry
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: unguarded

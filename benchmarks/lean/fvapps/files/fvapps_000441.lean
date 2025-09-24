@@ -33,25 +33,4 @@ theorem repeating_nines
   let s2 := "1."
   is_rational_equal s1 s2 = true :=
 sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval is_rational_equal "0.(52)" "0.5(25)"
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval is_rational_equal "0.1666(6)" "0.166(66)"
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval is_rational_equal "0.9(9)" "1."
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

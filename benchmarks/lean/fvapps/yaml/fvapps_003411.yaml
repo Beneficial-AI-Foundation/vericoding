@@ -1,23 +1,23 @@
 vc-description: |-
   /-
   Create a method `sayHello`/`say_hello`/`SayHello` that takes as input a name, city, and state to welcome a person. Note that `name` will be an array consisting of one or more values that should be joined together with one space between each, and the length of the `name` array in test cases will vary.
-  
+
   Example:
-  
+
   ```python
   say_hello(['John', 'Smith'], 'Phoenix', 'Arizona')
   ```
-  
+
   This example will return the string `Hello, John Smith! Welcome to Phoenix, Arizona!`
   -/
 
-vc-preamble: |-
+vc-preamble: |
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def say_hello (names: List String) (city state: String) : String := sorry 
-  
+
   def String.substringExists (s1 s2: String) : Bool := sorry
 
 vc-theorems: |-
@@ -28,7 +28,7 @@ vc-theorems: |-
     (h4: state ≠ "") :
     ∀ n ∈ names, String.substringExists (say_hello names city state) n := 
     sorry
-  
+
   theorem say_hello_contains_location (names: List String) (city state: String)  
     (h1: names ≠ [])
     (h2: ∀ n ∈ names, n ≠ "") 
@@ -37,7 +37,7 @@ vc-theorems: |-
     String.substringExists (say_hello names city state) city ∧ 
     String.substringExists (say_hello names city state) state :=
     sorry
-  
+
   theorem say_hello_structure (names: List String) (city state: String)
     (h1: names ≠ [])
     (h2: ∀ n ∈ names, n ≠ "") 
@@ -48,26 +48,26 @@ vc-theorems: |-
      String.substringExists result "! Welcome to " ∧
      result.endsWith (", " ++ state ++ "!")) :=
     sorry
-  
-  /-
-  info: 'Hello, John Smith! Welcome to Phoenix, Arizona!'
-  -/
-  -- #guard_msgs in
-  -- #eval say_hello ["John", "Smith"] "Phoenix" "Arizona"
-  
-  /-
-  info: 'Hello, Franklin Delano Roosevelt! Welcome to Chicago, Illinois!'
-  -/
-  -- #guard_msgs in
-  -- #eval say_hello ["Franklin", "Delano", "Roosevelt"] "Chicago" "Illinois"
-  
-  /-
-  info: 'Hello, Marlo Stanfield! Welcome to Baltimore, Maryland!'
-  -/
-  -- #guard_msgs in
-  -- #eval say_hello ["Marlo", "Stanfield"] "Baltimore" "Maryland"
 
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+
+  /--
+  info: 'Hello, John Smith! Welcome to Phoenix, Arizona!'
+  -/
+  #guard_msgs in
+  #eval say_hello ["John", "Smith"] "Phoenix" "Arizona"
+
+  /--
+  info: 'Hello, Franklin Delano Roosevelt! Welcome to Chicago, Illinois!'
+  -/
+  #guard_msgs in
+  #eval say_hello ["Franklin", "Delano", "Roosevelt"] "Chicago" "Illinois"
+
+  /--
+  info: 'Hello, Marlo Stanfield! Welcome to Baltimore, Maryland!'
+  -/
+  #guard_msgs in
+  #eval say_hello ["Marlo", "Stanfield"] "Baltimore" "Maryland"
 

@@ -27,25 +27,4 @@ theorem most_frequent_item_count_nonempty (lst : List Int) :
 
 theorem most_frequent_item_count_empty :
   most_frequent_item_count [] = 0 := sorry
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval most_frequent_item_count [3, -1, -1]
-
-/-
-info: 5
--/
--- #guard_msgs in
--- #eval most_frequent_item_count [3, -1, -1, -1, 2, 3, -1, 3, -1, 2, 4, 9, 3]
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval most_frequent_item_count []
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

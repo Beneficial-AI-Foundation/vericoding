@@ -24,25 +24,4 @@ theorem solve_zero_k_property
   (h : result = solve_unique_string s 0)
   (h₁ : result ≠ []) :
   ∀ c ∈ result, c ∉ s := sorry
-
-/-
-info: 'abcfgij'
--/
--- #guard_msgs in
--- #eval solve_unique_string "helowrd" 0
-
-/-
-info: 'efhijlmpqs'
--/
--- #guard_msgs in
--- #eval solve_unique_string "background" 0
-
-/-
-info: 'a'
--/
--- #guard_msgs in
--- #eval solve_unique_string "b" 1
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

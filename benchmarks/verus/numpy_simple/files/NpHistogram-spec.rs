@@ -8,7 +8,7 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn histogram(data: Vec<f32>, bins: Vec<f32>) -> (result: Vec<i32>)
+fn histogram(data: Vec<f32>, bins: Vec<f32>) -> (result: Vec<i8>)
     requires 
         bins.len() >= 2,
     ensures
@@ -20,7 +20,7 @@ fn histogram(data: Vec<f32>, bins: Vec<f32>) -> (result: Vec<i32>)
     // impl-end
 }
 
-fn histogram_helper(data: Vec<f32>, bins: Vec<f32>, hist: Vec<i32>, index: i32) -> (result: Vec<i32>)
+fn histogram_helper(data: Vec<f32>, bins: Vec<f32>, hist: Vec<i8>, index: i8) -> (result: Vec<i8>)
     requires 
         bins.len() >= 2,
         hist.len() == bins.len() - 1,

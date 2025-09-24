@@ -28,25 +28,4 @@ theorem k_one_no_consecutive_dupes (s : String) :
 
 theorem k_gt_length_identity (s : String) (k : Nat) :
   k > s.length → removeDuplicates s k = s := sorry
-
-/-
-info: 'abcd'
--/
--- #guard_msgs in
--- #eval remove_duplicates "abcd" 2
-
-/-
-info: 'aa'
--/
--- #guard_msgs in
--- #eval remove_duplicates "deeedbbcccbdaa" 3
-
-/-
-info: 'ps'
--/
--- #guard_msgs in
--- #eval remove_duplicates "pbbcggttciiippooaais" 2
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

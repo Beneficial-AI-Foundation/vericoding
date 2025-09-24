@@ -21,25 +21,4 @@ theorem three_by_n_base_cases :
 
 theorem three_by_n_mod (n : Nat) (h : n > 0) :
   three_by_n n = three_by_n n % 12345787 := sorry
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval three_by_n 2
-
-/-
-info: 11
--/
--- #guard_msgs in
--- #eval three_by_n 4
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval three_by_n 1
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

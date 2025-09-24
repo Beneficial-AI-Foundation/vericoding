@@ -21,25 +21,4 @@ sorry
 theorem empty_string_hash :
   hex_hash "" = 0 :=
 sorry
-
-/-
-info: 20
--/
--- #guard_msgs in
--- #eval hex_hash "Yo"
-
-/-
-info: 91
--/
--- #guard_msgs in
--- #eval hex_hash "Hello, World!"
-
-/-
-info: 113
--/
--- #guard_msgs in
--- #eval hex_hash "Forty4Three"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

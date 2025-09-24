@@ -34,25 +34,4 @@ theorem BB_reduces_length (s : String) (i : Nat) :
 theorem repeated_B_reduces_to_zero_or_one (n : Nat) :
   let s := String.mk (List.replicate n 'B')
   get_shortest_string_length s = 0 ∨ get_shortest_string_length s = 1 := sorry
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval get_shortest_string_length "AAA"
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval get_shortest_string_length "BABA"
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval get_shortest_string_length "AABBBABBBB"
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: guarded_and_plausible

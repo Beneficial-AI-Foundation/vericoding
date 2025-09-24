@@ -29,25 +29,4 @@ theorem invalid_date_format (s : String)
     (min ≤ 59) ∧
     s = format_date d m y h min)) :
   date_checker s = false := sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval date_checker "01-09-2016 01:20"
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval date_checker "01-09-2016 01;20"
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval date_checker "14-10-1066 12:00"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

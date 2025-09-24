@@ -1,24 +1,29 @@
 -- <vc-preamble>
-def isHexDigit (c : Char) : Bool := sorry
-
-def rgb (r g b : Int) : String := sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
-def hexStringToNat (s : String) : Nat := sorry
+def isHexDigit (c : Char) : Bool :=
+sorry
 
-theorem rgb_output_format (r g b : Int) :
-  let result := rgb r g b
-  (result.length = 6) ∧ 
-  (result.data.all isHexDigit)
-  := sorry
+def rgb (r g b : Int) : String :=
+sorry
+
+def hexStringToNat (s : String) : Nat :=
+sorry
 -- </vc-definitions>
 
 -- <vc-theorems>
-theorem rgb_valid_inputs (r g b : Int) 
+theorem rgb_output_format (r g b : Int) :
+  let result := rgb r g b
+  (result.length = 6) ∧
+  (result.data.all isHexDigit)
+  :=
+sorry
+
+theorem rgb_valid_inputs (r g b : Int)
   (hr : 0 ≤ r ∧ r ≤ 255)
   (hg : 0 ≤ g ∧ g ≤ 255)
   (hb : 0 ≤ b ∧ b ≤ 255) :
@@ -29,40 +34,22 @@ theorem rgb_valid_inputs (r g b : Int)
   (hexStringToNat r_hex = r) ∧
   (hexStringToNat g_hex = g) ∧
   (hexStringToNat b_hex = b)
-  := sorry
+  :=
+sorry
 
 theorem rgb_negative_inputs (r g b : Int)
   (hr : r < 0)
   (hg : g < 0)
   (hb : b < 0) :
   rgb r g b = "000000"
-  := sorry
+  :=
+sorry
 
 theorem rgb_large_inputs (r g b : Int)
   (hr : r > 255)
   (hg : g > 255)
   (hb : b > 255) :
   rgb r g b = "FFFFFF"
-  := sorry
-
-/-
-info: '000000'
--/
--- #guard_msgs in
--- #eval rgb 0 0 0
-
-/-
-info: '010203'
--/
--- #guard_msgs in
--- #eval rgb 1 2 3
-
-/-
-info: '00FF7D'
--/
--- #guard_msgs in
--- #eval rgb -20 275 125
+  :=
+sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

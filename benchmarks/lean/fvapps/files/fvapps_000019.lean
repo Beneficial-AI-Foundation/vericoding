@@ -6,15 +6,15 @@ def maximum (l : List Nat) : Nat :=
 
 def listToFinset (l : List Nat) : List Nat :=
   l.eraseDups
-
-def windowsOfSize (l : List Nat) (size : Nat) : List (List Nat) :=
-  sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
+def windowsOfSize (l : List Nat) (size : Nat) : List (List Nat) :=
+  sorry
+
 def min_subscriptions (n k d : Nat) (shows : List Nat) : Nat :=
   sorry
 -- </vc-definitions>
@@ -74,25 +74,4 @@ theorem min_subscriptions_sliding_window
   let min_unique := (windows.map (fun w => (listToFinset w).length)).foldl Nat.min n
   result = min_unique :=
 sorry
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval min_subscriptions 5 2 2 [1, 2, 1, 2, 1]
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval min_subscriptions 9 3 3 [3, 3, 3, 2, 2, 2, 1, 1, 1]
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval min_subscriptions 4 10 4 [10, 8, 6, 4]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

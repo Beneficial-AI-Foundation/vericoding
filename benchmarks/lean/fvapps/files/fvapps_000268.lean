@@ -32,25 +32,4 @@ theorem close_exceeds_open_invalid (s : String) :
 theorem valid_parts_concat_with_stars_valid (parts : List String) :
   (∀ p ∈ parts, checkValidString p = true) →
   checkValidString (String.intercalate "*" parts) = true := sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval check_valid_string "()"
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval check_valid_string "(*)"
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval check_valid_string "(*))"
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

@@ -25,25 +25,4 @@ theorem solve_small_n (n m : Nat)
 theorem solve_n_one (m : Nat) (h : m > 0) :
   solve_non_periodic_strings 1 m = 1 :=
   sorry
-
-/-
-info: 6
--/
--- #guard_msgs in
--- #eval solve_non_periodic_strings 3 176
-
-/-
-info: 12
--/
--- #guard_msgs in
--- #eval solve_non_periodic_strings 4 100
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval solve_non_periodic_strings 2 50
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

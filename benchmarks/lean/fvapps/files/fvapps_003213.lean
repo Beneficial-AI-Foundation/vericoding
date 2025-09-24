@@ -27,25 +27,4 @@ theorem floors_above_12_decreased_by_two
 
 theorem floor_13_maps_to_11 :
   get_real_floor 13 = 11 := sorry
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval get_real_floor 5
-
-/-
-info: 13
--/
--- #guard_msgs in
--- #eval get_real_floor 15
-
-/-
-info: -3
--/
--- #guard_msgs in
--- #eval get_real_floor -3
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

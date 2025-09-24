@@ -33,8 +33,3 @@ theorem correctness
 := by
   sorry
 -- </vc-theorems>
-
--- #test implementation "5 apples and 6 oranges" 19 = 8
--- #test implementation "0 apples and 1 oranges" 3 = 2
--- #test implementation "2 apples and 3 oranges" 100 = 95
--- #test implementation "100 apples and 1 oranges" 120 = 19

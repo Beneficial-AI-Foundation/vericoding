@@ -30,6 +30,3 @@ theorem process_divmod_zero (a : Int) :
   process_divmod a 0 = none :=
   sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

@@ -8,7 +8,7 @@ verus! {
 // </vc-helpers>
 
 // <vc-spec>
-fn frexp(x: Vec<f32>) -> (result: (Vec<f32>, Vec<i32>))
+fn frexp(x: Vec<f32>) -> (result: (Vec<f32>, Vec<i8>))
     ensures
         result.0.len() == x.len(),
         result.1.len() == x.len(),

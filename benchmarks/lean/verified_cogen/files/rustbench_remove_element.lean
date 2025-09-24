@@ -24,6 +24,3 @@ theorem removeElement_spec_satisfied (a : Array Int) (pos : Nat) (h_precond : re
     removeElement_postcond a pos (removeElement a pos h_precond) h_precond := by
   sorry
 -- </vc-theorems>
-
-def main : IO Unit := do
-  return ()

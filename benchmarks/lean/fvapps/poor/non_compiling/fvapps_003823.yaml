@@ -50,8 +50,6 @@ vc-preamble: |-
     sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def get_all_prefixes (t: NodeMap) : List String :=

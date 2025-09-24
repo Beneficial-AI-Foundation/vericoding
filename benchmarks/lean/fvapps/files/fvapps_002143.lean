@@ -24,25 +24,4 @@ theorem solve_robot_exits_spec {N M : Nat} {robots exits : List Nat}
   (h3 : ∀ r ∈ robots, r ≤ N * M)
   (h4 : ∀ e ∈ exits, e ≤ N * M) :
   solve_robot_exits N M robots exits ≥ 0 := sorry
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval solve_robot_exits 2 2 [2, 3] [1, 4]
-
-/-
-info: 8
--/
--- #guard_msgs in
--- #eval solve_robot_exits 3 4 [2, 5, 10] [1, 3, 7, 13]
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval solve_robot_exits 4 1 [1, 2, 4, 5] [3]
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: unguarded

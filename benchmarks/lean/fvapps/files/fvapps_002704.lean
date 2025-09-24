@@ -35,25 +35,4 @@ theorem coordinates_non_negative (p1 p2 : List Int) (precision : Nat)
   (h4 : ∀ x ∈ p1, -100 ≤ x ∧ x ≤ 100) (h5 : ∀ x ∈ p2, -100 ≤ x ∧ x ≤ 100) :
   coordinates p1 p2 precision ≥ 0 :=
 sorry
-
-/-
-info: 11
--/
--- #guard_msgs in
--- #eval coordinates [3, 6] [14, 6]
-
-/-
-info: 15
--/
--- #guard_msgs in
--- #eval coordinates [-2, 5] [-2, -10] 2
-
-/-
-info: 5.385
--/
--- #guard_msgs in
--- #eval coordinates [4, 7] [6, 2] 3
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

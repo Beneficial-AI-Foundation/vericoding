@@ -16,25 +16,4 @@ theorem count_factorial_zeros_non_negative (k : Nat) :
 
 theorem count_factorial_zeros_zero_case : 
   count_factorial_zeros 0 = 5 := sorry
-
-/-
-info: 5
--/
--- #guard_msgs in
--- #eval count_factorial_zeros 0
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval count_factorial_zeros 5
-
-/-
-info: 5
--/
--- #guard_msgs in
--- #eval count_factorial_zeros 2
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

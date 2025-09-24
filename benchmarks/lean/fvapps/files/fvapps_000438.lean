@@ -37,25 +37,4 @@ theorem multiples {nums : List Int} {k : Int}
   (h3 : nums.length ≥ 2) :
   check_subarray_sum (nums.map (· * k)) k = true :=
   sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval check_subarray_sum [23, 2, 4, 6, 7] 6
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval check_subarray_sum [23, 2, 6, 4, 7] 6
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval check_subarray_sum [1, 2] 2
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

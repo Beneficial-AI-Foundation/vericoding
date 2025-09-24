@@ -30,6 +30,3 @@ theorem max_loss_at_full_discount (recipes : List Recipe) :
   calculateLoss recipes = recipes.foldr (fun r acc => r.1 * r.2.1 + acc) 0 :=
   sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

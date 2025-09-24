@@ -26,25 +26,4 @@ theorem consonant_count_case_insensitive (s : String) :
   consonant_count s = consonant_count s.toUpper ∧ 
   consonant_count s = consonant_count s.toLower :=
 sorry
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval consonant_count ""
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval consonant_count "aaaaa"
-
-/-
-info: 7
--/
--- #guard_msgs in
--- #eval consonant_count "helLo world"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

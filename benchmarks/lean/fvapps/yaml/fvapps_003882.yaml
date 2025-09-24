@@ -1,36 +1,36 @@
 vc-description: |-
   /-
   In an infinite array with two rows, the numbers in the top row are denoted
-  
+
   `. . . , A[−2], A[−1], A[0], A[1], A[2], . . .`
-  
+
   and the numbers in the bottom row are denoted
-  
+
   `. . . , B[−2], B[−1], B[0], B[1], B[2], . . .`
-  
+
   For each integer `k`, the entry `A[k]` is directly above
   the entry `B[k]` in the array, as shown:
-  
+
   ...|A[-2]|A[-1]|A[0]|A[1]|A[2]|...
   ...|B[-2]|B[-1]|B[0]|B[1]|B[2]|...
-  
+
   For each integer `k`, `A[k]` is the average of the entry to its left, the entry to its right,
   and the entry below it; similarly, each entry `B[k]` is the average of the entry to its
   left, the entry to its right, and the entry above it.
-  
+
   Given `A[0], A[1], A[2] and A[3]`, determine the value of `A[n]`. (Where range of n is -1000 Inputs and Outputs in BigInt!** 
-  
+
   Adapted from 2018 Euclid Mathematics Contest.
   https://www.cemc.uwaterloo.ca/contests/past_contests/2018/2018EuclidContest.pdf
   -/
 
-vc-preamble: |-
+vc-preamble: |
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def find_a (lst : List Int) (n : Int) : Int := sorry
-  
+
   def reverse (lst : List Int) : List Int := sorry
 
 vc-theorems: |-
@@ -39,7 +39,7 @@ vc-theorems: |-
     (h2 : 0 ≤ n)
     (h3 : n < 4) :
     find_a lst n = lst.get ⟨n.toNat, sorry⟩ := sorry
-  
+
   theorem find_a_recurrence {lst : List Int} (n : Int)
     (h1 : lst.length = 4)
     (h2 : n ≥ 4) :
@@ -48,26 +48,26 @@ vc-theorems: |-
       10 * find_a lst (n-2) + 
       6 * find_a lst (n-3) - 
       find_a lst (n-4) := sorry
-  
-  /-
-  info: 3
-  -/
-  -- #guard_msgs in
-  -- #eval find_a [1, 2, 3, 4] 2
-  
-  /-
-  info: 200
-  -/
-  -- #guard_msgs in
-  -- #eval find_a [38, 200, -18, 45] 1
-  
-  /-
-  info: 20
-  -/
-  -- #guard_msgs in
-  -- #eval find_a [1, 0, 0, 1] 5
 
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded_and_plausible
+
+  /--
+  info: 3
+  -/
+  #guard_msgs in
+  #eval find_a [1, 2, 3, 4] 2
+
+  /--
+  info: 200
+  -/
+  #guard_msgs in
+  #eval find_a [38, 200, -18, 45] 1
+
+  /--
+  info: 20
+  -/
+  #guard_msgs in
+  #eval find_a [1, 0, 0, 1] 5
 

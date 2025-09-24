@@ -58,21 +58,22 @@ vc-description: |-
   -/
 
 vc-preamble: |-
+
+vc-helpers: |-
+
+vc-definitions: |-
   def isPrime (n : Nat) : Bool :=
     sorry
   
   def getFirstNPrimes (n : Nat) : List Nat :=
     sorry
-
-vc-helpers: |-
-
-vc-definitions: |-
+  
   def numPrimorial (n : Nat) : Nat :=
     sorry
 
 vc-theorems: |-
-  theorem primorial_equals_product_of_first_n_primes (n : Nat) 
-    (h : n ≥ 1 ∧ n ≤ 10) : 
+  theorem primorial_equals_product_of_first_n_primes (n : Nat)
+    (h : n ≥ 1 ∧ n ≤ 10) :
     numPrimorial n = (getFirstNPrimes n).foldl (·*·) 1 :=
   sorry
   
@@ -85,26 +86,26 @@ vc-theorems: |-
     (h1 : n ≥ 1 ∧ n ≤ 10) (h2 : n > 1) :
     numPrimorial n % numPrimorial (n-1) = 0 :=
   sorry
-  
-  /-
-  info: 30
-  -/
-  -- #guard_msgs in
-  -- #eval num_primorial 3
-  
-  /-
-  info: 2310
-  -/
-  -- #guard_msgs in
-  -- #eval num_primorial 5
-  
-  /-
-  info: 9699690
-  -/
-  -- #guard_msgs in
-  -- #eval num_primorial 8
 
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: guarded
+  
+  /--
+  info: 30
+  -/
+  #guard_msgs in
+  #eval num_primorial 3
+  
+  /--
+  info: 2310
+  -/
+  #guard_msgs in
+  #eval num_primorial 5
+  
+  /--
+  info: 9699690
+  -/
+  #guard_msgs in
+  #eval num_primorial 8
 

@@ -25,5 +25,3 @@ theorem smallestMissingNumber_spec_satisfied (s : Array Int) (h_precond : smalle
     smallestMissingNumber_postcond s (smallestMissingNumber s h_precond) h_precond := by
   sorry
 -- </vc-theorems>
-
-def main : IO Unit := return ()

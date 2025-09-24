@@ -1,12 +1,13 @@
 -- <vc-preamble>
-def digSum (n : Nat) (p : Nat) : Nat :=
-  sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
+def digSum (n : Nat) (p : Nat) : Nat :=
+  sorry
+
 def digPow (n : Nat) (p : Nat) : Int :=
   sorry
 -- </vc-definitions>
@@ -38,25 +39,4 @@ theorem digPow_single_digit_power_one (n : Nat) :
 theorem digPow_large_power_is_int (n p : Nat) :
   ∃ k : Int, digPow n p = k := by
   sorry
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval dig_pow 89 1
-
-/-
-info: -1
--/
--- #guard_msgs in
--- #eval dig_pow 92 1
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval dig_pow 695 2
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

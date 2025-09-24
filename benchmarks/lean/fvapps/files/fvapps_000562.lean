@@ -57,25 +57,4 @@ theorem can_read_words_single_word_not
   (h₁ : known_letters.length > 0) :
   (∃ c ∈ word.data, c ∉ known_letters.data) →
   can_read_words known_letters [word] = ["No"] := sorry
-
-/-
-info: ['Yes', 'No']
--/
--- #guard_msgs in
--- #eval can_read_words "act" ["cat", "dog"]
-
-/-
-info: ['Yes', 'No', 'Yes']
--/
--- #guard_msgs in
--- #eval can_read_words "a" ["a", "b", "aa"]
-
-/-
-info: ['Yes', 'Yes', 'Yes', 'No']
--/
--- #guard_msgs in
--- #eval can_read_words "xyz" ["x", "xy", "xyz", "abc"]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

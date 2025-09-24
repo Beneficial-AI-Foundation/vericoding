@@ -35,25 +35,4 @@ theorem zero_perimeter_for_empty_land {arr : List (List Char)}
   (h3 : arr.length > 0 ∧ arr.length ≤ 10)
   (h4 : arr[0]!.length > 0 ∧ arr[0]!.length ≤ 10) :
   land_perimeter arr = "Total land perimeter: 0" := sorry
-
-/-
-info: 'Total land perimeter: 24'
--/
--- #guard_msgs in
--- #eval land_perimeter ["XOOXO", "XOOXO", "OOOXO", "XXOXO", "OXOOO"]
-
-/-
-info: 'Total land perimeter: 18'
--/
--- #guard_msgs in
--- #eval land_perimeter ["XOOO", "XOXO", "XOXO", "OOXX", "OOOO"]
-
-/-
-info: 'Total land perimeter: 4'
--/
--- #guard_msgs in
--- #eval land_perimeter ["X"]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

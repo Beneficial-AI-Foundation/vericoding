@@ -27,6 +27,3 @@ theorem single_node_no_conditions (K : Nat) :
 theorem empty_graph :
   solve_path_conditions 1 0 1 [] 0 [] = 1 := sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

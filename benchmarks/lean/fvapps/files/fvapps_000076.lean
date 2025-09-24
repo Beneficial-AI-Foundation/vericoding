@@ -28,25 +28,4 @@ theorem solve_fence_trivial_cases_zero :
 
 theorem solve_fence_trivial_cases_one (h c : Nat) :
   solve_fence [h] [c] = 0 := sorry
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval solve_fence [2, 2, 3] [4, 1, 5]
-
-/-
-info: 9
--/
--- #guard_msgs in
--- #eval solve_fence [2, 2, 2] [3, 10, 6]
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval solve_fence [1, 3, 2, 1000000000] [7, 3, 6, 2]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

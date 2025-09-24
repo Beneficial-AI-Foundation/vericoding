@@ -29,25 +29,4 @@ theorem sum_relationship (line : List Nat) (h : line ≠ []) :
   let input_sum := line.foldl (·+·) 0
   let output_sum := (merge line).foldl (·+·) 0
   output_sum ≥ input_sum ∧ (output_sum - input_sum) % 2 = 0 := sorry
-
-/-
-info: expected1
--/
--- #guard_msgs in
--- #eval merge [2, 0, 2, 2]
-
-/-
-info: expected2
--/
--- #guard_msgs in
--- #eval merge [2, 2, 2, 2, 2]
-
-/-
-info: expected3
--/
--- #guard_msgs in
--- #eval merge [8, 16, 16, 8]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

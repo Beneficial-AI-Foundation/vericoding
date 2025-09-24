@@ -19,25 +19,4 @@ theorem single_even_number (n : Nat) (h : n > 0) :
 
 theorem small_range_properties (p : Nat) (h : p > 0 ∧ p ≤ 16) :
   strongest_even (2^p) (2^(p+1)) = 2^(p+1) := sorry
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval strongest_even 1 2
-
-/-
-info: 8
--/
--- #guard_msgs in
--- #eval strongest_even 5 10
-
-/-
-info: 48
--/
--- #guard_msgs in
--- #eval strongest_even 48 56
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

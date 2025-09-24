@@ -39,6 +39,3 @@ theorem convert_my_dollars_scaling
     amount2 = 2 * amount1 :=
   sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

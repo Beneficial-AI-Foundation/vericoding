@@ -29,19 +29,4 @@ theorem timestamps_increase_monotonically (logs: List (List Nat)) :
   (∀ i j, i < j → i < logs.length → j < logs.length →
     (logs.get! i).get! 0 < (logs.get! j).get! 0) →
   True := sorry
-
-/-
-info: 'yes'
--/
--- #guard_msgs in
--- #eval check_car_logs [[1, 1, 1, 2, 2], [2, 2, 1, 2, 2], [4, 2, 2, 2, 3]]
-
-/-
-info: 'no'
--/
--- #guard_msgs in
--- #eval check_car_logs [[1, 1, 3, 2, 2]]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

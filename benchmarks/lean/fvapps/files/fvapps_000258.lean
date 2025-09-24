@@ -1,15 +1,16 @@
 -- <vc-preamble>
-def max_non_overlapping (nums: List Int) (target: Int) : Nat :=
-  sorry
-
-def abs (n: Int) : Nat :=
-  sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
+def max_non_overlapping (nums: List Int) (target: Int) : Nat :=
+  sorry
+
+def abs (n: Int) : Nat :=
+  sorry
+
 def sum_list (l: List Nat) : Nat :=
   sorry
 -- </vc-definitions>
@@ -34,25 +35,4 @@ sorry
 theorem max_non_overlapping_self_consistent (nums: List Int) (target: Int) :
   max_non_overlapping nums target = max_non_overlapping nums target :=
 sorry
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval max_non_overlapping [1, 1, 1, 1, 1] 2
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval max_non_overlapping [-1, 3, 5, 1, 4, 2, -9] 6
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval max_non_overlapping [0, 0, 0] 0
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

@@ -1,84 +1,84 @@
 vc-description: |-
   /-
   Write a function to calculate compound tax using the following table:
-  
+
   For $10 and under, the tax rate should be 10%.
   For $20 and under, the tax rate on the first $10 is %10, and the tax on the rest is 7%.
   For $30 and under, the tax rate on the first $10 is still %10, the rate for the next $10 is still 7%, and everything else is 5%.
   Tack on an additional 3% for the portion of the total above $30.
   Return 0 for invalid input(anything that's not a positive real number).
-  
+
   Examples:
-  
+
   An input of 10, should return 1 (1 is 10% of 10)
   An input of 21, should return 1.75 (10% of 10 + 7% of 10 + 5% of 1)
-  
+
   * Note that the returned value should be rounded to the nearest penny.
   -/
 
-vc-preamble: |-
+vc-preamble: |
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def tax_calculator (x : Float) : Float := sorry
-  
+
   theorem tax_monotonic {x delta : Float} (h1 : x ≥ 0) (h2 : delta ≥ 0) (h3 : x ≤ 1000) (h4 : delta ≤ 100) :
     tax_calculator (x + delta) ≥ tax_calculator x := sorry
 
 vc-theorems: |-
   theorem tax_invalid_inputs (x : Float) (h : x < 0) :
     tax_calculator x = 0 := sorry
-  
+
   theorem tax_first_bracket {x : Float} (h1 : 0 ≤ x) (h2 : x ≤ 10) :
     tax_calculator x = x/10 := sorry
-  
+
   theorem tax_second_bracket {x : Float} (h1 : 10 < x) (h2 : x ≤ 20) :
     tax_calculator x = 1 + (x-10) * 0.07 := sorry
-  
+
   theorem tax_third_bracket {x : Float} (h1 : 20 < x) (h2 : x ≤ 30) :
     tax_calculator x = 1.7 + (x-20) * 0.05 := sorry
-  
+
   theorem tax_fourth_bracket {x : Float} (h1 : 30 < x) (h2 : x ≤ 100) :
     tax_calculator x = 2.2 + (x-30) * 0.03 := sorry
-  
-  /-
-  info: 1.0
-  -/
-  -- #guard_msgs in
-  -- #eval tax_calculator 10
-  
-  /-
-  info: 1.75
-  -/
-  -- #guard_msgs in
-  -- #eval tax_calculator 21
-  
-  /-
-  info: 2.35
-  -/
-  -- #guard_msgs in
-  -- #eval tax_calculator 35
-  
-  /-
-  info: 0
-  -/
-  -- #guard_msgs in
-  -- #eval tax_calculator 0
-  
-  /-
-  info: 0
-  -/
-  -- #guard_msgs in
-  -- #eval tax_calculator -1
-  
-  /-
-  info: 0
-  -/
-  -- #guard_msgs in
-  -- #eval tax_calculator "invalid"
 
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+
+  /--
+  info: 1.0
+  -/
+  #guard_msgs in
+  #eval tax_calculator 10
+
+  /--
+  info: 1.75
+  -/
+  #guard_msgs in
+  #eval tax_calculator 21
+
+  /--
+  info: 2.35
+  -/
+  #guard_msgs in
+  #eval tax_calculator 35
+
+  /--
+  info: 0
+  -/
+  #guard_msgs in
+  #eval tax_calculator 0
+
+  /--
+  info: 0
+  -/
+  #guard_msgs in
+  #eval tax_calculator -1
+
+  /--
+  info: 0
+  -/
+  #guard_msgs in
+  #eval tax_calculator "invalid"
 

@@ -14,25 +14,4 @@ theorem greet_with_name (name : String) :
 -- <vc-theorems>
 theorem greet_with_none :
   greet none = none := sorry
-
-/-
-info: 'hello Niks!'
--/
--- #guard_msgs in
--- #eval greet "Niks"
-
-/-
-info: None
--/
--- #guard_msgs in
--- #eval greet ""
-
-/-
-info: None
--/
--- #guard_msgs in
--- #eval greet None
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

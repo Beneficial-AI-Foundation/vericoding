@@ -38,6 +38,3 @@ theorem path_for_powers_of_two (n: Nat) :
   (path_in_zigzag_tree label).head? = some 1 ∧
   (path_in_zigzag_tree label).getLast? = some label := sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

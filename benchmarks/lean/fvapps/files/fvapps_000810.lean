@@ -15,6 +15,3 @@ theorem convert_strings_nonempty (a b : String) :
   let result := convert_strings a b
   result.length ≥ 1 := sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

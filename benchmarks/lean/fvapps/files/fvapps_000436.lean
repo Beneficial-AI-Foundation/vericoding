@@ -31,25 +31,4 @@ theorem monotonic_decrease (arr : List Int) (k : Nat)
   (h1 : arr.length ≥ 2) (h2 : k ≥ 1) (h3 : k < arr.length) :
   find_least_num_unique_ints arr (k + 1) ≤ find_least_num_unique_ints arr k := by
   sorry
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval find_least_num_unique_ints [5, 5, 4] 1
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval find_least_num_unique_ints [4, 3, 1, 1, 3, 3, 2] 3
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval find_least_num_unique_ints [2, 4, 1, 8, 3, 5, 1, 3] 3
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

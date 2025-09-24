@@ -34,25 +34,4 @@ theorem toLeetSpeak_known_mappings :
   toLeetSpeak "O" = "0" ∧
   toLeetSpeak "S" = "$" ∧
   toLeetSpeak "T" = "7" := sorry
-
-/-
-info: '1337'
--/
--- #guard_msgs in
--- #eval to_leet_speak "LEET"
-
-/-
-info: '(0D3W@R$'
--/
--- #guard_msgs in
--- #eval to_leet_speak "CODEWARS"
-
-/-
-info: '#3110 W0R1D'
--/
--- #guard_msgs in
--- #eval to_leet_speak "HELLO WORLD"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

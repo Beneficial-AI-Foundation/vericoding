@@ -23,25 +23,4 @@ theorem divisors_properties (n : Nat)
   ∧ List.Nodup divs
   -- Product of divisor pairs equals n
   ∧ ∀ d ∈ divs, d * d ≤ n → d * (n / d) = n := sorry
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval len find_possible_n(a, m)
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval len find_possible_n(a, m)
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval len find_possible_n(a, m)
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

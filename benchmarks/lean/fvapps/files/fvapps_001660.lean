@@ -33,25 +33,4 @@ theorem single_row_board_theorems :
 theorem single_column_board_theorems :
   find_word [['A'], ['B']] "AB" ∧
   find_word [['A'], ['B']] "BA" := sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval find_word [["I", "L", "A", "W"], ["B", "N", "G", "E"], ["I", "U", "A", "O"], ["A", "S", "R", "L"]] "BINGO"
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval find_word board1 "BUNGIE"
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval find_word board1 "ILNBIA"
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

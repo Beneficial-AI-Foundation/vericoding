@@ -31,25 +31,4 @@ theorem solve_order_max (p : Nat) :
 
 theorem solve_order_bits_preservation (p : Nat) (idx : Nat) (h : idx < 2^p) :
   ∃ k, solve_order p idx < 2^k ∧ k ≤ p := sorry
-
-/-
-info: 6
--/
--- #guard_msgs in
--- #eval solve_order 3 3
-
-/-
-info: 7
--/
--- #guard_msgs in
--- #eval solve_order 3 7
-
-/-
-info: 5
--/
--- #guard_msgs in
--- #eval solve_order 4 10
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

@@ -39,25 +39,4 @@ theorem alex_mistakes_monotonic
   alex_mistakes num_kata (num_kata * 6 + extra_time + 1) ≥ 
   alex_mistakes num_kata (num_kata * 6 + extra_time) :=
 sorry
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval alex_mistakes 10 120
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval alex_mistakes 3 45
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval alex_mistakes 20 120
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

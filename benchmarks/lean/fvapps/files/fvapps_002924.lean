@@ -27,25 +27,4 @@ theorem pattern_no_extra_whitespace (n : Int) (h : 1 ≤ n ∧ n ≤ 9) :
   ¬result.startsWith "\n" ∧ 
   ¬result.endsWith "\n" ∧
   ∀ line ∈ lines, ¬(line.data.contains ' ' ∧ line.data.contains ' ') := sorry
-
-/-
-info: '12\n2'
--/
--- #guard_msgs in
--- #eval pattern 2
-
-/-
-info: '1234\n234\n34\n4'
--/
--- #guard_msgs in
--- #eval pattern 4
-
-/-
-info: ''
--/
--- #guard_msgs in
--- #eval pattern 0
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

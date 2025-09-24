@@ -19,25 +19,4 @@ theorem symmetric_point_preserves_distance (p q : List Int) :
 
 theorem symmetric_point_self_center (p : List Int) :
   symmetric_point p p = p := sorry
-
-/-
-info: [2, 2]
--/
--- #guard_msgs in
--- #eval symmetric_point [0, 0] [1, 1]
-
-/-
-info: [-6, -18]
--/
--- #guard_msgs in
--- #eval symmetric_point [2, 6] [-2, -6]
-
-/-
-info: [0, 0]
--/
--- #guard_msgs in
--- #eval symmetric_point [0, 0] [0, 0]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

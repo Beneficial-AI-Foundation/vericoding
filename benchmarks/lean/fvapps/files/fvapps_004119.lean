@@ -49,25 +49,4 @@ theorem rectangles_monotonic_m
   (h2 : m ≥ 2) :
   rectangles n (m + 1) ≥ rectangles n m :=
   sorry
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval rectangles 2 3
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval rectangles 2 2
-
-/-
-info: 9
--/
--- #guard_msgs in
--- #eval rectangles 3 3
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

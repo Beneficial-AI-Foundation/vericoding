@@ -13,8 +13,8 @@ spec fn valid_output(names: Seq<&str>, output: Seq<&str>) -> bool {
 // </vc-helpers>
 
 // <vc-spec>
-fn solve(names: Seq<&str>) -> (output: Seq<&str>)
-    ensures valid_output(names, output)
+fn solve(names: Vec<&str>) -> (output: Vec<&str>)
+    ensures valid_output(names@, output@)
 // </vc-spec>
 // <vc-code>
 {

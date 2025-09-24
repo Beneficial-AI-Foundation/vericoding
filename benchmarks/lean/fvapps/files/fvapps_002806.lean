@@ -28,25 +28,4 @@ theorem maintains_relative_order (k : Int) (elements : List Int) :
   List.filter (· < k) result = List.filter (· < k) elements ∧ 
   List.filter (· ≥ k) result = List.filter (· ≥ k) elements :=
   sorry
-
-/-
-info: [4, 6, 10, 10, 6]
--/
--- #guard_msgs in
--- #eval split_by_value 6 [6, 4, 10, 10, 6]
-
-/-
-info: [1, 3, 4, 2, 5, 7, 6]
--/
--- #guard_msgs in
--- #eval split_by_value 5 [1, 3, 5, 7, 6, 4, 2]
-
-/-
-info: [3, 2, 8, 3, 2, 1]
--/
--- #guard_msgs in
--- #eval split_by_value 1 [3, 2, 8, 3, 2, 1]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

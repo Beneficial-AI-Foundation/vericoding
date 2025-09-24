@@ -31,19 +31,4 @@ theorem robotTransfer_2x2_valid_matrix_format
     match parseCoords cell with
     | some (x, y) => x ≤ 1 ∧ y ≤ 1
     | none => False := sorry
-
-/-
-info: 8
--/
--- #guard_msgs in
--- #eval robot_transfer [["0,1", "0,0", "1,2"], ["1,1", "1,0", "0,2"], ["2,1", "2,0", "0,0"]] 2
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval robot_transfer [["0,1", "0,0"], ["1,1", "1,0"]] 2
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

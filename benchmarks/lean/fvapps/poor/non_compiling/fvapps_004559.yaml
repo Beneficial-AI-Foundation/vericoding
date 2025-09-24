@@ -43,8 +43,6 @@ vc-preamble: |-
     | _ => sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def CookieJar.take (jar : CookieJar) : String :=

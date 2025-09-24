@@ -29,25 +29,4 @@ theorem max_number_idempotent (n : Nat) :
 
 theorem max_number_deterministic (n : Nat) :
   max_number n = max_number n := sorry
-
-/-
-info: 321
--/
--- #guard_msgs in
--- #eval max_number 213
-
-/-
-info: 9873
--/
--- #guard_msgs in
--- #eval max_number 7389
-
-/-
-info: 977665
--/
--- #guard_msgs in
--- #eval max_number 566797
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

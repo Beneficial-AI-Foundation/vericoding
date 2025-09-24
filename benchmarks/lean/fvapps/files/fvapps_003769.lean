@@ -1,12 +1,13 @@
 -- <vc-preamble>
-def digits (n : Nat) : List Nat := 
-  sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
+def digits (n : Nat) : List Nat :=
+  sorry
+
 def tidyNumber (n : Nat) : Bool :=
   sorry
 -- </vc-definitions>
@@ -14,48 +15,27 @@ def tidyNumber (n : Nat) : Bool :=
 -- <vc-theorems>
 theorem tidy_number_returns_boolean (n : Nat) :
   tidyNumber n = true ∨ tidyNumber n = false :=
-  sorry
+sorry
 
 theorem single_digit_numbers_tidy (n : Nat) :
   n < 10 → tidyNumber n = true :=
-  sorry
+sorry
 
 theorem tidy_implies_non_decreasing_digits {n : Nat} {ds : List Nat} :
   tidyNumber n = true →
   ds = digits n →
   ∀ i j, i < j → j < ds.length → ds[i]! ≤ ds[j]! :=
-  sorry
+sorry
 
 theorem non_decreasing_digits_iff_tidy {n : Nat} {ds : List Nat} :
   ds = digits n →
   (∀ i j, i < j → j < ds.length → ds[i]! ≤ ds[j]!) ↔ tidyNumber n = true :=
-  sorry
+sorry
 
 theorem decreasing_digits_not_tidy {n : Nat} {ds : List Nat} :
   ds = digits n →
   ds.length ≥ 2 →
   (∃ i j, i < j ∧ j < ds.length ∧ ds[i]! > ds[j]!) →
   tidyNumber n = false :=
-  sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval tidyNumber 12
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval tidyNumber 32
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval tidyNumber 1024
+sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

@@ -44,6 +44,3 @@ theorem ulam_sequence_unique_sum (u0 u1 n : Nat) (h1: u0 > 0) (h2: u1 > u0) (h3:
      q.1 + q.2 = (seq.get ⟨i.val, by {rw [h_length]; exact i.isLt}⟩) → 
      q = p)) := sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

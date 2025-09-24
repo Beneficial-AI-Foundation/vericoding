@@ -28,25 +28,4 @@ theorem remaining_chocolates_divides (m n : Nat)
 
 theorem equal_inputs (x : Nat) (h : x > 0) :
     calculate_remaining_chocolates x x = 2 * x := sorry
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval calculate_remaining_chocolates 5 3
-
-/-
-info: 20
--/
--- #guard_msgs in
--- #eval calculate_remaining_chocolates 10 10
-
-/-
-info: 8
--/
--- #guard_msgs in
--- #eval calculate_remaining_chocolates 4 8
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

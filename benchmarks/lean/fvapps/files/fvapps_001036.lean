@@ -24,6 +24,3 @@ theorem sum_numbers_result_strings {input : List String} {i : Nat} (h : i < inpu
 theorem sum_numbers_zeros {input : List String} (h : ∀ (i : Nat) (hi : i < input.length), input.get ⟨i,hi⟩ = "0 0") :
   ∀ (i : Nat) (hi : i < input.length), (sum_numbers input).get ⟨i, by rw [←sum_numbers_length_matches_input]; exact hi⟩ = "0" := sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

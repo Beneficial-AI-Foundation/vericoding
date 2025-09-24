@@ -30,25 +30,4 @@ theorem combine_names_length (first last : String) :
   first.length > 0 → last.length > 0 →
   String.length (combine_names first last) = String.length first + String.length last + 1 :=
 sorry
-
-/-
-info: 'James Stevens'
--/
--- #guard_msgs in
--- #eval combine_names "James" "Stevens"
-
-/-
-info: 'Davy Back'
--/
--- #guard_msgs in
--- #eval combine_names "Davy" "Back"
-
-/-
-info: 'Arthur Dent'
--/
--- #guard_msgs in
--- #eval combine_names "Arthur" "Dent"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

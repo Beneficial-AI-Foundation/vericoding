@@ -70,8 +70,6 @@ vc-preamble: |-
   | (x::xs) => x + sum xs
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def check_conquest (n m : Nat) (armies : List Nat) : BattleResult := sorry

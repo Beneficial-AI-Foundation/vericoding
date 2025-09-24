@@ -30,25 +30,4 @@ theorem solution_respects_tile_limit (s : String) :
   s ∈ ["1113335557779", "1335556789999", "1223334455678"] →
   ∀ t, t ∈ (solution s).data → 
   ((s.data.filter (· = t)).length + 1 ≤ 4) := sorry
-
-/-
-info: '89'
--/
--- #guard_msgs in
--- #eval solution "1113335557779"
-
-/-
-info: ''
--/
--- #guard_msgs in
--- #eval solution "1335556789999"
-
-/-
-info: '258'
--/
--- #guard_msgs in
--- #eval solution "1223334455678"
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

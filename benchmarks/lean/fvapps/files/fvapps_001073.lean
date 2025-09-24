@@ -17,19 +17,4 @@ theorem min_modifications_upper_bound (arr : List Nat) :
 
 theorem min_modifications_empty :
   min_modifications [] = 0 := sorry
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval min_modifications [1, 4, 1, 2, 2]
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval min_modifications [2, 3, 2, 3]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

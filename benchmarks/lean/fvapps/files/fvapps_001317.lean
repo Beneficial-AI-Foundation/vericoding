@@ -32,31 +32,4 @@ theorem multiplication_property (string_parts : List String) :
   (∀ s ∈ string_parts, ∀ c ∈ s.data, c = 'f' ∨ c = 'g') →
   count_unique_strings ("x".intercalate string_parts) > 0 :=
 sorry
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval count_unique_strings "thing"
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval count_unique_strings "ggdffn"
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval count_unique_strings "fff"
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval count_unique_strings "cat"
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

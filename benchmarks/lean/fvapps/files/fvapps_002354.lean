@@ -28,25 +28,4 @@ sorry
 theorem check_if_exist_empty :
   check_if_exist ([] : List Int) = false :=
 sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval check_if_exist [10, 2, 5, 3]
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval check_if_exist [7, 1, 14, 11]
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval check_if_exist [3, 1, 7, 11]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

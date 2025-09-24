@@ -1,15 +1,16 @@
 -- <vc-preamble>
-def is_interesting (number : Nat) (awesome_phrases : Array Nat) : Nat :=
-  sorry
-
-def isPalindrome (n : Nat) : Bool :=
-  sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
+def is_interesting (number : Nat) (awesome_phrases : Array Nat) : Nat :=
+  sorry
+
+def isPalindrome (n : Nat) : Bool :=
+  sorry
+
 def isRoundNumber (n : Nat) : Bool :=
   sorry
 -- </vc-definitions>
@@ -24,7 +25,7 @@ theorem small_numbers_boring (n : Nat) (h : n < 98) :
   is_interesting n #[] = 0 :=
 sorry
 
-theorem awesome_phrases_direct_match (n : Nat) (phrases : Array Nat) 
+theorem awesome_phrases_direct_match (n : Nat) (phrases : Array Nat)
   (h1 : n ≥ 100) (h2 : phrases.contains n = true) :
   is_interesting n phrases = 2 :=
 sorry
@@ -34,7 +35,7 @@ theorem awesome_phrases_nearby_match (n : Nat) (phrases : Array Nat)
   is_interesting n phrases ≥ 1 :=
 sorry
 
-theorem palindrome_direct_match (n : Nat) (h1 : n ≥ 100) 
+theorem palindrome_direct_match (n : Nat) (h1 : n ≥ 100)
   (h2 : isPalindrome n = true) :
   is_interesting n #[] = 2 :=
 sorry
@@ -45,7 +46,7 @@ theorem palindrome_nearby_match (n : Nat) (h1 : n ≥ 98)
   is_interesting n #[] ≥ 1 :=
 sorry
 
-theorem incrementing_sequences (n : Nat) 
+theorem incrementing_sequences (n : Nat)
   (h : n = 123 ∨ n = 234 ∨ n = 345 ∨ n = 456 ∨ n = 567 ∨ n = 678 ∨ n = 789 ∨ n = 890) :
   is_interesting n #[] = 2 :=
 sorry
@@ -54,25 +55,4 @@ theorem decrementing_sequences (n : Nat)
   (h : n = 987 ∨ n = 876 ∨ n = 765 ∨ n = 654 ∨ n = 543 ∨ n = 432 ∨ n = 321) :
   is_interesting n #[] = 2 :=
 sorry
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval is_interesting 3 #[1337, 256]
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval is_interesting 1336 #[1337, 256]
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval is_interesting 1000 #[1337, 256]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

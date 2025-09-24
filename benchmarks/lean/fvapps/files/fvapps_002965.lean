@@ -30,25 +30,4 @@ theorem pattern_repetition (n y : Nat) (h1 : 0 < n ∧ n ≤ 5) (h2 : 0 < y ∧ 
   lines.get! 0 = lines.get! (lines.length - 1) ∧
   (lines.get! 0).contains '1' ∧
   matchingLines.length ≥ y := sorry
-
-/-
-info: ''
--/
--- #guard_msgs in
--- #eval pattern 0
-
-/-
-info: expected
--/
--- #guard_msgs in
--- #eval pattern 3
-
-/-
-info: expected
--/
--- #guard_msgs in
--- #eval pattern 2 2
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

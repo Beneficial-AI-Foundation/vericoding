@@ -42,25 +42,4 @@ theorem solve_matches_valid {n : Nat} {val : Nat}
   (h5 : a = 0 :: List.replicate (n-2) val ++ [val])
   (h6 : b = val :: List.replicate (n-2) val ++ [0]) :
   solve_test_case n a b = if is_valid_path n a b then "Yes" else "No" := sorry
-
-/-
-info: 'Yes'
--/
--- #guard_msgs in
--- #eval solve_test_case 3 [0, 1, 1] [1, 1, 0]
-
-/-
-info: 'No'
--/
--- #guard_msgs in
--- #eval solve_test_case 3 [0, 1, 5] [5, 1, 0]
-
-/-
-info: 'Yes'
--/
--- #guard_msgs in
--- #eval solve_test_case 4 [0, 2, 2, 3] [3, 2, 2, 0]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

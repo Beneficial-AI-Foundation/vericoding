@@ -42,25 +42,4 @@ theorem zero_difference :
   n > 0 →
   arith_seq_elements a 0 n = String.intercalate ", " (List.replicate n.toNat (toString a)) :=
 sorry
-
-/-
-info: '1, 3, 5, 7, 9'
--/
--- #guard_msgs in
--- #eval arithmetic_sequence_elements 1 2 5
-
-/-
-info: '1, 1, 1, 1, 1'
--/
--- #guard_msgs in
--- #eval arithmetic_sequence_elements 1 0 5
-
-/-
-info: '100, 90, 80, 70, 60'
--/
--- #guard_msgs in
--- #eval arithmetic_sequence_elements 100 -10 5
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

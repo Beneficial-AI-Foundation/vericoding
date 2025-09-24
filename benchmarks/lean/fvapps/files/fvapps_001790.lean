@@ -38,6 +38,3 @@ theorem justify_text_empty_input
   : justifyText [] maxWidth = [] :=
 sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

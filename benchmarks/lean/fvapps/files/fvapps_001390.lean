@@ -23,25 +23,4 @@ theorem winner_is_deterministic (stack moves : List Nat)
   (hmoves : ∀ x ∈ moves, x ≥ 1) :
   determine_winner stack.length moves.length stack moves = 
   determine_winner stack.length moves.length stack moves := sorry
-
-/-
-info: 'Chef'
--/
--- #guard_msgs in
--- #eval determine_winner 3 2 [5, 7, 1] [1, 2]
-
-/-
-info: 'Chef'
--/
--- #guard_msgs in
--- #eval determine_winner 4 2 [1, 2, 3, 4] [1, 2]
-
-/-
-info: 'Garry'
--/
--- #guard_msgs in
--- #eval determine_winner 2 1 [1, 2] [1]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

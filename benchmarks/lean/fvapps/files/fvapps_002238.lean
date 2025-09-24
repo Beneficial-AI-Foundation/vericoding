@@ -49,6 +49,3 @@ theorem star_graph_has_indset (n : Nat) (edges : List (Nat × Nat)) :
   result.1 = "IndSet" ∧
   result.2.length = n := sorry
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: guarded

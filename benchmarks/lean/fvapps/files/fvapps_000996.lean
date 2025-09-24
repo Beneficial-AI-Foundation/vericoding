@@ -36,25 +36,4 @@ theorem uses_only_a_b {n p : Nat} (result : String)
   (h1 : p > 2)
   (c : Char) :
   c ∈ result.data → c = 'a' ∨ c = 'b' := sorry
-
-/-
-info: 'impossible'
--/
--- #guard_msgs in
--- #eval periodic_palindrome 3 1
-
-/-
-info: 'aba'
--/
--- #guard_msgs in
--- #eval periodic_palindrome 3 3
-
-/-
-info: 'abaaba'
--/
--- #guard_msgs in
--- #eval periodic_palindrome 6 3
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

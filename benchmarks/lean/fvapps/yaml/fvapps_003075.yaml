@@ -49,12 +49,13 @@ vc-description: |-
   -/
 
 vc-preamble: |-
-  def my_crib (n : Nat) : String :=
-    sorry
 
 vc-helpers: |-
 
 vc-definitions: |-
+  def my_crib (n : Nat) : String :=
+    sorry
+  
   def splitLines (s : String) : List String :=
     sorry
 
@@ -87,26 +88,26 @@ vc-theorems: |-
     let lines := splitLines (my_crib n)
     ∀ last_line, lines.getLast? = some last_line → last_line.contains '_' :=
   sorry
-  
-  /-
-  info: expected1
-  -/
-  -- #guard_msgs in
-  -- #eval my_crib 1
-  
-  /-
-  info: expected2
-  -/
-  -- #guard_msgs in
-  -- #eval my_crib 2
-  
-  /-
-  info: expected3
-  -/
-  -- #guard_msgs in
-  -- #eval my_crib 3
 
 vc-postamble: |-
   -- Apps difficulty: introductory
   -- Assurance level: unguarded
+  
+  /--
+  info: expected1
+  -/
+  #guard_msgs in
+  #eval my_crib 1
+  
+  /--
+  info: expected2
+  -/
+  #guard_msgs in
+  #eval my_crib 2
+  
+  /--
+  info: expected3
+  -/
+  #guard_msgs in
+  #eval my_crib 3
 

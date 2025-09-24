@@ -23,25 +23,4 @@ theorem integer_replacement_base_case_two :
 
 theorem integer_replacement_power_of_two (n : Nat) (h : n > 0) :
   integer_replacement (2^n) = n := sorry
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval integer_replacement 8
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval integer_replacement 7
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval integer_replacement 3
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

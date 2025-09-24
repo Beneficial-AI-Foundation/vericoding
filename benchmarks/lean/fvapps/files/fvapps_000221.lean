@@ -28,25 +28,4 @@ theorem no_dots_unchanged (s : String) :
 theorem all_dots_stay_dots (s : String) :
   s.all (fun c => c = '.') →
   (push_dominoes s).all (fun c => c = '.') := sorry
-
-/-
-info: 'LL.RR.LLRRLL..'
--/
--- #guard_msgs in
--- #eval push_dominoes ".L.R...LR..L.."
-
-/-
-info: 'RR.L'
--/
--- #guard_msgs in
--- #eval push_dominoes "RR.L"
-
-/-
-info: '...'
--/
--- #guard_msgs in
--- #eval push_dominoes "..."
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

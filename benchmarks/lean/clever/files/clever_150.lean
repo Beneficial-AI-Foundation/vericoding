@@ -32,6 +32,3 @@ theorem correctness
 : problem_spec implementation n x y := by
   sorry
 -- </vc-theorems>
-
--- #test implementation 7 34 12 = 34
--- #test implementation 15 8 5 = 5

@@ -27,6 +27,3 @@ theorem fruit_basket_returns_ints {a b c d : Int} :
   let (x, y, z) := solve_fruit_basket a b c d
   ∃ (r s t : Int), x = r ∧ y = s ∧ z = t := sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

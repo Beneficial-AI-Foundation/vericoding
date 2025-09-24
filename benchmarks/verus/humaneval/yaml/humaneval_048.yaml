@@ -1,0 +1,39 @@
+vc-description: |-
+  Determine if a given string is a palindrome (reads the same forwards
+  and backwards). The comparison should be case-insensitive, requiring implementation
+  of a case conversion function and a palindrome checking predicate.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+  spec fn to_lower(c: char) -> char {
+      if 'A' <= c && c <= 'Z' {
+          ((c as u8 - 'A' as u8 + 'a' as u8) as char)
+      } else {
+          c
+      }
+  }
+
+  spec fn is_palindrome_spec(text: Seq<char>) -> bool {
+      forall|i: int| 0 <= i < text.len() ==> #[trigger] to_lower(text[i]) == to_lower(text[text.len() - 1 - i])
+  }
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn is_palindrome(text: Vec<char>) -> (result: bool)
+      ensures result <==> is_palindrome_spec(text@)
+
+vc-code: |-
+  {
+      assume(false);
+      false
+  }
+
+vc-postamble: |-
+
+  }
+
+  fn main() {}

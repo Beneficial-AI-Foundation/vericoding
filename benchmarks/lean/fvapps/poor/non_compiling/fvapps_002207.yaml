@@ -46,8 +46,6 @@ vc-preamble: |-
     if n ≥ m then n - m else m - n
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def allDiffs (nums : List Nat) : List Nat :=

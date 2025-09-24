@@ -46,6 +46,3 @@ theorem non_overlapping_ranges
   solve_prime_array_queries k [q1, q2, q3] = [0] :=
 sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

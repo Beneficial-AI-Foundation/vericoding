@@ -21,25 +21,4 @@ sorry
 theorem solve_jams_all_ones (n : Nat) :
   n > 0 → solve_jams n (List.replicate (2*n) 1) = 2*n :=
 sorry
-
-/-
-info: 6
--/
--- #guard_msgs in
--- #eval solve_jams 6 [1, 1, 1, 2, 2, 1, 2, 1, 2, 1, 1, 2]
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval solve_jams 2 [1, 2, 1, 2]
-
-/-
-info: 6
--/
--- #guard_msgs in
--- #eval solve_jams 3 [1, 1, 1, 1, 1, 1]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

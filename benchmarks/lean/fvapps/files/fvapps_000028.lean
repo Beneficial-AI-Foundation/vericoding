@@ -32,19 +32,4 @@ theorem find_abacaba_impossible {n : Nat} {s : String} :
     (∀ c ∈ ['a', 'b', 'c', 'z'], 
       let test_s := s.replace "?" (String.mk [c])
       check_abacaba_substring test_s ≠ 1) := sorry
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval check_abacaba_substring result
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval check_abacaba_substring result
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

@@ -33,25 +33,4 @@ theorem high_only_spaces (text : String) :
   (∀ c ∈ text.data, c = ' ') →
   ¬∃ result, result = high text := by
   sorry
-
-/-
-info: 'taxi'
--/
--- #guard_msgs in
--- #eval high "man i need a taxi up to ubud"
-
-/-
-info: 'volcano'
--/
--- #guard_msgs in
--- #eval high "what time are we climbing up the volcano"
-
-/-
-info: 'semynak'
--/
--- #guard_msgs in
--- #eval high "take me to semynak"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

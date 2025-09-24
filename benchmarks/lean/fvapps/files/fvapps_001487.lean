@@ -51,19 +51,4 @@ theorem multiplier_properties
   result ≥ base_score ∧
   all_doubles = (2 ^ 8) * points_sum ∧
   all_triples = (3 ^ 8) * points_sum := sorry
-
-/-
-info: 270
--/
--- #guard_msgs in
--- #eval calculate_max_points 10 "..d.t.D..d" [10, 11, 12, 9, 8, 10, 11, 15]
-
-/-
-info: 35629632
--/
--- #guard_msgs in
--- #eval calculate_max_points 22 "dtDtTD..ddT.TtTdDT..TD" [12297, 5077, 28888, 17998, 12125, 27400, 31219, 21536]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

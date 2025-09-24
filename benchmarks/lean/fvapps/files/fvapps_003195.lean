@@ -33,25 +33,4 @@ theorem evaporator_higher_threshold_fewer_days
   (ht : threshold > 0.1 ∧ threshold < 98.9) :
   evaporator content evap_rate (threshold + 1) ≤ evaporator content evap_rate threshold :=
   sorry
-
-/-
-info: 22
--/
--- #guard_msgs in
--- #eval evaporator 10 10 10
-
-/-
-info: 37
--/
--- #guard_msgs in
--- #eval evaporator 50 12 1
-
-/-
-info: 31
--/
--- #guard_msgs in
--- #eval evaporator 47.5 8 8
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

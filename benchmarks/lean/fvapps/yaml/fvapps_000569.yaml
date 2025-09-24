@@ -53,14 +53,25 @@ vc-description: |-
   Example case 3: We cannot perform any operations using any of the given spells, so we are unable to kill any sorcerers.
   Example case 4: We can perform $1,755,647$ operations, each of them using the spell $p_1 = 998,244,353$.
   -/
+  
+  -- Result is non-negative
+  
+  -- Result is less than or equal to n
+  
+  -- GCD divides both numbers
+  
+  -- GCD is positive
+  
+  -- GCD is largest such number
 
 vc-preamble: |-
-  def gcd (a b : Nat) : Nat :=
-    sorry
 
 vc-helpers: |-
 
 vc-definitions: |-
+  def gcd (a b : Nat) : Nat :=
+    sorry
+  
   def solve_evil_sorcerer (n : Nat) (p : List Nat) : Nat :=
     sorry
 
@@ -68,41 +79,41 @@ vc-theorems: |-
   theorem solve_evil_sorcerer_properties {n : Nat} {p : List Nat}
     (n_pos : n > 0) (p_pos : ∀ x ∈ p, x > 0) :
     let result := solve_evil_sorcerer n p
-    -- Result is non-negative
+  
     result ≥ 0 ∧
-    -- Result is less than or equal to n 
+  
     result ≤ n := by
     sorry
   
   theorem gcd_properties {a b : Nat} (a_pos : a > 0) (b_pos : b > 0) :
     let g := gcd a b
-    -- GCD divides both numbers
+  
     (a % g = 0 ∧ b % g = 0) ∧
-    -- GCD is positive
+  
     g > 0 ∧
-    -- GCD is largest such number
+  
     ∀ i, g < i → i ≤ min a b → ¬(a % i = 0 ∧ b % i = 0) := by
     sorry
-  
-  /-
-  info: 3
-  -/
-  -- #guard_msgs in
-  -- #eval solve_evil_sorcerer 4 [5]
-  
-  /-
-  info: 4
-  -/
-  -- #guard_msgs in
-  -- #eval solve_evil_sorcerer 6 [2, 4]
-  
-  /-
-  info: 0
-  -/
-  -- #guard_msgs in
-  -- #eval solve_evil_sorcerer 1 [20201220]
 
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
+  
+  /--
+  info: 3
+  -/
+  #guard_msgs in
+  #eval solve_evil_sorcerer 4 [5]
+  
+  /--
+  info: 4
+  -/
+  #guard_msgs in
+  #eval solve_evil_sorcerer 6 [2, 4]
+  
+  /--
+  info: 0
+  -/
+  #guard_msgs in
+  #eval solve_evil_sorcerer 1 [20201220]
 

@@ -28,25 +28,4 @@ theorem elevator_equal_distance
   (pos call : Int) :
   elevator pos pos call = "right" :=
 sorry
-
-/-
-info: 'left'
--/
--- #guard_msgs in
--- #eval elevator 0 1 0
-
-/-
-info: 'right'
--/
--- #guard_msgs in
--- #eval elevator 0 0 0
-
-/-
-info: 'left'
--/
--- #guard_msgs in
--- #eval elevator 1 2 0
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

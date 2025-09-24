@@ -1,12 +1,13 @@
 -- <vc-preamble>
-def solve_proxy_attendance (D : Nat) (S : String) : Int :=
-  sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
+def solve_proxy_attendance (D : Nat) (S : String) : Int :=
+  sorry
+
 def countP (s : String) : Nat :=
   sorry
 -- </vc-definitions>
@@ -24,25 +25,4 @@ sorry
 theorem too_many_absences {D : Nat} (h : D ≥ 5) (h2 : D ≤ 100) :
   solve_proxy_attendance D (String.mk (List.replicate D 'A')) = -1 :=
 sorry
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval solve_proxy_attendance 9 "PAAPPAPPP"
-
-/-
-info: -1
--/
--- #guard_msgs in
--- #eval solve_proxy_attendance 5 "PAAAA"
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval solve_proxy_attendance 8 "PPPPPPPP"
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

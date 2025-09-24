@@ -25,25 +25,4 @@ theorem near_flatten_sorted (arr: List (List (List Int))) :
   ∀ i, i + 1 < result.length →
     list_min (result.get ⟨i, by sorry⟩) ≤ list_min (result.get ⟨i+1, by sorry⟩)
   := sorry
-
-/-
-info: [[1]]
--/
--- #guard_msgs in
--- #eval near_flatten [[[1]]]
-
-/-
-info: [[1, 2, 3], [4, 5, 6]]
--/
--- #guard_msgs in
--- #eval near_flatten [[[1, 2, 3], [4, 5, 6]]]
-
-/-
-info: [[1, 2, 3], [4, 5], [6], [7, 8]]
--/
--- #guard_msgs in
--- #eval near_flatten [[[1, 2, 3], [[4, 5], [[6], [7, 8]]]]]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

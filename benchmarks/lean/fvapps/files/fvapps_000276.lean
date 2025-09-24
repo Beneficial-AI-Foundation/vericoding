@@ -1,18 +1,18 @@
 -- <vc-preamble>
 def abs (x : Int) : Int :=
   if x < 0 then -x else x
-
-def maximum (l : List Int) : Int :=
-sorry
-
-def minimum (l : List Int) : Int :=
-sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
+def maximum (l : List Int) : Int :=
+sorry
+
+def minimum (l : List Int) : Int :=
+sorry
+
 def smallest_distance_pair : List Int → Nat → Int :=
 sorry
 -- </vc-definitions>
@@ -35,25 +35,4 @@ sorry
 theorem sorted_input_equivalence {nums : List Int} (h : nums.length ≥ 2) :
   smallest_distance_pair nums 1 = smallest_distance_pair (nums.reverse.reverse) 1 :=
 sorry
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval smallest_distance_pair [1, 1, 3] 1
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval smallest_distance_pair [1, 3, 1] 1
-
-/-
-info: 5
--/
--- #guard_msgs in
--- #eval smallest_distance_pair [1, 6, 1] 3
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

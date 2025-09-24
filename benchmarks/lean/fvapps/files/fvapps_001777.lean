@@ -32,19 +32,4 @@ theorem symmetric_result (n : Nat) (edges : List (Nat × Nat × Nat)) (threshold
 theorem single_vertex_empty_graph :
   findCityWithSmallestReachable 1 [] 1 = 0 :=
   sorry
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval find_city_with_smallest_reachable 4 [[0, 1, 3], [1, 2, 1], [1, 3, 4], [2, 3, 1]] 4
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval find_city_with_smallest_reachable 5 [[0, 1, 2], [0, 4, 8], [1, 2, 3], [1, 4, 2], [2, 3, 1], [3, 4, 1]] 2
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

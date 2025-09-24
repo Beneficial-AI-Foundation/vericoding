@@ -1,37 +1,37 @@
 vc-description: |-
   /-
   Karlsson has recently discovered a huge stock of berry jam jars in the basement of the house. More specifically, there were $2n$ jars of strawberry and blueberry jam.
-  
+
   All the $2n$ jars are arranged in a row. The stairs to the basement are exactly in the middle of that row. So when Karlsson enters the basement, he sees exactly $n$ jars to his left and $n$ jars to his right.
-  
+
   For example, the basement might look like this: [Image] 
-  
+
   Being the starightforward man he is, he immediately starts eating the jam. In one minute he chooses to empty either the first non-empty jar to his left or the first non-empty jar to his right.
-  
+
   Finally, Karlsson decided that at the end the amount of full strawberry and blueberry jam jars should become the same.
-  
+
   For example, this might be the result: [Image] He has eaten $1$ jar to his left and then $5$ jars to his right. There remained exactly $3$ full jars of both strawberry and blueberry jam. 
-  
+
   Jars are numbered from $1$ to $2n$ from left to right, so Karlsson initially stands between jars $n$ and $n+1$.
-  
+
   What is the minimum number of jars Karlsson is required to empty so that an equal number of full strawberry and blueberry jam jars is left?
-  
+
   Your program should answer $t$ independent test cases.
-  
+
   -----Input-----
-  
+
   The first line contains one integer $t$ ($1 \le t \le 1000$) — the number of test cases.
-  
+
   The first line of each test case contains a single integer $n$ ($1 \le n \le 10^5$).
-  
+
   The second line of each test case contains $2n$ integers $a_1, a_2, \dots, a_{2n}$ ($1 \le a_i \le 2$) — $a_i=1$ means that the $i$-th jar from the left is a strawberry jam jar and $a_i=2$ means that it is a blueberry jam jar.
-  
+
   It is guaranteed that the sum of $n$ over all test cases does not exceed $10^5$.
-  
+
   -----Output-----
-  
+
   For each test case print the answer to it — the minimum number of jars Karlsson is required to empty so that an equal number of full strawberry and blueberry jam jars is left.
-  
+
   -----Example-----
   Input
   4
@@ -43,27 +43,27 @@ vc-description: |-
   1 1 1 1 1 1
   2
   2 1 1 1
-  
+
   Output
   6
   0
   6
   2
-  
+
   -----Note-----
-  
+
   The picture from the statement describes the first test case.
-  
+
   In the second test case the number of strawberry and blueberry jam jars is already equal.
-  
+
   In the third test case Karlsson is required to eat all $6$ jars so that there remain $0$ jars of both jams.
-  
+
   In the fourth test case Karlsson can empty either the second and the third jars or the third and the fourth one. The both scenarios will leave $1$ jar of both jams.
   -/
 
-vc-preamble: |-
+vc-preamble: |
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def solve_jams (n : Nat) (jams : List Nat) : Nat :=
@@ -73,34 +73,34 @@ vc-theorems: |-
   theorem solve_jams_non_negative (n : Nat) (jams : List Nat) :
     n > 0 → jams.length = 2*n → solve_jams n jams ≥ 0 :=
   sorry
-  
+
   theorem solve_jams_upper_bound (n : Nat) (jams : List Nat) :
     n > 0 → jams.length = 2*n → solve_jams n jams ≤ 2*n :=
   sorry
-  
+
   theorem solve_jams_all_ones (n : Nat) :
     n > 0 → solve_jams n (List.replicate (2*n) 1) = 2*n :=
   sorry
-  
-  /-
-  info: 6
-  -/
-  -- #guard_msgs in
-  -- #eval solve_jams 6 [1, 1, 1, 2, 2, 1, 2, 1, 2, 1, 1, 2]
-  
-  /-
-  info: 0
-  -/
-  -- #guard_msgs in
-  -- #eval solve_jams 2 [1, 2, 1, 2]
-  
-  /-
-  info: 6
-  -/
-  -- #guard_msgs in
-  -- #eval solve_jams 3 [1, 1, 1, 1, 1, 1]
 
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
+
+  /--
+  info: 6
+  -/
+  #guard_msgs in
+  #eval solve_jams 6 [1, 1, 1, 2, 2, 1, 2, 1, 2, 1, 1, 2]
+
+  /--
+  info: 0
+  -/
+  #guard_msgs in
+  #eval solve_jams 2 [1, 2, 1, 2]
+
+  /--
+  info: 6
+  -/
+  #guard_msgs in
+  #eval solve_jams 3 [1, 1, 1, 1, 1, 1]
 

@@ -1,44 +1,44 @@
 vc-description: |-
   /-
   This question is similar to the $"Operation$ $on$ $a$ $Tuple"$ problem in this month's Long Challenge but with a slight variation.
-  
+
   Consider the following operations on a triple of integers. In one operation, you should:
-  
+
   - Choose a positive integer $d>0$ and an arithmetic operation - in this case, it will only be addition.
-  
+
   - Choose a subset of elements of the triple.
-  
+
   - Apply arithmetic operation to each of the chosen elements.
-  
+
   For example, if we have a triple $(3,5,7)$, we may choose to add $3$ to the first and third element, and we get $(6,5,10)$ using one operation.
-  
+
   You are given an initial triple $(p,q,r)$ and a target triple $(a,b,c)$. Find the maximum number of operations needed to transform $(p,q,r)$ into $(a,b,c)$ or say the conversion is impossible .
   Input:
   - The first line of the input contains a single integer T denoting the number of test cases. The description of T test cases follows.
   - The first line of each test case contains three space-separated integers p, q and r.
   - The second line contains three space-separated integers a, b and c.Output:
   For each test case, print a single line containing one integer ― the maximum required number of operations(if the conversion is possible), or else print "-1"
-  
+
   Constraints:
   - $1 \leq T \leq 1,000$
   - $2 \leq |p|,|q|,|r|,|a|,|b|,|c| \leq 10^9$Sample Input:
   	1
-  
+
   	2 2 1
-  
+
   	3 3 2
-  
+
   Sample Output:
   	3
   -/
 
-vc-preamble: |-
+vc-preamble: |
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def transform_triple (p q r a b c : Int) : Int := sorry
-  
+
   theorem identity_transform_is_zero (x y z : Int) : 
     transform_triple x y z x y z = 0 := sorry
 
@@ -48,26 +48,26 @@ vc-theorems: |-
     let result := transform_triple p q r a b c
     (result ≠ -1) →
     result = (max 0 (a - p) + max 0 (b - q) + max 0 (c - r)) := sorry
-  
-  /-
-  info: 3
-  -/
-  -- #guard_msgs in
-  -- #eval transform_triple 2 2 1 3 3 2
-  
-  /-
-  info: 0
-  -/
-  -- #guard_msgs in
-  -- #eval transform_triple 2 2 2 2 2 2
-  
-  /-
-  info: -1
-  -/
-  -- #guard_msgs in
-  -- #eval transform_triple 5 5 5 4 4 4
 
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: guarded_and_plausible
+
+  /--
+  info: 3
+  -/
+  #guard_msgs in
+  #eval transform_triple 2 2 1 3 3 2
+
+  /--
+  info: 0
+  -/
+  #guard_msgs in
+  #eval transform_triple 2 2 2 2 2 2
+
+  /--
+  info: -1
+  -/
+  #guard_msgs in
+  #eval transform_triple 5 5 5 4 4 4
 

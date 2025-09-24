@@ -42,25 +42,4 @@ sorry
 theorem empty_matrix_error : 
   isValidMatrix [] = false :=
 sorry
-
-/-
-info: 13
--/
--- #guard_msgs in
--- #eval find_max_trace [[1, 2, 5], [6, 3, 4], [2, 7, 1]]
-
-/-
-info: 5
--/
--- #guard_msgs in
--- #eval find_max_trace [[1, 2], [3, 4]]
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval find_max_trace [[1, 1, 1], [1, 1, 1], [1, 1, 1]]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

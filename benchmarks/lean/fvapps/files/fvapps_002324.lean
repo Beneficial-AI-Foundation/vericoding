@@ -1,12 +1,13 @@
 -- <vc-preamble>
-def is_palindrome (s : String) : Bool :=
-  sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
+def is_palindrome (s : String) : Bool :=
+  sorry
+
 def reverseString (s : String) : String :=
   sorry
 -- </vc-definitions>
@@ -32,25 +33,4 @@ sorry
 theorem single_char_is_palindrome {c : Char} :
   is_palindrome (String.mk [c]) = true :=
 sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval is_palindrome "A man, a plan, a canal: Panama"
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval is_palindrome "race a car"
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval is_palindrome ""
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

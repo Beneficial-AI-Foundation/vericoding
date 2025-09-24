@@ -25,25 +25,4 @@ theorem binary_string_min_length (s : String) (k : Nat)
   (h2 : k < s.length)
   (h3 : ∀ c ∈ s.data, c = 'a' ∨ c = 'b') :
   getLengthOfOptimalCompression s k ≥ 1 := sorry
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval getLengthOfOptimalCompression "aaabcccd" 2
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval getLengthOfOptimalCompression "aabbaa" 2
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval getLengthOfOptimalCompression "aaaaaaaaaaa" 0
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

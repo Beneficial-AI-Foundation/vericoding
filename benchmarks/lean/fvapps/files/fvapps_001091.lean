@@ -45,25 +45,4 @@ theorem balance_point_single_elem (x : Int) :
 theorem no_balance_preserves (arr : List Int) :
   find_balance_point arr = -1 →
   find_balance_point (arr.map (· * 2)) = -1 := sorry
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval find_balance_point [7, 8, 9, 1, 9, 8, 7]
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval find_balance_point [1, 100, 50, -51, 1, 1]
-
-/-
-info: -1
--/
--- #guard_msgs in
--- #eval find_balance_point [1, 2, 3]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

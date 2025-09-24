@@ -45,6 +45,3 @@ theorem step_consecutive_ranges (g : Nat) (h : g ≥ 2 ∧ g ≤ 50) :
   | _, _ => True
   := sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

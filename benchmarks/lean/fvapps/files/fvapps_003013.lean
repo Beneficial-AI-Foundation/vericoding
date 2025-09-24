@@ -25,25 +25,4 @@ theorem longer_preserves_unique_words {s : String} {result : String}
   let output_words := result.split (· = ' ')
   ∀ w, w ∈ input_words ↔ w ∈ output_words
   := sorry
-
-/-
-info: 'Green World Another'
--/
--- #guard_msgs in
--- #eval longer "Another Green World"
-
-/-
-info: 'of on the Town edge Darkness'
--/
--- #guard_msgs in
--- #eval longer "Darkness on the edge of Town"
-
-/-
-info: 'Hello hello'
--/
--- #guard_msgs in
--- #eval longer "hello Hello"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

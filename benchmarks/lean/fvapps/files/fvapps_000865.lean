@@ -25,25 +25,4 @@ theorem fence_count_properties (n : Nat) (row1 row2 : String) (h : n > 0) :
   let total_stars := count_stars row1 + count_stars row2
   let result := min_fences n row1 row2
   result ≤ total_stars ∧ result ≥ 0 := sorry
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval min_fences 2 "**" "**"
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval min_fences 3 "***" "*.."
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval min_fences 3 "*.." ".*."
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

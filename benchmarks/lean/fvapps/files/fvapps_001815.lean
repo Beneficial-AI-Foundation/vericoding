@@ -23,25 +23,4 @@ theorem xorGame_consistent {nums : List Nat} :
 
 theorem xorGame_even_length_general {nums : List Nat} :
   nums.length ≥ 2 → nums.length % 2 = 0 → xorGame nums = true := sorry
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval xor_game [1, 1, 2]
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval xor_game [0, 1]
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval xor_game [1, 2, 3]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

@@ -29,25 +29,4 @@ theorem controller_stops_at_limits (s : String) :
     let nums := (controller s).data.map (fun c => c.toNat - '0'.toNat);
     (nums[i]! = 0 ∧ nums[i+1]! ≠ nums[i]! → nums[i+1]! > nums[i]!) ∧
     (nums[i]! = 5 ∧ nums[i+1]! ≠ nums[i]! → nums[i+1]! < nums[i]!) := sorry
-
-/-
-info: '12345'
--/
--- #guard_msgs in
--- #eval controller "P...."
-
-/-
-info: '1222234555'
--/
--- #guard_msgs in
--- #eval controller "P.P..P...."
-
-/-
-info: '001234321000'
--/
--- #guard_msgs in
--- #eval controller "..P...O....."
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

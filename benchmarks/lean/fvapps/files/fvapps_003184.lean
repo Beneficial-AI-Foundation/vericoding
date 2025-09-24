@@ -38,25 +38,4 @@ sorry
 theorem evil_code_medal_identical_times (t : String) :
   evil_code_medal t t t t = "None" :=
 sorry
-
-/-
-info: 'Silver'
--/
--- #guard_msgs in
--- #eval evil_code_medal "00:30:00" "00:15:00" "00:45:00" "01:15:00"
-
-/-
-info: 'None'
--/
--- #guard_msgs in
--- #eval evil_code_medal "01:15:00" "00:15:00" "00:45:00" "01:15:00"
-
-/-
-info: 'Gold'
--/
--- #guard_msgs in
--- #eval evil_code_medal "00:00:01" "00:00:10" "00:01:40" "01:00:00"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

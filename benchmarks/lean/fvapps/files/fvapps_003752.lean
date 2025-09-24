@@ -17,25 +17,4 @@ theorem press_button_non_positive (n : Int) (h : n ≤ 0) :
 
 theorem press_button_fixed_points :
   press_button 0 = 0 ∧ press_button 1 = 1 := sorry
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval press_button 1
-
-/-
-info: 7
--/
--- #guard_msgs in
--- #eval press_button 3
-
-/-
-info: 14
--/
--- #guard_msgs in
--- #eval press_button 4
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

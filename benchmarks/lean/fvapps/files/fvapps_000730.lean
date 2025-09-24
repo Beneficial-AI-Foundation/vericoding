@@ -23,19 +23,4 @@ theorem min_cable_cost_le_max_edges (n : Nat) (costs : List (List Nat))
     (n * (n-1)) / 2 * 
     (costs.foldr (λ row acc => max acc (row.foldr max 0)) 0) :=
 sorry
-
-/-
-info: 9
--/
--- #guard_msgs in
--- #eval min_cable_cost 4 [[0, 7, 8, 10], [7, 0, 4, 5], [8, 4, 0, 6], [10, 5, 6, 0]]
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval min_cable_cost 3 [[0, 1, 2], [1, 0, 3], [2, 3, 0]]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

@@ -21,25 +21,4 @@ theorem multiply_single_digit (n : Int) (h : -9 ≤ n ∧ n ≤ 9) :
 
 theorem multiply_zero_preservation (n : Int) :
   n = 0 → multiply n = 0 := sorry
-
-/-
-info: 250
--/
--- #guard_msgs in
--- #eval multiply 10
-
-/-
-info: 25000
--/
--- #guard_msgs in
--- #eval multiply 200
-
-/-
-info: -10
--/
--- #guard_msgs in
--- #eval multiply -2
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

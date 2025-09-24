@@ -45,25 +45,4 @@ theorem car_fleet_no_merge_separated (target: Int)
   (h1: target = 10) :
   car_fleet 10 [0, 5] [1, 2] = 2 :=
 sorry
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval car_fleet 12 [10, 8, 0, 5, 3] [2, 4, 1, 1, 3]
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval car_fleet 10 [0] [1]
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval car_fleet 10 [] []
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

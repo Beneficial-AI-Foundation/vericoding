@@ -22,25 +22,4 @@ theorem sequence_sum_positive_monotone {a step : Int}
   (h_b : b = a + step * 3) :
   sequence_sum a b step ≥ a :=
   sorry
-
-/-
-info: 12
--/
--- #guard_msgs in
--- #eval sequence_sum 2 6 2
-
-/-
-info: 15
--/
--- #guard_msgs in
--- #eval sequence_sum 1 5 1
-
-/-
-info: 5
--/
--- #guard_msgs in
--- #eval sequence_sum 1 5 3
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

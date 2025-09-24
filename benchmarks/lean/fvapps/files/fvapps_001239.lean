@@ -28,25 +28,4 @@ theorem can_sum_two_semiprimes_next (n : Nat) :
 
 theorem can_sum_two_semiprimes_prev (n : Nat) :
   n > 4 → n ≤ 200 → can_sum_two_semiprimes n → can_sum_two_semiprimes (n-1) = true ∨ can_sum_two_semiprimes (n-1) = false := sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval can_sum_two_semiprimes 30
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval can_sum_two_semiprimes 45
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval can_sum_two_semiprimes 62
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

@@ -29,25 +29,4 @@ theorem robotSim_obstacles_reduce_distance (commands : List Int) (obstacles : Li
 theorem robotSim_turns_only_zero (commands : List Int) (h : ∀ x ∈ commands, x = -1 ∨ x = -2) :
   robotSim commands [] = 0 :=
   sorry
-
-/-
-info: 25
--/
--- #guard_msgs in
--- #eval robotSim [4, -1, 3] []
-
-/-
-info: 65
--/
--- #guard_msgs in
--- #eval robotSim [4, -1, 4, -2, 4] [[2, 4]]
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval robotSim [-2, -1] []
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

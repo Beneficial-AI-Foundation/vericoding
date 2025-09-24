@@ -23,25 +23,4 @@ theorem integerBreak_3 :
 
 theorem integerBreak_better_than_naive_split (n : Nat) (h : n ≥ 4) :
   integerBreak n ≥ 2^(n/2) * (if n % 2 = 0 then 1 else n % 2) := sorry
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval integer_break 2
-
-/-
-info: 36
--/
--- #guard_msgs in
--- #eval integer_break 10
-
-/-
-info: 18
--/
--- #guard_msgs in
--- #eval integer_break 8
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

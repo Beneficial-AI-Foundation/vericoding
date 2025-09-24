@@ -1,12 +1,13 @@
 -- <vc-preamble>
-def min_grid_area (s : String) : Nat :=
-  sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
+def min_grid_area (s : String) : Nat :=
+  sorry
+
 def min_width_height_from_path (s : String) : Nat × Nat :=
   sorry
 -- </vc-definitions>
@@ -32,25 +33,4 @@ theorem min_grid_area_bounds (s : String) :
   let (w, h) := min_width_height_from_path s
   min_grid_area s ≥ min (w * h) 2 := by
   sorry
-
-/-
-info: 8
--/
--- #guard_msgs in
--- #eval min_grid_area "DSAWWAW"
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval min_grid_area "D"
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval min_grid_area "WA"
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

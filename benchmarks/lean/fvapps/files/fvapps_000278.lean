@@ -24,25 +24,4 @@ theorem single_element_gives_zero (x: Int) (k: Int) :
 
 theorem empty_list_gives_zero (k: Int) :
   smallestRangeII [] k = 0 := sorry
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval smallestRangeII [1] 0
-
-/-
-info: 6
--/
--- #guard_msgs in
--- #eval smallestRangeII [0, 10] 2
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval smallestRangeII [1, 3, 6] 3
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

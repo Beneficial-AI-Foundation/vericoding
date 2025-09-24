@@ -1,6 +1,4 @@
 -- <vc-preamble>
-def find_max_subarray_sum (arr : List Int) : Int := sorry
-
 def list_max : List Int → Int
   | [] => 0
   | (x::xs) => max x (list_max xs)
@@ -20,59 +18,34 @@ def list_sum : List Int → Int
 -- <vc-definitions>
 def get_subarrays (arr : List Int) : List (List Int) := sorry
 
-def subarray_sums (arr : List Int) : List Int :=
-  (get_subarrays arr).map list_sum
+def find_max_subarray_sum (arr : List Int) : Int :=
+sorry
 -- </vc-definitions>
 
 -- <vc-theorems>
+def subarray_sums (arr : List Int) : List Int :=
+  (get_subarrays arr).map list_sum
+
 theorem max_subarray_sum_at_least_one_element {arr : List Int} (h : arr ≠ []) :
-  find_max_subarray_sum arr ≥ list_max arr := sorry
+  find_max_subarray_sum arr ≥ list_max arr :=
+sorry
 
 theorem max_subarray_sum_positive_only {arr : List Int} (h : arr ≠ [])
   (h_pos : ∀ x ∈ arr, x ≥ 0) :
-  find_max_subarray_sum arr ≥ list_sum arr := sorry 
+  find_max_subarray_sum arr ≥ list_sum arr :=
+sorry
 
 theorem max_subarray_sum_empty_and_nonempty (arr : List Int) :
   (arr = [] → find_max_subarray_sum arr = 0) ∧
-  (arr ≠ [] → find_max_subarray_sum arr ≥ list_min arr) := sorry
+  (arr ≠ [] → find_max_subarray_sum arr ≥ list_min arr) :=
+sorry
 
 theorem max_subarray_contiguous {arr : List Int} (h : arr ≠ []) :
-  find_max_subarray_sum arr = list_max (subarray_sums arr) := sorry
+  find_max_subarray_sum arr = list_max (subarray_sums arr) :=
+sorry
 
 theorem max_subarray_base_cases :
   find_max_subarray_sum [] = 0 ∧
-  find_max_subarray_sum [0] = 0 := sorry
-
-/-
-info: 6
--/
--- #guard_msgs in
--- #eval find_max_subarray_sum [-2, 1, -3, 4, -1, 2, 1, -5, 4]
-
-/-
-info: 23
--/
--- #guard_msgs in
--- #eval find_max_subarray_sum arr2
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval find_max_subarray_sum arr3
-
-/-
-info: -1
--/
--- #guard_msgs in
--- #eval find_max_subarray_sum arr4
-
-/-
-info: -1
--/
--- #guard_msgs in
--- #eval find_max_subarray_sum arr5
+  find_max_subarray_sum [0] = 0 :=
+sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

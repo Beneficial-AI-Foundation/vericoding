@@ -26,19 +26,4 @@ theorem predict_winner_multiples_of_four (n : Nat) (nums : List Nat) :
   nums.length ≤ 100 →
   (∀ x ∈ nums, x % 4 = 0) →
   ∃ result, predict_winner n nums = result := sorry
-
-/-
-info: 'Henry'
--/
--- #guard_msgs in
--- #eval predict_winner 2 [3, 4]
-
-/-
-info: 'Derek'
--/
--- #guard_msgs in
--- #eval predict_winner 3 [1, 3, 5]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

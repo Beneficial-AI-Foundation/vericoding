@@ -17,25 +17,4 @@ theorem solve_impossible_single_digit (n : Nat) :
 
 theorem solve_leading_zeros (n m : Nat) :
   n = m → solve n = solve m := sorry
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval solve 50
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval solve 521
-
-/-
-info: -1
--/
--- #guard_msgs in
--- #eval solve 7
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

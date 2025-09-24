@@ -27,25 +27,4 @@ theorem judge_point24_with_24_and_ones (nums : List Nat)
   (h : nums.length = 4) (h₂ : 24 ∈ nums) 
   (h₃ : (nums.filter (· = 1)).length = 3) :
   judge_point24 nums = true := sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval judge_point24 [4, 1, 8, 7]
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval judge_point24 [1, 2, 1, 2]
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval judge_point24 [3, 3, 8, 8]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

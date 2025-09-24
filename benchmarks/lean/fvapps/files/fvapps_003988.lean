@@ -28,25 +28,4 @@ sorry
 theorem sum_cubes_base_case_two :
   sum_cubes 2 = 9 :=
 sorry
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval sum_cubes 1
-
-/-
-info: 9
--/
--- #guard_msgs in
--- #eval sum_cubes 2
-
-/-
-info: 36
--/
--- #guard_msgs in
--- #eval sum_cubes 3
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

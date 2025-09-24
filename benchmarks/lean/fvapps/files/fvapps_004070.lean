@@ -38,37 +38,4 @@ theorem rm_ge_weight (weight reps : Int)
 theorem rm_is_int (weight reps : Int)
   (hw : weight ≥ 0) (hr : reps ≥ 0) :
   calculate_1RM weight reps = (calculate_1RM weight reps) := sorry
-
-/-
-info: 282
--/
--- #guard_msgs in
--- #eval calculate_1RM 135 20
-
-/-
-info: 253
--/
--- #guard_msgs in
--- #eval calculate_1RM 200 8
-
-/-
-info: 289
--/
--- #guard_msgs in
--- #eval calculate_1RM 270 2
-
-/-
-info: 360
--/
--- #guard_msgs in
--- #eval calculate_1RM 360 1
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval calculate_1RM 400 0
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

@@ -81,16 +81,16 @@ vc-preamble: |-
 vc-helpers: |-
 
 vc-spec: |-
-  fn solve(s: Seq<char>, t: Seq<char>) -> (result: i32)
+  fn solve(s: Vec<char>, t: Vec<char>) -> (result: i32)
       requires 
           s.len() == t.len(),
           s.len() >= 0,
       ensures 
-          result == -1 <==> !has_same_character_counts(s, t),
+          result == -1 <==> !has_same_character_counts(s@, t@),
           result >= -1,
-          result != -1 ==> 0 <= result <= s.len(),
-          result != -1 ==> has_same_character_counts(s, t),
-          result != -1 ==> result == s.len() - max_longest_subsequence(s, t),
+          result != -1 ==> 0 <= result <= s.len() as i32,
+          result != -1 ==> has_same_character_counts(s@, t@),
+          result != -1 ==> result == s.len() as i32 - max_longest_subsequence(s@, t@) as i32,
           s.len() == 0 ==> result == 0,
 
 vc-code: |-

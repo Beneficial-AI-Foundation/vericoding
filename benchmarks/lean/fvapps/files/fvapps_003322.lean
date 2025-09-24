@@ -23,25 +23,4 @@ theorem numberOfRoutes_single_col (n : Nat) (h: n > 0) :
 
 theorem numberOfRoutes_minimal :
   numberOfRoutes 1 1 = 2 := sorry
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval number_of_routes 1 1
-
-/-
-info: 35
--/
--- #guard_msgs in
--- #eval number_of_routes 3 4
-
-/-
-info: 462
--/
--- #guard_msgs in
--- #eval number_of_routes 5 6
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

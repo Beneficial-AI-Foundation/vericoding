@@ -35,25 +35,4 @@ theorem min_deletion_size_bounds
   ∃ n, min_deletion_size strings = n ∧ 
     0 ≤ n ∧ n ≤ strings[0]!.length :=
   sorry
-
-/-
-info: expected1
--/
--- #guard_msgs in
--- #eval min_deletion_size ["cba", "daf", "ghi"]
-
-/-
-info: expected2
--/
--- #guard_msgs in
--- #eval min_deletion_size ["a", "b"]
-
-/-
-info: expected3
--/
--- #guard_msgs in
--- #eval min_deletion_size ["zyx", "wvu", "tsr"]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

@@ -37,25 +37,4 @@ theorem solve_optimal (n : Int) (h : n > 0) (h2 : n ≤ 10^6) (h3 : n % 10 = 0) 
         remaining' < bill ∧
         count = result) →
     result ≤ count := sorry
-
-/-
-info: 4
--/
--- #guard_msgs in
--- #eval solve 770
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval solve 550
-
-/-
-info: -1
--/
--- #guard_msgs in
--- #eval solve 125
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

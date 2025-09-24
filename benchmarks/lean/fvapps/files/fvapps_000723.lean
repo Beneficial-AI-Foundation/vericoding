@@ -20,25 +20,4 @@ theorem single_coeff_stable (coeff : List Int) :
 
 theorem copy_safety (coeff : List Int) :
   check_rocket_stability coeff = 0 ∨ check_rocket_stability coeff = 1 := sorry
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval check_rocket_stability [10, 12, 4, 5, 3]
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval check_rocket_stability [0, 0, 0]
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval check_rocket_stability [5]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

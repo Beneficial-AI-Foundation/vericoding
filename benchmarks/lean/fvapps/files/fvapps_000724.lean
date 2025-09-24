@@ -21,25 +21,4 @@ theorem single_box_distribution {n : Nat} (h : n > 0) :
 
 theorem edge_case_minimum :
   solve_apple_distribution 1 1 = "NO" := sorry
-
-/-
-info: 'NO'
--/
--- #guard_msgs in
--- #eval solve_apple_distribution 5 1
-
-/-
-info: 'NO'
--/
--- #guard_msgs in
--- #eval solve_apple_distribution 4 2
-
-/-
-info: 'YES'
--/
--- #guard_msgs in
--- #eval solve_apple_distribution 10 10
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

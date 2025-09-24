@@ -31,25 +31,4 @@ theorem factorial_lookup_one (nums : List String)
   (h₁ : nums.length > 0) 
   (h₂ : ∀ n ∈ nums, n = "1") :
   ∀ r ∈ factorial_lookup nums, r = "1" := sorry
-
-/-
-info: ['120', '24', '720']
--/
--- #guard_msgs in
--- #eval factorial_lookup ["3", "5", "4", "6"]
-
-/-
-info: ['6', '24']
--/
--- #guard_msgs in
--- #eval factorial_lookup ["2", "3", "4"]
-
-/-
-info: ['120']
--/
--- #guard_msgs in
--- #eval factorial_lookup ["1", "5"]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

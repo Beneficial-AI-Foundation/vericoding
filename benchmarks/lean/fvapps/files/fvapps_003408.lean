@@ -17,25 +17,4 @@ theorem non_string_input_is_false :
 
 theorem case_insensitive :
   ∀ s : String, is_isogram s = is_isogram s.toLower := sorry
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval is_isogram "Dermatoglyphics"
-
-/-
-info: False
--/
--- #guard_msgs in
--- #eval is_isogram None
-
-/-
-info: True
--/
--- #guard_msgs in
--- #eval is_isogram "aabbccddeeffgg"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

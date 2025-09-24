@@ -27,25 +27,4 @@ theorem robot_cake_count_validity (n m : Nat)
   (h3 : m < n) :
   let result := solve_robot_cake_distribution n m
   (result = "Yes" ∨ ∃ count, result = s!"No {count}" ∧ 0 < count ∧ count < n) := sorry
-
-/-
-info: 'No 1'
--/
--- #guard_msgs in
--- #eval solve_robot_cake_distribution 2 0
-
-/-
-info: 'Yes'
--/
--- #guard_msgs in
--- #eval solve_robot_cake_distribution 2 1
-
-/-
-info: 'No 2'
--/
--- #guard_msgs in
--- #eval solve_robot_cake_distribution 4 2
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

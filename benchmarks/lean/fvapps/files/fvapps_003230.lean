@@ -44,25 +44,4 @@ theorem alpha_seq_parts_same_char {s : String} (h : s ≠ "") :
   ∀ part ∈ parts, ∀ i, i < part.length →
     (part.data[i]?.getD ' ').toLower = (part.data[0]?.getD ' ').toLower := by
   sorry
-
-/-
-info: 'A,Bb,Ccc,Ffffff,Ffffff'
--/
--- #guard_msgs in
--- #eval alpha_seq "BfcFA"
-
-/-
-info: 'Ggggggg,Llllllllllll,Nnnnnnnnnnnnnn,Pppppppppppppppp,Rrrrrrrrrrrrrrrrrr,Zzzzzzzzzzzzzzzzzzzzzzzzzz'
--/
--- #guard_msgs in
--- #eval alpha_seq "ZpglnR"
-
-/-
-info: 'A,Bb,Ccc'
--/
--- #guard_msgs in
--- #eval alpha_seq "Abc"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

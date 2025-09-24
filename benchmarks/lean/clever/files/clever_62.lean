@@ -36,6 +36,3 @@ theorem correctness
 : problem_spec implementation xs := by
   sorry
 -- </vc-theorems>
-
--- #test implementation [3, 1, 2, 4, 5] : List Int = [1, 4, 12, 20]
--- #test implementation [1, 2, 3] : List Int = [2, 6]

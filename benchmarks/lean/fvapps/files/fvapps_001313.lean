@@ -47,6 +47,3 @@ theorem solve_mindstone_monotonic {n k : Nat} {arr : List Nat}
     List.get! (solve_mindstone n k arr) i ≤ List.get! (solve_mindstone n k arr) j :=
   sorry
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded

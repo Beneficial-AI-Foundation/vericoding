@@ -28,6 +28,3 @@ theorem sum_dif_rev_strictly_increasing (n : Nat) (h : n > 0) (h2 : n ≤ 19) :
 theorem sum_dif_rev_no_trailing_zero (n : Nat) (h : n > 0) (h2 : n ≤ 20) :
   sum_dif_rev n % 10 ≠ 0 := sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

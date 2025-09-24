@@ -30,25 +30,4 @@ theorem shifted_diff_not_rotation (s1 s2 : String)
   (h4 : s1.data ≠ s2.data) :
   shifted_diff s1 s2 = -1 :=
   sorry
-
-/-
-info: 5
--/
--- #guard_msgs in
--- #eval shifted_diff "fatigue" "tiguefa"
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval shifted_diff "coffee" "eecoff"
-
-/-
-info: -1
--/
--- #guard_msgs in
--- #eval shifted_diff "dog" "god"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

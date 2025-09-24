@@ -31,25 +31,4 @@ theorem window_properties (start width : Int)
   (result.length > 1 →
     ∀ x ∈ result.tail, start ≤ x ∧ x ≤ start + width) :=
 sorry
-
-/-
-info: [7, 294]
--/
--- #guard_msgs in
--- #eval find_int_inrange 100 300
-
-/-
-info: [7, 294, 468]
--/
--- #guard_msgs in
--- #eval find_int_inrange 100 500
-
-/-
-info: [7, 468, 834]
--/
--- #guard_msgs in
--- #eval find_int_inrange 300 900
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

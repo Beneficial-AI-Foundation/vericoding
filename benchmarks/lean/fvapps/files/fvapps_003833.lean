@@ -20,25 +20,4 @@ theorem nth_char_chars_from_word_at_index (words : List String) (i : Fin words.l
 
 theorem nth_char_empty_list :
   nth_char [] = "" := sorry
-
-/-
-info: 'yes'
--/
--- #guard_msgs in
--- #eval nth_char ["yoda", "best", "has"]
-
-/-
-info: ''
--/
--- #guard_msgs in
--- #eval nth_char []
-
-/-
-info: 'Codewars'
--/
--- #guard_msgs in
--- #eval nth_char ["Chad", "Morocco", "India", "Algeria", "Botswana", "Bahamas", "Ecuador", "Micronesia"]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

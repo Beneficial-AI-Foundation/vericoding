@@ -29,25 +29,4 @@ sorry
 theorem remove_preserves_non_exclamations (s : String) :
   (s.data.filter (· ≠ '!')) = ((remove s).data.filter (· ≠ '!')) := 
 sorry
-
-/-
-info: 'Hi!'
--/
--- #guard_msgs in
--- #eval remove "Hi!"
-
-/-
-info: 'Hi Hi!!'
--/
--- #guard_msgs in
--- #eval remove "Hi! Hi!"
-
-/-
-info: 'Hi Hi Hi!!!!'
--/
--- #guard_msgs in
--- #eval remove "Hi! Hi!! Hi!"
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

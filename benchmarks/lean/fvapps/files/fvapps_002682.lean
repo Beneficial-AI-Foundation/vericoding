@@ -30,25 +30,4 @@ theorem fibonacci_base_cases :
 
 theorem fibonacci_monotonic (n : Nat) :
   n > 1 → fibonacci n ≥ fibonacci (n-1) := sorry
-
-/-
-info: 190392490709135
--/
--- #guard_msgs in
--- #eval fibonacci 70
-
-/-
-info: 1548008755920
--/
--- #guard_msgs in
--- #eval fibonacci 60
-
-/-
-info: 12586269025
--/
--- #guard_msgs in
--- #eval fibonacci 50
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

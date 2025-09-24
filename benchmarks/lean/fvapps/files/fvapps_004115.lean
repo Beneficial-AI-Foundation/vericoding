@@ -1,15 +1,16 @@
 -- <vc-preamble>
-def shortest_time (speeds: List Int) : Int :=
-  sorry
-
-def List.sorted (l: List Int) : List Int :=
-  sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
+def shortest_time (speeds: List Int) : Int :=
+  sorry
+
+def List.sorted (l: List Int) : List Int :=
+  sorry
+
 def isPermutation (l1 l2: List Int) : Bool :=
   sorry
 -- </vc-definitions>
@@ -17,23 +18,23 @@ def isPermutation (l1 l2: List Int) : Bool :=
 -- <vc-theorems>
 theorem shortest_time_positive (speeds: List Int)
   (h: speeds.length = 4)
-  (h2: ∀ x ∈ speeds, x ≥ 1) : 
+  (h2: ∀ x ∈ speeds, x ≥ 1) :
   shortest_time speeds > 0 :=
-  sorry
+sorry
 
 theorem shortest_time_min_bound (speeds: List Int)
   (h: speeds.length = 4)
   (h2: ∀ x ∈ speeds, x ≥ 1) :
   let sorted := speeds.sorted
   shortest_time speeds ≥ sorted[0]! + sorted[1]! + sorted[3]! :=
-  sorry
+sorry
 
 theorem shortest_time_two_crossings (speeds: List Int)
   (h: speeds.length = 4)
   (h2: ∀ x ∈ speeds, x ≥ 1) :
   let sorted := speeds.sorted
   shortest_time speeds ≥ 2 * (sorted[0]! + sorted[1]!) :=
-  sorry
+sorry
 
 theorem shortest_time_order_invariant (speeds1 speeds2: List Int)
   (h1: speeds1.length = 4)
@@ -42,7 +43,7 @@ theorem shortest_time_order_invariant (speeds1 speeds2: List Int)
   (h4: ∀ x ∈ speeds2, x ≥ 1)
   (h5: isPermutation speeds1 speeds2) :
   shortest_time speeds1 = shortest_time speeds2 :=
-  sorry
+sorry
 
 theorem shortest_time_monotonic (speeds: List Int)
   (h: speeds.length = 4)
@@ -51,26 +52,5 @@ theorem shortest_time_monotonic (speeds: List Int)
   (h3: i < speeds.length) :
   let increased := speeds.set i (speeds[i]! + 1)
   shortest_time increased ≥ shortest_time speeds :=
-  sorry
-
-/-
-info: 21
--/
--- #guard_msgs in
--- #eval shortest_time [3, 4, 5, 6]
-
-/-
-info: 41
--/
--- #guard_msgs in
--- #eval shortest_time [3, 7, 10, 18]
-
-/-
-info: 27
--/
--- #guard_msgs in
--- #eval shortest_time [5, 5, 6, 7]
+sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded

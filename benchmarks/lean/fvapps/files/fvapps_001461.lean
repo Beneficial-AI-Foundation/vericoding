@@ -15,25 +15,4 @@ def solve_feast (N K : Nat) : Nat :=
 theorem solve_feast_base_case : 
   solve_feast 2 1 = 0 :=
 sorry
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval solve_feast 2 1
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval solve_feast 3 3
-
-/-
-info: 1
--/
--- #guard_msgs in
--- #eval solve_feast 2 2
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible

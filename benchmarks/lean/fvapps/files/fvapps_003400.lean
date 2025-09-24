@@ -1,12 +1,13 @@
 -- <vc-preamble>
-def proc_seq : List Nat → List Nat 
-  | xs => sorry
 -- </vc-preamble>
 
 -- <vc-helpers>
 -- </vc-helpers>
 
 -- <vc-definitions>
+def proc_seq : List Nat → List Nat
+  | xs => sorry
+
 def countPermNoLeadingZero (n : Nat) (m : Nat) : Nat :=
   sorry
 -- </vc-definitions>
@@ -17,12 +18,14 @@ theorem proc_seq_valid_output (nums : List Nat) :
   (result.length = 2 ∨ result.length = 4) ∧
   (∀ x ∈ result, x ≥ 0) ∧
   (result.length = 2 → result.head! = 1) ∧
-  (result.length = 4 → 
-    result[1]! ≤ result[2]! ∧ result[1]! ≤ result[3]!) := sorry
+  (result.length = 4 →
+    result[1]! ≤ result[2]! ∧ result[1]! ≤ result[3]!) :=
+sorry
 
 theorem proc_seq_leading_zeros (n : Nat) (h : n ≥ 100 ∧ n ≤ 999) :
   let result := proc_seq [n, 0]
-  result.head! = countPermNoLeadingZero n 0 := sorry
+  result.head! = countPermNoLeadingZero n 0 :=
+sorry
 
 theorem proc_seq_small_nums {nums : List Nat} (h : 2 ≤ nums.length ∧ nums.length ≤ 3)
   (h' : ∀ n ∈ nums, 1 ≤ n ∧ n ≤ 9) :
@@ -30,27 +33,7 @@ theorem proc_seq_small_nums {nums : List Nat} (h : 2 ≤ nums.length ∧ nums.le
   (result.length = 2 ∨ result.length = 4) ∧
   (∀ x ∈ result, x ≥ 0) ∧
   (result.length = 2 → result.head! = 1) ∧
-  (result.length = 4 → 
-    result[1]! ≤ result[2]! ∧ result[1]! ≤ result[3]!) := sorry
-
-/-
-info: [8, 218, 379, 2388]
--/
--- #guard_msgs in
--- #eval proc_seq 23 17 89
-
-/-
-info: [1, 2222]
--/
--- #guard_msgs in
--- #eval proc_seq 22 22 22 22
-
-/-
-info: [4, 218, 358, 1152]
--/
--- #guard_msgs in
--- #eval proc_seq 230 15 8
+  (result.length = 4 →
+    result[1]! ≤ result[2]! ∧ result[1]! ≤ result[3]!) :=
+sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

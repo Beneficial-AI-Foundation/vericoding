@@ -26,31 +26,4 @@ theorem divisors_unique (n : Nat) (h : n ≥ 2) :
 
 theorem divisors_complementary_pairs (n : Nat) (h : n ≥ 2) (k : Nat) :
   k ∈ divisors n → k * k ≤ n → k * (n / k) = n := sorry
-
-/-
-info: '1-sum'
--/
--- #guard_msgs in
--- #eval solve 3
-
-/-
-info: '3-altsum'
--/
--- #guard_msgs in
--- #eval solve 7
-
-/-
-info: '1-altsum'
--/
--- #guard_msgs in
--- #eval solve 11
-
-/-
-info: '3-sum'
--/
--- #guard_msgs in
--- #eval solve 37
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

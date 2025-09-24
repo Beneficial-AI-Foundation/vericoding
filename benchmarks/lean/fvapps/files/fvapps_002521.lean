@@ -32,25 +32,4 @@ theorem prod2sum_list_sorted (a b c d : Int) :
 
 theorem prod2sum_reversible (a b c d : Int) :
   (prod2sum a b c d).length = (prod2sum c d a b).length := sorry
-
-/-
-info: [[1, 7], [5, 5]]
--/
--- #guard_msgs in
--- #eval prod2sum 1 2 1 3
-
-/-
-info: [[2, 23], [7, 22]]
--/
--- #guard_msgs in
--- #eval prod2sum 2 3 4 5
-
-/-
-info: [[2, 8]]
--/
--- #guard_msgs in
--- #eval prod2sum 1 1 3 5
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

@@ -25,25 +25,4 @@ theorem fib_first_two :
 theorem fib_strictly_increasing (n : Nat) (h : n ≥ 4) :
   nth_fib n > nth_fib (n-1) :=
   sorry
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval nth_fib 1
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval nth_fib 4
-
-/-
-info: 34
--/
--- #guard_msgs in
--- #eval nth_fib 10
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

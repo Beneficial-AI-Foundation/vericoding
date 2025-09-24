@@ -28,13 +28,4 @@ theorem solve_cyclic_array_constant (n : Nat) (val : Nat)
   let b := List.replicate n val  
   let (status, arr) := solve_cyclic_array n b
   status = "NO" ∧ arr = [] := sorry
-
-/-
-info: n
--/
--- #guard_msgs in
--- #eval len arr
 -- </vc-theorems>
-
--- Apps difficulty: competition
--- Assurance level: unguarded

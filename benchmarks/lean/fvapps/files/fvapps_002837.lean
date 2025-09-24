@@ -20,31 +20,4 @@ theorem bouncy_count_monotone (m : Nat) :
 
 theorem bouncy_count_zero_small_inputs :
   ∀ m : Nat, m < 3 → bouncyCount m = 0 := sorry
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval bouncy_count 0
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval bouncy_count 1
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval bouncy_count 2
-
-/-
-info: 525
--/
--- #guard_msgs in
--- #eval bouncy_count 3
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

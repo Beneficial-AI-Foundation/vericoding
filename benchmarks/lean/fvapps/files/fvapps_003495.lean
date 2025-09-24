@@ -18,6 +18,3 @@ theorem known_case_three :
 theorem single_char_identity (c : Char) :
   string_constructing (String.mk [c]) (String.mk [c]) = 1 := sorry
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: guarded_and_plausible

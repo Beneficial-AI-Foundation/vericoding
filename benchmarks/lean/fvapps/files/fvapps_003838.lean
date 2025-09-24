@@ -24,25 +24,4 @@ theorem number_handles_all_strings {lines : List String} :
 
 theorem number_empty_input :
   number [] = [] := sorry
-
-/-
-info: []
--/
--- #guard_msgs in
--- #eval number []
-
-/-
-info: ['1: a', '2: b', '3: c']
--/
--- #guard_msgs in
--- #eval number ["a", "b", "c"]
-
-/-
-info: ['1: ', '2: ', '3: ']
--/
--- #guard_msgs in
--- #eval number ["", "", ""]
 -- </vc-theorems>
-
--- Apps difficulty: introductory
--- Assurance level: unguarded

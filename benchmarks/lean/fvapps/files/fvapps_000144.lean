@@ -27,25 +27,4 @@ theorem decode_string_identity_plain (s: String) (h: ∀ c, String.containsChar 
 
 theorem decode_string_simple_repeat (c: Char) (h: c.isAlpha) :
   decode_string s!"2[{String.singleton c}]" = String.singleton c ++ String.singleton c := sorry
-
-/-
-info: 'aaabcbc'
--/
--- #guard_msgs in
--- #eval decode_string "3[a]2[bc]"
-
-/-
-info: 'accaccacc'
--/
--- #guard_msgs in
--- #eval decode_string "3[a2[c]]"
-
-/-
-info: 'abcabccdcdcdef'
--/
--- #guard_msgs in
--- #eval decode_string "2[abc]3[cd]ef"
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: unguarded

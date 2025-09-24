@@ -1,96 +1,96 @@
 vc-description: |-
   /-
   Rakesh has built a model rocket and wants to test how stable it is. He usually uses a magic box which runs some tests on the rocket and tells if it is stable or not, but his friend broke it by trying to find out how stable he is (very delicate magic indeed). The box only gives a polynomial equation now which can help Rakesh find the stability (a failsafe by the manufacturers). 
-  
+
   Rakesh reads the manual for the magic box and understands that in order to determine stability, he needs to take every other term and put them in two rows. Eg. If the polynomial is:
   10 x^4 + 12 x^3 + 4 x^2 + 5 x + 3, the first two rows will be: 
-  
+
   Row 1: 10       4       3
-  
+
   Row 2: 12       5       0
-  
+
   For all other rows, the nth element of the rth row is found recursively by multiplying the 1st element of the (r-1)th row and (n+1)th element of the (r-2)th row and subtracting it with 1st element of the (r-2)th row multiplied by (n+1)th element of the (r-1)th row.
-  
+
   So Row 3 will be (12 * 4 - 10 * 5)   (12 * 3 - 10 * 0)
-  
+
   Row 3: -2           36      0
-  
+
   Row 4: -442        0       0
-  
+
   Row 5: -15912    0       0
-  
+
   There will not be any row six (number of rows = maximum power of x + 1)
-  
+
   The rocket is stable if there are no sign changes in the first column. 
-  
+
   If all the elements of the rth row are 0, replace the nth element of the rth row by the nth element of the (r-1)th row multiplied by (maximum power of x + 4 - r - 2n).
-  
+
   If the first element of any row is 0 and some of the other elements are non zero, the rocket is unstable.
-  
+
   Can you help Rakesh check if his rocket is stable?
-  
+
   Input Format:
-  
+
   1. First row with number of test cases (T).
-  
+
   2. Next T rows with the coefficients of the polynomials for each case (10 12 4 5 3 for the case above).
-  
+
   Output Format:
-  
+
   1. "1" if stable (without "")
-  
+
   2. "0" if unstable (without "")
-  
+
   Sample Input: 
-  
+
   1
-  
+
   10 12 4 5 3
-  
+
   Sample Output:
-  
+
   0
   -/
 
-vc-preamble: |-
+vc-preamble: |
 
-vc-helpers: |-
+vc-helpers: |
 
 vc-definitions: |-
   def check_rocket_stability (coeff : List Int) : Nat := sorry
-  
+
   theorem check_rocket_binary (coeff : List Int) : 
     check_rocket_stability coeff = 0 ∨ check_rocket_stability coeff = 1 := sorry
 
 vc-theorems: |-
   theorem zeros_stable (zeros : List Int) :
     zeros.all (λ x => x = 0) → check_rocket_stability zeros = 1 := sorry
-  
+
   theorem single_coeff_stable (coeff : List Int) :
     coeff.length = 1 → check_rocket_stability coeff = 1 := sorry
-  
+
   theorem copy_safety (coeff : List Int) :
     check_rocket_stability coeff = 0 ∨ check_rocket_stability coeff = 1 := sorry
-  
-  /-
-  info: 0
-  -/
-  -- #guard_msgs in
-  -- #eval check_rocket_stability [10, 12, 4, 5, 3]
-  
-  /-
-  info: 1
-  -/
-  -- #guard_msgs in
-  -- #eval check_rocket_stability [0, 0, 0]
-  
-  /-
-  info: 1
-  -/
-  -- #guard_msgs in
-  -- #eval check_rocket_stability [5]
 
 vc-postamble: |-
   -- Apps difficulty: interview
   -- Assurance level: unguarded
+
+  /--
+  info: 0
+  -/
+  #guard_msgs in
+  #eval check_rocket_stability [10, 12, 4, 5, 3]
+
+  /--
+  info: 1
+  -/
+  #guard_msgs in
+  #eval check_rocket_stability [0, 0, 0]
+
+  /--
+  info: 1
+  -/
+  #guard_msgs in
+  #eval check_rocket_stability [5]
 

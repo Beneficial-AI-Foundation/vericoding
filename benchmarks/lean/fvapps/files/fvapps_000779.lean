@@ -26,25 +26,4 @@ sorry
 theorem count_solved_problems_empty {N: Nat} :
   count_solved_problems N [] = 0 :=
 sorry
-
-/-
-info: 2
--/
--- #guard_msgs in
--- #eval count_solved_problems 3 [[1, 1, 0], [1, 1, 1], [1, 0, 0]]
-
-/-
-info: 3
--/
--- #guard_msgs in
--- #eval count_solved_problems 4 [[1, 1, 1], [0, 0, 0], [1, 1, 0], [0, 1, 1]]
-
-/-
-info: 0
--/
--- #guard_msgs in
--- #eval count_solved_problems 2 [[0, 0, 0], [1, 0, 0]]
 -- </vc-theorems>
-
--- Apps difficulty: interview
--- Assurance level: guarded_and_plausible
