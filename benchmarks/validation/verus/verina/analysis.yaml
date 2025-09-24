@@ -1,0 +1,25 @@
+benchmark: verina
+language: verus
+is-transpiled: true
+checking-successes: true
+files-sampled:
+- file: 23_verina_advanced_9_task_impl_gpt.rs
+  llm: gpt
+  issues-with-spec: '!!! Loses constraints during transpilation !!!'
+  issues-with-implementation: 'None'
+- file: 48_verina_basic_76_task_impl_claude-opus.rs
+  llm: claude-opus
+  issues-with-spec: 'None, unmodified'
+  issues-with-implementation: 'None'
+- file: 43_verina_basic_6_task_impl_glm.rs
+  llm: glm
+  issues-with-spec: 'None, unmodified'
+  issues-with-implementation: 'None'
+- file: 41_verina_basic_68_task_impl_gpt-mini.rs
+  llm: gpt-mini
+  issues-with-spec: 'None, unmodified'
+  issues-with-implementation: 'None'
+- file: 54_verina_basic_91_task_impl_gemini.rs
+  llm: gemini
+  issues-with-spec: 'None, unmodified'
+  issues-with-implementation: 'None'
