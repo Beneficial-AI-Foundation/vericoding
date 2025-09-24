@@ -4,7 +4,7 @@ version = "0.1.0"
 description = "Translate code from various verification languages to Verus using AI"
 readme = "README.md"
 authors = [
-    { name = "Quinn Dougherty", email = "quinn.dougherty.forall@gmail.com" }
+    { name = "code2verus contributors" }
 ]
 requires-python = ">=3.12"
 dependencies = [
