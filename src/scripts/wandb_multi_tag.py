@@ -61,8 +61,8 @@ def check_insufficient_credits(run):
         # No output.log found - return None to indicate we should skip this run
         return None
 
-def get_wandb_results_for_tags(tags, project="vericoding", entity=None, debug=False):
-    """Fetch results from W&B for multiple tags."""
+def get_wandb_results_for_tags(tags=None, run_ids=None, project="vericoding", entity=None, debug=False):
+    """Fetch results from W&B for multiple tags and/or specific run IDs."""
     api = wandb.Api()
     
     # Get project path
@@ -71,8 +71,20 @@ def get_wandb_results_for_tags(tags, project="vericoding", entity=None, debug=Fa
     else:
         project_path = project
     
-    # Combine all tags in the filter
-    runs = api.runs(project_path, filters={"tags": {"$in": tags}})
+    runs = []
+    
+    # Get runs by tags if provided
+    if tags:
+        tag_runs = api.runs(project_path, filters={"tags": {"$in": tags}})
+        runs.extend(tag_runs)
+    
+    # Get specific runs by ID if provided
+    if run_ids:
+        for run_id in run_ids:
+            run = api.run(f"{project_path}/{run_id}")
+            runs.append(run)
+            if debug:
+                print(f"Added run by ID: {run_id}", file=sys.stderr)
     
     # Store per-shard results for aggregation
     shard_results = defaultdict(list)  # model_name -> list of {'success_rate': float, 'successful_files': int, 'total_files': int, 'url': str, 'files_dir': str}
@@ -247,21 +259,33 @@ def calculate_model_union(detailed_results, dataset_file_count):
         }
 
 def main():
-    parser = argparse.ArgumentParser(description="Display W&B results for multiple tags in simple format")
-    parser.add_argument("--tags", required=True, nargs='+', help="W&B tags to fetch results for")
+    parser = argparse.ArgumentParser(description="Display W&B results for multiple tags and/or run IDs in simple format")
+    parser.add_argument("--tags", nargs='+', help="W&B tags to fetch results for")
+    parser.add_argument("--run-ids", nargs='+', help="Specific W&B run IDs to include")
     parser.add_argument("--project", default="vericoding", help="W&B project name")
     parser.add_argument("--entity", help="W&B entity/username")
     parser.add_argument("--debug", action="store_true", help="Enable debug output")
     
     args = parser.parse_args()
     
+    # Check that at least one of tags or run_ids is provided
+    if not args.tags and not args.run_ids:
+        parser.error("Must provide either --tags or --run-ids (or both)")
+    
     # Check for W&B API key
     if not os.getenv("WANDB_API_KEY"):
         print("Error: WANDB_API_KEY environment variable not set", file=sys.stderr)
         return
     
-    print(f"Fetching results for tags: {', '.join(args.tags)}", file=sys.stderr)
-    results, dataset_file_count, detailed_results = get_wandb_results_for_tags(args.tags, args.project, args.entity, args.debug)
+    # Build info message
+    info_parts = []
+    if args.tags:
+        info_parts.append(f"tags: {', '.join(args.tags)}")
+    if args.run_ids:
+        info_parts.append(f"run IDs: {', '.join(args.run_ids)}")
+    print(f"Fetching results for {' and '.join(info_parts)}", file=sys.stderr)
+    
+    results, dataset_file_count, detailed_results = get_wandb_results_for_tags(args.tags, args.run_ids, args.project, args.entity, args.debug)
     
     if not results:
         print("No results found for the specified tags", file=sys.stderr)
