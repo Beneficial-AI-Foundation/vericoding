@@ -40,8 +40,6 @@ vc-preamble: |-
     ∀ i, i < n → (result.get ⟨i, by sorry⟩).size = n := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def check_position_pattern (matrix : Array (Array Nat)) (x y : Nat) (hx : x < matrix.size) (hy : y < matrix.size) : Prop := 

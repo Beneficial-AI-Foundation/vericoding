@@ -61,8 +61,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def max_density_subgraph (n : Nat) (m : Nat) (node_values : List Nat) (edges : List Edge) : Float :=

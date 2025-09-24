@@ -51,8 +51,6 @@ vc-preamble: |-
     min_dessert_cost n (List.replicate n 1) = (n + 1) / 2 := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def alternating_sums (costs : List Nat) : Nat × Nat :=

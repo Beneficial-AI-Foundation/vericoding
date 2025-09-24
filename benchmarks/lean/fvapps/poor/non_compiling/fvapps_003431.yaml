@@ -40,8 +40,6 @@ vc-preamble: |-
     | n + 1, x :: xs => x :: modifyNth xs n v
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def Nat.abs (n : Nat) : Nat := n

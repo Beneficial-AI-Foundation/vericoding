@@ -34,8 +34,6 @@ vc-preamble: |-
   | Month.Dec => "Dec"
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def solve (startYear endYear : Nat) : String × String × Nat :=

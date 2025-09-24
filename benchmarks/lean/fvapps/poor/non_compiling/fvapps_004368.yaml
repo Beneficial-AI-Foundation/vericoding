@@ -42,8 +42,6 @@ vc-preamble: |-
   def VALID_OPERATORS : List String := ["+", "-", "*", "/", "**", "=", "!="]
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def VALID_NUMBERS : List String := ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]

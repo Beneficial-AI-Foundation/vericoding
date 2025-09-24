@@ -19,8 +19,6 @@ vc-preamble: |-
     | Direction.W => "W"
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def Path := List Direction

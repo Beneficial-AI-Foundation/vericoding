@@ -66,8 +66,6 @@ vc-preamble: |-
     s.any (fun c => c = '/')
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def solve_gears (speeds : List Nat) (queries : List (List Nat)) : List String := sorry

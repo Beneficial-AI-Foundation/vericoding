@@ -36,8 +36,6 @@ vc-preamble: |-
     := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def lose_weight_string (gender : String) (weight : Float) (duration : Nat) : String := sorry

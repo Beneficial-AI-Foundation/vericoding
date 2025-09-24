@@ -33,8 +33,6 @@ vc-preamble: |-
   def MemoryManager.read {α : Type} (mm : MemoryManager α) (pointer : Nat) : Option α := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def MemoryManager.release {α : Type} (mm : MemoryManager α) (pointer : Nat) : MemoryManager α := sorry

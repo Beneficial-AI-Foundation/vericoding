@@ -84,8 +84,6 @@ vc-preamble: |-
   abbrev Hand := List Card
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def evaluate_poker_hand (h : Hand) : HandResult := 

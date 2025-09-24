@@ -45,8 +45,6 @@ vc-preamble: |-
     pattern.all (fun row => List.length row = k) := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def is_binary_string (s: String) : Bool := sorry

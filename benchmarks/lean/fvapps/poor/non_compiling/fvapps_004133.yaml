@@ -12,8 +12,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def ellipse_contains_point (f0 : Point) (f1 : Point) (l : Float) (p : Point) : Bool :=

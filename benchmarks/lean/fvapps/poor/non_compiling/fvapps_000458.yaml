@@ -28,8 +28,6 @@ vc-preamble: |-
     sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def fraction_to_decimal (n: Int) (d: Int) : DecimalRepr :=

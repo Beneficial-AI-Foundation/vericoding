@@ -59,8 +59,6 @@ vc-preamble: |-
     sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def getTargetCopy (original cloned target: Option TreeNode) : Option TreeNode :=

@@ -37,8 +37,6 @@ vc-preamble: |-
     sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def isAdjacent (v1 v2: Nat) : Bool :=

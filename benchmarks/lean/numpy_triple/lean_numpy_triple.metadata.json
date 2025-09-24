@@ -1,0 +1,67 @@
+{
+  "benchmark_info": {
+    "name": "lean_numpy_triple",
+    "language": "lean",
+    "source": "unknown",
+    "entry_count": 603,
+    "benchmark_path": "benchmarks/lean/numpy_triple"
+  },
+  "qa_metadata": {
+    "definitions_with_sorry": [],
+    "score": 92.363184079602,
+    "near_duplicates": {
+      "examples": [
+        {
+          "files": [
+            "benchmarks/lean/numpy_triple/yaml/strings_splitlines.yaml",
+            "benchmarks/lean/numpy_triple/yaml/strings_split.yaml"
+          ],
+          "similarity": 0.9
+        },
+        {
+          "files": [
+            "benchmarks/lean/numpy_triple/yaml/bitwise_operations_invert.yaml",
+            "benchmarks/lean/numpy_triple/yaml/logic_functions_bitwise_not.yaml",
+            "benchmarks/lean/numpy_triple/yaml/logic_functions_bitwise_and.yaml",
+            "benchmarks/lean/numpy_triple/yaml/bitwise_operations_binary_repr.yaml",
+            "benchmarks/lean/numpy_triple/yaml/bitwise_operations_bitwise_or.yaml",
+            "benchmarks/lean/numpy_triple/yaml/logic_functions_bitwise_xor.yaml"
+          ],
+          "similarity": 0.9
+        },
+        {
+          "files": [
+            "benchmarks/lean/numpy_triple/yaml/ufunc_reduce.yaml",
+            "benchmarks/lean/numpy_triple/yaml/ufunc_reduceat.yaml"
+          ],
+          "similarity": 0.9
+        },
+        {
+          "files": [
+            "benchmarks/lean/numpy_triple/yaml/array_creation_tri.yaml",
+            "benchmarks/lean/numpy_triple/yaml/array_creation_triu.yaml",
+            "benchmarks/lean/numpy_triple/yaml/array_creation_tril.yaml",
+            "benchmarks/lean/numpy_triple/yaml/array_creation_identity.yaml",
+            "benchmarks/lean/numpy_triple/yaml/array_creation_diag.yaml",
+            "benchmarks/lean/numpy_triple/yaml/array_creation_eye.yaml",
+            "benchmarks/lean/numpy_triple/yaml/indexing_slicing_tril.yaml",
+            "benchmarks/lean/numpy_triple/yaml/indexing_slicing_triu.yaml"
+          ],
+          "similarity": 0.9
+        },
+        {
+          "files": [
+            "benchmarks/lean/numpy_triple/yaml/constants_iinfo.yaml",
+            "benchmarks/lean/numpy_triple/yaml/data_type_routines_iinfo.yaml"
+          ],
+          "similarity": 0.9
+        }
+      ],
+      "total_count": 307
+    },
+    "base_score": 301
+  },
+  "generated_at": "2025-09-23T18:03:44.688117",
+  "config_version": "2.0",
+  "format_version": "separate_metadata_v1"
+}

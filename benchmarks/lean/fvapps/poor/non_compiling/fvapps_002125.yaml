@@ -62,8 +62,6 @@ vc-preamble: |-
   /- Find first warning threshold function signature -/
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def findFirstWarningThreshold (n m : Nat) (logs : List String) : String := sorry

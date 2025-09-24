@@ -45,8 +45,6 @@ vc-preamble: |-
   def List.sum (l : List Int) : Int := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def List.minimum (l : List Int) : Int := sorry

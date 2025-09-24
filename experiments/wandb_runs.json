@@ -3,204 +3,184 @@
         "claude-opus-4.1": {
             "numpy-simple": "2p1gvb8z",
             "numpy-triple": "x236kb5h",
-            "dafnybench": "",
+            "dafnybench": "LOCAL_DD_OPUS",
             "humaneval": "i4iq17oc",
             "verina": "",
-            "bignum": "",
-            "verified-cogen": "",
-            "apps": ""
+            "bignum": "LOCAL_DB_OPUS",
+            "verified-cogen": "LOCAL_DG_OPUS",
+            "apps": "LOCAL_DA_OPUS"
         },
         "claude-sonnet-4": {
             "numpy-simple": "iwmnpkdj",
             "numpy-triple": "qfutc4az",
-            "dafnybench": "",
+            "dafnybench": "LOCAL_DD_SONNET",
             "humaneval": "wrhmb8ym",
             "verina": "naotuh11",
-            "bignum": "",
-            "verified-cogen": "",
-            "apps": ""
+            "bignum": "LOCAL_DB_SONNET",
+            "verified-cogen": "LOCAL_DG_SONNET",
+            "apps": "LOCAL_DA_SONNET"
         },
         "deepseek-chat-v3.1": {
             "numpy-simple": "tshmn4g7",
             "numpy-triple": "czzv454c",
-            "dafnybench": "",
+            "dafnybench": "LOCAL_DD_DEEP",
             "humaneval": "w2tfeaso",
             "verina": "nh94xrzh",
-            "bignum": "",
-            "verified-cogen": "",
-            "apps": ""
+            "bignum": "LOCAL_DB_DEEP",
+            "verified-cogen": "LOCAL_DG_DEEP",
+            "apps": "LOCAL_DA_DEEP"
         },
         "gemini-2.5-pro": {
             "numpy-simple": "7ak4u2iy",
-            "numpy-triple": "",
-            "dafnybench": "",
+            "numpy-triple": "tf2dwx2w",
+            "dafnybench": "LOCAL_DD_GEMINI",
             "humaneval": "vs7x9bus",
             "verina": "4dp3rzzj",
-            "bignum": "",
-            "verified-cogen": "",
-            "apps": ""
+            "bignum": "LOCAL_DB_GEMINI",
+            "verified-cogen": "LOCAL_DG_GEMINI",
+            "apps": "LOCAL_DA_GEMINI"
         },
         "gemini-2.5-flash": {
             "numpy-simple": "jkcsde8t",
             "numpy-triple": "va3xy52b",
-            "dafnybench": "",
+            "dafnybench": "LOCAL_DD_FLASH",
             "humaneval": "a1b81hf8",
             "verina": "9jyu2isy",
-            "bignum": "",
-            "verified-cogen": "",
-            "apps": ""
+            "bignum": "LOCAL_DB_FLASH",
+            "verified-cogen": "LOCAL_DG_FLASH",
+            "apps": "LOCAL_DA_FLASH"
         },
         "glm-4.5": {
             "numpy-simple": "oamemv9c",
-            "numpy-triple": "",
-            "dafnybench": "",
+            "numpy-triple": "ttjossme",
+            "dafnybench": "LOCAL_DD_GLM",
             "humaneval": "zbnneux8",
             "verina": "8ab1l16o",
-            "bignum": "",
-            "verified-cogen": "",
-            "apps": ""
+            "bignum": "LOCAL_DB_GLM",
+            "verified-cogen": "LOCAL_DG_GLM",
+            "apps": "LOCAL_DA_GLM"
         },
         "gpt-5": {
             "numpy-simple": "28c9wzij",
-            "numpy-triple": "",
-            "dafnybench": "",
+            "numpy-triple": "u2sttbf5",
+            "dafnybench": "LOCAL_DD_GPT",
             "humaneval": "qihs49aw",
             "verina": "4gxqqa1a",
-            "bignum": "",
-            "verified-cogen": "",
-            "apps": ""
+            "bignum": "LOCAL_DB_GPT",
+            "verified-cogen": "LOCAL_DG_GPT",
+            "apps": "LOCAL_DA_GPT"
         },
         "gpt-5-mini": {
             "numpy-simple": "5dzga8n6",
-            "numpy-triple": "",
-            "dafnybench": "",
+            "numpy-triple": "vp7txzgw",
+            "dafnybench": "LOCAL_DD_MINI",
             "humaneval": "8fvk1u3u",
             "verina": "0sv8btqy",
-            "bignum": "",
-            "verified-cogen": "",
-            "apps": ""
-        },
-        "grok-4": {
-            "numpy-simple": "",
-            "numpy-triple": "",
-            "dafnybench": "",
-            "humaneval": "",
-            "verina": "",
-            "bignum": "",
-            "verified-cogen": "",
-            "apps": ""
+            "bignum": "LOCAL_DB_MINI",
+            "verified-cogen": "LOCAL_DG_MINI",
+            "apps": "LOCAL_DA_MINI"
         },
         "grok-code": {
             "numpy-simple": "wbloomrf",
             "numpy-triple": "miv1boea",
-            "dafnybench": "",
+            "dafnybench": "LOCAL_DD_GROK",
             "humaneval": "3vei686v",
             "verina": "ef817tsk",
-            "bignum": "",
-            "verified-cogen": "",
-            "apps": ""
+            "bignum": "LOCAL_DB_GROK",
+            "verified-cogen": "LOCAL_DG_GROK",
+            "apps": "LOCAL_DA_GROK"
         }
     },
     "verus": {
         "claude-opus-4.1": {
-            "numpy-simple": "at255dr8",
-            "numpy-triple": "ctiv6d9n",
-            "dafnybench": "yqid2jqh",
-            "humaneval": "",
+            "numpy-simple": "byipu97w",
+            "numpy-triple": "ktswkqmo",
+            "dafnybench": "LOCAL_VD_OPUS",
+            "humaneval": "bxj1dgr2",
             "verina": "",
-            "bignum": "0r4242pg",
+            "bignum": "a1e15t7c",
             "verified-cogen": "",
-            "apps": ""
+            "apps": "c3wenwd6"
         },
         "claude-sonnet-4": {
-            "numpy-simple": "x8yv52x7",
-            "numpy-triple": "q1hgnsrg",
-            "dafnybench": "4txrmtzx",
-            "humaneval": "",
+            "numpy-simple": "pxp4d3gq",
+            "numpy-triple": "lqx23bv2",
+            "dafnybench": "LOCAL_VD_SONNET",
+            "humaneval": "0qdbzzxb",
             "verina": "ox4hphf2",
-            "bignum": "oxboxa45",
+            "bignum": "pjts67j0",
             "verified-cogen": "",
-            "apps": ""
+            "apps": "95uxs05y"
         },
         "deepseek-chat-v3.1": {
-            "numpy-simple": "dgmadiam",
-            "numpy-triple": "bpiavj3h",
-            "dafnybench": "pczf5ye5",
-            "humaneval": "",
+            "numpy-simple": "bh1pz4p0",
+            "numpy-triple": "z4b88tin",
+            "dafnybench": "LOCAL_VD_DEEP",
+            "humaneval": "727eul6l",
             "verina": "",
-            "bignum": "",
+            "bignum": "tzaay9mw",
             "verified-cogen": "",
-            "apps": ""
+            "apps": "zg3mvexh"
         },
         "gemini-2.5-pro": {
-            "numpy-simple": "2k5fkqe4",
-            "numpy-triple": "lrdjdwt8",
-            "dafnybench": "3rr30sig",
-            "humaneval": "",
+            "numpy-simple": "kede58b0",
+            "numpy-triple": "jkwsz4p5",
+            "dafnybench": "LOCAL_VD_GEMINI",
+            "humaneval": "p570dhsc",
             "verina": "",
-            "bignum": "",
+            "bignum": "75cj3y8v",
             "verified-cogen": "",
-            "apps": ""
+            "apps": "hgeq86ba"
         },
         "gemini-2.5-flash": {
-            "numpy-simple": "dn9a47d0",
-            "numpy-triple": "pvhp2lr5",
-            "dafnybench": "kn4eelod",
-            "humaneval": "",
+            "numpy-simple": "4v9ml2cs",
+            "numpy-triple": "5tbmgnyw",
+            "dafnybench": "LOCAL_VD_FLASH",
+            "humaneval": "sh65q7k9",
             "verina": "gn7gbb65",
-            "bignum": "gewtytbb",
+            "bignum": "s7i6jzqq",
             "verified-cogen": "",
-            "apps": ""
+            "apps": "4co6tsdp"
         },
         "glm-4.5": {
-            "numpy-simple": "id4lm3ou",
-            "numpy-triple": "n7ypxubg",
-            "dafnybench": "xrn769hu",
-            "humaneval": "",
+            "numpy-simple": "e62bozkh",
+            "numpy-triple": "139aqk6b",
+            "dafnybench": "LOCAL_VD_GLM",
+            "humaneval": "8g7uqgk2",
             "verina": "",
-            "bignum": "",
+            "bignum": "1wtykgpy",
             "verified-cogen": "",
-            "apps": ""
+            "apps": "tx7gjfqo"
         },
         "gpt-5": {
-            "numpy-simple": "afep6hy5",
-            "numpy-triple": "brkl7k1m",
-            "dafnybench": "1kstk4pa",
-            "humaneval": "",
+            "numpy-simple": "119w74i1",
+            "numpy-triple": "1zlv538s",
+            "dafnybench": "LOCAL_VD_GPT",
+            "humaneval": "otksectq",
             "verina": "",
-            "bignum": "azeh17py",
+            "bignum": "c6a0tk9t",
             "verified-cogen": "",
-            "apps": ""
+            "apps": "urno6n6a"
         },
         "gpt-5-mini": {
-            "numpy-simple": "x9mi3zjt",
-            "numpy-triple": "e39mbjdm",
-            "dafnybench": "349oacik",
-            "humaneval": "",
+            "numpy-simple": "qlnjhizp",
+            "numpy-triple": "xhuh37p0",
+            "dafnybench": "LOCAL_VD_MINI",
+            "humaneval": "bvukkvms",
             "verina": "jischiqe",
-            "bignum": "xylc7qhs",
+            "bignum": "ubcusy54",
             "verified-cogen": "",
-            "apps": ""
-        },
-        "grok-4": {
-            "numpy-simple": "",
-            "numpy-triple": "",
-            "dafnybench": "",
-            "humaneval": "",
-            "verina": "",
-            "bignum": "",
-            "verified-cogen": "",
-            "apps": ""
+            "apps": "e4wv5tb3"
         },
         "grok-code": {
-            "numpy-simple": "xqwl2wgp",
-            "numpy-triple": "crpydfd7",
-            "dafnybench": "xkybx4q8",
-            "humaneval": "",
+            "numpy-simple": "po6hhiif",
+            "numpy-triple": "ki2zndlk",
+            "dafnybench": "LOCAL_VD_GROK",
+            "humaneval": "4xu8ledr",
             "verina": "",
-            "bignum": "",
+            "bignum": "ztylmv2z",
             "verified-cogen": "",
-            "apps": ""
+            "apps": "o9bi6mci"
         }
     },
     "lean": {
@@ -283,16 +263,6 @@
             "bignum": "7w54q8mt",
             "verified-cogen": "ry80t53g",
             "apps": "f6e2ards"
-        },
-        "grok-4": {
-            "numpy-simple": "0ud8q1sv",
-            "numpy-triple": "",
-            "dafnybench": "0zwcka6j",
-            "humaneval": "iyh9jlv8",
-            "verina": "7tmvtcw2",
-            "bignum": "",
-            "verified-cogen": "798trm2f",
-            "apps": ""
         },
         "grok-code": {
             "numpy-simple": "b1dfxu59",

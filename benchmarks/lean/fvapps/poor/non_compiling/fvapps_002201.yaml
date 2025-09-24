@@ -43,8 +43,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def can_witch_prevent_finish (n: Nat) (d: Nat) (distances: List Nat) (queries: List Nat) : List Answer :=

@@ -73,8 +73,6 @@ vc-preamble: |-
   /- Counts how many circles contain a given point -/
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def count_circles (circles : List (List Point)) (p : Point) : Nat := sorry

@@ -47,8 +47,6 @@ vc-preamble: |-
     | x::xs, default => min x (min_in_list xs default)
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def solve_meal_sets (n m : Nat) (costs : List Nat) (meal_sets : List (List Nat)) : Nat :=

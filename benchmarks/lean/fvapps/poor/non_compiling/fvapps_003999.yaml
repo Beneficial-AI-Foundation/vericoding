@@ -20,8 +20,6 @@ vc-preamble: |-
     | SnitchResult.No => initialScore
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def gameWinners (gryffindor: Nat × SnitchResult) (slytherin: Nat × SnitchResult) : String :=

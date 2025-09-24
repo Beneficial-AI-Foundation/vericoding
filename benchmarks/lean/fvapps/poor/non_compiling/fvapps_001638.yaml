@@ -110,8 +110,6 @@ vc-preamble: |-
     cpu : CPU
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def Machine.execute : Machine → String → Machine :=

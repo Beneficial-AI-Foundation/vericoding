@@ -29,8 +29,6 @@ vc-preamble: |-
   | x::xs => x + xs.sum
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def solve (numbers : List Nat) (n : Nat) : Bool :=

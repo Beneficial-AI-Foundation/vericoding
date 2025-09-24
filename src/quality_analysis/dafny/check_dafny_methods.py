@@ -135,19 +135,70 @@ def is_assume_false(body: str) -> bool:
     return False
 
 
+def is_simple_default_return(body: str) -> bool:
+    """
+    Check if a method body contains only simple default return values.
+    These are acceptable placeholder implementations.
+    """
+    # Normalize whitespace and remove comments
+    normalized = re.sub(r"//.*$", "", body, flags=re.MULTILINE)  # Remove line comments
+    normalized = re.sub(r"/\*.*?\*/", "", normalized, flags=re.DOTALL)  # Remove block comments
+    normalized = re.sub(r"\s+", " ", normalized).strip()  # Normalize whitespace
+    
+    # Remove common TODO/placeholder comments
+    normalized = re.sub(r"(?i)todo[:\s]*[^;]*", "", normalized)
+    normalized = re.sub(r"(?i)impl-start.*?impl-end", "", normalized, flags=re.DOTALL)
+    normalized = re.sub(r"\s+", " ", normalized).strip()
+    
+    # Patterns for simple default return values
+    simple_return_patterns = [
+        # Simple variable assignments to default values
+        r"^result\s*:=\s*0\s*;?$",                    # result := 0;
+        r"^result\s*:=\s*false\s*;?$",               # result := false;
+        r"^result\s*:=\s*true\s*;?$",                # result := true;
+        r'^result\s*:=\s*""\s*;?$',                  # result := "";
+        r"^result\s*:=\s*new\s+\w+\[\s*0\s*\]\s*;?$", # result := new int[0];
+        r"^result\s*:=\s*\[\]\s*;?$",                # result := [];
+        r"^result\s*:=\s*\{\}\s*;?$",                # result := {};
+        r"^result\s*:=\s*null\s*;?$",                # result := null;
+        
+        # Return statements with default values
+        r"^return\s+0\s*;?$",                        # return 0;
+        r"^return\s+false\s*;?$",                    # return false;
+        r"^return\s+true\s*;?$",                     # return true;
+        r'^return\s+""\s*;?$',                       # return "";
+        r"^return\s+new\s+\w+\[\s*0\s*\]\s*;?$",     # return new int[0];
+        r"^return\s+\[\]\s*;?$",                     # return [];
+        r"^return\s+\{\}\s*;?$",                     # return {};
+        r"^return\s+null\s*;?$",                     # return null;
+        
+        # Multiple simple assignments (for methods with multiple return values)
+        r"^(result\d*\s*:=\s*(?:0|false|true|\"\"|null|\[\]|\{\}|new\s+\w+\[\s*0\s*\])\s*;\s*)+$",
+    ]
+    
+    for pattern in simple_return_patterns:
+        if re.match(pattern, normalized, re.IGNORECASE):
+            return True
+    
+    return False
+
+
 def analyze_method_body(body: str) -> Tuple[str, bool]:
     """
     Analyze method body and return (category, is_problematic).
 
     Categories:
     - "assume_false": Uses the expected assume {:axiom} false pattern
-    - "has_implementation": Has actual implementation code
+    - "simple_default": Simple default return values (acceptable)
+    - "has_implementation": Has actual implementation code (problematic)
 
     Returns:
         tuple: (category, is_problematic)
     """
     if is_assume_false(body):
         return ("assume_false", False)
+    elif is_simple_default_return(body):
+        return ("simple_default", False)
     else:
         return ("has_implementation", True)
 
@@ -177,6 +228,7 @@ def check_dafny_yaml_file(file_path: Path) -> Tuple[List, Dict]:
     problematic = []
     categories = {
         "assume_false": 0,
+        "simple_default": 0,
         "has_implementation": 0,
     }
 
@@ -291,6 +343,7 @@ Examples:
 
     total_categories = {
         "assume_false": 0,
+        "simple_default": 0,
         "has_implementation": 0,
     }
 
@@ -347,6 +400,7 @@ Examples:
         print()
         print("Method Analysis:")
         print(f"  ✅ Using assume false (expected): {total_categories['assume_false']}")
+        print(f"  ✅ Simple default returns (acceptable): {total_categories['simple_default']}")
         print(
             f"  📝 Has actual implementation: {total_categories['has_implementation']}"
         )
@@ -408,11 +462,18 @@ Examples:
             if len(files_with_assume_false) > 10:
                 print(f"  ... and {len(files_with_assume_false) - 10} more")
 
-    return {
+    result = {
         "files_with_implementations": files_with_implementations,
         "files_with_assume_false": files_with_assume_false,
         "statistics": total_categories,
     }
+    
+    # Output JSON if requested
+    if args.output == "json":
+        import json
+        print(json.dumps(result, indent=2))
+    
+    return result
 
 
 if __name__ == "__main__":

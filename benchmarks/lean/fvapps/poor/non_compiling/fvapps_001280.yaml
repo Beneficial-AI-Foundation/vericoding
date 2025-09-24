@@ -41,8 +41,6 @@ vc-preamble: |-
     | x::xs => x + sum xs
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def find_distance (n : Nat) (fuel : List Nat) : Nat :=

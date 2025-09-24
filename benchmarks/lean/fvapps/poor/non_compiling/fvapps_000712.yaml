@@ -41,8 +41,6 @@ vc-preamble: |-
   def exists_path (edges : List Edge) (u v : Nat) : Bool := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def shortest_path_cost (edges : List Edge) (u v : Nat) : Nat := sorry

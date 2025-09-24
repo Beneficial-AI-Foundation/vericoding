@@ -41,8 +41,6 @@ vc-preamble: |-
     | x::xs => x * xs.prod
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def find_spec_partition (n k : Nat) (command : String) : List Nat :=

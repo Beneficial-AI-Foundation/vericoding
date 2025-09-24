@@ -72,8 +72,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def find_earliest_collision (earth_x earth_y: Int) (earth_dir: Dir) (asteroids: List Asteroid) : 

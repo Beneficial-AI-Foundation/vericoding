@@ -46,8 +46,6 @@ vc-preamble: |-
     List.sum (List.filter (fun n => n % 2 = if isOdd then 1 else 0) nums)
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def isSpaced (nums : List Nat) : Bool := sorry

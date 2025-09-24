@@ -48,8 +48,6 @@ vc-preamble: |-
     modifiers : List (String × Int)
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def total_licks (env : Environment) : String := sorry

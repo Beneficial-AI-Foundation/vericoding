@@ -10,8 +10,6 @@ vc-preamble: |-
   def Day := String
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def BehaviorMap := List (Month × List (Day × BehaviorType))

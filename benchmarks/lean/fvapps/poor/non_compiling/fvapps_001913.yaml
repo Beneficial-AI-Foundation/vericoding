@@ -37,8 +37,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def find_cheapest_price (n: Nat) (flights: List Flight) (src: Nat) (dst: Nat) (k: Nat) : Int :=

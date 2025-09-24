@@ -14,8 +14,6 @@ vc-preamble: |-
   def string_is_numeric (s : String) : Bool := sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def string_to_int (s : String) : Int := sorry

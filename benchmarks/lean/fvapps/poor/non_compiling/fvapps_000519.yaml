@@ -39,8 +39,6 @@ vc-preamble: |-
   -- Value not in array gives 0 distance
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def findLastIndex (p : α → Bool) (l : List α) : Option Nat :=

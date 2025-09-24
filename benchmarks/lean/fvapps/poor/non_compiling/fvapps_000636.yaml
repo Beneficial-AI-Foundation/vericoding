@@ -42,8 +42,6 @@ vc-preamble: |-
     | x::xs => x + sum xs
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def find_deleted_value (n k v : Nat) (arr : List Nat) : Int :=

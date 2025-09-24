@@ -89,8 +89,6 @@ vc-preamble: |-
     sorry
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def solve_red_riding_hood (n m : Nat) (matrix : Matrix) (charms : List Charm) : (String × Int) :=

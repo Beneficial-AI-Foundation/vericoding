@@ -37,8 +37,6 @@ vc-preamble: |-
     | .phi => 20 | .chi => 21 | .psi => 22 | .omega => 23
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def greek_comparator (a b : GreekLetter) : Int :=

@@ -49,8 +49,6 @@ vc-preamble: |-
     (l.filter (. == Coin.five)).length
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def countTens (l : List Coin) : Nat :=

@@ -47,8 +47,6 @@ vc-description: |-
 vc-preamble: |-
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def find_lucky_permutation (n : Nat) : Option (List Nat) := sorry

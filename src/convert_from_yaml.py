@@ -17,8 +17,8 @@ sources_ref = {'dafnybench': 'D', 'humaneval': 'H', 'verified_cogen': 'J', 'veri
             
 languages_ref = {'lean': 'L', 'dafny': 'D', 'verus': 'V'}
 
-source_meta_filename = "tasks_metadata.json"
-source_meta_path = Path("benchmarks") / source_meta_filename
+source_meta_filename = "tasks_metadata.jsonl"
+source_meta_default_path = Path("benchmarks") / source_meta_filename
 
 def get_vericoding_id(source: str, language: str, task: str, source_meta: Dict[str, Any]) -> str:
     """Get the Vericoding ID for a given source, language, and task."""
@@ -79,27 +79,16 @@ def get_template(suffix: str, add_postamble: bool = False) -> list[str]:
     else:
         raise ValueError(f"Unsupported suffix: {suffix}")
 
-def convert_spec_to_file(spec: dict, output_path: Path, use_all_keys: bool = False, add_postamble: bool = False) -> None:
+def convert_spec_to_file(spec: dict, output_path: Path, add_postamble: bool = False) -> None:
     """Convert spec dictionary to target file format by concatenating sections.
     
     Args:
         spec: Dictionary containing the spec data
         output_path: Path to the output file
-        use_all_keys: If True, use all keys from spec (except 'id') as template with newlines between them.
-                      If False, use the standard template based on file suffix.
         add_postamble: If True, include vc-postamble in the template (default: omit for Lean, include for others).
     """
     
-    if use_all_keys:
-        # Create template from all keys in spec (except 'id') with newlines between them
-        keys = [key for key in spec.keys() if key not in ['id', 'source', 'source_id', 'language']]
-        template = []
-        for i, key in enumerate(keys):
-            template.append((key, None, None))
-            if i < len(keys) - 1:  # Add newline between keys, but not after the last one
-                template.append(('\n', None, None))
-    else:
-        template = get_template(output_path.suffix[1:], add_postamble)
+    template = get_template(output_path.suffix[1:], add_postamble)
 
     # Defensive sanitization for Lean descriptions to avoid unterminated comments
     if output_path.suffix == '.lean' and 'vc-description' in spec:
@@ -114,13 +103,12 @@ def convert_spec_to_file(spec: dict, output_path: Path, use_all_keys: bool = Fal
     # print(f"Converted spec -> {output_path}")
 
 
-def convert_yaml_to_file(yaml_path: Path, output_path: Path, use_all_keys: bool = False, add_postamble: bool = False) -> None:
+def convert_yaml_to_file(yaml_path: Path, output_path: Path, add_postamble: bool = False) -> None:
     """Convert YAML spec to target file format by concatenating sections.
     
     Args:
         yaml_path: Path to the input YAML file
         output_path: Path to the output file
-        use_all_keys: If True, use all keys from spec (except id) as template with newlines between them.
         add_postamble: If True, include vc-postamble in the template (default: omit for Lean, include for others).
     """
     
@@ -128,7 +116,7 @@ def convert_yaml_to_file(yaml_path: Path, output_path: Path, use_all_keys: bool 
     yaml.preserve_quotes = True  # Preserve original formatting
     spec = yaml.load(yaml_path)
     
-    convert_spec_to_file(spec, output_path, use_all_keys, add_postamble)
+    convert_spec_to_file(spec, output_path, add_postamble)
     print(f"Converted {yaml_path} -> {output_path}")
 
 
@@ -145,7 +133,7 @@ def convert_yaml_to_json(yaml_path: Path, output_path: Path) -> None:
     print(f"Converted {yaml_path} -> {output_path}")
 
 
-def convert_yaml_to_jsonl(yaml_path: Path, source: str = None, language: str = None, source_meta: Path = None, jsonl_path: Path = None) -> None:
+def convert_yaml_to_jsonl(yaml_path: Path, source: str = None, language: str = None, source_meta_path: Path = None, jsonl_path: Path = None) -> None:
     """Convert all YAML files in a directory to a single JSONL file."""
     
     if source is None:
@@ -157,14 +145,18 @@ def convert_yaml_to_jsonl(yaml_path: Path, source: str = None, language: str = N
     if not yaml_path.is_dir():
         raise ValueError(f"{yaml_path} is not a directory")
     
-    if source_meta is None:
-        source_meta = source_meta_path
+    if source_meta_path is None:
+        source_meta_path = source_meta_default_path
 
-    if not source_meta.is_file():
-        raise ValueError(f"{source_meta} is not a file")
+    if not source_meta_path.is_file():
+        raise ValueError(f"{source_meta_path} is not a file")
 
-    with open(source_meta, 'r') as f:
-        source_meta = json.load(f)
+    # load jsonl file as a list of dictionaries
+    with open(source_meta_path, 'r') as f:
+        source_meta = {}
+        for line in f:
+            lineobj = json.loads(line)
+            source_meta[lineobj['source_id']] = lineobj
 
     # Find all .yaml files in the directory (recursively)
     yaml_files = list(yaml_path.glob("**/*.yaml"))
@@ -216,15 +208,100 @@ def convert_yaml_to_jsonl(yaml_path: Path, source: str = None, language: str = N
     if skipped_count > 0:
         print(f"Skipped {skipped_count} files that were not valid YAML")
 
+def convert_poor_to_jsonl(poor_path: Path, source: str = None, language: str = None, source_meta_path: Path = None, jsonl_path: Path = None) -> None:
+    """Convert all POOR files in a directory to a single JSONL file."""
+    
+    if source is None:
+        source = poor_path.parent.name
 
-def convert_yaml_to_dir(suffix: str, yaml_path: Path, output_path: Path = None, use_all_keys: bool = False, add_postamble: bool = False) -> None:
+    if language is None:
+        language = poor_path.parent.parent.name
+
+    if not poor_path.is_dir():
+        raise ValueError(f"{poor_path} is not a directory")
+    
+    if source_meta_path is None:
+        source_meta_path = source_meta_default_path
+
+    if not source_meta_path.is_file():
+        raise ValueError(f"{source_meta_path} is not a file")
+
+    with open(source_meta_path, 'r') as f:
+        source_meta = {}
+        for line in f:
+            lineobj = json.loads(line)
+            source_meta[lineobj['source_id']] = lineobj
+
+    # find all subdirectories in poor_path
+    poor_dirs = list(poor_path.glob("**/*"))
+    poor_dirs = [poor_dir for poor_dir in poor_dirs if poor_dir.is_dir()]
+
+    # Create output path in parent directory with .jsonl suffix
+    output_path = poor_path.parent / f"{language}_{source}_poor.jsonl"
+
+    yaml_parser = YAML()
+    yaml_parser.preserve_quotes = True  # Preserve original formatting
+
+    with open(output_path, 'w') as f:
+
+        yaml_files_id = []
+        for poor_dir in poor_dirs:
+            # Find all .yaml files in the directory (recursively)
+            yaml_files = list(poor_dir.glob("*.yaml"))
+            yaml_files_id.extend([{'id': get_vericoding_id(source, language, yaml_file.stem, source_meta), 
+                            'path': yaml_file} for yaml_file in yaml_files])
+
+        yaml_files_id = natsorted(yaml_files_id, key=lambda x: x['id'])
+
+        if not yaml_files:
+            print(f"No .yaml files found in {poor_dir}")
+            return
+        
+        processed_count = 0
+        skipped_count = 0
+        
+        for yaml_file_id in yaml_files_id:
+            id = yaml_file_id['id']
+            yaml_file = yaml_file_id['path']
+            try:
+                # Load the YAML spec
+                spec = yaml_parser.load(yaml_file)
+                
+                # Validate that spec is a dictionary
+                if not isinstance(spec, dict):
+                    print(f"Warning: {yaml_file} does not contain a YAML dictionary, skipping")
+                    skipped_count += 1
+                    continue
+                
+                # Create a new dictionary with id field first
+                new_spec = {'id': id, 'language': language, 'source': source, 'source_id': yaml_file.stem}
+                new_spec.update(spec)
+                new_spec['qa-issue'] = 1
+                new_spec['qa-issue-type'] = poor_dir.name
+                
+                # Write as JSON line
+                json.dump(new_spec, f, ensure_ascii=False)
+                f.write('\n')
+                processed_count += 1
+                
+            except YAMLError as e:
+                print(f"Warning: Failed to parse {yaml_file} as YAML (likely contains raw code instead of YAML): {e}")
+                skipped_count += 1
+                continue
+
+    print(f"Converted {processed_count} YAML files to {output_path}")
+    if skipped_count > 0:
+        print(f"Skipped {skipped_count} files that were not valid YAML")
+
+
+
+def convert_yaml_to_dir(suffix: str, yaml_path: Path, output_path: Path = None, add_postamble: bool = False) -> None:
     """Convert all YAML files in a directory to a new directory with specified suffix.
     
     Args:
         suffix: File suffix for the output files
         yaml_path: Path to the input YAML directory
         output_path: Output directory path (optional)
-        use_all_keys: If True, use all keys from spec (except id) as template with newlines between them.
         add_postamble: If True, include vc-postamble in the template (default: omit for Lean, include for others).
     """
     
@@ -256,7 +333,7 @@ def convert_yaml_to_dir(suffix: str, yaml_path: Path, output_path: Path = None, 
             output_file = output_dir / relative_path.with_suffix(f'.{suffix}')
             # Ensure the output directory exists
             output_file.parent.mkdir(parents=True, exist_ok=True)
-            convert_yaml_to_file(yaml_file, output_file, use_all_keys, add_postamble)  
+            convert_yaml_to_file(yaml_file, output_file, add_postamble)  
 
     elif suffix == 'json':
         for yaml_file in yaml_files:
@@ -273,14 +350,13 @@ def convert_yaml_to_dir(suffix: str, yaml_path: Path, output_path: Path = None, 
     print(f"Converted {len(yaml_files)} YAML files to {output_dir}")
 
 
-def convert_jsonl_to_dir(suffix: str, jsonl_path: Path, output_path: Path = None, use_all_keys: bool = False, add_postamble: bool = False) -> None:
+def convert_jsonl_to_dir(suffix: str, jsonl_path: Path, output_path: Path = None, add_postamble: bool = False) -> None:
     """Convert all entries in a JSONL file to individual files with specified suffix.
     
     Args:
         suffix: File suffix for the output files
         jsonl_path: Path to the JSONL file
         output_path: Output directory path (optional)
-        use_all_keys: If True, use all keys from spec (except id) as template with newlines between them.
         add_postamble: If True, include vc-postamble in the template (default: omit for Lean, include for others).
     """
     
@@ -322,7 +398,7 @@ def convert_jsonl_to_dir(suffix: str, jsonl_path: Path, output_path: Path = None
                     output_file = output_dir / f"{file_id}.{suffix}"
                     # Ensure the output directory exists
                     output_file.parent.mkdir(parents=True, exist_ok=True)
-                    convert_spec_to_file(spec, output_file, use_all_keys, add_postamble)
+                    convert_spec_to_file(spec, output_file, add_postamble)
                 
                 elif suffix == 'json':
                     # Reconstruct directory structure from the file_id (which contains relative path)
@@ -347,14 +423,13 @@ def convert_jsonl_to_dir(suffix: str, jsonl_path: Path, output_path: Path = None
         print(f"Converted {processed_count} entries from {jsonl_path} to {output_dir}")
 
 
-def process_bench(bench_dir: Path, suffix: str = None, use_all_keys: bool = False, add_postamble: bool = False) -> None:
+def process_bench(bench_dir: Path, suffix: str = None, add_postamble: bool = False) -> None:
     """Process a single benchmark directory to convert YAML files.
     
     Args:
         bench_dir: Path to the benchmark directory (should contain a 'yaml' subdirectory)
         suffix: File suffix for the output files (e.g., 'dfy', 'lean', 'rs'). 
                 If None, auto-detects from parent directory structure.
-        use_all_keys: If True, use all keys from spec (except id) as template with newlines between them.
         add_postamble: If True, include vc-postamble in the template (default: omit for Lean, include for others).
     
     Creates:
@@ -408,12 +483,221 @@ def process_bench(bench_dir: Path, suffix: str = None, use_all_keys: bool = Fals
     # 2. Convert JSONL to individual files in 'files' folder (only if JSONL was created)
     if jsonl_path.exists():
         files_dir = bench_dir / "files"
-        convert_jsonl_to_dir(bench_suffix, jsonl_path, files_dir, use_all_keys, add_postamble)
+        convert_jsonl_to_dir(bench_suffix, jsonl_path, files_dir, add_postamble)
+    else:
+        print(f"No JSONL file created, skipping file conversion for {bench_dir}")
+
+def process_poor(bench_dir: Path, suffix: str = None, add_postamble: bool = False) -> None:
+    """Process a single benchmark directory to convert POOR files.
+    
+    Args:
+        bench_dir: Path to the benchmark directory (should contain a 'yaml' subdirectory)
+        suffix: File suffix for the output files (e.g., 'dfy', 'lean', 'rs'). 
+                If None, auto-detects from parent directory structure.
+        add_postamble: If True, include vc-postamble in the template (default: omit for Lean, include for others).
+    
+    Creates:
+        1. A JSONL file in the benchmark directory with naming pattern: XXX_YYY.jsonl
+        2. A 'files' folder in the benchmark directory with individual files
+    """
+    
+    # Validate bench_dir
+    if not bench_dir.exists():
+        raise FileNotFoundError(f"Benchmark directory {bench_dir} does not exist")
+    
+    if not bench_dir.is_dir():
+        raise ValueError(f"{bench_dir} is not a directory")
+    
+    # Construct poor_dir path   
+    poor_dir = bench_dir / "poor"
+    
+    # Validate yaml_dir exists
+    if not poor_dir.exists():
+        raise FileNotFoundError(f"POOR directory {poor_dir} does not exist")
+    
+    if not poor_dir.is_dir():
+        raise ValueError(f"{poor_dir} is not a directory")
+    
+    # Get the parent directory (level1_dir) for suffix detection
+    level1_dir = bench_dir.parent
+    
+    level1_name = level1_dir.name
+    level2_name = bench_dir.name
+    
+    # Determine suffix - use provided suffix or auto-detect from parent directory
+    if suffix is not None:
+        bench_suffix = suffix
+    else:
+        # Auto-detect suffix from parent directory structure
+        if level1_name == "dafny":
+            bench_suffix = "dfy"
+        elif level1_name == "lean":
+            bench_suffix = "lean"
+        elif level1_name == "verus":
+            bench_suffix = "rs"
+        else:
+            raise ValueError(f"Unknown benchmark type '{level1_name}'. Expected 'dafny', 'lean', or 'verus'. Use suffix parameter to specify manually.")
+    
+    print(f"Processing {bench_dir} with suffix '{bench_suffix}'...")
+    
+    # 1. Convert all YAML files to JSONL using custom naming: XXX_YYY.jsonl
+    jsonl_path = bench_dir / f"{level1_name}_{level2_name}_poor.jsonl"
+    convert_poor_to_jsonl(poor_dir, language=level1_name, source=level2_name, jsonl_path=jsonl_path)
+    
+    # 2. Convert JSONL to individual files in 'files' folder (only if JSONL was created)
+    if jsonl_path.exists():
+        issues_dir = bench_dir / "issues"
+        convert_jsonl_to_dir(bench_suffix, jsonl_path, issues_dir, add_postamble)
     else:
         print(f"No JSONL file created, skipping file conversion for {bench_dir}")
 
 
-def process_benchmarks(benchmarks_dir: Path, suffix: str = None, use_all_keys: bool = False, add_postamble: bool = False) -> None:
+def process_all_poor(benchmarks_dir: Path, suffix: str = None, add_postamble: bool = False) -> None:
+    """Process benchmark directories to convert POOR files.
+    
+    For each level-2 subfolder of benchmarks/XXX/YYY:
+    1. Look for a 'poor' folder
+    2. If it exists, convert POOR files to files with the appropriate suffix in 'issues' folder
+       (suffix determined by XXX: dafny->dfy, lean->lean, verus->rs)
+    3. Convert all POOR files to a JSONL file using custom naming: XXX_YYY_poor.jsonl
+    
+    Args:
+        benchmarks_dir: Path to the benchmarks directory
+        suffix: File suffix for the output files (optional, auto-detected if None)
+        add_postamble: If True, include vc-postamble in the template (default: omit for Lean, include for others).
+    """
+    
+    if not benchmarks_dir.exists():
+        raise FileNotFoundError(f"Benchmarks directory {benchmarks_dir} does not exist")
+    
+    if not benchmarks_dir.is_dir():
+        raise ValueError(f"{benchmarks_dir} is not a directory")
+    
+    # Find all level-2 subdirectories (benchmarks/XXX/YYY)
+    level2_dirs = []
+    for level1_dir in benchmarks_dir.iterdir():
+        if level1_dir.is_dir():
+            for level2_dir in level1_dir.iterdir():
+                if level2_dir.is_dir():
+                    yaml_dir = level2_dir / "poor"
+                    if yaml_dir.exists():
+                        level2_dirs.append(level2_dir)
+    
+    if not level2_dirs:
+        print(f"No level-2 subdirectories found in {benchmarks_dir} with poor folder")
+        return      
+    
+    processed_count = 0
+    
+    for level2_dir in level2_dirs:
+
+        # Determine suffix based on level-1 directory name (XXX)
+        level1_name = level2_dir.parent.name
+        if suffix is None:
+            if level1_name == "dafny":
+                dir_suffix = "dfy"
+            elif level1_name == "lean":
+                dir_suffix = "lean"
+            elif level1_name == "verus":
+                dir_suffix = "rs"
+            else:
+                raise ValueError(f"Unknown benchmark type '{level1_name}'. Expected 'dafny', 'lean', or 'verus'")
+        else:
+            dir_suffix = suffix
+        
+        # Use the new process_bench function
+        process_poor(level2_dir, dir_suffix, add_postamble)
+        processed_count += 1
+    
+    print(f"Processed {processed_count} benchmark directories with poor folder")
+
+def flatten_task_with_entry_qa(task: Dict[str, Any]) -> Dict[str, Any]:
+    """Flatten a task with entry qa."""
+    new_task = {
+        'id': task['id'],
+        'language': task['language'],
+        'source': task['source'],
+        'source-id': task['source_id'],
+        'source-notes': "",
+        'vc-description': "",
+        'vc-preamble': "",
+        'vc-helpers': "",
+    }
+
+    if task['language'] in ['dafny', 'verus']:
+        new_task.update({
+            'vc-spec': "",
+            'vc-code': "",
+        })
+    elif task['language'] == 'lean':
+        new_task.update({
+            'vc-definitions': "",
+            'vc-theorems': "",
+        })
+
+    new_task.update({'vc-postamble': ""})
+    new_task.update({'qa-issue': 0})
+    new_task.update({'qa-issue-type': ""})
+
+    if task['language'] == 'dafny':
+        new_task.update({
+            'qa-functions-with-default-values': -1,
+            'qa-methods-with-bodies': -1,
+        })
+    elif task['language'] == 'verus':
+        new_task.update({
+            'qa-specs-with-default-values': -1,
+            'qa-execs-with-bodies': -1,
+            'qa-execs-with-ghost-types': -1,
+        })
+    elif task['language'] == 'lean':
+        new_task.update({
+            'qa-definitions-with-sorry': -1,
+        })
+
+    new_task.update({
+        'qa-near-duplicate-group': "",
+        'qa-score': -1,
+    }) 
+
+    if 'vc-description' in task:
+        new_task['vc-description'] = task['vc-description']
+    if 'vc-preamble' in task:
+        new_task['vc-preamble'] = task['vc-preamble']
+    if 'vc-helpers' in task:
+        new_task['vc-helpers'] = task['vc-helpers']
+    if 'vc-spec' in task:
+        new_task['vc-spec'] = task['vc-spec']
+    if 'vc-code' in task:
+        new_task['vc-code'] = task['vc-code']
+    if 'vc-definitions' in task:
+        new_task['vc-definitions'] = task['vc-definitions']
+    if 'vc-theorems' in task:
+        new_task['vc-theorems'] = task['vc-theorems']
+    if 'vc-postamble' in task:
+        new_task['vc-postamble'] = task['vc-postamble']
+
+    if 'qa_entry_metadata' in task:
+        issues = task['qa_entry_metadata']['issues']
+        if "functions_with_default_values" in issues:
+            new_task['qa-functions-with-default-values'] = issues['functions_with_default_values']
+        if "methods_with_bodies" in issues:
+            new_task['qa-methods-with-bodies'] = issues['methods_with_bodies']
+        if "specs-with-default-values" in issues:
+            new_task['qa-specs-with-default-values'] = issues['specs-with-default-values']
+        if "execs-with-bodies" in issues:
+            new_task['qa-execs-with-bodies'] = issues['execs-with-bodies']
+        if "execs-with-ghost-types" in issues:
+            new_task['qa-execs-with-ghost-types'] = issues['execs-with-ghost-types']
+        if "definitions-with-sorry" in issues:
+            new_task['qa-definitions-with-sorry'] = issues['definitions-with-sorry']
+        new_task['qa-score'] = task['qa_entry_metadata']['individual_score']
+
+    return new_task
+
+
+
+def process_language_tasks(benchmarks_dir: Path) -> None:
     """Process benchmark directories to convert YAML files.
     
     For each level-2 subfolder of benchmarks/XXX/YYY:
@@ -425,7 +709,119 @@ def process_benchmarks(benchmarks_dir: Path, suffix: str = None, use_all_keys: b
     Args:
         benchmarks_dir: Path to the benchmarks directory
         suffix: File suffix for the output files (optional, auto-detected if None)
-        use_all_keys: If True, use all keys from spec (except id) as template with newlines between them.
+        add_postamble: If True, include vc-postamble in the template (default: omit for Lean, include for others).
+    """
+    
+    if not benchmarks_dir.exists():
+        raise FileNotFoundError(f"Benchmarks directory {benchmarks_dir} does not exist")
+    
+    if not benchmarks_dir.is_dir():
+        raise ValueError(f"{benchmarks_dir} is not a directory")
+    
+    for language in ["dafny", "lean", "verus"]:
+        language_dir = benchmarks_dir / language
+        if not language_dir.exists():
+            raise FileNotFoundError(f"Language directory {language_dir} does not exist")
+        if not language_dir.is_dir():
+            raise ValueError(f"{language_dir} is not a directory")
+        
+        # get all subdirectories in language_dir
+        source_dirs = list(language_dir.iterdir())
+        source_dirs = [source_dir for source_dir in source_dirs if source_dir.is_dir()]
+        source_dirs = sorted(source_dirs, key=lambda x: sources_ref[x.name])
+
+        # generate language tasks file
+        output_tasks = benchmarks_dir / f"{language}_tasks.jsonl"
+        with open(output_tasks, 'w') as f:
+
+            for source_dir in source_dirs:
+                source = source_dir.name
+                no_qa_file = source_dir / f"{language}_{source}.jsonl"
+                qa_one_file = source_dir / f"{language}_{source}_with_entry_qa.jsonl"
+                qa_all_file = source_dir / f"{language}_{source}.metadata.json"
+                if not qa_one_file.exists():
+                    if no_qa_file.exists():
+                        qa_one_file = no_qa_file
+                    else:
+                        raise FileNotFoundError(f"Files {qa_one_file} and {no_qa_file} does not exist")
+
+                # check if no_qa_file and qa_one_file have the same lines
+                with open(no_qa_file, 'r') as g:
+                    no_qa_lines = [json.loads(line) for line in g]
+                with open(qa_one_file, 'r') as g:
+                    qa_one_lines = [json.loads(line) for line in g]
+                for dict1, dict2 in zip(no_qa_lines, qa_one_lines):
+                    for key in dict1:
+                        if dict1[key] != dict2[key]:
+                            dict2[key] = dict1[key]
+                            print(f"WARNING: In files {no_qa_file} and {qa_one_file}, {key} is different. Replacing with value from {no_qa_file}.")
+                            # raise ValueError(f"Files {no_qa_file} and {qa_one_file} have different lines:\n{dict1[key]} \n{dict2[key]}")
+
+                # write qa_one_file to file
+                with open(qa_one_file, 'w') as g:
+                    for dict in qa_one_lines:
+                        json.dump(dict, g, ensure_ascii=False)
+                        g.write('\n')
+
+                # read tasks file as jsonl into a list of dictionaries
+                tasks = {}
+                with open(qa_one_file, 'r') as g:
+                    for line in g:
+                        task = flatten_task_with_entry_qa(json.loads(line))
+                        tasks[task['source-id']] = task
+            
+                if not qa_all_file.exists():
+                    print(f"QA file {qa_all_file} does not exist")
+                else:
+                    # read qa_all_file as json into a dictionary
+                    with open(qa_all_file, 'r') as g:
+                        qa_all_dict = json.load(g)
+
+                    # get duplicate tasks and assign group IDs
+                    duplicates = qa_all_dict['qa_metadata']['near_duplicates']['examples']
+                    for idx, dup_grp in enumerate(duplicates):
+                        # make group_id 4 characters long
+                        group_id = f"Dup{languages_ref[language]}{sources_ref[source]}{idx:02d}"
+                        for file in dup_grp['files']:
+                            tasks[Path(file).stem]['qa-near-duplicate-group'] = group_id
+
+                # write tasks to file
+                for task in tasks.values():
+                    json.dump(task, f, ensure_ascii=False)
+                    f.write('\n')
+        print(f"Wrote tasks file {output_tasks}")
+
+        # generate language issues file
+        output_issues = benchmarks_dir / f"{language}_issues.jsonl"
+        with open(output_issues, 'w') as f:
+
+            for source_dir in source_dirs:
+                issues_file = source_dir / f"{language}_{source_dir.name}_poor.jsonl"
+                if not issues_file.exists():
+                    print(f"Issues file {issues_file} does not exist")
+                else:
+                    with open(issues_file, 'r') as g:
+                        issues = [flatten_task_with_entry_qa(json.loads(line)) for line in g]
+                    for issue in issues:
+                        json.dump(issue, f, ensure_ascii=False)
+                        f.write('\n')
+        print(f"Wrote issues file {output_issues}")
+
+    print("Generated tasks and issues files for all languages")
+
+
+def process_benchmarks(benchmarks_dir: Path, suffix: str = None, add_postamble: bool = False) -> None:
+    """Process benchmark directories to convert YAML files.
+    
+    For each level-2 subfolder of benchmarks/XXX/YYY:
+    1. Look for a 'yaml' folder
+    2. If it exists, convert YAML files to files with the appropriate suffix in 'files' folder
+       (suffix determined by XXX: dafny->dfy, lean->lean, verus->rs)
+    3. Convert all YAML files to a JSONL file using custom naming: XXX_YYY.jsonl
+    
+    Args:
+        benchmarks_dir: Path to the benchmarks directory
+        suffix: File suffix for the output files (optional, auto-detected if None)
         add_postamble: If True, include vc-postamble in the template (default: omit for Lean, include for others).
     """
     
@@ -468,7 +864,7 @@ def process_benchmarks(benchmarks_dir: Path, suffix: str = None, use_all_keys: b
             dir_suffix = suffix
         
         # Use the new process_bench function
-        process_bench(level2_dir, dir_suffix, use_all_keys, add_postamble)
+        process_bench(level2_dir, dir_suffix, add_postamble)
         processed_count += 1
     
     print(f"Processed {processed_count} benchmark directories")
@@ -584,7 +980,7 @@ def get_source_meta(benchmarks_dir: Path, save_path: Path = None) -> Dict[str, A
                     continue
                     
                 yyy_subdir_name = yyy_subdir.name
-                if yyy_subdir_name not in ["poor","yaml","files"]:
+                if yyy_subdir_name not in ["poor","yaml","files","issues"]:
                     raise ValueError(f"Unknown benchmark type '{yyy_subdir_name}' in {yyy_dir}. Expected 'poor' or 'yaml' or 'files'.")
         
             yaml_dir = yyy_dir / "yaml"
@@ -701,9 +1097,13 @@ def get_source_meta(benchmarks_dir: Path, save_path: Path = None) -> Dict[str, A
 
     source_meta = generate_ids(source_meta)
     
+    # save as jsonl file
     if save_path:
         with open(save_path, 'w') as f:
-            json.dump(source_meta, f, indent=2, sort_keys=True)
+            for key, value in source_meta.items():
+                json.dump({'id': value['id'], 'source': value['source'], 'source_id': key, 
+                    'dafny': value['dafny'], 'lean': value['lean'], 'verus': value['verus']}, f, ensure_ascii=False)
+                f.write('\n')
         print(f"Metadata saved to: {save_path}")
 
     return source_meta
@@ -944,7 +1344,7 @@ def generate_metadata(benchmarks_dir: Path) -> None:
         raise FileNotFoundError(f"Benchmarks directory {benchmarks_dir} does not exist")
     
     # Get source metadata
-    source_meta = get_source_meta(benchmarks_dir, save_path=source_meta_path)
+    source_meta = get_source_meta(benchmarks_dir, save_path=source_meta_default_path)
 
     # Validate that all entries for each source have consistent signatures
     # validate_source_signatures(source_meta)
@@ -965,10 +1365,13 @@ def main():
     parser.add_argument('--benchmarks', type=Path, metavar='BENCHMARKS_DIR',
                        help='Process benchmark directories. For each level-2 subfolder benchmarks/XXX/YYY, '
                             'convert YAML files in yaml/ folder to files/ folder and create JSONL file')
+    parser.add_argument('--all-poor', type=Path, metavar='BENCHMARKS_DIR',
+                       help='Process benchmark directories for POOR files. For each level-2 subfolder benchmarks/XXX/YYY, '
+                            'convert POOR files in poor/ folder to issues/ folder and create JSONL file')
     parser.add_argument('--bench', type=Path, metavar='BENCH_DIR',
                        help='Process a single benchmark directory. Takes a benchmark directory (should contain a yaml subdirectory). Suffix is auto-detected from parent directory if not provided via --suffix')
-    parser.add_argument('--use-all-keys', action='store_true',
-                       help='Use all keys from spec (except id) as template with newlines between them, instead of predefined templates')
+    parser.add_argument('--poor', type=Path, metavar='POOR_DIR',
+                       help='Process a single benchmark directory for POOR files. Takes a benchmark directory (should contain a poor subdirectory). Suffix is auto-detected from parent directory if not provided via --suffix')
     parser.add_argument('--add-postamble', action='store_true',
                        help='Include vc-postamble in the template output (default: omit for Lean, include for others)')
     parser.add_argument('--metadata', type=Path, metavar='BENCHMARKS_DIR',
@@ -979,6 +1382,8 @@ def main():
                        help='Language identifier for JSONL conversion (used when suffix is jsonl)')
     parser.add_argument('--source-meta', type=Path,
                        help='Path to source metadata file for JSONL conversion (used when suffix is jsonl)')
+    parser.add_argument('--language-tasks', type=Path, metavar='BENCHMARKS_DIR',
+                       help='Process language tasks. For each language directory, generate language tasks file from QA files')
     
     args = parser.parse_args()
     
@@ -987,19 +1392,34 @@ def main():
         generate_metadata(args.metadata)
         return
     
+    # Handle language tasks processing
+    if args.language_tasks is not None:
+        process_language_tasks(args.language_tasks)
+        return
+    
     # Handle benchmarks processing
     if args.benchmarks is not None:
-        process_benchmarks(args.benchmarks, args.suffix, args.use_all_keys, args.add_postamble)
+        process_benchmarks(args.benchmarks, args.suffix, args.add_postamble)
+        return
+    
+    # Handle all-poor processing
+    if args.all_poor is not None:
+        process_all_poor(args.all_poor, args.suffix, args.add_postamble)
         return
     
     # Handle single benchmark processing
     if args.bench is not None:
-        process_bench(args.bench, args.suffix, args.use_all_keys, args.add_postamble)
+        process_bench(args.bench, args.suffix, args.add_postamble)
+        return
+    
+    # Handle single POOR benchmark processing
+    if args.poor is not None:
+        process_poor(args.poor, args.suffix, args.add_postamble)
         return
     
     # For non-benchmarks processing, yaml_file is required
     if args.yaml_file is None:
-        parser.error("yaml_file is required when not using --benchmarks or --bench")
+        parser.error("yaml_file is required when not using --benchmarks, --all-poor, --bench, or --poor")
     
     if not args.yaml_file.exists():
         raise FileNotFoundError(f"{args.yaml_file} does not exist")
@@ -1027,15 +1447,15 @@ def main():
         if args.suffix == 'jsonl':
             print("Error: --dir option is not available for jsonl suffix (use without --dir for JSONL)")
             return
-        convert_yaml_to_dir(args.suffix, args.yaml_file, use_all_keys=args.use_all_keys, add_postamble=args.add_postamble)
+        convert_yaml_to_dir(args.suffix, args.yaml_file, add_postamble=args.add_postamble)
     elif args.suffix == 'json':
         output_path = args.yaml_file.with_suffix(f'.{args.suffix}')
         convert_yaml_to_json(args.yaml_file, output_path)
     elif args.suffix == 'jsonl':
-        convert_yaml_to_jsonl(args.yaml_file, source=args.source, language=args.language, source_meta=args.source_meta)
+        convert_yaml_to_jsonl(args.yaml_file, source=args.source, language=args.language, source_meta_path=args.source_meta)
     else:
         output_path = args.yaml_file.with_suffix(f'.{args.suffix}')
-        convert_yaml_to_file(args.yaml_file, output_path, args.use_all_keys, args.add_postamble)
+        convert_yaml_to_file(args.yaml_file, output_path, args.add_postamble)
 
 
 if __name__ == '__main__':

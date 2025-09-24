@@ -14,8 +14,6 @@ vc-preamble: |-
     | h :: t => h + List.sum t
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def calculate_total (team1 team2 : List Nat) : Bool :=

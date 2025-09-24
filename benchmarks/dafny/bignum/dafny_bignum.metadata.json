@@ -1,0 +1,102 @@
+{
+  "benchmark_info": {
+    "name": "dafny_bignum",
+    "language": "dafny",
+    "source": "unknown",
+    "entry_count": 62,
+    "benchmark_path": "benchmarks/dafny/bignum"
+  },
+  "qa_metadata": {
+    "functions_with_default_values": [],
+    "methods_with_bodies": [],
+    "score": 85.24193548387096,
+    "near_duplicates": {
+      "examples": [
+        {
+          "files": [
+            "benchmarks/dafny/bignum/yaml/bignum_ModExp_Zeroes.yaml",
+            "benchmarks/dafny/bignum/yaml/bignum_ModExp_Add_Zeroes.yaml",
+            "benchmarks/dafny/bignum/yaml/bignum_ModExp_Add.yaml",
+            "benchmarks/dafny/bignum/yaml/bignum_ModExp_Mul_Zeroes.yaml",
+            "benchmarks/dafny/bignum/yaml/bignum_ModExp.yaml",
+            "benchmarks/dafny/bignum/yaml/bignum_ModExp_Mul.yaml",
+            "benchmarks/dafny/bignum/yaml/bignum_ModExp_Add_Mul_Zeroes.yaml",
+            "benchmarks/dafny/bignum/yaml/bignum_ModExp_Add_Mul.yaml",
+            "benchmarks/dafny/bignum/yaml/bignum_ModExp_ModExpPow2_Zeroes.yaml",
+            "benchmarks/dafny/bignum/yaml/bignum_ModExp_DivMod.yaml",
+            "benchmarks/dafny/bignum/yaml/bignum_ModExp_DivMod_Mul_Zeroes.yaml",
+            "benchmarks/dafny/bignum/yaml/bignum_ModExp_ModExpPow2_Mul.yaml",
+            "benchmarks/dafny/bignum/yaml/bignum_ModExp_DivMod_Zeroes.yaml",
+            "benchmarks/dafny/bignum/yaml/bignum_ModExp_Add_DivMod.yaml",
+            "benchmarks/dafny/bignum/yaml/bignum_ModExp_Add_DivMod_Mul_Zeroes.yaml",
+            "benchmarks/dafny/bignum/yaml/bignum_ModExp_ModExpPow2.yaml",
+            "benchmarks/dafny/bignum/yaml/bignum_ModExp_Add_ModExpPow2.yaml",
+            "benchmarks/dafny/bignum/yaml/bignum_ModExp_Add_ModExpPow2_Zeroes.yaml",
+            "benchmarks/dafny/bignum/yaml/bignum_ModExp_Add_DivMod_Zeroes.yaml",
+            "benchmarks/dafny/bignum/yaml/bignum_ModExp_ModExpPow2_Mul_Zeroes.yaml",
+            "benchmarks/dafny/bignum/yaml/bignum_ModExp_DivMod_Mul.yaml"
+          ],
+          "similarity": 0.9
+        },
+        {
+          "files": [
+            "benchmarks/dafny/bignum/yaml/bignum_ModExp_Add_ModExpPow2_Mul.yaml",
+            "benchmarks/dafny/bignum/yaml/bignum_ModExp_Add_ModExpPow2_Mul_Zeroes.yaml",
+            "benchmarks/dafny/bignum/yaml/bignum_ModExp_ModExpPow2_Add_Zeroes_DivMod_Mul.yaml",
+            "benchmarks/dafny/bignum/yaml/bignum_ModExp_DivMod_ModExpPow2_Mul.yaml",
+            "benchmarks/dafny/bignum/yaml/bignum_ModExp_Add_DivMod_ModExpPow2_Mul.yaml",
+            "benchmarks/dafny/bignum/yaml/bignum_ModExp_DivMod_ModExpPow2_Mul_Zeroes.yaml",
+            "benchmarks/dafny/bignum/yaml/bignum_ModExp_DivMod_ModExpPow2_Zeroes.yaml",
+            "benchmarks/dafny/bignum/yaml/bignum_ModExp_Add_DivMod_ModExpPow2_Zeroes.yaml",
+            "benchmarks/dafny/bignum/yaml/bignum_ModExp_Add_DivMod_ModExpPow2.yaml",
+            "benchmarks/dafny/bignum/yaml/bignum_ModExp_DivMod_ModExpPow2.yaml"
+          ],
+          "similarity": 0.9
+        },
+        {
+          "files": [
+            "benchmarks/dafny/bignum/yaml/bignum_Compare_CompareUnequal_NormalizeBitString.yaml",
+            "benchmarks/dafny/bignum/yaml/bignum_Compare_NormalizeBitString.yaml",
+            "benchmarks/dafny/bignum/yaml/bignum_Compare_CompareUnequal.yaml",
+            "benchmarks/dafny/bignum/yaml/bignum_Compare.yaml",
+            "benchmarks/dafny/bignum/yaml/bignum_CompareUnequal.yaml",
+            "benchmarks/dafny/bignum/yaml/bignum_Add_NormalizeBitString.yaml"
+          ],
+          "similarity": 0.9
+        },
+        {
+          "files": [
+            "benchmarks/dafny/bignum/yaml/bignum_ModExpPow2_Mul.yaml",
+            "benchmarks/dafny/bignum/yaml/bignum_ModExpPow2_Add_Mul.yaml",
+            "benchmarks/dafny/bignum/yaml/bignum_ModExpPow2_Add.yaml",
+            "benchmarks/dafny/bignum/yaml/bignum_ModExpPow2_DivMod_Mul.yaml",
+            "benchmarks/dafny/bignum/yaml/bignum_ModExpPow2.yaml",
+            "benchmarks/dafny/bignum/yaml/bignum_ModExpPow2_Add_DivMod_Mul.yaml",
+            "benchmarks/dafny/bignum/yaml/bignum_ModExpPow2_DivMod.yaml",
+            "benchmarks/dafny/bignum/yaml/bignum_ModExpPow2_Add_DivMod.yaml"
+          ],
+          "similarity": 0.9
+        },
+        {
+          "files": [
+            "benchmarks/dafny/bignum/yaml/bignum_Add.yaml",
+            "benchmarks/dafny/bignum/yaml/bignum_Mul_Add.yaml",
+            "benchmarks/dafny/bignum/yaml/bignum_Mul.yaml",
+            "benchmarks/dafny/bignum/yaml/bignum_Mul_Add_NormalizeBitString.yaml",
+            "benchmarks/dafny/bignum/yaml/bignum_Sub.yaml",
+            "benchmarks/dafny/bignum/yaml/bignum_Mul_NormalizeBitString.yaml",
+            "benchmarks/dafny/bignum/yaml/bignum_Zeros.yaml",
+            "benchmarks/dafny/bignum/yaml/bignum_Sub_NormalizeBitstring.yaml",
+            "benchmarks/dafny/bignum/yaml/bignum_NormalizeBitString.yaml"
+          ],
+          "similarity": 0.9
+        }
+      ],
+      "total_count": 61
+    },
+    "base_score": 50
+  },
+  "generated_at": "2025-09-23T18:01:34.129284",
+  "config_version": "2.0",
+  "format_version": "separate_metadata_v1"
+}

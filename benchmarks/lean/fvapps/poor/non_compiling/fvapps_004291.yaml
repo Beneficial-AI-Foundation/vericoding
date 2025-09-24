@@ -42,8 +42,6 @@ vc-preamble: |-
     breaks.all (· ≥ 0) ∧ breaks.allDistinctEq
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def validTotalDuration (schedule : List Int) (hours : Int) : Prop :=

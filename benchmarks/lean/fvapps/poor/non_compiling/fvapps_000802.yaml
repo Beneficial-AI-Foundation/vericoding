@@ -50,8 +50,6 @@ vc-preamble: |-
     xs.foldl (· + ·) 0
 
 vc-helpers: |-
-  -- <vc-helpers>
-  -- </vc-helpers>
 
 vc-definitions: |-
   def countOccurrences (s : DNA) (sequences : List DNA) : Nat :=

@@ -1,0 +1,66 @@
+{
+  "benchmark_info": {
+    "name": "dafny_dafnybench",
+    "language": "dafny",
+    "source": "unknown",
+    "entry_count": 443,
+    "benchmark_path": "benchmarks/dafny/dafnybench"
+  },
+  "qa_metadata": {
+    "functions_with_default_values": [
+      "benchmarks/dafny/dafnybench/yaml/BinaryAddition_BinaryAddition.yaml",
+      "benchmarks/dafny/dafnybench/yaml/BinaryAddition_ArrayToSequence.yaml",
+      "benchmarks/dafny/dafnybench/yaml/assertive-programming-assignment-1_tmp_tmp3h_cj44u_ProdAndCount_ProdAndCount.yaml"
+    ],
+    "methods_with_bodies": [],
+    "score": 93.39729119638827,
+    "near_duplicates": {
+      "examples": [
+        {
+          "files": [
+            "benchmarks/dafny/dafnybench/yaml/Clover_below_zero_below_zero.yaml",
+            "benchmarks/dafny/dafnybench/yaml/llm-verified-eval_tmp_tmpd2deqn_i_dafny_3_below_zero.yaml"
+          ],
+          "similarity": 0.9
+        },
+        {
+          "files": [
+            "benchmarks/dafny/dafnybench/yaml/dafny-synthesis_task_id_587_ArrayToSeq.yaml",
+            "benchmarks/dafny/dafnybench/yaml/Clover_min_array_minArray.yaml",
+            "benchmarks/dafny/dafnybench/yaml/dafny-synthesis_task_id_106_AppendArrayToSeq.yaml"
+          ],
+          "similarity": 0.9
+        },
+        {
+          "files": [
+            "benchmarks/dafny/dafnybench/yaml/dafny-synthesis_task_id_644_Reverse.yaml",
+            "benchmarks/dafny/dafnybench/yaml/Clover_reverse_reverse.yaml",
+            "benchmarks/dafny/dafnybench/yaml/dafny-synthesis_task_id_644_ReverseUptoK.yaml",
+            "benchmarks/dafny/dafnybench/yaml/dafny-exercise_tmp_tmpouftptir_reverse_Reverse.yaml"
+          ],
+          "similarity": 0.9
+        },
+        {
+          "files": [
+            "benchmarks/dafny/dafnybench/yaml/Dafny_tmp_tmp0wu8wmfr_tests_Search1000_Search2PowRecursive.yaml",
+            "benchmarks/dafny/dafnybench/yaml/Dafny_tmp_tmp0wu8wmfr_tests_Search1000_Search2PowLoop.yaml",
+            "benchmarks/dafny/dafnybench/yaml/Dafny_tmp_tmp0wu8wmfr_tests_Search1000_Search1000.yaml"
+          ],
+          "similarity": 0.9
+        },
+        {
+          "files": [
+            "benchmarks/dafny/dafnybench/yaml/dafny-synthesis_task_id_554_FindOddNumbers.yaml",
+            "benchmarks/dafny/dafnybench/yaml/dafny-synthesis_task_id_426_FilterOddNumbers.yaml"
+          ],
+          "similarity": 0.9
+        }
+      ],
+      "total_count": 187
+    },
+    "base_score": 221
+  },
+  "generated_at": "2025-09-23T18:01:24.411091",
+  "config_version": "2.0",
+  "format_version": "separate_metadata_v1"
+}
