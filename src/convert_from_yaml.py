@@ -739,6 +739,8 @@ def process_language_tasks(benchmarks_dir: Path) -> None:
                 no_qa_file = source_dir / f"{language}_{source}.jsonl"
                 qa_one_file = source_dir / f"{language}_{source}_with_entry_qa.jsonl"
                 qa_all_file = source_dir / f"{language}_{source}.metadata.json"
+                notes_file = source_dir / f"{language}_{source}_notes.jsonl"
+
                 if not qa_one_file.exists():
                     if no_qa_file.exists():
                         qa_one_file = no_qa_file
@@ -784,6 +786,18 @@ def process_language_tasks(benchmarks_dir: Path) -> None:
                         group_id = f"Dup{languages_ref[language]}{sources_ref[source]}{idx:02d}"
                         for file in dup_grp['files']:
                             tasks[Path(file).stem]['qa-near-duplicate-group'] = group_id
+
+                # put source notes to tasks
+                if notes_file.exists():
+                    # load from jsonl file
+                    notes = {}
+                    with open(notes_file, 'r') as g:
+                        for line in g:
+                            note = json.loads(line)
+                            notes[note['source_id']] = note['source_notes']
+                    for task in tasks.values():
+                        task['source-notes'] = notes[task['source-id']]
+                    print(f"Put source notes {notes_file} to tasks")
 
                 # write tasks to file
                 for task in tasks.values():
