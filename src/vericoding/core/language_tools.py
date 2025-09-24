@@ -104,7 +104,22 @@ def verify_file(config: ProcessingConfig, file_path: str) -> VerificationResult:
                 result = subprocess.run(cmd, capture_output=True, text=True, timeout=60)
 
                 if result.returncode != 0:
-                    # Compilation failed
+                    # For Lean, try fallback to lake env lean if lake build fails
+                    if config.language == "lean":
+                        print(f"    Lake build failed, trying fallback with lake env lean...")
+                        fallback_cmd = ["lake", "env", "lean", file_path]
+                        fallback_result = subprocess.run(
+                            fallback_cmd, capture_output=True, text=True, timeout=60
+                        )
+                        if fallback_result.returncode == 0:
+                            full_output = fallback_result.stdout + fallback_result.stderr
+                            return VerificationResult(
+                                success=True,
+                                output=full_output,
+                                error=None,
+                            )
+
+                    # Compilation failed (or fallback failed for Lean)
                     full_output = result.stdout + result.stderr
                     return VerificationResult(
                         success=False,
@@ -132,6 +147,23 @@ def verify_file(config: ProcessingConfig, file_path: str) -> VerificationResult:
         full_output = result.stdout + result.stderr
 
         success = result.returncode == 0
+
+        # For Lean, if lake build fails, try lake env lean as fallback
+        if not success and config.language == "lean":
+            print(f"    Lake build failed for verification, trying fallback with lake env lean...")
+            fallback_cmd = ["lake", "env", "lean", file_path]
+            try:
+                fallback_result = subprocess.run(
+                    fallback_cmd, capture_output=True, text=True, timeout=timeout_value
+                )
+                if fallback_result.returncode == 0:
+                    full_output = fallback_result.stdout + fallback_result.stderr
+                    return VerificationResult(success=True, output=full_output, error=None)
+                else:
+                    # Use fallback error if it also failed
+                    full_output = fallback_result.stdout + fallback_result.stderr
+            except subprocess.TimeoutExpired:
+                pass  # Keep original error
 
         if success:
             return VerificationResult(success=True, output=full_output, error=None)

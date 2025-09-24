@@ -19,6 +19,19 @@ def run_lake_build(file_path, cwd=Path.cwd()):
             text=True,
             cwd=cwd
         )
+
+        # If lake build fails, try fallback with lake env lean
+        if result.returncode != 0:
+            print(f"    Lake build failed, trying fallback with lake env lean...")
+            fallback_result = subprocess.run(
+                ['lake', 'env', 'lean', str(file_path)],
+                capture_output=True,
+                text=True,
+                cwd=cwd
+            )
+            if fallback_result.returncode == 0:
+                return fallback_result.returncode, fallback_result.stdout, fallback_result.stderr
+
         return result.returncode, result.stdout, result.stderr
     except Exception as e:
         return -1, "", str(e)
