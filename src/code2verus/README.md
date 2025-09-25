@@ -138,11 +138,8 @@ dafny_spec.dfy → (AI + Lean verification) → lean_theorem.lean
 ### Install with uv (recommended)
 
 ```bash
-# Clone the repository
-git clone https://github.com/Beneficial-AI-Foundation/code2verus.git
-cd code2verus
-
 # Create virtual environment
+cd code2verus
 uv venv
 
 # Activate virtual environment
@@ -157,11 +154,8 @@ uv pip install -e .
 ### Install with pip
 
 ```bash
-# Clone the repository
-git clone https://github.com/Beneficial-AI-Foundation/code2verus.git
-cd code2verus
-
 # Create virtual environment
+cd code2verus
 python -m venv .venv
 source .venv/bin/activate  # On Linux/Mac
 
