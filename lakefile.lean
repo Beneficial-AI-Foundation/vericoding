@@ -13,7 +13,6 @@ package Vericoding where
     ⟨`relaxedAutoImplicit, false⟩,
     ⟨`linter.missingDocs, false⟩
   ]
-  releaseRepo := "https://github.com/Beneficial-AI-Foundation/vericoding"
   buildArchive := "Vericoding-{OS}-{ARCH}.tar.gz"
   preferReleaseBuild := true
 
