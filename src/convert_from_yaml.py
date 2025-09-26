@@ -37,9 +37,15 @@ source_meta_default_path = Path("benchmarks") / source_meta_filename
 
 
 def get_vericoding_id(
-    source: str, language: str, task: str, source_meta: Dict[str, Any]
+    language: str, task: str, source_meta: Dict[str, Any], source: str = None   
 ) -> str:
     """Get the Vericoding ID for a given source, language, and task."""
+
+    if task not in source_meta:
+        raise ValueError(f"Task {task} not found in source meta")
+
+    if source is None:
+        source = source_meta[task]["source"]
 
     return f"{languages_ref[language]}{sources_ref[source]}{source_meta[task]['id']}"
 
@@ -209,7 +215,7 @@ def convert_yaml_to_jsonl(
     yaml_files = list(yaml_path.glob("**/*.yaml"))
     yaml_files_id = [
         {
-            "id": get_vericoding_id(source, language, yaml_file.stem, source_meta),
+            "id": get_vericoding_id(language, yaml_file.stem, source_meta, source),
             "path": yaml_file,
         }
         for yaml_file in yaml_files
@@ -319,7 +325,7 @@ def convert_poor_to_jsonl(
                 [
                     {
                         "id": get_vericoding_id(
-                            source, language, yaml_file.stem, source_meta
+                            language, yaml_file.stem, source_meta, source
                         ),
                         "path": yaml_file,
                     }
@@ -1517,7 +1523,7 @@ def print_summary_counts(source_meta: Dict[str, Any]) -> None:
     #     language = random.choice(list(languages_ref.keys()))
     #     task = random.choice(list(source_meta.keys()))
     #     source = source_meta[task]['source']
-    #     print(f"Vericoding ID: {get_vericoding_id(source, language, task, source_meta)}")
+    #     print(f"Vericoding ID: {get_vericoding_id(language, task, source_meta, source)}")
     #     print(f"Source: {source}")
     #     print(f"Language: {language}")
     #     print(f"Task: {task}")
@@ -1561,6 +1567,95 @@ def generate_ids(source_meta: Dict[str, Any]) -> None:
             source_meta[filename]["id"] = file_id
 
     return source_meta
+
+
+def rename_tasks_with_new_id(language: str, dir_path: Path) -> None:
+    """Rename all files in a directory recursively using get_vericoding_id function.
+    
+    Args:
+        language: The language identifier (e.g., 'lean', 'dafny', 'verus')
+        dir_path: Path to the directory containing files to rename
+    """
+    if not dir_path.exists():
+        raise FileNotFoundError(f"Directory {dir_path} does not exist")
+    
+    if not dir_path.is_dir():
+        raise ValueError(f"{dir_path} is not a directory")
+    
+    # Load source metadata
+    source_meta_path = source_meta_default_path
+    if not source_meta_path.is_file():
+        raise FileNotFoundError(f"Source metadata file {source_meta_path} not found")
+    
+    # Load source metadata
+    source_meta = {}
+    with open(source_meta_path, "r") as f:
+        for line in f:
+            lineobj = json.loads(line)
+            source_meta[lineobj["source_id"]] = lineobj
+    
+    # Find all files recursively
+    all_files = list(dir_path.glob("**/*"))
+    files_to_rename = [f for f in all_files if f.is_file()]
+    
+    if not files_to_rename:
+        print(f"No files found in {dir_path}")
+        return
+    
+    renamed_count = 0
+    skipped_count = 0
+    skipped_files = []
+    
+    for file_path in files_to_rename:
+        try:
+            # Get the file stem (name without extension)
+            file_stem = file_path.stem
+            
+            # Get the new ID using get_vericoding_id
+            new_id = get_vericoding_id(language, file_stem, source_meta)
+            
+            # Create new path with the new ID
+            new_path = file_path.parent / f"{new_id}{file_path.suffix}"
+            
+            # Skip if the new name is the same as the current name
+            if new_path == file_path:
+                print(f"Skipping {file_path} (name unchanged)")
+                skipped_files.append((file_path, "name unchanged"))
+                skipped_count += 1
+                continue
+            
+            # Check if target file already exists
+            if new_path.exists():
+                print(f"Warning: Target file {new_path} already exists, skipping {file_path}")
+                skipped_files.append((file_path, f"target file {new_path} already exists"))
+                skipped_count += 1
+                continue
+            
+            # Rename the file
+            file_path.rename(new_path)
+            print(f"Renamed {file_path} -> {new_path}")
+            renamed_count += 1
+            
+        except ValueError as e:
+            print(f"Warning: Could not get ID for {file_path}: {e}")
+            skipped_files.append((file_path, f"could not get ID: {e}"))
+            skipped_count += 1
+            continue
+        except Exception as e:
+            print(f"Error renaming {file_path}: {e}")
+            skipped_files.append((file_path, f"error: {e}"))
+            skipped_count += 1
+            continue
+    
+    print(f"\nRenamed {renamed_count} files, skipped {skipped_count} files")
+    
+    # List all skipped files at the end
+    if skipped_files:
+        print(f"\nSkipped files:")
+        print("=" * 50)
+        for file_path, reason in skipped_files:
+            print(f"  {file_path} - {reason}")
+        print("=" * 50)
 
 
 def generate_metadata(benchmarks_dir: Path) -> None:
@@ -1664,6 +1759,12 @@ def main():
         metavar="BENCHMARKS_DIR",
         help="Process language tasks. For each language directory, generate language tasks file from QA files",
     )
+    parser.add_argument(
+        "--rename-tasks",
+        nargs=2,
+        metavar=("LANGUAGE", "DIR_PATH"),
+        help="Rename all files in a directory recursively using get_vericoding_id function. Takes language and directory path as arguments.",
+    )
 
     args = parser.parse_args()
 
@@ -1675,6 +1776,12 @@ def main():
     # Handle language tasks processing
     if args.language_tasks is not None:
         process_language_tasks(args.language_tasks)
+        return
+
+    # Handle rename tasks processing
+    if args.rename_tasks is not None:
+        language, dir_path = args.rename_tasks
+        rename_tasks_with_new_id(language, Path(dir_path))
         return
 
     # Handle benchmarks processing
