@@ -9,19 +9,14 @@ import sys
 import tempfile
 import shutil
 from pathlib import Path
-from unittest.mock import patch, MagicMock
+from unittest.mock import patch
 import os
 
 # Import the modular components
 try:
     from vericoding.core import ProcessingConfig, PromptLoader, create_llm_provider
-    from vericoding.core.language_tools import (
-        get_tool_path,
-        check_tool_availability,
-        find_spec_files,
-    )
-    from vericoding.processing import process_files_parallel
-    from vericoding.utils import generate_summary, generate_csv_results
+    from vericoding.core.language_tools import find_spec_files
+    from vericoding.utils import generate_summary
 except ImportError as e:
     pytest.skip(f"Cannot import modular components: {e}", allow_module_level=True)
 
@@ -189,7 +184,9 @@ fix_verification: "Fix verification errors"
             try:
                 provider, model = create_llm_provider("claude")
                 assert provider is not None
-                assert model == "claude-sonnet-4-20250514"  # factory determines the model
+                assert (
+                    model == "claude-sonnet-4-20250514"
+                )  # factory determines the model
                 print("✓ Provider creation works consistently")
             except Exception as e:
                 pytest.fail(f"Provider creation consistency failed: {e}")
@@ -362,7 +359,7 @@ class TestFunctionalEquivalence:
         for arg in expected_args:
             assert arg in help_text, f"Missing CLI argument: {arg}"
 
-        print(f"✓ All expected CLI arguments present")
+        print("✓ All expected CLI arguments present")
 
     @pytest.fixture
     def project_root(self):

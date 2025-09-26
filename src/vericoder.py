@@ -7,7 +7,6 @@ generates implementations using various LLM APIs, and iteratively fixes verifica
 """
 
 import argparse
-import json
 import math
 import os
 import platform
@@ -46,20 +45,25 @@ from vericoding.utils import (
 load_environment()
 
 
-
-def apply_sharding(files: list[str], shard_spec: str | None, limit: int | None = None) -> tuple[list[str], str]:
+def apply_sharding(
+    files: list[str], shard_spec: str | None, limit: int | None = None
+) -> tuple[list[str], str]:
     """Apply sharding to file list and return selected files with description."""
     total = len(files)
 
     if shard_spec:
         # Parse shard spec like "2/5"
         try:
-            current, total_shards = map(int, shard_spec.split('/'))
+            current, total_shards = map(int, shard_spec.split("/"))
         except ValueError:
-            raise ValueError(f"Invalid shard format: {shard_spec}. Use format K/N (e.g., '2/5')")
+            raise ValueError(
+                f"Invalid shard format: {shard_spec}. Use format K/N (e.g., '2/5')"
+            )
 
         if current < 1 or current > total_shards:
-            raise ValueError(f"Invalid shard {current}/{total_shards}: shard number must be between 1 and {total_shards}")
+            raise ValueError(
+                f"Invalid shard {current}/{total_shards}: shard number must be between 1 and {total_shards}"
+            )
 
         # Calculate this shard's slice
         shard_size = math.ceil(total / total_shards)
@@ -68,7 +72,9 @@ def apply_sharding(files: list[str], shard_spec: str | None, limit: int | None =
 
         selected = files[start:end]
 
-        description = f"shard {current}/{total_shards} (files {start+1}-{end} of {total})"
+        description = (
+            f"shard {current}/{total_shards} (files {start + 1}-{end} of {total})"
+        )
     else:
         # No sharding, just apply limit if specified
         selected = files[:limit] if limit else files
@@ -124,13 +130,12 @@ Examples:
         help="Disable debug mode (debug mode is enabled by default)",
     )
 
-    
     parser.add_argument(
         "--no-wandb",
-        action="store_true", 
+        action="store_true",
         help="Disable Weights & Biases experiment tracking",
     )
-    
+
     parser.add_argument(
         "--delete-after-upload",
         action="store_true",
@@ -199,8 +204,10 @@ def setup_configuration(args) -> ProcessingConfig:
     language_config = available_languages[args.language]
 
     # Validate assume-unformatted-lean argument
-    if args.assume_unformatted_lean and args.language != 'lean':
-        print(f"Error: --assume-unformatted-lean can only be used with Lean language, not '{args.language}'")
+    if args.assume_unformatted_lean and args.language != "lean":
+        print(
+            f"Error: --assume-unformatted-lean can only be used with Lean language, not '{args.language}'"
+        )
         sys.exit(1)
 
     print(
@@ -215,15 +222,11 @@ def setup_configuration(args) -> ProcessingConfig:
 
     # Create timestamped output directory outside the input directory
     timestamp = datetime.now().strftime("%d-%m_%Hh%M")
-    
+
     # Determine LLM name for output directory (from --llm)
     llm_name = (args.llm or "llm").lower()
     # Sanitize for filesystem paths
-    llm_name = (
-        llm_name.replace("/", "_")
-        .replace(":", "_")
-        .replace(" ", "_")
-    )
+    llm_name = llm_name.replace("/", "_").replace(":", "_").replace(" ", "_")
 
     # Extract the relevant part of the input path for the output hierarchy
     input_path = Path(files_dir).resolve()
@@ -253,11 +256,8 @@ def setup_configuration(args) -> ProcessingConfig:
                 working_dir / "src" if (working_dir / "src").exists() else working_dir
             )
 
-
     # Create output directory alongside the input directory, named: vericoder_<llm>_<date>
-    output_dir = str(
-        input_path.parent / f"vericoder_{llm_name}_{timestamp}"
-    )
+    output_dir = str(input_path.parent / f"vericoder_{llm_name}_{timestamp}")
     summary_file = str(Path(output_dir) / "summary.txt")
 
     Path(output_dir).mkdir(parents=True, exist_ok=True)
@@ -299,14 +299,20 @@ def get_tool_version(config: ProcessingConfig) -> str:
     try:
         tool_path = get_tool_path(config)
         if config.language == "verus":
-            result = subprocess.run([tool_path, "--version"], capture_output=True, text=True, timeout=10)
+            result = subprocess.run(
+                [tool_path, "--version"], capture_output=True, text=True, timeout=10
+            )
         elif config.language == "lean":
-            result = subprocess.run([tool_path, "--version"], capture_output=True, text=True, timeout=10)
+            result = subprocess.run(
+                [tool_path, "--version"], capture_output=True, text=True, timeout=10
+            )
         elif config.language == "dafny":
-            result = subprocess.run([tool_path, "/version"], capture_output=True, text=True, timeout=10)
+            result = subprocess.run(
+                [tool_path, "/version"], capture_output=True, text=True, timeout=10
+            )
         else:
             return f"Unknown tool version for {config.language}"
-        
+
         if result.returncode == 0:
             return result.stdout.strip()
         else:
@@ -315,91 +321,93 @@ def get_tool_version(config: ProcessingConfig) -> str:
         return f"Error getting version: {str(e)}"
 
 
-def get_experiment_metadata(config: ProcessingConfig, args, prompt_loader: PromptLoader = None) -> dict:
+def get_experiment_metadata(
+    config: ProcessingConfig, args, prompt_loader: PromptLoader = None
+) -> dict:
     """Collect comprehensive metadata for the experiment."""
     # Get git information
     git_url = get_git_remote_url()
     git_branch = get_current_branch()
-    
+
     # Get git commit hash
     git_commit = None
     try:
         result = subprocess.run(
-            ["git", "rev-parse", "HEAD"], 
-            capture_output=True, text=True, timeout=5
+            ["git", "rev-parse", "HEAD"], capture_output=True, text=True, timeout=5
         )
         if result.returncode == 0:
             git_commit = result.stdout.strip()
     except Exception:
         pass
-    
+
     # Get hostname
     hostname = platform.node()
-    
+
     # Get tool version
     tool_version = get_tool_version(config)
-    
+
     # Determine input type based on directory contents
     input_type = determine_input_type(config.files_dir)
-    
+
     # Get system prompts if prompt_loader is available
     system_prompts = {}
     if prompt_loader:
         system_prompts = prompt_loader.prompts.copy()
-    
+
     metadata = {
         # Basic experiment info
         "language": config.language,
         "max_iterations": config.max_iterations,
         "llm": config.llm,
         "max_workers": config.max_workers,
-
-        # File and benchmark info  
+        # File and benchmark info
         "files_dir": config.files_dir,
         "input_type": input_type,
         "benchmark_files_total": len(find_spec_files(config)),
         "shard": args.shard,
         "limit": args.limit,
-        
         # Tool versions and environment
         "tool_version": tool_version,
         "python_version": platform.python_version(),
         "platform": platform.system(),
         "platform_version": platform.release(),
         "hostname": hostname,
-        
         # Git information
         "git_url": git_url,
-        "git_branch": git_branch, 
+        "git_branch": git_branch,
         "git_commit": git_commit,
-        
         # Run configuration
         "api_rate_limit_delay": config.api_rate_limit_delay,
         "debug_mode": config.debug_mode,
         "timestamp": datetime.now().isoformat(),
-        
         # Command line arguments (for reproducibility)
         "args": vars(args),
     }
-    
+
     # Add system prompts if available
     if system_prompts:
         metadata["system_prompts"] = system_prompts
-    
+
     return metadata
 
 
 def determine_input_type(files_dir: str) -> str:
     """Determine the input type based on directory contents or name."""
     files_dir_name = Path(files_dir).name.lower()
-    
+
     if "spec" in files_dir_name:
         return "spec"
     elif "vibe" in files_dir_name:
         return "vibe"
     else:
         # Try to detect from file contents or structure
-        spec_keywords = ["requires", "ensures", "invariant", "precondition", "postcondition"]
+        spec_keywords = [
+            "requires",
+            "ensures",
+            "invariant",
+            "precondition",
+            "postcondition",
+        ]
         try:
             # Sample a few files to detect type
             # Look for files in the directory to sample
@@ -411,7 +419,7 @@ def determine_input_type(files_dir: str) -> str:
             if sample_files:
                 for file_path in sample_files[:3]:
                     try:
-                        with open(file_path, 'r') as f:
+                        with open(file_path, "r") as f:
                             content = f.read().lower()
                             if any(keyword in content for keyword in spec_keywords):
                                 return "spec"
@@ -419,116 +427,147 @@ def determine_input_type(files_dir: str) -> str:
                         continue
         except Exception:
             pass
-        
+
         return "both"  # Default fallback
 
 
 def log_experiment_results_to_wandb(
-    config: ProcessingConfig, 
-    results: list, 
-    processing_time: float, 
+    config: ProcessingConfig,
+    results: list,
+    processing_time: float,
     success_percentage: float,
-    args
+    args,
 ) -> None:
     """Log comprehensive experiment results to wandb."""
     successful = [r for r in results if r.success]
     failed = [r for r in results if not r.success and not r.has_bypass]
     bypassed = [r for r in results if r.has_bypass]
-    original_compilation_failed = [r for r in results if getattr(r, 'original_compilation_failed', False)]
+    original_compilation_failed = [
+        r for r in results if getattr(r, "original_compilation_failed", False)
+    ]
 
     # Get global token statistics for summary
     token_stats = get_global_token_stats()
-    
+
     # Log final summary metrics with better organization
     summary_metrics = {
         # Core results
         "results/total_files": len(results),
-        "results/successful_files": len(successful), 
+        "results/successful_files": len(successful),
         "results/failed_files": len(failed),
         "results/bypassed_files": len(bypassed),
         "results/original_compilation_failed_files": len(original_compilation_failed),
         "results/success_rate_percent": success_percentage,
-        
         # Timing information
         "performance/duration_seconds": processing_time,
-        "performance/avg_time_per_file": processing_time / len(results) if results else 0,
-        "performance/throughput_files_per_minute": (len(results) / processing_time) * 60 if processing_time > 0 else 0,
-        
+        "performance/avg_time_per_file": processing_time / len(results)
+        if results
+        else 0,
+        "performance/throughput_files_per_minute": (len(results) / processing_time) * 60
+        if processing_time > 0
+        else 0,
         # Resource usage
         "resources/parallel_workers": config.max_workers,
         "resources/api_rate_limit_delay": config.api_rate_limit_delay,
-
         # Token usage summary
-        "llm/total_input_tokens": token_stats['input_tokens'],
-        "llm/total_output_tokens": token_stats['output_tokens'],
-        "llm/total_tokens": token_stats['input_tokens'] + token_stats['output_tokens'],
-        "llm/total_calls": token_stats['total_calls'],
-        "llm/avg_tokens_per_call": (token_stats['input_tokens'] + token_stats['output_tokens']) / token_stats['total_calls'] if token_stats['total_calls'] > 0 else 0,
+        "llm/total_input_tokens": token_stats["input_tokens"],
+        "llm/total_output_tokens": token_stats["output_tokens"],
+        "llm/total_tokens": token_stats["input_tokens"] + token_stats["output_tokens"],
+        "llm/total_calls": token_stats["total_calls"],
+        "llm/avg_tokens_per_call": (
+            token_stats["input_tokens"] + token_stats["output_tokens"]
+        )
+        / token_stats["total_calls"]
+        if token_stats["total_calls"] > 0
+        else 0,
     }
-    
+
     for key, value in summary_metrics.items():
         wandb.run.summary[key] = value
-    
+
     # Create comprehensive results table with file contents
-    results_table = wandb.Table(columns=[
-        "file_name", "subfolder", "success", "output_file", "error_message",
-        "has_bypass", "file_path", "original_spec", "final_output", "debug_files",
-        "generate_prompt", "fix_prompts"
-    ])
-    
+    results_table = wandb.Table(
+        columns=[
+            "file_name",
+            "subfolder",
+            "success",
+            "output_file",
+            "error_message",
+            "has_bypass",
+            "file_path",
+            "original_spec",
+            "final_output",
+            "debug_files",
+            "generate_prompt",
+            "fix_prompts",
+        ]
+    )
+
     for result in results:
         file_path = Path(result.file)
         subfolder = file_path.parts[0] if len(file_path.parts) > 1 else "root"
         output_name = Path(result.output).name if result.output else ""
-        error_preview = (result.error[:500] + "...") if result.error and len(result.error) > 500 else (result.error or "")
-        
+        error_preview = (
+            (result.error[:500] + "...")
+            if result.error and len(result.error) > 500
+            else (result.error or "")
+        )
+
         # Read original specification file
         original_spec = ""
         try:
             original_file_path = Path(config.files_dir) / result.file
             if original_file_path.exists():
-                with open(original_file_path, 'r', encoding='utf-8') as f:
+                with open(original_file_path, "r", encoding="utf-8") as f:
                     original_spec = f.read()
         except Exception as e:
             original_spec = f"Error reading original file: {str(e)}"
-        
+
         # Read final output file
         final_output = ""
         if result.output:
             try:
-                with open(result.output, 'r', encoding='utf-8') as f:
+                with open(result.output, "r", encoding="utf-8") as f:
                     final_output = f.read()
             except Exception as e:
                 final_output = f"Error reading output file: {str(e)}"
-        
+
         # Collect debug files content
         debug_files_content = {}
         if config.debug_mode:
             # Look for debug files for this specific file
             relative_path = Path(result.file)
-            debug_dir = Path(config.output_dir) / "debug" / relative_path.parent if relative_path.parent != Path(".") else Path(config.output_dir) / "debug"
-            
+            debug_dir = (
+                Path(config.output_dir) / "debug" / relative_path.parent
+                if relative_path.parent != Path(".")
+                else Path(config.output_dir) / "debug"
+            )
+
             if debug_dir.exists():
                 file_stem = Path(result.file).stem
                 for debug_file in debug_dir.glob(f"*{file_stem}*"):
                     try:
-                        with open(debug_file, 'r', encoding='utf-8') as f:
+                        with open(debug_file, "r", encoding="utf-8") as f:
                             content = f.read()
                             debug_files_content[debug_file.name] = content
                     except Exception as e:
-                        debug_files_content[debug_file.name] = f"Error reading: {str(e)}"
-        
+                        debug_files_content[debug_file.name] = (
+                            f"Error reading: {str(e)}"
+                        )
+
         # Format debug files as readable text
         debug_files_text = ""
         if debug_files_content:
-            debug_files_text = "\\n\\n".join([
-                f"=== {filename} ===\\n{content}" 
-                for filename, content in debug_files_content.items()
-            ])
-        
+            debug_files_text = "\\n\\n".join(
+                [
+                    f"=== {filename} ===\\n{content}"
+                    for filename, content in debug_files_content.items()
+                ]
+            )
+
         results_table.add_data(
             file_path.name,
-            subfolder, 
+            subfolder,
             result.success,
             output_name,
             error_preview,
@@ -537,18 +576,22 @@ def log_experiment_results_to_wandb(
             original_spec,
             final_output,
             debug_files_text or "No debug files",
-            result.generate_prompt if hasattr(result, 'generate_prompt') and result.generate_prompt else "",
-            "\\n\\n---\\n\\n".join(result.fix_prompts) if hasattr(result, 'fix_prompts') and result.fix_prompts else ""
+            result.generate_prompt
+            if hasattr(result, "generate_prompt") and result.generate_prompt
+            else "",
+            "\\n\\n---\\n\\n".join(result.fix_prompts)
+            if hasattr(result, "fix_prompts") and result.fix_prompts
+            else "",
         )
-    
+
     wandb.log({"detailed_results": results_table})
-    
+
     # Upload comprehensive artifacts with better organization
     print("\\n📤 Uploading experiment artifacts to wandb...")
-    
+
     # Create unique artifact names using run timestamp
-    timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
-    
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+
     # 1. Generated code artifact
     code_artifact = wandb.Artifact(
         name=f"generated_code_{config.language}_{timestamp}",
@@ -560,24 +603,24 @@ def log_experiment_results_to_wandb(
             "total_files": len(results),
             "llm_model": config.llm,
             "timestamp": timestamp,
-        }
+        },
     )
-    
+
     # 2. Debug files artifact (if debug mode enabled)
     debug_artifact = None
     if config.debug_mode:
         debug_artifact = wandb.Artifact(
             name=f"debug_files_{config.language}_{timestamp}",
-            type="debug-files", 
+            type="debug-files",
             description=f"Debug and intermediate files from {config.language} processing",
             metadata={
                 "language": config.language,
                 "debug_mode": True,
                 "iterations": config.max_iterations,
                 "timestamp": timestamp,
-            }
+            },
         )
-    
+
     # 3. Summary and analysis artifact
     summary_artifact = wandb.Artifact(
         name=f"analysis_{config.language}_{timestamp}",
@@ -588,56 +631,68 @@ def log_experiment_results_to_wandb(
             "total_files": len(results),
             "success_rate": success_percentage,
             "timestamp": timestamp,
-        }
+        },
     )
-    
+
     # Add files to artifacts
     output_path = Path(config.output_dir)
     if output_path.exists():
         for file_path in output_path.rglob("*"):
             if file_path.is_file():
                 relative_path = file_path.relative_to(output_path)
-                
+
                 # Categorize files into appropriate artifacts
-                if file_path.suffix in ['.dfy', '.rs', '.lean'] and not any(keyword in file_path.name for keyword in ['iter_', 'debug']):
+                if file_path.suffix in [".dfy", ".rs", ".lean"] and not any(
+                    keyword in file_path.name for keyword in ["iter_", "debug"]
+                ):
                     # Final implementation files go to code artifact
                     code_artifact.add_file(str(file_path), name=str(relative_path))
-                elif config.debug_mode and ('debug' in str(relative_path) or 'iter_' in file_path.name or 'error.log' in file_path.name):
+                elif config.debug_mode and (
+                    "debug" in str(relative_path)
+                    or "iter_" in file_path.name
+                    or "error.log" in file_path.name
+                ):
                     # Debug/intermediate files and error logs go to debug artifact
                     if debug_artifact:
                         debug_artifact.add_file(str(file_path), name=str(relative_path))
-                elif file_path.suffix in ['.txt', '.csv']:
+                elif file_path.suffix in [".txt", ".csv"]:
                     # Summary and analysis files go to analysis artifact
                     summary_artifact.add_file(str(file_path), name=str(relative_path))
                 else:
                     # Fallback to code artifact for other files
                     code_artifact.add_file(str(file_path), name=str(relative_path))
-    
+
     # Log all artifacts
     wandb.log_artifact(code_artifact)
-    print(f"✅ Generated code uploaded to wandb artifact: generated_code_{config.language}_{timestamp}")
-    
+    print(
+        f"✅ Generated code uploaded to wandb artifact: generated_code_{config.language}_{timestamp}"
+    )
+
     if debug_artifact and config.debug_mode:
         wandb.log_artifact(debug_artifact)
-        print(f"✅ Debug files uploaded to wandb artifact: debug_files_{config.language}_{timestamp}")
-    
-    wandb.log_artifact(summary_artifact) 
-    print(f"✅ Analysis files uploaded to wandb artifact: analysis_{config.language}_{timestamp}")
-    
+        print(
+            f"✅ Debug files uploaded to wandb artifact: debug_files_{config.language}_{timestamp}"
+        )
+
+    wandb.log_artifact(summary_artifact)
+    print(
+        f"✅ Analysis files uploaded to wandb artifact: analysis_{config.language}_{timestamp}"
+    )
+
     # Store key files directly in wandb.summary for easy access
     if output_path.exists():
         summary_file = output_path / "summary.txt"
         if summary_file.exists():
             try:
-                with open(summary_file, 'r') as f:
+                with open(summary_file, "r") as f:
                     wandb.run.summary["experiment_summary"] = f.read()
             except Exception as e:
                 print(f"Warning: Could not read summary file: {e}")
-        
+
         csv_file = output_path / "results.csv"
         if csv_file.exists():
             wandb.run.summary["results_csv_path"] = str(csv_file)
-    
+
     # Delete local files if requested
     if args.delete_after_upload:
         try:
@@ -645,7 +700,7 @@ def log_experiment_results_to_wandb(
             print(f"🗑️ Local files deleted from {output_path}")
         except Exception as e:
             print(f"⚠️ Error deleting local files: {e}")
-    
+
     # Finish wandb run
     wandb.finish()
 
@@ -660,7 +715,7 @@ def main():
 
     # Set up configuration
     config = setup_configuration(args)
-    
+
     # Initialize wandb for experiment tracking (unless disabled)
     wandb_run = None
     if not args.no_wandb and os.getenv("WANDB_API_KEY"):
@@ -672,21 +727,21 @@ def main():
 
             # Initialize wandb run
             run_name = f"vericoding_{config.language}_{datetime.now().strftime('%Y%m%d_%H%M%S')}{shard_suffix}"
-            
+
             # Get comprehensive metadata
             experiment_metadata = get_experiment_metadata(config, args)
-            
+
             # Build tags list
             tags = [config.language, config.llm, "spec-to-code"]
             if args.tag:
                 tags.append(args.tag)
-            
+
             wandb_run = wandb.init(
                 project=os.getenv("WANDB_PROJECT", "vericoding"),
                 entity=os.getenv("WANDB_ENTITY"),
                 name=run_name,
                 tags=tags,
-                mode=os.getenv("WANDB_MODE", "online")
+                mode=os.getenv("WANDB_MODE", "online"),
             )
             # Update config with comprehensive metadata
             wandb.config.update(experiment_metadata, allow_val_change=True)
@@ -699,7 +754,7 @@ def main():
             # Ensure wandb.run is cleared when initialization fails
             try:
                 wandb.finish()
-            except:
+            except Exception:
                 pass
     else:
         if args.no_wandb:
@@ -735,13 +790,22 @@ def main():
     if wandb_run:
         try:
             # Get updated metadata with prompts
-            experiment_metadata_with_prompts = get_experiment_metadata(config, args, prompt_loader)
-            
+            experiment_metadata_with_prompts = get_experiment_metadata(
+                config, args, prompt_loader
+            )
+
             # Log system prompts specifically
             if "system_prompts" in experiment_metadata_with_prompts:
-                wandb.config.update({"system_prompts": experiment_metadata_with_prompts["system_prompts"]}, allow_val_change=True)
-                print(f"✅ System prompts logged to wandb")
-                
+                wandb.config.update(
+                    {
+                        "system_prompts": experiment_metadata_with_prompts[
+                            "system_prompts"
+                        ]
+                    },
+                    allow_val_change=True,
+                )
+                print("✅ System prompts logged to wandb")
+
                 # Also log prompts as a text artifact for easier viewing
                 prompts_artifact = wandb.Artifact(
                     name=f"system_prompts_{config.language}_{datetime.now().strftime('%Y%m%d_%H%M%S')}",
@@ -750,31 +814,37 @@ def main():
                     metadata={
                         "language": config.language,
                         "prompts_file": config.language_config.prompts_file,
-                        "num_prompts": len(experiment_metadata_with_prompts["system_prompts"]),
-                    }
+                        "num_prompts": len(
+                            experiment_metadata_with_prompts["system_prompts"]
+                        ),
+                    },
                 )
-                
+
                 # Create a formatted text file with the prompts
-                with tempfile.NamedTemporaryFile(mode='w', suffix='.txt', delete=False) as tmp_file:
+                with tempfile.NamedTemporaryFile(
+                    mode="w", suffix=".txt", delete=False
+                ) as tmp_file:
                     tmp_file.write(f"System Prompts for {config.language}\n")
                     tmp_file.write("=" * 80 + "\n\n")
-                    
-                    for prompt_name, prompt_content in experiment_metadata_with_prompts["system_prompts"].items():
+
+                    for prompt_name, prompt_content in experiment_metadata_with_prompts[
+                        "system_prompts"
+                    ].items():
                         tmp_file.write(f"Prompt: {prompt_name}\n")
                         tmp_file.write("-" * 40 + "\n")
                         tmp_file.write(prompt_content)
                         tmp_file.write("\n\n" + "=" * 80 + "\n\n")
-                    
+
                     tmp_path = tmp_file.name
-                
+
                 # Add the file to the artifact
                 prompts_artifact.add_file(tmp_path, name="system_prompts.txt")
                 wandb.log_artifact(prompts_artifact)
-                
+
                 # Clean up temp file
                 os.unlink(tmp_path)
-                
-                print(f"✅ System prompts artifact uploaded to wandb")
+
+                print("✅ System prompts artifact uploaded to wandb")
         except Exception as e:
             print(f"⚠️  Failed to log system prompts to wandb: {e}")
 
@@ -834,15 +904,15 @@ def main():
     # Apply sharding/limiting
     try:
         spec_files, selection_desc = apply_sharding(
-            all_spec_files,
-            args.shard,
-            args.limit
+            all_spec_files, args.shard, args.limit
         )
     except ValueError as e:
         print(f"Error: {e}")
         sys.exit(1)
 
-    print(f"Found {len(all_spec_files)} {config.language_config.name} specification files")
+    print(
+        f"Found {len(all_spec_files)} {config.language_config.name} specification files"
+    )
     print(f"Processing: {selection_desc}")
     if config.language == "lean":
         print("(Only Lean files containing 'sorry' are selected)")
@@ -885,10 +955,8 @@ def main():
 
     # Print final statistics
     successful = [r for r in results if r.success]
-    failed = [r for r in results if not r.success and not r.has_bypass]
-    bypassed = [r for r in results if r.has_bypass]
     success_percentage = len(successful) / len(results) * 100 if results else 0
-    
+
     print(
         f"\n🎉 Processing completed: {len(successful)}/{len(results)} files successful ({success_percentage:.1f}%)"
     )
@@ -898,9 +966,10 @@ def main():
 
     # Print token usage summary
     token_stats = get_global_token_stats()
-    print(f"📊 Token Usage: {token_stats['input_tokens']:,} input + {token_stats['output_tokens']:,} output = {token_stats['input_tokens'] + token_stats['output_tokens']:,} total tokens ({token_stats['total_calls']} calls)")
+    print(
+        f"📊 Token Usage: {token_stats['input_tokens']:,} input + {token_stats['output_tokens']:,} output = {token_stats['input_tokens'] + token_stats['output_tokens']:,} total tokens ({token_stats['total_calls']} calls)"
+    )
 
-    
     # Log comprehensive experiment summary to wandb (if enabled)
     if wandb_run:
         try:

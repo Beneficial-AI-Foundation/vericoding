@@ -510,12 +510,13 @@ Examples:
         "files_with_proper_specs": files_with_proper_specs,
         "statistics": total_categories,
     }
-    
+
     # Output JSON if requested
     if args.output == "json":
         import json
+
         print(json.dumps(result, indent=2))
-    
+
     return result
 
 

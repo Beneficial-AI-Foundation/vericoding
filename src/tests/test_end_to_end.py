@@ -10,7 +10,6 @@ import tempfile
 import shutil
 from pathlib import Path
 import os
-from unittest.mock import patch, MagicMock
 
 
 class TestEndToEnd:
@@ -186,7 +185,14 @@ fn add(x: u32, y: u32) -> (result: u32)
 
         # Test with non-existent directory
         result = subprocess.run(
-            [sys.executable, str(script_path), "dafny", "/non/existent/directory", "--llm", "claude"],
+            [
+                sys.executable,
+                str(script_path),
+                "dafny",
+                "/non/existent/directory",
+                "--llm",
+                "claude",
+            ],
             capture_output=True,
             text=True,
             cwd=project_root,
@@ -273,7 +279,10 @@ fn add(x: u32, y: u32) -> (result: u32)
         # Should fail with unsupported LLM error
         assert result.returncode != 0
         output_text = result.stdout + result.stderr
-        assert "unsupported llm" in output_text.lower() or "invalid choice" in output_text.lower()
+        assert (
+            "unsupported llm" in output_text.lower()
+            or "invalid choice" in output_text.lower()
+        )
         print("✓ Invalid LLM provider validation works")
 
         # Test with valid LLM providers
@@ -339,7 +348,6 @@ fn add(x: u32, y: u32) -> (result: u32)
             else:
                 # May fail at tool check, but configuration should be parsed
                 assert "invalid" not in result.stderr.lower()
-
 
 
 class TestRegressionPrevention:

@@ -66,7 +66,7 @@ class TestAnthropicProvider:
         mock_text_content = Mock()
         mock_text_content.text = "Test response from Claude"
         mock_response.content = [mock_text_content]
-        
+
         # Mock usage
         mock_usage = Mock()
         mock_usage.input_tokens = 10
@@ -148,7 +148,7 @@ class TestAnthropicProvider:
         # Override the __str__ method by setting the return value directly
         type(mock_text_content).__str__ = Mock(return_value="String representation")
         mock_response.content = [mock_text_content]
-        
+
         # Mock usage
         mock_usage = Mock()
         mock_usage.input_tokens = 5
@@ -180,7 +180,6 @@ class TestOpenAIProvider:
         assert provider.api_key == "test-key"
         assert provider.model == "gpt-4o"
 
-
     @patch("openai.OpenAI")
     def test_get_required_env_var(self, mock_openai_class):
         """Test required environment variable name."""
@@ -198,7 +197,7 @@ class TestOpenAIProvider:
         mock_choice.message.content = "Test response from GPT"
         mock_response = Mock()
         mock_response.choices = [mock_choice]
-        
+
         # Mock usage
         mock_usage = Mock()
         mock_usage.prompt_tokens = 8
@@ -269,7 +268,6 @@ class TestDeepSeekProvider:
             api_key="test-key", base_url="https://api.deepseek.com"
         )
 
-
     @patch("openai.OpenAI")
     def test_get_required_env_var(self, mock_openai_class):
         """Test required environment variable name."""
@@ -287,7 +285,7 @@ class TestDeepSeekProvider:
         mock_choice.message.content = "Test response from DeepSeek"
         mock_response = Mock()
         mock_response.choices = [mock_choice]
-        
+
         # Mock usage
         mock_usage = Mock()
         mock_usage.prompt_tokens = 6
@@ -389,7 +387,7 @@ class TestFactoryFunction:
 
         provider, model = create_llm_provider("deepseek")
         # deepseek uses OpenRouterProvider, not DeepSeekProvider
-        assert hasattr(provider, 'api_key')
+        assert hasattr(provider, "api_key")
         assert model == "deepseek/deepseek-chat-v3.1"
 
     def test_unsupported_provider(self):

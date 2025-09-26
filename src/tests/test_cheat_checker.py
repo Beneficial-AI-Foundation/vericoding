@@ -33,7 +33,7 @@ theorem main : True := by
 """
         cheats = check_for_cheats(code, "lean")
         assert len(cheats) == 1
-        assert cheats[0][0] == r'\bsorry\b'
+        assert cheats[0][0] == r"\bsorry\b"
         assert "sorry" in cheats[0][1]
 
     def test_detects_sorry_inside_vc_theorems(self):
@@ -46,7 +46,7 @@ theorem test : True := by
 """
         cheats = check_for_cheats(code, "lean")
         assert len(cheats) == 1
-        assert cheats[0][0] == r'\bsorry\b'
+        assert cheats[0][0] == r"\bsorry\b"
 
     def test_mixed_sorry_locations(self):
         """Should detect sorry inside editable sections but ignore sorry outside."""
@@ -61,7 +61,7 @@ theorem main : True := by
 """
         cheats = check_for_cheats(code, "lean")
         assert len(cheats) == 1
-        assert cheats[0][0] == r'\bsorry\b'
+        assert cheats[0][0] == r"\bsorry\b"
 
     def test_multiple_editable_sections(self):
         """Should handle multiple editable sections correctly."""
@@ -82,7 +82,7 @@ theorem test2 : True := by
 """
         cheats = check_for_cheats(code, "lean")
         assert len(cheats) == 1  # Only one entry per pattern type
-        assert cheats[0][0] == r'\bsorry\b'
+        assert cheats[0][0] == r"\bsorry\b"
 
     def test_ignores_admit_outside_editable_sections(self):
         """Should ignore admit when it's outside editable sections."""
@@ -105,7 +105,7 @@ theorem main : True := by
 """
         cheats = check_for_cheats(code, "lean")
         assert len(cheats) == 1
-        assert cheats[0][0] == r'\badmit\b'
+        assert cheats[0][0] == r"\badmit\b"
         assert "admit" in cheats[0][1]
 
     def test_ignores_axiom_outside_editable_sections(self):
@@ -131,7 +131,7 @@ theorem main : True := by
 """
         cheats = check_for_cheats(code, "lean")
         assert len(cheats) == 1
-        assert cheats[0][0] == r'\baxiom\b'
+        assert cheats[0][0] == r"\baxiom\b"
         assert "axiom" in cheats[0][1]
 
     def test_ignores_unsafe_outside_editable_sections(self):
@@ -157,7 +157,7 @@ theorem test : True := by
 """
         cheats = check_for_cheats(code, "lean")
         assert len(cheats) == 1
-        assert cheats[0][0] == r'\bunsafe\b'
+        assert cheats[0][0] == r"\bunsafe\b"
         assert "unsafe" in cheats[0][1]
 
     def test_ignores_unchecked_cast_outside_editable_sections(self):
@@ -183,7 +183,7 @@ theorem test : True := by
 """
         cheats = check_for_cheats(code, "lean")
         assert len(cheats) == 1
-        assert cheats[0][0] == r'\bUnchecked\.cast\b'
+        assert cheats[0][0] == r"\bUnchecked\.cast\b"
         assert "type checking" in cheats[0][1]
 
     def test_ignores_extern_outside_editable_sections(self):
@@ -211,7 +211,7 @@ theorem test : True := by
 """
         cheats = check_for_cheats(code, "lean")
         assert len(cheats) == 1
-        assert cheats[0][0] == r'@\[extern'
+        assert cheats[0][0] == r"@\[extern"
         assert "extern" in cheats[0][1]
 
     def test_multiple_cheat_types_mixed_locations(self):
@@ -237,9 +237,9 @@ def test : Nat := Unchecked.cast 42  -- Should be detected
         cheats = check_for_cheats(code, "lean")
         assert len(cheats) == 3  # sorry, axiom, Unchecked.cast
         cheat_patterns = {cheat[0] for cheat in cheats}
-        assert r'\bsorry\b' in cheat_patterns
-        assert r'\baxiom\b' in cheat_patterns
-        assert r'\bUnchecked\.cast\b' in cheat_patterns
+        assert r"\bsorry\b" in cheat_patterns
+        assert r"\baxiom\b" in cheat_patterns
+        assert r"\bUnchecked\.cast\b" in cheat_patterns
 
     def test_no_cheats_detected(self):
         """Should detect no cheats in clean code."""
@@ -282,7 +282,7 @@ method Test() {
 """
         cheats = check_for_cheats(code, "dafny")
         assert len(cheats) == 1
-        assert cheats[0][0] == r'\{:axiom\}'
+        assert cheats[0][0] == r"\{:axiom\}"
         assert "axiom" in cheats[0][1]
 
     def test_detects_axiom_inside_vc_helpers(self):
@@ -301,7 +301,7 @@ lemma MainLemma()
 """
         cheats = check_for_cheats(code, "dafny")
         assert len(cheats) == 1
-        assert cheats[0][0] == r'\{:axiom\}'
+        assert cheats[0][0] == r"\{:axiom\}"
 
     def test_multiple_editable_sections_dafny(self):
         """Should handle multiple editable sections in Dafny."""
@@ -396,7 +396,7 @@ fn main_function() -> u32 {
 """
         cheats = check_for_cheats(code, "verus")
         assert len(cheats) == 1
-        assert cheats[0][0] == r'assume'
+        assert cheats[0][0] == r"assume"
         assert "assume" in cheats[0][1]
 
     def test_ignores_admit_outside_editable_sections(self):
@@ -428,7 +428,7 @@ fn main_function() -> bool {
 """
         cheats = check_for_cheats(code, "verus")
         assert len(cheats) == 1
-        assert cheats[0][0] == r'\badmit\b'
+        assert cheats[0][0] == r"\badmit\b"
         assert "admit" in cheats[0][1]
 
     def test_ignores_external_body_outside_editable_sections(self):
@@ -458,7 +458,7 @@ fn main_function() -> bool {
 """
         cheats = check_for_cheats(code, "verus")
         assert len(cheats) == 1
-        assert cheats[0][0] == r'#\[verifier::external'
+        assert cheats[0][0] == r"#\[verifier::external"
         assert "verifier external" in cheats[0][1]
 
     def test_ignores_external_wildcard_outside_editable_sections(self):
@@ -488,7 +488,7 @@ fn main_function() -> bool {
 """
         cheats = check_for_cheats(code, "verus")
         assert len(cheats) == 1
-        assert cheats[0][0] == r'#\[verifier::external'
+        assert cheats[0][0] == r"#\[verifier::external"
         assert "verifier external" in cheats[0][1]
 
     def test_ignores_exec_allows_no_decreases_outside_editable_sections(self):
@@ -518,7 +518,7 @@ fn main_function() -> u32 {
 """
         cheats = check_for_cheats(code, "verus")
         assert len(cheats) == 1
-        assert cheats[0][0] == r'#\[verifier::exec_allows_no_decreases_clause\]'
+        assert cheats[0][0] == r"#\[verifier::exec_allows_no_decreases_clause\]"
         assert "exec_allows_no_decreases_clause" in cheats[0][1]
 
     def test_multiple_cheat_types_mixed_locations_verus(self):
@@ -558,9 +558,9 @@ fn bad_function() -> bool {
         cheats = check_for_cheats(code, "verus")
         assert len(cheats) == 3  # assume, admit, external
         cheat_patterns = {cheat[0] for cheat in cheats}
-        assert r'assume' in cheat_patterns
-        assert r'\badmit\b' in cheat_patterns
-        assert r'#\[verifier::external' in cheat_patterns
+        assert r"assume" in cheat_patterns
+        assert r"\badmit\b" in cheat_patterns
+        assert r"#\[verifier::external" in cheat_patterns
 
     def test_multiple_editable_sections_verus(self):
         """Should handle multiple editable sections in Verus."""
@@ -588,8 +588,8 @@ fn bad2() {  // Ignored (not in editable section)
         cheats = check_for_cheats(code, "verus")
         assert len(cheats) == 2  # assume and admit (one entry each)
         cheat_patterns = {cheat[0] for cheat in cheats}
-        assert r'assume' in cheat_patterns
-        assert r'\badmit\b' in cheat_patterns
+        assert r"assume" in cheat_patterns
+        assert r"\badmit\b" in cheat_patterns
 
     def test_no_cheats_in_clean_verus(self):
         """Should detect no cheats in clean Verus code."""
@@ -660,7 +660,7 @@ theorem test : True := by exact helper
 
     def test_get_cheat_message_single_warning(self):
         """Should generate warning message for single cheat."""
-        cheats = [(r'\bsorry\b', "uses 'sorry' to bypass verification")]
+        cheats = [(r"\bsorry\b", "uses 'sorry' to bypass verification")]
         message = get_cheat_message(cheats, is_final=False)
         assert "WARNING" in message
         assert "sorry" in message
@@ -669,8 +669,8 @@ theorem test : True := by exact helper
     def test_get_cheat_message_multiple_warnings(self):
         """Should generate warning message for multiple cheats."""
         cheats = [
-            (r'\bsorry\b', "uses 'sorry' to bypass verification"),
-            (r'\badmit\b', "uses 'admit' to bypass verification"),
+            (r"\bsorry\b", "uses 'sorry' to bypass verification"),
+            (r"\badmit\b", "uses 'admit' to bypass verification"),
         ]
         message = get_cheat_message(cheats, is_final=False)
         assert "WARNING" in message
@@ -679,7 +679,7 @@ theorem test : True := by exact helper
 
     def test_get_cheat_message_single_final_error(self):
         """Should generate error message for single cheat in final iteration."""
-        cheats = [(r'\bsorry\b', "uses 'sorry' to bypass verification")]
+        cheats = [(r"\bsorry\b", "uses 'sorry' to bypass verification")]
         message = get_cheat_message(cheats, is_final=True)
         assert "FINAL VERIFICATION FAILED" in message
         assert "sorry" in message
@@ -688,8 +688,8 @@ theorem test : True := by exact helper
     def test_get_cheat_message_multiple_final_errors(self):
         """Should generate error message for multiple cheats in final iteration."""
         cheats = [
-            (r'\bsorry\b', "uses 'sorry' to bypass verification"),
-            (r'\badmit\b', "uses 'admit' to bypass verification"),
+            (r"\bsorry\b", "uses 'sorry' to bypass verification"),
+            (r"\badmit\b", "uses 'admit' to bypass verification"),
         ]
         message = get_cheat_message(cheats, is_final=True)
         assert "FINAL VERIFICATION FAILED" in message

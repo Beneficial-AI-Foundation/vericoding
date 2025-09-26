@@ -6,7 +6,7 @@ import pytest
 import time
 import sys
 from pathlib import Path
-from unittest.mock import patch, MagicMock
+from unittest.mock import patch
 import tempfile
 import shutil
 
@@ -45,18 +45,10 @@ function TestFunction{i}(n: nat): nat
         start_time = time.time()
 
         try:
-            from vericoding.core import (
-                ProcessingConfig,
-                PromptLoader,
-                create_llm_provider,
-            )
-            from vericoding.core.language_tools import (
-                get_tool_path,
-                check_tool_availability,
-                find_spec_files,
-            )
-            from vericoding.processing import process_files_parallel
-            from vericoding.utils import generate_summary, generate_csv_results
+            # Import modules to test import performance  
+            import vericoding.core
+            # Touch the module to satisfy linter
+            assert vericoding.core is not None
         except ImportError as e:
             pytest.skip(f"Cannot import modules: {e}")
 
@@ -189,7 +181,6 @@ optimize_code: |
 
         try:
             from vericoding.core import ProcessingConfig, PromptLoader
-            from vericoding.core.language_tools import find_spec_files
         except ImportError:
             pytest.skip("Cannot import required modules")
 
@@ -210,7 +201,7 @@ fix_verification: "Fix errors"
             for _ in range(100):
                 try:
                     # Configuration operations
-                    langs = ProcessingConfig.get_available_languages()
+                    ProcessingConfig.get_available_languages()
 
                     # Prompt loading operations
                     loader = PromptLoader("dafny", "prompts.yaml")
@@ -237,7 +228,6 @@ fix_verification: "Fix errors"
         except ImportError:
             pytest.skip("Cannot import ProcessingConfig")
 
-        import threading
         import concurrent.futures
 
         def config_operation():
@@ -253,7 +243,7 @@ fix_verification: "Fix errors"
         # Test concurrent configuration access
         with concurrent.futures.ThreadPoolExecutor(max_workers=4) as executor:
             futures = [executor.submit(config_operation) for _ in range(20)]
-            results = [
+            [
                 future.result() for future in concurrent.futures.as_completed(futures)
             ]
 

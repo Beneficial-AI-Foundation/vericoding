@@ -1,7 +1,6 @@
 import datasets
 from pathlib import Path
 from typing import Dict, Any, List, Tuple
-import re
 from ruamel.yaml import YAML
 
 
@@ -82,7 +81,7 @@ def parse_lean_spec(spec_text: str) -> Tuple[List[str], str, List[str]]:
 def convert_sample_to_yaml(sample: Dict[str, Any]) -> str:
     """Convert a single dataset sample to YAML format with vc-* schema."""
     from ruamel.yaml.scalarstring import LiteralScalarString
-    
+
     # Map FVAPPS columns to vc-* schema fields
 
     # vc-description maps from apps_question
@@ -135,8 +134,9 @@ def convert_sample_to_yaml(sample: Dict[str, Any]) -> str:
     yaml.preserve_quotes = True
     yaml.default_flow_style = False
     yaml.allow_unicode = True
-    
+
     from io import StringIO
+
     stream = StringIO()
     yaml.dump(yaml_content, stream)
     return stream.getvalue()
