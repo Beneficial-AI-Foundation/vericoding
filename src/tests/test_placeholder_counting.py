@@ -108,7 +108,7 @@ theorem main : True := by
 
     def test_nested_editable_sections(self):
         """Should handle nested editable sections correctly."""
-        # Note: We assume there are never nested editable sections in practice  
+        # Note: We assume there are never nested editable sections in practice
         code = """
 <vc-definitions>
 axiom outer : True
@@ -195,7 +195,9 @@ lemma anotherSorry : True := sorry  -- This should be counted
 """
         # TODO This is a bug, but leaving for now
         count = count_placeholders(code, "lean")
-        assert count == 3  # Three occurrences in editable sections: sorry in comment + sorry standalone in vc-theorems, and sorry in vc-definitions
+        assert (
+            count == 3
+        )  # Three occurrences in editable sections: sorry in comment + sorry standalone in vc-theorems, and sorry in vc-definitions
 
     def test_multiline_editable_content(self):
         """Should handle multiline editable section content correctly."""
@@ -453,7 +455,9 @@ class TestPlaceholderCountingEdgeCases:
         """Should handle case sensitivity correctly."""
         # Test that function names are case sensitive
         for language in ["lean", "dafny", "verus"]:
-            with pytest.raises(ValueError, match=f"Unsupported language: {language.upper()}"):
+            with pytest.raises(
+                ValueError, match=f"Unsupported language: {language.upper()}"
+            ):
                 count_placeholders("code", language.upper())
 
     def test_mixed_placeholder_types_complex(self):
@@ -521,18 +525,18 @@ function Helper(): int { 2 }
         # Generate large code with many placeholders
         large_code_parts = []
         expected_count = 0
-        
+
         # Add many placeholders for Lean inside editable sections
         large_code_parts.append("<vc-theorems>")
         for i in range(50):
             large_code_parts.append(f"theorem test{i} : True := sorry")
             expected_count += 1
         large_code_parts.append("</vc-theorems>")
-        
+
         for i in range(50):
             large_code_parts.append(f"<vc-helpers>\n-- Helper {i}\n</vc-helpers>")
             expected_count += 1
-        
+
         large_code = "\n".join(large_code_parts)
         count = count_placeholders(large_code, "lean")
         assert count == expected_count
@@ -554,7 +558,7 @@ theorem test : True := sorry
         count1 = count_placeholders(code, "lean")
         count2 = count_placeholders(code, "lean")
         count3 = count_placeholders(code, "lean")
-        
+
         assert count1 == count2 == count3 == 2
 
     def test_ordering_independence(self):
@@ -567,7 +571,7 @@ theorem test : True := sorry
 -- Helper
 </vc-helpers>
 """
-        
+
         code2 = """
 <vc-helpers>
 -- Helper
@@ -576,7 +580,7 @@ theorem test : True := sorry
 theorem test : True := sorry
 </vc-theorems>
 """
-        
+
         count1 = count_placeholders(code1, "lean")
         count2 = count_placeholders(code2, "lean")
         assert count1 == count2 == 2
@@ -591,7 +595,7 @@ theorem test : True :=
     sorry
 </vc-theorems>
 """
-        
+
         # All should count the single sorry
         for code in [code1, code2, code3]:
             count = count_placeholders(code, "lean")

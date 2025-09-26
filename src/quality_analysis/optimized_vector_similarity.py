@@ -369,15 +369,17 @@ class OptimizedVectorSimilarity:
         # Format groups for QA metadata (preserve group structure)
         examples = []
         all_duplicates = []
-        
+
         for group in similar_groups:
             if len(group) > 1:
                 # Create example group with similarity info
                 group_files = [str(f) for f in group]
-                examples.append({
-                    "files": group_files,
-                    "similarity": 0.9  # Placeholder - could compute actual similarity
-                })
+                examples.append(
+                    {
+                        "files": group_files,
+                        "similarity": 0.9,  # Placeholder - could compute actual similarity
+                    }
+                )
                 # Also track all duplicate files
                 all_duplicates.extend(group_files)
 
@@ -477,7 +479,7 @@ def get_near_duplicates_for_benchmark(
 
     Returns:
         Dict with 'examples' and 'total_count' for QA metadata
-        
+
     Raises:
         ImportError: If required vector similarity libraries are not installed
     """

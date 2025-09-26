@@ -17,6 +17,7 @@ from vericoding.core.config import ProcessingConfig
 
 class MockLanguageConfig:
     """Mock language config for testing."""
+
     def __init__(self, file_extension: str = ".rs"):
         self.file_extension = file_extension
 
@@ -58,16 +59,18 @@ class TestLeanReplacements:
 def factorial (n : Nat) : Nat := sorry
 </vc-definitions>
 """
-        llm_response = '''["n.factorial"]'''
-        
+        llm_response = """["n.factorial"]"""
+
         expected_result = """
 <vc-definitions>
 def factorial (n : Nat) : Nat := n.factorial
 </vc-definitions>
 """
-        
-        result, error = apply_json_replacements(lean_config, original_code, llm_response)
-        
+
+        result, error = apply_json_replacements(
+            lean_config, original_code, llm_response
+        )
+
         assert error is None
         assert result == expected_result
 
@@ -84,8 +87,8 @@ def fibonacci (n : Nat) : Nat := sorry
 theorem factorial_pos (n : Nat) : factorial n > 0 := sorry
 </vc-theorems>
 """
-        llm_response = '''["n.factorial", "if n < 2 then 1 else fibonacci (n-1) + fibonacci (n-2)", "by simp [factorial]"]'''
-        
+        llm_response = """["n.factorial", "if n < 2 then 1 else fibonacci (n-1) + fibonacci (n-2)", "by simp [factorial]"]"""
+
         expected_result = """
 <vc-definitions>
 def factorial (n : Nat) : Nat := n.factorial
@@ -97,9 +100,11 @@ def fibonacci (n : Nat) : Nat := if n < 2 then 1 else fibonacci (n-1) + fibonacc
 theorem factorial_pos (n : Nat) : factorial n > 0 := by simp [factorial]
 </vc-theorems>
 """
-        
-        result, error = apply_json_replacements(lean_config, original_code, llm_response)
-        
+
+        result, error = apply_json_replacements(
+            lean_config, original_code, llm_response
+        )
+
         assert error is None
         assert result == expected_result
 
@@ -112,8 +117,8 @@ theorem factorial_pos (n : Nat) : factorial n > 0 := by simp [factorial]
 
 def main_function : Nat := 42
 """
-        llm_response = '''["-- LLM HELPER\\nlemma helper_lemma : True := by trivial"]'''
-        
+        llm_response = """["-- LLM HELPER\\nlemma helper_lemma : True := by trivial"]"""
+
         expected_result = """
 <vc-helpers>
 -- LLM HELPER
@@ -122,9 +127,11 @@ lemma helper_lemma : True := by trivial
 
 def main_function : Nat := 42
 """
-        
-        result, error = apply_json_replacements(lean_config, original_code, llm_response)
-        
+
+        result, error = apply_json_replacements(
+            lean_config, original_code, llm_response
+        )
+
         assert error is None
         assert result == expected_result
 
@@ -143,8 +150,8 @@ def factorial (n : Nat) : Nat := sorry
 theorem factorial_pos (n : Nat) : factorial n > 0 := sorry
 </vc-theorems>
 """
-        llm_response = '''["-- LLM HELPER\\nlemma nat_pos : ∀ n, n.factorial > 0 := by trivial", "n.factorial", "by apply nat_pos"]'''
-        
+        llm_response = """["-- LLM HELPER\\nlemma nat_pos : ∀ n, n.factorial > 0 := by trivial", "n.factorial", "by apply nat_pos"]"""
+
         expected_result = """
 <vc-helpers>
 -- LLM HELPER
@@ -159,9 +166,11 @@ def factorial (n : Nat) : Nat := n.factorial
 theorem factorial_pos (n : Nat) : factorial n > 0 := by apply nat_pos
 </vc-theorems>
 """
-        
-        result, error = apply_json_replacements(lean_config, original_code, llm_response)
-        
+
+        result, error = apply_json_replacements(
+            lean_config, original_code, llm_response
+        )
+
         assert error is None
         assert result == expected_result
 
@@ -173,10 +182,12 @@ def factorial (n : Nat) : Nat := sorry
 def fibonacci (n : Nat) : Nat := sorry
 </vc-definitions>
 """
-        llm_response = '''["n.factorial"]'''  # Only 1 replacement for 2 sorries
-        
-        result, error = apply_json_replacements(lean_config, original_code, llm_response)
-        
+        llm_response = """["n.factorial"]"""  # Only 1 replacement for 2 sorries
+
+        result, error = apply_json_replacements(
+            lean_config, original_code, llm_response
+        )
+
         assert error is not None
         assert "JSON replacement count mismatch" in error
         assert "Expected 2 replacements" in error
@@ -187,10 +198,12 @@ def fibonacci (n : Nat) : Nat := sorry
         original_code = """
 def factorial (n : Nat) : Nat := n.factorial
 """
-        llm_response = '''[]'''
-        
-        result, error = apply_json_replacements(lean_config, original_code, llm_response)
-        
+        llm_response = """[]"""
+
+        result, error = apply_json_replacements(
+            lean_config, original_code, llm_response
+        )
+
         assert error is None
         assert result == original_code
 
@@ -208,8 +221,8 @@ method FindMax(a: array<int>) returns (max: int)
     </vc-code>
 }
 """
-        llm_response = '''["max := a[0];\\n    for i := 1 to a.Length {\\n        if a[i] > max { max := a[i]; }\\n    }"]'''
-        
+        llm_response = """["max := a[0];\\n    for i := 1 to a.Length {\\n        if a[i] > max { max := a[i]; }\\n    }"]"""
+
         expected_result = """
 method FindMax(a: array<int>) returns (max: int)
 {
@@ -221,9 +234,11 @@ max := a[0];
     </vc-code>
 }
 """
-        
-        result, error = apply_json_replacements(dafny_config, original_code, llm_response)
-        
+
+        result, error = apply_json_replacements(
+            dafny_config, original_code, llm_response
+        )
+
         assert error is None
         assert result == expected_result
 
@@ -244,8 +259,10 @@ method Method2()
     </vc-code>
 }
 """
-        llm_response = '''["var x := 0;\\n    x := x + 1;", "var y := 42;\\n    return y;"]'''
-        
+        llm_response = (
+            """["var x := 0;\\n    x := x + 1;", "var y := 42;\\n    return y;"]"""
+        )
+
         expected_result = """
 method Method1()
 {
@@ -263,9 +280,11 @@ var y := 42;
     </vc-code>
 }
 """
-        
-        result, error = apply_json_replacements(dafny_config, original_code, llm_response)
-        
+
+        result, error = apply_json_replacements(
+            dafny_config, original_code, llm_response
+        )
+
         assert error is None
         assert result == expected_result
 
@@ -281,10 +300,12 @@ method MainMethod()
     var x := 0;
 }
 """
-        llm_response = '''["function Helper(x: int): int { x + 1 }\\n\\nlemma HelperProperty(x: int)\\n    ensures Helper(x) == x + 1\\n{\\n}"]'''
-        
-        result, error = apply_json_replacements(dafny_config, original_code, llm_response)
-        
+        llm_response = """["function Helper(x: int): int { x + 1 }\\n\\nlemma HelperProperty(x: int)\\n    ensures Helper(x) == x + 1\\n{\\n}"]"""
+
+        result, error = apply_json_replacements(
+            dafny_config, original_code, llm_response
+        )
+
         assert error is None
         assert "function Helper" in result
         assert "lemma HelperProperty" in result
@@ -308,8 +329,8 @@ method FindMax(a: array<int>) returns (max: int)
 // More helpers
 </vc-helpers>
 """
-        llm_response = '''["function IsPositive(x: int): bool { x > 0 }", "max := 0;\\n    for i := 0 to a.Length {\\n        if a[i] > max { max := a[i]; }\\n    }", "lemma MaxIsMax()\\n    ensures true\\n{\\n}"]'''
-        
+        llm_response = """["function IsPositive(x: int): bool { x > 0 }", "max := 0;\\n    for i := 0 to a.Length {\\n        if a[i] > max { max := a[i]; }\\n    }", "lemma MaxIsMax()\\n    ensures true\\n{\\n}"]"""
+
         expected_result = """
 <vc-helpers>
 function IsPositive(x: int): bool { x > 0 }
@@ -332,9 +353,11 @@ lemma MaxIsMax()
 }
 </vc-helpers>
 """
-        
-        result, error = apply_json_replacements(dafny_config, original_code, llm_response)
-        
+
+        result, error = apply_json_replacements(
+            dafny_config, original_code, llm_response
+        )
+
         assert error is None
         assert result == expected_result
 
@@ -349,10 +372,12 @@ lemma MaxIsMax()
 // Second  
 </vc-code>
 """
-        llm_response = '''["var x := 0;"]'''  # Only 1 replacement for 2 sections
-        
-        result, error = apply_json_replacements(dafny_config, original_code, llm_response)
-        
+        llm_response = """["var x := 0;"]"""  # Only 1 replacement for 2 sections
+
+        result, error = apply_json_replacements(
+            dafny_config, original_code, llm_response
+        )
+
         assert error is not None
         assert "JSON replacement count mismatch" in error
         assert "Expected 2 replacements" in error
@@ -371,8 +396,8 @@ fn binary_search(arr: &Vec<i32>, target: i32) -> Option<usize> {
     </vc-code>
 }
 """
-        llm_response = '''["let mut low = 0;\\n    let mut high = arr.len();\\n    while low < high {\\n        let mid = low + (high - low) / 2;\\n        if arr[mid] == target {\\n            return Some(mid);\\n        }\\n        if arr[mid] < target {\\n            low = mid + 1;\\n        } else {\\n            high = mid;\\n        }\\n    }\\n    None"]'''
-        
+        llm_response = """["let mut low = 0;\\n    let mut high = arr.len();\\n    while low < high {\\n        let mid = low + (high - low) / 2;\\n        if arr[mid] == target {\\n            return Some(mid);\\n        }\\n        if arr[mid] < target {\\n            low = mid + 1;\\n        } else {\\n            high = mid;\\n        }\\n    }\\n    None"]"""
+
         expected_result = """
 fn binary_search(arr: &Vec<i32>, target: i32) -> Option<usize> {
     <vc-code>
@@ -393,9 +418,11 @@ let mut low = 0;
     </vc-code>
 }
 """
-        
-        result, error = apply_json_replacements(verus_config, original_code, llm_response)
-        
+
+        result, error = apply_json_replacements(
+            verus_config, original_code, llm_response
+        )
+
         assert error is None
         assert result == expected_result
 
@@ -414,10 +441,12 @@ fn function2() -> i32 {
     </vc-code>
 }
 """
-        llm_response = '''["let x = 42;\\n    x", "let y = 84;\\n    y * 2"]'''
-        
-        result, error = apply_json_replacements(verus_config, original_code, llm_response)
-        
+        llm_response = """["let x = 42;\\n    x", "let y = 84;\\n    y * 2"]"""
+
+        result, error = apply_json_replacements(
+            verus_config, original_code, llm_response
+        )
+
         assert error is None
         assert "let x = 42" in result
         assert "let y = 84" in result
@@ -435,10 +464,12 @@ fn main_function() -> i32 {
     42
 }
 """
-        llm_response = '''["proof fn helper_proof() {\\n    // proof body\\n}\\n\\nfn utility_function(x: i32) -> i32 {\\n    x + 1\\n}"]'''
-        
-        result, error = apply_json_replacements(verus_config, original_code, llm_response)
-        
+        llm_response = """["proof fn helper_proof() {\\n    // proof body\\n}\\n\\nfn utility_function(x: i32) -> i32 {\\n    x + 1\\n}"]"""
+
+        result, error = apply_json_replacements(
+            verus_config, original_code, llm_response
+        )
+
         assert error is None
         assert "proof fn helper_proof" in result
         assert "fn utility_function" in result
@@ -464,10 +495,12 @@ fn main_function(x: i32) -> i32
 // More helpers
 </vc-helpers>
 """
-        llm_response = '''["proof fn lemma1() {\\n    // proof\\n}", "let y = helper_function(x);\\n    y + 1", "fn helper_function(n: i32) -> i32 {\\n    n * 2\\n}"]'''
-        
-        result, error = apply_json_replacements(verus_config, original_code, llm_response)
-        
+        llm_response = """["proof fn lemma1() {\\n    // proof\\n}", "let y = helper_function(x);\\n    y + 1", "fn helper_function(n: i32) -> i32 {\\n    n * 2\\n}"]"""
+
+        result, error = apply_json_replacements(
+            verus_config, original_code, llm_response
+        )
+
         assert error is None
         assert "proof fn lemma1" in result  # First vc-helpers
         assert "let y = helper_function" in result  # vc-code
@@ -484,9 +517,11 @@ class TestErrorHandling:
         """Test handling of invalid JSON syntax."""
         original_code = "def test : Nat := sorry"
         llm_response = '''["invalid json syntax"'''  # Missing closing bracket
-        
-        result, error = apply_json_replacements(lean_config, original_code, llm_response)
-        
+
+        result, error = apply_json_replacements(
+            lean_config, original_code, llm_response
+        )
+
         assert error is not None
         assert "JSON parsing failed" in error
         # The specific error message depends on whether JSON is found or not
@@ -495,10 +530,12 @@ class TestErrorHandling:
     def test_non_array_json(self, dafny_config):
         """Test handling of non-array JSON."""
         original_code = "<vc-code>\n// Test\n</vc-code>"
-        llm_response = '''{"not": "an array"}'''
-        
-        result, error = apply_json_replacements(dafny_config, original_code, llm_response)
-        
+        llm_response = """{"not": "an array"}"""
+
+        result, error = apply_json_replacements(
+            dafny_config, original_code, llm_response
+        )
+
         assert error is not None
         assert "JSON parsing failed" in error
         assert result == original_code
@@ -506,10 +543,12 @@ class TestErrorHandling:
     def test_non_string_replacement(self, verus_config):
         """Test handling of non-string replacements."""
         original_code = "<vc-code>\n// Test\n</vc-code>"
-        llm_response = '''[42]'''  # Number instead of string
-        
-        result, error = apply_json_replacements(verus_config, original_code, llm_response)
-        
+        llm_response = """[42]"""  # Number instead of string
+
+        result, error = apply_json_replacements(
+            verus_config, original_code, llm_response
+        )
+
         assert error is not None
         assert "must be a string" in error
         assert "got <class 'int'>" in error
@@ -519,9 +558,11 @@ class TestErrorHandling:
         """Test handling when no JSON is found in response."""
         original_code = "def test : Nat := sorry"
         llm_response = "This is just regular text with no JSON array"
-        
-        result, error = apply_json_replacements(lean_config, original_code, llm_response)
-        
+
+        result, error = apply_json_replacements(
+            lean_config, original_code, llm_response
+        )
+
         assert error is not None
         assert "No JSON array found" in error
         assert result == original_code
@@ -529,7 +570,7 @@ class TestErrorHandling:
     def test_json_in_code_block(self, lean_config):
         """Test extracting JSON from markdown code block."""
         original_code = "<vc-definitions>\\ndef test : Nat := sorry\\n</vc-definitions>"
-        llm_response = '''
+        llm_response = """
 Here's the solution:
 
 ```json
@@ -537,10 +578,12 @@ Here's the solution:
 ```
 
 That should work!
-'''
-        
-        result, error = apply_json_replacements(lean_config, original_code, llm_response)
-        
+"""
+
+        result, error = apply_json_replacements(
+            lean_config, original_code, llm_response
+        )
+
         assert error is None
         assert "42" in result
         assert "sorry" not in result
@@ -551,12 +594,16 @@ That should work!
 <vc-helpers>
 // Missing closing tag
 """
-        llm_response = '''["helper code"]'''
-        
-        result, error = apply_json_replacements(dafny_config, original_code, llm_response)
-        
+        llm_response = """["helper code"]"""
+
+        result, error = apply_json_replacements(
+            dafny_config, original_code, llm_response
+        )
+
         assert error is not None
-        assert "replacement count mismatch" in error  # No valid sections found, so 0 expected but 1 provided
+        assert (
+            "replacement count mismatch" in error
+        )  # No valid sections found, so 0 expected but 1 provided
 
 
 class TestEdgeCases:
@@ -565,20 +612,24 @@ class TestEdgeCases:
     def test_empty_original_code(self, lean_config):
         """Test with empty original code."""
         original_code = ""
-        llm_response = '''[]'''
-        
-        result, error = apply_json_replacements(lean_config, original_code, llm_response)
-        
+        llm_response = """[]"""
+
+        result, error = apply_json_replacements(
+            lean_config, original_code, llm_response
+        )
+
         assert error is None
         assert result == ""
 
     def test_empty_replacements_array(self, verus_config):
         """Test with empty replacements array when no placeholders exist."""
         original_code = "fn main() { println!('Hello'); }"
-        llm_response = '''[]'''
-        
-        result, error = apply_json_replacements(verus_config, original_code, llm_response)
-        
+        llm_response = """[]"""
+
+        result, error = apply_json_replacements(
+            verus_config, original_code, llm_response
+        )
+
         assert error is None
         assert result == original_code
 
@@ -591,10 +642,12 @@ class TestEdgeCases:
     </vc-code>
 </vc-code>
 """
-        llm_response = '''["outer", "inner"]'''
-        
-        result, error = apply_json_replacements(dafny_config, original_code, llm_response)
-        
+        llm_response = """["outer", "inner"]"""
+
+        result, error = apply_json_replacements(
+            dafny_config, original_code, llm_response
+        )
+
         # Should treat as two separate sections based on opening tags
         assert error is None or "replacement count mismatch" in error
 
@@ -609,8 +662,8 @@ class TestEdgeCases:
 def test : Nat := sorry
 </vc-definitions>
 """
-        llm_response = '''["-- LLM HELPER\\nlemma helper1 : True := by trivial\\nlemma helper2 : False ∨ True := by simp", "by\\n  have h : True := helper1\\n  have h2 : False ∨ True := helper2\\n  exact 42"]'''
-        
+        llm_response = """["-- LLM HELPER\\nlemma helper1 : True := by trivial\\nlemma helper2 : False ∨ True := by simp", "by\\n  have h : True := helper1\\n  have h2 : False ∨ True := helper2\\n  exact 42"]"""
+
         expected_result = """
 <vc-helpers>
 -- LLM HELPER
@@ -625,9 +678,11 @@ def test : Nat := by
   exact 42
 </vc-definitions>
 """
-        
-        result, error = apply_json_replacements(lean_config, original_code, llm_response)
-        
+
+        result, error = apply_json_replacements(
+            lean_config, original_code, llm_response
+        )
+
         assert error is None
         assert result == expected_result
 
@@ -648,8 +703,8 @@ def second : Nat := sorry  -- In editable section, should be replaced
 """
         # Only 2 responses - one for the sorry in vc-definitions, one for vc-helpers
         # The sorries outside editable sections should be ignored
-        llm_response = '''["84", "-- LLM HELPER\\nlemma helper : True := by trivial"]'''
-        
+        llm_response = """["84", "-- LLM HELPER\\nlemma helper : True := by trivial"]"""
+
         expected_result = """
 def first : Nat := sorry  -- Not in editable section, should be ignored
 
@@ -664,9 +719,11 @@ def second : Nat := 84  -- In editable section, should be replaced
 lemma helper : True := by trivial
 </vc-helpers>
 """
-        
-        result, error = apply_json_replacements(lean_config, original_code, llm_response)
-        
+
+        result, error = apply_json_replacements(
+            lean_config, original_code, llm_response
+        )
+
         assert error is None
         assert result == expected_result
 
@@ -688,8 +745,8 @@ theorem fourth : True := sorry  -- Should be replaced
 def fifth : Nat := sorry  -- Ignored (not in editable section)
 """
         # Only 2 responses for the 2 sorries inside editable sections
-        llm_response = '''["42", "by trivial"]'''
-        
+        llm_response = """["42", "by trivial"]"""
+
         expected_result = """
 def first : Nat := sorry  -- Ignored (not in editable section)
 
@@ -705,34 +762,40 @@ theorem fourth : True := by trivial  -- Should be replaced
 
 def fifth : Nat := sorry  -- Ignored (not in editable section)
 """
-        
-        result, error = apply_json_replacements(lean_config, original_code, llm_response)
-        
+
+        result, error = apply_json_replacements(
+            lean_config, original_code, llm_response
+        )
+
         assert error is None
         assert result == expected_result
 
     def test_unicode_content(self, lean_config):
         """Test handling of unicode content in replacements."""
         original_code = "<vc-definitions>\\ndef test : Nat := sorry\\n</vc-definitions>"
-        llm_response = '''["∀ x : ℕ, x + 0 = x"]'''
-        
+        llm_response = """["∀ x : ℕ, x + 0 = x"]"""
+
         expected_result = "<vc-definitions>\\ndef test : Nat := ∀ x : ℕ, x + 0 = x\\n</vc-definitions>"
-        
-        result, error = apply_json_replacements(lean_config, original_code, llm_response)
-        
+
+        result, error = apply_json_replacements(
+            lean_config, original_code, llm_response
+        )
+
         assert error is None
         assert result == expected_result
 
     def test_special_characters_in_replacements(self, dafny_config):
         """Test handling of special characters in replacements."""
         original_code = "<vc-code>\n// Test\n</vc-code>"
-        llm_response = '''["var s := \\"Hello\\\\nWorld\\";\\n    print(s);"]'''
-        
-        result, error = apply_json_replacements(dafny_config, original_code, llm_response)
-        
+        llm_response = """["var s := \\"Hello\\\\nWorld\\";\\n    print(s);"]"""
+
+        result, error = apply_json_replacements(
+            dafny_config, original_code, llm_response
+        )
+
         assert error is None
         assert 'var s := "Hello' in result
-        assert 'print(s)' in result
+        assert "print(s)" in result
 
 
 class TestOrderPreservation:
@@ -757,8 +820,8 @@ def first : Nat := sorry
 theorem second : True := sorry
 </vc-theorems>
 """
-        llm_response = '''["-- Helper 1", "1", "-- Helper 2", "by trivial"]'''
-        
+        llm_response = """["-- Helper 1", "1", "-- Helper 2", "by trivial"]"""
+
         expected_result = """
 <vc-helpers>
 -- Helper 1
@@ -776,9 +839,11 @@ def first : Nat := 1
 theorem second : True := by trivial
 </vc-theorems>
 """
-        
-        result, error = apply_json_replacements(lean_config, original_code, llm_response)
-        
+
+        result, error = apply_json_replacements(
+            lean_config, original_code, llm_response
+        )
+
         assert error is None
         assert result == expected_result
 
@@ -804,8 +869,8 @@ method Method2() {
     </vc-code>
 }
 """
-        llm_response = '''["function HelperA(): int { 1 }", "var x := 1;", "function HelperB(): int { 2 }", "var y := 2;"]'''
-        
+        llm_response = """["function HelperA(): int { 1 }", "var x := 1;", "function HelperB(): int { 2 }", "var y := 2;"]"""
+
         expected_result = """
 <vc-helpers>
 function HelperA(): int { 1 }
@@ -827,9 +892,11 @@ var y := 2;
     </vc-code>
 }
 """
-        
-        result, error = apply_json_replacements(dafny_config, original_code, llm_response)
-        
+
+        result, error = apply_json_replacements(
+            dafny_config, original_code, llm_response
+        )
+
         assert error is None
         assert result == expected_result
 

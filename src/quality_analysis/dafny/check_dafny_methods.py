@@ -142,44 +142,44 @@ def is_simple_default_return(body: str) -> bool:
     """
     # Normalize whitespace and remove comments
     normalized = re.sub(r"//.*$", "", body, flags=re.MULTILINE)  # Remove line comments
-    normalized = re.sub(r"/\*.*?\*/", "", normalized, flags=re.DOTALL)  # Remove block comments
+    normalized = re.sub(
+        r"/\*.*?\*/", "", normalized, flags=re.DOTALL
+    )  # Remove block comments
     normalized = re.sub(r"\s+", " ", normalized).strip()  # Normalize whitespace
-    
+
     # Remove common TODO/placeholder comments
     normalized = re.sub(r"(?i)todo[:\s]*[^;]*", "", normalized)
     normalized = re.sub(r"(?i)impl-start.*?impl-end", "", normalized, flags=re.DOTALL)
     normalized = re.sub(r"\s+", " ", normalized).strip()
-    
+
     # Patterns for simple default return values
     simple_return_patterns = [
         # Simple variable assignments to default values
-        r"^result\s*:=\s*0\s*;?$",                    # result := 0;
-        r"^result\s*:=\s*false\s*;?$",               # result := false;
-        r"^result\s*:=\s*true\s*;?$",                # result := true;
-        r'^result\s*:=\s*""\s*;?$',                  # result := "";
-        r"^result\s*:=\s*new\s+\w+\[\s*0\s*\]\s*;?$", # result := new int[0];
-        r"^result\s*:=\s*\[\]\s*;?$",                # result := [];
-        r"^result\s*:=\s*\{\}\s*;?$",                # result := {};
-        r"^result\s*:=\s*null\s*;?$",                # result := null;
-        
+        r"^result\s*:=\s*0\s*;?$",  # result := 0;
+        r"^result\s*:=\s*false\s*;?$",  # result := false;
+        r"^result\s*:=\s*true\s*;?$",  # result := true;
+        r'^result\s*:=\s*""\s*;?$',  # result := "";
+        r"^result\s*:=\s*new\s+\w+\[\s*0\s*\]\s*;?$",  # result := new int[0];
+        r"^result\s*:=\s*\[\]\s*;?$",  # result := [];
+        r"^result\s*:=\s*\{\}\s*;?$",  # result := {};
+        r"^result\s*:=\s*null\s*;?$",  # result := null;
         # Return statements with default values
-        r"^return\s+0\s*;?$",                        # return 0;
-        r"^return\s+false\s*;?$",                    # return false;
-        r"^return\s+true\s*;?$",                     # return true;
-        r'^return\s+""\s*;?$',                       # return "";
-        r"^return\s+new\s+\w+\[\s*0\s*\]\s*;?$",     # return new int[0];
-        r"^return\s+\[\]\s*;?$",                     # return [];
-        r"^return\s+\{\}\s*;?$",                     # return {};
-        r"^return\s+null\s*;?$",                     # return null;
-        
+        r"^return\s+0\s*;?$",  # return 0;
+        r"^return\s+false\s*;?$",  # return false;
+        r"^return\s+true\s*;?$",  # return true;
+        r'^return\s+""\s*;?$',  # return "";
+        r"^return\s+new\s+\w+\[\s*0\s*\]\s*;?$",  # return new int[0];
+        r"^return\s+\[\]\s*;?$",  # return [];
+        r"^return\s+\{\}\s*;?$",  # return {};
+        r"^return\s+null\s*;?$",  # return null;
         # Multiple simple assignments (for methods with multiple return values)
         r"^(result\d*\s*:=\s*(?:0|false|true|\"\"|null|\[\]|\{\}|new\s+\w+\[\s*0\s*\])\s*;\s*)+$",
     ]
-    
+
     for pattern in simple_return_patterns:
         if re.match(pattern, normalized, re.IGNORECASE):
             return True
-    
+
     return False
 
 
@@ -400,7 +400,9 @@ Examples:
         print()
         print("Method Analysis:")
         print(f"  ✅ Using assume false (expected): {total_categories['assume_false']}")
-        print(f"  ✅ Simple default returns (acceptable): {total_categories['simple_default']}")
+        print(
+            f"  ✅ Simple default returns (acceptable): {total_categories['simple_default']}"
+        )
         print(
             f"  📝 Has actual implementation: {total_categories['has_implementation']}"
         )
@@ -467,12 +469,13 @@ Examples:
         "files_with_assume_false": files_with_assume_false,
         "statistics": total_categories,
     }
-    
+
     # Output JSON if requested
     if args.output == "json":
         import json
+
         print(json.dumps(result, indent=2))
-    
+
     return result
 
 

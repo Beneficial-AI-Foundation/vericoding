@@ -19,13 +19,13 @@ Examples
 Auth
   Requires WANDB_API_KEY set in the environment (or logged-in wandb CLI).
 """
+
 from __future__ import annotations
 
 import argparse
 import os
 import re
 import shutil
-import sys
 import tempfile
 from pathlib import Path
 from typing import Iterable, Tuple, Optional
@@ -37,14 +37,19 @@ from typing import Any as _Any  # runtime-only
 try:
     from tqdm import tqdm  # type: ignore
 except Exception:  # pragma: no cover
+
     def tqdm(x, **kwargs):  # type: ignore
         return x
 
 
-RUN_URL_RE = re.compile(r"https?://wandb\.ai/(?P<entity>[^/]+)/(?P<project>[^/]+)/runs/(?P<run>[^/?#]+)")
+RUN_URL_RE = re.compile(
+    r"https?://wandb\.ai/(?P<entity>[^/]+)/(?P<project>[^/]+)/runs/(?P<run>[^/?#]+)"
+)
 
 
-def parse_run_ref(ref: str, default_entity: Optional[str], default_project: Optional[str]) -> Tuple[str, str, str]:
+def parse_run_ref(
+    ref: str, default_entity: Optional[str], default_project: Optional[str]
+) -> Tuple[str, str, str]:
     """Parse a run reference which can be:
     - entity/project/run_id
     - https://wandb.ai/entity/project/runs/run_id
@@ -88,7 +93,9 @@ def copy_file(src: Path, dst: Path, overwrite: bool = False) -> None:
     shutil.copy2(src, dst)
 
 
-def download_run_files(run: Run, out_root: Path, filter_prefix: Optional[str], overwrite: bool) -> int:
+def download_run_files(
+    run: Run, out_root: Path, filter_prefix: Optional[str], overwrite: bool
+) -> int:
     count = 0
     print("⤵️  Downloading run files...")
     for f in tqdm(list(run.files())):
@@ -149,7 +156,7 @@ def download_artifacts(
                 base = out_root / "artifacts" / downloaded_path.name
                 base.mkdir(parents=True, exist_ok=True)
                 # Copy everything as-is
-                for p in downloaded_path.rglob('*'):
+                for p in downloaded_path.rglob("*"):
                     if p.is_file():
                         rel = p.relative_to(downloaded_path)
                         dst = base / rel
@@ -163,7 +170,11 @@ def download_artifacts(
                     entries = a.manifest.entries
                 except Exception:
                     # Fallback: walk files
-                    entries = {str(p.relative_to(downloaded_path)): None for p in downloaded_path.rglob('*') if p.is_file()}
+                    entries = {
+                        str(p.relative_to(downloaded_path)): None
+                        for p in downloaded_path.rglob("*")
+                        if p.is_file()
+                    }
 
                 for rel, _entry in entries.items():
                     if filter_prefix and not str(rel).startswith(filter_prefix):
@@ -192,7 +203,7 @@ def maybe_promote_code_root(out_root: Path) -> Optional[Path]:
     lake_in_code = code_dir / "lakefile.lean"
     if code_dir.is_dir() and lake_in_code.exists() and not lake_at_root.exists():
         print("ℹ️  Detected Lake project under 'code/'. Promoting to export root…")
-        for p in code_dir.rglob('*'):
+        for p in code_dir.rglob("*"):
             if p.is_file():
                 rel = p.relative_to(code_dir)
                 dst = out_root / rel
@@ -208,24 +219,64 @@ def maybe_promote_code_root(out_root: Path) -> Optional[Path]:
 
 
 def main() -> None:
-    p = argparse.ArgumentParser(description="Export a W&B run's files and artifacts, preserving folder structure.")
-    p.add_argument("--run", required=True, help="Run ref: entity/project/<run_id> or full W&B URL or bare run_id")
-    p.add_argument("--entity", default=os.getenv("WANDB_ENTITY"), help="Default entity (if --run is only a run_id)")
-    p.add_argument("--project", default=os.getenv("WANDB_PROJECT", "vericoding"), help="Default project (if --run is only a run_id)")
-    p.add_argument("--out", default=None, help="Output directory root (default: wandb_exports/<run_id>)")
-    p.add_argument("--artifact-mode", choices=["flatten", "subdir"], default="flatten", help="How to place artifact contents")
-    p.add_argument("--artifacts", choices=["none", "logged", "used", "both"], default="both", help="Which artifacts to include")
-    p.add_argument("--filter-prefix", default=None, help="Only include files whose path starts with this prefix (e.g., 'benchmarks/')")
-    p.add_argument("--overwrite", action="store_true", help="Overwrite files if they already exist")
+    p = argparse.ArgumentParser(
+        description="Export a W&B run's files and artifacts, preserving folder structure."
+    )
+    p.add_argument(
+        "--run",
+        required=True,
+        help="Run ref: entity/project/<run_id> or full W&B URL or bare run_id",
+    )
+    p.add_argument(
+        "--entity",
+        default=os.getenv("WANDB_ENTITY"),
+        help="Default entity (if --run is only a run_id)",
+    )
+    p.add_argument(
+        "--project",
+        default=os.getenv("WANDB_PROJECT", "vericoding"),
+        help="Default project (if --run is only a run_id)",
+    )
+    p.add_argument(
+        "--out",
+        default=None,
+        help="Output directory root (default: wandb_exports/<run_id>)",
+    )
+    p.add_argument(
+        "--artifact-mode",
+        choices=["flatten", "subdir"],
+        default="flatten",
+        help="How to place artifact contents",
+    )
+    p.add_argument(
+        "--artifacts",
+        choices=["none", "logged", "used", "both"],
+        default="both",
+        help="Which artifacts to include",
+    )
+    p.add_argument(
+        "--filter-prefix",
+        default=None,
+        help="Only include files whose path starts with this prefix (e.g., 'benchmarks/')",
+    )
+    p.add_argument(
+        "--overwrite", action="store_true", help="Overwrite files if they already exist"
+    )
     # Enabled by default; provide an opt-out flag
     p.set_defaults(promote_code_root=True)
-    p.add_argument("--no-promote-code-root", dest="promote_code_root", action="store_false",
-                   help="Disable promoting 'code/' Lake project to export root")
+    p.add_argument(
+        "--no-promote-code-root",
+        dest="promote_code_root",
+        action="store_false",
+        help="Disable promoting 'code/' Lake project to export root",
+    )
 
     args = p.parse_args()
 
     if not os.getenv("WANDB_API_KEY"):
-        print("⚠️  WANDB_API_KEY not set. If wandb CLI is logged in, API may still work.")
+        print(
+            "⚠️  WANDB_API_KEY not set. If wandb CLI is logged in, API may still work."
+        )
 
     entity, project, run_id = parse_run_ref(args.run, args.entity, args.project)
 
@@ -239,17 +290,30 @@ def main() -> None:
     print(f"Output directory: {out_root}")
 
     n_files = download_run_files(run, out_root, args.filter_prefix, args.overwrite)
-    n_art = download_artifacts(run, out_root, args.artifacts, args.artifact_mode, args.filter_prefix, args.overwrite)
+    n_art = download_artifacts(
+        run,
+        out_root,
+        args.artifacts,
+        args.artifact_mode,
+        args.filter_prefix,
+        args.overwrite,
+    )
 
     # Optionally promote code root if Lake project exists under 'code/'
     if args.promote_code_root:
         maybe_promote_code_root(out_root)
 
-    print(f"\n✅ Export complete: {n_files} run files, {n_art} artifact files → {out_root}")
+    print(
+        f"\n✅ Export complete: {n_files} run files, {n_art} artifact files → {out_root}"
+    )
     # Optional: show a hint for Lake
     lakefile = out_root / "lakefile.lean"
     if lakefile.exists():
-        print("Detected Lake project (lakefile.lean present). You can try: \n  cd" , out_root, "&& lake build")
+        print(
+            "Detected Lake project (lakefile.lean present). You can try: \n  cd",
+            out_root,
+            "&& lake build",
+        )
 
 
 if __name__ == "__main__":

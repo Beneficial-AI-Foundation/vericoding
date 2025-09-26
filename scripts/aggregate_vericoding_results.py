@@ -144,7 +144,7 @@ def collect_all_files(latest_runs: Dict[str, Path]) -> Set[str]:
         results_csv = run_dir / "dafny" / "results.csv"
         if not results_csv.exists():
             results_csv = run_dir / "results.csv"
-        
+
         if results_csv.exists():
             with results_csv.open(newline="", encoding="utf-8") as f:
                 reader = csv.DictReader(f)
@@ -162,7 +162,6 @@ def collect_all_files(latest_runs: Dict[str, Path]) -> Set[str]:
                 summary = run_dir / "summary.txt"
             if not summary.exists():
                 continue
-            text = summary.read_text(encoding="utf-8", errors="ignore")
             # successes
             all_files.update(parse_summary_successes(summary))
             # failures
@@ -218,7 +217,7 @@ def main() -> int:
         succ_rs, fail_rs = parse_results_statuses(results_csv)
         successes |= succ_rs
         failures |= fail_rs
-        
+
         summary_txt = run_dir / "dafny" / "summary.txt"
         if not summary_txt.exists():
             summary_txt = run_dir / "summary.txt"
@@ -233,11 +232,15 @@ def main() -> int:
     rows: List[Tuple[str, str, int, str]] = []
     file_to_llms: Dict[str, List[str]] = {}
     for filename in sorted(all_files):
-        successful_llms = sorted([llm for llm, s in llm_successes.items() if filename in s])
+        successful_llms = sorted(
+            [llm for llm, s in llm_successes.items() if filename in s]
+        )
         file_to_llms[filename] = successful_llms
         success_count = len(successful_llms)
         success_status = "SUCCESS" if success_count > 0 else "FAILED"
-        rows.append((filename, success_status, success_count, ", ".join(successful_llms)))
+        rows.append(
+            (filename, success_status, success_count, ", ".join(successful_llms))
+        )
 
     out_csv = results_root / "vericoding_aggregate.csv"
     with out_csv.open("w", newline="", encoding="utf-8") as f:
@@ -256,9 +259,13 @@ def main() -> int:
     successful_files = [f for f, llms in file_to_llms.items() if llms]
     failed_files = [f for f, llms in file_to_llms.items() if not llms]
     with summary_path.open("w", encoding="utf-8") as sf:
-        sf.write(f"=== {'VERUS' if is_verus else 'DAFNY'} PROCESSING SUMMARY (AGGREGATED) ===\n")
+        sf.write(
+            f"=== {'VERUS' if is_verus else 'DAFNY'} PROCESSING SUMMARY (AGGREGATED) ===\n"
+        )
         sf.write(f"Total files: {total_files}\n")
-        sf.write(f"Successful: {len(successful_files)} ({(100.0*len(successful_files)/total_files if total_files else 0):.1f}%)\n")
+        sf.write(
+            f"Successful: {len(successful_files)} ({(100.0 * len(successful_files) / total_files if total_files else 0):.1f}%)\n"
+        )
         sf.write(f"Failed: {len(failed_files)}\n")
         sf.write("\n")
         sf.write("Successful files:\n")
@@ -275,7 +282,9 @@ def main() -> int:
     success_dir.mkdir(parents=True, exist_ok=True)
 
     # Assign stable index per successful filename
-    file_index: Dict[str, int] = {fname: i for i, fname in enumerate(sorted(successful_files), start=1)}
+    file_index: Dict[str, int] = {
+        fname: i for i, fname in enumerate(sorted(successful_files), start=1)
+    }
 
     for filename in sorted(successful_files):
         idx = file_index[filename]
@@ -285,7 +294,7 @@ def main() -> int:
             if run_dir is None:
                 continue
             # Try both directory structures and file naming patterns
-            src_file = (run_dir / "dafny" / f"{filename}_impl{impl_ext}")
+            src_file = run_dir / "dafny" / f"{filename}_impl{impl_ext}"
             if not src_file.exists():
                 src_file = run_dir / f"{filename}_impl{impl_ext}"
             if not src_file.exists():
@@ -302,7 +311,9 @@ def main() -> int:
     failed_dir = results_root / "failed"
     failed_dir.mkdir(parents=True, exist_ok=True)
 
-    file_index_failed: Dict[str, int] = {fname: i for i, fname in enumerate(sorted(failed_files), start=1)}
+    file_index_failed: Dict[str, int] = {
+        fname: i for i, fname in enumerate(sorted(failed_files), start=1)
+    }
 
     for filename in sorted(failed_files):
         idx = file_index_failed[filename]
@@ -312,7 +323,7 @@ def main() -> int:
             run_dir = latest_runs.get(llm)
             if run_dir is None:
                 continue
-            src_file = (run_dir / "dafny" / f"{filename}_impl{impl_ext}")
+            src_file = run_dir / "dafny" / f"{filename}_impl{impl_ext}"
             if not src_file.exists():
                 src_file = run_dir / f"{filename}_impl{impl_ext}"
             if not src_file.exists():
@@ -325,11 +336,11 @@ def main() -> int:
             except Exception as e:
                 print(f"WARN: Failed to copy {src_file} -> {dest_file}: {e}")
 
-    print(f"Wrote {summary_path} and copied successes into {success_dir} and failures into {failed_dir}")
+    print(
+        f"Wrote {summary_path} and copied successes into {success_dir} and failures into {failed_dir}"
+    )
     return 0
 
 
 if __name__ == "__main__":
     raise SystemExit(main())
-
-
