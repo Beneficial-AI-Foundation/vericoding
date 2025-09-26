@@ -1,0 +1,37 @@
+import Mathlib
+-- <vc-preamble>
+def sumRange (s : List Int) (start : Nat) (end_ : Nat) : Int :=
+  if start >= end_ then 
+    0
+  else if start >= s.length then
+    0
+  else 
+    s[start]! + sumRange s (start + 1) end_
+
+def ValidInput (n : Int) (years : List Int) : Prop :=
+  n > 0 ∧ years.length = n.natAbs
+
+@[reducible, simp]
+def solve_precond (n : Int) (years : List Int) : Prop :=
+  ValidInput n years
+-- </vc-preamble>
+
+-- <vc-helpers>
+-- No helper lemmas needed as the specification in `solve_postcond`
+-- and the implementation of `solve` can both use `sumRange` directly.
+-- </vc-helpers>
+
+-- <vc-definitions>
+def solve (n : Int) (years : List Int) (h_precond : solve_precond n years) : Int :=
+  sumRange years 0 years.length / n
+-- </vc-definitions>
+
+-- <vc-theorems>
+@[reducible, simp]
+def solve_postcond (n : Int) (years : List Int) (result : Int) (h_precond : solve_precond n years) : Prop :=
+  result = sumRange years 0 years.length / n
+
+theorem solve_spec_satisfied (n : Int) (years : List Int) (h_precond : solve_precond n years) :
+    solve_postcond n years (solve n years h_precond) h_precond := by
+  simp [solve]
+-- </vc-theorems>

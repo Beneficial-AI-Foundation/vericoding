@@ -1,0 +1,17 @@
+import Mathlib
+-- <vc-preamble>
+-- </vc-preamble>
+
+-- <vc-helpers>
+
+-- </vc-helpers>
+
+-- <vc-definitions>
+def Triple (x : Int) : Int :=
+3 * x
+-- </vc-definitions>
+
+-- <vc-theorems>
+theorem Triple_spec (x : Int) : Triple x = 3 * x :=
+by unfold Triple; rfl
+-- </vc-theorems>
