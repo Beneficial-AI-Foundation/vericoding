@@ -214,9 +214,13 @@ class OpenRouterProvider(LLMProvider):
 
     def __init__(self, api_key: str, model: str = "openai/gpt-4o", **kwargs):
         super().__init__(api_key, model, **kwargs)
-        self.client = openai.OpenAI(
-            api_key=api_key, base_url="https://openrouter.ai/api/v1"
-        )
+        try:
+            import openai
+            self.client = openai.OpenAI(
+                api_key=api_key, base_url="https://openrouter.ai/api/v1"
+            )
+        except ImportError:
+            raise ImportError("OpenAI package not installed")
 
     def call_api(self, prompt: str) -> LLMResponse:
         try:

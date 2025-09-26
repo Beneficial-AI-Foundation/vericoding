@@ -93,6 +93,10 @@ def load_language_config() -> LanguageConfigResult:
     config_path = module_dir / "config" / "language_config.toml"
 
     if not config_path.exists():
+        # Try from src directory (when running from src/)
+        config_path = Path(__file__).parent.parent.parent.parent / "config" / "language_config.toml"
+        
+    if not config_path.exists():
         # Fallback to current directory
         config_path = Path("config/language_config.toml")
         if not config_path.exists():

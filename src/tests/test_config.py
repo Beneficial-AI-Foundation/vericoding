@@ -111,11 +111,9 @@ class TestProcessingConfig:
                 output_dir="test_output",
                 summary_file="summary.json",
                 debug_mode=False,
-                strict_spec_verification=True,
                 max_workers=4,
                 api_rate_limit_delay=1,
-                llm_provider="anthropic",
-                llm_model="claude-3-sonnet-20240229",
+                llm="claude",
             )
             assert config.language == lang_name
             assert config.language_config == lang_config
@@ -137,11 +135,9 @@ class TestProcessingConfig:
             output_dir="test_output",
             summary_file="summary.json",
             debug_mode=False,
-            strict_spec_verification=True,
             max_workers=4,
             api_rate_limit_delay=1,
-            llm_provider="anthropic",
-            llm_model="claude-3-sonnet-20240229",
+            llm="claude",
         )
         assert config.language == "invalid_language"
 
@@ -158,11 +154,9 @@ class TestProcessingConfig:
             output_dir="test_output",
             summary_file="summary.json",
             debug_mode=False,
-            strict_spec_verification=True,
             max_workers=4,
             api_rate_limit_delay=1,
-            llm_provider="anthropic",
-            llm_model="claude-3-sonnet-20240229",
+            llm="claude",
         )
 
         # Test assigned values
@@ -184,11 +178,9 @@ class TestProcessingConfig:
             output_dir="custom_output",
             summary_file="custom_summary.json",
             debug_mode=True,
-            strict_spec_verification=False,
             max_workers=8,
             api_rate_limit_delay=2,
-            llm_provider="openai",
-            llm_model="gpt-4",
+            llm="openai",
             max_directory_traversal_depth=100,
         )
 
@@ -196,8 +188,7 @@ class TestProcessingConfig:
         assert config.output_dir == "custom_output"
         assert config.debug_mode is True
         assert config.max_directory_traversal_depth == 100
-        assert config.llm_provider == "openai"
-        assert config.llm_model == "gpt-4"
+        assert config.llm == "openai"
 
 
 class TestLanguageConfig:

@@ -31,7 +31,11 @@ def test_conversion_roundtrip(rust_file="053-add.rs", test_data_dir=None):
     """Test that converting Rust -> YAML -> Rust gives back the original content."""
     
     if test_data_dir is None:
-        test_data_dir = Path("verus-test-data")  # Fallback for backwards compatibility
+        # Try to find the test data directory relative to this test file
+        test_file_dir = Path(__file__).parent
+        test_data_dir = test_file_dir / "verus-test-data"
+        if not test_data_dir.exists():
+            test_data_dir = Path("verus-test-data")  # Fallback for backwards compatibility
     
     # Test files
     original_rust_file = test_data_dir / rust_file

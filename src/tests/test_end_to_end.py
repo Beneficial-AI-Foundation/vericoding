@@ -186,7 +186,7 @@ fn add(x: u32, y: u32) -> (result: u32)
 
         # Test with non-existent directory
         result = subprocess.run(
-            [sys.executable, str(script_path), "dafny", "/non/existent/directory"],
+            [sys.executable, str(script_path), "dafny", "/non/existent/directory", "--llm", "claude"],
             capture_output=True,
             text=True,
             cwd=project_root,
@@ -261,7 +261,7 @@ fn add(x: u32, y: u32) -> (result: u32)
                 str(script_path),
                 "dafny",
                 str(dafny_specs),
-                "--llm-provider",
+                "--llm",
                 "invalid-provider",
             ],
             capture_output=True,
@@ -270,9 +270,10 @@ fn add(x: u32, y: u32) -> (result: u32)
             timeout=30,
         )
 
-        # Should fail with invalid choice error
+        # Should fail with unsupported LLM error
         assert result.returncode != 0
-        assert "invalid choice" in result.stderr.lower()
+        output_text = result.stdout + result.stderr
+        assert "unsupported llm" in output_text.lower() or "invalid choice" in output_text.lower()
         print("✓ Invalid LLM provider validation works")
 
         # Test with valid LLM providers
@@ -339,14 +340,6 @@ fn add(x: u32, y: u32) -> (result: u32)
                 # May fail at tool check, but configuration should be parsed
                 assert "invalid" not in result.stderr.lower()
 
-    @pytest.mark.slow
-    def test_mock_full_workflow(self, project_root, temp_workspace):
-        """Test a complete workflow with mocked components."""
-        # This test would mock the LLM API and tool verification
-        # to test the complete flow without external dependencies
-        pytest.skip(
-            "Full workflow test requires extensive mocking - implement when needed"
-        )
 
 
 class TestRegressionPrevention:
