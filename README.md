@@ -6,22 +6,19 @@ Our scripts can be found in this [GitHub repo](https://github.com/beneficial-AI-
 
 The `vericoding_benchmark_v1.csv` provides a list of Vericoding IDs, sources and the source IDs for all 12,504 tasks. It also contains additional metadata from our quality analysis.
 
-The file `vericoding_results_v1.csv` which is a list of the outcomes of all 55397 experiments involving vericoding tasks across different models.
+The file `vericoding_results_v1.csv` which is a list of the outcomes of all 55,397 experiments involving vericoding tasks across different models.
 
 ## Specs
 
-The folder `specs` contains all 12,504 tasks in Dafny, Lean and Verus, which includes thw following.
+The folder `specs` contains all 12,504 tasks in Dafny, Lean and Verus, which includes the following.
 
 * Files which compile, up to some `sorry` or `assume false` in the code. The file is decomposed into different components, such as the preamble, the spec, the code and the postamble.
 
 * Files which do not compile, especially after translation from another langauge. We keep them in the benchmark for researchers who want use them for other experiments, e.g. spec repair.
 
-
 ## JSONL
 
 The folder `jsonl` contains the tasks and issues sorted into the different languages, parsed into different components, and stored as JSON lines for easier experimentation.
-
-
 
 ## Vericoded
 
@@ -31,23 +28,11 @@ The folder `vericoded` will contain some of the tasks with solutions filled in b
 
 The folder `humancoded` will contain some of the tasks with solutions filled in by human coders.
 
-
 ## Original Sources
 
 ### DafnyBench
 * `benchmarks/dafny/dafnybench`
 * https://github.com/sun-wendy/DafnyBench
-
-### HumanEval, Clever
-* `benchmarks/dafny/humaneval`
-* `benchmarks/lean/clever`
-* https://github.com/openai/human-eval
-* https://github.com/JetBrains-Research/HumanEval-Dafny
-* https://github.com/trishullab/clever
-
-The Dafny files were mostly translated from the original Python source. Some of the Dafny files were taken from Jetbrains Research's HumanEval Dafny repo.
-
-The Lean files were taken from the Clever benchmark which were originally derived from the HumanEval benchmark. HumanEval problems 22, 137, 162 are missing from Clever for reasons mentioned in the Clever paper.
 
 ### NumPyTriple
 * `benchmarks/lean/numpy_triple`
@@ -78,3 +63,14 @@ The Lean files were taken from the Clever benchmark which were originally derive
 ### BigNum
 * `benchmarks/dafny/bignum`
 * Written from scratch
+
+### HumanEval, Clever
+* `benchmarks/dafny/humaneval`
+* `benchmarks/lean/clever`
+* https://github.com/openai/human-eval
+* https://github.com/JetBrains-Research/HumanEval-Dafny
+* https://github.com/trishullab/clever
+
+The Dafny files were mostly translated from the original Python source. Some of the Dafny files were taken from Jetbrains Research's HumanEval Dafny repo.
+
+The Lean files were taken from the Clever benchmark which were originally derived from the HumanEval benchmark. HumanEval problems 22, 137, 162 are missing from Clever for reasons mentioned in the Clever paper.
