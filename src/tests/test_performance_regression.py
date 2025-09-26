@@ -45,8 +45,9 @@ function TestFunction{i}(n: nat): nat
         start_time = time.time()
 
         try:
-            # Import modules to test import performance  
+            # Import modules to test import performance
             import vericoding.core
+
             # Touch the module to satisfy linter
             assert vericoding.core is not None
         except ImportError as e:
@@ -243,9 +244,7 @@ fix_verification: "Fix errors"
         # Test concurrent configuration access
         with concurrent.futures.ThreadPoolExecutor(max_workers=4) as executor:
             futures = [executor.submit(config_operation) for _ in range(20)]
-            [
-                future.result() for future in concurrent.futures.as_completed(futures)
-            ]
+            [future.result() for future in concurrent.futures.as_completed(futures)]
 
         concurrent_time = time.time() - start_time
 

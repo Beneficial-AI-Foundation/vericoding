@@ -112,9 +112,7 @@ def verify_file(config: ProcessingConfig, file_path: str) -> VerificationResult:
                         error=f"Compilation failed: {full_output}",
                     )
             except subprocess.TimeoutExpired as e:
-                timeout_msg = (
-                    "⏱️  TIMEOUT: Compilation check timed out after 60 seconds"
-                )
+                timeout_msg = "⏱️  TIMEOUT: Compilation check timed out after 60 seconds"
                 print(f"    {timeout_msg}")
                 return VerificationResult(
                     success=False, output=str(e), error=timeout_msg
