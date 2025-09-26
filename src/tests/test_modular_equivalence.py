@@ -9,19 +9,14 @@ import sys
 import tempfile
 import shutil
 from pathlib import Path
-from unittest.mock import patch, MagicMock
+from unittest.mock import patch
 import os
 
 # Import the modular components
 try:
     from vericoding.core import ProcessingConfig, PromptLoader, create_llm_provider
-    from vericoding.core.language_tools import (
-        get_tool_path,
-        check_tool_availability,
-        find_spec_files,
-    )
-    from vericoding.processing import process_files_parallel
-    from vericoding.utils import generate_summary, generate_csv_results
+    from vericoding.core.language_tools import find_spec_files
+    from vericoding.utils import generate_summary
 except ImportError as e:
     pytest.skip(f"Cannot import modular components: {e}", allow_module_level=True)
 
@@ -91,13 +86,13 @@ def add (x y : ℕ) : ℕ := sorry
             language = "dafny"
             folder = Path("/tmp/test")
             iterations = 5
-            debug = False
+            no_debug = False  # debug_mode = not args.no_debug
             strict_specs = False
             workers = 4
             api_rate_limit_delay = 1
             max_directory_traversal_depth = 50
-            llm_provider = "claude"
-            llm_model = None
+            llm = "claude"  # Changed from llm_provider to llm
+            assume_unformatted_lean = False
 
         # This would normally require actual directory setup, so we'll mock it
         with (
@@ -135,7 +130,7 @@ def add (x y : ℕ) : ℕ := sorry
                 assert config.language == "dafny"
                 assert config.max_iterations == 5
                 assert config.max_workers == 4
-                assert config.llm_provider == "claude"
+                assert config.llm == "claude"
 
             except Exception as e:
                 pytest.fail(f"Configuration setup failed: {e}")
@@ -177,21 +172,24 @@ fix_verification: "Fix verification errors"
         # Test with mock API key
         with patch.dict(os.environ, {"ANTHROPIC_API_KEY": "test-key"}):
             try:
-                provider = create_llm_provider("claude")
+                provider, model = create_llm_provider("claude")
                 assert provider is not None
-                assert provider.model == "claude-sonnet-4-20250514"  # default model
+                assert model == "claude-sonnet-4-20250514"  # default model
                 print("✓ LLM provider creation works")
             except Exception as e:
                 pytest.fail(f"LLM provider creation failed: {e}")
 
-        # Test with custom model
+        # Test that provider creation works (custom model selection is handled by the factory config)
         with patch.dict(os.environ, {"ANTHROPIC_API_KEY": "test-key"}):
             try:
-                provider = create_llm_provider("claude", "claude-3-5-haiku-20241022")
-                assert provider.model == "claude-3-5-haiku-20241022"
-                print("✓ Custom model selection works")
+                provider, model = create_llm_provider("claude")
+                assert provider is not None
+                assert (
+                    model == "claude-sonnet-4-20250514"
+                )  # factory determines the model
+                print("✓ Provider creation works consistently")
             except Exception as e:
-                pytest.fail(f"Custom model selection failed: {e}")
+                pytest.fail(f"Provider creation consistency failed: {e}")
 
     @pytest.mark.skip(reason="Requires actual tool installation")
     def test_tool_availability_check(self, temp_spec_directory):
@@ -256,9 +254,7 @@ fix_verification: "Fix verification errors"
             max_workers = 4
             summary_file = "/tmp/output/summary.txt"
             debug_mode = False
-            strict_spec_verification = False
-            llm_provider = "claude"
-            llm_model = "claude-3-5-sonnet-20241022"
+            llm = "claude"  # Changed from llm_provider to llm
             api_rate_limit_delay = 1
 
         config = MockConfig()
@@ -352,19 +348,18 @@ class TestFunctionalEquivalence:
         expected_args = [
             "--iterations",
             "-i",
-            "--debug",
-            "--strict-specs",
+            "--no-debug",  # Changed from --debug to --no-debug
             "--workers",
             "-w",
             "--api-rate-limit-delay",
-            "--llm-provider",
-            "--llm-model",
+            "--llm",  # Changed from --llm-provider to --llm
+            "--assume-unformatted-lean",  # Added new argument
         ]
 
         for arg in expected_args:
             assert arg in help_text, f"Missing CLI argument: {arg}"
 
-        print(f"✓ All expected CLI arguments present")
+        print("✓ All expected CLI arguments present")
 
     @pytest.fixture
     def project_root(self):

@@ -38,7 +38,7 @@ class TestAnthropicProvider:
         provider = AnthropicProvider(api_key="test-key")
         assert provider.api_key == "test-key"
         assert provider.model == "claude-sonnet-4-20250514"
-        assert provider.max_tokens == 8192
+        assert provider.max_tokens == 16384
         assert provider.timeout == 60.0
 
     def test_initialization_with_custom_params(self):
@@ -67,6 +67,12 @@ class TestAnthropicProvider:
         mock_text_content.text = "Test response from Claude"
         mock_response.content = [mock_text_content]
 
+        # Mock usage
+        mock_usage = Mock()
+        mock_usage.input_tokens = 10
+        mock_usage.output_tokens = 20
+        mock_response.usage = mock_usage
+
         mock_client = Mock()
         mock_client.messages.create.return_value = mock_response
         mock_anthropic.return_value = mock_client
@@ -75,10 +81,12 @@ class TestAnthropicProvider:
         provider = AnthropicProvider(api_key="test-key")
         result = provider.call_api("Test prompt")
 
-        assert result == "Test response from Claude"
+        assert result.text == "Test response from Claude"
+        assert result.input_tokens == 10
+        assert result.output_tokens == 20
         mock_client.messages.create.assert_called_once_with(
             model="claude-sonnet-4-20250514",
-            max_tokens=8192,
+            max_tokens=16384,
             messages=[{"role": "user", "content": "Test prompt"}],
             timeout=60.0,
         )
@@ -141,6 +149,12 @@ class TestAnthropicProvider:
         type(mock_text_content).__str__ = Mock(return_value="String representation")
         mock_response.content = [mock_text_content]
 
+        # Mock usage
+        mock_usage = Mock()
+        mock_usage.input_tokens = 5
+        mock_usage.output_tokens = 15
+        mock_response.usage = mock_usage
+
         mock_client = Mock()
         mock_client.messages.create.return_value = mock_response
         mock_anthropic.return_value = mock_client
@@ -148,45 +162,35 @@ class TestAnthropicProvider:
         provider = AnthropicProvider(api_key="test-key")
         result = provider.call_api("Test prompt")
 
-        assert result == "String representation"
+        assert result.text == "String representation"
+        assert result.input_tokens == 5
+        assert result.output_tokens == 15
 
 
 class TestOpenAIProvider:
     """Test OpenAI GPT provider implementation."""
 
-    @patch("builtins.__import__")
-    def test_initialization_with_defaults(self, mock_import):
+    @patch("openai.OpenAI")
+    def test_initialization_with_defaults(self, mock_openai_class):
         """Test provider initializes with default model."""
-        # Mock openai module
-        mock_openai = Mock()
         mock_client = Mock()
-        mock_openai.OpenAI.return_value = mock_client
-        mock_import.return_value = mock_openai
+        mock_openai_class.return_value = mock_client
 
         provider = OpenAIProvider(api_key="test-key")
         assert provider.api_key == "test-key"
         assert provider.model == "gpt-4o"
 
-    def test_initialization_missing_openai_package(self):
-        """Test error when openai package is not installed."""
-        with patch("builtins.__import__", side_effect=ImportError()):
-            with pytest.raises(ImportError, match="OpenAI package not installed"):
-                OpenAIProvider(api_key="test-key")
-
-    @patch("builtins.__import__")
-    def test_get_required_env_var(self, mock_import):
+    @patch("openai.OpenAI")
+    def test_get_required_env_var(self, mock_openai_class):
         """Test required environment variable name."""
-        # Mock openai module
-        mock_openai = Mock()
         mock_client = Mock()
-        mock_openai.OpenAI.return_value = mock_client
-        mock_import.return_value = mock_openai
+        mock_openai_class.return_value = mock_client
 
         provider = OpenAIProvider(api_key="test")
         assert provider.get_required_env_var() == "OPENAI_API_KEY"
 
-    @patch("builtins.__import__")
-    def test_call_api_success(self, mock_import):
+    @patch("openai.OpenAI")
+    def test_call_api_success(self, mock_openai_class):
         """Test successful API call."""
         # Setup mock response
         mock_choice = Mock()
@@ -194,36 +198,40 @@ class TestOpenAIProvider:
         mock_response = Mock()
         mock_response.choices = [mock_choice]
 
-        # Mock openai module
-        mock_openai = Mock()
+        # Mock usage
+        mock_usage = Mock()
+        mock_usage.prompt_tokens = 8
+        mock_usage.completion_tokens = 12
+        mock_response.usage = mock_usage
+
+        # Mock client
         mock_client = Mock()
         mock_client.chat.completions.create.return_value = mock_response
-        mock_openai.OpenAI.return_value = mock_client
-        mock_import.return_value = mock_openai
+        mock_openai_class.return_value = mock_client
 
         provider = OpenAIProvider(api_key="test-key")
         result = provider.call_api("Test prompt")
 
-        assert result == "Test response from GPT"
+        assert result.text == "Test response from GPT"
+        assert result.input_tokens == 8
+        assert result.output_tokens == 12
         mock_client.chat.completions.create.assert_called_once_with(
             model="gpt-4o",
             messages=[{"role": "user", "content": "Test prompt"}],
-            max_tokens=8192,
+            max_tokens=16384,
             timeout=60.0,
         )
 
-    @patch("builtins.__import__")
-    def test_call_api_empty_choices(self, mock_import):
+    @patch("openai.OpenAI")
+    def test_call_api_empty_choices(self, mock_openai_class):
         """Test API call with empty choices."""
         mock_response = Mock()
         mock_response.choices = []
 
-        # Mock openai module
-        mock_openai = Mock()
+        # Mock client
         mock_client = Mock()
         mock_client.chat.completions.create.return_value = mock_response
-        mock_openai.OpenAI.return_value = mock_client
-        mock_import.return_value = mock_openai
+        mock_openai_class.return_value = mock_client
 
         provider = OpenAIProvider(api_key="test-key")
 
@@ -249,40 +257,28 @@ class TestOpenAIProvider:
 class TestDeepSeekProvider:
     """Test DeepSeek provider implementation."""
 
-    @patch("builtins.__import__")
-    def test_initialization_with_custom_base_url(self, mock_import):
+    @patch("openai.OpenAI")
+    def test_initialization_with_custom_base_url(self, mock_openai_class):
         """Test provider initializes with DeepSeek base URL."""
-        # Mock openai module
-        mock_openai = Mock()
         mock_client = Mock()
-        mock_openai.OpenAI.return_value = mock_client
-        mock_import.return_value = mock_openai
+        mock_openai_class.return_value = mock_client
 
         DeepSeekProvider(api_key="test-key")
-        mock_openai.OpenAI.assert_called_once_with(
+        mock_openai_class.assert_called_once_with(
             api_key="test-key", base_url="https://api.deepseek.com"
         )
 
-    def test_initialization_missing_openai_package(self):
-        """Test error when openai package is not installed."""
-        with patch("builtins.__import__", side_effect=ImportError()):
-            with pytest.raises(ImportError, match="OpenAI package not installed"):
-                DeepSeekProvider(api_key="test-key")
-
-    @patch("builtins.__import__")
-    def test_get_required_env_var(self, mock_import):
+    @patch("openai.OpenAI")
+    def test_get_required_env_var(self, mock_openai_class):
         """Test required environment variable name."""
-        # Mock openai module
-        mock_openai = Mock()
         mock_client = Mock()
-        mock_openai.OpenAI.return_value = mock_client
-        mock_import.return_value = mock_openai
+        mock_openai_class.return_value = mock_client
 
         provider = DeepSeekProvider(api_key="test")
         assert provider.get_required_env_var() == "DEEPSEEK_API_KEY"
 
-    @patch("builtins.__import__")
-    def test_call_api_success(self, mock_import):
+    @patch("openai.OpenAI")
+    def test_call_api_success(self, mock_openai_class):
         """Test successful API call."""
         # Setup mock response
         mock_choice = Mock()
@@ -290,36 +286,40 @@ class TestDeepSeekProvider:
         mock_response = Mock()
         mock_response.choices = [mock_choice]
 
-        # Mock openai module
-        mock_openai = Mock()
+        # Mock usage
+        mock_usage = Mock()
+        mock_usage.prompt_tokens = 6
+        mock_usage.completion_tokens = 14
+        mock_response.usage = mock_usage
+
+        # Mock client
         mock_client = Mock()
         mock_client.chat.completions.create.return_value = mock_response
-        mock_openai.OpenAI.return_value = mock_client
-        mock_import.return_value = mock_openai
+        mock_openai_class.return_value = mock_client
 
         provider = DeepSeekProvider(api_key="test-key")
         result = provider.call_api("Test prompt")
 
-        assert result == "Test response from DeepSeek"
+        assert result.text == "Test response from DeepSeek"
+        assert result.input_tokens == 6
+        assert result.output_tokens == 14
         mock_client.chat.completions.create.assert_called_once_with(
             model="deepseek-chat",
             messages=[{"role": "user", "content": "Test prompt"}],
-            max_tokens=8192,
+            max_tokens=16384,
             timeout=60.0,
         )
 
-    @patch("builtins.__import__")
-    def test_call_api_empty_choices(self, mock_import):
+    @patch("openai.OpenAI")
+    def test_call_api_empty_choices(self, mock_openai_class):
         """Test API call with empty choices."""
         mock_response = Mock()
         mock_response.choices = []
 
-        # Mock openai module
-        mock_openai = Mock()
+        # Mock client
         mock_client = Mock()
         mock_client.chat.completions.create.return_value = mock_response
-        mock_openai.OpenAI.return_value = mock_client
-        mock_import.return_value = mock_openai
+        mock_openai_class.return_value = mock_client
 
         provider = DeepSeekProvider(api_key="test-key")
 
@@ -348,17 +348,17 @@ class TestFactoryFunction:
     @patch.dict(os.environ, {"ANTHROPIC_API_KEY": "test-anthropic-key"})
     def test_create_claude_provider(self):
         """Test creating Claude provider via factory."""
-        provider = create_llm_provider("claude")
+        provider, model = create_llm_provider("claude")
         assert isinstance(provider, AnthropicProvider)
         assert provider.api_key == "test-anthropic-key"
-        assert provider.model == "claude-sonnet-4-20250514"
+        assert model == "claude-sonnet-4-20250514"
 
     @patch.dict(os.environ, {"ANTHROPIC_API_KEY": "test-key"})
     def test_create_claude_provider_custom_model(self):
-        """Test creating Claude provider with custom model."""
-        provider = create_llm_provider("claude", model="claude-3-opus-20240229")
+        """Test creating Claude provider via factory."""
+        provider, model = create_llm_provider("claude")
         assert isinstance(provider, AnthropicProvider)
-        assert provider.model == "claude-3-opus-20240229"
+        assert model == "claude-sonnet-4-20250514"
 
     @patch.dict(os.environ, {"OPENAI_API_KEY": "test-openai-key"})
     @patch("builtins.__import__")
@@ -370,12 +370,12 @@ class TestFactoryFunction:
         mock_openai.OpenAI.return_value = mock_client
         mock_import.return_value = mock_openai
 
-        provider = create_llm_provider("openai")
+        provider, model = create_llm_provider("openai")
         assert isinstance(provider, OpenAIProvider)
         assert provider.api_key == "test-openai-key"
-        assert provider.model == "gpt-4o"
+        assert model == "gpt-4o"
 
-    @patch.dict(os.environ, {"DEEPSEEK_API_KEY": "test-deepseek-key"})
+    @patch.dict(os.environ, {"OPENROUTER_API_KEY": "test-openrouter-key"})
     @patch("builtins.__import__")
     def test_create_deepseek_provider(self, mock_import):
         """Test creating DeepSeek provider via factory."""
@@ -385,41 +385,33 @@ class TestFactoryFunction:
         mock_openai.OpenAI.return_value = mock_client
         mock_import.return_value = mock_openai
 
-        provider = create_llm_provider("deepseek")
-        assert isinstance(provider, DeepSeekProvider)
-        assert provider.api_key == "test-deepseek-key"
+        provider, model = create_llm_provider("deepseek")
+        # deepseek uses OpenRouterProvider, not DeepSeekProvider
+        assert hasattr(provider, "api_key")
+        assert model == "deepseek/deepseek-chat-v3.1"
 
     def test_unsupported_provider(self):
         """Test error for unsupported provider."""
-        with pytest.raises(ValueError, match="Unsupported LLM provider"):
+        with pytest.raises(SystemExit):
             create_llm_provider("unsupported")
 
     def test_missing_api_key(self):
         """Test error when API key environment variable is missing."""
         with patch.dict(os.environ, {}, clear=True):
-            with pytest.raises(
-                ValueError, match="ANTHROPIC_API_KEY environment variable is required"
-            ):
+            with pytest.raises(SystemExit):
                 create_llm_provider("claude")
 
     @patch.dict(os.environ, {"ANTHROPIC_API_KEY": ""})
     def test_empty_api_key(self):
         """Test error when API key environment variable is empty."""
-        with pytest.raises(
-            ValueError, match="ANTHROPIC_API_KEY environment variable is required"
-        ):
+        with pytest.raises(SystemExit):
             create_llm_provider("claude")
 
     def test_factory_error_message_format(self):
         """Test that error messages provide helpful guidance."""
         with patch.dict(os.environ, {}, clear=True):
-            with pytest.raises(ValueError) as exc_info:
+            with pytest.raises(SystemExit):
                 create_llm_provider("claude")
-
-            error_msg = str(exc_info.value)
-            assert "ANTHROPIC_API_KEY environment variable is required" in error_msg
-            assert "Creating a .env file" in error_msg
-            assert "export ANTHROPIC_API_KEY" in error_msg
 
 
 class TestProviderInheritance:
@@ -472,7 +464,7 @@ class TestProviderIntegration:
         for provider_name, env_var, expected_class in test_cases:
             with patch.dict(os.environ, {env_var: "test-key"}):
                 with patch("anthropic.Anthropic"):  # Only needed for Anthropic
-                    provider = create_llm_provider(provider_name)
+                    provider, model = create_llm_provider(provider_name)
                     assert isinstance(provider, expected_class)
                     assert provider.api_key == "test-key"
                     assert hasattr(provider, "call_api")

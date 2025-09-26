@@ -12,85 +12,104 @@ Each section should be separated by empty lines, and there should be no empty li
 """
 
 import os
-import re
 import sys
 import json
 from pathlib import Path
-from typing import List, Tuple, Dict, Any
-import sys
+from typing import List, Tuple, Dict
+
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from convert_from_yaml import spec_to_yaml
 
-section_starters = ["/--", "/-!", "/-", "--", "def", "theorem", 
-                    "inductive", "structure", "abbrev", "instance", 
-                    "class", "opaque", "axiom", "noncomputable"]
+section_starters = [
+    "/--",
+    "/-!",
+    "/-",
+    "--",
+    "def",
+    "theorem",
+    "inductive",
+    "structure",
+    "abbrev",
+    "instance",
+    "class",
+    "opaque",
+    "axiom",
+    "noncomputable",
+]
+
 
 def startswith(line: str, liststr: List[str]) -> bool:
     """
     Check if a line starts with any of the strings in the given list.
-    
+
     Args:
         line: The line to check
         liststr: List of strings to check against
-        
+
     Returns:
         True if the line starts with any string in liststr, False otherwise
     """
     return any(line.startswith(prefix) for prefix in liststr)
 
+
 def consolidate_partial_results(partial_results, results):
     if not partial_results:
         return results
-    
+
     final_results = []
-    while partial_results and partial_results[-1]["type"] in ["commment", "doc", "empty"]:
-        final_results.insert(0, {
-            "type": partial_results[-1]["type"],
-            "string": partial_results[-1]["string"]
-        })
+    while partial_results and partial_results[-1]["type"] in [
+        "commment",
+        "doc",
+        "empty",
+    ]:
+        final_results.insert(
+            0,
+            {
+                "type": partial_results[-1]["type"],
+                "string": partial_results[-1]["string"],
+            },
+        )
         partial_results.pop()
-    
+
     if not partial_results:
         if final_results:
             results.extend(final_results)
         return results
-        
+
     consolidated_string = "\n".join([result["string"] for result in partial_results])
 
-    results.append({
-        "type": partial_results[0]["type"],
-        "string": consolidated_string
-    })
+    results.append({"type": partial_results[0]["type"], "string": consolidated_string})
 
     if final_results:
         results.extend(final_results)
 
     return results
 
+
 def parse_lean_file(file_path: str) -> Tuple[str, List[Dict[str, str]]]:
     """
     Parse a Lean file according to the specified rules.
-    
+
     Returns:
         Tuple of (status, results) where status is "ok" or an error message,
         and results is a list of JSON objects or empty dict if error.
     """
     try:
-        with open(file_path, 'r', encoding='utf-8') as f:
+        with open(file_path, "r", encoding="utf-8") as f:
             lines = f.readlines()
     except Exception as e:
         return f"Error reading file {file_path}: {str(e)}", {}
-    
+
     results = []
     partial_results = []
     imports = ""
     state = "preamble"
     i = 0
     description_found = False
-    
+
     while i < len(lines):
         line = lines[i].rstrip()
-        
+
         # Preamble state
         if state == "preamble":
             if startswith(line, ["import", "open", "set_option"]):
@@ -100,76 +119,76 @@ def parse_lean_file(file_path: str) -> Tuple[str, List[Dict[str, str]]]:
                 # Parse description section
                 if description_found:
                     return f"Multiple description sections found in {file_path}", {}
-                
+
                 description_found = True
                 description_lines = []
-                
+
                 # Find the end of the description section
                 while i < len(lines) and not lines[i].rstrip().endswith("-/"):
                     description_lines.append(lines[i])
                     i += 1
-                
+
                 if i < len(lines):
                     description_lines.append(lines[i])  # Add the closing -/
                     i += 1
-                
+
                 description_text = "".join(description_lines)
-                results.append({
-                    "type": "desc",
-                    "string": description_text
-                })
-                
+                results.append({"type": "desc", "string": description_text})
+
             elif startswith(line, section_starters):
                 # Exit preamble state
                 if imports.rstrip():  # Only add if there are imports
-                    results.append({
-                        "type": "imports",
-                        "string": imports.rstrip()
-                    })
+                    results.append({"type": "imports", "string": imports.rstrip()})
                 state = "main"
             elif line == "":
                 # Skip empty lines in preamble
                 i += 1
             else:
                 return f"Unexpected line in preamble: '{line}' in {file_path}", {}
-        
+
         # Main parsing state
         elif state == "main":
             if startswith(line, ["/--"]):
                 # Parse comment section
                 comment_lines = []
-                
+
                 # Find the end of the comment section
                 while i < len(lines) and not lines[i].rstrip().endswith("-/"):
                     comment_lines.append(lines[i])
                     i += 1
-                
+
                 if i < len(lines):
                     comment_lines.append(lines[i])  # Add the closing -/
                     i += 1
-                
+
                 comment_text = "".join(comment_lines)
-                partial_results.append({
-                    "type": "doc",
-                    "string": comment_text
-                })
-                
+                partial_results.append({"type": "doc", "string": comment_text})
+
             elif startswith(line, ["--"]):
                 # Parse comment section
                 comment_lines = []
-                
+
                 # Append as long as the line starts with --
                 while i < len(lines) and lines[i].rstrip().startswith("--"):
                     comment_lines.append(lines[i])
                     i += 1
-                
+
                 comment_text = "".join(comment_lines)
-                partial_results.append({    
-                    "type": "comment",
-                    "string": comment_text
-                })
-                
-            elif startswith(line, ["inductive", "structure", "abbrev", "instance", "class", "opaque", "axiom", "noncomputable"]):
+                partial_results.append({"type": "comment", "string": comment_text})
+
+            elif startswith(
+                line,
+                [
+                    "inductive",
+                    "structure",
+                    "abbrev",
+                    "instance",
+                    "class",
+                    "opaque",
+                    "axiom",
+                    "noncomputable",
+                ],
+            ):
                 results = consolidate_partial_results(partial_results, results)
                 partial_results = []
 
@@ -178,19 +197,18 @@ def parse_lean_file(file_path: str) -> Tuple[str, List[Dict[str, str]]]:
                 first_line = True
                 while i < len(lines):
                     current_line = lines[i].rstrip()
-                    if (startswith(current_line, section_starters) and not first_line) or not current_line:
+                    if (
+                        startswith(current_line, section_starters) and not first_line
+                    ) or not current_line:
                         break
                     constr_lines.append(lines[i])
                     first_line = False
                     i += 1
-                
+
                 if constr_lines:
                     constr_text = "".join(constr_lines)
-                    partial_results.append({
-                        "type": "constr",
-                        "string": constr_text
-                    })
-                
+                    partial_results.append({"type": "constr", "string": constr_text})
+
             elif startswith(line, ["def"]):
                 results = consolidate_partial_results(partial_results, results)
                 partial_results = []
@@ -205,24 +223,21 @@ def parse_lean_file(file_path: str) -> Tuple[str, List[Dict[str, str]]]:
                     if current_line.endswith(":="):
                         ends_with_equality = True
                         break
-                    elif (startswith(current_line, section_starters) and not first_line):
+                    elif startswith(current_line, section_starters) and not first_line:
                         break
                     sig_lines.append(lines[i])
                     first_line = False
                     i += 1
-                
+
                 if i < len(lines) and ends_with_equality:
                     sig_lines.append(lines[i])  # Add the line with :=
                     i += 1
-                
+
                 sig_text = "".join(sig_lines)
                 if ends_with_equality:
-                    results.append({
-                        "type": "sig",
-                        "string": sig_text
-                    })
-                
-                    # Parse implementation      
+                    results.append({"type": "sig", "string": sig_text})
+
+                    # Parse implementation
                     impl_lines = []
                     while i < len(lines):
                         current_line = lines[i].rstrip()
@@ -230,20 +245,14 @@ def parse_lean_file(file_path: str) -> Tuple[str, List[Dict[str, str]]]:
                             break
                         impl_lines.append(lines[i])
                         i += 1
-                    
+
                     if impl_lines:
                         impl_text = "".join(impl_lines)
-                        results.append({
-                            "type": "impl",
-                            "string": impl_text
-                        })
+                        results.append({"type": "impl", "string": impl_text})
 
                 else:
-                    partial_results.append({
-                        "type": "sig",
-                        "string": sig_text
-                    })
-                    
+                    partial_results.append({"type": "sig", "string": sig_text})
+
             elif startswith(line, ["theorem"]):
                 results = consolidate_partial_results(partial_results, results)
                 partial_results = []
@@ -259,22 +268,19 @@ def parse_lean_file(file_path: str) -> Tuple[str, List[Dict[str, str]]]:
                     if current_line.endswith(":= by"):
                         ends_with_by = True
                         break
-                    elif (startswith(current_line, section_starters) and not first_line):
+                    elif startswith(current_line, section_starters) and not first_line:
                         break
                     cond_lines.append(lines[i])
                     first_line = False
                     i += 1
-                
+
                 if i < len(lines) and ends_with_by:
                     cond_lines.append(lines[i])  # Add the line with ":= by"
                     i += 1
-                
+
                 cond_text = "".join(cond_lines)
                 if ends_with_by:
-                    results.append({
-                        "type": "cond",
-                        "string": cond_text
-                    })
+                    results.append({"type": "cond", "string": cond_text})
 
                     # Parse proof
                     proof_lines = []
@@ -284,30 +290,18 @@ def parse_lean_file(file_path: str) -> Tuple[str, List[Dict[str, str]]]:
                             break
                         proof_lines.append(lines[i])
                         i += 1
-                
+
                     if proof_lines:
                         proof_text = "".join(proof_lines)
-                        results.append({
-                            "type": "proof",
-                            "string": proof_text
-                        })
+                        results.append({"type": "proof", "string": proof_text})
                 else:
-                    partial_results.append({
-                        "type": "cond",
-                        "string": cond_text
-                    })
+                    partial_results.append({"type": "cond", "string": cond_text})
 
             elif line == "":
-                partial_results.append({
-                    "type": "empty",
-                    "string": ""
-                })                
+                partial_results.append({"type": "empty", "string": ""})
                 i += 1
             else:
-                partial_results.append({
-                    "type": "other",
-                    "string": lines[i]
-                })                
+                partial_results.append({"type": "other", "string": lines[i]})
                 i += 1
 
     if partial_results:
@@ -316,32 +310,33 @@ def parse_lean_file(file_path: str) -> Tuple[str, List[Dict[str, str]]]:
 
     return "ok", results
 
+
 def two_sorry_types(actual_types, parsing_results):
-    
     if len(parsing_results) < 6:
         return False
-    if actual_types[-6:] == ['doc', 'sig', 'impl', 'doc', 'cond', 'proof']:
-        for i in [-1,-4]:
-            if not "sorry" in parsing_results[i]["string"]:
+    if actual_types[-6:] == ["doc", "sig", "impl", "doc", "cond", "proof"]:
+        for i in [-1, -4]:
+            if "sorry" not in parsing_results[i]["string"]:
                 return False
-        for i in [-2,-3,-5,-6]:
+        for i in [-2, -3, -5, -6]:
             if "sorry" in parsing_results[i]["string"]:
                 return False
-        for i in range(len(parsing_results)-6):
+        for i in range(len(parsing_results) - 6):
             if "sorry" in parsing_results[i]["string"]:
                 return False
         return True
     return False
 
+
 def check_file_format(file_path):
     """Check if a .lean file follows the expected format using parse_lean_file."""
     # First run parse_lean_file on the file
     status, parsing_results = parse_lean_file(file_path)
-    
+
     # If an error is raised, return the status
     if status != "ok":
         return (status, {}, {})
-     
+
     # Extract the types from parsing_results
     actual_types = [result["type"] for result in parsing_results]
     for result in parsing_results:
@@ -350,10 +345,17 @@ def check_file_format(file_path):
         else:
             result["string"] = result["string"].rstrip()
 
-    
-
     # Check if the actual types match the expected order
-    if actual_types == ["desc", "imports", "doc", "sig", "impl", "doc", "cond", "proof"]:
+    if actual_types == [
+        "desc",
+        "imports",
+        "doc",
+        "sig",
+        "impl",
+        "doc",
+        "cond",
+        "proof",
+    ]:
         # expected_order = ["desc", "imports", "doc", "sig", "impl", "doc", "cond", "proof"]
         file_components = {
             "description": parsing_results[0]["string"].rstrip(),  # desc
@@ -363,7 +365,7 @@ def check_file_format(file_path):
             "def_impl": parsing_results[4]["string"].rstrip(),  # impl
             "theorem_text": parsing_results[5]["string"].rstrip(),  # second doc
             "theorem_cond": parsing_results[6]["string"].rstrip(),  # cond
-            "theorem_proof": parsing_results[7]["string"].rstrip()  # proof
+            "theorem_proof": parsing_results[7]["string"].rstrip(),  # proof
         }
         return ("ok", file_components, parsing_results)
 
@@ -377,7 +379,7 @@ def check_file_format(file_path):
             "def_impl": parsing_results[3]["string"].rstrip(),  # impl
             "theorem_text": parsing_results[4]["string"].rstrip(),  # second doc
             "theorem_cond": parsing_results[5]["string"].rstrip(),  # cond
-            "theorem_proof": parsing_results[6]["string"].rstrip()  # proof
+            "theorem_proof": parsing_results[6]["string"].rstrip(),  # proof
         }
         return ("ok", file_components, parsing_results)
 
@@ -391,42 +393,76 @@ def check_file_format(file_path):
             "def_impl": parsing_results[3]["string"].rstrip(),  # impl
             "theorem_text": parsing_results[4]["string"].rstrip(),  # second doc
             "theorem_cond": parsing_results[5]["string"].rstrip(),  # cond
-            "theorem_proof": parsing_results[6]["string"].rstrip()  # proof
+            "theorem_proof": parsing_results[6]["string"].rstrip(),  # proof
         }
         return ("ok", file_components, parsing_results)
 
-    elif actual_types == ['desc', 'imports', 'doc', 'constr', 'empty', 'doc', 'sig', 'impl', 'doc', 'cond', 'proof']:
+    elif actual_types == [
+        "desc",
+        "imports",
+        "doc",
+        "constr",
+        "empty",
+        "doc",
+        "sig",
+        "impl",
+        "doc",
+        "cond",
+        "proof",
+    ]:
         # expected_order = ["desc", "doc", "sig", "impl", "doc", "cond", "proof"]
         file_components = {
             "description": parsing_results[0]["string"].rstrip(),  # desc
-            "imports": parsing_results[1]["string"].rstrip() + "\n\n" + 
-                       parsing_results[2]["string"].rstrip() + "\n" +
-                       parsing_results[3]["string"].rstrip(),  # imports
+            "imports": parsing_results[1]["string"].rstrip()
+            + "\n\n"
+            + parsing_results[2]["string"].rstrip()
+            + "\n"
+            + parsing_results[3]["string"].rstrip(),  # imports
             "def_text": parsing_results[5]["string"].rstrip(),  # first doc
             "def_sig": parsing_results[6]["string"].rstrip(),  # sig
             "def_impl": parsing_results[7]["string"].rstrip(),  # impl
             "theorem_text": parsing_results[8]["string"].rstrip(),  # second doc
             "theorem_cond": parsing_results[9]["string"].rstrip(),  # cond
-            "theorem_proof": parsing_results[10]["string"].rstrip()  # proof
+            "theorem_proof": parsing_results[10]["string"].rstrip(),  # proof
         }
         return ("ok", file_components, parsing_results)
 
-    elif actual_types == ['desc', 'imports', 'doc', 'constr', 'empty', 'doc', 'constr', 'empty', 'doc', 'sig', 'impl', 'doc', 'cond', 'proof']:
+    elif actual_types == [
+        "desc",
+        "imports",
+        "doc",
+        "constr",
+        "empty",
+        "doc",
+        "constr",
+        "empty",
+        "doc",
+        "sig",
+        "impl",
+        "doc",
+        "cond",
+        "proof",
+    ]:
         # expected_order = ["desc", "doc", "sig", "impl", "doc", "cond", "proof"]
         file_components = {
             "description": parsing_results[0]["string"].rstrip(),  # desc
-            "imports": parsing_results[1]["string"].rstrip() + "\n\n" + 
-                       parsing_results[2]["string"].rstrip() + "\n" +
-                       parsing_results[3]["string"].rstrip() + "\n" + 
-                       parsing_results[4]["string"].rstrip() + "\n" +
-                       parsing_results[5]["string"].rstrip() + "\n" +
-                       parsing_results[6]["string"].rstrip(),  # imports
+            "imports": parsing_results[1]["string"].rstrip()
+            + "\n\n"
+            + parsing_results[2]["string"].rstrip()
+            + "\n"
+            + parsing_results[3]["string"].rstrip()
+            + "\n"
+            + parsing_results[4]["string"].rstrip()
+            + "\n"
+            + parsing_results[5]["string"].rstrip()
+            + "\n"
+            + parsing_results[6]["string"].rstrip(),  # imports
             "def_text": parsing_results[8]["string"].rstrip(),  # first doc
             "def_sig": parsing_results[9]["string"].rstrip(),  # sig
             "def_impl": parsing_results[10]["string"].rstrip(),  # impl
             "theorem_text": parsing_results[11]["string"].rstrip(),  # second doc
             "theorem_cond": parsing_results[12]["string"].rstrip(),  # cond
-            "theorem_proof": parsing_results[13]["string"].rstrip()  # proof
+            "theorem_proof": parsing_results[13]["string"].rstrip(),  # proof
         }
         return ("ok", file_components, parsing_results)
 
@@ -444,7 +480,7 @@ def check_file_format(file_path):
         else:
             imports = ""
 
-        for i in range(imports_start, len(parsing_results)-6):
+        for i in range(imports_start, len(parsing_results) - 6):
             imports += parsing_results[i]["string"].rstrip() + "\n"
 
         file_components = {
@@ -455,64 +491,70 @@ def check_file_format(file_path):
             "def_impl": parsing_results[-4]["string"].rstrip(),  # impl
             "theorem_text": parsing_results[-3]["string"].rstrip(),  # second doc
             "theorem_cond": parsing_results[-2]["string"].rstrip(),  # cond
-            "theorem_proof": parsing_results[-1]["string"].rstrip()  # proof
+            "theorem_proof": parsing_results[-1]["string"].rstrip(),  # proof
         }
         return ("ok", file_components, parsing_results)
 
     else:
         return ("Wrong component order", {}, parsing_results)
 
+
 def remove_empty_lines(text):
     """Remove empty lines from the text."""
-    return "\n".join([line for line in text.split('\n') if line.rstrip() != ''])
+    return "\n".join([line for line in text.split("\n") if line.rstrip() != ""])
+
 
 def build_spec_from_result(result):
     """Build a spec dictionary from the parsed result, carefully combining description, def_text and theorem_text into vc-helpers."""
-    
+
     # Build vc-description by combining description, def_text, and theorem_text
     description_parts = []
-    
+
     # Process description section
     description = result["description"]
     if description.startswith("/-!"):
         description = description.replace("/-!", "/- ")
     if description.rstrip():
-        for line in description.split('\n'):
-            if not line.strip().startswith('\"code\"'):
+        for line in description.split("\n"):
+            if not line.strip().startswith('"code"'):
                 description_parts.append(line)
         if description_parts:
             description_parts.append("")
-    
+
     # Process def_text section
     def_text = result["def_text"]
     if def_text.startswith("/--"):
         def_text = def_text.replace("/--", "/- ")
     if def_text.rstrip():
-        for line in def_text.split('\n'):
+        for line in def_text.split("\n"):
             description_parts.append(line)
         if description_parts:
             description_parts.append("")
-    
+
     # Process theorem_text section
     theorem_text = result["theorem_text"]
     if theorem_text.startswith("/--"):
         theorem_text = theorem_text.replace("/--", "/- ")
     if theorem_text.rstrip():
-        for line in theorem_text.split('\n'):
+        for line in theorem_text.split("\n"):
             description_parts.append(line)
-    
+
     # Build the spec dictionary
     spec = {
         "vc-description": "\n".join(description_parts).rstrip(),
         "vc-preamble": result["imports"].rstrip(),
         "vc-helpers": "-- <vc-helpers>\n-- </vc-helpers>",
         "vc-signature": result["def_sig"].rstrip(),
-        "vc-implementation": "-- <vc-implementation>\n" + result["def_impl"].rstrip() + "\n-- </vc-implementation>",
+        "vc-implementation": "-- <vc-implementation>\n"
+        + result["def_impl"].rstrip()
+        + "\n-- </vc-implementation>",
         "vc-condition": result["theorem_cond"].rstrip(),
-        "vc-proof": "-- <vc-proof>\n" + result["theorem_proof"].rstrip() + "\n-- </vc-proof>",
-        "vc-postamble": ""
+        "vc-proof": "-- <vc-proof>\n"
+        + result["theorem_proof"].rstrip()
+        + "\n-- </vc-proof>",
+        "vc-postamble": "",
     }
-    
+
     return spec
 
 
@@ -520,19 +562,20 @@ def write_yaml_file(result, output_path):
     """Write the JSON result to a YAML file in the specified format using spec_to_yaml."""
     # First part: build the spec object by combining description, def_text and theorem_text
     spec = build_spec_from_result(result)
-    
+
     # Second part: write the spec object to YAML file using spec_to_yaml
     required_keys = [
-        'vc-description',
-        'vc-preamble', 
-        'vc-helpers',
-        'vc-signature',
-        'vc-implementation',
-        'vc-condition',
-        'vc-proof',
-        'vc-postamble'
+        "vc-description",
+        "vc-preamble",
+        "vc-helpers",
+        "vc-signature",
+        "vc-implementation",
+        "vc-condition",
+        "vc-proof",
+        "vc-postamble",
     ]
     spec_to_yaml(spec, output_path, required_keys=required_keys)
+
 
 def main():
     """Main function to check all .lean files in the current directory."""
@@ -540,28 +583,27 @@ def main():
     numpy_dir = benchmarks_dir / "lean" / "numpy_all"
     numpy_yaml_dir = benchmarks_dir / "lean" / "numpy_yaml"
     numpy_bad_dir = benchmarks_dir / "lean" / "numpy_bad"
-    output_file = benchmarks_dir / "lean" / "wrong_format.txt"   
+    output_file = benchmarks_dir / "lean" / "wrong_format.txt"
     parsing_results_file = "benchmarks/lean/parsing_results.json"
 
-   
-    lean_files = list(numpy_dir.glob('*.lean')) 
+    lean_files = list(numpy_dir.glob("*.lean"))
     if not lean_files:
         print("No .lean files found in the current directory.")
         return
-    
+
     # Create directories if they don't exist
     numpy_yaml_dir.mkdir(exist_ok=True)
     numpy_bad_dir.mkdir(exist_ok=True)
-    
+
     print(f"Checking {len(lean_files)} .lean files for proper formatting...\n")
-    
+
     wrong_format_files = []
     parsing_results_obj = {}
-    count_wrong_component_order = 0 
+    count_wrong_component_order = 0
     count_parsing_error = 0
-    with open(output_file, 'w') as f:
+    with open(output_file, "w") as f:
         for file_path in sorted(lean_files):
-            status, result, parsing_results = check_file_format(file_path)   
+            status, result, parsing_results = check_file_format(file_path)
             if status != "ok":
                 if status == "Wrong component order":
                     count_wrong_component_order += 1
@@ -570,57 +612,60 @@ def main():
                 print(f"✗ {file_path.name}: {status}")
                 f.write(f"{file_path.name}: {status}\n")
                 wrong_format_files.append(file_path.name)
-                
+
                 # Copy the file to numpy_bad directory
                 bad_file_path = numpy_bad_dir / file_path.name
                 import shutil
+
                 shutil.copy2(file_path, bad_file_path)
                 print(f"  → Copied to {bad_file_path}")
 
                 # append parsing results to parsing_results_list
                 parsing_results_obj[file_path.name] = {
                     "status": status,
-                    "results": parsing_results
+                    "results": parsing_results,
                 }
-                
+
             else:
                 # Write YAML file for files that pass the format check
                 yaml_filename = file_path.stem + ".yaml"
                 yaml_path = numpy_yaml_dir / yaml_filename
                 write_yaml_file(result, yaml_path)
                 # print(f"✓ {file_path.name}: Created {yaml_filename}")
-            
-        print(f"\nSummary:")
+
+        print("\nSummary:")
         print(f"Total files checked: {len(lean_files)}")
         print(f"Files with correct format: {len(lean_files) - len(wrong_format_files)}")
         print(f"Files with wrong component order: {count_wrong_component_order}")
         print(f"Files with parsing error: {count_parsing_error}")
 
-        f.write(f"\nSummary:")
+        f.write("\nSummary:")
         f.write(f"Total files checked: {len(lean_files)}\n")
-        f.write(f"Files with correct format: {len(lean_files) - len(wrong_format_files)}\n")
+        f.write(
+            f"Files with correct format: {len(lean_files) - len(wrong_format_files)}\n"
+        )
         f.write(f"Files with wrong component order: {count_wrong_component_order}\n")
         f.write(f"Files with parsing error: {count_parsing_error}\n")
-        
+
         if wrong_format_files:
             # print(f"\nFiles with wrong format:")
             # for file_name in wrong_format_files:
             #     print(f"  - {file_name}")
-            
+
             # Update the wrong_format.txt file
             f.write("Files with parsing error or wrong component order:\n\n")
             for file_name in wrong_format_files:
                 f.write(f"- {file_name}\n")
-            
+
             print(f"\nUpdated {output_file}")
         else:
             print("\nAll files have the correct format!")
         print()
-           
+
     # Save results to JSON file
     with open(parsing_results_file, "w") as f:
         json.dump(parsing_results_obj, f, indent=2)
-    
+
 
 if __name__ == "__main__":
     main()

@@ -17,7 +17,7 @@ from ..core.prompts import PromptLoader
 from ..core.language_tools import verify_file
 from ..core.llm_providers import call_llm
 from ..utils.io_utils import save_iteration_code
-from .code_fixer import extract_code, apply_json_replacements
+from .code_fixer import apply_json_replacements
 from .cheat_checker import has_final_failure_cheats, check_for_cheats
 
 # Import for Lean preprocessing
@@ -26,24 +26,26 @@ from ..preprocessing import preprocess_lean_file, ensure_mathlib_import
 
 def count_placeholders(original_code: str, language: str) -> int:
     """Count placeholders in original code for JSON array sizing.
-    
+
     Args:
         original_code: The original code content
         language: The programming language ("lean", "dafny", "verus")
-        
+
     Returns:
         Number of placeholders that need to be replaced
-        
+
     Raises:
         ValueError: If unsupported language is provided
     """
     if language == "lean":
         # Count sorries only inside editable sections (vc-definitions, vc-theorems, vc-helpers)
         editable_sections = []
-        for section_name in ['vc-definitions', 'vc-theorems', 'vc-helpers']:
-            pattern = rf'<{section_name}>(.*?)</{section_name}>'
+        for section_name in ["vc-definitions", "vc-theorems", "vc-helpers"]:
+            pattern = rf"<{section_name}>(.*?)</{section_name}>"
             matches = list(re.finditer(pattern, original_code, re.DOTALL))
-            editable_sections.extend([(match.start(), match.end()) for match in matches])
+            editable_sections.extend(
+                [(match.start(), match.end()) for match in matches]
+            )
 
         sorry_count = 0
         search_start = 0
@@ -52,7 +54,9 @@ def count_placeholders(original_code: str, language: str) -> int:
             if pos == -1:
                 break
             # Only count if inside an editable section
-            in_editable_section = any(start <= pos < end for start, end in editable_sections)
+            in_editable_section = any(
+                start <= pos < end for start, end in editable_sections
+            )
             if in_editable_section:
                 sorry_count += 1
             search_start = pos + 1
@@ -60,10 +64,14 @@ def count_placeholders(original_code: str, language: str) -> int:
         # Also count vc-helpers sections themselves (they can be replaced with helper content)
         placeholder_count = sorry_count + original_code.count("<vc-helpers>")
     elif language in ("dafny", "verus"):
-        placeholder_count = original_code.count("<vc-code>") + original_code.count("<vc-helpers>")
+        placeholder_count = original_code.count("<vc-code>") + original_code.count(
+            "<vc-helpers>"
+        )
     else:
-        raise ValueError(f"Unsupported language: {language}. Supported languages are: lean, dafny, verus")
-    
+        raise ValueError(
+            f"Unsupported language: {language}. Supported languages are: lean, dafny, verus"
+        )
+
     return placeholder_count
 
 
@@ -75,6 +83,7 @@ logger = logging.getLogger(__name__)
 @dataclass
 class LLMResponse:
     """Individual LLM response data."""
+
     file: str
     response_type: str  # "generate_code" or "fix_verification"
     iteration: int
@@ -82,6 +91,7 @@ class LLMResponse:
     response_content: str
     json_parsed_successfully: bool
     timestamp: float
+
 
 @dataclass
 class ProcessingResult:
@@ -98,8 +108,6 @@ class ProcessingResult:
     llm_responses: list[LLMResponse] | None = None
 
 
-
-
 def process_spec_file(
     config: ProcessingConfig, prompt_loader: PromptLoader, file_path: str
 ) -> ProcessingResult:
@@ -108,30 +116,37 @@ def process_spec_file(
     failure_table = None
     llm_responses = []
     if wandb.run:
-        failure_table = wandb.Table(columns=[
-            "file", "iteration", "spec_hash", "code_hash",
-            "error_msg", "proof_state", "timestamp"
-        ])
-    
+        failure_table = wandb.Table(
+            columns=[
+                "file",
+                "iteration",
+                "spec_hash",
+                "code_hash",
+                "error_msg",
+                "proof_state",
+                "timestamp",
+            ]
+        )
+
     try:
         logger.info(f"Processing: {Path(file_path).name}")
 
         # Read the original file
         with Path(file_path).open() as f:
             original_code = f.read()
-        
+
         # Apply mandatory Lean preprocessing (Mathlib import)
         if config.language == "lean":
             original_code = ensure_mathlib_import(original_code)
-        
+
         # Apply optional Lean preprocessing (sorry wrapping) if assume-unformatted-lean is enabled
-        if (config.language == "lean" and config.assume_unformatted_lean):
+        if config.language == "lean" and config.assume_unformatted_lean:
             original_code = preprocess_lean_file(original_code)
 
         # Calculate relative path from input directory to preserve hierarchy
         relative_path = Path(file_path).relative_to(Path(config.files_dir))
         base_file_name = Path(file_path).stem
-        
+
         # Track prompts for W&B logging
         all_fix_prompts = []
 
@@ -152,12 +167,12 @@ def process_spec_file(
         try:
             # Count placeholders in original code for JSON array sizing
             placeholder_count = count_placeholders(original_code, config.language)
-            
+
             generate_prompt = prompt_loader.format_prompt(
-                "generate_code", 
-                code=original_code, 
+                "generate_code",
+                code=original_code,
                 placeholder_count=placeholder_count,
-                max_iterations=config.max_iterations
+                max_iterations=config.max_iterations,
             )
         except KeyError as e:
             logger.info(f"  ✗ Prompt error: {e}")
@@ -170,7 +185,7 @@ def process_spec_file(
         # Create LLM provider for this request
         llm_provider, _ = create_llm_provider(config.llm)
         generated_response = call_llm(llm_provider, config, generate_prompt, wandb)
-        
+
         # IMMEDIATELY save raw response to debug folder before any parsing
         if config.debug_mode:
             relative_path = Path(file_path).relative_to(Path(config.files_dir))
@@ -181,32 +196,38 @@ def process_spec_file(
                 else Path(config.output_dir) / "debug"
             )
             debug_dir.mkdir(parents=True, exist_ok=True)
-            
-            raw_response_file = debug_dir / f"{base_file_name}_raw_generate_response.txt"
+
+            raw_response_file = (
+                debug_dir / f"{base_file_name}_raw_generate_response.txt"
+            )
             with raw_response_file.open("w") as f:
-                f.write(f"=== Raw LLM Generate Response ===\n")
+                f.write("=== Raw LLM Generate Response ===\n")
                 f.write(f"Length: {len(generated_response)} characters\n")
                 f.write("-" * 80 + "\n")
                 f.write(generated_response)
                 f.write("\n" + "-" * 80 + "\n")
-        
+
         # Apply JSON replacements to original code (new approach)
         try:
-            generated_code, json_error = apply_json_replacements(config, original_code, generated_response)
+            generated_code, json_error = apply_json_replacements(
+                config, original_code, generated_response
+            )
         except Exception as e:
             error_msg = f"Failed to apply JSON replacements: {str(e)}\n\nFull traceback:\n{traceback.format_exc()}"
             logger.error(error_msg)
             raise RuntimeError(error_msg) from e
-        
+
         # If JSON parsing failed, try once more with a fresh LLM call
         if json_error and "JSON parsing failed" in json_error:
-            logger.info(f"  ⚠️  JSON parsing failed, attempting retry...")
+            logger.info("  ⚠️  JSON parsing failed, attempting retry...")
             try:
                 retry_response = call_llm(llm_provider, config, generate_prompt, wandb)
-                generated_code, json_error = apply_json_replacements(config, original_code, retry_response)
-                
+                generated_code, json_error = apply_json_replacements(
+                    config, original_code, retry_response
+                )
+
                 if not json_error:
-                    logger.info(f"  ✓ Retry successful - JSON parsed correctly")
+                    logger.info("  ✓ Retry successful - JSON parsed correctly")
                     # Update the response for logging
                     generated_response = retry_response
                 else:
@@ -214,31 +235,35 @@ def process_spec_file(
             except Exception as e:
                 logger.error(f"  ✗ Retry attempt failed with error: {str(e)}")
                 # Keep original error
-        
+
         # Collect LLM response data
         if wandb.run:
-            llm_responses.append(LLMResponse(
-                file=file_path,
-                response_type="generate_code",
-                iteration=0,  # iteration 0 for initial generation
-                prompt_hash=hashlib.md5(generate_prompt.encode()).hexdigest()[:8],
-                response_content=generated_response,
-                json_parsed_successfully=json_error is None,
-                timestamp=time.time()
-            ))
-        
+            llm_responses.append(
+                LLMResponse(
+                    file=file_path,
+                    response_type="generate_code",
+                    iteration=0,  # iteration 0 for initial generation
+                    prompt_hash=hashlib.md5(generate_prompt.encode()).hexdigest()[:8],
+                    response_content=generated_response,
+                    json_parsed_successfully=json_error is None,
+                    timestamp=time.time(),
+                )
+            )
+
         # If JSON parsing failed, treat it as a verification failure
         if json_error:
             logger.info(f"  ✗ {json_error}")
-            
+
             # Log JSON parsing failure to wandb like a verification failure
             if wandb.run:
                 file_key = Path(file_path).stem
-                wandb.log({
-                    f"json_error/{file_key}/failed": 1,
-                    f"verify/{file_key}/success": 0  # Count as verification failure
-                })
-                
+                wandb.log(
+                    {
+                        f"json_error/{file_key}/failed": 1,
+                        f"verify/{file_key}/success": 0,  # Count as verification failure
+                    }
+                )
+
                 if failure_table is not None:
                     failure_table.add_data(
                         file_path,
@@ -247,9 +272,9 @@ def process_spec_file(
                         "",  # no generated code hash since parsing failed
                         json_error,
                         "",  # no proof state for JSON errors
-                        time.time()
+                        time.time(),
                     )
-                
+
             return ProcessingResult(
                 success=False,
                 file=file_path,
@@ -259,9 +284,9 @@ def process_spec_file(
                 original_compilation_failed=original_compilation_failed,
                 generate_prompt=generate_prompt,
                 fix_prompts=[],
-                llm_responses=llm_responses if wandb.run and llm_responses else None
+                llm_responses=llm_responses if wandb.run and llm_responses else None,
             )
-        
+
         # Save initial generated code
         save_iteration_code(config, relative_path, 1, generated_code, "generated")
 
@@ -290,8 +315,7 @@ def process_spec_file(
         current_code = generated_code
         success = False
         last_verification = None
-        
-        
+
         for iteration in range(1, config.max_iterations + 1):
             logger.info(
                 f"  Iteration {iteration}/{config.max_iterations}: Verifying..."
@@ -309,39 +333,46 @@ def process_spec_file(
             # Verify
             verification = verify_file(config, str(output_path))
             last_verification = verification
-            
+
             # Check for cheats in final code - combine with verification output
             if has_final_failure_cheats(current_code, config.language):
                 cheats = check_for_cheats(current_code, config.language)
                 cheat_descriptions = [desc for _, desc in cheats]
-                logger.info(f"    ⚠️ Final code contains verification bypasses: {'; '.join(cheat_descriptions)}")
-                
+                logger.info(
+                    f"    ⚠️ Final code contains verification bypasses: {'; '.join(cheat_descriptions)}"
+                )
+
                 # Combine cheat message with original verification result
                 cheat_message = f"VERIFICATION BYPASSES DETECTED: {'; '.join(cheat_descriptions)}. Code contains verification bypasses and cannot be considered successfully verified."
-                
+
                 if verification.success:
                     # Verification succeeded but cheats found
                     combined_error = f"{cheat_message}\n\nNote: Verification succeeded but verification bypasses prevent final success."
-                    logger.info("    ✗ Marking as failed due to verification bypasses (verification succeeded)")
+                    logger.info(
+                        "    ✗ Marking as failed due to verification bypasses (verification succeeded)"
+                    )
                 else:
                     # Verification failed AND cheats found - combine both messages
                     original_error = verification.error or "Verification failed"
                     combined_error = f"{cheat_message}\n\nOriginal verification output:\n{original_error}"
-                    logger.info("    ✗ Failed due to both verification errors AND verification bypasses")
-                
-                verification = replace(verification,
-                    success=False,
-                    error=combined_error
+                    logger.info(
+                        "    ✗ Failed due to both verification errors AND verification bypasses"
+                    )
+
+                verification = replace(
+                    verification, success=False, error=combined_error
                 )
-            
+
             # Log verification attempt to wandb
             if wandb.run:
                 file_key = Path(file_path).stem
-                wandb.log({
-                    f"verify/{file_key}/iter": iteration,
-                    f"verify/{file_key}/success": int(verification.success)
-                })
-                
+                wandb.log(
+                    {
+                        f"verify/{file_key}/iter": iteration,
+                        f"verify/{file_key}/success": int(verification.success),
+                    }
+                )
+
                 # Log failure details to table
                 if not verification.success and failure_table is not None:
                     failure_table.add_data(
@@ -349,9 +380,11 @@ def process_spec_file(
                         iteration,
                         hashlib.md5(original_code.encode()).hexdigest()[:8],
                         hashlib.md5(current_code.encode()).hexdigest()[:8],
-                        verification.error if verification.error else "Unknown error",  # Full error message
+                        verification.error
+                        if verification.error
+                        else "Unknown error",  # Full error message
                         "",  # Proof state would come from lean tools
-                        time.time()
+                        time.time(),
                     )
 
             if verification.success:
@@ -366,56 +399,59 @@ def process_spec_file(
                         if str(relative_path.parent) != "."
                         else Path(config.output_dir) / "debug"
                     ) / f"{base_file_name}_iter{iteration}_error.log"
-                    
+
                     error_log_path.parent.mkdir(parents=True, exist_ok=True)
                     with error_log_path.open("w") as f:
                         f.write(f"=== Verification Error - Iteration {iteration} ===\n")
                         f.write(f"File: {file_path}\n")
                         f.write(f"Time: {time.strftime('%Y-%m-%d %H:%M:%S')}\n")
-                        f.write(f"\nFull Error Output:\n")
+                        f.write("\nFull Error Output:\n")
                         f.write("-" * 80 + "\n")
                         f.write(verification.error)
                         f.write("\n" + "-" * 80 + "\n")
                         if verification.output:
                             f.write("\nAdditional Output:\n")
                             f.write(verification.output)
-                    logger.info(f"    💾 Saved full error log to: debug/{relative_path.parent}/{base_file_name}_iter{iteration}_error.log")
-                
+                    logger.info(
+                        f"    💾 Saved full error log to: debug/{relative_path.parent}/{base_file_name}_iter{iteration}_error.log"
+                    )
+
                 logger.info(
                     f"    ✗ Verification failed: {verification.error[:200] if verification.error else 'Unknown error'}..."
                 )
 
             # Try to fix issues (both compilation and verification errors)
             error_details = verification.error or "Unknown error"
-            
 
             # Only attempt fix if not on last iteration
             if iteration < config.max_iterations:
                 logger.info("    Attempting to fix errors...")
                 # Count placeholders in original code for JSON array sizing (not current code!)
                 placeholder_count = count_placeholders(original_code, config.language)
-                
+
                 fix_prompt = prompt_loader.format_prompt(
                     "fix_verification",
                     code=current_code,
                     original_code=original_code,
                     errorDetails=error_details,
-                    iteration=iteration+1,
+                    iteration=iteration + 1,
                     placeholder_count=placeholder_count,
-                    max_iterations=config.max_iterations
+                    max_iterations=config.max_iterations,
                 )
 
                 # Track fix prompt for W&B logging
                 all_fix_prompts.append(fix_prompt)
-                
+
                 try:
-                    # Create LLM provider for fix request  
+                    # Create LLM provider for fix request
                     llm_provider, _ = create_llm_provider(config.llm)
                     fix_response = call_llm(llm_provider, config, fix_prompt, wandb)
-                    
+
                     # IMMEDIATELY save raw response to debug folder before any parsing
                     if config.debug_mode:
-                        relative_path = Path(file_path).relative_to(Path(config.files_dir))
+                        relative_path = Path(file_path).relative_to(
+                            Path(config.files_dir)
+                        )
                         base_file_name = Path(file_path).stem
                         debug_dir = (
                             Path(config.output_dir) / "debug" / relative_path.parent
@@ -423,40 +459,51 @@ def process_spec_file(
                             else Path(config.output_dir) / "debug"
                         )
                         debug_dir.mkdir(parents=True, exist_ok=True)
-                        
-                        raw_response_file = debug_dir / f"{base_file_name}_raw_fix_response_iter{iteration}.txt"
+
+                        raw_response_file = (
+                            debug_dir
+                            / f"{base_file_name}_raw_fix_response_iter{iteration}.txt"
+                        )
                         with raw_response_file.open("w") as f:
-                            f.write(f"=== Raw LLM Fix Response - Iteration {iteration} ===\n")
+                            f.write(
+                                f"=== Raw LLM Fix Response - Iteration {iteration} ===\n"
+                            )
                             f.write(f"Length: {len(fix_response)} characters\n")
                             f.write("-" * 80 + "\n")
                             f.write(fix_response)
                             f.write("\n" + "-" * 80 + "\n")
-                    
+
                     # Apply JSON replacements for fix to the ORIGINAL file (which has placeholders)
                     # This ensures we're replacing sorry/vc-code tags, not broken implementations
                     try:
-                        fixed_code, fix_json_error = apply_json_replacements(config, original_code, fix_response)
+                        fixed_code, fix_json_error = apply_json_replacements(
+                            config, original_code, fix_response
+                        )
                     except Exception as e:
                         error_msg = f"Failed to apply JSON replacements: {str(e)}\n\nFull traceback:\n{traceback.format_exc()}"
                         logger.error(error_msg)
                         raise RuntimeError(error_msg) from e
-                    
+
                     # Collect LLM fix response data
                     if wandb.run:
-                        llm_responses.append(LLMResponse(
-                            file=file_path,
-                            response_type="fix_verification",
-                            iteration=iteration,
-                            prompt_hash=hashlib.md5(fix_prompt.encode()).hexdigest()[:8],
-                            response_content=fix_response,
-                            json_parsed_successfully=fix_json_error is None,
-                            timestamp=time.time()
-                        ))
-                    
+                        llm_responses.append(
+                            LLMResponse(
+                                file=file_path,
+                                response_type="fix_verification",
+                                iteration=iteration,
+                                prompt_hash=hashlib.md5(
+                                    fix_prompt.encode()
+                                ).hexdigest()[:8],
+                                response_content=fix_response,
+                                json_parsed_successfully=fix_json_error is None,
+                                timestamp=time.time(),
+                            )
+                        )
+
                     # If JSON parsing failed during fix, treat as iteration failure
                     if fix_json_error:
                         logger.info(f"    ✗ Fix JSON parsing failed: {fix_json_error}")
-                        
+
                         # Log fix parsing failure to wandb
                         if wandb.run and failure_table is not None:
                             failure_table.add_data(
@@ -466,13 +513,13 @@ def process_spec_file(
                                 hashlib.md5(current_code.encode()).hexdigest()[:8],
                                 f"Fix JSON parsing failed: {fix_json_error}",
                                 "",
-                                time.time()
+                                time.time(),
                             )
                         continue  # Skip to next iteration
-                    
+
                     current_code = fixed_code
                     logger.info(f"    Generated fix for iteration {iteration}")
-                    
+
                     # Fixed code will be saved in next iteration
                 except Exception as e:
                     logger.info(f"    ✗ Failed to generate fix: {str(e)}")
@@ -480,16 +527,18 @@ def process_spec_file(
 
         if success:
             logger.info(f"  ✓ Successfully generated and verified: {output_path.name}")
-            
+
             # Track success in wandb
             if wandb.run:
                 file_key = Path(file_path).stem
-                wandb.log({
-                    f"verify/{file_key}/final_iter": iteration,
-                    f"verify/{file_key}/success": 1,
-                    "success_count": 1
-                })
-            
+                wandb.log(
+                    {
+                        f"verify/{file_key}/final_iter": iteration,
+                        f"verify/{file_key}/success": 1,
+                        "success_count": 1,
+                    }
+                )
+
             return ProcessingResult(
                 success=True,
                 file=str(relative_path),
@@ -499,7 +548,7 @@ def process_spec_file(
                 original_compilation_failed=original_compilation_failed,
                 generate_prompt=generate_prompt,
                 fix_prompts=all_fix_prompts if all_fix_prompts else None,
-                llm_responses=llm_responses if wandb.run and llm_responses else None
+                llm_responses=llm_responses if wandb.run and llm_responses else None,
             )
         else:
             error_msg = (
@@ -510,28 +559,36 @@ def process_spec_file(
             logger.info(
                 f"  ✗ Failed to verify after {config.max_iterations} iterations: {error_msg[:200] if error_msg else 'Unknown error'}..."
             )
-            
+
             # Track failure in wandb
             if wandb.run:
                 file_key = Path(file_path).stem
-                wandb.log({
-                    f"verify/{file_key}/final_iter": config.max_iterations,
-                    f"verify/{file_key}/success": 0,
-                    "failure_count": 1
-                })
-                
+                wandb.log(
+                    {
+                        f"verify/{file_key}/final_iter": config.max_iterations,
+                        f"verify/{file_key}/success": 0,
+                        "failure_count": 1,
+                    }
+                )
+
                 # Add final failure to table
                 if failure_table is not None:
                     failure_table.add_data(
                         file_path,
                         config.max_iterations,
                         hashlib.md5(original_code.encode()).hexdigest()[:8],
-                        hashlib.md5(current_code.encode() if 'current_code' in locals() else generated_code.encode()).hexdigest()[:8],
-                        error_msg if error_msg else "Unknown error",  # Full error message
+                        hashlib.md5(
+                            current_code.encode()
+                            if "current_code" in locals()
+                            else generated_code.encode()
+                        ).hexdigest()[:8],
+                        error_msg
+                        if error_msg
+                        else "Unknown error",  # Full error message
                         "",
-                        time.time()
+                        time.time(),
                     )
-            
+
             return ProcessingResult(
                 success=False,
                 file=str(relative_path),
@@ -541,20 +598,17 @@ def process_spec_file(
                 original_compilation_failed=original_compilation_failed,
                 generate_prompt=generate_prompt,
                 fix_prompts=all_fix_prompts if all_fix_prompts else None,
-                llm_responses=llm_responses if wandb.run and llm_responses else None
+                llm_responses=llm_responses if wandb.run and llm_responses else None,
             )
 
     except Exception as e:
         logger.info(f"✗ Failed: {Path(file_path).name} - {str(e)}")
-        
+
         # Track exception in wandb
         if wandb.run:
             file_key = Path(file_path).stem
-            wandb.log({
-                f"verify/{file_key}/exception": 1,
-                "exception_count": 1
-            })
-        
+            wandb.log({f"verify/{file_key}/exception": 1, "exception_count": 1})
+
         return ProcessingResult(
             success=False,
             file=str(relative_path)
@@ -563,17 +617,22 @@ def process_spec_file(
             error=str(e),
             output=None,
             has_bypass=False,
-            original_compilation_failed="original_compilation_failed" in locals() and original_compilation_failed,
+            original_compilation_failed="original_compilation_failed" in locals()
+            and original_compilation_failed,
             generate_prompt=generate_prompt if "generate_prompt" in locals() else None,
-            fix_prompts=all_fix_prompts if "all_fix_prompts" in locals() and all_fix_prompts else None,
-            llm_responses=llm_responses if wandb.run and "llm_responses" in locals() and llm_responses else None
+            fix_prompts=all_fix_prompts
+            if "all_fix_prompts" in locals() and all_fix_prompts
+            else None,
+            llm_responses=llm_responses
+            if wandb.run and "llm_responses" in locals() and llm_responses
+            else None,
         )
     finally:
         # Log failure table to W&B and save LLM responses to debug folder
         if wandb.run:
             if failure_table is not None and len(failure_table.data) > 0:
                 wandb.log({"verification_failures": failure_table})
-                
+
             # Save LLM responses to debug folder
             if config.debug_mode and llm_responses:
                 relative_path = Path(file_path).relative_to(Path(config.files_dir))
@@ -584,16 +643,25 @@ def process_spec_file(
                     else Path(config.output_dir) / "debug"
                 )
                 debug_dir.mkdir(parents=True, exist_ok=True)
-                
+
                 for i, response in enumerate(llm_responses):
-                    response_file = debug_dir / f"{base_file_name}_llm_response_{response.response_type}_iter{response.iteration}.txt"
+                    response_file = (
+                        debug_dir
+                        / f"{base_file_name}_llm_response_{response.response_type}_iter{response.iteration}.txt"
+                    )
                     with response_file.open("w") as f:
-                        f.write(f"=== LLM Response - {response.response_type} - Iteration {response.iteration} ===\n")
+                        f.write(
+                            f"=== LLM Response - {response.response_type} - Iteration {response.iteration} ===\n"
+                        )
                         f.write(f"File: {response.file}\n")
                         f.write(f"Prompt Hash: {response.prompt_hash}\n")
-                        f.write(f"JSON Parsed Successfully: {response.json_parsed_successfully}\n")
+                        f.write(
+                            f"JSON Parsed Successfully: {response.json_parsed_successfully}\n"
+                        )
                         f.write(f"Timestamp: {response.timestamp}\n")
-                        f.write(f"Content Length: {len(response.response_content)} chars\n")
+                        f.write(
+                            f"Content Length: {len(response.response_content)} chars\n"
+                        )
                         f.write("-" * 80 + "\n")
                         f.write(response.response_content)
                         f.write("\n" + "-" * 80 + "\n")
@@ -660,13 +728,20 @@ def process_files_parallel(
         for result in results:
             if result.llm_responses:
                 all_llm_responses.extend(result.llm_responses)
-        
+
         if all_llm_responses:
-            llm_responses_table = wandb.Table(columns=[
-                "file", "response_type", "iteration", "prompt_hash", 
-                "response_content", "json_parsed_successfully", "timestamp"
-            ])
-            
+            llm_responses_table = wandb.Table(
+                columns=[
+                    "file",
+                    "response_type",
+                    "iteration",
+                    "prompt_hash",
+                    "response_content",
+                    "json_parsed_successfully",
+                    "timestamp",
+                ]
+            )
+
             for response in all_llm_responses:
                 llm_responses_table.add_data(
                     response.file,
@@ -675,10 +750,12 @@ def process_files_parallel(
                     response.prompt_hash,
                     response.response_content,
                     response.json_parsed_successfully,
-                    response.timestamp
+                    response.timestamp,
                 )
-            
+
             wandb.log({"llm_responses": llm_responses_table})
-            logger.info(f"  📊 Logged {len(all_llm_responses)} LLM responses to W&B table")
+            logger.info(
+                f"  📊 Logged {len(all_llm_responses)} LLM responses to W&B table"
+            )
 
     return results

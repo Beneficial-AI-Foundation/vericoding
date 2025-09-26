@@ -5,7 +5,6 @@ import threading
 from abc import ABC, abstractmethod
 from time import time, sleep
 from dataclasses import dataclass
-from typing import Optional
 from .config import ProcessingConfig
 
 import anthropic
@@ -15,6 +14,7 @@ import openai
 @dataclass
 class LLMResponse:
     """Response from LLM API including token usage information."""
+
     text: str
     input_tokens: int = 0
     output_tokens: int = 0
@@ -60,18 +60,28 @@ class AnthropicProvider(LLMProvider):
 
             if response.content and len(response.content) > 0:
                 text_content = response.content[0]
-                text = text_content.text if hasattr(text_content, "text") else str(text_content)
+                text = (
+                    text_content.text
+                    if hasattr(text_content, "text")
+                    else str(text_content)
+                )
                 if not text or not str(text).strip():
                     raise ValueError("Empty response from Anthropic API")
-                
+
                 # Extract token usage
-                input_tokens = getattr(response.usage, 'input_tokens', 0) if hasattr(response, 'usage') else 0
-                output_tokens = getattr(response.usage, 'output_tokens', 0) if hasattr(response, 'usage') else 0
-                
+                input_tokens = (
+                    getattr(response.usage, "input_tokens", 0)
+                    if hasattr(response, "usage")
+                    else 0
+                )
+                output_tokens = (
+                    getattr(response.usage, "output_tokens", 0)
+                    if hasattr(response, "usage")
+                    else 0
+                )
+
                 return LLMResponse(
-                    text=text,
-                    input_tokens=input_tokens,
-                    output_tokens=output_tokens
+                    text=text, input_tokens=input_tokens, output_tokens=output_tokens
                 )
             else:
                 raise ValueError("Unexpected response format from Claude API")
@@ -105,15 +115,21 @@ class OpenAIProvider(LLMProvider):
                 text = response.choices[0].message.content
                 if not text or not str(text).strip():
                     raise ValueError("Empty response from OpenAI API")
-                
+
                 # Extract token usage
-                input_tokens = getattr(response.usage, 'prompt_tokens', 0) if hasattr(response, 'usage') else 0
-                output_tokens = getattr(response.usage, 'completion_tokens', 0) if hasattr(response, 'usage') else 0
-                
+                input_tokens = (
+                    getattr(response.usage, "prompt_tokens", 0)
+                    if hasattr(response, "usage")
+                    else 0
+                )
+                output_tokens = (
+                    getattr(response.usage, "completion_tokens", 0)
+                    if hasattr(response, "usage")
+                    else 0
+                )
+
                 return LLMResponse(
-                    text=text,
-                    input_tokens=input_tokens,
-                    output_tokens=output_tokens
+                    text=text, input_tokens=input_tokens, output_tokens=output_tokens
                 )
             else:
                 raise ValueError("Unexpected response format from OpenAI API")
@@ -147,15 +163,21 @@ class DeepSeekProvider(LLMProvider):
                 text = response.choices[0].message.content
                 if not text or not str(text).strip():
                     raise ValueError("Empty response from DeepSeek API")
-                
+
                 # Extract token usage (DeepSeek uses OpenAI-compatible format)
-                input_tokens = getattr(response.usage, 'prompt_tokens', 0) if hasattr(response, 'usage') else 0
-                output_tokens = getattr(response.usage, 'completion_tokens', 0) if hasattr(response, 'usage') else 0
-                
+                input_tokens = (
+                    getattr(response.usage, "prompt_tokens", 0)
+                    if hasattr(response, "usage")
+                    else 0
+                )
+                output_tokens = (
+                    getattr(response.usage, "completion_tokens", 0)
+                    if hasattr(response, "usage")
+                    else 0
+                )
+
                 return LLMResponse(
-                    text=text,
-                    input_tokens=input_tokens,
-                    output_tokens=output_tokens
+                    text=text, input_tokens=input_tokens, output_tokens=output_tokens
                 )
             else:
                 raise ValueError("Unexpected response format from DeepSeek API")
@@ -172,9 +194,7 @@ class GrokProvider(LLMProvider):
 
     def __init__(self, api_key: str, model: str = "grok-4", **kwargs):
         super().__init__(api_key, model, **kwargs)
-        self.client = openai.OpenAI(
-            api_key=api_key, base_url="https://api.x.ai/v1"
-        )
+        self.client = openai.OpenAI(api_key=api_key, base_url="https://api.x.ai/v1")
 
     def call_api(self, prompt: str) -> LLMResponse:
         try:
@@ -189,15 +209,21 @@ class GrokProvider(LLMProvider):
                 text = response.choices[0].message.content
                 if not text or not str(text).strip():
                     raise ValueError("Empty response from Grok API")
-                
+
                 # Extract token usage (Grok uses OpenAI-compatible format)
-                input_tokens = getattr(response.usage, 'prompt_tokens', 0) if hasattr(response, 'usage') else 0
-                output_tokens = getattr(response.usage, 'completion_tokens', 0) if hasattr(response, 'usage') else 0
-                
+                input_tokens = (
+                    getattr(response.usage, "prompt_tokens", 0)
+                    if hasattr(response, "usage")
+                    else 0
+                )
+                output_tokens = (
+                    getattr(response.usage, "completion_tokens", 0)
+                    if hasattr(response, "usage")
+                    else 0
+                )
+
                 return LLMResponse(
-                    text=text,
-                    input_tokens=input_tokens,
-                    output_tokens=output_tokens
+                    text=text, input_tokens=input_tokens, output_tokens=output_tokens
                 )
             else:
                 raise ValueError("Unexpected response format from Grok API")
@@ -214,9 +240,14 @@ class OpenRouterProvider(LLMProvider):
 
     def __init__(self, api_key: str, model: str = "openai/gpt-4o", **kwargs):
         super().__init__(api_key, model, **kwargs)
-        self.client = openai.OpenAI(
-            api_key=api_key, base_url="https://openrouter.ai/api/v1"
-        )
+        try:
+            import openai
+
+            self.client = openai.OpenAI(
+                api_key=api_key, base_url="https://openrouter.ai/api/v1"
+            )
+        except ImportError:
+            raise ImportError("OpenAI package not installed")
 
     def call_api(self, prompt: str) -> LLMResponse:
         try:
@@ -231,15 +262,21 @@ class OpenRouterProvider(LLMProvider):
                 text = response.choices[0].message.content
                 if not text or not str(text).strip():
                     raise ValueError("Empty response from OpenRouter API")
-                
+
                 # Extract token usage (OpenRouter uses OpenAI-compatible format)
-                input_tokens = getattr(response.usage, 'prompt_tokens', 0) if hasattr(response, 'usage') else 0
-                output_tokens = getattr(response.usage, 'completion_tokens', 0) if hasattr(response, 'usage') else 0
-                
+                input_tokens = (
+                    getattr(response.usage, "prompt_tokens", 0)
+                    if hasattr(response, "usage")
+                    else 0
+                )
+                output_tokens = (
+                    getattr(response.usage, "completion_tokens", 0)
+                    if hasattr(response, "usage")
+                    else 0
+                )
+
                 return LLMResponse(
-                    text=text,
-                    input_tokens=input_tokens,
-                    output_tokens=output_tokens
+                    text=text, input_tokens=input_tokens, output_tokens=output_tokens
                 )
             else:
                 raise ValueError("Unexpected response format from OpenRouter API")
@@ -253,24 +290,24 @@ class OpenRouterProvider(LLMProvider):
 
 def create_llm_provider(llm_name: str) -> tuple[LLMProvider, str]:
     """Factory function to create LLM providers.
-    
+
     Args:
         llm_name: Name of the LLM (e.g., 'claude-sonnet', 'gpt', 'claude-direct')
-    
+
     Returns:
         tuple[LLMProvider, str]: The provider instance and the resolved model name.
     """
     import sys
-    
+
     provider_configs = {
         "claude-sonnet": {
             "class": OpenRouterProvider,
-            "default_model": "anthropic/claude-sonnet-4",  
+            "default_model": "anthropic/claude-sonnet-4",
             "env_var": "OPENROUTER_API_KEY",
         },
         "claude-opus": {
             "class": OpenRouterProvider,
-            "default_model": "anthropic/claude-opus-4.1",  
+            "default_model": "anthropic/claude-opus-4.1",
             "env_var": "OPENROUTER_API_KEY",
         },
         "gpt": {
@@ -320,12 +357,12 @@ def create_llm_provider(llm_name: str) -> tuple[LLMProvider, str]:
         },
         "mistral-medium": {
             "class": OpenRouterProvider,
-            "default_model": "mistralai/mistral-medium-3.1", 
+            "default_model": "mistralai/mistral-medium-3.1",
             "env_var": "OPENROUTER_API_KEY",
         },
         "mistral-codestral": {
             "class": OpenRouterProvider,
-            "default_model": "mistralai/codestral-2508", 
+            "default_model": "mistralai/codestral-2508",
             "env_var": "OPENROUTER_API_KEY",
         },
         "qwen-thinking": {
@@ -388,22 +425,22 @@ def create_llm_provider(llm_name: str) -> tuple[LLMProvider, str]:
 
     selected_model = config["default_model"]
     provider = config["class"](api_key, selected_model)
-    print(f"✓ Initialized provider for '{llm_name}' using {env_var} (model: {selected_model})")
+    print(
+        f"✓ Initialized provider for '{llm_name}' using {env_var} (model: {selected_model})"
+    )
     return provider, selected_model
 
 
 # Global token counter for tracking across all calls (thread-safe)
-_global_token_stats = {
-    "input_tokens": 0,
-    "output_tokens": 0,
-    "total_calls": 0
-}
+_global_token_stats = {"input_tokens": 0, "output_tokens": 0, "total_calls": 0}
 _token_stats_lock = threading.Lock()
+
 
 def get_global_token_stats() -> dict:
     """Get the current global token usage statistics."""
     with _token_stats_lock:
         return _global_token_stats.copy()
+
 
 def reset_global_token_stats():
     """Reset the global token usage statistics."""
@@ -412,29 +449,34 @@ def reset_global_token_stats():
         _global_token_stats["output_tokens"] = 0
         _global_token_stats["total_calls"] = 0
 
-def call_llm(provider: LLMProvider, config: ProcessingConfig, prompt: str, wandb=None) -> str:
+
+def call_llm(
+    provider: LLMProvider, config: ProcessingConfig, prompt: str, wandb=None
+) -> str:
     """Call LLM with rate limiting and optional wandb logging."""
     # Rate limit
     sleep(config.api_rate_limit_delay)
     start = time()
     llm_response = provider.call_api(prompt)
     latency_ms = (time() - start) * 1000
-    
+
     # Update global token statistics (thread-safe)
     with _token_stats_lock:
         _global_token_stats["input_tokens"] += llm_response.input_tokens
         _global_token_stats["output_tokens"] += llm_response.output_tokens
         _global_token_stats["total_calls"] += 1
-    
+
     if wandb and hasattr(wandb, "log") and hasattr(wandb, "run") and wandb.run:
         # Use multiple fallbacks to ensure we always have a model name
-        model_name = getattr(provider, 'model', None) or config.llm
+        model_name = getattr(provider, "model", None) or config.llm
         try:
-            wandb.log({
-                "llm/calls": 1,
-                "llm/latency_ms": latency_ms,
-                "llm/model": model_name,
-            })
+            wandb.log(
+                {
+                    "llm/calls": 1,
+                    "llm/latency_ms": latency_ms,
+                    "llm/model": model_name,
+                }
+            )
         except Exception as e:
             print(f"There was a W&B error {e} in llm_providers.py")
 

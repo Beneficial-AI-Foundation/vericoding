@@ -93,7 +93,7 @@ def extract_lean_definitions(
         # For YAML files, extract from multiple sections
         sections_to_check = ["vc-preamble"]
         all_lean_content = []
-        
+
         for section in sections_to_check:
             section_match = re.search(
                 rf"{section}:\s*\|-?\s*\n(.*?)(?=\nvc-|$)", content, re.DOTALL
@@ -102,14 +102,16 @@ def extract_lean_definitions(
                 section_content = section_match.group(1)
                 section_start_line = content[: section_match.start()].count("\n") + 1
                 all_lean_content.append((section_content, section_start_line))
-        
+
         if not all_lean_content:
             return definitions
-        
+
         # Process each section
         for lean_content, preamble_start_line in all_lean_content:
-            definitions.extend(extract_definitions_from_content(lean_content, preamble_start_line))
-        
+            definitions.extend(
+                extract_definitions_from_content(lean_content, preamble_start_line)
+            )
+
         return definitions
     else:
         # For .lean files, use the entire content
@@ -118,16 +120,18 @@ def extract_lean_definitions(
         return extract_definitions_from_content(lean_content, preamble_start_line)
 
 
-def extract_definitions_from_content(lean_content: str, preamble_start_line: int) -> List[Tuple[str, str, int, str]]:
+def extract_definitions_from_content(
+    lean_content: str, preamble_start_line: int
+) -> List[Tuple[str, str, int, str]]:
     """Extract definitions from Lean content."""
     definitions = []
-    
+
     # Patterns to match Lean definitions, theorems, lemmas, etc.
     # Updated patterns to handle complex type signatures and multiline bodies
     lean_patterns = [
         # def name ... := body
         r"(def)\s+(\w+).*?:=\s*(.*?)(?=\n\s*(?:def|theorem|lemma|instance|\Z))",
-        # theorem name : type := proof  
+        # theorem name : type := proof
         r"(theorem)\s+(\w+).*?:.*?:=\s*(.*?)(?=\n\s*(?:def|theorem|lemma|instance|\Z))",
         # lemma name : type := proof
         r"(lemma)\s+(\w+).*?:.*?:=\s*(.*?)(?=\n\s*(?:def|theorem|lemma|instance|\Z))",
@@ -139,7 +143,7 @@ def extract_definitions_from_content(lean_content: str, preamble_start_line: int
         for match in re.finditer(pattern, lean_content, re.MULTILINE | re.DOTALL):
             def_type = match.group(1)
             def_name = match.group(2) if match.group(2) else f"anonymous_{def_type}"
-            
+
             # The body is always in the last group for our new patterns
             body = match.group(3).strip() if len(match.groups()) >= 3 else ""
 
@@ -217,13 +221,13 @@ def analyze_lean_definition(body: str, def_type: str = "") -> Tuple[str, bool]:
 
     Returns:
         tuple: (category, is_problematic)
-        
+
     Note: Sorry in theorems/lemmas is acceptable (proofs can be incomplete),
           but sorry in definitions is problematic (definitions should be complete).
     """
     # Check if this is a theorem or lemma (proofs can use sorry acceptably)
     is_proof = def_type.lower() in ["theorem", "lemma"]
-    
+
     if has_sorry(body):
         if is_proof:
             # Sorry in proofs is acceptable - theorems can have incomplete proofs
@@ -504,12 +508,13 @@ Examples:
         "files_with_proper_impls": files_with_proper_impls,
         "statistics": total_categories,
     }
-    
+
     # Output JSON if requested
     if args.output == "json":
         import json
+
         print(json.dumps(result, indent=2))
-    
+
     return result
 
 
