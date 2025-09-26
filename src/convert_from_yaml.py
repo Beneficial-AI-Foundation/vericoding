@@ -37,7 +37,7 @@ source_meta_default_path = Path("benchmarks") / source_meta_filename
 
 
 def get_vericoding_id(
-    language: str, task: str, source_meta: Dict[str, Any], source: str = None   
+    language: str, task: str, source_meta: Dict[str, Any], source: str = None
 ) -> str:
     """Get the Vericoding ID for a given source, language, and task."""
 
@@ -754,22 +754,30 @@ def flatten_task_with_entry_qa(task: Dict[str, Any]) -> Dict[str, Any]:
     new_task.update({"qa-issue": 0})
     new_task.update({"qa-issue-type": ""})
 
-    new_task.update({
-        'qa-functions-with-default-values': -1,
-        'qa-methods-with-bodies': -1,
-    })
-    new_task.update({
-        'qa-specs-with-default-values': -1,
-        'qa-execs-with-bodies': -1,
-        'qa-execs-with-ghost-types': -1,
-    })
-    new_task.update({
-        'qa-definitions-with-sorry': -1,
-    })
-    new_task.update({
-        'qa-near-duplicate-group': "",
-        'qa-score': -1,
-    }) 
+    new_task.update(
+        {
+            "qa-functions-with-default-values": -1,
+            "qa-methods-with-bodies": -1,
+        }
+    )
+    new_task.update(
+        {
+            "qa-specs-with-default-values": -1,
+            "qa-execs-with-bodies": -1,
+            "qa-execs-with-ghost-types": -1,
+        }
+    )
+    new_task.update(
+        {
+            "qa-definitions-with-sorry": -1,
+        }
+    )
+    new_task.update(
+        {
+            "qa-near-duplicate-group": "",
+            "qa-score": -1,
+        }
+    )
 
     if "vc-description" in task:
         new_task["vc-description"] = task["vc-description"]
@@ -788,13 +796,13 @@ def flatten_task_with_entry_qa(task: Dict[str, Any]) -> Dict[str, Any]:
     if "vc-postamble" in task:
         new_task["vc-postamble"] = task["vc-postamble"]
 
-    if 'qa-issue' in task:
-        new_task['qa-issue'] = task['qa-issue']
-    if 'qa-issue-type' in task:
-        new_task['qa-issue-type'] = task['qa-issue-type']
+    if "qa-issue" in task:
+        new_task["qa-issue"] = task["qa-issue"]
+    if "qa-issue-type" in task:
+        new_task["qa-issue-type"] = task["qa-issue-type"]
 
-    if 'qa_entry_metadata' in task:
-        issues = task['qa_entry_metadata']['issues']
+    if "qa_entry_metadata" in task:
+        issues = task["qa_entry_metadata"]["issues"]
         if "functions_with_default_values" in issues:
             new_task["qa-functions-with-default-values"] = issues[
                 "functions_with_default_values"
@@ -836,20 +844,23 @@ def process_language_tasks(benchmarks_dir: Path) -> None:
 
     if not benchmarks_dir.is_dir():
         raise ValueError(f"{benchmarks_dir} is not a directory")
-    
-    all_tasks = benchmarks_dir / "benchmarks.jsonl"
-    with open(all_tasks, 'w') as ff:
 
+    all_tasks = benchmarks_dir / "benchmarks.jsonl"
+    with open(all_tasks, "w") as ff:
         for language in ["dafny", "lean", "verus"]:
             language_dir = benchmarks_dir / language
             if not language_dir.exists():
-                raise FileNotFoundError(f"Language directory {language_dir} does not exist")
+                raise FileNotFoundError(
+                    f"Language directory {language_dir} does not exist"
+                )
             if not language_dir.is_dir():
                 raise ValueError(f"{language_dir} is not a directory")
-            
+
             # get all subdirectories in language_dir
             source_dirs = list(language_dir.iterdir())
-            source_dirs = [source_dir for source_dir in source_dirs if source_dir.is_dir()]
+            source_dirs = [
+                source_dir for source_dir in source_dirs if source_dir.is_dir()
+            ]
             source_dirs = sorted(source_dirs, key=lambda x: sources_ref[x.name])
 
             # generate language tasks file
@@ -858,12 +869,13 @@ def process_language_tasks(benchmarks_dir: Path) -> None:
             # generate language issues file
             output_issues = benchmarks_dir / f"{language}_issues.jsonl"
 
-            with open(output_tasks, 'w') as ft, open(output_issues, 'w') as fi: 
-
+            with open(output_tasks, "w") as ft, open(output_issues, "w") as fi:
                 for source_dir in source_dirs:
                     source = source_dir.name
                     no_qa_file = source_dir / f"{language}_{source}.jsonl"
-                    qa_one_file = source_dir / f"{language}_{source}_with_entry_qa.jsonl"
+                    qa_one_file = (
+                        source_dir / f"{language}_{source}_with_entry_qa.jsonl"
+                    )
                     qa_all_file = source_dir / f"{language}_{source}.metadata.json"
                     notes_file = source_dir / f"{language}_{source}_notes.jsonl"
 
@@ -871,95 +883,107 @@ def process_language_tasks(benchmarks_dir: Path) -> None:
                         if no_qa_file.exists():
                             qa_one_file = no_qa_file
                         else:
-                            raise FileNotFoundError(f"Files {qa_one_file} and {no_qa_file} does not exist")
+                            raise FileNotFoundError(
+                                f"Files {qa_one_file} and {no_qa_file} does not exist"
+                            )
 
                     # check if no_qa_file and qa_one_file have the same lines
-                    with open(no_qa_file, 'r') as g:
+                    with open(no_qa_file, "r") as g:
                         no_qa_lines = [json.loads(line) for line in g]
-                    with open(qa_one_file, 'r') as g:
+                    with open(qa_one_file, "r") as g:
                         qa_one_lines = [json.loads(line) for line in g]
                     for dict1, dict2 in zip(no_qa_lines, qa_one_lines):
                         for key in dict1:
                             if dict1[key] != dict2[key]:
                                 dict2[key] = dict1[key]
-                                print(f"WARNING: In files {no_qa_file} and {qa_one_file}, {key} is different. Replacing with value from {no_qa_file}.")
+                                print(
+                                    f"WARNING: In files {no_qa_file} and {qa_one_file}, {key} is different. Replacing with value from {no_qa_file}."
+                                )
                                 # raise ValueError(f"Files {no_qa_file} and {qa_one_file} have different lines:\n{dict1[key]} \n{dict2[key]}")
 
                     # write qa_one_file to file
-                    with open(qa_one_file, 'w') as g:
+                    with open(qa_one_file, "w") as g:
                         for dict in qa_one_lines:
                             json.dump(dict, g, ensure_ascii=False)
-                            g.write('\n')
+                            g.write("\n")
 
                     # read tasks file as jsonl into a list of dictionaries
                     tasks = {}
-                    with open(qa_one_file, 'r') as g:
+                    with open(qa_one_file, "r") as g:
                         for line in g:
                             task = flatten_task_with_entry_qa(json.loads(line))
-                            tasks[task['source-id']] = task
-                
+                            tasks[task["source-id"]] = task
+
                     if not qa_all_file.exists():
                         print(f"QA file {qa_all_file} does not exist")
                     else:
                         # read qa_all_file as json into a dictionary
-                        with open(qa_all_file, 'r') as g:
+                        with open(qa_all_file, "r") as g:
                             qa_all_dict = json.load(g)
 
                         # get duplicate tasks and assign group IDs
-                        duplicates = qa_all_dict['qa_metadata']['near_duplicates']['examples']
+                        duplicates = qa_all_dict["qa_metadata"]["near_duplicates"][
+                            "examples"
+                        ]
                         for idx, dup_grp in enumerate(duplicates):
                             # make group_id 4 characters long
                             group_id = f"Dup{languages_ref[language]}{sources_ref[source]}{idx:02d}"
-                            for file in dup_grp['files']:
-                                tasks[Path(file).stem]['qa-near-duplicate-group'] = group_id
+                            for file in dup_grp["files"]:
+                                tasks[Path(file).stem]["qa-near-duplicate-group"] = (
+                                    group_id
+                                )
 
                     # put source notes to tasks
                     if notes_file.exists():
                         # load from jsonl file
                         notes = {}
-                        with open(notes_file, 'r') as g:
+                        with open(notes_file, "r") as g:
                             for line in g:
                                 note = json.loads(line)
-                                notes[note['source_id']] = note['source_notes']
+                                notes[note["source_id"]] = note["source_notes"]
                         for task in tasks.values():
-                            task['source-notes'] = notes[task['source-id']]
+                            task["source-notes"] = notes[task["source-id"]]
                         print(f"Put source notes {notes_file} to tasks")
 
                     # write tasks to file
                     for task in tasks.values():
                         json.dump(task, ft, ensure_ascii=False)
-                        ft.write('\n')
-                    
+                        ft.write("\n")
+
                     # start all_tasks_list
                     all_tasks_list = list(tasks.values())
 
                     # process issues
-                    issues_file = source_dir / f"{language}_{source_dir.name}_poor.jsonl"
+                    issues_file = (
+                        source_dir / f"{language}_{source_dir.name}_poor.jsonl"
+                    )
                     if not issues_file.exists():
                         print(f"Issues file {issues_file} does not exist")
                     else:
-                        with open(issues_file, 'r') as g:
-                            issues = [flatten_task_with_entry_qa(json.loads(line)) for line in g]
+                        with open(issues_file, "r") as g:
+                            issues = [
+                                flatten_task_with_entry_qa(json.loads(line))
+                                for line in g
+                            ]
                             all_tasks_list = all_tasks_list + issues
                         for issue in issues:
                             json.dump(issue, fi, ensure_ascii=False)
-                            fi.write('\n')
-                    
+                            fi.write("\n")
+
                     # sort all tasks and write to file
-                    all_tasks_list = sorted(all_tasks_list, key=lambda x: x['id'])
+                    all_tasks_list = sorted(all_tasks_list, key=lambda x: x["id"])
                     for task in all_tasks_list:
-                        task.pop('vc-description')
-                        task.pop('vc-preamble')
-                        task.pop('vc-helpers')
-                        task.pop('vc-spec', None)
-                        task.pop('vc-code', None) 
-                        task.pop('vc-definitions', None)
-                        task.pop('vc-theorems', None)
-                        task.pop('vc-postamble')
+                        task.pop("vc-description")
+                        task.pop("vc-preamble")
+                        task.pop("vc-helpers")
+                        task.pop("vc-spec", None)
+                        task.pop("vc-code", None)
+                        task.pop("vc-definitions", None)
+                        task.pop("vc-theorems", None)
+                        task.pop("vc-postamble")
 
                         json.dump(task, ff, ensure_ascii=False)
-                        ff.write('\n')
-
+                        ff.write("\n")
 
             print(f"Wrote tasks file {output_tasks}")
             print(f"Wrote issues file {output_issues}")
@@ -1571,71 +1595,75 @@ def generate_ids(source_meta: Dict[str, Any]) -> None:
 
 def rename_tasks_with_new_id(language: str, dir_path: Path) -> None:
     """Rename all files in a directory recursively using get_vericoding_id function.
-    
+
     Args:
         language: The language identifier (e.g., 'lean', 'dafny', 'verus')
         dir_path: Path to the directory containing files to rename
     """
     if not dir_path.exists():
         raise FileNotFoundError(f"Directory {dir_path} does not exist")
-    
+
     if not dir_path.is_dir():
         raise ValueError(f"{dir_path} is not a directory")
-    
+
     # Load source metadata
     source_meta_path = source_meta_default_path
     if not source_meta_path.is_file():
         raise FileNotFoundError(f"Source metadata file {source_meta_path} not found")
-    
+
     # Load source metadata
     source_meta = {}
     with open(source_meta_path, "r") as f:
         for line in f:
             lineobj = json.loads(line)
             source_meta[lineobj["source_id"]] = lineobj
-    
+
     # Find all files recursively
     all_files = list(dir_path.glob("**/*"))
     files_to_rename = [f for f in all_files if f.is_file()]
-    
+
     if not files_to_rename:
         print(f"No files found in {dir_path}")
         return
-    
+
     renamed_count = 0
     skipped_count = 0
     skipped_files = []
-    
+
     for file_path in files_to_rename:
         try:
             # Get the file stem (name without extension)
             file_stem = file_path.stem
-            
+
             # Get the new ID using get_vericoding_id
             new_id = get_vericoding_id(language, file_stem, source_meta)
-            
+
             # Create new path with the new ID
             new_path = file_path.parent / f"{new_id}{file_path.suffix}"
-            
+
             # Skip if the new name is the same as the current name
             if new_path == file_path:
                 print(f"Skipping {file_path} (name unchanged)")
                 skipped_files.append((file_path, "name unchanged"))
                 skipped_count += 1
                 continue
-            
+
             # Check if target file already exists
             if new_path.exists():
-                print(f"Warning: Target file {new_path} already exists, skipping {file_path}")
-                skipped_files.append((file_path, f"target file {new_path} already exists"))
+                print(
+                    f"Warning: Target file {new_path} already exists, skipping {file_path}"
+                )
+                skipped_files.append(
+                    (file_path, f"target file {new_path} already exists")
+                )
                 skipped_count += 1
                 continue
-            
+
             # Rename the file
             file_path.rename(new_path)
             print(f"Renamed {file_path} -> {new_path}")
             renamed_count += 1
-            
+
         except ValueError as e:
             print(f"Warning: Could not get ID for {file_path}: {e}")
             skipped_files.append((file_path, f"could not get ID: {e}"))
@@ -1646,9 +1674,9 @@ def rename_tasks_with_new_id(language: str, dir_path: Path) -> None:
             skipped_files.append((file_path, f"error: {e}"))
             skipped_count += 1
             continue
-    
+
     print(f"\nRenamed {renamed_count} files, skipped {skipped_count} files")
-    
+
     # List all skipped files at the end
     if skipped_files:
         print("\nSkipped files:")
