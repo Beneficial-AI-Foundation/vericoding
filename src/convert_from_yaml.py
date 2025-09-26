@@ -837,7 +837,7 @@ def process_language_tasks(benchmarks_dir: Path) -> None:
     if not benchmarks_dir.is_dir():
         raise ValueError(f"{benchmarks_dir} is not a directory")
     
-    all_tasks = benchmarks_dir / f"benchmarks.jsonl"
+    all_tasks = benchmarks_dir / "benchmarks.jsonl"
     with open(all_tasks, 'w') as ff:
 
         for language in ["dafny", "lean", "verus"]:
@@ -1651,7 +1651,7 @@ def rename_tasks_with_new_id(language: str, dir_path: Path) -> None:
     
     # List all skipped files at the end
     if skipped_files:
-        print(f"\nSkipped files:")
+        print("\nSkipped files:")
         print("=" * 50)
         for file_path, reason in skipped_files:
             print(f"  {file_path} - {reason}")
