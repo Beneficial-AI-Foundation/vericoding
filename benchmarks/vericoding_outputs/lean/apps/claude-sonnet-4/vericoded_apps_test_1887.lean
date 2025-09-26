@@ -1,0 +1,54 @@
+import Mathlib
+-- <vc-preamble>
+@[reducible, simp]
+def ValidInput (n : Int) (h1 h2 : List Int) : Prop :=
+  n ≥ 1 ∧ h1.length ≥ n ∧ h2.length ≥ n ∧
+  (∀ i, 0 ≤ i ∧ i < n → h1[i.natAbs]! ≥ 0) ∧
+  (∀ i, 0 ≤ i ∧ i < n → h2[i.natAbs]! ≥ 0)
+
+def maxHeightEndingInRow1 (n : Int) (h1 h2 : List Int) : Int := 0
+
+def maxHeightEndingInRow2 (n : Int) (h1 h2 : List Int) : Int := 0
+
+def maxTeamHeight (n : Int) (h1 h2 : List Int) : Int :=
+  let dp1 := maxHeightEndingInRow1 n h1 h2
+  let dp2 := maxHeightEndingInRow2 n h1 h2
+  if dp1 > dp2 then dp1 else dp2
+
+@[reducible, simp]
+def solve_precond (n : Int) (h1 h2 : List Int) : Prop :=
+  ValidInput n h1 h2
+-- </vc-preamble>
+
+-- <vc-helpers>
+-- Helper lemmas for the solve function and its verification
+
+-- LLM HELPER: Basic property that maxTeamHeight returns non-negative values
+lemma maxTeamHeight_nonneg (n : Int) (h1 h2 : List Int) (h_valid : ValidInput n h1 h2) : 
+  maxTeamHeight n h1 h2 ≥ 0 := by
+  unfold maxTeamHeight
+  simp only [maxHeightEndingInRow1, maxHeightEndingInRow2]
+  split_ifs
+  · norm_num
+  · norm_num
+-- </vc-helpers>
+
+-- <vc-definitions>
+def solve (n : Int) (h1 h2 : List Int) (h_precond : solve_precond n h1 h2) : Int :=
+  maxTeamHeight n h1 h2
+-- </vc-definitions>
+
+-- <vc-theorems>
+@[reducible, simp]
+def solve_postcond (n : Int) (h1 h2 : List Int) (result : Int) (h_precond : solve_precond n h1 h2) : Prop :=
+  result ≥ 0 ∧ result = maxTeamHeight n h1 h2
+
+theorem solve_spec_satisfied (n : Int) (h1 h2 : List Int) (h_precond : solve_precond n h1 h2) :
+    solve_postcond n h1 h2 (solve n h1 h2 h_precond) h_precond := by
+  unfold solve_postcond solve
+  constructor
+  · -- Prove result ≥ 0
+    exact maxTeamHeight_nonneg n h1 h2 h_precond
+  · -- Prove result = maxTeamHeight n h1 h2
+    rfl
+-- </vc-theorems>
