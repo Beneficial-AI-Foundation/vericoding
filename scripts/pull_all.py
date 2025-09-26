@@ -16,7 +16,17 @@ REPO = THIS_DIR.parent
 DEFAULT_EXPORTS = REPO / "wandb_exports"
 # DEFAULT_EXPORTS = REPO / "wandb_exports_test"
 
-FIELDNAMES = ["Language", "LLM", "Benchmark", "Run ID", "Task ID", "Success", "Specification length", "Solution length", "Spec ratio"]
+FIELDNAMES = [
+    "Language",
+    "LLM",
+    "Benchmark",
+    "Run ID",
+    "Task ID",
+    "Success",
+    "Specification length",
+    "Solution length",
+    "Spec ratio",
+]
 FIELDNAMES_TASKS = ["Task ID", "Task"]
 
 RUN_JSON_PATH = REPO / "experiments" / "wandb_runs.json"
@@ -24,11 +34,7 @@ RUN_JSON_PATH = REPO / "experiments" / "wandb_runs.json"
 
 LOCAL_RUNS_DIR = REPO / "experiments" / "runs-not-in-wandb"
 
-LANG = {
-    "dafny": "D",
-    "lean": "L",
-    "verus": "V"
-}
+LANG = {"dafny": "D", "lean": "L", "verus": "V"}
 
 BENCH = {
     "numpy-simple": "S",
@@ -38,8 +44,7 @@ BENCH = {
     "verina": "V",
     "bignum": "B",
     "verified-cogen": "G",
-    "apps": "A"
-
+    "apps": "A",
 }
 
 LOCAL_RUN_ID = "LOCAL_"
@@ -50,13 +55,19 @@ TASKS_FILENAME = "tasks.csv"
 
 SKIPPED_FILENAME = "skipped.txt"
 
+
 def idLabel(lang: str, bench: str, taskId: int) -> str:
     return f"{LANG[lang]}{BENCH[bench]}{taskId:04}"
 
+
 def main() -> None:
     p = argparse.ArgumentParser(description="Collect run statistics")
-    p.add_argument("--root", default=None, help="Output directory root (default: wandb_exports)")
-    p.add_argument("--overwrite", action="store_true", help="Overwrite files if they already exist")
+    p.add_argument(
+        "--root", default=None, help="Output directory root (default: wandb_exports)"
+    )
+    p.add_argument(
+        "--overwrite", action="store_true", help="Overwrite files if they already exist"
+    )
     p.add_argument("--debug", action="store_true", help="Echo all subcalls instead")
 
     args = p.parse_args()
@@ -74,10 +85,10 @@ def main() -> None:
     with open(RUN_JSON_PATH, "r") as f:
         allRuns = json.loads(f.read())
 
-    with open(CSV, 'w', newline='') as outcsv:
+    with open(CSV, "w", newline="") as outcsv:
         writer = csv.DictWriter(outcsv, fieldnames=FIELDNAMES)
         writer.writeheader()
-    
+
     noResults = []
 
     taskIds = {}
@@ -89,41 +100,53 @@ def main() -> None:
                 taskIds[lang][bench] = taskIds[lang].get(bench, {})
                 runId = allRuns[lang][llm][bench]
                 if not (len(runId) == 0):
-                    if (not runId.startswith(LOCAL_RUN_ID)):
+                    if not runId.startswith(LOCAL_RUN_ID):
                         try:
                             print(f"Downloading run ID: {runId}")
-                            subargs = ["uv", "run", THIS_DIR / "wandb_pull_detailed_results.py", 
-                                    "--run", RUN_URL_BASE + runId,
-                                    "--out", EXPORTS / runId
-                                    ]
+                            subargs = [
+                                "uv",
+                                "run",
+                                THIS_DIR / "wandb_pull_detailed_results.py",
+                                "--run",
+                                RUN_URL_BASE + runId,
+                                "--out",
+                                EXPORTS / runId,
+                            ]
                             if args.overwrite:
                                 subargs.append("--overwrite")
                             if args.debug:
-                                subargs.insert(0,"echo")
-                            subprocess.call(subargs) 
+                                subargs.insert(0, "echo")
+                            subprocess.call(subargs)
                         except KeyboardInterrupt:
                             raise KeyboardInterrupt
-                        except:
-                            print(f"Skipping run ID: {runId}")   
+                        except Exception:
+                            print(f"Skipping run ID: {runId}")
                     else:
                         try:
                             runId = runId.removeprefix(LOCAL_RUN_ID)
                             print(f"Copying local run ID: {runId}")
                             localPath = LOCAL_RUNS_DIR / lang / bench / runId
-                            shutil.copytree(localPath, EXPORTS / runId, dirs_exist_ok=True)
+                            shutil.copytree(
+                                localPath, EXPORTS / runId, dirs_exist_ok=True
+                            )
                         except Exception as e:
                             raise e
 
-
                     results = EXPORTS / runId / "detailed_results.table.json"
-                    if (results.exists()):
+                    if results.exists():
                         analysis = EXPORTS / runId / "analysis.json"
-                        if (args.overwrite or not analysis.exists()):
+                        if args.overwrite or not analysis.exists():
                             print(f"Generating analysis for {runId}")
                             try:
-                                subargs = ["uv", "run", THIS_DIR / "analyze_wandb_runs.py", "--rundir", EXPORTS / runId]
+                                subargs = [
+                                    "uv",
+                                    "run",
+                                    THIS_DIR / "analyze_wandb_runs.py",
+                                    "--rundir",
+                                    EXPORTS / runId,
+                                ]
                                 if args.debug:
-                                    subargs.insert(0,"echo")
+                                    subargs.insert(0, "echo")
                                 subprocess.call(subargs)
                             except Exception as e:
                                 raise e
@@ -132,25 +155,27 @@ def main() -> None:
 
                         entryBase = {
                             "Language": lang,
-                            "LLM": llm, 
-                            "Benchmark": bench, 
-                            "Run ID": runId
+                            "LLM": llm,
+                            "Benchmark": bench,
+                            "Run ID": runId,
                         }
-                    
+
                         analysisJson = None
                         with open(analysis, "r") as f:
                             analysisJson = json.loads(f.read())
-                        
+
                         entries = []
-                        uniques = set() # manual dedup, names should be unique w.r.t. one detailed_results file
+                        uniques = set()  # manual dedup, names should be unique w.r.t. one detailed_results file
                         for e in analysisJson:
                             entry = entryBase.copy()
 
                             name = e["name"]
-                            if (not name in uniques): 
+                            if name not in uniques:
                                 uniques.add(name)
 
-                                taskId = taskIds[lang][bench].get(name, len(taskIds[lang][bench]))
+                                taskId = taskIds[lang][bench].get(
+                                    name, len(taskIds[lang][bench])
+                                )
                                 taskIds[lang][bench][name] = taskId
 
                                 entry["Task ID"] = idLabel(lang, bench, taskId)
@@ -160,7 +185,7 @@ def main() -> None:
                                 entry["Spec ratio"] = e["ratio"]
                                 entries.append(entry)
 
-                        with open(CSV, 'a', newline='') as outcsv:
+                        with open(CSV, "a", newline="") as outcsv:
                             writer = csv.DictWriter(outcsv, fieldnames=FIELDNAMES)
                             for e in entries:
                                 writer.writerow(e)
@@ -177,7 +202,7 @@ def main() -> None:
                     writer.writerow(
                         {
                             "Task ID": idLabel(lang, bench, taskIds[lang][bench][task]),
-                            "Task": task
+                            "Task": task,
                         }
                     )
 
@@ -185,7 +210,8 @@ def main() -> None:
     with open(SKIPPED, "w") as f:
         for x in noResults:
             print(x)
-            print(x, file= f)
+            print(x, file=f)
+
 
 if __name__ == "__main__":
     main()

@@ -14,7 +14,9 @@ def _parse_run_timestamp(name: str) -> Tuple[int, int, int, int]:
     return tuple(int(x) for x in m.groups())  # type: ignore[return-value]
 
 
-def find_latest_run_per_model_per_benchmark(root: Path) -> Dict[str, List[Tuple[str, Path]]]:
+def find_latest_run_per_model_per_benchmark(
+    root: Path,
+) -> Dict[str, List[Tuple[str, Path]]]:
     """
     For each benchmark subdirectory under `root`, pick the latest run for each model.
     Returns mapping model -> list of (benchmark_name, latest_run_dir) per benchmark where present.
@@ -71,6 +73,7 @@ def parse_summary_counts(summary_path: Path) -> Tuple[int, int, int]:
     if not summary_path.exists():
         return (0, 0, 0)
     text = summary_path.read_text(encoding="utf-8", errors="ignore")
+
     # Try to parse lines:
     # Total original files: X
     # Total successful: Y
@@ -111,7 +114,9 @@ def get_run_counts(run_dir: Path) -> Tuple[int, int, int]:
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description="Aggregate per-model Dafny vericoder results across benchmarks")
+    parser = argparse.ArgumentParser(
+        description="Aggregate per-model Dafny vericoder results across benchmarks"
+    )
     parser.add_argument(
         "--root",
         type=str,
@@ -191,7 +196,9 @@ def main() -> int:
     out_csv = root / "vericoding_per_model_aggregate.csv"
     with out_csv.open("w", newline="", encoding="utf-8") as f:
         w = csv.writer(f)
-        w.writerow(["model", "total_files", "successes", "failures", "success_rate_pct"])
+        w.writerow(
+            ["model", "total_files", "successes", "failures", "success_rate_pct"]
+        )
         for r in rows:
             w.writerow([r[0], r[1], r[2], r[3], r[4]])
         # TOTAL row across all models (union coverage): sum over benchmarks of unique files
@@ -199,13 +206,24 @@ def main() -> int:
         grand_succ = sum(len(s) for s in bench_to_union_success.values())
         grand_fail = max(grand_total - grand_succ, 0)
         grand_rate = (100.0 * grand_succ / grand_total) if grand_total else 0.0
-        w.writerow(["TOTAL", grand_total, grand_succ, grand_fail, f"{grand_rate:.1f}", ""]) 
+        w.writerow(
+            ["TOTAL", grand_total, grand_succ, grand_fail, f"{grand_rate:.1f}", ""]
+        )
 
     # Per-benchmark CSV
     per_bench_csv = root / "vericoding_per_model_per_benchmark.csv"
     with per_bench_csv.open("w", newline="", encoding="utf-8") as f:
         w = csv.writer(f)
-        w.writerow(["model", "benchmark", "total_files", "successes", "failures", "success_rate_pct"])
+        w.writerow(
+            [
+                "model",
+                "benchmark",
+                "total_files",
+                "successes",
+                "failures",
+                "success_rate_pct",
+            ]
+        )
         for r in sorted(per_benchmark_rows, key=lambda x: (x[0], x[1])):
             w.writerow([r[0], r[1], r[2], r[3], r[4], r[5]])
 
@@ -216,17 +234,25 @@ def main() -> int:
     idx = root_str.rfind("vericoding/")
     display_root = root_str[idx:] if idx != -1 else root.name
     with summary_path.open("w", encoding="utf-8") as sf:
-        sf.write("=== DAFNY PER-MODEL PROCESSING SUMMARY (AGGREGATED ACROSS BENCHMARKS) ===\n")
+        sf.write(
+            "=== DAFNY PER-MODEL PROCESSING SUMMARY (AGGREGATED ACROSS BENCHMARKS) ===\n"
+        )
         sf.write(f"Root: {display_root}\n")
         sf.write(f"Models found: {len(rows)}\n\n")
         for llm, total, succ, fail, rate, paths in sorted(rows, key=lambda x: x[0]):
             sf.write(f"Model: {llm}\n")
-            sf.write(f"  Overall: total={total}, success={succ}, fail={fail}, rate={rate:.1f}%\n")
+            sf.write(
+                f"  Overall: total={total}, success={succ}, fail={fail}, rate={rate:.1f}%\n"
+            )
             sf.write("  Per-benchmark:\n")
-            for m, bench, t, s, f, rb, path in sorted(per_benchmark_rows, key=lambda x: (x[0], x[1])):
+            for m, bench, t, s, f, rb, path in sorted(
+                per_benchmark_rows, key=lambda x: (x[0], x[1])
+            ):
                 if m != llm:
                     continue
-                sf.write(f"    - {bench:<14} total={t:<4} success={s:<4} fail={f:<4} rate={rb:>5.1f}%\n")
+                sf.write(
+                    f"    - {bench:<14} total={t:<4} success={s:<4} fail={f:<4} rate={rb:>5.1f}%\n"
+                )
             sf.write("\n")
         # TOTAL block (union coverage across models per benchmark)
         grand_total = sum(len(s) for s in bench_to_union_all.values())
@@ -234,7 +260,9 @@ def main() -> int:
         grand_fail = max(grand_total - grand_succ, 0)
         grand_rate = (100.0 * grand_succ / grand_total) if grand_total else 0.0
         sf.write("TOTAL:\n")
-        sf.write(f"  Overall: total={grand_total}, success={grand_succ}, fail={grand_fail}, rate={grand_rate:.1f}%\n")
+        sf.write(
+            f"  Overall: total={grand_total}, success={grand_succ}, fail={grand_fail}, rate={grand_rate:.1f}%\n"
+        )
 
     print(
         f"Wrote {out_csv}, {per_bench_csv} and {summary_path} with {len(rows)} models aggregated (latest per benchmark)"
@@ -244,5 +272,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-
-
