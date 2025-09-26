@@ -1,27 +1,80 @@
 # A Benchmark For Vericoding: Formally Verified Program Synthesis
 
-Paper currently under ICLR review. 
+Our paper (currently undergoing review) can be found on [ArXiv]().
 
-Disclaimer: some of the scripts may not run because they are stripped down versions of our original scripts to anonymize them. We will provide the full scripts on GitHub after the paper is accepted. 
+Our scripts can be found in this [GitHub repo](https://github.com/beneficial-AI-Foundation/vericoding).
 
-## Benchmarks
-The `benchmarks` folder contains our three benchmarks in Dafny, Verus and Lean.
+The `vericoding_benchmark_v1.csv` provides a list of Vericoding IDs, sources and the source IDs for all 12,504 tasks. It also contains additional metadata from our quality analysis.
 
-* Each language folder contains a `tasks` folder with specs which compile, up to some `sorry` or `assume false` in the code. There is also an `issues` folder with specs which do not compile. We keep them in the benchmark for researchers who want to fix them or use them for other experiments.
+The file `vericoding_results_v1.csv` which is a list of the outcomes of all 55397 experiments involving vericoding tasks across different models.
 
-* There are two files `lean_tasks.jsonl` and `lean_issues.jsonl` which contain each task as a JSON line. The task is decomposed into different components, such as the preamble, spec and code. We also provide additional metadata from our quality analysis. We have similar files for Dafny and for Verus.
+## Specs
 
-* The `README.md` file lists the original sources used in constructing these benchmarks, with download links. The `vericoding_benchmark_v1.csv` provides a list of Vericoding IDs and the source IDs for all 12,504 tasks. The information is also available in JSONL format: `verucoding_benchmark_v1.jsonl`.
+The folder `specs` contains all 12,504 tasks in Dafny, Lean and Verus, which includes thw following.
 
-## Experiments
+* Files which compile, up to some `sorry` or `assume false` in the code. The file is decomposed into different components, such as the preamble, the spec, the code and the postamble.
 
-The experiments folder contains the outcomes of our vericoding experiments on the benchmarks.
+* Files which do not compile, especially after translation from another langauge. We keep them in the benchmark for researchers who want use them for other experiments, e.g. spec repair.
 
-* The file `vericoding_results_v1.csv` which is a list of the outcomes of all 55397 experiments involving vericoding tasks across different models.
 
-* The folder `inspection` contains our manual inspection reports on the successful runs.
+## JSONL
 
-## Source code
+The folder `jsonl` contains the tasks and issues sorted into the different languages, parsed into different components, and stored as JSON lines for easier experimentation.
 
-The `src` folder contains scripts that we used during the construction of this benchmark, such as translation, formatting and quality analysis. It also contains scripts for running the vericoding experiments.
 
+
+## Vericoded
+
+The folder `vericoded` will contain some of the tasks with solutions filled in by an AI vericoder.
+
+## Humancoded
+
+The folder `humancoded` will contain some of the tasks with solutions filled in by human coders.
+
+
+## Original Sources
+
+### DafnyBench
+* `benchmarks/dafny/dafnybench`
+* https://github.com/sun-wendy/DafnyBench
+
+### HumanEval, Clever
+* `benchmarks/dafny/humaneval`
+* `benchmarks/lean/clever`
+* https://github.com/openai/human-eval
+* https://github.com/JetBrains-Research/HumanEval-Dafny
+* https://github.com/trishullab/clever
+
+The Dafny files were mostly translated from the original Python source. Some of the Dafny files were taken from Jetbrains Research's HumanEval Dafny repo.
+
+The Lean files were taken from the Clever benchmark which were originally derived from the HumanEval benchmark. HumanEval problems 22, 137, 162 are missing from Clever for reasons mentioned in the Clever paper.
+
+### NumPyTriple
+* `benchmarks/lean/numpy_triple`
+* Derived from NumPy documentation
+* Specs in new Hoare triple format
+
+### NumPySimple
+* `benchmarks/lean/numpy_simple`
+* Derived from NumPy documentation
+* Specs in classical Lean format
+
+### Verina
+* `benchmarks/lean/verina`
+* https://github.com/sunblaze-ucb/verina
+
+### APPS
+* `benchmarks/dafny/apps`
+* https://github.com/hendrycks/apps
+
+### FVAPPS
+* `benchmarks/lean/fvapps`
+* https://huggingface.co/datasets/quinn-dougherty/fvapps
+
+### VerifiedCogen
+* `benchmarks/verus/verified_cogen`
+* https://github.com/JetBrains-Research/verified-cogen
+
+### BigNum
+* `benchmarks/dafny/bignum`
+* Written from scratch
