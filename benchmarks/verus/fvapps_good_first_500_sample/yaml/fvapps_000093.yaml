@@ -1,0 +1,39 @@
+vc-description: |-
+  RedDreamer has an array a consisting of n non-negative integers, and an unlucky integer T.
+  
+  Let's denote the misfortune of array b having length m as f(b) — the number of pairs of integers (i, j) such that 1 ≤ i < j ≤ m and b_i + b_j = T. RedDreamer has to paint each element of a into one of two colors, white and black (for each element, the color is chosen independently), and then create two arrays c and d so that all white elements belong to c, and all black elements belong to d (it is possible that one of these two arrays becomes empty). RedDreamer wants to paint the elements in such a way that f(c) + f(d) is minimum possible.
+  
+  For example:
+  
+    if n = 6, T = 7 and a = [1, 2, 3, 4, 5, 6], it is possible to paint the 1-st, the 4-th and the 5-th elements white, and all other elements black. So c = [1, 4, 5], d = [2, 3, 6], and f(c) + f(d) = 0 + 0 = 0;  if n = 3, T = 6 and a = [3, 3, 3], it is possible to paint the 1-st element white, and all other elements black. So c = [3], d = [3, 3], and f(c) + f(d) = 0 + 1 = 1. 
+  
+  Help RedDreamer to paint the array optimally!
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn solve_color_array(n: usize, t: usize, arr: Vec<usize>) -> (result: Vec<usize>)
+      requires 
+          arr.len() == n,
+          n > 0,
+      ensures 
+          result.len() == arr.len(),
+          forall|i: int| 0 <= i < result.len() ==> (result[i] == 0 || result[i] == 1),
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      unreached()
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {}

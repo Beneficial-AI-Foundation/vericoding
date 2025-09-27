@@ -1,0 +1,80 @@
+vc-description: |-
+  Given an array nums of 0s and 1s and an integer k, return True if all 1's are at least k places away from each other, otherwise return False.
+
+  Example 1:
+
+  Input: nums = [1,0,0,0,1,0,0,1], k = 2
+  Output: true
+  Explanation: Each of the 1s are at least 2 places away from each other.
+
+  Example 2:
+
+  Input: nums = [1,0,0,1,0,1], k = 2
+  Output: false
+  Explanation: The second 1 and third 1 are only one apart from each other.
+  Example 3:
+  Input: nums = [1,1,1,1,1], k = 0
+  Output: true
+
+  Example 4:
+  Input: nums = [0,1,0,1], k = 1
+  Output: true
+
+  Constraints:
+
+  1 <= nums.length <= 10^5
+  0 <= k <= nums.length
+  nums[i] is 0 or 1
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn k_length_apart(nums: Vec<usize>, k: usize) -> (result: bool)
+      requires 
+          nums.len() >= 1,
+          nums.len() <= 100000,
+          k <= nums.len(),
+          forall|i: int| 0 <= i < nums.len() ==> nums[i] <= 1,
+      ensures
+          result == true ==> (
+              forall|i: int, j: int| 
+                  0 <= i < nums.len() && 0 <= j < nums.len() && 
+                  nums[i] == 1 && nums[j] == 1 && i < j ==> 
+                  j - i > k
+          ),
+          result == false ==> (
+              exists|i: int, j: int| 
+                  0 <= i < nums.len() && 0 <= j < nums.len() && 
+                  nums[i] == 1 && nums[j] == 1 && i < j && 
+                  j - i <= k
+          ),
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      false
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {
+      // let test1 = vec![1, 0, 0, 0, 1, 0, 0, 1];
+      // let result1 = k_length_apart(test1, 2);
+      // assert!(result1 == true);
+      
+      // let test2 = vec![1, 0, 0, 1, 0, 1];
+      // let result2 = k_length_apart(test2, 2);
+      // assert!(result2 == false);
+      
+      // let test3 = vec![0, 1, 0, 1];
+      // let result3 = k_length_apart(test3, 1);
+      // assert!(result3 == true);
+  }

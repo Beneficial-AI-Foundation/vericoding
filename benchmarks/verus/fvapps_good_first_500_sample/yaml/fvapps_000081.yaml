@@ -1,0 +1,55 @@
+vc-description: |-
+  A permutation of length n is an array consisting of n distinct integers from 1 to n in arbitrary order. For example, [2,3,1,5,4] is a permutation, but [1,2,2] is not a permutation (2 appears twice in the array) and [1,3,4] is also not a permutation (n=3 but there is 4 in the array).
+  
+  Let p be any permutation of length n. We define the fingerprint F(p) of p as the sorted array of sums of adjacent elements in p. More formally,
+  
+  F(p) = sort([p_1+p_2, p_2+p_3, ..., p_{n-1}+p_n]).
+  
+  For example, if n=4 and p=[1,4,2,3], then the fingerprint is given by F(p) = sort([1+4,4+2,2+3]) = sort([5,6,5]) = [5,5,6].
+  
+  You are given a permutation p of length n. Your task is to find a different permutation p' with the same fingerprint. Two permutations p and p' are considered different if there is some index i such that p_i ≠ p'_i.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  spec fn is_permutation(p: Seq<nat>) -> bool {
+      p.len() > 0 &&
+      (forall|i: int| 0 <= i < p.len() ==> #[trigger] p[i] >= 1 && #[trigger] p[i] <= p.len()) &&
+      (forall|i: int, j: int| 0 <= i < p.len() && 0 <= j < p.len() && i != j ==> #[trigger] p[i] != #[trigger] p[j])
+  }
+
+  spec fn adjacent_sums(p: Seq<nat>) -> Seq<nat> {
+      if p.len() < 2 {
+          Seq::empty()
+      } else {
+          Seq::new((p.len() - 1) as nat, |i: int| p[i] + p[i + 1])
+      }
+  }
+
+  fn solve_fingerprint(n: usize, p: Vec<nat>) -> (result: Vec<nat>)
+      requires 
+          n >= 2,
+          p.len() == n,
+          is_permutation(p@),
+      ensures
+          result.len() == p.len(),
+          is_permutation(result@),
+          result@ != p@,
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      unreached()
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {}

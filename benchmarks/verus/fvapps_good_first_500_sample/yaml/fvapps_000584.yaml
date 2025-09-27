@@ -1,0 +1,69 @@
+vc-description: |-
+  The bustling town of Siruseri has just one sports stadium. There are a number of schools, colleges, sports associations, etc. that use this stadium as the venue for their sports events.
+  Anyone interested in using the stadium has to apply to the Manager of the stadium indicating both the starting date (a positive integer S) and the length of the sporting event in days (a positive integer D) they plan to organise. Since these requests could overlap it may not be possible to satisfy everyone. Also, there should be at least one gap day between any two approved events, so that the stadium can be cleaned.
+  It is the job of the Manager to decide who gets to use the stadium and who does not. The Manager, being a genial man, would like to keep as many organisations happy as possible and hence would like to allocate the stadium so that maximum number of events are held.
+  Suppose, for example, the Manager receives the following 4 requests:
+  
+  Event No.   Starting Date        Length 
+  1                   2                    5
+  2                   9                    7
+  3                  15                    6
+  4                   9                    3
+  
+  He would allot the stadium to events 1, 4 and 3. Event 1 begins on day 2 and ends on day 6, event 4 begins on day 9 and ends on day 11 and event 3 begins on day 15 and ends on day 20. You can verify that it is not possible to schedule all the 4 events (since events 2 and 3 overlap and only one of them can get to use the stadium).
+  Your task is to help the manager find the best possible allotment (i.e., the maximum number of events that can use the stadium).
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  spec fn events_overlap(event1: (u32, u32), event2: (u32, u32)) -> bool {
+      let (start1, duration1) = event1;
+      let (start2, duration2) = event2;
+      let end1 = start1 + duration1;
+      let end2 = start2 + duration2;
+      /* Events overlap if one starts before the other ends (with gap requirement) */
+      (start1 < end2 + 1) && (start2 < end1 + 1)
+  }
+
+  spec fn valid_schedule(events: Seq<(u32, u32)>, selected: Seq<bool>) -> bool {
+      selected.len() == events.len() &&
+      forall|i: int, j: int| 0 <= i < events.len() && 0 <= j < events.len() && i != j &&
+          selected[i] && selected[j] ==> !events_overlap(events[i], events[j])
+  }
+
+  spec fn count_selected(selected: Seq<bool>) -> nat 
+      decreases selected.len()
+  {
+      if selected.len() == 0 {
+          0 as nat
+      } else {
+          (if selected[0] { 1 as nat } else { 0 as nat }) + count_selected(selected.skip(1))
+      }
+  }
+
+  fn max_stadium_events(events: Vec<(u32, u32)>) -> (result: u32)
+      ensures
+          result <= events.len(),
+          exists|selected: Seq<bool>| valid_schedule(events@, selected) && count_selected(selected) == result,
+          forall|selected: Seq<bool>| valid_schedule(events@, selected) ==> count_selected(selected) <= result
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      0
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {
+      // let test_events = vec![(2u32, 5u32), (9u32, 7u32), (15u32, 6u32), (9u32, 3u32)];
+      // println!("{}", max_stadium_events(test_events));
+  }

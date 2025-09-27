@@ -1,0 +1,38 @@
+vc-description: |-
+  In order to celebrate Twice's 5th anniversary, Tzuyu and Sana decided to play a game.
+
+  Tzuyu gave Sana two integers $a$ and $b$ and a really important quest.
+
+  In order to complete the quest, Sana has to output the smallest possible value of ($a \oplus x$) + ($b \oplus x$) for any given $x$, where $\oplus$ denotes the bitwise XOR operation.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn solve_xor_expression(a: u32, b: u32) -> (result: u32)
+      ensures result == a ^ b,
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      unreached()
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {
+      // /* Apps difficulty: interview */
+      // /* Assurance level: guarded */
+      
+      // /* Test cases */
+      // assert(solve_xor_expression(6, 12) == 10);
+      // assert(solve_xor_expression(4, 9) == 13);
+      // assert(solve_xor_expression(1, 1) == 0);
+  }

@@ -1,0 +1,74 @@
+vc-description: |-
+  You are given two jugs with capacities x and y litres. There is an infinite amount of water supply available.
+  You need to determine whether it is possible to measure exactly z litres using these two jugs.
+
+  If z liters of water is measurable, you must have z liters of water contained within one or both buckets by the end.
+
+  Operations allowed:
+
+  Fill any of the jugs completely with water.
+  Empty any of the jugs.
+  Pour water from one jug into another till the other jug is completely full or the first jug itself is empty.
+
+  Example 1: (From the famous "Die Hard" example)
+
+  Input: x = 3, y = 5, z = 4
+  Output: True
+
+  Example 2:
+
+  Input: x = 2, y = 6, z = 5
+  Output: False
+
+  Credits:Special thanks to @vinod23 for adding this problem and creating all test cases.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  spec fn gcd(a: u32, b: u32) -> u32
+      decreases if a >= b { a } else { b }
+  {
+      if b == 0 {
+          a
+      } else if a == 0 {
+          b
+      } else if a >= b {
+          gcd((a - b) as u32, b)
+      } else {
+          gcd(a, (b - a) as u32)
+      }
+  }
+
+  fn can_measure_water(x: u32, y: u32, z: u32) -> (result: bool)
+      ensures
+          /* measurement_bounds: if result then z <= x + y && z >= 0 */
+          result ==> z <= x + y,
+          /* zero_target_always_possible: if z == 0 then result == true */
+          z == 0 ==> result == true,
+          /* single_jug_measurements: for single jug cases */
+          (y == 0 && x > 0) ==> (result == (z == x || z == 0)),
+          /* gcd_property: if x > 0 && y > 0 && result then z % gcd(x, y) == 0 */
+          (x > 0 && y > 0 && result) ==> (z % gcd(x, y) == 0),
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      false
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+
+  fn main() {
+      // println!("{}", can_measure_water(3, 5, 4)); // True
+      // println!("{}", can_measure_water(2, 6, 5)); // False  
+      // println!("{}", can_measure_water(4, 6, 8)); // True
+  }

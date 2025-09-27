@@ -1,0 +1,49 @@
+vc-description: |-
+  After six days, professor GukiZ decided to give more candies to his students. Like last time, he has N students, numbered 1 through N. Let's denote the number of candies GukiZ gave to the i-th student by p_i. As GukiZ has a lot of students, he does not remember all the exact numbers of candies he gave to the students. He only remembers the following properties of the sequence p:
+  - The numbers of candies given to each of the first K students (p_1, p_2, ..., p_K) are known exactly.
+  - All elements of the sequence p are distinct and positive.
+  - GukiZ didn't give more than x candies to any student (the maximum value in the sequence p is not greater than x).
+  - For each student i, there is at least one other student j such that |p_i - p_j| <= D.
+  - The professor gave out the biggest possible total number of candies, i.e. S = p_1 + p_2 + p_3 + ... + p_N is maximum possible.
+  GukiZ would like to know the total number of candies S he had at the beginning. However, times change and after six days, the professor is really tired, so it is possible that there is no sequence p which satisfies the constraints. Can you help GukiZ find the number of candies he gave out, or tell him that he must have made a mistake?
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn solve_candies(n: u32, k: u32, x: u32, d: u32, given_candies: Vec<u32>) -> (result: i32)
+      requires 
+          given_candies.len() == k,
+          k >= 1,
+          n >= 3,
+          forall|i: int| 0 <= i < given_candies.len() ==> given_candies[i] >= 1 && given_candies[i] <= x,
+          forall|i: int, j: int| 0 <= i < j < given_candies.len() ==> given_candies[i] != given_candies[j],
+      ensures
+          result == -1 || (
+              result >= 0 &&
+              forall|i: int| 0 <= i < given_candies.len() ==> result >= given_candies[i] &&
+              n >= k &&
+              x >= n
+          )
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      unreached()
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {
+      // let test1 = solve_candies(4, 3, 5, 3, vec![2, 1, 5]);
+      // assert(test1 == 12);
+      // let test2 = solve_candies(3, 2, 8, 2, vec![3, 8]);
+      // assert(test2 == -1);
+  }

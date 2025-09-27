@@ -1,0 +1,67 @@
+vc-description: |-
+  Problem: Suppose there is a circle. There are N Juice shops on that circle. Juice shops are numbered 0 to N-1 (both inclusive). You have two pieces of information corresponding to each of the juice shop:
+  (1) the amount of Juice that a particular Juice shop can provide and 
+  (2) the distance from that juice shop to the next juice shop.
+
+  Initially, there is a man with a bottle of infinite capacity carrying no juice. He can start the tour at any of the juice shops. Calculate the first point from where the man will be able to complete the circle. Consider that the man will stop at every Juice Shop. The man will move one kilometer for each litre of the juice.
+
+  Input:
+  - The first line will contain the value of N.
+  - The next N lines will contain a pair of integers each, i.e. the amount of juice that a juice shop can provide(in litres) and the distance between that juice shop and the next juice shop.
+
+  Output:
+  An integer which will be the smallest index of the juice shop from which he can start the tour.
+
+  Constraints:
+  - 1 ≤ N ≤ 10^5
+  - 1 ≤ amt of juice, distance ≤ 10^9
+
+  Sample Input:
+  3
+  1 5
+  10 3
+  3 4
+
+  Sample Output:
+  1
+
+  Explanation:
+  He can start the tour from the SECOND Juice shop.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn find_starting_juice_shop(juices: Vec<int>, distances: Vec<int>) -> (result: i32)
+      requires 
+          juices.len() == distances.len(),
+      ensures
+          (juices.len() == 0 || distances.len() == 0) ==> result == -1,
+          result == -1 || (0 <= result < juices.len()),
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      -1
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+
+  fn main() {
+      // let result1 = find_starting_juice_shop(vec![1, 10, 3], vec![5, 3, 4]);
+      // assert(result1 == 1);
+      
+      // let result2 = find_starting_juice_shop(vec![5, 2, 3], vec![4, 3, 2]);
+      // assert(result2 == 0);
+      
+      // let result3 = find_starting_juice_shop(vec![1, 2, 3], vec![4, 5, 6]);
+      // assert(result3 == -1);
+  }

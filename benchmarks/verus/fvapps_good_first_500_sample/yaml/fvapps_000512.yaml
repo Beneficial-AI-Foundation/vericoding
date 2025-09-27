@@ -1,0 +1,55 @@
+vc-description: |-
+  You are given three numbers a, b, c. Write a program to determine the largest number that is less than or equal to c and leaves a remainder b when divided by a.
+
+  -----Input:-----
+  - First line will contain T, number of testcases. Then the testcases follow.
+  - Each testcase contains a single line of input, having three integers a, b, c.
+
+  -----Output:-----
+  - For each testcase, output in a single line the largest number less than or equal to c.
+
+  -----Constraints:-----
+  - 1 ≤ T ≤ 100000
+  - 0 ≤ b < a < c ≤ 10^18
+
+  -----Sample Input:-----
+  1
+  7 2 10
+
+  -----Sample Output:-----
+  9
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn solve_remainder(a: nat, b: nat, c: nat) -> (result: nat)
+      requires 
+          a > 0,
+          b < a,
+          c > 0,
+      ensures 
+          result <= c,
+          result % a == b,
+          result + a > c || (result + a) % a != b,
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      unreached()
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {
+      // println!("{}", solve_remainder(7, 2, 10));
+      // println!("{}", solve_remainder(5, 3, 12));
+      // println!("{}", solve_remainder(10, 5, 100));
+  }

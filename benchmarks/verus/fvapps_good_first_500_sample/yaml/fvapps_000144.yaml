@@ -1,0 +1,44 @@
+vc-description: |-
+  Given an encoded string, return it's decoded string.
+
+  The encoding rule is: k[encoded_string], where the encoded_string inside the square brackets is being repeated exactly k times. Note that k is guaranteed to be a positive integer.
+
+  You may assume that the input string is always valid; No extra white spaces, square brackets are well-formed, etc.
+
+  Furthermore, you may assume that the original data does not contain any digits and that digits are only for those repeat numbers, k. For example, there won't be input like 3a or 2[4].
+
+  Examples:
+
+  s = "3[a]2[bc]", return "aaabcbc".
+  s = "3[a2[c]]", return "accaccacc".
+  s = "2[abc]3[cd]ef", return "abcabccdcdcdef".
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+vc-helpers: |-
+  spec fn string_contains_char(s: Seq<char>, c: char) -> bool {
+      exists|i: int| 0 <= i < s.len() && s[i] == c
+  }
+
+  spec fn is_alpha_char(c: char) -> bool;
+vc-spec: |-
+  fn decode_string(s: &str) -> (result: String)
+      ensures
+          forall|c: char| string_contains_char(result@, c) ==> is_alpha_char(c),
+          forall|c: char| string_contains_char(result@, c) ==>
+              exists|c_orig: char| string_contains_char(s@, c_orig) && c == c_orig && is_alpha_char(c_orig)
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      unreached()
+      // impl-end
+  }
+vc-postamble: |-
+  }
+  fn main() {
+      // println!("{}", decode_string("3[a]2[bc]"));
+      // println!("{}", decode_string("3[a2[c]]"));
+      // println!("{}", decode_string("2[abc]3[cd]ef"));
+  }

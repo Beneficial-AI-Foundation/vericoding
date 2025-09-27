@@ -1,0 +1,39 @@
+vc-description: |-
+  Teacher Sungjae wanted to hold a programming competition for his students where every participant need to be included into team. The participants submitted their team names before the deadline. After the competition ran for half an hour, (It is assured that each registered team will submit absolutely once within half an hour) Sungjae mistakenly pressed a button that changed the order of the registered team names. Now in the submission list, order of the characters in the team's name doesn't matter. That means abc, acb, bac, bca, cab, cba refers to the same team. The competition ran for two hours and then ended. Sungjae now counting each of the team's score and wants to print the registered team names and score. The scoreboard should be ordered based on scores in decreasing order and if two teams have same score, Sangjae would follow lexicographical order.
+  N.B. frequency of each character's in a registered team's name will not match with another team. 
+  That means two teams named xoxo and oxox is not possible. Because both of them have the same frequency of each of the characters (two 'o' and two 'x'). Similarly abb and bab is not possible (because both of them have one 'a' and two 'b').
+  It is ensured that only possible test cases will be given.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  spec fn extract_points_from_entry(entry: Seq<char>) -> nat {
+      0  // Simplified spec - in real implementation would parse the string
+  }
+
+  fn get_scoreboard(n: usize, k: usize, submissions: Vec<(String, usize)>) -> (result: Vec<String>)
+      requires 
+          n > 0,
+          k <= n,
+          submissions.len() == n,
+      ensures 
+          forall|i: int, j: int| 0 <= i < j < result.len() ==> 
+              extract_points_from_entry(result[i]@) >= extract_points_from_entry(result[j]@)
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      unreached()
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {}

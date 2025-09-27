@@ -1,0 +1,53 @@
+vc-description: |-
+  There are N children standing in a line. Each child is assigned a rating value.
+
+  You are giving candies to these children subjected to the following requirements:
+
+         Each child must have at least one candy.
+         Children with a higher rating get more candies than their neighbors.
+
+  What is the minimum candies you must give?
+
+  Example 1:
+
+  Input: [1,0,2]
+  Output: 5
+  Explanation: You can allocate to the first, second and third child with 2, 1, 2 candies respectively.
+
+  Example 2:
+
+  Input: [1,2,2]
+  Output: 4
+  Explanation: You can allocate to the first, second and third child with 1, 2, 1 candies respectively.
+               The third child gets 1 candy because it satisfies the above two conditions.
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+vc-helpers: |-
+
+vc-spec: |-
+  fn candy(ratings: Vec<usize>) -> (result: usize)
+      ensures 
+          ratings.len() == 0 ==> result == 0,
+          ratings.len() == 1 ==> result == 1
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      0
+      // impl-end
+  }
+vc-postamble: |-
+
+  }
+  fn main() {
+      // let result1 = candy(vec![1, 0, 2]);
+      // println!("Result 1: {}", result1); // Expected: 5
+      
+      // let result2 = candy(vec![1, 2, 2]);
+      // println!("Result 2: {}", result2); // Expected: 4
+      
+      // let result3 = candy(vec![]);
+      // println!("Result 3: {}", result3); // Expected: 0
+  }

@@ -1,0 +1,102 @@
+vc-description: |-
+  One upon a time there were three best friends Abhinav, Harsh, and Akash decided to form a 
+  team and take part in ICPC from KIIT. Participants are usually offered several problems during 
+  the programming contest. Long before the start, the friends decided that they will implement a 
+  problem if at least two of them are sure about the solution. Otherwise, friends won't write the 
+  problem's solution. 
+  This contest offers $N$ problems to the participants. For each problem we know, which friend is 
+  sure about the solution. Help the KIITians find the number of problems for which they will write a 
+  solution. 
+  Then n lines contain three integers each, each integer is either 0 or 1. If the first number in the 
+  line equals 1, then Abhinav is sure about the problem's solution, otherwise, he isn't sure. The 
+  second number shows Harsh's view on the solution, the third number shows Akash's view. The 
+  numbers on the lines are 
+
+  -----Input:-----
+  - A single integer will contain $N$, number of problems. 
+
+  -----Output:-----
+  Print a single integer — the number of problems the friends will implement on the contest. 
+
+  -----Constraints-----
+  - $1 \leq N \leq 1000$ 
+
+  -----Sample Input:-----
+  3
+
+  1 1 0
+
+  1 1 1
+
+  1 0 0   
+
+  -----Sample Output:-----
+  2  
+
+  -----EXPLANATION:-----
+  In the first sample, Abhinav and Harsh are sure that they know how to solve the first problem 
+  and all three of them know how to solve the second problem. That means that they will write 
+  solutions for these problems. Only Abhinav is sure about the solution for the third problem, but 
+  that isn't enough, so the group won't take it.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  spec fn confidence_sum(conf: Seq<int>) -> int
+      decreases conf.len()
+  {
+      if conf.len() == 0 {
+          0
+      } else {
+          conf[0] + confidence_sum(conf.skip(1))
+      }
+  }
+
+  spec fn count_problems_with_at_least_two_confident(confidence_matrix: Seq<Vec<int>>) -> int
+      decreases confidence_matrix.len()
+  {
+      if confidence_matrix.len() == 0 {
+          0
+      } else {
+          let first_sum = confidence_sum(confidence_matrix[0]@);
+          let rest_count = count_problems_with_at_least_two_confident(confidence_matrix.skip(1));
+          if first_sum >= 2 {
+              1 + rest_count
+          } else {
+              rest_count
+          }
+      }
+  }
+
+  fn count_solved_problems(n: usize, confidence_matrix: Vec<Vec<i32>>) -> (result: usize)
+      requires 
+          n >= 1,
+          n <= 1000,
+          confidence_matrix.len() == n,
+          forall|i: int| 0 <= i < confidence_matrix.len() ==> confidence_matrix[i].len() == 3,
+          forall|i: int, j: int| 0 <= i < confidence_matrix.len() && 0 <= j < 3 ==> 
+              (confidence_matrix[i][j] == 0 || confidence_matrix[i][j] == 1),
+      ensures
+          result <= confidence_matrix.len(),
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      unreached()
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {
+      // let test_matrix = vec![vec![1, 1, 0], vec![1, 1, 1], vec![1, 0, 0]];
+      // let result = count_solved_problems(3, test_matrix);
+      // println!("{}", result);
+  }

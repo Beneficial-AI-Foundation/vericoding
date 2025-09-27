@@ -1,0 +1,40 @@
+vc-description: |-
+  Screen resolution of Polycarp's monitor is a × b pixels. Unfortunately, there is one dead pixel at his screen. It has coordinates (x, y) (0 ≤ x < a, 0 ≤ y < b). You can consider columns of pixels to be numbered from 0 to a-1, and rows — from 0 to b-1.
+
+  Polycarp wants to open a rectangular window of maximal size, which doesn't contain the dead pixel. The boundaries of the window should be parallel to the sides of the screen.
+
+  Print the maximal area (in pixels) of a window that doesn't contain the dead pixel inside itself.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn max_window_size(a: usize, b: usize, x: usize, y: usize) -> (result: usize)
+      requires 
+          a >= 1,
+          b >= 1,
+          x < a,
+          y < b,
+      ensures
+          result == vstd::math::max(vstd::math::max(x * b, (a - 1 - x) * b), vstd::math::max(y * a, (b - 1 - y) * a)),
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      unreached()
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {
+      // #eval max_window_size 8 8 0 0
+      // #eval max_window_size 1 10 0 3  
+      // #eval max_window_size 17 31 10 4
+  }

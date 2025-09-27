@@ -1,0 +1,71 @@
+vc-description: |-
+  Find sum of all the numbers that are multiples of 10 and are less than or equal to a given number "N". (quotes for clarity and be careful of integer overflow)
+
+  -----Input-----
+  Input will start with an integer T the count of test cases, each case will have an integer N.
+
+  -----Output-----
+  Output each values, on a newline.
+
+  -----Constraints-----
+  - 1 ≤ T ≤ 10
+  - 1 ≤ N ≤1000000000
+
+  -----Example-----
+  Input:
+  1
+  10
+
+  Output:
+  10
+
+  -----Explanation-----
+  Example case 1. Only integer that is multiple 10 that is less than or equal to 10 is 10
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  spec fn sum_multiples_of_ten_spec(n: nat) -> nat
+      decreases n
+  {
+      if n < 10 {
+          0
+      } else {
+          let k = n / 10;
+          k * (k + 1) * 5
+      }
+  }
+
+  fn sum_multiples_of_ten(n: nat) -> (result: nat)
+      ensures
+          result >= 0,
+          result % 10 == 0,
+          result == sum_multiples_of_ten_spec(n),
+          (n == 0 || n < 10) ==> result == 0
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      unreached()
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+
+  fn main() {
+      // Apps difficulty: interview
+      // Assurance level: guarded_and_plausible
+
+      // Test cases:
+      // assert(sum_multiples_of_ten(10) == 10);
+      // assert(sum_multiples_of_ten(20) == 30);
+      // assert(sum_multiples_of_ten(100) == 550);
+  }

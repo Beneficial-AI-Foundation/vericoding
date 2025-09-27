@@ -1,0 +1,64 @@
+vc-description: |-
+  There is a rectangular grid of cells consisting of n rows and m columns.
+  You will place a robot on one of the grid cells and provide it with a command string s, consisting of characters 'L', 'R', 'U', 'D'.
+  After being placed, the robot will follow the instructions of the command string, where 'L' corresponds moving to the left, 'R' towards the right, 'U' for moving up, and 'D' means down.
+
+  You have already selected the command string s, and are wondering if it is possible to place the robot in one of the grid cells initially and have it always stay entirely within the grid upon execution of the command string s.
+  Output "safe" if there is a starting cell for which the robot doesn't fall off the grid on following command s, otherwise, output "unsafe".
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+vc-helpers: |-
+
+vc-spec: |-
+  spec fn count_char(s: Seq<char>, c: char) -> nat
+      decreases s.len()
+  {
+      if s.len() == 0 {
+          0nat
+      } else {
+          (if s[0] == c { 1nat } else { 0nat }) + count_char(s.skip(1), c)
+      }
+  }
+
+  enum SafetyResult {
+      Safe,
+      Unsafe,
+  }
+
+  fn solve_robot_safety(n: usize, m: usize, commands: Vec<char>) -> (result: SafetyResult)
+      requires 
+          n > 0,
+          m > 0,
+          commands.len() > 0,
+          forall|i: int| 0 <= i < commands.len() ==> 
+              (commands[i] == 'U' || commands[i] == 'D' || commands[i] == 'L' || commands[i] == 'R'),
+      ensures 
+          match result {
+              SafetyResult::Safe => true,
+              SafetyResult::Unsafe => true,
+          },
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      SafetyResult::Unsafe
+      // impl-end
+  }
+vc-postamble: |-
+
+  }
+  fn main() {
+      // let result1 = solve_robot_safety(1, 1, vec!['R']);
+      // match result1 {
+      //     SafetyResult::Safe => println!("safe"),
+      //     SafetyResult::Unsafe => println!("unsafe"),
+      // }
+      
+      // let result2 = solve_robot_safety(2, 3, vec!['L', 'L', 'R', 'U']);
+      // match result2 {
+      //     SafetyResult::Safe => println!("safe"),
+      //     SafetyResult::Unsafe => println!("unsafe"),
+      // }
+  }

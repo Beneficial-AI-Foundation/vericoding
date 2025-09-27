@@ -1,0 +1,66 @@
+vc-description: |-
+  The chef is trying to decode some pattern problems, Chef wants your help to code it. Chef has one number K to form a new pattern. Help the chef to code this pattern problem.
+  
+  -----Input:-----
+  - First-line will contain $T$, the number of test cases. Then the test cases follow. 
+  - Each test case contains a single line of input, one integer $K$. 
+  
+  -----Output:-----
+  For each test case, output as the pattern.
+  
+  -----Constraints-----
+  - $1 \leq T \leq 100$
+  - $1 \leq K \leq 100$
+  
+  -----Sample Input:-----
+  4
+  1
+  2
+  3
+  4
+  
+  -----Sample Output:-----
+  0
+  01
+  10
+  010
+  101
+  010
+  0101
+  1010
+  0101
+  1010
+  
+  -----EXPLANATION:-----
+  No need, else pattern can be decode easily.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn generate_pattern(k: usize) -> (result: Vec<Vec<char>>)
+      requires k > 0,
+      ensures
+          result.len() == k,
+          forall|i: int| 0 <= i < k ==> #[trigger] result[i].len() == k,
+          forall|i: int, j: int| 0 <= i < k && 0 <= j < k ==> 
+              (#[trigger] result[i][j] == '0' || #[trigger] result[i][j] == '1'),
+          forall|i: int, j: int| 0 <= i < k && 0 <= j < k ==> 
+              #[trigger] result[i][j] == (if (i + j) % 2 == 0 { '0' } else { '1' }),
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      unreached()
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {}

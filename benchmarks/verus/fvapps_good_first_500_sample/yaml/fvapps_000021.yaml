@@ -1,0 +1,60 @@
+vc-description: |-
+  Among Johnny's numerous hobbies, there are two seemingly harmless ones: applying bitwise operations and sneaking into his dad's office. As it is usually the case with small children, Johnny is unaware that combining these two activities can get him in a lot of trouble.
+
+  There is a set S containing very important numbers on his dad's desk. The minute Johnny heard about it, he decided that it's a good idea to choose a positive integer k and replace each element s of the set S with s ⊕ k (⊕ denotes the exclusive or operation). 
+
+  Help him choose such k that Johnny's dad will not see any difference after his son is done playing (i.e. Johnny will get the same set as before playing). It is possible that no such number exists. It is also possible that there are many of them. In such a case, output the smallest one. Note that the order of elements in a set doesn't matter, i.e. set {1, 2, 3} equals to set {2, 1, 3}.
+
+  Formally, find the smallest positive integer k such that {s ⊕ k | s ∈ S} = S or report that there is no such number.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  spec fn bxor(a: u32, b: u32) -> u32
+  {
+      a ^ b
+  }
+
+  spec fn apply_xor_to_seq(s: Seq<u32>, k: u32) -> Seq<u32>
+      decreases s.len()
+  {
+      if s.len() == 0 {
+          seq![]
+      } else {
+          seq![bxor(s[0], k)].add(apply_xor_to_seq(s.skip(1), k))
+      }
+  }
+
+  spec fn seqs_have_same_elements(s1: Seq<u32>, s2: Seq<u32>) -> bool
+  {
+      s1.to_set() == s2.to_set()
+  }
+
+  fn find_smallest_k(n: usize, s: Vec<u32>) -> (result: i32)
+      requires 
+          s.len() == n,
+          n >= 1,
+          forall|i: int, j: int| 0 <= i < s.len() && 0 <= j < s.len() && i != j ==> s[i] != s[j],
+          forall|i: int| 0 <= i < s.len() ==> s[i] < 1024,
+      ensures 
+          result == -1 || (result > 0 && result <= 1024),
+          result != -1 ==> seqs_have_same_elements(apply_xor_to_seq(s@, result as u32), s@),
+          result != -1 ==> forall|k: u32| 0 < k < result ==> !seqs_have_same_elements(apply_xor_to_seq(s@, k), s@)
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      -1
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {}

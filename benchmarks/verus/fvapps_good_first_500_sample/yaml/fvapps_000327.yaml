@@ -1,0 +1,77 @@
+vc-description: |-
+  Given two equal-size strings s and t. In one step you can choose any character of t and replace it with another character.
+  Return the minimum number of steps to make t an anagram of s.
+  An Anagram of a string is a string that contains the same characters with a different (or the same) ordering.
+
+  Example 1:
+  Input: s = "bab", t = "aba"
+  Output: 1
+  Explanation: Replace the first 'a' in t with b, t = "bba" which is anagram of s.
+
+  Example 2:
+  Input: s = "leetcode", t = "practice"
+  Output: 5
+  Explanation: Replace 'p', 'r', 'a', 'i' and 'c' from t with proper characters to make t anagram of s.
+
+  Example 3:
+  Input: s = "anagram", t = "mangaar"
+  Output: 0
+  Explanation: "anagram" and "mangaar" are anagrams. 
+
+  Example 4:
+  Input: s = "xxyyzz", t = "xxyyzz"
+  Output: 0
+
+  Example 5:
+  Input: s = "friend", t = "family"
+  Output: 4
+
+  Constraints:
+
+  1 <= s.length <= 50000
+  s.length == t.length
+  s and t contain lower-case English letters only.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn min_steps_to_anagram(s1: Vec<char>, s2: Vec<char>) -> (result: usize)
+      requires s1.len() == s2.len()
+      ensures 
+          result <= s2.len(),
+          (s1@ == s2@) ==> (result == 0)
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      0
+      // impl-end
+  }
+
+vc-postamble: |-
+  /* Apps difficulty: interview
+     Assurance level: guarded_and_plausible */
+
+  }
+  fn main() {
+      // let s1 = vec!['b', 'a', 'b'];
+      // let s2 = vec!['a', 'b', 'a'];
+      // let result1 = min_steps_to_anagram(s1, s2);
+      // println!("Result 1: {}", result1); // Expected: 1
+      
+      // let s3 = vec!['l', 'e', 'e', 't', 'c', 'o', 'd', 'e'];
+      // let s4 = vec!['p', 'r', 'a', 'c', 't', 'i', 'c', 'e'];
+      // let result2 = min_steps_to_anagram(s3, s4);
+      // println!("Result 2: {}", result2); // Expected: 5
+      
+      // let s5 = vec!['a', 'n', 'a', 'g', 'r', 'a', 'm'];
+      // let s6 = vec!['m', 'a', 'n', 'g', 'a', 'a', 'r'];
+      // let result3 = min_steps_to_anagram(s5, s6);
+      // println!("Result 3: {}", result3); // Expected: 0
+  }

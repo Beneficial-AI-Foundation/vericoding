@@ -1,0 +1,75 @@
+vc-description: |-
+  The string "PAYPALISHIRING" is written in a zigzag pattern on a given number of rows like this: (you may want to display this pattern in a fixed font for better legibility)
+
+  P   A   H   N
+  A P L S I I G
+  Y   I   R
+
+  And then read line by line: "PAHNAPLSIIGYIR"
+
+  Write the code that will take a string and make this conversion given a number of rows:
+
+  string convert(string s, int numRows);
+
+  Example 1:
+
+  Input: s = "PAYPALISHIRING", numRows = 3
+  Output: "PAHNAPLSIIGYIR"
+
+  Example 2:
+
+  Input: s = "PAYPALISHIRING", numRows = 4
+  Output: "PINALSIGYAHRPI"
+  Explanation:
+
+  P     I    N
+  A   L S  I G
+  Y A   H R
+  P     I
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn convert_zigzag(s: &str, num_rows: usize) -> (result: String)
+      requires 
+          num_rows > 0,
+          num_rows <= 100,
+      ensures 
+          result@.len() == s@.len(),
+          num_rows == 1 ==> result@ == s@,
+          s@.len() == 0 ==> result@ == s@,
+          s@.len() == 1 ==> result@ == s@,
+          s@.len() >= num_rows && num_rows > 1 ==> {
+              result@.len() > 0 ==> result@[0] == s@[0]
+          }
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      unreached()
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+
+  fn main() {
+      // let s1 = "PAYPALISHIRING";
+      // let result1 = convert_zigzag(s1, 3);
+      // println!("{}", result1);
+      
+      // let s2 = "PAYPALISHIRING";
+      // let result2 = convert_zigzag(s2, 4);
+      // println!("{}", result2);
+      
+      // let s3 = "AB";
+      // let result3 = convert_zigzag(s3, 1);
+      // println!("{}", result3);
+  }

@@ -1,0 +1,73 @@
+vc-description: |-
+  We are given hours, a list of the number of hours worked per day for a given employee.
+  A day is considered to be a tiring day if and only if the number of hours worked is (strictly) greater than 8.
+  A well-performing interval is an interval of days for which the number of tiring days is strictly larger than the number of non-tiring days.
+  Return the length of the longest well-performing interval.
+
+  Example 1:
+  Input: hours = [9,9,6,0,6,6,9]
+  Output: 3
+  Explanation: The longest well-performing interval is [9,9,6].
+
+  Constraints:
+
+  1 <= hours.length <= 10000
+  0 <= hours[i] <= 16
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+vc-helpers: |-
+
+vc-spec: |-
+  spec fn is_tiring(hours: nat) -> bool {
+      hours > 8
+  }
+
+  spec fn count_tiring_days(hours: Seq<nat>) -> nat
+      decreases hours.len()
+  {
+      if hours.len() == 0 {
+          0nat
+      } else {
+          (if is_tiring(hours[0]) { 1nat } else { 0nat }) + count_tiring_days(hours.skip(1))
+      }
+  }
+
+  spec fn is_well_performing_interval(hours: Seq<nat>) -> bool {
+      let tiring_days = count_tiring_days(hours);
+      let non_tiring_days = hours.len() - tiring_days;
+      tiring_days > non_tiring_days
+  }
+
+  fn longest_wpi(hours: Vec<nat>) -> (result: nat)
+      requires 
+          hours.len() >= 1,
+          hours.len() <= 10000,
+          forall|i: int| 0 <= i < hours.len() ==> hours[i] <= 16,
+      ensures 
+          result >= 0,
+          result <= hours.len(),
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      unreached()
+      // impl-end
+  }
+vc-postamble: |-
+
+  }
+  fn main() {
+      // let test1 = vec![9, 9, 6, 0, 6, 6, 9];
+      // let result1 = longest_wpi(test1);
+      // println!("Test 1 result: {}", result1);
+      
+      // let test2 = vec![6, 6, 6];
+      // let result2 = longest_wpi(test2);
+      // println!("Test 2 result: {}", result2);
+      
+      // let test3 = vec![9, 9, 9];
+      // let result3 = longest_wpi(test3);
+      // println!("Test 3 result: {}", result3);
+  }

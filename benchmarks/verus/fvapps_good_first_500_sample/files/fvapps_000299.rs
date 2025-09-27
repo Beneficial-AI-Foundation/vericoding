@@ -1,0 +1,97 @@
+// <vc-preamble>
+use vstd::prelude::*;
+
+verus! {
+// </vc-preamble>
+
+// <vc-helpers>
+// </vc-helpers>
+
+// <vc-spec>
+spec fn combination_sum4(nums: Seq<i32>, target: i32) -> int
+    recommends 
+        forall|n: i32| nums.contains(n) ==> n > 0,
+        target > 0
+{
+    if nums.len() == 0 || target <= 0 {
+        0
+    } else {
+        1 // placeholder
+    }
+}
+
+fn combination_sum4_exec(nums: Vec<i32>, target: i32) -> (result: i32)
+    requires 
+        forall|n: i32| nums@.contains(n) ==> n > 0,
+        target > 0,
+    ensures result >= 0
+// </vc-spec>
+// <vc-code>
+{
+    // impl-start
+    assume(false);
+    0
+    // impl-end
+}
+// </vc-code>
+
+proof fn combination_sum4_non_negative(nums: Vec<i32>, target: i32)
+    requires 
+        forall|n: i32| nums@.contains(n) ==> n > 0,
+        target > 0,
+    ensures combination_sum4(nums@, target) >= 0
+{
+    assume(false);
+}
+
+proof fn combination_sum4_matches_single(nums: Vec<i32>, target: i32)
+    requires 
+        nums@.contains(target),
+        forall|n: i32| nums@.contains(n) ==> n > 0,
+        target > 0,
+    ensures combination_sum4(nums@, target) >= 1
+{
+    assume(false);
+}
+
+proof fn combination_sum4_all_greater(nums: Vec<i32>, target: i32)
+    requires 
+        forall|n: i32| nums@.contains(n) ==> n > target,
+        target > 0,
+    ensures combination_sum4(nums@, target) == 0
+{
+    assume(false);
+}
+
+proof fn combination_sum4_less_than_min(nums: Vec<i32>, target: i32)
+    requires 
+        forall|n: i32| nums@.contains(n) ==> n > 0,
+        target > 0,
+        forall|n: i32| nums@.contains(n) ==> target < n,
+    ensures combination_sum4(nums@, target) == 0
+{
+    assume(false);
+}
+
+proof fn combination_sum4_order_independent(nums1: Vec<i32>, nums2: Vec<i32>, target: i32)
+    requires 
+        forall|n: i32| nums1@.contains(n) ==> n > 0,
+        target > 0,
+        forall|n: i32| nums1@.contains(n) <==> nums2@.contains(n),
+    ensures combination_sum4(nums1@, target) == combination_sum4(nums2@, target)
+{
+    assume(false);
+}
+
+}
+
+fn main() {
+    // let result1 = combination_sum4_exec(vec![1, 2, 3], 4);
+    // println!("Result for [1, 2, 3] with target 4: {}", result1);
+    
+    // let result2 = combination_sum4_exec(vec![1, 2], 3);
+    // println!("Result for [1, 2] with target 3: {}", result2);
+    
+    // let result3 = combination_sum4_exec(vec![2], 2);
+    // println!("Result for [2] with target 2: {}", result3);
+}

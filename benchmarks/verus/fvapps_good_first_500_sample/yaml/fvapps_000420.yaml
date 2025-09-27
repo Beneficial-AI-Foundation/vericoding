@@ -1,0 +1,66 @@
+vc-description: |-
+  Given a string S, count the number of distinct, non-empty subsequences of S .
+  Since the result may be large, return the answer modulo 10^9 + 7.
+
+  Example 1:
+  Input: "abc"
+  Output: 7
+  Explanation: The 7 distinct subsequences are "a", "b", "c", "ab", "ac", "bc", and "abc".
+
+  Example 2:
+  Input: "aba"
+  Output: 6
+  Explanation: The 6 distinct subsequences are "a", "b", "ab", "ba", "aa" and "aba".
+
+  Example 3:
+  Input: "aaa"
+  Output: 3
+  Explanation: The 3 distinct subsequences are "a", "aa" and "aaa".
+
+  Note:
+
+  S contains only lowercase letters.
+  1 <= S.length <= 2000
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn distinct_subseq_count(s: Vec<u8>) -> (result: u32)
+      requires 
+          s.len() > 0,
+          s.len() <= 2000,
+          forall|i: int| 0 <= i < s.len() ==> s[i] >= 97 && s[i] <= 122,
+      ensures 
+          result < 1000000007,
+          result >= s.len() as u32,
+          (forall|i: int| 0 <= i < s.len() ==> s[i] == 97) ==> result == s.len() as u32,
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      unreached()
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {
+      // let s1 = vec![97, 98, 99]; // "abc"
+      // let result1 = distinct_subseq_count(s1);
+      // assert(result1 == 7);
+      
+      // let s2 = vec![97, 98, 97]; // "aba"
+      // let result2 = distinct_subseq_count(s2);
+      // assert(result2 == 6);
+      
+      // let s3 = vec![97, 97, 97]; // "aaa"
+      // let result3 = distinct_subseq_count(s3);
+      // assert(result3 == 3);
+  }

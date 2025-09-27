@@ -1,0 +1,96 @@
+vc-description: |-
+  You are given a sequence A_1, A_2, ..., A_N. For each valid i, the star value of the element A_i is the number of valid indices j < i such that A_j is divisible by A_i.
+  Chef is a curious person, so he wants to know the maximum star value in the given sequence. Help him find it.
+
+  Input:
+  - The first line of the input contains a single integer T which denotes the number of test cases.
+  - The first line of each test case contains a single integer N.
+  - The second line of each test case contains N space-separated integers A_1, A_2, ..., A_N.
+
+  Output:
+  For each test case, print a single line containing one integer — the maximum star value.
+
+  Constraints:
+  - 1 ≤ T ≤ 10
+  - 1 ≤ N ≤ 10^5
+  - 1 ≤ A_i ≤ 10^6 for each valid i
+  - Sum of N over all test cases does not exceed 100,000.
+
+  Example:
+  Input: [8, 1, 28, 4, 2, 6, 7]
+  Output: 3
+  Explanation: A_5 = 2 divides 4, 28 and 8, so its star value is 3. There is no element with a higher star value.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  spec fn count_divisible_before(arr: Seq<nat>, i: int) -> nat
+      decreases i
+  {
+      if i <= 0 || arr.len() == 0 {
+          0
+      } else {
+          let idx = i - 1;
+          let current_count: nat = if idx >= 0 && idx < arr.len() && i < arr.len() && arr[idx] % arr[i] == 0 { 1 } else { 0 };
+          current_count + count_divisible_before(arr, i - 1)
+      }
+  }
+
+  spec fn star_value(arr: Seq<nat>, i: int) -> nat {
+      if i >= arr.len() || i < 0 {
+          0
+      } else {
+          count_divisible_before(arr, i)
+      }
+  }
+
+  spec fn max_star_value_spec(arr: Seq<nat>) -> nat
+      decreases arr.len()
+  {
+      if arr.len() == 0 {
+          0
+      } else if arr.len() == 1 {
+          0
+      } else {
+          let current_star = star_value(arr, arr.len() - 1);
+          let rest_max = max_star_value_spec(arr.drop_last());
+          if current_star > rest_max { current_star } else { rest_max }
+      }
+  }
+
+  fn find_max_star_value(arr: Vec<nat>) -> (result: nat)
+      ensures result == max_star_value_spec(arr@)
+  {
+      // impl-start
+      assume(false);
+      unreached()
+      // impl-end
+  }
+
+  fn count_divisible(arr: Vec<nat>, i: usize) -> (result: nat)
+      requires i < arr.len(),
+      ensures result == count_divisible_before(arr@, i as int)
+  {
+      // impl-start
+      assume(false);
+      unreached()
+      // impl-end
+  }
+
+vc-code: |-
+  /* placeholder for additional code */
+
+vc-postamble: |-
+
+  }
+
+  fn main() {
+      // let test_arr = vec![8, 1, 28, 4, 2, 6, 7];
+      // let result = find_max_star_value(test_arr);
+      // println!("Result: {}", result);
+  }

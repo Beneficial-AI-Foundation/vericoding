@@ -1,0 +1,52 @@
+vc-description: |-
+  Acacius is studying strings theory. Today he came with the following problem.
+
+  You are given a string $s$ of length $n$ consisting of lowercase English letters and question marks. It is possible to replace question marks with lowercase English letters in such a way that a string "abacaba" occurs as a substring in a resulting string exactly once?
+
+  Each question mark should be replaced with exactly one lowercase English letter. For example, string "a?b?c" can be transformed into strings "aabbc" and "azbzc", but can't be transformed into strings "aabc", "a?bbc" and "babbc".
+
+  Occurrence of a string $t$ of length $m$ in the string $s$ of length $n$ as a substring is a index $i$ ($1 \leq i \leq n - m + 1$) such that string $s[i..i+m-1]$ consisting of $m$ consecutive symbols of $s$ starting from $i$-th equals to string $t$. For example string "ababa" has two occurrences of a string "aba" as a substring with $i = 1$ and $i = 3$, but there are no occurrences of a string "aba" in the string "acba" as a substring.
+
+  Please help Acacius to check if it is possible to replace all question marks with lowercase English letters in such a way that a string "abacaba" occurs as a substring in a resulting string exactly once.
+
+vc-preamble: |-
+  use vstd::prelude::*;
+
+  verus! {
+
+vc-helpers: |-
+
+vc-spec: |-
+  fn check_abacaba_substring(s: &Vec<char>) -> (result: usize)
+      ensures result >= 0
+  {
+      // impl-start
+      assume(false);
+      0
+      // impl-end
+  }
+
+  fn find_abacaba_substring(n: usize, s: &Vec<char>) -> (result: (bool, Vec<char>))
+      requires s.len() == n
+  {
+      // impl-start
+      assume(false);
+      (false, Vec::new())
+      // impl-end
+  }
+
+vc-code: |-
+  {
+      // impl-start
+      assume(false);
+      (false, Vec::new())
+      // impl-end
+  }
+
+vc-postamble: |-
+
+  }
+  fn main() {
+      // Apps difficulty: interview
+      // Assurance level: unguarded
+  }
