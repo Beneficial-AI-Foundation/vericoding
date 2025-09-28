@@ -34,7 +34,8 @@ spec fn correct_space_transformation(text: Seq<char>, result: Seq<char>) -> bool
         exists|i_prime: int, j_prime: int| 0 <= i_prime < j_prime < result.len() && result[i_prime] == #[trigger] text[i] && result[j_prime] == #[trigger] text[j])
     &&& (forall|i: int| 0 <= i < text.len() && #[trigger] text[i] == ' ' ==> 
         (i == 0 || text[i-1] != ' ') && (i == text.len()-1 || text[i+1] != ' ') ==> 
-        exists|j: int| 0 <= j < result.len() && ( #[trigger] result[j] == '_' || #[trigger] result[j] == '-'))
+        exists|j: int| 0 <= j < result.len() && ( #[
+            trigger] result[j] == '_' || #[trigger] result[j] == '-'))
 }
 
 // </vc-preamble>

@@ -1,5 +1,5 @@
 generate_code: |
-  The task is to generate verifiable implementations for `<vc-code>` and `<vc-helpers>` sections in a Verus file.
+  The task is to generate `<vc-code>` and `<vc-helpers>` sections in a Verus file so that the entire file verifies successfully.
   
   TURN 1 of {max_iterations}: This is the initial code generation phase. You have {max_iterations} total turns to get this right, so you can iterate and improve.
   
@@ -15,9 +15,9 @@ generate_code: |
   SECTION-SPECIFIC RULES:
   
   **For `<vc-helpers>` sections:**
-  - Provide complete helper function/lemma definitions only
-  - Each helper should be a standalone function/predicate/lemma with proper signature
-  
+  - Provide complete function definitions.  
+  - VERUS SYNTAX: function signature starts with `proof fn` for proof functions, `spec fn` for pure spec function, or just `fn` for executable code.
+
   **For `<vc-code>` sections:**
   - Provide method/function body implementation code ONLY
   - Always include opening/closing braces: `{{\n \n}}`
@@ -30,14 +30,11 @@ generate_code: |
   - Each replacement should be the exact code that will replace everything between the tags
   - NEVER use verification bypasses: `assume` statements, `unimplemented!()`, or other verification shortcuts
   - Implement actual proofs and logic instead of bypassing verification
-  - Use valid Verus/Rust syntax for all implementations
-  - Use proper Verus syntax: `requires`, `ensures`, `invariant`, `decreases` (without parentheses)
-  - IMPORTANT: Use each of `requires`, `ensures`, and `invariant` AT MOST ONCE per item
+  - Verus rule: Ghost types (Seq, nat, int, Map, Set) are spec-only: never use them as executable function parameters or executable code, only use themin specifications, assertions and proofs
+  - Use each of `requires`, `ensures`, and `invariant` AT MOST ONCE per item
     - List multiple conditions as comma-separated entries on separate lines
     - Do NOT repeat `requires`/`ensures`/`invariant` keywords for additional lines
-    - Prefer commas at line ends in spec blocks; avoid semicolons
   - While-loop header style (single invariant block):
-    
     while CONDITION
         invariant
             INV1,
@@ -47,24 +44,8 @@ generate_code: |
         // body
     }}
     
-  - Function spec header style (single requires/ensures blocks):
-    
-    fn f(..) -> T
-        requires
-            PRE1,
-            PRE2,
-        ensures
-            POST1,
-            POST2,
-    {{
-        // body
-    }}
-  - Use Verus types like `nat`, `int`, `Vec<T>`, `Seq<T>`, etc.
-  - Use `@` for sequence/vector indexing when needed (e.g., `v@[i]`)
   - Use proof blocks with `proof {{ ... }}` when necessary
   - Return ONLY a valid JSON array, no explanations or markdown
-  - DO NOT include any reasoning, explanations, or commentary
-  - DO NOT use markdown code blocks around the JSON
   - Your response must start with [ and end with ]
   - Each JSON string must be properly escaped with double quotes
   
@@ -72,7 +53,7 @@ generate_code: |
   {code}
 
 fix_verification: |
-  The task is to fix implementations in `<vc-code>` and `<vc-helpers>` sections that failed verification.
+  The task is to fix the `<vc-code>` and `<vc-helpers>` sections in a given Verus file that failed verification.
   
   TURN {iteration} of {max_iterations}: You are making progress and have multiple turns to iterate and improve your implementation.
   
@@ -88,8 +69,8 @@ fix_verification: |
   SECTION-SPECIFIC RULES:
   
   **For `<vc-helpers>` sections:**
-  - Provide COMPLETE helper function/lemma definitions only
-  - Each helper should be a standalone function/predicate/lemma with proper signature
+  - Provide complete function definitions.  
+  - VERUS SYNTAX: function signature starts with `proof fn` for proof functions, `spec fn` for pure spec function, or just `fn` for executable code.
   - Add comment `/* helper modified by LLM (iteration {iteration}): [brief description] */` before modified helpers
   
   **For `<vc-code>` sections:**
@@ -105,13 +86,11 @@ fix_verification: |
   - Provide exactly one replacement for each placeholder section in the file, in the exact order they appear (top to bottom)
   - Each replacement should be the exact fixed code that will replace everything between the tags
   - PRIORITY: If the error is a compilation error (syntax, type, resolution errors), fix it first before addressing verification issues
-  - Use proper Verus syntax: `requires`, `ensures`, `invariant`, `decreases` (without parentheses)
-  - IMPORTANT: Use each of `requires`, `ensures`, and `invariant` AT MOST ONCE per item
+  - Verus rule: Ghost types (Seq, nat, int, Map, Set) are spec-only: never use them as executable function parameters or executable code, only use themin specifications, assertions and proofs
+  - Use each of `requires`, `ensures`, and `invariant` AT MOST ONCE per item
     - List multiple conditions as comma-separated entries on separate lines
     - Do NOT repeat `requires`/`ensures`/`invariant` keywords for additional lines
-    - Prefer commas at line ends in spec blocks; avoid semicolons
   - While-loop header style (single invariant block):
-    
     while CONDITION
         invariant
             INV1,
@@ -121,26 +100,10 @@ fix_verification: |
         // body
     }}
     
-  - Function spec header style (single requires/ensures blocks):
-    
-    fn f(..) -> T
-        requires
-            PRE1,
-            PRE2,
-        ensures
-            POST1,
-            POST2,
-    {{
-        // body
-    }}
   - Use proof blocks with `proof {{ ... }}` for complex proofs
   - Use `assert()` statements within proof blocks for intermediate steps
-  - Use Verus types and operators (`nat`, `int`, `Vec<T>`, `Seq<T>`, `@`, etc.)
   - NEVER use verification bypasses: `assume` statements, `unimplemented!()`, or other verification shortcuts
-  - Implement actual proofs and logic instead of bypassing verification
-  - Use `@` for sequence/vector indexing when needed (e.g., `v@[i]`)
   - Return ONLY a valid JSON array, no explanations or markdown
-  - DO NOT include any reasoning, explanations, or commentary
   - Your response must start with [ and end with ]
   - Each JSON string must be properly escaped with double quotes
   

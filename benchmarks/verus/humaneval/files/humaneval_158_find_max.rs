@@ -16,7 +16,7 @@ fn find_max(strings: Vec<String>) -> (s: String)
     requires 
         strings.len() > 0,
     ensures 
-        exists|i: int| 0 <= i < strings.len() && #[trigger] strings@.index(i)@ == s@,
+        exists|i: int| 0 <= i < strings.len() && #[trigger] strings@.index(i)@  s@,
         forall|i: int| 0 <= i < strings.len() ==> 
             string_unique_chars(s@) >= #[trigger] string_unique_chars(#[trigger] strings@.index(i)@),
 // </vc-spec>

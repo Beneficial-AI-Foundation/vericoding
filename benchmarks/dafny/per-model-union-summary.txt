@@ -1,96 +1,115 @@
 === DAFNY PER-MODEL PROCESSING SUMMARY (AGGREGATED ACROSS BENCHMARKS) ===
 Root: vericoding/benchmarks/dafny
+Selection: best per benchmark
 Models found: 9
 
 Model: claude-opus
-  Overall: total=1677, success=1169, fail=508, rate=69.7%
+  Overall: total=2161, success=1458, fail=703, rate=67.5%
   Per-benchmark:
     - apps           total=677  success=451  fail=226  rate= 66.6%
     - bignum         total=62   success=9    fail=53   rate= 14.5%
     - dafnybench     total=443  success=297  fail=146  rate= 67.0%
-    - humaneval      total=166  success=141  fail=25   rate= 84.9%
+    - humaneval      total=162  success=116  fail=46   rate= 71.6%
+    - numpy-triple   total=430  success=279  fail=151  rate= 64.9%
+    - numpy_simple   total=58   success=35   fail=23   rate= 60.3%
     - verified-cogen total=172  success=156  fail=16   rate= 90.7%
     - verina         total=157  success=115  fail=42   rate= 73.2%
 
 Model: claude-sonnet
-  Overall: total=1615, success=1054, fail=561, rate=65.3%
+  Overall: total=2161, success=1396, fail=765, rate=64.6%
   Per-benchmark:
     - apps           total=677  success=408  fail=269  rate= 60.3%
-    - bignum         total=0    success=0    fail=0    rate=  0.0%
+    - bignum         total=62   success=5    fail=57   rate=  8.1%
     - dafnybench     total=443  success=271  fail=172  rate= 61.2%
-    - humaneval      total=166  success=119  fail=47   rate= 71.7%
+    - humaneval      total=162  success=118  fail=44   rate= 72.8%
+    - numpy-triple   total=430  success=298  fail=132  rate= 69.3%
+    - numpy_simple   total=58   success=38   fail=20   rate= 65.5%
     - verified-cogen total=172  success=145  fail=27   rate= 84.3%
-    - verina         total=157  success=111  fail=46   rate= 70.7%
+    - verina         total=157  success=113  fail=44   rate= 72.0%
 
 Model: deepseek
-  Overall: total=1677, success=550, fail=1127, rate=32.8%
+  Overall: total=2161, success=783, fail=1378, rate=36.2%
   Per-benchmark:
     - apps           total=677  success=207  fail=470  rate= 30.6%
     - bignum         total=62   success=2    fail=60   rate=  3.2%
     - dafnybench     total=443  success=134  fail=309  rate= 30.2%
-    - humaneval      total=166  success=72   fail=94   rate= 43.4%
+    - humaneval      total=162  success=73   fail=89   rate= 45.1%
+    - numpy-triple   total=430  success=185  fail=245  rate= 43.0%
+    - numpy_simple   total=58   success=23   fail=35   rate= 39.7%
     - verified-cogen total=172  success=86   fail=86   rate= 50.0%
-    - verina         total=157  success=49   fail=108  rate= 31.2%
+    - verina         total=157  success=73   fail=84   rate= 46.5%
 
 Model: gemini
-  Overall: total=1677, success=845, fail=832, rate=50.4%
+  Overall: total=2161, success=1188, fail=973, rate=55.0%
   Per-benchmark:
     - apps           total=677  success=276  fail=401  rate= 40.8%
-    - bignum         total=62   success=1    fail=61   rate=  1.6%
+    - bignum         total=62   success=4    fail=58   rate=  6.5%
     - dafnybench     total=443  success=258  fail=185  rate= 58.2%
-    - humaneval      total=166  success=97   fail=69   rate= 58.4%
+    - humaneval      total=162  success=112  fail=50   rate= 69.1%
+    - numpy-triple   total=430  success=259  fail=171  rate= 60.2%
+    - numpy_simple   total=58   success=37   fail=21   rate= 63.8%
     - verified-cogen total=172  success=137  fail=35   rate= 79.7%
-    - verina         total=157  success=76   fail=81   rate= 48.4%
+    - verina         total=157  success=105  fail=52   rate= 66.9%
 
 Model: gemini-flash
-  Overall: total=1677, success=592, fail=1085, rate=35.3%
+  Overall: total=2161, success=826, fail=1335, rate=38.2%
   Per-benchmark:
-    - apps           total=677  success=196  fail=481  rate= 29.0%
+    - apps           total=677  success=250  fail=427  rate= 36.9%
     - bignum         total=62   success=0    fail=62   rate=  0.0%
     - dafnybench     total=443  success=161  fail=282  rate= 36.3%
-    - humaneval      total=166  success=73   fail=93   rate= 44.0%
+    - humaneval      total=162  success=69   fail=93   rate= 42.6%
+    - numpy-triple   total=430  success=148  fail=282  rate= 34.4%
+    - numpy_simple   total=58   success=28   fail=30   rate= 48.3%
     - verified-cogen total=172  success=98   fail=74   rate= 57.0%
-    - verina         total=157  success=64   fail=93   rate= 40.8%
+    - verina         total=157  success=72   fail=85   rate= 45.9%
 
 Model: glm
-  Overall: total=1511, success=588, fail=923, rate=38.9%
+  Overall: total=2161, success=907, fail=1254, rate=42.0%
   Per-benchmark:
     - apps           total=677  success=330  fail=347  rate= 48.7%
     - bignum         total=62   success=3    fail=59   rate=  4.8%
     - dafnybench     total=443  success=90   fail=353  rate= 20.3%
-    - humaneval      total=0    success=0    fail=0    rate=  0.0%
+    - humaneval      total=162  success=81   fail=81   rate= 50.0%
+    - numpy-triple   total=430  success=178  fail=252  rate= 41.4%
+    - numpy_simple   total=58   success=29   fail=29   rate= 50.0%
     - verified-cogen total=172  success=116  fail=56   rate= 67.4%
-    - verina         total=157  success=49   fail=108  rate= 31.2%
+    - verina         total=157  success=80   fail=77   rate= 51.0%
 
 Model: gpt
-  Overall: total=1511, success=995, fail=516, rate=65.9%
+  Overall: total=2161, success=1429, fail=732, rate=66.1%
   Per-benchmark:
     - apps           total=677  success=468  fail=209  rate= 69.1%
     - bignum         total=62   success=12   fail=50   rate= 19.4%
     - dafnybench     total=443  success=283  fail=160  rate= 63.9%
-    - humaneval      total=0    success=0    fail=0    rate=  0.0%
+    - humaneval      total=162  success=117  fail=45   rate= 72.2%
+    - numpy-triple   total=430  success=242  fail=188  rate= 56.3%
+    - numpy_simple   total=58   success=38   fail=20   rate= 65.5%
     - verified-cogen total=172  success=149  fail=23   rate= 86.6%
-    - verina         total=157  success=83   fail=74   rate= 52.9%
+    - verina         total=157  success=120  fail=37   rate= 76.4%
 
 Model: gpt-mini
-  Overall: total=1677, success=1160, fail=517, rate=69.2%
+  Overall: total=2161, success=1445, fail=716, rate=66.9%
   Per-benchmark:
     - apps           total=677  success=485  fail=192  rate= 71.6%
     - bignum         total=62   success=16   fail=46   rate= 25.8%
     - dafnybench     total=443  success=284  fail=159  rate= 64.1%
-    - humaneval      total=166  success=137  fail=29   rate= 82.5%
+    - humaneval      total=162  success=116  fail=46   rate= 71.6%
+    - numpy-triple   total=430  success=242  fail=188  rate= 56.3%
+    - numpy_simple   total=58   success=39   fail=19   rate= 67.2%
     - verified-cogen total=172  success=147  fail=25   rate= 85.5%
-    - verina         total=157  success=91   fail=66   rate= 58.0%
+    - verina         total=157  success=116  fail=41   rate= 73.9%
 
 Model: grok-code
-  Overall: total=1511, success=795, fail=716, rate=52.6%
+  Overall: total=2161, success=1146, fail=1015, rate=53.0%
   Per-benchmark:
     - apps           total=677  success=358  fail=319  rate= 52.9%
     - bignum         total=62   success=2    fail=60   rate=  3.2%
     - dafnybench     total=443  success=234  fail=209  rate= 52.8%
-    - humaneval      total=0    success=0    fail=0    rate=  0.0%
+    - humaneval      total=162  success=93   fail=69   rate= 57.4%
+    - numpy-triple   total=430  success=202  fail=228  rate= 47.0%
+    - numpy_simple   total=58   success=28   fail=30   rate= 48.3%
     - verified-cogen total=172  success=130  fail=42   rate= 75.6%
-    - verina         total=157  success=71   fail=86   rate= 45.2%
+    - verina         total=157  success=99   fail=58   rate= 63.1%
 
 TOTAL:
-  Overall: total=1721, success=1396, fail=325, rate=81.1%
+  Overall: total=2161, success=1777, fail=384, rate=82.2%

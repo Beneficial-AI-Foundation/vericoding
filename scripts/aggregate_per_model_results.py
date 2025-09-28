@@ -23,6 +23,14 @@ def find_latest_run_per_model_per_benchmark(root: Path) -> Dict[str, List[Tuple[
     for bench_dir in root.iterdir():
         if not bench_dir.is_dir():
             continue
+        # Skip non-official duplicates or scratch dirs
+        name_lower = bench_dir.name.lower()
+        if 'copy' in name_lower or name_lower.startswith('old') or name_lower.endswith('-old'):
+            continue
+        # Skip non-official duplicates or scratch dirs
+        name_lower = bench_dir.name.lower()
+        if 'copy' in name_lower or name_lower.startswith('old') or name_lower.endswith('-old'):
+            continue
         # Track latest per model within this benchmark directory
         latest_in_bench: Dict[str, Tuple[Path, Tuple[int, int, int, int]]] = {}
         for p in bench_dir.iterdir():
@@ -42,6 +50,44 @@ def find_latest_run_per_model_per_benchmark(root: Path) -> Dict[str, List[Tuple[
         # Append the latest runs from this benchmark to global mapping
         bench_name = bench_dir.name
         for llm, (path, _) in latest_in_bench.items():
+            model_to_runs.setdefault(llm, []).append((bench_name, path))
+    return model_to_runs
+
+
+def find_best_run_per_model_per_benchmark(root: Path) -> Dict[str, List[Tuple[str, Path]]]:
+    """
+    For each benchmark subdirectory under `root`, pick the best run (highest success rate)
+    for each model. Returns mapping model -> list of (benchmark_name, best_run_dir).
+    Success rate is computed as successes / canonical_total for that benchmark.
+    """
+    model_to_runs: Dict[str, List[Tuple[str, Path]]] = {}
+    for bench_dir in root.iterdir():
+        if not bench_dir.is_dir():
+            continue
+        name_lower = bench_dir.name.lower()
+        if 'copy' in name_lower or name_lower.startswith('old') or name_lower.endswith('-old'):
+            continue
+        canonical_total = get_benchmark_canonical_file_count(bench_dir)
+        # Track best per model within this benchmark
+        best_in_bench: Dict[str, Tuple[Path, float, Tuple[int, int, int, int]]] = {}
+        for p in bench_dir.iterdir():
+            if not p.is_dir():
+                continue
+            name = p.name
+            if not name.startswith("vericoder_"):
+                continue
+            parts = name.split("_")
+            if len(parts) < 3:
+                continue
+            llm = parts[1]
+            ts = _parse_run_timestamp(name)
+            total, succ, _ = get_run_counts(p, canonical_total)
+            rate = (succ / total) if total else 0.0
+            prev = best_in_bench.get(llm)
+            if prev is None or rate > prev[1] or (rate == prev[1] and ts > prev[2]):
+                best_in_bench[llm] = (p, rate, ts)
+        bench_name = bench_dir.name
+        for llm, (path, _, _) in best_in_bench.items():
             model_to_runs.setdefault(llm, []).append((bench_name, path))
     return model_to_runs
 
@@ -95,19 +141,33 @@ def parse_summary_counts(summary_path: Path) -> Tuple[int, int, int]:
     return (total or 0, succ or 0, fail or 0)
 
 
-def get_run_counts(run_dir: Path) -> Tuple[int, int, int]:
-    """Get (total, success, fail) for a single run directory, from results.csv or summary.txt."""
+def get_benchmark_canonical_file_count(bench_dir: Path) -> int:
+    """Get the canonical number of files for a benchmark from its files/ directory."""
+    files_dir = bench_dir / "files"
+    if not files_dir.exists():
+        return 0
+    # Count .rs, .dfy, or .yaml files in the files directory
+    count = 0
+    for ext in ["*.rs", "*.dfy", "*.yaml"]:
+        count += len(list(files_dir.glob(ext)))
+    return count
+
+
+def get_run_counts(run_dir: Path, canonical_total: int) -> Tuple[int, int, int]:
+    """Get (total, success, fail) for a single run directory, using canonical total from files/ dir."""
     # Try both directory structures: dafny subdir and direct
     results_csv = run_dir / "dafny" / "results.csv"
     if not results_csv.exists():
         results_csv = run_dir / "results.csv"
     if results_csv.exists():
-        return parse_results_success_fail_counts(results_csv)
+        _, succ, fail = parse_results_success_fail_counts(results_csv)
+        return (canonical_total, succ, canonical_total - succ)
 
     summary = run_dir / "dafny" / "summary.txt"
     if not summary.exists():
         summary = run_dir / "summary.txt"
-    return parse_summary_counts(summary)
+    _, succ, fail = parse_summary_counts(summary)
+    return (canonical_total, succ, canonical_total - succ)
 
 
 def main() -> int:
@@ -117,6 +177,11 @@ def main() -> int:
         type=str,
         default=None,
         help="Root directory containing Dafny benchmarks (e.g., benchmarks/dafny)",
+    )
+    parser.add_argument(
+        "--best",
+        action="store_true",
+        help="Select best (highest success rate) run per model per benchmark instead of latest",
     )
     args = parser.parse_args()
 
@@ -128,10 +193,24 @@ def main() -> int:
         print(f"ERROR: root not found: {root}")
         return 1
 
-    model_to_runs = find_latest_run_per_model_per_benchmark(root)
+    if args.best:
+        model_to_runs = find_best_run_per_model_per_benchmark(root)
+        selection_label = "best"
+    else:
+        model_to_runs = find_latest_run_per_model_per_benchmark(root)
+        selection_label = "latest"
     if not model_to_runs:
         print("No vericoder runs found under root.")
         return 0
+
+    # Get canonical file counts for each benchmark
+    benchmark_file_counts: Dict[str, int] = {}
+    for bench_dir in root.iterdir():
+        if bench_dir.is_dir():
+            name_lower = bench_dir.name.lower()
+            if 'copy' in name_lower or name_lower.startswith('old') or name_lower.endswith('-old'):
+                continue
+            benchmark_file_counts[bench_dir.name] = get_benchmark_canonical_file_count(bench_dir)
 
     # Aggregate per model across benchmarks (summing their latest runs per benchmark)
     rows: List[Tuple[str, int, int, int, float, str]] = []
@@ -167,7 +246,8 @@ def main() -> int:
         totals = succs = fails = 0
         paths: List[str] = []
         for bench_name, run_dir in model_to_runs[llm]:
-            t, s, f = get_run_counts(run_dir)
+            canonical_total = benchmark_file_counts.get(bench_name, 0)
+            t, s, f = get_run_counts(run_dir, canonical_total)
             totals += t
             succs += s
             fails += f
@@ -194,8 +274,8 @@ def main() -> int:
         w.writerow(["model", "total_files", "successes", "failures", "success_rate_pct"])
         for r in rows:
             w.writerow([r[0], r[1], r[2], r[3], r[4]])
-        # TOTAL row across all models (union coverage): sum over benchmarks of unique files
-        grand_total = sum(len(s) for s in bench_to_union_all.values())
+        # TOTAL row across all models: use canonical file counts
+        grand_total = sum(benchmark_file_counts.values())
         grand_succ = sum(len(s) for s in bench_to_union_success.values())
         grand_fail = max(grand_total - grand_succ, 0)
         grand_rate = (100.0 * grand_succ / grand_total) if grand_total else 0.0
@@ -218,6 +298,7 @@ def main() -> int:
     with summary_path.open("w", encoding="utf-8") as sf:
         sf.write("=== DAFNY PER-MODEL PROCESSING SUMMARY (AGGREGATED ACROSS BENCHMARKS) ===\n")
         sf.write(f"Root: {display_root}\n")
+        sf.write(f"Selection: {selection_label} per benchmark\n")
         sf.write(f"Models found: {len(rows)}\n\n")
         for llm, total, succ, fail, rate, paths in sorted(rows, key=lambda x: x[0]):
             sf.write(f"Model: {llm}\n")
@@ -228,8 +309,8 @@ def main() -> int:
                     continue
                 sf.write(f"    - {bench:<14} total={t:<4} success={s:<4} fail={f:<4} rate={rb:>5.1f}%\n")
             sf.write("\n")
-        # TOTAL block (union coverage across models per benchmark)
-        grand_total = sum(len(s) for s in bench_to_union_all.values())
+        # TOTAL block (union coverage across models per benchmark using canonical counts)
+        grand_total = sum(benchmark_file_counts.values())
         grand_succ = sum(len(s) for s in bench_to_union_success.values())
         grand_fail = max(grand_total - grand_succ, 0)
         grand_rate = (100.0 * grand_succ / grand_total) if grand_total else 0.0
@@ -237,7 +318,7 @@ def main() -> int:
         sf.write(f"  Overall: total={grand_total}, success={grand_succ}, fail={grand_fail}, rate={grand_rate:.1f}%\n")
 
     print(
-        f"Wrote {out_csv}, {per_bench_csv} and {summary_path} with {len(rows)} models aggregated (latest per benchmark)"
+        f"Wrote {out_csv}, {per_bench_csv} and {summary_path} with {len(rows)} models aggregated ({selection_label} per benchmark)"
     )
     return 0
 

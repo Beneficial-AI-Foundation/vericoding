@@ -3,7 +3,7 @@ import csv
 import re
 import argparse
 from pathlib import Path
-from typing import Dict, List, Set, Tuple
+from typing import Dict, List, Set, Tuple, Optional
 
 
 def _parse_run_timestamp(name: str) -> Tuple[int, int, int, int]:
@@ -58,6 +58,30 @@ def calculate_success_rate(run_dir: Path) -> float:
         return len(successes) / total if total > 0 else 0.0
     
     return 0.0
+def _normalize_spec_stem(name: str) -> str:
+    """Normalize spec base names to match canonical stems in files/.
+
+    - Convert YAML bracket syntax base[X,Y] -> base_X_Y
+    - Remove whitespace around commas
+    - Fix known prefix typo: bignums_ -> bignum_
+    - Keep case as-is
+    """
+    # Fix common prefix typo
+    if name.startswith("bignums_"):
+        name = "bignum_" + name[len("bignums_"):]
+    # Convert bracket lists to underscore-separated suffix
+    # e.g., bignum_Add[NormalizeBitString] -> bignum_Add_NormalizeBitString
+    import re as _re
+    m = _re.search(r"^(.+?)\[([^\]]+)\]$", name)
+    if m:
+        base = m.group(1)
+        inside = m.group(2)
+        parts = [p.strip() for p in inside.split(',') if p.strip()]
+        if parts:
+            return base + "_" + "_".join(parts)
+        else:
+            return base
+    return name
 
 
 def find_latest_llm_runs(bignum_root: Path) -> Dict[str, Path]:
@@ -86,7 +110,7 @@ def find_latest_llm_runs(bignum_root: Path) -> Dict[str, Path]:
 def find_best_llm_runs(bignum_root: Path) -> Dict[str, Path]:
     """
     Return mapping from LLM name to best (highest success rate) run directory under bignum_root.
-    Expects subdirs like: vericoder_<llm>_MM-DD_HHhMM.
+    Uses per-run success rate (over attempted files). Retained for backward compatibility.
     """
     best: Dict[str, Tuple[Path, float]] = {}
     for p in bignum_root.iterdir():
@@ -103,6 +127,60 @@ def find_best_llm_runs(bignum_root: Path) -> Dict[str, Path]:
         prev = best.get(llm)
         if prev is None or success_rate > prev[1]:
             best[llm] = (p, success_rate)
+    return {llm: path for llm, (path, _) in best.items()}
+
+
+def find_best_llm_runs_by_union(bench_root: Path) -> Dict[str, Path]:
+    """
+    Return mapping from LLM name to best run by union success rate over the canonical benchmark files.
+    This avoids inflated per-run rates when runs cover subsets.
+    """
+    # Gather candidate runs per llm
+    candidates: Dict[str, List[Path]] = {}
+    for p in bench_root.iterdir():
+        if not p.is_dir():
+            continue
+        name = p.name
+        if not name.startswith("vericoder_"):
+            continue
+        parts = name.split("_")
+        if len(parts) < 3:
+            continue
+        llm = parts[1]
+        candidates.setdefault(llm, []).append(p)
+
+    # Canonical file set
+    # We don't need selected runs here; pass empty dict to collect_all_files so it uses files/ dir
+    all_files = collect_all_files(bench_root, {})
+    total = len(all_files) if all_files else 0
+
+    # Helper to read successes for a run
+    def read_run_successes(run_dir: Path) -> Set[str]:
+        successes: Set[str] = set()
+        results_csv = run_dir / "dafny" / "results.csv"
+        if not results_csv.exists():
+            results_csv = run_dir / "results.csv"
+        succ_rs, _ = parse_results_statuses(results_csv)
+        successes |= succ_rs
+        summary_txt = run_dir / "dafny" / "summary.txt"
+        if not summary_txt.exists():
+            summary_txt = run_dir / "summary.txt"
+        successes |= parse_summary_successes(summary_txt)
+        return successes
+
+    best: Dict[str, Tuple[Path, float]] = {}
+    for llm, runs in candidates.items():
+        best_pair: Optional[Tuple[Path, float]] = None
+        for run_dir in runs:
+            succ = read_run_successes(run_dir)
+            if total == 0:
+                rate = 0.0
+            else:
+                rate = len(succ.intersection(all_files)) / total
+            if best_pair is None or rate > best_pair[1]:
+                best_pair = (run_dir, rate)
+        if best_pair is not None:
+            best[llm] = best_pair
     return {llm: path for llm, (path, _) in best.items()}
 
 
@@ -154,14 +232,17 @@ def parse_summary_successes(summary_path: Path) -> Set[str]:
         if " -> " in line:
             # W&B format: extract base name before " -> "
             base_name = line.split(" -> ")[0].strip()
-            successes.add(base_name)
+            successes.add(_normalize_spec_stem(base_name))
         elif line.endswith(".rs"):
-            successes.add(line[:-3])
+            successes.add(_normalize_spec_stem(line[:-3]))
         elif line.endswith(".dfy"):
-            successes.add(line[:-4])
+            successes.add(_normalize_spec_stem(line[:-4]))
+        elif line.endswith(".yaml"):
+            # Handle Dafny YAML-based specs
+            successes.add(_normalize_spec_stem(line[:-5]))
         else:
             # No extension, add as-is (backward compatibility)
-            successes.add(line)
+            successes.add(_normalize_spec_stem(line))
     return successes
 
 
@@ -183,7 +264,7 @@ def parse_results_successes(results_csv: Path) -> Set[str]:
                 if not spec_name:
                     continue
                 base = Path(spec_name).name  # already without extension
-                successes.add(base)
+                successes.add(_normalize_spec_stem(base))
     return successes
 
 
@@ -242,12 +323,27 @@ def parse_summary_failures(summary_path: Path) -> Set[str]:
     return fails
 
 
-def collect_all_files(latest_runs: Dict[str, Path]) -> Set[str]:
-    """Build superset of all filenames (without extension) across successes and failures.
+def collect_all_files(bench_root: Path, latest_runs: Dict[str, Path]) -> Set[str]:
+    """Build canonical set of all filenames (without extension) from the files/ directory.
 
-    Prefer results.csv for coverage; fall back to summary.txt for failures if needed.
+    Prioritize reading from bench_root/files for the canonical list.
+    Fallback to collecting from individual runs if files/ directory doesn't exist.
     """
-    all_files: Set[str] = set()
+    # Try to get canonical list from files/ directory first
+    files_dir = bench_root / "files"
+    if files_dir.exists():
+        all_files: Set[str] = set()
+        # Look for .rs, .dfy, or .yaml files
+        for ext in ["*.rs", "*.dfy", "*.yaml"]:
+            for file_path in files_dir.glob(ext):
+                # Remove extension to get base name
+                base_name = file_path.stem
+                all_files.add(base_name)
+        if all_files:
+            return all_files
+    
+    # Fallback to original behavior if files/ directory doesn't exist or is empty
+    all_files = set()
     for _, run_dir in latest_runs.items():
         # Try both directory structures: dafny/ subdir and direct
         results_csv = run_dir / "dafny" / "results.csv"
@@ -261,7 +357,7 @@ def collect_all_files(latest_runs: Dict[str, Path]) -> Set[str]:
                     spec_name = (row.get("spec_name") or "").strip()
                     if not spec_name:
                         continue
-                    base = Path(spec_name).name
+                    base = Path(spec_name).stem  # Use stem instead of name to remove extension
                     if base:
                         all_files.add(base)
         else:
@@ -271,7 +367,6 @@ def collect_all_files(latest_runs: Dict[str, Path]) -> Set[str]:
                 summary = run_dir / "summary.txt"
             if not summary.exists():
                 continue
-            text = summary.read_text(encoding="utf-8", errors="ignore")
             # successes
             all_files.update(parse_summary_successes(summary))
             # failures
@@ -314,8 +409,9 @@ def main() -> int:
     impl_ext = ".rs" if is_verus else ".dfy"
 
     if args.best:
-        selected_runs = find_best_llm_runs(bench_root)
-        selection_method = "best"
+        # Choose best runs by union success rate over canonical file set
+        selected_runs = find_best_llm_runs_by_union(bench_root)
+        selection_method = "best (by union rate)"
     else:
         selected_runs = find_latest_llm_runs(bench_root)
         selection_method = "latest"
@@ -352,27 +448,19 @@ def main() -> int:
 
     # Use canonical file list from the benchmark directory instead of collecting from runs
     # This ensures we only include the official test files, not extras from W&B runs
+    all_files = collect_all_files(bench_root, selected_runs)
+    
+    # Determine spec extension for display purposes
     files_dir = bench_root / "files"
-    chosen_spec_ext = None
+    chosen_spec_ext = ""
     if files_dir.exists():
-        all_files = set()
-        # Try each candidate extension until we find any files
+        # Try each candidate extension to find which one exists
         for cand in spec_ext_candidates:
             matched = list(files_dir.glob(f"*{cand}"))
             if matched:
-                for f in matched:
-                    base_name = f.stem  # filename without extension
-                    all_files.add(base_name)
                 chosen_spec_ext = cand
                 break
-        # If nothing matched (e.g., unexpected layout), fallback to collecting from runs
-        if not all_files:
-            all_files = collect_all_files(selected_runs)
-            # Best-effort default for printing extensions
-            chosen_spec_ext = spec_ext_candidates[-1] if spec_ext_candidates else ""
-    else:
-        # Fallback to collecting from runs if no files/ directory
-        all_files = collect_all_files(selected_runs)
+    if not chosen_spec_ext:
         chosen_spec_ext = spec_ext_candidates[-1] if spec_ext_candidates else ""
 
     # Aggregate rows and file->llms mapping
@@ -413,11 +501,10 @@ def main() -> int:
             sf.write(f"Selected {selection_method} runs:\n")
             for llm in sorted(selected_runs.keys()):
                 run_dir = selected_runs[llm]
-                if args.best:
-                    success_rate = calculate_success_rate(run_dir)
-                    sf.write(f"  - {llm}: {run_dir.name} (success rate: {success_rate:.1%})\n")
-                else:
-                    sf.write(f"  - {llm}: {run_dir.name}\n")
+                # Report union rate to align with Per-LLM section
+                succ_count = len(llm_successes.get(llm, set()).intersection(all_files))
+                rate = (succ_count / total_files) if total_files else 0.0
+                sf.write(f"  - {llm}: {run_dir.name} (success rate: {rate:.1%})\n")
         
         # Per-LLM success rates over the union of files in this benchmark
         if llm_successes:

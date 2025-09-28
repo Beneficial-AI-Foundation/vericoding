@@ -3,7 +3,7 @@ use vstd::prelude::*;
 
 verus! {
 
-spec fn str2int(s: Seq<u8>) -> nat
+spec fn str2int(s: Seq<char>) -> nat
   decreases s.len()
 {
   if s.len() == 0 { 
@@ -19,11 +19,11 @@ spec fn exp_int(x: nat, y: nat) -> nat
   if y == 0 { 1nat } else { x * exp_int(x, (y - 1) as nat) }
 }
 
-spec fn valid_bit_string(s: Seq<u8>) -> bool {
-  forall|i: int| 0 <= i < s.len() ==> (s[i] == 48u8 || s[i] == 49u8)
+spec fn valid_bit_string(s: Seq<char>) -> bool {
+  forall|i: int| 0 <= i < s.len() ==> (s[i] == '0' || s[i] == '1')
 }
 
-fn add(s1: Seq<u8>, s2: Seq<u8>) -> (res: Seq<u8>)
+fn add(s1: Seq<char>, s2: Seq<char>) -> (res: Seq<char>)
   requires 
     valid_bit_string(s1) && valid_bit_string(s2)
   ensures 
@@ -34,7 +34,7 @@ fn add(s1: Seq<u8>, s2: Seq<u8>) -> (res: Seq<u8>)
   unreached()
 }
 
-fn mod_exp_pow2(sx: Seq<u8>, sy: Seq<u8>, n: nat, sz: Seq<u8>) -> (res: Seq<u8>)
+fn mod_exp_pow2(sx: Seq<char>, sy: Seq<char>, n: nat, sz: Seq<char>) -> (res: Seq<char>)
   requires 
     valid_bit_string(sx) && valid_bit_string(sy) && valid_bit_string(sz) &&
     (str2int(sy) == exp_int(2nat, n) || str2int(sy) == 0) &&
@@ -54,7 +54,7 @@ fn mod_exp_pow2(sx: Seq<u8>, sy: Seq<u8>, n: nat, sz: Seq<u8>) -> (res: Seq<u8>)
 // </vc-helpers>
 
 // <vc-spec>
-fn mod_exp(sx: Vec<u8>, sy: Vec<u8>, sz: Vec<u8>) -> (res: Vec<u8>)
+fn mod_exp(sx: Vec<char>, sy: Vec<char>, sz: Vec<char>) -> (res: Vec<char>)
   requires 
     valid_bit_string(sx@) && valid_bit_string(sy@) && valid_bit_string(sz@) &&
     sy.len() > 0 && str2int(sz@) > 1
