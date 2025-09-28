@@ -1626,10 +1626,9 @@ def rename_tasks_with_new_id(language: str, dir_path: Path) -> None:
         print(f"No files found in {dir_path}")
         return
 
-    renamed_count = 0
     skipped_count = 0
     skipped_files = []
-
+    new_paths = []
     for file_path in files_to_rename:
         try:
             # Get the file stem (name without extension)
@@ -1644,7 +1643,7 @@ def rename_tasks_with_new_id(language: str, dir_path: Path) -> None:
             # Skip if the new name is the same as the current name
             if new_path == file_path:
                 print(f"Skipping {file_path} (name unchanged)")
-                skipped_files.append((file_path, "name unchanged"))
+                skipped_files.append((file_path, "name not found in source metadata"))
                 skipped_count += 1
                 continue
 
@@ -1659,23 +1658,13 @@ def rename_tasks_with_new_id(language: str, dir_path: Path) -> None:
                 skipped_count += 1
                 continue
 
-            # Rename the file
-            file_path.rename(new_path)
-            print(f"Renamed {file_path} -> {new_path}")
-            renamed_count += 1
+            new_paths.append((file_path, new_path))
 
         except ValueError as e:
             print(f"Warning: Could not get ID for {file_path}: {e}")
             skipped_files.append((file_path, f"could not get ID: {e}"))
             skipped_count += 1
             continue
-        except Exception as e:
-            print(f"Error renaming {file_path}: {e}")
-            skipped_files.append((file_path, f"error: {e}"))
-            skipped_count += 1
-            continue
-
-    print(f"\nRenamed {renamed_count} files, skipped {skipped_count} files")
 
     # List all skipped files at the end
     if skipped_files:
@@ -1684,6 +1673,22 @@ def rename_tasks_with_new_id(language: str, dir_path: Path) -> None:
         for file_path, reason in skipped_files:
             print(f"  {file_path} - {reason}")
         print("=" * 50)
+        return
+    
+    renamed_count = 0
+    skipped_count = 0
+    for file_path, new_path in new_paths:
+        try:
+            # Rename the file
+            file_path.rename(new_path)
+            print(f"Renamed {file_path} -> {new_path}")
+            renamed_count += 1
+        except Exception as e:
+            print(f"Error renaming {file_path}: {e}")
+            skipped_count += 1
+            continue
+    
+    print(f"\nRenamed {renamed_count} files, skipped {skipped_count} files")
 
 
 def generate_metadata(benchmarks_dir: Path) -> None:
